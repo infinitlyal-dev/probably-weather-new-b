@@ -66,16 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
   else if (hour < 18) timeOfDay = 'day';
   else timeOfDay = 'dusk';
 
-  // Hardcode Strand for reliable test
+  // Hardcode Strand
   const lat = -34.104;
   const lon = 18.817;
   location.innerText = 'Strand, WC';
 
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation_probability,uv_index,wind_speed_10m&hourly=temperature_2m`;
+  // Use CORS proxy for Vercel reliability
+  const proxy = 'https://corsproxy.io/?';
+  const url = `${proxy}https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation_probability,uv_index,wind_speed_10m&hourly=temperature_2m`;
 
   fetch(url)
     .then(res => res.json())
     .then(data => {
+      console.log('Data loaded:', data); // For debug
       const current = data.current;
       const temp = current.temperature_2m;
       const tempRange = `${Math.floor(temp - 2)}–${Math.ceil(temp + 2)}°`;
@@ -116,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
       extremeValue.innerText = '25–30°';
       rainValue.innerText = 'None expected';
       uvValue.innerText = 'High (8)';
-      confidenceValue.innerHTML = 'High<br>Based on 5 forecasts →';
+      confidenceValue.innerHTML = 'High<br>Based on Open-Meteo';
     });
 
   function addParticles(condition) {
