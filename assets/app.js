@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   else if (hour < 18) timeOfDay = 'day';
   else timeOfDay = 'dusk';
 
-  // Hardcode Strand for reliable test
+  // Hardcode Strand
   const lat = -34.104;
   const lon = 18.817;
   location.innerText = 'Strand, WC';
@@ -75,9 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const proxy = 'https://corsproxy.io/?';
   const url = `${proxy}https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation_probability,uv_index,wind_speed_10m&hourly=temperature_2m`;
 
+  console.log('Fetching from:', url); // Debug log
+
   fetch(url)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error('Fetch failed: ' + res.status);
+      return res.json();
+    })
     .then(data => {
+      console.log('Data received:', data); // Debug
       const current = data.current;
       const temp = current.temperature_2m;
       const tempRange = `${Math.floor(temp - 2)}–${Math.ceil(temp + 2)}°`;
