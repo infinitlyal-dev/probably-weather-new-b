@@ -66,19 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
   else if (hour < 18) timeOfDay = 'day';
   else timeOfDay = 'dusk';
 
-  // Hardcode Strand
+  // Hardcode Strand for reliable test
   const lat = -34.104;
   const lon = 18.817;
   location.innerText = 'Strand, WC';
 
-  // Use CORS proxy for Vercel reliability
+  // CORS proxy for Vercel
   const proxy = 'https://corsproxy.io/?';
   const url = `${proxy}https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation_probability,uv_index,wind_speed_10m&hourly=temperature_2m`;
 
   fetch(url)
     .then(res => res.json())
     .then(data => {
-      console.log('Data loaded:', data); // For debug
       const current = data.current;
       const temp = current.temperature_2m;
       const tempRange = `${Math.floor(temp - 2)}–${Math.ceil(temp + 2)}°`;
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (temp > 30) condition = 'heat';
 
       body.classList.add(`weather-${condition}`);
-      bgImg.src = `assets/images/bg/${condition}/${timeOfDay}.jpg`;
+      bgImg.src = `assets/images/bg/${condition}/${timeOfDay}.jpg` || 'assets/images/bg/clear/day.jpg';
       headline.innerText = `This is ${condition}.`;
       temp.innerText = tempRange;
       description.innerText = humor[condition][timeOfDay] || humor[condition]['day'];
