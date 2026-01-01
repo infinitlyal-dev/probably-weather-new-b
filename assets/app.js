@@ -115,11 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const windKphs = sources.map(s => s.windKph).filter(Boolean);
 
     const avg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
-    const median = arr => {
-      const sorted = [...arr].sort((a, b) => a - b);
-      const mid = Math.floor(sorted.length / 2);
-      return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
-    };
 
     const aggregated = {
       currentTemp: Math.round(avg(currentTemps.length ? currentTemps : [20])),
@@ -201,34 +196,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function fetchOpenWeatherMap(lat, lon) {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${OPENWEATHERMAP_KEY}&units=metric`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${OPENWEATHERMAP_KEY}&units=metric`;
     const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHERMAP_KEY}&units=metric`;
 
-    const [res, currentRes] = await Promise.all([fetch(url), fetch(currentCRYPT(currentUrl)]);
-    if (!res.ok || !currentRes.ok) throw new Error('OWM failed');
+    const [foreRes, curRes] = await Promise.all([fetch(forecastUrl), fetch(currentUrl)]);
+    if (!foreRes.ok || !curRes.ok) throw new Error('OWM failed');
 
-    const data = await res.json();
-    const currentData = await currentRes.json();
+    const forecast = await foreRes.json();
+    const current = await curRes.json();
 
-    // Today's max rain chance from 3-hour forecasts
+    // Today's rain chance (max pop from 3-hour slots)
     const today = new Date().toISOString().split('T')[0];
-    const todayEntries = data.list.filter(entry => entry.dt_txt.startsWith(today));
+    const todayEntries = forecast.list.filter(e => e.dt_txt.startsWith(today));
     const rainChance = todayEntries.length ? Math.max(...todayEntries.map(e => (e.pop || 0) * 100)) : 0;
 
-    const dayForecast = data.list[0]; // Approximate today's high/low from first few entries
+    // High/low approx from today's entries
     const tempsToday = todayEntries.map(e => e.main.temp);
-    const highTemp = Math.max(...tempsToday);
-    const lowTemp = Math.min(...tempsToday);
+    const highTemp = tempsToday.length ? Math.max(...tempsToday) : current.main.temp;
+    const lowTemp = tempsToday.length ? Math.min(...tempsToday) : current.main.temp;
 
     return {
       source: 'owm',
-      currentTemp: currentData.main.temp,
+      currentTemp: current.main.temp,
       highTemp: highTemp,
       lowTemp: lowTemp,
       rainChance: rainChance,
-      uv: 0, // Not reliably in free tier
-      windKph: currentData.wind.speed * 3.6,
-      timeOfDay: currentData.weather[0].icon.endsWith('d') ? getTimeOfDay(true, new Date().getHours()) : 'night'
+      uv: 0, // Free tier no UV
+      windKph: current.wind.speed * 3.6,
+      timeOfDay: current.weather[0].icon.endsWith('d') ? getTimeOfDay(true, new Date().getHours()) : 'night'
     };
   }
 
@@ -306,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     particles.innerHTML = '';
     if (!['cold', 'wind', 'rain', 'storm', 'heat'].includes(condition)) return;
 
-    const count = condition === '  wind' ? 25 : condition === 'heat' ? 20 : condition === 'storm' ? 30 : 15;
+    const count = condition === 'wind' ? 25 : condition === 'heat' ? 20 : condition === 'storm' ? 30 : 15;
 
     for (let i = 0; i < count; i++) {
       const p = document.createElement('div');
