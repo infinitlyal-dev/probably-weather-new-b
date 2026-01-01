@@ -39,6 +39,19 @@
       <div id="hourlyTimeline" class="hourly-timeline"></div>
     </section>
 
+    <section id="search-screen" class="search-screen hidden">
+      <input id="searchInput" type="text" placeholder="Search for a place" />
+      <div class="saved-places">
+        <h3>Saved places</h3>
+        <ul id="favoritesList"></ul>
+      </div>
+      <div class="recent-places">
+        <h3>Recent</h3>
+        <ul id="recentList"></ul>
+      </div>
+      <button id="manageFavorites">Manage favorites</button>
+    </section>
+
     <aside class="sidebar">
       <div class="card">
         <div id="extremeLabel" class="label">Today's extreme: Cold</div>
@@ -54,7 +67,7 @@
       </div>
       <div class="card">
         <div class="label">Confidence:</div>
-        <div id="confidenceValue" class="value">High<br>Based on 5 forecasts →</div>
+        <div id="confidenceValue" class="value">High<br>Based on Open-Meteo</div>
       </div>
     </aside>
 
