@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentLon = 18.817;
 
   const WEATHERAPI_KEY = 'a98886bfef6c4dcd8bf111514251512';
+  const OPENWEATHERMAP_KEY = 'a56be2054510bc8fed22998c68972876';
 
   const humor = {
     cold: {
@@ -90,12 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchWeather(lat, lon) {
     const openMeteoPromise = fetchOpenMeteo(lat, lon);
     const weatherApiPromise = fetchWeatherAPI(lat, lon);
+    const owmPromise = fetchOpenWeatherMap(lat, lon);
 
-    const results = await Promise.allSettled([openMeteoPromise, weatherApiPromise]);
+    const results = await Promise.allSettled([openMeteoPromise, weatherApiPromise, owmPromise]);
 
     const sources = [];
     if (results[0].status === 'fulfilled') sources.push(results[0].value);
     if (results[1].status === 'fulfilled') sources.push(results[1].value);
+    if (results[2].status === 'fulfilled') sources.push(results[2].value);
 
     if (sources.length === 0) {
       console.error('All sources failed');
@@ -125,26 +128,21 @@ document.addEventListener('DOMContentLoaded', () => {
       rainChance: Math.round(avg(rainChances.length ? rainChances : [10])),
       uv: Math.round(avg(uvValues.length ? uvValues : [5]) * 10) / 10,
       windKph: Math.round(avg(windKphs.length ? windKphs : [10])),
-      hourly: sources.find(s => s.hourly)?.hourly || [],
+      hourly: sources.find(s => s.source === 'openmeteo')?.hourly || [],
       condition: 'clear',
       timeOfDay: 'day',
       sourcesUsed: sources.length
     };
 
-    // Use Open-Meteo hourly if available
-    if (sources.find(s => s.source === 'openmeteo')) {
-      aggregated.hourly = sources.find(s => s.source === 'openmeteo').hourly;
-    }
-
     // Condition from aggregated values
     aggregated.condition = determineCondition(aggregated.currentTemp, aggregated.rainChance, aggregated.windKph);
 
     // Confidence based on agreement
-    const tempSpread = Math.max(...currentTemps) - Math.min(...currentTemps);
-    const rainSpread = Math.max(...rainChances) - Math.min(...rainChances);
-    if (sources.length >= 2 && tempSpread <= 4 && rainSpread <= 30) {
+    const tempSpread = currentTemps.length > 1 ? Math.max(...currentTemps) - Math.min(...currentTemps) : 0;
+    const rainSpread = rainChances.length > 1 ? Math.max(...rainChances) - Math.min(...rainChances) : 0;
+    if (sources.length >= 3 && tempSpread <= 4 && rainSpread <= 30) {
       aggregated.confidence = 'High';
-    } else if (sources.length >= 2) {
+    } else if (sources.length >= 2 && tempSpread <= 6 && rainSpread <= 40) {
       aggregated.confidence = 'Medium';
     } else {
       aggregated.confidence = 'Low';
@@ -202,6 +200,38 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  async function fetchOpenWeatherMap(lat, lon) {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${OPENWEATHERMAP_KEY}&units=metric`;
+    const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHERMAP_KEY}&units=metric`;
+
+    const [res, currentRes] = await Promise.all([fetch(url), fetch(currentCRYPT(currentUrl)]);
+    if (!res.ok || !currentRes.ok) throw new Error('OWM failed');
+
+    const data = await res.json();
+    const currentData = await currentRes.json();
+
+    // Today's max rain chance from 3-hour forecasts
+    const today = new Date().toISOString().split('T')[0];
+    const todayEntries = data.list.filter(entry => entry.dt_txt.startsWith(today));
+    const rainChance = todayEntries.length ? Math.max(...todayEntries.map(e => (e.pop || 0) * 100)) : 0;
+
+    const dayForecast = data.list[0]; // Approximate today's high/low from first few entries
+    const tempsToday = todayEntries.map(e => e.main.temp);
+    const highTemp = Math.max(...tempsToday);
+    const lowTemp = Math.min(...tempsToday);
+
+    return {
+      source: 'owm',
+      currentTemp: currentData.main.temp,
+      highTemp: highTemp,
+      lowTemp: lowTemp,
+      rainChance: rainChance,
+      uv: 0, // Not reliably in free tier
+      windKph: currentData.wind.speed * 3.6,
+      timeOfDay: currentData.weather[0].icon.endsWith('d') ? getTimeOfDay(true, new Date().getHours()) : 'night'
+    };
+  }
+
   function determineCondition(temp, rainChance, windKph) {
     if (rainChance >= 60) return 'storm';
     if (rainChance >= 40) return 'rain';
@@ -244,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
     uvValue.innerText = data.uv > 8 ? `High (${data.uv})` : data.uv > 5 ? `Moderate (${data.uv})` : `Low (${data.uv})`;
-    confidenceValue.innerHTML = `${data.confidence} Confidence<br>Based on ${data.sourcesUsed} source${data.sourcesUsed > 1 ? 's' : ''}`;
+    confidenceValue.innerHTML = `${data.confidence} Confidence<br>Based on ${data.sourcesUsed} sources`;
 
     if (cond === 'heat') {
       heatOverlay.style.backgroundImage = `url(${bgImg.src})`;
@@ -276,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     particles.innerHTML = '';
     if (!['cold', 'wind', 'rain', 'storm', 'heat'].includes(condition)) return;
 
-    const count = condition === 'wind' ? 25 : condition === 'heat' ? 20 : condition === 'storm' ? 30 : 15;
+    const count = condition === '  wind' ? 25 : condition === 'heat' ? 20 : condition === 'storm' ? 30 : 15;
 
     for (let i = 0; i < count; i++) {
       const p = document.createElement('div');
