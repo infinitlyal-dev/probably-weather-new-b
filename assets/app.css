@@ -46,6 +46,34 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   pointer-events: none;
 }
 
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: fall linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(110vh); }
+}
+
+.weather-cold #particles .particle { width: 4px; height: 4px; }
+.weather-wind #particles .particle { width: 6px; height: 3px; transform: rotate(45deg); animation: swirl linear infinite; }
+@keyframes swirl {
+  0% { transform: translateY(-10%) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
 .container {
   position: relative;
   height: 100vh;
@@ -56,19 +84,34 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
     "header sidebar"
     "main sidebar"
     "nav nav";
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .header {
   grid-area: header;
   padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .brand {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+#logo {
+  fill: currentColor;
+}
+
+.location {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
 }
 
 .tagline {
@@ -76,7 +119,6 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   font-weight: 600;
   opacity: 1;
   margin-top: 0.8rem;
-  max-width: none;
   text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 10px currentColor;
 }
 
@@ -301,8 +343,9 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 }
 
 @media (max-width: 1023px) {
-  .container { grid-template-columns: 1fr; grid-template-areas: "header" "main" "sidebar" "nav"; }
+  .container { grid-template-columns: 1fr; grid-template-areas: "header" "main" "sidebar" "nav"; max-width: none; }
   .sidebar { padding: 1.5rem; }
+  .header { align-items: flex-start; }
   .headline { font-size: 4.2rem; }
   .temp { font-size: 5.8rem; }
   .description { font-size: 1.7rem; }
