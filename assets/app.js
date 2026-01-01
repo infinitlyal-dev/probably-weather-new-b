@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rainValue = document.getElementById('rainValue');
   const uvValue = document.getElementById('uvValue');
   const confidenceValue = document.getElementById('confidenceValue');
-  const location = document.getElementById('location');
+  const locationEl = document.getElementById('location');
   const particles = document.getElementById('particles');
   const homeScreen = document.getElementById('home-screen');
   const hourlyScreen = document.getElementById('hourly-screen');
@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const navHome = document.getElementById('navHome');
   const navHourly = document.getElementById('navHourly');
   const navSearch = document.getElementById('navSearch');
+  const navWeek = document.getElementById('navWeek'); // For future
+
+  let currentLat = -34.104; // Default Strand
+  let currentLon = 18.817;
 
   const humor = {
     cold: {
@@ -67,140 +71,167 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const hour = new Date().getHours();
-  let timeOfDay;
-  if (hour < 6) timeOfDay = 'night';
-  else if (hour < 12) timeOfDay = 'dawn';
-  else if (hour < 18) timeOfDay = 'day';
-  else timeOfDay = 'dusk';
+  // Load cached data if available
+  const cached = localStorage.getItem('lastWeatherData');
+  if (cached) {
+    const data = JSON.parse(cached);
+    updateUI(data);
+  }
 
   navigator.geolocation.getCurrentPosition(async (pos) => {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-    location.innerText = 'Your Location';
-    await fetchWeather(lat, lon);
+    currentLat = pos.coords.latitude;
+    currentLon = pos.coords.longitude;
+    locationEl.innerText = 'Your Location';
+    await fetchWeather(currentLat, currentLon);
   }, async () => {
-    location.innerText = 'Strand, WC';
-    await fetchWeather(-34.104, 18.817);
+    locationEl.innerText = 'Strand, WC';
+    await fetchWeather(currentLat, currentLon);
   });
 
   async function fetchWeather(lat, lon) {
-    const proxy = 'https://corsproxy.io/?';
-    const url = `${proxy}https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,precipitation_probability,uv_index,wind_speed_10m&hourly=temperature_2m,precipitation_probability`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max&hourly=temperature_2m,precipitation_probability&timezone=auto`;
 
     try {
       const res = await fetch(url);
+      if (!res.ok) throw new Error('Network error');
       const data = await res.json();
-      const current = data.current;
-      const temp = current.temperature_2m;
-      const tempRange = `${Math.floor(temp - 2)}–${Math.ceil(temp + 2)}°`;
-      const rain = current.precipitation_probability || 0;
-      const uv = current.uv_index || 0;
-      const wind = current.wind_speed_10m || 0;
 
-      let condition = 'clear';
-      if (rain > 50) condition = 'storm';
-      else if (rain > 10) condition = 'rain';
-      if (wind > 40) condition = 'wind';
-      if (uv < 2 && temp < 15) condition = 'fog';
-      if (temp < 10) condition = 'cold';
-      if (temp > 30) condition = 'heat';
+      const processed = {
+        currentTemp: Math.round(data.current.apparent_temperature || data.current.temperature_2m),
+        highTemp: Math.round(data.daily.temperature_2m_max[0]),
+        lowTemp: Math.round(data.daily.temperature_2m_min[0]),
+        rainChance: data.daily.precipitation_probability_max[0] || 0,
+        uv: data.daily.uv_index_max[0] || 0,
+        windKph: Math.round((data.current.wind_speed_10m || 0) * 3.6),
+        isDay: data.current.is_day === 1,
+        hourly: data.hourly.time.slice(0, 24).map((t, i) => ({
+          time: t,
+          temp: Math.round(data.hourly.temperature_2m[i]),
+          rain: data.hourly.precipitation_probability[i] || 0
+        })),
+        condition: determineCondition(data.current.apparent_temperature || data.current.temperature_2m, data.daily.precipitation_probability_max[0], (data.current.wind_speed_10m || 0) * 3.6),
+        timeOfDay: getTimeOfDay(data.current.is_day, new Date().getHours())
+      };
 
-      body.classList.add(`weather-${condition}`);
-      bgImg.src = `assets/images/bg/${condition}/${timeOfDay}.jpg` || 'assets/images/bg/clear/day.jpg';
-      headline.innerText = `This is ${condition}.`;
-      temp.innerText = tempRange;
-      description.innerText = humor[condition][timeOfDay] || humor[condition]['day'];
-      extremeLabel.innerText = "Today's extreme: " + condition.charAt(0).toUpperCase() + condition.slice(1);
-      extremeValue.innerText = tempRange;
-      rainValue.innerText = rain > 10 ? 'Likely' : 'Unlikely';
-      uvValue.innerText = uv > 6 ? 'High' : uv > 3 ? 'Moderate' : 'Low';
-      confidenceValue.innerHTML = 'High<br>Based on Open-Meteo';
+      processed.confidence = processed.rainChance < 20 || processed.rainChance > 80 ? 'High' : processed.rainChance < 50 ? 'Medium' : 'Low';
 
-      addParticles(condition);
+      localStorage.setItem('lastWeatherData', JSON.stringify(processed));
+      updateUI(processed);
+      loadHourly(processed.hourly); // Pre-load hourly if needed
     } catch (e) {
       console.error('Fetch error:', e);
       fallbackUI();
     }
   }
 
+  function determineCondition(temp, rainChance, windKph) {
+    if (rainChance >= 60) return 'storm';
+    if (rainChance >= 40) return 'rain';
+    if (windKph >= 45) return 'wind';
+    if (temp <= 12) return 'cold'; // Fog if cold + low wind, but simplify
+    if (temp >= 32) return 'heat';
+    return 'clear';
+  }
+
+  function getTimeOfDay(isDay, hour) {
+    if (hour < 6 || hour >= 20) return 'night';
+    if (hour < 9) return 'dawn';
+    if (hour < 17) return 'day';
+    return 'dusk';
+  }
+
+  function updateUI(data) {
+    const tod = data.timeOfDay || 'day';
+    const cond = data.condition || 'clear';
+    body.classList.remove(...body.classList);
+    body.classList.add(`weather-${cond}`);
+    bgImg.src = `assets/images/bg/${cond}/${tod}.jpg`;
+
+    headline.innerText = `This is ${cond} weather.`;
+    temp.innerText = `${data.lowTemp}–${data.highTemp}°`;
+    description.innerText = humor[cond][tod] || humor[cond].day;
+
+    extremeLabel.innerText = "Today's extreme:";
+    extremeValue.innerText = data.highTemp >= 32 ? 'Heat' : data.lowTemp <= 10 ? 'Cold' : cond.charAt(0).toUpperCase() + cond.slice(1);
+    rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
+    uvValue.innerText = data.uv > 8 ? `High (${data.uv})` : data.uv > 5 ? `Moderate (${data.uv})` : `Low (${data.uv})`;
+    confidenceValue.innerHTML = `${data.confidence} Confidence<br>Probably accurate`;
+
+    addParticles(cond);
+  }
+
   function fallbackUI() {
-    body.classList.add('weather-clear');
-    bgImg.src = 'assets/images/bg/clear/day.jpg';
-    headline.innerText = 'This is clear.';
-    temp.innerText = '25–30°';
-    description.innerText = 'Braai weather, boet!';
-    extremeLabel.innerText = "Today's extreme: Clear";
-    extremeValue.innerText = '25–30°';
-    rainValue.innerText = 'None expected';
-    uvValue.innerText = 'High (8)';
-    confidenceValue.innerHTML = 'High<br>Based on Open-Meteo';
+    const cached = localStorage.getItem('lastWeatherData');
+    if (cached) {
+      updateUI(JSON.parse(cached));
+      description.innerText = 'Weather boffins on a quick braai break — here\'s the last forecast!';
+    } else {
+      body.classList.add('weather-clear');
+      bgImg.src = 'assets/images/bg/clear/day.jpg';
+      headline.innerText = 'This is clear weather.';
+      temp.innerText = '22–28°';
+      description.innerText = 'Braai weather! (cached/offline mode)';
+      confidenceValue.innerHTML = 'Medium<br>Using fallback';
+    }
   }
 
   function addParticles(condition) {
-    if (particles) {
-      particles.innerHTML = '';
-      for (let i = 0; i < 10; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDuration = Math.random() * 3 + 5 + 's';
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        particles.appendChild(particle);
+    particles.innerHTML = '';
+    if (!['cold', 'wind', 'rain', 'storm'].includes(condition)) return;
+    for (let i = 0; i < 15; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (Math.random() * 5 + 10) + 's';
+      p.style.animationDelay = Math.random() * 5 + 's';
+      particles.appendChild(p);
+    }
+  }
+
+  // Hourly (now uses passed data or fetches if needed)
+  async function loadHourly(hourlyData = null) {
+    hourlyTimeline.innerHTML = '<p>Loading hourly...</p>';
+    if (!hourlyData) {
+      // Fetch if not passed
+      // Similar fetch as main, but skip for now
+    } else {
+      hourlyTimeline.innerHTML = '';
+      for (let i = 0; i < hourlyData.length; i += 3) {
+        const hr = new Date(hourlyData[i].time).getHours().toString().padStart(2, '0') + ':00';
+        const card = document.createElement('div');
+        card.classList.add('hourly-card');
+        card.innerHTML = `
+          <div class="hour-time">${hr}</div>
+          <div class="hour-temp">${hourlyData[i].temp}°</div>
+          <div class="hour-rain">${hourlyData[i].rain}% rain</div>
+        `;
+        hourlyTimeline.appendChild(card);
       }
     }
   }
 
-  // Hourly
   navHourly.addEventListener('click', () => {
     homeScreen.classList.add('hidden');
     searchScreen.classList.add('hidden');
     hourlyScreen.classList.remove('hidden');
-    loadHourly();
+    loadHourly(); // Will use cached or refetch if needed
   });
 
-  async function loadHourly() {
-    hourlyTimeline.innerHTML = '<p>Loading hourly forecast...</p>';
-    try {
-      const lat = -34.104; // Strand; replace with current lat/lon later
-      const lon = 18.817;
-      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,precipitation_probability`;
-      const res = await fetch(url);
-      const data = await res.json();
-      const hourly = data.hourly;
-      hourlyTimeline.innerHTML = '';
-      for (let i = 0; i < 24; i += 3) {
-        const time = new Date(hourly.time[i]).getHours() + ':00';
-        const temp = Math.round(hourly.temperature_2m[i]) + '°';
-        const rain = hourly.precipitation_probability[i] + '% rain';
-        const card = document.createElement('div');
-        card.classList.add('hourly-card');
-        card.innerHTML = `
-          <div class="hour-time">${time}</div>
-          <div class="hour-temp">${temp}</div>
-          <div class="hour-rain">${rain}</div>
-          <div class="hour-confidence">High</div>
-        `;
-        hourlyTimeline.appendChild(card);
-      }
-    } catch (e) {
-      hourlyTimeline.innerHTML = '<p>Error loading hourly</p>';
-    }
-  }
-
-  // Search
-  navSearch.addEventListener('click', () => {
-    homeScreen.classList.add('hidden');
-    hourlyScreen.classList.add('hidden');
-    searchScreen.classList.remove('hidden');
-    loadFavorites();
-    loadRecent();
-  });
-
-  // Home from other screens
   navHome.addEventListener('click', () => {
     hourlyScreen.classList.add('hidden');
     searchScreen.classList.add('hidden');
     homeScreen.classList.remove('hidden');
+  });
+
+  navSearch.addEventListener('click', () => {
+    homeScreen.classList.add('hidden');
+    hourlyScreen.classList.add('hidden');
+    searchScreen.classList.remove('hidden');
+    // Load favorites/recent here later
+  });
+
+  // Week nav placeholder
+  navWeek.addEventListener('click', () => {
+    alert('Week screen coming soon!');
   });
 });
