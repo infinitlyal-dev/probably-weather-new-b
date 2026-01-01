@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const bgImg = document.getElementById('bgImg');
+  const heatOverlay = document.getElementById('heatOverlay');
   const body = document.body;
   const headline = document.getElementById('headline');
   const temp = document.getElementById('temp');
@@ -15,15 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const hourlyScreen = document.getElementById('hourly-screen');
   const searchScreen = document.getElementById('search-screen');
   const hourlyTimeline = document.getElementById('hourlyTimeline');
-  const searchInput = document.getElementById('searchInput');
-  const favoritesList = document.getElementById('favoritesList');
-  const recentList = document.getElementById('recentList');
   const navHome = document.getElementById('navHome');
   const navHourly = document.getElementById('navHourly');
   const navSearch = document.getElementById('navSearch');
-  const navWeek = document.getElementById('navWeek'); // For future
+  const navWeek = document.getElementById('navWeek');
 
-  let currentLat = -34.104; // Default Strand
+  let currentLat = -34.104;
   let currentLon = 18.817;
 
   const humor = {
@@ -65,13 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     clear: {
       dawn: 'Clear dawn—beautiful sunrise ahead',
-      day: 'Braai weather, boet!',
+      day: 'Braai weather!',
       dusk: 'Clear evening—starry night coming',
       night: 'Clear night—perfect for stargazing'
     }
   };
 
-  // Load cached data if available
   const cached = localStorage.getItem('lastWeatherData');
   if (cached) {
     const data = JSON.parse(cached);
@@ -117,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       localStorage.setItem('lastWeatherData', JSON.stringify(processed));
       updateUI(processed);
-      loadHourly(processed.hourly); // Pre-load hourly if needed
     } catch (e) {
       console.error('Fetch error:', e);
       fallbackUI();
@@ -128,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (rainChance >= 60) return 'storm';
     if (rainChance >= 40) return 'rain';
     if (windKph >= 45) return 'wind';
-    if (temp <= 12) return 'cold'; // Fog if cold + low wind, but simplify
+    if (temp <= 12) return 'cold';
     if (temp >= 32) return 'heat';
     return 'clear';
   }
@@ -143,19 +139,41 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateUI(data) {
     const tod = data.timeOfDay || 'day';
     const cond = data.condition || 'clear';
-    body.classList.remove(...body.classList);
+
+    // Reset classes and overlay
+    body.className = '';
     body.classList.add(`weather-${cond}`);
+    heatOverlay.style.display = 'none';
+
     bgImg.src = `assets/images/bg/${cond}/${tod}.jpg`;
 
-    headline.innerText = `This is ${cond} weather.`;
+    // Headline with wind blow effect if wind
+    let headlineText = `This is ${cond} weather.`;
+    if (cond === 'wind') {
+      headlineText = headlineText.split('').map((char, i) => 
+        `<span class="wind-letter" style="animation-delay: ${i * 0.05}s">${char === ' ' ? '&nbsp;' : char}</span>`
+      ).join('');
+    }
+    headline.innerHTML = headlineText;
+
     temp.innerText = `${data.lowTemp}–${data.highTemp}°`;
     description.innerText = humor[cond][tod] || humor[cond].day;
 
     extremeLabel.innerText = "Today's extreme:";
     extremeValue.innerText = data.highTemp >= 32 ? 'Heat' : data.lowTemp <= 10 ? 'Cold' : cond.charAt(0).toUpperCase() + cond.slice(1);
+
     rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
     uvValue.innerText = data.uv > 8 ? `High (${data.uv})` : data.uv > 5 ? `Moderate (${data.uv})` : `Low (${data.uv})`;
     confidenceValue.innerHTML = `${data.confidence} Confidence<br>Probably accurate`;
+
+    // Heat overlay
+    if (cond === 'heat') {
+      heatOverlay.style.backgroundImage = `url(${bgImg.src})`;
+      heatOverlay.style.backgroundPosition = 'center';
+      heatOverlay.style.backgroundSize = 'cover';
+      heatOverlay.style.display = 'block';
+      heatOverlay.style.opacity = '0.5';
+    }
 
     addParticles(cond);
   }
@@ -166,47 +184,29 @@ document.addEventListener('DOMContentLoaded', () => {
       updateUI(JSON.parse(cached));
       description.innerText = 'Weather boffins on a quick braai break — here\'s the last forecast!';
     } else {
-      body.classList.add('weather-clear');
+      body.className = 'weather-clear';
       bgImg.src = 'assets/images/bg/clear/day.jpg';
-      headline.innerText = 'This is clear weather.';
+      headline.innerHTML = 'This is clear weather.';
       temp.innerText = '22–28°';
-      description.innerText = 'Braai weather! (cached/offline mode)';
+      description.innerText = 'Braai weather! (offline mode)';
       confidenceValue.innerHTML = 'Medium<br>Using fallback';
     }
   }
 
   function addParticles(condition) {
     particles.innerHTML = '';
-    if (!['cold', 'wind', 'rain', 'storm'].includes(condition)) return;
-    for (let i = 0; i < 15; i++) {
+    if (!['cold', 'wind', 'rain', 'storm', 'heat'].includes(condition)) return;
+
+    const count = condition === 'wind' ? 25 : condition === 'heat' ? 20 : condition === 'storm' ? 30 : 15;
+
+    for (let i = 0; i < count; i++) {
       const p = document.createElement('div');
       p.classList.add('particle');
+      p.style.top = Math.random() * 100 + '%';
       p.style.left = Math.random() * 100 + '%';
-      p.style.animationDuration = (Math.random() * 5 + 10) + 's';
+      p.style.animationDuration = (Math.random() * 5 + (condition === 'wind' ? 3 : condition === 'storm' ? 2 : 8)) + 's';
       p.style.animationDelay = Math.random() * 5 + 's';
       particles.appendChild(p);
-    }
-  }
-
-  // Hourly (now uses passed data or fetches if needed)
-  async function loadHourly(hourlyData = null) {
-    hourlyTimeline.innerHTML = '<p>Loading hourly...</p>';
-    if (!hourlyData) {
-      // Fetch if not passed
-      // Similar fetch as main, but skip for now
-    } else {
-      hourlyTimeline.innerHTML = '';
-      for (let i = 0; i < hourlyData.length; i += 3) {
-        const hr = new Date(hourlyData[i].time).getHours().toString().padStart(2, '0') + ':00';
-        const card = document.createElement('div');
-        card.classList.add('hourly-card');
-        card.innerHTML = `
-          <div class="hour-time">${hr}</div>
-          <div class="hour-temp">${hourlyData[i].temp}°</div>
-          <div class="hour-rain">${hourlyData[i].rain}% rain</div>
-        `;
-        hourlyTimeline.appendChild(card);
-      }
     }
   }
 
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     homeScreen.classList.add('hidden');
     searchScreen.classList.add('hidden');
     hourlyScreen.classList.remove('hidden');
-    loadHourly(); // Will use cached or refetch if needed
+    // Hourly data is already in cached processed.hourly if needed
   });
 
   navHome.addEventListener('click', () => {
@@ -227,10 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
     homeScreen.classList.add('hidden');
     hourlyScreen.classList.add('hidden');
     searchScreen.classList.remove('hidden');
-    // Load favorites/recent here later
   });
 
-  // Week nav placeholder
   navWeek.addEventListener('click', () => {
     alert('Week screen coming soon!');
   });

@@ -59,7 +59,7 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   background: white;
   border-radius: 50%;
   animation: fall linear infinite;
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 @keyframes fall {
@@ -67,11 +67,73 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   100% { transform: translateY(110vh); }
 }
 
-.weather-cold #particles .particle { width: 4px; height: 4px; }
-.weather-wind #particles .particle { width: 6px; height: 3px; transform: rotate(45deg); animation: swirl linear infinite; }
-@keyframes swirl {
-  0% { transform: translateY(-10%) rotate(0deg); }
-  100% { transform: translateY(110vh) rotate(360deg); }
+/* Wind: horizontal dust gusts */
+body.weather-wind .particle {
+  width: 12px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 2px;
+  animation: gust linear infinite;
+}
+
+@keyframes gust {
+  0% { transform: translateX(-120vw) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { transform: translateX(120vw) rotate(10deg); opacity: 0; }
+}
+
+/* Heat: rising subtle heat particles */
+body.weather-heat .particle {
+  width: 6px;
+  height: 20px;
+  background: rgba(255, 150, 0, 0.3);
+  border-radius: 50%;
+  animation: rise linear infinite;
+}
+
+@keyframes rise {
+  0% { transform: translateY(120vh) translateX(0); opacity: 0; }
+  20% { opacity: 0.3; }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-20vh) translateX(40px); opacity: 0; }
+}
+
+/* Wind blown headline letters */
+.wind-letter {
+  display: inline-block;
+  animation: windBlow 4s ease-in-out infinite;
+}
+
+@keyframes windBlow {
+  0%, 100% { transform: translateX(0) skewX(0deg); }
+  50% { transform: translateX(6px) skewX(15deg); }
+}
+
+/* Heat haze overlay */
+#heatOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  filter: url(#heatHaze) blur(1px);
+  opacity: 0;
+  display: none;
+  mask-image: linear-gradient(transparent 40%, black 100%);
+}
+
+/* Fiery glow on text for heat */
+body.weather-heat .headline,
+body.weather-heat .temp,
+body.weather-heat .description {
+  animation: heatGlow 6s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 100, 0, 0.8), 0 0 40px rgba(255, 150, 0, 0.5);
+}
+
+@keyframes heatGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(255, 100, 0, 0.8), 0 0 40px rgba(255, 150, 0, 0.5); }
+  50% { text-shadow: 0 0 40px rgba(255, 50, 0, 1), 0 0 80px rgba(255, 200, 0, 0.8); }
 }
 
 .container {
@@ -272,11 +334,6 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 
 .hour-rain {
   font-size: 1rem;
-}
-
-.hour-confidence {
-  font-size: 0.9rem;
-  opacity: 0.8;
 }
 
 .search-screen {
