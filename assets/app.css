@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Montserrat:wght@400;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body, html {
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  color: #FFF8F0;
+  transition: color 0.3s;
+}
+
+body.weather-cold { color: #E0F7FA; }
+body.weather-heat { color: #FFEFD5; }
+body.weather-storm { color: #E8EAF6; }
+body.weather-rain { color: #BBDEFB; }
+body.weather-wind { color: #F0F4F8; }
+body.weather-fog { color: #CFD8DC; }
+body.weather-clear { color: #FFFDE7; }
+
+body.weather-cold .confidence, body.weather-cold .card .label { color: #B3E5FC; }
+body.weather-heat .confidence, body.weather-heat .card .label { color: #FFDAB9; }
+body.weather-storm .confidence, body.weather-storm .card .label { color: #C5CAE9; }
+body.weather-rain .confidence, body.weather-rain .card .label { color: #90CAF9; }
+body.weather-wind .confidence, body.weather-wind .card .label { color: #E3E9ED; }
+body.weather-fog .confidence, body.weather-fog .card .label { color: #B0BEC5; }
+body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D; }
+
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+#bgImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header sidebar"
+    "main sidebar"
+    "nav nav";
+}
+
+.header {
+  grid-area: header;
+  padding: 2.5rem 3rem;
+}
+
+.brand {
+  font-size: 2.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-weight: 600;
+  opacity: 1;
+  margin-top: 0.8rem;
+  max-width: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9); /* Bolder contrast */
+}
+
+.main {
+  grid-area: main;
+  padding: 0 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-shadow: 0 3px 6px rgba(0,0,0,1), 0 6px 18px rgba(0,0,0,0.8);
+  position: relative;
+  z-index: 1;
+}
+
+.confidence {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.headline {
+  font-family: 'Poppins', sans-serif;
+  font-size: 5.2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.temp {
+  font-family: 'Poppins', sans-serif;
+  font-size: 6.8rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.description {
+  font-size: 1.9rem;
+  opacity: 1;
+  font-weight: 600;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.card .label { font-size: 1.1rem; font-weight: 600; }
+.card .value { font-size: 1.6rem; font-weight: 400; }
+
+.bottom-nav {
+  grid-area: nav;
+  display: flex;
+  background: rgba(0, 0, 0, 0.6); /* Darker for contrast */
+  backdrop-filter: blur(25px);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-item {
+  flex: 1;
+  padding: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  opacity: 1;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-item::before {
+  font-size: 1.5rem;
+}
+
+#navHome::before { content: '🏠'; }
+#navHourly::before { content: '⏰'; }
+#navWeek::before { content: '📅'; }
+#navSearch::before { content: '🔍'; }
+#navSettings::before { content: '⚙️'; }
+
+.nav-item.active {
+  border-bottom: 3px solid currentColor;
+}
+
+@media (max-width: 1023px) {
+  .container { grid-template-columns: 1fr; grid-template-areas: "header" "main" "sidebar" "nav"; }
+  .sidebar { padding: 1.5rem; }
+  .headline { font-size: 4.2rem; }
+  .temp { font-size: 5.8rem; }
+  .description { font-size: 1.7rem; }
+}
