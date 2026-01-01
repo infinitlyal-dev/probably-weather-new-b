@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentLat = -34.104;
   let currentLon = 18.817;
 
+  const WEATHERAPI_KEY = 'a98886bfef6c4dcd8bf111514251512';
+
   const humor = {
     cold: {
       dawn: 'Chilly start—coffee and blankets time!',
@@ -86,38 +88,118 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   async function fetchWeather(lat, lon) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max&hourly=temperature_2m,precipitation_probability&timezone=auto`;
+    const openMeteoPromise = fetchOpenMeteo(lat, lon);
+    const weatherApiPromise = fetchWeatherAPI(lat, lon);
 
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Network error');
-      const data = await res.json();
+    const results = await Promise.allSettled([openMeteoPromise, weatherApiPromise]);
 
-      const processed = {
-        currentTemp: Math.round(data.current.apparent_temperature || data.current.temperature_2m),
-        highTemp: Math.round(data.daily.temperature_2m_max[0]),
-        lowTemp: Math.round(data.daily.temperature_2m_min[0]),
-        rainChance: data.daily.precipitation_probability_max[0] || 0,
-        uv: data.daily.uv_index_max[0] || 0,
-        windKph: Math.round((data.current.wind_speed_10m || 0) * 3.6),
-        isDay: data.current.is_day === 1,
-        hourly: data.hourly.time.slice(0, 24).map((t, i) => ({
-          time: t,
-          temp: Math.round(data.hourly.temperature_2m[i]),
-          rain: data.hourly.precipitation_probability[i] || 0
-        })),
-        condition: determineCondition(data.current.apparent_temperature || data.current.temperature_2m, data.daily.precipitation_probability_max[0], (data.current.wind_speed_10m || 0) * 3.6),
-        timeOfDay: getTimeOfDay(data.current.is_day, new Date().getHours())
-      };
+    const sources = [];
+    if (results[0].status === 'fulfilled') sources.push(results[0].value);
+    if (results[1].status === 'fulfilled') sources.push(results[1].value);
 
-      processed.confidence = processed.rainChance < 20 || processed.rainChance > 80 ? 'High' : processed.rainChance < 50 ? 'Medium' : 'Low';
-
-      localStorage.setItem('lastWeatherData', JSON.stringify(processed));
-      updateUI(processed);
-    } catch (e) {
-      console.error('Fetch error:', e);
+    if (sources.length === 0) {
+      console.error('All sources failed');
       fallbackUI();
+      return;
     }
+
+    // Aggregate
+    const currentTemps = sources.map(s => s.currentTemp).filter(Boolean);
+    const highTemps = sources.map(s => s.highTemp).filter(Boolean);
+    const lowTemps = sources.map(s => s.lowTemp).filter(Boolean);
+    const rainChances = sources.map(s => s.rainChance).filter(Boolean);
+    const uvValues = sources.map(s => s.uv).filter(Boolean);
+    const windKphs = sources.map(s => s.windKph).filter(Boolean);
+
+    const avg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+    const median = arr => {
+      const sorted = [...arr].sort((a, b) => a - b);
+      const mid = Math.floor(sorted.length / 2);
+      return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+    };
+
+    const aggregated = {
+      currentTemp: Math.round(avg(currentTemps.length ? currentTemps : [20])),
+      highTemp: Math.round(avg(highTemps.length ? highTemps : [25])),
+      lowTemp: Math.round(avg(lowTemps.length ? lowTemps : [18])),
+      rainChance: Math.round(avg(rainChances.length ? rainChances : [10])),
+      uv: Math.round(avg(uvValues.length ? uvValues : [5]) * 10) / 10,
+      windKph: Math.round(avg(windKphs.length ? windKphs : [10])),
+      hourly: sources.find(s => s.hourly)?.hourly || [],
+      condition: 'clear',
+      timeOfDay: 'day',
+      sourcesUsed: sources.length
+    };
+
+    // Use Open-Meteo hourly if available
+    if (sources.find(s => s.source === 'openmeteo')) {
+      aggregated.hourly = sources.find(s => s.source === 'openmeteo').hourly;
+    }
+
+    // Condition from aggregated values
+    aggregated.condition = determineCondition(aggregated.currentTemp, aggregated.rainChance, aggregated.windKph);
+
+    // Confidence based on agreement
+    const tempSpread = Math.max(...currentTemps) - Math.min(...currentTemps);
+    const rainSpread = Math.max(...rainChances) - Math.min(...rainChances);
+    if (sources.length >= 2 && tempSpread <= 4 && rainSpread <= 30) {
+      aggregated.confidence = 'High';
+    } else if (sources.length >= 2) {
+      aggregated.confidence = 'Medium';
+    } else {
+      aggregated.confidence = 'Low';
+    }
+
+    // Time of day (prefer Open-Meteo if available)
+    const omSource = sources.find(s => s.source === 'openmeteo');
+    aggregated.timeOfDay = omSource ? omSource.timeOfDay : getTimeOfDay(true, new Date().getHours());
+
+    localStorage.setItem('lastWeatherData', JSON.stringify(aggregated));
+    updateUI(aggregated);
+  }
+
+  async function fetchOpenMeteo(lat, lon) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max&hourly=temperature_2m,precipitation_probability&timezone=auto`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Open-Meteo failed');
+    const data = await res.json();
+
+    return {
+      source: 'openmeteo',
+      currentTemp: data.current.apparent_temperature || data.current.temperature_2m,
+      highTemp: data.daily.temperature_2m_max[0],
+      lowTemp: data.daily.temperature_2m_min[0],
+      rainChance: data.daily.precipitation_probability_max[0] || 0,
+      uv: data.daily.uv_index_max[0] || 0,
+      windKph: (data.current.wind_speed_10m || 0) * 3.6,
+      hourly: data.hourly.time.slice(0, 24).map((t, i) => ({
+        time: t,
+        temp: Math.round(data.hourly.temperature_2m[i]),
+        rain: data.hourly.precipitation_probability[i] || 0
+      })),
+      timeOfDay: getTimeOfDay(data.current.is_day === 1, new Date().getHours())
+    };
+  }
+
+  async function fetchWeatherAPI(lat, lon) {
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}&q=${lat},${lon}&days=1&aqi=no&alerts=no`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('WeatherAPI failed');
+    const data = await res.json();
+
+    const current = data.current;
+    const day = data.forecast.forecastday[0].day;
+
+    return {
+      source: 'weatherapi',
+      currentTemp: current.temp_c,
+      highTemp: day.maxtemp_c,
+      lowTemp: day.mintemp_c,
+      rainChance: day.daily_chance_of_rain,
+      uv: day.uv,
+      windKph: current.wind_kph,
+      timeOfDay: current.is_day ? getTimeOfDay(true, new Date().getHours()) : 'night'
+    };
   }
 
   function determineCondition(temp, rainChance, windKph) {
@@ -140,14 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const tod = data.timeOfDay || 'day';
     const cond = data.condition || 'clear';
 
-    // Reset classes and overlay
     body.className = '';
     body.classList.add(`weather-${cond}`);
     heatOverlay.style.display = 'none';
 
     bgImg.src = `assets/images/bg/${cond}/${tod}.jpg`;
 
-    // Headline with wind blow effect if wind
     let headlineText = `This is ${cond} weather.`;
     if (cond === 'wind') {
       headlineText = headlineText.split('').map((char, i) => 
@@ -164,9 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
     uvValue.innerText = data.uv > 8 ? `High (${data.uv})` : data.uv > 5 ? `Moderate (${data.uv})` : `Low (${data.uv})`;
-    confidenceValue.innerHTML = `${data.confidence} Confidence<br>Probably accurate`;
+    confidenceValue.innerHTML = `${data.confidence} Confidence<br>Based on ${data.sourcesUsed} source${data.sourcesUsed > 1 ? 's' : ''}`;
 
-    // Heat overlay
     if (cond === 'heat') {
       heatOverlay.style.backgroundImage = `url(${bgImg.src})`;
       heatOverlay.style.backgroundPosition = 'center';
@@ -214,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
     homeScreen.classList.add('hidden');
     searchScreen.classList.add('hidden');
     hourlyScreen.classList.remove('hidden');
-    // Hourly data is already in cached processed.hourly if needed
   });
 
   navHome.addEventListener('click', () => {
