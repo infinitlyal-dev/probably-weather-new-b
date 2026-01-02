@@ -441,3 +441,56 @@ body.weather-heat .description {
   .temp { font-size: 5.8rem; }
   .description { font-size: 1.7rem; }
 }
+
+/* NEW STYLES ADDED */
+.save-btn {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 30px;
+  padding: 0.7rem 1.2rem;
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.save-btn:hover {
+  transform: scale(1.05);
+}
+
+.remove-fav {
+  float: right;
+  font-size: 1.4rem;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.search-results-list {
+  list-style: none;
+  width: 80%;
+  max-width: 600px;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.search-results-list li {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.search-results-list li:hover {
+  transform: scale(1.03);
+}
+
+.search-results-list small {
+  opacity: 0.8;
+  display: block;
+  margin-top: 0.4rem;
+}

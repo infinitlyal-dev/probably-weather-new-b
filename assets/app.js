@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rainValue = document.getElementById('rainValue');
   const uvValue = document.getElementById('uvValue');
   const confidenceValue = document.getElementById('confidenceValue');
+  const confidenceEl = document.getElementById('confidence');
   const locationEl = document.getElementById('location');
   const particles = document.getElementById('particles');
   const homeScreen = document.getElementById('home-screen');
@@ -18,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const dailyCards = document.getElementById('dailyCards');
   const searchScreen = document.getElementById('search-screen');
   const hourlyTimeline = document.getElementById('hourlyTimeline');
+  const searchInput = document.getElementById('searchInput');
+  const saveCurrentBtn = document.getElementById('saveCurrent');
   const navHome = document.getElementById('navHome');
   const navHourly = document.getElementById('navHourly');
   const navWeek = document.getElementById('navWeek');
@@ -25,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentLat = -34.104;
   let currentLon = 18.817;
+
+  let favorites = JSON.parse(localStorage.getItem('probablyFavorites') || '[]');
+  let recents = JSON.parse(localStorage.getItem('probablyRecents') || '[]');
 
   const humor = {
     cold: {
@@ -71,8 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  const dummyHourly = new Array(8).fill(0).map((_, i) => ({ time: new Date(Date.now() + i*3*3600000).toISOString(), temp: 25 + i, rain: 10 }));
-  const dummyDaily = new Array(7).fill(0).map((_, i) => ({ date: new Date(Date.now() + i*86400000).toISOString(), high: 30 + i, low: 20 + i, rainChance: 10 + i*5 }));
+  const dummyHourly = new Array(24).fill(0).map((_, i) => ({ time: new Date(Date.now() + i*3600000).toISOString(), temp: 25 + Math.sin(i/4)*5, rain: Math.random()*20 }));
+  const dummyDaily = new Array(7).fill(0).map((_, i) => ({ date: new Date(Date.now() + i*86400000).toISOString(), high: 30 + i*0.5, low: 20 + i*0.5, rainChance: 10 + i*5 }));
 
   const cached = localStorage.getItem('lastWeatherData');
   if (cached) {
@@ -108,8 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function fetchWeather(lat, lon) {
     const url = `/api/weather?latitude=${lat}&longitude=${lon}`;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
       if (!res.ok) throw new Error('Proxy failed');
       const data = await res.json();
 
@@ -135,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })),
         condition: determineCondition(Math.round(data.current.apparent_temperature || data.current.temperature_2m), data.daily.precipitation_probability_max[0] || 0, Math.round((data.current.wind_speed_10m || 0) * 3.6)),
         timeOfDay: getTimeOfDay(data.current.is_day === 1, new Date().getHours()),
-        confidence: 'High'
+        confidence: data.confidence_level || 'Medium'
       };
 
       localStorage.setItem('lastWeatherData', JSON.stringify(processed));
@@ -143,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderHourly(processed.hourly);
       renderWeek(processed.daily);
     } catch (e) {
+      clearTimeout(timeoutId);
       console.error('Fetch error:', e);
       fallbackUI();
     }
@@ -190,7 +201,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
     uvValue.innerText = data.uv > 8 ? `High (${data.uv})` : data.uv > 5 ? `Moderate (${data.uv})` : `Low (${data.uv})`;
-    confidenceValue.innerHTML = `${data.confidence} Confidence<br>Probably accurate`;
+
+    confidenceEl.innerText = `PROBABLY • ${data.confidence.toUpperCase()} CONFIDENCE`;
+    confidenceValue.innerHTML = `${data.confidence} Confidence<br><small>Probably ${data.confidence === 'High' ? 'spot-on' : data.confidence === 'Low' ? 'a bit iffy' : 'decent'}</small>`;
 
     if (cond === 'heat') {
       heatOverlay.style.backgroundImage = `url(${bgImg.src})`;
@@ -199,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     addParticles(cond);
+    saveCurrentBtn.classList.remove('hidden');
   }
 
   function renderHourly(hourly) {
@@ -250,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
       windKph: 15,
       condition: 'clear',
       timeOfDay: 'day',
-      confidence: 'Medium',
+      confidence: 'Low',
       hourly: dummyHourly,
       daily: dummyDaily
     };
@@ -277,13 +291,119 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /* Favorites & Recents */
+  function renderFavorites() {
+    const list = document.getElementById('favoritesList');
+    list.innerHTML = '';
+    favorites.forEach((fav, idx) => {
+      const li = document.createElement('li');
+      li.innerHTML = `${fav.name} <span class="remove-fav" data-idx="${idx}">✕</span>`;
+      li.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-fav')) {
+          favorites.splice(e.target.dataset.idx, 1);
+          localStorage.setItem('probablyFavorites', JSON.stringify(favorites));
+          renderFavorites();
+        } else {
+          loadPlace(fav);
+        }
+      });
+      list.appendChild(li);
+    });
+  }
+
+  function renderRecents() {
+    const list = document.getElementById('recentList');
+    list.innerHTML = '';
+    recents.forEach(recent => {
+      const li = document.createElement('li');
+      li.textContent = recent.name;
+      li.addEventListener('click', () => loadPlace(recent));
+      list.appendChild(li);
+    });
+  }
+
+  function addToRecents(place) {
+    recents = recents.filter(r => !(Math.abs(r.lat - place.lat) < 0.001 && Math.abs(r.lon - place.lon) < 0.001));
+    recents.unshift(place);
+    recents = recents.slice(0, 10);
+    localStorage.setItem('probablyRecents', JSON.stringify(recents));
+    renderRecents();
+  }
+
+  function loadPlace(place) {
+    currentLat = parseFloat(place.lat);
+    currentLon = parseFloat(place.lon);
+    locationEl.innerText = place.name;
+    fetchWeather(currentLat, currentLon);
+    addToRecents(place);
+    showScreen(homeScreen);
+  }
+
+  saveCurrentBtn.addEventListener('click', () => {
+    const name = locationEl.innerText;
+    const newFav = { name, lat: currentLat, lon: currentLon };
+    if (!favorites.some(f => Math.abs(f.lat - newFav.lat) < 0.001 && Math.abs(f.lon - newFav.lon) < 0.001)) {
+      favorites.push(newFav);
+      if (favorites.length > 5) favorites.shift();
+      localStorage.setItem('probablyFavorites', JSON.stringify(favorites));
+      renderFavorites();
+    }
+  });
+
+  /* Search */
+  searchInput.addEventListener('keyup', async (e) => {
+    if (e.key !== 'Enter') return;
+    const query = searchInput.value.trim();
+    if (!query) return;
+
+    const existing = document.querySelector('.search-results-list');
+    if (existing) existing.remove();
+
+    const resultsList = document.createElement('ul');
+    resultsList.className = 'search-results-list';
+    searchInput.after(resultsList);
+    resultsList.innerHTML = '<li>Loading...</li>';
+
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=8&addressdetails=1`);
+      const places = await res.json();
+      resultsList.innerHTML = '';
+      if (places.length === 0) {
+        resultsList.innerHTML = '<li>No places found</li>';
+        return;
+      }
+
+      places.forEach(place => {
+        const li = document.createElement('li');
+        const placeName = place.display_name.split(',')[0].trim();
+        li.innerHTML = `${placeName}<br><small>${place.display_name}</small>`;
+        li.addEventListener('click', () => {
+          const newPlace = { name: placeName, lat: place.lat, lon: place.lon };
+          loadPlace(newPlace);
+          resultsList.remove();
+          searchInput.value = '';
+        });
+        resultsList.appendChild(li);
+      });
+    } catch {
+      resultsList.innerHTML = '<li>Search failed</li>';
+    }
+  });
+
   const showScreen = (screen) => {
     [homeScreen, hourlyScreen, weekScreen, searchScreen].forEach(s => s.classList.add('hidden'));
     screen.classList.remove('hidden');
+    if (screen === searchScreen) {
+      renderFavorites();
+      renderRecents();
+    }
   };
 
   navHome.addEventListener('click', () => showScreen(homeScreen));
   navHourly.addEventListener('click', () => showScreen(hourlyScreen));
   navWeek.addEventListener('click', () => showScreen(weekScreen));
   navSearch.addEventListener('click', () => showScreen(searchScreen));
+
+  renderFavorites();
+  renderRecents();
 });
