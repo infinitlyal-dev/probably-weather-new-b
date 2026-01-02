@@ -113,14 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function fetchWeather(lat, lon) {
-    const url = `/api/weather?latitude=${lat}&longitude=${lon}`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,is_day&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max&timezone=auto&forecast_days=7`;
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
 
     try {
       const res = await fetch(url, { signal: controller.signal });
       clearTimeout(timeoutId);
-      if (!res.ok) throw new Error('Proxy failed');
+      if (!res.ok) throw new Error('Fetch failed');
       const data = await res.json();
 
       const processed = {
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })),
         condition: determineCondition(Math.round(data.current.apparent_temperature || data.current.temperature_2m), data.daily.precipitation_probability_max[0] || 0, Math.round((data.current.wind_speed_10m || 0) * 3.6)),
         timeOfDay: getTimeOfDay(data.current.is_day === 1, new Date().getHours()),
-        confidence: data.confidence_level || 'Medium'
+        confidence: 'High'
       };
 
       localStorage.setItem('lastWeatherData', JSON.stringify(processed));
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
       daily: dummyDaily
     };
     updateUI(data);
-    description.innerText = 'Weather boffins on a quick braai break — here's a probable fallback!';
+    description.innerText = 'Weather boffins on a quick braai break — here\'s a probable fallback!';
     renderHourly(dummyHourly);
     renderWeek(dummyDaily);
   }
@@ -291,7 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* Favorites & Recents */
   function renderFavorites() {
     const list = document.getElementById('favoritesList');
     list.innerHTML = '';
@@ -350,7 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* Search */
   searchInput.addEventListener('keyup', async (e) => {
     if (e.key !== 'Enter') return;
     const query = searchInput.value.trim();
