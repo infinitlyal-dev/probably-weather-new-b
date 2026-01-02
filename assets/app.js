@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dailyCards = document.getElementById('dailyCards');
   const searchScreen = document.getElementById('search-screen');
   const hourlyTimeline = document.getElementById('hourlyTimeline');
-  const navHome = document.getElementById('navHome');
+.const navHome = document.getElementById('navHome');
   const navHourly = document.getElementById('navHourly');
   const navWeek = document.getElementById('navWeek');
   const navSearch = document.getElementById('navSearch');
@@ -71,16 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const dummyHourly = new Array(8).fill(0).map((_, i) => ({ time: new Date(Date.now() + i*3*3600000).toISOString(), temp: 25 + i, rain: 10 }));
+  const dummyDaily = new Array(7).fill(0).map((_, i) => ({ date: new Date(Date.now() + i*86400000).toISOString(), high: 30 + i, low: 20 + i, rainChance: 10 + i*5 }));
+
   const cached = localStorage.getItem('lastWeatherData');
   if (cached) {
     const data = JSON.parse(cached);
     updateUI(data);
+    renderHourly(data.hourly || dummyHourly);
+    renderWeek(data.daily || dummyDaily);
+  } else {
+    fallbackUI();
   }
 
   navigator.geolocation.getCurrentPosition(async (pos) => {
     currentLat = pos.coords.latitude;
     currentLon = pos.coords.longitude;
-    locationEl.innerText = 'Fetching location...';
     const city = await reverseGeocode(currentLat, currentLon);
     locationEl.innerText = city || 'Your Location';
     await fetchWeather(currentLat, currentLon);
@@ -94,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
       const res = await fetch(url);
       const data = await res.json();
-      return data.address.city || data.address.town || 'Your Location';
+      return data.address.city || data.address.town || data.address.village || 'Your Location';
     } catch {
-      return 'Your Location';
+      return null;
     }
   }
 
@@ -118,21 +124,19 @@ document.addEventListener('DOMContentLoaded', () => {
         isDay: data.current.is_day === 1,
         hourly: data.hourly.time.map((t, i) => ({
           time: t,
-          temp: data.hourly.temperature_2m[i],
-          rainProb: data.hourly.precipitation_probability[i],
+          temp: Math.round(data.hourly.temperature_2m[i]),
+          rain: data.hourly.precipitation_probability[i] || 0
         })),
         daily: data.daily.time.map((t, i) => ({
           date: t,
-          high: data.daily.temperature_2m_max[i],
-          low: data.daily.temperature_2m_min[i],
-          rainChance: data.daily.precipitation_probability_max[i],
+          high: Math.round(data.daily.temperature_2m_max[i]),
+          low: Math.round(data.daily.temperature_2m_min[i]),
+          rainChance: data.daily.precipitation_probability_max[i] || 0
         })),
+        condition: determineCondition(Math.round(data.current.apparent_temperature || data.current.temperature_2m), data.daily.precipitation_probability_max[0] || 0, Math.round((data.current.wind_speed_10m || 0) * 3.6)),
+        timeOfDay: getTimeOfDay(data.current.is_day === 1, new Date().getHours()),
+        confidence: 'High'
       };
-
-      processed.confidence = processed.rainChance < 30 || processed.rainChance > 70 ? 'High' : 'Medium';
-
-      processed.condition = determineCondition(processed.feelsLike, processed.rainChance, processed.windKph);
-      processed.timeOfDay = getTimeOfDay(processed.isDay, new Date().getHours());
 
       localStorage.setItem('lastWeatherData', JSON.stringify(processed));
       updateUI(processed);
@@ -190,13 +194,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cond === 'heat') {
       heatOverlay.style.backgroundImage = `url(${bgImg.src})`;
-      heatOverlay.style.backgroundPosition = 'center';
-      heatOverlay.style.backgroundSize = 'cover';
       heatOverlay.style.display = 'block';
       heatOverlay.style.opacity = '0.5';
     }
 
     addParticles(cond);
+  }
+
+  function renderHourly(hourly) {
+    hourlyTimeline.innerHTML = '';
+    (hourly || dummyHourly).forEach((h, i) => {
+      if (i % 3 !== 0) return;
+      const hour = new Date(h.time).getHours().toString().padStart(2, '0') + ':00';
+      const card = document.createElement('div');
+      card.classList.add('hourly-card');
+      card.innerHTML = `
+        <div class="hour-time">${hour}</div>
+        <div class="hour-temp">${h.temp}°</div>
+        <div class="hour-rain">${h.rain}% rain</div>
+      `;
+      hourlyTimeline.appendChild(card);
+    });
+  }
+
+  function renderWeek(daily) {
+    dailyCards.innerHTML = '';
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    (daily || dummyDaily).forEach((day, i) => {
+      const date = new Date(day.date);
+      const dayName = i === 0 ? 'Today' : days[date.getDay()];
+      const dateStr = date.toLocaleDateString('en-ZA', { weekday: 'short', month: 'short', day: 'numeric' });
+      const avgTemp = Math.round((day.high + day.low) / 2);
+      const cond = determineCondition(avgTemp, day.rainChance, 20);
+      const card = document.createElement('div');
+      card.classList.add('daily-card');
+      card.innerHTML = `
+        <div class="day-name">${dayName}</div>
+        <div class="day-date">${dateStr}</div>
+        <div class="day-temp">${day.low}–${day.high}°</div>
+        <div class="day-rain">${day.rainChance < 20 ? 'Unlikely' : day.rainChance < 50 ? 'Possible' : 'Likely'} rain</div>
+        <div class="day-humor">${humor[cond].day || 'Solid day'}</div>
+      `;
+      dailyCards.appendChild(card);
+    });
   }
 
   function fallbackUI() {
@@ -208,17 +248,16 @@ document.addEventListener('DOMContentLoaded', () => {
       rainChance: 10,
       uv: 7,
       windKph: 15,
-      isDay: true,
-      hourly: dummyHourly,
-      daily: dummyDaily,
       condition: 'clear',
       timeOfDay: 'day',
-      confidence: 'Medium'
+      confidence: 'Medium',
+      hourly: dummyHourly,
+      daily: dummyDaily
     };
     updateUI(data);
-    description.innerText = 'Weather boffins on a quick braai break — here's the last known forecast';
-    renderHourly(data.hourly);
-    renderWeek(data.daily);
+    description.innerText = 'Weather boffins on a quick braai break — here's a probable fallback!';
+    renderHourly(dummyHourly);
+    renderWeek(dummyDaily);
   }
 
   function addParticles(condition) {
@@ -239,10 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const showScreen = (screen) => {
-    homeScreen.classList.add('hidden');
-    hourlyScreen.classList.add('hidden');
-    weekScreen.classList.add('hidden');
-    searchScreen.classList.add('hidden');
+    [homeScreen, hourlyScreen, weekScreen, searchScreen].forEach(s => s.classList.add('hidden'));
     screen.classList.remove('hidden');
   };
 
