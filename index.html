@@ -15,37 +15,41 @@
 
   <div id="particles" aria-hidden="true"></div>
 
+  <div id="toast" class="toast"></div>
   <div id="loader" class="loader hidden">Fetching probable weather...</div>
 
   <div class="container">
     <header class="header">
       <div class="brand">
-        <svg id="logo" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 5C12.268 5 6 11.268 6 19C6 26.732 12.268 33 20 33C27.732 33 34 26.732 34 19C34 11.268 27.732 5 20 5ZM20 30C13.373 30 8 24.627 8 18C8 11.373 13.373 6 20 6C26.627 6 32 11.373 32 18C32 24.627 26.627 30 20 30Z" fill="currentColor"/>
-          <path d="M20 10C15.0294 10 11 14.0294 11 19C11 23.9706 15.0294 28 20 28C24.9706 28 29 23.9706 29 19C29 14.0294 24.9706 10 20 10ZM20 26C16.134 26 13 22.866 13 19C13 15.134 16.134 12 20 12C23.866 12 27 15.134 27 19C27 22.866 23.866 26 20 26Z" fill="currentColor" opacity="0.5"/>
-        </svg>
-        Probably Weather
+        <div id="logoCircle" aria-hidden="true"></div>
+        <div class="brand-text">
+          <div class="brand-title">Probably Weather</div>
+          <div id="location" class="brand-location">—</div>
+        </div>
       </div>
-      <div id="location" class="location">Loading...</div>
+
       <div class="tagline">No more Ja-No-Maybe weather. Just Probably.</div>
-      <button id="saveCurrent" class="save-btn hidden">⭐ Save this place</button>
+
+      <button id="saveCurrent" class="save-btn">⭐ Save this place</button>
     </header>
 
     <main id="home-screen" class="main">
-      <div id="confidence" class="confidence">PROBABLY • HIGH CONFIDENCE</div>
+      <div id="confidence" class="confidence">PROBABLY • DECENT AGREEMENT</div>
+      <div id="sources" class="sources">Sources: —</div>
+
       <h1 id="headline" class="headline">Loading...</h1>
       <div id="temp" class="temp">--°</div>
-      <div id="description" class="description">Fetching your probable forecast...</div>
+      <div id="description" class="description">—</div>
     </main>
 
     <section id="hourly-screen" class="hourly-screen hidden">
-      <h2 class="hourly-title">Hourly Forecast</h2>
-      <div id="hourlyTimeline" class="hourly-timeline"></div>
+      <h2 class="screen-title">Hourly Forecast</h2>
+      <div id="hourly-timeline" class="hourly-timeline"></div>
     </section>
 
     <section id="week-screen" class="week-screen hidden">
-      <h2 class="week-title">7-Day Forecast</h2>
-      <div id="dailyCards" class="daily-cards"></div>
+      <h2 class="screen-title">7-Day Forecast</h2>
+      <div id="daily-cards" class="daily-cards"></div>
     </section>
 
     <section id="search-screen" class="search-screen hidden">
@@ -94,34 +98,20 @@
         <div id="uvValue" class="value">--</div>
       </div>
       <div class="card">
-        <div class="label">Confidence:</div>
+        <div class="label">Agreement:</div>
         <div id="confidenceValue" class="value">--</div>
         <div id="confidenceBar" class="confidence-bar"></div>
       </div>
     </aside>
 
-    <nav class="bottom-nav">
-      <button id="navHome" class="nav-item active">Home</button>
-      <button id="navHourly" class="nav-item">Hourly</button>
-      <button id="navWeek" class="nav-item">Week</button>
-      <button id="navSearch" class="nav-item">Search</button>
-      <button id="navSettings" class="nav-item">Settings</button>
+    <nav class="nav">
+      <button id="navHome">Home</button>
+      <button id="navHourly">Hourly</button>
+      <button id="navWeek">Week</button>
+      <button id="navSearch">Search</button>
+      <button id="navSettings">Settings</button>
     </nav>
   </div>
-
-  <div id="toast" class="toast hidden"></div>
-
-  <!-- Heat haze SVG filter -->
-  <svg width="0" height="0" style="position: absolute; pointer-events: none;">
-    <defs>
-      <filter id="heatHaze" x="-100%" y="-100%" width="300%" height="300%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3">
-          <animate attributeName="baseFrequency" values="0.02;0.03;0.02" dur="15s" repeatCount="indefinite"/>
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-    </defs>
-  </svg>
 
   <div id="heatOverlay"></div>
 
