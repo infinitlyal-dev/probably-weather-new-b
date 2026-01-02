@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const dailyCards = document.getElementById('dailyCards');
   const searchScreen = document.getElementById('search-screen');
   const hourlyTimeline = document.getElementById('hourlyTimeline');
+  const searchInput = document.getElementById('searchInput');
+  const favoritesList = document.getElementById('favoritesList');
+  const recentList = document.getElementById('recentList');
   const navHome = document.getElementById('navHome');
   const navHourly = document.getElementById('navHourly');
   const navWeek = document.getElementById('navWeek');
@@ -26,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentLat = -34.104;
   let currentLon = 18.817;
   let currentData = null;
+  let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+  let recents = JSON.parse(localStorage.getItem('recents') || '[]');
 
   const humor = {
     cold: { dawn: 'Chilly start—coffee and blankets time!', day: 'Time to build a snowman', dusk: 'Freezing evening—rug up tight!', night: 'Polar bear weather—stay warm!' },
@@ -65,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout to force fallback if slow
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
       const res = await fetch(url, { signal: controller.signal });
       clearTimeout(timeoutId);
       if (!res.ok) throw new Error('Fetch failed');
@@ -196,6 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function fallbackUI() {
+    locationEl.innerText = 'Strand, WC (fallback)';
     currentData = {
       currentTemp: 24,
       highTemp: 28,
@@ -224,4 +230,42 @@ document.addEventListener('DOMContentLoaded', () => {
   navHourly.addEventListener('click', () => showScreen(hourlyScreen));
   navWeek.addEventListener('click', () => showScreen(weekScreen));
   navSearch.addEventListener('click', () => showScreen(searchScreen));
+
+  // Basic search - add real Nominatim
+  searchInput.addEventListener('keyup', async (e) => {
+    if (e.key === 'Enter' && searchInput.value) {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchInput.value)}`;
+      try {
+        const res = await fetch(url);
+        const places = await res.json();
+        recentList.innerHTML = '';
+        places.forEach(p => {
+          const li = document.createElement('li');
+          li.innerText = p.display_name;
+          li.onclick = () => {
+            currentLat = p.lat;
+            currentLon = p.lon;
+            locationEl.innerText = p.display_name.split(',')[0];
+            fetchWeather(currentLat, currentLon);
+            showScreen(homeScreen);
+            recents.push(p.display_name);
+            localStorage.setItem('recents', JSON.stringify(recents));
+          };
+          recentList.appendChild(li);
+        });
+      } catch {}
+    }
+  });
+
+  // Favorites (simple add from search for now)
+  function loadFavorites() {
+    favoritesList.innerHTML = '';
+    favorites.forEach(f => {
+      const li = document.createElement('li');
+      li.innerText = f;
+      favoritesList.appendChild(li);
+    });
+  }
+
+  loadFavorites();
 });
