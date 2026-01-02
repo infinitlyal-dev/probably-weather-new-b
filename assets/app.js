@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const heatOverlay = document.getElementById('heatOverlay');
   const body = document.body;
   const headline = document.getElementById('headline');
-  const headlineIcon = document.getElementById('headline-icon');
   const temp = document.getElementById('temp');
   const description = document.getElementById('description');
   const extremeLabel = document.getElementById('extremeLabel');
@@ -41,16 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let recents = JSON.parse(localStorage.getItem('probablyRecents') || '[]');
 
   const humor = {
-    cold: 'Time to build a snowman',
-    heat: 'Frying an egg is a real option',
-    storm: 'Better stay indoors',
-    rain: 'The clouds are crying like NZ at the \'23 World Cup!',
-    wind: 'Gale force—your bakkie might fly!',
-    fog: 'Misty mayhem—can\'t see your braai from the stoep!',
-    clear: 'Braai weather, boet!'
+    cold: ['Time to build a snowman', 'Polar bear weather—stay warm!', 'Freezing evening—rug up tight!', 'Chilly start—coffee and blankets time!'],
+    heat: ['Frying an egg is a real option', 'Sizzling night—fan on full!', 'Hot evening—ice cream time!', 'Warm start—early braai?'],
+    storm: ['Better stay indoors', 'Thunder\'s rolling—don\'t get zapped!', 'Evening storm—lights out?', 'Stormy dawn—stay in bed!'],
+    rain: ['The clouds are crying like NZ at the \'23 World Cup!', 'Evening downpour—cozy inside!', 'Night rain—sleep to the pitter-patter', 'Rainy morning—lazy day ahead'],
+    wind: ['Gale force—your bakkie might fly!', 'Evening gusts—secure the bins!', 'Howling night—close the windows', 'Windy dawn—hairdo beware!'],
+    fog: ['Misty mayhem—can\'t see your braai from the stoep!', 'Evening fog—early lights on', 'Foggy night—watch your step!', 'Foggy dawn—ghostly start'],
+    clear: ['Braai weather, boet!', 'Clear evening—starry night coming', 'Clear night—perfect for stargazing', 'Clear dawn—beautiful sunrise ahead']
   };
-
-  const icons = { cold: '❄️', heat: '🔥', storm: '⚡', rain: '🌧️', wind: '💨', fog: '🌫️', clear: '☀️' };
 
   const dummyHourly = new Array(24).fill(0).map((_, i) => ({ time: new Date(Date.now() + i*3600000).toISOString(), temp: 25 + Math.sin(i/4)*5, rain: Math.random()*20 }));
   const dummyDaily = new Array(7).fill(0).map((_, i) => ({ date: new Date(Date.now() + i*86400000).toISOString(), high: 30 + i*0.5, low: 20 + i*0.5, rainChance: 10 + i*5 }));
@@ -94,29 +91,32 @@ document.addEventListener('DOMContentLoaded', () => {
       const owmUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=a56be2054510bc8fed22998c68972876&units=metric`;
       const waUrl = `https://api.weatherapi.com/v1/forecast.json?key=a98886bfef6c4dcd8bf111514251512&q=${lat},${lon}&days=7`;
 
-      const [omRes, owmRes, waRes] = await Promise.all([fetch(omUrl), fetch(owmRes), fetch(waUrl)].map(p => p.catch(() => null)));
-      const omData = omRes && omRes.ok ? await omRes.json() : null;
-      const owmData = owmRes && owmRes.ok ? await owmRes.json() : null;
-      const waData = waRes && waRes.ok ? await waRes.json() : null;
+      const responses = await Promise.allSettled([
+        fetch(omUrl).then(res => res.json()),
+        fetch(owmUrl).then(res => res.json()),
+        fetch(waUrl).then(res => res.json())
+      ]);
 
-      const activeSources = [omData, owmData, waData].filter(Boolean).length;
+      const dataList = responses.filter(r => r.status === 'fulfilled').map(r => r.value);
+
+      const activeSources = dataList.length;
       if (activeSources === 0) throw new Error('No sources available');
 
       function median(arr) {
-        const sorted = arr.filter(v => v != null).sort((a, b) => a - b);
+        const sorted = arr.filter(v => v !== undefined).sort((a, b) => a - b);
         const mid = Math.floor(sorted.length / 2);
         return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
       }
 
-      const temps = [omData?.current.temperature_2m, owmData?.list[0].main.temp, waData?.current.temp_c];
-      const highs = [omData?.daily.temperature_2m_max[0], owmData?.list[0].main.temp_max, waData?.forecast.forecastday[0].day.maxtemp_c];
-      const lows = [omData?.daily.temperature_2m_min[0], owmData?.list[0].main.temp_min, waData?.forecast.forecastday[0].day.mintemp_c];
-      const rainProbs = [omData?.daily.precipitation_probability_max[0], owmData?.list[0].rain?.['3h'] || 0, waData?.forecast.forecastday[0].day.daily_chance_of_rain];
-      const uv = median([omData?.daily.uv_index_max[0], waData?.forecast.forecastday[0].day.uv]);
-      const windKph = median([omData?.current.wind_speed_10m * 3.6, owmData?.list[0].wind.speed * 3.6, waData?.current.wind_kph]);
+      const temps = dataList.map(d => d.current?.temperature_2m || d.list?.[0].main.temp || d.current.temp_c);
+      const highs = dataList.map(d => d.daily?.temperature_2m_max[0] || d.list?.[0].main.temp_max || d.forecast.forecastday[0].day.maxtemp_c);
+      const lows = dataList.map(d => d.daily?.temperature_2m_min[0] || d.list?.[0].main.temp_min || d.forecast.forecastday[0].day.mintemp_c);
+      const rainProbs = dataList.map(d => d.daily?.precipitation_probability_max[0] || d.list?.[0].pop * 100 || d.forecast.forecastday[0].day.daily_chance_of_rain);
+      const uv = median(dataList.map(d => d.daily?.uv_index_max[0] || d.forecast.forecastday[0].day.uv));
+      const windKph = median(dataList.map(d => d.current.wind_speed_10m * 3.6 || d.list?.[0].wind.speed * 3.6 || d.current.wind_kph));
 
-      const tempRange = Math.max(...temps.filter(v => v != null)) - Math.min(...temps.filter(v => v != null));
-      const rainRange = Math.max(...rainProbs.filter(v => v != null)) - Math.min(...rainProbs.filter(v => v != null));
+      const tempRange = Math.max(...temps) - Math.min(...temps);
+      const rainRange = Math.max(...rainProbs) - Math.min(...rainProbs);
       const confidence = activeSources >= 3 && tempRange <= 3 && rainRange <= 20 ? 'High' : activeSources >= 2 ? 'Medium' : 'Low';
 
       const processed = {
@@ -126,11 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
         uv: Math.round(uv),
         windKph: Math.round(windKph),
         condition: determineCondition(median(temps), median(rainProbs), windKph),
-        timeOfDay: getTimeOfDay(omData?.current.is_day === 1 || waData?.current.is_day === 1, new Date().getHours()),
+        timeOfDay: getTimeOfDay(dataList[0]?.current.is_day === 1, new Date().getHours()),
         confidence,
         activeSources,
-        hourly: omData?.hourly.time.map((t, i) => ({ time: t, temp: Math.round(median([omData.hourly.temperature_2m[i], waData.forecast.forecastday[Math.floor(i/24)].hour[i%24].temp_c])), rain: Math.round(median([omData.hourly.precipitation_probability[i], waData.forecast.forecastday[Math.floor(i/24)].hour[i%24].chance_of_rain])) })) || dummyHourly,
-        daily: omData?.daily.time.map((t, i) => ({ date: t, high: Math.round(median([omData.daily.temperature_2m_max[i], waData.forecast.forecastday[i].day.maxtemp_c])), low: Math.round(median([omData.daily.temperature_2m_min[i], waData.forecast.forecastday[i].day.mintemp_c])), rainChance: Math.round(median([omData.daily.precipitation_probability_max[i], waData.forecast.forecastday[i].day.daily_chance_of_rain])) })) || dummyDaily
+        hourly: dataList[0]?.hourly?.time.map((t, i) => ({ time: t, temp: Math.round(median(dataList.map(d => d.hourly?.temperature_2m[i] || d.forecast.forecastday[Math.floor(i/24)].hour[i%24].temp_c))), rain: Math.round(median(dataList.map(d => d.hourly?.precipitation_probability[i] || d.forecast.forecastday[Math.floor(i/24)].hour[i%24].chance_of_rain))) })) || dummyHourly,
+        daily: dataList[0]?.daily?.time.map((t, i) => ({ date: t, high: Math.round(median(dataList.map(d => d.daily?.temperature_2m_max[i] || d.forecast.forecastday[i].day.maxtemp_c))), low: Math.round(median(dataList.map(d => d.daily?.temperature_2m_min[i] || d.forecast.forecastday[i].day.mintemp_c))), rainChance: Math.round(median(dataList.map(d => d.daily?.precipitation_probability_max[i] || d.forecast.forecastday[i].day.daily_chance_of_rain))) })) || dummyDaily
       };
 
       localStorage.setItem('lastWeatherData', JSON.stringify(processed));
@@ -151,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (windKph >= 45) return 'wind';
     if (temp <= 12) return 'cold';
     if (temp >= 32) return 'heat';
-    if (rainChance >= 20 || windKph >= 30) return 'fog';
     return 'clear';
   }
 
@@ -172,11 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     bgImg.src = `assets/images/bg/${cond}/${tod}.jpg`;
 
-    headlineIcon.innerText = icons[cond];
     headline.innerHTML = `This is ${cond}.`;
-    temp.innerText = `${data.lowTemp}—${data.highTemp}°`;
-    description.innerText = humor[cond] + (cond === 'clear' || cond === 'heat' ? '<span class="braai-icon">🍖</span>' : '');
-    extremeValue.innerText = cond.toUpperCase() + ` ${data.lowTemp}—${data.highTemp}°`;
+    temp.innerText = `${data.lowTemp}–${data.highTemp}°`;
+    description.innerHTML = humor[cond][Math.floor(Math.random() * humor[cond].length)] + (cond === 'clear' || cond === 'heat' ? '<span class="braai-icon">🍖</span>' : '');
+    extremeValue.innerText = `${cond.toUpperCase()} ${data.lowTemp}–${data.highTemp}°`;
 
     rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
     rainValue.parentElement.classList.add(data.rainChance < 20 ? 'low' : data.rainChance < 50 ? 'medium' : 'high');
@@ -185,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
     uvValue.parentElement.classList.add(data.uv > 8 ? 'high' : data.uv > 5 ? 'medium' : 'low');
 
     confidenceEl.innerText = `PROBABLY • ${data.confidence.toUpperCase()} CONFIDENCE`;
-    confidenceValue.innerHTML = `${data.confidence} <br><small>Based on ${data.activeSources} forecasts →</small>`;
-    confidenceBar.style.width = `${(data.activeSources / 3 * 100)}%`;
+    confidenceValue.innerHTML = `${data.confidence} <br><small>Based on ${data.activeSources} sources →</small>`;
+    confidenceBar.style.width = `${(data.activeSources / 3) * 100}%`;
 
     if (cond === 'heat') {
       heatOverlay.style.backgroundImage = `url(${bgImg.src})`;
@@ -198,5 +196,222 @@ document.addEventListener('DOMContentLoaded', () => {
     saveCurrentBtn.classList.remove('hidden');
   }
 
-  // ... (keep renderHourly, renderWeek, fallbackUI, addParticles, renderFavorites, renderRecents, addToRecents, loadPlace, saveCurrentBtn listener with toast, manageFavorites, searchInput, showScreen, settings handlers, sw.js registration) ...
+  function renderHourly(hourly) {
+    hourlyTimeline.innerHTML = '';
+    (hourly || dummyHourly).forEach((h, i) => {
+      const date = new Date(h.time);
+      const dayLabel = i < 24 ? 'Today' : 'Tomorrow';
+      const hour = date.getHours().toString().padStart(2, '0') + ':00';
+      const card = document.createElement('div');
+      card.classList.add('hourly-card');
+      card.innerHTML = `
+        <div class="hour-time">${dayLabel} ${hour}</div>
+        <div class="hour-temp">${h.temp}°</div>
+        <div class="hour-rain">${h.rain}% rain</div>
+      `;
+      hourlyTimeline.appendChild(card);
+    });
+  }
+
+  function renderWeek(daily) {
+    dailyCards.innerHTML = '';
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    (daily || dummyDaily).forEach((day, i) => {
+      const date = new Date(day.date);
+      const dayName = i === 0 ? 'Today' : days[date.getDay()];
+      const dateStr = date.toLocaleDateString('en-ZA', { weekday: 'short', month: 'short', day: 'numeric' });
+      const avgTemp = Math.round((day.high + day.low) / 2);
+      const cond = determineCondition(avgTemp, day.rainChance, 20);
+      const card = document.createElement('div');
+      card.classList.add('daily-card');
+      card.innerHTML = `
+        <div class="day-name">${dayName}</div>
+        <div class="day-date">${dateStr}</div>
+        <div class="day-temp">${day.low}–${day.high}°</div>
+        <div class="day-rain">${day.rainChance < 20 ? 'Unlikely' : day.rainChance < 50 ? 'Possible' : 'Likely'} rain</div>
+        <div class="day-humor">${humor[cond][Math.floor(Math.random() * humor[cond].length)]}</div>
+      `;
+      dailyCards.appendChild(card);
+    });
+  }
+
+  function fallbackUI() {
+    locationEl.innerText = 'Strand, WC (fallback)';
+    const data = {
+      lowTemp: 20,
+      highTemp: 25,
+      rainChance: 10,
+      uv: 7,
+      windKph: 15,
+      condition: 'clear',
+      timeOfDay: 'day',
+      confidence: 'Low',
+      activeSources: 1,
+      hourly: dummyHourly,
+      daily: dummyDaily
+    };
+    updateUI(data);
+    description.innerHTML = 'Weather boffins on a quick braai break — here\'s a probable fallback!';
+    renderHourly(dummyHourly);
+    renderWeek(dummyDaily);
+  }
+
+  function addParticles(condition) {
+    particles.innerHTML = '';
+    if (!['cold', 'wind', 'rain', 'storm', 'heat'].includes(condition)) return;
+
+    const count = condition === 'wind' ? 25 : condition === 'heat' ? 20 : condition === 'storm' ? 30 : 15;
+
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.top = Math.random() * 100 + '%';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (Math.random() * 5 + (condition === 'wind' ? 3 : condition === 'storm' ? 2 : 8)) + 's';
+      p.style.animationDelay = Math.random() * 5 + 's';
+      particles.appendChild(p);
+    }
+  }
+
+  function renderFavorites() {
+    const list = document.getElementById('favoritesList');
+    list.innerHTML = '';
+    favorites.forEach((fav, idx) => {
+      const li = document.createElement('li');
+      li.innerHTML = `${fav.name} <span class="remove-fav" data-idx="${idx}">✕</span>`;
+      li.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-fav')) {
+          favorites.splice(e.target.dataset.idx, 1);
+          localStorage.setItem('probablyFavorites', JSON.stringify(favorites));
+          renderFavorites();
+        } else {
+          loadPlace(fav);
+        }
+      });
+      list.appendChild(li);
+    });
+  }
+
+  function renderRecents() {
+    const list = document.getElementById('recentList');
+    list.innerHTML = '';
+    recents.forEach(recent => {
+      const li = document.createElement('li');
+      li.textContent = recent.name;
+      li.addEventListener('click', () => loadPlace(recent));
+      list.appendChild(li);
+    });
+  }
+
+  function addToRecents(place) {
+    recents = recents.filter(r => !(Math.abs(r.lat - place.lat) < 0.001 && Math.abs(r.lon - place.lon) < 0.001));
+    recents.unshift(place);
+    recents = recents.slice(0, 10);
+    localStorage.setItem('probablyRecents', JSON.stringify(recents));
+    renderRecents();
+  }
+
+  function loadPlace(place) {
+    currentLat = parseFloat(place.lat);
+    currentLon = parseFloat(place.lon);
+    locationEl.innerText = place.name;
+    fetchWeather(currentLat, currentLon);
+    showScreen(homeScreen);
+  }
+
+  saveCurrentBtn.addEventListener('click', () => {
+    const name = locationEl.innerText;
+    const newFav = { name, lat: currentLat, lon: currentLon };
+    if (!favorites.some(f => Math.abs(f.lat - newFav.lat) < 0.001 && Math.abs(f.lon - newFav.lon) < 0.001)) {
+      favorites.push(newFav);
+      if (favorites.length > 5) favorites.shift();
+      localStorage.setItem('probablyFavorites', JSON.stringify(favorites));
+      renderFavorites();
+      toast.innerText = 'Saved!';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+  });
+
+  manageFavorites.addEventListener('click', () => {
+    const isEdit = manageFavorites.textContent === 'Done';
+    manageFavorites.textContent = isEdit ? 'Manage favorites' : 'Done';
+    document.querySelectorAll('.remove-fav').forEach(el => el.style.display = isEdit ? 'none' : 'inline');
+  });
+
+  searchInput.addEventListener('keyup', async (e) => {
+    if (e.key !== 'Enter') return;
+    const query = searchInput.value.trim();
+    if (!query) return;
+
+    const existing = document.querySelector('.search-results-list');
+    if (existing) existing.remove();
+
+    const resultsList = document.createElement('ul');
+    resultsList.className = 'search-results-list';
+    searchInput.after(resultsList);
+    resultsList.innerHTML = '<li>Loading...</li>';
+
+    try {
+      const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=8&addressdetails=1`);
+      const places = await res.json();
+      resultsList.innerHTML = '';
+      if (places.length === 0) {
+        resultsList.innerHTML = '<li>No places found</li>';
+        return;
+      }
+
+      places.forEach(place => {
+        const li = document.createElement('li');
+        const placeName = place.display_name.split(',')[0].trim();
+        li.innerHTML = `${placeName}<br><small>${place.display_name}</small>`;
+        li.addEventListener('click', () => {
+          locationEl.innerText = placeName;
+          currentLat = place.lat;
+          currentLon = place.lon;
+          fetchWeather(currentLat, currentLon);
+          addToRecents({ name: placeName, lat: place.lat, lon: place.lon });
+          resultsList.remove();
+          searchInput.value = '';
+          showScreen(homeScreen);
+        });
+        resultsList.appendChild(li);
+      });
+    } catch {
+      resultsList.innerHTML = '<li>Search failed</li>';
+    }
+  });
+
+  const showScreen = (screen) => {
+    [homeScreen, hourlyScreen, weekScreen, searchScreen, settingsScreen].forEach(s => s.classList.add('hidden'));
+    screen.classList.remove('hidden');
+  };
+
+  navHome.addEventListener('click', () => showScreen(homeScreen));
+  navHourly.addEventListener('click', () => showScreen(hourlyScreen));
+  navWeek.addEventListener('click', () => showScreen(weekScreen));
+  navSearch.addEventListener('click', () => showScreen(searchScreen));
+  navSettings.addEventListener('click', () => showScreen(settingsScreen));
+
+  // Settings
+  document.getElementById('units').value = units;
+  document.getElementById('units').addEventListener('change', (e) => {
+    units = e.target.value;
+    localStorage.setItem('units', units);
+    fetchWeather(currentLat, currentLon);
+  });
+
+  document.getElementById('theme').value = theme;
+  document.getElementById('theme').addEventListener('change', (e) => {
+    theme = e.target.value;
+    localStorage.setItem('theme', theme);
+    // Apply theme
+  });
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+
+  renderFavorites();
+  renderRecents();
 });

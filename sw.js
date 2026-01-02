@@ -5,7 +5,6 @@ self.addEventListener('install', (e) => {
         '/index.html',
         '/assets/app.css',
         '/assets/app.js',
-        // Add BGs if path known
       ]))
     );
   });

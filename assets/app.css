@@ -26,6 +26,23 @@ body.weather-wind .confidence, body.weather-wind .card .label { color: #E3E9ED; 
 body.weather-fog .confidence, body.weather-fog .card .label { color: #B0BEC5; }
 body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D; }
 
+body.weather-cold #headline { color: #00BFFF; text-shadow: 0 0 20px #00BFFF; }
+body.weather-heat #headline { color: #FF4500; text-shadow: 0 0 20px #FF4500; }
+body.weather-storm #headline { color: #8A2BE2; text-shadow: 0 0 20px #8A2BE2; }
+body.weather-rain #headline { color: #1E90FF; text-shadow: 0 0 20px #1E90FF; }
+body.weather-wind #headline { color: #A9A9A9; text-shadow: 0 0 20px #A9A9A9; }
+body.weather-fog #headline { color: #808080; text-shadow: 0 0 20px #808080; }
+body.weather-clear #headline { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
+
+#headline {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px currentColor; }
+  to { text-shadow: 0 0 30px currentColor; }
+}
+
 #bg {
   position: fixed;
   inset: 0;
@@ -202,12 +219,6 @@ body.weather-heat .description {
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0.5px;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px currentColor; }
-  to { text-shadow: 0 0 30px currentColor; }
 }
 
 .temp {
@@ -559,20 +570,21 @@ body.weather-heat .description {
 .settings-screen {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 2rem;
+  gap: 2rem;
+  align-items: center;
 }
 
 .settings-title {
   font-size: 2rem;
-  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .settings-option {
+  width: 80%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%;
 }
 
 .settings-option label {
@@ -581,8 +593,9 @@ body.weather-heat .description {
 
 .settings-option select {
   padding: 1rem;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.1);
-  color: inherit;
-  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 30px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  cursor: pointer;
 }
