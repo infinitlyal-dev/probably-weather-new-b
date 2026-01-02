@@ -33,7 +33,7 @@
 
     <main id="home-screen" class="main">
       <div id="confidence" class="confidence">PROBABLY • HIGH CONFIDENCE</div>
-      <h1 id="headline" class="headline">Loading...</h1>
+      <h1 id="headline" class="headline"><span id="headline-icon"></span> Loading...</h1>
       <div id="temp" class="temp">--°</div>
       <div id="description" class="description">Fetching your probable forecast...</div>
     </main>
@@ -78,19 +78,12 @@
           <option value="dark">Dark</option>
         </select>
       </div>
-      <div class="settings-option">
-        <label for="api">Forecast Source:</label>
-        <select id="api">
-          <option value="single">Single (Fast)</option>
-          <option value="multi">Multi (Probable)</option>
-        </select>
-      </div>
     </section>
 
     <aside class="sidebar">
       <div class="card">
         <div id="extremeLabel" class="label">Today's extreme:</div>
-        <div id="extremeValue" class="value">--°</div>
+        <div id="extremeValue" class="value">--</div>
       </div>
       <div class="card">
         <div class="label">Rain:</div>
@@ -103,15 +96,16 @@
       <div class="card">
         <div class="label">Confidence:</div>
         <div id="confidenceValue" class="value">--</div>
+        <div id="confidenceBar" class="confidence-bar"></div>
       </div>
     </aside>
 
     <nav class="bottom-nav">
-      <button id="navHome" class="nav-item active">🏠 Home</button>
-      <button id="navHourly" class="nav-item">⏰ Hourly</button>
-      <button id="navWeek" class="nav-item">📅 Week</button>
-      <button id="navSearch" class="nav-item">🔍 Search</button>
-      <button id="navSettings" class="nav-item">⚙️ Settings</button>
+      <button id="navHome" class="nav-item active">Home</button>
+      <button id="navHourly" class="nav-item">Hourly</button>
+      <button id="navWeek" class="nav-item">Week</button>
+      <button id="navSearch" class="nav-item">Search</button>
+      <button id="navSettings" class="nav-item">Settings</button>
     </nav>
   </div>
 
@@ -130,6 +124,8 @@
   </svg>
 
   <div id="heatOverlay"></div>
+
+  <footer class="footer">Data from OpenWeatherMap & WeatherAPI.com</footer>
 
   <script src="assets/app.js"></script>
 </body>

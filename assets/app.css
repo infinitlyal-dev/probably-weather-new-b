@@ -202,6 +202,12 @@ body.weather-heat .description {
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0.5px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px currentColor; }
+  to { text-shadow: 0 0 30px currentColor; }
 }
 
 .temp {
@@ -292,7 +298,6 @@ body.weather-heat .description {
   gap: 1rem;
   justify-content: flex-start;
   padding: 1rem 0;
-  box-shadow: inset 10px 0 10px -10px rgba(0,0,0,0.5), inset -10px 0 10px -10px rgba(0,0,0,0.5);
 }
 
 .hourly-card {
@@ -321,15 +326,6 @@ body.weather-heat .description {
 
 .hour-rain {
   font-size: 1rem;
-  color: #4CAF50; /* green <20% */
-}
-
-.hour-rain.medium {
-  color: #FFC107; /* yellow */
-}
-
-.hour-rain.high {
-  color: #F44336; /* red */
 }
 
 .daily-cards {
@@ -337,7 +333,6 @@ body.weather-heat .description {
   overflow-x: auto;
   gap: 1.5rem;
   padding: 1rem 0;
-  box-shadow: inset 10px 0 10px -10px rgba(0,0,0,0.5), inset -10px 0 10px -10px rgba(0,0,0,0.5);
 }
 
 .daily-card {
@@ -429,10 +424,6 @@ body.weather-heat .description {
   font-size: 1.2rem;
   cursor: pointer;
   transition: transform 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  justify-content: center;
 }
 
 #favoritesList li:hover, #recentList li:hover {
@@ -449,44 +440,56 @@ body.weather-heat .description {
   cursor: pointer;
 }
 
+@media (max-width: 1023px) {
+  .container { grid-template-columns: 1fr; grid-template-areas: "header" "main" "sidebar" "nav"; max-width: none; }
+  .sidebar { padding: 1.5rem; }
+  .header { align-items: flex-start; }
+  .headline { font-size: 4.2rem; }
+  .temp { font-size: 5.8rem; }
+  .description { font-size: 1.7rem; }
+}
+
+.save-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1rem;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
 .remove-fav {
-  display: none; /* Shown in edit mode */
+  float: right;
+  font-size: 1.4rem;
+  opacity: 0.6;
 }
 
-.mini-icon, .mini-temp {
-  font-size: 1.2rem;
-}
-
-.settings-screen {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.settings-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.settings-option {
+.search-results-list {
+  list-style: none;
   width: 80%;
   max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.settings-option label {
-  font-size: 1.2rem;
-}
-
-.settings-option select {
+.search-results-list li {
+  background: rgba(255,255,255,0.1);
   padding: 1rem;
   border-radius: 20px;
-  background: rgba(255,255,255,0.2);
-  color: white;
-  border: none;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.search-results-list li:hover {
+  transform: scale(1.05);
+}
+
+.search-results-list small {
+  opacity: 0.8;
+  display: block;
+  margin-top: 0.4rem;
 }
 
 .loader {
@@ -519,22 +522,67 @@ body.weather-heat .description {
   opacity: 1;
 }
 
-body.weather-clear .particle, body.weather-heat .particle {
-  background: rgba(255, 255, 0, 0.3);
-  animation: shimmer linear infinite;
+.confidence-bar {
+  height: 4px;
+  background: currentColor;
+  opacity: 0.5;
+  margin-top: 5px;
+  border-radius: 2px;
+  transition: width 0.3s;
 }
 
-@keyframes shimmer {
-  0% { opacity: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; }
+.card.high {
+  border: 1px solid rgba(255, 0, 0, 0.3);
 }
 
-@media (max-width: 1023px) {
-  .container { grid-template-columns: 1fr; grid-template-areas: "header" "main" "sidebar" "nav"; max-width: none; }
-  .sidebar { padding: 1.5rem; }
-  .header { align-items: flex-start; }
-  .headline { font-size: 4.2rem; }
-  .temp { font-size: 5.8rem; }
-  .description { font-size: 1.7rem; }
+.card.medium {
+  border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+.card.low {
+  border: 1px solid rgba(0, 128, 0, 0.3);
+}
+
+.braai-icon {
+  margin-left: 5px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 5px;
+  right: 10px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+  color: currentColor;
+}
+
+.settings-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.settings-title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.settings-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.settings-option label {
+  font-size: 1.2rem;
+}
+
+.settings-option select {
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  color: inherit;
+  border: 1px solid rgba(255,255,255,0.2);
 }
