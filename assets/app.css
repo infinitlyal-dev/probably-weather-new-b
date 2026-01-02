@@ -599,3 +599,8 @@ body.weather-heat .description {
   color: white;
   cursor: pointer;
 }
+/* Fix: Firefox/Windows dropdown options can become invisible (white on white) */
+select option {
+  color: #111;
+  background: #fff;
+}
