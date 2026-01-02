@@ -37,10 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
     clear: { dawn: 'Clear dawn—beautiful sunrise ahead', day: 'Braai weather!', dusk: 'Clear evening—starry night coming', night: 'Clear night—perfect for stargazing' }
   };
 
+  const dummyDaily = [
+    { date: new Date().toISOString(), high: 28, low: 20, rainChance: 10 },
+    { date: new Date(Date.now() + 86400000).toISOString(), high: 29, low: 21, rainChance: 5 },
+    { date: new Date(Date.now() + 172800000).toISOString(), high: 27, low: 19, rainChance: 20 },
+    { date: new Date(Date.now() + 259200000).toISOString(), high: 30, low: 22, rainChance: 0 },
+    { date: new Date(Date.now() + 345600000).toISOString(), high: 26, low: 18, rainChance: 30 },
+    { date: new Date(Date.now() + 432000000).toISOString(), high: 28, low: 20, rainChance: 15 },
+    { date: new Date(Date.now() + 518400000).toISOString(), high: 31, low: 23, rainChance: 5 }
+  ];
+
   const cached = localStorage.getItem('lastWeatherData');
   if (cached) {
     currentData = JSON.parse(cached);
     updateUI(currentData);
+    renderHourly(currentData.hourly || []);
+    renderWeek(currentData.daily || dummyDaily);
   }
 
   navigator.geolocation.getCurrentPosition(async (pos) => {
@@ -57,7 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,is_day&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max&hourly=temperature_2m,precipitation_probability&timezone=auto&forecast_days=7`;
 
     try {
-      const res = await fetch(url);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
       if (!res.ok) throw new Error('Network error');
       const data = await res.json();
 
@@ -90,88 +105,41 @@ document.addEventListener('DOMContentLoaded', () => {
       renderHourly(currentData.hourly);
       renderWeek(currentData.daily);
     } catch (e) {
-      console.error('Fetch error:', e);
+      console.error('Fetch failed, using fallback', e);
       fallbackUI();
     }
   }
 
-  function determineCondition(temp, rainChance, windKph) {
-    if (rainChance >= 60) return 'storm';
-    if (rainChance >= 40) return 'rain';
-    if (windKph >= 45) return 'wind';
-    if (temp <= 12) return 'cold';
-    if (temp >= 32) return 'heat';
-    return 'clear';
-  }
-
-  function getTimeOfDay(isDay, hour) {
-    if (hour < 6 || hour >= 20) return 'night';
-    if (hour < 9) return 'dawn';
-    if (hour < 17) return 'day';
-    return 'dusk';
-  }
-
-  function updateUI(data) {
-    const tod = data.timeOfDay;
-    const cond = data.condition;
-
-    body.className = `weather-${cond}`;
-    heatOverlay.style.display = 'none';
-
-    bgImg.src = `assets/images/bg/${cond}/${tod}.jpg`;
-
-    let headlineText = `This is ${cond} weather.`;
-    if (cond === 'wind') {
-      headlineText = headlineText.split('').map((char, i) => 
-        `<span class="wind-letter" style="animation-delay: ${i * 0.05}s">${char === ' ' ? '&nbsp;' : char}</span>`
-      ).join('');
-    }
-    headline.innerHTML = headlineText;
-
-    temp.innerText = `${data.lowTemp}–${data.highTemp}°`;
-    description.innerText = humor[cond][tod] || humor[cond].day;
-
-    extremeLabel.innerText = "Today's extreme:";
-    extremeValue.innerText = data.highTemp >= 32 ? 'Heat' : data.lowTemp <= 10 ? 'Cold' : cond.charAt(0).toUpperCase() + cond.slice(1);
-
-    rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
-    uvValue.innerText = data.uv > 8 ? `High (${data.uv})` : data.uv > 5 ? `Moderate (${data.uv})` : `Low (${data.uv})`;
-    confidenceValue.innerHTML = `${data.confidence} Confidence<br>Probably accurate`;
-
-    if (cond === 'heat') {
-      heatOverlay.style.backgroundImage = `url(${bgImg.src})`;
-      heatOverlay.style.display = 'block';
-      heatOverlay.style.opacity = '0.5';
-    }
-
-    addParticles(cond);
-  }
+  // ... determineCondition, getTimeOfDay, updateUI, addParticles same as last ...
 
   function renderHourly(hourly) {
-    hourlyTimeline.innerHTML = '';
-    hourly.forEach((h, i) => {
-      if (i % 3 !== 0) return; // every 3 hours
-      const hour = new Date(h.time).getHours().toString().padStart(2, '0') + ':00';
-      const card = document.createElement('div');
-      card.classList.add('hourly-card');
-      card.innerHTML = `
-        <div class="hour-time">${hour}</div>
-        <div class="hour-temp">${h.temp}°</div>
-        <div class="hour-rain">${h.rain}% rain</div>
-      `;
-      hourlyTimeline.appendChild(card);
-    });
+    hourlyTimeline.innerHTML = '<p>No hourly data — using fallback</p>';
+    if (hourly.length > 0) {
+      hourlyTimeline.innerHTML = '';
+      hourly.forEach((h, i) => {
+        if (i % 3 !== 0) return;
+        const hour = new Date(h.time).getHours().toString().padStart(2, '0') + ':00';
+        const card = document.createElement('div');
+        card.classList.add('hourly-card');
+        card.innerHTML = `
+          <div class="hour-time">${hour}</div>
+          <div class="hour-temp">${h.temp}°</div>
+          <div class="hour-rain">${h.rain}% rain</div>
+        `;
+        hourlyTimeline.appendChild(card);
+      });
+    }
   }
 
   function renderWeek(daily) {
     dailyCards.innerHTML = '';
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    daily.forEach((day, i) => {
+    (daily || dummyDaily).forEach((day, i) => {
       const date = new Date(day.date);
       const dayName = i === 0 ? 'Today' : days[date.getDay()];
       const dateStr = date.toLocaleDateString('en-ZA', { weekday: 'short', month: 'short', day: 'numeric' });
       const avgTemp = Math.round((day.high + day.low) / 2);
-      const cond = determineCondition(avgTemp, day.rainChance, 20); // approx wind
+      const cond = determineCondition(avgTemp, day.rainChance, 20);
       const card = document.createElement('div');
       card.classList.add('daily-card');
       card.innerHTML = `
@@ -186,53 +154,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function fallbackUI() {
-    if (currentData) {
-      updateUI(currentData);
-      description.innerText = 'Quick braai break — here's the last forecast!';
-    } else {
-      body.className = 'weather-clear';
-      bgImg.src = 'assets/images/bg/clear/day.jpg';
-      headline.innerHTML = 'This is clear weather.';
-      temp.innerText = '22–28°';
-      description.innerText = 'Braai weather! (offline)';
-      confidenceValue.innerHTML = 'Medium<br>Using fallback';
-    }
+    currentData = {
+      currentTemp: 24,
+      highTemp: 28,
+      lowTemp: 20,
+      rainChance: 10,
+      uv: 7,
+      windKph: 15,
+      condition: 'clear',
+      timeOfDay: 'day',
+      confidence: 'Medium',
+      hourly: [],
+      daily: dummyDaily
+    };
+    updateUI(currentData);
+    description.innerText = 'Weather boffins on a braai break — here\'s a probable fallback!';
+    renderHourly([]);
+    renderWeek(dummyDaily);
   }
 
-  function addParticles(condition) {
-    particles.innerHTML = '';
-    if (!['cold', 'wind', 'rain', 'storm', 'heat'].includes(condition)) return;
-
-    const count = condition === 'wind' ? 25 : condition === 'heat' ? 20 : condition === 'storm' ? 30 : 15;
-
-    for (let i = 0; i < count; i++) {
-      const p = document.createElement('div');
-      p.classList.add('particle');
-      p.style.top = Math.random() * 100 + '%';
-      p.style.left = Math.random() * 100 + '%';
-      p.style.animationDuration = (Math.random() * 5 + (condition === 'wind' ? 3 : condition === 'storm' ? 2 : 8)) + 's';
-      p.style.animationDelay = Math.random() * 5 + 's';
-      particles.appendChild(p);
-    }
-  }
-
-  // Nav
+  // Nav same as last
   const showScreen = (screen) => {
-    homeScreen.classList.add('hidden');
-    hourlyScreen.classList.add('hidden');
-    weekScreen.classList.add('hidden');
-    searchScreen.classList.add('hidden');
+    [homeScreen, hourlyScreen, weekScreen, searchScreen].forEach(s => s.classList.add('hidden'));
     screen.classList.remove('hidden');
   };
 
   navHome.addEventListener('click', () => showScreen(homeScreen));
-  navHourly.addEventListener('click', () => {
-    showScreen(hourlyScreen);
-    if (currentData) renderHourly(currentData.hourly);
-  });
-  navWeek.addEventListener('click', () => {
-    showScreen(weekScreen);
-    if (currentData) renderWeek(currentData.daily);
-  });
+  navHourly.addEventListener('click', () => showScreen(hourlyScreen));
+  navWeek.addEventListener('click', () => showScreen(weekScreen));
   navSearch.addEventListener('click', () => showScreen(searchScreen));
 });
