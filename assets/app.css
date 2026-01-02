@@ -407,3 +407,68 @@ body.weather-heat .description {
   .temp { font-size: 5.8rem; }
   .description { font-size: 1.7rem; }
 }
+/* Add to bottom of existing app.css */
+.week-screen {
+  grid-area: main;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.week-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.daily-cards {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scrollbar-width: thin;
+}
+
+.daily-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  min-width: 200px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s;
+}
+
+.daily-card:hover {
+  transform: scale(1.05);
+}
+
+.day-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.day-date {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.day-temp {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+}
+
+.day-rain {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.day-humor {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-style: italic;
+  margin-top: 1rem;
+}
