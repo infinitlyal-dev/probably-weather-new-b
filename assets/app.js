@@ -91,14 +91,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const owmUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=a56be2054510bc8fed22998c68972876&units=metric`;
       const waUrl = `https://api.weatherapi.com/v1/forecast.json?key=a98886bfef6c4dcd8bf111514251512&q=${lat},${lon}&days=7`;
 
-      const responses = await Promise.allSettled([
-        fetch(omUrl).then(res => res.json()),
-        fetch(owmUrl).then(res => res.json()),
-        fetch(waUrl).then(res => res.json())
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+      const [omRes, owmRes, waRes] = await Promise.all([
+        fetch(omUrl, { signal: controller.signal }).then(res => res.ok ? res.json() : null).catch(() => null),
+        fetch(owmUrl, { signal: controller.signal }).then(res => res.ok ? res.json() : null).catch(() => null),
+        fetch(waUrl, { signal: controller.signal }).then(res => res.ok ? res.json() : null).catch(() => null)
       ]);
 
-      const dataList = responses.filter(r => r.status === 'fulfilled').map(r => r.value);
+      clearTimeout(timeoutId);
 
+      const dataList = [omRes, owmRes, waRes].filter(Boolean);
       const activeSources = dataList.length;
       if (activeSources === 0) throw new Error('No sources available');
 
@@ -108,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
       }
 
-      const temps = dataList.map(d => d.current?.temperature_2m || d.list?.[0].main.temp || d.current.temp_c);
-      const highs = dataList.map(d => d.daily?.temperature_2m_max[0] || d.list?.[0].main.temp_max || d.forecast.forecastday[0].day.maxtemp_c);
-      const lows = dataList.map(d => d.daily?.temperature_2m_min[0] || d.list?.[0].main.temp_min || d.forecast.forecastday[0].day.mintemp_c);
-      const rainProbs = dataList.map(d => d.daily?.precipitation_probability_max[0] || d.list?.[0].pop * 100 || d.forecast.forecastday[0].day.daily_chance_of_rain);
-      const uv = median(dataList.map(d => d.daily?.uv_index_max[0] || d.forecast.forecastday[0].day.uv));
-      const windKph = median(dataList.map(d => d.current.wind_speed_10m * 3.6 || d.list?.[0].wind.speed * 3.6 || d.current.wind_kph));
+      const temps = dataList.map(d => d?.current?.temperature_2m || d?.list?.[0].main.temp || d?.current.temp_c);
+      const highs = dataList.map(d => d?.daily?.temperature_2m_max[0] || d?.list?.[0].main.temp_max || d?.forecast?.forecastday[0].day.maxtemp_c);
+      const lows = dataList.map(d => d?.daily?.temperature_2m_min[0] || d?.list?.[0].main.temp_min || d?.forecast?.forecastday[0].day.mintemp_c);
+      const rainProbs = dataList.map(d => d?.daily?.precipitation_probability_max[0] || d?.list?.[0].pop * 100 || d?.forecast?.forecastday[0].day.daily_chance_of_rain);
+      const uv = median(dataList.map(d => d?.daily?.uv_index_max[0] || d?.forecast?.forecastday[0].day.uv));
+      const windKph = median(dataList.map(d => d?.current?.wind_speed_10m * 3.6 || d?.list?.[0].wind.speed * 3.6 || d?.current.wind_kph));
 
       const tempRange = Math.max(...temps) - Math.min(...temps);
       const rainRange = Math.max(...rainProbs) - Math.min(...rainProbs);
@@ -129,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
         timeOfDay: getTimeOfDay(dataList[0]?.current.is_day === 1, new Date().getHours()),
         confidence,
         activeSources,
-        hourly: dataList[0]?.hourly?.time.map((t, i) => ({ time: t, temp: Math.round(median(dataList.map(d => d.hourly?.temperature_2m[i] || d.forecast.forecastday[Math.floor(i/24)].hour[i%24].temp_c))), rain: Math.round(median(dataList.map(d => d.hourly?.precipitation_probability[i] || d.forecast.forecastday[Math.floor(i/24)].hour[i%24].chance_of_rain))) })) || dummyHourly,
-        daily: dataList[0]?.daily?.time.map((t, i) => ({ date: t, high: Math.round(median(dataList.map(d => d.daily?.temperature_2m_max[i] || d.forecast.forecastday[i].day.maxtemp_c))), low: Math.round(median(dataList.map(d => d.daily?.temperature_2m_min[i] || d.forecast.forecastday[i].day.mintemp_c))), rainChance: Math.round(median(dataList.map(d => d.daily?.precipitation_probability_max[i] || d.forecast.forecastday[i].day.daily_chance_of_rain))) })) || dummyDaily
+        hourly: dataList[0]?.hourly?.time.map((t, i) => ({ time: t, temp: Math.round(median(dataList.map(d => d?.hourly?.temperature_2m[i] || d?.forecast?.forecastday[Math.floor(i/24)].hour[i%24]?.temp_c || dummyHourly[i].temp))), rain: Math.round(median(dataList.map(d => d?.hourly?.precipitation_probability[i] || d?.forecast?.forecastday[Math.floor(i/24)].hour[i%24]?.chance_of_rain || dummyHourly[i].rain))) })) || dummyHourly,
+        daily: dataList[0]?.daily?.time.map((t, i) => ({ date: t, high: Math.round(median(dataList.map(d => d?.daily?.temperature_2m_max[i] || d?.forecast?.forecastday[i].day.maxtemp_c || dummyDaily[i].high))), low: Math.round(median(dataList.map(d => d?.daily?.temperature_2m_min[i] || d?.forecast?.forecastday[i].day.mintemp_c || dummyDaily[i].low))), rainChance: Math.round(median(dataList.map(d => d?.daily?.precipitation_probability_max[i] || d?.forecast?.forecastday[i].day.daily_chance_of_rain || dummyDaily[i].rainChance))) })) || dummyDaily
       };
 
       localStorage.setItem('lastWeatherData', JSON.stringify(processed));
@@ -173,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     headline.innerHTML = `This is ${cond}.`;
     temp.innerText = `${data.lowTemp}–${data.highTemp}°`;
-    description.innerHTML = humor[cond][Math.floor(Math.random() * humor[cond].length)] + (cond === 'clear' || cond === 'heat' ? '<span class="braai-icon">🍖</span>' : '');
+    description.innerHTML = humor[cond][Math.floor(Math.random() * humor[cond].length)];
     extremeValue.innerText = `${cond.toUpperCase()} ${data.lowTemp}–${data.highTemp}°`;
 
     rainValue.innerText = data.rainChance < 20 ? 'Unlikely' : data.rainChance < 50 ? 'Possible' : 'Likely';
@@ -311,11 +315,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderRecents();
   }
 
-  function loadPlace(place) {
+  async function loadPlace(place) {
     currentLat = parseFloat(place.lat);
     currentLon = parseFloat(place.lon);
     locationEl.innerText = place.name;
-    fetchWeather(currentLat, currentLon);
+    await fetchWeather(currentLat, currentLon);
     showScreen(homeScreen);
   }
 
@@ -405,7 +409,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('theme').addEventListener('change', (e) => {
     theme = e.target.value;
     localStorage.setItem('theme', theme);
-    // Apply theme
+    body.classList.remove('light-theme', 'dark-theme');
+    if (theme !== 'auto') body.classList.add(`${theme}-theme`);
   });
 
   if ('serviceWorker' in navigator) {
