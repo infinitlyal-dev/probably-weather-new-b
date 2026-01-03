@@ -1,79 +1,61 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* =========================================================
-     Probably Weather — Frontend (assets/app.js)
-     Fixes:
-     - No crashes on missing data
-     - Correct /api/weather URL (NO ellipses)
-     - Doesn’t hang forever: timeout + safe fallback UI
-     - Works with BOTH API shapes:
-       A) { used:[], failed:[], norms:[] }
-       B) { sources:{used,failed,countUsed}, agreement:{label,explain}, now/today/hourly/week... }
-     ========================================================= */
-
   // -------------------- DOM --------------------
   const $ = (sel) => document.querySelector(sel);
 
-  const titleEl = $("#locationTitle") || $(".hero h1") || $("h1");
-  const subTitleEl = $("#locationSubTitle") || $(".hero h2") || $("h2");
+  const locationEl = $('#location');
+  const headlineEl = $('#headline');
+  const tempEl = $('#temp');
+  const descriptionEl = $('#description');
+  const extremeValueEl = $('#extremeValue');
+  const rainValueEl = $('#rainValue');
+  const uvValueEl = $('#uvValue');
+  const confidenceEl = $('#confidence');
+  const sourcesEl = $('#sources');
+  const bgImg = $('#bgImg');
+  const saveCurrentBtn = $('#saveCurrent');
 
-  const heroLineEl = $("#heroLine");
-  const heroTempEl = $("#heroTemp");
-  const heroWitEl = $("#heroWit");
+  const navHome = $('#navHome');
+  const navHourly = $('#navHourly');
+  const navWeek = $('#navWeek');
+  const navSearch = $('#navSearch');
+  const navSettings = $('#navSettings');
 
-  const extremeEl = $("#todayExtreme");
-  const rainEl = $("#todayRain");
-  const uvEl = $("#todayUv");
+  const screenHome = $('#home-screen');
+  const screenHourly = $('#hourly-screen');
+  const screenWeek = $('#week-screen');
+  const screenSearch = $('#search-screen');
+  const screenSettings = $('#settings-screen');
 
-  const confidenceEl = $("#confidenceLabel");
-  const confidenceValueEl = $("#confidenceValue");
-  const confidenceExplainEl = $("#confidenceExplain");
-  const sourcesLineEl = $("#sourcesLine");
+  const hourlyTimeline = $('#hourly-timeline');
+  const dailyCards = $('#daily-cards');
 
-  const bgImg = $("#bgImage") || $("#bg") || $("img.bg") || $("#bgImg");
+  const searchInput = $('#searchInput');
+  const favoritesList = $('#favoritesList');
+  const recentList = $('#recentList');
+  const manageFavorites = $('#manageFavorites');
 
-  const homeBtn = $("#navHome") || $("#btnHome") || $("#homeBtn");
-  const hourlyBtn = $("#navHourly") || $("#btnHourly");
-  const weekBtn = $("#navWeek") || $("#btnWeek");
-  const searchBtn = $("#navSearch") || $("#btnSearch");
-  const settingsBtn = $("#navSettings") || $("#btnSettings");
-
-  const screenHome = $("#screenHome") || $("#homeScreen") || $("#home");
-  const screenHourly = $("#screenHourly") || $("#hourlyScreen") || $("#hourly");
-  const screenWeek = $("#screenWeek") || $("#weekScreen") || $("#week");
-  const screenSearch = $("#screenSearch") || $("#searchScreen") || $("#search");
-  const screenSettings = $("#screenSettings") || $("#settingsScreen") || $("#settings");
-
-  const hourlyTimeline = $("#hourlyTimeline") || $("#hourlyList") || $("#hourlyGrid");
-  const weekGrid = $("#weekGrid") || $("#weekCards") || $("#weekList");
-
-  const searchInput = $("#searchInput");
-  const searchResults = $("#searchResults");
-  const recentsList = $("#recentsList");
-  const favoritesList = $("#favoritesList");
-
-  const savePlaceBtn = $("#savePlaceBtn");
+  const loader = $('#loader');
 
   // -------------------- State --------------------
   const STORAGE = {
-    units: "pw_units",           // "C" | "F" | "AUTO"
-    theme: "pw_theme",           // "AUTO" | "LIGHT" | "DARK"
-    favorites: "pw_favorites",   // [{name,lat,lon}]
-    recents: "pw_recents",       // [{name,lat,lon}]
-    home: "pw_home_place"        // {name,lat,lon} (geolocated)
+    units: "pw_units",           
+    theme: "pw_theme",           
+    favorites: "pw_favorites",   
+    recents: "pw_recents",       
+    home: "pw_home_place"        
   };
 
-  const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings].filter(Boolean);
+  const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
-  let activePlace = null;     // current viewed place
-  let homePlace = null;       // your geolocation place (used by Home button)
+  let activePlace = null;
+  let homePlace = null;
   let lastPayload = null;
 
   // -------------------- Helpers --------------------
-  const safeText = (el, txt) => { if (el) el.textContent = txt ?? ""; };
+  const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
 
   function round0(n) { return isNum(n) ? Math.round(n) : null; }
-  function round1(n) { return isNum(n) ? Math.round(n * 10) / 10 : null; }
 
   function loadJSON(key, fallback) {
     try {
@@ -92,8 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showScreen(which) {
-    SCREENS.forEach(s => s && s.classList.add("hidden"));
-    if (which) which.classList.remove("hidden");
+    SCREENS.forEach(s => s.classList.add("hidden"));
+    which.classList.remove("hidden");
+  }
+
+  function showLoader(show) {
+    loader.classList[show ? 'remove' : 'add']('hidden');
   }
 
   // -------------------- Backgrounds --------------------
@@ -104,14 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setBackgroundFor(dp, rainPct, maxC) {
-    // expects folders:
-    // assets/images/bg/clear/clear1.jpg .. clear4.jpg
-    // assets/images/bg/rain/rain1.jpg .. rain4.jpg
-    // assets/images/bg/storm/storm1.jpg .. storm4.jpg
-    // assets/images/bg/heat/heat1.jpg .. heat4.jpg
-    // assets/images/bg/fog/fog1.jpg .. fog4.jpg
-    // assets/images/bg/cloudy/cloudy1.jpg .. cloudy4.jpg
-
     const base = "assets/images/bg";
     let folder = "clear";
 
@@ -133,15 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------- Copy / Wit --------------------
   function isWeekendLocal() {
     const d = new Date();
-    const day = d.getDay(); // 0 Sun .. 6 Sat
-    return day === 0 || day === 5 || day === 6; // Fri/Sat/Sun
+    const day = d.getDay();
+    return day === 0 || day === 5 || day === 6;
   }
 
   function pickWittyLine(rainPct, maxC, dp) {
     const dpl = String(dp || "").toLowerCase();
     const hot = isNum(maxC) && maxC >= 30;
 
-    // Braai rule: mainly Fri/Sat/Sun and low rain
     if (isWeekendLocal() && (isNum(rainPct) ? rainPct < 25 : true) && !dpl.includes("storm") && !dpl.includes("rain")) {
       return "Braai weather, boet!";
     }
@@ -155,10 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return "Good day to get stuff done outside.";
   }
 
-  // -------------------- Agreement (if API doesn’t provide) --------------------
+  // -------------------- Agreement --------------------
   function computeAgreementFromNorms(norms) {
-    // norms: [{source, nowTemp, todayHigh, todayLow, todayRain, todayUv}, ...]
-    const temps = (norms || []).map(n => n && n.nowTemp).filter(isNum);
+    const temps = norms.map(n => n.nowTemp).filter(isNum);
     if (temps.length < 2) {
       return { label: temps.length === 1 ? "DECENT" : "—", explain: temps.length === 1 ? "Only one source responded." : "No sources responded." };
     }
@@ -174,170 +150,154 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // -------------------- API Fetch --------------------
   async function fetchProbable(place) {
-    // ✅ correct URL (relative to current domain)
-    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || "")}`;
-
-    const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), 9500);
-
-    try {
-      const res = await fetch(url, { signal: ctrl.signal });
-      if (!res.ok) throw new Error(`API ${res.status}`);
-      return await res.json();
-    } finally {
-      clearTimeout(t);
-    }
+    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('API error');
+    return await response.json();
   }
 
-  // -------------------- Normalizing API payload --------------------
+  // -------------------- Normalize Payload --------------------
   function normalizePayload(payload) {
-    // Supports API shape A (your screenshot):
-    // { ok, name, lat, lon, used:[], failed:[], norms:[{source, nowTemp, todayHigh, ...}] }
-    // And shape B:
-    // { sources:{used,failed,countUsed}, agreement:{label,explain}, now:{}, today:{}, hourly:{}, week:{} }
+    if (Array.isArray(payload.norms)) {
+      const norms = payload.norms;
+      const medNow = median(norms.map(n => n.nowTemp).filter(isNum));
+      const medHigh = median(norms.map(n => n.todayHigh).filter(isNum));
+      const medLow = median(norms.map(n => n.todayLow).filter(isNum));
+      const medRain = median(norms.map(n => n.todayRain).filter(isNum));
+      const medUv = median(norms.map(n => n.todayUv).filter(isNum));
+      const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
 
-    const out = {
-      placeName: payload?.name || payload?.place?.name || activePlace?.name || "—",
-      used: payload?.used || payload?.sources?.used || [],
-      failed: payload?.failed || payload?.sources?.failed || [],
-      countUsed: payload?.sources?.countUsed ?? (payload?.used ? payload.used.length : (payload?.sources?.used?.length || 0)),
-      norms: payload?.norms || payload?.sources?.norms || [],
-      agreement: payload?.agreement || null,
-
-      // best guess values:
-      nowTempC: null,
-      todayHighC: null,
-      todayLowC: null,
-      rainPct: null,
-      uv: null,
-      desc: payload?.desc || payload?.summary || payload?.now?.summary || payload?.now?.desc || null,
-
-      hourly: payload?.hourly || null,
-      week: payload?.week || null
+      return {
+        nowTemp: medNow,
+        todayHigh: medHigh,
+        todayLow: medLow,
+        rainPct: medRain,
+        uv: medUv,
+        desc: mostDesc,
+        agreement: computeAgreementFromNorms(norms),
+        used: payload.used || [],
+        failed: payload.failed || [],
+        countUsed: norms.length,
+        hourly: payload.hourly || [],
+        daily: payload.daily || [],
+      };
+    }
+    // Fallback for other shape (from summary)
+    return {
+      nowTemp: payload.now?.temp ?? null,
+      todayHigh: payload.today?.high ?? null,
+      todayLow: payload.today?.low ?? null,
+      rainPct: payload.today?.rainPct ?? null,
+      uv: payload.today?.uv ?? null,
+      desc: payload.today?.desc ?? 'Weather today',
+      agreement: payload.agreement || { label: '—', explain: '' },
+      used: payload.sources?.used || [],
+      failed: payload.sources?.failed || [],
+      countUsed: payload.sources?.countUsed || 0,
+      hourly: payload.hourly || [],
+      daily: payload.daily || [],
     };
-
-    // If we have norms, use median as “probable”
-    const norms = out.norms || [];
-    const nowTemps = norms.map(n => n?.nowTemp).filter(isNum).sort((a,b)=>a-b);
-    const highs = norms.map(n => n?.todayHigh).filter(isNum).sort((a,b)=>a-b);
-    const lows  = norms.map(n => n?.todayLow).filter(isNum).sort((a,b)=>a-b);
-    const rains = norms.map(n => n?.todayRain).filter(isNum).sort((a,b)=>a-b);
-    const uvs   = norms.map(n => n?.todayUv).filter(isNum).sort((a,b)=>a-b);
-
-    const median = (arr) => {
-      if (!arr.length) return null;
-      const mid = Math.floor(arr.length/2);
-      return arr.length % 2 ? arr[mid] : (arr[mid-1] + arr[mid]) / 2;
-    };
-
-    out.nowTempC   = median(nowTemps);
-    out.todayHighC = median(highs);
-    out.todayLowC  = median(lows);
-    out.rainPct    = median(rains);
-    out.uv         = median(uvs);
-
-    // Agreement
-    if (!out.agreement) out.agreement = computeAgreementFromNorms(norms);
-
-    return out;
   }
 
-  // -------------------- Render --------------------
-  function renderLoading(placeName) {
-    safeText(titleEl, "Probably Weather");
-    safeText(subTitleEl, placeName || "—");
-    safeText(heroLineEl, "Loading…");
-    safeText(heroTempEl, "--°");
-    safeText(heroWitEl, "—");
-
-    safeText(extremeEl, "-- → --");
-    safeText(rainEl, "--");
-    safeText(uvEl, "--");
-
-    safeText(confidenceEl, "PROBABLY • —");
-    safeText(confidenceValueEl, "--");
-    safeText(confidenceExplainEl, "");
-    safeText(sourcesLineEl, "Sources: —");
-
-    if (hourlyTimeline) hourlyTimeline.innerHTML = "";
-    if (weekGrid) weekGrid.innerHTML = "";
+  // -------------------- Render Functions --------------------
+  function renderLoading(name) {
+    showLoader(true);
+    safeText(locationEl, name);
+    safeText(headlineEl, 'Loading...');
+    safeText(tempEl, '--°');
+    safeText(descriptionEl, '—');
+    safeText(extremeValueEl, '--');
+    safeText(rainValueEl, '--');
+    safeText(uvValueEl, '--');
+    safeText(confidenceEl, 'PROBABLY • —');
+    safeText(sourcesEl, 'Sources: —');
   }
 
   function renderError(msg) {
-    safeText(heroLineEl, "This is… complicated.");
-    safeText(heroTempEl, "--°");
-    safeText(heroWitEl, msg || "Couldn’t fetch right now. Try again.");
-
-    safeText(confidenceEl, "PROBABLY • —");
-    safeText(confidenceValueEl, "--");
-    safeText(confidenceExplainEl, "No sources responded.");
-    safeText(sourcesLineEl, "Sources: none");
-
-    safeText(extremeEl, "-- → --");
-    safeText(rainEl, "--");
-    safeText(uvEl, "--");
+    showLoader(false);
+    safeText(headlineEl, 'Error');
+    safeText(descriptionEl, msg);
   }
 
   function renderHome(norm) {
-    const placeName = norm.placeName || "—";
+    showLoader(false);
 
-    safeText(titleEl, "Probably Weather");
-    safeText(subTitleEl, placeName);
+    const hi = norm.todayHigh;
+    const low = norm.todayLow;
+    const rain = norm.rainPct;
+    const uv = norm.uv;
+    const desc = norm.desc;
 
-    // headline + temp
-    safeText(heroLineEl, `This is ${String(norm.desc || "").trim() || "your weather"}.`.replace(/\s+\./g, "."));
-    const hi = round0(norm.todayHighC);
-    const lo = round0(norm.todayLowC);
+    safeText(locationEl, activePlace.name || '—');
+    safeText(headlineEl, desc);
+    safeText(tempEl, `${round0(low)}° - ${round0(hi)}°`);
+    safeText(descriptionEl, pickWittyLine(rain, hi, desc));
 
-    if (isNum(hi) && isNum(lo)) safeText(heroTempEl, `${lo}–${hi}°`);
-    else if (isNum(norm.nowTempC)) safeText(heroTempEl, `${round0(norm.nowTempC)}°`);
-    else safeText(heroTempEl, "--°");
+    safeText(extremeValueEl, isNum(hi) && hi > 35 ? 'Scorching hot' : isNum(low) && low < 0 ? 'Freezing cold' : 'Mild');
 
-    safeText(heroWitEl, pickWittyLine(norm.rainPct, hi, norm.desc));
+    if (isNum(rain)) {
+      const rp = round0(rain);
+      safeText(rainValueEl, `${rp}% (${rp >= 40 ? "Possible rain" : "Low chance"})`);
+    } else safeText(rainValueEl, '--');
 
-    // side cards
-    if (isNum(hi) && isNum(lo)) safeText(extremeEl, `${lo}° → ${hi}°`);
-    else safeText(extremeEl, "-- → --");
+    if (isNum(uv)) safeText(uvValueEl, `${round0(uv)}`);
+    else safeText(uvValueEl, '--');
 
-    if (isNum(norm.rainPct)) {
-      const rp = round0(norm.rainPct);
-      safeText(rainEl, `${rp}% (${rp >= 40 ? "Possible rain" : "Low chance"})`);
-    } else safeText(rainEl, "--");
-
-    if (isNum(norm.uv)) safeText(uvEl, `${round0(norm.uv)}`);
-    else safeText(uvEl, "--");
-
-    // agreement + sources
     const label = (norm.agreement?.label || "—").toUpperCase();
-    const agreeWord =
-      label === "STRONG" ? "STRONG AGREEMENT" :
-      label === "DECENT" ? "DECENT AGREEMENT" :
-      label === "MIXED" ? "MIXED AGREEMENT" : "—";
-
+    const agreeWord = label === "STRONG" ? "STRONG AGREEMENT" : label === "DECENT" ? "DECENT AGREEMENT" : label === "MIXED" ? "MIXED AGREEMENT" : "—";
     safeText(confidenceEl, `PROBABLY • ${agreeWord}`);
-    safeText(confidenceValueEl, label === "—" ? "--" : label);
-    safeText(confidenceExplainEl, norm.agreement?.explain || "");
 
-    const used = Array.isArray(norm.used) ? norm.used : [];
-    const failed = Array.isArray(norm.failed) ? norm.failed : [];
-    const usedTxt = used.length ? `Used: ${used.join(", ")}` : "Used: —";
-    const failedTxt = failed.length ? `Failed: ${failed.join(", ")}` : "";
-    safeText(sourcesLineEl, `Based on ${norm.countUsed || used.length || 0} sources · ${usedTxt}${failedTxt ? " · " + failedTxt : ""}`);
+    const usedTxt = norm.used.length ? `Used: ${norm.used.join(", ")}` : "Used: —";
+    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
+    safeText(sourcesEl, `${usedTxt}${failedTxt ? " · " + failedTxt : ""}`);
 
-    // background
-    setBackgroundFor(norm.desc, norm.rainPct, hi);
+    setBackgroundFor(desc, rain, hi);
+  }
+
+  function renderHourly(hourly) {
+    if (!hourlyTimeline) return;
+    hourlyTimeline.innerHTML = '';
+    hourly.forEach((h, i) => {
+      const div = document.createElement('div');
+      div.classList.add('hourly-card');
+      div.innerHTML = `
+        <div class="hour-time">${new Date(Date.now() + i * 3600000).getHours()}:00</div>
+        <div class="hour-temp">${round0(h.temp)}°</div>
+        <div class="hour-rain">${round0(h.rain)}%</div>
+      `;
+      hourlyTimeline.appendChild(div);
+    });
+  }
+
+  function renderWeek(daily) {
+    if (!dailyCards) return;
+    dailyCards.innerHTML = '';
+    daily.forEach((d, i) => {
+      const date = new Date(Date.now() + i * 86400000);
+      const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+      const div = document.createElement('div');
+      div.classList.add('daily-card');
+      div.innerHTML = `
+        <div class="day-name">${dayName}</div>
+        <div class="day-temp">${round0(d.low)}° - ${round0(d.high)}°</div>
+        <div class="day-rain">${round0(d.rain)}%</div>
+        <div class="day-humor">${d.desc}</div>
+      `;
+      dailyCards.appendChild(div);
+    });
   }
 
   // -------------------- Main flow --------------------
   async function loadAndRender(place) {
     activePlace = place;
-
-    renderLoading(place?.name || "—");
+    renderLoading(place.name || 'My Location');
     try {
       const payload = await fetchProbable(place);
       lastPayload = payload;
       const norm = normalizePayload(payload);
       renderHome(norm);
+      renderHourly(norm.hourly);
+      renderWeek(norm.daily);
     } catch (e) {
       console.error("Load failed:", e);
       renderError("Couldn’t fetch weather right now.");
@@ -352,14 +312,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function saveRecents(list) { saveJSON(STORAGE.recents, list); }
 
   function addRecent(place) {
-    const list = loadRecents().filter(p => !samePlace(p, place));
+    let list = loadRecents().filter(p => !samePlace(p, place));
     list.unshift(place);
     saveRecents(list.slice(0, 10));
     renderRecents();
   }
 
   function addFavorite(place) {
-    const list = loadFavorites();
+    let list = loadFavorites();
     if (list.some(p => samePlace(p, place))) return;
     list.unshift(place);
     saveFavorites(list.slice(0, 5));
@@ -367,15 +327,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderRecents() {
-    if (!recentsList) return;
+    if (!recentList) return;
     const list = loadRecents();
-    recentsList.innerHTML = list.map(p => `
-      <button class="place-pill" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</button>
-    `).join("") || `<div class="muted">No recent searches yet.</div>`;
+    recentList.innerHTML = list.map(p => `
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
+    `).join('') || '<li>No recent searches yet.</li>';
 
-    recentsList.querySelectorAll("button.place-pill").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const p = { name: btn.dataset.name, lat: Number(btn.dataset.lat), lon: Number(btn.dataset.lon) };
+    recentList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
         addRecent(p);
         showScreen(screenHome);
         loadAndRender(p);
@@ -387,12 +347,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!favoritesList) return;
     const list = loadFavorites();
     favoritesList.innerHTML = list.map(p => `
-      <button class="place-pill fav" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">★ ${escapeHtml(p.name)}</button>
-    `).join("") || `<div class="muted">No saved places yet.</div>`;
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
+    `).join('') || '<li>No saved places yet.</li>';
 
-    favoritesList.querySelectorAll("button.place-pill").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const p = { name: btn.dataset.name, lat: Number(btn.dataset.lat), lon: Number(btn.dataset.lon) };
+    favoritesList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
         showScreen(screenHome);
         loadAndRender(p);
       });
@@ -400,114 +360,79 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function escapeHtml(s) {
-    return String(s ?? "")
-      .replaceAll("&","&amp;")
-      .replaceAll("<","&lt;")
-      .replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;")
-      .replaceAll("'","&#039;");
+    return String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   }
 
   // -------------------- Search --------------------
   async function runSearch(q) {
-    if (!searchResults) return;
-    if (!q || q.trim().length < 2) {
-      searchResults.innerHTML = `<div class="muted">Type a place name…</div>`;
-      return;
-    }
-
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8&addressdetails=1`;
+    if (!q || q.trim().length < 2) return;
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
     try {
-      const res = await fetch(url, {
-        headers: { "Accept": "application/json" }
-      });
-      const data = await res.json();
-
-      const items = (data || []).map(d => ({
-        name: d.display_name,
-        lat: Number(d.lat),
-        lon: Number(d.lon)
-      }));
-
-      searchResults.innerHTML = items.map(p => `
-        <button class="search-row" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">
-          ${escapeHtml(p.name)}
-        </button>
-      `).join("") || `<div class="muted">No results.</div>`;
-
-      searchResults.querySelectorAll("button.search-row").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const p = { name: btn.dataset.name, lat: Number(btn.dataset.lat), lon: Number(btn.dataset.lon) };
-          addRecent(p);
-          showScreen(screenHome);
-          loadAndRender(p);
-        });
-      });
+      const data = await (await fetch(url)).json();
+      // Render results (add a list if not in HTML)
+      console.log(data); // TODO: Add search results rendering to #search-screen
     } catch (e) {
       console.error(e);
-      searchResults.innerHTML = `<div class="muted">Search failed. Try again.</div>`;
     }
   }
 
   // -------------------- Buttons / Nav --------------------
-  if (homeBtn) homeBtn.addEventListener("click", () => {
+  navHome.addEventListener('click', () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
-    else if (activePlace) loadAndRender(activePlace);
   });
+  navHourly.addEventListener('click', () => showScreen(screenHourly));
+  navWeek.addEventListener('click', () => showScreen(screenWeek));
+  navSearch.addEventListener('click', () => {
+    showScreen(screenSearch);
+    renderRecents();
+    renderFavorites();
+  });
+  navSettings.addEventListener('click', () => showScreen(screenSettings));
 
-  if (hourlyBtn) hourlyBtn.addEventListener("click", () => showScreen(screenHourly || screenHome));
-  if (weekBtn) weekBtn.addEventListener("click", () => showScreen(screenWeek || screenHome));
-  if (searchBtn) searchBtn.addEventListener("click", () => { showScreen(screenSearch || screenHome); renderRecents(); renderFavorites(); });
-  if (settingsBtn) settingsBtn.addEventListener("click", () => showScreen(screenSettings || screenHome));
-
-  if (savePlaceBtn) savePlaceBtn.addEventListener("click", () => {
+  saveCurrentBtn.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
   });
 
-  if (searchInput) {
-    let t = null;
-    searchInput.addEventListener("input", () => {
-      clearTimeout(t);
-      t = setTimeout(() => runSearch(searchInput.value), 250);
-    });
-  }
+  searchInput.addEventListener('input', () => runSearch(searchInput.value)); // Debounce if needed
 
   // -------------------- Init --------------------
   renderRecents();
   renderFavorites();
 
-  // Try stored home place first (fast)
   homePlace = loadJSON(STORAGE.home, null);
   if (homePlace) {
-    showScreen(screenHome);
     loadAndRender(homePlace);
+  } else if ('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        homePlace = { name: 'My Location', lat: pos.coords.latitude, lon: pos.coords.longitude };
+        saveJSON(STORAGE.home, homePlace);
+        loadAndRender(homePlace);
+      },
+      () => {
+        homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+        saveJSON(STORAGE.home, homePlace);
+        loadAndRender(homePlace);
+      }
+    );
   } else {
-    // Geolocation
-    showScreen(screenHome);
-    renderLoading("My Location");
+    homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+    saveJSON(STORAGE.home, homePlace);
+    loadAndRender(homePlace);
+  }
 
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const lat = round1(pos.coords.latitude);
-          const lon = round1(pos.coords.longitude);
-          homePlace = { name: "My Location", lat, lon };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        () => {
-          // fallback: Cape Town
-          homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
-      );
-    } else {
-      homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
-      saveJSON(STORAGE.home, homePlace);
-      loadAndRender(homePlace);
-    }
+  // Helpers (median, pickMostCommon)
+  function median(values) {
+    if (values.length === 0) return null;
+    values.sort((a, b) => a - b);
+    const half = Math.floor(values.length / 2);
+    return values.length % 2 ? values[half] : (values[half - 1] + values[half]) / 2.0;
+  }
+
+  function pickMostCommon(arr) {
+    if (arr.length === 0) return null;
+    const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
+    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
   }
 });
