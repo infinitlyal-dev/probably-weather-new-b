@@ -28,14 +28,11 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 
 body.weather-cold #headline { color: #00BFFF; text-shadow: 0 0 20px #00BFFF; }
 body.weather-heat #headline { color: #FF4500; text-shadow: 0 0 20px #FF4500; }
-body.weather-storm #headline { color: #8A2BE2; text-shadow: 0 0 20px #8A2BE2; }
-body.weather-rain #headline { color: #1E90FF; text-shadow: 0 0 20px #1E90FF; }
-body.weather-wind #headline { color: #A9A9A9; text-shadow: 0 0 20px #A9A9A9; }
-body.weather-fog #headline { color: #778899; text-shadow: 0 0 20px #778899; }
-body.weather-clear #headline { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
-
-body.weather-cold #bgImg { filter: brightness(0.8); }
-body.weather-heat #bgImg { filter: brightness(1.2); }
+body.weather-storm #headline { color: #C5CAE9; text-shadow: 0 0 20px #C5CAE9; }
+body.weather-rain #headline { color: #90CAF9; text-shadow: 0 0 20px #90CAF9; }
+body.weather-wind #headline { color: #E3E9ED; text-shadow: 0 0 20px #E3E9ED; }
+body.weather-fog #headline { color: #B0BEC5; text-shadow: 0 0 20px #B0BEC5; }
+body.weather-clear #headline { color: #FFF59D; text-shadow: 0 0 20px #FFF59D; }
 
 .container {
   max-width: 1200px;
@@ -67,11 +64,9 @@ body.weather-heat #bgImg { filter: brightness(1.2); }
 }
 
 .headline {
-  font-family: 'Poppins', sans-serif;
   font-size: 4rem;
   font-weight: 800;
-  text-transform: none;
-  text-shadow: 0 0 10px currentColor;
+  text-shadow: 0 0 20px currentColor;
   transition: text-shadow 0.3s;
 }
 
@@ -83,7 +78,6 @@ body.weather-heat #bgImg { filter: brightness(1.2); }
 .description {
   font-size: 1.5rem;
   opacity: 0.8;
-  margin-top: 1rem;
 }
 
 .sidebar {
@@ -169,7 +163,6 @@ body.weather-heat #bgImg { filter: brightness(1.2); }
   display: flex;
   overflow-x: auto;
   gap: 1rem;
-  justify-content: center;
 }
 
 .hourly-card {
@@ -181,33 +174,81 @@ body.weather-heat #bgImg { filter: brightness(1.2); }
   min-width: 80px;
 }
 
-.hour-time {
-  font-size: 1rem;
-}
-
-.hour-temp {
-  font-size: 1.5rem;
-}
-
-.hour-rain {
-  font-size: 0.9rem;
-}
-
-.daily-cards {
+.week-screen .daily-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
 }
 
 .daily-card {
   flex: 1;
-  min-width: 150px;
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 1rem;
+}
+
+.search-screen {
+  padding: 1rem;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 30px;
+  border: none;
+}
+
+#searchCancel {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: blue;
+  background: none;
+  border: none;
+}
+
+.section h3 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.section ul {
+  list-style: none;
+}
+
+.section li {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fav-limit {
   text-align: center;
+  opacity: 0.7;
+}
+
+.manage-btn {
+  width: 100%;
+  padding: 1rem;
+  background: blue;
+  color: white;
+  border: none;
+  border-radius: 30px;
+}
+
+.settings-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.settings-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .settings-option {
@@ -263,57 +304,18 @@ select option {
   color: currentColor;
 }
 
-/* Particles */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.card.high {
+  border: 1px solid rgba(0,128,0,0.3);
 }
 
-.particle {
-  position: absolute;
-  background: white;
-  opacity: 0.5;
-  animation: fall linear infinite;
+.card.medium {
+  border: 1px solid rgba(255,165,0,0.3);
 }
 
-@keyframes fall {
-  0% { transform: translateY(-10vh); }
-  100% { transform: translateY(110vh); }
+.card.low {
+  border: 1px solid rgba(255,0,0,0.3);
 }
 
-/* Mobile Media Query */
-@media (max-width: 600px) {
-  .container {
-    padding: 1rem;
-  }
-  .sidebar {
-    display: flex;
-    flex-direction: row;
-    position: fixed;
-    bottom: 60px;
-    left: 0;
-    width: 100%;
-    justify-content: space-around;
-    gap: 0.5rem;
-  }
-  .card {
-    flex: 1;
-    margin: 0;
-    padding: 0.5rem;
-    font-size: 0.8rem;
-  }
-  .nav {
-    justify-content: space-around;
-    gap: 0;
-  }
-  .headline {
-    font-size: 3rem;
-  }
-  .temp {
-    font-size: 4rem;
-  }
+.braai-icon {
+  margin-left: 5px;
 }

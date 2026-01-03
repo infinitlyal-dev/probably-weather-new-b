@@ -42,13 +42,6 @@
     <section id="hourly-screen" class="hourly-screen hidden">
       <h2 class="screen-title">Hourly Forecast</h2>
       <div id="hourly-timeline" class="hourly-timeline"></div>
-      <div id="hourly-confidence" class="hourly-confidence">
-        <span>Confidence:</span>
-        <span class="dot high"></span>
-        <span class="dot medium"></span>
-        <span class="dot low"></span>
-        <span>Sources ></span>
-      </div>
     </section>
 
     <section id="week-screen" class="week-screen hidden">
@@ -74,61 +67,52 @@
 
     <section id="settings-screen" class="settings-screen hidden">
       <h2 class="settings-title">Settings</h2>
-      <div class="settings-section">
-        <h3>Units</h3>
-        <div class="settings-option">
-          <label for="unitsTemp">Temperature</label>
-          <select id="unitsTemp">
-            <option value="C">Celsius</option>
-            <option value="F">Fahrenheit</option>
-          </select>
-        </div>
-        <div class="settings-option">
-          <label for="unitsWind">Wind speed</label>
-          <select id="unitsWind">
-            <option value="kmh">km/h</option>
-            <option value="ms">m/s</option>
-            <option value="mph">mph</option>
-          </select>
-        </div>
+      <div class="settings-option">
+        <label for="unitsTemp">Temperature Units:</label>
+        <select id="unitsTemp">
+          <option value="C">Celsius (°C)</option>
+          <option value="F">Fahrenheit (°F)</option>
+        </select>
       </div>
-      <div class="settings-section">
-        <h3>Forecast display</h3>
-        <div class="settings-option toggle">
-          <label for="probRange">Show probability range</label>
-          <input type="checkbox" id="probRange">
-        </div>
-        <div class="settings-option">
-          <label for="timeFormat">Time format</label>
-          <select id="timeFormat">
-            <option value="24">24-hour</option>
-            <option value="12">12-hour</option>
-          </select>
-        </div>
+      <div class="settings-option">
+        <label for="unitsWind">Wind Speed Units:</label>
+        <select id="unitsWind">
+          <option value="kmh">km/h</option>
+          <option value="ms">m/s</option>
+          <option value="mph">mph</option>
+        </select>
       </div>
-      <div class="settings-section">
-        <h3>Language</h3>
-        <div class="settings-option">
-          <label>Plain</label>
-          <input type="radio" name="language" value="plain">
-        </div>
-        <div class="settings-option">
-          <label>Human</label>
-          <input type="radio" name="language" value="human" checked>
-        </div>
+      <div class="settings-option">
+        <label for="probRange">Show Probability Range:</label>
+        <input type="checkbox" id="probRange">
       </div>
-      <div class="settings-section">
-        <h3>Data sources</h3>
-        <p>Open-Meteo, WeatherAPI.com, MET Norway. Combined into a median forecast.</p>
+      <div class="settings-option">
+        <label for="timeFormat">Time Format:</label>
+        <select id="timeFormat">
+          <option value="24">24-hour</option>
+          <option value="12">12-hour</option>
+        </select>
       </div>
-      <div class="settings-section">
-        <h3>About</h3>
+      <div class="settings-option">
+        <label for="languagePlain">Language Plain:</label>
+        <input type="radio" id="languagePlain" name="language" value="plain">
+      </div>
+      <div class="settings-option">
+        <label for="languageHuman">Language Human:</label>
+        <input type="radio" id="languageHuman" name="language" value="human">
+      </div>
+      <div class="settings-option">
+        <label>Data Sources:</label>
+        <p>Open-Meteo, WeatherAPI.com & MET Norway</p>
+      </div>
+      <div class="settings-option">
+        <label>About:</label>
         <p>Version 1.0</p>
       </div>
     </section>
 
     <aside class="sidebar">
-      <div class="card extreme">
+      <div class="card">
         <div id="extremeLabel" class="label">Today's extreme:</div>
         <div id="extremeValue" class="value">--</div>
       </div>
@@ -140,8 +124,8 @@
         <div class="label">UV</div>
         <div id="uvValue" class="value">--</div>
       </div>
-      <div class="card confidence-card">
-        <div class="label">Confidence:</div>
+      <div class="card">
+        <div class="label">Agreement:</div>
         <div id="confidenceValue" class="value">--</div>
         <div id="confidenceBar" class="confidence-bar"></div>
       </div>
