@@ -29,13 +29,10 @@
       </div>
 
       <div class="tagline">No more Ja-No-Maybe weather. Just Probably.</div>
-
-      <button id="saveCurrent" class="save-btn">⭐ Save this place</button>
     </header>
 
     <main id="home-screen" class="main">
-      <div id="confidence" class="confidence">PROBABLY • DECENT AGREEMENT</div>
-      <div id="sources" class="sources">Sources: —</div>
+      <div id="confidence" class="confidence">PROBABLY • —</div>
 
       <h1 id="headline" class="headline">Loading...</h1>
       <div id="temp" class="temp">--°</div>
@@ -45,6 +42,13 @@
     <section id="hourly-screen" class="hourly-screen hidden">
       <h2 class="screen-title">Hourly Forecast</h2>
       <div id="hourly-timeline" class="hourly-timeline"></div>
+      <div id="hourly-confidence" class="hourly-confidence">
+        <span>Confidence:</span>
+        <span class="dot high"></span>
+        <span class="dot medium"></span>
+        <span class="dot low"></span>
+        <span>Sources ></span>
+      </div>
     </section>
 
     <section id="week-screen" class="week-screen hidden">
@@ -53,39 +57,78 @@
     </section>
 
     <section id="search-screen" class="search-screen hidden">
-      <input id="searchInput" type="text" placeholder="Search for a place" />
-      <div class="saved-places">
+      <h2 class="screen-title">Search & Favourites</h2>
+      <input id="searchInput" type="text" placeholder="Search for a place">
+      <button id="searchCancel" class="cancel-btn">Cancel</button>
+      <div class="section">
         <h3>Saved places</h3>
         <ul id="favoritesList"></ul>
       </div>
-      <div class="recent-places">
+      <div class="section">
         <h3>Recent</h3>
         <ul id="recentList"></ul>
       </div>
-      <button id="manageFavorites">Manage favorites</button>
+      <p id="favLimit" class="fav-limit">You've saved 5 places. Remove one to add a new favourite.</p>
+      <button id="manageFavorites" class="manage-btn">Manage favourites</button>
     </section>
 
     <section id="settings-screen" class="settings-screen hidden">
       <h2 class="settings-title">Settings</h2>
-      <div class="settings-option">
-        <label for="units">Temperature Units:</label>
-        <select id="units">
-          <option value="C">Celsius (°C)</option>
-          <option value="F">Fahrenheit (°F)</option>
-        </select>
+      <div class="settings-section">
+        <h3>Units</h3>
+        <div class="settings-option">
+          <label for="unitsTemp">Temperature</label>
+          <select id="unitsTemp">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+          </select>
+        </div>
+        <div class="settings-option">
+          <label for="unitsWind">Wind speed</label>
+          <select id="unitsWind">
+            <option value="kmh">km/h</option>
+            <option value="ms">m/s</option>
+            <option value="mph">mph</option>
+          </select>
+        </div>
       </div>
-      <div class="settings-option">
-        <label for="theme">Theme:</label>
-        <select id="theme">
-          <option value="auto">Auto (Weather-based)</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
+      <div class="settings-section">
+        <h3>Forecast display</h3>
+        <div class="settings-option toggle">
+          <label for="probRange">Show probability range</label>
+          <input type="checkbox" id="probRange">
+        </div>
+        <div class="settings-option">
+          <label for="timeFormat">Time format</label>
+          <select id="timeFormat">
+            <option value="24">24-hour</option>
+            <option value="12">12-hour</option>
+          </select>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h3>Language</h3>
+        <div class="settings-option">
+          <label>Plain</label>
+          <input type="radio" name="language" value="plain">
+        </div>
+        <div class="settings-option">
+          <label>Human</label>
+          <input type="radio" name="language" value="human" checked>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h3>Data sources</h3>
+        <p>Open-Meteo, WeatherAPI.com, MET Norway. Combined into a median forecast.</p>
+      </div>
+      <div class="settings-section">
+        <h3>About</h3>
+        <p>Version 1.0</p>
       </div>
     </section>
 
     <aside class="sidebar">
-      <div class="card">
+      <div class="card extreme">
         <div id="extremeLabel" class="label">Today's extreme:</div>
         <div id="extremeValue" class="value">--</div>
       </div>
@@ -97,8 +140,8 @@
         <div class="label">UV</div>
         <div id="uvValue" class="value">--</div>
       </div>
-      <div class="card">
-        <div class="label">Agreement:</div>
+      <div class="card confidence-card">
+        <div class="label">Confidence:</div>
         <div id="confidenceValue" class="value">--</div>
         <div id="confidenceBar" class="confidence-bar"></div>
       </div>
@@ -114,7 +157,7 @@
   </div>
 
   <div id="heatOverlay"></div>
-  
+
   <footer class="footer">Data from Open-Meteo, WeatherAPI.com & MET Norway</footer>
 
   <script src="assets/app.js"></script>
