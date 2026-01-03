@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const sourcesEl = $('#sources');
   const bgImg = $('#bgImg');
   const saveCurrentBtn = $('#saveCurrent');
+  const confidenceBarEl = $('#confidenceBar');
+  const particlesEl = $('#particles');
 
   const navHome = $('#navHome');
   const navHourly = $('#navHourly');
@@ -82,33 +84,97 @@ document.addEventListener("DOMContentLoaded", () => {
     loader.classList[show ? 'remove' : 'add']('hidden');
   }
 
-  // -------------------- Backgrounds --------------------
-  function hashString(s) {
-    let h = 0;
-    for (let i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i);
-    return h | 0;
+  // -------------------- Sunrise/Sunset Calculation --------------------
+  function suntimes(lat, lng) {
+    var d = new Date();
+    var radians = Math.PI / 180.0;
+    var degrees = 180.0 / Math.PI;
+
+    var a = Math.floor((14 - (d.getMonth() + 1.0)) / 12);
+    var y = d.getFullYear() + 4800 - a;
+    var m = (d.getMonth() + 1) + 12 * a - 3;
+    var j_day = d.getDate() + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+    var n_star = j_day - 2451545.0009 - lng / 360.0;
+    var n = Math.floor(n_star + 0.5);
+    var solar_noon = 2451545.0009 - lng / 360.0 + n;
+    var M = 356.0470 + 0.9856002585 * n;
+    var C = 1.9148 * Math.sin(M * radians) + 0.02 * Math.sin(2 * M * radians) + 0.0003 * Math.sin(3 * M * radians);
+    var L = (M + 102.9372 + C + 180) % 360;
+    var j_transit = solar_noon + 0.0053 * Math.sin(M * radians) - 0.0069 * Math.sin(2 * L * radians);
+    var D = Math.asin(Math.sin(L * radians) * Math.sin(23.45 * radians)) * degrees;
+    var cos_omega = (Math.sin(-0.83 * radians) - Math.sin(lat * radians) * Math.sin(D * radians)) / (Math.cos(lat * radians) * Math.cos(D * radians));
+
+    if (cos_omega > 1) return [null, -1]; // sun never rises
+    if (cos_omega < -1) return [-1, null]; // sun never sets
+
+    var omega = Math.acos(cos_omega) * degrees;
+    var j_set = j_transit + omega / 360.0;
+    var j_rise = j_transit - omega / 360.0;
+
+    var utc_time_set = 24 * (j_set - j_day) + 12;
+    var utc_time_rise = 24 * (j_rise - j_day) + 12;
+    var tz_offset = -1 * d.getTimezoneOffset() / 60;
+    var local_rise = (utc_time_rise + tz_offset) % 24;
+    var local_set = (utc_time_set + tz_offset) % 24;
+    return [local_rise, local_set];
   }
 
-  function setBackgroundFor(dp, rainPct, maxC) {
+  // -------------------- Backgrounds --------------------
+  function setBackgroundFor(dp, rainPct, maxC, low, wind) {
     const base = "assets/images/bg";
     let folder = "clear";
 
     const dpl = String(dp || "").toLowerCase();
 
-    if (dpl.includes("fog") || dpl.includes("mist") || dpl.includes("haze")) folder = "fog";
+    if (isNum(low) && low < 10) folder = "cold";
+    else if (isNum(wind) && wind > 30) folder = "wind";
+    else if (dpl.includes("fog") || dpl.includes("mist") || dpl.includes("haze")) folder = "fog";
     else if (dpl.includes("storm") || dpl.includes("thunder") || dpl.includes("lightning")) folder = "storm";
-    else if (dpl.includes("cloud")) folder = "cloudy";
+    else if (dpl.includes("cloud") || dpl.includes("overcast")) folder = "cloudy";
     else if (isNum(rainPct) && rainPct >= 60) folder = "rain";
     else if (isNum(maxC) && maxC >= 32) folder = "heat";
     else folder = "clear";
 
-    const n = 1 + (Math.abs(hashString((dp || "") + String(maxC || ""))) % 4);
-    const path = `${base}/${folder}/${folder}${n}.jpg`;
+    // Get time of day
+    const [rise, set] = suntimes(activePlace.lat, activePlace.lon);
+    const now = new Date();
+    const currentHour = now.getHours() + now.getMinutes() / 60;
 
-    if (bgImg) bgImg.src = path;
+    let timeOfDay = 'day';
+    if (rise !== null && set !== null) {
+      if (currentHour < rise || currentHour > set) timeOfDay = 'night';
+      else if (Math.abs(currentHour - rise) < 1.5) timeOfDay = 'dawn';
+      else if (Math.abs(currentHour - set) < 1.5) timeOfDay = 'dusk';
+      else timeOfDay = 'day';
+    } else {
+      timeOfDay = rise === null ? 'night' : 'day'; // Polar day/night
+    }
+
+    const path = `${base}/${folder}/${timeOfDay}.jpg`;
+
+    if (bgImg) {
+      bgImg.src = path;
+      bgImg.onerror = () => console.error(`Background image failed to load: ${path} - Check if file exists in repo (e.g., assets/images/bg/${folder}/${timeOfDay}.jpg).`);
+    }
+
+    document.body.className = `weather-${folder}`;
   }
 
-  // -------------------- Copy / Wit --------------------
+  // -------------------- Particles --------------------
+  function createParticles(folder, count = 20) {
+    if (!particlesEl) return;
+    particlesEl.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      particle.style.animationDelay = `${Math.random() * 2}s`;
+      particlesEl.appendChild(particle);
+    }
+  }
+
+  // -------------------- Witty Line --------------------
   function isWeekendLocal() {
     const d = new Date();
     const day = d.getDay();
@@ -128,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today’s moody.";
     if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close.";
     if (hot) return "Big heat — pace yourself outside.";
-    if (dpl.includes("cloud")) return "Soft light, no drama. Take the win.";
+    if (dpl.includes("cloud") || dpl.includes("overcast")) return "Soft light, no drama. Take the win.";
     return "Good day to get stuff done outside.";
   }
 
@@ -166,6 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const medRain = median(norms.map(n => n.todayRain).filter(isNum));
       const medUv = median(norms.map(n => n.todayUv).filter(isNum));
       const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
+      const medWind = median(norms.map(n => n.wind).filter(isNum));
 
       return {
         nowTemp: medNow,
@@ -174,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
         rainPct: medRain,
         uv: medUv,
         desc: mostDesc,
+        wind: medWind,
         agreement: computeAgreementFromNorms(norms),
         used: payload.used || [],
         failed: payload.failed || [],
@@ -182,7 +250,6 @@ document.addEventListener("DOMContentLoaded", () => {
         daily: payload.daily || [],
       };
     }
-    // Fallback for other shape (from summary)
     return {
       nowTemp: payload.now?.temp ?? null,
       todayHigh: payload.today?.high ?? null,
@@ -190,6 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rainPct: payload.today?.rainPct ?? null,
       uv: payload.today?.uv ?? null,
       desc: payload.today?.desc ?? 'Weather today',
+      wind: payload.today?.wind ?? null,
       agreement: payload.agreement || { label: '—', explain: '' },
       used: payload.sources?.used || [],
       failed: payload.sources?.failed || [],
@@ -211,6 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(uvValueEl, '--');
     safeText(confidenceEl, 'PROBABLY • —');
     safeText(sourcesEl, 'Sources: —');
+    if (confidenceBarEl) confidenceBarEl.style.width = '0%';
   }
 
   function renderError(msg) {
@@ -227,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rain = norm.rainPct;
     const uv = norm.uv;
     const desc = norm.desc;
+    const wind = norm.wind;
 
     safeText(locationEl, activePlace.name || '—');
     safeText(headlineEl, desc);
@@ -247,11 +317,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const agreeWord = label === "STRONG" ? "STRONG AGREEMENT" : label === "DECENT" ? "DECENT AGREEMENT" : label === "MIXED" ? "MIXED AGREEMENT" : "—";
     safeText(confidenceEl, `PROBABLY • ${agreeWord}`);
 
+    if (confidenceBarEl) {
+      const width = label === "STRONG" ? '100%' : label === "DECENT" ? '70%' : label === "MIXED" ? '40%' : '0%';
+      confidenceBarEl.style.width = width;
+    }
+
     const usedTxt = norm.used.length ? `Used: ${norm.used.join(", ")}` : "Used: —";
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
     safeText(sourcesEl, `${usedTxt}${failedTxt ? " · " + failedTxt : ""}`);
 
-    setBackgroundFor(desc, rain, hi);
+    setBackgroundFor(desc, rain, hi, low, wind);
+    createParticles('cloudy'); // Update based on folder if needed
   }
 
   function renderHourly(hourly) {
@@ -260,8 +336,9 @@ document.addEventListener("DOMContentLoaded", () => {
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
+      const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
       div.innerHTML = `
-        <div class="hour-time">${new Date(Date.now() + i * 3600000).getHours()}:00</div>
+        <div class="hour-time">${hourTime}</div>
         <div class="hour-temp">${round0(h.temp)}°</div>
         <div class="hour-rain">${round0(h.rain)}%</div>
       `;
@@ -304,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // -------------------- Places: recents/favorites --------------------
+  // -------------------- Places --------------------
   function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
   function loadRecents() { return loadJSON(STORAGE.recents, []); }
 
@@ -320,7 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function addFavorite(place) {
     let list = loadFavorites();
-    if (list.some(p => samePlace(p, place))) return;
+    if (list.some(p => samePlace(p, place)) ) return;
     list.unshift(place);
     saveFavorites(list.slice(0, 5));
     renderFavorites();
@@ -369,20 +446,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
     try {
       const data = await (await fetch(url)).json();
-      // Render results (add a list if not in HTML)
-      console.log(data); // TODO: Add search results rendering to #search-screen
+      console.log('Search results:', data);
     } catch (e) {
       console.error(e);
     }
   }
 
-  // -------------------- Buttons / Nav --------------------
+  // -------------------- Buttons --------------------
   navHome.addEventListener('click', () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
   });
-  navHourly.addEventListener('click', () => showScreen(screenHourly));
-  navWeek.addEventListener('click', () => showScreen(screenWeek));
+  navHourly.addEventListener('click', () => {
+    showScreen(screenHourly);
+    if (lastPayload) renderHourly(normalizePayload(lastPayload).hourly);
+  });
+  navWeek.addEventListener('click', () => {
+    showScreen(screenWeek);
+    if (lastPayload) renderWeek(normalizePayload(lastPayload).daily);
+  });
   navSearch.addEventListener('click', () => {
     showScreen(screenSearch);
     renderRecents();
@@ -394,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (activePlace) addFavorite(activePlace);
   });
 
-  searchInput.addEventListener('input', () => runSearch(searchInput.value)); // Debounce if needed
+  if (searchInput) searchInput.addEventListener('input', () => runSearch(searchInput.value));
 
   // -------------------- Init --------------------
   renderRecents();
@@ -422,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadAndRender(homePlace);
   }
 
-  // Helpers (median, pickMostCommon)
+  // Helpers
   function median(values) {
     if (values.length === 0) return null;
     values.sort((a, b) => a - b);

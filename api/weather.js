@@ -31,8 +31,8 @@ export default async function handler(req, res) {
   
       const failures = [];
       const norms = [];
-      const hourlies = []; // Array of hourly data from each source
-      const dailies = []; // Array of daily data from each source
+      const hourlies = []; 
+      const dailies = []; 
   
       // Weather description mappings
       const openMeteoCodeMap = {
@@ -66,7 +66,7 @@ export default async function handler(req, res) {
         99: 'Thunderstorm with heavy hail',
       };
   
-      const metSymbolMap = { // Common mappings from Yr/MET symbols
+      const metSymbolMap = { 
         'clearsky': 'Clear sky',
         'fair': 'Fair',
         'partlycloudy': 'Partly cloudy',
@@ -90,15 +90,14 @@ export default async function handler(req, res) {
         'sleet': 'Sleet',
         'lightsleet': 'Light sleet',
         'heavysleet': 'Heavy sleet',
-        // Add more as needed from Yr list
       };
   
       // ---------- Open-Meteo ----------
       try {
         const om = await fetchJson(
           `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-          `&current=temperature_2m,weather_code` +
-          `&hourly=temperature_2m,precipitation_probability` +
+          `&current=temperature_2m,weather_code,wind_speed_10m` +
+          `&hourly=temperature_2m,precipitation_probability,wind_speed_10m` +
           `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code` +
           `&timezone=auto&forecast_days=7`
         );
@@ -111,16 +110,16 @@ export default async function handler(req, res) {
           todayRain: om.daily?.precipitation_probability_max?.[0] ?? null,
           todayUv: om.daily?.uv_index_max?.[0] ?? null,
           desc: openMeteoCodeMap[om.current?.weather_code] ?? 'Unknown',
+          wind: om.current?.wind_speed_10m ?? null, // km/h
         });
   
-        // Hourly (next 24 hours)
         hourlies.push({
           source: 'Open-Meteo',
           temps: om.hourly?.temperature_2m.slice(0, 24) ?? [],
           rains: om.hourly?.precipitation_probability.slice(0, 24) ?? [],
+          winds: om.hourly?.wind_speed_10m.slice(0, 24) ?? [],
         });
   
-        // Daily (7 days)
         dailies.push({
           source: 'Open-Meteo',
           highs: om.daily?.temperature_2m_max ?? [],
@@ -150,16 +149,16 @@ export default async function handler(req, res) {
             todayRain: d.daily_chance_of_rain ?? null,
             todayUv: d.uv ?? null,
             desc: wa.current?.condition?.text ?? 'Unknown',
+            wind: wa.current?.wind_kph ?? null, // km/h
           });
   
-          // Hourly (24 hours)
           hourlies.push({
             source: 'WeatherAPI',
             temps: wa.forecast.forecastday[0].hour.map(h => h.temp_c) ?? [],
             rains: wa.forecast.forecastday[0].hour.map(h => h.chance_of_rain) ?? [],
+            winds: wa.forecast.forecastday[0].hour.map(h => h.wind_kph) ?? [],
           });
   
-          // Daily (7 days)
           dailies.push({
             source: 'WeatherAPI',
             highs: wa.forecast.forecastday.map(fd => fd.day.maxtemp_c) ?? [],
@@ -188,6 +187,7 @@ export default async function handler(req, res) {
         const rainProxy = rainAmounts.length === 0 ? null : Math.min(100, Math.round(Math.max(...rainAmounts) * 40));
         const symbolCode = series[0]?.data?.next_1_hours?.summary?.symbol_code?.replace(/_(day|night|polartwilight)$/, '') ?? null;
         const desc = metSymbolMap[symbolCode] ?? 'Unknown';
+        const wind = series[0]?.data?.instant?.details?.wind_speed * 3.6 ?? null; // m/s to km/h
   
         norms.push({
           source: 'MET Norway',
@@ -197,20 +197,19 @@ export default async function handler(req, res) {
           todayRain: rainProxy,
           todayUv: null,
           desc,
+          wind,
         });
   
-        // Hourly (approx next 24, MET series is hourly)
         hourlies.push({
           source: 'MET Norway',
           temps: temps.slice(0, 24),
-          rains: series.slice(0, 24).map(p => (p.data?.next_1_hours?.details?.precipitation_amount ?? 0) * 40), // Proxy % 
+          rains: series.slice(0, 24).map(p => (p.data?.next_1_hours?.details?.precipitation_amount ?? 0) * 40),
+          winds: series.slice(0, 24).map(p => p.data?.instant?.details?.wind_speed * 3.6 ?? null),
         });
   
-        // Daily (approx, aggregate from series, but MET is short-term; fallback to null for longer days)
-        const dailyHighs = []; // Would need to group series by day, but for simplicity, use first day's max/min
         dailies.push({
           source: 'MET Norway',
-          highs: [Math.max(...temps)], // Only today reliably
+          highs: [Math.max(...temps)],
           lows: [Math.min(...temps)],
           rains: [rainProxy],
           uvs: [],
@@ -220,10 +219,11 @@ export default async function handler(req, res) {
         failures.push('MET Norway');
       }
   
-      // Aggregate hourly and daily medians
+      // Aggregate
       const aggregatedHourly = Array.from({length: 24}, (_, i) => ({
         temp: median(hourlies.map(h => h.temps[i]).filter(isNum)),
         rain: median(hourlies.map(h => h.rains[i]).filter(isNum)),
+        wind: median(hourlies.map(h => h.winds[i]).filter(isNum)),
       }));
   
       const aggregatedDaily = Array.from({length: 7}, (_, i) => ({
