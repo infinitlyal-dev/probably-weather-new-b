@@ -123,19 +123,21 @@
   }
 
   function showScreen(target) {
-    // Hide all screens first
-    Object.values(screens).forEach((el) => {
-      if (el) {
-        el.hidden = true;
+    // First, hide ALL screens (including hero/home)
+    Object.keys(screens).forEach((key) => {
+      const screen = screens[key];
+      if (screen) {
+        screen.hidden = true;
       }
     });
 
-    // Show the target screen
-    if (screens[target] && screens[target]) {
-      screens[target].hidden = false;
+    // Then, show only the target screen
+    const targetScreen = screens[target];
+    if (targetScreen) {
+      targetScreen.hidden = false;
     }
 
-    // Update active nav button
+    // Update active nav button state
     setActiveNav(target);
   }
 
@@ -276,7 +278,9 @@
   document.querySelectorAll(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const t = btn.dataset.target;
-      showScreen(t);
+      if (t) {
+        showScreen(t);
+      }
     });
   });
 
