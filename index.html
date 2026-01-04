@@ -8,6 +8,13 @@
 </head>
 
 <body>
+  <!-- Background system (must be first, behind everything) -->
+  <div id="bg">
+    <img id="bgImg" src="" alt="" />
+    <div id="scrim"></div>
+  </div>
+  <div id="particles"></div>
+
   <!-- subtle overlays (CSS handles them) -->
   <div class="overlay overlay--heat" aria-hidden="true"></div>
   <div class="overlay overlay--grain" aria-hidden="true"></div>
@@ -28,7 +35,7 @@
     </header>
 
     <main class="main" id="main">
-      <!-- Home “hero” -->
+      <!-- Home "hero" -->
       <section class="hero">
         <div class="hero-top">
           <div class="city" id="cityName">—</div>

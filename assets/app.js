@@ -39,6 +39,8 @@
     screenWeek: $("screen-week"),
     screenSearch: $("screen-search"),
     screenSettings: $("screen-settings"),
+
+    bgImg: $("bgImg"),
   };
 
   const screens = {
@@ -59,6 +61,58 @@
   const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : "—");
   const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : "—");
   const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : "—");
+
+  // Determine time of day based on current hour (local time)
+  function getTimeOfDay() {
+    const hour = new Date().getHours();
+    // Dawn: 5-7, Day: 7-18, Dusk: 18-20, Night: 20-5
+    if (hour >= 5 && hour < 7) return "dawn";
+    if (hour >= 7 && hour < 18) return "day";
+    if (hour >= 18 && hour < 20) return "dusk";
+    return "night";
+  }
+
+  // Get background image path based on conditionKey (all lowercase for Linux compatibility)
+  function getBackgroundImagePath(conditionKey, tempC) {
+    if (!conditionKey) conditionKey = "unknown";
+    
+    // Normalize to lowercase
+    const key = String(conditionKey).toLowerCase().trim();
+    
+    // Map conditionKey to folder name
+    const folder = C.assets.conditionToFolder[key] || C.assets.fallbackFolder;
+    
+    // Get time of day
+    const timeOfDay = getTimeOfDay();
+    
+    // Build path: /assets/images/bg/{folder}/{timeOfDay}.jpg
+    // All lowercase to match Linux case-sensitive filesystem
+    const imagePath = `${C.assets.bgBasePath}/${folder}/${timeOfDay}.jpg`;
+    
+    return imagePath;
+  }
+
+  // Set background image and apply body class
+  function setBackground(conditionKey, tempC) {
+    if (!dom.bgImg) return;
+    
+    // Get image path
+    const imagePath = getBackgroundImagePath(conditionKey, tempC);
+    
+    // Set image source
+    dom.bgImg.src = imagePath;
+    
+    // Apply body class for weather condition (lowercase, with weather- prefix)
+    // Remove all existing weather- classes first
+    document.body.className = document.body.className
+      .split(/\s+/)
+      .filter(c => !c.startsWith("weather-"))
+      .join(" ");
+    
+    // Add new weather class (normalize to lowercase)
+    const weatherClass = `weather-${String(conditionKey || "unknown").toLowerCase().trim()}`;
+    document.body.classList.add(weatherClass);
+  }
 
   function setActiveNav(target) {
     document.querySelectorAll(".nav-btn").forEach((b) => {
@@ -179,6 +233,9 @@
     renderTone(data.now?.conditionKey);
     renderConfidence(data.consensus?.confidenceKey);
     renderSources(data.meta?.sources);
+
+    // Set background image and body class based on condition
+    setBackground(data.now?.conditionKey, data.now?.tempC);
   }
 
   async function fetchWeather(city) {
@@ -204,7 +261,7 @@
 
     } catch (err) {
       console.error(err);
-      dom.searchHint.textContent = "Couldn’t load that city. Try another spelling.";
+      dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
       // keep old UI instead of wiping it out
     }
   }
@@ -229,6 +286,8 @@
   });
 
   // ---------- Boot ----------
+  // Set initial background (fallback) before data loads
+  setBackground("cloudy", null);
   showScreen("home");
   loadCity(state.city);
 })();

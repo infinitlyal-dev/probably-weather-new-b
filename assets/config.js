@@ -1,6 +1,6 @@
 // assets/config.js
 // Single source of truth for wording, thresholds, and endpoints.
-// This is how we avoid “functionality changes breaking look & feel”.
+// This is how we avoid "functionality changes breaking look & feel".
 
 window.PW_CONFIG = {
     appName: "Probably Weather",
@@ -8,6 +8,37 @@ window.PW_CONFIG = {
     endpoints: {
       // Vercel serverless function
       weather: "/api/weather",
+    },
+  
+    // Asset paths (all lowercase to match Linux case-sensitive filesystem)
+    assets: {
+      basePath: "/assets/images",
+      bgBasePath: "/assets/images/bg",
+      // Map conditionKey (from API) to folder name (must match folder names exactly, lowercase)
+      conditionToFolder: {
+        clear: "clear",
+        cloudy: "cloudy",
+        rain: "rain",
+        storm: "storm",
+        fog: "fog",
+        wind: "wind",
+        // Fallback for unknown conditions
+        unknown: "cloudy"
+      },
+      // Fallback folder if conditionKey doesn't match
+      fallbackFolder: "cloudy",
+      // Fallback image if time-of-day variant doesn't exist
+      fallbackImage: "/assets/images/bg/default.jpg",
+      // Time-of-day labels (all lowercase to match folder names)
+      timeOfDayLabels: ["dawn", "day", "dusk", "night"]
+    },
+  
+    // Temperature thresholds for cold/heat mapping (optional, if needed)
+    // Note: API doesn't return cold/heat as conditionKeys, but folders exist
+    // For now, we'll use conditionKey directly and fallback to cloudy if not found
+    temperature: {
+      coldThreshold: 10, // °C
+      heatThreshold: 25  // °C
     },
   
     // Confidence levels (based on how closely sources agree)
@@ -29,7 +60,7 @@ window.PW_CONFIG = {
       }
     },
   
-    // “Cloudy feels 50/50” — we bake that into copy + tone.
+    // "Cloudy feels 50/50" — we bake that into copy + tone.
     conditionTone: {
       clear: {
         title: "Clear",
@@ -39,7 +70,7 @@ window.PW_CONFIG = {
       cloudy: {
         title: "Cloudy",
         vibe: "50/50 weather.",
-        note: "Cloud can mean warm or cold — it’s the most ‘not sure’ forecast."
+        note: "Cloud can mean warm or cold — it's the most 'not sure' forecast."
       },
       rain: {
         title: "Rain",
@@ -54,7 +85,7 @@ window.PW_CONFIG = {
       unknown: {
         title: "Unclear",
         vibe: "Hard to call.",
-        note: "We’ll show what we can, but treat it as ‘mixed’ until it settles."
+        note: "We'll show what we can, but treat it as 'mixed' until it settles."
       }
     },
   
@@ -82,4 +113,3 @@ window.PW_CONFIG = {
       wind: "km/h"
     }
   };
-  
