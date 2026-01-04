@@ -4,6 +4,7 @@
 
   // ---------- DOM ----------
   const $ = (id) => document.getElementById(id);
+  const $q = (sel) => document.querySelector(sel);
 
   const dom = {
     subhead: $("subhead"),
@@ -35,6 +36,7 @@
 
     sourcesList: $("sourcesList"),
 
+    hero: $q(".hero"),
     screenHourly: $("screen-hourly"),
     screenWeek: $("screen-week"),
     screenSearch: $("screen-search"),
@@ -44,7 +46,7 @@
   };
 
   const screens = {
-    home: null,
+    home: dom.hero,
     hourly: dom.screenHourly,
     week: dom.screenWeek,
     search: dom.screenSearch,
@@ -121,15 +123,19 @@
   }
 
   function showScreen(target) {
-    // hide all overlay screens
+    // Hide all screens first
     Object.values(screens).forEach((el) => {
-      if (el) el.hidden = true;
+      if (el) {
+        el.hidden = true;
+      }
     });
 
-    if (target !== "home" && screens[target]) {
+    // Show the target screen
+    if (screens[target] && screens[target]) {
       screens[target].hidden = false;
     }
 
+    // Update active nav button
     setActiveNav(target);
   }
 
