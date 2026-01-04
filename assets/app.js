@@ -1,3 +1,4 @@
+// assets/app.js
 (() => {
   const C = window.PW_CONFIG;
   // ---------- DOM ----------
@@ -10,6 +11,7 @@
     countryName: $("countryName"),
     bigTemp: $("bigTemp"),
     conditionText: $("conditionText"),
+    wittyLine: $("wittyLine"), // New for witty line
     confidencePill: $("confidencePill"),
     confidenceNote: $("confidenceNote"),
     feelsLike: $("feelsLike"),
@@ -25,12 +27,15 @@
     searchBtn: $("searchBtn"),
     searchHint: $("searchHint"),
     sourcesList: $("sourcesList"),
+    header: $q(".header"),
     hero: $q(".hero"),
+    sidebar: $("sidebar"),
     screenHourly: $("screen-hourly"),
     screenWeek: $("screen-week"),
     screenSearch: $("screen-search"),
     screenSettings: $("screen-settings"),
     bgImg: $("bgImg"),
+    particles: $("particles"),
   };
   const screens = {
     home: dom.hero,
@@ -39,12 +44,6 @@
     search: dom.screenSearch,
     settings: dom.screenSettings,
   };
-  // Additional home-specific elements to hide/show explicitly (fallback if container hiding fails)
-  const homeElements = [
-    dom.subhead, dom.updatedAt, dom.cityName, dom.countryName, dom.bigTemp, dom.conditionText,
-    dom.confidencePill, dom.confidenceNote, dom.feelsLike, dom.windKph, dom.humidity, dom.rainChance,
-    dom.toneTitle, dom.toneVibe, dom.toneNote
-  ].filter(el => el); // Filter out nulls
   // ---------- State ----------
   let state = {
     city: "Cape Town",
@@ -54,54 +53,63 @@
   const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : "—");
   const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : "—");
   const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : "—");
-  // Determine time of day based on current hour (local time)
   function getTimeOfDay() {
     const hour = new Date().getHours();
-    // Dawn: 5-7, Day: 7-18, Dusk: 18-20, Night: 20-5
     if (hour >= 5 && hour < 7) return "dawn";
     if (hour >= 7 && hour < 18) return "day";
     if (hour >= 18 && hour < 20) return "dusk";
     return "night";
   }
-  // Get background image path based on conditionKey (all lowercase for Linux compatibility)
   function getBackgroundImagePath(conditionKey, tempC) {
     if (!conditionKey) conditionKey = "unknown";
-    
-    // Normalize to lowercase
     const key = String(conditionKey).toLowerCase().trim();
-    
-    // Map conditionKey to folder name
     const folder = C.assets.conditionToFolder[key] || C.assets.fallbackFolder;
-    
-    // Get time of day
     const timeOfDay = getTimeOfDay();
-    
-    // Build path: /assets/images/bg/{folder}/{timeOfDay}.jpg
-    // All lowercase to match Linux case-sensitive filesystem
     const imagePath = `${C.assets.bgBasePath}/${folder}/${timeOfDay}.jpg`;
-    
     return imagePath;
   }
-  // Set background image and apply body class
   function setBackground(conditionKey, tempC) {
     if (!dom.bgImg) return;
-    
-    // Get image path
     const imagePath = getBackgroundImagePath(conditionKey, tempC);
-    
-    // Set image source
     dom.bgImg.src = imagePath;
-    
-    // Apply body class for weather condition (lowercase, with weather- prefix)
-    // Remove all existing weather- classes first
     document.body.className = document.body.className
       .split(/\s+/)
       .filter(c => !c.startsWith("weather-"))
       .join(" ");
-    
-    // Add new weather class (normalize to lowercase)
     const weatherClass = `weather-${String(conditionKey || "unknown").toLowerCase().trim()}`;
     document.body.classList.add(weatherClass);
+  }
+  function setParticles(conditionKey) {
+    dom.particles.innerHTML = '';
+    const key = conditionKey?.toLowerCase() || 'unknown';
+    let numParticles = 0;
+    let particleClass = 'particle';
+    let animation = 'fall';
+    if (key === 'rain') {
+      numParticles = 100;
+      particleClass += ' rain-particle';
+      animation = 'fall';
+    } else if (key === 'storm') {
+      numParticles = 50;
+      particleClass += ' storm-particle';
+      animation = 'gust';
+    } else if (key === 'wind') {
+      numParticles = 30;
+      particleClass += ' wind-particle';
+      animation = 'gust';
+    } else if (key === 'fog') {
+      numParticles = 20;
+      particleClass += ' fog-particle';
+      animation = 'float';
+    } // Add more as needed
+    for (let i = 0; i < numParticles; i++) {
+      const p = document.createElement('div');
+      p.className = particleClass;
+      p.style.left = `${Math.random() * 100}%`;
+      p.style.animationDuration = `${Math.random() * 3 + 1}s`;
+      p.style.animationDelay = `${Math.random() * 2}s`;
+      dom.particles.appendChild(p);
+    }
   }
   function setActiveNav(target) {
     document.querySelectorAll(".nav-btn").forEach((b) => {
@@ -109,34 +117,40 @@
     });
   }
   function showScreen(target) {
-    // First, hide ALL screens using inline style for priority
+    // Hide all screens
     Object.keys(screens).forEach((key) => {
       const screen = screens[key];
       if (screen) {
         screen.style.display = 'none';
       }
     });
-    // Then, show only the target screen
+    // Show target screen
     const targetScreen = screens[target];
     if (targetScreen) {
       targetScreen.style.display = 'block';
     }
-    // Explicitly hide/show home-specific elements (in case not fully contained)
+    // Home-specific: show/hide header, sidebar, hero
     if (target === 'home') {
-      homeElements.forEach(el => el.style.display = '');
+      dom.header.style.display = 'flex';
+      dom.sidebar.style.display = 'block';
+      dom.hero.style.display = 'block';
     } else {
-      homeElements.forEach(el => el.style.display = 'none');
+      dom.header.style.display = 'none';
+      dom.sidebar.style.display = 'none';
+      dom.hero.style.display = 'none';
     }
-    // Update active nav button state
     setActiveNav(target);
   }
   function pickToneKey(conditionKey) {
     if (!conditionKey) return "unknown";
-    if (conditionKey === "storm") return "storm";
-    if (conditionKey === "rain") return "rain";
-    if (conditionKey === "cloudy") return "cloudy";
-    if (conditionKey === "clear") return "clear";
-    return "unknown";
+    const key = conditionKey.toLowerCase();
+    return C.conditionTone[key] ? key : "unknown";
+  }
+  function getWitty(conditionKey, isWeekend) {
+    const key = pickToneKey(conditionKey);
+    const t = C.conditionTone[key] || C.conditionTone.unknown;
+    if (isWeekend && key === 'clear') return "Braai weather, boet!";
+    return t.vibe;
   }
   function renderTone(conditionKey) {
     const key = pickToneKey(conditionKey);
@@ -165,12 +179,11 @@
       dom.hourlyList.textContent = "No hourly data.";
       return;
     }
-    // Shift to start from approximate current hour (using browser time as proxy; improve with TZ later)
     const currentHour = new Date().getHours();
     const shiftedHourly = hourly.slice(currentHour).concat(hourly.slice(0, currentHour));
     const frag = document.createDocumentFragment();
     shiftedHourly.forEach((h, index) => {
-      const isTomorrow = index < (24 - currentHour) ? false : true;
+      const isTomorrow = index >= (24 - currentHour);
       const timeLabel = isTomorrow ? `Tomorrow ${h.timeLocal}` : h.timeLocal;
       const row = document.createElement("div");
       row.className = "row";
@@ -211,8 +224,12 @@
   function renderHome(data) {
     dom.cityName.textContent = data.location?.name || state.city || "—";
     dom.countryName.textContent = data.location?.country || "—";
-    dom.bigTemp.textContent = fmtTemp(data.now?.tempC);
-    dom.conditionText.textContent = data.now?.conditionLabel || "—";
+    // Use daily range for bigTemp
+    const today = data.daily?.[0] || {};
+    dom.bigTemp.textContent = `${fmtTemp(today.lowC)}—${fmtTemp(today.highC)}`;
+    dom.conditionText.textContent = `This is ${data.now?.conditionLabel?.toLowerCase() || "unclear"}.`;
+    const isWeekend = new Date().getDay() >= 5 || new Date().getDay() === 0;
+    dom.wittyLine.textContent = getWitty(data.now?.conditionKey, isWeekend);
     dom.updatedAt.textContent = data.meta?.updatedAtLabel || "—";
     dom.feelsLike.textContent = fmtTemp(data.now?.feelsLikeC);
     dom.windKph.textContent = fmtWind(data.now?.windKph);
@@ -221,8 +238,8 @@
     renderTone(data.now?.conditionKey);
     renderConfidence(data.consensus?.confidenceKey, data);
     renderSources(data.meta?.sources);
-    // Set background image and body class based on condition
     setBackground(data.now?.conditionKey, data.now?.tempC);
+    setParticles(data.now?.conditionKey);
   }
   async function fetchWeather(city) {
     const url = `${C.endpoints.weather}?q=${encodeURIComponent(city)}`;
@@ -245,14 +262,13 @@
     } catch (err) {
       console.error(err);
       dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
-      // keep old UI instead of wiping it out
     }
   }
   // ---------- Events ----------
   document.querySelectorAll(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const t = btn.dataset.target;
-      if (t && screens[t]) { // Safety check
+      if (t && screens[t]) {
         showScreen(t);
       }
     });
@@ -267,14 +283,8 @@
     if (e.key === "Enter") dom.searchBtn.click();
   });
   // ---------- Boot ----------
-  // Set initial background (fallback) before data loads
   setBackground("cloudy", null);
-  // Initially hide all screens except home
-  Object.keys(screens).forEach((key) => {
-    const screen = screens[key];
-    if (screen) {
-      screen.style.display = (key === 'home' ? 'block' : 'none');
-    }
-  });
+  setParticles("cloudy");
+  showScreen("home");
   loadCity(state.city);
 })();
