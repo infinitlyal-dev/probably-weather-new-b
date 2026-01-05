@@ -254,31 +254,56 @@
     if (dom.toneNote) dom.toneNote.textContent = t.note || "We'll show what we can.";
   }
   function renderConfidence(confKey, data) {
-    const conf = C.confidence[confKey] || C.confidence.mixed;
-    const confLabel = conf.label || "Mixed";
-    const confLevel = confLabel === 'Strong' ? 'High' : confLabel === 'Decent' ? 'Medium' : 'Low';
+    // Safe default config if C.confidence is missing
+    const cfg = (C && C.confidence) ? C.confidence : { high: 0.72, mixed: 0.50 };
+    
+    // Determine forecast count from various possible fields
+    const count = data?.sourcesUsed?.length ?? data?.usedSources?.length ?? data?.sources?.length ?? data?.meta?.sourcesUsed?.length ?? (data?.meta?.sources ? data.meta.sources.filter(s => s && s.ok).length : 0);
+    
+    // Determine confidence level - prioritize confKey if available, then score, then default
+    let level = "Medium"; // Default
+    if (confKey && cfg[confKey]) {
+      // Use confKey mapping if available
+      const conf = cfg[confKey];
+      const confLabel = conf?.label || "Mixed";
+      level = confLabel === 'Strong' ? 'High' : confLabel === 'Decent' ? 'Medium' : 'Low';
+    } else {
+      // Fallback to score-based determination
+      const score = data?.agreementScore ?? data?.agreement ?? data?.confidence?.score ?? null;
+      if (score !== null && score !== undefined) {
+        if (score >= (cfg.high || 0.72)) {
+          level = "High";
+        } else if (score >= (cfg.mixed || 0.50)) {
+          level = "Medium";
+        } else {
+          level = "Low";
+        }
+      }
+    }
     
     // Update confidence badge in hero
     if (dom.confidencePill) {
-      dom.confidencePill.textContent = `PROBABLY · ${confLabel.toUpperCase()} CONFIDENCE`;
+      const badgeLabel = level === 'High' ? 'STRONG' : level === 'Medium' ? 'DECENT' : 'MIXED';
+      dom.confidencePill.textContent = `PROBABLY · ${badgeLabel} CONFIDENCE`;
     }
     
-    // Update confidence card
+    // Update confidence card with exact wording
     if (dom.confidenceLevel) {
-      dom.confidenceLevel.textContent = confLevel;
+      dom.confidenceLevel.textContent = `Confidence: ${level}`;
     }
     
-    // Count active sources
-    const sourceCount = data?.meta?.sources ? data.meta.sources.filter(s => s.ok).length : 3;
+    // Update explanation with exact wording
     if (dom.confidenceExplanation) {
-      dom.confidenceExplanation.textContent = `Based on ${sourceCount} forecasts →`;
+      dom.confidenceExplanation.textContent = `Based on ${count} forecasts →`;
     }
     
-    // Update note and bar
-    if (dom.confidenceNote) {
-      dom.confidenceNote.textContent = conf.long || "Sources disagree — this is classic 50/50 weather.";
+    // Update note and bar (safe access)
+    if (dom.confidenceNote && cfg[confKey] && cfg[confKey].long) {
+      dom.confidenceNote.textContent = cfg[confKey].long;
+    } else if (dom.confidenceNote) {
+      dom.confidenceNote.textContent = "Sources disagree — this is classic 50/50 weather.";
     }
-    const barWidth = confLabel === 'Strong' ? 100 : confLabel === 'Decent' ? 66 : 33;
+    const barWidth = level === 'High' ? 100 : level === 'Medium' ? 66 : 33;
     if (dom.confidenceBar) {
       dom.confidenceBar.style.width = `${barWidth}%`;
     }
