@@ -287,9 +287,9 @@
       dom.confidencePill.textContent = `PROBABLY · ${badgeLabel} CONFIDENCE`;
     }
     
-    // Update confidence card with exact wording
+    // Update confidence card - label is separate, value is just the level
     if (dom.confidenceLevel) {
-      dom.confidenceLevel.textContent = `Confidence: ${level}`;
+      dom.confidenceLevel.textContent = level;
     }
     
     // Update explanation with exact wording
@@ -428,7 +428,7 @@
     if (dom.wittyLine) dom.wittyLine.textContent = witty || getWittyFallback(vibeBucket);
     
     // Sidebar cards
-    // Today's extreme
+    // Today's extreme - format: condition on first line, temp on second line
     if (dom.todayExtreme) {
       const conditionLabel = data?.now?.conditionLabel || today.conditionLabel || "Clear";
       if (Number.isFinite(today.highC) && Number.isFinite(today.lowC)) {
