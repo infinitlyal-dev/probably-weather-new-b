@@ -1,3 +1,4 @@
+// assets/app.js
 (() => {
   const C = window.PW_CONFIG;
   // ---------- DOM ----------
@@ -10,18 +11,13 @@
     countryName: $("countryName"),
     bigTemp: $("bigTemp"),
     conditionText: $("conditionText"),
-    wittyLine: $("wittyLine"),
+    wittyLine: $("wittyLine"), // New for witty line
     confidencePill: $("confidencePill"),
     confidenceNote: $("confidenceNote"),
-    confidenceBar: $("confidenceBar"),
-    todayExtreme: $("todayExtreme"),
-    rainChance: $("rainChance"),
-    uvIndex: $("uvIndex"),
-    confidenceLevel: $("confidenceLevel"),
-    confidenceExplanation: $("confidenceExplanation"),
     feelsLike: $("feelsLike"),
     windKph: $("windKph"),
     humidity: $("humidity"),
+    rainChance: $("rainChance"),
     toneTitle: $("toneTitle"),
     toneVibe: $("toneVibe"),
     toneNote: $("toneNote"),
@@ -54,98 +50,9 @@
     lastData: null,
   };
   // ---------- Helpers ----------
-  const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : null);
-  const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : null);
-  const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : null);
-  const fmtUV = (n) => (Number.isFinite(n) ? `${Math.round(n)}` : null);
-
-  // Simple hash function for deterministic variant selection
-  function simpleHash(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash;
-    }
-    return Math.abs(hash);
-  }
-
-  // Get vibe bucket from conditionKey and tempC
-  function getVibeBucket(conditionKey, tempC) {
-    if (!conditionKey) conditionKey = "unknown";
-    const key = String(conditionKey).toLowerCase().trim();
-    
-    // OVERRIDES: storm/rain/fog/wind ALWAYS win if conditionKey indicates them
-    if (key === "storm") return "STORMY";
-    if (key === "rain") return "RAINY";
-    if (key === "fog") return "FOGGY";
-    if (key === "wind") return "WINDY";
-    
-    // PRIMARY: map conditionKey → bucket
-    if (key === "clear") {
-      // Temp-based hot/cold only for neutral conditions (cloudy/clear)
-      if (Number.isFinite(tempC)) {
-        if (tempC < 10) return "COLD";
-        if (tempC > 25) return "HOT";
-      }
-      return "CLEAR";
-    }
-    if (key === "cloudy") {
-      // Temp-based hot/cold only for neutral conditions
-      if (Number.isFinite(tempC)) {
-        if (tempC < 10) return "COLD";
-        if (tempC > 25) return "HOT";
-      }
-      return "CLOUDY";
-    }
-    
-    // Temp-based hot/cold only when conditionKey is missing/unknown
-    if (key === "unknown" && Number.isFinite(tempC)) {
-      if (tempC < 10) return "COLD";
-      if (tempC > 25) return "HOT";
-    }
-    
-    // Default fallback
-    return "CLOUDY";
-  }
-
-  // Vibe variant definitions
-  const vibeVariants = {
-    CLEAR: ["This is clear.", "Clear and calm.", "Good weather today."],
-    CLOUDY: ["This is cloudy.", "It's one of those days.", "Mostly just cloudy."],
-    RAINY: ["This is rainy.", "Rain is in charge today.", "It's a wet one."],
-    STORMY: ["This is stormy.", "Storms are the story today.", "Rough weather out there."],
-    WINDY: ["This is windy.", "Wind has opinions today.", "Hold onto your hat."],
-    COLD: ["This is cold.", "Properly cold today.", "Cold enough to feel it."],
-    HOT: ["This is hot.", "Hot and heavy.", "Heat is the story today."],
-    FOGGY: ["This is foggy.", "Low visibility kind of day.", "Mist everywhere."]
-  };
-
-  // Get deterministic vibe variant
-  function getVibeVariant(vibeBucket, locationName, date) {
-    const variants = vibeVariants[vibeBucket] || vibeVariants.CLOUDY;
-    const dateStr = date ? date.toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
-    const seed = (locationName || "") + dateStr;
-    const hash = simpleHash(seed);
-    const index = hash % variants.length;
-    return variants[index];
-  }
-
-  // Witty line fallbacks per vibe bucket
-  function getWittyFallback(vibeBucket) {
-    const fallbacks = {
-      CLEAR: "Not always braai on a clear day.",
-      CLOUDY: "Cloudy means maybe.",
-      RAINY: "Rain changes plans.",
-      STORMY: "Storms demand respect.",
-      WINDY: "Wind has its say.",
-      COLD: "Cold is cold.",
-      HOT: "Heat is the story.",
-      FOGGY: "Fog hides things."
-    };
-    return fallbacks[vibeBucket] || "Weather is weather.";
-  }
-
+  const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : "—");
+  const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : "—");
+  const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : "—");
   function getTimeOfDay() {
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 7) return "dawn";
@@ -173,7 +80,7 @@
     document.body.classList.add(weatherClass);
   }
   function setParticles(conditionKey) {
-    dom.particles.innerHTML = "";
+    dom.particles.innerHTML = '';
     const key = conditionKey?.toLowerCase() || 'unknown';
     let numParticles = 0;
     let particleClass = 'particle';
@@ -194,7 +101,7 @@
       numParticles = 20;
       particleClass += ' fog-particle';
       animation = 'float';
-    }
+    } // Add more as needed
     for (let i = 0; i < numParticles; i++) {
       const p = document.createElement('div');
       p.className = particleClass;
@@ -239,113 +146,60 @@
     const key = conditionKey.toLowerCase();
     return C.conditionTone[key] ? key : "unknown";
   }
-  function getWitty(conditionKey, isWeekend, vibeBucket) {
+  function getWitty(conditionKey, isWeekend) {
     const key = pickToneKey(conditionKey);
     const t = C.conditionTone[key] || C.conditionTone.unknown;
     if (isWeekend && key === 'clear') return "Braai weather, boet!";
-    if (t.vibe && t.vibe.trim()) return t.vibe;
-    return getWittyFallback(vibeBucket);
+    return t.vibe;
   }
   function renderTone(conditionKey) {
     const key = pickToneKey(conditionKey);
     const t = C.conditionTone[key] || C.conditionTone.unknown;
-    if (dom.toneTitle) dom.toneTitle.textContent = t.title || "Unclear";
-    if (dom.toneVibe) dom.toneVibe.textContent = t.vibe || "Hard to call.";
-    if (dom.toneNote) dom.toneNote.textContent = t.note || "We'll show what we can.";
+    dom.toneTitle.textContent = t.title;
+    dom.toneVibe.textContent = t.vibe;
+    dom.toneNote.textContent = t.note;
   }
   function renderConfidence(confKey, data) {
-    // Safe default config if C.confidence is missing
-    const cfg = (C && C.confidence) ? C.confidence : { high: 0.72, mixed: 0.50 };
-    
-    // Determine forecast count from various possible fields
-    const count = data?.sourcesUsed?.length ?? data?.usedSources?.length ?? data?.sources?.length ?? data?.meta?.sourcesUsed?.length ?? (data?.meta?.sources ? data.meta.sources.filter(s => s && s.ok).length : 0);
-    
-    // Map confKey to text, width, color, and explanation
-    let pillText, barWidth, barColor, levelText, explanation;
-    
-    if (confKey === 'strong') {
-      pillText = 'HIGH CONFIDENCE';
-      barWidth = 100;
-      barColor = '#4caf50';
-      levelText = 'High';
-      explanation = 'Sources agree well—high confidence.';
-    } else if (confKey === 'decent') {
-      pillText = 'DECENT CONFIDENCE';
-      barWidth = 75;
-      barColor = '#ff9800';
-      levelText = 'Decent';
-      explanation = 'Mostly aligned, minor differences.';
-    } else {
-      // mixed or fallback
-      pillText = 'LOW CONFIDENCE';
-      barWidth = 40;
-      barColor = '#f44336';
-      levelText = 'Low';
-      explanation = 'Sources disagree—take with caution.';
-    }
-    
-    // Update confidence badge in hero (uppercase pill)
-    if (dom.confidencePill) {
-      dom.confidencePill.textContent = `PROBABLY · ${pillText}`;
-    }
-    
-    // Update confidence bar (dynamic width and color)
-    if (dom.confidenceBar) {
-      dom.confidenceBar.style.width = `${barWidth}%`;
-      dom.confidenceBar.style.backgroundColor = barColor;
-    }
-    
-    // Update confidence note (append aggregated sources)
-    if (dom.confidenceNote) {
-      const baseNote = explanation || 'Sources disagree — this is classic 50/50 weather.';
-      dom.confidenceNote.textContent = `${baseNote} Aggregated from ${count} sources.`;
-    }
-    
-    // Update sidebar confidence card
-    if (dom.confidenceLevel) {
-      dom.confidenceLevel.textContent = levelText;
-    }
-    
-    if (dom.confidenceExplanation) {
-      dom.confidenceExplanation.textContent = explanation || 'Sources disagree—take with caution.';
-    }
+    const conf = C.confidence[confKey] || C.confidence.mixed;
+    dom.confidencePill.textContent = `${conf.label} Agreement`;
+    dom.confidenceNote.textContent = `${conf.long} Based on ${data.meta?.sources?.length || 0} sources.`;
   }
   function renderSources(list) {
     if (!Array.isArray(list) || list.length === 0) {
-      if (dom.sourcesList) dom.sourcesList.textContent = "No sources available";
+      dom.sourcesList.textContent = "—";
       return;
     }
-    if (dom.sourcesList) {
-      dom.sourcesList.textContent = list
-        .map((s) => `${s.name}${s.ok ? "" : " (down)"}`)
-        .join(" • ");
-    }
+    dom.sourcesList.textContent = list
+      .map((s) => `${s.name}${s.ok ? "" : " (down)"}`)
+      .join(" • ");
   }
   function renderHourly(hourly) {
-    if (!dom.hourlyList) return;
     dom.hourlyList.innerHTML = "";
     if (!Array.isArray(hourly) || hourly.length === 0) {
       dom.hourlyList.textContent = "No hourly data.";
       return;
     }
+    const currentHour = new Date().getHours();
+    const shiftedHourly = hourly.slice(currentHour).concat(hourly.slice(0, currentHour));
     const frag = document.createDocumentFragment();
-    hourly.slice(0, 24).forEach((h) => {
+    shiftedHourly.forEach((h, index) => {
+      const isTomorrow = index >= (24 - currentHour);
+      const timeLabel = isTomorrow ? `Tomorrow ${h.timeLocal}` : h.timeLocal;
       const row = document.createElement("div");
       row.className = "row";
       row.innerHTML = `
         <div class="row-left">
-          <div class="row-time">${h.timeLocal || "—"}</div>
+          <div class="row-time">${timeLabel || "—"}</div>
           <div class="row-small">${h.conditionLabel || ""}</div>
         </div>
-        <div class="row-mid">${fmtTemp(h.tempC) || "—"}</div>
-        <div class="row-right">${fmtPct(h.rainChance) || "—"} • ${fmtWind(h.windKph) || "—"}</div>
+        <div class="row-mid">${fmtTemp(h.tempC)}</div>
+        <div class="row-right">${fmtPct(h.rainChance)} • ${fmtWind(h.windKph)}</div>
       `;
       frag.appendChild(row);
     });
     dom.hourlyList.appendChild(frag);
   }
   function renderWeek(days) {
-    if (!dom.weekList) return;
     dom.weekList.innerHTML = "";
     if (!Array.isArray(days) || days.length === 0) {
       dom.weekList.textContent = "No weekly data.";
@@ -360,142 +214,32 @@
           <div class="row-time">${d.dayLabel || d.dateLocal || "—"}</div>
           <div class="row-small">${d.conditionLabel || ""}</div>
         </div>
-        <div class="row-mid">${fmtTemp(d.highC) || "—"} / ${fmtTemp(d.lowC) || "—"}</div>
-        <div class="row-right">${fmtPct(d.rainChance) || "—"}${Number.isFinite(d.uv) ? ` • UV ${Math.round(d.uv)}` : ""}</div>
+        <div class="row-mid">${fmtTemp(d.highC)} / ${fmtTemp(d.lowC)}</div>
+        <div class="row-right">${fmtPct(d.rainChance)}${Number.isFinite(d.uv) ? ` • UV ${Math.round(d.uv)}` : ""}</div>
       `;
       frag.appendChild(row);
     });
     dom.weekList.appendChild(frag);
   }
-  // Province abbreviation mapping for South Africa
-  function getProvinceAbbrev(admin1) {
-    if (!admin1) return null;
-    const abbrevMap = {
-      "Western Cape": "WC",
-      "Eastern Cape": "EC",
-      "Northern Cape": "NC",
-      "Free State": "FS",
-      "KwaZulu-Natal": "KZN",
-      "Gauteng": "GP",
-      "Limpopo": "LP",
-      "Mpumalanga": "MP",
-      "North West": "NW"
-    };
-    return abbrevMap[admin1] || null;
-  }
-
   function renderHome(data) {
-    // Defensive fallbacks for all fields
-    const locationName = data?.location?.name || state.city || "Unknown";
-    const country = data?.location?.country || "";
-    const tempC = data?.now?.tempC;
-    const conditionKey = data?.now?.conditionKey;
-    const daily = data?.daily || [];
-    const today = daily[0] || {};
-    
-    // City and location suffix (province abbrev or country code)
-    const admin1Abbrev = getProvinceAbbrev(data?.location?.admin1);
-    const suffix = admin1Abbrev || data?.location?.countryCode || "";
-    const locationDisplay = suffix ? `${locationName}, ${suffix}` : locationName;
-    if (dom.cityName) dom.cityName.textContent = locationDisplay;
-    if (dom.countryName) dom.countryName.textContent = "";
-    
-    // Updated time
-    if (dom.updatedAt) {
-      dom.updatedAt.textContent = data?.meta?.updatedAtLabel || new Date().toLocaleString();
-    }
-    
-    // Get vibe bucket and variant
-    const vibeBucket = getVibeBucket(conditionKey, tempC);
-    const todayDate = new Date();
-    const vibeStatement = getVibeVariant(vibeBucket, locationName, todayDate);
-    
-    // Render vibe statement (primary headline)
-    if (dom.conditionText) dom.conditionText.textContent = vibeStatement;
-    
-    // Calculate temp range from daily[0] if available, otherwise use current temp
-    let tempDisplay = "";
-    if (Number.isFinite(today.highC) && Number.isFinite(today.lowC)) {
-      tempDisplay = `${Math.round(today.lowC)}–${Math.round(today.highC)}°${C.units.temp}`;
-    } else if (Number.isFinite(tempC)) {
-      tempDisplay = `${Math.round(tempC)}°${C.units.temp}`;
-    } else {
-      tempDisplay = "—";
-    }
-    if (dom.bigTemp) dom.bigTemp.textContent = tempDisplay;
-    
-    // Witty line (never blank)
-    const isWeekend = todayDate.getDay() === 0 || todayDate.getDay() === 6;
-    const witty = getWitty(conditionKey, isWeekend, vibeBucket);
-    if (dom.wittyLine) dom.wittyLine.textContent = witty || getWittyFallback(vibeBucket);
-    
-    // Sidebar cards
-    // Today's extreme - format: "Condition high-low°"
-    if (dom.todayExtreme) {
-      const conditionLabel = data?.now?.conditionLabel || today.conditionLabel || "Clear";
-      if (Number.isFinite(today.highC) && Number.isFinite(today.lowC)) {
-        dom.todayExtreme.textContent = `${conditionLabel} ${Math.round(today.highC)}–${Math.round(today.lowC)}°${C.units.temp}`;
-      } else if (Number.isFinite(tempC)) {
-        dom.todayExtreme.textContent = `${conditionLabel} ${Math.round(tempC)}°${C.units.temp}`;
-      } else {
-        dom.todayExtreme.textContent = conditionLabel;
-      }
-    }
-    
-    // Rain - descriptive: "None expected" if 0%, "Low chance" if low, else percentage
-    if (dom.rainChance) {
-      const rainPct = data?.now?.rainChance ?? today.rainChance;
-      if (!Number.isFinite(rainPct) || rainPct === 0) {
-        dom.rainChance.textContent = "None expected";
-      } else if (rainPct < 30) {
-        dom.rainChance.textContent = "Low chance";
-      } else {
-        dom.rainChance.textContent = `${Math.round(rainPct)}%`;
-      }
-    }
-    
-    // UV - descriptive: "High (n)" if >6, "Moderate (n)" if 3-6, "Low (n)" if <3
-    if (dom.uvIndex) {
-      const uv = data?.now?.uv ?? today.uv;
-      if (Number.isFinite(uv)) {
-        if (uv >= 6) {
-          dom.uvIndex.textContent = `High (${Math.round(uv)})`;
-        } else if (uv >= 3) {
-          dom.uvIndex.textContent = `Moderate (${Math.round(uv)})`;
-        } else if (uv > 0) {
-          dom.uvIndex.textContent = `Low (${Math.round(uv)})`;
-        } else {
-          dom.uvIndex.textContent = "—";
-        }
-      } else {
-        dom.uvIndex.textContent = "—";
-      }
-    }
-    
-    // Confidence (rendered separately with exact wording)
-    renderConfidence(data?.consensus?.confidenceKey, data);
-    
-    // Legacy fields (keep for compatibility)
-    if (dom.feelsLike) {
-      const feels = fmtTemp(data?.now?.feelsLikeC);
-      dom.feelsLike.textContent = feels || "—";
-    }
-    if (dom.windKph) {
-      const wind = fmtWind(data?.now?.windKph);
-      dom.windKph.textContent = wind || "—";
-    }
-    if (dom.humidity) {
-      const hum = fmtPct(data?.now?.humidity);
-      dom.humidity.textContent = hum || "—";
-    }
-    
-    // Tone and sources
-    renderTone(conditionKey);
-    renderSources(data?.meta?.sources);
-    
-    // Background and particles
-    setBackground(conditionKey, tempC);
-    setParticles(conditionKey);
+    dom.cityName.textContent = data.location?.name || state.city || "—";
+    dom.countryName.textContent = data.location?.country || "—";
+    // Use daily range for bigTemp
+    const today = data.daily?.[0] || {};
+    dom.bigTemp.textContent = `${fmtTemp(today.lowC)}—${fmtTemp(today.highC)}`;
+    dom.conditionText.textContent = `This is ${data.now?.conditionLabel?.toLowerCase() || "unclear"}.`;
+    const isWeekend = new Date().getDay() >= 5 || new Date().getDay() === 0;
+    dom.wittyLine.textContent = getWitty(data.now?.conditionKey, isWeekend);
+    dom.updatedAt.textContent = data.meta?.updatedAtLabel || "—";
+    dom.feelsLike.textContent = fmtTemp(data.now?.feelsLikeC);
+    dom.windKph.textContent = fmtWind(data.now?.windKph);
+    dom.humidity.textContent = fmtPct(data.now?.humidity);
+    dom.rainChance.textContent = fmtPct(data.now?.rainChance);
+    renderTone(data.now?.conditionKey);
+    renderConfidence(data.consensus?.confidenceKey, data);
+    renderSources(data.meta?.sources);
+    setBackground(data.now?.conditionKey, data.now?.tempC);
+    setParticles(data.now?.conditionKey);
   }
   async function fetchWeather(city) {
     const url = `${C.endpoints.weather}?q=${encodeURIComponent(city)}`;
@@ -507,7 +251,7 @@
     return res.json();
   }
   async function loadCity(city) {
-    if (dom.searchHint) dom.searchHint.textContent = "";
+    dom.searchHint.textContent = "";
     try {
       state.city = city;
       const data = await fetchWeather(city);
@@ -517,31 +261,27 @@
       renderWeek(data.daily);
     } catch (err) {
       console.error(err);
-      if (dom.searchHint) dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
+      dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
     }
   }
   // ---------- Events ----------
   document.querySelectorAll(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const t = btn.dataset.target;
-      if (t) {
+      if (t && screens[t]) {
         showScreen(t);
       }
     });
   });
-  if (dom.searchBtn) {
-    dom.searchBtn.addEventListener("click", () => {
-      const v = (dom.searchInput?.value || "").trim();
-      if (!v) return;
-      loadCity(v);
-      showScreen("home");
-    });
-  }
-  if (dom.searchInput) {
-    dom.searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && dom.searchBtn) dom.searchBtn.click();
-    });
-  }
+  dom.searchBtn.addEventListener("click", () => {
+    const v = (dom.searchInput.value || "").trim();
+    if (!v) return;
+    loadCity(v);
+    showScreen("home");
+  });
+  dom.searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") dom.searchBtn.click();
+  });
   // ---------- Boot ----------
   setBackground("cloudy", null);
   setParticles("cloudy");

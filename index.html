@@ -22,10 +22,9 @@
   <div class="container">
     <header class="header">
       <div class="brand">
-        <div class="logo" aria-hidden="true" style="display: none;">PW</div>
+        <div class="logo" aria-hidden="true">PW</div>
         <div>
           <div class="brand-title">Probably Weather</div>
-          <div class="city" id="cityName">—</div>
           <div class="brand-sub" id="subhead">No more Ja-No-Maybe weather. Just Probably.</div>
         </div>
       </div>
@@ -38,15 +37,19 @@
     <main class="main" id="main">
       <!-- Home "hero" -->
       <section class="hero">
+        <div class="hero-top">
+          <div class="city" id="cityName">—</div>
+          <div class="country" id="countryName">—</div>
+        </div>
+
         <div class="hero-mid">
-          <div class="confidence-badge" id="confidencePill">PROBABLY · MIXED CONFIDENCE</div>
-          <div class="vibe-statement" id="conditionText">This is cloudy.</div>
           <div class="bigtemp" id="bigTemp">—</div>
+          <div class="condition" id="conditionText">—</div>
           <div class="witty" id="wittyLine">—</div>
         </div>
 
         <div class="hero-bottom">
-          <div id="confidenceBar" class="confidence-bar"></div>
+          <div class="pill" id="confidencePill">—</div>
           <div class="note" id="confidenceNote">—</div>
         </div>
       </section>
@@ -94,24 +97,20 @@
 
     <aside class="sidebar" id="sidebar">
       <div class="card">
-        <div class="card-label">Today's extreme:</div>
-        <div class="card-value" id="todayExtreme">—</div>
+        <div class="card-title">Details</div>
+        <div class="kv">
+          <div class="k">Feels like</div><div class="v" id="feelsLike">—</div>
+          <div class="k">Wind</div><div class="v" id="windKph">—</div>
+          <div class="k">Humidity</div><div class="v" id="humidity">—</div>
+          <div class="k">Rain chance</div><div class="v" id="rainChance">—</div>
+        </div>
       </div>
 
       <div class="card">
-        <div class="card-label">Rain:</div>
-        <div class="card-value" id="rainChance">—</div>
-      </div>
-
-      <div class="card">
-        <div class="card-label">UV</div>
-        <div class="card-value" id="uvIndex">—</div>
-      </div>
-
-      <div class="card">
-        <div class="card-label">Confidence:</div>
-        <div class="card-value" id="confidenceLevel">—</div>
-        <div class="card-note" id="confidenceExplanation">—</div>
+        <div class="card-title">Tone</div>
+        <div class="tone-title" id="toneTitle">—</div>
+        <div class="tone-vibe" id="toneVibe">—</div>
+        <div class="tone-note" id="toneNote">—</div>
       </div>
     </aside>
 
@@ -124,6 +123,7 @@
     </nav>
   </div>
 
+  <!-- IMPORTANT: config loads BEFORE app.js -->
   <script src="assets/config.js"></script>
   <script src="assets/app.js"></script>
 </body>

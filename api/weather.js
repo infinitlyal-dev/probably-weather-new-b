@@ -19,8 +19,6 @@ export default async function handler(req, res) {
     const lon = place.longitude;
     const name = place.name;
     const country = place.country || "";
-    const countryCode = place.country_code || "";
-    const admin1 = place.admin1 || "";
 
     // Helpers
     const isNum = (v) => typeof v === "number" && Number.isFinite(v);
@@ -235,7 +233,7 @@ export default async function handler(req, res) {
     }
 
     const payload = {
-      location: { name, country, lat, lon, countryCode, admin1 },
+      location: { name, country, lat, lon },
       now: { tempC, feelsLikeC, humidity, windKph, rainChance, conditionKey, conditionLabel },
       consensus: { confidenceKey },
       meta: {
