@@ -38,7 +38,10 @@
       <!-- Home "hero" -->
       <section class="hero">
         <div class="hero-top">
-          <div class="city" id="cityName">—</div>
+          <div class="city-group">
+            <div class="city" id="cityName">—</div>
+            <button class="star" id="savePlace" aria-label="Save this place">★</button>
+          </div>
           <div class="country" id="countryName">—</div>
         </div>
 
@@ -71,6 +74,7 @@
           <input id="searchInput" class="search" type="text" placeholder="Search a city…" />
           <button id="searchBtn" class="btn">Search</button>
           <div class="search-hint" id="searchHint"></div>
+          <div id="searchResults"></div> <!-- For results list -->
         </div>
       </section>
 
@@ -87,6 +91,13 @@
 
           <div class="setting-row">
             <div>
+              <div class="setting-title">Language</div>
+              <label><input type="checkbox" id="wittyToggle" checked> Human (witty lines)</label>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
               <div class="setting-title">Sources</div>
               <div class="setting-sub" id="sourcesList">—</div>
             </div>
@@ -96,13 +107,34 @@
     </main>
 
     <aside class="sidebar" id="sidebar">
+      <div class="card" id="extremeCard">
+        <div class="card-title">Today's extreme</div>
+        <div class="extreme-value" id="extremeValue">—</div>
+      </div>
+
+      <div class="card" id="rainCard">
+        <div class="card-title">Rain</div>
+        <div class="rain-value" id="rainValue">—</div>
+      </div>
+
+      <div class="card" id="uvCard">
+        <div class="card-title">UV</div>
+        <div class="uv-value" id="uvValue">—</div>
+      </div>
+
+      <div class="card" id="confidenceCard">
+        <div class="card-title">Confidence</div>
+        <div class="confidence-level" id="confidenceLevel">—</div>
+        <div class="confidence-bar" id="confidenceBar"></div>
+        <div class="confidence-sources" id="confidenceSources">Aggregated from 3 sources</div>
+      </div>
+
       <div class="card">
         <div class="card-title">Details</div>
         <div class="kv">
           <div class="k">Feels like</div><div class="v" id="feelsLike">—</div>
           <div class="k">Wind</div><div class="v" id="windKph">—</div>
           <div class="k">Humidity</div><div class="v" id="humidity">—</div>
-          <div class="k">Rain chance</div><div class="v" id="rainChance">—</div>
         </div>
       </div>
 
