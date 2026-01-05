@@ -40,6 +40,7 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   font-family: 'Poppins', sans-serif;
   font-weight: 800;
   text-align: center;
+  margin: 1rem 0;
 }
 
 @keyframes glow {
@@ -141,6 +142,8 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .header {
@@ -175,13 +178,15 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
 .main {
   grid-area: main;
   overflow-y: auto;
+  padding-right: 1rem;
 }
 
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - 4rem);
+  height: calc(100% - 2rem);
+  padding: 2rem 0;
 }
 
 .hero-top {
@@ -191,6 +196,7 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
 .city {
   font-size: 2rem;
   font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 
 .country {
@@ -200,43 +206,57 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
 
 .hero-mid {
   text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.condition {
-  font-size: 2.5rem;
+.confidence-badge {
+  font-size: 0.9rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.vibe-statement {
+  font-size: 3.5rem;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.1;
+  margin: 1rem 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .witty {
-  font-size: 1.5rem;
-  opacity: 0.9;
-  margin-top: 1rem;
+  font-size: 1.3rem;
+  opacity: 0.85;
+  font-style: italic;
+  margin-top: 0.5rem;
 }
 
 .hero-bottom {
   text-align: center;
-}
-
-.pill {
-  background: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .confidence-bar {
   height: 4px;
   background: currentColor;
   border-radius: 2px;
-  margin: 0.5rem 0;
+  margin: 0.5rem auto;
   width: 0;
+  max-width: 300px;
   transition: width 0.3s ease;
 }
 
 .note {
   font-size: 0.9rem;
   opacity: 0.8;
+  margin-top: 0.5rem;
 }
 
 .sidebar {
@@ -245,19 +265,43 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   flex-direction: column;
   gap: 1rem;
   padding-left: 1rem;
+  overflow-y: auto;
 }
 
 .card {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
-  padding: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card-title {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+.card-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.card-note {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-top: 0.5rem;
 }
 
 .kv {
@@ -294,12 +338,15 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   grid-area: nav;
   display: flex;
   justify-content: space-around;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(10px);
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
   position: sticky;
   bottom: 0;
   width: 100%;
-  padding: 1rem 0;
+  border-radius: 20px 20px 0 0;
 }
 
 .nav-btn {
@@ -307,13 +354,23 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   border: none;
   color: inherit;
   font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  transition: border-bottom 0.2s;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.2s;
+  border-radius: 8px;
+  opacity: 0.7;
+}
+
+.nav-btn:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-btn.is-active {
+  opacity: 1;
   border-bottom: 2px solid currentColor;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .screen {
@@ -380,22 +437,26 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
       "main"
       "sidebar"
       "nav";
+    padding: 0.5rem;
   }
   .sidebar {
     padding: 1.5rem 0;
+    padding-left: 0;
   }
   .hero-mid {
     margin: 2rem 0;
   }
+  .vibe-statement {
+    font-size: 2.5rem;
+  }
   .bigtemp {
     font-size: 6rem;
-  }
-  .condition {
-    font-size: 2rem;
   }
   .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
+    right: 0;
+    border-radius: 0;
   }
 }

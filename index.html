@@ -43,14 +43,14 @@
         </div>
 
         <div class="hero-mid">
+          <div class="confidence-badge" id="confidencePill">PROBABLY · MIXED CONFIDENCE</div>
+          <div class="vibe-statement" id="conditionText">This is cloudy.</div>
           <div class="bigtemp" id="bigTemp">—</div>
-          <div class="condition" id="conditionText">—</div>
           <div class="witty" id="wittyLine">—</div>
         </div>
 
         <div class="hero-bottom">
-          <div class="pill" id="confidencePill">—</div>
-          <div id="confidenceBar" class="confidence-bar"></div> <!-- New -->
+          <div id="confidenceBar" class="confidence-bar"></div>
           <div class="note" id="confidenceNote">—</div>
         </div>
       </section>
@@ -98,20 +98,24 @@
 
     <aside class="sidebar" id="sidebar">
       <div class="card">
-        <div class="card-title">Details</div>
-        <div class="kv">
-          <div class="k">Feels like</div><div class="v" id="feelsLike">—</div>
-          <div class="k">Wind</div><div class="v" id="windKph">—</div>
-          <div class="k">Humidity</div><div class="v" id="humidity">—</div>
-          <div class="k">Rain chance</div><div class="v" id="rainChance">—</div>
-        </div>
+        <div class="card-title">Today's extreme</div>
+        <div class="card-value" id="todayExtreme">—</div>
       </div>
 
       <div class="card">
-        <div class="card-title">Tone</div>
-        <div class="tone-title" id="toneTitle">—</div>
-        <div class="tone-vibe" id="toneVibe">—</div>
-        <div class="tone-note" id="toneNote">—</div>
+        <div class="card-title">Rain</div>
+        <div class="card-value" id="rainChance">—</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">UV</div>
+        <div class="card-value" id="uvIndex">—</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Confidence</div>
+        <div class="card-value" id="confidenceLevel">—</div>
+        <div class="card-note" id="confidenceExplanation">—</div>
       </div>
     </aside>
 

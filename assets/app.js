@@ -13,11 +13,15 @@
     wittyLine: $("wittyLine"),
     confidencePill: $("confidencePill"),
     confidenceNote: $("confidenceNote"),
-    confidenceBar: $("confidenceBar"), // New
+    confidenceBar: $("confidenceBar"),
+    todayExtreme: $("todayExtreme"),
+    rainChance: $("rainChance"),
+    uvIndex: $("uvIndex"),
+    confidenceLevel: $("confidenceLevel"),
+    confidenceExplanation: $("confidenceExplanation"),
     feelsLike: $("feelsLike"),
     windKph: $("windKph"),
     humidity: $("humidity"),
-    rainChance: $("rainChance"),
     toneTitle: $("toneTitle"),
     toneVibe: $("toneVibe"),
     toneNote: $("toneNote"),
@@ -50,9 +54,98 @@
     lastData: null,
   };
   // ---------- Helpers ----------
-  const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : "—");
-  const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : "—");
-  const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : "—");
+  const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : null);
+  const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : null);
+  const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : null);
+  const fmtUV = (n) => (Number.isFinite(n) ? `${Math.round(n)}` : null);
+
+  // Simple hash function for deterministic variant selection
+  function simpleHash(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    return Math.abs(hash);
+  }
+
+  // Get vibe bucket from conditionKey and tempC
+  function getVibeBucket(conditionKey, tempC) {
+    if (!conditionKey) conditionKey = "unknown";
+    const key = String(conditionKey).toLowerCase().trim();
+    
+    // OVERRIDES: storm/rain/fog/wind ALWAYS win if conditionKey indicates them
+    if (key === "storm") return "STORMY";
+    if (key === "rain") return "RAINY";
+    if (key === "fog") return "FOGGY";
+    if (key === "wind") return "WINDY";
+    
+    // PRIMARY: map conditionKey → bucket
+    if (key === "clear") {
+      // Temp-based hot/cold only for neutral conditions (cloudy/clear)
+      if (Number.isFinite(tempC)) {
+        if (tempC < 10) return "COLD";
+        if (tempC > 25) return "HOT";
+      }
+      return "CLEAR";
+    }
+    if (key === "cloudy") {
+      // Temp-based hot/cold only for neutral conditions
+      if (Number.isFinite(tempC)) {
+        if (tempC < 10) return "COLD";
+        if (tempC > 25) return "HOT";
+      }
+      return "CLOUDY";
+    }
+    
+    // Temp-based hot/cold only when conditionKey is missing/unknown
+    if (key === "unknown" && Number.isFinite(tempC)) {
+      if (tempC < 10) return "COLD";
+      if (tempC > 25) return "HOT";
+    }
+    
+    // Default fallback
+    return "CLOUDY";
+  }
+
+  // Vibe variant definitions
+  const vibeVariants = {
+    CLEAR: ["This is clear.", "Clear and calm.", "Good weather today."],
+    CLOUDY: ["This is cloudy.", "It's one of those days.", "Mostly just cloudy."],
+    RAINY: ["This is rainy.", "Rain is in charge today.", "It's a wet one."],
+    STORMY: ["This is stormy.", "Storms are the story today.", "Rough weather out there."],
+    WINDY: ["This is windy.", "Wind has opinions today.", "Hold onto your hat."],
+    COLD: ["This is cold.", "Properly cold today.", "Cold enough to feel it."],
+    HOT: ["This is hot.", "Hot and heavy.", "Heat is the story today."],
+    FOGGY: ["This is foggy.", "Low visibility kind of day.", "Mist everywhere."]
+  };
+
+  // Get deterministic vibe variant
+  function getVibeVariant(vibeBucket, locationName, date) {
+    const variants = vibeVariants[vibeBucket] || vibeVariants.CLOUDY;
+    const dateStr = date ? date.toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+    const seed = (locationName || "") + dateStr;
+    const hash = simpleHash(seed);
+    const index = hash % variants.length;
+    return variants[index];
+  }
+
+  // Witty line fallbacks per vibe bucket
+  function getWittyFallback(vibeBucket) {
+    const fallbacks = {
+      CLEAR: "Not always braai on a clear day.",
+      CLOUDY: "Cloudy means maybe.",
+      RAINY: "Rain changes plans.",
+      STORMY: "Storms demand respect.",
+      WINDY: "Wind has its say.",
+      COLD: "Cold is cold.",
+      HOT: "Heat is the story.",
+      FOGGY: "Fog hides things."
+    };
+    return fallbacks[vibeBucket] || "Weather is weather.";
+  }
+
   function getTimeOfDay() {
     const hour = new Date().getHours();
     if (hour >= 5 && hour < 7) return "dawn";
@@ -146,36 +239,63 @@
     const key = conditionKey.toLowerCase();
     return C.conditionTone[key] ? key : "unknown";
   }
-  function getWitty(conditionKey, isWeekend) {
+  function getWitty(conditionKey, isWeekend, vibeBucket) {
     const key = pickToneKey(conditionKey);
     const t = C.conditionTone[key] || C.conditionTone.unknown;
     if (isWeekend && key === 'clear') return "Braai weather, boet!";
-    return t.vibe;
+    if (t.vibe && t.vibe.trim()) return t.vibe;
+    return getWittyFallback(vibeBucket);
   }
   function renderTone(conditionKey) {
     const key = pickToneKey(conditionKey);
     const t = C.conditionTone[key] || C.conditionTone.unknown;
-    dom.toneTitle.textContent = t.title;
-    dom.toneVibe.textContent = t.vibe;
-    dom.toneNote.textContent = t.note;
+    if (dom.toneTitle) dom.toneTitle.textContent = t.title || "Unclear";
+    if (dom.toneVibe) dom.toneVibe.textContent = t.vibe || "Hard to call.";
+    if (dom.toneNote) dom.toneNote.textContent = t.note || "We'll show what we can.";
   }
   function renderConfidence(confKey, data) {
     const conf = C.confidence[confKey] || C.confidence.mixed;
-    dom.confidencePill.textContent = `${conf.label} Agreement`;
-    dom.confidenceNote.textContent = `${conf.long} Aggregated from 3 sources.`;
-    const barWidth = conf.label === 'Strong' ? 100 : conf.label === 'Decent' ? 66 : 33;
-    dom.confidenceBar.style.width = `${barWidth}%`;
+    const confLabel = conf.label || "Mixed";
+    const confLevel = confLabel === 'Strong' ? 'High' : confLabel === 'Decent' ? 'Medium' : 'Low';
+    
+    // Update confidence badge in hero
+    if (dom.confidencePill) {
+      dom.confidencePill.textContent = `PROBABLY · ${confLabel.toUpperCase()} CONFIDENCE`;
+    }
+    
+    // Update confidence card
+    if (dom.confidenceLevel) {
+      dom.confidenceLevel.textContent = confLevel;
+    }
+    
+    // Count active sources
+    const sourceCount = data?.meta?.sources ? data.meta.sources.filter(s => s.ok).length : 3;
+    if (dom.confidenceExplanation) {
+      dom.confidenceExplanation.textContent = `Based on ${sourceCount} forecasts →`;
+    }
+    
+    // Update note and bar
+    if (dom.confidenceNote) {
+      dom.confidenceNote.textContent = conf.long || "Sources disagree — this is classic 50/50 weather.";
+    }
+    const barWidth = confLabel === 'Strong' ? 100 : confLabel === 'Decent' ? 66 : 33;
+    if (dom.confidenceBar) {
+      dom.confidenceBar.style.width = `${barWidth}%`;
+    }
   }
   function renderSources(list) {
     if (!Array.isArray(list) || list.length === 0) {
-      dom.sourcesList.textContent = "—";
+      if (dom.sourcesList) dom.sourcesList.textContent = "No sources available";
       return;
     }
-    dom.sourcesList.textContent = list
-      .map((s) => `${s.name}${s.ok ? "" : " (down)"}`)
-      .join(" • ");
+    if (dom.sourcesList) {
+      dom.sourcesList.textContent = list
+        .map((s) => `${s.name}${s.ok ? "" : " (down)"}`)
+        .join(" • ");
+    }
   }
   function renderHourly(hourly) {
+    if (!dom.hourlyList) return;
     dom.hourlyList.innerHTML = "";
     if (!Array.isArray(hourly) || hourly.length === 0) {
       dom.hourlyList.textContent = "No hourly data.";
@@ -190,14 +310,15 @@
           <div class="row-time">${h.timeLocal || "—"}</div>
           <div class="row-small">${h.conditionLabel || ""}</div>
         </div>
-        <div class="row-mid">${fmtTemp(h.tempC)}</div>
-        <div class="row-right">${fmtPct(h.rainChance)} • ${fmtWind(h.windKph)}</div>
+        <div class="row-mid">${fmtTemp(h.tempC) || "—"}</div>
+        <div class="row-right">${fmtPct(h.rainChance) || "—"} • ${fmtWind(h.windKph) || "—"}</div>
       `;
       frag.appendChild(row);
     });
     dom.hourlyList.appendChild(frag);
   }
   function renderWeek(days) {
+    if (!dom.weekList) return;
     dom.weekList.innerHTML = "";
     if (!Array.isArray(days) || days.length === 0) {
       dom.weekList.textContent = "No weekly data.";
@@ -212,28 +333,103 @@
           <div class="row-time">${d.dayLabel || d.dateLocal || "—"}</div>
           <div class="row-small">${d.conditionLabel || ""}</div>
         </div>
-        <div class="row-mid">${fmtTemp(d.highC)} / ${fmtTemp(d.lowC)}</div>
-        <div class="row-right">${fmtPct(d.rainChance)}${Number.isFinite(d.uv) ? ` • UV ${Math.round(d.uv)}` : ""}</div>
+        <div class="row-mid">${fmtTemp(d.highC) || "—"} / ${fmtTemp(d.lowC) || "—"}</div>
+        <div class="row-right">${fmtPct(d.rainChance) || "—"}${Number.isFinite(d.uv) ? ` • UV ${Math.round(d.uv)}` : ""}</div>
       `;
       frag.appendChild(row);
     });
     dom.weekList.appendChild(frag);
   }
   function renderHome(data) {
-    dom.cityName.textContent = data.location?.name || state.city || "—";
-    dom.countryName.textContent = data.location?.country || "—";
-    dom.bigTemp.textContent = fmtTemp(data.now?.tempC);
-    dom.conditionText.textContent = data.now?.conditionLabel || "—";
-    dom.updatedAt.textContent = data.meta?.updatedAtLabel || "—";
-    dom.feelsLike.textContent = fmtTemp(data.now?.feelsLikeC);
-    dom.windKph.textContent = fmtWind(data.now?.windKph);
-    dom.humidity.textContent = fmtPct(data.now?.humidity);
-    dom.rainChance.textContent = fmtPct(data.now?.rainChance);
-    renderTone(data.now?.conditionKey);
-    renderConfidence(data.consensus?.confidenceKey, data);
-    renderSources(data.meta?.sources);
-    setBackground(data.now?.conditionKey, data.now?.tempC);
-    setParticles(data.now?.conditionKey);
+    // Defensive fallbacks for all fields
+    const locationName = data?.location?.name || state.city || "Unknown";
+    const country = data?.location?.country || "";
+    const tempC = data?.now?.tempC;
+    const conditionKey = data?.now?.conditionKey;
+    const daily = data?.daily || [];
+    const today = daily[0] || {};
+    
+    // City and country
+    if (dom.cityName) dom.cityName.textContent = locationName;
+    if (dom.countryName) dom.countryName.textContent = country || "";
+    
+    // Updated time
+    if (dom.updatedAt) {
+      dom.updatedAt.textContent = data?.meta?.updatedAtLabel || new Date().toLocaleString();
+    }
+    
+    // Get vibe bucket and variant
+    const vibeBucket = getVibeBucket(conditionKey, tempC);
+    const todayDate = new Date();
+    const vibeStatement = getVibeVariant(vibeBucket, locationName, todayDate);
+    
+    // Render vibe statement (primary headline)
+    if (dom.conditionText) dom.conditionText.textContent = vibeStatement;
+    
+    // Calculate temp range from daily[0] if available, otherwise use current temp
+    let tempDisplay = "";
+    if (Number.isFinite(today.highC) && Number.isFinite(today.lowC)) {
+      tempDisplay = `${Math.round(today.lowC)}–${Math.round(today.highC)}°${C.units.temp}`;
+    } else if (Number.isFinite(tempC)) {
+      tempDisplay = `${Math.round(tempC)}°${C.units.temp}`;
+    } else {
+      tempDisplay = "—";
+    }
+    if (dom.bigTemp) dom.bigTemp.textContent = tempDisplay;
+    
+    // Witty line (never blank)
+    const isWeekend = todayDate.getDay() === 0 || todayDate.getDay() === 6;
+    const witty = getWitty(conditionKey, isWeekend, vibeBucket);
+    if (dom.wittyLine) dom.wittyLine.textContent = witty || getWittyFallback(vibeBucket);
+    
+    // Sidebar cards
+    // Today's extreme
+    if (dom.todayExtreme) {
+      if (Number.isFinite(today.highC) && Number.isFinite(today.lowC)) {
+        dom.todayExtreme.textContent = `${Math.round(today.lowC)}–${Math.round(today.highC)}°${C.units.temp}`;
+      } else if (Number.isFinite(tempC)) {
+        dom.todayExtreme.textContent = `${Math.round(tempC)}°${C.units.temp}`;
+      } else {
+        dom.todayExtreme.textContent = "—";
+      }
+    }
+    
+    // Rain
+    if (dom.rainChance) {
+      const rain = fmtPct(data?.now?.rainChance) || fmtPct(today.rainChance);
+      dom.rainChance.textContent = rain || "—";
+    }
+    
+    // UV
+    if (dom.uvIndex) {
+      const uv = fmtUV(data?.now?.uv) || fmtUV(today.uv);
+      dom.uvIndex.textContent = uv || "—";
+    }
+    
+    // Confidence (rendered separately with exact wording)
+    renderConfidence(data?.consensus?.confidenceKey, data);
+    
+    // Legacy fields (keep for compatibility)
+    if (dom.feelsLike) {
+      const feels = fmtTemp(data?.now?.feelsLikeC);
+      dom.feelsLike.textContent = feels || "—";
+    }
+    if (dom.windKph) {
+      const wind = fmtWind(data?.now?.windKph);
+      dom.windKph.textContent = wind || "—";
+    }
+    if (dom.humidity) {
+      const hum = fmtPct(data?.now?.humidity);
+      dom.humidity.textContent = hum || "—";
+    }
+    
+    // Tone and sources
+    renderTone(conditionKey);
+    renderSources(data?.meta?.sources);
+    
+    // Background and particles
+    setBackground(conditionKey, tempC);
+    setParticles(conditionKey);
   }
   async function fetchWeather(city) {
     const url = `${C.endpoints.weather}?q=${encodeURIComponent(city)}`;
@@ -245,7 +441,7 @@
     return res.json();
   }
   async function loadCity(city) {
-    dom.searchHint.textContent = "";
+    if (dom.searchHint) dom.searchHint.textContent = "";
     try {
       state.city = city;
       const data = await fetchWeather(city);
@@ -255,7 +451,7 @@
       renderWeek(data.daily);
     } catch (err) {
       console.error(err);
-      dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
+      if (dom.searchHint) dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
     }
   }
   // ---------- Events ----------
@@ -267,15 +463,19 @@
       }
     });
   });
-  dom.searchBtn.addEventListener("click", () => {
-    const v = (dom.searchInput.value || "").trim();
-    if (!v) return;
-    loadCity(v);
-    showScreen("home");
-  });
-  dom.searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") dom.searchBtn.click();
-  });
+  if (dom.searchBtn) {
+    dom.searchBtn.addEventListener("click", () => {
+      const v = (dom.searchInput?.value || "").trim();
+      if (!v) return;
+      loadCity(v);
+      showScreen("home");
+    });
+  }
+  if (dom.searchInput) {
+    dom.searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && dom.searchBtn) dom.searchBtn.click();
+    });
+  }
   // ---------- Boot ----------
   setBackground("cloudy", null);
   setParticles("cloudy");
