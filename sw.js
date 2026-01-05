@@ -1,110 +1,35 @@
-/* Probably Weather — Service Worker (versioned + safe updates)
-   Goals:
-   - Prevent mixed old/new builds causing UI "haywire"
-   - Network-first for HTML/JS/CSS
-   - Stale-while-revalidate for images
-*/
-
-const SW_VERSION = 'pw-v4'; // Bumped to v4 to clear old caches
-const CORE_CACHE = `${SW_VERSION}-core`;
-const IMG_CACHE = `${SW_VERSION}-img`;
-
-const CORE_ASSETS = [
-  '/',
-  '/index.html',
-  '/assets/app.css',
-  '/assets/app.js',
-  '/manifest.json',
-];
+// sw.js
+const CACHE_NAME = 'probably-weather-v1.1'; // Bump this
 
 self.addEventListener('install', (event) => {
-  self.skipWaiting();
   event.waitUntil(
-    caches.open(CORE_CACHE).then((cache) => cache.addAll(CORE_ASSETS)).catch(() => {})
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll([
+        '/',
+        '/index.html',
+        '/assets/app.css',
+        '/assets/config.js',
+        '/assets/app.js'
+        // Add images if needed
+      ]);
+    })
   );
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil((async () => {
-    // Remove old caches
-    const keys = await caches.keys();
-    await Promise.all(
-      keys
-        .filter((k) => !k.startsWith(SW_VERSION))
-        .map((k) => caches.delete(k))
-    );
-    await self.clients.claim();
-  })());
-});
-
-function isHtml(req) {
-  return req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html');
-}
-
-function isCoreAsset(url) {
-  return (
-    url.pathname === '/' ||
-    url.pathname === '/index.html' ||
-    url.pathname.startsWith('/assets/') ||
-    url.pathname === '/manifest.json'
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.filter((name) => name !== CACHE_NAME).map((name) => caches.delete(name))
+      );
+    })
   );
-}
+});
 
 self.addEventListener('fetch', (event) => {
-  const req = event.request;
-  const url = new URL(req.url);
-
-  // Only handle same-origin requests
-  if (url.origin !== self.location.origin) return;
-
-  // Never cache API responses
-  if (url.pathname.startsWith('/api/')) return;
-
-  // HTML + core assets: NETWORK FIRST (prevents Franken-builds)
-  if (isHtml(req) || isCoreAsset(url)) {
-    event.respondWith((async () => {
-      try {
-        const fresh = await fetch(req);
-        const cache = await caches.open(CORE_CACHE);
-        cache.put(req, fresh.clone()).catch(() => {});
-        return fresh;
-      } catch {
-        const cached = await caches.match(req);
-        if (cached) return cached;
-        // fallback to cached index if navigation fails
-        if (isHtml(req)) {
-          const cachedIndex = await caches.match('/index.html');
-          if (cachedIndex) return cachedIndex;
-        }
-        return new Response('Offline', { status: 503 });
-      }
-    })());
-    return;
-  }
-
-  // Images: STALE-WHILE-REVALIDATE
-  if (req.destination === 'image') {
-    event.respondWith((async () => {
-      const cache = await caches.open(IMG_CACHE);
-      const cached = await cache.match(req);
-
-      const fetchPromise = fetch(req).then((fresh) => {
-        cache.put(req, fresh.clone()).catch(() => {});
-        return fresh;
-      }).catch(() => null);
-
-      return cached || (await fetchPromise) || new Response('', { status: 504 });
-    })());
-    return;
-  }
-
-  // Default: try network, fallback cache
   event.respondWith(
-    fetch(req).catch(() => caches.match(req))
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
   );
-});
-
-// Optional: allow the page to trigger an update
-self.addEventListener('message', (event) => {
-  if (event.data === 'SKIP_WAITING') self.skipWaiting();
 });

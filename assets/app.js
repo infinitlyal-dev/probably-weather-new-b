@@ -1,4 +1,3 @@
-// assets/app.js
 (() => {
   const C = window.PW_CONFIG;
   // ---------- DOM ----------
@@ -11,9 +10,10 @@
     countryName: $("countryName"),
     bigTemp: $("bigTemp"),
     conditionText: $("conditionText"),
-    wittyLine: $("wittyLine"), // New for witty line
+    wittyLine: $("wittyLine"),
     confidencePill: $("confidencePill"),
     confidenceNote: $("confidenceNote"),
+    confidenceBar: $("confidenceBar"), // New
     feelsLike: $("feelsLike"),
     windKph: $("windKph"),
     humidity: $("humidity"),
@@ -80,7 +80,7 @@
     document.body.classList.add(weatherClass);
   }
   function setParticles(conditionKey) {
-    dom.particles.innerHTML = '';
+    dom.particles.innerHTML = "";
     const key = conditionKey?.toLowerCase() || 'unknown';
     let numParticles = 0;
     let particleClass = 'particle';
@@ -101,7 +101,7 @@
       numParticles = 20;
       particleClass += ' fog-particle';
       animation = 'float';
-    } // Add more as needed
+    }
     for (let i = 0; i < numParticles; i++) {
       const p = document.createElement('div');
       p.className = particleClass;
@@ -117,28 +117,12 @@
     });
   }
   function showScreen(target) {
-    // Hide all screens
     Object.keys(screens).forEach((key) => {
       const screen = screens[key];
       if (screen) {
-        screen.style.display = 'none';
+        screen.style.display = (key === target ? 'block' : 'none');
       }
     });
-    // Show target screen
-    const targetScreen = screens[target];
-    if (targetScreen) {
-      targetScreen.style.display = 'block';
-    }
-    // Home-specific: show/hide header, sidebar, hero
-    if (target === 'home') {
-      dom.header.style.display = 'flex';
-      dom.sidebar.style.display = 'block';
-      dom.hero.style.display = 'block';
-    } else {
-      dom.header.style.display = 'none';
-      dom.sidebar.style.display = 'none';
-      dom.hero.style.display = 'none';
-    }
     setActiveNav(target);
   }
   function pickToneKey(conditionKey) {
@@ -162,7 +146,9 @@
   function renderConfidence(confKey, data) {
     const conf = C.confidence[confKey] || C.confidence.mixed;
     dom.confidencePill.textContent = `${conf.label} Agreement`;
-    dom.confidenceNote.textContent = `${conf.long} Based on ${data.meta?.sources?.length || 0} sources.`;
+    const barWidth = conf.label === 'Strong' ? 100 : conf.label === 'Decent' ? 66 : 33;
+    dom.confidenceBar.style.width = `${barWidth}%`;
+    dom.confidenceNote.textContent = `${conf.long} Aggregated from 3 sources.`;
   }
   function renderSources(list) {
     if (!Array.isArray(list) || list.length === 0) {
@@ -224,7 +210,6 @@
   function renderHome(data) {
     dom.cityName.textContent = data.location?.name || state.city || "—";
     dom.countryName.textContent = data.location?.country || "—";
-    // Use daily range for bigTemp
     const today = data.daily?.[0] || {};
     dom.bigTemp.textContent = `${fmtTemp(today.lowC)}—${fmtTemp(today.highC)}`;
     dom.conditionText.textContent = `This is ${data.now?.conditionLabel?.toLowerCase() || "unclear"}.`;
@@ -268,7 +253,7 @@
   document.querySelectorAll(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const t = btn.dataset.target;
-      if (t && screens[t]) {
+      if (t) {
         showScreen(t);
       }
     });

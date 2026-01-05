@@ -88,7 +88,20 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   100% { transform: translateY(110vh); }
 }
 
-.weather-wind .particle, .wind-particle {
+.rain-particle {
+  width: 2px;
+  height: 10px;
+  background: rgba(173, 216, 230, 0.6);
+}
+
+.storm-particle {
+  width: 4px;
+  height: 4px;
+  background: yellow;
+  opacity: 0.5;
+}
+
+.wind-particle {
   width: 12px;
   height: 2px;
   background: rgba(255, 255, 255, 0.4);
@@ -103,19 +116,18 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   100% { transform: translateX(120vw) rotate(10deg); opacity: 0; }
 }
 
-.weather-rain .particle, .rain-particle {
-  width: 2px;
-  height: 10px;
-  background: rgba(173, 216, 230, 0.6);
-  animation: fall linear infinite;
+.fog-particle {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: float linear infinite;
 }
 
-.weather-storm .particle, .storm-particle {
-  width: 4px;
-  height: 4px;
-  background: yellow;
-  animation: gust linear infinite;
-  opacity: 0.5;
+@keyframes float {
+  0% { transform: translate(0, 0); opacity: 0.2; }
+  50% { transform: translate(10px, 5px); opacity: 0.5; }
+  100% { transform: translate(0, 0); opacity: 0.2; }
 }
 
 .container {
@@ -169,7 +181,7 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - 4rem); // Adjust for header/nav
+  height: calc(100% - 4rem);
 }
 
 .hero-top {
@@ -213,10 +225,18 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   font-size: 1rem;
 }
 
+.confidence-bar {
+  height: 4px;
+  background: currentColor;
+  border-radius: 2px;
+  margin: 0.5rem 0;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
 .note {
   font-size: 0.9rem;
   opacity: 0.8;
-  margin-top: 0.5rem;
 }
 
 .sidebar {
