@@ -2,120 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Probably Weather</title>
+  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="assets/app.css" />
 </head>
 
 <body>
-  <!-- Background system (must be first, behind everything) -->
-  <div id="bg" aria-hidden="true">
-    <img id="bgImg" src="" alt="" />
-    <div id="scrim"></div>
-  </div>
-
-  <div class="container">
-    <header class="topbar">
-      <div class="topbar-left">
-        <div class="mark" aria-hidden="true">◉</div>
-        <div class="topbar-title">Probably Weather</div>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">PW</div>
+        <div class="brand-text">
+          <div class="brand-title">Probably Weather</div>
+          <div class="brand-sub" id="subhead">No more Ja-No-Maybe weather. Just Probably.</div>
+        </div>
       </div>
 
-      <div class="topbar-mid">
-        <div class="topbar-location" id="cityLine">—</div>
-        <div class="topbar-sub" id="subhead">No more Ja-No-Maybe weather. Just Probably.</div>
-      </div>
-
-      <div class="topbar-right">
-        <div class="mini" id="updatedAt">—</div>
+      <div class="meta">
+        <div class="updated" id="updatedAt">—</div>
       </div>
     </header>
 
     <main class="main">
-      <!-- HOME -->
-      <section class="screen screen--home" id="screen-home">
-        <div class="home-grid">
-          <section class="hero">
-            <div class="hero-kicker" id="confidenceTop">PROBABLY · — CONFIDENCE</div>
+      <section class="hero">
+        <div class="hero-top">
+          <div class="place">
+            <div class="city" id="cityName">—</div>
+            <div class="country" id="countryName">—</div>
+          </div>
+        </div>
 
-            <div class="hero-title" id="conditionText">This is —.</div>
+        <div class="hero-mid">
+          <div class="bigtemp" id="bigTemp">—</div>
+          <div class="condition" id="conditionText">—</div>
+          <div class="witty" id="wittyLine">—</div>
+        </div>
 
-            <div class="hero-temp" id="bigTemp">—</div>
-
-            <div class="hero-witty" id="wittyLine">—</div>
-          </section>
-
-          <aside class="cards">
-            <div class="card">
-              <div class="card-kicker" id="todayExtremeKicker">Today's extreme:</div>
-              <div class="card-title" id="todayExtremeTitle">—</div>
-              <div class="card-big" id="todayExtremeRange">—</div>
-            </div>
-
-            <div class="card">
-              <div class="card-kicker">Rain:</div>
-              <div class="card-title" id="rainSummary">—</div>
-            </div>
-
-            <div class="card">
-              <div class="card-kicker">UV</div>
-              <div class="card-title" id="uvSummary">—</div>
-            </div>
-
-            <div class="card card--confidence">
-              <div class="card-kicker">Confidence:</div>
-              <div class="card-title" id="confidenceTitle">—</div>
-              <div class="card-sub" id="confidenceSub">—</div>
-            </div>
-          </aside>
+        <!-- This stays in the same place so you don't break layout.
+             But it no longer repeats "confidence". -->
+        <div class="hero-bottom">
+          <div class="pill" id="confidencePill">—</div>
+          <div class="note" id="confidenceNote">—</div>
         </div>
       </section>
 
-      <!-- HOURLY -->
+      <!-- Screens (hidden until activated) -->
       <section class="screen" id="screen-hourly" hidden>
         <div class="screen-title">Hourly</div>
         <div class="screen-body" id="hourlyList"></div>
       </section>
 
-      <!-- WEEK -->
       <section class="screen" id="screen-week" hidden>
         <div class="screen-title">Week</div>
         <div class="screen-body" id="weekList"></div>
       </section>
 
-      <!-- SEARCH -->
       <section class="screen" id="screen-search" hidden>
         <div class="screen-title">Search</div>
         <div class="screen-body">
-          <div class="search-wrap">
-            <input id="searchInput" class="search-input" placeholder="Search a city..." />
-            <button id="searchBtn" class="search-btn">Search</button>
+          <div class="search-row">
+            <input id="searchInput" placeholder="Search a city..." />
+            <button id="searchBtn">Search</button>
           </div>
-          <div class="mini" id="searchHint">Tip: Try “Cape Town”, “New York”, “London”.</div>
+          <div class="search-hint" id="searchHint">Tip: Try “Cape Town”, “New York”, “London”</div>
         </div>
       </section>
 
-      <!-- SETTINGS -->
       <section class="screen" id="screen-settings" hidden>
         <div class="screen-title">Settings</div>
         <div class="screen-body">
-          <div class="setting-row">
-            <div>
-              <div class="setting-title">Units</div>
-              <div class="setting-sub">Currently fixed to °C and km/h.</div>
-            </div>
-            <div class="mini">v1</div>
+          <div class="card">
+            <div class="card-title">Units</div>
+            <div class="small">Currently fixed to °C and km/h.</div>
           </div>
-
-          <div class="setting-row">
-            <div>
-              <div class="setting-title">Sources</div>
-              <div class="setting-sub" id="sourcesList">—</div>
-            </div>
+          <div class="card">
+            <div class="card-title">Sources</div>
+            <div class="small" id="sourcesList">—</div>
           </div>
         </div>
       </section>
     </main>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="card">
+        <div class="card-title">Details</div>
+        <div class="kv">
+          <div class="k">Feels like</div><div class="v" id="feelsLike">—</div>
+          <div class="k">Wind</div><div class="v" id="windKph">—</div>
+          <div class="k">Humidity</div><div class="v" id="humidity">—</div>
+          <div class="k">Rain chance</div><div class="v" id="rainChance">—</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Tone</div>
+        <div class="tone-title" id="toneTitle">—</div>
+        <div class="tone-vibe" id="toneVibe">—</div>
+        <div class="tone-note" id="toneNote">—</div>
+      </div>
+
+      <!-- NEW: replaces duplicate confidence feeling with an explanation card -->
+      <div class="card">
+        <div class="card-title">Why this is “Probably”</div>
+        <div class="tone-title" id="agreementLabel">—</div>
+        <div class="tone-note" id="agreementNote">—</div>
+        <div class="sources-breakdown" id="sourcesBreakdown">—</div>
+      </div>
+    </aside>
 
     <nav class="bottom-nav" aria-label="Primary">
       <button class="nav-btn is-active" data-target="home">Home</button>
