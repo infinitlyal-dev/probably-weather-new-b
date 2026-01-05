@@ -430,25 +430,35 @@
     // Sidebar cards
     // Today's extreme
     if (dom.todayExtreme) {
+      const conditionLabel = data?.now?.conditionLabel || today.conditionLabel || "Clear";
       if (Number.isFinite(today.highC) && Number.isFinite(today.lowC)) {
-        dom.todayExtreme.textContent = `${Math.round(today.lowC)}–${Math.round(today.highC)}°${C.units.temp}`;
+        dom.todayExtreme.textContent = `${conditionLabel}\n${Math.round(today.lowC)}–${Math.round(today.highC)}°${C.units.temp}`;
       } else if (Number.isFinite(tempC)) {
-        dom.todayExtreme.textContent = `${Math.round(tempC)}°${C.units.temp}`;
+        dom.todayExtreme.textContent = `${conditionLabel}\n${Math.round(tempC)}°${C.units.temp}`;
       } else {
-        dom.todayExtreme.textContent = "—";
+        dom.todayExtreme.textContent = conditionLabel;
       }
     }
     
     // Rain
     if (dom.rainChance) {
-      const rain = fmtPct(data?.now?.rainChance) || fmtPct(today.rainChance);
-      dom.rainChance.textContent = rain || "—";
+      const rainPct = data?.now?.rainChance ?? today.rainChance;
+      if (Number.isFinite(rainPct) && rainPct > 0) {
+        dom.rainChance.textContent = `${Math.round(rainPct)}%`;
+      } else {
+        dom.rainChance.textContent = "None expected";
+      }
     }
     
     // UV
     if (dom.uvIndex) {
-      const uv = fmtUV(data?.now?.uv) || fmtUV(today.uv);
-      dom.uvIndex.textContent = uv || "—";
+      const uv = data?.now?.uv ?? today.uv;
+      if (Number.isFinite(uv)) {
+        const uvLevel = uv >= 8 ? "High" : uv >= 6 ? "Moderate" : uv >= 3 ? "Low" : "Very Low";
+        dom.uvIndex.textContent = `${uvLevel} (${Math.round(uv)})`;
+      } else {
+        dom.uvIndex.textContent = "—";
+      }
     }
     
     // Confidence (rendered separately with exact wording)
