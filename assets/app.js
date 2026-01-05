@@ -1,290 +1,325 @@
 // assets/app.js
 (() => {
   const C = window.PW_CONFIG;
-  // ---------- DOM ----------
+
+  // ---------------- DOM helpers
   const $ = (id) => document.getElementById(id);
-  const $q = (sel) => document.querySelector(sel);
+
   const dom = {
+    // Background
+    bgImg: $("bgImg"),
+
+    // Topbar
+    cityLine: $("cityLine"),
     subhead: $("subhead"),
     updatedAt: $("updatedAt"),
-    cityName: $("cityName"),
-    countryName: $("countryName"),
-    bigTemp: $("bigTemp"),
+
+    // Home hero
+    confidenceTop: $("confidenceTop"),
     conditionText: $("conditionText"),
-    wittyLine: $("wittyLine"), // New for witty line
-    confidencePill: $("confidencePill"),
-    confidenceNote: $("confidenceNote"),
-    feelsLike: $("feelsLike"),
-    windKph: $("windKph"),
-    humidity: $("humidity"),
-    rainChance: $("rainChance"),
-    toneTitle: $("toneTitle"),
-    toneVibe: $("toneVibe"),
-    toneNote: $("toneNote"),
+    bigTemp: $("bigTemp"),
+    wittyLine: $("wittyLine"),
+
+    // Home cards
+    todayExtremeKicker: $("todayExtremeKicker"),
+    todayExtremeTitle: $("todayExtremeTitle"),
+    todayExtremeRange: $("todayExtremeRange"),
+    rainSummary: $("rainSummary"),
+    uvSummary: $("uvSummary"),
+    confidenceTitle: $("confidenceTitle"),
+    confidenceSub: $("confidenceSub"),
+
+    // Lists
     hourlyList: $("hourlyList"),
     weekList: $("weekList"),
+
+    // Search
     searchInput: $("searchInput"),
     searchBtn: $("searchBtn"),
-    searchHint: $("searchHint"),
+
+    // Settings
     sourcesList: $("sourcesList"),
-    header: $q(".header"),
-    hero: $q(".hero"),
-    sidebar: $("sidebar"),
-    screenHourly: $("screen-hourly"),
-    screenWeek: $("screen-week"),
-    screenSearch: $("screen-search"),
-    screenSettings: $("screen-settings"),
-    bgImg: $("bgImg"),
-    particles: $("particles"),
+
+    // Screens
+    screens: {
+      home: $("screen-home"),
+      hourly: $("screen-hourly"),
+      week: $("screen-week"),
+      search: $("screen-search"),
+      settings: $("screen-settings"),
+    },
   };
-  const screens = {
-    home: dom.hero,
-    hourly: dom.screenHourly,
-    week: dom.screenWeek,
-    search: dom.screenSearch,
-    settings: dom.screenSettings,
-  };
-  // ---------- State ----------
-  let state = {
+
+  const state = {
     city: "Cape Town",
-    lastData: null,
+    data: null,
   };
-  // ---------- Helpers ----------
-  const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : "—");
-  const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : "—");
-  const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : "—");
-  function getTimeOfDay() {
-    const hour = new Date().getHours();
-    if (hour >= 5 && hour < 7) return "dawn";
-    if (hour >= 7 && hour < 18) return "day";
-    if (hour >= 18 && hour < 20) return "dusk";
+
+  // ---------------- formatting helpers
+  const isNum = (v) => typeof v === "number" && Number.isFinite(v);
+
+  const fmtTemp = (c) => (isNum(c) ? `${Math.round(c)}°` : "—");
+  const fmtRange = (lowC, highC) => {
+    if (!isNum(lowC) && !isNum(highC)) return "—";
+    if (isNum(lowC) && isNum(highC)) return `${Math.round(lowC)}–${Math.round(highC)}°`;
+    return isNum(lowC) ? `${Math.round(lowC)}°` : `${Math.round(highC)}°`;
+  };
+
+  const rainCopy = (pct) => {
+    if (!isNum(pct)) return "—";
+    if (pct < 10) return "None expected";
+    if (pct < 30) return "Unlikely";
+    if (pct < 55) return "Possible";
+    return "Likely";
+  };
+
+  const uvBand = (uv) => {
+    if (!isNum(uv)) return "—";
+    if (uv < 3) return "Low";
+    if (uv < 6) return "Moderate";
+    if (uv < 8) return "High";
+    if (uv < 11) return "Very High";
+    return "Extreme";
+  };
+
+  const confidenceLabel = (key) => {
+    const map = C?.confidence || {};
+    if (key && map[key]?.label) return map[key].label;
+    // fallback
+    if (key === "strong") return "High";
+    if (key === "decent") return "Medium";
+    return "Low";
+  };
+
+  const confidenceTopLine = (label) => `PROBABLY · ${String(label).toUpperCase()} CONFIDENCE`;
+
+  const wittyFor = (conditionKey, daily0) => {
+    // Keep it simple + punchy (you can tweak later)
+    const high = daily0?.highC;
+    const rain = daily0?.rainChance;
+
+    if (conditionKey === "clear") {
+      if (isNum(high) && high >= 26) return "Braai weather, boet!";
+      return "Looks good outside.";
+    }
+    if (conditionKey === "rain" || conditionKey === "storm") {
+      if (isNum(rain) && rain >= 60) return "Plan B. Then Plan C.";
+      return "Maybe. Maybe not. Probably wet.";
+    }
+    if (conditionKey === "cloudy") return "50/50 weather.";
+    if (conditionKey === "wind") return "Hold onto your hat.";
+    if (conditionKey === "fog") return "Drive like you’ve got sense.";
+    return "Just… probably.";
+  };
+
+  // ---------------- background logic
+  function getTimeOfDayLabel() {
+    const h = new Date().getHours();
+    if (h >= 5 && h < 8) return "dawn";
+    if (h >= 8 && h < 17) return "day";
+    if (h >= 17 && h < 20) return "dusk";
     return "night";
   }
-  function getBackgroundImagePath(conditionKey, tempC) {
-    if (!conditionKey) conditionKey = "unknown";
-    const key = String(conditionKey).toLowerCase().trim();
-    const folder = C.assets.conditionToFolder[key] || C.assets.fallbackFolder;
-    const timeOfDay = getTimeOfDay();
-    const imagePath = `${C.assets.bgBasePath}/${folder}/${timeOfDay}.jpg`;
-    return imagePath;
+
+  function setBackground(conditionKey) {
+    const key = conditionKey || "cloudy";
+    const folder =
+      C?.assets?.conditionToFolder?.[key] ||
+      C?.assets?.fallbackFolder ||
+      "cloudy";
+
+    const tod = getTimeOfDayLabel();
+    const base = C?.assets?.bgBasePath || "/assets/images/bg";
+    const src = `${base}/${folder}/${tod}.jpg`;
+
+    dom.bgImg.src = src;
   }
-  function setBackground(conditionKey, tempC) {
-    if (!dom.bgImg) return;
-    const imagePath = getBackgroundImagePath(conditionKey, tempC);
-    dom.bgImg.src = imagePath;
-    document.body.className = document.body.className
-      .split(/\s+/)
-      .filter(c => !c.startsWith("weather-"))
-      .join(" ");
-    const weatherClass = `weather-${String(conditionKey || "unknown").toLowerCase().trim()}`;
-    document.body.classList.add(weatherClass);
-  }
-  function setParticles(conditionKey) {
-    dom.particles.innerHTML = '';
-    const key = conditionKey?.toLowerCase() || 'unknown';
-    let numParticles = 0;
-    let particleClass = 'particle';
-    let animation = 'fall';
-    if (key === 'rain') {
-      numParticles = 100;
-      particleClass += ' rain-particle';
-      animation = 'fall';
-    } else if (key === 'storm') {
-      numParticles = 50;
-      particleClass += ' storm-particle';
-      animation = 'gust';
-    } else if (key === 'wind') {
-      numParticles = 30;
-      particleClass += ' wind-particle';
-      animation = 'gust';
-    } else if (key === 'fog') {
-      numParticles = 20;
-      particleClass += ' fog-particle';
-      animation = 'float';
-    } // Add more as needed
-    for (let i = 0; i < numParticles; i++) {
-      const p = document.createElement('div');
-      p.className = particleClass;
-      p.style.left = `${Math.random() * 100}%`;
-      p.style.animationDuration = `${Math.random() * 3 + 1}s`;
-      p.style.animationDelay = `${Math.random() * 2}s`;
-      dom.particles.appendChild(p);
-    }
-  }
-  function setActiveNav(target) {
-    document.querySelectorAll(".nav-btn").forEach((b) => {
-      b.classList.toggle("is-active", b.dataset.target === target);
-    });
-  }
+
+  // ---------------- screen nav
   function showScreen(target) {
-    // Hide all screens
-    Object.keys(screens).forEach((key) => {
-      const screen = screens[key];
-      if (screen) {
-        screen.style.display = 'none';
-      }
+    const screens = dom.screens;
+    Object.keys(screens).forEach((k) => {
+      if (!screens[k]) return;
+      screens[k].hidden = k !== target;
     });
-    // Show target screen
-    const targetScreen = screens[target];
-    if (targetScreen) {
-      targetScreen.style.display = 'block';
-    }
-    // Home-specific: show/hide header, sidebar, hero
-    if (target === 'home') {
-      dom.header.style.display = 'flex';
-      dom.sidebar.style.display = 'block';
-      dom.hero.style.display = 'block';
-    } else {
-      dom.header.style.display = 'none';
-      dom.sidebar.style.display = 'none';
-      dom.hero.style.display = 'none';
-    }
-    setActiveNav(target);
-  }
-  function pickToneKey(conditionKey) {
-    if (!conditionKey) return "unknown";
-    const key = conditionKey.toLowerCase();
-    return C.conditionTone[key] ? key : "unknown";
-  }
-  function getWitty(conditionKey, isWeekend) {
-    const key = pickToneKey(conditionKey);
-    const t = C.conditionTone[key] || C.conditionTone.unknown;
-    if (isWeekend && key === 'clear') return "Braai weather, boet!";
-    return t.vibe;
-  }
-  function renderTone(conditionKey) {
-    const key = pickToneKey(conditionKey);
-    const t = C.conditionTone[key] || C.conditionTone.unknown;
-    dom.toneTitle.textContent = t.title;
-    dom.toneVibe.textContent = t.vibe;
-    dom.toneNote.textContent = t.note;
-  }
-  function renderConfidence(confKey, data) {
-    const conf = C.confidence[confKey] || C.confidence.mixed;
-    dom.confidencePill.textContent = `${conf.label} Agreement`;
-    dom.confidenceNote.textContent = `${conf.long} Based on ${data.meta?.sources?.length || 0} sources.`;
-  }
-  function renderSources(list) {
-    if (!Array.isArray(list) || list.length === 0) {
-      dom.sourcesList.textContent = "—";
-      return;
-    }
-    dom.sourcesList.textContent = list
-      .map((s) => `${s.name}${s.ok ? "" : " (down)"}`)
-      .join(" • ");
-  }
-  function renderHourly(hourly) {
-    dom.hourlyList.innerHTML = "";
-    if (!Array.isArray(hourly) || hourly.length === 0) {
-      dom.hourlyList.textContent = "No hourly data.";
-      return;
-    }
-    const currentHour = new Date().getHours();
-    const shiftedHourly = hourly.slice(currentHour).concat(hourly.slice(0, currentHour));
-    const frag = document.createDocumentFragment();
-    shiftedHourly.forEach((h, index) => {
-      const isTomorrow = index >= (24 - currentHour);
-      const timeLabel = isTomorrow ? `Tomorrow ${h.timeLocal}` : h.timeLocal;
-      const row = document.createElement("div");
-      row.className = "row";
-      row.innerHTML = `
-        <div class="row-left">
-          <div class="row-time">${timeLabel || "—"}</div>
-          <div class="row-small">${h.conditionLabel || ""}</div>
-        </div>
-        <div class="row-mid">${fmtTemp(h.tempC)}</div>
-        <div class="row-right">${fmtPct(h.rainChance)} • ${fmtWind(h.windKph)}</div>
-      `;
-      frag.appendChild(row);
+
+    document.querySelectorAll(".nav-btn").forEach((btn) => {
+      const t = btn.getAttribute("data-target");
+      btn.classList.toggle("is-active", t === target);
     });
-    dom.hourlyList.appendChild(frag);
   }
-  function renderWeek(days) {
-    dom.weekList.innerHTML = "";
-    if (!Array.isArray(days) || days.length === 0) {
-      dom.weekList.textContent = "No weekly data.";
-      return;
-    }
-    const frag = document.createDocumentFragment();
-    days.slice(0, 7).forEach((d) => {
-      const row = document.createElement("div");
-      row.className = "row";
-      row.innerHTML = `
-        <div class="row-left">
-          <div class="row-time">${d.dayLabel || d.dateLocal || "—"}</div>
-          <div class="row-small">${d.conditionLabel || ""}</div>
-        </div>
-        <div class="row-mid">${fmtTemp(d.highC)} / ${fmtTemp(d.lowC)}</div>
-        <div class="row-right">${fmtPct(d.rainChance)}${Number.isFinite(d.uv) ? ` • UV ${Math.round(d.uv)}` : ""}</div>
-      `;
-      frag.appendChild(row);
-    });
-    dom.weekList.appendChild(frag);
-  }
+
+  // ---------------- renderers
   function renderHome(data) {
-    dom.cityName.textContent = data.location?.name || state.city || "—";
-    dom.countryName.textContent = data.location?.country || "—";
-    // Use daily range for bigTemp
-    const today = data.daily?.[0] || {};
-    dom.bigTemp.textContent = `${fmtTemp(today.lowC)}—${fmtTemp(today.highC)}`;
-    dom.conditionText.textContent = `This is ${data.now?.conditionLabel?.toLowerCase() || "unclear"}.`;
-    const isWeekend = new Date().getDay() >= 5 || new Date().getDay() === 0;
-    dom.wittyLine.textContent = getWitty(data.now?.conditionKey, isWeekend);
-    dom.updatedAt.textContent = data.meta?.updatedAtLabel || "—";
-    dom.feelsLike.textContent = fmtTemp(data.now?.feelsLikeC);
-    dom.windKph.textContent = fmtWind(data.now?.windKph);
-    dom.humidity.textContent = fmtPct(data.now?.humidity);
-    dom.rainChance.textContent = fmtPct(data.now?.rainChance);
-    renderTone(data.now?.conditionKey);
-    renderConfidence(data.consensus?.confidenceKey, data);
-    renderSources(data.meta?.sources);
-    setBackground(data.now?.conditionKey, data.now?.tempC);
-    setParticles(data.now?.conditionKey);
-  }
-  async function fetchWeather(city) {
-    const url = `${C.endpoints.weather}?q=${encodeURIComponent(city)}`;
-    const res = await fetch(url);
-    if (!res.ok) {
-      const txt = await res.text().catch(() => "");
-      throw new Error(`Weather API failed (${res.status}). ${txt}`);
+    const name = data?.location?.name || state.city || "—";
+    const country = data?.location?.country || "";
+    dom.cityLine.textContent = country ? `${name}, ${country}` : name;
+
+    const daily0 = data?.daily?.[0] || {};
+    const now = data?.now || {};
+
+    // Big hero
+    const conditionLabel = (now?.conditionLabel || daily0?.conditionLabel || "Unclear").toLowerCase();
+    dom.conditionText.textContent = `This is ${conditionLabel}.`;
+    dom.bigTemp.textContent = fmtRange(daily0?.lowC, daily0?.highC);
+
+    // Confidence
+    const cKey = data?.consensus?.confidenceKey || "mixed";
+    const cLabel = confidenceLabel(cKey);
+    dom.confidenceTop.textContent = confidenceTopLine(cLabel);
+
+    // Witty line (braai / etc)
+    dom.wittyLine.textContent = wittyFor(now?.conditionKey, daily0);
+
+    // Right cards
+    dom.todayExtremeTitle.textContent = daily0?.conditionLabel || now?.conditionLabel || "—";
+    dom.todayExtremeRange.textContent = fmtRange(daily0?.lowC, daily0?.highC);
+
+    const rainPct = isNum(daily0?.rainChance) ? daily0.rainChance : now?.rainChance;
+    dom.rainSummary.textContent = rainCopy(rainPct);
+
+    const uv = daily0?.uv;
+    dom.uvSummary.textContent = isNum(uv) ? `${uvBand(uv)} (${Math.round(uv)})` : "—";
+
+    dom.confidenceTitle.textContent = cLabel;
+    const n = Array.isArray(data?.meta?.sources) ? data.meta.sources.length : 0;
+    dom.confidenceSub.textContent = n ? `Based on ${n} forecasts →` : "—";
+
+    // Top-right updated time + sources list
+    dom.updatedAt.textContent = data?.meta?.updatedAtLabel || "—";
+    if (dom.sourcesList) {
+      dom.sourcesList.textContent = Array.isArray(data?.meta?.sources)
+        ? data.meta.sources.join(" · ")
+        : "—";
     }
-    return res.json();
+
+    // Background
+    setBackground(now?.conditionKey || daily0?.conditionKey);
   }
+
+  function renderHourly(data) {
+    const items = Array.isArray(data?.hourly) ? data.hourly : [];
+    dom.hourlyList.innerHTML = "";
+
+    items.slice(0, 24).forEach((h) => {
+      const row = document.createElement("div");
+      row.className = "list-row";
+
+      const left = document.createElement("div");
+      left.className = "list-left";
+      left.innerHTML = `
+        <div class="list-time">${h?.timeLocal || "—"}</div>
+        <div class="list-cond">${h?.conditionLabel || "—"}</div>
+      `;
+
+      const mid = document.createElement("div");
+      mid.className = "list-mid";
+      mid.textContent = fmtTemp(h?.tempC);
+
+      const right = document.createElement("div");
+      right.className = "list-right";
+      const rain = isNum(h?.rainChance) ? `${Math.round(h.rainChance)}%` : "—";
+      const wind = isNum(h?.windKph) ? `${Math.round(h.windKph)} km/h` : "—";
+      right.textContent = `${rain} · ${wind}`;
+
+      row.appendChild(left);
+      row.appendChild(mid);
+      row.appendChild(right);
+      dom.hourlyList.appendChild(row);
+    });
+  }
+
+  function renderWeek(data) {
+    const items = Array.isArray(data?.daily) ? data.daily : [];
+    dom.weekList.innerHTML = "";
+
+    items.slice(0, 7).forEach((d) => {
+      const row = document.createElement("div");
+      row.className = "list-row";
+
+      const left = document.createElement("div");
+      left.className = "list-left";
+      left.innerHTML = `
+        <div class="list-day">${d?.dayLabel || "—"}</div>
+        <div class="list-cond">${d?.conditionLabel || "—"}</div>
+      `;
+
+      const mid = document.createElement("div");
+      mid.className = "list-mid";
+      mid.textContent = `${fmtTemp(d?.highC)} / ${fmtTemp(d?.lowC)}`;
+
+      const right = document.createElement("div");
+      right.className = "list-right";
+      const rain = isNum(d?.rainChance) ? `${Math.round(d.rainChance)}%` : "—";
+      const uv = isNum(d?.uv) ? `UV ${Math.round(d.uv)}` : "UV —";
+      right.textContent = `${rain} · ${uv}`;
+
+      row.appendChild(left);
+      row.appendChild(mid);
+      row.appendChild(right);
+      dom.weekList.appendChild(row);
+    });
+  }
+
+  function renderAll(data) {
+    renderHome(data);
+    renderHourly(data);
+    renderWeek(data);
+  }
+
+  // ---------------- data fetch
   async function loadCity(city) {
-    dom.searchHint.textContent = "";
+    const q = (city || "").trim();
+    if (!q) return;
+
+    state.city = q;
+
     try {
-      state.city = city;
-      const data = await fetchWeather(city);
-      state.lastData = data;
-      renderHome(data);
-      renderHourly(data.hourly);
-      renderWeek(data.daily);
+      const url = `${C?.endpoints?.weather || "/api/weather"}?q=${encodeURIComponent(q)}`;
+      const res = await fetch(url);
+      if (!res.ok) {
+        const t = await res.text();
+        throw new Error(`HTTP ${res.status}: ${t}`);
+      }
+      const data = await res.json();
+      state.data = data;
+      renderAll(data);
     } catch (err) {
       console.error(err);
-      dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
+      // graceful fallback text
+      dom.conditionText.textContent = "This is unclear.";
+      dom.bigTemp.textContent = "—";
+      dom.wittyLine.textContent = "Something’s not pulling through.";
+      dom.confidenceTop.textContent = "PROBABLY · LOW CONFIDENCE";
+      dom.confidenceTitle.textContent = "Low";
+      dom.confidenceSub.textContent = "Check the API / key.";
+      setBackground("cloudy");
     }
   }
-  // ---------- Events ----------
+
+  // ---------------- events
   document.querySelectorAll(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const t = btn.dataset.target;
-      if (t && screens[t]) {
-        showScreen(t);
-      }
+      const t = btn.getAttribute("data-target");
+      if (t) showScreen(t);
     });
   });
-  dom.searchBtn.addEventListener("click", () => {
-    const v = (dom.searchInput.value || "").trim();
-    if (!v) return;
-    loadCity(v);
-    showScreen("home");
-  });
-  dom.searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") dom.searchBtn.click();
-  });
-  // ---------- Boot ----------
-  setBackground("cloudy", null);
-  setParticles("cloudy");
+
+  if (dom.searchBtn && dom.searchInput) {
+    dom.searchBtn.addEventListener("click", () => {
+      const v = (dom.searchInput.value || "").trim();
+      if (!v) return;
+      loadCity(v);
+      showScreen("home");
+    });
+
+    dom.searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") dom.searchBtn.click();
+    });
+  }
+
+  // ---------------- boot
   showScreen("home");
+  setBackground("cloudy");
   loadCity(state.city);
 })();
