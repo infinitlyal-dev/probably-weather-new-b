@@ -117,12 +117,28 @@
     });
   }
   function showScreen(target) {
+    // Hide all screens
     Object.keys(screens).forEach((key) => {
       const screen = screens[key];
       if (screen) {
-        screen.style.display = (key === target ? 'block' : 'none');
+        screen.style.display = 'none';
       }
     });
+    // Show target screen
+    const targetScreen = screens[target];
+    if (targetScreen) {
+      targetScreen.style.display = 'block';
+    }
+    // Home-specific: show/hide header, sidebar, hero
+    if (target === 'home') {
+      dom.header.style.display = 'flex';
+      dom.sidebar.style.display = 'block';
+      dom.hero.style.display = 'block';
+    } else {
+      dom.header.style.display = 'none';
+      dom.sidebar.style.display = 'none';
+      dom.hero.style.display = 'none';
+    }
     setActiveNav(target);
   }
   function pickToneKey(conditionKey) {
@@ -146,9 +162,9 @@
   function renderConfidence(confKey, data) {
     const conf = C.confidence[confKey] || C.confidence.mixed;
     dom.confidencePill.textContent = `${conf.label} Agreement`;
+    dom.confidenceNote.textContent = `${conf.long} Aggregated from 3 sources.`;
     const barWidth = conf.label === 'Strong' ? 100 : conf.label === 'Decent' ? 66 : 33;
     dom.confidenceBar.style.width = `${barWidth}%`;
-    dom.confidenceNote.textContent = `${conf.long} Aggregated from 3 sources.`;
   }
   function renderSources(list) {
     if (!Array.isArray(list) || list.length === 0) {
@@ -165,17 +181,13 @@
       dom.hourlyList.textContent = "No hourly data.";
       return;
     }
-    const currentHour = new Date().getHours();
-    const shiftedHourly = hourly.slice(currentHour).concat(hourly.slice(0, currentHour));
     const frag = document.createDocumentFragment();
-    shiftedHourly.forEach((h, index) => {
-      const isTomorrow = index >= (24 - currentHour);
-      const timeLabel = isTomorrow ? `Tomorrow ${h.timeLocal}` : h.timeLocal;
+    hourly.slice(0, 24).forEach((h) => {
       const row = document.createElement("div");
       row.className = "row";
       row.innerHTML = `
         <div class="row-left">
-          <div class="row-time">${timeLabel || "—"}</div>
+          <div class="row-time">${h.timeLocal || "—"}</div>
           <div class="row-small">${h.conditionLabel || ""}</div>
         </div>
         <div class="row-mid">${fmtTemp(h.tempC)}</div>
@@ -210,11 +222,8 @@
   function renderHome(data) {
     dom.cityName.textContent = data.location?.name || state.city || "—";
     dom.countryName.textContent = data.location?.country || "—";
-    const today = data.daily?.[0] || {};
-    dom.bigTemp.textContent = `${fmtTemp(today.lowC)}—${fmtTemp(today.highC)}`;
-    dom.conditionText.textContent = `This is ${data.now?.conditionLabel?.toLowerCase() || "unclear"}.`;
-    const isWeekend = new Date().getDay() >= 5 || new Date().getDay() === 0;
-    dom.wittyLine.textContent = getWitty(data.now?.conditionKey, isWeekend);
+    dom.bigTemp.textContent = fmtTemp(data.now?.tempC);
+    dom.conditionText.textContent = data.now?.conditionLabel || "—";
     dom.updatedAt.textContent = data.meta?.updatedAtLabel || "—";
     dom.feelsLike.textContent = fmtTemp(data.now?.feelsLikeC);
     dom.windKph.textContent = fmtWind(data.now?.windKph);
