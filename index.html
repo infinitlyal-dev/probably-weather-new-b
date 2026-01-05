@@ -8,14 +8,12 @@
 </head>
 
 <body>
-  <!-- Background system (must be first, behind everything) -->
   <div id="bg">
     <img id="bgImg" src="" alt="" />
     <div id="scrim"></div>
   </div>
   <div id="particles"></div>
 
-  <!-- subtle overlays (CSS handles them) -->
   <div class="overlay overlay--heat" aria-hidden="true"></div>
   <div class="overlay overlay--grain" aria-hidden="true"></div>
 
@@ -35,7 +33,6 @@
     </header>
 
     <main class="main" id="main">
-      <!-- Home "hero" -->
       <section class="hero">
         <div class="hero-top">
           <div class="city-group">
@@ -57,7 +54,6 @@
         </div>
       </section>
 
-      <!-- Screens (hidden until activated) -->
       <section class="screen" id="screen-hourly" hidden>
         <div class="screen-title">Hourly</div>
         <div class="screen-body" id="hourlyList"></div>
@@ -74,7 +70,6 @@
           <input id="searchInput" class="search" type="text" placeholder="Search a city…" />
           <button id="searchBtn" class="btn">Search</button>
           <div class="search-hint" id="searchHint"></div>
-          <div id="searchResults"></div> <!-- For results list -->
         </div>
       </section>
 
@@ -91,13 +86,6 @@
 
           <div class="setting-row">
             <div>
-              <div class="setting-title">Language</div>
-              <label><input type="checkbox" id="wittyToggle" checked> Human (witty lines)</label>
-            </div>
-          </div>
-
-          <div class="setting-row">
-            <div>
               <div class="setting-title">Sources</div>
               <div class="setting-sub" id="sourcesList">—</div>
             </div>
@@ -107,26 +95,25 @@
     </main>
 
     <aside class="sidebar" id="sidebar">
-      <div class="card" id="extremeCard">
+      <div class="card">
         <div class="card-title">Today's extreme</div>
         <div class="extreme-value" id="extremeValue">—</div>
       </div>
 
-      <div class="card" id="rainCard">
+      <div class="card">
         <div class="card-title">Rain</div>
         <div class="rain-value" id="rainValue">—</div>
       </div>
 
-      <div class="card" id="uvCard">
+      <div class="card">
         <div class="card-title">UV</div>
         <div class="uv-value" id="uvValue">—</div>
       </div>
 
-      <div class="card" id="confidenceCard">
+      <div class="card">
         <div class="card-title">Confidence</div>
-        <div class="confidence-level" id="confidenceLevel">—</div>
+        <div id="confidenceLevel">—</div>
         <div class="confidence-bar" id="confidenceBar"></div>
-        <div class="confidence-sources" id="confidenceSources">Aggregated from 3 sources</div>
       </div>
 
       <div class="card">
@@ -135,6 +122,7 @@
           <div class="k">Feels like</div><div class="v" id="feelsLike">—</div>
           <div class="k">Wind</div><div class="v" id="windKph">—</div>
           <div class="k">Humidity</div><div class="v" id="humidity">—</div>
+          <div class="k">Rain chance</div><div class="v" id="rainChance">—</div>
         </div>
       </div>
 
@@ -155,7 +143,6 @@
     </nav>
   </div>
 
-  <!-- IMPORTANT: config loads BEFORE app.js -->
   <script src="assets/config.js"></script>
   <script src="assets/app.js"></script>
 </body>

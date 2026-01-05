@@ -1,7 +1,5 @@
-// assets/app.js
 (() => {
   const C = window.PW_CONFIG;
-  // DOM elements updated for new cards
   const $ = (id) => document.getElementById(id);
   const $q = (sel) => document.querySelector(sel);
   const dom = {
@@ -9,7 +7,6 @@
     updatedAt: $("updatedAt"),
     cityName: $("cityName"),
     countryName: $("countryName"),
-    savePlace: $("savePlace"),
     bigTemp: $("bigTemp"),
     conditionText: $("conditionText"),
     wittyLine: $("wittyLine"),
@@ -19,12 +16,6 @@
     windKph: $("windKph"),
     humidity: $("humidity"),
     rainChance: $("rainChance"),
-    extremeValue: $("extremeValue"),
-    rainValue: $("rainValue"),
-    uvValue: $("uvValue"),
-    confidenceLevel: $("confidenceLevel"),
-    confidenceBar: $("confidenceBar"),
-    confidenceSources: $("confidenceSources"),
     toneTitle: $("toneTitle"),
     toneVibe: $("toneVibe"),
     toneNote: $("toneNote"),
@@ -33,12 +24,8 @@
     searchInput: $("searchInput"),
     searchBtn: $("searchBtn"),
     searchHint: $("searchHint"),
-    searchResults: $("searchResults"),
     sourcesList: $("sourcesList"),
-    wittyToggle: $("wittyToggle"),
-    header: $q(".header"),
     hero: $q(".hero"),
-    sidebar: $("sidebar"),
     screenHourly: $("screen-hourly"),
     screenWeek: $("screen-week"),
     screenSearch: $("screen-search"),
@@ -53,14 +40,10 @@
     search: dom.screenSearch,
     settings: dom.screenSettings,
   };
-  // State
   let state = {
     city: "Cape Town",
     lastData: null,
-    favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
-    witty: localStorage.getItem('witty') !== 'false', // Default true
   };
-  // Helpers
   const fmtTemp = (n) => (Number.isFinite(n) ? `${Math.round(n)}°${C.units.temp}` : "—");
   const fmtWind = (n) => (Number.isFinite(n) ? `${Math.round(n)} ${C.units.wind}` : "—");
   const fmtPct = (n) => (Number.isFinite(n) ? `${Math.round(n)}%` : "—");
@@ -71,17 +54,13 @@
     if (hour >= 18 && hour < 20) return "dusk";
     return "night";
   }
-  function getConditionFolder(key, tempC) {
-    if (tempC > C.temperature.heatThreshold) return "heat";
-    if (tempC < C.temperature.coldThreshold) return "cold";
-    return C.assets.conditionToFolder[key] || C.assets.fallbackFolder;
-  }
   function getBackgroundImagePath(conditionKey, tempC) {
     if (!conditionKey) conditionKey = "unknown";
     const key = String(conditionKey).toLowerCase().trim();
-    const folder = getConditionFolder(key, tempC);
+    const folder = C.assets.conditionToFolder[key] || C.assets.fallbackFolder;
     const timeOfDay = getTimeOfDay();
-    return `${C.assets.bgBasePath}/${folder}/${timeOfDay}.jpg`;
+    const imagePath = `${C.assets.bgBasePath}/${folder}/${timeOfDay}.jpg`;
+    return imagePath;
   }
   function setBackground(conditionKey, tempC) {
     if (!dom.bgImg) return;
@@ -91,43 +70,34 @@
       .split(/\s+/)
       .filter(c => !c.startsWith("weather-"))
       .join(" ");
-    const weatherClass = `weather-${getConditionFolder(conditionKey?.toLowerCase() || "unknown", tempC)}`;
+    const weatherClass = `weather-${String(conditionKey || "unknown").toLowerCase().trim()}`;
     document.body.classList.add(weatherClass);
   }
   function setParticles(conditionKey) {
-    dom.particles.innerHTML = '';
-    const key = conditionKey?.toLowerCase() || 'unknown';
+    dom.particles.innerHTML = "";
+    if (!conditionKey) return;
+    const key = conditionKey.toLowerCase();
     let numParticles = 0;
     let particleClass = 'particle';
-    let animation = 'fall';
     if (key === 'rain') {
       numParticles = 100;
       particleClass += ' rain-particle';
-      animation = 'fall';
     } else if (key === 'storm') {
       numParticles = 50;
       particleClass += ' storm-particle';
-      animation = 'gust';
     } else if (key === 'wind') {
       numParticles = 30;
       particleClass += ' wind-particle';
-      animation = 'gust';
     } else if (key === 'fog') {
       numParticles = 20;
       particleClass += ' fog-particle';
-      animation = 'float';
-    } else if (key === 'cold') {
-      numParticles = 80;
-      particleClass += ' snow-particle';
-      animation = 'fall';
-    } // Add more
+    }
     for (let i = 0; i < numParticles; i++) {
       const p = document.createElement('div');
       p.className = particleClass;
       p.style.left = `${Math.random() * 100}%`;
       p.style.animationDuration = `${Math.random() * 3 + 1}s`;
       p.style.animationDelay = `${Math.random() * 2}s`;
-      p.style.opacity = 0.8; // Increase visibility
       dom.particles.appendChild(p);
     }
   }
@@ -140,40 +110,15 @@
     Object.keys(screens).forEach((key) => {
       const screen = screens[key];
       if (screen) {
-        screen.style.display = (key === target ? 'block' : 'none');
+        screen.hidden = key !== target;
       }
     });
-    const isHome = target === 'home';
-    dom.header.style.display = isHome ? 'flex' : 'none';
-    dom.sidebar.style.display = isHome ? 'block' : 'none';
     setActiveNav(target);
-  }
-  function getRainDesc(chance) {
-    if (chance < 10) return C.rainDescs[0];
-    if (chance < 30) return C.rainDescs.low;
-    if (chance < 50) return C.rainDescs.medium;
-    if (chance < 80) return C.rainDescs.high;
-    return C.rainDescs.heavy;
-  }
-  function getUvLevel(uv) {
-    if (uv < 3) return C.uvLevels.low + ` (${Math.round(uv)})`;
-    if (uv < 6) return C.uvLevels.medium + ` (${Math.round(uv)})`;
-    if (uv < 8) return C.uvLevels.high + ` (${Math.round(uv)})`;
-    return C.uvLevels.veryHigh + ` (${Math.round(uv)})`;
   }
   function pickToneKey(conditionKey) {
     if (!conditionKey) return "unknown";
     const key = conditionKey.toLowerCase();
     return C.conditionTone[key] ? key : "unknown";
-  }
-  function getWitty(conditionKey, isWeekend, isWitty) {
-    const key = pickToneKey(conditionKey);
-    const t = C.conditionTone[key] || C.conditionTone.unknown;
-    if (isWitty) {
-      if (isWeekend && key === 'clear') return t.witty;
-      return t.witty || t.vibe;
-    }
-    return t.plain || t.vibe;
   }
   function renderTone(conditionKey) {
     const key = pickToneKey(conditionKey);
@@ -182,12 +127,9 @@
     dom.toneVibe.textContent = t.vibe;
     dom.toneNote.textContent = t.note;
   }
-  function renderConfidence(confKey, data) {
+  function renderConfidence(confKey) {
     const conf = C.confidence[confKey] || C.confidence.mixed;
-    dom.confidenceLevel.textContent = conf.label;
-    const barWidth = conf.label === 'High' ? 100 : conf.label === 'Medium' ? 66 : 33;
-    dom.confidenceBar.style.width = `${barWidth}%`;
-    dom.confidenceSources.textContent = `Aggregated from 3 sources`;
+    dom.confidencePill.textContent = `${conf.label} confidence`;
     dom.confidenceNote.textContent = conf.long;
   }
   function renderSources(list) {
@@ -199,50 +141,20 @@
       .map((s) => `${s.name}${s.ok ? "" : " (down)"}`)
       .join(" • ");
   }
-  function renderHome(data) {
-    dom.cityName.textContent = data.location?.name || state.city || "—";
-    dom.countryName.textContent = data.location?.country || "—";
-    const today = data.daily?.[0] || {};
-    dom.bigTemp.textContent = `${fmtTemp(today.lowC)}—${fmtTemp(today.highC)}`;
-    dom.conditionText.textContent = `This is ${data.now?.conditionLabel?.toLowerCase() || "unclear"}.`;
-    const isWeekend = new Date().getDay() >= 5 || new Date().getDay() === 0;
-    dom.wittyLine.textContent = getWitty(data.now?.conditionKey, isWeekend, state.witty);
-    dom.updatedAt.textContent = data.meta?.updatedAtLabel || "—";
-    dom.feelsLike.textContent = fmtTemp(data.now?.feelsLikeC);
-    dom.windKph.textContent = fmtWind(data.now?.windKph);
-    dom.humidity.textContent = fmtPct(data.now?.humidity);
-    dom.rainChance.textContent = fmtPct(data.now?.rainChance);
-    dom.extremeValue.textContent = `${data.now.conditionLabel} ${dom.bigTemp.textContent}`;
-    dom.rainValue.textContent = getRainDesc(data.now.rainChance);
-    dom.uvValue.textContent = getUvLevel(data.now.uv);
-    renderTone(data.now?.conditionKey);
-    renderConfidence(data.consensus?.confidenceKey, data);
-    renderSources(data.meta?.sources);
-    setBackground(data.now?.conditionKey, data.now?.tempC);
-    setParticles(data.now?.conditionKey);
-    // Favorites star
-    dom.savePlace.classList.toggle('saved', state.favorites.includes(state.city));
-  }
   function renderHourly(hourly) {
-    // Same as before, but add icons if desired (e.g., emoji for condition)
     dom.hourlyList.innerHTML = "";
     if (!Array.isArray(hourly) || hourly.length === 0) {
       dom.hourlyList.textContent = "No hourly data.";
       return;
     }
-    const currentHour = new Date().getHours();
-    const shiftedHourly = hourly.slice(currentHour).concat(hourly.slice(0, currentHour));
     const frag = document.createDocumentFragment();
-    shiftedHourly.forEach((h, index) => {
-      const isTomorrow = index >= (24 - currentHour);
-      const timeLabel = isTomorrow ? `Tomorrow ${h.timeLocal}` : h.timeLocal;
-      const icon = getConditionIcon(h.conditionKey); // Add function for emoji/icons
+    hourly.slice(0, 24).forEach((h) => {
       const row = document.createElement("div");
       row.className = "row";
       row.innerHTML = `
         <div class="row-left">
-          <div class="row-time">${timeLabel || "—"}</div>
-          <div class="row-small">${icon} ${h.conditionLabel || ""}</div>
+          <div class="row-time">${h.timeLocal || "—"}</div>
+          <div class="row-small">${h.conditionLabel || ""}</div>
         </div>
         <div class="row-mid">${fmtTemp(h.tempC)}</div>
         <div class="row-right">${fmtPct(h.rainChance)} • ${fmtWind(h.windKph)}</div>
@@ -251,78 +163,85 @@
     });
     dom.hourlyList.appendChild(frag);
   }
-  // Add similar for renderWeek with icons
-  function getConditionIcon(key) {
-    const icons = {
-      clear: '☀️',
-      cloudy: '☁️',
-      rain: '🌧️',
-      storm: '⛈️',
-      fog: '🌫️',
-      wind: '🌬️',
-      cold: '❄️',
-      hot: '🔥',
-      unknown: '❓'
-    };
-    return icons[key.toLowerCase()] || '';
-  }
-  async function fetchNominatim(query) {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=5`;
-    const res = await fetch(url);
-    return res.ok ? res.json() : [];
-  }
-  async function handleSearch() {
-    const v = (dom.searchInput.value || "").trim();
-    if (!v) return;
-    dom.searchResults.innerHTML = '';
-    const results = await fetchNominatim(v);
-    const frag = document.createDocumentFragment();
-    results.forEach((r) => {
-      const item = document.createElement('div');
-      item.className = 'search-item';
-      item.textContent = r.display_name;
-      item.addEventListener('click', () => {
-        loadCity(r.display_name);
-        showScreen("home");
-      });
-      frag.appendChild(item);
-    });
-    dom.searchResults.appendChild(frag);
-  }
-  function toggleFavorite() {
-    const idx = state.favorites.indexOf(state.city);
-    if (idx > -1) {
-      state.favorites.splice(idx, 1);
-    } else if (state.favorites.length < 5) {
-      state.favorites.push(state.city);
+  function renderWeek(days) {
+    dom.weekList.innerHTML = "";
+    if (!Array.isArray(days) || days.length === 0) {
+      dom.weekList.textContent = "No weekly data.";
+      return;
     }
-    localStorage.setItem('favorites', JSON.stringify(state.favorites));
-    dom.savePlace.classList.toggle('saved', state.favorites.includes(state.city));
+    const frag = document.createDocumentFragment();
+    days.slice(0, 7).forEach((d) => {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
+        <div class="row-left">
+          <div class="row-time">${d.dayLabel || d.dateLocal || "—"}</div>
+          <div class="row-small">${d.conditionLabel || ""}</div>
+        </div>
+        <div class="row-mid">${fmtTemp(d.highC)} / ${fmtTemp(d.lowC)}</div>
+        <div class="row-right">${fmtPct(d.rainChance)}${Number.isFinite(d.uv) ? ` • UV ${Math.round(d.uv)}` : ""}</div>
+      `;
+      frag.appendChild(row);
+    });
+    dom.weekList.appendChild(frag);
   }
-  function toggleWitty(e) {
-    state.witty = e.target.checked;
-    localStorage.setItem('witty', state.witty);
-    if (state.lastData) renderHome(state.lastData); // Refresh witty
+  function renderHome(data) {
+    dom.cityName.textContent = data.location?.name || state.city || "—";
+    dom.countryName.textContent = data.location?.country || "—";
+    dom.bigTemp.textContent = fmtTemp(data.now?.tempC);
+    dom.conditionText.textContent = data.now?.conditionLabel || "—";
+    dom.updatedAt.textContent = data.meta?.updatedAtLabel || "—";
+    dom.feelsLike.textContent = fmtTemp(data.now?.feelsLikeC);
+    dom.windKph.textContent = fmtWind(data.now?.windKph);
+    dom.humidity.textContent = fmtPct(data.now?.humidity);
+    dom.rainChance.textContent = fmtPct(data.now?.rainChance);
+    renderTone(data.now?.conditionKey);
+    renderConfidence(data.consensus?.confidenceKey);
+    renderSources(data.meta?.sources);
+    setBackground(data.now?.conditionKey, data.now?.tempC);
+    setParticles(data.now?.conditionKey);
   }
-  // Events
+  async function fetchWeather(city) {
+    const url = `${C.endpoints.weather}?q=${encodeURIComponent(city)}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+      const txt = await res.text().catch(() => "");
+      throw new Error(`Weather API failed (${res.status}). ${txt}`);
+    }
+    return res.json();
+  }
+  async function loadCity(city) {
+    dom.searchHint.textContent = "";
+    try {
+      state.city = city;
+      const data = await fetchWeather(city);
+      state.lastData = data;
+      renderHome(data);
+      renderHourly(data.hourly);
+      renderWeek(data.daily);
+    } catch (err) {
+      console.error(err);
+      dom.searchHint.textContent = "Couldn't load that city. Try another spelling.";
+    }
+  }
   document.querySelectorAll(".nav-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const t = btn.dataset.target;
-      if (t && screens[t]) {
+      if (t) {
         showScreen(t);
       }
     });
   });
-  dom.searchBtn.addEventListener("click", handleSearch);
-  dom.searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") handleSearch();
+  dom.searchBtn.addEventListener("click", () => {
+    const v = (dom.searchInput.value || "").trim();
+    if (!v) return;
+    loadCity(v);
+    showScreen("home");
   });
-  dom.savePlace.addEventListener("click", toggleFavorite);
-  dom.wittyToggle.addEventListener("change", toggleWitty);
-  dom.wittyToggle.checked = state.witty;
-  // Boot
+  dom.searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") dom.searchBtn.click();
+  });
   setBackground("cloudy", null);
-  setParticles("cloudy");
   showScreen("home");
   loadCity(state.city);
 })();
