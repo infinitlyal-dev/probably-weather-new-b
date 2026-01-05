@@ -374,9 +374,9 @@
     const daily = data?.daily || [];
     const today = daily[0] || {};
     
-    // City and country
-    if (dom.cityName) dom.cityName.textContent = locationName;
-    if (dom.countryName) dom.countryName.textContent = country || "";
+    // City and country (combined into one line)
+    if (dom.cityName) dom.cityName.textContent = country ? `${locationName}, ${country}` : locationName;
+    if (dom.countryName) dom.countryName.textContent = "";
     
     // Updated time
     if (dom.updatedAt) {
