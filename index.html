@@ -8,12 +8,14 @@
 </head>
 
 <body>
+  <!-- Background system (must be first, behind everything) -->
   <div id="bg">
     <img id="bgImg" src="" alt="" />
     <div id="scrim"></div>
   </div>
   <div id="particles"></div>
 
+  <!-- subtle overlays (CSS handles them) -->
   <div class="overlay overlay--heat" aria-hidden="true"></div>
   <div class="overlay overlay--grain" aria-hidden="true"></div>
 
@@ -33,12 +35,10 @@
     </header>
 
     <main class="main" id="main">
+      <!-- Home "hero" -->
       <section class="hero">
         <div class="hero-top">
-          <div class="city-group">
-            <div class="city" id="cityName">—</div>
-            <button class="star" id="savePlace" aria-label="Save this place">★</button>
-          </div>
+          <div class="city" id="cityName">—</div>
           <div class="country" id="countryName">—</div>
         </div>
 
@@ -54,6 +54,7 @@
         </div>
       </section>
 
+      <!-- Screens (hidden until activated) -->
       <section class="screen" id="screen-hourly" hidden>
         <div class="screen-title">Hourly</div>
         <div class="screen-body" id="hourlyList"></div>
@@ -96,27 +97,6 @@
 
     <aside class="sidebar" id="sidebar">
       <div class="card">
-        <div class="card-title">Today's extreme</div>
-        <div class="extreme-value" id="extremeValue">—</div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Rain</div>
-        <div class="rain-value" id="rainValue">—</div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">UV</div>
-        <div class="uv-value" id="uvValue">—</div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Confidence</div>
-        <div id="confidenceLevel">—</div>
-        <div class="confidence-bar" id="confidenceBar"></div>
-      </div>
-
-      <div class="card">
         <div class="card-title">Details</div>
         <div class="kv">
           <div class="k">Feels like</div><div class="v" id="feelsLike">—</div>
@@ -143,6 +123,7 @@
     </nav>
   </div>
 
+  <!-- IMPORTANT: config loads BEFORE app.js -->
   <script src="assets/config.js"></script>
   <script src="assets/app.js"></script>
 </body>

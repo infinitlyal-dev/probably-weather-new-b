@@ -84,8 +84,8 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
 }
 
 @keyframes fall {
-  from { transform: translateY(-10%); }
-  to { transform: translateY(110vh); }
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(110vh); }
 }
 
 .weather-wind .particle, .wind-particle {
@@ -97,8 +97,10 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
 }
 
 @keyframes gust {
-  from { transform: translateX(-120vw) rotate(0deg); opacity: 0; }
-  to { transform: translateX(120vw) rotate(10deg); opacity: 0; }
+  0% { transform: translateX(-120vw) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.4; }
+  90% { opacity: 0.4; }
+  100% { transform: translateX(120vw) rotate(10deg); opacity: 0; }
 }
 
 .weather-rain .particle, .rain-particle {
@@ -167,7 +169,7 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100% - 4rem);
+  height: calc(100% - 4rem); // Adjust for header/nav
 }
 
 .hero-top {
