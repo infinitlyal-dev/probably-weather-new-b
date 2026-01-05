@@ -260,52 +260,54 @@
     // Determine forecast count from various possible fields
     const count = data?.sourcesUsed?.length ?? data?.usedSources?.length ?? data?.sources?.length ?? data?.meta?.sourcesUsed?.length ?? (data?.meta?.sources ? data.meta.sources.filter(s => s && s.ok).length : 0);
     
-    // Determine confidence level - prioritize confKey if available, then score, then default
-    let level = "Medium"; // Default
-    if (confKey && cfg[confKey]) {
-      // Use confKey mapping if available
-      const conf = cfg[confKey];
-      const confLabel = conf?.label || "Mixed";
-      level = confLabel === 'Strong' ? 'High' : confLabel === 'Decent' ? 'Medium' : 'Low';
+    // Map confKey to text, width, color, and explanation
+    let pillText, barWidth, barColor, levelText, explanation;
+    
+    if (confKey === 'strong') {
+      pillText = 'HIGH CONFIDENCE';
+      barWidth = 100;
+      barColor = '#4caf50';
+      levelText = 'High';
+      explanation = 'Sources agree well—high confidence.';
+    } else if (confKey === 'decent') {
+      pillText = 'DECENT CONFIDENCE';
+      barWidth = 75;
+      barColor = '#ff9800';
+      levelText = 'Decent';
+      explanation = 'Mostly aligned, minor differences.';
     } else {
-      // Fallback to score-based determination
-      const score = data?.agreementScore ?? data?.agreement ?? data?.confidence?.score ?? null;
-      if (score !== null && score !== undefined) {
-        if (score >= (cfg.high || 0.72)) {
-          level = "High";
-        } else if (score >= (cfg.mixed || 0.50)) {
-          level = "Medium";
-        } else {
-          level = "Low";
-        }
-      }
+      // mixed or fallback
+      pillText = 'LOW CONFIDENCE';
+      barWidth = 40;
+      barColor = '#f44336';
+      levelText = 'Low';
+      explanation = 'Sources disagree—take with caution.';
     }
     
-    // Update confidence badge in hero
+    // Update confidence badge in hero (uppercase pill)
     if (dom.confidencePill) {
-      const badgeLabel = level === 'High' ? 'STRONG' : level === 'Medium' ? 'DECENT' : 'MIXED';
-      dom.confidencePill.textContent = `PROBABLY · ${badgeLabel} CONFIDENCE`;
+      dom.confidencePill.textContent = `PROBABLY · ${pillText}`;
     }
     
-    // Update confidence card - label is separate, value is just the level
-    if (dom.confidenceLevel) {
-      dom.confidenceLevel.textContent = level;
-    }
-    
-    // Update explanation with exact wording
-    if (dom.confidenceExplanation) {
-      dom.confidenceExplanation.textContent = `Based on ${count} forecasts →`;
-    }
-    
-    // Update note and bar (safe access)
-    if (dom.confidenceNote && cfg[confKey] && cfg[confKey].long) {
-      dom.confidenceNote.textContent = cfg[confKey].long;
-    } else if (dom.confidenceNote) {
-      dom.confidenceNote.textContent = "Sources disagree — this is classic 50/50 weather.";
-    }
-    const barWidth = level === 'High' ? 100 : level === 'Medium' ? 66 : 33;
+    // Update confidence bar (dynamic width and color)
     if (dom.confidenceBar) {
       dom.confidenceBar.style.width = `${barWidth}%`;
+      dom.confidenceBar.style.backgroundColor = barColor;
+    }
+    
+    // Update confidence note (append aggregated sources)
+    if (dom.confidenceNote) {
+      const baseNote = explanation || 'Sources disagree — this is classic 50/50 weather.';
+      dom.confidenceNote.textContent = `${baseNote} Aggregated from ${count} sources.`;
+    }
+    
+    // Update sidebar confidence card
+    if (dom.confidenceLevel) {
+      dom.confidenceLevel.textContent = levelText;
+    }
+    
+    if (dom.confidenceExplanation) {
+      dom.confidenceExplanation.textContent = explanation || 'Sources disagree—take with caution.';
     }
   }
   function renderSources(list) {
@@ -428,34 +430,43 @@
     if (dom.wittyLine) dom.wittyLine.textContent = witty || getWittyFallback(vibeBucket);
     
     // Sidebar cards
-    // Today's extreme - format: condition on first line, temp on second line
+    // Today's extreme - format: "Condition high-low°"
     if (dom.todayExtreme) {
       const conditionLabel = data?.now?.conditionLabel || today.conditionLabel || "Clear";
       if (Number.isFinite(today.highC) && Number.isFinite(today.lowC)) {
-        dom.todayExtreme.textContent = `${conditionLabel}\n${Math.round(today.lowC)}–${Math.round(today.highC)}°${C.units.temp}`;
+        dom.todayExtreme.textContent = `${conditionLabel} ${Math.round(today.highC)}–${Math.round(today.lowC)}°${C.units.temp}`;
       } else if (Number.isFinite(tempC)) {
-        dom.todayExtreme.textContent = `${conditionLabel}\n${Math.round(tempC)}°${C.units.temp}`;
+        dom.todayExtreme.textContent = `${conditionLabel} ${Math.round(tempC)}°${C.units.temp}`;
       } else {
         dom.todayExtreme.textContent = conditionLabel;
       }
     }
     
-    // Rain
+    // Rain - descriptive: "None expected" if 0%, "Low chance" if low, else percentage
     if (dom.rainChance) {
       const rainPct = data?.now?.rainChance ?? today.rainChance;
-      if (Number.isFinite(rainPct) && rainPct > 0) {
-        dom.rainChance.textContent = `${Math.round(rainPct)}%`;
-      } else {
+      if (!Number.isFinite(rainPct) || rainPct === 0) {
         dom.rainChance.textContent = "None expected";
+      } else if (rainPct < 30) {
+        dom.rainChance.textContent = "Low chance";
+      } else {
+        dom.rainChance.textContent = `${Math.round(rainPct)}%`;
       }
     }
     
-    // UV
+    // UV - descriptive: "High (n)" if >6, "Moderate (n)" if 3-6, "Low (n)" if <3
     if (dom.uvIndex) {
       const uv = data?.now?.uv ?? today.uv;
       if (Number.isFinite(uv)) {
-        const uvLevel = uv >= 8 ? "High" : uv >= 6 ? "Moderate" : uv >= 3 ? "Low" : "Very Low";
-        dom.uvIndex.textContent = `${uvLevel} (${Math.round(uv)})`;
+        if (uv >= 6) {
+          dom.uvIndex.textContent = `High (${Math.round(uv)})`;
+        } else if (uv >= 3) {
+          dom.uvIndex.textContent = `Moderate (${Math.round(uv)})`;
+        } else if (uv > 0) {
+          dom.uvIndex.textContent = `Low (${Math.round(uv)})`;
+        } else {
+          dom.uvIndex.textContent = "—";
+        }
       } else {
         dom.uvIndex.textContent = "—";
       }
