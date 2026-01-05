@@ -365,6 +365,23 @@
     });
     dom.weekList.appendChild(frag);
   }
+  // Province abbreviation mapping for South Africa
+  function getProvinceAbbrev(admin1) {
+    if (!admin1) return null;
+    const abbrevMap = {
+      "Western Cape": "WC",
+      "Eastern Cape": "EC",
+      "Northern Cape": "NC",
+      "Free State": "FS",
+      "KwaZulu-Natal": "KZN",
+      "Gauteng": "GP",
+      "Limpopo": "LP",
+      "Mpumalanga": "MP",
+      "North West": "NW"
+    };
+    return abbrevMap[admin1] || null;
+  }
+
   function renderHome(data) {
     // Defensive fallbacks for all fields
     const locationName = data?.location?.name || state.city || "Unknown";
@@ -374,9 +391,12 @@
     const daily = data?.daily || [];
     const today = daily[0] || {};
     
-    // City and country
-    if (dom.cityName) dom.cityName.textContent = locationName;
-    if (dom.countryName) dom.countryName.textContent = country || "";
+    // City and location suffix (province abbrev or country code)
+    const admin1Abbrev = getProvinceAbbrev(data?.location?.admin1);
+    const suffix = admin1Abbrev || data?.location?.countryCode || "";
+    const locationDisplay = suffix ? `${locationName}, ${suffix}` : locationName;
+    if (dom.cityName) dom.cityName.textContent = locationDisplay;
+    if (dom.countryName) dom.countryName.textContent = "";
     
     // Updated time
     if (dom.updatedAt) {
