@@ -190,22 +190,18 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
 }
 
 .hero-top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .city {
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 2rem;
+  font-weight: 600;
   margin-bottom: 0.25rem;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .country {
-  display: none;
+  font-size: 1.2rem;
+  opacity: 0.8;
 }
 
 .hero-mid {
@@ -452,9 +448,6 @@ body.weather-clear .bigtemp { color: #FFD700; text-shadow: 0 0 20px #FFD700; }
   }
   .vibe-statement {
     font-size: 2.5rem;
-  }
-  .city {
-    font-size: 2rem;
   }
   .bigtemp {
     font-size: 6rem;
