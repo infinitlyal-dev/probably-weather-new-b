@@ -51,10 +51,14 @@
   };
 
   const state = {
-    city: "Cape Town",     // fallback city
-    geoLabel: "",          // e.g. "Strand, ZA" (display only)
+    // fallback city if geo fails/blocked
+    fallbackCity: "Cape Town",
+
+    // What we send to /api/weather?q=
+    cityQuery: "Cape Town",
+
+    // Last data
     data: null,
-    didGeoAttempt: false,
   };
 
   // ---------------- formatting helpers
@@ -87,7 +91,6 @@
   const confidenceLabel = (key) => {
     const map = C?.confidence || {};
     if (key && map[key]?.label) return map[key].label;
-    // fallback
     if (key === "strong") return "High";
     if (key === "decent") return "Medium";
     return "Low";
@@ -133,7 +136,7 @@
     const base = C?.assets?.bgBasePath || "/assets/images/bg";
     const src = `${base}/${folder}/${tod}.jpg`;
 
-    if (dom.bgImg) dom.bgImg.src = src;
+    dom.bgImg.src = src;
   }
 
   // ---------------- screen nav
@@ -150,38 +153,7 @@
     });
   }
 
-  // ---------------- reverse geocode (lat/lon -> place name + country code)
-  async function reverseGeocode(lat, lon) {
-    // OpenStreetMap Nominatim reverse endpoint (simple + free)
-    // Note: Keep usage light; we only call once on boot.
-    const url =
-      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}&zoom=14&addressdetails=1`;
-
-    const res = await fetch(url, {
-      headers: {
-        "Accept": "application/json",
-      },
-    });
-
-    if (!res.ok) throw new Error(`Reverse geocode failed: HTTP ${res.status}`);
-    const json = await res.json();
-
-    const addr = json?.address || {};
-    const name =
-      addr.city ||
-      addr.town ||
-      addr.village ||
-      addr.suburb ||
-      addr.hamlet ||
-      addr.county ||
-      (typeof json?.display_name === "string" ? json.display_name.split(",")[0].trim() : "") ||
-      "";
-
-    const cc = addr.country_code ? String(addr.country_code).toUpperCase() : "";
-
-    return { name, countryCode: cc };
-  }
-
+  // ---------------- geo helpers (browser coords -> "City, Country")
   function getBrowserLocation() {
     return new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
@@ -195,72 +167,90 @@
         {
           enableHighAccuracy: false,
           timeout: 8000,
-          maximumAge: 10 * 60 * 1000, // 10 min
+          maximumAge: 10 * 60 * 1000,
         }
       );
     });
   }
 
+  async function reverseGeocodeToCityCountry(lat, lon) {
+    // Nominatim reverse geocode (single call on boot).
+    // We only need: a place name and a country name/code.
+    const url =
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}&zoom=14&addressdetails=1`;
+
+    const res = await fetch(url, { headers: { Accept: "application/json" } });
+    if (!res.ok) throw new Error(`Reverse geocode failed: HTTP ${res.status}`);
+
+    const json = await res.json();
+    const addr = json?.address || {};
+
+    const city =
+      addr.city ||
+      addr.town ||
+      addr.village ||
+      addr.suburb ||
+      addr.hamlet ||
+      addr.county ||
+      "";
+
+    // user said they don’t care if code or name; prefer name for clarity.
+    const country =
+      addr.country ||
+      (addr.country_code ? String(addr.country_code).toUpperCase() : "");
+
+    const cityClean = String(city || "").trim();
+    const countryClean = String(country || "").trim();
+
+    if (!cityClean && !countryClean) return "";
+    if (cityClean && countryClean) return `${cityClean}, ${countryClean}`;
+    return cityClean || countryClean;
+  }
+
   // ---------------- renderers
   function renderHome(data) {
-    // Prefer the geoLabel if we have one (e.g. "Strand, ZA")
-    // Otherwise fall back to API location.country ("South Africa") or just name.
-    const name = data?.location?.name || state.city || "—";
-    const countryName = data?.location?.country || "";
-
-    const headerLabel =
-      state.geoLabel
-        ? state.geoLabel
-        : (countryName ? `${name}, ${countryName}` : name);
-
-    if (dom.cityLine) dom.cityLine.textContent = headerLabel;
+    const name = data?.location?.name || state.cityQuery || "—";
+    const country = data?.location?.country || "";
+    dom.cityLine.textContent = country ? `${name}, ${country}` : name;
 
     const daily0 = data?.daily?.[0] || {};
     const now = data?.now || {};
 
-    // Big hero
     const conditionLabel = (now?.conditionLabel || daily0?.conditionLabel || "Unclear").toLowerCase();
-    if (dom.conditionText) dom.conditionText.textContent = `This is ${conditionLabel}.`;
-    if (dom.bigTemp) dom.bigTemp.textContent = fmtRange(daily0?.lowC, daily0?.highC);
+    dom.conditionText.textContent = `This is ${conditionLabel}.`;
+    dom.bigTemp.textContent = fmtRange(daily0?.lowC, daily0?.highC);
 
-    // Confidence
     const cKey = data?.consensus?.confidenceKey || "mixed";
     const cLabel = confidenceLabel(cKey);
-    if (dom.confidenceTop) dom.confidenceTop.textContent = confidenceTopLine(cLabel);
+    dom.confidenceTop.textContent = confidenceTopLine(cLabel);
 
-    // Witty line
-    if (dom.wittyLine) dom.wittyLine.textContent = wittyFor(now?.conditionKey, daily0);
+    dom.wittyLine.textContent = wittyFor(now?.conditionKey, daily0);
 
-    // Right cards
-    if (dom.todayExtremeTitle) dom.todayExtremeTitle.textContent = daily0?.conditionLabel || now?.conditionLabel || "—";
-    if (dom.todayExtremeRange) dom.todayExtremeRange.textContent = fmtRange(daily0?.lowC, daily0?.highC);
+    dom.todayExtremeTitle.textContent = daily0?.conditionLabel || now?.conditionLabel || "—";
+    dom.todayExtremeRange.textContent = fmtRange(daily0?.lowC, daily0?.highC);
 
     const rainPct = isNum(daily0?.rainChance) ? daily0.rainChance : now?.rainChance;
-    if (dom.rainSummary) dom.rainSummary.textContent = rainCopy(rainPct);
+    dom.rainSummary.textContent = rainCopy(rainPct);
 
     const uv = daily0?.uv;
-    if (dom.uvSummary) dom.uvSummary.textContent = isNum(uv) ? `${uvBand(uv)} (${Math.round(uv)})` : "—";
+    dom.uvSummary.textContent = isNum(uv) ? `${uvBand(uv)} (${Math.round(uv)})` : "—";
 
-    if (dom.confidenceTitle) dom.confidenceTitle.textContent = cLabel;
+    dom.confidenceTitle.textContent = cLabel;
     const n = Array.isArray(data?.meta?.sources) ? data.meta.sources.length : 0;
-    if (dom.confidenceSub) dom.confidenceSub.textContent = n ? `Based on ${n} forecasts →` : "—";
+    dom.confidenceSub.textContent = n ? `Based on ${n} forecasts →` : "—";
 
-    // Updated time + sources list
-    if (dom.updatedAt) dom.updatedAt.textContent = data?.meta?.updatedAtLabel || "—";
+    dom.updatedAt.textContent = data?.meta?.updatedAtLabel || "—";
     if (dom.sourcesList) {
       dom.sourcesList.textContent = Array.isArray(data?.meta?.sources)
         ? data.meta.sources.join(" · ")
         : "—";
     }
 
-    // Background
     setBackground(now?.conditionKey || daily0?.conditionKey);
   }
 
   function renderHourly(data) {
     const items = Array.isArray(data?.hourly) ? data.hourly : [];
-    if (!dom.hourlyList) return;
-
     dom.hourlyList.innerHTML = "";
 
     items.slice(0, 24).forEach((h) => {
@@ -293,8 +283,6 @@
 
   function renderWeek(data) {
     const items = Array.isArray(data?.daily) ? data.daily : [];
-    if (!dom.weekList) return;
-
     dom.weekList.innerHTML = "";
 
     items.slice(0, 7).forEach((d) => {
@@ -332,11 +320,11 @@
   }
 
   // ---------------- data fetch
-  async function loadCity(city, opts = {}) {
-    const q = (city || "").trim();
+  async function loadCity(cityQuery) {
+    const q = (cityQuery || "").trim();
     if (!q) return;
 
-    state.city = q;
+    state.cityQuery = q;
 
     try {
       const url = `${C?.endpoints?.weather || "/api/weather"}?q=${encodeURIComponent(q)}`;
@@ -347,63 +335,16 @@
       }
       const data = await res.json();
       state.data = data;
-
-      // If we didn’t set a geoLabel, fall back to what API returns.
-      // If geoLabel exists, keep it.
-      if (!state.geoLabel) {
-        const name = data?.location?.name || q;
-        const country = data?.location?.country || "";
-        state.geoLabel = country ? `${name}, ${country}` : name;
-      }
-
       renderAll(data);
     } catch (err) {
       console.error(err);
-      // graceful fallback text
-      if (dom.conditionText) dom.conditionText.textContent = "This is unclear.";
-      if (dom.bigTemp) dom.bigTemp.textContent = "—";
-      if (dom.wittyLine) dom.wittyLine.textContent = "Something’s not pulling through.";
-      if (dom.confidenceTop) dom.confidenceTop.textContent = "PROBABLY · LOW CONFIDENCE";
-      if (dom.confidenceTitle) dom.confidenceTitle.textContent = "Low";
-      if (dom.confidenceSub) dom.confidenceSub.textContent = "Check the API / key.";
+      dom.conditionText.textContent = "This is unclear.";
+      dom.bigTemp.textContent = "—";
+      dom.wittyLine.textContent = "Something’s not pulling through.";
+      dom.confidenceTop.textContent = "PROBABLY · LOW CONFIDENCE";
+      dom.confidenceTitle.textContent = "Low";
+      dom.confidenceSub.textContent = "Check the API / key.";
       setBackground("cloudy");
-    }
-  }
-
-  // ---------------- boot: geolocation -> Strand-like city -> loadCity(city)
-  async function boot() {
-    showScreen("home");
-    setBackground("cloudy");
-
-    // Default label until we know better
-    state.geoLabel = ""; // will become "Strand, ZA" when reverse-geocode works
-
-    // Attempt geolocation once
-    try {
-      state.didGeoAttempt = true;
-      const pos = await getBrowserLocation();
-      const lat = pos?.coords?.latitude;
-      const lon = pos?.coords?.longitude;
-
-      if (isNum(lat) && isNum(lon)) {
-        const place = await reverseGeocode(lat, lon);
-        const cityName = (place?.name || "").trim();
-        const cc = (place?.countryCode || "").trim();
-
-        if (cityName) {
-          state.city = cityName;
-          state.geoLabel = cc ? `${cityName}, ${cc}` : cityName;
-          await loadCity(cityName);
-          return;
-        }
-      }
-
-      // If anything above didn’t produce a city, fall back
-      await loadCity(state.city);
-    } catch (err) {
-      // Permission denied / timeout / not supported -> fallback to existing behavior
-      console.warn("[PW] Geolocation unavailable, using fallback city.", err);
-      await loadCity(state.city);
     }
   }
 
@@ -419,10 +360,6 @@
     dom.searchBtn.addEventListener("click", () => {
       const v = (dom.searchInput.value || "").trim();
       if (!v) return;
-
-      // User search overrides geo label to match the searched place
-      state.geoLabel = v;
-
       loadCity(v);
       showScreen("home");
     });
@@ -432,6 +369,34 @@
     });
   }
 
-  // ---------------- start
+  // ---------------- boot (geo -> "City, Country" -> load)
+  async function boot() {
+    showScreen("home");
+    setBackground("cloudy");
+
+    try {
+      const pos = await getBrowserLocation();
+      const lat = pos?.coords?.latitude;
+      const lon = pos?.coords?.longitude;
+
+      if (isNum(lat) && isNum(lon)) {
+        const q = await reverseGeocodeToCityCountry(lat, lon);
+
+        // If we got something usable, use it (more specific than "Strand")
+        if (q) {
+          await loadCity(q);
+          return;
+        }
+      }
+
+      // If geo didn’t produce a query, fall back
+      await loadCity(state.fallbackCity);
+    } catch (err) {
+      // Permission blocked / timeout / unsupported — just fall back
+      console.warn("[PW] Geolocation unavailable, using fallback city.", err);
+      await loadCity(state.fallbackCity);
+    }
+  }
+
   boot();
 })();
