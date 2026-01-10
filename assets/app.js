@@ -264,6 +264,8 @@ function dominantLabelFromKey(key) {
         : "—";
     }
     setBackground(dominantKey);
+    console.log("PW dominantKey:", dominantKey);
+
 
   }
 
