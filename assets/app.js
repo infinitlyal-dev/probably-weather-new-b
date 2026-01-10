@@ -159,6 +159,11 @@
 
     const daily0 = data?.daily?.[0] || {};
     const now = data?.now || {};
+console.log("PW now keys:", Object.keys(now));
+console.log("PW daily0 keys:", Object.keys(daily0));
+console.log("PW sample now:", now);
+console.log("PW sample daily0:", daily0);
+
 
     const conditionLabel = (now?.conditionLabel || daily0?.conditionLabel || "Unclear").toLowerCase();
     dom.conditionText.textContent = `This is ${conditionLabel}.`;
