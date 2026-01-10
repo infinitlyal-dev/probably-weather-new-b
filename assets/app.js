@@ -181,7 +181,8 @@
 
     dom.confidenceTitle.textContent = cLabel;
     const n = Array.isArray(data?.meta?.sources) ? data.meta.sources.length : 0;
-    dom.confidenceSub.textContent = n ? `Based on ${n} forecasts →` : "—";
+ dom.confidenceSub.textContent = n ? `Temperature agreement across ${n} forecasts →` : "—";
+
 
     dom.updatedAt.textContent = data?.meta?.updatedAtLabel || "—";
     if (dom.sourcesList) {
