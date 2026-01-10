@@ -145,6 +145,72 @@
       btn.classList.toggle("is-active", t === target);
     });
   }
+  // --- Dominant “vibe” condition (used for hero text + background) ---
+const WIND_KPH = 25;
+const RAIN_PCT = 50;
+const HEAT_C = 32;
+const COLD_C = 16;
+
+function pickDominantConditionKey(now, daily0) {
+  const keyNow = String(now?.conditionKey || "").toLowerCase();
+  const keyDay = String(daily0?.conditionKey || "").toLowerCase();
+
+  const rainNow = Number.isFinite(now?.rainChance) ? now.rainChance : null;
+  const rainDay = Number.isFinite(daily0?.rainChance) ? daily0.rainChance : null;
+  const rainChance = Math.max(rainNow ?? -1, rainDay ?? -1);
+
+  const windKph = Number.isFinite(now?.windKph) ? now.windKph : null;
+  const highC = Number.isFinite(daily0?.highC) ? daily0.highC : null;
+  const lowC = Number.isFinite(daily0?.lowC) ? daily0.lowC : null;
+
+  // 1) Storm (if present in condition keys)
+  if (
+    keyNow.includes("thunder") || keyNow.includes("storm") ||
+    keyDay.includes("thunder") || keyDay.includes("storm")
+  ) {
+    return "storm";
+  }
+
+  // 2) Rain overrides (your rule)
+  if (rainChance >= RAIN_PCT) return "rain";
+
+  // 3) Fog / low cloud overrides
+  if (
+    keyNow.includes("fog") || keyNow.includes("mist") || keyNow.includes("lowcloud") ||
+    keyDay.includes("fog") || keyDay.includes("mist") || keyDay.includes("lowcloud")
+  ) {
+    return "fog";
+  }
+
+  // 4) Wind (folder name is "wind", label will say "windy")
+  if (windKph != null && windKph >= WIND_KPH) return "wind";
+
+  // 5) Heat
+  if (highC != null && highC >= HEAT_C) return "heat";
+
+  // 6) Cold
+  if (lowC != null && lowC <= COLD_C) return "cold";
+
+  // 7) Fall back to API condition keys
+  if (keyNow) return keyNow;
+  if (keyDay) return keyDay;
+
+  return "clear";
+}
+
+function dominantLabelFromKey(key) {
+  const k = String(key || "").toLowerCase();
+  if (k === "wind") return "windy";
+  if (k === "heat") return "hot";
+  if (k === "cold") return "cold";
+  if (k === "fog") return "foggy";
+  if (k === "storm") return "stormy";
+  if (k === "clear") return "clear";
+  if (k === "cloudy") return "cloudy";
+  if (k === "rain") return "rainy";
+  return k || "unclear";
+}
+
 
   // ---------------- renderers
   function renderHome(data) {
@@ -159,14 +225,16 @@
 
     const daily0 = data?.daily?.[0] || {};
     const now = data?.now || {};
-console.log("PW now keys:", Object.keys(now));
-console.log("PW daily0 keys:", Object.keys(daily0));
-console.log("PW sample now:", now);
-console.log("PW sample daily0:", daily0);
+
+
+
 
 
     const conditionLabel = (now?.conditionLabel || daily0?.conditionLabel || "Unclear").toLowerCase();
-    dom.conditionText.textContent = `This is ${conditionLabel}.`;
+    const dominantKey = pickDominantConditionKey(now, daily0);
+    const dominantLabel = dominantLabelFromKey(dominantKey);
+    dom.conditionText.textContent = `This is ${dominantLabel}.`;
+    
     dom.bigTemp.textContent = fmtRange(daily0?.lowC, daily0?.highC);
 
     const cKey = data?.consensus?.confidenceKey || "mixed";
@@ -195,8 +263,8 @@ console.log("PW sample daily0:", daily0);
         ? data.meta.sources.map((s) => s?.name || s).join(" · ")
         : "—";
     }
+    setBackground(dominantKey);
 
-    setBackground(now?.conditionKey || daily0?.conditionKey);
   }
 
   function renderHourly(data) {
