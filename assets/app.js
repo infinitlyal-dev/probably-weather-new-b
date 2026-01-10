@@ -122,8 +122,47 @@
   }
 
   function setBackground(conditionKey) {
-    const key = conditionKey || "cloudy";
-    const folder = C?.assets?.conditionToFolder?.[key] || C?.assets?.fallbackFolder || "cloudy";
+function setBackground(conditionKey) {
+  const keyRaw = String(conditionKey || "").toLowerCase();
+
+  // Map any incoming key to one of our actual folders
+  const folder =
+    keyRaw.includes("thunder") || keyRaw.includes("storm") ? "storm" :
+    keyRaw.includes("rain") ? "rain" :
+    keyRaw.includes("fog") || keyRaw.includes("mist") || keyRaw.includes("lowcloud") ? "fog" :
+    keyRaw === "wind" || keyRaw.includes("wind") || keyRaw.includes("breez") || keyRaw.includes("gust") ? "wind" :
+    keyRaw === "heat" || keyRaw.includes("heat") || keyRaw.includes("hot") ? "heat" :
+    keyRaw === "cold" || keyRaw.includes("cold") || keyRaw.includes("freez") ? "cold" :
+    keyRaw.includes("cloud") ? "cloudy" :
+    keyRaw.includes("clear") ? "clear" :
+    "default";
+
+  // Pick a random image from that folder (existing behavior)
+  const countByFolder = {
+    clear: 6,
+    cloudy: 6,
+    cold: 6,
+    fog: 6,
+    heat: 6,
+    rain: 6,
+    storm: 6,
+    wind: 6,
+    default: 1,
+  };
+
+  const n = countByFolder[folder] || 1;
+  const idx = n === 1 ? 1 : (Math.floor(Math.random() * n) + 1);
+
+  const url = folder === "default"
+    ? "assets/images/bg/default.jpg"
+    : `assets/images/bg/${folder}/${idx}.jpg`;
+
+  document.body.style.backgroundImage = `url("${url}")`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
+}
+
 
     const tod = getTimeOfDayLabel();
     const base = C?.assets?.bgBasePath || "/assets/images/bg";
