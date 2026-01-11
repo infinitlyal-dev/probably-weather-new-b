@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let homePlace = null;
   let lastPayload = null;
 
-  const safeText = (el, txt) => { if (el) el.textContent = txt ??   "--"; };
+  const safeText = (el, txt) => { if (el) el.textContent = txt ??  "--"; };
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
 
   function round0(n) { return isNum(n) ? Math.round(n) : null; }
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function samePlace(a, b) {
-    if (!  a || ! b) return false;
+    if (! a || !b) return false;
     return Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) &&
            Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
   }
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeDominantCondition(norm) {
     // Returns one of: "storm", "fog", "rain", "heat", "cloudy", "clear"
     // This is the ONLY place that decides today's condition
-    const desc = String(norm.  desc || "").toLowerCase();
+    const desc = String(norm.desc || "").toLowerCase();
     const rain = norm.rainPct;
     const hi = norm.todayHigh;
     
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rain: "Wet conditions",
       heat: "Very hot",
       cloudy: "Overcast",
-      clear:   "Pleasant"
+      clear: "Pleasant"
     };
     return labels[condition] || "Moderate";
   }
@@ -149,12 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
       bgImg.src = primaryPath;
       
       bgImg.onerror = () => {
-        // Try folder1.  jpg as fallback within same folder
+        // Try folder1. jpg as fallback within same folder
         const sameFolderFallback = `${base}/${folder}/${folder}1.jpg`;
         if (bgImg.src !== sameFolderFallback) {
           bgImg.src = sameFolderFallback;
           bgImg.onerror = () => {
-            // Final fallback:   clear (NOT cloudy)
+            // Final fallback: clear (NOT cloudy)
             const clearFallback = `${base}/clear/clear1.jpg`;
             bgImg.src = clearFallback;
             console.warn(`Failed to load background for ${folder}, falling back to clear`);
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createParticles(condition, count = 20) {
-    if (! particlesEl) return;
+    if (!particlesEl) return;
     particlesEl.innerHTML = '';
     // Only create particles for certain conditions
     if (condition === 'rain' || condition === 'storm' || condition === 'cloudy') {
@@ -193,55 +193,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const dpl = String(dp || "").toLowerCase();
     const hot = isNum(maxC) && maxC >= 30;
 
-    if (isWeekendLocal() && (isNum(rainPct) ? rainPct < 25 : true) && !  dpl.includes("storm") && ! dpl.includes("rain")) {
-      return "Braai weather, boet!  ";
+    if (isWeekendLocal() && (isNum(rainPct) ? rainPct < 25 : true) && ! dpl.includes("storm") && !dpl.includes("rain")) {
+      return "Braai weather, boet! ";
     }
 
-    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.   Don't be the tallest thing outside.  ";
-    if (dpl.  includes("fog") || dpl.includes("mist")) return "Visibility vibes:   drive like you've got a gran in the back. ";
-    if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody.  ";
+    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside.";
+    if (dpl.includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back.";
+    if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody. ";
     if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close. ";
-    if (hot) return "Big heat — pace yourself outside. ";
-    if (dpl.includes("cloud")) return "Soft light, no drama.   Take the win.";
+    if (hot) return "Big heat — pace yourself outside.";
+    if (dpl.includes("cloud")) return "Soft light, no drama.  Take the win.";
     return "Good day to get stuff done outside.";
   }
 
   function computeAgreementFromNorms(norms) {
     const temps = norms.map(n => n.nowTemp).filter(isNum);
     if (temps.length < 2) {
-      return { label: temps. length === 1 ? "DECENT" : "—", explain: temps.length === 1 ? "Only one source responded." : "No sources responded." };
+      return { label: temps.length === 1 ? "DECENT" : "—", explain: temps.length === 1 ? "Only one source responded." : "No sources responded." };
     }
 
     const min = Math.min(...temps);
-    const max = Math.max(...  temps);
+    const max = Math.max(... temps);
     const spread = max - min;
 
-    if (spread <= 1.  5) return { label: "STRONG", explain: "All sources line up closely." };
+    if (spread <= 1. 5) return { label: "STRONG", explain: "All sources line up closely." };
     if (spread <= 3. 5) return { label: "DECENT", explain: "Two sources agree, one's a bit off." };
     return { label: "MIXED", explain: "Sources disagree today; we're showing the most probable middle-ground." };
   }
 
   async function fetchProbable(place) {
-    const url = `/api/weather?  lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const response = await fetch(url);
     if (!response.ok) throw new Error('API error');
     return await response.json();
   }
 
   function normalizePayload(payload) {
-    if (Array.isArray(payload.  norms)) {
-      const norms = payload. norms;
+    if (Array.isArray(payload. norms)) {
+      const norms = payload.norms;
       const medNow = median(norms. map(n => n.nowTemp).filter(isNum));
       const medHigh = median(norms.map(n => n.todayHigh).filter(isNum));
       const medLow = median(norms.map(n => n.todayLow).filter(isNum));
       const medRain = median(norms.map(n => n.todayRain).filter(isNum));
       const medUv = median(norms.map(n => n.todayUv).filter(isNum));
-      const mostDesc = pickMostCommon(norms.  map(n => n.desc).filter(Boolean)) || 'Weather today';
+      const mostDesc = pickMostCommon(norms. map(n => n.desc).filter(Boolean)) || 'Weather today';
 
       return {
-        nowTemp:  medNow,
+        nowTemp: medNow,
         todayHigh: medHigh,
-        todayLow:   medLow,
+        todayLow:  medLow,
         rainPct: medRain,
         uv: medUv,
         desc: mostDesc,
@@ -255,15 +255,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Fallback for other shape (from summary)
     return {
-      nowTemp: payload.now? .  temp ??   null,
-      todayHigh:   payload.today?. high ??  null,
-      todayLow:  payload.today? . low ?? null,
+      nowTemp: payload.now?. temp ??  null,
+      todayHigh:  payload.today?.high ?? null,
+      todayLow: payload.today?. low ?? null,
       rainPct: payload.today?.rainPct ?? null,
       uv: payload.today?.uv ?? null,
       desc: payload.today?.desc ?? 'Weather today',
-      agreement:   payload.agreement || { label: '—', explain: '' },
+      agreement:  payload.agreement || { label: '—', explain: '' },
       used: payload.sources?.used || [],
-      failed: payload.  sources?.failed || [],
+      failed: payload.sources?.failed || [],
       countUsed: payload.sources?.countUsed || 0,
       hourly: payload.hourly || [],
       daily: payload.daily || [],
@@ -298,10 +298,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const uv = norm.uv;
     const desc = norm.desc;
 
-    // ========== SINGLE SOURCE OF TRUTH:   Compute dominant condition ==========
+    // ========== SINGLE SOURCE OF TRUTH:  Compute dominant condition ==========
     const todayCondition = computeDominantCondition(norm);
 
-    safeText(locationEl, activePlace. name || '—');
+    safeText(locationEl, activePlace.name || '—');
     
     // Headline driven by todayCondition
     safeText(headlineEl, getConditionHeadline(todayCondition));
@@ -320,12 +320,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNum(uv)) safeText(uvValueEl, `${round0(uv)}`);
     else safeText(uvValueEl, '--');
 
-    const label = (norm.agreement? . label || "—").toUpperCase();
-    safeText(confidenceEl, `PROBABLY .   ${label} AGREEMENT`);
+    const label = (norm.agreement?. label || "—").toUpperCase();
+    safeText(confidenceEl, `PROBABLY .  ${label} AGREEMENT`);
 
-    const usedTxt = norm.used.length ?   `Used: ${norm.used.join(", ")}` : "Used:  —";
-    const failedTxt = norm.failed.length ?  `Failed: ${norm.failed.join(", ")}` : "";
-    safeText(sourcesEl, `${usedTxt}${failedTxt ?   " · " + failedTxt : ""}`);
+    const usedTxt = norm.used.length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
+    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
+    safeText(sourcesEl, `${usedTxt}${failedTxt ?  " · " + failedTxt : ""}`);
 
     // Background driven by todayCondition (no overrides)
     setBackgroundFor(todayCondition);
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderHourly(hourly) {
-    if (!  hourlyTimeline) return;
+    if (! hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dailyCards.innerHTML = '';
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
-      const dayName = date.toLocaleDateString('en-US', { weekday:   'short' });
+      const dayName = date.toLocaleDateString('en-US', { weekday:  'short' });
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
@@ -384,7 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Places:   recents/favorites
+  // Places:  recents/favorites
   function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
   function loadRecents() { return loadJSON(STORAGE.recents, []); }
 
@@ -392,9 +392,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function saveRecents(list) { saveJSON(STORAGE.recents, list); }
 
   function addRecent(place) {
-    let list = loadRecents().filter(p => !  samePlace(p, place));
+    let list = loadRecents().filter(p => ! samePlace(p, place));
     list.unshift(place);
-    saveRecents(list.  slice(0, 10));
+    saveRecents(list. slice(0, 10));
     renderRecents();
   }
 
@@ -402,16 +402,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let list = loadFavorites();
     if (list.some(p => samePlace(p, place))) return;
     list.unshift(place);
-    saveFavorites(list.  slice(0, 5));
+    saveFavorites(list. slice(0, 5));
     renderFavorites();
   }
 
   function renderRecents() {
-    if (!recentList) return;
+    if (! recentList) return;
     const list = loadRecents();
     recentList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
-    `).join('') || '<li>No recent searches yet.  </li>';
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p. name)}</li>
+    `).join('') || '<li>No recent searches yet. </li>';
 
     recentList.querySelectorAll('li').forEach(li => {
       li.addEventListener('click', () => {
@@ -428,10 +428,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const list = loadFavorites();
     favoritesList.innerHTML = list.map(p => `
       <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p. name)}">${escapeHtml(p.name)}</li>
-    `).join('') || '<li>No saved places yet. </li>';
+    `).join('') || '<li>No saved places yet.</li>';
 
-    favoritesList. querySelectorAll('li').forEach(li => {
-      li. addEventListener('click', () => {
+    favoritesList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
         const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
         showScreen(screenHome);
         loadAndRender(p);
@@ -440,13 +440,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function escapeHtml(s) {
-    return String(s ??   "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+    return String(s ??  "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   }
 
   // Search
   async function runSearch(q) {
-    if (! q || q.trim().length < 2) return;
-    const url = `https://nominatim.openstreetmap.  org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
+    if (!q || q.trim().length < 2) return;
+    const url = `https://nominatim.openstreetmap. org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
     try {
       const data = await (await fetch(url)).json();
       // Render results
@@ -457,11 +457,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Buttons / Nav
-  navHome.  addEventListener('click', () => {
+  navHome.addEventListener('click', () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
   });
-  navHourly. addEventListener('click', () => showScreen(screenHourly));
+  navHourly.addEventListener('click', () => showScreen(screenHourly));
   navWeek.addEventListener('click', () => showScreen(screenWeek));
   navSearch.addEventListener('click', () => {
     showScreen(screenSearch);
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   navSettings.addEventListener('click', () => showScreen(screenSettings));
 
-  saveCurrent. addEventListener('click', () => {
+  saveCurrent.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
   });
 
@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderLoading("My Location");
 
     if ("geolocation" in navigator) {
-      navigator.geolocation.  getCurrentPosition(
+      navigator.geolocation. getCurrentPosition(
         (pos) => {
           const lat = round1(pos.coords.latitude);
           const lon = round1(pos.coords.longitude);
@@ -497,12 +497,12 @@ document.addEventListener("DOMContentLoaded", () => {
           loadAndRender(homePlace);
         },
         () => {
-          // fallback:   Cape Town
+          // fallback:  Cape Town
           homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
         },
-        { enableHighAccuracy:   false, timeout:  8000, maximumAge: 60000 }
+        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
       );
     } else {
       homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
@@ -515,12 +515,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (values.length === 0) return null;
     values.sort((a, b) => a - b);
     const half = Math.floor(values.length / 2);
-    return values.length % 2 ?   values[half] : (values[half - 1] + values[half]) / 2.0;
+    return values. length % 2 ?  values[half] : (values[half - 1] + values[half]) / 2.0;
   }
 
   function pickMostCommon(arr) {
     if (arr.length === 0) return null;
-    const count = arr.reduce((acc, v) => ({ ...acc, [v]:   (acc[v] || 0) + 1 }), {});
+    const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
     return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
   }
 });
