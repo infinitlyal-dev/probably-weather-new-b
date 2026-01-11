@@ -49,7 +49,16 @@ document.addEventListener("DOMContentLoaded", () => {
     RAIN_PCT: 40,    // >= 40% rain chance = rain dominates
     WIND_KPH: 25,    // >= 25 km/h = wind dominates
     COLD_C: 16,      // <= 16°C max = cold dominates
-    HOT_C: 32        // >= 32°C max = heat dominates
+    HOT_C: 32,       // >= 32°C max = heat dominates
+    // Rain display thresholds
+    RAIN_NONE: 10,   // < 10% = None expected
+    RAIN_UNLIKELY: 30,  // < 30% = Unlikely
+    RAIN_POSSIBLE: 55,  // < 55% = Possible
+    // UV index thresholds
+    UV_LOW: 3,       // < 3 = Low
+    UV_MODERATE: 6,  // < 6 = Moderate
+    UV_HIGH: 8,      // < 8 = High
+    UV_VERY_HIGH: 11 // < 11 = Very High
   };
   
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
@@ -174,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg';
     const folder = condition;
+    const fallbackFolder = 'clear';
     const n = 1 + (Math.abs(hashString(condition + (activePlace?.name || ''))) % 4);
     const path = `${base}/${folder}/${folder}${n}.jpg`;
 
@@ -185,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
           bgImg.src = fallback1;
           bgImg.onerror = () => {
             // Final fallback: clear (never cloudy)
-            bgImg.src = `${base}/clear/clear1.jpg`;
+            bgImg.src = `${base}/${fallbackFolder}/${fallbackFolder}1.jpg`;
           };
         }
       };
@@ -313,9 +323,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Rain display
     if (isNum(rain)) {
-      const rainText = rain < 10 ? 'None expected'
-                     : rain < 30 ? 'Unlikely'
-                     : rain < 55 ? 'Possible'
+      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
+                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
+                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
                      : 'Likely';
       safeText(rainValueEl, rainText);
     } else {
@@ -324,10 +334,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // UV display
     if (isNum(uv)) {
-      const uvText = uv < 3 ? 'Low'
-                   : uv < 6 ? 'Moderate'
-                   : uv < 8 ? 'High'
-                   : uv < 11 ? 'Very High'
+      const uvText = uv < THRESH.UV_LOW ? 'Low'
+                   : uv < THRESH.UV_MODERATE ? 'Moderate'
+                   : uv < THRESH.UV_HIGH ? 'High'
+                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
                    : 'Extreme';
       safeText(uvValueEl, `${uvText} (${round0(uv)})`);
     } else {
