@@ -502,7 +502,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const lowStr = isNum(d.low) ? round0(d.low) : '--';
       const highStr = isNum(d.high) ? round0(d.high) : '--';
       const rainStr = isNum(d.rain) ? `${round0(d.rain)}%` : '--%';
-      const descStr = d.desc ? escapeHtml(d.desc) : '—';
+      const descStr = (d.desc && String(d.desc).trim()) ? escapeHtml(d.desc) : '—';
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
@@ -667,7 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     resultsList.innerHTML = results.map(r => {
       const displayName = escapeHtml(r.display_name);
-      return `<li data-lat="${r.lat}" data-lon="${r.lon}" data-name="${escapeHtml(r.display_name)}">${displayName}</li>`;
+      return `<li data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">${displayName}</li>`;
     }).join('');
     
     // Add click handlers
