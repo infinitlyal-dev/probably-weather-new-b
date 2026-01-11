@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const headlineEl = $('#headline');
   const tempEl = $('#temp');
   const descriptionEl = $('#description');
+  const extremeLabelEl = $('#extremeLabel');
   const extremeValueEl = $('#extremeValue');
   const rainValueEl = $('#rainValue');
   const uvValueEl = $('#uvValue');
@@ -32,11 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const dailyCards = $('#daily-cards');
 
   const searchInput = $('#searchInput');
+  const searchCancel = $('#searchCancel');
   const favoritesList = $('#favoritesList');
   const recentList = $('#recentList');
   const manageFavorites = $('#manageFavorites');
 
   const loader = $('#loader');
+  const toast = $('#toast');
 
   // ========== CONSTANTS ==========
   // FIXED: STORAGE is now an object, not a string
@@ -106,6 +109,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLoader(show) {
     loader.classList[show ? 'remove' : 'add']('hidden');
+  }
+  
+  function showToast(message, duration = 3000) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, duration);
   }
 
   function hashString(s) {
@@ -378,6 +390,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Compute condition ONCE, use it for EVERYTHING
     const condition = computeDominantCondition(norm);
 
+    // Set body class for condition-based styling
+    document.body.className = `weather-${condition}`;
+
     // Location
     safeText(locationEl, activePlace.name || '—');
     
@@ -385,13 +400,17 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(headlineEl, getHeadline(condition));
     
     // Temperature range
-    safeText(tempEl, `${round0(low)}° – ${round0(hi)}°`);
+    const lowStr = isNum(low) ? round0(low) : '--';
+    const hiStr = isNum(hi) ? round0(hi) : '--';
+    safeText(tempEl, `${lowStr}° – ${hiStr}°`);
     
     // Witty line - driven by condition (Spec Section 7)
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
     // Today's extreme - driven by condition (Spec Section 8)
-    safeText(extremeValueEl, getExtremeLabel(condition));
+    const extremeLabel = getExtremeLabel(condition);
+    safeText(extremeLabelEl, `Today's extreme:`);
+    safeText(extremeValueEl, extremeLabel);
 
     // Rain display
     if (isNum(rain)) {
@@ -420,6 +439,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Confidence
     const label = (norm.agreement?.label || "—").toUpperCase();
     safeText(confidenceEl, `PROBABLY • ${label} CONFIDENCE`);
+    
+    // Confidence value in sidebar
+    const confidenceValue = $('#confidenceValue');
+    if (confidenceValue) {
+      safeText(confidenceValue, norm.agreement?.explain || "—");
+    }
+    
+    // Confidence bar - visual indicator
+    if (confidenceBarEl) {
+      const barWidth = label === "STRONG" ? 100 
+                     : label === "DECENT" ? 70 
+                     : label === "MIXED" ? 40 
+                     : 0;
+      confidenceBarEl.style.width = `${barWidth}%`;
+    }
 
     // Sources
     const usedTxt = norm.used.length ? `Used: ${norm.used.join(", ")}` : "Used: —";
@@ -436,14 +470,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderHourly(hourly) {
     if (!hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
+    if (!hourly || hourly.length === 0) {
+      hourlyTimeline.innerHTML = '<div style="text-align: center; padding: 2rem; opacity: 0.7;">No hourly data available</div>';
+      return;
+    }
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
       const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
+      const tempStr = isNum(h.temp) ? `${round0(h.temp)}°` : '--°';
+      const rainStr = isNum(h.rain) ? `${round0(h.rain)}%` : '--%';
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
-        <div class="hour-temp">${round0(h.temp)}°</div>
-        <div class="hour-rain">${round0(h.rain)}%</div>
+        <div class="hour-temp">${tempStr}</div>
+        <div class="hour-rain">${rainStr}</div>
       `;
       hourlyTimeline.appendChild(div);
     });
@@ -452,16 +492,24 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderWeek(daily) {
     if (!dailyCards) return;
     dailyCards.innerHTML = '';
+    if (!daily || daily.length === 0) {
+      dailyCards.innerHTML = '<div style="text-align: center; padding: 2rem; opacity: 0.7;">No daily data available</div>';
+      return;
+    }
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+      const lowStr = isNum(d.low) ? round0(d.low) : '--';
+      const highStr = isNum(d.high) ? round0(d.high) : '--';
+      const rainStr = isNum(d.rain) ? `${round0(d.rain)}%` : '--%';
+      const descStr = (d.desc && String(d.desc).trim()) ? escapeHtml(d.desc) : '—';
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
-        <div class="day-temp">${round0(d.low)}° – ${round0(d.high)}°</div>
-        <div class="day-rain">${round0(d.rain)}%</div>
-        <div class="day-humor">${d.desc}</div>
+        <div class="day-temp">${lowStr}° – ${highStr}°</div>
+        <div class="day-rain">${rainStr}</div>
+        <div class="day-humor">${descStr}</div>
       `;
       dailyCards.appendChild(div);
     });
@@ -500,10 +548,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function addFavorite(place) {
     let list = loadFavorites();
-    if (list.some(p => samePlace(p, place))) return;
+    if (list.some(p => samePlace(p, place))) {
+      showToast('This place is already saved!');
+      return;
+    }
+    if (list.length >= 5) {
+      showToast('You can only save up to 5 places. Remove one first.');
+      return;
+    }
     list.unshift(place);
     saveFavorites(list.slice(0, 5));
     renderFavorites();
+    showToast(`Saved ${place.name}!`);
   }
 
   function renderRecents() {
@@ -527,29 +583,119 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!favoritesList) return;
     const list = loadFavorites();
     favoritesList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">
+        <span class="fav-name">${escapeHtml(p.name)}</span>
+        <button class="remove-fav" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>
+      </li>
     `).join('') || '<li>No saved places yet.</li>';
 
-    favoritesList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', () => {
+    favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
+      span.addEventListener('click', () => {
+        const li = span.closest('li');
         const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
         showScreen(screenHome);
         loadAndRender(p);
+      });
+    });
+    
+    favoritesList.querySelectorAll('.remove-fav').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const lat = parseFloat(btn.dataset.lat);
+        const lon = parseFloat(btn.dataset.lon);
+        let list = loadFavorites();
+        list = list.filter(p => !samePlace(p, {lat, lon}));
+        saveFavorites(list);
+        renderFavorites();
+        showToast('Place removed from favorites');
       });
     });
   }
 
   // ========== SEARCH ==========
   
+  let searchTimeout = null;
+  let searchResults = [];
+  
   async function runSearch(q) {
-    if (!q || q.trim().length < 2) return;
+    if (!q || q.trim().length < 2) {
+      // Clear search results
+      const resultsContainer = document.getElementById('searchResults');
+      if (resultsContainer) resultsContainer.innerHTML = '';
+      return;
+    }
+    
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
     try {
       const data = await (await fetch(url)).json();
-      console.log(data); // TODO: Add search results rendering
+      searchResults = data;
+      renderSearchResults(data);
     } catch (e) {
-      console.error(e);
+      console.error('Search failed:', e);
     }
+  }
+  
+  function renderSearchResults(results) {
+    // Find or create search results container
+    let resultsContainer = document.getElementById('searchResults');
+    if (!resultsContainer) {
+      resultsContainer = document.createElement('div');
+      resultsContainer.id = 'searchResults';
+      resultsContainer.className = 'section';
+      const searchTitle = document.createElement('h3');
+      searchTitle.textContent = 'Search results';
+      resultsContainer.appendChild(searchTitle);
+      const resultsList = document.createElement('ul');
+      resultsList.id = 'searchResultsList';
+      resultsContainer.appendChild(resultsList);
+      
+      // Insert after search input
+      const searchScreen = document.getElementById('search-screen');
+      const cancelBtn = document.getElementById('searchCancel');
+      if (searchScreen && cancelBtn) {
+        cancelBtn.after(resultsContainer);
+      }
+    }
+    
+    const resultsList = document.getElementById('searchResultsList');
+    if (!resultsList) return;
+    
+    if (results.length === 0) {
+      resultsList.innerHTML = '<li>No results found.</li>';
+      return;
+    }
+    
+    resultsList.innerHTML = results.map(r => {
+      const displayName = escapeHtml(r.display_name);
+      return `<li data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">${displayName}</li>`;
+    }).join('');
+    
+    // Add click handlers
+    resultsList.querySelectorAll('li[data-lat]').forEach(li => {
+      li.addEventListener('click', () => {
+        const place = { 
+          name: li.dataset.name, 
+          lat: parseFloat(li.dataset.lat), 
+          lon: parseFloat(li.dataset.lon) 
+        };
+        addRecent(place);
+        showScreen(screenHome);
+        loadAndRender(place);
+        // Clear search
+        if (searchInput) searchInput.value = '';
+        resultsList.innerHTML = '';
+      });
+    });
+  }
+  
+  // Add search input handler with debouncing
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        runSearch(e.target.value);
+      }, 300); // 300ms debounce
+    });
   }
 
   // ========== NAVIGATION ==========
@@ -570,6 +716,25 @@ document.addEventListener("DOMContentLoaded", () => {
   saveCurrent.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
   });
+  
+  if (searchCancel) {
+    searchCancel.addEventListener('click', () => {
+      showScreen(screenHome);
+      if (searchInput) searchInput.value = '';
+    });
+  }
+  
+  if (manageFavorites) {
+    manageFavorites.addEventListener('click', () => {
+      const list = loadFavorites();
+      if (list.length === 0) {
+        showToast('No saved places to manage');
+        return;
+      }
+      // Show help message
+      showToast('Click the ✕ button next to a place to remove it', 4000);
+    });
+  }
 
   // ========== INITIALIZATION ==========
   

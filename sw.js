@@ -5,7 +5,7 @@
    - Stale-while-revalidate for images
 */
 
-const SW_VERSION = 'pw-v4'; // Bumped to v4 to clear old caches
+const SW_VERSION = 'pw-v5'; // Bumped to v5 for app restoration
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
 
