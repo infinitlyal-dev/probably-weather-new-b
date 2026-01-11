@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hi = norm.todayHigh;
     
     // Priority order (most severe first):
-    if (desc. includes("storm") || desc.includes("thunder") || desc.includes("lightning")) {
+    if (desc.includes("storm") || desc.includes("thunder") || desc.includes("lightning")) {
       return "storm";
     }
     if (desc.includes("fog") || desc.includes("mist") || desc.includes("haze")) {
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (bgImg.src !== sameFolderFallback) {
           bgImg.src = sameFolderFallback;
           bgImg.onerror = () => {
-            // Final fallback: clear (NOT cloudy)
+            // Final fallback:  clear (NOT cloudy)
             const clearFallback = `${base}/clear/clear1.jpg`;
             bgImg.src = clearFallback;
             console.warn(`Failed to load background for ${folder}, falling back to clear`);
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function createParticles(condition, count = 20) {
-    if (!particlesEl) return;
+    if (! particlesEl) return;
     particlesEl.innerHTML = '';
     // Only create particles for certain conditions
     if (condition === 'rain' || condition === 'storm' || condition === 'cloudy') {
@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Braai weather, boet! ";
     }
 
-    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside.";
+    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside. ";
     if (dpl.includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back.";
     if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody. ";
     if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close. ";
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function fetchProbable(place) {
-    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const url = `/api/weather? lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const response = await fetch(url);
     if (!response.ok) throw new Error('API error');
     return await response.json();
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const medLow = median(norms.map(n => n.todayLow).filter(isNum));
       const medRain = median(norms.map(n => n.todayRain).filter(isNum));
       const medUv = median(norms.map(n => n.todayUv).filter(isNum));
-      const mostDesc = pickMostCommon(norms. map(n => n.desc).filter(Boolean)) || 'Weather today';
+      const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
 
       return {
         nowTemp: medNow,
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = (norm.agreement?. label || "—").toUpperCase();
     safeText(confidenceEl, `PROBABLY .  ${label} AGREEMENT`);
 
-    const usedTxt = norm.used.length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
+    const usedTxt = norm.used. length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
     safeText(sourcesEl, `${usedTxt}${failedTxt ?  " · " + failedTxt : ""}`);
 
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderHourly(hourly) {
-    if (! hourlyTimeline) return;
+    if (!hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Places:  recents/favorites
-  function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
+  function loadFavorites() { return loadJSON(STORAGE. favorites, []); }
   function loadRecents() { return loadJSON(STORAGE.recents, []); }
 
   function saveFavorites(list) { saveJSON(STORAGE.favorites, list); }
@@ -407,10 +407,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderRecents() {
-    if (! recentList) return;
+    if (!recentList) return;
     const list = loadRecents();
     recentList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p. name)}</li>
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
     `).join('') || '<li>No recent searches yet. </li>';
 
     recentList.querySelectorAll('li').forEach(li => {
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   navSettings.addEventListener('click', () => showScreen(screenSettings));
 
-  saveCurrent.addEventListener('click', () => {
+  saveCurrent. addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
   });
 
@@ -502,11 +502,11 @@ document.addEventListener("DOMContentLoaded", () => {
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
         },
-        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
+        { enableHighAccuracy:  false, timeout: 8000, maximumAge: 60000 }
       );
     } else {
       homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
-      saveJSON(STORAGE.home, homePlace);
+      saveJSON(STORAGE. home, homePlace);
       loadAndRender(homePlace);
     }
   }
