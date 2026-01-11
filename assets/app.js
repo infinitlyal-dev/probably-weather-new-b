@@ -37,7 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loader = $('#loader');
 
-  const STORAGE = "pw_";
+  const STORAGE = {
+    favorites: "pw_favorites",
+    recents: "pw_recents",
+    home: "pw_home"
+  };
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
   let activePlace = null;
@@ -48,6 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
 
   function round0(n) { return isNum(n) ? Math.round(n) : null; }
+  function round1(n) { return isNum(n) ? Math.round(n * 10) / 10 : null; }
+
+  function median(values) {
+    if (values.length === 0) return null;
+    values.sort((a, b) => a - b);
+    const half = Math.floor(values.length / 2);
+    return values.length % 2 ? values[half] : (values[half - 1] + values[half]) / 2.0;
+  }
+
+  function pickMostCommon(arr) {
+    if (arr.length === 0) return null;
+    const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
+    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
+  }
 
   function loadJSON(key, fallback) {
     try {
@@ -428,18 +446,5 @@ document.addEventListener("DOMContentLoaded", () => {
       saveJSON(STORAGE.home, homePlace);
       loadAndRender(homePlace);
     }
-  }
-
-  function median(values) {
-    if (values.length === 0) return null;
-    values.sort((a, b) => a - b);
-    const half = Math.floor(values.length / 2);
-    return values.length % 2 ? values[half] : (values[half - 1] + values[half]) / 2.0;
-  }
-
-  function pickMostCommon(arr) {
-    if (arr.length === 0) return null;
-    const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
-    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
   }
 });
