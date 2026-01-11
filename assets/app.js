@@ -223,11 +223,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== API FETCH ==========
   async function fetchWeather(place) {
-    const url = `/api/weather? lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place. lon)}&name=${encodeURIComponent(place.name || "")}`;
+    const url = "/api/weather? lat=" + encodeURIComponent(place. lat) + "&lon=" + encodeURIComponent(place. lon) + "&name=" + encodeURIComponent(place. name || "");
     const response = await fetch(url);
     if (!response.ok) throw new Error("API error");
     return await response.json();
   }
+
 
   // ========== NORMALIZE API RESPONSE ==========
   // Converts API response to internal format
