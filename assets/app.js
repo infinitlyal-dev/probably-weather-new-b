@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dailyCards = $('#daily-cards');
 
   const searchInput = $('#searchInput');
+  const searchCancel = $('#searchCancel');
   const favoritesList = $('#favoritesList');
   const recentList = $('#recentList');
   const manageFavorites = $('#manageFavorites');
@@ -378,6 +379,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Compute condition ONCE, use it for EVERYTHING
     const condition = computeDominantCondition(norm);
 
+    // Set body class for condition-based styling
+    document.body.className = `weather-${condition}`;
+
     // Location
     safeText(locationEl, activePlace.name || '—');
     
@@ -420,6 +424,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // Confidence
     const label = (norm.agreement?.label || "—").toUpperCase();
     safeText(confidenceEl, `PROBABLY • ${label} CONFIDENCE`);
+    
+    // Confidence value in sidebar
+    const confidenceValue = $('#confidenceValue');
+    if (confidenceValue) {
+      safeText(confidenceValue, norm.agreement?.explain || "—");
+    }
+    
+    // Confidence bar - visual indicator
+    if (confidenceBarEl) {
+      const barWidth = label === "STRONG" ? 100 
+                     : label === "DECENT" ? 70 
+                     : label === "MIXED" ? 40 
+                     : 0;
+      confidenceBarEl.style.width = `${barWidth}%`;
+    }
 
     // Sources
     const usedTxt = norm.used.length ? `Used: ${norm.used.join(", ")}` : "Used: —";
@@ -570,6 +589,27 @@ document.addEventListener("DOMContentLoaded", () => {
   saveCurrent.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
   });
+  
+  if (searchCancel) {
+    searchCancel.addEventListener('click', () => {
+      showScreen(screenHome);
+      if (searchInput) searchInput.value = '';
+    });
+  }
+  
+  if (manageFavorites) {
+    manageFavorites.addEventListener('click', () => {
+      // Toggle edit mode for favorites
+      const isList = favoritesList?.querySelectorAll('li[data-lat]');
+      if (isList && isList.length > 0) {
+        // Show confirmation for clearing favorites
+        if (confirm('Clear all saved places?')) {
+          saveFavorites([]);
+          renderFavorites();
+        }
+      }
+    });
+  }
 
   // ========== INITIALIZATION ==========
   

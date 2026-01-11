@@ -110,7 +110,7 @@ export default async function handler(req, res) {
           todayRain: om.daily?.precipitation_probability_max?.[0] ?? null,
           todayUv: om.daily?.uv_index_max?.[0] ?? null,
           desc: openMeteoCodeMap[om.current?.weather_code] ?? 'Unknown',
-          wind: om.current?.wind_speed_10m ?? null, // km/h
+          windKph: om.current?.wind_speed_10m ?? null, // km/h
         });
   
         hourlies.push({
@@ -149,7 +149,7 @@ export default async function handler(req, res) {
             todayRain: d.daily_chance_of_rain ?? null,
             todayUv: d.uv ?? null,
             desc: wa.current?.condition?.text ?? 'Unknown',
-            wind: wa.current?.wind_kph ?? null, // km/h
+            windKph: wa.current?.wind_kph ?? null, // km/h
           });
   
           hourlies.push({
@@ -197,7 +197,7 @@ export default async function handler(req, res) {
           todayRain: rainProxy,
           todayUv: null,
           desc,
-          wind,
+          windKph: wind,
         });
   
         hourlies.push({
