@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Image variants: dawn, day, dusk, night
     const variants = ['dawn', 'day', 'dusk', 'night'];
-    const imageIndex = Math.abs(hashString(condition + activePlace?.name || '')) % 4;
+    const imageIndex = Math.abs(hashString(condition + (activePlace?.name || ''))) % 4;
     const imageName = variants[imageIndex];
     const primaryPath = `${base}/${folder}/${imageName}.jpg`;
     
