@@ -227,21 +227,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const base = "assets/images/bg";
     const folder = condition; // Direct match - no translation needed
     
-    // Pick a random image 1-4 from the folder
-    const imageNum = 1 + (Math.abs(hashString(condition + Date.now().toString())) % 4);
-    const primaryPath = `${base}/${folder}/${folder}${imageNum}.jpg`;
+    // Image variants: dawn, day, dusk, night
+    const variants = ['dawn', 'day', 'dusk', 'night'];
+    const imageIndex = Math.abs(hashString(condition + activePlace?.name || '')) % 4;
+    const imageName = variants[imageIndex];
+    const primaryPath = `${base}/${folder}/${imageName}.jpg`;
     
     if (bgImg) {
       bgImg.src = primaryPath;
       
       // Fallback chain: same folder → clear (never cloudy)
       bgImg.onerror = () => {
-        const sameFolderFallback = `${base}/${folder}/${folder}1.jpg`;
+        const sameFolderFallback = `${base}/${folder}/day.jpg`;
         if (bgImg.src !== sameFolderFallback) {
           bgImg.src = sameFolderFallback;
           bgImg.onerror = () => {
             // Final fallback: clear (NOT cloudy per spec)
-            bgImg.src = `${base}/clear/clear1.jpg`;
+            bgImg.src = `${base}/clear/day.jpg`;
             console.warn(`Background failed for ${folder}, falling back to clear`);
           };
         }
