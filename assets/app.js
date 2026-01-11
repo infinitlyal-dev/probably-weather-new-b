@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const headlineEl = $('#headline');
   const tempEl = $('#temp');
   const descriptionEl = $('#description');
+  const extremeLabelEl = $('#extremeLabel');
   const extremeValueEl = $('#extremeValue');
   const rainValueEl = $('#rainValue');
   const uvValueEl = $('#uvValue');
@@ -399,13 +400,17 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(headlineEl, getHeadline(condition));
     
     // Temperature range
-    safeText(tempEl, `${round0(low)}° – ${round0(hi)}°`);
+    const lowStr = isNum(low) ? round0(low) : '--';
+    const hiStr = isNum(hi) ? round0(hi) : '--';
+    safeText(tempEl, `${lowStr}° – ${hiStr}°`);
     
     // Witty line - driven by condition (Spec Section 7)
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
     // Today's extreme - driven by condition (Spec Section 8)
-    safeText(extremeValueEl, getExtremeLabel(condition));
+    const extremeLabel = getExtremeLabel(condition);
+    safeText(extremeLabelEl, `Today's extreme:`);
+    safeText(extremeValueEl, extremeLabel);
 
     // Rain display
     if (isNum(rain)) {
@@ -465,14 +470,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderHourly(hourly) {
     if (!hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
+    if (!hourly || hourly.length === 0) {
+      hourlyTimeline.innerHTML = '<div style="text-align: center; padding: 2rem; opacity: 0.7;">No hourly data available</div>';
+      return;
+    }
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
       const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
-        <div class="hour-temp">${round0(h.temp)}°</div>
-        <div class="hour-rain">${round0(h.rain)}%</div>
+        <div class="hour-temp">${round0(h.temp) ?? '--'}°</div>
+        <div class="hour-rain">${round0(h.rain) ?? '--'}%</div>
       `;
       hourlyTimeline.appendChild(div);
     });
@@ -481,6 +490,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderWeek(daily) {
     if (!dailyCards) return;
     dailyCards.innerHTML = '';
+    if (!daily || daily.length === 0) {
+      dailyCards.innerHTML = '<div style="text-align: center; padding: 2rem; opacity: 0.7;">No daily data available</div>';
+      return;
+    }
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
@@ -488,9 +501,9 @@ document.addEventListener("DOMContentLoaded", () => {
       div.classList.add('daily-card');
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
-        <div class="day-temp">${round0(d.low)}° – ${round0(d.high)}°</div>
-        <div class="day-rain">${round0(d.rain)}%</div>
-        <div class="day-humor">${d.desc}</div>
+        <div class="day-temp">${round0(d.low) ?? '--'}° – ${round0(d.high) ?? '--'}°</div>
+        <div class="day-rain">${round0(d.rain) ?? '--'}%</div>
+        <div class="day-humor">${escapeHtml(d.desc) || '—'}</div>
       `;
       dailyCards.appendChild(div);
     });
