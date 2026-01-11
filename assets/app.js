@@ -1,34 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
 
-  const locationEl = $('#location');
-  const headlineEl = $('#headline');
-  const tempEl = $('#temp');
-  const descriptionEl = $('#description');
-  const extremeValueEl = $('#extremeValue');
-  const rainValueEl = $('#rainValue');
-  const uvValueEl = $('#uvValue');
-  const confidenceEl = $('#confidence');
-  const sourcesEl = $('#sources');
+  const locationEl = $('#cityLine');
+  const headlineEl = $('#conditionText');
+  const tempEl = $('#bigTemp');
+  const descriptionEl = $('#wittyLine');
+  const extremeValueEl = $('#todayExtremeTitle');
+  const rainValueEl = $('#rainSummary');
+  const uvValueEl = $('#uvSummary');
+  const confidenceEl = $('#confidenceTop');
+  const sourcesEl = $('#sourcesList');
   const bgImg = $('#bgImg');
   const saveCurrent = $('#saveCurrent');
   const confidenceBarEl = $('#confidenceBar');
   const particlesEl = $('#particles');
 
-  const navHome = $('#navHome');
-  const navHourly = $('#navHourly');
-  const navWeek = $('#navWeek');
-  const navSearch = $('#navSearch');
-  const navSettings = $('#navSettings');
+  const navHome = $('.nav-btn[data-target="home"]');
+  const navHourly = $('.nav-btn[data-target="hourly"]');
+  const navWeek = $('.nav-btn[data-target="week"]');
+  const navSearch = $('.nav-btn[data-target="search"]');
+  const navSettings = $('.nav-btn[data-target="settings"]');
 
-  const screenHome = $('#home-screen');
-  const screenHourly = $('#hourly-screen');
-  const screenWeek = $('#week-screen');
-  const screenSearch = $('#search-screen');
-  const screenSettings = $('#settings-screen');
+  const screenHome = $('#screen-home');
+  const screenHourly = $('#screen-hourly');
+  const screenWeek = $('#screen-week');
+  const screenSearch = $('#screen-search');
+  const screenSettings = $('#screen-settings');
 
-  const hourlyTimeline = $('#hourly-timeline');
-  const dailyCards = $('#daily-cards');
+  const hourlyTimeline = $('#hourlyList');
+  const dailyCards = $('#weekList');
 
   const searchInput = $('#searchInput');
   const favoritesList = $('#favoritesList');
@@ -43,6 +43,24 @@ document.addEventListener("DOMContentLoaded", () => {
     recents: "pw_recents",
     home: "pw_home"
   };
+  
+  // Thresholds for condition detection (from product spec)
+  const THRESH = {
+    RAIN_PCT: 40,    // >= 40% rain chance = rain dominates
+    WIND_KPH: 25,    // >= 25 km/h = wind dominates
+    COLD_C: 16,      // <= 16°C max = cold dominates
+    HOT_C: 32,       // >= 32°C max = heat dominates
+    // Rain display thresholds
+    RAIN_NONE: 10,   // < 10% = None expected
+    RAIN_UNLIKELY: 30,  // < 30% = Unlikely
+    RAIN_POSSIBLE: 55,  // < 55% = Possible
+    // UV index thresholds
+    UV_LOW: 3,       // < 3 = Low
+    UV_MODERATE: 6,  // < 6 = Moderate
+    UV_HIGH: 8,      // < 8 = High
+    UV_VERY_HIGH: 11 // < 11 = Very High
+  };
+  
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
   let activePlace = null;
@@ -54,20 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function round0(n) { return isNum(n) ? Math.round(n) : null; }
   function round1(n) { return isNum(n) ? Math.round(n * 10) / 10 : null; }
-
-  // FIXED:  Moved median and pickMostCommon BEFORE they are used
-  function median(values) {
-    if (values.length === 0) return null;
-    const sorted = [... values].sort((a, b) => a - b);
-    const half = Math. floor(sorted.length / 2);
-    return sorted.length % 2 ?  sorted[half] :  (sorted[half - 1] + sorted[half]) / 2.0;
-  }
-
-  function pickMostCommon(arr) {
-    if (arr. length === 0) return null;
-    const count = arr. reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
-    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
-  }
 
   function loadJSON(key, fallback) {
     try {
@@ -86,12 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showScreen(which) {
-    SCREENS.forEach(s => s.classList. add("hidden"));
-    which.classList.remove("hidden");
+    SCREENS.forEach(s => {
+      if (s) {
+        s.classList.add("hidden");
+        s.setAttribute('hidden', '');
+      }
+    });
+    if (which) {
+      which.classList.remove("hidden");
+      which.removeAttribute('hidden');
+    }
   }
 
   function showLoader(show) {
-    loader.classList[show ? 'remove' : 'add']('hidden');
+    if (loader) loader.classList[show ? 'remove' : 'add']('hidden');
   }
 
   function hashString(s) {
@@ -100,35 +112,110 @@ document.addEventListener("DOMContentLoaded", () => {
     return h | 0;
   }
 
-  function setBackgroundFor(dp, rainPct, maxC) {
-    const base = "assets/images/bg";
-    let folder = "clear";
+  // SINGLE SOURCE OF TRUTH for weather condition
+  // Priority order: Storm > Rain > Wind > Cold > Heat > Fog > Clear
+  function computeDominantCondition(norm) {
+    const condKey = (norm.conditionKey || '').toLowerCase();
+    const rain = norm.rainPct;
+    const wind = norm.windKph;
+    const hi = norm.todayHigh;
 
-    const dpl = String(dp || "").toLowerCase();
+    // 1. STORM
+    if (condKey === 'storm' || condKey.includes('thunder')) {
+      return 'storm';
+    }
 
-    if (dpl.includes("fog") || dpl.includes("mist") || dpl.includes("haze")) folder = "fog";
-    else if (dpl. includes("storm") || dpl.includes("thunder") || dpl.includes("lightning")) folder = "storm";
-    else if (dpl.includes("cloud") || dpl.includes("overcast")) folder = "cloudy";
-    else if (isNum(rainPct) && rainPct >= 60) folder = "rain";
-    else if (isNum(maxC) && maxC >= 32) folder = "heat";
-    else folder = "clear";
+    // 2. RAIN (>=40%)
+    if (isNum(rain) && rain >= THRESH.RAIN_PCT) {
+      return 'rain';
+    }
 
-    const n = 1 + (Math.abs(hashString((dp || "") + String(maxC || ""))) % 4);
-    const path = `${base}/${folder}/${folder}${n}.jpg`;
+    // 3. WIND (>=25 km/h)
+    if (isNum(wind) && wind >= THRESH.WIND_KPH) {
+      return 'wind';
+    }
 
-    if (bgImg) bgImg.src = path;
+    // 4. COLD (max <=16°C)
+    if (isNum(hi) && hi <= THRESH.COLD_C) {
+      return 'cold';
+    }
+
+    // 5. HEAT (max >=32°C)
+    if (isNum(hi) && hi >= THRESH.HOT_C) {
+      return 'heat';
+    }
+
+    // 6. FOG
+    if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) {
+      return 'fog';
+    }
+
+    // 7. CLEAR (default - NOT cloudy per spec)
+    return 'clear';
   }
 
-  function createParticles(folder, count = 20) {
-    if (! particlesEl) return;
+  function getHeadline(condition) {
+    const map = {
+      storm: 'This is stormy.',
+      rain: 'This is rainy.',
+      wind: 'This is windy.',
+      cold: 'This is cold.',
+      heat: 'This is hot.',
+      fog: 'This is foggy.',
+      clear: 'This is clear.'
+    };
+    return map[condition] || 'This is weather.';
+  }
+
+  function getExtremeLabel(condition) {
+    const map = {
+      storm: 'Severe weather',
+      rain: 'Wet conditions',
+      wind: 'Gusty',
+      cold: 'Chilly',
+      heat: 'Very hot',
+      fog: 'Low visibility',
+      clear: 'Pleasant'
+    };
+    return map[condition] || 'Moderate';
+  }
+
+  function setBackgroundFor(condition) {
+    const base = 'assets/images/bg';
+    const folder = condition;
+    const fallbackFolder = 'clear';
+    const n = 1 + (Math.abs(hashString(condition + (activePlace?.name || ''))) % 4);
+    const path = `${base}/${folder}/${folder}${n}.jpg`;
+
+    if (bgImg) {
+      bgImg.src = path;
+      bgImg.onerror = () => {
+        const fallback1 = `${base}/${folder}/${folder}1.jpg`;
+        if (bgImg.src !== fallback1) {
+          bgImg.src = fallback1;
+          bgImg.onerror = () => {
+            // Final fallback: clear (never cloudy)
+            bgImg.src = `${base}/${fallbackFolder}/${fallbackFolder}1.jpg`;
+          };
+        }
+      };
+    }
+  }
+
+  function createParticles(condition, count = 20) {
+    if (!particlesEl) return;
     particlesEl.innerHTML = '';
-    for (let i = 0; i < count; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-      particle.style.animationDelay = `${Math.random() * 2}s`;
-      particlesEl.appendChild(particle);
+    
+    // Only create particles for rain or storm
+    if (condition === 'rain' || condition === 'storm') {
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        particle.style.animationDelay = `${Math.random() * 2}s`;
+        particlesEl.appendChild(particle);
+      }
     }
   }
 
@@ -138,36 +225,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return day === 0 || day === 5 || day === 6;
   }
 
-  function pickWittyLine(rainPct, maxC, dp) {
-    const dpl = String(dp || "").toLowerCase();
-    const hot = isNum(maxC) && maxC >= 30;
-
-    if (isWeekendLocal() && (isNum(rainPct) ? rainPct < 25 : true) && ! dpl.includes("storm") && !dpl. includes("rain")) {
-      return "Braai weather, boet! ";
+  function getWittyLine(condition, rainPct, maxC) {
+    const isWeekend = [0, 5, 6].includes(new Date().getDay());
+    
+    if (isWeekend && condition === 'clear') {
+      return 'Braai weather, boet!';
     }
 
-    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside.";
-    if (dpl.includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back. ";
-    if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody. ";
-    if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close. ";
-    if (hot) return "Big heat — pace yourself outside.";
-    if (dpl.includes("cloud")) return "Soft light, no drama.  Take the win.";
-    return "Good day to get stuff done outside.";
-  }
+    const lines = {
+      storm: "Electric vibes. Don't be the tallest thing outside.",
+      rain: isNum(rainPct) && rainPct >= 70 ? "Plan indoors — today's moody." : "Keep a jacket close.",
+      wind: "Hold onto your hat.",
+      cold: "Ja, it's jacket weather.",
+      heat: "Big heat — pace yourself outside.",
+      fog: "Visibility vibes: drive like you've got a gran in the back.",
+      clear: "Good day to get stuff done outside."
+    };
 
-  function computeAgreementFromNorms(norms) {
-    const temps = norms.map(n => n.nowTemp).filter(isNum);
-    if (temps.length < 2) {
-      return { label: temps. length === 1 ? "DECENT" : "—", explain: temps.length === 1 ? "Only one source responded." : "No sources responded." };
-    }
-
-    const min = Math.min(... temps);
-    const max = Math.max(...temps);
-    const spread = max - min;
-
-    if (spread <= 1. 5) return { label: "STRONG", explain: "All sources line up closely." };
-    if (spread <= 3. 5) return { label: "DECENT", explain: "Two sources agree, one's a bit off." };
-    return { label: "MIXED", explain: "Sources disagree today; we're showing the most probable middle-ground." };
+    return lines[condition] || "Just... probably.";
   }
 
   async function fetchProbable(place) {
@@ -178,43 +253,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function normalizePayload(payload) {
-    if (Array.isArray(payload. norms)) {
-      const norms = payload. norms;
-      const medNow = median(norms. map(n => n.nowTemp).filter(isNum));
-      const medHigh = median(norms.map(n => n.todayHigh).filter(isNum));
-      const medLow = median(norms.map(n => n. todayLow).filter(isNum));
-      const medRain = median(norms.map(n => n.todayRain).filter(isNum));
-      const medUv = median(norms.map(n => n.todayUv).filter(isNum));
-      const mostDesc = pickMostCommon(norms. map(n => n.desc).filter(Boolean)) || 'Weather today';
+    const now = payload.now || {};
+    const today = payload.daily?.[0] || {};
+    const meta = payload.meta || {};
+    const sources = meta.sources || [];
 
-      return {
-        nowTemp: medNow,
-        todayHigh: medHigh,
-        todayLow: medLow,
-        rainPct: medRain,
-        uv: medUv,
-        desc:  mostDesc,
-        agreement: computeAgreementFromNorms(norms),
-        used: payload.used || [],
-        failed: payload.failed || [],
-        countUsed: norms.length,
-        hourly: payload.hourly || [],
-        daily: payload.daily || [],
-      };
-    }
-    // Fallback for other shape (from summary)
     return {
-      nowTemp:  payload.now?. temp ??  null,
-      todayHigh: payload.today?.high ?? null,
-      todayLow: payload.today?.low ?? null,
-      rainPct: payload.today?. rainPct ?? null,
-      uv:  payload.today?.uv ?? null,
-      desc: payload. today?.desc ?? 'Weather today',
-      agreement: payload. agreement || { label: '—', explain: '' },
-      used:  payload.sources?.used || [],
-      failed: payload.sources?. failed || [],
-      countUsed: payload.sources?.countUsed || 0,
-      hourly:  payload.hourly || [],
+      nowTemp: now.tempC ?? null,
+      feelsLike: now.feelsLikeC ?? null,
+      todayHigh: today.highC ?? null,
+      todayLow: today.lowC ?? null,
+      rainPct: today.rainChance ?? now.rainChance ?? null,
+      uv: today.uv ?? null,
+      windKph: now.windKph ?? null,
+      conditionKey: now.conditionKey || today.conditionKey || null,
+      conditionLabel: now.conditionLabel || today.conditionLabel || 'Weather today',
+      confidenceKey: payload.consensus?.confidenceKey || 'mixed',
+      used: sources.filter(s => s.ok).map(s => s.name),
+      failed: sources.filter(s => !s.ok).map(s => s.name),
+      hourly: payload.hourly || [],
       daily: payload.daily || [],
     };
   }
@@ -243,34 +300,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const hi = norm.todayHigh;
     const low = norm.todayLow;
-    const rain = norm. rainPct;
+    const rain = norm.rainPct;
     const uv = norm.uv;
-    const desc = norm.desc;
 
+    // SINGLE SOURCE OF TRUTH - compute condition ONCE
+    const condition = computeDominantCondition(norm);
+
+    // Location
     safeText(locationEl, activePlace.name || '—');
-    safeText(headlineEl, desc);
-    safeText(tempEl, `${round0(low)}° - ${round0(hi)}°`);
-    safeText(descriptionEl, pickWittyLine(rain, hi, desc));
+    
+    // Headline - driven by condition
+    safeText(headlineEl, getHeadline(condition));
+    
+    // Temperature range
+    safeText(tempEl, `${round0(low)}° – ${round0(hi)}°`);
+    
+    // Witty line - driven by condition
+    safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
-    safeText(extremeValueEl, isNum(hi) && hi > 35 ? 'Scorching hot' : isNum(low) && low < 0 ? 'Freezing cold' :  'Mild');
+    // Today's extreme - driven by condition
+    safeText(extremeValueEl, getExtremeLabel(condition));
 
+    // Rain display
     if (isNum(rain)) {
-      const rp = round0(rain);
-      safeText(rainValueEl, `${rp}% (${rp >= 40 ? "Possible rain" : "Low chance"})`);
-    } else safeText(rainValueEl, '--');
+      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
+                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
+                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
+                     : 'Likely';
+      safeText(rainValueEl, rainText);
+    } else {
+      safeText(rainValueEl, '--');
+    }
 
-    if (isNum(uv)) safeText(uvValueEl, `${round0(uv)}`);
-    else safeText(uvValueEl, '--');
+    // UV display
+    if (isNum(uv)) {
+      const uvText = uv < THRESH.UV_LOW ? 'Low'
+                   : uv < THRESH.UV_MODERATE ? 'Moderate'
+                   : uv < THRESH.UV_HIGH ? 'High'
+                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
+                   : 'Extreme';
+      safeText(uvValueEl, `${uvText} (${round0(uv)})`);
+    } else {
+      safeText(uvValueEl, '--');
+    }
 
-    const label = (norm.agreement?. label || "—").toUpperCase();
-    safeText(confidenceEl, `PROBABLY • ${label} AGREEMENT`);
+    // Confidence
+    const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
+    safeText(confidenceEl, `PROBABLY • ${confLabel} CONFIDENCE`);
 
-    const usedTxt = norm.used. length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
-    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
-    safeText(sourcesEl, `${usedTxt}${failedTxt ?  " · " + failedTxt : ""}`);
+    // Sources
+    const usedTxt = norm.used.length ? `Used: ${norm.used.join(', ')}` : 'Used: —';
+    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(', ')}` : '';
+    safeText(sourcesEl, `${usedTxt}${failedTxt ? ' · ' + failedTxt : ''}`);
 
-    setBackgroundFor(desc, rain, hi);
-    createParticles('cloudy');
+    // Background - uses SAME condition (Single Source of Truth)
+    setBackgroundFor(condition);
+    
+    // Particles - uses SAME condition
+    createParticles(condition);
   }
 
   function renderHourly(hourly) {
@@ -279,11 +366,11 @@ document.addEventListener("DOMContentLoaded", () => {
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
-      const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
+      const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
-        <div class="hour-temp">${round0(h.temp)}°</div>
-        <div class="hour-rain">${round0(h.rain)}%</div>
+        <div class="hour-temp">${round0(h.tempC)}°</div>
+        <div class="hour-rain">${round0(h.rainChance)}%</div>
       `;
       hourlyTimeline.appendChild(div);
     });
@@ -292,16 +379,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderWeek(daily) {
     if (!dailyCards) return;
     dailyCards.innerHTML = '';
-    daily. forEach((d, i) => {
-      const date = new Date(Date.now() + i * 86400000);
-      const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+    daily.forEach((d, i) => {
+      const dayName = d.dayLabel || new Date(Date.now() + i * 86400000).toLocaleDateString('en-US', { weekday: 'short' });
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
-        <div class="day-temp">${round0(d.low)}° - ${round0(d.high)}°</div>
-        <div class="day-rain">${round0(d.rain)}%</div>
-        <div class="day-humor">${d.desc}</div>
+        <div class="day-temp">${round0(d.lowC)}° – ${round0(d.highC)}°</div>
+        <div class="day-rain">${round0(d.rainChance)}%</div>
+        <div class="day-humor">${d.conditionLabel || '—'}</div>
       `;
       dailyCards.appendChild(div);
     });
@@ -409,9 +495,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   navSettings.addEventListener('click', () => showScreen(screenSettings));
 
-  saveCurrent.addEventListener('click', () => {
-    if (activePlace) addFavorite(activePlace);
-  });
+  if (saveCurrent) {
+    saveCurrent.addEventListener('click', () => {
+      if (activePlace) addFavorite(activePlace);
+    });
+  }
 
   // Init
   renderRecents();
