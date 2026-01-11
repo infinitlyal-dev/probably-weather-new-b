@@ -478,10 +478,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
       const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
+      const tempStr = isNum(h.temp) ? `${round0(h.temp)}°` : '--°';
+      const rainStr = isNum(h.rain) ? `${round0(h.rain)}%` : '--%';
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
-        <div class="hour-temp">${round0(h.temp) ?? '--'}°</div>
-        <div class="hour-rain">${round0(h.rain) ?? '--'}%</div>
+        <div class="hour-temp">${tempStr}</div>
+        <div class="hour-rain">${rainStr}</div>
       `;
       hourlyTimeline.appendChild(div);
     });
@@ -497,13 +499,17 @@ document.addEventListener("DOMContentLoaded", () => {
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+      const lowStr = isNum(d.low) ? round0(d.low) : '--';
+      const highStr = isNum(d.high) ? round0(d.high) : '--';
+      const rainStr = isNum(d.rain) ? `${round0(d.rain)}%` : '--%';
+      const descStr = d.desc ? escapeHtml(d.desc) : '—';
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
-        <div class="day-temp">${round0(d.low) ?? '--'}° – ${round0(d.high) ?? '--'}°</div>
-        <div class="day-rain">${round0(d.rain) ?? '--'}%</div>
-        <div class="day-humor">${escapeHtml(d.desc) || '—'}</div>
+        <div class="day-temp">${lowStr}° – ${highStr}°</div>
+        <div class="day-rain">${rainStr}</div>
+        <div class="day-humor">${descStr}</div>
       `;
       dailyCards.appendChild(div);
     });
@@ -598,8 +604,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const lat = parseFloat(btn.dataset.lat);
         const lon = parseFloat(btn.dataset.lon);
         let list = loadFavorites();
-        list = list.filter(p => !(Number(p.lat).toFixed(4) === Number(lat).toFixed(4) && 
-                                   Number(p.lon).toFixed(4) === Number(lon).toFixed(4)));
+        list = list.filter(p => !samePlace(p, {lat, lon}));
         saveFavorites(list);
         renderFavorites();
         showToast('Place removed from favorites');
