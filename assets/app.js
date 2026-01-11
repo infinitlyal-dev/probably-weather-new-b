@@ -1,496 +1,526 @@
-// assets/app.js
-(() => {
-  const C = window.PW_CONFIG;
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = (sel) => document.querySelector(sel);
 
-  // ---------------- DOM helpers
-  const $ = (id) => document.getElementById(id);
+  const locationEl = $('#location');
+  const headlineEl = $('#headline');
+  const tempEl = $('#temp');
+  const descriptionEl = $('#description');
+  const extremeValueEl = $('#extremeValue');
+  const rainValueEl = $('#rainValue');
+  const uvValueEl = $('#uvValue');
+  const confidenceEl = $('#confidence');
+  const sourcesEl = $('#sources');
+  const bgImg = $('#bgImg');
+  const saveCurrent = $('#saveCurrent');
+  const confidenceBarEl = $('#confidenceBar');
+  const particlesEl = $('#particles');
 
-  const dom = {
-    // Background
-    bgImg: $("bgImg"),
+  const navHome = $('#navHome');
+  const navHourly = $('#navHourly');
+  const navWeek = $('#navWeek');
+  const navSearch = $('#navSearch');
+  const navSettings = $('#navSettings');
 
-    // Topbar
-    cityLine: $("cityLine"),
-    subhead: $("subhead"),
-    updatedAt: $("updatedAt"),
+  const screenHome = $('#home-screen');
+  const screenHourly = $('#hourly-screen');
+  const screenWeek = $('#week-screen');
+  const screenSearch = $('#search-screen');
+  const screenSettings = $('#settings-screen');
 
-    // Home hero
-    confidenceTop: $("confidenceTop"),
-    conditionText: $("conditionText"),
-    bigTemp: $("bigTemp"),
-    wittyLine: $("wittyLine"),
+  const hourlyTimeline = $('#hourly-timeline');
+  const dailyCards = $('#daily-cards');
 
-    // Home cards
-    todayExtremeKicker: $("todayExtremeKicker"),
-    todayExtremeTitle: $("todayExtremeTitle"),
-    todayExtremeRange: $("todayExtremeRange"),
-    rainSummary: $("rainSummary"),
-    uvSummary: $("uvSummary"),
-    confidenceTitle: $("confidenceTitle"),
-    confidenceSub: $("confidenceSub"),
+  const searchInput = $('#searchInput');
+  const favoritesList = $('#favoritesList');
+  const recentList = $('#recentList');
+  const manageFavorites = $('#manageFavorites');
 
-    // Lists
-    hourlyList: $("hourlyList"),
-    weekList: $("weekList"),
+  const loader = $('#loader');
 
-    // Search
-    searchInput: $("searchInput"),
-    searchBtn: $("searchBtn"),
+  const STORAGE = "pw_";
+  const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
-    // Settings
-    sourcesList: $("sourcesList"),
+  let activePlace = null;
+  let homePlace = null;
+  let lastPayload = null;
 
-    // Screens
-    screens: {
-      home: $("screen-home"),
-      hourly: $("screen-hourly"),
-      week: $("screen-week"),
-      search: $("screen-search"),
-      settings: $("screen-settings"),
-    },
-  };
-
-  const state = {
-    city: "", // IMPORTANT: no Cape Town fallback
-    data: null,
-    usingGeo: false,
-    geoLabel: "",
-  };
-
-  // ---------------- thresholds (your rules)
-  const THRESH = {
-    WIND_KPH: 25,   // above 25 km/h => windy dominates
-    RAIN_PCT: 50,   // above 50% => rain dominates
-    HOT_C: 32,      // >= 32C => heat dominates
-    COLD_C: 16,     // <= 16C => cold dominates
-  };
-
-  // ---------------- formatting helpers
+  const safeText = (el, txt) => { if (el) el.textContent = txt ??   "--"; };
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
 
-  const fmtTemp = (c) => (isNum(c) ? `${Math.round(c)}°` : "—");
-  const fmtRange = (lowC, highC) => {
-    if (!isNum(lowC) && !isNum(highC)) return "—";
-    if (isNum(lowC) && isNum(highC)) return `${Math.round(lowC)}–${Math.round(highC)}°`;
-    return isNum(lowC) ? `${Math.round(lowC)}°` : `${Math.round(highC)}°`;
-  };
+  function round0(n) { return isNum(n) ? Math.round(n) : null; }
+  function round1(n) { return isNum(n) ? Math.round(n * 10) / 10 : null; }
 
-  const rainCopy = (pct) => {
-    if (!isNum(pct)) return "—";
-    if (pct < 10) return "None expected";
-    if (pct < 30) return "Unlikely";
-    if (pct < 55) return "Possible";
-    return "Likely";
-  };
+  function loadJSON(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON. parse(raw) : fallback;
+    } catch { return fallback; }
+  }
+  function saveJSON(key, val) {
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+  }
 
-  const uvBand = (uv) => {
-    if (!isNum(uv)) return "—";
-    if (uv < 3) return "Low";
-    if (uv < 6) return "Moderate";
-    if (uv < 8) return "High";
-    if (uv < 11) return "Very High";
-    return "Extreme";
-  };
+  function samePlace(a, b) {
+    if (!  a || ! b) return false;
+    return Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) &&
+           Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
+  }
 
-  const confidenceLabel = (key) => {
-    const map = C?.confidence || {};
-    if (key && map[key]?.label) return map[key].label;
-    if (key === "strong") return "High";
-    if (key === "decent") return "Medium";
-    return "Low";
-  };
+  function showScreen(which) {
+    SCREENS.forEach(s => s.classList.add("hidden"));
+    which.classList.remove("hidden");
+  }
 
-  const confidenceTopLine = (label) => `PROBABLY · ${String(label).toUpperCase()} CONFIDENCE`;
+  function showLoader(show) {
+    loader.classList[show ? 'remove' : 'add']('hidden');
+  }
 
-  // ---------------- condition label mapping (for headline + cards)
-  const labelForKey = (key) => {
-    // keys: clear, cloudy, rain, storm, fog, heat, cold, wind
-    switch (key) {
-      case "wind":
-        return "Windy";
-      case "heat":
-        return "Hot";
-      case "cold":
-        return "Cold";
-      case "fog":
-        return "Foggy";
-      case "cloudy":
-        return "Cloudy";
-      case "rain":
-        return "Rain";
-      case "storm":
-        return "Storm";
-      case "clear":
-      default:
-        return "Clear";
-    }
-  };
+  function hashString(s) {
+    let h = 0;
+    for (let i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i);
+    return h | 0;
+  }
 
-  // ---------------- dominant condition logic (ONE truth used everywhere on Home)
-  function dominantKeyForHome(now, daily0) {
-    const tempNow = now?.tempC;
-    const high = daily0?.highC;
-    const low = daily0?.lowC;
-
-    const windNow = now?.windKph;
-    const rainNow = now?.rainChance;
-    const rainDay = daily0?.rainChance;
-
-    const baseKey =
-      (now?.conditionKey || daily0?.conditionKey || "clear")
-        .toString()
-        .toLowerCase();
-
-    const rainPct = isNum(rainDay) ? rainDay : rainNow;
-    const windKph = windNow;
-
-    // 1) Storm overrides rain if the provider explicitly says storm/thunder
-    if (baseKey.includes("storm") || baseKey.includes("thunder") || baseKey.includes("tstorm")) {
+  // ========== SINGLE SOURCE OF TRUTH FOR CONDITION ==========
+  
+  function computeDominantCondition(norm) {
+    // Returns one of: "storm", "fog", "rain", "heat", "cloudy", "clear"
+    // This is the ONLY place that decides today's condition
+    const desc = String(norm.  desc || "").toLowerCase();
+    const rain = norm.rainPct;
+    const hi = norm.todayHigh;
+    
+    // Priority order (most severe first):
+    if (desc. includes("storm") || desc.includes("thunder") || desc.includes("lightning")) {
       return "storm";
     }
-
-    // 2) Rain dominates if likely
-    if (isNum(rainPct) && rainPct >= THRESH.RAIN_PCT) {
-      return "rain";
-    }
-
-    // 3) Wind dominates if strong
-    if (isNum(windKph) && windKph >= THRESH.WIND_KPH) {
-      return "wind";
-    }
-
-    // 4) Heat / Cold by temp (use daily highs/lows as backup)
-    const hot = (isNum(tempNow) && tempNow >= THRESH.HOT_C) || (isNum(high) && high >= THRESH.HOT_C);
-    if (hot) return "heat";
-
-    const cold = (isNum(tempNow) && tempNow <= THRESH.COLD_C) || (isNum(low) && low <= THRESH.COLD_C);
-    if (cold) return "cold";
-
-    // 5) Fog/mist/haze
-    if (baseKey.includes("fog") || baseKey.includes("mist") || baseKey.includes("haze")) {
+    if (desc.includes("fog") || desc.includes("mist") || desc.includes("haze")) {
       return "fog";
     }
-
-    // 6) Cloudy
-    if (baseKey.includes("cloud")) {
+    if (isNum(rain) && rain >= 40) {
+      return "rain";
+    }
+    // Cloudy ONLY if overcast or heavy cloud (not just "cloud" or "partly cloudy")
+    if (desc.includes("overcast") || desc.includes("heavy cloud") || desc.includes("mostly cloudy")) {
       return "cloudy";
     }
-
-    // 7) Default clear
+    if (isNum(hi) && hi >= 32) {
+      return "heat";
+    }
     return "clear";
   }
 
-  const wittyFor = (dominantKey, daily0) => {
-    const high = daily0?.highC;
-    const rain = daily0?.rainChance;
-
-    if (dominantKey === "clear") {
-      if (isNum(high) && high >= 26) return "Braai weather, boet!";
-      return "Looks good outside.";
-    }
-    if (dominantKey === "rain" || dominantKey === "storm") {
-      if (isNum(rain) && rain >= 60) return "Plan B. Then Plan C.";
-      return "Maybe. Maybe not. Probably wet.";
-    }
-    if (dominantKey === "cloudy") return "50/50 weather.";
-    if (dominantKey === "wind") return "Hold onto your hat.";
-    if (dominantKey === "fog") return "Drive like you’ve got sense.";
-    if (dominantKey === "heat") return "Find shade. Drink water.";
-    if (dominantKey === "cold") return "Ja, it’s jacket weather.";
-    return "Just… probably.";
-  };
-
-  // ---------------- background logic
-  function getTimeOfDayLabel() {
-    const h = new Date().getHours();
-    if (h >= 5 && h < 8) return "dawn";
-    if (h >= 8 && h < 17) return "day";
-    if (h >= 17 && h < 20) return "dusk";
-    return "night";
+  function getConditionHeadline(condition) {
+    const headlines = {
+      storm: "Stormy weather",
+      fog: "Foggy conditions",
+      rain: "Rainy day",
+      heat: "Hot day",
+      cloudy: "Cloudy skies",
+      clear: "Clear skies"
+    };
+    return headlines[condition] || "Weather today";
   }
 
-  function setBackground(conditionKey) {
-    const key = conditionKey || "cloudy";
-    const folder = C?.assets?.conditionToFolder?.[key] || C?.assets?.fallbackFolder || "cloudy";
-
-    const tod = getTimeOfDayLabel();
-    const base = C?.assets?.bgBasePath || "/assets/images/bg";
-    const src = `${base}/${folder}/${tod}.jpg`;
-
-    dom.bgImg.src = src;
+  function getConditionExtremeLabel(condition) {
+    const labels = {
+      storm: "Severe weather",
+      fog: "Low visibility",
+      rain: "Wet conditions",
+      heat: "Very hot",
+      cloudy: "Overcast",
+      clear:   "Pleasant"
+    };
+    return labels[condition] || "Moderate";
   }
 
-  // ---------------- screen nav
-  function showScreen(target) {
-    const screens = dom.screens;
-    Object.keys(screens).forEach((k) => {
-      if (!screens[k]) return;
-      screens[k].hidden = k !== target;
-    });
-
-    document.querySelectorAll(".nav-btn").forEach((btn) => {
-      const t = btn.getAttribute("data-target");
-      btn.classList.toggle("is-active", t === target);
-    });
-  }
-
-  // ---------------- renderers
-  function renderHome(data) {
-    // If we got a reverse-geocoded label, show that.
-    if (state.usingGeo && state.geoLabel) {
-      dom.cityLine.textContent = state.geoLabel;
-    } else {
-      const name = data?.location?.name || state.city || "—";
-      const country = data?.location?.country || "";
-      dom.cityLine.textContent = country ? `${name}, ${country}` : name;
+  function setBackgroundFor(todayCondition) {
+    // todayCondition is one of: storm, fog, rain, heat, cloudy, clear
+    // Background folder MUST match this exactly
+    const base = "assets/images/bg";
+    const folder = todayCondition;
+    
+    // Try to pick one of the expected images (1-4)
+    // If any fail to load, fallback within same folder, then to clear
+    const imageNum = 1 + (Math.abs(hashString(todayCondition + Date.now().toString())) % 4);
+    const primaryPath = `${base}/${folder}/${folder}${imageNum}.jpg`;
+    
+    if (bgImg) {
+      bgImg.src = primaryPath;
+      
+      bgImg.onerror = () => {
+        // Try folder1.  jpg as fallback within same folder
+        const sameFolderFallback = `${base}/${folder}/${folder}1.jpg`;
+        if (bgImg.src !== sameFolderFallback) {
+          bgImg.src = sameFolderFallback;
+          bgImg.onerror = () => {
+            // Final fallback:   clear (NOT cloudy)
+            const clearFallback = `${base}/clear/clear1.jpg`;
+            bgImg.src = clearFallback;
+            console.warn(`Failed to load background for ${folder}, falling back to clear`);
+          };
+        }
+      };
     }
 
-    const daily0 = data?.daily?.[0] || {};
-    const now = data?.now || {};
-
-    // ONE dominant key for home
-    const dKey = dominantKeyForHome(now, daily0);
-    const dLabel = labelForKey(dKey).toLowerCase();
-
-    // Headline
-    dom.conditionText.textContent = `This is ${dLabel}.`;
-    dom.bigTemp.textContent = fmtRange(daily0?.lowC, daily0?.highC);
-
-    // Confidence
-    const cKey = data?.consensus?.confidenceKey || "mixed";
-    const cLabel = confidenceLabel(cKey);
-    dom.confidenceTop.textContent = confidenceTopLine(cLabel);
-
-    // Witty line uses dominant key
-    dom.wittyLine.textContent = wittyFor(dKey, daily0);
-
-    // Today's extreme: keep range, but make label consistent with dominant condition
-    dom.todayExtremeTitle.textContent = labelForKey(dKey).toUpperCase();
-    dom.todayExtremeRange.textContent = fmtRange(daily0?.lowC, daily0?.highC);
-
-    const rainPct = isNum(daily0?.rainChance) ? daily0.rainChance : now?.rainChance;
-    dom.rainSummary.textContent = rainCopy(rainPct);
-
-    const uv = daily0?.uv;
-    dom.uvSummary.textContent = isNum(uv) ? `${uvBand(uv)} (${Math.round(uv)})` : "—";
-
-    dom.confidenceTitle.textContent = cLabel;
-    const n = Array.isArray(data?.meta?.sources) ? data.meta.sources.length : 0;
-    dom.confidenceSub.textContent = n ? `Based on ${n} forecasts →` : "—";
-
-    dom.updatedAt.textContent = data?.meta?.updatedAtLabel || "—";
-    if (dom.sourcesList) {
-      dom.sourcesList.textContent = Array.isArray(data?.meta?.sources)
-        ? data.meta.sources.map((s) => s?.name || s).join(" · ")
-        : "—";
-    }
-
-    // Background uses the SAME dominant key
-    setBackground(dKey);
+    // Console log for verification
+    console.log(`todayCondition: ${todayCondition}, chosenBgImagePath: ${primaryPath}`);
   }
 
-  function renderHourly(data) {
-    const items = Array.isArray(data?.hourly) ? data.hourly : [];
-    dom.hourlyList.innerHTML = "";
+  function createParticles(condition, count = 20) {
+    if (! particlesEl) return;
+    particlesEl.innerHTML = '';
+    // Only create particles for certain conditions
+    if (condition === 'rain' || condition === 'storm' || condition === 'cloudy') {
+      for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        particle.style.animationDelay = `${Math.random() * 2}s`;
+        particlesEl.appendChild(particle);
+      }
+    }
+  }
 
-    items.slice(0, 24).forEach((h) => {
-      const row = document.createElement("div");
-      row.className = "list-row";
+  function isWeekendLocal() {
+    const d = new Date();
+    const day = d.getDay();
+    return day === 0 || day === 5 || day === 6;
+  }
 
-      const left = document.createElement("div");
-      left.className = "list-left";
-      left.innerHTML = `
-        <div class="list-time">${h?.timeLocal || "—"}</div>
-        <div class="list-cond">${h?.conditionLabel || "—"}</div>
+  function pickWittyLine(rainPct, maxC, dp) {
+    const dpl = String(dp || "").toLowerCase();
+    const hot = isNum(maxC) && maxC >= 30;
+
+    if (isWeekendLocal() && (isNum(rainPct) ? rainPct < 25 : true) && !  dpl.includes("storm") && ! dpl.includes("rain")) {
+      return "Braai weather, boet!  ";
+    }
+
+    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.   Don't be the tallest thing outside.  ";
+    if (dpl.  includes("fog") || dpl.includes("mist")) return "Visibility vibes:   drive like you've got a gran in the back. ";
+    if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody.  ";
+    if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close. ";
+    if (hot) return "Big heat — pace yourself outside. ";
+    if (dpl.includes("cloud")) return "Soft light, no drama.   Take the win.";
+    return "Good day to get stuff done outside.";
+  }
+
+  function computeAgreementFromNorms(norms) {
+    const temps = norms.map(n => n.nowTemp).filter(isNum);
+    if (temps.length < 2) {
+      return { label: temps. length === 1 ? "DECENT" : "—", explain: temps.length === 1 ? "Only one source responded." : "No sources responded." };
+    }
+
+    const min = Math.min(...temps);
+    const max = Math.max(...  temps);
+    const spread = max - min;
+
+    if (spread <= 1.  5) return { label: "STRONG", explain: "All sources line up closely." };
+    if (spread <= 3. 5) return { label: "DECENT", explain: "Two sources agree, one's a bit off." };
+    return { label: "MIXED", explain: "Sources disagree today; we're showing the most probable middle-ground." };
+  }
+
+  async function fetchProbable(place) {
+    const url = `/api/weather?  lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('API error');
+    return await response.json();
+  }
+
+  function normalizePayload(payload) {
+    if (Array.isArray(payload.  norms)) {
+      const norms = payload. norms;
+      const medNow = median(norms. map(n => n.nowTemp).filter(isNum));
+      const medHigh = median(norms.map(n => n.todayHigh).filter(isNum));
+      const medLow = median(norms.map(n => n.todayLow).filter(isNum));
+      const medRain = median(norms.map(n => n.todayRain).filter(isNum));
+      const medUv = median(norms.map(n => n.todayUv).filter(isNum));
+      const mostDesc = pickMostCommon(norms.  map(n => n.desc).filter(Boolean)) || 'Weather today';
+
+      return {
+        nowTemp:  medNow,
+        todayHigh: medHigh,
+        todayLow:   medLow,
+        rainPct: medRain,
+        uv: medUv,
+        desc: mostDesc,
+        agreement: computeAgreementFromNorms(norms),
+        used: payload.used || [],
+        failed: payload.failed || [],
+        countUsed: norms.length,
+        hourly: payload.hourly || [],
+        daily: payload.daily || [],
+      };
+    }
+    // Fallback for other shape (from summary)
+    return {
+      nowTemp: payload.now? .  temp ??   null,
+      todayHigh:   payload.today?. high ??  null,
+      todayLow:  payload.today? . low ?? null,
+      rainPct: payload.today?.rainPct ?? null,
+      uv: payload.today?.uv ?? null,
+      desc: payload.today?.desc ?? 'Weather today',
+      agreement:   payload.agreement || { label: '—', explain: '' },
+      used: payload.sources?.used || [],
+      failed: payload.  sources?.failed || [],
+      countUsed: payload.sources?.countUsed || 0,
+      hourly: payload.hourly || [],
+      daily: payload.daily || [],
+    };
+  }
+
+  function renderLoading(name) {
+    showLoader(true);
+    safeText(locationEl, name);
+    safeText(headlineEl, 'Loading...');
+    safeText(tempEl, '--°');
+    safeText(descriptionEl, '—');
+    safeText(extremeValueEl, '--');
+    safeText(rainValueEl, '--');
+    safeText(uvValueEl, '--');
+    safeText(confidenceEl, 'PROBABLY • —');
+    safeText(sourcesEl, 'Sources: —');
+  }
+
+  function renderError(msg) {
+    showLoader(false);
+    safeText(headlineEl, 'Error');
+    safeText(descriptionEl, msg);
+  }
+
+  function renderHome(norm) {
+    showLoader(false);
+
+    const hi = norm.todayHigh;
+    const low = norm.todayLow;
+    const rain = norm.rainPct;
+    const uv = norm.uv;
+    const desc = norm.desc;
+
+    // ========== SINGLE SOURCE OF TRUTH:   Compute dominant condition ==========
+    const todayCondition = computeDominantCondition(norm);
+
+    safeText(locationEl, activePlace. name || '—');
+    
+    // Headline driven by todayCondition
+    safeText(headlineEl, getConditionHeadline(todayCondition));
+    
+    safeText(tempEl, `${round0(low)}° - ${round0(hi)}°`);
+    safeText(descriptionEl, pickWittyLine(rain, hi, desc));
+
+    // Extreme label driven by todayCondition
+    safeText(extremeValueEl, getConditionExtremeLabel(todayCondition));
+
+    if (isNum(rain)) {
+      const rp = round0(rain);
+      safeText(rainValueEl, `${rp}% (${rp >= 40 ? "Possible rain" : "Low chance"})`);
+    } else safeText(rainValueEl, '--');
+
+    if (isNum(uv)) safeText(uvValueEl, `${round0(uv)}`);
+    else safeText(uvValueEl, '--');
+
+    const label = (norm.agreement? . label || "—").toUpperCase();
+    safeText(confidenceEl, `PROBABLY .   ${label} AGREEMENT`);
+
+    const usedTxt = norm.used.length ?   `Used: ${norm.used.join(", ")}` : "Used:  —";
+    const failedTxt = norm.failed.length ?  `Failed: ${norm.failed.join(", ")}` : "";
+    safeText(sourcesEl, `${usedTxt}${failedTxt ?   " · " + failedTxt : ""}`);
+
+    // Background driven by todayCondition (no overrides)
+    setBackgroundFor(todayCondition);
+    
+    // Particles driven by todayCondition (no hardcoded "cloudy")
+    createParticles(todayCondition);
+  }
+
+  function renderHourly(hourly) {
+    if (!  hourlyTimeline) return;
+    hourlyTimeline.innerHTML = '';
+    hourly.forEach((h, i) => {
+      const div = document.createElement('div');
+      div.classList.add('hourly-card');
+      const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
+      div.innerHTML = `
+        <div class="hour-time">${hourTime}</div>
+        <div class="hour-temp">${round0(h.temp)}°</div>
+        <div class="hour-rain">${round0(h.rain)}%</div>
       `;
-
-      const mid = document.createElement("div");
-      mid.className = "list-mid";
-      mid.textContent = fmtTemp(h?.tempC);
-
-      const right = document.createElement("div");
-      right.className = "list-right";
-      const rain = isNum(h?.rainChance) ? `${Math.round(h.rainChance)}%` : "—";
-      const wind = isNum(h?.windKph) ? `${Math.round(h.windKph)} km/h` : "—";
-      right.textContent = `${rain} · ${wind}`;
-
-      row.appendChild(left);
-      row.appendChild(mid);
-      row.appendChild(right);
-      dom.hourlyList.appendChild(row);
+      hourlyTimeline.appendChild(div);
     });
   }
 
-  function renderWeek(data) {
-    const items = Array.isArray(data?.daily) ? data.daily : [];
-    dom.weekList.innerHTML = "";
-
-    items.slice(0, 7).forEach((d) => {
-      const row = document.createElement("div");
-      row.className = "list-row";
-
-      const left = document.createElement("div");
-      left.className = "list-left";
-      left.innerHTML = `
-        <div class="list-day">${d?.dayLabel || "—"}</div>
-        <div class="list-cond">${d?.conditionLabel || "—"}</div>
+  function renderWeek(daily) {
+    if (!dailyCards) return;
+    dailyCards.innerHTML = '';
+    daily.forEach((d, i) => {
+      const date = new Date(Date.now() + i * 86400000);
+      const dayName = date.toLocaleDateString('en-US', { weekday:   'short' });
+      const div = document.createElement('div');
+      div.classList.add('daily-card');
+      div.innerHTML = `
+        <div class="day-name">${dayName}</div>
+        <div class="day-temp">${round0(d.low)}° - ${round0(d.high)}°</div>
+        <div class="day-rain">${round0(d.rain)}%</div>
+        <div class="day-humor">${d.desc}</div>
       `;
-
-      const mid = document.createElement("div");
-      mid.className = "list-mid";
-      mid.textContent = `${fmtTemp(d?.highC)} / ${fmtTemp(d?.lowC)}`;
-
-      const right = document.createElement("div");
-      right.className = "list-right";
-      const rain = isNum(d?.rainChance) ? `${Math.round(d.rainChance)}%` : "—";
-      const uv = isNum(d?.uv) ? `UV ${Math.round(d.uv)}` : "UV —";
-      right.textContent = `${rain} · ${uv}`;
-
-      row.appendChild(left);
-      row.appendChild(mid);
-      row.appendChild(right);
-      dom.weekList.appendChild(row);
+      dailyCards.appendChild(div);
     });
   }
 
-  function renderAll(data) {
-    renderHome(data);
-    renderHourly(data);
-    renderWeek(data);
-  }
-
-  function renderGeoBlocked() {
-    dom.cityLine.textContent = "Location unavailable — search for a city";
-    dom.conditionText.textContent = "This is unclear.";
-    dom.bigTemp.textContent = "—";
-    dom.wittyLine.textContent = "Allow location or search.";
-    dom.confidenceTop.textContent = "PROBABLY · LOW CONFIDENCE";
-    dom.confidenceTitle.textContent = "Low";
-    dom.confidenceSub.textContent = "Waiting for a location.";
-    dom.updatedAt.textContent = "—";
-    if (dom.sourcesList) dom.sourcesList.textContent = "—";
-    setBackground("cloudy");
-  }
-
-  // ---------------- data fetch
-  async function loadCity(city) {
-    const q = (city || "").trim();
-    if (!q) return;
-
-    state.city = q;
-    state.usingGeo = false;
-    state.geoLabel = "";
-
+  async function loadAndRender(place) {
+    activePlace = place;
+    renderLoading(place.name || 'My Location');
     try {
-      const url = `${C?.endpoints?.weather || "/api/weather"}?q=${encodeURIComponent(q)}`;
-      const res = await fetch(url);
-      if (!res.ok) {
-        const t = await res.text();
-        throw new Error(`HTTP ${res.status}: ${t}`);
-      }
-      const data = await res.json();
-      state.data = data;
-      renderAll(data);
-    } catch (err) {
-      console.error(err);
-      dom.conditionText.textContent = "This is unclear.";
-      dom.bigTemp.textContent = "—";
-      dom.wittyLine.textContent = "Something’s not pulling through.";
-      dom.confidenceTop.textContent = "PROBABLY · LOW CONFIDENCE";
-      dom.confidenceTitle.textContent = "Low";
-      dom.confidenceSub.textContent = "Check the API / key.";
-      setBackground("cloudy");
+      const payload = await fetchProbable(place);
+      lastPayload = payload;
+      const norm = normalizePayload(payload);
+      renderHome(norm);
+      renderHourly(norm.hourly);
+      renderWeek(norm.daily);
+    } catch (e) {
+      console.error("Load failed:", e);
+      renderError("Couldn't fetch weather right now.");
     }
   }
 
-  async function reverseGeocodeLabel(lat, lon) {
-    try {
-      const r = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
-      );
-      if (!r.ok) return "";
-      const j = await r.json();
-      const a = j.address || {};
-      const city = a.town || a.city || a.village || a.suburb || a.hamlet || "";
-      const country = a.country || "";
-      if (city && country) return `${city}, ${country}`;
-      if (city) return city;
-      return "";
-    } catch {
-      return "";
-    }
+  // Places:   recents/favorites
+  function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
+  function loadRecents() { return loadJSON(STORAGE.recents, []); }
+
+  function saveFavorites(list) { saveJSON(STORAGE.favorites, list); }
+  function saveRecents(list) { saveJSON(STORAGE.recents, list); }
+
+  function addRecent(place) {
+    let list = loadRecents().filter(p => !  samePlace(p, place));
+    list.unshift(place);
+    saveRecents(list.  slice(0, 10));
+    renderRecents();
   }
 
-  async function loadCoords(lat, lon) {
-    state.usingGeo = true;
-    state.city = "";
-    state.geoLabel = "";
-
-    try {
-      const url = `${C?.endpoints?.weather || "/api/weather"}?lat=${encodeURIComponent(
-        lat
-      )}&lon=${encodeURIComponent(lon)}`;
-      const res = await fetch(url);
-      if (!res.ok) {
-        const t = await res.text();
-        throw new Error(`HTTP ${res.status}: ${t}`);
-      }
-      const data = await res.json();
-      state.data = data;
-      renderAll(data);
-
-      // display-only label (does not affect weather)
-      const label = await reverseGeocodeLabel(lat, lon);
-      if (label) {
-        state.geoLabel = label;
-        // update header without rerendering everything
-        dom.cityLine.textContent = label;
-      }
-    } catch (err) {
-      console.error(err);
-      renderGeoBlocked();
-    }
+  function addFavorite(place) {
+    let list = loadFavorites();
+    if (list.some(p => samePlace(p, place))) return;
+    list.unshift(place);
+    saveFavorites(list.  slice(0, 5));
+    renderFavorites();
   }
 
-  // ---------------- events
-  document.querySelectorAll(".nav-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const t = btn.getAttribute("data-target");
-      if (t) showScreen(t);
+  function renderRecents() {
+    if (!recentList) return;
+    const list = loadRecents();
+    recentList.innerHTML = list.map(p => `
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
+    `).join('') || '<li>No recent searches yet.  </li>';
+
+    recentList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', () => {
+        const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
+        addRecent(p);
+        showScreen(screenHome);
+        loadAndRender(p);
+      });
     });
+  }
+
+  function renderFavorites() {
+    if (!favoritesList) return;
+    const list = loadFavorites();
+    favoritesList.innerHTML = list.map(p => `
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p. name)}">${escapeHtml(p.name)}</li>
+    `).join('') || '<li>No saved places yet. </li>';
+
+    favoritesList. querySelectorAll('li').forEach(li => {
+      li. addEventListener('click', () => {
+        const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
+        showScreen(screenHome);
+        loadAndRender(p);
+      });
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s ??   "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+  }
+
+  // Search
+  async function runSearch(q) {
+    if (! q || q.trim().length < 2) return;
+    const url = `https://nominatim.openstreetmap.  org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
+    try {
+      const data = await (await fetch(url)).json();
+      // Render results
+      console.log(data); // TODO: Add search results rendering to #search-screen
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  // Buttons / Nav
+  navHome.  addEventListener('click', () => {
+    showScreen(screenHome);
+    if (homePlace) loadAndRender(homePlace);
+  });
+  navHourly. addEventListener('click', () => showScreen(screenHourly));
+  navWeek.addEventListener('click', () => showScreen(screenWeek));
+  navSearch.addEventListener('click', () => {
+    showScreen(screenSearch);
+    renderRecents();
+    renderFavorites();
+  });
+  navSettings.addEventListener('click', () => showScreen(screenSettings));
+
+  saveCurrent. addEventListener('click', () => {
+    if (activePlace) addFavorite(activePlace);
   });
 
-  if (dom.searchBtn && dom.searchInput) {
-    dom.searchBtn.addEventListener("click", () => {
-      const v = (dom.searchInput.value || "").trim();
-      if (!v) return;
-      loadCity(v);
-      showScreen("home");
-    });
+  // Init
+  renderRecents();
+  renderFavorites();
 
-    dom.searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") dom.searchBtn.click();
-    });
-  }
-
-  // ---------------- boot
-  showScreen("home");
-  setBackground("cloudy");
-
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-        loadCoords(lat, lon);
-      },
-      () => {
-        // No fallback city: user must search
-        renderGeoBlocked();
-      },
-      { timeout: 8000, maximumAge: 60000, enableHighAccuracy: false }
-    );
+  homePlace = loadJSON(STORAGE.home, null);
+  if (homePlace) {
+    showScreen(screenHome);
+    loadAndRender(homePlace);
   } else {
-    renderGeoBlocked();
+    // Geolocation
+    showScreen(screenHome);
+    renderLoading("My Location");
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.  getCurrentPosition(
+        (pos) => {
+          const lat = round1(pos.coords.latitude);
+          const lon = round1(pos.coords.longitude);
+          homePlace = { name: "My Location", lat, lon };
+          saveJSON(STORAGE.home, homePlace);
+          loadAndRender(homePlace);
+        },
+        () => {
+          // fallback:   Cape Town
+          homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+          saveJSON(STORAGE.home, homePlace);
+          loadAndRender(homePlace);
+        },
+        { enableHighAccuracy:   false, timeout:  8000, maximumAge: 60000 }
+      );
+    } else {
+      homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+      saveJSON(STORAGE.home, homePlace);
+      loadAndRender(homePlace);
+    }
   }
-})();
+
+  function median(values) {
+    if (values.length === 0) return null;
+    values.sort((a, b) => a - b);
+    const half = Math.floor(values.length / 2);
+    return values.length % 2 ?   values[half] : (values[half - 1] + values[half]) / 2.0;
+  }
+
+  function pickMostCommon(arr) {
+    if (arr.length === 0) return null;
+    const count = arr.reduce((acc, v) => ({ ...acc, [v]:   (acc[v] || 0) + 1 }), {});
+    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
+  }
+});
