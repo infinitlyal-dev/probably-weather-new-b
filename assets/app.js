@@ -37,13 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loader = $('#loader');
 
-  // Fixed:  STORAGE is now an object instead of a string
+  // FIXED: Changed from string to object
   const STORAGE = {
     favorites: "pw_favorites",
     recents: "pw_recents",
     home: "pw_home"
   };
-
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
   let activePlace = null;
@@ -56,27 +55,26 @@ document.addEventListener("DOMContentLoaded", () => {
   function round0(n) { return isNum(n) ? Math.round(n) : null; }
   function round1(n) { return isNum(n) ? Math.round(n * 10) / 10 : null; }
 
-  // Moved median and pickMostCommon up before they're used
+  // FIXED:  Moved median and pickMostCommon BEFORE they are used
   function median(values) {
     if (values.length === 0) return null;
     const sorted = [... values].sort((a, b) => a - b);
-    const half = Math.floor(sorted.length / 2);
+    const half = Math. floor(sorted.length / 2);
     return sorted.length % 2 ?  sorted[half] :  (sorted[half - 1] + sorted[half]) / 2.0;
   }
 
   function pickMostCommon(arr) {
-    if (arr.length === 0) return null;
-    const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
-    return Object.keys(count).reduce((a, b) => count[a] > count[b] ?  a : b);
+    if (arr. length === 0) return null;
+    const count = arr. reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
+    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
   }
 
   function loadJSON(key, fallback) {
     try {
       const raw = localStorage.getItem(key);
-      return raw ? JSON. parse(raw) : fallback;
+      return raw ? JSON.parse(raw) : fallback;
     } catch { return fallback; }
   }
-
   function saveJSON(key, val) {
     try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
   }
@@ -102,94 +100,38 @@ document.addEventListener("DOMContentLoaded", () => {
     return h | 0;
   }
 
-  // ========== SINGLE SOURCE OF TRUTH FOR CONDITION ==========
-
-  function computeDominantCondition(norm) {
-    const desc = String(norm.desc || "").toLowerCase();
-    const rain = norm.rainPct;
-    const hi = norm.todayHigh;
-
-    if (desc. includes("storm") || desc.includes("thunder") || desc.includes("lightning")) {
-      return "storm";
-    }
-    if (desc.includes("fog") || desc.includes("mist") || desc.includes("haze")) {
-      return "fog";
-    }
-    if (isNum(rain) && rain >= 40) {
-      return "rain";
-    }
-    if (desc.includes("overcast") || desc.includes("heavy cloud") || desc.includes("mostly cloudy")) {
-      return "cloudy";
-    }
-    if (isNum(hi) && hi >= 32) {
-      return "heat";
-    }
-    return "clear";
-  }
-
-  function getConditionHeadline(condition) {
-    const headlines = {
-      storm: "Stormy weather",
-      fog:  "Foggy conditions",
-      rain:  "Rainy day",
-      heat: "Hot day",
-      cloudy: "Cloudy skies",
-      clear: "Clear skies"
-    };
-    return headlines[condition] || "Weather today";
-  }
-
-  function getConditionExtremeLabel(condition) {
-    const labels = {
-      storm: "Severe weather",
-      fog:  "Low visibility",
-      rain:  "Wet conditions",
-      heat:  "Very hot",
-      cloudy: "Overcast",
-      clear: "Pleasant"
-    };
-    return labels[condition] || "Moderate";
-  }
-
-  function setBackgroundFor(todayCondition) {
+  function setBackgroundFor(dp, rainPct, maxC) {
     const base = "assets/images/bg";
-    const folder = todayCondition;
-    const imageNum = 1 + (Math.abs(hashString(todayCondition + Date.now().toString())) % 4);
-    const primaryPath = `${base}/${folder}/${folder}${imageNum}.jpg`;
+    let folder = "clear";
 
-    if (bgImg) {
-      bgImg.src = primaryPath;
-      bgImg.onerror = () => {
-        const sameFolderFallback = `${base}/${folder}/${folder}1.jpg`;
-        if (bgImg.src !== sameFolderFallback) {
-          bgImg.src = sameFolderFallback;
-          bgImg.onerror = () => {
-            const clearFallback = `${base}/clear/clear1.jpg`;
-            bgImg.src = clearFallback;
-            console.warn(`Failed to load background for ${folder}, falling back to clear`);
-          };
-        }
-      };
-    }
-    console.log(`todayCondition: ${todayCondition}, chosenBgImagePath: ${primaryPath}`);
+    const dpl = String(dp || "").toLowerCase();
+
+    if (dpl.includes("fog") || dpl.includes("mist") || dpl.includes("haze")) folder = "fog";
+    else if (dpl. includes("storm") || dpl.includes("thunder") || dpl.includes("lightning")) folder = "storm";
+    else if (dpl.includes("cloud") || dpl.includes("overcast")) folder = "cloudy";
+    else if (isNum(rainPct) && rainPct >= 60) folder = "rain";
+    else if (isNum(maxC) && maxC >= 32) folder = "heat";
+    else folder = "clear";
+
+    const n = 1 + (Math.abs(hashString((dp || "") + String(maxC || ""))) % 4);
+    const path = `${base}/${folder}/${folder}${n}.jpg`;
+
+    if (bgImg) bgImg.src = path;
   }
 
-  function createParticles(condition, count = 20) {
+  function createParticles(folder, count = 20) {
     if (! particlesEl) return;
     particlesEl.innerHTML = '';
-    if (condition === 'rain' || condition === 'storm' || condition === 'cloudy') {
-      for (let i = 0; i < count; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        particle.style.animationDelay = `${Math.random() * 2}s`;
-        particlesEl.appendChild(particle);
-      }
+    for (let i = 0; i < count; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      particle.style.animationDelay = `${Math.random() * 2}s`;
+      particlesEl.appendChild(particle);
     }
   }
 
-  // Friday included intentionally for South African braai context
   function isWeekendLocal() {
     const d = new Date();
     const day = d.getDay();
@@ -204,8 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Braai weather, boet! ";
     }
 
-    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside. ";
-    if (dpl.includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back.";
+    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside.";
+    if (dpl.includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back. ";
     if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody. ";
     if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close. ";
     if (hot) return "Big heat — pace yourself outside.";
@@ -214,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function computeAgreementFromNorms(norms) {
-    const temps = norms.map(n => n. nowTemp).filter(isNum);
+    const temps = norms.map(n => n.nowTemp).filter(isNum);
     if (temps.length < 2) {
       return { label: temps. length === 1 ? "DECENT" : "—", explain: temps.length === 1 ? "Only one source responded." : "No sources responded." };
     }
@@ -229,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function fetchProbable(place) {
-    const url = `/api/weather? lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place. lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const url = `/api/weather? lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const response = await fetch(url);
     if (!response.ok) throw new Error('API error');
     return await response.json();
@@ -237,11 +179,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function normalizePayload(payload) {
     if (Array.isArray(payload. norms)) {
-      const norms = payload.norms;
+      const norms = payload. norms;
       const medNow = median(norms. map(n => n.nowTemp).filter(isNum));
       const medHigh = median(norms.map(n => n.todayHigh).filter(isNum));
-      const medLow = median(norms.map(n => n.todayLow).filter(isNum));
-      const medRain = median(norms. map(n => n.todayRain).filter(isNum));
+      const medLow = median(norms.map(n => n. todayLow).filter(isNum));
+      const medRain = median(norms.map(n => n.todayRain).filter(isNum));
       const medUv = median(norms.map(n => n.todayUv).filter(isNum));
       const mostDesc = pickMostCommon(norms. map(n => n.desc).filter(Boolean)) || 'Weather today';
 
@@ -260,18 +202,19 @@ document.addEventListener("DOMContentLoaded", () => {
         daily: payload.daily || [],
       };
     }
+    // Fallback for other shape (from summary)
     return {
       nowTemp:  payload.now?. temp ??  null,
       todayHigh: payload.today?.high ?? null,
       todayLow: payload.today?.low ?? null,
       rainPct: payload.today?. rainPct ?? null,
-      uv: payload.today?. uv ?? null,
-      desc: payload.today?.desc ??  'Weather today',
-      agreement: payload.agreement || { label: '—', explain: '' },
+      uv:  payload.today?.uv ?? null,
+      desc: payload. today?.desc ?? 'Weather today',
+      agreement: payload. agreement || { label: '—', explain: '' },
       used:  payload.sources?.used || [],
-      failed: payload. sources?.failed || [],
-      countUsed: payload.sources?. countUsed || 0,
-      hourly: payload.hourly || [],
+      failed: payload.sources?. failed || [],
+      countUsed: payload.sources?.countUsed || 0,
+      hourly:  payload.hourly || [],
       daily: payload.daily || [],
     };
   }
@@ -279,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderLoading(name) {
     showLoader(true);
     safeText(locationEl, name);
-    safeText(headlineEl, 'Loading...');
+    safeText(headlineEl, 'Loading.. .');
     safeText(tempEl, '--°');
     safeText(descriptionEl, '—');
     safeText(extremeValueEl, '--');
@@ -295,29 +238,21 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(descriptionEl, msg);
   }
 
-  function updateConfidenceBar(agreement) {
-    if (! confidenceBarEl) return;
-    const levels = { 'STRONG': 100, 'DECENT': 66, 'MIXED': 33, '—':  0 };
-    const level = levels[agreement?. label?.toUpperCase()] || 0;
-    confidenceBarEl.style.width = `${level}%`;
-  }
-
   function renderHome(norm) {
     showLoader(false);
 
     const hi = norm.todayHigh;
-    const low = norm. todayLow;
-    const rain = norm.rainPct;
+    const low = norm.todayLow;
+    const rain = norm. rainPct;
     const uv = norm.uv;
     const desc = norm.desc;
 
-    const todayCondition = computeDominantCondition(norm);
-
-    safeText(locationEl, activePlace. name || '—');
-    safeText(headlineEl, getConditionHeadline(todayCondition));
+    safeText(locationEl, activePlace.name || '—');
+    safeText(headlineEl, desc);
     safeText(tempEl, `${round0(low)}° - ${round0(hi)}°`);
     safeText(descriptionEl, pickWittyLine(rain, hi, desc));
-    safeText(extremeValueEl, getConditionExtremeLabel(todayCondition));
+
+    safeText(extremeValueEl, isNum(hi) && hi > 35 ? 'Scorching hot' : isNum(low) && low < 0 ? 'Freezing cold' :  'Mild');
 
     if (isNum(rain)) {
       const rp = round0(rain);
@@ -329,14 +264,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const label = (norm.agreement?. label || "—").toUpperCase();
     safeText(confidenceEl, `PROBABLY • ${label} AGREEMENT`);
-    updateConfidenceBar(norm.agreement);
 
     const usedTxt = norm.used. length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
     safeText(sourcesEl, `${usedTxt}${failedTxt ?  " · " + failedTxt : ""}`);
 
-    setBackgroundFor(todayCondition);
-    createParticles(todayCondition);
+    setBackgroundFor(desc, rain, hi);
+    createParticles('cloudy');
   }
 
   function renderHourly(hourly) {
@@ -360,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dailyCards.innerHTML = '';
     daily. forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
-      const dayName = date.toLocaleDateString('en-US', { weekday:  'short' });
+      const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
@@ -389,8 +323,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Places:  recents/favorites
   function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
-  function loadRecents() { return loadJSON(STORAGE. recents, []); }
+  function loadRecents() { return loadJSON(STORAGE.recents, []); }
 
   function saveFavorites(list) { saveJSON(STORAGE. favorites, list); }
   function saveRecents(list) { saveJSON(STORAGE.recents, list); }
@@ -434,8 +369,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderFavorites() {
     if (!favoritesList) return;
     const list = loadFavorites();
-    favoritesList.innerHTML = list. map(p => `
-      <li data-lat="${p. lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
+    favoritesList. innerHTML = list.map(p => `
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p. name)}</li>
     `).join('') || '<li>No saved places yet.</li>';
 
     favoritesList.querySelectorAll('li[data-lat]').forEach(li => {
@@ -447,57 +382,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Fixed: Search now displays results in the UI
+  // Search
   async function runSearch(q) {
     if (!q || q.trim().length < 2) return;
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
     try {
       const data = await (await fetch(url)).json();
-      renderSearchResults(data);
+      // Render results
+      console.log(data); // TODO: Add search results rendering to #search-screen
     } catch (e) {
-      console.error(e);
-      renderSearchResults([]);
+      console. error(e);
     }
   }
 
-  function renderSearchResults(results) {
-    if (!recentList) return;
-    if (results.length === 0) {
-      recentList. innerHTML = '<li>No results found.</li>';
-      return;
-    }
-    recentList.innerHTML = results.map(r => `
-      <li data-lat="${r.lat}" data-lon="${r. lon}" data-name="${escapeHtml(r.display_name)}">${escapeHtml(r.display_name)}</li>
-    `).join('');
-
-    recentList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', () => {
-        const p = { name: li.dataset.name, lat: parseFloat(li. dataset.lat), lon: parseFloat(li.dataset.lon) };
-        addRecent(p);
-        showScreen(screenHome);
-        loadAndRender(p);
-      });
-    });
-  }
-
-  // Fixed: Added event listener for search input
-  if (searchInput) {
-    let searchTimeout;
-    searchInput.addEventListener('input', (e) => {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        runSearch(e.target.value);
-      }, 500);
-    });
-
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        clearTimeout(searchTimeout);
-        runSearch(e.target.value);
-      }
-    });
-  }
-
+  // Buttons / Nav
   navHome.addEventListener('click', () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
@@ -508,29 +406,14 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenSearch);
     renderRecents();
     renderFavorites();
-    if (searchInput) searchInput.focus();
   });
   navSettings.addEventListener('click', () => showScreen(screenSettings));
 
-  saveCurrent. addEventListener('click', () => {
+  saveCurrent.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
   });
 
-  // Fixed: Added functionality for manageFavorites button
-  if (manageFavorites) {
-    manageFavorites.addEventListener('click', () => {
-      const list = loadFavorites();
-      if (list.length === 0) {
-        alert('No favorites to manage.');
-        return;
-      }
-      if (confirm('Clear all favorites?')) {
-        saveFavorites([]);
-        renderFavorites();
-      }
-    });
-  }
-
+  // Init
   renderRecents();
   renderFavorites();
 
@@ -539,27 +422,29 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     loadAndRender(homePlace);
   } else {
+    // Geolocation
     showScreen(screenHome);
     renderLoading("My Location");
 
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
+      navigator.geolocation. getCurrentPosition(
         (pos) => {
-          const lat = round1(pos.coords.latitude);
-          const lon = round1(pos.coords. longitude);
-          homePlace = { name:  "My Location", lat, lon };
+          const lat = round1(pos. coords.latitude);
+          const lon = round1(pos.coords.longitude);
+          homePlace = { name: "My Location", lat, lon };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
         },
         () => {
-          homePlace = { name:  "Cape Town", lat: -33.9249, lon: 18.4241 };
-          saveJSON(STORAGE. home, homePlace);
+          // fallback: Cape Town
+          homePlace = { name: "Cape Town", lat:  -33.9249, lon: 18.4241 };
+          saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
         },
         { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
       );
     } else {
-      homePlace = { name:  "Cape Town", lat: -33.9249, lon: 18.4241 };
+      homePlace = { name: "Cape Town", lat:  -33.9249, lon: 18.4241 };
       saveJSON(STORAGE.home, homePlace);
       loadAndRender(homePlace);
     }
