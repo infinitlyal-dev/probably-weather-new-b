@@ -1,34 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
 
-  const locationEl = $('#location');
-  const headlineEl = $('#headline');
-  const tempEl = $('#temp');
-  const descriptionEl = $('#description');
-  const extremeValueEl = $('#extremeValue');
-  const rainValueEl = $('#rainValue');
-  const uvValueEl = $('#uvValue');
-  const confidenceEl = $('#confidence');
-  const sourcesEl = $('#sources');
+  const locationEl = $('#cityLine');
+  const headlineEl = $('#conditionText');
+  const tempEl = $('#bigTemp');
+  const descriptionEl = $('#wittyLine');
+  const extremeValueEl = $('#todayExtremeTitle');
+  const rainValueEl = $('#rainSummary');
+  const uvValueEl = $('#uvSummary');
+  const confidenceEl = $('#confidenceTop');
+  const sourcesEl = $('#sourcesList');
   const bgImg = $('#bgImg');
   const saveCurrent = $('#saveCurrent');
   const confidenceBarEl = $('#confidenceBar');
   const particlesEl = $('#particles');
 
-  const navHome = $('#navHome');
-  const navHourly = $('#navHourly');
-  const navWeek = $('#navWeek');
-  const navSearch = $('#navSearch');
-  const navSettings = $('#navSettings');
+  const navHome = $('.nav-btn[data-target="home"]');
+  const navHourly = $('.nav-btn[data-target="hourly"]');
+  const navWeek = $('.nav-btn[data-target="week"]');
+  const navSearch = $('.nav-btn[data-target="search"]');
+  const navSettings = $('.nav-btn[data-target="settings"]');
 
-  const screenHome = $('#home-screen');
-  const screenHourly = $('#hourly-screen');
-  const screenWeek = $('#week-screen');
-  const screenSearch = $('#search-screen');
-  const screenSettings = $('#settings-screen');
+  const screenHome = $('#screen-home');
+  const screenHourly = $('#screen-hourly');
+  const screenWeek = $('#screen-week');
+  const screenSearch = $('#screen-search');
+  const screenSettings = $('#screen-settings');
 
-  const hourlyTimeline = $('#hourly-timeline');
-  const dailyCards = $('#daily-cards');
+  const hourlyTimeline = $('#hourlyList');
+  const dailyCards = $('#weekList');
 
   const searchInput = $('#searchInput');
   const favoritesList = $('#favoritesList');
@@ -81,12 +81,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showScreen(which) {
-    SCREENS.forEach(s => s.classList. add("hidden"));
-    which.classList.remove("hidden");
+    SCREENS.forEach(s => {
+      if (s) {
+        s.classList.add("hidden");
+        s.setAttribute('hidden', '');
+      }
+    });
+    if (which) {
+      which.classList.remove("hidden");
+      which.removeAttribute('hidden');
+    }
   }
 
   function showLoader(show) {
-    loader.classList[show ? 'remove' : 'add']('hidden');
+    if (loader) loader.classList[show ? 'remove' : 'add']('hidden');
   }
 
   function hashString(s) {
@@ -477,9 +485,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   navSettings.addEventListener('click', () => showScreen(screenSettings));
 
-  saveCurrent.addEventListener('click', () => {
-    if (activePlace) addFavorite(activePlace);
-  });
+  if (saveCurrent) {
+    saveCurrent.addEventListener('click', () => {
+      if (activePlace) addFavorite(activePlace);
+    });
+  }
 
   // Init
   renderRecents();
