@@ -86,12 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeDominantCondition(norm) {
     // Returns one of: "storm", "fog", "rain", "heat", "cloudy", "clear"
     // This is the ONLY place that decides today's condition
-    const desc = String(norm.desc || "").toLowerCase();
+    const desc = String(norm. desc || "").toLowerCase();
     const rain = norm.rainPct;
     const hi = norm.todayHigh;
     
     // Priority order (most severe first):
-    if (desc.includes("storm") || desc.includes("thunder") || desc.includes("lightning")) {
+    if (desc. includes("storm") || desc.includes("thunder") || desc.includes("lightning")) {
       return "storm";
     }
     if (desc.includes("fog") || desc.includes("mist") || desc.includes("haze")) {
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside. ";
-    if (dpl.includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back.";
+    if (dpl. includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back. ";
     if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody. ";
     if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close. ";
     if (hot) return "Big heat — pace yourself outside.";
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function fetchProbable(place) {
-    const url = `/api/weather? lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const response = await fetch(url);
     if (!response.ok) throw new Error('API error');
     return await response.json();
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const medLow = median(norms.map(n => n.todayLow).filter(isNum));
       const medRain = median(norms.map(n => n.todayRain).filter(isNum));
       const medUv = median(norms.map(n => n.todayUv).filter(isNum));
-      const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
+      const mostDesc = pickMostCommon(norms. map(n => n.desc).filter(Boolean)) || 'Weather today';
 
       return {
         nowTemp: medNow,
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: payload.today?.desc ?? 'Weather today',
       agreement:  payload.agreement || { label: '—', explain: '' },
       used: payload.sources?.used || [],
-      failed: payload.sources?.failed || [],
+      failed: payload. sources?.failed || [],
       countUsed: payload.sources?.countUsed || 0,
       hourly: payload.hourly || [],
       daily: payload.daily || [],
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const label = (norm.agreement?. label || "—").toUpperCase();
     safeText(confidenceEl, `PROBABLY .  ${label} AGREEMENT`);
 
-    const usedTxt = norm.used. length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
+    const usedTxt = norm.used.length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
     safeText(sourcesEl, `${usedTxt}${failedTxt ?  " · " + failedTxt : ""}`);
 
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Places:  recents/favorites
-  function loadFavorites() { return loadJSON(STORAGE. favorites, []); }
+  function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
   function loadRecents() { return loadJSON(STORAGE.recents, []); }
 
   function saveFavorites(list) { saveJSON(STORAGE.favorites, list); }
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!favoritesList) return;
     const list = loadFavorites();
     favoritesList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p. name)}">${escapeHtml(p.name)}</li>
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
     `).join('') || '<li>No saved places yet.</li>';
 
     favoritesList.querySelectorAll('li').forEach(li => {
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   navSettings.addEventListener('click', () => showScreen(screenSettings));
 
-  saveCurrent. addEventListener('click', () => {
+  saveCurrent.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
   });
 
@@ -515,7 +515,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (values.length === 0) return null;
     values.sort((a, b) => a - b);
     const half = Math.floor(values.length / 2);
-    return values. length % 2 ?  values[half] : (values[half - 1] + values[half]) / 2.0;
+    return values.length % 2 ?  values[half] : (values[half - 1] + values[half]) / 2.0;
   }
 
   function pickMostCommon(arr) {
