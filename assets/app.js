@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const manageFavorites = $('#manageFavorites');
 
   const loader = $('#loader');
+  const toast = $('#toast');
 
   // ========== CONSTANTS ==========
   // FIXED: STORAGE is now an object, not a string
@@ -107,6 +108,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showLoader(show) {
     loader.classList[show ? 'remove' : 'add']('hidden');
+  }
+  
+  function showToast(message, duration = 3000) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, duration);
   }
 
   function hashString(s) {
@@ -519,10 +529,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function addFavorite(place) {
     let list = loadFavorites();
-    if (list.some(p => samePlace(p, place))) return;
+    if (list.some(p => samePlace(p, place))) {
+      showToast('This place is already saved!');
+      return;
+    }
+    if (list.length >= 5) {
+      showToast('You can only save up to 5 places. Remove one first.');
+      return;
+    }
     list.unshift(place);
     saveFavorites(list.slice(0, 5));
     renderFavorites();
+    showToast(`Saved ${place.name}!`);
   }
 
   function renderRecents() {
@@ -546,29 +564,120 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!favoritesList) return;
     const list = loadFavorites();
     favoritesList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
+      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">
+        <span class="fav-name">${escapeHtml(p.name)}</span>
+        <button class="remove-fav" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>
+      </li>
     `).join('') || '<li>No saved places yet.</li>';
 
-    favoritesList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', () => {
+    favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
+      span.addEventListener('click', () => {
+        const li = span.closest('li');
         const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
         showScreen(screenHome);
         loadAndRender(p);
+      });
+    });
+    
+    favoritesList.querySelectorAll('.remove-fav').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const lat = parseFloat(btn.dataset.lat);
+        const lon = parseFloat(btn.dataset.lon);
+        let list = loadFavorites();
+        list = list.filter(p => !(Number(p.lat).toFixed(4) === Number(lat).toFixed(4) && 
+                                   Number(p.lon).toFixed(4) === Number(lon).toFixed(4)));
+        saveFavorites(list);
+        renderFavorites();
+        showToast('Place removed from favorites');
       });
     });
   }
 
   // ========== SEARCH ==========
   
+  let searchTimeout = null;
+  let searchResults = [];
+  
   async function runSearch(q) {
-    if (!q || q.trim().length < 2) return;
+    if (!q || q.trim().length < 2) {
+      // Clear search results
+      const resultsContainer = document.getElementById('searchResults');
+      if (resultsContainer) resultsContainer.innerHTML = '';
+      return;
+    }
+    
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
     try {
       const data = await (await fetch(url)).json();
-      console.log(data); // TODO: Add search results rendering
+      searchResults = data;
+      renderSearchResults(data);
     } catch (e) {
-      console.error(e);
+      console.error('Search failed:', e);
     }
+  }
+  
+  function renderSearchResults(results) {
+    // Find or create search results container
+    let resultsContainer = document.getElementById('searchResults');
+    if (!resultsContainer) {
+      resultsContainer = document.createElement('div');
+      resultsContainer.id = 'searchResults';
+      resultsContainer.className = 'section';
+      const searchTitle = document.createElement('h3');
+      searchTitle.textContent = 'Search results';
+      resultsContainer.appendChild(searchTitle);
+      const resultsList = document.createElement('ul');
+      resultsList.id = 'searchResultsList';
+      resultsContainer.appendChild(resultsList);
+      
+      // Insert after search input
+      const searchScreen = document.getElementById('search-screen');
+      const cancelBtn = document.getElementById('searchCancel');
+      if (searchScreen && cancelBtn) {
+        cancelBtn.after(resultsContainer);
+      }
+    }
+    
+    const resultsList = document.getElementById('searchResultsList');
+    if (!resultsList) return;
+    
+    if (results.length === 0) {
+      resultsList.innerHTML = '<li>No results found.</li>';
+      return;
+    }
+    
+    resultsList.innerHTML = results.map(r => {
+      const displayName = escapeHtml(r.display_name);
+      return `<li data-lat="${r.lat}" data-lon="${r.lon}" data-name="${escapeHtml(r.display_name)}">${displayName}</li>`;
+    }).join('');
+    
+    // Add click handlers
+    resultsList.querySelectorAll('li[data-lat]').forEach(li => {
+      li.addEventListener('click', () => {
+        const place = { 
+          name: li.dataset.name, 
+          lat: parseFloat(li.dataset.lat), 
+          lon: parseFloat(li.dataset.lon) 
+        };
+        addRecent(place);
+        showScreen(screenHome);
+        loadAndRender(place);
+        // Clear search
+        if (searchInput) searchInput.value = '';
+        resultsList.innerHTML = '';
+      });
+    });
+  }
+  
+  // Add search input handler with debouncing
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        runSearch(e.target.value);
+      }, 300); // 300ms debounce
+    });
   }
 
   // ========== NAVIGATION ==========
@@ -599,15 +708,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
   if (manageFavorites) {
     manageFavorites.addEventListener('click', () => {
-      // Toggle edit mode for favorites
-      const isList = favoritesList?.querySelectorAll('li[data-lat]');
-      if (isList && isList.length > 0) {
-        // Show confirmation for clearing favorites
-        if (confirm('Clear all saved places?')) {
-          saveFavorites([]);
-          renderFavorites();
-        }
+      const list = loadFavorites();
+      if (list.length === 0) {
+        showToast('No saved places to manage');
+        return;
       }
+      // Show help message
+      showToast('Click the ✕ button next to a place to remove it', 4000);
     });
   }
 

@@ -427,11 +427,40 @@ select option {
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .section ul li:hover {
   background: rgba(255,255,255,0.2);
   transform: translateX(5px);
+}
+
+.fav-name {
+  flex: 1;
+  cursor: pointer;
+}
+
+.remove-fav {
+  background: rgba(255,0,0,0.3);
+  border: 1px solid rgba(255,0,0,0.5);
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.remove-fav:hover {
+  background: rgba(255,0,0,0.6);
+  transform: scale(1.1);
 }
 
 .fav-limit {
