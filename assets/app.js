@@ -57,6 +57,14 @@
     geoLabel: "",
   };
 
+  // ---------------- thresholds (your rules)
+  const THRESH = {
+    WIND_KPH: 25,   // above 25 km/h => windy dominates
+    RAIN_PCT: 50,   // above 50% => rain dominates
+    HOT_C: 32,      // >= 32C => heat dominates
+    COLD_C: 16,     // <= 16C => cold dominates
+  };
+
   // ---------------- formatting helpers
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
 
@@ -94,21 +102,101 @@
 
   const confidenceTopLine = (label) => `PROBABLY · ${String(label).toUpperCase()} CONFIDENCE`;
 
-  const wittyFor = (conditionKey, daily0) => {
+  // ---------------- condition label mapping (for headline + cards)
+  const labelForKey = (key) => {
+    // keys: clear, cloudy, rain, storm, fog, heat, cold, wind
+    switch (key) {
+      case "wind":
+        return "Windy";
+      case "heat":
+        return "Hot";
+      case "cold":
+        return "Cold";
+      case "fog":
+        return "Foggy";
+      case "cloudy":
+        return "Cloudy";
+      case "rain":
+        return "Rain";
+      case "storm":
+        return "Storm";
+      case "clear":
+      default:
+        return "Clear";
+    }
+  };
+
+  // ---------------- dominant condition logic (ONE truth used everywhere on Home)
+  function dominantKeyForHome(now, daily0) {
+    const tempNow = now?.tempC;
+    const high = daily0?.highC;
+    const low = daily0?.lowC;
+
+    const windNow = now?.windKph;
+    const rainNow = now?.rainChance;
+    const rainDay = daily0?.rainChance;
+
+    const baseKey =
+      (now?.conditionKey || daily0?.conditionKey || "clear")
+        .toString()
+        .toLowerCase();
+
+    const rainPct = isNum(rainDay) ? rainDay : rainNow;
+    const windKph = windNow;
+
+    // 1) Storm overrides rain if the provider explicitly says storm/thunder
+    if (baseKey.includes("storm") || baseKey.includes("thunder") || baseKey.includes("tstorm")) {
+      return "storm";
+    }
+
+    // 2) Rain dominates if likely
+    if (isNum(rainPct) && rainPct >= THRESH.RAIN_PCT) {
+      return "rain";
+    }
+
+    // 3) Wind dominates if strong
+    if (isNum(windKph) && windKph >= THRESH.WIND_KPH) {
+      return "wind";
+    }
+
+    // 4) Heat / Cold by temp (use daily highs/lows as backup)
+    const hot = (isNum(tempNow) && tempNow >= THRESH.HOT_C) || (isNum(high) && high >= THRESH.HOT_C);
+    if (hot) return "heat";
+
+    const cold = (isNum(tempNow) && tempNow <= THRESH.COLD_C) || (isNum(low) && low <= THRESH.COLD_C);
+    if (cold) return "cold";
+
+    // 5) Fog/mist/haze
+    if (baseKey.includes("fog") || baseKey.includes("mist") || baseKey.includes("haze")) {
+      return "fog";
+    }
+
+    // 6) Cloudy
+    if (baseKey.includes("cloud")) {
+      return "cloudy";
+    }
+
+    // 7) Default clear
+    return "clear";
+  }
+
+  const wittyFor = (dominantKey, daily0) => {
     const high = daily0?.highC;
     const rain = daily0?.rainChance;
 
-    if (conditionKey === "clear") {
+    if (dominantKey === "clear") {
       if (isNum(high) && high >= 26) return "Braai weather, boet!";
       return "Looks good outside.";
     }
-    if (conditionKey === "rain" || conditionKey === "storm") {
+    if (dominantKey === "rain" || dominantKey === "storm") {
       if (isNum(rain) && rain >= 60) return "Plan B. Then Plan C.";
       return "Maybe. Maybe not. Probably wet.";
     }
-    if (conditionKey === "cloudy") return "50/50 weather.";
-    if (conditionKey === "wind") return "Hold onto your hat.";
-    if (conditionKey === "fog") return "Drive like you’ve got sense.";
+    if (dominantKey === "cloudy") return "50/50 weather.";
+    if (dominantKey === "wind") return "Hold onto your hat.";
+    if (dominantKey === "fog") return "Drive like you’ve got sense.";
+    if (dominantKey === "heat") return "Find shade. Drink water.";
+    if (dominantKey === "cold") return "Ja, it’s jacket weather.";
     return "Just… probably.";
   };
 
@@ -122,47 +210,8 @@
   }
 
   function setBackground(conditionKey) {
-function setBackground(conditionKey) {
-  const keyRaw = String(conditionKey || "").toLowerCase();
-
-  // Map any incoming key to one of our actual folders
-  const folder =
-    keyRaw.includes("thunder") || keyRaw.includes("storm") ? "storm" :
-    keyRaw.includes("rain") ? "rain" :
-    keyRaw.includes("fog") || keyRaw.includes("mist") || keyRaw.includes("lowcloud") ? "fog" :
-    keyRaw === "wind" || keyRaw.includes("wind") || keyRaw.includes("breez") || keyRaw.includes("gust") ? "wind" :
-    keyRaw === "heat" || keyRaw.includes("heat") || keyRaw.includes("hot") ? "heat" :
-    keyRaw === "cold" || keyRaw.includes("cold") || keyRaw.includes("freez") ? "cold" :
-    keyRaw.includes("cloud") ? "cloudy" :
-    keyRaw.includes("clear") ? "clear" :
-    "default";
-
-  // Pick a random image from that folder (existing behavior)
-  const countByFolder = {
-    clear: 6,
-    cloudy: 6,
-    cold: 6,
-    fog: 6,
-    heat: 6,
-    rain: 6,
-    storm: 6,
-    wind: 6,
-    default: 1,
-  };
-
-  const n = countByFolder[folder] || 1;
-  const idx = n === 1 ? 1 : (Math.floor(Math.random() * n) + 1);
-
-  const url = folder === "default"
-    ? "assets/images/bg/default.jpg"
-    : `assets/images/bg/${folder}/${idx}.jpg`;
-
-  document.body.style.backgroundImage = `url("${url}")`;
-  document.body.style.backgroundSize = "cover";
-  document.body.style.backgroundPosition = "center";
-  document.body.style.backgroundRepeat = "no-repeat";
-}
-
+    const key = conditionKey || "cloudy";
+    const folder = C?.assets?.conditionToFolder?.[key] || C?.assets?.fallbackFolder || "cloudy";
 
     const tod = getTimeOfDayLabel();
     const base = C?.assets?.bgBasePath || "/assets/images/bg";
@@ -184,72 +233,6 @@ function setBackground(conditionKey) {
       btn.classList.toggle("is-active", t === target);
     });
   }
-  // --- Dominant “vibe” condition (used for hero text + background) ---
-const WIND_KPH = 25;
-const RAIN_PCT = 50;
-const HEAT_C = 32;
-const COLD_C = 16;
-
-function pickDominantConditionKey(now, daily0) {
-  const keyNow = String(now?.conditionKey || "").toLowerCase();
-  const keyDay = String(daily0?.conditionKey || "").toLowerCase();
-
-  const rainNow = Number.isFinite(now?.rainChance) ? now.rainChance : null;
-  const rainDay = Number.isFinite(daily0?.rainChance) ? daily0.rainChance : null;
-  const rainChance = Math.max(rainNow ?? -1, rainDay ?? -1);
-
-  const windKph = Number.isFinite(now?.windKph) ? now.windKph : null;
-  const highC = Number.isFinite(daily0?.highC) ? daily0.highC : null;
-  const lowC = Number.isFinite(daily0?.lowC) ? daily0.lowC : null;
-
-  // 1) Storm (if present in condition keys)
-  if (
-    keyNow.includes("thunder") || keyNow.includes("storm") ||
-    keyDay.includes("thunder") || keyDay.includes("storm")
-  ) {
-    return "storm";
-  }
-
-  // 2) Rain overrides (your rule)
-  if (rainChance >= RAIN_PCT) return "rain";
-
-  // 3) Fog / low cloud overrides
-  if (
-    keyNow.includes("fog") || keyNow.includes("mist") || keyNow.includes("lowcloud") ||
-    keyDay.includes("fog") || keyDay.includes("mist") || keyDay.includes("lowcloud")
-  ) {
-    return "fog";
-  }
-
-  // 4) Wind (folder name is "wind", label will say "windy")
-  if (windKph != null && windKph >= WIND_KPH) return "wind";
-
-  // 5) Heat
-  if (highC != null && highC >= HEAT_C) return "heat";
-
-  // 6) Cold
-  if (lowC != null && lowC <= COLD_C) return "cold";
-
-  // 7) Fall back to API condition keys
-  if (keyNow) return keyNow;
-  if (keyDay) return keyDay;
-
-  return "clear";
-}
-
-function dominantLabelFromKey(key) {
-  const k = String(key || "").toLowerCase();
-  if (k === "wind") return "windy";
-  if (k === "heat") return "hot";
-  if (k === "cold") return "cold";
-  if (k === "fog") return "foggy";
-  if (k === "storm") return "stormy";
-  if (k === "clear") return "clear";
-  if (k === "cloudy") return "cloudy";
-  if (k === "rain") return "rainy";
-  return k || "unclear";
-}
-
 
   // ---------------- renderers
   function renderHome(data) {
@@ -265,24 +248,24 @@ function dominantLabelFromKey(key) {
     const daily0 = data?.daily?.[0] || {};
     const now = data?.now || {};
 
+    // ONE dominant key for home
+    const dKey = dominantKeyForHome(now, daily0);
+    const dLabel = labelForKey(dKey).toLowerCase();
 
-
-
-
-    const conditionLabel = (now?.conditionLabel || daily0?.conditionLabel || "Unclear").toLowerCase();
-    const dominantKey = pickDominantConditionKey(now, daily0);
-    const dominantLabel = dominantLabelFromKey(dominantKey);
-    dom.conditionText.textContent = `This is ${dominantLabel}.`;
-    
+    // Headline
+    dom.conditionText.textContent = `This is ${dLabel}.`;
     dom.bigTemp.textContent = fmtRange(daily0?.lowC, daily0?.highC);
 
+    // Confidence
     const cKey = data?.consensus?.confidenceKey || "mixed";
     const cLabel = confidenceLabel(cKey);
     dom.confidenceTop.textContent = confidenceTopLine(cLabel);
 
-    dom.wittyLine.textContent = wittyFor(now?.conditionKey, daily0);
+    // Witty line uses dominant key
+    dom.wittyLine.textContent = wittyFor(dKey, daily0);
 
-    dom.todayExtremeTitle.textContent = daily0?.conditionLabel || now?.conditionLabel || "—";
+    // Today's extreme: keep range, but make label consistent with dominant condition
+    dom.todayExtremeTitle.textContent = labelForKey(dKey).toUpperCase();
     dom.todayExtremeRange.textContent = fmtRange(daily0?.lowC, daily0?.highC);
 
     const rainPct = isNum(daily0?.rainChance) ? daily0.rainChance : now?.rainChance;
@@ -293,8 +276,7 @@ function dominantLabelFromKey(key) {
 
     dom.confidenceTitle.textContent = cLabel;
     const n = Array.isArray(data?.meta?.sources) ? data.meta.sources.length : 0;
- dom.confidenceSub.textContent = n ? `Temperature agreement across ${n} forecasts →` : "—";
-
+    dom.confidenceSub.textContent = n ? `Based on ${n} forecasts →` : "—";
 
     dom.updatedAt.textContent = data?.meta?.updatedAtLabel || "—";
     if (dom.sourcesList) {
@@ -302,10 +284,9 @@ function dominantLabelFromKey(key) {
         ? data.meta.sources.map((s) => s?.name || s).join(" · ")
         : "—";
     }
-    setBackground(dominantKey);
-    console.log("PW dominantKey:", dominantKey);
 
-
+    // Background uses the SAME dominant key
+    setBackground(dKey);
   }
 
   function renderHourly(data) {
