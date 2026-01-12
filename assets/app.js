@@ -332,7 +332,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderSidebar(norm) {
-    if (!norm) return; // Guard: don't render if no data
+    // INVARIANT 1: If called with null/undefined, check global fallback
+    if (!norm) {
+      if (window.__PW_LAST_NORM) {
+        console.error('[INVARIANT VIOLATION] renderSidebar called with null but __PW_LAST_NORM exists. Using cached data.');
+        norm = window.__PW_LAST_NORM;
+      } else {
+        return; // No data available, early exit is safe
+      }
+    }
     
     const rain = norm.rainPct;
     const uv = norm.uv;
@@ -342,6 +350,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const extremeLabel = getExtremeLabel(condition);
     safeText(extremeLabelEl, `Today's extreme:`);
     safeText(extremeValueEl, extremeLabel);
+    
+    // INVARIANT CHECK: Extreme label must not be empty
+    if (!extremeLabel || extremeLabel === '') {
+      console.error('[INVARIANT VIOLATION] getExtremeLabel returned empty for condition:', condition);
+    }
 
     // Rain display
     if (isNum(rain)) {
@@ -366,10 +379,23 @@ document.addEventListener("DOMContentLoaded", () => {
       safeText(uvValueEl, '--');
     }
 
-    // Confidence/Agreement
+    // Confidence/Agreement - CRITICAL INVARIANT
     const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
     const confText = confMap[norm.confidenceKey] || 'Mixed';
-    safeText($('#confidenceValue'), confText);
+    
+    // INVARIANT 5 (CRITICAL): Agreement must NEVER be "--" when norm exists
+    if (confText === '--' || confText === '' || !confText) {
+      console.error('[INVARIANT VIOLATION] Agreement would be invalid:', confText, 'confidenceKey:', norm.confidenceKey);
+      console.error('[FORCING FALLBACK] Setting Agreement to "Mixed"');
+      safeText($('#confidenceValue'), 'Mixed');
+    } else {
+      safeText($('#confidenceValue'), confText);
+    }
+    
+    // INVARIANT CHECK: confText must be exactly one of the valid values
+    if (!['Strong', 'Decent', 'Mixed'].includes(confText)) {
+      console.error('[INVARIANT VIOLATION] Agreement is not [Strong|Decent|Mixed]:', confText);
+    }
     
     // Update confidence bar visual
     if (confidenceBarEl) {
@@ -381,6 +407,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                        : norm.confidenceKey === 'decent' ? '#FFC107' 
                                        : '#FF9800';
     }
+    
+    // Successful render confirmation
+    console.log('[SIDEBAR] Rendered. Agreement:', confText, 'Extreme:', extremeLabel);
   }
 
   function renderError(msg) {
@@ -665,23 +694,43 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
   });
+  
   navHourly.addEventListener('click', () => {
     showScreen(screenHourly);
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Hourly: No data loaded yet');
+    }
   });
+  
   navWeek.addEventListener('click', () => {
     showScreen(screenWeek);
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Week: No data loaded yet');
+    }
   });
+  
   navSearch.addEventListener('click', () => {
     showScreen(screenSearch);
     renderRecents();
     renderFavorites();
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Search: No data loaded yet');
+    }
   });
+  
   navSettings.addEventListener('click', () => {
     showScreen(screenSettings);
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Settings: No data loaded yet');
+    }
   });
 
   saveCurrent.addEventListener('click', () => {
