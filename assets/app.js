@@ -274,9 +274,9 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 2 + 's';
-        particle.style.animationDuration = (Math.random() * 1 + 1) + 's';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 2}s`;
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
         particlesEl.appendChild(particle);
       }
     }
@@ -416,10 +416,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
       const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
+      const tempStr = isNum(h.tempC) ? `${round0(h.tempC)}°` : '--°';
+      const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
-        <div class="hour-temp">${round0(h.tempC)}°</div>
-        <div class="hour-rain">${round0(h.rainChance)}%</div>
+        <div class="hour-temp">${tempStr}</div>
+        <div class="hour-rain">${rainStr}</div>
       `;
       hourlyTimeline.appendChild(div);
     });
@@ -430,12 +432,15 @@ document.addEventListener("DOMContentLoaded", () => {
     dailyCards.innerHTML = '';
     daily.forEach((d, i) => {
       const dayName = d.dayLabel || new Date(Date.now() + i * 86400000).toLocaleDateString('en-US', { weekday: 'short' });
+      const lowStr = isNum(d.lowC) ? round0(d.lowC) : '--';
+      const highStr = isNum(d.highC) ? round0(d.highC) : '--';
+      const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
-        <div class="day-temp">${round0(d.lowC)}° – ${round0(d.highC)}°</div>
-        <div class="day-rain">${round0(d.rainChance)}%</div>
+        <div class="day-temp">${lowStr}° – ${highStr}°</div>
+        <div class="day-rain">${rainStr}</div>
         <div class="day-humor">${d.conditionLabel || '—'}</div>
       `;
       dailyCards.appendChild(div);
