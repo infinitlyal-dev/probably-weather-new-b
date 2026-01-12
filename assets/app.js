@@ -744,4 +744,101 @@ document.addEventListener("DOMContentLoaded", () => {
       loadAndRender(homePlace);
     }
   }
+
+  // ========== DEBUG OVERLAY (ONLY VISIBLE WITH ?debug=1) ==========
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const debugMode = urlParams.get('debug') === '1';
+  
+  if (debugMode) {
+    // Create debug overlay
+    const debugOverlay = document.createElement('div');
+    debugOverlay.id = 'pwDebugOverlay';
+    debugOverlay.style.cssText = `
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.9);
+      color: #0f0;
+      font-family: monospace;
+      font-size: 11px;
+      padding: 12px;
+      border-radius: 8px;
+      z-index: 99999;
+      min-width: 250px;
+      border: 1px solid #0f0;
+      box-shadow: 0 4px 12px rgba(0,255,0,0.3);
+    `;
+    document.body.appendChild(debugOverlay);
+    
+    // Track timestamp
+    window.__PW_LAST_NORM_TIMESTAMP = null;
+    
+    // Update debug overlay
+    function updateDebugOverlay() {
+      const norm = window.__PW_LAST_NORM;
+      const dataExists = norm !== null && norm !== undefined;
+      
+      // Determine current screen
+      let currentScreen = 'Unknown';
+      if (screenHome && !screenHome.classList.contains('hidden')) currentScreen = 'Home';
+      else if (screenHourly && !screenHourly.classList.contains('hidden')) currentScreen = 'Hourly';
+      else if (screenWeek && !screenWeek.classList.contains('hidden')) currentScreen = 'Week';
+      else if (screenSearch && !screenSearch.classList.contains('hidden')) currentScreen = 'Search';
+      else if (screenSettings && !screenSettings.classList.contains('hidden')) currentScreen = 'Settings';
+      
+      // Get current sidebar values
+      const extremeVal = extremeValueEl?.textContent || '--';
+      const rainVal = rainValueEl?.textContent || '--';
+      const uvVal = uvValueEl?.textContent || '--';
+      const agreementVal = $('#confidenceValue')?.textContent || '--';
+      
+      // Pass/Fail logic
+      const isPassing = dataExists && agreementVal !== '--';
+      const statusText = isPassing ? '✅ PASS' : '❌ FAIL';
+      const statusColor = isPassing ? '#0f0' : '#f00';
+      
+      debugOverlay.innerHTML = `
+        <div style="font-weight: bold; font-size: 14px; color: ${statusColor}; margin-bottom: 8px;">
+          ${statusText}
+        </div>
+        <div style="margin-bottom: 4px;"><strong>Screen:</strong> ${currentScreen}</div>
+        <div style="margin-bottom: 4px;"><strong>Data exists:</strong> ${dataExists ? 'YES' : 'NO'}</div>
+        <div style="margin-bottom: 8px;"><strong>Last update:</strong> ${window.__PW_LAST_NORM_TIMESTAMP || 'Not set'}</div>
+        <div style="border-top: 1px solid #0f0; padding-top: 8px; margin-top: 8px;">
+          <div style="font-weight: bold; margin-bottom: 4px;">Sidebar Values:</div>
+          <div style="padding-left: 8px;">
+            <div>Extreme: ${extremeVal}</div>
+            <div>Rain: ${rainVal}</div>
+            <div>UV: ${uvVal}</div>
+            <div>Agreement: ${agreementVal}</div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid #0f0; padding-top: 8px; margin-top: 8px; font-size: 9px; opacity: 0.7;">
+          URL: ?debug=1
+        </div>
+      `;
+    }
+    
+    // Wrap renderSidebar to update debug on every call
+    const originalRenderSidebar = renderSidebar;
+    renderSidebar = function(norm) {
+      originalRenderSidebar(norm);
+      if (norm) window.__PW_LAST_NORM_TIMESTAMP = new Date().toLocaleTimeString();
+      updateDebugOverlay();
+    };
+    
+    // Wrap showScreen to update debug on screen changes
+    const originalShowScreen = showScreen;
+    showScreen = function(which) {
+      originalShowScreen(which);
+      setTimeout(updateDebugOverlay, 100);
+    };
+    
+    // Initial update
+    setTimeout(updateDebugOverlay, 500);
+    
+    // Update every 2 seconds to catch any changes
+    setInterval(updateDebugOverlay, 2000);
+  }
 });
