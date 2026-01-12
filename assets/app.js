@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activePlace = null;
   let homePlace = null;
   let lastPayload = null;
+  window.__PW_LAST_NORM = null; // Global store for latest normalized data
 
   // ========== UTILITY FUNCTIONS ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
@@ -330,6 +331,58 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(sourcesEl, 'Sources: —');
   }
 
+  function renderSidebar(norm) {
+    if (!norm) return; // Guard: don't render if no data
+    
+    const rain = norm.rainPct;
+    const uv = norm.uv;
+    const condition = computeDominantCondition(norm);
+    
+    // Today's extreme
+    const extremeLabel = getExtremeLabel(condition);
+    safeText(extremeLabelEl, `Today's extreme:`);
+    safeText(extremeValueEl, extremeLabel);
+
+    // Rain display
+    if (isNum(rain)) {
+      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
+                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
+                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
+                     : 'Likely';
+      safeText(rainValueEl, rainText);
+    } else {
+      safeText(rainValueEl, '--');
+    }
+
+    // UV display
+    if (isNum(uv)) {
+      const uvText = uv < THRESH.UV_LOW ? 'Low'
+                   : uv < THRESH.UV_MODERATE ? 'Moderate'
+                   : uv < THRESH.UV_HIGH ? 'High'
+                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
+                   : 'Extreme';
+      safeText(uvValueEl, `${uvText} (${round0(uv)})`);
+    } else {
+      safeText(uvValueEl, '--');
+    }
+
+    // Confidence/Agreement
+    const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
+    const confText = confMap[norm.confidenceKey] || 'Mixed';
+    safeText($('#confidenceValue'), confText);
+    
+    // Update confidence bar visual
+    if (confidenceBarEl) {
+      const confPct = norm.confidenceKey === 'strong' ? 100 
+                    : norm.confidenceKey === 'decent' ? 66 
+                    : 33;
+      confidenceBarEl.style.width = `${confPct}%`;
+      confidenceBarEl.style.background = norm.confidenceKey === 'strong' ? '#4CAF50' 
+                                       : norm.confidenceKey === 'decent' ? '#FFC107' 
+                                       : '#FF9800';
+    }
+  }
+
   function renderError(msg) {
     showLoader(false);
     safeText(headlineEl, 'Error');
@@ -365,33 +418,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Witty line - driven by condition (Spec Section 7)
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
-    // Today's extreme - driven by condition (Spec Section 8)
-    const extremeLabel = getExtremeLabel(condition);
-    safeText(extremeLabelEl, `Today's extreme:`);
-    safeText(extremeValueEl, extremeLabel);
-
-    // Rain display
-    if (isNum(rain)) {
-      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
-                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
-                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
-                     : 'Likely';
-      safeText(rainValueEl, rainText);
-    } else {
-      safeText(rainValueEl, '--');
-    }
-
-    // UV display
-    if (isNum(uv)) {
-      const uvText = uv < THRESH.UV_LOW ? 'Low'
-                   : uv < THRESH.UV_MODERATE ? 'Moderate'
-                   : uv < THRESH.UV_HIGH ? 'High'
-                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
-                   : 'Extreme';
-      safeText(uvValueEl, `${uvText} (${round0(uv)})`);
-    } else {
-      safeText(uvValueEl, '--');
-    }
+    // Render sidebar (extracted for reuse across tabs)
+    renderSidebar(norm);
 
     // Confidence
     const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
@@ -454,6 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const payload = await fetchProbable(place);
       lastPayload = payload;
       const norm = normalizePayload(payload);
+      window.__PW_LAST_NORM = norm; // Store for sidebar persistence
       renderHome(norm);
       renderHourly(norm.hourly);
       renderWeek(norm.daily);
@@ -636,14 +665,24 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
   });
-  navHourly.addEventListener('click', () => showScreen(screenHourly));
-  navWeek.addEventListener('click', () => showScreen(screenWeek));
+  navHourly.addEventListener('click', () => {
+    showScreen(screenHourly);
+    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+  });
+  navWeek.addEventListener('click', () => {
+    showScreen(screenWeek);
+    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+  });
   navSearch.addEventListener('click', () => {
     showScreen(screenSearch);
     renderRecents();
     renderFavorites();
+    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
   });
-  navSettings.addEventListener('click', () => showScreen(screenSettings));
+  navSettings.addEventListener('click', () => {
+    showScreen(screenSettings);
+    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+  });
 
   saveCurrent.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
