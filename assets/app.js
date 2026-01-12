@@ -332,7 +332,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderSidebar(norm) {
-    if (!norm) return; // Guard: don't render if no data
+    // INVARIANT 1: If called with null/undefined, use cached data or exit safely
+    if (!norm) {
+      if (window.__PW_LAST_NORM) {
+        console.error('[INVARIANT VIOLATION] renderSidebar called with null but __PW_LAST_NORM exists. Using cached data.');
+        norm = window.__PW_LAST_NORM;
+      } else {
+        return; // No data available, early exit is safe
+      }
+    }
     
     const rain = norm.rainPct;
     const uv = norm.uv;
@@ -342,6 +350,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const extremeLabel = getExtremeLabel(condition);
     safeText(extremeLabelEl, `Today's extreme:`);
     safeText(extremeValueEl, extremeLabel);
+    
+    // INVARIANT 2: Extreme label must never be empty when data exists
+    if (!extremeLabel || extremeLabel === '') {
+      console.error('[INVARIANT VIOLATION] getExtremeLabel returned empty for condition:', condition);
+    }
 
     // Rain display
     if (isNum(rain)) {
@@ -350,6 +363,11 @@ document.addEventListener("DOMContentLoaded", () => {
                      : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
                      : 'Likely';
       safeText(rainValueEl, rainText);
+      
+      // INVARIANT 3: Rain text must be one of valid strings when numeric
+      if (!['None expected', 'Unlikely', 'Possible', 'Likely'].includes(rainText)) {
+        console.error('[INVARIANT VIOLATION] Invalid rain text:', rainText, 'for rain:', rain);
+      }
     } else {
       safeText(rainValueEl, '--');
     }
@@ -362,14 +380,32 @@ document.addEventListener("DOMContentLoaded", () => {
                    : uv < THRESH.UV_VERY_HIGH ? 'Very High'
                    : 'Extreme';
       safeText(uvValueEl, `${uvText} (${round0(uv)})`);
+      
+      // INVARIANT 4: UV text must be valid category when numeric
+      if (!['Low', 'Moderate', 'High', 'Very High', 'Extreme'].includes(uvText)) {
+        console.error('[INVARIANT VIOLATION] Invalid UV text:', uvText, 'for UV:', uv);
+      }
     } else {
       safeText(uvValueEl, '--');
     }
 
-    // Confidence/Agreement
+    // Confidence/Agreement - CRITICAL INVARIANT
     const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
     const confText = confMap[norm.confidenceKey] || 'Mixed';
-    safeText($('#confidenceValue'), confText);
+    
+    // INVARIANT 5 (CRITICAL): Agreement must NEVER be "--" when norm exists
+    if (confText === '--' || confText === '' || !confText) {
+      console.error('[INVARIANT VIOLATION] Agreement resolved to invalid value:', confText, 'confidenceKey:', norm.confidenceKey);
+      console.error('[INVARIANT VIOLATION] Forcing Agreement to "Mixed" as fallback');
+      safeText($('#confidenceValue'), 'Mixed');
+    } else {
+      safeText($('#confidenceValue'), confText);
+    }
+    
+    // INVARIANT 6: confText must be exactly one of: Strong, Decent, Mixed
+    if (!['Strong', 'Decent', 'Mixed'].includes(confText)) {
+      console.error('[INVARIANT VIOLATION] Agreement not in [Strong, Decent, Mixed]:', confText);
+    }
     
     // Update confidence bar visual
     if (confidenceBarEl) {
@@ -381,6 +417,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                        : norm.confidenceKey === 'decent' ? '#FFC107' 
                                        : '#FF9800';
     }
+    
+    // INVARIANT 7: Log successful render for verification
+    console.log('[SIDEBAR] Rendered. Agreement:', confText, 'Extreme:', extremeLabel);
   }
 
   function renderError(msg) {
@@ -665,23 +704,47 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
   });
+
   navHourly.addEventListener('click', () => {
     showScreen(screenHourly);
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Hourly but no weather data loaded yet');
+    }
   });
+
   navWeek.addEventListener('click', () => {
     showScreen(screenWeek);
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Week but no weather data loaded yet');
+    }
   });
+
   navSearch.addEventListener('click', () => {
     showScreen(screenSearch);
     renderRecents();
     renderFavorites();
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Search but no weather data loaded yet');
+    }
   });
+
   navSettings.addEventListener('click', () => {
     showScreen(screenSettings);
-    if (window.__PW_LAST_NORM) renderSidebar(window.__PW_LAST_NORM);
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Settings but no weather data loaded yet');
+    }
   });
 
   saveCurrent.addEventListener('click', () => {
