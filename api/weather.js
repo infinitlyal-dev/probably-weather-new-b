@@ -221,29 +221,63 @@ export default async function handler(req, res) {
   
       // Aggregate
       const aggregatedHourly = Array.from({length: 24}, (_, i) => ({
-        temp: median(hourlies.map(h => h.temps[i]).filter(isNum)),
-        rain: median(hourlies.map(h => h.rains[i]).filter(isNum)),
-        wind: median(hourlies.map(h => h.winds[i]).filter(isNum)),
+        tempC: median(hourlies.map(h => h.temps[i]).filter(isNum)),
+        rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
+        windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
       }));
   
       const aggregatedDaily = Array.from({length: 7}, (_, i) => ({
-        high: median(dailies.map(d => d.highs[i]).filter(isNum)),
-        low: median(dailies.map(d => d.lows[i]).filter(isNum)),
-        rain: median(dailies.map(d => d.rains[i]).filter(isNum)),
+        highC: median(dailies.map(d => d.highs[i]).filter(isNum)),
+        lowC: median(dailies.map(d => d.lows[i]).filter(isNum)),
+        rainChance: median(dailies.map(d => d.rains[i]).filter(isNum)),
         uv: median(dailies.map(d => d.uvs[i]).filter(isNum)),
-        desc: pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown',
+        conditionLabel: pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown',
+        conditionKey: deriveConditionKey(pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown'),
       }));
+  
+      // Compute consensus confidence
+      const temps = norms.map(n => n.nowTemp).filter(isNum);
+      let confidenceKey = 'mixed';
+      if (temps.length >= 2) {
+        const spread = Math.max(...temps) - Math.min(...temps);
+        if (spread <= 1.5) confidenceKey = 'strong';
+        else if (spread <= 3.5) confidenceKey = 'decent';
+      } else if (temps.length === 1) {
+        confidenceKey = 'decent';
+      }
+
+      // Build "now" object from median of all sources
+      const medNowTemp = median(norms.map(n => n.nowTemp).filter(isNum));
+      const medWindKph = median(norms.map(n => n.windKph).filter(isNum));
+      const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
   
       return res.status(200).json({
         ok: true,
-        name,
-        lat,
-        lon,
-        used: norms.map(n => n.source),
-        failed: failures,
-        norms,
-        hourly: aggregatedHourly,
+        location: {
+          name: name || 'Unknown',
+          lat,
+          lon,
+        },
+        now: {
+          tempC: medNowTemp,
+          feelsLikeC: medNowTemp, // Simplified - same as temp
+          windKph: medWindKph,
+          rainChance: aggregatedDaily[0]?.rainChance ?? null,
+          conditionKey: deriveConditionKey(mostDesc),
+          conditionLabel: mostDesc,
+        },
+        consensus: {
+          confidenceKey,
+        },
         daily: aggregatedDaily,
+        hourly: aggregatedHourly,
+        meta: {
+          sources: [
+            ...norms.map(n => ({ name: n.source, ok: true })),
+            ...failures.map(f => ({ name: f, ok: false })),
+          ],
+          updatedAtLabel: new Date().toISOString(),
+        },
       });
   
     } catch (e) {
@@ -267,4 +301,17 @@ export default async function handler(req, res) {
   
   function isNum(v) {
     return typeof v === 'number' && Number.isFinite(v);
+  }
+  
+  function deriveConditionKey(desc) {
+    const d = String(desc || '').toLowerCase();
+    if (d.includes('storm') || d.includes('thunder')) return 'storm';
+    if (d.includes('rain') || d.includes('drizzle') || d.includes('shower')) return 'rain';
+    if (d.includes('wind') || d.includes('gust')) return 'wind';
+    if (d.includes('cold') || d.includes('freez') || d.includes('snow') || d.includes('ice')) return 'cold';
+    if (d.includes('hot') || d.includes('heat')) return 'heat';
+    if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return 'fog';
+    if (d.includes('clear') || d.includes('sunny') || d.includes('fair')) return 'clear';
+    // Default: cloudy or unknown → clear (per spec)
+    return 'clear';
   }
