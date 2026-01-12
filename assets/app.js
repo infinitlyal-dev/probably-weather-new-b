@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(extremeValueEl, extremeLabel);
     
     // INVARIANT 2: Extreme label must never be empty string or undefined when data exists
-    if (!extremeLabel || extremeLabel === '') {
+    if (!extremeLabel) {
       console.error('[INVARIANT VIOLATION] getExtremeLabel returned empty for condition:', condition);
     }
 
