@@ -240,18 +240,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const base = 'assets/images/bg';
     const folder = condition;
     const fallbackFolder = 'clear';
-    const n = 1 + (Math.abs(hashString(condition + (activePlace?.name || ''))) % 4);
-    const path = `${base}/${folder}/${folder}${n}.jpg`;
+    
+    // Image variants: dawn, day, dusk, night
+    const variants = ['dawn', 'day', 'dusk', 'night'];
+    const imageIndex = Math.abs(hashString(condition + (activePlace?.name || ''))) % 4;
+    const imageName = variants[imageIndex];
+    const path = `${base}/${folder}/${imageName}.jpg`;
 
     if (bgImg) {
       bgImg.src = path;
       bgImg.onerror = () => {
-        const fallback1 = `${base}/${folder}/${folder}1.jpg`;
+        const fallback1 = `${base}/${folder}/day.jpg`;
         if (bgImg.src !== fallback1) {
           bgImg.src = fallback1;
           bgImg.onerror = () => {
             // Final fallback: clear (never cloudy)
-            bgImg.src = `${base}/${fallbackFolder}/${fallbackFolder}1.jpg`;
+            bgImg.src = `${base}/${fallbackFolder}/day.jpg`;
           };
         }
       };
