@@ -73,6 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let homePlace = null;
   let lastPayload = null;
 
+  // Confidence mapping for sidebar Agreement field
+  const CONFIDENCE_MAP = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
+
   // ========== UTILITY FUNCTIONS ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
@@ -340,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // INVARIANT 1: If called with null/undefined, fall back to cached data
     if (!norm) {
       if (window.__PW_LAST_NORM) {
-        console.error('[INVARIANT VIOLATION] renderSidebar called with null but __PW_LAST_NORM exists. Using cached data.');
+        console.warn('[SIDEBAR] renderSidebar called with null, using cached data from __PW_LAST_NORM');
         norm = window.__PW_LAST_NORM;
       } else {
         return; // No data available, early exit is safe
@@ -395,8 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // CRITICAL INVARIANT: Agreement must NEVER be "--" when norm exists
-    const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
-    const confText = confMap[norm.confidenceKey] || 'Mixed';
+    const confText = CONFIDENCE_MAP[norm.confidenceKey] || 'Mixed';
     
     // INVARIANT 5: Agreement must resolve to valid value
     if (confText === '--' || confText === '' || !confText) {
