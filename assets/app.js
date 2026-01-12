@@ -310,7 +310,6 @@ document.addEventListener("DOMContentLoaded", () => {
       daily: payload.daily || [],
     };
   }
-  }
 
   // ========== RENDER FUNCTIONS ==========
   
