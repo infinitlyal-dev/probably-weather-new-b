@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const rainValueEl = $('#rainValue');
   const uvValueEl = $('#uvValue');
   const confidenceEl = $('#confidence');
+  const confidenceValueEl = $('#confidenceValue');
   const sourcesEl = $('#sources');
   const bgImg = $('#bgImg');
   const saveCurrent = $('#saveCurrent');
@@ -404,9 +405,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (confText === '--' || confText === '' || !confText) {
       console.error('[INVARIANT VIOLATION] Agreement invalid:', confText, 'key:', norm.confidenceKey);
       console.error('[INVARIANT VIOLATION] Forcing fallback to "Mixed"');
-      safeText($('#confidenceValue'), 'Mixed');
+      safeText(confidenceValueEl, 'Mixed');
     } else {
-      safeText($('#confidenceValue'), confText);
+      safeText(confidenceValueEl, confText);
     }
     
     // INVARIANT 6: Agreement must be exactly one of: Strong, Decent, Mixed
