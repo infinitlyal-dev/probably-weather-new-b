@@ -51,12 +51,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
-  // Thresholds for condition detection (from spec section 4)
+  // Thresholds for condition detection (from product spec)
   const THRESH = {
     RAIN_PCT: 40,    // >= 40% rain chance = rain dominates
     WIND_KPH: 25,    // >= 25 km/h = wind dominates
-    COLD_C: 16,      // <= 16°C = cold dominates
-    HOT_C: 32        // >= 32°C = heat dominates
+    COLD_C: 16,      // <= 16°C max = cold dominates
+    HOT_C: 32,       // >= 32°C max = heat dominates
+    // Rain display thresholds
+    RAIN_NONE: 10,   // < 10% = None expected
+    RAIN_UNLIKELY: 30,  // < 30% = Unlikely
+    RAIN_POSSIBLE: 55,  // < 55% = Possible
+    // UV index thresholds
+    UV_LOW: 3,       // < 3 = Low
+    UV_MODERATE: 6,  // < 6 = Moderate
+    UV_HIGH: 8,      // < 8 = High
+    UV_VERY_HIGH: 11 // < 11 = Very High
   };
 
   // ========== STATE ==========
@@ -70,20 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function round0(n) { return isNum(n) ? Math.round(n) : null; }
   function round1(n) { return isNum(n) ? Math.round(n * 10) / 10 : null; }
-
-  // MOVED UP: These must be defined before normalizePayload() uses them
-  function median(values) {
-    if (values.length === 0) return null;
-    const sorted = [...values].sort((a, b) => a - b);
-    const half = Math.floor(sorted.length / 2);
-    return sorted.length % 2 ? sorted[half] : (sorted[half - 1] + sorted[half]) / 2.0;
-  }
-
-  function pickMostCommon(arr) {
-    if (arr.length === 0) return null;
-    const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
-    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
-  }
 
   function loadJSON(key, fallback) {
     try {
@@ -103,12 +98,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showScreen(which) {
-    SCREENS.forEach(s => s.classList.add("hidden"));
-    which.classList.remove("hidden");
+    SCREENS.forEach(s => {
+      if (s) {
+        s.classList.add("hidden");
+        s.setAttribute('hidden', '');
+      }
+    });
+    if (which) {
+      which.classList.remove("hidden");
+      which.removeAttribute('hidden');
+    }
   }
 
   function showLoader(show) {
-    loader.classList[show ? 'remove' : 'add']('hidden');
+    if (loader) loader.classList[show ? 'remove' : 'add']('hidden');
   }
   
   function showToast(message, duration = 3000) {
@@ -131,49 +134,47 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== SINGLE SOURCE OF TRUTH: DOMINANT CONDITION ==========
-  // Spec Section 4: ONE condition drives headline, background, extreme label, particles
+  // SINGLE SOURCE OF TRUTH for weather condition
   // Priority order: Storm > Rain > Wind > Cold > Heat > Fog > Clear
   
   function computeDominantCondition(norm) {
-    const desc = String(norm.desc || "").toLowerCase();
+    const condKey = (norm.conditionKey || '').toLowerCase();
     const rain = norm.rainPct;
-    const hi = norm.todayHigh;
-    const low = norm.todayLow;
     const wind = norm.windKph;
+    const hi = norm.todayHigh;
 
-    // 1. STORM - highest priority (thunder, lightning, severe)
-    if (desc.includes("storm") || desc.includes("thunder") || desc.includes("lightning")) {
-      return "storm";
+    // 1. STORM
+    if (condKey === 'storm' || condKey.includes('thunder')) {
+      return 'storm';
     }
 
-    // 2. RAIN - rain probability >= 40%
+    // 2. RAIN (>=40%)
     if (isNum(rain) && rain >= THRESH.RAIN_PCT) {
-      return "rain";
+      return 'rain';
     }
 
-    // 3. WIND - strong wind >= 25 km/h
+    // 3. WIND (>=25 km/h)
     if (isNum(wind) && wind >= THRESH.WIND_KPH) {
-      return "wind";
+      return 'wind';
     }
 
-    // 4. COLD - max temp <= 16°C
+    // 4. COLD (max <=16°C)
     if (isNum(hi) && hi <= THRESH.COLD_C) {
-      return "cold";
+      return 'cold';
     }
 
-    // 5. HEAT - max temp >= 32°C
+    // 5. HEAT (max >=32°C)
     if (isNum(hi) && hi >= THRESH.HOT_C) {
-      return "heat";
+      return 'heat';
     }
 
-    // 6. FOG - fog, mist, haze in description
-    if (desc.includes("fog") || desc.includes("mist") || desc.includes("haze")) {
-      return "fog";
+    // 6. FOG
+    if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) {
+      return 'fog';
     }
 
-    // 7. CLEAR - default fallback (NOT cloudy)
-    // Spec: "Cloudy is not a dominant condition by default"
-    return "clear";
+    // 7. CLEAR (default - NOT cloudy per spec)
+    return 'clear';
   }
 
   // ========== CONDITION-DRIVEN DISPLAY FUNCTIONS ==========
@@ -232,31 +233,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== BACKGROUND IMAGE LOGIC ==========
-  // Spec Section 5: Background folder MUST match dominant condition exactly
+  // Background folder MUST match dominant condition exactly
   // Fallback: same folder → clear (NEVER cloudy)
 
   function setBackgroundFor(condition) {
-    const base = "assets/images/bg";
-    const folder = condition; // Direct match - no translation needed
+    const base = 'assets/images/bg';
+    const folder = condition;
+    const fallbackFolder = 'clear';
     
     // Image variants: dawn, day, dusk, night
     const variants = ['dawn', 'day', 'dusk', 'night'];
     const imageIndex = Math.abs(hashString(condition + (activePlace?.name || ''))) % 4;
     const imageName = variants[imageIndex];
-    const primaryPath = `${base}/${folder}/${imageName}.jpg`;
-    
+    const path = `${base}/${folder}/${imageName}.jpg`;
+
     if (bgImg) {
-      bgImg.src = primaryPath;
-      
-      // Fallback chain: same folder → clear (never cloudy)
+      bgImg.src = path;
       bgImg.onerror = () => {
-        const sameFolderFallback = `${base}/${folder}/day.jpg`;
-        if (bgImg.src !== sameFolderFallback) {
-          bgImg.src = sameFolderFallback;
+        const fallback1 = `${base}/${folder}/day.jpg`;
+        if (bgImg.src !== fallback1) {
+          bgImg.src = fallback1;
           bgImg.onerror = () => {
-            // Final fallback: clear (NOT cloudy per spec)
-            bgImg.src = `${base}/clear/day.jpg`;
-            console.warn(`Background failed for ${folder}, falling back to clear`);
+            // Final fallback: clear (never cloudy)
+            bgImg.src = `${base}/${fallbackFolder}/day.jpg`;
           };
         }
       };
@@ -270,37 +269,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!particlesEl) return;
     particlesEl.innerHTML = '';
     
-    // Only create particles for certain conditions
+    // Only create particles for rain or storm
     if (condition === 'rain' || condition === 'storm') {
       for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
         particle.style.animationDelay = `${Math.random() * 2}s`;
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
         particlesEl.appendChild(particle);
       }
     }
-  }
-
-  // ========== CONFIDENCE LOGIC ==========
-  
-  function computeAgreementFromNorms(norms) {
-    const temps = norms.map(n => n.nowTemp).filter(isNum);
-    if (temps.length < 2) {
-      return { 
-        label: temps.length === 1 ? "DECENT" : "—", 
-        explain: temps.length === 1 ? "Only one source responded." : "No sources responded." 
-      };
-    }
-
-    const min = Math.min(...temps);
-    const max = Math.max(...temps);
-    const spread = max - min;
-
-    if (spread <= 1.5) return { label: "STRONG", explain: "All sources line up closely." };
-    if (spread <= 3.5) return { label: "DECENT", explain: "Two sources agree, one's a bit off." };
-    return { label: "MIXED", explain: "Sources disagree today; we're showing the most probable middle-ground." };
   }
 
   // ========== API & DATA ==========
@@ -313,45 +292,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function normalizePayload(payload) {
-    if (Array.isArray(payload.norms)) {
-      const norms = payload.norms;
-      const medNow = median(norms.map(n => n.nowTemp).filter(isNum));
-      const medHigh = median(norms.map(n => n.todayHigh).filter(isNum));
-      const medLow = median(norms.map(n => n.todayLow).filter(isNum));
-      const medRain = median(norms.map(n => n.todayRain).filter(isNum));
-      const medUv = median(norms.map(n => n.todayUv).filter(isNum));
-      const medWind = median(norms.map(n => n.windKph).filter(isNum));
-      const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
+    const now = payload.now || {};
+    const today = payload.daily?.[0] || {};
+    const meta = payload.meta || {};
+    const sources = meta.sources || [];
 
-      return {
-        nowTemp: medNow,
-        todayHigh: medHigh,
-        todayLow: medLow,
-        rainPct: medRain,
-        uv: medUv,
-        windKph: medWind,
-        desc: mostDesc,
-        agreement: computeAgreementFromNorms(norms),
-        used: payload.used || [],
-        failed: payload.failed || [],
-        countUsed: norms.length,
-        hourly: payload.hourly || [],
-        daily: payload.daily || [],
-      };
-    }
-    // Fallback for other payload shapes
     return {
-      nowTemp: payload.now?.temp ?? null,
-      todayHigh: payload.today?.high ?? null,
-      todayLow: payload.today?.low ?? null,
-      rainPct: payload.today?.rainPct ?? null,
-      uv: payload.today?.uv ?? null,
-      windKph: payload.today?.windKph ?? null,
-      desc: payload.today?.desc ?? 'Weather today',
-      agreement: payload.agreement || { label: '—', explain: '' },
-      used: payload.sources?.used || [],
-      failed: payload.sources?.failed || [],
-      countUsed: payload.sources?.countUsed || 0,
+      nowTemp: now.tempC ?? null,
+      feelsLike: now.feelsLikeC ?? null,
+      todayHigh: today.highC ?? null,
+      todayLow: today.lowC ?? null,
+      rainPct: today.rainChance ?? now.rainChance ?? null,
+      uv: today.uv ?? null,
+      windKph: now.windKph ?? null,
+      conditionKey: now.conditionKey || today.conditionKey || null,
+      conditionLabel: now.conditionLabel || today.conditionLabel || 'Weather today',
+      confidenceKey: payload.consensus?.confidenceKey || 'mixed',
+      used: sources.filter(s => s.ok).map(s => s.name),
+      failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: payload.hourly || [],
       daily: payload.daily || [],
     };
@@ -414,11 +372,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Rain display
     if (isNum(rain)) {
-      const rp = round0(rain);
-      const rainText = rp < 10 ? "None expected" 
-                     : rp < 30 ? "Unlikely" 
-                     : rp < 55 ? "Possible" 
-                     : "Likely";
+      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
+                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
+                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
+                     : 'Likely';
       safeText(rainValueEl, rainText);
     } else {
       safeText(rainValueEl, '--');
@@ -426,39 +383,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // UV display
     if (isNum(uv)) {
-      const uvText = uv < 3 ? "Low"
-                   : uv < 6 ? "Moderate"
-                   : uv < 8 ? "High"
-                   : uv < 11 ? "Very High"
-                   : "Extreme";
+      const uvText = uv < THRESH.UV_LOW ? 'Low'
+                   : uv < THRESH.UV_MODERATE ? 'Moderate'
+                   : uv < THRESH.UV_HIGH ? 'High'
+                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
+                   : 'Extreme';
       safeText(uvValueEl, `${uvText} (${round0(uv)})`);
     } else {
       safeText(uvValueEl, '--');
     }
 
     // Confidence
-    const label = (norm.agreement?.label || "—").toUpperCase();
-    safeText(confidenceEl, `PROBABLY • ${label} CONFIDENCE`);
-    
-    // Confidence value in sidebar
-    const confidenceValue = $('#confidenceValue');
-    if (confidenceValue) {
-      safeText(confidenceValue, norm.agreement?.explain || "—");
-    }
-    
-    // Confidence bar - visual indicator
-    if (confidenceBarEl) {
-      const barWidth = label === "STRONG" ? 100 
-                     : label === "DECENT" ? 70 
-                     : label === "MIXED" ? 40 
-                     : 0;
-      confidenceBarEl.style.width = `${barWidth}%`;
-    }
+    const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
+    safeText(confidenceEl, `PROBABLY • ${confLabel} CONFIDENCE`);
 
     // Sources
-    const usedTxt = norm.used.length ? `Used: ${norm.used.join(", ")}` : "Used: —";
-    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
-    safeText(sourcesEl, `${usedTxt}${failedTxt ? " · " + failedTxt : ""}`);
+    const usedTxt = norm.used.length ? `Used: ${norm.used.join(', ')}` : 'Used: —';
+    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(', ')}` : '';
+    safeText(sourcesEl, `${usedTxt}${failedTxt ? ' · ' + failedTxt : ''}`);
 
     // Background - driven by condition (Spec Section 5)
     setBackgroundFor(condition);
@@ -470,16 +412,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderHourly(hourly) {
     if (!hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
-    if (!hourly || hourly.length === 0) {
-      hourlyTimeline.innerHTML = '<div style="text-align: center; padding: 2rem; opacity: 0.7;">No hourly data available</div>';
-      return;
-    }
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
-      const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
-      const tempStr = isNum(h.temp) ? `${round0(h.temp)}°` : '--°';
-      const rainStr = isNum(h.rain) ? `${round0(h.rain)}%` : '--%';
+      const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
+      const tempStr = isNum(h.tempC) ? `${round0(h.tempC)}°` : '--°';
+      const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
         <div class="hour-temp">${tempStr}</div>
@@ -492,24 +430,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderWeek(daily) {
     if (!dailyCards) return;
     dailyCards.innerHTML = '';
-    if (!daily || daily.length === 0) {
-      dailyCards.innerHTML = '<div style="text-align: center; padding: 2rem; opacity: 0.7;">No daily data available</div>';
-      return;
-    }
     daily.forEach((d, i) => {
-      const date = new Date(Date.now() + i * 86400000);
-      const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-      const lowStr = isNum(d.low) ? round0(d.low) : '--';
-      const highStr = isNum(d.high) ? round0(d.high) : '--';
-      const rainStr = isNum(d.rain) ? `${round0(d.rain)}%` : '--%';
-      const descStr = (d.desc && String(d.desc).trim()) ? escapeHtml(d.desc) : '—';
+      const dayName = d.dayLabel || new Date(Date.now() + i * 86400000).toLocaleDateString('en-US', { weekday: 'short' });
+      const lowStr = isNum(d.lowC) ? round0(d.lowC) : '--';
+      const highStr = isNum(d.highC) ? round0(d.highC) : '--';
+      const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
       const div = document.createElement('div');
       div.classList.add('daily-card');
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
         <div class="day-temp">${lowStr}° – ${highStr}°</div>
         <div class="day-rain">${rainStr}</div>
-        <div class="day-humor">${descStr}</div>
+        <div class="day-humor">${d.conditionLabel || '—'}</div>
       `;
       dailyCards.appendChild(div);
     });
