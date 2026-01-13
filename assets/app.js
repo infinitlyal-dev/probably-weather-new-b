@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timeOfDay = 'dawn';
     } else if (hour >= 8 && hour < 17) {
       timeOfDay = 'day';
-    } else if (hour === 17 || hour === 18 || (hour === 19 && minute < 30)) {
+    } else if ((hour >= 17 && hour < 19) || (hour === 19 && minute < 30)) {
       timeOfDay = 'dusk';
     } else {
       timeOfDay = 'night';
