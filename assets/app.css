@@ -98,6 +98,7 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 .value {
   font-size: 1.2rem;
   font-weight: 600;
+  white-space: pre-line;
 }
 
 .confidence {

@@ -335,6 +335,8 @@ document.addEventListener("DOMContentLoaded", () => {
       failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: payload.hourly || [],
       daily: payload.daily || [],
+      locationName: payload.location?.name,
+      sourceRanges: meta.sourceRanges || [],
     };
   }
 
@@ -412,37 +414,26 @@ document.addEventListener("DOMContentLoaded", () => {
       safeText(uvValueEl, '--');
     }
 
-    // Confidence/Agreement - CRITICAL INVARIANT
-    const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
-    const confText = confMap[norm.confidenceKey] || 'Mixed';
-    
-    // INVARIANT 5 (CRITICAL): Agreement must NEVER be "--" when norm exists
-    if (confText === '--' || confText === '' || !confText) {
-      console.error('[INVARIANT VIOLATION] Agreement resolved to invalid value:', confText, 'confidenceKey:', norm.confidenceKey);
-      console.error('[INVARIANT VIOLATION] Forcing Agreement to "Mixed" as fallback');
-      safeText($('#confidenceValue'), 'Mixed');
+    // Source Ranges - show individual source temperature ranges
+    const sourceRanges = norm.sourceRanges || [];
+    if (sourceRanges.length > 0) {
+      const rangesText = sourceRanges
+        .filter(s => isNum(s.minTemp) && isNum(s.maxTemp))
+        .map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`)
+        .join('\n');
+      
+      safeText($('#confidenceValue'), rangesText || '--');
     } else {
-      safeText($('#confidenceValue'), confText);
+      safeText($('#confidenceValue'), '--');
     }
     
-    // INVARIANT 6: confText must be exactly one of: Strong, Decent, Mixed
-    if (!['Strong', 'Decent', 'Mixed'].includes(confText)) {
-      console.error('[INVARIANT VIOLATION] Agreement text is not one of [Strong, Decent, Mixed]:', confText);
-    }
-    
-    // Update confidence bar visual
+    // Hide confidence bar since we're showing source ranges instead
     if (confidenceBarEl) {
-      const confPct = norm.confidenceKey === 'strong' ? 100 
-                    : norm.confidenceKey === 'decent' ? 66 
-                    : 33;
-      confidenceBarEl.style.width = `${confPct}%`;
-      confidenceBarEl.style.background = norm.confidenceKey === 'strong' ? '#4CAF50' 
-                                       : norm.confidenceKey === 'decent' ? '#FFC107' 
-                                       : '#FF9800';
+      confidenceBarEl.style.display = 'none';
     }
     
     // INVARIANT 7: Log successful render for verification
-    console.log('[SIDEBAR] Rendered successfully. Agreement:', confText, 'Extreme:', extremeLabel);
+    console.log('[SIDEBAR] Rendered successfully. Source Ranges:', sourceRanges.length, 'Extreme:', extremeLabel);
   }
 
   function renderError(msg) {
@@ -467,7 +458,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.className = `weather-${condition}`;
 
     // Location
-    safeText(locationEl, activePlace.name || '—');
+    const locationName = norm.locationName || activePlace.name || 'My Location';
+    safeText(locationEl, locationName);
     
     // Hero headline - driven by condition (Spec Section 6)
     safeText(headlineEl, getHeadline(condition));

@@ -276,6 +276,11 @@ export default async function handler(req, res) {
             ...norms.map(n => ({ name: n.source, ok: true })),
             ...failures.map(f => ({ name: f, ok: false })),
           ],
+          sourceRanges: norms.map(n => ({
+            name: n.source,
+            minTemp: n.todayLow,
+            maxTemp: n.todayHigh,
+          })),
           updatedAtLabel: new Date().toISOString(),
         },
       });
