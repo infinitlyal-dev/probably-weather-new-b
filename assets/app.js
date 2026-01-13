@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
       failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: payload.hourly || [],
       daily: payload.daily || [],
-      locationName: payload.location?.name || null,
+      locationName: payload.location?.name,
       sourceRanges: meta.sourceRanges || [],
     };
   }
@@ -422,12 +422,12 @@ document.addEventListener("DOMContentLoaded", () => {
         .map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`)
         .join('\n');
       
-      safeText($('#confidenceValue'), rangesText || '–');
+      safeText($('#confidenceValue'), rangesText || '--');
     } else {
-      safeText($('#confidenceValue'), '–');
+      safeText($('#confidenceValue'), '--');
     }
     
-    // Hide confidence bar for source ranges display
+    // Hide confidence bar since we're showing source ranges instead
     if (confidenceBarEl) {
       confidenceBarEl.style.display = 'none';
     }
