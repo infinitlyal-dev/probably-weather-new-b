@@ -109,6 +109,16 @@ document.addEventListener("DOMContentLoaded", () => {
       which.classList.remove("hidden");
       which.removeAttribute('hidden');
     }
+    
+    // Hide sidebar on non-Home screens
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+      if (which === screenHome) {
+        sidebar.style.display = ''; // Show on Home
+      } else {
+        sidebar.style.display = 'none'; // Hide on other screens
+      }
+    }
   }
 
   function showLoader(show) {
@@ -242,11 +252,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const folder = condition;
     const fallbackFolder = 'clear';
     
-    // Image variants: dawn, day, dusk, night
-    const variants = ['dawn', 'day', 'dusk', 'night'];
-    const imageIndex = Math.abs(hashString(condition + (activePlace?.name || ''))) % 4;
-    const imageName = variants[imageIndex];
-    const path = `${base}/${folder}/${imageName}.jpg`;
+    // Determine time of day based on current hour
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    let timeOfDay;
+    
+    if (hour >= 5 && hour < 8) {
+      timeOfDay = 'dawn';
+    } else if (hour >= 8 && hour < 17) {
+      timeOfDay = 'day';
+    } else if ((hour >= 17 && hour < 19) || (hour === 19 && minute < 30)) {
+      timeOfDay = 'dusk';
+    } else {
+      timeOfDay = 'night';
+    }
+    
+    const path = `${base}/${folder}/${timeOfDay}.jpg`;
 
     if (bgImg) {
       bgImg.src = path;
