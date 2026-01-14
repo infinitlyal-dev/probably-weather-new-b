@@ -144,6 +144,47 @@ document.addEventListener("DOMContentLoaded", () => {
     return String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   }
 
+  /**
+   * Reverse geocode coordinates to get city name
+   * Uses Nominatim API (free, no key required)
+   */
+  async function reverseGeocode(lat, lon) {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`,
+        { 
+          headers: { 'User-Agent': 'ProbablyWeather/1.0' },
+          signal: AbortSignal.timeout(5000)
+        }
+      );
+      
+      if (!response.ok) {
+        console.warn('[GEOCODE] Failed to reverse geocode:', response.status);
+        return null;
+      }
+      
+      const data = await response.json();
+      
+      // Extract city name - try city, town, village, municipality
+      const city = data.address?.city || 
+                   data.address?.town || 
+                   data.address?.village || 
+                   data.address?.municipality ||
+                   'My Location';
+      
+      const country = data.address?.country || '';
+      
+      const displayName = country ? `${city}, ${country}` : city;
+      
+      console.log('[GEOCODE] Resolved:', { lat, lon, displayName });
+      return displayName;
+      
+    } catch (error) {
+      console.warn('[GEOCODE] Error:', error.message);
+      return null;
+    }
+  }
+
   // ========== SINGLE SOURCE OF TRUTH: DOMINANT CONDITION ==========
   // SINGLE SOURCE OF TRUTH for weather condition
   // Priority order: Storm > Rain > Wind > Cold > Heat > Fog > Clear
@@ -472,8 +513,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set body class for condition-based styling
     document.body.className = `weather-${condition}`;
 
-    // Location
-    safeText(locationEl, activePlace.name || '—');
+    // Location - use API location name if available
+    let locationName = norm.locationName || activePlace?.name || 'My Location';
+
+    // Show initial value immediately (non-blocking)
+    safeText(locationEl, locationName);
+    console.log('[LOCATION] Displaying:', locationName);
+
+    // If we only have "My Location" but we have coordinates, reverse geocode
+    if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
+      const currentPlace = activePlace; // Capture current reference to prevent race conditions
+      
+      reverseGeocode(activePlace.lat, activePlace.lon).then(cityName => {
+        // Only update if we're still on the same location (avoid race conditions)
+        if (cityName && currentPlace === activePlace) {
+          safeText(locationEl, cityName);
+          // Cache the result so we don't geocode again
+          if (activePlace) {
+            activePlace.name = cityName;
+          }
+          if (homePlace && samePlace(homePlace, currentPlace)) {
+            homePlace.name = cityName;
+            saveJSON(STORAGE.home, homePlace);
+          }
+          console.log('[LOCATION] Updated to:', cityName);
+        }
+      }).catch(err => {
+        console.warn('[LOCATION] Geocoding failed:', err.message);
+        // Keep showing "My Location" on error - don't break the app
+      });
+    }
     
     // Hero headline - driven by condition (Spec Section 6)
     safeText(headlineEl, getHeadline(condition));
