@@ -716,7 +716,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /**
    * Gets a fallback location when the primary location source fails.
-   * First tries geolocation, then falls back to Cape Town as a tertiary option.
+   * First tries geolocation, then falls back to default location as a tertiary option.
+   * This function always resolves with a location (never rejects).
    */
   async function getFallbackLocation() {
     try {
@@ -725,12 +726,11 @@ document.addEventListener("DOMContentLoaded", () => {
       showToast("Using your current location");
       return geoLocation;
     } catch (geoError) {
-      // Show geolocation error to user
-      showToast(geoError, 4000);
+      // Show combined error and fallback message to user
+      showToast(`${geoError} Using ${DEFAULT_LOCATION.name} instead.`, 5000);
       console.warn("Geolocation failed:", geoError);
       
       // Fall back to default location as tertiary fallback
-      showToast(`Using default location: ${DEFAULT_LOCATION.name}`, 3000);
       return DEFAULT_LOCATION;
     }
   }
@@ -745,22 +745,15 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     loadAndRender(homePlace);
   } else {
-    // Try to get user's current location
+    // Try to get user's current location (with fallback to default)
     showScreen(screenHome);
     renderLoading("My Location");
 
-    getFallbackLocation()
-      .then((location) => {
-        homePlace = location;
-        saveJSON(STORAGE.home, homePlace);
-        loadAndRender(homePlace);
-      })
-      .catch((error) => {
-        // This should not happen since getFallbackLocation always returns something
-        console.error("Unexpected error in getFallbackLocation:", error);
-        homePlace = DEFAULT_LOCATION;
-        saveJSON(STORAGE.home, homePlace);
-        loadAndRender(homePlace);
-      });
+    // getFallbackLocation always resolves (never rejects)
+    getFallbackLocation().then((location) => {
+      homePlace = location;
+      saveJSON(STORAGE.home, homePlace);
+      loadAndRender(homePlace);
+    });
   }
 });
