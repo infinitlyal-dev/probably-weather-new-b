@@ -402,6 +402,11 @@ document.addEventListener("DOMContentLoaded", () => {
           safeText(locationEl, cityName);
           // Update activePlace.name so we don't geocode again
           if (activePlace) activePlace.name = cityName;
+          // If this is the home location, save it to localStorage
+          if (homePlace && samePlace(activePlace, homePlace)) {
+            homePlace.name = cityName;
+            saveJSON(STORAGE.home, homePlace);
+          }
           console.log('[LOCATION] Updated to:', cityName);
         }
       });
