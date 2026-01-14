@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
+  // Default fallback location (tertiary fallback when geolocation fails)
+  const DEFAULT_LOCATION = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+
   // Thresholds for condition detection (from product spec)
   const THRESH = {
     RAIN_PCT: 40,    // >= 40% rain chance = rain dominates
@@ -726,9 +729,9 @@ document.addEventListener("DOMContentLoaded", () => {
       showToast(geoError, 4000);
       console.warn("Geolocation failed:", geoError);
       
-      // Fall back to Cape Town as tertiary fallback
-      showToast("Using default location: Cape Town", 3000);
-      return { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+      // Fall back to default location as tertiary fallback
+      showToast(`Using default location: ${DEFAULT_LOCATION.name}`, 3000);
+      return DEFAULT_LOCATION;
     }
   }
 
@@ -746,20 +749,16 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     renderLoading("My Location");
 
-    getUserLocation()
+    getFallbackLocation()
       .then((location) => {
         homePlace = location;
         saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
       })
       .catch((error) => {
-        // Show error message to user
-        showToast(error, 4000);
-        console.warn("Geolocation failed:", error);
-        
-        // Fall back to Cape Town as tertiary fallback
-        showToast("Using default location: Cape Town", 3000);
-        homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+        // This should not happen since getFallbackLocation always returns something
+        console.error("Unexpected error in getFallbackLocation:", error);
+        homePlace = DEFAULT_LOCATION;
         saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
       });
