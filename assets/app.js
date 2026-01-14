@@ -726,9 +726,9 @@ document.addEventListener("DOMContentLoaded", () => {
       showToast("Using your current location");
       return geoLocation;
     } catch (geoError) {
-      // Show combined error and fallback message to user
-      showToast(`${geoError} Using ${DEFAULT_LOCATION.name} instead.`, 5000);
+      // Log the specific error and show user-friendly message
       console.warn("Geolocation failed:", geoError);
+      showToast(`Location access failed. Using ${DEFAULT_LOCATION.name} instead.`, 5000);
       
       // Fall back to default location as tertiary fallback
       return DEFAULT_LOCATION;
