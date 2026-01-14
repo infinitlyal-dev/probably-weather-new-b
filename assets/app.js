@@ -397,19 +397,27 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // If we only have "My Location" but we have coordinates, reverse geocode
     if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
-      reverseGeocode(activePlace.lat, activePlace.lon).then(cityName => {
-        if (cityName) {
-          safeText(locationEl, cityName);
-          // Update activePlace.name so we don't geocode again
-          if (activePlace) activePlace.name = cityName;
-          // If this is the home location, save it to localStorage
-          if (homePlace && samePlace(activePlace, homePlace)) {
-            homePlace.name = cityName;
-            saveJSON(STORAGE.home, homePlace);
+      // Store reference to current place to avoid race conditions
+      const placeToGeocode = activePlace;
+      reverseGeocode(activePlace.lat, activePlace.lon)
+        .then(cityName => {
+          if (cityName && placeToGeocode === activePlace) {
+            // Only update if we're still on the same place
+            safeText(locationEl, cityName);
+            // Update activePlace.name so we don't geocode again
+            if (activePlace) activePlace.name = cityName;
+            // If this is the home location, save it to localStorage
+            if (homePlace && samePlace(activePlace, homePlace)) {
+              homePlace.name = cityName;
+              saveJSON(STORAGE.home, homePlace);
+            }
+            console.log('[LOCATION] Updated to:', cityName);
           }
-          console.log('[LOCATION] Updated to:', cityName);
-        }
-      });
+        })
+        .catch(err => {
+          console.warn('[LOCATION] Geocoding failed:', err.message);
+          // No action needed - location stays as "My Location"
+        });
     }
     
     safeText(locationEl, locationName);
