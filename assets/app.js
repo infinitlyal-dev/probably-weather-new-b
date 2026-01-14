@@ -159,7 +159,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return 'storm';
     }
 
-    // 2. RAIN (>=40%)
+    // 2. RAIN - Check current condition first, then forecast
+    if (condKey === 'rain' || condKey.includes('rain') || 
+        condKey.includes('drizzle') || condKey.includes('shower')) {
+      return 'rain';
+    }
+
+    // Also check forecast threshold (for future predictions)
     if (isNum(rain) && rain >= THRESH.RAIN_PCT) {
       return 'rain';
     }
