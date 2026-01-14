@@ -668,6 +668,70 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ========== GEOLOCATION ==========
+  
+  /**
+   * Attempts to get the user's current geolocation.
+   * Returns a Promise that resolves to a place object with coordinates.
+   * Rejects with an error message if geolocation fails.
+   */
+  function getUserLocation() {
+    return new Promise((resolve, reject) => {
+      if (!("geolocation" in navigator)) {
+        reject("Geolocation not supported by your browser");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = round1(pos.coords.latitude);
+          const lon = round1(pos.coords.longitude);
+          resolve({ name: "My Location", lat, lon });
+        },
+        (error) => {
+          // Handle different geolocation error types
+          let errorMessage;
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              errorMessage = "Location permissions denied. Please enable location access in your browser settings.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              errorMessage = "Unable to determine your location. Please try again.";
+              break;
+            case error.TIMEOUT:
+              errorMessage = "Location request timed out. Please try again.";
+              break;
+            default:
+              errorMessage = "Unable to access your location.";
+          }
+          reject(errorMessage);
+        },
+        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
+      );
+    });
+  }
+
+  /**
+   * Gets a fallback location when the primary location source fails.
+   * First tries geolocation, then falls back to Cape Town as a tertiary option.
+   */
+  async function getFallbackLocation() {
+    try {
+      // Try to get user's geolocation first
+      const geoLocation = await getUserLocation();
+      showToast("Using your current location");
+      return geoLocation;
+    } catch (geoError) {
+      // Show geolocation error to user
+      showToast(geoError, 4000);
+      console.warn("Geolocation failed:", geoError);
+      
+      // Fall back to Cape Town as tertiary fallback
+      showToast("Using default location: Cape Town", 3000);
+      return { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+    }
+  }
+
   // ========== INITIALIZATION ==========
   
   renderRecents();
@@ -678,31 +742,26 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     loadAndRender(homePlace);
   } else {
-    // Geolocation
+    // Try to get user's current location
     showScreen(screenHome);
     renderLoading("My Location");
 
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const lat = round1(pos.coords.latitude);
-          const lon = round1(pos.coords.longitude);
-          homePlace = { name: "My Location", lat, lon };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        () => {
-          // Fallback: Cape Town
-          homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
-      );
-    } else {
-      homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
-      saveJSON(STORAGE.home, homePlace);
-      loadAndRender(homePlace);
-    }
+    getUserLocation()
+      .then((location) => {
+        homePlace = location;
+        saveJSON(STORAGE.home, homePlace);
+        loadAndRender(homePlace);
+      })
+      .catch((error) => {
+        // Show error message to user
+        showToast(error, 4000);
+        console.warn("Geolocation failed:", error);
+        
+        // Fall back to Cape Town as tertiary fallback
+        showToast("Using default location: Cape Town", 3000);
+        homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+        saveJSON(STORAGE.home, homePlace);
+        loadAndRender(homePlace);
+      });
   }
 });
