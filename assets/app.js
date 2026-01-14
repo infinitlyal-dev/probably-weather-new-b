@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return 'rain';
     }
 
-    // Also check forecast threshold (for future predictions)
+    // Also check forecast threshold (for predictions when conditionKey doesn't indicate rain)
     if (isNum(rain) && rain >= THRESH.RAIN_PCT) {
       return 'rain';
     }
