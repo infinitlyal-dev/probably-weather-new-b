@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
                    data.address?.town || 
                    data.address?.village || 
                    data.address?.municipality ||
-                   'Unknown Location';
+                   'My Location';
       
       const country = data.address?.country || '';
       
@@ -532,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (activePlace) {
             activePlace.name = cityName;
           }
-          if (homePlace && homePlace.lat === currentPlace.lat && homePlace.lon === currentPlace.lon) {
+          if (homePlace && samePlace(homePlace, currentPlace)) {
             homePlace.name = cityName;
             saveJSON(STORAGE.home, homePlace);
           }
