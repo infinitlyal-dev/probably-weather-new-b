@@ -507,17 +507,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
       const currentPlace = activePlace; 
       
-      reverseGeocode(activePlace.lat, activePlace.lon).then(cityName => {
-        if (cityName && currentPlace === activePlace) {
-          safeText(locationEl, cityName);
-          // Cache the result
-          if (activePlace) activePlace.name = cityName;
-          if (homePlace && homePlace.lat === currentPlace.lat && homePlace.lon === currentPlace.lon) {
-            homePlace.name = cityName;
-            saveJSON(STORAGE.home, homePlace);
+      reverseGeocode(activePlace.lat, activePlace.lon)
+        .then(cityName => {
+          if (cityName && currentPlace === activePlace) {
+            safeText(locationEl, cityName);
+            // Cache the result
+            if (activePlace) activePlace.name = cityName;
+            if (homePlace && homePlace.lat === currentPlace.lat && homePlace.lon === currentPlace.lon) {
+              homePlace.name = cityName;
+              saveJSON(STORAGE.home, homePlace);
+            }
           }
-        }
-      });
+        })
+        .catch(error => {
+          console.warn('[GEOCODE] Failed to reverse geocode:', error);
+        });
     }
     
     // Hero headline - driven by condition (Spec Section 6)
