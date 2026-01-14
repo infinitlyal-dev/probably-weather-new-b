@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
+  // Default fallback location (tertiary fallback when geolocation fails)
+  const DEFAULT_LOCATION = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+
   // Thresholds for condition detection (from product spec)
   const THRESH = {
     RAIN_PCT: 40,    // >= 40% rain chance = rain dominates
@@ -668,6 +671,70 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ========== GEOLOCATION ==========
+  
+  /**
+   * Attempts to get the user's current geolocation.
+   * Returns a Promise that resolves to a place object with coordinates.
+   * Rejects with an error message if geolocation fails.
+   */
+  function getUserLocation() {
+    return new Promise((resolve, reject) => {
+      if (!("geolocation" in navigator)) {
+        reject("Geolocation not supported by your browser");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const lat = round1(pos.coords.latitude);
+          const lon = round1(pos.coords.longitude);
+          resolve({ name: "My Location", lat, lon });
+        },
+        (error) => {
+          // Handle different geolocation error types
+          let errorMessage;
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              errorMessage = "Location permissions denied. Please enable location access in your browser settings.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              errorMessage = "Unable to determine your location. Please try again.";
+              break;
+            case error.TIMEOUT:
+              errorMessage = "Location request timed out. Please try again.";
+              break;
+            default:
+              errorMessage = "Unable to access your location.";
+          }
+          reject(errorMessage);
+        },
+        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
+      );
+    });
+  }
+
+  /**
+   * Gets a fallback location when the primary location source fails.
+   * First tries geolocation, then falls back to default location as a tertiary option.
+   * This function always resolves with a location (never rejects).
+   */
+  async function getFallbackLocation() {
+    try {
+      // Try to get user's geolocation first
+      const geoLocation = await getUserLocation();
+      showToast("Using your current location");
+      return geoLocation;
+    } catch (geoError) {
+      // Log the specific error and show user-friendly message
+      console.warn("Geolocation failed:", geoError);
+      showToast(`Location access failed. Using ${DEFAULT_LOCATION.name} instead.`, 5000);
+      
+      // Fall back to default location as tertiary fallback
+      return DEFAULT_LOCATION;
+    }
+  }
+
   // ========== INITIALIZATION ==========
   
   renderRecents();
@@ -678,31 +745,15 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     loadAndRender(homePlace);
   } else {
-    // Geolocation
+    // Try to get user's current location (with fallback to default)
     showScreen(screenHome);
     renderLoading("My Location");
 
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          const lat = round1(pos.coords.latitude);
-          const lon = round1(pos.coords.longitude);
-          homePlace = { name: "My Location", lat, lon };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        () => {
-          // Fallback: Cape Town
-          homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
-      );
-    } else {
-      homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
+    // getFallbackLocation always resolves (never rejects)
+    getFallbackLocation().then((location) => {
+      homePlace = location;
       saveJSON(STORAGE.home, homePlace);
       loadAndRender(homePlace);
-    }
+    });
   }
 });
