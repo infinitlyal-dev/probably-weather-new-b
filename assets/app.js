@@ -313,6 +313,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== API & DATA ==========
   
+  async function reverseGeocode(lat, lon) {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`,
+        { 
+          headers: { 'User-Agent': 'ProbablyWeather/1.0' },
+          signal: AbortSignal.timeout(5000)
+        }
+      );
+      
+      if (!response.ok) return null;
+      
+      const data = await response.json();
+      
+      // Extract city name - try suburb first (for Strand), then city/town/etc
+      const city = data.address?.suburb || 
+                   data.address?.city || 
+                   data.address?.town || 
+                   data.address?.village || 
+                   data.address?.municipality ||
+                   'Unknown Location';
+      
+      const country = data.address?.country || '';
+      return country ? `${city}, ${country}` : city;
+      
+    } catch (error) {
+      console.warn('[GEOCODE] Error:', error.message);
+      return null;
+    }
+  }
+  
   async function fetchProbable(place) {
     const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const response = await fetch(url);
@@ -341,6 +372,8 @@ document.addEventListener("DOMContentLoaded", () => {
       failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: payload.hourly || [],
       daily: payload.daily || [],
+      locationName: payload.location?.name,
+      sourceRanges: meta.sourceRanges || [],
     };
   }
 
@@ -418,37 +451,29 @@ document.addEventListener("DOMContentLoaded", () => {
       safeText(uvValueEl, '--');
     }
 
-    // Confidence/Agreement - CRITICAL INVARIANT
-    const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
-    const confText = confMap[norm.confidenceKey] || 'Mixed';
-    
-    // INVARIANT 5 (CRITICAL): Agreement must NEVER be "--" when norm exists
-    if (confText === '--' || confText === '' || !confText) {
-      console.error('[INVARIANT VIOLATION] Agreement resolved to invalid value:', confText, 'confidenceKey:', norm.confidenceKey);
-      console.error('[INVARIANT VIOLATION] Forcing Agreement to "Mixed" as fallback');
-      safeText($('#confidenceValue'), 'Mixed');
+    // Source Ranges - show individual source temperature ranges
+    const sourceRanges = norm.sourceRanges || [];
+    if (sourceRanges.length > 0) {
+      const rangesText = sourceRanges
+        .filter(s => isNum(s.minTemp) && isNum(s.maxTemp))
+        .map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`)
+        .join('\n');
+      
+      safeText($('#confidenceValue'), rangesText || '--');
     } else {
+      // Fallback if no ranges (or render "Agreement" as fallback)
+      const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
+      const confText = confMap[norm.confidenceKey] || 'Mixed';
       safeText($('#confidenceValue'), confText);
     }
-    
-    // INVARIANT 6: confText must be exactly one of: Strong, Decent, Mixed
-    if (!['Strong', 'Decent', 'Mixed'].includes(confText)) {
-      console.error('[INVARIANT VIOLATION] Agreement text is not one of [Strong, Decent, Mixed]:', confText);
-    }
-    
-    // Update confidence bar visual
+
+    // Hide confidence bar
     if (confidenceBarEl) {
-      const confPct = norm.confidenceKey === 'strong' ? 100 
-                    : norm.confidenceKey === 'decent' ? 66 
-                    : 33;
-      confidenceBarEl.style.width = `${confPct}%`;
-      confidenceBarEl.style.background = norm.confidenceKey === 'strong' ? '#4CAF50' 
-                                       : norm.confidenceKey === 'decent' ? '#FFC107' 
-                                       : '#FF9800';
+      confidenceBarEl.style.display = 'none';
     }
     
     // INVARIANT 7: Log successful render for verification
-    console.log('[SIDEBAR] Rendered successfully. Agreement:', confText, 'Extreme:', extremeLabel);
+    console.log('[SIDEBAR] Rendered successfully. Source Ranges:', sourceRanges.length);
   }
 
   function renderError(msg) {
@@ -472,8 +497,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set body class for condition-based styling
     document.body.className = `weather-${condition}`;
 
-    // Location
-    safeText(locationEl, activePlace.name || '—');
+    // Location - use API location name if available
+    let locationName = norm.locationName || activePlace?.name || 'My Location';
+
+    // Show initial value immediately
+    safeText(locationEl, locationName);
+
+    // If we only have "My Location" but we have coordinates, reverse geocode
+    if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
+      const currentPlace = activePlace; 
+      
+      reverseGeocode(activePlace.lat, activePlace.lon)
+        .then(cityName => {
+          if (cityName && currentPlace === activePlace) {
+            safeText(locationEl, cityName);
+            // Cache the result
+            if (activePlace) activePlace.name = cityName;
+            if (homePlace && homePlace.lat === currentPlace.lat && homePlace.lon === currentPlace.lon) {
+              homePlace.name = cityName;
+              saveJSON(STORAGE.home, homePlace);
+            }
+          }
+        })
+        .catch(error => {
+          console.warn('[GEOCODE] Failed to reverse geocode:', error);
+        });
+    }
     
     // Hero headline - driven by condition (Spec Section 6)
     safeText(headlineEl, getHeadline(condition));
