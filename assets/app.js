@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activePlace = null;
   let homePlace = null;
   let lastPayload = null;
+  window.__PW_LAST_NORM = null; // Global store for latest normalized data
 
   // ========== UTILITY FUNCTIONS ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
@@ -108,6 +109,16 @@ document.addEventListener("DOMContentLoaded", () => {
       which.classList.remove("hidden");
       which.removeAttribute('hidden');
     }
+    
+    // Hide sidebar on non-Home screens
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+      if (which === screenHome) {
+        sidebar.style.display = ''; // Show on Home
+      } else {
+        sidebar.style.display = 'none'; // Hide on other screens
+      }
+    }
   }
 
   function showLoader(show) {
@@ -140,7 +151,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeDominantCondition(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase();
     const rain = norm.rainPct;
-    const wind = norm.windKph;
+    const maxWindKph = (() => {
+      let max = isNum(norm.windKph) ? norm.windKph : null;
+      const hours = Array.isArray(norm.hourly) ? norm.hourly : [];
+      for (let i = 0; i < Math.min(24, hours.length); i++) {
+        const w = hours[i]?.windKph;
+        if (isNum(w)) max = isNum(max) ? Math.max(max, w) : w;
+      }
+      return max;
+    })();
+    const wind = maxWindKph;
     const hi = norm.todayHigh;
 
     // 1. STORM
@@ -148,7 +168,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return 'storm';
     }
 
-    // 2. RAIN (>=40%)
+    // 2. RAIN - Check current condition first, then forecast
+    if (condKey === 'rain' || condKey.includes('rain') || 
+        condKey.includes('drizzle') || condKey.includes('shower')) {
+      return 'rain';
+    }
+
+    // Also check forecast threshold (for predictions when conditionKey doesn't indicate rain)
     if (isNum(rain) && rain >= THRESH.RAIN_PCT) {
       return 'rain';
     }
@@ -241,11 +267,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const folder = condition;
     const fallbackFolder = 'clear';
     
-    // Image variants: dawn, day, dusk, night
-    const variants = ['dawn', 'day', 'dusk', 'night'];
-    const imageIndex = Math.abs(hashString(condition + (activePlace?.name || ''))) % 4;
-    const imageName = variants[imageIndex];
-    const path = `${base}/${folder}/${imageName}.jpg`;
+    // Determine time of day based on current hour
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    let timeOfDay;
+    
+    if (hour >= 5 && hour < 8) {
+      timeOfDay = 'dawn';
+    } else if (hour >= 8 && hour < 17) {
+      timeOfDay = 'day';
+    } else if ((hour >= 17 && hour < 19) || (hour === 19 && minute < 30)) {
+      timeOfDay = 'dusk';
+    } else {
+      timeOfDay = 'night';
+    }
+    
+    const path = `${base}/${folder}/${timeOfDay}.jpg`;
 
     if (bgImg) {
       bgImg.src = path;
@@ -284,6 +322,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== API & DATA ==========
   
+  async function reverseGeocode(lat, lon) {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`,
+        { 
+          headers: { 'User-Agent': 'ProbablyWeather/1.0' },
+          signal: AbortSignal.timeout(5000)
+        }
+      );
+      
+      if (!response.ok) return null;
+      
+      const data = await response.json();
+      
+      // Extract city name - try suburb first (for Strand), then city/town/etc
+      const city = data.address?.suburb || 
+                   data.address?.city || 
+                   data.address?.town || 
+                   data.address?.village || 
+                   data.address?.municipality ||
+                   'Unknown Location';
+      
+      const country = data.address?.country || '';
+      return country ? `${city}, ${country}` : city;
+      
+    } catch (error) {
+      console.warn('[GEOCODE] Error:', error.message);
+      return null;
+    }
+  }
+  
   async function fetchProbable(place) {
     const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const response = await fetch(url);
@@ -312,6 +381,8 @@ document.addEventListener("DOMContentLoaded", () => {
       failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: payload.hourly || [],
       daily: payload.daily || [],
+      locationName: payload.location?.name,
+      sourceRanges: meta.sourceRanges || [],
     };
   }
 
@@ -328,6 +399,90 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(uvValueEl, '--');
     safeText(confidenceEl, 'PROBABLY • —');
     safeText(sourcesEl, 'Sources: —');
+  }
+
+  function renderSidebar(norm) {
+    // INVARIANT 1: If called with null/undefined, do nothing but don't break
+    if (!norm) {
+      // Runtime check: if __PW_LAST_NORM exists but norm is null, this is a programming error
+      if (window.__PW_LAST_NORM) {
+        console.error('[INVARIANT VIOLATION] renderSidebar called with null but __PW_LAST_NORM exists. Using cached data.');
+        norm = window.__PW_LAST_NORM;
+      } else {
+        return; // No data available, early exit is safe
+      }
+    }
+    
+    const rain = norm.rainPct;
+    const uv = norm.uv;
+    const condition = computeDominantCondition(norm);
+    
+    // Today's extreme
+    const extremeLabel = getExtremeLabel(condition);
+    safeText(extremeLabelEl, `Today's extreme:`);
+    safeText(extremeValueEl, extremeLabel);
+    
+    // INVARIANT 2: Extreme label must never be empty string or undefined when data exists
+    if (!extremeLabel) {
+      console.error('[INVARIANT VIOLATION] getExtremeLabel returned empty for condition:', condition);
+    }
+
+    // Rain display
+    if (isNum(rain)) {
+      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
+                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
+                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
+                     : 'Likely';
+      safeText(rainValueEl, rainText);
+      
+      // INVARIANT 3: Rain text must be one of the valid strings when rain is numeric
+      if (!['None expected', 'Unlikely', 'Possible', 'Likely'].includes(rainText)) {
+        console.error('[INVARIANT VIOLATION] Invalid rain text computed:', rainText, 'for rain:', rain);
+      }
+    } else {
+      safeText(rainValueEl, '--');
+    }
+
+    // UV display
+    if (isNum(uv)) {
+      const uvText = uv < THRESH.UV_LOW ? 'Low'
+                   : uv < THRESH.UV_MODERATE ? 'Moderate'
+                   : uv < THRESH.UV_HIGH ? 'High'
+                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
+                   : 'Extreme';
+      safeText(uvValueEl, `${uvText} (${round0(uv)})`);
+      
+      // INVARIANT 4: UV text must be one of the valid categories when UV is numeric
+      if (!['Low', 'Moderate', 'High', 'Very High', 'Extreme'].includes(uvText)) {
+        console.error('[INVARIANT VIOLATION] Invalid UV text computed:', uvText, 'for UV:', uv);
+      }
+    } else {
+      safeText(uvValueEl, '--');
+    }
+
+    // Source Ranges - show individual source temperature ranges
+    const sourceRanges = norm.sourceRanges || [];
+    if (sourceRanges.length > 0) {
+      const rangesText = sourceRanges
+        .filter(s => isNum(s.minTemp) && isNum(s.maxTemp))
+        .map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`)
+        .join('\n');
+      
+      safeText($('#confidenceValue'), rangesText || '--');
+    } else {
+      // Fallback if no ranges (or render "Agreement" as fallback)
+      const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
+      const confText = confMap[norm.confidenceKey] || 'Mixed';
+      safeText($('#confidenceValue'), confText);
+    }
+
+    // Hide confidence bar
+    if (confidenceBarEl) {
+      confidenceBarEl.style.display = 'none';
+    }
+    
+    // INVARIANT 7: Log successful render for verification
+    console.log('[SIDEBAR] Rendered successfully. Source Ranges:', sourceRanges.length);
   }
 
   function renderError(msg) {
@@ -351,8 +506,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set body class for condition-based styling
     document.body.className = `weather-${condition}`;
 
-    // Location
-    safeText(locationEl, activePlace.name || '—');
+    // Location - use API location name if available
+    let locationName = norm.locationName || activePlace?.name || 'My Location';
+
+    // Show initial value immediately
+    safeText(locationEl, locationName);
+
+    // If we only have "My Location" but we have coordinates, reverse geocode
+    if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
+      const currentPlace = activePlace; 
+      
+      reverseGeocode(activePlace.lat, activePlace.lon)
+        .then(cityName => {
+          if (cityName && currentPlace === activePlace) {
+            safeText(locationEl, cityName);
+            // Cache the result
+            if (activePlace) activePlace.name = cityName;
+            if (homePlace && homePlace.lat === currentPlace.lat && homePlace.lon === currentPlace.lon) {
+              homePlace.name = cityName;
+              saveJSON(STORAGE.home, homePlace);
+            }
+          }
+        })
+        .catch(error => {
+          console.warn('[GEOCODE] Failed to reverse geocode:', error);
+        });
+    }
     
     // Hero headline - driven by condition (Spec Section 6)
     safeText(headlineEl, getHeadline(condition));
@@ -365,33 +544,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Witty line - driven by condition (Spec Section 7)
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
-    // Today's extreme - driven by condition (Spec Section 8)
-    const extremeLabel = getExtremeLabel(condition);
-    safeText(extremeLabelEl, `Today's extreme:`);
-    safeText(extremeValueEl, extremeLabel);
-
-    // Rain display
-    if (isNum(rain)) {
-      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
-                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
-                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
-                     : 'Likely';
-      safeText(rainValueEl, rainText);
-    } else {
-      safeText(rainValueEl, '--');
-    }
-
-    // UV display
-    if (isNum(uv)) {
-      const uvText = uv < THRESH.UV_LOW ? 'Low'
-                   : uv < THRESH.UV_MODERATE ? 'Moderate'
-                   : uv < THRESH.UV_HIGH ? 'High'
-                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
-                   : 'Extreme';
-      safeText(uvValueEl, `${uvText} (${round0(uv)})`);
-    } else {
-      safeText(uvValueEl, '--');
-    }
+    // Render sidebar (extracted for reuse across tabs)
+    renderSidebar(norm);
 
     // Confidence
     const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
@@ -454,6 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const payload = await fetchProbable(place);
       lastPayload = payload;
       const norm = normalizePayload(payload);
+      window.__PW_LAST_NORM = norm; // Store for sidebar persistence
       renderHome(norm);
       renderHourly(norm.hourly);
       renderWeek(norm.daily);
@@ -636,14 +791,48 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
   });
-  navHourly.addEventListener('click', () => showScreen(screenHourly));
-  navWeek.addEventListener('click', () => showScreen(screenWeek));
+  
+  navHourly.addEventListener('click', () => {
+    showScreen(screenHourly);
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Hourly but no weather data loaded yet');
+    }
+  });
+  
+  navWeek.addEventListener('click', () => {
+    showScreen(screenWeek);
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Week but no weather data loaded yet');
+    }
+  });
+  
   navSearch.addEventListener('click', () => {
     showScreen(screenSearch);
     renderRecents();
     renderFavorites();
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Search but no weather data loaded yet');
+    }
   });
-  navSettings.addEventListener('click', () => showScreen(screenSettings));
+  
+  navSettings.addEventListener('click', () => {
+    showScreen(screenSettings);
+    // INVARIANT: Always re-render sidebar when data exists
+    if (window.__PW_LAST_NORM) {
+      renderSidebar(window.__PW_LAST_NORM);
+    } else {
+      console.warn('[NAVIGATION] Switched to Settings but no weather data loaded yet');
+    }
+  });
 
   saveCurrent.addEventListener('click', () => {
     if (activePlace) addFavorite(activePlace);
