@@ -29,6 +29,36 @@ export default async function handler(req, res) {
         }
       }
   
+      let resolvedName = name;
+      if (!resolvedName) {
+        try {
+          const rev = await fetchJson(
+            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+            { headers: { 'User-Agent': MET_USER_AGENT } }
+          );
+
+          const addr = rev?.address || {};
+          const primary = addr.suburb || addr.neighbourhood || addr.village || addr.town || addr.city;
+          const secondary = addr.county || addr.state || addr.province;
+          const country = addr.country;
+
+          const parts = [];
+          if (primary) {
+            parts.push(primary);
+            if (secondary) parts.push(secondary);
+          } else if (secondary) {
+            parts.push(secondary);
+          } else if (country) {
+            parts.push(country);
+          }
+          if (country && parts[parts.length - 1] !== country) parts.push(country);
+
+          if (parts.length) resolvedName = parts.join(', ');
+        } catch {
+          // Keep fallback name if reverse geocode fails
+        }
+      }
+
       const failures = [];
       const norms = [];
       const hourlies = []; 
@@ -254,7 +284,7 @@ export default async function handler(req, res) {
       return res.status(200).json({
         ok: true,
         location: {
-          name: name || 'Unknown',
+          name: resolvedName || name || 'Unknown',
           lat,
           lon,
         },

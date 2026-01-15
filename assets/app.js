@@ -151,7 +151,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeDominantCondition(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase();
     const rain = norm.rainPct;
-    const wind = norm.windKph;
+    const maxWindKph = (() => {
+      let max = isNum(norm.windKph) ? norm.windKph : null;
+      const hours = Array.isArray(norm.hourly) ? norm.hourly : [];
+      for (let i = 0; i < Math.min(24, hours.length); i++) {
+        const w = hours[i]?.windKph;
+        if (isNum(w)) max = isNum(max) ? Math.max(max, w) : w;
+      }
+      return max;
+    })();
+    const wind = maxWindKph;
     const hi = norm.todayHigh;
 
     // 1. STORM
