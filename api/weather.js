@@ -23,6 +23,35 @@ export default async function handler(req, res) {
       lon = lonQ;
       name = "Near you";
       country = "";
+
+      // Reverse geocode for coords mode (prefer suburb/neighbourhood/village/town/city -> county/state -> country)
+      try {
+        const revUrl = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
+        const revRes = await fetch(revUrl, {
+          headers: { "User-Agent": "ProbablyWeather/1.0 (contact: hello@probablyweather.app)" },
+        });
+        if (revRes.ok) {
+          const rev = await revRes.json();
+          const addr = rev?.address || {};
+          const primary =
+            addr.suburb || addr.neighbourhood || addr.village || addr.town || addr.city;
+          const secondary =
+            addr.county || addr.state || addr.province || addr.region || addr.state_district;
+          const countryName = addr.country;
+
+          if (primary) {
+            name = secondary ? `${primary}, ${secondary}` : primary;
+          } else if (secondary) {
+            name = secondary;
+          } else if (countryName) {
+            name = countryName;
+          }
+
+          if (countryName) country = countryName;
+        }
+      } catch (e) {
+        // Keep fallback name/country
+      }
     } else {
       // Geocode via Open-Meteo (simple + free)
       const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(

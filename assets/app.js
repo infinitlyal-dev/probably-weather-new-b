@@ -47,7 +47,20 @@
     
     var apiCondition = (now.conditionKey || today.conditionKey || "").toLowerCase();
     var rain = isNum(today.rainChance) ? today.rainChance : now.rainChance;
-    var wind = now.windKph;
+    var windNow = now.windKph;
+    var windHourlyMax = null;
+    if (data.hourly && data.hourly.length) {
+      windHourlyMax = data.hourly.reduce(function(max, h) {
+        if (isNum(h.windKph)) {
+          return isNum(max) ? Math.max(max, h.windKph) : h.windKph;
+        }
+        return max;
+      }, null);
+    }
+    var wind = isNum(windHourlyMax) ? windHourlyMax : windNow;
+    if (isNum(windNow) && isNum(windHourlyMax)) {
+      wind = Math.max(windNow, windHourlyMax);
+    }
     var high = today.highC;
     
     // 1. STORM
