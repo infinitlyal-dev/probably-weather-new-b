@@ -613,6 +613,10 @@ select option {
 }
 
 /* HOME SCREEN LAYOUT OVERRIDES (mockup alignment) */
+:root {
+  --home-bottom-safe: 120px;
+}
+
 main#home-screen.main {
   position: relative;
   display: flex;
@@ -620,7 +624,23 @@ main#home-screen.main {
   align-items: flex-start;
   justify-content: flex-end;
   text-align: left;
-  padding-bottom: calc(140px + env(safe-area-inset-bottom));
+  padding-bottom: calc(var(--home-bottom-safe) + env(safe-area-inset-bottom));
+}
+
+main#home-screen .header {
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+main#home-screen .brand-title,
+main#home-screen .brand-location,
+main#home-screen .tagline {
+  text-align: left;
+}
+
+main#home-screen .brand-text {
+  align-items: flex-start;
 }
 
 main#home-screen.main #confidence,
@@ -651,7 +671,7 @@ main#home-screen.main .brand {
 
 @media (max-width: 640px) {
   main#home-screen.main {
-    padding-bottom: calc(120px + env(safe-area-inset-bottom));
+    padding-bottom: calc(var(--home-bottom-safe) + env(safe-area-inset-bottom));
   }
 
   main#home-screen.main .brand {
