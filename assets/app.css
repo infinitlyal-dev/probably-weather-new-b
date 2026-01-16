@@ -175,33 +175,20 @@ body.modal-open {
 }
 
 .hourly-screen, .week-screen, .search-screen, .settings-screen {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: min(1100px, 94vw);
-  max-height: calc(100dvh - var(--bottom-nav-h) - (var(--overlay-pad) * 2));
+  max-height: calc(100vh - var(--nav-h, 80px) - var(--top-gap, 120px));
   height: auto;
-  padding: var(--overlay-pad);
+  margin: var(--top-gap, 120px) auto 0;
+  padding: var(--overlay-pad, 24px);
+  padding-bottom: calc(var(--nav-h, 80px) + 16px);
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(5px);
-  overflow: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  z-index: 2000;
-}
-
-.hourly-screen::before,
-.week-screen::before,
-.search-screen::before,
-.settings-screen::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(5px);
-  z-index: -1;
 }
 
 @media (max-height: 760px) {
