@@ -48,8 +48,8 @@ export default async function handler(req, res) {
             return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
           };
           const pick = (...vals) => vals.find(v => !isBadLabel(v));
-          const primary = pick(addr.suburb, addr.neighbourhood);
-          const cityTown = pick(addr.town, addr.city, addr.village);
+          const primary = pick(addr.town, addr.city, addr.village);
+          const cityTown = pick(addr.suburb, addr.neighbourhood);
           const secondary = pick(addr.municipality, addr.state, addr.province);
           const country = addr.country;
 
