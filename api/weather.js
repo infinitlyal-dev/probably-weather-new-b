@@ -291,6 +291,7 @@ export default async function handler(req, res) {
       // Build "now" object from median of all sources
       const medNowTemp = median(norms.map(n => n.nowTemp).filter(isNum));
       const medWindKph = median(norms.map(n => n.windKph).filter(isNum));
+      const wind_kph = isNum(medWindKph) ? medWindKph : 0;
       const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
   
       return res.status(200).json({
@@ -300,6 +301,7 @@ export default async function handler(req, res) {
           lat,
           lon,
         },
+        wind_kph,
         now: {
           tempC: medNowTemp,
           feelsLikeC: medNowTemp, // Simplified - same as temp

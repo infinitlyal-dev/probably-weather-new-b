@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
       todayLow: today.lowC ?? null,
       rainPct: today.rainChance ?? now.rainChance ?? null,
       uv: today.uv ?? null,
-      windKph: now.windKph ?? null,
+      windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0),
       conditionKey: now.conditionKey || today.conditionKey || null,
       conditionLabel: now.conditionLabel || today.conditionLabel || 'Weather today',
       confidenceKey: payload.consensus?.confidenceKey || 'mixed',
@@ -420,6 +420,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const rain = norm.rainPct;
     const uv = norm.uv;
     const condition = computeDominantCondition(norm);
+
+    let windValueEl = document.getElementById('windValue');
+    if (!windValueEl) {
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const label = document.createElement('div');
+        label.className = 'label';
+        label.textContent = 'Wind';
+        const value = document.createElement('div');
+        value.className = 'value';
+        value.id = 'windValue';
+        card.appendChild(label);
+        card.appendChild(value);
+        if (rainValueEl && rainValueEl.parentElement) {
+          sidebar.insertBefore(card, rainValueEl.parentElement);
+        } else {
+          sidebar.appendChild(card);
+        }
+        windValueEl = value;
+      }
+    }
     
     // Today's extreme
     const extremeLabel = getExtremeLabel(condition);
@@ -445,6 +468,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       safeText(rainValueEl, '--');
+    }
+
+    if (windValueEl) {
+      const windKph = isNum(norm.windKph) ? norm.windKph : 0;
+      safeText(windValueEl, `${round0(windKph)} km/h`);
     }
 
     // UV display
