@@ -150,12 +150,15 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 .nav {
   position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 2rem;
   background: rgba(0,0,0,0.5);
   padding: 1rem;
+  max-width: none;
 }
 
 .nav button {
