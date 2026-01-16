@@ -55,6 +55,16 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   text-align: center;
 }
 
+#home-screen {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-height: 70vh;
+  padding: 8rem 2rem 6rem;
+}
+
 .headline {
   font-size: 4rem;
   font-weight: 800;
