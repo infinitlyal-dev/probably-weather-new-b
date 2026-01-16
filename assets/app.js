@@ -109,6 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
       which.classList.remove("hidden");
       which.removeAttribute('hidden');
     }
+
+    if (saveCurrent) {
+      saveCurrent.style.display = which === screenHome ? '' : 'none';
+    }
     
     // Hide sidebar on non-Home screens
     const sidebar = document.querySelector('.sidebar');
