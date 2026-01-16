@@ -43,14 +43,21 @@ export default async function handler(req, res) {
           );
 
           const addr = rev?.address || {};
-          const primary = addr.suburb || addr.neighbourhood || addr.village || addr.town || addr.city;
-          const secondary = addr.county || addr.state || addr.province;
+          const isBadLabel = (s) => {
+            const v = String(s || '').trim();
+            return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
+          };
+          const pick = (...vals) => vals.find(v => !isBadLabel(v));
+          const primary = pick(addr.suburb, addr.neighbourhood);
+          const cityTown = pick(addr.town, addr.city, addr.village);
+          const secondary = pick(addr.municipality, addr.state, addr.province);
           const country = addr.country;
 
           const parts = [];
           if (primary) {
             parts.push(primary);
-            if (secondary) parts.push(secondary);
+          } else if (cityTown) {
+            parts.push(cityTown);
           } else if (secondary) {
             parts.push(secondary);
           } else if (country) {
