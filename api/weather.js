@@ -6,7 +6,12 @@ export default async function handler(req, res) {
     try {
       const lat = parseFloat(req.query.lat);
       const lon = parseFloat(req.query.lon);
-      const name = req.query.name || null;
+      const rawName = typeof req.query.name === 'string' ? req.query.name.trim() : '';
+      const isPlaceholder =
+        !rawName ||
+        /^unknown\b/i.test(rawName) ||
+        /^unknown location\b/i.test(rawName);
+      const name = rawName || null;
   
       if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
         return res.status(400).json({ ok: false, error: 'Invalid lat/lon' });
@@ -29,7 +34,7 @@ export default async function handler(req, res) {
         }
       }
   
-      let resolvedName = name;
+      let resolvedName = isPlaceholder ? null : name;
       if (!resolvedName) {
         try {
           const rev = await fetchJson(
