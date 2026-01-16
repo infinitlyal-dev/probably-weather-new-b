@@ -846,9 +846,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  saveCurrent.addEventListener('click', () => {
-    if (activePlace) addFavorite(activePlace);
-  });
+  if (saveCurrent) {
+    saveCurrent.addEventListener('click', () => {
+      if (activePlace) addFavorite(activePlace);
+    });
+  }
   
   if (searchCancel) {
     searchCancel.addEventListener('click', () => {
