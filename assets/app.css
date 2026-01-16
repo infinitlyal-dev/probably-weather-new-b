@@ -37,6 +37,7 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 .header {
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .brand-title {
@@ -358,7 +359,11 @@ select option {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
-  margin-top: 1rem;
+  margin-top: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .save-btn:hover {
