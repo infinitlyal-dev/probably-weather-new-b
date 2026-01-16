@@ -102,7 +102,7 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 .sidebar {
   position: absolute;
   right: 2rem;
-  top: 10rem;
+  top: 6rem;
   width: 200px;
 }
 
