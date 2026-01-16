@@ -55,6 +55,7 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   text-align: center;
 }
 
+/* HOME layout overrides (mockup) */
 #home-screen {
   text-align: left;
   display: flex;
@@ -62,21 +63,23 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   justify-content: flex-start;
   align-items: flex-start;
   min-height: 70vh;
-  padding: 4rem 2rem 2rem;
+  padding-top: clamp(2.5rem, 6vh, 4.5rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: calc(110px + env(safe-area-inset-bottom));
+}
+
+#home-screen .brand,
+#home-screen .brand-text,
+#home-screen .tagline {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  align-items: flex-start;
 }
 
 #home-screen .confidence {
-  margin-top: 8rem;
-}
-
-@media (max-width: 640px) {
-  #home-screen {
-    padding-top: 3rem;
-  }
-
-  #home-screen .confidence {
-    margin-top: 4rem;
-  }
+  margin-top: clamp(3rem, 14vh, 7.5rem);
 }
 
 .headline {
