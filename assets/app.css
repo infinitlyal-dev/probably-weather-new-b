@@ -59,10 +59,24 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-start;
   min-height: 70vh;
-  padding: 8rem 2rem 6rem;
+  padding: 4rem 2rem 2rem;
+}
+
+#home-screen .confidence {
+  margin-top: 8rem;
+}
+
+@media (max-width: 640px) {
+  #home-screen {
+    padding-top: 3rem;
+  }
+
+  #home-screen .confidence {
+    margin-top: 4rem;
+  }
 }
 
 .headline {
