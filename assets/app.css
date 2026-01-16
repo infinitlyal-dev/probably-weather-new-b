@@ -622,25 +622,31 @@ main#home-screen.main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: flex-start;
   text-align: left;
+  padding-top: clamp(2rem, 6vh, 3.5rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
   padding-bottom: calc(var(--home-bottom-safe) + env(safe-area-inset-bottom));
 }
 
-main#home-screen .header {
+body:has(main#home-screen.main:not(.hidden)) .header {
   text-align: left;
+  align-items: flex-start;
+}
+
+body:has(main#home-screen.main:not(.hidden)) .brand {
   justify-content: flex-start;
+}
+
+body:has(main#home-screen.main:not(.hidden)) .brand-text {
   align-items: flex-start;
 }
 
-main#home-screen .brand-title,
-main#home-screen .brand-location,
-main#home-screen .tagline {
+body:has(main#home-screen.main:not(.hidden)) .brand-title,
+body:has(main#home-screen.main:not(.hidden)) .brand-location,
+body:has(main#home-screen.main:not(.hidden)) .tagline {
   text-align: left;
-}
-
-main#home-screen .brand-text {
-  align-items: flex-start;
 }
 
 main#home-screen.main #confidence,
@@ -652,30 +658,17 @@ main#home-screen.main #description {
   max-width: 680px;
 }
 
-main#home-screen.main #headline {
-  margin-top: 0.5rem;
-}
-
-main#home-screen.main #description {
-  margin-top: 0.5rem;
-}
-
-main#home-screen.main .brand {
-  position: absolute;
-  top: 40px;
-  left: 56px;
-  z-index: 2;
-  text-align: left;
-  align-items: flex-start;
+main#home-screen.main #confidence {
+  margin-top: clamp(6rem, 22vh, 12rem);
 }
 
 @media (max-width: 640px) {
   main#home-screen.main {
-    padding-bottom: calc(var(--home-bottom-safe) + env(safe-area-inset-bottom));
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
-  main#home-screen.main .brand {
-    top: 24px;
-    left: 24px;
+  main#home-screen.main #confidence {
+    margin-top: clamp(3.5rem, 16vh, 7rem);
   }
 }
