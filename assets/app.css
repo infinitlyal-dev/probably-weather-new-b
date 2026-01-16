@@ -659,7 +659,7 @@ main#home-screen.main #description {
 }
 
 main#home-screen.main #confidence {
-  margin-top: clamp(6rem, 22vh, 12rem);
+  margin-top: 0.75rem;
 }
 
 @media (max-width: 640px) {
@@ -669,6 +669,6 @@ main#home-screen.main #confidence {
   }
 
   main#home-screen.main #confidence {
-    margin-top: clamp(3.5rem, 16vh, 7rem);
+    margin-top: 0.75rem;
   }
 }
