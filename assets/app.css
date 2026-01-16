@@ -182,6 +182,59 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
   overflow-y: auto;
 }
 
+.week-screen, .search-screen, .settings-screen {
+  height: calc(100vh - var(--bottom-nav-height));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-screen .daily-cards {
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.week-screen .daily-card {
+  padding: 0.75rem;
+}
+
+.search-screen .section {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-screen .section ul,
+.search-screen #searchResultsList {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.settings-screen {
+  gap: 1rem;
+  align-items: stretch;
+  padding: 1.25rem;
+}
+
+.settings-screen .settings-section {
+  margin-bottom: 0;
+}
+
+.settings-screen .settings-option {
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .week-screen .daily-cards {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
 .screen-title {
   text-align: center;
   font-size: 2rem;
@@ -618,6 +671,7 @@ select option {
 /* HOME SCREEN LAYOUT OVERRIDES (mockup alignment) */
 :root {
   --home-bottom-safe: 120px;
+  --bottom-nav-height: 120px;
 }
 
 main#home-screen.main {
