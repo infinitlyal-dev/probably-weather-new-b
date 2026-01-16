@@ -110,6 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
       which.removeAttribute('hidden');
     }
 
+    document.body.classList.toggle('modal-open', which && which !== screenHome);
+
     if (saveCurrent) {
       saveCurrent.style.display = which === screenHome ? '' : 'none';
     }

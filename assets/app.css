@@ -26,6 +26,10 @@ body.weather-wind .confidence, body.weather-wind .card .label { color: #E3E9ED; 
 body.weather-fog .confidence, body.weather-fog .card .label { color: #B0BEC5; }
 body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D; }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -172,26 +176,32 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 
 .hourly-screen, .week-screen, .search-screen, .settings-screen {
   position: fixed;
-  inset: 0;
-  width: min(1100px, 92vw);
-  max-height: calc(100vh - var(--bottom-nav-height) - 48px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1100px, 94vw);
+  max-height: calc(100dvh - var(--bottom-nav-h) - (var(--overlay-pad) * 2));
   height: auto;
-  margin: 24px auto calc(var(--bottom-nav-height) + 24px);
+  padding: var(--overlay-pad);
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(5px);
-  padding: clamp(18px, 2.2vw, 28px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  z-index: 2000;
 }
 
-.hourly-screen .screen-title,
-.week-screen .screen-title,
-.search-screen .screen-title,
-.settings-screen .screen-title {
-  font-size: clamp(28px, 3vw, 44px);
-  margin-bottom: 0;
+.hourly-screen::before,
+.week-screen::before,
+.search-screen::before,
+.settings-screen::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(5px);
+  z-index: -1;
 }
 
 @media (max-height: 760px) {
@@ -204,18 +214,14 @@ body.weather-clear .confidence, body.weather-clear .card .label { color: #FFF59D
 .week-screen .daily-cards {
   flex: 1;
   min-height: 0;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: clamp(10px, 1.5vw, 18px);
   padding: 0;
 }
 
 .week-screen .daily-card {
-  padding: 0.75rem;
+  padding: clamp(0.6rem, 1vw, 0.9rem);
 }
-
-.week-screen .day-name { margin-bottom: 0.25rem; }
-.week-screen .day-temp { margin-bottom: 0.15rem; }
-.week-screen .day-rain { margin-bottom: 0.25rem; }
 
 /* HOURLY: wrap cards to avoid clipping */
 .hourly-screen .hourly-timeline {
@@ -712,6 +718,8 @@ select option {
 :root {
   --home-bottom-safe: 120px;
   --bottom-nav-height: 120px;
+  --bottom-nav-h: 72px;
+  --overlay-pad: 24px;
 }
 
 main#home-screen.main {
