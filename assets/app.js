@@ -712,9 +712,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
+    const baseUrl = (query) =>
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=8&addressdetails=1&countrycodes=za`;
+    const hasComma = q.includes(',');
     try {
-      const data = await (await fetch(url)).json();
+      let data = await (await fetch(baseUrl(q))).json();
+      if (!hasComma && (!Array.isArray(data) || data.length === 0)) {
+        data = await (await fetch(baseUrl(`${q}, South Africa`))).json();
+      }
+      if (!hasComma && (!Array.isArray(data) || data.length === 0)) {
+        data = await (await fetch(baseUrl(`${q}, Western Cape, South Africa`))).json();
+      }
       searchResults = data;
       renderSearchResults(data);
     } catch (e) {
