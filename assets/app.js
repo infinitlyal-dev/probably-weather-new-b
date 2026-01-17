@@ -345,34 +345,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (lang === 'plain') {
       const linesPlain = {
-        storm: 'Stormy conditions expected.',
-        rain: isNum(rainPct) && rainPct >= 70 ? 'High chance of rain.' : 'Chance of rain.',
-        wind: 'Windy today.',
-        cold: 'Cool conditions expected.',
-        heat: 'Hot conditions expected.',
-        fog: 'Low visibility likely.',
-        clear: 'Clear conditions expected.'
+        storm: ['Stormy conditions expected.', 'Thunderstorms likely.'],
+        rain: isNum(rainPct) && rainPct >= 70
+          ? ['High chance of rain.', 'Rain very likely today.']
+          : ['Chance of rain.', 'Possible showers.'],
+        wind: ['Windy today.', 'Gusts expected.'],
+        cold: ['Cool conditions expected.', 'Chilly day ahead.'],
+        heat: ['Hot conditions expected.', 'Warm to hot today.'],
+        fog: ['Low visibility likely.', 'Fog possible.'],
+        clear: ['Clear conditions expected.', 'Mostly clear today.']
       };
-      return linesPlain[condition] || 'Weather expected.';
+      const options = linesPlain[condition] || ['Weather expected.'];
+      return options[Math.floor(Math.random() * options.length)];
     }
 
-    if (isWeekend && condition === "clear") {
-      return "Braai weather, boet!";
+    if (isWeekend && (condition === 'clear' || condition === 'heat')) {
+      return 'Braai weather, boet!';
     }
 
     const linesHuman = {
-      storm: "Electric vibes. Don't be the tallest thing outside.",
-      rain: isNum(rainPct) && rainPct >= 70
-        ? "Plan indoors — today's moody."
-        : "Keep a jacket close.",
-      wind: "Hold onto your hat.",
-      cold: "Ja, it's jacket weather.",
-      heat: "Big heat — pace yourself outside.",
-      fog: "Visibility vibes: drive like you've got a gran in the back.",
-      clear: "Good day to get stuff done outside."
+      storm: [
+        "Electric vibes. Don't be the tallest thing outside.",
+        'Stormy mood — keep it safe, hey.',
+        'Thunder rolling. Best stay close.'
+      ],
+      rain: [
+        isNum(rainPct) && rainPct >= 70 ? "Plan indoors — today's moody." : 'Keep a jacket close.',
+        'Rain boots energy.',
+        'Ja, it’s a wet one.'
+      ],
+      wind: [
+        'Hold onto your hat.',
+        'Windy vibes — hair will do its own thing.',
+        'Breezy day, hey.'
+      ],
+      cold: [
+        "Ja, it's jacket weather.",
+        'Brrr, bokdrol weather!',
+        'Layer up, boet.'
+      ],
+      heat: [
+        'Big heat — pace yourself outside.',
+        'Sun is proper, hey.',
+        'Hot one — find some shade.'
+      ],
+      fog: [
+        "Visibility vibes: drive like you've got a gran in the back.",
+        'Foggy mood — take it slow.',
+        'Low vis, high chill.'
+      ],
+      clear: [
+        'Good day to get stuff done outside.',
+        'Lekker clear skies.',
+        'Fresh air kind of day.'
+      ]
     };
 
-    return linesHuman[condition] || "Just... probably.";
+    const options = linesHuman[condition] || ['Just... probably.'];
+    return options[Math.floor(Math.random() * options.length)];
   }
 
   // ========== BACKGROUND IMAGE LOGIC ==========
@@ -424,16 +454,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!particlesEl) return;
     particlesEl.innerHTML = '';
     
-    // Only create particles for rain or storm
+    let particleClass = null;
+    let amount = count;
     if (condition === 'rain' || condition === 'storm') {
-      for (let i = 0; i < count; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animationDelay = `${Math.random() * 2}s`;
-        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        particlesEl.appendChild(particle);
-      }
+      particleClass = 'rain';
+      amount = 28;
+    } else if (condition === 'cold') {
+      particleClass = 'snow';
+      amount = 18;
+    } else if (condition === 'wind') {
+      particleClass = 'wind';
+      amount = 16;
+    }
+
+    if (!particleClass) return;
+
+    for (let i = 0; i < amount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle', particleClass);
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 2}s`;
+      particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      particlesEl.appendChild(particle);
     }
   }
 
