@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navWeek = $('#navWeek');
   const navSearch = $('#navSearch');
   const navSettings = $('#navSettings');
+  const refreshBtn = $('#refreshBtn');
 
   const screenHome = $('#home-screen');
   const screenHourly = $('#hourly-screen');
@@ -74,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let homePlace = null;
   let lastPayload = null;
   window.__PW_LAST_NORM = null; // Global store for latest normalized data
+  let state = { city: "Cape Town" };
 
   // ========== UTILITY FUNCTIONS ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
@@ -650,6 +652,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function loadCity(city) {
+    if (typeof city === 'string' && city.trim()) {
+      state.city = city.trim();
+    }
+    const place = activePlace || homePlace;
+    if (place) loadAndRender(place);
+  }
+
   async function loadAndRender(place) {
     activePlace = place;
     renderLoading(place.name || 'My Location');
@@ -891,6 +901,14 @@ document.addEventListener("DOMContentLoaded", () => {
       console.warn('[NAVIGATION] Switched to Settings but no weather data loaded yet');
     }
   });
+
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      if (navigator.onLine && state?.city) {
+        loadCity(state.city);
+      }
+    });
+  }
 
   if (saveCurrent) {
     saveCurrent.addEventListener('click', () => {

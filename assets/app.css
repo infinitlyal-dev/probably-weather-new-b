@@ -565,6 +565,15 @@ select option {
   margin: 0.5rem;
 }
 
+.refresh-icon {
+  background: none;
+  border: none;
+  color: currentColor;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
 .cancel-btn:hover, .manage-btn:hover {
   background: rgba(255,255,255,0.3);
 }
