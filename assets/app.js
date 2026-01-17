@@ -366,10 +366,10 @@ document.addEventListener("DOMContentLoaded", () => {
         'Clouds are doing the most today.'
       ],
       'rain-possible': [
+        'Might sprinkle, boet.',
+        'Teasing clouds.',
         'Possible showers — keep a brolly handy.',
-        'Maybe rain, maybe not. Classic.',
         'Light drizzle vibes, just in case.',
-        'Cloudy with a chance of “maybe”.',
         'Rain could pop in, hey.'
       ],
       wind: [
@@ -696,8 +696,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const uv = norm.uv;
 
     // ========== SINGLE SOURCE OF TRUTH ==========
-    // Compute condition ONCE, use it for EVERYTHING
-    const condition = computeDominantCondition(norm);
+    // Use hourly[0] precip for home mood
+    const currentHour = Array.isArray(norm.hourly) ? norm.hourly[0] : null;
+    const hourRain = currentHour?.rainChance;
+    let condition = computeDominantCondition(norm);
+    if (isNum(hourRain)) {
+      if (hourRain > 30) condition = 'rain';
+      else if (hourRain > 10) condition = 'rain-possible';
+      else if (hourRain === 0) condition = 'clear';
+    }
 
     // Set body class for condition-based styling
     document.body.className = `weather-${condition}`;
