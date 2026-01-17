@@ -193,6 +193,12 @@ body.modal-open {
   z-index: 20;
 }
 
+.screenPanel.light-glass {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  color: #111;
+}
+
 .screen-panel-header {
   display: flex;
   flex-direction: column;
@@ -304,6 +310,12 @@ body.modal-open {
   border-radius: 50%;
 }
 
+.confidence-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
 .conf-high { background: #22c55e; }
 .conf-med { background: #f59e0b; }
 .conf-low { background: #ef4444; }
@@ -312,6 +324,21 @@ body.modal-open {
 .day-uv {
   font-size: 0.85rem;
   opacity: 0.8;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-icon {
+  font-size: 1rem;
+}
+
+.result-temp {
+  margin-left: auto;
+  font-weight: 600;
 }
 
 /* SEARCH */

@@ -200,6 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
       which.removeAttribute('hidden');
     }
 
+    [screenHourly, screenWeek, screenSearch, screenSettings].forEach(panel => {
+      if (panel) panel.classList.toggle('light-glass', !!which && which !== screenHome);
+    });
+
     document.body.classList.toggle('modal-open', which && which !== screenHome);
 
     if (saveCurrent) {
@@ -782,7 +786,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="hour-row">
           <div class="hour-time">${hourTime}</div>
           <div class="hour-icon">${icon}</div>
-          <div class="confidence-dot ${confClass}"></div>
+          <div class="confidence-row">
+            <span class="confidence-dot ${confClass}"></span>
+            <span class="confidence-dot ${confClass}"></span>
+            <span class="confidence-dot ${confClass}"></span>
+          </div>
         </div>
         <div class="hour-temp">${tempStr}</div>
         <div class="hour-rain">☔ ${rainStr}</div>
@@ -819,7 +827,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="day-row">
           <div class="day-name">${dayName}</div>
           <div class="day-icon">${icon}</div>
-          <div class="confidence-dot ${confClass}"></div>
+          <div class="confidence-row">
+            <span class="confidence-dot ${confClass}"></span>
+            <span class="confidence-dot ${confClass}"></span>
+            <span class="confidence-dot ${confClass}"></span>
+          </div>
         </div>
         <div class="day-temp">${tempLine}</div>
         <div class="day-rain">☔ ${rainStr}</div>
@@ -916,6 +928,18 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast(`Saved ${place.name}!`);
   }
 
+  async function addRecentIfNew(place) {
+    const favorites = loadFavorites();
+    if (favorites.some(p => samePlace(p, place))) return;
+    const existing = loadRecents();
+    if (existing.some(p => samePlace(p, place))) return;
+    const resolvedName = await resolvePlaceName(place);
+    const normalized = { ...place, name: resolvedName };
+    const list = [normalized, ...existing.filter(p => !samePlace(p, normalized))];
+    saveRecents(list.slice(0, 20));
+    renderRecents();
+  }
+
   async function toggleFavorite(place) {
     let list = loadFavorites();
     if (list.some(p => samePlace(p, place))) {
@@ -965,7 +989,6 @@ document.addEventListener("DOMContentLoaded", () => {
     recentList.querySelectorAll('li[data-lat]').forEach(li => {
       li.addEventListener('click', () => {
         const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
-        addRecent(p);
         showScreen(screenHome);
         loadAndRender(p);
       });
@@ -1102,19 +1125,21 @@ document.addEventListener("DOMContentLoaded", () => {
       return `
         <li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">
           <button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}" aria-label="Toggle favourite">${star}</button>
+          <span class="result-icon">⛅</span>
           <span class="result-name">${displayName}</span>
+          <span class="result-temp">--°</span>
         </li>`;
     }).join('');
     
     // Add click handlers
     resultsList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', () => {
+      li.addEventListener('click', async () => {
         const place = { 
           name: li.dataset.name, 
           lat: parseFloat(li.dataset.lat), 
           lon: parseFloat(li.dataset.lon) 
         };
-        addRecent(place);
+        await addRecentIfNew(place);
         showScreen(screenHome);
         loadAndRender(place);
         // Clear search
