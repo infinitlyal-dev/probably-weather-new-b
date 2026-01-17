@@ -112,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const raw = localStorage.getItem(key);
       return raw ? JSON.parse(raw) : fallback;
     } catch { return fallback; }
-  }
+  }return Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) &&
+       Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
 
   function saveJSON(key, val) {
     try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
