@@ -362,9 +362,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       rain: [
         isNum(rainPct) && rainPct >= 70 ? "Plan indoors — today's moody." : 'Keep a jacket close.',
+        "Ja, it's a wet one—grab your umbrella or surf the streets!",
         "Grab the brolly, it's pissing down!",
         'Rain boots energy.',
-        'Ja, it’s a wet one.',
         'Spat spat — pavement shimmer day.',
         'Clouds are doing the most today.'
       ],
@@ -392,6 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cold: [
         "Ja, it's jacket weather.",
         'Brrr, bokdrol weather!',
+        'Brrr, bokdrol weather—time to build a snowman!',
         'Layer up, boet.',
         'Cold enough for beanies.',
         'Blanket weather, no shame.'
@@ -721,7 +722,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Set body class for condition-based styling
-    document.body.className = `weather-${condition}`;
+    document.body.className = `weather-${condition} home-${condition}`;
     const uiTone = ['clear', 'heat'].includes(condition) ? 'ui-light' : 'ui-dark';
     document.body.classList.remove('ui-light', 'ui-dark');
     document.body.classList.add(uiTone);
@@ -756,14 +757,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // Hero headline - driven by condition (Spec Section 6)
+    if (headlineEl) headlineEl.className = `headline hero-headline ${condition === 'heat' || condition === 'storm' ? 'glow-hot' : ''}`;
     safeText(headlineEl, getHeadline(condition));
     
     // Temperature range
     const lowStr = isNum(low) ? formatTemp(low) : '--°';
     const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+    if (tempEl) tempEl.className = 'temp hero-temp';
     safeText(tempEl, `${lowStr} – ${hiStr}`);
     
     // Witty line - driven by condition (Spec Section 7)
+    if (descriptionEl) descriptionEl.className = 'description hero-witty';
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
     // Render sidebar (extracted for reuse across tabs)

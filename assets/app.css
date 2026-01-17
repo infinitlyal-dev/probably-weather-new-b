@@ -93,14 +93,35 @@ body.modal-open {
   transition: text-shadow 0.3s;
 }
 
+.hero-headline {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.glow-hot {
+  text-shadow: 0 0 10px rgba(255,140,0,0.8), 0 0 24px rgba(255,140,0,0.6);
+}
+
 .temp {
   font-size: 6rem;
   font-weight: 600;
 }
 
+.hero-temp {
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 700;
+}
+
 .description {
   font-size: 1.5rem;
   opacity: 0.8;
+}
+
+.hero-witty {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  opacity: 0.9;
+  max-width: 680px;
 }
 
 .sidebar {
@@ -119,6 +140,21 @@ body.modal-open {
   box-shadow: 0 4px 30px rgba(0,0,0,0.1);
   border: 1px solid rgba(255,255,255,0.2);
   text-align: center;
+}
+
+.home-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80vh;
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .home-hero {
+    flex-direction: column;
+    height: auto;
+  }
 }
 
 .label {
