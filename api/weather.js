@@ -33,6 +33,24 @@ export default async function handler(req, res) {
           clearTimeout(t);
         }
       }
+
+      if (req.query.reverse) {
+        try {
+          const rev = await fetchJson(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`,
+            { headers: { 'User-Agent': MET_USER_AGENT } }
+          );
+
+          const addr = rev?.address || {};
+          const city = addr.city || addr.town || addr.village || addr.suburb || addr.neighbourhood || addr.municipality || null;
+          const admin1 = addr.state || addr.province || addr.region || addr.county || null;
+          const countryCode = addr.country_code ? String(addr.country_code).toUpperCase() : null;
+
+          return res.status(200).json({ ok: true, city, admin1, countryCode });
+        } catch {
+          return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null });
+        }
+      }
   
       let resolvedName = isPlaceholder ? null : name;
       if (!resolvedName) {

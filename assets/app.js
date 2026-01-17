@@ -46,7 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const STORAGE = {
     favorites: "pw_favorites",
     recents: "pw_recents",
-    home: "pw_home"
+    home: "pw_home",
+    location: "pw_location"
   };
 
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
@@ -907,22 +908,43 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFavorites();
 
   homePlace = loadJSON(STORAGE.home, null);
+  const savedLocation = loadJSON(STORAGE.location, null);
   if (homePlace) {
     showScreen(screenHome);
     loadAndRender(homePlace);
+  } else if (savedLocation?.lat && savedLocation?.lon) {
+    const label = savedLocation.city && savedLocation.countryCode
+      ? `${savedLocation.city}, ${savedLocation.countryCode}`
+      : (savedLocation.city || "My Location");
+    homePlace = { name: label, lat: savedLocation.lat, lon: savedLocation.lon };
+    saveJSON(STORAGE.home, homePlace);
+    showScreen(screenHome);
+    loadAndRender(homePlace);
   } else {
-    // Geolocation
+    // Geolocation (first load only)
     showScreen(screenHome);
     renderLoading("My Location");
 
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
-        (pos) => {
+        async (pos) => {
           const lat = round1(pos.coords.latitude);
           const lon = round1(pos.coords.longitude);
-          homePlace = { name: "My Location", lat, lon };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
+          try {
+            const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`);
+            const data = await rev.json();
+            const city = data?.city || "My Location";
+            const countryCode = data?.countryCode || null;
+            const name = countryCode ? `${city}, ${countryCode}` : city;
+            saveJSON(STORAGE.location, { city, admin1: data?.admin1 || null, countryCode, lat, lon });
+            homePlace = { name, lat, lon };
+            saveJSON(STORAGE.home, homePlace);
+            loadAndRender(homePlace);
+          } catch {
+            homePlace = { name: "My Location", lat, lon };
+            saveJSON(STORAGE.home, homePlace);
+            loadAndRender(homePlace);
+          }
         },
         () => {
           // Fallback: Cape Town
