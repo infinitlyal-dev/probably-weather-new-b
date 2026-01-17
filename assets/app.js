@@ -598,6 +598,20 @@ document.addEventListener("DOMContentLoaded", () => {
     createParticles(condition);
   }
 
+  function renderUpdatedAt(payload) {
+    const updatedEl = document.getElementById('updatedAt');
+    if (!updatedEl) return;
+    const updatedAtLabel = payload?.meta?.updatedAtLabel;
+    if (!updatedAtLabel) return;
+
+    let text = `Updated ${updatedAtLabel}`;
+    const lastData = window.lastData;
+    if (navigator.onLine === false && lastData?.timestamp) {
+      text += ` (offline, from ${lastData.timestamp})`;
+    }
+    updatedEl.textContent = text;
+  }
+
   function renderHourly(hourly) {
     if (!hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
@@ -647,6 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderHome(norm);
       renderHourly(norm.hourly);
       renderWeek(norm.daily);
+      renderUpdatedAt(payload);
     } catch (e) {
       console.error("Load failed:", e);
       renderError("Couldn't fetch weather right now.");
