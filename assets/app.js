@@ -39,6 +39,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const recentList = $('#recentList');
   const manageFavorites = $('#manageFavorites');
 
+  const unitsTempSelect = $('#unitsTemp');
+  const unitsWindSelect = $('#unitsWind');
+  const probRangeToggle = $('#probRange');
+  const timeFormatSelect = $('#timeFormat');
+  const languagePlain = $('#languagePlain');
+  const languageHuman = $('#languageHuman');
+  const taglineEl = document.querySelector('.tagline');
+
   const loader = $('#loader');
   const toast = $('#toast');
 
@@ -76,6 +84,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastPayload = null;
   window.__PW_LAST_NORM = null; // Global store for latest normalized data
   let state = { city: "Cape Town" };
+  const SETTINGS_KEYS = {
+    temp: 'units.temp',
+    wind: 'units.wind',
+    range: 'display.range',
+    time: 'format.time',
+    lang: 'lang.ui'
+  };
+  const DEFAULT_SETTINGS = {
+    temp: 'C',
+    wind: 'kmh',
+    range: false,
+    time: '24',
+    lang: 'en'
+  };
+  let settings = { ...DEFAULT_SETTINGS };
 
   // ========== UTILITY FUNCTIONS ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
@@ -99,6 +122,42 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!a || !b) return false;
     return Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) &&
            Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
+  }
+
+  function loadSettings() {
+    settings = {
+      temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp),
+      wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind),
+      range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range),
+      time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time),
+      lang: loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang)
+    };
+  }
+
+  function saveSettings() {
+    saveJSON(SETTINGS_KEYS.temp, settings.temp);
+    saveJSON(SETTINGS_KEYS.wind, settings.wind);
+    saveJSON(SETTINGS_KEYS.range, settings.range);
+    saveJSON(SETTINGS_KEYS.time, settings.time);
+    saveJSON(SETTINGS_KEYS.lang, settings.lang);
+  }
+
+  function convertTemp(c) {
+    if (!isNum(c)) return null;
+    return settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
+  }
+
+  function formatTemp(c) {
+    const v = convertTemp(c);
+    return isNum(v) ? `${round0(v)}°` : '--°';
+  }
+
+  function formatWind(kph) {
+    if (!isNum(kph)) return '--';
+    if (settings.wind === 'mph') {
+      return `${round0(kph * 0.621371)} mph`;
+    }
+    return `${round0(kph)} km/h`;
   }
 
   function showScreen(which) {
@@ -247,12 +306,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Weekend braai check (Fri-Sun)
     const day = new Date().getDay();
     const isWeekend = day === 0 || day === 5 || day === 6;
-    
+    const lang = settings.lang || 'en';
+
     if (isWeekend && condition === "clear") {
-      return "Braai weather, boet!";
+      return lang === 'af' ? "Braai weer, boet!" : "Braai weather, boet!";
     }
 
-    const lines = {
+    const linesEn = {
       storm: "Electric vibes. Don't be the tallest thing outside.",
       rain: isNum(rainPct) && rainPct >= 70 
         ? "Plan indoors — today's moody." 
@@ -263,8 +323,21 @@ document.addEventListener("DOMContentLoaded", () => {
       fog: "Visibility vibes: drive like you've got a gran in the back.",
       clear: "Good day to get stuff done outside."
     };
-    
-    return lines[condition] || "Just... probably.";
+
+    const linesAf = {
+      storm: "Elektriese vibes. Moenie die hoogste ding buite wees nie.",
+      rain: isNum(rainPct) && rainPct >= 70
+        ? "Plan binnenshuis — vandag is bietjie moody."
+        : "Hou 'n baadjie naby.",
+      wind: "Hou vas aan jou hoed.",
+      cold: "Ja, dis jas-weer.",
+      heat: "Groot hitte — vat dit stadig buite.",
+      fog: "Sigbaarheid vibes: ry soos met 'n gran agterin.",
+      clear: "Goeie dag om buite dinge te doen."
+    };
+
+    const lines = lang === 'af' ? linesAf : linesEn;
+    return lines[condition] || (lang === 'af' ? "Net... waarskynlik." : "Just... probably.");
   }
 
   // ========== BACKGROUND IMAGE LOGIC ==========
@@ -477,7 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (windValueEl) {
       const windKph = isNum(norm.windKph) ? norm.windKph : 0;
-      safeText(windValueEl, `${round0(windKph)} km/h`);
+      safeText(windValueEl, formatWind(windKph));
     }
 
     // UV display
@@ -574,9 +647,9 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(headlineEl, getHeadline(condition));
     
     // Temperature range
-    const lowStr = isNum(low) ? round0(low) : '--';
-    const hiStr = isNum(hi) ? round0(hi) : '--';
-    safeText(tempEl, `${lowStr}° – ${hiStr}°`);
+    const lowStr = isNum(low) ? formatTemp(low) : '--°';
+    const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+    safeText(tempEl, `${lowStr} – ${hiStr}`);
     
     // Witty line - driven by condition (Spec Section 7)
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
@@ -609,7 +682,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cleanUpdatedAt = String(updatedAtLabel).split('.')[0];
     const timeOnly = cleanUpdatedAt.includes('T')
       ? cleanUpdatedAt.split('T')[1]?.slice(0, 5)
-      : cleanUpdatedAt;
+      : cleanUpdatedAt.slice(0, 5);
     let text = `Updated ${timeOnly}`;
     const lastData = window.lastData;
     if (navigator.onLine === false && lastData?.timestamp) {
@@ -624,8 +697,12 @@ document.addEventListener("DOMContentLoaded", () => {
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
-      const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
-      const tempStr = isNum(h.tempC) ? `${round0(h.tempC)}°` : '--°';
+      const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: settings.time === '12'
+      });
+      const tempStr = formatTemp(h.tempC);
       const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
@@ -641,14 +718,20 @@ document.addEventListener("DOMContentLoaded", () => {
     dailyCards.innerHTML = '';
     daily.forEach((d, i) => {
       const dayName = d.dayLabel || new Date(Date.now() + i * 86400000).toLocaleDateString('en-US', { weekday: 'short' });
-      const lowStr = isNum(d.lowC) ? round0(d.lowC) : '--';
-      const highStr = isNum(d.highC) ? round0(d.highC) : '--';
+      const lowStr = isNum(d.lowC) ? formatTemp(d.lowC).replace('°', '') : '--';
+      const highStr = isNum(d.highC) ? formatTemp(d.highC).replace('°', '') : '--';
+      const medianStr = isNum(d.lowC) && isNum(d.highC)
+        ? round0((convertTemp(d.lowC) + convertTemp(d.highC)) / 2)
+        : '--';
       const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
       const div = document.createElement('div');
       div.classList.add('daily-card');
+      const tempLine = settings.range
+        ? `${lowStr}° – ${highStr}°`
+        : `${medianStr}°`;
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
-        <div class="day-temp">${lowStr}° – ${highStr}°</div>
+        <div class="day-temp">${tempLine}</div>
         <div class="day-rain">${rainStr}</div>
         <div class="day-humor">${d.conditionLabel || '—'}</div>
       `;
@@ -662,6 +745,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const place = activePlace || homePlace;
     if (place) loadAndRender(place);
+  }
+
+  function applySettings() {
+    if (unitsTempSelect) unitsTempSelect.value = settings.temp;
+    if (unitsWindSelect) unitsWindSelect.value = settings.wind;
+    if (probRangeToggle) probRangeToggle.checked = !!settings.range;
+    if (timeFormatSelect) timeFormatSelect.value = settings.time;
+    if (languagePlain) languagePlain.checked = settings.lang === 'en';
+    if (languageHuman) languageHuman.checked = settings.lang === 'af';
+
+    if (taglineEl) {
+      taglineEl.textContent = settings.lang === 'af'
+        ? 'Geen Ja-Nee-Miskien weer. Net Waarskynlik.'
+        : 'No more Ja-No-Maybe weather. Just Probably.';
+    }
+
+    if (lastPayload) {
+      const norm = normalizePayload(lastPayload);
+      window.__PW_LAST_NORM = norm;
+      renderHome(norm);
+      renderHourly(norm.hourly);
+      renderWeek(norm.daily);
+      renderUpdatedAt(lastPayload);
+    }
   }
 
   async function loadAndRender(place) {
@@ -914,6 +1021,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  if (unitsTempSelect) {
+    unitsTempSelect.addEventListener('change', () => {
+      settings.temp = unitsTempSelect.value;
+      saveSettings();
+      applySettings();
+    });
+  }
+
+  if (unitsWindSelect) {
+    unitsWindSelect.addEventListener('change', () => {
+      settings.wind = unitsWindSelect.value;
+      saveSettings();
+      applySettings();
+    });
+  }
+
+  if (probRangeToggle) {
+    probRangeToggle.addEventListener('change', () => {
+      settings.range = !!probRangeToggle.checked;
+      saveSettings();
+      applySettings();
+    });
+  }
+
+  if (timeFormatSelect) {
+    timeFormatSelect.addEventListener('change', () => {
+      settings.time = timeFormatSelect.value;
+      saveSettings();
+      applySettings();
+    });
+  }
+
+  if (languagePlain) {
+    languagePlain.addEventListener('change', () => {
+      if (languagePlain.checked) {
+        settings.lang = 'en';
+        saveSettings();
+        applySettings();
+      }
+    });
+  }
+
+  if (languageHuman) {
+    languageHuman.addEventListener('change', () => {
+      if (languageHuman.checked) {
+        settings.lang = 'af';
+        saveSettings();
+        applySettings();
+      }
+    });
+  }
+
   if (saveCurrent) {
     saveCurrent.addEventListener('click', () => {
       if (activePlace) addFavorite(activePlace);
@@ -943,6 +1102,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
   renderRecents();
   renderFavorites();
+  loadSettings();
+  applySettings();
 
   homePlace = loadJSON(STORAGE.home, null);
   const savedLocation = loadJSON(STORAGE.location, null);
