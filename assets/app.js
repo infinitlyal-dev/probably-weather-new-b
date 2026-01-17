@@ -201,7 +201,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     [screenHourly, screenWeek, screenSearch, screenSettings].forEach(panel => {
-      if (panel) panel.classList.toggle('light-glass', !!which && which !== screenHome);
+      if (!panel) return;
+      panel.classList.toggle('light-glass', false);
+      panel.classList.toggle('transparent-glass', !!which && which !== screenHome);
     });
 
     document.body.classList.toggle('modal-open', which && which !== screenHome);
@@ -686,6 +688,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set body class for condition-based styling
     document.body.className = `weather-${condition}`;
+    const uiTone = ['clear', 'heat'].includes(condition) ? 'ui-light' : 'ui-dark';
+    document.body.classList.remove('ui-light', 'ui-dark');
+    document.body.classList.add(uiTone);
 
     // Location - use API location name if available
     let locationName = norm.locationName || activePlace?.name || 'My Location';
@@ -780,12 +785,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const tempStr = formatTemp(h.tempC);
       const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
-      const icon = conditionEmoji(h.conditionKey);
       const windStr = isNum(h.windKph) ? formatWind(h.windKph) : '--';
       div.innerHTML = `
         <div class="hour-row">
           <div class="hour-time">${hourTime}</div>
-          <div class="hour-icon">${icon}</div>
           <div class="confidence-row">
             <span class="confidence-dot ${confClass}"></span>
             <span class="confidence-dot ${confClass}"></span>
@@ -793,8 +796,8 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="hour-temp">${tempStr}</div>
-        <div class="hour-rain">☔ ${rainStr}</div>
-        <div class="hour-wind">🌬️ ${windStr}</div>
+        <div class="hour-rain">Precip ${rainStr}</div>
+        <div class="hour-wind">Wind ${windStr}</div>
         <div class="precip-bar" style="--prob:${isNum(h.rainChance) ? round0(h.rainChance) : 0}"></div>
       `;
       hourlyTimeline.appendChild(div);
@@ -812,7 +815,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ? round0((convertTemp(d.lowC) + convertTemp(d.highC)) / 2)
         : '--';
       const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
-      const icon = conditionEmoji(d.conditionKey);
       const spread = isNum(d.highC) && isNum(d.lowC) ? Math.abs(d.highC - d.lowC) : null;
       const confClass = spread == null ? 'conf-med'
         : spread < 2 ? 'conf-high'
@@ -826,7 +828,6 @@ document.addEventListener("DOMContentLoaded", () => {
       div.innerHTML = `
         <div class="day-row">
           <div class="day-name">${dayName}</div>
-          <div class="day-icon">${icon}</div>
           <div class="confidence-row">
             <span class="confidence-dot ${confClass}"></span>
             <span class="confidence-dot ${confClass}"></span>
@@ -834,7 +835,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="day-temp">${tempLine}</div>
-        <div class="day-rain">☔ ${rainStr}</div>
+        <div class="day-rain">Precip ${rainStr}</div>
         <div class="day-uv">UV ${isNum(d.uv) ? round0(d.uv) : '--'}</div>
         <div class="precip-bar" style="--prob:${isNum(d.rainChance) ? round0(d.rainChance) : 0}"></div>
       `;
@@ -1003,7 +1004,6 @@ document.addEventListener("DOMContentLoaded", () => {
       favLimit.style.display = list.length >= 5 ? 'block' : 'none';
     }
     favoritesList.innerHTML = list.map(p => {
-      const icon = conditionEmoji(p.conditionKey);
       const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
       const removeBtn = manageMode
         ? `<button class="remove-fav" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>`
@@ -1011,7 +1011,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return `
       <li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">
         <button class="fav-star" data-lat="${p.lat}" data-lon="${p.lon}" aria-label="Remove favourite">★</button>
-        <span class="fav-icon">${icon}</span>
         <span class="fav-name">${escapeHtml(p.name)}</span>
         <span class="fav-temp">${temp}</span>
         ${removeBtn}
@@ -1125,7 +1124,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return `
         <li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">
           <button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}" aria-label="Toggle favourite">${star}</button>
-          <span class="result-icon">⛅</span>
           <span class="result-name">${displayName}</span>
           <span class="result-temp">--°</span>
         </li>`;
