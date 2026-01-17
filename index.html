@@ -41,35 +41,56 @@
       <div id="description" class="description">—</div>
     </main>
 
-    <section id="hourly-screen" class="hourly-screen hidden">
-      <h2 class="screen-title">Hourly Forecast</h2>
-      <div id="hourly-timeline" class="hourly-timeline"></div>
-    </section>
-
-    <section id="week-screen" class="week-screen hidden">
-      <h2 class="screen-title">7-Day Forecast</h2>
-      <div id="daily-cards" class="daily-cards"></div>
-    </section>
-
-    <section id="search-screen" class="search-screen hidden">
-      <h2 class="screen-title">Search & Favourites</h2>
-      <input id="searchInput" type="text" placeholder="Search for a place">
-      <button id="searchCancel" class="cancel-btn">Cancel</button>
-      <div class="section">
-        <h3>Saved places</h3>
-        <ul id="favoritesList"></ul>
+    <section id="hourly-screen" class="screenPanel hourly-screen hidden">
+      <div class="screen-panel-header">
+        <h2 class="screen-title">Hourly Forecast</h2>
       </div>
-      <div class="section">
-        <h3>Recent</h3>
-        <ul id="recentList"></ul>
+      <div class="screen-panel-body">
+        <div id="hourly-timeline" class="hourly-timeline"></div>
       </div>
-      <p id="favLimit" class="fav-limit">You've saved 5 places. Remove one to add a new favourite.</p>
-      <button id="manageFavorites" class="manage-btn">Manage favourites</button>
     </section>
 
-    <section id="settings-screen" class="settings-screen hidden">
-      <h2 class="settings-title">Settings</h2>
-      <div class="settings-section">
+    <section id="week-screen" class="screenPanel week-screen hidden">
+      <div class="screen-panel-header">
+        <h2 class="screen-title">7-Day Forecast</h2>
+      </div>
+      <div class="screen-panel-body">
+        <div id="daily-cards" class="daily-cards"></div>
+      </div>
+    </section>
+
+    <section id="search-screen" class="screenPanel search-screen hidden">
+      <div class="screen-panel-header">
+        <h2 class="screen-title">Search & Favourites</h2>
+        <input id="searchInput" type="text" placeholder="Search for a place">
+        <button id="searchCancel" class="cancel-btn">Cancel</button>
+      </div>
+      <div class="screen-panel-body">
+        <div class="search-body">
+          <div class="search-lists">
+            <div class="section">
+              <h3>Saved places</h3>
+              <ul id="favoritesList"></ul>
+            </div>
+            <div class="section">
+              <h3>Recent</h3>
+              <ul id="recentList"></ul>
+            </div>
+          </div>
+          <p id="favLimit" class="fav-limit">You've saved 5 places. Remove one to add a new favourite.</p>
+        </div>
+      </div>
+      <div class="screen-panel-footer">
+        <button id="manageFavorites" class="manage-btn">Manage favourites</button>
+      </div>
+    </section>
+
+    <section id="settings-screen" class="screenPanel settings-screen hidden">
+      <div class="screen-panel-header">
+        <h2 class="screen-title settings-title">Settings</h2>
+      </div>
+      <div class="screen-panel-body">
+        <div class="settings-section">
         <h3>Units</h3>
         <div class="settings-option">
           <label for="unitsTemp">Temperature</label>
@@ -86,8 +107,8 @@
             <option value="mph">mph</option>
           </select>
         </div>
-      </div>
-      <div class="settings-section">
+        </div>
+        <div class="settings-section">
         <h3>Forecast display</h3>
         <div class="settings-option">
           <label for="probRange">Show probability range</label>
@@ -100,8 +121,8 @@
             <option value="12">12-hour</option>
           </select>
         </div>
-      </div>
-      <div class="settings-section">
+        </div>
+        <div class="settings-section">
         <h3>Language</h3>
         <div class="settings-option">
           <label for="languagePlain">Plain</label>
@@ -111,14 +132,15 @@
           <label for="languageHuman">Human</label>
           <input type="radio" id="languageHuman" name="language" value="human" checked>
         </div>
-      </div>
-      <div class="settings-section">
+        </div>
+        <div class="settings-section">
         <h3>Data sources</h3>
         <p>Open-Meteo, WeatherAPI.com & MET Norway. Combined into a median forecast.</p>
-      </div>
-      <div class="settings-section">
+        </div>
+        <div class="settings-section">
         <h3>About</h3>
         <p>Version 1.0</p>
+        </div>
       </div>
     </section>
 

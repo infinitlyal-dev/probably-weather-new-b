@@ -161,7 +161,8 @@ body.modal-open {
   justify-content: center;
   gap: 2rem;
   background: rgba(0,0,0,0.5);
-  padding: 1rem;
+  padding: 0.75rem 1rem;
+  height: var(--nav-h, 72px);
   max-width: none;
 }
 
@@ -174,91 +175,149 @@ body.modal-open {
   text-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
 
-.hourly-screen, .week-screen, .search-screen, .settings-screen {
-  position: relative;
-  width: min(1100px, 94vw);
-  max-height: calc(100vh - var(--nav-h, 80px) - var(--top-gap, 120px));
-  height: auto;
-  margin: var(--top-gap, 120px) auto 0;
-  padding: var(--overlay-pad, 24px);
-  padding-bottom: calc(var(--nav-h, 80px) + 16px);
+/* SCREEN PANELS (Hourly/Week/Search/Settings) */
+.screenPanel {
+  position: fixed;
+  inset: var(--panel-top) var(--panel-side) calc(var(--nav-h) + var(--panel-bottom)) var(--panel-side);
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(5px);
-  overflow-y: auto;
-  box-sizing: border-box;
+  padding: clamp(18px, 2.2vw, 28px);
   display: flex;
   flex-direction: column;
   gap: 16px;
+  z-index: 20;
 }
 
-@media (max-height: 760px) {
-  .hourly-screen, .week-screen, .search-screen, .settings-screen {
-    overflow: auto;
+.screen-panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.screen-panel-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.screen-panel-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.screen-title {
+  text-align: center;
+  font-size: clamp(28px, 3vw, 44px);
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --panel-side: 24px;
+    --panel-top: 96px;
   }
 }
 
-/* WEEK: compact grid without clipping */
+@media (max-width: 640px) {
+  :root {
+    --panel-side: 16px;
+    --panel-top: 88px;
+    --panel-bottom: 16px;
+  }
+}
+
+/* WEEK */
+.week-screen .screen-panel-body {
+  min-width: 0;
+}
+
 .week-screen .daily-cards {
   flex: 1;
   min-height: 0;
+  min-width: 0;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: clamp(10px, 1.5vw, 18px);
   padding: 0;
+  overflow-x: auto;
 }
 
 .week-screen .daily-card {
   padding: clamp(0.6rem, 1vw, 0.9rem);
 }
 
-/* HOURLY: wrap cards to avoid clipping */
+/* HOURLY */
+.hourly-screen .screen-panel-body {
+  min-width: 0;
+}
+
 .hourly-screen .hourly-timeline {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 14px;
-  overflow: visible;
+  padding: 0.5rem 0;
+  overflow-x: auto;
+  min-width: 0;
+}
+
+/* SEARCH */
+.search-screen .screen-panel-header {
+  align-items: center;
+}
+
+.search-screen #searchInput {
+  margin: 0;
+}
+
+.search-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-lists {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.search-screen .section {
+  margin: 0;
+  max-width: none;
+}
+
+.search-screen #favoritesList,
+.search-screen #recentList {
+  max-height: none;
+}
+
+/* SETTINGS */
+.settings-screen .screen-panel-body {
+  overflow: auto;
+  align-items: center;
+}
+
+.settings-screen .settings-section {
+  margin-bottom: 0;
+}
+
+.settings-screen .settings-option {
   padding: 0.5rem 0;
 }
 
-/* SEARCH: keep input/buttons visible; lists scroll internally */
-.search-screen {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  grid-template-rows: auto auto auto 1fr auto;
-  gap: 12px 16px;
-}
-
-.search-screen .screen-title { grid-column: 1 / -1; }
-.search-screen #searchInput { grid-column: 1 / 2; }
-.search-screen #searchCancel { grid-column: 1 / 2; justify-self: start; }
-.search-screen #searchResults { grid-column: 1 / 2; grid-row: 4; min-height: 0; overflow: auto; }
-
-.search-screen .section:nth-of-type(1) { grid-column: 2 / 3; grid-row: 2; min-height: 0; }
-.search-screen .section:nth-of-type(2) { grid-column: 2 / 3; grid-row: 3; min-height: 0; }
-
-.search-screen #favoritesList,
-.search-screen #recentList,
-.search-screen #searchResultsList {
-  max-height: 100%;
-  overflow-y: auto;
-}
-
-.search-screen #favLimit { grid-column: 1 / -1; margin: 0; }
-.search-screen #manageFavorites { grid-column: 1 / -1; }
-
-/* SETTINGS: compact spacing */
-.settings-screen {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 24px;
-  align-items: start;
-}
-
-.settings-screen .settings-section { margin-bottom: 0; }
-.settings-screen .settings-option { padding: 0.5rem 0; }
-
 @media (max-width: 900px) {
-  .settings-screen {
-    grid-template-columns: 1fr;
+  .settings-screen .settings-section {
+    max-width: 100%;
   }
 }
 
@@ -266,19 +325,6 @@ body.modal-open {
   .week-screen .daily-cards {
     grid-template-columns: repeat(2, minmax(120px, 1fr));
   }
-}
-
-.screen-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.settings-screen {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
 }
 
 .settings-section {
@@ -707,6 +753,10 @@ select option {
   --bottom-nav-height: 120px;
   --bottom-nav-h: 72px;
   --overlay-pad: 24px;
+  --nav-h: 72px;
+  --panel-top: 120px;
+  --panel-side: 72px;
+  --panel-bottom: 24px;
 }
 
 main#home-screen.main {
@@ -765,83 +815,3 @@ main#home-screen.main #confidence {
   }
 }
 
-/* NON-HOME SCREEN PANEL LAYOUT (no page scroll) */
-.hourly-screen, .week-screen, .search-screen, .settings-screen {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(1100px, 92vw);
-  max-height: calc(100vh - 140px);
-  height: auto;
-  overflow: hidden;
-  padding: clamp(18px, 2.2vw, 28px);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.hourly-screen .screen-title,
-.week-screen .screen-title,
-.search-screen .screen-title,
-.settings-screen .screen-title {
-  font-size: clamp(28px, 3vw, 44px);
-  margin-bottom: 0;
-}
-
-/* WEEK: compact grid without clipping */
-.week-screen .daily-cards {
-  flex: 1;
-  min-height: 0;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  padding: 0;
-}
-
-.week-screen .daily-card {
-  padding: 0.75rem;
-}
-
-.week-screen .day-name { margin-bottom: 0.25rem; }
-.week-screen .day-temp { margin-bottom: 0.15rem; }
-.week-screen .day-rain { margin-bottom: 0.25rem; }
-
-/* HOURLY: wrap cards to avoid clipping */
-.hourly-screen .hourly-timeline {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 14px;
-  overflow: visible;
-  padding: 0.5rem 0;
-}
-
-/* SEARCH: keep input/buttons visible; lists scroll internally */
-.search-screen {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.search-screen #searchResults,
-.search-screen .section {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.search-screen #searchResultsList,
-.search-screen #favoritesList,
-.search-screen #recentList {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-}
-
-/* SETTINGS: compact spacing; no panel scroll */
-.settings-screen {
-  gap: 12px;
-}
-
-.settings-screen .settings-section { margin-bottom: 0; }
-.settings-screen .settings-option { padding: 0.5rem 0; }
