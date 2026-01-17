@@ -343,6 +343,10 @@ body.ui-dark .daily-card {
   gap: 10px;
 }
 
+.result-icon {
+  font-size: 1rem;
+}
+
 
 .result-temp {
   margin-left: auto;

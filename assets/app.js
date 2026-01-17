@@ -1091,6 +1091,39 @@ document.addEventListener("DOMContentLoaded", () => {
   
   let searchTimeout = null;
   let searchResults = [];
+  const searchMiniCache = new Map();
+
+  function parseQuery(raw) {
+    const trimmed = raw.trim();
+    const parts = trimmed.split(/\s+/);
+    const last = parts[parts.length - 1];
+    const countryMap = {
+      us: 'us', usa: 'us', america: 'us', unitedstates: 'us', 'united-states': 'us',
+      uk: 'gb', britain: 'gb', england: 'gb', scotland: 'gb', wales: 'gb',
+      uae: 'ae', emirates: 'ae', sa: 'za', southafrica: 'za'
+    };
+    const lastKey = last?.toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, '');
+    const countryCode = countryMap[lastKey] || (lastKey && lastKey.length === 2 ? lastKey : null);
+    const baseQuery = countryCode ? parts.slice(0, -1).join(' ') : trimmed;
+    return { baseQuery, countryCode };
+  }
+
+  async function miniFetchTemp(lat, lon) {
+    const key = `${Number(lat).toFixed(4)},${Number(lon).toFixed(4)}`;
+    if (searchMiniCache.has(key)) return searchMiniCache.get(key);
+    try {
+      const payload = await fetchProbable({ lat, lon, name: '' });
+      const norm = normalizePayload(payload);
+      const result = {
+        temp: isNum(norm.nowTemp) ? formatTemp(norm.nowTemp) : '--°',
+        icon: conditionEmoji(norm.conditionKey)
+      };
+      searchMiniCache.set(key, result);
+      return result;
+    } catch {
+      return { temp: '--°', icon: '⛅' };
+    }
+  }
   
   async function runSearch(q) {
     if (!q || q.trim().length < 2) {
@@ -1100,17 +1133,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const raw = q.trim();
-    const parts = raw.split(/\s+/);
-    const last = parts[parts.length - 1];
-    const countryMap = {
-      us: 'us', usa: 'us', america: 'us', unitedstates: 'us', 'united-states': 'us',
-      uk: 'gb', britain: 'gb', england: 'gb', scotland: 'gb', wales: 'gb',
-      uae: 'ae', emirates: 'ae', sa: 'za', southafrica: 'za'
-    };
-    const lastKey = last?.toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, '');
-    const countryCode = countryMap[lastKey] || (lastKey && lastKey.length === 2 ? lastKey : null);
-    const queryText = countryCode ? parts.slice(0, -1).join(' ') : raw;
+    const { baseQuery, countryCode } = parseQuery(q);
+    const queryText = baseQuery;
 
     const baseUrl = (query) =>
       `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}` +
@@ -1172,6 +1196,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return `
         <li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">
           <button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}" aria-label="Toggle favourite">${star}</button>
+          <span class="result-icon">⛅</span>
           <span class="result-name">${displayName}</span>
           <span class="result-temp">--°</span>
         </li>`;
@@ -1203,6 +1228,16 @@ document.addEventListener("DOMContentLoaded", () => {
         await toggleFavorite({ name, lat, lon });
         renderSearchResults(results);
       });
+    });
+
+    resultsList.querySelectorAll('li[data-lat]').forEach(async (li) => {
+      const lat = parseFloat(li.dataset.lat);
+      const lon = parseFloat(li.dataset.lon);
+      const iconEl = li.querySelector('.result-icon');
+      const tempEl = li.querySelector('.result-temp');
+      const mini = await miniFetchTemp(lat, lon);
+      if (iconEl) iconEl.textContent = mini.icon || '⛅';
+      if (tempEl) tempEl.textContent = mini.temp || '--°';
     });
   }
   
