@@ -44,8 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const unitsWindSelect = $('#unitsWind');
   const probRangeToggle = $('#probRange');
   const timeFormatSelect = $('#timeFormat');
-  const languagePlain = $('#languagePlain');
-  const languageHuman = $('#languageHuman');
   const taglineEl = document.querySelector('.tagline');
 
   const loader = $('#loader');
@@ -91,15 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
     temp: 'units.temp',
     wind: 'units.wind',
     range: 'display.range',
-    time: 'format.time',
-    lang: 'lang.ui'
+    time: 'format.time'
   };
   const DEFAULT_SETTINGS = {
     temp: 'C',
     wind: 'kmh',
     range: false,
     time: '24',
-    lang: 'plain'
+    lang: 'human'
   };
   let settings = { ...DEFAULT_SETTINGS };
 
@@ -157,16 +154,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadSettings() {
-    const storedLang = loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang);
-    const normalizedLang = storedLang === 'af' ? 'human'
-      : storedLang === 'en' ? 'plain'
-      : storedLang;
     settings = {
       temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp),
       wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind),
       range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range),
       time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time),
-      lang: normalizedLang || DEFAULT_SETTINGS.lang
+      lang: 'human'
     };
   }
 
@@ -175,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
     saveJSON(SETTINGS_KEYS.wind, settings.wind);
     saveJSON(SETTINGS_KEYS.range, settings.range);
     saveJSON(SETTINGS_KEYS.time, settings.time);
-    saveJSON(SETTINGS_KEYS.lang, settings.lang);
   }
 
   function convertTemp(c) {
@@ -342,23 +334,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Weekend braai check (Fri-Sun)
     const day = new Date().getDay();
     const isWeekend = day === 0 || day === 5 || day === 6;
-    const lang = settings.lang || 'plain';
-
-    if (lang === 'plain') {
-      const linesPlain = {
-        storm: ['Stormy conditions expected.', 'Thunderstorms likely.'],
-        rain: isNum(rainPct) && rainPct >= 70
-          ? ['High chance of rain.', 'Rain very likely today.']
-          : ['Chance of rain.', 'Possible showers.'],
-        wind: ['Windy today.', 'Gusts expected.'],
-        cold: ['Cool conditions expected.', 'Chilly day ahead.'],
-        heat: ['Hot conditions expected.', 'Warm to hot today.'],
-        fog: ['Low visibility likely.', 'Fog possible.'],
-        clear: ['Clear conditions expected.', 'Mostly clear today.']
-      };
-      const options = linesPlain[condition] || ['Weather expected.'];
-      return options[Math.floor(Math.random() * options.length)];
-    }
 
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
       return 'Braai weather, boet!';
@@ -368,37 +343,51 @@ document.addEventListener("DOMContentLoaded", () => {
       storm: [
         "Electric vibes. Don't be the tallest thing outside.",
         'Stormy mood — keep it safe, hey.',
-        'Thunder rolling. Best stay close.'
+        'Thunder rolling. Best stay close.',
+        'Lights and rumbles — stay in if you can.',
+        'Storm season energy, boet.'
       ],
       rain: [
         isNum(rainPct) && rainPct >= 70 ? "Plan indoors — today's moody." : 'Keep a jacket close.',
         'Rain boots energy.',
-        'Ja, it’s a wet one.'
+        'Ja, it’s a wet one.',
+        'Spat spat — pavement shimmer day.',
+        'Clouds are doing the most today.'
       ],
       wind: [
         'Hold onto your hat.',
         'Windy vibes — hair will do its own thing.',
-        'Breezy day, hey.'
+        'Breezy day, hey.',
+        'Lekker gusts — doors will slam.',
+        'Cape Doctor is on duty.'
       ],
       cold: [
         "Ja, it's jacket weather.",
         'Brrr, bokdrol weather!',
-        'Layer up, boet.'
+        'Layer up, boet.',
+        'Cold enough for beanies.',
+        'Blanket weather, no shame.'
       ],
       heat: [
         'Big heat — pace yourself outside.',
         'Sun is proper, hey.',
-        'Hot one — find some shade.'
+        'Hot one — find some shade.',
+        'Ice‑cold drink kind of day.',
+        'Shade is the new lifestyle.'
       ],
       fog: [
         "Visibility vibes: drive like you've got a gran in the back.",
         'Foggy mood — take it slow.',
-        'Low vis, high chill.'
+        'Low vis, high chill.',
+        'Misty scenes — lights on.',
+        'Fog is doing the rounds.'
       ],
       clear: [
         'Good day to get stuff done outside.',
         'Lekker clear skies.',
-        'Fresh air kind of day.'
+        'Fresh air kind of day.',
+        'Blue skies, big smiles.',
+        'Sun’s out, plans on.'
       ]
     };
 
@@ -830,13 +819,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (unitsWindSelect) unitsWindSelect.value = settings.wind;
     if (probRangeToggle) probRangeToggle.checked = !!settings.range;
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
-    if (languagePlain) languagePlain.checked = settings.lang === 'plain';
-    if (languageHuman) languageHuman.checked = settings.lang === 'human';
 
     if (taglineEl) {
-      taglineEl.textContent = settings.lang === 'human'
-        ? 'No more Ja-No-Maybe weather. Just Probably.'
-        : 'Probably Weather.';
+      taglineEl.textContent = 'No more Ja-No-Maybe weather. Just Probably.';
     }
 
     if (lastPayload) {
@@ -1225,25 +1210,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (languagePlain) {
-    languagePlain.addEventListener('change', () => {
-      if (languagePlain.checked) {
-        settings.lang = 'plain';
-        saveSettings();
-        applySettings();
-      }
-    });
-  }
-
-  if (languageHuman) {
-    languageHuman.addEventListener('change', () => {
-      if (languageHuman.checked) {
-        settings.lang = 'human';
-        saveSettings();
-        applySettings();
-      }
-    });
-  }
 
   if (saveCurrent) {
     saveCurrent.addEventListener('click', () => {
