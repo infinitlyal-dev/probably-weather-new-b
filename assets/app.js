@@ -764,6 +764,11 @@ document.addEventListener("DOMContentLoaded", () => {
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
+      const spread = isNum(h.tempC) && isNum(h.windKph) ? Math.abs(h.tempC - h.windKph / 5) : null;
+      const confClass = spread == null ? 'conf-med'
+        : spread < 2 ? 'conf-high'
+        : spread < 5 ? 'conf-med'
+        : 'conf-low';
       const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit',
@@ -771,10 +776,18 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const tempStr = formatTemp(h.tempC);
       const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
+      const icon = conditionEmoji(h.conditionKey);
+      const windStr = isNum(h.windKph) ? formatWind(h.windKph) : '--';
       div.innerHTML = `
-        <div class="hour-time">${hourTime}</div>
+        <div class="hour-row">
+          <div class="hour-time">${hourTime}</div>
+          <div class="hour-icon">${icon}</div>
+          <div class="confidence-dot ${confClass}"></div>
+        </div>
         <div class="hour-temp">${tempStr}</div>
-        <div class="hour-rain">${rainStr}</div>
+        <div class="hour-rain">☔ ${rainStr}</div>
+        <div class="hour-wind">🌬️ ${windStr}</div>
+        <div class="precip-bar" style="--prob:${isNum(h.rainChance) ? round0(h.rainChance) : 0}"></div>
       `;
       hourlyTimeline.appendChild(div);
     });
@@ -791,16 +804,27 @@ document.addEventListener("DOMContentLoaded", () => {
         ? round0((convertTemp(d.lowC) + convertTemp(d.highC)) / 2)
         : '--';
       const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
+      const icon = conditionEmoji(d.conditionKey);
+      const spread = isNum(d.highC) && isNum(d.lowC) ? Math.abs(d.highC - d.lowC) : null;
+      const confClass = spread == null ? 'conf-med'
+        : spread < 2 ? 'conf-high'
+        : spread < 5 ? 'conf-med'
+        : 'conf-low';
       const div = document.createElement('div');
       div.classList.add('daily-card');
       const tempLine = settings.range
         ? `${lowStr}° – ${highStr}°`
         : `${medianStr}°`;
       div.innerHTML = `
-        <div class="day-name">${dayName}</div>
+        <div class="day-row">
+          <div class="day-name">${dayName}</div>
+          <div class="day-icon">${icon}</div>
+          <div class="confidence-dot ${confClass}"></div>
+        </div>
         <div class="day-temp">${tempLine}</div>
-        <div class="day-rain">${rainStr}</div>
-        <div class="day-humor">${d.conditionLabel || '—'}</div>
+        <div class="day-rain">☔ ${rainStr}</div>
+        <div class="day-uv">UV ${isNum(d.uv) ? round0(d.uv) : '--'}</div>
+        <div class="precip-bar" style="--prob:${isNum(d.rainChance) ? round0(d.rainChance) : 0}"></div>
       `;
       dailyCards.appendChild(div);
     });
