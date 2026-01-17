@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const favoritesList = $('#favoritesList');
   const recentList = $('#recentList');
   const manageFavorites = $('#manageFavorites');
+  const clearRecentsBtn = $('#clearRecents');
 
   const unitsTempSelect = $('#unitsTemp');
   const unitsWindSelect = $('#unitsWind');
@@ -877,9 +878,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function addRecent(place) {
     const favorites = loadFavorites();
     if (favorites.some(p => samePlace(p, place))) return;
-    let list = loadRecents().filter(p => !samePlace(p, place));
-    list.unshift(place);
-    saveRecents(list.slice(0, 5));
+    const existing = loadRecents();
+    if (existing.some(p => samePlace(p, place))) return;
+    const list = [place, ...existing.filter(p => !samePlace(p, place))];
+    saveRecents(list.slice(0, 20));
+    renderRecents();
+  }
+
+  function clearRecents() {
+    localStorage.removeItem(STORAGE.recents);
     renderRecents();
   }
 
@@ -1261,6 +1268,12 @@ document.addEventListener("DOMContentLoaded", () => {
       manageMode = !manageMode;
       manageFavorites.textContent = manageMode ? 'Done' : 'Manage favourites';
       renderFavorites();
+    });
+  }
+
+  if (clearRecentsBtn) {
+    clearRecentsBtn.addEventListener('click', () => {
+      clearRecents();
     });
   }
 
