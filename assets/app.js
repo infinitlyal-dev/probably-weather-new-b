@@ -606,7 +606,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const updatedAtLabel = payload?.meta?.updatedAtLabel;
     if (!updatedAtLabel) return;
 
-    let text = `Updated ${updatedAtLabel}`;
+    const cleanUpdatedAt = String(updatedAtLabel).split('.')[0];
+    let text = `Updated ${cleanUpdatedAt}`;
     const lastData = window.lastData;
     if (navigator.onLine === false && lastData?.timestamp) {
       text += ` (offline, from ${lastData.timestamp})`;
