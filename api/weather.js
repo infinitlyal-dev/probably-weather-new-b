@@ -156,8 +156,8 @@ export default async function handler(req, res) {
       try {
         const om = await fetchJson(
           `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-          `&current=temperature_2m,weather_code,wind_speed_10m` +
-          `&hourly=temperature_2m,precipitation_probability,wind_speed_10m` +
+          `&current=temperature_2m,weather_code,wind_speed_10m,cloud_cover` +
+          `&hourly=temperature_2m,precipitation_probability,wind_speed_10m,cloud_cover` +
           `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code` +
           `&timezone=auto&forecast_days=7`
         );
@@ -178,6 +178,7 @@ export default async function handler(req, res) {
           temps: om.hourly?.temperature_2m.slice(0, 24) ?? [],
           rains: om.hourly?.precipitation_probability.slice(0, 24) ?? [],
           winds: om.hourly?.wind_speed_10m.slice(0, 24) ?? [],
+          clouds: om.hourly?.cloud_cover.slice(0, 24) ?? [],
         });
   
         dailies.push({
@@ -217,6 +218,7 @@ export default async function handler(req, res) {
             temps: wa.forecast.forecastday[0].hour.map(h => h.temp_c) ?? [],
             rains: wa.forecast.forecastday[0].hour.map(h => h.chance_of_rain) ?? [],
             winds: wa.forecast.forecastday[0].hour.map(h => h.wind_kph) ?? [],
+            clouds: wa.forecast.forecastday[0].hour.map(h => h.cloud) ?? [],
           });
   
           dailies.push({
@@ -265,6 +267,7 @@ export default async function handler(req, res) {
           temps: temps.slice(0, 24),
           rains: series.slice(0, 24).map(p => (p.data?.next_1_hours?.details?.precipitation_amount ?? 0) * 40),
           winds: series.slice(0, 24).map(p => p.data?.instant?.details?.wind_speed * 3.6 ?? null),
+          clouds: series.slice(0, 24).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
         });
   
         dailies.push({
@@ -284,6 +287,7 @@ export default async function handler(req, res) {
         tempC: median(hourlies.map(h => h.temps[i]).filter(isNum)),
         rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
         windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
+        cloudPct: median(hourlies.map(h => h.clouds?.[i]).filter(isNum)),
       }));
   
       const aggregatedDaily = Array.from({length: 7}, (_, i) => {

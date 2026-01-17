@@ -315,6 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
       storm: "This is stormy.",
       rain: "This is rainy.",
       'rain-possible': "Possible rain.",
+      cloudy: "This is cloudy.",
       wind: "This is windy.",
       cold: "This is cold.",
       heat: "This is hot.",
@@ -330,6 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
       storm: "Severe weather",
       rain: "Wet conditions",
       'rain-possible': "Possible showers",
+      cloudy: "Cloudy",
       wind: "Gusty",
       cold: "Chilly",
       heat: "Very hot",
@@ -371,6 +373,13 @@ document.addEventListener("DOMContentLoaded", () => {
         'Possible showers — keep a brolly handy.',
         'Light drizzle vibes, just in case.',
         'Rain could pop in, hey.'
+      ],
+      cloudy: [
+        'Clouds gatecrashing the party.',
+        'Breezy boet, hold onto your hat!',
+        'Overcast vibes, still lekker.',
+        'Clouds doing the slow dance.',
+        'Grey skies, easy pace.'
       ],
       wind: [
         'Hold onto your hat.',
@@ -696,13 +705,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const uv = norm.uv;
 
     // ========== SINGLE SOURCE OF TRUTH ==========
-    // Use hourly[0] precip for home mood
+    // Use hourly[0] median for home mood
     const currentHour = Array.isArray(norm.hourly) ? norm.hourly[0] : null;
     const hourRain = currentHour?.rainChance;
+    const hourCloud = currentHour?.cloudPct;
+    const hourWind = currentHour?.windKph;
     let condition = computeDominantCondition(norm);
     if (isNum(hourRain)) {
       if (hourRain > 30) condition = 'rain';
-      else if (hourRain > 10) condition = 'rain-possible';
+      else if (hourRain > 0) condition = 'rain-possible';
+      else if (hourRain === 0 && isNum(hourCloud) && hourCloud > 50) condition = 'cloudy';
+      else if (hourRain === 0 && isNum(hourWind) && hourWind > 20) condition = 'wind';
       else if (hourRain === 0) condition = 'clear';
     }
 
