@@ -1099,17 +1099,32 @@ document.addEventListener("DOMContentLoaded", () => {
       if (resultsContainer) resultsContainer.innerHTML = '';
       return;
     }
-    
+
+    const raw = q.trim();
+    const parts = raw.split(/\s+/);
+    const last = parts[parts.length - 1];
+    const countryMap = {
+      us: 'us', usa: 'us', america: 'us', unitedstates: 'us', 'united-states': 'us',
+      uk: 'gb', britain: 'gb', england: 'gb', scotland: 'gb', wales: 'gb',
+      uae: 'ae', emirates: 'ae', sa: 'za', southafrica: 'za'
+    };
+    const lastKey = last?.toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, '');
+    const countryCode = countryMap[lastKey] || (lastKey && lastKey.length === 2 ? lastKey : null);
+    const queryText = countryCode ? parts.slice(0, -1).join(' ') : raw;
+
     const baseUrl = (query) =>
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=8&addressdetails=1&countrycodes=za`;
-    const hasComma = q.includes(',');
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}` +
+      `&format=jsonv2&limit=10&addressdetails=1&bounded=0` +
+      `&featureclass=P&featureclass=A` +
+      `${countryCode ? `&countrycodes=${countryCode}` : '&countrycodes=za'}`;
+    const hasComma = queryText.includes(',');
     try {
-      let data = await (await fetch(baseUrl(q))).json();
-      if (!hasComma && (!Array.isArray(data) || data.length === 0)) {
-        data = await (await fetch(baseUrl(`${q}, South Africa`))).json();
+      let data = await (await fetch(baseUrl(queryText))).json();
+      if (!hasComma && !countryCode && (!Array.isArray(data) || data.length === 0)) {
+        data = await (await fetch(baseUrl(`${queryText}, South Africa`))).json();
       }
-      if (!hasComma && (!Array.isArray(data) || data.length === 0)) {
-        data = await (await fetch(baseUrl(`${q}, Western Cape, South Africa`))).json();
+      if (!hasComma && !countryCode && (!Array.isArray(data) || data.length === 0)) {
+        data = await (await fetch(baseUrl(`${queryText}, Western Cape, South Africa`))).json();
       }
       searchResults = data;
       renderSearchResults(data);
