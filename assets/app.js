@@ -84,6 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastPayload = null;
   window.__PW_LAST_NORM = null; // Global store for latest normalized data
   let state = { city: "Cape Town" };
+  let manageMode = false;
+  const pendingFavMeta = new Set();
   const SETTINGS_KEYS = {
     temp: 'units.temp',
     wind: 'units.wind',
@@ -122,6 +124,35 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!a || !b) return false;
     return Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) &&
            Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
+  }
+
+  function favoriteKey(p) {
+    return `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
+  }
+
+  function isPlaceholderName(name) {
+    const v = String(name || '').trim();
+    return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v);
+  }
+
+  async function resolvePlaceName(place) {
+    if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown';
+    if (!isPlaceholderName(place.name)) return place.name;
+    const cityName = await reverseGeocode(place.lat, place.lon);
+    return cityName || place.name || 'Unknown';
+  }
+
+  function conditionEmoji(key) {
+    switch (String(key || '').toLowerCase()) {
+      case 'storm': return '⛈️';
+      case 'rain': return '🌧️';
+      case 'wind': return '💨';
+      case 'cold': return '❄️';
+      case 'heat': return '🔥';
+      case 'fog': return '🌫️';
+      case 'clear': return '☀️';
+      default: return '⛅';
+    }
   }
 
   function loadSettings() {
@@ -802,13 +833,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function saveRecents(list) { saveJSON(STORAGE.recents, list); }
 
   function addRecent(place) {
+    const favorites = loadFavorites();
+    if (favorites.some(p => samePlace(p, place))) return;
     let list = loadRecents().filter(p => !samePlace(p, place));
     list.unshift(place);
-    saveRecents(list.slice(0, 10));
+    saveRecents(list.slice(0, 5));
     renderRecents();
   }
 
-  function addFavorite(place) {
+  async function addFavorite(place) {
     let list = loadFavorites();
     if (list.some(p => samePlace(p, place))) {
       showToast('This place is already saved!');
@@ -818,17 +851,57 @@ document.addEventListener("DOMContentLoaded", () => {
       showToast('You can only save up to 5 places. Remove one first.');
       return;
     }
-    list.unshift(place);
+    const resolvedName = await resolvePlaceName(place);
+    list.unshift({ ...place, name: resolvedName });
     saveFavorites(list.slice(0, 5));
     renderFavorites();
     showToast(`Saved ${place.name}!`);
+  }
+
+  async function toggleFavorite(place) {
+    let list = loadFavorites();
+    if (list.some(p => samePlace(p, place))) {
+      list = list.filter(p => !samePlace(p, place));
+      saveFavorites(list);
+      renderFavorites();
+      showToast('Place removed from favorites');
+      return;
+    }
+    await addFavorite(place);
+  }
+
+  async function ensureFavoriteMeta(place) {
+    if (!place || !isNum(place.lat) || !isNum(place.lon)) return;
+    if (isNum(place.tempC) && place.conditionKey) return;
+    const key = favoriteKey(place);
+    if (pendingFavMeta.has(key)) return;
+    pendingFavMeta.add(key);
+    try {
+      const payload = await fetchProbable(place);
+      const norm = normalizePayload(payload);
+      const list = loadFavorites();
+      const idx = list.findIndex(p => samePlace(p, place));
+      if (idx !== -1) {
+        list[idx] = {
+          ...list[idx],
+          tempC: norm.nowTemp ?? null,
+          conditionKey: norm.conditionKey ?? null
+        };
+        saveFavorites(list);
+        renderFavorites();
+      }
+    } catch {
+      // Ignore mini forecast errors
+    } finally {
+      pendingFavMeta.delete(key);
+    }
   }
 
   function renderRecents() {
     if (!recentList) return;
     const list = loadRecents();
     recentList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
+      <li class="recent-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
     `).join('') || '<li>No recent searches yet.</li>';
 
     recentList.querySelectorAll('li[data-lat]').forEach(li => {
@@ -844,12 +917,25 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderFavorites() {
     if (!favoritesList) return;
     const list = loadFavorites();
-    favoritesList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">
+    const favLimit = document.getElementById('favLimit');
+    if (favLimit) {
+      favLimit.style.display = list.length >= 5 ? 'block' : 'none';
+    }
+    favoritesList.innerHTML = list.map(p => {
+      const icon = conditionEmoji(p.conditionKey);
+      const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
+      const removeBtn = manageMode
+        ? `<button class="remove-fav" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>`
+        : '';
+      return `
+      <li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">
+        <button class="fav-star" data-lat="${p.lat}" data-lon="${p.lon}" aria-label="Remove favourite">★</button>
+        <span class="fav-icon">${icon}</span>
         <span class="fav-name">${escapeHtml(p.name)}</span>
-        <button class="remove-fav" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>
-      </li>
-    `).join('') || '<li>No saved places yet.</li>';
+        <span class="fav-temp">${temp}</span>
+        ${removeBtn}
+      </li>`;
+    }).join('') || '<li>No saved places yet.</li>';
 
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
       span.addEventListener('click', () => {
@@ -857,6 +943,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) };
         showScreen(screenHome);
         loadAndRender(p);
+      });
+    });
+
+    favoritesList.querySelectorAll('.fav-star').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const lat = parseFloat(btn.dataset.lat);
+        const lon = parseFloat(btn.dataset.lon);
+        const p = { name: btn.closest('li')?.dataset?.name, lat, lon };
+        await toggleFavorite(p);
       });
     });
     
@@ -871,6 +967,10 @@ document.addEventListener("DOMContentLoaded", () => {
         renderFavorites();
         showToast('Place removed from favorites');
       });
+    });
+
+    list.forEach((p) => {
+      ensureFavoriteMeta(p);
     });
   }
 
@@ -934,10 +1034,18 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsList.innerHTML = '<li>No results found.</li>';
       return;
     }
+
+    const favorites = loadFavorites();
     
     resultsList.innerHTML = results.map(r => {
       const displayName = escapeHtml(r.display_name);
-      return `<li data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">${displayName}</li>`;
+      const isFav = favorites.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) }));
+      const star = isFav ? '★' : '☆';
+      return `
+        <li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">
+          <button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}" aria-label="Toggle favourite">${star}</button>
+          <span class="result-name">${displayName}</span>
+        </li>`;
     }).join('');
     
     // Add click handlers
@@ -954,6 +1062,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Clear search
         if (searchInput) searchInput.value = '';
         resultsList.innerHTML = '';
+      });
+    });
+
+    resultsList.querySelectorAll('.fav-star').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const lat = parseFloat(btn.dataset.lat);
+        const lon = parseFloat(btn.dataset.lon);
+        const name = btn.closest('li')?.dataset?.name;
+        await toggleFavorite({ name, lat, lon });
+        renderSearchResults(results);
       });
     });
   }
@@ -1097,8 +1216,9 @@ document.addEventListener("DOMContentLoaded", () => {
         showToast('No saved places to manage');
         return;
       }
-      // Show help message
-      showToast('Click the ✕ button next to a place to remove it', 4000);
+      manageMode = !manageMode;
+      manageFavorites.textContent = manageMode ? 'Done' : 'Manage favourites';
+      renderFavorites();
     });
   }
 
