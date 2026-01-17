@@ -606,7 +606,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const updatedAtLabel = payload?.meta?.updatedAtLabel;
     if (!updatedAtLabel) return;
 
-    const cleanUpdatedAt = String(updatedAtLabel).split('.')[0];
+    const cleanUpdatedAt = new Date(updatedAtLabel).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     let text = `Updated ${cleanUpdatedAt}`;
     const lastData = window.lastData;
     if (navigator.onLine === false && lastData?.timestamp) {
