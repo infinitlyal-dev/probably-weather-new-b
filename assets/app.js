@@ -270,15 +270,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return 'storm';
     }
 
-    // 2. RAIN - Check current condition first, then forecast
-    if (condKey === 'rain' || condKey.includes('rain') || 
-        condKey.includes('drizzle') || condKey.includes('shower')) {
-      return 'rain';
-    }
-
-    // Also check forecast threshold (for predictions when conditionKey doesn't indicate rain)
-    if (isNum(rain) && rain >= THRESH.RAIN_PCT) {
-      return 'rain';
+    // 2. RAIN (strict median precip)
+    if (isNum(rain)) {
+      if (rain > 20) return 'rain';
+      if (rain > 0) return 'rain-possible';
+      if (rain === 0) {
+        // fall through to other conditions
+      }
     }
 
     // 3. WIND (>=25 km/h)
@@ -301,7 +299,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return 'fog';
     }
 
-    // 7. CLEAR (default - NOT cloudy per spec)
+    if (condKey.includes('cloud')) {
+      return 'cloudy';
+    }
+
+    // 7. CLEAR (default)
     return 'clear';
   }
 
@@ -312,6 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const headlines = {
       storm: "This is stormy.",
       rain: "This is rainy.",
+      'rain-possible': "Possible rain.",
       wind: "This is windy.",
       cold: "This is cold.",
       heat: "This is hot.",
@@ -326,6 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const labels = {
       storm: "Severe weather",
       rain: "Wet conditions",
+      'rain-possible': "Possible showers",
       wind: "Gusty",
       cold: "Chilly",
       heat: "Very hot",
@@ -355,10 +359,18 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       rain: [
         isNum(rainPct) && rainPct >= 70 ? "Plan indoors — today's moody." : 'Keep a jacket close.',
+        "Grab the brolly, it's pissing down!",
         'Rain boots energy.',
         'Ja, it’s a wet one.',
         'Spat spat — pavement shimmer day.',
         'Clouds are doing the most today.'
+      ],
+      'rain-possible': [
+        'Possible showers — keep a brolly handy.',
+        'Maybe rain, maybe not. Classic.',
+        'Light drizzle vibes, just in case.',
+        'Cloudy with a chance of “maybe”.',
+        'Rain could pop in, hey.'
       ],
       wind: [
         'Hold onto your hat.',
@@ -393,7 +405,8 @@ document.addEventListener("DOMContentLoaded", () => {
         'Lekker clear skies.',
         'Fresh air kind of day.',
         'Blue skies, big smiles.',
-        'Sun’s out, plans on.'
+        'Sun’s out, plans on.',
+        'Perfect for a jol, boet!'
       ]
     };
 
@@ -407,7 +420,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg';
-    const folder = condition;
+    const folder = condition === 'rain-possible' ? 'cloudy' : condition;
     const fallbackFolder = 'clear';
     
     // Determine time of day based on current hour

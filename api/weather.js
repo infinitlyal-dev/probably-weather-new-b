@@ -286,14 +286,18 @@ export default async function handler(req, res) {
         windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
       }));
   
-      const aggregatedDaily = Array.from({length: 7}, (_, i) => ({
-        highC: median(dailies.map(d => d.highs[i]).filter(isNum)),
-        lowC: median(dailies.map(d => d.lows[i]).filter(isNum)),
-        rainChance: median(dailies.map(d => d.rains[i]).filter(isNum)),
-        uv: median(dailies.map(d => d.uvs[i]).filter(isNum)),
-        conditionLabel: pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown',
-        conditionKey: deriveConditionKey(pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown'),
-      }));
+      const aggregatedDaily = Array.from({length: 7}, (_, i) => {
+        const conditionLabel = pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown';
+        const rainChance = median(dailies.map(d => d.rains[i]).filter(isNum));
+        return {
+          highC: median(dailies.map(d => d.highs[i]).filter(isNum)),
+          lowC: median(dailies.map(d => d.lows[i]).filter(isNum)),
+          rainChance,
+          uv: median(dailies.map(d => d.uvs[i]).filter(isNum)),
+          conditionLabel,
+          conditionKey: deriveConditionKeyWithPrecip(conditionLabel, rainChance),
+        };
+      });
   
       // Compute consensus confidence
       const temps = norms.map(n => n.nowTemp).filter(isNum);
@@ -312,6 +316,8 @@ export default async function handler(req, res) {
       const wind_kph = isNum(medWindKph) ? medWindKph : 0;
       const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
   
+      const nowConditionKey = deriveConditionKeyWithPrecip(mostDesc, aggregatedDaily[0]?.rainChance ?? null);
+
       return res.status(200).json({
         ok: true,
         location: {
@@ -325,7 +331,7 @@ export default async function handler(req, res) {
           feelsLikeC: medNowTemp, // Simplified - same as temp
           windKph: medWindKph,
           rainChance: aggregatedDaily[0]?.rainChance ?? null,
-          conditionKey: deriveConditionKey(mostDesc),
+          conditionKey: nowConditionKey,
           conditionLabel: mostDesc,
         },
         consensus: {
@@ -379,6 +385,19 @@ export default async function handler(req, res) {
     if (d.includes('hot') || d.includes('heat')) return 'heat';
     if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return 'fog';
     if (d.includes('clear') || d.includes('sunny') || d.includes('fair')) return 'clear';
+    if (d.includes('cloud')) return 'cloudy';
     // Default: cloudy or unknown → clear (per spec)
     return 'clear';
+  }
+
+  function deriveConditionKeyWithPrecip(desc, rainChance) {
+    if (isNum(rainChance)) {
+      if (rainChance > 20) return 'rain';
+      if (rainChance > 0) return 'rain-possible';
+      if (rainChance === 0) {
+        const key = deriveConditionKey(desc);
+        return key === 'rain' ? 'clear' : key;
+      }
+    }
+    return deriveConditionKey(desc);
   }
