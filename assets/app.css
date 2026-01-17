@@ -182,26 +182,25 @@ body.modal-open {
   max-height: 70vh;
   overflow-y: auto;
   padding: 1rem;
-  border-radius: 15px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   z-index: 20;
 }
 
-.screenPanel.transparent-glass {
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+.glass-panel {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Arial, sans-serif;
+  color: var(--panel-text, #222);
+  animation: fadeIn 0.3s ease;
 }
 
-body.ui-dark .screenPanel.transparent-glass {
-  background: rgba(0,0,0,0.35);
-  color: #fff;
-}
-
-body.ui-light .screenPanel.transparent-glass {
-  color: #111;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .screen-panel-header {
@@ -281,11 +280,12 @@ body.ui-light .screenPanel.transparent-glass {
 
 .hourly-card,
 .daily-card {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 16px;
-  padding: 0.75rem;
-  min-width: 140px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 160px;
+  gap: 0.5rem;
 }
 
 body.ui-dark .hourly-card,
@@ -334,7 +334,28 @@ body.ui-dark .daily-card {
 .hour-wind,
 .day-uv {
   font-size: 0.85rem;
-  opacity: 0.8;
+  color: var(--panel-subtext, #4b5563);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@media (max-width: 600px) {
+  .hourly-screen .hourly-timeline,
+  .week-screen .daily-cards {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 .search-result-item {

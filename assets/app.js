@@ -203,7 +203,8 @@ document.addEventListener("DOMContentLoaded", () => {
     [screenHourly, screenWeek, screenSearch, screenSettings].forEach(panel => {
       if (!panel) return;
       panel.classList.toggle('light-glass', false);
-      panel.classList.toggle('transparent-glass', !!which && which !== screenHome);
+      panel.classList.toggle('transparent-glass', false);
+      panel.classList.toggle('glass-panel', !!which && which !== screenHome);
     });
 
     document.body.classList.toggle('modal-open', which && which !== screenHome);
@@ -724,6 +725,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const uiTone = ['clear', 'heat'].includes(condition) ? 'ui-light' : 'ui-dark';
     document.body.classList.remove('ui-light', 'ui-dark');
     document.body.classList.add(uiTone);
+    document.body.style.setProperty('--panel-text', uiTone === 'ui-light' ? '#222' : '#eee');
+    document.body.style.setProperty('--panel-subtext', uiTone === 'ui-light' ? '#4b5563' : '#cbd5e1');
 
     // Location - use API location name if available
     let locationName = norm.locationName || activePlace?.name || 'My Location';
@@ -829,8 +832,8 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="hour-temp">${tempStr}</div>
-        <div class="hour-rain">Precip ${rainStr}</div>
-        <div class="hour-wind">Wind ${windStr}</div>
+        <div class="hour-rain"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14h12M8 18h8M9 10h6" /></svg> ${rainStr}</div>
+        <div class="hour-wind"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" /></svg> ${windStr}</div>
         <div class="precip-bar" style="--prob:${isNum(h.rainChance) ? round0(h.rainChance) : 0}"></div>
       `;
       hourlyTimeline.appendChild(div);
@@ -868,8 +871,8 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="day-temp">${tempLine}</div>
-        <div class="day-rain">Precip ${rainStr}</div>
-        <div class="day-uv">UV ${isNum(d.uv) ? round0(d.uv) : '--'}</div>
+        <div class="day-rain"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14h12M8 18h8M9 10h6" /></svg> ${rainStr}</div>
+        <div class="day-uv"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M4.2 6.2l2.8 2.8M17 17l2.8 2.8M3 12h4M17 12h4M6.2 19.8l2.8-2.8M17 7l2.8-2.8" /></svg> ${isNum(d.uv) ? round0(d.uv) : '--'}</div>
         <div class="precip-bar" style="--prob:${isNum(d.rainChance) ? round0(d.rainChance) : 0}"></div>
       `;
       dailyCards.appendChild(div);
