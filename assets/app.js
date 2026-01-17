@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const toast = $('#toast');
 
   // ========== CONSTANTS ==========
-  // FIXED: STORAGE is now an object, not a string
   const STORAGE = {
     favorites: "pw_favorites",
     recents: "pw_recents",
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
-  // Thresholds for condition detection (from product spec)
+  // Thresholds for condition detection
   const THRESH = {
     RAIN_PCT: 40,    // >= 40% rain chance = rain dominates
     WIND_KPH: 25,    // >= 25 km/h = wind dominates
@@ -81,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activePlace = null;
   let homePlace = null;
   let lastPayload = null;
-  window.__PW_LAST_NORM = null; // Global store for latest normalized data
+  window.__PW_LAST_NORM = null;
   let state = { city: "Cape Town" };
   let manageMode = false;
   const pendingFavMeta = new Set();
@@ -121,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function samePlace(a, b) {
     if (!a || !b) return false;
     return Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) &&
-           Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
+           Number(b.lon).toFixed(4) === Number(b.lon).toFixed(4);
   }
 
   function favoriteKey(p) {
@@ -213,13 +212,12 @@ document.addEventListener("DOMContentLoaded", () => {
       saveCurrent.style.display = which === screenHome ? '' : 'none';
     }
     
-    // Hide sidebar on non-Home screens
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
       if (which === screenHome) {
-        sidebar.style.display = ''; // Show on Home
+        sidebar.style.display = '';
       } else {
-        sidebar.style.display = 'none'; // Hide on other screens
+        sidebar.style.display = 'none';
       }
     }
   }
@@ -248,12 +246,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== SINGLE SOURCE OF TRUTH: DOMINANT CONDITION ==========
-  // SINGLE SOURCE OF TRUTH for weather condition
-  // Priority order: Storm > Rain > Wind > Cold > Heat > Fog > Clear
+  // FIXED: This is the ONLY function that determines weather condition
+  // Priority order: Storm > Rain > Wind > Cold > Heat > Fog > Cloudy > Clear
   
   function computeDominantCondition(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase();
-    const rain = norm.rainPct;
+    const rain = norm.rainPct; // Daily median rain %
     const maxWindKph = (() => {
       let max = isNum(norm.windKph) ? norm.windKph : null;
       const hours = Array.isArray(norm.hourly) ? norm.hourly : [];
@@ -266,51 +264,50 @@ document.addEventListener("DOMContentLoaded", () => {
     const wind = maxWindKph;
     const hi = norm.todayHigh;
 
-    // 1. STORM
+    // 1. STORM - if API says storm/thunder
     if (condKey === 'storm' || condKey.includes('thunder')) {
       return 'storm';
     }
 
-    // 2. RAIN (strict median precip)
+    // 2. RAIN - based on DAILY median precipitation probability
+    // CRITICAL: Use daily rain %, not hourly
     if (isNum(rain)) {
-      if (rain > 20) return 'rain';
-      if (rain > 0) return 'rain-possible';
-      if (rain === 0) {
-        // fall through to other conditions
-      }
+      if (rain >= 40) return 'rain'; // High chance = rain dominates
+      if (rain >= 20) return 'rain-possible'; // Moderate chance = possible rain
+      // If rain < 20%, continue to other conditions
     }
 
-    // 3. WIND (>=25 km/h)
-    if (isNum(wind) && wind >= THRESH.WIND_KPH) {
+    // 3. WIND - if max wind >= 25 km/h
+    if (isNum(wind) && wind >= 25) {
       return 'wind';
     }
 
-    // 4. COLD (max <=16°C)
-    if (isNum(hi) && hi <= THRESH.COLD_C) {
+    // 4. COLD - if max temp <= 16°C
+    if (isNum(hi) && hi <= 16) {
       return 'cold';
     }
 
-    // 5. HEAT (max >=32°C)
-    if (isNum(hi) && hi >= THRESH.HOT_C) {
+    // 5. HEAT - if max temp >= 32°C
+    if (isNum(hi) && hi >= 32) {
       return 'heat';
     }
 
-    // 6. FOG
+    // 6. FOG - if API says fog/mist/haze
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) {
       return 'fog';
     }
 
-    if (condKey.includes('cloud')) {
+    // 7. CLOUDY - if API mentions clouds and no rain
+    if (condKey.includes('cloud') || condKey.includes('overcast')) {
       return 'cloudy';
     }
 
-    // 7. CLEAR (default)
+    // 8. CLEAR - default sunny/clear
     return 'clear';
   }
 
   // ========== CONDITION-DRIVEN DISPLAY FUNCTIONS ==========
   
-  // Spec Section 6: Hero headline - short, confident, declarative
   function getHeadline(condition) {
     const headlines = {
       storm: "This is stormy.",
@@ -326,7 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return headlines[condition] || "This is weather.";
   }
 
-  // Spec Section 8: Today's extreme card - practical terms
   function getExtremeLabel(condition) {
     const labels = {
       storm: "Severe weather",
@@ -342,9 +338,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return labels[condition] || "Moderate";
   }
 
-  // Spec Section 7: Humour - SA-specific, light, observational
+  // UPDATED: Handle cloudy condition
   function getWittyLine(condition, rainPct, maxC) {
-    // Weekend braai check (Fri-Sun)
     const day = new Date().getDay();
     const isWeekend = day === 0 || day === 5 || day === 6;
 
@@ -377,7 +372,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       cloudy: [
         'Clouds gatecrashing the party.',
-        'Breezy boet, hold onto your hat!',
         'Overcast vibes, still lekker.',
         'Clouds doing the slow dance.',
         'Grey skies, easy pace.'
@@ -416,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
         'Lekker clear skies.',
         'Fresh air kind of day.',
         'Blue skies, big smiles.',
-        'Sun’s out, plans on.',
+        'Sun's out, plans on.',
         'Perfect for a jol, boet!'
       ]
     };
@@ -426,15 +420,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== BACKGROUND IMAGE LOGIC ==========
-  // Background folder MUST match dominant condition exactly
-  // Fallback: same folder → clear (NEVER cloudy)
-
+  // FIXED: Better fallback handling
+  
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg';
     const folder = condition === 'rain-possible' ? 'cloudy' : condition;
-    const fallbackFolder = 'clear';
     
-    // Determine time of day based on current hour
     const now = new Date();
     const hour = now.getHours();
     const minute = now.getMinutes();
@@ -451,16 +442,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     const path = `${base}/${folder}/${timeOfDay}.jpg`;
+    
+    console.log('[BACKGROUND] Setting:', path);
 
     if (bgImg) {
       bgImg.src = path;
       bgImg.onerror = () => {
         const fallback1 = `${base}/${folder}/day.jpg`;
+        console.log('[BACKGROUND] Fallback to:', fallback1);
         if (bgImg.src !== fallback1) {
           bgImg.src = fallback1;
           bgImg.onerror = () => {
-            // Final fallback: clear (never cloudy)
-            bgImg.src = `${base}/${fallbackFolder}/day.jpg`;
+            const fallback2 = `${base}/clear/day.jpg`;
+            console.log('[BACKGROUND] Final fallback to:', fallback2);
+            bgImg.src = fallback2;
           };
         }
       };
@@ -468,7 +463,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== PARTICLES ==========
-  // Driven by condition, not hardcoded
   
   function createParticles(condition, count = 20) {
     if (!particlesEl) return;
@@ -515,7 +509,6 @@ document.addEventListener("DOMContentLoaded", () => {
       
       const data = await response.json();
       
-      // Extract city name - try suburb first (for Strand), then city/town/etc
       const city = data.address?.suburb || 
                    data.address?.city || 
                    data.address?.town || 
@@ -581,14 +574,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderSidebar(norm) {
-    // INVARIANT 1: If called with null/undefined, do nothing but don't break
     if (!norm) {
-      // Runtime check: if __PW_LAST_NORM exists but norm is null, this is a programming error
       if (window.__PW_LAST_NORM) {
         console.error('[INVARIANT VIOLATION] renderSidebar called with null but __PW_LAST_NORM exists. Using cached data.');
         norm = window.__PW_LAST_NORM;
       } else {
-        return; // No data available, early exit is safe
+        return;
       }
     }
     
@@ -619,17 +610,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     
-    // Today's extreme
     const extremeLabel = getExtremeLabel(condition);
     safeText(extremeLabelEl, `Today's extreme:`);
     safeText(extremeValueEl, extremeLabel);
     
-    // INVARIANT 2: Extreme label must never be empty string or undefined when data exists
     if (!extremeLabel) {
       console.error('[INVARIANT VIOLATION] getExtremeLabel returned empty for condition:', condition);
     }
 
-    // Rain display
     if (isNum(rain)) {
       const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
                      : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
@@ -637,7 +625,6 @@ document.addEventListener("DOMContentLoaded", () => {
                      : 'Likely';
       safeText(rainValueEl, rainText);
       
-      // INVARIANT 3: Rain text must be one of the valid strings when rain is numeric
       if (!['None expected', 'Unlikely', 'Possible', 'Likely'].includes(rainText)) {
         console.error('[INVARIANT VIOLATION] Invalid rain text computed:', rainText, 'for rain:', rain);
       }
@@ -650,7 +637,6 @@ document.addEventListener("DOMContentLoaded", () => {
       safeText(windValueEl, formatWind(windKph));
     }
 
-    // UV display
     if (isNum(uv)) {
       const uvText = uv < THRESH.UV_LOW ? 'Low'
                    : uv < THRESH.UV_MODERATE ? 'Moderate'
@@ -659,7 +645,6 @@ document.addEventListener("DOMContentLoaded", () => {
                    : 'Extreme';
       safeText(uvValueEl, `${uvText} (${round0(uv)})`);
       
-      // INVARIANT 4: UV text must be one of the valid categories when UV is numeric
       if (!['Low', 'Moderate', 'High', 'Very High', 'Extreme'].includes(uvText)) {
         console.error('[INVARIANT VIOLATION] Invalid UV text computed:', uvText, 'for UV:', uv);
       }
@@ -667,7 +652,6 @@ document.addEventListener("DOMContentLoaded", () => {
       safeText(uvValueEl, '--');
     }
 
-    // Source Ranges - show individual source temperature ranges
     const sourceRanges = norm.sourceRanges || [];
     if (sourceRanges.length > 0) {
       const rangesText = sourceRanges
@@ -677,18 +661,15 @@ document.addEventListener("DOMContentLoaded", () => {
       
       safeText($('#confidenceValue'), rangesText || '--');
     } else {
-      // Fallback if no ranges (or render "Agreement" as fallback)
       const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
       const confText = confMap[norm.confidenceKey] || 'Mixed';
       safeText($('#confidenceValue'), confText);
     }
 
-    // Hide confidence bar
     if (confidenceBarEl) {
       confidenceBarEl.style.display = 'none';
     }
     
-    // INVARIANT 7: Log successful render for verification
     console.log('[SIDEBAR] Rendered successfully. Source Ranges:', sourceRanges.length);
   }
 
@@ -698,28 +679,19 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(descriptionEl, msg);
   }
 
+  // FIXED: renderHome - NO OVERRIDES, trust computeDominantCondition()
   function renderHome(norm) {
     showLoader(false);
 
     const hi = norm.todayHigh;
     const low = norm.todayLow;
     const rain = norm.rainPct;
-    const uv = norm.uv;
 
     // ========== SINGLE SOURCE OF TRUTH ==========
-    // Use hourly[0] median for home mood
-    const currentHour = Array.isArray(norm.hourly) ? norm.hourly[0] : null;
-    const hourRain = currentHour?.rainChance;
-    const hourCloud = currentHour?.cloudPct;
-    const hourWind = currentHour?.windKph;
-    let condition = computeDominantCondition(norm);
-    if (isNum(hourRain)) {
-      if (hourRain > 30) condition = 'rain';
-      else if (hourRain > 0) condition = 'rain-possible';
-      else if (hourRain === 0 && isNum(hourCloud) && hourCloud > 50) condition = 'cloudy';
-      else if (hourRain === 0 && isNum(hourWind) && hourWind > 20) condition = 'wind';
-      else if (hourRain === 0) condition = 'clear';
-    }
+    // Compute condition ONCE, never override it
+    const condition = computeDominantCondition(norm);
+    
+    console.log('[RENDER HOME] Condition:', condition, 'Rain%:', rain, 'High:', hi, 'Wind:', norm.windKph);
 
     // Set body class for condition-based styling
     document.body.className = `weather-${condition} home-${condition}`;
@@ -729,13 +701,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.setProperty('--panel-text', uiTone === 'ui-light' ? '#222' : '#eee');
     document.body.style.setProperty('--panel-subtext', uiTone === 'ui-light' ? '#4b5563' : '#cbd5e1');
 
-    // Location - use API location name if available
     let locationName = norm.locationName || activePlace?.name || 'My Location';
 
-    // Show initial value immediately
     safeText(locationEl, locationName);
 
-    // If we only have "My Location" but we have coordinates, reverse geocode
     if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
       const currentPlace = activePlace; 
       
@@ -743,7 +712,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(cityName => {
           if (cityName && currentPlace === activePlace) {
             safeText(locationEl, cityName);
-            // Cache the result
             if (activePlace) activePlace.name = cityName;
             if (homePlace && homePlace.lat === currentPlace.lat && homePlace.lon === currentPlace.lon) {
               homePlace.name = cityName;
@@ -756,36 +724,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     
-    // Hero headline - driven by condition (Spec Section 6)
     if (headlineEl) headlineEl.className = `headline hero-headline ${condition === 'heat' || condition === 'storm' ? 'glow-hot' : ''}`;
     safeText(headlineEl, getHeadline(condition));
     
-    // Temperature range
     const lowStr = isNum(low) ? formatTemp(low) : '--°';
     const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
     if (tempEl) tempEl.className = 'temp hero-temp';
     safeText(tempEl, `${lowStr} – ${hiStr}`);
     
-    // Witty line - driven by condition (Spec Section 7)
     if (descriptionEl) descriptionEl.className = 'description hero-witty';
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
-    // Render sidebar (extracted for reuse across tabs)
     renderSidebar(norm);
 
-    // Confidence
     const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
     safeText(confidenceEl, `PROBABLY • ${confLabel} CONFIDENCE`);
 
-    // Sources
     const usedTxt = norm.used.length ? `Used: ${norm.used.join(', ')}` : 'Used: —';
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(', ')}` : '';
     safeText(sourcesEl, `${usedTxt}${failedTxt ? ' · ' + failedTxt : ''}`);
 
-    // Background - driven by condition (Spec Section 5)
     setBackgroundFor(condition);
     
-    // Particles - driven by condition
     createParticles(condition);
   }
 
@@ -918,7 +878,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const payload = await fetchProbable(place);
       lastPayload = payload;
       const norm = normalizePayload(payload);
-      window.__PW_LAST_NORM = norm; // Store for sidebar persistence
+      window.__PW_LAST_NORM = norm;
       renderHome(norm);
       renderHourly(norm.hourly);
       renderWeek(norm.daily);
@@ -1014,7 +974,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderFavorites();
       }
     } catch {
-      // Ignore mini forecast errors
     } finally {
       pendingFavMeta.delete(key);
     }
@@ -1134,7 +1093,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   async function runSearch(q) {
     if (!q || q.trim().length < 2) {
-      // Clear search results
       const resultsContainer = document.getElementById('searchResults');
       if (resultsContainer) resultsContainer.innerHTML = '';
       return;
@@ -1147,7 +1105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}` +
       `&format=jsonv2&limit=10&addressdetails=1&bounded=0` +
       `&featureclass=P&featureclass=A` +
-      `${countryCode ? `&countrycodes=${countryCode}` : '&countrycodes=za'}`;
+      `${countryCode ? `&countrycodes=${countryCode}` : `&countrycodes=za`}`;
     const hasComma = queryText.includes(',');
     try {
       let data = await (await fetch(baseUrl(queryText))).json();
@@ -1165,7 +1123,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function renderSearchResults(results) {
-    // Find or create search results container
     let resultsContainer = document.getElementById('searchResults');
     if (!resultsContainer) {
       resultsContainer = document.createElement('div');
@@ -1178,7 +1135,6 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsList.id = 'searchResultsList';
       resultsContainer.appendChild(resultsList);
       
-      // Insert after search input
       const searchScreen = document.getElementById('search-screen');
       const cancelBtn = document.getElementById('searchCancel');
       if (searchScreen && cancelBtn) {
@@ -1209,7 +1165,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </li>`;
     }).join('');
     
-    // Add click handlers
     resultsList.querySelectorAll('li[data-lat]').forEach(li => {
       li.addEventListener('click', async () => {
         const place = { 
@@ -1220,7 +1175,6 @@ document.addEventListener("DOMContentLoaded", () => {
         await addRecentIfNew(place);
         showScreen(screenHome);
         loadAndRender(place);
-        // Clear search
         if (searchInput) searchInput.value = '';
         resultsList.innerHTML = '';
       });
@@ -1248,13 +1202,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
-  // Add search input handler with debouncing
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
         runSearch(e.target.value);
-      }, 300); // 300ms debounce
+      }, 300);
     });
   }
 
@@ -1267,7 +1220,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   navHourly.addEventListener('click', () => {
     showScreen(screenHourly);
-    // INVARIANT: Always re-render sidebar when data exists
     if (window.__PW_LAST_NORM) {
       renderSidebar(window.__PW_LAST_NORM);
     } else {
@@ -1277,7 +1229,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   navWeek.addEventListener('click', () => {
     showScreen(screenWeek);
-    // INVARIANT: Always re-render sidebar when data exists
     if (window.__PW_LAST_NORM) {
       renderSidebar(window.__PW_LAST_NORM);
     } else {
@@ -1289,7 +1240,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenSearch);
     renderRecents();
     renderFavorites();
-    // INVARIANT: Always re-render sidebar when data exists
     if (window.__PW_LAST_NORM) {
       renderSidebar(window.__PW_LAST_NORM);
     } else {
@@ -1299,7 +1249,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   navSettings.addEventListener('click', () => {
     showScreen(screenSettings);
-    // INVARIANT: Always re-render sidebar when data exists
     if (window.__PW_LAST_NORM) {
       renderSidebar(window.__PW_LAST_NORM);
     } else {
@@ -1346,7 +1295,6 @@ document.addEventListener("DOMContentLoaded", () => {
       applySettings();
     });
   }
-
 
   if (saveCurrent) {
     saveCurrent.addEventListener('click', () => {
@@ -1401,7 +1349,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     loadAndRender(homePlace);
   } else {
-    // Geolocation (first load only)
     showScreen(screenHome);
     renderLoading("My Location");
 
@@ -1427,7 +1374,6 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         },
         () => {
-          // Fallback: Cape Town
           homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
