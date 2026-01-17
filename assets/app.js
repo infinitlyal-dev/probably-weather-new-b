@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     wind: 'kmh',
     range: false,
     time: '24',
-    lang: 'en'
+    lang: 'plain'
   };
   let settings = { ...DEFAULT_SETTINGS };
 
@@ -125,12 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadSettings() {
+    const storedLang = loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang);
+    const normalizedLang = storedLang === 'af' ? 'human'
+      : storedLang === 'en' ? 'plain'
+      : storedLang;
     settings = {
       temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp),
       wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind),
       range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range),
       time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time),
-      lang: loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang)
+      lang: normalizedLang || DEFAULT_SETTINGS.lang
     };
   }
 
@@ -306,16 +310,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // Weekend braai check (Fri-Sun)
     const day = new Date().getDay();
     const isWeekend = day === 0 || day === 5 || day === 6;
-    const lang = settings.lang || 'en';
+    const lang = settings.lang || 'plain';
 
-    if (isWeekend && condition === "clear") {
-      return lang === 'af' ? "Braai weer, boet!" : "Braai weather, boet!";
+    if (lang === 'plain') {
+      const linesPlain = {
+        storm: 'Stormy conditions expected.',
+        rain: isNum(rainPct) && rainPct >= 70 ? 'High chance of rain.' : 'Chance of rain.',
+        wind: 'Windy today.',
+        cold: 'Cool conditions expected.',
+        heat: 'Hot conditions expected.',
+        fog: 'Low visibility likely.',
+        clear: 'Clear conditions expected.'
+      };
+      return linesPlain[condition] || 'Weather expected.';
     }
 
-    const linesEn = {
+    if (isWeekend && condition === "clear") {
+      return "Braai weather, boet!";
+    }
+
+    const linesHuman = {
       storm: "Electric vibes. Don't be the tallest thing outside.",
-      rain: isNum(rainPct) && rainPct >= 70 
-        ? "Plan indoors — today's moody." 
+      rain: isNum(rainPct) && rainPct >= 70
+        ? "Plan indoors — today's moody."
         : "Keep a jacket close.",
       wind: "Hold onto your hat.",
       cold: "Ja, it's jacket weather.",
@@ -324,20 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
       clear: "Good day to get stuff done outside."
     };
 
-    const linesAf = {
-      storm: "Elektriese vibes. Moenie die hoogste ding buite wees nie.",
-      rain: isNum(rainPct) && rainPct >= 70
-        ? "Plan binnenshuis — vandag is bietjie moody."
-        : "Hou 'n baadjie naby.",
-      wind: "Hou vas aan jou hoed.",
-      cold: "Ja, dis jas-weer.",
-      heat: "Groot hitte — vat dit stadig buite.",
-      fog: "Sigbaarheid vibes: ry soos met 'n gran agterin.",
-      clear: "Goeie dag om buite dinge te doen."
-    };
-
-    const lines = lang === 'af' ? linesAf : linesEn;
-    return lines[condition] || (lang === 'af' ? "Net... waarskynlik." : "Just... probably.");
+    return linesHuman[condition] || "Just... probably.";
   }
 
   // ========== BACKGROUND IMAGE LOGIC ==========
@@ -752,13 +756,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (unitsWindSelect) unitsWindSelect.value = settings.wind;
     if (probRangeToggle) probRangeToggle.checked = !!settings.range;
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
-    if (languagePlain) languagePlain.checked = settings.lang === 'en';
-    if (languageHuman) languageHuman.checked = settings.lang === 'af';
+    if (languagePlain) languagePlain.checked = settings.lang === 'plain';
+    if (languageHuman) languageHuman.checked = settings.lang === 'human';
 
     if (taglineEl) {
-      taglineEl.textContent = settings.lang === 'af'
-        ? 'Geen Ja-Nee-Miskien weer. Net Waarskynlik.'
-        : 'No more Ja-No-Maybe weather. Just Probably.';
+      taglineEl.textContent = settings.lang === 'human'
+        ? 'No more Ja-No-Maybe weather. Just Probably.'
+        : 'Probably Weather.';
     }
 
     if (lastPayload) {
@@ -1056,7 +1060,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (languagePlain) {
     languagePlain.addEventListener('change', () => {
       if (languagePlain.checked) {
-        settings.lang = 'en';
+        settings.lang = 'plain';
         saveSettings();
         applySettings();
       }
@@ -1066,7 +1070,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (languageHuman) {
     languageHuman.addEventListener('change', () => {
       if (languageHuman.checked) {
-        settings.lang = 'af';
+        settings.lang = 'human';
         saveSettings();
         applySettings();
       }

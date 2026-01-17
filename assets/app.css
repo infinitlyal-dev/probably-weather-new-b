@@ -302,6 +302,15 @@ body.modal-open {
 }
 
 /* SETTINGS */
+.settings-screen {
+  background: rgba(255,255,255,0.9);
+  color: #111;
+}
+
+.settings-screen .screen-panel-header {
+  color: #111;
+}
+
 .settings-screen .screen-panel-body {
   overflow: auto;
   align-items: center;
@@ -330,6 +339,7 @@ body.modal-open {
 .settings-section {
   width: 100%;
   max-width: 600px;
+  padding: 0.5rem 0;
 }
 
 .settings-section h3 {
@@ -343,36 +353,46 @@ body.modal-open {
   align-items: center;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .settings-option label {
   flex: 1;
-  font-size: 1.2rem;
-  color: currentColor;
+  font-size: 1.1rem;
+  color: #111;
 }
 
 .settings-option select {
-  padding: 1rem;
-  border-radius: 30px;
-  border: none;
-  background: rgba(255,255,255,0.2);
-  color: white;
+  padding: 0.8rem 2.2rem 0.8rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.95);
+  color: #111;
   cursor: pointer;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #333 50%),
+    linear-gradient(135deg, #333 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
 }
 
 .settings-option input[type="checkbox"], input[type="radio"] {
   appearance: none;
   width: 50px;
   height: 30px;
-  background: gray;
+  background: #c7c7c7;
   border-radius: 15px;
   position: relative;
   cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .settings-option input[type="checkbox"]:checked, input[type="radio"]:checked {
-  background: green;
+  background: #16a34a;
 }
 
 .settings-option input[type="checkbox"]::before, input[type="radio"]::before {
@@ -380,7 +400,7 @@ body.modal-open {
   position: absolute;
   width: 26px;
   height: 26px;
-  background: white;
+  background: #fff;
   border-radius: 50%;
   top: 2px;
   left: 2px;
