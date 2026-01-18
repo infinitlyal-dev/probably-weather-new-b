@@ -579,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(sourcesEl, 'Sources: —');
   }
 
-  function renderSidebar(norm) {
+  function renderSidebar(norm, conditionOverride) {
     // INVARIANT 1: If called with null/undefined, do nothing but don't break
     if (!norm) {
       // Runtime check: if __PW_LAST_NORM exists but norm is null, this is a programming error
@@ -590,10 +590,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return; // No data available, early exit is safe
       }
     }
-    
+
     const rain = norm.rainPct;
     const uv = norm.uv;
-    const condition = computeDominantCondition(norm);
+    // Use passed condition (from renderHome) or stored condition, or recompute as fallback
+    const condition = conditionOverride || window.__PW_LAST_CONDITION || computeDominantCondition(norm);
 
     let windValueEl = document.getElementById('windValue');
     if (!windValueEl) {
@@ -628,21 +629,23 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error('[INVARIANT VIOLATION] getExtremeLabel returned empty for condition:', condition);
     }
 
-    // Rain display
-    if (isNum(rain)) {
-      const rainText = rain < THRESH.RAIN_NONE ? 'None expected'
-                     : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
-                     : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
-                     : 'Likely';
-      safeText(rainValueEl, rainText);
-      
-      // INVARIANT 3: Rain text must be one of the valid strings when rain is numeric
-      if (!['None expected', 'Unlikely', 'Possible', 'Likely'].includes(rainText)) {
-        console.error('[INVARIANT VIOLATION] Invalid rain text computed:', rainText, 'for rain:', rain);
-      }
+    // Rain display - must be consistent with condition (no contradictions)
+    // If condition indicates rain, rain panel cannot say "None expected"
+    const isRainCondition = condition === 'rain' || condition === 'rain-possible' || condition === 'storm';
+    let rainText;
+    if (isRainCondition) {
+      // Condition indicates rain - ensure panel doesn't contradict
+      rainText = condition === 'rain' || condition === 'storm' ? 'Likely'
+               : 'Possible'; // rain-possible
+    } else if (isNum(rain)) {
+      rainText = rain < THRESH.RAIN_NONE ? 'None expected'
+               : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
+               : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
+               : 'Likely';
     } else {
-      safeText(rainValueEl, '--');
+      rainText = '--';
     }
+    safeText(rainValueEl, rainText);
 
     if (windValueEl) {
       const windKph = isNum(norm.windKph) ? norm.windKph : 0;
@@ -766,8 +769,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Witty line - driven by condition (Spec Section 7)
     safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
-    // Render sidebar (extracted for reuse across tabs)
-    renderSidebar(norm);
+    // Store condition for sidebar consistency across tab switches
+    window.__PW_LAST_CONDITION = condition;
+
+    // Render sidebar (extracted for reuse across tabs) - pass condition for single source of truth
+    renderSidebar(norm, condition);
 
     // Confidence
     const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
