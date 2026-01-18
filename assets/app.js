@@ -255,27 +255,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const rain = norm.rainPct;
     const cloudPct = Array.isArray(norm.hourly) && norm.hourly[0]?.cloudPct;
 
-    // 1. STORM - thunder/lightning in the sky
+    // 1. STORM - thunder/lightning in the sky (conditionKey allowed)
     if (condKey === 'storm' || condKey.includes('thunder')) {
       return 'storm';
     }
 
-    // 2. RAIN - sky is actively rainy or very likely
-    if (condKey.includes('rain') || condKey.includes('drizzle') || condKey.includes('shower')) {
-      return 'rain';
+    // 2. FOG - visibility condition (conditionKey allowed)
+    if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) {
+      return 'fog';
     }
+
+    // 3. RAIN - probability-driven only (>= 50%)
     if (isNum(rain) && rain >= 50) {
       return 'rain';
     }
 
-    // 3. RAIN-POSSIBLE - sky looks like it might rain
+    // 4. RAIN-POSSIBLE - probability-driven only (>= 30%)
     if (isNum(rain) && rain >= 30) {
       return 'rain-possible';
-    }
-
-    // 4. FOG - visibility condition
-    if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) {
-      return 'fog';
     }
 
     // 5. CLOUDY - overcast sky (>= 60% cloud cover or conditionKey indicates)
