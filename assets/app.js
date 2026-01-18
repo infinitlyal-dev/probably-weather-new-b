@@ -247,70 +247,106 @@ document.addEventListener("DOMContentLoaded", () => {
     return String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   }
 
-  // ========== SINGLE SOURCE OF TRUTH: DOMINANT CONDITION ==========
-  // SINGLE SOURCE OF TRUTH for weather condition
-  // Priority order: Storm > Rain > Wind > Cold > Heat > Fog > Clear
-  
-  function computeDominantCondition(norm) {
+  // ========== SKY CONDITION (for headline, background, witty line) ==========
+  // Outputs: storm, rain, rain-possible, fog, cloudy, clear
+  // This determines the VISUAL MOOD of the sky - what you see when you look up
+  function computeSkyCondition(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase();
     const rain = norm.rainPct;
-    const maxWindKph = (() => {
-      let max = isNum(norm.windKph) ? norm.windKph : null;
-      const hours = Array.isArray(norm.hourly) ? norm.hourly : [];
-      for (let i = 0; i < Math.min(24, hours.length); i++) {
-        const w = hours[i]?.windKph;
-        if (isNum(w)) max = isNum(max) ? Math.max(max, w) : w;
-      }
-      return max;
-    })();
-    const wind = maxWindKph;
-    const hi = norm.todayHigh;
+    const cloudPct = Array.isArray(norm.hourly) && norm.hourly[0]?.cloudPct;
 
-    // 1. STORM
+    // 1. STORM - thunder/lightning in the sky
     if (condKey === 'storm' || condKey.includes('thunder')) {
       return 'storm';
     }
 
-    // 2. RAIN (strict median precip)
-    if (isNum(rain)) {
-      if (rain > 20) return 'rain';
-      if (rain > 0) return 'rain-possible';
-      if (rain === 0) {
-        // fall through to other conditions
-      }
+    // 2. RAIN - sky is actively rainy or very likely
+    if (condKey.includes('rain') || condKey.includes('drizzle') || condKey.includes('shower')) {
+      return 'rain';
+    }
+    if (isNum(rain) && rain >= 50) {
+      return 'rain';
     }
 
-    // 3. WIND (>=25 km/h)
-    if (isNum(wind) && wind >= THRESH.WIND_KPH) {
-      return 'wind';
+    // 3. RAIN-POSSIBLE - sky looks like it might rain
+    if (isNum(rain) && rain >= 30) {
+      return 'rain-possible';
     }
 
-    // 4. COLD (max <=16°C)
-    if (isNum(hi) && hi <= THRESH.COLD_C) {
-      return 'cold';
-    }
-
-    // 5. HEAT (max >=32°C)
-    if (isNum(hi) && hi >= THRESH.HOT_C) {
-      return 'heat';
-    }
-
-    // 6. FOG
+    // 4. FOG - visibility condition
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) {
       return 'fog';
     }
 
-    if (condKey.includes('cloud')) {
+    // 5. CLOUDY - overcast sky (>= 60% cloud cover or conditionKey indicates)
+    if ((isNum(cloudPct) && cloudPct >= 60) || condKey.includes('cloud') || condKey.includes('overcast')) {
       return 'cloudy';
     }
 
-    // 7. CLEAR (default)
+    // 6. CLEAR - default
+    return 'clear';
+  }
+
+  // ========== TODAY'S HERO (for impact panel) ==========
+  // Outputs: storm, rain, wind, heat, cold, uv, clear
+  // This determines the DOMINANT IMPACT FACTOR affecting your day
+  // Priority order based on real-world impact on daily activities
+  function computeTodaysHero(norm) {
+    const condKey = (norm.conditionKey || '').toLowerCase();
+    const rain = norm.rainPct;
+    const wind = norm.windKph;
+    const hi = norm.todayHigh;
+    const uv = norm.uv;
+
+    // 1. STORM - highest impact, dangerous
+    if (condKey === 'storm' || condKey.includes('thunder')) {
+      return 'storm';
+    }
+
+    // 2. HEAVY RAIN (>= 50%) - significant disruption
+    if (isNum(rain) && rain >= 50) {
+      return 'rain';
+    }
+
+    // 3. PERSISTENT RAIN (>= 30%) - plan around it
+    if (isNum(rain) && rain >= 30) {
+      return 'rain';
+    }
+
+    // 4. STRONG WIND (>= 20 km/h) - noticeable daily impact
+    if (isNum(wind) && wind >= 20) {
+      return 'wind';
+    }
+
+    // 5. EXTREME HEAT (>= 32°C) - health concern
+    if (isNum(hi) && hi >= THRESH.HOT_C) {
+      return 'heat';
+    }
+
+    // 6. EXTREME COLD (<= 10°C) - significant cold
+    if (isNum(hi) && hi <= 10) {
+      return 'cold';
+    }
+
+    // 7. HIGH UV (>= 8) - health/skin concern
+    if (isNum(uv) && uv >= 8) {
+      return 'uv';
+    }
+
+    // 8. COLD (<= 16°C) - jacket weather
+    if (isNum(hi) && hi <= THRESH.COLD_C) {
+      return 'cold';
+    }
+
+    // 9. CLEAR/PLEASANT - nothing impactful, enjoy the day
+    // Note: Cloudy is NOT a hero - it doesn't impact your day meaningfully
     return 'clear';
   }
 
   // ========== CONDITION-DRIVEN DISPLAY FUNCTIONS ==========
   
-  // Spec Section 6: Hero headline - short, confident, declarative
+  // Sky mood headline - short, confident, declarative
+  // Note: This reflects the SKY CONDITION, separate from Today's Hero
   function getHeadline(condition) {
     const headlines = {
       storm: "This is stormy.",
@@ -320,26 +356,28 @@ document.addEventListener("DOMContentLoaded", () => {
       wind: "This is windy.",
       cold: "This is cold.",
       heat: "This is hot.",
+      uv: "High UV today.",
       fog: "This is foggy.",
       clear: "This is clear."
     };
-    return headlines[condition] || "This is weather.";
+    return headlines[condition] || "This is clear.";
   }
 
-  // Spec Section 8: Today's extreme card - practical terms
-  function getExtremeLabel(condition) {
+  // Today's Hero card - the single dominant weather factor affecting your day
+  function getHeroLabel(condition) {
     const labels = {
       storm: "Severe weather",
       rain: "Wet conditions",
       'rain-possible': "Possible showers",
-      cloudy: "Cloudy",
-      wind: "Gusty",
+      wind: "Gusty winds",
       cold: "Chilly",
       heat: "Very hot",
+      uv: "High UV",
       fog: "Low visibility",
       clear: "Pleasant"
     };
-    return labels[condition] || "Moderate";
+    // Note: 'cloudy' intentionally omitted - should never be Hero
+    return labels[condition] || "Pleasant";
   }
 
   // Spec Section 7: Humour - SA-specific, light, observational
@@ -377,10 +415,17 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       cloudy: [
         'Clouds gatecrashing the party.',
-        'Breezy boet, hold onto your hat!',
         'Overcast vibes, still lekker.',
         'Clouds doing the slow dance.',
-        'Grey skies, easy pace.'
+        'Grey skies, easy pace.',
+        'Blanket sky today.'
+      ],
+      uv: [
+        'Slap on the sunscreen, boet.',
+        'UV is hectic — hat and shades.',
+        'Sun means business today.',
+        'SPF 50 kind of day.',
+        'Skin will thank you for shade.'
       ],
       wind: [
         'Hold onto your hat.',
@@ -430,7 +475,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg';
-    const folder = condition === 'rain-possible' ? 'cloudy' : condition;
+    // Map conditions to available background folders
+    const folderMap = {
+      'rain-possible': 'cloudy',
+      'uv': 'clear' // High UV = sunny/clear visually
+    };
+    const folder = folderMap[condition] || condition;
     const fallbackFolder = 'clear';
     
     // Determine time of day based on current hour
@@ -579,7 +629,7 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(sourcesEl, 'Sources: —');
   }
 
-  function renderSidebar(norm, conditionOverride) {
+  function renderSidebar(norm, heroOverride) {
     // INVARIANT 1: If called with null/undefined, do nothing but don't break
     if (!norm) {
       // Runtime check: if __PW_LAST_NORM exists but norm is null, this is a programming error
@@ -593,8 +643,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const rain = norm.rainPct;
     const uv = norm.uv;
-    // Use passed condition (from renderHome) or stored condition, or recompute as fallback
-    const condition = conditionOverride || window.__PW_LAST_CONDITION || computeDominantCondition(norm);
+    // Use passed hero (from renderHome) or stored hero, or recompute as fallback
+    const hero = heroOverride || window.__PW_LAST_HERO || computeTodaysHero(norm);
 
     let windValueEl = document.getElementById('windValue');
     if (!windValueEl) {
@@ -619,24 +669,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     
-    // Today's extreme
-    const extremeLabel = getExtremeLabel(condition);
-    safeText(extremeLabelEl, `Today's extreme:`);
-    safeText(extremeValueEl, extremeLabel);
-    
-    // INVARIANT 2: Extreme label must never be empty string or undefined when data exists
-    if (!extremeLabel) {
-      console.error('[INVARIANT VIOLATION] getExtremeLabel returned empty for condition:', condition);
+    // Today's Hero - the dominant impact factor
+    const heroLabel = getHeroLabel(hero);
+    safeText(extremeLabelEl, `Today's Hero:`);
+    safeText(extremeValueEl, heroLabel);
+
+    // INVARIANT 2: Hero label must never be empty string or undefined when data exists
+    if (!heroLabel) {
+      console.error('[INVARIANT VIOLATION] getHeroLabel returned empty for hero:', hero);
     }
 
-    // Rain display - must be consistent with condition (no contradictions)
-    // If condition indicates rain, rain panel cannot say "None expected"
-    const isRainCondition = condition === 'rain' || condition === 'rain-possible' || condition === 'storm';
+    // Rain display - must be consistent with hero (no contradictions)
+    // If hero indicates rain, rain panel cannot say "None expected"
+    const isRainHero = hero === 'rain' || hero === 'storm';
     let rainText;
-    if (isRainCondition) {
-      // Condition indicates rain - ensure panel doesn't contradict
-      rainText = condition === 'rain' || condition === 'storm' ? 'Likely'
-               : 'Possible'; // rain-possible
+    if (isRainHero) {
+      // Hero indicates rain - ensure panel doesn't contradict
+      rainText = 'Likely';
     } else if (isNum(rain)) {
       rainText = rain < THRESH.RAIN_NONE ? 'None expected'
                : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
@@ -708,24 +757,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const rain = norm.rainPct;
     const uv = norm.uv;
 
-    // ========== SINGLE SOURCE OF TRUTH ==========
-    // Use hourly[0] median for home mood
-    const currentHour = Array.isArray(norm.hourly) ? norm.hourly[0] : null;
-    const hourRain = currentHour?.rainChance;
-    const hourCloud = currentHour?.cloudPct;
-    const hourWind = currentHour?.windKph;
-    let condition = computeDominantCondition(norm);
-    if (isNum(hourRain)) {
-      if (hourRain > 30) condition = 'rain';
-      else if (hourRain > 0) condition = 'rain-possible';
-      else if (hourRain === 0 && isNum(hourCloud) && hourCloud > 50) condition = 'cloudy';
-      else if (hourRain === 0 && isNum(hourWind) && hourWind > 20) condition = 'wind';
-      else if (hourRain === 0) condition = 'clear';
-    }
+    // ========== TWO SEPARATE CONCERNS ==========
+    // SKY = visual mood (headline, background, witty line)
+    // HERO = dominant impact factor (Today's Hero panel)
+    const sky = computeSkyCondition(norm);
+    const hero = computeTodaysHero(norm);
 
-    // Set body class for condition-based styling
-    document.body.className = `weather-${condition}`;
-    const uiTone = ['clear', 'heat'].includes(condition) ? 'ui-light' : 'ui-dark';
+    // Set body class for condition-based styling (use sky for visuals)
+    document.body.className = `weather-${sky}`;
+    const uiTone = ['clear', 'heat'].includes(sky) ? 'ui-light' : 'ui-dark';
     document.body.classList.remove('ui-light', 'ui-dark');
     document.body.classList.add(uiTone);
     document.body.style.setProperty('--panel-text', uiTone === 'ui-light' ? '#222' : '#eee');
@@ -758,22 +798,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     
-    // Hero headline - driven by condition (Spec Section 6)
-    safeText(headlineEl, getHeadline(condition));
-    
+    // Sky mood headline (visual condition)
+    safeText(headlineEl, getHeadline(sky));
+
     // Temperature range
     const lowStr = isNum(low) ? formatTemp(low) : '--°';
     const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
     safeText(tempEl, `${lowStr} – ${hiStr}`);
-    
-    // Witty line - driven by condition (Spec Section 7)
-    safeText(descriptionEl, getWittyLine(condition, rain, hi));
 
-    // Store condition for sidebar consistency across tab switches
-    window.__PW_LAST_CONDITION = condition;
+    // Witty line - driven by sky mood
+    safeText(descriptionEl, getWittyLine(sky, rain, hi));
 
-    // Render sidebar (extracted for reuse across tabs) - pass condition for single source of truth
-    renderSidebar(norm, condition);
+    // Store both for sidebar consistency across tab switches
+    window.__PW_LAST_SKY = sky;
+    window.__PW_LAST_HERO = hero;
+
+    // Render sidebar - pass hero for Today's Hero panel
+    renderSidebar(norm, hero);
 
     // Confidence
     const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
@@ -784,11 +825,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(', ')}` : '';
     safeText(sourcesEl, `${usedTxt}${failedTxt ? ' · ' + failedTxt : ''}`);
 
-    // Background - driven by condition (Spec Section 5)
-    setBackgroundFor(condition);
-    
-    // Particles - driven by condition
-    createParticles(condition);
+    // Background - driven by sky mood (visual)
+    setBackgroundFor(sky);
+
+    // Particles - driven by sky mood (visual)
+    createParticles(sky);
   }
 
   function renderUpdatedAt(payload) {
