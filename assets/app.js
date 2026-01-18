@@ -853,11 +853,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hourly.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
-      const spread = isNum(h.tempC) && isNum(h.windKph) ? Math.abs(h.tempC - h.windKph / 5) : null;
-      const confClass = spread == null ? 'conf-med'
-        : spread < 2 ? 'conf-high'
-        : spread < 5 ? 'conf-med'
-        : 'conf-low';
       const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit',
@@ -867,17 +862,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
       const windStr = isNum(h.windKph) ? formatWind(h.windKph) : '--';
       div.innerHTML = `
-        <div class="hour-row">
-          <div class="hour-time">${hourTime}</div>
-          <div class="confidence-row">
-            <span class="confidence-dot ${confClass}"></span>
-            <span class="confidence-dot ${confClass}"></span>
-            <span class="confidence-dot ${confClass}"></span>
-          </div>
-        </div>
+        <div class="hour-time">${hourTime}</div>
         <div class="hour-temp">${tempStr}</div>
-        <div class="hour-rain"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14h12M8 18h8M9 10h6" /></svg> ${rainStr}</div>
-        <div class="hour-wind"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" /></svg> ${windStr}</div>
+        <div class="hour-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>
+        <div class="hour-detail"><span class="detail-label">Wind</span> <span class="detail-value">${windStr}</span></div>
         <div class="precip-bar" style="--prob:${isNum(h.rainChance) ? round0(h.rainChance) : 0}"></div>
       `;
       hourlyTimeline.appendChild(div);
@@ -1202,6 +1190,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   
+  // Format search result: "City, Region, Country" for disambiguation
+  function formatSearchResult(r) {
+    const addr = r.address || {};
+    const city = addr.city || addr.town || addr.village || addr.municipality || r.name || '';
+    const region = addr.state || addr.province || addr.region || '';
+    const country = addr.country || '';
+    const parts = [city, region, country].filter(Boolean);
+    return parts.length > 0 ? parts.join(', ') : r.display_name;
+  }
+
   function renderSearchResults(results) {
     let resultsContainer = document.getElementById('searchResults');
     if (!resultsContainer) {
@@ -1214,33 +1212,33 @@ document.addEventListener("DOMContentLoaded", () => {
       const resultsList = document.createElement('ul');
       resultsList.id = 'searchResultsList';
       resultsContainer.appendChild(resultsList);
-      
-      const searchScreen = document.getElementById('search-screen');
-      const cancelBtn = document.getElementById('searchCancel');
-      if (searchScreen && cancelBtn) {
-        cancelBtn.after(resultsContainer);
+
+      // Insert into scrollable search-lists container
+      const searchLists = document.querySelector('#search-screen .search-lists');
+      if (searchLists) {
+        searchLists.insertBefore(resultsContainer, searchLists.firstChild);
       }
     }
-    
+
     const resultsList = document.getElementById('searchResultsList');
     if (!resultsList) return;
-    
+
     if (results.length === 0) {
       resultsList.innerHTML = '<li>No results found.</li>';
       return;
     }
 
     const favorites = loadFavorites();
-    
+
     resultsList.innerHTML = results.map(r => {
-      const displayName = escapeHtml(r.display_name);
+      const formattedName = escapeHtml(formatSearchResult(r));
       const isFav = favorites.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) }));
       const star = isFav ? '★' : '☆';
       return `
-        <li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${displayName}">
+        <li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${formattedName}">
           <button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}" aria-label="Toggle favourite">${star}</button>
           <span class="result-icon">⛅</span>
-          <span class="result-name">${displayName}</span>
+          <span class="result-name">${formattedName}</span>
           <span class="result-temp">--°</span>
         </li>`;
     }).join('');
