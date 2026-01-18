@@ -774,7 +774,7 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(confidenceEl, `PROBABLY • ${confLabel} CONFIDENCE`);
 
     // Sources
-    const usedTxt = norm.used.length ? `Used: ${norm.used.join(', ')}` : 'Used: —';
+    const usedTxt = norm.used.length ? `Probable (combined): ${norm.used.join(', ')}` : 'Sources: —';
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(', ')}` : '';
     safeText(sourcesEl, `${usedTxt}${failedTxt ? ' · ' + failedTxt : ''}`);
 
@@ -1422,4 +1422,4 @@ document.addEventListener("DOMContentLoaded", () => {
       loadAndRender(homePlace);
     }
   }
-});</parameter>
+});
