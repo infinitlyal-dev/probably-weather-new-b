@@ -416,12 +416,20 @@ body.ui-dark .daily-card {
 }
 
 .search-screen {
-  background: rgba(255,255,255,0.9);
-  color: #111;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  color: inherit;
 }
 
 .search-screen #searchInput {
   margin: 0;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: inherit;
+}
+
+.search-screen #searchInput::placeholder {
+  color: rgba(255,255,255,0.6);
 }
 
 .search-body {
@@ -448,17 +456,19 @@ body.ui-dark .daily-card {
 }
 
 .search-screen .section h3 {
-  color: #111;
+  color: inherit;
+  opacity: 0.9;
 }
 
 .search-screen .section ul li {
-  background: rgba(255,255,255,0.95);
-  border: 1px solid rgba(0,0,0,0.08);
-  color: #111;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: inherit;
 }
 
 .search-screen .section ul li:hover {
-  background: rgba(255,255,255,1);
+  background: rgba(255,255,255,0.2);
 }
 
 .search-screen #favoritesList,
@@ -499,20 +509,12 @@ body.ui-dark .daily-card {
   color: #111;
 }
 
-.manage-btn {
-  background: #2563eb;
-  border: 1px solid #2563eb;
-  color: #fff;
-}
-
-.manage-btn:hover {
-  background: #1d4ed8;
-}
-
-.clear-recents {
-  background: #2563eb;
-  border: 1px solid #2563eb;
-  color: #fff;
+.search-screen .manage-btn,
+.search-screen .clear-recents {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: inherit;
   padding: 0.75rem 1.5rem;
   border-radius: 20px;
   font-size: 1rem;
@@ -521,8 +523,9 @@ body.ui-dark .daily-card {
   margin: 0.5rem;
 }
 
-.clear-recents:hover {
-  background: #1d4ed8;
+.search-screen .manage-btn:hover,
+.search-screen .clear-recents:hover {
+  background: rgba(255,255,255,0.25);
 }
 
 /* SETTINGS */
