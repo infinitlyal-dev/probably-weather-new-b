@@ -872,6 +872,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Compute "Day Hero" - the most impactful factor for a given day
+  function computeDayHero(d) {
+    const rain = d.rainChance;
+    const uv = d.uv;
+    const hi = d.highC;
+
+    // Priority order based on impact
+    if (isNum(rain) && rain >= 50) return 'Rainy';
+    if (isNum(rain) && rain >= 30) return 'Possible rain';
+    if (isNum(uv) && uv >= 8) return 'High UV';
+    if (isNum(hi) && hi >= THRESH.HOT_C) return 'Hot';
+    if (isNum(hi) && hi <= 10) return 'Cold';
+    if (isNum(uv) && uv >= 6) return 'Moderate UV';
+    return '';
+  }
+
   function renderWeek(daily) {
     if (!dailyCards) return;
     dailyCards.innerHTML = '';
@@ -883,28 +899,19 @@ document.addEventListener("DOMContentLoaded", () => {
         ? round0((convertTemp(d.lowC) + convertTemp(d.highC)) / 2)
         : '--';
       const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
-      const spread = isNum(d.highC) && isNum(d.lowC) ? Math.abs(d.highC - d.lowC) : null;
-      const confClass = spread == null ? 'conf-med'
-        : spread < 2 ? 'conf-high'
-        : spread < 5 ? 'conf-med'
-        : 'conf-low';
+      const uvStr = isNum(d.uv) ? round0(d.uv) : '--';
+      const dayHero = computeDayHero(d);
       const div = document.createElement('div');
       div.classList.add('daily-card');
       const tempLine = settings.range
         ? `${lowStr}° – ${highStr}°`
         : `${medianStr}°`;
       div.innerHTML = `
-        <div class="day-row">
-          <div class="day-name">${dayName}</div>
-          <div class="confidence-row">
-            <span class="confidence-dot ${confClass}"></span>
-            <span class="confidence-dot ${confClass}"></span>
-            <span class="confidence-dot ${confClass}"></span>
-          </div>
-        </div>
+        <div class="day-name">${dayName}</div>
         <div class="day-temp">${tempLine}</div>
-        <div class="day-rain"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14h12M8 18h8M9 10h6" /></svg> ${rainStr}</div>
-        <div class="day-uv"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M4.2 6.2l2.8 2.8M17 17l2.8 2.8M3 12h4M17 12h4M6.2 19.8l2.8-2.8M17 7l2.8-2.8" /></svg> ${isNum(d.uv) ? round0(d.uv) : '--'}</div>
+        ${dayHero ? `<div class="day-hero">${dayHero}</div>` : ''}
+        <div class="day-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>
+        <div class="day-detail"><span class="detail-label">UV</span> <span class="detail-value">${uvStr}</span></div>
         <div class="precip-bar" style="--prob:${isNum(d.rainChance) ? round0(d.rainChance) : 0}"></div>
       `;
       dailyCards.appendChild(div);

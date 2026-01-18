@@ -1022,28 +1022,53 @@ select option {
   border-radius: 15px;
   padding: 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .day-name {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.day-temp {
-  font-size: 1.2rem;
+  opacity: 0.8;
   margin-bottom: 0.25rem;
 }
 
-.day-rain {
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin-bottom: 0.5rem;
+.day-temp {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 
-.day-humor {
+.day-hero {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  margin: 0.25rem auto;
+}
+
+.day-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 0.8rem;
+  padding: 0.2rem 0;
+}
+
+.day-detail .detail-label {
   opacity: 0.6;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+}
+
+.day-detail .detail-value {
+  font-weight: 500;
 }
 
 #bgImg {
