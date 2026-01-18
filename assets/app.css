@@ -530,12 +530,13 @@ body.ui-dark .daily-card {
 
 /* SETTINGS */
 .settings-screen {
-  background: rgba(255,255,255,0.9);
-  color: #111;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  color: inherit;
 }
 
 .settings-screen .screen-panel-header {
-  color: #111;
+  color: inherit;
 }
 
 .settings-screen .screen-panel-body {
@@ -547,8 +548,28 @@ body.ui-dark .daily-card {
   margin-bottom: 0;
 }
 
+.settings-screen .settings-section h3 {
+  color: inherit;
+  opacity: 0.9;
+}
+
 .settings-screen .settings-option {
   padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.settings-screen .settings-option label {
+  color: inherit;
+}
+
+.settings-screen .settings-option select {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: inherit;
+}
+
+.settings-screen .settings-section p {
+  opacity: 0.8;
 }
 
 @media (max-width: 900px) {
