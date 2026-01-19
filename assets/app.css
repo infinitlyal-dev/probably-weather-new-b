@@ -1207,3 +1207,13 @@ main#home-screen.main #confidence {
 .hero-cloudy { color: #c0c0c0; text-shadow: 0 0 5px #c0c0c0, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
 .hero-fog { color: #a0a0a0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; filter: blur(0.5px); }
 
+/* ========== UPDATED TIMESTAMP POSITION ========== */
+#updatedAt {
+  position: fixed;
+  bottom: 85px;
+  right: 20px;
+  z-index: 10;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
