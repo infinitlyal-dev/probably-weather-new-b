@@ -1250,3 +1250,9 @@ main#home-screen.main #confidence {
   animation-delay: 0.3s;
 }
 
+/* ========== TEMPERATURE COLOR CLASSES ========== */
+.temp-hot { color: #ff6600; }
+.temp-warm { color: #ffaa00; }
+.temp-cold { color: #00bfff; }
+.temp-freezing { color: #87ceeb; }
+

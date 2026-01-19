@@ -869,11 +869,12 @@ document.addEventListener("DOMContentLoaded", () => {
         hour12: settings.time === '12'
       });
       const tempStr = formatTemp(h.tempC);
+      const tempClass = isNum(h.tempC) ? (h.tempC >= 30 ? 'temp-hot' : h.tempC >= 25 ? 'temp-warm' : h.tempC <= 10 ? 'temp-freezing' : h.tempC <= 15 ? 'temp-cold' : '') : '';
       const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
       const windStr = isNum(h.windKph) ? formatWind(h.windKph) : '--';
       div.innerHTML = `
         <div class="hour-time">${hourTime}</div>
-        <div class="hour-temp">${tempStr}</div>
+        <div class="hour-temp ${tempClass}">${tempStr}</div>
         <div class="hour-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>
         <div class="hour-detail"><span class="detail-label">Wind</span> <span class="detail-value">${windStr}</span></div>
         <div class="precip-bar" style="--prob:${isNum(h.rainChance) ? round0(h.rainChance) : 0}"></div>
@@ -911,6 +912,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
       const uvStr = isNum(d.uv) ? round0(d.uv) : '--';
       const dayHero = computeDayHero(d);
+      const tempClass = isNum(d.highC) ? (d.highC >= 30 ? 'temp-hot' : d.highC >= 25 ? 'temp-warm' : d.highC <= 10 ? 'temp-freezing' : d.highC <= 15 ? 'temp-cold' : '') : '';
       const div = document.createElement('div');
       div.classList.add('daily-card');
       const tempLine = settings.range
@@ -918,7 +920,7 @@ document.addEventListener("DOMContentLoaded", () => {
         : `${medianStr}°`;
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
-        <div class="day-temp">${tempLine}</div>
+        <div class="day-temp ${tempClass}">${tempLine}</div>
         ${dayHero ? `<div class="day-hero">${dayHero}</div>` : ''}
         <div class="day-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>
         <div class="day-detail"><span class="detail-label">UV</span> <span class="detail-value">${uvStr}</span></div>
