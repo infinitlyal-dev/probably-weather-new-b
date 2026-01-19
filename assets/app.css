@@ -74,7 +74,8 @@ body.modal-open {
   padding-top: clamp(2.5rem, 6vh, 4.5rem);
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: calc(110px + env(safe-area-inset-bottom));
+  padding-bottom: calc(130px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
 }
 
 #home-screen .brand,
@@ -202,6 +203,7 @@ body.modal-open {
   gap: 2rem;
   background: rgba(0,0,0,0.5);
   padding: 0.75rem 1rem;
+  z-index: 100;
   height: var(--nav-h, 72px);
   max-width: none;
 }
