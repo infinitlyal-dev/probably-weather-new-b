@@ -1403,5 +1403,36 @@ main#home-screen.main #confidence {
     bottom: 95px;
     right: 15px;
   }
+
+  /* Ensure brand section centers properly */
+  .brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .brand-text {
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Confidence and sources centered */
+  .confidence,
+  .sources {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Screen panel bodies scroll internally */
+  .screen-panel-body {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  /* Home hero stacks vertically */
+  .home-hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
