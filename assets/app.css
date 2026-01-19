@@ -1208,11 +1208,17 @@ main#home-screen.main #confidence {
 .hero-fog { color: #a0a0a0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; filter: blur(0.5px); }
 
 /* ========== UPDATED TIMESTAMP POSITION ========== */
-#updatedAt {
+.header-right {
   position: fixed;
   bottom: 85px;
   right: 20px;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#updatedAt {
   font-size: 0.85rem;
   text-align: right;
 }
