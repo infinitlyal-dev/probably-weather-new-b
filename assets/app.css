@@ -477,7 +477,9 @@ body.ui-dark .daily-card {
 
 .search-screen #favoritesList,
 .search-screen #recentList {
-  max-height: none;
+  max-height: 25vh;
+  overflow-y: auto;
+  padding-bottom: 10px;
 }
 
 .favorite-item {
