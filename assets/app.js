@@ -1129,9 +1129,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== SEARCH ==========
-  
+
   let searchTimeout = null;
   let searchResults = [];
+  let activeSearchController = null; // AbortController for cancelling previous search
   const searchMiniCache = new Map();
 
   function parseQuery(raw) {
@@ -1147,6 +1148,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const countryCode = countryMap[lastKey] || (lastKey && lastKey.length === 2 ? lastKey : null);
     const baseQuery = countryCode ? parts.slice(0, -1).join(' ') : trimmed;
     return { baseQuery, countryCode };
+  }
+
+  // Check if result is a place (city/town/village) vs street/POI
+  function isPlaceResult(r) {
+    const validTypes = ['city', 'town', 'village', 'suburb', 'municipality', 'administrative', 'hamlet'];
+    if (validTypes.includes(r.type)) return true;
+    if (r.category === 'boundary' || r.category === 'place') return true;
+    const addr = r.address || {};
+    // Has city/town/village field = likely a place result
+    if (addr.city || addr.town || addr.village || addr.municipality) return true;
+    // If only has road but no settlement, it's a street address
+    if (addr.road && !addr.city && !addr.town && !addr.village) return false;
+    return true; // Default to including if uncertain
+  }
+
+  // Sort places before streets, higher importance first
+  function sortSearchResults(results) {
+    return [...results].sort((a, b) => {
+      const aIsPlace = isPlaceResult(a) ? 1 : 0;
+      const bIsPlace = isPlaceResult(b) ? 1 : 0;
+      if (aIsPlace !== bIsPlace) return bIsPlace - aIsPlace; // Places first
+      return (b.importance || 0) - (a.importance || 0); // Then by importance
+    });
   }
 
   async function miniFetchTemp(lat, lon) {
@@ -1165,7 +1189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return { temp: '--°', icon: '⛅' };
     }
   }
-  
+
   async function runSearch(q) {
     if (!q || q.trim().length < 2) {
       const resultsContainer = document.getElementById('searchResults');
@@ -1173,27 +1197,44 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Abort any previous in-flight search request
+    if (activeSearchController) {
+      activeSearchController.abort();
+    }
+    const controller = new AbortController();
+    activeSearchController = controller;
+
     const { baseQuery, countryCode } = parseQuery(q);
     const queryText = baseQuery;
 
-    const baseUrl = (query) =>
+    // Global search (no country restriction) unless user specified one
+    const baseUrl = (query, cc) =>
       `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}` +
-      `&format=jsonv2&limit=10&addressdetails=1&bounded=0` +
-      `&featureclass=P&featureclass=A` +
-      `${countryCode ? `&countrycodes=${countryCode}` : `&countrycodes=za`}`;
-    const hasComma = queryText.includes(',');
+      `&format=jsonv2&limit=15&addressdetails=1&dedupe=1` +
+      (cc ? `&countrycodes=${cc}` : '');
+
     try {
-      let data = await (await fetch(baseUrl(queryText))).json();
-      if (!hasComma && !countryCode && (!Array.isArray(data) || data.length === 0)) {
-        data = await (await fetch(baseUrl(`${queryText}, South Africa`))).json();
+      const resp = await fetch(baseUrl(queryText, countryCode), { signal: controller.signal });
+      let data = await resp.json();
+
+      // Filter and sort: prefer places over streets
+      if (Array.isArray(data) && data.length > 0) {
+        data = sortSearchResults(data);
       }
-      if (!hasComma && !countryCode && (!Array.isArray(data) || data.length === 0)) {
-        data = await (await fetch(baseUrl(`${queryText}, Western Cape, South Africa`))).json();
+
+      // Only update if this is still the active search (not aborted)
+      if (activeSearchController === controller) {
+        searchResults = data;
+        renderSearchResults(data);
       }
-      searchResults = data;
-      renderSearchResults(data);
     } catch (e) {
+      if (e.name === 'AbortError') return; // Silently ignore aborted requests
       console.error('Search failed:', e);
+    } finally {
+      // Clear controller only if it's still the active one
+      if (activeSearchController === controller) {
+        activeSearchController = null;
+      }
     }
   }
   
