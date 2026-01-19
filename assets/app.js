@@ -340,10 +340,28 @@ document.addEventListener("DOMContentLoaded", () => {
     return 'clear';
   }
 
+  // ========== HOME DISPLAY CONDITION (single source of truth) ==========
+  // Unifies hero and sky for coherent home screen display
+  // When hero is impactful (storm/rain/wind/heat/cold/uv), use hero
+  // When hero is "clear" (pleasant), fall back to sky mood for visual variety
+  function computeHomeDisplayCondition(norm) {
+    const hero = computeTodaysHero(norm);
+    const sky = computeSkyCondition(norm);
+
+    // If hero indicates an impactful condition, use it for display
+    // This ensures headline, background, particles all match the dominant factor
+    if (hero !== 'clear') {
+      return hero; // storm, rain, wind, heat, cold, uv
+    }
+
+    // Hero is clear/pleasant - use sky mood for visual variety
+    // (cloudy, fog, clear, rain-possible if hero didn't catch it)
+    return sky;
+  }
+
   // ========== CONDITION-DRIVEN DISPLAY FUNCTIONS ==========
-  
+
   // Sky mood headline - short, confident, declarative
-  // Note: This reflects the SKY CONDITION, separate from Today's Hero
   function getHeadline(condition) {
     const headlines = {
       storm: "This is stormy.",
@@ -472,20 +490,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg';
-    // Map conditions to available background folders
-    const folderMap = {
+    // Allowed semantic aliases only - all others try their own folder first
+    const aliasMap = {
       'rain-possible': 'cloudy',
-      'uv': 'clear' // High UV = sunny/clear visually
+      'uv': 'clear'
     };
-    const folder = folderMap[condition] || condition;
-    const fallbackFolder = 'clear';
-    
+    const folder = aliasMap[condition] || condition;
+    // Cold should never look sunny - fallback to cloudy instead of clear
+    const fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
+
     // Determine time of day based on current hour
     const now = new Date();
     const hour = now.getHours();
     const minute = now.getMinutes();
     let timeOfDay;
-    
+
     if (hour >= 5 && hour < 8) {
       timeOfDay = 'dawn';
     } else if (hour >= 8 && hour < 17) {
@@ -495,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       timeOfDay = 'night';
     }
-    
+
     const path = `${base}/${folder}/${timeOfDay}.jpg`;
 
     if (bgImg) {
@@ -505,7 +524,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (bgImg.src !== fallback1) {
           bgImg.src = fallback1;
           bgImg.onerror = () => {
-            // Final fallback: clear (never cloudy)
+            // Final fallback: clear
+            console.warn(`[BG] No background for "${condition}", falling back to clear`);
             bgImg.src = `${base}/${fallbackFolder}/day.jpg`;
           };
         }
@@ -754,15 +774,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const rain = norm.rainPct;
     const uv = norm.uv;
 
-    // ========== TWO SEPARATE CONCERNS ==========
-    // SKY = visual mood (headline, background, witty line)
-    // HERO = dominant impact factor (Today's Hero panel)
-    const sky = computeSkyCondition(norm);
+    // ========== SINGLE SOURCE OF TRUTH ==========
+    // displayCondition = unified condition for headline, background, particles, body class
+    // hero = kept separate for Today's Hero panel label
+    const displayCondition = computeHomeDisplayCondition(norm);
     const hero = computeTodaysHero(norm);
 
-    // Set body class for condition-based styling (use sky for visuals)
-    document.body.className = `weather-${sky}`;
-    const uiTone = ['clear', 'heat'].includes(sky) ? 'ui-light' : 'ui-dark';
+    // Set body class for condition-based styling
+    document.body.className = `weather-${displayCondition}`;
+    const uiTone = ['clear', 'heat', 'uv'].includes(displayCondition) ? 'ui-light' : 'ui-dark';
     document.body.classList.remove('ui-light', 'ui-dark');
     document.body.classList.add(uiTone);
     document.body.style.setProperty('--panel-text', uiTone === 'ui-light' ? '#222' : '#eee');
@@ -795,19 +815,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     
-    // Sky mood headline (visual condition)
-    safeText(headlineEl, getHeadline(sky));
+    // Headline - driven by unified display condition
+    safeText(headlineEl, getHeadline(displayCondition));
 
     // Temperature range
     const lowStr = isNum(low) ? formatTemp(low) : '--°';
     const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
     safeText(tempEl, `${lowStr} – ${hiStr}`);
 
-    // Witty line - driven by sky mood
-    safeText(descriptionEl, getWittyLine(sky, rain, hi));
+    // Witty line - driven by unified display condition
+    safeText(descriptionEl, getWittyLine(displayCondition, rain, hi));
 
-    // Store both for sidebar consistency across tab switches
-    window.__PW_LAST_SKY = sky;
+    // Store for sidebar consistency across tab switches
+    window.__PW_LAST_DISPLAY = displayCondition;
     window.__PW_LAST_HERO = hero;
 
     // Render sidebar - pass hero for Today's Hero panel
@@ -822,11 +842,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(', ')}` : '';
     safeText(sourcesEl, `${usedTxt}${failedTxt ? ' · ' + failedTxt : ''}`);
 
-    // Background - driven by sky mood (visual)
-    setBackgroundFor(sky);
+    // Background - driven by unified display condition
+    setBackgroundFor(displayCondition);
 
-    // Particles - driven by sky mood (visual)
-    createParticles(sky);
+    // Particles - driven by unified display condition
+    createParticles(displayCondition);
   }
 
   function renderUpdatedAt(payload) {
