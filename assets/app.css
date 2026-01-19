@@ -423,6 +423,9 @@ body.ui-dark .daily-card {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(12px);
   color: inherit;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
 .search-screen #searchInput {
@@ -441,7 +444,7 @@ body.ui-dark .daily-card {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .search-lists {
@@ -451,7 +454,7 @@ body.ui-dark .daily-card {
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
 .search-screen .section {
@@ -477,9 +480,9 @@ body.ui-dark .daily-card {
 
 .search-screen #favoritesList,
 .search-screen #recentList {
-  max-height: 25vh;
+  max-height: 20vh;
   overflow-y: auto;
-  padding-bottom: 10px;
+  padding-bottom: 6px;
 }
 
 .favorite-item {
@@ -515,18 +518,25 @@ body.ui-dark .daily-card {
   color: #111;
 }
 
+.search-screen .search-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+}
+
 .search-screen .manage-btn,
 .search-screen .clear-recents {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.25);
   color: inherit;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s;
-  margin: 0.5rem;
+  margin: 0;
 }
 
 .search-screen .manage-btn:hover,
