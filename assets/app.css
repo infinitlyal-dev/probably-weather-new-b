@@ -1195,3 +1195,14 @@ main#home-screen.main #confidence {
   }
 }
 
+/* ========== CONDITION-SPECIFIC TEXT EFFECTS ========== */
+.hero-storm { color: #9932cc; text-shadow: 0 0 15px #9932cc; }
+.hero-rain { color: #4682b4; text-shadow: 0 0 10px #4682b4; }
+.hero-heat { color: #ff6600; text-shadow: 0 0 10px #ff6600; }
+.hero-cold { color: #00bfff; text-shadow: 0 0 10px #00bfff; }
+.hero-wind { color: #a9a9a9; text-shadow: 0 0 8px #a9a9a9; }
+.hero-uv { color: #ffd700; text-shadow: 0 0 10px #ffd700; }
+.hero-clear { color: #ffffff; text-shadow: 0 0 5px #ffffff; }
+.hero-cloudy { color: #808080; text-shadow: 0 0 5px #808080; }
+.hero-fog { color: #808080; filter: blur(1px); }
+

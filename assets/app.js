@@ -826,6 +826,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Witty line - driven by unified display condition
     safeText(descriptionEl, getWittyLine(displayCondition, rain, hi));
 
+    // Apply condition-specific text styling
+    const heroClasses = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
+    [headlineEl, tempEl, descriptionEl].forEach(el => {
+      if (el) {
+        el.classList.remove(...heroClasses);
+        el.classList.add('hero-' + displayCondition);
+      }
+    });
+    console.log('Applied class: hero-' + displayCondition);
+
     // Store for sidebar consistency across tab switches
     window.__PW_LAST_DISPLAY = displayCondition;
     window.__PW_LAST_HERO = hero;
