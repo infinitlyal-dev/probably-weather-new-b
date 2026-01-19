@@ -539,6 +539,8 @@ body.ui-dark .daily-card {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(12px);
   color: inherit;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .settings-screen .screen-panel-header {
