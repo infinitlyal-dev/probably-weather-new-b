@@ -51,8 +51,11 @@ body.modal-open {
 
 .tagline {
   font-size: 1.2rem;
-  opacity: 0.8;
+  opacity: 0.9;
   margin-top: 0.5rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
 }
 
 .main {
