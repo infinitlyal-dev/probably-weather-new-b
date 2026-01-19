@@ -137,13 +137,14 @@ body.modal-open {
 }
 
 .card {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.12);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
   border-radius: 20px;
   padding: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.18);
   text-align: center;
 }
 
@@ -232,9 +233,11 @@ body.modal-open {
 }
 
 .glass-panel {
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.12);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.18);
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Arial, sans-serif;
   color: var(--panel-text, #222);
   animation: fadeIn 0.3s ease;
@@ -1278,6 +1281,8 @@ main#home-screen.main #confidence {
 @media (max-width: 600px) {
   html, body {
     height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh; /* iOS Safari fix */
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -1289,6 +1294,7 @@ main#home-screen.main #confidence {
 
   .container {
     min-height: 100vh;
+    min-height: 100dvh; /* iOS Safari fix */
     padding-bottom: 150px;
     box-sizing: border-box;
   }
@@ -1309,17 +1315,20 @@ main#home-screen.main #confidence {
     font-size: 2rem;
     word-break: break-word;
     text-align: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   }
 
   .temp {
     font-size: 1.6rem;
     text-align: center;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   }
 
   .description {
     font-size: 1rem;
     margin-bottom: 20px;
     text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
   }
 
   .tagline {
@@ -1348,14 +1357,24 @@ main#home-screen.main #confidence {
 
   .card {
     width: 90%;
-    max-width: 280px;
+    max-width: 320px;
     text-align: center;
+    background: rgba(255,255,255,0.15);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    backdrop-filter: blur(20px) saturate(130%);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
   }
 
   .glass-panel {
     width: 90%;
-    max-width: 280px;
+    max-width: 320px;
     text-align: center;
+    background: rgba(255,255,255,0.15);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    backdrop-filter: blur(20px) saturate(130%);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
   }
 
   .nav {
