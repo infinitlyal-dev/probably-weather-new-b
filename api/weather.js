@@ -6,7 +6,12 @@ export default async function handler(req, res) {
     try {
       const lat = parseFloat(req.query.lat);
       const lon = parseFloat(req.query.lon);
-      const name = req.query.name || null;
+      const rawName = typeof req.query.name === 'string' ? req.query.name.trim() : '';
+      const isPlaceholder =
+        !rawName ||
+        /^unknown\b/i.test(rawName) ||
+        /^unknown location\b/i.test(rawName);
+      const name = rawName || null;
   
       if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
         return res.status(400).json({ ok: false, error: 'Invalid lat/lon' });
@@ -28,8 +33,26 @@ export default async function handler(req, res) {
           clearTimeout(t);
         }
       }
+
+      if (req.query.reverse) {
+        try {
+          const rev = await fetchJson(
+            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`,
+            { headers: { 'User-Agent': MET_USER_AGENT } }
+          );
+
+          const addr = rev?.address || {};
+          const city = addr.city || addr.town || addr.village || addr.suburb || addr.neighbourhood || addr.municipality || null;
+          const admin1 = addr.state || addr.province || addr.region || addr.county || null;
+          const countryCode = addr.country_code ? String(addr.country_code).toUpperCase() : null;
+
+          return res.status(200).json({ ok: true, city, admin1, countryCode });
+        } catch {
+          return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null });
+        }
+      }
   
-      let resolvedName = name;
+      let resolvedName = isPlaceholder ? null : name;
       if (!resolvedName) {
         try {
           const rev = await fetchJson(
@@ -38,14 +61,21 @@ export default async function handler(req, res) {
           );
 
           const addr = rev?.address || {};
-          const primary = addr.suburb || addr.neighbourhood || addr.village || addr.town || addr.city;
-          const secondary = addr.county || addr.state || addr.province;
+          const isBadLabel = (s) => {
+            const v = String(s || '').trim();
+            return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
+          };
+          const pick = (...vals) => vals.find(v => !isBadLabel(v));
+          const primary = pick(addr.town, addr.city, addr.village);
+          const cityTown = pick(addr.suburb, addr.neighbourhood);
+          const secondary = pick(addr.municipality, addr.state, addr.province);
           const country = addr.country;
 
           const parts = [];
           if (primary) {
             parts.push(primary);
-            if (secondary) parts.push(secondary);
+          } else if (cityTown) {
+            parts.push(cityTown);
           } else if (secondary) {
             parts.push(secondary);
           } else if (country) {
@@ -126,8 +156,8 @@ export default async function handler(req, res) {
       try {
         const om = await fetchJson(
           `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-          `&current=temperature_2m,weather_code,wind_speed_10m` +
-          `&hourly=temperature_2m,precipitation_probability,wind_speed_10m` +
+          `&current=temperature_2m,weather_code,wind_speed_10m,cloud_cover` +
+          `&hourly=temperature_2m,precipitation_probability,wind_speed_10m,cloud_cover` +
           `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code` +
           `&timezone=auto&forecast_days=7`
         );
@@ -148,6 +178,7 @@ export default async function handler(req, res) {
           temps: om.hourly?.temperature_2m.slice(0, 24) ?? [],
           rains: om.hourly?.precipitation_probability.slice(0, 24) ?? [],
           winds: om.hourly?.wind_speed_10m.slice(0, 24) ?? [],
+          clouds: om.hourly?.cloud_cover.slice(0, 24) ?? [],
         });
   
         dailies.push({
@@ -187,6 +218,7 @@ export default async function handler(req, res) {
             temps: wa.forecast.forecastday[0].hour.map(h => h.temp_c) ?? [],
             rains: wa.forecast.forecastday[0].hour.map(h => h.chance_of_rain) ?? [],
             winds: wa.forecast.forecastday[0].hour.map(h => h.wind_kph) ?? [],
+            clouds: wa.forecast.forecastday[0].hour.map(h => h.cloud) ?? [],
           });
   
           dailies.push({
@@ -235,6 +267,7 @@ export default async function handler(req, res) {
           temps: temps.slice(0, 24),
           rains: series.slice(0, 24).map(p => (p.data?.next_1_hours?.details?.precipitation_amount ?? 0) * 40),
           winds: series.slice(0, 24).map(p => p.data?.instant?.details?.wind_speed * 3.6 ?? null),
+          clouds: series.slice(0, 24).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
         });
   
         dailies.push({
@@ -254,16 +287,21 @@ export default async function handler(req, res) {
         tempC: median(hourlies.map(h => h.temps[i]).filter(isNum)),
         rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
         windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
+        cloudPct: median(hourlies.map(h => h.clouds?.[i]).filter(isNum)),
       }));
   
-      const aggregatedDaily = Array.from({length: 7}, (_, i) => ({
-        highC: median(dailies.map(d => d.highs[i]).filter(isNum)),
-        lowC: median(dailies.map(d => d.lows[i]).filter(isNum)),
-        rainChance: median(dailies.map(d => d.rains[i]).filter(isNum)),
-        uv: median(dailies.map(d => d.uvs[i]).filter(isNum)),
-        conditionLabel: pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown',
-        conditionKey: deriveConditionKey(pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown'),
-      }));
+      const aggregatedDaily = Array.from({length: 7}, (_, i) => {
+        const conditionLabel = pickMostCommon(dailies.map(d => d.descs[i]).filter(Boolean)) || 'Unknown';
+        const rainChance = median(dailies.map(d => d.rains[i]).filter(isNum));
+        return {
+          highC: median(dailies.map(d => d.highs[i]).filter(isNum)),
+          lowC: median(dailies.map(d => d.lows[i]).filter(isNum)),
+          rainChance,
+          uv: median(dailies.map(d => d.uvs[i]).filter(isNum)),
+          conditionLabel,
+          conditionKey: deriveConditionKeyWithPrecip(conditionLabel, rainChance),
+        };
+      });
   
       // Compute consensus confidence
       const temps = norms.map(n => n.nowTemp).filter(isNum);
@@ -279,8 +317,11 @@ export default async function handler(req, res) {
       // Build "now" object from median of all sources
       const medNowTemp = median(norms.map(n => n.nowTemp).filter(isNum));
       const medWindKph = median(norms.map(n => n.windKph).filter(isNum));
+      const wind_kph = isNum(medWindKph) ? medWindKph : 0;
       const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
   
+      const nowConditionKey = deriveConditionKeyWithPrecip(mostDesc, aggregatedDaily[0]?.rainChance ?? null);
+
       return res.status(200).json({
         ok: true,
         location: {
@@ -288,12 +329,13 @@ export default async function handler(req, res) {
           lat,
           lon,
         },
+        wind_kph,
         now: {
           tempC: medNowTemp,
           feelsLikeC: medNowTemp, // Simplified - same as temp
           windKph: medWindKph,
           rainChance: aggregatedDaily[0]?.rainChance ?? null,
-          conditionKey: deriveConditionKey(mostDesc),
+          conditionKey: nowConditionKey,
           conditionLabel: mostDesc,
         },
         consensus: {
@@ -347,6 +389,19 @@ export default async function handler(req, res) {
     if (d.includes('hot') || d.includes('heat')) return 'heat';
     if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return 'fog';
     if (d.includes('clear') || d.includes('sunny') || d.includes('fair')) return 'clear';
+    if (d.includes('cloud')) return 'cloudy';
     // Default: cloudy or unknown → clear (per spec)
     return 'clear';
+  }
+
+  function deriveConditionKeyWithPrecip(desc, rainChance) {
+    if (isNum(rainChance)) {
+      if (rainChance > 20) return 'rain';
+      if (rainChance > 0) return 'rain-possible';
+      if (rainChance === 0) {
+        const key = deriveConditionKey(desc);
+        return key === 'rain' ? 'clear' : key;
+      }
+    }
+    return deriveConditionKey(desc);
   }
