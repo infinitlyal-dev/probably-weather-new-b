@@ -857,6 +857,17 @@ document.addEventListener("DOMContentLoaded", () => {
     updatedEl.textContent = text;
   }
 
+  // Get weather icon based on conditions
+  function getWeatherIcon(rainPct, cloudPct, tempC) {
+    if (isNum(rainPct) && rainPct >= 50) return '🌧️';
+    if (isNum(rainPct) && rainPct >= 30) return '🌦️';
+    if (isNum(cloudPct) && cloudPct >= 70) return '☁️';
+    if (isNum(cloudPct) && cloudPct >= 40) return '⛅';
+    if (isNum(tempC) && tempC >= 30) return '🔥';
+    if (isNum(tempC) && tempC <= 5) return '❄️';
+    return '☀️';
+  }
+
   function renderHourly(hourly) {
     if (!hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
@@ -870,10 +881,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       const tempStr = formatTemp(h.tempC);
       const tempClass = isNum(h.tempC) ? (h.tempC >= 30 ? 'temp-hot' : h.tempC >= 25 ? 'temp-warm' : h.tempC <= 10 ? 'temp-freezing' : h.tempC <= 15 ? 'temp-cold' : '') : '';
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, h.tempC);
       const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
       const windStr = isNum(h.windKph) ? formatWind(h.windKph) : '--';
       div.innerHTML = `
-        <div class="hour-time">${hourTime}</div>
+        <div class="hour-time"><span class="weather-icon">${icon}</span>${hourTime}</div>
         <div class="hour-temp ${tempClass}">${tempStr}</div>
         <div class="hour-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>
         <div class="hour-detail"><span class="detail-label">Wind</span> <span class="detail-value">${windStr}</span></div>
@@ -913,13 +925,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const uvStr = isNum(d.uv) ? round0(d.uv) : '--';
       const dayHero = computeDayHero(d);
       const tempClass = isNum(d.highC) ? (d.highC >= 30 ? 'temp-hot' : d.highC >= 25 ? 'temp-warm' : d.highC <= 10 ? 'temp-freezing' : d.highC <= 15 ? 'temp-cold' : '') : '';
+      const icon = getWeatherIcon(d.rainChance, d.cloudPct, d.highC);
       const div = document.createElement('div');
       div.classList.add('daily-card');
       const tempLine = settings.range
         ? `${lowStr}° – ${highStr}°`
         : `${medianStr}°`;
       div.innerHTML = `
-        <div class="day-name">${dayName}</div>
+        <div class="day-name"><span class="weather-icon">${icon}</span>${dayName}</div>
         <div class="day-temp ${tempClass}">${tempLine}</div>
         ${dayHero ? `<div class="day-hero">${dayHero}</div>` : ''}
         <div class="day-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>

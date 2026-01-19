@@ -1256,3 +1256,6 @@ main#home-screen.main #confidence {
 .temp-cold { color: #00bfff; }
 .temp-freezing { color: #87ceeb; }
 
+/* ========== WEATHER ICONS ========== */
+.weather-icon { font-size: 1.4em; margin-right: 4px; }
+
