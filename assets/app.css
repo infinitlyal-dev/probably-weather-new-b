@@ -398,6 +398,7 @@ body.ui-dark .daily-card {
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .result-icon {

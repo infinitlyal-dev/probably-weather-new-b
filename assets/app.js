@@ -1224,6 +1224,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const searchLists = document.querySelector('#search-screen .search-lists');
       if (searchLists) {
         searchLists.insertBefore(resultsContainer, searchLists.firstChild);
+      } else {
+        // Fallback: insert into search-body
+        const searchBody = document.querySelector('#search-screen .search-body');
+        if (searchBody) searchBody.insertBefore(resultsContainer, searchBody.firstChild);
       }
     }
 
@@ -1251,17 +1255,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join('');
     
     resultsList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', async () => {
-        const place = { 
-          name: li.dataset.name, 
-          lat: parseFloat(li.dataset.lat), 
-          lon: parseFloat(li.dataset.lon) 
+      li.addEventListener('click', async (e) => {
+        // Don't trigger if clicking the star button
+        if (e.target.closest('.fav-star')) return;
+
+        const place = {
+          name: li.dataset.name,
+          lat: parseFloat(li.dataset.lat),
+          lon: parseFloat(li.dataset.lon)
         };
-        await addRecentIfNew(place);
+
+        // Navigate immediately, then handle recents
         showScreen(screenHome);
         loadAndRender(place);
         if (searchInput) searchInput.value = '';
         resultsList.innerHTML = '';
+
+        // Add to recents in background (don't block navigation)
+        addRecentIfNew(place).catch(() => {});
       });
     });
 
