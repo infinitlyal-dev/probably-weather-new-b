@@ -1278,27 +1278,45 @@ main#home-screen.main #confidence {
 @media (max-width: 600px) {
   body {
     font-size: 0.95rem;
+    overflow-x: hidden;
   }
 
   .brand-location {
     font-size: 1.1rem;
+    word-break: break-word;
+  }
+
+  .brand-title {
+    font-size: 1.8rem;
+    word-break: break-word;
   }
 
   .headline {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    word-break: break-word;
   }
 
   .temp {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .description {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  #home-screen {
+    padding-bottom: calc(140px + env(safe-area-inset-bottom));
   }
 
   .nav {
-    gap: 1rem;
-    font-size: 0.9rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    gap: 0.8rem;
+    font-size: 0.85rem;
+    z-index: 100;
   }
 
   .search-screen,
@@ -1310,6 +1328,10 @@ main#home-screen.main #confidence {
   .hourly-card,
   .daily-card {
     padding: 10px;
+  }
+
+  .tagline {
+    font-size: 1rem;
   }
 }
 
