@@ -1133,6 +1133,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchTimeout = null;
   let searchResults = [];
   let activeSearchController = null; // AbortController for cancelling previous search
+  let searchSeq = 0; // Sequence number for tracking latest search
   const searchMiniCache = new Map();
 
   function parseQuery(raw) {
@@ -1150,27 +1151,86 @@ document.addEventListener("DOMContentLoaded", () => {
     return { baseQuery, countryCode };
   }
 
-  // Check if result is a place (city/town/village) vs street/POI
-  function isPlaceResult(r) {
-    const validTypes = ['city', 'town', 'village', 'suburb', 'municipality', 'administrative', 'hamlet'];
-    if (validTypes.includes(r.type)) return true;
-    if (r.category === 'boundary' || r.category === 'place') return true;
-    const addr = r.address || {};
-    // Has city/town/village field = likely a place result
-    if (addr.city || addr.town || addr.village || addr.municipality) return true;
-    // If only has road but no settlement, it's a street address
-    if (addr.road && !addr.city && !addr.town && !addr.village) return false;
-    return true; // Default to including if uncertain
+  // Get place-like label from address (broad: city, county, state, region all count)
+  function getCityLike(addr) {
+    return addr.city || addr.town || addr.village || addr.municipality ||
+           addr.county || addr.state_district || addr.state || addr.region || '';
   }
 
-  // Sort places before streets, higher importance first
+  // Score result: higher = more likely a place, lower = street/POI
+  function scoreResult(r) {
+    const addr = r.address || {};
+    let score = 0;
+    // Strong place indicators
+    if (addr.city || addr.town || addr.village) score += 3;
+    const placeTypes = ['city', 'town', 'village', 'suburb', 'administrative', 'municipality', 'hamlet'];
+    if (placeTypes.includes(r.type)) score += 2;
+    if (r.category === 'place' || r.category === 'boundary') score += 1;
+    // Penalize street-level results without settlement
+    if ((addr.road || addr.house_number) && !getCityLike(addr)) score -= 3;
+    // Bonus for having country (valid result)
+    if (addr.country) score += 1;
+    return score;
+  }
+
+  // Sort by score desc, then importance desc
   function sortSearchResults(results) {
     return [...results].sort((a, b) => {
-      const aIsPlace = isPlaceResult(a) ? 1 : 0;
-      const bIsPlace = isPlaceResult(b) ? 1 : 0;
-      if (aIsPlace !== bIsPlace) return bIsPlace - aIsPlace; // Places first
-      return (b.importance || 0) - (a.importance || 0); // Then by importance
+      const scoreDiff = scoreResult(b) - scoreResult(a);
+      if (scoreDiff !== 0) return scoreDiff;
+      return (b.importance || 0) - (a.importance || 0);
     });
+  }
+
+  // Generate fallback queries for typo tolerance
+  function getFallbackQueries(q) {
+    const queries = [];
+    const base = q.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
+    if (base.length < 4) return queries;
+
+    // 1) Try removing extra vowels (jakarata -> jakarta)
+    for (let i = base.length - 1; i >= Math.max(0, base.length - 4); i--) {
+      if ('aeiou'.includes(base[i])) {
+        const variant = base.slice(0, i) + base.slice(i + 1);
+        if (variant.length >= 3 && variant !== base && !queries.includes(variant)) {
+          queries.push(variant);
+        }
+        if (queries.length >= 2) break;
+      }
+    }
+
+    // 2) Try swapping last two chars (delih -> delhi)
+    if (base.length >= 4) {
+      const swapped = base.slice(0, -2) + base[base.length - 1] + base[base.length - 2];
+      if (swapped !== base && !queries.includes(swapped)) queries.push(swapped);
+    }
+
+    return queries.slice(0, 3); // Max 3 fallback attempts
+  }
+
+  // Show search status message
+  function showSearchStatus(msg) {
+    let resultsContainer = document.getElementById('searchResults');
+    if (!resultsContainer) {
+      resultsContainer = document.createElement('div');
+      resultsContainer.id = 'searchResults';
+      resultsContainer.className = 'section';
+      const searchTitle = document.createElement('h3');
+      searchTitle.textContent = 'Search results';
+      resultsContainer.appendChild(searchTitle);
+      const resultsList = document.createElement('ul');
+      resultsList.id = 'searchResultsList';
+      resultsContainer.appendChild(resultsList);
+      const searchLists = document.querySelector('#search-screen .search-lists');
+      if (searchLists) {
+        searchLists.insertBefore(resultsContainer, searchLists.firstChild);
+      } else {
+        const searchBody = document.querySelector('#search-screen .search-body');
+        if (searchBody) searchBody.insertBefore(resultsContainer, searchBody.firstChild);
+      }
+    }
+    const resultsList = document.getElementById('searchResultsList');
+    if (resultsList) resultsList.innerHTML = `<li class="search-status">${escapeHtml(msg)}</li>`;
   }
 
   async function miniFetchTemp(lat, lon) {
@@ -1192,8 +1252,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function runSearch(q) {
     if (!q || q.trim().length < 2) {
-      const resultsContainer = document.getElementById('searchResults');
-      if (resultsContainer) resultsContainer.innerHTML = '';
+      const resultsList = document.getElementById('searchResultsList');
+      if (resultsList) resultsList.innerHTML = '';
       return;
     }
 
@@ -1203,35 +1263,62 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const controller = new AbortController();
     activeSearchController = controller;
+    const thisSeq = ++searchSeq;
 
     const { baseQuery, countryCode } = parseQuery(q);
     const queryText = baseQuery;
 
-    // Global search (no country restriction) unless user specified one
+    // Show searching status
+    showSearchStatus('Searching...');
+
     const baseUrl = (query, cc) =>
       `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}` +
       `&format=jsonv2&limit=15&addressdetails=1&dedupe=1` +
       (cc ? `&countrycodes=${cc}` : '');
 
     try {
-      const resp = await fetch(baseUrl(queryText, countryCode), { signal: controller.signal });
+      // Pass 1: original query
+      let resp = await fetch(baseUrl(queryText, countryCode), { signal: controller.signal });
       let data = await resp.json();
 
-      // Filter and sort: prefer places over streets
-      if (Array.isArray(data) && data.length > 0) {
-        data = sortSearchResults(data);
+      // Pass 2: fallback queries if few/no results (typo tolerance)
+      if ((!Array.isArray(data) || data.length < 3) && thisSeq === searchSeq) {
+        const fallbacks = getFallbackQueries(queryText);
+        for (const fallback of fallbacks) {
+          if (thisSeq !== searchSeq) break; // Abort if new search started
+          try {
+            const resp2 = await fetch(baseUrl(fallback, countryCode), { signal: controller.signal });
+            const data2 = await resp2.json();
+            if (Array.isArray(data2) && data2.length > 0) {
+              const existingIds = new Set((data || []).map(r => r.place_id));
+              data = [...(data || []), ...data2.filter(r => !existingIds.has(r.place_id))];
+              if (data.length >= 5) break; // Enough results found
+            }
+          } catch { /* ignore fallback errors */ }
+        }
       }
 
-      // Only update if this is still the active search (not aborted)
-      if (activeSearchController === controller) {
-        searchResults = data;
-        renderSearchResults(data);
+      // Sort by score (places first)
+      if (Array.isArray(data) && data.length > 0) {
+        data = sortSearchResults(data).slice(0, 10);
+      }
+
+      // Only render if this is still the latest search
+      if (thisSeq === searchSeq) {
+        searchResults = data || [];
+        if (searchResults.length > 0) {
+          renderSearchResults(searchResults);
+        } else {
+          showSearchStatus('No places found. Try a different spelling.');
+        }
       }
     } catch (e) {
       if (e.name === 'AbortError') return; // Silently ignore aborted requests
       console.error('Search failed:', e);
+      if (thisSeq === searchSeq) {
+        showSearchStatus('Search failed. Please try again.');
+      }
     } finally {
-      // Clear controller only if it's still the active one
       if (activeSearchController === controller) {
         activeSearchController = null;
       }
@@ -1241,7 +1328,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Format search result: "City, Region, Country" for disambiguation
   function formatSearchResult(r) {
     const addr = r.address || {};
-    const city = addr.city || addr.town || addr.village || addr.municipality || r.name || '';
+    // Use broad city detection, fallback to name
+    const city = addr.city || addr.town || addr.village || addr.municipality ||
+                 addr.county || addr.state_district || r.name || '';
     const region = addr.state || addr.province || addr.region || '';
     const country = addr.country || '';
     const parts = [city, region, country].filter(Boolean);
