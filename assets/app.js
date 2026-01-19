@@ -459,7 +459,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const options = linesHuman[condition] || ['Just... probably.'];
-    return options[Math.floor(Math.random() * options.length)];
+    const selected = options[Math.floor(Math.random() * options.length)];
+    console.log('Selected witty line:', selected);
+    return selected;
   }
 
   // ========== BACKGROUND IMAGE LOGIC ==========
