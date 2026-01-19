@@ -407,76 +407,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const linesHuman = {
       storm: [
-        "Electric vibes. Don't be the tallest thing outside.",
-        'Stormy mood — keep it safe, hey.',
-        'Thunder rolling. Best stay close.',
-        'Lights and rumbles — stay in if you can.',
-        'Storm season energy, boet.'
+        'Better stay indoors',
+        'Thunder rumbling like a braai gone wrong',
+        "Storm's brewing—cancel the picnic"
       ],
       rain: [
-        isNum(rainPct) && rainPct >= 70 ? "Plan indoors — today's moody." : 'Keep a jacket close.',
-        "Grab the brolly, it's pissing down!",
-        'Rain boots energy.',
-        'Ja, it’s a wet one.',
-        'Spat spat — pavement shimmer day.',
-        'Clouds are doing the most today.'
+        'Spat spat—pavement shimmer day',
+        "Clouds crying like NZ at the '23 World Cup!",
+        'Umbrella or get soaked, boet'
       ],
       'rain-possible': [
         'Might sprinkle, boet.',
         'Teasing clouds.',
-        'Possible showers — keep a brolly handy.',
-        'Light drizzle vibes, just in case.',
-        'Rain could pop in, hey.'
+        'Possible showers—keep a brolly handy.'
       ],
       cloudy: [
-        'Clouds gatecrashing the party.',
-        'Overcast vibes, still lekker.',
-        'Clouds doing the slow dance.',
-        'Grey skies, easy pace.',
-        'Blanket sky today.'
+        'Grey skies but no fuss',
+        'Cloudy with a chance of meh',
+        'Overcast—bring a light jersey'
       ],
       uv: [
-        'Slap on the sunscreen, boet.',
-        'UV is hectic — hat and shades.',
-        'Sun means business today.',
-        'SPF 50 kind of day.',
-        'Skin will thank you for shade.'
+        'Slather on the sunscreen',
+        'UV rays cranked—shade or burn',
+        'High UV: Beach day with caution'
       ],
       wind: [
-        'Hold onto your hat.',
-        'Windy vibes — hair will do its own thing.',
-        'Breezy day, hey.',
-        'Lekker gusts — doors will slam.',
-        'Cape Doctor is on duty.'
+        'Lekker gusts—doors will slam',
+        'Hold onto your hat',
+        'Windier than Table Mountain on a bad day'
       ],
       cold: [
-        "Ja, it's jacket weather.",
-        'Brrr, bokdrol weather!',
-        'Layer up, boet.',
-        'Cold enough for beanies.',
-        'Blanket weather, no shame.'
+        "Ja, it's jacket weather",
+        'Colder than a Capetonian winter',
+        "Time to build a snowman—or just stay in bed"
       ],
       heat: [
-        'Big heat — pace yourself outside.',
-        'Sun is proper, hey.',
-        'Hot one — find some shade.',
-        'Ice‑cold drink kind of day.',
-        'Shade is the new lifestyle.'
+        'Frying an egg is a real option',
+        'Sun is proper, hey',
+        'Hotter than a fresh vetkoek'
       ],
       fog: [
-        "Visibility vibes: drive like you've got a gran in the back.",
-        'Foggy mood — take it slow.',
-        'Low vis, high chill.',
-        'Misty scenes — lights on.',
-        'Fog is doing the rounds.'
+        "Misty mayhem—can't see the stoep",
+        'Fog thicker than pea soup',
+        'Drive slow, visibility zero'
       ],
       clear: [
-        'Good day to get stuff done outside.',
-        'Lekker clear skies.',
-        'Fresh air kind of day.',
-        'Blue skies, big smiles.',
-        'Sun’s out, plans on.',
-        'Perfect for a jol, boet!'
+        'Braai weather, boet!',
+        'Clear skies, perfect vibes',
+        'No drama, just sunshine'
       ]
     };
 
