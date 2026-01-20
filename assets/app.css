@@ -1453,7 +1453,7 @@ main#home-screen.main #confidence {
     position: relative;
     right: auto;
     top: auto;
-    transform: none;
+    transform: translateY(clamp(80px, 10vh, 140px));
     width: 100%;
     display: flex;
     flex-direction: column;
