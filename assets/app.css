@@ -1394,16 +1394,16 @@ main#home-screen.main #confidence {
     padding-bottom: 8px;
   }
 
-  /* Left column: hero text - left aligned */
+  /* Left column: hero text - left aligned, subtle breathing room */
   #home-screen {
-    padding: 0 0 0 0.75rem;
+    padding: 0.4rem 0 0 0.5rem;
     min-height: auto;
     align-items: flex-start;
     text-align: left;
   }
 
   #home-screen .confidence {
-    margin-top: 0.25rem;
+    margin-top: 0.4rem;
     font-size: 0.65rem;
     text-align: left;
   }
@@ -1448,7 +1448,7 @@ main#home-screen.main #confidence {
     text-align: left;
   }
 
-  /* Right column: two glass panels only */
+  /* Right column: two glass panels - positioned mid-to-lower */
   .sidebar {
     position: relative;
     right: auto;
@@ -1460,8 +1460,8 @@ main#home-screen.main #confidence {
     align-items: flex-end;
     gap: 8px;
     padding-right: 0.5rem;
-    padding-top: 1rem;
     margin: 0;
+    margin-top: clamp(100px, 24vh, 180px);
   }
 
   /* Glass panels - compact pills */
