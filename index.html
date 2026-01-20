@@ -45,25 +45,17 @@
         <h1 id="headline" class="headline">Loading...</h1>
         <div id="temp" class="temp">--°</div>
         <div id="description" class="description">—</div>
+        <div id="weatherByline" class="weather-byline">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
       </main>
 
       <aside class="sidebar">
-        <div class="card">
-          <div id="extremeLabel" class="label">Today's extreme:</div>
+        <div class="card card-hero">
+          <div id="extremeLabel" class="label">Today's Hero</div>
           <div id="extremeValue" class="value">--</div>
         </div>
-        <div class="card">
-          <div class="label">Rain:</div>
-          <div id="rainValue" class="value">--</div>
-        </div>
-        <div class="card">
-          <div class="label">UV</div>
-          <div id="uvValue" class="value">--</div>
-        </div>
-        <div class="card card-source-ranges">
-          <div class="label">Source Ranges:</div>
+        <div class="card card-sources">
+          <div class="label">Sources</div>
           <div id="confidenceValue" class="value">--</div>
-          <div id="confidenceBar" class="confidence-bar"></div>
         </div>
       </aside>
     </div>
