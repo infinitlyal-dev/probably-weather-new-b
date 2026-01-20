@@ -1373,9 +1373,9 @@ main#home-screen.main #confidence {
     text-align: left;
     margin-top: 2px;
     margin-bottom: 0;
-    font-weight: 600;
-    color: rgba(255,255,255,0.94);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.60);
+    font-weight: 700;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.70);
     letter-spacing: 0.01em;
   }
 
@@ -1399,32 +1399,34 @@ main#home-screen.main #confidence {
     position: relative;
   }
 
-  /* Left column: hero text - left aligned, subtle breathing room */
+  /* Left column: hero text - left aligned, tight spacing */
   #home-screen {
-    padding: 0.4rem 0 0 0.5rem;
+    padding: 0.2rem 0 0 0.5rem;
     min-height: auto;
     align-items: flex-start;
     text-align: left;
+    gap: 2px;
   }
 
   #home-screen .confidence {
-    margin-top: 0.2rem;
-    margin-bottom: 0.1rem;
+    margin-top: 0;
+    margin-bottom: 0;
     font-size: 0.7rem;
     text-align: left;
     font-weight: 700;
     color: rgba(255,255,255,0.95);
     letter-spacing: 0.03em;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.60);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.70);
   }
 
   #home-screen .sources {
     font-size: 0.65rem;
     text-align: left;
-    margin-bottom: 0.15rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.92);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.60);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.70);
   }
 
   .headline {
@@ -1436,8 +1438,8 @@ main#home-screen.main #confidence {
     text-shadow: 0 2px 10px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.8);
     line-height: 1.2;
     letter-spacing: 0.01em;
-    margin-bottom: 4px;
-    margin-top: 6px;
+    margin-bottom: 2px;
+    margin-top: 4px;
   }
 
   .temp {
