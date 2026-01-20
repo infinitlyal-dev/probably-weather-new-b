@@ -1,3 +1,10 @@
 {
-    "type": "module"
+  "name": "taxbuddy",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TaxBuddy - South African tax expense tracker",
+  "scripts": {
+    "build": "echo 'Static site - no build required' && exit 0",
+    "start": "npx serve ."
   }
+}

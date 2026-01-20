@@ -1,452 +1,714 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const $ = (sel) => document.querySelector(sel);
+/**
+ * TaxBuddy Setup Wizard
+ * Complete 4-step wizard + completion for South African tax profile setup
+ */
 
-  const locationEl = $('#location');
-  const headlineEl = $('#headline');
-  const tempEl = $('#temp');
-  const descriptionEl = $('#description');
-  const extremeValueEl = $('#extremeValue');
-  const rainValueEl = $('#rainValue');
-  const uvValueEl = $('#uvValue');
-  const confidenceEl = $('#confidence');
-  const sourcesEl = $('#sources');
-  const bgImg = $('#bgImg');
-  const saveCurrent = $('#saveCurrent');
-  const confidenceBarEl = $('#confidenceBar');
-  const particlesEl = $('#particles');
+// ============ DEPENDENCIES ============
 
-  const navHome = $('#navHome');
-  const navHourly = $('#navHourly');
-  const navWeek = $('#navWeek');
-  const navSearch = $('#navSearch');
-  const navSettings = $('#navSettings');
+const { db, CATEGORY_RECOMMENDATIONS, MOTIVATIONAL_COPY } = window.TaxBuddyDB;
 
-  const screenHome = $('#home-screen');
-  const screenHourly = $('#hourly-screen');
-  const screenWeek = $('#week-screen');
-  const screenSearch = $('#search-screen');
-  const screenSettings = $('#settings-screen');
+// ============ STATE ============
 
-  const hourlyTimeline = $('#hourly-timeline');
-  const dailyCards = $('#daily-cards');
+let currentStep = 1;
+let stepStartTime = Date.now();
+let profile = {};
 
-  const searchInput = $('#searchInput');
-  const favoritesList = $('#favoritesList');
-  const recentList = $('#recentList');
-  const manageFavorites = $('#manageFavorites');
+// ============ DOM HELPERS ============
 
-  const loader = $('#loader');
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
 
-  // FIXED: Changed from string to object
-  const STORAGE = {
-    favorites: "pw_favorites",
-    recents: "pw_recents",
-    home: "pw_home"
-  };
-  const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
+// ============ ANALYTICS ============
 
-  let activePlace = null;
-  let homePlace = null;
-  let lastPayload = null;
-
-  const safeText = (el, txt) => { if (el) el.textContent = txt ??  "--"; };
-  const isNum = (v) => typeof v === "number" && Number.isFinite(v);
-
-  function round0(n) { return isNum(n) ? Math.round(n) : null; }
-  function round1(n) { return isNum(n) ? Math.round(n * 10) / 10 : null; }
-
-  // FIXED:  Moved median and pickMostCommon BEFORE they are used
-  function median(values) {
-    if (values.length === 0) return null;
-    const sorted = [... values].sort((a, b) => a - b);
-    const half = Math. floor(sorted.length / 2);
-    return sorted.length % 2 ?  sorted[half] :  (sorted[half - 1] + sorted[half]) / 2.0;
-  }
-
-  function pickMostCommon(arr) {
-    if (arr. length === 0) return null;
-    const count = arr. reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
-    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
-  }
-
-  function loadJSON(key, fallback) {
-    try {
-      const raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) : fallback;
-    } catch { return fallback; }
-  }
-  function saveJSON(key, val) {
-    try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
-  }
-
-  function samePlace(a, b) {
-    if (! a || !b) return false;
-    return Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) &&
-           Number(a. lon).toFixed(4) === Number(b.lon).toFixed(4);
-  }
-
-  function showScreen(which) {
-    SCREENS.forEach(s => s.classList. add("hidden"));
-    which.classList.remove("hidden");
-  }
-
-  function showLoader(show) {
-    loader.classList[show ? 'remove' : 'add']('hidden');
-  }
-
-  function hashString(s) {
-    let h = 0;
-    for (let i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i);
-    return h | 0;
-  }
-
-  function setBackgroundFor(dp, rainPct, maxC) {
-    const base = "assets/images/bg";
-    let folder = "clear";
-
-    const dpl = String(dp || "").toLowerCase();
-
-    if (dpl.includes("fog") || dpl.includes("mist") || dpl.includes("haze")) folder = "fog";
-    else if (dpl. includes("storm") || dpl.includes("thunder") || dpl.includes("lightning")) folder = "storm";
-    else if (dpl.includes("cloud") || dpl.includes("overcast")) folder = "cloudy";
-    else if (isNum(rainPct) && rainPct >= 60) folder = "rain";
-    else if (isNum(maxC) && maxC >= 32) folder = "heat";
-    else folder = "clear";
-
-    const n = 1 + (Math.abs(hashString((dp || "") + String(maxC || ""))) % 4);
-    const path = `${base}/${folder}/${folder}${n}.jpg`;
-
-    if (bgImg) bgImg.src = path;
-  }
-
-  function createParticles(folder, count = 20) {
-    if (! particlesEl) return;
-    particlesEl.innerHTML = '';
-    for (let i = 0; i < count; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-      particle.style.animationDelay = `${Math.random() * 2}s`;
-      particlesEl.appendChild(particle);
-    }
-  }
-
-  function isWeekendLocal() {
-    const d = new Date();
-    const day = d.getDay();
-    return day === 0 || day === 5 || day === 6;
-  }
-
-  function pickWittyLine(rainPct, maxC, dp) {
-    const dpl = String(dp || "").toLowerCase();
-    const hot = isNum(maxC) && maxC >= 30;
-
-    if (isWeekendLocal() && (isNum(rainPct) ? rainPct < 25 : true) && ! dpl.includes("storm") && !dpl. includes("rain")) {
-      return "Braai weather, boet! ";
-    }
-
-    if (dpl.includes("storm") || dpl.includes("thunder")) return "Electric vibes.  Don't be the tallest thing outside.";
-    if (dpl.includes("fog") || dpl.includes("mist")) return "Visibility vibes:  drive like you've got a gran in the back. ";
-    if (isNum(rainPct) && rainPct >= 70) return "Plan indoors — today's moody. ";
-    if (isNum(rainPct) && rainPct >= 40) return "Keep a jacket close. ";
-    if (hot) return "Big heat — pace yourself outside.";
-    if (dpl.includes("cloud")) return "Soft light, no drama.  Take the win.";
-    return "Good day to get stuff done outside.";
-  }
-
-  function computeAgreementFromNorms(norms) {
-    const temps = norms.map(n => n.nowTemp).filter(isNum);
-    if (temps.length < 2) {
-      return { label: temps. length === 1 ? "DECENT" : "—", explain: temps.length === 1 ? "Only one source responded." : "No sources responded." };
-    }
-
-    const min = Math.min(... temps);
-    const max = Math.max(...temps);
-    const spread = max - min;
-
-    if (spread <= 1. 5) return { label: "STRONG", explain: "All sources line up closely." };
-    if (spread <= 3. 5) return { label: "DECENT", explain: "Two sources agree, one's a bit off." };
-    return { label: "MIXED", explain: "Sources disagree today; we're showing the most probable middle-ground." };
-  }
-
-  async function fetchProbable(place) {
-    const url = `/api/weather? lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('API error');
-    return await response.json();
-  }
-
-  function normalizePayload(payload) {
-    if (Array.isArray(payload. norms)) {
-      const norms = payload. norms;
-      const medNow = median(norms. map(n => n.nowTemp).filter(isNum));
-      const medHigh = median(norms.map(n => n.todayHigh).filter(isNum));
-      const medLow = median(norms.map(n => n. todayLow).filter(isNum));
-      const medRain = median(norms.map(n => n.todayRain).filter(isNum));
-      const medUv = median(norms.map(n => n.todayUv).filter(isNum));
-      const mostDesc = pickMostCommon(norms. map(n => n.desc).filter(Boolean)) || 'Weather today';
-
-      return {
-        nowTemp: medNow,
-        todayHigh: medHigh,
-        todayLow: medLow,
-        rainPct: medRain,
-        uv: medUv,
-        desc:  mostDesc,
-        agreement: computeAgreementFromNorms(norms),
-        used: payload.used || [],
-        failed: payload.failed || [],
-        countUsed: norms.length,
-        hourly: payload.hourly || [],
-        daily: payload.daily || [],
-      };
-    }
-    // Fallback for other shape (from summary)
-    return {
-      nowTemp:  payload.now?. temp ??  null,
-      todayHigh: payload.today?.high ?? null,
-      todayLow: payload.today?.low ?? null,
-      rainPct: payload.today?. rainPct ?? null,
-      uv:  payload.today?.uv ?? null,
-      desc: payload. today?.desc ?? 'Weather today',
-      agreement: payload. agreement || { label: '—', explain: '' },
-      used:  payload.sources?.used || [],
-      failed: payload.sources?. failed || [],
-      countUsed: payload.sources?.countUsed || 0,
-      hourly:  payload.hourly || [],
-      daily: payload.daily || [],
+const Analytics = {
+  log(event, data = {}) {
+    const payload = {
+      event,
+      timestamp: new Date().toISOString(),
+      ...data,
     };
-  }
+    console.log('[Analytics]', payload);
+    // Future: send to analytics service
+  },
 
-  function renderLoading(name) {
-    showLoader(true);
-    safeText(locationEl, name);
-    safeText(headlineEl, 'Loading.. .');
-    safeText(tempEl, '--°');
-    safeText(descriptionEl, '—');
-    safeText(extremeValueEl, '--');
-    safeText(rainValueEl, '--');
-    safeText(uvValueEl, '--');
-    safeText(confidenceEl, 'PROBABLY • —');
-    safeText(sourcesEl, 'Sources: —');
-  }
+  wizardStarted() {
+    this.log('wizard_started', { incomeType: null });
+  },
 
-  function renderError(msg) {
-    showLoader(false);
-    safeText(headlineEl, 'Error');
-    safeText(descriptionEl, msg);
-  }
-
-  function renderHome(norm) {
-    showLoader(false);
-
-    const hi = norm.todayHigh;
-    const low = norm.todayLow;
-    const rain = norm. rainPct;
-    const uv = norm.uv;
-    const desc = norm.desc;
-
-    safeText(locationEl, activePlace.name || '—');
-    safeText(headlineEl, desc);
-    safeText(tempEl, `${round0(low)}° - ${round0(hi)}°`);
-    safeText(descriptionEl, pickWittyLine(rain, hi, desc));
-
-    safeText(extremeValueEl, isNum(hi) && hi > 35 ? 'Scorching hot' : isNum(low) && low < 0 ? 'Freezing cold' :  'Mild');
-
-    if (isNum(rain)) {
-      const rp = round0(rain);
-      safeText(rainValueEl, `${rp}% (${rp >= 40 ? "Possible rain" : "Low chance"})`);
-    } else safeText(rainValueEl, '--');
-
-    if (isNum(uv)) safeText(uvValueEl, `${round0(uv)}`);
-    else safeText(uvValueEl, '--');
-
-    const label = (norm.agreement?. label || "—").toUpperCase();
-    safeText(confidenceEl, `PROBABLY • ${label} AGREEMENT`);
-
-    const usedTxt = norm.used. length ?  `Used: ${norm.used.join(", ")}` : "Used: —";
-    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(", ")}` : "";
-    safeText(sourcesEl, `${usedTxt}${failedTxt ?  " · " + failedTxt : ""}`);
-
-    setBackgroundFor(desc, rain, hi);
-    createParticles('cloudy');
-  }
-
-  function renderHourly(hourly) {
-    if (!hourlyTimeline) return;
-    hourlyTimeline.innerHTML = '';
-    hourly.forEach((h, i) => {
-      const div = document.createElement('div');
-      div.classList.add('hourly-card');
-      const hourTime = new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: 'numeric', hour12: true });
-      div.innerHTML = `
-        <div class="hour-time">${hourTime}</div>
-        <div class="hour-temp">${round0(h.temp)}°</div>
-        <div class="hour-rain">${round0(h.rain)}%</div>
-      `;
-      hourlyTimeline.appendChild(div);
+  stepCompleted(step, incomeType) {
+    const duration = Math.round((Date.now() - stepStartTime) / 1000);
+    this.log('wizard_step_completed', {
+      step,
+      incomeType,
+      duration_seconds: duration,
     });
-  }
+  },
 
-  function renderWeek(daily) {
-    if (!dailyCards) return;
-    dailyCards.innerHTML = '';
-    daily. forEach((d, i) => {
-      const date = new Date(Date.now() + i * 86400000);
-      const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
-      const div = document.createElement('div');
-      div.classList.add('daily-card');
-      div.innerHTML = `
-        <div class="day-name">${dayName}</div>
-        <div class="day-temp">${round0(d.low)}° - ${round0(d.high)}°</div>
-        <div class="day-rain">${round0(d.rain)}%</div>
-        <div class="day-humor">${d.desc}</div>
-      `;
-      dailyCards.appendChild(div);
+  wizardCompleted(incomeType, categoriesEnabled, usedQuickSetup) {
+    this.log('wizard_completed', {
+      incomeType,
+      categoriesEnabled,
+      usedQuickSetup,
     });
-  }
+  },
 
-  async function loadAndRender(place) {
-    activePlace = place;
-    renderLoading(place.name || 'My Location');
-    try {
-      const payload = await fetchProbable(place);
-      lastPayload = payload;
-      const norm = normalizePayload(payload);
-      renderHome(norm);
-      renderHourly(norm.hourly);
-      renderWeek(norm.daily);
-    } catch (e) {
-      console.error("Load failed:", e);
-      renderError("Couldn't fetch weather right now.");
-    }
-  }
-
-  // Places:  recents/favorites
-  function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
-  function loadRecents() { return loadJSON(STORAGE.recents, []); }
-
-  function saveFavorites(list) { saveJSON(STORAGE. favorites, list); }
-  function saveRecents(list) { saveJSON(STORAGE.recents, list); }
-
-  function addRecent(place) {
-    let list = loadRecents().filter(p => ! samePlace(p, place));
-    list.unshift(place);
-    saveRecents(list. slice(0, 10));
-    renderRecents();
-  }
-
-  function addFavorite(place) {
-    let list = loadFavorites();
-    if (list.some(p => samePlace(p, place))) return;
-    list.unshift(place);
-    saveFavorites(list. slice(0, 5));
-    renderFavorites();
-  }
-
-  function escapeHtml(s) {
-    return String(s ??  "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
-  }
-
-  function renderRecents() {
-    if (!recentList) return;
-    const list = loadRecents();
-    recentList.innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
-    `).join('') || '<li>No recent searches yet. </li>';
-
-    recentList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', () => {
-        const p = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li. dataset.lon) };
-        addRecent(p);
-        showScreen(screenHome);
-        loadAndRender(p);
-      });
+  wizardAbandoned(lastStep, incomeType) {
+    this.log('wizard_abandoned', {
+      lastStep,
+      incomeType,
     });
-  }
+  },
+};
 
-  function renderFavorites() {
-    if (!favoritesList) return;
-    const list = loadFavorites();
-    favoritesList. innerHTML = list.map(p => `
-      <li data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p. name)}</li>
-    `).join('') || '<li>No saved places yet.</li>';
+// ============ TOAST ============
 
-    favoritesList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', () => {
-        const p = { name: li.dataset.name, lat: parseFloat(li. dataset.lat), lon: parseFloat(li.dataset.lon) };
-        showScreen(screenHome);
-        loadAndRender(p);
-      });
-    });
-  }
+function showToast(message = 'Progress saved') {
+  const toast = $('#toast');
+  toast.textContent = message;
+  toast.classList.add('visible');
+  setTimeout(() => toast.classList.remove('visible'), 2000);
+}
 
-  // Search
-  async function runSearch(q) {
-    if (!q || q.trim().length < 2) return;
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=8`;
-    try {
-      const data = await (await fetch(url)).json();
-      // Render results
-      console.log(data); // TODO: Add search results rendering to #search-screen
-    } catch (e) {
-      console. error(e);
-    }
-  }
+// ============ VALIDATION ============
 
-  // Buttons / Nav
-  navHome.addEventListener('click', () => {
-    showScreen(screenHome);
-    if (homePlace) loadAndRender(homePlace);
-  });
-  navHourly.addEventListener('click', () => showScreen(screenHourly));
-  navWeek.addEventListener('click', () => showScreen(screenWeek));
-  navSearch.addEventListener('click', () => {
-    showScreen(screenSearch);
-    renderRecents();
-    renderFavorites();
-  });
-  navSettings.addEventListener('click', () => showScreen(screenSettings));
+function validateStep(step) {
+  clearErrors();
 
-  saveCurrent.addEventListener('click', () => {
-    if (activePlace) addFavorite(activePlace);
-  });
+  switch (step) {
+    case 1:
+      if (!profile.incomeType) {
+        showError('income-type-error', 'Please select your income type');
+        return false;
+      }
+      return true;
 
-  // Init
-  renderRecents();
-  renderFavorites();
+    case 2:
+      // All fields optional or have defaults
+      return true;
 
-  homePlace = loadJSON(STORAGE.home, null);
-  if (homePlace) {
-    showScreen(screenHome);
-    loadAndRender(homePlace);
-  } else {
-    // Geolocation
-    showScreen(screenHome);
-    renderLoading("My Location");
-
-    if ("geolocation" in navigator) {
-      navigator.geolocation. getCurrentPosition(
-        (pos) => {
-          const lat = round1(pos. coords.latitude);
-          const lon = round1(pos.coords.longitude);
-          homePlace = { name: "My Location", lat, lon };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        () => {
-          // fallback: Cape Town
-          homePlace = { name: "Cape Town", lat:  -33.9249, lon: 18.4241 };
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        },
-        { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
+    case 3:
+      // Must have at least one category besides other_work
+      const enabledNonRequired = profile.enabledCategoryIds.filter(
+        id => id !== 'income_received' && id !== 'other_work'
       );
+      if (enabledNonRequired.length === 0) {
+        showError('category-error', 'Please select at least one expense category');
+        return false;
+      }
+      return true;
+
+    case 4:
+      // All fields optional or have defaults
+      return true;
+
+    default:
+      return true;
+  }
+}
+
+function showError(elementId, message) {
+  const el = $(`#${elementId}`);
+  if (el) {
+    el.textContent = message;
+    el.style.display = 'block';
+  }
+}
+
+function clearErrors() {
+  $$('.error-message').forEach(el => {
+    el.textContent = '';
+    el.style.display = 'none';
+  });
+}
+
+// ============ PROGRESS BAR ============
+
+function updateProgressBar() {
+  const fill = $('#progress-fill');
+  const text = $('#progress-text');
+  const steps = $$('.progress-steps .step');
+
+  // Update text
+  text.textContent = `Step ${currentStep} of 4`;
+
+  // Calculate fill width (0% at step 1, 100% at step 4)
+  const percent = ((currentStep - 1) / 3) * 100;
+  fill.style.width = `${percent}%`;
+
+  // Update step indicators
+  steps.forEach((step) => {
+    const stepNum = parseInt(step.dataset.step, 10);
+    step.classList.remove('active', 'completed', 'clickable');
+
+    if (stepNum < currentStep) {
+      step.classList.add('completed', 'clickable');
+    } else if (stepNum === currentStep) {
+      step.classList.add('active');
+    }
+    // Future steps remain unstyled (not clickable)
+  });
+}
+
+// ============ STEP NAVIGATION ============
+
+function showStep(step) {
+  // Hide all steps
+  $$('.wizard-step').forEach(s => s.classList.remove('active'));
+
+  // Show target step
+  const stepId = step === 'complete' ? 'step-complete' : `step-${step}`;
+  const stepEl = $(`#${stepId}`);
+  if (stepEl) {
+    stepEl.classList.add('active');
+  }
+
+  // Update nav visibility
+  const nav = $('#wizard-nav');
+  if (step === 'complete') {
+    nav.style.display = 'none';
+  } else {
+    nav.style.display = 'flex';
+    $('#btn-back').style.visibility = step === 1 ? 'hidden' : 'visible';
+    $('#btn-next').textContent = step === 4 ? 'Complete Setup' : 'Continue';
+  }
+
+  // Update progress bar for numbered steps
+  if (typeof step === 'number') {
+    currentStep = step;
+    stepStartTime = Date.now();
+    updateProgressBar();
+  }
+
+  // Update button state
+  updateNextButtonState();
+}
+
+function goToStep(step) {
+  if (step < 1 || step > 4) return;
+
+  // Can only go to completed steps or current step
+  const canNavigate = step <= profile.lastCompletedStep + 1;
+  if (!canNavigate) return;
+
+  showStep(step);
+  renderCurrentStep();
+}
+
+function updateNextButtonState() {
+  const btn = $('#btn-next');
+  let isValid = false;
+
+  switch (currentStep) {
+    case 1:
+      isValid = profile.incomeType !== null;
+      break;
+    case 2:
+      isValid = true;
+      break;
+    case 3:
+      const enabledNonRequired = (profile.enabledCategoryIds || []).filter(
+        id => id !== 'income_received' && id !== 'other_work'
+      );
+      isValid = enabledNonRequired.length > 0;
+      break;
+    case 4:
+      isValid = true;
+      break;
+  }
+
+  btn.disabled = !isValid;
+}
+
+// ============ STEP RENDERERS ============
+
+function renderStep1() {
+  // Income type
+  if (profile.incomeType) {
+    const radio = $(`input[name="incomeType"][value="${profile.incomeType}"]`);
+    if (radio) radio.checked = true;
+  }
+
+  // Provisional tax
+  if (profile.paysProvisionalTax) {
+    const radio = $(`input[name="paysProvisionalTax"][value="${profile.paysProvisionalTax}"]`);
+    if (radio) radio.checked = true;
+  }
+
+  // Explainer state
+  updateExplainerVisibility();
+}
+
+function renderStep2() {
+  // Cadence
+  $$('#cadence-options .btn-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.value === profile.cadence);
+  });
+
+  // Monthly income
+  const incomeInput = $('#monthly-income');
+  if (profile.typicalMonthlyIncome) {
+    incomeInput.value = profile.typicalMonthlyIncome;
+  } else {
+    incomeInput.value = '';
+  }
+
+  // Income varies - default based on income type if not explicitly set
+  if (profile.incomeVaries === null || profile.incomeVaries === undefined) {
+    profile.incomeVaries = ['freelancer', 'business', 'mixed'].includes(profile.incomeType);
+  }
+  $('#income-varies').checked = profile.incomeVaries;
+
+  // Wants estimate
+  $('#wants-estimate').checked = profile.wantsEstimate;
+
+  // Estimate detail
+  $$('#estimate-detail-options .btn-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.value === profile.estimateDetail);
+  });
+
+  // Show/hide estimate detail
+  $('#estimate-detail-group').style.display = profile.wantsEstimate ? 'block' : 'none';
+}
+
+function renderStep3() {
+  const list = $('#category-list');
+  const categories = db.getWizardCategories();
+  const recommended = CATEGORY_RECOMMENDATIONS[profile.incomeType] || [];
+
+  // Ensure enabledCategoryIds exists
+  if (!profile.enabledCategoryIds) {
+    profile.enabledCategoryIds = ['income_received', 'other_work'];
+  }
+
+  list.innerHTML = categories.map(cat => {
+    const isRecommended = recommended.includes(cat.id);
+    const isLocked = cat.lockedEnabled;
+    const isEnabled = profile.enabledCategoryIds.includes(cat.id);
+
+    return `
+      <label class="category-item ${isLocked ? 'locked' : ''}" data-testid="category-${cat.slug}">
+        <input type="checkbox"
+               class="category-checkbox"
+               value="${cat.id}"
+               ${isEnabled ? 'checked' : ''}
+               ${isLocked ? 'disabled' : ''}>
+        <span class="category-info">
+          <span class="category-name">${cat.name}</span>
+          ${isRecommended ? '<span class="category-badge recommended">Recommended</span>' : ''}
+          ${isLocked ? '<span class="category-badge locked">Always on</span>' : ''}
+        </span>
+      </label>
+    `;
+  }).join('');
+
+  // Add event listeners to checkboxes
+  list.querySelectorAll('.category-checkbox').forEach(cb => {
+    cb.addEventListener('change', handleCategoryChange);
+  });
+
+  // Update motivational text
+  updateMotivationalText();
+}
+
+function renderStep4() {
+  // Capture mode
+  const captureRadio = $(`input[name="captureMode"][value="${profile.captureMode}"]`);
+  if (captureRadio) captureRadio.checked = true;
+
+  // Reminder preference
+  $$('#reminder-pref-options .btn-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.value === profile.reminderPreference);
+  });
+
+  // Reminder day dropdown
+  const daySelect = $('#reminder-day');
+  daySelect.innerHTML = '';
+  for (let d = 1; d <= 28; d++) {
+    const opt = document.createElement('option');
+    opt.value = d;
+    opt.textContent = d;
+    if (d === profile.reminderDay) opt.selected = true;
+    daySelect.appendChild(opt);
+  }
+
+  // Reminder time dropdown - varies based on preference
+  updateReminderTimeOptions();
+
+  // Tax practitioner
+  $('#has-practitioner').checked = profile.hasTaxPractitioner;
+  $('#practitioner-email-group').style.display = profile.hasTaxPractitioner ? 'block' : 'none';
+  if (profile.taxPractitionerEmail) {
+    $('#practitioner-email').value = profile.taxPractitionerEmail;
+  }
+}
+
+function updateReminderTimeOptions() {
+  const timeSelect = $('#reminder-time');
+  const isMorning = profile.reminderPreference === 'morning';
+
+  // Morning: 06:00-12:00, Evening: 17:00-22:00
+  const startHour = isMorning ? 6 : 17;
+  const endHour = isMorning ? 12 : 22;
+  const defaultTime = isMorning ? '09:00' : '18:00';
+
+  // If current time is outside new range, reset to default
+  const currentHour = parseInt(profile.reminderTime?.split(':')[0] || '0', 10);
+  if (currentHour < startHour || currentHour > endHour) {
+    profile.reminderTime = defaultTime;
+  }
+
+  timeSelect.innerHTML = '';
+  for (let h = startHour; h <= endHour; h++) {
+    const time = `${h.toString().padStart(2, '0')}:00`;
+    const opt = document.createElement('option');
+    opt.value = time;
+    opt.textContent = time;
+    if (time === profile.reminderTime) opt.selected = true;
+    timeSelect.appendChild(opt);
+  }
+}
+
+function updateMotivationalText() {
+  const el = $('#motivational-text');
+  const copy = MOTIVATIONAL_COPY[profile.incomeType];
+  if (copy && profile.enabledCategoryIds.length > 2) {
+    el.innerHTML = `<p>${copy}</p>`;
+    el.style.display = 'block';
+  } else {
+    el.style.display = 'none';
+  }
+}
+
+function updateExplainerVisibility() {
+  const explainer = $('#provisional-explainer');
+  const isNotSure = profile.paysProvisionalTax === 'not_sure';
+  explainer.style.display = isNotSure ? 'block' : 'none';
+}
+
+function renderCurrentStep() {
+  switch (currentStep) {
+    case 1: renderStep1(); break;
+    case 2: renderStep2(); break;
+    case 3: renderStep3(); break;
+    case 4: renderStep4(); break;
+  }
+  updateNextButtonState();
+}
+
+// ============ EVENT HANDLERS ============
+
+function handleCategoryChange(e) {
+  const id = e.target.value;
+  if (e.target.checked) {
+    if (!profile.enabledCategoryIds.includes(id)) {
+      profile.enabledCategoryIds.push(id);
+    }
+  } else {
+    profile.enabledCategoryIds = profile.enabledCategoryIds.filter(c => c !== id);
+  }
+  saveProgress();
+  updateNextButtonState();
+  updateMotivationalText();
+}
+
+function handleUseRecommended() {
+  const recommended = CATEGORY_RECOMMENDATIONS[profile.incomeType] || [];
+  // Start with required + recommended
+  profile.enabledCategoryIds = ['income_received', 'other_work', ...recommended];
+  saveProgress();
+  renderStep3();
+}
+
+function handleQuickSetup() {
+  // Set defaults for quick setup
+  profile.incomeType = 'freelancer';
+  profile.paysProvisionalTax = 'not_sure';
+  profile.cadence = 'monthly';
+  profile.incomeVaries = true;
+  profile.wantsEstimate = true;
+  profile.estimateDetail = 'simple';
+  profile.enabledCategoryIds = [
+    'income_received',
+    'other_work',
+    ...CATEGORY_RECOMMENDATIONS.freelancer,
+  ];
+  profile.captureMode = 'as_you_go';
+  profile.reminderPreference = 'evening';
+  profile.reminderDay = 25;
+  profile.reminderTime = '18:00';
+  profile.hasTaxPractitioner = false;
+  profile.usedQuickSetup = true;
+  profile.setupComplete = true;
+  profile.lastCompletedStep = 4;
+
+  saveProgress();
+
+  Analytics.wizardCompleted(
+    profile.incomeType,
+    profile.enabledCategoryIds.length,
+    true
+  );
+
+  showStep('complete');
+}
+
+function setupEventListeners() {
+  // Step 1: Income type selection
+  $$('input[name="incomeType"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      profile.incomeType = e.target.value;
+      profile.incomeVaries = null; // Reset to recompute in step 2
+      profile.enabledCategoryIds = ['income_received', 'other_work']; // Reset categories
+      saveProgress();
+      updateNextButtonState();
+    });
+  });
+
+  // Step 1: Provisional tax selection
+  $$('input[name="paysProvisionalTax"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      profile.paysProvisionalTax = e.target.value;
+      updateExplainerVisibility();
+      saveProgress();
+    });
+  });
+
+  // Step 1: Explainer toggle
+  $('#explainer-toggle').addEventListener('click', () => {
+    const content = $('#explainer-content');
+    const icon = $('.explainer-icon');
+    const isOpen = content.classList.contains('open');
+    content.classList.toggle('open');
+    icon.textContent = isOpen ? '+' : '−';
+  });
+
+  // Step 1: Quick setup
+  $('#quick-setup-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    handleQuickSetup();
+  });
+
+  // Step 2: Cadence buttons
+  $$('#cadence-options .btn-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('#cadence-options .btn-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      profile.cadence = btn.dataset.value;
+      saveProgress();
+    });
+  });
+
+  // Step 2: Monthly income
+  $('#monthly-income').addEventListener('input', (e) => {
+    const val = e.target.value;
+    profile.typicalMonthlyIncome = val ? parseInt(val, 10) : null;
+    saveProgress();
+  });
+
+  // Step 2: Income varies toggle
+  $('#income-varies').addEventListener('change', (e) => {
+    profile.incomeVaries = e.target.checked;
+    saveProgress();
+  });
+
+  // Step 2: Wants estimate toggle
+  $('#wants-estimate').addEventListener('change', (e) => {
+    profile.wantsEstimate = e.target.checked;
+    $('#estimate-detail-group').style.display = e.target.checked ? 'block' : 'none';
+    saveProgress();
+  });
+
+  // Step 2: Estimate detail buttons
+  $$('#estimate-detail-options .btn-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('#estimate-detail-options .btn-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      profile.estimateDetail = btn.dataset.value;
+      saveProgress();
+    });
+  });
+
+  // Step 3: Use recommended button
+  $('#use-recommended-btn').addEventListener('click', handleUseRecommended);
+
+  // Step 4: Capture mode
+  $$('input[name="captureMode"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      profile.captureMode = e.target.value;
+      saveProgress();
+    });
+  });
+
+  // Step 4: Reminder preference buttons
+  $$('#reminder-pref-options .btn-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('#reminder-pref-options .btn-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      profile.reminderPreference = btn.dataset.value;
+      updateReminderTimeOptions();
+      saveProgress();
+    });
+  });
+
+  // Step 4: Reminder day
+  $('#reminder-day').addEventListener('change', (e) => {
+    profile.reminderDay = parseInt(e.target.value, 10);
+    saveProgress();
+  });
+
+  // Step 4: Reminder time
+  $('#reminder-time').addEventListener('change', (e) => {
+    profile.reminderTime = e.target.value;
+    saveProgress();
+  });
+
+  // Step 4: Has practitioner toggle
+  $('#has-practitioner').addEventListener('change', (e) => {
+    profile.hasTaxPractitioner = e.target.checked;
+    $('#practitioner-email-group').style.display = e.target.checked ? 'block' : 'none';
+    saveProgress();
+  });
+
+  // Step 4: Practitioner email
+  $('#practitioner-email').addEventListener('input', (e) => {
+    profile.taxPractitionerEmail = e.target.value || null;
+    saveProgress();
+  });
+
+  // Navigation: Back button
+  $('#btn-back').addEventListener('click', () => {
+    if (currentStep > 1) {
+      showStep(currentStep - 1);
+      renderCurrentStep();
+    }
+  });
+
+  // Navigation: Next/Complete button
+  $('#btn-next').addEventListener('click', () => {
+    if (!validateStep(currentStep)) return;
+
+    // Mark step as completed
+    Analytics.stepCompleted(currentStep, profile.incomeType);
+    profile.lastCompletedStep = Math.max(profile.lastCompletedStep || 0, currentStep);
+
+    if (currentStep < 4) {
+      showStep(currentStep + 1);
+      renderCurrentStep();
+      saveProgress();
     } else {
-      homePlace = { name: "Cape Town", lat:  -33.9249, lon: 18.4241 };
-      saveJSON(STORAGE.home, homePlace);
-      loadAndRender(homePlace);
+      // Complete setup
+      profile.setupComplete = true;
+      saveProgress();
+
+      Analytics.wizardCompleted(
+        profile.incomeType,
+        profile.enabledCategoryIds.length,
+        profile.usedQuickSetup || false
+      );
+
+      showStep('complete');
+    }
+  });
+
+  // Progress step clicks (go back to completed steps)
+  $$('.progress-steps .step').forEach(step => {
+    step.addEventListener('click', () => {
+      const stepNum = parseInt(step.dataset.step, 10);
+      if (stepNum <= (profile.lastCompletedStep || 0) + 1 && stepNum < currentStep) {
+        goToStep(stepNum);
+      }
+    });
+  });
+
+  // Completion: Go to dashboard
+  $('#btn-go-dashboard').addEventListener('click', () => {
+    navigateTo('home');
+  });
+
+  // Completion: Add expense
+  $('#btn-add-expense').addEventListener('click', (e) => {
+    e.preventDefault();
+    navigateTo('expenses-new');
+  });
+
+  // Dashboard: Add expense button
+  $('#dashboard-add-expense').addEventListener('click', () => {
+    navigateTo('expenses-new');
+  });
+
+  // Expenses: Back to dashboard
+  $('#back-to-dashboard').addEventListener('click', () => {
+    navigateTo('home');
+  });
+
+  // Track abandonment on page unload
+  window.addEventListener('beforeunload', () => {
+    if (!profile.setupComplete && profile.incomeType) {
+      Analytics.wizardAbandoned(currentStep, profile.incomeType);
+    }
+  });
+}
+
+// ============ NAVIGATION ============
+
+function navigateTo(pageId) {
+  // Hide all pages
+  $('#setup-wizard').style.display = 'none';
+  $('#home').classList.add('hidden');
+  $('#expenses-new').classList.add('hidden');
+
+  // Show target page
+  const page = $(`#${pageId}`);
+  if (page) {
+    page.classList.remove('hidden');
+    if (pageId === 'setup-wizard') {
+      page.style.display = 'block';
     }
   }
-});
+}
+
+// ============ PERSISTENCE ============
+
+function saveProgress() {
+  try {
+    db.saveProfile(profile);
+    showToast();
+  } catch (e) {
+    console.error('Failed to save progress:', e);
+    showToast('Failed to save');
+  }
+}
+
+function loadProgress() {
+  profile = db.getProfile();
+  return profile;
+}
+
+// ============ INITIALIZATION ============
+
+function init() {
+  // Load saved profile
+  loadProgress();
+
+  // If setup complete, go to home
+  if (profile.setupComplete) {
+    navigateTo('home');
+    return;
+  }
+
+  // Log wizard started (only if truly new)
+  if (!profile.incomeType) {
+    Analytics.wizardStarted();
+  }
+
+  // Setup event listeners
+  setupEventListeners();
+
+  // Resume from last step
+  const resumeStep = db.getResumeStep();
+  showStep(resumeStep);
+  renderCurrentStep();
+}
+
+// Start the app
+document.addEventListener('DOMContentLoaded', init);

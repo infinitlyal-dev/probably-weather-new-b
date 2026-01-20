@@ -1,133 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Probably Weather</title>
-  <link rel="stylesheet" href="assets/app.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaxBuddy - Setup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/app.css">
 </head>
-
 <body>
-  <!-- Background system (must be first, behind everything) -->
-  <div id="bg" aria-hidden="true">
-    <img id="bgImg" src="" alt="" />
-    <div id="scrim"></div>
+  <div id="app">
+    <!-- Setup Wizard -->
+    <div id="setup-wizard" class="wizard" data-testid="setup-wizard">
+      <header class="wizard-header">
+        <h1>TaxBuddy</h1>
+        <p class="wizard-subtitle">Let's set up your tax profile</p>
+      </header>
+
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-text" id="progress-text">Step 1 of 4</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-steps">
+          <button class="step active" data-step="1" data-testid="progress-step-1">1</button>
+          <button class="step" data-step="2" data-testid="progress-step-2">2</button>
+          <button class="step" data-step="3" data-testid="progress-step-3">3</button>
+          <button class="step" data-step="4" data-testid="progress-step-4">4</button>
+        </div>
+      </div>
+
+      <!-- Toast for save confirmation -->
+      <div class="toast" id="toast">Progress saved</div>
+
+      <!-- Step 1: Tax Situation -->
+      <section class="wizard-step active" id="step-1" data-testid="wizard-step-1">
+        <h2>What's your tax situation?</h2>
+        <p class="step-description">This determines which deductions you're eligible for</p>
+
+        <div class="form-group">
+          <label class="form-label">Income type</label>
+          <div class="option-group" id="income-type-options">
+            <label class="option-card" data-testid="income-type-employee">
+              <input type="radio" name="incomeType" value="employee">
+              <span class="option-content">
+                <span class="option-title">Employee</span>
+                <span class="option-desc">I earn a salary from an employer</span>
+              </span>
+            </label>
+            <label class="option-card" data-testid="income-type-freelancer">
+              <input type="radio" name="incomeType" value="freelancer">
+              <span class="option-content">
+                <span class="option-title">Freelancer</span>
+                <span class="option-desc">I work for myself with various clients</span>
+              </span>
+            </label>
+            <label class="option-card" data-testid="income-type-business">
+              <input type="radio" name="incomeType" value="business">
+              <span class="option-content">
+                <span class="option-title">Business Owner</span>
+                <span class="option-desc">I run my own business</span>
+              </span>
+            </label>
+            <label class="option-card" data-testid="income-type-mixed">
+              <input type="radio" name="incomeType" value="mixed">
+              <span class="option-content">
+                <span class="option-title">Mixed Income</span>
+                <span class="option-desc">I have multiple income sources</span>
+              </span>
+            </label>
+          </div>
+          <div class="error-message" id="income-type-error"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Do you pay provisional tax?</label>
+          <div class="option-group-horizontal" id="provisional-tax-options">
+            <label class="option-pill" data-testid="provisional-tax-yes">
+              <input type="radio" name="paysProvisionalTax" value="yes">
+              <span>Yes</span>
+            </label>
+            <label class="option-pill" data-testid="provisional-tax-no">
+              <input type="radio" name="paysProvisionalTax" value="no">
+              <span>No</span>
+            </label>
+            <label class="option-pill" data-testid="provisional-tax-not_sure">
+              <input type="radio" name="paysProvisionalTax" value="not_sure">
+              <span>Not sure</span>
+            </label>
+          </div>
+
+          <!-- Explainer for "not sure" -->
+          <div class="explainer-box" id="provisional-explainer">
+            <button type="button" class="explainer-toggle" id="explainer-toggle">
+              <span>What is provisional tax?</span>
+              <span class="explainer-icon">+</span>
+            </button>
+            <div class="explainer-content" id="explainer-content">
+              <p>Provisional tax is paid by people who earn income that isn't from a single employer (e.g., freelancers, business owners, rental income, investments).</p>
+              <p>If your employer deducts PAYE from your salary and that's your only income, you probably don't pay provisional tax.</p>
+              <p>If you're unsure, check your tax records or ask your accountant.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-setup-link">
+          <a href="#" id="quick-setup-link" data-testid="quick-setup-link">Quick setup with defaults</a>
+        </div>
+      </section>
+
+      <!-- Step 2: Income Basics -->
+      <section class="wizard-step" id="step-2" data-testid="wizard-step-2">
+        <h2>Tell us about your income</h2>
+        <p class="step-description">Helps us estimate your tax bracket and potential savings</p>
+
+        <div class="form-group">
+          <label class="form-label">How often do you get paid?</label>
+          <div class="button-group" id="cadence-options">
+            <button type="button" class="btn-option active" data-value="monthly" data-testid="cadence-monthly">Monthly</button>
+            <button type="button" class="btn-option" data-value="weekly" data-testid="cadence-weekly">Weekly</button>
+            <button type="button" class="btn-option" data-value="adhoc" data-testid="cadence-adhoc">Ad-hoc</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="monthly-income">Typical monthly income (optional)</label>
+          <div class="input-with-prefix">
+            <span class="input-prefix">ZAR</span>
+            <input type="number" id="monthly-income" placeholder="e.g. 35000" min="0" data-testid="monthly-income">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="toggle-row">
+            <span class="toggle-label">My income varies month to month</span>
+            <input type="checkbox" id="income-varies" class="toggle-input" data-testid="income-varies">
+            <span class="toggle-switch"></span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="toggle-row">
+            <span class="toggle-label">Show me tax saving estimates</span>
+            <input type="checkbox" id="wants-estimate" class="toggle-input" checked data-testid="wants-estimate">
+            <span class="toggle-switch"></span>
+          </label>
+        </div>
+
+        <div class="form-group" id="estimate-detail-group">
+          <label class="form-label">Estimate detail level</label>
+          <div class="button-group" id="estimate-detail-options">
+            <button type="button" class="btn-option active" data-value="simple" data-testid="estimate-simple">Simple</button>
+            <button type="button" class="btn-option" data-value="detailed" data-testid="estimate-detailed">Detailed</button>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <span class="info-icon">i</span>
+          <span>South African tax year runs March – February</span>
+        </div>
+      </section>
+
+      <!-- Step 3: Expense Categories -->
+      <section class="wizard-step" id="step-3" data-testid="wizard-step-3">
+        <h2>Choose your expense categories</h2>
+        <p class="step-description">These are SARS-approved deduction categories for your situation</p>
+
+        <div class="category-actions">
+          <button type="button" class="btn-text" id="use-recommended-btn" data-testid="use-recommended-btn">
+            Use recommended
+          </button>
+        </div>
+
+        <div class="category-list" id="category-list">
+          <!-- Categories rendered by JS -->
+        </div>
+
+        <div class="error-message" id="category-error"></div>
+
+        <div class="motivational-text" id="motivational-text">
+          <!-- Rendered by JS based on incomeType -->
+        </div>
+      </section>
+
+      <!-- Step 4: Capture Preferences -->
+      <section class="wizard-step" id="step-4" data-testid="wizard-step-4">
+        <h2>Capture preferences</h2>
+        <p class="step-description">Consistent tracking = fewer surprises at tax time</p>
+
+        <div class="form-group">
+          <label class="form-label">How do you want to capture expenses?</label>
+          <div class="option-group-vertical" id="capture-mode-options">
+            <label class="option-card-sm" data-testid="capture-as_you_go">
+              <input type="radio" name="captureMode" value="as_you_go" checked>
+              <span class="option-content">
+                <span class="option-title">As you go</span>
+                <span class="option-desc">Log expenses when they happen</span>
+              </span>
+            </label>
+            <label class="option-card-sm" data-testid="capture-monthly_only">
+              <input type="radio" name="captureMode" value="monthly_only">
+              <span class="option-content">
+                <span class="option-title">Monthly only</span>
+                <span class="option-desc">Batch entry at month end</span>
+              </span>
+            </label>
+            <label class="option-card-sm" data-testid="capture-both">
+              <input type="radio" name="captureMode" value="both">
+              <span class="option-content">
+                <span class="option-title">Both</span>
+                <span class="option-desc">Mix of real-time and batch</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Reminder preference</label>
+          <div class="button-group" id="reminder-pref-options">
+            <button type="button" class="btn-option" data-value="morning" data-testid="reminder-morning">Morning</button>
+            <button type="button" class="btn-option active" data-value="evening" data-testid="reminder-evening">Evening</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Monthly reminder</label>
+          <div class="reminder-row">
+            <div class="input-group">
+              <label for="reminder-day">Day of month</label>
+              <select id="reminder-day" data-testid="reminder-day">
+                <!-- Days 1-28 rendered by JS -->
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="reminder-time">Time</label>
+              <select id="reminder-time" data-testid="reminder-time">
+                <!-- Times rendered by JS -->
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="toggle-row">
+            <span class="toggle-label">I have a tax practitioner</span>
+            <input type="checkbox" id="has-practitioner" class="toggle-input" data-testid="has-practitioner">
+            <span class="toggle-switch"></span>
+          </label>
+        </div>
+
+        <div class="form-group" id="practitioner-email-group" style="display: none;">
+          <label class="form-label" for="practitioner-email">Practitioner email (optional)</label>
+          <input type="email" id="practitioner-email" class="text-input" placeholder="accountant@example.com" data-testid="practitioner-email">
+        </div>
+      </section>
+
+      <!-- Completion -->
+      <section class="wizard-step" id="step-complete" data-testid="wizard-step-complete">
+        <div class="completion-content">
+          <div class="completion-icon">✓</div>
+          <h2>Your tax profile is ready</h2>
+          <p>You're set up to start tracking expenses</p>
+
+          <div class="completion-actions">
+            <button class="btn-primary btn-large" id="btn-go-dashboard" data-testid="go-dashboard-btn">Go to Dashboard</button>
+            <a href="#" class="btn-link" id="btn-add-expense" data-testid="add-expense-link">Add your first expense</a>
+          </div>
+
+          <p class="legal-note">
+            TaxBuddy helps you organise and export tax records. It does not submit to SARS or provide tax advice.
+          </p>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <div class="wizard-nav" id="wizard-nav">
+        <button class="btn-secondary" id="btn-back" data-testid="back-btn">Back</button>
+        <button class="btn-primary" id="btn-next" data-testid="continue-btn" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- Home/Dashboard (placeholder) -->
+    <div id="home" class="page hidden">
+      <header class="page-header">
+        <h1>TaxBuddy</h1>
+      </header>
+      <main class="page-content">
+        <div class="dashboard-welcome">
+          <h2>Welcome to your dashboard</h2>
+          <p>Your tax profile is set up. Start tracking your expenses to maximize your deductions.</p>
+          <button class="btn-primary" id="dashboard-add-expense">Add Expense</button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Add Expense (placeholder) -->
+    <div id="expenses-new" class="page hidden">
+      <header class="page-header">
+        <h1>Add Expense</h1>
+      </header>
+      <main class="page-content">
+        <p>Expense tracking coming soon.</p>
+        <button class="btn-secondary" id="back-to-dashboard">Back to Dashboard</button>
+      </main>
+    </div>
   </div>
 
-  <div class="container">
-    <header class="topbar">
-      <div class="topbar-left">
-        <div class="mark" aria-hidden="true">◉</div>
-        <div class="topbar-title">Probably Weather</div>
-      </div>
-
-      <div class="topbar-mid">
-        <div class="topbar-location" id="cityLine">—</div>
-        <div class="topbar-sub" id="subhead">No more Ja-No-Maybe weather. Just Probably.</div>
-      </div>
-
-      <div class="topbar-right">
-        <div class="mini" id="updatedAt">—</div>
-      </div>
-    </header>
-
-    <main class="main">
-      <!-- HOME -->
-      <section class="screen screen--home" id="screen-home">
-        <div class="home-grid">
-          <section class="hero">
-            <div class="hero-kicker" id="confidenceTop">PROBABLY · — CONFIDENCE</div>
-
-            <div class="hero-title" id="conditionText">This is —.</div>
-
-            <div class="hero-temp" id="bigTemp">—</div>
-
-            <div class="hero-witty" id="wittyLine">—</div>
-          </section>
-
-          <aside class="cards">
-            <div class="card">
-              <div class="card-kicker" id="todayExtremeKicker">Today's extreme:</div>
-              <div class="card-title" id="todayExtremeTitle">—</div>
-              <div class="card-big" id="todayExtremeRange">—</div>
-            </div>
-
-            <div class="card">
-              <div class="card-kicker">Rain:</div>
-              <div class="card-title" id="rainSummary">—</div>
-            </div>
-
-            <div class="card">
-              <div class="card-kicker">UV</div>
-              <div class="card-title" id="uvSummary">—</div>
-            </div>
-
-            <div class="card card--confidence">
-              <div class="card-kicker">Confidence:</div>
-              <div class="card-title" id="confidenceTitle">—</div>
-              <div class="card-sub" id="confidenceSub">—</div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <!-- HOURLY -->
-      <section class="screen" id="screen-hourly" hidden>
-        <div class="screen-title">Hourly</div>
-        <div class="screen-body" id="hourlyList"></div>
-      </section>
-
-      <!-- WEEK -->
-      <section class="screen" id="screen-week" hidden>
-        <div class="screen-title">Week</div>
-        <div class="screen-body" id="weekList"></div>
-      </section>
-
-      <!-- SEARCH -->
-      <section class="screen" id="screen-search" hidden>
-        <div class="screen-title">Search</div>
-        <div class="screen-body">
-          <div class="search-wrap">
-            <input id="searchInput" class="search-input" placeholder="Search a city..." />
-            <button id="searchBtn" class="search-btn">Search</button>
-          </div>
-          <div class="mini" id="searchHint">Tip: Try “Cape Town”, “New York”, “London”.</div>
-        </div>
-      </section>
-
-      <!-- SETTINGS -->
-      <section class="screen" id="screen-settings" hidden>
-        <div class="screen-title">Settings</div>
-        <div class="screen-body">
-          <div class="setting-row">
-            <div>
-              <div class="setting-title">Units</div>
-              <div class="setting-sub">Currently fixed to °C and km/h.</div>
-            </div>
-            <div class="mini">v1</div>
-          </div>
-
-          <div class="setting-row">
-            <div>
-              <div class="setting-title">Sources</div>
-              <div class="setting-sub" id="sourcesList">—</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <nav class="bottom-nav" aria-label="Primary">
-      <button class="nav-btn is-active" data-target="home">Home</button>
-      <button class="nav-btn" data-target="hourly">Hourly</button>
-      <button class="nav-btn" data-target="week">Week</button>
-      <button class="nav-btn" data-target="search">Search</button>
-      <button class="nav-btn" data-target="settings">Settings</button>
-    </nav>
-  </div>
-
-  <!-- IMPORTANT: config loads BEFORE app.js -->
-  <script src="assets/config.js"></script>
+  <script src="assets/db.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>

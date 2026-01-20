@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: Complete TaxBuddy setup wizard implementation\n\nReplace weather app with TaxBuddy tax expense tracker.\nImplement complete 4-step setup wizard:\n\n- Step 1: Tax situation \\(incomeType, paysProvisionalTax with explainer\\)\n- Step 2: Income basics \\(cadence, monthly income, toggles, estimate preferences\\)\n- Step 3: Expense categories \\(SARS-approved Tier 1 categories with recommendations\\)\n- Step 4: Capture preferences \\(capture mode, reminders, tax practitioner\\)\n\nFeatures:\n- localStorage persistence with progress resumption\n- Quick setup escape hatch for freelancer defaults\n- Clickable progress steps \\(back navigation only\\)\n- \"Progress saved\" toast notifications\n- Motivational deduction estimates by income type\n- Analytics events \\(console.log for now\\)\n- data-testid attributes on all interactive elements\n- Client-side validation with inline errors\n- Responsive design \\(desktop-first, 640px max-width\\)\n\nDatabase:\n- db.js with seeded Tier 1 categories \\(isSystem: true\\)\n- Profile storage with all wizard fields\n- enabledCategoryIds stored on Profile\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
