@@ -1407,10 +1407,10 @@ main#home-screen.main #confidence {
     align-items: flex-start;
     text-align: left;
     gap: 0;
-    opacity: 1;
-    filter: none;
-    backdrop-filter: none;
-    mix-blend-mode: normal;
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    mix-blend-mode: normal !important;
   }
 
   #home-screen .confidence {
@@ -1431,9 +1431,11 @@ main#home-screen.main #confidence {
     margin-top: 0;
     margin-bottom: 0;
     font-weight: 700;
-    color: #ffffff;
+    color: #ffffff !important;
     text-shadow: 0 3px 12px rgba(0,0,0,0.85);
-    opacity: 1;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
   }
 
   .headline {
@@ -1474,12 +1476,15 @@ main#home-screen.main #confidence {
   /* Weather byline - meta line */
   .weather-byline {
     font-size: 0.65rem;
-    opacity: 0.9;
     margin-top: 0.5rem;
     text-align: left;
-    font-weight: 600;
+    font-weight: 700;
+    color: #ffffff;
     letter-spacing: 0.02em;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    text-shadow: 0 3px 12px rgba(0,0,0,0.85);
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
   }
 
   /* Right column: two glass panels - docked lower-right */
