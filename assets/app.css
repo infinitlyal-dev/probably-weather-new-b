@@ -129,6 +129,11 @@ body.modal-open {
   max-width: 680px;
 }
 
+/* Home layout wrapper - enables two-column on mobile */
+.home-layout {
+  position: relative;
+}
+
 .sidebar {
   position: absolute;
   right: 2rem;
@@ -1277,12 +1282,12 @@ main#home-screen.main #confidence {
 /* ========== WEATHER ICONS ========== */
 .weather-icon { font-size: 1.4em; margin-right: 4px; }
 
-/* ========== MOBILE-FIRST RESPONSIVE ========== */
-@media (max-width: 600px) {
+/* ========== MOBILE RESPONSIVE (Two-Column Layout) ========== */
+@media (max-width: 480px) {
   html, body {
     height: 100%;
     min-height: 100vh;
-    min-height: 100dvh; /* iOS Safari fix */
+    min-height: 100dvh;
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -1294,72 +1299,113 @@ main#home-screen.main #confidence {
 
   .container {
     min-height: 100vh;
-    min-height: 100dvh; /* iOS Safari fix */
-    padding-bottom: 150px;
+    min-height: 100dvh;
+    padding: 0.5rem;
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
     box-sizing: border-box;
   }
 
-  .brand-location {
-    font-size: 1.1rem;
-    word-break: break-word;
-    text-align: center;
-    margin-bottom: 2px;
+  /* Header compact on mobile */
+  .header {
+    margin-bottom: 0.5rem;
+    text-align: left;
+    padding-left: 0.75rem;
+  }
+
+  .brand {
+    justify-content: flex-start;
+  }
+
+  .brand-text {
+    text-align: left;
+    align-items: flex-start;
   }
 
   .brand-title {
-    font-size: clamp(1.6rem, 5vw, 2rem);
+    font-size: 1.4rem;
     word-break: break-word;
-    text-align: center;
-    margin-bottom: 4px;
+    text-align: left;
   }
 
-  .confidence {
-    margin-top: 0.5rem !important;
-    margin-bottom: 4px;
+  .brand-location {
+    font-size: 0.9rem;
+    word-break: break-word;
+    text-align: left;
+  }
+
+  .tagline {
+    font-size: 0.7rem;
+    text-align: left;
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+
+  .header-right {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    bottom: auto;
+    font-size: 0.65rem;
+  }
+
+  /* Two-column home layout */
+  .home-layout {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    gap: 8px;
+    align-items: start;
+    min-height: calc(100vh - 140px);
+    min-height: calc(100dvh - 140px);
+    padding-bottom: 8px;
+  }
+
+  /* Left column: hero text - left aligned */
+  #home-screen {
+    padding: 0 0 0 0.75rem;
+    min-height: auto;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  #home-screen .confidence {
+    margin-top: 0.25rem;
+    font-size: 0.65rem;
+    text-align: left;
+  }
+
+  #home-screen .sources {
+    font-size: 0.6rem;
+    text-align: left;
+    opacity: 0.7;
   }
 
   .headline {
-    font-size: clamp(1.6rem, 6vw, 2rem);
+    font-size: clamp(1.3rem, 5.5vw, 1.7rem);
     word-break: break-word;
-    text-align: center;
+    text-align: left;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    line-height: 1.1;
-    margin-bottom: 6px;
+    line-height: 1.15;
+    margin-bottom: 4px;
+    margin-top: 6px;
   }
 
   .temp {
-    font-size: clamp(1.4rem, 5vw, 1.8rem);
-    text-align: center;
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    text-align: left;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     margin-bottom: 4px;
   }
 
   .description {
-    font-size: clamp(0.85rem, 3vw, 1rem);
-    margin-bottom: 10px;
+    font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+    margin-bottom: 0;
     margin-top: 4px;
-    text-align: center;
+    text-align: left;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    line-height: 1.3;
   }
 
-  .tagline {
-    font-size: 0.8rem;
-    text-align: center;
-    margin-bottom: 4px;
-  }
-
-  #home-screen {
-    padding-top: 12px;
-    padding-bottom: calc(100px + env(safe-area-inset-bottom));
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    align-items: center;
-  }
-
-  #home-screen .confidence {
-    margin-top: 0.5rem;
-  }
-
+  /* Right column: glass pill cards */
   .sidebar {
     position: relative;
     right: auto;
@@ -1367,55 +1413,76 @@ main#home-screen.main #confidence {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     gap: 6px;
-    margin: 8px auto 0;
+    padding-right: 0.5rem;
+    margin: 0;
   }
 
+  /* Glass pills - narrow, content-width */
   .card {
-    width: 92%;
-    max-width: 340px;
-    text-align: center;
-    padding: 10px 12px;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 90px;
+    text-align: right;
+    padding: 6px 10px;
     margin-bottom: 0;
-    background: rgba(255,255,255,0.15);
-    -webkit-backdrop-filter: blur(20px) saturate(130%);
-    backdrop-filter: blur(20px) saturate(130%);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.12);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
   }
 
   .card .label {
-    font-size: 0.75rem;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    opacity: 0.8;
+    margin-bottom: 1px;
   }
 
   .card .value {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 
-  .glass-panel {
-    width: 92%;
-    max-width: 340px;
-    text-align: center;
-    padding: 10px 12px;
-    background: rgba(255,255,255,0.15);
-    -webkit-backdrop-filter: blur(20px) saturate(130%);
-    backdrop-filter: blur(20px) saturate(130%);
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  /* De-emphasize Source Ranges card */
+  .card-source-ranges {
+    opacity: 0.7;
+    transform: scale(0.9);
+    transform-origin: top right;
+    padding: 4px 8px;
   }
 
+  .card-source-ranges .label {
+    font-size: 0.5rem;
+  }
+
+  .card-source-ranges .value {
+    font-size: 0.65rem;
+  }
+
+  .card-source-ranges .confidence-bar {
+    display: none;
+  }
+
+  /* Nav fixed at bottom */
   .nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    gap: 0.8rem;
-    font-size: 0.85rem;
+    gap: 0.5rem;
+    font-size: 0.75rem;
     z-index: 100;
+    padding: 8px 4px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
   }
 
+  /* Screen panels */
   .search-screen,
   .settings-screen {
     width: 95%;
@@ -1441,41 +1508,16 @@ main#home-screen.main #confidence {
   .daily-card {
     width: 90%;
     max-width: 300px;
-    margin: 8px 0;
-    padding: 12px;
+    margin: 6px 0;
+    padding: 10px;
     height: auto;
   }
 
-  .header-right {
-    bottom: 95px;
-    right: 15px;
-  }
-
-  /* Ensure brand section centers properly */
-  .brand {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .brand-text {
-    text-align: center;
-    align-items: center;
-  }
-
-  /* Confidence and sources centered */
-  .confidence,
-  .sources {
-    text-align: center;
-    width: 100%;
-  }
-
-  /* Screen panel bodies scroll internally */
   .screen-panel-body {
     max-height: 60vh;
     overflow-y: auto;
   }
 
-  /* Home hero stacks vertically */
   .home-hero {
     flex-direction: column;
     align-items: center;
@@ -1484,68 +1526,59 @@ main#home-screen.main #confidence {
 }
 
 /* ========== SHORT-HEIGHT MOBILE DEVICES ========== */
-@media (max-width: 640px) and (max-height: 740px) {
-  .brand-location {
-    font-size: 0.95rem;
-    margin-bottom: 1px;
-  }
-
+@media (max-width: 480px) and (max-height: 700px) {
   .brand-title {
-    font-size: clamp(1.3rem, 4.5vw, 1.6rem);
-    margin-bottom: 2px;
+    font-size: 1.2rem;
   }
 
-  .headline {
-    font-size: clamp(1.3rem, 5vw, 1.6rem);
-    line-height: 1.05;
-    margin-bottom: 4px;
-  }
-
-  .temp {
-    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
-    margin-bottom: 2px;
-  }
-
-  .description {
-    font-size: clamp(0.8rem, 2.8vw, 0.9rem);
-    margin-bottom: 6px;
-    margin-top: 2px;
+  .brand-location {
+    font-size: 0.8rem;
   }
 
   .tagline {
-    font-size: 0.7rem;
-    margin-bottom: 2px;
+    font-size: 0.6rem;
   }
 
-  .confidence {
-    margin-top: 0.3rem !important;
-    margin-bottom: 2px;
-    font-size: 0.7rem;
+  .headline {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+    line-height: 1.1;
+    margin-top: 4px;
   }
 
-  #home-screen {
-    padding-top: 8px;
+  .temp {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+  }
+
+  .description {
+    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+  }
+
+  #home-screen .confidence {
+    font-size: 0.6rem;
+  }
+
+  #home-screen .sources {
+    font-size: 0.55rem;
   }
 
   .sidebar {
-    gap: 5px;
-    margin-top: 6px;
+    gap: 4px;
   }
 
   .card {
-    padding: 8px 10px;
+    padding: 5px 8px;
   }
 
   .card .label {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
 
   .card .value {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
 
-  .glass-panel {
-    padding: 8px 10px;
+  .card-source-ranges {
+    transform: scale(0.85);
   }
 }
 
