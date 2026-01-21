@@ -431,22 +431,67 @@
       </div>
     </section>
 
-    <!-- ==================== PLACEHOLDER PAGES ==================== -->
-    <section class="screen" id="dashboard">
-      <div class="placeholder-page">
-        <h1>🏠 Dashboard</h1>
-        <p>Your tax tracking dashboard will appear here.</p>
-        <button class="btn btn-outline" onclick="location.reload()">Reset Demo</button>
+    <!-- ==================== APP SCREENS ==================== -->
+
+    <!-- Dashboard Screen -->
+    <section class="screen" id="app-dashboard">
+      <!-- Content rendered by JS -->
+    </section>
+
+    <!-- Expenses List Screen -->
+    <section class="screen" id="app-expenses">
+      <!-- Content rendered by JS -->
+    </section>
+
+    <!-- Add/Edit Expense Form Screen -->
+    <section class="screen" id="app-expense-form">
+      <!-- Content rendered by JS -->
+    </section>
+
+    <!-- Settings Screen -->
+    <section class="screen" id="app-settings">
+      <div class="settings-page">
+        <div class="app-header">
+          <h1>Settings</h1>
+        </div>
+        <div class="settings-content">
+          <div class="settings-section">
+            <h3>Profile</h3>
+            <p class="settings-info">Your income type and preferences are set. Changes coming soon.</p>
+          </div>
+          <div class="settings-section">
+            <h3>Data</h3>
+            <button class="btn btn-outline btn-danger-outline" onclick="if(confirm('Reset all data? This cannot be undone.')) TaxBuddyApp.reset()">
+              Reset All Data
+            </button>
+          </div>
+          <div class="settings-section">
+            <h3>About</h3>
+            <p class="settings-info">TaxBuddy helps South Africans track tax-deductible expenses. Your data stays on your device.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="screen" id="add-expense">
-      <div class="placeholder-page">
-        <h1>➕ Add Expense</h1>
-        <p>The expense entry form will appear here.</p>
-        <button class="btn btn-outline" onclick="location.reload()">Reset Demo</button>
-      </div>
-    </section>
+    <!-- Bottom Navigation -->
+    <nav id="bottom-nav" class="bottom-nav" style="display: none;">
+      <a href="#dashboard" class="nav-item active" data-screen="dashboard">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="#add-expense" class="nav-item" data-screen="add-expense">
+        <span class="nav-icon nav-icon-add">➕</span>
+        <span class="nav-label">Add</span>
+      </a>
+      <a href="#expenses" class="nav-item" data-screen="expenses">
+        <span class="nav-icon">📋</span>
+        <span class="nav-label">Expenses</span>
+      </a>
+      <a href="#settings" class="nav-item" data-screen="settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Settings</span>
+      </a>
+    </nav>
 
   </div>
 
