@@ -1344,11 +1344,17 @@ main#home-screen.main #confidence {
   .header {
     margin-bottom: 0;
     text-align: left;
-    padding-left: 0.75rem;
+    padding-left: 4px;
   }
 
   .brand {
     justify-content: flex-start;
+    margin-left: 0;
+  }
+
+  /* Hide logo circle on mobile - non-functional clutter */
+  #logoCircle {
+    display: none;
   }
 
   .brand-text {
@@ -1391,7 +1397,7 @@ main#home-screen.main #confidence {
   /* Two-column home layout */
   .home-layout {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 65% 35%;
     gap: 8px;
     align-items: start;
     min-height: calc(100vh - 140px);
@@ -1402,11 +1408,12 @@ main#home-screen.main #confidence {
 
   /* Left column: hero text - left aligned, tight spacing */
   #home-screen {
-    padding: 0.2rem 0 0 8px;
+    padding: 0.2rem 0 0 4px;
     min-height: auto;
     align-items: flex-start;
     text-align: left;
     gap: 0;
+    max-width: 65%;
     opacity: 1 !important;
     filter: none !important;
     backdrop-filter: none !important;
