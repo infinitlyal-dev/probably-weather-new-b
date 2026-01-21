@@ -1342,7 +1342,7 @@ main#home-screen.main #confidence {
 
   /* Header compact on mobile */
   .header {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
     text-align: left;
     padding-left: 0.75rem;
   }
@@ -1369,13 +1369,13 @@ main#home-screen.main #confidence {
   }
 
   .tagline {
-    font-size: 0.75rem;
+    font-size: 16px;
     text-align: left;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 4px;
     font-weight: 700;
     color: #ffffff;
-    text-shadow: 0 3px 12px rgba(0,0,0,0.85);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     letter-spacing: 0.01em;
     opacity: 1;
   }
@@ -1402,7 +1402,7 @@ main#home-screen.main #confidence {
 
   /* Left column: hero text - left aligned, tight spacing */
   #home-screen {
-    padding: 0.2rem 0 0 0.5rem;
+    padding: 0.2rem 0 0 8px;
     min-height: auto;
     align-items: flex-start;
     text-align: left;
@@ -1416,9 +1416,10 @@ main#home-screen.main #confidence {
   #home-screen .confidence {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 0.7rem;
+    font-size: 14px;
+    line-height: 1.5;
     text-align: left;
-    font-weight: 700;
+    font-weight: 500;
     color: #ffffff;
     letter-spacing: 0.03em;
     text-shadow: 0 3px 12px rgba(0,0,0,0.85);
@@ -1426,11 +1427,12 @@ main#home-screen.main #confidence {
   }
 
   #home-screen .sources {
-    font-size: 0.65rem;
+    font-size: 14px;
+    line-height: 1.5;
     text-align: left;
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 700;
+    font-weight: 500;
     color: #ffffff !important;
     text-shadow: 0 3px 12px rgba(0,0,0,0.85);
     opacity: 1 !important;
@@ -1462,23 +1464,24 @@ main#home-screen.main #confidence {
   }
 
   .description {
-    font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+    font-size: 14px;
     margin-bottom: 0;
     margin-top: 4px;
     text-align: left;
-    font-weight: 600;
+    font-weight: 500;
     color: rgba(255,255,255,0.95);
     text-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.6);
-    line-height: 1.35;
+    line-height: 1.5;
     letter-spacing: 0.01em;
   }
 
   /* Weather byline - meta line */
   .weather-byline {
-    font-size: 0.65rem;
+    font-size: 14px;
+    line-height: 1.5;
     margin-top: 0.5rem;
     text-align: left;
-    font-weight: 700;
+    font-weight: 500;
     color: #ffffff;
     letter-spacing: 0.02em;
     text-shadow: 0 3px 12px rgba(0,0,0,0.85);
