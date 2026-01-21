@@ -1604,41 +1604,8 @@ main#home-screen.main #confidence {
 }
 
 /* ========== SHORT-HEIGHT MOBILE DEVICES ========== */
+/* Only layout adjustments - text sizes inherit from main mobile query */
 @media (max-width: 480px) and (max-height: 700px) {
-  .brand-title {
-    font-size: 1.2rem;
-  }
-
-  .brand-location {
-    font-size: 0.8rem;
-  }
-
-  .tagline {
-    font-size: 0.6rem;
-  }
-
-  .headline {
-    font-size: clamp(1.1rem, 5vw, 1.4rem);
-    line-height: 1.1;
-    margin-top: 4px;
-  }
-
-  .temp {
-    font-size: clamp(1rem, 4vw, 1.2rem);
-  }
-
-  .description {
-    font-size: clamp(0.7rem, 2.5vw, 0.8rem);
-  }
-
-  #home-screen .confidence {
-    font-size: 0.6rem;
-  }
-
-  #home-screen .sources {
-    font-size: 0.55rem;
-  }
-
   .sidebar {
     gap: 4px;
   }
@@ -1653,10 +1620,6 @@ main#home-screen.main #confidence {
 
   .card .value {
     font-size: 0.75rem;
-  }
-
-  .weather-byline {
-    font-size: 0.6rem;
   }
 
   .card-sources .value {
