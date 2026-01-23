@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@700;800&family=Montserrat:wght@400;500;600;700&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -66,10 +66,13 @@ body.modal-open {
 }
 
 .brand-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 800;
-  line-height: 1.1;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  color: #F5C542;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .brand-location {
@@ -112,8 +115,9 @@ body.modal-open {
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  padding: 0 0.5rem;
-  padding-bottom: calc(140px + env(safe-area-inset-bottom));
+  padding: 0 0.75rem;
+  padding-bottom: calc(160px + env(safe-area-inset-bottom));
+  gap: 0;
 }
 
 /* HIDE the redundant confidence and sources lines */
@@ -122,40 +126,51 @@ body.modal-open {
   display: none !important;
 }
 
-/* ========== HERO TEXT - BOLD AND PROUD ========== */
+/* ========== HERO TEXT - BOLD AND PROUD SA ========== */
 .headline {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(2rem, 8vw, 3rem);
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 0.25rem;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.8rem, 12vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  color: #F5C542;
+  text-shadow: 
+    0 0 30px rgba(245, 197, 66, 0.4),
+    2px 2px 4px rgba(0,0,0,0.8);
 }
 
 .temp {
-  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  margin-bottom: 0.75rem;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
 .description {
-  font-size: clamp(1rem, 4vw, 1.3rem);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 4vw, 1.25rem);
   font-weight: 500;
-  opacity: 0.95;
-  max-width: 280px;
-  line-height: 1.3;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  opacity: 1;
+  max-width: 300px;
+  line-height: 1.35;
+  color: rgba(255, 252, 240, 0.95);
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  margin-top: 0.25rem;
 }
 
 /* Weather byline - compact inline stats */
 .weather-byline {
-  font-size: 0.85rem;
-  opacity: 0.9;
-  margin-top: 0.75rem;
-  letter-spacing: 0.02em;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
   font-weight: 500;
+  opacity: 0.85;
+  margin-top: 1rem;
+  letter-spacing: 0.03em;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ========== SIDEBAR CARDS ========== */
@@ -291,9 +306,10 @@ body.modal-open {
 }
 
 .screen-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   text-align: center;
   margin-bottom: 0;
 }
@@ -863,15 +879,32 @@ body.modal-open {
 }
 
 /* ========== CONDITION-SPECIFIC TEXT EFFECTS ========== */
-.hero-storm { color: #e879f9; text-shadow: 0 0 20px #a855f7, 2px 2px 4px rgba(0,0,0,0.8); }
-.hero-rain { color: #7dd3fc; text-shadow: 0 0 15px #38bdf8, 2px 2px 4px rgba(0,0,0,0.8); }
-.hero-heat { color: #fdba74; text-shadow: 0 0 20px #f97316, 2px 2px 4px rgba(0,0,0,0.8); }
-.hero-cold { color: #a5f3fc; text-shadow: 0 0 15px #22d3ee, 2px 2px 4px rgba(0,0,0,0.8); }
-.hero-wind { color: #d1d5db; text-shadow: 0 0 10px #9ca3af, 2px 2px 4px rgba(0,0,0,0.8); }
-.hero-uv { color: #fde047; text-shadow: 0 0 20px #facc15, 2px 2px 4px rgba(0,0,0,0.8); }
-.hero-clear { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5), 2px 2px 4px rgba(0,0,0,0.6); }
-.hero-cloudy { color: #e2e8f0; text-shadow: 0 0 8px #94a3b8, 2px 2px 4px rgba(0,0,0,0.8); }
-.hero-fog { color: #cbd5e1; text-shadow: 2px 2px 6px rgba(0,0,0,0.8); filter: blur(0.3px); }
+/* Headline stays gold - SA signature. Effects apply to temp/description */
+.headline.hero-storm,
+.headline.hero-rain,
+.headline.hero-heat,
+.headline.hero-cold,
+.headline.hero-wind,
+.headline.hero-uv,
+.headline.hero-clear,
+.headline.hero-cloudy,
+.headline.hero-fog {
+  color: #F5C542;
+  text-shadow: 
+    0 0 30px rgba(245, 197, 66, 0.4),
+    2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Temp and description get subtle condition tints */
+.temp.hero-storm, .description.hero-storm { color: #e8d5f0; }
+.temp.hero-rain, .description.hero-rain { color: #d4eaff; }
+.temp.hero-heat, .description.hero-heat { color: #ffe8d4; }
+.temp.hero-cold, .description.hero-cold { color: #d4f4ff; }
+.temp.hero-wind, .description.hero-wind { color: #e8eaed; }
+.temp.hero-uv, .description.hero-uv { color: #fff8d4; }
+.temp.hero-clear, .description.hero-clear { color: #ffffff; }
+.temp.hero-cloudy, .description.hero-cloudy { color: #e8ecf0; }
+.temp.hero-fog, .description.hero-fog { color: #dde2e8; }
 
 /* ========== TEMPERATURE COLOR CLASSES ========== */
 .temp-hot { color: #fb923c; }
@@ -951,11 +984,11 @@ body.modal-open {
   }
   
   .headline {
-    font-size: clamp(3rem, 6vw, 4rem);
+    font-size: clamp(4rem, 8vw, 6rem);
   }
   
   .temp {
-    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
   }
   
   .description {
@@ -982,12 +1015,12 @@ body.modal-open {
   }
   
   .hourly-card {
-    width: 90px;
-    padding: 14px 10px;
+    width: 85px;
+    padding: 16px 10px;
   }
   
   .daily-card {
-    width: 110px;
-    padding: 14px 12px;
+    width: 100px;
+    padding: 16px 12px;
   }
 }
