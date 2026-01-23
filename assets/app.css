@@ -879,30 +879,71 @@ body.modal-open {
 }
 
 /* ========== CONDITION-SPECIFIC TEXT EFFECTS ========== */
-/* Headline stays gold - SA signature. Effects apply to temp/description */
-.headline.hero-storm,
-.headline.hero-rain,
-.headline.hero-heat,
-.headline.hero-cold,
-.headline.hero-wind,
-.headline.hero-uv,
-.headline.hero-clear,
-.headline.hero-cloudy,
-.headline.hero-fog {
+/* Each condition gets its own signature color */
+
+/* CLEAR/PLEASANT - SA Gold */
+.headline.hero-clear {
   color: #F5C542;
-  text-shadow: 
-    0 0 30px rgba(245, 197, 66, 0.4),
-    2px 2px 4px rgba(0,0,0,0.8);
+  text-shadow: 0 0 30px rgba(245, 197, 66, 0.4), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* HEAT - Fiery Orange */
+.headline.hero-heat {
+  color: #FF8C00;
+  text-shadow: 0 0 30px rgba(255, 140, 0, 0.5), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* UV - Bright Yellow */
+.headline.hero-uv {
+  color: #FFD700;
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* COLD - Icy Blue */
+.headline.hero-cold {
+  color: #00CFFF;
+  text-shadow: 0 0 25px rgba(0, 207, 255, 0.5), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* RAIN - Cool Blue */
+.headline.hero-rain {
+  color: #5DADE2;
+  text-shadow: 0 0 25px rgba(93, 173, 226, 0.5), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* STORM - Electric Purple */
+.headline.hero-storm {
+  color: #BA55D3;
+  text-shadow: 0 0 30px rgba(186, 85, 211, 0.5), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* WIND - Silver */
+.headline.hero-wind {
+  color: #C0C0C0;
+  text-shadow: 0 0 20px rgba(192, 192, 192, 0.4), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* CLOUDY - Soft Grey-Blue */
+.headline.hero-cloudy {
+  color: #A9C4D7;
+  text-shadow: 0 0 20px rgba(169, 196, 215, 0.4), 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* FOG - Muted Grey */
+.headline.hero-fog {
+  color: #B8C5D0;
+  text-shadow: 0 0 15px rgba(184, 197, 208, 0.3), 2px 2px 4px rgba(0,0,0,0.8);
+  filter: blur(0.3px);
 }
 
 /* Temp and description get subtle condition tints */
-.temp.hero-storm, .description.hero-storm { color: #e8d5f0; }
-.temp.hero-rain, .description.hero-rain { color: #d4eaff; }
-.temp.hero-heat, .description.hero-heat { color: #ffe8d4; }
-.temp.hero-cold, .description.hero-cold { color: #d4f4ff; }
-.temp.hero-wind, .description.hero-wind { color: #e8eaed; }
-.temp.hero-uv, .description.hero-uv { color: #fff8d4; }
 .temp.hero-clear, .description.hero-clear { color: #ffffff; }
+.temp.hero-heat, .description.hero-heat { color: #ffe8d4; }
+.temp.hero-uv, .description.hero-uv { color: #fff8d4; }
+.temp.hero-cold, .description.hero-cold { color: #d4f4ff; }
+.temp.hero-rain, .description.hero-rain { color: #d4eaff; }
+.temp.hero-storm, .description.hero-storm { color: #e8d5f0; }
+.temp.hero-wind, .description.hero-wind { color: #e8eaed; }
 .temp.hero-cloudy, .description.hero-cloudy { color: #e8ecf0; }
 .temp.hero-fog, .description.hero-fog { color: #dde2e8; }
 
@@ -928,19 +969,46 @@ body.modal-open {
 #home-screen .description { animation-delay: 0.2s; }
 
 /* ========== SEARCH RESULTS ========== */
+.search-results {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
 .search-result-item {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
   cursor: pointer;
+  min-height: 48px;
+}
+
+.search-result-item:active {
+  background: rgba(255,255,255,0.15);
+}
+
+.search-result-item .fav-star {
+  font-size: 1.2rem;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .result-icon {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .result-name {
   flex: 1;
+  font-size: 0.95rem;
 }
 
 .result-temp {
