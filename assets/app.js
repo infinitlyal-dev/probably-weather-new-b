@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navWeek = $('#navWeek');
   const navSearch = $('#navSearch');
   const navSettings = $('#navSettings');
-  const refreshBtn = $('#refreshBtn');
 
   const screenHome = $('#home-screen');
   const screenHourly = $('#hourly-screen');
@@ -44,13 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const unitsWindSelect = $('#unitsWind');
   const probRangeToggle = $('#probRange');
   const timeFormatSelect = $('#timeFormat');
-  const taglineEl = document.querySelector('.tagline');
 
   const loader = $('#loader');
   const toast = $('#toast');
 
   // ========== CONSTANTS ==========
-  // FIXED: STORAGE is now an object, not a string
   const STORAGE = {
     favorites: "pw_favorites",
     recents: "pw_recents",
@@ -60,28 +57,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
 
-  // Thresholds for condition detection (from product spec)
   const THRESH = {
-    RAIN_PCT: 40,    // >= 40% rain chance = rain dominates
-    WIND_KPH: 25,    // >= 25 km/h = wind dominates
-    COLD_C: 16,      // <= 16°C max = cold dominates
-    HOT_C: 32,       // >= 32°C max = heat dominates
-    // Rain display thresholds
-    RAIN_NONE: 10,   // < 10% = None expected
-    RAIN_UNLIKELY: 30,  // < 30% = Unlikely
-    RAIN_POSSIBLE: 55,  // < 55% = Possible
-    // UV index thresholds
-    UV_LOW: 3,       // < 3 = Low
-    UV_MODERATE: 6,  // < 6 = Moderate
-    UV_HIGH: 8,      // < 8 = High
-    UV_VERY_HIGH: 11 // < 11 = Very High
+    RAIN_PCT: 40,
+    WIND_KPH: 25,
+    COLD_C: 16,
+    HOT_C: 32,
+    RAIN_NONE: 10,
+    RAIN_UNLIKELY: 30,
+    RAIN_POSSIBLE: 55,
+    UV_LOW: 3,
+    UV_MODERATE: 6,
+    UV_HIGH: 8,
+    UV_VERY_HIGH: 11
   };
 
   // ========== STATE ==========
   let activePlace = null;
   let homePlace = null;
   let lastPayload = null;
-  window.__PW_LAST_NORM = null; // Global store for latest normalized data
+  window.__PW_LAST_NORM = null;
   let state = { city: "Cape Town" };
   let manageMode = false;
   const pendingFavMeta = new Set();
@@ -95,8 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     temp: 'C',
     wind: 'kmh',
     range: false,
-    time: '24',
-    lang: 'human'
+    time: '24'
   };
   let settings = { ...DEFAULT_SETTINGS };
 
@@ -158,8 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
       temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp),
       wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind),
       range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range),
-      time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time),
-      lang: 'human'
+      time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time)
     };
   }
 
@@ -200,27 +192,15 @@ document.addEventListener("DOMContentLoaded", () => {
       which.removeAttribute('hidden');
     }
 
-    [screenHourly, screenWeek, screenSearch, screenSettings].forEach(panel => {
-      if (!panel) return;
-      panel.classList.toggle('light-glass', false);
-      panel.classList.toggle('transparent-glass', false);
-      panel.classList.toggle('glass-panel', !!which && which !== screenHome);
-    });
-
     document.body.classList.toggle('modal-open', which && which !== screenHome);
 
     if (saveCurrent) {
       saveCurrent.style.display = which === screenHome ? '' : 'none';
     }
     
-    // Hide sidebar on non-Home screens
     const sidebar = document.querySelector('.sidebar');
     if (sidebar) {
-      if (which === screenHome) {
-        sidebar.style.display = ''; // Show on Home
-      } else {
-        sidebar.style.display = 'none'; // Hide on other screens
-      }
+      sidebar.style.display = which === screenHome ? '' : 'none';
     }
   }
 
@@ -237,57 +217,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }, duration);
   }
 
-  function hashString(s) {
-    let h = 0;
-    for (let i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i);
-    return h | 0;
-  }
-
   function escapeHtml(s) {
     return String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   }
 
-  // ========== SKY CONDITION (for headline, background, witty line) ==========
-  // Outputs: storm, rain, rain-possible, fog, cloudy, clear
-  // This determines the VISUAL MOOD of the sky - what you see when you look up
+  // ========== SKY CONDITION ==========
   function computeSkyCondition(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase();
     const rain = norm.rainPct;
     const cloudPct = Array.isArray(norm.hourly) && norm.hourly[0]?.cloudPct;
 
-    // 1. STORM - thunder/lightning in the sky (conditionKey allowed)
-    if (condKey === 'storm' || condKey.includes('thunder')) {
-      return 'storm';
-    }
-
-    // 2. FOG - visibility condition (conditionKey allowed)
-    if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) {
-      return 'fog';
-    }
-
-    // 3. RAIN - probability-driven only (>= 50%)
-    if (isNum(rain) && rain >= 50) {
-      return 'rain';
-    }
-
-    // 4. RAIN-POSSIBLE - probability-driven only (>= 30%)
-    if (isNum(rain) && rain >= 30) {
-      return 'rain-possible';
-    }
-
-    // 5. CLOUDY - overcast sky (>= 60% cloud cover or conditionKey indicates)
-    if ((isNum(cloudPct) && cloudPct >= 60) || condKey.includes('cloud') || condKey.includes('overcast')) {
-      return 'cloudy';
-    }
-
-    // 6. CLEAR - default
+    if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
+    if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) return 'fog';
+    if (isNum(rain) && rain >= 50) return 'rain';
+    if (isNum(rain) && rain >= 30) return 'rain-possible';
+    if ((isNum(cloudPct) && cloudPct >= 60) || condKey.includes('cloud') || condKey.includes('overcast')) return 'cloudy';
     return 'clear';
   }
 
-  // ========== TODAY'S HERO (for impact panel) ==========
-  // Outputs: storm, rain, wind, heat, cold, uv, clear
-  // This determines the DOMINANT IMPACT FACTOR affecting your day
-  // Priority order based on real-world impact on daily activities
+  // ========== TODAY'S HERO ==========
   function computeTodaysHero(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase();
     const rain = norm.rainPct;
@@ -295,90 +243,41 @@ document.addEventListener("DOMContentLoaded", () => {
     const hi = norm.todayHigh;
     const uv = norm.uv;
 
-    // 1. STORM - highest impact, dangerous
-    if (condKey === 'storm' || condKey.includes('thunder')) {
-      return 'storm';
-    }
-
-    // 2. HEAVY RAIN (>= 50%) - significant disruption
-    if (isNum(rain) && rain >= 50) {
-      return 'rain';
-    }
-
-    // 3. PERSISTENT RAIN (>= 30%) - plan around it
-    if (isNum(rain) && rain >= 30) {
-      return 'rain';
-    }
-
-    // 4. STRONG WIND (>= 20 km/h) - noticeable daily impact
-    if (isNum(wind) && wind >= 20) {
-      return 'wind';
-    }
-
-    // 5. EXTREME HEAT (>= 32°C) - health concern
-    if (isNum(hi) && hi >= THRESH.HOT_C) {
-      return 'heat';
-    }
-
-    // 6. EXTREME COLD (<= 10°C) - significant cold
-    if (isNum(hi) && hi <= 10) {
-      return 'cold';
-    }
-
-    // 7. HIGH UV (>= 8) - health/skin concern
-    if (isNum(uv) && uv >= 8) {
-      return 'uv';
-    }
-
-    // 8. COLD (<= 16°C) - jacket weather
-    if (isNum(hi) && hi <= THRESH.COLD_C) {
-      return 'cold';
-    }
-
-    // 9. CLEAR/PLEASANT - nothing impactful, enjoy the day
-    // Note: Cloudy is NOT a hero - it doesn't impact your day meaningfully
+    if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
+    if (isNum(rain) && rain >= 50) return 'rain';
+    if (isNum(rain) && rain >= 30) return 'rain';
+    if (isNum(wind) && wind >= 20) return 'wind';
+    if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
+    if (isNum(hi) && hi <= 10) return 'cold';
+    if (isNum(uv) && uv >= 8) return 'uv';
+    if (isNum(hi) && hi <= THRESH.COLD_C) return 'cold';
     return 'clear';
   }
 
-  // ========== HOME DISPLAY CONDITION (single source of truth) ==========
-  // Unifies hero and sky for coherent home screen display
-  // When hero is impactful (storm/rain/wind/heat/cold/uv), use hero
-  // When hero is "clear" (pleasant), fall back to sky mood for visual variety
   function computeHomeDisplayCondition(norm) {
     const hero = computeTodaysHero(norm);
     const sky = computeSkyCondition(norm);
-
-    // If hero indicates an impactful condition, use it for display
-    // This ensures headline, background, particles all match the dominant factor
-    if (hero !== 'clear') {
-      return hero; // storm, rain, wind, heat, cold, uv
-    }
-
-    // Hero is clear/pleasant - use sky mood for visual variety
-    // (cloudy, fog, clear, rain-possible if hero didn't catch it)
+    if (hero !== 'clear') return hero;
     return sky;
   }
 
-  // ========== CONDITION-DRIVEN DISPLAY FUNCTIONS ==========
-
-  // Sky mood headline - short, confident, declarative
+  // ========== HEADLINES - Bold & Proud ==========
   function getHeadline(condition) {
     const headlines = {
-      storm: "This is stormy.",
-      rain: "This is rainy.",
-      'rain-possible': "Possible rain.",
-      cloudy: "This is cloudy.",
-      wind: "This is windy.",
-      cold: "This is cold.",
-      heat: "This is hot.",
-      uv: "High UV today.",
-      fog: "This is foggy.",
-      clear: "This is clear."
+      storm: "Storms rolling in.",
+      rain: "Rain's here.",
+      'rain-possible': "Might rain.",
+      cloudy: "Cloudy vibes.",
+      wind: "Wind's up.",
+      cold: "It's chilly.",
+      heat: "It's hot.",
+      uv: "UV's hectic.",
+      fog: "Foggy out there.",
+      clear: "Clear skies."
     };
-    return headlines[condition] || "This is clear.";
+    return headlines[condition] || "Clear skies.";
   }
 
-  // Today's Hero card - the single dominant weather factor affecting your day
   function getHeroLabel(condition) {
     const labels = {
       storm: "Severe weather",
@@ -391,109 +290,168 @@ document.addEventListener("DOMContentLoaded", () => {
       fog: "Low visibility",
       clear: "Pleasant"
     };
-    // Note: 'cloudy' intentionally omitted - should never be Hero
     return labels[condition] || "Pleasant";
   }
 
-  // Spec Section 7: Humour - SA-specific, light, observational
+  // ========== WITTY LINES - Proudly South African ==========
   function getWittyLine(condition, rainPct, maxC) {
-    // Weekend braai check (Fri-Sun)
     const day = new Date().getDay();
     const isWeekend = day === 0 || day === 5 || day === 6;
 
+    // Weekend specials
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
-      return 'Braai weather, boet!';
+      const weekendLines = [
+        "Braai weather, boet!",
+        "Fire up the Weber!",
+        "Perfect for a jol outside.",
+        "Get the tongs ready!",
+        "Beach or braai? Both!",
+        "Time to make some memories.",
+        "The ancestors approve."
+      ];
+      return weekendLines[Math.floor(Math.random() * weekendLines.length)];
     }
 
-    const linesHuman = {
+    const lines = {
       storm: [
-        'Better stay indoors',
-        'Thunder rumbling like a braai gone wrong',
-        "Storm's brewing—cancel the picnic"
+        "Jislaaik, stay inside!",
+        "Thunder's grumbling, hey.",
+        "Not even the taxi's running.",
+        "Eskom wishes it had this power.",
+        "The sky's having a moment.",
+        "Cancel everything, seriously.",
+        "Even the hadedas are quiet.",
+        "Nature's putting on a show.",
+        "Time to watch from the window.",
+        "The mountain's angry today."
       ],
       rain: [
-        'Spat spat—pavement shimmer day',
-        "Clouds crying like NZ at the '23 World Cup!",
-        'Umbrella or get soaked, boet'
+        "Grab your brolly, boet.",
+        "Spat spat on the roof.",
+        "The garden's saying dankie.",
+        "Traffic's about to be chaos.",
+        "Perfect weather for a movie.",
+        "The dams are smiling.",
+        "Wet socks incoming.",
+        "Stay dry out there.",
+        "The earth needed this.",
+        "Cosy day inside."
       ],
       'rain-possible': [
-        'Might sprinkle, boet.',
-        'Teasing clouds.',
-        'Possible showers—keep a brolly handy.'
+        "Maybe rain, maybe not.",
+        "Clouds looking suspicious.",
+        "Take a brolly just in case.",
+        "Could go either way.",
+        "The weather's being shy.",
+        "50/50 on getting wet.",
+        "Nature's playing games.",
+        "Keep one eye on the sky."
       ],
       cloudy: [
-        'Grey skies but no fuss',
-        'Cloudy with a chance of meh',
-        'Overcast—bring a light jersey'
+        "Grey skies, no drama.",
+        "Overcast but okay.",
+        "Good day for a walk.",
+        "The sun's taking a nap.",
+        "Moody but manageable.",
+        "Perfect selfie lighting.",
+        "The clouds are chilling.",
+        "Not bad, not bad."
       ],
       uv: [
-        'Slather on the sunscreen',
-        'UV rays cranked—shade or burn',
-        'High UV: Beach day with caution'
+        "Sunscreen is not optional.",
+        "SPF 50 or regret it.",
+        "The sun's not playing.",
+        "Seek shade, my friend.",
+        "Your future self says thanks for the hat.",
+        "Lobster red is not a good look.",
+        "UV index is hectic today.",
+        "Protect that face!",
+        "The ozone layer tried its best."
       ],
       wind: [
-        'Lekker gusts—doors will slam',
-        'Hold onto your hat',
-        'Windier than Table Mountain on a bad day'
+        "Hold onto your hat!",
+        "The southeaster's here.",
+        "Table Mountain's tablecloth is out.",
+        "Doors will slam today.",
+        "Hair will be a problem.",
+        "Kites are having the time of their lives.",
+        "Walking home will be an adventure.",
+        "The Cape Doctor is in.",
+        "Windy, but you'll survive.",
+        "Perfect for drying washing!"
       ],
       cold: [
-        "Ja, it's jacket weather",
-        'Colder than a Capetonian winter',
-        "Time to build a snowman—or just stay in bed"
+        "Ja, it's jersey weather.",
+        "Time to find that beanie.",
+        "Cold enough for soup.",
+        "The heater's working overtime.",
+        "Hot chocolate kind of day.",
+        "Cuddle weather, hey.",
+        "Your breath's visible.",
+        "The cold front has arrived.",
+        "Layer up, buttercup.",
+        "Even the penguins are shivering."
       ],
       heat: [
-        'Frying an egg is a real option',
-        'Sun is proper, hey',
-        'Hotter than a fresh vetkoek'
+        "Jislaaik, it's hot!",
+        "Melting is a real possibility.",
+        "Ice cream is a necessity.",
+        "The tar's getting soft.",
+        "Shorts and slops only.",
+        "Stay hydrated, boet.",
+        "The pool is calling.",
+        "Hotter than a bakkie bonnet.",
+        "AC on full blast.",
+        "The sun chose violence today.",
+        "Too hot to think straight."
       ],
       fog: [
-        "Misty mayhem—can't see the stoep",
-        'Fog thicker than pea soup',
-        'Drive slow, visibility zero'
+        "Can't see a thing, hey.",
+        "Driving slow is the vibe.",
+        "Mysterious morning.",
+        "The fog's got atmosphere.",
+        "Visibility is optional.",
+        "Eerie but beautiful.",
+        "Watch out for the other cars.",
+        "The mist has rolled in."
       ],
       clear: [
-        'Braai weather, boet!',
-        'Clear skies, perfect vibes',
-        'No drama, just sunshine'
+        "Absolutely beautiful out there.",
+        "Perfect day, no excuses.",
+        "Get outside and enjoy it!",
+        "The kind of day postcards are made of.",
+        "Nothing to complain about.",
+        "Blue skies and good vibes.",
+        "Nature nailed it today.",
+        "This is why we live here.",
+        "Cherish this, it's perfect.",
+        "Not a cloud in sight.",
+        "Main character weather."
       ]
     };
 
-    const options = linesHuman[condition] || ['Just... probably.'];
-    const selected = options[Math.floor(Math.random() * options.length)];
-    console.log('Selected witty line:', selected);
-    return selected;
+    const options = lines[condition] || lines.clear;
+    return options[Math.floor(Math.random() * options.length)];
   }
 
-  // ========== BACKGROUND IMAGE LOGIC ==========
-  // Background folder MUST match dominant condition exactly
-  // Fallback: same folder → clear (NEVER cloudy)
-
+  // ========== BACKGROUND IMAGE ==========
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg';
-    // Allowed semantic aliases only - all others try their own folder first
     const aliasMap = {
       'rain-possible': 'cloudy',
       'uv': 'clear'
     };
     const folder = aliasMap[condition] || condition;
-    // Cold should never look sunny - fallback to cloudy instead of clear
     const fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
 
-    // Determine time of day based on current hour
     const now = new Date();
     const hour = now.getHours();
-    const minute = now.getMinutes();
     let timeOfDay;
 
-    if (hour >= 5 && hour < 8) {
-      timeOfDay = 'dawn';
-    } else if (hour >= 8 && hour < 17) {
-      timeOfDay = 'day';
-    } else if ((hour >= 17 && hour < 19) || (hour === 19 && minute < 30)) {
-      timeOfDay = 'dusk';
-    } else {
-      timeOfDay = 'night';
-    }
+    if (hour >= 5 && hour < 8) timeOfDay = 'dawn';
+    else if (hour >= 8 && hour < 17) timeOfDay = 'day';
+    else if (hour >= 17 && hour < 20) timeOfDay = 'dusk';
+    else timeOfDay = 'night';
 
     const path = `${base}/${folder}/${timeOfDay}.jpg`;
 
@@ -504,8 +462,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (bgImg.src !== fallback1) {
           bgImg.src = fallback1;
           bgImg.onerror = () => {
-            // Final fallback: clear
-            console.warn(`[BG] No background for "${condition}", falling back to clear`);
             bgImg.src = `${base}/${fallbackFolder}/day.jpg`;
           };
         }
@@ -514,8 +470,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== PARTICLES ==========
-  // Driven by condition, not hardcoded
-  
   function createParticles(condition, count = 20) {
     if (!particlesEl) return;
     particlesEl.innerHTML = '';
@@ -546,7 +500,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== API & DATA ==========
-  
   async function reverseGeocode(lat, lon) {
     try {
       const response = await fetch(
@@ -558,10 +511,8 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       
       if (!response.ok) return null;
-      
       const data = await response.json();
       
-      // Extract city name - try suburb first (for Strand), then city/town/etc
       const city = data.address?.suburb || 
                    data.address?.city || 
                    data.address?.town || 
@@ -612,7 +563,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== RENDER FUNCTIONS ==========
-  
   function renderLoading(name) {
     showLoader(true);
     safeText(locationEl, name);
@@ -620,102 +570,27 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(tempEl, '--°');
     safeText(descriptionEl, '—');
     safeText(extremeValueEl, '--');
-    safeText(rainValueEl, '--');
-    safeText(uvValueEl, '--');
-    safeText(confidenceEl, 'PROBABLY • —');
-    safeText(sourcesEl, 'Sources: —');
   }
 
   function renderSidebar(norm, heroOverride) {
-    // INVARIANT 1: If called with null/undefined, do nothing but don't break
     if (!norm) {
-      // Runtime check: if __PW_LAST_NORM exists but norm is null, this is a programming error
       if (window.__PW_LAST_NORM) {
-        console.error('[INVARIANT VIOLATION] renderSidebar called with null but __PW_LAST_NORM exists. Using cached data.');
         norm = window.__PW_LAST_NORM;
       } else {
-        return; // No data available, early exit is safe
+        return;
       }
     }
 
     const rain = norm.rainPct;
     const uv = norm.uv;
-    // Use passed hero (from renderHome) or stored hero, or recompute as fallback
     const hero = heroOverride || window.__PW_LAST_HERO || computeTodaysHero(norm);
 
-    let windValueEl = document.getElementById('windValue');
-    if (!windValueEl) {
-      const sidebar = document.querySelector('.sidebar');
-      if (sidebar) {
-        const card = document.createElement('div');
-        card.className = 'card';
-        const label = document.createElement('div');
-        label.className = 'label';
-        label.textContent = 'Wind';
-        const value = document.createElement('div');
-        value.className = 'value';
-        value.id = 'windValue';
-        card.appendChild(label);
-        card.appendChild(value);
-        if (rainValueEl && rainValueEl.parentElement) {
-          sidebar.insertBefore(card, rainValueEl.parentElement);
-        } else {
-          sidebar.appendChild(card);
-        }
-        windValueEl = value;
-      }
-    }
-    
-    // Today's Hero - the dominant impact factor
+    // Today's Hero
     const heroLabel = getHeroLabel(hero);
     safeText(extremeLabelEl, `Today's Hero:`);
     safeText(extremeValueEl, heroLabel);
 
-    // INVARIANT 2: Hero label must never be empty string or undefined when data exists
-    if (!heroLabel) {
-      console.error('[INVARIANT VIOLATION] getHeroLabel returned empty for hero:', hero);
-    }
-
-    // Rain display - must be consistent with hero (no contradictions)
-    // If hero indicates rain, rain panel cannot say "None expected"
-    const isRainHero = hero === 'rain' || hero === 'storm';
-    let rainText;
-    if (isRainHero) {
-      // Hero indicates rain - ensure panel doesn't contradict
-      rainText = 'Likely';
-    } else if (isNum(rain)) {
-      rainText = rain < THRESH.RAIN_NONE ? 'None expected'
-               : rain < THRESH.RAIN_UNLIKELY ? 'Unlikely'
-               : rain < THRESH.RAIN_POSSIBLE ? 'Possible'
-               : 'Likely';
-    } else {
-      rainText = '--';
-    }
-    safeText(rainValueEl, rainText);
-
-    if (windValueEl) {
-      const windKph = isNum(norm.windKph) ? norm.windKph : 0;
-      safeText(windValueEl, formatWind(windKph));
-    }
-
-    // UV display
-    if (isNum(uv)) {
-      const uvText = uv < THRESH.UV_LOW ? 'Low'
-                   : uv < THRESH.UV_MODERATE ? 'Moderate'
-                   : uv < THRESH.UV_HIGH ? 'High'
-                   : uv < THRESH.UV_VERY_HIGH ? 'Very High'
-                   : 'Extreme';
-      safeText(uvValueEl, `${uvText} (${round0(uv)})`);
-      
-      // INVARIANT 4: UV text must be one of the valid categories when UV is numeric
-      if (!['Low', 'Moderate', 'High', 'Very High', 'Extreme'].includes(uvText)) {
-        console.error('[INVARIANT VIOLATION] Invalid UV text computed:', uvText, 'for UV:', uv);
-      }
-    } else {
-      safeText(uvValueEl, '--');
-    }
-
-    // Source Ranges - show individual source temperature ranges
+    // Source Ranges
     const sourceRanges = norm.sourceRanges || [];
     if (sourceRanges.length > 0) {
       const rangesText = sourceRanges
@@ -725,19 +600,10 @@ document.addEventListener("DOMContentLoaded", () => {
       
       safeText($('#confidenceValue'), rangesText || '--');
     } else {
-      // Fallback if no ranges (or render "Agreement" as fallback)
       const confMap = { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' };
       const confText = confMap[norm.confidenceKey] || 'Mixed';
       safeText($('#confidenceValue'), confText);
     }
-
-    // Hide confidence bar
-    if (confidenceBarEl) {
-      confidenceBarEl.style.display = 'none';
-    }
-    
-    // INVARIANT 7: Log successful render for verification
-    console.log('[SIDEBAR] Rendered successfully. Source Ranges:', sourceRanges.length);
   }
 
   function renderError(msg) {
@@ -752,37 +618,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const hi = norm.todayHigh;
     const low = norm.todayLow;
     const rain = norm.rainPct;
+    const wind = norm.windKph;
     const uv = norm.uv;
 
-    // ========== SINGLE SOURCE OF TRUTH ==========
-    // displayCondition = unified condition for headline, background, particles, body class
-    // hero = kept separate for Today's Hero panel label
     const displayCondition = computeHomeDisplayCondition(norm);
     const hero = computeTodaysHero(norm);
 
-    // Set body class for condition-based styling
     document.body.className = `weather-${displayCondition}`;
-    const uiTone = ['clear', 'heat', 'uv'].includes(displayCondition) ? 'ui-light' : 'ui-dark';
-    document.body.classList.remove('ui-light', 'ui-dark');
-    document.body.classList.add(uiTone);
-    document.body.style.setProperty('--panel-text', uiTone === 'ui-light' ? '#222' : '#eee');
-    document.body.style.setProperty('--panel-subtext', uiTone === 'ui-light' ? '#4b5563' : '#cbd5e1');
 
-    // Location - use API location name if available
+    // Location
     let locationName = norm.locationName || activePlace?.name || 'My Location';
-
-    // Show initial value immediately
     safeText(locationEl, locationName);
 
-    // If we only have "My Location" but we have coordinates, reverse geocode
     if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
       const currentPlace = activePlace; 
-      
       reverseGeocode(activePlace.lat, activePlace.lon)
         .then(cityName => {
           if (cityName && currentPlace === activePlace) {
             safeText(locationEl, cityName);
-            // Cache the result
             if (activePlace) activePlace.name = cityName;
             if (homePlace && homePlace.lat === currentPlace.lat && homePlace.lon === currentPlace.lon) {
               homePlace.name = cityName;
@@ -790,12 +643,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
         })
-        .catch(error => {
-          console.warn('[GEOCODE] Failed to reverse geocode:', error);
-        });
+        .catch(() => {});
     }
     
-    // Headline - driven by unified display condition
+    // Headline
     safeText(headlineEl, getHeadline(displayCondition));
 
     // Temperature range
@@ -803,10 +654,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
     safeText(tempEl, `${lowStr} – ${hiStr}`);
 
-    // Witty line - driven by unified display condition
+    // Witty line
     safeText(descriptionEl, getWittyLine(displayCondition, rain, hi));
 
-    // Apply condition-specific text styling
+    // Weather byline
+    const bylineEl = $('#weatherByline');
+    if (bylineEl) {
+      const windStr = isNum(wind) ? formatWind(wind) : '--';
+      const rainStr = isNum(rain) ? (rain < 10 ? 'None' : rain < 30 ? 'Unlikely' : rain < 55 ? 'Possible' : 'Likely') : '--';
+      const uvStr = isNum(uv) ? (uv < 3 ? 'Low' : uv < 6 ? 'Moderate' : uv < 8 ? 'High' : 'Very High') + ` (${round0(uv)})` : '--';
+      bylineEl.innerHTML = `Wind ${windStr} • Rain ${rainStr} • UV ${uvStr}`;
+    }
+
+    // Condition text styling
     const heroClasses = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
     [headlineEl, tempEl, descriptionEl].forEach(el => {
       if (el) {
@@ -814,50 +674,15 @@ document.addEventListener("DOMContentLoaded", () => {
         el.classList.add('hero-' + displayCondition);
       }
     });
-    console.log('Applied class: hero-' + displayCondition);
 
-    // Store for sidebar consistency across tab switches
     window.__PW_LAST_DISPLAY = displayCondition;
     window.__PW_LAST_HERO = hero;
 
-    // Render sidebar - pass hero for Today's Hero panel
     renderSidebar(norm, hero);
-
-    // Confidence
-    const confLabel = (norm.confidenceKey || 'mixed').toUpperCase();
-    safeText(confidenceEl, `PROBABLY • ${confLabel} CONFIDENCE`);
-
-    // Sources
-    const usedTxt = norm.used.length ? `Probable (combined): ${norm.used.join(', ')}` : 'Sources: —';
-    const failedTxt = norm.failed.length ? `Failed: ${norm.failed.join(', ')}` : '';
-    safeText(sourcesEl, `${usedTxt}${failedTxt ? ' · ' + failedTxt : ''}`);
-
-    // Background - driven by unified display condition
     setBackgroundFor(displayCondition);
-
-    // Particles - driven by unified display condition
     createParticles(displayCondition);
   }
 
-  function renderUpdatedAt(payload) {
-    const updatedEl = document.getElementById('updatedAt');
-    if (!updatedEl) return;
-    const updatedAtLabel = payload?.meta?.updatedAtLabel;
-    if (!updatedAtLabel) return;
-
-    const cleanUpdatedAt = String(updatedAtLabel).split('.')[0];
-    const timeOnly = cleanUpdatedAt.includes('T')
-      ? cleanUpdatedAt.split('T')[1]?.slice(0, 5)
-      : cleanUpdatedAt.slice(0, 5);
-    let text = `Updated ${timeOnly}`;
-    const lastData = window.lastData;
-    if (navigator.onLine === false && lastData?.timestamp) {
-      text += ` (offline, from ${lastData.timestamp})`;
-    }
-    updatedEl.textContent = text;
-  }
-
-  // Get weather icon based on conditions
   function getWeatherIcon(rainPct, cloudPct, tempC) {
     if (isNum(rainPct) && rainPct >= 50) return '🌧️';
     if (isNum(rainPct) && rainPct >= 30) return '🌦️';
@@ -868,76 +693,73 @@ document.addEventListener("DOMContentLoaded", () => {
     return '☀️';
   }
 
+  // ========== HOURLY - Compact Horizontal ==========
   function renderHourly(hourly) {
     if (!hourlyTimeline) return;
     hourlyTimeline.innerHTML = '';
-    hourly.forEach((h, i) => {
+    
+    // Show next 24 hours
+    const hoursToShow = hourly.slice(0, 24);
+    
+    hoursToShow.forEach((h, i) => {
       const div = document.createElement('div');
       div.classList.add('hourly-card');
+      
       const hourTime = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], {
         hour: '2-digit',
         minute: '2-digit',
         hour12: settings.time === '12'
       });
+      
       const tempStr = formatTemp(h.tempC);
-      const tempClass = isNum(h.tempC) ? (h.tempC >= 30 ? 'temp-hot' : h.tempC >= 25 ? 'temp-warm' : h.tempC <= 10 ? 'temp-freezing' : h.tempC <= 15 ? 'temp-cold' : '') : '';
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, h.tempC);
       const rainStr = isNum(h.rainChance) ? `${round0(h.rainChance)}%` : '--%';
-      const windStr = isNum(h.windKph) ? formatWind(h.windKph) : '--';
+      
       div.innerHTML = `
         <div class="hour-time"><span class="weather-icon">${icon}</span>${hourTime}</div>
-        <div class="hour-temp ${tempClass}">${tempStr}</div>
-        <div class="hour-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>
-        <div class="hour-detail"><span class="detail-label">Wind</span> <span class="detail-value">${windStr}</span></div>
-        <div class="precip-bar" style="--prob:${isNum(h.rainChance) ? round0(h.rainChance) : 0}"></div>
+        <div class="hour-temp">${tempStr}</div>
+        <div class="hour-detail"><span class="detail-value">${rainStr}</span></div>
       `;
       hourlyTimeline.appendChild(div);
     });
   }
 
-  // Compute "Day Hero" - the most impactful factor for a given day
+  // ========== WEEKLY - Compact Horizontal ==========
   function computeDayHero(d) {
     const rain = d.rainChance;
     const uv = d.uv;
     const hi = d.highC;
 
-    // Priority order based on impact
     if (isNum(rain) && rain >= 50) return 'Rainy';
-    if (isNum(rain) && rain >= 30) return 'Possible rain';
+    if (isNum(rain) && rain >= 30) return 'Showers';
     if (isNum(uv) && uv >= 8) return 'High UV';
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'Hot';
     if (isNum(hi) && hi <= 10) return 'Cold';
-    if (isNum(uv) && uv >= 6) return 'Moderate UV';
+    if (isNum(uv) && uv >= 6) return 'UV Alert';
     return '';
   }
 
   function renderWeek(daily) {
     if (!dailyCards) return;
     dailyCards.innerHTML = '';
+    
     daily.forEach((d, i) => {
       const dayName = d.dayLabel || new Date(Date.now() + i * 86400000).toLocaleDateString('en-US', { weekday: 'short' });
-      const lowStr = isNum(d.lowC) ? formatTemp(d.lowC).replace('°', '') : '--';
-      const highStr = isNum(d.highC) ? formatTemp(d.highC).replace('°', '') : '--';
-      const medianStr = isNum(d.lowC) && isNum(d.highC)
-        ? round0((convertTemp(d.lowC) + convertTemp(d.highC)) / 2)
-        : '--';
-      const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
-      const uvStr = isNum(d.uv) ? round0(d.uv) : '--';
+      const highStr = isNum(d.highC) ? formatTemp(d.highC) : '--°';
+      const lowStr = isNum(d.lowC) ? formatTemp(d.lowC) : '--°';
       const dayHero = computeDayHero(d);
-      const tempClass = isNum(d.highC) ? (d.highC >= 30 ? 'temp-hot' : d.highC >= 25 ? 'temp-warm' : d.highC <= 10 ? 'temp-freezing' : d.highC <= 15 ? 'temp-cold' : '') : '';
       const icon = getWeatherIcon(d.rainChance, d.cloudPct, d.highC);
+      const rainStr = isNum(d.rainChance) ? `${round0(d.rainChance)}%` : '--%';
+      
       const div = document.createElement('div');
       div.classList.add('daily-card');
-      const tempLine = settings.range
-        ? `${lowStr}° – ${highStr}°`
-        : `${medianStr}°`;
+      
       div.innerHTML = `
         <div class="day-name"><span class="weather-icon">${icon}</span>${dayName}</div>
-        <div class="day-temp ${tempClass}">${tempLine}</div>
+        <div class="day-temp">${highStr}</div>
+        <div class="day-temp" style="font-size:0.8rem;opacity:0.7;">${lowStr}</div>
         ${dayHero ? `<div class="day-hero">${dayHero}</div>` : ''}
-        <div class="day-detail"><span class="detail-label">Rain</span> <span class="detail-value">${rainStr}</span></div>
-        <div class="day-detail"><span class="detail-label">UV</span> <span class="detail-value">${uvStr}</span></div>
-        <div class="precip-bar" style="--prob:${isNum(d.rainChance) ? round0(d.rainChance) : 0}"></div>
+        <div class="day-detail"><span class="detail-label">Rain</span><span class="detail-value">${rainStr}</span></div>
       `;
       dailyCards.appendChild(div);
     });
@@ -957,17 +779,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (probRangeToggle) probRangeToggle.checked = !!settings.range;
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
 
-    if (taglineEl) {
-      taglineEl.textContent = 'No more Ja-No-Maybe weather. Just Probably.';
-    }
-
     if (lastPayload) {
       const norm = normalizePayload(lastPayload);
       window.__PW_LAST_NORM = norm;
       renderHome(norm);
       renderHourly(norm.hourly);
       renderWeek(norm.daily);
-      renderUpdatedAt(lastPayload);
     }
   }
 
@@ -982,18 +799,15 @@ document.addEventListener("DOMContentLoaded", () => {
       renderHome(norm);
       renderHourly(norm.hourly);
       renderWeek(norm.daily);
-      renderUpdatedAt(payload);
     } catch (e) {
       console.error("Load failed:", e);
       renderError("Couldn't fetch weather right now.");
     }
   }
 
-  // ========== PLACES: FAVORITES & RECENTS ==========
-  
+  // ========== FAVORITES & RECENTS ==========
   function loadFavorites() { return loadJSON(STORAGE.favorites, []); }
   function loadRecents() { return loadJSON(STORAGE.recents, []); }
-
   function saveFavorites(list) { saveJSON(STORAGE.favorites, list); }
   function saveRecents(list) { saveJSON(STORAGE.recents, list); }
 
@@ -1015,11 +829,11 @@ document.addEventListener("DOMContentLoaded", () => {
   async function addFavorite(place) {
     let list = loadFavorites();
     if (list.some(p => samePlace(p, place))) {
-      showToast('This place is already saved!');
+      showToast('Already saved!');
       return;
     }
     if (list.length >= 5) {
-      showToast('You can only save up to 5 places. Remove one first.');
+      showToast('Max 5 places. Remove one first.');
       return;
     }
     const resolvedName = await resolvePlaceName(place);
@@ -1047,7 +861,7 @@ document.addEventListener("DOMContentLoaded", () => {
       list = list.filter(p => !samePlace(p, place));
       saveFavorites(list);
       renderFavorites();
-      showToast('Place removed from favorites');
+      showToast('Removed from favorites');
       return;
     }
     await addFavorite(place);
@@ -1084,7 +898,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const list = loadRecents();
     recentList.innerHTML = list.map(p => `
       <li class="recent-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>
-    `).join('') || '<li>No recent searches yet.</li>';
+    `).join('') || '<li style="opacity:0.6;cursor:default;">No recent searches yet.</li>';
 
     recentList.querySelectorAll('li[data-lat]').forEach(li => {
       li.addEventListener('click', () => {
@@ -1114,7 +928,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <span class="fav-temp">${temp}</span>
         ${removeBtn}
       </li>`;
-    }).join('') || '<li>No saved places yet.</li>';
+    }).join('') || '<li style="opacity:0.6;cursor:default;">No saved places yet.</li>';
 
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
       span.addEventListener('click', () => {
@@ -1144,21 +958,18 @@ document.addEventListener("DOMContentLoaded", () => {
         list = list.filter(p => !samePlace(p, {lat, lon}));
         saveFavorites(list);
         renderFavorites();
-        showToast('Place removed from favorites');
+        showToast('Removed');
       });
     });
 
-    list.forEach((p) => {
-      ensureFavoriteMeta(p);
-    });
+    list.forEach((p) => ensureFavoriteMeta(p));
   }
 
   // ========== SEARCH ==========
-
   let searchTimeout = null;
   let searchResults = [];
-  let activeSearchController = null; // AbortController for cancelling previous search
-  let searchSeq = 0; // Sequence number for tracking latest search
+  let activeSearchController = null;
+  let searchSeq = 0;
   const searchMiniCache = new Map();
 
   function parseQuery(raw) {
@@ -1166,106 +977,73 @@ document.addEventListener("DOMContentLoaded", () => {
     const parts = trimmed.split(/\s+/);
     const last = parts[parts.length - 1];
     const countryMap = {
-      us: 'us', usa: 'us', america: 'us', unitedstates: 'us', 'united-states': 'us',
-      uk: 'gb', britain: 'gb', england: 'gb', scotland: 'gb', wales: 'gb',
-      uae: 'ae', emirates: 'ae', sa: 'za', southafrica: 'za'
+      us: 'us', usa: 'us', america: 'us', unitedstates: 'us',
+      uk: 'gb', britain: 'gb', england: 'gb',
+      uae: 'ae', sa: 'za', southafrica: 'za'
     };
-    const lastKey = last?.toLowerCase().replace(/[.,]/g, '').replace(/\s+/g, '');
+    const lastKey = last?.toLowerCase().replace(/[.,]/g, '');
     const countryCode = countryMap[lastKey] || (lastKey && lastKey.length === 2 ? lastKey : null);
     const baseQuery = countryCode ? parts.slice(0, -1).join(' ') : trimmed;
     return { baseQuery, countryCode };
   }
 
-  // Get place-like label from address (broad: city, county, state, region all count)
-  function getCityLike(addr) {
-    return addr.city || addr.town || addr.village || addr.municipality ||
-           addr.county || addr.state_district || addr.state || addr.region || '';
+  async function runSearch(query) {
+    if (!query || query.length < 2) {
+      renderSearchResults([]);
+      return;
+    }
+
+    const thisSeq = ++searchSeq;
+    if (activeSearchController) activeSearchController.abort();
+    activeSearchController = new AbortController();
+
+    const { baseQuery, countryCode } = parseQuery(query);
+    
+    try {
+      let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(baseQuery)}&limit=8&addressdetails=1`;
+      if (countryCode) url += `&countrycodes=${countryCode}`;
+      
+      const response = await fetch(url, {
+        headers: { 'User-Agent': 'ProbablyWeather/1.0' },
+        signal: activeSearchController.signal
+      });
+      
+      if (thisSeq !== searchSeq) return;
+      if (!response.ok) throw new Error('Search failed');
+      
+      const data = await response.json();
+      searchResults = data.map(r => ({
+        name: r.display_name?.split(',')[0] || 'Unknown',
+        fullName: r.display_name,
+        lat: r.lat,
+        lon: r.lon,
+        address: r.address
+      }));
+      
+      renderSearchResults(searchResults);
+    } catch (e) {
+      if (e.name !== 'AbortError') {
+        console.error('Search error:', e);
+      }
+    }
   }
 
-  // Score result: higher = more likely a place, lower = street/POI
-  function scoreResult(r) {
+  function formatSearchResult(r) {
     const addr = r.address || {};
-    let score = 0;
-    // Strong place indicators
-    if (addr.city || addr.town || addr.village) score += 3;
-    const placeTypes = ['city', 'town', 'village', 'suburb', 'administrative', 'municipality', 'hamlet'];
-    if (placeTypes.includes(r.type)) score += 2;
-    if (r.category === 'place' || r.category === 'boundary') score += 1;
-    // Penalize street-level results without settlement
-    if ((addr.road || addr.house_number) && !getCityLike(addr)) score -= 3;
-    // Bonus for having country (valid result)
-    if (addr.country) score += 1;
-    return score;
-  }
-
-  // Sort by score desc, then importance desc
-  function sortSearchResults(results) {
-    return [...results].sort((a, b) => {
-      const scoreDiff = scoreResult(b) - scoreResult(a);
-      if (scoreDiff !== 0) return scoreDiff;
-      return (b.importance || 0) - (a.importance || 0);
-    });
-  }
-
-  // Generate fallback queries for typo tolerance
-  function getFallbackQueries(q) {
-    const queries = [];
-    const base = q.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
-    if (base.length < 4) return queries;
-
-    // 1) Try removing extra vowels (jakarata -> jakarta)
-    for (let i = base.length - 1; i >= Math.max(0, base.length - 4); i--) {
-      if ('aeiou'.includes(base[i])) {
-        const variant = base.slice(0, i) + base.slice(i + 1);
-        if (variant.length >= 3 && variant !== base && !queries.includes(variant)) {
-          queries.push(variant);
-        }
-        if (queries.length >= 2) break;
-      }
-    }
-
-    // 2) Try swapping last two chars (delih -> delhi)
-    if (base.length >= 4) {
-      const swapped = base.slice(0, -2) + base[base.length - 1] + base[base.length - 2];
-      if (swapped !== base && !queries.includes(swapped)) queries.push(swapped);
-    }
-
-    return queries.slice(0, 3); // Max 3 fallback attempts
-  }
-
-  // Show search status message
-  function showSearchStatus(msg) {
-    let resultsContainer = document.getElementById('searchResults');
-    if (!resultsContainer) {
-      resultsContainer = document.createElement('div');
-      resultsContainer.id = 'searchResults';
-      resultsContainer.className = 'section';
-      const searchTitle = document.createElement('h3');
-      searchTitle.textContent = 'Search results';
-      resultsContainer.appendChild(searchTitle);
-      const resultsList = document.createElement('ul');
-      resultsList.id = 'searchResultsList';
-      resultsContainer.appendChild(resultsList);
-      const searchLists = document.querySelector('#search-screen .search-lists');
-      if (searchLists) {
-        searchLists.insertBefore(resultsContainer, searchLists.firstChild);
-      } else {
-        const searchBody = document.querySelector('#search-screen .search-body');
-        if (searchBody) searchBody.insertBefore(resultsContainer, searchBody.firstChild);
-      }
-    }
-    const resultsList = document.getElementById('searchResultsList');
-    if (resultsList) resultsList.innerHTML = `<li class="search-status">${escapeHtml(msg)}</li>`;
+    const city = addr.city || addr.town || addr.village || r.name;
+    const country = addr.country || '';
+    return country ? `${city}, ${country}` : city;
   }
 
   async function miniFetchTemp(lat, lon) {
-    const key = `${Number(lat).toFixed(4)},${Number(lon).toFixed(4)}`;
+    const key = `${lat.toFixed(2)},${lon.toFixed(2)}`;
     if (searchMiniCache.has(key)) return searchMiniCache.get(key);
+    
     try {
       const payload = await fetchProbable({ lat, lon, name: '' });
       const norm = normalizePayload(payload);
       const result = {
-        temp: isNum(norm.nowTemp) ? formatTemp(norm.nowTemp) : '--°',
+        temp: formatTemp(norm.nowTemp),
         icon: conditionEmoji(norm.conditionKey)
       };
       searchMiniCache.set(key, result);
@@ -1275,122 +1053,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  async function runSearch(q) {
-    if (!q || q.trim().length < 2) {
-      const resultsList = document.getElementById('searchResultsList');
-      if (resultsList) resultsList.innerHTML = '';
-      return;
-    }
-
-    // Abort any previous in-flight search request
-    if (activeSearchController) {
-      activeSearchController.abort();
-    }
-    const controller = new AbortController();
-    activeSearchController = controller;
-    const thisSeq = ++searchSeq;
-
-    const { baseQuery, countryCode } = parseQuery(q);
-    const queryText = baseQuery;
-
-    // Show searching status
-    showSearchStatus('Searching...');
-
-    const baseUrl = (query, cc) =>
-      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}` +
-      `&format=jsonv2&limit=15&addressdetails=1&dedupe=1` +
-      (cc ? `&countrycodes=${cc}` : '');
-
-    try {
-      // Pass 1: original query
-      let resp = await fetch(baseUrl(queryText, countryCode), { signal: controller.signal });
-      let data = await resp.json();
-
-      // Pass 2: fallback queries if few/no results (typo tolerance)
-      if ((!Array.isArray(data) || data.length < 3) && thisSeq === searchSeq) {
-        const fallbacks = getFallbackQueries(queryText);
-        for (const fallback of fallbacks) {
-          if (thisSeq !== searchSeq) break; // Abort if new search started
-          try {
-            const resp2 = await fetch(baseUrl(fallback, countryCode), { signal: controller.signal });
-            const data2 = await resp2.json();
-            if (Array.isArray(data2) && data2.length > 0) {
-              const existingIds = new Set((data || []).map(r => r.place_id));
-              data = [...(data || []), ...data2.filter(r => !existingIds.has(r.place_id))];
-              if (data.length >= 5) break; // Enough results found
-            }
-          } catch { /* ignore fallback errors */ }
-        }
-      }
-
-      // Sort by score (places first)
-      if (Array.isArray(data) && data.length > 0) {
-        data = sortSearchResults(data).slice(0, 10);
-      }
-
-      // Only render if this is still the latest search
-      if (thisSeq === searchSeq) {
-        searchResults = data || [];
-        if (searchResults.length > 0) {
-          renderSearchResults(searchResults);
-        } else {
-          showSearchStatus('No places found. Try a different spelling.');
-        }
-      }
-    } catch (e) {
-      if (e.name === 'AbortError') return; // Silently ignore aborted requests
-      console.error('Search failed:', e);
-      if (thisSeq === searchSeq) {
-        showSearchStatus('Search failed. Please try again.');
-      }
-    } finally {
-      if (activeSearchController === controller) {
-        activeSearchController = null;
-      }
-    }
-  }
-  
-  // Format search result: "City, Region, Country" for disambiguation
-  function formatSearchResult(r) {
-    const addr = r.address || {};
-    // Use broad city detection, fallback to name
-    const city = addr.city || addr.town || addr.village || addr.municipality ||
-                 addr.county || addr.state_district || r.name || '';
-    const region = addr.state || addr.province || addr.region || '';
-    const country = addr.country || '';
-    const parts = [city, region, country].filter(Boolean);
-    return parts.length > 0 ? parts.join(', ') : r.display_name;
-  }
-
   function renderSearchResults(results) {
-    let resultsContainer = document.getElementById('searchResults');
-    if (!resultsContainer) {
-      resultsContainer = document.createElement('div');
-      resultsContainer.id = 'searchResults';
-      resultsContainer.className = 'section';
-      const searchTitle = document.createElement('h3');
-      searchTitle.textContent = 'Search results';
-      resultsContainer.appendChild(searchTitle);
-      const resultsList = document.createElement('ul');
-      resultsList.id = 'searchResultsList';
-      resultsContainer.appendChild(resultsList);
+    const resultsList = document.getElementById('searchResults') || (() => {
+      const ul = document.createElement('ul');
+      ul.id = 'searchResults';
+      ul.className = 'search-results';
+      const searchBody = document.querySelector('.search-body');
+      if (searchBody) searchBody.prepend(ul);
+      return ul;
+    })();
 
-      // Insert into scrollable search-lists container
-      const searchLists = document.querySelector('#search-screen .search-lists');
-      if (searchLists) {
-        searchLists.insertBefore(resultsContainer, searchLists.firstChild);
-      } else {
-        // Fallback: insert into search-body
-        const searchBody = document.querySelector('#search-screen .search-body');
-        if (searchBody) searchBody.insertBefore(resultsContainer, searchBody.firstChild);
-      }
-    }
-
-    const resultsList = document.getElementById('searchResultsList');
-    if (!resultsList) return;
-
-    if (results.length === 0) {
-      resultsList.innerHTML = '<li>No results found.</li>';
+    if (!results.length) {
+      resultsList.innerHTML = '';
       return;
     }
 
@@ -1402,7 +1076,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const star = isFav ? '★' : '☆';
       return `
         <li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${formattedName}">
-          <button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}" aria-label="Toggle favourite">${star}</button>
+          <button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}">${star}</button>
           <span class="result-icon">⛅</span>
           <span class="result-name">${formattedName}</span>
           <span class="result-temp">--°</span>
@@ -1411,22 +1085,16 @@ document.addEventListener("DOMContentLoaded", () => {
     
     resultsList.querySelectorAll('li[data-lat]').forEach(li => {
       li.addEventListener('click', async (e) => {
-        // Don't trigger if clicking the star button
         if (e.target.closest('.fav-star')) return;
-
         const place = {
           name: li.dataset.name,
           lat: parseFloat(li.dataset.lat),
           lon: parseFloat(li.dataset.lon)
         };
-
-        // Navigate immediately, then handle recents
         showScreen(screenHome);
         loadAndRender(place);
         if (searchInput) searchInput.value = '';
         resultsList.innerHTML = '';
-
-        // Add to recents in background (don't block navigation)
         addRecentIfNew(place).catch(() => {});
       });
     });
@@ -1463,57 +1131,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== NAVIGATION ==========
-  
-  navHome.addEventListener('click', () => {
+  navHome?.addEventListener('click', () => {
     showScreen(screenHome);
     if (homePlace) loadAndRender(homePlace);
   });
   
-  navHourly.addEventListener('click', () => {
+  navHourly?.addEventListener('click', () => {
     showScreen(screenHourly);
-    if (window.__PW_LAST_NORM) {
-      renderSidebar(window.__PW_LAST_NORM);
-    } else {
-      console.warn('[NAVIGATION] Switched to Hourly but no weather data loaded yet');
-    }
   });
   
-  navWeek.addEventListener('click', () => {
+  navWeek?.addEventListener('click', () => {
     showScreen(screenWeek);
-    if (window.__PW_LAST_NORM) {
-      renderSidebar(window.__PW_LAST_NORM);
-    } else {
-      console.warn('[NAVIGATION] Switched to Week but no weather data loaded yet');
-    }
   });
   
-  navSearch.addEventListener('click', () => {
+  navSearch?.addEventListener('click', () => {
     showScreen(screenSearch);
     renderRecents();
     renderFavorites();
-    if (window.__PW_LAST_NORM) {
-      renderSidebar(window.__PW_LAST_NORM);
-    } else {
-      console.warn('[NAVIGATION] Switched to Search but no weather data loaded yet');
-    }
   });
   
-  navSettings.addEventListener('click', () => {
+  navSettings?.addEventListener('click', () => {
     showScreen(screenSettings);
-    if (window.__PW_LAST_NORM) {
-      renderSidebar(window.__PW_LAST_NORM);
-    } else {
-      console.warn('[NAVIGATION] Switched to Settings but no weather data loaded yet');
-    }
   });
-
-  if (refreshBtn) {
-    refreshBtn.addEventListener('click', () => {
-      if (navigator.onLine && state?.city) {
-        loadCity(state.city);
-      }
-    });
-  }
 
   if (unitsTempSelect) {
     unitsTempSelect.addEventListener('change', () => {
@@ -1576,11 +1215,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (clearRecentsBtn) {
     clearRecentsBtn.addEventListener('click', () => {
       clearRecents();
+      showToast('Recents cleared');
     });
   }
 
   // ========== INITIALIZATION ==========
-  
   renderRecents();
   renderFavorites();
   loadSettings();
@@ -1588,6 +1227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   homePlace = loadJSON(STORAGE.home, null);
   const savedLocation = loadJSON(STORAGE.location, null);
+  
   if (homePlace) {
     showScreen(screenHome);
     loadAndRender(homePlace);
