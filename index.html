@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="theme-color" content="#000000"/>
   <title>Probably Weather</title>
   <link rel="stylesheet" href="assets/app.css"/>
   <link rel="manifest" href="manifest.json"/>
+  <link rel="apple-touch-icon" href="assets/icon-192.png"/>
 </head>
 <body>
   <div id="bg" aria-hidden="true">
@@ -16,36 +20,29 @@
   <div id="particles" aria-hidden="true"></div>
 
   <div id="toast" class="toast"></div>
-  <div id="loader" class="loader hidden">Fetching probable weather...</div>
+  <div id="loader" class="loader hidden">Loading...</div>
 
   <div class="container">
     <header class="header">
       <div class="brand">
-        <div id="logoCircle" aria-hidden="true"></div>
         <div class="brand-text">
           <div class="brand-title">Probably Weather</div>
           <div id="location" class="brand-location">—</div>
         </div>
       </div>
-
       <div class="tagline">No more Ja-No-Maybe weather. Just Probably.</div>
-
-      <div class="header-right">
-        <span id="updatedAt">Updated —</span>
-        <button id="refreshBtn" class="refresh-icon">↻</button>
-      </div>
-
     </header>
 
     <div class="home-layout">
       <main id="home-screen" class="main">
-        <div id="confidence" class="confidence">PROBABLY • —</div>
-        <div id="sources" class="sources">Sources: —</div>
+        <!-- Hidden but kept for JS compatibility -->
+        <div id="confidence" class="confidence"></div>
+        <div id="sources" class="sources"></div>
 
         <h1 id="headline" class="headline">Loading...</h1>
         <div id="temp" class="temp">--°</div>
         <div id="description" class="description">—</div>
-        <div id="weatherByline" class="weather-byline">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
+        <div id="weatherByline" class="weather-byline">Wind — • Rain — • UV —</div>
       </main>
 
       <aside class="sidebar">
@@ -62,7 +59,7 @@
 
     <section id="hourly-screen" class="screenPanel hourly-screen hidden">
       <div class="screen-panel-header">
-        <h2 class="screen-title">Hourly Forecast</h2>
+        <h2 class="screen-title">Hourly</h2>
       </div>
       <div class="screen-panel-body">
         <div id="hourly-timeline" class="hourly-timeline"></div>
@@ -71,7 +68,7 @@
 
     <section id="week-screen" class="screenPanel week-screen hidden">
       <div class="screen-panel-header">
-        <h2 class="screen-title">7-Day Forecast</h2>
+        <h2 class="screen-title">7-Day</h2>
       </div>
       <div class="screen-panel-body">
         <div id="daily-cards" class="daily-cards"></div>
@@ -80,8 +77,8 @@
 
     <section id="search-screen" class="screenPanel search-screen hidden">
       <div class="screen-panel-header">
-        <h2 class="screen-title">Search & Favourites</h2>
-        <input id="searchInput" type="text" placeholder="Search for a place">
+        <h2 class="screen-title">Search</h2>
+        <input id="searchInput" type="text" placeholder="Search for a place" autocomplete="off" autocorrect="off" spellcheck="false">
         <button id="searchCancel" class="cancel-btn">Cancel</button>
       </div>
       <div class="screen-panel-body">
@@ -96,70 +93,58 @@
               <ul id="recentList"></ul>
             </div>
           </div>
-          <p id="favLimit" class="fav-limit">You've saved 5 places. Remove one to add a new favourite.</p>
+          <p id="favLimit" class="fav-limit">Max 5 places saved. Remove one to add another.</p>
         </div>
       </div>
       <div class="screen-panel-footer">
         <button id="clearRecents" class="clear-recents">Clear recents</button>
-        <button id="manageFavorites" class="manage-btn">Manage favourites</button>
+        <button id="manageFavorites" class="manage-btn">Manage</button>
       </div>
     </section>
 
     <section id="settings-screen" class="screenPanel settings-screen hidden">
       <div class="screen-panel-header">
-        <h2 class="screen-title settings-title">Settings</h2>
+        <h2 class="screen-title">Settings</h2>
       </div>
       <div class="screen-panel-body">
         <div class="settings-section">
-        <h3>Units</h3>
-        <div class="settings-option">
-          <label for="unitsTemp">Temperature</label>
-          <select id="unitsTemp">
-            <option value="C">Celsius</option>
-            <option value="F">Fahrenheit</option>
-          </select>
+          <h3>Units</h3>
+          <div class="settings-option">
+            <label for="unitsTemp">Temperature</label>
+            <select id="unitsTemp">
+              <option value="C">Celsius</option>
+              <option value="F">Fahrenheit</option>
+            </select>
+          </div>
+          <div class="settings-option">
+            <label for="unitsWind">Wind speed</label>
+            <select id="unitsWind">
+              <option value="kmh">km/h</option>
+              <option value="ms">m/s</option>
+              <option value="mph">mph</option>
+            </select>
+          </div>
         </div>
-        <div class="settings-option">
-          <label for="unitsWind">Wind speed</label>
-          <select id="unitsWind">
-            <option value="kmh">km/h</option>
-            <option value="ms">m/s</option>
-            <option value="mph">mph</option>
-          </select>
-        </div>
-        </div>
+        
         <div class="settings-section">
-        <h3>Forecast display</h3>
-        <div class="settings-option">
-          <label for="probRange">Show temperature range</label>
-          <input type="checkbox" id="probRange">
+          <h3>Display</h3>
+          <div class="settings-option">
+            <label for="probRange">Show temperature range</label>
+            <input type="checkbox" id="probRange">
+          </div>
+          <div class="settings-option">
+            <label for="timeFormat">Time format</label>
+            <select id="timeFormat">
+              <option value="24">24-hour</option>
+              <option value="12">12-hour</option>
+            </select>
+          </div>
         </div>
-        <div class="settings-option">
-          <label for="timeFormat">Time format</label>
-          <select id="timeFormat">
-            <option value="24">24-hour</option>
-            <option value="12">12-hour</option>
-          </select>
-        </div>
-        </div>
+        
         <div class="settings-section">
-        <h3>Language</h3>
-        <div class="settings-option">
-          <label for="languagePlain">Plain</label>
-          <input type="radio" id="languagePlain" name="language" value="plain">
-        </div>
-        <div class="settings-option">
-          <label for="languageHuman">Human</label>
-          <input type="radio" id="languageHuman" name="language" value="human" checked>
-        </div>
-        </div>
-        <div class="settings-section">
-        <h3>Data sources</h3>
-        <p>Open-Meteo, WeatherAPI.com & MET Norway. Combined into a median forecast.</p>
-        </div>
-        <div class="settings-section">
-        <h3>About</h3>
-        <p>Version 1.0</p>
+          <h3>About</h3>
+          <p>Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com & MET Norway to give you a more reliable prediction.</p>
+          <p style="margin-top:8px;opacity:0.6;">Version 1.1</p>
         </div>
       </div>
     </section>
@@ -172,10 +157,6 @@
       <button id="navSettings">Settings</button>
     </nav>
   </div>
-
-  <div id="heatOverlay"></div>
-
-  <footer class="footer">Data from Open-Meteo, WeatherAPI.com & MET Norway</footer>
 
   <script src="assets/app.js"></script>
 </body>
