@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rain: { en: "Rain's here.", af: "Dit reën.", zu: "Imvula ikhona.", xh: "Imvula ikhona.", st: "Pula e a na." },
       'rain-possible': { en: "Might rain.", af: "Dalk reën.", zu: "Kungase line.", xh: "Mhlawumbi iya kuna.", st: "Mohlomong pula." },
       cloudy: { en: "Cloudy vibes.", af: "Bewolk vandag.", zu: "Kunamafu.", xh: "Linamafu.", st: "Maru a teng." },
-      wind: { en: "Wind's up.", af: "Dis waai.", zu: "Umoya uyavunguza.", xh: "Umoya uvuthuza.", st: "Moea o a foka." },
+      wind: { en: "Wind's up.", af: "Dit waai.", zu: "Umoya uyavunguza.", xh: "Umoya uvuthuza.", st: "Moea o a foka." },
       cold: { en: "It's chilly.", af: "Dis koud.", zu: "Kuyabanda.", xh: "Kuyabanda.", st: "Ho a bata." },
       heat: { en: "It's hot.", af: "Dis warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho tjhesa." },
       uv: { en: "UV's hectic.", af: "UV is hoog.", zu: "I-UV iphezulu.", xh: "I-UV iphezulu.", st: "UV e hodimo." },
@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       weekend: {
         en: ["Braai weather, boet!", "Fire up the Weber!", "Perfect for a jol outside.", "Get the tongs ready!", "Beach or braai? Both!", "The ancestors approve."],
-        af: ["Braaiweer, boet!", "Maak die Weber aan!", "Perfek vir 'n jol buite.", "Kry die tang gereed!", "Strand of braai? Albei!", "Die voorouers keur goed."],
+        af: ["Braaiweer, boet!", "Steek die Weber aan!", "Perfek vir 'n jol buite.", "Kry die tang gereed!", "Strand of braai? Albei!", "Die voorouers keur goed."],
         zu: ["Izulu lokosa, boet!", "Basa i-Weber!", "Kuhle ukujabulela ngaphandle.", "Lungisa ama-tong!", "Ibhishi noma ukosa? Kokubili!", "Okhokho bayavuma."],
         xh: ["Imozulu yokugrila, boet!", "Basa i-Weber!", "Ilungele ukonwabela ngaphandle.", "Lungisa ii-tong!", "Ibhitshi okanye ukugrila? Zombini!", "Ooyihlomkhulu bayavuma."],
         st: ["Leholimo la braai, boet!", "Chesa Weber!", "E lokile ho ithabisa kantle.", "Lokisetsa ditong!", "Lebopo kapa braai? Ka bobedi!", "Baholo-holo ba ea lumela."]
