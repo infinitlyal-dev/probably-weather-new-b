@@ -285,8 +285,10 @@ body.modal-open {
 .screenPanel {
   position: fixed;
   top: 100px;
-  left: 16px;
-  right: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 500px;
   bottom: calc(70px + env(safe-area-inset-bottom));
   background: rgba(255,255,255,0.12);
   -webkit-backdrop-filter: blur(20px) saturate(120%);
@@ -332,121 +334,114 @@ body.modal-open {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* ========== HOURLY FORECAST - HORIZONTAL SCROLL ========== */
+/* ========== HOURLY FORECAST - VERTICAL LIST LAYOUT ========== */
 .hourly-screen .screen-panel-body {
   padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
 .hourly-timeline {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 16px;
-  padding-right: 24px;
+  flex-direction: column;
+  padding: 0;
 }
 
 .hourly-card {
-  flex-shrink: 0;
-  width: 70px;
-  height: auto;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px;
-  padding: 14px 8px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 55px 40px 1fr 50px;
   align-items: center;
-  gap: 6px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  gap: 12px;
+  background: transparent;
+  width: 100%;
+}
+
+.hourly-card:last-child {
+  border-bottom: none;
+}
+
+.hourly-card .weather-icon {
+  font-size: 1.4rem;
+  text-align: center;
 }
 
 .hour-time {
-  font-size: 0.7rem;
-  opacity: 0.7;
+  font-size: 0.9rem;
   font-weight: 500;
-}
-
-.hour-time .weather-icon {
-  display: block;
-  font-size: 1.4rem;
-  margin-bottom: 2px;
+  opacity: 0.9;
 }
 
 .hour-temp {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  color: #ff9500;
 }
 
 .hour-detail {
-  font-size: 0.6rem;
+  font-size: 0.85rem;
   opacity: 0.7;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.hour-detail .detail-label {
-  display: none;
+  text-align: right;
 }
 
 .hour-detail .detail-value {
   font-weight: 500;
 }
 
-/* Hide the precip bar in compact view */
-.hourly-card .precip-bar {
-  display: none;
-}
-
-/* ========== 7-DAY FORECAST - HORIZONTAL SCROLL ========== */
+/* ========== 7-DAY FORECAST - VERTICAL LIST LAYOUT ========== */
 .week-screen .screen-panel-body {
   padding: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
 .daily-cards {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 16px;
-  padding-right: 24px;
+  flex-direction: column;
+  padding: 0;
 }
 
 .daily-card {
-  flex-shrink: 0;
-  width: 85px;
-  height: auto;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px;
-  padding: 14px 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 50px 40px 50px 45px 1fr 45px;
   align-items: center;
-  gap: 6px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  gap: 8px;
+  background: transparent;
+  width: 100%;
+}
+
+.daily-card:last-child {
+  border-bottom: none;
+}
+
+.daily-card .weather-icon {
+  font-size: 1.4rem;
+  text-align: center;
 }
 
 .day-name {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  opacity: 0.8;
-}
-
-.day-name .weather-icon {
-  display: block;
-  font-size: 1.5rem;
-  margin-bottom: 2px;
+  opacity: 0.9;
 }
 
 .day-temp {
   font-size: 1.1rem;
   font-weight: 700;
+  color: #ff9500;
+  text-align: center;
+}
+
+.day-temp.day-low {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.6;
+  color: inherit;
 }
 
 .day-hero {
@@ -457,40 +452,28 @@ body.modal-open {
   padding: 3px 6px;
   background: rgba(255,255,255,0.15);
   border-radius: 6px;
-  margin: 2px 0;
+  white-space: nowrap;
+  text-align: center;
+  justify-self: start;
+}
+
+.day-hero-placeholder {
+  min-width: 50px;
 }
 
 .day-detail {
-  font-size: 0.6rem;
+  font-size: 0.85rem;
   opacity: 0.7;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 2px 0;
-}
-
-.day-detail .detail-label {
-  opacity: 0.6;
-  font-size: 0.55rem;
-  text-transform: uppercase;
+  text-align: right;
 }
 
 .day-detail .detail-value {
   font-weight: 500;
 }
 
-/* Hide precip bar */
-.daily-card .precip-bar {
-  display: none;
-}
-
 /* ========== SEARCH SCREEN ========== */
 .search-screen {
-  max-width: 400px;
-  left: 50%;
-  transform: translateX(-50%);
-  right: auto;
-  width: calc(100% - 32px);
+  /* Uses base screenPanel centering */
 }
 
 .search-screen .screen-panel-header {
@@ -636,11 +619,7 @@ body.modal-open {
 
 /* ========== SETTINGS SCREEN ========== */
 .settings-screen {
-  max-width: 400px;
-  left: 50%;
-  transform: translateX(-50%);
-  right: auto;
-  width: calc(100% - 32px);
+  /* Uses base screenPanel centering */
 }
 
 .settings-screen .screen-panel-body {
