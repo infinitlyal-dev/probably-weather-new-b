@@ -45,10 +45,107 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location" };
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
-  const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32, RAIN_NONE: 10, RAIN_UNLIKELY: 30, RAIN_POSSIBLE: 55, UV_LOW: 3, UV_MODERATE: 6, UV_HIGH: 8, UV_VERY_HIGH: 11 };
+  const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32 };
 
-  // ========== TRANSLATIONS ==========
-  const TRANSLATIONS = {
+  // ========== FULL UI TRANSLATIONS ==========
+  const T = {
+    // Navigation
+    nav: {
+      home: { en: "Home", af: "Tuis", zu: "Ikhaya", xh: "Ikhaya", st: "Lapeng" },
+      hourly: { en: "Hourly", af: "Uurliks", zu: "Ngamahora", xh: "Ngeyure", st: "Ka hora" },
+      week: { en: "Week", af: "Week", zu: "Iviki", xh: "Iveki", st: "Beke" },
+      search: { en: "Search", af: "Soek", zu: "Sesha", xh: "Khangela", st: "Batla" },
+      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" }
+    },
+    // Screen titles
+    screens: {
+      hourly: { en: "Hourly", af: "Uurliks", zu: "Ngamahora", xh: "Ngeyure", st: "Ka hora" },
+      week: { en: "7-Day", af: "7-Dae", zu: "Izinsuku-7", xh: "Intsuku-7", st: "Matsatsi-7" },
+      search: { en: "Search", af: "Soek", zu: "Sesha", xh: "Khangela", st: "Batla" },
+      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" }
+    },
+    // Search screen
+    search: {
+      placeholder: { en: "Search for a place", af: "Soek 'n plek", zu: "Sesha indawo", xh: "Khangela indawo", st: "Batla sebaka" },
+      cancel: { en: "Cancel", af: "Kanselleer", zu: "Khansela", xh: "Rhoxisa", st: "Hlakola" },
+      savedPlaces: { en: "Saved Places", af: "Gestoorde Plekke", zu: "Izindawo Ezigciniwe", xh: "Iindawo Ezigciniweyo", st: "Libaka tse Bolokiloeng" },
+      recent: { en: "Recent", af: "Onlangs", zu: "Okwakamuva", xh: "Okutsha", st: "Tsa morao tjena" },
+      noSaved: { en: "No saved places yet.", af: "Nog geen gestoorde plekke nie.", zu: "Azikho izindawo ezigciniwe.", xh: "Akukho ndawo igciniweyo.", st: "Ha ho libaka tse bolokiloeng." },
+      noRecent: { en: "No recent searches yet.", af: "Nog geen onlangse soektogte nie.", zu: "Azikho ukusesha kwakamuva.", xh: "Akukho kukhangela kwakutsha.", st: "Ha ho ho batla ha morao tjena." },
+      clearRecents: { en: "Clear recents", af: "Verwyder onlangs", zu: "Susa okamuva", xh: "Susa okutsha", st: "Hlakola tsa morao" },
+      manage: { en: "Manage", af: "Bestuur", zu: "Phatha", xh: "Lawula", st: "Tsamaisa" },
+      done: { en: "Done", af: "Klaar", zu: "Kwenziwe", xh: "Kwenziwe", st: "Ho phethiloe" }
+    },
+    // Settings screen
+    settings: {
+      units: { en: "Units", af: "Eenhede", zu: "Iziyunithi", xh: "Iiyunithi", st: "Diyuniti" },
+      temperature: { en: "Temperature", af: "Temperatuur", zu: "Izinga lokushisa", xh: "Ubushushu", st: "Mocheso" },
+      windSpeed: { en: "Wind speed", af: "Windspoed", zu: "Isivinini somoya", xh: "Isantya somoya", st: "Lebelo la moea" },
+      display: { en: "Display", af: "Vertoon", zu: "Ukubonisa", xh: "Ukubonisa", st: "Bonts'a" },
+      showRange: { en: "Show temperature range", af: "Wys temperatuurreeks", zu: "Bonisa ibanga lokushisa", xh: "Bonisa uluhlu lobushushu", st: "Bonts'a sekhahla sa mocheso" },
+      timeFormat: { en: "Time format", af: "Tydformaat", zu: "Ifomethi yesikhathi", xh: "Ifomathi yexesha", st: "Sebopeho sa nako" },
+      language: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
+      wittyIn: { en: "Witty lines in", af: "Snaakse lyne in", zu: "Imigqa ehlekisayo nge", xh: "Imigca ehlekisayo nge", st: "Mela e monate ka" },
+      about: { en: "About", af: "Aangaande", zu: "Mayelana", xh: "Malunga", st: "Mabapi" },
+      aboutText: { 
+        en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com & MET Norway to give you a more reliable prediction.",
+        af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com & MET Norway om jou 'n meer betroubare voorspelling te gee.",
+        zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com & MET Norway ukukunikeza isibikezelo esithembekile.",
+        xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com & MET Norway ukukunika isithembiso esithembekileyo.",
+        st: "Probably Weather e kopanya diponelopele tse tsoang ho Open-Meteo, WeatherAPI.com & MET Norway ho u fa ponelopele e tšepahalang."
+      }
+    },
+    // Sidebar
+    sidebar: {
+      todaysHero: { en: "Today's Hero:", af: "Vandag se Held:", zu: "Iqhawe Lanamuhla:", xh: "Iqhawe Lanamhlanje:", st: "Mohale oa Kajeno:" },
+      sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
+    },
+    // Weather byline terms
+    weather: {
+      wind: { en: "Wind", af: "Wind", zu: "Umoya", xh: "Umoya", st: "Moea" },
+      rain: { en: "Rain", af: "Reën", zu: "Imvula", xh: "Imvula", st: "Pula" },
+      uv: { en: "UV", af: "UV", zu: "UV", xh: "UV", st: "UV" },
+      none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
+      unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakwenzeka", xh: "Akunakwenzeka", st: "Ha ho kgonehe" },
+      possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
+      likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
+      low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
+      moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
+      high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
+      veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" }
+    },
+    // Day hero badges
+    badges: {
+      rainy: { en: "Rainy", af: "Reënerig", zu: "Imvula", xh: "Imvula", st: "Pula" },
+      showers: { en: "Showers", af: "Buie", zu: "Izihlambi", xh: "Iimvula", st: "Lipula" },
+      highUV: { en: "High UV", af: "Hoë UV", zu: "UV Ephezulu", xh: "UV Ephezulu", st: "UV e Phahameng" },
+      hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
+      cold: { en: "Cold", af: "Koud", zu: "Kubanda", xh: "Kubanda", st: "Ho bata" },
+      uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
+    },
+    // Hero labels
+    heroLabels: {
+      storm: { en: "Severe weather", af: "Erge weer", zu: "Isimo sezulu esibi", xh: "Imozulu embi", st: "Leholimo le lebe" },
+      rain: { en: "Wet conditions", af: "Nat toestande", zu: "Izimo ezimanzi", xh: "Iimeko ezimanzi", st: "Maemo a metsi" },
+      'rain-possible': { en: "Possible showers", af: "Moontlike buie", zu: "Imvula engenzeka", xh: "Imvula enokubakho", st: "Lipula tse ka bang teng" },
+      wind: { en: "Gusty winds", af: "Sterk wind", zu: "Umoya onamandla", xh: "Imimoya enamandla", st: "Meea e matla" },
+      cold: { en: "Chilly", af: "Koud", zu: "Kubanda", xh: "Kubanda", st: "Ho bata" },
+      heat: { en: "Very hot", af: "Baie warm", zu: "Kushisa kakhulu", xh: "Kushushu kakhulu", st: "Ho tjhesa haholo" },
+      uv: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e phahameng" },
+      fog: { en: "Low visibility", af: "Lae sigbaarheid", zu: "Ukubonakala okuphansi", xh: "Ukubonakala okuphantsi", st: "Pono e tlase" },
+      clear: { en: "Pleasant", af: "Aangenaam", zu: "Kumnandi", xh: "Kumnandi", st: "Ho monate" }
+    },
+    // Day names (short)
+    days: {
+      sun: { en: "Sun", af: "Son", zu: "Son", xh: "Caw", st: "Sont" },
+      mon: { en: "Mon", af: "Maa", zu: "Mso", xh: "Mvu", st: "Mant" },
+      tue: { en: "Tue", af: "Din", zu: "Bil", xh: "Lwes", st: "Lab" },
+      wed: { en: "Wed", af: "Woe", zu: "Tha", xh: "Tha", st: "Lar" },
+      thu: { en: "Thu", af: "Don", zu: "Sin", xh: "Sin", st: "Labo" },
+      fri: { en: "Fri", af: "Vry", zu: "Hla", xh: "Hlanu", st: "Laboh" },
+      sat: { en: "Sat", af: "Sat", zu: "Mgq", xh: "Mgqi", st: "Moq" }
+    },
+    // Headlines
     headlines: {
       storm: { en: "Storms rolling in.", af: "Storm op pad.", zu: "Isiphepho siyeza.", xh: "Isaqhwithi siyeza.", st: "Ledimo le a tla." },
       rain: { en: "Rain's here.", af: "Dit reën.", zu: "Imvula ikhona.", xh: "Imvula ikhona.", st: "Pula e a na." },
@@ -61,7 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
       fog: { en: "Foggy out there.", af: "Dis mistig.", zu: "Kunenkungu.", xh: "Linenkungula.", st: "Ho na le mohodi." },
       clear: { en: "Clear skies.", af: "Helder lug.", zu: "Izulu lihlanzekile.", xh: "Isibhakabhaka sihlanzekile.", st: "Lehodimo le hlakileng." }
     },
-    wittyLines: {
+    // Witty lines
+    witty: {
       storm: {
         en: ["Jislaaik, stay inside!", "Thunder's grumbling, hey.", "Not even the taxi's running.", "Eskom wishes it had this power.", "Cancel everything, seriously.", "Even the hadedas are quiet."],
         af: ["Jinne, bly binne!", "Die donder dreun.", "Selfs die taxi ry nie.", "Eskom wens hy het hierdie krag.", "Kanselleer alles, ernstig.", "Selfs die hadedas is stil."],
@@ -92,17 +190,17 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       uv: {
         en: ["Sunscreen is not optional.", "SPF 50 or regret it.", "The sun's not playing.", "Seek shade, my friend.", "Protect that face!"],
-        af: ["Sonbrand room is nie opsioneel nie.", "SPF 50 of jy sal spyt wees.", "Die son speel nie.", "Soek skaduwee, my vriend.", "Beskerm daai gesig!"],
+        af: ["Sonbrandroom is nie opsioneel nie.", "SPF 50 of jy sal spyt wees.", "Die son speel nie.", "Soek skaduwee, my vriend.", "Beskerm daai gesig!"],
         zu: ["Isivikelo selanga asikhona ukukhetha.", "I-SPF 50 noma uzozisola.", "Ilanga alidlali.", "Funa umthunzi, mngane wami.", "Vikela ubuso bakho!"],
         xh: ["Ikhrimu yelanga ayinakukhethwa.", "I-SPF 50 okanye uya kuzisola.", "Ilanga alidlali.", "Funa umthunzi, mhlobo wam.", "Khusela elo buso!"],
         st: ["Setofo sa letsatsi ha se kgetho.", "SPF 50 kapa o tla itshola.", "Letsatsi ha le bapale.", "Batla moriti, motsoalle oa ka.", "Sireletsa sefahleho seo!"]
       },
       wind: {
-        en: ["Hold onto your hat!", "The southeaster's here.", "Table Mountain's tablecloth is out.", "Doors will slam today.", "The Cape Doctor is in.", "Perfect for drying washing!"],
-        af: ["Hou jou hoed vas!", "Die suidooster is hier.", "Tafelberg se tafeldoek is uit.", "Deure gaan klap vandag.", "Die Kaapse Dokter is in.", "Perfek om wasgoed te droog!"],
-        zu: ["Bamba isigqoko sakho!", "Umoya waseningizimu ukhona.", "Indwangu yeTafel Mountain iphumile.", "Iminyango izoshayeka namuhla.", "UDokotela waseKapa ukhona.", "Kuhle ukuomisa izingubo!"],
-        xh: ["Bamba umnqwazi wakho!", "Umoya wasemzantsi ulapha.", "Ilaphu leTable Mountain liphumile.", "Iminyango iza kubetha namhlanje.", "UGqirha waseKapa ulapha.", "Ilungile ukuomisa impahla!"],
-        st: ["Tšoara katiba ea hao!", "Moea oa boroa o teng.", "Lesela la Table Mountain le tšoeu.", "Menyako e tla otla kajeno.", "Ngaka ea Cape e teng.", "Ho lokile ho omisa diaparo!"]
+        en: ["Hold onto your hat!", "The southeaster's here.", "Table Mountain's tablecloth is out.", "The Cape Doctor is in.", "Perfect for drying washing!"],
+        af: ["Hou jou hoed vas!", "Die suidooster is hier.", "Tafelberg se tafeldoek is uit.", "Die Kaapse Dokter is in.", "Perfek om wasgoed te droog!"],
+        zu: ["Bamba isigqoko sakho!", "Umoya waseningizimu ukhona.", "Indwangu yeTafel Mountain iphumile.", "UDokotela waseKapa ukhona.", "Kuhle ukuomisa izingubo!"],
+        xh: ["Bamba umnqwazi wakho!", "Umoya wasemzantsi ulapha.", "Ilaphu leTable Mountain liphumile.", "UGqirha waseKapa ulapha.", "Ilungile ukuomisa impahla!"],
+        st: ["Tšoara katiba ea hao!", "Moea oa boroa o teng.", "Lesela la Table Mountain le tšoeu.", "Ngaka ea Cape e teng.", "Ho lokile ho omisa diaparo!"]
       },
       cold: {
         en: ["Ja, it's jersey weather.", "Time to find that beanie.", "Cold enough for soup.", "Hot chocolate kind of day.", "Layer up, buttercup."],
@@ -112,11 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
         st: ["E, ke leholimo la jersey.", "Nako ea ho fumana beanie eo.", "Ho bata ho lekana le soupa.", "Letsatsi la tšokolate e chesang.", "Apara liaparo tse ngata."]
       },
       heat: {
-        en: ["Jislaaik, it's hot!", "Melting is a real possibility.", "Ice cream is a necessity.", "Shorts and slops only.", "Stay hydrated, boet.", "The pool is calling.", "Hotter than a bakkie bonnet."],
-        af: ["Jinne, dis warm!", "Smelt is 'n werklike moontlikheid.", "Roomys is 'n noodsaaklikheid.", "Net kortbroeke en slops.", "Bly gehidreer, boet.", "Die swembad roep.", "Warmer as 'n bakkie bonnet."],
-        zu: ["Yoh, kushisa!", "Ukuncibilika kungenzeka ngempela.", "I-ice cream iyadingeka.", "Amabhulukwe amafushane kuphela.", "Hlala unamanzi, boet.", "Ipulazi liyabiza.", "Kushisa ukudlula ibhonnethi yebakkie."],
-        xh: ["Yhuu, kushushu!", "Ukuqina kunokwenzeka.", "I-ice cream iyafuneka.", "Iibhulukhwe ezimfutshane kuphela.", "Hlala unamanzi, boet.", "Ipuli iyabiza.", "Kushushu ngaphezu kwebhonethi yebakkie."],
-        st: ["Eish, ho tjhesa!", "Ho qhibiliha ho ka etsahala.", "Ice cream ke tlhoko.", "Feela borikhoe bo bokgutshoane.", "Dula o na le metsi, boet.", "Pool e a bitsa.", "Ho tjhesa ho feta bonete ea bakkie."]
+        en: ["Jislaaik, it's hot!", "Melting is a real possibility.", "Ice cream is a necessity.", "Stay hydrated, boet.", "The pool is calling.", "Hotter than a bakkie bonnet."],
+        af: ["Jinne, dis warm!", "Smelt is 'n werklike moontlikheid.", "Roomys is 'n noodsaaklikheid.", "Bly gehidreer, boet.", "Die swembad roep.", "Warmer as 'n bakkie bonnet."],
+        zu: ["Yoh, kushisa!", "Ukuncibilika kungenzeka ngempela.", "I-ice cream iyadingeka.", "Hlala unamanzi, boet.", "Ipulazi liyabiza.", "Kushisa ukudlula ibhonnethi yebakkie."],
+        xh: ["Yhuu, kushushu!", "Ukuqina kunokwenzeka.", "I-ice cream iyafuneka.", "Hlala unamanzi, boet.", "Ipuli iyabiza.", "Kushushu ngaphezu kwebhonethi yebakkie."],
+        st: ["Eish, ho tjhesa!", "Ho qhibiliha ho ka etsahala.", "Ice cream ke tlhoko.", "Dula o na le metsi, boet.", "Pool e a bitsa.", "Ho tjhesa ho feta bonete ea bakkie."]
       },
       fog: {
         en: ["Can't see a thing, hey.", "Driving slow is the vibe.", "Mysterious morning.", "Watch out for the other cars."],
@@ -140,26 +238,32 @@ document.addEventListener("DOMContentLoaded", () => {
         st: ["Leholimo la braai, boet!", "Chesa Weber!", "E lokile ho ithabisa kantle.", "Lokisetsa ditong!", "Lebopo kapa braai? Ka bobedi!", "Baholo-holo ba ea lumela."]
       }
     },
-    ui: {
-      todaysHero: { en: "Today's Hero:", af: "Vandag se Held:", zu: "Iqhawe Lanamuhla:", xh: "Iqhawe Lanamhlanje:", st: "Mohale oa Kajeno:" },
-      heroLabels: {
-        storm: { en: "Severe weather", af: "Erge weer", zu: "Isimo sezulu esibi", xh: "Imozulu embi", st: "Leholimo le lebe" },
-        rain: { en: "Wet conditions", af: "Nat toestande", zu: "Izimo ezimanzi", xh: "Iimeko ezimanzi", st: "Maemo a metsi" },
-        'rain-possible': { en: "Possible showers", af: "Moontlike buie", zu: "Imvula engenzeka", xh: "Imvula enokubakho", st: "Lipula tse ka bang teng" },
-        wind: { en: "Gusty winds", af: "Sterk wind", zu: "Umoya onamandla", xh: "Imimoya enamandla", st: "Meea e matla" },
-        cold: { en: "Chilly", af: "Koud", zu: "Kubanda", xh: "Kubanda", st: "Ho bata" },
-        heat: { en: "Very hot", af: "Baie warm", zu: "Kushisa kakhulu", xh: "Kushushu kakhulu", st: "Ho tjhesa haholo" },
-        uv: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e phahameng" },
-        fog: { en: "Low visibility", af: "Lae sigbaarheid", zu: "Ukubonakala okuphansi", xh: "Ukubonakala okuphantsi", st: "Pono e tlase" },
-        clear: { en: "Pleasant", af: "Aangenaam", zu: "Kumnandi", xh: "Kumnandi", st: "Ho monate" }
-      }
+    // Toasts
+    toasts: {
+      saved: { en: "Saved!", af: "Gestoor!", zu: "Kugciniwe!", xh: "Igciniwe!", st: "E bolokiloe!" },
+      removed: { en: "Removed", af: "Verwyder", zu: "Isusiwe", xh: "Isusiwe", st: "E tlositsoe" },
+      maxPlaces: { en: "Max 5 places. Remove one first.", af: "Maks 5 plekke. Verwyder een eers.", zu: "Izindawo ezi-5 kuphela. Susa eyodwa kuqala.", xh: "Iindawo ezi-5 kuphela. Susa enye kuqala.", st: "Libaka tse 5 feela. Tlosa e le 'ngoe pele." },
+      alreadySaved: { en: "Already saved!", af: "Reeds gestoor!", zu: "Seyigciniwe!", xh: "Sele igciniwe!", st: "E se e bolokiloe!" },
+      cleared: { en: "Cleared", af: "Skoongemaak", zu: "Kususiwe", xh: "Kucociwe", st: "E hlakiloe" },
+      noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "Akukho ndawo", st: "Ha ho libaka" }
+    },
+    // Misc
+    misc: {
+      loading: { en: "Loading...", af: "Laai...", zu: "Iyalayisha...", xh: "Iyalayisha...", st: "E a jarolla..." },
+      error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
+      couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana imozulu.", st: "Ha e khone ho fumana boemo ba leholimo." }
     }
+  };
+
+  // Helper to get translation
+  const t = (category, key) => {
+    const lang = settings.lang || 'en';
+    return T[category]?.[key]?.[lang] || T[category]?.[key]?.en || key;
   };
 
   // ========== STATE ==========
   let activePlace = null, homePlace = null, lastPayload = null, manageMode = false;
   window.__PW_LAST_NORM = null;
-  let state = { city: "Cape Town" };
   const pendingFavMeta = new Set();
   const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', range: 'display.range', time: 'format.time', lang: 'lang' };
   const DEFAULT_SETTINGS = { temp: 'C', wind: 'kmh', range: false, time: '24', lang: 'en' };
@@ -169,29 +273,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
   const round0 = (n) => isNum(n) ? Math.round(n) : null;
-  const round1 = (n) => isNum(n) ? Math.round(n * 10) / 10 : null;
-  const loadJSON = (key, fallback) => { try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fallback; } catch { return fallback; } };
+  const loadJSON = (key, fb) => { try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fb; } catch { return fb; } };
   const saveJSON = (key, val) => { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} };
   const samePlace = (a, b) => a && b && Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) && Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
   const favoriteKey = (p) => `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
   const isPlaceholderName = (name) => { const v = String(name || '').trim(); return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v); };
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+  const conditionEmoji = (key) => { const m = { storm: '⛈️', rain: '🌧️', wind: '💨', cold: '❄️', heat: '🔥', fog: '🌫️', clear: '☀️' }; return m[String(key || '').toLowerCase()] || '⛅'; };
 
-  function conditionEmoji(key) {
-    switch (String(key || '').toLowerCase()) {
-      case 'storm': return '⛈️'; case 'rain': return '🌧️'; case 'wind': return '💨'; case 'cold': return '❄️';
-      case 'heat': return '🔥'; case 'fog': return '🌫️'; case 'clear': return '☀️'; default: return '⛅';
-    }
-  }
-
-  function loadSettings() {
-    settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind),
-      range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang) };
-  }
-  function saveSettings() {
-    saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind);
-    saveJSON(SETTINGS_KEYS.range, settings.range); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang);
-  }
+  function loadSettings() { settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang) }; }
+  function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.range, settings.range); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
   const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : `${round0(kph)} km/h`;
@@ -201,13 +292,45 @@ document.addEventListener("DOMContentLoaded", () => {
     if (which) { which.classList.remove("hidden"); which.removeAttribute('hidden'); }
     document.body.classList.toggle('modal-open', which && which !== screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
+    const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
-  function showToast(message, duration = 3000) {
-    if (!toast) return; toast.textContent = message; toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), duration);
+  function showToast(message, duration = 3000) { if (!toast) return; toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), duration); }
+
+  // ========== UPDATE UI LANGUAGE ==========
+  function updateUILanguage() {
+    // Nav
+    if (navHome) navHome.textContent = t('nav', 'home');
+    if (navHourly) navHourly.textContent = t('nav', 'hourly');
+    if (navWeek) navWeek.textContent = t('nav', 'week');
+    if (navSearch) navSearch.textContent = t('nav', 'search');
+    if (navSettings) navSettings.textContent = t('nav', 'settings');
+    // Screen titles
+    const hourlyTitle = screenHourly?.querySelector('.screen-title'); if (hourlyTitle) hourlyTitle.textContent = t('screens', 'hourly');
+    const weekTitle = screenWeek?.querySelector('.screen-title'); if (weekTitle) weekTitle.textContent = t('screens', 'week');
+    const searchTitle = screenSearch?.querySelector('.screen-title'); if (searchTitle) searchTitle.textContent = t('screens', 'search');
+    const settingsTitle = screenSettings?.querySelector('.screen-title'); if (settingsTitle) settingsTitle.textContent = t('screens', 'settings');
+    // Search screen
+    if (searchInput) searchInput.placeholder = t('search', 'placeholder');
+    if (searchCancel) searchCancel.textContent = t('search', 'cancel');
+    if (clearRecentsBtn) clearRecentsBtn.textContent = t('search', 'clearRecents');
+    if (manageFavorites) manageFavorites.textContent = manageMode ? t('search', 'done') : t('search', 'manage');
+    const savedH = screenSearch?.querySelector('.section h3'); if (savedH) savedH.textContent = t('search', 'savedPlaces');
+    const recentH = screenSearch?.querySelectorAll('.section h3')[1]; if (recentH) recentH.textContent = t('search', 'recent');
+    // Settings labels
+    const unitsH = screenSettings?.querySelector('.settings-section h3'); if (unitsH) unitsH.textContent = t('settings', 'units');
+    const tempLabel = unitsTempSelect?.closest('.settings-option')?.querySelector('label'); if (tempLabel) tempLabel.textContent = t('settings', 'temperature');
+    const windLabel = unitsWindSelect?.closest('.settings-option')?.querySelector('label'); if (windLabel) windLabel.textContent = t('settings', 'windSpeed');
+    const displayH = screenSettings?.querySelectorAll('.settings-section h3')[1]; if (displayH) displayH.textContent = t('settings', 'display');
+    const rangeLabel = probRangeToggle?.closest('.settings-option')?.querySelector('label'); if (rangeLabel) rangeLabel.textContent = t('settings', 'showRange');
+    const timeLabel = timeFormatSelect?.closest('.settings-option')?.querySelector('label'); if (timeLabel) timeLabel.textContent = t('settings', 'timeFormat');
+    const langH = screenSettings?.querySelectorAll('.settings-section h3')[2]; if (langH) langH.textContent = t('settings', 'language');
+    const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'wittyIn');
+    const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
+    const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
+    // Sidebar
+    if (extremeLabelEl) extremeLabelEl.textContent = t('sidebar', 'todaysHero');
+    const sourcesLabel = document.querySelector('.card-sources .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
   }
 
   // ========== WEATHER LOGIC ==========
@@ -215,43 +338,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const condKey = (norm.conditionKey || '').toLowerCase(), rain = norm.rainPct, cloudPct = Array.isArray(norm.hourly) && norm.hourly[0]?.cloudPct;
     if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) return 'fog';
-    if (isNum(rain) && rain >= 50) return 'rain';
-    if (isNum(rain) && rain >= 30) return 'rain-possible';
+    if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain-possible';
     if ((isNum(cloudPct) && cloudPct >= 60) || condKey.includes('cloud') || condKey.includes('overcast')) return 'cloudy';
     return 'clear';
   }
   function computeTodaysHero(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase(), rain = norm.rainPct, wind = norm.windKph, hi = norm.todayHigh, uv = norm.uv;
     if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
-    if (isNum(rain) && rain >= 50) return 'rain';
-    if (isNum(rain) && rain >= 30) return 'rain';
-    if (isNum(wind) && wind >= 20) return 'wind';
-    if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
-    if (isNum(hi) && hi <= 10) return 'cold';
-    if (isNum(uv) && uv >= 8) return 'uv';
-    if (isNum(hi) && hi <= THRESH.COLD_C) return 'cold';
-    return 'clear';
+    if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain';
+    if (isNum(wind) && wind >= 20) return 'wind'; if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
+    if (isNum(hi) && hi <= 10) return 'cold'; if (isNum(uv) && uv >= 8) return 'uv';
+    if (isNum(hi) && hi <= THRESH.COLD_C) return 'cold'; return 'clear';
   }
   function computeHomeDisplayCondition(norm) { const hero = computeTodaysHero(norm), sky = computeSkyCondition(norm); return hero !== 'clear' ? hero : sky; }
 
   // ========== TRANSLATED TEXT ==========
-  function getHeadline(condition) {
-    const lang = settings.lang || 'en', headlines = TRANSLATIONS.headlines[condition];
-    return headlines?.[lang] || headlines?.en || "Clear skies.";
-  }
-  function getHeroLabel(condition) {
-    const lang = settings.lang || 'en', labels = TRANSLATIONS.ui.heroLabels[condition];
-    return labels?.[lang] || labels?.en || "Pleasant";
-  }
-  function getWittyLine(condition, rainPct, maxC) {
-    const lang = settings.lang || 'en', day = new Date().getDay(), isWeekend = day === 0 || day === 5 || day === 6;
+  function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
+  function getHeroLabel(condition) { return T.heroLabels[condition]?.[settings.lang] || T.heroLabels[condition]?.en || "Pleasant"; }
+  function getWittyLine(condition) {
+    const day = new Date().getDay(), isWeekend = day === 0 || day === 5 || day === 6;
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
-      const wl = TRANSLATIONS.wittyLines.weekend[lang] || TRANSLATIONS.wittyLines.weekend.en;
-      return wl[Math.floor(Math.random() * wl.length)];
+      const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
-    const lines = TRANSLATIONS.wittyLines[condition];
-    const opts = lines?.[lang] || lines?.en || TRANSLATIONS.wittyLines.clear.en;
-    return opts[Math.floor(Math.random() * opts.length)];
+    const lines = T.witty[condition]?.[settings.lang] || T.witty[condition]?.en || T.witty.clear.en;
+    return lines[Math.floor(Math.random() * lines.length)];
+  }
+  function getDayBadge(d) {
+    const r = d.rainChance, u = d.uv, h = d.highC;
+    if (isNum(r) && r >= 50) return t('badges', 'rainy'); if (isNum(r) && r >= 30) return t('badges', 'showers');
+    if (isNum(u) && u >= 8) return t('badges', 'highUV'); if (isNum(h) && h >= THRESH.HOT_C) return t('badges', 'hot');
+    if (isNum(h) && h <= 10) return t('badges', 'cold'); if (isNum(u) && u >= 6) return t('badges', 'uvAlert'); return '';
+  }
+  function getTranslatedDayName(dayIndex) {
+    const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    return t('days', days[dayIndex]);
   }
 
   // ========== BACKGROUND & PARTICLES ==========
@@ -260,61 +380,41 @@ document.addEventListener("DOMContentLoaded", () => {
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const hour = new Date().getHours();
     const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
-    if (bgImg) {
-      bgImg.src = `${base}/${folder}/${timeOfDay}.jpg`;
-      bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; };
-    }
+    if (bgImg) { bgImg.src = `${base}/${folder}/${timeOfDay}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
   }
-  function createParticles(condition, count = 20) {
+  function createParticles(condition) {
     if (!particlesEl) return; particlesEl.innerHTML = '';
-    let particleClass = null, amount = count;
-    if (condition === 'rain' || condition === 'storm') { particleClass = 'rain'; amount = 28; }
-    else if (condition === 'cold') { particleClass = 'snow'; amount = 18; }
-    else if (condition === 'wind') { particleClass = 'wind'; amount = 16; }
-    if (!particleClass) return;
-    for (let i = 0; i < amount; i++) {
-      const p = document.createElement('div'); p.classList.add('particle', particleClass);
-      p.style.left = `${Math.random() * 100}%`; p.style.animationDelay = `${Math.random() * 2}s`; p.style.animationDuration = `${Math.random() * 3 + 2}s`;
-      particlesEl.appendChild(p);
-    }
+    let pc = null, amt = 20;
+    if (condition === 'rain' || condition === 'storm') { pc = 'rain'; amt = 28; }
+    else if (condition === 'cold') { pc = 'snow'; amt = 18; }
+    else if (condition === 'wind') { pc = 'wind'; amt = 16; }
+    if (!pc) return;
+    for (let i = 0; i < amt; i++) { const p = document.createElement('div'); p.classList.add('particle', pc); p.style.left = `${Math.random() * 100}%`; p.style.animationDelay = `${Math.random() * 2}s`; p.style.animationDuration = `${Math.random() * 3 + 2}s`; particlesEl.appendChild(p); }
   }
 
   // ========== API ==========
   async function reverseGeocode(lat, lon) {
     try {
       const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
-      if (!resp.ok) return null;
-      const data = await resp.json();
-      const city = data.address?.suburb || data.address?.city || data.address?.town || data.address?.village || data.address?.municipality || 'Unknown Location';
+      if (!resp.ok) return null; const data = await resp.json();
+      const city = data.address?.suburb || data.address?.city || data.address?.town || data.address?.village || data.address?.municipality || 'Unknown';
       return data.address?.country ? `${city}, ${data.address.country}` : city;
     } catch { return null; }
   }
-  async function resolvePlaceName(place) {
-    if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown';
-    if (!isPlaceholderName(place.name)) return place.name;
-    return await reverseGeocode(place.lat, place.lon) || place.name || 'Unknown';
-  }
-  async function fetchProbable(place) {
-    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
-    const resp = await fetch(url); if (!resp.ok) throw new Error('API error'); return await resp.json();
-  }
+  async function resolvePlaceName(place) { if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown'; if (!isPlaceholderName(place.name)) return place.name; return await reverseGeocode(place.lat, place.lon) || place.name || 'Unknown'; }
+  async function fetchProbable(place) { const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`; const resp = await fetch(url); if (!resp.ok) throw new Error('API error'); return await resp.json(); }
   function normalizePayload(payload) {
     const now = payload.now || {}, today = payload.daily?.[0] || {}, meta = payload.meta || {}, sources = meta.sources || [];
-    return { nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null,
-      rainPct: today.rainChance ?? now.rainChance ?? null, uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0),
-      conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || 'Weather today',
-      confidenceKey: payload.consensus?.confidenceKey || 'mixed', used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name),
-      hourly: payload.hourly || [], daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [] };
+    return { nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, rainPct: today.rainChance ?? now.rainChance ?? null, uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', confidenceKey: payload.consensus?.confidenceKey || 'mixed', used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name), hourly: payload.hourly || [], daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [] };
   }
 
   // ========== RENDER ==========
-  function renderLoading(name) { showLoader(true); safeText(locationEl, name); safeText(headlineEl, 'Loading...'); safeText(tempEl, '--°'); safeText(descriptionEl, '—'); safeText(extremeValueEl, '--'); }
-  function renderError(msg) { showLoader(false); safeText(headlineEl, 'Error'); safeText(descriptionEl, msg); }
+  function renderLoading(name) { showLoader(true); safeText(locationEl, name); safeText(headlineEl, t('misc', 'loading')); safeText(tempEl, '--°'); safeText(descriptionEl, '—'); safeText(extremeValueEl, '--'); }
+  function renderError(msg) { showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
-    const hero = heroOverride || window.__PW_LAST_HERO || computeTodaysHero(norm), lang = settings.lang || 'en';
-    safeText(extremeLabelEl, TRANSLATIONS.ui.todaysHero[lang] || TRANSLATIONS.ui.todaysHero.en);
-    safeText(extremeValueEl, getHeroLabel(hero));
+    const hero = heroOverride || window.__PW_LAST_HERO || computeTodaysHero(norm);
+    safeText(extremeLabelEl, t('sidebar', 'todaysHero')); safeText(extremeValueEl, getHeroLabel(hero));
     const sr = norm.sourceRanges || [];
     if (sr.length > 0) { safeText($('#confidenceValue'), sr.filter(s => isNum(s.minTemp) && isNum(s.maxTemp)).map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`).join('\n') || '--'); }
     else { safeText($('#confidenceValue'), { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' }[norm.confidenceKey] || 'Mixed'); }
@@ -324,36 +424,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const hi = norm.todayHigh, low = norm.todayLow, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
     document.body.className = `weather-${displayCondition}`;
-    let locationName = norm.locationName || activePlace?.name || 'My Location';
-    safeText(locationEl, locationName);
+    let locationName = norm.locationName || activePlace?.name || 'My Location'; safeText(locationEl, locationName);
     if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
-      const cp = activePlace;
-      reverseGeocode(activePlace.lat, activePlace.lon).then(cn => {
-        if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn;
-          if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); }
-        }
-      }).catch(() => {});
+      const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
     safeText(headlineEl, getHeadline(displayCondition));
     safeText(tempEl, `${isNum(low) ? formatTemp(low) : '--°'} – ${isNum(hi) ? formatTemp(hi) : '--°'}`);
-    safeText(descriptionEl, getWittyLine(displayCondition, rain, hi));
+    safeText(descriptionEl, getWittyLine(displayCondition));
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const ws = isNum(wind) ? formatWind(wind) : '--';
-      const rs = isNum(rain) ? (rain < 10 ? 'None' : rain < 30 ? 'Unlikely' : rain < 55 ? 'Possible' : 'Likely') : '--';
-      const us = isNum(uv) ? (uv < 3 ? 'Low' : uv < 6 ? 'Moderate' : uv < 8 ? 'High' : 'Very High') + ` (${round0(uv)})` : '--';
-      bylineEl.innerHTML = `Wind ${ws} • Rain ${rs} • UV ${us}`;
+      const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
+      let rs = '--'; if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
+      let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
+      bylineEl.innerHTML = `${windLabel} ${ws} • ${rainLabel} ${rs} • ${uvLabel} ${us}`;
     }
     const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
     [headlineEl, tempEl, descriptionEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
   }
-  function getWeatherIcon(rp, cp, tc) {
-    if (isNum(rp) && rp >= 50) return '🌧️'; if (isNum(rp) && rp >= 30) return '🌦️';
-    if (isNum(cp) && cp >= 70) return '☁️'; if (isNum(cp) && cp >= 40) return '⛅';
-    if (isNum(tc) && tc >= 30) return '🔥'; if (isNum(tc) && tc <= 5) return '❄️'; return '☀️';
-  }
+  function getWeatherIcon(rp, cp, tc) { if (isNum(rp) && rp >= 50) return '🌧️'; if (isNum(rp) && rp >= 30) return '🌦️'; if (isNum(cp) && cp >= 70) return '☁️'; if (isNum(cp) && cp >= 40) return '⛅'; if (isNum(tc) && tc >= 30) return '🔥'; if (isNum(tc) && tc <= 5) return '❄️'; return '☀️'; }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
     hourly.slice(0, 24).forEach((h, i) => {
@@ -363,19 +454,14 @@ document.addEventListener("DOMContentLoaded", () => {
       hourlyTimeline.appendChild(div);
     });
   }
-  function computeDayHero(d) {
-    const r = d.rainChance, u = d.uv, h = d.highC;
-    if (isNum(r) && r >= 50) return 'Rainy'; if (isNum(r) && r >= 30) return 'Showers';
-    if (isNum(u) && u >= 8) return 'High UV'; if (isNum(h) && h >= THRESH.HOT_C) return 'Hot';
-    if (isNum(h) && h <= 10) return 'Cold'; if (isNum(u) && u >= 6) return 'UV Alert'; return '';
-  }
   function renderWeek(daily) {
     if (!dailyCards) return; dailyCards.innerHTML = '';
     daily.forEach((d, i) => {
-      const dn = d.dayLabel || new Date(Date.now() + i * 86400000).toLocaleDateString('en-US', { weekday: 'short' });
-      const dh = computeDayHero(d), icon = getWeatherIcon(d.rainChance, d.cloudPct, d.highC);
+      const date = new Date(Date.now() + i * 86400000);
+      const dayName = getTranslatedDayName(date.getDay());
+      const badge = getDayBadge(d), icon = getWeatherIcon(d.rainChance, d.cloudPct, d.highC);
       const div = document.createElement('div'); div.classList.add('daily-card');
-      div.innerHTML = `<div class="day-name"><span class="weather-icon">${icon}</span>${dn}</div><div class="day-temp">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</div><div class="day-temp" style="font-size:0.8rem;opacity:0.7;">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</div>${dh ? `<div class="day-hero">${dh}</div>` : ''}<div class="day-detail"><span class="detail-label">Rain</span><span class="detail-value">${isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--%'}</span></div>`;
+      div.innerHTML = `<div class="day-name"><span class="weather-icon">${icon}</span>${dayName}</div><div class="day-temp">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</div><div class="day-temp" style="font-size:0.8rem;opacity:0.7;">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</div>${badge ? `<div class="day-hero">${badge}</div>` : ''}<div class="day-detail"><span class="detail-label">${t('weather', 'rain')}</span><span class="detail-value">${isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--%'}</span></div>`;
       dailyCards.appendChild(div);
     });
   }
@@ -385,12 +471,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (probRangeToggle) probRangeToggle.checked = !!settings.range;
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
     if (languageSelect) languageSelect.value = settings.lang;
+    updateUILanguage();
     if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily); }
+    renderFavorites(); renderRecents();
   }
   async function loadAndRender(place) {
     activePlace = place; renderLoading(place.name || 'My Location');
     try { const payload = await fetchProbable(place); lastPayload = payload; const norm = normalizePayload(payload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily); }
-    catch (e) { console.error("Load failed:", e); renderError("Couldn't fetch weather right now."); }
+    catch (e) { console.error("Load failed:", e); renderError(t('misc', 'couldntFetch')); }
   }
 
   // ========== FAVORITES & RECENTS ==========
@@ -398,39 +486,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadRecents = () => loadJSON(STORAGE.recents, []);
   const saveFavorites = (list) => saveJSON(STORAGE.favorites, list);
   const saveRecents = (list) => saveJSON(STORAGE.recents, list);
-
   function clearRecents() { localStorage.removeItem(STORAGE.recents); renderRecents(); }
   async function addFavorite(place) {
     let list = loadFavorites();
-    if (list.some(p => samePlace(p, place))) { showToast('Already saved!'); return; }
-    if (list.length >= 5) { showToast('Max 5 places. Remove one first.'); return; }
-    const rn = await resolvePlaceName(place);
-    list.unshift({ ...place, name: rn }); saveFavorites(list.slice(0, 5)); renderFavorites(); showToast(`Saved ${place.name}!`);
+    if (list.some(p => samePlace(p, place))) { showToast(t('toasts', 'alreadySaved')); return; }
+    if (list.length >= 5) { showToast(t('toasts', 'maxPlaces')); return; }
+    const rn = await resolvePlaceName(place); list.unshift({ ...place, name: rn }); saveFavorites(list.slice(0, 5)); renderFavorites(); showToast(t('toasts', 'saved'));
   }
   async function addRecentIfNew(place) {
     const favs = loadFavorites(); if (favs.some(p => samePlace(p, place))) return;
     const existing = loadRecents(); if (existing.some(p => samePlace(p, place))) return;
-    const rn = await resolvePlaceName(place);
-    saveRecents([{ ...place, name: rn }, ...existing.filter(p => !samePlace(p, { ...place, name: rn }))].slice(0, 20)); renderRecents();
+    const rn = await resolvePlaceName(place); saveRecents([{ ...place, name: rn }, ...existing.filter(p => !samePlace(p, { ...place, name: rn }))].slice(0, 20)); renderRecents();
   }
   async function toggleFavorite(place) {
     let list = loadFavorites();
-    if (list.some(p => samePlace(p, place))) { list = list.filter(p => !samePlace(p, place)); saveFavorites(list); renderFavorites(); showToast('Removed'); return; }
+    if (list.some(p => samePlace(p, place))) { list = list.filter(p => !samePlace(p, place)); saveFavorites(list); renderFavorites(); showToast(t('toasts', 'removed')); return; }
     await addFavorite(place);
   }
   async function ensureFavoriteMeta(place) {
     if (!place || !isNum(place.lat) || !isNum(place.lon) || (isNum(place.tempC) && place.conditionKey)) return;
     const key = favoriteKey(place); if (pendingFavMeta.has(key)) return; pendingFavMeta.add(key);
-    try { const payload = await fetchProbable(place); const norm = normalizePayload(payload); const list = loadFavorites(); const idx = list.findIndex(p => samePlace(p, place));
-      if (idx !== -1) { list[idx] = { ...list[idx], tempC: norm.nowTemp ?? null, conditionKey: norm.conditionKey ?? null }; saveFavorites(list); renderFavorites(); }
-    } catch {} finally { pendingFavMeta.delete(key); }
+    try { const norm = normalizePayload(await fetchProbable(place)); const list = loadFavorites(); const idx = list.findIndex(p => samePlace(p, place)); if (idx !== -1) { list[idx] = { ...list[idx], tempC: norm.nowTemp ?? null, conditionKey: norm.conditionKey ?? null }; saveFavorites(list); renderFavorites(); } } catch {} finally { pendingFavMeta.delete(key); }
   }
   function renderRecents() {
     if (!recentList) return; const list = loadRecents();
-    recentList.innerHTML = list.map(p => `<li class="recent-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>`).join('') || '<li style="opacity:0.6;cursor:default;">No recent searches yet.</li>';
-    recentList.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', () => { showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); });
-    });
+    recentList.innerHTML = list.map(p => `<li class="recent-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>`).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
+    recentList.querySelectorAll('li[data-lat]').forEach(li => { li.addEventListener('click', () => { showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); }); });
   }
   function renderFavorites() {
     if (!favoritesList) return; const list = loadFavorites();
@@ -439,61 +520,35 @@ document.addEventListener("DOMContentLoaded", () => {
       const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
       const rb = manageMode ? `<button class="remove-fav" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>` : '';
       return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><button class="fav-star" data-lat="${p.lat}" data-lon="${p.lon}">★</button><span class="fav-name">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
-    }).join('') || '<li style="opacity:0.6;cursor:default;">No saved places yet.</li>';
-    favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
-      span.addEventListener('click', () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); });
-    });
-    favoritesList.querySelectorAll('.fav-star').forEach(btn => {
-      btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); });
-    });
-    favoritesList.querySelectorAll('.remove-fav').forEach(btn => {
-      btn.addEventListener('click', (e) => { e.stopPropagation(); let list = loadFavorites(); list = list.filter(p => !samePlace(p, { lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) })); saveFavorites(list); renderFavorites(); showToast('Removed'); });
-    });
+    }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noSaved')}</li>`;
+    favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => { span.addEventListener('click', () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); }); });
+    favoritesList.querySelectorAll('.fav-star').forEach(btn => { btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); }); });
+    favoritesList.querySelectorAll('.remove-fav').forEach(btn => { btn.addEventListener('click', (e) => { e.stopPropagation(); let list = loadFavorites(); list = list.filter(p => !samePlace(p, { lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) })); saveFavorites(list); renderFavorites(); showToast(t('toasts', 'removed')); }); });
     list.forEach(p => ensureFavoriteMeta(p));
   }
 
   // ========== SEARCH ==========
   let searchTimeout = null, searchResults = [], activeSearchController = null, searchSeq = 0;
   const searchMiniCache = new Map();
-  function parseQuery(raw) {
-    const parts = raw.trim().split(/\s+/), last = parts[parts.length - 1];
-    const cm = { us: 'us', usa: 'us', uk: 'gb', britain: 'gb', uae: 'ae', sa: 'za', southafrica: 'za' };
-    const lk = last?.toLowerCase().replace(/[.,]/g, '');
-    const cc = cm[lk] || (lk && lk.length === 2 ? lk : null);
-    return { baseQuery: cc ? parts.slice(0, -1).join(' ') : raw.trim(), countryCode: cc };
-  }
   async function runSearch(query) {
     if (!query || query.length < 2) { renderSearchResults([]); return; }
     const thisSeq = ++searchSeq; if (activeSearchController) activeSearchController.abort(); activeSearchController = new AbortController();
-    const { baseQuery, countryCode } = parseQuery(query);
     try {
-      let url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(baseQuery)}&limit=8&addressdetails=1`;
-      if (countryCode) url += `&countrycodes=${countryCode}`;
-      const resp = await fetch(url, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: activeSearchController.signal });
+      const resp = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=8&addressdetails=1`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: activeSearchController.signal });
       if (thisSeq !== searchSeq || !resp.ok) return;
       searchResults = (await resp.json()).map(r => ({ name: r.display_name?.split(',')[0] || 'Unknown', fullName: r.display_name, lat: r.lat, lon: r.lon, address: r.address }));
       renderSearchResults(searchResults);
     } catch (e) { if (e.name !== 'AbortError') console.error('Search error:', e); }
   }
   function formatSearchResult(r) { const a = r.address || {}; const city = a.city || a.town || a.village || r.name; return a.country ? `${city}, ${a.country}` : city; }
-  async function miniFetchTemp(lat, lon) {
-    const key = `${lat.toFixed(2)},${lon.toFixed(2)}`; if (searchMiniCache.has(key)) return searchMiniCache.get(key);
-    try { const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' })); const r = { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) }; searchMiniCache.set(key, r); return r; } catch { return { temp: '--°', icon: '⛅' }; }
-  }
+  async function miniFetchTemp(lat, lon) { const key = `${lat.toFixed(2)},${lon.toFixed(2)}`; if (searchMiniCache.has(key)) return searchMiniCache.get(key); try { const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' })); const r = { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) }; searchMiniCache.set(key, r); return r; } catch { return { temp: '--°', icon: '⛅' }; } }
   function renderSearchResults(results) {
     const rl = document.getElementById('searchResults') || (() => { const ul = document.createElement('ul'); ul.id = 'searchResults'; ul.className = 'search-results'; document.querySelector('.search-body')?.prepend(ul); return ul; })();
     if (!results.length) { rl.innerHTML = ''; return; }
     const favs = loadFavorites();
-    rl.innerHTML = results.map(r => {
-      const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) }));
-      return `<li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}">${isFav ? '★' : '☆'}</button><span class="result-icon">⛅</span><span class="result-name">${fn}</span><span class="result-temp">--°</span></li>`;
-    }).join('');
-    rl.querySelectorAll('li[data-lat]').forEach(li => {
-      li.addEventListener('click', async (e) => { if (e.target.closest('.fav-star')) return; const place = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }; showScreen(screenHome); loadAndRender(place); if (searchInput) searchInput.value = ''; rl.innerHTML = ''; addRecentIfNew(place).catch(() => {}); });
-    });
-    rl.querySelectorAll('.fav-star').forEach(btn => {
-      btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); renderSearchResults(results); });
-    });
+    rl.innerHTML = results.map(r => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); return `<li class="search-result-item" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" data-lat="${r.lat}" data-lon="${r.lon}">${isFav ? '★' : '☆'}</button><span class="result-icon">⛅</span><span class="result-name">${fn}</span><span class="result-temp">--°</span></li>`; }).join('');
+    rl.querySelectorAll('li[data-lat]').forEach(li => { li.addEventListener('click', async (e) => { if (e.target.closest('.fav-star')) return; const place = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }; showScreen(screenHome); loadAndRender(place); if (searchInput) searchInput.value = ''; rl.innerHTML = ''; addRecentIfNew(place).catch(() => {}); }); });
+    rl.querySelectorAll('.fav-star').forEach(btn => { btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); renderSearchResults(results); }); });
     rl.querySelectorAll('li[data-lat]').forEach(async (li) => { const mini = await miniFetchTemp(parseFloat(li.dataset.lat), parseFloat(li.dataset.lon)); const ie = li.querySelector('.result-icon'), te = li.querySelector('.result-temp'); if (ie) ie.textContent = mini.icon || '⛅'; if (te) te.textContent = mini.temp || '--°'; });
   }
   if (searchInput) searchInput.addEventListener('input', (e) => { clearTimeout(searchTimeout); searchTimeout = setTimeout(() => runSearch(e.target.value), 300); });
@@ -511,11 +566,11 @@ document.addEventListener("DOMContentLoaded", () => {
   languageSelect?.addEventListener('change', () => { settings.lang = languageSelect.value; saveSettings(); applySettings(); });
   saveCurrent?.addEventListener('click', () => { if (activePlace) addFavorite(activePlace); });
   searchCancel?.addEventListener('click', () => { showScreen(screenHome); if (searchInput) searchInput.value = ''; });
-  manageFavorites?.addEventListener('click', () => { if (loadFavorites().length === 0) { showToast('No saved places'); return; } manageMode = !manageMode; manageFavorites.textContent = manageMode ? 'Done' : 'Manage'; renderFavorites(); });
-  clearRecentsBtn?.addEventListener('click', () => { clearRecents(); showToast('Cleared'); });
+  manageFavorites?.addEventListener('click', () => { if (loadFavorites().length === 0) { showToast(t('toasts', 'noPlaces')); return; } manageMode = !manageMode; manageFavorites.textContent = manageMode ? t('search', 'done') : t('search', 'manage'); renderFavorites(); });
+  clearRecentsBtn?.addEventListener('click', () => { clearRecents(); showToast(t('toasts', 'cleared')); });
 
   // ========== INIT ==========
-  renderRecents(); renderFavorites(); loadSettings(); applySettings();
+  loadSettings(); applySettings(); renderRecents(); renderFavorites();
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
   if (homePlace) { showScreen(screenHome); loadAndRender(homePlace); }
@@ -523,7 +578,7 @@ document.addEventListener("DOMContentLoaded", () => {
   else { showScreen(screenHome); renderLoading("My Location");
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(async (pos) => {
-        const lat = round1(pos.coords.latitude), lon = round1(pos.coords.longitude);
+        const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
         try { const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
           const city = data?.city || "My Location", cc = data?.countryCode || null;
           saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
