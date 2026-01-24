@@ -450,7 +450,13 @@ document.addEventListener("DOMContentLoaded", () => {
     hourly.slice(0, 24).forEach((h, i) => {
       const div = document.createElement('div'); div.classList.add('hourly-card');
       const ht = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: settings.time === '12' });
-      div.innerHTML = `<div class="hour-time"><span class="weather-icon">${getWeatherIcon(h.rainChance, h.cloudPct, h.tempC)}</span>${ht}</div><div class="hour-temp">${formatTemp(h.tempC)}</div><div class="hour-detail"><span class="detail-value">${isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--%'}</span></div>`;
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, h.tempC);
+      const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
+      div.innerHTML = `
+        <div class="hour-time">${ht}</div>
+        <span class="weather-icon">${icon}</span>
+        <div class="hour-temp">${formatTemp(h.tempC)}</div>
+        <div class="hour-detail"><span class="detail-value">${rainPct}</span></div>`;
       hourlyTimeline.appendChild(div);
     });
   }
@@ -460,8 +466,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = getTranslatedDayName(date.getDay());
       const badge = getDayBadge(d), icon = getWeatherIcon(d.rainChance, d.cloudPct, d.highC);
+      const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
       const div = document.createElement('div'); div.classList.add('daily-card');
-      div.innerHTML = `<div class="day-name"><span class="weather-icon">${icon}</span>${dayName}</div><div class="day-temp">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</div><div class="day-temp" style="font-size:0.8rem;opacity:0.7;">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</div>${badge ? `<div class="day-hero">${badge}</div>` : ''}<div class="day-detail"><span class="detail-label">${t('weather', 'rain')}</span><span class="detail-value">${isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--%'}</span></div>`;
+      div.innerHTML = `
+        <div class="day-name">${dayName}</div>
+        <span class="weather-icon">${icon}</span>
+        <div class="day-temp">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</div>
+        <div class="day-temp day-low">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</div>
+        ${badge ? `<div class="day-hero">${badge}</div>` : '<div class="day-hero-placeholder"></div>'}
+        <div class="day-detail"><span class="detail-value">${rainPct}</span></div>`;
       dailyCards.appendChild(div);
     });
   }
