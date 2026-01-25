@@ -390,6 +390,23 @@ body.modal-open {
   font-weight: 500;
 }
 
+/* ========== TEMPERATURE COLOR CLASSES ========== */
+.temp-freezing {
+  color: #00BFFF !important; /* Deep sky blue for freezing */
+}
+
+.temp-cold {
+  color: #5DADE2 !important; /* Light blue for cold */
+}
+
+.temp-warm {
+  color: #FF9500 !important; /* Orange for warm (default) */
+}
+
+.temp-hot {
+  color: #FF4500 !important; /* Red-orange for hot */
+}
+
 /* ========== 7-DAY FORECAST - VERTICAL LIST LAYOUT ========== */
 .week-screen .screen-panel-body {
   padding: 0;
@@ -925,12 +942,6 @@ body.modal-open {
 .temp.hero-wind, .description.hero-wind { color: #e8eaed; }
 .temp.hero-cloudy, .description.hero-cloudy { color: #e8ecf0; }
 .temp.hero-fog, .description.hero-fog { color: #dde2e8; }
-
-/* ========== TEMPERATURE COLOR CLASSES ========== */
-.temp-hot { color: #fb923c; }
-.temp-warm { color: #fbbf24; }
-.temp-cold { color: #38bdf8; }
-.temp-freezing { color: #a5f3fc; }
 
 /* ========== FADE IN ANIMATION ========== */
 @keyframes fadeIn {
