@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       wind: { en: "Wind", af: "Wind", zu: "Umoya", xh: "Umoya", st: "Moea" },
       rain: { en: "Rain", af: "Reën", zu: "Imvula", xh: "Imvula", st: "Pula" },
       uv: { en: "UV", af: "UV", zu: "UV", xh: "UV", st: "UV" },
+      feelsLike: { en: "Feels like", af: "Voel soos", zu: "Kuzwakala sengathi", xh: "Kuziva ngathi", st: "Ho utlwahala joalo ka" },
       none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakwenzeka", xh: "Akunakwenzeka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
@@ -161,81 +162,81 @@ document.addEventListener("DOMContentLoaded", () => {
     // Witty lines
     witty: {
       storm: {
-        en: ["Jislaaik, stay inside!", "Thunder's grumbling, hey.", "Not even the taxi's running.", "Eskom wishes it had this power.", "Cancel everything, seriously.", "Even the hadedas are quiet."],
-        af: ["Jinne, bly binne!", "Die donder dreun.", "Selfs die taxi ry nie.", "Eskom wens hy het hierdie krag.", "Kanselleer alles, ernstig.", "Selfs die hadedas is stil."],
-        zu: ["Yoh, hlala ngaphakathi!", "Izulu liyaduma.", "Ngisho netekisi alikho.", "U-Eskom ufisa ukuba namandla anje.", "Khansela konke, ngempela.", "Ngisho ama-hadeda athule."],
-        xh: ["Yhuu, hlala ngaphakathi!", "Iindudumo ziyagquma.", "Akukho neeteksi ezihambayo.", "U-Eskom unqwenela la mandla.", "Rhoxisa yonke into.", "Neentak zithe cwaka."],
-        st: ["Eish, dula ka hare!", "Ledimo le a duma.", "Esita le taxi ha e tsamae.", "Eskom e ka rata matla ana.", "Hlakola tsohle, ka nnete.", "Esita le dinonyana di kgutsitse."]
+        en: ["Jislaaik, stay inside!", "Thunder's grumbling, hey.", "Not even the taxi's running.", "Eskom wishes it had this power.", "Cancel everything, seriously.", "Even the hadedas are quiet.", "Perfect weather to binge series.", "The sky's having a tantrum.", "Nature's light show tonight.", "Don't even think about going out.", "Weather for Netflix and blankets.", "Lightning's putting on a show."],
+        af: ["Jinne, bly binne!", "Die donder dreun.", "Selfs die taxi ry nie.", "Eskom wens hy het hierdie krag.", "Kanselleer alles, ernstig.", "Selfs die hadedas is stil.", "Perfekte weer om reekse te kyk.", "Die lug het 'n woedebuie.", "Natuur se ligvertoning vanaand.", "Moenie eens dink om uit te gaan nie.", "Weer vir Netflix en komberse.", "Die weerlig gee 'n vertoning."],
+        zu: ["Yoh, hlala ngaphakathi!", "Izulu liyaduma.", "Ngisho netekisi alikho.", "U-Eskom ufisa ukuba namandla anje.", "Khansela konke, ngempela.", "Ngisho ama-hadeda athule.", "Isimo sezulu esihle sokubuka i-series.", "Isibhakabhaka siyadinwa.", "Umbukiso wokukhanya wemvelo namhlanje ebusuku.", "Ungacabangi ukuphuma.", "Isimo sezulu se-Netflix nezingubo.", "Umbani ubonisa kahle."],
+        xh: ["Yhuu, hlala ngaphakathi!", "Iindudumo ziyagquma.", "Akukho neeteksi ezihambayo.", "U-Eskom unqwenela la mandla.", "Rhoxisa yonke into.", "Neentak zithe cwaka.", "Imozulu elungileyo yokubukela uthotho.", "Isibhakabhaka siqumba.", "Umboniso wokukhanya wendalo.", "Musa ukucinga ukuphuma.", "Imozulu yeNetflix neengubo.", "Umbane ubonisa kakuhle."],
+        st: ["Eish, dula ka hare!", "Ledimo le a duma.", "Esita le taxi ha e tsamae.", "Eskom e ka rata matla ana.", "Hlakola tsohle, ka nnete.", "Esita le dinonyana di kgutsitse.", "Leholimo le letle la ho sheba lenaneo.", "Lehodimo le halefile.", "Ponts'o ea leseli ea tlhaho bosiu.", "U se ke oa nahana ho tsamaea.", "Leholimo la Netflix le dikobo.", "Lehadima le bontša hantle."]
       },
       rain: {
-        en: ["Grab your brolly, boet.", "Spat spat on the roof.", "The garden's saying dankie.", "Traffic's about to be chaos.", "The dams are smiling.", "Stay dry out there."],
-        af: ["Vat jou sambreel.", "Dit plas op die dak.", "Die tuin sê dankie.", "Verkeer gaan chaos wees.", "Die damme glimlag.", "Bly droog daar buite."],
-        zu: ["Thatha isambulela sakho.", "Imvula iyashaya ophahleni.", "Ingadi ithi ngiyabonga.", "Ithrafikhi izoba yinhlekelele.", "Amadamu ayamamatheka.", "Hlala womile."],
-        xh: ["Thatha isambreli sakho.", "Imvula ibetha eluphahleni.", "Igadi ithi enkosi.", "Ithrafiki iza kuba yingxwaba-ngxwaba.", "Amadama ayancuma.", "Hlala uwomile."],
-        st: ["Nka sampolela sa hao.", "Pula e otla marulelong.", "Jarata e re kea leboha.", "Sephethephethe se tla ba moferefere.", "Matamo a a bososela.", "Dula o omile."]
+        en: ["Grab your brolly, boet.", "Spat spat on the roof.", "The garden's saying dankie.", "Traffic's about to be chaos.", "The dams are smiling.", "Stay dry out there.", "Perfect day for soup.", "The potholes are becoming pools.", "Your car wash was pointless.", "Time to test those wipers.", "Joburg drivers are panicking already.", "Good excuse to stay in."],
+        af: ["Vat jou sambreel.", "Dit plas op die dak.", "Die tuin sê dankie.", "Verkeer gaan chaos wees.", "Die damme glimlag.", "Bly droog daar buite.", "Perfekte dag vir sop.", "Die slaggate word poele.", "Jou karwas was verniet.", "Tyd om daai wissers te toets.", "Joburg-bestuurders paniek al klaar.", "Goeie verskoning om binne te bly."],
+        zu: ["Thatha isambulela sakho.", "Imvula iyashaya ophahleni.", "Ingadi ithi ngiyabonga.", "Ithrafikhi izoba yinhlekelele.", "Amadamu ayamamatheka.", "Hlala womile.", "Usuku oluhle lwesobho.", "Imigodi iba amaphuzi.", "Ukuwasha imoto yakho bekuyize.", "Isikhathi sokuhlola ama-wiper.", "Abashayeli baseJoburg sebeyesaba.", "Isizathu esihle sokuhlala."],
+        xh: ["Thatha isambreli sakho.", "Imvula ibetha eluphahleni.", "Igadi ithi enkosi.", "Ithrafiki iza kuba yingxwaba-ngxwaba.", "Amadama ayancuma.", "Hlala uwomile.", "Imini elungileyo yesuphu.", "Imingxunya iba ziipuli.", "Ukuhlamba imoto kwakho bekungento.", "Ixesha lokuhlola iiwipers.", "Abaqhubi baseJohanesburg sele beyoyika.", "Isizathu esihle sokuhlala ngaphakathi."],
+        st: ["Nka sampolela sa hao.", "Pula e otla marulelong.", "Jarata e re kea leboha.", "Sephethephethe se tla ba moferefere.", "Matamo a a bososela.", "Dula o omile.", "Letsatsi le letle la soupa.", "Mesima e fetoha matamo.", "Ho hlatsoa koloi ea hao ho ne ho se letho.", "Nako ea ho leka di-wiper.", "Baotleli ba Joburg ba se ba tšohile.", "Lebaka le letle la ho dula."]
       },
       'rain-possible': {
-        en: ["Maybe rain, maybe not.", "Clouds looking suspicious.", "Take a brolly just in case.", "50/50 on getting wet."],
-        af: ["Miskien reën, miskien nie.", "Wolke lyk verdag.", "Vat 'n sambreel net vir ingeval.", "50/50 kans om nat te word."],
-        zu: ["Mhlawumbe imvula, mhlawumbe cha.", "Amafu abukeka esolisa.", "Thatha isambulela uma kungenzeka.", "50/50 ukuba manzi."],
-        xh: ["Mhlawumbi imvula, mhlawumbi hayi.", "Amafu abonakala erhanela.", "Thatha isambreli ukuba kunokwenzeka.", "50/50 ukufumana amanzi."],
-        st: ["Mohlomong pula, mohlomong che.", "Maru a shebahala a belaela.", "Nka sampolela ho ba sireletsehile.", "50/50 ho ba metsi."]
+        en: ["Maybe rain, maybe not.", "Clouds looking suspicious.", "Take a brolly just in case.", "50/50 on getting wet.", "Don't trust those clouds.", "Weather's being indecisive.", "Pack an umbrella anyway.", "The sky can't make up its mind."],
+        af: ["Miskien reën, miskien nie.", "Wolke lyk verdag.", "Vat 'n sambreel net vir ingeval.", "50/50 kans om nat te word.", "Moenie daai wolke vertrou nie.", "Die weer is besluiteloos.", "Pak 'n sambreel in elk geval.", "Die lug kan nie besluit nie."],
+        zu: ["Mhlawumbe imvula, mhlawumbe cha.", "Amafu abukeka esolisa.", "Thatha isambulela uma kungenzeka.", "50/50 ukuba manzi.", "Ungawathembi lawo mafu.", "Isimo sezulu asikwazi ukuzinquma.", "Phaka isambulela noma kunjalo.", "Isibhakabhaka asikwazi ukuzinquma."],
+        xh: ["Mhlawumbi imvula, mhlawumbi hayi.", "Amafu abonakala erhanela.", "Thatha isambreli ukuba kunokwenzeka.", "50/50 ukufumana amanzi.", "Musa ukuwathemba lawo mafu.", "Imozulu ayikwazi ukuzigqiba.", "Phakisha isambreli nangona kunjalo.", "Isibhakabhaka asikwazi ukuzigqiba."],
+        st: ["Mohlomong pula, mohlomong che.", "Maru a shebahala a belaela.", "Nka sampolela ho ba sireletsehile.", "50/50 ho ba metsi.", "Se ke oa tšepa maru ao.", "Leholimo ha le tsebe ho iketsa.", "Paka sampolela leha ho le joalo.", "Lehodimo ha le tsebe."]
       },
       cloudy: {
-        en: ["Grey skies, no drama.", "Overcast but okay.", "Good day for a walk.", "The sun's taking a nap."],
-        af: ["Grys lug, geen drama.", "Bewolk maar okay.", "Goeie dag vir 'n stap.", "Die son vat 'n nap."],
-        zu: ["Isibhakabhaka esimpunga, akukho drama.", "Kunamafu kodwa kulungile.", "Usuku oluhle lokuhamba.", "Ilanga lithatha ikhefana."],
-        xh: ["Isibhakabhaka esingwevu, akukho drama.", "Linamafu kodwa kulungile.", "Imini entle yokuhamba.", "Ilanga lithatha isaphulelo."],
-        st: ["Lehodimo le leiutsu, ha ho drama.", "Ho na le maru empa ho lokile.", "Letsatsi le letle la ho tsamaea.", "Letsatsi le nka boroko."]
+        en: ["Grey skies, no drama.", "Overcast but okay.", "Good day for a walk.", "The sun's taking a nap.", "Moody weather vibes.", "Not bad, not great.", "Perfect photography light.", "Easy on the eyes today."],
+        af: ["Grys lug, geen drama.", "Bewolk maar okay.", "Goeie dag vir 'n stap.", "Die son vat 'n nap.", "Humeurige weer vibes.", "Nie sleg nie, nie great nie.", "Perfekte fotografie lig.", "Maklik op die oë vandag."],
+        zu: ["Isibhakabhaka esimpunga, akukho drama.", "Kunamafu kodwa kulungile.", "Usuku oluhle lokuhamba.", "Ilanga lithatha ikhefana.", "Izimo zezulu ezinosizi.", "Akubi kubi, akubi kuhle.", "Ukukhanya okuhle kokukhipha izithombe.", "Kulula emehlweni namuhla."],
+        xh: ["Isibhakabhaka esingwevu, akukho drama.", "Linamafu kodwa kulungile.", "Imini entle yokuhamba.", "Ilanga lithatha isaphulelo.", "Imozulu enosizi.", "Ayimbi, ayintle.", "Ukukhanya okuhle kokuthatha iifoto.", "Kulula emehlweni namhlanje."],
+        st: ["Lehodimo le leiutsu, ha ho drama.", "Ho na le maru empa ho lokile.", "Letsatsi le letle la ho tsamaea.", "Letsatsi le nka boroko.", "Moea o matšoenyehong.", "Ha ho mpe, ha ho motle.", "Leseli le letle la ho nka litšoantšo.", "Ho bobebe mahlong kajeno."]
       },
       uv: {
-        en: ["Sunscreen is not optional.", "SPF 50 or regret it.", "The sun's not playing.", "Seek shade, my friend.", "Protect that face!"],
-        af: ["Sonbrandroom is nie opsioneel nie.", "SPF 50 of jy sal spyt wees.", "Die son speel nie.", "Soek skaduwee, my vriend.", "Beskerm daai gesig!"],
-        zu: ["Isivikelo selanga asikhona ukukhetha.", "I-SPF 50 noma uzozisola.", "Ilanga alidlali.", "Funa umthunzi, mngane wami.", "Vikela ubuso bakho!"],
-        xh: ["Ikhrimu yelanga ayinakukhethwa.", "I-SPF 50 okanye uya kuzisola.", "Ilanga alidlali.", "Funa umthunzi, mhlobo wam.", "Khusela elo buso!"],
-        st: ["Setofo sa letsatsi ha se kgetho.", "SPF 50 kapa o tla itshola.", "Letsatsi ha le bapale.", "Batla moriti, motsoalle oa ka.", "Sireletsa sefahleho seo!"]
+        en: ["Sunscreen is not optional.", "SPF 50 or regret it.", "The sun's not playing.", "Seek shade, my friend.", "Protect that face!", "Your future self will thank you.", "Reapply that sunscreen!", "The sun is angry today.", "Hat and sunnies essential.", "Peak tanning hours, be careful."],
+        af: ["Sonbrandroom is nie opsioneel nie.", "SPF 50 of jy sal spyt wees.", "Die son speel nie.", "Soek skaduwee, my vriend.", "Beskerm daai gesig!", "Jou toekomstige self sal dankie sê.", "Smeer weer sonbrandroom aan!", "Die son is kwaad vandag.", "Hoed en sonbrille noodsaaklik.", "Piek bruintyd, wees versigtig."],
+        zu: ["Isivikelo selanga asikhona ukukhetha.", "I-SPF 50 noma uzozisola.", "Ilanga alidlali.", "Funa umthunzi, mngane wami.", "Vikela ubuso bakho!", "Uzozibonga ngokuzayo.", "Sebenzisa futhi i-sunscreen!", "Ilanga lithukuthele namuhla.", "Isigqoko nezibuko zelangazelela kubalulekile.", "Amahora aphezulu okushisa, qaphela."],
+        xh: ["Ikhrimu yelanga ayinakukhethwa.", "I-SPF 50 okanye uya kuzisola.", "Ilanga alidlali.", "Funa umthunzi, mhlobo wam.", "Khusela elo buso!", "Uya kubulela ngokuzayo.", "Sebenzisa kwakhona i-sunscreen!", "Ilanga linomsindo namhlanje.", "Umnqwazi kunye ne-sunglass ziyafuneka.", "Amaxesha aphezulu okutshisa, lumka."],
+        st: ["Setofo sa letsatsi ha se kgetho.", "SPF 50 kapa o tla itshola.", "Letsatsi ha le bapale.", "Batla moriti, motsoalle oa ka.", "Sireletsa sefahleho seo!", "O tla itebohela ha morao.", "Tšoaea hape setofo sa letsatsi!", "Letsatsi le halefile kajeno.", "Katiba le liborele tsa letsatsi tsa bohlokoa.", "Nako e phahameng ea ho tjhesa, hlokomela."]
       },
       wind: {
-        en: ["Hold onto your hat!", "The southeaster's here.", "Table Mountain's tablecloth is out.", "The Cape Doctor is in.", "Perfect for drying washing!"],
-        af: ["Hou jou hoed vas!", "Die suidooster is hier.", "Tafelberg se tafeldoek is uit.", "Die Kaapse Dokter is in.", "Perfek om wasgoed te droog!"],
-        zu: ["Bamba isigqoko sakho!", "Umoya waseningizimu ukhona.", "Indwangu yeTafel Mountain iphumile.", "UDokotela waseKapa ukhona.", "Kuhle ukuomisa izingubo!"],
-        xh: ["Bamba umnqwazi wakho!", "Umoya wasemzantsi ulapha.", "Ilaphu leTable Mountain liphumile.", "UGqirha waseKapa ulapha.", "Ilungile ukuomisa impahla!"],
-        st: ["Tšoara katiba ea hao!", "Moea oa boroa o teng.", "Lesela la Table Mountain le tšoeu.", "Ngaka ea Cape e teng.", "Ho lokile ho omisa diaparo!"]
+        en: ["Hold onto your hat!", "The southeaster's here.", "Table Mountain's tablecloth is out.", "The Cape Doctor is in.", "Perfect for drying washing!", "Your hair? Forget about it.", "Kite weather, anyone?", "The trees are doing yoga.", "Wind turbines are happy today.", "Not a good umbrella day."],
+        af: ["Hou jou hoed vas!", "Die suidooster is hier.", "Tafelberg se tafeldoek is uit.", "Die Kaapse Dokter is in.", "Perfek om wasgoed te droog!", "Jou hare? Vergeet daarvan.", "Vlieër weer, iemand?", "Die bome doen yoga.", "Windturbines is bly vandag.", "Nie 'n goeie sambreel dag nie."],
+        zu: ["Bamba isigqoko sakho!", "Umoya waseningizimu ukhona.", "Indwangu yeTafel Mountain iphumile.", "UDokotela waseKapa ukhona.", "Kuhle ukuomisa izingubo!", "Izinwele zakho? Khohlwa ngakho.", "Isimo sezulu se-kite, ubani?", "Izihlahla zenza i-yoga.", "Ama-wind turbine ajabule namuhla.", "Akusona isikhathi esihle se-umbrella."],
+        xh: ["Bamba umnqwazi wakho!", "Umoya wasemzantsi ulapha.", "Ilaphu leTable Mountain liphumile.", "UGqirha waseKapa ulapha.", "Ilungile ukuomisa impahla!", "Iinwele zakho? Libale ngawo.", "Imozulu ye-kite, nabani?", "Imithi yenza i-yoga.", "Ii-wind turbine ziyavuya namhlanje.", "Ayiyomini ilungele isambreli."],
+        st: ["Tšoara katiba ea hao!", "Moea oa boroa o teng.", "Lesela la Table Mountain le tšoeu.", "Ngaka ea Cape e teng.", "Ho lokile ho omisa diaparo!", "Moriri oa hao? Lebala ka eona.", "Leholimo la kite, mang?", "Lifate li etsa yoga.", "Di-wind turbine di thabile kajeno.", "Ha se letsatsi le letle la sampolela."]
       },
       cold: {
-        en: ["Ja, it's jersey weather.", "Time to find that beanie.", "Cold enough for soup.", "Hot chocolate kind of day.", "Layer up, buttercup."],
-        af: ["Ja, dis truiweer.", "Tyd om daai beanie te vind.", "Koud genoeg vir sop.", "Warm sjokolade tipe dag.", "Trek lae aan, buttercup."],
-        zu: ["Yebo, yisikhathi sejezi.", "Isikhathi sokuthola i-beanie.", "Kubanda ngokwanele kwesobho.", "Usuku lweshokoledi eshisayo.", "Gqoka izingubo eziningi."],
-        xh: ["Ewe, lixesha lejezi.", "Ixesha lokufumana loo beanie.", "Kuyabanda ngokwaneleyo kwesuphu.", "Uhlobo lwemini lwetshokolethi eshushu.", "Faka iingubo ezininzi."],
-        st: ["E, ke leholimo la jersey.", "Nako ea ho fumana beanie eo.", "Ho bata ho lekana le soupa.", "Letsatsi la tšokolate e chesang.", "Apara liaparo tse ngata."]
+        en: ["Ja, it's jersey weather.", "Time to find that beanie.", "Cold enough for soup.", "Hot chocolate kind of day.", "Layer up, buttercup.", "Two-fleece weather.", "The heater is your best friend.", "Even the Capetonians are complaining.", "Your breath is doing that thing.", "Blanket burrito time.", "Icy but nice, hey?"],
+        af: ["Ja, dis truiweer.", "Tyd om daai beanie te vind.", "Koud genoeg vir sop.", "Warm sjokolade tipe dag.", "Trek lae aan, buttercup.", "Twee-fleece weer.", "Die heater is jou beste vriend.", "Selfs die Kapenaars kla.", "Jou asem doen daai ding.", "Kombers burrito tyd.", "Ysig maar lekker, nè?"],
+        zu: ["Yebo, yisikhathi sejezi.", "Isikhathi sokuthola i-beanie.", "Kubanda ngokwanele kwesobho.", "Usuku lweshokoledi eshisayo.", "Gqoka izingubo eziningi.", "Isimo sezulu sama-fleece amabili.", "I-heater ingumngane wakho omkhulu.", "Ngisho abaseCape bayakhononda.", "Umphefumulo wakho wenza into ethile.", "Isikhathi se-blanket burrito.", "Kubanda kodwa kuhle, hey?"],
+        xh: ["Ewe, lixesha lejezi.", "Ixesha lokufumana loo beanie.", "Kuyabanda ngokwaneleyo kwesuphu.", "Uhlobo lwemini lwetshokolethi eshushu.", "Faka iingubo ezininzi.", "Imozulu yee-fleece ezimbini.", "I-heater ngumhlobo wakho omkhulu.", "Nabantu baseCape bayakhalaza.", "Umphefumlo wakho wenza into ethile.", "Ixesha le-blanket burrito.", "Kuyabanda kodwa kuhle, hey?"],
+        st: ["E, ke leholimo la jersey.", "Nako ea ho fumana beanie eo.", "Ho bata ho lekana le soupa.", "Letsatsi la tšokolate e chesang.", "Apara liaparo tse ngata.", "Leholimo la di-fleece tse peli.", "Heater ke motsoalle oa hao.", "Esita le ba Cape ba a tletleba.", "Mophefumulo oa hao o etsa ntho eo.", "Nako ea kobo.", "Ho bata empa ho monate, hey?"]
       },
       heat: {
-        en: ["Jislaaik, it's hot!", "Melting is a real possibility.", "Ice cream is a necessity.", "Stay hydrated, boet.", "The pool is calling.", "Hotter than a bakkie bonnet."],
-        af: ["Jinne, dis warm!", "Smelt is 'n werklike moontlikheid.", "Roomys is 'n noodsaaklikheid.", "Bly gehidreer, boet.", "Die swembad roep.", "Warmer as 'n bakkie bonnet."],
-        zu: ["Yoh, kushisa!", "Ukuncibilika kungenzeka ngempela.", "I-ice cream iyadingeka.", "Hlala unamanzi, boet.", "Ipulazi liyabiza.", "Kushisa ukudlula ibhonnethi yebakkie."],
-        xh: ["Yhuu, kushushu!", "Ukuqina kunokwenzeka.", "I-ice cream iyafuneka.", "Hlala unamanzi, boet.", "Ipuli iyabiza.", "Kushushu ngaphezu kwebhonethi yebakkie."],
-        st: ["Eish, ho tjhesa!", "Ho qhibiliha ho ka etsahala.", "Ice cream ke tlhoko.", "Dula o na le metsi, boet.", "Pool e a bitsa.", "Ho tjhesa ho feta bonete ea bakkie."]
+        en: ["Jislaaik, it's hot!", "Melting is a real possibility.", "Ice cream is a necessity.", "Stay hydrated, boet.", "The pool is calling.", "Hotter than a bakkie bonnet.", "AC working overtime.", "Fans on full blast.", "Too hot to function.", "Even your phone is overheating.", "Find some shade, quickly.", "Water is your best friend."],
+        af: ["Jinne, dis warm!", "Smelt is 'n werklike moontlikheid.", "Roomys is 'n noodsaaklikheid.", "Bly gehidreer, boet.", "Die swembad roep.", "Warmer as 'n bakkie bonnet.", "AC werk oortyd.", "Waaiers op volle blaas.", "Te warm om te funksioneer.", "Selfs jou foon oorverhit.", "Kry skaduwee, vinnig.", "Water is jou beste vriend."],
+        zu: ["Yoh, kushisa!", "Ukuncibilika kungenzeka ngempela.", "I-ice cream iyadingeka.", "Hlala unamanzi, boet.", "Ipulazi liyabiza.", "Kushisa ukudlula ibhonnethi yebakkie.", "I-AC isebenza ngamahora angeziwe.", "Amafeni avuleke ngokuphelele.", "Kushisa kakhulu ukusebenza.", "Ngisho nefoni yakho iyashisa kakhulu.", "Thola umthunzi, ngokushesha.", "Amanzi angumngane wakho omkhulu."],
+        xh: ["Yhuu, kushushu!", "Ukuqina kunokwenzeka.", "I-ice cream iyafuneka.", "Hlala unamanzi, boet.", "Ipuli iyabiza.", "Kushushu ngaphezu kwebhonethi yebakkie.", "I-AC isebenza ngexesha elingaphezulu.", "Iifeni zivulwe ngokupheleleyo.", "Kushushu kakhulu ukusebenza.", "Nefowuni yakho iyashushu kakhulu.", "Fumana umthunzi, ngokukhawuleza.", "Amanzi ngumhlobo wakho omkhulu."],
+        st: ["Eish, ho tjhesa!", "Ho qhibiliha ho ka etsahala.", "Ice cream ke tlhoko.", "Dula o na le metsi, boet.", "Pool e a bitsa.", "Ho tjhesa ho feta bonete ea bakkie.", "AC e sebetsa nako e eketsehileng.", "Difene di bulehile ka botlalo.", "Ho tjhesa haholo ho sebetsa.", "Esita le mohala oa hao o chesang haholo.", "Fumana moriti, kapele.", "Metsi ke motsoalle oa hao."]
       },
       fog: {
-        en: ["Can't see a thing, hey.", "Driving slow is the vibe.", "Mysterious morning.", "Watch out for the other cars."],
-        af: ["Kan niks sien nie, hey.", "Stadig ry is die vibe.", "Geheimsinnige oggend.", "Kyk uit vir die ander karre."],
-        zu: ["Angiboni lutho, hey.", "Ukushayela kancane kuyinto.", "Ukusa okuyimfihlakalo.", "Qaphela ezinye izimoto."],
-        xh: ["Andiboni nto, hey.", "Ukuqhuba kancinci yinto.", "Ukusa okuyimfihlakalo.", "Lumka ezinye iimoto."],
-        st: ["Ha ke bone letho, hey.", "Ho khanna butle ke mokhoa.", "Hoseng ho nang le sephiri.", "Hlokomela dikoloi tse ding."]
+        en: ["Can't see a thing, hey.", "Driving slow is the vibe.", "Mysterious morning.", "Watch out for the other cars.", "Silent Hill vibes.", "The world's gone grey.", "Visibility: potato.", "Ghost town aesthetic.", "Use those fog lights."],
+        af: ["Kan niks sien nie, hey.", "Stadig ry is die vibe.", "Geheimsinnige oggend.", "Kyk uit vir die ander karre.", "Silent Hill vibes.", "Die wêreld is grys.", "Sigbaarheid: aartappel.", "Spookdorp estetika.", "Gebruik daai misligte."],
+        zu: ["Angiboni lutho, hey.", "Ukushayela kancane kuyinto.", "Ukusa okuyimfihlakalo.", "Qaphela ezinye izimoto.", "I-Silent Hill vibes.", "Umhlaba usube mpunga.", "Ukubonakala: amazambane.", "Idolobha lesipoki.", "Sebenzisa lawo malambu enkungu."],
+        xh: ["Andiboni nto, hey.", "Ukuqhuba kancinci yinto.", "Ukusa okuyimfihlakalo.", "Lumka ezinye iimoto.", "I-Silent Hill vibes.", "Ihlabathi libe ngwevu.", "Ukubonakala: itapile.", "Idolophu yesipoki.", "Sebenzisa ezo zikhanyiso zenkungu."],
+        st: ["Ha ke bone letho, hey.", "Ho khanna butle ke mokhoa.", "Hoseng ho nang le sephiri.", "Hlokomela dikoloi tse ding.", "Silent Hill vibes.", "Lefatše le fetohile le leiutsu.", "Ho boneha: litapole.", "Toropo ea meea.", "Sebelisa mabone a moholi."]
       },
       clear: {
-        en: ["Absolutely beautiful out there.", "Perfect day, no excuses.", "Get outside and enjoy it!", "Blue skies and good vibes.", "This is why we live here.", "Not a cloud in sight.", "Main character weather."],
-        af: ["Absoluut pragtig daar buite.", "Perfekte dag, geen verskonings nie.", "Gaan buitentoe en geniet dit!", "Blou lug en goeie vibes.", "Dis hoekom ons hier bly.", "Nie 'n wolk in sig nie.", "Hoofkarakter weer."],
-        zu: ["Kuhle kakhulu ngaphandle.", "Usuku oluphelele, akukho zaba.", "Phuma phandle ujabulele!", "Isibhakabhaka esiluhlaza nemizwa emihle.", "Yingakho sihlala lapha.", "Akukho lifu elibonwayo.", "Isimo sezulu somlingiswa omkhulu."],
-        xh: ["Kuhle kakhulu ngaphandle.", "Imini egqibeleleyo, akukho zaba.", "Phuma phandle wonwabele!", "Isibhakabhaka esiluhlaza nemibono emihle.", "Yiyo le nto sihlala apha.", "Akukho lifu elibonwayo.", "Imozulu yomlinganiswa ophambili."],
-        st: ["Ho motle haholo kantle.", "Letsatsi le phethahetseng, ha ho mabaka.", "Tsamaea kantle o natefeloe!", "Lehodimo le letala le meea e metle.", "Ke kahoo re lulang mona.", "Ha ho leru le bonahalang.", "Leholimo la molingoa oa mantlha."]
+        en: ["Absolutely beautiful out there.", "Perfect day, no excuses.", "Get outside and enjoy it!", "Blue skies and good vibes.", "This is why we live here.", "Not a cloud in sight.", "Main character weather.", "Picture perfect conditions.", "Make the most of today.", "Nature's showing off.", "Couldn't ask for better.", "Postcard weather."],
+        af: ["Absoluut pragtig daar buite.", "Perfekte dag, geen verskonings nie.", "Gaan buitentoe en geniet dit!", "Blou lug en goeie vibes.", "Dis hoekom ons hier bly.", "Nie 'n wolk in sig nie.", "Hoofkarakter weer.", "Prentjie perfekte toestande.", "Maak die meeste van vandag.", "Natuur pronk.", "Kon nie beter gevra het nie.", "Poskaart weer."],
+        zu: ["Kuhle kakhulu ngaphandle.", "Usuku oluphelele, akukho zaba.", "Phuma phandle ujabulele!", "Isibhakabhaka esiluhlaza nemizwa emihle.", "Yingakho sihlala lapha.", "Akukho lifu elibonwayo.", "Isimo sezulu somlingiswa omkhulu.", "Izimo eziphelele.", "Yenza okuningi namuhla.", "Imvelo iyazigqaja.", "Ngeke ucele okungcono.", "Isimo sezulu se-postcard."],
+        xh: ["Kuhle kakhulu ngaphandle.", "Imini egqibeleleyo, akukho zaba.", "Phuma phandle wonwabele!", "Isibhakabhaka esiluhlaza nemibono emihle.", "Yiyo le nto sihlala apha.", "Akukho lifu elibonwayo.", "Imozulu yomlinganiswa ophambili.", "Iimeko ezigqibeleleyo.", "Yenza okungakumbi namhlanje.", "Indalo iyaziqhayisa.", "Awunakucela ngcono.", "Imozulu ye-postcard."],
+        st: ["Ho motle haholo kantle.", "Letsatsi le phethahetseng, ha ho mabaka.", "Tsamaea kantle o natefeloe!", "Lehodimo le letala le meea e metle.", "Ke kahoo re lulang mona.", "Ha ho leru le bonahalang.", "Leholimo la molingoa oa mantlha.", "Maemo a phethahetseng.", "Etsa ho fetang kajeno.", "Tlhaho e iponahatsa.", "Ha o ka kopa ho molemo.", "Leholimo la postcard."]
       },
       weekend: {
-        en: ["Braai weather, boet!", "Fire up the Weber!", "Perfect for a jol outside.", "Get the tongs ready!", "Beach or braai? Both!", "The ancestors approve."],
-        af: ["Braaiweer, boet!", "Steek die Weber aan!", "Perfek vir 'n jol buite.", "Kry die tang gereed!", "Strand of braai? Albei!", "Die voorouers keur goed."],
-        zu: ["Izulu lokosa, boet!", "Basa i-Weber!", "Kuhle ukujabulela ngaphandle.", "Lungisa ama-tong!", "Ibhishi noma ukosa? Kokubili!", "Okhokho bayavuma."],
-        xh: ["Imozulu yokugrila, boet!", "Basa i-Weber!", "Ilungele ukonwabela ngaphandle.", "Lungisa ii-tong!", "Ibhitshi okanye ukugrila? Zombini!", "Ooyihlomkhulu bayavuma."],
-        st: ["Leholimo la braai, boet!", "Chesa Weber!", "E lokile ho ithabisa kantle.", "Lokisetsa ditong!", "Lebopo kapa braai? Ka bobedi!", "Baholo-holo ba ea lumela."]
+        en: ["Braai weather, boet!", "Fire up the Weber!", "Perfect for a jol outside.", "Get the tongs ready!", "Beach or braai? Both!", "The ancestors approve.", "Weekend vibes on point.", "Perfect for doing nothing.", "Pool party weather!", "Call the mates, it's on."],
+        af: ["Braaiweer, boet!", "Steek die Weber aan!", "Perfek vir 'n jol buite.", "Kry die tang gereed!", "Strand of braai? Albei!", "Die voorouers keur goed.", "Naweek vibes on point.", "Perfek om niks te doen nie.", "Swembadpartytjie weer!", "Bel die tjommies, dis aan."],
+        zu: ["Izulu lokosa, boet!", "Basa i-Weber!", "Kuhle ukujabulela ngaphandle.", "Lungisa ama-tong!", "Ibhishi noma ukosa? Kokubili!", "Okhokho bayavuma.", "I-weekend vibes on point.", "Kulungile ukungakwenzi lutho.", "Isimo sezulu sephathi yasepulini!", "Shayela abangane, kuqhubeka."],
+        xh: ["Imozulu yokugrila, boet!", "Basa i-Weber!", "Ilungele ukonwabela ngaphandle.", "Lungisa ii-tong!", "Ibhitshi okanye ukugrila? Zombini!", "Ooyihlomkhulu bayavuma.", "Weekend vibes on point.", "Ilungele ukungenza nto.", "Imozulu yetheko lepuli!", "Tsalela abahlobo, kuqhubeka."],
+        st: ["Leholimo la braai, boet!", "Chesa Weber!", "E lokile ho ithabisa kantle.", "Lokisetsa ditong!", "Lebopo kapa braai? Ka bobedi!", "Baholo-holo ba ea lumela.", "Maikutlo a beke on point.", "E lokile ho se etse letho.", "Leholimo la mokete oa pool!", "Letsetsa metsoalle, e qalile."]
       }
     },
     // Toasts
@@ -286,6 +287,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
   const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : `${round0(kph)} km/h`;
+  // Temperature color class: blue for freezing, cyan for cold, orange for warm, red for hot
+  const getTempColorClass = (tempC) => {
+    if (!isNum(tempC)) return '';
+    if (tempC <= 0) return 'temp-freezing';
+    if (tempC <= 10) return 'temp-cold';
+    if (tempC >= 35) return 'temp-hot';
+    if (tempC >= 28) return 'temp-warm';
+    return '';
+  };
 
   function showScreen(which) {
     SCREENS.forEach(s => { if (s) { s.classList.add("hidden"); s.setAttribute('hidden', ''); } });
@@ -324,8 +334,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const displayH = screenSettings?.querySelectorAll('.settings-section h3')[1]; if (displayH) displayH.textContent = t('settings', 'display');
     const rangeLabel = probRangeToggle?.closest('.settings-option')?.querySelector('label'); if (rangeLabel) rangeLabel.textContent = t('settings', 'showRange');
     const timeLabel = timeFormatSelect?.closest('.settings-option')?.querySelector('label'); if (timeLabel) timeLabel.textContent = t('settings', 'timeFormat');
-    const langH = screenSettings?.querySelectorAll('.settings-section h3')[2]; if (langH) langH.textContent = t('settings', 'language');
-    const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'wittyIn');
+    const langH = screenSettings?.querySelectorAll('.settings-section h3')[2]; if (langH) langH.textContent = '';
+    const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     // Sidebar
@@ -482,7 +492,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
       let rs = '--'; if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
       let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
-      bylineEl.innerHTML = `${windLabel} ${ws} • ${rainLabel} ${rs} • ${uvLabel} ${us}`;
+      // Add feels like if significantly different from actual temp
+      const feels = norm.feelsLike;
+      const avgTemp = (isNum(hi) && isNum(low)) ? (hi + low) / 2 : null;
+      const showFeels = isNum(feels) && isNum(avgTemp) && Math.abs(feels - avgTemp) >= 3;
+      const feelsStr = showFeels ? ` • ${t('weather', 'feelsLike')} ${formatTemp(feels)}` : '';
+      bylineEl.innerHTML = `${windLabel} ${ws} • ${rainLabel} ${rs} • ${uvLabel} ${us}${feelsStr}`;
     }
     const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
     [headlineEl, tempEl, descriptionEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
@@ -503,17 +518,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
+    // Get current hour to start from
+    const nowHour = new Date().getHours();
     hourly.slice(0, 24).forEach((h, i) => {
       const div = document.createElement('div'); div.classList.add('hourly-card');
-      const ht = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: settings.time === '12' });
+      // Round to the hour - show 11:00, 12:00, etc.
+      const hourNum = (nowHour + i) % 24;
+      const ht = settings.time === '12' 
+        ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}:00 ${hourNum >= 12 ? 'PM' : 'AM'}`
+        : `${String(hourNum).padStart(2, '0')}:00`;
       // Use feelsLike if available and colder than actual temp
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
+      // Add temperature color class
+      const tempClass = getTempColorClass(h.tempC);
       div.innerHTML = `
         <div class="hour-time">${ht}</div>
         <span class="weather-icon">${icon}</span>
-        <div class="hour-temp">${formatTemp(h.tempC)}</div>
+        <div class="hour-temp ${tempClass}">${formatTemp(h.tempC)}</div>
         <div class="hour-detail"><span class="detail-value">${rainPct}</span></div>`;
       hourlyTimeline.appendChild(div);
     });
@@ -528,12 +551,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
       const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp);
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
+      // Temperature color classes
+      const highTempClass = getTempColorClass(d.highC);
+      const lowTempClass = getTempColorClass(d.lowC);
       const div = document.createElement('div'); div.classList.add('daily-card');
       div.innerHTML = `
         <div class="day-name">${dayName}</div>
         <span class="weather-icon">${icon}</span>
-        <div class="day-temp">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</div>
-        <div class="day-temp day-low">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</div>
+        <div class="day-temp ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</div>
+        <div class="day-temp day-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</div>
         ${badge ? `<div class="day-hero">${badge}</div>` : '<div class="day-hero-placeholder"></div>'}
         <div class="day-detail"><span class="detail-value">${rainPct}</span></div>`;
       dailyCards.appendChild(div);
