@@ -343,14 +343,43 @@ document.addEventListener("DOMContentLoaded", () => {
     return 'clear';
   }
   function computeTodaysHero(norm) {
-    const condKey = (norm.conditionKey || '').toLowerCase(), rain = norm.rainPct, wind = norm.windKph, hi = norm.todayHigh, uv = norm.uv;
-    if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
-    if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain';
-    if (isNum(wind) && wind >= 20) return 'wind'; if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
-    if (isNum(hi) && hi <= 10) return 'cold'; if (isNum(uv) && uv >= 8) return 'uv';
-    if (isNum(hi) && hi <= THRESH.COLD_C) return 'cold'; return 'clear';
+    // TRUST the API's conditionKey - it has the smart priority logic!
+    const apiCondition = (norm.conditionKey || '').toLowerCase();
+    if (apiCondition && apiCondition !== 'unknown') {
+      // Map API conditions to hero conditions
+      if (apiCondition === 'storm') return 'storm';
+      if (apiCondition === 'cold') return 'cold';
+      if (apiCondition === 'heat') return 'heat';
+      if (apiCondition === 'rain') return 'rain';
+      if (apiCondition === 'rain-possible') return 'rain-possible';
+      if (apiCondition === 'uv') return 'uv';
+      if (apiCondition === 'wind') return 'wind';
+      if (apiCondition === 'fog') return 'fog';
+      if (apiCondition === 'cloudy') return 'cloudy';
+      if (apiCondition === 'clear') return 'clear';
+    }
+    // Fallback only if API didn't provide condition
+    const rain = norm.rainPct, wind = norm.windKph, hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
+    if (isNum(feels) && feels <= -5) return 'cold';
+    if (isNum(low) && low <= 0) return 'cold';
+    if (isNum(hi) && hi <= 0) return 'cold';
+    if (isNum(rain) && rain >= 50) return 'rain';
+    if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
+    if (isNum(uv) && uv >= 8) return 'uv';
+    if (isNum(wind) && wind >= 35) return 'wind';
+    if (isNum(rain) && rain >= 30) return 'rain';
+    if (isNum(hi) && hi <= 10) return 'cold';
+    return 'clear';
   }
-  function computeHomeDisplayCondition(norm) { const hero = computeTodaysHero(norm), sky = computeSkyCondition(norm); return hero !== 'clear' ? hero : sky; }
+  function computeHomeDisplayCondition(norm) {
+    // Use API's conditionKey directly when available
+    const apiCondition = (norm.conditionKey || '').toLowerCase();
+    if (apiCondition && apiCondition !== 'unknown' && apiCondition !== 'clear') {
+      return apiCondition;
+    }
+    const hero = computeTodaysHero(norm), sky = computeSkyCondition(norm);
+    return hero !== 'clear' ? hero : sky;
+  }
 
   // ========== TRANSLATED TEXT ==========
   function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
@@ -364,10 +393,26 @@ document.addEventListener("DOMContentLoaded", () => {
     return lines[Math.floor(Math.random() * lines.length)];
   }
   function getDayBadge(d) {
-    const r = d.rainChance, u = d.uv, h = d.highC;
-    if (isNum(r) && r >= 50) return t('badges', 'rainy'); if (isNum(r) && r >= 30) return t('badges', 'showers');
-    if (isNum(u) && u >= 8) return t('badges', 'highUV'); if (isNum(h) && h >= THRESH.HOT_C) return t('badges', 'hot');
-    if (isNum(h) && h <= 10) return t('badges', 'cold'); if (isNum(u) && u >= 6) return t('badges', 'uvAlert'); return '';
+    // Use API's conditionKey when available
+    const ck = (d.conditionKey || '').toLowerCase();
+    if (ck === 'storm') return t('badges', 'rainy');
+    if (ck === 'cold') return t('badges', 'cold');
+    if (ck === 'heat') return t('badges', 'hot');
+    if (ck === 'rain') return t('badges', 'rainy');
+    if (ck === 'rain-possible') return t('badges', 'showers');
+    if (ck === 'uv') return t('badges', 'highUV');
+    if (ck === 'wind') return t('badges', 'showers'); // No wind badge, use showers as fallback
+    // Fallback to manual calculation
+    const r = d.rainChance, u = d.uv, h = d.highC, low = d.lowC;
+    if (isNum(low) && low <= 0) return t('badges', 'cold');
+    if (isNum(h) && h <= 0) return t('badges', 'cold');
+    if (isNum(r) && r >= 50) return t('badges', 'rainy');
+    if (isNum(h) && h >= THRESH.HOT_C) return t('badges', 'hot');
+    if (isNum(u) && u >= 8) return t('badges', 'highUV');
+    if (isNum(r) && r >= 30) return t('badges', 'showers');
+    if (isNum(h) && h <= 10) return t('badges', 'cold');
+    if (isNum(u) && u >= 6) return t('badges', 'uvAlert');
+    return '';
   }
   function getTranslatedDayName(dayIndex) {
     const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
@@ -444,13 +489,26 @@ document.addEventListener("DOMContentLoaded", () => {
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
   }
-  function getWeatherIcon(rp, cp, tc) { if (isNum(rp) && rp >= 50) return '🌧️'; if (isNum(rp) && rp >= 30) return '🌦️'; if (isNum(cp) && cp >= 70) return '☁️'; if (isNum(cp) && cp >= 40) return '⛅'; if (isNum(tc) && tc >= 30) return '🔥'; if (isNum(tc) && tc <= 5) return '❄️'; return '☀️'; }
+  function getWeatherIcon(rp, cp, tc) {
+    // Check freezing FIRST - cold always shows snowflake
+    if (isNum(tc) && tc <= 0) return '❄️';
+    // Then check other conditions
+    if (isNum(rp) && rp >= 50) return '🌧️';
+    if (isNum(rp) && rp >= 30) return '🌦️';
+    if (isNum(tc) && tc >= 35) return '🔥';
+    if (isNum(cp) && cp >= 70) return '☁️';
+    if (isNum(cp) && cp >= 40) return '⛅';
+    if (isNum(tc) && tc <= 10) return '❄️';
+    return '☀️';
+  }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
     hourly.slice(0, 24).forEach((h, i) => {
       const div = document.createElement('div'); div.classList.add('hourly-card');
       const ht = h.timeLocal || new Date(Date.now() + i * 3600000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: settings.time === '12' });
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, h.tempC);
+      // Use feelsLike if available and colder than actual temp
+      const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       div.innerHTML = `
         <div class="hour-time">${ht}</div>
@@ -465,7 +523,10 @@ document.addEventListener("DOMContentLoaded", () => {
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = getTranslatedDayName(date.getDay());
-      const badge = getDayBadge(d), icon = getWeatherIcon(d.rainChance, d.cloudPct, d.highC);
+      const badge = getDayBadge(d);
+      // Use lowC for icon temp check - if low is freezing, show snowflake
+      const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
+      const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp);
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
       const div = document.createElement('div'); div.classList.add('daily-card');
       div.innerHTML = `
