@@ -608,6 +608,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
     // Get current hour to start from
     const nowHour = new Date().getHours();
+    // Get current wind as fallback
+    const currentWind = window.__PW_LAST_NORM?.windKph || null;
+    
     // Create table header
     const header = document.createElement('div');
     header.classList.add('hourly-row', 'hourly-header');
@@ -630,8 +633,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
-      const windSpeed = isNum(h.windKmh) ? (settings.wind === 'mph' ? round0(h.windKmh * 0.621371) : round0(h.windKmh)) : '--';
-      const windUnit = settings.wind === 'mph' ? '' : '';
+      // Check multiple possible field names for wind, fallback to current wind for first few hours
+      const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
+      const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
       // Add temperature color class
       const tempClass = getTempColorClass(h.tempC);
       div.innerHTML = `
