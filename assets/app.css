@@ -369,7 +369,8 @@ body.modal-open {
   flex: 1;
   min-height: 0;
   min-width: 0;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 1rem;
   padding: 0;
   overflow-x: auto;
@@ -463,14 +464,7 @@ body.ui-dark .daily-card {
   margin-right: 6px;
 }
 
-@media (max-width: 600px) {
-  .hourly-screen .hourly-timeline,
-  .week-screen .daily-cards {
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-}
+/* Removed 600px vertical stacking - keep horizontal scroll on all screen sizes */
 
 .search-result-item {
   display: flex;
@@ -498,7 +492,7 @@ body.ui-dark .daily-card {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(12px);
   color: inherit;
-  max-width: 420px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 16px;
 }
@@ -671,11 +665,7 @@ body.ui-dark .daily-card {
   }
 }
 
-@media (max-width: 640px) {
-  .week-screen .daily-cards {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-  }
-}
+/* Removed 640px grid override - using flex for horizontal scroll */
 
 .settings-section {
   width: 100%;
@@ -1115,13 +1105,17 @@ select option {
 }
 
 .daily-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 1rem;
   padding: 1rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .daily-card {
+  flex: 0 0 auto;
+  min-width: 130px;
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.2);
@@ -1597,35 +1591,63 @@ main#home-screen.main #confidence {
     padding-bottom: calc(8px + env(safe-area-inset-bottom));
   }
 
-  /* Screen panels */
+  /* Screen panels - FULL WIDTH on mobile */
   .search-screen,
   .settings-screen {
-    width: 95%;
-    max-width: 95vw;
-    max-height: 80vh;
+    left: 8px !important;
+    right: 8px !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: 75vh;
     overflow-y: auto;
     padding: 12px;
   }
 
   .screenPanel {
-    max-height: 85vh;
+    left: 8px !important;
+    right: 8px !important;
+    max-height: 70vh;
     overflow-y: auto;
   }
 
+  /* Hourly/Week - HORIZONTAL scroll with compact cards */
   .hourly-timeline,
   .daily-cards {
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    align-items: stretch;
+    gap: 10px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
   }
 
   .hourly-card,
   .daily-card {
-    width: 90%;
-    max-width: 300px;
-    margin: 6px 0;
-    padding: 10px;
+    flex: 0 0 auto;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    margin: 0;
+    padding: 8px;
     height: auto;
+  }
+
+  /* Compact card content on mobile */
+  .hourly-card .hour-time,
+  .daily-card .day-name {
+    font-size: 0.7rem;
+  }
+
+  .hourly-card .hour-temp,
+  .daily-card .day-temp {
+    font-size: 1.1rem;
+  }
+
+  .daily-card .day-hero {
+    font-size: 0.6rem;
+    padding: 2px 4px;
   }
 
   .screen-panel-body {
