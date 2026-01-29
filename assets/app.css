@@ -50,6 +50,39 @@ body.modal-open {
   font-weight: 800;
 }
 
+/* My Location button */
+.my-location-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.my-location-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+}
+
+.my-location-btn:active {
+  transform: scale(0.95);
+}
+
+.my-location-btn svg {
+  opacity: 0.9;
+}
+
 .tagline {
   font-size: 1.2rem;
   opacity: 0.9;
@@ -1050,6 +1083,8 @@ select option {
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
 }
 
 .brand-text {
