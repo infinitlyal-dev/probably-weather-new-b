@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const bgImg = $('#bgImg');
   const saveCurrent = $('#saveCurrent');
   const particlesEl = $('#particles');
+  const myLocationBtn = $('#myLocationBtn');
 
   const navHome = $('#navHome');
   const navHourly = $('#navHourly');
@@ -771,11 +772,41 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchInput) searchInput.addEventListener('input', (e) => { clearTimeout(searchTimeout); searchTimeout = setTimeout(() => runSearch(e.target.value), 300); });
 
   // ========== NAV & EVENTS ==========
-  navHome?.addEventListener('click', () => { showScreen(screenHome); if (homePlace) loadAndRender(homePlace); });
+  navHome?.addEventListener('click', () => { showScreen(screenHome); });
   navHourly?.addEventListener('click', () => showScreen(screenHourly));
   navWeek?.addEventListener('click', () => showScreen(screenWeek));
   navSearch?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); });
   navSettings?.addEventListener('click', () => showScreen(screenSettings));
+  
+  // My Location button - reset to geolocation
+  myLocationBtn?.addEventListener('click', () => {
+    showScreen(screenHome);
+    renderLoading("My Location");
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(async (pos) => {
+        const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
+        try { 
+          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); 
+          const data = await rev.json();
+          const city = data?.city || "My Location", cc = data?.countryCode || null;
+          saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); 
+          homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; 
+          saveJSON(STORAGE.home, homePlace); 
+          loadAndRender(homePlace);
+          showToast(t('toasts', 'locationUpdated') || '📍 Location updated');
+        } catch { 
+          homePlace = { name: "My Location", lat, lon }; 
+          saveJSON(STORAGE.home, homePlace); 
+          loadAndRender(homePlace); 
+        }
+      }, () => { 
+        showToast(t('toasts', 'locationError') || 'Could not get location'); 
+      }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 0 });
+    } else { 
+      showToast(t('toasts', 'locationError') || 'Location not available'); 
+    }
+  });
+  
   unitsTempSelect?.addEventListener('change', () => { settings.temp = unitsTempSelect.value; saveSettings(); applySettings(); });
   unitsWindSelect?.addEventListener('change', () => { settings.wind = unitsWindSelect.value; saveSettings(); applySettings(); });
   probRangeToggle?.addEventListener('change', () => { settings.range = !!probRangeToggle.checked; saveSettings(); applySettings(); });
