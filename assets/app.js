@@ -835,8 +835,8 @@ document.addEventListener("DOMContentLoaded", () => {
   myLocationBtn?.addEventListener('click', () => {
     showScreen(screenHome);
     
-    // Try to use saved location first as fallback
-    const savedLoc = loadJSON(STORAGE.location, null);
+    // Get saved GPS location (only set when geolocation actually succeeds)
+    const savedGpsLoc = loadJSON(STORAGE.location, null);
     
     if ("geolocation" in navigator) {
       renderLoading("Getting location...");
@@ -846,37 +846,51 @@ document.addEventListener("DOMContentLoaded", () => {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); 
           const data = await rev.json();
           const city = data?.city || "My Location", cc = data?.countryCode || null;
+          // Save to STORAGE.location - this is the user's real GPS location
           saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); 
           homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; 
           saveJSON(STORAGE.home, homePlace); 
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
         } catch { 
+          // Reverse geocode failed but we have coords - still save them
+          saveJSON(STORAGE.location, { city: "My Location", lat, lon });
           homePlace = { name: "My Location", lat, lon }; 
           saveJSON(STORAGE.home, homePlace); 
           loadAndRender(homePlace); 
         }
       }, (err) => { 
         console.log('Geolocation error:', err.code, err.message);
-        // Fall back to saved location if available
-        if (savedLoc?.lat && savedLoc?.lon) {
-          homePlace = { name: savedLoc.city && savedLoc.countryCode ? `${savedLoc.city}, ${savedLoc.countryCode}` : (savedLoc.city || "My Location"), lat: savedLoc.lat, lon: savedLoc.lon };
+        // Geolocation failed - use saved GPS location if we have one
+        if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
+          homePlace = { 
+            name: savedGpsLoc.city && savedGpsLoc.countryCode 
+              ? `${savedGpsLoc.city}, ${savedGpsLoc.countryCode}` 
+              : (savedGpsLoc.city || "My Location"), 
+            lat: savedGpsLoc.lat, 
+            lon: savedGpsLoc.lon 
+          };
+          saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
-        } else if (activePlace) {
-          // Fall back to current active place
-          loadAndRender(activePlace);
-          showToast(t('toasts', 'locationError') || 'Could not get location');
         } else {
-          // Last resort - show error but don't leave in loading state
-          renderError(t('toasts', 'locationError') || 'Could not get location');
+          // No saved GPS location - show error, stay on current view
+          showToast(t('toasts', 'locationError') || 'Could not get location');
+          // If we have an active place, just re-render it
+          if (activePlace) {
+            loadAndRender(activePlace);
+          } else {
+            renderError(t('toasts', 'locationError') || 'Could not get location');
+          }
         }
       }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
     } else { 
-      // No geolocation support - use saved or show error
-      if (savedLoc?.lat && savedLoc?.lon) {
-        homePlace = { name: savedLoc.city || "My Location", lat: savedLoc.lat, lon: savedLoc.lon };
+      // No geolocation support - use saved GPS location if available
+      if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
+        homePlace = { name: savedGpsLoc.city || "My Location", lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
+        saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
+        showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
       } else {
         showToast(t('toasts', 'locationError') || 'Location not available');
       }
