@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rain: { en: "Rain", af: "Reën", zu: "Imvula", xh: "Imvula", st: "Pula" },
       uv: { en: "UV", af: "UV", zu: "UV", xh: "UV", st: "UV" },
       feelsLike: { en: "Feels like", af: "Voel soos", zu: "Kuzwakala sengathi", xh: "Kuziva ngathi", st: "Ho utlwahala joalo ka" },
+      later: { en: "Later ⏰", af: "Later ⏰", zu: "Kamuva ⏰", xh: "Kamva ⏰", st: "Hamorao ⏰" },
       none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakwenzeka", xh: "Akunakwenzeka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
@@ -353,42 +354,64 @@ document.addEventListener("DOMContentLoaded", () => {
     return 'clear';
   }
   function computeTodaysHero(norm) {
-    // TRUST the API's conditionKey - it has the smart priority logic!
+    // For "Today's Hero" badge, use DAILY data (what's the main story for the whole day)
     const apiCondition = (norm.conditionKey || '').toLowerCase();
-    if (apiCondition && apiCondition !== 'unknown') {
-      // Map API conditions to hero conditions
-      if (apiCondition === 'storm') return 'storm';
-      if (apiCondition === 'cold') return 'cold';
-      if (apiCondition === 'heat') return 'heat';
-      if (apiCondition === 'rain') return 'rain';
-      if (apiCondition === 'rain-possible') return 'rain-possible';
-      if (apiCondition === 'uv') return 'uv';
-      if (apiCondition === 'wind') return 'wind';
-      if (apiCondition === 'fog') return 'fog';
-      if (apiCondition === 'cloudy') return 'cloudy';
-      if (apiCondition === 'clear') return 'clear';
-    }
-    // Fallback only if API didn't provide condition
-    const rain = norm.rainPct, wind = norm.windKph, hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
+    const dailyRain = norm.dailyRainPct;
+    
+    // Check daily rain first for the hero badge (rainy DAY)
+    if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
+    
+    // Then check API condition for extreme weather
+    if (apiCondition === 'storm') return 'storm';
+    if (apiCondition === 'cold') return 'cold';
+    if (apiCondition === 'heat') return 'heat';
+    if (apiCondition === 'uv') return 'uv';
+    
+    // Check daily rain for showers
+    if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
+    
+    // Then other conditions
+    if (apiCondition === 'wind') return 'wind';
+    if (apiCondition === 'fog') return 'fog';
+    if (apiCondition === 'cloudy') return 'cloudy';
+    
+    // Fallback calculations
+    const wind = norm.windKph, hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
     if (isNum(feels) && feels <= -5) return 'cold';
     if (isNum(low) && low <= 0) return 'cold';
-    if (isNum(hi) && hi <= 0) return 'cold';
-    if (isNum(rain) && rain >= 50) return 'rain';
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
     if (isNum(uv) && uv >= 8) return 'uv';
     if (isNum(wind) && wind >= 35) return 'wind';
-    if (isNum(rain) && rain >= 30) return 'rain';
     if (isNum(hi) && hi <= 10) return 'cold';
     return 'clear';
   }
+  
   function computeHomeDisplayCondition(norm) {
-    // Use API's conditionKey directly when available
+    // For HOME SCREEN display, use IMMINENT weather (what's happening NOW/soon)
+    const imminentRain = norm.rainPct;  // This is now imminent rain from normalizePayload
     const apiCondition = (norm.conditionKey || '').toLowerCase();
-    if (apiCondition && apiCondition !== 'unknown' && apiCondition !== 'clear') {
-      return apiCondition;
-    }
-    const hero = computeTodaysHero(norm), sky = computeSkyCondition(norm);
-    return hero !== 'clear' ? hero : sky;
+    
+    // Check for storm/cold/heat from API (these are always relevant)
+    if (apiCondition === 'storm') return 'storm';
+    if (apiCondition === 'cold') return 'cold';
+    if (apiCondition === 'heat') return 'heat';
+    
+    // Check IMMINENT rain (next 3-4 hours), not daily aggregate
+    if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
+    if (isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
+    
+    // If rain is coming LATER but not imminent, show current conditions
+    // (the daily hero badge will still show "Rainy" for the day)
+    
+    // Check other conditions
+    if (apiCondition === 'uv') return 'uv';
+    if (apiCondition === 'wind') return 'wind';
+    if (apiCondition === 'fog') return 'fog';
+    if (apiCondition === 'cloudy') return 'cloudy';
+    
+    // Sky condition fallback
+    const sky = computeSkyCondition(norm);
+    return sky !== 'clear' ? sky : 'clear';
   }
 
   // ========== TRANSLATED TEXT ==========
@@ -460,7 +483,41 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchProbable(place) { const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`; const resp = await fetch(url); if (!resp.ok) throw new Error('API error'); return await resp.json(); }
   function normalizePayload(payload) {
     const now = payload.now || {}, today = payload.daily?.[0] || {}, meta = payload.meta || {}, sources = meta.sources || [];
-    return { nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, rainPct: today.rainChance ?? now.rainChance ?? null, uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', confidenceKey: payload.consensus?.confidenceKey || 'mixed', used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name), hourly: payload.hourly || [], daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [] };
+    const hourly = payload.hourly || [];
+    
+    // Calculate IMMINENT rain (next 3-4 hours) for home screen display
+    const imminentHours = hourly.slice(0, 4);
+    const imminentRainMax = imminentHours.length > 0 
+      ? Math.max(...imminentHours.map(h => h.rainChance ?? 0))
+      : null;
+    
+    // Use imminent rain for display, daily rain for "today's hero" badge
+    const displayRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
+    const dailyRainPct = today.rainChance ?? now.rainChance ?? null;
+    
+    // Determine if rain is coming LATER (not imminent but daily is high)
+    const rainLater = isNum(imminentRainMax) && imminentRainMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
+    
+    return { 
+      nowTemp: now.tempC ?? null, 
+      feelsLike: now.feelsLikeC ?? null, 
+      todayHigh: today.highC ?? null, 
+      todayLow: today.lowC ?? null, 
+      rainPct: displayRainPct,  // Use imminent rain for home display
+      dailyRainPct: dailyRainPct,  // Keep daily for "today's hero" badge
+      rainLater: rainLater,  // Flag for "rain expected later"
+      uv: today.uv ?? null, 
+      windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
+      conditionKey: now.conditionKey || today.conditionKey || null, 
+      conditionLabel: now.conditionLabel || today.conditionLabel || '', 
+      confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
+      used: sources.filter(s => s.ok).map(s => s.name), 
+      failed: sources.filter(s => !s.ok).map(s => s.name), 
+      hourly: hourly, 
+      daily: payload.daily || [], 
+      locationName: payload.location?.name, 
+      sourceRanges: meta.sourceRanges || [] 
+    };
   }
 
   // ========== RENDER ==========
@@ -490,7 +547,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (bylineEl) {
       const ws = isNum(wind) ? formatWind(wind) : '--';
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
-      let rs = '--'; if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
+      let rs = '--'; 
+      if (isNum(rain)) { 
+        rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); 
+      }
+      // Add "later" indicator if rain is coming but not imminent
+      if (norm.rainLater) {
+        rs = t('weather', 'later') || 'Later';
+      }
       let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
       // Add feels like if significantly different from actual temp
       const feels = norm.feelsLike;
