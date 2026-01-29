@@ -115,7 +115,11 @@ document.addEventListener("DOMContentLoaded", () => {
       low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
       moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
       high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
-      veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" }
+      veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" },
+      // Table headers
+      time: { en: "Time", af: "Tyd", zu: "Isikhathi", xh: "Ixesha", st: "Nako" },
+      temp: { en: "Temp", af: "Temp", zu: "Temp", xh: "Temp", st: "Temp" },
+      day: { en: "Day", af: "Dag", zu: "Usuku", xh: "Usuku", st: "Letsatsi" }
     },
     // Day hero badges
     badges: {
@@ -604,29 +608,54 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
     // Get current hour to start from
     const nowHour = new Date().getHours();
+    // Create table header
+    const header = document.createElement('div');
+    header.classList.add('hourly-row', 'hourly-header');
+    header.innerHTML = `
+      <span class="h-time">${t('weather', 'time') || 'Time'}</span>
+      <span class="h-icon"></span>
+      <span class="h-temp">${t('weather', 'temp') || 'Temp'}</span>
+      <span class="h-rain">${t('weather', 'rain') || 'Rain'}</span>
+      <span class="h-wind">${t('weather', 'wind') || 'Wind'}</span>`;
+    hourlyTimeline.appendChild(header);
+    
     hourly.slice(0, 24).forEach((h, i) => {
-      const div = document.createElement('div'); div.classList.add('hourly-card');
+      const div = document.createElement('div'); div.classList.add('hourly-row');
       // Round to the hour - show 11:00, 12:00, etc.
       const hourNum = (nowHour + i) % 24;
       const ht = settings.time === '12' 
-        ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}:00 ${hourNum >= 12 ? 'PM' : 'AM'}`
+        ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}`
         : `${String(hourNum).padStart(2, '0')}:00`;
       // Use feelsLike if available and colder than actual temp
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
+      const windSpeed = isNum(h.windKmh) ? (settings.wind === 'mph' ? round0(h.windKmh * 0.621371) : round0(h.windKmh)) : '--';
+      const windUnit = settings.wind === 'mph' ? '' : '';
       // Add temperature color class
       const tempClass = getTempColorClass(h.tempC);
       div.innerHTML = `
-        <div class="hour-time">${ht}</div>
-        <span class="weather-icon">${icon}</span>
-        <div class="hour-temp ${tempClass}">${formatTemp(h.tempC)}</div>
-        <div class="hour-detail"><span class="detail-value">${rainPct}</span></div>`;
+        <span class="h-time">${ht}</span>
+        <span class="h-icon">${icon}</span>
+        <span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span>
+        <span class="h-rain">${rainPct}</span>
+        <span class="h-wind">${windSpeed}</span>`;
       hourlyTimeline.appendChild(div);
     });
   }
   function renderWeek(daily) {
     if (!dailyCards) return; dailyCards.innerHTML = '';
+    // Create table header
+    const header = document.createElement('div');
+    header.classList.add('daily-row', 'daily-header');
+    header.innerHTML = `
+      <span class="d-day">${t('weather', 'day') || 'Day'}</span>
+      <span class="d-icon"></span>
+      <span class="d-high">${t('weather', 'high') || 'High'}</span>
+      <span class="d-low">${t('weather', 'low') || 'Low'}</span>
+      <span class="d-rain">${t('weather', 'rain') || 'Rain'}</span>`;
+    dailyCards.appendChild(header);
+    
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = getTranslatedDayName(date.getDay());
@@ -638,14 +667,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // Temperature color classes
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
-      const div = document.createElement('div'); div.classList.add('daily-card');
+      const div = document.createElement('div'); div.classList.add('daily-row');
       div.innerHTML = `
-        <div class="day-name">${dayName}</div>
-        <span class="weather-icon">${icon}</span>
-        <div class="day-temp ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</div>
-        <div class="day-temp day-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</div>
-        ${badge ? `<div class="day-hero">${badge}</div>` : '<div class="day-hero-placeholder"></div>'}
-        <div class="day-detail"><span class="detail-value">${rainPct}</span></div>`;
+        <span class="d-day">${dayName}${badge ? ` <span class="day-badge">${badge}</span>` : ''}</span>
+        <span class="d-icon">${icon}</span>
+        <span class="d-high ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</span>
+        <span class="d-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</span>
+        <span class="d-rain">${rainPct}</span>`;
       dailyCards.appendChild(div);
     });
   }
@@ -694,7 +722,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderRecents() {
     if (!recentList) return; const list = loadRecents();
-    recentList.innerHTML = list.map(p => `<li class="recent-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</li>`).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
+    const logoMini = `<svg class="recent-logo" viewBox="0 0 40 40" width="18" height="18"><circle cx="20" cy="20" r="18" fill="url(#logoGrad)"/><text x="12" y="28" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="#fff">P</text><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFDD44"/><stop offset="100%" stop-color="#FFAA00"/></linearGradient></defs></svg>`;
+    recentList.innerHTML = list.map(p => `<li class="recent-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(p.name)}</span></li>`).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
     recentList.querySelectorAll('li[data-lat]').forEach(li => { li.addEventListener('click', () => { showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); }); });
   }
   function renderFavorites() {
