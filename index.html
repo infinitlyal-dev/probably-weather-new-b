@@ -39,14 +39,14 @@
 
     <div class="home-layout">
       <main id="home-screen" class="main">
-        <div id="confidence" class="confidence">PROBABLY • —</div>
-        <div id="sources" class="sources">Sources: —</div>
-
         <div id="temp" class="temp">--°</div>
         <div id="tempHiLo" class="temp-hilo"></div>
         <h1 id="headline" class="headline">Loading...</h1>
         <div id="description" class="description">—</div>
         <div id="weatherByline" class="weather-byline">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
+        <!-- Hidden elements for JS compatibility -->
+        <div id="confidence" class="hidden"></div>
+        <div id="sources" class="hidden"></div>
       </main>
 
       <aside class="sidebar">
