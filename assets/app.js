@@ -256,7 +256,10 @@ document.addEventListener("DOMContentLoaded", () => {
       maxPlaces: { en: "Max 5 places. Remove one first.", af: "Maks 5 plekke. Verwyder een eers.", zu: "Izindawo ezi-5 kuphela. Susa eyodwa kuqala.", xh: "Iindawo ezi-5 kuphela. Susa enye kuqala.", st: "Libaka tse 5 feela. Tlosa e le 'ngoe pele." },
       alreadySaved: { en: "Already saved!", af: "Reeds gestoor!", zu: "Seyigciniwe!", xh: "Sele igciniwe!", st: "E se e bolokiloe!" },
       cleared: { en: "Cleared", af: "Skoongemaak", zu: "Kususiwe", xh: "Kucociwe", st: "E hlakiloe" },
-      noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "Akukho ndawo", st: "Ha ho libaka" }
+      noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "Akukho ndawo", st: "Ha ho libaka" },
+      locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditsoe" },
+      locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo", st: "Ha e khone ho fumana sebaka" },
+      usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Isebenzisa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" }
     },
     // Misc
     misc: {
@@ -831,8 +834,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // My Location button - reset to geolocation
   myLocationBtn?.addEventListener('click', () => {
     showScreen(screenHome);
-    renderLoading("My Location");
+    
+    // Try to use saved location first as fallback
+    const savedLoc = loadJSON(STORAGE.location, null);
+    
     if ("geolocation" in navigator) {
+      renderLoading("Getting location...");
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
         try { 
@@ -843,17 +850,36 @@ document.addEventListener("DOMContentLoaded", () => {
           homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; 
           saveJSON(STORAGE.home, homePlace); 
           loadAndRender(homePlace);
-          showToast(t('toasts', 'locationUpdated') || '📍 Location updated');
+          showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
         } catch { 
           homePlace = { name: "My Location", lat, lon }; 
           saveJSON(STORAGE.home, homePlace); 
           loadAndRender(homePlace); 
         }
-      }, () => { 
-        showToast(t('toasts', 'locationError') || 'Could not get location'); 
-      }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 0 });
+      }, (err) => { 
+        console.log('Geolocation error:', err.code, err.message);
+        // Fall back to saved location if available
+        if (savedLoc?.lat && savedLoc?.lon) {
+          homePlace = { name: savedLoc.city && savedLoc.countryCode ? `${savedLoc.city}, ${savedLoc.countryCode}` : (savedLoc.city || "My Location"), lat: savedLoc.lat, lon: savedLoc.lon };
+          loadAndRender(homePlace);
+          showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
+        } else if (activePlace) {
+          // Fall back to current active place
+          loadAndRender(activePlace);
+          showToast(t('toasts', 'locationError') || 'Could not get location');
+        } else {
+          // Last resort - show error but don't leave in loading state
+          renderError(t('toasts', 'locationError') || 'Could not get location');
+        }
+      }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
     } else { 
-      showToast(t('toasts', 'locationError') || 'Location not available'); 
+      // No geolocation support - use saved or show error
+      if (savedLoc?.lat && savedLoc?.lon) {
+        homePlace = { name: savedLoc.city || "My Location", lat: savedLoc.lat, lon: savedLoc.lon };
+        loadAndRender(homePlace);
+      } else {
+        showToast(t('toasts', 'locationError') || 'Location not available');
+      }
     }
   });
   
