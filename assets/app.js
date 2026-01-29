@@ -126,6 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
     badges: {
       rainy: { en: "Rainy", af: "Reënerig", zu: "Imvula", xh: "Imvula", st: "Pula" },
       showers: { en: "Showers", af: "Buie", zu: "Izihlambi", xh: "Iimvula", st: "Lipula" },
+      rainLater: { en: "Rain later", af: "Reën later", zu: "Imvula kamuva", xh: "Imvula kamva", st: "Pula hamorao" },
+      rainTonight: { en: "Rain tonight", af: "Reën vanaand", zu: "Imvula namhlanje", xh: "Imvula ngokuhlwa", st: "Pula bosiu" },
+      rainMorning: { en: "Rain AM", af: "Reën oggend", zu: "Imvula ekuseni", xh: "Imvula kusasa", st: "Pula hoseng" },
       highUV: { en: "High UV", af: "Hoë UV", zu: "UV Ephezulu", xh: "UV Ephezulu", st: "UV e Phahameng" },
       hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
       cold: { en: "Cold", af: "Koud", zu: "Kubanda", xh: "Kubanda", st: "Ho bata" },
@@ -431,18 +434,65 @@ document.addEventListener("DOMContentLoaded", () => {
     const lines = T.witty[condition]?.[settings.lang] || T.witty[condition]?.en || T.witty.clear.en;
     return lines[Math.floor(Math.random() * lines.length)];
   }
-  function getDayBadge(d) {
+  function getDayBadge(d, dayIndex, hourlyData) {
     // Use API's conditionKey when available
     const ck = (d.conditionKey || '').toLowerCase();
     if (ck === 'storm') return t('badges', 'rainy');
     if (ck === 'cold') return t('badges', 'cold');
     if (ck === 'heat') return t('badges', 'hot');
+    
+    // For rain conditions, check timing
+    const r = d.rainChance;
+    const isRainy = ck === 'rain' || ck === 'rain-possible' || (isNum(r) && r >= 30);
+    
+    if (isRainy && dayIndex === 0 && Array.isArray(hourlyData) && hourlyData.length > 0) {
+      // For today, check WHEN rain starts in hourly data
+      const currentHour = new Date().getHours();
+      const rainThreshold = 25; // Consider rain "starting" when chance >= 25%
+      
+      // Find first hour with significant rain chance
+      let firstRainHour = -1;
+      for (let i = 0; i < Math.min(24, hourlyData.length); i++) {
+        const h = hourlyData[i];
+        if (isNum(h.rainChance) && h.rainChance >= rainThreshold) {
+          firstRainHour = (currentHour + i) % 24;
+          break;
+        }
+      }
+      
+      if (firstRainHour === -1) {
+        // No significant rain in next 24h despite daily showing rain
+        return isNum(r) && r >= 50 ? t('badges', 'rainLater') : t('badges', 'showers');
+      }
+      
+      // Determine timing badge based on when rain starts
+      const hoursUntilRain = firstRainHour >= currentHour 
+        ? firstRainHour - currentHour 
+        : (24 - currentHour) + firstRainHour;
+      
+      if (hoursUntilRain <= 2) {
+        // Rain imminent or happening now
+        return isNum(r) && r >= 50 ? t('badges', 'rainy') : t('badges', 'showers');
+      } else if (firstRainHour >= 18 || firstRainHour < 5) {
+        // Rain starts in evening/night
+        return t('badges', 'rainTonight');
+      } else if (firstRainHour >= 5 && firstRainHour < 12) {
+        // Rain starts in morning
+        return t('badges', 'rainMorning');
+      } else {
+        // Rain starts in afternoon
+        return t('badges', 'rainLater');
+      }
+    }
+    
+    // Non-today days or non-rain conditions
     if (ck === 'rain') return t('badges', 'rainy');
     if (ck === 'rain-possible') return t('badges', 'showers');
     if (ck === 'uv') return t('badges', 'highUV');
-    if (ck === 'wind') return t('badges', 'showers'); // No wind badge, use showers as fallback
+    if (ck === 'wind') return t('badges', 'showers');
+    
     // Fallback to manual calculation
-    const r = d.rainChance, u = d.uv, h = d.highC, low = d.lowC;
+    const u = d.uv, h = d.highC, low = d.lowC;
     if (isNum(low) && low <= 0) return t('badges', 'cold');
     if (isNum(h) && h <= 0) return t('badges', 'cold');
     if (isNum(r) && r >= 50) return t('badges', 'rainy');
@@ -648,7 +698,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hourlyTimeline.appendChild(div);
     });
   }
-  function renderWeek(daily) {
+  function renderWeek(daily, hourlyData) {
     if (!dailyCards) return; dailyCards.innerHTML = '';
     // Create table header
     const header = document.createElement('div');
@@ -664,7 +714,7 @@ document.addEventListener("DOMContentLoaded", () => {
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = getTranslatedDayName(date.getDay());
-      const badge = getDayBadge(d);
+      const badge = getDayBadge(d, i, hourlyData);
       // Use lowC for icon temp check - if low is freezing, show snowflake
       const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
       const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp);
@@ -689,12 +739,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
     if (languageSelect) languageSelect.value = settings.lang;
     updateUILanguage();
-    if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily); }
+    if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
     renderFavorites(); renderRecents();
   }
   async function loadAndRender(place) {
     activePlace = place; renderLoading(place.name || 'My Location');
-    try { const payload = await fetchProbable(place); lastPayload = payload; const norm = normalizePayload(payload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily); }
+    try { const payload = await fetchProbable(place); lastPayload = payload; const norm = normalizePayload(payload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
     catch (e) { console.error("Load failed:", e); renderError(t('misc', 'couldntFetch')); }
   }
 
