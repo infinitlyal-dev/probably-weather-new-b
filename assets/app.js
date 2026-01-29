@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     // Weather byline terms
     weather: {
+      probably: { en: "Probably", af: "Waarskynlik", zu: "Mhlawumbe", xh: "Mhlawumbi", st: "Mohlomong" },
       wind: { en: "Wind", af: "Wind", zu: "Umoya", xh: "Umoya", st: "Moea" },
       rain: { en: "Rain", af: "Reën", zu: "Imvula", xh: "Imvula", st: "Pula" },
       uv: { en: "UV", af: "UV", zu: "UV", xh: "UV", st: "UV" },
@@ -541,8 +542,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
     
-    // NEW LAYOUT: Current temp is the hero
-    safeText(tempEl, isNum(currentTemp) ? formatTemp(currentTemp) : '--°');
+    // NEW LAYOUT: "Probably 29°" as the hero - translated for all languages
+    const probablyLabel = t('weather', 'probably');
+    safeText(tempEl, isNum(currentTemp) ? `${probablyLabel} ${formatTemp(currentTemp)}` : `${probablyLabel} --°`);
     
     // High/Low underneath (need new element or repurpose)
     const hiLoEl = $('#tempHiLo');
