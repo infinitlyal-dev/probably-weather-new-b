@@ -688,11 +688,6 @@ body.ui-dark .daily-card {
   margin-bottom: 0.5rem;
 }
 
-.settings-section:has(#languagePlain),
-.settings-section:has(#languageHuman) {
-  display: none;
-}
-
 .settings-option {
   display: flex;
   justify-content: space-between;
