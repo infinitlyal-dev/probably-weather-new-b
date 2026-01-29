@@ -533,16 +533,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderHome(norm) {
     showLoader(false);
-    const hi = norm.todayHigh, low = norm.todayLow, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
+    const currentTemp = norm.nowTemp, hi = norm.todayHigh, low = norm.todayLow, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
     document.body.className = `weather-${displayCondition}`;
     let locationName = norm.locationName || activePlace?.name || 'My Location'; safeText(locationEl, locationName);
     if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
+    
+    // NEW LAYOUT: Current temp is the hero
+    safeText(tempEl, isNum(currentTemp) ? formatTemp(currentTemp) : '--°');
+    
+    // High/Low underneath (need new element or repurpose)
+    const hiLoEl = $('#tempHiLo');
+    if (hiLoEl) {
+      const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+      const loStr = isNum(low) ? formatTemp(low) : '--°';
+      hiLoEl.innerHTML = `<span class="hi">↑${hiStr}</span> <span class="lo">↓${loStr}</span>`;
+    }
+    
+    // Headline below temp
     safeText(headlineEl, getHeadline(displayCondition));
-    safeText(tempEl, `${isNum(low) ? formatTemp(low) : '--°'} – ${isNum(hi) ? formatTemp(hi) : '--°'}`);
     safeText(descriptionEl, getWittyLine(displayCondition));
+    
+    // Split byline into 2 lines
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const ws = isNum(wind) ? formatWind(wind) : '--';
@@ -556,12 +570,16 @@ document.addEventListener("DOMContentLoaded", () => {
         rs = t('weather', 'later') || 'Later';
       }
       let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
-      // Add feels like if significantly different from actual temp
+      
+      // Feels like
       const feels = norm.feelsLike;
-      const avgTemp = (isNum(hi) && isNum(low)) ? (hi + low) / 2 : null;
-      const showFeels = isNum(feels) && isNum(avgTemp) && Math.abs(feels - avgTemp) >= 3;
-      const feelsStr = showFeels ? ` • ${t('weather', 'feelsLike')} ${formatTemp(feels)}` : '';
-      bylineEl.innerHTML = `${windLabel} ${ws} • ${rainLabel} ${rs} • ${uvLabel} ${us}${feelsStr}`;
+      const showFeels = isNum(feels) && isNum(currentTemp) && Math.abs(feels - currentTemp) >= 3;
+      const feelsStr = showFeels ? `${t('weather', 'feelsLike')} ${formatTemp(feels)}` : '';
+      
+      // Split into 2 lines
+      const line1 = `${windLabel} ${ws} • ${rainLabel} ${rs}`;
+      const line2 = `${uvLabel} ${us}${feelsStr ? ' • ' + feelsStr : ''}`;
+      bylineEl.innerHTML = `<div class="byline-row">${line1}</div><div class="byline-row">${line2}</div>`;
     }
     const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
     [headlineEl, tempEl, descriptionEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
