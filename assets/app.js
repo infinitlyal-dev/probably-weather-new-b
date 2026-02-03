@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     if (isRainy && dayIndex === 0 && Array.isArray(hourlyData) && hourlyData.length > 0) {
       // For today, check WHEN rain starts in hourly data
-      const currentHour = new Date().getHours();
+      const currentHour = getLocationHour(activePlace?.lon);
       const rainThreshold = 25; // Consider rain "starting" when chance >= 25%
       
       // Find first hour with significant rain chance
@@ -511,11 +511,23 @@ document.addEventListener("DOMContentLoaded", () => {
     return t('days', days[dayIndex]);
   }
 
+  // ========== LOCATION TIME HELPER ==========
+  function getLocationHour(lon) {
+    // Calculate approximate local hour for a given longitude
+    // Each 15° of longitude ≈ 1 hour offset from UTC
+    if (!isNum(lon)) return new Date().getHours(); // fallback to local time
+    const now = new Date();
+    const utcHour = now.getUTCHours() + now.getUTCMinutes() / 60;
+    const offsetHours = lon / 15;
+    const localHour = (utcHour + offsetHours + 24) % 24;
+    return Math.floor(localHour);
+  }
+
   // ========== BACKGROUND & PARTICLES ==========
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
-    const hour = new Date().getHours();
+    const hour = getLocationHour(activePlace?.lon);
     const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
     if (bgImg) { bgImg.src = `${base}/${folder}/${timeOfDay}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
   }
@@ -661,7 +673,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
     // Get current hour to start from
-    const nowHour = new Date().getHours();
+    const nowHour = getLocationHour(activePlace?.lon);
     // Get current wind as fallback
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
     
