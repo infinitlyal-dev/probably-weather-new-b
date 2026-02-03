@@ -524,12 +524,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== BACKGROUND & PARTICLES ==========
+  const DAY_IMAGE_COUNT = 7; // Number of day images per condition (day_1.jpg through day_7.jpg)
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const hour = getLocationHour(activePlace?.lon);
     const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
-    if (bgImg) { bgImg.src = `${base}/${folder}/${timeOfDay}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
+    // For day images, randomly pick from day_1.jpg to day_7.jpg
+    const randomNum = Math.floor(Math.random() * DAY_IMAGE_COUNT) + 1;
+    const imgFile = timeOfDay === 'day' ? `day_${randomNum}` : timeOfDay;
+    if (bgImg) { bgImg.src = `${base}/${folder}/${imgFile}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
   }
   function createParticles(condition) {
     if (!particlesEl) return; particlesEl.innerHTML = '';
