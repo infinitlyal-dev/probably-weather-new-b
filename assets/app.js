@@ -295,12 +295,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   const conditionEmoji = (key) => { const m = { storm: '⛈️', rain: '🌧️', wind: '💨', cold: '❄️', heat: '🔥', fog: '🌫️', clear: '☀️' }; return m[String(key || '').toLowerCase()] || '⛅'; };
 
+  // ========== IP GEOLOCATION FALLBACK ==========
+  // Used when GPS is blocked (e.g. WhatsApp in-app browser)
+  async function getIPLocation() {
+    try {
+      const resp = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(5000) });
+      if (!resp.ok) throw new Error('IP lookup failed');
+      const data = await resp.json();
+      if (data.latitude && data.longitude) {
+        return {
+          name: data.city && data.country_code ? `${data.city}, ${data.country_code}` : (data.city || 'My Location'),
+          lat: Math.round(data.latitude * 10) / 10,
+          lon: Math.round(data.longitude * 10) / 10
+        };
+      }
+    } catch (e) { console.log('IP geolocation failed:', e); }
+    // Ultimate fallback - Johannesburg (most populated SA city)
+    return { name: "Johannesburg, ZA", lat: -26.2, lon: 28.0 };
+  }
+
   function loadSettings() { settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang) }; }
   function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.range, settings.range); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
   const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : `${round0(kph)} km/h`;
-  // Temperature color class: blue for freezing, cyan for cold, orange for warm, red for hot
   const getTempColorClass = (tempC) => {
     if (!isNum(tempC)) return '';
     if (tempC <= 0) return 'temp-freezing';
@@ -322,25 +340,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== UPDATE UI LANGUAGE ==========
   function updateUILanguage() {
-    // Nav
     if (navHome) navHome.textContent = t('nav', 'home');
     if (navHourly) navHourly.textContent = t('nav', 'hourly');
     if (navWeek) navWeek.textContent = t('nav', 'week');
     if (navSearch) navSearch.textContent = t('nav', 'search');
     if (navSettings) navSettings.textContent = t('nav', 'settings');
-    // Screen titles
     const hourlyTitle = screenHourly?.querySelector('.screen-title'); if (hourlyTitle) hourlyTitle.textContent = t('screens', 'hourly');
     const weekTitle = screenWeek?.querySelector('.screen-title'); if (weekTitle) weekTitle.textContent = t('screens', 'week');
     const searchTitle = screenSearch?.querySelector('.screen-title'); if (searchTitle) searchTitle.textContent = t('screens', 'search');
     const settingsTitle = screenSettings?.querySelector('.screen-title'); if (settingsTitle) settingsTitle.textContent = t('screens', 'settings');
-    // Search screen
     if (searchInput) searchInput.placeholder = t('search', 'placeholder');
     if (searchCancel) searchCancel.textContent = t('search', 'cancel');
     if (clearRecentsBtn) clearRecentsBtn.textContent = t('search', 'clearRecents');
     if (manageFavorites) manageFavorites.textContent = manageMode ? t('search', 'done') : t('search', 'manage');
     const savedH = screenSearch?.querySelector('.section h3'); if (savedH) savedH.textContent = t('search', 'savedPlaces');
     const recentH = screenSearch?.querySelectorAll('.section h3')[1]; if (recentH) recentH.textContent = t('search', 'recent');
-    // Settings labels
     const unitsH = screenSettings?.querySelector('.settings-section h3'); if (unitsH) unitsH.textContent = t('settings', 'units');
     const tempLabel = unitsTempSelect?.closest('.settings-option')?.querySelector('label'); if (tempLabel) tempLabel.textContent = t('settings', 'temperature');
     const windLabel = unitsWindSelect?.closest('.settings-option')?.querySelector('label'); if (windLabel) windLabel.textContent = t('settings', 'windSpeed');
@@ -351,7 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
-    // Sidebar
     if (extremeLabelEl) extremeLabelEl.textContent = t('sidebar', 'todaysHero');
     const sourcesLabel = document.querySelector('.card-sources .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
   }
@@ -366,28 +379,17 @@ document.addEventListener("DOMContentLoaded", () => {
     return 'clear';
   }
   function computeTodaysHero(norm) {
-    // For "Today's Hero" badge, use DAILY data (what's the main story for the whole day)
     const apiCondition = (norm.conditionKey || '').toLowerCase();
     const dailyRain = norm.dailyRainPct;
-    
-    // Check daily rain first for the hero badge (rainy DAY)
     if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
-    
-    // Then check API condition for extreme weather
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
     if (apiCondition === 'uv') return 'uv';
-    
-    // Check daily rain for showers
     if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
-    
-    // Then other conditions
     if (apiCondition === 'wind') return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
-    
-    // Fallback calculations
     const wind = norm.windKph, hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
     if (isNum(feels) && feels <= -5) return 'cold';
     if (isNum(low) && low <= 0) return 'cold';
@@ -399,29 +401,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function computeHomeDisplayCondition(norm) {
-    // For HOME SCREEN display, use IMMINENT weather (what's happening NOW/soon)
-    const imminentRain = norm.rainPct;  // This is now imminent rain from normalizePayload
+    const imminentRain = norm.rainPct;
     const apiCondition = (norm.conditionKey || '').toLowerCase();
-    
-    // Check for storm/cold/heat from API (these are always relevant)
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
-    
-    // Check IMMINENT rain (next 3-4 hours), not daily aggregate
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
     if (isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
-    
-    // If rain is coming LATER but not imminent, show current conditions
-    // (the daily hero badge will still show "Rainy" for the day)
-    
-    // Check other conditions
     if (apiCondition === 'uv') return 'uv';
     if (apiCondition === 'wind') return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
-    
-    // Sky condition fallback
     const sky = computeSkyCondition(norm);
     return sky !== 'clear' ? sky : 'clear';
   }
@@ -438,63 +428,31 @@ document.addEventListener("DOMContentLoaded", () => {
     return lines[Math.floor(Math.random() * lines.length)];
   }
   function getDayBadge(d, dayIndex, hourlyData) {
-    // Use API's conditionKey when available
     const ck = (d.conditionKey || '').toLowerCase();
     if (ck === 'storm') return t('badges', 'rainy');
     if (ck === 'cold') return t('badges', 'cold');
     if (ck === 'heat') return t('badges', 'hot');
-    
-    // For rain conditions, check timing
     const r = d.rainChance;
     const isRainy = ck === 'rain' || ck === 'rain-possible' || (isNum(r) && r >= 30);
-    
     if (isRainy && dayIndex === 0 && Array.isArray(hourlyData) && hourlyData.length > 0) {
-      // For today, check WHEN rain starts in hourly data
       const currentHour = getLocationHour(activePlace?.lon);
-      const rainThreshold = 25; // Consider rain "starting" when chance >= 25%
-      
-      // Find first hour with significant rain chance
+      const rainThreshold = 25;
       let firstRainHour = -1;
       for (let i = 0; i < Math.min(24, hourlyData.length); i++) {
         const h = hourlyData[i];
-        if (isNum(h.rainChance) && h.rainChance >= rainThreshold) {
-          firstRainHour = (currentHour + i) % 24;
-          break;
-        }
+        if (isNum(h.rainChance) && h.rainChance >= rainThreshold) { firstRainHour = (currentHour + i) % 24; break; }
       }
-      
-      if (firstRainHour === -1) {
-        // No significant rain in next 24h despite daily showing rain
-        return isNum(r) && r >= 50 ? t('badges', 'rainLater') : t('badges', 'showers');
-      }
-      
-      // Determine timing badge based on when rain starts
-      const hoursUntilRain = firstRainHour >= currentHour 
-        ? firstRainHour - currentHour 
-        : (24 - currentHour) + firstRainHour;
-      
-      if (hoursUntilRain <= 2) {
-        // Rain imminent or happening now
-        return isNum(r) && r >= 50 ? t('badges', 'rainy') : t('badges', 'showers');
-      } else if (firstRainHour >= 18 || firstRainHour < 5) {
-        // Rain starts in evening/night
-        return t('badges', 'rainTonight');
-      } else if (firstRainHour >= 5 && firstRainHour < 12) {
-        // Rain starts in morning
-        return t('badges', 'rainMorning');
-      } else {
-        // Rain starts in afternoon
-        return t('badges', 'rainLater');
-      }
+      if (firstRainHour === -1) return isNum(r) && r >= 50 ? t('badges', 'rainLater') : t('badges', 'showers');
+      const hoursUntilRain = firstRainHour >= currentHour ? firstRainHour - currentHour : (24 - currentHour) + firstRainHour;
+      if (hoursUntilRain <= 2) return isNum(r) && r >= 50 ? t('badges', 'rainy') : t('badges', 'showers');
+      else if (firstRainHour >= 18 || firstRainHour < 5) return t('badges', 'rainTonight');
+      else if (firstRainHour >= 5 && firstRainHour < 12) return t('badges', 'rainMorning');
+      else return t('badges', 'rainLater');
     }
-    
-    // Non-today days or non-rain conditions
     if (ck === 'rain') return t('badges', 'rainy');
     if (ck === 'rain-possible') return t('badges', 'showers');
     if (ck === 'uv') return t('badges', 'highUV');
     if (ck === 'wind') return t('badges', 'showers');
-    
-    // Fallback to manual calculation
     const u = d.uv, h = d.highC, low = d.lowC;
     if (isNum(low) && low <= 0) return t('badges', 'cold');
     if (isNum(h) && h <= 0) return t('badges', 'cold');
@@ -513,9 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== LOCATION TIME HELPER ==========
   function getLocationHour(lon) {
-    // Calculate approximate local hour for a given longitude
-    // Each 15° of longitude ≈ 1 hour offset from UTC
-    if (!isNum(lon)) return new Date().getHours(); // fallback to local time
+    if (!isNum(lon)) return new Date().getHours();
     const now = new Date();
     const utcHour = now.getUTCHours() + now.getUTCMinutes() / 60;
     const offsetHours = lon / 15;
@@ -524,13 +480,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== BACKGROUND & PARTICLES ==========
-  const DAY_IMAGE_COUNT = 7; // Number of day images per condition (day_1.jpg through day_7.jpg)
+  const DAY_IMAGE_COUNT = 7;
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const hour = getLocationHour(activePlace?.lon);
     const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
-    // For day images, randomly pick from day_1.jpg to day_7.jpg
     const randomNum = Math.floor(Math.random() * DAY_IMAGE_COUNT) + 1;
     const imgFile = timeOfDay === 'day' ? `day_${randomNum}` : timeOfDay;
     if (bgImg) { bgImg.src = `${base}/${folder}/${imgFile}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
@@ -559,39 +514,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function normalizePayload(payload) {
     const now = payload.now || {}, today = payload.daily?.[0] || {}, meta = payload.meta || {}, sources = meta.sources || [];
     const hourly = payload.hourly || [];
-    
-    // Calculate IMMINENT rain (next 3-4 hours) for home screen display
     const imminentHours = hourly.slice(0, 4);
-    const imminentRainMax = imminentHours.length > 0 
-      ? Math.max(...imminentHours.map(h => h.rainChance ?? 0))
-      : null;
-    
-    // Use imminent rain for display, daily rain for "today's hero" badge
+    const imminentRainMax = imminentHours.length > 0 ? Math.max(...imminentHours.map(h => h.rainChance ?? 0)) : null;
     const displayRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
     const dailyRainPct = today.rainChance ?? now.rainChance ?? null;
-    
-    // Determine if rain is coming LATER (not imminent but daily is high)
     const rainLater = isNum(imminentRainMax) && imminentRainMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
-    
     return { 
-      nowTemp: now.tempC ?? null, 
-      feelsLike: now.feelsLikeC ?? null, 
-      todayHigh: today.highC ?? null, 
-      todayLow: today.lowC ?? null, 
-      rainPct: displayRainPct,  // Use imminent rain for home display
-      dailyRainPct: dailyRainPct,  // Keep daily for "today's hero" badge
-      rainLater: rainLater,  // Flag for "rain expected later"
-      uv: today.uv ?? null, 
-      windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
-      conditionKey: now.conditionKey || today.conditionKey || null, 
-      conditionLabel: now.conditionLabel || today.conditionLabel || '', 
+      nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, 
+      rainPct: displayRainPct, dailyRainPct: dailyRainPct, rainLater: rainLater,
+      uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
+      conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
-      used: sources.filter(s => s.ok).map(s => s.name), 
-      failed: sources.filter(s => !s.ok).map(s => s.name), 
-      hourly: hourly, 
-      daily: payload.daily || [], 
-      locationName: payload.location?.name, 
-      sourceRanges: meta.sourceRanges || [] 
+      used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name), 
+      hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [] 
     };
   }
 
@@ -615,44 +550,27 @@ document.addEventListener("DOMContentLoaded", () => {
     if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
-    
-    // NEW LAYOUT: "Probably 29°" as the hero - translated for all languages
     const probablyLabel = t('weather', 'probably');
     safeText(tempEl, isNum(currentTemp) ? `${probablyLabel} ${formatTemp(currentTemp)}` : `${probablyLabel} --°`);
-    
-    // High/Low underneath (need new element or repurpose)
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
       const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
       const loStr = isNum(low) ? formatTemp(low) : '--°';
       hiLoEl.innerHTML = `<span class="hi">↑${hiStr}</span> <span class="lo">↓${loStr}</span>`;
     }
-    
-    // Headline below temp
     safeText(headlineEl, getHeadline(displayCondition));
     safeText(descriptionEl, getWittyLine(displayCondition));
-    
-    // Split byline into 2 lines
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const ws = isNum(wind) ? formatWind(wind) : '--';
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
       let rs = '--'; 
-      if (isNum(rain)) { 
-        rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); 
-      }
-      // Add "later" indicator if rain is coming but not imminent
-      if (norm.rainLater) {
-        rs = t('weather', 'later') || 'Later';
-      }
+      if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
+      if (norm.rainLater) { rs = t('weather', 'later') || 'Later'; }
       let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
-      
-      // Feels like
       const feels = norm.feelsLike;
       const showFeels = isNum(feels) && isNum(currentTemp) && Math.abs(feels - currentTemp) >= 3;
       const feelsStr = showFeels ? `${t('weather', 'feelsLike')} ${formatTemp(feels)}` : '';
-      
-      // Split into 2 lines
       const line1 = `${windLabel} ${ws} • ${rainLabel} ${rs}`;
       const line2 = `${uvLabel} ${us}${feelsStr ? ' • ' + feelsStr : ''}`;
       bylineEl.innerHTML = `<div class="byline-row">${line1}</div><div class="byline-row">${line2}</div>`;
@@ -663,9 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
   }
   function getWeatherIcon(rp, cp, tc) {
-    // Check freezing FIRST - cold always shows snowflake
     if (isNum(tc) && tc <= 0) return '❄️';
-    // Then check other conditions
     if (isNum(rp) && rp >= 50) return '🌧️';
     if (isNum(rp) && rp >= 30) return '🌦️';
     if (isNum(tc) && tc >= 35) return '🔥';
@@ -676,78 +592,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
-    // Get current hour to start from
     const nowHour = getLocationHour(activePlace?.lon);
-    // Get current wind as fallback
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
-    
-    // Create table header
     const header = document.createElement('div');
     header.classList.add('hourly-row', 'hourly-header');
-    header.innerHTML = `
-      <span class="h-time">${t('weather', 'time') || 'Time'}</span>
-      <span class="h-icon"></span>
-      <span class="h-temp">${t('weather', 'temp') || 'Temp'}</span>
-      <span class="h-rain">${t('weather', 'rain') || 'Rain'}</span>
-      <span class="h-wind">${t('weather', 'wind') || 'Wind'}</span>`;
+    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span>`;
     hourlyTimeline.appendChild(header);
-    
     hourly.slice(0, 24).forEach((h, i) => {
       const div = document.createElement('div'); div.classList.add('hourly-row');
-      // Round to the hour - show 11:00, 12:00, etc.
       const hourNum = (nowHour + i) % 24;
-      const ht = settings.time === '12' 
-        ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}`
-        : `${String(hourNum).padStart(2, '0')}:00`;
-      // Use feelsLike if available and colder than actual temp
+      const ht = settings.time === '12' ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}` : `${String(hourNum).padStart(2, '0')}:00`;
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
-      // Check multiple possible field names for wind, fallback to current wind for first few hours
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
-      // Add temperature color class
       const tempClass = getTempColorClass(h.tempC);
-      div.innerHTML = `
-        <span class="h-time">${ht}</span>
-        <span class="h-icon">${icon}</span>
-        <span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span>
-        <span class="h-rain">${rainPct}</span>
-        <span class="h-wind">${windSpeed}</span>`;
+      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-wind">${windSpeed}</span>`;
       hourlyTimeline.appendChild(div);
     });
   }
   function renderWeek(daily, hourlyData) {
     if (!dailyCards) return; dailyCards.innerHTML = '';
-    // Create table header
     const header = document.createElement('div');
     header.classList.add('daily-row', 'daily-header');
-    header.innerHTML = `
-      <span class="d-day">${t('weather', 'day') || 'Day'}</span>
-      <span class="d-icon"></span>
-      <span class="d-high">${t('weather', 'high') || 'High'}</span>
-      <span class="d-low">${t('weather', 'low') || 'Low'}</span>
-      <span class="d-rain">${t('weather', 'rain') || 'Rain'}</span>`;
+    header.innerHTML = `<span class="d-day">${t('weather', 'day') || 'Day'}</span><span class="d-icon"></span><span class="d-high">${t('weather', 'high') || 'High'}</span><span class="d-low">${t('weather', 'low') || 'Low'}</span><span class="d-rain">${t('weather', 'rain') || 'Rain'}</span>`;
     dailyCards.appendChild(header);
-    
     daily.forEach((d, i) => {
       const date = new Date(Date.now() + i * 86400000);
       const dayName = getTranslatedDayName(date.getDay());
       const badge = getDayBadge(d, i, hourlyData);
-      // Use lowC for icon temp check - if low is freezing, show snowflake
       const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
       const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp);
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
-      // Temperature color classes
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
       const div = document.createElement('div'); div.classList.add('daily-row');
-      div.innerHTML = `
-        <span class="d-day">${dayName}${badge ? ` <span class="day-badge">${badge}</span>` : ''}</span>
-        <span class="d-icon">${icon}</span>
-        <span class="d-high ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</span>
-        <span class="d-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</span>
-        <span class="d-rain">${rainPct}</span>`;
+      div.innerHTML = `<span class="d-day">${dayName}${badge ? ` <span class="day-badge">${badge}</span>` : ''}</span><span class="d-icon">${icon}</span><span class="d-high ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</span><span class="d-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</span><span class="d-rain">${rainPct}</span>`;
       dailyCards.appendChild(div);
     });
   }
@@ -850,10 +731,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // My Location button - reset to geolocation
   myLocationBtn?.addEventListener('click', () => {
     showScreen(screenHome);
-    
-    // Get saved GPS location (only set when geolocation actually succeeds)
     const savedGpsLoc = loadJSON(STORAGE.location, null);
-    
     if ("geolocation" in navigator) {
       renderLoading("Getting location...");
       navigator.geolocation.getCurrentPosition(async (pos) => {
@@ -862,14 +740,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); 
           const data = await rev.json();
           const city = data?.city || "My Location", cc = data?.countryCode || null;
-          // Save to STORAGE.location - this is the user's real GPS location
           saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); 
           homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; 
           saveJSON(STORAGE.home, homePlace); 
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
         } catch { 
-          // Reverse geocode failed but we have coords - still save them
           saveJSON(STORAGE.location, { city: "My Location", lat, lon });
           homePlace = { name: "My Location", lat, lon }; 
           saveJSON(STORAGE.home, homePlace); 
@@ -877,38 +753,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, (err) => { 
         console.log('Geolocation error:', err.code, err.message);
-        // Geolocation failed - use saved GPS location if we have one
         if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
           homePlace = { 
             name: savedGpsLoc.city && savedGpsLoc.countryCode 
               ? `${savedGpsLoc.city}, ${savedGpsLoc.countryCode}` 
               : (savedGpsLoc.city || "My Location"), 
-            lat: savedGpsLoc.lat, 
-            lon: savedGpsLoc.lon 
+            lat: savedGpsLoc.lat, lon: savedGpsLoc.lon 
           };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
         } else {
-          // No saved GPS location - show error, stay on current view
-          showToast(t('toasts', 'locationError') || 'Could not get location');
-          // If we have an active place, just re-render it
-          if (activePlace) {
-            loadAndRender(activePlace);
-          } else {
-            renderError(t('toasts', 'locationError') || 'Could not get location');
-          }
+          // GPS blocked, no saved location - use IP geolocation
+          getIPLocation().then(place => {
+            homePlace = place;
+            saveJSON(STORAGE.home, homePlace);
+            loadAndRender(homePlace);
+          });
         }
       }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
     } else { 
-      // No geolocation support - use saved GPS location if available
       if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
         homePlace = { name: savedGpsLoc.city || "My Location", lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
         saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
         showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
       } else {
-        showToast(t('toasts', 'locationError') || 'Location not available');
+        getIPLocation().then(place => {
+          homePlace = place;
+          saveJSON(STORAGE.home, homePlace);
+          loadAndRender(homePlace);
+        });
       }
     }
   });
@@ -937,7 +812,21 @@ document.addEventListener("DOMContentLoaded", () => {
           const city = data?.city || "My Location", cc = data?.countryCode || null;
           saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
         } catch { homePlace = { name: "My Location", lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace); }
-      }, () => { homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace); }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 });
-    } else { homePlace = { name: "Cape Town", lat: -33.9249, lon: 18.4241 }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace); }
+      }, () => {
+        // GPS blocked on first visit - use IP geolocation instead of hardcoded city
+        getIPLocation().then(place => {
+          homePlace = place;
+          saveJSON(STORAGE.home, homePlace);
+          loadAndRender(homePlace);
+        });
+      }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 });
+    } else {
+      // No geolocation support - use IP geolocation
+      getIPLocation().then(place => {
+        homePlace = place;
+        saveJSON(STORAGE.home, homePlace);
+        loadAndRender(place);
+      });
+    }
   }
 });
