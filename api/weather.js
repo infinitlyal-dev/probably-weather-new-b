@@ -38,12 +38,13 @@ export default async function handler(req, res) {
     if (req.query.reverse) {
       try {
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=14&addressdetails=1`,
           { headers: { 'User-Agent': MET_USER_AGENT } }
         );
 
         const addr = rev?.address || {};
-        const city = addr.city || addr.town || addr.village || addr.suburb || addr.neighbourhood || addr.municipality || null;
+        // Prefer most specific: suburb/town/village before city (metro names swallow small towns)
+        const city = addr.suburb || addr.neighbourhood || addr.town || addr.village || addr.city || addr.municipality || null;
         const admin1 = addr.state || addr.province || addr.region || addr.county || null;
         const countryCode = addr.country_code ? String(addr.country_code).toUpperCase() : null;
 
@@ -68,18 +69,17 @@ export default async function handler(req, res) {
           return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
         };
         const pick = (...vals) => vals.find(v => !isBadLabel(v));
-        const primary = pick(addr.town, addr.city, addr.village);
-        const cityTown = pick(addr.suburb, addr.neighbourhood);
-        const secondary = pick(addr.municipality, addr.state, addr.province);
+        // Prefer most specific: suburb/neighbourhood > town > village > city > municipality
+        // This ensures small towns like Strand aren't swallowed by metro names like Cape Town
+        const specific = pick(addr.suburb, addr.neighbourhood, addr.town, addr.village);
+        const broad = pick(addr.city, addr.municipality, addr.state, addr.province);
         const country = addr.country;
 
         const parts = [];
-        if (primary) {
-          parts.push(primary);
-        } else if (cityTown) {
-          parts.push(cityTown);
-        } else if (secondary) {
-          parts.push(secondary);
+        if (specific) {
+          parts.push(specific);
+        } else if (broad) {
+          parts.push(broad);
         } else if (country) {
           parts.push(country);
         }
@@ -402,6 +402,17 @@ export default async function handler(req, res) {
     const medHumidity = median(norms.map(n => n.humidity).filter(isNum));
     const medUv = median(norms.map(n => n.todayUv).filter(isNum));
     const wind_kph = isNum(medWindKph) ? medWindKph : 0;
+
+    // SANITY CLAMP: Ensure today's high/low are consistent with current temp
+    // Independent median calculations can produce impossible states (current > high)
+    if (isNum(medNowTemp) && aggregatedDaily.length > 0) {
+      if (isNum(aggregatedDaily[0].highC) && medNowTemp > aggregatedDaily[0].highC) {
+        aggregatedDaily[0].highC = Math.round(medNowTemp * 10) / 10;
+      }
+      if (isNum(aggregatedDaily[0].lowC) && medNowTemp < aggregatedDaily[0].lowC) {
+        aggregatedDaily[0].lowC = Math.round(medNowTemp * 10) / 10;
+      }
+    }
 
     // Get most common description
     const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
