@@ -38,13 +38,19 @@ export default async function handler(req, res) {
     if (req.query.reverse) {
       try {
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=14&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=12&addressdetails=1`,
           { headers: { 'User-Agent': MET_USER_AGENT } }
         );
 
         const addr = rev?.address || {};
+        // Filter out ward labels and pure numbers
+        const isBad = (s) => {
+          const v = String(s || '').trim();
+          return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
+        };
+        const pick = (...vals) => vals.find(v => !isBad(v)) || null;
         // Prefer most specific: suburb/town/village before city (metro names swallow small towns)
-        const city = addr.suburb || addr.neighbourhood || addr.town || addr.village || addr.city || addr.municipality || null;
+        const city = pick(addr.suburb, addr.neighbourhood, addr.town, addr.village, addr.city, addr.municipality);
         const admin1 = addr.state || addr.province || addr.region || addr.county || null;
         const countryCode = addr.country_code ? String(addr.country_code).toUpperCase() : null;
 
@@ -59,7 +65,7 @@ export default async function handler(req, res) {
     if (!resolvedName) {
       try {
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=12&addressdetails=1`,
           { headers: { 'User-Agent': MET_USER_AGENT } }
         );
 
@@ -183,14 +189,19 @@ export default async function handler(req, res) {
         sunset: om.daily?.sunset?.[0] ?? null,
       });
 
+      // Determine current hour offset so hourly data starts from NOW, not midnight
+      const omCurrentTime = om.current?.time || '';
+      const omCurrentHour = omCurrentTime ? new Date(omCurrentTime).getHours() : new Date().getUTCHours();
+      const omHourOffset = Math.max(0, Math.min(omCurrentHour, 167));
+
       hourlies.push({
         source: 'Open-Meteo',
-        temps: om.hourly?.temperature_2m?.slice(0, 24) ?? [],
-        feelsLikes: om.hourly?.apparent_temperature?.slice(0, 24) ?? [],
-        rains: om.hourly?.precipitation_probability?.slice(0, 24) ?? [],
-        winds: om.hourly?.wind_speed_10m?.slice(0, 24) ?? [],
-        clouds: om.hourly?.cloud_cover?.slice(0, 24) ?? [],
-        humidity: om.hourly?.relative_humidity_2m?.slice(0, 24) ?? [],
+        temps: om.hourly?.temperature_2m?.slice(omHourOffset, omHourOffset + 24) ?? [],
+        feelsLikes: om.hourly?.apparent_temperature?.slice(omHourOffset, omHourOffset + 24) ?? [],
+        rains: om.hourly?.precipitation_probability?.slice(omHourOffset, omHourOffset + 24) ?? [],
+        winds: om.hourly?.wind_speed_10m?.slice(omHourOffset, omHourOffset + 24) ?? [],
+        clouds: om.hourly?.cloud_cover?.slice(omHourOffset, omHourOffset + 24) ?? [],
+        humidity: om.hourly?.relative_humidity_2m?.slice(omHourOffset, omHourOffset + 24) ?? [],
       });
 
       dailies.push({
@@ -233,14 +244,21 @@ export default async function handler(req, res) {
           sunset: astro.sunset ?? null,
         });
 
+        // Combine today and tomorrow's hours, starting from current hour
+        const waLocalTime = wa.location?.localtime || '';
+        const waCurrentHour = waLocalTime ? new Date(waLocalTime).getHours() : new Date().getUTCHours();
+        const todayHours = wa.forecast.forecastday[0]?.hour || [];
+        const tomorrowHours = wa.forecast.forecastday[1]?.hour || [];
+        const combinedHours = [...todayHours.slice(waCurrentHour), ...tomorrowHours].slice(0, 24);
+
         hourlies.push({
           source: 'WeatherAPI',
-          temps: wa.forecast.forecastday[0].hour.map(h => h.temp_c) ?? [],
-          feelsLikes: wa.forecast.forecastday[0].hour.map(h => h.feelslike_c) ?? [],
-          rains: wa.forecast.forecastday[0].hour.map(h => h.chance_of_rain) ?? [],
-          winds: wa.forecast.forecastday[0].hour.map(h => h.wind_kph) ?? [],
-          clouds: wa.forecast.forecastday[0].hour.map(h => h.cloud) ?? [],
-          humidity: wa.forecast.forecastday[0].hour.map(h => h.humidity) ?? [],
+          temps: combinedHours.map(h => h.temp_c) ?? [],
+          feelsLikes: combinedHours.map(h => h.feelslike_c) ?? [],
+          rains: combinedHours.map(h => h.chance_of_rain) ?? [],
+          winds: combinedHours.map(h => h.wind_kph) ?? [],
+          clouds: combinedHours.map(h => h.cloud) ?? [],
+          humidity: combinedHours.map(h => h.humidity) ?? [],
         });
 
         dailies.push({
