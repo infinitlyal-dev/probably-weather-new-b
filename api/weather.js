@@ -168,8 +168,8 @@ export default async function handler(req, res) {
     try {
       const om = await fetchJson(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m,cloud_cover` +
-        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,cloud_cover,relative_humidity_2m` +
+        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,relative_humidity_2m,cloud_cover` +
+        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_direction_10m,cloud_cover,relative_humidity_2m` +
         `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
         `&timezone=auto&forecast_days=7`
       );
@@ -184,6 +184,7 @@ export default async function handler(req, res) {
         todayUv: om.daily?.uv_index_max?.[0] ?? null,
         desc: openMeteoCodeMap[om.current?.weather_code] ?? 'Unknown',
         windKph: om.current?.wind_speed_10m ?? null,
+        windDir: om.current?.wind_direction_10m ?? null,
         humidity: om.current?.relative_humidity_2m ?? null,
         sunrise: om.daily?.sunrise?.[0] ?? null,
         sunset: om.daily?.sunset?.[0] ?? null,
@@ -200,6 +201,7 @@ export default async function handler(req, res) {
         feelsLikes: om.hourly?.apparent_temperature?.slice(omHourOffset, omHourOffset + 24) ?? [],
         rains: om.hourly?.precipitation_probability?.slice(omHourOffset, omHourOffset + 24) ?? [],
         winds: om.hourly?.wind_speed_10m?.slice(omHourOffset, omHourOffset + 24) ?? [],
+        windDirs: om.hourly?.wind_direction_10m?.slice(omHourOffset, omHourOffset + 24) ?? [],
         clouds: om.hourly?.cloud_cover?.slice(omHourOffset, omHourOffset + 24) ?? [],
         humidity: om.hourly?.relative_humidity_2m?.slice(omHourOffset, omHourOffset + 24) ?? [],
       });
@@ -239,6 +241,7 @@ export default async function handler(req, res) {
           todayUv: d.uv ?? null,
           desc: wa.current?.condition?.text ?? 'Unknown',
           windKph: wa.current?.wind_kph ?? null,
+          windDir: wa.current?.wind_degree ?? null,
           humidity: wa.current?.humidity ?? null,
           sunrise: astro.sunrise ?? null,
           sunset: astro.sunset ?? null,
@@ -257,6 +260,7 @@ export default async function handler(req, res) {
           feelsLikes: combinedHours.map(h => h.feelslike_c) ?? [],
           rains: combinedHours.map(h => h.chance_of_rain) ?? [],
           winds: combinedHours.map(h => h.wind_kph) ?? [],
+          windDirs: combinedHours.map(h => h.wind_degree) ?? [],
           clouds: combinedHours.map(h => h.cloud) ?? [],
           humidity: combinedHours.map(h => h.humidity) ?? [],
         });
@@ -322,6 +326,7 @@ export default async function handler(req, res) {
         todayUv: null, // MET doesn't provide UV
         desc,
         windKph,
+        windDir: series[0]?.data?.instant?.details?.wind_from_direction ?? null,
         humidity,
         sunrise: null,
         sunset: null,
@@ -344,6 +349,7 @@ export default async function handler(req, res) {
           const w = p.data?.instant?.details?.wind_speed;
           return isNum(w) ? w * 3.6 : null;
         }),
+        windDirs: series.slice(0, 24).map(p => p.data?.instant?.details?.wind_from_direction ?? null),
         clouds: series.slice(0, 24).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
         humidity: series.slice(0, 24).map(p => p.data?.instant?.details?.relative_humidity ?? null),
       });
@@ -371,6 +377,7 @@ export default async function handler(req, res) {
       feelsLikeC: median(hourlies.map(h => h.feelsLikes?.[i]).filter(isNum)),
       rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
       windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
+      windDir: median(hourlies.map(h => h.windDirs?.[i]).filter(isNum)),
       cloudPct: median(hourlies.map(h => h.clouds?.[i]).filter(isNum)),
     }));
 
@@ -417,9 +424,11 @@ export default async function handler(req, res) {
     const medNowTemp = median(norms.map(n => n.nowTemp).filter(isNum));
     const medFeelsLike = median(norms.map(n => n.feelsLike).filter(isNum));
     const medWindKph = median(norms.map(n => n.windKph).filter(isNum));
+    const medWindDir = median(norms.map(n => n.windDir).filter(isNum));
     const medHumidity = median(norms.map(n => n.humidity).filter(isNum));
     const medUv = median(norms.map(n => n.todayUv).filter(isNum));
     const wind_kph = isNum(medWindKph) ? medWindKph : 0;
+    const wind_dir = isNum(medWindDir) ? Math.round(medWindDir) : null;
 
     // SANITY CLAMP: Ensure today's high/low are consistent with current temp
     // Independent median calculations can produce impossible states (current > high)
@@ -460,10 +469,12 @@ export default async function handler(req, res) {
         lon,
       },
       wind_kph,
+      wind_dir,
       now: {
         tempC: medNowTemp,
         feelsLikeC: finalFeelsLike,
         windKph: medWindKph,
+        windDir: wind_dir,
         humidity: medHumidity,
         rainChance: aggregatedDaily[0]?.rainChance ?? null,
         uv: medUv,
