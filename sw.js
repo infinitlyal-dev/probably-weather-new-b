@@ -1,13 +1,15 @@
-/* Probably Weather — Service Worker (versioned + safe updates)
-   Goals:
-   - Prevent mixed old/new builds causing UI "haywire"
-   - Network-first for HTML/JS/CSS
-   - Stale-while-revalidate for images
+/* Probably Weather — Service Worker v6
+   Upgrades from v5:
+   - Cache API weather responses for offline fallback
+   - Cache background images on first load
+   - Serve cached content when offline with staleness indicator
+   - Smarter image cache with size limits
 */
 
-const SW_VERSION = 'pw-v5'; // Bumped to v5 for app restoration
+const SW_VERSION = 'pw-v6';
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
+const API_CACHE = `${SW_VERSION}-api`;
 
 const CORE_ASSETS = [
   '/',
@@ -16,6 +18,9 @@ const CORE_ASSETS = [
   '/assets/app.js',
   '/manifest.json',
 ];
+
+const MAX_IMG_CACHE = 60;
+const API_CACHE_MAX_AGE = 3 * 60 * 60 * 1000; // 3 hours
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -26,7 +31,6 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
-    // Remove old caches
     const keys = await caches.keys();
     await Promise.all(
       keys
@@ -50,17 +54,67 @@ function isCoreAsset(url) {
   );
 }
 
+function isWeatherApi(url) {
+  return url.pathname.startsWith('/api/weather') && !url.searchParams.has('reverse');
+}
+
+async function trimCache(cacheName, maxItems) {
+  const cache = await caches.open(cacheName);
+  const keys = await cache.keys();
+  if (keys.length > maxItems) {
+    const toDelete = keys.slice(0, keys.length - maxItems);
+    await Promise.all(toDelete.map(k => cache.delete(k)));
+  }
+}
+
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
 
-  // Only handle same-origin requests
   if (url.origin !== self.location.origin) return;
 
-  // Never cache API responses
+  // Weather API: NETWORK FIRST, cache for offline
+  if (isWeatherApi(url)) {
+    event.respondWith((async () => {
+      try {
+        const fresh = await fetch(req);
+        if (fresh.ok) {
+          const cache = await caches.open(API_CACHE);
+          const headers = new Headers(fresh.headers);
+          headers.set('sw-cached-at', Date.now().toString());
+          const cachedResponse = new Response(await fresh.clone().blob(), {
+            status: fresh.status,
+            statusText: fresh.statusText,
+            headers,
+          });
+          cache.put(req, cachedResponse).catch(() => {});
+        }
+        return fresh;
+      } catch {
+        const cache = await caches.open(API_CACHE);
+        const cached = await cache.match(req);
+        if (cached) {
+          const headers = new Headers(cached.headers);
+          headers.set('sw-offline', 'true');
+          return new Response(await cached.blob(), {
+            status: cached.status,
+            statusText: cached.statusText,
+            headers,
+          });
+        }
+        return new Response(JSON.stringify({ ok: false, error: 'offline' }), {
+          status: 503,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+    })());
+    return;
+  }
+
+  // Reverse geocode: pass through
   if (url.pathname.startsWith('/api/')) return;
 
-  // HTML + core assets: NETWORK FIRST (prevents Franken-builds)
+  // HTML + core assets: NETWORK FIRST
   if (isHtml(req) || isCoreAsset(url)) {
     event.respondWith((async () => {
       try {
@@ -71,7 +125,6 @@ self.addEventListener('fetch', (event) => {
       } catch {
         const cached = await caches.match(req);
         if (cached) return cached;
-        // fallback to cached index if navigation fails
         if (isHtml(req)) {
           const cachedIndex = await caches.match('/index.html');
           if (cachedIndex) return cachedIndex;
@@ -82,14 +135,17 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Images: STALE-WHILE-REVALIDATE
-  if (req.destination === 'image') {
+  // Images: STALE-WHILE-REVALIDATE (caches bg images on first load)
+  if (req.destination === 'image' || url.pathname.match(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/i)) {
     event.respondWith((async () => {
       const cache = await caches.open(IMG_CACHE);
       const cached = await cache.match(req);
 
       const fetchPromise = fetch(req).then((fresh) => {
-        cache.put(req, fresh.clone()).catch(() => {});
+        if (fresh.ok) {
+          cache.put(req, fresh.clone()).catch(() => {});
+          trimCache(IMG_CACHE, MAX_IMG_CACHE).catch(() => {});
+        }
         return fresh;
       }).catch(() => null);
 
@@ -98,13 +154,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Default: try network, fallback cache
+  // Default: network, fallback cache
   event.respondWith(
     fetch(req).catch(() => caches.match(req))
   );
 });
 
-// Optional: allow the page to trigger an update
 self.addEventListener('message', (event) => {
   if (event.data === 'SKIP_WAITING') self.skipWaiting();
 });
