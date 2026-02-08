@@ -28,6 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const hourlyTimeline = $('#hourly-timeline');
   const dailyCards = $('#daily-cards');
 
+  // Inject layout constraints for wide screens
+  const pwStyles = document.createElement('style');
+  pwStyles.textContent = `
+    #hourly-timeline, #daily-cards { max-width: 640px; margin-left: auto; margin-right: auto; }
+    #search-screen .glass-panel { max-width: 560px; margin-left: auto; margin-right: auto; }
+  `;
+  document.head.appendChild(pwStyles);
+
   const searchInput = $('#searchInput');
   const searchCancel = $('#searchCancel');
   const favoritesList = $('#favoritesList');
@@ -548,9 +556,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========== API ==========
   async function reverseGeocode(lat, lon) {
     try {
-      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=14`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
+      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=12`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
       if (!resp.ok) return null; const data = await resp.json();
-      const city = data.address?.suburb || data.address?.neighbourhood || data.address?.town || data.address?.village || data.address?.city || data.address?.municipality || 'Unknown';
+      const isBad = (s) => { const v = String(s || '').trim(); return !v || /\bward\b/i.test(v) || /^\d+$/.test(v); };
+      const pick = (...vals) => vals.find(v => !isBad(v)) || 'Unknown';
+      const city = pick(data.address?.suburb, data.address?.neighbourhood, data.address?.town, data.address?.village, data.address?.city, data.address?.municipality);
       return data.address?.country ? `${city}, ${data.address.country}` : city;
     } catch { return null; }
   }
@@ -641,7 +651,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
     const header = document.createElement('div');
     header.classList.add('hourly-row', 'hourly-header');
-    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span>`;
+    const windUnit = settings.wind === 'mph' ? 'mph' : 'km/h';
+    const windHeader = `${(t('weather', 'wind') || 'Wind')} <span style="font-size:0.7em;opacity:0.7">${windUnit}</span>`;
+    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-wind">${windHeader}</span>`;
     hourlyTimeline.appendChild(header);
     hourly.slice(0, 24).forEach((h, i) => {
       const div = document.createElement('div'); div.classList.add('hourly-row');
@@ -652,8 +664,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
+      const windDisplay = windSpeed !== '--' ? `${windSpeed}` : '--';
       const tempClass = getTempColorClass(h.tempC);
-      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-wind">${windSpeed}</span>`;
+      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-wind">${windDisplay}</span>`;
       hourlyTimeline.appendChild(div);
     });
   }
