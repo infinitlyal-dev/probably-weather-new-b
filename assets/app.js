@@ -132,7 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
       highUV: { en: "High UV", af: "Hoë UV", zu: "UV Ephezulu", xh: "UV Ephezulu", st: "UV e Phahameng" },
       hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
       cold: { en: "Cold", af: "Koud", zu: "Kubanda", xh: "Kubanda", st: "Ho bata" },
-      uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
+      uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" },
+      windy: { en: "Windy", af: "Winderig", zu: "Kunomoya", xh: "Kunomoya", st: "Ho na le moea" }
     },
     // Hero labels
     heroLabels: {
@@ -381,36 +382,78 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeTodaysHero(norm) {
     const apiCondition = (norm.conditionKey || '').toLowerCase();
     const dailyRain = norm.dailyRainPct;
-    if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
-    if (apiCondition === 'storm') return 'storm';
-    if (apiCondition === 'cold') return 'cold';
-    if (apiCondition === 'heat') return 'heat';
-    if (apiCondition === 'uv') return 'uv';
-    if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
-    if (apiCondition === 'wind') return 'wind';
-    if (apiCondition === 'fog') return 'fog';
-    if (apiCondition === 'cloudy') return 'cloudy';
     const wind = norm.windKph, hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
+
+    // Daily rain dominates the hero (it's about the whole day)
+    if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
+    // Storm always high priority
+    if (apiCondition === 'storm' || apiCondition.includes('thunder')) return 'storm';
+    // Extreme cold
     if (isNum(feels) && feels <= -5) return 'cold';
     if (isNum(low) && low <= 0) return 'cold';
+    // Extreme heat
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
+    // High UV
     if (isNum(uv) && uv >= 8) return 'uv';
+    // Moderate daily rain
+    if (isNum(dailyRain) && dailyRain >= 30) return 'rain-possible';
+    // Strong wind - check actual value, not just apiCondition
     if (isNum(wind) && wind >= 35) return 'wind';
+    // Fog
+    if (apiCondition === 'fog') return 'fog';
+    // Moderate wind
+    if (isNum(wind) && wind >= THRESH.WIND_KPH) return 'wind';
+    // Moderate cold
     if (isNum(hi) && hi <= 10) return 'cold';
+    // Moderate UV
+    if (isNum(uv) && uv >= 6) return 'uv';
+    // Cloudy
+    if (apiCondition === 'cloudy') return 'cloudy';
     return 'clear';
   }
   
   function computeHomeDisplayCondition(norm) {
     const imminentRain = norm.rainPct;
     const apiCondition = (norm.conditionKey || '').toLowerCase();
-    if (apiCondition === 'storm') return 'storm';
-    if (apiCondition === 'cold') return 'cold';
-    if (apiCondition === 'heat') return 'heat';
+    const wind = norm.windKph, temp = norm.nowTemp, feels = norm.feelsLike, uv = norm.uv;
+
+    // 1. Storm always wins
+    if (apiCondition === 'storm' || apiCondition.includes('thunder')) return 'storm';
+
+    // 2. Imminent rain (next 4 hours) - high confidence
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
     if (isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
-    if (apiCondition === 'uv') return 'uv';
-    if (apiCondition === 'wind') return 'wind';
+
+    // 3. Extreme cold (from feels-like or actual temp)
+    if (isNum(feels) && feels <= -5) return 'cold';
+    if (isNum(temp) && temp <= 0) return 'cold';
+
+    // 4. Extreme heat
+    if (isNum(temp) && temp >= 35) return 'heat';
+    if (isNum(feels) && feels >= 38) return 'heat';
+
+    // 5. Strong wind - check actual wind speed, not just apiCondition
+    if (isNum(wind) && wind >= 35) return 'wind';
+
+    // 6. High UV
+    if (isNum(uv) && uv >= 8) return 'uv';
+
+    // 7. Moderate wind
+    if (isNum(wind) && wind >= THRESH.WIND_KPH) return 'wind';
+
+    // 8. Moderate cold
+    if (isNum(temp) && temp <= THRESH.COLD_C) return 'cold';
+
+    // 9. Hot (but not extreme)
+    if (isNum(temp) && temp >= THRESH.HOT_C) return 'heat';
+
+    // 10. Moderate UV
+    if (isNum(uv) && uv >= 6) return 'uv';
+
+    // 11. Fog from API
     if (apiCondition === 'fog') return 'fog';
+
+    // 12. Cloudy from API or sky check
     if (apiCondition === 'cloudy') return 'cloudy';
     const sky = computeSkyCondition(norm);
     return sky !== 'clear' ? sky : 'clear';
@@ -419,9 +462,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========== TRANSLATED TEXT ==========
   function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
   function getHeroLabel(condition) { return T.heroLabels[condition]?.[settings.lang] || T.heroLabels[condition]?.en || "Pleasant"; }
-  function getWittyLine(condition) {
+  function getWittyLine(condition, norm) {
     const day = new Date().getDay(), isWeekend = day === 0 || day === 5 || day === 6;
-    if (isWeekend && (condition === 'clear' || condition === 'heat')) {
+    const rainComing = norm && norm.rainLater;
+    // Only use weekend lines if it's genuinely a good outdoor day (no rain coming later)
+    if (isWeekend && !rainComing && (condition === 'clear' || condition === 'heat')) {
       const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
     const lines = T.witty[condition]?.[settings.lang] || T.witty[condition]?.en || T.witty.clear.en;
@@ -452,7 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ck === 'rain') return t('badges', 'rainy');
     if (ck === 'rain-possible') return t('badges', 'showers');
     if (ck === 'uv') return t('badges', 'highUV');
-    if (ck === 'wind') return t('badges', 'showers');
+    if (ck === 'wind') return t('badges', 'windy');
     const u = d.uv, h = d.highC, low = d.lowC;
     if (isNum(low) && low <= 0) return t('badges', 'cold');
     if (isNum(h) && h <= 0) return t('badges', 'cold');
@@ -503,9 +548,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========== API ==========
   async function reverseGeocode(lat, lon) {
     try {
-      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
+      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=14`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
       if (!resp.ok) return null; const data = await resp.json();
-      const city = data.address?.suburb || data.address?.city || data.address?.town || data.address?.village || data.address?.municipality || 'Unknown';
+      const city = data.address?.suburb || data.address?.neighbourhood || data.address?.town || data.address?.village || data.address?.city || data.address?.municipality || 'Unknown';
       return data.address?.country ? `${city}, ${data.address.country}` : city;
     } catch { return null; }
   }
@@ -559,7 +604,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hiLoEl.innerHTML = `<span class="hi">↑${hiStr}</span> <span class="lo">↓${loStr}</span>`;
     }
     safeText(headlineEl, getHeadline(displayCondition));
-    safeText(descriptionEl, getWittyLine(displayCondition));
+    safeText(descriptionEl, getWittyLine(displayCondition, norm));
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const ws = isNum(wind) ? formatWind(wind) : '--';
