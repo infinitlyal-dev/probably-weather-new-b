@@ -33,8 +33,57 @@ document.addEventListener("DOMContentLoaded", () => {
   pwStyles.textContent = `
     #hourly-timeline, #daily-cards { max-width: 640px; margin-left: auto; margin-right: auto; }
     #search-screen .glass-panel { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+    /* Offline banner */
+    #offlineBanner { display: none; background: rgba(255,170,0,0.9); color: #1a1a2e; text-align: center; padding: 6px 12px; font-size: 0.8em; font-weight: 600; position: fixed; top: 0; left: 0; right: 0; z-index: 999; }
+
+    /* Badge colour coding */
+    .day-badge { font-size: 0.7em; padding: 2px 6px; border-radius: 8px; font-weight: 600; white-space: nowrap; }
+    .badge-rain { background: rgba(59,130,246,0.3); color: #93c5fd; }
+    .badge-heat { background: rgba(239,68,68,0.3); color: #fca5a5; }
+    .badge-uv { background: rgba(245,158,11,0.3); color: #fcd34d; }
+    .badge-wind { background: rgba(148,163,184,0.3); color: #cbd5e1; }
+    .badge-cold { background: rgba(147,197,253,0.3); color: #bfdbfe; }
+
+    /* Sunrise/sunset row */
+    .byline-sun { opacity: 0.7; font-size: 0.85em; margin-top: 2px; letter-spacing: 0.5px; }
+
+    /* Screen transitions */
+    .screen { transition: opacity 0.2s ease; }
+    .screen-entering { opacity: 0; }
+    .screen-visible { opacity: 1; }
+
+    /* Source health indicators */
+    .source-health { display: flex; gap: 12px; justify-content: center; margin-top: 8px; font-size: 0.8em; opacity: 0.8; }
+    .source-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+    .source-ok { background: #4ade80; }
+    .source-fail { background: #f87171; }
+
+    /* Pull-to-refresh indicator */
+    #pullRefreshIndicator { display: none; text-align: center; padding: 10px; font-size: 0.85em; opacity: 0.7; }
+    #pullRefreshIndicator.pulling { display: block; }
+
+    /* Loading skeleton */
+    .skeleton { background: linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 75%); background-size: 200% 100%; animation: skeleton-shimmer 1.5s infinite; border-radius: 8px; }
+    @keyframes skeleton-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* Save current place button */
+    .save-current-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 0.8em; cursor: pointer; backdrop-filter: blur(4px); transition: all 0.2s; }
+    .save-current-btn:hover { background: rgba(255,255,255,0.25); }
+    .save-current-btn.is-saved { color: #fcd34d; border-color: rgba(252,211,77,0.4); }
+
+    /* Favourite icon spacing */
+    .fav-icon { margin-right: 4px; font-size: 1.1em; }
   `;
   document.head.appendChild(pwStyles);
+
+  // Inject dynamic elements if not in HTML
+  if (!document.getElementById('offlineBanner')) {
+    const ob = document.createElement('div'); ob.id = 'offlineBanner'; document.body.prepend(ob);
+  }
+  if (!document.getElementById('pullRefreshIndicator') && screenHome) {
+    const pr = document.createElement('div'); pr.id = 'pullRefreshIndicator'; screenHome.prepend(pr);
+  }
 
   const searchInput = $('#searchInput');
   const searchCancel = $('#searchCancel');
@@ -52,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loader = $('#loader');
   const toast = $('#toast');
 
-  const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location" };
+  const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location", cache: "pw_cache" };
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
   const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32 };
 
@@ -195,11 +244,11 @@ document.addEventListener("DOMContentLoaded", () => {
         st: ["Maru a na le nako ea 'ona.", "Nka sekhele sa hao, boet.", "Jarata e re kea leboha qetellong.", "Mesima e fetoha matamo a ho sesa.", "Ho hlatsoa koloi ea hao e ne e le chelete e lahliloeng.", "Baotleli ba Joburg ba se ba tšohile.", "Lebaka le letle la ho hlakola merero.", "Matamo a etsa motjeko o thabileng.", "N1 joale ke waterpark.", "Leholimo le letle la soupa.", "Braai ea motho e senyehile.", "Pula e boima haholo e lokela ho lefa rente."]
       },
       'rain-possible': {
-        en: ["Maybe rain, maybe not. Classic.", "Clouds looking proper suspicious.", "Take a brolly just in case, hey.", "50/50 on getting wet. Like a coin toss.", "Don't trust those clouds. They're plotting.", "Weather's being more indecisive than you at Spur.", "Pack an umbrella. Or don't. We don't know either.", "The sky can't make up its mind. Join the club."],
-        af: ["Miskien reën, miskien nie. Klassiek.", "Wolke lyk behoorlik verdag.", "Vat 'n sambreel net vir ingeval, hey.", "50/50 kans om nat te word. Soos 'n muntstuk.", "Moenie daai wolke vertrou nie. Hulle beplan.", "Die weer is meer besluiteloos as jy by Spur.", "Pak 'n sambreel. Of moenie. Ons weet ook nie.", "Die lug kan nie besluit nie. Sluit by die klub aan."],
-        zu: ["Mhlawumbe imvula, mhlawumbe cha. Okujwayelekile.", "Amafu abukeka esolisa ngempela.", "Thatha isambulela uma kungenzeka, hey.", "50/50 ukuba manzi. Njengenhlahla.", "Ungawathembi lawo mafu. Ayaceba.", "Isimo sezulu asikwazi ukuzinquma njengawe eSpur.", "Phaka isambulela. Noma ungaphaki. Asazi nathi.", "Isibhakabhaka asikwazi ukuzinquma. Joyina iklabhu."],
-        xh: ["Mhlawumbi imvula, mhlawumbi hayi. Okwesiqhelo.", "Amafu abonakala erhanela ngokwenene.", "Thatha isambreli ukuba kunokwenzeka, hey.", "50/50 ukufumana amanzi. Njengomdlalo.", "Musa ukuwathemba lawo mafu. Ayaceba.", "Imozulu ayikwazi ukuzigqiba njengawe eSpur.", "Phakisha isambreli. Okanye ungaphakishi. Asazi nathi.", "Isibhakabhaka asikwazi ukuzigqiba. Joyina iklabhu."],
-        st: ["Mohlomong pula, mohlomong che. Setso.", "Maru a shebahala a belaela ka nnete.", "Nka sekhele ho ba sireletsehile, hey.", "50/50 ho ba metsi. Joalo ka papadi.", "Se ke oa tšepa maru ao. A rera.", "Leholimo ha le tsebe ho iketsa joalo ka uena Spur.", "Paka sekhele. Kapa o se ke oa paka. Ha re tsebe le rona.", "Lehodimo ha le tsebe. Kena klubeng."]
+        en: ["Maybe rain, maybe not. Classic.", "Clouds looking proper suspicious.", "Take a brolly just in case, hey.", "50/50 on getting wet. Like a coin toss.", "Don't trust those clouds. They're plotting.", "Weather's being more indecisive than you at Spur.", "Pack an umbrella. Or don't. We don't know either.", "The sky can't make up its mind. Join the club.", "The clouds are having a staff meeting.", "Rain's thinking about it. Don't hold your breath.", "The weather is as committed as your ex.", "Might rain, might not. Very on-brand for SA.", "Umbrella's in the car. Where it'll stay, let's be honest."],
+        af: ["Miskien reën, miskien nie. Klassiek.", "Wolke lyk behoorlik verdag.", "Vat 'n sambreel net vir ingeval, hey.", "50/50 kans om nat te word. Soos 'n muntstuk.", "Moenie daai wolke vertrou nie. Hulle beplan.", "Die weer is meer besluiteloos as jy by Spur.", "Pak 'n sambreel. Of moenie. Ons weet ook nie.", "Die lug kan nie besluit nie. Sluit by die klub aan.", "Die wolke het 'n vergadering.", "Reën dink daaroor na. Moet nie jou asem ophou nie.", "Die weer is so committed soos jou ex.", "Miskien reën, miskien nie. Baie SA.", "Sambreel is in die kar. Waar dit gaan bly, kom ons wees eerlik."],
+        zu: ["Mhlawumbe imvula, mhlawumbe cha. Okujwayelekile.", "Amafu abukeka esolisa ngempela.", "Thatha isambulela uma kungenzeka, hey.", "50/50 ukuba manzi. Njengenhlahla.", "Ungawathembi lawo mafu. Ayaceba.", "Isimo sezulu asikwazi ukuzinquma njengawe eSpur.", "Phaka isambulela. Noma ungaphaki. Asazi nathi.", "Isibhakabhaka asikwazi ukuzinquma. Joyina iklabhu.", "Amafu anomhlangano wabasebenzi.", "Imvula icabanga ngakho. Ungabambi umphefumulo.", "Isimo sezulu sizinikele njenge-ex yakho.", "Mhlawumbe imvula, mhlawumbe cha. Okwe-SA.", "Isambulela sisemoteni. Lapho sizohlala khona."],
+        xh: ["Mhlawumbi imvula, mhlawumbi hayi. Okwesiqhelo.", "Amafu abonakala erhanela ngokwenene.", "Thatha isambreli ukuba kunokwenzeka, hey.", "50/50 ukufumana amanzi. Njengomdlalo.", "Musa ukuwathemba lawo mafu. Ayaceba.", "Imozulu ayikwazi ukuzigqiba njengawe eSpur.", "Phakisha isambreli. Okanye ungaphakishi. Asazi nathi.", "Isibhakabhaka asikwazi ukuzigqiba. Joyina iklabhu.", "Amafu anomdlalo wabasebenzi.", "Imvula icinga ngayo. Musa ukubamba umphefumlo.", "Imozulu izinikele njenge-ex yakho.", "Mhlawumbi imvula, mhlawumbi hayi. Ye-SA.", "Isambreli sisemoteni. Apho siya kuhlala khona."],
+        st: ["Mohlomong pula, mohlomong che. Setso.", "Maru a shebahala a belaela ka nnete.", "Nka sekhele ho ba sireletsehile, hey.", "50/50 ho ba metsi. Joalo ka papadi.", "Se ke oa tšepa maru ao. A rera.", "Leholimo ha le tsebe ho iketsa joalo ka uena Spur.", "Paka sekhele. Kapa o se ke oa paka. Ha re tsebe le rona.", "Lehodimo ha le tsebe. Kena klubeng.", "Maru a na le kopano ea basebetsi.", "Pula e nahana ka hona. Se tšoare mophefumulo.", "Leholimo le ikemiselitse joalo ka ex ea hao.", "Mohlomong pula, mohlomong che. Ea SA.", "Sekhele se koloing. Moo se tla lula teng."]
       },
       cloudy: {
         en: ["The sky's giving absolutely nothing.", "Overcast but we'll survive.", "Good day for a walk, bad day for a tan.", "The sun's bunking today.", "Moody weather. Same, honestly.", "Not bad, not great. Like a 6/10 date.", "Eskom-friendly weather. No solar today.", "The sky is buffering.", "Even the weather can't be bothered today.", "Grey vibes. The sky matched my Monday."],
@@ -237,11 +286,11 @@ document.addEventListener("DOMContentLoaded", () => {
         st: ["Eish, ho tjhesa ka nnete!", "O ka chesa lehe ho N1.", "Ice cream ha se mpho. Ke bophelo.", "Dula o na le metsi kapa o fetohe biltong.", "Pool ha se kgetho.", "Ho tjhesa ho feta dashboard ea bakkie motsheare.", "AC e kopa mohau.", "Setulo sa koloi ea hao ke sebetsa joale.", "Ho tjhesa haholo ho phehisa. Ho tjhesa haholo ho sebetsa.", "Esita le mohala oa hao o chesang.", "Tara e bonolo. Batho ba bonolo le ho feta.", "Mohlomong sebakeng se seng tšokolate e sa tsoa qhibiliha."]
       },
       fog: {
-        en: ["Can't see a thing. Not a thing.", "Driving slow is not a suggestion.", "Silent Hill vibes. Without the monsters. Hopefully.", "Visibility: basically zero.", "Even your GPS is confused.", "The world just... disappeared.", "Perfect weather for a horror movie.", "Ghost town. But it's just Tuesday.", "If you can read this, you're too close.", "Table Mountain? What Table Mountain?", "The fog ate the neighbourhood."],
-        af: ["Kan niks sien nie. Niks.", "Stadig ry is nie 'n voorstel nie.", "Silent Hill vibes. Sonder die monsters. Hopelik.", "Sigbaarheid: basies nul.", "Selfs jou GPS is verward.", "Die wêreld het net... verdwyn.", "Perfekte weer vir 'n griller.", "Spookdorp. Maar dis net Dinsdag.", "As jy dit kan lees, is jy te naby.", "Tafelberg? Watter Tafelberg?", "Die mis het die buurt opgeëet."],
-        zu: ["Angiboni lutho. Lutho.", "Ukushayela kancane akusona isiphakamiso.", "I-Silent Hill vibes. Ngaphandle kwezimanga. Sithemba.", "Ukubonakala: cishe iqanda.", "Ngisho ne-GPS yakho iyadideka.", "Umhlaba nje... wanyamalala.", "Isimo sezulu esihle sefilimu yesabisayo.", "Idolobha lesipoki. Kodwa kungoLwesibili nje.", "Uma ungafunda lokhu, useduze kakhulu.", "I-Table Mountain? Iyiphi i-Table Mountain?", "Inkungu idle indawo."],
-        xh: ["Andiboni nto. Nto.", "Ukuqhuba kancinci akusosiphakamiso.", "I-Silent Hill vibes. Ngaphandle kwezidalwa. Sinethemba.", "Ukubonakala: phantse iqanda.", "Ne-GPS yakho iyadideka.", "Ihlabathi nje... lanyamalala.", "Imozulu elungele ifilimu yoyiko.", "Idolophu yesipoki. Kodwa ngolwesiBini nje.", "Ukuba ungafunda oku, ukufutshane kakhulu.", "I-Table Mountain? Yiyiphi i-Table Mountain?", "Inkungu itye indawo."],
-        st: ["Ha ke bone letho. Letho.", "Ho khanna butle hase tlhahiso.", "Silent Hill vibes. Ntle le dimanka. Re tšepa.", "Ho boneha: hanyenyane nul.", "Esita le GPS ea hao e ferekane.", "Lefatše le... nyametse.", "Leholimo le letle la filimi ea tšabo.", "Toropo ea meea. Empa ke Labobeli feela.", "Haeba o ka bala sena, o haufi haholo.", "Table Mountain? Table Mountain efe?", "Moholi o jele tikoloho."]
+        en: ["Can't see a thing. Not a thing.", "Driving slow is not a suggestion.", "Silent Hill vibes. Without the monsters. Hopefully.", "Visibility: basically zero.", "Even your GPS is confused.", "The world just... disappeared.", "Perfect weather for a horror movie.", "Ghost town. But it's just Tuesday.", "If you can read this, you're too close.", "The fog ate the neighbourhood.", "Can't see past the robot. Good luck out there.", "Driving on the N3 just got interesting.", "Fog so thick you could cut it with a panga.", "Visibility: less than your data balance.", "The neighbourhood's gone. Check back later."],
+        af: ["Kan niks sien nie. Niks.", "Stadig ry is nie 'n voorstel nie.", "Silent Hill vibes. Sonder die monsters. Hopelik.", "Sigbaarheid: basies nul.", "Selfs jou GPS is verward.", "Die wêreld het net... verdwyn.", "Perfekte weer vir 'n griller.", "Spookdorp. Maar dis net Dinsdag.", "As jy dit kan lees, is jy te naby.", "Die mis het die buurt opgeëet.", "Kan nie verby die robot sien nie. Sterkte.", "Ry op die N3 het nou interesting geraak.", "Mis so dik jy kan dit met 'n panga sny.", "Sigbaarheid: minder as jou data balans.", "Die buurt is weg. Kyk later weer."],
+        zu: ["Angiboni lutho. Lutho.", "Ukushayela kancane akusona isiphakamiso.", "I-Silent Hill vibes. Ngaphandle kwezimanga. Sithemba.", "Ukubonakala: cishe iqanda.", "Ngisho ne-GPS yakho iyadideka.", "Umhlaba nje... wanyamalala.", "Isimo sezulu esihle sefilimu yesabisayo.", "Idolobha lesipoki. Kodwa kungoLwesibili nje.", "Uma ungafunda lokhu, useduze kakhulu.", "Inkungu idle indawo.", "Angiboni ngale kwe-robot. Inhlanhla.", "Ukushayela ku-N3 kuye kwaba interesting.", "Inkungu enzima kakhulu ungayisika ngepanga.", "Ukubonakala: ngaphansi kwe-data balance yakho.", "Indawo ihambile. Buya kamuva."],
+        xh: ["Andiboni nto. Nto.", "Ukuqhuba kancinci akusosiphakamiso.", "I-Silent Hill vibes. Ngaphandle kwezidalwa. Sinethemba.", "Ukubonakala: phantse iqanda.", "Ne-GPS yakho iyadideka.", "Ihlabathi nje... lanyamalala.", "Imozulu elungele ifilimu yoyiko.", "Idolophu yesipoki. Kodwa ngolwesiBini nje.", "Ukuba ungafunda oku, ukufutshane kakhulu.", "Inkungu itye indawo.", "Andiboni ngaphaya kwe-robot. Ngamathamsanqa.", "Ukuqhuba kwi-N3 kuye kwaba interesting.", "Inkungu enzima kakhulu ungayisika ngepanga.", "Ukubonakala: ngaphantsi kwe-data balance yakho.", "Indawo imkile. Buyela kamva."],
+        st: ["Ha ke bone letho. Letho.", "Ho khanna butle hase tlhahiso.", "Silent Hill vibes. Ntle le dimanka. Re tšepa.", "Ho boneha: hanyenyane nul.", "Esita le GPS ea hao e ferekane.", "Lefatše le... nyametse.", "Leholimo le letle la filimi ea tšabo.", "Toropo ea meea. Empa ke Labobeli feela.", "Haeba o ka bala sena, o haufi haholo.", "Moholi o jele tikoloho.", "Ha ke bone ka nqane ho robot. Lehlohonolo.", "Ho khanna ho N3 ho bile interesting.", "Moholi o matla haholo o ka o seha ka panga.", "Ho boneha: ka tlase ho data balance ea hao.", "Tikoloho e ile. Sheba hamorao."]
       },
       clear: {
         en: ["Absolutely beautiful out there.", "Perfect day. No excuses. Get out.", "This is why we live in South Africa.", "Not a cloud in sight. Not one.", "Main character weather right here.", "Even the hadedas sound happy.", "If you're inside, you're doing it wrong.", "Nature's flexing and we're here for it.", "Postcard weather. You're welcome.", "The kind of day that makes you forget load shedding.", "Somewhere an estate agent is saying 'lifestyle'."],
@@ -256,6 +305,43 @@ document.addEventListener("DOMContentLoaded", () => {
         zu: ["Izulu lokosa, boet! Akukho zaba.", "Basa i-Weber. Kungumthetho.", "Izinkulunkulu zesimo sezulu ziyaziqhayisa.", "Ibhishi noma ukosa? Yebo.", "I-weekend vibes ezinamandla kakhulu zidinga i-playlist yazo.", "Uma usebenza namuhla, sikuzwela.", "Kulungile ukungakwenzi lutho.", "Shayela abangane. Thola inyama. Masiye.", "Izinhlelo zanamuhla: hlala ngaphandle.", "I-weekend ayibi ngcono kunalokhu."],
         xh: ["Imozulu yokugrila, boet! Akukho zaba.", "Basa i-Weber. Ngumthetho.", "Oothixo bemozulu bayaziqhayisa.", "Ibhitshi okanye ukugrila? Ewe.", "Weekend vibes ezinamandla kakhulu zifuna i-playlist yazo.", "Ukuba usebenza namhlanje, siyakuzwela.", "Ilungele ukungenza nto kwaphela.", "Tsalela abahlobo. Fumana inyama. Masiye.", "Izicwangciso zanamhlanje: phila ngaphandle.", "Impelaveki ayibi bhetele kunale."],
         st: ["Leholimo la braai, boet! Ha ho mabaka.", "Chesa Weber. Ke molao.", "Melimo ea leholimo e a iponahatsa.", "Lebopo kapa braai? E.", "Maikutlo a beke a matla haholo a hloka playlist ea 'ona.", "Haeba o sebetsa kajeno, re oa utsoarela.", "E lokile ho se etse letho.", "Letsetsa metsoalle. Fumana nama. Re tsamaee.", "Merero ea kajeno: phela kantle.", "Phomolo ha e be betere ho feta mona."]
+      },
+      night: {
+        clear: {
+          en: ["Stars are putting on a show tonight.", "Clear night. Sleep with the windows open.", "The moon's doing overtime.", "Perfect sleeping weather. Phone down.", "Night sky's flexing. Go look up.", "Quiet night. The hadedas are finally asleep."],
+          af: ["Sterre gee vanaand 'n vertoning.", "Helder nag. Slaap met die vensters oop.", "Die maan werk oortyd.", "Perfekte slaapweer. Foon af.", "Die naglug pronk. Gaan kyk op.", "Stil nag. Die hadedas slaap uiteindelik."],
+          zu: ["Izinkanyezi zenza umbukiso ngalobu busuku.", "Ubusuku obucwebile. Lala ngamafasitela evuliwe.", "Inyanga isebenza ngokweqile.", "Isimo sezulu esihle sokulala. Beka ifoni phansi.", "Isibhakabhaka sasebusuku siyaziqhayisa.", "Ubusuku obuthule. Ama-hadeda alele ekugcineni."],
+          xh: ["Iinkwenkwezi zenza umboniso ngokuhlwa.", "Ubusuku obucacileyo. Lala neefestile zivuliwe.", "Inyanga isebenza ngokugqithisileyo.", "Imozulu elungele ukulala. Beka ifowuni phantsi.", "Isibhakabhaka sasebusuku siyaziqhayisa.", "Ubusuku obuzolileyo. Ii-hadeda zilele ekugqibeleni."],
+          st: ["Dinaledi di etsa pontsho bosiu bona.", "Bosiu bo hloekileng. Robala ka difensetere di butsoe.", "Khoeli e sebetsa nako e eketsehileng.", "Leholimo le letle la ho robala. Beha mohala fatshe.", "Lehodimo la bosiu le a iponahatsa.", "Bosiu bo khutsitseng. Di-hadeda di robetse qetellong."]
+        },
+        rain: {
+          en: ["Rain on the roof tonight. Free white noise.", "Perfect night for Netflix and a blanket.", "Sleep tight. The rain's got the lullaby covered.", "Wet night ahead. Stay in.", "The rain doesn't sleep either, apparently.", "Cosy up. It's a drizzle-and-duvet kind of night."],
+          af: ["Reën op die dak vanaand. Gratis wit geruis.", "Perfekte nag vir Netflix en 'n kombers.", "Slaap lekker. Die reën sing die wiegelied.", "Nat nag vorentoe. Bly binne.", "Die reën slaap ook nie, blykbaar.", "Maak jou gemaklik. Dis 'n motreën-en-duvet nag."],
+          zu: ["Imvula ephahleni ngalobu busuku. Umsindo wamahhala.", "Ubusuku obuhle be-Netflix nengubo.", "Lala kahle. Imvula ilethe ingoma yokulala.", "Ubusuku olumanzi phambili. Hlala ngaphakathi.", "Imvula nayo ayilali, kubonakala.", "Zifudumeze. Ubusuku lwengubo nemvula."],
+          xh: ["Imvula ephahleni ngokuhlwa. Ingxolo emhlophe yasimahla.", "Ubusuku obulungele i-Netflix nengubo.", "Lala kakuhle. Imvula inengoma yokulala.", "Ubusuku obumanzi phambili. Hlala ngaphakathi.", "Imvula nayo ayilali, kubonakala.", "Zifudumeze. Bobusuku bengubo nemvula."],
+          st: ["Pula marulelong bosiu bona. Modumo o mosoeu oa mahala.", "Bosiu bo phethahetseng ba Netflix le kobo.", "Robala hantle. Pula e tlisitse pina ea ho robala.", "Bosiu bo metsi bo tlilong. Dula ka hare.", "Pula le eona ha e robale, ho bonahala.", "Futhumatsa. Ke bosiu ba kobo le pula."]
+        },
+        wind: {
+          en: ["The wind's howling tonight. Secure the bins.", "Sleep through this? Good luck.", "Sounds like the roof's negotiating its contract.", "The trees are having a rough night too.", "Cape Doctor's making night calls.", "Wind's up. Close the windows unless you enjoy chaos."],
+          af: ["Die wind huil vanaand. Maak die dromme vas.", "Slaap hierdeur? Sterkte.", "Klink of die dak sy kontrak onderhandel.", "Die bome het ook 'n rowwe nag.", "Die Kaapse Dokter maak nagbesoeke.", "Wind is op. Maak die vensters toe tensy jy chaos geniet."],
+          zu: ["Umoya uyakhala ngalobu busuku. Valela amabhin.", "Ulala kulohu? Sifisela inhlanhla.", "Kuzwakala sengathi uphahla luxoxisana ngesivumelwano salo.", "Izihlahla nazo zinobusuku obunzima.", "UDokotela waseKapa wenza izivakashelo zasebusuku.", "Umoya unyukile. Vala amafasitela ngaphandle uma uthanda isiyaluyalu."],
+          xh: ["Umoya uyabhomboloza ngokuhlwa. Valela iibhin.", "Ulala koku? Ngamathamsanqa.", "Kuvakala ngathi uphahla luxoxisana ngesivumelwano salo.", "Imithi nayo inobusuku obunzima.", "UGqirha waseKapa wenza iindwendwe zasebusuku.", "Umoya unyukile. Vala iifestile ngaphandle kokuba uthanda isiphithiphithi."],
+          st: ["Moea oa lla bosiu bona. Tiisa mabini.", "Robala ho sena? Lehlohonolo.", "Ho utloahala eka marulelo a buisana ka kontraka ea 'ona.", "Lifate le tsona li na le bosiu bo thata.", "Ngaka ea Cape e etsa litšeliso tsa bosiu.", "Moea o nyolohile. Koala difensetere ntle le haeba o rata moferefere."]
+        },
+        cold: {
+          en: ["Freezing tonight. Extra blanket territory.", "The heater's earning its keep tonight.", "So cold even the burglars stayed home.", "Double sock weather. No shame.", "Winter is very much here.", "Hot water bottle. Non-negotiable."],
+          af: ["Yskoud vanaand. Ekstra kombers-gebied.", "Die heater verdien sy plek vanaand.", "So koud selfs die inbrekers het tuis gebly.", "Dubbel-kous weer. Geen skande.", "Winter is baie beslis hier.", "Warm waterbottel. Nie onderhandelbaar nie."],
+          zu: ["Kubanda ngalobu busuku. Ingubo eyengeziwe.", "I-heater izuzile ngalobu busuku.", "Kubanda kakhulu ngisho namasela ahlale ekhaya.", "Isimo sezulu samakhasi amabili. Akukho hlazo.", "Ubusika bulapha ngempela.", "Ibhodlela lamanzi ashisayo. Akudingidwa."],
+          xh: ["Kuyabanda ngokuhlwa. Ingubo eyongezelelweyo.", "I-heater izuzile ngokuhlwa.", "Kuyabanda kakhulu nezigebenga zihlale ekhaya.", "Imozulu yeekawusi ezimbini. Akukho hloni.", "Ubusika bulapha ngokwenene.", "Ibhotile yamanzi ashushu. Akuxoxwa."],
+          st: ["Ho bata bosiu bona. Sebaka sa kobo e eketsehileng.", "Heater e fumane tuelo ea eona bosiu bona.", "Ho bata haholo esita le mashodu a dutse hae.", "Leholimo la dikausu tse peli. Ha ho dihlong.", "Mariha a teng ka nnete.", "Botlolo ea metsi a chesang. Ha ho buisanoe."]
+        },
+        default: {
+          en: ["Quiet night out there.", "Sleep well. Tomorrow's forecast is loading.", "Night shift weather reporting, at your service.", "The world's on pause. Enjoy it.", "Not much happening out there. And that's okay."],
+          af: ["Stil nag daar buite.", "Slaap lekker. Môre se voorspelling laai.", "Nagskof weerberig, tot jou diens.", "Die wêreld is op pouse. Geniet dit.", "Nie veel gebeur daar buite nie. En dis okay."],
+          zu: ["Ubusuku obuthule ngaphandle.", "Lala kahle. Isibikezelo sakusasa siyalayisha.", "Ukubika kwesimo sezulu kweshifu yasebusuku.", "Umhlaba umile. Kujabulele.", "Akukho okuningi okwenzekayo. Kulungile lokho."],
+          xh: ["Ubusuku obuzolileyo ngaphandle.", "Lala kakuhle. Isibikezelo sangomso siyalayisha.", "Ukuxela kwemozulu kweshifti yasebusuku.", "Ihlabathi limile. Yonwabela.", "Akukho kuningi okwenzekayo. Kulungile oko."],
+          st: ["Bosiu bo khutsitseng kantle.", "Robala hantle. Ponelopele ea hosane e a laesha.", "Tlaleho ea leholimo ea šifte ea bosiu.", "Lefatše le emisitsoe. Natefeloa.", "Ha ho se seng se etsahalang kantle. Mme ho lokile."]
+        }
       }
     },
     // Toasts
@@ -302,7 +388,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const favoriteKey = (p) => `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
   const isPlaceholderName = (name) => { const v = String(name || '').trim(); return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v); };
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
-  const conditionEmoji = (key) => { const m = { storm: '⛈️', rain: '🌧️', wind: '💨', cold: '❄️', heat: '🔥', fog: '🌫️', clear: '☀️' }; return m[String(key || '').toLowerCase()] || '⛅'; };
+  const conditionEmoji = (key) => { const m = { storm: '⛈️', rain: '🌧️', 'rain-possible': '🌦️', wind: '💨', cold: '❄️', heat: '🔥', uv: '☀️', fog: '🌫️', cloudy: '☁️', clear: '☀️' }; return m[String(key || '').toLowerCase()] || '⛅'; };
+  function badgeColorClass(badgeText) {
+    if (!badgeText) return '';
+    const b = badgeText.toLowerCase();
+    if (b.includes('rain') || b.includes('shower') || b.includes('mvula') || b.includes('pula') || b.includes('imvula') || b.includes('reën')) return 'badge-rain';
+    if (b.includes('hot') || b.includes('heat') || b.includes('tjhes') || b.includes('shisa')) return 'badge-heat';
+    if (b.includes('uv') || b.includes('UV')) return 'badge-uv';
+    if (b.includes('wind') || b.includes('moea') || b.includes('moya')) return 'badge-wind';
+    if (b.includes('cold') || b.includes('koud') || b.includes('band') || b.includes('bata')) return 'badge-cold';
+    return '';
+  }
 
   // ========== IP GEOLOCATION FALLBACK ==========
   // Used when GPS is blocked (e.g. WhatsApp in-app browser)
@@ -328,6 +424,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
   const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : `${round0(kph)} km/h`;
+  function windDirArrow(deg) {
+    if (!isNum(deg)) return '';
+    // Arrows point in direction wind blows TO (from + 180)
+    const arrows = ['↓','↙','←','↖','↑','↗','→','↘'];
+    return arrows[Math.round(deg / 45) % 8];
+  }
+  function formatSunTime(timeStr) {
+    if (!timeStr) return null;
+    try {
+      // Handle "HH:MM" or ISO date strings
+      const parts = timeStr.includes('T') ? timeStr.split('T')[1]?.split(':') : timeStr.split(':');
+      if (!parts || parts.length < 2) return null;
+      const h = parseInt(parts[0]), m = parseInt(parts[1]);
+      if (isNaN(h) || isNaN(m)) return null;
+      if (settings.time === '12') {
+        const ampm = h >= 12 ? 'pm' : 'am';
+        const h12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
+        return `${h12}:${String(m).padStart(2,'0')}${ampm}`;
+      }
+      return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+    } catch { return null; }
+  }
   const getTempColorClass = (tempC) => {
     if (!isNum(tempC)) return '';
     if (tempC <= 0) return 'temp-freezing';
@@ -338,8 +456,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function showScreen(which) {
-    SCREENS.forEach(s => { if (s) { s.classList.add("hidden"); s.setAttribute('hidden', ''); } });
-    if (which) { which.classList.remove("hidden"); which.removeAttribute('hidden'); }
+    // Fade out current, swap, fade in
+    SCREENS.forEach(s => { if (s) { s.classList.add("hidden"); s.setAttribute('hidden', ''); s.classList.remove('screen-visible'); } });
+    if (which) { which.classList.remove("hidden"); which.removeAttribute('hidden'); which.classList.add('screen-entering'); requestAnimationFrame(() => { requestAnimationFrame(() => { which.classList.remove('screen-entering'); which.classList.add('screen-visible'); }); }); }
     document.body.classList.toggle('modal-open', which && which !== screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
@@ -471,9 +590,22 @@ document.addEventListener("DOMContentLoaded", () => {
   function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
   function getHeroLabel(condition) { return T.heroLabels[condition]?.[settings.lang] || T.heroLabels[condition]?.en || "Pleasant"; }
   function getWittyLine(condition, norm) {
+    const hour = getLocationHour(activePlace?.lon);
+    const isNight = hour >= 20 || hour < 5;
     const day = new Date().getDay(), isWeekend = day === 0 || day === 5 || day === 6;
     const rainComing = norm && norm.rainLater;
-    // Only use weekend lines if it's genuinely a good outdoor day (no rain coming later)
+
+    // Night lines take priority (no one wants "Get outside!" at midnight)
+    if (isNight && T.witty.night) {
+      const nightPool = condition === 'rain' || condition === 'rain-possible' || condition === 'storm'
+        ? T.witty.night.rain : condition === 'wind' ? T.witty.night.wind
+        : condition === 'cold' ? T.witty.night.cold : condition === 'clear' || condition === 'heat' || condition === 'uv'
+        ? T.witty.night.clear : T.witty.night.default;
+      const lines = nightPool?.[settings.lang] || nightPool?.en || T.witty.night.default.en;
+      return lines[Math.floor(Math.random() * lines.length)];
+    }
+
+    // Weekend outdoor lines only if genuinely a good outdoor day
     if (isWeekend && !rainComing && (condition === 'clear' || condition === 'heat')) {
       const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
@@ -541,7 +673,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
     const randomNum = Math.floor(Math.random() * DAY_IMAGE_COUNT) + 1;
     const imgFile = timeOfDay === 'day' ? `day_${randomNum}` : timeOfDay;
-    if (bgImg) { bgImg.src = `${base}/${folder}/${imgFile}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
+    if (!bgImg) return;
+    const newSrc = `${base}/${folder}/${imgFile}.jpg`;
+    const fallback1 = `${base}/${folder}/day.jpg`;
+    const fallback2 = `${base}/${fallbackFolder}/day.jpg`;
+    // Preload then crossfade
+    const preload = new Image();
+    preload.onload = () => { bgImg.style.opacity = '0'; setTimeout(() => { bgImg.src = newSrc; bgImg.style.opacity = '1'; }, 200); };
+    preload.onerror = () => { bgImg.src = fallback1; bgImg.onerror = () => { bgImg.src = fallback2; }; };
+    preload.src = newSrc;
+    // Ensure bgImg has transition
+    if (!bgImg.style.transition) bgImg.style.transition = 'opacity 0.3s ease';
   }
   function createParticles(condition) {
     if (!particlesEl) return; particlesEl.innerHTML = '';
@@ -564,8 +706,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return data.address?.country ? `${city}, ${data.address.country}` : city;
     } catch { return null; }
   }
+  // API base: empty for Vercel (same origin), full URL for native app wrappers
+  const API_BASE = (typeof window !== 'undefined' && window.PW_API_BASE) ? window.PW_API_BASE : '';
   async function resolvePlaceName(place) { if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown'; if (!isPlaceholderName(place.name)) return place.name; return await reverseGeocode(place.lat, place.lon) || place.name || 'Unknown'; }
-  async function fetchProbable(place) { const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`; const resp = await fetch(url); if (!resp.ok) throw new Error('API error'); return await resp.json(); }
+  async function fetchProbable(place) { const url = `${API_BASE}/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`; const resp = await fetch(url); if (!resp.ok) throw new Error('API error'); return await resp.json(); }
   function normalizePayload(payload) {
     const now = payload.now || {}, today = payload.daily?.[0] || {}, meta = payload.meta || {}, sources = meta.sources || [];
     const hourly = payload.hourly || [];
@@ -577,7 +721,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return { 
       nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, 
       rainPct: displayRainPct, dailyRainPct: dailyRainPct, rainLater: rainLater,
-      uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
+      uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0),
+      windDir: now.windDir ?? payload.wind_dir ?? null,
+      sunrise: now.sunrise ?? null, sunset: now.sunset ?? null,
       conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
       used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name), 
@@ -586,7 +732,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== RENDER ==========
-  function renderLoading(name) { showLoader(true); safeText(locationEl, name); safeText(headlineEl, t('misc', 'loading')); safeText(tempEl, '--°'); safeText(descriptionEl, '—'); safeText(extremeValueEl, '--'); }
+  function safeRender(fn, fallbackMsg) {
+    try { fn(); } catch (e) { console.error(`Render error in ${fn.name || 'unknown'}:`, e); if (fallbackMsg) showToast(fallbackMsg); }
+  }
+  function renderLoading(name) { showLoader(true); safeText(locationEl, name); renderLoadingSkeleton(); }
   function renderError(msg) { showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
@@ -595,6 +744,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const sr = norm.sourceRanges || [];
     if (sr.length > 0) { safeText($('#confidenceValue'), sr.filter(s => isNum(s.minTemp) && isNum(s.maxTemp)).map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`).join('\n') || '--'); }
     else { safeText($('#confidenceValue'), { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' }[norm.confidenceKey] || 'Mixed'); }
+    // Source health dots
+    const healthEl = $('#sourceHealth') || (() => { const d = document.createElement('div'); d.id = 'sourceHealth'; d.className = 'source-health'; const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.appendChild(d); return d; })();
+    if (healthEl) {
+      const allSources = ['Open-Meteo', 'WeatherAPI', 'MET Norway'];
+      healthEl.innerHTML = allSources.map(s => {
+        const ok = norm.used?.includes(s);
+        return `<span><span class="source-dot ${ok ? 'source-ok' : 'source-fail'}"></span>${s.split(' ')[0]}</span>`;
+      }).join('');
+    }
   }
   function renderHome(norm) {
     showLoader(false);
@@ -618,6 +776,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const ws = isNum(wind) ? formatWind(wind) : '--';
+      const windArrow = isNum(norm.windDir) ? windDirArrow(norm.windDir) : '';
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
       let rs = '--'; 
       if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
@@ -626,9 +785,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const feels = norm.feelsLike;
       const showFeels = isNum(feels) && isNum(currentTemp) && Math.abs(feels - currentTemp) >= 3;
       const feelsStr = showFeels ? `${t('weather', 'feelsLike')} ${formatTemp(feels)}` : '';
-      const line1 = `${windLabel} ${ws} • ${rainLabel} ${rs}`;
+      const line1 = `${windLabel} ${ws}${windArrow ? ' ' + windArrow : ''} • ${rainLabel} ${rs}`;
       const line2 = `${uvLabel} ${us}${feelsStr ? ' • ' + feelsStr : ''}`;
-      bylineEl.innerHTML = `<div class="byline-row">${line1}</div><div class="byline-row">${line2}</div>`;
+      // Sunrise/sunset line
+      const sunriseStr = norm.sunrise ? formatSunTime(norm.sunrise) : null;
+      const sunsetStr = norm.sunset ? formatSunTime(norm.sunset) : null;
+      const sunLine = sunriseStr && sunsetStr ? `<div class="byline-row byline-sun">☀️ ${sunriseStr}  🌙 ${sunsetStr}</div>` : '';
+      bylineEl.innerHTML = `<div class="byline-row">${line1}</div><div class="byline-row">${line2}</div>${sunLine}`;
     }
     const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
     [headlineEl, tempEl, descriptionEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
@@ -664,7 +827,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
-      const windDisplay = windSpeed !== '--' ? `${windSpeed}` : '--';
+      const wdArrow = isNum(h.windDir) ? windDirArrow(h.windDir) : '';
+      const windDisplay = windSpeed !== '--' ? `${windSpeed}${wdArrow ? ' ' + wdArrow : ''}` : '--';
       const tempClass = getTempColorClass(h.tempC);
       div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-wind">${windDisplay}</span>`;
       hourlyTimeline.appendChild(div);
@@ -686,7 +850,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
       const div = document.createElement('div'); div.classList.add('daily-row');
-      div.innerHTML = `<span class="d-day">${dayName}${badge ? ` <span class="day-badge">${badge}</span>` : ''}</span><span class="d-icon">${icon}</span><span class="d-high ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</span><span class="d-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</span><span class="d-rain">${rainPct}</span>`;
+      const badgeClass = badgeColorClass(badge);
+      div.innerHTML = `<span class="d-day">${dayName}${badge ? ` <span class="day-badge ${badgeClass}">${badge}</span>` : ''}</span><span class="d-icon">${icon}</span><span class="d-high ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</span><span class="d-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</span><span class="d-rain">${rainPct}</span>`;
       dailyCards.appendChild(div);
     });
   }
@@ -697,13 +862,64 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
     if (languageSelect) languageSelect.value = settings.lang;
     updateUILanguage();
-    if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
+    if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; safeRender(() => renderHome(norm)); safeRender(() => renderHourly(norm.hourly)); safeRender(() => renderWeek(norm.daily, norm.hourly)); }
     renderFavorites(); renderRecents();
   }
+  function cacheKey(place) { return `${Math.round(place.lat*10)/10},${Math.round(place.lon*10)/10}`; }
+  function cachePayload(place, payload) {
+    try {
+      const cache = loadJSON(STORAGE.cache, {});
+      cache[cacheKey(place)] = { payload, ts: Date.now() };
+      // Keep max 10 cached locations
+      const keys = Object.keys(cache);
+      if (keys.length > 10) { const oldest = keys.sort((a, b) => cache[a].ts - cache[b].ts)[0]; delete cache[oldest]; }
+      saveJSON(STORAGE.cache, cache);
+    } catch {}
+  }
+  function getCachedPayload(place) {
+    try {
+      const cache = loadJSON(STORAGE.cache, {});
+      const entry = cache[cacheKey(place)];
+      if (!entry) return null;
+      // Cache valid for 3 hours
+      if (Date.now() - entry.ts > 3 * 60 * 60 * 1000) return null;
+      return entry;
+    } catch { return null; }
+  }
+  function renderCachedBanner(ts) {
+    const mins = Math.round((Date.now() - ts) / 60000);
+    const label = mins < 1 ? 'just now' : mins < 60 ? `${mins} min ago` : `${Math.round(mins/60)}h ago`;
+    const banner = document.getElementById('offlineBanner');
+    if (banner) { banner.textContent = `📡 Offline — showing data from ${label}`; banner.style.display = 'block'; }
+  }
+  function hideCachedBanner() { const banner = document.getElementById('offlineBanner'); if (banner) banner.style.display = 'none'; }
   async function loadAndRender(place) {
     activePlace = place; renderLoading(place.name || 'My Location');
-    try { const payload = await fetchProbable(place); lastPayload = payload; const norm = normalizePayload(payload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
-    catch (e) { console.error("Load failed:", e); renderError(t('misc', 'couldntFetch')); }
+    try {
+      const payload = await fetchProbable(place);
+      lastPayload = payload;
+      cachePayload(place, payload);
+      hideCachedBanner();
+      const norm = normalizePayload(payload); window.__PW_LAST_NORM = norm;
+      safeRender(() => renderHome(norm), 'Home display error');
+      safeRender(() => renderHourly(norm.hourly), 'Hourly display error');
+      safeRender(() => renderWeek(norm.daily, norm.hourly), 'Weekly display error');
+      updateSaveBtn();
+    } catch (e) {
+      console.error("Load failed:", e);
+      const cached = getCachedPayload(place);
+      if (cached) {
+        lastPayload = cached.payload;
+        const norm = normalizePayload(cached.payload); window.__PW_LAST_NORM = norm;
+        renderCachedBanner(cached.ts);
+        safeRender(() => renderHome(norm), 'Home display error');
+        safeRender(() => renderHourly(norm.hourly), 'Hourly display error');
+        safeRender(() => renderWeek(norm.daily, norm.hourly), 'Weekly display error');
+        updateSaveBtn();
+      } else {
+        renderError(t('misc', 'couldntFetch'));
+      }
+    }
   }
 
   // ========== FAVORITES & RECENTS ==========
@@ -735,6 +951,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderRecents() {
     if (!recentList) return; const list = loadRecents();
+    // Hide clear button when empty
+    if (clearRecentsBtn) clearRecentsBtn.style.display = list.length > 0 ? '' : 'none';
     const logoMini = `<svg class="recent-logo" viewBox="0 0 40 40" width="18" height="18"><circle cx="20" cy="20" r="18" fill="url(#logoGrad)"/><text x="12" y="28" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="#fff">P</text><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFDD44"/><stop offset="100%" stop-color="#FFAA00"/></linearGradient></defs></svg>`;
     recentList.innerHTML = list.map(p => `<li class="recent-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(p.name)}</span></li>`).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
     recentList.querySelectorAll('li[data-lat]').forEach(li => { li.addEventListener('click', () => { showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); }); });
@@ -742,10 +960,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderFavorites() {
     if (!favoritesList) return; const list = loadFavorites();
     const fl = document.getElementById('favLimit'); if (fl) fl.style.display = list.length >= 5 ? 'block' : 'none';
+    // Hide manage button when empty
+    if (manageFavorites) manageFavorites.style.display = list.length > 0 ? '' : 'none';
     favoritesList.innerHTML = list.map(p => {
       const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
+      const icon = p.conditionKey ? conditionEmoji(p.conditionKey) : '⛅';
       const rb = manageMode ? `<button class="remove-fav" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>` : '';
-      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><button class="fav-star" data-lat="${p.lat}" data-lon="${p.lon}">★</button><span class="fav-name">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
+      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><button class="fav-star" data-lat="${p.lat}" data-lon="${p.lon}">★</button><span class="fav-icon">${icon}</span><span class="fav-name">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
     }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noSaved')}</li>`;
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => { span.addEventListener('click', () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); }); });
     favoritesList.querySelectorAll('.fav-star').forEach(btn => { btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); }); });
@@ -785,6 +1006,43 @@ document.addEventListener("DOMContentLoaded", () => {
   navWeek?.addEventListener('click', () => showScreen(screenWeek));
   navSearch?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); });
   navSettings?.addEventListener('click', () => showScreen(screenSettings));
+
+  // ========== PULL TO REFRESH ==========
+  let pullStartY = 0, isPulling = false, pullTriggered = false;
+  const PULL_THRESHOLD = 80;
+  if (screenHome) {
+    screenHome.addEventListener('touchstart', (e) => {
+      if (window.scrollY === 0 || document.documentElement.scrollTop === 0) { pullStartY = e.touches[0].clientY; isPulling = true; }
+    }, { passive: true });
+    screenHome.addEventListener('touchmove', (e) => {
+      if (!isPulling) return;
+      const pullDist = e.touches[0].clientY - pullStartY;
+      const indicator = document.getElementById('pullRefreshIndicator');
+      if (pullDist > 20 && pullDist < PULL_THRESHOLD * 1.5) {
+        if (indicator) { indicator.classList.add('pulling'); indicator.textContent = pullDist >= PULL_THRESHOLD ? '↻ Release to refresh' : '↓ Pull to refresh'; }
+      }
+      if (pullDist >= PULL_THRESHOLD) pullTriggered = true;
+    }, { passive: true });
+    screenHome.addEventListener('touchend', () => {
+      const indicator = document.getElementById('pullRefreshIndicator');
+      if (indicator) { indicator.classList.remove('pulling'); indicator.textContent = ''; }
+      if (pullTriggered && activePlace) {
+        if (indicator) { indicator.classList.add('pulling'); indicator.textContent = '↻ Refreshing...'; }
+        loadAndRender(activePlace).then(() => { if (indicator) { indicator.classList.remove('pulling'); indicator.textContent = ''; } });
+      }
+      isPulling = false; pullTriggered = false;
+    }, { passive: true });
+  }
+
+  // ========== LOADING SKELETON ==========
+  function renderLoadingSkeleton() {
+    if (tempEl) tempEl.innerHTML = '<span class="skeleton" style="display:inline-block;width:180px;height:42px;">&nbsp;</span>';
+    if (headlineEl) headlineEl.innerHTML = '<span class="skeleton" style="display:inline-block;width:220px;height:24px;">&nbsp;</span>';
+    if (descriptionEl) descriptionEl.innerHTML = '<span class="skeleton" style="display:inline-block;width:260px;height:18px;margin-top:6px;">&nbsp;</span>';
+    const byline = $('#weatherByline');
+    if (byline) byline.innerHTML = '<div class="skeleton" style="width:200px;height:14px;margin:4px auto;">&nbsp;</div><div class="skeleton" style="width:160px;height:14px;margin:4px auto;">&nbsp;</div>';
+    if (extremeValueEl) extremeValueEl.innerHTML = '<span class="skeleton" style="display:inline-block;width:80px;height:16px;">&nbsp;</span>';
+  }
   
   // My Location button - reset to geolocation
   myLocationBtn?.addEventListener('click', () => {
@@ -795,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
         try { 
-          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); 
+          const rev = await fetch(`${API_BASE}/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); 
           const data = await rev.json();
           const city = data?.city || "My Location", cc = data?.countryCode || null;
           saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); 
@@ -851,7 +1109,13 @@ document.addEventListener("DOMContentLoaded", () => {
   probRangeToggle?.addEventListener('change', () => { settings.range = !!probRangeToggle.checked; saveSettings(); applySettings(); });
   timeFormatSelect?.addEventListener('change', () => { settings.time = timeFormatSelect.value; saveSettings(); applySettings(); });
   languageSelect?.addEventListener('change', () => { settings.lang = languageSelect.value; saveSettings(); applySettings(); });
-  saveCurrent?.addEventListener('click', () => { if (activePlace) addFavorite(activePlace); });
+  saveCurrent?.addEventListener('click', () => { if (activePlace) { toggleFavorite(activePlace).then(updateSaveBtn); } });
+  function updateSaveBtn() {
+    if (!saveCurrent || !activePlace) return;
+    const isFav = loadFavorites().some(p => samePlace(p, activePlace));
+    saveCurrent.textContent = isFav ? '★ Saved' : '☆ Save';
+    saveCurrent.classList.toggle('is-saved', isFav);
+  }
   searchCancel?.addEventListener('click', () => { showScreen(screenHome); if (searchInput) searchInput.value = ''; });
   manageFavorites?.addEventListener('click', () => { if (loadFavorites().length === 0) { showToast(t('toasts', 'noPlaces')); return; } manageMode = !manageMode; manageFavorites.textContent = manageMode ? t('search', 'done') : t('search', 'manage'); renderFavorites(); });
   clearRecentsBtn?.addEventListener('click', () => { clearRecents(); showToast(t('toasts', 'cleared')); });
@@ -866,7 +1130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
-        try { const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
+        try { const rev = await fetch(`${API_BASE}/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
           const city = data?.city || "My Location", cc = data?.countryCode || null;
           saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
         } catch { homePlace = { name: "My Location", lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace); }
