@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ========== STATE ==========
-  let activePlace = null, homePlace = null, lastPayload = null, manageMode = false;
+  let activePlace = null, homePlace = null, lastPayload = null, manageMode = false, lastFetchTime = Date.now();
   window.__PW_LAST_NORM = null;
   const pendingFavMeta = new Set();
   const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', range: 'display.range', time: 'format.time', lang: 'lang' };
@@ -881,8 +881,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const cache = loadJSON(STORAGE.cache, {});
       const entry = cache[cacheKey(place)];
       if (!entry) return null;
-      // Cache valid for 3 hours
-      if (Date.now() - entry.ts > 3 * 60 * 60 * 1000) return null;
+      // Cache valid for 1 hour
+      if (Date.now() - entry.ts > 1 * 60 * 60 * 1000) return null;
       return entry;
     } catch { return null; }
   }
@@ -898,6 +898,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const payload = await fetchProbable(place);
       lastPayload = payload;
+      lastFetchTime = Date.now();
       cachePayload(place, payload);
       hideCachedBanner();
       const norm = normalizePayload(payload); window.__PW_LAST_NORM = norm;
@@ -1151,4 +1152,28 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+  // ========== AUTO-REFRESH ==========
+  // Refresh every 30 minutes while the tab is active
+  const AUTO_REFRESH_MS = 30 * 60 * 1000; // 30 minutes
+
+  setInterval(() => {
+    if (activePlace && Date.now() - lastFetchTime > AUTO_REFRESH_MS) {
+      loadAndRender(activePlace);
+      lastFetchTime = Date.now();
+    }
+  }, 60 * 1000); // Check every minute
+
+  // Refresh when tab becomes visible again after 15+ minutes
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && activePlace) {
+      const staleMs = Date.now() - lastFetchTime;
+      if (staleMs > 15 * 60 * 1000) { // 15 minutes
+        loadAndRender(activePlace);
+        lastFetchTime = Date.now();
+      }
+    }
+  });
+
+  // Update lastFetchTime whenever we do a fresh fetch (handled inside loadAndRender)
 });
