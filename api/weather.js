@@ -3,6 +3,20 @@
 // Sources: Open-Meteo (no key), WeatherAPI (key), MET Norway (no key, User-Agent)
 
 export default async function handler(req, res) {
+  // CORS headers for native app (Capacitor makes cross-origin requests)
+  const allowedOrigins = ['https://www.probablyweather.co.za', 'capacitor://localhost', 'http://localhost'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(204).end();
+  }
+
   try {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
@@ -369,26 +383,26 @@ export default async function handler(req, res) {
       failures.push('MET Norway');
     }
 
-    // ========== AGGREGATION ==========
+    // ========== AGGREGATION (Weighted by source reliability) ==========
 
-    // Aggregate hourly data
+    // Aggregate hourly data using weighted averages
     const aggregatedHourly = Array.from({ length: 24 }, (_, i) => ({
-      tempC: median(hourlies.map(h => h.temps[i]).filter(isNum)),
-      feelsLikeC: median(hourlies.map(h => h.feelsLikes?.[i]).filter(isNum)),
-      rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
-      windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
-      windDir: median(hourlies.map(h => h.windDirs?.[i]).filter(isNum)),
-      cloudPct: median(hourlies.map(h => h.clouds?.[i]).filter(isNum)),
+      tempC: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.temps[i] }))),
+      feelsLikeC: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.feelsLikes?.[i] }))),
+      rainChance: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.rains[i] }))),
+      windKph: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.winds[i] }))),
+      windDir: median(hourlies.map(h => h.windDirs?.[i]).filter(isNum)), // Direction still uses median (angles are tricky to weight)
+      cloudPct: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.clouds?.[i] }))),
     }));
 
     // Aggregate daily data
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
-      const descs = dailies.map(d => d.descs[i]).filter(Boolean);
-      const conditionLabel = pickMostCommon(descs) || 'Unknown';
-      const highC = median(dailies.map(d => d.highs[i]).filter(isNum));
-      const lowC = median(dailies.map(d => d.lows[i]).filter(isNum));
-      const rainChance = median(dailies.map(d => d.rains[i]).filter(isNum));
-      const uv = median(dailies.map(d => d.uvs[i]).filter(isNum));
+      const sourceDescs = dailies.map(d => ({ source: d.source, desc: d.descs[i] })).filter(sd => sd.desc);
+      const conditionLabel = pickBestCondition(sourceDescs);
+      const highC = weightedAvg(dailies.map(d => ({ source: d.source, value: d.highs[i] })));
+      const lowC = weightedAvg(dailies.map(d => ({ source: d.source, value: d.lows[i] })));
+      const rainChance = weightedAvg(dailies.map(d => ({ source: d.source, value: d.rains[i] })));
+      const uv = weightedAvg(dailies.map(d => ({ source: d.source, value: d.uvs[i] })));
       const windKph = aggregatedHourly[Math.min(i * 4 + 12, 23)]?.windKph ?? null; // Midday wind estimate
 
       return {
@@ -420,13 +434,13 @@ export default async function handler(req, res) {
       confidenceKey = 'decent';
     }
 
-    // Build "now" object from median of all sources
-    const medNowTemp = median(norms.map(n => n.nowTemp).filter(isNum));
-    const medFeelsLike = median(norms.map(n => n.feelsLike).filter(isNum));
-    const medWindKph = median(norms.map(n => n.windKph).filter(isNum));
-    const medWindDir = median(norms.map(n => n.windDir).filter(isNum));
-    const medHumidity = median(norms.map(n => n.humidity).filter(isNum));
-    const medUv = median(norms.map(n => n.todayUv).filter(isNum));
+    // Build "now" object from weighted average of all sources
+    const medNowTemp = weightedAvg(norms.map(n => ({ source: n.source, value: n.nowTemp })));
+    const medFeelsLike = weightedAvg(norms.map(n => ({ source: n.source, value: n.feelsLike })));
+    const medWindKph = weightedAvg(norms.map(n => ({ source: n.source, value: n.windKph })));
+    const medWindDir = median(norms.map(n => n.windDir).filter(isNum)); // Angles use median
+    const medHumidity = weightedAvg(norms.map(n => ({ source: n.source, value: n.humidity })));
+    const medUv = weightedAvg(norms.map(n => ({ source: n.source, value: n.todayUv })));
     const wind_kph = isNum(medWindKph) ? medWindKph : 0;
     const wind_dir = isNum(medWindDir) ? Math.round(medWindDir) : null;
 
@@ -441,8 +455,8 @@ export default async function handler(req, res) {
       }
     }
 
-    // Get most common description
-    const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
+    // Get best condition description (with severe weather escalation)
+    const mostDesc = pickBestCondition(norms.map(n => ({ source: n.source, desc: n.desc }))) || 'Weather today';
 
     // Calculate feels like if we don't have it from sources
     const finalFeelsLike = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
@@ -490,14 +504,16 @@ export default async function handler(req, res) {
       hourly: aggregatedHourly,
       meta: {
         sources: [
-          ...norms.map(n => ({ name: n.source, ok: true })),
-          ...failures.map(f => ({ name: f, ok: false })),
+          ...norms.map(n => ({ name: n.source, ok: true, weight: SOURCE_WEIGHTS[n.source] ?? 0, desc: n.desc })),
+          ...failures.map(f => ({ name: f, ok: false, weight: SOURCE_WEIGHTS[f] ?? 0 })),
         ],
         sourceRanges: norms.map(n => ({
           name: n.source,
           minTemp: n.todayLow,
           maxTemp: n.todayHigh,
+          rain: n.todayRain,
         })),
+        aggregation: 'weighted', // so the frontend knows
         updatedAtLabel: new Date().toISOString(),
       },
     });
@@ -515,6 +531,60 @@ function median(values) {
   const sorted = [...values].sort((a, b) => a - b);
   const half = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[half] : (sorted[half - 1] + sorted[half]) / 2.0;
+}
+
+// ========== SOURCE WEIGHTS ==========
+// MET Norway (yr.no) is most accurate for Southern Africa precipitation & conditions.
+// Open-Meteo (ECMWF) is strong on temperature, decent on precipitation.
+// WeatherAPI is least precise for this region.
+const SOURCE_WEIGHTS = {
+  'MET Norway': 0.50,
+  'Open-Meteo': 0.30,
+  'WeatherAPI': 0.20,
+};
+
+/**
+ * Weighted average using source reliability weights.
+ * Takes an array of { source, value } objects.
+ * Falls back to simple average if no weights match.
+ */
+function weightedAvg(sourceValues) {
+  const valid = sourceValues.filter(sv => isNum(sv.value));
+  if (valid.length === 0) return null;
+  if (valid.length === 1) return valid[0].value;
+
+  let totalWeight = 0;
+  let weightedSum = 0;
+  for (const sv of valid) {
+    const w = SOURCE_WEIGHTS[sv.source] ?? (1 / valid.length);
+    totalWeight += w;
+    weightedSum += sv.value * w;
+  }
+  return totalWeight > 0 ? weightedSum / totalWeight : null;
+}
+
+/**
+ * Pick best condition description with severe weather escalation.
+ * If ANY source reports thunder/storm, that takes priority.
+ * Otherwise uses weighted preference (MET Norway > Open-Meteo > WeatherAPI).
+ */
+function pickBestCondition(sourceDescs) {
+  // sourceDescs = [{ source: 'Open-Meteo', desc: '...' }, ...]
+  const valid = sourceDescs.filter(sd => sd.desc && sd.desc !== 'Unknown');
+  if (valid.length === 0) return 'Unknown';
+
+  // ESCALATION: Any source reporting severe weather wins immediately
+  const severe = valid.find(sd => {
+    const d = sd.desc.toLowerCase();
+    return d.includes('thunder') || d.includes('storm') || d.includes('tornado') || d.includes('hurricane');
+  });
+  if (severe) return severe.desc;
+
+  // Otherwise, pick from the highest-weighted source that has data
+  const ranked = valid.sort((a, b) => 
+    (SOURCE_WEIGHTS[b.source] ?? 0) - (SOURCE_WEIGHTS[a.source] ?? 0)
+  );
+  return ranked[0].desc;
 }
 
 function pickMostCommon(arr) {
