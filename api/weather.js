@@ -389,7 +389,7 @@ export default async function handler(req, res) {
     const aggregatedHourly = Array.from({ length: 24 }, (_, i) => ({
       tempC: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.temps[i] }))),
       feelsLikeC: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.feelsLikes?.[i] }))),
-      rainChance: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.rains[i] }))),
+      rainChance: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.rains[i] })), RAIN_WEIGHTS),
       windKph: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.winds[i] }))),
       windDir: median(hourlies.map(h => h.windDirs?.[i]).filter(isNum)), // Direction still uses median (angles are tricky to weight)
       cloudPct: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.clouds?.[i] }))),
@@ -401,7 +401,7 @@ export default async function handler(req, res) {
       const conditionLabel = pickBestCondition(sourceDescs);
       const highC = weightedAvg(dailies.map(d => ({ source: d.source, value: d.highs[i] })));
       const lowC = weightedAvg(dailies.map(d => ({ source: d.source, value: d.lows[i] })));
-      const rainChance = weightedAvg(dailies.map(d => ({ source: d.source, value: d.rains[i] })));
+      const rainChance = weightedAvg(dailies.map(d => ({ source: d.source, value: d.rains[i] })), RAIN_WEIGHTS);
       const uv = weightedAvg(dailies.map(d => ({ source: d.source, value: d.uvs[i] })));
       const windKph = aggregatedHourly[Math.min(i * 4 + 12, 23)]?.windKph ?? null; // Midday wind estimate
 
@@ -543,20 +543,29 @@ const SOURCE_WEIGHTS = {
   'WeatherAPI': 0.20,
 };
 
+// MET Norway is especially accurate for SA precipitation timing.
+// Give it extra weight for rain to prevent stale/inaccurate sources inflating rain %.
+const RAIN_WEIGHTS = {
+  'MET Norway': 0.60,
+  'Open-Meteo': 0.25,
+  'WeatherAPI': 0.15,
+};
+
 /**
  * Weighted average using source reliability weights.
- * Takes an array of { source, value } objects.
+ * Takes an array of { source, value } objects and optional custom weights.
  * Falls back to simple average if no weights match.
  */
-function weightedAvg(sourceValues) {
+function weightedAvg(sourceValues, customWeights) {
   const valid = sourceValues.filter(sv => isNum(sv.value));
   if (valid.length === 0) return null;
   if (valid.length === 1) return valid[0].value;
 
+  const weights = customWeights || SOURCE_WEIGHTS;
   let totalWeight = 0;
   let weightedSum = 0;
   for (const sv of valid) {
-    const w = SOURCE_WEIGHTS[sv.source] ?? (1 / valid.length);
+    const w = weights[sv.source] ?? (1 / valid.length);
     totalWeight += w;
     weightedSum += sv.value * w;
   }
@@ -564,24 +573,42 @@ function weightedAvg(sourceValues) {
 }
 
 /**
- * Pick best condition description with severe weather escalation.
- * If ANY source reports thunder/storm, that takes priority.
- * Otherwise uses weighted preference (MET Norway > Open-Meteo > WeatherAPI).
+ * Pick best condition description with smart severe weather escalation.
+ * Only escalates to storm if:
+ *   - The most trusted source (MET Norway, weight >= 0.4) reports it, OR
+ *   - Two or more sources independently report severe weather
+ * Otherwise picks the highest-weighted source's description.
  */
 function pickBestCondition(sourceDescs) {
   // sourceDescs = [{ source: 'Open-Meteo', desc: '...' }, ...]
   const valid = sourceDescs.filter(sd => sd.desc && sd.desc !== 'Unknown');
   if (valid.length === 0) return 'Unknown';
 
-  // ESCALATION: Any source reporting severe weather wins immediately
-  const severe = valid.find(sd => {
+  const severeKeywords = ['thunder', 'storm', 'tornado', 'hurricane'];
+  const severeSources = valid.filter(sd => {
     const d = sd.desc.toLowerCase();
-    return d.includes('thunder') || d.includes('storm') || d.includes('tornado') || d.includes('hurricane');
+    return severeKeywords.some(k => d.includes(k));
   });
-  if (severe) return severe.desc;
 
-  // Otherwise, pick from the highest-weighted source that has data
-  const ranked = valid.sort((a, b) => 
+  // ESCALATION: Only if a high-weight source (≥0.4) reports severe, or 2+ sources agree
+  if (severeSources.length >= 2) {
+    // Multiple sources confirm severe — trust it
+    const ranked = severeSources.sort((a, b) =>
+      (SOURCE_WEIGHTS[b.source] ?? 0) - (SOURCE_WEIGHTS[a.source] ?? 0)
+    );
+    return ranked[0].desc;
+  }
+  if (severeSources.length === 1) {
+    const severeWeight = SOURCE_WEIGHTS[severeSources[0].source] ?? 0;
+    if (severeWeight >= 0.4) {
+      // Only MET Norway (0.50) clears this bar — trust it alone
+      return severeSources[0].desc;
+    }
+    // A single low-weight source says storm? Ignore it, use normal ranking.
+  }
+
+  // Default: pick from the highest-weighted source
+  const ranked = [...valid].sort((a, b) =>
     (SOURCE_WEIGHTS[b.source] ?? 0) - (SOURCE_WEIGHTS[a.source] ?? 0)
   );
   return ranked[0].desc;
