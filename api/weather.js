@@ -3,20 +3,6 @@
 // Sources: Open-Meteo (no key), WeatherAPI (key), MET Norway (no key, User-Agent)
 
 export default async function handler(req, res) {
-  // CORS headers for native app (Capacitor makes cross-origin requests)
-  const allowedOrigins = ['https://www.probablyweather.co.za', 'capacitor://localhost', 'http://localhost'];
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  // Handle preflight
-  if (req.method === 'OPTIONS') {
-    return res.status(204).end();
-  }
-
   try {
     const lat = parseFloat(req.query.lat);
     const lon = parseFloat(req.query.lon);
@@ -52,19 +38,12 @@ export default async function handler(req, res) {
     if (req.query.reverse) {
       try {
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=12&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`,
           { headers: { 'User-Agent': MET_USER_AGENT } }
         );
 
         const addr = rev?.address || {};
-        // Filter out ward labels and pure numbers
-        const isBad = (s) => {
-          const v = String(s || '').trim();
-          return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
-        };
-        const pick = (...vals) => vals.find(v => !isBad(v)) || null;
-        // Prefer most specific: suburb/town/village before city (metro names swallow small towns)
-        const city = pick(addr.suburb, addr.neighbourhood, addr.town, addr.village, addr.city, addr.municipality);
+        const city = addr.city || addr.town || addr.village || addr.suburb || addr.neighbourhood || addr.municipality || null;
         const admin1 = addr.state || addr.province || addr.region || addr.county || null;
         const countryCode = addr.country_code ? String(addr.country_code).toUpperCase() : null;
 
@@ -79,7 +58,7 @@ export default async function handler(req, res) {
     if (!resolvedName) {
       try {
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=12&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
           { headers: { 'User-Agent': MET_USER_AGENT } }
         );
 
@@ -89,17 +68,18 @@ export default async function handler(req, res) {
           return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
         };
         const pick = (...vals) => vals.find(v => !isBadLabel(v));
-        // Prefer most specific: suburb/neighbourhood > town > village > city > municipality
-        // This ensures small towns like Strand aren't swallowed by metro names like Cape Town
-        const specific = pick(addr.suburb, addr.neighbourhood, addr.town, addr.village);
-        const broad = pick(addr.city, addr.municipality, addr.state, addr.province);
+        const primary = pick(addr.town, addr.city, addr.village);
+        const cityTown = pick(addr.suburb, addr.neighbourhood);
+        const secondary = pick(addr.municipality, addr.state, addr.province);
         const country = addr.country;
 
         const parts = [];
-        if (specific) {
-          parts.push(specific);
-        } else if (broad) {
-          parts.push(broad);
+        if (primary) {
+          parts.push(primary);
+        } else if (cityTown) {
+          parts.push(cityTown);
+        } else if (secondary) {
+          parts.push(secondary);
         } else if (country) {
           parts.push(country);
         }
@@ -115,6 +95,11 @@ export default async function handler(req, res) {
     const norms = [];
     const hourlies = [];
     const dailies = [];
+
+    // Determine current local hour (refined after OM fetch if utc_offset_seconds available)
+    // Used to align all hourly data to start from "now"
+    let currentLocalHour = ((new Date().getUTCHours() + Math.round(lon / 15)) % 24 + 24) % 24;
+    let utcOffsetHours = Math.round(lon / 15);
 
     // Weather description mappings
     const openMeteoCodeMap = {
@@ -182,8 +167,8 @@ export default async function handler(req, res) {
     try {
       const om = await fetchJson(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,relative_humidity_2m,cloud_cover` +
-        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_direction_10m,cloud_cover,relative_humidity_2m` +
+        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m,cloud_cover` +
+        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,cloud_cover,relative_humidity_2m` +
         `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
         `&timezone=auto&forecast_days=7`
       );
@@ -198,26 +183,27 @@ export default async function handler(req, res) {
         todayUv: om.daily?.uv_index_max?.[0] ?? null,
         desc: openMeteoCodeMap[om.current?.weather_code] ?? 'Unknown',
         windKph: om.current?.wind_speed_10m ?? null,
-        windDir: om.current?.wind_direction_10m ?? null,
         humidity: om.current?.relative_humidity_2m ?? null,
         sunrise: om.daily?.sunrise?.[0] ?? null,
         sunset: om.daily?.sunset?.[0] ?? null,
       });
 
-      // Determine current hour offset so hourly data starts from NOW, not midnight
-      const omCurrentTime = om.current?.time || '';
-      const omCurrentHour = omCurrentTime ? new Date(omCurrentTime).getHours() : new Date().getUTCHours();
-      const omHourOffset = Math.max(0, Math.min(omCurrentHour, 167));
+      // Refine current local hour using OM's timezone offset (more accurate than lon/15)
+      if (isNum(om.utc_offset_seconds)) {
+        utcOffsetHours = om.utc_offset_seconds / 3600;
+        const rawHour = new Date().getUTCHours() + new Date().getUTCMinutes() / 60 + utcOffsetHours;
+        currentLocalHour = Math.floor(((rawHour % 24) + 24) % 24);
+      }
 
+      // Slice hourly data starting from current hour (OM gives 168 hours from midnight)
       hourlies.push({
         source: 'Open-Meteo',
-        temps: om.hourly?.temperature_2m?.slice(omHourOffset, omHourOffset + 24) ?? [],
-        feelsLikes: om.hourly?.apparent_temperature?.slice(omHourOffset, omHourOffset + 24) ?? [],
-        rains: om.hourly?.precipitation_probability?.slice(omHourOffset, omHourOffset + 24) ?? [],
-        winds: om.hourly?.wind_speed_10m?.slice(omHourOffset, omHourOffset + 24) ?? [],
-        windDirs: om.hourly?.wind_direction_10m?.slice(omHourOffset, omHourOffset + 24) ?? [],
-        clouds: om.hourly?.cloud_cover?.slice(omHourOffset, omHourOffset + 24) ?? [],
-        humidity: om.hourly?.relative_humidity_2m?.slice(omHourOffset, omHourOffset + 24) ?? [],
+        temps: om.hourly?.temperature_2m?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
+        feelsLikes: om.hourly?.apparent_temperature?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
+        rains: om.hourly?.precipitation_probability?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
+        winds: om.hourly?.wind_speed_10m?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
+        clouds: om.hourly?.cloud_cover?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
+        humidity: om.hourly?.relative_humidity_2m?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
       });
 
       dailies.push({
@@ -255,28 +241,25 @@ export default async function handler(req, res) {
           todayUv: d.uv ?? null,
           desc: wa.current?.condition?.text ?? 'Unknown',
           windKph: wa.current?.wind_kph ?? null,
-          windDir: wa.current?.wind_degree ?? null,
           humidity: wa.current?.humidity ?? null,
           sunrise: astro.sunrise ?? null,
           sunset: astro.sunset ?? null,
         });
 
-        // Combine today and tomorrow's hours, starting from current hour
-        const waLocalTime = wa.location?.localtime || '';
-        const waCurrentHour = waLocalTime ? new Date(waLocalTime).getHours() : new Date().getUTCHours();
-        const todayHours = wa.forecast.forecastday[0]?.hour || [];
-        const tomorrowHours = wa.forecast.forecastday[1]?.hour || [];
-        const combinedHours = [...todayHours.slice(waCurrentHour), ...tomorrowHours].slice(0, 24);
+        // Combine today + tomorrow hours, slice from current hour for next-24h alignment
+        const waHoursToday = wa.forecast.forecastday[0]?.hour ?? [];
+        const waHoursTomorrow = wa.forecast.forecastday[1]?.hour ?? [];
+        const waAllHours = [...waHoursToday, ...waHoursTomorrow];
+        const waSlice = waAllHours.slice(currentLocalHour, currentLocalHour + 24);
 
         hourlies.push({
           source: 'WeatherAPI',
-          temps: combinedHours.map(h => h.temp_c) ?? [],
-          feelsLikes: combinedHours.map(h => h.feelslike_c) ?? [],
-          rains: combinedHours.map(h => h.chance_of_rain) ?? [],
-          winds: combinedHours.map(h => h.wind_kph) ?? [],
-          windDirs: combinedHours.map(h => h.wind_degree) ?? [],
-          clouds: combinedHours.map(h => h.cloud) ?? [],
-          humidity: combinedHours.map(h => h.humidity) ?? [],
+          temps: waSlice.map(h => h.temp_c) ?? [],
+          feelsLikes: waSlice.map(h => h.feelslike_c) ?? [],
+          rains: waSlice.map(h => h.chance_of_rain) ?? [],
+          winds: waSlice.map(h => h.wind_kph) ?? [],
+          clouds: waSlice.map(h => h.cloud) ?? [],
+          humidity: waSlice.map(h => h.humidity) ?? [],
         });
 
         dailies.push({
@@ -340,7 +323,6 @@ export default async function handler(req, res) {
         todayUv: null, // MET doesn't provide UV
         desc,
         windKph,
-        windDir: series[0]?.data?.instant?.details?.wind_from_direction ?? null,
         humidity,
         sunrise: null,
         sunset: null,
@@ -363,7 +345,6 @@ export default async function handler(req, res) {
           const w = p.data?.instant?.details?.wind_speed;
           return isNum(w) ? w * 3.6 : null;
         }),
-        windDirs: series.slice(0, 24).map(p => p.data?.instant?.details?.wind_from_direction ?? null),
         clouds: series.slice(0, 24).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
         humidity: series.slice(0, 24).map(p => p.data?.instant?.details?.relative_humidity ?? null),
       });
@@ -383,40 +364,65 @@ export default async function handler(req, res) {
       failures.push('MET Norway');
     }
 
-    // ========== AGGREGATION (Weighted by source reliability) ==========
+    // ========== AGGREGATION ==========
 
-    // Aggregate hourly data using weighted averages
+    // Aggregate hourly data
     const aggregatedHourly = Array.from({ length: 24 }, (_, i) => ({
-      tempC: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.temps[i] }))),
-      feelsLikeC: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.feelsLikes?.[i] }))),
-      rainChance: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.rains[i] })), RAIN_WEIGHTS),
-      windKph: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.winds[i] }))),
-      windDir: median(hourlies.map(h => h.windDirs?.[i]).filter(isNum)), // Direction still uses median (angles are tricky to weight)
-      cloudPct: weightedAvg(hourlies.map(h => ({ source: h.source, value: h.clouds?.[i] }))),
+      tempC: median(hourlies.map(h => h.temps[i]).filter(isNum)),
+      feelsLikeC: median(hourlies.map(h => h.feelsLikes?.[i]).filter(isNum)),
+      rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
+      windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
+      cloudPct: median(hourlies.map(h => h.clouds?.[i]).filter(isNum)),
     }));
 
     // Aggregate daily data
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
-      const sourceDescs = dailies.map(d => ({ source: d.source, desc: d.descs[i] })).filter(sd => sd.desc);
-      const conditionLabel = pickBestCondition(sourceDescs);
-      const highC = weightedAvg(dailies.map(d => ({ source: d.source, value: d.highs[i] })));
-      const lowC = weightedAvg(dailies.map(d => ({ source: d.source, value: d.lows[i] })));
-      const rainChance = weightedAvg(dailies.map(d => ({ source: d.source, value: d.rains[i] })), RAIN_WEIGHTS);
-      const uv = weightedAvg(dailies.map(d => ({ source: d.source, value: d.uvs[i] })));
+      const descs = dailies.map(d => d.descs[i]).filter(Boolean);
+      const conditionLabel = pickMostCommon(descs) || 'Unknown';
+      const highC = median(dailies.map(d => d.highs[i]).filter(isNum));
+      const lowC = median(dailies.map(d => d.lows[i]).filter(isNum));
+      const rainChance = median(dailies.map(d => d.rains[i]).filter(isNum));
+      const uv = median(dailies.map(d => d.uvs[i]).filter(isNum));
       const windKph = aggregatedHourly[Math.min(i * 4 + 12, 23)]?.windKph ?? null; // Midday wind estimate
+      
+      // Estimate cloudPct for this day from hourly data or condition description
+      let cloudPct = null;
+      if (i === 0) {
+        // For today, average remaining daytime hours (6am-6pm) from the now-aligned hourly data
+        const daytimeStartIdx = Math.max(0, 6 - currentLocalHour);
+        const daytimeEndIdx = Math.max(0, 18 - currentLocalHour);
+        const daytimeClouds = daytimeEndIdx > daytimeStartIdx
+          ? aggregatedHourly.slice(daytimeStartIdx, daytimeEndIdx).map(h => h.cloudPct).filter(isNum)
+          : [];
+        cloudPct = daytimeClouds.length > 0 ? daytimeClouds.reduce((a, b) => a + b, 0) / daytimeClouds.length : null;
+      }
+      // Fallback: estimate from condition description
+      if (!isNum(cloudPct)) {
+        const cl = conditionLabel.toLowerCase();
+        if (cl.includes('overcast')) cloudPct = 90;
+        else if (cl.includes('cloudy') && !cl.includes('partly')) cloudPct = 75;
+        else if (cl.includes('partly cloudy')) cloudPct = 50;
+        else if (cl.includes('clear') || cl.includes('sunny') || cl.includes('fair')) cloudPct = 10;
+      }
+
+      // Estimate daily feels-like from low temp and wind (wind chill matters most)
+      const dailyFeelsLike = calcFeelsLike(lowC, windKph, null);
 
       return {
         highC,
         lowC,
         rainChance,
         uv,
+        cloudPct,
         conditionLabel,
         conditionKey: deriveCondition({
           desc: conditionLabel,
           rainChance,
           tempC: highC, // Use high temp for daily condition
+          feelsLikeC: dailyFeelsLike,
           windKph,
           uvIndex: uv,
+          cloudPct,
         }),
         sunrise: dailies.find(d => d.sunrises?.[i])?.sunrises[i] ?? null,
         sunset: dailies.find(d => d.sunsets?.[i])?.sunsets[i] ?? null,
@@ -434,41 +440,35 @@ export default async function handler(req, res) {
       confidenceKey = 'decent';
     }
 
-    // Build "now" object from weighted average of all sources
-    const medNowTemp = weightedAvg(norms.map(n => ({ source: n.source, value: n.nowTemp })));
-    const medFeelsLike = weightedAvg(norms.map(n => ({ source: n.source, value: n.feelsLike })));
-    const medWindKph = weightedAvg(norms.map(n => ({ source: n.source, value: n.windKph })));
-    const medWindDir = median(norms.map(n => n.windDir).filter(isNum)); // Angles use median
-    const medHumidity = weightedAvg(norms.map(n => ({ source: n.source, value: n.humidity })));
-    const medUv = weightedAvg(norms.map(n => ({ source: n.source, value: n.todayUv })));
+    // Build "now" object from median of all sources
+    const medNowTemp = median(norms.map(n => n.nowTemp).filter(isNum));
+    const medFeelsLike = median(norms.map(n => n.feelsLike).filter(isNum));
+    const medWindKph = median(norms.map(n => n.windKph).filter(isNum));
+    const medHumidity = median(norms.map(n => n.humidity).filter(isNum));
+    const medUv = median(norms.map(n => n.todayUv).filter(isNum));
     const wind_kph = isNum(medWindKph) ? medWindKph : 0;
-    const wind_dir = isNum(medWindDir) ? Math.round(medWindDir) : null;
 
-    // SANITY CLAMP: Ensure today's high/low are consistent with current temp
-    // Independent median calculations can produce impossible states (current > high)
-    if (isNum(medNowTemp) && aggregatedDaily.length > 0) {
-      if (isNum(aggregatedDaily[0].highC) && medNowTemp > aggregatedDaily[0].highC) {
-        aggregatedDaily[0].highC = Math.round(medNowTemp * 10) / 10;
-      }
-      if (isNum(aggregatedDaily[0].lowC) && medNowTemp < aggregatedDaily[0].lowC) {
-        aggregatedDaily[0].lowC = Math.round(medNowTemp * 10) / 10;
-      }
-    }
-
-    // Get best condition description (with severe weather escalation)
-    const mostDesc = pickBestCondition(norms.map(n => ({ source: n.source, desc: n.desc }))) || 'Weather today';
+    // Get most common description
+    const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
 
     // Calculate feels like if we don't have it from sources
     const finalFeelsLike = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
 
-    // Derive condition using ALL available data
+    // Derive condition using ALL available data including cloud cover
+    const currentCloudPct = aggregatedHourly[0]?.cloudPct ?? null;
+    
+    // Suppress UV at night — daily max UV is meaningless after dark
+    const isNightTime = currentLocalHour >= 19 || currentLocalHour < 6;
+    const effectiveUv = isNightTime ? 0 : medUv;
+    
     const nowConditionKey = deriveCondition({
       desc: mostDesc,
       rainChance: aggregatedDaily[0]?.rainChance ?? null,
       tempC: medNowTemp,
       feelsLikeC: finalFeelsLike,
       windKph: medWindKph,
-      uvIndex: medUv,
+      uvIndex: effectiveUv,
+      cloudPct: currentCloudPct,
     });
 
     // Get sunrise/sunset from first available source
@@ -483,12 +483,10 @@ export default async function handler(req, res) {
         lon,
       },
       wind_kph,
-      wind_dir,
       now: {
         tempC: medNowTemp,
         feelsLikeC: finalFeelsLike,
         windKph: medWindKph,
-        windDir: wind_dir,
         humidity: medHumidity,
         rainChance: aggregatedDaily[0]?.rainChance ?? null,
         uv: medUv,
@@ -504,17 +502,17 @@ export default async function handler(req, res) {
       hourly: aggregatedHourly,
       meta: {
         sources: [
-          ...norms.map(n => ({ name: n.source, ok: true, weight: SOURCE_WEIGHTS[n.source] ?? 0, desc: n.desc })),
-          ...failures.map(f => ({ name: f, ok: false, weight: SOURCE_WEIGHTS[f] ?? 0 })),
+          ...norms.map(n => ({ name: n.source, ok: true })),
+          ...failures.map(f => ({ name: f, ok: false })),
         ],
         sourceRanges: norms.map(n => ({
           name: n.source,
           minTemp: n.todayLow,
           maxTemp: n.todayHigh,
-          rain: n.todayRain,
         })),
-        aggregation: 'weighted', // so the frontend knows
         updatedAtLabel: new Date().toISOString(),
+        currentLocalHour,
+        utcOffsetHours,
       },
     });
 
@@ -531,87 +529,6 @@ function median(values) {
   const sorted = [...values].sort((a, b) => a - b);
   const half = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[half] : (sorted[half - 1] + sorted[half]) / 2.0;
-}
-
-// ========== SOURCE WEIGHTS ==========
-// MET Norway (yr.no) is most accurate for Southern Africa precipitation & conditions.
-// Open-Meteo (ECMWF) is strong on temperature, decent on precipitation.
-// WeatherAPI is least precise for this region.
-const SOURCE_WEIGHTS = {
-  'MET Norway': 0.50,
-  'Open-Meteo': 0.30,
-  'WeatherAPI': 0.20,
-};
-
-// MET Norway is especially accurate for SA precipitation timing.
-// Give it extra weight for rain to prevent stale/inaccurate sources inflating rain %.
-const RAIN_WEIGHTS = {
-  'MET Norway': 0.60,
-  'Open-Meteo': 0.25,
-  'WeatherAPI': 0.15,
-};
-
-/**
- * Weighted average using source reliability weights.
- * Takes an array of { source, value } objects and optional custom weights.
- * Falls back to simple average if no weights match.
- */
-function weightedAvg(sourceValues, customWeights) {
-  const valid = sourceValues.filter(sv => isNum(sv.value));
-  if (valid.length === 0) return null;
-  if (valid.length === 1) return valid[0].value;
-
-  const weights = customWeights || SOURCE_WEIGHTS;
-  let totalWeight = 0;
-  let weightedSum = 0;
-  for (const sv of valid) {
-    const w = weights[sv.source] ?? (1 / valid.length);
-    totalWeight += w;
-    weightedSum += sv.value * w;
-  }
-  return totalWeight > 0 ? weightedSum / totalWeight : null;
-}
-
-/**
- * Pick best condition description with smart severe weather escalation.
- * Only escalates to storm if:
- *   - The most trusted source (MET Norway, weight >= 0.4) reports it, OR
- *   - Two or more sources independently report severe weather
- * Otherwise picks the highest-weighted source's description.
- */
-function pickBestCondition(sourceDescs) {
-  // sourceDescs = [{ source: 'Open-Meteo', desc: '...' }, ...]
-  const valid = sourceDescs.filter(sd => sd.desc && sd.desc !== 'Unknown');
-  if (valid.length === 0) return 'Unknown';
-
-  const severeKeywords = ['thunder', 'storm', 'tornado', 'hurricane'];
-  const severeSources = valid.filter(sd => {
-    const d = sd.desc.toLowerCase();
-    return severeKeywords.some(k => d.includes(k));
-  });
-
-  // ESCALATION: Only if a high-weight source (≥0.4) reports severe, or 2+ sources agree
-  if (severeSources.length >= 2) {
-    // Multiple sources confirm severe — trust it
-    const ranked = severeSources.sort((a, b) =>
-      (SOURCE_WEIGHTS[b.source] ?? 0) - (SOURCE_WEIGHTS[a.source] ?? 0)
-    );
-    return ranked[0].desc;
-  }
-  if (severeSources.length === 1) {
-    const severeWeight = SOURCE_WEIGHTS[severeSources[0].source] ?? 0;
-    if (severeWeight >= 0.4) {
-      // Only MET Norway (0.50) clears this bar — trust it alone
-      return severeSources[0].desc;
-    }
-    // A single low-weight source says storm? Ignore it, use normal ranking.
-  }
-
-  // Default: pick from the highest-weighted source
-  const ranked = [...valid].sort((a, b) =>
-    (SOURCE_WEIGHTS[b.source] ?? 0) - (SOURCE_WEIGHTS[a.source] ?? 0)
-  );
-  return ranked[0].desc;
 }
 
 function pickMostCommon(arr) {
@@ -666,8 +583,13 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number} params.uvIndex - UV index
  * @returns {string} - Condition key for UI display
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct }) {
   const d = String(desc || '').toLowerCase();
+
+  // Determine if sky is cloudy/overcast from description or cloud percentage
+  // IMPORTANT: "Partly cloudy" must NOT trigger isCloudy — only full overcast/cloudy does
+  const isCloudy = d.includes('overcast') || (d.includes('cloudy') && !d.includes('partly')) || (isNum(cloudPct) && cloudPct >= 70);
+  const isPartlyCloudy = !isCloudy && (d.includes('partly cloudy') || d.includes('partly') || (isNum(cloudPct) && cloudPct >= 40 && cloudPct < 70));
 
   // 1. STORM - Thunder always takes priority
   if (d.includes('thunder') || d.includes('storm')) {
@@ -675,7 +597,6 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   }
 
   // 2. EXTREME COLD - Freezing temperatures or severe wind chill
-  // Check feels like first (wind chill), then actual temp
   if (isNum(feelsLikeC) && feelsLikeC <= -5) {
     return 'cold';
   }
@@ -701,9 +622,13 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
     return 'rain';
   }
 
-  // 6. HIGH UV - Dangerous UV levels
-  if (isNum(uvIndex) && uvIndex >= 8) {
-    return 'uv';
+  // 6. HIGH UV - Only when sky is clear/mostly clear
+  // Clouds block significant UV; API reports theoretical clear-sky UV
+  // Under overcast: suppress UV entirely. Under partly cloudy: require extreme UV (10+)
+  if (isNum(uvIndex) && uvIndex >= 8 && !isCloudy) {
+    if (!isPartlyCloudy || uvIndex >= 10) {
+      return 'uv';
+    }
   }
 
   // 7. STRONG WIND - Before light rain
@@ -721,46 +646,52 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
     return 'rain';
   }
 
-  // 10. POSSIBLE RAIN - Low but non-zero chance
-  if (isNum(rainChance) && rainChance > 10) {
-    return 'rain-possible';
-  }
-
-  // 11. MODERATE WIND
-  if (isNum(windKph) && windKph >= 25) {
-    return 'wind';
-  }
-
-  // 12. FOG / LOW VISIBILITY
+  // 10. FOG / LOW VISIBILITY - Check BEFORE cloudy because fog causes high cloud readings
   if (d.includes('fog') || d.includes('mist') || d.includes('haze')) {
     return 'fog';
   }
 
-  // 13. COLD (but not freezing) - Chilly day
+  // 11. CLOUDY - Check BEFORE possible rain and UV
+  // This ensures overcast skies show as cloudy, not UV or rain-possible
+  if (isCloudy) {
+    return 'cloudy';
+  }
+
+  // 12. POSSIBLE RAIN - Low but non-zero chance
+  if (isNum(rainChance) && rainChance > 10) {
+    return 'rain-possible';
+  }
+
+  // 13. MODERATE WIND
+  if (isNum(windKph) && windKph >= 25) {
+    return 'wind';
+  }
+
+  // 14. COLD (but not freezing) - Chilly day
   if (isNum(tempC) && tempC <= 10) {
     return 'cold';
   }
 
-  // 14. HOT (but not extreme)
+  // 15. HOT (but not extreme)
   if (isNum(tempC) && tempC >= 30) {
     return 'heat';
   }
 
-  // 15. HIGH UV (moderate threshold)
-  if (isNum(uvIndex) && uvIndex >= 6) {
+  // 16. HIGH UV (moderate threshold) - only when clear/fair
+  if (isNum(uvIndex) && uvIndex >= 6 && !isCloudy && !isPartlyCloudy) {
     return 'uv';
   }
 
-  // 16. CLOUDY
-  if (d.includes('cloud') || d.includes('overcast')) {
+  // 17. PARTLY CLOUDY
+  if (isPartlyCloudy) {
     return 'cloudy';
   }
 
-  // 17. CLEAR - Default for nice weather
+  // 18. CLEAR - Default for nice weather
   if (d.includes('clear') || d.includes('sunny') || d.includes('fair')) {
     return 'clear';
   }
 
-  // 18. Fallback - if nothing matches, assume partly cloudy/clear
+  // 19. Fallback
   return 'clear';
 }
