@@ -435,7 +435,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ck === 'cold') return t('badges', 'cold');
     if (ck === 'heat') return t('badges', 'hot');
     const r = d.rainChance;
-    const isRainy = ck === 'rain' || ck === 'rain-possible' || (isNum(r) && r >= 30);
+    // Only badge rain when it's actually noteworthy (30%+). Skip rain-possible — no badge for "maybe" rain.
+    const isRainy = ck === 'rain' || (isNum(r) && r >= 30);
     if (isRainy && dayIndex === 0 && Array.isArray(hourlyData) && hourlyData.length > 0) {
       const currentHour = getLocationHour(activePlace?.lon);
       const rainThreshold = 25;
@@ -452,7 +453,6 @@ document.addEventListener("DOMContentLoaded", () => {
       else return t('badges', 'rainLater');
     }
     if (ck === 'rain') return t('badges', 'rainy');
-    if (ck === 'rain-possible') return t('badges', 'showers');
     if (ck === 'uv') return t('badges', 'highUV');
     if (ck === 'wind') return t('badges', 'windy');
     const u = d.uv, h = d.highC, low = d.lowC;
