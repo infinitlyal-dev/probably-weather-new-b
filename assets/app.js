@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     // Sidebar
     sidebar: {
-      todaysHero: { en: "Today's Hero:", af: "Vandag se Held:", zu: "Iqhawe Lanamuhla:", xh: "Iqhawe Lanamhlanje:", st: "Mohale oa Kajeno:" },
+      todaysHero: { en: "Right Now:", af: "Nou:", zu: "Manje:", xh: "Ngoku:", st: "Hona Joale:" },
       sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
     },
     // Weather byline terms
@@ -130,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
       rainTonight: { en: "Rain tonight", af: "Reën vanaand", zu: "Imvula namhlanje", xh: "Imvula ngokuhlwa", st: "Pula bosiu" },
       rainMorning: { en: "Rain AM", af: "Reën oggend", zu: "Imvula ekuseni", xh: "Imvula kusasa", st: "Pula hoseng" },
       highUV: { en: "High UV", af: "Hoë UV", zu: "UV Ephezulu", xh: "UV Ephezulu", st: "UV e Phahameng" },
-      windy: { en: "Windy", af: "Winderig", zu: "Kunomoya", xh: "Kunomoya", st: "Ho na le moea" },
       hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
       cold: { en: "Cold", af: "Koud", zu: "Kubanda", xh: "Kubanda", st: "Ho bata" },
       uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
@@ -295,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const favoriteKey = (p) => `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
   const isPlaceholderName = (name) => { const v = String(name || '').trim(); return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v); };
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
-  const conditionEmoji = (key) => { const m = { storm: '⛈️', rain: '🌧️', 'rain-possible': '🌦️', wind: '💨', cold: '❄️', heat: '🔥', fog: '🌫️', cloudy: '☁️', uv: '☀️', clear: '☀️' }; return m[String(key || '').toLowerCase()] || '⛅'; };
+  const conditionEmoji = (key) => { const m = { storm: '⛈️', rain: '🌧️', wind: '💨', cold: '❄️', heat: '🔥', fog: '🌫️', clear: '☀️' }; return m[String(key || '').toLowerCase()] || '⛅'; };
 
   // ========== IP GEOLOCATION FALLBACK ==========
   // Used when GPS is blocked (e.g. WhatsApp in-app browser)
@@ -366,38 +365,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const langH = screenSettings?.querySelectorAll('.settings-section h3')[2]; if (langH) langH.textContent = '';
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
-    const aboutP = document.getElementById('aboutText'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
+    const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     if (extremeLabelEl) extremeLabelEl.textContent = t('sidebar', 'todaysHero');
     const sourcesLabel = document.querySelector('.card-sources .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
   }
 
   // ========== WEATHER LOGIC ==========
   function computeSkyCondition(norm) {
-    const condKey = (norm.conditionKey || '').toLowerCase(), rain = norm.rainPct, cloudPct = Array.isArray(norm.hourly) && norm.hourly[0]?.cloudPct;
+    const condKey = (norm.conditionKey || '').toLowerCase(), rain = norm.rainPct, cloudPct = norm.cloudPct ?? (Array.isArray(norm.hourly) && norm.hourly[0]?.cloudPct);
     if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) return 'fog';
     if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain-possible';
-    if ((isNum(cloudPct) && cloudPct >= 60) || condKey.includes('cloud') || condKey.includes('overcast')) return 'cloudy';
+    // Only show cloudy for genuinely overcast skies (80%+) or heavy cloud (60%+)
+    if (isNum(cloudPct) && cloudPct >= 60) return 'cloudy';
+    // If we don't have cloudPct, fall back to condKey but only for overcast, not "partly cloudy"
+    if (!isNum(cloudPct) && (condKey.includes('overcast') || condKey === 'cloudy')) return 'cloudy';
+    // Partly cloudy (30-60%) is basically clear with some clouds
     return 'clear';
   }
   function computeTodaysHero(norm) {
     const apiCondition = (norm.conditionKey || '').toLowerCase();
     const dailyRain = norm.dailyRainPct;
+    const effectiveWind = isNum(norm.maxWindKph) && norm.maxWindKph > (norm.windKph || 0) ? norm.maxWindKph : norm.windKph;
+    const cloud = norm.cloudPct;
+    const isTrulyOvercast = isNum(cloud) && cloud >= 80;
     if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
-    if (apiCondition === 'uv') return 'uv';
+    // UV only as hero if sky is clear enough
+    if (apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
     if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
     if (apiCondition === 'wind') return 'wind';
+    // Also check effective wind directly
+    if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
-    const wind = norm.windKph, hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
+    const hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
     if (isNum(feels) && feels <= -5) return 'cold';
     if (isNum(low) && low <= 0) return 'cold';
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
-    if (isNum(uv) && uv >= 8) return 'uv';
-    if (isNum(wind) && wind >= 35) return 'wind';
+    if (isNum(uv) && uv >= 8 && !isTrulyOvercast) return 'uv';
+    if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     if (isNum(hi) && hi <= 10) return 'cold';
     return 'clear';
   }
@@ -405,15 +414,22 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeHomeDisplayCondition(norm) {
     const imminentRain = norm.rainPct;
     const apiCondition = (norm.conditionKey || '').toLowerCase();
+    const effectiveWind = isNum(norm.maxWindKph) && norm.maxWindKph > (norm.windKph || 0) ? norm.maxWindKph : norm.windKph;
+    const cloud = norm.cloudPct;
+    const isTrulyOvercast = isNum(cloud) && cloud >= 80;
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
     if (isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
-    if (apiCondition === 'uv') return 'uv';
+    if (apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
     if (apiCondition === 'wind') return 'wind';
+    // Also check effective wind directly for display
+    if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
+    // Check if wind should be shown even if API didn't flag it
+    if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     const sky = computeSkyCondition(norm);
     return sky !== 'clear' ? sky : 'clear';
   }
@@ -435,8 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ck === 'cold') return t('badges', 'cold');
     if (ck === 'heat') return t('badges', 'hot');
     const r = d.rainChance;
-    // Only badge rain when it's actually noteworthy (30%+). Skip rain-possible — no badge for "maybe" rain.
-    const isRainy = ck === 'rain' || (isNum(r) && r >= 30);
+    const isRainy = ck === 'rain' || ck === 'rain-possible' || (isNum(r) && r >= 30);
     if (isRainy && dayIndex === 0 && Array.isArray(hourlyData) && hourlyData.length > 0) {
       const currentHour = getLocationHour(activePlace?.lon);
       const rainThreshold = 25;
@@ -453,19 +468,18 @@ document.addEventListener("DOMContentLoaded", () => {
       else return t('badges', 'rainLater');
     }
     if (ck === 'rain') return t('badges', 'rainy');
+    if (ck === 'rain-possible') return t('badges', 'showers');
     if (ck === 'uv') return t('badges', 'highUV');
-    if (ck === 'wind') return t('badges', 'windy');
+    if (ck === 'wind') return t('badges', 'showers');
     const u = d.uv, h = d.highC, low = d.lowC;
-    const isOvercast = isNum(d.cloudPct) && d.cloudPct >= 70;
-    const isPartlyCloudy = isNum(d.cloudPct) && d.cloudPct >= 40 && d.cloudPct < 70;
     if (isNum(low) && low <= 0) return t('badges', 'cold');
     if (isNum(h) && h <= 0) return t('badges', 'cold');
     if (isNum(r) && r >= 50) return t('badges', 'rainy');
     if (isNum(h) && h >= THRESH.HOT_C) return t('badges', 'hot');
-    if (isNum(u) && u >= 8 && !isOvercast && !isPartlyCloudy) return t('badges', 'highUV');
+    if (isNum(u) && u >= 8) return t('badges', 'highUV');
     if (isNum(r) && r >= 30) return t('badges', 'showers');
     if (isNum(h) && h <= 10) return t('badges', 'cold');
-    if (isNum(u) && u >= 6 && !isOvercast && !isPartlyCloudy) return t('badges', 'uvAlert');
+    if (isNum(u) && u >= 6) return t('badges', 'uvAlert');
     return '';
   }
   function getTranslatedDayName(dayIndex) {
@@ -487,11 +501,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const DAY_IMAGE_COUNT = 7;
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
-    const folder = aliasMap[condition] || condition, fallbackFolder = (condition === 'cold' || condition === 'fog' || condition === 'wind') ? 'cloudy' : 'clear';
+    const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const hour = getLocationHour(activePlace?.lon);
     const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
-    const randomNum = Math.floor(Math.random() * DAY_IMAGE_COUNT) + 1;
-    const imgFile = timeOfDay === 'day' ? `day_${randomNum}` : timeOfDay;
+    // Day-of-week maps to image number: Mon=1, Tue=2... Sat=6, Sun=7
+    // This way you can curate weekend images (day_6, day_7) to be leisure/outdoor
+    // and weekday images (day_1-5) to include urban/work contexts if appropriate
+    const dayOfWeek = new Date().getDay(); // 0=Sun, 1=Mon...6=Sat
+    const dayNum = dayOfWeek === 0 ? 7 : dayOfWeek; // Convert to 1-7 (Mon-Sun)
+    const imgFile = timeOfDay === 'day' ? `day_${dayNum}` : timeOfDay;
     if (bgImg) { bgImg.src = `${base}/${folder}/${imgFile}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
   }
   function createParticles(condition) {
@@ -527,6 +545,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, 
       rainPct: displayRainPct, dailyRainPct: dailyRainPct, rainLater: rainLater,
       uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
+      maxWindKph: isNum(payload.maxWindKph) ? payload.maxWindKph : null,
+      cloudPct: isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
       conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
       used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name), 
@@ -584,7 +604,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
   }
-  function getWeatherIcon(rp, cp, tc, ck) {
+  function getWeatherIcon(rp, cp, tc) {
     if (isNum(tc) && tc <= 0) return '❄️';
     if (isNum(rp) && rp >= 50) return '🌧️';
     if (isNum(rp) && rp >= 30) return '🌦️';
@@ -592,18 +612,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNum(cp) && cp >= 70) return '☁️';
     if (isNum(cp) && cp >= 40) return '⛅';
     if (isNum(tc) && tc <= 10) return '❄️';
-    // Fallback to conditionKey when cloudPct unavailable
-    if (ck) {
-      const k = String(ck).toLowerCase();
-      if (k === 'storm') return '⛈️';
-      if (k === 'rain') return '🌧️';
-      if (k === 'rain-possible') return '🌦️';
-      if (k === 'cloudy') return '☁️';
-      if (k === 'cold') return '❄️';
-      if (k === 'heat') return '🔥';
-      if (k === 'wind') return '💨';
-      if (k === 'fog') return '🌫️';
-    }
     return '☀️';
   }
   function renderHourly(hourly) {
@@ -639,7 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const dayName = getTranslatedDayName(date.getDay());
       const badge = getDayBadge(d, i, hourlyData);
       const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
-      const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp, d.conditionKey);
+      const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp);
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
@@ -845,4 +853,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+
+  // ========== AUTO-REFRESH ==========
+  // Refresh weather data every 30 minutes to keep conditions current
+  const REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes
+  let lastFetchTime = Date.now();
+  setInterval(() => {
+    if (activePlace && document.visibilityState === 'visible') {
+      loadAndRender(activePlace);
+      lastFetchTime = Date.now();
+    }
+  }, REFRESH_INTERVAL);
+
+  // Also refresh when user returns to the app after being away
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && activePlace) {
+      const elapsed = Date.now() - lastFetchTime;
+      // Only refresh if more than 15 minutes since last fetch
+      if (elapsed > 15 * 60 * 1000) {
+        loadAndRender(activePlace);
+        lastFetchTime = Date.now();
+      }
+    }
+  });
 });
