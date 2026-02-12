@@ -96,11 +96,6 @@ export default async function handler(req, res) {
     const hourlies = [];
     const dailies = [];
 
-    // Determine current local hour (refined after OM fetch if utc_offset_seconds available)
-    // Used to align all hourly data to start from "now"
-    let currentLocalHour = ((new Date().getUTCHours() + Math.round(lon / 15)) % 24 + 24) % 24;
-    let utcOffsetHours = Math.round(lon / 15);
-
     // Weather description mappings
     const openMeteoCodeMap = {
       0: 'Clear sky',
@@ -188,22 +183,14 @@ export default async function handler(req, res) {
         sunset: om.daily?.sunset?.[0] ?? null,
       });
 
-      // Refine current local hour using OM's timezone offset (more accurate than lon/15)
-      if (isNum(om.utc_offset_seconds)) {
-        utcOffsetHours = om.utc_offset_seconds / 3600;
-        const rawHour = new Date().getUTCHours() + new Date().getUTCMinutes() / 60 + utcOffsetHours;
-        currentLocalHour = Math.floor(((rawHour % 24) + 24) % 24);
-      }
-
-      // Slice hourly data starting from current hour (OM gives 168 hours from midnight)
       hourlies.push({
         source: 'Open-Meteo',
-        temps: om.hourly?.temperature_2m?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
-        feelsLikes: om.hourly?.apparent_temperature?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
-        rains: om.hourly?.precipitation_probability?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
-        winds: om.hourly?.wind_speed_10m?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
-        clouds: om.hourly?.cloud_cover?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
-        humidity: om.hourly?.relative_humidity_2m?.slice(currentLocalHour, currentLocalHour + 24) ?? [],
+        temps: om.hourly?.temperature_2m?.slice(0, 24) ?? [],
+        feelsLikes: om.hourly?.apparent_temperature?.slice(0, 24) ?? [],
+        rains: om.hourly?.precipitation_probability?.slice(0, 24) ?? [],
+        winds: om.hourly?.wind_speed_10m?.slice(0, 24) ?? [],
+        clouds: om.hourly?.cloud_cover?.slice(0, 24) ?? [],
+        humidity: om.hourly?.relative_humidity_2m?.slice(0, 24) ?? [],
       });
 
       dailies.push({
@@ -246,20 +233,14 @@ export default async function handler(req, res) {
           sunset: astro.sunset ?? null,
         });
 
-        // Combine today + tomorrow hours, slice from current hour for next-24h alignment
-        const waHoursToday = wa.forecast.forecastday[0]?.hour ?? [];
-        const waHoursTomorrow = wa.forecast.forecastday[1]?.hour ?? [];
-        const waAllHours = [...waHoursToday, ...waHoursTomorrow];
-        const waSlice = waAllHours.slice(currentLocalHour, currentLocalHour + 24);
-
         hourlies.push({
           source: 'WeatherAPI',
-          temps: waSlice.map(h => h.temp_c) ?? [],
-          feelsLikes: waSlice.map(h => h.feelslike_c) ?? [],
-          rains: waSlice.map(h => h.chance_of_rain) ?? [],
-          winds: waSlice.map(h => h.wind_kph) ?? [],
-          clouds: waSlice.map(h => h.cloud) ?? [],
-          humidity: waSlice.map(h => h.humidity) ?? [],
+          temps: wa.forecast.forecastday[0].hour.map(h => h.temp_c) ?? [],
+          feelsLikes: wa.forecast.forecastday[0].hour.map(h => h.feelslike_c) ?? [],
+          rains: wa.forecast.forecastday[0].hour.map(h => h.chance_of_rain) ?? [],
+          winds: wa.forecast.forecastday[0].hour.map(h => h.wind_kph) ?? [],
+          clouds: wa.forecast.forecastday[0].hour.map(h => h.cloud) ?? [],
+          humidity: wa.forecast.forecastday[0].hour.map(h => h.humidity) ?? [],
         });
 
         dailies.push({
@@ -367,13 +348,22 @@ export default async function handler(req, res) {
     // ========== AGGREGATION ==========
 
     // Aggregate hourly data
-    const aggregatedHourly = Array.from({ length: 24 }, (_, i) => ({
-      tempC: median(hourlies.map(h => h.temps[i]).filter(isNum)),
-      feelsLikeC: median(hourlies.map(h => h.feelsLikes?.[i]).filter(isNum)),
-      rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
-      windKph: median(hourlies.map(h => h.winds[i]).filter(isNum)),
-      cloudPct: median(hourlies.map(h => h.clouds?.[i]).filter(isNum)),
-    }));
+    const aggregatedHourly = Array.from({ length: 24 }, (_, i) => {
+      const hourWinds = hourlies.map(h => h.winds[i]).filter(isNum);
+      const medWind = median(hourWinds);
+      const maxWind = hourWinds.length ? Math.max(...hourWinds) : null;
+      // Use effective wind when sources disagree significantly
+      const effectiveHourlyWind = (isNum(medWind) && isNum(maxWind) && maxWind > medWind * 1.4)
+        ? Math.round((medWind * 0.4 + maxWind * 0.6) * 10) / 10
+        : medWind;
+      return {
+        tempC: median(hourlies.map(h => h.temps[i]).filter(isNum)),
+        feelsLikeC: median(hourlies.map(h => h.feelsLikes?.[i]).filter(isNum)),
+        rainChance: median(hourlies.map(h => h.rains[i]).filter(isNum)),
+        windKph: effectiveHourlyWind,
+        cloudPct: median(hourlies.map(h => h.clouds?.[i]).filter(isNum)),
+      };
+    });
 
     // Aggregate daily data
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
@@ -384,45 +374,20 @@ export default async function handler(req, res) {
       const rainChance = median(dailies.map(d => d.rains[i]).filter(isNum));
       const uv = median(dailies.map(d => d.uvs[i]).filter(isNum));
       const windKph = aggregatedHourly[Math.min(i * 4 + 12, 23)]?.windKph ?? null; // Midday wind estimate
-      
-      // Estimate cloudPct for this day from hourly data or condition description
-      let cloudPct = null;
-      if (i === 0) {
-        // For today, average remaining daytime hours (6am-6pm) from the now-aligned hourly data
-        const daytimeStartIdx = Math.max(0, 6 - currentLocalHour);
-        const daytimeEndIdx = Math.max(0, 18 - currentLocalHour);
-        const daytimeClouds = daytimeEndIdx > daytimeStartIdx
-          ? aggregatedHourly.slice(daytimeStartIdx, daytimeEndIdx).map(h => h.cloudPct).filter(isNum)
-          : [];
-        cloudPct = daytimeClouds.length > 0 ? daytimeClouds.reduce((a, b) => a + b, 0) / daytimeClouds.length : null;
-      }
-      // Fallback: estimate from condition description
-      if (!isNum(cloudPct)) {
-        const cl = conditionLabel.toLowerCase();
-        if (cl.includes('overcast')) cloudPct = 90;
-        else if (cl.includes('cloudy') && !cl.includes('partly')) cloudPct = 75;
-        else if (cl.includes('partly cloudy')) cloudPct = 50;
-        else if (cl.includes('clear') || cl.includes('sunny') || cl.includes('fair')) cloudPct = 10;
-      }
-
-      // Estimate daily feels-like from low temp and wind (wind chill matters most)
-      const dailyFeelsLike = calcFeelsLike(lowC, windKph, null);
 
       return {
         highC,
         lowC,
         rainChance,
         uv,
-        cloudPct,
         conditionLabel,
         conditionKey: deriveCondition({
           desc: conditionLabel,
           rainChance,
-          tempC: highC, // Use high temp for daily condition
-          feelsLikeC: dailyFeelsLike,
+          tempC: highC,
           windKph,
           uvIndex: uv,
-          cloudPct,
+          cloudPct: aggregatedHourly[Math.min(i * 4 + 12, 23)]?.cloudPct ?? null,
         }),
         sunrise: dailies.find(d => d.sunrises?.[i])?.sunrises[i] ?? null,
         sunset: dailies.find(d => d.sunsets?.[i])?.sunsets[i] ?? null,
@@ -444,9 +409,18 @@ export default async function handler(req, res) {
     const medNowTemp = median(norms.map(n => n.nowTemp).filter(isNum));
     const medFeelsLike = median(norms.map(n => n.feelsLike).filter(isNum));
     const medWindKph = median(norms.map(n => n.windKph).filter(isNum));
+    const maxWindKph = Math.max(...norms.map(n => n.windKph).filter(isNum), 0);
     const medHumidity = median(norms.map(n => n.humidity).filter(isNum));
     const medUv = median(norms.map(n => n.todayUv).filter(isNum));
     const wind_kph = isNum(medWindKph) ? medWindKph : 0;
+    // When sources disagree significantly about wind, use a weighted effective wind
+    // This prevents showing 22 km/h when one source correctly reports 43 km/h
+    const effectiveDisplayWind = (isNum(medWindKph) && isNum(maxWindKph) && maxWindKph > medWindKph * 1.4) 
+      ? Math.round((medWindKph * 0.4 + maxWindKph * 0.6) * 10) / 10  // Weight toward max when big disagreement
+      : wind_kph;
+
+    // Get current hour's cloud cover from hourly data
+    const currentCloudPct = aggregatedHourly[new Date().getHours()]?.cloudPct ?? null;
 
     // Get most common description
     const mostDesc = pickMostCommon(norms.map(n => n.desc).filter(Boolean)) || 'Weather today';
@@ -454,21 +428,16 @@ export default async function handler(req, res) {
     // Calculate feels like if we don't have it from sources
     const finalFeelsLike = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
 
-    // Derive condition using ALL available data including cloud cover
-    const currentCloudPct = aggregatedHourly[0]?.cloudPct ?? null;
-    
-    // Suppress UV at night — daily max UV is meaningless after dark
-    const isNightTime = currentLocalHour >= 19 || currentLocalHour < 6;
-    const effectiveUv = isNightTime ? 0 : medUv;
-    
+    // Derive condition using ALL available data
     const nowConditionKey = deriveCondition({
       desc: mostDesc,
       rainChance: aggregatedDaily[0]?.rainChance ?? null,
       tempC: medNowTemp,
       feelsLikeC: finalFeelsLike,
       windKph: medWindKph,
-      uvIndex: effectiveUv,
+      uvIndex: medUv,
       cloudPct: currentCloudPct,
+      maxWindKph: maxWindKph,
     });
 
     // Get sunrise/sunset from first available source
@@ -482,14 +451,16 @@ export default async function handler(req, res) {
         lat,
         lon,
       },
-      wind_kph,
+      wind_kph: effectiveDisplayWind,
+      maxWindKph: maxWindKph > 0 ? maxWindKph : null,
       now: {
         tempC: medNowTemp,
         feelsLikeC: finalFeelsLike,
-        windKph: medWindKph,
+        windKph: effectiveDisplayWind,
         humidity: medHumidity,
         rainChance: aggregatedDaily[0]?.rainChance ?? null,
         uv: medUv,
+        cloudPct: currentCloudPct,
         conditionKey: nowConditionKey,
         conditionLabel: mostDesc,
         sunrise,
@@ -511,8 +482,6 @@ export default async function handler(req, res) {
           maxTemp: n.todayHigh,
         })),
         updatedAtLabel: new Date().toISOString(),
-        currentLocalHour,
-        utcOffsetHours,
       },
     });
 
@@ -583,13 +552,21 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number} params.uvIndex - UV index
  * @returns {string} - Condition key for UI display
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph }) {
   const d = String(desc || '').toLowerCase();
-
-  // Determine if sky is cloudy/overcast from description or cloud percentage
-  // IMPORTANT: "Partly cloudy" must NOT trigger isCloudy — only full overcast/cloudy does
-  const isCloudy = d.includes('overcast') || (d.includes('cloudy') && !d.includes('partly')) || (isNum(cloudPct) && cloudPct >= 70);
-  const isPartlyCloudy = !isCloudy && (d.includes('partly cloudy') || d.includes('partly') || (isNum(cloudPct) && cloudPct >= 40 && cloudPct < 70));
+  // Use max wind if available (captures real gusty conditions that median smooths away)
+  const effectiveWind = isNum(maxWindKph) && maxWindKph > (windKph || 0) ? maxWindKph : windKph;
+  // Determine actual cloud state from percentage (more reliable than text)
+  const isTrulyOvercast = isNum(cloudPct) && cloudPct >= 80;
+  const isMostlyCloudy = isNum(cloudPct) && cloudPct >= 55;
+  const isPartlyCloudy = isNum(cloudPct) && cloudPct >= 30 && cloudPct < 55;
+  // If we don't have cloudPct, fall back to description - but distinguish "partly cloudy" from "cloudy/overcast"
+  const descSaysOvercast = d.includes('overcast');
+  const descSaysPartly = d.includes('partly') || d.includes('mainly clear') || d.includes('fair');
+  const descSaysCloudy = d.includes('cloud') && !descSaysPartly;  // "Cloudy" but NOT "Partly cloudy"
+  const cloudyByDesc = !isNum(cloudPct) && (descSaysOvercast || descSaysCloudy);
+  const overcastByDesc = !isNum(cloudPct) && descSaysOvercast;
+  const partlyByDesc = !isNum(cloudPct) && descSaysPartly;
 
   // 1. STORM - Thunder always takes priority
   if (d.includes('thunder') || d.includes('storm')) {
@@ -597,101 +574,84 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   }
 
   // 2. EXTREME COLD - Freezing temperatures or severe wind chill
-  if (isNum(feelsLikeC) && feelsLikeC <= -5) {
-    return 'cold';
-  }
-  if (isNum(tempC) && tempC <= 0) {
-    return 'cold';
-  }
+  if (isNum(feelsLikeC) && feelsLikeC <= -5) return 'cold';
+  if (isNum(tempC) && tempC <= 0) return 'cold';
 
-  // 3. SNOW/ICE - Winter precipitation (before rain check!)
+  // 3. SNOW/ICE - Winter precipitation
   if (d.includes('snow') || d.includes('sleet') || d.includes('ice') || d.includes('hail') || d.includes('blizzard') || d.includes('freezing')) {
     return 'cold';
   }
 
-  // 4. EXTREME HEAT - Very hot temperatures
-  if (isNum(tempC) && tempC >= 35) {
-    return 'heat';
-  }
-  if (isNum(feelsLikeC) && feelsLikeC >= 38) {
-    return 'heat';
-  }
+  // 4. EXTREME HEAT
+  if (isNum(tempC) && tempC >= 35) return 'heat';
+  if (isNum(feelsLikeC) && feelsLikeC >= 38) return 'heat';
 
   // 5. HEAVY RAIN - High rain probability
-  if (isNum(rainChance) && rainChance >= 60) {
-    return 'rain';
+  if (isNum(rainChance) && rainChance >= 60) return 'rain';
+
+  // 6. HIGH UV - Only if sky is actually clear enough for UV to matter
+  if (isNum(uvIndex) && uvIndex >= 8) {
+    if (!(isTrulyOvercast || overcastByDesc)) return 'uv';
   }
 
-  // 6. HIGH UV - Only when sky is clear/mostly clear
-  // Clouds block significant UV; API reports theoretical clear-sky UV
-  // Under overcast: suppress UV entirely. Under partly cloudy: require extreme UV (10+)
-  if (isNum(uvIndex) && uvIndex >= 8 && !isCloudy) {
-    if (!isPartlyCloudy || uvIndex >= 10) {
-      return 'uv';
-    }
-  }
-
-  // 7. STRONG WIND - Before light rain
-  if (isNum(windKph) && windKph >= 35) {
+  // 7. STRONG WIND - Wind is the dominant weather feature (30+ km/h)
+  if (isNum(effectiveWind) && effectiveWind >= 30) {
     return 'wind';
   }
 
   // 8. MODERATE RAIN - Likely rain
-  if (isNum(rainChance) && rainChance >= 30) {
-    return 'rain';
-  }
+  if (isNum(rainChance) && rainChance >= 30) return 'rain';
 
-  // 9. RAIN from description (drizzle, showers, etc.)
+  // 9. RAIN from description
   if (d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip')) {
     return 'rain';
   }
 
-  // 10. FOG / LOW VISIBILITY - Check BEFORE cloudy because fog causes high cloud readings
-  if (d.includes('fog') || d.includes('mist') || d.includes('haze')) {
-    return 'fog';
-  }
-
-  // 11. CLOUDY - Check BEFORE possible rain and UV
-  // This ensures overcast skies show as cloudy, not UV or rain-possible
-  if (isCloudy) {
-    return 'cloudy';
-  }
-
-  // 12. POSSIBLE RAIN - Low but non-zero chance
-  if (isNum(rainChance) && rainChance > 10) {
-    return 'rain-possible';
-  }
-
-  // 13. MODERATE WIND
-  if (isNum(windKph) && windKph >= 25) {
+  // 10. MODERATE WIND - Noticeable wind (25+ km/h, ~force 4-5)
+  if (isNum(effectiveWind) && effectiveWind >= 25) {
     return 'wind';
   }
 
-  // 14. COLD (but not freezing) - Chilly day
-  if (isNum(tempC) && tempC <= 10) {
-    return 'cold';
-  }
-
-  // 15. HOT (but not extreme)
-  if (isNum(tempC) && tempC >= 30) {
-    return 'heat';
-  }
-
-  // 16. HIGH UV (moderate threshold) - only when clear/fair
-  if (isNum(uvIndex) && uvIndex >= 6 && !isCloudy && !isPartlyCloudy) {
-    return 'uv';
-  }
-
-  // 17. PARTLY CLOUDY
-  if (isPartlyCloudy) {
+  // 11. OVERCAST - Genuinely grey skies (80%+ cloud) BEFORE rain-possible
+  //     A 15% rain chance on an overcast day should show cloudy, not rain-possible
+  if (isTrulyOvercast || overcastByDesc) {
     return 'cloudy';
   }
 
-  // 18. CLEAR - Default for nice weather
+  // 12. POSSIBLE RAIN - Meaningful chance but not certain (raised from 10% to 20%)
+  //     Below 20% is just API noise, not worth showing rain imagery
+  if (isNum(rainChance) && rainChance >= 20) return 'rain-possible';
+
+  // 13. FOG / LOW VISIBILITY
+  if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return 'fog';
+
+  // 14. COLD (but not freezing)
+  if (isNum(tempC) && tempC <= 10) return 'cold';
+
+  // 15. HOT (but not extreme)
+  if (isNum(tempC) && tempC >= 30) return 'heat';
+
+  // 16. HIGH UV (moderate threshold) - still cloud-gated
+  if (isNum(uvIndex) && uvIndex >= 6) {
+    if (!(isMostlyCloudy || cloudyByDesc)) return 'uv';
+  }
+
+  // 17. MOSTLY CLOUDY (55-80% cloud cover)
+  if (isMostlyCloudy || cloudyByDesc) {
+    return 'cloudy';
+  }
+
+  // 18. PARTLY CLOUDY (30-55% cloud) or "partly cloudy" description
+  //     This is nice weather with some clouds - treated as CLEAR
+  if (isPartlyCloudy || partlyByDesc) {
+    return 'clear';
+  }
+
+  // 19. CLEAR
   if (d.includes('clear') || d.includes('sunny') || d.includes('fair')) {
     return 'clear';
   }
 
-  // 19. Fallback
+  // 20. Fallback
   return 'clear';
 }
