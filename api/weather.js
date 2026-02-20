@@ -133,8 +133,8 @@ export default async function handler(req, res) {
     try {
       const om = await fetchJson(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m,cloud_cover` +
-        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,cloud_cover,relative_humidity_2m` +
+        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
+        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m` +
         `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
         `&timezone=auto&forecast_days=7`
       );
@@ -154,6 +154,7 @@ export default async function handler(req, res) {
         todayUv:   om.daily?.uv_index_max?.[0]                  ?? null,
         desc:      openMeteoCodeMap[om.current?.weather_code]   ?? 'Unknown',
         windKph:   om.current?.wind_speed_10m                    ?? null,
+        gustKph:   om.current?.wind_gusts_10m                    ?? null,
         humidity:  om.current?.relative_humidity_2m              ?? null,
         sunrise:   om.daily?.sunrise?.[0]                        ?? null,
         sunset:    om.daily?.sunset?.[0]                         ?? null,
@@ -165,6 +166,7 @@ export default async function handler(req, res) {
         feelsLikes: om.hourly?.apparent_temperature?.slice(0, 24)      ?? [],
         rains:      om.hourly?.precipitation_probability?.slice(0, 24) ?? [],
         winds:      om.hourly?.wind_speed_10m?.slice(0, 24)            ?? [],
+        gusts:      om.hourly?.wind_gusts_10m?.slice(0, 24)            ?? [],
         clouds:     om.hourly?.cloud_cover?.slice(0, 24)               ?? [],
         humidity:   om.hourly?.relative_humidity_2m?.slice(0, 24)      ?? [],
       };
@@ -331,8 +333,9 @@ export default async function handler(req, res) {
     // Hourly aggregation (Open-Meteo + WeatherAPI only — aligned on local midnight)
     const aggregatedHourly = Array.from({ length: 24 }, (_, i) => {
       const hourWindVals = hourlies.map(h => h ? h.winds[i] : null).filter(isNum);
+      const hourGustVals = hourlies.map(h => h ? (h.gusts?.[i] ?? null) : null).filter(isNum);
       const avgWind = wAvg(hourlies, hourlyW, h => h.winds[i]);
-      const maxWind = hourWindVals.length ? Math.max(...hourWindVals) : null;
+      const maxWind = Math.max(...hourWindVals, ...hourGustVals, 0) || null;
 
       // When sources disagree on wind by more than 40%, bias toward the higher reading
       const effectiveHourlyWind = (isNum(avgWind) && isNum(maxWind) && maxWind > avgWind * 1.4)
@@ -425,7 +428,15 @@ export default async function handler(req, res) {
     const medNowTemp   = wAvg(norms, normW, n => n.nowTemp);
     const medFeelsLike = wAvg(norms, normW, n => n.feelsLike);
     const medWindKph   = wAvg(norms, normW, n => n.windKph);
-    const maxWindKph   = Math.max(...activeNorms.map(n => n.windKph).filter(isNum), 0);
+    // maxWindKph includes gust data from Open-Meteo.
+    // In gusty coastal conditions (Cape Town southeaster etc), gusts are the
+    // real story — mean wind can be 18 km/h while gusts hit 45 km/h.
+    const gustKph      = activeNorms.map(n => n.gustKph).filter(isNum);
+    const maxWindKph   = Math.max(
+      ...activeNorms.map(n => n.windKph).filter(isNum),
+      ...gustKph,
+      0
+    );
     const medHumidity  = wAvg(norms, normW, n => n.humidity);
     const medUv        = wAvg(norms, normW, n => n.todayUv);
 
@@ -491,6 +502,7 @@ export default async function handler(req, res) {
       location: { name: resolvedName || name || 'Unknown', lat, lon },
       wind_kph:   effectiveDisplayWind,
       maxWindKph: maxWindKph > 0 ? maxWindKph : null,
+      gustKph:    gustKph.length > 0 ? Math.max(...gustKph) : null,
       now: {
         tempC:          medNowTemp,
         feelsLikeC:     finalFeelsLike,
