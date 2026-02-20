@@ -89,11 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
       wittyIn: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
       about: { en: "About", af: "Aangaande", zu: "Mayelana", xh: "Malunga", st: "Mabapi" },
       aboutText: { 
-        en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com & MET Norway to give you a more reliable prediction.",
-        af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com & MET Norway om jou 'n meer betroubare voorspelling te gee.",
-        zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com & MET Norway ukukunikeza isibikezelo esithembekile.",
-        xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com & MET Norway ukukunika isithembiso esithembekileyo.",
-        st: "Probably Weather e kopanya diponelopele tse tsoang ho Open-Meteo, WeatherAPI.com & MET Norway ho u fa ponelopele e tšepahalang."
+        en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com & Pirate Weather to give you a more reliable prediction.",
+        af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com & Pirate Weather om jou 'n meer betroubare voorspelling te gee.",
+        zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com & Pirate Weather ukukunikeza isibikezelo esithembekile.",
+        xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com & Pirate Weather ukukunika isithembiso esithembekileyo.",
+        st: "Probably Weather e kopanya diponelopele tse tsoang ho Open-Meteo, WeatherAPI.com & Pirate Weather ho u fa ponelopele e tšepahalang."
       }
     },
     // Sidebar
@@ -145,7 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
       uv: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e phahameng" },
       fog: { en: "Low visibility", af: "Lae sigbaarheid", zu: "Ukubonakala okuphansi", xh: "Ukubonakala okuphantsi", st: "Pono e tlase" },
       cloudy: { en: "Overcast", af: "Bewolk", zu: "Kunamafu", xh: "Linamafu", st: "Maru" },
-      clear: { en: "Pleasant", af: "Aangenaam", zu: "Kumnandi", xh: "Kumnandi", st: "Ho monate" }
+      clear: { en: "Pleasant", af: "Aangenaam", zu: "Kumnandi", xh: "Kumnandi", st: "Ho monate" },
+      night: { en: "Clear night", af: "Helder nag", zu: "Ubusuku obuhlanzekile", xh: "Ubusuku obuhle", st: "Bosiu bo hlakileng" }
     },
     // Day names (short)
     days: {
@@ -168,7 +169,8 @@ document.addEventListener("DOMContentLoaded", () => {
       heat: { en: "It's hot.", af: "Dis warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho tjhesa." },
       uv: { en: "UV's hectic.", af: "UV is hoog.", zu: "I-UV iphezulu.", xh: "I-UV iphezulu.", st: "UV e hodimo." },
       fog: { en: "Foggy out there.", af: "Dis mistig.", zu: "Kunenkungu.", xh: "Linenkungula.", st: "Ho na le mohodi." },
-      clear: { en: "Clear skies.", af: "Helder lug.", zu: "Izulu lihlanzekile.", xh: "Isibhakabhaka sihlanzekile.", st: "Lehodimo le hlakileng." }
+      clear: { en: "Clear skies.", af: "Helder lug.", zu: "Izulu lihlanzekile.", xh: "Isibhakabhaka sihlanzekile.", st: "Lehodimo le hlakileng." },
+      night: { en: "Clear night.", af: "Helder nag.", zu: "Ubusuku obuhlanzekile.", xh: "Ubusuku obuhle.", st: "Bosiu bo hlakileng." }
     },
     // Witty lines
     witty: {
@@ -241,6 +243,13 @@ document.addEventListener("DOMContentLoaded", () => {
         zu: ["Kuhle kakhulu ngaphandle.", "Usuku oluphelele. Akukho zaba. Phuma.", "Yingakho sihlala eNingizimu Afrika.", "Akukho lifu elibonwayo. Nelilodwa.", "Isimo sezulu somlingiswa omkhulu lapha.", "Ngisho ama-hadeda azwakala ejabule.", "Uma ungaphakathi, wenza kabi.", "Imvelo iyaziqhayisa futhi silapha ngayo.", "Isimo sezulu se-postcard. Wamukelekile.", "Uhlobo losuku olwenza ukhohlwe i-load shedding.", "Endaweni ethile i-estate agent ithi 'lifestyle'."],
         xh: ["Kuhle kakhulu ngaphandle.", "Imini egqibeleleyo. Akukho zaba. Phuma.", "Yiyo le nto sihlala eMzantsi Afrika.", "Akukho lifu elibonwayo. Nelinye.", "Imozulu yomlinganiswa ophambili apha.", "Iintaka zivakala zivuya.", "Ukuba ungaphakathi, wenza ngokuphosakeleyo.", "Indalo iyaziqhayisa kwaye silapha ngenxa yayo.", "Imozulu ye-postcard. Wamkelekile.", "Uhlobo lwemini olwenza ulibale i-load shedding.", "Kwezinye iindawo umthengisi wendlu uthi 'lifestyle'."],
         st: ["Ho motle haholo kantle.", "Letsatsi le phethahetseng. Ha ho mabaka. Tsamaea.", "Ke kahoo re lulang Afrika Boroa.", "Ha ho leru le bonahalang. Le le le leng.", "Leholimo la molingoa oa mantlha mona.", "Esita le dinonyana di utloahala li thabile.", "Haeba o ka hare, o etsa phoso.", "Tlhaho e iponahatsa mme re teng.", "Leholimo la postcard. Kea leboha.", "Mofuta oa letsatsi o etsang hore o lebale load shedding.", "Mohlomong sebakeng se seng estate agent e re 'lifestyle'."]
+      },
+      night: {
+        en: ["Stars out, load shedding can't touch this.", "Perfect night to actually see the Milky Way.", "Quiet out there. Almost suspicious.", "The hadedas are sleeping. Finally.", "Night shift weather: approved.", "Dark outside, bright tomorrow.", "Good night, South Africa."],
+        af: ["Sterre uit, beurtkrag kan dit nie raak nie.", "Perfekte nag om die Melkweg te sien.", "Stil daarbuite. Byna verdag.", "Die hadedas slaap. Uiteindelik.", "Nagskof weer: goedgekeur.", "Donker buite, helder môre.", "Goeienag, Suid-Afrika."],
+        zu: ["Izinkanyezi zikhona, ukucisha akukwazi lokhu.", "Ubusuku obuhle bokubona iNdlela yoSisi.", "Kuthule ngaphandle. Cishe okusolisayo.", "Ama-hadeda ayalala. Ekugcineni.", "Isimo sezulu sangobusuku: samukelwe.", "Umnyama ngaphandle, ukukhanya kusasa.", "Hamba kahle, Ningizimu Afrika."],
+        xh: ["Iinkwenkwezi ziphumile, ukuCimwa akukwazi oku.", "Ubusuku obulungileyo bokubona iNdlela yaseSisi.", "Kuzolile ngaphandle. Cishe okusolisayo.", "Iintaka zilele. Ekugqibeleni.", "Imozulu yobusuku: yamkelekile.", "Mnyama ngaphandle, kukhanya ngomso.", "Lala kakuhle, Mzantsi Afrika."],
+        st: ["Dinaledi di teng, load shedding e ke ke ea ama sena.", "Bosiu bo motle ba ho bona Tsela ea Lebese.", "Ho kgutsitse kantle. E batla ho belaela.", "Dinonyana di robetse. Qetellong.", "Leholimo la bosiu: le amohelitsoe.", "Ho fifala kantle, ho phatsima hosane.", "Robala hantle, Afrika Boroa."]
       },
       weekend: {
         en: ["Braai weather, boet! No excuses.", "Fire up the Weber. It's the law.", "The weather gods are showing off.", "Beach or braai? Yes.", "Weekend vibes so strong they need their own playlist.", "If you're working today, we feel sorry for you.", "Perfect for doing absolutely nothing.", "Call the mates. Get the meat. Let's go.", "Today's plans: exist outside.", "The weekend doesn't get better than this."],
@@ -389,23 +398,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const effectiveWind = isNum(norm.maxWindKph) && norm.maxWindKph > (norm.windKph || 0) ? norm.maxWindKph : norm.windKph;
     const cloud = norm.cloudPct;
     const isTrulyOvercast = isNum(cloud) && cloud >= 80;
+    const isDay = norm.isDay !== false; // false only when API says night
     if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
-    // UV only as hero if sky is clear enough
-    if (apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
+    if (isDay && apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
     if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
     if (apiCondition === 'wind') return 'wind';
-    // Also check effective wind directly
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
-    const hi = norm.todayHigh, low = norm.todayLow, uv = norm.uv, feels = norm.feelsLike;
+    const hi = norm.todayHigh, low = norm.todayLow, uv = norm.uvDaily, feels = norm.feelsLike;
     if (isNum(feels) && feels <= -5) return 'cold';
     if (isNum(low) && low <= 0) return 'cold';
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
-    if (isNum(uv) && uv >= 8 && !isTrulyOvercast) return 'uv';
+    if (isDay && isNum(uv) && uv >= 8 && !isTrulyOvercast) return 'uv';
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     if (isNum(hi) && hi <= 10) return 'cold';
     return 'clear';
@@ -417,18 +425,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const effectiveWind = isNum(norm.maxWindKph) && norm.maxWindKph > (norm.windKph || 0) ? norm.maxWindKph : norm.windKph;
     const cloud = norm.cloudPct;
     const isTrulyOvercast = isNum(cloud) && cloud >= 80;
+    const isDay = norm.isDay !== false;
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
     if (isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
-    if (apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
+    if (isDay && apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
     if (apiCondition === 'wind') return 'wind';
-    // Also check effective wind directly for display
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
-    // Check if wind should be shown even if API didn't flag it
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     const sky = computeSkyCondition(norm);
     return sky !== 'clear' ? sky : 'clear';
@@ -470,7 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ck === 'rain') return t('badges', 'rainy');
     if (ck === 'rain-possible') return t('badges', 'showers');
     if (ck === 'uv') return t('badges', 'highUV');
-    if (ck === 'wind') return t('badges', 'showers');
+    if (ck === 'wind') return t('heroLabels', 'wind') || 'Windy';
     const u = d.uv, h = d.highC, low = d.lowC;
     if (isNum(low) && low <= 0) return t('badges', 'cold');
     if (isNum(h) && h <= 0) return t('badges', 'cold');
@@ -489,12 +496,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== LOCATION TIME HELPER ==========
   function getLocationHour(lon) {
-    if (!isNum(lon)) return new Date().getHours();
+    // Prefer API-provided localHour (uses real UTC offset from Open-Meteo).
+    // lon/15 approximation is off by up to 1hr in many SA locations.
+    const apiHour = window.__PW_LAST_NORM?.localHour;
+    if (isNum(apiHour)) return apiHour;
+    if (!isNum(lon)) return new Date().getUTCHours();
     const now = new Date();
     const utcHour = now.getUTCHours() + now.getUTCMinutes() / 60;
     const offsetHours = lon / 15;
-    const localHour = (utcHour + offsetHours + 24) % 24;
-    return Math.floor(localHour);
+    return Math.floor((utcHour + offsetHours + 24) % 24);
   }
 
   // ========== BACKGROUND & PARTICLES ==========
@@ -544,7 +554,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return { 
       nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, 
       rainPct: displayRainPct, dailyRainPct: dailyRainPct, rainLater: rainLater,
-      uv: today.uv ?? null, windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
+      uv: now.uv ?? null,        // now.uv is null at night (API nulls it after sunset)
+      uvDaily: today.uv ?? null, // today's peak UV, for daytime byline reference only
+      isDay: now.isDay !== false, // false only when API explicitly says night
+      localHour: meta.localHour ?? null, // correct local hour from API (uses real UTC offset)
+      windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
       maxWindKph: isNum(payload.maxWindKph) ? payload.maxWindKph : null,
       cloudPct: isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
       conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
@@ -582,8 +596,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const loStr = isNum(low) ? formatTemp(low) : '--°';
       hiLoEl.innerHTML = `<span class="hi">↑${hiStr}</span> <span class="lo">↓${loStr}</span>`;
     }
-    safeText(headlineEl, getHeadline(displayCondition));
-    safeText(descriptionEl, getWittyLine(displayCondition));
+    // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight
+    const displayConditionForCopy = (!norm.isDay && displayCondition === 'clear') ? 'night' : displayCondition;
+    safeText(headlineEl, getHeadline(displayConditionForCopy));
+    safeText(descriptionEl, getWittyLine(displayConditionForCopy));
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const ws = isNum(wind) ? formatWind(wind) : '--';
@@ -591,6 +607,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let rs = '--'; 
       if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
       if (norm.rainLater) { rs = t('weather', 'later') || 'Later'; }
+      // uv is null at night (API nulls now.uv after sunset) — show nothing
       let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
       const feels = norm.feelsLike;
       const showFeels = isNum(feels) && isNum(currentTemp) && Math.abs(feels - currentTemp) >= 3;
@@ -622,7 +639,10 @@ document.addEventListener("DOMContentLoaded", () => {
     header.classList.add('hourly-row', 'hourly-header');
     header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span>`;
     hourlyTimeline.appendChild(header);
-    hourly.slice(0, 24).forEach((h, i) => {
+    // Hourly array starts at midnight local time. Slice from current hour so
+    // the data shown matches the time label. Show remaining hours of today + up to 24 total.
+    const slicedHourly = hourly.slice(nowHour, nowHour + 24);
+    slicedHourly.forEach((h, i) => {
       const div = document.createElement('div'); div.classList.add('hourly-row');
       const hourNum = (nowHour + i) % 24;
       const ht = settings.time === '12' ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}` : `${String(hourNum).padStart(2, '0')}:00`;
