@@ -694,4 +694,3 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 20. Fallback
   return 'clear';
 }
-
