@@ -1,12 +1,12 @@
 // /api/weather.js
 // Probably Weather – server-side weather aggregator
-// Sources: Open-Meteo (ECMWF, no key), WeatherAPI (proprietary, key), Pirate Weather (NOAA GFS/GEFS, key)
-// Weights:  50% Open-Meteo  |  35% WeatherAPI  |  15% Pirate Weather
-// Pirate Weather provides genuine model independence (GFS/GEFS vs ECMWF) and
-// proper ensemble-based rain probability (30-member GEFS).
-// NOTE: Pirate Weather is used for current conditions and daily only — its
-// hourly.data starts at the current hour (not midnight) so cannot be safely
-// aligned with Open-Meteo/WeatherAPI hourly arrays that start at 00:00 local.
+// Sources: Open-Meteo (ECMWF, no key), WeatherAPI (proprietary, key),
+//          Pirate Weather (NOAA GFS/GEFS, key), MET Norway (no key, User-Agent)
+// Weights:  40% Open-Meteo  |  25% WeatherAPI  |  10% Pirate Weather  |  25% MET Norway
+// MET Norway uses high-resolution NWP with good coastal coverage — important for SA wind.
+// Pirate Weather (GFS/GEFS) is a genuinely independent model cross-check.
+// NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts
+// at the current hour (not midnight), making alignment with other sources impossible.
 
 export default async function handler(req, res) {
   try {
@@ -87,17 +87,16 @@ export default async function handler(req, res) {
       } catch { /* Keep fallback name if reverse geocode fails */ }
     }
 
-    // Source arrays: index 0=Open-Meteo, 1=WeatherAPI, 2=Pirate Weather
+    // Source arrays: index 0=Open-Meteo, 1=WeatherAPI, 2=Pirate Weather, 3=MET Norway
     // null in a slot means that source failed or was not configured.
-    // NOTE: hourlies only has 2 slots — Pirate Weather is excluded from hourly
-    //       aggregation because its hourly.data starts at the current hour (not
-    //       midnight local time), making it impossible to align with the other sources.
-    const SOURCE_WEIGHTS        = [0.50, 0.35, 0.15];
-    const HOURLY_SOURCE_WEIGHTS = [0.59, 0.41];  // renormalised 50/35 without Pirate Weather
+    // NOTE: hourlies has 3 slots (0=Open-Meteo, 1=WeatherAPI, 2=MET Norway).
+    //       Pirate Weather excluded from hourly — its data starts at current hour not midnight.
+    const SOURCE_WEIGHTS        = [0.40, 0.25, 0.10, 0.25];
+    const HOURLY_SOURCE_WEIGHTS = [0.50, 0.31, 0.19];  // 40/25/25 renormalised without Pirate Weather
     const failures = [];
-    const norms    = [null, null, null]; // current conditions
-    const hourlies = [null, null];       // hourly arrays (Open-Meteo, WeatherAPI only)
-    const dailies  = [null, null, null]; // 7-day daily arrays
+    const norms    = [null, null, null, null]; // current conditions
+    const hourlies = [null, null, null];       // hourly: Open-Meteo, WeatherAPI, MET Norway
+    const dailies  = [null, null, null, null]; // 7-day daily arrays
 
     // UTC offset for the requested location (seconds).
     // Captured from Open-Meteo (timezone=auto) to calculate correct local hour.
@@ -301,6 +300,105 @@ export default async function handler(req, res) {
       failures.push('Pirate Weather');
     }
 
+    // ---------- MET Norway -- high-resolution NWP, weight 25% ---------------
+    // No API key needed. Requires a descriptive User-Agent per api.met.no ToS.
+    // Provides hourly wind at 10m (m/s) aligned to midnight local — safe for hourly aggregation.
+    // Particularly valuable for coastal SA: higher resolution than global models.
+    try {
+      const met = await fetch(
+        `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`,
+        { headers: { 'User-Agent': NOMINATIM_UA }, signal: AbortSignal.timeout(timeoutMs) }
+      );
+      if (!met.ok) throw new Error(`HTTP ${met.status}`);
+      const metJson = await met.json();
+
+      const metSymbolMap = {
+        'clearsky':'Clear sky', 'fair':'Fair', 'partlycloudy':'Partly cloudy',
+        'cloudy':'Cloudy', 'fog':'Fog', 'sleet':'Sleet',
+        'lightsleet':'Light sleet', 'heavysleet':'Heavy sleet',
+        'lightrainshowers':'Light rain showers', 'rainshowers':'Rain showers',
+        'heavyrainshowers':'Heavy rain showers',
+        'lightrain':'Light rain', 'rain':'Rain', 'heavyrain':'Heavy rain',
+        'lightrainandthunder':'Light rain and thunder',
+        'rainandthunder':'Rain and thunder',
+        'heavyrainandthunder':'Heavy rain and thunder',
+        'lightsnow':'Light snow', 'snow':'Snow', 'heavysnow':'Heavy snow',
+      };
+
+      const series   = metJson.properties?.timeseries || [];
+      const nowEntry = series[0] || {};
+      const details  = nowEntry.data?.instant?.details || {};
+
+      const metWindKph  = isNum(details.wind_speed) ? Math.round(details.wind_speed * 3.6 * 10) / 10 : null;
+      const metHumidity = isNum(details.relative_humidity) ? details.relative_humidity : null;
+      const metTemp     = isNum(details.air_temperature) ? details.air_temperature : null;
+
+      // Rain proxy: convert max precipitation in next 24h to rough probability
+      const precipAmounts = series.slice(0, 24).map(p =>
+        p.data?.next_1_hours?.details?.precipitation_amount ??
+        p.data?.next_6_hours?.details?.precipitation_amount ?? 0
+      );
+      const maxPrecip = Math.max(...precipAmounts, 0);
+      const rainProxy = maxPrecip === 0 ? 0 :
+                        maxPrecip < 0.5 ? 20 :
+                        maxPrecip < 1   ? 40 :
+                        maxPrecip < 2   ? 60 :
+                        maxPrecip < 5   ? 80 : 95;
+
+      const symbolCode = (nowEntry.data?.next_1_hours?.summary?.symbol_code ?? '').replace(/_(day|night|polartwilight)$/, '');
+      const metDesc    = metSymbolMap[symbolCode] ?? symbolCode ?? 'Unknown';
+
+      norms[3] = {
+        source:    'MET Norway',
+        nowTemp:   metTemp,
+        feelsLike: calcFeelsLike(metTemp, metWindKph, metHumidity),
+        todayHigh: series.slice(0, 24).map(p => p.data?.instant?.details?.air_temperature).filter(isNum).reduce((a, b) => Math.max(a, b), -Infinity) || null,
+        todayLow:  series.slice(0, 24).map(p => p.data?.instant?.details?.air_temperature).filter(isNum).reduce((a, b) => Math.min(a, b), Infinity)  || null,
+        todayRain: rainProxy,
+        todayUv:   null, // MET Norway compact doesn't provide UV
+        desc:      metDesc,
+        windKph:   metWindKph,
+        gustKph:   null, // compact endpoint doesn't include gusts
+        humidity:  metHumidity,
+        sunrise:   null,
+        sunset:    null,
+      };
+
+      hourlies[2] = {
+        source:     'MET Norway',
+        temps:      series.slice(0, 24).map(p => p.data?.instant?.details?.air_temperature ?? null),
+        feelsLikes: series.slice(0, 24).map(p => {
+          const t = p.data?.instant?.details?.air_temperature;
+          const w = p.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
+          const h = p.data?.instant?.details?.relative_humidity;
+          return calcFeelsLike(t, w, h);
+        }),
+        rains:  series.slice(0, 24).map(p => {
+          const mm = p.data?.next_1_hours?.details?.precipitation_amount ?? 0;
+          return mm === 0 ? 0 : mm < 0.5 ? 20 : mm < 1 ? 40 : mm < 2 ? 60 : 80;
+        }),
+        winds:  series.slice(0, 24).map(p => {
+          const w = p.data?.instant?.details?.wind_speed;
+          return isNum(w) ? Math.round(w * 3.6 * 10) / 10 : null;
+        }),
+        gusts:  series.slice(0, 24).map(() => null), // not in compact
+        clouds: series.slice(0, 24).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
+      };
+
+      dailies[3] = {
+        source:   'MET Norway',
+        highs:    [norms[3].todayHigh],
+        lows:     [norms[3].todayLow],
+        rains:    [rainProxy],
+        uvs:      [],
+        descs:    [metDesc],
+        sunrises: [],
+        sunsets:  [],
+      };
+    } catch {
+      failures.push('MET Norway');
+    }
+
     // =========================================================================
     // AGGREGATION
     // =========================================================================
@@ -391,9 +489,10 @@ export default async function handler(req, res) {
     // model families, so their agreement is meaningful.
     // Pirate Weather (GFS) divergence is an additional uncertainty signal.
     // =========================================================================
-    const omNorm = norms[0];
-    const waNorm = norms[1];
-    const pwNorm = norms[2];
+    const omNorm  = norms[0];
+    const waNorm  = norms[1];
+    const pwNorm  = norms[2];
+    const metNorm = norms[3];
 
     let confidenceKey = 'mixed';
     if (isNum(omNorm?.nowTemp) && isNum(waNorm?.nowTemp)) {
