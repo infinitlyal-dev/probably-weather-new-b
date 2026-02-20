@@ -3,8 +3,10 @@
 // Sources: Open-Meteo (ECMWF, no key), WeatherAPI (proprietary, key), Pirate Weather (NOAA GFS/GEFS, key)
 // Weights:  50% Open-Meteo  |  35% WeatherAPI  |  15% Pirate Weather
 // Pirate Weather provides genuine model independence (GFS/GEFS vs ECMWF) and
-// proper ensemble-based rain probability (30-member GEFS) — unlike MET Norway
-// which was a raw ECMWF re-serve with mm→% conversion.
+// proper ensemble-based rain probability (30-member GEFS).
+// NOTE: Pirate Weather is used for current conditions and daily only — its
+// hourly.data starts at the current hour (not midnight) so cannot be safely
+// aligned with Open-Meteo/WeatherAPI hourly arrays that start at 00:00 local.
 
 export default async function handler(req, res) {
   try {
@@ -39,7 +41,7 @@ export default async function handler(req, res) {
       }
     }
 
-    // ── Reverse geocode endpoint ─────────────────────────────────────────────
+    // Reverse geocode endpoint
     if (req.query.reverse) {
       try {
         const rev = await fetchJson(
@@ -56,7 +58,7 @@ export default async function handler(req, res) {
       }
     }
 
-    // ── Resolve location name ────────────────────────────────────────────────
+    // Resolve location name
     let resolvedName = isPlaceholder ? null : name;
     if (!resolvedName) {
       try {
@@ -85,15 +87,24 @@ export default async function handler(req, res) {
       } catch { /* Keep fallback name if reverse geocode fails */ }
     }
 
-    // ── Source arrays (index = source slot: 0=Open-Meteo, 1=WeatherAPI, 2=Pirate Weather) ──
-    // null in a slot means that source failed.
-    const SOURCE_WEIGHTS = [0.50, 0.35, 0.15];
+    // Source arrays: index 0=Open-Meteo, 1=WeatherAPI, 2=Pirate Weather
+    // null in a slot means that source failed or was not configured.
+    // NOTE: hourlies only has 2 slots — Pirate Weather is excluded from hourly
+    //       aggregation because its hourly.data starts at the current hour (not
+    //       midnight local time), making it impossible to align with the other sources.
+    const SOURCE_WEIGHTS        = [0.50, 0.35, 0.15];
+    const HOURLY_SOURCE_WEIGHTS = [0.59, 0.41];  // renormalised 50/35 without Pirate Weather
     const failures = [];
-    const norms    = [null, null, null];
-    const hourlies = [null, null, null];
-    const dailies  = [null, null, null];
+    const norms    = [null, null, null]; // current conditions
+    const hourlies = [null, null];       // hourly arrays (Open-Meteo, WeatherAPI only)
+    const dailies  = [null, null, null]; // 7-day daily arrays
 
-    // ── Description maps ─────────────────────────────────────────────────────
+    // UTC offset for the requested location (seconds).
+    // Captured from Open-Meteo (timezone=auto) to calculate correct local hour.
+    // Vercel runs UTC so new Date().getHours() would be wrong for non-UTC zones.
+    let utcOffsetSeconds = 0;
+
+    // Description maps
     const openMeteoCodeMap = {
       0:'Clear sky', 1:'Mainly clear', 2:'Partly cloudy', 3:'Overcast',
       45:'Fog', 48:'Depositing rime fog',
@@ -116,7 +127,9 @@ export default async function handler(req, res) {
       'hail':'Hail', 'thunderstorm':'Thunderstorm', 'tornado':'Tornado',
     };
 
-    // ── Open-Meteo — ECMWF IFS — weight 50% ─────────────────────────────────
+    // =========================================================================
+    // Open-Meteo — ECMWF IFS — weight 50%
+    // =========================================================================
     try {
       const om = await fetchJson(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
@@ -125,6 +138,11 @@ export default async function handler(req, res) {
         `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
         `&timezone=auto&forecast_days=7`
       );
+
+      // Capture UTC offset so we can determine the correct local hour later
+      if (isNum(om.utc_offset_seconds)) {
+        utcOffsetSeconds = om.utc_offset_seconds;
+      }
 
       norms[0] = {
         source:    'Open-Meteo',
@@ -165,7 +183,9 @@ export default async function handler(req, res) {
       failures.push('Open-Meteo');
     }
 
-    // ── WeatherAPI — proprietary/mixed — weight 35% ──────────────────────────
+    // =========================================================================
+    // WeatherAPI — proprietary/mixed — weight 35%
+    // =========================================================================
     if (WEATHERAPI_KEY) {
       try {
         const wa = await fetchJson(
@@ -218,25 +238,27 @@ export default async function handler(req, res) {
       failures.push('WeatherAPI');
     }
 
-    // ── Pirate Weather — NOAA GFS/GEFS — weight 15% ─────────────────────────
-    // Completely independent from ECMWF. GEFS 30-member ensemble gives *native*
-    // rain probability — no mm→% conversion needed (unlike former MET Norway).
-    // Sign up free at https://pirateweather.net · 20,000 calls/month free tier.
+    // =========================================================================
+    // Pirate Weather — NOAA GFS/GEFS — weight 15%
+    // Used for current conditions and daily only (not hourly — see note above).
+    // GEFS 30-member ensemble gives native rain probability (no mm->% hack).
+    // Free tier: 20,000 calls/month. Sign up: https://pirateweather.net
+    // =========================================================================
     if (PIRATE_WEATHER_KEY) {
       try {
-        // units=si → °C, wind m/s, humidity 0-1 fraction, precip mm
+        // units=si: temps in C, wind in m/s, humidity 0-1 fraction, precip mm
         const pw = await fetchJson(
           `https://api.pirateweather.net/forecast/${PIRATE_WEATHER_KEY}/${lat},${lon}` +
-          `?units=si&extend=hourly`
+          `?units=si`
+          // NOTE: We deliberately omit &extend=hourly since we don't use PW hourly data
         );
 
-        const cur  = pw.currently  || {};
-        const hrly = pw.hourly?.data  || [];
-        const dly  = pw.daily?.data   || [];
+        const cur = pw.currently || {};
+        const dly = pw.daily?.data || [];
 
-        const toKph  = v => isNum(v) ? Math.round(v * 3.6 * 10) / 10 : null;  // m/s → km/h
-        const toPct  = v => isNum(v) ? Math.round(v * 100) : null;             // 0-1 → %
-        const toIso  = v => isNum(v) ? new Date(v * 1000).toISOString() : null; // Unix → ISO
+        const toKph = v => isNum(v) ? Math.round(v * 3.6 * 10) / 10 : null; // m/s -> km/h
+        const toPct = v => isNum(v) ? Math.round(v * 100) : null;            // 0-1 -> %
+        const toIso = v => isNum(v) ? new Date(v * 1000).toISOString() : null; // Unix -> ISO
 
         const pwDesc = icon => pirateIconMap[icon] ?? icon ?? 'Unknown';
 
@@ -250,7 +272,7 @@ export default async function handler(req, res) {
           feelsLike: calcFeelsLike(curTemp, curWindKph, curHumPct),
           todayHigh: isNum(dly[0]?.temperatureHigh) ? dly[0].temperatureHigh : null,
           todayLow:  isNum(dly[0]?.temperatureLow)  ? dly[0].temperatureLow  : null,
-          todayRain: toPct(dly[0]?.precipProbability), // native GEFS ensemble ✓
+          todayRain: toPct(dly[0]?.precipProbability), // native GEFS ensemble
           todayUv:   isNum(dly[0]?.uvIndex)          ? dly[0].uvIndex         : null,
           desc:      pwDesc(cur.icon),
           windKph:   curWindKph,
@@ -259,21 +281,11 @@ export default async function handler(req, res) {
           sunset:    toIso(dly[0]?.sunsetTime),
         };
 
-        hourlies[2] = {
-          source:     'Pirate Weather',
-          temps:      hrly.slice(0, 24).map(h => isNum(h.temperature)         ? h.temperature         : null),
-          feelsLikes: hrly.slice(0, 24).map(h => isNum(h.apparentTemperature) ? h.apparentTemperature : null),
-          rains:      hrly.slice(0, 24).map(h => toPct(h.precipProbability)),
-          winds:      hrly.slice(0, 24).map(h => toKph(h.windSpeed)),
-          clouds:     hrly.slice(0, 24).map(h => toPct(h.cloudCover)),
-          humidity:   hrly.slice(0, 24).map(h => toPct(h.humidity)),
-        };
-
         dailies[2] = {
           source:   'Pirate Weather',
           highs:    dly.slice(0, 7).map(d => isNum(d.temperatureHigh) ? d.temperatureHigh : null),
           lows:     dly.slice(0, 7).map(d => isNum(d.temperatureLow)  ? d.temperatureLow  : null),
-          rains:    dly.slice(0, 7).map(d => toPct(d.precipProbability)), // native GEFS ✓
+          rains:    dly.slice(0, 7).map(d => toPct(d.precipProbability)),
           uvs:      dly.slice(0, 7).map(d => isNum(d.uvIndex)         ? d.uvIndex          : null),
           descs:    dly.slice(0, 7).map(d => pwDesc(d.icon)),
           sunrises: dly.slice(0, 7).map(d => toIso(d.sunriseTime)),
@@ -286,18 +298,24 @@ export default async function handler(req, res) {
       failures.push('Pirate Weather');
     }
 
-    // ── AGGREGATION ──────────────────────────────────────────────────────────
+    // =========================================================================
+    // AGGREGATION
+    // =========================================================================
 
     // Normalise weights for whichever sources actually returned data.
-    function resolveWeights(arr) {
-      const active = arr.map((item, i) => item !== null ? SOURCE_WEIGHTS[i] : 0);
+    function resolveWeights(arr, baseWeights) {
+      const active = arr.map((item, i) => item !== null ? (baseWeights[i] ?? 0) : 0);
       const total  = active.reduce((s, v) => s + v, 0);
-      return total > 0 ? active.map(v => v / total) : active.map((v, i) => arr[i] !== null ? 1 / arr.filter(Boolean).length : 0);
+      if (total === 0) {
+        const count = arr.filter(Boolean).length;
+        return arr.map(item => item !== null ? 1 / count : 0);
+      }
+      return active.map(v => v / total);
     }
 
-    const normW   = resolveWeights(norms);
-    const hourlyW = resolveWeights(hourlies);
-    const dailyW  = resolveWeights(dailies);
+    const normW   = resolveWeights(norms, SOURCE_WEIGHTS);
+    const hourlyW = resolveWeights(hourlies, HOURLY_SOURCE_WEIGHTS);
+    const dailyW  = resolveWeights(dailies, SOURCE_WEIGHTS);
 
     // Weighted average across source slots (skips nulls).
     function wAvg(arr, weights, getter) {
@@ -310,15 +328,16 @@ export default async function handler(req, res) {
       return wSum > 0 ? Math.round((sum / wSum) * 10) / 10 : null;
     }
 
-    // Hourly aggregation
+    // Hourly aggregation (Open-Meteo + WeatherAPI only — aligned on local midnight)
     const aggregatedHourly = Array.from({ length: 24 }, (_, i) => {
       const hourWindVals = hourlies.map(h => h ? h.winds[i] : null).filter(isNum);
-      const medWind = wAvg(hourlies, hourlyW, h => h.winds[i]);
+      const avgWind = wAvg(hourlies, hourlyW, h => h.winds[i]);
       const maxWind = hourWindVals.length ? Math.max(...hourWindVals) : null;
 
-      const effectiveHourlyWind = (isNum(medWind) && isNum(maxWind) && maxWind > medWind * 1.4)
-        ? Math.round((medWind * 0.4 + maxWind * 0.6) * 10) / 10
-        : medWind;
+      // When sources disagree on wind by more than 40%, bias toward the higher reading
+      const effectiveHourlyWind = (isNum(avgWind) && isNum(maxWind) && maxWind > avgWind * 1.4)
+        ? Math.round((avgWind * 0.4 + maxWind * 0.6) * 10) / 10
+        : avgWind;
 
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
@@ -329,7 +348,7 @@ export default async function handler(req, res) {
       };
     });
 
-    // Daily aggregation
+    // Daily aggregation (all three sources)
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
       const descs        = dailies.filter(Boolean).map(d => d.descs[i]).filter(Boolean);
       const conditionLabel = pickMostCommon(descs) || 'Unknown';
@@ -337,7 +356,9 @@ export default async function handler(req, res) {
       const lowC         = wAvg(dailies, dailyW, d => d.lows[i]);
       const rainChance   = wAvg(dailies, dailyW, d => d.rains[i]);
       const uv           = wAvg(dailies, dailyW, d => d.uvs[i]);
-      const windKph      = aggregatedHourly[Math.min(i * 4 + 12, 23)]?.windKph ?? null;
+      // Use midday wind estimate (index 12 = noon local time)
+      const noonIdx      = Math.min(i * 4 + 12, 23);
+      const windKph      = aggregatedHourly[noonIdx]?.windKph ?? null;
 
       return {
         highC,
@@ -345,23 +366,27 @@ export default async function handler(req, res) {
         rainChance,
         uv,
         conditionLabel,
+        // Daily condition: isDay=true because it represents the whole day
         conditionKey: deriveCondition({
           desc:      conditionLabel,
           rainChance,
           tempC:     highC,
           windKph,
           uvIndex:   uv,
-          cloudPct:  aggregatedHourly[Math.min(i * 4 + 12, 23)]?.cloudPct ?? null,
+          cloudPct:  aggregatedHourly[noonIdx]?.cloudPct ?? null,
+          isDay:     true,
         }),
         sunrise: dailies.filter(Boolean).find(d => d.sunrises?.[i])?.sunrises[i] ?? null,
         sunset:  dailies.filter(Boolean).find(d => d.sunsets?.[i])?.sunsets[i]   ?? null,
       };
     });
 
-    // ── CONFIDENCE ───────────────────────────────────────────────────────────
-    // Based on agreement between the two principal sources (Open-Meteo and WeatherAPI).
-    // These use fundamentally different model families, so their agreement is meaningful.
-    // Pirate Weather (GFS) divergence is used as an additional uncertainty signal.
+    // =========================================================================
+    // CONFIDENCE
+    // Based on agreement between Open-Meteo and WeatherAPI — genuinely different
+    // model families, so their agreement is meaningful.
+    // Pirate Weather (GFS) divergence is an additional uncertainty signal.
+    // =========================================================================
     const omNorm = norms[0];
     const waNorm = norms[1];
     const pwNorm = norms[2];
@@ -374,20 +399,33 @@ export default async function handler(req, res) {
       confidenceKey = 'decent';
     }
 
-    // GFS (Pirate Weather) divergence check: independent cross-model signal
+    // GFS divergence check: when GFS and ECMWF disagree strongly, honest downgrade
     let pirateWeatherAlert = null;
     if (isNum(omNorm?.nowTemp) && isNum(pwNorm?.nowTemp)) {
       if (Math.abs(omNorm.nowTemp - pwNorm.nowTemp) > 3) {
         pirateWeatherAlert = 'gfs_ecmwf_divergence';
-        if (confidenceKey === 'strong') confidenceKey = 'decent'; // honest downgrade
+        if (confidenceKey === 'strong') confidenceKey = 'decent';
       }
     }
 
-    // ── "NOW" OBJECT ─────────────────────────────────────────────────────────
+    // =========================================================================
+    // "NOW" CALCULATIONS
+    // =========================================================================
+    const activeNorms = norms.filter(Boolean);
+
+    // Bug 5 guard: if all sources failed, return a clear error
+    if (activeNorms.length === 0) {
+      return res.status(503).json({
+        ok: false,
+        error: 'All weather sources failed. Please try again shortly.',
+        meta: { sources: failures.map(f => ({ name: f, ok: false })) },
+      });
+    }
+
     const medNowTemp   = wAvg(norms, normW, n => n.nowTemp);
     const medFeelsLike = wAvg(norms, normW, n => n.feelsLike);
     const medWindKph   = wAvg(norms, normW, n => n.windKph);
-    const maxWindKph   = Math.max(...norms.filter(Boolean).map(n => n.windKph).filter(isNum), 0);
+    const maxWindKph   = Math.max(...activeNorms.map(n => n.windKph).filter(isNum), 0);
     const medHumidity  = wAvg(norms, normW, n => n.humidity);
     const medUv        = wAvg(norms, normW, n => n.todayUv);
 
@@ -395,24 +433,51 @@ export default async function handler(req, res) {
       ? Math.round((medWindKph * 0.4 + maxWindKph * 0.6) * 10) / 10
       : (medWindKph ?? 0);
 
-    const currentCloudPct = aggregatedHourly[new Date().getHours()]?.cloudPct ?? null;
-    const activeNorms     = norms.filter(Boolean);
-    const mostDesc        = pickMostCommon(activeNorms.map(n => n.desc).filter(Boolean)) || 'Weather today';
-    const finalFeelsLike  = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
+    // Correct local hour using UTC offset from Open-Meteo.
+    // Vercel runs UTC so new Date().getHours() would be wrong for non-UTC zones.
+    // e.g. South Africa (UTC+2): 21:31 SAST = 19:31 UTC. Without this fix,
+    // we'd read cloudPct for 19:00 instead of 21:00.
+    const localHour = Math.floor(((Date.now() / 1000) + utcOffsetSeconds) / 3600) % 24;
+
+    const currentCloudPct = aggregatedHourly[localHour]?.cloudPct ?? null;
+
+    // Current hour's rain chance (not today's daily max).
+    // Using daily max caused the app to show 70% rain at 10pm when it only
+    // rained in the morning. Current hour is more truthful for "right now".
+    const currentHourRainChance = aggregatedHourly[localHour]?.rainChance ?? null;
+
+    const mostDesc      = pickMostCommon(activeNorms.map(n => n.desc).filter(Boolean)) || 'Weather today';
+    const finalFeelsLike = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
+
+    // Sunrise/sunset: prefer Open-Meteo ISO format (parseable), then others.
+    // Declared HERE, before isDay calculation, to avoid ReferenceError.
+    const sunrise = activeNorms.find(n => n.sunrise)?.sunrise ?? null;
+    const sunset  = activeNorms.find(n => n.sunset)?.sunset   ?? null;
+
+    // Determine if it's currently daytime.
+    // Must use proper ISO-formatted sunrise/sunset (Open-Meteo provides these).
+    // WeatherAPI returns "06:45 AM" strings which have no date and won't parse.
+    const nowMs = Date.now();
+    let isDay = true; // safe default: UV gates are conservative so false positives are mild
+    if (sunrise && sunset) {
+      const srMs = new Date(sunrise).getTime();
+      const ssMs = new Date(sunset).getTime();
+      if (!isNaN(srMs) && !isNaN(ssMs)) {
+        isDay = nowMs >= srMs && nowMs <= ssMs;
+      }
+    }
 
     const nowConditionKey = deriveCondition({
       desc:       mostDesc,
-      rainChance: aggregatedDaily[0]?.rainChance ?? null,
+      rainChance: currentHourRainChance,  // current hour, not today's daily max
       tempC:      medNowTemp,
       feelsLikeC: finalFeelsLike,
       windKph:    medWindKph,
       uvIndex:    medUv,
       cloudPct:   currentCloudPct,
       maxWindKph,
+      isDay,
     });
-
-    const sunrise = activeNorms.find(n => n.sunrise)?.sunrise ?? null;
-    const sunset  = activeNorms.find(n => n.sunset)?.sunset   ?? null;
 
     return res.status(200).json({
       ok: true,
@@ -424,7 +489,7 @@ export default async function handler(req, res) {
         feelsLikeC:     finalFeelsLike,
         windKph:        effectiveDisplayWind,
         humidity:       medHumidity,
-        rainChance:     aggregatedDaily[0]?.rainChance ?? null,
+        rainChance:     currentHourRainChance,  // current hour rain chance
         uv:             medUv,
         cloudPct:       currentCloudPct,
         conditionKey:   nowConditionKey,
@@ -449,10 +514,11 @@ export default async function handler(req, res) {
           maxTemp: n.todayHigh,
         })),
         sourceWeights: {
-          'Open-Meteo':     isNum(normW[0]) && norms[0] ? Math.round(normW[0] * 100) : null,
-          'WeatherAPI':     isNum(normW[1]) && norms[1] ? Math.round(normW[1] * 100) : null,
-          'Pirate Weather': isNum(normW[2]) && norms[2] ? Math.round(normW[2] * 100) : null,
+          'Open-Meteo':     norms[0] ? Math.round(normW[0] * 100) : null,
+          'WeatherAPI':     norms[1] ? Math.round(normW[1] * 100) : null,
+          'Pirate Weather': norms[2] ? Math.round(normW[2] * 100) : null,
         },
+        localHour,
         updatedAtLabel: new Date().toISOString(),
       },
     });
@@ -463,7 +529,9 @@ export default async function handler(req, res) {
   }
 }
 
-// ========== HELPER FUNCTIONS ==========
+// =============================================================================
+// HELPER FUNCTIONS
+// =============================================================================
 
 function isNum(v) {
   return typeof v === 'number' && Number.isFinite(v);
@@ -476,39 +544,78 @@ function pickMostCommon(arr) {
 }
 
 /**
- * Calculate "feels like" temperature using wind chill or heat index
+ * Calculate "feels like" temperature using wind chill or heat index formulas.
+ * Wind chill: valid for temps <= 10C with wind > 4.8 km/h
+ * Heat index: valid for temps >= 27C with humidity data
  */
 function calcFeelsLike(tempC, windKph, humidity) {
   if (!isNum(tempC)) return null;
 
   if (tempC <= 10 && isNum(windKph) && windKph > 4.8) {
-    const windChill = 13.12 + 0.6215 * tempC
+    const wc = 13.12 + 0.6215 * tempC
       - 11.37 * Math.pow(windKph, 0.16)
       + 0.3965 * tempC * Math.pow(windKph, 0.16);
-    return Math.round(windChill * 10) / 10;
+    return Math.round(wc * 10) / 10;
   }
 
   if (tempC >= 27 && isNum(humidity)) {
-    const heatIndex = tempC + 0.33 * (humidity / 100 * 6.105 * Math.exp(17.27 * tempC / (237.7 + tempC))) - 4;
-    return Math.round(heatIndex * 10) / 10;
+    const hi = tempC + 0.33 * (humidity / 100 * 6.105 * Math.exp(17.27 * tempC / (237.7 + tempC))) - 4;
+    return Math.round(hi * 10) / 10;
   }
 
   return tempC;
 }
 
 /**
- * Derive weather condition key.
- * Priority: Storm > Extreme Cold > Snow > Extreme Heat > Heavy Rain > High UV
- *         > Strong Wind > Moderate Rain > Rain by desc > Moderate Wind
- *         > Overcast > Possible Rain > Fog > Cold > Hot > High UV (lower)
- *         > Mostly Cloudy > Partly Cloudy > Clear
+ * Derive the weather condition key for UI display.
+ *
+ * Priority order (highest wins):
+ *  1. Storm / thunder / tornado
+ *  2. Extreme cold (feels like <= -5C, or temp <= 0C)
+ *  3. Snow / sleet / ice / hail / freezing
+ *  4. Extreme heat (temp >= 35C or feels like >= 38C)
+ *  5. Heavy rain (>= 60% chance)
+ *  6. High UV (>= 8, daytime only, not overcast)
+ *  7. Strong wind (>= 30 km/h effective)
+ *  8. Moderate rain (>= 30% chance)
+ *  9. Rain by description
+ * 10. Moderate wind (>= 25 km/h)
+ * 11. Overcast (>= 80% cloud or description)
+ * 12. Rain possible (>= 20% chance)
+ * 13. Fog / mist / haze
+ * 14. Cold (temp <= 10C)
+ * 15. Hot (temp >= 30C)
+ * 16. Moderate UV (>= 6, daytime only, not mostly cloudy)
+ * 17. Mostly cloudy (>= 55% cloud)
+ * 18. Partly cloudy / mainly clear / fair -> treated as clear
+ * 19. Clear by description
+ * 20. Fallback: clear
+ *
+ * @param {object} params
+ * @param {string}  params.desc         - Weather description text
+ * @param {number}  params.rainChance   - Rain probability % (current hour)
+ * @param {number}  params.tempC        - Current temperature C
+ * @param {number}  params.feelsLikeC   - Feels like temperature C
+ * @param {number}  params.windKph      - Wind speed km/h (weighted average)
+ * @param {number}  params.maxWindKph   - Max wind from any source (for gust bias)
+ * @param {number}  params.uvIndex      - UV index
+ * @param {number}  params.cloudPct     - Cloud cover %
+ * @param {boolean} params.isDay        - Whether the sun is currently up
+ * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true }) {
   const d = String(desc || '').toLowerCase();
-  const effectiveWind    = isNum(maxWindKph) && maxWindKph > (windKph || 0) ? maxWindKph : windKph;
+
+  // Use max wind when sources disagree significantly (captures gusty reality
+  // that weighted averages can wash out)
+  const effectiveWind = isNum(maxWindKph) && maxWindKph > (windKph || 0) ? maxWindKph : windKph;
+
+  // Cloud cover classification
   const isTrulyOvercast  = isNum(cloudPct) && cloudPct >= 80;
   const isMostlyCloudy   = isNum(cloudPct) && cloudPct >= 55;
   const isPartlyCloudy   = isNum(cloudPct) && cloudPct >= 30 && cloudPct < 55;
+
+  // Description-based cloud fallbacks (used when cloudPct is unavailable)
   const descSaysOvercast = d.includes('overcast');
   const descSaysPartly   = d.includes('partly') || d.includes('mainly clear') || d.includes('fair');
   const descSaysCloudy   = d.includes('cloud') && !descSaysPartly;
@@ -516,26 +623,66 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   const overcastByDesc   = !isNum(cloudPct) && descSaysOvercast;
   const partlyByDesc     = !isNum(cloudPct) && descSaysPartly;
 
+  // 1. Storm
   if (d.includes('thunder') || d.includes('storm') || d.includes('tornado')) return 'storm';
-  if (isNum(feelsLikeC) && feelsLikeC <= -5)  return 'cold';
-  if (isNum(tempC) && tempC <= 0)              return 'cold';
-  if (d.includes('snow') || d.includes('sleet') || d.includes('ice') || d.includes('hail') || d.includes('blizzard') || d.includes('freezing')) return 'cold';
-  if (isNum(tempC) && tempC >= 35)             return 'heat';
-  if (isNum(feelsLikeC) && feelsLikeC >= 38)  return 'heat';
-  if (isNum(rainChance) && rainChance >= 60)   return 'rain';
-  if (isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || overcastByDesc)) return 'uv';
+
+  // 2. Extreme cold
+  if (isNum(feelsLikeC) && feelsLikeC <= -5) return 'cold';
+  if (isNum(tempC) && tempC <= 0)             return 'cold';
+
+  // 3. Winter precipitation
+  if (d.includes('snow') || d.includes('sleet') || d.includes('ice') ||
+      d.includes('hail') || d.includes('blizzard') || d.includes('freezing')) return 'cold';
+
+  // 4. Extreme heat
+  if (isNum(tempC) && tempC >= 35)            return 'heat';
+  if (isNum(feelsLikeC) && feelsLikeC >= 38) return 'heat';
+
+  // 5. Heavy rain
+  if (isNum(rainChance) && rainChance >= 60)  return 'rain';
+
+  // 6. High UV — daytime only, not overcast
+  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || overcastByDesc)) return 'uv';
+
+  // 7. Strong wind
   if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
-  if (isNum(rainChance) && rainChance >= 30)   return 'rain';
+
+  // 8. Moderate rain
+  if (isNum(rainChance) && rainChance >= 30)  return 'rain';
+
+  // 9. Rain by description
   if (d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip')) return 'rain';
+
+  // 10. Moderate wind
   if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
-  if (isTrulyOvercast || overcastByDesc)       return 'cloudy';
-  if (isNum(rainChance) && rainChance >= 20)   return 'rain-possible';
+
+  // 11. Overcast
+  if (isTrulyOvercast || overcastByDesc)      return 'cloudy';
+
+  // 12. Possible rain (20%+ but not yet "rain")
+  if (isNum(rainChance) && rainChance >= 20)  return 'rain-possible';
+
+  // 13. Fog / mist / haze
   if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return 'fog';
-  if (isNum(tempC) && tempC <= 10)             return 'cold';
-  if (isNum(tempC) && tempC >= 30)             return 'heat';
-  if (isNum(uvIndex) && uvIndex >= 6 && !(isMostlyCloudy || cloudyByDesc)) return 'uv';
-  if (isMostlyCloudy || cloudyByDesc)          return 'cloudy';
-  if (isPartlyCloudy || partlyByDesc)          return 'clear';
+
+  // 14. Cold (not freezing, but chilly)
+  if (isNum(tempC) && tempC <= 10)            return 'cold';
+
+  // 15. Hot (not extreme, but warm)
+  if (isNum(tempC) && tempC >= 30)            return 'heat';
+
+  // 16. Moderate UV — daytime only, not mostly cloudy
+  if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isMostlyCloudy || cloudyByDesc)) return 'uv';
+
+  // 17. Mostly cloudy
+  if (isMostlyCloudy || cloudyByDesc)         return 'cloudy';
+
+  // 18. Partly cloudy / mainly clear / fair — treated as clear (nice day)
+  if (isPartlyCloudy || partlyByDesc)         return 'clear';
+
+  // 19. Clear by description (includes 'wind' to avoid 'Windy' desc falling to bottom)
   if (d.includes('clear') || d.includes('sunny') || d.includes('fair') || d.includes('wind')) return 'clear';
+
+  // 20. Fallback
   return 'clear';
 }
