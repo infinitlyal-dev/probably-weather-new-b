@@ -278,6 +278,7 @@ export default async function handler(req, res) {
           todayUv:   isNum(dly[0]?.uvIndex)          ? dly[0].uvIndex         : null,
           desc:      pwDesc(cur.icon),
           windKph:   curWindKph,
+          gustKph:   toKph(cur.windGust),   // PW provides windGust in m/s (si units)
           humidity:  curHumPct,
           sunrise:   toIso(dly[0]?.sunriseTime),
           sunset:    toIso(dly[0]?.sunsetTime),
