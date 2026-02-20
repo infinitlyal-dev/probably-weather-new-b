@@ -449,22 +449,29 @@ export default async function handler(req, res) {
     const mostDesc      = pickMostCommon(activeNorms.map(n => n.desc).filter(Boolean)) || 'Weather today';
     const finalFeelsLike = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
 
-    // Sunrise/sunset: prefer Open-Meteo ISO format (parseable), then others.
-    // Declared HERE, before isDay calculation, to avoid ReferenceError.
+    // Sunrise/sunset for the response — first available source.
+    // Declared before isDay so no ReferenceError.
     const sunrise = activeNorms.find(n => n.sunrise)?.sunrise ?? null;
     const sunset  = activeNorms.find(n => n.sunset)?.sunset   ?? null;
 
-    // Determine if it's currently daytime.
-    // Must use proper ISO-formatted sunrise/sunset (Open-Meteo provides these).
-    // WeatherAPI returns "06:45 AM" strings which have no date and won't parse.
+    // isDay — use ONLY Open-Meteo's sunrise/sunset which are ISO strings (parseable).
+    // WeatherAPI returns "06:45 AM" with no date — new Date() gives Invalid Date.
+    // If Open-Meteo failed, fall back to utcOffsetSeconds + a hardcoded 06:00–19:00
+    // window, which is wrong but at least won't cause UV to fire all night.
     const nowMs = Date.now();
-    let isDay = true; // safe default: UV gates are conservative so false positives are mild
-    if (sunrise && sunset) {
-      const srMs = new Date(sunrise).getTime();
-      const ssMs = new Date(sunset).getTime();
+    let isDay = true;
+    const omSunrise = norms[0]?.sunrise ?? null;
+    const omSunset  = norms[0]?.sunset  ?? null;
+    if (omSunrise && omSunset) {
+      const srMs = new Date(omSunrise).getTime();
+      const ssMs = new Date(omSunset).getTime();
       if (!isNaN(srMs) && !isNaN(ssMs)) {
         isDay = nowMs >= srMs && nowMs <= ssMs;
       }
+    } else {
+      // Open-Meteo unavailable — estimate from local hour (UTC offset known from earlier)
+      // Assume daylight 06:00–19:00 local. Better than defaulting to true.
+      isDay = localHour >= 6 && localHour < 19;
     }
 
     const nowConditionKey = deriveCondition({
@@ -490,10 +497,11 @@ export default async function handler(req, res) {
         windKph:        effectiveDisplayWind,
         humidity:       medHumidity,
         rainChance:     currentHourRainChance,  // current hour rain chance
-        uv:             medUv,
+        uv:             isDay ? medUv : null,  // UV is irrelevant after sunset
         cloudPct:       currentCloudPct,
         conditionKey:   nowConditionKey,
         conditionLabel: mostDesc,
+        isDay,          // lets app.js switch night/day copy and suppress UV stat
         sunrise,
         sunset,
       },
@@ -686,3 +694,4 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 20. Fallback
   return 'clear';
 }
+
