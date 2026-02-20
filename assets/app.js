@@ -110,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       feelsLike: { en: "Feels like", af: "Voel soos", zu: "Kuzwakala sengathi", xh: "Kuziva ngathi", st: "Ho utlwahala joalo ka" },
       later: { en: "Later ⏰", af: "Later ⏰", zu: "Kamuva ⏰", xh: "Kamva ⏰", st: "Hamorao ⏰" },
       none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
+      gusts: { en: "gusts", af: "windstote", zu: "amafindo", xh: "iimphuphuma", st: "lifofane" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakwenzeka", xh: "Akunakwenzeka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
       likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
@@ -560,6 +561,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localHour: meta.localHour ?? null, // correct local hour from API (uses real UTC offset)
       windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
       maxWindKph: isNum(payload.maxWindKph) ? payload.maxWindKph : null,
+      gustKph: isNum(payload.gustKph) ? payload.gustKph : null,
       cloudPct: isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
       conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
@@ -574,7 +576,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
     const hero = heroOverride || window.__PW_LAST_HERO || computeTodaysHero(norm);
-    safeText(extremeLabelEl, t('sidebar', 'todaysHero')); safeText(extremeValueEl, getHeroLabel(hero));
+    // At night with clear skies, show "Clear night" not "Pleasant"
+    const heroForLabel = (!norm.isDay && hero === 'clear') ? 'night' : hero;
+    safeText(extremeLabelEl, t('sidebar', 'todaysHero')); safeText(extremeValueEl, getHeroLabel(heroForLabel));
     const sr = norm.sourceRanges || [];
     if (sr.length > 0) { safeText($('#confidenceValue'), sr.filter(s => isNum(s.minTemp) && isNum(s.maxTemp)).map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`).join('\n') || '--'); }
     else { safeText($('#confidenceValue'), { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' }[norm.confidenceKey] || 'Mixed'); }
@@ -602,7 +606,9 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(descriptionEl, getWittyLine(displayConditionForCopy));
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
-      const ws = isNum(wind) ? formatWind(wind) : '--';
+      const gust = norm.gustKph;
+      const showGust = isNum(gust) && isNum(wind) && gust > wind * 1.3;
+      const ws = isNum(wind) ? (showGust ? `${formatWind(wind)} (${t('weather','gusts')||'gusts'} ${formatWind(gust)})` : formatWind(wind)) : '--';
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
       let rs = '--'; 
       if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
@@ -897,3 +903,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
