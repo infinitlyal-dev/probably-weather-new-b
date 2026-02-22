@@ -733,9 +733,10 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   const effectiveWind = windKph;
 
   // Cloud cover classification
-  const isTrulyOvercast  = isNum(cloudPct) && cloudPct >= 80;
-  const isMostlyCloudy   = isNum(cloudPct) && cloudPct >= 55;
-  const isPartlyCloudy   = isNum(cloudPct) && cloudPct >= 30 && cloudPct < 55;
+  const isTrulyOvercast    = isNum(cloudPct) && cloudPct >= 80;
+  const isMostlyCloudy     = isNum(cloudPct) && cloudPct >= 55;
+  const isSignificantCloud = isNum(cloudPct) && cloudPct >= 40; // blocks UV
+  const isPartlyCloudy     = isNum(cloudPct) && cloudPct >= 30 && cloudPct < 55;
 
   // Description-based cloud fallbacks (used when cloudPct is unavailable)
   const descSaysOvercast = d.includes('overcast');
@@ -763,8 +764,8 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 5. Heavy rain
   if (isNum(rainChance) && rainChance >= 60)  return 'rain';
 
-  // 6. High UV — daytime only, not overcast
-  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || overcastByDesc)) return 'uv';
+  // 6. High UV — daytime only, not overcast, not significantly cloudy
+  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc)) return 'uv';
 
   // 7. Strong wind
   if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
@@ -793,8 +794,8 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 15. Hot (not extreme, but warm)
   if (isNum(tempC) && tempC >= 30)            return 'heat';
 
-  // 16. Moderate UV — daytime only, not mostly cloudy
-  if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isMostlyCloudy || cloudyByDesc)) return 'uv';
+  // 16. Moderate UV — daytime only, not significantly cloudy (40%+ blocks UV)
+  if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isSignificantCloud || isMostlyCloudy || cloudyByDesc)) return 'uv';
 
   // 17. Mostly cloudy
   if (isMostlyCloudy || cloudyByDesc)         return 'cloudy';
