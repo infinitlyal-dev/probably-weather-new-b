@@ -588,13 +588,17 @@ export default async function handler(req, res) {
       isDay = localHour >= 6 && localHour < 19;
     }
 
+    // medUv is the daily MAXIMUM (recorded at noon). Using it at 18:55 falsely
+    // reports "High UV" near sunset. Only use UV to drive condition between 10:00-16:00.
+    const uvForCondition = (localHour >= 10 && localHour < 16) ? medUv : null;
+
     const nowConditionKey = deriveCondition({
       desc:       mostDesc,
-      rainChance: currentHourRainChance,  // current hour, not today's daily max
+      rainChance: currentHourRainChance,
       tempC:      medNowTemp,
       feelsLikeC: finalFeelsLike,
       windKph:    medWindKph,
-      uvIndex:    medUv,
+      uvIndex:    uvForCondition,
       cloudPct:   currentCloudPct,
       maxWindKph,
       isDay,
