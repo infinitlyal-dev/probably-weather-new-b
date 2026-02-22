@@ -573,8 +573,12 @@ export default async function handler(req, res) {
     const omSunrise = norms[0]?.sunrise ?? null;
     const omSunset  = norms[0]?.sunset  ?? null;
     if (omSunrise && omSunset) {
-      const srMs = new Date(omSunrise).getTime();
-      const ssMs = new Date(omSunset).getTime();
+      // Open-Meteo returns sunrise/sunset as local-time ISO strings WITHOUT a timezone
+      // indicator (e.g. "2026-02-22T06:12"). The Vercel server runs UTC, so JS parses
+      // these as UTC — creating a 2-hour error for SAST (UTC+2). We correct by
+      // subtracting utcOffsetSeconds to convert the local-labelled timestamps to true UTC ms.
+      const srMs = new Date(omSunrise).getTime() - (utcOffsetSeconds * 1000);
+      const ssMs = new Date(omSunset).getTime()  - (utcOffsetSeconds * 1000);
       if (!isNaN(srMs) && !isNaN(ssMs)) {
         isDay = nowMs >= srMs && nowMs <= ssMs;
       }
