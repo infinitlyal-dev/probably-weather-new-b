@@ -436,10 +436,9 @@ export default async function handler(req, res) {
       const avgWind = wAvg(hourlies, hourlyW, h => h.winds[i]);
       const maxWind = Math.max(...hourWindVals, ...hourGustVals, 0) || null;
 
-      // When sources disagree on wind by more than 40%, bias toward the higher reading
-      const effectiveHourlyWind = (isNum(avgWind) && isNum(maxWind) && maxWind > avgWind * 1.4)
-        ? Math.round((avgWind * 0.4 + maxWind * 0.6) * 10) / 10
-        : avgWind;
+      // Use weighted average of mean wind speeds across sources.
+      // Gusts are tracked separately and shown as "(gusts X km/h)" in the UI.
+      const effectiveHourlyWind = avgWind;
 
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
@@ -540,9 +539,9 @@ export default async function handler(req, res) {
     const medHumidity  = wAvg(norms, normW, n => n.humidity);
     const medUv        = wAvg(norms, normW, n => n.todayUv);
 
-    const effectiveDisplayWind = (isNum(medWindKph) && isNum(maxWindKph) && maxWindKph > medWindKph * 1.4)
-      ? Math.round((medWindKph * 0.4 + maxWindKph * 0.6) * 10) / 10
-      : (medWindKph ?? 0);
+    // Display the weighted mean wind speed. Gusts (maxWindKph) are passed through
+    // separately for UI display as "(gusts X km/h)" — not inflated into the main number.
+    const effectiveDisplayWind = medWindKph ?? 0;
 
     // Correct local hour using UTC offset from Open-Meteo.
     // Vercel runs UTC so new Date().getHours() would be wrong for non-UTC zones.
@@ -726,9 +725,8 @@ function calcFeelsLike(tempC, windKph, humidity) {
 function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true }) {
   const d = String(desc || '').toLowerCase();
 
-  // Use max wind when sources disagree significantly (captures gusty reality
-  // that weighted averages can wash out)
-  const effectiveWind = isNum(maxWindKph) && maxWindKph > (windKph || 0) ? maxWindKph : windKph;
+  // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
+  const effectiveWind = windKph;
 
   // Cloud cover classification
   const isTrulyOvercast  = isNum(cloudPct) && cloudPct >= 80;
