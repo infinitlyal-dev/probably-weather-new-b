@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeTodaysHero(norm) {
     const apiCondition = (norm.conditionKey || '').toLowerCase();
     const dailyRain = norm.dailyRainPct;
-    const effectiveWind = isNum(norm.maxWindKph) && norm.maxWindKph > (norm.windKph || 0) ? norm.maxWindKph : norm.windKph;
+    const effectiveWind = norm.windKph; // Use mean wind, not gusts
     const cloud = norm.cloudPct;
     const isTrulyOvercast = isNum(cloud) && cloud >= 80;
     const isDay = norm.isDay !== false; // false only when API says night
@@ -423,7 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function computeHomeDisplayCondition(norm) {
     const imminentRain = norm.rainPct;
     const apiCondition = (norm.conditionKey || '').toLowerCase();
-    const effectiveWind = isNum(norm.maxWindKph) && norm.maxWindKph > (norm.windKph || 0) ? norm.maxWindKph : norm.windKph;
+    const effectiveWind = norm.windKph; // Use mean wind, not gusts
     const cloud = norm.cloudPct;
     const isTrulyOvercast = isNum(cloud) && cloud >= 80;
     const isDay = norm.isDay !== false;
