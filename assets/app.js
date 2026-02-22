@@ -398,13 +398,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const dailyRain = norm.dailyRainPct;
     const effectiveWind = norm.windKph; // Use mean wind, not gusts
     const cloud = norm.cloudPct;
-    const isTrulyOvercast = isNum(cloud) && cloud >= 80;
+    const isTrulyOvercast    = isNum(cloud) && cloud >= 80;
+    const isMostlyCloudy     = isNum(cloud) && cloud >= 55;
+    const isSignificantCloud = isNum(cloud) && cloud >= 40;
     const isDay = norm.isDay !== false; // false only when API says night
     if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
-    if (isDay && apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
+    if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
     if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
     if (apiCondition === 'wind') return 'wind';
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
@@ -414,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNum(feels) && feels <= -5) return 'cold';
     if (isNum(low) && low <= 0) return 'cold';
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
-    if (isDay && isNum(uv) && uv >= 8 && !isTrulyOvercast) return 'uv';
+    if (isDay && isNum(uv) && uv >= 8 && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     if (isNum(hi) && hi <= 10) return 'cold';
     return 'clear';
@@ -425,14 +427,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const apiCondition = (norm.conditionKey || '').toLowerCase();
     const effectiveWind = norm.windKph; // Use mean wind, not gusts
     const cloud = norm.cloudPct;
-    const isTrulyOvercast = isNum(cloud) && cloud >= 80;
+    const isTrulyOvercast    = isNum(cloud) && cloud >= 80;
+    const isMostlyCloudy     = isNum(cloud) && cloud >= 55;
+    const isSignificantCloud = isNum(cloud) && cloud >= 40;
     const isDay = norm.isDay !== false;
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
     if (isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
-    if (isDay && apiCondition === 'uv' && !isTrulyOvercast) return 'uv';
+    if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
     if (apiCondition === 'wind') return 'wind';
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
