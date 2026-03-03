@@ -221,18 +221,15 @@ body.modal-open {
 .sidebar {
   position: absolute;
   right: 2rem;
-  top: clamp(160px, 24vh, 260px);
+  top: clamp(60px, 10vh, 160px);
   bottom: calc(72px + env(safe-area-inset-bottom, 0px) + 12px);
-  width: 180px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1rem;
-}
-
-/* Two-panel sidebar: hero card more prominent, sources lighter */
-.card-hero {
-  padding: 1.1rem;
+  align-items: flex-end;
+  gap: 0.75rem;
+  text-align: right;
 }
 
 .card-sources {
@@ -538,7 +535,7 @@ body.ui-dark .daily-card {
 /* Hourly row styling */
 .hourly-row {
   display: grid;
-  grid-template-columns: 60px 40px 60px 50px 50px;
+  grid-template-columns: 60px 40px 60px 50px 50px 40px;
   gap: 8px;
   align-items: center;
   padding: 12px 8px;
@@ -583,6 +580,16 @@ body.ui-dark .daily-card {
   text-align: right;
   color: #fff;
 }
+
+.hourly-row .h-uv {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  text-align: right;
+  color: #fff;
+}
+.hourly-row .h-uv.uv-mod { color: #fdd835; }
+.hourly-row .h-uv.uv-high { color: #ff9800; }
+.hourly-row .h-uv.uv-extreme { color: #f44336; }
 
 /* Daily row styling */
 .daily-row {
@@ -1460,8 +1467,7 @@ main#home-screen.main #confidence,
 main#home-screen.main #sources,
 main#home-screen.main #headline,
 main#home-screen.main #temp,
-main#home-screen.main #tempHiLo,
-main#home-screen.main #description {
+main#home-screen.main #tempHiLo {
   text-align: left;
   max-width: 680px;
 }
@@ -1501,8 +1507,7 @@ main#home-screen.main #confidence {
 
 #home-screen .headline,
 #home-screen .temp,
-#home-screen .temp-hilo,
-#home-screen .description {
+#home-screen .temp-hilo {
   animation: heroFadeIn 1s ease-in forwards;
 }
 
@@ -1518,8 +1523,10 @@ main#home-screen.main #confidence {
   animation-delay: 0.3s;
 }
 
-#home-screen .description {
-  animation-delay: 0.4s;
+.sidebar .description,
+.sidebar .weather-byline {
+  animation: heroFadeIn 0.8s ease-in forwards;
+  animation-delay: 0.3s;
 }
 
 /* ========== TEMPERATURE COLOR CLASSES ========== */
@@ -1715,24 +1722,24 @@ main#home-screen.main #confidence {
     margin-top: 0;
   }
 
-  .description {
-    font-size: 18px;
-    margin-bottom: 0;
-    margin-top: 4px;
-    text-align: left;
+  /* Humour line + stats now live in sidebar (right panel) */
+  .sidebar .description {
+    font-size: 14px;
+    margin-bottom: 4px;
+    margin-top: 0;
+    text-align: right;
     font-weight: 600;
     color: #ff8c42;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
-    line-height: 1.5;
+    line-height: 1.4;
     letter-spacing: 0.01em;
   }
 
-  /* Weather byline - readable on any background */
-  .weather-byline {
-    font-size: 14px;
+  .sidebar .weather-byline {
+    font-size: 12px;
     line-height: 1.5;
-    margin-top: 0.5rem;
-    text-align: left;
+    margin-top: 0;
+    text-align: right;
     font-weight: 600;
     color: rgba(255,255,255,0.85);
     letter-spacing: 0.02em;
@@ -1741,26 +1748,29 @@ main#home-screen.main #confidence {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
+    align-items: flex-end;
   }
 
-  .byline-row {
-    font-size: 14px;
+  .sidebar .byline-row {
+    font-size: 12px;
     opacity: 0.85;
   }
 
-  /* Right column: two glass panels - docked lower-right */
+  /* Right column: humour line + stats + sources */
   .sidebar {
     position: absolute;
     right: 12px;
-    top: auto;
-    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 20px);
+    top: 0;
+    bottom: auto;
     transform: none;
-    width: auto;
+    width: 38%;
+    max-width: 180px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 8px;
+    gap: 6px;
     margin: 0;
+    padding-top: 0.2rem;
   }
 
   /* Glass panels - compact pills */
@@ -1847,22 +1857,23 @@ main#home-screen.main #confidence {
 
   /* Hourly row - mobile sizing */
   .hourly-row {
-    grid-template-columns: 50px 35px 55px 45px 45px;
-    gap: 4px;
+    grid-template-columns: 45px 30px 50px 40px 40px 30px;
+    gap: 3px;
     padding: 10px 4px;
   }
 
   .hourly-row.hourly-header {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
 
   .hourly-row .h-temp {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .hourly-row .h-rain,
-  .hourly-row .h-wind {
-    font-size: 0.75rem;
+  .hourly-row .h-wind,
+  .hourly-row .h-uv {
+    font-size: 0.7rem;
   }
 
   /* Daily row - mobile sizing */
@@ -1975,39 +1986,14 @@ main#home-screen.main #confidence {
   to { transform: translateY(0); }
 }
 
-/* ========== UV INDEX CARD ========== */
-.card-uv {
-  text-align: center;
+/* ========== SIDEBAR HUMOUR + STATS ========== */
+.sidebar-humour {
+  text-align: right;
+  margin-bottom: 0.5rem;
 }
-.uv-severity {
-  font-size: 1.4rem;
-  font-weight: 800;
-  margin: 4px 0;
-}
-.uv-severity.uv-low { color: #4caf50; }
-.uv-severity.uv-moderate { color: #fdd835; }
-.uv-severity.uv-high { color: #ff9800; }
-.uv-severity.uv-veryhigh { color: #f44336; }
-.uv-severity.uv-extreme { color: #9c27b0; }
-.uv-sunscreen {
-  font-size: 0.75rem;
-  opacity: 0.85;
-  margin-top: 2px;
-}
-
-/* ========== BRAAI INDEX CARD ========== */
-.card-braai {
-  text-align: center;
-}
-.braai-score {
-  font-size: 1.6rem;
-  font-weight: 800;
-  font-family: 'Poppins', sans-serif;
-}
-.braai-label {
-  font-size: 0.8rem;
-  margin-top: 2px;
-  opacity: 0.9;
+.sidebar-stats {
+  text-align: right;
+  align-items: flex-end;
 }
 
 /* ========== OFFLINE INDICATOR ========== */

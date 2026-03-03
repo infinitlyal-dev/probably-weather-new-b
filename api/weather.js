@@ -133,7 +133,7 @@ export default async function handler(req, res) {
       const om = await fetchJson(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
         `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
-        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m` +
+        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index` +
         `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
         `&timezone=auto&forecast_days=7`
       );
@@ -168,6 +168,7 @@ export default async function handler(req, res) {
         gusts:      om.hourly?.wind_gusts_10m?.slice(0, 48)            ?? [],
         clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
         humidity:   om.hourly?.relative_humidity_2m?.slice(0, 48)      ?? [],
+        uvs:        om.hourly?.uv_index?.slice(0, 48)                  ?? [],
       };
 
       dailies[0] = {
@@ -441,12 +442,16 @@ export default async function handler(req, res) {
       // Gusts are tracked separately and shown as "(gusts X km/h)" in the UI.
       const effectiveHourlyWind = avgWind;
 
+      // UV: only Open-Meteo provides hourly UV; use directly if available
+      const uvVal = hourlies[0]?.uvs?.[i] ?? null;
+
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
         feelsLikeC: wAvg(hourlies, hourlyW, h => h.feelsLikes?.[i]),
         rainChance: wAvg(hourlies, hourlyW, h => h.rains[i]),
         windKph:    effectiveHourlyWind,
         cloudPct:   wAvg(hourlies, hourlyW, h => h.clouds?.[i]),
+        uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
       };
     });
 
