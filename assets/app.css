@@ -1902,73 +1902,75 @@ main#home-screen.main #confidence {
     font-weight: 600;
   }
 
-  /* Sources card — dark pill, tap-to-expand */
+  /* ── Sources pill: clean rebuild ── */
   .card-sources {
     background: transparent;
     padding: 0;
-    overflow: hidden;
-    cursor: pointer;
     border: none;
     box-shadow: none;
     border-radius: 20px;
     margin-top: 4px;
+    z-index: 10;
+    position: relative;
+    overflow: visible; /* allow pill to sit on top cleanly */
   }
 
+  /* The pill button itself */
   .sources-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    padding: 6px 14px;
-    font-size: 0.75rem;
+    gap: 4px;
+    padding: 4px 12px;
+    font-size: 12px;
     font-weight: 600;
-    letter-spacing: 0.3px;
-    color: rgba(255,255,255,0.95);
+    color: #fff;
     background: rgba(0,0,0,0.5);
     border-radius: 20px;
+    cursor: pointer;
     user-select: none;
-    text-transform: none;
-    opacity: 1;
+    white-space: nowrap;
+    z-index: 10;
+    position: relative;
   }
 
   .sources-toggle .sources-arrow {
     display: inline-block;
+    font-size: 10px;
     transition: transform 0.3s ease;
-    font-size: 0.65rem;
+    line-height: 1;
   }
 
   .card-sources.expanded .sources-toggle .sources-arrow {
     transform: rotate(180deg);
   }
 
+  /* Expand panel: slides down from beneath the pill */
   .sources-detail {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.35s ease;
-    padding: 0 12px;
-    background: rgba(0,0,0,0.45);
-    border-radius: 0 0 14px 14px;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 10px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 0 0 12px 12px;
+    margin-top: -4px; /* overlap slightly for seamless join */
   }
 
   .card-sources.expanded .sources-detail {
-    max-height: 140px;
-    padding: 6px 12px 10px;
-  }
-
-  .card-sources.expanded .sources-toggle {
-    border-radius: 14px 14px 0 0;
+    max-height: 120px;
+    padding: 8px 10px 8px;
   }
 
   .sources-detail .value {
-    font-size: 0.65rem;
+    font-size: 11px;
     font-weight: 500;
-    line-height: 1.45;
+    line-height: 1.5;
     white-space: pre-line;
     text-align: right;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.92);
   }
 
-  /* On mobile: hide desktop sources, show toggle */
+  /* On mobile: hide desktop sources block, show pill toggle */
   .sources-desktop {
     display: none !important;
   }
