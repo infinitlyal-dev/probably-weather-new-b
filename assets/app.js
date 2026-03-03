@@ -43,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loader = $('#loader');
   const toast = $('#toast');
+  const capeWindBanner = $('#capeWindBanner');
+  const capeWindText = $('#capeWindText');
+  const capeWindDismiss = $('#capeWindDismiss');
 
   const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location" };
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
@@ -258,6 +261,16 @@ document.addEventListener("DOMContentLoaded", () => {
         zu: ["Izulu lokosa, boet! Akukho zaba.", "Basa i-Weber. Kungumthetho.", "Izinkulunkulu zesimo sezulu ziyaziqhayisa.", "Ibhishi noma ukosa? Yebo.", "I-weekend vibes ezinamandla kakhulu zidinga i-playlist yazo.", "Uma usebenza namuhla, sikuzwela.", "Kulungile ukungakwenzi lutho.", "Shayela abangane. Thola inyama. Masiye.", "Izinhlelo zanamuhla: hlala ngaphandle.", "I-weekend ayibi ngcono kunalokhu."],
         xh: ["Imozulu yokugrila, boet! Akukho zaba.", "Basa i-Weber. Ngumthetho.", "Oothixo bemozulu bayaziqhayisa.", "Ibhitshi okanye ukugrila? Ewe.", "Weekend vibes ezinamandla kakhulu zifuna i-playlist yazo.", "Ukuba usebenza namhlanje, siyakuzwela.", "Ilungele ukungenza nto kwaphela.", "Tsalela abahlobo. Fumana inyama. Masiye.", "Izicwangciso zanamhlanje: phila ngaphandle.", "Impelaveki ayibi bhetele kunale."],
         st: ["Leholimo la braai, boet! Ha ho mabaka.", "Chesa Weber. Ke molao.", "Melimo ea leholimo e a iponahatsa.", "Lebopo kapa braai? E.", "Maikutlo a beke a matla haholo a hloka playlist ea 'ona.", "Haeba o sebetsa kajeno, re oa utsoarela.", "E lokile ho se etse letho.", "Letsetsa metsoalle. Fumana nama. Re tsamaee.", "Merero ea kajeno: phela kantle.", "Phomolo ha e be betere ho feta mona."]
+      }
+    },
+    // Cape Doctor wind alert
+    capeDr: {
+      lines: {
+        en: ["Ag no, the tablecloth is out 💨", "Cape Doctor is doing rounds today", "Hold onto your hat, the Southeaster means business", "The Southeaster arrived uninvited — as always", "Wind's hectic — even the seagulls are walking"],
+        af: ["Ag nee, die tafeldoek is uit 💨", "Die Kaapse Dokter maak vandag huisbesoeke", "Hou jou hoed vas, die Suidooster bedoel sake", "Die Suidooster het ongenooid opgedaag — soos altyd", "Die wind is hectic — selfs die meeuë loop"],
+        zu: ["Yoh, ilaphu letafel liphumile 💨", "UDokotela waseKapa uyashayela namuhla", "Bamba isigqoko sakho, iSoutheaster iyasebenza", "Umoya waseNingizimu ufikile ungamenyiwe — njengenjwayelo", "Umoya unamandla — ngisho nezinkonjane ziyahamba"],
+        xh: ["Yhuu, ilaphu letafile liphumile 💨", "UGqirha waseKapa wenza iindwendwe namhlanje", "Bamba umnqwazi, iSoutheaster iyasebenza", "Umoya waseMzantsi ufikile ungamenywanga — njengoko eqhelile", "Umoya unamandla — neenkonjane ziyahamba"],
+        st: ["Eish, lesela la tafoleng le teng 💨", "Ngaka ea Cape e etsa litšeliso kajeno", "Tšoara katiba ea hao, Southeaster e bolela ka nnete", "Moea oa boroa o fihlile o sa mengoa — joalo ka kamehla", "Moea o matla — esita le dikoekoe di tsamaea"]
       }
     },
     // Toasts
@@ -574,6 +587,25 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
+  // ========== CAPE DOCTOR WIND ALERT ==========
+  let capeWindDismissed = false;
+  function isWesternCape(place) {
+    if (!place || !isNum(place.lat) || !isNum(place.lon)) return false;
+    return place.lat >= -34.5 && place.lat <= -33.0 && place.lon >= 17.5 && place.lon <= 20.0;
+  }
+  function renderCapeWind(norm) {
+    if (!capeWindBanner) return;
+    const wind = norm.windKph;
+    if (!capeWindDismissed && isWesternCape(activePlace) && isNum(wind) && wind >= 50) {
+      const lines = T.capeDr.lines[settings.lang] || T.capeDr.lines.en;
+      safeText(capeWindText, lines[Math.floor(Math.random() * lines.length)]);
+      capeWindBanner.classList.remove('hidden');
+    } else {
+      capeWindBanner.classList.add('hidden');
+    }
+  }
+  if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => { capeWindDismissed = true; if (capeWindBanner) capeWindBanner.classList.add('hidden'); });
+
   // ========== RENDER ==========
   function renderLoading(name) { showLoader(true); safeText(locationEl, name); safeText(headlineEl, t('misc', 'loading')); safeText(tempEl, '--°'); safeText(descriptionEl, '—'); safeText(extremeValueEl, '--'); }
   function renderError(msg) { showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
@@ -639,6 +671,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [headlineEl, tempEl, descriptionEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
+    renderCapeWind(norm);
   }
   function getWeatherIcon(rp, cp, tc) {
     if (isNum(tc) && tc <= 0) return '❄️';
