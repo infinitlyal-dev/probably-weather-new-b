@@ -618,12 +618,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== API ==========
+  // Cascading reverse geocode: zoom=16 for hamlet/suburb detail, smart fallback
+  // Priority: village/town BEFORE city — so "Wilderness" wins over "George"
   async function reverseGeocode(lat, lon) {
     try {
-      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=14`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
-      if (!resp.ok) return null; const data = await resp.json();
-      const city = data.address?.suburb || data.address?.city || data.address?.town || data.address?.village || data.address?.municipality || 'Unknown';
-      return data.address?.country ? `${city}, ${data.address.country}` : city;
+      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
+      if (!resp.ok) return null;
+      const data = await resp.json();
+      const addr = data.address || {};
+      const smallPlace = addr.village || addr.town;
+      const suburb = addr.suburb || addr.neighbourhood;
+      const city = addr.city || addr.municipality;
+      const province = addr.state || addr.province || addr.region;
+      const country = addr.country;
+      if (smallPlace) return province ? `${smallPlace}, ${province}` : (country ? `${smallPlace}, ${country}` : smallPlace);
+      if (suburb && city) return `${suburb}, ${city}`;
+      if (suburb) return province ? `${suburb}, ${province}` : (country ? `${suburb}, ${country}` : suburb);
+      if (city) return province ? `${city}, ${province}` : (country ? `${city}, ${country}` : city);
+      if (province) return country ? `${province}, ${country}` : province;
+      if (country) return country;
+      return null;
     } catch { return null; }
   }
   async function resolvePlaceName(place) { if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown'; if (!isPlaceholderName(place.name)) return place.name; return await reverseGeocode(place.lat, place.lon) || place.name || 'Unknown'; }
@@ -777,8 +791,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentTemp = norm.nowTemp, hi = norm.todayHigh, low = norm.todayLow, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
     document.body.className = `weather-${displayCondition}`;
-    let locationName = norm.locationName || activePlace?.name || 'My Location'; safeText(locationEl, locationName);
-    if (locationName === 'My Location' && activePlace?.lat && activePlace?.lon) {
+    let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
+    if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
     const probablyLabel = t('weather', 'probably');
@@ -1002,6 +1016,18 @@ document.addEventListener("DOMContentLoaded", () => {
   navSearch?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); });
   navSettings?.addEventListener('click', () => showScreen(screenSettings));
   
+  // Build a display name from reverse geocode data — never returns "My Location, ZA"
+  function buildLocationName(data, lat, lon) {
+    const city = data?.city;
+    const admin1 = data?.admin1;
+    const nearCity = data?.nearCity;
+    if (city && admin1) return `${city}, ${admin1}`;
+    if (city) return city;
+    if (admin1) return admin1;
+    // Ultimate fallback: use coordinates rounded for display
+    return `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'}, ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'W' : 'E'}`;
+  }
+
   // My Location button - reset to geolocation
   myLocationBtn?.addEventListener('click', () => {
     showScreen(screenHome);
@@ -1010,30 +1036,29 @@ document.addEventListener("DOMContentLoaded", () => {
       renderLoading("Getting location...");
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
-        try { 
-          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); 
+        try {
+          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`);
           const data = await rev.json();
-          const city = data?.city || "My Location", cc = data?.countryCode || null;
-          saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); 
-          homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; 
-          saveJSON(STORAGE.home, homePlace); 
+          const displayName = buildLocationName(data, lat, lon);
+          saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat, lon });
+          homePlace = { name: displayName, lat, lon };
+          saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
-        } catch { 
-          saveJSON(STORAGE.location, { city: "My Location", lat, lon });
-          homePlace = { name: "My Location", lat, lon }; 
-          saveJSON(STORAGE.home, homePlace); 
-          loadAndRender(homePlace); 
+        } catch {
+          // API failed — try client-side reverse geocode
+          const fallbackName = await reverseGeocode(lat, lon);
+          homePlace = { name: fallbackName || `${Math.abs(lat).toFixed(1)}°S, ${Math.abs(lon).toFixed(1)}°E`, lat, lon };
+          saveJSON(STORAGE.home, homePlace);
+          loadAndRender(homePlace);
         }
-      }, (err) => { 
+      }, (err) => {
         console.log('Geolocation error:', err.code, err.message);
         if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
-          homePlace = { 
-            name: savedGpsLoc.city && savedGpsLoc.countryCode 
-              ? `${savedGpsLoc.city}, ${savedGpsLoc.countryCode}` 
-              : (savedGpsLoc.city || "My Location"), 
-            lat: savedGpsLoc.lat, lon: savedGpsLoc.lon 
-          };
+          const savedName = savedGpsLoc.city && savedGpsLoc.admin1
+            ? `${savedGpsLoc.city}, ${savedGpsLoc.admin1}`
+            : (savedGpsLoc.city || savedGpsLoc.admin1 || 'South Africa');
+          homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
@@ -1046,9 +1071,12 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
       }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
-    } else { 
+    } else {
       if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
-        homePlace = { name: savedGpsLoc.city || "My Location", lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
+        const savedName = savedGpsLoc.city && savedGpsLoc.admin1
+          ? `${savedGpsLoc.city}, ${savedGpsLoc.admin1}`
+          : (savedGpsLoc.city || savedGpsLoc.admin1 || 'South Africa');
+        homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
         saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
         showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
@@ -1077,15 +1105,23 @@ document.addEventListener("DOMContentLoaded", () => {
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
   if (homePlace) { showScreen(screenHome); loadAndRender(homePlace); }
-  else if (savedLoc?.lat && savedLoc?.lon) { homePlace = { name: savedLoc.city && savedLoc.countryCode ? `${savedLoc.city}, ${savedLoc.countryCode}` : (savedLoc.city || "My Location"), lat: savedLoc.lat, lon: savedLoc.lon }; saveJSON(STORAGE.home, homePlace); showScreen(screenHome); loadAndRender(homePlace); }
-  else { showScreen(screenHome); renderLoading("My Location");
+  else if (savedLoc?.lat && savedLoc?.lon) {
+    const sn = savedLoc.city && savedLoc.admin1 ? `${savedLoc.city}, ${savedLoc.admin1}` : (savedLoc.city || savedLoc.admin1 || 'South Africa');
+    homePlace = { name: sn, lat: savedLoc.lat, lon: savedLoc.lon }; saveJSON(STORAGE.home, homePlace); showScreen(screenHome); loadAndRender(homePlace);
+  }
+  else { showScreen(screenHome); renderLoading("Locating...");
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
-        try { const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
-          const city = data?.city || "My Location", cc = data?.countryCode || null;
-          saveJSON(STORAGE.location, { city, countryCode: cc, lat, lon }); homePlace = { name: cc ? `${city}, ${cc}` : city, lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
-        } catch { homePlace = { name: "My Location", lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace); }
+        try {
+          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
+          const displayName = buildLocationName(data, lat, lon);
+          saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat, lon });
+          homePlace = { name: displayName, lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
+        } catch {
+          const fn = await reverseGeocode(lat, lon);
+          homePlace = { name: fn || 'South Africa', lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
+        }
       }, () => {
         // GPS blocked on first visit - use IP geolocation instead of hardcoded city
         getIPLocation().then(place => {

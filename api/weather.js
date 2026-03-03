@@ -41,29 +41,33 @@ export default async function handler(req, res) {
       }
     }
 
-    // Reverse geocode endpoint
+    // Reverse geocode endpoint — cascading zoom for small-town accuracy
     if (req.query.reverse) {
       try {
+        // zoom=16 catches hamlets/suburbs; zoom=10 is city-level fallback
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`,
           { headers: { 'User-Agent': NOMINATIM_UA } }
         );
         const addr = rev?.address || {};
-        const city = addr.city || addr.town || addr.village || addr.suburb || addr.neighbourhood || addr.municipality || null;
+        // Priority: village/town/suburb BEFORE city — so "Wilderness" beats "George"
+        const place = addr.village || addr.town || addr.suburb || addr.city || addr.neighbourhood || addr.municipality || null;
+        const city = addr.city || addr.town || addr.municipality || null;
         const admin1 = addr.state || addr.province || addr.region || addr.county || null;
         const countryCode = addr.country_code ? String(addr.country_code).toUpperCase() : null;
-        return res.status(200).json({ ok: true, city, admin1, countryCode });
+        return res.status(200).json({ ok: true, city: place, admin1, countryCode, nearCity: place !== city ? city : null });
       } catch {
-        return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null });
+        return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
       }
     }
 
-    // Resolve location name
+    // Resolve location name — cascading strategy for small-town accuracy
+    // Priority: village/town/suburb BEFORE city so Wilderness beats George
     let resolvedName = isPlaceholder ? null : name;
     if (!resolvedName) {
       try {
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`,
           { headers: { 'User-Agent': NOMINATIM_UA } }
         );
         const addr = rev?.address || {};
@@ -72,17 +76,34 @@ export default async function handler(req, res) {
           return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
         };
         const pick = (...vals) => vals.find(v => !isBadLabel(v));
-        const primary   = pick(addr.town, addr.city, addr.village);
-        const cityTown  = pick(addr.suburb, addr.neighbourhood);
-        const secondary = pick(addr.municipality, addr.state, addr.province);
-        const country   = addr.country;
+        // Small place first: village/town, then suburb, then city
+        const smallPlace = pick(addr.village, addr.town);
+        const suburb     = pick(addr.suburb, addr.neighbourhood);
+        const city       = pick(addr.city, addr.municipality);
+        const province   = pick(addr.state, addr.province, addr.region);
+        const country    = addr.country;
 
         const parts = [];
-        if (primary)        parts.push(primary);
-        else if (cityTown)  parts.push(cityTown);
-        else if (secondary) parts.push(secondary);
-        else if (country)   parts.push(country);
-        if (country && parts[parts.length - 1] !== country) parts.push(country);
+        if (smallPlace) {
+          parts.push(smallPlace);
+          // Add province for context: "Wilderness, Western Cape"
+          if (province) parts.push(province);
+          else if (country) parts.push(country);
+        } else if (suburb) {
+          parts.push(suburb);
+          if (city) parts.push(city);
+          else if (province) parts.push(province);
+          else if (country) parts.push(country);
+        } else if (city) {
+          parts.push(city);
+          if (province) parts.push(province);
+          else if (country) parts.push(country);
+        } else if (province) {
+          parts.push(province);
+          if (country) parts.push(country);
+        } else if (country) {
+          parts.push(country);
+        }
         if (parts.length) resolvedName = parts.join(', ');
       } catch { /* Keep fallback name if reverse geocode fails */ }
     }
