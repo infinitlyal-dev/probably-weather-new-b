@@ -273,6 +273,15 @@ document.addEventListener("DOMContentLoaded", () => {
       extreme: { en: "Extreme", af: "Uiters", zu: "Kakhulukazi", xh: "Kakhulu", st: "Ho Fetisisa" },
       sunscreen: { en: "☀️ Sunscreen recommended", af: "☀️ Sonskerm aanbeveel", zu: "☀️ Ikhrimu yelanga iyacelwa", xh: "☀️ Ikhrimu yelanga icetyiswa", st: "☀️ Setofo sa letsatsi se kgothalletsoa" }
     },
+    // Braai Index
+    braai: {
+      label: { en: "Braai Index", af: "Braai-Indeks", zu: "I-Braai Index", xh: "I-Braai Index", st: "Braai Index" },
+      perfect: { en: "🔥 Perfect braai weather!", af: "🔥 Perfekte braai-weer!", zu: "🔥 Isimo esihle se-braai!", xh: "🔥 Imozulu efanelekileyo ye-braai!", st: "🔥 Leholimo le lokileng la braai!" },
+      great: { en: "🥩 Great conditions", af: "🥩 Fantastiese toestande", zu: "🥩 Izimo ezinhle kakhulu", xh: "🥩 Iimeko ezintle kakhulu", st: "🥩 Maemo a matle haholo" },
+      decent: { en: "👍 Decent — light the coals", af: "👍 Redelik — steek die kole aan", zu: "👍 Kulungile — basa amalahle", xh: "👍 Kulungile — layita amalahle", st: "👍 Ho lokile — hotela mashala" },
+      risky: { en: "🌧️ Risky — keep an eye on the sky", af: "🌧️ Riskant — hou die lug dop", zu: "🌧️ Kuyingozi — qapha isibhakabhaka", xh: "🌧️ Yingozi — jonga isibhakabhaka", st: "🌧️ Kotsi — sheba leholimong" },
+      nope: { en: "🚫 Not today, boet", af: "🚫 Nie vandag nie, boet", zu: "🚫 Hayi namhlanje, mfowethu", xh: "🚫 Hayi namhlanje, mfondini", st: "🚫 Eseng kajeno, motswalle" }
+    },
     // Cape Doctor wind alert
     capeDr: {
       lines: {
@@ -620,6 +629,65 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ssEl) safeText(ssEl, uv >= 6 ? t('uvCard', 'sunscreen') : '');
   }
 
+  // ========== BRAAI INDEX ==========
+  function calculateBraaiIndex(norm) {
+    // Composite score 0-100:  Rain (40%), Temp (30%), Wind (20%), Cloud (10%)
+    let rainScore = 100;
+    if (isNum(norm.rainPct)) {
+      if (norm.rainPct >= 70) rainScore = 0;
+      else if (norm.rainPct >= 50) rainScore = 20;
+      else if (norm.rainPct >= 30) rainScore = 55;
+      else if (norm.rainPct >= 15) rainScore = 80;
+      else rainScore = 100;
+    }
+    let tempScore = 50;
+    const tc = norm.nowTemp;
+    if (isNum(tc)) {
+      // Sweet spot 22-28°C = 100, slopes down outside
+      if (tc >= 22 && tc <= 28) tempScore = 100;
+      else if (tc >= 18 && tc < 22) tempScore = 70 + (tc - 18) * 7.5;
+      else if (tc > 28 && tc <= 34) tempScore = 100 - (tc - 28) * 8;
+      else if (tc >= 14 && tc < 18) tempScore = 40 + (tc - 14) * 7.5;
+      else if (tc > 34) tempScore = Math.max(0, 52 - (tc - 34) * 10);
+      else tempScore = Math.max(0, tc * 2.8);  // below 14
+    }
+    let windScore = 100;
+    const w = norm.windKph;
+    if (isNum(w)) {
+      if (w <= 15) windScore = 100;
+      else if (w <= 25) windScore = 80 - (w - 15) * 2;
+      else if (w <= 40) windScore = 60 - (w - 25) * 3;
+      else windScore = Math.max(0, 15 - (w - 40) * 1.5);
+    }
+    let cloudScore = 80;
+    if (isNum(norm.cloudPct)) {
+      cloudScore = norm.cloudPct <= 30 ? 100 : Math.max(20, 100 - (norm.cloudPct - 30) * 1.1);
+    }
+    return Math.round(rainScore * 0.4 + tempScore * 0.3 + windScore * 0.2 + cloudScore * 0.1);
+  }
+  function renderBraaiIndex(norm) {
+    const card = $('#braaiCard');
+    if (!card) return;
+    // Only show during the day
+    if (!norm.isDay) { card.classList.add('hidden'); return; }
+    const score = calculateBraaiIndex(norm);
+    card.classList.remove('hidden');
+    const labelEl = $('#braaiLabel'), scoreEl = $('#braaiScore'), verdictEl = $('#braaiVerdict');
+    if (labelEl) safeText(labelEl, t('braai', 'label'));
+    if (scoreEl) safeText(scoreEl, `${score}/100`);
+    let verdictKey;
+    if (score >= 85) verdictKey = 'perfect';
+    else if (score >= 70) verdictKey = 'great';
+    else if (score >= 50) verdictKey = 'decent';
+    else if (score >= 30) verdictKey = 'risky';
+    else verdictKey = 'nope';
+    if (verdictEl) safeText(verdictEl, t('braai', verdictKey));
+    // Colour the score based on tier
+    if (scoreEl) {
+      scoreEl.style.color = score >= 85 ? '#4caf50' : score >= 70 ? '#8bc34a' : score >= 50 ? '#fdd835' : score >= 30 ? '#ff9800' : '#f44336';
+    }
+  }
+
   // ========== CAPE DOCTOR WIND ALERT ==========
   let capeWindDismissed = false;
   function isWesternCape(place) {
@@ -704,7 +772,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [headlineEl, tempEl, descriptionEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
-    renderCapeWind(norm); renderUvCard(norm);
+    renderCapeWind(norm); renderUvCard(norm); renderBraaiIndex(norm);
   }
   function getWeatherIcon(rp, cp, tc) {
     if (isNum(tc) && tc <= 0) return '❄️';
