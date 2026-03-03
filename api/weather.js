@@ -646,6 +646,7 @@ export default async function handler(req, res) {
           'Open-Meteo':     norms[0] ? Math.round(normW[0] * 100) : null,
           'WeatherAPI':     norms[1] ? Math.round(normW[1] * 100) : null,
           'Pirate Weather': norms[2] ? Math.round(normW[2] * 100) : null,
+          'MET Norway':     norms[3] ? Math.round(normW[3] * 100) : null,
         },
         localHour,
         updatedAtLabel: new Date().toISOString(),
