@@ -51,6 +51,53 @@ document.addEventListener("DOMContentLoaded", () => {
   const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
   const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32 };
 
+  // ========== INDEXEDDB WEATHER CACHE ==========
+  const CACHE_DB = 'pw_weather_cache';
+  const CACHE_STORE = 'responses';
+  const CACHE_VERSION = 1;
+  const CACHE_MAX_AGE = 30 * 60 * 1000; // 30 minutes
+  let cacheDB = null;
+  function openCacheDB() {
+    return new Promise((resolve, reject) => {
+      if (cacheDB) { resolve(cacheDB); return; }
+      const req = indexedDB.open(CACHE_DB, CACHE_VERSION);
+      req.onupgradeneeded = () => { const db = req.result; if (!db.objectStoreNames.contains(CACHE_STORE)) db.createObjectStore(CACHE_STORE); };
+      req.onsuccess = () => { cacheDB = req.result; resolve(cacheDB); };
+      req.onerror = () => reject(req.error);
+    });
+  }
+  function cacheKey(place) { return `${parseFloat(place.lat).toFixed(3)},${parseFloat(place.lon).toFixed(3)}`; }
+  async function getCachedWeather(place) {
+    try {
+      const db = await openCacheDB();
+      return new Promise((resolve) => {
+        const tx = db.transaction(CACHE_STORE, 'readonly');
+        const req = tx.objectStore(CACHE_STORE).get(cacheKey(place));
+        req.onsuccess = () => {
+          const entry = req.result;
+          if (entry && (Date.now() - entry.timestamp) < CACHE_MAX_AGE) resolve(entry);
+          else resolve(null);
+        };
+        req.onerror = () => resolve(null);
+      });
+    } catch { return null; }
+  }
+  async function setCachedWeather(place, payload) {
+    try {
+      const db = await openCacheDB();
+      const tx = db.transaction(CACHE_STORE, 'readwrite');
+      tx.objectStore(CACHE_STORE).put({ payload, timestamp: Date.now() }, cacheKey(place));
+    } catch { /* silent fail */ }
+  }
+  const offlineEl = document.getElementById('offlineIndicator');
+  function showCacheAge(timestamp) {
+    if (!offlineEl) return;
+    const mins = Math.round((Date.now() - timestamp) / 60000);
+    offlineEl.textContent = mins < 1 ? 'Using cached data (just now)' : `Last updated ${mins} min ago`;
+    offlineEl.classList.add('visible');
+  }
+  function hideCacheAge() { if (offlineEl) offlineEl.classList.remove('visible'); }
+
   // ========== FULL UI TRANSLATIONS ==========
   const T = {
     // Navigation
@@ -841,8 +888,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   async function loadAndRender(place) {
     activePlace = place; renderLoading(place.name || 'My Location');
-    try { const payload = await fetchProbable(place); lastPayload = payload; const norm = normalizePayload(payload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
-    catch (e) { console.error("Load failed:", e); renderError(t('misc', 'couldntFetch')); }
+    // 1. Try showing cached data instantly
+    const cached = await getCachedWeather(place);
+    if (cached) {
+      try {
+        lastPayload = cached.payload;
+        const norm = normalizePayload(cached.payload);
+        window.__PW_LAST_NORM = norm;
+        renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
+        showCacheAge(cached.timestamp);
+      } catch { /* stale cache, ignore */ }
+    }
+    // 2. Fetch fresh data from network
+    try {
+      const payload = await fetchProbable(place);
+      lastPayload = payload;
+      const norm = normalizePayload(payload);
+      window.__PW_LAST_NORM = norm;
+      renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
+      hideCacheAge();
+      setCachedWeather(place, payload);
+    } catch (e) {
+      console.error("Load failed:", e);
+      if (!cached) renderError(t('misc', 'couldntFetch'));
+      // If cached data was shown, user still sees stale but usable data
+    }
   }
 
   // ========== FAVORITES & RECENTS ==========
