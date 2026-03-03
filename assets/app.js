@@ -600,9 +600,18 @@ document.addEventListener("DOMContentLoaded", () => {
     safeText(tempEl, isNum(currentTemp) ? `${probablyLabel} ${formatTemp(currentTemp)}` : `${probablyLabel} --°`);
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
-      const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
-      const loStr = isNum(low) ? formatTemp(low) : '--°';
-      hiLoEl.innerHTML = `<span class="hi">↑${hiStr}</span> <span class="lo">↓${loStr}</span>`;
+      if (settings.range) {
+        const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+        const loStr = isNum(low) ? formatTemp(low) : '--°';
+        hiLoEl.textContent = '';
+        const hiSpan = document.createElement('span'); hiSpan.className = 'hi'; hiSpan.textContent = `\u2191${hiStr}`;
+        const loSpan = document.createElement('span'); loSpan.className = 'lo'; loSpan.textContent = `\u2193${loStr}`;
+        hiLoEl.appendChild(hiSpan); hiLoEl.append(' '); hiLoEl.appendChild(loSpan);
+        hiLoEl.style.display = '';
+      } else {
+        hiLoEl.textContent = '';
+        hiLoEl.style.display = 'none';
+      }
     }
     // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight
     const displayConditionForCopy = (!norm.isDay && displayCondition === 'clear') ? 'night' : displayCondition;
