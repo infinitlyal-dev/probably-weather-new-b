@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
     const WEATHERAPI_KEY     = process.env.WEATHERAPI_KEY     || null;
     const PIRATE_WEATHER_KEY = process.env.PIRATE_WEATHER_KEY || null;
-    const NOMINATIM_UA       = process.env.MET_USER_AGENT     || 'ProbablyWeather/1.0 (contact: you@example.com)';
+    const NOMINATIM_UA       = process.env.MET_USER_AGENT     || 'ProbablyWeather/1.0 (contact: howzit@probablyweather.co.za)';
 
     const timeoutMs = 9000;
 
