@@ -263,6 +263,16 @@ document.addEventListener("DOMContentLoaded", () => {
         st: ["Leholimo la braai, boet! Ha ho mabaka.", "Chesa Weber. Ke molao.", "Melimo ea leholimo e a iponahatsa.", "Lebopo kapa braai? E.", "Maikutlo a beke a matla haholo a hloka playlist ea 'ona.", "Haeba o sebetsa kajeno, re oa utsoarela.", "E lokile ho se etse letho.", "Letsetsa metsoalle. Fumana nama. Re tsamaee.", "Merero ea kajeno: phela kantle.", "Phomolo ha e be betere ho feta mona."]
       }
     },
+    // UV Card
+    uvCard: {
+      label: { en: "UV Index", af: "UV-Indeks", zu: "I-UV Index", xh: "I-UV Index", st: "UV Index" },
+      low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
+      moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
+      high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
+      veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" },
+      extreme: { en: "Extreme", af: "Uiters", zu: "Kakhulukazi", xh: "Kakhulu", st: "Ho Fetisisa" },
+      sunscreen: { en: "☀️ Sunscreen recommended", af: "☀️ Sonskerm aanbeveel", zu: "☀️ Ikhrimu yelanga iyacelwa", xh: "☀️ Ikhrimu yelanga icetyiswa", st: "☀️ Setofo sa letsatsi se kgothalletsoa" }
+    },
     // Cape Doctor wind alert
     capeDr: {
       lines: {
@@ -587,6 +597,29 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
+  // ========== UV INDEX CARD ==========
+  function renderUvCard(norm) {
+    const card = $('#uvCard');
+    if (!card) return;
+    const uv = norm.uv;
+    // Hide at night or when UV data unavailable
+    if (!norm.isDay || !isNum(uv)) { card.classList.add('hidden'); return; }
+    card.classList.remove('hidden');
+    const labelEl = $('#uvCardLabel'), sevEl = $('#uvSeverity'), ssEl = $('#uvSunscreen');
+    if (labelEl) safeText(labelEl, t('uvCard', 'label'));
+    let sevText, sevClass;
+    if (uv <= 2) { sevText = t('uvCard', 'low'); sevClass = 'uv-low'; }
+    else if (uv <= 5) { sevText = t('uvCard', 'moderate'); sevClass = 'uv-moderate'; }
+    else if (uv <= 7) { sevText = t('uvCard', 'high'); sevClass = 'uv-high'; }
+    else if (uv <= 10) { sevText = t('uvCard', 'veryHigh'); sevClass = 'uv-veryhigh'; }
+    else { sevText = t('uvCard', 'extreme'); sevClass = 'uv-extreme'; }
+    if (sevEl) {
+      safeText(sevEl, `${round0(uv)} — ${sevText}`);
+      sevEl.className = 'uv-severity ' + sevClass;
+    }
+    if (ssEl) safeText(ssEl, uv >= 6 ? t('uvCard', 'sunscreen') : '');
+  }
+
   // ========== CAPE DOCTOR WIND ALERT ==========
   let capeWindDismissed = false;
   function isWesternCape(place) {
@@ -671,7 +704,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [headlineEl, tempEl, descriptionEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
-    renderCapeWind(norm);
+    renderCapeWind(norm); renderUvCard(norm);
   }
   function getWeatherIcon(rp, cp, tc) {
     if (isNum(tc) && tc <= 0) return '❄️';
