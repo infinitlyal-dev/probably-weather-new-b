@@ -604,6 +604,7 @@ export default async function handler(req, res) {
       isDay,
     });
 
+    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
     return res.status(200).json({
       ok: true,
       location: { name: resolvedName || name || 'Unknown', lat, lon },
