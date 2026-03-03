@@ -161,13 +161,13 @@ export default async function handler(req, res) {
 
       hourlies[0] = {
         source:     'Open-Meteo',
-        temps:      om.hourly?.temperature_2m?.slice(0, 24)            ?? [],
-        feelsLikes: om.hourly?.apparent_temperature?.slice(0, 24)      ?? [],
-        rains:      om.hourly?.precipitation_probability?.slice(0, 24) ?? [],
-        winds:      om.hourly?.wind_speed_10m?.slice(0, 24)            ?? [],
-        gusts:      om.hourly?.wind_gusts_10m?.slice(0, 24)            ?? [],
-        clouds:     om.hourly?.cloud_cover?.slice(0, 24)               ?? [],
-        humidity:   om.hourly?.relative_humidity_2m?.slice(0, 24)      ?? [],
+        temps:      om.hourly?.temperature_2m?.slice(0, 48)            ?? [],
+        feelsLikes: om.hourly?.apparent_temperature?.slice(0, 48)      ?? [],
+        rains:      om.hourly?.precipitation_probability?.slice(0, 48) ?? [],
+        winds:      om.hourly?.wind_speed_10m?.slice(0, 48)            ?? [],
+        gusts:      om.hourly?.wind_gusts_10m?.slice(0, 48)            ?? [],
+        clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
+        humidity:   om.hourly?.relative_humidity_2m?.slice(0, 48)      ?? [],
       };
 
       dailies[0] = {
@@ -212,14 +212,15 @@ export default async function handler(req, res) {
           sunset:    astro.sunset                ?? null,
         };
 
+        const waHours = [...(wa.forecast.forecastday[0]?.hour || []), ...(wa.forecast.forecastday[1]?.hour || [])].slice(0, 48);
         hourlies[1] = {
           source:     'WeatherAPI',
-          temps:      wa.forecast.forecastday[0].hour.map(h => h.temp_c),
-          feelsLikes: wa.forecast.forecastday[0].hour.map(h => h.feelslike_c),
-          rains:      wa.forecast.forecastday[0].hour.map(h => h.chance_of_rain),
-          winds:      wa.forecast.forecastday[0].hour.map(h => h.wind_kph),
-          clouds:     wa.forecast.forecastday[0].hour.map(h => h.cloud),
-          humidity:   wa.forecast.forecastday[0].hour.map(h => h.humidity),
+          temps:      waHours.map(h => h.temp_c),
+          feelsLikes: waHours.map(h => h.feelslike_c),
+          rains:      waHours.map(h => h.chance_of_rain),
+          winds:      waHours.map(h => h.wind_kph),
+          clouds:     waHours.map(h => h.cloud),
+          humidity:   waHours.map(h => h.humidity),
         };
 
         dailies[1] = {
@@ -334,7 +335,7 @@ export default async function handler(req, res) {
       const metTemp     = isNum(details.air_temperature) ? details.air_temperature : null;
 
       // Rain proxy: convert max precipitation in next 24h to rough probability
-      const precipAmounts = series.slice(0, 24).map(p =>
+      const precipAmounts = series.slice(0, 48).map(p =>
         p.data?.next_1_hours?.details?.precipitation_amount ??
         p.data?.next_6_hours?.details?.precipitation_amount ?? 0
       );
@@ -352,8 +353,8 @@ export default async function handler(req, res) {
         source:    'MET Norway',
         nowTemp:   metTemp,
         feelsLike: calcFeelsLike(metTemp, metWindKph, metHumidity),
-        todayHigh: series.slice(0, 24).map(p => p.data?.instant?.details?.air_temperature).filter(isNum).reduce((a, b) => Math.max(a, b), -Infinity) || null,
-        todayLow:  series.slice(0, 24).map(p => p.data?.instant?.details?.air_temperature).filter(isNum).reduce((a, b) => Math.min(a, b), Infinity)  || null,
+        todayHigh: series.slice(0, 48).map(p => p.data?.instant?.details?.air_temperature).filter(isNum).reduce((a, b) => Math.max(a, b), -Infinity) || null,
+        todayLow:  series.slice(0, 48).map(p => p.data?.instant?.details?.air_temperature).filter(isNum).reduce((a, b) => Math.min(a, b), Infinity)  || null,
         todayRain: rainProxy,
         todayUv:   null, // MET Norway compact doesn't provide UV
         desc:      metDesc,
@@ -366,23 +367,23 @@ export default async function handler(req, res) {
 
       hourlies[2] = {
         source:     'MET Norway',
-        temps:      series.slice(0, 24).map(p => p.data?.instant?.details?.air_temperature ?? null),
-        feelsLikes: series.slice(0, 24).map(p => {
+        temps:      series.slice(0, 48).map(p => p.data?.instant?.details?.air_temperature ?? null),
+        feelsLikes: series.slice(0, 48).map(p => {
           const t = p.data?.instant?.details?.air_temperature;
           const w = p.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
           const h = p.data?.instant?.details?.relative_humidity;
           return calcFeelsLike(t, w, h);
         }),
-        rains:  series.slice(0, 24).map(p => {
+        rains:  series.slice(0, 48).map(p => {
           const mm = p.data?.next_1_hours?.details?.precipitation_amount ?? 0;
           return mm === 0 ? 0 : mm < 0.5 ? 20 : mm < 1 ? 40 : mm < 2 ? 60 : 80;
         }),
-        winds:  series.slice(0, 24).map(p => {
+        winds:  series.slice(0, 48).map(p => {
           const w = p.data?.instant?.details?.wind_speed;
           return isNum(w) ? Math.round(w * 3.6 * 10) / 10 : null;
         }),
-        gusts:  series.slice(0, 24).map(() => null), // not in compact
-        clouds: series.slice(0, 24).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
+        gusts:  series.slice(0, 48).map(() => null), // not in compact
+        clouds: series.slice(0, 48).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
       };
 
       dailies[3] = {
@@ -430,7 +431,7 @@ export default async function handler(req, res) {
     }
 
     // Hourly aggregation (Open-Meteo + WeatherAPI only — aligned on local midnight)
-    const aggregatedHourly = Array.from({ length: 24 }, (_, i) => {
+    const aggregatedHourly = Array.from({ length: 48 }, (_, i) => {
       const hourWindVals = hourlies.map(h => h ? h.winds[i] : null).filter(isNum);
       const hourGustVals = hourlies.map(h => h ? (h.gusts?.[i] ?? null) : null).filter(isNum);
       const avgWind = wAvg(hourlies, hourlyW, h => h.winds[i]);
@@ -457,8 +458,8 @@ export default async function handler(req, res) {
       const lowC         = wAvg(dailies, dailyW, d => d.lows[i]);
       const rainChance   = wAvg(dailies, dailyW, d => d.rains[i]);
       const uv           = wAvg(dailies, dailyW, d => d.uvs[i]);
-      // Use midday wind estimate (index 12 = noon local time)
-      const noonIdx      = Math.min(i * 4 + 12, 23);
+      // Use midday wind estimate (index 12 = noon local time, day 1 = index 36)
+      const noonIdx      = i * 24 + 12;
       const windKph      = aggregatedHourly[noonIdx]?.windKph ?? null;
 
       return {
