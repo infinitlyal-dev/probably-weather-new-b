@@ -88,12 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
       language: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
       wittyIn: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
       about: { en: "About", af: "Aangaande", zu: "Mayelana", xh: "Malunga", st: "Mabapi" },
-      aboutText: { 
-        en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com & Pirate Weather to give you a more reliable prediction.",
-        af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com & Pirate Weather om jou 'n meer betroubare voorspelling te gee.",
-        zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com & Pirate Weather ukukunikeza isibikezelo esithembekile.",
-        xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com & Pirate Weather ukukunika isithembiso esithembekileyo.",
-        st: "Probably Weather e kopanya diponelopele tse tsoang ho Open-Meteo, WeatherAPI.com & Pirate Weather ho u fa ponelopele e tšepahalang."
+      aboutText: {
+        en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather to give you a more reliable prediction.",
+        af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather om jou 'n meer betroubare voorspelling te gee.",
+        zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather ukukunikeza isibikezelo esithembekile.",
+        xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather ukukunika isithembiso esithembekileyo.",
+        st: "Probably Weather e kopanya diponelopele tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather ho u fa ponelopele e tšepahalang."
       }
     },
     // Sidebar
