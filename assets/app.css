@@ -1844,13 +1844,13 @@ main#home-screen.main #confidence {
   }
 
   .sidebar .description {
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 4px;
     margin-top: 0;
     text-align: right;
-    font-weight: 600;
+    font-weight: 700;
     color: #ff8c42;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6);
     line-height: 1.4;
     letter-spacing: 0.01em;
   }
@@ -1902,31 +1902,39 @@ main#home-screen.main #confidence {
     font-weight: 600;
   }
 
-  /* Sources card — tap-to-expand toggle */
+  /* Sources card — dark pill, tap-to-expand */
   .card-sources {
-    background: rgba(255,255,255,0.08);
+    background: transparent;
     padding: 0;
     overflow: hidden;
     cursor: pointer;
+    border: none;
+    box-shadow: none;
+    border-radius: 20px;
+    margin-top: 4px;
   }
 
   .sources-toggle {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 4px;
-    padding: 6px 10px;
-    font-size: 0.65rem;
-    text-transform: uppercase;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
     letter-spacing: 0.3px;
-    opacity: 0.8;
+    color: rgba(255,255,255,0.95);
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
     user-select: none;
+    text-transform: none;
+    opacity: 1;
   }
 
   .sources-toggle .sources-arrow {
     display: inline-block;
     transition: transform 0.3s ease;
-    font-size: 0.55rem;
+    font-size: 0.65rem;
   }
 
   .card-sources.expanded .sources-toggle .sources-arrow {
@@ -1937,20 +1945,27 @@ main#home-screen.main #confidence {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease, padding 0.35s ease;
-    padding: 0 10px;
+    padding: 0 12px;
+    background: rgba(0,0,0,0.45);
+    border-radius: 0 0 14px 14px;
   }
 
   .card-sources.expanded .sources-detail {
-    max-height: 120px;
-    padding: 0 10px 8px;
+    max-height: 140px;
+    padding: 6px 12px 10px;
+  }
+
+  .card-sources.expanded .sources-toggle {
+    border-radius: 14px 14px 0 0;
   }
 
   .sources-detail .value {
-    font-size: 0.6rem;
-    font-weight: 400;
-    line-height: 1.35;
+    font-size: 0.65rem;
+    font-weight: 500;
+    line-height: 1.45;
     white-space: pre-line;
     text-align: right;
+    color: rgba(255,255,255,0.9);
   }
 
   /* On mobile: hide desktop sources, show toggle */

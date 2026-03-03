@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     if (extremeLabelEl) extremeLabelEl.textContent = t('sidebar', 'todaysHero');
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
-    const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = t('sidebar', 'sources');
+    const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
   }
 
   // ========== WEATHER LOGIC ==========
