@@ -88,9 +88,18 @@
       <aside class="sidebar">
         <div id="description" class="description sidebar-humour">—</div>
         <div id="weatherByline" class="weather-byline sidebar-stats">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
-        <div class="card card-sources">
-          <div class="label">Sources</div>
-          <div id="confidenceValue" class="value">--</div>
+        <div class="card card-sources" id="sourcesCard">
+          <div class="sources-toggle" id="sourcesToggle">
+            <span class="sources-toggle-label">Sources</span>
+            <span class="sources-arrow">▼</span>
+          </div>
+          <div class="sources-detail">
+            <div id="confidenceValue" class="value">--</div>
+          </div>
+          <div class="sources-desktop">
+            <div class="label">Sources</div>
+            <div id="confidenceValueDesktop" class="value">--</div>
+          </div>
         </div>
       </aside>
     </div>

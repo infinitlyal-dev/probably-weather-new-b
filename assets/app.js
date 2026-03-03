@@ -456,7 +456,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     if (extremeLabelEl) extremeLabelEl.textContent = t('sidebar', 'todaysHero');
-    const sourcesLabel = document.querySelector('.card-sources .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
+    const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
+    const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = t('sidebar', 'sources');
   }
 
   // ========== WEATHER LOGIC ==========
@@ -754,14 +755,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => { capeWindDismissed = true; if (capeWindBanner) capeWindBanner.classList.add('hidden'); });
 
+  // Sources tap-to-expand (mobile only — CSS hides toggle on desktop)
+  const sourcesToggle = $('#sourcesToggle');
+  const sourcesCard = $('#sourcesCard');
+  if (sourcesToggle && sourcesCard) {
+    sourcesToggle.addEventListener('click', () => { sourcesCard.classList.toggle('expanded'); });
+  }
+
   // ========== RENDER ==========
   function renderLoading(name) { showLoader(true); safeText(locationEl, name); safeText(headlineEl, t('misc', 'loading')); safeText(tempEl, '--°'); safeText(descriptionEl, '—'); }
   function renderError(msg) { showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
     const sr = norm.sourceRanges || [];
-    if (sr.length > 0) { safeText($('#confidenceValue'), sr.filter(s => isNum(s.minTemp) && isNum(s.maxTemp)).map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`).join('\n') || '--'); }
-    else { safeText($('#confidenceValue'), { strong: 'Strong', decent: 'Decent', mixed: 'Mixed' }[norm.confidenceKey] || 'Mixed'); }
+    const text = sr.length > 0 ? (sr.filter(s => isNum(s.minTemp) && isNum(s.maxTemp)).map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`).join('\n') || '--') : ({ strong: 'Strong', decent: 'Decent', mixed: 'Mixed' }[norm.confidenceKey] || 'Mixed');
+    safeText($('#confidenceValue'), text);
+    safeText($('#confidenceValueDesktop'), text);
   }
   function renderHome(norm) {
     showLoader(false);
