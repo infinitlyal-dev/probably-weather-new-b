@@ -1922,9 +1922,83 @@ main#home-screen.main #confidence {
   }
 
   /* ── Sources pill: clean rebuild ── */
-  /* On mobile: hide sources block */
+  .card-sources {
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 20px;
+    margin-top: 4px;
+    z-index: 10;
+    position: relative;
+    overflow: visible; /* allow pill to sit on top cleanly */
+  }
+
+  /* The pill button itself */
+  .sources-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 10;
+    position: relative;
+  }
+
+  .sources-toggle .sources-arrow {
+    display: inline-block;
+    font-size: 10px;
+    transition: transform 0.3s ease;
+    line-height: 1;
+  }
+
+  .card-sources.expanded .sources-toggle .sources-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Expand panel: floats ABOVE the pill to avoid the fixed nav bar */
+  .sources-detail {
+    position: absolute;
+    bottom: calc(100% + 4px); /* anchor above .card-sources */
+    right: 0;
+    min-width: 160px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 10px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 12px; /* fully rounded — floating above pill */
+    margin-top: 0;
+  }
+
+  .card-sources.expanded .sources-detail {
+    max-height: 120px;
+    padding: 8px 10px 8px;
+  }
+
+  .sources-detail .value {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: pre-line;
+    text-align: right;
+    color: rgba(255,255,255,0.92);
+  }
+
+  /* On mobile: hide desktop sources block, show pill toggle */
   .sources-desktop {
     display: none !important;
+  }
+  .sources-toggle {
+    display: flex;
   }
 }
 
