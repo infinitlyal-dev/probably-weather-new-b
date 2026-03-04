@@ -88,18 +88,10 @@
       <aside class="sidebar">
         <div id="description" class="description sidebar-humour">—</div>
         <div id="weatherByline" class="weather-byline sidebar-stats">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
-        <div class="card card-sources" id="sourcesCard">
-          <div class="sources-toggle" id="sourcesToggle">
-            <span class="sources-toggle-label">4 sources</span>
-            <span class="sources-arrow">▼</span>
-          </div>
-          <div class="sources-detail">
-            <div id="confidenceValue" class="value">--</div>
-          </div>
-          <div class="sources-desktop">
-            <div class="label">Sources</div>
-            <div id="confidenceValueDesktop" class="value">--</div>
-          </div>
+        <div class="sources-desktop" id="sourcesCard">
+          <div class="label">Sources</div>
+          <div id="confidenceValueDesktop" class="value">--</div>
+          <div id="confidenceValue" class="value" style="display:none">--</div>
         </div>
       </aside>
     </div>
@@ -208,7 +200,7 @@
         <p id="aboutText">Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather to give you a more reliable prediction.</p>
         <p style="margin-top:8px;opacity:0.7;font-size:0.9em;">Version 1.2</p>
         <p style="margin-top:8px;opacity:0.7;font-size:0.9em;">Got feedback or an issue? Drop us a mail:</p>
-        <p style="margin-top:4px;"><a href="mailto:howzit@probablyweather.co.za" style="color:#F5A623;text-decoration:none;">howzit@probablyweather.co.za</a></p>
+        <p style="margin-top:4px;"><a href="/cdn-cgi/l/email-protection#573f38202d3e23172725383536353b2e203236233f3225793438792d36" style="color:#F5A623;text-decoration:none;"><span class="__cf_email__" data-cfemail="fe96918984978abe8e8c919c9f9c9287899b9f8a969b8cd09d91d0849f">[email&#160;protected]</span></a></p>
         <p style="margin-top:12px;opacity:0.5;font-size:0.8em;">© 2025 Probably Weather · <a href="/privacy" style="color:#999;text-decoration:underline;">Privacy Policy</a></p>
         </div>
       </div>
@@ -226,8 +218,4 @@
   <div id="heatOverlay"></div>
   <div id="offlineIndicator" class="offline-indicator"></div>
 
-  <footer class="footer">Data from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather</footer>
-
-  <script src="assets/app.js"></script>
-</body>
-</html>
+  <f
