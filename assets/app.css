@@ -1538,6 +1538,25 @@ main#home-screen.main #confidence {
 /* ========== WEATHER ICONS ========== */
 .weather-icon { font-size: 1.4em; margin-right: 4px; }
 
+/* Sources card: desktop default — pill hidden, full-text block visible */
+.sources-toggle,
+.sources-detail {
+  display: none;
+}
+.sources-desktop {
+  display: block;
+}
+.sources-desktop .label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.sources-desktop .value {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
 /* ========== MOBILE RESPONSIVE (Two-Column Layout) ========== */
 @media (max-width: 480px) {
   /* Mobile performance optimizations */
@@ -2060,25 +2079,6 @@ main#home-screen.main #confidence {
 .sidebar-stats {
   text-align: right;
   align-items: flex-end;
-}
-
-/* Sources card: desktop shows .sources-desktop, hides toggle/detail */
-.sources-toggle,
-.sources-detail {
-  display: none;
-}
-.sources-desktop {
-  display: block;
-}
-.sources-desktop .label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.sources-desktop .value {
-  font-size: 0.7rem;
-  line-height: 1.4;
-  white-space: pre-line;
 }
 
 /* ========== OFFLINE INDICATOR ========== */
