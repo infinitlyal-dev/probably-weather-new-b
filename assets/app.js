@@ -814,8 +814,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight
     const displayConditionForCopy = (!norm.isDay && displayCondition === 'clear') ? 'night' : displayCondition;
-    safeText(headlineEl, getHeadline(displayConditionForCopy));
-    safeText(descriptionEl, getWittyLine(displayConditionForCopy));
+    safeText(headlineEl, getWittyLine(displayConditionForCopy));
+    safeText(descriptionEl, getHeadline(displayConditionForCopy));
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const gust = norm.gustKph;
