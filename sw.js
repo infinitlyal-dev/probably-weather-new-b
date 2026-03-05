@@ -1,10 +1,9 @@
-/* Probably Weather — Service Worker v7
-   Upgrades from v6:
-   - Force cache bust after deployment pipeline fix
-   - All previous features retained
+/* Probably Weather — Service Worker v8
+   Upgrades from v7:
+   - Full rollback to stable state — purge all v7 caches
 */
 
-const SW_VERSION = 'pw-v7';
+const SW_VERSION = 'pw-v8';
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
 const API_CACHE = `${SW_VERSION}-api`;
