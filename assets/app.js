@@ -769,11 +769,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => { capeWindDismissed = true; if (capeWindBanner) capeWindBanner.classList.add('hidden'); });
 
-  // Sources tap-to-expand (mobile only — CSS hides toggle on desktop)
+  // Sources tap-to-expand — body-level popup avoids sidebar stacking context
   const sourcesToggle = $('#sourcesToggle');
   const sourcesCard = $('#sourcesCard');
   if (sourcesToggle && sourcesCard) {
-    sourcesToggle.addEventListener('click', () => { sourcesCard.classList.toggle('expanded'); });
+    const popup = document.createElement('div');
+    popup.id = 'sourcesPopup';
+    popup.className = 'sources-popup';
+    document.body.appendChild(popup);
+
+    function closePopup() {
+      popup.classList.remove('open');
+      sourcesCard.classList.remove('expanded');
+    }
+
+    sourcesToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (popup.classList.contains('open')) { closePopup(); return; }
+      // Pull text from the hidden #confidenceValue already populated by renderSidebar
+      const cv = $('#confidenceValue');
+      popup.textContent = cv ? (cv.textContent || '—') : '—';
+      // Position just above the pill using viewport coords
+      const r = sourcesToggle.getBoundingClientRect();
+      popup.style.right  = `${window.innerWidth  - r.right}px`;
+      popup.style.bottom = `${window.innerHeight - r.top + 6}px`;
+      popup.classList.add('open');
+      sourcesCard.classList.add('expanded');
+    });
+
+    document.addEventListener('click', closePopup);
   }
 
   // ========== RENDER ==========
