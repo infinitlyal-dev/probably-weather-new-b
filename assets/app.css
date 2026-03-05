@@ -1966,6 +1966,7 @@ main#home-screen.main #confidence {
 
   /* Expand panel: floats ABOVE the pill to avoid the fixed nav bar */
   .sources-detail {
+    display: block; /* override global display:none — visibility controlled by max-height */
     position: absolute;
     bottom: calc(100% + 4px); /* anchor above .card-sources */
     right: 0;
