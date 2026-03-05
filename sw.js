@@ -1,12 +1,10 @@
-/* Probably Weather — Service Worker v6
-   Upgrades from v5:
-   - Cache API weather responses for offline fallback
-   - Cache background images on first load
-   - Serve cached content when offline with staleness indicator
-   - Smarter image cache with size limits
+/* Probably Weather — Service Worker v7
+   Upgrades from v6:
+   - Force cache bust after deployment pipeline fix
+   - All previous features retained
 */
 
-const SW_VERSION = 'pw-v6';
+const SW_VERSION = 'pw-v7';
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
 const API_CACHE = `${SW_VERSION}-api`;
