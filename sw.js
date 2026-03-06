@@ -1,9 +1,9 @@
-/* Probably Weather — Service Worker v9
-   Upgrades from v8:
-   - Sources content swap feature (pill tap swaps witty line for source ranges)
+/* Probably Weather — Service Worker v10
+   Upgrades from v9:
+   - Visual polish pass: unified glass panels, refined settings/search/nav, tightened row rhythm
 */
 
-const SW_VERSION = 'pw-v9';
+const SW_VERSION = 'pw-v10';
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
 const API_CACHE = `${SW_VERSION}-api`;
