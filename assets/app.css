@@ -1961,41 +1961,48 @@ main#home-screen.main #confidence {
     line-height: 1;
   }
 
-  .card-sources.expanded .sources-toggle .sources-arrow {
-    transform: rotate(180deg);
-  }
-
-  /* Expand panel: slides down from beneath the pill */
-  .sources-detail {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    padding: 0 10px;
-    background: rgba(0,0,0,0.5);
-    border-radius: 0 0 12px 12px;
-    margin-top: -4px; /* overlap slightly for seamless join */
-  }
-
-  .card-sources.expanded .sources-detail {
-    max-height: 120px;
-    padding: 8px 10px 8px;
-  }
-
-  .sources-detail .value {
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 1.5;
-    white-space: pre-line;
-    text-align: right;
-    color: rgba(255,255,255,0.92);
-  }
-
   /* On mobile: hide desktop sources block, show pill toggle */
   .sources-desktop {
     display: none !important;
   }
   .sources-toggle {
     display: flex;
+  }
+
+  /* ── Sources content swap ── */
+  .sidebar .description,
+  .sidebar .weather-byline,
+  .sidebar .sources-swap {
+    transition: opacity 0.25s ease;
+  }
+
+  .sidebar.sources-open .description,
+  .sidebar.sources-open .weather-byline {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    transition: opacity 0.25s ease, max-height 0.2s ease 0.1s;
+  }
+
+  .sources-swap {
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+    white-space: pre-line;
+    color: rgba(255,255,255,0.92);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
+  }
+
+  .sidebar.sources-open .sources-swap {
+    display: block;
+  }
+
+  .sidebar.sources-open .sources-arrow {
+    transform: rotate(180deg);
   }
 }
 
