@@ -333,7 +333,8 @@ body.modal-open {
   transition: opacity 0.2s ease;
 }
 
-.nav button:hover {
+.nav button:hover,
+.nav button.active {
   opacity: 1;
 }
 

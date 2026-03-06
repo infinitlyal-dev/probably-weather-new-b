@@ -1,7 +1,7 @@
 {
   "name": "Probably Weather",
   "short_name": "Probably",
-  "description": "No more Ja-No-Maybe weather. Real forecasts from 3 sources, in 5 SA languages.",
+  "description": "No more Ja-No-Maybe weather. Real forecasts from 4 sources, in 5 SA languages.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

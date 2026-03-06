@@ -418,9 +418,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return '';
   };
 
+  const NAV_MAP = [[screenHome, navHome], [screenHourly, navHourly], [screenWeek, navWeek], [screenSearch, navSearch], [screenSettings, navSettings]];
   function showScreen(which) {
     SCREENS.forEach(s => { if (s) { s.classList.add("hidden"); s.setAttribute('hidden', ''); } });
     if (which) { which.classList.remove("hidden"); which.removeAttribute('hidden'); }
+    NAV_MAP.forEach(([scr, btn]) => { if (btn) btn.classList.toggle('active', scr === which); });
     document.body.classList.toggle('modal-open', which && which !== screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';

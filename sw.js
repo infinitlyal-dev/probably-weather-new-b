@@ -1,9 +1,9 @@
-/* Probably Weather — Service Worker v10
-   Upgrades from v9:
-   - Visual polish pass: unified glass panels, refined settings/search/nav, tightened row rhythm
+/* Probably Weather — Service Worker v11
+   Upgrades from v10:
+   - Launch prep: app icons, favicon, Twitter cards, nav active state, manifest fix
 */
 
-const SW_VERSION = 'pw-v10';
+const SW_VERSION = 'pw-v11';
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
 const API_CACHE = `${SW_VERSION}-api`;
