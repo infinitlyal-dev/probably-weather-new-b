@@ -769,11 +769,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => { capeWindDismissed = true; if (capeWindBanner) capeWindBanner.classList.add('hidden'); });
 
-  // Sources tap-to-expand (mobile only — CSS hides toggle on desktop)
+  // Sources tap-to-swap (mobile only — CSS hides toggle on desktop)
   const sourcesToggle = $('#sourcesToggle');
-  const sourcesCard = $('#sourcesCard');
-  if (sourcesToggle && sourcesCard) {
-    sourcesToggle.addEventListener('click', () => { sourcesCard.classList.toggle('expanded'); });
+  const sidebarEl = document.querySelector('.sidebar');
+  let sourcesTimer = null;
+  if (sourcesToggle && sidebarEl) {
+    sourcesToggle.addEventListener('click', () => {
+      const opening = !sidebarEl.classList.contains('sources-open');
+      if (sourcesTimer) { clearTimeout(sourcesTimer); sourcesTimer = null; }
+      if (opening) {
+        sidebarEl.classList.add('sources-open');
+        sourcesTimer = setTimeout(() => { sidebarEl.classList.remove('sources-open'); sourcesTimer = null; }, 4000);
+      } else {
+        sidebarEl.classList.remove('sources-open');
+      }
+    });
   }
 
   // ========== RENDER ==========
@@ -785,6 +795,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = sr.length > 0 ? (sr.filter(s => isNum(s.minTemp) && isNum(s.maxTemp)).map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`).join('\n') || '--') : ({ strong: 'Strong', decent: 'Decent', mixed: 'Mixed' }[norm.confidenceKey] || 'Mixed');
     safeText($('#confidenceValue'), text);
     safeText($('#confidenceValueDesktop'), text);
+    safeText($('#sourcesSwap'), text);
   }
   function renderHome(norm) {
     showLoader(false);
