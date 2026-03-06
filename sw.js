@@ -1,9 +1,9 @@
-/* Probably Weather — Service Worker v8
-   Upgrades from v7:
-   - Full rollback to stable state — purge all v7 caches
+/* Probably Weather — Service Worker v9
+   Upgrades from v8:
+   - Sources content swap feature (pill tap swaps witty line for source ranges)
 */
 
-const SW_VERSION = 'pw-v8';
+const SW_VERSION = 'pw-v9';
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
 const API_CACHE = `${SW_VERSION}-api`;
