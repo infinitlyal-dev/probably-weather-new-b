@@ -1540,7 +1540,8 @@ main#home-screen.main #confidence {
 
 /* Sources card: desktop default — pill hidden, full-text block visible */
 .sources-toggle,
-.sources-detail {
+.sources-detail,
+.sources-swap {
   display: none;
 }
 .sources-desktop {
