@@ -355,7 +355,9 @@ document.addEventListener("DOMContentLoaded", () => {
     misc: {
       loading: { en: "Loading...", af: "Laai...", zu: "Iyalayisha...", xh: "Iyalayisha...", st: "E a jarolla..." },
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
-      couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana imozulu.", st: "Ha e khone ho fumana boemo ba leholimo." }
+      couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana imozulu.", st: "Ha e khone ho fumana boemo ba leholimo." },
+      share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
+      shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" }
     }
   };
 
@@ -425,6 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
     NAV_MAP.forEach(([scr, btn]) => { if (btn) btn.classList.toggle('active', scr === which); });
     document.body.classList.toggle('modal-open', which && which !== screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
+    if (shareBtn && navigator.share) shareBtn.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
@@ -460,6 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (extremeLabelEl) extremeLabelEl.textContent = t('sidebar', 'todaysHero');
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
     const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
+    if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
   }
 
   // ========== WEATHER LOGIC ==========
@@ -786,6 +790,26 @@ document.addEventListener("DOMContentLoaded", () => {
         sidebarEl.classList.remove('sources-open');
       }
     });
+  }
+
+  // Share button (mobile only — Web Share API)
+  const shareBtn = $('#shareBtn');
+  if (shareBtn) {
+    if (!navigator.share) {
+      shareBtn.style.display = 'none';
+    } else {
+      shareBtn.addEventListener('click', async () => {
+        const temp = tempEl?.textContent || '';
+        const headline = headlineEl?.textContent || '';
+        const loc = locationEl?.textContent || '';
+        const emoji = conditionEmoji(window.__PW_LAST_DISPLAY);
+        const inWord = t('misc', 'shareIn');
+        const text = `${temp} ${inWord} ${loc} — ${headline} ${emoji}`;
+        const lat = activePlace?.lat, lon = activePlace?.lon;
+        const url = (lat && lon) ? `https://probablyweather.co.za?lat=${lat}&lon=${lon}` : 'https://probablyweather.co.za';
+        try { await navigator.share({ title: 'Probably Weather', text, url }); } catch {}
+      });
+    }
   }
 
   // ========== RENDER ==========

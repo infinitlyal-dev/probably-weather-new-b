@@ -1571,6 +1571,11 @@ main#home-screen.main #confidence {
 .sources-swap {
   display: none;
 }
+
+/* Share button: hidden on desktop, shown on mobile via media query */
+.share-btn {
+  display: none;
+}
 .sources-desktop {
   display: block;
 }
@@ -2034,6 +2039,34 @@ main#home-screen.main #confidence {
 
   .sidebar.sources-open .sources-arrow {
     transform: rotate(180deg);
+  }
+
+  /* ── Share button: bottom-left pill, mirrors sources pill ── */
+  .share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: fixed;
+    left: 12px;
+    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 50;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    transition: opacity 0.2s ease;
+  }
+
+  .share-btn:active {
+    opacity: 0.7;
   }
 }
 

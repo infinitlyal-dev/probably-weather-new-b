@@ -1,9 +1,9 @@
-/* Probably Weather — Service Worker v11
-   Upgrades from v10:
-   - Launch prep: app icons, favicon, Twitter cards, nav active state, manifest fix
+/* Probably Weather — Service Worker v12
+   Upgrades from v11:
+   - Share button: mobile-only pill (bottom-left), Web Share API, 5-language support
 */
 
-const SW_VERSION = 'pw-v11';
+const SW_VERSION = 'pw-v12';
 const CORE_CACHE = `${SW_VERSION}-core`;
 const IMG_CACHE = `${SW_VERSION}-img`;
 const API_CACHE = `${SW_VERSION}-api`;
