@@ -219,6 +219,15 @@ export default async function handler(req, res) {
         const d0    = wa.forecast?.forecastday?.[0]?.day   || {};
         const astro = wa.forecast?.forecastday?.[0]?.astro || {};
 
+        // FIX-001: WeatherAPI codes 1000 (Sunny) and 1003 (Partly cloudy) with 0mm precip = "Clear sky"
+        const waCondCode = wa.current?.condition?.code;
+        const waDayPrecip = d0.totalprecip_mm ?? 0;
+        let waDesc = wa.current?.condition?.text ?? 'Unknown';
+        if ((waCondCode === 1000 || waCondCode === 1003) && waDayPrecip === 0) {
+          console.log(`[FIX-001] WeatherAPI code ${waCondCode} ("${waDesc}") with 0mm precip → "Clear sky"`);
+          waDesc = 'Clear sky';
+        }
+
         norms[1] = {
           source:    'WeatherAPI',
           nowTemp:   wa.current?.temp_c          ?? null,
@@ -227,7 +236,7 @@ export default async function handler(req, res) {
           todayLow:  d0.mintemp_c                ?? null,
           todayRain: d0.daily_chance_of_rain     ?? null,
           todayUv:   d0.uv                       ?? null,
-          desc:      wa.current?.condition?.text ?? 'Unknown',
+          desc:      waDesc,
           windKph:   wa.current?.wind_kph        ?? null,
           humidity:  wa.current?.humidity        ?? null,
           sunrise:   astro.sunrise               ?? null,
@@ -239,7 +248,12 @@ export default async function handler(req, res) {
           source:     'WeatherAPI',
           temps:      waHours.map(h => h.temp_c),
           feelsLikes: waHours.map(h => h.feelslike_c),
-          rains:      waHours.map(h => h.chance_of_rain),
+          // FIX-001: Clamp rain chance to 0 for clear condition codes with no precipitation
+          rains:      waHours.map(h => {
+            const code = h.condition?.code;
+            if ((code === 1000 || code === 1003) && (h.precip_mm ?? 0) === 0) return 0;
+            return h.chance_of_rain;
+          }),
           winds:      waHours.map(h => h.wind_kph),
           clouds:     waHours.map(h => h.cloud),
           humidity:   waHours.map(h => h.humidity),
@@ -251,7 +265,12 @@ export default async function handler(req, res) {
           lows:     wa.forecast.forecastday.map(fd => fd.day.mintemp_c),
           rains:    wa.forecast.forecastday.map(fd => fd.day.daily_chance_of_rain),
           uvs:      wa.forecast.forecastday.map(fd => fd.day.uv),
-          descs:    wa.forecast.forecastday.map(fd => fd.day.condition.text),
+          // FIX-001: Override clear condition codes with 0mm precip
+          descs:    wa.forecast.forecastday.map(fd => {
+            const code = fd.day.condition?.code;
+            if ((code === 1000 || code === 1003) && (fd.day.totalprecip_mm ?? 0) === 0) return 'Clear sky';
+            return fd.day.condition.text;
+          }),
           sunrises: wa.forecast.forecastday.map(fd => fd.astro?.sunrise ?? null),
           sunsets:  wa.forecast.forecastday.map(fd => fd.astro?.sunset  ?? null),
         };
@@ -619,7 +638,7 @@ export default async function handler(req, res) {
     // reports "High UV" near sunset. Only use UV to drive condition between 10:00-16:00.
     const uvForCondition = (localHour >= 10 && localHour < 16) ? medUv : null;
 
-    const nowConditionKey = deriveCondition({
+    let nowConditionKey = deriveCondition({
       desc:       mostDesc,
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
@@ -630,6 +649,27 @@ export default async function handler(req, res) {
       maxWindKph,
       isDay,
     });
+
+    // FIX-001: Per-source condition votes for debugging and majority check
+    const sourceConditionVotes = activeNorms.map(n => ({
+      source: n.source,
+      desc: n.desc,
+      vote: categorizeDesc(n.desc),
+    }));
+    console.log('[Condition voting]', JSON.stringify(sourceConditionVotes));
+    console.log(`[Condition derived] ${nowConditionKey} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
+
+    // FIX-001: Majority check — single source claiming rain/cloudy must not override clear consensus
+    // Requires ≥2 sources to agree on rain/cloudy before the app declares it
+    if ((nowConditionKey === 'rain-possible' || nowConditionKey === 'cloudy') && activeNorms.length >= 3) {
+      const rainOrCloudyVotes = sourceConditionVotes.filter(v =>
+        v.vote === 'rain' || v.vote === 'cloudy' || v.vote === 'storm'
+      ).length;
+      if (rainOrCloudyVotes < 2) {
+        console.log(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes}/${activeNorms.length} sources vote rain/cloudy)`);
+        nowConditionKey = 'clear';
+      }
+    }
 
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
     return res.status(200).json({
@@ -674,6 +714,7 @@ export default async function handler(req, res) {
           'Pirate Weather': norms[2] ? Math.round(normW[2] * 100) : null,
           'MET Norway':     norms[3] ? Math.round(normW[3] * 100) : null,
         },
+        sourceConditions: sourceConditionVotes,
         localHour,
         updatedAtLabel: new Date().toISOString(),
       },
@@ -840,5 +881,20 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   if (d.includes('clear') || d.includes('sunny') || d.includes('fair') || d.includes('wind')) return 'clear';
 
   // 20. Fallback
+  return 'clear';
+}
+
+/**
+ * Categorize a weather description into a broad condition bucket.
+ * Used by FIX-001 majority voting to count how many sources agree on rain/cloudy.
+ */
+function categorizeDesc(desc) {
+  const d = String(desc || '').toLowerCase();
+  if (d.includes('thunder') || d.includes('storm') || d.includes('tornado')) return 'storm';
+  if (d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip')) return 'rain';
+  if (d.includes('snow') || d.includes('sleet') || d.includes('hail') || d.includes('freezing')) return 'cold';
+  if (d.includes('overcast')) return 'cloudy';
+  if (d.includes('cloud') && !d.includes('partly') && !d.includes('mainly')) return 'cloudy';
+  if (d.includes('fog') || d.includes('mist')) return 'fog';
   return 'clear';
 }

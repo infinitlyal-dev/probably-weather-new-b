@@ -517,16 +517,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMostlyCloudy     = isNum(cloud) && cloud >= 55;
     const isSignificantCloud = isNum(cloud) && cloud >= 40;
     const isDay = norm.isDay !== false;
+
+    // FIX-001: Log condition decision for debugging
+    const votes = norm.sourceConditions || [];
+    console.log(`[Condition] API=${apiCondition} rain=${imminentRain}% cloud=${cloud}% wind=${effectiveWind}kph`);
+    if (votes.length) console.log('[Source votes]', votes.map(s => `${s.source}:${s.vote}(${s.desc})`).join(', '));
+
+    // FIX-001: Count source votes for majority check
+    const rainVotes = votes.filter(v => v.vote === 'rain' || v.vote === 'storm').length;
+    const cloudyVotes = votes.filter(v => v.vote === 'cloudy').length;
+    const hasMajorityRain = rainVotes >= 2;
+    const hasMajorityCloudy = (rainVotes + cloudyVotes) >= 2;
+
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
-    if (isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
+    // FIX-001: rain-possible requires either strong rain signal (≥30%) OR majority source agreement
+    if (isNum(imminentRain) && imminentRain >= 30) {
+      if (hasMajorityRain || hasMajorityCloudy || !votes.length) return 'rain-possible';
+      console.log(`[FIX-001] Skipping rain-possible: rain=${imminentRain}% but only ${rainVotes} source(s) vote rain`);
+    }
     if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
     if (apiCondition === 'wind') return 'wind';
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
-    if (apiCondition === 'cloudy') return 'cloudy';
+    // FIX-001: cloudy requires majority source agreement
+    if (apiCondition === 'cloudy') {
+      if (hasMajorityCloudy || !votes.length || isTrulyOvercast || isMostlyCloudy) return 'cloudy';
+      console.log(`[FIX-001] Skipping cloudy: only ${cloudyVotes} source(s) vote cloudy, cloud=${cloud}%`);
+    }
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     const sky = computeSkyCondition(norm);
     return sky !== 'clear' ? sky : 'clear';
@@ -670,7 +690,8 @@ document.addEventListener("DOMContentLoaded", () => {
       conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
       used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name), 
-      hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [] 
+      hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [],
+      sourceConditions: meta.sourceConditions || [] // FIX-001: per-source condition votes
     };
   }
 
