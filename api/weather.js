@@ -2,7 +2,7 @@
 // Probably Weather – server-side weather aggregator
 // Sources: Open-Meteo (ECMWF, no key), WeatherAPI (proprietary, key),
 //          Pirate Weather (NOAA GFS/GEFS, key), MET Norway (no key, User-Agent)
-// Base weights: 40% OM | 25% WA | 10% PW | 25% MET — dynamically adjusted at runtime
+// Base weights: 35% OM | 25% WA | 15% PW | 25% MET — dynamically adjusted at runtime
 // MET Norway uses high-resolution NWP with good coastal coverage — important for SA wind.
 // Pirate Weather (GFS/GEFS) is a genuinely independent model cross-check.
 // NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts
@@ -112,9 +112,12 @@ export default async function handler(req, res) {
     // null in a slot means that source failed or was not configured.
     // NOTE: hourlies has 3 slots (0=Open-Meteo, 1=WeatherAPI, 2=MET Norway).
     //       Pirate Weather excluded from hourly — its data starts at current hour not midnight.
-    // Base weights — may be dynamically adjusted below based on source agreement
-    let SOURCE_WEIGHTS        = [0.40, 0.25, 0.10, 0.25];
-    let HOURLY_SOURCE_WEIGHTS = [0.50, 0.31, 0.19];  // 40/25/25 renormalised without Pirate Weather
+    // V2-2: Base weights — PW raised from 10%→15%, OM reduced from 40%→35%.
+    // V2 research found Pirate Weather (GFS/GEFS) has lowest mean absolute error
+    // (1.75°C) across 10 SA locations — it deserves more influence.
+    // Weights may be dynamically adjusted below based on source agreement.
+    let SOURCE_WEIGHTS        = [0.35, 0.25, 0.15, 0.25];
+    let HOURLY_SOURCE_WEIGHTS = [0.47, 0.33, 0.20];  // 35/25/25 renormalised without Pirate Weather
     const failures = [];
     const norms    = [null, null, null, null]; // current conditions
     const hourlies = [null, null, null];       // hourly: Open-Meteo, WeatherAPI, MET Norway
