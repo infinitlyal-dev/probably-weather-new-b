@@ -551,7 +551,7 @@ export default async function handler(req, res) {
       };
     });
 
-    // Daily aggregation (all three sources)
+    // Daily aggregation (all sources)
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
       const descs        = dailies.filter(Boolean).map(d => d.descs[i]).filter(Boolean);
       const conditionLabel = pickMostCommon(descs) || 'Unknown';
@@ -563,22 +563,34 @@ export default async function handler(req, res) {
       const noonIdx      = i * 24 + 12;
       const windKph      = aggregatedHourly[noonIdx]?.windKph ?? null;
 
+      let dailyConditionKey = deriveCondition({
+        desc:      conditionLabel,
+        rainChance,
+        tempC:     highC,
+        windKph,
+        uvIndex:   uv,
+        cloudPct:  aggregatedHourly[noonIdx]?.cloudPct ?? null,
+        isDay:     true,
+      });
+
+      // Rec 4: Majority voting for daily conditions — same logic as FIX-001
+      // Requires ≥2 sources to agree on rain/cloudy before declaring it
+      if ((dailyConditionKey === 'rain-possible' || dailyConditionKey === 'cloudy') && descs.length >= 3) {
+        const dailyVotes = descs.map(desc => categorizeDesc(desc));
+        const rainOrCloudyCount = dailyVotes.filter(v => v === 'rain' || v === 'cloudy' || v === 'storm').length;
+        if (rainOrCloudyCount < 2) {
+          console.log(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descs.length} sources vote rain/cloudy)`);
+          dailyConditionKey = 'clear';
+        }
+      }
+
       return {
         highC,
         lowC,
         rainChance,
         uv,
         conditionLabel,
-        // Daily condition: isDay=true because it represents the whole day
-        conditionKey: deriveCondition({
-          desc:      conditionLabel,
-          rainChance,
-          tempC:     highC,
-          windKph,
-          uvIndex:   uv,
-          cloudPct:  aggregatedHourly[noonIdx]?.cloudPct ?? null,
-          isDay:     true,
-        }),
+        conditionKey: dailyConditionKey,
         sunrise: dailies.filter(Boolean).find(d => d.sunrises?.[i])?.sunrises[i] ?? null,
         sunset:  dailies.filter(Boolean).find(d => d.sunsets?.[i])?.sunsets[i]   ?? null,
       };
