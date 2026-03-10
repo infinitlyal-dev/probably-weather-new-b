@@ -238,7 +238,9 @@ export default async function handler(req, res) {
           feelsLike: wa.current?.feelslike_c     ?? null,
           todayHigh: d0.maxtemp_c                ?? null,
           todayLow:  d0.mintemp_c                ?? null,
-          todayRain: d0.daily_chance_of_rain     ?? null,
+          // V2-4: Clamp rain chance when WA condition code says clear/sunny
+          // Durban showed 84% rain with code 1000 ("Sunny") — clearly contradictory
+          todayRain: (waCondCode === 1000 || waCondCode === 1003) ? 0 : (d0.daily_chance_of_rain ?? null),
           todayUv:   d0.uv                       ?? null,
           desc:      waDesc,
           windKph:   wa.current?.wind_kph        ?? null,
@@ -267,7 +269,12 @@ export default async function handler(req, res) {
           source:   'WeatherAPI',
           highs:    wa.forecast.forecastday.map(fd => fd.day.maxtemp_c),
           lows:     wa.forecast.forecastday.map(fd => fd.day.mintemp_c),
-          rains:    wa.forecast.forecastday.map(fd => fd.day.daily_chance_of_rain),
+          // V2-4: Clamp rain chance when condition code says clear/sunny
+          rains:    wa.forecast.forecastday.map(fd => {
+            const code = fd.day.condition?.code;
+            if (code === 1000 || code === 1003) return 0;
+            return fd.day.daily_chance_of_rain;
+          }),
           uvs:      wa.forecast.forecastday.map(fd => fd.day.uv),
           // FIX-001: Override clear condition codes with 0mm precip
           descs:    wa.forecast.forecastday.map(fd => {
