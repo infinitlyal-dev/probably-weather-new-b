@@ -475,9 +475,13 @@ export default async function handler(req, res) {
       }
     }
 
-    // Rec 2: When MET Norway diverges >5°C above ECMWF-family average,
-    // boost MET Norway weight — it handles SA heat waves better
-    if (isNum(norms[3]?.todayHigh)) {
+    // Rec 2 + V2-1: When MET Norway diverges >5°C above ECMWF-family average,
+    // boost MET Norway weight — but ONLY for coastal/western SA.
+    // V2 research shows MET Norway has a -3.2°C cold bias on the highveld/bushveld
+    // (Johannesburg, Polokwane), so boosting it there makes things worse.
+    // Gate: skip boost for highveld/bushveld (lat north of -28° AND lon east of 25°)
+    const isHighveld = lat > -28 && lon > 25;
+    if (isNum(norms[3]?.todayHigh) && !isHighveld) {
       const ecmwfFamily = [norms[0]?.todayHigh, norms[1]?.todayHigh].filter(isNum);
       if (ecmwfFamily.length > 0) {
         const ecmwfAvg = ecmwfFamily.reduce((a, b) => a + b, 0) / ecmwfFamily.length;
@@ -488,6 +492,8 @@ export default async function handler(req, res) {
           SOURCE_WEIGHTS[3] = 0.40; // MET Norway: 25% → 40%
         }
       }
+    } else if (isHighveld && isNum(norms[3]?.todayHigh)) {
+      console.log(`[Weight adjust] Highveld location (lat=${lat}, lon=${lon}) — MET Norway boost disabled`);
     }
 
     // Recompute hourly weights from adjusted source weights (excl Pirate Weather)
