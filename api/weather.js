@@ -525,6 +525,13 @@ export default async function handler(req, res) {
     const hourlyW = resolveWeights(hourlies, HOURLY_SOURCE_WEIGHTS);
     const dailyW  = resolveWeights(dailies, SOURCE_WEIGHTS);
 
+    // V2-3: Separate weights for daily LOW temperature — MET Norway reduced to 10%.
+    // Research found MET Norway todayLow runs +3.9°C warm on average across all 10 SA locations.
+    // The model doesn't capture nighttime radiative cooling well for SA inland conditions.
+    // [0]=OM, [1]=WA, [2]=PW, [3]=MET
+    const LOW_WEIGHTS = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[2], 0.10];
+    const dailyLowW = resolveWeights(dailies, LOW_WEIGHTS);
+
     // Weighted average across source slots (skips nulls).
     function wAvg(arr, weights, getter) {
       let sum = 0, wSum = 0;
@@ -576,7 +583,7 @@ export default async function handler(req, res) {
       const descEntries  = dailies.map((d, si) => d && d.descs[i] ? { desc: d.descs[i], weight: DESC_WEIGHTS[si] } : null).filter(Boolean);
       const conditionLabel = pickWeightedMostCommon(descEntries) || 'Unknown';
       const highC        = wAvg(dailies, dailyW, d => d.highs[i]);
-      const lowC         = wAvg(dailies, dailyW, d => d.lows[i]);
+      const lowC         = wAvg(dailies, dailyLowW, d => d.lows[i]);  // V2-3: MET Norway reduced weight for lows
       const rainChance   = wAvg(dailies, dailyW, d => d.rains[i]);
       const uv           = wAvg(dailies, dailyW, d => d.uvs[i]);
       // Use midday wind estimate (index 12 = noon local time, day 1 = index 36)
@@ -667,7 +674,8 @@ export default async function handler(req, res) {
     console.log(`[Temp blend] ${tempDebug.join(' | ')} → blended=${medNowTemp}°C`);
     const highDebug = norms.map((n, i) => n ? `${n.source}=${n.todayHigh}°C` : null).filter(Boolean);
     const blendedHigh = wAvg(norms, normW, n => n.todayHigh);
-    const blendedLow = wAvg(norms, normW, n => n.todayLow);
+    const normLowW = resolveWeights(norms, LOW_WEIGHTS);  // V2-3: reduced MET weight for lows
+    const blendedLow = wAvg(norms, normLowW, n => n.todayLow);
     console.log(`[Daily high/low] ${highDebug.join(' | ')} → blended high=${blendedHigh}°C low=${blendedLow}°C`);
     // maxWindKph includes gust data from Open-Meteo.
     // In gusty coastal conditions (Cape Town southeaster etc), gusts are the
