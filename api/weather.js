@@ -2,7 +2,7 @@
 // Probably Weather – server-side weather aggregator
 // Sources: Open-Meteo (ECMWF, no key), WeatherAPI (proprietary, key),
 //          Pirate Weather (NOAA GFS/GEFS, key), MET Norway (no key, User-Agent)
-// Weights:  40% Open-Meteo  |  25% WeatherAPI  |  10% Pirate Weather  |  25% MET Norway
+// Base weights: 40% OM | 25% WA | 10% PW | 25% MET — dynamically adjusted at runtime
 // MET Norway uses high-resolution NWP with good coastal coverage — important for SA wind.
 // Pirate Weather (GFS/GEFS) is a genuinely independent model cross-check.
 // NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts

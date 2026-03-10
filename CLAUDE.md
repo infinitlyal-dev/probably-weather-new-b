@@ -19,7 +19,7 @@ Never instruct Al to manually edit a file. All changes go via GitHub → Vercel 
 - Local repo path: C:\Users\27741\OneDrive\Desktop\Probably weather new\probably-weather-new-b
 
 ## KEY FILES
-- `api/weather.js` — main API (816 lines), aggregates 4 weather sources
+- `api/weather.js` — main API (~1036 lines), aggregates 4 weather sources with dynamic weights
 - `assets/app.js` — main frontend (910 lines), all rendering and UI logic
 - `assets/app.css` — all styling
 - `index.html` — single page shell with all meta/OG tags
@@ -28,12 +28,24 @@ Never instruct Al to manually edit a file. All changes go via GitHub → Vercel 
 - `assets/images/bg/` — background images by condition folder
 
 ## THE 4 WEATHER SOURCES
-1. **Open-Meteo** — free, no key, high accuracy, primary source
-2. **WeatherAPI.com** — has condition codes, tendency to overcook wind gusts and flag "rain possible" incorrectly
-3. **MET Norway (yr.no)** — very reliable, used as ground truth reference
-4. **Pirate Weather** — secondary source, good for precipitation
+1. **Open-Meteo** (ECMWF IFS) — free, no key, high accuracy, primary source
+2. **WeatherAPI.com** — has condition codes, tendency to overcook wind gusts and flag "rain possible" incorrectly. **Often mirrors ECMWF data** — not truly independent.
+3. **MET Norway (yr.no)** — very reliable for SA coastal conditions, handles heat waves better than ECMWF
+4. **Pirate Weather** (NOAA GFS/GEFS) — genuinely independent model, good for precipitation probability
 
 **Known WeatherAPI issue**: condition code 1003 (Partly cloudy) with 0mm precip should map to "clear", not "rain-possible". WeatherAPI frequently flags rain on clear days — do not trust its rain_chance alone.
+
+## SOURCE WEIGHTS (DYNAMIC)
+Base weights: 40% Open-Meteo | 25% WeatherAPI | 10% Pirate Weather | 25% MET Norway
+
+Weights are **dynamically adjusted** at runtime based on source agreement:
+- **ECMWF dedup**: When OM and WA daily highs are within 0.5°C (same underlying model), WA weight is halved (25% → 12.5%)
+- **MET Norway boost**: When MET Norway daily high is >5°C above ECMWF-family average (common during SA heat waves), MET Norway weight increases to 40% and OM drops to 25%
+- **Description voting**: WeatherAPI gets only 10% weight for condition description voting (unreliable rain flags)
+- **Cloud cover**: Uses modal (most frequent category) not average — prevents bimodal averaging artifacts
+- Hourly weights are recomputed from the adjusted source weights (excluding Pirate Weather)
+
+Console logs show the active weights for each API call for debugging.
 
 ## CONDITION & IMAGE SYSTEM
 Images live in: `assets/images/bg/[condition]/[filename].jpg`
@@ -69,8 +81,12 @@ Language strings live in `assets/app.js` in the `translations` object.
 
 ## ENSEMBLE CONDITION LOGIC RULES
 - Condition requires MAJORITY vote (at least 2 of available sources) to declare rain or cloudy
+- Majority voting applies to both current conditions AND daily forecast conditions
 - Single source claiming rain/cloudy should NOT override clear consensus from other sources
 - WeatherAPI condition codes 1000 (sunny) and 1003 (partly cloudy) with 0mm precip = "clear"
+- WeatherAPI gets reduced (10%) weight in description voting — its rain flags are unreliable
+- Cloud cover uses modal (most frequent bucket) not weighted average
+- MET Norway todayHigh/todayLow filtered to today's local date only (no tomorrow leakage)
 - When in doubt, trust MET Norway (yr.no) — it is the most reliable source for SA coastal conditions
 
 ## WORKING RULES FOR CLAUDE CODE
