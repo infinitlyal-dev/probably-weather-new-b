@@ -652,6 +652,14 @@ export default async function handler(req, res) {
     const medNowTemp   = wAvg(norms, normW, n => n.nowTemp);
     const medFeelsLike = wAvg(norms, normW, n => n.feelsLike);
     const medWindKph   = wAvg(norms, normW, n => n.windKph);
+
+    // Rec 7: Temperature debug logging — shows each source's contribution to the blend
+    const tempDebug = norms.map((n, i) => n ? `${n.source}: now=${n.nowTemp}°C high=${n.todayHigh}°C low=${n.todayLow}°C (weight=${Math.round(normW[i]*100)}%)` : null).filter(Boolean);
+    console.log(`[Temp blend] ${tempDebug.join(' | ')} → blended=${medNowTemp}°C`);
+    const highDebug = norms.map((n, i) => n ? `${n.source}=${n.todayHigh}°C` : null).filter(Boolean);
+    const blendedHigh = wAvg(norms, normW, n => n.todayHigh);
+    const blendedLow = wAvg(norms, normW, n => n.todayLow);
+    console.log(`[Daily high/low] ${highDebug.join(' | ')} → blended high=${blendedHigh}°C low=${blendedLow}°C`);
     // maxWindKph includes gust data from Open-Meteo.
     // In gusty coastal conditions (Cape Town southeaster etc), gusts are the
     // real story — mean wind can be 18 km/h while gusts hit 45 km/h.
