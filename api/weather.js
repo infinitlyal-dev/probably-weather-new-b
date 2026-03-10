@@ -112,8 +112,9 @@ export default async function handler(req, res) {
     // null in a slot means that source failed or was not configured.
     // NOTE: hourlies has 3 slots (0=Open-Meteo, 1=WeatherAPI, 2=MET Norway).
     //       Pirate Weather excluded from hourly — its data starts at current hour not midnight.
-    const SOURCE_WEIGHTS        = [0.40, 0.25, 0.10, 0.25];
-    const HOURLY_SOURCE_WEIGHTS = [0.50, 0.31, 0.19];  // 40/25/25 renormalised without Pirate Weather
+    // Base weights — may be dynamically adjusted below based on source agreement
+    let SOURCE_WEIGHTS        = [0.40, 0.25, 0.10, 0.25];
+    let HOURLY_SOURCE_WEIGHTS = [0.50, 0.31, 0.19];  // 40/25/25 renormalised without Pirate Weather
     const failures = [];
     const norms    = [null, null, null, null]; // current conditions
     const hourlies = [null, null, null];       // hourly: Open-Meteo, WeatherAPI, MET Norway
@@ -440,6 +441,45 @@ export default async function handler(req, res) {
     } catch {
       failures.push('MET Norway');
     }
+
+    // =========================================================================
+    // DYNAMIC WEIGHT ADJUSTMENT
+    // Research shows Open-Meteo (ECMWF) and WeatherAPI often use the same
+    // underlying model, doubling the cold bias during SA heat waves.
+    // MET Norway's high-res model is more accurate for local extremes.
+    // =========================================================================
+
+    // Rec 1: When Open-Meteo and WeatherAPI daily highs are near-identical
+    // (within 0.5°C), they're likely the same ECMWF model — halve WA weight
+    if (isNum(norms[0]?.todayHigh) && isNum(norms[1]?.todayHigh)) {
+      const ecmwfSpread = Math.abs(norms[0].todayHigh - norms[1].todayHigh);
+      if (ecmwfSpread <= 0.5) {
+        console.log(`[Weight adjust] OM=${norms[0].todayHigh}°C WA=${norms[1].todayHigh}°C (spread ${ecmwfSpread}°C ≤ 0.5) — halving WA weight (likely same ECMWF model)`);
+        SOURCE_WEIGHTS[1] = SOURCE_WEIGHTS[1] / 2; // 0.25 → 0.125
+      }
+    }
+
+    // Rec 2: When MET Norway diverges >5°C above ECMWF-family average,
+    // boost MET Norway weight — it handles SA heat waves better
+    if (isNum(norms[3]?.todayHigh)) {
+      const ecmwfFamily = [norms[0]?.todayHigh, norms[1]?.todayHigh].filter(isNum);
+      if (ecmwfFamily.length > 0) {
+        const ecmwfAvg = ecmwfFamily.reduce((a, b) => a + b, 0) / ecmwfFamily.length;
+        const metDivergence = norms[3].todayHigh - ecmwfAvg;
+        if (metDivergence > 5) {
+          console.log(`[Weight adjust] MET Norway ${norms[3].todayHigh}°C is ${metDivergence.toFixed(1)}°C above ECMWF avg ${ecmwfAvg.toFixed(1)}°C — boosting MET Norway 25%→40%, reducing OM 40%→25%`);
+          SOURCE_WEIGHTS[0] = 0.25; // Open-Meteo: 40% → 25%
+          SOURCE_WEIGHTS[3] = 0.40; // MET Norway: 25% → 40%
+        }
+      }
+    }
+
+    // Recompute hourly weights from adjusted source weights (excl Pirate Weather)
+    const hBase = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[3]];
+    const hTotal = hBase.reduce((a, b) => a + b, 0);
+    HOURLY_SOURCE_WEIGHTS = hBase.map(w => Math.round(w / hTotal * 100) / 100);
+
+    console.log(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
 
     // =========================================================================
     // AGGREGATION
