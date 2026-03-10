@@ -541,12 +541,18 @@ export default async function handler(req, res) {
       // UV: only Open-Meteo provides hourly UV; use directly if available
       const uvVal = hourlies[0]?.uvs?.[i] ?? null;
 
+      // Rec 5: Modal cloud cover — use most frequent cloud category for condition logic.
+      // Cloud cover is bimodal (clear or overcast), so averaging 10% and 90% gives 50%
+      // which is meaningless. Modal approach picks the category most sources agree on.
+      const cloudVals = hourlies.map(h => h ? h.clouds?.[i] : null).filter(isNum);
+      const modalCloud = cloudVals.length > 0 ? pickModalCloud(cloudVals) : null;
+
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
         feelsLikeC: wAvg(hourlies, hourlyW, h => h.feelsLikes?.[i]),
         rainChance: wAvg(hourlies, hourlyW, h => h.rains[i]),
         windKph:    effectiveHourlyWind,
-        cloudPct:   wAvg(hourlies, hourlyW, h => h.clouds?.[i]),
+        cloudPct:   modalCloud,  // Rec 5: use modal instead of averaged cloud cover
         uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
       };
     });
@@ -806,6 +812,40 @@ function pickMostCommon(arr) {
   if (arr.length === 0) return null;
   const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
   return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
+}
+
+/**
+ * Rec 5: Pick modal cloud cover from multiple source values.
+ * Categorises each source's cloud % into buckets (clear/partly/mostly/overcast),
+ * finds the most common bucket, then returns the median value within that bucket.
+ * This avoids averaging bimodal data (e.g. 10% and 90% → meaningless 50%).
+ */
+function pickModalCloud(values) {
+  if (values.length === 0) return null;
+  if (values.length === 1) return values[0];
+
+  // Bucket cloud values: clear (0-25), partly (25-55), mostly (55-80), overcast (80-100)
+  const buckets = { clear: [], partly: [], mostly: [], overcast: [] };
+  for (const v of values) {
+    if (v < 25)      buckets.clear.push(v);
+    else if (v < 55) buckets.partly.push(v);
+    else if (v < 80) buckets.mostly.push(v);
+    else             buckets.overcast.push(v);
+  }
+
+  // Find bucket with most votes
+  let winner = 'clear';
+  let maxCount = 0;
+  for (const [name, vals] of Object.entries(buckets)) {
+    if (vals.length > maxCount) {
+      maxCount = vals.length;
+      winner = name;
+    }
+  }
+
+  // Return median of the winning bucket
+  const winnerVals = buckets[winner].sort((a, b) => a - b);
+  return winnerVals[Math.floor(winnerVals.length / 2)];
 }
 
 /**
