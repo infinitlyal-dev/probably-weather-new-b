@@ -557,10 +557,15 @@ export default async function handler(req, res) {
       };
     });
 
+    // Rec 6: Description voting weights — reduce WeatherAPI influence
+    // WeatherAPI descriptions are unreliable (overcooks rain flags) so give it 10% weight.
+    // Source order: [0]=Open-Meteo, [1]=WeatherAPI, [2]=Pirate Weather, [3]=MET Norway
+    const DESC_WEIGHTS = [1, 0.1, 1, 1]; // WA gets 10% voting weight for descriptions
+
     // Daily aggregation (all sources)
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
-      const descs        = dailies.filter(Boolean).map(d => d.descs[i]).filter(Boolean);
-      const conditionLabel = pickMostCommon(descs) || 'Unknown';
+      const descEntries  = dailies.map((d, si) => d && d.descs[i] ? { desc: d.descs[i], weight: DESC_WEIGHTS[si] } : null).filter(Boolean);
+      const conditionLabel = pickWeightedMostCommon(descEntries) || 'Unknown';
       const highC        = wAvg(dailies, dailyW, d => d.highs[i]);
       const lowC         = wAvg(dailies, dailyW, d => d.lows[i]);
       const rainChance   = wAvg(dailies, dailyW, d => d.rains[i]);
@@ -581,11 +586,11 @@ export default async function handler(req, res) {
 
       // Rec 4: Majority voting for daily conditions — same logic as FIX-001
       // Requires ≥2 sources to agree on rain/cloudy before declaring it
-      if ((dailyConditionKey === 'rain-possible' || dailyConditionKey === 'cloudy') && descs.length >= 3) {
-        const dailyVotes = descs.map(desc => categorizeDesc(desc));
+      if ((dailyConditionKey === 'rain-possible' || dailyConditionKey === 'cloudy') && descEntries.length >= 3) {
+        const dailyVotes = descEntries.map(e => categorizeDesc(e.desc));
         const rainOrCloudyCount = dailyVotes.filter(v => v === 'rain' || v === 'cloudy' || v === 'storm').length;
         if (rainOrCloudyCount < 2) {
-          console.log(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descs.length} sources vote rain/cloudy)`);
+          console.log(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy)`);
           dailyConditionKey = 'clear';
         }
       }
@@ -676,7 +681,9 @@ export default async function handler(req, res) {
     // rained in the morning. Current hour is more truthful for "right now".
     const currentHourRainChance = aggregatedHourly[localHour]?.rainChance ?? null;
 
-    const mostDesc      = pickMostCommon(activeNorms.map(n => n.desc).filter(Boolean)) || 'Weather today';
+    // Rec 6: Weight descriptions — WA gets 10% influence
+    const nowDescEntries = norms.map((n, si) => n && n.desc ? { desc: n.desc, weight: DESC_WEIGHTS[si] } : null).filter(Boolean);
+    const mostDesc       = pickWeightedMostCommon(nowDescEntries) || 'Weather today';
     const finalFeelsLike = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
 
     // Sunrise/sunset for the response — first available source.
@@ -812,6 +819,19 @@ function pickMostCommon(arr) {
   if (arr.length === 0) return null;
   const count = arr.reduce((acc, v) => ({ ...acc, [v]: (acc[v] || 0) + 1 }), {});
   return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b);
+}
+
+/**
+ * Rec 6: Weighted description voting. Each entry is { desc, weight }.
+ * Accumulates weight per description string and returns the one with highest total weight.
+ */
+function pickWeightedMostCommon(entries) {
+  if (entries.length === 0) return null;
+  const scores = {};
+  for (const { desc, weight } of entries) {
+    scores[desc] = (scores[desc] || 0) + weight;
+  }
+  return Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
 }
 
 /**
