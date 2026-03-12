@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "za.co.probablyweather.twa",
+      "sha256_cert_fingerprints": [
+        "6D:89:7B:53:E1:26:7B:87:C2:B3:67:2D:04:63:BC:C5:A2:70:18:CE:00:CD:47:60:38:25:40:E9:74:C0:2A:28"
+      ]
+    }
+  }
+]
