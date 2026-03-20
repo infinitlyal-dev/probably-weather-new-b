@@ -898,7 +898,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
     renderCapeWind(norm);
   }
-  function getWeatherIcon(rp, cp, tc) {
+  function getWeatherIcon(rp, cp, tc, isNight) {
     if (isNum(tc) && tc <= 0) return '❄️';
     if (isNum(rp) && rp >= 50) return '🌧️';
     if (isNum(rp) && rp >= 30) return '🌦️';
@@ -906,7 +906,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNum(cp) && cp >= 70) return '☁️';
     if (isNum(cp) && cp >= 40) return '⛅';
     if (isNum(tc) && tc <= 10) return '❄️';
-    return '☀️';
+    // BUG-2 fix: show moon at night instead of sun for clear conditions
+    return isNight ? '🌙' : '☀️';
   }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
@@ -924,7 +925,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const hourNum = (nowHour + i) % 24;
       const ht = settings.time === '12' ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}` : `${String(hourNum).padStart(2, '0')}:00`;
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp);
+      // BUG-2 fix: night hours (20:00-05:00) get moon icon instead of sun
+      const isNightHour = hourNum >= 20 || hourNum < 5;
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
