@@ -853,17 +853,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
+    // BUG-3 fix: home screen shows min/max range as primary temp, not current temp
     const probablyLabel = t('weather', 'probably');
-    safeText(tempEl, isNum(currentTemp) ? `${probablyLabel} ${formatTemp(currentTemp)}` : `${probablyLabel} --°`);
+    const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+    const loStr = isNum(low) ? formatTemp(low) : '--°';
+    safeText(tempEl, `${probablyLabel} ${loStr} / ${hiStr}`);
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
-      if (settings.range) {
-        const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
-        const loStr = isNum(low) ? formatTemp(low) : '--°';
-        hiLoEl.textContent = '';
-        const hiSpan = document.createElement('span'); hiSpan.className = 'hi'; hiSpan.textContent = `\u2191${hiStr}`;
-        const loSpan = document.createElement('span'); loSpan.className = 'lo'; loSpan.textContent = `\u2193${loStr}`;
-        hiLoEl.appendChild(hiSpan); hiLoEl.append(' '); hiLoEl.appendChild(loSpan);
+      // Show current temp below the range when toggle is on
+      if (settings.range && isNum(currentTemp)) {
+        hiLoEl.textContent = `${t('weather', 'feelsLike') || 'Now'} ${formatTemp(currentTemp)}`;
         hiLoEl.style.display = '';
       } else {
         hiLoEl.textContent = '';
