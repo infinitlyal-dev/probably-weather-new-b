@@ -844,6 +844,7 @@ export default async function handler(req, res) {
         },
         sourceConditions: sourceConditionVotes,
         localHour,
+        utcOffsetSeconds,
         updatedAtLabel: new Date().toISOString(),
       },
     });

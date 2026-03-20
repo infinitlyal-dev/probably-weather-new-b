@@ -556,7 +556,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
   function getHeroLabel(condition) { return T.heroLabels[condition]?.[settings.lang] || T.heroLabels[condition]?.en || "Pleasant"; }
   function getWittyLine(condition) {
-    const day = new Date().getDay(), isWeekend = day === 0 || day === 5 || day === 6;
+    const day = getLocationDayOfWeek(), isWeekend = day === 0 || day === 5 || day === 6;
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
       const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
@@ -617,6 +617,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const offsetHours = lon / 15;
     return Math.floor((utcHour + offsetHours + 24) % 24);
   }
+  function getLocationDayOfWeek() {
+    // Returns 0=Sun,1=Mon...6=Sat for the SEARCHED location, not the device.
+    // Uses utcOffsetSeconds from the API to shift UTC time to location time.
+    const offset = window.__PW_LAST_NORM?.utcOffsetSeconds;
+    if (isNum(offset)) {
+      const locationMs = Date.now() + offset * 1000;
+      return new Date(locationMs).getUTCDay(); // getUTCDay on shifted time = location's day
+    }
+    return new Date().getDay(); // fallback to device time
+  }
 
   // ========== BACKGROUND & PARTICLES ==========
   const DAY_IMAGE_COUNT = 7;
@@ -628,7 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Day-of-week maps to image number: Mon=1, Tue=2... Sat=6, Sun=7
     // This way you can curate weekend images (day_6, day_7) to be leisure/outdoor
     // and weekday images (day_1-5) to include urban/work contexts if appropriate
-    const dayOfWeek = new Date().getDay(); // 0=Sun, 1=Mon...6=Sat
+    const dayOfWeek = getLocationDayOfWeek(); // 0=Sun, 1=Mon...6=Sat (location time, not device)
     const dayNum = dayOfWeek === 0 ? 7 : dayOfWeek; // Convert to 1-7 (Mon-Sun)
     const imgFile = timeOfDay === 'day' ? `day_${dayNum}` : timeOfDay;
     if (bgImg) { bgImg.src = `${base}/${folder}/${imgFile}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
@@ -683,6 +693,7 @@ document.addEventListener("DOMContentLoaded", () => {
       uvDaily: today.uv ?? null, // today's peak UV, for daytime byline reference only
       isDay: now.isDay !== false, // false only when API explicitly says night
       localHour: meta.localHour ?? null, // correct local hour from API (uses real UTC offset)
+      utcOffsetSeconds: meta.utcOffsetSeconds ?? null, // UTC offset for location day-of-week calc
       windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
       maxWindKph: isNum(payload.maxWindKph) ? payload.maxWindKph : null,
       gustKph: isNum(payload.gustKph) ? payload.gustKph : null,
@@ -944,8 +955,9 @@ document.addEventListener("DOMContentLoaded", () => {
     header.innerHTML = `<span class="d-day">${t('weather', 'day') || 'Day'}</span><span class="d-icon"></span><span class="d-high">${t('weather', 'high') || 'High'}</span><span class="d-low">${t('weather', 'low') || 'Low'}</span><span class="d-rain">${t('weather', 'rain') || 'Rain'}</span>`;
     dailyCards.appendChild(header);
     daily.forEach((d, i) => {
-      const date = new Date(Date.now() + i * 86400000);
-      const dayName = getTranslatedDayName(date.getDay());
+      const offsetMs = (window.__PW_LAST_NORM?.utcOffsetSeconds ?? 0) * 1000;
+      const date = new Date(Date.now() + offsetMs + i * 86400000);
+      const dayName = getTranslatedDayName(date.getUTCDay());
       const badge = getDayBadge(d, i, hourlyData);
       const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
       const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp);
