@@ -1161,6 +1161,15 @@ document.addEventListener("DOMContentLoaded", () => {
   clearRecentsBtn?.addEventListener('click', () => { clearRecents(); showToast(t('toasts', 'cleared')); });
 
   // ========== INIT ==========
+  // FIX-4: Parse ?lang= URL parameter before loading settings
+  // Shared links include ?lang=af so recipients see the sender's language
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  const SUPPORTED_LANGS = ['en', 'af', 'zu', 'xh', 'st'];
+  if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
+    saveJSON(SETTINGS_KEYS.lang, urlLang);
+    console.log(`[FIX-4] Applied ?lang=${urlLang} from URL parameter`);
+  }
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
