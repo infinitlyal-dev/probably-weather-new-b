@@ -238,9 +238,10 @@ export default async function handler(req, res) {
           feelsLike: wa.current?.feelslike_c     ?? null,
           todayHigh: d0.maxtemp_c                ?? null,
           todayLow:  d0.mintemp_c                ?? null,
-          // V2-4: Clamp rain chance when WA condition code says clear/sunny
+          // V2-4: Clamp rain chance when WA condition code says clear/sunny AND no precip
           // Durban showed 84% rain with code 1000 ("Sunny") — clearly contradictory
-          todayRain: (waCondCode === 1000 || waCondCode === 1003) ? 0 : (d0.daily_chance_of_rain ?? null),
+          // BUG-1 fix: only clamp when daily precip is also 0mm — rain can start later in the day
+          todayRain: ((waCondCode === 1000 || waCondCode === 1003) && waDayPrecip === 0) ? 0 : (d0.daily_chance_of_rain ?? null),
           todayUv:   d0.uv                       ?? null,
           desc:      waDesc,
           windKph:   wa.current?.wind_kph        ?? null,
@@ -269,10 +270,11 @@ export default async function handler(req, res) {
           source:   'WeatherAPI',
           highs:    wa.forecast.forecastday.map(fd => fd.day.maxtemp_c),
           lows:     wa.forecast.forecastday.map(fd => fd.day.mintemp_c),
-          // V2-4: Clamp rain chance when condition code says clear/sunny
+          // V2-4: Clamp rain chance when condition code says clear/sunny AND no precip
+          // BUG-1 fix: only clamp when daily precip is also 0mm — a day can start sunny then rain
           rains:    wa.forecast.forecastday.map(fd => {
             const code = fd.day.condition?.code;
-            if (code === 1000 || code === 1003) return 0;
+            if ((code === 1000 || code === 1003) && (fd.day.totalprecip_mm ?? 0) === 0) return 0;
             return fd.day.daily_chance_of_rain;
           }),
           uvs:      wa.forecast.forecastday.map(fd => fd.day.uv),
@@ -609,12 +611,19 @@ export default async function handler(req, res) {
 
       // Rec 4: Majority voting for daily conditions — same logic as FIX-001
       // Requires ≥2 sources to agree on rain/cloudy before declaring it
+      // BUG-1 fix: trust Open-Meteo or MET Norway rain votes even without majority
       if ((dailyConditionKey === 'rain-possible' || dailyConditionKey === 'cloudy') && descEntries.length >= 3) {
         const dailyVotes = descEntries.map(e => categorizeDesc(e.desc));
         const rainOrCloudyCount = dailyVotes.filter(v => v === 'rain' || v === 'cloudy' || v === 'storm').length;
-        if (rainOrCloudyCount < 2) {
-          console.log(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy)`);
+        // Check if Open-Meteo (index 0) or MET Norway (index 3) votes rain for this day
+        const omRain = dailies[0]?.descs?.[i] && categorizeDesc(dailies[0].descs[i]) === 'rain';
+        const metRain = dailies[3]?.descs?.[i] && categorizeDesc(dailies[3].descs[i]) === 'rain';
+        const trustedDailyRain = omRain || metRain;
+        if (rainOrCloudyCount < 2 && !trustedDailyRain) {
+          console.log(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy, no trusted rain)`);
           dailyConditionKey = 'clear';
+        } else if (rainOrCloudyCount < 2 && trustedDailyRain) {
+          console.log(`[BUG-1] Day ${i}: Keeping ${dailyConditionKey} — trusted source (OM=${omRain}, MET=${metRain}) votes rain`);
         }
       }
 
@@ -774,13 +783,19 @@ export default async function handler(req, res) {
 
     // FIX-001: Majority check — single source claiming rain/cloudy must not override clear consensus
     // Requires ≥2 sources to agree on rain/cloudy before the app declares it
+    // BUG-1 fix: EXCEPTION — if Open-Meteo or MET Norway (most reliable for SA) votes rain, trust it
     if ((nowConditionKey === 'rain-possible' || nowConditionKey === 'cloudy') && activeNorms.length >= 3) {
       const rainOrCloudyVotes = sourceConditionVotes.filter(v =>
         v.vote === 'rain' || v.vote === 'cloudy' || v.vote === 'storm'
-      ).length;
-      if (rainOrCloudyVotes < 2) {
-        console.log(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes}/${activeNorms.length} sources vote rain/cloudy)`);
+      );
+      const trustedRainVote = rainOrCloudyVotes.some(v =>
+        (v.source === 'Open-Meteo' || v.source === 'MET Norway') && v.vote === 'rain'
+      );
+      if (rainOrCloudyVotes.length < 2 && !trustedRainVote) {
+        console.log(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes.length}/${activeNorms.length} sources vote rain/cloudy, no trusted rain vote)`);
         nowConditionKey = 'clear';
+      } else if (rainOrCloudyVotes.length < 2 && trustedRainVote) {
+        console.log(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
       }
     }
 
