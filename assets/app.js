@@ -648,7 +648,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Priority: village/town BEFORE city — so "Wilderness" wins over "George"
   async function reverseGeocode(lat, lon) {
     try {
-      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: AbortSignal.timeout(5000) });
+      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`, { headers: { 'User-Agent': 'howzit@probablyweather.co.za' }, signal: AbortSignal.timeout(5000) });
       if (!resp.ok) return null;
       const data = await resp.json();
       const addr = data.address || {};
@@ -1050,7 +1050,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!query || query.length < 2) { renderSearchResults([]); return; }
     const thisSeq = ++searchSeq; if (activeSearchController) activeSearchController.abort(); activeSearchController = new AbortController();
     try {
-      const resp = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=8&addressdetails=1`, { headers: { 'User-Agent': 'ProbablyWeather/1.0' }, signal: activeSearchController.signal });
+      const resp = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=8&addressdetails=1`, { headers: { 'User-Agent': 'howzit@probablyweather.co.za' }, signal: activeSearchController.signal });
       if (thisSeq !== searchSeq || !resp.ok) return;
       searchResults = (await resp.json()).map(r => ({ name: r.display_name?.split(',')[0] || 'Unknown', fullName: r.display_name, lat: r.lat, lon: r.lon, address: r.address }));
       renderSearchResults(searchResults);
