@@ -36,7 +36,7 @@ Never instruct Al to manually edit a file. All changes go via GitHub → Vercel 
 **Known WeatherAPI issue**: condition code 1003 (Partly cloudy) with 0mm precip should map to "clear", not "rain-possible". WeatherAPI frequently flags rain on clear days — do not trust its rain_chance alone.
 
 ## SOURCE WEIGHTS (DYNAMIC)
-Base weights: 40% Open-Meteo | 25% WeatherAPI | 10% Pirate Weather | 25% MET Norway
+Base weights: 35% Open-Meteo | 25% WeatherAPI | 15% Pirate Weather | 25% MET Norway
 
 Weights are **dynamically adjusted** at runtime based on source agreement:
 - **ECMWF dedup**: When OM and WA daily highs are within 0.5°C (same underlying model), WA weight is halved (25% → 12.5%)
