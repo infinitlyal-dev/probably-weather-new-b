@@ -857,14 +857,18 @@ document.addEventListener("DOMContentLoaded", () => {
       shareBtn.style.display = 'none';
     } else {
       shareBtn.addEventListener('click', async () => {
-        const temp = tempEl?.textContent || '';
-        const headline = headlineEl?.textContent || '';
+        const norm = window.__PW_LAST_NORM;
+        const hi = norm?.todayHigh, low = norm?.todayLow;
+        const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+        const loStr = isNum(low) ? formatTemp(low) : '--°';
         const loc = locationEl?.textContent || '';
-        const emoji = conditionEmoji(window.__PW_LAST_DISPLAY);
-        const inWord = t('misc', 'shareIn');
-        const text = `${temp} ${inWord} ${loc} — ${headline} ${emoji}`;
+        const displayCond = window.__PW_LAST_DISPLAY || 'clear';
+        const emoji = conditionEmoji(displayCond);
+        const heroLabel = getHeroLabel(displayCond);
+        const text = `Waarskynlik ${loStr}/${hiStr} in ${loc} — ${heroLabel} ${emoji}`;
         const lat = activePlace?.lat, lon = activePlace?.lon;
-        const url = (lat && lon) ? `https://probablyweather.co.za?lat=${lat}&lon=${lon}` : 'https://probablyweather.co.za';
+        const lang = settings.lang || 'en';
+        const url = (lat && lon) ? `https://probablyweather.co.za?lat=${lat}&lon=${lon}&lang=${lang}` : 'https://probablyweather.co.za';
         try { await navigator.share({ title: 'Probably Weather', text, url }); } catch {}
       });
     }
