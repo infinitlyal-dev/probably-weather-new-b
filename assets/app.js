@@ -627,21 +627,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return new Date().getDay(); // fallback to device time
   }
+  function getLocationDayOfYear() {
+    // Returns 1-366 for the searched location, not the device.
+    const offset = window.__PW_LAST_NORM?.utcOffsetSeconds;
+    if (isNum(offset)) {
+      const locMs = Date.now() + offset * 1000;
+      const d = new Date(locMs);
+      const start = Date.UTC(d.getUTCFullYear(), 0, 1);
+      return Math.floor((locMs - start) / 86400000) + 1;
+    }
+    const d = new Date();
+    const start = new Date(d.getFullYear(), 0, 1);
+    return Math.floor((d - start) / 86400000) + 1;
+  }
 
   // ========== BACKGROUND & PARTICLES ==========
-  const DAY_IMAGE_COUNT = 7;
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const hour = getLocationHour(activePlace?.lon);
     const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
-    // Day-of-week maps to image number: Mon=1, Tue=2... Sat=6, Sun=7
-    // This way you can curate weekend images (day_6, day_7) to be leisure/outdoor
-    // and weekday images (day_1-5) to include urban/work contexts if appropriate
-    const dayOfWeek = getLocationDayOfWeek(); // 0=Sun, 1=Mon...6=Sat (location time, not device)
-    const dayNum = dayOfWeek === 0 ? 7 : dayOfWeek; // Convert to 1-7 (Mon-Sun)
-    const imgFile = timeOfDay === 'day' ? `day_${dayNum}` : timeOfDay;
-    if (bgImg) { bgImg.src = `${base}/${folder}/${imgFile}.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; }; }
+    const dayOfYear = getLocationDayOfYear();
+    let imgFile;
+    if (timeOfDay === 'day') {
+      // 14-day cycle: day_1 through day_14
+      // Sat always day_6 or day_13, Sun always day_7 or day_14
+      const dayOfWeek = getLocationDayOfWeek(); // 0=Sun, 1=Mon...6=Sat
+      const baseSlot = dayOfWeek === 0 ? 7 : dayOfWeek; // Mon=1...Sat=6, Sun=7
+      const weekParity = Math.floor((dayOfYear - 1) / 7) % 2; // 0=week1, 1=week2
+      const dayNum = baseSlot + (weekParity * 7); // 1-7 or 8-14
+      imgFile = `day_${dayNum}`;
+    } else {
+      // Dawn/dusk/night: rotate through 3 options using day of year
+      const slot = ((dayOfYear - 1) % 3) + 1; // 1, 2, or 3
+      imgFile = `${timeOfDay}_${slot}`;
+    }
+    console.log(`[Image picker] Condition: ${condition}, Folder: ${folder}, Day of year: ${dayOfYear}, Time: ${timeOfDay}, Image: ${imgFile}.jpg`);
+    if (bgImg) {
+      bgImg.src = `${base}/${folder}/${imgFile}.jpg`;
+      bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; }; };
+    }
   }
   function createParticles(condition) {
     if (!particlesEl) return; particlesEl.innerHTML = '';
