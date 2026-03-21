@@ -696,10 +696,11 @@ export default async function handler(req, res) {
     // maxWindKph includes gust data from Open-Meteo.
     // In gusty coastal conditions (Cape Town southeaster etc), gusts are the
     // real story — mean wind can be 18 km/h while gusts hit 45 km/h.
-    const gustKph      = activeNorms.map(n => n.gustKph).filter(isNum);
+    const gustKphArr   = activeNorms.map(n => n.gustKph).filter(isNum);
+    const maxGust      = gustKphArr.length > 0 ? Math.max(...gustKphArr) : null;
     const maxWindKph   = Math.max(
       ...activeNorms.map(n => n.windKph).filter(isNum),
-      ...gustKph,
+      ...gustKphArr,
       0
     );
     const medHumidity  = wAvg(norms, normW, n => n.humidity);
@@ -805,7 +806,7 @@ export default async function handler(req, res) {
       location: { name: resolvedName || name || 'Unknown', lat, lon },
       wind_kph:   effectiveDisplayWind,
       maxWindKph: maxWindKph > 0 ? maxWindKph : null,
-      gustKph:    gustKph.length > 0 ? Math.max(...gustKph) : null,
+      gustKph:    isNum(maxGust) && maxGust > effectiveDisplayWind * 1.5 ? maxGust : null,
       now: {
         tempC:          medNowTemp,
         feelsLikeC:     finalFeelsLike,
