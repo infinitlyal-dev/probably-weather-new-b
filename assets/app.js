@@ -556,7 +556,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
   function getHeroLabel(condition) { return T.heroLabels[condition]?.[settings.lang] || T.heroLabels[condition]?.en || "Pleasant"; }
   function getWittyLine(condition) {
-    const day = getLocationDayOfWeek(), isWeekend = day === 0 || day === 5 || day === 6;
+    const day = getLocationDayOfWeek(), hour = getLocationHour(activePlace?.lon);
+    const isWeekend = day === 0 || day === 6 || (day === 5 && hour >= 16);
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
       const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
