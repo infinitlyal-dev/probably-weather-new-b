@@ -1,6 +1,3 @@
 {
-    "type": "module",
-    "devDependencies": {
-        "sharp": "^0.34.5"
-    }
-}
+    "type": "module"
+  }
