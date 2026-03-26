@@ -627,6 +627,16 @@ export default async function handler(req, res) {
         }
       }
 
+      // FIX-002: Fog majority check for daily forecasts — same consensus rule
+      if (dailyConditionKey === 'fog' && descEntries.length >= 3) {
+        const sourceNames = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway'];
+        const dailyFogSources = dailies.map((d, si) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog' ? sourceNames[si] : null).filter(Boolean);
+        if (dailyFogSources.length < 2) {
+          console.log(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
+          dailyConditionKey = 'clear';
+        }
+      }
+
       return {
         highC,
         lowC,
@@ -797,6 +807,16 @@ export default async function handler(req, res) {
         nowConditionKey = 'clear';
       } else if (rainOrCloudyVotes.length < 2 && trustedRainVote) {
         console.log(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
+      }
+    }
+
+    // FIX-002: Fog majority check — single source claiming fog must not override clear consensus
+    // Requires ≥2 sources to agree on fog before declaring it
+    if (nowConditionKey === 'fog' && activeNorms.length >= 3) {
+      const fogVotes = sourceConditionVotes.filter(v => v.vote === 'fog');
+      if (fogVotes.length < 2) {
+        console.log(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
+        nowConditionKey = 'clear';
       }
     }
 
