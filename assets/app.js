@@ -505,6 +505,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isDay && isNum(uv) && uv >= 8 && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     if (isNum(hi) && hi <= 10) return 'cold';
+    // FIX-003: positive cloud-cover override — don't show 'clear' if the sky is actually 55%+ cloudy
+    if (isMostlyCloudy) return 'cloudy';
     return 'clear';
   }
   
@@ -538,6 +540,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hasMajorityRain || hasMajorityCloudy || !votes.length) return 'rain-possible';
       console.log(`[FIX-001] Skipping rain-possible: rain=${imminentRain}% but only ${rainVotes} source(s) vote rain`);
     }
+    // FIX-003: rain is coming later today (daily ≥50% but not imminent) — show the possible-showers state
+    if (norm.rainLater) {
+      console.log(`[FIX-003] rainLater=true, escalating to rain-possible`);
+      return 'rain-possible';
+    }
     if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
     if (apiCondition === 'wind') return 'wind';
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
@@ -549,7 +556,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     const sky = computeSkyCondition(norm);
-    return sky !== 'clear' ? sky : 'clear';
+    if (sky !== 'clear') return sky;
+    // FIX-003: positive cloud-cover override — don't show 'clear' if the sky is actually 55%+ cloudy
+    if (isMostlyCloudy) {
+      console.log(`[FIX-003] cloud ${cloud}% forces cloudy (sky was clear, apiCondition=${apiCondition})`);
+      return 'cloudy';
+    }
+    return 'clear';
   }
 
   // ========== TRANSLATED TEXT ==========
@@ -647,7 +660,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const hour = getLocationHour(activePlace?.lon);
-    const timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
+    // FIX-003: bucket dawn/day/dusk/night by REAL solar sunrise/sunset from the API,
+    // not hardcoded clock hours. Falls back to the old 5/8/17/20 windows if the API
+    // didn't return sunrise/sunset for some reason.
+    let timeOfDay;
+    const norm = window.__PW_LAST_NORM;
+    const parseIsoLocalMinutes = (iso) => {
+      // API returns local-labelled ISO strings like "2026-04-15T06:23" (no tz). Read HH/MM directly.
+      if (typeof iso !== 'string' || iso.length < 16) return null;
+      const h = parseInt(iso.slice(11, 13), 10);
+      const m = parseInt(iso.slice(14, 16), 10);
+      return (Number.isFinite(h) && Number.isFinite(m)) ? h * 60 + m : null;
+    };
+    const sunriseMin = parseIsoLocalMinutes(norm?.sunrise);
+    const sunsetMin  = parseIsoLocalMinutes(norm?.sunset);
+    if (sunriseMin != null && sunsetMin != null && isNum(norm?.utcOffsetSeconds)) {
+      const locMs = Date.now() + norm.utcOffsetSeconds * 1000;
+      const locDate = new Date(locMs);
+      const nowMin = locDate.getUTCHours() * 60 + locDate.getUTCMinutes();
+      // Dawn: 45min before sunrise → 30min after. Dusk: 45min before sunset → 15min after.
+      const dawnStart = sunriseMin - 45, dawnEnd = sunriseMin + 30;
+      const duskStart = sunsetMin  - 45, duskEnd = sunsetMin  + 15;
+      if (nowMin >= dawnStart && nowMin < dawnEnd)        timeOfDay = 'dawn';
+      else if (nowMin >= dawnEnd && nowMin < duskStart)   timeOfDay = 'day';
+      else if (nowMin >= duskStart && nowMin < duskEnd)   timeOfDay = 'dusk';
+      else                                                timeOfDay = 'night';
+      console.log(`[Solar TOD] now=${Math.floor(nowMin/60)}:${String(nowMin%60).padStart(2,'0')} sunrise=${Math.floor(sunriseMin/60)}:${String(sunriseMin%60).padStart(2,'0')} sunset=${Math.floor(sunsetMin/60)}:${String(sunsetMin%60).padStart(2,'0')} → ${timeOfDay}`);
+    } else {
+      timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
+      console.log(`[Solar TOD] fallback to clock hours (no sunrise/sunset in norm) → ${timeOfDay}`);
+    }
     const dayOfYear = getLocationDayOfYear();
     let imgFile;
     if (timeOfDay === 'day') {
@@ -718,6 +760,8 @@ document.addEventListener("DOMContentLoaded", () => {
       uv: now.uv ?? null,        // now.uv is null at night (API nulls it after sunset)
       uvDaily: today.uv ?? null, // today's peak UV, for daytime byline reference only
       isDay: now.isDay !== false, // false only when API explicitly says night
+      sunrise: now.sunrise ?? null, // ISO string from Open-Meteo, local-labelled (no tz)
+      sunset:  now.sunset  ?? null, // used for real solar-time dawn/dusk/night bucketing
       localHour: meta.localHour ?? null, // correct local hour from API (uses real UTC offset)
       utcOffsetSeconds: meta.utcOffsetSeconds ?? null, // UTC offset for location day-of-week calc
       windKph: isNum(payload.wind_kph) ? payload.wind_kph : (isNum(now.windKph) ? now.windKph : 0), 
