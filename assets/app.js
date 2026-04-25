@@ -656,14 +656,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== BACKGROUND & PARTICLES ==========
-  function setBackgroundFor(condition) {
-    const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
-    const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
-    const hour = getLocationHour(activePlace?.lon);
-    // FIX-003: bucket dawn/day/dusk/night by REAL solar sunrise/sunset from the API,
-    // not hardcoded clock hours. Falls back to the old 5/8/17/20 windows if the API
-    // didn't return sunrise/sunset for some reason.
-    let timeOfDay;
+  // Bucket the current local time into 'dawn' | 'day' | 'dusk' | 'night' using
+  // real solar sunrise/sunset from the API. Falls back to clock hours
+  // (5/8/17/20) if the API didn't return sunrise/sunset.
+  function getTimeOfDay() {
     const norm = window.__PW_LAST_NORM;
     const parseIsoLocalMinutes = (iso) => {
       // API returns local-labelled ISO strings like "2026-04-15T06:23" (no tz). Read HH/MM directly.
@@ -674,6 +670,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     const sunriseMin = parseIsoLocalMinutes(norm?.sunrise);
     const sunsetMin  = parseIsoLocalMinutes(norm?.sunset);
+    let timeOfDay;
     if (sunriseMin != null && sunsetMin != null && isNum(norm?.utcOffsetSeconds)) {
       const locMs = Date.now() + norm.utcOffsetSeconds * 1000;
       const locDate = new Date(locMs);
@@ -687,9 +684,16 @@ document.addEventListener("DOMContentLoaded", () => {
       else                                                timeOfDay = 'night';
       console.log(`[Solar TOD] now=${Math.floor(nowMin/60)}:${String(nowMin%60).padStart(2,'0')} sunrise=${Math.floor(sunriseMin/60)}:${String(sunriseMin%60).padStart(2,'0')} sunset=${Math.floor(sunsetMin/60)}:${String(sunsetMin%60).padStart(2,'0')} → ${timeOfDay}`);
     } else {
+      const hour = getLocationHour(activePlace?.lon);
       timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
       console.log(`[Solar TOD] fallback to clock hours (no sunrise/sunset in norm) → ${timeOfDay}`);
     }
+    return timeOfDay;
+  }
+  function setBackgroundFor(condition) {
+    const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
+    const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
+    const timeOfDay = getTimeOfDay();
     const dayOfYear = getLocationDayOfYear();
     let imgFile;
     if (timeOfDay === 'day') {
@@ -954,8 +958,11 @@ document.addEventListener("DOMContentLoaded", () => {
         hiLoEl.style.display = 'none';
       }
     }
-    // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight
-    const displayConditionForCopy = (!norm.isDay && displayCondition === 'clear') ? 'night' : displayCondition;
+    // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight.
+    // Use real solar bucketing so dawn/dusk don't get mislabelled as night.
+    const timeOfDay = getTimeOfDay();
+    const displayConditionForCopy = (timeOfDay === 'night' && displayCondition === 'clear') ? 'night' : displayCondition;
+    console.log('[Hero copy] timeOfDay:', timeOfDay, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
     safeText(headlineEl, getWittyLine(displayConditionForCopy));
     safeText(descriptionEl, getHeadline(displayConditionForCopy));
     const bylineEl = $('#weatherByline');
