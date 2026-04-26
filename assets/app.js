@@ -760,8 +760,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function normalizePayload(payload) {
     const now = payload.now || {}, today = payload.daily?.[0] || {}, meta = payload.meta || {}, sources = meta.sources || [];
     const hourly = payload.hourly || [];
-    const imminentHours = hourly.slice(0, 4);
+    // hourly is a 48-entry local-time array (0=midnight today … 47=23:00 tomorrow).
+    // Slicing from 0 always grabbed midnight–3am — not "next 4 hours from now".
+    // Start at the current local hour so the window genuinely reflects what's
+    // about to happen. The 48-hour span gives natural wraparound into tomorrow.
+    const localHour = Number.isInteger(payload?.meta?.localHour) ? payload.meta.localHour : null;
+    const imminentHours = localHour != null ? hourly.slice(localHour, localHour + 4) : [];
     const imminentRainMax = imminentHours.length > 0 ? Math.max(...imminentHours.map(h => h.rainChance ?? 0)) : null;
+    console.log(`[Imminent slice] localHour=${localHour} → next 4 hours rain max: ${imminentRainMax}%`);
     const displayRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
     const dailyRainPct = today.rainChance ?? now.rainChance ?? null;
     const rainLater = isNum(imminentRainMax) && imminentRainMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
