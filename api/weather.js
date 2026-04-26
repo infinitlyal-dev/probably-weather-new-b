@@ -781,6 +781,7 @@ export default async function handler(req, res) {
       cloudPct:   currentCloudPct,
       maxWindKph,
       isDay,
+      dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
     });
 
     // FIX-001: Per-source condition votes for debugging and majority check
@@ -995,9 +996,12 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  params.uvIndex      - UV index
  * @param {number}  params.cloudPct     - Cloud cover %
  * @param {boolean} params.isDay        - Whether the sun is currently up
+ * @param {number}  [params.dailyHighC] - Today's forecast high (optional). If
+ *   provided, gates the chilly rung so a cool morning on a warm day is not
+ *   labelled cold for the whole day.
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -1060,7 +1064,14 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return 'fog';
 
   // 14. Cold (not freezing, but chilly)
-  if (isNum(tempC) && tempC <= 10)            return 'cold';
+  //   - Now-path: only declare cold if BOTH the current temp is ≤ 10 AND the
+  //     day's high stays ≤ 14. A 9°C dawn warming to 21°C is not a cold day.
+  //   - Daily-path: dailyHighC is undefined (caller passes tempC=highC), so the
+  //     existing tempC ≤ 10 check still works for daily decisions.
+  if (isNum(tempC) && tempC <= 10) {
+    if (!isNum(dailyHighC) || dailyHighC <= 14) return 'cold';
+    console.log(`[Cold gate] tempC=${tempC} but dailyHighC=${dailyHighC} > 14 → not cold`);
+  }
 
   // 15. Hot (not extreme, but warm)
   if (isNum(tempC) && tempC >= 30)            return 'heat';
