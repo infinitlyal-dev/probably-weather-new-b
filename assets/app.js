@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const screenHome = $('#home-screen');
   const screenHourly = $('#hourly-screen');
   const screenWeek = $('#week-screen');
+  const screenDayDetail = $('#day-detail-screen');
   const screenSearch = $('#search-screen');
   const screenSettings = $('#settings-screen');
 
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const capeWindDismiss = $('#capeWindDismiss');
 
   const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location" };
-  const SCREENS = [screenHome, screenHourly, screenWeek, screenSearch, screenSettings];
+  const SCREENS = [screenHome, screenHourly, screenWeek, screenDayDetail, screenSearch, screenSettings];
   const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32 };
 
   // ========== INDEXEDDB WEATHER CACHE ==========
@@ -171,7 +172,16 @@ document.addEventListener("DOMContentLoaded", () => {
       // Table headers
       time: { en: "Time", af: "Tyd", zu: "Isikhathi", xh: "Ixesha", st: "Nako" },
       temp: { en: "Temp", af: "Temp", zu: "Temp", xh: "Temp", st: "Temp" },
-      day: { en: "Day", af: "Dag", zu: "Usuku", xh: "Usuku", st: "Letsatsi" }
+      day: { en: "Day", af: "Dag", zu: "Usuku", xh: "Usuku", st: "Letsatsi" },
+      sunrise: { en: "Sunrise", af: "Sonop", zu: "Ukuphuma kwelanga", xh: "Ukuphuma kwelanga", st: "Mafube" },
+      sunset:  { en: "Sunset",  af: "Sononder", zu: "Ukushona kwelanga", xh: "Ukutshona kwelanga", st: "Letsatsi le likela" },
+      hourlySoon: {
+        en: "Hourly forecast appears 48 hours before this day.",
+        af: "Uurlikse voorspelling verskyn 48 uur voor hierdie dag.",
+        zu: "Isibikezelo samahora siphuma amahora angu-48 ngaphambi kwalolu suku.",
+        xh: "Isibikezelo seeyure sivela kwiiyure ezingama-48 phambi kwalo mhla.",
+        st: "Ponelopele ea hora e hlahella lihora tse 48 pele ho letsatsi lena."
+      }
     },
     // Day hero badges
     badges: {
@@ -1114,10 +1124,134 @@ document.addEventListener("DOMContentLoaded", () => {
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
-      const div = document.createElement('div'); div.classList.add('daily-row');
+      const div = document.createElement('div'); div.classList.add('daily-row', 'daily-row-tappable');
+      div.dataset.dayIndex = String(i);
+      div.setAttribute('role', 'button');
+      div.setAttribute('tabindex', '0');
       div.innerHTML = `<span class="d-day">${dayName}${badge ? ` <span class="day-badge">${badge}</span>` : ''}</span><span class="d-icon">${icon}</span><span class="d-high ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</span><span class="d-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</span><span class="d-rain">${rainPct}</span>`;
+      div.addEventListener('click', () => {
+        console.log(`[Day click] dayIndex=${i}`);
+        showScreen(screenDayDetail);
+        renderDayDetail(window.__PW_LAST_NORM, i);
+      });
+      div.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); div.click(); }
+      });
       dailyCards.appendChild(div);
     });
+  }
+  function renderDayDetail(norm, dayIndex) {
+    if (!norm) return;
+    const day = norm.daily?.[dayIndex];
+    if (!day) return;
+
+    // Header: day name + date + condition + high/low.
+    const offsetMs = (norm.utcOffsetSeconds ?? 0) * 1000;
+    const date = new Date(Date.now() + offsetMs + dayIndex * 86400000);
+    const dayName = getTranslatedDayName(date.getUTCDay());
+    const dateStr = `${String(date.getUTCDate()).padStart(2, '0')}/${String(date.getUTCMonth() + 1).padStart(2, '0')}`;
+    const hi = isNum(day.highC) ? formatTemp(day.highC) : '--°';
+    const lo = isNum(day.lowC)  ? formatTemp(day.lowC)  : '--°';
+    const cond = day.conditionLabel || '—';
+    const headerName = $('#dayDetailDayName');
+    const headerMeta = $('#dayDetailMeta');
+    if (headerName) headerName.textContent = `${dayName} ${dateStr}`;
+    if (headerMeta) headerMeta.textContent = `${cond} • ${lo} / ${hi}`;
+
+    const content = $('#day-detail-content');
+    if (!content) return;
+    content.innerHTML = '';
+
+    const hourly = Array.isArray(norm.hourly) ? norm.hourly : [];
+    if (dayIndex === 0) {
+      // Today: now → end of today only. Hourly slice is [localHour..24).
+      const startHour = Number.isInteger(norm.localHour) ? norm.localHour : 0;
+      renderDayDetailHourly(content, hourly.slice(startHour, 24), startHour);
+    } else if (dayIndex === 1) {
+      // Tomorrow: full day, hourly[24..48).
+      renderDayDetailHourly(content, hourly.slice(24, 48), 0);
+    } else {
+      renderDayDetailSummary(content, day);
+    }
+
+    console.log(`[Day detail] dayIndex=${dayIndex} hourly=${dayIndex <= 1} day=${day.conditionLabel}`);
+  }
+  function renderDayDetailHourly(container, hourlySlice, startHour) {
+    const header = document.createElement('div');
+    header.classList.add('hourly-row', 'hourly-header');
+    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
+    container.appendChild(header);
+    const currentWind = window.__PW_LAST_NORM?.windKph || null;
+    hourlySlice.forEach((h, i) => {
+      if (!h) return;
+      const div = document.createElement('div'); div.classList.add('hourly-row');
+      const hourNum = (startHour + i) % 24;
+      const ht = settings.time === '12'
+        ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}`
+        : `${String(hourNum).padStart(2, '0')}:00`;
+      const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
+      const isNightHour = hourNum >= 20 || hourNum < 5;
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour);
+      const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
+      const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
+      const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
+      const tempClass = getTempColorClass(h.tempC);
+      const uvVal = isNum(h.uv) ? round0(h.uv) : '--';
+      const uvClass = isNum(h.uv) ? (h.uv >= 8 ? 'uv-extreme' : h.uv >= 6 ? 'uv-high' : h.uv >= 3 ? 'uv-mod' : '') : '';
+      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${isNum(h.tempC) ? formatTemp(h.tempC) : '--°'}</span><span class="h-rain">${rainPct}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
+      container.appendChild(div);
+    });
+  }
+  function renderDayDetailSummary(container, day) {
+    const card = document.createElement('div');
+    card.classList.add('day-detail-summary-card');
+    const iconTemp = isNum(day.lowC) && day.lowC <= 0 ? day.lowC : day.highC;
+    const icon = getWeatherIcon(day.rainChance, null, iconTemp);
+    const cond = day.conditionLabel || '—';
+    const hi = isNum(day.highC) ? formatTemp(day.highC) : '--°';
+    const lo = isNum(day.lowC)  ? formatTemp(day.lowC)  : '--°';
+    const hiClass = getTempColorClass(day.highC);
+    const loClass = getTempColorClass(day.lowC);
+    const rainPct = isNum(day.rainChance) ? round0(day.rainChance) + '%' : '--';
+    const uvVal = isNum(day.uv) ? round0(day.uv) : '--';
+    const uvClass = isNum(day.uv) ? (day.uv >= 8 ? 'uv-extreme' : day.uv >= 6 ? 'uv-high' : day.uv >= 3 ? 'uv-mod' : '') : '';
+    const fmtTime = (iso) => {
+      if (typeof iso !== 'string' || iso.length < 16) return '--';
+      const h = parseInt(iso.slice(11, 13), 10);
+      const m = parseInt(iso.slice(14, 16), 10);
+      if (!Number.isFinite(h) || !Number.isFinite(m)) return '--';
+      if (settings.time === '12') {
+        const hh12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
+        return `${hh12}:${String(m).padStart(2, '0')}${h >= 12 ? 'pm' : 'am'}`;
+      }
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+    };
+    const sunrise = fmtTime(day.sunrise);
+    const sunset  = fmtTime(day.sunset);
+    const rainLabel = t('weather', 'rain') || 'Rain';
+    const uvLabel = t('weather', 'uv') || 'UV';
+    const sunriseLabel = t('weather', 'sunrise') || 'Sunrise';
+    const sunsetLabel  = t('weather', 'sunset')  || 'Sunset';
+    const disclaimer = t('weather', 'hourlySoon') || 'Hourly forecast appears 48 hours before this day.';
+    card.innerHTML = `
+      <div class="ds-headline">
+        <span class="ds-icon">${icon}</span>
+        <span class="ds-condition">${cond}</span>
+      </div>
+      <div class="ds-temps">
+        <span class="ds-low ${loClass}">${lo}</span>
+        <span class="ds-sep">/</span>
+        <span class="ds-high ${hiClass}">${hi}</span>
+      </div>
+      <div class="ds-stats">
+        <div class="ds-stat"><span class="ds-stat-label">${rainLabel}</span><span class="ds-stat-value">${rainPct}</span></div>
+        <div class="ds-stat"><span class="ds-stat-label">${uvLabel}</span><span class="ds-stat-value ${uvClass}">${uvVal}</span></div>
+        <div class="ds-stat"><span class="ds-stat-label">${sunriseLabel}</span><span class="ds-stat-value">${sunrise}</span></div>
+        <div class="ds-stat"><span class="ds-stat-label">${sunsetLabel}</span><span class="ds-stat-value">${sunset}</span></div>
+      </div>
+      <div class="ds-disclaimer">${disclaimer}</div>
+    `;
+    container.appendChild(card);
   }
   function applySettings() {
     if (unitsTempSelect) unitsTempSelect.value = settings.temp;
@@ -1235,6 +1369,7 @@ document.addEventListener("DOMContentLoaded", () => {
   navHome?.addEventListener('click', () => { showScreen(screenHome); });
   navHourly?.addEventListener('click', () => showScreen(screenHourly));
   navWeek?.addEventListener('click', () => showScreen(screenWeek));
+  $('#dayDetailBack')?.addEventListener('click', () => showScreen(screenWeek));
   navSearch?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); });
   navSettings?.addEventListener('click', () => showScreen(screenSettings));
   
