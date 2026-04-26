@@ -697,6 +697,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return timeOfDay;
   }
+  // Hero temperature range, forward-looking by time of day.
+  //   dawn  → current temp → today's high   (directional, "warming to")
+  //   day   → today's low / today's high    (range, existing behaviour)
+  //   dusk  → current temp → tonight's low  (directional, "cooling to")
+  //   night → tomorrow's low / tomorrow's high (range)
+  function getHeroRange(norm, timeOfDay) {
+    const hourly = Array.isArray(norm.hourly) ? norm.hourly : [];
+    const localHour = Number.isInteger(norm.localHour) ? norm.localHour : null;
+    const fallback = { low: norm.todayLow ?? null, high: norm.todayHigh ?? null, format: 'range' };
+
+    if (timeOfDay === 'dawn') {
+      return {
+        low: norm.nowTemp ?? norm.todayLow ?? null,
+        high: norm.todayHigh ?? null,
+        format: 'directional'
+      };
+    }
+
+    if (timeOfDay === 'dusk') {
+      let tonightLow = null;
+      if (localHour != null && hourly.length) {
+        const sliceEnd = Math.min(localHour + 12, hourly.length);
+        const temps = hourly.slice(localHour, sliceEnd).map(h => h?.tempC).filter(isNum);
+        if (temps.length) tonightLow = Math.min(...temps);
+      }
+      if (tonightLow == null) tonightLow = norm.daily?.[1]?.lowC ?? norm.todayLow ?? null;
+      return {
+        low: tonightLow,
+        high: norm.nowTemp ?? norm.todayHigh ?? null,
+        format: 'directional'
+      };
+    }
+
+    if (timeOfDay === 'night') {
+      const tomorrow = norm.daily?.[1];
+      if (tomorrow?.lowC != null && tomorrow?.highC != null) {
+        return { low: tomorrow.lowC, high: tomorrow.highC, format: 'range' };
+      }
+      return fallback;
+    }
+
+    return fallback;
+  }
   function setBackgroundFor(condition) {
     const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
@@ -948,18 +991,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function renderHome(norm) {
     showLoader(false);
-    const currentTemp = norm.nowTemp, hi = norm.todayHigh, low = norm.todayLow, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
+    const currentTemp = norm.nowTemp, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
     document.body.className = `weather-${displayCondition}`;
     let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
     if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
-    // BUG-3 fix: home screen shows min/max range as primary temp, not current temp
+    // BUG-3 fix: home screen shows min/max range as primary temp, not current temp.
+    // Forward-looking: dawn = current → today's high, dusk = current → tonight's low,
+    // night = tomorrow's range, day = today's low/high.
+    const timeOfDay = getTimeOfDay();
+    const { low, high, format } = getHeroRange(norm, timeOfDay);
+    console.log(`[Hero range] timeOfDay=${timeOfDay} format=${format} low=${low} high=${high}`);
     const probablyLabel = t('weather', 'probably');
-    const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+    const hiStr = isNum(high) ? formatTemp(high) : '--°';
     const loStr = isNum(low) ? formatTemp(low) : '--°';
-    safeText(tempEl, `${probablyLabel} ${loStr} / ${hiStr}`);
+    if (format === 'directional') {
+      // dawn: current (low) → today's high. dusk: current (high) → tonight's low.
+      const fromStr = (timeOfDay === 'dusk') ? hiStr : loStr;
+      const toStr   = (timeOfDay === 'dusk') ? loStr : hiStr;
+      safeText(tempEl, `${probablyLabel} ${fromStr} → ${toStr}`);
+    } else {
+      safeText(tempEl, `${probablyLabel} ${loStr} / ${hiStr}`);
+    }
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
       // Show current temp below the range when toggle is on
@@ -973,7 +1028,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight.
     // Use real solar bucketing so dawn/dusk don't get mislabelled as night.
-    const timeOfDay = getTimeOfDay();
+    // (timeOfDay was already computed earlier for the hero range — reuse it.)
     const displayConditionForCopy = (timeOfDay === 'night' && displayCondition === 'clear') ? 'night' : displayCondition;
     console.log('[Hero copy] timeOfDay:', timeOfDay, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
     safeText(headlineEl, getWittyLine(displayConditionForCopy));
