@@ -1033,6 +1033,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log('[Hero copy] timeOfDay:', timeOfDay, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
     safeText(headlineEl, getWittyLine(displayConditionForCopy));
     safeText(descriptionEl, getHeadline(displayConditionForCopy));
+    console.log('[Layout] description:', descriptionEl?.textContent, 'headline:', headlineEl?.textContent);
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const gust = norm.gustKph;

@@ -188,12 +188,15 @@ body.modal-open {
   margin-bottom: 0.25rem;
 }
 
-/* Description/humor line - orange/coral for warmth */
+/* Description/condition headline (e.g. "Dit reën") — sits under the temp in
+   the main column. Sized between the 4rem temp and the 2.2rem witty headline
+   so it has presence without competing. */
 .description {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #ff8c42;
-  margin-bottom: 0.75rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
 }
 
@@ -1495,6 +1498,7 @@ body:has(main#home-screen.main:not(.hidden)) .tagline {
 main#home-screen.main #confidence,
 main#home-screen.main #sources,
 main#home-screen.main #headline,
+main#home-screen.main #description,
 main#home-screen.main #temp,
 main#home-screen.main #tempHiLo {
   text-align: left;
@@ -1548,11 +1552,14 @@ main#home-screen.main #confidence {
   animation-delay: 0.2s;
 }
 
+#home-screen #description {
+  animation-delay: 0.2s;
+}
+
 #home-screen .headline {
   animation-delay: 0.3s;
 }
 
-.sidebar .description,
 .sidebar .weather-byline {
   animation: heroFadeIn 0.8s ease-in forwards;
   animation-delay: 0.3s;
@@ -1897,11 +1904,12 @@ main#home-screen.main #confidence {
     z-index: 50;
   }
 
-  .sidebar .description {
-    font-size: 22px;
-    margin-bottom: 4px;
-    margin-top: 0;
-    text-align: right;
+  /* Condition headline ("Dit reën") in the main column — mobile sizing. */
+  #home-screen #description {
+    font-size: 1.5rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.4rem;
+    text-align: left;
     font-weight: 700;
     color: #ff8c42;
     text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.7);
@@ -2000,13 +2008,11 @@ main#home-screen.main #confidence {
     display: none !important;
   }
   /* ── Sources content swap ── */
-  .sidebar .description,
   .sidebar .weather-byline,
   .sidebar .sources-swap {
     transition: opacity 0.25s ease;
   }
 
-  .sidebar.sources-open .description,
   .sidebar.sources-open .weather-byline {
     opacity: 0;
     max-height: 0;
@@ -2145,11 +2151,7 @@ main#home-screen.main #confidence {
   to { transform: translateY(0); }
 }
 
-/* ========== SIDEBAR HUMOUR + STATS ========== */
-.sidebar-humour {
-  text-align: right;
-  margin-bottom: 0.5rem;
-}
+/* ========== SIDEBAR STATS ========== */
 .sidebar-stats {
   text-align: right;
   align-items: flex-end;
