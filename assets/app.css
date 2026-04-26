@@ -2178,3 +2178,132 @@ main#home-screen.main #confidence {
 .offline-indicator.visible {
   opacity: 1;
 }
+
+/* ========== DAY DETAIL SCREEN ========== */
+/* Tappable weekly rows — same look, with pointer + subtle feedback */
+.daily-row-tappable {
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.daily-row-tappable:hover {
+  background: rgba(0,0,0,0.5);
+}
+.daily-row-tappable:active {
+  transform: scale(0.985);
+}
+.daily-row-tappable:focus-visible {
+  outline: 2px solid rgba(255,215,0,0.7);
+  outline-offset: 2px;
+}
+
+.day-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.day-detail-back {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.day-detail-back:hover {
+  background: rgba(255,255,255,0.18);
+}
+.day-detail-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.day-detail-day-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.day-detail-meta {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Day detail summary card (days 3-7, no hourly available) */
+.day-detail-summary-card {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ds-headline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ds-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.ds-condition {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.ds-temps {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.ds-low,
+.ds-high {
+  font-size: 2rem;
+}
+.ds-sep {
+  font-size: 1.4rem;
+  opacity: 0.6;
+}
+.ds-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 16px;
+  margin-top: 4px;
+}
+.ds-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 6px 0;
+}
+.ds-stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.75;
+}
+.ds-stat-value {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.ds-disclaimer {
+  font-style: italic;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+@media (max-width: 480px) {
+  .ds-stats {
+    grid-template-columns: 1fr;
+  }
+}
