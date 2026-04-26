@@ -534,6 +534,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
+    // FIX: trust the API's rain verdict when 2+ sources voted rain/storm. The API
+    // already aggregated source agreement; without this, a unanimous-rain payload
+    // gets demoted to 'rain-possible' whenever norm.rainPct happens to land below 50.
+    if (apiCondition === 'rain' && votes.length && hasMajorityRain) {
+      console.log(`[Rain consensus] API=rain with ${rainVotes} source votes → returning rain`);
+      return 'rain';
+    }
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
     // FIX-001: rain-possible requires either strong rain signal (≥30%) OR majority source agreement
     if (isNum(imminentRain) && imminentRain >= 30) {
