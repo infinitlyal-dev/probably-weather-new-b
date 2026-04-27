@@ -229,14 +229,27 @@ def process_one(
         res.error = "already portrait — skipping"
         return res
 
+    # Skip if a successful extended output already exists (resume-friendly).
+    output_dir.mkdir(parents=True, exist_ok=True)
+    slug = slug_from_path(input_path)
+    existing = output_dir / f"{slug}_extended.jpg"
+    if existing.exists():
+        res.skipped = True
+        res.error = "already extended — skipping"
+        res.output_path = existing
+        try:
+            with Image.open(existing) as im:
+                res.out_w, res.out_h = im.size
+        except Exception:
+            pass
+        return res
+
     # Compute target canvas — same width, taller height
     target_w = res.src_w
     target_h = round(target_w * (target_ratio_h / target_ratio_w))
 
     # Build canvas + mask, save as temporary inputs the API can fetch
     canvas, mask, _ = build_canvas_and_mask(src, target_w, target_h)
-    output_dir.mkdir(parents=True, exist_ok=True)
-    slug = slug_from_path(input_path)
     canvas_tmp = output_dir / f"{slug}_canvas.jpg"
     mask_tmp = output_dir / f"{slug}_mask.png"
     canvas.save(canvas_tmp, "JPEG", quality=95)
@@ -280,43 +293,197 @@ def process_one(
 
 
 # ---------------------------------------------------------------------------
+# Batch log + failed list
+# ---------------------------------------------------------------------------
+
+BATCH_LOG = "batch_log.txt"
+FAILED_LIST = "failed.txt"
+
+
+def append_batch_log(output_dir: Path, r: Result) -> None:
+    """Append a TSV row: STATUS\\tinput\\toutput\\tcost\\telapsed_s.
+
+    STATUS is OK | FAIL | SKIP. Fields with no value are written as '-'.
+    """
+    if r.skipped:
+        status = "SKIP"
+    elif r.error or not r.output_path:
+        status = "FAIL"
+    else:
+        status = "OK"
+    output = str(r.output_path) if r.output_path else "-"
+    cost = str(r.cost_usd) if isinstance(r.cost_usd, (int, float)) else "-"
+    note = (r.error or "").replace("\t", " ").replace("\n", " ")
+    line = f"{status}\t{r.input_path}\t{output}\t{cost}\t{r.elapsed_s}\t{note}\n"
+    (output_dir / BATCH_LOG).open("a", encoding="utf-8").write(line)
+
+
+def append_failed(output_dir: Path, input_path: Path) -> None:
+    """Append the input path to failed.txt for retry. Dedup on read."""
+    p = output_dir / FAILED_LIST
+    existing = set()
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line:
+                existing.add(line)
+    target = str(input_path)
+    if target not in existing:
+        p.open("a", encoding="utf-8").write(target + "\n")
+
+
+# ---------------------------------------------------------------------------
 # Comparison HTML
 # ---------------------------------------------------------------------------
 
 
-def write_comparison_html(results: list[Result], output_dir: Path) -> Path:
-    """Side-by-side HTML viewer at phone aspect ratio for review."""
-    rows = []
-    for r in results:
-        if r.skipped or r.error or not r.output_path:
-            note = r.error or "skipped"
-            rows.append(
-                f"<div class='card error'><div class='cap'>{r.input_path}</div>"
-                f"<div class='msg'>{note}</div></div>"
-            )
+def _read_batch_log(output_dir: Path) -> dict[str, dict]:
+    """Map original-input-path → latest log row. Resilient to repeated runs."""
+    p = output_dir / BATCH_LOG
+    rows: dict[str, dict] = {}
+    if not p.exists():
+        return rows
+    for line in p.read_text(encoding="utf-8").splitlines():
+        parts = line.split("\t")
+        if len(parts) < 5:
             continue
-        # Relative paths so the HTML opens locally
+        status, src, out, cost, elapsed, *rest = parts
+        rows[src] = {
+            "status": status,
+            "src": src,
+            "out": out,
+            "cost": cost,
+            "elapsed": elapsed,
+            "note": (rest[0] if rest else ""),
+        }
+    return rows
+
+
+def write_comparison_html(
+    output_dir: Path,
+    run_summary: Optional[dict] = None,
+) -> Path:
+    """Build the review page from disk: scans output_dir for *_extended.jpg
+    and renders each with its source. Cards grouped by folder. Header
+    summarises overall state.
+    """
+    log_rows = _read_batch_log(output_dir)
+
+    # Build a map: extended-output-path → input-path (from the batch log).
+    out_to_src: dict[str, str] = {}
+    for src, row in log_rows.items():
+        if row["status"] == "OK" and row["out"] != "-":
+            out_to_src[Path(row["out"]).name] = src
+
+    # Scan the output dir for actual *_extended.jpg.
+    extended = sorted(output_dir.glob("*_extended.jpg"))
+
+    # Group cards by folder (clear/cloudy/cold/...).
+    groups: dict[str, list[str]] = {}
+    total_cost = 0.0
+    for ext_path in extended:
+        # Resolve the original input path.
+        src_str = out_to_src.get(ext_path.name)
+        if src_str:
+            src_path = Path(src_str)
+            if not src_path.is_absolute():
+                src_path = REPO_ROOT / src_path
+            folder = Path(src_str).parent.name
+        else:
+            # Fall back to slug parsing — best effort.
+            folder = "unknown"
+            src_path = None
+
+        # Get dims for both images.
         try:
-            src_rel = os.path.relpath(REPO_ROOT / r.input_path, output_dir)
+            with Image.open(ext_path) as im:
+                out_w, out_h = im.size
+        except Exception:
+            out_w, out_h = 0, 0
+        if src_path and src_path.exists():
+            try:
+                with Image.open(src_path) as im:
+                    src_w, src_h = im.size
+            except Exception:
+                src_w, src_h = 0, 0
+        else:
+            src_w, src_h = 0, 0
+
+        # Pull cost / elapsed out of the log row.
+        row = log_rows.get(src_str or "", {})
+        cost_str = row.get("cost", "-")
+        elapsed_str = row.get("elapsed", "-")
+        try:
+            total_cost += float(cost_str)
+        except (TypeError, ValueError):
+            pass
+
+        try:
+            src_rel = (
+                os.path.relpath(src_path, output_dir) if src_path else "(missing)"
+            )
         except ValueError:
-            src_rel = str(r.input_path)
-        out_rel = r.output_path.name  # lives next to the html
-        rows.append(
-            f"""
-            <div class='card'>
-              <div class='cap'>{r.input_path}</div>
-              <div class='pair'>
-                <figure><figcaption>before — {r.src_w}×{r.src_h}</figcaption>
-                  <img src='{src_rel}' alt='before' />
-                </figure>
-                <figure><figcaption>after — {r.out_w}×{r.out_h}</figcaption>
-                  <img src='{out_rel}' alt='after' />
-                </figure>
-              </div>
-              <div class='meta'>{r.elapsed_s}s · cost {r.cost_usd or '—'}</div>
-            </div>
-            """
+            src_rel = str(src_path)
+        out_rel = ext_path.name
+
+        card = f"""
+        <div class='card'>
+          <div class='cap'>{src_str or ext_path.name}</div>
+          <div class='pair'>
+            <figure><figcaption>before — {src_w}×{src_h}</figcaption>
+              <img src='{src_rel}' alt='before' loading='lazy' />
+            </figure>
+            <figure><figcaption>after — {out_w}×{out_h}</figcaption>
+              <img src='{out_rel}' alt='after' loading='lazy' />
+            </figure>
+          </div>
+          <div class='meta'>{elapsed_str}s · cost {cost_str}</div>
+        </div>
+        """
+        groups.setdefault(folder, []).append(card)
+
+    # Failed.txt cards (rendered after each folder, or in a dedicated bottom group).
+    failed_paths: list[str] = []
+    fpath = output_dir / FAILED_LIST
+    if fpath.exists():
+        seen: set[str] = set()
+        for line in fpath.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line and line not in seen:
+                seen.add(line)
+                failed_paths.append(line)
+
+    failed_cards = []
+    for f in failed_paths:
+        row = log_rows.get(f, {})
+        note = row.get("note") or row.get("status") or "failed"
+        failed_cards.append(
+            f"<div class='card error'><div class='cap'>{f}</div>"
+            f"<div class='msg'>{note}</div></div>"
         )
+
+    # Compose the body in a stable folder order.
+    folder_order = ["clear", "cloudy", "cold", "fog", "heat", "rain", "storm", "wind", "default", "unknown"]
+    body_chunks: list[str] = []
+    for folder in folder_order:
+        if folder not in groups:
+            continue
+        body_chunks.append(f"<h2 class='folder'>{folder} ({len(groups[folder])})</h2>")
+        body_chunks.extend(groups[folder])
+    if failed_cards:
+        body_chunks.append(f"<h2 class='folder failed'>failed ({len(failed_cards)})</h2>")
+        body_chunks.extend(failed_cards)
+
+    # Header summary.
+    total_done = len(extended)
+    total_failed = len(failed_paths)
+    run_bits = []
+    if run_summary:
+        if "elapsed_s" in run_summary:
+            run_bits.append(f"this run {run_summary['elapsed_s']}s")
+        if "ok" in run_summary:
+            run_bits.append(f"{run_summary['ok']} ok / {run_summary.get('failed', 0)} failed / {run_summary.get('skipped', 0)} skipped")
+    run_meta = " · ".join(run_bits) if run_bits else ""
 
     html = f"""<!doctype html>
 <html lang='en'>
@@ -327,7 +494,12 @@ def write_comparison_html(results: list[Result], output_dir: Path) -> Path:
   <style>
     body {{ background: #111; color: #eee; font-family: -apple-system, system-ui, sans-serif;
             margin: 0; padding: 1rem; }}
-    h1 {{ margin: 0 0 1rem 0; font-size: 1.1rem; opacity: 0.85; }}
+    h1 {{ margin: 0 0 0.25rem 0; font-size: 1.2rem; }}
+    .summary {{ font-size: 0.85rem; opacity: 0.75; margin-bottom: 1.25rem; }}
+    h2.folder {{ margin: 1.5rem 0 0.5rem 0; font-size: 0.95rem;
+                 text-transform: uppercase; letter-spacing: 0.08em;
+                 color: #ffd700; }}
+    h2.folder.failed {{ color: #f88; }}
     .card {{ background: #1a1a1a; border-radius: 12px; padding: 1rem;
              margin-bottom: 1.5rem; }}
     .cap {{ font-family: ui-monospace, monospace; font-size: 0.85rem;
@@ -346,7 +518,11 @@ def write_comparison_html(results: list[Result], output_dir: Path) -> Path:
 </head>
 <body>
   <h1>Portrait Extender — review</h1>
-  {''.join(rows)}
+  <div class='summary'>
+    {total_done} extended · {total_failed} failed · total cost {round(total_cost, 4) if total_cost else '—'}
+    {(' · ' + run_meta) if run_meta else ''}
+  </div>
+  {''.join(body_chunks)}
 </body>
 </html>
 """
@@ -360,16 +536,58 @@ def write_comparison_html(results: list[Result], output_dir: Path) -> Path:
 # ---------------------------------------------------------------------------
 
 
+def load_inputs_file(path: Path) -> list[str]:
+    """Read one input path per line. Blank lines and #-comments ignored."""
+    raws: list[str] = []
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        s = raw.strip()
+        if not s or s.startswith("#"):
+            continue
+        raws.append(s)
+    return raws
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="fal.ai portrait extender POC")
-    parser.add_argument("--inputs", nargs="+", required=True, help="image paths")
+    # Inputs are required UNLESS --regen-html-only is set; we validate that
+    # below so the mutually-exclusive group itself is not required.
+    g = parser.add_mutually_exclusive_group(required=False)
+    g.add_argument("--inputs", nargs="+", help="image paths")
+    g.add_argument("--inputs-file", help="text file with one image path per line")
     parser.add_argument("--target-ratio", default=DEFAULT_TARGET_RATIO)
     parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR))
     parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument(
+        "--sleep-between",
+        type=float,
+        default=2.0,
+        help="seconds to wait between fal.ai calls (default 2.0)",
+    )
+    parser.add_argument(
+        "--regen-html-only",
+        action="store_true",
+        help="don't process anything, just rebuild comparison.html from disk",
+    )
     args = parser.parse_args()
 
     # Load .env located next to this script
     load_dotenv(Path(__file__).resolve().parent / ".env")
+
+    rw, rh = parse_ratio(args.target_ratio)
+    output_dir = Path(args.output_dir)
+    if not output_dir.is_absolute():
+        output_dir = REPO_ROOT / output_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    if args.regen_html_only:
+        html_path = write_comparison_html(output_dir, run_summary=None)
+        print(f"comparison: {html_path}")
+        return 0
+
+    if not args.inputs and not args.inputs_file:
+        print("ERROR: pass --inputs or --inputs-file (or --regen-html-only).", file=sys.stderr)
+        return 2
+
     fal_key = os.environ.get("FAL_KEY")
     if not fal_key:
         print(
@@ -379,32 +597,51 @@ def main() -> int:
         )
         return 2
 
-    rw, rh = parse_ratio(args.target_ratio)
-    output_dir = Path(args.output_dir)
-    if not output_dir.is_absolute():
-        output_dir = REPO_ROOT / output_dir
+    # Resolve inputs
+    raw_inputs: list[str]
+    if args.inputs_file:
+        f = Path(args.inputs_file)
+        if not f.is_absolute():
+            f = REPO_ROOT / f
+        if not f.exists():
+            print(f"ERROR: --inputs-file not found: {f}", file=sys.stderr)
+            return 2
+        raw_inputs = load_inputs_file(f)
+    else:
+        raw_inputs = list(args.inputs)
 
-    inputs = []
-    for raw in args.inputs:
+    inputs: list[Path] = []
+    for raw in raw_inputs:
         p = Path(raw)
         if not p.is_absolute():
             p = REPO_ROOT / p
         inputs.append(p)
 
     print(f"[run] model={args.model} ratio={args.target_ratio} output={output_dir}")
-    print(f"[run] {len(inputs)} input(s)")
+    print(f"[run] {len(inputs)} input(s)  sleep_between={args.sleep_between}s")
 
     overall_start = time.time()
     results: list[Result] = []
     total_cost = 0.0
-    for p in inputs:
-        print(f"\n[image] {p}")
+    api_calls_made = 0  # only sleep between actual API calls
+
+    for idx, p in enumerate(inputs, start=1):
+        # Pace ourselves between real API calls (skips don't burn rate).
+        # api_calls_made > 0 means we already burned one — gap before the next.
+        if api_calls_made > 0 and args.sleep_between > 0:
+            time.sleep(args.sleep_between)
+
+        print(f"\n[image {idx}/{len(inputs)}] {p}")
         r = process_one(p, output_dir, rw, rh, args.model)
         results.append(r)
+        append_batch_log(output_dir, r)
+
         if r.skipped:
             print(f"  skipped: {r.error}")
         elif r.error:
             print(f"  ERROR: {r.error}  (took {r.elapsed_s}s)")
+            append_failed(output_dir, r.input_path)
+            api_calls_made += 1  # we did try to call, just failed
         else:
             print(
                 f"  before {r.src_w}x{r.src_h} → after {r.out_w}x{r.out_h}"
@@ -413,18 +650,24 @@ def main() -> int:
             print(f"  → {r.output_path}")
             if isinstance(r.cost_usd, (int, float)):
                 total_cost += r.cost_usd
-
-    html_path = write_comparison_html(results, output_dir)
+            api_calls_made += 1
 
     elapsed = round(time.time() - overall_start, 1)
-    ok = sum(1 for r in results if r.output_path)
+    ok = sum(1 for r in results if r.output_path and not r.skipped)
     failed = sum(1 for r in results if r.error and not r.skipped)
     skipped = sum(1 for r in results if r.skipped)
 
+    run_summary = {
+        "elapsed_s": elapsed,
+        "ok": ok,
+        "failed": failed,
+        "skipped": skipped,
+    }
+    html_path = write_comparison_html(output_dir, run_summary=run_summary)
+
     print("\n" + "=" * 60)
-    print(f"summary: {ok} extended, {failed} failed, {skipped} skipped")
-    print(f"total cost: {total_cost or '—'}")
-    print(f"comparison: {html_path}")
+    print(f"{ok} processed, {failed} failed, ${round(total_cost, 4) if total_cost else '0 (no cost field on responses)'} spent, comparison page: {html_path}")
+    print(f"summary: {ok} extended, {failed} failed, {skipped} skipped (this run)")
     print(f"elapsed: {elapsed}s")
     return 0 if failed == 0 else 1
 

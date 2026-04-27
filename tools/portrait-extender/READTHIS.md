@@ -24,7 +24,9 @@ pip install -r requirements.txt
 
 ## Run
 
-From the repo root:
+From the repo root.
+
+A few images:
 
 ```bash
 python tools/portrait-extender/extend_script.py \
@@ -33,14 +35,27 @@ python tools/portrait-extender/extend_script.py \
            assets/images/bg/cold/dawn_2.jpg
 ```
 
+The full bad-crop batch (125 images, paths in `batch.txt`):
+
+```bash
+python tools/portrait-extender/extend_script.py \
+  --inputs-file tools/portrait-extender/batch.txt
+```
+
+Resume a run that crashed midway — just re-run the same command. Already-extended
+images skip without burning a fal.ai call.
+
 Flags:
 
 | flag | default | meaning |
 |---|---|---|
-| `--inputs` | required | one or more image paths relative to repo root |
+| `--inputs` | one of these | one or more image paths relative to repo root |
+| `--inputs-file` | one of these | text file with one image path per line (`#` comments + blanks ignored) |
 | `--target-ratio` | `9:19.5` | width:height of the output canvas |
 | `--output-dir` | `tools/portrait-extender/output` | where extended jpgs land |
 | `--model` | `fal-ai/flux-general/inpainting` | fal.ai endpoint to call |
+| `--sleep-between` | `2.0` | seconds between fal.ai calls (skipped images don't burn the gap) |
+| `--regen-html-only` | off | rebuild `comparison.html` from disk without processing |
 
 ## What it produces
 
@@ -50,7 +65,9 @@ In `tools/portrait-extender/output/` (gitignored):
 - `<folder>_<filename>_mask.png` — the inpaint mask (debug)
 - `<folder>_<filename>_extended.jpg` — the **result**
 - `<folder>_<filename>_response.json` — raw fal.ai response
-- `comparison.html` — side-by-side before/after at phone aspect ratio (open on your phone)
+- `batch_log.txt` — TSV, one line per processed image: `STATUS<TAB>input<TAB>output<TAB>cost<TAB>elapsed<TAB>note`
+- `failed.txt` — input paths that failed (deduped). Re-run with `--inputs-file failed.txt` to retry.
+- `comparison.html` — side-by-side before/after at phone aspect ratio, grouped by folder, with a summary header (open on your phone)
 
 ## How outpainting works here
 
