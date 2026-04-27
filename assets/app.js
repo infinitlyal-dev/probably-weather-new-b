@@ -585,13 +585,59 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========== TRANSLATED TEXT ==========
   function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
   function getHeroLabel(condition) { return T.heroLabels[condition]?.[settings.lang] || T.heroLabels[condition]?.en || "Pleasant"; }
+  // Lowercase substrings that mark a witty line as weekday-coded (commute / office /
+  // Monday references). On Sat/Sun we filter these out of the pool so they don't fire
+  // out of context. Match against the lowercased line — fragments stay lowercase here.
+  // Sotho lines use straight ASCII apostrophes, not curly ones — match accordingly.
+  const WEEKDAY_ONLY_FRAGMENTS = [
+    // English commute / office / weekday markers
+    'commute', 'traffic', 'office', 'taxi on the road', 'school run',
+    'monday', 'past-you made plans', 'hair plans',
+    'aircon war', 'aircon debate', 'garage pie for lunch',
+    'joburg drivers', 'every taxi',
+    // Afrikaans
+    'die rit', 'die verkeer', 'kantoor', 'maandag',
+    'joburg-bestuurders', 'elke taxi', 'haarplanne',
+    'garage-pastei', 'aircon oorlog', 'aircon debat',
+    // Zulu
+    'ithrafikhi', 'ihhovisi', 'umsombuluko',
+    'itekisi emgwaqweni', 'izinhlelo zezinwele',
+    'i-aircon yasehhovisi',
+    // Xhosa
+    'itrafikhi', 'iofisi', 'umvulo',
+    'itekisi endleleni', 'izicwangciso zeenwele',
+    'i-aircon yaseofisini',
+    // Sotho
+    'sephethephethe', 'ofisi', 'mantaha',
+    "tekisi e 'ngoe le e 'ngoe tseleng", 'merero ea moriri',
+    'aircon ea ofisi'
+  ];
   function getWittyLine(condition) {
     const day = getLocationDayOfWeek(), hour = getLocationHour(activePlace?.lon);
     const isWeekend = day === 0 || day === 6 || (day === 5 && hour >= 16);
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
       const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
-    const lines = T.witty[condition]?.[settings.lang] || T.witty[condition]?.en || T.witty.clear.en;
+    let lines = T.witty[condition]?.[settings.lang] || T.witty[condition]?.en || T.witty.clear.en;
+    // On strict Sat/Sun, filter out weekday-coded jokes. Friday-after-16:00 already
+    // routes to the weekend pool above for clear/heat, so it doesn't need filtering here.
+    const isStrictWeekend = day === 0 || day === 6;
+    if (isStrictWeekend) {
+      const filtered = lines.filter(line => {
+        const lower = line.toLowerCase();
+        return !WEEKDAY_ONLY_FRAGMENTS.some(frag => lower.includes(frag));
+      });
+      // Safety: if the filter would leave fewer than 3 lines, keep the full pool —
+      // better a slightly off line than the same line every refresh.
+      if (filtered.length >= 3) {
+        if (filtered.length < lines.length) {
+          console.log(`[Witty filter] ${condition}/${settings.lang}: ${lines.length}→${filtered.length} lines (weekend filter)`);
+        }
+        lines = filtered;
+      } else {
+        console.log(`[Witty filter] ${condition}/${settings.lang}: filtered pool too small (${filtered.length}), using full pool`);
+      }
+    }
     return lines[Math.floor(Math.random() * lines.length)];
   }
   function getDayBadge(d, dayIndex, hourlyData) {
