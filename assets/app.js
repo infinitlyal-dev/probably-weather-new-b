@@ -1120,7 +1120,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const dayName = getTranslatedDayName(date.getUTCDay());
       const badge = getDayBadge(d, i, hourlyData);
       const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
-      const icon = getWeatherIcon(d.rainChance, d.cloudPct, iconTemp);
+      // Daily entries don't have cloudPct from the API. Pass null so getWeatherIcon
+      // falls back to rain + temp signals only — matches renderDayDetailSummary behaviour.
+      const icon = getWeatherIcon(d.rainChance, null, iconTemp);
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
