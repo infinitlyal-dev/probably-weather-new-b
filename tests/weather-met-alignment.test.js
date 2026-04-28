@@ -116,4 +116,18 @@ describe('MET Norway hourly alignment', () => {
     expect(body.hourly[13].tempC).toBe(10);
     expect(body.hourly[14].tempC).toBeGreaterThan(40);
   });
+
+  it('skips MET Norway daily high and low when too few today hours are available', async () => {
+    const { statusCode, body } = await callWeather();
+
+    expect(statusCode).toBe(200);
+    expect(body.ok).toBe(true);
+    expect(body.daily[0].highC).toBe(20);
+    expect(body.daily[0].lowC).toBe(8);
+    expect(body.meta.sourceRanges).toContainEqual({
+      name: 'MET Norway',
+      minTemp: null,
+      maxTemp: null,
+    });
+  });
 });

@@ -409,23 +409,18 @@ export default async function handler(req, res) {
       // Use utcOffsetSeconds to compute the correct local date string (YYYY-MM-DD).
       const nowUtcMs = Date.now();
       const localDateStr = new Date(nowUtcMs + utcOffsetSeconds * 1000).toISOString().slice(0, 10);
-      const todaySeries = series.filter(p => {
-        const ts = p.time; // ISO string e.g. "2026-03-10T12:00:00Z"
-        if (!ts) return false;
-        // Convert UTC timestamp to local date
-        const entryLocalDate = new Date(new Date(ts).getTime() + utcOffsetSeconds * 1000).toISOString().slice(0, 10);
-        return entryLocalDate === localDateStr;
-      });
+      const todaySeries = alignedMetSeries.slice(0, 24).filter(Boolean);
       console.log(`[MET Norway] Filtered ${series.length} entries → ${todaySeries.length} for local date ${localDateStr}`);
 
       const todayTemps = todaySeries.map(p => p.data?.instant?.details?.air_temperature).filter(isNum);
+      const hasEnoughTodayTemps = todayTemps.length >= 12;
 
       norms[3] = {
         source:    'MET Norway',
         nowTemp:   metTemp,
         feelsLike: calcFeelsLike(metTemp, metWindKph, metHumidity),
-        todayHigh: todayTemps.length > 0 ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null,
-        todayLow:  todayTemps.length > 0 ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)  : null,
+        todayHigh: hasEnoughTodayTemps ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null,
+        todayLow:  hasEnoughTodayTemps ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)  : null,
         todayRain: rainProxy,
         todayUv:   null, // MET Norway compact doesn't provide UV
         desc:      metDesc,
