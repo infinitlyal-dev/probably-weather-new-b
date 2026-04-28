@@ -830,6 +830,7 @@ body.ui-dark .daily-card {
 .use-location-btn {
   width: 100%;
   max-width: 500px;
+  align-self: stretch;
   justify-content: center;
   gap: 8px;
   padding: 0.85rem 1rem;
