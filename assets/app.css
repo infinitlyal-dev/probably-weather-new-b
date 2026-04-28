@@ -19,7 +19,8 @@ button,
 .share-btn,
 .save-current-btn,
 .sources-toggle,
-.my-location-btn {
+.language-btn,
+.use-location-btn {
   min-block-size: 44px;
   min-inline-size: 44px;
 }
@@ -113,51 +114,80 @@ body.modal-open {
   font-weight: 800;
 }
 
-/* My Location button */
-.my-location-btn {
+.language-picker {
   position: absolute;
   top: 0;
   right: 0;
-  background: rgba(255,255,255,0.15);
+  z-index: 30;
+}
+
+.language-btn {
+  background: rgba(0,0,0,0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 20px;
-  padding: 6px 12px;
+  border-radius: 999px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
   cursor: pointer;
   color: #fff;
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   transition: background-color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.my-location-btn:hover {
+.language-btn:hover {
   background: rgba(255,255,255,0.25);
   transform: scale(1.02);
 }
 
-.my-location-btn:active {
+.language-btn:active {
   transform: scale(0.98);
 }
 
-.my-location-btn svg {
-  opacity: 0.9;
-  flex-shrink: 0;
+.language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 168px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: rgba(0,0,0,0.72);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
 }
 
-/* Hide text on very small screens, keep icon */
-@media (max-width: 400px) {
-  .my-location-btn span {
-    display: none;
-  }
-  .my-location-btn {
-    padding: 8px;
-    border-radius: 50%;
-  }
+.language-menu.open {
+  display: flex;
+}
+
+.language-option {
+  width: 100%;
+  justify-content: flex-start;
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.language-option:hover,
+.language-option:focus-visible,
+.language-option[aria-selected="true"] {
+  background: rgba(255,255,255,0.16);
 }
 
 .tagline {
@@ -795,6 +825,26 @@ body.ui-dark .daily-card {
 
 .search-screen #searchInput::placeholder {
   color: rgba(255,255,255,0.6);
+}
+
+.use-location-btn {
+  width: 100%;
+  max-width: 500px;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(245, 166, 35, 0.9);
+  color: #15100a;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+}
+
+.use-location-btn:hover {
+  background: rgba(255, 188, 64, 0.95);
 }
 
 .search-body {
@@ -1693,7 +1743,7 @@ main#home-screen.main #confidence {
   .card,
   .hourly-row,
   .daily-row,
-  .my-location-btn {
+  .language-btn {
     background: rgba(0,0,0,0.5) !important;
   }
   

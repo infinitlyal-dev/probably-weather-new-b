@@ -1,4 +1,5 @@
 import { getSharedPlaceFromSearch } from './startup-location.js';
+import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './language-preferences.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
@@ -15,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const bgImg = $('#bgImg');
   const saveCurrent = $('#saveCurrent');
   const particlesEl = $('#particles');
-  const myLocationBtn = $('#myLocationBtn');
+  const languageBtn = $('#languageBtn');
+  const languageMenu = $('#languageMenu');
 
   const navHome = $('#navHome');
   const navHourly = $('#navHourly');
@@ -34,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dailyCards = $('#daily-cards');
 
   const searchInput = $('#searchInput');
+  const useMyLocationBtn = $('#useMyLocationBtn');
   const searchCancel = $('#searchCancel');
   const favoritesList = $('#favoritesList');
   const recentList = $('#recentList');
@@ -410,7 +413,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return { name: "Johannesburg, ZA", lat: -26.2, lon: 28.0 };
   }
 
-  function loadSettings() { settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: loadJSON(SETTINGS_KEYS.lang, DEFAULT_SETTINGS.lang) }; }
+  function loadSettings() {
+    const storedLang = loadJSON(SETTINGS_KEYS.lang, null);
+    const initialLang = resolveInitialLanguage({ stored: storedLang, navigatorLanguage: navigator.language });
+    if (!storedLang) saveJSON(SETTINGS_KEYS.lang, initialLang);
+    settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: initialLang };
+  }
   function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.range, settings.range); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
@@ -487,6 +495,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
     const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
+  }
+
+  function updateLanguageOptions() {
+    if (!languageMenu) return;
+    languageMenu.querySelectorAll('.language-option').forEach((option) => {
+      const selected = option.dataset.lang === settings.lang;
+      option.setAttribute('aria-selected', String(selected));
+      option.tabIndex = selected ? 0 : -1;
+    });
+  }
+
+  function openLanguageMenu() {
+    if (!languageBtn || !languageMenu) return;
+    languageMenu.classList.add('open');
+    languageBtn.setAttribute('aria-expanded', 'true');
+    updateLanguageOptions();
+    const selected = languageMenu.querySelector(`[data-lang="${settings.lang}"]`) || languageMenu.querySelector('.language-option');
+    selected?.focus();
+  }
+
+  function closeLanguageMenu() {
+    if (!languageBtn || !languageMenu) return;
+    languageMenu.classList.remove('open');
+    languageBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function applyLanguageSelection(lang) {
+    if (!SUPPORTED_LANGS.includes(lang)) return;
+    settings.lang = lang;
+    saveSettings();
+    applySettings();
+    closeLanguageMenu();
+    languageBtn?.focus();
+  }
+
+  function moveLanguageFocus(delta) {
+    if (!languageMenu?.classList.contains('open')) return;
+    const options = Array.from(languageMenu.querySelectorAll('.language-option'));
+    const current = Math.max(0, options.indexOf(document.activeElement));
+    const next = (current + delta + options.length) % options.length;
+    options[next]?.focus();
   }
 
   // ========== WEATHER LOGIC ==========
@@ -1246,6 +1295,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
     if (languageSelect) languageSelect.value = settings.lang;
     updateUILanguage();
+    updateLanguageOptions();
+    document.documentElement.lang = settings.lang;
     if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
     renderFavorites(); renderRecents();
   }
@@ -1383,8 +1434,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'}, ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'W' : 'E'}`;
   }
 
-  // My Location button - reset to geolocation
-  myLocationBtn?.addEventListener('click', () => {
+  // Shared geolocation flow, now used from Search.
+  async function getCurrentLocation() {
     showScreen(screenHome);
     const savedGpsLoc = loadJSON(STORAGE.location, null);
     if ("geolocation" in navigator) {
@@ -1443,14 +1494,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     }
-  });
+  }
   
   unitsTempSelect?.addEventListener('change', () => { settings.temp = unitsTempSelect.value; saveSettings(); applySettings(); });
   unitsWindSelect?.addEventListener('change', () => { settings.wind = unitsWindSelect.value; saveSettings(); applySettings(); });
   probRangeToggle?.addEventListener('change', () => { settings.range = !!probRangeToggle.checked; saveSettings(); applySettings(); });
   timeFormatSelect?.addEventListener('change', () => { settings.time = timeFormatSelect.value; saveSettings(); applySettings(); });
-  languageSelect?.addEventListener('change', () => { settings.lang = languageSelect.value; saveSettings(); applySettings(); });
+  languageSelect?.addEventListener('change', () => { applyLanguageSelection(languageSelect.value); });
+  languageBtn?.addEventListener('click', (ev) => {
+    ev.stopPropagation();
+    if (languageMenu?.classList.contains('open')) closeLanguageMenu();
+    else openLanguageMenu();
+  });
+  languageMenu?.querySelectorAll('.language-option').forEach((option) => {
+    option.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      applyLanguageSelection(option.dataset.lang);
+    });
+  });
+  languageMenu?.addEventListener('keydown', (ev) => {
+    if (ev.key === 'ArrowDown') { ev.preventDefault(); moveLanguageFocus(1); }
+    else if (ev.key === 'ArrowUp') { ev.preventDefault(); moveLanguageFocus(-1); }
+    else if (ev.key === 'Enter') { ev.preventDefault(); applyLanguageSelection(document.activeElement?.dataset?.lang); }
+    else if (ev.key === 'Escape') { ev.preventDefault(); closeLanguageMenu(); languageBtn?.focus(); }
+  });
+  document.addEventListener('click', (ev) => {
+    if (!languageMenu?.classList.contains('open')) return;
+    if (!ev.target.closest('.language-picker')) closeLanguageMenu();
+  });
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape' && languageMenu?.classList.contains('open')) closeLanguageMenu();
+  });
   saveCurrent?.addEventListener('click', () => { if (activePlace) addFavorite(activePlace); });
+  useMyLocationBtn?.addEventListener('click', () => { getCurrentLocation(); });
   searchCancel?.addEventListener('click', () => { showScreen(screenHome); if (searchInput) searchInput.value = ''; });
   manageFavorites?.addEventListener('click', () => { if (loadFavorites().length === 0) { showToast(t('toasts', 'noPlaces')); return; } manageMode = !manageMode; manageFavorites.textContent = manageMode ? t('search', 'done') : t('search', 'manage'); renderFavorites(); });
   clearRecentsBtn?.addEventListener('click', () => { clearRecents(); showToast(t('toasts', 'cleared')); });
@@ -1461,7 +1537,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get('lang');
   const sharedPlace = getSharedPlaceFromSearch(window.location.search);
-  const SUPPORTED_LANGS = ['en', 'af', 'zu', 'xh', 'st'];
   if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
     saveJSON(SETTINGS_KEYS.lang, urlLang);
     debugLog(`[FIX-4] Applied ?lang=${urlLang} from URL parameter`);
