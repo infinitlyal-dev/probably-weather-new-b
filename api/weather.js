@@ -8,6 +8,11 @@
 // NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts
 // at the current hour (not midnight), making alignment with other sources impossible.
 
+const DEBUG = false;
+const debugLog = (...args) => {
+  if (DEBUG) console.log(...args);
+};
+
 export default async function handler(req, res) {
   try {
     const lat = parseFloat(req.query.lat);
@@ -151,17 +156,55 @@ export default async function handler(req, res) {
       'hail':'Hail', 'thunderstorm':'Thunderstorm', 'tornado':'Tornado',
     };
 
+    const openMeteoRequest = fetchJson(
+      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+      `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
+      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index` +
+      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
+      `&timezone=auto&forecast_days=7`
+    );
+    const weatherApiRequest = WEATHERAPI_KEY
+      ? fetchJson(
+          `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}` +
+          `&q=${lat},${lon}&days=7&aqi=no&alerts=no`
+        )
+      : Promise.resolve(null);
+    const pirateWeatherRequest = PIRATE_WEATHER_KEY
+      ? fetchJson(
+          `https://api.pirateweather.net/forecast/${PIRATE_WEATHER_KEY}/${lat},${lon}` +
+          `?units=si`
+        )
+      : Promise.resolve(null);
+    const metNorwayRequest = fetch(
+      `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`,
+      { headers: { 'User-Agent': NOMINATIM_UA }, signal: AbortSignal.timeout(timeoutMs) }
+    ).then(async met => {
+      if (!met.ok) throw new Error(`HTTP ${met.status}`);
+      return await met.json();
+    });
+
+    const [
+      openMeteoResult,
+      weatherApiResult,
+      pirateWeatherResult,
+      metNorwayResult,
+    ] = await Promise.allSettled([
+      openMeteoRequest,
+      weatherApiRequest,
+      pirateWeatherRequest,
+      metNorwayRequest,
+    ]);
+
+    function getSettledValue(result) {
+      if (result.status === 'fulfilled') return result.value;
+      throw result.reason ?? new Error('Provider failed');
+    }
+
     // =========================================================================
     // Open-Meteo — ECMWF IFS — weight 50%
     // =========================================================================
     try {
-      const om = await fetchJson(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
-        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index` +
-        `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
-        `&timezone=auto&forecast_days=7`
-      );
+      const om = getSettledValue(openMeteoResult);
 
       // Capture UTC offset so we can determine the correct local hour later
       if (isNum(om.utc_offset_seconds)) {
@@ -215,10 +258,7 @@ export default async function handler(req, res) {
     // =========================================================================
     if (WEATHERAPI_KEY) {
       try {
-        const wa = await fetchJson(
-          `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}` +
-          `&q=${lat},${lon}&days=7&aqi=no&alerts=no`
-        );
+        const wa = getSettledValue(weatherApiResult);
 
         const d0    = wa.forecast?.forecastday?.[0]?.day   || {};
         const astro = wa.forecast?.forecastday?.[0]?.astro || {};
@@ -228,7 +268,7 @@ export default async function handler(req, res) {
         const waDayPrecip = d0.totalprecip_mm ?? 0;
         let waDesc = wa.current?.condition?.text ?? 'Unknown';
         if ((waCondCode === 1000 || waCondCode === 1003) && waDayPrecip === 0) {
-          console.log(`[FIX-001] WeatherAPI code ${waCondCode} ("${waDesc}") with 0mm precip → "Clear sky"`);
+          debugLog(`[FIX-001] WeatherAPI code ${waCondCode} ("${waDesc}") with 0mm precip → "Clear sky"`);
           waDesc = 'Clear sky';
         }
 
@@ -303,11 +343,7 @@ export default async function handler(req, res) {
     if (PIRATE_WEATHER_KEY) {
       try {
         // units=si: temps in C, wind in m/s, humidity 0-1 fraction, precip mm
-        const pw = await fetchJson(
-          `https://api.pirateweather.net/forecast/${PIRATE_WEATHER_KEY}/${lat},${lon}` +
-          `?units=si`
-          // NOTE: We deliberately omit &extend=hourly since we don't use PW hourly data
-        );
+        const pw = getSettledValue(pirateWeatherResult);
 
         const cur = pw.currently || {};
         const dly = pw.daily?.data || [];
@@ -360,12 +396,7 @@ export default async function handler(req, res) {
     // Provides hourly wind at 10m (m/s) aligned to midnight local — safe for hourly aggregation.
     // Particularly valuable for coastal SA: higher resolution than global models.
     try {
-      const met = await fetch(
-        `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`,
-        { headers: { 'User-Agent': NOMINATIM_UA }, signal: AbortSignal.timeout(timeoutMs) }
-      );
-      if (!met.ok) throw new Error(`HTTP ${met.status}`);
-      const metJson = await met.json();
+      const metJson = getSettledValue(metNorwayResult);
 
       const metSymbolMap = {
         'clearsky':'Clear sky', 'fair':'Fair', 'partlycloudy':'Partly cloudy',
@@ -383,6 +414,7 @@ export default async function handler(req, res) {
       const series   = metJson.properties?.timeseries || [];
       const nowEntry = series[0] || {};
       const details  = nowEntry.data?.instant?.details || {};
+      const alignedMetSeries = alignSeriesToLocalMidnight(series, utcOffsetSeconds, Date.now());
 
       const metWindKph  = isNum(details.wind_speed) ? Math.round(details.wind_speed * 3.6 * 10) / 10 : null;
       const metHumidity = isNum(details.relative_humidity) ? details.relative_humidity : null;
@@ -408,23 +440,18 @@ export default async function handler(req, res) {
       // Use utcOffsetSeconds to compute the correct local date string (YYYY-MM-DD).
       const nowUtcMs = Date.now();
       const localDateStr = new Date(nowUtcMs + utcOffsetSeconds * 1000).toISOString().slice(0, 10);
-      const todaySeries = series.filter(p => {
-        const ts = p.time; // ISO string e.g. "2026-03-10T12:00:00Z"
-        if (!ts) return false;
-        // Convert UTC timestamp to local date
-        const entryLocalDate = new Date(new Date(ts).getTime() + utcOffsetSeconds * 1000).toISOString().slice(0, 10);
-        return entryLocalDate === localDateStr;
-      });
-      console.log(`[MET Norway] Filtered ${series.length} entries → ${todaySeries.length} for local date ${localDateStr}`);
+      const todaySeries = alignedMetSeries.slice(0, 24).filter(Boolean);
+      debugLog(`[MET Norway] Filtered ${series.length} entries → ${todaySeries.length} for local date ${localDateStr}`);
 
       const todayTemps = todaySeries.map(p => p.data?.instant?.details?.air_temperature).filter(isNum);
+      const hasEnoughTodayTemps = todayTemps.length >= 12;
 
       norms[3] = {
         source:    'MET Norway',
         nowTemp:   metTemp,
         feelsLike: calcFeelsLike(metTemp, metWindKph, metHumidity),
-        todayHigh: todayTemps.length > 0 ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null,
-        todayLow:  todayTemps.length > 0 ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)  : null,
+        todayHigh: hasEnoughTodayTemps ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null,
+        todayLow:  hasEnoughTodayTemps ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)  : null,
         todayRain: rainProxy,
         todayUv:   null, // MET Norway compact doesn't provide UV
         desc:      metDesc,
@@ -437,23 +464,24 @@ export default async function handler(req, res) {
 
       hourlies[2] = {
         source:     'MET Norway',
-        temps:      series.slice(0, 48).map(p => p.data?.instant?.details?.air_temperature ?? null),
-        feelsLikes: series.slice(0, 48).map(p => {
-          const t = p.data?.instant?.details?.air_temperature;
-          const w = p.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
-          const h = p.data?.instant?.details?.relative_humidity;
+        temps:      alignedMetSeries.map(p => p?.data?.instant?.details?.air_temperature ?? null),
+        feelsLikes: alignedMetSeries.map(p => {
+          const t = p?.data?.instant?.details?.air_temperature;
+          const w = p?.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
+          const h = p?.data?.instant?.details?.relative_humidity;
           return calcFeelsLike(t, w, h);
         }),
-        rains:  series.slice(0, 48).map(p => {
-          const mm = p.data?.next_1_hours?.details?.precipitation_amount ?? 0;
+        rains:  alignedMetSeries.map(p => {
+          const mm = p?.data?.next_1_hours?.details?.precipitation_amount ?? null;
+          if (!isNum(mm)) return null;
           return mm === 0 ? 0 : mm < 0.5 ? 20 : mm < 1 ? 40 : mm < 2 ? 60 : 80;
         }),
-        winds:  series.slice(0, 48).map(p => {
-          const w = p.data?.instant?.details?.wind_speed;
+        winds:  alignedMetSeries.map(p => {
+          const w = p?.data?.instant?.details?.wind_speed;
           return isNum(w) ? Math.round(w * 3.6 * 10) / 10 : null;
         }),
-        gusts:  series.slice(0, 48).map(() => null), // not in compact
-        clouds: series.slice(0, 48).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
+        gusts:  alignedMetSeries.map(() => null), // not in compact
+        clouds: alignedMetSeries.map(p => p?.data?.instant?.details?.cloud_area_fraction ?? null),
       };
 
       dailies[3] = {
@@ -482,7 +510,7 @@ export default async function handler(req, res) {
     if (isNum(norms[0]?.todayHigh) && isNum(norms[1]?.todayHigh)) {
       const ecmwfSpread = Math.abs(norms[0].todayHigh - norms[1].todayHigh);
       if (ecmwfSpread <= 0.5) {
-        console.log(`[Weight adjust] OM=${norms[0].todayHigh}°C WA=${norms[1].todayHigh}°C (spread ${ecmwfSpread}°C ≤ 0.5) — halving WA weight (likely same ECMWF model)`);
+        debugLog(`[Weight adjust] OM=${norms[0].todayHigh}°C WA=${norms[1].todayHigh}°C (spread ${ecmwfSpread}°C ≤ 0.5) — halving WA weight (likely same ECMWF model)`);
         SOURCE_WEIGHTS[1] = SOURCE_WEIGHTS[1] / 2; // 0.25 → 0.125
       }
     }
@@ -499,13 +527,13 @@ export default async function handler(req, res) {
         const ecmwfAvg = ecmwfFamily.reduce((a, b) => a + b, 0) / ecmwfFamily.length;
         const metDivergence = norms[3].todayHigh - ecmwfAvg;
         if (metDivergence > 5) {
-          console.log(`[Weight adjust] MET Norway ${norms[3].todayHigh}°C is ${metDivergence.toFixed(1)}°C above ECMWF avg ${ecmwfAvg.toFixed(1)}°C — boosting MET Norway 25%→40%, reducing OM 40%→25%`);
+          debugLog(`[Weight adjust] MET Norway ${norms[3].todayHigh}°C is ${metDivergence.toFixed(1)}°C above ECMWF avg ${ecmwfAvg.toFixed(1)}°C — boosting MET Norway 25%→40%, reducing OM 40%→25%`);
           SOURCE_WEIGHTS[0] = 0.25; // Open-Meteo: 40% → 25%
           SOURCE_WEIGHTS[3] = 0.40; // MET Norway: 25% → 40%
         }
       }
     } else if (isHighveld && isNum(norms[3]?.todayHigh)) {
-      console.log(`[Weight adjust] Highveld location (lat=${lat}, lon=${lon}) — MET Norway boost disabled`);
+      debugLog(`[Weight adjust] Highveld location (lat=${lat}, lon=${lon}) — MET Norway boost disabled`);
     }
 
     // Recompute hourly weights from adjusted source weights (excl Pirate Weather)
@@ -513,7 +541,7 @@ export default async function handler(req, res) {
     const hTotal = hBase.reduce((a, b) => a + b, 0);
     HOURLY_SOURCE_WEIGHTS = hBase.map(w => Math.round(w / hTotal * 100) / 100);
 
-    console.log(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
+    debugLog(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
 
     // =========================================================================
     // AGGREGATION
@@ -620,10 +648,10 @@ export default async function handler(req, res) {
         const metRain = dailies[3]?.descs?.[i] && categorizeDesc(dailies[3].descs[i]) === 'rain';
         const trustedDailyRain = omRain || metRain;
         if (rainOrCloudyCount < 2 && !trustedDailyRain) {
-          console.log(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy, no trusted rain)`);
+          debugLog(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy, no trusted rain)`);
           dailyConditionKey = 'clear';
         } else if (rainOrCloudyCount < 2 && trustedDailyRain) {
-          console.log(`[BUG-1] Day ${i}: Keeping ${dailyConditionKey} — trusted source (OM=${omRain}, MET=${metRain}) votes rain`);
+          debugLog(`[BUG-1] Day ${i}: Keeping ${dailyConditionKey} — trusted source (OM=${omRain}, MET=${metRain}) votes rain`);
         }
       }
 
@@ -632,7 +660,7 @@ export default async function handler(req, res) {
         const sourceNames = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway'];
         const dailyFogSources = dailies.map((d, si) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog' ? sourceNames[si] : null).filter(Boolean);
         if (dailyFogSources.length < 2) {
-          console.log(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
+          debugLog(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
           dailyConditionKey = 'clear';
         }
       }
@@ -697,12 +725,12 @@ export default async function handler(req, res) {
 
     // Rec 7: Temperature debug logging — shows each source's contribution to the blend
     const tempDebug = norms.map((n, i) => n ? `${n.source}: now=${n.nowTemp}°C high=${n.todayHigh}°C low=${n.todayLow}°C (weight=${Math.round(normW[i]*100)}%)` : null).filter(Boolean);
-    console.log(`[Temp blend] ${tempDebug.join(' | ')} → blended=${medNowTemp}°C`);
+    debugLog(`[Temp blend] ${tempDebug.join(' | ')} → blended=${medNowTemp}°C`);
     const highDebug = norms.map((n, i) => n ? `${n.source}=${n.todayHigh}°C` : null).filter(Boolean);
     const blendedHigh = wAvg(norms, normW, n => n.todayHigh);
     const normLowW = resolveWeights(norms, LOW_WEIGHTS);  // V2-3: reduced MET weight for lows
     const blendedLow = wAvg(norms, normLowW, n => n.todayLow);
-    console.log(`[Daily high/low] ${highDebug.join(' | ')} → blended high=${blendedHigh}°C low=${blendedLow}°C`);
+    debugLog(`[Daily high/low] ${highDebug.join(' | ')} → blended high=${blendedHigh}°C low=${blendedLow}°C`);
     // maxWindKph includes gust data from Open-Meteo.
     // In gusty coastal conditions (Cape Town southeaster etc), gusts are the
     // real story — mean wind can be 18 km/h while gusts hit 45 km/h.
@@ -790,8 +818,8 @@ export default async function handler(req, res) {
       desc: n.desc,
       vote: categorizeDesc(n.desc),
     }));
-    console.log('[Condition voting]', JSON.stringify(sourceConditionVotes));
-    console.log(`[Condition derived] ${nowConditionKey} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
+    debugLog('[Condition voting]', JSON.stringify(sourceConditionVotes));
+    debugLog(`[Condition derived] ${nowConditionKey} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
 
     // FIX-001: Majority check — single source claiming rain/cloudy must not override clear consensus
     // Requires ≥2 sources to agree on rain/cloudy before the app declares it
@@ -804,10 +832,10 @@ export default async function handler(req, res) {
         (v.source === 'Open-Meteo' || v.source === 'MET Norway') && v.vote === 'rain'
       );
       if (rainOrCloudyVotes.length < 2 && !trustedRainVote) {
-        console.log(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes.length}/${activeNorms.length} sources vote rain/cloudy, no trusted rain vote)`);
+        debugLog(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes.length}/${activeNorms.length} sources vote rain/cloudy, no trusted rain vote)`);
         nowConditionKey = 'clear';
       } else if (rainOrCloudyVotes.length < 2 && trustedRainVote) {
-        console.log(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
+        debugLog(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
       }
     }
 
@@ -816,7 +844,7 @@ export default async function handler(req, res) {
     if (nowConditionKey === 'fog' && activeNorms.length >= 3) {
       const fogVotes = sourceConditionVotes.filter(v => v.vote === 'fog');
       if (fogVotes.length < 2) {
-        console.log(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
+        debugLog(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
         nowConditionKey = 'clear';
       }
     }
@@ -936,6 +964,26 @@ function pickModalCloud(values) {
   // Return median of the winning bucket
   const winnerVals = buckets[winner].sort((a, b) => a - b);
   return winnerVals[Math.floor(winnerVals.length / 2)];
+}
+
+function alignSeriesToLocalMidnight(series, utcOffsetSeconds, nowUtcMs) {
+  const aligned = Array(48).fill(null);
+  const nowLocalMs = nowUtcMs + utcOffsetSeconds * 1000;
+  const localDateStr = new Date(nowLocalMs).toISOString().slice(0, 10);
+  const localMidnightMs = Date.parse(`${localDateStr}T00:00:00.000Z`);
+
+  for (const entry of series) {
+    if (!entry?.time) continue;
+    const entryUtcMs = Date.parse(entry.time);
+    if (!Number.isFinite(entryUtcMs)) continue;
+    const entryLocalMs = entryUtcMs + utcOffsetSeconds * 1000;
+    const index = Math.round((entryLocalMs - localMidnightMs) / (60 * 60 * 1000));
+    if (index >= 0 && index < aligned.length) {
+      aligned[index] = entry;
+    }
+  }
+
+  return aligned;
 }
 
 /**
@@ -1070,7 +1118,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   //     existing tempC ≤ 10 check still works for daily decisions.
   if (isNum(tempC) && tempC <= 10) {
     if (!isNum(dailyHighC) || dailyHighC <= 14) return 'cold';
-    console.log(`[Cold gate] tempC=${tempC} but dailyHighC=${dailyHighC} > 14 → not cold`);
+    debugLog(`[Cold gate] tempC=${tempC} but dailyHighC=${dailyHighC} > 14 → not cold`);
   }
 
   // 15. Hot (not extreme, but warm)
