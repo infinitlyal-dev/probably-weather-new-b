@@ -1937,6 +1937,10 @@ main#home-screen.main #confidence {
     padding-bottom: calc(8px + env(safe-area-inset-bottom));
   }
 
+  .footer {
+    display: none;
+  }
+
   /* Screen panels - FULL WIDTH on mobile */
   .search-screen,
   .settings-screen {
