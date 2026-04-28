@@ -19,6 +19,21 @@ describe('Impeccable accessibility hardening', () => {
     expect(css()).toMatch(/main#home-screen\.main::before\s*{[^}]*linear-gradient\(to right,\s*rgba\(0,\s*0,\s*0,\s*0\.55\)/s);
   });
 
+  it('keeps the home scrim out of text flow and avoids mid-word headline wrapping', () => {
+    const source = css();
+    const homeScrimRule = source.match(/main#home-screen\.main::before\s*{(?<rule>[^}]*)}/s)?.groups?.rule || '';
+    const allHomeRules = Array.from(source.matchAll(/#home-screen\s*{(?<rule>[^}]*)}/gs), (match) => match.groups?.rule || '').join('\n');
+    const headlineRules = Array.from(source.matchAll(/\.headline\s*{(?<rule>[^}]*)}/gs), (match) => match.groups?.rule || '');
+    const mobileHeadlineRule = headlineRules.find((rule) => rule.includes('font-size: clamp(1.4rem')) || '';
+
+    expect(homeScrimRule).toMatch(/inset:/);
+    expect(homeScrimRule).not.toMatch(/width:/);
+    expect(homeScrimRule).not.toMatch(/height:/);
+    expect(allHomeRules).not.toMatch(/max-width:\s*65%/);
+    expect(mobileHeadlineRule).toMatch(/word-break:\s*normal;/);
+    expect(mobileHeadlineRule).toMatch(/overflow-wrap:\s*normal;/);
+  });
+
   it('uses the system font stack without render-blocking Google Fonts', () => {
     expect(css()).not.toMatch(/fonts\.googleapis|Poppins|Montserrat/);
     expect(css()).toMatch(/--font-system:\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*Roboto,\s*sans-serif;/);

@@ -1550,11 +1550,7 @@ main#home-screen.main::before {
   content: "";
   position: absolute;
   z-index: -1;
-  top: clamp(1rem, 4vh, 2.5rem);
-  left: 0;
-  width: min(760px, calc(100% - 1rem));
-  height: calc(100% - var(--home-bottom-safe) - env(safe-area-inset-bottom) - 1rem);
-  min-height: 240px;
+  inset: clamp(1rem, 4vh, 2.5rem) 0 calc(var(--home-bottom-safe) + env(safe-area-inset-bottom) + 0.5rem) 0;
   border-radius: 24px;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
   pointer-events: none;
@@ -1800,7 +1796,7 @@ main#home-screen.main #confidence {
     align-items: flex-start;
     text-align: left;
     gap: 0;
-    max-width: 65%;
+    max-width: 100%;
     opacity: 1 !important;
     filter: none !important;
     backdrop-filter: none !important;
@@ -1856,7 +1852,9 @@ main#home-screen.main #confidence {
   /* MOBILE: Headline - vibrant with strong shadow */
   .headline {
     font-size: clamp(1.4rem, 5.5vw, 1.8rem);
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
     text-align: left;
     font-weight: 800;
     text-shadow: 
