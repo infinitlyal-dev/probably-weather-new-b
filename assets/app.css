@@ -11,6 +11,20 @@ button, a, .daily-row-tappable, .recent-item, .favorite-item, .search-result-ite
   touch-action: manipulation;
 }
 
+button,
+[role="button"] {
+  min-block-size: 44px;
+  min-inline-size: 44px;
+}
+
+.share-btn,
+.save-current-btn,
+.sources-toggle,
+.my-location-btn {
+  min-block-size: 44px;
+  min-inline-size: 44px;
+}
+
 .temp, .temp-hilo, .h-temp, .d-high, .d-low, .h-rain, .d-rain, .h-wind, .h-uv, .ds-low, .ds-high {
   font-variant-numeric: tabular-nums;
 }
