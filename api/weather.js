@@ -151,17 +151,55 @@ export default async function handler(req, res) {
       'hail':'Hail', 'thunderstorm':'Thunderstorm', 'tornado':'Tornado',
     };
 
+    const openMeteoRequest = fetchJson(
+      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+      `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
+      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index` +
+      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
+      `&timezone=auto&forecast_days=7`
+    );
+    const weatherApiRequest = WEATHERAPI_KEY
+      ? fetchJson(
+          `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}` +
+          `&q=${lat},${lon}&days=7&aqi=no&alerts=no`
+        )
+      : Promise.resolve(null);
+    const pirateWeatherRequest = PIRATE_WEATHER_KEY
+      ? fetchJson(
+          `https://api.pirateweather.net/forecast/${PIRATE_WEATHER_KEY}/${lat},${lon}` +
+          `?units=si`
+        )
+      : Promise.resolve(null);
+    const metNorwayRequest = fetch(
+      `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`,
+      { headers: { 'User-Agent': NOMINATIM_UA }, signal: AbortSignal.timeout(timeoutMs) }
+    ).then(async met => {
+      if (!met.ok) throw new Error(`HTTP ${met.status}`);
+      return await met.json();
+    });
+
+    const [
+      openMeteoResult,
+      weatherApiResult,
+      pirateWeatherResult,
+      metNorwayResult,
+    ] = await Promise.allSettled([
+      openMeteoRequest,
+      weatherApiRequest,
+      pirateWeatherRequest,
+      metNorwayRequest,
+    ]);
+
+    function getSettledValue(result) {
+      if (result.status === 'fulfilled') return result.value;
+      throw result.reason ?? new Error('Provider failed');
+    }
+
     // =========================================================================
     // Open-Meteo — ECMWF IFS — weight 50%
     // =========================================================================
     try {
-      const om = await fetchJson(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-        `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
-        `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index` +
-        `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
-        `&timezone=auto&forecast_days=7`
-      );
+      const om = getSettledValue(openMeteoResult);
 
       // Capture UTC offset so we can determine the correct local hour later
       if (isNum(om.utc_offset_seconds)) {
@@ -215,10 +253,7 @@ export default async function handler(req, res) {
     // =========================================================================
     if (WEATHERAPI_KEY) {
       try {
-        const wa = await fetchJson(
-          `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}` +
-          `&q=${lat},${lon}&days=7&aqi=no&alerts=no`
-        );
+        const wa = getSettledValue(weatherApiResult);
 
         const d0    = wa.forecast?.forecastday?.[0]?.day   || {};
         const astro = wa.forecast?.forecastday?.[0]?.astro || {};
@@ -303,11 +338,7 @@ export default async function handler(req, res) {
     if (PIRATE_WEATHER_KEY) {
       try {
         // units=si: temps in C, wind in m/s, humidity 0-1 fraction, precip mm
-        const pw = await fetchJson(
-          `https://api.pirateweather.net/forecast/${PIRATE_WEATHER_KEY}/${lat},${lon}` +
-          `?units=si`
-          // NOTE: We deliberately omit &extend=hourly since we don't use PW hourly data
-        );
+        const pw = getSettledValue(pirateWeatherResult);
 
         const cur = pw.currently || {};
         const dly = pw.daily?.data || [];
@@ -360,12 +391,7 @@ export default async function handler(req, res) {
     // Provides hourly wind at 10m (m/s) aligned to midnight local — safe for hourly aggregation.
     // Particularly valuable for coastal SA: higher resolution than global models.
     try {
-      const met = await fetch(
-        `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`,
-        { headers: { 'User-Agent': NOMINATIM_UA }, signal: AbortSignal.timeout(timeoutMs) }
-      );
-      if (!met.ok) throw new Error(`HTTP ${met.status}`);
-      const metJson = await met.json();
+      const metJson = getSettledValue(metNorwayResult);
 
       const metSymbolMap = {
         'clearsky':'Clear sky', 'fair':'Fair', 'partlycloudy':'Partly cloudy',
