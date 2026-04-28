@@ -1045,7 +1045,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * 15. Hot (temp >= 30C)
  * 16. Moderate UV (>= 6, daytime only, not mostly cloudy)
  * 17. Mostly cloudy (>= 55% cloud)
- * 18. Partly cloudy / mainly clear / fair -> treated as clear
+ * 18. Partly cloudy / mainly clear / fair -> 'partly-cloudy' (distinct from clear)
  * 19. Clear by description
  * 20. Fallback: clear
  *
