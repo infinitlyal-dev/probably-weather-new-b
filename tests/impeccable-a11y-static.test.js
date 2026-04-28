@@ -23,4 +23,9 @@ describe('Impeccable accessibility hardening', () => {
     expect(css()).not.toMatch(/fonts\.googleapis|Poppins|Montserrat/);
     expect(css()).toMatch(/--font-system:\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*Roboto,\s*sans-serif;/);
   });
+
+  it('does not globally hide page overflow on html and body', () => {
+    const globalBodyRule = css().match(/body,\s*html\s*{(?<body>[^}]*)}/s)?.groups?.body || '';
+    expect(globalBodyRule).not.toMatch(/overflow:\s*hidden/);
+  });
 });
