@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Montserrat:wght@400;600&display=swap');
-
 :root {
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --focus-ring: #ffffff;
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
 }
@@ -9,6 +8,20 @@
 
 button, a, .daily-row-tappable, .recent-item, .favorite-item, .search-result-item, .nav button {
   touch-action: manipulation;
+}
+
+button,
+[role="button"] {
+  min-block-size: 44px;
+  min-inline-size: 44px;
+}
+
+.share-btn,
+.save-current-btn,
+.sources-toggle,
+.my-location-btn {
+  min-block-size: 44px;
+  min-inline-size: 44px;
 }
 
 .temp, .temp-hilo, .h-temp, .d-high, .d-low, .h-rain, .d-rain, .h-wind, .h-uv, .ds-low, .ds-high {
@@ -55,8 +68,8 @@ textarea:focus-visible,
 body, html {
   height: 100%;
   min-height: 100vh;
-  font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
+  font-family: var(--font-system);
+  overflow-x: hidden;
   color: #FFF8F0;
   transition: color 0.3s;
 }
@@ -95,7 +108,7 @@ body.modal-open {
 }
 
 .brand-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-system);
   font-size: 3rem;
   font-weight: 800;
 }
@@ -205,7 +218,7 @@ body.modal-open {
 /* High/Low underneath - better contrast */
 .temp-hilo,
 #tempHiLo {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-system);
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -253,7 +266,7 @@ body.modal-open {
 /* Weather byline - split into 2 rows, subtle */
 .weather-byline {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.85);
+  color: #fff;
   margin-top: 0.5rem;
   letter-spacing: 0.3px;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
@@ -411,7 +424,7 @@ body.modal-open {
   backdrop-filter: blur(16px) saturate(120%);
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   border: 1px solid rgba(255,255,255,0.18);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-system);
   color: var(--panel-text, #222);
   animation: fadeIn 0.3s ease;
 }
@@ -1521,6 +1534,7 @@ select option {
 
 main#home-screen.main {
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1530,6 +1544,16 @@ main#home-screen.main {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: calc(var(--home-bottom-safe) + env(safe-area-inset-bottom));
+}
+
+main#home-screen.main::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: clamp(1rem, 4vh, 2.5rem) 0 calc(var(--home-bottom-safe) + env(safe-area-inset-bottom) + 0.5rem) 0;
+  border-radius: 24px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  pointer-events: none;
 }
 
 body:has(main#home-screen.main:not(.hidden)) .header {
@@ -1553,6 +1577,7 @@ body:has(main#home-screen.main:not(.hidden)) .tagline {
 
 main#home-screen.main #confidence,
 main#home-screen.main #sources,
+main#home-screen.main #weatherStatus,
 main#home-screen.main #headline,
 main#home-screen.main #description,
 main#home-screen.main #temp,
@@ -1771,7 +1796,7 @@ main#home-screen.main #confidence {
     align-items: flex-start;
     text-align: left;
     gap: 0;
-    max-width: 65%;
+    max-width: 100%;
     opacity: 1 !important;
     filter: none !important;
     backdrop-filter: none !important;
@@ -1827,7 +1852,9 @@ main#home-screen.main #confidence {
   /* MOBILE: Headline - vibrant with strong shadow */
   .headline {
     font-size: clamp(1.4rem, 5.5vw, 1.8rem);
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
     text-align: left;
     font-weight: 800;
     text-shadow: 
@@ -1979,7 +2006,7 @@ main#home-screen.main #confidence {
     margin-top: 0;
     text-align: right;
     font-weight: 600;
-    color: rgba(255,255,255,0.85);
+    color: #fff;
     letter-spacing: 0.02em;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
     display: flex;
@@ -2314,7 +2341,7 @@ main#home-screen.main #confidence {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-system);
   font-weight: 700;
 }
 .ds-low,
