@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <meta name="theme-color" content="#1a1a2e"/>
+  <meta name="color-scheme" content="dark"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <title>Probably Weather</title>
@@ -25,8 +26,9 @@
   <link rel="manifest" href="manifest.json"/>
 </head>
 <body>
+  <a href="#home-screen" class="skip-link">Skip to main content</a>
   <div id="bg" aria-hidden="true">
-    <img id="bgImg" alt="" loading="lazy"/>
+    <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080"/>
     <div id="scrim"></div>
   </div>
 
@@ -37,8 +39,8 @@
     <button id="capeWindDismiss" class="cape-wind-dismiss" aria-label="Dismiss">✕</button>
   </div>
 
-  <div id="toast" class="toast"></div>
-  <div id="loader" class="loader hidden">Fetching probable weather...</div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="loader" class="loader hidden" role="status" aria-live="polite">Fetching probable weather…</div>
 
   <div class="container">
     <header class="header">
@@ -65,7 +67,7 @@
         </div>
         <div class="brand-text">
           <div class="brand-title">Probably Weather</div>
-          <div id="location" class="brand-location">—</div>
+          <h1 id="location" class="brand-location">—</h1>
         </div>
         <button id="myLocationBtn" class="my-location-btn" title="My Location">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -77,7 +79,7 @@
       </div>
 
       <div class="tagline">No more Ja-No-Maybe weather. Just Probably.</div>
-      <button id="saveCurrent" class="save-current-btn" title="Save this place">☆ Save</button>
+      <button id="saveCurrent" class="save-current-btn" title="Save this place" aria-label="Save this place">☆ Save</button>
 
     </header>
 
@@ -86,7 +88,7 @@
         <div id="temp" class="temp">--°</div>
         <div id="tempHiLo" class="temp-hilo"></div>
         <div id="description" class="description">—</div>
-        <h1 id="headline" class="headline">Loading...</h1>
+        <p id="headline" class="headline" role="status" aria-live="polite">Loading…</p>
         <!-- Hidden elements for JS compatibility -->
         <div id="confidence" class="hidden"></div>
         <div id="sources" class="hidden"></div>
@@ -96,10 +98,10 @@
         <div id="weatherByline" class="weather-byline sidebar-stats">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
         <div id="sourcesSwap" class="sources-swap"></div>
         <div class="card card-sources" id="sourcesCard">
-          <div class="sources-toggle" id="sourcesToggle">
+          <button type="button" class="sources-toggle" id="sourcesToggle" aria-expanded="false">
             <span class="sources-toggle-label">4 sources</span>
-            <span class="sources-arrow">▼</span>
-          </div>
+            <span class="sources-arrow" aria-hidden="true">▼</span>
+          </button>
           <div class="sources-detail">
             <div id="confidenceValue" class="value">--</div>
           </div>
@@ -146,7 +148,8 @@
     <section id="search-screen" class="screenPanel search-screen hidden">
       <div class="screen-panel-header">
         <h2 class="screen-title">Search & Favourites</h2>
-        <input id="searchInput" type="text" placeholder="Search for a place">
+        <label class="sr-only" for="searchInput">Search location</label>
+        <input id="searchInput" type="search" enterkeyhint="search" inputmode="search" autocomplete="off" placeholder="Search for a place" aria-label="Search location">
         <button id="searchCancel" class="cancel-btn">Cancel</button>
       </div>
       <div class="screen-panel-body">
@@ -230,22 +233,22 @@
         <p style="margin-top:8px;opacity:0.7;font-size:0.9em;">Version 1.2</p>
         <p style="margin-top:8px;opacity:0.7;font-size:0.9em;">Got feedback or an issue? Drop us a mail:</p>
         <p style="margin-top:4px;"><a href="mailto:howzit@probablyweather.co.za" style="color:#F5A623;text-decoration:none;">howzit@probablyweather.co.za</a></p>
-        <p style="margin-top:12px;opacity:0.5;font-size:0.8em;">© 2025 Probably Weather · <a href="/privacy" style="color:#999;text-decoration:underline;">Privacy Policy</a></p>
+        <p style="margin-top:12px;opacity:0.5;font-size:0.8em;">© 2026 Probably Weather · <a href="/privacy" style="color:#999;text-decoration:underline;">Privacy Policy</a></p>
         </div>
       </div>
     </section>
 
-    <nav class="nav">
-      <button id="navHome">Home</button>
-      <button id="navHourly">Hourly</button>
-      <button id="navWeek">Week</button>
-      <button id="navSearch">Search</button>
-      <button id="navSettings">Settings</button>
+    <nav class="nav" aria-label="Primary">
+      <button id="navHome" aria-label="Home" aria-current="page">Home</button>
+      <button id="navHourly" aria-label="Hourly forecast">Hourly</button>
+      <button id="navWeek" aria-label="Weekly forecast">Week</button>
+      <button id="navSearch" aria-label="Search and favourites">Search</button>
+      <button id="navSettings" aria-label="Settings">Settings</button>
     </nav>
   </div>
 
   <div id="heatOverlay"></div>
-  <div id="offlineIndicator" class="offline-indicator"></div>
+  <div id="offlineIndicator" class="offline-indicator" role="status" aria-live="polite"></div>
 
   <footer class="footer">Data from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather</footer>
 
