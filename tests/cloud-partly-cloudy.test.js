@@ -238,3 +238,81 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
   });
 
 });
+
+// ---------------------------------------------------------------------------
+// WeatherAPI source mapping: code 1003 must NOT be downgraded to "Clear sky"
+// even with 0mm precip. Confirms the partly-cloudy preserve fix end to end.
+// ---------------------------------------------------------------------------
+
+const makeWeatherApiPayload = ({ code = 1003, text = 'Partly cloudy', precip = 0 } = {}) => {
+  const dayObj = (precipMm = 0, uv = 4) => ({
+    maxtemp_c: 24, mintemp_c: 18, totalprecip_mm: precipMm, uv,
+    daily_chance_of_rain: 0,
+    condition: { code, text },
+  });
+  const hourObj = (precipMm = 0) => ({
+    temp_c: 22, feelslike_c: 22,
+    chance_of_rain: 0, precip_mm: precipMm,
+    wind_kph: 10, gust_kph: 12, humidity: 55,
+    cloud: 50,
+    condition: { code, text },
+  });
+  return {
+    current: {
+      temp_c: 22, feelslike_c: 22,
+      wind_kph: 10, gust_kph: 12, humidity: 55,
+      condition: { code, text },
+    },
+    forecast: {
+      forecastday: Array.from({ length: 7 }, () => ({
+        day: dayObj(precip),
+        astro: { sunrise: '06:00 AM', sunset: '06:00 PM' },
+        hour: Array.from({ length: 24 }, () => hourObj(precip)),
+      })),
+    },
+  };
+};
+
+describe('partly-cloudy: WeatherAPI source mapping preserves the desc', () => {
+  beforeEach(() => {
+    process.env.WEATHERAPI_KEY = 'test-key';
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-04-27T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      if (href.startsWith('https://api.open-meteo.com/')) {
+        return makeResponse(makeOpenMeteoPayload());
+      }
+      if (href.startsWith('https://api.met.no/')) {
+        return makeResponse(makeMetPayload());
+      }
+      if (href.startsWith('https://api.weatherapi.com/')) {
+        return makeResponse(makeWeatherApiPayload({ code: 1003, text: 'Partly cloudy', precip: 0 }));
+      }
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+
+  afterEach(() => {
+    delete process.env.WEATHERAPI_KEY;
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+  });
+
+  it("WeatherAPI code 1003 + 0mm precip is preserved as 'Partly cloudy', not flattened to 'Clear sky'", async () => {
+    const { statusCode, body } = await callWeather();
+    expect(statusCode).toBe(200);
+    expect(body.ok).toBe(true);
+
+    // The WA source's contribution to sourceConditions must keep its
+    // "Partly cloudy" description — proves the FIX-partly mapping fired.
+    const waVote = body.meta.sourceConditions.find(s => s.source === 'WeatherAPI');
+    expect(waVote, 'WeatherAPI source vote missing from sourceConditions').toBeTruthy();
+    expect(waVote.desc).toBe('Partly cloudy');
+    expect(waVote.desc).not.toBe('Clear sky');
+
+    // And the resulting downstream conditionKey is partly-cloudy
+    // (cloudPct lands at 50 across all sources → partly band).
+    expect(body.now.conditionKey).toBe('partly-cloudy');
+  });
+});

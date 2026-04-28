@@ -263,12 +263,21 @@ export default async function handler(req, res) {
         const d0    = wa.forecast?.forecastday?.[0]?.day   || {};
         const astro = wa.forecast?.forecastday?.[0]?.astro || {};
 
-        // FIX-001: WeatherAPI codes 1000 (Sunny) and 1003 (Partly cloudy) with 0mm precip = "Clear sky"
+        // FIX-001: WeatherAPI code 1000 (Sunny) with 0mm precip = "Clear sky" — clamps
+        // a known WA quirk where it pairs sunny conditions with phantom rain chances.
+        // FIX-partly: code 1003 (Partly cloudy) is preserved as "Partly cloudy" regardless
+        // of precip — the frontend has a dedicated partly-cloudy state. Same for any
+        // textual partly/mostly-sunny variant the API might return.
         const waCondCode = wa.current?.condition?.code;
         const waDayPrecip = d0.totalprecip_mm ?? 0;
-        let waDesc = wa.current?.condition?.text ?? 'Unknown';
-        if ((waCondCode === 1000 || waCondCode === 1003) && waDayPrecip === 0) {
-          debugLog(`[FIX-001] WeatherAPI code ${waCondCode} ("${waDesc}") with 0mm precip → "Clear sky"`);
+        const waCondText = wa.current?.condition?.text ?? 'Unknown';
+        let waDesc = waCondText;
+        const isPartlyByText = /partly\s*(cloudy|sunny)|mostly\s*sunny/i.test(waCondText);
+        if (waCondCode === 1003 || isPartlyByText) {
+          debugLog(`[FIX-partly] WeatherAPI code ${waCondCode} ("${waCondText}") preserved as "Partly cloudy"`);
+          waDesc = 'Partly cloudy';
+        } else if (waCondCode === 1000 && waDayPrecip === 0) {
+          debugLog(`[FIX-001] WeatherAPI code ${waCondCode} ("${waCondText}") with 0mm precip → "Clear sky"`);
           waDesc = 'Clear sky';
         }
 
@@ -318,11 +327,17 @@ export default async function handler(req, res) {
             return fd.day.daily_chance_of_rain;
           }),
           uvs:      wa.forecast.forecastday.map(fd => fd.day.uv),
-          // FIX-001: Override clear condition codes with 0mm precip
+          // FIX-001: code 1000 (Sunny) with 0mm precip → "Clear sky" (clamp WA quirk).
+          // FIX-partly: code 1003 (Partly cloudy) and any partly/mostly-sunny text
+          // is preserved as "Partly cloudy" — don't collapse to clear regardless of
+          // precip. The frontend has a dedicated partly-cloudy display state.
           descs:    wa.forecast.forecastday.map(fd => {
             const code = fd.day.condition?.code;
-            if ((code === 1000 || code === 1003) && (fd.day.totalprecip_mm ?? 0) === 0) return 'Clear sky';
-            return fd.day.condition.text;
+            const text = fd.day.condition?.text ?? '';
+            const isPartlyByText = /partly\s*(cloudy|sunny)|mostly\s*sunny/i.test(text);
+            if (code === 1003 || isPartlyByText) return 'Partly cloudy';
+            if (code === 1000 && (fd.day.totalprecip_mm ?? 0) === 0) return 'Clear sky';
+            return text;
           }),
           sunrises: wa.forecast.forecastday.map(fd => fd.astro?.sunrise ?? null),
           sunsets:  wa.forecast.forecastday.map(fd => fd.astro?.sunset  ?? null),
