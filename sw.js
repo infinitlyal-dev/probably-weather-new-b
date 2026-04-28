@@ -47,7 +47,9 @@ function isCoreAsset(url) {
   return (
     url.pathname === '/' ||
     url.pathname === '/index.html' ||
-    url.pathname.startsWith('/assets/') ||
+    url.pathname === '/assets/app.css' ||
+    url.pathname === '/assets/app.js' ||
+    url.pathname === '/assets/startup-location.js' ||
     url.pathname === '/manifest.json'
   );
 }
