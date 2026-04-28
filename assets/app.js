@@ -434,7 +434,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function showScreen(which) {
     SCREENS.forEach(s => { if (s) { s.classList.add("hidden"); s.setAttribute('hidden', ''); } });
     if (which) { which.classList.remove("hidden"); which.removeAttribute('hidden'); }
-    NAV_MAP.forEach(([scr, btn]) => { if (btn) btn.classList.toggle('active', scr === which); });
+    NAV_MAP.forEach(([scr, btn]) => {
+      if (!btn) return;
+      const active = scr === which;
+      btn.classList.toggle('active', active);
+      if (active) btn.setAttribute('aria-current', 'page'); else btn.removeAttribute('aria-current');
+    });
     document.body.classList.toggle('modal-open', which && which !== screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
     if (shareBtn && navigator.share) shareBtn.style.display = which === screenHome ? '' : 'none';
@@ -1003,9 +1008,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (sourcesTimer) { clearTimeout(sourcesTimer); sourcesTimer = null; }
       if (opening) {
         sidebarEl.classList.add('sources-open');
-        sourcesTimer = setTimeout(() => { sidebarEl.classList.remove('sources-open'); sourcesTimer = null; }, 4000);
+        sourcesToggle.setAttribute('aria-expanded', 'true');
+        sourcesTimer = setTimeout(() => { sidebarEl.classList.remove('sources-open'); sourcesToggle.setAttribute('aria-expanded', 'false'); sourcesTimer = null; }, 4000);
       } else {
         sidebarEl.classList.remove('sources-open');
+        sourcesToggle.setAttribute('aria-expanded', 'false');
       }
     });
   }
