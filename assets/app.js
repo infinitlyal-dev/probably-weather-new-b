@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadSettings() {
     const storedLang = loadJSON(SETTINGS_KEYS.lang, null);
-    const initialLang = resolveInitialLanguage({ stored: storedLang, navigatorLanguage: navigator.language });
+    const initialLang = resolveInitialLanguage({ stored: storedLang, navigatorLanguage: navigator.language, navigatorLanguages: navigator.languages });
     if (!storedLang) saveJSON(SETTINGS_KEYS.lang, initialLang);
     settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: initialLang };
   }

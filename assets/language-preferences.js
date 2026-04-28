@@ -13,6 +13,7 @@ export function normalizeLanguageCode(language) {
   return SUPPORTED_LANGS.includes(primary) ? primary : null;
 }
 
-export function resolveInitialLanguage({ stored, navigatorLanguage } = {}) {
-  return normalizeLanguageCode(stored) || normalizeLanguageCode(navigatorLanguage) || 'en';
+export function resolveInitialLanguage({ stored, navigatorLanguage, navigatorLanguages = [] } = {}) {
+  const detected = [navigatorLanguage, ...navigatorLanguages].map(normalizeLanguageCode).find(Boolean);
+  return normalizeLanguageCode(stored) || detected || 'en';
 }
