@@ -210,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
       uv: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e phahameng" },
       fog: { en: "Low visibility", af: "Lae sigbaarheid", zu: "Ukubonakala okuphansi", xh: "Ukubonakala okuphantsi", st: "Pono e tlase" },
       cloudy: { en: "Overcast", af: "Bewolk", zu: "Kunamafu", xh: "Linamafu", st: "Maru" },
+      'partly-cloudy': { en: "Partly cloudy", af: "Effens bewolk", zu: "Kunamafu kancane", xh: "Kufukufuku kancinci", st: "Ho na le maru a manyane" },
       clear: { en: "Pleasant", af: "Aangenaam", zu: "Kumnandi", xh: "Kumnandi", st: "Ho monate" },
       night: { en: "Clear night", af: "Helder nag", zu: "Ubusuku obuhlanzekile", xh: "Ubusuku obuhle", st: "Bosiu bo hlakileng" }
     },
@@ -229,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rain: { en: "Rain's here.", af: "Dit reën.", zu: "Imvula ikhona.", xh: "Imvula ikhona.", st: "Pula e a na." },
       'rain-possible': { en: "Might rain.", af: "Dalk reën.", zu: "Kungase line.", xh: "Mhlawumbi iya kuna.", st: "Mohlomong pula." },
       cloudy: { en: "Cloudy vibes.", af: "Bewolk vandag.", zu: "Kunamafu.", xh: "Linamafu.", st: "Maru a teng." },
+      'partly-cloudy': { en: "Partly cloudy.", af: "Effens bewolk.", zu: "Kunamafu kancane.", xh: "Kufukufuku kancinci.", st: "Ho na le maru a manyane." },
       wind: { en: "Wind's up.", af: "Dit waai.", zu: "Umoya uyavunguza.", xh: "Umoya uvuthuza.", st: "Moea o a foka." },
       cold: { en: "It's chilly.", af: "Dis koud.", zu: "Kuyabanda.", xh: "Kuyabanda.", st: "Ho a bata." },
       heat: { en: "It's hot.", af: "Dis warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho tjhesa." },
@@ -266,6 +268,13 @@ document.addEventListener("DOMContentLoaded", () => {
         zu: ["Isibhakabhaka asiniki lutho.", "Kunamafu kodwa sizosinda.", "Usuku oluhle lokuhamba, olubi lokushisa.", "Ilanga liyabaleka namuhla.", "Isimo sezulu esingezinhle. Njengami.", "Akubi kubi, akubi kuhle. Njengedethi ye-6/10.", "Isimo sezulu esihle se-Woolies ne-Netflix.", "Isibhakabhaka siyabafura.", "Ngisho nesimo sezulu asikwazi ukuziphatha namuhla.", "I-grey vibes. Isibhakabhaka sifana noMsombuluko wami.", "Isimo sezulu esilungele i-Eskom. Akukho solar.", "Kuyilokho okuyikho.", "Ilanga lisekhefu letiye. Akukho ETA.", "Akudabukisi. Nje... akuhlabi umxhwele.", "I-hoodie nesimo sengqondo. Namuhla kunje.", "Kungaba kubi kakhulu. Kungaba ngcono futhi.", "Isibhakabhaka sinikeza 'ngizozama kusasa' amandla.", "Isimo sezulu esinele. Asikuhle, asikubi.", "Akekho ozoposta lokhu ku-Instagram.", "Amafu akhona kodwa awenzi lutho.", "Isibhakabhaka sithulile. Akekho okhonondayo.", "Akusona isimo sezulu se-Instagram. Akusikho ukuphela komhlaba.", "Ilanga lithumele i-out-of-office.", "Lesi simo sezulu sinokuthi 'meh' kuyo yonke indawo.", "Okungenani akulini. Yilokho okukhona.", "I-vibe yi-beige. Yamukela.", "Isimo sezulu esihle sokuphila ngaphandle kwentshisekelo.", "Amafu azibophezele ekubeni phakathi naphakathi.", "Akukho okubonwayo lapha. Ngempela.", "Isibhakabhaka sikhethe i-vibe futhi i-vibe iwukunyusa amahlombe.", "Amafu nohlangothi lokuthi ubani onendaba.", "Ilanga liku-airplane mode.", "Isibhakabhaka esiphakathi nendawo esenza izinto eziphakathi nendawo.", "Amafu aphendule athi 'mhlawumbi' avele eza nje.", "Isimo sezulu sanamuhla: sisalayisha.", "Isibhakabhaka sinombala wesivalo seTupperware esidala.", "Isibikezelo: i-vibes ingenamthelela, izindlela ziphansi.", "Ilanga ngokwesibalo likhona. Ngokomoya likwenye indawo."],
         xh: ["Isibhakabhaka asiniki nto.", "Linamafu kodwa siya kuphila.", "Imini entle yokuhamba, embi yokutshisa.", "Ilanga liyabaleka namhlanje.", "Imozulu ezithwele. Njengam.", "Ayimbi, ayintle. Njengedethi ye-6/10.", "Imozulu elungele uWoolies neNetflix.", "Isibhakabhaka siyabafura.", "Imozulu ayonqena namhlanje.", "I-grey vibes. Isibhakabhaka sifana noMvulo wam.", "Imozulu elungele i-Eskom. Akukho solar.", "Kuyiloo nto iyiyo.", "Ilanga lisekhefu letiye. Akukho ETA.", "Ayidakumbi. Nje... ayihlabi umxhwele.", "I-hoodie nesimilo. Namhlanje kunje.", "Kunokuba kubi kakhulu. Kunokuba bhetele futhi.", "Isibhakabhaka sinika 'ndiya kuzama ngomso' amandla.", "Imozulu eyaneleyo. Ayinkulu, ayimbi.", "Akukho mntu uza kuposta oku kwi-Instagram.", "Amafu akho kodwa awenzi nto.", "Isibhakabhaka sithule. Akukho mntu ukhalazayo.", "Ayiyomozulu ye-Instagram. Ayikokuphela kwehlabathi.", "Ilanga lithumele i-out-of-office.", "Le mozulu ibhalwe 'meh' kuyo yonke indawo.", "Ubuncinane ayimvula. Yilonto kuphela.", "I-vibe yi-beige. Yamkela.", "Imozulu elungele ukuphila ngaphandle kwentshisekelo.", "Amafu azibophelele ekubeni phakathi naphakathi.", "Akukho nto ibonwayo apha. Ngenene.", "Isibhakabhaka sikhethe i-vibe kwaye i-vibe kukunyusa amagxa.", "Amafu nelinye icala lokuba ngubani onomdla.", "Ilanga liku-airplane mode.", "Isibhakabhaka esiphakathi esenza izinto eziphakathi.", "Amafu aphendule athi 'mhlawumbi' aze nje.", "Imozulu yanamhlanje: isalayisha.", "Isibhakabhaka sinombala wesiciko seTupperware esidala.", "Isibikezelo: ii-vibes ezingenamfuneko, indlela eziphantsi.", "Ilanga ngokwasemthethweni likho. Ngokomoya likwenye indawo."],
         st: ["Lehodimo ha le fane letho.", "Ho na le maru empa re tla phela.", "Letsatsi le letle la ho tsamaea, le lebe la ho tjhesa.", "Letsatsi le balehile kajeno.", "Leholimo le matšoenyehong. Le nna, ka nnete.", "Ha ho mpe, ha ho motle. Joalo ka dethi ea 6/10.", "Leholimo le lokileng la Woolies le Netflix.", "Lehodimo le a buffera.", "Esita le leholimo ha le khathalehe kajeno.", "Grey vibes. Lehodimo le tšoana le Mantaha oa ka.", "Leholimo le ratoang ke Eskom. Ha ho solar kajeno.", "Ke seo e leng sona.", "Letsatsi le phomoletseng ho noa tee. Ha ho ETA.", "Ha ho masoabi. Feela... ha ho khotsofatse.", "Hoodie le boitšoaro. Ke kajeno.", "E ka ba mpe le ho feta. E ka ba betere le ho feta.", "Lehodimo le fana le 'ke tla leka hosane' matla.", "Leholimo le lekaneng. Ha le leholo, ha le lebe.", "Ha ho motho ea tla posta sena ho Instagram.", "Maru a teng empa ha a etse letho.", "Lehodimo le kgutsitse. Ha ho motho ea llang.", "Ha se leholimo la Instagram. Ha se qetello ea lefatše.", "Letsatsi le romeletse out-of-office.", "Leholimo lena le na le 'meh' karolong e 'ngoe le e 'ngoe.", "Bonyane ha ho ne pula. Ke standaard.", "Vibe ke beige. Amohela.", "Leholimo le loketseng ho phela ntle le mafolofolo.", "Maru a itlamile ho ba karolelano.", "Ha ho letho leo ho le bonoang mona. Ka nnete.", "Lehodimo le khethile vibe mme vibe ke ho phahamisa mahetla.", "Maru le lehlakore la mang ea tsotellang.", "Letsatsi le ho airplane mode.", "Lehodimo le karolelano le etsang lintho tsa karolelano.", "Maru a arabile 'mohlomong' empa a fihlile.", "Leholimo la kajeno: le sa loadhella.", "Lehodimo le na le 'mala oa sekoahelo sa Tupperware sa khale.", "Ponelopele: vibes li bohareng, litebello li tlase.", "Letsatsi ka tsela ea ts'ebetso le teng. Ka moea le sebakeng se seng."]
+      },
+      'partly-cloudy': {
+        en: ["Sun, hide-and-seek champion of the day.", "Sky can't make up its mind.", "Half-committed clouds.", "Sky's doing the most, but only a little.", "Cloud cover, low effort.", "Sun's playing peek-a-boo.", "Clouds today, vibes optional.", "Sky's drafting, not committing.", "Patchy ambitions.", "Halfway to a Highveld thunderstorm. Or not.", "Clouds, but make it casual.", "Sun on a smoke break.", "Almost a braai day.", "Washing's still safe. Probably.", "Sunscreen, but keep a hoodie close.", "Indecisive sky energy.", "Some clouds. Some sun. South African summer admin.", "The sky's doing freelance today.", "Cloud cover with main-character syndrome.", "Cloudy enough to comment, sunny enough to ignore."],
+        af: ["Son speel wegkruipertjie.", "Lug kan nie besluit nie.", "Halfgewillig bewolk.", "Wolke met 'n las.", "Son op 'n teebreek.", "Bietjie bewolk, bietjie blou.", "Wolke vir vertoning.", "Amper 'n braaidag.", "Wasgoed is veilig. Glo ek.", "Sonskerm en 'n trui — vat altwee.", "Lug doen freelance werk.", "Wolke met main-character drama.", "Effens bewolk, effens twyfelagtig.", "Halfpad na 'n Highveld bui. Of nie.", "Sky's playing kat-en-muis.", "Wolke wat 'n statement maak. Net 'n klein een.", "Bewolk genoeg om te kla, sonnig genoeg om te kers.", "SA somer in een prentjie.", "Wolke kom kuier, maar nie lank nie.", "Lug op 'n maybe-vibe."],
+        zu: ["Ilanga lidlala ucashisa.", "Isibhakabhaka asikwazi ukunquma.", "Amafu adlala kancane.", "Ilanga libuya likhanya, libuye licasheke.", "Amafu nelanga - bobabili lapha.", "Cishe usuku lwebraai.", "Izingubo zisaphephile. Cishe.", "Phatha ihembe nesijele - kokubili.", "Isibhakabhaka siyazithanda namhlanje.", "Amafu amancane, ilanga elikhulu.", "Akumnandi, akukubi - phakathi nendawo.", "Ilanga lithatha ikhefu.", "Amafu azofika futhi ahambe.", "Usuku lwe-maybe.", "Amafu, kodwa kungekho ukukhathazeka.", "Isibhakabhaka esinemibono eminingi.", "Cishe ihlobo lase-South Africa.", "Amafu enza i-statement encane.", "Ilanga lifika lihambe.", "Amafu axubene nelanga - kuhle kakhulu."],
+        xh: ["Ilanga lidlala ukufihlana.", "Isibhakabhaka asikwazi ukugqiba.", "Amafu kancinci nje.", "Ilanga liphuma liphinde licaceke.", "Amafu nelanga - kuyo yomibini.", "Phantse usuku lwebraai.", "Iimpahla zisesemkhuselweni. Kunokwenzeka.", "Phatha ihempe nehoodie - zombini.", "Isibhakabhaka siyazithanda namhlanje.", "Amafu amancinci, ilanga elikhulu.", "Akumnandanga, akukubi - phakathi.", "Ilanga lithatha ikhefu.", "Amafu azofika ahambe.", "Usuku lwe-mhlawumbi.", "Amafu, kodwa akukho ngxaki.", "Isibhakabhaka esiphakathi-phakathi.", "Phantse ihlobo lase-South Africa.", "Amafu enza i-statement encinci.", "Ilanga liyafika liphume.", "Amafu axutyiwe nelanga."],
+        st: ["Letsatsi le bapala ho ipata.", "Lehodimo ha le tsebe ho etsa qeto.", "Maru a manyane feela.", "Letsatsi le hlaha le nyamela.", "Maru le letsatsi - bobeli mona.", "Hoo ke letsatsi la braai.", "Liaparo li bolokehile. Mohlomong.", "Tšoara hempe le hoodie - ka bobeli.", "Lehodimo le ithata kajeno.", "Maru a manyane, letsatsi le leholo.", "Ha ho monate, ha ho mobe - mahareng.", "Letsatsi le nka khefu.", "Maru a tla tla a tsamaee.", "Letsatsi la mohlomong.", "Maru, empa ha ho na bothata.", "Lehodimo le mahareng a maikutlo.", "Hoo ke lehlabula la Afrika Borwa.", "Maru a etsa polelo e nyane.", "Letsatsi le tla le tsamaee.", "Maru a kopantsoe le letsatsi."]
       },
       uv: {
         en: ["Sunscreen is not optional, boet.", "SPF 50 or regret it by tonight.", "The sun's not playing games today.", "You will look like a lobster. You've been warned.", "Protect that face! It's the only one you've got.", "The ozone layer called. It's on leave.", "Reapply that sunscreen or suffer.", "The sun is personally attacking you.", "Hat, sunnies, sunscreen. Non-negotiable.", "You could braai a steak on the pavement right now.", "Your future self will thank you for that sunscreen.", "The UV index is higher than your expectations.", "Walking to the car counts as a sun hazard today.", "Your nose is going to betray you by 3pm.", "The sun doesn't care about your plans.", "Tan lines are not a personality trait.", "The back of your neck. You forgot that bit.", "Sunscreen budget: higher than your data bill.", "Today's forecast: medium rare.", "Even the shade is warm. Good luck out there."],
@@ -486,11 +495,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) return 'fog';
     if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain-possible';
-    // Only show cloudy for genuinely overcast skies (80%+) or heavy cloud (60%+)
     if (isNum(cloudPct) && cloudPct >= 60) return 'cloudy';
-    // If we don't have cloudPct, fall back to condKey but only for overcast, not "partly cloudy"
+    if (isNum(cloudPct) && cloudPct >= 30) return 'partly-cloudy';
+    // If we don't have cloudPct, fall back to condKey
     if (!isNum(cloudPct) && (condKey.includes('overcast') || condKey === 'cloudy')) return 'cloudy';
-    // Partly cloudy (30-60%) is basically clear with some clouds
+    if (!isNum(cloudPct) && condKey === 'partly-cloudy') return 'partly-cloudy';
     return 'clear';
   }
   function computeTodaysHero(norm) {
@@ -801,7 +810,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return fallback;
   }
   function setBackgroundFor(condition) {
-    const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
+    const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'partly-cloudy': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const timeOfDay = getTimeOfDay();
     const dayOfYear = getLocationDayOfYear();
@@ -973,7 +982,9 @@ document.addEventListener("DOMContentLoaded", () => {
     showLoader(false);
     const currentTemp = norm.nowTemp, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
-    document.body.className = `weather-${displayCondition}`;
+    // Body/CSS variant for partly-cloudy reuses the cloudy theme — no dedicated CSS yet.
+    const cssVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
+    document.body.className = `weather-${cssVariant}`;
     let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
     setSharedLocationIndicator(!!activePlace?.shared);
     if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {
@@ -1034,7 +1045,9 @@ document.addEventListener("DOMContentLoaded", () => {
       bylineEl.innerHTML = `<div class="byline-row">${line1}</div><div class="byline-row">${line2}</div>`;
     }
     const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
-    [headlineEl, tempEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
+    // partly-cloudy reuses the cloudy hero colour — no dedicated CSS yet.
+    const heroVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
+    [headlineEl, tempEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + heroVariant); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
     renderCapeWind(norm);
