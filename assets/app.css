@@ -5,7 +5,15 @@
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+button, a, .daily-row-tappable, .recent-item, .favorite-item, .search-result-item, .nav button {
+  touch-action: manipulation;
+}
+
+.temp, .temp-hilo, .h-temp, .d-high, .d-low, .h-rain, .d-rain, .h-wind, .h-uv, .ds-low, .ds-high {
+  font-variant-numeric: tabular-nums;
+}
 
 .sr-only {
   position: absolute;

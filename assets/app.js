@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     // Misc
     misc: {
-      loading: { en: "Loading...", af: "Laai...", zu: "Iyalayisha...", xh: "Iyalayisha...", st: "E a jarolla..." },
+      loading: { en: "Loading…", af: "Laai…", zu: "Iyalayisha…", xh: "Iyalayisha…", st: "E a jarolla…" },
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
       couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana imozulu.", st: "Ha e khone ho fumana boemo ba leholimo." },
       share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
@@ -1457,7 +1457,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     const savedGpsLoc = loadJSON(STORAGE.location, null);
     if ("geolocation" in navigator) {
-      renderLoading("Getting location...");
+      renderLoading("Getting location…");
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
         try {
@@ -1542,7 +1542,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sn = savedLoc.city && savedLoc.admin1 ? `${savedLoc.city}, ${savedLoc.admin1}` : (savedLoc.city || savedLoc.admin1 || 'South Africa');
     homePlace = { name: sn, lat: savedLoc.lat, lon: savedLoc.lon }; saveJSON(STORAGE.home, homePlace); showScreen(screenHome); loadAndRender(homePlace);
   }
-  else { showScreen(screenHome); renderLoading("Locating...");
+  else { showScreen(screenHome); renderLoading("Locating…");
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;

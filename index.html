@@ -4,6 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <meta name="theme-color" content="#1a1a2e"/>
+  <meta name="color-scheme" content="dark"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <title>Probably Weather</title>
@@ -27,7 +28,7 @@
 <body>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
   <div id="bg" aria-hidden="true">
-    <img id="bgImg" alt="" loading="lazy"/>
+    <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080"/>
     <div id="scrim"></div>
   </div>
 
@@ -148,7 +149,7 @@
       <div class="screen-panel-header">
         <h2 class="screen-title">Search & Favourites</h2>
         <label class="sr-only" for="searchInput">Search location</label>
-        <input id="searchInput" type="text" placeholder="Search for a place" aria-label="Search location">
+        <input id="searchInput" type="search" enterkeyhint="search" inputmode="search" autocomplete="off" placeholder="Search for a place" aria-label="Search location">
         <button id="searchCancel" class="cancel-btn">Cancel</button>
       </div>
       <div class="screen-panel-body">
@@ -232,7 +233,7 @@
         <p style="margin-top:8px;opacity:0.7;font-size:0.9em;">Version 1.2</p>
         <p style="margin-top:8px;opacity:0.7;font-size:0.9em;">Got feedback or an issue? Drop us a mail:</p>
         <p style="margin-top:4px;"><a href="mailto:howzit@probablyweather.co.za" style="color:#F5A623;text-decoration:none;">howzit@probablyweather.co.za</a></p>
-        <p style="margin-top:12px;opacity:0.5;font-size:0.8em;">© 2025 Probably Weather · <a href="/privacy" style="color:#999;text-decoration:underline;">Privacy Policy</a></p>
+        <p style="margin-top:12px;opacity:0.5;font-size:0.8em;">© 2026 Probably Weather · <a href="/privacy" style="color:#999;text-decoration:underline;">Privacy Policy</a></p>
         </div>
       </div>
     </section>
