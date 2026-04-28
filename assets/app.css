@@ -267,7 +267,7 @@ body.modal-open {
 /* Weather byline - split into 2 rows, subtle */
 .weather-byline {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.85);
+  color: #fff;
   margin-top: 0.5rem;
   letter-spacing: 0.3px;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
@@ -1535,6 +1535,7 @@ select option {
 
 main#home-screen.main {
   position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1544,6 +1545,20 @@ main#home-screen.main {
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: calc(var(--home-bottom-safe) + env(safe-area-inset-bottom));
+}
+
+main#home-screen.main::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: clamp(1rem, 4vh, 2.5rem);
+  left: 0;
+  width: min(760px, calc(100% - 1rem));
+  height: calc(100% - var(--home-bottom-safe) - env(safe-area-inset-bottom) - 1rem);
+  min-height: 240px;
+  border-radius: 24px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  pointer-events: none;
 }
 
 body:has(main#home-screen.main:not(.hidden)) .header {
@@ -1567,6 +1582,7 @@ body:has(main#home-screen.main:not(.hidden)) .tagline {
 
 main#home-screen.main #confidence,
 main#home-screen.main #sources,
+main#home-screen.main #weatherStatus,
 main#home-screen.main #headline,
 main#home-screen.main #description,
 main#home-screen.main #temp,
@@ -1993,7 +2009,7 @@ main#home-screen.main #confidence {
     margin-top: 0;
     text-align: right;
     font-weight: 600;
-    color: rgba(255,255,255,0.85);
+    color: #fff;
     letter-spacing: 0.02em;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
     display: flex;
