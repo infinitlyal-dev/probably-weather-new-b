@@ -192,4 +192,49 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
     expect(getWeatherIcon(0, 50, 22, false)).toBe('⛅');
   });
 
+  it("witty subtitle for partly-cloudy comes from its own bucket, not from T.witty.clear", () => {
+    // Extract the relevant arrays straight from the source. We can't easily
+    // run getWittyLine in isolation (it depends on the live DOM + settings),
+    // but its fallback chain is `T.witty[condition]?.[lang] || ... ||
+    // T.witty.clear.en`. So the only condition for the right behaviour is:
+    //   1. A 'partly-cloudy' bucket exists with a non-empty per-language array.
+    //   2. The content differs from T.witty.clear (otherwise it would still
+    //      "fall through" silently to clear-equivalent lines).
+    const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+
+    // Match each bucket: <key>: { en: [...], af: [...], zu: [...], xh: [...], st: [...] },
+    const bucketRe = (key) => new RegExp(
+      `${key}:\\s*\\{\\s*` +
+      `en:\\s*(\\[[^\\]]*\\])\\s*,\\s*` +
+      `af:\\s*(\\[[^\\]]*\\])\\s*,\\s*` +
+      `zu:\\s*(\\[[^\\]]*\\])\\s*,\\s*` +
+      `xh:\\s*(\\[[^\\]]*\\])\\s*,\\s*` +
+      `st:\\s*(\\[[^\\]]*\\])`
+    );
+
+    const partlyMatch = src.match(bucketRe(`'partly-cloudy'`));
+    expect(partlyMatch, "T.witty['partly-cloudy'] bucket missing").toBeTruthy();
+
+    const clearMatch = src.match(bucketRe(`clear`));
+    expect(clearMatch, 'T.witty.clear bucket not found (search anchor)').toBeTruthy();
+
+    const langs = ['en', 'af', 'zu', 'xh', 'st'];
+    langs.forEach((lang, i) => {
+      const partlyArr = JSON.parse(partlyMatch[i + 1]);
+      const clearArr = JSON.parse(clearMatch[i + 1]);
+
+      // Bucket has content
+      expect(partlyArr.length, `partly-cloudy.${lang} should have lines`).toBeGreaterThan(0);
+
+      // At least one line in partly-cloudy is unique vs clear — proves the
+      // rotation surfaces partly-cloudy-specific copy, not clear's pool.
+      const overlap = partlyArr.filter(line => clearArr.includes(line));
+      expect(overlap.length, `partly-cloudy.${lang} should not be a subset of clear.${lang}`).toBeLessThan(partlyArr.length);
+    });
+
+    // Sanity: a known-spec line is in the English pool.
+    const enArr = JSON.parse(partlyMatch[1]);
+    expect(enArr).toContain("Sun, hide-and-seek champion of the day.");
+  });
+
 });
