@@ -18,4 +18,9 @@ describe('Impeccable accessibility hardening', () => {
     expect(css()).toMatch(/\.weather-byline\s*{[^}]*color:\s*#fff;/s);
     expect(css()).toMatch(/main#home-screen\.main::before\s*{[^}]*linear-gradient\(to right,\s*rgba\(0,\s*0,\s*0,\s*0\.55\)/s);
   });
+
+  it('uses the system font stack without render-blocking Google Fonts', () => {
+    expect(css()).not.toMatch(/fonts\.googleapis|Poppins|Montserrat/);
+    expect(css()).toMatch(/--font-system:\s*-apple-system,\s*BlinkMacSystemFont,\s*"Segoe UI",\s*Roboto,\s*sans-serif;/);
+  });
 });

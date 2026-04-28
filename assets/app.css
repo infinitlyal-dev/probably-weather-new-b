@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Montserrat:wght@400;600&display=swap');
-
 :root {
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --focus-ring: #ffffff;
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
 }
@@ -69,7 +68,7 @@ textarea:focus-visible,
 body, html {
   height: 100%;
   min-height: 100vh;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-system);
   overflow: hidden;
   color: #FFF8F0;
   transition: color 0.3s;
@@ -109,7 +108,7 @@ body.modal-open {
 }
 
 .brand-title {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-system);
   font-size: 3rem;
   font-weight: 800;
 }
@@ -219,7 +218,7 @@ body.modal-open {
 /* High/Low underneath - better contrast */
 .temp-hilo,
 #tempHiLo {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-system);
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -425,7 +424,7 @@ body.modal-open {
   backdrop-filter: blur(16px) saturate(120%);
   box-shadow: 0 8px 32px rgba(0,0,0,0.15);
   border: 1px solid rgba(255,255,255,0.18);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-system);
   color: var(--panel-text, #222);
   animation: fadeIn 0.3s ease;
 }
@@ -2344,7 +2343,7 @@ main#home-screen.main #confidence {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-system);
   font-weight: 700;
 }
 .ds-low,
