@@ -210,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
       uv: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e phahameng" },
       fog: { en: "Low visibility", af: "Lae sigbaarheid", zu: "Ukubonakala okuphansi", xh: "Ukubonakala okuphantsi", st: "Pono e tlase" },
       cloudy: { en: "Overcast", af: "Bewolk", zu: "Kunamafu", xh: "Linamafu", st: "Maru" },
+      'partly-cloudy': { en: "Partly cloudy", af: "Effens bewolk", zu: "Kunamafu kancane", xh: "Kufukufuku kancinci", st: "Ho na le maru a manyane" },
       clear: { en: "Pleasant", af: "Aangenaam", zu: "Kumnandi", xh: "Kumnandi", st: "Ho monate" },
       night: { en: "Clear night", af: "Helder nag", zu: "Ubusuku obuhlanzekile", xh: "Ubusuku obuhle", st: "Bosiu bo hlakileng" }
     },
@@ -229,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rain: { en: "Rain's here.", af: "Dit reën.", zu: "Imvula ikhona.", xh: "Imvula ikhona.", st: "Pula e a na." },
       'rain-possible': { en: "Might rain.", af: "Dalk reën.", zu: "Kungase line.", xh: "Mhlawumbi iya kuna.", st: "Mohlomong pula." },
       cloudy: { en: "Cloudy vibes.", af: "Bewolk vandag.", zu: "Kunamafu.", xh: "Linamafu.", st: "Maru a teng." },
+      'partly-cloudy': { en: "Partly cloudy.", af: "Effens bewolk.", zu: "Kunamafu kancane.", xh: "Kufukufuku kancinci.", st: "Ho na le maru a manyane." },
       wind: { en: "Wind's up.", af: "Dit waai.", zu: "Umoya uyavunguza.", xh: "Umoya uvuthuza.", st: "Moea o a foka." },
       cold: { en: "It's chilly.", af: "Dis koud.", zu: "Kuyabanda.", xh: "Kuyabanda.", st: "Ho a bata." },
       heat: { en: "It's hot.", af: "Dis warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho tjhesa." },
@@ -486,11 +488,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) return 'fog';
     if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain-possible';
-    // Only show cloudy for genuinely overcast skies (80%+) or heavy cloud (60%+)
     if (isNum(cloudPct) && cloudPct >= 60) return 'cloudy';
-    // If we don't have cloudPct, fall back to condKey but only for overcast, not "partly cloudy"
+    if (isNum(cloudPct) && cloudPct >= 30) return 'partly-cloudy';
+    // If we don't have cloudPct, fall back to condKey
     if (!isNum(cloudPct) && (condKey.includes('overcast') || condKey === 'cloudy')) return 'cloudy';
-    // Partly cloudy (30-60%) is basically clear with some clouds
+    if (!isNum(cloudPct) && condKey === 'partly-cloudy') return 'partly-cloudy';
     return 'clear';
   }
   function computeTodaysHero(norm) {
@@ -801,7 +803,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return fallback;
   }
   function setBackgroundFor(condition) {
-    const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'uv': 'clear' };
+    const base = 'assets/images/bg', aliasMap = { 'rain-possible': 'cloudy', 'partly-cloudy': 'cloudy', 'uv': 'clear' };
     const folder = aliasMap[condition] || condition, fallbackFolder = condition === 'cold' ? 'cloudy' : 'clear';
     const timeOfDay = getTimeOfDay();
     const dayOfYear = getLocationDayOfYear();
@@ -973,7 +975,9 @@ document.addEventListener("DOMContentLoaded", () => {
     showLoader(false);
     const currentTemp = norm.nowTemp, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
-    document.body.className = `weather-${displayCondition}`;
+    // Body/CSS variant for partly-cloudy reuses the cloudy theme — no dedicated CSS yet.
+    const cssVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
+    document.body.className = `weather-${cssVariant}`;
     let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
     setSharedLocationIndicator(!!activePlace?.shared);
     if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {
@@ -1034,7 +1038,9 @@ document.addEventListener("DOMContentLoaded", () => {
       bylineEl.innerHTML = `<div class="byline-row">${line1}</div><div class="byline-row">${line2}</div>`;
     }
     const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
-    [headlineEl, tempEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + displayCondition); } });
+    // partly-cloudy reuses the cloudy hero colour — no dedicated CSS yet.
+    const heroVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
+    [headlineEl, tempEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + heroVariant); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
     renderCapeWind(norm);

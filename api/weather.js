@@ -1130,8 +1130,9 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 17. Mostly cloudy
   if (isMostlyCloudy || cloudyByDesc)         return 'cloudy';
 
-  // 18. Partly cloudy / mainly clear / fair — treated as clear (nice day)
-  if (isPartlyCloudy || partlyByDesc)         return 'clear';
+  // 18. Partly cloudy / mainly clear / fair — distinct from clear so the
+  // home headline can match the ⛅ hourly icon. Frontend handles the new key.
+  if (isPartlyCloudy || partlyByDesc)         return 'partly-cloudy';
 
   // 19. Clear by description (includes 'wind' to avoid 'Windy' desc falling to bottom)
   if (d.includes('clear') || d.includes('sunny') || d.includes('fair') || d.includes('wind')) return 'clear';
