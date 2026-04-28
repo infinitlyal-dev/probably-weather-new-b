@@ -111,7 +111,7 @@ body.modal-open {
   color: #fff;
   font-size: 0.75rem;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
 }
 
@@ -878,7 +878,7 @@ body.ui-dark .daily-card {
   border-radius: 16px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   margin: 0;
 }
 
@@ -1203,7 +1203,7 @@ select option {
   border-radius: 20px;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   margin-top: 1rem;
 }
 
@@ -1245,7 +1245,7 @@ select option {
   border-radius: 20px;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   margin: 0.5rem;
 }
 
@@ -1294,7 +1294,7 @@ select option {
   margin: 0.5rem 0;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1322,7 +1322,7 @@ select option {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   padding: 0;
 }
 
@@ -2351,4 +2351,16 @@ main#home-screen.main #confidence {
   .ds-stats {
     grid-template-columns: 1fr;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #particles { display: none !important; }
 }
