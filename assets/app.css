@@ -27,18 +27,17 @@ button, a, .daily-row-tappable, .recent-item, .favorite-item, .search-result-ite
 
 .skip-link {
   position: absolute;
-  top: -100px;
-  left: 8px;
-  z-index: 10000;
-  background: #1a1a2e;
+  top: -40px;
+  left: 0;
+  padding: 8px 16px;
+  background: #000;
   color: #fff;
-  padding: 10px 16px;
-  border-radius: 6px;
   text-decoration: none;
-  font-weight: 600;
+  z-index: 9999;
+  border-radius: 0 0 4px 0;
 }
 .skip-link:focus {
-  top: 8px;
+  top: 0;
 }
 
 button:focus-visible,
