@@ -383,6 +383,7 @@ export default async function handler(req, res) {
       const series   = metJson.properties?.timeseries || [];
       const nowEntry = series[0] || {};
       const details  = nowEntry.data?.instant?.details || {};
+      const alignedMetSeries = alignSeriesToLocalMidnight(series, utcOffsetSeconds, Date.now());
 
       const metWindKph  = isNum(details.wind_speed) ? Math.round(details.wind_speed * 3.6 * 10) / 10 : null;
       const metHumidity = isNum(details.relative_humidity) ? details.relative_humidity : null;
@@ -437,23 +438,24 @@ export default async function handler(req, res) {
 
       hourlies[2] = {
         source:     'MET Norway',
-        temps:      series.slice(0, 48).map(p => p.data?.instant?.details?.air_temperature ?? null),
-        feelsLikes: series.slice(0, 48).map(p => {
-          const t = p.data?.instant?.details?.air_temperature;
-          const w = p.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
-          const h = p.data?.instant?.details?.relative_humidity;
+        temps:      alignedMetSeries.map(p => p?.data?.instant?.details?.air_temperature ?? null),
+        feelsLikes: alignedMetSeries.map(p => {
+          const t = p?.data?.instant?.details?.air_temperature;
+          const w = p?.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
+          const h = p?.data?.instant?.details?.relative_humidity;
           return calcFeelsLike(t, w, h);
         }),
-        rains:  series.slice(0, 48).map(p => {
-          const mm = p.data?.next_1_hours?.details?.precipitation_amount ?? 0;
+        rains:  alignedMetSeries.map(p => {
+          const mm = p?.data?.next_1_hours?.details?.precipitation_amount ?? null;
+          if (!isNum(mm)) return null;
           return mm === 0 ? 0 : mm < 0.5 ? 20 : mm < 1 ? 40 : mm < 2 ? 60 : 80;
         }),
-        winds:  series.slice(0, 48).map(p => {
-          const w = p.data?.instant?.details?.wind_speed;
+        winds:  alignedMetSeries.map(p => {
+          const w = p?.data?.instant?.details?.wind_speed;
           return isNum(w) ? Math.round(w * 3.6 * 10) / 10 : null;
         }),
-        gusts:  series.slice(0, 48).map(() => null), // not in compact
-        clouds: series.slice(0, 48).map(p => p.data?.instant?.details?.cloud_area_fraction ?? null),
+        gusts:  alignedMetSeries.map(() => null), // not in compact
+        clouds: alignedMetSeries.map(p => p?.data?.instant?.details?.cloud_area_fraction ?? null),
       };
 
       dailies[3] = {
@@ -936,6 +938,26 @@ function pickModalCloud(values) {
   // Return median of the winning bucket
   const winnerVals = buckets[winner].sort((a, b) => a - b);
   return winnerVals[Math.floor(winnerVals.length / 2)];
+}
+
+function alignSeriesToLocalMidnight(series, utcOffsetSeconds, nowUtcMs) {
+  const aligned = Array(48).fill(null);
+  const nowLocalMs = nowUtcMs + utcOffsetSeconds * 1000;
+  const localDateStr = new Date(nowLocalMs).toISOString().slice(0, 10);
+  const localMidnightMs = Date.parse(`${localDateStr}T00:00:00.000Z`);
+
+  for (const entry of series) {
+    if (!entry?.time) continue;
+    const entryUtcMs = Date.parse(entry.time);
+    if (!Number.isFinite(entryUtcMs)) continue;
+    const entryLocalMs = entryUtcMs + utcOffsetSeconds * 1000;
+    const index = Math.round((entryLocalMs - localMidnightMs) / (60 * 60 * 1000));
+    if (index >= 0 && index < aligned.length) {
+      aligned[index] = entry;
+    }
+  }
+
+  return aligned;
 }
 
 /**
