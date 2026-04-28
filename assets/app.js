@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const headlineEl = $('#headline');
   const tempEl = $('#temp');
   const descriptionEl = $('#description');
-  const extremeLabelEl = $('#extremeLabel');
-  const extremeValueEl = $('#extremeValue');
   const bgImg = $('#bgImg');
   const saveCurrent = $('#saveCurrent');
   const particlesEl = $('#particles');
@@ -326,25 +324,6 @@ document.addEventListener("DOMContentLoaded", () => {
         st: ["Leholimo la braai, boet! Ha ho mabaka.", "Chesa Weber. Ke molao.", "Melimo ea leholimo e a iponahatsa.", "Lebopo kapa braai? E.", "Maikutlo a beke a matla haholo a hloka playlist ea 'ona.", "Haeba o sebetsa kajeno, re oa utsoarela.", "E lokile ho se etse letho.", "Letsetsa metsoalle. Fumana nama. Re tsamaee.", "Merero ea kajeno: phela kantle.", "Phomolo ha e be betere ho feta mona.", "Mashala ha a na ho itukisa ka bo 'ona.", "Lieta li ka khethoa. Boitšoaro bo tlamehile.", "Out-of-office ea hao e etsa mosebetsi o boima.", "Leholimo la ho kopana. Bokella batho.", "Weber e emeletse beke eohle bakeng sa sena.", "Tong e a bitsa. Araba eona.", "Ha ho alarm. Ha ho agenda. Vibes feela.", "Lena ke leholimo phomolo e entsoeng bakeng sa lona.", "Boikarabelo ba hao bo le bong feela ke ho khetha mashala kapa patsi.", "Matla a Moqebelo: a hodimo. Boikarabelo: bo tlase.", "Kenya marinade. Tima mohala. Letsatsi le qala joale.", "Lichopo li a bitsa. Setulo le sona.", "Boerie roll bakeng sa lijo tsa hoseng? Mafelong a beke? E lokile.", "Slip-slops, libhulukoe tse khutšoanyane, letsatsi. Boraro bo bong.", "Braai ke khalendara ea boithabiso. Hlaha."]
       }
     },
-    // UV Card
-    uvCard: {
-      label: { en: "UV Index", af: "UV-Indeks", zu: "I-UV Index", xh: "I-UV Index", st: "UV Index" },
-      low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
-      moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
-      high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
-      veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" },
-      extreme: { en: "Extreme", af: "Uiters", zu: "Kakhulukazi", xh: "Kakhulu", st: "Ho Fetisisa" },
-      sunscreen: { en: "☀️ Sunscreen recommended", af: "☀️ Sonskerm aanbeveel", zu: "☀️ Ikhrimu yelanga iyacelwa", xh: "☀️ Ikhrimu yelanga icetyiswa", st: "☀️ Setofo sa letsatsi se kgothalletsoa" }
-    },
-    // Braai Index
-    braai: {
-      label: { en: "Braai Index", af: "Braai-Indeks", zu: "I-Braai Index", xh: "I-Braai Index", st: "Braai Index" },
-      perfect: { en: "🔥 Perfect braai weather!", af: "🔥 Perfekte braai-weer!", zu: "🔥 Isimo esihle se-braai!", xh: "🔥 Imozulu efanelekileyo ye-braai!", st: "🔥 Leholimo le lokileng la braai!" },
-      great: { en: "🥩 Great conditions", af: "🥩 Fantastiese toestande", zu: "🥩 Izimo ezinhle kakhulu", xh: "🥩 Iimeko ezintle kakhulu", st: "🥩 Maemo a matle haholo" },
-      decent: { en: "👍 Decent — light the coals", af: "👍 Redelik — steek die kole aan", zu: "👍 Kulungile — basa amalahle", xh: "👍 Kulungile — layita amalahle", st: "👍 Ho lokile — hotela mashala" },
-      risky: { en: "🌧️ Risky — keep an eye on the sky", af: "🌧️ Riskant — hou die lug dop", zu: "🌧️ Kuyingozi — qapha isibhakabhaka", xh: "🌧️ Yingozi — jonga isibhakabhaka", st: "🌧️ Kotsi — sheba leholimong" },
-      nope: { en: "🚫 Not today, boet", af: "🚫 Nie vandag nie, boet", zu: "🚫 Hayi namhlanje, mfowethu", xh: "🚫 Hayi namhlanje, mfondini", st: "🚫 Eseng kajeno, motswalle" }
-    },
     // Cape Doctor wind alert
     capeDr: {
       lines: {
@@ -491,7 +470,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
-    if (extremeLabelEl) extremeLabelEl.textContent = t('sidebar', 'todaysHero');
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
     const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
@@ -911,88 +889,6 @@ document.addEventListener("DOMContentLoaded", () => {
       hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [],
       sourceConditions: meta.sourceConditions || [] // FIX-001: per-source condition votes
     };
-  }
-
-  // ========== UV INDEX CARD ==========
-  function renderUvCard(norm) {
-    const card = $('#uvCard');
-    if (!card) return;
-    const uv = norm.uv;
-    // Hide at night or when UV data unavailable
-    if (!norm.isDay || !isNum(uv)) { card.classList.add('hidden'); return; }
-    card.classList.remove('hidden');
-    const labelEl = $('#uvCardLabel'), sevEl = $('#uvSeverity'), ssEl = $('#uvSunscreen');
-    if (labelEl) safeText(labelEl, t('uvCard', 'label'));
-    let sevText, sevClass;
-    if (uv <= 2) { sevText = t('uvCard', 'low'); sevClass = 'uv-low'; }
-    else if (uv <= 5) { sevText = t('uvCard', 'moderate'); sevClass = 'uv-moderate'; }
-    else if (uv <= 7) { sevText = t('uvCard', 'high'); sevClass = 'uv-high'; }
-    else if (uv <= 10) { sevText = t('uvCard', 'veryHigh'); sevClass = 'uv-veryhigh'; }
-    else { sevText = t('uvCard', 'extreme'); sevClass = 'uv-extreme'; }
-    if (sevEl) {
-      safeText(sevEl, `${round0(uv)} — ${sevText}`);
-      sevEl.className = 'uv-severity ' + sevClass;
-    }
-    if (ssEl) safeText(ssEl, uv >= 6 ? t('uvCard', 'sunscreen') : '');
-  }
-
-  // ========== BRAAI INDEX ==========
-  function calculateBraaiIndex(norm) {
-    // Composite score 0-100:  Rain (40%), Temp (30%), Wind (20%), Cloud (10%)
-    let rainScore = 100;
-    if (isNum(norm.rainPct)) {
-      if (norm.rainPct >= 70) rainScore = 0;
-      else if (norm.rainPct >= 50) rainScore = 20;
-      else if (norm.rainPct >= 30) rainScore = 55;
-      else if (norm.rainPct >= 15) rainScore = 80;
-      else rainScore = 100;
-    }
-    let tempScore = 50;
-    const tc = norm.nowTemp;
-    if (isNum(tc)) {
-      // Sweet spot 22-28°C = 100, slopes down outside
-      if (tc >= 22 && tc <= 28) tempScore = 100;
-      else if (tc >= 18 && tc < 22) tempScore = 70 + (tc - 18) * 7.5;
-      else if (tc > 28 && tc <= 34) tempScore = 100 - (tc - 28) * 8;
-      else if (tc >= 14 && tc < 18) tempScore = 40 + (tc - 14) * 7.5;
-      else if (tc > 34) tempScore = Math.max(0, 52 - (tc - 34) * 10);
-      else tempScore = Math.max(0, tc * 2.8);  // below 14
-    }
-    let windScore = 100;
-    const w = norm.windKph;
-    if (isNum(w)) {
-      if (w <= 15) windScore = 100;
-      else if (w <= 25) windScore = 80 - (w - 15) * 2;
-      else if (w <= 40) windScore = 60 - (w - 25) * 3;
-      else windScore = Math.max(0, 15 - (w - 40) * 1.5);
-    }
-    let cloudScore = 80;
-    if (isNum(norm.cloudPct)) {
-      cloudScore = norm.cloudPct <= 30 ? 100 : Math.max(20, 100 - (norm.cloudPct - 30) * 1.1);
-    }
-    return Math.round(rainScore * 0.4 + tempScore * 0.3 + windScore * 0.2 + cloudScore * 0.1);
-  }
-  function renderBraaiIndex(norm) {
-    const card = $('#braaiCard');
-    if (!card) return;
-    // Only show during the day
-    if (!norm.isDay) { card.classList.add('hidden'); return; }
-    const score = calculateBraaiIndex(norm);
-    card.classList.remove('hidden');
-    const labelEl = $('#braaiLabel'), scoreEl = $('#braaiScore'), verdictEl = $('#braaiVerdict');
-    if (labelEl) safeText(labelEl, t('braai', 'label'));
-    if (scoreEl) safeText(scoreEl, `${score}/100`);
-    let verdictKey;
-    if (score >= 85) verdictKey = 'perfect';
-    else if (score >= 70) verdictKey = 'great';
-    else if (score >= 50) verdictKey = 'decent';
-    else if (score >= 30) verdictKey = 'risky';
-    else verdictKey = 'nope';
-    if (verdictEl) safeText(verdictEl, t('braai', verdictKey));
-    // Colour the score based on tier
-    if (scoreEl) {
-      scoreEl.style.color = score >= 85 ? '#4caf50' : score >= 70 ? '#8bc34a' : score >= 50 ? '#fdd835' : score >= 30 ? '#ff9800' : '#f44336';
-    }
   }
 
   // ========== CAPE DOCTOR WIND ALERT ==========
