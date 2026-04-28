@@ -1,6 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&family=Montserrat:wght@400;600&display=swap');
 
+:root {
+  --focus-ring: #ffffff;
+  --focus-ring-shadow: rgba(0, 0, 0, 0.85);
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--focus-ring-shadow);
+  border-radius: 4px;
+}
 
 body, html {
   height: 100%;
@@ -2192,7 +2209,7 @@ main#home-screen.main #confidence {
   transform: scale(0.985);
 }
 .daily-row-tappable:focus-visible {
-  outline: 2px solid rgba(255,215,0,0.7);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
