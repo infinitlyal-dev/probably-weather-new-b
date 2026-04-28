@@ -13,6 +13,7 @@ const CORE_ASSETS = [
   '/index.html',
   '/assets/app.css',
   '/assets/app.js',
+  '/assets/startup-location.js',
   '/manifest.json',
 ];
 

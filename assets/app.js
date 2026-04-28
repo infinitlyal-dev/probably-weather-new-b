@@ -1,3 +1,5 @@
+import { getSharedPlaceFromSearch } from './startup-location.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
 
@@ -442,6 +444,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
   function showToast(message, duration = 3000) { if (!toast) return; toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), duration); }
+  function setSharedLocationIndicator(show) {
+    if (!locationEl) return;
+    let indicator = document.getElementById('sharedLocationIndicator');
+    if (show) {
+      if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'sharedLocationIndicator';
+        indicator.className = 'shared-location-indicator';
+        locationEl.insertAdjacentElement('afterend', indicator);
+      }
+      indicator.textContent = 'Viewing shared location';
+    } else if (indicator) {
+      indicator.remove();
+    }
+  }
 
   // ========== UPDATE UI LANGUAGE ==========
   function updateUILanguage() {
@@ -1051,6 +1068,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
     document.body.className = `weather-${displayCondition}`;
     let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
+    setSharedLocationIndicator(!!activePlace?.shared);
     if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
@@ -1510,6 +1528,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Shared links include ?lang=af so recipients see the sender's language
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get('lang');
+  const sharedPlace = getSharedPlaceFromSearch(window.location.search);
   const SUPPORTED_LANGS = ['en', 'af', 'zu', 'xh', 'st'];
   if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
     saveJSON(SETTINGS_KEYS.lang, urlLang);
@@ -1518,7 +1537,8 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
-  if (homePlace) { showScreen(screenHome); loadAndRender(homePlace); }
+  if (sharedPlace) { showScreen(screenHome); loadAndRender(sharedPlace); }
+  else if (homePlace) { showScreen(screenHome); loadAndRender(homePlace); }
   else if (savedLoc?.lat && savedLoc?.lon) {
     const sn = savedLoc.city && savedLoc.admin1 ? `${savedLoc.city}, ${savedLoc.admin1}` : (savedLoc.city || savedLoc.admin1 || 'South Africa');
     homePlace = { name: sn, lat: savedLoc.lat, lon: savedLoc.lon }; saveJSON(STORAGE.home, homePlace); showScreen(screenHome); loadAndRender(homePlace);
