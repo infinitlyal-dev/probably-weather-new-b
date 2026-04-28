@@ -443,6 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (active) btn.setAttribute('aria-current', 'page'); else btn.removeAttribute('aria-current');
     });
     document.body.classList.toggle('modal-open', which && which !== screenHome);
+    document.body.classList.toggle('home-active', which === screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
     if (shareBtn && navigator.share) shareBtn.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
@@ -1033,7 +1034,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
     // Body/CSS variant for partly-cloudy reuses the cloudy theme — no dedicated CSS yet.
     const cssVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
-    document.body.className = `weather-${cssVariant}`;
+    document.body.classList.remove('weather-cold', 'weather-heat', 'weather-storm', 'weather-rain', 'weather-wind', 'weather-fog', 'weather-clear', 'weather-cloudy');
+    document.body.classList.add(`weather-${cssVariant}`);
     let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
     setSharedLocationIndicator(!!activePlace?.shared);
     if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {

@@ -121,6 +121,10 @@ body.modal-open {
   z-index: 30;
 }
 
+body:not(.home-active) .language-picker {
+  display: none;
+}
+
 .language-btn {
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(8px);
@@ -1545,7 +1549,7 @@ select option {
 
 .footer {
   position: fixed;
-  bottom: 5px;
+  bottom: calc(var(--nav-h, 72px) + 8px);
   right: 10px;
   font-size: 0.8rem;
   opacity: 0.6;
