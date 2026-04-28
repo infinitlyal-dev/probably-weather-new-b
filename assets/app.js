@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchCancel = $('#searchCancel');
   const favoritesList = $('#favoritesList');
   const recentList = $('#recentList');
-  const manageFavorites = $('#manageFavorites');
+  const searchEditToggle = $('#searchEditToggle');
   const clearRecentsBtn = $('#clearRecents');
 
   const unitsTempSelect = $('#unitsTemp');
@@ -132,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       noSaved: { en: "No saved places yet.", af: "Nog geen gestoorde plekke nie.", zu: "Azikho izindawo ezigciniwe.", xh: "Akukho ndawo igciniweyo.", st: "Ha ho libaka tse bolokiloeng." },
       noRecent: { en: "No recent searches yet.", af: "Nog geen onlangse soektogte nie.", zu: "Azikho ukusesha kwakamuva.", xh: "Akukho kukhangela kwakutsha.", st: "Ha ho ho batla ha morao tjena." },
       clearRecents: { en: "Clear recents", af: "Verwyder onlangs", zu: "Susa okamuva", xh: "Susa okutsha", st: "Hlakola tsa morao" },
+      edit: { en: "Edit", af: "Wysig", zu: "Hlela", xh: "Hlela", st: "Fetola" },
       manage: { en: "Manage", af: "Bestuur", zu: "Phatha", xh: "Lawula", st: "Tsamaisa" },
       done: { en: "Done", af: "Klaar", zu: "Kwenziwe", xh: "Kwenziwe", st: "Ho phethiloe" }
     },
@@ -375,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ========== STATE ==========
-  let activePlace = null, homePlace = null, lastPayload = null, manageMode = false;
+  let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
   window.__PW_LAST_NORM = null;
   const pendingFavMeta = new Set();
   const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', range: 'display.range', time: 'format.time', lang: 'lang' };
@@ -480,7 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchInput) searchInput.placeholder = t('search', 'placeholder');
     if (searchCancel) searchCancel.textContent = t('search', 'cancel');
     if (clearRecentsBtn) clearRecentsBtn.textContent = t('search', 'clearRecents');
-    if (manageFavorites) manageFavorites.textContent = manageMode ? t('search', 'done') : t('search', 'manage');
+    if (searchEditToggle) searchEditToggle.textContent = searchEditMode ? t('search', 'done') : t('search', 'edit');
     const savedH = screenSearch?.querySelector('.section h3'); if (savedH) savedH.textContent = t('search', 'savedPlaces');
     const recentH = screenSearch?.querySelectorAll('.section h3')[1]; if (recentH) recentH.textContent = t('search', 'recent');
     const unitsH = screenSettings?.querySelector('.settings-section h3'); if (unitsH) unitsH.textContent = t('settings', 'units');
@@ -520,6 +521,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!languageBtn || !languageMenu) return;
     languageMenu.classList.remove('open');
     languageBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function setSearchEditMode(enabled) {
+    searchEditMode = !!enabled;
+    screenSearch?.classList.toggle('is-editing', searchEditMode);
+    if (searchEditToggle) {
+      searchEditToggle.textContent = searchEditMode ? t('search', 'done') : t('search', 'edit');
+      searchEditToggle.setAttribute('aria-pressed', String(searchEditMode));
+    }
+    renderFavorites();
+    renderRecents();
   }
 
   function applyLanguageSelection(lang) {
@@ -1361,11 +1373,23 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderRecents() {
     if (!recentList) return; const list = loadRecents();
     const logoMini = `<svg class="recent-logo" viewBox="0 0 40 40" width="18" height="18"><circle cx="20" cy="20" r="18" fill="url(#logoGrad)"/><text x="12" y="28" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="#fff">P</text><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFDD44"/><stop offset="100%" stop-color="#FFAA00"/></linearGradient></defs></svg>`;
-    recentList.innerHTML = list.map(p => `<li class="recent-item" role="button" tabindex="0" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(p.name)}</span></li>`).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
+    recentList.innerHTML = list.map(p => {
+      const rb = searchEditMode ? `<button class="remove-recent" aria-label="Remove recent" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
+      return `<li class="recent-item" role="button" tabindex="0" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(p.name)}</span>${rb}</li>`;
+    }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
     recentList.querySelectorAll('li[data-lat]').forEach(li => {
-      const activate = () => { showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); };
+      const activate = (ev) => { if (ev?.target?.closest('.remove-recent')) return; showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); };
       li.addEventListener('click', activate);
-      li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(); } });
+      li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(ev); } });
+    });
+    recentList.querySelectorAll('.remove-recent').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const list = loadRecents().filter(p => !samePlace(p, { lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }));
+        saveRecents(list);
+        renderRecents();
+        showToast(t('toasts', 'removed'));
+      });
     });
   }
   function renderFavorites() {
@@ -1373,15 +1397,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const fl = document.getElementById('favLimit'); if (fl) fl.style.display = list.length >= 5 ? 'block' : 'none';
     favoritesList.innerHTML = list.map(p => {
       const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
-      const rb = manageMode ? `<button class="remove-fav" aria-label="Remove favourite" data-lat="${p.lat}" data-lon="${p.lon}">✕</button>` : '';
-      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><button class="fav-star" aria-label="Toggle favourite" data-lat="${p.lat}" data-lon="${p.lon}">★</button><span class="fav-name" role="button" tabindex="0">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
+      const rb = searchEditMode ? `<button class="remove-fav" aria-label="Remove favourite" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
+      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><span class="fav-name" role="button" tabindex="0">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
     }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noSaved')}</li>`;
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
       const activate = () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); };
       span.addEventListener('click', activate);
       span.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(); } });
     });
-    favoritesList.querySelectorAll('.fav-star').forEach(btn => { btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); }); });
     favoritesList.querySelectorAll('.remove-fav').forEach(btn => { btn.addEventListener('click', (e) => { e.stopPropagation(); let list = loadFavorites(); list = list.filter(p => !samePlace(p, { lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) })); saveFavorites(list); renderFavorites(); showToast(t('toasts', 'removed')); }); });
     list.forEach(p => ensureFavoriteMeta(p));
   }
@@ -1529,8 +1552,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   saveCurrent?.addEventListener('click', () => { if (activePlace) addFavorite(activePlace); });
   useMyLocationBtn?.addEventListener('click', () => { getCurrentLocation(); });
-  searchCancel?.addEventListener('click', () => { showScreen(screenHome); if (searchInput) searchInput.value = ''; });
-  manageFavorites?.addEventListener('click', () => { if (loadFavorites().length === 0) { showToast(t('toasts', 'noPlaces')); return; } manageMode = !manageMode; manageFavorites.textContent = manageMode ? t('search', 'done') : t('search', 'manage'); renderFavorites(); });
+  searchCancel?.addEventListener('click', () => { setSearchEditMode(false); showScreen(screenHome); if (searchInput) searchInput.value = ''; });
+  searchEditToggle?.addEventListener('click', () => { searchEditMode = !searchEditMode; setSearchEditMode(searchEditMode); });
   clearRecentsBtn?.addEventListener('click', () => { clearRecents(); showToast(t('toasts', 'cleared')); });
 
   // ========== INIT ==========
