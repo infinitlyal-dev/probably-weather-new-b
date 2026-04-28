@@ -2250,11 +2250,6 @@ main#home-screen.main #confidence {
 .daily-row-tappable:active {
   transform: scale(0.985);
 }
-.daily-row-tappable:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-
 .day-detail-header {
   display: flex;
   align-items: center;
