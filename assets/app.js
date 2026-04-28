@@ -2,6 +2,10 @@ import { getSharedPlaceFromSearch } from './startup-location.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
+  const DEBUG = false;
+  const debugLog = (...args) => {
+    if (DEBUG) console.log(...args);
+  };
 
   // ========== DOM ELEMENTS ==========
   const locationEl = $('#location');
@@ -413,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
           lon: Math.round(data.longitude * 10) / 10
         };
       }
-    } catch (e) { console.log('IP geolocation failed:', e); }
+    } catch (e) { debugLog('IP geolocation failed:', e); }
     // Ultimate fallback - Johannesburg (most populated SA city)
     return { name: "Johannesburg, ZA", lat: -26.2, lon: 28.0 };
   }
@@ -549,8 +553,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // FIX-001: Log condition decision for debugging
     const votes = norm.sourceConditions || [];
-    console.log(`[Condition] API=${apiCondition} rain=${imminentRain}% cloud=${cloud}% wind=${effectiveWind}kph`);
-    if (votes.length) console.log('[Source votes]', votes.map(s => `${s.source}:${s.vote}(${s.desc})`).join(', '));
+    debugLog(`[Condition] API=${apiCondition} rain=${imminentRain}% cloud=${cloud}% wind=${effectiveWind}kph`);
+    if (votes.length) debugLog('[Source votes]', votes.map(s => `${s.source}:${s.vote}(${s.desc})`).join(', '));
 
     // FIX-001: Count source votes for majority check
     const rainVotes = votes.filter(v => v.vote === 'rain' || v.vote === 'storm').length;
@@ -565,18 +569,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // already aggregated source agreement; without this, a unanimous-rain payload
     // gets demoted to 'rain-possible' whenever norm.rainPct happens to land below 50.
     if (apiCondition === 'rain' && votes.length && hasMajorityRain) {
-      console.log(`[Rain consensus] API=rain with ${rainVotes} source votes → returning rain`);
+      debugLog(`[Rain consensus] API=rain with ${rainVotes} source votes → returning rain`);
       return 'rain';
     }
     if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
     // FIX-001: rain-possible requires either strong rain signal (≥30%) OR majority source agreement
     if (isNum(imminentRain) && imminentRain >= 30) {
       if (hasMajorityRain || hasMajorityCloudy || !votes.length) return 'rain-possible';
-      console.log(`[FIX-001] Skipping rain-possible: rain=${imminentRain}% but only ${rainVotes} source(s) vote rain`);
+      debugLog(`[FIX-001] Skipping rain-possible: rain=${imminentRain}% but only ${rainVotes} source(s) vote rain`);
     }
     // FIX-003: rain is coming later today (daily ≥50% but not imminent) — show the possible-showers state
     if (norm.rainLater) {
-      console.log(`[FIX-003] rainLater=true, escalating to rain-possible`);
+      debugLog(`[FIX-003] rainLater=true, escalating to rain-possible`);
       return 'rain-possible';
     }
     if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
@@ -586,14 +590,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // FIX-001: cloudy requires majority source agreement
     if (apiCondition === 'cloudy') {
       if (hasMajorityCloudy || !votes.length || isTrulyOvercast || isMostlyCloudy) return 'cloudy';
-      console.log(`[FIX-001] Skipping cloudy: only ${cloudyVotes} source(s) vote cloudy, cloud=${cloud}%`);
+      debugLog(`[FIX-001] Skipping cloudy: only ${cloudyVotes} source(s) vote cloudy, cloud=${cloud}%`);
     }
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     const sky = computeSkyCondition(norm);
     if (sky !== 'clear') return sky;
     // FIX-003: positive cloud-cover override — don't show 'clear' if the sky is actually 55%+ cloudy
     if (isMostlyCloudy) {
-      console.log(`[FIX-003] cloud ${cloud}% forces cloudy (sky was clear, apiCondition=${apiCondition})`);
+      debugLog(`[FIX-003] cloud ${cloud}% forces cloudy (sky was clear, apiCondition=${apiCondition})`);
       return 'cloudy';
     }
     return 'clear';
@@ -648,11 +652,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // better a slightly off line than the same line every refresh.
       if (filtered.length >= 3) {
         if (filtered.length < lines.length) {
-          console.log(`[Witty filter] ${condition}/${settings.lang}: ${lines.length}→${filtered.length} lines (weekend filter)`);
+          debugLog(`[Witty filter] ${condition}/${settings.lang}: ${lines.length}→${filtered.length} lines (weekend filter)`);
         }
         lines = filtered;
       } else {
-        console.log(`[Witty filter] ${condition}/${settings.lang}: filtered pool too small (${filtered.length}), using full pool`);
+        debugLog(`[Witty filter] ${condition}/${settings.lang}: filtered pool too small (${filtered.length}), using full pool`);
       }
     }
     return lines[Math.floor(Math.random() * lines.length)];
@@ -762,11 +766,11 @@ document.addEventListener("DOMContentLoaded", () => {
       else if (nowMin >= dawnEnd && nowMin < duskStart)   timeOfDay = 'day';
       else if (nowMin >= duskStart && nowMin < duskEnd)   timeOfDay = 'dusk';
       else                                                timeOfDay = 'night';
-      console.log(`[Solar TOD] now=${Math.floor(nowMin/60)}:${String(nowMin%60).padStart(2,'0')} sunrise=${Math.floor(sunriseMin/60)}:${String(sunriseMin%60).padStart(2,'0')} sunset=${Math.floor(sunsetMin/60)}:${String(sunsetMin%60).padStart(2,'0')} → ${timeOfDay}`);
+      debugLog(`[Solar TOD] now=${Math.floor(nowMin/60)}:${String(nowMin%60).padStart(2,'0')} sunrise=${Math.floor(sunriseMin/60)}:${String(sunriseMin%60).padStart(2,'0')} sunset=${Math.floor(sunsetMin/60)}:${String(sunsetMin%60).padStart(2,'0')} → ${timeOfDay}`);
     } else {
       const hour = getLocationHour(activePlace?.lon);
       timeOfDay = hour >= 5 && hour < 8 ? 'dawn' : hour >= 8 && hour < 17 ? 'day' : hour >= 17 && hour < 20 ? 'dusk' : 'night';
-      console.log(`[Solar TOD] fallback to clock hours (no sunrise/sunset in norm) → ${timeOfDay}`);
+      debugLog(`[Solar TOD] fallback to clock hours (no sunrise/sunset in norm) → ${timeOfDay}`);
     }
     return timeOfDay;
   }
@@ -832,7 +836,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const slot = ((dayOfYear - 1) % 3) + 1; // 1, 2, or 3
       imgFile = `${timeOfDay}_${slot}`;
     }
-    console.log(`[Image picker] Condition: ${condition}, Folder: ${folder}, Day of year: ${dayOfYear}, Time: ${timeOfDay}, Image: ${imgFile}.jpg`);
+    debugLog(`[Image picker] Condition: ${condition}, Folder: ${folder}, Day of year: ${dayOfYear}, Time: ${timeOfDay}, Image: ${imgFile}.jpg`);
     if (bgImg) {
       bgImg.src = `${base}/${folder}/${imgFile}.jpg`;
       bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/default.jpg`; }; }; };
@@ -883,7 +887,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const localHour = Number.isInteger(payload?.meta?.localHour) ? payload.meta.localHour : null;
     const imminentHours = localHour != null ? hourly.slice(localHour, localHour + 4) : [];
     const imminentRainMax = imminentHours.length > 0 ? Math.max(...imminentHours.map(h => h.rainChance ?? 0)) : null;
-    console.log(`[Imminent slice] localHour=${localHour} → next 4 hours rain max: ${imminentRainMax}%`);
+    debugLog(`[Imminent slice] localHour=${localHour} → next 4 hours rain max: ${imminentRainMax}%`);
     const displayRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
     const dailyRainPct = today.rainChance ?? now.rainChance ?? null;
     const rainLater = isNum(imminentRainMax) && imminentRainMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
@@ -1077,7 +1081,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // night = tomorrow's range, day = today's low/high.
     const timeOfDay = getTimeOfDay();
     const { low, high, format } = getHeroRange(norm, timeOfDay);
-    console.log(`[Hero range] timeOfDay=${timeOfDay} format=${format} low=${low} high=${high}`);
+    debugLog(`[Hero range] timeOfDay=${timeOfDay} format=${format} low=${low} high=${high}`);
     const probablyLabel = t('weather', 'probably');
     const hiStr = isNum(high) ? formatTemp(high) : '--°';
     const loStr = isNum(low) ? formatTemp(low) : '--°';
@@ -1104,10 +1108,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Use real solar bucketing so dawn/dusk don't get mislabelled as night.
     // (timeOfDay was already computed earlier for the hero range — reuse it.)
     const displayConditionForCopy = (timeOfDay === 'night' && displayCondition === 'clear') ? 'night' : displayCondition;
-    console.log('[Hero copy] timeOfDay:', timeOfDay, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
+    debugLog('[Hero copy] timeOfDay:', timeOfDay, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
     safeText(headlineEl, getWittyLine(displayConditionForCopy));
     safeText(descriptionEl, getHeadline(displayConditionForCopy));
-    console.log('[Layout] description:', descriptionEl?.textContent, 'headline:', headlineEl?.textContent);
+    debugLog('[Layout] description:', descriptionEl?.textContent, 'headline:', headlineEl?.textContent);
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
       const gust = norm.gustKph;
@@ -1196,7 +1200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       div.setAttribute('tabindex', '0');
       div.innerHTML = `<span class="d-day">${dayName}${badge ? ` <span class="day-badge">${badge}</span>` : ''}</span><span class="d-icon">${icon}</span><span class="d-high ${highTempClass}">${isNum(d.highC) ? formatTemp(d.highC) : '--°'}</span><span class="d-low ${lowTempClass}">${isNum(d.lowC) ? formatTemp(d.lowC) : '--°'}</span><span class="d-rain">${rainPct}</span>`;
       div.addEventListener('click', () => {
-        console.log(`[Day click] dayIndex=${i}`);
+        debugLog(`[Day click] dayIndex=${i}`);
         showScreen(screenDayDetail);
         renderDayDetail(window.__PW_LAST_NORM, i);
       });
@@ -1240,7 +1244,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderDayDetailSummary(content, day);
     }
 
-    console.log(`[Day detail] dayIndex=${dayIndex} hourly=${dayIndex <= 1} day=${day.conditionLabel}`);
+    debugLog(`[Day detail] dayIndex=${dayIndex} hourly=${dayIndex <= 1} day=${day.conditionLabel}`);
   }
   function renderDayDetailHourly(container, hourlySlice, startHour) {
     const header = document.createElement('div');
@@ -1476,7 +1480,7 @@ document.addEventListener("DOMContentLoaded", () => {
           loadAndRender(homePlace);
         }
       }, (err) => {
-        console.log('Geolocation error:', err.code, err.message);
+        debugLog('Geolocation error:', err.code, err.message);
         if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
           const savedName = savedGpsLoc.city && savedGpsLoc.admin1
             ? `${savedGpsLoc.city}, ${savedGpsLoc.admin1}`
@@ -1532,7 +1536,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const SUPPORTED_LANGS = ['en', 'af', 'zu', 'xh', 'st'];
   if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
     saveJSON(SETTINGS_KEYS.lang, urlLang);
-    console.log(`[FIX-4] Applied ?lang=${urlLang} from URL parameter`);
+    debugLog(`[FIX-4] Applied ?lang=${urlLang} from URL parameter`);
   }
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
   homePlace = loadJSON(STORAGE.home, null);

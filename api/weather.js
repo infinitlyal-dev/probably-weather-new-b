@@ -8,6 +8,11 @@
 // NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts
 // at the current hour (not midnight), making alignment with other sources impossible.
 
+const DEBUG = false;
+const debugLog = (...args) => {
+  if (DEBUG) console.log(...args);
+};
+
 export default async function handler(req, res) {
   try {
     const lat = parseFloat(req.query.lat);
@@ -263,7 +268,7 @@ export default async function handler(req, res) {
         const waDayPrecip = d0.totalprecip_mm ?? 0;
         let waDesc = wa.current?.condition?.text ?? 'Unknown';
         if ((waCondCode === 1000 || waCondCode === 1003) && waDayPrecip === 0) {
-          console.log(`[FIX-001] WeatherAPI code ${waCondCode} ("${waDesc}") with 0mm precip → "Clear sky"`);
+          debugLog(`[FIX-001] WeatherAPI code ${waCondCode} ("${waDesc}") with 0mm precip → "Clear sky"`);
           waDesc = 'Clear sky';
         }
 
@@ -436,7 +441,7 @@ export default async function handler(req, res) {
       const nowUtcMs = Date.now();
       const localDateStr = new Date(nowUtcMs + utcOffsetSeconds * 1000).toISOString().slice(0, 10);
       const todaySeries = alignedMetSeries.slice(0, 24).filter(Boolean);
-      console.log(`[MET Norway] Filtered ${series.length} entries → ${todaySeries.length} for local date ${localDateStr}`);
+      debugLog(`[MET Norway] Filtered ${series.length} entries → ${todaySeries.length} for local date ${localDateStr}`);
 
       const todayTemps = todaySeries.map(p => p.data?.instant?.details?.air_temperature).filter(isNum);
       const hasEnoughTodayTemps = todayTemps.length >= 12;
@@ -505,7 +510,7 @@ export default async function handler(req, res) {
     if (isNum(norms[0]?.todayHigh) && isNum(norms[1]?.todayHigh)) {
       const ecmwfSpread = Math.abs(norms[0].todayHigh - norms[1].todayHigh);
       if (ecmwfSpread <= 0.5) {
-        console.log(`[Weight adjust] OM=${norms[0].todayHigh}°C WA=${norms[1].todayHigh}°C (spread ${ecmwfSpread}°C ≤ 0.5) — halving WA weight (likely same ECMWF model)`);
+        debugLog(`[Weight adjust] OM=${norms[0].todayHigh}°C WA=${norms[1].todayHigh}°C (spread ${ecmwfSpread}°C ≤ 0.5) — halving WA weight (likely same ECMWF model)`);
         SOURCE_WEIGHTS[1] = SOURCE_WEIGHTS[1] / 2; // 0.25 → 0.125
       }
     }
@@ -522,13 +527,13 @@ export default async function handler(req, res) {
         const ecmwfAvg = ecmwfFamily.reduce((a, b) => a + b, 0) / ecmwfFamily.length;
         const metDivergence = norms[3].todayHigh - ecmwfAvg;
         if (metDivergence > 5) {
-          console.log(`[Weight adjust] MET Norway ${norms[3].todayHigh}°C is ${metDivergence.toFixed(1)}°C above ECMWF avg ${ecmwfAvg.toFixed(1)}°C — boosting MET Norway 25%→40%, reducing OM 40%→25%`);
+          debugLog(`[Weight adjust] MET Norway ${norms[3].todayHigh}°C is ${metDivergence.toFixed(1)}°C above ECMWF avg ${ecmwfAvg.toFixed(1)}°C — boosting MET Norway 25%→40%, reducing OM 40%→25%`);
           SOURCE_WEIGHTS[0] = 0.25; // Open-Meteo: 40% → 25%
           SOURCE_WEIGHTS[3] = 0.40; // MET Norway: 25% → 40%
         }
       }
     } else if (isHighveld && isNum(norms[3]?.todayHigh)) {
-      console.log(`[Weight adjust] Highveld location (lat=${lat}, lon=${lon}) — MET Norway boost disabled`);
+      debugLog(`[Weight adjust] Highveld location (lat=${lat}, lon=${lon}) — MET Norway boost disabled`);
     }
 
     // Recompute hourly weights from adjusted source weights (excl Pirate Weather)
@@ -536,7 +541,7 @@ export default async function handler(req, res) {
     const hTotal = hBase.reduce((a, b) => a + b, 0);
     HOURLY_SOURCE_WEIGHTS = hBase.map(w => Math.round(w / hTotal * 100) / 100);
 
-    console.log(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
+    debugLog(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
 
     // =========================================================================
     // AGGREGATION
@@ -643,10 +648,10 @@ export default async function handler(req, res) {
         const metRain = dailies[3]?.descs?.[i] && categorizeDesc(dailies[3].descs[i]) === 'rain';
         const trustedDailyRain = omRain || metRain;
         if (rainOrCloudyCount < 2 && !trustedDailyRain) {
-          console.log(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy, no trusted rain)`);
+          debugLog(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy, no trusted rain)`);
           dailyConditionKey = 'clear';
         } else if (rainOrCloudyCount < 2 && trustedDailyRain) {
-          console.log(`[BUG-1] Day ${i}: Keeping ${dailyConditionKey} — trusted source (OM=${omRain}, MET=${metRain}) votes rain`);
+          debugLog(`[BUG-1] Day ${i}: Keeping ${dailyConditionKey} — trusted source (OM=${omRain}, MET=${metRain}) votes rain`);
         }
       }
 
@@ -655,7 +660,7 @@ export default async function handler(req, res) {
         const sourceNames = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway'];
         const dailyFogSources = dailies.map((d, si) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog' ? sourceNames[si] : null).filter(Boolean);
         if (dailyFogSources.length < 2) {
-          console.log(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
+          debugLog(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
           dailyConditionKey = 'clear';
         }
       }
@@ -720,12 +725,12 @@ export default async function handler(req, res) {
 
     // Rec 7: Temperature debug logging — shows each source's contribution to the blend
     const tempDebug = norms.map((n, i) => n ? `${n.source}: now=${n.nowTemp}°C high=${n.todayHigh}°C low=${n.todayLow}°C (weight=${Math.round(normW[i]*100)}%)` : null).filter(Boolean);
-    console.log(`[Temp blend] ${tempDebug.join(' | ')} → blended=${medNowTemp}°C`);
+    debugLog(`[Temp blend] ${tempDebug.join(' | ')} → blended=${medNowTemp}°C`);
     const highDebug = norms.map((n, i) => n ? `${n.source}=${n.todayHigh}°C` : null).filter(Boolean);
     const blendedHigh = wAvg(norms, normW, n => n.todayHigh);
     const normLowW = resolveWeights(norms, LOW_WEIGHTS);  // V2-3: reduced MET weight for lows
     const blendedLow = wAvg(norms, normLowW, n => n.todayLow);
-    console.log(`[Daily high/low] ${highDebug.join(' | ')} → blended high=${blendedHigh}°C low=${blendedLow}°C`);
+    debugLog(`[Daily high/low] ${highDebug.join(' | ')} → blended high=${blendedHigh}°C low=${blendedLow}°C`);
     // maxWindKph includes gust data from Open-Meteo.
     // In gusty coastal conditions (Cape Town southeaster etc), gusts are the
     // real story — mean wind can be 18 km/h while gusts hit 45 km/h.
@@ -813,8 +818,8 @@ export default async function handler(req, res) {
       desc: n.desc,
       vote: categorizeDesc(n.desc),
     }));
-    console.log('[Condition voting]', JSON.stringify(sourceConditionVotes));
-    console.log(`[Condition derived] ${nowConditionKey} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
+    debugLog('[Condition voting]', JSON.stringify(sourceConditionVotes));
+    debugLog(`[Condition derived] ${nowConditionKey} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
 
     // FIX-001: Majority check — single source claiming rain/cloudy must not override clear consensus
     // Requires ≥2 sources to agree on rain/cloudy before the app declares it
@@ -827,10 +832,10 @@ export default async function handler(req, res) {
         (v.source === 'Open-Meteo' || v.source === 'MET Norway') && v.vote === 'rain'
       );
       if (rainOrCloudyVotes.length < 2 && !trustedRainVote) {
-        console.log(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes.length}/${activeNorms.length} sources vote rain/cloudy, no trusted rain vote)`);
+        debugLog(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes.length}/${activeNorms.length} sources vote rain/cloudy, no trusted rain vote)`);
         nowConditionKey = 'clear';
       } else if (rainOrCloudyVotes.length < 2 && trustedRainVote) {
-        console.log(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
+        debugLog(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
       }
     }
 
@@ -839,7 +844,7 @@ export default async function handler(req, res) {
     if (nowConditionKey === 'fog' && activeNorms.length >= 3) {
       const fogVotes = sourceConditionVotes.filter(v => v.vote === 'fog');
       if (fogVotes.length < 2) {
-        console.log(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
+        debugLog(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
         nowConditionKey = 'clear';
       }
     }
@@ -1113,7 +1118,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   //     existing tempC ≤ 10 check still works for daily decisions.
   if (isNum(tempC) && tempC <= 10) {
     if (!isNum(dailyHighC) || dailyHighC <= 14) return 'cold';
-    console.log(`[Cold gate] tempC=${tempC} but dailyHighC=${dailyHighC} > 14 → not cold`);
+    debugLog(`[Cold gate] tempC=${tempC} but dailyHighC=${dailyHighC} > 14 → not cold`);
   }
 
   // 15. Hot (not extreme, but warm)
