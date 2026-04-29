@@ -1173,6 +1173,18 @@ select option {
   pointer-events: all;
 }
 
+.toast-action {
+  margin-left: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+}
+
 #particles {
   position: fixed;
   top: 0;

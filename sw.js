@@ -3,10 +3,10 @@
    - Share button: mobile-only pill (bottom-left), Web Share API, 5-language support
 */
 
-const SW_VERSION = 'pw-v12';
-const CORE_CACHE = `${SW_VERSION}-core`;
-const IMG_CACHE = `${SW_VERSION}-img`;
-const API_CACHE = `${SW_VERSION}-api`;
+const CACHE_VERSION = 'pw-v2026-04-29-001';
+const CORE_CACHE = `${CACHE_VERSION}-core`;
+const IMG_CACHE = `${CACHE_VERSION}-img`;
+const API_CACHE = `${CACHE_VERSION}-api`;
 
 const CORE_ASSETS = [
   '/',
@@ -30,12 +30,15 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(
-      keys
-        .filter((k) => !k.startsWith(SW_VERSION))
-        .map((k) => caches.delete(k))
-    );
+    const oldCaches = keys.filter((k) => !k.startsWith(CACHE_VERSION));
+    await Promise.all(oldCaches.map((k) => caches.delete(k)));
     await self.clients.claim();
+    if (oldCaches.length) {
+      const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+      clients.forEach((client) => {
+        client.postMessage({ type: 'PW_UPDATE_AVAILABLE' });
+      });
+    }
   })());
 });
 
@@ -107,6 +110,20 @@ self.addEventListener('fetch', (event) => {
           headers: { 'Content-Type': 'application/json' },
         });
       }
+    })());
+    return;
+  }
+
+  // Dynamic OG images: STALE-WHILE-REVALIDATE
+  if (url.pathname.startsWith('/api/og')) {
+    event.respondWith((async () => {
+      const cache = await caches.open(IMG_CACHE);
+      const cached = await cache.match(req);
+      const fetchPromise = fetch(req).then((fresh) => {
+        if (fresh.ok) cache.put(req, fresh.clone()).catch(() => {});
+        return fresh;
+      }).catch(() => null);
+      return cached || (await fetchPromise) || new Response('', { status: 504 });
     })());
     return;
   }

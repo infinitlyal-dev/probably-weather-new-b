@@ -450,7 +450,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
-  function showToast(message, duration = 3000) { if (!toast) return; toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), duration); }
+  function showToast(message, duration = 3000, action = null) {
+    if (!toast) return;
+    toast.textContent = message;
+    if (action?.label && typeof action.onClick === 'function') {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'toast-action';
+      button.textContent = action.label;
+      button.addEventListener('click', action.onClick);
+      toast.append(document.createTextNode(' '), button);
+    }
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), duration);
+  }
+  function setupServiceWorkerUpdates() {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data?.type !== 'PW_UPDATE_AVAILABLE') return;
+      showToast('Update available — refresh to apply', 10000, {
+        label: 'Refresh',
+        onClick: () => window.location.reload(),
+      });
+    });
+    navigator.serviceWorker.register('/sw.js').catch((err) => debugLog('Service worker registration failed:', err));
+  }
   function setSharedLocationIndicator(show) {
     if (!locationEl) return;
     let indicator = document.getElementById('sharedLocationIndicator');
@@ -1566,6 +1590,7 @@ document.addEventListener("DOMContentLoaded", () => {
     saveJSON(SETTINGS_KEYS.lang, urlLang);
     debugLog(`[FIX-4] Applied ?lang=${urlLang} from URL parameter`);
   }
+  setupServiceWorkerUpdates();
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
