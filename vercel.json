@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/share", "destination": "/api/share" }
+  ],
   "headers": [
     {
       "source": "/assets/images/(.*)",
