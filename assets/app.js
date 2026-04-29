@@ -1483,6 +1483,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'}, ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'W' : 'E'}`;
   }
 
+  function getGeolocationErrorMessage(err) {
+    if (err?.code === 1) return "Location permission needed. Tap the location icon in your browser's address bar to enable it.";
+    if (err?.code === 2) return "Couldn't get location. Using approximate location instead.";
+    if (err?.code === 3) return "Location lookup took too long. Using approximate location instead.";
+    return "Couldn't get location. Using approximate location instead.";
+  }
+
+  function showGeolocationErrorToast(err) {
+    showToast(getGeolocationErrorMessage(err), 5000);
+  }
+
+  function loadApproximateLocation() {
+    return getIPLocation().then(place => {
+      homePlace = place;
+      saveJSON(STORAGE.home, homePlace);
+      loadAndRender(homePlace);
+    });
+  }
+
   // Shared geolocation flow, now used from Search.
   async function getCurrentLocation() {
     showScreen(screenHome);
@@ -1509,6 +1528,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, (err) => {
         debugLog('Geolocation error:', err.code, err.message);
+        showGeolocationErrorToast(err);
         if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
           const savedName = savedGpsLoc.city && savedGpsLoc.admin1
             ? `${savedGpsLoc.city}, ${savedGpsLoc.admin1}`
@@ -1516,14 +1536,9 @@ document.addEventListener("DOMContentLoaded", () => {
           homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
-          showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
         } else {
           // GPS blocked, no saved location - use IP geolocation
-          getIPLocation().then(place => {
-            homePlace = place;
-            saveJSON(STORAGE.home, homePlace);
-            loadAndRender(homePlace);
-          });
+          loadApproximateLocation();
         }
       }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
     } else {
@@ -1536,11 +1551,8 @@ document.addEventListener("DOMContentLoaded", () => {
         loadAndRender(homePlace);
         showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
       } else {
-        getIPLocation().then(place => {
-          homePlace = place;
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        });
+        showToast("Couldn't get location. Using approximate location instead.", 5000);
+        loadApproximateLocation();
       }
     }
   }
@@ -1613,21 +1625,15 @@ document.addEventListener("DOMContentLoaded", () => {
           const fn = await reverseGeocode(lat, lon);
           homePlace = { name: fn || 'South Africa', lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
         }
-      }, () => {
+      }, (err) => {
         // GPS blocked on first visit - use IP geolocation instead of hardcoded city
-        getIPLocation().then(place => {
-          homePlace = place;
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        });
+        showGeolocationErrorToast(err);
+        loadApproximateLocation();
       }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 });
     } else {
       // No geolocation support - use IP geolocation
-      getIPLocation().then(place => {
-        homePlace = place;
-        saveJSON(STORAGE.home, homePlace);
-        loadAndRender(place);
-      });
+      showToast("Couldn't get location. Using approximate location instead.", 5000);
+      loadApproximateLocation();
     }
   }
 
