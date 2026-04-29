@@ -1,4 +1,16 @@
 import { buildOgImageUrl, SHARE_ORIGIN } from '../assets/share-url.js';
+import { WEATHER_COPY } from '../assets/weather-copy.js';
+import weatherHandler from './weather.js';
+
+const STATIC_DESCRIPTION = 'South African weather, in your language.';
+const SUPPORTED_LANGS = new Set(['en', 'af', 'zu', 'xh', 'st']);
+const PROBABLY_WORD = {
+  en: 'Probably',
+  af: 'Waarskynlik',
+  zu: 'Cishe',
+  xh: 'Cishe',
+  st: 'Mohlomong',
+};
 
 const escapeAttr = (value) => String(value || '')
   .replace(/&/g, '&amp;')
@@ -8,6 +20,9 @@ const escapeAttr = (value) => String(value || '')
 
 const isValidLat = (value) => Number.isFinite(Number(value)) && Number(value) >= -90 && Number(value) <= 90;
 const isValidLon = (value) => Number.isFinite(Number(value)) && Number(value) >= -180 && Number(value) <= 180;
+const clampLang = (lang) => SUPPORTED_LANGS.has(lang) ? lang : 'en';
+const isFiniteNumber = (value) => Number.isFinite(Number(value));
+const formatTemp = (value) => `${Math.round(Number(value))}°`;
 
 function getQuery(req) {
   if (req?.query) return req.query;
@@ -15,11 +30,76 @@ function getQuery(req) {
   return Object.fromEntries(url.searchParams.entries());
 }
 
-export function buildShareMetaHtml(query = {}) {
+function pickLocalized(bank, key, lang, fallback = '') {
+  const values = bank?.[key] || bank?.clear || {};
+  return values?.[lang] || values?.en || fallback;
+}
+
+async function callWeatherHandler(lat, lon) {
+  let statusCode = 200;
+  let body;
+  const req = { query: { lat, lon } };
+  const res = {
+    status(code) {
+      statusCode = code;
+      return this;
+    },
+    setHeader() {},
+    json(payload) {
+      body = payload;
+      return this;
+    },
+    end(payload) {
+      body = payload;
+      return this;
+    },
+  };
+
+  await weatherHandler(req, res);
+
+  if (statusCode >= 400 || !body?.ok) {
+    throw new Error(`Weather fetch failed with status ${statusCode}`);
+  }
+
+  return body;
+}
+
+export function buildShareDescription(payload, lang = 'en') {
+  const safeLang = clampLang(lang);
+  const daily = payload?.daily?.[0] || {};
+  const now = payload?.now || {};
+  const location = payload?.location?.name || 'South Africa';
+  const low = daily.lowC ?? daily.minC ?? daily.tempLowC ?? now.lowC ?? now.tempC;
+  const high = daily.highC ?? daily.maxC ?? daily.tempHighC ?? now.highC ?? now.tempC;
+  const conditionKey = now.conditionKey || daily.conditionKey || 'clear';
+  const conditionText = pickLocalized(WEATHER_COPY.headlines, conditionKey, safeLang, 'Weather update.').trim();
+  const condition = conditionText.endsWith('.') ? conditionText : `${conditionText}.`;
+  const temp = isFiniteNumber(low) && isFiniteNumber(high)
+    ? `${formatTemp(low)}/${formatTemp(high)}`
+    : (isFiniteNumber(now.tempC) ? formatTemp(now.tempC) : '');
+
+  if (!temp) return STATIC_DESCRIPTION;
+
+  return `${location}: ${PROBABLY_WORD[safeLang]} ${temp}. ${condition}`;
+}
+
+async function resolveShareDescription({ lat, lon, lang, hasCoords }) {
+  if (!hasCoords) return STATIC_DESCRIPTION;
+
+  try {
+    const payload = await callWeatherHandler(lat, lon);
+    return buildShareDescription(payload, lang);
+  } catch (error) {
+    return STATIC_DESCRIPTION;
+  }
+}
+
+export async function buildShareMetaHtml(query = {}) {
   const lat = query.lat;
   const lon = query.lon;
-  const lang = query.lang || 'en';
+  const lang = clampLang(query.lang || 'en');
   const hasCoords = isValidLat(lat) && isValidLon(lon);
+  const description = await resolveShareDescription({ lat, lon, lang, hasCoords });
   const appParams = new URLSearchParams();
   if (hasCoords) {
     appParams.set('lat', String(lat));
@@ -36,9 +116,9 @@ export function buildShareMetaHtml(query = {}) {
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Probably Weather</title>
-  <meta name="description" content="South African weather, in your language."/>
+  <meta name="description" content="${escapeAttr(description)}"/>
   <meta property="og:title" content="Probably Weather"/>
-  <meta property="og:description" content="South African weather, in your language."/>
+  <meta property="og:description" content="${escapeAttr(description)}"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="${escapeAttr(shareUrl)}"/>
   <meta property="og:image" content="${escapeAttr(ogImage)}"/>
@@ -46,7 +126,7 @@ export function buildShareMetaHtml(query = {}) {
   <meta property="og:image:height" content="630"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Probably Weather"/>
-  <meta name="twitter:description" content="South African weather, in your language."/>
+  <meta name="twitter:description" content="${escapeAttr(description)}"/>
   <meta name="twitter:image" content="${escapeAttr(ogImage)}"/>
   <meta http-equiv="refresh" content="0; url=${escapeAttr(appUrl)}"/>
   <script>window.location.replace(${JSON.stringify(appUrl)});</script>
@@ -57,8 +137,8 @@ export function buildShareMetaHtml(query = {}) {
 </html>`;
 }
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=300');
-  res.status(200).end(buildShareMetaHtml(getQuery(req)));
+  res.status(200).end(await buildShareMetaHtml(getQuery(req)));
 }

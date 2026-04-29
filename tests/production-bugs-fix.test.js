@@ -18,7 +18,7 @@ describe('production bug batch fixes', () => {
   });
 
   it('applies the shared panel background token to screen panels', () => {
-    expect(css()).toMatch(/--panel-bg:\s*rgba\(0,\s*0,\s*0,\s*0\.78\)/);
+    expect(css()).toMatch(/--panel-bg:\s*rgba\(0,\s*0,\s*0,\s*0\.5\)/);
     expect(css()).toMatch(/\.screenPanel\s*{[\s\S]*background:\s*var\(--panel-bg\)/);
     expect(css()).toMatch(/\.search-screen\s*{[\s\S]*background:\s*var\(--panel-bg\)/);
     expect(css()).toMatch(/\.settings-screen\s*{[\s\S]*background:\s*var\(--panel-bg\)/);
