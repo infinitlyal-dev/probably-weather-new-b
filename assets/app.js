@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const unitsTempSelect = $('#unitsTemp');
   const unitsWindSelect = $('#unitsWind');
-  const probRangeToggle = $('#probRange');
   const timeFormatSelect = $('#timeFormat');
   const languageSelect = $('#languageSelect');
 
@@ -142,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
       temperature: { en: "Temperature", af: "Temperatuur", zu: "Izinga lokushisa", xh: "Ubushushu", st: "Mocheso" },
       windSpeed: { en: "Wind speed", af: "Windspoed", zu: "Isivinini somoya", xh: "Isantya somoya", st: "Lebelo la moea" },
       display: { en: "Display", af: "Vertoon", zu: "Ukubonisa", xh: "Ukubonisa", st: "Bonts'a" },
-      showRange: { en: "Show temperature range", af: "Wys temperatuurreeks", zu: "Bonisa ibanga lokushisa", xh: "Bonisa uluhlu lobushushu", st: "Bonts'a sekhahla sa mocheso" },
       timeFormat: { en: "Time format", af: "Tydformaat", zu: "Ifomethi yesikhathi", xh: "Ifomathi yexesha", st: "Sebopeho sa nako" },
       language: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
       wittyIn: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
@@ -379,8 +377,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
   window.__PW_LAST_NORM = null;
   const pendingFavMeta = new Set();
-  const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', range: 'display.range', time: 'format.time', lang: 'lang' };
-  const DEFAULT_SETTINGS = { temp: 'C', wind: 'kmh', range: false, time: '24', lang: 'en' };
+  const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', time: 'format.time', lang: 'lang' };
+  const DEFAULT_SETTINGS = { temp: 'C', wind: 'kmh', time: '24', lang: 'en' };
   let settings = { ...DEFAULT_SETTINGS };
 
   // ========== UTILITIES ==========
@@ -418,9 +416,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const storedLang = loadJSON(SETTINGS_KEYS.lang, null);
     const initialLang = resolveInitialLanguage({ stored: storedLang, navigatorLanguage: navigator.language, navigatorLanguages: navigator.languages });
     if (!storedLang) saveJSON(SETTINGS_KEYS.lang, initialLang);
-    settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), range: loadJSON(SETTINGS_KEYS.range, DEFAULT_SETTINGS.range), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: initialLang };
+    settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: initialLang };
   }
-  function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.range, settings.range); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
+  function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
   const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : settings.wind === 'ms' ? `${round0(kph / 3.6)} m/s` : `${round0(kph)} km/h`;
@@ -450,7 +448,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
-  function showToast(message, duration = 3000) { if (!toast) return; toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), duration); }
+  function showToast(message, duration = 3000, action = null) {
+    if (!toast) return;
+    toast.textContent = message;
+    if (action?.label && typeof action.onClick === 'function') {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'toast-action';
+      button.textContent = action.label;
+      button.addEventListener('click', action.onClick);
+      toast.append(document.createTextNode(' '), button);
+    }
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), duration);
+  }
+  function setupServiceWorkerUpdates() {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data?.type !== 'PW_UPDATE_AVAILABLE') return;
+      showToast('Update available — refresh to apply', 10000, {
+        label: 'Refresh',
+        onClick: () => window.location.reload(),
+      });
+    });
+    navigator.serviceWorker.register('/sw.js').catch((err) => debugLog('Service worker registration failed:', err));
+  }
   function setSharedLocationIndicator(show) {
     if (!locationEl) return;
     let indicator = document.getElementById('sharedLocationIndicator');
@@ -488,7 +510,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tempLabel = unitsTempSelect?.closest('.settings-option')?.querySelector('label'); if (tempLabel) tempLabel.textContent = t('settings', 'temperature');
     const windLabel = unitsWindSelect?.closest('.settings-option')?.querySelector('label'); if (windLabel) windLabel.textContent = t('settings', 'windSpeed');
     const displayH = screenSettings?.querySelectorAll('.settings-section h3')[1]; if (displayH) displayH.textContent = t('settings', 'display');
-    const rangeLabel = probRangeToggle?.closest('.settings-option')?.querySelector('label'); if (rangeLabel) rangeLabel.textContent = t('settings', 'showRange');
     const timeLabel = timeFormatSelect?.closest('.settings-option')?.querySelector('label'); if (timeLabel) timeLabel.textContent = t('settings', 'timeFormat');
     const langH = screenSettings?.querySelectorAll('.settings-section h3')[2]; if (langH) langH.textContent = '';
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
@@ -1072,14 +1093,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
-      // Show current temp below the range when toggle is on
-      if (settings.range && isNum(currentTemp)) {
-        hiLoEl.textContent = `${t('weather', 'feelsLike') || 'Now'} ${formatTemp(currentTemp)}`;
-        hiLoEl.style.display = '';
-      } else {
-        hiLoEl.textContent = '';
-        hiLoEl.style.display = 'none';
-      }
+      hiLoEl.textContent = '';
+      hiLoEl.style.display = 'none';
     }
     // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight.
     // Use real solar bucketing so dawn/dusk don't get mislabelled as night.
@@ -1305,7 +1320,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function applySettings() {
     if (unitsTempSelect) unitsTempSelect.value = settings.temp;
     if (unitsWindSelect) unitsWindSelect.value = settings.wind;
-    if (probRangeToggle) probRangeToggle.checked = !!settings.range;
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
     if (languageSelect) languageSelect.value = settings.lang;
     updateUILanguage();
@@ -1459,6 +1473,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'}, ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'W' : 'E'}`;
   }
 
+  function getGeolocationErrorMessage(err) {
+    if (err?.code === 1) return "Location permission needed. Tap the location icon in your browser's address bar to enable it.";
+    if (err?.code === 2) return "Couldn't get location. Using approximate location instead.";
+    if (err?.code === 3) return "Location lookup took too long. Using approximate location instead.";
+    return "Couldn't get location. Using approximate location instead.";
+  }
+
+  function showGeolocationErrorToast(err) {
+    showToast(getGeolocationErrorMessage(err), 5000);
+  }
+
+  function loadApproximateLocation() {
+    return getIPLocation().then(place => {
+      homePlace = place;
+      saveJSON(STORAGE.home, homePlace);
+      loadAndRender(homePlace);
+    });
+  }
+
   // Shared geolocation flow, now used from Search.
   async function getCurrentLocation() {
     showScreen(screenHome);
@@ -1485,6 +1518,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }, (err) => {
         debugLog('Geolocation error:', err.code, err.message);
+        showGeolocationErrorToast(err);
         if (savedGpsLoc?.lat && savedGpsLoc?.lon) {
           const savedName = savedGpsLoc.city && savedGpsLoc.admin1
             ? `${savedGpsLoc.city}, ${savedGpsLoc.admin1}`
@@ -1492,14 +1526,9 @@ document.addEventListener("DOMContentLoaded", () => {
           homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
-          showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
         } else {
           // GPS blocked, no saved location - use IP geolocation
-          getIPLocation().then(place => {
-            homePlace = place;
-            saveJSON(STORAGE.home, homePlace);
-            loadAndRender(homePlace);
-          });
+          loadApproximateLocation();
         }
       }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
     } else {
@@ -1512,18 +1541,14 @@ document.addEventListener("DOMContentLoaded", () => {
         loadAndRender(homePlace);
         showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
       } else {
-        getIPLocation().then(place => {
-          homePlace = place;
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        });
+        showToast("Couldn't get location. Using approximate location instead.", 5000);
+        loadApproximateLocation();
       }
     }
   }
   
   unitsTempSelect?.addEventListener('change', () => { settings.temp = unitsTempSelect.value; saveSettings(); applySettings(); });
   unitsWindSelect?.addEventListener('change', () => { settings.wind = unitsWindSelect.value; saveSettings(); applySettings(); });
-  probRangeToggle?.addEventListener('change', () => { settings.range = !!probRangeToggle.checked; saveSettings(); applySettings(); });
   timeFormatSelect?.addEventListener('change', () => { settings.time = timeFormatSelect.value; saveSettings(); applySettings(); });
   languageSelect?.addEventListener('change', () => { applyLanguageSelection(languageSelect.value); });
   languageBtn?.addEventListener('click', (ev) => {
@@ -1566,6 +1591,7 @@ document.addEventListener("DOMContentLoaded", () => {
     saveJSON(SETTINGS_KEYS.lang, urlLang);
     debugLog(`[FIX-4] Applied ?lang=${urlLang} from URL parameter`);
   }
+  setupServiceWorkerUpdates();
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
@@ -1588,21 +1614,15 @@ document.addEventListener("DOMContentLoaded", () => {
           const fn = await reverseGeocode(lat, lon);
           homePlace = { name: fn || 'South Africa', lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
         }
-      }, () => {
+      }, (err) => {
         // GPS blocked on first visit - use IP geolocation instead of hardcoded city
-        getIPLocation().then(place => {
-          homePlace = place;
-          saveJSON(STORAGE.home, homePlace);
-          loadAndRender(homePlace);
-        });
+        showGeolocationErrorToast(err);
+        loadApproximateLocation();
       }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 });
     } else {
       // No geolocation support - use IP geolocation
-      getIPLocation().then(place => {
-        homePlace = place;
-        saveJSON(STORAGE.home, homePlace);
-        loadAndRender(place);
-      });
+      showToast("Couldn't get location. Using approximate location instead.", 5000);
+      loadApproximateLocation();
     }
   }
 

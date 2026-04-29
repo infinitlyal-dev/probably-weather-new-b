@@ -2,6 +2,7 @@
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --focus-ring: #ffffff;
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
+  --panel-bg: rgba(0, 0, 0, 0.78);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -446,21 +447,13 @@ body:not(.home-active) .language-picker {
   overflow-y: auto;
   padding: 1rem;
   border-radius: 16px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   gap: 16px;
   z-index: 20;
-}
-
-.glass-panel {
-  background: rgba(255,255,255,0.12);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  backdrop-filter: blur(16px) saturate(120%);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-  border: 1px solid rgba(255,255,255,0.18);
-  font-family: var(--font-system);
-  color: var(--panel-text, #222);
-  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -811,8 +804,7 @@ body.ui-dark .daily-card {
 }
 
 .search-screen {
-  background: rgba(0,0,0,0.82);
-  backdrop-filter: blur(12px);
+  background: var(--panel-bg);
   color: inherit;
   max-width: 500px;
   margin: 0 auto;
@@ -993,8 +985,7 @@ body.ui-dark .daily-card {
 
 /* SETTINGS */
 .settings-screen {
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(12px);
+  background: var(--panel-bg);
   color: inherit;
   max-height: 80vh;
   overflow-y: auto;
@@ -1171,6 +1162,18 @@ select option {
 .toast.show {
   opacity: 1;
   pointer-events: all;
+}
+
+.toast-action {
+  margin-left: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
 }
 
 #particles {
@@ -1634,9 +1637,9 @@ main#home-screen.main::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: clamp(1rem, 4vh, 2.5rem) 0 calc(var(--home-bottom-safe) + env(safe-area-inset-bottom) + 0.5rem) 0;
-  border-radius: 24px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  inset: -10vh -20vw;
+  border-radius: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 35%, transparent 60%);
   pointer-events: none;
 }
 
@@ -1773,7 +1776,6 @@ main#home-screen.main #confidence {
   }
   
   /* Use solid backgrounds instead of blur for better performance */
-  .glass-panel,
   .card,
   .hourly-row,
   .daily-row,
