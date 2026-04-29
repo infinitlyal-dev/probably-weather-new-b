@@ -121,6 +121,10 @@ body.modal-open {
   z-index: 30;
 }
 
+body:not(.home-active) .language-picker {
+  display: none;
+}
+
 .language-btn {
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(8px);
@@ -807,7 +811,7 @@ body.ui-dark .daily-card {
 }
 
 .search-screen {
-  background: rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.82);
   backdrop-filter: blur(12px);
   color: inherit;
   max-width: 500px;
@@ -818,13 +822,13 @@ body.ui-dark .daily-card {
 .search-screen #searchInput {
   margin: 0;
   padding: 0.75rem 1rem;
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: inherit;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.32);
+  color: #fff;
 }
 
 .search-screen #searchInput::placeholder {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.76);
 }
 
 .use-location-btn {
@@ -872,8 +876,8 @@ body.ui-dark .daily-card {
 }
 
 .search-screen .section h3 {
-  color: inherit;
-  opacity: 0.85;
+  color: #fff;
+  opacity: 0.92;
   margin-bottom: 0.5rem;
   font-size: 0.85rem;
   letter-spacing: 0.5px;
@@ -881,9 +885,9 @@ body.ui-dark .daily-card {
 }
 
 .search-screen .section ul li {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.12);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.22);
   border-radius: 12px;
   color: inherit;
 }
@@ -932,15 +936,17 @@ body.ui-dark .daily-card {
   color: #111;
 }
 
+.search-panel-actions,
 .search-screen .search-actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
   margin-top: 8px;
 }
 
 .search-screen .manage-btn,
-.search-screen .clear-recents {
+.search-screen .clear-recents,
+.search-edit-toggle {
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.25);
@@ -954,8 +960,35 @@ body.ui-dark .daily-card {
 }
 
 .search-screen .manage-btn:hover,
-.search-screen .clear-recents:hover {
+.search-screen .clear-recents:hover,
+.search-edit-toggle:hover {
   background: rgba(255,255,255,0.25);
+}
+
+.search-maintenance {
+  display: none;
+}
+
+.search-screen.is-editing .search-maintenance {
+  display: flex;
+}
+
+.remove-fav,
+.remove-recent {
+  margin-left: auto;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.remove-fav:hover,
+.remove-recent:hover {
+  background: rgba(255,255,255,0.28);
 }
 
 /* SETTINGS */
@@ -1545,7 +1578,7 @@ select option {
 
 .footer {
   position: fixed;
-  bottom: 5px;
+  bottom: calc(var(--nav-h, 72px) + 8px);
   right: 10px;
   font-size: 0.8rem;
   opacity: 0.6;
@@ -1931,6 +1964,10 @@ main#home-screen.main #confidence {
     z-index: 100;
     padding: 8px 4px;
     padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .footer {
+    display: none;
   }
 
   /* Screen panels - FULL WIDTH on mobile */
