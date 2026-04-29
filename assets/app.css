@@ -1637,9 +1637,9 @@ main#home-screen.main::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: clamp(1rem, 4vh, 2.5rem) 0 calc(var(--home-bottom-safe) + env(safe-area-inset-bottom) + 0.5rem) 0;
+  inset: -10vh -20vw;
   border-radius: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 50%, transparent 80%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 35%, transparent 60%);
   pointer-events: none;
 }
 
