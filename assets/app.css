@@ -1638,8 +1638,8 @@ main#home-screen.main::before {
   position: absolute;
   z-index: -1;
   inset: clamp(1rem, 4vh, 2.5rem) 0 calc(var(--home-bottom-safe) + env(safe-area-inset-bottom) + 0.5rem) 0;
-  border-radius: 24px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+  border-radius: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 50%, transparent 80%);
   pointer-events: none;
 }
 
