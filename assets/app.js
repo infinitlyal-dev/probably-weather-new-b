@@ -2,6 +2,7 @@ import { getSharedPlaceFromSearch } from './startup-location.js';
 import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './language-preferences.js';
 import { WEATHER_COPY } from './weather-copy.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
+import { buildShareUrl } from './share-url.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
@@ -330,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle('modal-open', which && which !== screenHome);
     document.body.classList.toggle('home-active', which === screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
-    if (shareBtn && navigator.share) shareBtn.style.display = which === screenHome ? '' : 'none';
+    if (shareBtn) shareBtn.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
@@ -893,25 +894,30 @@ document.addEventListener("DOMContentLoaded", () => {
   // Share button (mobile only — Web Share API)
   const shareBtn = $('#shareBtn');
   if (shareBtn) {
-    if (!navigator.share) {
-      shareBtn.style.display = 'none';
-    } else {
-      shareBtn.addEventListener('click', async () => {
-        const norm = window.__PW_LAST_NORM;
-        const hi = norm?.todayHigh, low = norm?.todayLow;
-        const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
-        const loStr = isNum(low) ? formatTemp(low) : '--°';
-        const loc = locationEl?.textContent || '';
-        const displayCond = window.__PW_LAST_DISPLAY || 'clear';
-        const emoji = conditionEmoji(displayCond);
-        const heroLabel = getHeroLabel(displayCond);
-        const text = `Waarskynlik ${loStr}/${hiStr} in ${loc} — ${heroLabel} ${emoji}`;
-        const lat = activePlace?.lat, lon = activePlace?.lon;
-        const lang = settings.lang || 'en';
-        const url = (lat && lon) ? `https://probablyweather.co.za?lat=${lat}&lon=${lon}&lang=${lang}` : 'https://probablyweather.co.za';
-        try { await navigator.share({ title: 'Probably Weather', text, url }); } catch {}
-      });
-    }
+    shareBtn.addEventListener('click', async () => {
+      const norm = window.__PW_LAST_NORM;
+      const hi = norm?.todayHigh, low = norm?.todayLow;
+      const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
+      const loStr = isNum(low) ? formatTemp(low) : '--°';
+      const loc = locationEl?.textContent || '';
+      const displayCond = window.__PW_LAST_DISPLAY || 'clear';
+      const emoji = conditionEmoji(displayCond);
+      const heroLabel = getHeroLabel(displayCond);
+      const text = `Waarskynlik ${loStr}/${hiStr} in ${loc} — ${heroLabel} ${emoji}`;
+      const lat = activePlace?.lat, lon = activePlace?.lon;
+      const lang = settings.lang || 'en';
+      const url = buildShareUrl({ lat, lon, lang });
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: 'Probably Weather', text, url });
+        } else if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(url);
+          showToast('Share link copied');
+        } else {
+          window.prompt('Copy this share link', url);
+        }
+      } catch {}
+    });
   }
 
   // ========== RENDER ==========
