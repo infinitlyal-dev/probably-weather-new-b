@@ -16,7 +16,7 @@ describe('Impeccable accessibility hardening', () => {
 
   it('adds solid byline text and a localized home text scrim for photo contrast', () => {
     expect(css()).toMatch(/\.weather-byline\s*{[^}]*color:\s*#fff;/s);
-    expect(css()).toMatch(/main#home-screen\.main::before\s*{[^}]*linear-gradient\(to right,\s*rgba\(0,\s*0,\s*0,\s*0\.55\)/s);
+    expect(css()).toMatch(/main#home-screen\.main::before\s*{[^}]*radial-gradient\(ellipse at 30% 50%,\s*rgba\(0,\s*0,\s*0,\s*0\.55\)/s);
   });
 
   it('keeps the home scrim out of text flow and avoids mid-word headline wrapping', () => {
