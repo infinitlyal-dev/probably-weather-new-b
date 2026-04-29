@@ -155,7 +155,7 @@ describe('partly-cloudy: server emits the new key', () => {
 
 describe('partly-cloudy: home and hourly stay consistent', () => {
   it('headline string exists for all 5 languages', () => {
-    const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+    const src = readFileSync(new URL('../assets/weather-copy.js', import.meta.url), 'utf8');
     // Locate the headlines block and confirm partly-cloudy entry is present
     const match = src.match(/headlines:\s*\{[\s\S]*?\n\s*\},/m);
     expect(match).toBeTruthy();
@@ -168,7 +168,7 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
   });
 
   it('hero label exists for all 5 languages', () => {
-    const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+    const src = readFileSync(new URL('../assets/weather-copy.js', import.meta.url), 'utf8');
     const match = src.match(/heroLabels:\s*\{[\s\S]*?\n\s*\},/m);
     expect(match).toBeTruthy();
     const block = match[0];
@@ -200,7 +200,7 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
     //   1. A 'partly-cloudy' bucket exists with a non-empty per-language array.
     //   2. The content differs from T.witty.clear (otherwise it would still
     //      "fall through" silently to clear-equivalent lines).
-    const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+    const src = readFileSync(new URL('../assets/weather-copy.js', import.meta.url), 'utf8');
 
     // Match each bucket: <key>: { en: [...], af: [...], zu: [...], xh: [...], st: [...] },
     const bucketRe = (key) => new RegExp(
