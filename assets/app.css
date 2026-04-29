@@ -2,7 +2,7 @@
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --focus-ring: #ffffff;
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
-  --panel-bg: rgba(0, 0, 0, 0.78);
+  --panel-bg: rgba(0, 0, 0, 0.5);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -448,8 +448,8 @@ body:not(.home-active) .language-picker {
   padding: 1rem;
   border-radius: 16px;
   background: var(--panel-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1989,6 +1989,8 @@ main#home-screen.main #confidence {
     right: 8px !important;
     max-height: 70vh;
     overflow-y: auto;
+    backdrop-filter: blur(16px) saturate(120%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
   }
 
   /* Hourly/Week - VERTICAL table layout */
