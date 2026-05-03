@@ -20,12 +20,12 @@
 <body>
 <div class="container">
   <h1>Privacy Policy</h1>
-  <p class="date">Last updated: 11 February 2025</p>
+  <p class="date">Last updated: 3 May 2026</p>
 
   <p>Probably Weather is a free weather application. Your privacy matters to us, and we've kept things as simple as possible.</p>
 
   <h2>What we collect</h2>
-  <p>When you use Probably Weather, we request your device's location (latitude and longitude) to fetch weather data for where you are. This location is sent directly to our weather data providers (Open-Meteo, WeatherAPI.com, and MET Norway) to retrieve forecasts. We do not store, log, or track your location on our servers.</p>
+  <p>When you use Probably Weather, we request your device's location (latitude and longitude) to fetch weather data for where you are. If GPS is unavailable or blocked, the app may use an approximate IP-based location so it can still show a forecast. We do not store, log, or track your location on our servers.</p>
 
   <h2>Saved locations</h2>
   <p>If you save locations (like "Home" or "Work"), these are stored locally on your device only — in your browser's local storage or on the Android app's local data. We never see or access your saved places.</p>
@@ -35,8 +35,15 @@
 
   <h2>Third-party weather providers</h2>
   <p>Your location coordinates are sent to the following services to retrieve weather data:</p>
-  <p>Open-Meteo (open-meteo.com) · WeatherAPI.com (weatherapi.com) · MET Norway (api.met.no)</p>
+  <p><strong>Open-Meteo</strong> (open-meteo.com) receives approximate latitude and longitude to return forecast data. It is necessary because it is one of our forecast sources. Privacy/terms: <a href="https://open-meteo.com/en/terms">open-meteo.com/en/terms</a></p>
+  <p><strong>WeatherAPI.com</strong> (weatherapi.com) receives approximate latitude and longitude to return forecast and condition-code data. It is necessary because it is one of our forecast sources. Privacy policy: <a href="https://www.weatherapi.com/privacy.aspx">weatherapi.com/privacy.aspx</a></p>
+  <p><strong>MET Norway</strong> (Norwegian Meteorological Institute, api.met.no) receives approximate latitude and longitude to return forecast data. It is necessary because it is one of our forecast sources. Privacy policy: <a href="https://www.met.no/en/About-us/privacy-policy-for-the-norwegian-meteorological-institute">met.no privacy policy</a></p>
+  <p><strong>Pirate Weather</strong> (api.pirateweather.net, API access via Apiable) receives approximate latitude and longitude to return forecast data. It is necessary because it is one of our forecast sources. API information: <a href="https://docs.pirateweather.net/en/latest/API/">docs.pirateweather.net</a> · Apiable privacy policy: <a href="https://www.apiable.io/terms/privacy-policy">apiable.io/terms/privacy-policy</a></p>
   <p>Each of these services has their own privacy policies. We encourage you to review them if you have concerns.</p>
+
+  <h2>Location lookup services</h2>
+  <p><strong>Nominatim / OpenStreetMap</strong> (operated by the OpenStreetMap Foundation) receives your typed search query when you search for a place, and receives approximate latitude and longitude when the app converts coordinates into a readable place name. This is necessary for location search and place-name lookup. Privacy policy: <a href="https://osmfoundation.org/wiki/Privacy_Policy">osmfoundation.org/wiki/Privacy_Policy</a> · Nominatim usage policy: <a href="https://operations.osmfoundation.org/policies/nominatim/">operations.osmfoundation.org/policies/nominatim</a></p>
+  <p><strong>ipapi.co</strong> (Kloudend, Inc.) may receive your IP address when GPS is unavailable or denied, so the app can estimate a nearby city and still show a useful forecast. This fallback is only used when the app cannot get a device GPS location. Privacy policy: <a href="https://ipapi.co/privacy/">ipapi.co/privacy</a></p>
 
   <h2>Data stored on your device</h2>
   <p>The app stores your preferences (temperature units, wind units, language) and saved locations in local storage on your device. You can clear this data at any time through your browser or Android app settings.</p>
