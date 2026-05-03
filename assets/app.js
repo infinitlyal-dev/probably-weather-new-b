@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.innerHTML = `
       <div class="ds-headline">
         <span class="ds-icon">${icon}</span>
-        <span class="ds-condition">${cond}</span>
+        <span class="ds-condition">${escapeHtml(cond)}</span>
       </div>
       <div class="ds-temps">
         <span class="ds-low ${loClass}">${lo}</span>
