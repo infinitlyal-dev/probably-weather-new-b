@@ -261,6 +261,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== STATE ==========
   let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
+  let activeLocationSeq = 0;
+  let activeWeatherController = null;
   window.__PW_LAST_NORM = null;
   const pendingFavMeta = new Set();
   const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', time: 'format.time', lang: 'lang' };
@@ -1267,9 +1269,14 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFavorites(); renderRecents();
   }
   async function loadAndRender(place) {
+    const thisSeq = ++activeLocationSeq;
+    activeWeatherController?.abort();
+    const requestController = new AbortController();
+    activeWeatherController = requestController;
     activePlace = place; renderLoading(place.name || 'My Location');
     // 1. Try showing cached data instantly
     const cached = await getCachedWeather(place);
+    if (thisSeq !== activeLocationSeq) return;
     if (cached) {
       try {
         lastPayload = cached.payload;
@@ -1281,7 +1288,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // 2. Fetch fresh data from network
     try {
-      const payload = await fetchProbable(place);
+      const payload = await fetchProbable(place, { signal: requestController.signal });
+      if (thisSeq !== activeLocationSeq) return;
       lastPayload = payload;
       const norm = normalizePayload(payload);
       window.__PW_LAST_NORM = norm;
@@ -1289,9 +1297,12 @@ document.addEventListener("DOMContentLoaded", () => {
       hideCacheAge();
       setCachedWeather(place, payload);
     } catch (e) {
+      if (thisSeq !== activeLocationSeq || (e?.name === 'AbortError' && !e.weatherTimeout)) return;
       console.error("Load failed:", e);
       if (!cached) renderError(t('misc', 'couldntFetch'));
       // If cached data was shown, user still sees stale but usable data
+    } finally {
+      if (activeWeatherController === requestController) activeWeatherController = null;
     }
   }
 
