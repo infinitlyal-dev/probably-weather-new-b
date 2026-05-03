@@ -935,7 +935,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const displayCond = window.__PW_LAST_DISPLAY || 'clear';
       const emoji = conditionEmoji(displayCond);
       const heroLabel = getHeroLabel(displayCond);
-      const text = `Waarskynlik ${loStr}/${hiStr} in ${loc} — ${heroLabel} ${emoji}`;
+      const text = `${t('weather', 'probably')} ${loStr}/${hiStr} ${t('misc', 'shareIn')} ${loc} — ${heroLabel} ${emoji}`;
       const lat = activePlace?.lat, lon = activePlace?.lon;
       const lang = settings.lang || 'en';
       const url = buildShareUrl({ lat, lon, lang });
