@@ -238,6 +238,8 @@ document.addEventListener("DOMContentLoaded", () => {
       alreadySaved: { en: "Already saved!", af: "Reeds gestoor!", zu: "Seyigciniwe!", xh: "Sele igciniwe!", st: "E se e bolokiloe!" },
       cleared: { en: "Cleared", af: "Skoongemaak", zu: "Kususiwe", xh: "Kucociwe", st: "E hlakiloe" },
       noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "Akukho ndawo", st: "Ha ho libaka" },
+      permissionDeniedBrowser: { en: "Location permission needed. Tap the location icon in your browser's address bar to enable it.", af: "Liggingtoestemming nodig. Tik die ligging-ikoon in jou blaaier se adresbalk om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Thepha isithonjana sendawo kubha yekheli lesiphequluli ukuze uyivule.", xh: "Kufuneka imvume yendawo. Cofa i-ayikhoni yendawo kwibar yedilesi yebhrawuza ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Tlanya letshwao la sebaka bareng ea aterese ea sebatli ho e bulela." },
+      permissionDeniedStandalone: { en: "Location permission needed. Open device Settings → Apps → Probably Weather → Permissions → Location to enable.", af: "Liggingtoestemming nodig. Maak toestel-instellings → Apps → Probably Weather → Toestemmings → Ligging oop om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Vula Izilungiselelo zedivayisi → Apps → Probably Weather → Permissions → Location ukuze uyivule.", xh: "Kufuneka imvume yendawo. Vula iiSetingi zesixhobo → Apps → Probably Weather → Permissions → Location ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Bula Settings ea sesebediswa → Apps → Probably Weather → Permissions → Location ho e bulela." },
       locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditsoe" },
       locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo", st: "Ha e khone ho fumana sebaka" },
       usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Isebenzisa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" },
@@ -1437,8 +1439,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'}, ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'W' : 'E'}`;
   }
 
+  function isStandaloneMode() {
+    return window.matchMedia?.('(display-mode: standalone)')?.matches || navigator.standalone === true;
+  }
+
   function getGeolocationErrorMessage(err) {
-    if (err?.code === 1) return "Location permission needed. Tap the location icon in your browser's address bar to enable it.";
+    if (err?.code === 1) return isStandaloneMode() ? t('toasts', 'permissionDeniedStandalone') : t('toasts', 'permissionDeniedBrowser');
     if (err?.code === 2) return "Couldn't get location. Using approximate location instead.";
     if (err?.code === 3) return "Location lookup took too long. Using approximate location instead.";
     return "Couldn't get location. Using approximate location instead.";
