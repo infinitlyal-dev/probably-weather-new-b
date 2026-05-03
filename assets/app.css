@@ -2059,6 +2059,12 @@ main#home-screen.main #confidence {
   }
 }
 
+@media (max-width: 379px) {
+  .tagline {
+    display: none;
+  }
+}
+
 /* ========== MOBILE SIDEBAR — BOTTOM-RIGHT ANCHOR (≤768px) ========== */
 @media (max-width: 768px) {
   .sidebar {
