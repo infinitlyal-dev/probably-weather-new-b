@@ -240,7 +240,8 @@ document.addEventListener("DOMContentLoaded", () => {
       noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "Akukho ndawo", st: "Ha ho libaka" },
       locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditsoe" },
       locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo", st: "Ha e khone ho fumana sebaka" },
-      usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Isebenzisa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" }
+      usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Isebenzisa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" },
+      weatherTimeout: { en: "Weather lookup taking too long. Try again.", af: "Weervoorspelling neem te lank. Probeer weer.", zu: "Ukubuka isimo sezulu kuthatha isikhathi eside. Zama futhi.", xh: "Ukubuka isimo sezulu kuthatha ixesha elide. Zama kwakhona.", st: "Ho sheba boemo ba leholimo ho nka nako e telele. Leka hape." }
     },
     // Misc
     misc: {
@@ -848,7 +849,42 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch { return null; }
   }
   async function resolvePlaceName(place) { if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown'; if (!isPlaceholderName(place.name)) return place.name; return await reverseGeocode(place.lat, place.lon) || place.name || 'Unknown'; }
-  async function fetchProbable(place) { const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`; const resp = await fetch(url); if (!resp.ok) throw new Error('API error'); return await resp.json(); }
+  function combineAbortSignals(signals) {
+    const active = signals.filter(Boolean);
+    if (!active.length) return undefined;
+    if (active.length === 1) return active[0];
+    if (AbortSignal.any) return AbortSignal.any(active);
+    const controller = new AbortController();
+    const abort = () => controller.abort();
+    active.forEach(signal => {
+      if (signal.aborted) abort();
+      else signal.addEventListener('abort', abort, { once: true });
+    });
+    return controller.signal;
+  }
+  async function fetchProbable(place, options = {}) {
+    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const controller = new AbortController();
+    let didTimeout = false;
+    const timeoutId = setTimeout(() => {
+      didTimeout = true;
+      controller.abort();
+    }, 10000);
+    const signal = combineAbortSignals([controller.signal, options.signal]);
+    try {
+      const resp = await fetch(url, { signal });
+      if (!resp.ok) throw new Error('API error');
+      return await resp.json();
+    } catch (err) {
+      if (didTimeout && err?.name === 'AbortError') {
+        err.weatherTimeout = true;
+        showToast(t('toasts', 'weatherTimeout') || 'Weather lookup taking too long. Try again.');
+      }
+      throw err;
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
   function normalizePayload(payload) {
     const now = payload.now || {}, today = payload.daily?.[0] || {}, meta = payload.meta || {}, sources = meta.sources || [];
     const hourly = payload.hourly || [];
