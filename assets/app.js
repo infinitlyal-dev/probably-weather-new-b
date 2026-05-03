@@ -248,6 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
       loading: { en: "Loading…", af: "Laai…", zu: "Iyalayisha…", xh: "Iyalayisha…", st: "E a jarolla…" },
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
       couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana imozulu.", st: "Ha e khone ho fumana boemo ba leholimo." },
+      save: { en: "Save", af: "Stoor", zu: "Londoloza", xh: "Gcina", st: "Boloka" },
+      savePlace: { en: "Save this place", af: "Stoor hierdie plek", zu: "Londoloza le ndawo", xh: "Gcina le ndawo", st: "Boloka sebaka sena" },
       share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
       shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" }
     }
@@ -417,6 +419,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
     const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
+    if (saveCurrent) {
+      saveCurrent.textContent = `☆ ${t('misc', 'save')}`;
+      saveCurrent.title = t('misc', 'savePlace');
+      saveCurrent.setAttribute('aria-label', t('misc', 'savePlace'));
+    }
   }
 
   function updateLanguageOptions() {
