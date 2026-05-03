@@ -238,15 +238,20 @@ document.addEventListener("DOMContentLoaded", () => {
       alreadySaved: { en: "Already saved!", af: "Reeds gestoor!", zu: "Seyigciniwe!", xh: "Sele igciniwe!", st: "E se e bolokiloe!" },
       cleared: { en: "Cleared", af: "Skoongemaak", zu: "Kususiwe", xh: "Kucociwe", st: "E hlakiloe" },
       noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "Akukho ndawo", st: "Ha ho libaka" },
+      permissionDeniedBrowser: { en: "Location permission needed. Tap the location icon in your browser's address bar to enable it.", af: "Liggingtoestemming nodig. Tik die ligging-ikoon in jou blaaier se adresbalk om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Thepha isithonjana sendawo kubha yekheli lesiphequluli ukuze uyivule.", xh: "Kufuneka imvume yendawo. Cofa i-ayikhoni yendawo kwibar yedilesi yebhrawuza ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Tlanya letshwao la sebaka bareng ea aterese ea sebatli ho e bulela." },
+      permissionDeniedStandalone: { en: "Location permission needed. Open device Settings → Apps → Probably Weather → Permissions → Location to enable.", af: "Liggingtoestemming nodig. Maak toestel-instellings → Apps → Probably Weather → Toestemmings → Ligging oop om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Vula Izilungiselelo zedivayisi → Apps → Probably Weather → Permissions → Location ukuze uyivule.", xh: "Kufuneka imvume yendawo. Vula iiSetingi zesixhobo → Apps → Probably Weather → Permissions → Location ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Bula Settings ea sesebediswa → Apps → Probably Weather → Permissions → Location ho e bulela." },
       locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditsoe" },
       locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo", st: "Ha e khone ho fumana sebaka" },
-      usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Isebenzisa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" }
+      usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Isebenzisa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" },
+      weatherTimeout: { en: "Weather lookup taking too long. Try again.", af: "Weervoorspelling neem te lank. Probeer weer.", zu: "Ukubuka isimo sezulu kuthatha isikhathi eside. Zama futhi.", xh: "Ukubuka isimo sezulu kuthatha ixesha elide. Zama kwakhona.", st: "Ho sheba boemo ba leholimo ho nka nako e telele. Leka hape." }
     },
     // Misc
     misc: {
       loading: { en: "Loading…", af: "Laai…", zu: "Iyalayisha…", xh: "Iyalayisha…", st: "E a jarolla…" },
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
       couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana imozulu.", st: "Ha e khone ho fumana boemo ba leholimo." },
+      save: { en: "Save", af: "Stoor", zu: "Londoloza", xh: "Gcina", st: "Boloka" },
+      savePlace: { en: "Save this place", af: "Stoor hierdie plek", zu: "Londoloza le ndawo", xh: "Gcina le ndawo", st: "Boloka sebaka sena" },
       share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
       shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" }
     }
@@ -260,6 +265,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== STATE ==========
   let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
+  let activeLocationSeq = 0;
+  let activeWeatherController = null;
   window.__PW_LAST_NORM = null;
   const pendingFavMeta = new Set();
   const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', time: 'format.time', lang: 'lang' };
@@ -414,6 +421,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
     const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
+    if (saveCurrent) {
+      saveCurrent.textContent = `☆ ${t('misc', 'save')}`;
+      saveCurrent.title = t('misc', 'savePlace');
+      saveCurrent.setAttribute('aria-label', t('misc', 'savePlace'));
+    }
   }
 
   function updateLanguageOptions() {
@@ -848,7 +860,42 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch { return null; }
   }
   async function resolvePlaceName(place) { if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown'; if (!isPlaceholderName(place.name)) return place.name; return await reverseGeocode(place.lat, place.lon) || place.name || 'Unknown'; }
-  async function fetchProbable(place) { const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`; const resp = await fetch(url); if (!resp.ok) throw new Error('API error'); return await resp.json(); }
+  function combineAbortSignals(signals) {
+    const active = signals.filter(Boolean);
+    if (!active.length) return undefined;
+    if (active.length === 1) return active[0];
+    if (AbortSignal.any) return AbortSignal.any(active);
+    const controller = new AbortController();
+    const abort = () => controller.abort();
+    active.forEach(signal => {
+      if (signal.aborted) abort();
+      else signal.addEventListener('abort', abort, { once: true });
+    });
+    return controller.signal;
+  }
+  async function fetchProbable(place, options = {}) {
+    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const controller = new AbortController();
+    let didTimeout = false;
+    const timeoutId = setTimeout(() => {
+      didTimeout = true;
+      controller.abort();
+    }, 10000);
+    const signal = combineAbortSignals([controller.signal, options.signal]);
+    try {
+      const resp = await fetch(url, { signal });
+      if (!resp.ok) throw new Error('API error');
+      return await resp.json();
+    } catch (err) {
+      if (didTimeout && err?.name === 'AbortError') {
+        err.weatherTimeout = true;
+        showToast(t('toasts', 'weatherTimeout') || 'Weather lookup taking too long. Try again.');
+      }
+      throw err;
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
   function normalizePayload(payload) {
     const now = payload.now || {}, today = payload.daily?.[0] || {}, meta = payload.meta || {}, sources = meta.sources || [];
     const hourly = payload.hourly || [];
@@ -1231,9 +1278,14 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFavorites(); renderRecents();
   }
   async function loadAndRender(place) {
+    const thisSeq = ++activeLocationSeq;
+    activeWeatherController?.abort();
+    const requestController = new AbortController();
+    activeWeatherController = requestController;
     activePlace = place; renderLoading(place.name || 'My Location');
     // 1. Try showing cached data instantly
     const cached = await getCachedWeather(place);
+    if (thisSeq !== activeLocationSeq) return;
     if (cached) {
       try {
         lastPayload = cached.payload;
@@ -1245,7 +1297,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // 2. Fetch fresh data from network
     try {
-      const payload = await fetchProbable(place);
+      const payload = await fetchProbable(place, { signal: requestController.signal });
+      if (thisSeq !== activeLocationSeq) return;
       lastPayload = payload;
       const norm = normalizePayload(payload);
       window.__PW_LAST_NORM = norm;
@@ -1253,9 +1306,12 @@ document.addEventListener("DOMContentLoaded", () => {
       hideCacheAge();
       setCachedWeather(place, payload);
     } catch (e) {
+      if (thisSeq !== activeLocationSeq || (e?.name === 'AbortError' && !e.weatherTimeout)) return;
       console.error("Load failed:", e);
       if (!cached) renderError(t('misc', 'couldntFetch'));
       // If cached data was shown, user still sees stale but usable data
+    } finally {
+      if (activeWeatherController === requestController) activeWeatherController = null;
     }
   }
 
@@ -1383,8 +1439,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'}, ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'W' : 'E'}`;
   }
 
+  function isStandaloneMode() {
+    return window.matchMedia?.('(display-mode: standalone)')?.matches || navigator.standalone === true;
+  }
+
   function getGeolocationErrorMessage(err) {
-    if (err?.code === 1) return "Location permission needed. Tap the location icon in your browser's address bar to enable it.";
+    if (err?.code === 1) return isStandaloneMode() ? t('toasts', 'permissionDeniedStandalone') : t('toasts', 'permissionDeniedBrowser');
     if (err?.code === 2) return "Couldn't get location. Using approximate location instead.";
     if (err?.code === 3) return "Location lookup took too long. Using approximate location instead.";
     return "Couldn't get location. Using approximate location instead.";
