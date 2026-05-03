@@ -272,6 +272,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const round0 = (n) => isNum(n) ? Math.round(n) : null;
   const loadJSON = (key, fb) => { try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fb; } catch { return fb; } };
   const saveJSON = (key, val) => { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} };
+  function normalizeStoredPlaces(places) {
+    if (!Array.isArray(places)) return [];
+    return places
+      .filter(p => p && typeof p === 'object')
+      .map(p => ({
+        ...p,
+        lat: Number(p.lat),
+        lon: Number(p.lon),
+      }))
+      .filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lon));
+  }
   const samePlace = (a, b) => a && b && Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) && Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
   const favoriteKey = (p) => `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
   const isPlaceholderName = (name) => { const v = String(name || '').trim(); return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v); };
@@ -1249,8 +1260,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== FAVORITES & RECENTS ==========
-  const loadFavorites = () => loadJSON(STORAGE.favorites, []);
-  const loadRecents = () => loadJSON(STORAGE.recents, []);
+  const loadFavorites = () => normalizeStoredPlaces(loadJSON(STORAGE.favorites, []));
+  const loadRecents = () => normalizeStoredPlaces(loadJSON(STORAGE.recents, []));
   const saveFavorites = (list) => saveJSON(STORAGE.favorites, list);
   const saveRecents = (list) => saveJSON(STORAGE.recents, list);
   function clearRecents() { localStorage.removeItem(STORAGE.recents); renderRecents(); }
@@ -1323,7 +1334,15 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const resp = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=8&addressdetails=1`, { headers: { 'User-Agent': 'howzit@probablyweather.co.za' }, signal: activeSearchController.signal });
       if (thisSeq !== searchSeq || !resp.ok) return;
-      searchResults = (await resp.json()).map(r => ({ name: r.display_name?.split(',')[0] || 'Unknown', fullName: r.display_name, lat: r.lat, lon: r.lon, address: r.address }));
+      searchResults = (await resp.json())
+        .map(r => ({
+          name: r.display_name?.split(',')[0] || 'Unknown',
+          fullName: r.display_name,
+          lat: Number(r.lat),
+          lon: Number(r.lon),
+          address: r.address,
+        }))
+        .filter(r => Number.isFinite(r.lat) && Number.isFinite(r.lon));
       renderSearchResults(searchResults);
     } catch (e) { if (e.name !== 'AbortError') console.error('Search error:', e); }
   }
