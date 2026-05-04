@@ -3,6 +3,7 @@ import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './lan
 import { WEATHER_COPY } from './weather-copy.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { buildShareUrl } from './share-url.js';
+import { initInstallExperience } from './install.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
@@ -265,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== STATE ==========
   let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
+  let installExperience = null;
   let activeLocationSeq = 0;
   let activeWeatherController = null;
   window.__PW_LAST_NORM = null;
@@ -470,6 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
     applySettings();
     closeLanguageMenu();
     languageBtn?.focus();
+    installExperience?.refreshLanguage?.();
   }
 
   function moveLanguageFocus(delta) {
@@ -1563,6 +1566,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setupServiceWorkerUpdates();
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
+  installExperience = initInstallExperience({ getLanguage: () => settings.lang || 'en' });
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
   if (sharedPlace) { showScreen(screenHome); loadAndRender(sharedPlace); }

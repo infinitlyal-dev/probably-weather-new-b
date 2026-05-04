@@ -3,7 +3,7 @@
    - Share button: mobile-only pill (bottom-left), Web Share API, 5-language support
 */
 
-const CACHE_VERSION = 'pw-v2026-04-29-001';
+const CACHE_VERSION = 'pw-v2026-05-04-001';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const API_CACHE = `${CACHE_VERSION}-api`;
@@ -13,6 +13,7 @@ const CORE_ASSETS = [
   '/index.html',
   '/assets/app.css',
   '/assets/app.js',
+  '/assets/install.js',
   '/assets/startup-location.js',
   '/manifest.json',
 ];
@@ -52,6 +53,7 @@ function isCoreAsset(url) {
     url.pathname === '/index.html' ||
     url.pathname === '/assets/app.css' ||
     url.pathname === '/assets/app.js' ||
+    url.pathname === '/assets/install.js' ||
     url.pathname === '/assets/startup-location.js' ||
     url.pathname === '/manifest.json'
   );

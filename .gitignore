@@ -7,3 +7,5 @@ tools/portrait-extender/.venv/
 tools/portrait-extender/__pycache__/
 __pycache__/
 node_modules/
+.playwright-cli/
+_acccheck/
