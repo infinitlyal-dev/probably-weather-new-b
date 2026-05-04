@@ -2498,3 +2498,246 @@ main#home-screen.main #confidence {
   }
   #particles { display: none !important; }
 }
+
+/* ========== PWA INSTALL EXPERIENCE ========== */
+
+/* Hide install UI completely when launched as installed PWA */
+@media all and (display-mode: standalone) {
+  .install-banner,
+  .install-prompt,
+  .install-modal,
+  .install-footer-link {
+    display: none !important;
+  }
+}
+body.standalone-mode .install-banner,
+body.standalone-mode .install-prompt,
+body.standalone-mode .install-modal,
+body.standalone-mode .install-footer-link {
+  display: none !important;
+}
+
+/* Smart install banner — sits above the bottom nav */
+.install-banner {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom, 0px) + 12px);
+  z-index: 180;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  color: #FFF8F0;
+  transform: translateY(120%);
+  opacity: 0;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.24s ease;
+  pointer-events: auto;
+}
+.install-banner.hidden {
+  display: none;
+}
+.install-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.install-banner-icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #FFDD44, #FFAA00);
+  box-shadow: 0 2px 6px rgba(255,170,0,0.35);
+}
+.install-banner-text {
+  flex: 1 1 auto;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.25;
+  min-width: 0;
+}
+.install-banner-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.install-banner-install {
+  background: linear-gradient(135deg, #FFDD44, #FFAA00);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.install-banner-install:hover { box-shadow: 0 4px 14px rgba(255,170,0,0.45); }
+.install-banner-install:active { transform: scale(0.97); }
+.install-banner-dismiss {
+  background: none;
+  color: rgba(255,255,255,0.75);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+}
+.install-banner-dismiss:hover { color: #fff; background: rgba(255,255,255,0.06); }
+
+@media (max-width: 420px) {
+  .install-banner-text { font-size: 0.84rem; }
+  .install-banner-install { padding: 8px 12px; font-size: 0.85rem; }
+  .install-banner-icon { width: 32px; height: 32px; }
+}
+
+/* Install modal (shared by iOS-Safari steps + iOS-Chrome handoff) */
+.install-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.install-modal.hidden { display: none; }
+.install-modal.visible { opacity: 1; }
+.install-modal-card {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(20,20,32,0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  padding: 20px 20px calc(24px + env(safe-area-inset-bottom));
+  color: #FFF8F0;
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.install-modal.visible .install-modal-card { transform: translateY(0); }
+@media (min-width: 600px) {
+  .install-modal { align-items: center; }
+  .install-modal-card { border-radius: 18px; }
+}
+.install-modal-card h3 {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.install-step-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 16px;
+  padding: 0;
+}
+.install-step-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.install-step-num {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFDD44, #FFAA00);
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.install-step-icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  color: #FFD466;
+}
+.install-modal-close {
+  background: linear-gradient(135deg, #FFDD44, #FFAA00);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-block-size: 44px;
+}
+.install-modal-secondary {
+  background: rgba(255,255,255,0.08);
+  color: #FFF8F0;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-block-size: 44px;
+  margin-top: 8px;
+}
+.install-modal-body {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  opacity: 0.9;
+}
+.install-modal-url {
+  display: block;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  margin-top: 8px;
+  word-break: break-all;
+  user-select: all;
+}
+
+/* Footer "Install" link (re-trigger after dismissal) */
+.install-footer-link {
+  display: inline-block;
+  color: #F5A623;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 4px 0;
+  min-block-size: 32px;
+}
+
