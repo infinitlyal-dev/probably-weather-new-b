@@ -281,7 +281,64 @@
   <div id="heatOverlay"></div>
   <div id="offlineIndicator" class="offline-indicator" role="status" aria-live="polite"></div>
 
-  <footer class="footer">Data from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather</footer>
+  <footer class="footer">Data from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather · <button type="button" id="installFooterLink" class="install-footer-link" data-install-i18n="footerInstallLink">Install Probably Weather</button></footer>
+
+  <!-- PWA install banner: hidden until engagement gate fires -->
+  <div id="installBanner" class="install-banner hidden" role="region" aria-label="Install Probably Weather">
+    <span class="install-banner-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1a1a2e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3v13"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/>
+      </svg>
+    </span>
+    <span id="installBannerTitle" class="install-banner-text">Add Probably Weather to your home screen</span>
+    <span class="install-banner-actions">
+      <button type="button" id="installBannerDismiss" class="install-banner-dismiss">Not now</button>
+      <button type="button" id="installBannerInstall" class="install-banner-install">Install</button>
+    </span>
+  </div>
+
+  <!-- iOS Safari install modal: 3-step illustrated guide -->
+  <div id="iosInstallModal" class="install-modal hidden" role="dialog" aria-modal="true" aria-labelledby="iosInstallTitle" tabindex="-1">
+    <div class="install-modal-card">
+      <h3 id="iosInstallTitle" data-install-i18n="iosTitle">Install in 3 steps</h3>
+      <ol class="install-step-list">
+        <li>
+          <span class="install-step-num">1</span>
+          <span class="install-step-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
+          </span>
+          <span data-install-i18n="iosStep1">Tap the Share button at the bottom of Safari</span>
+        </li>
+        <li>
+          <span class="install-step-num">2</span>
+          <span class="install-step-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </span>
+          <span data-install-i18n="iosStep2">Scroll down and tap "Add to Home Screen"</span>
+        </li>
+        <li>
+          <span class="install-step-num">3</span>
+          <span class="install-step-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </span>
+          <span data-install-i18n="iosStep3">Tap "Add" to confirm — done.</span>
+        </li>
+      </ol>
+      <button type="button" id="iosInstallClose" class="install-modal-close" data-install-i18n="iosGotIt">Got it</button>
+    </div>
+  </div>
+
+  <!-- iOS Chrome handoff modal: open-in-Safari fallback -->
+  <div id="iosChromeModal" class="install-modal hidden" role="dialog" aria-modal="true" aria-labelledby="iosChromeTitle" tabindex="-1">
+    <div class="install-modal-card">
+      <h3 id="iosChromeTitle" data-install-i18n="iosChromeTitle">Open in Safari to install</h3>
+      <p class="install-modal-body" data-install-i18n="iosChromeBody">Chrome on iPhone can't install apps. Tap below to open this site in Safari, then follow the steps to install.</p>
+      <button type="button" id="iosChromeOpenSafari" class="install-modal-close" data-install-i18n="iosChromeOpenSafari">Open in Safari</button>
+      <p class="install-modal-body" style="margin-top:12px;" data-install-i18n="iosChromeFallback">If nothing happens, copy this link and paste it into Safari:</p>
+      <code class="install-modal-url" id="installModalUrl"></code>
+      <button type="button" id="iosChromeClose" class="install-modal-secondary" data-install-i18n="iosGotIt">Got it</button>
+    </div>
+  </div>
 
   <script type="module" src="assets/app.js"></script>
 </body>
