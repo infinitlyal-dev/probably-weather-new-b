@@ -99,7 +99,7 @@ body.modal-open {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: max(2rem, env(safe-area-inset-top)) max(2rem, env(safe-area-inset-right)) 2rem max(2rem, env(safe-area-inset-left));
   position: relative;
   z-index: 10;
 }
@@ -417,9 +417,9 @@ body:not(.home-active) .language-picker {
   justify-content: center;
   gap: 2rem;
   background: rgba(0,0,0,0.5);
-  padding: 0.75rem 1rem;
+  padding: 0.75rem max(1rem, env(safe-area-inset-left)) calc(0.75rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-right));
   z-index: 100;
-  height: var(--nav-h, 72px);
+  height: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom));
   max-width: none;
 }
 
@@ -1805,8 +1805,7 @@ main#home-screen.main #confidence {
   .container {
     min-height: 100vh;
     min-height: 100dvh;
-    padding: 0.5rem;
-    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    padding: max(0.5rem, env(safe-area-inset-top)) max(0.5rem, env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
     box-sizing: border-box;
   }
 
