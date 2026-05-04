@@ -44,32 +44,40 @@ export const INSTALL_T = {
     xh: 'Faka kumanyathelo ama-3',
     st: 'Kenya ka mehato e 3',
   },
+  // iOS native UI labels (Share, Add to Home Screen, Add) stay English in
+  // every language because that's what iOS Safari literally renders on screen
+  // — iOS doesn't ship Zulu/Xhosa/Sotho UI, and most SA users run their phones
+  // in English even when they prefer other languages in apps. Backticks mark
+  // segments that the renderer wraps in <code class="install-os-label"> so
+  // the user can pattern-match them visually against the actual iOS UI.
   iosStep1: {
-    en: 'Tap the Share button at the bottom of Safari',
-    af: 'Tik die Deel-knoppie onder in Safari',
-    zu: 'Thepha inkinobho yoKwabelana phansi kwe-Safari',
-    xh: 'Cofa iqhosha lokwabelana ezantsi kwe-Safari',
-    st: 'Tobetsa konopo ea Arolelana tlase ho Safari',
+    en: 'Tap the `Share` button',
+    af: 'Tik op die `Share`-knoppie',
+    zu: 'Thepha inkinobho ye-`Share`',
+    xh: 'Cofa iqhosha le-`Share`',
+    st: 'Tobetsa konopo ya `Share`',
   },
   iosStep2: {
-    en: 'Scroll down and tap "Add to Home Screen"',
-    af: 'Rol af en tik "Voeg by Tuisskerm"',
-    zu: 'Sukela phansi bese uthepha "Engeza Esikrinini Sasekhaya"',
-    xh: 'Rolisela ezantsi ucofe "Yongeza kwiHomeScreen"',
-    st: 'Theosetsa fatshe u tobetse "Eketsa Skrineng sa Lehae"',
+    en: 'Scroll down, tap `Add to Home Screen`',
+    af: 'Scroll af, tik op `Add to Home Screen`',
+    zu: 'Skrolela phansi, thepha `Add to Home Screen`',
+    xh: 'Skrolela ezantsi, cofa `Add to Home Screen`',
+    st: 'Theosa fatshe, tobetsa `Add to Home Screen`',
   },
   iosStep3: {
-    en: 'Tap "Add" to confirm — done.',
-    af: 'Tik "Voeg by" om te bevestig — klaar.',
-    zu: 'Thepha "Engeza" ukuqinisekisa — kwenziwe.',
-    xh: 'Cofa "Yongeza" ukuqinisekisa — kwenziwe.',
-    st: 'Tobetsa "Eketsa" ho netefatsa — ho phethiloe.',
+    en: 'Tap `Add` to confirm',
+    af: 'Tik op `Add` om te bevestig',
+    zu: 'Thepha u-`Add` ukuqinisekisa',
+    xh: 'Cofa u-`Add` ukuqinisekisa',
+    st: 'Tobetsa `Add` ho netefatsa',
   },
+  // The modal's own "Got it" close button IS PW UI, not native iOS UI, so
+  // it gets fully translated.
   iosGotIt: {
     en: 'Got it',
-    af: 'Reg, dankie',
-    zu: 'Ngiyabonga',
-    xh: 'Ndiyabulela',
+    af: 'Reg so',
+    zu: 'Ngiyezwa',
+    xh: 'Ndiyaziva',
     st: 'Ke utlwile',
   },
   iosChromeTitle: {
@@ -267,6 +275,29 @@ function svgFromMarkup(markup) {
   return doc.documentElement;
 }
 
+/**
+ * Render a translation string into a live DOM node, splitting on backticks.
+ * Even-indexed segments are plain text; odd-indexed segments are wrapped in
+ * <code class="install-os-label"> to visually flag native-iOS button labels
+ * that stay in English while the surrounding instruction is translated.
+ * Strings without backticks render as a single text node — equivalent to
+ * setting textContent.
+ */
+function setI18nText(node, str) {
+  while (node.firstChild) node.removeChild(node.firstChild);
+  const parts = String(str).split('`');
+  parts.forEach((part, i) => {
+    if (i % 2 === 1) {
+      const code = document.createElement('code');
+      code.className = 'install-os-label';
+      code.textContent = part;
+      node.appendChild(code);
+    } else if (part) {
+      node.appendChild(document.createTextNode(part));
+    }
+  });
+}
+
 /* -------- DOM init (only runs in browser) -------- */
 
 export function initInstallExperience({ getLanguage = () => 'en', showToast = null } = {}) {
@@ -352,14 +383,14 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
 
   function applyTranslations() {
     const lang = getLanguage() || 'en';
-    if (titleEl) titleEl.textContent = tInstall('bannerTitle', lang);
-    if (installBtn) installBtn.textContent = tInstall('bannerInstall', lang);
-    if (dismissBtn) dismissBtn.textContent = tInstall('bannerDismiss', lang);
+    if (titleEl) setI18nText(titleEl, tInstall('bannerTitle', lang));
+    if (installBtn) setI18nText(installBtn, tInstall('bannerInstall', lang));
+    if (dismissBtn) setI18nText(dismissBtn, tInstall('bannerDismiss', lang));
     document.querySelectorAll('[data-install-i18n]').forEach((node) => {
       const key = node.getAttribute('data-install-i18n');
-      node.textContent = tInstall(key, lang);
+      setI18nText(node, tInstall(key, lang));
     });
-    if (footerLink) footerLink.textContent = tInstall('footerInstallLink', lang);
+    if (footerLink) setI18nText(footerLink, tInstall('footerInstallLink', lang));
   }
 
   function showBanner() {
@@ -526,7 +557,9 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
       const iconWrap = el('span', { class: 'install-step-icon' });
       iconWrap.appendChild(svgFromMarkup(iconMarkup));
       li.appendChild(iconWrap);
-      li.appendChild(el('span', { text }));
+      const textSpan = el('span');
+      setI18nText(textSpan, text);
+      li.appendChild(textSpan);
       return li;
     };
     list.appendChild(stepRow(1, iosShareIcon(), tx('iosStep1')));

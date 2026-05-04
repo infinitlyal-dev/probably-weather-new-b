@@ -2683,6 +2683,19 @@ body.standalone-mode .install-footer-link {
   background: rgba(255,255,255,0.08);
   color: #FFD466;
 }
+/* Inline pill for native-iOS UI labels (Share, Add to Home Screen, Add) that
+   stay in English while the surrounding instruction is translated. */
+.install-os-label {
+  display: inline-block;
+  background: rgba(255, 221, 68, 0.14);
+  color: #FFE08A;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.92em;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
 .install-modal-close {
   background: linear-gradient(135deg, #FFDD44, #FFAA00);
   color: #1a1a2e;
