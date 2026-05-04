@@ -11,6 +11,8 @@ const API_CACHE = `${CACHE_VERSION}-api`;
 const CORE_ASSETS = [
   '/',
   '/index.html',
+  '/install',
+  '/install.html',
   '/assets/app.css',
   '/assets/app.js',
   '/assets/install.js',
@@ -51,6 +53,8 @@ function isCoreAsset(url) {
   return (
     url.pathname === '/' ||
     url.pathname === '/index.html' ||
+    url.pathname === '/install' ||
+    url.pathname === '/install.html' ||
     url.pathname === '/assets/app.css' ||
     url.pathname === '/assets/app.js' ||
     url.pathname === '/assets/install.js' ||

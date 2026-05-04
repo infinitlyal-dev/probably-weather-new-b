@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#1a1a2e"/>
+  <meta name="color-scheme" content="dark"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>Install Probably Weather</title>
+  <meta name="description" content="Add Probably Weather to your home screen. Real SA forecasts, no app store needed."/>
+  <meta property="og:title" content="Install Probably Weather"/>
+  <meta property="og:description" content="Add Probably Weather to your home screen. Real SA forecasts, no app store needed."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://probablyweather.co.za/install"/>
+  <meta property="og:image" content="https://probablyweather.co.za/api/og?lang=en"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Install Probably Weather"/>
+  <meta name="twitter:description" content="Add Probably Weather to your home screen."/>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"/>
+  <link rel="apple-touch-icon" href="/assets/icon-192.png"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/app.css"/>
+  <style>
+    body.install-page {
+      background: linear-gradient(160deg, #1a1a2e 0%, #2a1f3a 60%, #1a1a2e 100%);
+      min-height: 100vh;
+    }
+    .install-page-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px clamp(16px, 5vw, 28px);
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .install-page-header a {
+      color: #FFD466;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .install-back-link::before { content: "← "; }
+    .install-language-row {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .install-language-row button {
+      background: rgba(255,255,255,0.06);
+      color: #FFF8F0;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      min-block-size: 32px;
+      min-inline-size: 44px;
+    }
+    .install-language-row button[aria-pressed="true"] {
+      background: linear-gradient(135deg, #FFDD44, #FFAA00);
+      color: #1a1a2e;
+      border-color: transparent;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="install-page">
+  <header class="install-page-header">
+    <a href="/" class="install-back-link">Probably Weather</a>
+    <div class="install-language-row" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="af" aria-pressed="false">Afrikaans</button>
+      <button type="button" data-lang="zu" aria-pressed="false">isiZulu</button>
+      <button type="button" data-lang="xh" aria-pressed="false">isiXhosa</button>
+      <button type="button" data-lang="st" aria-pressed="false">Sesotho</button>
+    </div>
+  </header>
+  <main id="installRoot"></main>
+  <script type="module">
+    import { renderLandingPage } from '/assets/install.js';
+
+    const SUPPORTED = ['en', 'af', 'zu', 'xh', 'st'];
+
+    function getInitialLang() {
+      try {
+        const stored = localStorage.getItem('lang');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (SUPPORTED.includes(parsed)) return parsed;
+        }
+      } catch {}
+      const urlLang = new URLSearchParams(window.location.search).get('lang');
+      if (urlLang && SUPPORTED.includes(urlLang)) return urlLang;
+      const navLang = (navigator.language || 'en').slice(0, 2);
+      return SUPPORTED.includes(navLang) ? navLang : 'en';
+    }
+
+    let lang = getInitialLang();
+    const root = document.getElementById('installRoot');
+    renderLandingPage(root, { lang });
+
+    document.querySelectorAll('.install-language-row button[data-lang]').forEach((btn) => {
+      btn.setAttribute('aria-pressed', btn.dataset.lang === lang ? 'true' : 'false');
+      btn.addEventListener('click', () => {
+        lang = btn.dataset.lang;
+        document.querySelectorAll('.install-language-row button[data-lang]').forEach((b) => {
+          b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
+        });
+        try { localStorage.setItem('lang', JSON.stringify(lang)); } catch {}
+        renderLandingPage(root, { lang });
+      });
+    });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
