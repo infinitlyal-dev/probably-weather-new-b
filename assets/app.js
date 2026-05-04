@@ -1566,7 +1566,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setupServiceWorkerUpdates();
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
-  installExperience = initInstallExperience({ getLanguage: () => settings.lang || 'en' });
+  installExperience = initInstallExperience({ getLanguage: () => settings.lang || 'en', showToast });
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
   if (sharedPlace) { showScreen(screenHome); loadAndRender(sharedPlace); }

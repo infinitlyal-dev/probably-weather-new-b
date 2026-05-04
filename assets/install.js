@@ -177,6 +177,13 @@ export const INSTALL_T = {
     xh: 'Faka i-Probably Weather',
     st: 'Kenya Probably Weather',
   },
+  fallbackPrompt: {
+    en: 'Tap your browser menu, then Install app — or try again in a moment.',
+    af: "Tik op jou blaaier-kieslys, dan Installeer app — of probeer 'n oomblik weer.",
+    zu: 'Thepha imenyu yesiphequluli, bese Faka uhlelo lokusebenza — noma uzame futhi ngomzuzwana.',
+    xh: 'Cofa imenyu yebrawza, ze ufakele i-app — okanye uzame kwakhona ngomzuzwana.',
+    st: 'Tobetsa menyu ea sebatli, ebe Kenya app — kapa leka hape ka motsotsoana.',
+  },
 };
 
 /* -------- Pure functions (testable without DOM) -------- */
@@ -262,7 +269,7 @@ function svgFromMarkup(markup) {
 
 /* -------- DOM init (only runs in browser) -------- */
 
-export function initInstallExperience({ getLanguage = () => 'en' } = {}) {
+export function initInstallExperience({ getLanguage = () => 'en', showToast = null } = {}) {
   if (typeof window === 'undefined') return null;
 
   const banner = document.getElementById('installBanner');
@@ -393,6 +400,8 @@ export function initInstallExperience({ getLanguage = () => 'en' } = {}) {
   function openIosChromeModal() {
     if (!iosChromeModal) return;
     applyTranslations();
+    const urlEl = document.getElementById('installModalUrl');
+    if (urlEl) urlEl.textContent = window.location.href;
     iosChromeModal.classList.remove('hidden');
     requestAnimationFrame(() => iosChromeModal.classList.add('visible'));
     iosChromeModal.focus();
@@ -404,7 +413,16 @@ export function initInstallExperience({ getLanguage = () => 'en' } = {}) {
   }
 
   installBtn?.addEventListener('click', async () => {
-    if ((platform === 'android-chrome' || platform === 'desktop-chrome') && deferredPrompt) {
+    if (platform === 'android-chrome' || platform === 'desktop-chrome') {
+      if (!deferredPrompt) {
+        // Browser hasn't fired beforeinstallprompt yet (eligibility criteria not met
+        // this session, or already-installed-once edge case). Tell the user where
+        // the manual install lives instead of silently no-op'ing.
+        if (typeof showToast === 'function') {
+          showToast(tInstall('fallbackPrompt', getLanguage() || 'en'));
+        }
+        return;
+      }
       try {
         deferredPrompt.prompt();
         const choice = await deferredPrompt.userChoice;
@@ -443,7 +461,7 @@ export function initInstallExperience({ getLanguage = () => 'en' } = {}) {
 
   iosChromeOpenBtn?.addEventListener('click', () => {
     try {
-      window.location.href = `x-safari-${window.location.href}`.replace(/^x-safari-https/, 'x-safari-https');
+      window.location.href = `x-safari-${window.location.href}`;
     } catch { /* leave modal open with copy fallback */ }
     try { navigator.clipboard?.writeText(window.location.href).catch(() => {}); } catch {}
   });
@@ -588,7 +606,7 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   if (openSafariBtn) {
     openSafariBtn.addEventListener('click', () => {
       try {
-        window.location.href = `x-safari-${window.location.href}`.replace(/^x-safari-https/, 'x-safari-https');
+        window.location.href = `x-safari-${window.location.href}`;
       } catch { /* swallowed */ }
       try { navigator.clipboard?.writeText(window.location.origin).catch(() => {}); } catch {}
     });
