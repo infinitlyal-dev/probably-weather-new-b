@@ -12,7 +12,7 @@ export const STORAGE_KEYS = {
 };
 
 export const DISMISS_DAYS = 7;
-export const ENGAGEMENT_MS = 30 * 1000;
+export const ENGAGEMENT_MS = 10 * 1000;
 
 /* -------- Translations (full T[install] block, also re-used by install.html) -------- */
 export const INSTALL_T = {

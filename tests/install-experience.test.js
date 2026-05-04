@@ -119,7 +119,7 @@ describe('install — shouldShowBanner state machine', () => {
     ).toBe(true);
   });
 
-  it('does NOT show before engagement window elapses (30s)', () => {
+  it('does NOT show before engagement window elapses (10s)', () => {
     const now = Date.now();
     expect(
       shouldShowBanner({
@@ -130,7 +130,7 @@ describe('install — shouldShowBanner state machine', () => {
     ).toBe(false);
   });
 
-  it('does NOT show without an interaction signal even after 30s', () => {
+  it('does NOT show without an interaction signal even after 10s', () => {
     const now = Date.now();
     expect(
       shouldShowBanner({
@@ -244,8 +244,8 @@ describe('install — engagement gate wiring', () => {
     // Listens to at least one of these interaction events
     expect(src).toMatch(/'pointerdown'|'touchstart'|'scroll'|'keydown'/);
   });
-  it('engagement constant is 30 seconds', () => {
-    expect(ENGAGEMENT_MS).toBe(30_000);
+  it('engagement constant is 10 seconds', () => {
+    expect(ENGAGEMENT_MS).toBe(10_000);
   });
 });
 
