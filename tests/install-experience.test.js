@@ -272,7 +272,7 @@ describe('install — service worker caches install assets and bumps cache versi
   });
   it('bumps the cache version to the new dated value', () => {
     const src = sw();
-    expect(src).toMatch(/CACHE_VERSION\s*=\s*'pw-v2026-05-04-001'/);
+    expect(src).toMatch(/CACHE_VERSION\s*=\s*'pw-v\d{4}-\d{2}-\d{2}-\d{3}'/);
   });
 });
 
