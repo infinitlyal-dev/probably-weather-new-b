@@ -1580,6 +1580,11 @@ select option {
   object-position: center center;
 }
 
+/* Portrait-panel mirror image: hidden by default, shown on desktop only */
+#bgPortraitImg {
+  display: none;
+}
+
 .footer {
   position: fixed;
   bottom: calc(var(--nav-h, 72px) + 8px);
@@ -2881,4 +2886,181 @@ body.standalone-mode .install-footer-link {
   line-height: 1.5;
   font-size: 0.95rem;
   opacity: 0.9;
+}
+
+/* ========== POLISH PASS (md mockup alignment) ========== */
+/* Calmer text shadows: drop the heavy color glow, keep readable dark shadow. */
+.temp,
+#home-screen .temp {
+  text-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.55),
+    0 1px 2px rgba(0, 0, 0, 0.55);
+}
+#tempHiLo .hi {
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+}
+#tempHiLo .lo {
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.55);
+}
+.headline,
+#home-screen .headline {
+  text-shadow:
+    0 4px 22px rgba(0, 0, 0, 0.6),
+    0 1px 2px rgba(0, 0, 0, 0.55);
+}
+.description,
+#home-screen #description {
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.55);
+}
+.weather-byline,
+.sidebar .weather-byline {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+/* Save button: glass pill, more intentional. */
+.save-current-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(7, 13, 17, 0.46);
+  color: #fff8e8;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.save-current-btn:hover {
+  background: rgba(7, 13, 17, 0.62);
+}
+.save-current-btn:active {
+  transform: scale(0.97);
+}
+
+/* ========== DESKTOP PORTRAIT TREATMENT (placed last so it wins ordering) ========== */
+@media (min-width: 900px) {
+  #bgImg {
+    filter: blur(28px) saturate(1.05) brightness(0.7);
+    transform: scale(1.06);
+  }
+  #scrim {
+    background:
+      linear-gradient(90deg, rgba(5, 8, 10, 0.78) 0%, rgba(5, 8, 10, 0.55) 42%, rgba(5, 8, 10, 0.18) 70%, rgba(5, 8, 10, 0.5) 100%),
+      radial-gradient(circle at 24% 36%, rgba(255, 210, 74, 0.14), transparent 38%);
+  }
+  #bgPortraitImg {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: clamp(28px, 4vw, 80px);
+    height: min(82vh, 720px);
+    aspect-ratio: 9 / 16;
+    transform: translateY(-50%);
+    z-index: 0;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 28px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    background: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+  }
+  .container { z-index: 2; }
+
+  /* Reserve left-column space — max-width on the layout block, not text content */
+  body.home-active .header,
+  body.home-active .home-layout {
+    max-width: calc(100% - clamp(320px, 38vw, 520px));
+  }
+  body:not(.home-active) .screenPanel {
+    max-width: calc(100% - clamp(320px, 38vw, 520px));
+  }
+
+  /* Home: stack hero text above stat-pill row inside the constrained left column */
+  body.home-active .home-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    min-height: 0;
+  }
+  body.home-active main#home-screen.main {
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+    min-height: 0;
+  }
+  body.home-active .sidebar {
+    position: static;
+    width: auto;
+    max-width: 100%;
+    inset: auto;
+    margin: 6px 0 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  body.home-active .sidebar .weather-byline {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 6px;
+    margin: 0;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(7, 13, 17, 0.46);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px) saturate(125%);
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
+    color: #fff8e8;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-shadow: none;
+    white-space: nowrap;
+  }
+  body.home-active .sidebar .card-sources {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+  body.home-active .sidebar .sources-desktop { display: none !important; }
+  body.home-active .sidebar .sources-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(7, 13, 17, 0.46);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px) saturate(125%);
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
+    color: #fff8e8;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  body.home-active .sidebar .sources-detail,
+  body.home-active .sidebar .sources-swap {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) {
+  #bgPortraitImg {
+    height: min(78vh, 640px);
+    right: clamp(20px, 3vw, 48px);
+  }
 }

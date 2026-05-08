@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const tempEl = $('#temp');
   const descriptionEl = $('#description');
   const bgImg = $('#bgImg');
+  const bgPortraitImg = $('#bgPortraitImg');
+  if (bgImg && bgPortraitImg) {
+    bgImg.addEventListener('load', () => { bgPortraitImg.src = bgImg.currentSrc || bgImg.src; });
+  }
   const saveCurrent = $('#saveCurrent');
   const particlesEl = $('#particles');
   const languageBtn = $('#languageBtn');
