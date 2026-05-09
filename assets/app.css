@@ -2683,6 +2683,15 @@ body.standalone-mode .install-footer-link {
   background: rgba(255,255,255,0.08);
   color: #FFD466;
 }
+/* Hint shown below the 3 steps for users who can't find Add to Home Screen
+   in the iOS Share sheet (it's gated behind Edit Actions on first use). */
+.install-step-hint {
+  margin: 0 0 16px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: rgba(255, 248, 240, 0.72);
+}
+
 /* Inline pill for native-iOS UI labels (Share, Add to Home Screen, Add) that
    stay in English while the surrounding instruction is translated. */
 .install-os-label {

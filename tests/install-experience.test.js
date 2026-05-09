@@ -228,18 +228,42 @@ describe('install — DOM markup wired into index.html', () => {
     expect(src).not.toMatch(/openIosChromeModal/);
     expect(src).not.toMatch(/closeIosChromeModal/);
   });
-  it('install.js handoff URL carries ?install=1 + ?lang= so Safari can sync language and auto-open the 3-step guide', () => {
+  it('install.js handoff URL uses #install hash (survives x-safari- scheme) and keeps ?lang= as query', () => {
     const src = installJs();
-    // Handoff URL builder sets both params
-    expect(src).toMatch(/url\.searchParams\.set\(['"]install['"], ['"]1['"]\)/);
+    // Install signal lives in the URL hash (iOS strips ?query across the
+    // x-safari- scheme but preserves the hash).
+    expect(src).toMatch(/url\.hash = ['"]install['"]/);
+    // Language stays in the query — server-side handlers can read it.
     expect(src).toMatch(/url\.searchParams\.set\(['"]lang['"], lang\)/);
+    // Old query-based install flag is no longer SET on the handoff URL.
+    expect(src).not.toMatch(/url\.searchParams\.set\(['"]install['"]/);
   });
-  it('install.js auto-opens the 3-step iOS Safari modal when ?install=1 is present after a Chrome handoff', () => {
+  it('install.js detects install intent on iOS Safari from BOTH the hash and the query (backward compat)', () => {
     const src = installJs();
-    // Detect the install param on iOS Safari and open the existing modal
-    expect(src).toMatch(/platform === 'ios-safari'[\s\S]*?params\.get\(['"]install['"]\) === ['"]1['"][\s\S]*?openIosModal/);
-    // URL is cleaned (history.replaceState) so a refresh doesn't re-trigger
+    // Hash detection (primary, survives x-safari-)
+    expect(src).toMatch(/window\.location\.hash[\s\S]*?some\(\(p\)\s*=>\s*p === ['"]install['"]/);
+    // Query detection retained as backward-compat for any out-there ?install=1 links
+    expect(src).toMatch(/params\.get\(['"]install['"]\) === ['"]1['"]/);
+    // Either signal triggers the existing 3-step modal
+    expect(src).toMatch(/hashHasInstall \|\| queryHasInstall[\s\S]*?openIosModal/);
+    // URL is cleaned via history.replaceState so refresh doesn't re-trigger
     expect(src).toMatch(/history\.replaceState\(null, ['"]['"], cleanUrl\)/);
+  });
+  it('iosEditActionsHint translation exists in all 5 languages and references both iOS labels', () => {
+    expect(INSTALL_T.iosEditActionsHint).toBeTruthy();
+    for (const lang of SUPPORTED_LANGS) {
+      const v = INSTALL_T.iosEditActionsHint[lang];
+      expect(typeof v, `${lang} type`).toBe('string');
+      // Both iOS labels appear inside backticks (rendered as gold pills)
+      expect(v, `${lang} mentions Add to Home Screen`).toMatch(/`Add to Home Screen`/);
+      expect(v, `${lang} mentions Edit Actions`).toMatch(/`Edit Actions`/);
+    }
+  });
+  it('iosInstallModal renders the Edit Actions hint between the 3 steps and the Got it button', () => {
+    const h = html();
+    // Hint paragraph carries the i18n key and sits before the Got it button
+    expect(h).toMatch(/data-install-i18n="iosEditActionsHint"[\s\S]*?id="iosInstallClose"/);
+    expect(h).toMatch(/class="install-step-hint"/);
   });
   it('renders the footer Install link with the install-footer-link class', () => {
     const h = html();

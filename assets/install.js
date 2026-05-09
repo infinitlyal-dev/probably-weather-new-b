@@ -85,6 +85,17 @@ export const INSTALL_T = {
     xh: 'Cofa u-`Add` ukuqinisekisa',
     st: 'Tobetsa `Add` ho netefatsa',
   },
+  // Hint shown below the 3 steps in case the user can't find "Add to Home
+  // Screen" in the iOS Share menu — iOS lets you toggle it on via
+  // Edit Actions. Same convention as the steps above: iOS native labels
+  // stay English (backticks → gold pills), surrounding text translates.
+  iosEditActionsHint: {
+    en: 'Don’t see `Add to Home Screen`? Tap `Edit Actions` at the bottom of the Share menu and enable it.',
+    af: 'Sien jy nie `Add to Home Screen` nie? Tik `Edit Actions` onder in die Deel-kieslys en skakel dit aan.',
+    zu: 'Awuyiboni i-`Add to Home Screen`? Thepha u-`Edit Actions` ezansi kwemenyu ye-Share, bese uyivumela.',
+    xh: 'Awuyiboni i-`Add to Home Screen`? Cofa u-`Edit Actions` ezantsi kwimenyu ye-Share, uyivumele.',
+    st: 'Ha o bone `Add to Home Screen`? Tobetsa `Edit Actions` ka tlase ho menyu ya Share, ebe u e nolofatsa.',
+  },
   // The modal's own "Got it" close button IS PW UI, not native iOS UI, so
   // it gets fully translated.
   iosGotIt: {
@@ -530,18 +541,37 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   applyTranslations();
 
   // Cross-handoff signal: if the user just arrived from an iOS Chrome →
-  // Safari handoff, the URL has ?install=1. Auto-open the 3-step Add-to-
-  // Home guide immediately and strip the param so a refresh doesn't
-  // re-trigger the modal. Bypasses engagement gate / dismissal cooldown
-  // because the user explicitly initiated the install in Chrome.
+  // Safari handoff, the URL has #install in the hash (iOS strips ?query
+  // params across the x-safari- scheme but preserves the hash). Auto-open
+  // the 3-step Add-to-Home guide immediately and strip the signal so a
+  // refresh doesn't re-trigger. Bypasses engagement gate / dismissal
+  // cooldown — the user explicitly initiated the install in Chrome.
+  //
+  // Backward compat: also honor ?install=1 in the query for any links
+  // already out there from before the hash switch.
   if (platform === 'ios-safari') {
+    const hashHasInstall = window.location.hash.replace(/^#/, '')
+      .split('&')
+      .some((p) => p === 'install' || p.startsWith('install='));
     const params = new URLSearchParams(window.location.search);
-    if (params.get('install') === '1') {
-      params.delete('install');
+    const queryHasInstall = params.get('install') === '1';
+    if (hashHasInstall || queryHasInstall) {
+      // Strip the install signal from BOTH locations and keep everything
+      // else (e.g. ?lang=af, other hash anchors).
+      let cleanHash = '';
+      if (hashHasInstall) {
+        const remaining = window.location.hash.replace(/^#/, '')
+          .split('&')
+          .filter((p) => p !== 'install' && !p.startsWith('install='));
+        cleanHash = remaining.length ? '#' + remaining.join('&') : '';
+      } else {
+        cleanHash = window.location.hash;
+      }
+      if (queryHasInstall) params.delete('install');
       const cleanSearch = params.toString();
       const cleanUrl = window.location.pathname +
         (cleanSearch ? '?' + cleanSearch : '') +
-        window.location.hash;
+        cleanHash;
       try { history.replaceState(null, '', cleanUrl); } catch {}
       requestAnimationFrame(() => openIosModal());
     }
@@ -558,16 +588,21 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
 }
 
 /**
- * Build the x-safari- handoff URL for iOS Chrome → Safari. Appends
- * ?install=1 so the Safari-side init recognizes the install intent and
- * auto-opens the 3-step Add-to-Home guide. Carries the current language
- * across the handoff (Safari has its own localStorage, separate from
- * Chrome's) so the modal renders in the user's chosen language.
+ * Build the x-safari- handoff URL for iOS Chrome → Safari.
+ *
+ * iOS strips the search component when transitioning across the x-safari-
+ * scheme, so the install intent rides the URL hash (#install) which
+ * survives the handoff. ?lang= stays in the query because that's read
+ * server-side too (OG image generation, social previews) and we still
+ * want it to work when JS hasn't booted yet.
  */
 function buildSafariHandoffUrl(lang) {
   const url = new URL(window.location.href);
-  url.searchParams.set('install', '1');
+  // Wipe any existing ?install= or #install on the current URL so we're
+  // building from a clean base (the user may have re-tapped install).
+  url.searchParams.delete('install');
   if (lang) url.searchParams.set('lang', lang);
+  url.hash = 'install';
   return `x-safari-${url.toString()}`;
 }
 
