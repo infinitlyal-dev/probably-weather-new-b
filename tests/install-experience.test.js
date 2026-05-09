@@ -4,11 +4,8 @@ import { describe, expect, it } from 'vitest';
 import {
   INSTALL_T,
   STORAGE_KEYS,
-  DISMISS_DAYS,
-  ENGAGEMENT_MS,
   detectPlatform,
-  shouldShowBanner,
-  dismissUntilTimestamp,
+  shouldShowCard,
   tInstall,
 } from '../assets/install.js';
 
@@ -47,7 +44,7 @@ describe('install — platform detection', () => {
   it('identifies iOS Chrome via CriOS UA token', () => {
     expect(detectPlatform(UA.iosChrome)).toBe('ios-chrome');
   });
-  it('treats iOS Edge (EdgiOS) as ios-chrome path (same Safari handoff modal)', () => {
+  it('treats iOS Edge (EdgiOS) as ios-chrome', () => {
     expect(detectPlatform(UA.iosEdge)).toBe('ios-chrome');
   });
   it('identifies desktop Chrome and Edge as desktop-chrome', () => {
@@ -59,109 +56,39 @@ describe('install — platform detection', () => {
   });
 });
 
-describe('install — shouldShowBanner state machine', () => {
-  const baseStorage = (overrides = {}) => ({
-    installed: null,
-    completed: null,
-    dismissedUntil: null,
-    firstSeen: String(Date.now() - (ENGAGEMENT_MS + 1000)),
-    interacted: 'true',
-    ...overrides,
-  });
-
+describe('install — shouldShowCard state machine', () => {
   it('does NOT show in standalone mode', () => {
-    expect(
-      shouldShowBanner({
-        storage: baseStorage(),
-        standalone: true,
-        platform: 'ios-safari',
-      })
-    ).toBe(false);
+    expect(shouldShowCard({ standalone: true, platform: 'ios-safari' })).toBe(false);
+    expect(shouldShowCard({ standalone: true, platform: 'ios-chrome' })).toBe(false);
   });
-
-  it('does NOT show when pw_install_completed is true', () => {
-    expect(
-      shouldShowBanner({
-        storage: baseStorage({ completed: 'true' }),
-        platform: 'android-chrome',
-      })
-    ).toBe(false);
+  it('does NOT show after the user has dismissed it', () => {
+    expect(shouldShowCard({ storage: { cardDismissed: '1' }, platform: 'ios-safari' })).toBe(false);
+    expect(shouldShowCard({ storage: { cardDismissed: '1' }, platform: 'ios-chrome' })).toBe(false);
   });
-
-  it('does NOT show when pw_installed is true', () => {
-    expect(
-      shouldShowBanner({
-        storage: baseStorage({ installed: 'true' }),
-        platform: 'android-chrome',
-      })
-    ).toBe(false);
+  it('DOES show on iOS Safari and iOS Chrome by default (no dismissal, not standalone)', () => {
+    expect(shouldShowCard({ platform: 'ios-safari' })).toBe(true);
+    expect(shouldShowCard({ platform: 'ios-chrome' })).toBe(true);
   });
-
-  it('does NOT show when dismissedUntil is in the future', () => {
-    const now = Date.now();
-    expect(
-      shouldShowBanner({
-        storage: baseStorage({ dismissedUntil: String(now + 60_000) }),
-        now,
-        platform: 'android-chrome',
-      })
-    ).toBe(false);
+  it('does NOT show on Android Chrome (uses native PWA install affordance instead)', () => {
+    expect(shouldShowCard({ platform: 'android-chrome' })).toBe(false);
   });
-
-  it('DOES show when dismissedUntil is in the past', () => {
-    const now = Date.now();
-    expect(
-      shouldShowBanner({
-        storage: baseStorage({ dismissedUntil: String(now - 60_000) }),
-        now,
-        platform: 'android-chrome',
-      })
-    ).toBe(true);
+  it('does NOT show on any desktop platform', () => {
+    expect(shouldShowCard({ platform: 'desktop-chrome' })).toBe(false);
+    expect(shouldShowCard({ platform: 'desktop-other' })).toBe(false);
   });
-
-  it('does NOT show before engagement window elapses (10s)', () => {
-    const now = Date.now();
-    expect(
-      shouldShowBanner({
-        storage: baseStorage({ firstSeen: String(now - 5_000) }),
-        now,
-        platform: 'android-chrome',
-      })
-    ).toBe(false);
-  });
-
-  it('does NOT show without an interaction signal even after 10s', () => {
-    const now = Date.now();
-    expect(
-      shouldShowBanner({
-        storage: baseStorage({ firstSeen: String(now - 60_000), interacted: null }),
-        now,
-        platform: 'android-chrome',
-      })
-    ).toBe(false);
-  });
-
-  it('does NOT show on desktop-other or other (no install path)', () => {
-    expect(shouldShowBanner({ storage: baseStorage(), platform: 'desktop-other' })).toBe(false);
-    expect(shouldShowBanner({ storage: baseStorage(), platform: 'other' })).toBe(false);
-  });
-
-  it('does NOT show on desktop-chrome (mobile-only install prompt per product directive)', () => {
-    expect(shouldShowBanner({ storage: baseStorage(), platform: 'desktop-chrome' })).toBe(false);
-  });
-
-  it('DOES show on android-chrome / ios-safari / ios-chrome with engagement and no dismissal', () => {
-    for (const platform of ['android-chrome', 'ios-safari', 'ios-chrome']) {
-      expect(shouldShowBanner({ storage: baseStorage(), platform })).toBe(true);
-    }
+  it('does NOT show on unknown / other platforms', () => {
+    expect(shouldShowCard({ platform: 'other' })).toBe(false);
   });
 });
 
-describe('install — dismissUntilTimestamp', () => {
-  it('returns now + 7 days by default', () => {
-    const now = 1_700_000_000_000;
-    expect(dismissUntilTimestamp(now)).toBe(now + 7 * 24 * 60 * 60 * 1000);
-    expect(DISMISS_DAYS).toBe(7);
+describe('install — STORAGE_KEYS', () => {
+  it('exposes only the cardDismissed key (legacy banner/engagement keys removed)', () => {
+    expect(STORAGE_KEYS.cardDismissed).toBe('pw-install-card-dismissed');
+    expect(STORAGE_KEYS.installed).toBeUndefined();
+    expect(STORAGE_KEYS.dismissedUntil).toBeUndefined();
+    expect(STORAGE_KEYS.firstSeen).toBeUndefined();
+    expect(STORAGE_KEYS.interacted).toBeUndefined();
+    expect(STORAGE_KEYS.modalSeen).toBeUndefined();
   });
 });
 
@@ -171,7 +98,6 @@ describe('install — translations cover all 5 languages', () => {
       for (const lang of SUPPORTED_LANGS) {
         const val = entry[lang];
         expect(val, `${key}.${lang} should exist`).toBeTruthy();
-        // bullet-list arrays must have items
         if (Array.isArray(val)) {
           expect(val.length, `${key}.${lang} array length`).toBeGreaterThan(0);
         } else {
@@ -180,158 +106,138 @@ describe('install — translations cover all 5 languages', () => {
       }
     }
   });
+  it('card-frame translations exist (cardTitle, cardSubtitle, cardShowMeHow, cardDismissLabel)', () => {
+    for (const key of ['cardTitle', 'cardSubtitle', 'cardShowMeHow', 'cardDismissLabel']) {
+      expect(INSTALL_T[key], `${key} exists`).toBeTruthy();
+      for (const lang of SUPPORTED_LANGS) {
+        expect(typeof INSTALL_T[key][lang], `${key}.${lang}`).toBe('string');
+      }
+    }
+  });
+  it('iOS step translations preserve gold-pill backticks for native iOS labels', () => {
+    // Safari steps reference Share / Add to Home Screen / Add as English pills
+    for (const lang of SUPPORTED_LANGS) {
+      expect(INSTALL_T.iosStep1[lang], `iosStep1.${lang}`).toMatch(/`Share`/);
+      expect(INSTALL_T.iosStep2[lang], `iosStep2.${lang}`).toMatch(/`Add to Home Screen`/);
+      expect(INSTALL_T.iosStep3[lang], `iosStep3.${lang}`).toMatch(/`Add`/);
+      expect(INSTALL_T.iosChromeStep2Share[lang], `iosChromeStep2Share.${lang}`).toMatch(/`Share`/);
+      expect(INSTALL_T.iosChromeStep3Add[lang], `iosChromeStep3Add.${lang}`).toMatch(/`Add to Home Screen`/);
+      expect(INSTALL_T.iosEditActionsHint[lang], `iosEditActionsHint.${lang}`).toMatch(/`Add to Home Screen`/);
+      expect(INSTALL_T.iosEditActionsHint[lang], `iosEditActionsHint.${lang}`).toMatch(/`Edit Actions`/);
+    }
+  });
   it('tInstall returns localized string and falls back to English', () => {
-    expect(tInstall('bannerInstall', 'af')).toBe(INSTALL_T.bannerInstall.af);
-    expect(tInstall('bannerInstall', 'zu')).toBe(INSTALL_T.bannerInstall.zu);
-    expect(tInstall('bannerInstall', 'xh')).toBe(INSTALL_T.bannerInstall.xh);
-    expect(tInstall('bannerInstall', 'st')).toBe(INSTALL_T.bannerInstall.st);
-    // unknown lang -> en fallback
-    expect(tInstall('bannerInstall', 'fr')).toBe(INSTALL_T.bannerInstall.en);
-    // unknown key -> the key itself
+    expect(tInstall('cardShowMeHow', 'af')).toBe(INSTALL_T.cardShowMeHow.af);
+    expect(tInstall('cardShowMeHow', 'fr')).toBe(INSTALL_T.cardShowMeHow.en);
     expect(tInstall('nonexistentKey', 'en')).toBe('nonexistentKey');
   });
 });
 
 describe('install — DOM markup wired into index.html', () => {
-  it('renders the install banner with required elements', () => {
+  it('renders the install card with title, subtitle, show-me-how, and dismiss controls', () => {
     const h = html();
-    expect(h).toMatch(/id="installBanner"[^>]*class="install-banner hidden"/);
-    expect(h).toMatch(/id="installBannerTitle"/);
-    expect(h).toMatch(/id="installBannerInstall"/);
-    expect(h).toMatch(/id="installBannerDismiss"/);
+    expect(h).toMatch(/id="installCard"[^>]*hidden/);
+    expect(h).toMatch(/id="installCardTitle"/);
+    expect(h).toMatch(/id="installCardSubtitle"/);
+    expect(h).toMatch(/id="installCardShow"[^>]*aria-controls="installCardSteps"/);
+    expect(h).toMatch(/id="installCardDismiss"[^>]*aria-label="Dismiss"/);
+    expect(h).toMatch(/id="installCardSteps"[^>]*hidden/);
   });
-  it('renders the iOS Safari install modal with 3 step list items', () => {
+  it('does NOT render the legacy install banner or any of the deleted modals', () => {
     const h = html();
-    expect(h).toMatch(/id="iosInstallModal"[^>]*role="dialog"/);
-    expect(h).toMatch(/id="iosInstallTitle"/);
-    expect(h).toMatch(/id="iosInstallClose"/);
-    // 3 numbered steps
-    const matches = h.match(/install-step-num/g) || [];
-    expect(matches.length).toBeGreaterThanOrEqual(3);
-    // Inline SVG share icon must be present
-    expect(h).toMatch(/<svg[\s\S]*?<path d="M12 3v13"\/>/);
+    expect(h).not.toMatch(/id="installBanner"/);
+    expect(h).not.toMatch(/id="installBannerInstall"/);
+    expect(h).not.toMatch(/id="installBannerDismiss"/);
+    expect(h).not.toMatch(/id="iosInstallModal"/);
+    expect(h).not.toMatch(/id="iosChromeInstallModal"/);
+    expect(h).not.toMatch(/id="iosChromeOpenSafariFromModal"/);
   });
-  it('renders the iOS Chrome 3-step preview modal with Open in Safari primary CTA + Got it secondary', () => {
-    const h = html();
-    expect(h).toMatch(/id="iosChromeInstallModal"[^>]*role="dialog"/);
-    expect(h).toMatch(/id="iosChromeInstallTitle"/);
-    expect(h).toMatch(/id="iosChromeOpenSafariFromModal"[^>]*class="install-modal-close"/);
-    expect(h).toMatch(/id="iosChromeInstallClose"[^>]*class="install-modal-secondary"/);
-    expect(h).toMatch(/data-install-i18n="iosChromeStep1Tap"/);
-    expect(h).toMatch(/data-install-i18n="iosChromeStep2Share"/);
-    expect(h).toMatch(/data-install-i18n="iosChromeStep3Add"/);
-    // Edit Actions hint also appears in the Chrome modal
-    const hintMatches = h.match(/data-install-i18n="iosEditActionsHint"/g) || [];
-    expect(hintMatches.length).toBeGreaterThanOrEqual(2);
-  });
-  it('does NOT render the legacy iOS Chrome handoff modal from the deleted x-safari-now design', () => {
-    const h = html();
-    expect(h).not.toMatch(/id="iosChromeModal"\b/); // legacy id, distinct from iosChromeInstallModal
-    expect(h).not.toMatch(/id="iosChromeOpenSafari"\b/); // legacy primary id
-    expect(h).not.toMatch(/id="iosChromeClose"\b/); // legacy close id
-    expect(h).not.toMatch(/id="installModalUrl"/);
-  });
-  it('install.js iOS Chrome click handler opens the in-Chrome preview modal (no immediate redirect, no async)', () => {
-    const src = installJs();
-    // Click handler routes ios-chrome to openIosChromeModal (in-Chrome modal),
-    // not to a direct x-safari- href.
-    expect(src).toMatch(/platform === 'ios-chrome'[\s\S]*?openIosChromeModal\(\);\s*return;/);
-    // The buildSafariHandoffUrl helper and its hash/query signal logic are gone.
-    expect(src).not.toMatch(/buildSafariHandoffUrl/);
-    expect(src).not.toMatch(/url\.hash = ['"]install['"]/);
-    expect(src).not.toMatch(/url\.searchParams\.set\(['"]install['"]/);
-    expect(src).not.toMatch(/hashHasInstall/);
-    expect(src).not.toMatch(/queryHasInstall/);
-  });
-  it('install.js Open-in-Safari button inside the Chrome modal fires a bare x-safari- URL (no params, no hash)', () => {
-    const src = installJs();
-    // Bare URL: just scheme + host + pathname, no search, no hash.
-    expect(src).toMatch(/iosChromeOpenBtn\?\.addEventListener[\s\S]*?`x-safari-https:\/\/\$\{window\.location\.host\}\$\{window\.location\.pathname\}`/);
-  });
-  it('install.js auto-opens the iOS Safari modal on first visit when pw-install-modal-seen is unset', () => {
-    const src = installJs();
-    // First-visit detection on iOS Safari uses the modalSeen storage key
-    expect(src).toMatch(/STORAGE_KEYS\.modalSeen/);
-    expect(src).toMatch(/platform === 'ios-safari'[\s\S]*?if \(!modalSeen\)[\s\S]*?openIosModal/);
-    // Storage key value is the spec-mandated hyphenated form
-    expect(src).toMatch(/modalSeen:\s*['"]pw-install-modal-seen['"]/);
-  });
-  it('install.js sets pw-install-modal-seen when the iOS Safari modal is dismissed (Got it / backdrop / Esc)', () => {
-    const src = installJs();
-    // closeIosModal sets the flag — covers all three dismissal paths
-    expect(src).toMatch(/function closeIosModal[\s\S]*?setItem\(STORAGE_KEYS\.modalSeen, ['"]1['"]\)/);
-  });
-  it('install.js standalone-mode branch also sets pw-install-modal-seen so a later regular-Safari visit doesn\'t pester the user', () => {
-    const src = installJs();
-    expect(src).toMatch(/isStandalone[\s\S]*?setItem\(STORAGE_KEYS\.modalSeen, ['"]1['"]\)/);
-  });
-  it('iosChromeStepN translations exist in all 5 languages with correct backtick conventions', () => {
-    for (const key of ['iosChromeStep1Tap', 'iosChromeStep2Share', 'iosChromeStep3Add']) {
-      expect(INSTALL_T[key], `${key} exists`).toBeTruthy();
-      for (const lang of SUPPORTED_LANGS) {
-        const v = INSTALL_T[key][lang];
-        expect(typeof v, `${key}.${lang} type`).toBe('string');
-      }
-    }
-    // Step 1 has no iOS native label — pure translated text
-    for (const lang of SUPPORTED_LANGS) {
-      expect(INSTALL_T.iosChromeStep1Tap[lang]).not.toMatch(/`/);
-    }
-    // Steps 2 and 3 reference iOS native labels in backticks (gold pills)
-    for (const lang of SUPPORTED_LANGS) {
-      expect(INSTALL_T.iosChromeStep2Share[lang], `${lang} step2 mentions Share`).toMatch(/`Share`/);
-      expect(INSTALL_T.iosChromeStep3Add[lang], `${lang} step3 mentions Add to Home Screen`).toMatch(/`Add to Home Screen`/);
-    }
-  });
-  it('iosEditActionsHint translation exists in all 5 languages and references both iOS labels', () => {
-    expect(INSTALL_T.iosEditActionsHint).toBeTruthy();
-    for (const lang of SUPPORTED_LANGS) {
-      const v = INSTALL_T.iosEditActionsHint[lang];
-      expect(typeof v, `${lang} type`).toBe('string');
-      // Both iOS labels appear inside backticks (rendered as gold pills)
-      expect(v, `${lang} mentions Add to Home Screen`).toMatch(/`Add to Home Screen`/);
-      expect(v, `${lang} mentions Edit Actions`).toMatch(/`Edit Actions`/);
-    }
-  });
-  it('iosInstallModal renders the Edit Actions hint between the 3 steps and the Got it button', () => {
-    const h = html();
-    // Hint paragraph carries the i18n key and sits before the Got it button
-    expect(h).toMatch(/data-install-i18n="iosEditActionsHint"[\s\S]*?id="iosInstallClose"/);
-    expect(h).toMatch(/class="install-step-hint"/);
-  });
-  it('renders the footer Install link with the install-footer-link class', () => {
+  it('renders the footer Install link (re-shows the card after dismiss)', () => {
     const h = html();
     expect(h).toMatch(/id="installFooterLink"[^>]*class="install-footer-link"/);
   });
 });
 
-describe('install — standalone mode hiding via CSS and JS', () => {
-  it('CSS hides install UI in standalone display-mode', () => {
-    const c = css();
-    expect(c).toMatch(/@media all and \(display-mode: standalone\)\s*{\s*\.install-banner[\s\S]*display:\s*none/);
-  });
-  it('CSS hides install UI when body has standalone-mode class', () => {
-    const c = css();
-    expect(c).toMatch(/body\.standalone-mode \.install-banner[\s\S]*display:\s*none/);
-  });
-  it('install.js sets pw_installed=true and standalone-mode class when in standalone', () => {
+describe('install — install.js card behavior', () => {
+  it('renders steps via JS based on platform: iOS Chrome step 1 has the bare-URL Open in Safari button', () => {
     const src = installJs();
-    expect(src).toMatch(/window\.navigator && window\.navigator\.standalone === true/);
-    expect(src).toMatch(/document\.body\.classList\.add\('standalone-mode'\)/);
-    expect(src).toMatch(/setItem\(STORAGE_KEYS\.installed, 'true'\)/);
+    // iOS Chrome path inside renderSteps populates the open-Safari button
+    expect(src).toMatch(/platform === 'ios-chrome'[\s\S]*?id:\s*['"]installCardOpenSafari['"]/);
+    // Bare x-safari- URL: scheme + host + pathname, no params, no hash
+    expect(src).toMatch(/window\.location\.href = `x-safari-https:\/\/\$\{window\.location\.host\}\$\{window\.location\.pathname\}`/);
+  });
+  it('shows the iOS Safari Add-to-Home steps + Edit Actions hint on the ios-safari path', () => {
+    const src = installJs();
+    // iOS Safari step list uses iosStep1/2/3 (Share / Add to Home Screen / Add)
+    expect(src).toMatch(/tInstall\(['"]iosStep1['"]/);
+    expect(src).toMatch(/tInstall\(['"]iosStep2['"]/);
+    expect(src).toMatch(/tInstall\(['"]iosStep3['"]/);
+    // Edit Actions hint always rendered after the step list
+    expect(src).toMatch(/tInstall\(['"]iosEditActionsHint['"]/);
+  });
+  it('dismiss writes pw-install-card-dismissed=1 to localStorage', () => {
+    const src = installJs();
+    expect(src).toMatch(/setItem\(STORAGE_KEYS\.cardDismissed,\s*['"]1['"]\)/);
+  });
+  it('reopen (footer link click) clears the dismissed flag and expands the card', () => {
+    const src = installJs();
+    expect(src).toMatch(/function reopen\(\)[\s\S]*?removeItem\(STORAGE_KEYS\.cardDismissed\)[\s\S]*?expand\(\)/);
+  });
+  it('expand toggles aria-expanded=true on the show button and unhides the steps container', () => {
+    const src = installJs();
+    expect(src).toMatch(/setAttribute\(['"]aria-expanded['"], ['"]true['"]\)/);
+    expect(src).toMatch(/stepsContainer\.hidden = false/);
   });
 });
 
-describe('install — engagement gate wiring', () => {
-  it('records first_seen, then waits for an interaction event before scheduling a banner check', () => {
+describe('install — dead code from prior designs is gone', () => {
+  it('no install banner DOM ids in install.js', () => {
     const src = installJs();
-    expect(src).toMatch(/STORAGE_KEYS\.firstSeen/);
-    expect(src).toMatch(/STORAGE_KEYS\.interacted/);
-    // Listens to at least one of these interaction events
-    expect(src).toMatch(/'pointerdown'|'touchstart'|'scroll'|'keydown'/);
+    expect(src).not.toMatch(/installBannerInstall/);
+    expect(src).not.toMatch(/installBannerDismiss/);
+    expect(src).not.toMatch(/installBannerTitle/);
   });
-  it('engagement constant is 10 seconds', () => {
-    expect(ENGAGEMENT_MS).toBe(10_000);
+  it('no engagement gate / interaction tracking', () => {
+    const src = installJs();
+    expect(src).not.toMatch(/ENGAGEMENT_MS/);
+    expect(src).not.toMatch(/scheduleBannerCheck/);
+    expect(src).not.toMatch(/recordInteraction/);
+  });
+  it('no buildSafariHandoffUrl helper or hash/query install signals', () => {
+    const src = installJs();
+    expect(src).not.toMatch(/buildSafariHandoffUrl/);
+    expect(src).not.toMatch(/hashHasInstall/);
+    expect(src).not.toMatch(/queryHasInstall/);
+    expect(src).not.toMatch(/url\.hash = ['"]install['"]/);
+    expect(src).not.toMatch(/searchParams\.set\(['"]install['"]/);
+  });
+  it('no modal open/close helpers', () => {
+    const src = installJs();
+    expect(src).not.toMatch(/function openIosModal/);
+    expect(src).not.toMatch(/function closeIosModal/);
+    expect(src).not.toMatch(/function openIosChromeModal/);
+    expect(src).not.toMatch(/function closeIosChromeModal/);
+  });
+  it('no beforeinstallprompt capture (Android Chrome handles its own native prompt)', () => {
+    const src = installJs();
+    expect(src).not.toMatch(/beforeinstallprompt/);
+    expect(src).not.toMatch(/deferredPrompt/);
+  });
+});
+
+describe('install — standalone mode hiding via CSS and JS', () => {
+  it('CSS hides the install card in standalone display-mode', () => {
+    const c = css();
+    expect(c).toMatch(/@media all and \(display-mode: standalone\)\s*{\s*\.install-card[\s\S]*display:\s*none/);
+  });
+  it('CSS hides the install card when body has standalone-mode class', () => {
+    const c = css();
+    expect(c).toMatch(/body\.standalone-mode \.install-card[\s\S]*display:\s*none/);
+  });
+  it('install.js sets standalone-mode class and hides the card when in standalone', () => {
+    const src = installJs();
+    expect(src).toMatch(/window\.navigator && window\.navigator\.standalone === true/);
+    expect(src).toMatch(/document\.body\.classList\.add\('standalone-mode'\)/);
   });
 });
 

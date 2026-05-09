@@ -2502,32 +2502,28 @@ main#home-screen.main #confidence {
 
 /* Hide install UI completely when launched as installed PWA */
 @media all and (display-mode: standalone) {
-  .install-banner,
-  .install-prompt,
-  .install-modal,
+  .install-card,
   .install-footer-link {
     display: none !important;
   }
 }
-body.standalone-mode .install-banner,
-body.standalone-mode .install-prompt,
-body.standalone-mode .install-modal,
+body.standalone-mode .install-card,
 body.standalone-mode .install-footer-link {
   display: none !important;
 }
 
-/* Smart install banner — sits above the bottom nav */
-.install-banner {
+/* Always-visible install card on iOS (Chrome and Safari). Sits above the
+   bottom nav, glassmorphic, and expands inline when the user taps
+   "Show me how" — no modal, no overlay. */
+.install-card {
   position: fixed;
   left: 12px;
   right: 12px;
   bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom, 0px) + 12px);
   z-index: 180;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 56px;
-  padding: 10px 14px;
+  max-height: calc(100vh - var(--nav-h, 72px) - env(safe-area-inset-bottom, 0px) - 24px);
+  overflow-y: auto;
+  padding: 14px 14px 14px 14px;
   border-radius: 14px;
   background: var(--panel-bg);
   backdrop-filter: blur(16px) saturate(120%);
@@ -2535,19 +2531,31 @@ body.standalone-mode .install-footer-link {
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 12px 32px rgba(0,0,0,0.35);
   color: #FFF8F0;
-  transform: translateY(120%);
-  opacity: 0;
-  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.24s ease;
-  pointer-events: auto;
 }
-.install-banner.hidden {
-  display: none;
+.install-card[hidden] { display: none; }
+.install-card-dismiss {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  color: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
 }
-.install-banner.visible {
-  transform: translateY(0);
-  opacity: 1;
+.install-card-dismiss:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.install-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 28px;
 }
-.install-banner-icon {
+.install-card-icon {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
@@ -2558,25 +2566,52 @@ body.standalone-mode .install-footer-link {
   background: linear-gradient(135deg, #FFDD44, #FFAA00);
   box-shadow: 0 2px 6px rgba(255,170,0,0.35);
 }
-.install-banner-text {
-  flex: 1 1 auto;
-  font-size: 0.92rem;
-  font-weight: 500;
-  line-height: 1.25;
-  min-width: 0;
+.install-card-text { flex: 1 1 auto; min-width: 0; }
+.install-card-text h3 {
+  margin: 0 0 2px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
-.install-banner-actions {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.install-card-text p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  color: rgba(255,248,240,0.78);
 }
-.install-banner-install {
+.install-card-show {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
   background: linear-gradient(135deg, #FFDD44, #FFAA00);
   color: #1a1a2e;
   border: none;
   border-radius: 10px;
-  padding: 10px 16px;
+  padding: 11px 16px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  min-block-size: 44px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.install-card-show:hover { box-shadow: 0 4px 14px rgba(255,170,0,0.45); }
+.install-card-show:active { transform: scale(0.97); }
+.install-card-show[hidden] { display: none; }
+.install-card-steps {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.install-card-steps[hidden] { display: none; }
+.install-card-steps .install-step-list { margin-bottom: 8px; }
+.install-card-cta {
+  display: inline-block;
+  margin-top: 8px;
+  background: linear-gradient(135deg, #FFDD44, #FFAA00);
+  color: #1a1a2e;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
   font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
@@ -2584,66 +2619,16 @@ body.standalone-mode .install-footer-link {
   min-inline-size: 44px;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
-.install-banner-install:hover { box-shadow: 0 4px 14px rgba(255,170,0,0.45); }
-.install-banner-install:active { transform: scale(0.97); }
-.install-banner-dismiss {
-  background: none;
-  color: rgba(255,255,255,0.75);
-  border: none;
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  min-block-size: 44px;
-  min-inline-size: 44px;
-}
-.install-banner-dismiss:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.install-card-cta:hover { box-shadow: 0 4px 14px rgba(255,170,0,0.45); }
+.install-card-cta:active { transform: scale(0.97); }
 
 @media (max-width: 420px) {
-  .install-banner-text { font-size: 0.84rem; }
-  .install-banner-install { padding: 8px 12px; font-size: 0.85rem; }
-  .install-banner-icon { width: 32px; height: 32px; }
+  .install-card-text h3 { font-size: 0.92rem; }
+  .install-card-text p { font-size: 0.78rem; }
+  .install-card-icon { width: 32px; height: 32px; }
 }
 
-/* Install modal (iOS Safari 3-step Add-to-Home-Screen instructions) */
-.install-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 220;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background: rgba(0,0,0,0.55);
-  opacity: 0;
-  transition: opacity 0.22s ease;
-}
-.install-modal.hidden { display: none; }
-.install-modal.visible { opacity: 1; }
-.install-modal-card {
-  width: 100%;
-  max-width: 440px;
-  background: rgba(20,20,32,0.95);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  padding: 20px 20px calc(24px + env(safe-area-inset-bottom));
-  color: #FFF8F0;
-  transform: translateY(100%);
-  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.install-modal.visible .install-modal-card { transform: translateY(0); }
-@media (min-width: 600px) {
-  .install-modal { align-items: center; }
-  .install-modal-card { border-radius: 18px; }
-}
-.install-modal-card h3 {
-  margin: 0 0 14px;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
+/* Step list shared by the install card content. */
 .install-step-list {
   list-style: none;
   display: flex;
@@ -2705,33 +2690,6 @@ body.standalone-mode .install-footer-link {
   border-radius: 5px;
   white-space: nowrap;
 }
-.install-modal-close {
-  background: linear-gradient(135deg, #FFDD44, #FFAA00);
-  color: #1a1a2e;
-  border: none;
-  border-radius: 10px;
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  min-block-size: 44px;
-}
-/* Secondary action sits below the primary CTA in the iOS Chrome preview
-   modal. Subdued so the primary "Open in Safari" CTA wins the eye. */
-.install-modal-secondary {
-  background: rgba(255,255,255,0.06);
-  color: #FFF8F0;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 10px;
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  min-block-size: 44px;
-  margin-top: 8px;
-}
 
 /* Footer "Install" link (re-trigger after dismissal) */
 .install-footer-link {
@@ -2784,7 +2742,7 @@ body.standalone-mode .install-footer-link {
   line-height: 1.4;
   margin: 0;
 }
-.install-card {
+.install-card-landing {
   background: var(--panel-bg);
   backdrop-filter: blur(14px) saturate(120%);
   -webkit-backdrop-filter: blur(14px) saturate(120%);
@@ -2795,13 +2753,13 @@ body.standalone-mode .install-footer-link {
   flex-direction: column;
   gap: 12px;
 }
-.install-card h3 {
+.install-card-landing h3 {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
 }
-.install-card ul, .install-card ol { margin: 0; padding-left: 22px; }
-.install-card li { line-height: 1.5; margin-bottom: 4px; }
+.install-card-landing ul, .install-card-landing ol { margin: 0; padding-left: 22px; }
+.install-card-landing li { line-height: 1.5; margin-bottom: 4px; }
 .install-cta-btn {
   background: linear-gradient(135deg, #FFDD44, #FFAA00);
   color: #1a1a2e;

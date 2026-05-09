@@ -283,88 +283,30 @@
 
   <footer class="footer">Data from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather · <button type="button" id="installFooterLink" class="install-footer-link" data-install-i18n="footerInstallLink">Install Probably Weather</button></footer>
 
-  <!-- PWA install banner: hidden until engagement gate fires -->
-  <div id="installBanner" class="install-banner hidden" role="region" aria-label="Install Probably Weather">
-    <span class="install-banner-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1a1a2e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3v13"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/>
-      </svg>
-    </span>
-    <span id="installBannerTitle" class="install-banner-text">Add Probably Weather to your home screen</span>
-    <span class="install-banner-actions">
-      <button type="button" id="installBannerDismiss" class="install-banner-dismiss">Not now</button>
-      <button type="button" id="installBannerInstall" class="install-banner-install">Install</button>
-    </span>
-  </div>
-
-  <!-- iOS Safari install modal: 3-step illustrated guide -->
-  <div id="iosInstallModal" class="install-modal hidden" role="dialog" aria-modal="true" aria-labelledby="iosInstallTitle" tabindex="-1">
-    <div class="install-modal-card">
-      <h3 id="iosInstallTitle" data-install-i18n="iosTitle">Install in 3 steps</h3>
-      <ol class="install-step-list">
-        <li>
-          <span class="install-step-num">1</span>
-          <span class="install-step-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
-          </span>
-          <span data-install-i18n="iosStep1">Tap the Share button at the bottom of Safari</span>
-        </li>
-        <li>
-          <span class="install-step-num">2</span>
-          <span class="install-step-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-          </span>
-          <span data-install-i18n="iosStep2">Scroll down and tap "Add to Home Screen"</span>
-        </li>
-        <li>
-          <span class="install-step-num">3</span>
-          <span class="install-step-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-          </span>
-          <span data-install-i18n="iosStep3">Tap "Add" to confirm — done.</span>
-        </li>
-      </ol>
-      <p class="install-step-hint" data-install-i18n="iosEditActionsHint">Don't see "Add to Home Screen"? Tap "Edit Actions" at the bottom of the Share menu and enable it.</p>
-      <button type="button" id="iosInstallClose" class="install-modal-close" data-install-i18n="iosGotIt">Got it</button>
+  <!-- PWA install card: always-visible inline card on iOS (Chrome and Safari).
+       Tap "Show me how" to expand the platform-specific 3-step guide
+       inline (accordion-style). The dismiss button (×) hides the card
+       permanently via the pw-install-card-dismissed localStorage flag.
+       Card stays hidden in standalone mode and on non-iOS platforms. -->
+  <aside id="installCard" class="install-card" hidden aria-label="Install Probably Weather">
+    <button type="button" id="installCardDismiss" class="install-card-dismiss" aria-label="Dismiss">×</button>
+    <div class="install-card-header">
+      <span class="install-card-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1a1a2e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v13"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/>
+        </svg>
+      </span>
+      <div class="install-card-text">
+        <h3 id="installCardTitle">Install Probably Weather</h3>
+        <p id="installCardSubtitle">Add to your home screen for the best experience</p>
+      </div>
     </div>
-  </div>
-
-  <!-- iOS Chrome preview modal: shown IN CHROME when the user taps Install,
-       not after a redirect. Step 1 fires the bare x-safari- handoff via the
-       primary button below the list; steps 2 and 3 preview what they'll do
-       once Safari is open. The 3-step Add-to-Home modal then auto-opens in
-       Safari on first visit (localStorage-driven, no URL signal). -->
-  <div id="iosChromeInstallModal" class="install-modal hidden" role="dialog" aria-modal="true" aria-labelledby="iosChromeInstallTitle" tabindex="-1">
-    <div class="install-modal-card">
-      <h3 id="iosChromeInstallTitle" data-install-i18n="iosTitle">Install in 3 steps</h3>
-      <ol class="install-step-list">
-        <li>
-          <span class="install-step-num">1</span>
-          <span class="install-step-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76 13.06 13.06 7.76 16.24 10.94 10.94 16.24 7.76z"/></svg>
-          </span>
-          <span data-install-i18n="iosChromeStep1Tap">Tap to open in Safari</span>
-        </li>
-        <li>
-          <span class="install-step-num">2</span>
-          <span class="install-step-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
-          </span>
-          <span data-install-i18n="iosChromeStep2Share">In Safari, tap the Share button</span>
-        </li>
-        <li>
-          <span class="install-step-num">3</span>
-          <span class="install-step-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
-          </span>
-          <span data-install-i18n="iosChromeStep3Add">Tap Add to Home Screen</span>
-        </li>
-      </ol>
-      <button type="button" id="iosChromeOpenSafariFromModal" class="install-modal-close" data-install-i18n="iosChromeOpenSafari">Open in Safari</button>
-      <p class="install-step-hint" data-install-i18n="iosEditActionsHint">Don't see "Add to Home Screen"? Tap "Edit Actions" at the bottom of the Share menu and enable it.</p>
-      <button type="button" id="iosChromeInstallClose" class="install-modal-secondary" data-install-i18n="iosGotIt">Got it</button>
+    <button type="button" id="installCardShow" class="install-card-show" aria-expanded="false" aria-controls="installCardSteps">Show me how</button>
+    <div id="installCardSteps" class="install-card-steps" hidden>
+      <!-- Step list and Edit Actions hint are populated by install.js
+           based on platform (iOS Chrome vs iOS Safari). -->
     </div>
-  </div>
+  </aside>
 
   <script type="module" src="assets/app.js"></script>
 </body>
