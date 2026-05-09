@@ -329,6 +329,43 @@
     </div>
   </div>
 
+  <!-- iOS Chrome preview modal: shown IN CHROME when the user taps Install,
+       not after a redirect. Step 1 fires the bare x-safari- handoff via the
+       primary button below the list; steps 2 and 3 preview what they'll do
+       once Safari is open. The 3-step Add-to-Home modal then auto-opens in
+       Safari on first visit (localStorage-driven, no URL signal). -->
+  <div id="iosChromeInstallModal" class="install-modal hidden" role="dialog" aria-modal="true" aria-labelledby="iosChromeInstallTitle" tabindex="-1">
+    <div class="install-modal-card">
+      <h3 id="iosChromeInstallTitle" data-install-i18n="iosTitle">Install in 3 steps</h3>
+      <ol class="install-step-list">
+        <li>
+          <span class="install-step-num">1</span>
+          <span class="install-step-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76 13.06 13.06 7.76 16.24 10.94 10.94 16.24 7.76z"/></svg>
+          </span>
+          <span data-install-i18n="iosChromeStep1Tap">Tap to open in Safari</span>
+        </li>
+        <li>
+          <span class="install-step-num">2</span>
+          <span class="install-step-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
+          </span>
+          <span data-install-i18n="iosChromeStep2Share">In Safari, tap the Share button</span>
+        </li>
+        <li>
+          <span class="install-step-num">3</span>
+          <span class="install-step-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </span>
+          <span data-install-i18n="iosChromeStep3Add">Tap Add to Home Screen</span>
+        </li>
+      </ol>
+      <button type="button" id="iosChromeOpenSafariFromModal" class="install-modal-close" data-install-i18n="iosChromeOpenSafari">Open in Safari</button>
+      <p class="install-step-hint" data-install-i18n="iosEditActionsHint">Don't see "Add to Home Screen"? Tap "Edit Actions" at the bottom of the Share menu and enable it.</p>
+      <button type="button" id="iosChromeInstallClose" class="install-modal-secondary" data-install-i18n="iosGotIt">Got it</button>
+    </div>
+  </div>
+
   <script type="module" src="assets/app.js"></script>
 </body>
 </html>

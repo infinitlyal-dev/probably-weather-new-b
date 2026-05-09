@@ -2717,6 +2717,21 @@ body.standalone-mode .install-footer-link {
   cursor: pointer;
   min-block-size: 44px;
 }
+/* Secondary action sits below the primary CTA in the iOS Chrome preview
+   modal. Subdued so the primary "Open in Safari" CTA wins the eye. */
+.install-modal-secondary {
+  background: rgba(255,255,255,0.06);
+  color: #FFF8F0;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-block-size: 44px;
+  margin-top: 8px;
+}
 
 /* Footer "Install" link (re-trigger after dismissal) */
 .install-footer-link {

@@ -13,6 +13,11 @@ export const STORAGE_KEYS = {
   completed: 'pw_install_completed',
   firstSeen: 'pw_install_first_seen',
   interacted: 'pw_install_interacted',
+  // Set when the user dismisses the iOS Safari 3-step modal (Got it /
+  // backdrop tap / Esc). Suppresses the first-visit auto-open on subsequent
+  // visits so we don't pester returning users. The hyphenated key style is
+  // intentional and called out in the original spec.
+  modalSeen: 'pw-install-modal-seen',
 };
 
 export const DISMISS_DAYS = 7;
@@ -84,6 +89,32 @@ export const INSTALL_T = {
     zu: 'Thepha u-`Add` ukuqinisekisa',
     xh: 'Cofa u-`Add` ukuqinisekisa',
     st: 'Tobetsa `Add` ho netefatsa',
+  },
+  // 3-step preview shown IN CHROME on iOS when the user taps Install. Step 1
+  // is the action they take in Chrome (tap Open in Safari); steps 2 and 3
+  // describe what they'll do once Safari opens. The full Add-to-Home flow
+  // continues with the existing iosStep1/2/3 inside the iosInstallModal in
+  // Safari (which auto-opens for first-time Safari visitors).
+  iosChromeStep1Tap: {
+    en: 'Tap to open in Safari',
+    af: 'Tik om in Safari oop te maak',
+    zu: 'Thepha ukuze uvule ku-Safari',
+    xh: 'Cofa ukuze uvule kwi-Safari',
+    st: 'Tobetsa ho bula ho Safari',
+  },
+  iosChromeStep2Share: {
+    en: 'In Safari, tap the `Share` button',
+    af: 'Tik in Safari op die `Share`-knoppie',
+    zu: 'Ku-Safari, thepha inkinobho ye-`Share`',
+    xh: 'Kwi-Safari, cofa iqhosha le-`Share`',
+    st: 'Ho Safari, tobetsa konopo ya `Share`',
+  },
+  iosChromeStep3Add: {
+    en: 'Tap `Add to Home Screen`',
+    af: 'Tik op `Add to Home Screen`',
+    zu: 'Thepha `Add to Home Screen`',
+    xh: 'Cofa `Add to Home Screen`',
+    st: 'Tobetsa `Add to Home Screen`',
   },
   // Hint shown below the 3 steps in case the user can't find "Add to Home
   // Screen" in the iOS Share menu — iOS lets you toggle it on via
@@ -343,6 +374,9 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   const titleEl = document.getElementById('installBannerTitle');
   const iosModal = document.getElementById('iosInstallModal');
   const iosModalClose = document.getElementById('iosInstallClose');
+  const iosChromeModal = document.getElementById('iosChromeInstallModal');
+  const iosChromeOpenBtn = document.getElementById('iosChromeOpenSafariFromModal');
+  const iosChromeModalClose = document.getElementById('iosChromeInstallClose');
   const footerLink = document.getElementById('installFooterLink');
 
   const ua = navigator.userAgent || '';
@@ -357,6 +391,13 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     try {
       if (!localStorage.getItem(STORAGE_KEYS.completed)) {
         localStorage.setItem(STORAGE_KEYS.completed, 'true');
+      }
+      // A user who reaches standalone mode has effectively "seen" the
+      // install flow even if they never opened our modal. Set the seen flag
+      // so a later visit in regular Safari (same WebKit localStorage) won't
+      // pester them with the auto-open.
+      if (!localStorage.getItem(STORAGE_KEYS.modalSeen)) {
+        localStorage.setItem(STORAGE_KEYS.modalSeen, '1');
       }
     } catch {}
     return { platform, standalone: true };
@@ -471,17 +512,32 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     if (!iosModal) return;
     iosModal.classList.remove('visible');
     setTimeout(() => iosModal.classList.add('hidden'), 240);
+    // The user has seen-and-dismissed the iOS Safari install modal
+    // (whether by Got it / backdrop tap / Esc). Mark it seen so future
+    // visits don't auto-open. Engagement-gate banner still fires though,
+    // so they can re-open via the banner if they change their mind.
+    try { localStorage.setItem(STORAGE_KEYS.modalSeen, '1'); } catch {}
+  }
+
+  function openIosChromeModal() {
+    if (!iosChromeModal) return;
+    applyTranslations();
+    iosChromeModal.classList.remove('hidden');
+    requestAnimationFrame(() => iosChromeModal.classList.add('visible'));
+    iosChromeModal.focus();
+  }
+  function closeIosChromeModal() {
+    if (!iosChromeModal) return;
+    iosChromeModal.classList.remove('visible');
+    setTimeout(() => iosChromeModal.classList.add('hidden'), 240);
   }
 
   installBtn?.addEventListener('click', () => {
-    // iOS Chrome: instant Safari handoff. No async, no modal, no listener
-    // wait — just fire the URL scheme that hands off to Safari. We append
-    // ?install=1 (and current lang) so the Safari-side init knows the user
-    // came from a Chrome handoff and auto-opens the 3-step Add-to-Home modal.
-    if (platform === 'ios-chrome') {
-      try { window.location.href = buildSafariHandoffUrl(getLanguage() || 'en'); } catch {}
-      return;
-    }
+    // iOS Chrome: open the in-Chrome 3-step preview modal. The user reads
+    // the steps in Chrome, then taps the primary Open-in-Safari button
+    // inside the modal which fires the bare x-safari- URL. No params, no
+    // hash — iOS strips them across the scheme transition anyway.
+    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
     // iOS Safari: show the 3-step Add-to-Home-Screen modal.
     if (platform === 'ios-safari') { openIosModal(); return; }
     // Android Chrome: native install via deferredPrompt.
@@ -522,57 +578,45 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
 
   iosModalClose?.addEventListener('click', closeIosModal);
   iosModal?.addEventListener('click', (ev) => { if (ev.target === iosModal) closeIosModal(); });
+
+  iosChromeModalClose?.addEventListener('click', closeIosChromeModal);
+  iosChromeModal?.addEventListener('click', (ev) => { if (ev.target === iosChromeModal) closeIosChromeModal(); });
+  iosChromeOpenBtn?.addEventListener('click', () => {
+    // Bare x-safari- URL: no query, no hash. iOS strips the search
+    // component across the scheme transition, so anything we'd append
+    // would be lost on real devices. Safari's first-visit auto-open is
+    // driven by localStorage (modalSeen flag) instead, so it doesn't
+    // depend on the URL carrying any signal.
+    try {
+      window.location.href = `x-safari-https://${window.location.host}${window.location.pathname}`;
+    } catch {}
+  });
+
   document.addEventListener('keydown', (ev) => {
     if (ev.key !== 'Escape') return;
     if (iosModal && !iosModal.classList.contains('hidden')) closeIosModal();
+    if (iosChromeModal && !iosChromeModal.classList.contains('hidden')) closeIosChromeModal();
   });
 
   footerLink?.addEventListener('click', (ev) => {
     ev.preventDefault();
     try { localStorage.removeItem(STORAGE_KEYS.dismissedUntil); } catch {}
     if (platform === 'ios-safari') { openIosModal(); return; }
-    if (platform === 'ios-chrome') {
-      try { window.location.href = buildSafariHandoffUrl(getLanguage() || 'en'); } catch {}
-      return;
-    }
+    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
     showBanner();
   });
 
   applyTranslations();
 
-  // Cross-handoff signal: if the user just arrived from an iOS Chrome →
-  // Safari handoff, the URL has #install in the hash (iOS strips ?query
-  // params across the x-safari- scheme but preserves the hash). Auto-open
-  // the 3-step Add-to-Home guide immediately and strip the signal so a
-  // refresh doesn't re-trigger. Bypasses engagement gate / dismissal
-  // cooldown — the user explicitly initiated the install in Chrome.
-  //
-  // Backward compat: also honor ?install=1 in the query for any links
-  // already out there from before the hash switch.
+  // First-visit auto-open on iOS Safari: a fresh visitor who hasn't seen
+  // the modal yet (and isn't in standalone mode — that's handled by the
+  // early return above) gets the 3-step Add-to-Home guide immediately.
+  // Returning users who've dismissed it once before don't see it again,
+  // but they still get the engagement-gate banner this session in case
+  // they change their mind.
   if (platform === 'ios-safari') {
-    const hashHasInstall = window.location.hash.replace(/^#/, '')
-      .split('&')
-      .some((p) => p === 'install' || p.startsWith('install='));
-    const params = new URLSearchParams(window.location.search);
-    const queryHasInstall = params.get('install') === '1';
-    if (hashHasInstall || queryHasInstall) {
-      // Strip the install signal from BOTH locations and keep everything
-      // else (e.g. ?lang=af, other hash anchors).
-      let cleanHash = '';
-      if (hashHasInstall) {
-        const remaining = window.location.hash.replace(/^#/, '')
-          .split('&')
-          .filter((p) => p !== 'install' && !p.startsWith('install='));
-        cleanHash = remaining.length ? '#' + remaining.join('&') : '';
-      } else {
-        cleanHash = window.location.hash;
-      }
-      if (queryHasInstall) params.delete('install');
-      const cleanSearch = params.toString();
-      const cleanUrl = window.location.pathname +
-        (cleanSearch ? '?' + cleanSearch : '') +
-        cleanHash;
-      try { history.replaceState(null, '', cleanUrl); } catch {}
+    const modalSeen = (() => { try { return localStorage.getItem(STORAGE_KEYS.modalSeen); } catch { return null; } })();
+    if (!modalSeen) {
       requestAnimationFrame(() => openIosModal());
     }
   }
@@ -583,27 +627,9 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     show: showBanner,
     hide: hideBanner,
     openIosModal,
+    openIosChromeModal,
     refreshLanguage: applyTranslations,
   };
-}
-
-/**
- * Build the x-safari- handoff URL for iOS Chrome → Safari.
- *
- * iOS strips the search component when transitioning across the x-safari-
- * scheme, so the install intent rides the URL hash (#install) which
- * survives the handoff. ?lang= stays in the query because that's read
- * server-side too (OG image generation, social previews) and we still
- * want it to work when JS hasn't booted yet.
- */
-function buildSafariHandoffUrl(lang) {
-  const url = new URL(window.location.href);
-  // Wipe any existing ?install= or #install on the current URL so we're
-  // building from a clean base (the user may have re-tapped install).
-  url.searchParams.delete('install');
-  if (lang) url.searchParams.set('lang', lang);
-  url.hash = 'install';
-  return `x-safari-${url.toString()}`;
 }
 
 /* -------- /install landing-page helper (DOM-built, no innerHTML) -------- */
@@ -726,15 +752,13 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   const openSafariBtn = host.querySelector('#landingOpenSafari');
   if (openSafariBtn) {
     openSafariBtn.addEventListener('click', () => {
-      // Hand off to Safari with ?install=1 so Safari-side init auto-opens
-      // the 3-step guide on the main app (not the /install page itself).
-      // Redirect target is the app root so the user lands on the home
-      // screen with the install modal open, not on the marketing page.
+      // Bare x-safari- URL pointing at the app root. iOS strips the search
+      // component across the scheme transition, so we don't bother carrying
+      // anything. Safari's first-visit auto-open is driven by localStorage
+      // (pw-install-modal-seen) — a user arriving fresh in Safari will see
+      // the 3-step Add-to-Home modal automatically.
       try {
-        const target = new URL('/', window.location.href);
-        target.searchParams.set('install', '1');
-        if (lang) target.searchParams.set('lang', lang);
-        window.location.href = `x-safari-${target.toString()}`;
+        window.location.href = `x-safari-https://${window.location.host}/`;
       } catch { /* swallowed */ }
       try { navigator.clipboard?.writeText(window.location.origin).catch(() => {}); } catch {}
     });

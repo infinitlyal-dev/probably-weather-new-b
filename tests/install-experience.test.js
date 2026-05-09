@@ -211,43 +211,77 @@ describe('install — DOM markup wired into index.html', () => {
     // Inline SVG share icon must be present
     expect(h).toMatch(/<svg[\s\S]*?<path d="M12 3v13"\/>/);
   });
-  it('does NOT render the legacy iOS Chrome handoff modal (deleted — instant Safari handoff replaces it)', () => {
+  it('renders the iOS Chrome 3-step preview modal with Open in Safari primary CTA + Got it secondary', () => {
     const h = html();
-    expect(h).not.toMatch(/id="iosChromeModal"/);
-    expect(h).not.toMatch(/id="iosChromeOpenSafari"/);
-    expect(h).not.toMatch(/id="iosChromeClose"/);
+    expect(h).toMatch(/id="iosChromeInstallModal"[^>]*role="dialog"/);
+    expect(h).toMatch(/id="iosChromeInstallTitle"/);
+    expect(h).toMatch(/id="iosChromeOpenSafariFromModal"[^>]*class="install-modal-close"/);
+    expect(h).toMatch(/id="iosChromeInstallClose"[^>]*class="install-modal-secondary"/);
+    expect(h).toMatch(/data-install-i18n="iosChromeStep1Tap"/);
+    expect(h).toMatch(/data-install-i18n="iosChromeStep2Share"/);
+    expect(h).toMatch(/data-install-i18n="iosChromeStep3Add"/);
+    // Edit Actions hint also appears in the Chrome modal
+    const hintMatches = h.match(/data-install-i18n="iosEditActionsHint"/g) || [];
+    expect(hintMatches.length).toBeGreaterThanOrEqual(2);
+  });
+  it('does NOT render the legacy iOS Chrome handoff modal from the deleted x-safari-now design', () => {
+    const h = html();
+    expect(h).not.toMatch(/id="iosChromeModal"\b/); // legacy id, distinct from iosChromeInstallModal
+    expect(h).not.toMatch(/id="iosChromeOpenSafari"\b/); // legacy primary id
+    expect(h).not.toMatch(/id="iosChromeClose"\b/); // legacy close id
     expect(h).not.toMatch(/id="installModalUrl"/);
   });
-  it('install.js iOS Chrome click handler fires x-safari- redirect synchronously, no modal, no await', () => {
+  it('install.js iOS Chrome click handler opens the in-Chrome preview modal (no immediate redirect, no async)', () => {
     const src = installJs();
-    // Click handler hands off via the buildSafariHandoffUrl helper which
-    // produces the x-safari- URL synchronously (no async, no setTimeout).
-    expect(src).toMatch(/platform === 'ios-chrome'[\s\S]*?window\.location\.href = buildSafariHandoffUrl/);
-    expect(src).toMatch(/return `x-safari-/);
-    // No modal-opening function for iOS Chrome anymore
-    expect(src).not.toMatch(/openIosChromeModal/);
-    expect(src).not.toMatch(/closeIosChromeModal/);
-  });
-  it('install.js handoff URL uses #install hash (survives x-safari- scheme) and keeps ?lang= as query', () => {
-    const src = installJs();
-    // Install signal lives in the URL hash (iOS strips ?query across the
-    // x-safari- scheme but preserves the hash).
-    expect(src).toMatch(/url\.hash = ['"]install['"]/);
-    // Language stays in the query — server-side handlers can read it.
-    expect(src).toMatch(/url\.searchParams\.set\(['"]lang['"], lang\)/);
-    // Old query-based install flag is no longer SET on the handoff URL.
+    // Click handler routes ios-chrome to openIosChromeModal (in-Chrome modal),
+    // not to a direct x-safari- href.
+    expect(src).toMatch(/platform === 'ios-chrome'[\s\S]*?openIosChromeModal\(\);\s*return;/);
+    // The buildSafariHandoffUrl helper and its hash/query signal logic are gone.
+    expect(src).not.toMatch(/buildSafariHandoffUrl/);
+    expect(src).not.toMatch(/url\.hash = ['"]install['"]/);
     expect(src).not.toMatch(/url\.searchParams\.set\(['"]install['"]/);
+    expect(src).not.toMatch(/hashHasInstall/);
+    expect(src).not.toMatch(/queryHasInstall/);
   });
-  it('install.js detects install intent on iOS Safari from BOTH the hash and the query (backward compat)', () => {
+  it('install.js Open-in-Safari button inside the Chrome modal fires a bare x-safari- URL (no params, no hash)', () => {
     const src = installJs();
-    // Hash detection (primary, survives x-safari-)
-    expect(src).toMatch(/window\.location\.hash[\s\S]*?some\(\(p\)\s*=>\s*p === ['"]install['"]/);
-    // Query detection retained as backward-compat for any out-there ?install=1 links
-    expect(src).toMatch(/params\.get\(['"]install['"]\) === ['"]1['"]/);
-    // Either signal triggers the existing 3-step modal
-    expect(src).toMatch(/hashHasInstall \|\| queryHasInstall[\s\S]*?openIosModal/);
-    // URL is cleaned via history.replaceState so refresh doesn't re-trigger
-    expect(src).toMatch(/history\.replaceState\(null, ['"]['"], cleanUrl\)/);
+    // Bare URL: just scheme + host + pathname, no search, no hash.
+    expect(src).toMatch(/iosChromeOpenBtn\?\.addEventListener[\s\S]*?`x-safari-https:\/\/\$\{window\.location\.host\}\$\{window\.location\.pathname\}`/);
+  });
+  it('install.js auto-opens the iOS Safari modal on first visit when pw-install-modal-seen is unset', () => {
+    const src = installJs();
+    // First-visit detection on iOS Safari uses the modalSeen storage key
+    expect(src).toMatch(/STORAGE_KEYS\.modalSeen/);
+    expect(src).toMatch(/platform === 'ios-safari'[\s\S]*?if \(!modalSeen\)[\s\S]*?openIosModal/);
+    // Storage key value is the spec-mandated hyphenated form
+    expect(src).toMatch(/modalSeen:\s*['"]pw-install-modal-seen['"]/);
+  });
+  it('install.js sets pw-install-modal-seen when the iOS Safari modal is dismissed (Got it / backdrop / Esc)', () => {
+    const src = installJs();
+    // closeIosModal sets the flag — covers all three dismissal paths
+    expect(src).toMatch(/function closeIosModal[\s\S]*?setItem\(STORAGE_KEYS\.modalSeen, ['"]1['"]\)/);
+  });
+  it('install.js standalone-mode branch also sets pw-install-modal-seen so a later regular-Safari visit doesn\'t pester the user', () => {
+    const src = installJs();
+    expect(src).toMatch(/isStandalone[\s\S]*?setItem\(STORAGE_KEYS\.modalSeen, ['"]1['"]\)/);
+  });
+  it('iosChromeStepN translations exist in all 5 languages with correct backtick conventions', () => {
+    for (const key of ['iosChromeStep1Tap', 'iosChromeStep2Share', 'iosChromeStep3Add']) {
+      expect(INSTALL_T[key], `${key} exists`).toBeTruthy();
+      for (const lang of SUPPORTED_LANGS) {
+        const v = INSTALL_T[key][lang];
+        expect(typeof v, `${key}.${lang} type`).toBe('string');
+      }
+    }
+    // Step 1 has no iOS native label — pure translated text
+    for (const lang of SUPPORTED_LANGS) {
+      expect(INSTALL_T.iosChromeStep1Tap[lang]).not.toMatch(/`/);
+    }
+    // Steps 2 and 3 reference iOS native labels in backticks (gold pills)
+    for (const lang of SUPPORTED_LANGS) {
+      expect(INSTALL_T.iosChromeStep2Share[lang], `${lang} step2 mentions Share`).toMatch(/`Share`/);
+      expect(INSTALL_T.iosChromeStep3Add[lang], `${lang} step3 mentions Add to Home Screen`).toMatch(/`Add to Home Screen`/);
+    }
   });
   it('iosEditActionsHint translation exists in all 5 languages and references both iOS labels', () => {
     expect(INSTALL_T.iosEditActionsHint).toBeTruthy();
