@@ -146,8 +146,12 @@ describe('install — shouldShowBanner state machine', () => {
     expect(shouldShowBanner({ storage: baseStorage(), platform: 'other' })).toBe(false);
   });
 
-  it('DOES show on android-chrome / ios-safari / ios-chrome / desktop-chrome with engagement and no dismissal', () => {
-    for (const platform of ['android-chrome', 'ios-safari', 'ios-chrome', 'desktop-chrome']) {
+  it('does NOT show on desktop-chrome (mobile-only install prompt per product directive)', () => {
+    expect(shouldShowBanner({ storage: baseStorage(), platform: 'desktop-chrome' })).toBe(false);
+  });
+
+  it('DOES show on android-chrome / ios-safari / ios-chrome with engagement and no dismissal', () => {
+    for (const platform of ['android-chrome', 'ios-safari', 'ios-chrome']) {
       expect(shouldShowBanner({ storage: baseStorage(), platform })).toBe(true);
     }
   });
@@ -207,11 +211,20 @@ describe('install — DOM markup wired into index.html', () => {
     // Inline SVG share icon must be present
     expect(h).toMatch(/<svg[\s\S]*?<path d="M12 3v13"\/>/);
   });
-  it('renders the iOS Chrome handoff modal', () => {
+  it('does NOT render the legacy iOS Chrome handoff modal (deleted — instant Safari handoff replaces it)', () => {
     const h = html();
-    expect(h).toMatch(/id="iosChromeModal"[^>]*role="dialog"/);
-    expect(h).toMatch(/id="iosChromeOpenSafari"/);
-    expect(h).toMatch(/id="iosChromeClose"/);
+    expect(h).not.toMatch(/id="iosChromeModal"/);
+    expect(h).not.toMatch(/id="iosChromeOpenSafari"/);
+    expect(h).not.toMatch(/id="iosChromeClose"/);
+    expect(h).not.toMatch(/id="installModalUrl"/);
+  });
+  it('install.js iOS Chrome click handler fires x-safari- redirect synchronously, no modal, no await', () => {
+    const src = installJs();
+    // The iOS Chrome branch must use the x-safari- URL scheme directly
+    expect(src).toMatch(/platform === 'ios-chrome'[\s\S]*?window\.location\.href = `x-safari-/);
+    // No modal-opening function for iOS Chrome anymore
+    expect(src).not.toMatch(/openIosChromeModal/);
+    expect(src).not.toMatch(/closeIosChromeModal/);
   });
   it('renders the footer Install link with the install-footer-link class', () => {
     const h = html();

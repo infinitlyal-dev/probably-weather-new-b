@@ -1,7 +1,11 @@
 /* Probably Weather — PWA Install Experience
    Self-contained module: engagement gate, platform detection, banner orchestration,
-   iOS instruction modal, iOS-Chrome handoff modal, /install landing-page helper.
-   Exports a small pure surface for unit testing alongside the DOM init function. */
+   iOS Safari instruction modal, /install landing-page helper.
+   Exports a small pure surface for unit testing alongside the DOM init function.
+
+   iOS Chrome flow: NO modal. Banner button label switches to "Install in Safari"
+   and tapping it fires window.location.href = 'x-safari-' + url synchronously.
+   One tap, no async, Safari opens. */
 
 export const STORAGE_KEYS = {
   installed: 'pw_installed',
@@ -29,6 +33,16 @@ export const INSTALL_T = {
     zu: 'Faka',
     xh: 'Faka',
     st: 'Kenya',
+  },
+  // iOS Chrome only: button text reflects that the install actually happens
+  // in Safari (Chrome on iOS can't install PWAs at all). Tapping fires the
+  // x-safari- handoff immediately — no intermediate modal.
+  bannerInstallSafari: {
+    en: 'Install in Safari',
+    af: 'Installeer in Safari',
+    zu: 'Faka ku-Safari',
+    xh: 'Faka kwi-Safari',
+    st: 'Kenya ho Safari',
   },
   bannerDismiss: {
     en: 'Not now',
@@ -80,6 +94,10 @@ export const INSTALL_T = {
     xh: 'Ndiyaziva',
     st: 'Ke utlwile',
   },
+  // The four iosChrome* keys below are no longer used by the install banner
+  // (the iOS Chrome modal was removed). They remain in use by the /install
+  // landing page (renderLandingPage) for users arriving via a shared link
+  // who land on the /install page in Chrome iOS.
   iosChromeTitle: {
     en: 'Open in Safari to install',
     af: 'Maak in Safari oop om te installeer',
@@ -229,6 +247,9 @@ export function detectPlatform(uaString = '', { standalone = false } = {}) {
 
 /**
  * Decide whether the install banner should be shown. Pure function.
+ * Desktop platforms (chrome and other) get NO install prompt at all per
+ * product directive — desktop users wanting the app can use Chrome's
+ * native URL-bar install icon if they want it.
  */
 export function shouldShowBanner({ storage = {}, now = Date.now(), standalone = false, platform = 'other' } = {}) {
   if (standalone) return false;
@@ -240,7 +261,8 @@ export function shouldShowBanner({ storage = {}, now = Date.now(), standalone = 
   const elapsed = now - Number(storage.firstSeen);
   if (elapsed < ENGAGEMENT_MS) return false;
   if (!storage.interacted) return false;
-  if (platform === 'other' || platform === 'desktop-other') return false;
+  // Mobile-only: install prompt is not shown on any desktop platform.
+  if (platform !== 'android-chrome' && platform !== 'ios-safari' && platform !== 'ios-chrome') return false;
   return true;
 }
 
@@ -310,9 +332,6 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   const titleEl = document.getElementById('installBannerTitle');
   const iosModal = document.getElementById('iosInstallModal');
   const iosModalClose = document.getElementById('iosInstallClose');
-  const iosChromeModal = document.getElementById('iosChromeModal');
-  const iosChromeClose = document.getElementById('iosChromeClose');
-  const iosChromeOpenBtn = document.getElementById('iosChromeOpenSafari');
   const footerLink = document.getElementById('installFooterLink');
 
   const ua = navigator.userAgent || '';
@@ -330,6 +349,14 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
       }
     } catch {}
     return { platform, standalone: true };
+  }
+
+  // Desktop: hide install UI entirely. Users wanting to install can use
+  // Chrome's native URL-bar install icon.
+  const isMobile = platform === 'android-chrome' || platform === 'ios-safari' || platform === 'ios-chrome';
+  if (!isMobile) {
+    if (footerLink) footerLink.hidden = true;
+    return { platform, standalone: false };
   }
 
   try {
@@ -384,7 +411,13 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   function applyTranslations() {
     const lang = getLanguage() || 'en';
     if (titleEl) setI18nText(titleEl, tInstall('bannerTitle', lang));
-    if (installBtn) setI18nText(installBtn, tInstall('bannerInstall', lang));
+    if (installBtn) {
+      // iOS Chrome users tap "Install in Safari" because the install actually
+      // happens in Safari (Chrome on iOS can't install PWAs). Other platforms
+      // get the plain "Install" label.
+      const installKey = platform === 'ios-chrome' ? 'bannerInstallSafari' : 'bannerInstall';
+      setI18nText(installBtn, tInstall(installKey, lang));
+    }
     if (dismissBtn) setI18nText(dismissBtn, tInstall('bannerDismiss', lang));
     document.querySelectorAll('[data-install-i18n]').forEach((node) => {
       const key = node.getAttribute('data-install-i18n');
@@ -428,52 +461,46 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     iosModal.classList.remove('visible');
     setTimeout(() => iosModal.classList.add('hidden'), 240);
   }
-  function openIosChromeModal() {
-    if (!iosChromeModal) return;
-    applyTranslations();
-    const urlEl = document.getElementById('installModalUrl');
-    if (urlEl) urlEl.textContent = window.location.href;
-    iosChromeModal.classList.remove('hidden');
-    requestAnimationFrame(() => iosChromeModal.classList.add('visible'));
-    iosChromeModal.focus();
-  }
-  function closeIosChromeModal() {
-    if (!iosChromeModal) return;
-    iosChromeModal.classList.remove('visible');
-    setTimeout(() => iosChromeModal.classList.add('hidden'), 240);
-  }
 
-  installBtn?.addEventListener('click', async () => {
-    if (platform === 'android-chrome' || platform === 'desktop-chrome') {
-      if (!deferredPrompt) {
-        // Browser hasn't fired beforeinstallprompt yet (eligibility criteria not met
-        // this session, or already-installed-once edge case). Tell the user where
-        // the manual install lives instead of silently no-op'ing.
-        if (typeof showToast === 'function') {
-          showToast(tInstall('fallbackPrompt', getLanguage() || 'en'));
-        }
-        return;
-      }
-      try {
-        deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        deferredPrompt = null;
-        if (choice && choice.outcome === 'accepted') {
-          try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
-          try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
-          hideBanner();
-        } else {
-          try { localStorage.setItem(STORAGE_KEYS.dismissedUntil, String(dismissUntilTimestamp())); } catch {}
-          hideBanner();
-        }
-      } catch {
-        hideBanner();
+  installBtn?.addEventListener('click', () => {
+    // iOS Chrome: instant Safari handoff. No async, no modal, no listener
+    // wait — just fire the URL scheme that hands off to Safari.
+    if (platform === 'ios-chrome') {
+      try { window.location.href = `x-safari-${window.location.href}`; } catch {}
+      return;
+    }
+    // iOS Safari: show the 3-step Add-to-Home-Screen modal.
+    if (platform === 'ios-safari') { openIosModal(); return; }
+    // Android Chrome: native install via deferredPrompt.
+    if (platform === 'android-chrome') { runNativePrompt(); return; }
+  });
+
+  async function runNativePrompt() {
+    if (!deferredPrompt) {
+      // Browser hasn't fired beforeinstallprompt yet (eligibility criteria not met
+      // this session, or already-installed-once edge case). Tell the user where
+      // the manual install lives instead of silently no-op'ing.
+      if (typeof showToast === 'function') {
+        showToast(tInstall('fallbackPrompt', getLanguage() || 'en'));
       }
       return;
     }
-    if (platform === 'ios-safari') { openIosModal(); return; }
-    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
-  });
+    try {
+      deferredPrompt.prompt();
+      const choice = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      if (choice && choice.outcome === 'accepted') {
+        try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
+        try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
+        hideBanner();
+      } else {
+        try { localStorage.setItem(STORAGE_KEYS.dismissedUntil, String(dismissUntilTimestamp())); } catch {}
+        hideBanner();
+      }
+    } catch {
+      hideBanner();
+    }
+  }
 
   dismissBtn?.addEventListener('click', () => {
     try { localStorage.setItem(STORAGE_KEYS.dismissedUntil, String(dismissUntilTimestamp())); } catch {}
@@ -481,27 +508,20 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   });
 
   iosModalClose?.addEventListener('click', closeIosModal);
-  iosChromeClose?.addEventListener('click', closeIosChromeModal);
   iosModal?.addEventListener('click', (ev) => { if (ev.target === iosModal) closeIosModal(); });
-  iosChromeModal?.addEventListener('click', (ev) => { if (ev.target === iosChromeModal) closeIosChromeModal(); });
   document.addEventListener('keydown', (ev) => {
     if (ev.key !== 'Escape') return;
     if (iosModal && !iosModal.classList.contains('hidden')) closeIosModal();
-    if (iosChromeModal && !iosChromeModal.classList.contains('hidden')) closeIosChromeModal();
-  });
-
-  iosChromeOpenBtn?.addEventListener('click', () => {
-    try {
-      window.location.href = `x-safari-${window.location.href}`;
-    } catch { /* leave modal open with copy fallback */ }
-    try { navigator.clipboard?.writeText(window.location.href).catch(() => {}); } catch {}
   });
 
   footerLink?.addEventListener('click', (ev) => {
     ev.preventDefault();
     try { localStorage.removeItem(STORAGE_KEYS.dismissedUntil); } catch {}
     if (platform === 'ios-safari') { openIosModal(); return; }
-    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
+    if (platform === 'ios-chrome') {
+      try { window.location.href = `x-safari-${window.location.href}`; } catch {}
+      return;
+    }
     showBanner();
   });
 
@@ -513,7 +533,6 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     show: showBanner,
     hide: hideBanner,
     openIosModal,
-    openIosChromeModal,
     refreshLanguage: applyTranslations,
   };
 }
