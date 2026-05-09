@@ -220,11 +220,26 @@ describe('install — DOM markup wired into index.html', () => {
   });
   it('install.js iOS Chrome click handler fires x-safari- redirect synchronously, no modal, no await', () => {
     const src = installJs();
-    // The iOS Chrome branch must use the x-safari- URL scheme directly
-    expect(src).toMatch(/platform === 'ios-chrome'[\s\S]*?window\.location\.href = `x-safari-/);
+    // Click handler hands off via the buildSafariHandoffUrl helper which
+    // produces the x-safari- URL synchronously (no async, no setTimeout).
+    expect(src).toMatch(/platform === 'ios-chrome'[\s\S]*?window\.location\.href = buildSafariHandoffUrl/);
+    expect(src).toMatch(/return `x-safari-/);
     // No modal-opening function for iOS Chrome anymore
     expect(src).not.toMatch(/openIosChromeModal/);
     expect(src).not.toMatch(/closeIosChromeModal/);
+  });
+  it('install.js handoff URL carries ?install=1 + ?lang= so Safari can sync language and auto-open the 3-step guide', () => {
+    const src = installJs();
+    // Handoff URL builder sets both params
+    expect(src).toMatch(/url\.searchParams\.set\(['"]install['"], ['"]1['"]\)/);
+    expect(src).toMatch(/url\.searchParams\.set\(['"]lang['"], lang\)/);
+  });
+  it('install.js auto-opens the 3-step iOS Safari modal when ?install=1 is present after a Chrome handoff', () => {
+    const src = installJs();
+    // Detect the install param on iOS Safari and open the existing modal
+    expect(src).toMatch(/platform === 'ios-safari'[\s\S]*?params\.get\(['"]install['"]\) === ['"]1['"][\s\S]*?openIosModal/);
+    // URL is cleaned (history.replaceState) so a refresh doesn't re-trigger
+    expect(src).toMatch(/history\.replaceState\(null, ['"]['"], cleanUrl\)/);
   });
   it('renders the footer Install link with the install-footer-link class', () => {
     const h = html();

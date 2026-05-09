@@ -464,9 +464,11 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
 
   installBtn?.addEventListener('click', () => {
     // iOS Chrome: instant Safari handoff. No async, no modal, no listener
-    // wait — just fire the URL scheme that hands off to Safari.
+    // wait — just fire the URL scheme that hands off to Safari. We append
+    // ?install=1 (and current lang) so the Safari-side init knows the user
+    // came from a Chrome handoff and auto-opens the 3-step Add-to-Home modal.
     if (platform === 'ios-chrome') {
-      try { window.location.href = `x-safari-${window.location.href}`; } catch {}
+      try { window.location.href = buildSafariHandoffUrl(getLanguage() || 'en'); } catch {}
       return;
     }
     // iOS Safari: show the 3-step Add-to-Home-Screen modal.
@@ -519,13 +521,31 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     try { localStorage.removeItem(STORAGE_KEYS.dismissedUntil); } catch {}
     if (platform === 'ios-safari') { openIosModal(); return; }
     if (platform === 'ios-chrome') {
-      try { window.location.href = `x-safari-${window.location.href}`; } catch {}
+      try { window.location.href = buildSafariHandoffUrl(getLanguage() || 'en'); } catch {}
       return;
     }
     showBanner();
   });
 
   applyTranslations();
+
+  // Cross-handoff signal: if the user just arrived from an iOS Chrome →
+  // Safari handoff, the URL has ?install=1. Auto-open the 3-step Add-to-
+  // Home guide immediately and strip the param so a refresh doesn't
+  // re-trigger the modal. Bypasses engagement gate / dismissal cooldown
+  // because the user explicitly initiated the install in Chrome.
+  if (platform === 'ios-safari') {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('install') === '1') {
+      params.delete('install');
+      const cleanSearch = params.toString();
+      const cleanUrl = window.location.pathname +
+        (cleanSearch ? '?' + cleanSearch : '') +
+        window.location.hash;
+      try { history.replaceState(null, '', cleanUrl); } catch {}
+      requestAnimationFrame(() => openIosModal());
+    }
+  }
 
   return {
     platform,
@@ -535,6 +555,20 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     openIosModal,
     refreshLanguage: applyTranslations,
   };
+}
+
+/**
+ * Build the x-safari- handoff URL for iOS Chrome → Safari. Appends
+ * ?install=1 so the Safari-side init recognizes the install intent and
+ * auto-opens the 3-step Add-to-Home guide. Carries the current language
+ * across the handoff (Safari has its own localStorage, separate from
+ * Chrome's) so the modal renders in the user's chosen language.
+ */
+function buildSafariHandoffUrl(lang) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('install', '1');
+  if (lang) url.searchParams.set('lang', lang);
+  return `x-safari-${url.toString()}`;
 }
 
 /* -------- /install landing-page helper (DOM-built, no innerHTML) -------- */
@@ -657,8 +691,15 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   const openSafariBtn = host.querySelector('#landingOpenSafari');
   if (openSafariBtn) {
     openSafariBtn.addEventListener('click', () => {
+      // Hand off to Safari with ?install=1 so Safari-side init auto-opens
+      // the 3-step guide on the main app (not the /install page itself).
+      // Redirect target is the app root so the user lands on the home
+      // screen with the install modal open, not on the marketing page.
       try {
-        window.location.href = `x-safari-${window.location.href}`;
+        const target = new URL('/', window.location.href);
+        target.searchParams.set('install', '1');
+        if (lang) target.searchParams.set('lang', lang);
+        window.location.href = `x-safari-${target.toString()}`;
       } catch { /* swallowed */ }
       try { navigator.clipboard?.writeText(window.location.origin).catch(() => {}); } catch {}
     });
