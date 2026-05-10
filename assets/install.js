@@ -185,6 +185,16 @@ export const INSTALL_T = {
     xh: 'Faka i-Probably Weather',
     st: 'Kenya Probably Weather',
   },
+  // Footer link on /install landing page that triggers the ?reset=1 wipe.
+  // Defensive escape hatch when install state is stuck on a real device
+  // and the user has no devtools access.
+  resetInstallState: {
+    en: 'Reset install state',
+    af: 'Herstel installeer-data',
+    zu: 'Sula idatha yokufaka',
+    xh: 'Sula idatha yokufaka',
+    st: 'Hlakola data ya ho kenya',
+  },
   fallbackPrompt: {
     en: 'Tap your browser menu, then Install app — or try again in a moment.',
     af: "Tik op jou blaaier-kieslys, dan Installeer app — of probeer 'n oomblik weer.",
@@ -604,6 +614,17 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   details.appendChild(el('summary', { text: tx('howTitle') }));
   details.appendChild(el('p', { text: tx('howBody') }));
   section.appendChild(details);
+
+  // Reset link in landing-page footer. Plain anchor pointing at /install?reset=1
+  // — clicking lands on this same page with the reset handler in install.html
+  // already firing synchronously before this script runs.
+  const footer = el('footer', { class: 'install-landing-footer' });
+  footer.appendChild(el('a', {
+    href: '/install?reset=1',
+    class: 'install-reset-link',
+    text: tx('resetInstallState'),
+  }));
+  section.appendChild(footer);
 
   host.appendChild(section);
 

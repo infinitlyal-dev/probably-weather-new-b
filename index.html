@@ -51,6 +51,29 @@
   <link rel="apple-touch-icon" href="assets/icon-192.png"/>
   <link rel="stylesheet" href="assets/app.css"/>
   <link rel="manifest" href="manifest.json"/>
+  <script>
+    // ?reset=1 emergency wipe of all install-related localStorage. Runs
+    // synchronously BEFORE app.js / install.js so they see clean state.
+    // After clearing, strips the param from the URL so a refresh doesn't
+    // re-trigger. Defensive insurance against state pollution from earlier
+    // install iterations stuck on real iPhones with no devtools access.
+    (function () {
+      try {
+        if (new URLSearchParams(window.location.search).get('reset') !== '1') return;
+        var keysToRemove = [];
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (k && (k.indexOf('pw_install') === 0 || k.indexOf('pw-install') === 0 || k === 'pw_installed' || k === 'pw-debug')) {
+            keysToRemove.push(k);
+          }
+        }
+        for (var j = 0; j < keysToRemove.length; j++) localStorage.removeItem(keysToRemove[j]);
+        var u = new URL(window.location.href);
+        u.searchParams.delete('reset');
+        history.replaceState(null, '', u.toString());
+      } catch (e) { /* swallow — even if reset fails, page still loads */ }
+    })();
+  </script>
 </head>
 <body class="home-active">
   <a href="#home-screen" class="skip-link">Skip to main content</a>

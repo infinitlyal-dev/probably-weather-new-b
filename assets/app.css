@@ -2859,6 +2859,23 @@ body.standalone-mode .install-footer-link {
 .install-already {
   border: 1px solid rgba(255,221,68,0.45);
 }
+/* Defensive escape hatch link in /install footer — lets a stuck user
+   wipe install-related localStorage from device-side without devtools. */
+.install-landing-footer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+.install-reset-link {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  min-block-size: 32px;
+  display: inline-block;
+  padding: 6px 8px;
+}
+.install-reset-link:hover { color: rgba(255,255,255,0.85); }
 .install-how summary {
   cursor: pointer;
   font-weight: 600;

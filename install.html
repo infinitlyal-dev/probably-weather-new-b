@@ -22,6 +22,26 @@
   <link rel="apple-touch-icon" href="/assets/icon-192.png"/>
   <link rel="manifest" href="/manifest.json"/>
   <link rel="stylesheet" href="/assets/app.css"/>
+  <script>
+    // ?reset=1 emergency wipe of install-related localStorage. Same handler
+    // as index.html — runs synchronously before /assets/install.js loads.
+    (function () {
+      try {
+        if (new URLSearchParams(window.location.search).get('reset') !== '1') return;
+        var keysToRemove = [];
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (k && (k.indexOf('pw_install') === 0 || k.indexOf('pw-install') === 0 || k === 'pw_installed' || k === 'pw-debug')) {
+            keysToRemove.push(k);
+          }
+        }
+        for (var j = 0; j < keysToRemove.length; j++) localStorage.removeItem(keysToRemove[j]);
+        var u = new URL(window.location.href);
+        u.searchParams.delete('reset');
+        history.replaceState(null, '', u.toString());
+      } catch (e) { /* swallow */ }
+    })();
+  </script>
   <style>
     body.install-page {
       background: linear-gradient(160deg, #1a1a2e 0%, #2a1f3a 60%, #1a1a2e 100%);
