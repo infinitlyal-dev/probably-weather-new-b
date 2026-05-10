@@ -339,6 +339,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
         localStorage.setItem(STORAGE_KEYS.completed, 'true');
       }
     } catch {}
+    try { window.__pwInstallInit = 'standalone-early-return'; } catch {}
     return { platform, standalone: true };
   }
 
@@ -516,6 +517,8 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   });
 
   applyTranslations();
+
+  try { window.__pwInstallInit = 'completed'; } catch {}
 
   return {
     platform,

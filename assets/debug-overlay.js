@@ -118,6 +118,21 @@ function initDebugOverlay() {
     const ENGAGEMENT_MS = 10 * 1000;
     const engagementFired = !!(elapsed !== null && elapsed >= ENGAGEMENT_MS && interacted);
 
+    // Banner / body classList — distinguishes hypotheses about why
+    // display:none persists. If body has 'standalone-mode', the
+    // !important CSS rule wins; if banner still has 'hidden', showBanner
+    // never ran. Sentinel set by install.js init reveals whether init
+    // completed, took the standalone early-return, or never ran at all.
+    const bodyClasses = document.body && document.body.className
+      ? document.body.className
+      : '(empty)';
+    const bannerClasses = banner && banner.className
+      ? banner.className
+      : '(empty)';
+    const installInit = (typeof window.__pwInstallInit === 'string'
+      ? window.__pwInstallInit
+      : 'undefined (init never ran)');
+
     const lines = [
       `href: ${window.location.href}`,
       `UA: ${ua.slice(0, 60)}${ua.length > 60 ? '…' : ''}`,
@@ -125,6 +140,9 @@ function initDebugOverlay() {
       `SW cache: ${cacheVersion}`,
       `SW controller: ${truncate(swControllerScript, 60)}`,
       `standalone: ${standalone} (mm:${standaloneMatch} ios:${iosStandalone})`,
+      `body classes: ${bodyClasses}`,
+      `installBanner classes: ${bannerClasses}`,
+      `install init: ${installInit}`,
       `installBanner: DOM=${!!banner} offsetParent=${describeOffsetParent(banner)} display=${cssDisplay(banner)} visible=${reallyVisible(banner)}`,
       `iosInstallModal: DOM=${!!iosModal} offsetParent=${describeOffsetParent(iosModal)} display=${cssDisplay(iosModal)} visible=${reallyVisible(iosModal)}`,
       `iosChromeModal: DOM=${!!chromeModal} offsetParent=${describeOffsetParent(chromeModal)} display=${cssDisplay(chromeModal)} visible=${reallyVisible(chromeModal)}`,
