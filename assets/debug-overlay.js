@@ -113,10 +113,11 @@ function initDebugOverlay() {
     const chromeModal = document.getElementById('iosChromeModal');
 
     const fs = safeGet('pw_install_first_seen');
-    const interacted = safeGet('pw_install_interacted') === 'true';
     const elapsed = fs ? (Date.now() - Number(fs)) : null;
-    const ENGAGEMENT_MS = 10 * 1000;
-    const engagementFired = !!(elapsed !== null && elapsed >= ENGAGEMENT_MS && interacted);
+    // Mirrors install.js — banner appears on the timer alone, no
+    // interaction gesture required. ENGAGEMENT_MS is now 1500ms (was 10s).
+    const ENGAGEMENT_MS = 1500;
+    const engagementFired = !!(elapsed !== null && elapsed >= ENGAGEMENT_MS);
 
     // Banner / body classList — distinguishes hypotheses about why
     // display:none persists. If body has 'standalone-mode', the
@@ -146,7 +147,7 @@ function initDebugOverlay() {
       `installBanner: DOM=${!!banner} offsetParent=${describeOffsetParent(banner)} display=${cssDisplay(banner)} visible=${reallyVisible(banner)}`,
       `iosInstallModal: DOM=${!!iosModal} offsetParent=${describeOffsetParent(iosModal)} display=${cssDisplay(iosModal)} visible=${reallyVisible(iosModal)}`,
       `iosChromeModal: DOM=${!!chromeModal} offsetParent=${describeOffsetParent(chromeModal)} display=${cssDisplay(chromeModal)} visible=${reallyVisible(chromeModal)}`,
-      `engagement fired: ${engagementFired} (elapsed ${elapsed === null ? 'n/a' : elapsed + 'ms'} / interacted ${interacted})`,
+      `engagement fired: ${engagementFired} (elapsed ${elapsed === null ? 'n/a' : elapsed + 'ms'} / threshold ${ENGAGEMENT_MS}ms)`,
       `last gesture: ${lastGestureAt ? `${new Date(lastGestureAt).toISOString().slice(11, 23)} (${Date.now() - lastGestureAt}ms ago)` : 'never'}`,
       `pw-* localStorage: ${listPwKeys()}`,
       `now: ${new Date().toISOString()}`,

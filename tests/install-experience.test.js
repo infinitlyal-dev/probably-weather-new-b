@@ -64,8 +64,7 @@ describe('install — shouldShowBanner state machine', () => {
     installed: null,
     completed: null,
     dismissedUntil: null,
-    firstSeen: String(Date.now() - (ENGAGEMENT_MS + 1000)),
-    interacted: 'true',
+    firstSeen: String(Date.now() - (ENGAGEMENT_MS + 500)),
     ...overrides,
   });
 
@@ -119,26 +118,27 @@ describe('install — shouldShowBanner state machine', () => {
     ).toBe(true);
   });
 
-  it('does NOT show before engagement window elapses (10s)', () => {
+  it('does NOT show before engagement window elapses (1.5s)', () => {
     const now = Date.now();
     expect(
       shouldShowBanner({
-        storage: baseStorage({ firstSeen: String(now - 5_000) }),
+        storage: baseStorage({ firstSeen: String(now - 500) }),
         now,
         platform: 'android-chrome',
       })
     ).toBe(false);
   });
 
-  it('does NOT show without an interaction signal even after 10s', () => {
+  it('DOES show after the engagement window elapses with NO interaction required (timer alone)', () => {
     const now = Date.now();
+    // No `interacted` field at all — gate is timer-only now.
     expect(
       shouldShowBanner({
-        storage: baseStorage({ firstSeen: String(now - 60_000), interacted: null }),
+        storage: { firstSeen: String(now - 2_000) },
         now,
         platform: 'android-chrome',
       })
-    ).toBe(false);
+    ).toBe(true);
   });
 
   it('does NOT show on desktop-other or other (no install path)', () => {
@@ -283,15 +283,40 @@ describe('install — DOM markup wired into index.html', () => {
     expect(c).toMatch(/body\.install-modal-active \.share-btn\s*\{[^}]*display:\s*none\s*!important/);
   });
 
-  it('iosInstallModal × tap is treated as a "Not now" dismissal — closes modal, hides banner, sets dismissedUntil', () => {
+  it('iosInstallModal × tap is a permanent dismissal — closes modal, hides banner, writes pw_install_completed', () => {
     const src = installJs();
-    // The iosModalClose listener is no longer the bare closeIosModal
-    // reference — it's an inline arrow that does all three actions.
+    // The iosModalClose listener is the inline arrow doing all three actions
     expect(src).not.toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], closeIosModal\)/);
-    // × handler writes the same dismissal flag the "Not now" banner button uses
-    expect(src).toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], \(\) => \{[\s\S]*?setItem\(STORAGE_KEYS\.dismissedUntil, String\(dismissUntilTimestamp\(\)\)\)/);
+    // × handler writes pw_install_completed = 'true' (permanent banner suppression)
+    expect(src).toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], \(\) => \{[\s\S]*?setItem\(STORAGE_KEYS\.completed, ['"]true['"]\)/);
+    // × handler does NOT write the 7-day dismissedUntil — that's reserved
+    // for the "Not now" banner button which expresses softer intent.
+    expect(src).not.toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], \(\) => \{[\s\S]*?setItem\(STORAGE_KEYS\.dismissedUntil/);
     // × handler calls both closeIosModal AND hideBanner
     expect(src).toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], \(\) => \{[\s\S]*?closeIosModal\(\)[\s\S]*?hideBanner\(\)/);
+  });
+
+  it('"Not now" banner button still uses the softer 7-day dismissedUntil cooldown (× and Not-now have different intents)', () => {
+    const src = installJs();
+    // Extract just the dismissBtn handler block (up to first `});`) so
+    // we don't accidentally match the `appinstalled` listener below it.
+    const m = src.match(/dismissBtn\?\.addEventListener\(['"]click['"], \(\) => \{[\s\S]*?\}\);/);
+    expect(m, 'dismissBtn handler block found').toBeTruthy();
+    const block = m[0];
+    expect(block).toMatch(/setItem\(STORAGE_KEYS\.dismissedUntil, String\(dismissUntilTimestamp\(\)\)\)/);
+    // And does NOT write the permanent completed flag inside its own body.
+    expect(block).not.toMatch(/STORAGE_KEYS\.completed/);
+  });
+
+  it('pw_install_completed=true on storage suppresses the banner across reloads (uses the existing completed gate)', () => {
+    const now = Date.now();
+    expect(
+      shouldShowBanner({
+        storage: { completed: 'true', firstSeen: String(now - 60_000) },
+        now,
+        platform: 'ios-safari',
+      })
+    ).toBe(false);
   });
 
   it('iosInstallModal backdrop tap stays close-modal-only — does NOT dismiss the banner', () => {
@@ -335,15 +360,22 @@ describe('install — standalone mode hiding via CSS and JS', () => {
 });
 
 describe('install — engagement gate wiring', () => {
-  it('records first_seen, then waits for an interaction event before scheduling a banner check', () => {
+  it('records first_seen and schedules a banner check on the timer alone (no interaction required)', () => {
     const src = installJs();
     expect(src).toMatch(/STORAGE_KEYS\.firstSeen/);
-    expect(src).toMatch(/STORAGE_KEYS\.interacted/);
-    // Listens to at least one of these interaction events
-    expect(src).toMatch(/'pointerdown'|'touchstart'|'scroll'|'keydown'/);
+    // Timer-driven banner check
+    expect(src).toMatch(/setTimeout\(maybeShowBanner/);
+    // No interaction-tracking listeners — gate is timer-only.
+    expect(src).not.toMatch(/STORAGE_KEYS\.interacted/);
+    expect(src).not.toMatch(/['"]pointerdown['"]|['"]touchstart['"]|['"]scroll['"],\s*['"]keydown['"]/);
+    expect(src).not.toMatch(/recordInteraction/);
+    expect(src).not.toMatch(/interactionRecorded/);
   });
-  it('engagement constant is 10 seconds', () => {
-    expect(ENGAGEMENT_MS).toBe(10_000);
+  it('engagement constant is 1.5 seconds', () => {
+    expect(ENGAGEMENT_MS).toBe(1500);
+  });
+  it('STORAGE_KEYS.interacted is removed (no longer needed)', () => {
+    expect(STORAGE_KEYS.interacted).toBeUndefined();
   });
 });
 

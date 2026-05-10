@@ -8,11 +8,14 @@ export const STORAGE_KEYS = {
   dismissedUntil: 'pw_install_dismissed_until',
   completed: 'pw_install_completed',
   firstSeen: 'pw_install_first_seen',
-  interacted: 'pw_install_interacted',
 };
 
 export const DISMISS_DAYS = 7;
-export const ENGAGEMENT_MS = 10 * 1000;
+// Banner appears on a short timer alone — no interaction gesture required.
+// Users coming from a shared link (WhatsApp etc.) see the install banner
+// ~1.5s after page load. The previous 10s + interaction gate suppressed
+// the banner for users who landed on the page and didn't move within 10s.
+export const ENGAGEMENT_MS = 1500;
 
 /* -------- Translations (full T[install] block, also re-used by install.html) -------- */
 export const INSTALL_T = {
@@ -258,7 +261,6 @@ export function shouldShowBanner({ storage = {}, now = Date.now(), standalone = 
   if (!storage.firstSeen) return false;
   const elapsed = now - Number(storage.firstSeen);
   if (elapsed < ENGAGEMENT_MS) return false;
-  if (!storage.interacted) return false;
   if (platform === 'other' || platform === 'desktop-other') return false;
   return true;
 }
@@ -369,17 +371,6 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     hideBanner();
   });
 
-  let interactionRecorded = false;
-  const recordInteraction = () => {
-    if (interactionRecorded) return;
-    interactionRecorded = true;
-    try { localStorage.setItem(STORAGE_KEYS.interacted, 'true'); } catch {}
-    scheduleBannerCheck();
-  };
-  ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach((ev) => {
-    window.addEventListener(ev, recordInteraction, { once: true, passive: true });
-  });
-
   let bannerCheckTimer = null;
   function scheduleBannerCheck() {
     const firstSeen = Number(localStorage.getItem(STORAGE_KEYS.firstSeen) || Date.now());
@@ -396,7 +387,6 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
       dismissedUntil: safeGet(STORAGE_KEYS.dismissedUntil),
       completed: safeGet(STORAGE_KEYS.completed),
       firstSeen: safeGet(STORAGE_KEYS.firstSeen),
-      interacted: safeGet(STORAGE_KEYS.interacted),
     };
   }
   function safeGet(k) { try { return localStorage.getItem(k); } catch { return null; } }
@@ -505,13 +495,16 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     hideBanner();
   });
 
-  // × tap is an explicit "I'm done with this" — close the modal, hide the
-  // install banner, and set the same 7-day dismissal flag the "Not now"
-  // banner button uses. Backdrop tap (below) is intentionally NOT a
-  // dismissal — that's just "close the modal" so a user who tapped by
-  // accident still gets another chance to install via the banner.
+  // × tap is an explicit "I'm done with this" — by the time the user
+  // taps it they've read the full install instructions, so they've
+  // either followed them (banner shouldn't reappear) or chosen not to
+  // (also shouldn't reappear). Set the existing pw_install_completed
+  // flag for permanent banner suppression. The "Not now" banner button
+  // keeps its softer 7-day dismissedUntil cooldown — different intent.
+  // Backdrop tap (below) writes nothing — close-modal-only, forgiving
+  // for accidental backdrop taps.
   iosModalClose?.addEventListener('click', () => {
-    try { localStorage.setItem(STORAGE_KEYS.dismissedUntil, String(dismissUntilTimestamp())); } catch {}
+    try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
     closeIosModal();
     hideBanner();
   });
