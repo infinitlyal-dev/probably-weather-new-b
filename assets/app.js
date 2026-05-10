@@ -1566,7 +1566,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setupServiceWorkerUpdates();
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
-  installExperience = initInstallExperience({ getLanguage: () => settings.lang || 'en', showToast });
+  // Wrap install init in a visible error boundary. Silent throws from
+  // install.js have caused multiple unexplained iPhone regressions where
+  // the banner just doesn't appear and there's no way to see why without
+  // device-side console access. This makes any sync init failure
+  // immediately visible on the user's screen.
+  try {
+    installExperience = initInstallExperience({ getLanguage: () => settings.lang || 'en', showToast });
+  } catch (installInitErr) {
+    try {
+      const errBanner = document.createElement('div');
+      errBanner.id = 'pwInstallErrorBanner';
+      errBanner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999999;padding:8px;background:#cc0000;color:#fff;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;line-height:1.35;max-width:100%;word-break:break-all;white-space:pre-wrap;box-shadow:0 2px 8px rgba(0,0,0,0.5)';
+      errBanner.textContent = 'INSTALL INIT ERROR\n' + installInitErr.name + ': ' + installInitErr.message + '\n' + (installInitErr.stack || '(no stack)');
+      document.body.appendChild(errBanner);
+    } catch (_) { /* if rendering the error banner itself fails, fall through silently */ }
+    console.error('[install] init failed', installInitErr);
+  }
   homePlace = loadJSON(STORAGE.home, null);
   const savedLoc = loadJSON(STORAGE.location, null);
   if (sharedPlace) { showScreen(screenHome); loadAndRender(sharedPlace); }
