@@ -505,7 +505,16 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     hideBanner();
   });
 
-  iosModalClose?.addEventListener('click', closeIosModal);
+  // × tap is an explicit "I'm done with this" — close the modal, hide the
+  // install banner, and set the same 7-day dismissal flag the "Not now"
+  // banner button uses. Backdrop tap (below) is intentionally NOT a
+  // dismissal — that's just "close the modal" so a user who tapped by
+  // accident still gets another chance to install via the banner.
+  iosModalClose?.addEventListener('click', () => {
+    try { localStorage.setItem(STORAGE_KEYS.dismissedUntil, String(dismissUntilTimestamp())); } catch {}
+    closeIosModal();
+    hideBanner();
+  });
   iosChromeClose?.addEventListener('click', closeIosChromeModal);
   iosModal?.addEventListener('click', (ev) => { if (ev.target === iosModal) closeIosModal(); });
   iosChromeModal?.addEventListener('click', (ev) => { if (ev.target === iosChromeModal) closeIosChromeModal(); });

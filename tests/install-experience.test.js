@@ -282,6 +282,25 @@ describe('install — DOM markup wired into index.html', () => {
     const c = css();
     expect(c).toMatch(/body\.install-modal-active \.share-btn\s*\{[^}]*display:\s*none\s*!important/);
   });
+
+  it('iosInstallModal × tap is treated as a "Not now" dismissal — closes modal, hides banner, sets dismissedUntil', () => {
+    const src = installJs();
+    // The iosModalClose listener is no longer the bare closeIosModal
+    // reference — it's an inline arrow that does all three actions.
+    expect(src).not.toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], closeIosModal\)/);
+    // × handler writes the same dismissal flag the "Not now" banner button uses
+    expect(src).toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], \(\) => \{[\s\S]*?setItem\(STORAGE_KEYS\.dismissedUntil, String\(dismissUntilTimestamp\(\)\)\)/);
+    // × handler calls both closeIosModal AND hideBanner
+    expect(src).toMatch(/iosModalClose\?\.addEventListener\(['"]click['"], \(\) => \{[\s\S]*?closeIosModal\(\)[\s\S]*?hideBanner\(\)/);
+  });
+
+  it('iosInstallModal backdrop tap stays close-modal-only — does NOT dismiss the banner', () => {
+    const src = installJs();
+    // Backdrop handler is unchanged from before: just closeIosModal,
+    // no dismissedUntil write, no hideBanner. Accidental backdrop tap
+    // should not penalize the user with a 7-day banner cooldown.
+    expect(src).toMatch(/iosModal\?\.addEventListener\(['"]click['"], \(ev\) => \{ if \(ev\.target === iosModal\) closeIosModal\(\); \}\)/);
+  });
   it('renders the iOS Chrome handoff modal', () => {
     const h = html();
     expect(h).toMatch(/id="iosChromeModal"[^>]*role="dialog"/);
