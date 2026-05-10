@@ -340,5 +340,13 @@
   </div>
 
   <script type="module" src="assets/app.js"></script>
+  <script type="module">
+    // Diagnostic overlay loader — only fetches the module when debug is
+    // active. No-op for production users without ?debug=1 or pw-debug=1.
+    if (new URLSearchParams(window.location.search).get('debug') === '1' ||
+        (function () { try { return localStorage.getItem('pw-debug') === '1'; } catch (_) { return false; } })()) {
+      import('./assets/debug-overlay.js').catch(function () {});
+    }
+  </script>
 </body>
 </html>
