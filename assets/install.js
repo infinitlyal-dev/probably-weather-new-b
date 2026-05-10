@@ -1,52 +1,55 @@
-/* Probably Weather — PWA Install Card
-   Always-visible inline card at the bottom of the page on iOS, with an
-   accordion-style "Show me how" expansion that reveals the 3-step
-   Add-to-Home-Screen guide. Platform-specific content:
-   - iOS Chrome: 3 steps starting with an "Open in Safari" handoff button
-   - iOS Safari: 3 Share/Add-to-Home/Add steps + Edit Actions hint
-   No engagement gate, no auto-open triggers, no URL handoff signals.
-   The card is shown unconditionally on iOS until the user dismisses it. */
+/* Probably Weather — PWA Install Experience
+   Self-contained module: engagement gate, platform detection, banner orchestration,
+   iOS instruction modal, iOS-Chrome handoff modal, /install landing-page helper.
+   Exports a small pure surface for unit testing alongside the DOM init function. */
 
 export const STORAGE_KEYS = {
-  cardDismissed: 'pw-install-card-dismissed',
+  installed: 'pw_installed',
+  dismissedUntil: 'pw_install_dismissed_until',
+  completed: 'pw_install_completed',
+  firstSeen: 'pw_install_first_seen',
+  interacted: 'pw_install_interacted',
 };
 
-/* -------- Translations (all 5 SA languages: en, af, zu, xh, st) -------- */
-export const INSTALL_T = {
-  cardTitle: {
-    en: 'Install Probably Weather',
-    af: 'Installeer Probably Weather',
-    zu: 'Faka i-Probably Weather',
-    xh: 'Faka i-Probably Weather',
-    st: 'Kenya Probably Weather',
-  },
-  cardSubtitle: {
-    en: 'Add to your home screen for the best experience',
-    af: 'Voeg by jou tuisskerm vir die beste ervaring',
-    zu: 'Engeza kusikrini sakho sasekhaya ukuze uthole okuhle kakhulu',
-    xh: 'Yongeza kwiscreen sakho sasekhaya ukuze ufumane okona kuhle',
-    st: 'Eketsa skrineng sa hao sa lehae bakeng sa boiphihlelo bo molemo',
-  },
-  cardShowMeHow: {
-    en: 'Show me how',
-    af: 'Wys my hoe',
-    zu: 'Ngitshele kanjani',
-    xh: 'Ndibonise indlela',
-    st: 'Mpontshe ka mokhoa',
-  },
-  cardDismissLabel: {
-    en: 'Dismiss',
-    af: 'Maak toe',
-    zu: 'Cashisa',
-    xh: 'Cima',
-    st: 'Tlohela',
-  },
+export const DISMISS_DAYS = 7;
+export const ENGAGEMENT_MS = 10 * 1000;
 
-  // 3-step Add-to-Home guide content (rendered into the expanded card).
-  // iOS native UI labels (Share, Add to Home Screen, Add, Edit Actions)
-  // stay English in every language because that's what iOS Safari literally
-  // renders on screen. Backticks mark segments rendered as <code> "gold pill"
-  // chips so users can pattern-match against the actual iOS UI.
+/* -------- Translations (full T[install] block, also re-used by install.html) -------- */
+export const INSTALL_T = {
+  bannerTitle: {
+    en: 'Add Probably Weather to your home screen',
+    af: 'Voeg Probably Weather by jou tuisskerm',
+    zu: 'Engeza i-Probably Weather kusikrini sakho sasekhaya',
+    xh: 'Yongeza i-Probably Weather kwiscreen sakho sasekhaya',
+    st: 'Eketsa Probably Weather skrineng sa hao sa lehae',
+  },
+  bannerInstall: {
+    en: 'Install',
+    af: 'Installeer',
+    zu: 'Faka',
+    xh: 'Faka',
+    st: 'Kenya',
+  },
+  bannerDismiss: {
+    en: 'Not now',
+    af: 'Nie nou nie',
+    zu: 'Hhayi manje',
+    xh: 'Hayi ngoku',
+    st: 'Eseng hona joale',
+  },
+  iosTitle: {
+    en: 'Install in 3 steps',
+    af: 'Installeer in 3 stappe',
+    zu: 'Faka ngezinyathelo ezi-3',
+    xh: 'Faka kumanyathelo ama-3',
+    st: 'Kenya ka mehato e 3',
+  },
+  // iOS native UI labels (Share, Add to Home Screen, Add) stay English in
+  // every language because that's what iOS Safari literally renders on screen
+  // — iOS doesn't ship Zulu/Xhosa/Sotho UI, and most SA users run their phones
+  // in English even when they prefer other languages in apps. Backticks mark
+  // segments that the renderer wraps in <code class="install-os-label"> so
+  // the user can pattern-match them visually against the actual iOS UI.
   iosStep1: {
     en: 'Tap the `Share` button',
     af: 'Tik op die `Share`-knoppie',
@@ -68,30 +71,28 @@ export const INSTALL_T = {
     xh: 'Cofa u-`Add` ukuqinisekisa',
     st: 'Tobetsa `Add` ho netefatsa',
   },
-
-  // iOS Chrome-specific: step 1 is "tap the button below to switch to
-  // Safari" — the button itself fires the bare x-safari- URL. Steps 2 and
-  // 3 preview what comes next once Safari is open.
-  iosChromeStep1Tap: {
-    en: 'Tap to open in Safari',
-    af: 'Tik om in Safari oop te maak',
-    zu: 'Thepha ukuze uvule ku-Safari',
-    xh: 'Cofa ukuze uvule kwi-Safari',
-    st: 'Tobetsa ho bula ho Safari',
+  // The modal's own "Got it" close button IS PW UI, not native iOS UI, so
+  // it gets fully translated.
+  iosGotIt: {
+    en: 'Got it',
+    af: 'Reg so',
+    zu: 'Ngiyezwa',
+    xh: 'Ndiyaziva',
+    st: 'Ke utlwile',
   },
-  iosChromeStep2Share: {
-    en: 'In Safari, tap the `Share` button',
-    af: 'Tik in Safari op die `Share`-knoppie',
-    zu: 'Ku-Safari, thepha inkinobho ye-`Share`',
-    xh: 'Kwi-Safari, cofa iqhosha le-`Share`',
-    st: 'Ho Safari, tobetsa konopo ya `Share`',
+  iosChromeTitle: {
+    en: 'Open in Safari to install',
+    af: 'Maak in Safari oop om te installeer',
+    zu: 'Vula ku-Safari ukuze ufake',
+    xh: 'Vula kwi-Safari ukuze ufake',
+    st: 'Bula ho Safari ho kenya',
   },
-  iosChromeStep3Add: {
-    en: 'Tap `Add to Home Screen`',
-    af: 'Tik op `Add to Home Screen`',
-    zu: 'Thepha `Add to Home Screen`',
-    xh: 'Cofa `Add to Home Screen`',
-    st: 'Tobetsa `Add to Home Screen`',
+  iosChromeBody: {
+    en: 'Chrome on iPhone can’t install apps. Tap below to open this site in Safari, then follow the steps to install.',
+    af: 'Chrome op iPhone kan nie programme installeer nie. Tik hieronder om hierdie webwerf in Safari oop te maak, dan volg jy die stappe.',
+    zu: 'I-Chrome ku-iPhone ayikwazi ukufaka izinhlelo zokusebenza. Thepha ngezansi ukuze uvule le sayithi ku-Safari, bese ulandela izinyathelo.',
+    xh: 'I-Chrome kwi-iPhone ayikwazi ukufaka izicelo. Cofa ezantsi ukuze uvule le saythi kwi-Safari, ulandele amanyathelo.',
+    st: 'Chrome ho iPhone e ke ke ea kenya li-app. Tobetsa ka tlase ho bula sebaka sena ho Safari, joale latela mehato.',
   },
   iosChromeOpenSafari: {
     en: 'Open in Safari',
@@ -100,25 +101,13 @@ export const INSTALL_T = {
     xh: 'Vula kwi-Safari',
     st: 'Bula ho Safari',
   },
-  iosEditActionsHint: {
-    en: 'Don’t see `Add to Home Screen`? Tap `Edit Actions` at the bottom of the Share menu and enable it.',
-    af: 'Sien jy nie `Add to Home Screen` nie? Tik `Edit Actions` onder in die Deel-kieslys en skakel dit aan.',
-    zu: 'Awuyiboni i-`Add to Home Screen`? Thepha u-`Edit Actions` ezansi kwemenyu ye-Share, bese uyivumela.',
-    xh: 'Awuyiboni i-`Add to Home Screen`? Cofa u-`Edit Actions` ezantsi kwimenyu ye-Share, uyivumele.',
-    st: 'Ha o bone `Add to Home Screen`? Tobetsa `Edit Actions` ka tlase ho menyu ya Share, ebe u e nolofatsa.',
+  iosChromeFallback: {
+    en: 'If nothing happens, copy this link and paste it into Safari:',
+    af: 'As niks gebeur nie, kopieer hierdie skakel en plak dit in Safari:',
+    zu: 'Uma kungasebenzi, kopisha isixhumanisi sokugcina sinamathisele ku-Safari:',
+    xh: 'Ukuba akukho nto yenzekayo, kopa esi sixhumanisi usincamathisele kwi-Safari:',
+    st: 'Haeba ho se na letho le etsahalang, kopitsa sehokelo sena u se kenye ho Safari:',
   },
-
-  // Footer link re-shows the card if the user previously dismissed it.
-  footerInstallLink: {
-    en: 'Install Probably Weather',
-    af: 'Installeer Probably Weather',
-    zu: 'Faka i-Probably Weather',
-    xh: 'Faka i-Probably Weather',
-    st: 'Kenya Probably Weather',
-  },
-
-  // /install landing-page strings (used by renderLandingPage for shared
-  // WhatsApp links). Unchanged from the previous design.
   landingHero: {
     en: 'Install Probably Weather',
     af: 'Installeer Probably Weather',
@@ -189,6 +178,20 @@ export const INSTALL_T = {
     xh: 'Skena ngekhamera yefowuni yakho ukuze ufake.',
     st: 'Sekena ka khamera ea fono ea hao ho kenya.',
   },
+  footerInstallLink: {
+    en: 'Install Probably Weather',
+    af: 'Installeer Probably Weather',
+    zu: 'Faka i-Probably Weather',
+    xh: 'Faka i-Probably Weather',
+    st: 'Kenya Probably Weather',
+  },
+  fallbackPrompt: {
+    en: 'Tap your browser menu, then Install app — or try again in a moment.',
+    af: "Tik op jou blaaier-kieslys, dan Installeer app — of probeer 'n oomblik weer.",
+    zu: 'Thepha imenyu yesiphequluli, bese Faka uhlelo lokusebenza — noma uzame futhi ngomzuzwana.',
+    xh: 'Cofa imenyu yebrawza, ze ufakele i-app — okanye uzame kwakhona ngomzuzwana.',
+    st: 'Tobetsa menyu ea sebatli, ebe Kenya app — kapa leka hape ka motsotsoana.',
+  },
 };
 
 /* -------- Pure functions (testable without DOM) -------- */
@@ -200,11 +203,10 @@ export function tInstall(key, lang = 'en') {
 }
 
 /**
- * Detect platform from a User-Agent string.
- * Returns one of: 'android-chrome', 'ios-safari', 'ios-chrome',
- * 'desktop-chrome', 'desktop-other', 'other'.
+ * Detect platform from a User-Agent string + standalone-mode flag.
+ * Returns one of: 'android-chrome', 'ios-safari', 'ios-chrome', 'desktop-chrome', 'desktop-other', 'other'.
  */
-export function detectPlatform(uaString = '') {
+export function detectPlatform(uaString = '', { standalone = false } = {}) {
   const ua = String(uaString || '');
   const isIOS = /iPad|iPhone|iPod/.test(ua) && !/Windows/.test(ua);
   const isCriOS = /CriOS\//.test(ua);
@@ -226,13 +228,24 @@ export function detectPlatform(uaString = '') {
 }
 
 /**
- * Decide whether the install card should be shown. Pure function.
- * Card is iOS-only, hidden in standalone mode, hidden after explicit dismiss.
+ * Decide whether the install banner should be shown. Pure function.
  */
-export function shouldShowCard({ storage = {}, standalone = false, platform = 'other' } = {}) {
+export function shouldShowBanner({ storage = {}, now = Date.now(), standalone = false, platform = 'other' } = {}) {
   if (standalone) return false;
-  if (storage.cardDismissed === '1' || storage.cardDismissed === 1 || storage.cardDismissed === true) return false;
-  return platform === 'ios-safari' || platform === 'ios-chrome';
+  if (storage.installed === 'true' || storage.installed === true) return false;
+  if (storage.completed === 'true' || storage.completed === true) return false;
+  const dismissedUntil = Number(storage.dismissedUntil || 0);
+  if (dismissedUntil && now < dismissedUntil) return false;
+  if (!storage.firstSeen) return false;
+  const elapsed = now - Number(storage.firstSeen);
+  if (elapsed < ENGAGEMENT_MS) return false;
+  if (!storage.interacted) return false;
+  if (platform === 'other' || platform === 'desktop-other') return false;
+  return true;
+}
+
+export function dismissUntilTimestamp(now = Date.now(), days = DISMISS_DAYS) {
+  return now + days * 24 * 60 * 60 * 1000;
 }
 
 /* -------- DOM helpers (no innerHTML; build with createElement) -------- */
@@ -255,16 +268,20 @@ function el(tag, attrs = {}, ...children) {
 }
 
 function svgFromMarkup(markup) {
+  // Markup is a constant from this module, never user-supplied. Parse via
+  // DOMParser so we don't touch innerHTML on a live tree.
   const parser = new DOMParser();
   const doc = parser.parseFromString(markup, 'image/svg+xml');
   return doc.documentElement;
 }
 
 /**
- * Render a translation string into a DOM node, splitting on backticks.
+ * Render a translation string into a live DOM node, splitting on backticks.
  * Even-indexed segments are plain text; odd-indexed segments are wrapped in
- * <code class="install-os-label"> to render as gold pills for native iOS UI
- * labels (Share, Add to Home Screen, Edit Actions, Add).
+ * <code class="install-os-label"> to visually flag native-iOS button labels
+ * that stay in English while the surrounding instruction is translated.
+ * Strings without backticks render as a single text node — equivalent to
+ * setting textContent.
  */
 function setI18nText(node, str) {
   while (node.firstChild) node.removeChild(node.firstChild);
@@ -283,146 +300,209 @@ function setI18nText(node, str) {
 
 /* -------- DOM init (only runs in browser) -------- */
 
-export function initInstallExperience({ getLanguage = () => 'en' } = {}) {
+export function initInstallExperience({ getLanguage = () => 'en', showToast = null } = {}) {
   if (typeof window === 'undefined') return null;
 
-  const card = document.getElementById('installCard');
+  const banner = document.getElementById('installBanner');
+  if (!banner) return null;
+  const installBtn = document.getElementById('installBannerInstall');
+  const dismissBtn = document.getElementById('installBannerDismiss');
+  const titleEl = document.getElementById('installBannerTitle');
+  const iosModal = document.getElementById('iosInstallModal');
+  const iosModalClose = document.getElementById('iosInstallClose');
+  const iosChromeModal = document.getElementById('iosChromeModal');
+  const iosChromeClose = document.getElementById('iosChromeClose');
+  const iosChromeOpenBtn = document.getElementById('iosChromeOpenSafari');
   const footerLink = document.getElementById('installFooterLink');
 
   const ua = navigator.userAgent || '';
   const standaloneMatch = window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
   const iosStandalone = window.navigator && window.navigator.standalone === true;
   const isStandalone = !!(standaloneMatch || iosStandalone);
-  const platform = detectPlatform(ua);
+  const platform = detectPlatform(ua, { standalone: isStandalone });
 
   if (isStandalone) {
     document.body.classList.add('standalone-mode');
-    if (card) card.hidden = true;
-    if (footerLink) footerLink.hidden = true;
+    try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
+    try {
+      if (!localStorage.getItem(STORAGE_KEYS.completed)) {
+        localStorage.setItem(STORAGE_KEYS.completed, 'true');
+      }
+    } catch {}
     return { platform, standalone: true };
   }
 
-  // Card is iOS-only. Android and desktop get nothing from this module —
-  // Android Chrome shows its own native PWA install affordance (URL-bar
-  // icon / mini-infobar) which we no longer intercept.
-  const isIos = platform === 'ios-safari' || platform === 'ios-chrome';
-  if (!isIos) {
-    if (card) card.hidden = true;
-    if (footerLink) footerLink.hidden = true;
-    return { platform, standalone: false };
+  try {
+    if (!localStorage.getItem(STORAGE_KEYS.firstSeen)) {
+      localStorage.setItem(STORAGE_KEYS.firstSeen, String(Date.now()));
+    }
+  } catch {}
+
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (ev) => {
+    ev.preventDefault();
+    deferredPrompt = ev;
+  });
+  window.addEventListener('appinstalled', () => {
+    try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
+    try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
+    hideBanner();
+  });
+
+  let interactionRecorded = false;
+  const recordInteraction = () => {
+    if (interactionRecorded) return;
+    interactionRecorded = true;
+    try { localStorage.setItem(STORAGE_KEYS.interacted, 'true'); } catch {}
+    scheduleBannerCheck();
+  };
+  ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach((ev) => {
+    window.addEventListener(ev, recordInteraction, { once: true, passive: true });
+  });
+
+  let bannerCheckTimer = null;
+  function scheduleBannerCheck() {
+    const firstSeen = Number(localStorage.getItem(STORAGE_KEYS.firstSeen) || Date.now());
+    const elapsed = Date.now() - firstSeen;
+    const remaining = Math.max(0, ENGAGEMENT_MS - elapsed);
+    clearTimeout(bannerCheckTimer);
+    bannerCheckTimer = setTimeout(maybeShowBanner, remaining + 50);
   }
+  scheduleBannerCheck();
 
-  if (!card) return { platform, standalone: false };
-
-  const titleEl = document.getElementById('installCardTitle');
-  const subtitleEl = document.getElementById('installCardSubtitle');
-  const showBtn = document.getElementById('installCardShow');
-  const dismissBtn = document.getElementById('installCardDismiss');
-  const stepsContainer = document.getElementById('installCardSteps');
-
-  // Hide if the user previously dismissed.
-  const isDismissed = (() => {
-    try { return localStorage.getItem(STORAGE_KEYS.cardDismissed) === '1'; } catch { return false; }
-  })();
-  if (isDismissed) {
-    card.hidden = true;
-  } else {
-    card.hidden = false;
+  function readStorage() {
+    return {
+      installed: safeGet(STORAGE_KEYS.installed),
+      dismissedUntil: safeGet(STORAGE_KEYS.dismissedUntil),
+      completed: safeGet(STORAGE_KEYS.completed),
+      firstSeen: safeGet(STORAGE_KEYS.firstSeen),
+      interacted: safeGet(STORAGE_KEYS.interacted),
+    };
   }
+  function safeGet(k) { try { return localStorage.getItem(k); } catch { return null; } }
 
   function applyTranslations() {
     const lang = getLanguage() || 'en';
-    if (titleEl) setI18nText(titleEl, tInstall('cardTitle', lang));
-    if (subtitleEl) setI18nText(subtitleEl, tInstall('cardSubtitle', lang));
-    if (showBtn) setI18nText(showBtn, tInstall('cardShowMeHow', lang));
-    if (dismissBtn) dismissBtn.setAttribute('aria-label', tInstall('cardDismissLabel', lang));
+    if (titleEl) setI18nText(titleEl, tInstall('bannerTitle', lang));
+    if (installBtn) setI18nText(installBtn, tInstall('bannerInstall', lang));
+    if (dismissBtn) setI18nText(dismissBtn, tInstall('bannerDismiss', lang));
+    document.querySelectorAll('[data-install-i18n]').forEach((node) => {
+      const key = node.getAttribute('data-install-i18n');
+      setI18nText(node, tInstall(key, lang));
+    });
     if (footerLink) setI18nText(footerLink, tInstall('footerInstallLink', lang));
-    // Repopulate the expanded steps so language switches refresh them.
-    if (stepsContainer && card.classList.contains('expanded')) {
-      renderSteps();
+  }
+
+  function showBanner() {
+    if (!banner) return;
+    applyTranslations();
+    banner.classList.remove('hidden');
+    requestAnimationFrame(() => banner.classList.add('visible'));
+  }
+  function hideBanner() {
+    if (!banner) return;
+    banner.classList.remove('visible');
+    setTimeout(() => banner.classList.add('hidden'), 280);
+  }
+
+  function maybeShowBanner() {
+    const storage = readStorage();
+    const show = shouldShowBanner({
+      storage,
+      now: Date.now(),
+      standalone: false,
+      platform,
+    });
+    if (show) showBanner();
+  }
+
+  function openIosModal() {
+    if (!iosModal) return;
+    applyTranslations();
+    iosModal.classList.remove('hidden');
+    requestAnimationFrame(() => iosModal.classList.add('visible'));
+    iosModal.focus();
+  }
+  function closeIosModal() {
+    if (!iosModal) return;
+    iosModal.classList.remove('visible');
+    setTimeout(() => iosModal.classList.add('hidden'), 240);
+  }
+  function openIosChromeModal() {
+    if (!iosChromeModal) return;
+    applyTranslations();
+    const urlEl = document.getElementById('installModalUrl');
+    if (urlEl) urlEl.textContent = window.location.href;
+    iosChromeModal.classList.remove('hidden');
+    requestAnimationFrame(() => iosChromeModal.classList.add('visible'));
+    iosChromeModal.focus();
+  }
+  function closeIosChromeModal() {
+    if (!iosChromeModal) return;
+    iosChromeModal.classList.remove('visible');
+    setTimeout(() => iosChromeModal.classList.add('hidden'), 240);
+  }
+
+  installBtn?.addEventListener('click', async () => {
+    if (platform === 'android-chrome' || platform === 'desktop-chrome') {
+      if (!deferredPrompt) {
+        // Browser hasn't fired beforeinstallprompt yet (eligibility criteria not met
+        // this session, or already-installed-once edge case). Tell the user where
+        // the manual install lives instead of silently no-op'ing.
+        if (typeof showToast === 'function') {
+          showToast(tInstall('fallbackPrompt', getLanguage() || 'en'));
+        }
+        return;
+      }
+      try {
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        if (choice && choice.outcome === 'accepted') {
+          try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
+          try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
+          hideBanner();
+        } else {
+          try { localStorage.setItem(STORAGE_KEYS.dismissedUntil, String(dismissUntilTimestamp())); } catch {}
+          hideBanner();
+        }
+      } catch {
+        hideBanner();
+      }
+      return;
     }
-  }
+    if (platform === 'ios-safari') { openIosModal(); return; }
+    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
+  });
 
-  function renderSteps() {
-    if (!stepsContainer) return;
-    while (stepsContainer.firstChild) stepsContainer.removeChild(stepsContainer.firstChild);
-    const lang = getLanguage() || 'en';
-    const list = el('ol', { class: 'install-step-list' });
+  dismissBtn?.addEventListener('click', () => {
+    try { localStorage.setItem(STORAGE_KEYS.dismissedUntil, String(dismissUntilTimestamp())); } catch {}
+    hideBanner();
+  });
 
-    const stepRow = (n, iconMarkup, text, extra = null) => {
-      const li = el('li');
-      li.appendChild(el('span', { class: 'install-step-num', text: String(n) }));
-      const iconWrap = el('span', { class: 'install-step-icon', 'aria-hidden': 'true' });
-      iconWrap.appendChild(svgFromMarkup(iconMarkup));
-      li.appendChild(iconWrap);
-      const textSpan = el('span');
-      setI18nText(textSpan, text);
-      li.appendChild(textSpan);
-      if (extra) li.appendChild(extra);
-      return li;
-    };
+  iosModalClose?.addEventListener('click', closeIosModal);
+  iosChromeClose?.addEventListener('click', closeIosChromeModal);
+  iosModal?.addEventListener('click', (ev) => { if (ev.target === iosModal) closeIosModal(); });
+  iosChromeModal?.addEventListener('click', (ev) => { if (ev.target === iosChromeModal) closeIosChromeModal(); });
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key !== 'Escape') return;
+    if (iosModal && !iosModal.classList.contains('hidden')) closeIosModal();
+    if (iosChromeModal && !iosChromeModal.classList.contains('hidden')) closeIosChromeModal();
+  });
 
-    if (platform === 'ios-chrome') {
-      // Step 1: Tap to open in Safari + primary CTA button on the same row.
-      const openBtn = el('button', {
-        type: 'button',
-        id: 'installCardOpenSafari',
-        class: 'install-card-cta',
-        text: tInstall('iosChromeOpenSafari', lang),
-      });
-      openBtn.addEventListener('click', () => {
-        // Bare x-safari- URL: no params, no hash. The previous design
-        // tried to carry install intent across the handoff via ?install=1
-        // and #install — neither is reliable on real iOS.
-        try {
-          window.location.href = `x-safari-https://${window.location.host}${window.location.pathname}`;
-        } catch {}
-      });
-      list.appendChild(stepRow(1, safariCompassIcon(), tInstall('iosChromeStep1Tap', lang), openBtn));
-      list.appendChild(stepRow(2, iosShareIcon(), tInstall('iosChromeStep2Share', lang)));
-      list.appendChild(stepRow(3, addToHomeIcon(), tInstall('iosChromeStep3Add', lang)));
-    } else {
-      // ios-safari: full Add-to-Home flow + Edit Actions hint.
-      list.appendChild(stepRow(1, iosShareIcon(), tInstall('iosStep1', lang)));
-      list.appendChild(stepRow(2, addToHomeIcon(), tInstall('iosStep2', lang)));
-      list.appendChild(stepRow(3, plusIcon(), tInstall('iosStep3', lang)));
-    }
-    stepsContainer.appendChild(list);
+  iosChromeOpenBtn?.addEventListener('click', () => {
+    try {
+      window.location.href = `x-safari-${window.location.href}`;
+    } catch { /* leave modal open with copy fallback */ }
+    try { navigator.clipboard?.writeText(window.location.href).catch(() => {}); } catch {}
+  });
 
-    const hint = el('p', { class: 'install-step-hint' });
-    setI18nText(hint, tInstall('iosEditActionsHint', lang));
-    stepsContainer.appendChild(hint);
-  }
-
-  function expand() {
-    if (!stepsContainer) return;
-    // firstElementChild ignores HTML comments / whitespace text nodes that
-    // may exist in the markup placeholder — only counts real elements.
-    if (!stepsContainer.firstElementChild) renderSteps();
-    card.classList.add('expanded');
-    stepsContainer.hidden = false;
-    if (showBtn) {
-      showBtn.hidden = true;
-      showBtn.setAttribute('aria-expanded', 'true');
-    }
-  }
-
-  function dismiss() {
-    try { localStorage.setItem(STORAGE_KEYS.cardDismissed, '1'); } catch {}
-    card.hidden = true;
-  }
-
-  function reopen() {
-    try { localStorage.removeItem(STORAGE_KEYS.cardDismissed); } catch {}
-    card.hidden = false;
-    expand();
-  }
-
-  showBtn?.addEventListener('click', expand);
-  dismissBtn?.addEventListener('click', dismiss);
   footerLink?.addEventListener('click', (ev) => {
     ev.preventDefault();
-    reopen();
+    try { localStorage.removeItem(STORAGE_KEYS.dismissedUntil); } catch {}
+    if (platform === 'ios-safari') { openIosModal(); return; }
+    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
+    showBanner();
   });
 
   applyTranslations();
@@ -430,9 +510,10 @@ export function initInstallExperience({ getLanguage = () => 'en' } = {}) {
   return {
     platform,
     standalone: false,
-    expand,
-    dismiss,
-    reopen,
+    show: showBanner,
+    hide: hideBanner,
+    openIosModal,
+    openIosChromeModal,
     refreshLanguage: applyTranslations,
   };
 }
@@ -444,7 +525,7 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   const standalone = (typeof window !== 'undefined' && window.matchMedia &&
     window.matchMedia('(display-mode: standalone)').matches) ||
     (typeof window !== 'undefined' && window.navigator?.standalone === true);
-  const platform = detectPlatform(uaString);
+  const platform = detectPlatform(uaString, { standalone });
   const tx = (k) => tInstall(k, lang);
 
   while (host.firstChild) host.removeChild(host.firstChild);
@@ -459,11 +540,15 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   header.appendChild(el('p', { class: 'install-hero-subhead', text: tx('landingSubhead') }));
   section.appendChild(header);
 
-  // Platform-specific CTA card on the landing page
+  // Platform-specific CTA card
   let ctaCard;
   if (standalone) {
-    ctaCard = el('div', { class: 'install-card-landing install-already' },
+    ctaCard = el('div', { class: 'install-card install-already' },
       el('p', { text: tx('alreadyInstalled') }));
+  } else if (platform === 'android-chrome' || platform === 'desktop-chrome') {
+    const btn = el('button', { id: 'landingInstallNow', class: 'install-cta-btn', type: 'button', text: tx('installNow') });
+    const hint = el('p', { id: 'landingInstallHint', class: 'install-cta-hint', hidden: true });
+    ctaCard = el('div', { class: 'install-card' }, btn, hint);
   } else if (platform === 'ios-safari') {
     const list = el('ol', { class: 'install-step-list' });
     const stepRow = (n, iconMarkup, text) => {
@@ -480,28 +565,22 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
     list.appendChild(stepRow(1, iosShareIcon(), tx('iosStep1')));
     list.appendChild(stepRow(2, addToHomeIcon(), tx('iosStep2')));
     list.appendChild(stepRow(3, plusIcon(), tx('iosStep3')));
-    ctaCard = el('div', { class: 'install-card-landing install-steps' },
-      el('h3', { text: tx('cardTitle') }),
+    ctaCard = el('div', { class: 'install-card install-steps' },
+      el('h3', { text: tx('iosTitle') }),
       list,
     );
   } else if (platform === 'ios-chrome') {
-    const openBtn = el('button', { id: 'landingOpenSafari', class: 'install-cta-btn', type: 'button', text: tx('iosChromeOpenSafari') });
-    openBtn.addEventListener('click', () => {
-      try {
-        window.location.href = `x-safari-https://${window.location.host}/`;
-      } catch {}
-    });
-    ctaCard = el('div', { class: 'install-card-landing' },
-      el('h3', { text: tx('cardTitle') }),
-      el('p', { text: tx('cardSubtitle') }),
-      openBtn,
+    ctaCard = el('div', { class: 'install-card' },
+      el('h3', { text: tx('iosChromeTitle') }),
+      el('p', { text: tx('iosChromeBody') }),
+      el('button', { id: 'landingOpenSafari', class: 'install-cta-btn', type: 'button', text: tx('iosChromeOpenSafari') }),
+      el('p', { class: 'install-cta-hint', text: tx('iosChromeFallback') }),
+      el('code', { class: 'install-cta-url', text: (typeof window !== 'undefined' ? window.location.origin : '') }),
     );
   } else {
-    // Desktop or unknown: show a QR pointing back to the site so the user
-    // can scan it on their phone.
     const origin = (typeof window !== 'undefined' ? window.location.origin : '');
     const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(origin)}`;
-    ctaCard = el('div', { class: 'install-card-landing install-desktop-other' },
+    ctaCard = el('div', { class: 'install-card install-desktop-other' },
       el('h3', { text: tx('desktopOpenOnPhone') }),
       el('p', { text: tx('desktopQrHint') }),
       el('div', { class: 'install-qr' },
@@ -512,7 +591,7 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   section.appendChild(ctaCard);
 
   // Why card
-  const whyCard = el('section', { class: 'install-card-landing install-why' });
+  const whyCard = el('section', { class: 'install-card install-why' });
   whyCard.appendChild(el('h3', { text: tx('whyTitle') }));
   const ul = el('ul');
   const bullets = INSTALL_T.whyBullets[lang] || INSTALL_T.whyBullets.en;
@@ -528,6 +607,44 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
 
   host.appendChild(section);
 
+  // Wire interactive bits
+  const installNowBtn = host.querySelector('#landingInstallNow');
+  if (installNowBtn) {
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (ev) => {
+      ev.preventDefault();
+      deferredPrompt = ev;
+    });
+    installNowBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) {
+        const hint = host.querySelector('#landingInstallHint');
+        if (hint) {
+          hint.textContent = INSTALL_T.iosChromeFallback[lang] || INSTALL_T.iosChromeFallback.en;
+          hint.hidden = false;
+        }
+        return;
+      }
+      try {
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        if (choice?.outcome === 'accepted') {
+          try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
+          try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
+        }
+      } catch { /* swallowed */ }
+    });
+  }
+  const openSafariBtn = host.querySelector('#landingOpenSafari');
+  if (openSafariBtn) {
+    openSafariBtn.addEventListener('click', () => {
+      try {
+        window.location.href = `x-safari-${window.location.href}`;
+      } catch { /* swallowed */ }
+      try { navigator.clipboard?.writeText(window.location.origin).catch(() => {}); } catch {}
+    });
+  }
+
   return { platform, standalone };
 }
 
@@ -541,9 +658,6 @@ export function addToHomeIcon() {
 }
 export function plusIcon() {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>`;
-}
-export function safariCompassIcon() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M16.24 7.76 13.06 13.06 7.76 16.24 10.94 10.94 16.24 7.76z"/></svg>`;
 }
 export function pwLogoSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="56" height="56" aria-hidden="true">
