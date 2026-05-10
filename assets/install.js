@@ -44,41 +44,50 @@ export const INSTALL_T = {
     xh: 'Faka kumanyathelo ama-3',
     st: 'Kenya ka mehato e 3',
   },
-  // iOS native UI labels (Share, Add to Home Screen, Add) stay English in
-  // every language because that's what iOS Safari literally renders on screen
-  // — iOS doesn't ship Zulu/Xhosa/Sotho UI, and most SA users run their phones
-  // in English even when they prefer other languages in apps. Backticks mark
-  // segments that the renderer wraps in <code class="install-os-label"> so
-  // the user can pattern-match them visually against the actual iOS UI.
+  // iOS native UI labels (Share, Add to Home Screen, Edit Actions) stay
+  // English in every language — that's what iOS Safari literally renders
+  // on screen. Backticks mark segments wrapped in <code class="install-os-label">
+  // (gold pill) so users can pattern-match them visually against the
+  // actual iOS UI. The `×` in step 3 is also wrapped in a pill so it
+  // visually maps to the × button in the modal's top-right corner.
   iosStep1: {
-    en: 'Tap the `Share` button',
-    af: 'Tik op die `Share`-knoppie',
-    zu: 'Thepha inkinobho ye-`Share`',
-    xh: 'Cofa iqhosha le-`Share`',
-    st: 'Tobetsa konopo ya `Share`',
+    en: "Tap Safari's `Share` button at the bottom of your screen",
+    af: "Tik op Safari se `Share`-knoppie onder aan jou skerm",
+    zu: 'Thepha inkinobho `Share` ye-Safari ngezansi kwesikrini sakho',
+    xh: 'Cofa iqhosha `Share` le-Safari ezantsi kwiscreen yakho',
+    st: 'Tobetsa konopo ya `Share` ya Safari ka tlase ho skirini sa hao',
   },
   iosStep2: {
-    en: 'Scroll down, tap `Add to Home Screen`',
-    af: 'Scroll af, tik op `Add to Home Screen`',
-    zu: 'Skrolela phansi, thepha `Add to Home Screen`',
-    xh: 'Skrolela ezantsi, cofa `Add to Home Screen`',
-    st: 'Theosa fatshe, tobetsa `Add to Home Screen`',
+    en: 'Scroll, tap `Add to Home Screen`',
+    af: 'Scroll, tik op `Add to Home Screen`',
+    zu: 'Skrolela, thepha `Add to Home Screen`',
+    xh: 'Skrolela, cofa `Add to Home Screen`',
+    st: 'Theosa, tobetsa `Add to Home Screen`',
   },
   iosStep3: {
-    en: 'Tap `Add` to confirm',
-    af: 'Tik op `Add` om te bevestig',
-    zu: 'Thepha u-`Add` ukuqinisekisa',
-    xh: 'Cofa u-`Add` ukuqinisekisa',
-    st: 'Tobetsa `Add` ho netefatsa',
+    en: 'Tap `×` above to close these instructions',
+    af: 'Tik `×` hierbo om hierdie instruksies toe te maak',
+    zu: 'Thepha `×` ngenhla ukuvala lezi ziyalezo',
+    xh: 'Cofa `×` ngentla ukuvala le miyalelo',
+    st: 'Tobetsa `×` ka holimo ho koala litaelo tsena',
   },
-  // The modal's own "Got it" close button IS PW UI, not native iOS UI, so
-  // it gets fully translated.
-  iosGotIt: {
-    en: 'Got it',
-    af: 'Reg so',
-    zu: 'Ngiyezwa',
-    xh: 'Ndiyaziva',
-    st: 'Ke utlwile',
+  // Confirmation line below the 3 steps — positive close, distinct from
+  // the steps. Reads as "you're done" rather than a fourth instruction.
+  iosConfirmation: {
+    en: 'Probably Weather will appear on your home screen — tap the icon to open the app.',
+    af: 'Probably Weather sal op jou tuisskerm verskyn — tik die ikoon om die program oop te maak.',
+    zu: 'I-Probably Weather izovela kusikrini sakho sasekhaya — thepha i-icon ukuze uvule uhlelo lokusebenza.',
+    xh: 'I-Probably Weather iya kuvela kwiscreen yakho yasekhaya — cofa i-icon ukuze uvule i-app.',
+    st: 'Probably Weather e tla hlaha skrineng sa hao sa lehae — tobetsa letshwao ho bula app.',
+  },
+  // Auxiliary hint at the bottom — for users who can't find Add to Home
+  // Screen in the Share menu (iOS gates it behind Edit Actions on first use).
+  iosEditActionsHint: {
+    en: "Don't see `Add to Home Screen`? Tap `Edit Actions` at the bottom of the Share menu and turn it on.",
+    af: 'Sien jy nie `Add to Home Screen` nie? Tik `Edit Actions` onder in die Deel-kieslys en skakel dit aan.',
+    zu: 'Awuyiboni i-`Add to Home Screen`? Thepha u-`Edit Actions` ezansi kwemenyu ye-Share, bese uyivumela.',
+    xh: 'Awuyiboni i-`Add to Home Screen`? Cofa u-`Edit Actions` ezantsi kwimenyu ye-Share, uyivumele.',
+    st: 'Ha o bone `Add to Home Screen`? Tobetsa `Edit Actions` ka tlase ho menyu ya Share, ebe u e nolofatsa.',
   },
   iosChromeTitle: {
     en: 'Open in Safari to install',
@@ -433,11 +442,16 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     iosModal.classList.remove('hidden');
     requestAnimationFrame(() => iosModal.classList.add('visible'));
     iosModal.focus();
+    // Hide the app's own Share pill while the modal is open — it sits at
+    // the bottom-left and visually competes with iOS's native share sheet
+    // when the user follows step 1.
+    document.body.classList.add('install-modal-active');
   }
   function closeIosModal() {
     if (!iosModal) return;
     iosModal.classList.remove('visible');
     setTimeout(() => iosModal.classList.add('hidden'), 240);
+    document.body.classList.remove('install-modal-active');
   }
   function openIosChromeModal() {
     if (!iosChromeModal) return;

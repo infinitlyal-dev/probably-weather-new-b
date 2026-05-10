@@ -2644,6 +2644,85 @@ body.standalone-mode .install-footer-link {
   font-size: 1.1rem;
   font-weight: 700;
 }
+
+/* iOS Safari install modal — TOP-anchored variant. The native iOS Share
+   sheet slides up from the bottom, so the instructions need to live at
+   the top of the viewport to remain visible while the user interacts
+   with the share sheet. iosChromeModal keeps the shared bottom-sheet
+   styling above; only iosInstallModal is repositioned here. */
+#iosInstallModal { align-items: flex-start; padding-top: env(safe-area-inset-top, 0px); }
+#iosInstallModal .install-modal-card {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  padding: 20px 20px 24px;
+  transform: translateY(-100%);
+}
+/* Defeats specificity of the shared .install-modal.visible .install-modal-card
+   rule above — the #iosInstallModal scoped rule was winning and pinning the
+   card off-screen even after .visible fired. */
+#iosInstallModal.visible .install-modal-card { transform: translateY(0); }
+@media (min-width: 600px) {
+  #iosInstallModal { align-items: center; padding-top: 0; }
+  #iosInstallModal .install-modal-card { border-radius: 18px; }
+}
+.install-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 14px;
+}
+.install-modal-header h3 { margin: 0; flex: 1 1 auto; }
+/* × close button — 44x44 hit area per iOS guidelines. Subdued styling
+   so it reads as "close" rather than competing with the gold-gradient
+   primary action buttons used elsewhere in the install flow. */
+.install-modal-x {
+  flex: 0 0 auto;
+  appearance: none;
+  background: rgba(255,255,255,0.06);
+  color: #FFF8F0;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.install-modal-x:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.install-modal-x:active { transform: scale(0.94); }
+.install-modal-x:focus-visible { outline: 2px solid #FFD466; outline-offset: 2px; }
+/* Confirmation line below the 3 steps — emphasized via gold tint and
+   weight, but distinct from the numbered instructions: no number, no
+   icon, slightly larger than the auxiliary hint below. */
+.install-modal-confirmation {
+  margin: 4px 0 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #FFE08A;
+  font-weight: 500;
+}
+/* Auxiliary hint at the bottom of the iOS Safari modal — for users who
+   can't find Add to Home Screen in the Share menu (iOS gates it behind
+   Edit Actions on first use). Smaller, dimmer than the confirmation. */
+.install-step-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(255, 248, 240, 0.62);
+}
+/* App's own Share pill (bottom-left of weather UI) sits roughly where
+   iOS's native Share sheet pops up. Hide it while the iOS install modal
+   is open so the user's attention isn't split between two share affordances. */
+body.install-modal-active .share-btn { display: none !important; }
 .install-step-list {
   list-style: none;
   display: flex;

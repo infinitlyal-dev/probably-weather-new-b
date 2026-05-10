@@ -207,6 +207,81 @@ describe('install — DOM markup wired into index.html', () => {
     // Inline SVG share icon must be present
     expect(h).toMatch(/<svg[\s\S]*?<path d="M12 3v13"\/>/);
   });
+
+  it('iosInstallModal close control is the × icon in the header (no bottom Got-it button)', () => {
+    const h = html();
+    // × icon button lives inside the modal header
+    expect(h).toMatch(/<div class="install-modal-header">[\s\S]*?<button[^>]*id="iosInstallClose"[^>]*class="install-modal-x"[^>]*aria-label="Close"[^>]*>×<\/button>/);
+    // The bottom 'Got it' / iosGotIt button is gone
+    expect(h).not.toMatch(/data-install-i18n="iosGotIt"/);
+    // No iosGotIt translation key either (no longer used anywhere)
+    expect(INSTALL_T.iosGotIt).toBeUndefined();
+  });
+
+  it('iosInstallModal is anchored at the top of the viewport (CSS align-items: flex-start)', () => {
+    const c = css();
+    // Top-anchored override scoped to #iosInstallModal — leaves the
+    // shared .install-modal bottom-anchor styling alone for #iosChromeModal.
+    expect(c).toMatch(/#iosInstallModal\s*\{[^}]*align-items:\s*flex-start/);
+    // Card slides down from the top instead of up from the bottom
+    expect(c).toMatch(/#iosInstallModal \.install-modal-card\s*\{[^}]*transform:\s*translateY\(-100%\)/);
+  });
+
+  it('iosStep1 references Safari Share, iosStep2 unchanged, iosStep3 is the close instruction (5 langs)', () => {
+    for (const lang of SUPPORTED_LANGS) {
+      const s1 = INSTALL_T.iosStep1[lang];
+      const s2 = INSTALL_T.iosStep2[lang];
+      const s3 = INSTALL_T.iosStep3[lang];
+      // Step 1 mentions Safari and the Share label as a gold-pill
+      expect(s1, `iosStep1.${lang}`).toMatch(/Safari/);
+      expect(s1, `iosStep1.${lang}`).toMatch(/`Share`/);
+      // Step 2 references Add to Home Screen
+      expect(s2, `iosStep2.${lang}`).toMatch(/`Add to Home Screen`/);
+      // Step 3 is now the close instruction with × inline as a pill
+      expect(s3, `iosStep3.${lang}`).toMatch(/`×`/);
+      // Step 3 must NOT still be the old "Tap Add to confirm" copy
+      expect(s3, `iosStep3.${lang} should not reference Add`).not.toMatch(/`Add`/);
+    }
+  });
+
+  it('iosConfirmation translation exists in all 5 languages and reads as positive close', () => {
+    expect(INSTALL_T.iosConfirmation).toBeTruthy();
+    for (const lang of SUPPORTED_LANGS) {
+      const v = INSTALL_T.iosConfirmation[lang];
+      expect(typeof v, `iosConfirmation.${lang}`).toBe('string');
+      expect(v, `iosConfirmation.${lang} mentions Probably Weather`).toMatch(/Probably Weather/);
+    }
+  });
+  it('iosInstallModal renders the confirmation line below the steps and before the hint', () => {
+    const h = html();
+    expect(h).toMatch(/<p class="install-modal-confirmation"[^>]*data-install-i18n="iosConfirmation"/);
+    // Confirmation line must come AFTER the step list and BEFORE the hint
+    expect(h).toMatch(/<\/ol>[\s\S]*?install-modal-confirmation[\s\S]*?install-step-hint/);
+  });
+
+  it('iosEditActionsHint translation exists in all 5 languages with both iOS labels as gold pills', () => {
+    expect(INSTALL_T.iosEditActionsHint).toBeTruthy();
+    for (const lang of SUPPORTED_LANGS) {
+      const v = INSTALL_T.iosEditActionsHint[lang];
+      expect(typeof v, `iosEditActionsHint.${lang}`).toBe('string');
+      expect(v, `iosEditActionsHint.${lang} mentions Add to Home Screen`).toMatch(/`Add to Home Screen`/);
+      expect(v, `iosEditActionsHint.${lang} mentions Edit Actions`).toMatch(/`Edit Actions`/);
+    }
+  });
+  it('iosInstallModal renders the Edit Actions hint paragraph as auxiliary text', () => {
+    const h = html();
+    expect(h).toMatch(/<p class="install-step-hint"[^>]*data-install-i18n="iosEditActionsHint"/);
+  });
+
+  it('install.js toggles body.install-modal-active when the iOS Safari modal opens / closes', () => {
+    const src = installJs();
+    expect(src).toMatch(/function openIosModal\(\)[\s\S]*?document\.body\.classList\.add\(['"]install-modal-active['"]\)/);
+    expect(src).toMatch(/function closeIosModal\(\)[\s\S]*?document\.body\.classList\.remove\(['"]install-modal-active['"]\)/);
+  });
+  it('CSS hides the app Share button while body.install-modal-active is set', () => {
+    const c = css();
+    expect(c).toMatch(/body\.install-modal-active \.share-btn\s*\{[^}]*display:\s*none\s*!important/);
+  });
   it('renders the iOS Chrome handoff modal', () => {
     const h = html();
     expect(h).toMatch(/id="iosChromeModal"[^>]*role="dialog"/);

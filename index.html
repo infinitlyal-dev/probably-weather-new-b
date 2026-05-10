@@ -320,34 +320,40 @@
     </span>
   </div>
 
-  <!-- iOS Safari install modal: 3-step illustrated guide -->
+  <!-- iOS Safari install modal: top-anchored so it stays visible while the
+       iOS native Share sheet slides up from the bottom. Closes via the ×
+       button in the header (top-right) or by tapping the backdrop. -->
   <div id="iosInstallModal" class="install-modal hidden" role="dialog" aria-modal="true" aria-labelledby="iosInstallTitle" tabindex="-1">
     <div class="install-modal-card">
-      <h3 id="iosInstallTitle" data-install-i18n="iosTitle">Install in 3 steps</h3>
+      <div class="install-modal-header">
+        <h3 id="iosInstallTitle" data-install-i18n="iosTitle">Install in 3 steps</h3>
+        <button type="button" id="iosInstallClose" class="install-modal-x" aria-label="Close">×</button>
+      </div>
       <ol class="install-step-list">
         <li>
           <span class="install-step-num">1</span>
           <span class="install-step-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="M7 8l5-5 5 5"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
           </span>
-          <span data-install-i18n="iosStep1">Tap the Share button at the bottom of Safari</span>
+          <span data-install-i18n="iosStep1">Tap Safari's Share button at the bottom of your screen</span>
         </li>
         <li>
           <span class="install-step-num">2</span>
           <span class="install-step-icon" aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
           </span>
-          <span data-install-i18n="iosStep2">Scroll down and tap "Add to Home Screen"</span>
+          <span data-install-i18n="iosStep2">Scroll, tap "Add to Home Screen"</span>
         </li>
         <li>
           <span class="install-step-num">3</span>
           <span class="install-step-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6"/><path d="M15 9l-6 6"/></svg>
           </span>
-          <span data-install-i18n="iosStep3">Tap "Add" to confirm — done.</span>
+          <span data-install-i18n="iosStep3">Tap × above to close these instructions</span>
         </li>
       </ol>
-      <button type="button" id="iosInstallClose" class="install-modal-close" data-install-i18n="iosGotIt">Got it</button>
+      <p class="install-modal-confirmation" data-install-i18n="iosConfirmation">Probably Weather will appear on your home screen — tap the icon to open the app.</p>
+      <p class="install-step-hint" data-install-i18n="iosEditActionsHint">Don't see "Add to Home Screen"? Tap "Edit Actions" at the bottom of the Share menu and turn it on.</p>
     </div>
   </div>
 
