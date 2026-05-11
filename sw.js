@@ -3,7 +3,7 @@
    - Share button: mobile-only pill (bottom-left), Web Share API, 5-language support
 */
 
-const CACHE_VERSION = 'pw-v2026-05-11-011';
+const CACHE_VERSION = 'pw-v2026-05-11-012';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const API_CACHE = `${CACHE_VERSION}-api`;
@@ -39,7 +39,10 @@ self.addEventListener('activate', (event) => {
     if (oldCaches.length) {
       const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
       clients.forEach((client) => {
-        client.postMessage({ type: 'PW_UPDATE_AVAILABLE' });
+        // Include the new cache version so the page can stash it in
+        // sessionStorage before reloading and surface it in the post-reload
+        // acknowledgment toast (or in debug-overlay output).
+        client.postMessage({ type: 'PW_UPDATE_AVAILABLE', version: CACHE_VERSION });
       });
     }
   })());

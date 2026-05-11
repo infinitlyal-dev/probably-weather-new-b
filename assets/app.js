@@ -269,7 +269,12 @@ document.addEventListener("DOMContentLoaded", () => {
       locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditsoe" },
       locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo", st: "Ha e khone ho fumana sebaka" },
       usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Isebenzisa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" },
-      weatherTimeout: { en: "Weather lookup taking too long. Try again.", af: "Weervoorspelling neem te lank. Probeer weer.", zu: "Ukubuka isimo sezulu kuthatha isikhathi eside. Zama futhi.", xh: "Ukubuka isimo sezulu kuthatha ixesha elide. Zama kwakhona.", st: "Ho sheba boemo ba leholimo ho nka nako e telele. Leka hape." }
+      weatherTimeout: { en: "Weather lookup taking too long. Try again.", af: "Weervoorspelling neem te lank. Probeer weer.", zu: "Ukubuka isimo sezulu kuthatha isikhathi eside. Zama futhi.", xh: "Ukubuka isimo sezulu kuthatha ixesha elide. Zama kwakhona.", st: "Ho sheba boemo ba leholimo ho nka nako e telele. Leka hape." },
+      // Brief acknowledgment shown for 1.5s after the page auto-reloads to
+      // pick up a new service-worker version. No version string in the user-
+      // facing copy — keeps it terse. Debug overlay still surfaces the
+      // version for Al / testers who need it.
+      updatedToLatest: { en: "Updated ✓", af: "Bygewerk ✓", zu: "Kubuyekeziwe ✓", xh: "Kuhlaziyiwe ✓", st: "Ho ntjhafalitsoe ✓" }
     },
     // Misc
     misc: {
@@ -394,14 +399,79 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function setupServiceWorkerUpdates() {
     if (!('serviceWorker' in navigator)) return;
+
+    // ----- Post-reload acknowledgment toast -----
+    // If the previous page-load triggered a reload-for-update, a sessionStorage
+    // marker survives the reload. Show a brief "Updated ✓" toast on the new
+    // page, then clear the marker. Sessions in PW are short (10-30s); a 1.5s
+    // toast is enough acknowledgment without disrupting the user.
+    try {
+      const justUpdatedVersion = sessionStorage.getItem('pw_sw_just_updated');
+      if (justUpdatedVersion) {
+        sessionStorage.removeItem('pw_sw_just_updated');
+        // Delay so the toast fires AFTER the home render kicks in.
+        setTimeout(() => {
+          const msg = t('toasts', 'updatedToLatest') || 'Updated ✓';
+          showToast(msg, 1500);
+          debugLog('[SW] Post-reload acknowledgment — new version ' + justUpdatedVersion);
+        }, 200);
+      }
+    } catch (_) {}
+
+    // ----- Reload-on-update plumbing -----
+    // `controllerchange` fires when a new SW takes over an existing client
+    // via clients.claim(). Auto-reload once so the page is running the new
+    // code's HTML/JS/CSS. Two in-memory guards:
+    //   1. hadControllerAtStart — skip the FIRST controllerchange on a fresh
+    //      install (no prior controller means it's the initial registration
+    //      claiming, not a real update).
+    //   2. reloadInFlight — block any second reload trigger between the
+    //      decision to reload and the actual reload() call (defence against
+    //      PW_UPDATE_AVAILABLE message firing alongside controllerchange).
+    let hadControllerAtStart = !!navigator.serviceWorker.controller;
+    let reloadInFlight = false;
+    const reloadForUpdate = (version) => {
+      if (reloadInFlight) return;
+      reloadInFlight = true;
+      try { sessionStorage.setItem('pw_sw_just_updated', version || '1'); } catch (_) {}
+      debugLog('[SW] Reloading for new version', version || '(no version)');
+      window.location.reload();
+    };
+
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadControllerAtStart) {
+        // Initial-registration claim, not an update. Note for future events.
+        hadControllerAtStart = true;
+        return;
+      }
+      reloadForUpdate();
+    });
+
+    // PW_UPDATE_AVAILABLE message from the SW activate handler — belt-and-
+    // braces alongside controllerchange. If for any reason controllerchange
+    // doesn't fire (which can happen in some browsers when a tab was never
+    // controlled), the explicit message still triggers the reload.
     navigator.serviceWorker.addEventListener('message', (event) => {
       if (event.data?.type !== 'PW_UPDATE_AVAILABLE') return;
-      showToast('Update available — refresh to apply', 10000, {
-        label: 'Refresh',
-        onClick: () => window.location.reload(),
-      });
+      reloadForUpdate(event.data.version);
     });
-    navigator.serviceWorker.register('/sw.js').catch((err) => debugLog('Service worker registration failed:', err));
+
+    // ----- Register + poll for updates -----
+    navigator.serviceWorker.register('/sw.js').then((registration) => {
+      // Initial update check. The browser can cache /sw.js for up to 24h via
+      // HTTP caching headers, which is why Vercel deploys don't always
+      // propagate to users on second-launch. Calling update() forces a
+      // re-fetch of the SW script with cache-busting headers.
+      registration.update().catch(() => {});
+      // Re-check when the user returns to the app after being away. This is
+      // the main fix for the "double-close drill" — Al's deploy now reaches
+      // the user as soon as they foreground the tab.
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          registration.update().catch(() => {});
+        }
+      });
+    }).catch((err) => debugLog('Service worker registration failed:', err));
   }
   function setSharedLocationIndicator(show) {
     if (!locationEl) return;
