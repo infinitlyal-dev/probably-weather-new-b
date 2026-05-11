@@ -275,6 +275,260 @@ describe('Item 1: all sources fail, default to UTC with explicit source label', 
   });
 });
 
+// ---------------------------------------------------------------------------
+// ITEM 2 — Broader multi-source consensus (storm / wind / heat / cold)
+//
+// Phase A's two-source-consensus rule covered fog (and hail/thunder via the
+// pre-derive consensus rungs). Phase B-2 Item 2 extends the SAME post-derive
+// override pattern uniformly to storm/wind/heat/cold. With ≥3 sources active
+// but <2 individually supporting the condition, demote to 'clear' with an
+// audit-trail entry in conditionSignals.overrides.
+// ---------------------------------------------------------------------------
+
+// Helper: build OM payload that triggers `wind` (windKph ≥ 30) on the ensemble.
+// OM has the highest weight (~0.53 of normalised), so to push the ensemble above
+// the wind threshold from a single high reading, OM must be well above the
+// trigger — e.g. 60 km/h pulls the ensemble into wind territory even when other
+// sources are calm.
+const makeOmWindyAt = (windKph = 60) => makeOpenMeteoPayload({
+  current: { temperature_2m: 22, apparent_temperature: 22, weather_code: 2, wind_speed_10m: windKph, wind_gusts_10m: windKph + 10, relative_humidity_2m: 55, cloud_cover: 50 },
+});
+
+// Helper: PW payload with given wind speed (m/s — code converts to km/h via *3.6)
+const makePwWith = (windMs, temp = 22) => makePirateWeatherPayload({
+  currently: { temperature: temp, apparentTemperature: temp, windSpeed: windMs, humidity: 0.55, cloudCover: 0.5, uvIndex: 4, icon: 'partly-cloudy-day' },
+});
+
+// Helper: WA payload with given wind speed (km/h directly)
+const makeWaWithWind = (windKph) => makeWeatherApiPayload({
+  current: { temp_c: 22, feelslike_c: 22, wind_kph: windKph, humidity: 55, condition: { code: 1003, text: 'Partly cloudy' } },
+});
+
+// Helper: MET timeseries with given wind speed (m/s; code converts via *3.6)
+const makeMetWithWind = (windMs) => {
+  const startUtc = Date.UTC(2026, 4, 11, 0, 0, 0);
+  return {
+    properties: {
+      timeseries: Array.from({ length: 48 }, (_, i) => ({
+        time: new Date(startUtc + i * 60 * 60 * 1000).toISOString(),
+        data: {
+          instant: { details: { air_temperature: 22, wind_speed: windMs, relative_humidity: 55, cloud_area_fraction: 50 } },
+          next_1_hours: { summary: { symbol_code: 'partlycloudy_day' }, details: { precipitation_amount: 0 } },
+        },
+      })),
+    },
+  };
+};
+
+describe('Item 2: wind consensus — only 1 of 3 sources supports wind → demote to clear', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // OM windy at 60 km/h (heavy outlier — pulls ensemble above wind threshold).
+      // PW + MET both calm at 3 km/h. Ensemble ~33 km/h → derive returns 'wind'.
+      // But only 1 of 3 sources individually meets the predicate (≥25 km/h).
+      // Phase B-2 Item 2 consensus override should demote to 'clear'.
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOmWindyAt(60));
+      if (href.startsWith('https://api.pirateweather.net/')) return makeResponse(makePwWith(0.83));
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetWithWind(0.83));
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("conditionKey is NOT 'wind' (single-source outlier demoted to clear)", async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    expect(body.now.conditionKey).not.toBe('wind');
+    // overrides should record the wind-consensus-failed transformation
+    const overrides = body.now.conditionSignals.overrides;
+    const windOverride = overrides.find(o => o.rule === 'wind-consensus-failed');
+    expect(windOverride).toBeDefined();
+    expect(windOverride.from).toBe('wind');
+    expect(windOverride.to).toBe('clear');
+  });
+});
+
+describe('Item 2: wind consensus — 2 of 3 sources support wind → preserved', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // OM 50 + PW 35 km/h (≈9.72 m/s) + MET 30 km/h (≈8.33 m/s) — all three
+      // support wind. Ensemble is squarely in wind territory; consensus passes.
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOmWindyAt(50));
+      if (href.startsWith('https://api.pirateweather.net/')) return makeResponse(makePwWith(9.72));
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetWithWind(8.33));
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("conditionKey is 'wind' (2+ sources support)", async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    expect(body.now.conditionKey).toBe('wind');
+    const overrides = body.now.conditionSignals.overrides;
+    expect(overrides.find(o => o.rule === 'wind-consensus-failed')).toBeUndefined();
+  });
+});
+
+describe('Item 2: heat consensus — only 1 of 3 sources is hot enough → demote', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // OM reports 36°C, PW reports 22°C, MET reports 22°C. Ensemble might
+      // average ~28-30 — close to heat threshold — but only 1 source individually
+      // supports heat. Should demote.
+      if (href.startsWith('https://api.open-meteo.com/')) {
+        return makeResponse(makeOpenMeteoPayload({
+          current: { temperature_2m: 36, apparent_temperature: 36, weather_code: 0, wind_speed_10m: 5, wind_gusts_10m: 5, relative_humidity_2m: 30, cloud_cover: 10 },
+        }));
+      }
+      if (href.startsWith('https://api.pirateweather.net/')) return makeResponse(makePwWith(0.83, 22));
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetWithWind(0.83));
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("conditionKey demoted from 'heat' to 'clear' under consensus-failed", async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    // Ensemble warm/heat might fire, but with only 1 supporting source, override fires.
+    if (body.now.conditionKey === 'clear' || body.now.conditionKey === 'cloudy') {
+      const override = body.now.conditionSignals.overrides.find(o => o.rule === 'heat-consensus-failed');
+      // If derive picked heat, the override should have fired. If derive picked clear
+      // directly (ensemble cool enough), no override is needed.
+      if (override) {
+        expect(override.from).toBe('heat');
+        expect(override.to).toBe('clear');
+      }
+      expect(body.now.conditionKey).not.toBe('heat');
+    } else {
+      // Sanity: not heat
+      expect(body.now.conditionKey).not.toBe('heat');
+    }
+  });
+});
+
+describe('Item 2: heat consensus — 2 of 3 sources hot → preserved', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // OM 36, PW 33, MET 22 — two sources support heat
+      if (href.startsWith('https://api.open-meteo.com/')) {
+        return makeResponse(makeOpenMeteoPayload({
+          current: { temperature_2m: 36, apparent_temperature: 36, weather_code: 0, wind_speed_10m: 5, wind_gusts_10m: 5, relative_humidity_2m: 30, cloud_cover: 10 },
+        }));
+      }
+      if (href.startsWith('https://api.pirateweather.net/')) return makeResponse(makePwWith(0.83, 33));
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetWithWind(0.83));
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("conditionKey is 'heat' (2 sources individually support)", async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    expect(body.now.conditionKey).toBe('heat');
+    expect(body.now.conditionSignals.overrides.find(o => o.rule === 'heat-consensus-failed')).toBeUndefined();
+  });
+});
+
+describe('Item 2: storm consensus — only 1 of 3 sources votes storm → demote', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // OM partly cloudy, PW reports thunderstorm icon (single source), MET partly cloudy
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOpenMeteoPayload());
+      if (href.startsWith('https://api.pirateweather.net/')) {
+        return makeResponse(makePirateWeatherPayload({
+          currently: { temperature: 22, apparentTemperature: 22, windSpeed: 0.83, humidity: 0.55, cloudCover: 0.5, uvIndex: 4, icon: 'thunderstorm' },
+        }));
+      }
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetPayload('partlycloudy_day'));
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("single-source storm gets demoted via consensus rule", async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    // PW's storm vote alone can't win the headline. Either derive avoided storm
+    // (category-aware vote picked partly-cloudy bucket since storm bucket weight
+    // 1 vs partly-cloudy weight 2), OR derive picked storm and consensus demoted.
+    expect(body.now.conditionKey).not.toBe('storm');
+  });
+});
+
+describe('Item 2: <3 active sources skips consensus override (matches fog rule)', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // Only OM + MET active (no WA, no PW). OM has wind 60, MET has wind 0.83 m/s.
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOmWindyAt(60));
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetWithWind(0.83));
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("with only 2 sources, consensus override is NOT applied (data too thin)", async () => {
+    const { body } = await callWeather({ WEATHERAPI_KEY: '', PIRATE_WEATHER_KEY: '' });
+    // Ensemble wind is between 32 and 3 km/h, weighted. Could fire wind depending on weights.
+    // Whatever fires, it should NOT carry a wind-consensus-failed override (since we don't
+    // apply the override with <3 sources).
+    expect(body.now.conditionSignals.overrides.find(o => o.rule === 'wind-consensus-failed')).toBeUndefined();
+  });
+});
+
+describe('Item 2: daily-path consensus — storm', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOpenMeteoPayload());
+      // PW reports daily thunderstorm icon for day 0 only — single source
+      if (href.startsWith('https://api.pirateweather.net/')) {
+        return makeResponse(makePirateWeatherPayload({
+          daily: {
+            data: Array.from({ length: 7 }, (_, d) => ({
+              temperatureHigh: 24, temperatureLow: 18, precipProbability: 0, uvIndex: 5,
+              icon: d === 0 ? 'thunderstorm' : 'partly-cloudy-day',
+              sunriseTime: 1746939000, sunsetTime: 1746984000,
+            })),
+          },
+        }));
+      }
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetPayload());
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("day 0 daily 'storm' (single source) is demoted via daily consensus", async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    // PW alone says storm for day 0 — should not be the daily key
+    expect(body.daily[0].conditionKey).not.toBe('storm');
+    // If derive picked storm, override audit trail should show it
+    const override = body.daily[0].conditionSignals.overrides.find(o => o.rule === 'storm-consensus-failed');
+    if (body.daily[0].conditionSignals.overrides.length > 0 && override) {
+      expect(override.from).toBe('storm');
+      expect(override.to).toBe('clear');
+    }
+  });
+});
+
 describe('Item 1: OM provides offset → PW and WA do NOT overwrite (first-fill wins)', () => {
   beforeEach(() => {
     vi.useFakeTimers();

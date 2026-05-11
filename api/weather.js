@@ -766,6 +766,31 @@ export default async function handler(req, res) {
         }
       }
 
+      // Phase B-2 Item 2: same consensus extension for daily storm/heat/cold.
+      // Wind is omitted for daily because per-source daily wind isn't directly
+      // available (we compute it from the noon hour aggregate). Predicates use
+      // each source's own daily high/low/desc.
+      const dailyConsensusPredicates = {
+        storm: (d) => d && categorizeDesc(d.descs?.[i]) === 'storm',
+        heat:  (d) => d && isNum(d.highs?.[i]) && d.highs[i] >= 30,
+        cold:  (d) => d && ((isNum(d.highs?.[i]) && d.highs[i] <= 10) || (isNum(d.lows?.[i]) && d.lows[i] <= 0)),
+      };
+      if (dailyConsensusPredicates[dailyConditionKey] && descEntries.length >= 3) {
+        const dailyOriginalKey = dailyConditionKey;
+        const supporting = dailies.filter(dailyConsensusPredicates[dailyOriginalKey]).length;
+        if (supporting < 2) {
+          debugLog(`[B-2 consensus] Day ${i}: ${dailyOriginalKey} → clear (only ${supporting}/${descEntries.length} sources support ${dailyOriginalKey})`);
+          dailyOverrides.push({
+            rule: `${dailyOriginalKey}-consensus-failed`,
+            from: dailyOriginalKey,
+            to: 'clear',
+            reasonDetail: `only ${supporting}/${descEntries.length} source(s) individually meet the ${dailyOriginalKey} threshold for this day`,
+          });
+          dailyConditionKey = 'clear';
+          dailyConditionReason = `${dailyOriginalKey}-consensus-failed`;
+        }
+      }
+
       return {
         highC,
         lowC,
@@ -962,6 +987,35 @@ export default async function handler(req, res) {
         nowOverrides.push({ rule: 'fog-blocked-single-source', from: 'fog', to: 'clear', reasonDetail: `only ${fogVotes.length} source(s) voted fog` });
         nowConditionKey = 'clear';
         nowConditionReason = 'fog-blocked-single-source';
+      }
+    }
+
+    // Phase B-2 Item 2: broader multi-source consensus.
+    // Extends the fog-style consensus rule uniformly to storm/wind/heat/cold.
+    // For each, if ≥3 sources are active but <2 individually support the
+    // condition, demote to clear with an audit-trail entry. Predicates use
+    // LOWER thresholds than deriveCondition's trigger so sources slightly
+    // below the trigger still count as "supporting" the headline — a 24 km/h
+    // wind reading supports a 30 km/h trigger.
+    const consensusPredicates = {
+      storm: (n) => categorizeDesc(n.desc) === 'storm',
+      wind:  (n) => isNum(n.windKph) && n.windKph >= 25,
+      heat:  (n) => (isNum(n.nowTemp) && n.nowTemp >= 30) || (isNum(n.feelsLike) && n.feelsLike >= 35),
+      cold:  (n) => (isNum(n.nowTemp) && n.nowTemp <= 10) || (isNum(n.feelsLike) && n.feelsLike <= -5),
+    };
+    if (consensusPredicates[nowConditionKey] && activeNorms.length >= 3) {
+      const originalKey = nowConditionKey;
+      const supporting = activeNorms.filter(consensusPredicates[originalKey]).length;
+      if (supporting < 2) {
+        debugLog(`[B-2 consensus] ${originalKey} → clear (only ${supporting}/${activeNorms.length} sources individually support ${originalKey})`);
+        nowOverrides.push({
+          rule: `${originalKey}-consensus-failed`,
+          from: originalKey,
+          to: 'clear',
+          reasonDetail: `only ${supporting}/${activeNorms.length} source(s) individually meet the ${originalKey} threshold`,
+        });
+        nowConditionKey = 'clear';
+        nowConditionReason = `${originalKey}-consensus-failed`;
       }
     }
 
