@@ -215,9 +215,6 @@ body:not(.home-active) .language-picker {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  /* Phase-B-3 PTR: anchors the absolutely-positioned .ptr-affordance to the
-     top of the home screen so the drag-down translateY math is correct. */
-  position: relative;
   min-height: 70vh;
   padding-top: clamp(2.5rem, 6vh, 4.5rem);
   padding-left: 2rem;
@@ -1148,28 +1145,79 @@ select option {
 }
 
 /* ========== PULL-TO-REFRESH AFFORDANCE ========== */
-/* Anchored above the home content so drag-down reveals it from the top.
-   Default position: hidden behind the page top edge. JS translates it down
-   as the user pulls; the threshold class snaps it to the spinner position. */
+/* Viewport-anchored overlay. INVISIBLE at rest — must occupy zero visual
+   space AND intercept zero pointer events until the user starts pulling
+   down from scrollY === 0.
+
+   The first attempt used `position: absolute; top: -64px` from #home-screen.
+   That set the pill 64px above home-screen's content edge, which lands
+   inside the header area (brand title / city / Save button), making the
+   pill permanently visible and overlapping content. Fixed by switching to
+   `position: fixed` (viewport-relative), translating it offscreen above
+   the viewport, and gating visibility on a `.ptr-active` class that JS
+   toggles only during an active pull gesture.
+
+   White-space:nowrap + min-width prevents the longest 5-language string
+   ("Tlohela ho ntjhafatsa", Sotho release) from wrapping onto two lines. */
 .ptr-affordance {
-  position: absolute;
-  top: -64px;
+  /* Viewport-anchored, NOT bound to #home-screen position context. */
+  position: fixed;
+  top: max(8px, env(safe-area-inset-top));
   left: 50%;
-  transform: translateX(-50%);
-  display: flex;
+  /* Slide offset (px) — CSS custom property so JS can update it inline
+     during drag without fighting the centring transform. At rest:
+     translateY(-160px) keeps the pill above the visible viewport. */
+  --ptr-slide: -160px;
+  transform: translate(-50%, var(--ptr-slide));
+  /* Hidden at rest. Three properties belt-and-braces the contract:
+     - opacity 0      → invisible
+     - visibility hidden → no accessibility tree, no pointer events
+     - pointer-events none → defensive even when visibility flips. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 0, 0, 0.55);
+  padding: 0.5rem 1.25rem;
+  background: rgba(0, 0, 0, 0.62);
   color: #fff;
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
-  pointer-events: none;
-  z-index: 50;
-  /* Smooth snap-back when the JS clears the inline transform. */
-  transition: transform 0.25s ease-out;
-  /* Probably yellow accent shown via the spinner ring. */
+  /* Pinned to a single line — prevents the longest non-English string from
+     wrapping when shown in the pill. */
+  white-space: nowrap;
+  /* Sized to fit "Tlohela ho ntjhafatsa" (21 chars Sotho release) + 16px
+     spinner + 8px gap + 40px horizontal padding ≈ 240px. Bumped to 260
+     for breathing room. */
+  min-width: 260px;
+  /* On very narrow viewports (sub-300px iPhone SE 1st gen) the pill caps
+     at viewport width minus a small gutter to avoid horizontal scroll. */
+  max-width: calc(100vw - 2rem);
+  justify-content: center;
+  text-align: center;
+  /* Above content; below modals (z-index 200+) and toasts. */
+  z-index: 90;
+  /* Snap-back animation when .ptr-active is removed. visibility transition
+     delayed by 0.25s so the slide-up completes before the element is
+     functionally removed from the a11y tree. */
+  transition:
+    transform 0.25s ease-out,
+    opacity 0.2s ease-out,
+    visibility 0s linear 0.25s;
+}
+/* Active during a pull gesture or during a refresh. visibility flips
+   immediately so the slide-down is visible; transform follows the
+   --ptr-slide value JS writes per frame for finger-tracking feel. */
+.ptr-affordance.ptr-active {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    transform 0.05s linear,
+    opacity 0.15s ease-out,
+    visibility 0s linear 0s;
 }
 .ptr-affordance .ptr-spinner {
   width: 16px;
@@ -1180,6 +1228,7 @@ select option {
   display: inline-block;
   animation: ptr-spin 0.9s linear infinite;
   animation-play-state: paused;
+  flex-shrink: 0;
 }
 .ptr-affordance.ptr-refreshing .ptr-spinner {
   animation-play-state: running;
@@ -1191,17 +1240,6 @@ select option {
 @keyframes ptr-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
-}
-/* Disable the transition while the user is actively dragging — the inline
-   transform should track the finger 1:1. Re-enabled by removing the inline
-   style on release. JS toggles between inline-transform (drag) and class
-   (snap-back) so this rule keeps drag responsive. */
-.ptr-affordance[style*="translateY"] {
-  transition: none;
-}
-/* When refreshing, hold the position until JS clears the state. */
-.ptr-affordance.ptr-refreshing {
-  transition: transform 0.25s ease-out;
 }
 
 .toast {

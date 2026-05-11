@@ -1840,16 +1840,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const home = document.getElementById('home-screen');
     if (!home) return;
 
-    // Build affordance once. Lives at the top of the home screen, hidden
-    // by default, slides into view as the user drags.
-    const ptr = document.createElement('div');
-    ptr.id = 'ptrAffordance';
-    ptr.className = 'ptr-affordance';
-    ptr.setAttribute('aria-hidden', 'true');
-    ptr.innerHTML = '<span class="ptr-spinner" aria-hidden="true"></span><span class="ptr-text"></span>';
-    home.prepend(ptr);
+    // Build the affordance once and mount it on <body> as a viewport-anchored
+    // overlay, NOT as a child of #home-screen. The original mounting-as-child
+    // combined with `position: absolute` made the pill permanently visible
+    // overlapping the header. The new contract is:
+    //   - position: fixed; default opacity:0 + visibility:hidden + translated
+    //     above the viewport. Pill is INVISIBLE and pointer-events:none at rest.
+    //   - JS adds `.ptr-active` only when the user begins pulling down. This
+    //     flips visibility:visible and lets the slide-down animation play.
+    //   - JS writes a `--ptr-slide` CSS variable for the per-frame drag
+    //     position. CSS uses it via translate(-50%, var(--ptr-slide)).
+    //   - On release / snap-back, JS removes inline --ptr-slide (so CSS
+    //     transitions the pill back above the viewport), then removes
+    //     `.ptr-active` after the transition completes (so visibility
+    //     returns to hidden and accessibility tree no longer sees it).
+    let ptr = document.getElementById('ptrAffordance');
+    if (!ptr) {
+      ptr = document.createElement('div');
+      ptr.id = 'ptrAffordance';
+      ptr.className = 'ptr-affordance';
+      ptr.setAttribute('aria-hidden', 'true');
+      ptr.innerHTML = '<span class="ptr-spinner" aria-hidden="true"></span><span class="ptr-text"></span>';
+      document.body.appendChild(ptr);
+    }
     const textEl = ptr.querySelector('.ptr-text');
 
+    // Default rest text — never visible, but populated so the first frame of
+    // a pull doesn't show an empty pill.
     const setText = (state) => {
       const lang = settings.lang || 'en';
       const copy = PTR_COPY[state]?.[lang] || PTR_COPY[state]?.en || '';
@@ -1857,8 +1874,54 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     setText('pull');
 
-    let startY = 0, startX = 0, dragY = 0, dragging = false, refreshing = false;
-    const SCROLL_TOP_TOLERANCE = 2; // px of jitter to ignore
+    // SLIDE_HIDDEN_PX matches the CSS rest value. JS writes --ptr-slide
+    // between SLIDE_HIDDEN_PX (fully offscreen) and SLIDE_VISIBLE_PX (just
+    // below the safe-area inset) as the user pulls.
+    const SLIDE_HIDDEN_PX = -160;
+    const SLIDE_VISIBLE_PX = 0;
+    const SCROLL_TOP_TOLERANCE = 2; // px of scroll jitter to ignore
+    const HIDE_TRANSITION_MS = 250; // matches CSS transform/visibility timing
+
+    let startY = 0, startX = 0, dragY = 0, dragging = false, activated = false, refreshing = false;
+    let hideTimer = null;
+
+    const showActive = () => {
+      if (activated) return;
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      ptr.classList.add('ptr-active');
+      // Belt-and-braces: set inline opacity/visibility directly. The CSS
+      // .ptr-active rule has higher specificity and would normally win the
+      // cascade — but headless browsers occasionally miscompute class-driven
+      // overrides on dynamically-created elements, leaving the pill invisible
+      // even when activated. Inline always wins. Removed on hide.
+      ptr.style.setProperty('opacity', '1');
+      ptr.style.setProperty('visibility', 'visible');
+      activated = true;
+    };
+    const hideAfterTransition = () => {
+      // Clear the inline slide so CSS transitions back to the hidden rest.
+      ptr.style.removeProperty('--ptr-slide');
+      ptr.classList.remove('ptr-armed', 'ptr-refreshing');
+      setText('pull');
+      // After the slide-up completes, drop .ptr-active so opacity/visibility
+      // return to fully invisible. Belt-and-braces with a slight buffer.
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        ptr.classList.remove('ptr-active');
+        ptr.style.removeProperty('opacity');
+        ptr.style.removeProperty('visibility');
+        activated = false;
+        hideTimer = null;
+      }, HIDE_TRANSITION_MS + 50);
+    };
+
+    const dragYToSlidePx = (drag) => {
+      // Map dragY [0, PTR_THRESHOLD_PX] → slidePx [SLIDE_HIDDEN_PX, SLIDE_VISIBLE_PX].
+      // Beyond the threshold the pill stays at fully-visible, matching the
+      // sticky-armed state.
+      const ratio = Math.min(drag / PTR_THRESHOLD_PX, 1);
+      return SLIDE_HIDDEN_PX + (SLIDE_VISIBLE_PX - SLIDE_HIDDEN_PX) * ratio;
+    };
 
     home.addEventListener('touchstart', (ev) => {
       if (refreshing) return;
@@ -1880,18 +1943,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const t = ev.touches[0];
       const dy = t.clientY - startY;
       const dx = Math.abs(t.clientX - startX);
-      // Horizontal drift dominant — user is swiping, not pulling. Bail.
-      if (dx > Math.abs(dy)) { dragging = false; ptr.style.transform = ''; ptr.classList.remove('ptr-armed'); return; }
+      // Horizontal drift dominant — user is swiping, not pulling. Bail without
+      // ever showing the affordance.
+      if (dx > Math.abs(dy)) { dragging = false; if (activated) hideAfterTransition(); return; }
       if (dy <= 0) {
-        // User dragging up. Reset affordance and let normal scroll happen.
+        // User dragging up — reset the affordance state and let normal scroll
+        // happen. If we'd already shown the pill from an earlier frame, hide it.
         dragY = 0;
-        ptr.style.transform = '';
-        ptr.classList.remove('ptr-armed');
+        if (activated) hideAfterTransition();
         return;
       }
-      // Pulling down — apply resistance and cap.
+      // Pulling down — apply resistance, cap, and show the affordance.
       dragY = Math.min(dy * PTR_RESISTANCE, PTR_MAX_OVERSCROLL_PX);
-      ptr.style.transform = `translateY(${dragY}px)`;
+      showActive();
+      ptr.style.setProperty('--ptr-slide', `${dragYToSlidePx(dragY)}px`);
       const armed = dragY >= PTR_THRESHOLD_PX;
       ptr.classList.toggle('ptr-armed', armed);
       setText(armed ? 'release' : 'pull');
@@ -1905,25 +1970,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const wasArmed = dragY >= PTR_THRESHOLD_PX;
       dragging = false;
       if (wasArmed) {
-        // Snap to the spinner position and fire a refresh.
+        // Hold the pill at fully-visible while the refresh fires, then
+        // animate it back offscreen + hidden.
         refreshing = true;
         ptr.classList.add('ptr-refreshing');
-        ptr.style.transform = `translateY(${PTR_THRESHOLD_PX}px)`;
+        ptr.style.setProperty('--ptr-slide', `${SLIDE_VISIBLE_PX}px`);
         setText('refreshing');
         attemptRefresh({ source: 'pull-to-refresh' });
-        // Give the fetch a beat to start (lastFetchTime ticks at success);
-        // snap back when current request settles or after a max delay.
-        const snapBack = () => {
+        setTimeout(() => {
           refreshing = false;
-          ptr.style.transform = '';
-          ptr.classList.remove('ptr-armed', 'ptr-refreshing');
-          setText('pull');
-        };
-        setTimeout(snapBack, 1200);
-      } else {
-        ptr.style.transform = '';
-        ptr.classList.remove('ptr-armed');
-        setText('pull');
+          hideAfterTransition();
+        }, 1200);
+      } else if (activated) {
+        // User let go before reaching threshold — slide back without firing.
+        hideAfterTransition();
       }
       dragY = 0;
     };

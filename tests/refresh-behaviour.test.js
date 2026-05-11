@@ -256,7 +256,95 @@ describe('PTR CSS', () => {
     expect(cssSrc).toMatch(/#FFDD44/i);
   });
 
-  it("#home-screen has position: relative (anchors absolute PTR affordance)", () => {
-    expect(cssSrc).toMatch(/#home-screen[\s\S]{0,300}position:\s*relative/);
+  // Extract the .ptr-affordance default rule body so the hidden-at-rest
+  // assertions don't accidentally match the .ptr-active override rule.
+  const defaultRuleMatch = cssSrc.match(/\n\.ptr-affordance\s*\{[\s\S]*?\n\}/);
+  const defaultRule = defaultRuleMatch ? defaultRuleMatch[0] : '';
+
+  it("HIDDEN AT REST: .ptr-affordance default has opacity: 0", () => {
+    expect(defaultRule).toMatch(/opacity:\s*0\b/);
+  });
+
+  it("HIDDEN AT REST: .ptr-affordance default has visibility: hidden", () => {
+    expect(defaultRule).toMatch(/visibility:\s*hidden\b/);
+  });
+
+  it("HIDDEN AT REST: .ptr-affordance default has pointer-events: none", () => {
+    expect(defaultRule).toMatch(/pointer-events:\s*none\b/);
+  });
+
+  it("HIDDEN AT REST: .ptr-affordance default transform translates it offscreen above viewport", () => {
+    // Either a negative translateY in the transform, or a --ptr-slide custom
+    // property defaulting to a negative value, satisfies "offscreen above."
+    const offscreenViaTransform = /transform:[^;]*translate[XY]?\([^)]*-(\d+)/.test(defaultRule);
+    const offscreenViaCssVar = /--ptr-slide:\s*-\d+px/.test(defaultRule);
+    expect(offscreenViaTransform || offscreenViaCssVar).toBe(true);
+  });
+
+  it("HIDDEN AT REST: viewport-anchored via position: fixed (NOT absolute)", () => {
+    expect(defaultRule).toMatch(/position:\s*fixed\b/);
+    expect(defaultRule).not.toMatch(/position:\s*absolute\b/);
+  });
+
+  it(".ptr-active override exists and flips visibility + opacity to visible", () => {
+    const activeRule = cssSrc.match(/\.ptr-affordance\.ptr-active\s*\{[\s\S]*?\n\}/)?.[0] || '';
+    expect(activeRule).toMatch(/opacity:\s*1\b/);
+    expect(activeRule).toMatch(/visibility:\s*visible\b/);
+  });
+
+  it("white-space: nowrap prevents long-language strings from wrapping", () => {
+    expect(defaultRule).toMatch(/white-space:\s*nowrap\b/);
+  });
+
+  it("min-width sized for the longest 5-language string (Sotho release ≈ 240px)", () => {
+    const minWidthMatch = defaultRule.match(/min-width:\s*(\d+)px/);
+    expect(minWidthMatch).toBeTruthy();
+    const minWidth = parseInt(minWidthMatch[1], 10);
+    expect(minWidth).toBeGreaterThanOrEqual(240);
+  });
+
+  it("#home-screen no longer needs position: relative (pill is fixed, not absolute)", () => {
+    // The previous incarnation had position: relative anchoring the absolutely-
+    // positioned pill — that's what caused it to land inside the header area.
+    // Now the pill is fixed and home-screen doesn't need to be a positioning
+    // context. Defensive test so the relative declaration doesn't sneak back in.
+    const homeRule = cssSrc.match(/#home-screen\s*\{[\s\S]*?\n\}/)?.[0] || '';
+    expect(homeRule).not.toMatch(/position:\s*relative/);
+  });
+});
+
+describe('PTR JS — hidden-at-rest contract', () => {
+  const appSrc = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+
+  it("pill is mounted on document.body, not inside #home-screen", () => {
+    // Original bug: pill inside #home-screen with position:absolute placed
+    // it inside the header. Now it's a viewport-anchored body child.
+    expect(appSrc).toMatch(/document\.body\.appendChild\(ptr\)/);
+  });
+
+  it("setupPullToRefresh does NOT add .ptr-active on initial mount", () => {
+    // Walk the function body and confirm .ptr-active is only added inside
+    // touchmove (via showActive), never on initial creation.
+    const fn = appSrc.match(/function setupPullToRefresh\(\)\s*\{[\s\S]*?\n  \}/)?.[0] || '';
+    expect(fn).toBeTruthy();
+    // showActive is the only path that should add the class.
+    const adds = fn.match(/classList\.add\(['"]ptr-active['"]\)/g) || [];
+    expect(adds.length).toBe(1);
+  });
+
+  it("touchmove with dy>0 calls showActive (which adds .ptr-active)", () => {
+    const fn = appSrc.match(/function setupPullToRefresh\(\)\s*\{[\s\S]*?\n  \}/)?.[0] || '';
+    expect(fn).toMatch(/showActive\(\)/);
+  });
+
+  it("hideAfterTransition clears --ptr-slide then removes .ptr-active", () => {
+    const fn = appSrc.match(/function setupPullToRefresh\(\)\s*\{[\s\S]*?\n  \}/)?.[0] || '';
+    expect(fn).toMatch(/removeProperty\(['"]--ptr-slide['"]\)/);
+    expect(fn).toMatch(/classList\.remove\(['"]ptr-active['"]\)/);
+  });
+
+  it("JS writes the --ptr-slide CSS variable (not inline transform)", () => {
+    const fn = appSrc.match(/function setupPullToRefresh\(\)\s*\{[\s\S]*?\n  \}/)?.[0] || '';
+    expect(fn).toMatch(/setProperty\(['"]--ptr-slide['"]/);
   });
 });
