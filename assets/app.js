@@ -4,6 +4,19 @@ import { WEATHER_COPY } from './weather-copy.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { buildShareUrl } from './share-url.js';
 import { initInstallExperience } from './install.js';
+import {
+  FRESHNESS_MS,
+  SIGNIFICANT_MOVE_KM,
+  PLACE_MODE_GPS,
+  PLACE_MODE_PINNED,
+  haversineKm,
+  shouldRefetchWeather,
+  shouldUpdateLocation,
+  PTR_THRESHOLD_PX,
+  PTR_MAX_OVERSCROLL_PX,
+  PTR_RESISTANCE,
+  PTR_COPY,
+} from './refresh-behaviour.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
@@ -58,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const capeWindText = $('#capeWindText');
   const capeWindDismiss = $('#capeWindDismiss');
 
-  const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location" };
+  const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location", lastGps: "pw_last_gps" };
   const SCREENS = [screenHome, screenHourly, screenWeek, screenDayDetail, screenSearch, screenSettings];
   const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32 };
 
@@ -1437,7 +1450,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return `<li class="recent-item" role="button" tabindex="0" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(p.name)}</span>${rb}</li>`;
     }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
     recentList.querySelectorAll('li[data-lat]').forEach(li => {
-      const activate = (ev) => { if (ev?.target?.closest('.remove-recent')) return; showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); };
+      const activate = (ev) => { if (ev?.target?.closest('.remove-recent')) return; showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }); };
       li.addEventListener('click', activate);
       li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(ev); } });
     });
@@ -1460,7 +1473,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><span class="fav-name" role="button" tabindex="0">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
     }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noSaved')}</li>`;
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
-      const activate = () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }); };
+      const activate = () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }); };
       span.addEventListener('click', activate);
       span.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(); } });
     });
@@ -1497,7 +1510,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const favs = loadFavorites();
     rl.innerHTML = results.map(r => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="Toggle favourite" data-lat="${r.lat}" data-lon="${r.lon}">${isFav ? '★' : '☆'}</button><span class="result-icon" aria-hidden="true">⛅</span><span class="result-name">${fn}</span><span class="result-temp">--°</span></li>`; }).join('');
     rl.querySelectorAll('li[data-lat]').forEach(li => {
-      const activate = async (e) => { if (e && e.target && e.target.closest('.fav-star')) return; const place = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon) }; showScreen(screenHome); loadAndRender(place); if (searchInput) searchInput.value = ''; rl.innerHTML = ''; addRecentIfNew(place).catch(() => {}); };
+      const activate = async (e) => { if (e && e.target && e.target.closest('.fav-star')) return; const place = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }; showScreen(screenHome); loadAndRender(place); if (searchInput) searchInput.value = ''; rl.innerHTML = ''; addRecentIfNew(place).catch(() => {}); };
       li.addEventListener('click', activate);
       li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(ev); } });
     });
@@ -1543,7 +1556,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadApproximateLocation() {
     return getIPLocation().then(place => {
-      homePlace = place;
+      // Tagged 'gps' because it's auto-derived, not user-pinned. On next
+      // launch/visibilitychange the auto-refresh path retries getCurrentPosition
+      // in case the user has since granted GPS permission.
+      homePlace = { ...place, mode: PLACE_MODE_GPS };
       saveJSON(STORAGE.home, homePlace);
       loadAndRender(homePlace);
     });
@@ -1562,14 +1578,16 @@ document.addEventListener("DOMContentLoaded", () => {
           const data = await rev.json();
           const displayName = buildLocationName(data, lat, lon);
           saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat, lon });
-          homePlace = { name: displayName, lat, lon };
+          saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
+          homePlace = { name: displayName, lat, lon, mode: PLACE_MODE_GPS };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
         } catch {
           // API failed — try client-side reverse geocode
           const fallbackName = await reverseGeocode(lat, lon);
-          homePlace = { name: fallbackName || `${Math.abs(lat).toFixed(1)}°S, ${Math.abs(lon).toFixed(1)}°E`, lat, lon };
+          saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
+          homePlace = { name: fallbackName || `${Math.abs(lat).toFixed(1)}°S, ${Math.abs(lon).toFixed(1)}°E`, lat, lon, mode: PLACE_MODE_GPS };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
         }
@@ -1580,7 +1598,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const savedName = savedGpsLoc.city && savedGpsLoc.admin1
             ? `${savedGpsLoc.city}, ${savedGpsLoc.admin1}`
             : (savedGpsLoc.city || savedGpsLoc.admin1 || 'South Africa');
-          homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
+          homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon, mode: PLACE_MODE_GPS };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
         } else {
@@ -1593,7 +1611,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const savedName = savedGpsLoc.city && savedGpsLoc.admin1
           ? `${savedGpsLoc.city}, ${savedGpsLoc.admin1}`
           : (savedGpsLoc.city || savedGpsLoc.admin1 || 'South Africa');
-        homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon };
+        homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon, mode: PLACE_MODE_GPS };
         saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
         showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
@@ -1668,12 +1686,25 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error('[install] init failed', installInitErr);
   }
   homePlace = loadJSON(STORAGE.home, null);
+  // Migration: pre-Phase-B-3 homePlace records had no `mode` field. Default
+  // legacy data to 'gps' since the previous code only set homePlace from
+  // getCurrentPosition or IP fallback (never from search-tab pins).
+  if (homePlace && !homePlace.mode) {
+    homePlace.mode = PLACE_MODE_GPS;
+    saveJSON(STORAGE.home, homePlace);
+  }
   const savedLoc = loadJSON(STORAGE.location, null);
-  if (sharedPlace) { showScreen(screenHome); loadAndRender(sharedPlace); }
+  if (sharedPlace) {
+    // Shared links land the recipient on a specific place. Treat as pinned
+    // so a recipient in a different city doesn't get GPS-overridden after
+    // opening someone else's share.
+    showScreen(screenHome);
+    loadAndRender({ ...sharedPlace, mode: PLACE_MODE_PINNED });
+  }
   else if (homePlace) { showScreen(screenHome); loadAndRender(homePlace); }
   else if (savedLoc?.lat && savedLoc?.lon) {
     const sn = savedLoc.city && savedLoc.admin1 ? `${savedLoc.city}, ${savedLoc.admin1}` : (savedLoc.city || savedLoc.admin1 || 'South Africa');
-    homePlace = { name: sn, lat: savedLoc.lat, lon: savedLoc.lon }; saveJSON(STORAGE.home, homePlace); showScreen(screenHome); loadAndRender(homePlace);
+    homePlace = { name: sn, lat: savedLoc.lat, lon: savedLoc.lon, mode: PLACE_MODE_GPS }; saveJSON(STORAGE.home, homePlace); showScreen(screenHome); loadAndRender(homePlace);
   }
   else { showScreen(screenHome); renderLoading("Locating…");
     if ("geolocation" in navigator) {
@@ -1683,10 +1714,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
           const displayName = buildLocationName(data, lat, lon);
           saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat, lon });
-          homePlace = { name: displayName, lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
+          saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
+          homePlace = { name: displayName, lat, lon, mode: PLACE_MODE_GPS }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
         } catch {
           const fn = await reverseGeocode(lat, lon);
-          homePlace = { name: fn || 'South Africa', lat, lon }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
+          saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
+          homePlace = { name: fn || 'South Africa', lat, lon, mode: PLACE_MODE_GPS }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
         }
       }, (err) => {
         // GPS blocked on first visit - use IP geolocation instead of hardcoded city
@@ -1701,26 +1734,201 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== AUTO-REFRESH ==========
-  // Refresh weather data every 30 minutes to keep conditions current
-  const REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes
+  // Phase-B-3 refresh flow. Resolves the "drove from Strand to Paarl, app still
+  // shows Strand" bug: the previous handler only re-fetched WEATHER for the
+  // cached homePlace; it never asked GPS for a new fix. The new attemptRefresh
+  // path re-detects location for GPS-mode places, re-fetches weather when data
+  // is stale, and leaves pinned places alone.
   let lastFetchTime = Date.now();
-  setInterval(() => {
-    if (activePlace && document.visibilityState === 'visible') {
-      loadAndRender(activePlace);
-      lastFetchTime = Date.now();
-    }
-  }, REFRESH_INTERVAL);
 
-  // Also refresh when user returns to the app after being away
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && activePlace) {
-      const elapsed = Date.now() - lastFetchTime;
-      // Only refresh if more than 15 minutes since last fetch
-      if (elapsed > 15 * 60 * 1000) {
+  function attemptRefresh({ source }) {
+    if (!activePlace) return;
+    const isPinned = activePlace.mode === PLACE_MODE_PINNED;
+    const wantsFetch = shouldRefetchWeather({ lastFetchTime, source });
+
+    if (isPinned) {
+      // Pinned places: never override with GPS detection. Only re-fetch
+      // weather if data is stale (or pull-to-refresh).
+      if (wantsFetch) {
         loadAndRender(activePlace);
         lastFetchTime = Date.now();
       }
+      return;
     }
+
+    // GPS mode: ask the device for a current fix.
+    if (!('geolocation' in navigator)) {
+      // Silent fallback — no GPS API. Just refresh weather if stale.
+      if (wantsFetch) {
+        loadAndRender(activePlace);
+        lastFetchTime = Date.now();
+      }
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(async (pos) => {
+      const newLat = Math.round(pos.coords.latitude * 10) / 10;
+      const newLon = Math.round(pos.coords.longitude * 10) / 10;
+      const newGps = { lat: newLat, lon: newLon };
+      saveJSON(STORAGE.lastGps, { lat: newLat, lon: newLon, ts: Date.now() });
+
+      if (shouldUpdateLocation({ activePlace, newGps })) {
+        debugLog(`[Refresh] GPS moved ${haversineKm({ lat: activePlace.lat, lon: activePlace.lon }, newGps).toFixed(1)}km from ${activePlace.name} (${source}) — re-detecting`);
+        // Reverse-geocode for a display name, then load fresh weather.
+        let displayName = activePlace.name;
+        try {
+          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newLat)}&lon=${encodeURIComponent(newLon)}`);
+          const data = await rev.json();
+          displayName = buildLocationName(data, newLat, newLon);
+          saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat: newLat, lon: newLon });
+        } catch {
+          try { displayName = (await reverseGeocode(newLat, newLon)) || displayName; } catch {}
+        }
+        const newPlace = { name: displayName, lat: newLat, lon: newLon, mode: PLACE_MODE_GPS };
+        homePlace = newPlace;
+        saveJSON(STORAGE.home, homePlace);
+        loadAndRender(newPlace);
+        lastFetchTime = Date.now();
+        showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
+      } else if (wantsFetch) {
+        loadAndRender(activePlace);
+        lastFetchTime = Date.now();
+      }
+    }, (err) => {
+      // Silent fallback per spec: keep showing existing data, no UI crash,
+      // no infinite spinner. Permission revoked / GPS lost mid-flight is
+      // the common case here.
+      debugLog('[Refresh] GPS failed (' + source + '):', err.code, err.message);
+      if (wantsFetch) {
+        loadAndRender(activePlace);
+        lastFetchTime = Date.now();
+      }
+    }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
+  }
+
+  // Background interval — keep data fresh while app is open in foreground.
+  // Uses the same attemptRefresh path so the 15-min freshness guard and GPS
+  // re-detection still apply uniformly. 30 min interval > 15 min guard, so
+  // always passes the freshness check.
+  const REFRESH_INTERVAL_MS = 30 * 60 * 1000;
+  setInterval(() => {
+    if (document.visibilityState === 'visible') attemptRefresh({ source: 'interval' });
+  }, REFRESH_INTERVAL_MS);
+
+  // Visibility return — the load-bearing trigger for the Strand→Paarl scenario.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') attemptRefresh({ source: 'visibilitychange' });
   });
+
+  // Launch — after initial cached/fresh render has kicked off above, attempt
+  // a refresh so GPS users get re-detection on cold start, not just on tab
+  // resume. A short delay lets the initial fetch settle (so the freshness
+  // guard sees lastFetchTime correctly).
+  setTimeout(() => attemptRefresh({ source: 'launch' }), 500);
+
+  // ========== PULL-TO-REFRESH (Home tab) ==========
+  // Native pull-to-refresh isn't available in iOS PWA standalone mode (no
+  // browser chrome to host it). Implement gesture-based PTR with touch
+  // handlers. Constraints:
+  //  - Home tab only. Other tabs left untouched.
+  //  - Active only at scrollTop === 0 so it doesn't interfere with normal
+  //    scrolling further down the page.
+  //  - Edge-swipe-back (iOS) starts near startX < 30 — bail in that range.
+  //  - Single-touch only — bail on multi-touch (pinch-zoom).
+  setupPullToRefresh();
+
+  function setupPullToRefresh() {
+    const home = document.getElementById('home-screen');
+    if (!home) return;
+
+    // Build affordance once. Lives at the top of the home screen, hidden
+    // by default, slides into view as the user drags.
+    const ptr = document.createElement('div');
+    ptr.id = 'ptrAffordance';
+    ptr.className = 'ptr-affordance';
+    ptr.setAttribute('aria-hidden', 'true');
+    ptr.innerHTML = '<span class="ptr-spinner" aria-hidden="true"></span><span class="ptr-text"></span>';
+    home.prepend(ptr);
+    const textEl = ptr.querySelector('.ptr-text');
+
+    const setText = (state) => {
+      const lang = settings.lang || 'en';
+      const copy = PTR_COPY[state]?.[lang] || PTR_COPY[state]?.en || '';
+      if (textEl) textEl.textContent = copy;
+    };
+    setText('pull');
+
+    let startY = 0, startX = 0, dragY = 0, dragging = false, refreshing = false;
+    const SCROLL_TOP_TOLERANCE = 2; // px of jitter to ignore
+
+    home.addEventListener('touchstart', (ev) => {
+      if (refreshing) return;
+      // Only the home screen is allowed to PTR; bail if user has navigated away.
+      if (home.classList.contains('hidden')) return;
+      if (ev.touches.length !== 1) return;
+      if (window.scrollY > SCROLL_TOP_TOLERANCE) return;
+      const t = ev.touches[0];
+      // iOS edge-swipe-back: starts within ~20px of left edge. Don't capture it.
+      if (t.clientX < 30) return;
+      startY = t.clientY;
+      startX = t.clientX;
+      dragY = 0;
+      dragging = true;
+    }, { passive: true });
+
+    home.addEventListener('touchmove', (ev) => {
+      if (!dragging || refreshing) return;
+      const t = ev.touches[0];
+      const dy = t.clientY - startY;
+      const dx = Math.abs(t.clientX - startX);
+      // Horizontal drift dominant — user is swiping, not pulling. Bail.
+      if (dx > Math.abs(dy)) { dragging = false; ptr.style.transform = ''; ptr.classList.remove('ptr-armed'); return; }
+      if (dy <= 0) {
+        // User dragging up. Reset affordance and let normal scroll happen.
+        dragY = 0;
+        ptr.style.transform = '';
+        ptr.classList.remove('ptr-armed');
+        return;
+      }
+      // Pulling down — apply resistance and cap.
+      dragY = Math.min(dy * PTR_RESISTANCE, PTR_MAX_OVERSCROLL_PX);
+      ptr.style.transform = `translateY(${dragY}px)`;
+      const armed = dragY >= PTR_THRESHOLD_PX;
+      ptr.classList.toggle('ptr-armed', armed);
+      setText(armed ? 'release' : 'pull');
+      // Only suppress iOS rubber-band bounce when we're actively pulling.
+      // Don't suppress everywhere — that would break scrolling further down.
+      if (ev.cancelable && dy > 5) ev.preventDefault();
+    }, { passive: false });
+
+    const finishDrag = () => {
+      if (!dragging) return;
+      const wasArmed = dragY >= PTR_THRESHOLD_PX;
+      dragging = false;
+      if (wasArmed) {
+        // Snap to the spinner position and fire a refresh.
+        refreshing = true;
+        ptr.classList.add('ptr-refreshing');
+        ptr.style.transform = `translateY(${PTR_THRESHOLD_PX}px)`;
+        setText('refreshing');
+        attemptRefresh({ source: 'pull-to-refresh' });
+        // Give the fetch a beat to start (lastFetchTime ticks at success);
+        // snap back when current request settles or after a max delay.
+        const snapBack = () => {
+          refreshing = false;
+          ptr.style.transform = '';
+          ptr.classList.remove('ptr-armed', 'ptr-refreshing');
+          setText('pull');
+        };
+        setTimeout(snapBack, 1200);
+      } else {
+        ptr.style.transform = '';
+        ptr.classList.remove('ptr-armed');
+        setText('pull');
+      }
+      dragY = 0;
+    };
+    home.addEventListener('touchend', finishDrag, { passive: true });
+    home.addEventListener('touchcancel', finishDrag, { passive: true });
+  }
 });
 

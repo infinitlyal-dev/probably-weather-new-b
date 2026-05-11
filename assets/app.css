@@ -215,6 +215,9 @@ body:not(.home-active) .language-picker {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  /* Phase-B-3 PTR: anchors the absolutely-positioned .ptr-affordance to the
+     top of the home screen so the drag-down translateY math is correct. */
+  position: relative;
   min-height: 70vh;
   padding-top: clamp(2.5rem, 6vh, 4.5rem);
   padding-left: 2rem;
@@ -1142,6 +1145,63 @@ select option {
   font-size: 1.2rem;
   z-index: 1000;
   backdrop-filter: blur(10px);
+}
+
+/* ========== PULL-TO-REFRESH AFFORDANCE ========== */
+/* Anchored above the home content so drag-down reveals it from the top.
+   Default position: hidden behind the page top edge. JS translates it down
+   as the user pulls; the threshold class snaps it to the spinner position. */
+.ptr-affordance {
+  position: absolute;
+  top: -64px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 50;
+  /* Smooth snap-back when the JS clears the inline transform. */
+  transition: transform 0.25s ease-out;
+  /* Probably yellow accent shown via the spinner ring. */
+}
+.ptr-affordance .ptr-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 221, 68, 0.35);
+  border-top-color: #FFDD44;
+  display: inline-block;
+  animation: ptr-spin 0.9s linear infinite;
+  animation-play-state: paused;
+}
+.ptr-affordance.ptr-refreshing .ptr-spinner {
+  animation-play-state: running;
+}
+.ptr-affordance.ptr-armed .ptr-spinner {
+  border-color: rgba(255, 221, 68, 0.6);
+  border-top-color: #FFDD44;
+}
+@keyframes ptr-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* Disable the transition while the user is actively dragging — the inline
+   transform should track the finger 1:1. Re-enabled by removing the inline
+   style on release. JS toggles between inline-transform (drag) and class
+   (snap-back) so this rule keeps drag responsive. */
+.ptr-affordance[style*="translateY"] {
+  transition: none;
+}
+/* When refreshing, hold the position until JS clears the state. */
+.ptr-affordance.ptr-refreshing {
+  transition: transform 0.25s ease-out;
 }
 
 .toast {
