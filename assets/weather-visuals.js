@@ -2,6 +2,8 @@ export const WEATHER_BACKGROUND_ALIASES = {
   'rain-possible': 'cloudy',
   'partly-cloudy': 'cloudy',
   uv: 'clear',
+  hail: 'storm',
+  thunder: 'storm',
 };
 
 export function getWeatherBackgroundFolder(condition) {

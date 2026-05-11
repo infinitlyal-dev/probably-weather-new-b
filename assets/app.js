@@ -223,6 +223,13 @@ document.addEventListener("DOMContentLoaded", () => {
     witty: WEATHER_COPY.witty,
     // Cape Doctor wind alert
     capeDr: {
+      warningLabel: {
+        en: "WIND WARNING",
+        af: "WINDWAARSKUWING",
+        zu: "ISEXWAYISO SOMOYA",
+        xh: "ISILUMKISO SOMOYA",
+        st: "TLHOKOMELISO YA MOEA"
+      },
       lines: {
         en: ["Ag no, the tablecloth is out 💨", "Cape Doctor is doing rounds today", "Hold onto your hat, the Southeaster means business", "The Southeaster arrived uninvited — as always", "Wind's hectic — even the seagulls are walking"],
         af: ["Ag nee, die tafeldoek is uit 💨", "Die Kaapse Dokter maak vandag huisbesoeke", "Hou jou hoed vas, die Suidooster bedoel sake", "Die Suidooster het ongenooid opgedaag — soos altyd", "Die wind is hectic — selfs die meeuë loop"],
@@ -486,6 +493,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========== WEATHER LOGIC ==========
   function computeSkyCondition(norm) {
     const condKey = (norm.conditionKey || '').toLowerCase(), rain = norm.rainPct, cloudPct = norm.cloudPct ?? (Array.isArray(norm.hourly) && norm.hourly[0]?.cloudPct);
+    if (condKey === 'thunder') return 'thunder';
+    if (condKey === 'hail') return 'hail';
     if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) return 'fog';
     if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain-possible';
@@ -505,21 +514,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMostlyCloudy     = isNum(cloud) && cloud >= 55;
     const isSignificantCloud = isNum(cloud) && cloud >= 40;
     const isDay = norm.isDay !== false; // false only when API says night
+    // UV temp gate: cold days never warrant a UV headline. Mirror api/weather.js
+    // priorities 6 and 16 so the frontend re-rank doesn't reintroduce the bug.
+    const hi = norm.todayHigh;
+    const uvBlockedByCold = isNum(hi) && hi < 15;
     if (isNum(dailyRain) && dailyRain >= 50) return 'rain';
+    if (apiCondition === 'thunder') return 'thunder';
+    if (apiCondition === 'hail') return 'hail';
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
-    if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
+    if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
     if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
     if (apiCondition === 'wind') return 'wind';
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
     if (apiCondition === 'cloudy') return 'cloudy';
-    const hi = norm.todayHigh, low = norm.todayLow, uv = norm.uvDaily, feels = norm.feelsLike;
+    const low = norm.todayLow, uv = norm.uvDaily, feels = norm.feelsLike;
     if (isNum(feels) && feels <= -5) return 'cold';
     if (isNum(low) && low <= 0) return 'cold';
     if (isNum(hi) && hi >= THRESH.HOT_C) return 'heat';
-    if (isDay && isNum(uv) && uv >= 8 && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
+    if (isDay && isNum(uv) && uv >= 8 && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
     if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
     if (isNum(hi) && hi <= 10) return 'cold';
     // FIX-003: positive cloud-cover override — don't show 'clear' if the sky is actually 55%+ cloudy
@@ -536,6 +551,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMostlyCloudy     = isNum(cloud) && cloud >= 55;
     const isSignificantCloud = isNum(cloud) && cloud >= 40;
     const isDay = norm.isDay !== false;
+    // UV temp gate (Bug 2): the server's UV verdict is trusted at L572 below,
+    // but the server's UV rung can fire on cold days. Re-check the daily high
+    // here so the home label doesn't render "High UV" on a 13°C winter day.
+    const hi = norm.todayHigh;
+    const uvBlockedByCold = isNum(hi) && hi < 15;
 
     // FIX-001: Log condition decision for debugging
     const votes = norm.sourceConditions || [];
@@ -548,6 +568,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const hasMajorityRain = rainVotes >= 2;
     const hasMajorityCloudy = (rainVotes + cloudyVotes) >= 2;
 
+    if (apiCondition === 'thunder') return 'thunder';
+    if (apiCondition === 'hail') return 'hail';
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
     if (apiCondition === 'heat') return 'heat';
@@ -569,7 +591,7 @@ document.addEventListener("DOMContentLoaded", () => {
       debugLog(`[FIX-003] rainLater=true, escalating to rain-possible`);
       return 'rain-possible';
     }
-    if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud)) return 'uv';
+    if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
     if (apiCondition === 'wind') return 'wind';
     if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
@@ -590,8 +612,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== TRANSLATED TEXT ==========
-  function getHeadline(condition) { return T.headlines[condition]?.[settings.lang] || T.headlines[condition]?.en || "Clear skies."; }
-  function getHeroLabel(condition) { return T.heroLabels[condition]?.[settings.lang] || T.heroLabels[condition]?.en || "Pleasant"; }
+  // Defensive copy fallback: if hail/thunder copy is ever missing in a language,
+  // fall back to the storm bank for that same language — never English to a
+  // non-English user, never the cheerful 'clear' bank for a severe condition.
+  const COPY_FALLBACK = { hail: 'storm', thunder: 'storm' };
+  function getHeadline(condition) {
+    const fb = COPY_FALLBACK[condition];
+    return T.headlines[condition]?.[settings.lang]
+      || (fb && T.headlines[fb]?.[settings.lang])
+      || T.headlines[condition]?.en
+      || (fb && T.headlines[fb]?.en)
+      || "Clear skies.";
+  }
+  function getHeroLabel(condition) {
+    const fb = COPY_FALLBACK[condition];
+    return T.heroLabels[condition]?.[settings.lang]
+      || (fb && T.heroLabels[fb]?.[settings.lang])
+      || T.heroLabels[condition]?.en
+      || (fb && T.heroLabels[fb]?.en)
+      || "Pleasant";
+  }
   // Lowercase substrings that mark a witty line as weekday-coded (commute / office /
   // Monday references). On Sat/Sun we filter these out of the pool so they don't fire
   // out of context. Match against the lowercased line — fragments stay lowercase here.
@@ -625,7 +665,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
       const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
-    let lines = T.witty[condition]?.[settings.lang] || T.witty[condition]?.en || T.witty.clear.en;
+    const fb = COPY_FALLBACK[condition];
+    let lines = T.witty[condition]?.[settings.lang]
+      || (fb && T.witty[fb]?.[settings.lang])
+      || T.witty[condition]?.en
+      || (fb && T.witty[fb]?.en)
+      || T.witty.clear.en;
     // On strict Sat/Sun, filter out weekday-coded jokes. Friday-after-16:00 already
     // routes to the weekend pool above for clear/heat, so it doesn't need filtering here.
     const isStrictWeekend = day === 0 || day === 6;
@@ -936,7 +981,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== CAPE DOCTOR WIND ALERT ==========
-  let capeWindDismissed = false;
+  // Dismissal persisted in localStorage with a 24-hour expiry. Previous session-only
+  // flag meant every reload re-fired the banner; persisting it lets the user dismiss
+  // today's wind event without losing the affordance for tomorrow's.
+  const WIND_BANNER_DISMISS_KEY = 'pw-wind-banner-dismissed-until';
+  const WIND_BANNER_DISMISS_MS = 24 * 60 * 60 * 1000;
+  function isCapeWindDismissed() {
+    try {
+      const until = parseInt(localStorage.getItem(WIND_BANNER_DISMISS_KEY) || '0', 10);
+      return Number.isFinite(until) && Date.now() < until;
+    } catch (_) { return false; }
+  }
+  function dismissCapeWind() {
+    try {
+      localStorage.setItem(WIND_BANNER_DISMISS_KEY, String(Date.now() + WIND_BANNER_DISMISS_MS));
+    } catch (_) {}
+  }
   function isWesternCape(place) {
     if (!place || !isNum(place.lat) || !isNum(place.lon)) return false;
     return place.lat >= -34.5 && place.lat <= -33.0 && place.lon >= 17.5 && place.lon <= 20.0;
@@ -944,15 +1004,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderCapeWind(norm) {
     if (!capeWindBanner) return;
     const wind = norm.windKph;
-    if (!capeWindDismissed && isWesternCape(activePlace) && isNum(wind) && wind >= 50) {
+    if (!isCapeWindDismissed() && isWesternCape(activePlace) && isNum(wind) && wind >= 50) {
       const lines = T.capeDr.lines[settings.lang] || T.capeDr.lines.en;
-      safeText(capeWindText, lines[Math.floor(Math.random() * lines.length)]);
+      const label = T.capeDr.warningLabel?.[settings.lang] || T.capeDr.warningLabel?.en || 'WIND WARNING';
+      const witty = lines[Math.floor(Math.random() * lines.length)];
+      safeText(capeWindText, `⚠️ ${label} — ${witty}`);
       capeWindBanner.classList.remove('hidden');
     } else {
       capeWindBanner.classList.add('hidden');
     }
   }
-  if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => { capeWindDismissed = true; if (capeWindBanner) capeWindBanner.classList.add('hidden'); });
+  if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => { dismissCapeWind(); if (capeWindBanner) capeWindBanner.classList.add('hidden'); });
 
   // Sources tap-to-swap (mobile only — CSS hides toggle on desktop)
   const sourcesToggle = $('#sourcesToggle');
@@ -1017,8 +1079,10 @@ document.addEventListener("DOMContentLoaded", () => {
     showLoader(false);
     const currentTemp = norm.nowTemp, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
-    // Body/CSS variant for partly-cloudy reuses the cloudy theme — no dedicated CSS yet.
-    const cssVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
+    // Body/CSS variant: partly-cloudy reuses cloudy; hail/thunder reuse storm.
+    // No dedicated CSS for the new keys — they share storm imagery and theme.
+    const CSS_VARIANT_ALIAS = { 'partly-cloudy': 'cloudy', hail: 'storm', thunder: 'storm' };
+    const cssVariant = CSS_VARIANT_ALIAS[displayCondition] || displayCondition;
     document.body.classList.remove('weather-cold', 'weather-heat', 'weather-storm', 'weather-rain', 'weather-wind', 'weather-fog', 'weather-clear', 'weather-cloudy');
     document.body.classList.add(`weather-${cssVariant}`);
     let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);

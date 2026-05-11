@@ -3,7 +3,7 @@
    - Share button: mobile-only pill (bottom-left), Web Share API, 5-language support
 */
 
-const CACHE_VERSION = 'pw-v2026-05-10-008';
+const CACHE_VERSION = 'pw-v2026-05-11-001';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const API_CACHE = `${CACHE_VERSION}-api`;

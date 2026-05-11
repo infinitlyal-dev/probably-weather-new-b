@@ -650,6 +650,9 @@ export default async function handler(req, res) {
         uvIndex:   uv,
         cloudPct:  aggregatedHourly[noonIdx]?.cloudPct ?? null,
         isDay:     true,
+        // Per-source descriptions for this day, used by the hail/thunder
+        // consensus rungs at the top of deriveCondition.
+        sourceDescs: dailies.map(dd => dd?.descs?.[i]).filter(Boolean),
       });
 
       // Rec 4: Majority voting for daily conditions — same logic as FIX-001
@@ -825,6 +828,8 @@ export default async function handler(req, res) {
       maxWindKph,
       isDay,
       dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
+      // Per-source raw descriptions feed the hail/thunder consensus rungs.
+      sourceDescs: activeNorms.map(n => n.desc).filter(Boolean),
     });
 
     // FIX-001: Per-source condition votes for debugging and majority check
@@ -1064,7 +1069,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  *   labelled cold for the whole day.
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, sourceDescs }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -1076,6 +1081,13 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   const isSignificantCloud = isNum(cloudPct) && cloudPct >= 40; // blocks UV
   const isPartlyCloudy     = isNum(cloudPct) && cloudPct >= 30 && cloudPct < 55;
 
+  // UV temp gate: cold days never warrant a UV headline even if the index is
+  // high. South African winter mornings on the highveld can read UV 6+ at
+  // 5°C — burn risk is still real, but "High UV" as the day's HEADLINE
+  // misrepresents what the user needs to plan for. Only fires when we have
+  // a confident dailyHighC < 15. Missing → preserve current behaviour.
+  const uvBlockedByCold = isNum(dailyHighC) && dailyHighC < 15;
+
   // Description-based cloud fallbacks (used when cloudPct is unavailable)
   const descSaysOvercast = d.includes('overcast');
   const descSaysPartly   = d.includes('partly') || d.includes('mainly clear') || d.includes('fair');
@@ -1084,7 +1096,38 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   const overcastByDesc   = !isNum(cloudPct) && descSaysOvercast;
   const partlyByDesc     = !isNum(cloudPct) && descSaysPartly;
 
-  // 1. Storm
+  // 0a. Hail (consensus): one source flags hail/hagel AND another source
+  //     flags storm/rain/showers — confirms it's a precipitation event,
+  //     not a stale icon. Mirrors the fog-majority guard pattern.
+  // 0b. Thunder (consensus): same shape, different keywords. Catches
+  //     "Rain and thunder" / "Patchy light rain with thunder" etc. that
+  //     weighted-string voting splits across near-synonyms.
+  if (Array.isArray(sourceDescs) && sourceDescs.length >= 2) {
+    const lowered = sourceDescs.map(s => String(s || '').toLowerCase());
+    const hailRe = /hail|hagel/;
+    const thunderRe = /thunder|lightning|donder|weerlig/;
+    const corroborateRe = /storm|rain|shower|drizzle|precip|thunder/;
+
+    const hailIdx = lowered.findIndex(s => hailRe.test(s));
+    if (hailIdx !== -1) {
+      const hasOtherCorroborator = lowered.some((s, i) => i !== hailIdx && corroborateRe.test(s));
+      if (hasOtherCorroborator) {
+        debugLog(`[Hail consensus] one source flags hail, another corroborates → hail`);
+        return 'hail';
+      }
+    }
+
+    const thunderIdx = lowered.findIndex(s => thunderRe.test(s));
+    if (thunderIdx !== -1) {
+      const hasOtherCorroborator = lowered.some((s, i) => i !== thunderIdx && corroborateRe.test(s));
+      if (hasOtherCorroborator) {
+        debugLog(`[Thunder consensus] one source flags thunder, another corroborates → thunder`);
+        return 'thunder';
+      }
+    }
+  }
+
+  // 1. Storm (single-source thunder/storm/tornado wins via the description vote)
   if (d.includes('thunder') || d.includes('storm') || d.includes('tornado')) return 'storm';
 
   // 2. Extreme cold
@@ -1102,8 +1145,8 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 5. Heavy rain
   if (isNum(rainChance) && rainChance >= 60)  return 'rain';
 
-  // 6. High UV — daytime only, not overcast, not significantly cloudy
-  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc)) return 'uv';
+  // 6. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
+  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc) && !uvBlockedByCold) return 'uv';
 
   // 7. Strong wind
   if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
@@ -1139,8 +1182,8 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   // 15. Hot (not extreme, but warm)
   if (isNum(tempC) && tempC >= 30)            return 'heat';
 
-  // 16. Moderate UV — daytime only, not significantly cloudy (40%+ blocks UV)
-  if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isSignificantCloud || isMostlyCloudy || cloudyByDesc)) return 'uv';
+  // 16. Moderate UV — daytime only, not significantly cloudy (40%+ blocks UV), not a cold day
+  if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isSignificantCloud || isMostlyCloudy || cloudyByDesc) && !uvBlockedByCold) return 'uv';
 
   // 17. Mostly cloudy
   if (isMostlyCloudy || cloudyByDesc)         return 'cloudy';
@@ -1170,3 +1213,7 @@ function categorizeDesc(desc) {
   if (d.includes('fog') || d.includes('mist')) return 'fog';
   return 'clear';
 }
+
+// Named exports for focused unit tests. The Vercel API runtime uses the default
+// export (the handler); these are test-only surface area.
+export { deriveCondition, categorizeDesc };
