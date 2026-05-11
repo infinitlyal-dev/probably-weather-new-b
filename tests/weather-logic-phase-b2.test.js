@@ -5,7 +5,7 @@
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import handler from '../api/weather.js';
+import handler, { categorizeDesc } from '../api/weather.js';
 
 // ---------------------------------------------------------------------------
 // Mock helpers (mirror tests/weather-logic-phase-b.test.js style)
@@ -556,5 +556,225 @@ describe('Item 1: OM provides offset → PW and WA do NOT overwrite (first-fill 
     const { body } = await callWeather({ WEATHERAPI_KEY: 'test-key', PIRATE_WEATHER_KEY: 'test-key' });
     expect(body.meta.utcOffsetSource).toBe('open-meteo');
     expect(body.meta.utcOffsetSeconds).toBe(7200);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// ITEM 3 — Provider mapping completeness
+//
+// (A) Pirate Weather expanded-icon mode: URL gains &icon=pirate, and the
+//     pirateIconMap covers mist/haze/smoke/mixed/possible-* variants.
+// (B) MET Norway: metSymbolMap fills in the missing sleet/snow/thunder
+//     permutations (was ~20, now 45 codes per the official symbol spec).
+// (C) categorizeDesc routes haze/smoke to fog instead of defaulting to clear.
+// ---------------------------------------------------------------------------
+
+describe('Item 3: PW URL requests expanded icon set (icon=pirate)', () => {
+  let observedUrls;
+  beforeEach(() => {
+    observedUrls = [];
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      observedUrls.push(href);
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOpenMeteoPayload());
+      if (href.startsWith('https://api.pirateweather.net/')) return makeResponse(makePirateWeatherPayload());
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetPayload());
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("PW URL contains &icon=pirate query param", async () => {
+    await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    const pwUrl = observedUrls.find(u => u.startsWith('https://api.pirateweather.net/'));
+    expect(pwUrl).toBeDefined();
+    expect(pwUrl).toContain('icon=pirate');
+  });
+});
+
+describe('Item 3: PW expanded icons map correctly', () => {
+  // Verify that when PW returns one of the expanded icons, it surfaces as the
+  // expected description through the API response — and is categorised right.
+  const runWithPwIcon = async (icon) => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOpenMeteoPayload());
+      if (href.startsWith('https://api.pirateweather.net/')) {
+        return makeResponse(makePirateWeatherPayload({
+          currently: { temperature: 22, apparentTemperature: 22, windSpeed: 1, humidity: 0.55, cloudCover: 0.5, uvIndex: 4, icon },
+        }));
+      }
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetPayload());
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+    try {
+      return await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    } finally {
+      vi.useRealTimers();
+      vi.unstubAllGlobals();
+    }
+  };
+
+  it("'mist' → 'Mist' → fog category", async () => {
+    const { body } = await runWithPwIcon('mist');
+    const pwVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'Pirate Weather');
+    expect(pwVote).toBeDefined();
+    expect(pwVote.desc).toBe('Mist');
+    expect(pwVote.vote).toBe('fog');
+  });
+
+  it("'haze' → 'Haze' → fog category (NOT clear)", async () => {
+    const { body } = await runWithPwIcon('haze');
+    const pwVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'Pirate Weather');
+    expect(pwVote.desc).toBe('Haze');
+    expect(pwVote.vote).toBe('fog');
+  });
+
+  it("'smoke' → 'Smoke' → fog category", async () => {
+    const { body } = await runWithPwIcon('smoke');
+    const pwVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'Pirate Weather');
+    expect(pwVote.desc).toBe('Smoke');
+    expect(pwVote.vote).toBe('fog');
+  });
+
+  it("'mixed' → 'Sleet' → cold category", async () => {
+    const { body } = await runWithPwIcon('mixed');
+    const pwVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'Pirate Weather');
+    expect(pwVote.desc).toBe('Sleet');
+    expect(pwVote.vote).toBe('cold');
+  });
+
+  it("'possible-rain-day' → 'Possible rain' → rain category", async () => {
+    const { body } = await runWithPwIcon('possible-rain-day');
+    const pwVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'Pirate Weather');
+    expect(pwVote.desc).toBe('Possible rain');
+    expect(pwVote.vote).toBe('rain');
+  });
+
+  it("'possible-thunderstorm-night' → 'Possible thunderstorm' → storm category", async () => {
+    const { body } = await runWithPwIcon('possible-thunderstorm-night');
+    const pwVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'Pirate Weather');
+    expect(pwVote.desc).toBe('Possible thunderstorm');
+    expect(pwVote.vote).toBe('storm');
+  });
+});
+
+describe('Item 3: MET Norway full symbol map — sleet/snow/thunder variants', () => {
+  // Helper: build a MET response where every hour is the given symbol_code
+  const makeMetWithSymbol = (symbolCode) => {
+    const startUtc = Date.UTC(2026, 4, 11, 0, 0, 0);
+    return {
+      properties: {
+        timeseries: Array.from({ length: 48 }, (_, i) => ({
+          time: new Date(startUtc + i * 60 * 60 * 1000).toISOString(),
+          data: {
+            instant: { details: { air_temperature: 5, wind_speed: 3, relative_humidity: 80, cloud_area_fraction: 80 } },
+            next_1_hours: { summary: { symbol_code: symbolCode }, details: { precipitation_amount: 2 } },
+          },
+        })),
+      },
+    };
+  };
+
+  const runWithMetSymbol = async (symbolCode) => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOpenMeteoPayload());
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetWithSymbol(symbolCode));
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+    try {
+      return await callWeather();
+    } finally {
+      vi.useRealTimers();
+      vi.unstubAllGlobals();
+    }
+  };
+
+  it("'sleetshowersandthunder' is now mapped (was falling through to raw)", async () => {
+    const { body } = await runWithMetSymbol('sleetshowersandthunder_day');
+    const metVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'MET Norway');
+    expect(metVote.desc).toBe('Sleet showers and thunder');
+    expect(metVote.vote).toBe('storm'); // thunder wins over sleet in categorizeDesc order
+  });
+
+  it("'snowandthunder' → 'Snow and thunder' → storm", async () => {
+    const { body } = await runWithMetSymbol('snowandthunder_day');
+    const metVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'MET Norway');
+    expect(metVote.desc).toBe('Snow and thunder');
+    expect(metVote.vote).toBe('storm');
+  });
+
+  it("'lightsnowshowers' → 'Light snow showers' → cold (was falling through)", async () => {
+    const { body } = await runWithMetSymbol('lightsnowshowers_day');
+    const metVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'MET Norway');
+    expect(metVote.desc).toBe('Light snow showers');
+    expect(metVote.vote).toBe('cold');
+  });
+
+  it("'sleetshowers' → 'Sleet showers' → cold", async () => {
+    const { body } = await runWithMetSymbol('sleetshowers_night');
+    const metVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'MET Norway');
+    expect(metVote.desc).toBe('Sleet showers');
+    expect(metVote.vote).toBe('cold');
+  });
+
+  it("'heavysleetandthunder' → 'Heavy sleet and thunder' → storm", async () => {
+    const { body } = await runWithMetSymbol('heavysleetandthunder_day');
+    const metVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'MET Norway');
+    expect(metVote.desc).toBe('Heavy sleet and thunder');
+    expect(metVote.vote).toBe('storm');
+  });
+
+  it("the spec-spelling variant 'lightssleetshowersandthunder' (double-s) also maps", async () => {
+    const { body } = await runWithMetSymbol('lightssleetshowersandthunder_day');
+    const metVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'MET Norway');
+    expect(metVote.desc).toBe('Light sleet showers and thunder');
+    expect(metVote.vote).toBe('storm');
+  });
+
+  it("day/night/polartwilight suffix is correctly stripped before lookup", async () => {
+    // Same base symbol, three different suffixes — all should resolve to same description
+    const dayResult = await runWithMetSymbol('rainandthunder_day');
+    const nightResult = await runWithMetSymbol('rainandthunder_night');
+    const polarResult = await runWithMetSymbol('rainandthunder_polartwilight');
+    const desc = body => body.now.conditionSignals.sourceVotes.find(v => v.source === 'MET Norway').desc;
+    expect(desc(dayResult.body)).toBe('Rain and thunder');
+    expect(desc(nightResult.body)).toBe('Rain and thunder');
+    expect(desc(polarResult.body)).toBe('Rain and thunder');
+  });
+});
+
+describe('Item 3: categorizeDesc routes haze/smoke to fog', () => {
+  // Direct unit tests on the exported helper.
+  it("'Haze' → 'fog' (previously 'clear', a regression for low-visibility weather)", () => {
+    expect(categorizeDesc('Haze')).toBe('fog');
+  });
+
+  it("'Smoke' → 'fog' (bush-fire smoke is a visibility issue, not a clear day)", () => {
+    expect(categorizeDesc('Smoke')).toBe('fog');
+  });
+
+  it("'Mist' still routes to 'fog' (existing keyword preserved)", () => {
+    expect(categorizeDesc('Mist')).toBe('fog');
+  });
+
+  it("'Fog' still routes to 'fog' (existing keyword preserved)", () => {
+    expect(categorizeDesc('Fog')).toBe('fog');
+  });
+
+  it("haze with other context (\"Heavy haze and smoke\") still routes to 'fog'", () => {
+    expect(categorizeDesc('Heavy haze and smoke')).toBe('fog');
+  });
+
+  it("rain wins over haze when both keywords present (priority order preserved)", () => {
+    // 'rain' is checked before 'haze' in the keyword cascade
+    expect(categorizeDesc('Rain with light haze')).toBe('rain');
   });
 });

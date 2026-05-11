@@ -161,6 +161,27 @@ export default async function handler(req, res) {
       'wind':'Windy', 'fog':'Fog', 'cloudy':'Cloudy',
       'partly-cloudy-day':'Partly cloudy', 'partly-cloudy-night':'Partly cloudy',
       'hail':'Hail', 'thunderstorm':'Thunderstorm', 'tornado':'Tornado',
+      // Phase B-2 Item 3: Pirate Weather expanded icon set (icon=pirate mode).
+      // mist/haze map to fog-category strings so categorizeDesc handles them.
+      // smoke and mixed map to canonical descriptions that route correctly.
+      // 'none' is PW's "no data" marker — null-safe via the ?? fallback.
+      'mist': 'Mist',
+      'haze': 'Haze',
+      'smoke': 'Smoke',
+      'mixed': 'Sleet', // PW 'mixed' = rain-snow mix; route to cold category
+      'none': null,
+      'possible-rain-day': 'Possible rain',
+      'possible-rain-night': 'Possible rain',
+      'possible-snow-day': 'Possible snow',
+      'possible-snow-night': 'Possible snow',
+      'possible-sleet-day': 'Possible sleet',
+      'possible-sleet-night': 'Possible sleet',
+      'possible-thunderstorm-day': 'Possible thunderstorm',
+      'possible-thunderstorm-night': 'Possible thunderstorm',
+      // Common synonyms PW occasionally returns
+      'breezy': 'Windy',
+      'drizzle': 'Drizzle',
+      'flurries': 'Snow showers',
     };
 
     const openMeteoRequest = fetchJson(
@@ -178,10 +199,15 @@ export default async function handler(req, res) {
           `&q=${lat},${lon}&days=7&aqi=no&alerts=no`
         )
       : Promise.resolve(null);
+    // Phase B-2 Item 3: enable Pirate Weather expanded icon set via &icon=pirate.
+    // Default icon set is small (clear/rain/snow/cloudy/etc.); the expanded set
+    // adds mist/haze/smoke/mixed/possible-* variants for better fidelity.
+    // The map below handles both the original and expanded names so existing
+    // forecasts keep working even if PW changes default behaviour.
     const pirateWeatherRequest = PIRATE_WEATHER_KEY
       ? fetchJson(
           `https://api.pirateweather.net/forecast/${PIRATE_WEATHER_KEY}/${lat},${lon}` +
-          `?units=si`
+          `?units=si&icon=pirate`
         )
       : Promise.resolve(null);
     const metNorwayRequest = fetch(
@@ -458,17 +484,70 @@ export default async function handler(req, res) {
     try {
       const metJson = getSettledValue(metNorwayResult);
 
+      // Phase B-2 Item 3: full MET Norway symbol_code set per official spec at
+      // api.met.no/weatherapi/weathericon/. Previously ~20 entries covering
+      // basic rain/snow/thunder; now adds the missing shower variants and the
+      // sleet/snow-with-thunder permutations so an SA winter storm code lands
+      // on a real description string rather than the raw symbol_code falling
+      // through to categorizeDesc.
       const metSymbolMap = {
-        'clearsky':'Clear sky', 'fair':'Fair', 'partlycloudy':'Partly cloudy',
-        'cloudy':'Cloudy', 'fog':'Fog', 'sleet':'Sleet',
-        'lightsleet':'Light sleet', 'heavysleet':'Heavy sleet',
-        'lightrainshowers':'Light rain showers', 'rainshowers':'Rain showers',
-        'heavyrainshowers':'Heavy rain showers',
-        'lightrain':'Light rain', 'rain':'Rain', 'heavyrain':'Heavy rain',
-        'lightrainandthunder':'Light rain and thunder',
-        'rainandthunder':'Rain and thunder',
-        'heavyrainandthunder':'Heavy rain and thunder',
-        'lightsnow':'Light snow', 'snow':'Snow', 'heavysnow':'Heavy snow',
+        // Clear / cloudy
+        'clearsky': 'Clear sky',
+        'fair': 'Fair',
+        'partlycloudy': 'Partly cloudy',
+        'cloudy': 'Cloudy',
+        'fog': 'Fog',
+        // Rain (steady)
+        'lightrain': 'Light rain',
+        'rain': 'Rain',
+        'heavyrain': 'Heavy rain',
+        // Rain showers
+        'lightrainshowers': 'Light rain showers',
+        'rainshowers': 'Rain showers',
+        'heavyrainshowers': 'Heavy rain showers',
+        // Rain + thunder (steady)
+        'lightrainandthunder': 'Light rain and thunder',
+        'rainandthunder': 'Rain and thunder',
+        'heavyrainandthunder': 'Heavy rain and thunder',
+        // Rain showers + thunder
+        'lightrainshowersandthunder': 'Light rain showers and thunder',
+        'rainshowersandthunder': 'Rain showers and thunder',
+        'heavyrainshowersandthunder': 'Heavy rain showers and thunder',
+        // Sleet (steady)
+        'lightsleet': 'Light sleet',
+        'sleet': 'Sleet',
+        'heavysleet': 'Heavy sleet',
+        // Sleet showers
+        'lightsleetshowers': 'Light sleet showers',
+        'sleetshowers': 'Sleet showers',
+        'heavysleetshowers': 'Heavy sleet showers',
+        // Sleet + thunder (steady)
+        'lightsleetandthunder': 'Light sleet and thunder',
+        'sleetandthunder': 'Sleet and thunder',
+        'heavysleetandthunder': 'Heavy sleet and thunder',
+        // Sleet showers + thunder
+        'lightsleetshowersandthunder': 'Light sleet showers and thunder',
+        // Note: MET Norway's published spec uses the spelling 'lightssleetshowersandthunder'
+        // (double-s after 'light') for one variant — both names alias to the same canonical string.
+        'lightssleetshowersandthunder': 'Light sleet showers and thunder',
+        'sleetshowersandthunder': 'Sleet showers and thunder',
+        'heavysleetshowersandthunder': 'Heavy sleet showers and thunder',
+        // Snow (steady)
+        'lightsnow': 'Light snow',
+        'snow': 'Snow',
+        'heavysnow': 'Heavy snow',
+        // Snow showers
+        'lightsnowshowers': 'Light snow showers',
+        'snowshowers': 'Snow showers',
+        'heavysnowshowers': 'Heavy snow showers',
+        // Snow + thunder (steady)
+        'lightsnowandthunder': 'Light snow and thunder',
+        'snowandthunder': 'Snow and thunder',
+        'heavysnowandthunder': 'Heavy snow and thunder',
+        // Snow showers + thunder
+        'lightsnowshowersandthunder': 'Light snow showers and thunder',
+        'snowshowersandthunder': 'Snow showers and thunder',
+        'heavysnowshowersandthunder': 'Heavy snow showers and thunder',
       };
 
       const series   = metJson.properties?.timeseries || [];
@@ -1450,11 +1529,19 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
 function categorizeDesc(desc) {
   const d = String(desc || '').toLowerCase();
   if (d.includes('thunder') || d.includes('storm') || d.includes('tornado')) return 'storm';
+  // Phase B-2 Item 3: cold check moved ABOVE the rain check so that
+  // "Snow showers", "Sleet showers", "Ice pellets" don't get caught by the
+  // 'shower' keyword first and routed to 'rain'. The 'snow' / 'sleet' / 'hail'
+  // / 'freezing' keywords win. "Rain showers" still routes correctly because
+  // the cold check doesn't match it; it falls through to the rain check below.
+  if (d.includes('snow') || d.includes('sleet') || d.includes('hail') || d.includes('freezing') || d.includes('ice')) return 'cold';
   if (d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip')) return 'rain';
-  if (d.includes('snow') || d.includes('sleet') || d.includes('hail') || d.includes('freezing')) return 'cold';
   if (d.includes('overcast')) return 'cloudy';
   if (d.includes('cloud') && !d.includes('partly') && !d.includes('mainly')) return 'cloudy';
-  if (d.includes('fog') || d.includes('mist')) return 'fog';
+  // haze and smoke join fog as visibility-reducing conditions. Default 'clear'
+  // was the worst fallback for low-visibility-but-still-light weather; routing
+  // to fog category keeps them off the "Pleasant" headline.
+  if (d.includes('fog') || d.includes('mist') || d.includes('haze') || d.includes('smoke')) return 'fog';
   return 'clear';
 }
 
