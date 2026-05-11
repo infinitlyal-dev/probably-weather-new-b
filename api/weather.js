@@ -159,7 +159,9 @@ export default async function handler(req, res) {
     const openMeteoRequest = fetchJson(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
-      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index` +
+      // Phase B-1 Item 3: hourly weather_code added so per-hour condition can be preserved
+      // through aggregation (previously only the daily weather_code was fetched).
+      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
       `&timezone=auto&forecast_days=7`
     );
@@ -237,6 +239,9 @@ export default async function handler(req, res) {
         clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
         humidity:   om.hourly?.relative_humidity_2m?.slice(0, 48)      ?? [],
         uvs:        om.hourly?.uv_index?.slice(0, 48)                  ?? [],
+        // Phase B-1 Item 3: per-hour description so the hourly aggregator can
+        // surface storm/rain/cloud per hour, not just temp/precip numbers.
+        descs:      om.hourly?.weather_code?.slice(0, 48).map(c => openMeteoCodeMap[c] ?? null) ?? [],
       };
 
       dailies[0] = {
@@ -313,6 +318,16 @@ export default async function handler(req, res) {
           winds:      waHours.map(h => h.wind_kph),
           clouds:     waHours.map(h => h.cloud),
           humidity:   waHours.map(h => h.humidity),
+          // Phase B-1 Item 3: per-hour condition.text, with the same code-1003/1000
+          // clamping applied so a "Sunny" code with 0mm precip doesn't propagate
+          // a confusing rain-flavoured desc into the hourly chart.
+          descs:      waHours.map(h => {
+            const code = h.condition?.code;
+            const text = h.condition?.text ?? null;
+            if (code === 1003) return 'Partly cloudy';
+            if (code === 1000 && (h.precip_mm ?? 0) === 0) return 'Clear sky';
+            return text;
+          }),
         };
 
         dailies[1] = {
@@ -497,6 +512,16 @@ export default async function handler(req, res) {
         }),
         gusts:  alignedMetSeries.map(() => null), // not in compact
         clouds: alignedMetSeries.map(p => p?.data?.instant?.details?.cloud_area_fraction ?? null),
+        // Phase B-1 Item 3: per-hour symbol_code mapped via metSymbolMap. Strip
+        // the _day/_night/_polartwilight suffix so the lookup matches the
+        // base-symbol keys. Unknown codes fall through as the raw symbol_code,
+        // which categorizeDesc still handles via keyword matching.
+        descs:  alignedMetSeries.map(p => {
+          const raw = p?.data?.next_1_hours?.summary?.symbol_code ?? null;
+          if (!raw) return null;
+          const stripped = raw.replace(/_(day|night|polartwilight)$/, '');
+          return metSymbolMap[stripped] ?? stripped;
+        }),
       };
 
       dailies[3] = {
@@ -595,7 +620,14 @@ export default async function handler(req, res) {
       return wSum > 0 ? Math.round((sum / wSum) * 10) / 10 : null;
     }
 
-    // Hourly aggregation (Open-Meteo + WeatherAPI only — aligned on local midnight)
+    // Phase B-1 Item 3: per-hour description voting uses the same shape as
+    // daily but with the hourly-source slice [OM, WA, MET]. WA's 0.1 weight
+    // is preserved here for the same reason it's preserved in DESC_WEIGHTS:
+    // mitigates WA's documented rain-flag unreliability beyond just
+    // fragmentation (which Item 2's category-aware vote already solves).
+    const HOURLY_DESC_WEIGHTS = [1, 0.1, 1]; // [OM, WA, MET]
+
+    // Hourly aggregation (Open-Meteo + WeatherAPI + MET Norway — aligned on local midnight)
     const aggregatedHourly = Array.from({ length: 48 }, (_, i) => {
       const hourWindVals = hourlies.map(h => h ? h.winds[i] : null).filter(isNum);
       const hourGustVals = hourlies.map(h => h ? (h.gusts?.[i] ?? null) : null).filter(isNum);
@@ -615,6 +647,18 @@ export default async function handler(req, res) {
       const cloudVals = hourlies.map(h => h ? h.clouds?.[i] : null).filter(isNum);
       const modalCloud = cloudVals.length > 0 ? pickModalCloud(cloudVals) : null;
 
+      // Phase B-1 Item 3: per-hour categorised condition. Closes the
+      // investigation finding that aggregatedHourly drops descriptions, so
+      // the hourly chart can never surface thunder/hail/storm per hour. Now
+      // each source's hourly desc is weighted-voted via the same category-
+      // aware path as the daily/now decisions, then categorised so the
+      // frontend can decorate hour cells with storm/rain/cloud icons.
+      const hourDescEntries = hourlies
+        .map((h, si) => h && h.descs?.[i] ? { desc: h.descs[i], weight: HOURLY_DESC_WEIGHTS[si] } : null)
+        .filter(Boolean);
+      const hourWinningDesc = hourDescEntries.length ? pickWeightedMostCommon(hourDescEntries) : null;
+      const hourCondition = hourWinningDesc ? categorizeDesc(hourWinningDesc) : null;
+
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
         feelsLikeC: wAvg(hourlies, hourlyW, h => h.feelsLikes?.[i]),
@@ -622,6 +666,9 @@ export default async function handler(req, res) {
         windKph:    effectiveHourlyWind,
         cloudPct:   modalCloud,  // Rec 5: use modal instead of averaged cloud cover
         uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
+        // Phase B-1 Item 3: categorised hourly condition + winning desc label
+        condition:  hourCondition,
+        descLabel:  hourWinningDesc,
       };
     });
 
