@@ -986,16 +986,43 @@ function pickMostCommon(arr) {
 }
 
 /**
- * Rec 6: Weighted description voting. Each entry is { desc, weight }.
- * Accumulates weight per description string and returns the one with highest total weight.
+ * Phase B-1 Item 2: Category-aware weighted description voting.
+ *
+ * Each entry is { desc, weight }. The original implementation accumulated
+ * weight per EXACT description string, which meant near-synonyms split the
+ * vote: "Light rain" / "Moderate rain" / "Rain showers" / "Patchy rain
+ * possible" all voted separately, so a single "Clear sky" vote could win
+ * against four rain-ish descriptions. Codex called this out as the central
+ * voting bug in the Phase A review.
+ *
+ * Now: bucket by categorizeDesc() (rain/storm/cold/cloudy/fog/clear), pick
+ * the highest-scoring CATEGORY, then return the highest-weighted exact desc
+ * within that category as the representative label. This preserves the
+ * provider's wording while making the consensus decision correctly.
+ *
+ * DESC_WEIGHTS = [1, 0.1, 1, 1] is INTENTIONALLY UNCHANGED. WeatherAPI's
+ * 0.1 weight was originally a partial workaround for both fragmentation
+ * (now solved here) AND for WA's documented unreliability (e.g. flagging
+ * rain on clear days via chance_of_rain > 0 with code 1003 + 0mm precip).
+ * Only the fragmentation aspect is solved by this change. WA's rain-flag
+ * unreliability is a separate calibration and wants real data, not a
+ * refactor side-effect — surfaced in PHASE_B1_OPEN_QUESTIONS.md (if any).
  */
 function pickWeightedMostCommon(entries) {
   if (entries.length === 0) return null;
-  const scores = {};
+  const categoryScores = {};
+  const bestPerCategory = {}; // { category: { desc, weight } } — highest-weighted exact desc wins
   for (const { desc, weight } of entries) {
-    scores[desc] = (scores[desc] || 0) + weight;
+    const category = categorizeDesc(desc);
+    categoryScores[category] = (categoryScores[category] || 0) + weight;
+    if (!bestPerCategory[category] || bestPerCategory[category].weight < weight) {
+      bestPerCategory[category] = { desc, weight };
+    }
   }
-  return Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+  const winningCategory = Object.keys(categoryScores).reduce((a, b) =>
+    categoryScores[a] > categoryScores[b] ? a : b
+  );
+  return bestPerCategory[winningCategory].desc;
 }
 
 /**
@@ -1262,4 +1289,4 @@ function categorizeDesc(desc) {
 
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc };
+export { deriveCondition, categorizeDesc, pickWeightedMostCommon };

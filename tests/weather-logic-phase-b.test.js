@@ -7,7 +7,7 @@
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import handler, { deriveCondition, categorizeDesc } from '../api/weather.js';
+import handler, { deriveCondition, categorizeDesc, pickWeightedMostCommon } from '../api/weather.js';
 
 // ---------------------------------------------------------------------------
 // ITEM 1 — deriveCondition return shape
@@ -272,6 +272,133 @@ describe('API response includes conditionReason + conditionSignals', () => {
 // ITEM 1 — Override audit trail: when FIX-001 demotes 'rain-possible' to
 // 'clear' for lack of consensus, the override appears in conditionSignals.
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// ITEM 2 — Category-aware voting in pickWeightedMostCommon
+//
+// Old: weight accumulated by exact desc string. Three sources saying
+// "Light rain"/"Moderate rain"/"Rain showers" split the rain vote and could
+// lose to a single "Clear sky" vote.
+//
+// New: bucket by categorizeDesc, then within the winning category return the
+// highest-weighted exact desc as the representative label.
+// ---------------------------------------------------------------------------
+
+describe('Category-aware voting (Item 2)', () => {
+  it("groups rain synonyms into one bucket: 3 rain descs + 1 clear → rain wins", () => {
+    const result = pickWeightedMostCommon([
+      { desc: 'Clear sky', weight: 1 },
+      { desc: 'Light rain', weight: 1 },
+      { desc: 'Moderate rain', weight: 1 },
+      { desc: 'Rain showers', weight: 1 },
+    ]);
+    // Some flavour of rain wins (NOT "Clear sky")
+    expect(categorizeDesc(result)).toBe('rain');
+  });
+
+  it("the user-specified case: 3 rain-flavour + 1 thunderstorm → rain wins category vote", () => {
+    // 3 sources vote rain (split across 3 different descriptions), 1 votes
+    // storm. Rain category total weight = 3. Storm category = 1. Rain wins.
+    // (Note: at the full deriveCondition level, Phase A's two-source thunder
+    // consensus rule would still promote thunder above rain in this scenario
+    // — but THIS test exercises the voting algorithm in isolation, which is
+    // expected to choose rain as the winning category.)
+    const result = pickWeightedMostCommon([
+      { desc: 'Rain', weight: 1 },
+      { desc: 'Light rain', weight: 1 },
+      { desc: 'Showers', weight: 1 },
+      { desc: 'Thunderstorm', weight: 1 },
+    ]);
+    expect(categorizeDesc(result)).toBe('rain');
+    expect(categorizeDesc(result)).not.toBe('storm');
+  });
+
+  it("returns the highest-weighted exact label within the winning category", () => {
+    // Three rain descs at varying weights — return the one with the highest
+    // weight as the representative label, not just the first encountered.
+    const result = pickWeightedMostCommon([
+      { desc: 'Clear sky', weight: 1 },
+      { desc: 'Drizzle', weight: 0.1 },        // WA-style low weight
+      { desc: 'Heavy rain', weight: 1 },        // OM full weight
+      { desc: 'Light rain showers', weight: 1 }, // MET full weight
+    ]);
+    // Both 'Heavy rain' and 'Light rain showers' have weight 1. First
+    // encountered with highest weight wins. 'Heavy rain' came first.
+    expect(result).toBe('Heavy rain');
+  });
+
+  it("WeatherAPI's reduced 0.1 weight no longer fragments rain into nothing", () => {
+    // Pre-fix: WA's 'Patchy rain possible' (0.1) + OM's 'Light rain' (1) +
+    // MET's 'Rain' (1) + PW's 'Cloudy' (1) — reduce-tiebreak could cause
+    // unexpected winners.
+    // Post-fix: rain bucket = 0.1 + 1 + 1 = 2.1, cloudy = 1. Rain wins
+    // robustly with full vote contribution from all rain-flavoured sources.
+    const result = pickWeightedMostCommon([
+      { desc: 'Light rain', weight: 1 },
+      { desc: 'Patchy rain possible', weight: 0.1 },
+      { desc: 'Rain', weight: 1 },
+      { desc: 'Cloudy', weight: 1 },
+    ]);
+    expect(categorizeDesc(result)).toBe('rain');
+  });
+
+  it("a single 'Clear sky' against 3 rain descs cannot win on tie-break (regression of Codex finding)", () => {
+    const result = pickWeightedMostCommon([
+      { desc: 'Clear sky', weight: 1 },
+      { desc: 'Rain', weight: 1 },
+      { desc: 'Light rain', weight: 1 },
+      { desc: 'Showers', weight: 1 },
+    ]);
+    // Rain bucket: 3, Clear bucket: 1 → rain wins regardless of insertion order.
+    expect(result).not.toBe('Clear sky');
+    expect(categorizeDesc(result)).toBe('rain');
+  });
+
+  it("storm beats rain when multiple sources vote storm", () => {
+    const result = pickWeightedMostCommon([
+      { desc: 'Light rain', weight: 1 },
+      { desc: 'Thunderstorm', weight: 1 },
+      { desc: 'Rain and thunder', weight: 1 },
+      { desc: 'Heavy rain and thunder', weight: 1 },
+    ]);
+    // 'Thunderstorm', 'Rain and thunder', 'Heavy rain and thunder' all
+    // categorise as 'storm' (categorizeDesc checks 'thunder' first).
+    // Storm: 3, rain: 1 → storm wins.
+    expect(categorizeDesc(result)).toBe('storm');
+  });
+
+  it("empty entries returns null (preserved behaviour)", () => {
+    expect(pickWeightedMostCommon([])).toBeNull();
+  });
+
+  it("single entry returns that desc (preserved behaviour)", () => {
+    expect(pickWeightedMostCommon([{ desc: 'Sunny', weight: 1 }])).toBe('Sunny');
+  });
+
+  it("end-to-end: API response carries the bucketed winner as conditionLabel", async () => {
+    // Use the partly-cloudy mock setup from Item 1 — verify that the
+    // conditionLabel that ships in the now block was selected via the
+    // category-aware path. Since it's a single-source category here, the
+    // result should be the partly-cloudy desc.
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(makeOpenMeteoPayload());
+      if (href.startsWith('https://api.met.no/')) return makeResponse(makeMetPayload());
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+    try {
+      const { body } = await callWeather();
+      expect(body.now.conditionLabel).toEqual(expect.any(String));
+      // The descWinner in conditionSignals matches the conditionLabel
+      expect(body.now.conditionSignals.descWinner).toBe(body.now.conditionLabel);
+    } finally {
+      vi.useRealTimers();
+      vi.unstubAllGlobals();
+    }
+  });
+});
 
 describe('Override trail: FIX-001 majority-override-clear', () => {
   beforeEach(() => {
