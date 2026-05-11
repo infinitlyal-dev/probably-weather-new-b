@@ -1001,6 +1001,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!place || !isNum(place.lat) || !isNum(place.lon)) return false;
     return place.lat >= -34.5 && place.lat <= -33.0 && place.lon >= 17.5 && place.lon <= 20.0;
   }
+  function syncCapeWindOffset() {
+    if (!capeWindBanner) return;
+    if (capeWindBanner.classList.contains('hidden')) {
+      document.documentElement.style.removeProperty('--cape-wind-offset');
+      return;
+    }
+    // Measure after the banner is unhidden so safe-area padding is included.
+    requestAnimationFrame(() => {
+      const h = capeWindBanner.getBoundingClientRect().height;
+      if (h > 0) document.documentElement.style.setProperty('--cape-wind-offset', `${Math.ceil(h)}px`);
+    });
+  }
   function renderCapeWind(norm) {
     if (!capeWindBanner) return;
     const wind = norm.windKph;
@@ -1010,11 +1022,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const witty = lines[Math.floor(Math.random() * lines.length)];
       safeText(capeWindText, `⚠️ ${label} — ${witty}`);
       capeWindBanner.classList.remove('hidden');
+      syncCapeWindOffset();
     } else {
       capeWindBanner.classList.add('hidden');
+      syncCapeWindOffset();
     }
   }
-  if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => { dismissCapeWind(); if (capeWindBanner) capeWindBanner.classList.add('hidden'); });
+  if (capeWindDismiss) capeWindDismiss.addEventListener('click', () => {
+    dismissCapeWind();
+    if (capeWindBanner) capeWindBanner.classList.add('hidden');
+    syncCapeWindOffset();
+  });
+  // Keep the offset accurate if the user rotates the device or resizes the window.
+  window.addEventListener('resize', syncCapeWindOffset);
 
   // Sources tap-to-swap (mobile only — CSS hides toggle on desktop)
   const sourcesToggle = $('#sourcesToggle');
