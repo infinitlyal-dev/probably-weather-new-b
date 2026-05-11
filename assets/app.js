@@ -220,15 +220,20 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     // Hero labels
     heroLabels: WEATHER_COPY.heroLabels,
-    // Day names (short)
+    // Day names (short).
+    // Afrikaans abbreviations flagged by tester 2026-05-11:
+    //   Maandag → Ma, Dinsdag → Dins, Woensdag → Wo, Donderdag → Don,
+    //   Vrydag → Vry, Saterdag → Sat, Sondag → Son.
+    // EN/ZU/XH/ST not changed in this pass — Al will get those flagged by
+    // native speakers as he sends tester links wider.
     days: {
-      sun: { en: "Sun", af: "Son", zu: "Son", xh: "Caw", st: "Sont" },
-      mon: { en: "Mon", af: "Maa", zu: "Mso", xh: "Mvu", st: "Mant" },
-      tue: { en: "Tue", af: "Din", zu: "Bil", xh: "Lwes", st: "Lab" },
-      wed: { en: "Wed", af: "Woe", zu: "Tha", xh: "Tha", st: "Lar" },
-      thu: { en: "Thu", af: "Don", zu: "Sin", xh: "Sin", st: "Labo" },
-      fri: { en: "Fri", af: "Vry", zu: "Hla", xh: "Hlanu", st: "Laboh" },
-      sat: { en: "Sat", af: "Sat", zu: "Mgq", xh: "Mgqi", st: "Moq" }
+      sun: { en: "Sun", af: "Son",  zu: "Son", xh: "Caw",   st: "Sont" },
+      mon: { en: "Mon", af: "Ma",   zu: "Mso", xh: "Mvu",   st: "Mant" },
+      tue: { en: "Tue", af: "Dins", zu: "Bil", xh: "Lwes",  st: "Lab" },
+      wed: { en: "Wed", af: "Wo",   zu: "Tha", xh: "Tha",   st: "Lar" },
+      thu: { en: "Thu", af: "Don",  zu: "Sin", xh: "Sin",   st: "Labo" },
+      fri: { en: "Fri", af: "Vry",  zu: "Hla", xh: "Hlanu", st: "Laboh" },
+      sat: { en: "Sat", af: "Sat",  zu: "Mgq", xh: "Mgqi",  st: "Moq" }
     },
     // Headlines
     headlines: WEATHER_COPY.headlines,
