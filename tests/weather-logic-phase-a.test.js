@@ -28,7 +28,7 @@ describe('UV temp gate (Bug 2)', () => {
       uvIndex: 6,
       dailyHighC: 13,
     });
-    expect(result).not.toBe('uv');
+    expect(result.key).not.toBe('uv');
   });
 
   it("does NOT return 'uv' on a cold day (dailyHighC=13, uvIndex=8 — high UV rung)", () => {
@@ -39,7 +39,7 @@ describe('UV temp gate (Bug 2)', () => {
       uvIndex: 8,
       dailyHighC: 13,
     });
-    expect(result).not.toBe('uv');
+    expect(result.key).not.toBe('uv');
   });
 
   it("returns 'uv' on a warm day (dailyHighC=22, uvIndex=6)", () => {
@@ -50,7 +50,7 @@ describe('UV temp gate (Bug 2)', () => {
       uvIndex: 6,
       dailyHighC: 22,
     });
-    expect(result).toBe('uv');
+    expect(result.key).toBe('uv');
   });
 
   it("returns 'uv' when dailyHighC is missing (preserves data-gap behaviour, uvIndex=8)", () => {
@@ -61,7 +61,7 @@ describe('UV temp gate (Bug 2)', () => {
       uvIndex: 8,
       // dailyHighC intentionally omitted
     });
-    expect(result).toBe('uv');
+    expect(result.key).toBe('uv');
   });
 
   it("returns 'uv' at exactly dailyHighC=15 (boundary — NOT blocked)", () => {
@@ -72,7 +72,7 @@ describe('UV temp gate (Bug 2)', () => {
       uvIndex: 8,
       dailyHighC: 15,
     });
-    expect(result).toBe('uv');
+    expect(result.key).toBe('uv');
   });
 
   it("does NOT return 'uv' just below the boundary (dailyHighC=14, uvIndex=8)", () => {
@@ -83,7 +83,7 @@ describe('UV temp gate (Bug 2)', () => {
       uvIndex: 8,
       dailyHighC: 14,
     });
-    expect(result).not.toBe('uv');
+    expect(result.key).not.toBe('uv');
   });
 });
 
@@ -106,7 +106,7 @@ describe('Hail consensus', () => {
       desc: 'Thunderstorm with heavy hail',
       sourceDescs: ['Thunderstorm with heavy hail', 'Rain'],
     });
-    expect(result).toBe('hail');
+    expect(result.key).toBe('hail');
   });
 
   it("returns 'hail' when MET flags hagel (Afrikaans/Dutch) and another corroborates", () => {
@@ -115,7 +115,7 @@ describe('Hail consensus', () => {
       desc: 'Hagel',
       sourceDescs: ['Hagel', 'Heavy rain showers'],
     });
-    expect(result).toBe('hail');
+    expect(result.key).toBe('hail');
   });
 
   it("does NOT return 'hail' when only one source flags it (no corroboration)", () => {
@@ -124,7 +124,7 @@ describe('Hail consensus', () => {
       desc: 'Hail',
       sourceDescs: ['Hail', 'Partly cloudy'],
     });
-    expect(result).not.toBe('hail');
+    expect(result.key).not.toBe('hail');
   });
 
   it("does NOT return 'hail' without sourceDescs (single-source backward compat path)", () => {
@@ -134,8 +134,8 @@ describe('Hail consensus', () => {
       // sourceDescs omitted — falls through to priority 1 storm
     });
     // priority 1 'storm' wins because desc contains 'thunder'
-    expect(result).toBe('storm');
-    expect(result).not.toBe('hail');
+    expect(result.key).toBe('storm');
+    expect(result.key).not.toBe('hail');
   });
 });
 
@@ -154,7 +154,7 @@ describe('Thunder consensus', () => {
       desc: 'Thunderstorm',
       sourceDescs: ['Thunderstorm', 'Rain'],
     });
-    expect(result).toBe('thunder');
+    expect(result.key).toBe('thunder');
   });
 
   it("returns 'thunder' for 'Rain and thunder' (MET Norway) + 'Patchy rain' corroborator", () => {
@@ -163,7 +163,7 @@ describe('Thunder consensus', () => {
       desc: 'Rain and thunder',
       sourceDescs: ['Rain and thunder', 'Patchy rain'],
     });
-    expect(result).toBe('thunder');
+    expect(result.key).toBe('thunder');
   });
 
   it("returns 'thunder' for Afrikaans 'donder' keyword", () => {
@@ -172,7 +172,7 @@ describe('Thunder consensus', () => {
       desc: 'Donder en reën',
       sourceDescs: ['Donder en reën', 'Shower'],
     });
-    expect(result).toBe('thunder');
+    expect(result.key).toBe('thunder');
   });
 
   it("does NOT return 'thunder' when only one source flags thunder (no corroboration)", () => {
@@ -181,9 +181,9 @@ describe('Thunder consensus', () => {
       desc: 'Thunderstorm',
       sourceDescs: ['Thunderstorm', 'Clear sky'],
     });
-    expect(result).not.toBe('thunder');
+    expect(result.key).not.toBe('thunder');
     // Falls through to priority 1 storm (single-source thunder)
-    expect(result).toBe('storm');
+    expect(result.key).toBe('storm');
   });
 
   it("returns 'hail' when both hail AND thunder are present (hail beats thunder in priority order)", () => {
@@ -192,7 +192,7 @@ describe('Thunder consensus', () => {
       desc: 'Thunderstorm with hail',
       sourceDescs: ['Thunderstorm with hail', 'Rain'],
     });
-    expect(result).toBe('hail');
+    expect(result.key).toBe('hail');
   });
 });
 

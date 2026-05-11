@@ -642,7 +642,8 @@ export default async function handler(req, res) {
       const noonIdx      = i * 24 + 12;
       const windKph      = aggregatedHourly[noonIdx]?.windKph ?? null;
 
-      let dailyConditionKey = deriveCondition({
+      const dailySourceDescs = dailies.map(dd => dd?.descs?.[i]).filter(Boolean);
+      let { key: dailyConditionKey, reason: dailyConditionReason } = deriveCondition({
         desc:      conditionLabel,
         rainChance,
         tempC:     highC,
@@ -652,8 +653,9 @@ export default async function handler(req, res) {
         isDay:     true,
         // Per-source descriptions for this day, used by the hail/thunder
         // consensus rungs at the top of deriveCondition.
-        sourceDescs: dailies.map(dd => dd?.descs?.[i]).filter(Boolean),
+        sourceDescs: dailySourceDescs,
       });
+      const dailyOverrides = [];
 
       // Rec 4: Majority voting for daily conditions — same logic as FIX-001
       // Requires ≥2 sources to agree on rain/cloudy before declaring it
@@ -667,7 +669,9 @@ export default async function handler(req, res) {
         const trustedDailyRain = omRain || metRain;
         if (rainOrCloudyCount < 2 && !trustedDailyRain) {
           debugLog(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy, no trusted rain)`);
+          dailyOverrides.push({ rule: 'majority-override-clear', from: dailyConditionKey, to: 'clear', reasonDetail: `${rainOrCloudyCount}/${descEntries.length} sources voted rain/cloudy/storm, no trusted-source rain` });
           dailyConditionKey = 'clear';
+          dailyConditionReason = 'majority-override-clear';
         } else if (rainOrCloudyCount < 2 && trustedDailyRain) {
           debugLog(`[BUG-1] Day ${i}: Keeping ${dailyConditionKey} — trusted source (OM=${omRain}, MET=${metRain}) votes rain`);
         }
@@ -679,7 +683,9 @@ export default async function handler(req, res) {
         const dailyFogSources = dailies.map((d, si) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog' ? sourceNames[si] : null).filter(Boolean);
         if (dailyFogSources.length < 2) {
           debugLog(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
+          dailyOverrides.push({ rule: 'fog-blocked-single-source', from: 'fog', to: 'clear', reasonDetail: `only ${dailyFogSources.length} source(s) voted fog` });
           dailyConditionKey = 'clear';
+          dailyConditionReason = 'fog-blocked-single-source';
         }
       }
 
@@ -690,6 +696,13 @@ export default async function handler(req, res) {
         uv,
         conditionLabel,
         conditionKey: dailyConditionKey,
+        conditionReason: dailyConditionReason,
+        conditionSignals: {
+          descWinner: conditionLabel,
+          numeric: { rainChance, highC, uvIndex: uv, cloudPct: aggregatedHourly[noonIdx]?.cloudPct ?? null, windKph },
+          sourceDescs: dailySourceDescs,
+          overrides: dailyOverrides,
+        },
         sunrise: dailies.filter(Boolean).find(d => d.sunrises?.[i])?.sunrises[i] ?? null,
         sunset:  dailies.filter(Boolean).find(d => d.sunsets?.[i])?.sunsets[i]   ?? null,
       };
@@ -817,7 +830,8 @@ export default async function handler(req, res) {
     // reports "High UV" near sunset. Only use UV to drive condition between 10:00-16:00.
     const uvForCondition = (localHour >= 10 && localHour < 16) ? medUv : null;
 
-    let nowConditionKey = deriveCondition({
+    const nowSourceDescs = activeNorms.map(n => n.desc).filter(Boolean);
+    let { key: nowConditionKey, reason: nowConditionReason } = deriveCondition({
       desc:       mostDesc,
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
@@ -829,8 +843,9 @@ export default async function handler(req, res) {
       isDay,
       dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
       // Per-source raw descriptions feed the hail/thunder consensus rungs.
-      sourceDescs: activeNorms.map(n => n.desc).filter(Boolean),
+      sourceDescs: nowSourceDescs,
     });
+    const nowOverrides = [];
 
     // FIX-001: Per-source condition votes for debugging and majority check
     const sourceConditionVotes = activeNorms.map(n => ({
@@ -839,7 +854,7 @@ export default async function handler(req, res) {
       vote: categorizeDesc(n.desc),
     }));
     debugLog('[Condition voting]', JSON.stringify(sourceConditionVotes));
-    debugLog(`[Condition derived] ${nowConditionKey} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
+    debugLog(`[Condition derived] ${nowConditionKey} reason=${nowConditionReason} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
 
     // FIX-001: Majority check — single source claiming rain/cloudy must not override clear consensus
     // Requires ≥2 sources to agree on rain/cloudy before the app declares it
@@ -853,7 +868,9 @@ export default async function handler(req, res) {
       );
       if (rainOrCloudyVotes.length < 2 && !trustedRainVote) {
         debugLog(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes.length}/${activeNorms.length} sources vote rain/cloudy, no trusted rain vote)`);
+        nowOverrides.push({ rule: 'majority-override-clear', from: nowConditionKey, to: 'clear', reasonDetail: `${rainOrCloudyVotes.length}/${activeNorms.length} sources voted rain/cloudy/storm, no trusted-source rain` });
         nowConditionKey = 'clear';
+        nowConditionReason = 'majority-override-clear';
       } else if (rainOrCloudyVotes.length < 2 && trustedRainVote) {
         debugLog(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
       }
@@ -865,9 +882,32 @@ export default async function handler(req, res) {
       const fogVotes = sourceConditionVotes.filter(v => v.vote === 'fog');
       if (fogVotes.length < 2) {
         debugLog(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
+        nowOverrides.push({ rule: 'fog-blocked-single-source', from: 'fog', to: 'clear', reasonDetail: `only ${fogVotes.length} source(s) voted fog` });
         nowConditionKey = 'clear';
+        nowConditionReason = 'fog-blocked-single-source';
       }
     }
+
+    // Phase B-1 Item 1: package the audit trail for the now-path decision.
+    // conditionReason is the short identifier of the rule that produced the
+    // final key (after any overrides). conditionSignals shows the inputs:
+    // who voted what, the numeric thresholds in play, the desc that won
+    // the weighted vote, and any post-hoc transformations.
+    const nowConditionSignals = {
+      descWinner: mostDesc,
+      numeric: {
+        rainChance: currentHourRainChance,
+        tempC: medNowTemp,
+        feelsLikeC: finalFeelsLike,
+        windKph: medWindKph,
+        uvIndex: uvForCondition,
+        cloudPct: currentCloudPct,
+        dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
+        isDay,
+      },
+      sourceVotes: sourceConditionVotes,
+      overrides: nowOverrides,
+    };
 
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
     return res.status(200).json({
@@ -877,16 +917,22 @@ export default async function handler(req, res) {
       maxWindKph: maxWindKph > 0 ? maxWindKph : null,
       gustKph:    isNum(maxGust) && maxGust > effectiveDisplayWind * 1.5 ? maxGust : null,
       now: {
-        tempC:          medNowTemp,
-        feelsLikeC:     finalFeelsLike,
-        windKph:        effectiveDisplayWind,
-        humidity:       medHumidity,
-        rainChance:     currentHourRainChance,  // current hour rain chance
-        uv:             isDay ? medUv : null,  // UV is irrelevant after sunset
-        cloudPct:       currentCloudPct,
-        conditionKey:   nowConditionKey,
-        conditionLabel: mostDesc,
-        isDay,          // lets app.js switch night/day copy and suppress UV stat
+        tempC:            medNowTemp,
+        feelsLikeC:       finalFeelsLike,
+        windKph:          effectiveDisplayWind,
+        humidity:         medHumidity,
+        rainChance:       currentHourRainChance,  // current hour rain chance
+        uv:               isDay ? medUv : null,  // UV is irrelevant after sunset
+        cloudPct:         currentCloudPct,
+        conditionKey:     nowConditionKey,
+        conditionLabel:   mostDesc,
+        // Phase B-1 Item 1: rule identifier (short string) and signals object
+        // (per-source votes + numeric inputs + override trail). Debug-grade
+        // fields — frontend consumes conditionKey/conditionLabel as before;
+        // these make the decision auditable from the API response alone.
+        conditionReason:  nowConditionReason,
+        conditionSignals: nowConditionSignals,
+        isDay,            // lets app.js switch night/day copy and suppress UV stat
         sunrise,
         sunset,
       },
@@ -1113,7 +1159,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
       const hasOtherCorroborator = lowered.some((s, i) => i !== hailIdx && corroborateRe.test(s));
       if (hasOtherCorroborator) {
         debugLog(`[Hail consensus] one source flags hail, another corroborates → hail`);
-        return 'hail';
+        return { key: 'hail', reason: 'two-source-consensus-hail' };
       }
     }
 
@@ -1122,52 +1168,52 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
       const hasOtherCorroborator = lowered.some((s, i) => i !== thunderIdx && corroborateRe.test(s));
       if (hasOtherCorroborator) {
         debugLog(`[Thunder consensus] one source flags thunder, another corroborates → thunder`);
-        return 'thunder';
+        return { key: 'thunder', reason: 'two-source-consensus-thunder' };
       }
     }
   }
 
   // 1. Storm (single-source thunder/storm/tornado wins via the description vote)
-  if (d.includes('thunder') || d.includes('storm') || d.includes('tornado')) return 'storm';
+  if (d.includes('thunder') || d.includes('storm') || d.includes('tornado')) return { key: 'storm', reason: 'desc-storm-keyword' };
 
   // 2. Extreme cold
-  if (isNum(feelsLikeC) && feelsLikeC <= -5) return 'cold';
-  if (isNum(tempC) && tempC <= 0)             return 'cold';
+  if (isNum(feelsLikeC) && feelsLikeC <= -5) return { key: 'cold', reason: 'extreme-cold-feels-like' };
+  if (isNum(tempC) && tempC <= 0)             return { key: 'cold', reason: 'extreme-cold-temp' };
 
   // 3. Winter precipitation
   if (d.includes('snow') || d.includes('sleet') || d.includes('ice') ||
-      d.includes('hail') || d.includes('blizzard') || d.includes('freezing')) return 'cold';
+      d.includes('hail') || d.includes('blizzard') || d.includes('freezing')) return { key: 'cold', reason: 'desc-winter-precip' };
 
   // 4. Extreme heat
-  if (isNum(tempC) && tempC >= 35)            return 'heat';
-  if (isNum(feelsLikeC) && feelsLikeC >= 38) return 'heat';
+  if (isNum(tempC) && tempC >= 35)            return { key: 'heat', reason: 'extreme-heat-temp' };
+  if (isNum(feelsLikeC) && feelsLikeC >= 38) return { key: 'heat', reason: 'extreme-heat-feels-like' };
 
   // 5. Heavy rain
-  if (isNum(rainChance) && rainChance >= 60)  return 'rain';
+  if (isNum(rainChance) && rainChance >= 60)  return { key: 'rain', reason: 'heavy-rain-prob' };
 
   // 6. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
-  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc) && !uvBlockedByCold) return 'uv';
+  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc) && !uvBlockedByCold) return { key: 'uv', reason: 'high-uv-with-temp-gate' };
 
   // 7. Strong wind
-  if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
+  if (isNum(effectiveWind) && effectiveWind >= 30) return { key: 'wind', reason: 'strong-wind' };
 
   // 8. Moderate rain
-  if (isNum(rainChance) && rainChance >= 30)  return 'rain';
+  if (isNum(rainChance) && rainChance >= 30)  return { key: 'rain', reason: 'moderate-rain-prob' };
 
   // 9. Rain by description
-  if (d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip')) return 'rain';
+  if (d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip')) return { key: 'rain', reason: 'desc-rain-keyword' };
 
   // 10. Moderate wind
-  if (isNum(effectiveWind) && effectiveWind >= 25) return 'wind';
+  if (isNum(effectiveWind) && effectiveWind >= 25) return { key: 'wind', reason: 'moderate-wind' };
 
   // 11. Overcast
-  if (isTrulyOvercast || overcastByDesc)      return 'cloudy';
+  if (isTrulyOvercast || overcastByDesc)      return { key: 'cloudy', reason: 'overcast' };
 
   // 12. Possible rain (20%+ but not yet "rain")
-  if (isNum(rainChance) && rainChance >= 20)  return 'rain-possible';
+  if (isNum(rainChance) && rainChance >= 20)  return { key: 'rain-possible', reason: 'rain-possible-prob' };
 
   // 13. Fog / mist / haze
-  if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return 'fog';
+  if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return { key: 'fog', reason: 'desc-fog-keyword' };
 
   // 14. Cold (not freezing, but chilly)
   //   - Now-path: only declare cold if BOTH the current temp is ≤ 10 AND the
@@ -1175,28 +1221,28 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   //   - Daily-path: dailyHighC is undefined (caller passes tempC=highC), so the
   //     existing tempC ≤ 10 check still works for daily decisions.
   if (isNum(tempC) && tempC <= 10) {
-    if (!isNum(dailyHighC) || dailyHighC <= 14) return 'cold';
+    if (!isNum(dailyHighC) || dailyHighC <= 14) return { key: 'cold', reason: 'chilly-with-daily-gate' };
     debugLog(`[Cold gate] tempC=${tempC} but dailyHighC=${dailyHighC} > 14 → not cold`);
   }
 
   // 15. Hot (not extreme, but warm)
-  if (isNum(tempC) && tempC >= 30)            return 'heat';
+  if (isNum(tempC) && tempC >= 30)            return { key: 'heat', reason: 'warm-temp' };
 
   // 16. Moderate UV — daytime only, not significantly cloudy (40%+ blocks UV), not a cold day
-  if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isSignificantCloud || isMostlyCloudy || cloudyByDesc) && !uvBlockedByCold) return 'uv';
+  if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isSignificantCloud || isMostlyCloudy || cloudyByDesc) && !uvBlockedByCold) return { key: 'uv', reason: 'moderate-uv-with-temp-gate' };
 
   // 17. Mostly cloudy
-  if (isMostlyCloudy || cloudyByDesc)         return 'cloudy';
+  if (isMostlyCloudy || cloudyByDesc)         return { key: 'cloudy', reason: 'mostly-cloudy' };
 
   // 18. Partly cloudy / mainly clear / fair — distinct from clear so the
   // home headline can match the ⛅ hourly icon. Frontend handles the new key.
-  if (isPartlyCloudy || partlyByDesc)         return 'partly-cloudy';
+  if (isPartlyCloudy || partlyByDesc)         return { key: 'partly-cloudy', reason: 'partly-cloudy' };
 
   // 19. Clear by description (includes 'wind' to avoid 'Windy' desc falling to bottom)
-  if (d.includes('clear') || d.includes('sunny') || d.includes('fair') || d.includes('wind')) return 'clear';
+  if (d.includes('clear') || d.includes('sunny') || d.includes('fair') || d.includes('wind')) return { key: 'clear', reason: 'desc-clear-keyword' };
 
   // 20. Fallback
-  return 'clear';
+  return { key: 'clear', reason: 'fallback-clear' };
 }
 
 /**
