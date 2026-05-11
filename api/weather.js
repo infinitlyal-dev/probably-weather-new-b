@@ -129,9 +129,16 @@ export default async function handler(req, res) {
     const dailies  = [null, null, null, null]; // 7-day daily arrays
 
     // UTC offset for the requested location (seconds).
-    // Captured from Open-Meteo (timezone=auto) to calculate correct local hour.
-    // Vercel runs UTC so new Date().getHours() would be wrong for non-UTC zones.
+    // Phase B-2 Item 1: fall-through chain instead of OM-only SPOF.
+    //   1. Open-Meteo `utc_offset_seconds` (existing primary; timezone=auto)
+    //   2. Pirate Weather `offset` (hours → multiply by 3600)
+    //   3. WeatherAPI `location.tz_id` → resolve via Intl.DateTimeFormat (DST-aware)
+    //   4. Default 0 (UTC) — last resort; logged so it's not silent
+    // Without this chain, an Open-Meteo outage broke MET hourly alignment +
+    // isDay for non-UTC users (e.g. SA shifted by 2 hours, breaking local-hour
+    // mapping). utcOffsetSource is surfaced in response meta for audit.
     let utcOffsetSeconds = 0;
+    let utcOffsetSource = 'default-utc';
 
     // Description maps
     const openMeteoCodeMap = {
@@ -211,6 +218,7 @@ export default async function handler(req, res) {
       // Capture UTC offset so we can determine the correct local hour later
       if (isNum(om.utc_offset_seconds)) {
         utcOffsetSeconds = om.utc_offset_seconds;
+        utcOffsetSource = 'open-meteo';
       }
 
       norms[0] = {
@@ -264,6 +272,19 @@ export default async function handler(req, res) {
     if (WEATHERAPI_KEY) {
       try {
         const wa = getSettledValue(weatherApiResult);
+
+        // Phase B-2 Item 1: timezone fallback — if Open-Meteo didn't provide
+        // an offset (failed or returned no field), try WeatherAPI's location.tz_id.
+        // Intl.DateTimeFormat resolves the IANA name to a DST-aware offset
+        // ("Africa/Johannesburg" → "GMT+02:00" → +7200s) at request-handling time.
+        if (utcOffsetSource === 'default-utc' && wa.location?.tz_id) {
+          const waOffset = computeTimezoneOffsetFromTzId(wa.location.tz_id);
+          if (isNum(waOffset)) {
+            utcOffsetSeconds = waOffset;
+            utcOffsetSource = 'weatherapi';
+            debugLog(`[Timezone fallback] WeatherAPI tz_id="${wa.location.tz_id}" → ${waOffset}s`);
+          }
+        }
 
         const d0    = wa.forecast?.forecastday?.[0]?.day   || {};
         const astro = wa.forecast?.forecastday?.[0]?.astro || {};
@@ -374,6 +395,15 @@ export default async function handler(req, res) {
       try {
         // units=si: temps in C, wind in m/s, humidity 0-1 fraction, precip mm
         const pw = getSettledValue(pirateWeatherResult);
+
+        // Phase B-2 Item 1: timezone fallback — if neither Open-Meteo nor
+        // WeatherAPI supplied an offset, try Pirate Weather's `offset` field
+        // (hours, e.g. 2.0 for SA in winter, -7.0 for LA in PDT).
+        if (utcOffsetSource === 'default-utc' && isNum(pw.offset)) {
+          utcOffsetSeconds = Math.round(pw.offset * 3600);
+          utcOffsetSource = 'pirate-weather';
+          debugLog(`[Timezone fallback] Pirate Weather offset=${pw.offset}h → ${utcOffsetSeconds}s`);
+        }
 
         const cur = pw.currently || {};
         const dly = pw.daily?.data || [];
@@ -1008,6 +1038,11 @@ export default async function handler(req, res) {
         sourceConditions: sourceConditionVotes,
         localHour,
         utcOffsetSeconds,
+        // Phase B-2 Item 1: audit field — which source supplied the offset.
+        // 'open-meteo' (primary), 'pirate-weather' (fall-through), 'weatherapi'
+        // (via tz_id Intl resolution), or 'default-utc' (all three failed —
+        // localHour/MET-alignment/isDay treat the location as UTC).
+        utcOffsetSource,
         updatedAtLabel: new Date().toISOString(),
       },
     });
@@ -1024,6 +1059,41 @@ export default async function handler(req, res) {
 
 function isNum(v) {
   return typeof v === 'number' && Number.isFinite(v);
+}
+
+/**
+ * Phase B-2 Item 1: Resolve an IANA tz_id (e.g. "Africa/Johannesburg") to a
+ * DST-aware UTC offset in seconds. Used as the WeatherAPI step of the
+ * timezone fallback chain when Open-Meteo and Pirate Weather both fail.
+ *
+ * Returns null if the tz_id is not resolvable (unknown name, Intl API error,
+ * unparseable offset format). Callers default to 0 (UTC) only as last resort.
+ *
+ * The offset is computed at request-handling time so DST transitions are
+ * reflected. For South African users (no DST) the result is stable +7200s.
+ * For DST locations like America/Los_Angeles it shifts between -28800 (PST)
+ * and -25200 (PDT) automatically.
+ */
+function computeTimezoneOffsetFromTzId(tzId) {
+  if (!tzId || typeof tzId !== 'string') return null;
+  try {
+    const fmt = new Intl.DateTimeFormat('en-US', { timeZone: tzId, timeZoneName: 'longOffset' });
+    const parts = fmt.formatToParts(new Date());
+    const offsetPart = parts.find(p => p.type === 'timeZoneName');
+    if (!offsetPart) return null;
+    const v = offsetPart.value;
+    // "GMT" alone (or "UTC") means zero offset.
+    if (v === 'GMT' || v === 'UTC') return 0;
+    // Otherwise "GMT+HH:MM" or "GMT-HH:MM" — and a few engines emit "GMT+H".
+    const match = v.match(/GMT([+-])(\d{1,2})(?::(\d{2}))?/);
+    if (!match) return null;
+    const sign = match[1] === '+' ? 1 : -1;
+    const hours = parseInt(match[2], 10);
+    const minutes = match[3] ? parseInt(match[3], 10) : 0;
+    return sign * (hours * 3600 + minutes * 60);
+  } catch (_) {
+    return null;
+  }
 }
 
 function pickMostCommon(arr) {
