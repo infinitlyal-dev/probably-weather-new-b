@@ -1907,7 +1907,15 @@ main#home-screen.main #confidence {
   .container {
     min-height: 100vh;
     min-height: 100dvh;
-    padding: max(0.5rem, env(safe-area-inset-top)) max(0.5rem, env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
+    /* HOTFIX 2026-05-12: floor padding-top at 44px so the brand/title clears
+       the iOS status bar even when env(safe-area-inset-top) returns 0 — which
+       happens on iOS PWAs installed before viewport-fit=cover landed, and in
+       non-standalone WebView contexts (WhatsApp/Twitter previews). Real
+       notched iPhones in standalone mode report ~44-48px so the floor is a
+       no-op there. Side effect: ~36px extra top whitespace on Android and
+       non-notched iPhones — acceptable for a tester-rollout hotfix; refine
+       with JS-detected display-mode if it becomes a complaint. */
+    padding: max(0.5rem, env(safe-area-inset-top, 0px), 44px) max(0.5rem, env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
     box-sizing: border-box;
   }
 

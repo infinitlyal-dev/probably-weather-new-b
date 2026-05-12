@@ -117,6 +117,25 @@ App.js is mounting close to a single-file maintenance ceiling. Search/Favorites/
 
 ---
 
+## Process gap surfaced after Phase 2 (added 2026-05-12 post-Phase-2.5 hotfix)
+
+**Phase 2 audit was code-focused. It did not render-test the app at mobile viewports.** Phase 2.5 caught a CSS regression on iPhone (header crushed against the status bar — `.container` padding-top fell back to 8px when `env(safe-area-inset-top)` returned 0, which iOS does in non-standalone WebView contexts and in some older PWA installs). The CSS reading was correct; the regression was only visible in render.
+
+The audit cleared `assets/app.css` because the safe-area rules were textually present and the diff vs baseline was tiny (33 lines, none touching safe-area). But "rule is present and looks right" is not the same as "rule renders correctly at the target viewport". A code-only audit can't catch a fallback-value bug that only shows up when `env()` returns 0.
+
+**For future audits:** add a visual regression sub-step. Minimum viable check at the next audit gate:
+
+1. Boot the app at canonical viewports (375×812 iPhone X portrait, 768×1024 iPad portrait, 1440×900 desktop) via Playwright.
+2. Screenshot Home, Search, Hourly, Week, Settings — five canonical screens.
+3. Diff against checked-in golden screenshots OR eyeball for obvious overlap/cropping/clipping at the edges.
+4. Specifically probe `env(safe-area-inset-*)` fallback paths — anywhere CSS uses `max(NNpx, env(safe-area-inset-*))` is a candidate for "what happens when env() = 0" testing.
+
+Tooling note: Playwright at desktop dimensions does NOT simulate the iOS notch — `env(safe-area-inset-top)` returns 0 there. To actually see a notched layout, inject a CSS variable simulating the inset (the technique used to verify the Phase 2.5 hotfix). For full fidelity, a real iOS device or BrowserStack iPhone is required, but the inject-and-check trick catches the fallback-bug class.
+
+This gap should be a checklist item on any future "X-readiness" audit, not just tester-readiness.
+
+---
+
 ## Plan after Codex review
 
 1. Run Codex GPT-5.5 adversarial review on this audit + source files.
