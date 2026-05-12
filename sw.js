@@ -3,7 +3,7 @@
    - Share button: mobile-only pill (bottom-left), Web Share API, 5-language support
 */
 
-const CACHE_VERSION = 'pw-v2026-05-12-005';
+const CACHE_VERSION = 'pw-v2026-05-12-006';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const API_CACHE = `${CACHE_VERSION}-api`;
@@ -25,9 +25,33 @@ const API_CACHE_MAX_AGE = 3 * 60 * 60 * 1000; // 3 hours
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(CORE_CACHE).then((cache) => cache.addAll(CORE_ASSETS)).catch(() => {})
-  );
+  event.waitUntil((async () => {
+    try {
+      const cache = await caches.open(CORE_CACHE);
+      // addAll is atomic — if any single asset fails, the cache is left empty.
+      // Try the atomic path first so we either get the full offline shell or
+      // none of it, but if that fails fall back to a best-effort per-asset
+      // loop that logs each miss. Both outcomes leave the SW installed; the
+      // log surfaces missing assets to anyone watching the console after a
+      // deploy.
+      try {
+        await cache.addAll(CORE_ASSETS);
+      } catch (err) {
+        const cached = new Set();
+        for (const asset of CORE_ASSETS) {
+          try {
+            await cache.add(asset);
+            cached.add(asset);
+          } catch (assetErr) {
+            console.warn('[SW] core asset failed to cache:', asset, assetErr?.message || assetErr);
+          }
+        }
+        console.warn('[SW] core precache partial:', cached.size, '/', CORE_ASSETS.length, 'assets cached; addAll error:', err?.message || err);
+      }
+    } catch (err) {
+      console.warn('[SW] core cache open failed:', err?.message || err);
+    }
+  })());
 });
 
 self.addEventListener('activate', (event) => {
@@ -106,13 +130,24 @@ self.addEventListener('fetch', (event) => {
         const cache = await caches.open(API_CACHE);
         const cached = await cache.match(req);
         if (cached) {
-          const headers = new Headers(cached.headers);
-          headers.set('sw-offline', 'true');
-          return new Response(await cached.blob(), {
-            status: cached.status,
-            statusText: cached.statusText,
-            headers,
-          });
+          // Honour API_CACHE_MAX_AGE — if the offline copy is older than the
+          // cap, refuse to serve it. Showing 3+ hour stale weather as a
+          // confident offline mode is worse than a clear "offline" error,
+          // especially for SA testers driving between regions on the N2.
+          const cachedAt = Number.parseInt(cached.headers.get('sw-cached-at') || '0', 10);
+          const age = Number.isFinite(cachedAt) && cachedAt > 0 ? Date.now() - cachedAt : Infinity;
+          if (age <= API_CACHE_MAX_AGE) {
+            const headers = new Headers(cached.headers);
+            headers.set('sw-offline', 'true');
+            headers.set('sw-cache-age-ms', String(age));
+            return new Response(await cached.blob(), {
+              status: cached.status,
+              statusText: cached.statusText,
+              headers,
+            });
+          }
+          // Cached payload too old — fall through to the 503 below so the page
+          // can render an explicit offline state rather than stale data.
         }
         return new Response(JSON.stringify({ ok: false, error: 'offline' }), {
           status: 503,

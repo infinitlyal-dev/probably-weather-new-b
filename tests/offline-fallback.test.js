@@ -76,6 +76,61 @@ describe('Offline fallback guarantees', () => {
   });
 
   it('bumps cache version per deploy so stale offline payloads do not linger forever', () => {
-    expect(sw()).toMatch(/CACHE_VERSION\s*=\s*'pw-v2026-05-12-005'/);
+    expect(sw()).toMatch(/CACHE_VERSION\s*=\s*'pw-v2026-05-12-006'/);
+  });
+
+  // -------------------------------------------------------------------------
+  // Phase 2 audit fix Z1 — offline weather respects API_CACHE_MAX_AGE.
+  // Without this, the SW would happily return last week's weather under the
+  // `sw-offline` banner. Show the user a clear offline error instead of
+  // confidently wrong data when the cache is past its max-age.
+  // -------------------------------------------------------------------------
+  describe('Offline weather payload age cap (Z1)', () => {
+    it('defines API_CACHE_MAX_AGE constant in hours/ms', () => {
+      expect(sw()).toMatch(/const\s+API_CACHE_MAX_AGE\s*=/);
+    });
+
+    it('reads sw-cached-at header off the cached response when offline', () => {
+      const src = sw();
+      const weatherBlock = src.match(/if \(isWeatherApi\(url\)\) \{[\s\S]*?\}\)\(\)\);\s*\n\s*return;\s*\}/);
+      expect(weatherBlock).toBeTruthy();
+      expect(weatherBlock[0]).toMatch(/sw-cached-at/);
+    });
+
+    it('compares cache age against API_CACHE_MAX_AGE before serving offline', () => {
+      const src = sw();
+      const weatherBlock = src.match(/if \(isWeatherApi\(url\)\) \{[\s\S]*?\}\)\(\)\);\s*\n\s*return;\s*\}/);
+      expect(weatherBlock).toBeTruthy();
+      // The catch branch must compute age and gate the offline response on
+      // age <= API_CACHE_MAX_AGE. We don't pin the exact arithmetic — just
+      // that the cap participates in the offline decision.
+      expect(weatherBlock[0]).toMatch(/age\s*<=?\s*API_CACHE_MAX_AGE/);
+    });
+
+    it('falls through to the 503 offline stub when no cache or cache is too old', () => {
+      const src = sw();
+      const weatherBlock = src.match(/if \(isWeatherApi\(url\)\) \{[\s\S]*?\}\)\(\)\);\s*\n\s*return;\s*\}/);
+      expect(weatherBlock[0]).toMatch(/status:\s*503/);
+      expect(weatherBlock[0]).toMatch(/['"]offline['"]/);
+    });
+  });
+
+  // -------------------------------------------------------------------------
+  // Phase 2 audit fix Z2 — partial-cache failures during install must surface
+  // in the console rather than silently complete with a degraded shell.
+  // -------------------------------------------------------------------------
+  describe('Install precache failure surfaces (Z2)', () => {
+    it('logs core asset precache failures via console.warn', () => {
+      const src = sw();
+      const installBlock = src.match(/addEventListener\(['"]install['"][\s\S]*?\}\)\(\)\);\s*\}\);/);
+      expect(installBlock, 'install handler found').toBeTruthy();
+      expect(installBlock[0]).toMatch(/console\.warn\(/);
+    });
+
+    it('still installs (skipWaiting) even when precache fails so the SW lifecycle does not stall', () => {
+      const src = sw();
+      const installBlock = src.match(/addEventListener\(['"]install['"][\s\S]*?\}\)\(\)\);\s*\}\);/);
+      expect(installBlock[0]).toMatch(/self\.skipWaiting\(\)/);
+    });
   });
 });
