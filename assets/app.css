@@ -55,6 +55,10 @@ button,
   top: 0;
 }
 
+/* Global focus ring. 2px high-contrast white outline + a 4px dark halo so it
+   reads on both pale and dark photographic backgrounds. Note: we do NOT force
+   border-radius here — that flattens pill buttons (999px) into 4px rectangles
+   on focus. Each element keeps its own radius; the outline follows. */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -64,7 +68,6 @@ textarea:focus-visible,
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
   box-shadow: 0 0 0 4px var(--focus-ring-shadow);
-  border-radius: 4px;
 }
 
 body, html {
@@ -925,7 +928,8 @@ body.ui-dark .daily-card {
 .recent-item::before {
   content: '•';
   margin-right: 8px;
-  color: #111;
+  color: currentColor;
+  opacity: 0.6;
 }
 
 .search-panel-actions,
