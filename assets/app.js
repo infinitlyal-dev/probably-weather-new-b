@@ -2,6 +2,7 @@ import { getSharedPlaceFromSearch } from './startup-location.js';
 import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './language-preferences.js';
 import { WEATHER_COPY } from './weather-copy.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
+import { pickConditionEmojiForTime, pickHourlyEmoji } from './weather-emoji.js';
 import { buildShareUrl } from './share-url.js';
 import { initInstallExperience } from './install.js';
 import {
@@ -326,7 +327,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const favoriteKey = (p) => `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
   const isPlaceholderName = (name) => { const v = String(name || '').trim(); return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v); };
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
-  const conditionEmoji = (key) => { const m = { storm: '⛈️', rain: '🌧️', wind: '💨', cold: '❄️', heat: '🔥', fog: '🌫️', clear: '☀️' }; return m[String(key || '').toLowerCase()] || '⛅'; };
+  // Routed through pickConditionEmojiForTime so search/mini cards also respect
+  // day/night. Callers that don't pass an isDay flag get the day glyph; the
+  // search result cards in this file fetch a fresh norm and don't have a local
+  // hour, so the daytime glyph is the safe default.
+  const conditionEmoji = (key, isDay = true) => pickConditionEmojiForTime(key, isDay);
 
   // ========== IP GEOLOCATION FALLBACK ==========
   // Used when GPS is blocked (e.g. WhatsApp in-app browser)
@@ -1254,16 +1259,12 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
     renderCapeWind(norm);
   }
+  // Hourly/daily row icon. Delegates to pickHourlyEmoji so every branch
+  // (rain, partly cloudy, cloudy, clear, cold, heat) honours isNight — not
+  // just the clear fallback. This fixes the 20:00 sun-with-rain-cloud bug
+  // (rain-possible was returning 🌦️ regardless of time of day).
   function getWeatherIcon(rp, cp, tc, isNight) {
-    if (isNum(tc) && tc <= 0) return '❄️';
-    if (isNum(rp) && rp >= 50) return '🌧️';
-    if (isNum(rp) && rp >= 30) return '🌦️';
-    if (isNum(tc) && tc >= 35) return '🔥';
-    if (isNum(cp) && cp >= 70) return '☁️';
-    if (isNum(cp) && cp >= 40) return '⛅';
-    if (isNum(tc) && tc <= 10) return '❄️';
-    // BUG-2 fix: show moon at night instead of sun for clear conditions
-    return isNight ? '🌙' : '☀️';
+    return pickHourlyEmoji({ rainPct: rp, cloudPct: cp, tempC: tc, isNight: !!isNight });
   }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
