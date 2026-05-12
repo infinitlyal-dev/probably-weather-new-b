@@ -119,20 +119,23 @@ App.js is mounting close to a single-file maintenance ceiling. Search/Favorites/
 
 ## Process gap surfaced after Phase 2 (added 2026-05-12 post-Phase-2.5 hotfix)
 
-**Phase 2 audit was code-focused. It did not render-test the app at mobile viewports.** Phase 2.5 caught a CSS regression on iPhone (header crushed against the status bar — `.container` padding-top fell back to 8px when `env(safe-area-inset-top)` returned 0, which iOS does in non-standalone WebView contexts and in some older PWA installs). The CSS reading was correct; the regression was only visible in render.
+**Phase 2 audit was code-focused. It did not render-test the app at mobile viewports.** Phase 2.5 caught a layout regression on Al's iPhone (header crushed against the status bar) that the code-only audit had cleared because the CSS rule was textually present and the diff vs baseline was tiny (33 lines, none touching safe-area). "Rule is present and looks right" is not the same as "rule renders correctly at the target viewport".
 
-The audit cleared `assets/app.css` because the safe-area rules were textually present and the diff vs baseline was tiny (33 lines, none touching safe-area). But "rule is present and looks right" is not the same as "rule renders correctly at the target viewport". A code-only audit can't catch a fallback-value bug that only shows up when `env()` returns 0.
+Phase 2.5 also produced a second-order lesson: **the first iteration of the hotfix overcorrected** with a hardcoded 44px floor that would have given Android testers 20px of dead whitespace. Al's pushback ("too aggressive for Android") forced the audit to expand from one viewport (iPhone) to two (iPhone X + Pixel 5) and verify both before merging. The natural CSS rule `padding: max(0.5rem, env(safe-area-inset-top, 0px)) ...` resolves correctly on both — but only if you actually test both. Single-platform verification = single-platform fixes.
+
+Root cause of the original bug was NOT a code bug — `index.html` and `manifest.json` were both correctly configured (`viewport-fit=cover`, `display: standalone`, `apple-mobile-web-app-status-bar-style: black-translucent` all paired correctly since 2026-01-23). The bug was a per-install iOS state: Al's PWA was installed before `viewport-fit=cover` landed and is operating on a stale install-time snapshot. Documented in `FOLLOWUP_MANIFEST_INVESTIGATION.md`. Recovery: delete + reinstall the PWA.
 
 **For future audits:** add a visual regression sub-step. Minimum viable check at the next audit gate:
 
-1. Boot the app at canonical viewports (375×812 iPhone X portrait, 768×1024 iPad portrait, 1440×900 desktop) via Playwright.
+1. Boot the app at canonical viewports across BOTH platforms (375×812 iPhone X, 393×851 Pixel 5, 768×1024 iPad portrait, 1440×900 desktop) via Playwright. Never verify on a single device — overcorrections only surface in cross-platform comparison.
 2. Screenshot Home, Search, Hourly, Week, Settings — five canonical screens.
-3. Diff against checked-in golden screenshots OR eyeball for obvious overlap/cropping/clipping at the edges.
-4. Specifically probe `env(safe-area-inset-*)` fallback paths — anywhere CSS uses `max(NNpx, env(safe-area-inset-*))` is a candidate for "what happens when env() = 0" testing.
+3. Diff against checked-in golden screenshots OR eyeball for obvious overlap/cropping/clipping at the edges AND for dead whitespace at the edges.
+4. Specifically probe `env(safe-area-inset-*)` fallback paths — anywhere CSS uses `max(NNpx, env(safe-area-inset-*))` is a candidate for "what happens when env() = 0" testing. Test with simulated env() values matching real device reports (44px for iPhone X, 24px for Pixel 5, 0 for desktop / non-PWA tab).
+5. Audit `index.html` and `manifest.json` for the documented Apple meta-tag trio (`viewport-fit=cover` + `apple-mobile-web-app-capable` + `apple-mobile-web-app-status-bar-style`) as a CHECKLIST, not just a code review. The trio is meaningful only as a complete set; any one missing breaks the others.
 
-Tooling note: Playwright at desktop dimensions does NOT simulate the iOS notch — `env(safe-area-inset-top)` returns 0 there. To actually see a notched layout, inject a CSS variable simulating the inset (the technique used to verify the Phase 2.5 hotfix). For full fidelity, a real iOS device or BrowserStack iPhone is required, but the inject-and-check trick catches the fallback-bug class.
+Tooling note: Playwright at desktop dimensions does NOT simulate the iOS notch — `env(safe-area-inset-top)` returns 0 there. To actually see a notched layout, inject a stylesheet that overrides the relevant rule with literal values matching what real devices report (the technique used in `scripts/verify-safe-area.mjs`). For full fidelity, a real iOS device or BrowserStack iPhone is required, but the inject-and-check trick catches the fallback-bug class.
 
-This gap should be a checklist item on any future "X-readiness" audit, not just tester-readiness.
+This gap should be a checklist item on any future "X-readiness" audit, not just tester-readiness. The harness now lives at `scripts/verify-safe-area.mjs` and is reusable.
 
 ---
 

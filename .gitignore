@@ -9,3 +9,8 @@ __pycache__/
 node_modules/
 .playwright-cli/
 _acccheck/
+
+# Phase 2.5 — Playwright verification screenshots are reproducible from
+# scripts/verify-safe-area.mjs and don't belong in the repo. The script
+# itself stays checked in for future audits.
+pw-verify-*.png
