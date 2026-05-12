@@ -45,6 +45,11 @@
       setMeta('meta[property="og:url"]', canonical);
     })();
   </script>
+  <!-- Preconnect to ipapi.co — Lighthouse flagged it as the top
+       performance opportunity (~320ms LCP saving). It's our IP-geolocation
+       fallback when GPS is unavailable, so we hit it during startup. -->
+  <link rel="preconnect" href="https://ipapi.co" crossorigin="anonymous"/>
+  <link rel="dns-prefetch" href="https://ipapi.co"/>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png"/>
@@ -74,6 +79,14 @@
       } catch (e) { /* swallow — even if reset fails, page still loads */ }
     })();
   </script>
+  <!-- Vercel Web Analytics — vanilla static-site snippet. Sets up the
+       window.va queue so calls made before /_vercel/insights/script.js
+       loads are buffered, then injects the loader. Production-only
+       collection; in dev it logs to console. -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="home-active">
   <a href="#home-screen" class="skip-link">Skip to main content</a>
@@ -292,12 +305,12 @@
       </div>
     </section>
 
-    <nav class="nav" aria-label="Primary">
-      <button id="navHome" aria-label="Home" aria-current="page">Home</button>
-      <button id="navHourly" aria-label="Hourly forecast">Hourly</button>
-      <button id="navWeek" aria-label="Weekly forecast">Week</button>
-      <button id="navSearch" aria-label="Search and favourites">Search</button>
-      <button id="navSettings" aria-label="Settings">Settings</button>
+    <nav class="nav" aria-label="Primary" role="tablist">
+      <button id="navHome" role="tab" aria-label="Home" aria-selected="true" aria-current="page">Home</button>
+      <button id="navHourly" role="tab" aria-label="Hourly forecast" aria-selected="false">Hourly</button>
+      <button id="navWeek" role="tab" aria-label="Weekly forecast" aria-selected="false">Week</button>
+      <button id="navSearch" role="tab" aria-label="Search and favourites" aria-selected="false">Search</button>
+      <button id="navSettings" role="tab" aria-label="Settings" aria-selected="false">Settings</button>
     </nav>
   </div>
 

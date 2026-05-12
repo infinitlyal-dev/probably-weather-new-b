@@ -9,6 +9,7 @@
     "vitest": "^4.1.5"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "@vercel/og": "^0.11.1"
   }
 }
