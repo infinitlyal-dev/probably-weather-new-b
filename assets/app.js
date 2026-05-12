@@ -285,7 +285,25 @@ document.addEventListener("DOMContentLoaded", () => {
       save: { en: "Save", af: "Stoor", zu: "Londoloza", xh: "Gcina", st: "Boloka" },
       savePlace: { en: "Save this place", af: "Stoor hierdie plek", zu: "Londoloza le ndawo", xh: "Gcina le ndawo", st: "Boloka sebaka sena" },
       share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
-      shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" }
+      shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" },
+      // Branded share message body. {city} is replaced with the location name
+      // (or "your area" when missing). {url} is the share URL. Tone stays
+      // warm and SA-flavoured; native-review flagged for ZU/XH/ST in
+      // SHARE_OG_NOTES.md.
+      shareMessage: {
+        en: "Check the weather in {city} — South African weather in your language: {url}",
+        af: "Check die weer in {city} — Suid-Afrikaanse weer in jou taal: {url}",
+        zu: "Bheka isimo sezulu e-{city} — isimo sezulu saseNingizimu Afrika ngolimi lwakho: {url}",
+        xh: "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho: {url}",
+        st: "Sheba boemo ba leholimo {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao: {url}"
+      },
+      shareYourArea: {
+        en: "your area",
+        af: "jou omgewing",
+        zu: "indawo yakho",
+        xh: "indawo yakho",
+        st: "sebakeng sa hao"
+      }
     }
   };
 
@@ -1152,26 +1170,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const shareBtn = $('#shareBtn');
   if (shareBtn) {
     shareBtn.addEventListener('click', async () => {
-      const norm = window.__PW_LAST_NORM;
-      const hi = norm?.todayHigh, low = norm?.todayLow;
-      const hiStr = isNum(hi) ? formatTemp(hi) : '--°';
-      const loStr = isNum(low) ? formatTemp(low) : '--°';
-      const loc = locationEl?.textContent || '';
-      const displayCond = window.__PW_LAST_DISPLAY || 'clear';
-      const emoji = conditionEmoji(displayCond);
-      const heroLabel = getHeroLabel(displayCond);
-      const text = `${t('weather', 'probably')} ${loStr}/${hiStr} ${t('misc', 'shareIn')} ${loc} — ${heroLabel} ${emoji}`;
       const lat = activePlace?.lat, lon = activePlace?.lon;
       const lang = settings.lang || 'en';
-      const url = buildShareUrl({ lat, lon, lang });
+      const displayCond = window.__PW_LAST_DISPLAY || 'clear';
+      const rawCity = (locationEl?.textContent || '').trim();
+      const cityForUrl = rawCity || null;
+      const url = buildShareUrl({ lat, lon, lang, condition: displayCond, city: cityForUrl });
+      const cityForCopy = rawCity || t('misc', 'shareYourArea');
+      const text = t('misc', 'shareMessage')
+        .replace('{city}', cityForCopy)
+        .replace('{url}', url);
       try {
         if (navigator.share) {
           await navigator.share({ title: 'Probably Weather', text, url });
         } else if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(url);
+          await navigator.clipboard.writeText(text);
           showToast('Share link copied');
         } else {
-          window.prompt('Copy this share link', url);
+          window.prompt('Copy this share link', text);
         }
       } catch {}
     });

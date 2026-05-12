@@ -37,14 +37,25 @@ describe('tier 1 pre-resubmission fixes', () => {
     expect(source).toMatch(/<span class="ds-condition">\$\{escapeHtml\(cond\)\}<\/span>/);
   });
 
-  it('builds share text with localized Probably and in words for all five languages', () => {
+  it('keeps the localized Probably and in vocabularies available for downstream copy', () => {
     const source = app();
-    const shareBlock = source.match(/shareBtn\.addEventListener\('click', async \(\) => \{(?<body>[\s\S]*?)\n    \}\);/)?.groups?.body || '';
 
     expect(source).toMatch(/probably:\s*\{\s*en:\s*"Probably",\s*af:\s*"Waarskynlik",\s*zu:\s*"Mhlawumbe",\s*xh:\s*"Mhlawumbi",\s*st:\s*"Mohlomong"\s*\}/);
     expect(source).toMatch(/shareIn:\s*\{\s*en:\s*"in",\s*af:\s*"in",\s*zu:\s*"e-",\s*xh:\s*"e-",\s*st:\s*"ho"\s*\}/);
-    expect(shareBlock).toMatch(/\$\{t\('weather',\s*'probably'\)\}/);
-    expect(shareBlock).toMatch(/\$\{t\('misc',\s*'shareIn'\)\}/);
-    expect(shareBlock).not.toMatch(/Waarskynlik \$\{loStr\}/);
+  });
+
+  it('builds the branded share message from the localized shareMessage template in all five languages', () => {
+    const source = app();
+    const shareBlock = source.match(/shareBtn\.addEventListener\('click', async \(\) => \{(?<body>[\s\S]*?)\n    \}\);/)?.groups?.body || '';
+
+    // shareMessage and shareYourArea translation banks exist for all 5 langs.
+    expect(source).toMatch(/shareMessage:\s*\{\s*en:\s*"Check the weather in \{city\}[\s\S]*?af:\s*"Check die weer in \{city\}[\s\S]*?zu:\s*"[\s\S]*?xh:\s*"[\s\S]*?st:\s*"/);
+    expect(source).toMatch(/shareYourArea:\s*\{\s*en:\s*"your area",\s*af:\s*"jou omgewing"/);
+
+    // Share handler composes the message from the template and the URL.
+    expect(shareBlock).toMatch(/t\('misc',\s*'shareMessage'\)/);
+    expect(shareBlock).toMatch(/\.replace\('\{city\}'/);
+    expect(shareBlock).toMatch(/\.replace\('\{url\}'/);
+    expect(shareBlock).toMatch(/buildShareUrl\(\{[\s\S]*?condition:\s*displayCond[\s\S]*?city:\s*cityForUrl/);
   });
 });
