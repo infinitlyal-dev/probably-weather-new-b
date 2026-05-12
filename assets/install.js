@@ -368,6 +368,16 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   window.addEventListener('appinstalled', () => {
     try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
     try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
+    // Vercel Web Analytics: fire a custom event so install conversions
+    // show up in the dashboard alongside page views. window.va is set up
+    // in index.html as a queueing stub before the loader script lands,
+    // so this call is safe even if /_vercel/insights/script.js hasn't
+    // finished loading yet.
+    try {
+      if (typeof window !== 'undefined' && typeof window.va === 'function') {
+        window.va('event', { name: 'app_installed' });
+      }
+    } catch {}
     hideBanner();
   });
 
