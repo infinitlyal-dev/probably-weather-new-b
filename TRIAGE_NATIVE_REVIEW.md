@@ -152,4 +152,90 @@ Once each speaker has ticked / corrected their rows, a follow-up PR can:
 - Apply the confirmed `days.sun.zu` fix.
 - Apply any rejected-cognate corrections.
 - Update `tests/i18n-no-cross-language-duplicates.test.js` allowlist for confirmed legitimate duplicates (Nguni cognates, brand acronyms).
-- Delete the `T.settings.wittyIn` stale key if confirmed unused.
+- Delete the `T.settings.wittyIn` stale key if confirmed unused. **(Already done in Phase 2 commit `2390e74`.)**
+
+---
+
+# Phase 3 audit findings (added 2026-05-12, branch `main`, HEAD `6614e1b`)
+
+**Producer:** Phase 3 single-agent pass running each language's QC skill (`af-qc`, `zu-qc`, `xh-qc`, `st-qc`) plus direct Claude review for English. **Last gate before tester rollout.** Conservative thresholds per brief: AF auto-apply at ≥0.9, Nguni/Sotho auto-apply at ≥0.95, EN auto-apply only for obvious typos.
+
+## Phase 3 summary
+
+| Language | Strings audited | Auto-applied | HIGH flags (new) | MEDIUM flags (new) | LOW flags (new) |
+|---|---|---|---|---|---|
+| English (en) | ~110 | 0 (no typos) | 0 | 0 | 0 |
+| Afrikaans (af) | ~110 | 0 | 1 | 1 | 4 |
+| isiZulu (zu) | ~110 | 0 | 2 | 0 | 0 |
+| isiXhosa (xh) | ~110 | 0 | 0 | 3 | 0 |
+| Sesotho (st) | ~110 | 0 | 1 | 1 | 2 |
+| **Total** | **~550** | **0** | **4** | **5** | **6** |
+
+Witty copy in `WEATHER_COPY.witty` (40+ short SA-flavoured items per condition × 5 languages × 13 conditions = ~2600 lines of cultural humour) was **NOT word-by-word audited per the brand-voice protection rule**. Only spot-checked for cross-language paste errors. None found.
+
+## Phase 3 HIGH-priority new findings
+
+### HIGH 1 — `weather.gusts.st = "lifofane"` — semantic disaster
+
+| Key | Current value | Issue | Suggestion | Confidence |
+|---|---|---|---|---|
+| `weather.gusts.st` | `"lifofane"` | "lifofane" is plural of "sefofane" meaning **"airplanes"**, not "gusts". This is currently shown when wind+gust > 1.3x: `"Moea 25 km/h (lifofane 40 km/h)"` — reads as "Wind 25 km/h (airplanes 40 km/h)". Cannot ship to Sesotho-speaking testers. | Likely `"ho thunya ha moea"` or `"ho foka ka matla"`; a single concise noun like `"liphunya"` may not exist — native confirmation essential. | confidence_is_bug = 0.95, confidence_in_fix = 0.55 |
+
+### HIGH 2 — `search.clearRecents.af = "Verwyder onlangs"`
+
+| Key | Current value | Issue | Suggestion | Confidence |
+|---|---|---|---|---|
+| `search.clearRecents.af` | `"Verwyder onlangs"` | Translates "Clear recents" word-by-word: "Remove recently" (adverb), not "Remove recent items" (noun-phrase). Reads as instruction about timing, not about objects. | `"Maak onlangse skoon"` (Make recent ones clean) or `"Verwyder onlangse soektogte"` (Remove recent searches). | confidence_is_bug = 0.85, confidence_in_fix = 0.75 |
+
+### HIGH 3 — `badges.rainTonight.zu = "Imvula namhlanje"`
+
+| Key | Current value | Issue | Suggestion | Confidence |
+|---|---|---|---|---|
+| `badges.rainTonight.zu` | `"Imvula namhlanje"` | "namhlanje" = "today", not "tonight". Badge reads as "Rain today" not "Rain tonight". Compare to `xh.rainTonight = "Imvula ngokuhlwa"` (correctly "tonight"). | `"Imvula ebusuku"` or `"Imvula namhlanje ebusuku"` | confidence_is_bug = 0.85, confidence_in_fix = 0.7 |
+
+### HIGH 4 — `weather.gusts.zu = "amafindo"`
+
+| Key | Current value | Issue | Suggestion | Confidence |
+|---|---|---|---|---|
+| `weather.gusts.zu` | `"amafindo"` | "amafindo" is plural of "ifindo" — generally means "knots" or "nodes", not "gusts of wind". Standard Zulu for wind-gust closer to `"isivunguvungu somoya"` or `"isigqumo somoya"`. | Likely `"izivunguvungu"` or `"izigqumo zomoya"` — native confirmation essential. | confidence_is_bug = 0.7, confidence_in_fix = 0.4 |
+
+## Phase 3 MEDIUM-priority new findings
+
+| # | Key | Current | Note | Action |
+|---|---|---|---|---|
+| M1 | `misc.shareMessage.af` | `"Check die weer in {city} — Suid-Afrikaanse weer in jou taal: {url}"` | Uses English loanword "Check" in AF text. May be intentional brand-voice casual SA-AF register, or could be replaced with `"Kyk na die weer"`. **Brand-voice question — defer to Al.** | Confirm intent. |
+| M2 | `weather.gusts.xh` | `"iimphuphuma"` | Plural of "umphuphuma" = "outburst/overflow". Standard Xhosa for wind-gust closer to `"iziphango zomoya"`. Mirrors zu.gusts concern. | Native confirmation. |
+| M3 | `heroLabels.partly-cloudy.xh` | `"Kufukufuku kancinci"` | "kufukufuku" generally means "lukewarm/mild warmth", not "cloudy". Semantically mismatched with "Partly cloudy". Possible regional usage. | Native confirmation; possible swap to `"Linamafu kancinci"`. |
+| M4 | `badges.rainMorning.xh` | `"Imvula kusasa"` | "kusasa" can mean "in the morning (today)" OR "tomorrow" depending on context. Badge displayed today as "morning rain" — could read as "rain tomorrow" instead. | Native confirmation; consider `"Imvula ngentsasa"` (unambiguously "this morning"). |
+| M5 | `misc.shareMessage.st` | `"Sheba boemo ba leholimo {city} — ..."` | Missing locative preposition before `{city}`. Compare `zu/xh: "e-{city}"`, `en/af: "in {city}"`. Reads as bare juxtaposition. | Native confirmation; likely `"... leholimo {city}-ng"` or `"... leholimo Cape Town-ng"`. |
+
+## Phase 3 LOW-priority new findings
+
+| # | Key | Current | Note |
+|---|---|---|---|
+| L1 | `search.savedPlaces.af` | `"Gestoorde Plekke"` | Title Case mid-phrase. AF would more typically use sentence case. Mirrors EN "Saved Places" pattern; acceptable for section title. Defer. |
+| L2 | `weather.veryHigh.af` | `"Baie Hoog"` | Title Case mid-phrase. AF would normally write "Baie hoog". Mirrors EN "Very High". Defer. |
+| L3 | `badges.rainMorning.af` | `"Reën oggend"` | Slightly stilted; "Oggendreën" or "Reën in die oggend" reads more natural. Compact badge label, acceptable. |
+| L4 | `INSTALL_T.fallbackPrompt.af` | `"...dan Installeer app..."` | "Installeer" mid-sentence treated as button-label cap. Could be lowercase or wrapped in backticks per the existing iOS-label pattern. |
+| L5 | `search.savedPlaces.st` | `"Libaka tse Bolokiloeng"` | "tse" capitalized mid-phrase. Sesotho doesn't capitalize relative pronouns. Mirrors EN Title Case. Defer. |
+| L6 | `days.thu.st` / `days.fri.st` | `"Labo"` / `"Laboh"` | Length inconsistency with other 3-letter ST day abbreviations (`Lab`, `Lar`, `Moq`). Could trim to `"Lab"` / `"Lab"` but creates collision; defer. |
+
+## Cross-language duplicates: status check
+
+The 67 entries triaged in SA5 above are **unchanged in Phase 3**. None were touched. All still pending native review per the original protocol.
+
+## What Phase 3 did NOT audit
+
+- **`WEATHER_COPY.witty` arrays** — protected per cultural-voice rule. 13 conditions × 5 languages × 20-40 lines each = ~2,600 lines. Brand-voice items: Eskom jokes, braai references, Cape Doctor, hadedas, N1, Carte Blanche, Spur, Woolies, Helderberg, fynbos. Per `DESIGN.md` and the brief's hard rule: do not modify without Al's explicit approval. Spot-check confirmed no cross-language paste errors (no AF text in ZU slots, no EN text in ST slots, etc.).
+- **Inline hardcoded English in `index.html` / `install.html` / `privacy.html`** — these are overridden by `updateUILanguage()` at runtime. Acceptable per current design. The tagline "No more Ja-No-Maybe weather. Just Probably." is intentionally English-only brand positioning per `DESIGN.md`.
+
+## Recommended action
+
+1. **HIGH 1 (`weather.gusts.st = "lifofane"`)** — get a Sesotho speaker to suggest a replacement before tester rollout if Al has a strong-wind-day scheduled for tester verification. Otherwise ship as-is and accept that one Sesotho tester may screenshot the airplane line and laugh. UX impact: only visible when `gust > wind * 1.3`, which is uncommon outside the Cape Doctor.
+2. **HIGH 2 (`search.clearRecents.af`)** — easy native confirmation; if Al knows an AF speaker, 30-second fix.
+3. **HIGH 3 (`badges.rainTonight.zu`)** — easy native fix; "namhlanje" → "ebusuku".
+4. **HIGH 4 (`weather.gusts.zu`)** — same as HIGH 1; only shows on gusty days. Cape Doctor lines may surface it.
+5. **MEDIUMs** — none rollout-blocking. Bundle into a follow-up native review pass.
+6. **LOWs** — defer.
+
+After native review on the 4 HIGH items, apply each as a separate short commit with the SW cache bumped once at the end.
