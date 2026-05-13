@@ -1193,7 +1193,13 @@ document.addEventListener("DOMContentLoaded", () => {
         .replace('{url}', url);
       try {
         if (navigator.share) {
-          await navigator.share({ title: 'Probably Weather', text, url });
+          // URL is already interpolated into `text` via the {url} placeholder
+          // in T.misc.shareMessage. Passing it again as the dedicated `url`
+          // field made WhatsApp render the link twice in the message body
+          // (Codex Z5 finding, Phase 2). Dropping the field keeps WhatsApp's
+          // preview-card generation intact (it parses URLs from text) while
+          // removing the duplication.
+          await navigator.share({ title: 'Probably Weather', text });
         } else if (navigator.clipboard?.writeText) {
           await navigator.clipboard.writeText(text);
           showToast('Share link copied');

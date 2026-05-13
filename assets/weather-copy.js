@@ -28,7 +28,7 @@ export const WEATHER_COPY = {
     'partly-cloudy': { en: "Partly cloudy.", af: "Effens bewolk.", zu: "Kunamafu kancane.", xh: "Linamafu kancinci.", st: "Ho na le maru a manyane." },
     wind: { en: "Wind's up.", af: "Dit waai.", zu: "Umoya uyavunguza.", xh: "Umoya uvuthuza.", st: "Moea o a foka." },
     cold: { en: "It's chilly.", af: "Dis koud.", zu: "Kuyabanda.", xh: "Kuyabanda.", st: "Ho a bata." },
-    heat: { en: "It's hot.", af: "Dis warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho tjhesa." },
+    heat: { en: "It's hot.", af: "Dis bloedig warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho tjhesa." },
     uv: { en: "UV's hectic.", af: "UV is hoog.", zu: "I-UV iphezulu kakhulu.", xh: "I-UV iphezulu kakhulu.", st: "UV e hodimo." },
     fog: { en: "Foggy out there.", af: "Dis mistig.", zu: "Kunenkungu.", xh: "Linenkungula.", st: "Ho na le mohodi." },
     clear: { en: "Clear skies.", af: "Helder lug.", zu: "Izulu lihlanzekile.", xh: "Isibhakabhaka sihlanzekile.", st: "Lehodimo le hlakileng." },

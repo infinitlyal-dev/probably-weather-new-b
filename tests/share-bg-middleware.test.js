@@ -178,4 +178,91 @@ describe('middleware rewrite end-to-end (mocked fetch)', () => {
       restore();
     }
   });
+
+  // Localized OG card: ?lang= drives og:title / og:description through the
+  // per-language TITLES / DESCRIPTIONS tables. AF gets per-condition copy.
+  // ZU/XH/ST get a single non-witty title plus a {tagline}.{headline}
+  // description sourced from existing localized strings in app.js /
+  // weather-copy.js so native-review fixes flow into the OG card.
+  it('localizes title and description when ?lang=af is present', async () => {
+    const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=storm&lang=af');
+    try {
+      const res = await middleware(request);
+      const html = await res.text();
+      expect(html).toContain('Storm op pad');
+      expect(html).toContain('Suid-Afrikaanse weer, in jou taal. Storm op pad.');
+      expect(res.headers.get('x-pw-share-lang')).toBe('af');
+    } finally {
+      restore();
+    }
+  });
+
+  it('uses the ZU tagline + localized headline when ?lang=zu', async () => {
+    const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=rain&lang=zu');
+    try {
+      const res = await middleware(request);
+      const html = await res.text();
+      // Conservative title until ZU native review lands.
+      expect(html).toContain('property="og:title" content="Probably Weather"');
+      // Tagline reused from T.misc.shareMessage.zu + headline reused from
+      // WEATHER_COPY.headlines.rain.zu.
+      expect(html).toContain('Isimo sezulu saseNingizimu Afrika ngolimi lwakho. Imvula ikhona.');
+      expect(res.headers.get('x-pw-share-lang')).toBe('zu');
+    } finally {
+      restore();
+    }
+  });
+
+  it('falls back to EN when ?lang= is unknown', async () => {
+    const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=storm&lang=fr');
+    try {
+      const res = await middleware(request);
+      const html = await res.text();
+      expect(html).toContain('Storm watch');
+      expect(res.headers.get('x-pw-share-lang')).toBe('en');
+    } finally {
+      restore();
+    }
+  });
+
+  it('defaults to EN when ?lang= is absent (back-compat with existing share links)', async () => {
+    const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=clear');
+    try {
+      const res = await middleware(request);
+      const html = await res.text();
+      expect(html).toContain('Clear skies');
+      expect(res.headers.get('x-pw-share-lang')).toBe('en');
+    } finally {
+      restore();
+    }
+  });
+});
+
+describe('middleware language normalization', () => {
+  it('accepts the five supported languages', () => {
+    for (const lang of ['en', 'af', 'zu', 'xh', 'st']) {
+      expect(__test.normalizeLang(lang)).toBe(lang);
+    }
+  });
+
+  it('falls back to en for unknown or missing languages', () => {
+    expect(__test.normalizeLang('fr')).toBe('en');
+    expect(__test.normalizeLang('')).toBe('en');
+    expect(__test.normalizeLang(undefined)).toBe('en');
+    expect(__test.normalizeLang(null)).toBe('en');
+  });
+
+  it('resolves AF title per condition and ZU title as a shared brand string', () => {
+    expect(__test.resolveTitle('af', 'storm')).toBe('Storm op pad — Probably Weather');
+    expect(__test.resolveTitle('af', 'heat')).toBe('Dis bloedig warm — Probably Weather');
+    expect(__test.resolveTitle('zu', 'rain')).toBe('Probably Weather');
+    expect(__test.resolveTitle('xh', 'cold')).toBe('Probably Weather');
+    expect(__test.resolveTitle('st', 'wind')).toBe('Probably Weather');
+  });
+
+  it('resolves ZU/XH/ST descriptions as tagline + headline composites', () => {
+    expect(__test.resolveDescription('zu', 'storm')).toMatch(/^Isimo sezulu saseNingizimu Afrika ngolimi lwakho\..*Isiphepho siyeza\.$/);
+    expect(__test.resolveDescription('xh', 'rain')).toMatch(/^Imozulu yaseMzantsi Afrika ngolwimi lwakho\..*Imvula ikhona\.$/);
+    expect(__test.resolveDescription('st', 'cloudy')).toMatch(/^Boemo ba leholimo ba Afrika Borwa ka puo ya hao\..*Maru a teng\.$/);
+  });
 });
