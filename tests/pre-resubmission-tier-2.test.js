@@ -45,7 +45,13 @@ describe('tier 2 pre-resubmission fixes', () => {
       expect(source).toMatch(new RegExp(`${lang}:\\s*"${word}"`));
     }
     expect(source).toMatch(/save:\s*\{[\s\S]*en:\s*"Save"[\s\S]*st:\s*"Boloka"/);
-    expect(source).toMatch(/saveCurrent\.textContent\s*=\s*`☆ \$\{t\('misc',\s*'save'\)\}`/);
+    // Save button now has two states (☆ Save / ★ Saved) managed by
+    // refreshSaveButtonState(); the i18n pass calls the helper rather
+    // than hard-coding the textContent expression.
+    expect(source).toMatch(/function refreshSaveButtonState/);
+    expect(source).toMatch(/saved:\s*\{[\s\S]*en:\s*"Saved"[\s\S]*st:\s*"Bolokile"/);
+    expect(source).toMatch(/t\('misc',\s*'saved'\)/);
+    expect(source).toMatch(/t\('misc',\s*'save'\)/);
   });
 
   it('uses standalone-specific location permission copy in PWA mode', () => {

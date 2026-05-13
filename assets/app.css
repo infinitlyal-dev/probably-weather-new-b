@@ -1852,8 +1852,12 @@ main#home-screen.main #confidence {
   display: none;
 }
 
-/* Share button: hidden on desktop, shown on mobile via media query */
-.share-btn {
+/* Share & Save buttons: hidden on desktop, shown on mobile via media query.
+   PW is mobile-first; desktop users get the same Save flow via the search
+   panel's per-row star buttons. Bringing them to desktop is a future polish
+   item (slot into .sidebar above Sources). */
+.share-btn,
+.save-current-btn {
   display: none;
 }
 .sources-desktop {
@@ -2375,6 +2379,40 @@ main#home-screen.main #confidence {
   .share-btn:active {
     opacity: 0.7;
   }
+
+  /* ── Save button: bottom-center pill, same style as Share; flips to
+     #FFDD44 (Probably gold) when the active place is in favourites. ── */
+  .save-current-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 50;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    transition: opacity 0.2s ease, color 0.15s ease;
+  }
+
+  .save-current-btn.is-saved {
+    color: #FFDD44;
+  }
+
+  .save-current-btn:active {
+    opacity: 0.7;
+  }
 }
 
 /* ========== SHORT-HEIGHT MOBILE DEVICES ========== */
@@ -2849,6 +2887,7 @@ body.standalone-mode .install-footer-link {
    iOS's native Share sheet pops up. Hide it while the iOS install modal
    is open so the user's attention isn't split between two share affordances. */
 body.install-modal-active .share-btn { display: none !important; }
+body.install-modal-active .save-current-btn { display: none !important; }
 .install-step-list {
   list-style: none;
   display: flex;

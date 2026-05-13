@@ -282,6 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
       couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana imozulu.", st: "Ha e khone ho fumana boemo ba leholimo." },
       save: { en: "Save", af: "Stoor", zu: "Londoloza", xh: "Gcina", st: "Boloka" },
+      saved: { en: "Saved", af: "Gestoor", zu: "Kugciniwe", xh: "Igciniwe", st: "Bolokile" },
       savePlace: { en: "Save this place", af: "Stoor hierdie plek", zu: "Londoloza le ndawo", xh: "Gcina le ndawo", st: "Boloka sebaka sena" },
       share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
       shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" },
@@ -540,11 +541,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
     const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
-    if (saveCurrent) {
-      saveCurrent.textContent = `☆ ${t('misc', 'save')}`;
-      saveCurrent.title = t('misc', 'savePlace');
-      saveCurrent.setAttribute('aria-label', t('misc', 'savePlace'));
-    }
+    refreshSaveButtonState();
+  }
+
+  // Save button has two states (☆ Save / ★ Saved) reflecting whether the
+  // active place is in favourites. Called whenever the favourites list,
+  // active place, or UI language changes so the pill stays in sync.
+  function refreshSaveButtonState() {
+    if (!saveCurrent) return;
+    const saved = !!(activePlace && loadFavorites().some(p => samePlace(p, activePlace)));
+    const label = saved ? t('misc', 'saved') : t('misc', 'save');
+    const aria = saved ? t('misc', 'saved') : t('misc', 'savePlace');
+    saveCurrent.textContent = `${saved ? '★' : '☆'} ${label}`;
+    saveCurrent.title = aria;
+    saveCurrent.setAttribute('aria-label', aria);
+    saveCurrent.setAttribute('aria-pressed', String(saved));
+    saveCurrent.classList.toggle('is-saved', saved);
   }
 
   function updateLanguageOptions() {
@@ -1474,6 +1486,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const requestController = new AbortController();
     activeWeatherController = requestController;
     activePlace = place; renderLoading(place.name || 'My Location');
+    refreshSaveButtonState();
     // 1. Try showing cached data instantly
     const cached = await getCachedWeather(place);
     if (thisSeq !== activeLocationSeq) return;
@@ -1525,8 +1538,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   async function toggleFavorite(place) {
     let list = loadFavorites();
-    if (list.some(p => samePlace(p, place))) { list = list.filter(p => !samePlace(p, place)); saveFavorites(list); renderFavorites(); showToast(t('toasts', 'removed')); return; }
+    if (list.some(p => samePlace(p, place))) { list = list.filter(p => !samePlace(p, place)); saveFavorites(list); renderFavorites(); refreshSaveButtonState(); showToast(t('toasts', 'removed')); return; }
     await addFavorite(place);
+    refreshSaveButtonState();
   }
   async function ensureFavoriteMeta(place) {
     if (!place || !isNum(place.lat) || !isNum(place.lon) || (isNum(place.tempC) && place.conditionKey)) return;
@@ -1741,7 +1755,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('keydown', (ev) => {
     if (ev.key === 'Escape' && languageMenu?.classList.contains('open')) closeLanguageMenu();
   });
-  saveCurrent?.addEventListener('click', () => { if (activePlace) addFavorite(activePlace); });
+  saveCurrent?.addEventListener('click', () => { if (activePlace) toggleFavorite(activePlace); });
   useMyLocationBtn?.addEventListener('click', () => { getCurrentLocation(); });
   searchCancel?.addEventListener('click', () => { setSearchEditMode(false); showScreen(screenHome); if (searchInput) searchInput.value = ''; });
   searchEditToggle?.addEventListener('click', () => { searchEditMode = !searchEditMode; setSearchEditMode(searchEditMode); });
