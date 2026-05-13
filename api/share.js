@@ -18,6 +18,30 @@ const escapeAttr = (value) => String(value || '')
   .replace(/</g, '&lt;')
   .replace(/>/g, '&gt;');
 
+// Thrown when the inline-script JSON.stringify fails. Mapped to a controlled
+// 400 in the handler rather than a 500 crash. Phase 2 Codex S2 defensive
+// wrap — JSON.stringify on a plain URL string can't fail under current
+// inputs, but the failure surface widens if appUrl ever holds non-string
+// values, so the catch is here for the future.
+export class ShareSerializationError extends Error {
+  constructor(message, { cause } = {}) {
+    super(message);
+    this.name = 'ShareSerializationError';
+    if (cause) this.cause = cause;
+  }
+}
+
+function safeStringifyForScript(value) {
+  try {
+    return JSON.stringify(value);
+  } catch (err) {
+    throw new ShareSerializationError(
+      `Failed to serialize value for inline script: ${err?.message || err}`,
+      { cause: err }
+    );
+  }
+}
+
 const isValidLat = (value) => Number.isFinite(Number(value)) && Number(value) >= -90 && Number(value) <= 90;
 const isValidLon = (value) => Number.isFinite(Number(value)) && Number(value) >= -180 && Number(value) <= 180;
 const clampLang = (lang) => SUPPORTED_LANGS.has(lang) ? lang : 'en';
@@ -129,7 +153,7 @@ export async function buildShareMetaHtml(query = {}) {
   <meta name="twitter:description" content="${escapeAttr(description)}"/>
   <meta name="twitter:image" content="${escapeAttr(ogImage)}"/>
   <meta http-equiv="refresh" content="0; url=${escapeAttr(appUrl)}"/>
-  <script>window.location.replace(${JSON.stringify(appUrl)});</script>
+  <script>window.location.replace(${safeStringifyForScript(appUrl)});</script>
 </head>
 <body>
   <p><a href="${escapeAttr(appUrl)}">Open Probably Weather</a></p>
@@ -140,5 +164,17 @@ export async function buildShareMetaHtml(query = {}) {
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=300');
-  res.status(200).end(await buildShareMetaHtml(getQuery(req)));
+  try {
+    const html = await buildShareMetaHtml(getQuery(req));
+    res.status(200).end(html);
+  } catch (err) {
+    if (err instanceof ShareSerializationError) {
+      // Controlled 400 — the inputs produced something we can't safely
+      // inline. Plain-text body so a curl probe sees the diagnosis.
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.status(400).end(`Share preview unavailable: ${err.message}`);
+      return;
+    }
+    throw err;
+  }
 }

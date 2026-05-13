@@ -315,6 +315,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== STATE ==========
   let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
+  // Captured by setupServiceWorkerUpdates() so the consolidated
+  // visibilitychange handler at module bottom can call registration.update()
+  // without needing two listeners (Phase 2 Codex S3 deferred-bundle item).
+  let swRegistration = null;
   let installExperience = null;
   let activeLocationSeq = 0;
   let activeWeatherController = null;
@@ -486,14 +490,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // propagate to users on second-launch. Calling update() forces a
       // re-fetch of the SW script with cache-busting headers.
       registration.update().catch(() => {});
-      // Re-check when the user returns to the app after being away. This is
-      // the main fix for the "double-close drill" — Al's deploy now reaches
-      // the user as soon as they foreground the tab.
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') {
-          registration.update().catch(() => {});
-        }
-      });
+      // Expose the registration so the consolidated visibilitychange handler
+      // at module bottom can poll for updates without a second listener.
+      // (Phase 2 Codex S3 — single combined handler eliminates the soft
+      // race between SW update + weather refresh paths.)
+      swRegistration = registration;
     }).catch((err) => debugLog('Service worker registration failed:', err));
   }
   function setSharedLocationIndicator(show) {
@@ -1854,14 +1855,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function attemptRefresh({ source }) {
     if (!activePlace) return;
-    const isPinned = activePlace.mode === PLACE_MODE_PINNED;
+    // Snapshot the place at request time. GPS / weather-fetch responses can
+    // arrive seconds later, by which point the user may have tapped a saved
+    // place or a search result. Without the snapshot the success callback
+    // would apply results to whatever activePlace points to NOW — hijacking
+    // the user's current view. Phase 2 Codex S4 deferred-bundle item.
+    const placeAtRequestTime = activePlace;
+    const isPinned = placeAtRequestTime.mode === PLACE_MODE_PINNED;
     const wantsFetch = shouldRefetchWeather({ lastFetchTime, source });
 
     if (isPinned) {
       // Pinned places: never override with GPS detection. Only re-fetch
-      // weather if data is stale (or pull-to-refresh).
-      if (wantsFetch) {
-        loadAndRender(activePlace);
+      // weather if data is stale (or pull-to-refresh) AND the user is
+      // still on this place.
+      if (wantsFetch && activePlace === placeAtRequestTime) {
+        loadAndRender(placeAtRequestTime);
         lastFetchTime = Date.now();
       }
       return;
@@ -1870,8 +1878,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // GPS mode: ask the device for a current fix.
     if (!('geolocation' in navigator)) {
       // Silent fallback — no GPS API. Just refresh weather if stale.
-      if (wantsFetch) {
-        loadAndRender(activePlace);
+      if (wantsFetch && activePlace === placeAtRequestTime) {
+        loadAndRender(placeAtRequestTime);
         lastFetchTime = Date.now();
       }
       return;
@@ -1882,10 +1890,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const newGps = { lat: newLat, lon: newLon };
       saveJSON(STORAGE.lastGps, { lat: newLat, lon: newLon, ts: Date.now() });
 
-      if (shouldUpdateLocation({ activePlace, newGps })) {
-        debugLog(`[Refresh] GPS moved ${haversineKm({ lat: activePlace.lat, lon: activePlace.lon }, newGps).toFixed(1)}km from ${activePlace.name} (${source}) — re-detecting`);
+      if (shouldUpdateLocation({ activePlace: placeAtRequestTime, newGps })) {
+        debugLog(`[Refresh] GPS moved ${haversineKm({ lat: placeAtRequestTime.lat, lon: placeAtRequestTime.lon }, newGps).toFixed(1)}km from ${placeAtRequestTime.name} (${source}) — re-detecting`);
         // Reverse-geocode for a display name, then load fresh weather.
-        let displayName = activePlace.name;
+        let displayName = placeAtRequestTime.name;
         try {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newLat)}&lon=${encodeURIComponent(newLon)}`);
           const data = await rev.json();
@@ -1895,13 +1903,19 @@ document.addEventListener("DOMContentLoaded", () => {
           try { displayName = (await reverseGeocode(newLat, newLon)) || displayName; } catch {}
         }
         const newPlace = { name: displayName, lat: newLat, lon: newLon, mode: PLACE_MODE_GPS };
+        // Always update homePlace — that's a useful side effect even if the
+        // user has navigated to a different view in the meantime.
         homePlace = newPlace;
         saveJSON(STORAGE.home, homePlace);
-        loadAndRender(newPlace);
-        lastFetchTime = Date.now();
-        showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
-      } else if (wantsFetch) {
-        loadAndRender(activePlace);
+        // Only render + toast if the user is still on the same place. If
+        // they switched views during the GPS wait, don't hijack their UI.
+        if (activePlace === placeAtRequestTime) {
+          loadAndRender(newPlace);
+          lastFetchTime = Date.now();
+          showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
+        }
+      } else if (wantsFetch && activePlace === placeAtRequestTime) {
+        loadAndRender(placeAtRequestTime);
         lastFetchTime = Date.now();
       }
     }, (err) => {
@@ -1909,8 +1923,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // no infinite spinner. Permission revoked / GPS lost mid-flight is
       // the common case here.
       debugLog('[Refresh] GPS failed (' + source + '):', err.code, err.message);
-      if (wantsFetch) {
-        loadAndRender(activePlace);
+      if (wantsFetch && activePlace === placeAtRequestTime) {
+        loadAndRender(placeAtRequestTime);
         lastFetchTime = Date.now();
       }
     }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
@@ -1925,9 +1939,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.visibilityState === 'visible') attemptRefresh({ source: 'interval' });
   }, REFRESH_INTERVAL_MS);
 
-  // Visibility return — the load-bearing trigger for the Strand→Paarl scenario.
+  // Visibility return — single consolidated listener doing two jobs:
+  //   1. Load-bearing trigger for the Strand→Paarl scenario (attemptRefresh)
+  //   2. SW update poll so deploys reach the user on foreground (Phase 2 S3
+  //      eliminates the soft race against the previously-separate listener
+  //      inside setupServiceWorkerUpdates).
+  // Order matters: attemptRefresh first so the regex test in
+  // refresh-behaviour.test.js still matches (no `}` between the event name
+  // and the call). swRegistration may still be null during the brief window
+  // between register() and the .then() resolving — guard for that.
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') attemptRefresh({ source: 'visibilitychange' });
+    if (document.visibilityState !== 'visible') return;
+    attemptRefresh({ source: 'visibilitychange' });
+    if (swRegistration) swRegistration.update().catch(() => {});
   });
 
   // Launch — after initial cached/fresh render has kicked off above, attempt

@@ -180,6 +180,30 @@ describe('app.js wiring — auto-refresh + PTR are present', () => {
     expect(appSrc).toMatch(/function attemptRefresh\(\{\s*source\s*\}\)/);
   });
 
+  // Phase 2 Codex S4 — attemptRefresh snapshots activePlace at request-time
+  // so async GPS / fetch callbacks apply results to the right place even if
+  // the user has switched views during the wait.
+  it("attemptRefresh captures activePlace into a placeAtRequestTime snapshot", () => {
+    const fnBody = appSrc.match(/function attemptRefresh\(\{[^}]*\}\)\s*\{[\s\S]*?\n  \}/)?.[0] ?? '';
+    expect(fnBody).toMatch(/const placeAtRequestTime\s*=\s*activePlace/);
+  });
+
+  it("attemptRefresh uses placeAtRequestTime (not activePlace) when reading the snapshot", () => {
+    const fnBody = appSrc.match(/function attemptRefresh\(\{[^}]*\}\)\s*\{[\s\S]*?\n  \}/)?.[0] ?? '';
+    // The mode check, the haversineKm read, and the displayName fallback
+    // all flow from the snapshot, not the live activePlace.
+    expect(fnBody).toMatch(/placeAtRequestTime\.mode/);
+    expect(fnBody).toMatch(/placeAtRequestTime\.lat/);
+    expect(fnBody).toMatch(/displayName\s*=\s*placeAtRequestTime\.name/);
+  });
+
+  it("attemptRefresh guards loadAndRender behind an activePlace === placeAtRequestTime equality check", () => {
+    const fnBody = appSrc.match(/function attemptRefresh\(\{[^}]*\}\)\s*\{[\s\S]*?\n  \}/)?.[0] ?? '';
+    // If the user switched places during the GPS wait, we update homePlace
+    // as a useful side effect but don't hijack the current view.
+    expect(fnBody).toMatch(/activePlace\s*===\s*placeAtRequestTime/);
+  });
+
   it("visibilitychange listener calls attemptRefresh with 'visibilitychange' source", () => {
     expect(appSrc).toMatch(/visibilitychange[^}]*attemptRefresh\(\{\s*source:\s*['"]visibilitychange['"]/);
   });

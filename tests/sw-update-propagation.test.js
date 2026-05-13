@@ -69,8 +69,25 @@ describe('setupServiceWorkerUpdates — page-side wiring', () => {
     expect(registerBlock).toMatch(/registration\.update\(\)/);
   });
 
-  it('calls registration.update() on visibilitychange → visible', () => {
-    expect(fnBody).toMatch(/visibilitychange[\s\S]{0,300}registration\.update\(\)/);
+  it('captures the SW registration into a module-level variable so the consolidated visibilitychange handler can poll for updates', () => {
+    // Phase 2 Codex S3 — replaces the previously-separate inner listener
+    // (setupServiceWorkerUpdates had its own visibilitychange handler).
+    // The registration is now exposed via swRegistration so the single
+    // outer handler can drive both attemptRefresh and update polling.
+    expect(fnBody).toMatch(/swRegistration\s*=\s*registration/);
+  });
+
+  it('the consolidated visibilitychange handler at module level polls swRegistration.update() on foreground', () => {
+    // Single listener at module level handles both attemptRefresh and the
+    // SW update poll. Eliminates the soft race between two separate
+    // listeners that fired on the same event.
+    expect(appSrc).toMatch(/addEventListener\(['"]visibilitychange['"][\s\S]{0,400}swRegistration[\s\S]{0,80}\.update\(\)/);
+  });
+
+  it('only one document.addEventListener(\'visibilitychange\', ...) registration exists', () => {
+    // Negative assertion against regression to dual listeners.
+    const matches = appSrc.match(/document\.addEventListener\(['"]visibilitychange['"]/g) || [];
+    expect(matches.length).toBe(1);
   });
 
   it('listens for controllerchange', () => {
