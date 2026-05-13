@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather om jou 'n meer betroubare voorspelling te gee.",
         zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather ukukunikeza isibikezelo esithembekile.",
         xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather ukukunika isithembiso esithembekileyo.",
-        st: "Probably Weather e kopanya diponelopele tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway le Pirate Weather ho u fa ponelopele e tšepahalang."
+        st: "Probably Weather e kopanya dikakanyo tsa boemo ba leholimo tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway le Pirate Weather ho u fa ponelopele e tšepahalang."
       }
     },
     // Sidebar
@@ -184,10 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
       feelsLike: { en: "Feels like", af: "Voel soos", zu: "Kuzwakala sengathi", xh: "Kuziva ngathi", st: "Ho utlwahala joalo ka" },
       later: { en: "Later ⏰", af: "Later ⏰", zu: "Kamuva ⏰", xh: "Kamva ⏰", st: "Hamorao ⏰" },
       none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
-      gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "ukuya kuthi ga kwi", st: "ho fihla ho" },
+      gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "ukuya kuthi ga kwi", st: "moea o otlang ka sefutho" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakulindeleka", xh: "Akunakulindeleka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
-      likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala haholo" },
+      likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
       low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
       moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
       high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Check die weer in {city} — Suid-Afrikaanse weer in jou taal: {url}",
         zu: "Bheka isimo sezulu e-{city} — isimo sezulu saseNingizimu Afrika ngolimi lwakho: {url}",
         xh: "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho: {url}",
-        st: "Sheba boemo ba leholimo ba {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao: {url}"
+        st: "Sheba boemo ba leholimo {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao: {url}"
       },
       shareYourArea: {
         en: "your area",

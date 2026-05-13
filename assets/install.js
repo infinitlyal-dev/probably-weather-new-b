@@ -58,21 +58,21 @@ export const INSTALL_T = {
     af: "Tik op Safari se `Share`-knoppie onder aan jou skerm",
     zu: 'Thepha inkinobho `Share` ye-Safari ngezansi kwesikrini sakho',
     xh: 'Cofa iqhosha `Share` le-Safari ezantsi kwiscreen yakho',
-    st: 'Tlanya konopo ya `Share` ya Safari ka tlase ho skirini sa hao',
+    st: 'Tobetsa konopo ya `Share` ya Safari ka tlase ho skirini sa hao',
   },
   iosStep2: {
     en: 'Scroll, tap `Add to Home Screen`',
     af: 'Scroll, tik op `Add to Home Screen`',
     zu: 'Skrolela, thepha `Add to Home Screen`',
     xh: 'Skrolela, cofa `Add to Home Screen`',
-    st: 'Theosa, tlanya `Add to Home Screen`',
+    st: 'Theosa, tobetsa `Add to Home Screen`',
   },
   iosStep3: {
     en: 'Tap `×` above to close these instructions',
     af: 'Tik `×` hierbo om hierdie instruksies toe te maak',
     zu: 'Thepha `×` ngenhla ukuvala lezi ziyalezo',
     xh: 'Cofa `×` ngentla ukuvala le miyalelo',
-    st: 'Tlanya `×` ka holimo ho koala litaelo tsena',
+    st: 'Tobetsa `×` ka holimo ho koala litaelo tsena',
   },
   // Confirmation line below the 3 steps — positive close, distinct from
   // the steps. Reads as "you're done" rather than a fourth instruction.
@@ -81,7 +81,7 @@ export const INSTALL_T = {
     af: 'Probably Weather sal op jou tuisskerm verskyn — tik die ikoon om die program oop te maak.',
     zu: 'I-Probably Weather izovela kusikrini sakho sasekhaya — thepha i-icon ukuze uvule uhlelo lokusebenza.',
     xh: 'I-Probably Weather iya kuvela kwiscreen yakho yasekhaya — cofa i-icon ukuze uvule i-app.',
-    st: 'Probably Weather e tla hlaha skrineng sa hao sa lehae — tlanya letshwao ho bula app.',
+    st: 'Probably Weather e tla hlaha skrineng sa hao sa lehae — tobetsa letshwao ho bula app.',
   },
   // Auxiliary hint at the bottom — for users who can't find Add to Home
   // Screen in the Share menu (iOS gates it behind Edit Actions on first use).
@@ -90,7 +90,7 @@ export const INSTALL_T = {
     af: 'Sien jy nie `Add to Home Screen` nie? Tik `Edit Actions` onder in die Deel-kieslys en skakel dit aan.',
     zu: 'Awuyiboni i-`Add to Home Screen`? Thepha u-`Edit Actions` ezansi kwemenyu ye-Share, bese uyivumela.',
     xh: 'Awuyiboni i-`Add to Home Screen`? Cofa u-`Edit Actions` ezantsi kwimenyu ye-Share, uyivumele.',
-    st: 'Ha o bone `Add to Home Screen`? Tlanya `Edit Actions` ka tlase ho menyu ya Share, ebe u e nolofatsa.',
+    st: 'Ha o bone `Add to Home Screen`? Tobetsa `Edit Actions` ka tlase ho menyu ya Share, ebe u e nolofatsa.',
   },
   iosChromeTitle: {
     en: 'Open in Safari to install',
@@ -104,7 +104,7 @@ export const INSTALL_T = {
     af: 'Chrome op iPhone kan nie programme installeer nie. Tik hieronder om hierdie webwerf in Safari oop te maak, dan volg jy die stappe.',
     zu: 'I-Chrome ku-iPhone ayikwazi ukufaka izinhlelo zokusebenza. Thepha ngezansi ukuze uvule le sayithi ku-Safari, bese ulandela izinyathelo.',
     xh: 'I-Chrome kwi-iPhone ayikwazi ukufaka izicelo. Cofa ezantsi ukuze uvule le saythi kwi-Safari, ulandele amanyathelo.',
-    st: 'Chrome ho iPhone e ke ke ea kenya di-app. Tlanya ka tlase ho bula sebaka sena ho Safari, joale latela mehato.',
+    st: 'Chrome ho iPhone e ke ke ea kenya li-app. Tobetsa ka tlase ho bula sebaka sena ho Safari, ebe u latela mehato',
   },
   iosChromeOpenSafari: {
     en: 'Open in Safari',
@@ -212,7 +212,7 @@ export const INSTALL_T = {
     af: "Tik op jou blaaier-kieslys, dan Installeer app — of probeer 'n oomblik weer.",
     zu: 'Thepha imenyu yesiphequluli, bese Faka uhlelo lokusebenza — noma uzame futhi ngomzuzwana.',
     xh: 'Cofa imenyu yebrawza, ze ufakele i-app — okanye uzame kwakhona ngomzuzwana.',
-    st: 'Tlanya menyu ea sebatli, ebe Kenya app — kapa leka hape ka motsotsoana.',
+    st: 'Tobetsa menyu ea sebatli, ebe Kenya app — kapa leka hape ka motsotsoana.',
   },
 };
 
