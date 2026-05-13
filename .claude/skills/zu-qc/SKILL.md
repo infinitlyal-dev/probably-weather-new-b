@@ -5,6 +5,16 @@ description: isiZulu (zu) translation quality checker for Probably Weather. Use 
 
 # zu-qc — isiZulu QC for Probably Weather
 
+> **Status: heuristic checklist, NOT dictionary-backed.**
+>
+> This skill performs pattern-based checks (cross-language exact-match comparison, Nguni class-prefix presence, orthography sanity, English-loanword detection) using only the source `T` object and Claude's in-context isiZulu knowledge. It does **NOT** call SADiLaR, NWU CTexT, isiZulu.net, or any external dictionary or word-list API. The "consult SADiLaR / CTexT" references in the procedure below are documentation breadcrumbs for manual native-speaker review, not automated lookups.
+>
+> Use this skill as a structured checklist when triaging isiZulu strings, and as a contract specification for what a future dictionary-backed tool would look like. Do **not** treat its "confidence" outputs as dictionary-validated. Confidence here is heuristic confidence (how strong the structural signal is), not lexicographic confidence (whether a SADiLaR lemma list actually contains the surface form).
+>
+> Semantic mismatches — a real isiZulu word used in the wrong sense (e.g. `weather.gusts.zu = "amafindo"`, which is the plural of `ifindo` meaning "knot/node" rather than wind gust) — are **not catchable by this skill**. Wordlist or lemma-list backing would not catch them either, since both source and intended-target forms are real isiZulu words. Catching this class of bug requires native review or a bilingual EN↔ZU gloss round-trip.
+>
+> See `LANGUAGE_AUDIT_PHASE3_REPORT.md` for the full Phase 3 audit and the investigation behind this disclaimer.
+
 ## When to use
 
 - Any edit touching the `zu:` value of an i18n leaf.

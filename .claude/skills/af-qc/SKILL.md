@@ -5,6 +5,16 @@ description: Afrikaans (af) translation quality checker for Probably Weather. Us
 
 # af-qc — Afrikaans QC for Probably Weather
 
+> **Status: heuristic checklist, NOT dictionary-backed.**
+>
+> This skill performs pattern-based checks (cross-language exact-match comparison, AWS 2017 spelling heuristics, length / English-loanword sniff, capitalisation conventions) using only the source `T` object and Claude's in-context Afrikaans knowledge. It does **NOT** call Pharos Aanlyn, the AWS digital lookup, or any other dictionary API. The "consult Pharos / AWS 2017" references in the procedure below are documentation breadcrumbs for manual native-speaker review, not automated lookups.
+>
+> Use this skill as a structured checklist when triaging Afrikaans strings, and as a contract specification for what a future dictionary-backed tool would look like. Do **not** treat its "confidence" outputs as dictionary-validated. Confidence here is heuristic confidence (how strong the structural signal is), not lexicographic confidence (whether Pharos actually agrees).
+>
+> Semantic mismatches — a real Afrikaans word used in the wrong sense, e.g. `weather.gusts` translated to a literal but contextually wrong noun — are **not catchable by this skill**. They require native review or a bilingual gloss lookup that this skill does not perform.
+>
+> See `LANGUAGE_AUDIT_PHASE3_REPORT.md` for the full Phase 3 audit and the investigation behind this disclaimer.
+
 ## When to use
 
 - Any edit touching the `af:` value of an i18n leaf in `T`, `INSTALL_T`, `PTR_COPY`, or `WEATHER_COPY`.
