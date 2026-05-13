@@ -104,7 +104,7 @@ export const INSTALL_T = {
     af: 'Chrome op iPhone kan nie programme installeer nie. Tik hieronder om hierdie webwerf in Safari oop te maak, dan volg jy die stappe.',
     zu: 'I-Chrome ku-iPhone ayikwazi ukufaka izinhlelo zokusebenza. Thepha ngezansi ukuze uvule le sayithi ku-Safari, bese ulandela izinyathelo.',
     xh: 'I-Chrome kwi-iPhone ayikwazi ukufaka izicelo. Cofa ezantsi ukuze uvule le saythi kwi-Safari, ulandele amanyathelo.',
-    st: 'Chrome ho iPhone e ke ke ea kenya li-app. Tobetsa ka tlase ho bula sebaka sena ho Safari, joale latela mehato.',
+    st: 'Chrome ho iPhone e ke ke ea kenya di-app. Tlanya ka tlase ho bula sebaka sena ho Safari, joale latela mehato.',
   },
   iosChromeOpenSafari: {
     en: 'Open in Safari',
