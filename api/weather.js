@@ -31,6 +31,9 @@ export default async function handler(req, res) {
     const WEATHERAPI_KEY     = process.env.WEATHERAPI_KEY     || null;
     const PIRATE_WEATHER_KEY = process.env.PIRATE_WEATHER_KEY || null;
     const NOMINATIM_UA       = process.env.MET_USER_AGENT     || 'ProbablyWeather/1.0 (contact: howzit@probablyweather.co.za)';
+    // Geocoding moved off public Nominatim → LocationIQ (Nominatim-API-compatible).
+    // Token lives server-side only; never exposed to the browser.
+    const LOCATIONIQ_TOKEN   = process.env.LOCATIONIQ_TOKEN   || null;
 
     const timeoutMs = 9000;
 
@@ -46,19 +49,31 @@ export default async function handler(req, res) {
       }
     }
 
-    // Reverse geocode endpoint — cascading zoom for small-town accuracy
+    // isBadLabel — reject empty labels, "Ward 4"-style admin labels, and bare numbers.
+    // Shared by the ?reverse=1 endpoint and the name-resolution block below.
+    const isBadLabel = (s) => {
+      const v = String(s || '').trim();
+      return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
+    };
+
+    // Reverse geocode endpoint — LocationIQ (Nominatim-compatible), zoom=16 for small-town accuracy
     if (req.query.reverse) {
+      if (!LOCATIONIQ_TOKEN) {
+        return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
+      }
       try {
-        // zoom=16 catches hamlets/suburbs; zoom=10 is city-level fallback
+        // zoom=16 catches hamlets/suburbs
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`,
+          `https://us1.locationiq.com/v1/reverse?key=${encodeURIComponent(LOCATIONIQ_TOKEN)}&lat=${lat}&lon=${lon}&format=json&zoom=16&addressdetails=1&normalizecity=1&accept-language=en`,
           { headers: { 'User-Agent': NOMINATIM_UA } }
         );
         const addr = rev?.address || {};
-        // Priority: village/town/suburb BEFORE city — so "Wilderness" beats "George"
-        const place = addr.village || addr.town || addr.suburb || addr.city || addr.neighbourhood || addr.municipality || null;
-        const city = addr.city || addr.town || addr.municipality || null;
-        const admin1 = addr.state || addr.province || addr.region || addr.county || null;
+        const pick = (...vals) => vals.find(v => !isBadLabel(v)) || null;
+        // Priority: village/town/suburb BEFORE city — so "Wilderness" beats "George".
+        // municipality stays LAST so it never wins over a real town name (Malmesbury→Swartland bug).
+        const place = pick(addr.village, addr.town, addr.suburb, addr.city, addr.neighbourhood, addr.municipality);
+        const city = pick(addr.city, addr.town, addr.municipality);
+        const admin1 = pick(addr.state, addr.province, addr.region, addr.county);
         const countryCode = addr.country_code ? String(addr.country_code).toUpperCase() : null;
         return res.status(200).json({ ok: true, city: place, admin1, countryCode, nearCity: place !== city ? city : null });
       } catch {
@@ -69,17 +84,13 @@ export default async function handler(req, res) {
     // Resolve location name — cascading strategy for small-town accuracy
     // Priority: village/town/suburb BEFORE city so Wilderness beats George
     let resolvedName = isPlaceholder ? null : name;
-    if (!resolvedName) {
+    if (!resolvedName && LOCATIONIQ_TOKEN) {
       try {
         const rev = await fetchJson(
-          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`,
+          `https://us1.locationiq.com/v1/reverse?key=${encodeURIComponent(LOCATIONIQ_TOKEN)}&lat=${lat}&lon=${lon}&format=json&zoom=16&addressdetails=1&normalizecity=1&accept-language=en`,
           { headers: { 'User-Agent': NOMINATIM_UA } }
         );
         const addr = rev?.address || {};
-        const isBadLabel = (s) => {
-          const v = String(s || '').trim();
-          return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
-        };
         const pick = (...vals) => vals.find(v => !isBadLabel(v));
         // Small place first: village/town, then suburb, then city
         const smallPlace = pick(addr.village, addr.town);
