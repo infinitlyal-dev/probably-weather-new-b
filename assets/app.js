@@ -1008,26 +1008,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== API ==========
-  // Cascading reverse geocode: zoom=16 for hamlet/suburb detail, smart fallback
-  // Priority: village/town BEFORE city — so "Wilderness" wins over "George"
+  // Reverse geocode via the server-side LocationIQ proxy (/api/geocode).
+  // The proxy resolves the display name (village/town → suburb → city →
+  // municipality → state, with the "Ward 4" filter applied) and returns it
+  // ready-formatted. Token never reaches the browser.
   async function reverseGeocode(lat, lon) {
     try {
-      const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=16&addressdetails=1`, { headers: { 'User-Agent': 'howzit@probablyweather.co.za' }, signal: AbortSignal.timeout(5000) });
+      const resp = await fetch(`/api/geocode?type=reverse&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`, { signal: AbortSignal.timeout(5000) });
       if (!resp.ok) return null;
       const data = await resp.json();
-      const addr = data.address || {};
-      const smallPlace = addr.village || addr.town;
-      const suburb = addr.suburb || addr.neighbourhood;
-      const city = addr.city || addr.municipality;
-      const province = addr.state || addr.province || addr.region;
-      const country = addr.country;
-      if (smallPlace) return province ? `${smallPlace}, ${province}` : (country ? `${smallPlace}, ${country}` : smallPlace);
-      if (suburb && city) return `${suburb}, ${city}`;
-      if (suburb) return province ? `${suburb}, ${province}` : (country ? `${suburb}, ${country}` : suburb);
-      if (city) return province ? `${city}, ${province}` : (country ? `${city}, ${country}` : city);
-      if (province) return country ? `${province}, ${country}` : province;
-      if (country) return country;
-      return null;
+      return (data && data.ok && data.name) ? data.name : null;
     } catch { return null; }
   }
   async function resolvePlaceName(place) { if (!place || !isNum(place.lat) || !isNum(place.lon)) return place?.name || 'Unknown'; if (!isPlaceholderName(place.name)) return place.name; return await reverseGeocode(place.lat, place.lon) || place.name || 'Unknown'; }
@@ -1600,21 +1590,32 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!query || query.length < 2) { renderSearchResults([]); return; }
     const thisSeq = ++searchSeq; if (activeSearchController) activeSearchController.abort(); activeSearchController = new AbortController();
     try {
-      const resp = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&limit=8&addressdetails=1`, { headers: { 'User-Agent': 'howzit@probablyweather.co.za' }, signal: activeSearchController.signal });
+      // Server-side LocationIQ proxy — token stays off the client, results are ZA-biased.
+      const resp = await fetch(`/api/geocode?type=search&q=${encodeURIComponent(query)}`, { signal: activeSearchController.signal });
       if (thisSeq !== searchSeq || !resp.ok) return;
-      searchResults = (await resp.json())
+      const data = await resp.json();
+      const mapped = (Array.isArray(data?.results) ? data.results : [])
         .map(r => ({
-          name: r.display_name?.split(',')[0] || 'Unknown',
+          name: r.name || r.display_name?.split(',')[0] || 'Unknown',
           fullName: r.display_name,
           lat: Number(r.lat),
           lon: Number(r.lon),
           address: r.address,
         }))
         .filter(r => Number.isFinite(r.lat) && Number.isFinite(r.lon));
+      // De-duplicate: drop a result if an earlier one renders an identical label
+      // AND sits within ~1km of it — the "Bryn Mawr triplication" bug, where three
+      // OSM objects sharing one container collapsed into three identical rows.
+      searchResults = mapped.filter((r, i) => !mapped.slice(0, i).some(prev =>
+        formatSearchResult(prev) === formatSearchResult(r) &&
+        haversineKm(prev, r) <= 1
+      ));
       renderSearchResults(searchResults);
     } catch (e) { if (e.name !== 'AbortError') console.error('Search error:', e); }
   }
-  function formatSearchResult(r) { const a = r.address || {}; const city = a.city || a.town || a.village || r.name; return a.country ? `${city}, ${a.country}` : city; }
+  // Lead with the feature's OWN name (r.name = the actual searched place) so
+  // "Bryn Mawr" shows as itself, not its container "Lower Merion Township".
+  function formatSearchResult(r) { const a = r.address || {}; const city = r.name || a.town || a.village || a.city || 'Unknown'; return a.country ? `${city}, ${a.country}` : city; }
   async function miniFetchTemp(lat, lon) { const key = `${lat.toFixed(2)},${lon.toFixed(2)}`; if (searchMiniCache.has(key)) return searchMiniCache.get(key); try { const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' })); const r = { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) }; searchMiniCache.set(key, r); return r; } catch { return { temp: '--°', icon: '⛅' }; } }
   function renderSearchResults(results) {
     const rl = document.getElementById('searchResults') || (() => { const ul = document.createElement('ul'); ul.id = 'searchResults'; ul.className = 'search-results'; document.querySelector('.search-body')?.prepend(ul); return ul; })();
@@ -1684,7 +1685,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if ("geolocation" in navigator) {
       renderLoading("Getting location…");
       navigator.geolocation.getCurrentPosition(async (pos) => {
-        const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
+        const lat = Math.round(pos.coords.latitude * 10000) / 10000, lon = Math.round(pos.coords.longitude * 10000) / 10000;
         try {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`);
           const data = await rev.json();
@@ -1821,7 +1822,7 @@ document.addEventListener("DOMContentLoaded", () => {
   else { showScreen(screenHome); renderLoading("Locating…");
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(async (pos) => {
-        const lat = Math.round(pos.coords.latitude * 10) / 10, lon = Math.round(pos.coords.longitude * 10) / 10;
+        const lat = Math.round(pos.coords.latitude * 10000) / 10000, lon = Math.round(pos.coords.longitude * 10000) / 10000;
         try {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
           const displayName = buildLocationName(data, lat, lon);
@@ -1885,8 +1886,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     navigator.geolocation.getCurrentPosition(async (pos) => {
-      const newLat = Math.round(pos.coords.latitude * 10) / 10;
-      const newLon = Math.round(pos.coords.longitude * 10) / 10;
+      const newLat = Math.round(pos.coords.latitude * 10000) / 10000;
+      const newLon = Math.round(pos.coords.longitude * 10000) / 10000;
       const newGps = { lat: newLat, lon: newLon };
       saveJSON(STORAGE.lastGps, { lat: newLat, lon: newLon, ts: Date.now() });
 
