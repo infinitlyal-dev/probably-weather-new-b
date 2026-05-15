@@ -110,8 +110,8 @@ describe('cloud day/night differentiation', () => {
 // ---------------------------------------------------------------------------
 describe('pickHourlyEmoji — branch parity with legacy getWeatherIcon', () => {
   it('tc <= 0 wins everything (cold beats rain/cloud)', () => {
-    expect(pickHourlyEmoji({ rainPct: 90, cloudPct: 100, tempC: -1, isNight: false })).toBe('❄️');
-    expect(pickHourlyEmoji({ rainPct: 90, cloudPct: 100, tempC: -1, isNight: true })).toBe('❄️');
+    expect(pickHourlyEmoji({ rainPct: 90, cloudPct: 100, tempC: -1, isNight: false })).toBe('🧥');
+    expect(pickHourlyEmoji({ rainPct: 90, cloudPct: 100, tempC: -1, isNight: true })).toBe('🧥');
   });
 
   it('rainPct >= 50 returns 🌧️ regardless of day/night', () => {
@@ -145,9 +145,9 @@ describe('pickHourlyEmoji — branch parity with legacy getWeatherIcon', () => {
     expect(pickHourlyEmoji({ rainPct: 0, cloudPct: 50, tempC: 18, isNight: true })).toBe('☁️');
   });
 
-  it('tc <= 10 returns ❄️ when no rain/cloud signal', () => {
-    expect(pickHourlyEmoji({ rainPct: 0, cloudPct: 10, tempC: 8, isNight: false })).toBe('❄️');
-    expect(pickHourlyEmoji({ rainPct: 0, cloudPct: 10, tempC: 8, isNight: true })).toBe('❄️');
+  it('tc <= 10 returns 🧥 when no rain/cloud signal', () => {
+    expect(pickHourlyEmoji({ rainPct: 0, cloudPct: 10, tempC: 8, isNight: false })).toBe('🧥');
+    expect(pickHourlyEmoji({ rainPct: 0, cloudPct: 10, tempC: 8, isNight: true })).toBe('🧥');
   });
 
   it('clear fallback returns ☀️ by day and 🌙 by night', () => {

@@ -180,13 +180,13 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
     // The icon picker is a small pure function; reproduce its rules here.
     const getWeatherIcon = (rp, cp, tc, isNight) => {
       const isNum = (n) => typeof n === 'number' && Number.isFinite(n);
-      if (isNum(tc) && tc <= 0) return '❄️';
+      if (isNum(tc) && tc <= 0) return '🧥';
       if (isNum(rp) && rp >= 50) return '🌧️';
       if (isNum(rp) && rp >= 30) return '🌦️';
       if (isNum(tc) && tc >= 35) return '🔥';
       if (isNum(cp) && cp >= 70) return '☁️';
       if (isNum(cp) && cp >= 40) return '⛅';
-      if (isNum(tc) && tc <= 10) return '❄️';
+      if (isNum(tc) && tc <= 10) return '🧥';
       return isNight ? '🌙' : '☀️';
     };
     expect(getWeatherIcon(0, 50, 22, false)).toBe('⛅');

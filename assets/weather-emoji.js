@@ -22,7 +22,7 @@ const CONDITION_EMOJI_MAP = {
   'partly-cloudy': { day: '⛅',  night: '☁️'  },
   fog:             { day: '🌫️', night: '🌫️' },
   wind:            { day: '💨',  night: '💨'  },
-  cold:            { day: '❄️',  night: '❄️'  },
+  cold:            { day: '🧥',  night: '🧥'  },
   heat:            { day: '🔥',  night: '🔥'  },
   hot:             { day: '🔥',  night: '🔥'  },
   uv:              { day: '☀️',  night: '🌙'  },

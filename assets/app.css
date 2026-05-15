@@ -1925,15 +1925,22 @@ main#home-screen.main #confidence {
        documented recovery is to delete and reinstall the PWA via
        Add-to-Home-Screen, or use the ?reset=1 URL parameter. See
        FOLLOWUP_MANIFEST_INVESTIGATION.md. */
-    padding: max(0.5rem, env(safe-area-inset-top, 0px)) max(0.5rem, env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
+    padding: 0.5rem max(0.5rem, env(safe-area-inset-right)) calc(70px + env(safe-area-inset-bottom)) max(0.5rem, env(safe-area-inset-left));
     box-sizing: border-box;
   }
 
-  /* Header compact on mobile */
+  /* Header compact on mobile. padding-top handles the iOS Dynamic Island /
+     Android status bar clearance: max() honours env() when iOS/Android PWA
+     reports it, AND keeps a 1rem (16px) floor so non-PWA browser tabs that
+     report env()=0 but still render under the system status bar (Samsung
+     Internet, certain Chrome edge-to-edge modes) don't clip the title.
+     Top safe-area lives on .header (not .container) so it's clear where
+     to look when the notch overlaps the brand. */
   .header {
     margin-bottom: 0;
     text-align: left;
     padding-left: 4px;
+    padding-top: max(1rem, env(safe-area-inset-top));
   }
 
   .brand {
