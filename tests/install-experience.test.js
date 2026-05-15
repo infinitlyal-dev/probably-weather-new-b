@@ -7,6 +7,8 @@ import {
   DISMISS_DAYS,
   ENGAGEMENT_MS,
   detectPlatform,
+  detectInAppBrowser,
+  buildAndroidIntentUrl,
   shouldShowBanner,
   dismissUntilTimestamp,
   tInstall,
@@ -56,6 +58,76 @@ describe('install — platform detection', () => {
   });
   it('returns desktop-other for desktop Firefox', () => {
     expect(detectPlatform(UA.desktopFirefox)).toBe('desktop-other');
+  });
+});
+
+describe('install — in-app browser detection', () => {
+  // Real-world UA strings (captured 2025-2026 from each app's in-app browser).
+  const INAPP = {
+    whatsappAndroid: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 WhatsApp/2.24.1.78',
+    whatsappIOS: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 WhatsApp/24.1.78',
+    instagramAndroid: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 Instagram 302.0.0.23.114 Android',
+    facebookAndroid: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/450.0.0.34.103;]',
+    messengerAndroid: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 [FB_IAB/MESSENGER;FBAV/450.0.0.34.103;Messenger]',
+    tiktokAndroid: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 musical_ly_30.5.4 Bytedance',
+    twitterIOS: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 Twitter for iPhone/10.45',
+    iosWebViewGeneric: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148',
+  };
+
+  it('flags WhatsApp on Android and iOS', () => {
+    expect(detectInAppBrowser(INAPP.whatsappAndroid)).toEqual({ app: 'WhatsApp', os: 'android' });
+    expect(detectInAppBrowser(INAPP.whatsappIOS)).toEqual({ app: 'WhatsApp', os: 'ios' });
+  });
+  it('flags Instagram', () => {
+    expect(detectInAppBrowser(INAPP.instagramAndroid)).toEqual({ app: 'Instagram', os: 'android' });
+  });
+  it('flags Facebook via FB_IAB/FBAV tokens', () => {
+    expect(detectInAppBrowser(INAPP.facebookAndroid)).toEqual({ app: 'Facebook', os: 'android' });
+  });
+  it('flags Messenger BEFORE Facebook (Messenger UA contains FB tokens too)', () => {
+    expect(detectInAppBrowser(INAPP.messengerAndroid)).toEqual({ app: 'Messenger', os: 'android' });
+  });
+  it('flags TikTok via musical_ly / Bytedance', () => {
+    expect(detectInAppBrowser(INAPP.tiktokAndroid)).toEqual({ app: 'TikTok', os: 'android' });
+  });
+  it('flags Twitter on iOS', () => {
+    expect(detectInAppBrowser(INAPP.twitterIOS)).toEqual({ app: 'Twitter', os: 'ios' });
+  });
+  it('flags iOS WebView (no Safari token, no CriOS/FxiOS/EdgiOS)', () => {
+    expect(detectInAppBrowser(INAPP.iosWebViewGeneric)).toEqual({ app: 'WebView', os: 'ios' });
+  });
+  it('returns null for real browsers', () => {
+    expect(detectInAppBrowser(UA.androidChrome)).toBeNull();
+    expect(detectInAppBrowser(UA.iosSafari)).toBeNull();
+    expect(detectInAppBrowser(UA.iosChrome)).toBeNull();
+    expect(detectInAppBrowser(UA.desktopChrome)).toBeNull();
+    expect(detectInAppBrowser(UA.desktopFirefox)).toBeNull();
+    expect(detectInAppBrowser('')).toBeNull();
+  });
+});
+
+describe('install — Android intent URL builder', () => {
+  it('builds a Chrome-targeted intent URL with fallback', () => {
+    const url = buildAndroidIntentUrl('https://probablyweather.co.za/install');
+    expect(url).toBe('intent://probablyweather.co.za/install#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https%3A%2F%2Fprobablyweather.co.za%2Finstall;end');
+  });
+  it('preserves query string in the intent path', () => {
+    const url = buildAndroidIntentUrl('https://probablyweather.co.za/install?lang=af');
+    expect(url).toContain('intent://probablyweather.co.za/install?lang=af#Intent');
+    expect(url).toContain('S.browser_fallback_url=https%3A%2F%2Fprobablyweather.co.za%2Finstall%3Flang%3Daf');
+  });
+  it('drops hash from intent path but preserves it in the fallback URL', () => {
+    // # is the boundary between URL and intent params — the original hash
+    // can't survive in the intent path itself, so it lives in the fallback.
+    const url = buildAndroidIntentUrl('https://probablyweather.co.za/install#foo');
+    expect(url).not.toContain('install#foo#Intent');
+    expect(url).toContain('install#Intent');
+    expect(url).toContain('install%23foo'); // hash preserved in encoded fallback
+  });
+  it('returns null for non-http(s) URLs', () => {
+    expect(buildAndroidIntentUrl('javascript:alert(1)')).toBeNull();
+    expect(buildAndroidIntentUrl('mailto:foo@bar.com')).toBeNull();
+    expect(buildAndroidIntentUrl('not a url')).toBeNull();
   });
 });
 

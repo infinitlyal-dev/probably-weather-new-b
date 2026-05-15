@@ -3114,6 +3114,29 @@ body.install-modal-active .save-current-btn { display: none !important; }
 .install-already {
   border: 1px solid rgba(255,221,68,0.45);
 }
+/* In-app browser breakout card (WhatsApp / Instagram / etc.) — accent border
+   so the user understands this is a different flow from the normal install
+   path. The card itself reuses .install-card styling. */
+.install-inapp {
+  border: 1px solid rgba(255,170,0,0.55);
+}
+.install-inapp-explain {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  opacity: 0.92;
+}
+/* Secondary CTA — same shape as the primary gold button but quieter, so the
+   Copy-link fallback doesn't compete visually with "Open in Chrome". */
+.install-cta-btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: #FFF8F0;
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.install-cta-btn-secondary:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: none;
+}
 /* Defensive escape hatch link in /install footer — lets a stuck user
    wipe install-related localStorage from device-side without devtools. */
 .install-landing-footer {

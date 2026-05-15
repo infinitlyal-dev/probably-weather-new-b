@@ -214,6 +214,58 @@ export const INSTALL_T = {
     xh: 'Cofa imenyu yebrawza, ze ufakele i-app — okanye uzame kwakhona ngomzuzwana.',
     st: 'Tobetsa menyu ea sebatli, ebe Kenya app — kapa leka hape ka motsotsoana.',
   },
+  /* -- In-app browser breakout flow (WhatsApp, Instagram, Facebook, etc.) --
+     Strings use `{app}` as a placeholder for the detected app name (brand
+     names stay untranslated). Voice: direct, slightly wry, no corporate-speak. */
+  inAppHeading: {
+    en: 'Pop us open properly',
+    af: 'Maak ons behoorlik oop',
+    zu: 'Sivule kahle',
+    xh: 'Sivule kakuhle',
+    st: 'Re bule hantle',
+  },
+  inAppExplain: {
+    en: "You're in {app}'s built-in browser. It can't install apps.",
+    af: 'Jy is in {app} se ingeboude blaaier. Dit kan nie programme installeer nie.',
+    zu: 'Usebenzisa isiphequluli esakhelwe ngaphakathi sika-{app}. Asikwazi ukufaka izinhlelo zokusebenza.',
+    xh: 'Usebenzisa ibrawza eyakhelwe ngaphakathi ye-{app}. Ayikwazi ukufaka iiapp.',
+    st: 'O sebelisa sebatli se kentsoeng ka hare ho {app}. Ha se khone ho kenya li-app.',
+  },
+  inAppOpenInChrome: {
+    en: 'Open in Chrome',
+    af: 'Maak in Chrome oop',
+    zu: 'Vula ku-Chrome',
+    xh: 'Vula kwi-Chrome',
+    st: 'Bula ho Chrome',
+  },
+  inAppIosManual: {
+    en: "iPhone? Tap the ⋯ menu in {app} and choose 'Open in Safari'. That's the only way Apple lets us through.",
+    af: "iPhone? Tik die ⋯ kieslys in {app} en kies 'Open in Safari'. Dit is die enigste manier waarop Apple ons deurlaat.",
+    zu: "iPhone? Thepha imenyu ye-⋯ ku-{app} bese ukhetha 'Open in Safari'. Yiyo kuphela indlela u-Apple asivumela ngayo.",
+    xh: "iPhone? Cofa imenyu ye-⋯ kwi-{app} ukhethe 'Open in Safari'. Yiyo kuphela indlela u-Apple usivumela ngayo.",
+    st: "iPhone? Tobetsa menyu ea ⋯ ho {app} u khethe 'Open in Safari'. Ke yona feela tsela eo Apple e re fang.",
+  },
+  inAppCopyLink: {
+    en: 'Copy link',
+    af: 'Kopieer skakel',
+    zu: 'Kopisha isixhumanisi',
+    xh: 'Kopa isixhumanisi',
+    st: 'Kopitsa sehokelo',
+  },
+  inAppLinkCopied: {
+    en: 'Link copied — paste it into your browser.',
+    af: 'Skakel gekopieer — plak dit in jou blaaier.',
+    zu: 'Isixhumanisi sikopishiwe — sinamathisele esipheqululini sakho.',
+    xh: 'Isixhumanisi sicophiwe — sincamathisele kwibrawza yakho.',
+    st: 'Sehokelo se kopitsoe — se kenye sebatling sa hao.',
+  },
+  inAppFallbackHint: {
+    en: 'Having trouble? Open this page in Chrome (Android) or Safari (iPhone).',
+    af: 'Sukkel jy? Maak hierdie blad in Chrome (Android) of Safari (iPhone) oop.',
+    zu: 'Unenkinga? Vula leli khasi ku-Chrome (Android) noma i-Safari (iPhone).',
+    xh: 'Unobunzima? Vula eli phepha kwi-Chrome (Android) okanye i-Safari (iPhone).',
+    st: 'U na le bothata? Bula leqephe lena ho Chrome (Android) kapa Safari (iPhone).',
+  },
 };
 
 /* -------- Pure functions (testable without DOM) -------- */
@@ -247,6 +299,75 @@ export function detectPlatform(uaString = '', { standalone = false } = {}) {
   }
   if (isChrome || isEdge) return 'desktop-chrome';
   return 'desktop-other';
+}
+
+/**
+ * Detect known in-app browsers (WhatsApp / Instagram / Facebook / TikTok / etc.).
+ * Returns `null` for real browsers, otherwise `{ app, os }` where `app` is the
+ * human-readable brand label ("WhatsApp", "Facebook"...) and `os` is
+ * 'android' | 'ios' | 'unknown'.
+ *
+ * These browsers can't install PWAs — when users tap a share link in WhatsApp
+ * (etc.) the page opens in a Chrome Custom Tab or iOS WebView with the install
+ * prompt unavailable. The /install landing page uses this to swap to a breakout
+ * UI that points the user at a real browser.
+ *
+ * Order matters: Messenger's UA contains "FB..." tokens so it must be checked
+ * BEFORE the Facebook pattern. iOS WebView fallback (last branch) catches
+ * unknown in-app browsers on iOS — Apple's WebKit-only rule means any iOS
+ * "browser" without the Safari UA token is almost certainly a WebView.
+ */
+export function detectInAppBrowser(uaString = '') {
+  const ua = String(uaString || '');
+  const osFor = (s) => /Android/i.test(s) ? 'android' : (/iPad|iPhone|iPod/.test(s) && !/Windows/.test(s) ? 'ios' : 'unknown');
+
+  if (/Messenger/i.test(ua))                 return { app: 'Messenger', os: osFor(ua) };
+  if (/Instagram/i.test(ua))                 return { app: 'Instagram', os: osFor(ua) };
+  if (/WhatsApp/i.test(ua))                  return { app: 'WhatsApp',  os: osFor(ua) };
+  if (/\b(FBAN|FBAV|FB_IAB|FBIOS)\b/.test(ua)) return { app: 'Facebook', os: osFor(ua) };
+  if (/musical_ly|Bytedance/i.test(ua))      return { app: 'TikTok',    os: osFor(ua) };
+  if (/\bTwitter\b/.test(ua))                return { app: 'Twitter',   os: osFor(ua) };
+  if (/LinkedInApp/i.test(ua))               return { app: 'LinkedIn',  os: osFor(ua) };
+  if (/Snapchat/i.test(ua))                  return { app: 'Snapchat',  os: osFor(ua) };
+
+  // iOS WebView catch-all: iOS device with no Safari token and no known iOS
+  // browser token (CriOS / FxiOS / EdgiOS) means we're inside a WebView from
+  // some app that doesn't identify itself. Treat as in-app for breakout purposes.
+  const isIOS = /iPad|iPhone|iPod/.test(ua) && !/Windows/.test(ua);
+  if (isIOS) {
+    const hasSafari = /Safari\//.test(ua) && !/CriOS\/|FxiOS\/|EdgiOS\//.test(ua);
+    const hasKnownIOSBrowser = /CriOS\/|FxiOS\/|EdgiOS\//.test(ua);
+    if (!hasSafari && !hasKnownIOSBrowser) {
+      return { app: 'WebView', os: 'ios' };
+    }
+  }
+  return null;
+}
+
+/**
+ * Build an Android intent:// URL that opens the target URL in Chrome.
+ * Includes `S.browser_fallback_url` so if Chrome isn't installed the user
+ * lands on the original URL anyway (with hash preserved, since the fallback
+ * is the full original URL — the intent path itself drops the hash because
+ * `#` is the boundary character between the URL and intent parameters).
+ *
+ * Per Chrome's docs (developer.chrome.com/docs/android/intents): the click
+ * MUST be initiated by a user gesture or Chrome refuses to launch the app.
+ * Our breakout flow only fires on click so we're inside the gesture window.
+ *
+ * Returns null for non-http(s) URLs or unparsable input.
+ */
+export function buildAndroidIntentUrl(targetUrl) {
+  try {
+    const u = new URL(String(targetUrl));
+    if (u.protocol !== 'https:' && u.protocol !== 'http:') return null;
+    const scheme = u.protocol.replace(':', '');
+    const hostPath = u.host + u.pathname + (u.search || '');
+    const fallback = encodeURIComponent(u.toString());
+    return `intent://${hostPath}#Intent;scheme=${scheme};package=com.android.chrome;S.browser_fallback_url=${fallback};end`;
+  } catch {
+    return null;
+  }
 }
 
 /**
@@ -565,7 +686,9 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
     window.matchMedia('(display-mode: standalone)').matches) ||
     (typeof window !== 'undefined' && window.navigator?.standalone === true);
   const platform = detectPlatform(uaString, { standalone });
+  const inApp = detectInAppBrowser(uaString);
   const tx = (k) => tInstall(k, lang);
+  const interp = (s, vars) => String(s).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? '');
 
   while (host.firstChild) host.removeChild(host.firstChild);
 
@@ -581,7 +704,54 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
 
   // Platform-specific CTA card
   let ctaCard;
-  if (standalone) {
+  // In-app browser short-circuit: when WhatsApp / Instagram / etc. opens our
+  // /install link, the page is in a Chrome Custom Tab (Android) or WebView
+  // (iOS) that CAN'T install PWAs. The normal CTA below would render but do
+  // nothing on click. Swap to a breakout card that points the user at a real
+  // browser instead — Android via intent://, iOS via the manual ⋯ menu hint
+  // (Apple has no programmatic equivalent that reliably works in 2026).
+  if (!standalone && inApp) {
+    const currentUrl = (typeof window !== 'undefined' ? window.location.href : '');
+    const explain = interp(tx('inAppExplain'), { app: inApp.app });
+    const iosHint = interp(tx('inAppIosManual'), { app: inApp.app });
+
+    const card = el('div', { class: 'install-card install-inapp' },
+      el('h3', { text: tx('inAppHeading') }),
+      el('p', { class: 'install-inapp-explain', text: explain }),
+    );
+
+    if (inApp.os === 'android') {
+      card.appendChild(el('button', {
+        id: 'landingOpenInChrome',
+        class: 'install-cta-btn',
+        type: 'button',
+        text: tx('inAppOpenInChrome'),
+      }));
+    } else if (inApp.os === 'ios') {
+      card.appendChild(el('button', {
+        id: 'landingOpenSafari',
+        class: 'install-cta-btn',
+        type: 'button',
+        text: tx('iosChromeOpenSafari'),
+      }));
+      card.appendChild(el('p', { class: 'install-cta-hint', text: iosHint }));
+    } else {
+      // Unknown OS in-app: instructions only.
+      card.appendChild(el('p', { class: 'install-cta-hint', text: tx('inAppFallbackHint') }));
+    }
+
+    card.appendChild(el('button', {
+      id: 'landingCopyLink',
+      class: 'install-cta-btn install-cta-btn-secondary',
+      type: 'button',
+      text: tx('inAppCopyLink'),
+    }));
+    card.appendChild(el('code', { class: 'install-cta-url', text: currentUrl }));
+    const copiedMsg = el('p', { id: 'landingCopiedMsg', class: 'install-cta-hint', hidden: true });
+    card.appendChild(copiedMsg);
+
+    ctaCard = card;
+  } else if (standalone) {
     ctaCard = el('div', { class: 'install-card install-already' },
       el('p', { text: tx('alreadyInstalled') }));
   } else if (platform === 'android-chrome' || platform === 'desktop-chrome') {
@@ -695,7 +865,61 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
     });
   }
 
-  return { platform, standalone };
+  // In-app breakout: Open in Chrome (Android intent URL).
+  // Click is a user gesture, which Chrome requires before launching an
+  // external app via intent://. Setting window.location.href works inside
+  // Chrome Custom Tabs (WhatsApp / FB Messenger / etc. on Android).
+  const openInChromeBtn = host.querySelector('#landingOpenInChrome');
+  if (openInChromeBtn) {
+    openInChromeBtn.addEventListener('click', () => {
+      try {
+        const intentUrl = buildAndroidIntentUrl(window.location.href);
+        if (intentUrl) window.location.href = intentUrl;
+      } catch { /* swallowed — the Copy link button is always rendered as fallback */ }
+    });
+  }
+
+  // In-app breakout: Copy link (works on every platform, ultimate fallback).
+  const copyLinkBtn = host.querySelector('#landingCopyLink');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', async () => {
+      const msg = host.querySelector('#landingCopiedMsg');
+      try {
+        await navigator.clipboard?.writeText(window.location.href);
+        if (msg) {
+          msg.textContent = tx('inAppLinkCopied');
+          msg.hidden = false;
+        }
+      } catch {
+        // Clipboard API rejected (insecure context / blocked) — leave the
+        // visible <code> URL so the user can long-press to copy manually.
+      }
+    });
+  }
+
+  // 3-second fallback hint: on BIP-dependent paths (android-chrome, desktop-chrome)
+  // outside an in-app browser, if beforeinstallprompt hasn't fired after 3s the
+  // user is stuck looking at an Install button that won't do anything. Surface a
+  // soft "Open in Chrome / Safari" reminder. The CTA button itself remains —
+  // this is purely a safety net for the unknown-UA / weird-browser case Al
+  // called out as Part 3.
+  if (!inApp && (platform === 'android-chrome' || platform === 'desktop-chrome')) {
+    const fallbackHint = el('p', {
+      id: 'landingFallbackHint',
+      class: 'install-cta-hint',
+      hidden: true,
+      text: tx('inAppFallbackHint'),
+    });
+    ctaCard.appendChild(fallbackHint);
+    let promptFiredOrClicked = false;
+    window.addEventListener('beforeinstallprompt', () => { promptFiredOrClicked = true; });
+    installNowBtn?.addEventListener('click', () => { promptFiredOrClicked = true; });
+    setTimeout(() => {
+      if (!promptFiredOrClicked) fallbackHint.hidden = false;
+    }, 3000);
+  }
+
+  return { platform, standalone, inAppBrowser: inApp };
 }
 
 /* -------- Inline SVG icon strings -------- */
