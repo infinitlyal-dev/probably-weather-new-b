@@ -21,6 +21,7 @@ function isBadLabel(s) {
 }
 
 // Mirror of api/weather.js fetchJson — AbortController-based timeout.
+// Used by the reverse-geocode path, where any non-2xx is a genuine fault.
 async function fetchJson(url, options = {}) {
   const controller = new AbortController();
   const t = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -28,6 +29,38 @@ async function fetchJson(url, options = {}) {
     const r = await fetch(url, { ...options, signal: controller.signal });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     return await r.json();
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+// Strip the secret token out of a URL before it touches a log line.
+// Vercel function logs are accessible to anyone with project access, so the
+// key must never reach them. Everything else in the query is fair game.
+function sanitizeUrl(url) {
+  return String(url).replace(/([?&]key=)[^&]+/i, '$1REDACTED');
+}
+
+// LocationIQ-specific search fetch.
+//   • HTTP 404 = documented "Unable to geocode" → treat as empty result, NOT a fault.
+//     This is what makes the ZA→unrestricted fallback work: when the ZA query has
+//     no matches (e.g. "Bryn Mawr"), LocationIQ returns 404, we return [], and the
+//     fallback fires. Previously fetchJson threw on 404 and the fallback was unreachable.
+//   • Other non-2xx (400/401/403/429/500) → log status server-side (with token
+//     redacted) and throw so the outer handler returns a real error. Future
+//     incidents shouldn't need a re-investigation to find what LocationIQ said.
+async function locationIqSearch(url, context) {
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const r = await fetch(url, { headers: { 'User-Agent': GEOCODE_UA }, signal: controller.signal });
+    if (r.status === 404) return [];
+    if (!r.ok) {
+      console.error(`[geocode] LocationIQ ${context} returned HTTP ${r.status} — ${sanitizeUrl(url)}`);
+      throw new Error(`LocationIQ HTTP ${r.status}`);
+    }
+    const data = await r.json();
+    return Array.isArray(data) ? data : [];
   } finally {
     clearTimeout(t);
   }
@@ -123,11 +156,12 @@ export default async function handler(req, res) {
       // retry WITHOUT the restriction so a US/UK town search still resolves.
       // This biases the ranking toward South Africa without excluding others.
       // The tag filter applies to BOTH queries — streets are noise everywhere.
-      let raw = await fetchJson(`${base}&countrycodes=za`, { headers: { 'User-Agent': GEOCODE_UA } });
-      if (!Array.isArray(raw) || raw.length === 0) {
-        raw = await fetchJson(base, { headers: { 'User-Agent': GEOCODE_UA } });
+      // locationIqSearch handles LocationIQ's 404-on-no-matches contract so a
+      // genuinely empty ZA query falls through to the unrestricted fallback.
+      let raw = await locationIqSearch(`${base}&countrycodes=za`, 'search (ZA)');
+      if (raw.length === 0) {
+        raw = await locationIqSearch(base, 'search (unrestricted)');
       }
-      if (!Array.isArray(raw)) raw = [];
 
       const results = raw
         .map(r => ({
