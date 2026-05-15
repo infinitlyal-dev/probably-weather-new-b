@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const unitsTempSelect = $('#unitsTemp');
   const unitsWindSelect = $('#unitsWind');
+  const unitsPrecipSelect = $('#unitsPrecip');
   const timeFormatSelect = $('#timeFormat');
   const languageSelect = $('#languageSelect');
 
@@ -158,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
       units: { en: "Units", af: "Eenhede", zu: "Iziyunithi", xh: "Iiyunithi", st: "Diyuniti" },
       temperature: { en: "Temperature", af: "Temperatuur", zu: "Izinga lokushisa", xh: "Ubushushu", st: "Mocheso" },
       windSpeed: { en: "Wind speed", af: "Windspoed", zu: "Isivinini somoya", xh: "Isantya somoya", st: "Lebelo la moea" },
+      precipitation: { en: "Precipitation", af: "Reënval", zu: "Imvula", xh: "Imvula", st: "Pula" },
       display: { en: "Display", af: "Vertoon", zu: "Ukubonisa", xh: "Ukubonisa", st: "Bonts'a" },
       timeFormat: { en: "Time format", af: "Tydformaat", zu: "Ifomethi yesikhathi", xh: "Ifomathi yexesha", st: "Sebopeho sa nako" },
       language: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
@@ -324,8 +326,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeWeatherController = null;
   window.__PW_LAST_NORM = null;
   const pendingFavMeta = new Set();
-  const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', time: 'format.time', lang: 'lang' };
-  const DEFAULT_SETTINGS = { temp: 'C', wind: 'kmh', time: '24', lang: 'en' };
+  const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', precip: 'units.precip', time: 'format.time', lang: 'lang' };
+  const DEFAULT_SETTINGS = { temp: 'C', wind: 'kmh', precip: 'mm', time: '24', lang: 'en' };
   let settings = { ...DEFAULT_SETTINGS };
 
   // ========== UTILITIES ==========
@@ -378,12 +380,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const storedLang = loadJSON(SETTINGS_KEYS.lang, null);
     const initialLang = resolveInitialLanguage({ stored: storedLang, navigatorLanguage: navigator.language, navigatorLanguages: navigator.languages });
     if (!storedLang) saveJSON(SETTINGS_KEYS.lang, initialLang);
-    settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: initialLang };
+    settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), precip: loadJSON(SETTINGS_KEYS.precip, DEFAULT_SETTINGS.precip), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: initialLang };
   }
-  function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
+  function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.precip, settings.precip); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
   const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : settings.wind === 'ms' ? `${round0(kph / 3.6)} m/s` : `${round0(kph)} km/h`;
+  // Precipitation amount — number only, no unit suffix (column header carries
+  // the unit). Returns em-dash for null/0 so the column reads cleanly when no
+  // rain is expected. Inches use more decimals because small values are common.
+  function formatPrecipAmount(mm) {
+    if (!isNum(mm) || mm <= 0) return '—';
+    if (settings.precip === 'in') {
+      const inches = mm * 0.0393701;
+      return inches >= 1 ? inches.toFixed(1) : inches.toFixed(2);
+    }
+    return mm >= 1 ? String(Math.round(mm)) : mm.toFixed(1);
+  }
+  const precipUnitLabel = () => settings.precip === 'in' ? 'in' : 'mm';
   const getTempColorClass = (tempC) => {
     if (!isNum(tempC)) return '';
     if (tempC <= 0) return 'temp-freezing';
@@ -533,6 +547,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const unitsH = screenSettings?.querySelector('.settings-section h3'); if (unitsH) unitsH.textContent = t('settings', 'units');
     const tempLabel = unitsTempSelect?.closest('.settings-option')?.querySelector('label'); if (tempLabel) tempLabel.textContent = t('settings', 'temperature');
     const windLabel = unitsWindSelect?.closest('.settings-option')?.querySelector('label'); if (windLabel) windLabel.textContent = t('settings', 'windSpeed');
+    const precipLabel = unitsPrecipSelect?.closest('.settings-option')?.querySelector('label'); if (precipLabel) precipLabel.textContent = t('settings', 'precipitation');
     const displayH = screenSettings?.querySelectorAll('.settings-section h3')[1]; if (displayH) displayH.textContent = t('settings', 'display');
     const timeLabel = timeFormatSelect?.closest('.settings-option')?.querySelector('label'); if (timeLabel) timeLabel.textContent = t('settings', 'timeFormat');
     const langH = screenSettings?.querySelectorAll('.settings-section h3')[2]; if (langH) langH.textContent = '';
@@ -1296,7 +1311,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
     const header = document.createElement('div');
     header.classList.add('hourly-row', 'hourly-header');
-    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
+    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
     hourlyTimeline.appendChild(header);
     // Hourly array starts at midnight local time. Slice from current hour so
     // the data shown matches the time label. Show remaining hours of today + up to 24 total.
@@ -1315,7 +1330,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const tempClass = getTempColorClass(h.tempC);
       const uvVal = isNum(h.uv) ? round0(h.uv) : '--';
       const uvClass = isNum(h.uv) ? (h.uv >= 8 ? 'uv-extreme' : h.uv >= 6 ? 'uv-high' : h.uv >= 3 ? 'uv-mod' : '') : '';
-      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
+      const precipAmount = formatPrecipAmount(h.precipMm);
+      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-mm">${precipAmount}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
       hourlyTimeline.appendChild(div);
     });
   }
@@ -1392,7 +1408,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderDayDetailHourly(container, hourlySlice, startHour) {
     const header = document.createElement('div');
     header.classList.add('hourly-row', 'hourly-header');
-    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
+    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
     container.appendChild(header);
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
     hourlySlice.forEach((h, i) => {
@@ -1411,7 +1427,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const tempClass = getTempColorClass(h.tempC);
       const uvVal = isNum(h.uv) ? round0(h.uv) : '--';
       const uvClass = isNum(h.uv) ? (h.uv >= 8 ? 'uv-extreme' : h.uv >= 6 ? 'uv-high' : h.uv >= 3 ? 'uv-mod' : '') : '';
-      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${isNum(h.tempC) ? formatTemp(h.tempC) : '--°'}</span><span class="h-rain">${rainPct}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
+      const precipAmount = formatPrecipAmount(h.precipMm);
+      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${isNum(h.tempC) ? formatTemp(h.tempC) : '--°'}</span><span class="h-rain">${rainPct}</span><span class="h-mm">${precipAmount}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
       container.appendChild(div);
     });
   }
@@ -1469,6 +1486,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applySettings() {
     if (unitsTempSelect) unitsTempSelect.value = settings.temp;
     if (unitsWindSelect) unitsWindSelect.value = settings.wind;
+    if (unitsPrecipSelect) unitsPrecipSelect.value = settings.precip;
     if (timeFormatSelect) timeFormatSelect.value = settings.time;
     if (languageSelect) languageSelect.value = settings.lang;
     updateUILanguage();
@@ -1737,6 +1755,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   unitsTempSelect?.addEventListener('change', () => { settings.temp = unitsTempSelect.value; saveSettings(); applySettings(); });
   unitsWindSelect?.addEventListener('change', () => { settings.wind = unitsWindSelect.value; saveSettings(); applySettings(); });
+  unitsPrecipSelect?.addEventListener('change', () => { settings.precip = unitsPrecipSelect.value; saveSettings(); applySettings(); });
   timeFormatSelect?.addEventListener('change', () => { settings.time = timeFormatSelect.value; saveSettings(); applySettings(); });
   languageSelect?.addEventListener('change', () => { applyLanguageSelection(languageSelect.value); });
   languageBtn?.addEventListener('click', (ev) => {

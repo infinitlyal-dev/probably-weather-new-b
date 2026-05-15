@@ -200,7 +200,7 @@ export default async function handler(req, res) {
       `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
       // Phase B-1 Item 3: hourly weather_code added so per-hour condition can be preserved
       // through aggregation (previously only the daily weather_code was fetched).
-      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code` +
+      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
       `&timezone=auto&forecast_days=7`
     );
@@ -279,6 +279,11 @@ export default async function handler(req, res) {
         temps:      om.hourly?.temperature_2m?.slice(0, 48)            ?? [],
         feelsLikes: om.hourly?.apparent_temperature?.slice(0, 48)      ?? [],
         rains:      om.hourly?.precipitation_probability?.slice(0, 48) ?? [],
+        // Phase B-3: per-hour precipitation amount in mm — three of the four
+        // sources provide this natively (OM: precipitation, WA: precip_mm,
+        // MET: precipitation_amount). Pirate Weather hourly is excluded from
+        // aggregation entirely so isn't represented here.
+        precipMm:   om.hourly?.precipitation?.slice(0, 48)             ?? [],
         winds:      om.hourly?.wind_speed_10m?.slice(0, 48)            ?? [],
         gusts:      om.hourly?.wind_gusts_10m?.slice(0, 48)            ?? [],
         clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
@@ -373,6 +378,8 @@ export default async function handler(req, res) {
             if ((code === 1000 || code === 1003) && (h.precip_mm ?? 0) === 0) return 0;
             return h.chance_of_rain;
           }),
+          // Phase B-3: per-hour mm. WeatherAPI provides precip_mm directly.
+          precipMm:   waHours.map(h => isNum(h.precip_mm) ? h.precip_mm : null),
           winds:      waHours.map(h => h.wind_kph),
           clouds:     waHours.map(h => h.cloud),
           humidity:   waHours.map(h => h.humidity),
@@ -615,6 +622,17 @@ export default async function handler(req, res) {
       hourlies[2] = {
         source:     'MET Norway',
         temps:      alignedMetSeries.map(p => p?.data?.instant?.details?.air_temperature ?? null),
+        // Phase B-3: per-hour mm. MET's next_1_hours.details.precipitation_amount
+        // is mm for the upcoming hour. next_6_hours is a fallback for hours that
+        // haven't yet been resolved at 1-hour granularity (later in the series).
+        precipMm:   alignedMetSeries.map(p => {
+          const oneHr = p?.data?.next_1_hours?.details?.precipitation_amount;
+          if (isNum(oneHr)) return oneHr;
+          const sixHr = p?.data?.next_6_hours?.details?.precipitation_amount;
+          // Spread the 6-hour total evenly so it doesn't dominate the average.
+          if (isNum(sixHr)) return sixHr / 6;
+          return null;
+        }),
         feelsLikes: alignedMetSeries.map(p => {
           const t = p?.data?.instant?.details?.air_temperature;
           const w = p?.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
@@ -779,10 +797,21 @@ export default async function handler(req, res) {
       const hourWinningDesc = hourDescEntries.length ? pickWeightedMostCommon(hourDescEntries) : null;
       const hourCondition = hourWinningDesc ? categorizeDesc(hourWinningDesc) : null;
 
+      // Phase B-3: weighted-average precipitation mm across sources that
+      // returned a value. wAvg already skips null/undefined entries and
+      // normalises weights over only the contributing sources, so an hour
+      // where (say) MET reports 0.4mm and OM reports null produces 0.4mm
+      // rather than collapsing to 0.2mm.
+      const precipMmRaw = wAvg(hourlies, hourlyW, h => h.precipMm?.[i]);
+      // wAvg rounds to 1 dp internally — fine for mm (which is the natural
+      // resolution at this scale). Renderer decides how many decimals to show.
+      const precipMm = isNum(precipMmRaw) ? precipMmRaw : null;
+
       return {
         tempC:      wAvg(hourlies, hourlyW, h => h.temps[i]),
         feelsLikeC: wAvg(hourlies, hourlyW, h => h.feelsLikes?.[i]),
         rainChance: wAvg(hourlies, hourlyW, h => h.rains[i]),
+        precipMm,
         windKph:    effectiveHourlyWind,
         cloudPct:   modalCloud,  // Rec 5: use modal instead of averaged cloud cover
         uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
