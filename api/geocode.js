@@ -39,13 +39,14 @@ function pick(...vals) {
 }
 
 // Resolve a single result's own display name.
-// The feature's OWN name leads (r.name), so "Bryn Mawr" shows as itself rather
-// than collapsing into its container "Lower Merion Township". Falls back to
-// town/village/city, then the first segment of display_name.
+// The feature's OWN name leads, so "Bryn Mawr" shows as itself rather than
+// collapsing into its container "Lower Merion Township".
+// Priority: display_place (autocomplete's pre-split feature name) → r.name →
+// address.village/town/suburb/neighbourhood/city → first segment of display_name.
 function resolveResultName(r) {
   const a = r.address || {};
   const firstSegment = typeof r.display_name === 'string' ? r.display_name.split(',')[0].trim() : '';
-  return pick(r.name, a.village, a.town, a.suburb, a.neighbourhood, a.city, firstSegment) || 'Unknown';
+  return pick(r.display_place, r.name, a.name, a.village, a.town, a.suburb, a.neighbourhood, a.city, firstSegment) || 'Unknown';
 }
 
 // Build the reverse-geocode display string.
@@ -106,14 +107,22 @@ export default async function handler(req, res) {
         return res.status(200).json({ ok: true, results: [] });
       }
 
+      // /v1/autocomplete is LocationIQ's purpose-built type-ahead endpoint and
+      // (unlike /v1/search) documents the `tag` filter. We restrict to inhabited
+      // OSM place tags only — drops streets, buildings, golf courses, POIs.
+      // Without this filter, "Bryn Mawr" returned six SA streets containing
+      // "Bryn"; with it, the ZA query is empty and the unrestricted fallback
+      // correctly returns Bryn Mawr, Pennsylvania.
+      const SETTLEMENT_TAGS = 'place:city,place:town,place:village,place:suburb,place:hamlet,place:neighbourhood';
       const base =
-        `https://us1.locationiq.com/v1/search?key=${encodeURIComponent(TOKEN)}` +
+        `https://us1.locationiq.com/v1/autocomplete?key=${encodeURIComponent(TOKEN)}` +
         `&q=${encodeURIComponent(q)}&format=json&addressdetails=1&normalizecity=1` +
-        `&dedupe=1&limit=10&accept-language=en`;
+        `&dedupe=1&limit=10&accept-language=en&tag=${SETTLEMENT_TAGS}`;
 
       // ZA bias: query with countrycodes=za first. If that returns nothing,
       // retry WITHOUT the restriction so a US/UK town search still resolves.
       // This biases the ranking toward South Africa without excluding others.
+      // The tag filter applies to BOTH queries — streets are noise everywhere.
       let raw = await fetchJson(`${base}&countrycodes=za`, { headers: { 'User-Agent': GEOCODE_UA } });
       if (!Array.isArray(raw) || raw.length === 0) {
         raw = await fetchJson(base, { headers: { 'User-Agent': GEOCODE_UA } });
