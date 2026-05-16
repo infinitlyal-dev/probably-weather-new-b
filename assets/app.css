@@ -2205,14 +2205,16 @@ main#home-screen.main #confidence {
     /* Sidebar (now byline-only — Hourly pill moved to bottom-CENTRE) sits
        ABOVE the three-button row. The button row reaches +62px above the
        safe-area baseline (Hourly is 50px tall at +12px offset; Save is 44px
-       at +16px). Sidebar bottom must clear that with breathing room. The
-       prior +52px and +80px both looked fine in Chromium DevTools but the
-       byline still touched the Save button on real iPhones — likely because
-       iOS Safari renders the 3-line "Wind • Rain • UV Moderate (4)" copy
-       taller than DevTools previews (different font metrics + safe-area
-       handling). +120px gives ~55px+ clearance and survives the real-device
-       margin of error. */
-    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 120px);
+       at +16px). Three previous bumps (+52, +80, +120) all measured clean in
+       Chromium DevTools but the byline kept touching the Save button on
+       real iPhones — iOS Safari renders the 3-line copy taller than the
+       preview shows. Stopping the measure-bump-test cycle and going
+       deliberately generous: +130px lands the byline ~70px above Save's
+       top edge in the preview. If even +130 still overlaps on a real phone,
+       the byline element itself is rendering taller than expected and we
+       need to inspect its rendered height on iOS Safari directly rather
+       than keep pushing this anchor up. */
+    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 130px);
     left: auto;
     transform: none;
     width: auto;
