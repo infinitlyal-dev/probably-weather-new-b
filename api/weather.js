@@ -602,6 +602,26 @@ export default async function handler(req, res) {
 
       const todayTemps = todaySeries.map(p => p.data?.instant?.details?.air_temperature).filter(isNum);
       const hasEnoughTodayTemps = todayTemps.length >= 12;
+      // Display-only fallback for the Sources page. todayHigh/todayLow stay
+      // STRICT (null when MET has <12 hours of "today" data) so the consensus
+      // daily aggregator's existing protection against MET polluting the
+      // forecast at late hours holds. But the Sources page needs SOMETHING to
+      // show — without this fallback MET silently displays "--" while the
+      // other three sources (which read daily aggregates from their APIs)
+      // show their real ranges. The forward-24h window from MET's raw series
+      // gives an honest min/max for display purposes only.
+      const fallbackTemps = series.slice(0, 24)
+        .map(p => p?.data?.instant?.details?.air_temperature)
+        .filter(isNum);
+      const displayHigh = hasEnoughTodayTemps
+        ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity)
+        : (fallbackTemps.length >= 6 ? fallbackTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null);
+      const displayLow = hasEnoughTodayTemps
+        ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)
+        : (fallbackTemps.length >= 6 ? fallbackTemps.reduce((a, b) => Math.min(a, b), Infinity) : null);
+      if (!hasEnoughTodayTemps && displayHigh !== null) {
+        debugLog(`[MET Norway] today slice short (${todayTemps.length}h) — Sources page using forward-24h fallback (${fallbackTemps.length} samples)`);
+      }
 
       norms[3] = {
         source:    'MET Norway',
@@ -609,6 +629,10 @@ export default async function handler(req, res) {
         feelsLike: calcFeelsLike(metTemp, metWindKph, metHumidity),
         todayHigh: hasEnoughTodayTemps ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null,
         todayLow:  hasEnoughTodayTemps ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)  : null,
+        // Sources-page-only fields. Never feed into consensus aggregation
+        // (todayHigh/todayLow above remain authoritative for that path).
+        displayHigh,
+        displayLow,
         todayRain: rainProxy,
         todayUv:   null, // MET Norway compact doesn't provide UV
         desc:      metDesc,
@@ -1197,10 +1221,15 @@ export default async function handler(req, res) {
           ...activeNorms.map(n => ({ name: n.source, ok: true })),
           ...failures.map(f => ({ name: f, ok: false })),
         ],
+        // Sources-page display ranges. MET Norway has separate displayHigh /
+        // displayLow fields that fall back to a forward-24h window when its
+        // strict today-range goes null at late local hours — keeps the
+        // Sources page populated for all four sources without polluting the
+        // consensus aggregator that still uses todayHigh / todayLow strictly.
         sourceRanges: activeNorms.map(n => ({
           name:    n.source,
-          minTemp: n.todayLow,
-          maxTemp: n.todayHigh,
+          minTemp: n.displayLow  ?? n.todayLow,
+          maxTemp: n.displayHigh ?? n.todayHigh,
         })),
         sourceWeights: {
           'Open-Meteo':     norms[0] ? Math.round(normW[0] * 100) : null,

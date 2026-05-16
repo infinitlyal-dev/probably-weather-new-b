@@ -2203,9 +2203,12 @@ main#home-screen.main #confidence {
     right: 12px;
     top: auto;
     /* Sidebar (now byline-only — Hourly pill moved to bottom-CENTRE) sits
-       ABOVE the three-button row so it doesn't collide with the bottom-right
-       Save button. ~52px gap above the buttons; small viewport-safe layout. */
-    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 52px);
+       ABOVE the three-button row. The button row reaches +62px above the
+       safe-area baseline (Hourly is 50px tall at +12px offset; Save is 44px
+       at +16px). Sidebar bottom must clear that with breathing room — the
+       prior +52px landed UNDER Save's top edge, so the byline collided with
+       the ☆ Save button. +80px gives ~16-18px gap, verified on 375×812.  */
+    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 80px);
     left: auto;
     transform: none;
     width: auto;

@@ -117,17 +117,22 @@ describe('MET Norway hourly alignment', () => {
     expect(body.hourly[14].tempC).toBeGreaterThan(40);
   });
 
-  it('skips MET Norway daily high and low when too few today hours are available', async () => {
+  it('keeps MET Norway out of daily consensus when today data is sparse, but still shows a forward-24h range on Sources page', async () => {
     const { statusCode, body } = await callWeather();
 
     expect(statusCode).toBe(200);
     expect(body.ok).toBe(true);
+    // Consensus aggregator still IGNORES MET when it lacks enough today hours
+    // (todayHigh/todayLow remain null) — original protection preserved.
     expect(body.daily[0].highC).toBe(20);
     expect(body.daily[0].lowC).toBe(8);
+    // Sources page DISPLAY range now falls back to MET's forward-24h window so
+    // the user sees a real range instead of "--". The fixture series is
+    // 24×20°C with a 99°C spike at index 0, so the forward-24h min=20 max=99.
     expect(body.meta.sourceRanges).toContainEqual({
       name: 'MET Norway',
-      minTemp: null,
-      maxTemp: null,
+      minTemp: 20,
+      maxTemp: 99,
     });
   });
 });
