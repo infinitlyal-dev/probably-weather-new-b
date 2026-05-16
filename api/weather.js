@@ -42,11 +42,41 @@ export default async function handler(req, res) {
       const t = setTimeout(() => controller.abort(), timeoutMs);
       try {
         const r = await fetch(url, { ...options, signal: controller.signal });
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        if (!r.ok) {
+          // Throw with HTTP status preserved so failure-classification logging
+          // below can distinguish 429 (rate-limited / quota burning) and
+          // 401/403 (auth / quota exhausted) from generic 5xx network failures.
+          const err = new Error(`HTTP ${r.status}`);
+          err.status = r.status;
+          throw err;
+        }
         return await r.json();
       } finally {
         clearTimeout(t);
       }
+    }
+
+    // Classify a thrown error from a source fetch into a short tag so the
+    // operator-facing log line tells the right story at a glance. The
+    // distinction that matters at launch: quota signals (429, 401, 403) vs
+    // transient network failures vs the source being misconfigured.
+    function classifyFailure(err) {
+      const status = err?.status;
+      if (status === 429) return 'rate-limited';
+      if (status === 401 || status === 403) return 'auth-or-quota';
+      if (status && status >= 500) return `server-error-${status}`;
+      if (status && status >= 400) return `client-error-${status}`;
+      if (err?.name === 'AbortError') return 'timeout';
+      return 'network';
+    }
+    function logSourceFailure(name, err) {
+      const tag = classifyFailure(err);
+      // [pw-source-fail] prefix makes the log line greppable in Vercel's
+      // function-log viewer. Quota-shaped failures (rate-limited / auth-or-
+      // quota) on WeatherAPI or Pirate Weather are the early-warning signal
+      // that PW is approaching the free-tier monthly cap (PW: 20k/month,
+      // WA: 1M/month — Pirate dies first under any meaningful traffic).
+      console.error(`[pw-source-fail] ${name} ${tag} ${err?.status || ''} ${err?.message || err}`.trim());
     }
 
     // isBadLabel — reject empty labels, "Ward 4"-style admin labels, and bare numbers.
@@ -304,7 +334,8 @@ export default async function handler(req, res) {
         sunrises: om.daily?.sunrise                                     ?? [],
         sunsets:  om.daily?.sunset                                      ?? [],
       };
-    } catch {
+    } catch (err) {
+      logSourceFailure('Open-Meteo', err);
       failures.push('Open-Meteo');
     }
 
@@ -422,7 +453,8 @@ export default async function handler(req, res) {
           sunrises: wa.forecast.forecastday.map(fd => fd.astro?.sunrise ?? null),
           sunsets:  wa.forecast.forecastday.map(fd => fd.astro?.sunset  ?? null),
         };
-      } catch {
+      } catch (err) {
+        logSourceFailure('WeatherAPI', err);
         failures.push('WeatherAPI');
       }
     } else {
@@ -488,7 +520,8 @@ export default async function handler(req, res) {
           sunrises: dly.slice(0, 7).map(d => toIso(d.sunriseTime)),
           sunsets:  dly.slice(0, 7).map(d => toIso(d.sunsetTime)),
         };
-      } catch {
+      } catch (err) {
+        logSourceFailure('Pirate Weather', err);
         failures.push('Pirate Weather');
       }
     } else {
@@ -696,7 +729,8 @@ export default async function handler(req, res) {
         sunrises: [],
         sunsets:  [],
       };
-    } catch {
+    } catch (err) {
+      logSourceFailure('MET Norway', err);
       failures.push('MET Norway');
     }
 
