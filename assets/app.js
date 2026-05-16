@@ -38,10 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const languageMenu = $('#languageMenu');
 
   const navHome = $('#navHome');
-  const navHourly = $('#navHourly');
   const navWeek = $('#navWeek');
   const navSearch = $('#navSearch');
   const navSettings = $('#navSettings');
+  const navSources = $('#navSources');
+  const navHourlyHome = $('#navHourlyHome');
+  const hourlyBack = $('#hourlyBack');
 
   const screenHome = $('#home-screen');
   const screenHourly = $('#hourly-screen');
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const screenDayDetail = $('#day-detail-screen');
   const screenSearch = $('#search-screen');
   const screenSettings = $('#settings-screen');
+  const screenSources = $('#sources-screen');
 
   const hourlyTimeline = $('#hourly-timeline');
   const dailyCards = $('#daily-cards');
@@ -74,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const capeWindDismiss = $('#capeWindDismiss');
 
   const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location", lastGps: "pw_last_gps" };
-  const SCREENS = [screenHome, screenHourly, screenWeek, screenDayDetail, screenSearch, screenSettings];
+  const SCREENS = [screenHome, screenHourly, screenWeek, screenDayDetail, screenSearch, screenSettings, screenSources];
   const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32 };
 
   // ========== INDEXEDDB WEATHER CACHE ==========
@@ -130,16 +133,50 @@ document.addEventListener("DOMContentLoaded", () => {
     nav: {
       home: { en: "Home", af: "Tuis", zu: "Ikhaya", xh: "Ikhaya", st: "Lapeng" },
       hourly: { en: "Hourly", af: "Uurliks", zu: "Ngamahora", xh: "Ngeyure", st: "Ka hora" },
-      week: { en: "Week", af: "Week", zu: "Iviki", xh: "Iveki", st: "Beke" },
+      // "Weekly" / adverbial forms match the hourly pattern (Ngeviki / Ngeveki / Ka beke parallel Ngamahora / Ngeyure / Ka hora).
+      week: { en: "Weekly", af: "Weekliks", zu: "Ngeviki", xh: "Ngeveki", st: "Ka beke" },
       search: { en: "Search", af: "Soek", zu: "Sesha", xh: "Khangela", st: "Batla" },
-      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" }
+      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" },
+      sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
     },
     // Screen titles
     screens: {
       hourly: { en: "Hourly", af: "Uurliks", zu: "Ngamahora", xh: "Ngeyure", st: "Ka hora" },
       week: { en: "7-Day", af: "7-Dae", zu: "Izinsuku-7", xh: "Intsuku-7", st: "Matsatsi-7" },
       search: { en: "Search", af: "Soek", zu: "Sesha", xh: "Khangela", st: "Batla" },
-      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" }
+      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" },
+      sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
+    },
+    // Sources page — full destination, AD-FREE. Explainer + attribution.
+    // zu/xh/st are starting drafts pending native-speaker review (logged with
+    // the existing badges.rainTonight.zu / weather.gusts.{zu,st} backlog).
+    sources: {
+      explainer: {
+        en: "Probably Weather checks four weather sources every time you open the app. We average them so you get a more honest forecast — no single source bullshitting you about whether it'll rain.",
+        af: "Probably Weather kyk na vier weersbronne elke keer wat jy die app oopmaak. Ons stel hulle gemiddelde saam sodat jy 'n meer eerlike voorspelling kry — geen enkele bron wat vir jou kak praat oor of dit gaan reën nie.",
+        zu: "I-Probably Weather ihlola imithombo emine yesimo sezulu ngaso sonke isikhathi uvula uhlelo lokusebenza. Sihlanganisa amalinganiso ukuze uthole isibikezelo esiqotho — akukho mthombo owodwa okhuluma amanga ngokuthi imvula iyona noma cha.",
+        xh: "I-Probably Weather ijonga imithombo emine yemozulu ngalo lonke ixesha uvula i-app. Sidibanisa imilinganiselo ukuze ufumane isiprofeto esinyanisekileyo — akukho mthombo omnye oxoka kuwe ngokuba kuza kuna na okanye hayi.",
+        st: "Probably Weather e sheba mehlodi e mene ea boemo ba leholimo nako e nngwe le e nngwe ha u bula app. Re kopanya likarolelano hore u fumane ponelopele e tšepahalang — ha ho mohlodi o le mong o u buellang maaka ka hore ho tla na pula kapa che."
+      },
+      attribution: {
+        en: "Data from Open-Meteo, WeatherAPI.com, MET Norway, and Pirate Weather. Used with permission and gratitude.",
+        af: "Data van Open-Meteo, WeatherAPI.com, MET Norway en Pirate Weather. Gebruik met toestemming en dank.",
+        zu: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, ne-Pirate Weather. Isetshenziswa ngemvume nokubonga.",
+        xh: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, ne-Pirate Weather. Isetyenziswa ngemvume nokubulela.",
+        st: "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, le Pirate Weather. E sebelisoa ka tumello le ka teboho."
+      }
+    },
+    // Native ad slot placeholder — shown while Adsterra approval is pending.
+    // The .pw-ad-placeholder div gets swapped for the real ad iframe when
+    // live; the .pw-ad-slot wrapper stays as the layout anchor.
+    adSlot: {
+      placeholder: {
+        en: "Possible ad one day. Sadly, weather websites don't grow on trees.",
+        af: "Dalk eendag 'n advertensie. Ongelukkig groei weersvoorspellingswebwerwe nie op bome nie.",
+        zu: "Mhlawumbe isikhangiso ngelinye ilanga. Ngeshwa, amawebhusayithi esimo sezulu awakhuli ezihlahleni.",
+        xh: "Mhlawumbi intengiso ngenye imini. Ngelishwa, iiwebhusayithi zemozulu azikhuli emithini.",
+        st: "Mohlomong papatso ka tsatsi le leng. Ka bomadimabe, liwebsaete tsa boemo ba leholimo ha li hole lifateng."
+      }
     },
     // Search screen
     search: {
@@ -407,7 +444,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return '';
   };
 
-  const NAV_MAP = [[screenHome, navHome], [screenHourly, navHourly], [screenWeek, navWeek], [screenSearch, navSearch], [screenSettings, navSettings]];
+  // Hourly has no bottom-nav button (reached from the home-screen pill instead),
+  // so it's absent from NAV_MAP. Sources is the new last slot.
+  const NAV_MAP = [[screenHome, navHome], [screenWeek, navWeek], [screenSearch, navSearch], [screenSettings, navSettings], [screenSources, navSources]];
   function showScreen(which) {
     SCREENS.forEach(s => { if (s) { s.classList.add("hidden"); s.setAttribute('hidden', ''); } });
     if (which) { which.classList.remove("hidden"); which.removeAttribute('hidden'); }
@@ -530,10 +569,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========== UPDATE UI LANGUAGE ==========
   function updateUILanguage() {
     if (navHome) navHome.textContent = t('nav', 'home');
-    if (navHourly) navHourly.textContent = t('nav', 'hourly');
     if (navWeek) navWeek.textContent = t('nav', 'week');
     if (navSearch) navSearch.textContent = t('nav', 'search');
     if (navSettings) navSettings.textContent = t('nav', 'settings');
+    if (navSources) navSources.textContent = t('nav', 'sources');
+    if (navHourlyHome) navHourlyHome.textContent = t('nav', 'hourly');
+    if (hourlyBack) hourlyBack.textContent = `← ${t('nav', 'home')}`;
+    const dayDetailBackBtn = $('#dayDetailBack');
+    if (dayDetailBackBtn) dayDetailBackBtn.textContent = `← ${t('nav', 'week')}`;
+    // Sources page populated text — explainer + attribution. The dynamic
+    // source-list rows are rendered separately in renderSidebar (data-driven).
+    const sourcesExplainerEl = $('#sourcesExplainer');
+    if (sourcesExplainerEl) sourcesExplainerEl.textContent = t('sources', 'explainer');
+    const sourcesAttributionEl = $('#sourcesAttribution');
+    if (sourcesAttributionEl) sourcesAttributionEl.textContent = t('sources', 'attribution');
+    const sourcesScreenTitle = screenSources?.querySelector('.screen-title');
+    if (sourcesScreenTitle) sourcesScreenTitle.textContent = t('screens', 'sources');
+    const hourlyScreenTitle = screenHourly?.querySelector('.screen-title');
+    if (hourlyScreenTitle) hourlyScreenTitle.textContent = t('screens', 'hourly');
     const hourlyTitle = screenHourly?.querySelector('.screen-title'); if (hourlyTitle) hourlyTitle.textContent = t('screens', 'hourly');
     const weekTitle = screenWeek?.querySelector('.screen-title'); if (weekTitle) weekTitle.textContent = t('screens', 'week');
     const searchTitle = screenSearch?.querySelector('.screen-title'); if (searchTitle) searchTitle.textContent = t('screens', 'search');
@@ -555,7 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
-    const sourcesToggleLabel = document.querySelector('.sources-toggle-label'); if (sourcesToggleLabel) sourcesToggleLabel.textContent = `4 ${t('sidebar', 'sources').toLowerCase()}`;
+    // (former .sources-toggle-label removed — pill now opens Hourly screen, not a sources expander)
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
     refreshSaveButtonState();
   }
@@ -1164,24 +1217,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Keep the offset accurate if the user rotates the device or resizes the window.
   window.addEventListener('resize', syncCapeWindOffset);
 
-  // Sources tap-to-swap (mobile only — CSS hides toggle on desktop)
-  const sourcesToggle = $('#sourcesToggle');
-  const sidebarEl = document.querySelector('.sidebar');
-  let sourcesTimer = null;
-  if (sourcesToggle && sidebarEl) {
-    sourcesToggle.addEventListener('click', () => {
-      const opening = !sidebarEl.classList.contains('sources-open');
-      if (sourcesTimer) { clearTimeout(sourcesTimer); sourcesTimer = null; }
-      if (opening) {
-        sidebarEl.classList.add('sources-open');
-        sourcesToggle.setAttribute('aria-expanded', 'true');
-        sourcesTimer = setTimeout(() => { sidebarEl.classList.remove('sources-open'); sourcesToggle.setAttribute('aria-expanded', 'false'); sourcesTimer = null; }, 4000);
-      } else {
-        sidebarEl.classList.remove('sources-open');
-        sourcesToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
+  // (former #sourcesToggle / .sources-open tap-to-swap removed — sources now live on their own /Sources nav page)
 
   // Share button (mobile only — Web Share API)
   const shareBtn = $('#shareBtn');
@@ -1221,11 +1257,57 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderError(msg) { showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
-    const sr = norm.sourceRanges || [];
-    const text = sr.length > 0 ? (sr.filter(s => isNum(s.minTemp) && isNum(s.maxTemp)).map(s => `${s.name}: ${round0(s.minTemp)}°-${round0(s.maxTemp)}°`).join('\n') || '--') : ({ strong: 'Strong', decent: 'Decent', mixed: 'Mixed' }[norm.confidenceKey] || 'Mixed');
-    safeText($('#confidenceValue'), text);
-    safeText($('#confidenceValueDesktop'), text);
-    safeText($('#sourcesSwap'), text);
+    // Source-list rendering moved to the dedicated /Sources nav page. The old
+    // sidebar pill is now the Hourly entry point and doesn't carry data.
+    renderSourcesScreen(norm);
+  }
+  // Sources page — rebuild the per-source temperature-range list from norm.
+  // Runs whenever fresh weather data lands AND on language switch (via
+  // applySettings → renderSidebar → here). No-op when the screen isn't in the DOM.
+  function renderSourcesScreen(norm) {
+    const listEl = $('#sourcesList');
+    if (!listEl) return;
+    const sr = (norm && Array.isArray(norm.sourceRanges)) ? norm.sourceRanges : [];
+    listEl.innerHTML = '';
+    if (sr.length === 0) {
+      const li = document.createElement('li');
+      li.className = 'sources-list-empty';
+      li.textContent = '--';
+      listEl.appendChild(li);
+      return;
+    }
+    for (const s of sr) {
+      const li = document.createElement('li');
+      li.className = 'sources-list-item';
+      const name = document.createElement('span');
+      name.className = 'sources-list-name';
+      name.textContent = s.name || '—';
+      const range = document.createElement('span');
+      range.className = 'sources-list-range';
+      range.textContent = (isNum(s.minTemp) && isNum(s.maxTemp))
+        ? `${round0(s.minTemp)}° – ${round0(s.maxTemp)}°`
+        : '--';
+      li.appendChild(name);
+      li.appendChild(range);
+      listEl.appendChild(li);
+    }
+  }
+  // Reserved ad slot — empty container that ships with a witty placeholder.
+  // When Adsterra/Media.net approval lands, the .pw-ad-placeholder child gets
+  // swapped for the real ad iframe; the .pw-ad-slot wrapper stays as the
+  // layout anchor so spacing/sizing don't shift.
+  function buildAdSlot(slotName) {
+    const slot = document.createElement('div');
+    slot.className = 'pw-ad-slot';
+    slot.setAttribute('data-ad-slot', slotName);
+    const placeholder = document.createElement('div');
+    placeholder.className = 'pw-ad-placeholder';
+    const label = document.createElement('span');
+    label.className = 'pw-ad-label';
+    label.textContent = t('adSlot', 'placeholder');
+    placeholder.appendChild(label);
+    slot.appendChild(placeholder);
+    return slot;
   }
   function renderHome(norm) {
     showLoader(false);
@@ -1333,6 +1415,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const precipAmount = formatPrecipAmount(h.precipMm);
       div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-mm">${precipAmount}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
       hourlyTimeline.appendChild(div);
+      // Reserved ad slot — after row 6 (0-indexed i===5), so it sits between
+      // the 6th and 7th hour. User has scrolled past a few hours but hasn't
+      // reached the bottom yet.
+      if (i === 5) hourlyTimeline.appendChild(buildAdSlot('hourly'));
     });
   }
   function renderWeek(daily, hourlyData) {
@@ -1367,6 +1453,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); div.click(); }
       });
       dailyCards.appendChild(div);
+      // Reserved ad slot — after day 3 (0-indexed i===2), so it sits between
+      // day 3 and day 4 of the 7-day forecast.
+      if (i === 2) dailyCards.appendChild(buildAdSlot('weekly'));
     });
   }
   function renderDayDetail(norm, dayIndex) {
@@ -1430,6 +1519,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const precipAmount = formatPrecipAmount(h.precipMm);
       div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${isNum(h.tempC) ? formatTemp(h.tempC) : '--°'}</span><span class="h-rain">${rainPct}</span><span class="h-mm">${precipAmount}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
       container.appendChild(div);
+      // Reserved ad slot — same position as the main Hourly screen (after row 6).
+      if (i === 5) container.appendChild(buildAdSlot('day-detail'));
     });
   }
   function renderDayDetailSummary(container, day) {
@@ -1463,6 +1554,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sunriseLabel = t('weather', 'sunrise') || 'Sunrise';
     const sunsetLabel  = t('weather', 'sunset')  || 'Sunset';
     const disclaimer = t('weather', 'hourlySoon') || 'Hourly forecast appears 48 hours before this day.';
+    // Card now ends at the stats grid; the disclaimer is appended as a sibling
+    // so the reserved ad slot can sit between the stats and the disclaimer
+    // (Al's spec for the summary-card view: between temperature stats and disclaimer).
     card.innerHTML = `
       <div class="ds-headline">
         <span class="ds-icon">${icon}</span>
@@ -1479,9 +1573,13 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="ds-stat"><span class="ds-stat-label">${sunriseLabel}</span><span class="ds-stat-value">${sunrise}</span></div>
         <div class="ds-stat"><span class="ds-stat-label">${sunsetLabel}</span><span class="ds-stat-value">${sunset}</span></div>
       </div>
-      <div class="ds-disclaimer">${disclaimer}</div>
     `;
     container.appendChild(card);
+    container.appendChild(buildAdSlot('day-detail'));
+    const disclaimerEl = document.createElement('div');
+    disclaimerEl.className = 'ds-disclaimer';
+    disclaimerEl.textContent = disclaimer;
+    container.appendChild(disclaimerEl);
   }
   function applySettings() {
     if (unitsTempSelect) unitsTempSelect.value = settings.temp;
@@ -1652,11 +1750,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== NAV & EVENTS ==========
   navHome?.addEventListener('click', () => { showScreen(screenHome); });
-  navHourly?.addEventListener('click', () => showScreen(screenHourly));
   navWeek?.addEventListener('click', () => showScreen(screenWeek));
   $('#dayDetailBack')?.addEventListener('click', () => showScreen(screenWeek));
   navSearch?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); });
   navSettings?.addEventListener('click', () => showScreen(screenSettings));
+  navSources?.addEventListener('click', () => {
+    // Re-render so the source list reflects the most recent payload.
+    if (window.__PW_LAST_NORM) renderSourcesScreen(window.__PW_LAST_NORM);
+    showScreen(screenSources);
+  });
+  // Home-screen Hourly pill — opens the Hourly screen + resets scroll to top
+  // (matches the bottom-nav screen-overlay behaviour, which always shows the
+  // top of the panel on open).
+  const openHourly = () => {
+    showScreen(screenHourly);
+    const body = screenHourly?.querySelector('.screen-panel-body');
+    if (body) body.scrollTop = 0;
+  };
+  navHourlyHome?.addEventListener('click', openHourly);
+  hourlyBack?.addEventListener('click', () => showScreen(screenHome));
   
   // Build a display name from reverse geocode data — never returns "My Location, ZA"
   function buildLocationName(data, lat, lon) {

@@ -163,27 +163,18 @@
 
       <aside class="sidebar">
         <div id="weatherByline" class="weather-byline sidebar-stats">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
-        <div id="sourcesSwap" class="sources-swap"></div>
-        <div class="card card-sources" id="sourcesCard">
-          <button type="button" class="sources-toggle" id="sourcesToggle" aria-expanded="false">
-            <span class="sources-toggle-label">4 sources</span>
-            <span class="sources-arrow" aria-hidden="true">▼</span>
-          </button>
-          <div class="sources-detail">
-            <div id="confidenceValue" class="value">--</div>
-          </div>
-          <div class="sources-desktop">
-            <div class="label">Sources</div>
-            <div id="confidenceValueDesktop" class="value">--</div>
-          </div>
-        </div>
+        <!-- Hourly entry pill — reuses .sources-toggle visual class so the
+             dimensions / colours / position match the former "4 sources" pill
+             exactly. Source breakdown moved to its own /Sources nav page. -->
+        <button type="button" id="navHourlyHome" class="sources-toggle nav-hourly-pill" aria-label="Hourly forecast">Hourly</button>
       </aside>
       <button id="shareBtn" class="share-btn" aria-label="Share">↗ Share</button>
       <button id="saveCurrent" class="save-current-btn" type="button" aria-pressed="false" aria-label="Save this place" title="Save this place">☆ Save</button>
     </div>
 
     <section id="hourly-screen" class="screenPanel hourly-screen hidden">
-      <div class="screen-panel-header">
+      <div class="screen-panel-header day-detail-header">
+        <button id="hourlyBack" class="day-detail-back" aria-label="Back to home">← Home</button>
         <h2 class="screen-title">Hourly Forecast</h2>
       </div>
       <div class="screen-panel-body">
@@ -202,7 +193,7 @@
 
     <section id="day-detail-screen" class="screenPanel day-detail-screen hidden">
       <div class="screen-panel-header day-detail-header">
-        <button id="dayDetailBack" class="day-detail-back" aria-label="Back to week">← Week</button>
+        <button id="dayDetailBack" class="day-detail-back" aria-label="Back to week">← Weekly</button>
         <div class="day-detail-summary">
           <div class="day-detail-day-name" id="dayDetailDayName">—</div>
           <div class="day-detail-meta" id="dayDetailMeta">—</div>
@@ -241,6 +232,21 @@
       </div>
       <div class="screen-panel-footer search-maintenance">
         <button id="clearRecents" class="clear-recents">Clear recents</button>
+      </div>
+    </section>
+
+    <!-- Sources page — full destination from the new nav button. Credibility +
+         attribution. AD-FREE (ads here would undercut the whole point). -->
+    <section id="sources-screen" class="screenPanel sources-screen hidden">
+      <div class="screen-panel-header">
+        <h2 class="screen-title">Sources</h2>
+      </div>
+      <div class="screen-panel-body">
+        <div class="sources-page">
+          <p id="sourcesExplainer" class="sources-explainer"></p>
+          <ul id="sourcesList" class="sources-list"></ul>
+          <p id="sourcesAttribution" class="sources-attribution"></p>
+        </div>
       </div>
     </section>
 
@@ -310,10 +316,10 @@
 
     <nav class="nav" aria-label="Primary" role="tablist">
       <button id="navHome" role="tab" aria-label="Home" aria-selected="true" aria-current="page">Home</button>
-      <button id="navHourly" role="tab" aria-label="Hourly forecast" aria-selected="false">Hourly</button>
-      <button id="navWeek" role="tab" aria-label="Weekly forecast" aria-selected="false">Week</button>
+      <button id="navWeek" role="tab" aria-label="Weekly forecast" aria-selected="false">Weekly</button>
       <button id="navSearch" role="tab" aria-label="Search and favourites" aria-selected="false">Search</button>
       <button id="navSettings" role="tab" aria-label="Settings" aria-selected="false">Settings</button>
+      <button id="navSources" role="tab" aria-label="Weather sources" aria-selected="false">Sources</button>
     </nav>
   </div>
 
