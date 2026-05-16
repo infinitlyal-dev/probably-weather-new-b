@@ -9,6 +9,7 @@ import {
   detectPlatform,
   detectInAppBrowser,
   buildAndroidIntentUrl,
+  isSamsungAndroid,
   shouldShowBanner,
   dismissUntilTimestamp,
   tInstall,
@@ -128,6 +129,36 @@ describe('install — Android intent URL builder', () => {
     expect(buildAndroidIntentUrl('javascript:alert(1)')).toBeNull();
     expect(buildAndroidIntentUrl('mailto:foo@bar.com')).toBeNull();
     expect(buildAndroidIntentUrl('not a url')).toBeNull();
+  });
+});
+
+describe('install — Samsung Android detection', () => {
+  const SAMSUNG = {
+    galaxyA24Chrome: 'Mozilla/5.0 (Linux; Android 14; SM-A245F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+    galaxyS24Chrome: 'Mozilla/5.0 (Linux; Android 14; SM-S921U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36',
+    samsungInternet: 'Mozilla/5.0 (Linux; Android 14; SAMSUNG SM-A245F) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/27.0 Chrome/130.0.0.0 Mobile Safari/537.36',
+    galaxyNote: 'Mozilla/5.0 (Linux; Android 13; SM-N986B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Mobile Safari/537.36',
+  };
+
+  it('flags Samsung Galaxy phones running stock Chrome via SM-* model code', () => {
+    expect(isSamsungAndroid(SAMSUNG.galaxyA24Chrome)).toBe(true);
+    expect(isSamsungAndroid(SAMSUNG.galaxyS24Chrome)).toBe(true);
+    expect(isSamsungAndroid(SAMSUNG.galaxyNote)).toBe(true);
+  });
+  it('flags Samsung Internet browser', () => {
+    expect(isSamsungAndroid(SAMSUNG.samsungInternet)).toBe(true);
+  });
+  it('returns false for Pixel Chrome, iOS, desktop, and empty UA', () => {
+    expect(isSamsungAndroid(UA.androidChrome)).toBe(false); // Pixel 8 in fixtures
+    expect(isSamsungAndroid(UA.iosSafari)).toBe(false);
+    expect(isSamsungAndroid(UA.desktopChrome)).toBe(false);
+    expect(isSamsungAndroid('')).toBe(false);
+  });
+  it('does not false-positive on a Samsung TV / fridge (non-Android) UA', () => {
+    // Tizen-based smart appliances would parse as Samsung but lack the Android
+    // token, so the guard rejects them — the WebAPK Play Protect issue is
+    // Android-specific anyway.
+    expect(isSamsungAndroid('Mozilla/5.0 (SMART-TV; LINUX; Tizen 6.5) AppleWebKit/537.36 SamsungBrowser/2.3')).toBe(false);
   });
 });
 

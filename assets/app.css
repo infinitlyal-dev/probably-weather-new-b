@@ -3126,6 +3126,18 @@ body.install-modal-active .save-current-btn { display: none !important; }
   line-height: 1.45;
   opacity: 0.92;
 }
+/* Samsung One UI Play Protect pre-warning. Sits above the Install button on
+   Samsung Android devices. Small + left-bordered so it reads as informational
+   (not alarming) but visually distinct from the standard hint copy. */
+.install-samsung-note {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  padding: 10px 12px;
+  border-left: 3px solid #FFAA00;
+  background: rgba(255,170,0,0.08);
+  border-radius: 6px;
+}
 /* Secondary CTA — same shape as the primary gold button but quieter, so the
    Copy-link fallback doesn't compete visually with "Open in Chrome". */
 .install-cta-btn-secondary {

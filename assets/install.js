@@ -266,6 +266,20 @@ export const INSTALL_T = {
     xh: 'Unobunzima? Vula eli phepha kwi-Chrome (Android) okanye i-Safari (iPhone).',
     st: 'U na le bothata? Bula leqephe lena ho Chrome (Android) kapa Safari (iPhone).',
   },
+  // Samsung One UI's Play Protect flags Chrome's WebAPK install with an
+  // "Unsafe app blocked" dialog. It's not PW — Samsung is overcautious about
+  // any non-Play-Store install. We surface this BEFORE the user taps Install
+  // so they know what to expect and how to proceed.
+  // EN/AF use translated UI labels (Afrikaans One UI does localize them);
+  // zu/xh/st keep the English labels because users on those locales typically
+  // see the English One UI strings and need to pattern-match what's on screen.
+  samsungPlayProtect: {
+    en: "Samsung phones sometimes show a 'Google Play Protect — Unsafe app' warning when installing. It's Samsung being twitchy — Probably Weather is safe. Tap 'More details' → 'Install anyway'.",
+    af: "Samsung-fone wys soms 'n 'Google Play Protect — Onveilige app' waarskuwing. Dis Samsung wat senuagtig is — Probably Weather is veilig. Tik 'Meer besonderhede' → 'Installeer in elk geval'.",
+    zu: "Amafoni e-Samsung kwesinye isikhathi abonisa isexwayiso esithi 'Google Play Protect — Unsafe app' uma ufaka. Yi-Samsung enovalo nje — i-Probably Weather iphephile. Thepha 'More details' → 'Install anyway'.",
+    xh: "Iifowuni ze-Samsung ngamanye amaxesha zibonisa isilumkiso esithi 'Google Play Protect — Unsafe app' xa ufakela. Yi-Samsung enexhala nje — i-Probably Weather ikhuselekile. Cofa 'More details' → 'Install anyway'.",
+    st: "Difouno tsa Samsung ka linako tse ling li bontša temoso ya 'Google Play Protect — Unsafe app' ha o kenya. Ke Samsung e tšohileng feela — Probably Weather e bolokehile. Tobetsa 'More details' → 'Install anyway'.",
+  },
   // Shown when the user taps "Install now" on android-chrome or desktop-chrome
   // and beforeinstallprompt never fired. Points at Chrome's ⋮ menu — the same
   // icon and labels work on both Android Chrome and desktop Chrome.
@@ -354,6 +368,29 @@ export function detectInAppBrowser(uaString = '') {
     }
   }
   return null;
+}
+
+/**
+ * Detect Samsung Android devices (any browser).
+ *
+ * Samsung's One UI ships an aggressive Play Protect configuration that flags
+ * Chrome's WebAPK install with "Unsafe app blocked — built for an older Android
+ * version" — even though it's Chrome doing the work. Nothing in PW's codebase
+ * triggers it. When detected, /install shows an honest note explaining what to
+ * expect and how to proceed ('More details' → 'Install anyway').
+ *
+ * UA signals:
+ *   - `SamsungBrowser/` — Samsung Internet (their default browser).
+ *   - `SM-[A-Z]\d+`     — Samsung device model codes (SM-A245F, SM-G991B,
+ *                         SM-S921U etc.) appear on EVERY Galaxy phone.
+ *   - `SAMSUNG` token — appears in some UAs alongside the SM-* code.
+ *
+ * Restricted to Android so a Samsung TV or fridge UA can't false-trigger.
+ */
+export function isSamsungAndroid(uaString = '') {
+  const ua = String(uaString || '');
+  if (!/Android/.test(ua)) return false;
+  return /SamsungBrowser\//.test(ua) || /\bSM-[A-Z]\d/.test(ua) || /\bSAMSUNG\b/.test(ua);
 }
 
 /**
@@ -769,7 +806,15 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   } else if (platform === 'android-chrome' || platform === 'desktop-chrome') {
     const btn = el('button', { id: 'landingInstallNow', class: 'install-cta-btn', type: 'button', text: tx('installNow') });
     const hint = el('p', { id: 'landingInstallHint', class: 'install-cta-hint', hidden: true });
-    ctaCard = el('div', { class: 'install-card' }, btn, hint);
+    // Samsung One UI's overcautious Play Protect intercepts Chrome's WebAPK
+    // install with an "Unsafe app blocked" dialog. Pre-warn so the user knows
+    // the path through (More details → Install anyway) before they tap.
+    const cardChildren = [];
+    if (platform === 'android-chrome' && isSamsungAndroid(uaString)) {
+      cardChildren.push(el('p', { class: 'install-samsung-note', text: tx('samsungPlayProtect') }));
+    }
+    cardChildren.push(btn, hint);
+    ctaCard = el('div', { class: 'install-card' }, ...cardChildren);
   } else if (platform === 'ios-safari') {
     const list = el('ol', { class: 'install-step-list' });
     const stepRow = (n, iconMarkup, text) => {
