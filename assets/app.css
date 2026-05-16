@@ -301,16 +301,19 @@ body:not(.home-active) .language-picker {
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
 }
 
-/* Weather byline - split into 2 rows, subtle */
+/* Weather byline - natural inline-wrapped text. The previous flex-column
+   layout was a holdover from an earlier design that wrapped each value in a
+   .byline-row div; the current HTML uses bare spans + text runs, and on iOS
+   Safari those become separate anonymous flex items stacked vertically (6
+   stacked fragments for "Wind X • Rain Y • UV Z"), which is what was making
+   the byline render ~3x taller than expected and collide with the Save
+   button. Removing flex-column collapses it to 1-2 inline-wrapped lines. */
 .weather-byline {
   font-size: 0.95rem;
   color: #fff;
   margin-top: 0.5rem;
   letter-spacing: 0.3px;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
 }
 
 .byline-row {
@@ -2250,10 +2253,9 @@ main#home-screen.main #confidence {
     color: #fff;
     letter-spacing: 0.02em;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    align-items: flex-end;
+    /* No flex-column here — see comment on .weather-byline in the global
+       rule (~line 305). Inline text wraps naturally; right-aligned via
+       text-align so the spans/text runs sit flush with the sidebar's right edge. */
   }
 
   .sidebar .byline-row {
