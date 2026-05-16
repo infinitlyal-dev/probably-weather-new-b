@@ -19,7 +19,6 @@ button,
 
 .share-btn,
 .save-current-btn,
-.sources-toggle,
 .language-btn,
 .use-location-btn {
   min-block-size: 44px;
@@ -337,23 +336,6 @@ body:not(.home-active) .language-picker {
   align-items: flex-end;
   gap: 0.75rem;
   text-align: right;
-}
-
-.card-sources {
-  background: rgba(255,255,255,0.08);
-  padding: 0.8rem;
-}
-
-.card-sources .label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.card-sources .value {
-  font-size: 0.7rem;
-  line-height: 1.4;
-  white-space: pre-line;
 }
 
 .card {
@@ -1850,33 +1832,12 @@ main#home-screen.main #confidence {
 /* ========== WEATHER ICONS ========== */
 .weather-icon { font-size: 1.4em; margin-right: 4px; }
 
-/* Sources card: desktop default — pill hidden, full-text block visible */
-.sources-toggle,
-.sources-detail,
-.sources-swap {
-  display: none;
-}
-
 /* Share & Save buttons: hidden on desktop, shown on mobile via media query.
    PW is mobile-first; desktop users get the same Save flow via the search
-   panel's per-row star buttons. Bringing them to desktop is a future polish
-   item (slot into .sidebar above Sources). */
+   panel's per-row star buttons. */
 .share-btn,
 .save-current-btn {
   display: none;
-}
-.sources-desktop {
-  display: block;
-}
-.sources-desktop .label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.sources-desktop .value {
-  font-size: 0.7rem;
-  line-height: 1.4;
-  white-space: pre-line;
 }
 
 /* ========== MOBILE RESPONSIVE (Two-Column Layout) ========== */
@@ -2290,94 +2251,13 @@ main#home-screen.main #confidence {
     font-weight: 600;
   }
 
-  /* ── Sources pill: clean rebuild ── */
-  .card-sources {
-    background: transparent;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-    border-radius: 20px;
-    margin-top: 4px;
-    z-index: 10;
-    position: relative;
-    overflow: visible; /* allow pill to sit on top cleanly */
-  }
-
-  /* The pill button itself */
-  .sources-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #fff;
-    background: rgba(0,0,0,0.5);
-    border: 0;
-    border-radius: 20px;
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap;
-    z-index: 10;
-    position: relative;
-    font-family: inherit;
-  }
-
-  .sources-toggle .sources-arrow {
-    display: inline-block;
-    font-size: 10px;
-    transition: transform 0.3s ease;
-    line-height: 1;
-  }
-
-  /* On mobile: hide desktop sources block, show pill toggle */
-  .sources-desktop {
-    display: none !important;
-  }
-  /* ── Sources content swap ── */
-  .sidebar .weather-byline,
-  .sidebar .sources-swap {
+  /* Byline transition retained from the former sources tap-to-swap design;
+     harmless empty animation now that there's no .sources-open state. */
+  .sidebar .weather-byline {
     transition: opacity 0.25s ease;
   }
 
-  .sidebar.sources-open .weather-byline {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    pointer-events: none;
-    margin: 0;
-    padding: 0;
-    transition: opacity 0.25s ease, max-height 0.2s ease 0.1s;
-  }
-
-  .sources-swap {
-    display: block;
-    text-align: right;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.6;
-    white-space: pre-line;
-    color: rgba(255,255,255,0.92);
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.95);
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    pointer-events: none;
-    transition: opacity 0.25s ease, max-height 0.2s ease;
-  }
-
-  .sidebar.sources-open .sources-swap {
-    opacity: 1;
-    max-height: 200px;
-    pointer-events: auto;
-  }
-
-  .sidebar.sources-open .sources-arrow {
-    transform: rotate(180deg);
-  }
-
-  /* ── Share button: bottom-left pill, mirrors sources pill ── */
+  /* ── Share button: bottom-left pill ── */
   .share-btn {
     display: flex;
     align-items: center;
@@ -2505,10 +2385,6 @@ main#home-screen.main #confidence {
 
   .card .value {
     font-size: 0.75rem;
-  }
-
-  .card-sources .value {
-    font-size: 0.55rem;
   }
 
   .temp {

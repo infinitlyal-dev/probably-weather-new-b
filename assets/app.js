@@ -209,11 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
         st: "Probably Weather e kopanya dikakanyo tsa boemo ba leholimo tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway le Pirate Weather ho u fa ponelopele e tšepahalang."
       }
     },
-    // Sidebar
-    sidebar: {
-      todaysHero: { en: "Right Now:", af: "Nou:", zu: "Manje:", xh: "Ngoku:", st: "Hona Joale:" },
-      sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
-    },
     // Weather byline terms
     weather: {
       probably: { en: "Probably", af: "Waarskynlik", zu: "Mhlawumbe", xh: "Mhlawumbi", st: "Mohlomong" },
@@ -653,8 +648,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
-    const sourcesLabel = document.querySelector('.sources-desktop .label'); if (sourcesLabel) sourcesLabel.textContent = t('sidebar', 'sources');
-    // (former .sources-toggle-label removed — pill now opens Hourly screen, not a sources expander)
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
     refreshSaveButtonState();
   }
@@ -1263,7 +1256,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Keep the offset accurate if the user rotates the device or resizes the window.
   window.addEventListener('resize', syncCapeWindOffset);
 
-  // (former #sourcesToggle / .sources-open tap-to-swap removed — sources now live on their own /Sources nav page)
 
   // Share button (mobile only — Web Share API)
   const shareBtn = $('#shareBtn');
