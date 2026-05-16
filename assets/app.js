@@ -591,6 +591,73 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 60_000);
     }).catch((err) => debugLog('Service worker registration failed:', err));
   }
+  // Client-side error reporting. Forwards unhandled JS errors + unhandled
+  // promise rejections to /api/errors, which logs them to Vercel function
+  // logs. Throttled (max ~10 reports/session) and deduped (60s cooldown per
+  // signature) so a single hot error doesn't burn the function quota.
+  // No external SaaS; upgrade path is to add Sentry later for a UI.
+  function setupErrorReporting() {
+    let sent = 0;
+    const SEND_CAP = 10;
+    const seen = new Map(); // signature → last-sent timestamp
+    const DEDUPE_MS = 60_000;
+
+    function report(payload) {
+      try {
+        if (sent >= SEND_CAP) return;
+        const sig = `${payload.kind}|${payload.message}|${payload.source || ''}|${payload.line || ''}`;
+        const last = seen.get(sig) || 0;
+        const now = Date.now();
+        if (now - last < DEDUPE_MS) return;
+        seen.set(sig, now);
+        sent++;
+        const body = JSON.stringify({
+          ...payload,
+          url: location.href,
+          userAgent: navigator.userAgent,
+          timestamp: new Date().toISOString(),
+        });
+        // sendBeacon is fire-and-forget and survives page unload — ideal for
+        // error reporting where the page may be in the middle of crashing.
+        // Falls back to fetch keepalive for browsers without sendBeacon.
+        if (navigator.sendBeacon) {
+          const blob = new Blob([body], { type: 'application/json' });
+          navigator.sendBeacon('/api/errors', blob);
+        } else {
+          fetch('/api/errors', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body,
+            keepalive: true,
+          }).catch(() => {});
+        }
+      } catch (_) { /* never let the reporter throw */ }
+    }
+
+    window.addEventListener('error', (event) => {
+      report({
+        kind: 'error',
+        message: event.message || String(event.error || 'error'),
+        source: event.filename || '',
+        line: event.lineno || null,
+        col: event.colno || null,
+        stack: event.error?.stack || null,
+      });
+    });
+
+    window.addEventListener('unhandledrejection', (event) => {
+      const reason = event.reason;
+      const message = (reason && (reason.message || String(reason))) || 'unhandled rejection';
+      report({
+        kind: 'unhandledrejection',
+        message,
+        source: '',
+        line: null,
+        col: null,
+        stack: reason?.stack || null,
+      });
+    });
+  }
   function setSharedLocationIndicator(show) {
     if (!locationEl) return;
     let indicator = document.getElementById('sharedLocationIndicator');
@@ -1949,6 +2016,7 @@ document.addEventListener("DOMContentLoaded", () => {
     debugLog(`[FIX-4] Applied ?lang=${urlLang} from URL parameter`);
   }
   setupServiceWorkerUpdates();
+  setupErrorReporting();
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
   // Wrap install init in a visible error boundary. Silent throws from
   // install.js have caused multiple unexplained iPhone regressions where
