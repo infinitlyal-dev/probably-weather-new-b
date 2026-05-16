@@ -537,6 +537,22 @@ document.addEventListener("DOMContentLoaded", () => {
       reloadForUpdate(event.data.version);
     });
 
+    // ----- Force-activate a waiting SW -----
+    // iOS Safari PWA standalone sometimes leaves a freshly-installed SW in
+    // the 'waiting' state even when its install handler called skipWaiting().
+    // Posting SKIP_WAITING from the page forces activation. The SW already
+    // listens for this message (sw.js: `if (event.data === 'SKIP_WAITING') self.skipWaiting()`).
+    const forceActivate = (worker) => {
+      if (!worker || worker.state !== 'installed') return;
+      // Only send when there's an existing controller — first-ever install
+      // doesn't need activation forcing (no old SW to displace).
+      if (!navigator.serviceWorker.controller) return;
+      try {
+        worker.postMessage('SKIP_WAITING');
+        debugLog('[SW] sent SKIP_WAITING to waiting worker');
+      } catch (_) {}
+    };
+
     // ----- Register + poll for updates -----
     navigator.serviceWorker.register('/sw.js').then((registration) => {
       // Initial update check. The browser can cache /sw.js for up to 24h via
@@ -549,6 +565,35 @@ document.addEventListener("DOMContentLoaded", () => {
       // (Phase 2 Codex S3 — single combined handler eliminates the soft
       // race between SW update + weather refresh paths.)
       swRegistration = registration;
+
+      // If a new SW was detected during a previous session but never got
+      // activated (iOS PWA quirk), it's still sitting in registration.waiting
+      // when this page loads. Force it to activate now.
+      if (registration.waiting) forceActivate(registration.waiting);
+
+      // updatefound fires when registration.update() detects a new SW and
+      // starts installing it. Watch the new SW's state — when it reaches
+      // 'installed', explicitly force activation. Belt-and-braces alongside
+      // the SW's own install-handler skipWaiting() call, which iOS sometimes
+      // honours and sometimes doesn't.
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        debugLog('[SW] updatefound — new worker installing');
+        if (!newWorker) return;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed') forceActivate(newWorker);
+        });
+      });
+
+      // Periodic update check while the page is open. The existing
+      // visibilitychange handler only fires on tab/app focus transitions —
+      // a user who just opens PW and uses it without backgrounding the app
+      // would never trigger an update check after the initial register call.
+      // 60-second polling is cheap: Vercel returns 304 for unchanged /sw.js
+      // (verified via curl: ETag set, no-cache header lets browser revalidate).
+      setInterval(() => {
+        if (swRegistration) swRegistration.update().catch(() => {});
+      }, 60_000);
     }).catch((err) => debugLog('Service worker registration failed:', err));
   }
   function setSharedLocationIndicator(show) {
