@@ -266,6 +266,18 @@ export const INSTALL_T = {
     xh: 'Unobunzima? Vula eli phepha kwi-Chrome (Android) okanye i-Safari (iPhone).',
     st: 'U na le bothata? Bula leqephe lena ho Chrome (Android) kapa Safari (iPhone).',
   },
+  // Shown when the user taps "Install now" on android-chrome or desktop-chrome
+  // and beforeinstallprompt never fired. Points at Chrome's ⋮ menu — the same
+  // icon and labels work on both Android Chrome and desktop Chrome.
+  // 'Install app' / 'Add to Home Screen' stay English because that's what
+  // Chrome actually renders on screen (cf. iOS step strings at the top).
+  installFallbackChromium: {
+    en: "If nothing happens, tap the ⋮ menu above and choose 'Install app' or 'Add to Home Screen'.",
+    af: "As niks gebeur nie, tik die ⋮ kieslys hierbo en kies 'Installeer app' of 'Voeg by Tuisskerm'.",
+    zu: "Uma kungenzeki lutho, thepha imenyu ye-⋮ ngenhla bese ukhetha 'Install app' noma 'Add to Home Screen'.",
+    xh: "Ukuba akukho nto yenzekayo, cofa imenyu ye-⋮ ngentla ukhethe 'Install app' okanye 'Add to Home Screen'.",
+    st: "Haeba ho se na letho le etsahalang, tobetsa menyu ea ⋮ ka holimo u khethe 'Install app' kapa 'Add to Home Screen'.",
+  },
 };
 
 /* -------- Pure functions (testable without DOM) -------- */
@@ -839,7 +851,12 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
       if (!deferredPrompt) {
         const hint = host.querySelector('#landingInstallHint');
         if (hint) {
-          hint.textContent = INSTALL_T.iosChromeFallback[lang] || INSTALL_T.iosChromeFallback.en;
+          // The Install button only renders on android-chrome / desktop-chrome,
+          // so the chromium ⋮-menu hint is always the right copy here. Previously
+          // shipped iosChromeFallback ("paste into Safari") which is wrong on
+          // both platforms — Safari doesn't exist on Android, and a desktop
+          // Chrome user has no Safari either. Confirmed live on Samsung A24.
+          hint.textContent = INSTALL_T.installFallbackChromium[lang] || INSTALL_T.installFallbackChromium.en;
           hint.hidden = false;
         }
         return;
