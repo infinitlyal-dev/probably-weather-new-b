@@ -308,7 +308,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // pick up a new service-worker version. No version string in the user-
       // facing copy — keeps it terse. Debug overlay still surfaces the
       // version for Al / testers who need it.
-      updatedToLatest: { en: "Updated ✓", af: "Bygewerk ✓", zu: "Kubuyekeziwe ✓", xh: "Kuhlaziyiwe ✓", st: "Ho ntjhafalitsoe ✓" }
+      updatedToLatest: { en: "Updated ✓", af: "Bygewerk ✓", zu: "Kubuyekeziwe ✓", xh: "Kuhlaziyiwe ✓", st: "Ho ntjhafalitsoe ✓" },
+      // Banner shown when /api/version reports a newer deploy than the one
+      // the user booted with. Short copy — full banner = label + CTA + ✕.
+      updateAvailable: { en: "New version", af: "Nuwe weergawe", zu: "Inguqulo entsha", xh: "Inguqulelo entsha", st: "Phetolelo e ncha" },
+      tapToRefresh: { en: "Tap to refresh", af: "Tik om te verfris", zu: "Thepha ukuze uvuselele", xh: "Cofa ukuze uhlaziye", st: "Tobetsa ho ntlafatsa" }
     },
     // Misc
     misc: {
@@ -353,6 +357,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // visibilitychange handler at module bottom can call registration.update()
   // without needing two listeners (Phase 2 Codex S3 deferred-bundle item).
   let swRegistration = null;
+  // Set by setupVersionBanner() — the consolidated visibilitychange handler
+  // at module bottom invokes it on foreground transitions. Kept at module
+  // scope so the single-listener test (sw-update-propagation) stays green.
+  let versionCheckOnForeground = null;
   let installExperience = null;
   let activeLocationSeq = 0;
   let activeWeatherController = null;
@@ -657,6 +665,80 @@ document.addEventListener("DOMContentLoaded", () => {
         stack: reason?.stack || null,
       });
     });
+  }
+  // "New version — tap to refresh" banner. Belt-and-braces against any future
+  // SW propagation hiccup: even if our auto-reload-on-controllerchange flow
+  // fails for any reason (iOS Safari quirk, HTTP cache TTL stuck on old JS,
+  // browser refused the update check), the user sees a one-tap escape hatch
+  // within ~5 minutes of opening the app instead of silently being stuck on
+  // stale code.
+  //
+  // The probe is /api/version → Vercel commit SHA. Compare the version we saw
+  // at boot to the current server version on a 5-min interval + every time
+  // the page becomes visible. If they differ AND the banner isn't already up,
+  // render it. User tap = location.reload(). Dismiss × = hide for the session.
+  function setupVersionBanner() {
+    let sessionVersion = null;
+    let bannerShown = false;
+    const POLL_MS = 5 * 60_000;
+
+    async function checkVersion() {
+      try {
+        const resp = await fetch('/api/version', { cache: 'no-store' });
+        if (!resp.ok) return;
+        const data = await resp.json();
+        if (!data || typeof data.version !== 'string') return;
+        if (sessionVersion === null) {
+          sessionVersion = data.version;
+          debugLog('[version] session started on', sessionVersion);
+          return;
+        }
+        if (data.version !== sessionVersion && !bannerShown) {
+          debugLog('[version] new server version detected:', data.version, 'was', sessionVersion);
+          showVersionBanner();
+          bannerShown = true;
+        }
+      } catch (_) { /* network blip — try again on next poll */ }
+    }
+
+    function showVersionBanner() {
+      const banner = document.createElement('div');
+      banner.id = 'versionUpdateBanner';
+      banner.className = 'version-update-banner';
+      banner.setAttribute('role', 'status');
+      banner.setAttribute('aria-live', 'polite');
+
+      const text = document.createElement('span');
+      text.className = 'version-update-text';
+      text.textContent = t('toasts', 'updateAvailable') || 'New version';
+
+      const action = document.createElement('button');
+      action.className = 'version-update-action';
+      action.type = 'button';
+      action.textContent = t('toasts', 'tapToRefresh') || 'Tap to refresh';
+      action.addEventListener('click', () => { window.location.reload(); });
+
+      const dismiss = document.createElement('button');
+      dismiss.className = 'version-update-dismiss';
+      dismiss.type = 'button';
+      dismiss.setAttribute('aria-label', 'Dismiss');
+      dismiss.textContent = '×';
+      dismiss.addEventListener('click', () => { banner.remove(); });
+
+      banner.appendChild(text);
+      banner.appendChild(action);
+      banner.appendChild(dismiss);
+      document.body.appendChild(banner);
+    }
+
+    // Boot probe (records sessionVersion) → interval poll.
+    // Foreground-triggered version checks happen via the consolidated
+    // visibilitychange handler at module bottom — the test suite enforces
+    // a single visibilitychange listener (Phase 2 S3, sw-update-propagation
+    // test) to prevent the soft race we hit when there were multiple.
+    checkVersion();
+    setInterval(checkVersion, POLL_MS);
+    versionCheckOnForeground = checkVersion;
   }
   function setSharedLocationIndicator(show) {
     if (!locationEl) return;
@@ -2017,6 +2099,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   setupServiceWorkerUpdates();
   setupErrorReporting();
+  setupVersionBanner();
   loadSettings(); applySettings(); renderRecents(); renderFavorites();
   // Wrap install init in a visible error boundary. Silent throws from
   // install.js have caused multiple unexplained iPhone regressions where
@@ -2190,6 +2273,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (document.visibilityState !== 'visible') return;
     attemptRefresh({ source: 'visibilitychange' });
     if (swRegistration) swRegistration.update().catch(() => {});
+    // 3. /api/version probe so the "New version — tap to refresh" banner
+    //    fires within ~1s when the user foregrounds the app after a deploy.
+    //    Belt-and-braces against any SW propagation hiccup.
+    if (versionCheckOnForeground) versionCheckOnForeground();
   });
 
   // Launch — after initial cached/fresh render has kicked off above, attempt
