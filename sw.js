@@ -1,9 +1,13 @@
-/* Probably Weather — Service Worker v12
-   Upgrades from v11:
-   - Share button: mobile-only pill (bottom-left), Web Share API, 5-language support
+/* Probably Weather — Service Worker v13
+   Upgrades from v12:
+   - CACHE_VERSION bumped → clears stale caches from the home-buttons restructure.
+   - Console version log on activate so future propagation issues are debuggable.
+   Cache-Control: no-cache, no-store, must-revalidate on /sw.js (vercel.json)
+   ensures the browser ALWAYS revalidates the SW script on each update check,
+   so deploys after this one propagate on next launch without manual reset.
 */
 
-const CACHE_VERSION = 'pw-v2026-05-13-014';
+const CACHE_VERSION = 'pw-v2026-05-16-001';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const API_CACHE = `${CACHE_VERSION}-api`;
@@ -60,6 +64,10 @@ self.addEventListener('activate', (event) => {
     const oldCaches = keys.filter((k) => !k.startsWith(CACHE_VERSION));
     await Promise.all(oldCaches.map((k) => caches.delete(k)));
     await self.clients.claim();
+    // Surface the active SW version on the console for diagnostic purposes —
+    // visible via Application → Service Workers in DevTools, or via
+    // navigator.serviceWorker.controller?.scriptURL inspection.
+    console.log('[SW] Activated', CACHE_VERSION, '— purged', oldCaches.length, 'old caches');
     if (oldCaches.length) {
       const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
       clients.forEach((client) => {

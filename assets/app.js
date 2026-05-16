@@ -152,11 +152,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // the existing badges.rainTonight.zu / weather.gusts.{zu,st} backlog).
     sources: {
       explainer: {
-        en: "Probably Weather checks four weather sources every time you open the app. We average them so you get a more honest forecast — no single source bullshitting you about whether it'll rain.",
-        af: "Probably Weather kyk na vier weersbronne elke keer wat jy die app oopmaak. Ons stel hulle gemiddelde saam sodat jy 'n meer eerlike voorspelling kry — geen enkele bron wat vir jou kak praat oor of dit gaan reën nie.",
-        zu: "I-Probably Weather ihlola imithombo emine yesimo sezulu ngaso sonke isikhathi uvula uhlelo lokusebenza. Sihlanganisa amalinganiso ukuze uthole isibikezelo esiqotho — akukho mthombo owodwa okhuluma amanga ngokuthi imvula iyona noma cha.",
-        xh: "I-Probably Weather ijonga imithombo emine yemozulu ngalo lonke ixesha uvula i-app. Sidibanisa imilinganiselo ukuze ufumane isiprofeto esinyanisekileyo — akukho mthombo omnye oxoka kuwe ngokuba kuza kuna na okanye hayi.",
-        st: "Probably Weather e sheba mehlodi e mene ea boemo ba leholimo nako e nngwe le e nngwe ha u bula app. Re kopanya likarolelano hore u fumane ponelopele e tšepahalang — ha ho mohlodi o le mong o u buellang maaka ka hore ho tla na pula kapa che."
+        en: "Probably Weather checks four weather sources every time you open the app. We average them so you get a more honest forecast — no single source guessing wrong about whether it'll rain.",
+        af: "Probably Weather kyk na vier weersbronne elke keer wat jy die app oopmaak. Ons stel hulle gemiddelde saam sodat jy 'n meer eerlike voorspelling kry — geen enkele bron wat verkeerd raai oor of dit gaan reën nie.",
+        zu: "I-Probably Weather ihlola imithombo emine yesimo sezulu ngaso sonke isikhathi uvula uhlelo lokusebenza. Sihlanganisa amalinganiso ukuze uthole isibikezelo esiqotho — akukho mthombo owodwa oqagela kabi ngokuthi imvula iyona noma cha.",
+        xh: "I-Probably Weather ijonga imithombo emine yemozulu ngalo lonke ixesha uvula i-app. Sidibanisa imilinganiselo ukuze ufumane isiprofeto esinyanisekileyo — akukho mthombo omnye oqikelela ngokungafanelekanga ngokuba kuza kuna na okanye hayi.",
+        st: "Probably Weather e sheba mehlodi e mene ea boemo ba leholimo nako e nngwe le e nngwe ha u bula app. Re kopanya likarolelano hore u fumane ponelopele e tšepahalang — ha ho mohlodi o le mong o akhang hampe ka hore ho tla na pula kapa che."
       },
       attribution: {
         en: "Data from Open-Meteo, WeatherAPI.com, MET Norway, and Pirate Weather. Used with permission and gratitude.",
@@ -460,6 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle('home-active', which === screenHome);
     if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
     if (shareBtn) shareBtn.style.display = which === screenHome ? '' : 'none';
+    if (navHourlyHome) navHourlyHome.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
@@ -573,7 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navSearch) navSearch.textContent = t('nav', 'search');
     if (navSettings) navSettings.textContent = t('nav', 'settings');
     if (navSources) navSources.textContent = t('nav', 'sources');
-    if (navHourlyHome) navHourlyHome.textContent = t('nav', 'hourly');
+    if (navHourlyHome) navHourlyHome.textContent = `→ ${t('nav', 'hourly')}`;
     if (hourlyBack) hourlyBack.textContent = `← ${t('nav', 'home')}`;
     const dayDetailBackBtn = $('#dayDetailBack');
     if (dayDetailBackBtn) dayDetailBackBtn.textContent = `← ${t('nav', 'week')}`;

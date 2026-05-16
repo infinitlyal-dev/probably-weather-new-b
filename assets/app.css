@@ -2202,11 +2202,14 @@ main#home-screen.main #confidence {
     position: fixed;
     right: 12px;
     top: auto;
-    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 8px);
+    /* Sidebar (now byline-only — Hourly pill moved to bottom-CENTRE) sits
+       ABOVE the three-button row so it doesn't collide with the bottom-right
+       Save button. ~52px gap above the buttons; small viewport-safe layout. */
+    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 52px);
     left: auto;
     transform: none;
     width: auto;
-    max-width: 45%;
+    max-width: 60%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -2391,16 +2394,16 @@ main#home-screen.main #confidence {
     opacity: 0.7;
   }
 
-  /* ── Save button: bottom-center pill, same style as Share; flips to
-     #FFDD44 (Probably gold) when the active place is in favourites. ── */
+  /* ── Save button: bottom-RIGHT pill, same style as Share; flips to
+     #FFDD44 (Probably gold) when the active place is in favourites. The
+     Hourly pill took the CENTRE slot as the primary CTA on home. ── */
   .save-current-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
     position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 12px;
     bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
     padding: 4px 12px;
     font-size: 12px;
@@ -2423,6 +2426,54 @@ main#home-screen.main #confidence {
 
   .save-current-btn:active {
     opacity: 0.7;
+  }
+
+  /* ── Hourly pill: bottom-CENTRE primary CTA on home (mobile only).
+     Brand-gold gradient (same #FFDD44 → #FFAA00 as install banner) so it
+     stands above Share/Save as the main entry to the ad-bearing screens.
+     ~1.3x width / ~1.15x height of the utility pills, but stays on one line
+     for the longest translation (Ngamahora / Ngeyure). ── */
+  .nav-hourly-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 12px);
+    padding: 10px 24px;
+    min-height: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+    background: linear-gradient(135deg, #FFDD44, #FFAA00);
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 51;
+    box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    font-family: inherit;
+  }
+
+  .nav-hourly-pill:hover {
+    box-shadow: 0 6px 18px rgba(255,170,0,0.45), 0 1px 3px rgba(0,0,0,0.25);
+  }
+
+  .nav-hourly-pill:active {
+    transform: translateX(-50%) scale(0.97);
+  }
+}
+
+/* Desktop (≥769px): the bottom-CENTRE Hourly pill is mobile-only. Desktop
+   users navigate via the bottom-nav and the gold pill would compete with
+   the desktop sidebar layout. PW has been mobile-first throughout. */
+@media (min-width: 769px) {
+  .nav-hourly-pill {
+    display: none;
   }
 }
 
@@ -2899,6 +2950,7 @@ body.standalone-mode .install-footer-link {
    is open so the user's attention isn't split between two share affordances. */
 body.install-modal-active .share-btn { display: none !important; }
 body.install-modal-active .save-current-btn { display: none !important; }
+body.install-modal-active .nav-hourly-pill { display: none !important; }
 .install-step-list {
   list-style: none;
   display: flex;
