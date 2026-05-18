@@ -92,20 +92,21 @@ The picker uses a mod-14 day-of-year rotation. **The day_N slot maps to day-of-w
 
 ---
 
-## Image Generation Spec (locked 2026-05-17)
+## Image Generation Spec (locked 2026-05-18)
 
 When generating new images, use these settings:
 
-- **Model:** Nano Banana Pro
-- **Mode:** Custom
-- **Size:** **1536 × 2752** (PORTRAIT — never landscape or square)
-- **Aspect:** Portrait, fits mobile phone screens
+- **Model:** Nano Banana Pro (Higgsfield model_id: `nano_banana_2`)
+- **Aspect ratio:** `9:16` (matches modern mobile screen aspect — the PW background sits behind a full-screen mobile UI)
+- **Resolution:** `2k` (sharp on mobile retina screens, manageable file size)
 - **Style:** Photorealistic, warm, South African
 - **Output:** JPG, optimised for web (target 200–500 KB per image; resize if over 1 MB)
 
+**Note on grandfathered anchors:** The 4 cold-clear anchor images locked 2026-05-17 were generated at `aspect_ratio: 2:3` (slightly less tall than 9:16). Acceptable as anchors. All NEW generations from 2026-05-18 onward use `aspect_ratio: 9:16`.
+
 ### Generation lanes
 
-**Lane A — Higgsfield MCP (primary, 2026-05-17 onward):** Direct from Claude.ai or Claude Code via the Higgsfield MCP `generate_image` tool. Use `model: nano_banana_2`, `aspect_ratio: 2:3`. Set "Always allow" on the approval gate for batch work. Uses Higgsfield credits (~4 per image).
+**Lane A — Higgsfield MCP (primary, 2026-05-17 onward):** Direct from Claude.ai or Claude Code via the Higgsfield MCP `generate_image` tool. Use `model: nano_banana_2`, `aspect_ratio: 9:16`, `resolution: 2k`. Set "Always allow" on the approval gate for batch work. Uses Higgsfield credits (~4 per image at 1k; higher at 2k/4k).
 
 **Lane B — Leonardo (burn-down before subscription cancellation):** Same model. 140 tokens per 1k/2k image, 250 per 4K. No Relaxed mode for third-party models. Use Minnie autonomous-overnight for batches.
 
@@ -113,17 +114,29 @@ When generating new images, use these settings:
 
 **Lane D — OpenArt (burn-down before account closure):** Minnie recon required first to build platform-class memory. Then autonomous overnight.
 
-### Universal Negative Prompt (use for ALL generations)
+### Negative Prompt (split by time slot, 2026-05-18)
+
+**Base block — applied to ALL generations:**
 
 ```
 text, watermark, logo, words, letters, numbers, signs, banners, speech bubbles,
 extra limbs, deformed hands, deformed fingers, floating objects, ugly, blurry,
 low quality, stock photo aesthetic, generic western suburban USA aesthetic,
 horror, dystopian, gritty, dirty, poverty, graffiti, litter, overexposed,
-underexposed, cartoon, illustration, painting, drawing, artificial lighting indoors
+underexposed, cartoon, illustration, painting, drawing
 ```
 
-### Diversity Instructions (use for ALL prompts featuring people)
+**Day-only addition** — append to base for day-slot (08:00–17:00) generations only:
+
+```
+artificial lighting indoors
+```
+
+**Dawn / dusk / night**: use the base block only. These scenes legitimately use warm artificial light — kitchen lights, lamps, fairy lights, battery lanterns, street lights. Banning indoor artificial lighting at these hours fights the brief.
+
+### Diversity Instructions (scoped by scene, 2026-05-18)
+
+**When 2+ humans are in the frame** (family, friend group, colleagues, public scene): include this in the prompt:
 
 ```
 Include diverse South African characters — mixed race group reflecting the real
@@ -132,7 +145,11 @@ naturally together. No stereotyping. Natural body language and authentic SA
 clothing/style.
 ```
 
-Mixed-race groups in scenes are the canonical default for PW — this is not "force diversity in every frame," it's "do not let the model default to one race only." Families, friend groups, colleagues, public scenes all use this guidance.
+**When 1 human is in the frame** (solo scene): specify the character's identity directly in the prompt (e.g. "Black SA grandmother in her mid-60s", "Indian SA father in his early-40s"). The group-diversity boilerplate creates a contradiction in a solo scene — one person cannot be a "mixed race group." Across the 14-day cycle, rotate the demographics — don't make every solo subject the same race.
+
+**When no humans are in the frame** (animal, object, landscape only): omit the diversity instruction entirely.
+
+This is the canonical scope for PW. The rule is "do not let the model default to one race only in group scenes," not "force diversity in every frame regardless of subject."
 
 ---
 
@@ -190,7 +207,7 @@ Bucket signals (frost, breath, jacket, fynbos, jacaranda) become wallpaper witho
 **Mood:** Crisp, awake, sharp. Sun + cold air at the same time. *"Koud maar lekker."* Joburg/Pretoria/Bloemfontein winter morning prototype.
 **Signals (must appear):** Visible breath OR breath implied (mug steam); frost on grass/lawn/windscreens; bare winter trees (jacaranda); dry brown highveld grass — never wet green; clear blue or navy sky; modern suburban architecture.
 **Wardrobe:** Thick puffer jackets, woolly jumpers, beanies, scarves, gloves, sunglasses paired with winter wear (the cold-clear signature), closed shoes, layered.
-**Locked 4 anchor images (2026-05-17):**
+**Locked 4 anchor images (2026-05-17, grandfathered at aspect_ratio 2:3):**
 - `cold-clear/dawn_1.jpg` candidate — Black SA mother buttoning son's school blazer at back gate, both breath visible (Higgsfield job `cb44f773`)
 - `cold-clear/day_1.jpg` candidate (weekday) — Boerbull on sunlit modern suburban patio, breath visible, ear cocked (Higgsfield job `7e4aa8eb`)
 - `cold-clear/dusk_1.jpg` candidate — Frosted aviator sunglasses + skinned coffee + paperback on modern outdoor table (Higgsfield job `58436ea4`)
@@ -217,7 +234,7 @@ These 4 are anchors pending pw-image-staging pipeline build for proper review + 
 
 ## Clear Folder Image Slots (Reference)
 
-Target subjects for the clear condition folder. Day-type column corrects the v1.0/v2.0 mapping to match what the picker code actually does. Other condition folders should follow similar variety across the 14-day cycle (per-folder slot maps are v2.2 work — draft them while batching that folder, not speculatively).
+Target subjects for the clear condition folder. Day-type column matches what the picker code actually does. Other condition folders should follow similar variety across the 14-day cycle (per-folder slot maps are v2.3+ work — draft them while batching that folder, not speculatively).
 
 | Slot | Day type | Subject |
 |---|---|---|
@@ -247,11 +264,11 @@ Before committing any new image to the repo (or promoting from pw-image-staging)
 
 1. **No text/signs/words** visible anywhere in the image
 2. **No deformed hands/faces** — AI generation artifact check
-3. **Correct orientation** — must be portrait (taller than wide, ~1536×2752)
+3. **Correct orientation and ratio** — must be portrait 9:16 (matches mobile screen). 2:3 anchors from 2026-05-17 are grandfathered; all new images are 9:16.
 4. **File size** — should be under 500 KB for web performance. If over 1 MB, resize or convert to WebP.
 5. **SA authenticity** — does it look like South Africa, not California or Europe?
 6. **Mood match** — does the image match the condition folder's mood?
-7. **Diversity** — if people are shown, is the group diverse?
+7. **Diversity** — if 2+ people are shown, is the group diverse? If 1 person, is the demographic varied across the cycle (not the same race every slot)?
 8. **No floating objects** — common AI artifact, especially with outdoor scenes
 9. **No licensed content** — no Springbok jerseys, no team kits, no brand logos, no recognizable real people, no copyrighted characters
 10. **No banned mood** — no poverty, grit, dystopian, political, religious
@@ -304,24 +321,26 @@ Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 
 ## Critical Rules
 
-1. **ALL new images must be portrait** — 1536×2752 from Nano Banana Pro, never landscape or square
+1. **ALL new images must be portrait 9:16** — Higgsfield Nano Banana Pro at `aspect_ratio: 9:16`, `resolution: 2k`. Never landscape, never square, never 2:3 going forward (2:3 anchors from 2026-05-17 grandfathered).
 2. **This skill never edits the image picker code.** `setBackgroundFor()` and `getWeatherBackgroundFolder()` in `assets/app.js` are owned by pw-weather-logic. New conditions, new rotation, new aliasing all require a pw-weather-logic change.
 3. **Never generate images with text**, signs, or readable words
 4. **Never use American or European visual references** — SA aesthetic only
 5. **Braai imagery = Saturday slots only** (`day_6`, `day_13`). Sunday slots (`day_7`, `day_14`) get family-lunch / lazy-Sunday content.
 6. **`day.jpg` is fallback only** — never use as a primary named slot
-7. **Always include diversity instructions** in prompts featuring people
-8. **Check file sizes** — images over 1 MB will slow the app, especially on mobile data
-9. **Nationally representative** — spread SA regional references across all folders, not just Western Cape
-10. **No licensed content** — no Springbok/Bafana/team kits, no brand logos, no recognizable real people, no IP characters
-11. **Every prompt is a moment, not a tableau** — specify what is happening, not just the setting
-12. **No loadshedding as a default** — SA loadshedding has been largely resolved; only include if specifically relevant
-13. **This skill never touches the weather algorithm** — image system is downstream of weather decisions
+7. **Diversity instructions are scope-aware** — include the group boilerplate ONLY when 2+ humans in frame. Solo human scenes specify the character's identity directly. No-human scenes omit the diversity clause entirely.
+8. **Negative prompts are time-slot-aware** — base block always. Add `artificial lighting indoors` ONLY for day-slot (08:00–17:00) generations. Dawn/dusk/night scenes use the base block alone so warm interior light is allowed.
+9. **Check file sizes** — images over 1 MB will slow the app, especially on mobile data
+10. **Nationally representative** — spread SA regional references across all folders, not just Western Cape
+11. **No licensed content** — no Springbok/Bafana/team kits, no brand logos, no recognizable real people, no IP characters
+12. **Every prompt is a moment, not a tableau** — specify what is happening, not just the setting
+13. **No loadshedding as a default** — SA loadshedding has been largely resolved; only include if specifically relevant
+14. **This skill never touches the weather algorithm** — image system is downstream of weather decisions
 
 ---
 
 ## Versioning
 
 - **v1.0** (2026-03 to 2026-05-17) — Original canonical skill. Square 1024×1024. 7 conditions (no cold-clear, no fog listed). Leonardo only. Stale function name reference and incorrect day-of-week → day_N mapping.
-- **v2.0** (2026-05-17, this morning) — Portrait 1536×2752. Added cold-clear condition with 4 locked anchor jobs. Added Higgsfield MCP / ChatGPT Pro / Minnie generation lanes. Added moment-not-tableau prompt rule. Added pw-image-staging pipeline reference. Added image rotation system (Phase 2). Documented banned content. Folder list aligned to actual repo state (heat not hot, fog added, cold-clear new).
-- **v2.1** (2026-05-17, evening) — Three surgical ship-blocker fixes from Claude Code self-eval: (a) removed stale `getBackgroundImage()` function reference, scope statement now names real `setBackgroundFor()` / `getWeatherBackgroundFolder()` and disavows edits to picker code; (b) corrected day-of-week → day_N mapping to match what the picker actually does (Sat = day_6 or day_13, Sun = day_7 or day_14, weekdays = the rest); (c) updated Critical Rule #1 / #2 wording for picker-code scope and removed the obsolete "don't update 14-day cycle yet" rule (the 14-day cycle is shipping). Clear folder slot table re-mapped to correct weekday/weekend positions. Slot subject maps for the other 8 condition folders parked as v2.2 work — drafted while batching each folder, not speculatively.
+- **v2.0** (2026-05-17, morning) — Portrait. Added cold-clear condition with 4 locked anchor jobs. Added Higgsfield MCP / ChatGPT Pro / Minnie generation lanes. Added moment-not-tableau prompt rule. Added pw-image-staging pipeline reference. Added image rotation system (Phase 2). Documented banned content. Folder list aligned to actual repo state (heat not hot, fog added, cold-clear new).
+- **v2.1** (2026-05-17, evening) — Three surgical ship-blocker fixes from Claude Code self-eval: (a) removed stale `getBackgroundImage()` function reference, scope statement now names real `setBackgroundFor()` / `getWeatherBackgroundFolder()` and disavows edits to picker code; (b) corrected day-of-week → day_N mapping (Sat = day_6 or day_13, Sun = day_7 or day_14, weekdays = the rest); (c) updated Critical Rule #1 / #2 wording and removed the obsolete "don't update 14-day cycle yet" rule. Clear folder slot table re-mapped to correct weekday/weekend positions.
+- **v2.2** (2026-05-18) — Three fixes from Claude Code self-eval + GPT-5.5 adversarial review of v2.1: (a) **Diversity instruction scoped** — group boilerplate applies only when 2+ humans in frame, omitted for solo / animal / object scenes (group boilerplate created contradictions in solo scenes); (b) **Universal negative prompt split** into base block (always) + day-only modifier `artificial lighting indoors` — dawn/dusk/night legitimately use warm artificial light, the universal ban was fighting those scenes; (c) **Aspect ratio reconciled** — switched to Higgsfield API params `aspect_ratio: 9:16, resolution: 2k`, dropped the stale `1536×2752` pixel-dimension claim. 4 cold-clear anchors from 2026-05-17 are grandfathered at 2:3; all new generations are 9:16. Critical Rules updated (#1 9:16 spec, #7 scoped diversity, #8 time-slot negatives). Slot subject maps for the other 8 condition folders still parked as v2.3 work — draft while batching, not speculatively.
