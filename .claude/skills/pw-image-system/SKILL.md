@@ -134,9 +134,21 @@ artificial lighting indoors
 
 **Dawn / dusk / night**: use the base block only. These scenes legitimately use warm artificial light — kitchen lights, lamps, fairy lights, battery lanterns, street lights. Banning indoor artificial lighting at these hours fights the brief.
 
-### Diversity Instructions (scoped by scene, 2026-05-18)
+### Diversity Instructions (scoped by HUMAN COUNT, 2026-05-19)
 
-**When 2+ humans are in the frame** (family, friend group, colleagues, public scene): include this in the prompt:
+Diversity guidance scales with how many humans are actually in the frame. The point is to prevent the model defaulting to one race in scenes where multiple people are present — NOT to engineer every frame to display every population group.
+
+**Count 0 — no humans in frame** (animal, object, landscape only):
+Omit the diversity instruction entirely.
+
+**Count 1 — solo scene**:
+Specify the character's identity directly in the prompt (e.g. "Black SA grandmother in her mid-60s", "Indian SA father in his early-40s", "Coloured SA teenager"). The group-diversity boilerplate creates a contradiction in a solo scene — one person cannot be a "mixed race group." Across the 14-day cycle, rotate the demographics — don't make every solo subject the same race.
+
+**Count 2–3 — couple / household / intimate family / small workplace** (the COUNT-AWARE bucket added 2026-05-19):
+Specify each character's identity directly in the prompt, like the solo rule but for each person (e.g. "Black SA father in his 40s and his two daughters, one 8 and one 12"). DO NOT include the four-group boilerplate — a 3-person family physically cannot represent Black + Coloured + White + Indian SA together without the model adding extra figures or distorting identities. Families do NOT need to be engineered to display every population group. Mixed-heritage families are fine, single-heritage families are fine, what matters is the scene feels authentic and the demographics are varied across the 14-day cycle.
+
+**Count 4+ — public / group scene** (restaurant, office park, beach, market, party of 5+):
+Include the group-diversity boilerplate:
 
 ```
 Include diverse South African characters — mixed race group reflecting the real
@@ -145,11 +157,9 @@ naturally together. No stereotyping. Natural body language and authentic SA
 clothing/style.
 ```
 
-**When 1 human is in the frame** (solo scene): specify the character's identity directly in the prompt (e.g. "Black SA grandmother in her mid-60s", "Indian SA father in his early-40s"). The group-diversity boilerplate creates a contradiction in a solo scene — one person cannot be a "mixed race group." Across the 14-day cycle, rotate the demographics — don't make every solo subject the same race.
+**Universal rule across all counts:** Across the 14-day cycle of any one condition folder, rotate the demographics of the human subjects. Don't make every solo subject in the cold-clear bucket Black; don't make every couple in the heat bucket White. The diversity goal lives at the BUCKET level (variety across the 14 slots), not at the FRAME level (every frame must show every group).
 
-**When no humans are in the frame** (animal, object, landscape only): omit the diversity instruction entirely.
-
-This is the canonical scope for PW. The rule is "do not let the model default to one race only in group scenes," not "force diversity in every frame regardless of subject."
+This is the canonical scope for PW. The rule is "do not let the model default to one race only in group scenes AND vary demographics across the cycle in single/small scenes," not "force diversity in every frame regardless of subject."
 
 ---
 
@@ -174,6 +184,14 @@ This is the canonical scope for PW. The rule is "do not let the model default to
 - Moment (lands): "Mom reaches to button son's school-blazer collar as he checks the gate"
 
 Bucket signals (frost, breath, jacket, fynbos, jacaranda) become wallpaper without a moment.
+
+### Brief integrity check (added 2026-05-19)
+
+Before sending any prompt for generation, count the humans you actually wrote into the prompt and confirm:
+
+1. **Visible-count matches stated count.** If your metadata says "family of 4" but the prompt text only describes mother + two children, that's a mismatch. Fix one or the other. Models add or distort figures to satisfy contradictory cues.
+2. **Diversity rule matches count.** Re-run the Count 0 / 1 / 2-3 / 4+ check against the count you just verified. Don't carry forward a stale diversity bucket from a previous draft.
+3. **No engineered demographics in small groups.** If you wrote a 2-3 person scene and the prompt still says "Black, Coloured, White, and Indian South Africans together," delete that line. The four-group boilerplate is for Count 4+ only.
 
 ### Banned content (in addition to the universal negative prompt)
 
@@ -208,10 +226,10 @@ Bucket signals (frost, breath, jacket, fynbos, jacaranda) become wallpaper witho
 **Signals (must appear):** Visible breath OR breath implied (mug steam); frost on grass/lawn/windscreens; bare winter trees (jacaranda); dry brown highveld grass — never wet green; clear blue or navy sky; modern suburban architecture.
 **Wardrobe:** Thick puffer jackets, woolly jumpers, beanies, scarves, gloves, sunglasses paired with winter wear (the cold-clear signature), closed shoes, layered.
 **Locked 4 anchor images (2026-05-17, grandfathered at aspect_ratio 2:3):**
-- `cold-clear/dawn_1.jpg` candidate — Black SA mother buttoning son's school blazer at back gate, both breath visible (Higgsfield job `cb44f773`)
-- `cold-clear/day_1.jpg` candidate (weekday) — Boerbull on sunlit modern suburban patio, breath visible, ear cocked (Higgsfield job `7e4aa8eb`)
-- `cold-clear/dusk_1.jpg` candidate — Frosted aviator sunglasses + skinned coffee + paperback on modern outdoor table (Higgsfield job `58436ea4`)
-- `cold-clear/night_1.jpg` candidate — Grey cat approaching battery LED lantern on modern patio (Higgsfield job `5a1cffaa`)
+- `cold-clear/dawn_1.jpg` candidate — Black SA mother buttoning son's school blazer at back gate, both breath visible (Higgsfield job `cb44f773`). **Count: 2 humans (mother + son). Falls under Count 2-3 bucket — identities specified directly, no four-group boilerplate.**
+- `cold-clear/day_1.jpg` candidate (weekday) — Boerbull on sunlit modern suburban patio, breath visible, ear cocked (Higgsfield job `7e4aa8eb`). **Count: 0 humans — diversity clause omitted.**
+- `cold-clear/dusk_1.jpg` candidate — Frosted aviator sunglasses + skinned coffee + paperback on modern outdoor table (Higgsfield job `58436ea4`). **Count: 0 humans — diversity clause omitted.**
+- `cold-clear/night_1.jpg` candidate — Grey cat approaching battery LED lantern on modern patio (Higgsfield job `5a1cffaa`). **Count: 0 humans — diversity clause omitted.**
 
 These 4 are anchors pending pw-image-staging pipeline build for proper review + sequential naming + promotion.
 
@@ -234,7 +252,7 @@ These 4 are anchors pending pw-image-staging pipeline build for proper review + 
 
 ## Clear Folder Image Slots (Reference)
 
-Target subjects for the clear condition folder. Day-type column matches what the picker code actually does. Other condition folders should follow similar variety across the 14-day cycle (per-folder slot maps are v2.3+ work — draft them while batching that folder, not speculatively).
+Target subjects for the clear condition folder. Day-type column matches what the picker code actually does. Other condition folders should follow similar variety across the 14-day cycle (per-folder slot maps are v2.4+ work — draft them while batching that folder, not speculatively).
 
 | Slot | Day type | Subject |
 |---|---|---|
@@ -268,10 +286,11 @@ Before committing any new image to the repo (or promoting from pw-image-staging)
 4. **File size** — should be under 500 KB for web performance. If over 1 MB, resize or convert to WebP.
 5. **SA authenticity** — does it look like South Africa, not California or Europe?
 6. **Mood match** — does the image match the condition folder's mood?
-7. **Diversity** — if 2+ people are shown, is the group diverse? If 1 person, is the demographic varied across the cycle (not the same race every slot)?
-8. **No floating objects** — common AI artifact, especially with outdoor scenes
-9. **No licensed content** — no Springbok jerseys, no team kits, no brand logos, no recognizable real people, no copyrighted characters
-10. **No banned mood** — no poverty, grit, dystopian, political, religious
+7. **Human count matches diversity rule** — 0 humans = no diversity clause was needed; 1 human = identity specified; 2-3 humans = each identity specified, no four-group demand; 4+ humans = group boilerplate applied. The image should match the bucket the prompt was built for.
+8. **Demographics vary across the cycle** — across the 14-day cycle of this condition folder, are the demographics of human subjects varied (not all the same race)?
+9. **No floating objects** — common AI artifact, especially with outdoor scenes
+10. **No licensed content** — no Springbok jerseys, no team kits, no brand logos, no recognizable real people, no copyrighted characters
+11. **No banned mood** — no poverty, grit, dystopian, political, religious
 
 ---
 
@@ -327,14 +346,15 @@ Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 4. **Never use American or European visual references** — SA aesthetic only
 5. **Braai imagery = Saturday slots only** (`day_6`, `day_13`). Sunday slots (`day_7`, `day_14`) get family-lunch / lazy-Sunday content.
 6. **`day.jpg` is fallback only** — never use as a primary named slot
-7. **Diversity instructions are scope-aware** — include the group boilerplate ONLY when 2+ humans in frame. Solo human scenes specify the character's identity directly. No-human scenes omit the diversity clause entirely.
+7. **Diversity instructions are count-aware** — 0 humans = omit. 1 human = specify identity directly. 2-3 humans = specify each identity directly, NO four-group boilerplate. 4+ humans = group boilerplate applies. Families must NEVER be engineered to display every population group.
 8. **Negative prompts are time-slot-aware** — base block always. Add `artificial lighting indoors` ONLY for day-slot (08:00–17:00) generations. Dawn/dusk/night scenes use the base block alone so warm interior light is allowed.
-9. **Check file sizes** — images over 1 MB will slow the app, especially on mobile data
-10. **Nationally representative** — spread SA regional references across all folders, not just Western Cape
-11. **No licensed content** — no Springbok/Bafana/team kits, no brand logos, no recognizable real people, no IP characters
-12. **Every prompt is a moment, not a tableau** — specify what is happening, not just the setting
-13. **No loadshedding as a default** — SA loadshedding has been largely resolved; only include if specifically relevant
-14. **This skill never touches the weather algorithm** — image system is downstream of weather decisions
+9. **Run the brief integrity check before generation** — visible-count matches stated count, diversity rule matches count, no engineered four-group demand in 2-3 person scenes.
+10. **Check file sizes** — images over 1 MB will slow the app, especially on mobile data
+11. **Nationally representative** — spread SA regional references across all folders, not just Western Cape. Vary demographics across the 14-day cycle of each condition folder.
+12. **No licensed content** — no Springbok/Bafana/team kits, no brand logos, no recognizable real people, no IP characters
+13. **Every prompt is a moment, not a tableau** — specify what is happening, not just the setting
+14. **No loadshedding as a default** — SA loadshedding has been largely resolved; only include if specifically relevant
+15. **This skill never touches the weather algorithm** — image system is downstream of weather decisions
 
 ---
 
@@ -342,5 +362,6 @@ Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 
 - **v1.0** (2026-03 to 2026-05-17) — Original canonical skill. Square 1024×1024. 7 conditions (no cold-clear, no fog listed). Leonardo only. Stale function name reference and incorrect day-of-week → day_N mapping.
 - **v2.0** (2026-05-17, morning) — Portrait. Added cold-clear condition with 4 locked anchor jobs. Added Higgsfield MCP / ChatGPT Pro / Minnie generation lanes. Added moment-not-tableau prompt rule. Added pw-image-staging pipeline reference. Added image rotation system (Phase 2). Documented banned content. Folder list aligned to actual repo state (heat not hot, fog added, cold-clear new).
-- **v2.1** (2026-05-17, evening) — Three surgical ship-blocker fixes from Claude Code self-eval: (a) removed stale `getBackgroundImage()` function reference, scope statement now names real `setBackgroundFor()` / `getWeatherBackgroundFolder()` and disavows edits to picker code; (b) corrected day-of-week → day_N mapping (Sat = day_6 or day_13, Sun = day_7 or day_14, weekdays = the rest); (c) updated Critical Rule #1 / #2 wording and removed the obsolete "don't update 14-day cycle yet" rule. Clear folder slot table re-mapped to correct weekday/weekend positions.
-- **v2.2** (2026-05-18) — Three fixes from Claude Code self-eval + GPT-5.5 adversarial review of v2.1: (a) **Diversity instruction scoped** — group boilerplate applies only when 2+ humans in frame, omitted for solo / animal / object scenes (group boilerplate created contradictions in solo scenes); (b) **Universal negative prompt split** into base block (always) + day-only modifier `artificial lighting indoors` — dawn/dusk/night legitimately use warm artificial light, the universal ban was fighting those scenes; (c) **Aspect ratio reconciled** — switched to Higgsfield API params `aspect_ratio: 9:16, resolution: 2k`, dropped the stale `1536×2752` pixel-dimension claim. 4 cold-clear anchors from 2026-05-17 are grandfathered at 2:3; all new generations are 9:16. Critical Rules updated (#1 9:16 spec, #7 scoped diversity, #8 time-slot negatives). Slot subject maps for the other 8 condition folders still parked as v2.3 work — draft while batching, not speculatively.
+- **v2.1** (2026-05-17, evening) — Three surgical ship-blocker fixes from Claude Code self-eval: function name reference corrected, day-of-week mapping fixed, obsolete 7-day-vs-14-day rule dropped.
+- **v2.2** (2026-05-18) — Three fixes from Claude Code self-eval + GPT-5.5 adversarial review of v2.1: diversity scoped by scene presence (later proved too coarse — see v2.3), negative prompt split into base + day-only modifier, aspect ratio reconciled to 9:16 + 2k resolution.
+- **v2.3** (2026-05-19) — Two surgical fixes from GPT-5.5 adversarial review of v2.2: (a) **Diversity rule re-bucketed by count** — v2.2's "2+ humans" bucket forced a four-group demand on couples and 3-person families, which the model can only satisfy by adding extra figures or distorting identities. v2.3 splits the bucket: Count 0 omits, Count 1 specifies identity, **Count 2-3 specifies each identity directly WITHOUT the four-group boilerplate (NEW)**, Count 4+ keeps the group boilerplate. Explicit anti-engineering line: "Families must NEVER be engineered to display every population group." Demographic variety lives at the BUCKET level (across the 14-day cycle), not at the FRAME level. (b) **Added "Brief integrity check" prompt-discipline section** — count visible humans, confirm count matches stated bucket, confirm diversity rule matches count. Catches the metadata/prompt mismatch GPT flagged in v2.2 brief 1 ("family of 4" labelled but only 3 people in the prompt). Critical Rules updated (#7 count-aware, #9 new integrity check). Cold-clear anchor entries annotated with their count buckets so future re-rolls can't drift. Image Quality Checklist gains "human count matches diversity rule" + "demographics vary across cycle" items. Parked for v2.4+: scene-aware day-only negative (currently fires on day-slot indoor scenes), high-risk prop blacklist (car plates, house numbers, appliance logos, branded bottles, school items, trail signs, shop signage), slot subject maps for the other 8 condition folders.
