@@ -3,17 +3,17 @@ name: pw-image-system
 description: >
   Probably Weather background image system specialist. Use this skill when working on
   background image content, file naming conventions, condition-to-image mapping, the
-  14-day image cycle, time-slot image selection, image generation briefs (via
-  Higgsfield MCP, Leonardo, OpenArt, or ChatGPT Pro), or generating new images for
-  the assets/images/bg/ folders. Triggers on: background images, image naming,
-  condition folders, image cycle, day images, dawn images, dusk images, night images,
-  image brief, image generation, SA image aesthetic, clear folder, cloudy folder,
-  rain folder, weekend images, braai images, image slots, fallback images, cold-clear
-  folder, image rotation system, pw-image-staging pipeline, gpt-image-2, GPT Image 2,
-  Nano Banana Pro, OpenArt, architectural variety, redbrick, humour register.
-  ALWAYS trigger when the user mentions background images, image generation briefs,
-  image naming conventions, the 14-day cycle, or any condition bucket for Probably
-  Weather.
+  28-day image cycle (day slots) and 14-slot time-slot cycles (dawn/dusk/night),
+  image generation briefs (via Higgsfield MCP, Leonardo, OpenArt, or ChatGPT Pro),
+  or generating new images for the assets/images/bg/ folders. Triggers on: background
+  images, image naming, condition folders, image cycle, 28-day cycle, 14-day cycle,
+  day images, dawn images, dusk images, night images, image brief, image generation,
+  SA image aesthetic, clear folder, cloudy folder, rain folder, weekend images, braai
+  images, image slots, fallback images, cold-clear folder, image rotation system,
+  pw-image-staging pipeline, gpt-image-2, GPT Image 2, Nano Banana Pro, OpenArt,
+  architectural variety, redbrick, humour register. ALWAYS trigger when the user
+  mentions background images, image generation briefs, image naming conventions,
+  the image cycle, or any condition bucket for Probably Weather.
 ---
 
 # PW Image System: Background Image Specialist
@@ -23,8 +23,7 @@ You are the image system specialist for Probably Weather. You own the background
 ## Your Domain
 
 - `assets/images/bg/` folder structure (what files exist in each condition folder)
-- The 14-day day/weekend image cycle (which day_N image gets shown on which weekday)
-- Dawn, dusk, night image sets (per-condition time-slot variations)
+- The 28-day day/weekend image cycle and the 14-slot dawn / dusk / night cycles (which slot gets shown on which weekday)
 - Image generation briefs for gpt-image-2 / Nano Banana Pro (via Higgsfield MCP, Leonardo, OpenArt, or ChatGPT Pro)
 - Post-generation quality control and staging
 
@@ -57,6 +56,8 @@ The **image picker code** in `assets/app.js` (currently `setBackgroundFor()` cal
 
 The weather algorithm and condition routing in `api/weather.js` is also out of scope. This skill is downstream of weather decisions: once a condition is resolved, this skill governs what image is shown.
 
+**Picker extension to 28-day cycle:** the current picker uses a mod-14 rotation. Extending it to mod-28 (to read day_15–day_28) is a pw-weather-logic sprint that happens AFTER the v2.5 library is full — not a pw-image-system change. Until that sprint ships, day_15–day_28 sit in the repo unused. This is intentional: generate the library first, then flip the picker. Don't block library generation on the picker change.
+
 ---
 
 ## Folder Structure (verified in repo, 2026-05-17)
@@ -72,16 +73,18 @@ assets/images/bg/
   rain/
   storm/
   wind/
-  default.jpg   ← global fallback at folder root
+  default.jpg   ← global fallback at folder root (currently 1920×1080 landscape; flagged for eventual portrait replacement)
 ```
 
 UV and rain-possible are handled in the picker code as aliases — they don't have their own folders. Do not create those folders.
 
+**As of the 2026-05-19 audit:** `cold-clear/` folder does NOT yet exist on disk (the 23 staged candidates are in `pw-image-staging/inbox/cold-clear/` and `reviewed/cold-clear/`, awaiting `promote.py`). The other 8 condition folders are fully populated with 24 files each (the v2.4-era starter set).
+
 ---
 
-## File Naming Convention (14-Day Cycle)
+## File Naming Convention (28-Day Cycle for Day Slots, 14-Slot Cycles for Time Slots) — v2.5
 
-The picker uses a mod-14 day-of-year rotation. **The day_N slot maps to day-of-week as follows** (verified against `setBackgroundFor` / `getWeatherBackgroundFolder` in app.js):
+### Day slots — 28-day mod-28 rotation
 
 | Slot | Day type |
 |---|---|
@@ -91,16 +94,90 @@ The picker uses a mod-14 day-of-year rotation. **The day_N slot maps to day-of-w
 | `day_8` – `day_12` | Week 2 weekdays (Mon–Fri) |
 | `day_13` | **Week 2 Saturday** |
 | `day_14` | **Week 2 Sunday** |
+| `day_15` – `day_19` | Week 3 weekdays (Mon–Fri) |
+| `day_20` | **Week 3 Saturday** |
+| `day_21` | **Week 3 Sunday** |
+| `day_22` – `day_26` | Week 4 weekdays (Mon–Fri) |
+| `day_27` | **Week 4 Saturday** |
+| `day_28` | **Week 4 Sunday** |
 | `day.jpg` | FALLBACK ONLY, never use as a primary named slot |
 
-**Weekend slots = `day_6`, `day_7`, `day_13`, `day_14`.** Braai content, family lunches, lazy-Sunday animals go here. Weekday slots = `day_1`–`day_5` and `day_8`–`day_12`. School-run, commute, lunch-break, dusk-return content goes here.
+**Weekend slots = `day_6`, `day_7`, `day_13`, `day_14`, `day_20`, `day_21`, `day_27`, `day_28`.**
+- **Saturdays (`day_6`, `day_13`, `day_20`, `day_27`)** — braai content, Weber-prep, fire-starting, kuier energy.
+- **Sundays (`day_7`, `day_14`, `day_21`, `day_28`)** — family lunches, lazy-Sunday animals, multi-generational stoep scenes.
+- **Weekday slots** (`day_1`–`day_5`, `day_8`–`day_12`, `day_15`–`day_19`, `day_22`–`day_26`) — school-run, commute, lunch-break, dusk-return content.
 
-### Time-Slot Images (per condition folder)
-- `dawn_1.jpg`, `dawn_2.jpg`, `dawn_3.jpg`
-- `dusk_1.jpg`, `dusk_2.jpg`, `dusk_3.jpg`
-- `night_1.jpg`, `night_2.jpg`, `night_3.jpg`
+### Dawn / dusk / night slots — 14-slot mod-14 rotation each
 
-**Total per condition folder when complete:** 14 day images + 1 day fallback + 3 dawn + 3 dusk + 3 night = **24 images**.
+The time-slot cycles ride on the same 14-day Mon→Sun→Mon→Sun cadence as the previous (pre-v2.5) day cycle, doubled in size from v2.4's 3 slots each to 14 slots each. Same Saturday / Sunday positions.
+
+| Slot | Day type |
+|---|---|
+| `dawn_1` – `dawn_5` | Week 1 weekdays (Mon–Fri) |
+| `dawn_6` | **Week 1 Saturday** |
+| `dawn_7` | **Week 1 Sunday** |
+| `dawn_8` – `dawn_12` | Week 2 weekdays (Mon–Fri) |
+| `dawn_13` | **Week 2 Saturday** |
+| `dawn_14` | **Week 2 Sunday** |
+
+Same shape for `dusk_1`–`dusk_14` and `night_1`–`night_14`.
+
+Weekend dawn / dusk / night slots (`dawn_6`, `dawn_7`, `dawn_13`, `dawn_14`, and the same numbers in dusk and night) lean toward weekend-coded content (early-Saturday-braai-prep dawn, lazy-Sunday-dusk-stoep, etc.). Weekday slots lean toward weekday-coded content (commute-dawn, after-work-dusk, school-night).
+
+---
+
+## Target Counts (Pre-launch Minimum) — v2.5
+
+Per condition folder when complete:
+
+| Slot family | Count |
+|---|---|
+| `day_1` – `day_28` | **28** |
+| `day.jpg` fallback | 1 |
+| `dawn_1` – `dawn_14` | **14** |
+| `dusk_1` – `dusk_14` | **14** |
+| `night_1` – `night_14` | **14** |
+| **Total per condition** | **71** |
+
+**Pre-launch minimum target. Pools may grow beyond these after launch** (the rotation system in Phase 2 reads a larger manifest and rotates which slots are active per week — so over time, each bucket can accumulate dozens more variants without needing all of them generated up-front).
+
+Across 9 condition folders: 9 × 71 = **639 images at full pre-launch target.**
+
+---
+
+## Bucket-by-Bucket Reality (2026-05-19 filesystem audit) — v2.5
+
+Audit-grounded state as of 2026-05-19. **Existing files stay untouched** per Al's 2026-05-19 decision ("i dont want to change any of the existing images"). The rotation system handles eventual dimension reconciliation when it ships.
+
+| Condition | Existing on disk (24 each = v2.4-era starter set) | New slots to fill for v2.5 target |
+|---|---|---|
+| `clear` | 24 (22 portrait, 2 squares: day_1, day_11) | day_15–28, dawn_4–14, dusk_4–14, night_4–14 → **47 new** |
+| `cloudy` | 24 portrait (mixed dims, all ~9:16-ish) | day_15–28, dawn_4–14, dusk_4–14, night_4–14 → **47 new** |
+| `cold` | 24 portrait | **47 new** |
+| `cold-clear` | 0 on disk + 23 in staging pipeline awaiting promote (5 reviewed anchors + 18 inbox candidates) | day_4–28 *if all 23 staged survive review*, dawn_4–14, dusk_4–14, night_4–14 → **~47 new after promote** (exact count depends on review outcomes) |
+| `fog` | 24 portrait | **47 new** |
+| `heat` | 24 portrait | **47 new** |
+| `rain` | 24 portrait (`rain/day_4` was flagged 2026-05-06 "added people not in source" — accept or replace separately, doesn't block the 47 new) | **47 new** |
+| `storm` | 24 portrait | **47 new** |
+| `wind` | 24 mixed: 17 portrait + 5 squares (day_2, day_3, day_4, day_5, day_7) + 2 landscapes (dusk_1, night_2) + 2 reversed-portrait (day, day_1) | **47 new** (existing outliers stay per Al — rotation buys time later) |
+| **Total new** | | **~423 images** across 9 buckets |
+
+**Cost at OpenArt Medium tier** (35 credits / image): 423 × 35 = **~14,805 credits** for the full library. Current 26,515 OpenArt balance covers this 1.8× before subscription renewal. Comfortable headroom.
+
+---
+
+## Existing Image Dimensions (audited 2026-05-19) — v2.5
+
+The 193 existing images on disk span four dimension classes. **All grandfathered.** All new images from v2.5 onward at canonical 1008 × 1792 (see Image Generation Spec below).
+
+| Dimension | Aspect | Count | Where |
+|---|---|---|---|
+| `1024 × 1024` | square | 7 | 2 in `clear/` (day_1, day_11), 5 in `wind/` (day_2, day_3, day_4, day_5, day_7) |
+| `1920 × 1080` | 16:9 landscape | 3 | 2 in `wind/` (dusk_1, night_2), 1 at `bg/default.jpg` root fallback (flagged for eventual portrait replacement) |
+| `1376 × 768` | reversed-portrait (landscape orientation but tall ratio in transposed form) | 2 | 2 in `wind/` (`day.jpg`, `day_1`) |
+| `1536 × 2752` / `941 × 1672` / `768 × 1376` | 9:16-adjacent portraits (all approximately 0.558–0.563 ratio) | 181 | spread across all 8 populated folders in various ratios |
+
+New 1008 × 1792 images will sit alongside these grandfathered variants in the same folders. The picker doesn't care about dimensions — it picks by slot name. Mobile viewport sizing handles the variance.
 
 ---
 
@@ -115,18 +192,18 @@ The picker uses a mod-14 day-of-year rotation. **The day_N slot maps to day-of-w
 
 ---
 
-## Image Generation Spec (updated 2026-05-19 for v2.4)
+## Image Generation Spec (updated 2026-05-19 for v2.4, dimension grandfather list refreshed 2026-05-19 for v2.5)
 
 ### Canonical dimension: **1008 × 1792**
 
-True 9:16 portrait. This is OpenArt's native preset for 9:16 / 1k tier. Higgsfield's `aspect_ratio: 9:16` parameter targets the same ratio at 2k. The earlier v2.x spec said "1024×1792" but that is a 4:7 ratio (0.571), not true 9:16 (0.5625) — at non-standard ratios the model can return a slightly squished frame. **1008 × 1792 is the v2.4 target.**
+True 9:16 portrait. This is OpenArt's native preset for 9:16 / 1k tier. Higgsfield's `aspect_ratio: 9:16` parameter targets the same ratio at 2k. The earlier v2.x spec said "1024×1792" but that is a 4:7 ratio (0.571), not true 9:16 (0.5625) — at non-standard ratios the model can return a slightly squished frame. **1008 × 1792 is the v2.4+ target.**
 
-**Grandfathered exceptions:**
+**Grandfathered exceptions** (audited 2026-05-19):
 - 4 cold-clear anchor images locked 2026-05-17 at `aspect_ratio: 2:3` stay as-is.
-- 19 cold-clear candidates from 2026-05-19 overnight Higgsfield batch at 9:16/2k stay as-is.
-- Existing 105 v1.0 square images (clear/cold/fog/heat/rain/storm) stay as-is — the planned rotation system (Phase 2) buys time for incremental redo later.
+- 19 cold-clear candidates from 2026-05-19 overnight Higgsfield batch at 9:16/2k stay as-is (in staging pipeline awaiting promote).
+- All 193 existing images on disk at the four dimension classes documented in "Existing Image Dimensions" above stay as-is. The rotation system (Phase 2) handles eventual incremental reconciliation post-launch.
 
-**ALL NEW IMAGES from v2.4 onward: 1008 × 1792.**
+**ALL NEW IMAGES from v2.4+ onward: 1008 × 1792.**
 
 ### Model selection
 
@@ -196,10 +273,10 @@ Diversity guidance scales with how many humans are actually in the frame. The po
 Omit the diversity instruction entirely.
 
 **Count 1 — solo scene**:
-Specify the character's identity directly in the prompt (e.g. "Black SA grandmother in her mid-60s", "Indian SA father in his early-40s", "Coloured SA teenager"). The group-diversity boilerplate creates a contradiction in a solo scene — one person cannot be a "mixed race group." Across the 14-day cycle, rotate the demographics — don't make every solo subject the same race.
+Specify the character's identity directly in the prompt (e.g. "Black SA grandmother in her mid-60s", "Indian SA father in his early-40s", "Coloured SA teenager"). The group-diversity boilerplate creates a contradiction in a solo scene — one person cannot be a "mixed race group." Across the cycle, rotate the demographics — don't make every solo subject the same race.
 
 **Count 2–3 — couple / household / intimate family / small workplace**:
-Specify each character's identity directly in the prompt, like the solo rule but for each person (e.g. "Black SA father in his 40s and his two daughters, one 8 and one 12"). DO NOT include the four-group boilerplate — a 3-person family physically cannot represent Black + Coloured + White + Indian SA together without the model adding extra figures or distorting identities. Families do NOT need to be engineered to display every population group. Mixed-heritage families are fine, single-heritage families are fine, what matters is the scene feels authentic and the demographics are varied across the 14-day cycle.
+Specify each character's identity directly in the prompt, like the solo rule but for each person (e.g. "Black SA father in his 40s and his two daughters, one 8 and one 12"). DO NOT include the four-group boilerplate — a 3-person family physically cannot represent Black + Coloured + White + Indian SA together without the model adding extra figures or distorting identities. Families do NOT need to be engineered to display every population group. Mixed-heritage families are fine, single-heritage families are fine, what matters is the scene feels authentic and the demographics are varied across the cycle.
 
 **Count 4+ — public / group scene** (restaurant, office park, beach, market, party of 5+):
 Include the group-diversity boilerplate:
@@ -211,7 +288,7 @@ naturally together. No stereotyping. Natural body language and authentic SA
 clothing/style.
 ```
 
-**Universal rule across all counts:** Across the 14-day cycle of any one condition folder, rotate the demographics of the human subjects. Don't make every solo subject in the cold-clear bucket Black; don't make every couple in the heat bucket White. The diversity goal lives at the BUCKET level (variety across the 14 slots), not at the FRAME level (every frame must show every group).
+**Universal rule across all counts:** Across the full cycle of any one condition folder (28 day slots + 14 each for dawn / dusk / night), rotate the demographics of the human subjects. Don't make every solo subject in the cold-clear bucket Black; don't make every couple in the heat bucket White. The diversity goal lives at the BUCKET level (variety across the cycle), not at the FRAME level (every frame must show every group).
 
 This is the canonical scope for PW. The rule is "do not let the model default to one race only in group scenes AND vary demographics across the cycle in single/small scenes," not "force diversity in every frame regardless of subject."
 
@@ -227,7 +304,7 @@ This is the canonical scope for PW. The rule is "do not let the model default to
 - No American suburban aesthetic (white picket fences, yellow school buses, mailboxes at the curb)
 - No generic stock-photo feel
 - **Positive vibes only — no poverty, grit, or dystopian aesthetic**
-- **Braai scenes ONLY for Saturday slots** (`day_6`, `day_13`). Sunday slots (`day_7`, `day_14`) get family-lunch / lazy-Sunday / cute-animal content.
+- **Braai scenes ONLY for Saturday slots** (`day_6`, `day_13`, `day_20`, `day_27`). Sunday slots (`day_7`, `day_14`, `day_21`, `day_28`) get family-lunch / lazy-Sunday / cute-animal content.
 - No text, signs, or readable words in any generated image
 
 ---
@@ -247,7 +324,7 @@ Al's verdict on the 2026-05-19 cold-clear overnight batch: *"all the houses and 
 
 ### Required: affirmatively specify the architectural type per prompt
 
-Rotate across the 14-day cycle of each condition folder. **Nine canonical SA suburban / residential types:**
+Rotate across the cycle of each condition folder. **Nine canonical SA suburban / residential types:**
 
 1. **Rendered white-plaster double-storey** — aluminum-frame windows, glass balustrades, clean modern lines. Sandton / Bryanston / Waterfall feel.
 2. **Painted stock-brick** — sage / terracotta / navy / charcoal accents, steel-frame windows. 1980s-90s suburb refreshed.
@@ -291,7 +368,7 @@ Bryanston, Constantia, Helderberg, Waterfall, Sandton residential, Ballito, La L
 
 ### Bucket-level rotation rule
 
-Architectural variety lives at the BUCKET level per the same logic as the count-aware diversity rule. **Across the 14-day cycle of one condition folder, rotate architectural types 1–9. No one type should appear more than 3 times in any 14-image cycle.** Within a single frame, pick ONE type and commit to its details — don't blend (a Cape Dutch farmhouse with a cantilevered concrete roof is incoherent).
+Architectural variety lives at the BUCKET level per the same logic as the count-aware diversity rule. **No one architectural type should appear more than 3 times within any 14-slot window of the cycle.** For the 28-day cycle that means no single type exceeds 6 instances total across day_1–day_28; for the 14-slot dawn / dusk / night cycles the rule applies as a flat 3-instance cap. Within a single frame, pick ONE type and commit to its details — don't blend (a Cape Dutch farmhouse with a cantilevered concrete roof is incoherent).
 
 ---
 
@@ -414,9 +491,9 @@ Plus dusk_2 added 2026-05-19 (Indian SA father pulling frost cover, 1 human buck
 
 ---
 
-## Clear Folder Image Slots (Reference)
+## Clear Folder Image Slots (Reference — original 14-slot starter set)
 
-Target subjects for the clear condition folder. Day-type column matches what the picker code actually does. Other condition folders should follow similar variety across the 14-day cycle (per-folder slot maps are drafted while batching that folder, not speculatively before).
+Target subjects for the clear condition folder. This is the **14-slot starter set** drafted under v2.0 — under v2.5 the clear bucket extends to 28 day slots + 14 each for dawn / dusk / night, so day_15–28 and dawn_4–14 / dusk_4–14 / night_4–14 are new slots to draft during the clear batch run. The 14-slot table below stays as a worked example of how subject variety distributes across a 2-week sub-cycle.
 
 | Slot | Day type | Subject |
 |---|---|---|
@@ -436,7 +513,7 @@ Target subjects for the clear condition folder. Day-type column matches what the
 | `night_2` | — | Large moth on warm lit outdoor wall next to yellow outdoor light |
 | `night_3` | — | SA friends around well-lit outdoor table, fairy lights overhead, summer night |
 
-Subjects mix people scenes, animal scenes (hadeda, dog, cat, moth), and object/element scenes (flip flops, sunset, beach) naturally across the 14-day cycle. No forced quota — variety comes from genuinely different subjects across the cycle.
+Subjects mix people scenes, animal scenes (hadeda, dog, cat, moth), and object/element scenes (flip flops, sunset, beach) naturally across the cycle. No forced quota — variety comes from genuinely different subjects across the cycle.
 
 ---
 
@@ -446,13 +523,13 @@ Before committing any new image to the repo (or promoting from pw-image-staging)
 
 1. **No text/signs/words** visible anywhere in the image
 2. **No deformed hands/faces** — AI generation artifact check
-3. **Correct orientation and ratio** — portrait 1008 × 1792 (true 9:16, OpenArt 1k preset or Higgsfield 9:16 / 2k). 2:3 anchors from 2026-05-17 grandfathered.
+3. **Correct orientation and ratio** — portrait 1008 × 1792 (true 9:16, OpenArt 1k preset or Higgsfield 9:16 / 2k). All pre-v2.5 grandfathered dimensions are fine alongside in-cycle.
 4. **File size** — should be under 500 KB for web performance. PNG output from OpenArt at 1k is ~2 MB; `promote.py` JPG-conversion step lands closer to target. If still over 1 MB, resize or convert to WebP.
 5. **SA authenticity** — does it look like South Africa, not California or Europe?
 6. **Mood match** — does the image match the condition folder's mood?
 7. **Human count matches diversity rule** — 0 humans = no diversity clause was needed; 1 human = identity specified; 2-3 humans = each identity specified, no four-group demand; 4+ humans = group boilerplate applied. The image should match the bucket the prompt was built for.
-8. **Demographics vary across the cycle** — across the 14-day cycle of this condition folder, are the demographics of human subjects varied (not all the same race)?
-9. **Architectural type varies across the cycle** — not all red brick, not all one type. Aim for at least 4 of the 9 canonical types represented across any 14 day-images.
+8. **Demographics vary across the cycle** — across the full cycle of this condition folder (28 day + 14 each for dawn / dusk / night), are the demographics of human subjects varied (not all the same race)?
+9. **Architectural type varies across the cycle** — not all red brick, not all one type. Aim for at least 4 of the 9 canonical types represented across the 28 day-images, with no single type exceeding 6 instances total (the 3-per-14-slot-window rule).
 10. **No floating objects** — common AI artifact, especially with outdoor scenes
 11. **No licensed content** — no Springbok jerseys, no team kits, no brand logos, no recognizable real people, no copyrighted characters
 12. **No high-risk prop text** — check car plates blank, mugs unbranded, school crests obscured, signs blank
@@ -486,35 +563,41 @@ pw-image-staging/
 
 **The PW production repo stays untouched until Al explicitly promotes.**
 
+### promote.py re-compression step (operational note, v2.5)
+
+OpenArt's gpt-image-2 outputs PNG at ~2 MB per image (verified 2026-05-19 recon). PW's image size target is 200–500 KB. **Before `promote.py` copies files from `pw-image-staging/reviewed/` to PW repo's `assets/images/bg/`, files MUST be re-compressed:** PNG → JPG quality 85 (or WebP), targeting under 500 KB.
+
+This is a `promote.py` implementation detail (the script's job, not the brief-writer's), not a skill rule — but the skill documents it so future maintainers know why files in the repo are visibly smaller than what OpenArt produces, and so the next person touching `promote.py` doesn't accidentally remove the compression step.
+
 ---
 
 ## Image rotation system (planned, Phase 2)
 
-The 14-day cycle is the current shipping system. Phase 2 design (locked 2026-05-17) is a larger pool per condition with a Sunday-midnight Vercel cron rotating 7 active per week.
+The 28-day-day / 14-slot-time-variants cycle is the current shipping system (extended from v2.4's 14-day single cycle when v2.5 set new target counts). Phase 2 design (locked 2026-05-17) is a larger pool per condition with a Sunday-midnight Vercel cron rotating active subsets per week.
 
 **Files (Phase 2):**
 - `assets/images/manifest.json` — source of truth, every image per bucket + week pointer
-- `assets/images/active.json` — runtime, this week's active 7 per bucket
+- `assets/images/active.json` — runtime, this week's active set per bucket
 
 Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 
-**Implementation deferred** until pools are full enough to launch rotation cleanly. Until then, the existing 14-day cycle stays. Picker-side changes for rotation are pw-weather-logic's territory.
+**Implementation deferred** until pools are full enough to launch rotation cleanly. Until then, the in-place cycle stays (extended to 28-day for day slots / 14-slot for time variants). Picker-side changes for rotation are pw-weather-logic's territory — see "Out of scope" for the picker-extension note.
 
 ---
 
 ## Critical Rules
 
-1. **ALL new images must be portrait 1008 × 1792 (true 9:16)** — OpenArt `gpt-image-2` at 9:16 / 1k preset or Higgsfield at `aspect_ratio: 9:16`, `resolution: 2k`. Never landscape, never square, never 4:7. 2:3 anchors from 2026-05-17 grandfathered; 19 candidates from 2026-05-19 overnight batch at 9:16/2k grandfathered.
-2. **This skill never edits the image picker code.** `setBackgroundFor()` and `getWeatherBackgroundFolder()` in `assets/app.js` are owned by pw-weather-logic. New conditions, new rotation, new aliasing all require a pw-weather-logic change.
+1. **ALL new images must be portrait 1008 × 1792 (true 9:16)** — OpenArt `gpt-image-2` at 9:16 / 1k preset or Higgsfield at `aspect_ratio: 9:16`, `resolution: 2k`. Never landscape, never square, never 4:7. All pre-v2.5 grandfathered images (193 files at four dimension classes) stay as-is per the 2026-05-19 audit.
+2. **This skill never edits the image picker code.** `setBackgroundFor()` and `getWeatherBackgroundFolder()` in `assets/app.js` are owned by pw-weather-logic. New conditions, new rotation, new aliasing, picker-extension from mod-14 to mod-28 — all require a pw-weather-logic change.
 3. **Never generate images with text**, signs, or readable words. The high-risk prop blacklist extends the base negative for cars, houses, appliances, branded bottles, school items, trail markers, shop signage, magazines, newspapers, t-shirts.
 4. **Never use American or European visual references** — SA aesthetic only
-5. **Braai imagery = Saturday slots only** (`day_6`, `day_13`). Sunday slots (`day_7`, `day_14`) get family-lunch / lazy-Sunday content.
+5. **Braai imagery = Saturday slots only** (`day_6`, `day_13`, `day_20`, `day_27`). Sunday slots (`day_7`, `day_14`, `day_21`, `day_28`) get family-lunch / lazy-Sunday content. Weekend dawn / dusk / night slots ride on the 14-slot cycle (Saturdays at `*_6` and `*_13`, Sundays at `*_7` and `*_14`).
 6. **`day.jpg` is fallback only** — never use as a primary named slot
 7. **Diversity instructions are count-aware** — 0 humans = omit. 1 human = specify identity directly. 2-3 humans = specify each identity directly, NO four-group boilerplate. 4+ humans = group boilerplate applies. Families must NEVER be engineered to display every population group.
 8. **Negative prompts are scene-aware** — base block + high-risk prop block always. Add `artificial lighting indoors` ONLY for OUTDOOR day-slot (08:00–17:00) generations. Indoor day-slot scenes use base + prop block only (kitchen/lounge/office lamps are legitimate at midday). Dawn/dusk/night use base + prop block alone.
 9. **Run the brief integrity check before generation** — visible-count matches stated count, diversity rule matches count, no engineered four-group demand in 2-3 person scenes, architectural type stated affirmatively, high-risk props worded affirmatively.
 10. **Check file sizes** — images over 1 MB will slow the app, especially on mobile data. OpenArt PNGs land at ~2 MB; promote.py JPG-converts.
-11. **Nationally representative** — spread SA regional references across all folders, not just Western Cape. Vary demographics across the 14-day cycle of each condition folder.
+11. **Nationally representative** — spread SA regional references across all folders, not just Western Cape. Vary demographics across the full cycle of each condition folder.
 12. **No licensed content** — no Springbok/Bafana/team kits, no brand logos, no recognizable real people, no IP characters, no named neighbourhoods in the prompt text (use them as visual anchors only).
 13. **Every prompt is a moment, not a tableau** — specify what is happening, not just the setting
 14. **No loadshedding as a default** — SA loadshedding has been largely resolved; only include if specifically relevant
@@ -530,7 +613,8 @@ Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 - **v2.1** (2026-05-17, evening) — Three surgical ship-blocker fixes from Claude Code self-eval: function name reference corrected, day-of-week mapping fixed, obsolete 7-day-vs-14-day rule dropped.
 - **v2.2** (2026-05-18) — Three fixes from Claude Code self-eval + GPT-5.5 adversarial review of v2.1: diversity scoped by scene presence (later proved too coarse — see v2.3), negative prompt split into base + day-only modifier, aspect ratio reconciled to 9:16 + 2k resolution.
 - **v2.3** (2026-05-19) — Two surgical fixes from GPT-5.5 adversarial review of v2.2: (a) **Diversity rule re-bucketed by count** — v2.2's "2+ humans" bucket forced a four-group demand on couples and 3-person families. v2.3 splits the bucket: Count 0 omits, Count 1 specifies identity, Count 2-3 specifies each identity directly WITHOUT four-group boilerplate, Count 4+ keeps the group boilerplate. (b) Added "Brief integrity check" prompt-discipline section.
-- **v2.4** (2026-05-19, evening) — Ten-item folded update from Al's overnight-batch feedback + OpenArt platform recon. (1) Canonical dimension is now **1008 × 1792** (true 9:16, OpenArt 1k preset / Higgsfield 9:16 target). 2:3 cold-clear anchors and 19 overnight-batch 9:16/2k candidates grandfathered. (2) **Default model = `gpt-image-2`**; `nano_banana_2` reserved for promo + grandfathered set. (3) **Default quality = Medium** (35 cr/img at OpenArt); High reserved for non-UI-occluded marketing assets. (4) Auto Polish MUST be OFF (new Critical Rule #16). (5) **Architectural Variety mandate (NEW section)** — 9 canonical SA types with regional appropriateness map; bare "face-brick" / "modern suburban" / "middle-class SA home" banned (all anchor red brick); rotate at the bucket level. (6) **Humour Register (NEW section)** — curated T-table lines per bucket as mood/energy anchors, not literal scene scripts; canonical wind anchors "trees doing involuntary yoga" + "trampoline two streets away" preserved. (7) Scene-aware day-only negative — `artificial lighting indoors` modifier now fires on OUTDOOR day-slot scenes only; indoor day-slot scenes use base + prop block alone. (8) High-risk prop blacklist extends the base negative (car plates, house numbers, appliance logos, branded bottles, school uniforms/items, trail markers, shop signage, magazines, newspaper headlines, t-shirt slogans) — prefer affirmative-positive phrasing ("plain unbranded bottle") over negative blocks. (9) Worktree-vs-main parity check note added at the top of the skill for Claude Code sessions. (10) **Platform Knowledge section (NEW LIVING)** — Higgsfield, Leonardo, OpenArt, ChatGPT Pro entries with last-verified dates; OpenArt entry verified 2026-05-19 (deep-link, credit costs, wall-time, auth state, output paths, quirks). Critical Rule #16 added (Auto Polish OFF). Brief integrity check gains items 4 (arch type stated) + 5 (affirmative props). Image Quality Checklist gains item 9 (architectural variety across cycle) + item 12 (high-risk prop text check).
+- **v2.4** (2026-05-19, evening) — Ten-item folded update from Al's overnight-batch feedback + OpenArt platform recon. (1) Canonical dimension is now **1008 × 1792** (true 9:16, OpenArt 1k preset / Higgsfield 9:16 target). 2:3 cold-clear anchors and 19 overnight-batch 9:16/2k candidates grandfathered. (2) **Default model = `gpt-image-2`**; `nano_banana_2` reserved for promo + grandfathered set. (3) **Default quality = Medium** (35 cr/img at OpenArt); High reserved for non-UI-occluded marketing assets. (4) Auto Polish MUST be OFF (new Critical Rule #16). (5) **Architectural Variety mandate (NEW section)** — 9 canonical SA types with regional appropriateness map; bare "face-brick" / "modern suburban" / "middle-class SA home" banned (all anchor red brick); rotate at the bucket level. (6) **Humour Register (NEW section)** — curated T-table lines per bucket as mood/energy anchors, not literal scene scripts; canonical wind anchors "trees doing involuntary yoga" + "trampoline two streets away" preserved. (7) Scene-aware day-only negative — `artificial lighting indoors` modifier now fires on OUTDOOR day-slot scenes only; indoor day-slot scenes use base + prop block alone. (8) High-risk prop blacklist extends the base negative — prefer affirmative-positive phrasing over negative blocks. (9) Worktree-vs-main parity check note added at the top. (10) **Platform Knowledge section (NEW LIVING)** — OpenArt entry verified 2026-05-19 with full deep-link / credit / wall-time / quirks coverage.
+- **v2.5** (2026-05-19, late) — Five-item folded update from the 2026-05-19 full filesystem audit + new target counts. **All v2.4 rules unchanged** (architectural variety, humour register, count-aware diversity, gpt-image-2 default, OpenArt platform knowledge). (1) **New target counts:** 28 day images per condition (was 14), 14 dawn / 14 dusk / 14 night per condition (was 3 each), 1 day.jpg fallback (unchanged) → **71 per bucket, ~639 across 9 buckets** at pre-launch minimum. (2) **Day-of-week mapping extended to 28-slot mod-28 rotation** — Saturday slots are now `day_6`, `day_13`, `day_20`, `day_27`; Sunday slots are `day_7`, `day_14`, `day_21`, `day_28`. Dawn / dusk / night stay on a 14-slot Mon→Sun→Mon→Sun cadence (Saturdays at `*_6` and `*_13`, Sundays at `*_7` and `*_14`). (3) **Audit-grounded bucket-by-bucket reality table replaces v2.4's "12+ more needed" stale claim** — actual filesystem state: 8 condition folders fully populated with 24 files each (193 total), cold-clear folder absent (23 in staging pipeline). 47 new slots per bucket = **~423 new images total** for full v2.5 library. Existing 193 stay untouched per Al's 2026-05-19 decision. (4) **Existing image dimensions clarification** — audit catalogued four dimension classes: 7 squares (2 in clear, 5 in wind), 3 16:9 landscapes (2 in wind + bg/default.jpg), 2 reversed-portrait (wind), 181 ~9:16-adjacent portraits at three sub-resolutions. All grandfathered; rotation system handles reconciliation post-launch. v2.4's claim of "105 v1.0 squares" was stale — the audit found 7. (5) **promote.py re-compression operational note** — PNG-from-OpenArt at 2 MB must be JPG-q85 or WebP-compressed before landing in the PW repo (target under 500 KB). Documented in pw-image-staging section so the compression step survives future maintainer rewrites. Architectural variety rotation rule re-worded for clarity at 28-slot scale (no type > 3 in any 14-slot window, so no type > 6 across 28 day slots). Image Quality Checklist items 8 and 9 wording refreshed for full-cycle scope.
 
 ---
 
@@ -583,7 +667,7 @@ This section captures verified platform-specific knowledge for each generation l
 - **Output:**
   - Format: PNG, RGB
   - Dimensions: **1008 × 1792** (true 9:16 at 1k preset, identical across quality tiers)
-  - File size: ~2 MB at any tier — requires re-compression in `promote.py` (JPG q85 or WebP convert)
+  - File size: ~2 MB at any tier — requires re-compression in `promote.py` (JPG q85 or WebP convert) before landing in the PW repo
 - **Output location:** NOT in the create-image right panel. Generated images land in `/suite/media` under "This Month". Autonomous flows must navigate there to retrieve.
 - **Full-res URL pattern:**
   - Thumbnails: `cdn.openart.ai/thumbnail/production/...webp`
@@ -601,7 +685,7 @@ This section captures verified platform-specific knowledge for each generation l
   - SSE channel disconnects periodically with `ERR_CONNECTION_RESET` on `/suite/api/server-events` — non-fatal; generation completes regardless. The "Generating" body text indicator is a more reliable completion signal.
   - Cost is debited UPFRONT on Generate click — capture balance before, fire, reconcile after.
   - "Limited-time offer! 50% off annual plans" banner is always visible at top — non-blocking, safe to ignore.
-- **Cost budgeting for full PW image library:** 8 condition folders × 24 slots = ~192 images. At Medium = ~6,720 credits. Current balance covers ~3.9× full libraries before renewal — plenty of headroom for v2.4 batch work.
+- **Cost budgeting for full PW image library at v2.5 target:** 9 condition folders × 71 slots = 639 total slots. After subtracting the 193 grandfathered images, ~423 new images at Medium = **~14,805 credits**. Current 26,515 balance covers the full new-image set 1.8× before renewal — comfortable headroom.
 
 ---
 
@@ -622,5 +706,6 @@ This section captures verified platform-specific knowledge for each generation l
 
 - Full T-table humour pull per condition (English): `pw-image-staging/batches/v2.4-humour-pull.md`
 - OpenArt platform recon: `pw-image-staging/batches/2026-05-19-openart-recon-report.md`
+- **Full filesystem audit (the audit that grounded v2.5):** `pw-image-staging/batches/2026-05-19-FULL-IMAGE-LIBRARY-AUDIT.md`
 - Son-Memory project file: `Son-Memory/projects/probably-weather.md`
 - 2026-05-19 cold-clear overnight batch (16 briefs at v2.3): `pw-image-staging/batches/2026-05-19-cold-clear-full-batch.md`
