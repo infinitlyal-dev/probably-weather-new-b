@@ -238,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakulindeleka", xh: "Akunakulindeleka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
       likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
+      possibleLater: { en: "Possible later", af: "Moontlik later", zu: "Kungenzeka kamuva", xh: "Kunokwenzeka kamva", st: "Ho ka etsahala hamorao" },
       low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
       moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
       high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
@@ -1563,8 +1564,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const showGust = isNum(gust) && isNum(wind) && gust > wind * 1.3;
       const ws = isNum(wind) ? (showGust ? `${formatWind(wind)} (${t('weather','gusts')||'gusts'} ${formatWind(gust)})` : formatWind(wind)) : '--';
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
-      let rs = '--'; 
+      let rs = '--';
       if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
+      // Don't say "Unlikely" / "None" when today's daily ensemble says rain — that contradicts the day's outlook
+      const todayKey = (norm.daily?.[0]?.conditionKey || '').toLowerCase();
+      if ((todayKey === 'rain' || todayKey === 'rain-possible') && isNum(rain) && rain < 30) {
+        rs = t('weather', 'possibleLater') || 'Possible later';
+      }
       if (norm.rainLater) { rs = t('weather', 'later') || 'Later'; }
       // uv is null at night (API nulls now.uv after sunset) — show nothing
       let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
