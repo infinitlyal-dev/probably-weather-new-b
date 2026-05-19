@@ -159,11 +159,27 @@ document.addEventListener("DOMContentLoaded", () => {
         st: "Probably Weather e sheba mehlodi e mene ea boemo ba leholimo nako e nngwe le e nngwe ha u bula app. Re kopanya likarolelano hore u fumane ponelopele e tšepahalang — ha ho mohlodi o le mong o akhang hampe ka hore ho tla na pula kapa che."
       },
       attribution: {
-        en: "Data from Open-Meteo, WeatherAPI.com, MET Norway, and Pirate Weather. Used with permission and gratitude.",
-        af: "Data van Open-Meteo, WeatherAPI.com, MET Norway en Pirate Weather. Gebruik met toestemming en dank.",
-        zu: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, ne-Pirate Weather. Isetshenziswa ngemvume nokubonga.",
-        xh: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, ne-Pirate Weather. Isetyenziswa ngemvume nokubulela.",
-        st: "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, le Pirate Weather. E sebelisoa ka tumello le ka teboho."
+        en: "Data from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather, and Tomorrow.io. Used with permission and gratitude.",
+        af: "Data van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather en Tomorrow.io. Gebruik met toestemming en dank.",
+        zu: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, i-Pirate Weather ne-Tomorrow.io. Isetshenziswa ngemvume nokubonga.",
+        xh: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, i-Pirate Weather ne-Tomorrow.io. Isetyenziswa ngemvume nokubulela.",
+        st: "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io. E sebelisoa ka tumello le ka teboho."
+      },
+      // Per-source descriptions for the Sources page. The render code doesn't
+      // consume these yet — landing them here so they're available when the
+      // Sources UI gains a per-source explainer (planned). zu/xh entries are
+      // GPT-drafted and marked PROVISIONAL pending native-speaker review (use
+      // zu-qc / xh-qc agents before treating as ship-ready).
+      sourceInfo: {
+        tomorrowIo: {
+          en: "Tomorrow.io — radar-based short-term precipitation nowcasting. Catches active rain that other sources miss.",
+          af: "Tomorrow.io — radar-gebaseerde korttermyn-reënvoorspelling. Tel reën op wat ander bronne mis.",
+          // PROVISIONAL — TODO: zu native review
+          zu: "I-Tomorrow.io — isibikezelo semvula esifushane esisekelwe ku-radar. Ithola imvula yamanje engatholakali kweminye imithombo.",
+          // PROVISIONAL — TODO: xh native review
+          xh: "I-Tomorrow.io — uqikelelo lwemvula olufutshane olusekwe kwi-radar. Ifumana imvula yangoku engaqondwa ngeminye imithombo.",
+          st: "Tomorrow.io — ho bonela pula ka radar. E thusa ho fumana pula eo mehlodi e meng e e hlokomelang."
+        }
       }
     },
     // Native ad slot placeholder — shown while Adsterra approval is pending.
@@ -202,11 +218,11 @@ document.addEventListener("DOMContentLoaded", () => {
       language: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
       about: { en: "About", af: "Aangaande", zu: "Mayelana", xh: "Malunga", st: "Mabapi" },
       aboutText: {
-        en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather to give you a more reliable prediction.",
-        af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather om jou 'n meer betroubare voorspelling te gee.",
-        zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather ukukunikeza isibikezelo esithembekile.",
-        xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway & Pirate Weather ukukunika isithembiso esithembekileyo.",
-        st: "Probably Weather e kopanya dikakanyo tsa boemo ba leholimo tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway le Pirate Weather ho u fa ponelopele e tšepahalang."
+        en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io to give you a more reliable prediction.",
+        af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io om jou 'n meer betroubare voorspelling te gee.",
+        zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukukunikeza isibikezelo esithembekile.",
+        xh: "I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukukunika isithembiso esithembekileyo.",
+        st: "Probably Weather e kopanya dikakanyo tsa boemo ba leholimo tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io ho u fa ponelopele e tšepahalang."
       }
     },
     // Weather byline terms

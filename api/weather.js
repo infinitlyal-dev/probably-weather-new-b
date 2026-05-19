@@ -1,10 +1,15 @@
 // /api/weather.js
 // Probably Weather – server-side weather aggregator
 // Sources: Open-Meteo (ECMWF, no key), WeatherAPI (proprietary, key),
-//          Pirate Weather (NOAA GFS/GEFS, key), MET Norway (no key, User-Agent)
-// Base weights: 35% OM | 25% WA | 15% PW | 25% MET — dynamically adjusted at runtime
+//          Pirate Weather (NOAA GFS/GEFS, key), MET Norway (no key, User-Agent),
+//          Tomorrow.io (radar nowcast, key)
+// Base weights: 30% OM | 22% WA | 13% PW | 20% MET | 15% Tomorrow.io — dynamically adjusted at runtime
 // MET Norway uses high-resolution NWP with good coastal coverage — important for SA wind.
 // Pirate Weather (GFS/GEFS) is a genuinely independent model cross-check.
+// Tomorrow.io (added 2026-05-19) provides radar-grounded short-term precipitation
+// nowcasting — catches active rain that the model-based sources miss. Its
+// precipitationIntensity reading acts as an override for current-hour rain (>0.5 mm/h)
+// and its weatherCode 8000 routes thunder into the storm bucket.
 // NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts
 // at the current hour (not midnight), making alignment with other sources impossible.
 
@@ -30,6 +35,7 @@ export default async function handler(req, res) {
 
     const WEATHERAPI_KEY     = process.env.WEATHERAPI_KEY     || null;
     const PIRATE_WEATHER_KEY = process.env.PIRATE_WEATHER_KEY || null;
+    const TOMORROWIO_API_KEY = process.env.TOMORROWIO_API_KEY || null;
     const NOMINATIM_UA       = process.env.MET_USER_AGENT     || 'ProbablyWeather/1.0 (contact: howzit@probablyweather.co.za)';
     // Geocoding moved off public Nominatim → LocationIQ (Nominatim-API-compatible).
     // Token lives server-side only; never exposed to the browser.
@@ -154,20 +160,26 @@ export default async function handler(req, res) {
       } catch { /* Keep fallback name if reverse geocode fails */ }
     }
 
-    // Source arrays: index 0=Open-Meteo, 1=WeatherAPI, 2=Pirate Weather, 3=MET Norway
+    // Source arrays: index 0=Open-Meteo, 1=WeatherAPI, 2=Pirate Weather, 3=MET Norway, 4=Tomorrow.io
     // null in a slot means that source failed or was not configured.
-    // NOTE: hourlies has 3 slots (0=Open-Meteo, 1=WeatherAPI, 2=MET Norway).
+    // NOTE: hourlies has 4 slots (0=Open-Meteo, 1=WeatherAPI, 2=MET Norway, 3=Tomorrow.io).
     //       Pirate Weather excluded from hourly — its data starts at current hour not midnight.
     // V2-2: Base weights — PW raised from 10%→15%, OM reduced from 40%→35%.
     // V2 research found Pirate Weather (GFS/GEFS) has lowest mean absolute error
     // (1.75°C) across 10 SA locations — it deserves more influence.
+    // 2026-05-19: Tomorrow.io added (radar nowcast). Weights rebalanced so the
+    // new source takes 15% and the existing four shrink proportionally: OM 35→30,
+    // WA 25→22, PW 15→13, MET 25→20. Sum = 100. Tomorrow.io's real value-add is the
+    // precipitation override (below), not its general weight contribution.
     // Weights may be dynamically adjusted below based on source agreement.
-    let SOURCE_WEIGHTS        = [0.35, 0.25, 0.15, 0.25];
-    let HOURLY_SOURCE_WEIGHTS = [0.47, 0.33, 0.20];  // 35/25/25 renormalised without Pirate Weather
+    let SOURCE_WEIGHTS        = [0.30, 0.22, 0.13, 0.20, 0.15];
+    // Hourly weights skip Pirate (index 2). Renormalise the remaining 4 weights
+    // so they sum to 1.0:  0.30 + 0.22 + 0.20 + 0.15 = 0.87  → divide each by 0.87.
+    let HOURLY_SOURCE_WEIGHTS = [0.345, 0.253, 0.230, 0.172]; // OM, WA, MET, Tomorrow.io
     const failures = [];
-    const norms    = [null, null, null, null]; // current conditions
-    const hourlies = [null, null, null];       // hourly: Open-Meteo, WeatherAPI, MET Norway
-    const dailies  = [null, null, null, null]; // 7-day daily arrays
+    const norms    = [null, null, null, null, null]; // current conditions
+    const hourlies = [null, null, null, null];       // hourly: Open-Meteo, WeatherAPI, MET Norway, Tomorrow.io
+    const dailies  = [null, null, null, null, null]; // 7-day daily arrays
 
     // UTC offset for the requested location (seconds).
     // Phase B-2 Item 1: fall-through chain instead of OM-only SPOF.
@@ -225,6 +237,38 @@ export default async function handler(req, res) {
       'flurries': 'Snow showers',
     };
 
+    // Tomorrow.io weatherCode taxonomy → PW canonical description.
+    // The descriptions are chosen so that categorizeDesc() routes them to the
+    // correct bucket (rain/clear/cloudy/fog/cold/storm) without further wiring.
+    // weatherCode 8000 specifically is what the override block uses to route
+    // thunderstorms into the 'storm' condition (closes the WMO 95/96/99 gap
+    // that the other four sources express inconsistently).
+    const tomorrowIoCodeMap = {
+      1000: 'Clear sky',          // Clear, Sunny
+      1100: 'Clear sky',          // Mostly Clear
+      1101: 'Partly cloudy',      // Partly Cloudy
+      1001: 'Overcast',           // Cloudy
+      1102: 'Cloudy',             // Mostly Cloudy
+      2000: 'Fog',
+      2100: 'Light fog',
+      4000: 'Drizzle',
+      4001: 'Rain',
+      4200: 'Light rain',
+      4201: 'Heavy rain',
+      5000: 'Snow',
+      5001: 'Flurries',           // light snow
+      5100: 'Light snow',
+      5101: 'Heavy snow',
+      6000: 'Freezing drizzle',
+      6001: 'Freezing rain',
+      6200: 'Light freezing rain',
+      6201: 'Heavy freezing rain',
+      7000: 'Ice pellets',
+      7101: 'Heavy ice pellets',
+      7102: 'Light ice pellets',
+      8000: 'Thunderstorm',
+    };
+
     const openMeteoRequest = fetchJson(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
@@ -258,17 +302,31 @@ export default async function handler(req, res) {
       if (!met.ok) throw new Error(`HTTP ${met.status}`);
       return await met.json();
     });
+    // Tomorrow.io Timelines API — 48h hourly window with radar-derived precipitation
+    // intensity. Use units=metric (temperature °C, precipitationIntensity mm/h,
+    // windSpeed m/s, humidity %, cloudCover %). startTime=now rounds to the top
+    // of the current local hour at Tomorrow.io's end, returning ~49 intervals.
+    // Without a key, resolves to null and the source is treated as unavailable.
+    const tomorrowIoRequest = TOMORROWIO_API_KEY
+      ? fetchJson(
+          `https://api.tomorrow.io/v4/timelines?location=${lat},${lon}` +
+          `&fields=temperature,precipitationIntensity,precipitationProbability,weatherCode,windSpeed,humidity,cloudCover` +
+          `&timesteps=1h&units=metric&startTime=now&endTime=nowPlus48h&apikey=${TOMORROWIO_API_KEY}`
+        )
+      : Promise.resolve(null);
 
     const [
       openMeteoResult,
       weatherApiResult,
       pirateWeatherResult,
       metNorwayResult,
+      tomorrowIoResult,
     ] = await Promise.allSettled([
       openMeteoRequest,
       weatherApiRequest,
       pirateWeatherRequest,
       metNorwayRequest,
+      tomorrowIoRequest,
     ]);
 
     function getSettledValue(result) {
@@ -735,6 +793,132 @@ export default async function handler(req, res) {
     }
 
     // =========================================================================
+    // Tomorrow.io — radar-derived nowcast — weight 15% (added 2026-05-19)
+    // Provides intensity-grounded precipitation truth for the current hour.
+    // The general weight contribution is small; its real value is the
+    // precipitation override in the now-path which runs after consensus.
+    // Free tier: 500 calls/day, 25/hour, 3/sec. Vercel's edge cache
+    // (s-maxage=300) gives effective 5-minute caching per location, well
+    // within the rate limit for SA-only traffic.
+    // =========================================================================
+    if (TOMORROWIO_API_KEY) {
+      try {
+        const ti = getSettledValue(tomorrowIoResult);
+        const intervals = ti?.data?.timelines?.[0]?.intervals;
+        if (!Array.isArray(intervals) || intervals.length === 0) {
+          throw new Error('Tomorrow.io returned no intervals');
+        }
+
+        // Align intervals to local-midnight indexing (matches OM/WA/MET hourlies).
+        // Tomorrow.io starts at the current hour, so slots before localHour stay null.
+        const nowUtcMs = Date.now();
+        const tiLocalDateStr = new Date(nowUtcMs + utcOffsetSeconds * 1000).toISOString().slice(0, 10);
+        const tiLocalMidnightMs = Date.parse(`${tiLocalDateStr}T00:00:00.000Z`);
+        const aligned = Array(48).fill(null);
+        for (const interval of intervals) {
+          if (!interval?.startTime) continue;
+          const entryUtcMs = Date.parse(interval.startTime);
+          if (!Number.isFinite(entryUtcMs)) continue;
+          const entryLocalMs = entryUtcMs + utcOffsetSeconds * 1000;
+          const index = Math.round((entryLocalMs - tiLocalMidnightMs) / (60 * 60 * 1000));
+          if (index >= 0 && index < aligned.length) {
+            aligned[index] = interval;
+          }
+        }
+
+        const currentInterval = intervals[0];               // earliest returned = current hour
+        const nextInterval    = intervals[1] ?? null;
+        const tiVals          = currentInterval?.values ?? {};
+
+        const tiTemp     = isNum(tiVals.temperature) ? tiVals.temperature : null;
+        const tiWindMs   = isNum(tiVals.windSpeed) ? tiVals.windSpeed : null;
+        const tiWindKph  = isNum(tiWindMs) ? Math.round(tiWindMs * 3.6 * 10) / 10 : null;
+        const tiHumidity = isNum(tiVals.humidity) ? tiVals.humidity : null;
+        const tiCloud    = isNum(tiVals.cloudCover) ? tiVals.cloudCover : null;
+        const tiCode     = tiVals.weatherCode;
+        const tiDesc     = tomorrowIoCodeMap[tiCode] ?? 'Unknown';
+
+        // Daily high/low from the next-24h window (no daily endpoint in this
+        // call — Tomorrow.io has a separate daily timestep, but the 24h window
+        // approximation is good enough for the consensus blend and matches how
+        // MET Norway's daily values are computed from its 48h series).
+        const next24 = intervals.slice(0, 24);
+        const next24Temps = next24.map(iv => iv?.values?.temperature).filter(isNum);
+        const tiTodayHigh = next24Temps.length ? next24Temps.reduce((a, b) => Math.max(a, b), -Infinity) : null;
+        const tiTodayLow  = next24Temps.length ? next24Temps.reduce((a, b) => Math.min(a, b), Infinity)  : null;
+        const tiTodayRainArr = next24.map(iv => iv?.values?.precipitationProbability).filter(isNum);
+        const tiTodayRain = tiTodayRainArr.length ? Math.max(...tiTodayRainArr) : null;
+
+        norms[4] = {
+          source:    'Tomorrow.io',
+          nowTemp:   tiTemp,
+          feelsLike: calcFeelsLike(tiTemp, tiWindKph, tiHumidity),
+          todayHigh: tiTodayHigh,
+          todayLow:  tiTodayLow,
+          todayRain: tiTodayRain,
+          todayUv:   null, // not requested in the fields list (kept lean for free tier)
+          desc:      tiDesc,
+          windKph:   tiWindKph,
+          gustKph:   null, // Timelines basic endpoint doesn't expose gust separately
+          humidity:  tiHumidity,
+          sunrise:   null,
+          sunset:    null,
+          // Read by the precipitation override block in the now-path.
+          tomorrowIoCurrentHour: {
+            precipitationIntensity:   isNum(tiVals.precipitationIntensity) ? tiVals.precipitationIntensity : null,
+            precipitationProbability: isNum(tiVals.precipitationProbability) ? tiVals.precipitationProbability : null,
+            weatherCode:              tiCode,
+          },
+          tomorrowIoNextHour: nextInterval ? {
+            precipitationIntensity:   isNum(nextInterval.values?.precipitationIntensity)   ? nextInterval.values.precipitationIntensity   : null,
+            precipitationProbability: isNum(nextInterval.values?.precipitationProbability) ? nextInterval.values.precipitationProbability : null,
+            weatherCode:              nextInterval.values?.weatherCode,
+          } : null,
+          cloudPct: tiCloud, // Sources-page visibility only, not consumed by aggregator
+        };
+
+        hourlies[3] = {
+          source:     'Tomorrow.io',
+          temps:      aligned.map(iv => iv?.values?.temperature ?? null),
+          feelsLikes: aligned.map(iv => {
+            const t = iv?.values?.temperature;
+            const w = iv?.values?.windSpeed;
+            const h = iv?.values?.humidity;
+            return calcFeelsLike(t, isNum(w) ? w * 3.6 : null, h);
+          }),
+          rains:      aligned.map(iv => iv?.values?.precipitationProbability ?? null),
+          precipMm:   aligned.map(iv => iv?.values?.precipitationIntensity ?? null),
+          winds:      aligned.map(iv => {
+            const w = iv?.values?.windSpeed;
+            return isNum(w) ? Math.round(w * 3.6 * 10) / 10 : null;
+          }),
+          clouds:     aligned.map(iv => iv?.values?.cloudCover ?? null),
+          humidity:   aligned.map(iv => iv?.values?.humidity ?? null),
+          descs:      aligned.map(iv => {
+            const code = iv?.values?.weatherCode;
+            return isNum(code) ? (tomorrowIoCodeMap[code] ?? null) : null;
+          }),
+        };
+
+        dailies[4] = {
+          source:   'Tomorrow.io',
+          highs:    [tiTodayHigh],
+          lows:     [tiTodayLow],
+          rains:    [tiTodayRain],
+          uvs:      [],
+          descs:    [tiDesc],
+          sunrises: [],
+          sunsets:  [],
+        };
+      } catch (err) {
+        logSourceFailure('Tomorrow.io', err);
+        failures.push('Tomorrow.io');
+      }
+    } else {
+      failures.push('Tomorrow.io');
+    }
+
+    // =========================================================================
     // DYNAMIC WEIGHT ADJUSTMENT
     // Research shows Open-Meteo (ECMWF) and WeatherAPI often use the same
     // underlying model, doubling the cold bias during SA heat waves.
@@ -772,12 +956,13 @@ export default async function handler(req, res) {
       debugLog(`[Weight adjust] Highveld location (lat=${lat}, lon=${lon}) — MET Norway boost disabled`);
     }
 
-    // Recompute hourly weights from adjusted source weights (excl Pirate Weather)
-    const hBase = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[3]];
+    // Recompute hourly weights from adjusted source weights (excl Pirate Weather).
+    // Order: OM, WA, MET, Tomorrow.io — mirrors hourlies array layout.
+    const hBase = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[3], SOURCE_WEIGHTS[4]];
     const hTotal = hBase.reduce((a, b) => a + b, 0);
     HOURLY_SOURCE_WEIGHTS = hBase.map(w => Math.round(w / hTotal * 100) / 100);
 
-    debugLog(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
+    debugLog(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} TI=${SOURCE_WEIGHTS[4]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
 
     // =========================================================================
     // AGGREGATION
@@ -801,8 +986,8 @@ export default async function handler(req, res) {
     // V2-3: Separate weights for daily LOW temperature — MET Norway reduced to 10%.
     // Research found MET Norway todayLow runs +3.9°C warm on average across all 10 SA locations.
     // The model doesn't capture nighttime radiative cooling well for SA inland conditions.
-    // [0]=OM, [1]=WA, [2]=PW, [3]=MET
-    const LOW_WEIGHTS = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[2], 0.10];
+    // [0]=OM, [1]=WA, [2]=PW, [3]=MET, [4]=Tomorrow.io
+    const LOW_WEIGHTS = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[2], 0.10, SOURCE_WEIGHTS[4]];
     const dailyLowW = resolveWeights(dailies, LOW_WEIGHTS);
 
     // Weighted average across source slots (skips nulls).
@@ -821,7 +1006,7 @@ export default async function handler(req, res) {
     // is preserved here for the same reason it's preserved in DESC_WEIGHTS:
     // mitigates WA's documented rain-flag unreliability beyond just
     // fragmentation (which Item 2's category-aware vote already solves).
-    const HOURLY_DESC_WEIGHTS = [1, 0.1, 1]; // [OM, WA, MET]
+    const HOURLY_DESC_WEIGHTS = [1, 0.1, 1, 1]; // [OM, WA, MET, Tomorrow.io] — WA suppressed; TI full weight (radar truth)
 
     // Hourly aggregation (Open-Meteo + WeatherAPI + MET Norway — aligned on local midnight)
     const aggregatedHourly = Array.from({ length: 48 }, (_, i) => {
@@ -881,8 +1066,8 @@ export default async function handler(req, res) {
 
     // Rec 6: Description voting weights — reduce WeatherAPI influence
     // WeatherAPI descriptions are unreliable (overcooks rain flags) so give it 10% weight.
-    // Source order: [0]=Open-Meteo, [1]=WeatherAPI, [2]=Pirate Weather, [3]=MET Norway
-    const DESC_WEIGHTS = [1, 0.1, 1, 1]; // WA gets 10% voting weight for descriptions
+    // Source order: [0]=Open-Meteo, [1]=WeatherAPI, [2]=Pirate Weather, [3]=MET Norway, [4]=Tomorrow.io
+    const DESC_WEIGHTS = [1, 0.1, 1, 1, 1]; // WA gets 10%; OM, PW, MET, Tomorrow.io full weight
 
     // Daily aggregation (all sources)
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
@@ -933,7 +1118,7 @@ export default async function handler(req, res) {
 
       // FIX-002: Fog majority check for daily forecasts — same consensus rule
       if (dailyConditionKey === 'fog' && descEntries.length >= 3) {
-        const sourceNames = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway'];
+        const sourceNames = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway', 'Tomorrow.io'];
         const dailyFogSources = dailies.map((d, si) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog' ? sourceNames[si] : null).filter(Boolean);
         if (dailyFogSources.length < 2) {
           debugLog(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
@@ -1069,7 +1254,8 @@ export default async function handler(req, res) {
     // Current hour's rain chance (not today's daily max).
     // Using daily max caused the app to show 70% rain at 10pm when it only
     // rained in the morning. Current hour is more truthful for "right now".
-    const currentHourRainChance = aggregatedHourly[localHour]?.rainChance ?? null;
+    // Mutable so the Tomorrow.io radar override can bump it (see post-consensus block).
+    let currentHourRainChance = aggregatedHourly[localHour]?.rainChance ?? null;
 
     // Rec 6: Weight descriptions — WA gets 10% influence
     const nowDescEntries = norms.map((n, si) => n && n.desc ? { desc: n.desc, weight: DESC_WEIGHTS[si] } : null).filter(Boolean);
@@ -1196,6 +1382,57 @@ export default async function handler(req, res) {
       }
     }
 
+    // =========================================================================
+    // TOMORROW.IO RADAR OVERRIDE (added 2026-05-19)
+    // Tomorrow.io's precipitationIntensity is radar/nowcast truth for the
+    // current hour — not a model probability. When it exceeds 0.5 mm/h, the
+    // four-source consensus's rain decision is overruled regardless of how
+    // many sources voted otherwise. This catches the case where every model
+    // says "clear" but radar is showing active rain falling RIGHT NOW.
+    // Empirically validated: 2026-05-19 ~08:05 SAST, Tomorrow.io reported
+    // 2.25 mm/h for Strand while PW's four-source consensus showed
+    // "Rain Unlikely" (conditionKey='wind', rainChance=16.6%, precipMm=0).
+    // Also routes weatherCode 8000 (Thunderstorm) → storm, closing a known
+    // thunder gap in the other four sources' description vocabularies.
+    // Skipped entirely when Tomorrow.io fetch failed (norms[4] is null) so
+    // the existing four-source path keeps working unchanged on outage.
+    // =========================================================================
+    const tiNow  = norms[4]?.tomorrowIoCurrentHour ?? null;
+    const tiNext = norms[4]?.tomorrowIoNextHour ?? null;
+    if (tiNow) {
+      if (isNum(tiNow.precipitationIntensity) && tiNow.precipitationIntensity > 0.5) {
+        debugLog(`[Tomorrow.io radar override] precipIntensity=${tiNow.precipitationIntensity} mm/h > 0.5 → rain (was ${nowConditionKey})`);
+        nowOverrides.push({
+          rule: 'tomorrow-io-radar-override',
+          from: nowConditionKey,
+          to: 'rain',
+          reasonDetail: `Tomorrow.io radar reports ${tiNow.precipitationIntensity} mm/h precipitation intensity`,
+        });
+        nowConditionKey   = 'rain';
+        nowConditionReason = 'tomorrow-io-radar-override';
+        currentHourRainChance = Math.max(currentHourRainChance ?? 0, 70);
+      }
+      if (tiNow.weatherCode === 8000) {
+        debugLog(`[Tomorrow.io thunder] weatherCode 8000 → storm (was ${nowConditionKey})`);
+        nowOverrides.push({
+          rule: 'tomorrow-io-thunder',
+          from: nowConditionKey,
+          to: 'storm',
+          reasonDetail: 'Tomorrow.io weatherCode 8000 (Thunderstorm)',
+        });
+        nowConditionKey   = 'storm';
+        nowConditionReason = 'tomorrow-io-thunder';
+      }
+    }
+    // Next-hour radar bump — feeds the existing rain-possible / rain-coming
+    // escalation path in the frontend (renderHome reads rainChance to drive
+    // hero copy). Only fires when the current hour isn't already firmly rain.
+    if (tiNext && isNum(tiNext.precipitationIntensity) && tiNext.precipitationIntensity > 0.5 && nowConditionKey !== 'rain') {
+      const before = currentHourRainChance;
+      currentHourRainChance = Math.max(currentHourRainChance ?? 0, 60);
+      debugLog(`[Tomorrow.io next-hour radar] precipIntensity=${tiNext.precipitationIntensity} mm/h → rainChance ${before}→${currentHourRainChance}`);
+    }
+
     // Phase B-1 Item 1: package the audit trail for the now-path decision.
     // conditionReason is the short identifier of the rule that produced the
     // final key (after any overrides). conditionSignals shows the inputs:
@@ -1270,6 +1507,7 @@ export default async function handler(req, res) {
           'WeatherAPI':     norms[1] ? Math.round(normW[1] * 100) : null,
           'Pirate Weather': norms[2] ? Math.round(normW[2] * 100) : null,
           'MET Norway':     norms[3] ? Math.round(normW[3] * 100) : null,
+          'Tomorrow.io':    norms[4] ? Math.round(normW[4] * 100) : null,
         },
         sourceConditions: sourceConditionVotes,
         localHour,
