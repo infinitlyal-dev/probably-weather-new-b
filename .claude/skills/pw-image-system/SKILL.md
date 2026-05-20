@@ -382,7 +382,7 @@ PW's hero copy includes weather-specific witty lines — koud-maar-lekker absurd
 
 **cold (CT wet-cold)** — "Ja, it's jersey weather. Double jersey." · "Cold enough for soup. And a second soup." · "Your breath is doing special effects." · "The duvet understood the assignment." · "Your jacket has a jacket. It's that kind of day." · "The dog refused to go outside. Fair." · "You're not cold, you're 'lekker koud'. Big difference."
 
-**cold-clear (high-veld dry-cold)** — *no dedicated bucket yet in T-table — uses `cold` lines.* Closest in spirit: *"You're not cold, you're lekker koud."* · *"Your breath is doing special effects."* Plus the cold-clear-specific image moments: a teenager in shorts at 5°C "because it's not THAT cold", a Boerbull breath visible on a sunlit patio, frost on the lawn under perfect blue sky.
+**cold-clear (high-veld dry-cold)** — *no dedicated witty bucket in the T-table yet, but the image register IS defined — see "Cold-clear humour register" subsection below.* Short version: cognitive-dissonance humour, the scene looks like a perfect summer day until the cold-weather signals reveal the truth. Adjacent T-table lines closest in spirit: *"You're not cold, you're lekker koud."* · *"Your breath is doing special effects."*
 
 **fog** — "Silent Hill vibes. Without the monsters. Hopefully." · "Even your GPS is confused." · "Walking the dog has become a trust exercise." · "The world ends two metres past the gate." · "Cape Town just got a dimmer switch." · "The morning forgot to render."
 
@@ -412,6 +412,38 @@ The lines are **mood/humour ENERGY ANCHORS for the bucket, not literal prompt-im
 - Force humour into every frame — quiet contemplative images are also canonical (dusk_1 frosted sunglasses is canonical, no humour)
 - Try to illustrate the witty line literally — that produces a sight gag, not the desired register
 - Use comedic exaggeration — proportions stay realistic, expressions stay subtle
+
+### Cold-clear humour register (added 2026-05-19 from Al's review.py walkthrough)
+
+PW's T-table has no dedicated witty bucket for cold-clear yet. The defining humour register for this bucket, per Al's review.py session insight:
+
+> "The humour lies in the idea that it's cold but looks deceptively like a perfect weather day. Like nature is messing with your mind."
+
+This is **cognitive-dissonance humour, NOT slapstick or accident-based**. The visual deception is the joke. The image LOOKS like summer / sunny / holiday weather but the cold-weather signals reveal the truth.
+
+**Cold-weather signals required for the visual contradiction to land:**
+- Visible breath OR breath implied (mug steam, frost-pluming exhale)
+- Frost on grass / patio / windscreens / trampolines
+- Puffer jackets, beanies, scarves, gloves (winter wardrobe in summer-looking light)
+- Bare winter trees (jacaranda silhouettes against a sunset)
+- Dry brown highveld grass — never wet green
+
+**Examples of the cold-clear cognitive-dissonance register:**
+
+- Person in stylish aviator sunglasses + heavy puffer jacket — reads as ski-resort glamour, is just Joburg in July
+- Bright cloudless deep-blue sky + frost on the patio grass — looks like swimming weather, is hot-chocolate weather
+- Empty pool with sun glittering on the water, two people on loungers reading in puffers and beanies
+- Kid in shorts paired with thick puffer jacket and beanie: "it's not THAT cold, Ma"
+- Adult drinking iced coffee outside at 5°C because "the sun is out and it's bright"
+- Trampoline frosted white but golden morning sun catching it like summer
+- Patio breakfast scene that LOOKS like summer Sunday but everyone in scarves and woollen socks
+- Dog basking in a sunbeam on a frosted lawn, dignified squint
+- Wine glasses on outdoor table in golden light but the moisture on them is frost, not condensation
+- Two kids running on dry brown grass under blazing blue sky in puffer jackets, breath visible
+
+The viewer should briefly think "oh, nice day" before clocking the cold-weather signals. That moment of recalibration IS the joke.
+
+**Apply this register to roughly 40% of cold-clear briefs** (slightly higher than the general 30% humour rate per v2.4, because cold-clear's whole bucket identity benefits from leaning into the visual contradiction). Other 60% stay quiet/contemplative: frost on aviator sunglasses still life, grey cat watching breath form in cold air, dignified bare-tree silhouettes against deep navy dusk sky.
 
 ---
 
@@ -615,6 +647,7 @@ Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 - **v2.3** (2026-05-19) — Two surgical fixes from GPT-5.5 adversarial review of v2.2: (a) **Diversity rule re-bucketed by count** — v2.2's "2+ humans" bucket forced a four-group demand on couples and 3-person families. v2.3 splits the bucket: Count 0 omits, Count 1 specifies identity, Count 2-3 specifies each identity directly WITHOUT four-group boilerplate, Count 4+ keeps the group boilerplate. (b) Added "Brief integrity check" prompt-discipline section.
 - **v2.4** (2026-05-19, evening) — Ten-item folded update from Al's overnight-batch feedback + OpenArt platform recon. (1) Canonical dimension is now **1008 × 1792** (true 9:16, OpenArt 1k preset / Higgsfield 9:16 target). 2:3 cold-clear anchors and 19 overnight-batch 9:16/2k candidates grandfathered. (2) **Default model = `gpt-image-2`**; `nano_banana_2` reserved for promo + grandfathered set. (3) **Default quality = Medium** (35 cr/img at OpenArt); High reserved for non-UI-occluded marketing assets. (4) Auto Polish MUST be OFF (new Critical Rule #16). (5) **Architectural Variety mandate (NEW section)** — 9 canonical SA types with regional appropriateness map; bare "face-brick" / "modern suburban" / "middle-class SA home" banned (all anchor red brick); rotate at the bucket level. (6) **Humour Register (NEW section)** — curated T-table lines per bucket as mood/energy anchors, not literal scene scripts; canonical wind anchors "trees doing involuntary yoga" + "trampoline two streets away" preserved. (7) Scene-aware day-only negative — `artificial lighting indoors` modifier now fires on OUTDOOR day-slot scenes only; indoor day-slot scenes use base + prop block alone. (8) High-risk prop blacklist extends the base negative — prefer affirmative-positive phrasing over negative blocks. (9) Worktree-vs-main parity check note added at the top. (10) **Platform Knowledge section (NEW LIVING)** — OpenArt entry verified 2026-05-19 with full deep-link / credit / wall-time / quirks coverage.
 - **v2.5** (2026-05-19, late) — Five-item folded update from the 2026-05-19 full filesystem audit + new target counts. **All v2.4 rules unchanged** (architectural variety, humour register, count-aware diversity, gpt-image-2 default, OpenArt platform knowledge). (1) **New target counts:** 28 day images per condition (was 14), 14 dawn / 14 dusk / 14 night per condition (was 3 each), 1 day.jpg fallback (unchanged) → **71 per bucket, ~639 across 9 buckets** at pre-launch minimum. (2) **Day-of-week mapping extended to 28-slot mod-28 rotation** — Saturday slots are now `day_6`, `day_13`, `day_20`, `day_27`; Sunday slots are `day_7`, `day_14`, `day_21`, `day_28`. Dawn / dusk / night stay on a 14-slot Mon→Sun→Mon→Sun cadence (Saturdays at `*_6` and `*_13`, Sundays at `*_7` and `*_14`). (3) **Audit-grounded bucket-by-bucket reality table replaces v2.4's "12+ more needed" stale claim** — actual filesystem state: 8 condition folders fully populated with 24 files each (193 total), cold-clear folder absent (23 in staging pipeline). 47 new slots per bucket = **~423 new images total** for full v2.5 library. Existing 193 stay untouched per Al's 2026-05-19 decision. (4) **Existing image dimensions clarification** — audit catalogued four dimension classes: 7 squares (2 in clear, 5 in wind), 3 16:9 landscapes (2 in wind + bg/default.jpg), 2 reversed-portrait (wind), 181 ~9:16-adjacent portraits at three sub-resolutions. All grandfathered; rotation system handles reconciliation post-launch. v2.4's claim of "105 v1.0 squares" was stale — the audit found 7. (5) **promote.py re-compression operational note** — PNG-from-OpenArt at 2 MB must be JPG-q85 or WebP-compressed before landing in the PW repo (target under 500 KB). Documented in pw-image-staging section so the compression step survives future maintainer rewrites. Architectural variety rotation rule re-worded for clarity at 28-slot scale (no type > 3 in any 14-slot window, so no type > 6 across 28 day slots). Image Quality Checklist items 8 and 9 wording refreshed for full-cycle scope.
+- **v2.5.1** (2026-05-19) — Single surgical addition: **cold-clear humour register** subsection added to the Humour Register section. Fills the gap flagged in the v2.4 humour pull ("cold-clear has no dedicated witty bucket"). Captured from Al's review.py walkthrough of the cold-clear staging inbox: the bucket's humour is **cognitive dissonance** — the scene looks like a perfect summer day until the cold-weather signals (visible breath, frost, puffer jackets, bare jacaranda) reveal the truth. NOT slapstick, NOT accident-based. Apply to ~40% of cold-clear briefs (vs the general 30% humour rate), the other 60% quiet/contemplative. The earlier "cold-clear uses `cold` lines" note updated to point at the new subsection.
 
 ---
 
