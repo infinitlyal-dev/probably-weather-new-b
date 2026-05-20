@@ -178,14 +178,15 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
 
   it("getWeatherIcon (50%) returns ⛅ — hourly icon path", () => {
     // The icon picker is a small pure function; reproduce its rules here.
+    // Cloud thresholds mirror deriveCondition (partly-cloudy >= 30, cloudy >= 55).
     const getWeatherIcon = (rp, cp, tc, isNight) => {
       const isNum = (n) => typeof n === 'number' && Number.isFinite(n);
       if (isNum(tc) && tc <= 0) return '🧥';
       if (isNum(rp) && rp >= 50) return '🌧️';
       if (isNum(rp) && rp >= 30) return '🌦️';
       if (isNum(tc) && tc >= 35) return '🔥';
-      if (isNum(cp) && cp >= 70) return '☁️';
-      if (isNum(cp) && cp >= 40) return '⛅';
+      if (isNum(cp) && cp >= 55) return '☁️';
+      if (isNum(cp) && cp >= 30) return '⛅';
       if (isNum(tc) && tc <= 10) return '🧥';
       return isNight ? '🌙' : '☀️';
     };

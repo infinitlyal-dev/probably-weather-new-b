@@ -1589,12 +1589,14 @@ document.addEventListener("DOMContentLoaded", () => {
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
     renderCapeWind(norm);
   }
-  // Hourly/daily row icon. Delegates to pickHourlyEmoji so every branch
+  // Hourly row icon. Delegates to pickHourlyEmoji so every branch
   // (rain, partly cloudy, cloudy, clear, cold, heat) honours isNight — not
   // just the clear fallback. This fixes the 20:00 sun-with-rain-cloud bug
   // (rain-possible was returning 🌦️ regardless of time of day).
-  function getWeatherIcon(rp, cp, tc, isNight) {
-    return pickHourlyEmoji({ rainPct: rp, cloudPct: cp, tempC: tc, isNight: !!isNight });
+  // `cond` is the per-hour categorised condition from the API — lets thunder
+  // and fog hours render correctly (the numeric ladder has no weather code).
+  function getWeatherIcon(rp, cp, tc, isNight, cond) {
+    return pickHourlyEmoji({ rainPct: rp, cloudPct: cp, tempC: tc, isNight: !!isNight, condition: cond });
   }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
@@ -1614,7 +1616,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
       // BUG-2 fix: night hours (20:00-05:00) get moon icon instead of sun
       const isNightHour = hourNum >= 20 || hourNum < 5;
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour);
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
@@ -1641,10 +1643,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const date = new Date(Date.now() + offsetMs + i * 86400000);
       const dayName = getTranslatedDayName(date.getUTCDay());
       const badge = getDayBadge(d, i, hourlyData);
-      const iconTemp = isNum(d.lowC) && d.lowC <= 0 ? d.lowC : d.highC;
-      // Daily entries don't have cloudPct from the API. Pass null so getWeatherIcon
-      // falls back to rain + temp signals only — matches renderDayDetailSummary behaviour.
-      const icon = getWeatherIcon(d.rainChance, null, iconTemp);
+      // Daily emoji uses the full consensus conditionKey (deriveCondition output),
+      // which carries the partly-cloudy / cloudy / storm / fog distinctions that a
+      // rain+temp-only fallback cannot — so the week list agrees with the home hero.
+      const icon = conditionEmoji(d.conditionKey);
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
@@ -1718,7 +1720,7 @@ document.addEventListener("DOMContentLoaded", () => {
         : `${String(hourNum).padStart(2, '0')}:00`;
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
       const isNightHour = hourNum >= 20 || hourNum < 5;
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour);
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
@@ -1735,8 +1737,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderDayDetailSummary(container, day) {
     const card = document.createElement('div');
     card.classList.add('day-detail-summary-card');
-    const iconTemp = isNum(day.lowC) && day.lowC <= 0 ? day.lowC : day.highC;
-    const icon = getWeatherIcon(day.rainChance, null, iconTemp);
+    // Daily emoji uses the full consensus conditionKey (see renderWeek).
+    const icon = conditionEmoji(day.conditionKey);
     const cond = day.conditionLabel || '—';
     const hi = isNum(day.highC) ? formatTemp(day.highC) : '--°';
     const lo = isNum(day.lowC)  ? formatTemp(day.lowC)  : '--°';

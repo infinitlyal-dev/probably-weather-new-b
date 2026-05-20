@@ -37,19 +37,35 @@ export function pickConditionEmojiForTime(condition, isDay) {
   return isDay === false ? pair.night : pair.day;
 }
 
-// Hourly/daily row icon: rain probability + cloud cover + temp, plus isNight.
-// Mirrors the legacy getWeatherIcon in assets/app.js but routes through
-// pickConditionEmojiForTime so day/night is honoured for every branch.
-export function pickHourlyEmoji({ rainPct, cloudPct, tempC, isNight }) {
+// Hourly row icon: rain probability + cloud cover + temp, plus isNight.
+// `condition` is the optional per-hour categorised condition the API attaches
+// to each hourly entry (categorizeDesc in api/weather.js).
+//
+// Cloud thresholds here MIRROR deriveCondition() in api/weather.js
+// (partly-cloudy >= 30, mostly/overcast cloudy >= 55) so the hourly icon
+// agrees with the home hero's consensus condition. The previous >= 40
+// partly-cloudy floor left the 30-39% cloud band rendering a bare ☀️ while
+// the home headline already read "partly cloudy" — Al's 2026-05-19 bug.
+export function pickHourlyEmoji({ rainPct, cloudPct, tempC, isNight, condition }) {
   const isNum = (n) => typeof n === 'number' && Number.isFinite(n);
   const isDay = !isNight;
-  if (isNum(tempC) && tempC <= 0) return pickConditionEmojiForTime('cold', isDay);
-  if (isNum(rainPct) && rainPct >= 50) return pickConditionEmojiForTime('rain', isDay);
-  if (isNum(rainPct) && rainPct >= 30) return pickConditionEmojiForTime('rain-possible', isDay);
-  if (isNum(tempC) && tempC >= 35) return pickConditionEmojiForTime('heat', isDay);
-  if (isNum(cloudPct) && cloudPct >= 70) return pickConditionEmojiForTime('cloudy', isDay);
-  if (isNum(cloudPct) && cloudPct >= 40) return pickConditionEmojiForTime('partly-cloudy', isDay);
-  if (isNum(tempC) && tempC <= 10) return pickConditionEmojiForTime('cold', isDay);
+  const cond = String(condition || '').toLowerCase();
+
+  // categorizeDesc detects thunder and fog reliably, and the numeric ladder
+  // below has no weather-code input so it could never surface them. Honour
+  // those two directly. categorizeDesc is NOT reliable for the
+  // clear/partly/cloudy split (it collapses "partly cloudy" into "clear"),
+  // so every other key falls through to the cloud-cover ladder.
+  if (cond === 'storm' || cond === 'thunder') return pickConditionEmojiForTime('storm', isDay);
+  if (cond === 'fog') return pickConditionEmojiForTime('fog', isDay);
+
+  if (isNum(tempC) && tempC <= 0)        return pickConditionEmojiForTime('cold', isDay);
+  if (isNum(rainPct) && rainPct >= 50)   return pickConditionEmojiForTime('rain', isDay);
+  if (isNum(rainPct) && rainPct >= 30)   return pickConditionEmojiForTime('rain-possible', isDay);
+  if (isNum(tempC) && tempC >= 35)       return pickConditionEmojiForTime('heat', isDay);
+  if (isNum(cloudPct) && cloudPct >= 55) return pickConditionEmojiForTime('cloudy', isDay);
+  if (isNum(cloudPct) && cloudPct >= 30) return pickConditionEmojiForTime('partly-cloudy', isDay);
+  if (isNum(tempC) && tempC <= 10)       return pickConditionEmojiForTime('cold', isDay);
   return pickConditionEmojiForTime('clear', isDay);
 }
 
