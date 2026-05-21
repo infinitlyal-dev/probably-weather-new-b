@@ -290,6 +290,8 @@ document.addEventListener("DOMContentLoaded", () => {
     headlines: WEATHER_COPY.headlines,
     // Witty lines
     witty: WEATHER_COPY.witty,
+    // Layer B (Bug 1): hedged "probably" register, used when meta.confidence is 'low'.
+    witty_low_confidence: WEATHER_COPY.witty_low_confidence,
     // Cape Doctor wind alert
     capeDr: {
       warningLabel: {
@@ -1058,6 +1060,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function getWittyLine(condition) {
     const day = getLocationDayOfWeek(), hour = getLocationHour(activePlace?.lon);
     const isWeekend = day === 0 || day === 6 || (day === 5 && hour >= 16);
+    // Layer B (Bug 1): when the API flags the verdict as low-confidence — a fog
+    // trend is forming, or the sources disagree — drop into the honest
+    // "probably" register instead of projecting false certainty. This takes
+    // precedence over the weekend pool (honesty beats a braai pun when we're
+    // unsure). Conditions with no low-confidence bank fall through unchanged.
+    if (window.__PW_LAST_NORM?.confidence === 'low') {
+      const lcPool = T.witty_low_confidence?.[condition]?.[settings.lang]
+        || T.witty_low_confidence?.[condition]?.en;
+      if (Array.isArray(lcPool) && lcPool.length) {
+        debugLog(`[Witty register] LOW-CONFIDENCE pool for ${condition}/${settings.lang}`);
+        return lcPool[Math.floor(Math.random() * lcPool.length)];
+      }
+    }
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
       const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
     }
@@ -1360,9 +1375,15 @@ document.addEventListener("DOMContentLoaded", () => {
       cloudPct: isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
       conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
-      used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name), 
+      used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [],
-      sourceConditions: meta.sourceConditions || [] // FIX-001: per-source condition votes
+      sourceConditions: meta.sourceConditions || [], // FIX-001: per-source condition votes
+      // Layer A/B (Bug 1): confidence register. 'high' unless the API flagged a
+      // fog trend or source disagreement. getWittyLine reads `confidence`;
+      // conditionConfidence is the full audit block for the debug overlay.
+      confidence: meta.confidence === 'low' ? 'low' : 'high',
+      fogTrendIncoming: meta.fogTrendIncoming === true,
+      conditionConfidence: meta.conditionConfidence || null
     };
   }
 

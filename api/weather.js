@@ -274,7 +274,10 @@ export default async function handler(req, res) {
       `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
       // Phase B-1 Item 3: hourly weather_code added so per-hour condition can be preserved
       // through aggregation (previously only the daily weather_code was fetched).
-      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code` +
+      // Layer A (2026-05-21, Bug 1): visibility + dew_point_2m added so the
+      // advection-fog detector can see low-visibility/saturated-air signals the
+      // model-based condition vote ignores. Both fields are free on this endpoint.
+      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
       `&timezone=auto&forecast_days=7`
     );
@@ -377,6 +380,11 @@ export default async function handler(req, res) {
         clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
         humidity:   om.hourly?.relative_humidity_2m?.slice(0, 48)      ?? [],
         uvs:        om.hourly?.uv_index?.slice(0, 48)                  ?? [],
+        // Layer A (Bug 1): per-hour visibility (metres) + dew point (°C) feed
+        // detectAdvectionFog(). Open-Meteo only — the detector is single-source
+        // by design (the other four sources expose no visibility field).
+        visibility: om.hourly?.visibility?.slice(0, 48)                ?? [],
+        dewPoints:  om.hourly?.dew_point_2m?.slice(0, 48)              ?? [],
         // Phase B-1 Item 3: per-hour description so the hourly aggregator can
         // surface storm/rain/cloud per hour, not just temp/precip numbers.
         descs:      om.hourly?.weather_code?.slice(0, 48).map(c => openMeteoCodeMap[c] ?? null) ?? [],
@@ -1433,6 +1441,60 @@ export default async function handler(req, res) {
       debugLog(`[Tomorrow.io next-hour radar] precipIntensity=${tiNext.precipitationIntensity} mm/h → rainChance ${before}→${currentHourRainChance}`);
     }
 
+    // =========================================================================
+    // LAYER A — VISIBILITY-AWARE ADVECTION-FOG DETECTOR (2026-05-21, Bug 1)
+    // Runs AFTER the 5-source ensemble vote and ALL overrides — it never alters
+    // the vote itself, only gets the final veto. Open-Meteo's free hourly
+    // endpoint returns visibility / humidity / dew point that the ensemble
+    // condition vote never consulted. Coastal advection fog produces low
+    // visibility + saturated air while model cloud_cover and weather_code still
+    // read "clear" — so the ensemble alone cannot catch it 1-2 hours early.
+    // Adversarial-review note: low visibility ALONE can be rain / haze / smoke,
+    // so the detector is gated on humidity, dew-point spread AND the absence of
+    // precipitation, which together isolate fog specifically.
+    // =========================================================================
+    const ensembleVote = nowConditionKey; // condition the ensemble produced, pre-detector
+    const fogDetector = detectAdvectionFog(hourlies[0], localHour);
+    let fogTrendIncoming = false;
+    if (fogDetector.currentFog && (nowConditionKey === 'clear' || nowConditionKey === 'partly-cloudy' || nowConditionKey === 'cloudy')) {
+      debugLog(`[Layer A fog detector] visibility ${fogDetector.visKm}km humidity ${fogDetector.humidity}% dewSpread ${fogDetector.dewSpread}°C → fog (was ${nowConditionKey})`);
+      nowOverrides.push({
+        rule: 'visibility-humidity-fog-detector',
+        from: nowConditionKey,
+        to: 'fog',
+        reasonDetail: `visibility ${fogDetector.visKm}km, humidity ${fogDetector.humidity}%, dew-point spread ${fogDetector.dewSpread}°C`,
+      });
+      nowConditionKey = 'fog';
+      nowConditionReason = 'visibility-humidity-fog-detector';
+    } else if (fogDetector.trendFog && !fogDetector.currentFog) {
+      // Fog forming in the next 1-3 hours but not visible yet — keep the
+      // ensemble's condition, but flag it so the frontend hedges its copy.
+      fogTrendIncoming = true;
+      debugLog(`[Layer A fog detector] fog trend incoming (next 1-3h) — condition stays ${nowConditionKey}, confidence lowered`);
+    }
+
+    // Confidence verdict — computed server-side as the single source of truth so
+    // the frontend just reads meta.confidence. LOW when the app is hedging:
+    //   · a fog trend is incoming (detector saw it forming, ensemble hasn't), OR
+    //   · fewer than 4 active sources agree with the final condition's category.
+    // A confirmed CURRENT-hour fog override stays HIGH — the detector's gates
+    // (vis<5km + humidity>=90 + dew-spread<=2 + no precip) make it near-certain.
+    const finalVoteBucket = conditionKeyToVoteBucket(nowConditionKey);
+    const agreeingSources = sourceConditionVotes.filter(v => v.vote === finalVoteBucket).length;
+    const detectorVerdict = fogDetector.currentFog ? 'fog'
+      : fogDetector.trendFog ? 'fog-trend'
+      : (fogDetector.available ? 'none' : 'no-data');
+    // "Sources disagree" = two or more active sources dissent from the final
+    // headline. With the usual 5 sources this is the spec's "<4/5 agree"; it
+    // also degrades sensibly when sources are down (4 active → need 3, 3 active
+    // → need 2) instead of falsely flagging a unanimous 3-source day as low.
+    const lowConfidence = (
+      fogTrendIncoming ||
+      (activeNorms.length >= 3 && agreeingSources < (activeNorms.length - 1) && nowConditionReason !== 'visibility-humidity-fog-detector')
+    );
+    const conditionConfidence = lowConfidence ? 'low' : 'high';
+    debugLog(`[Confidence] ${conditionConfidence} — ensemble=${ensembleVote} final=${nowConditionKey} detector=${detectorVerdict} agreement=${agreeingSources}/${activeNorms.length}`);
+
     // Phase B-1 Item 1: package the audit trail for the now-path decision.
     // conditionReason is the short identifier of the rule that produced the
     // final key (after any overrides). conditionSignals shows the inputs:
@@ -1518,6 +1580,23 @@ export default async function handler(req, res) {
         // localHour/MET-alignment/isDay treat the location as UTC).
         utcOffsetSource,
         updatedAtLabel: new Date().toISOString(),
+        // Layer A/B (2026-05-21, Bug 1): fog-detector verdict + confidence
+        // register. `confidence` and `fogTrendIncoming` are the fields the
+        // frontend reads; `conditionConfidence` is the full audit block for
+        // the debug overlay.
+        confidence: conditionConfidence,
+        fogTrendIncoming,
+        conditionConfidence: {
+          level:           conditionConfidence,
+          ensembleVote,
+          detectorVerdict,
+          finalCondition:  nowConditionKey,
+          fogTrendIncoming,
+          sourceAgreement: `${agreeingSources}/${activeNorms.length}`,
+          fogSignal: fogDetector.available
+            ? { visKm: fogDetector.visKm, humidity: fogDetector.humidity, dewSpread: fogDetector.dewSpread }
+            : null,
+        },
       },
     });
 
@@ -1886,6 +1965,110 @@ function categorizeDesc(desc) {
   return 'clear';
 }
 
+/**
+ * Map a final conditionKey (deriveCondition output, post-overrides) to the
+ * coarse bucket space that categorizeDesc() — and therefore the per-source
+ * vote list — uses. Needed so the confidence check can count how many sources
+ * agree with the final headline. categorizeDesc collapses "partly cloudy" into
+ * 'clear', so partly-cloudy maps to 'clear' here for a like-for-like compare.
+ */
+function conditionKeyToVoteBucket(key) {
+  switch (key) {
+    case 'storm': case 'thunder': case 'hail': return 'storm';
+    case 'cold':                               return 'cold';
+    case 'rain': case 'rain-possible':         return 'rain';
+    case 'cloudy':                             return 'cloudy';
+    case 'fog':                                return 'fog';
+    // clear, partly-cloudy, wind, heat, uv — categorizeDesc routes all of
+    // these (and 'Windy'/'Sunny'/'Partly cloudy' descs) to 'clear'.
+    default:                                   return 'clear';
+  }
+}
+
+/**
+ * Layer A — visibility/humidity advection-fog detector (2026-05-21, Bug 1).
+ *
+ * The 5-source ensemble votes on model cloud_cover and weather_code, neither of
+ * which reliably captures coastal advection fog: fog is a shallow surface layer
+ * that satellite/model cloud fields often read as near-zero, and the models lag
+ * the real fog edge by 1-2 hours. Open-Meteo's hourly endpoint DOES expose
+ * `visibility` and `dew_point_2m` — this detector uses them.
+ *
+ * Adversarial-review-validated gating: low visibility on its own is NOT fog —
+ * it can be rain, drizzle, haze, smoke or sea spray. So fog is only declared
+ * when low visibility coincides with saturated air (high RH + tiny dew-point
+ * spread) AND there is no precipitation to explain the murk.
+ *
+ * @param {object|null} omHourly  hourlies[0] — Open-Meteo's parsed hourly arrays
+ *                                 (visibility, humidity, temps, dewPoints,
+ *                                  rains=precip-probability, precipMm).
+ * @param {number} currentHourIdx local-hour index into those arrays (= localHour).
+ * @returns {{currentFog:boolean, trendFog:boolean, available:boolean,
+ *            visKm:number|null, humidity:number|null, dewSpread:number|null}}
+ */
+function detectAdvectionFog(omHourly, currentHourIdx) {
+  const out = { currentFog: false, trendFog: false, available: false, visKm: null, humidity: null, dewSpread: null };
+  if (!omHourly || !Number.isInteger(currentHourIdx) || currentHourIdx < 0) return out;
+
+  const at = (arr, i) => (Array.isArray(arr) && isNum(arr[i]) ? arr[i] : null);
+  const vis  = omHourly.visibility || [];
+  const rh   = omHourly.humidity   || [];
+  const temp = omHourly.temps      || [];
+  const dew  = omHourly.dewPoints  || [];
+  const pp   = omHourly.rains      || []; // precipitation_probability (%)
+  const pm   = omHourly.precipMm   || []; // precipitation amount (mm)
+
+  const visM       = at(vis,  currentHourIdx);
+  const humidity   = at(rh,   currentHourIdx);
+  const tC         = at(temp, currentHourIdx);
+  const dC         = at(dew,  currentHourIdx);
+  const precipProb = at(pp,   currentHourIdx);
+  const precipMm   = at(pm,   currentHourIdx);
+
+  // Without visibility AND humidity there is nothing to detect on — bail out
+  // leaving available=false so callers treat it as "no signal", not "no fog".
+  if (visM === null || humidity === null) return out;
+
+  out.available  = true;
+  out.visKm      = Math.round((visM / 1000) * 10) / 10;
+  out.humidity   = humidity;
+  const dewSpread = (tC !== null && dC !== null) ? Math.round((tC - dC) * 10) / 10 : null;
+  out.dewSpread  = dewSpread;
+
+  // Current-hour fog: murk + saturated air + nothing wet to explain the murk.
+  out.currentFog = (
+    out.visKm < 5 &&
+    humidity >= 90 &&
+    dewSpread !== null && dewSpread <= 2 &&
+    (precipProb === null || precipProb < 30) &&
+    (precipMm   === null || precipMm   < 0.2)
+  );
+
+  // Trend: fog forming within the next 1-3 hours even though it is not visible
+  // now. The PRIMARY signal is Open-Meteo's own visibility FORECAST — a forecast
+  // of <2km visibility, with saturated-ish air and no precipitation, is the
+  // model itself predicting fog. The humidity floor is 90% (not 95%): verified
+  // live for Somerset West on 2026-05-21, real advection fog forecast at
+  // visibility 0.3-1.0km sat at RH ~92% — a 95% gate silently missed it. A
+  // trend flag only lowers the copy-confidence register, never the condition,
+  // so a loose-but-honest gate is the right trade.
+  for (let k = 1; k <= 3; k++) {
+    const i = currentHourIdx + k;
+    const v  = at(vis,  i);
+    const h  = at(rh,   i);
+    const t2 = at(temp, i);
+    const d2 = at(dew,  i);
+    const p2 = at(pp,   i);
+    if (v === null || h === null) continue;
+    const ds = (t2 !== null && d2 !== null) ? (t2 - d2) : null;
+    if ((v / 1000) < 2 && h >= 90 && ds !== null && ds <= 2.5 && (p2 === null || p2 < 30)) {
+      out.trendFog = true;
+      break;
+    }
+  }
+  return out;
+}
+
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc, pickWeightedMostCommon };
+export { deriveCondition, categorizeDesc, pickWeightedMostCommon, detectAdvectionFog, conditionKeyToVoteBucket };

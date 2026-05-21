@@ -141,4 +141,101 @@ export const WEATHER_COPY = {
       st: ["Leholimo la braai, boet! Ha ho mabaka.", "Chesa Weber. Ke molao.", "Melimo ea leholimo e a iponahatsa.", "Lebopo kapa braai? E.", "Maikutlo a beke a matla haholo a hloka playlist ea 'ona.", "Haeba o sebetsa kajeno, re oa utsoarela.", "E lokile ho se etse letho.", "Letsetsa metsoalle. Fumana nama. Re tsamaee.", "Merero ea kajeno: phela kantle.", "Phomolo ha e be betere ho feta mona.", "Mashala ha a na ho itukisa ka bo 'ona.", "Lieta li ka khethoa. Boitšoaro bo tlamehile.", "Out-of-office ea hao e etsa mosebetsi o boima.", "Leholimo la ho kopana. Bokella batho.", "Weber e emeletse beke eohle bakeng sa sena.", "Tong e a bitsa. Araba eona.", "Ha ho alarm. Ha ho agenda. Vibes feela.", "Lena ke leholimo phomolo e entsoeng bakeng sa lona.", "Boikarabelo ba hao bo le bong feela ke ho khetha mashala kapa patsi.", "Matla a Moqebelo: a hodimo. Boikarabelo: bo tlase.", "Kenya marinade. Tima mohala. Letsatsi le qala joale.", "Lichopo li a bitsa. Setulo le sona.", "Boerie roll bakeng sa lijo tsa hoseng? Mafelong a beke? E lokile.", "Slip-slops, libhulukoe tse khutšoanyane, letsatsi. Boraro bo bong.", "Braai ke khalendara ea boithabiso. Hlaha."]
     }
   },
+  // ===========================================================================
+  // LOW-CONFIDENCE COPY REGISTER (Layer B — 2026-05-21, Bug 1 fix)
+  // ---------------------------------------------------------------------------
+  // Used by getWittyLine() in app.js when meta.confidence === 'low' — i.e. the
+  // ensemble's verdict carries known uncertainty (a fog trend is incoming, or
+  // fewer than 4 sources agree). The register leans into the brand: "Probably
+  // Weather" finally gets to be honest about the "probably". Lines hedge openly
+  // instead of projecting false confidence.
+  //
+  // Keys mirror the home-screen displayCondition values that occur often enough
+  // to warrant a hedged register. Conditions WITHOUT an entry here (thunder,
+  // hail, uv) fall back to the normal `witty` pool — getWittyLine handles that.
+  //
+  // _meta.requires_native_review lists the languages whose lines are
+  // AI-drafted and PROVISIONAL until a native speaker confirms them — per the
+  // project rule for low-resource languages. en + af are ship-ready.
+  // ===========================================================================
+  witty_low_confidence: {
+    _meta: { requires_native_review: ['zu', 'xh', 'st'], drafted: '2026-05-21', layer: 'B' },
+    clear: {
+      en: ["Probably clear. Your window's the final say.", "Looks clear-ish. The models and the sky don't always agree.", "Clear, in theory. The Cape Doctor doesn't always RSVP.", "Probably a good one. We're about 80% sure.", "Clear skies, says the maths. Check the actual sky too.", "Models say lovely. Reality reserves the right to differ."],
+      af: ["Waarskynlik helder. Jou venster het die laaste sê.", "Lyk helder-ish. Die modelle en die lug stem nie altyd saam nie.", "Helder, in teorie. Die Kaapse Dokter RSVP nie altyd nie.", "Waarskynlik 'n goeie een. Ons is so 80% seker.", "Helder lug, sê die somme. Kyk ook na die regte lug.", "Modelle sê pragtig. Die werklikheid hou voor om te verskil."],
+      zu: ["Cishe izulu lihle. Iwindi lakho yilo elinegunya lokugcina.", "Kubukeka kuhle. Amamodeli nesibhakabhaka awavumelani njalo.", "Cishe usuku oluhle. Siqinisekile cishe ngo-80%.", "Izulu lihle, kusho izibalo. Bheka nesibhakabhaka sangempela.", "Amamodeli athi kuhle. Iqiniso lingahluka.", "Mhlawumbe lihle. Asiqinisekanga ngokugcwele."],
+      xh: ["Mhlawumbi sicacile isibhakabhaka. Ifestile yakho inegunya lokugqibela.", "Kubonakala kuhle. Iimodeli nesibhakabhaka azivumelani rhoqo.", "Mhlawumbi yimini entle. Siqinisekile malunga ne-80%.", "Isibhakabhaka sicacile, itsho imathematika. Jonga nesibhakabhaka sokwenene.", "Iimodeli zithi kuhle. Inyaniso inelungelo lokwahluka.", "Mhlawumbi kuhle. Asiqinisekanga ngokupheleleyo."],
+      st: ["Mohlomong le hlakile. Fensetere ea hau e na le taelo ea ho qetela.", "Ho bonahala ho le hotle. Limodele le leholimo ha li lumellane kamehla.", "Mohlomong letsatsi le letle. Re na le bonnete ba hoo e ka bang 80%.", "Leholimo le hlakile, ho bolela lipalo. Sheba leholimo la nnete le lona.", "Limodele li re ho hotle. 'Nete e na le tokelo ea ho fapana.", "Mohlomong ho hotle. Ha re na bonnete bo felletseng."]
+    },
+    'partly-cloudy': {
+      en: ["Probably a bit of cloud. Or a lot. Hard to call.", "Partly cloudy, partly guessing.", "Some cloud, some sun. The ratio's anyone's guess.", "Mixed bag out there. We're hedging.", "Cloud's around. How much is up for debate.", "Bit of everything. Classic in-between day."],
+      af: ["Waarskynlik 'n bietjie wolk. Of baie. Moeilik om te sê.", "Effens bewolk, effens geraai.", "Bietjie wolk, bietjie son. Die verhouding is enigiemand se raaiskoot.", "Gemengde sak daar buite. Ons hou voor.", "Wolke is rond. Hoeveel is oop vir debat.", "Bietjie van alles. Klassieke tussen-in dag."],
+      zu: ["Cishe kunamafu amancane. Noma amaningi. Kunzima ukusho.", "Kunamafu kancane, kuqagela kancane.", "Amafu akhona, ilanga likhona. Isilinganiso siwukuqagela.", "Usuku oluxubene. Asiqinisekile.", "Amafu azungeza. Ukuthi mangaki kuyimpikiswano.", "Ingxenye yakho konke. Usuku oluphakathi nendawo."],
+      xh: ["Mhlawumbi kukho amafu amancinci. Okanye amaninzi. Kunzima ukutsho.", "Linamafu kancinci, kuqashelwa kancinci.", "Amafu akho, ilanga likho. Umlinganiselo ukuqashelo.", "Imini exubeneyo. Siyazigcina.", "Amafu ajikelezile. Ukuba mangaphi kuyimpikiswano.", "Inxalenye yento yonke. Imini ephakathi."],
+      st: ["Mohlomong ho na le maru a manyane. Kapa a mangata. Ho thata ho bolela.", "Ho na le maru a manyane, ho hakanngoa hanyane.", "Maru a teng, letsatsi le teng. Tekanyo ke phohmisetso.", "Letsatsi le tsoakaneng. Rea itšireletsa.", "Maru a potolohile. Hore na a makae ke ngangisano.", "Karolo ea ntho e ngoe le e ngoe. Letsatsi le bohareng."]
+    },
+    cloudy: {
+      en: ["Probably grey. Could lift, could thicken.", "Cloudy-ish. Don't bet the braai on it.", "Grey skies, low conviction.", "Looks overcast. The sources aren't unanimous.", "Cloud's the call. With an asterisk.", "Grey, probably. We've seen it surprise us."],
+      af: ["Waarskynlik grys. Kan optrek, kan verdik.", "Bewolk-ish. Moenie die braai daarop wed nie.", "Grys lug, lae oortuiging.", "Lyk toegetrek. Die bronne is nie eenparig nie.", "Wolk is die roep. Met 'n sterretjie.", "Grys, waarskynlik. Ons het dit al sien verras."],
+      zu: ["Cishe kumpunga. Kungaphakama, kungajiya.", "Kunamafu cishe. Ungabhejeli ukosa kukho.", "Izulu elimpunga, ukholo oluphansi.", "Kubukeka kunamafu. Imithombo ayivumelani.", "Amafu yiwo umbono. Kanye nophawu.", "Mpunga, cishe. Sike sabona kusimangaza."],
+      xh: ["Mhlawumbi limpunga. Linganyuka, lingaba shinyene.", "Linamafu-ish. Ungabhejeli ukugrila kuko.", "Isibhakabhaka esimpunga, ukholo oluphantsi.", "Kubonakala kugutyungelwe. Imithombo ayivumelani.", "Amafu lulo uluvo. Kunophawu.", "Mpunga, mhlawumbi. Sakha sabona kusothusa."],
+      st: ["Mohlomong ho na le maru. Ho ka phahama, ho ka teba.", "Ho na le maru-ish. U se ke ua beha braai holim'a sona.", "Leholimo le lerootho, tumelo e tlase.", "Ho bonahala ho koahetsoe. Mehloli ha e lumellane.", "Maru ke karabo. Ka letšoao.", "Lerootho, mohlomong. Re kile ra bona ho re makatsa."]
+    },
+    fog: {
+      en: ["Fog might be rolling in. Keep an eye on the mountain.", "Probably fog later. The Boland does this.", "Mist building, maybe. Headlights wouldn't hurt.", "Fog's on the cards. The sky's being coy about it.", "Could go misty. The dew point's flirting with it.", "Watch for fog — it likes to arrive unannounced."],
+      af: ["Mis kan inrol. Hou die berg dop.", "Waarskynlik mis later. Die Boland doen dit.", "Mis bou dalk op. Ligte sal nie skade doen nie.", "Mis is op die kaarte. Die lug is skaam daaroor.", "Kan mistig word. Die doupunt flankeer daarmee.", "Pasop vir mis — dit hou daarvan om onaangekondig op te daag."],
+      zu: ["Inkungu ingangena. Bheka intaba.", "Cishe inkungu kamuva. I-Boland yenza lokhu.", "Inkungu iyakheka, mhlawumbe. Layita izibani.", "Inkungu isemathubeni. Isibhakabhaka siyazenza.", "Kungaba nenkungu. Qaphela.", "Qaphela inkungu — ithanda ukufika ingazange yazise."],
+      xh: ["Inkungu ingangena. Jonga intaba.", "Mhlawumbi inkungu kamva. I-Boland yenza oku.", "Inkungu iyakheka, mhlawumbi. Layita izibane.", "Inkungu ikwithuba. Isibhakabhaka siyazenza.", "Kunokuba mhlophe yinkungu. Lumka.", "Lumkela inkungu — ithanda ukufika ingazange yazise."],
+      st: ["Mohodi o ka kena. Sheba thaba.", "Mohlomong mohodi hamorao. Boland e etsa sena.", "Mohodi oa eketseha, mohlomong. Tlhabisa mabone.", "Mohodi o monyetleng. Leholimo le ipata.", "Ho ka ba le mohodi. Ela hloko.", "Hlokomela mohodi — o rata ho fihla o sa tsebahale."]
+    },
+    rain: {
+      en: ["Probably rain. Take the umbrella, settle the argument.", "Rain's likely-ish. The sky hasn't signed anything.", "Looks wet. The models are fairly sure, not certain.", "Probably a damp one. Pack accordingly.", "Rain on the way, give or take.", "Wet conditions, probably. Don't quote us at the braai."],
+      af: ["Waarskynlik reën. Vat die sambreel, sluit die argument af.", "Reën is taamlik waarskynlik. Die lug het niks geteken nie.", "Lyk nat. Die modelle is redelik seker, nie seker nie.", "Waarskynlik 'n klam een. Pak reg.", "Reën op pad, min of meer.", "Nat toestande, waarskynlik. Moenie ons by die braai aanhaal nie."],
+      zu: ["Cishe imvula. Thatha isambulela.", "Imvula icishe ibekhona. Isibhakabhaka asisayinanga lutho.", "Kubukeka kumanzi. Amamodeli aqinisekile cishe, hhayi ngokugcwele.", "Cishe usuku olumanzi. Pakisha ngokufanele.", "Imvula iyeza, cishe.", "Izimo ezimanzi, cishe. Ungasicaphuni okosa."],
+      xh: ["Mhlawumbi imvula. Thatha isambrela.", "Imvula imhlawumbi ikho. Isibhakabhaka asikatyikityi nto.", "Kubonakala kumanzi. Iimodeli ziqinisekile mhlawumbi, hayi ngokupheleleyo.", "Mhlawumbi imini emanzi. Pakisha ngokufanelekileyo.", "Imvula iyeza, mhlawumbi.", "Iimeko ezimanzi, mhlawumbi. Ungasicaphuli ekugrileni."],
+      st: ["Mohlomong pula. Nka ambrela.", "Pula mohlomong e teng. Leholimo ha le e-s'o saene letho.", "Ho bonahala ho le metsi. Limodele li na le bonnete mohlomong, eseng ka botlalo.", "Mohlomong letsatsi le metsi. Paka ka nepo.", "Pula e tla, mohlomong.", "Maemo a metsi, mohlomong. U se ke ua re qotsa braaing."]
+    },
+    'rain-possible': {
+      en: ["Maybe rain, maybe not. Classic.", "Could rain. Could just threaten to.", "Rain's possible. So is being completely wrong.", "The sky's undecided. So are we.", "Might spit a bit. Might not bother.", "50/50 on the rain. Bring a jacket, just in case."],
+      af: ["Dalk reën, dalk nie. Klassiek.", "Kan reën. Kan net dreig.", "Reën is moontlik. So is om heeltemal verkeerd te wees.", "Die lug is besluiteloos. Ons ook.", "Mag 'n bietjie spoeg. Mag nie moeite doen nie.", "50/50 op die reën. Vat 'n baadjie, net ingeval."],
+      zu: ["Mhlawumbe imvula, mhlawumbe cha. Okuvamile.", "Kungana. Kungasongela nje.", "Imvula iyenzeka. Nokungabi yikho nhlobo kuyenzeka.", "Isibhakabhaka asinqumanga. Nathi futhi.", "Kungakhihliza kancane. Kungase kungahluphi.", "I-50/50 emvuleni. Thatha ibhantshi, uma kwenzeka."],
+      xh: ["Mhlawumbi imvula, mhlawumbi hayi. Into eqhelekileyo.", "Kusenokuna. Kusenokoyikisa nje.", "Imvula inokwenzeka. Nokuba siphazame ngokupheleleyo kunokwenzeka.", "Isibhakabhaka asikagqibi. Nathi.", "Kusenokutshiza kancinci. Kungenakuhlupha.", "I-50/50 emvuleni. Thatha ibhatyi, ukuba kuyenzeka."],
+      st: ["Mohlomong pula, mohlomong che. Tloaelo.", "Ho ka na. Ho ka tšosa feela.", "Pula e ka ba teng. Le ho fosa ka botlalo ho ka etsahala.", "Leholimo ha le qeta. Le rona.", "Ho ka tšela hanyane. Ho ka se tshoenyehe.", "50/50 ka pula. Nka baki, e le ka mohla."]
+    },
+    wind: {
+      en: ["Probably windy. The Cape Doctor keeps its own diary.", "Wind's likely. Hold onto the braai cover.", "Could get gusty. The forecast's a bit loose on this one.", "Breezy, probably. Maybe more.", "Wind's on the cards. Peg the washing down.", "Some wind expected. Strength still TBC."],
+      af: ["Waarskynlik winderig. Die Kaapse Dokter hou sy eie dagboek.", "Wind is waarskynlik. Hou vas aan die braai-oortrek.", "Kan winderig raak. Die voorspelling is 'n bietjie los hieroor.", "Briesig, waarskynlik. Dalk meer.", "Wind is op die kaarte. Peg die wasgoed vas.", "Bietjie wind verwag. Sterkte nog onbeslis."],
+      zu: ["Cishe kunomoya. I-Cape Doctor inendaba yayo.", "Umoya ucishe ubekhona. Bambelela kokokumboza ukosa.", "Kungaba nomoya. Isibikezelo siyaxega kulokhu.", "Kunomoya omncane, cishe. Mhlawumbe okwengeziwe.", "Umoya usemathubeni. Bopha izingubo zokuwasha.", "Kulindeleke umoya othile. Amandla awakaqinisekiswa."],
+      xh: ["Mhlawumbi kunomoya. I-Cape Doctor inebhukana layo.", "Umoya umhlawumbi ukho. Bambelela kwisigqubuthelo sokugrila.", "Kunokuba nomoya. Uqikelelo luxega kule nto.", "Kunomoya omncinci, mhlawumbi. Mhlawumbi ngaphezulu.", "Umoya ukwithuba. Bopha impahla yokuhlamba.", "Kulindeleke umoya othile. Amandla awakaqinisekiswa."],
+      st: ["Mohlomong ho na le moea. Cape Doctor e na le bukana ea eona.", "Moea mohlomong o teng. Tšoara sekoahelo sa braai.", "Ho ka ba le moea. Ponelopele e hlephile mona.", "Ho foka hanyane, mohlomong. Mohlomong ho feta.", "Moea o monyetleng. Hokahanya liaparo tsa ho hlatsoa.", "Ho lebeletsoe moea o itseng. Matla ha a e-s'o netefatsoe."]
+    },
+    cold: {
+      en: ["Probably cold. Take the jersey, you'll thank us.", "Chilly, most likely. Layer up to be safe.", "Looks cold-ish. The thermometer's keeping us guessing.", "Cold's the bet. Don't trust a sunny window in winter.", "Bring a jacket. Or don't. We're only fairly sure.", "Probably nippy. The Boland mornings do this."],
+      af: ["Waarskynlik koud. Vat die trui, jy sal ons dank.", "Koel, heel waarskynlik. Trek aan om veilig te wees.", "Lyk koud-ish. Die termometer hou ons aan die raai.", "Koud is die weddenskap. Moenie 'n sonnige venster in die winter vertrou nie.", "Vat 'n baadjie. Of nie. Ons is net redelik seker.", "Waarskynlik kil. Die Boland-oggende doen dit."],
+      zu: ["Cishe kuyabanda. Thatha ijezi, uzosibonga.", "Kuyabanda, cishe. Gqoka izingubo eziningi.", "Kubukeka kubanda. I-thermometer isenza siqagele.", "Ukubanda yikho esikubhejayo. Ungathembi iwindi elinelanga ebusika.", "Thatha ibhantshi. Noma cha. Siqinisekile nje cishe.", "Cishe kuyaqanda. I-Boland yenza lokhu ekuseni."],
+      xh: ["Mhlawumbi kuyabanda. Thatha ijezi, uya kusibulela.", "Kuyabanda, mhlawumbi. Nxiba iimpahla ezininzi.", "Kubonakala kubanda. I-thermometer isenza siqikelele.", "Ukubanda koko sikubhejayo. Ungathembi ifestile enelanga ebusika.", "Thatha ibhatyi. Okanye hayi. Siqinisekile nje mhlawumbi.", "Mhlawumbi kuyaqanda. I-Boland yenza oku kusasa."],
+      st: ["Mohlomong ho bata. Nka jeresi, u tla re leboha.", "Ho a bata, mohlomong. Apara liaparo tse ngata.", "Ho bonahala ho bata. Thermomethara e re etsa hore re hakanye.", "Ho bata ke seo re se behang. U se ke ua tšepa fensetere e nang le letsatsi mariha.", "Nka baki. Kapa che. Re na le bonnete feela mohlomong.", "Mohlomong ho serame. Boland e etsa sena hoseng."]
+    },
+    heat: {
+      en: ["Probably hot. We'll all find out together.", "Looks warm. How warm is a moving target.", "Hot-ish, likely. Keep the water close.", "Probably a scorcher. A hat's not a bad idea.", "Warm one coming, give or take a few degrees.", "Heat's likely. The number's still settling."],
+      af: ["Waarskynlik warm. Ons gaan almal saam uitvind.", "Lyk warm. Hoe warm is 'n bewegende teiken.", "Warm-ish, waarskynlik. Hou die water naby.", "Waarskynlik 'n blaker. 'n Hoed is nie 'n slegte idee nie.", "Warm een kom, gee of vat 'n paar grade.", "Hitte is waarskynlik. Die getal settle nog."],
+      zu: ["Cishe kushisa. Sizothola sonke ndawonye.", "Kubukeka kufudumele. Ukuthi kufudumele kangakanani kuyaguquka.", "Kushisa cishe. Gcina amanzi eduze.", "Cishe usuku olushisayo. Isigqoko asilona icebo elibi.", "Usuku olufudumele luyeza, cishe.", "Ukushisa cishe kukhona. Inombolo isazinza."],
+      xh: ["Mhlawumbi kushushu. Siya kufumanisa sonke kunye.", "Kubonakala kufudumele. Ukuba kufudumele kangakanani kuyatshintsha.", "Kushushu mhlawumbi. Gcina amanzi ekufutshane.", "Mhlawumbi imini eshushu. Umnqwazi asiyongcinga embi.", "Imini efudumeleyo iyeza, mhlawumbi.", "Ubushushu mhlawumbi bukho. Inani lisazinza."],
+      st: ["Mohlomong ho chesa. Re tla fumana kaofela hammoho.", "Ho bonahala ho futhumetse. Hore na ho futhumetse hakae ho a fetoha.", "Ho chesa mohlomong. Boloka metsi haufi.", "Mohlomong letsatsi le chesang. Katiba hase mohopolo o mobe.", "Letsatsi le futhumetseng le tla, mohlomong.", "Mocheso mohlomong o teng. Palo e sa ntsane e lula."]
+    },
+    storm: {
+      en: ["Could turn stormy. Keep one eye on the sky.", "Storm's possible. The braai might need a rain check.", "Weather might get serious. Stay loosely on alert.", "Probably brewing something. Stay close to a roof.", "Storm on the cards, not yet confirmed. Stay sharp.", "Sky's looking moody. Could escalate."],
+      af: ["Kan stormagtig raak. Hou een oog op die lug.", "Storm is moontlik. Die braai mag 'n reëndatum nodig kry.", "Weer kan ernstig raak. Bly los op wag.", "Waarskynlik iets aan die brou. Bly naby 'n dak.", "Storm op die kaarte, nog nie bevestig nie. Bly skerp.", "Lug lyk nukkerig. Kan eskaleer."],
+      zu: ["Kungaba nesiphepho. Bheka isibhakabhaka.", "Isiphepho siyenzeka. Ukosa kungase kudinge usuku olunye.", "Izulu lingaba nzima. Hlala uqaphile.", "Cishe kukhona okuphekwayo. Hlala eduze nophahla.", "Isiphepho semathubeni, asikaqinisekiswa. Hlala uqaphile.", "Isibhakabhaka sibukeka sithukuthele. Kungakhula."],
+      xh: ["Kunokuba sisaqhwithi. Jonga isibhakabhaka.", "Isaqhwithi siyenzeka. Ukugrila kungafuna olunye usuku.", "Imozulu ingaba nzima. Hlala ulindile.", "Mhlawumbi kukho into ephekwayo. Hlala kufutshane nophahla.", "Isaqhwithi sikwithuba, asikaqinisekiswa. Hlala uphaphile.", "Isibhakabhaka sibonakala sinomsindo. Kunganyuka."],
+      st: ["Ho ka ba sefefo. Sheba leholimo.", "Sefefo se ka etsahala. Braai e ka hloka letsatsi le leng.", "Boemo ba leholimo bo ka ba boima. Lula u hlokometse.", "Mohlomong ho na le ntho e phehoang. Lula u le haufi le marulelo.", "Sefefo se monyetleng, ha se e-s'o netefatsoe. Lula u falimehile.", "Leholimo le bonahala le halefile. Ho ka eketseha."]
+    },
+    night: {
+      en: ["Probably a clear night. The stars haven't confirmed.", "Calm night, most likely. The sky reserves the right to change.", "Looks settled out there. Roughly.", "Probably quiet skies. We're fairly sure.", "Clear-ish night. Don't hold us to the stars.", "Night looks calm. Models permitting."],
+      af: ["Waarskynlik 'n helder nag. Die sterre het nog nie bevestig nie.", "Kalm nag, heel waarskynlik. Die lug hou voor om te verander.", "Lyk rustig daar buite. Min of meer.", "Waarskynlik stil lug. Ons is redelik seker.", "Helder-ish nag. Moenie ons by die sterre hou nie.", "Nag lyk kalm. Modelle toelaat."],
+      zu: ["Cishe ubusuku obuhle. Izinkanyezi azikaqinisekisi.", "Ubusuku obuzolile, cishe. Isibhakabhaka singashintsha.", "Kubukeka kuzolile. Cishe.", "Cishe izulu elithulile. Siqinisekile cishe.", "Ubusuku obuhle-ish. Ungasibambi ezinkanyezini.", "Ubusuku bubukeka buzolile. Uma amamodeli evuma."],
+      xh: ["Mhlawumbi ubusuku obuhle. Iinkwenkwezi azikaqinisekisi.", "Ubusuku obuzolileyo, mhlawumbi. Isibhakabhaka singatshintsha.", "Kubonakala kuzolile. Mhlawumbi.", "Mhlawumbi isibhakabhaka esithe cwaka. Siqinisekile mhlawumbi.", "Ubusuku obuhle-ish. Ungasibambi kwiinkwenkwezi.", "Ubusuku bubonakala buzolile. Ukuba iimodeli ziyavuma."],
+      st: ["Mohlomong bosiu bo hlakileng. Linaleli ha li e-s'o netefatse.", "Bosiu bo khutsitseng, mohlomong. Leholimo le ka fetoha.", "Ho bonahala ho khutsitse. Hoo e ka bang.", "Mohlomong maholimo a khutsitseng. Re na le bonnete mohlomong.", "Bosiu bo hlakileng-ish. U se ke ua re tšoara linaleling.", "Bosiu bo bonahala bo khutsitse. Haeba limodele li lumela."]
+    }
+  },
 };

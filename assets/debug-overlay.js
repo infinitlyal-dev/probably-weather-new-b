@@ -134,7 +134,21 @@ function initDebugOverlay() {
       ? window.__pwInstallInit
       : 'undefined (init never ran)');
 
+    // Layer A/B (Bug 1): weather confidence register. __PW_LAST_NORM is set by
+    // app.js on every render; conditionConfidence carries the fog-detector audit.
+    const pwNorm = window.__PW_LAST_NORM || null;
+    const cc = pwNorm && pwNorm.conditionConfidence;
+    const fog = cc && cc.fogSignal;
+    const weatherLines = pwNorm ? [
+      `weather confidence: ${(pwNorm.confidence || 'n/a').toUpperCase()}`,
+      `  ensemble→final: ${cc ? `${cc.ensembleVote} → ${cc.finalCondition}` : 'n/a'}`,
+      `  detector: ${cc ? cc.detectorVerdict : 'n/a'}${fog ? ` (vis ${fog.visKm}km, RH ${fog.humidity}%, dewΔ ${fog.dewSpread}°C)` : ''}`,
+      `  source agreement: ${cc ? cc.sourceAgreement : 'n/a'}  fogTrend: ${cc ? cc.fogTrendIncoming : 'n/a'}`,
+      `  copy register: ${pwNorm.confidence === 'low' ? 'LOW-CONFIDENCE' : 'HIGH-CONFIDENCE'}`,
+    ] : ['weather confidence: (no payload yet)'];
+
     const lines = [
+      ...weatherLines,
       `href: ${window.location.href}`,
       `UA: ${ua.slice(0, 60)}${ua.length > 60 ? '…' : ''}`,
       `platform: ${platform}`,
