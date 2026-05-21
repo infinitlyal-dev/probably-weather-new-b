@@ -370,11 +370,35 @@ Bryanston, Constantia, Helderberg, Waterfall, Sandton residential, Ballito, La L
 
 Architectural variety lives at the BUCKET level per the same logic as the count-aware diversity rule. **No one architectural type should appear more than 3 times within any 14-slot window of the cycle.** For the 28-day cycle that means no single type exceeds 6 instances total across day_1–day_28; for the 14-slot dawn / dusk / night cycles the rule applies as a flat 3-instance cap. Within a single frame, pick ONE type and commit to its details — don't blend (a Cape Dutch farmhouse with a cantilevered concrete roof is incoherent).
 
+### Motif Diversity (NEW v2.6)
+
+Mirror the architecture rotation rule for thematic motifs. A bucket has a vocabulary of recurring visual motifs; repeating one too often makes the rotation pool feel samey — motif clustering was the primary failure mode Al identified in the wind+heat review.py session. Canonical motif vocabularies per bucket — use these tags when checking a batch for coverage, and when filling the `motif` field of every JSON sidecar (required from v2.6 — see Critical Rule #17's companion note and the rotation-system note):
+
+- **wind:** trampoline-airborne, washing-on-line, braai-cover-chase, dustbin-blown-over, sunglasses-or-cap-blown-off, kite-or-flag, leaf-or-paper-vortex, hair-horizontal, shop-canopy-flapping, patio-umbrella-inverted, plant-pot-toppled, gate-swinging, dog-ears-back
+- **heat:** pool, ice-cube, sweat-bead, hot-bakkie-seat, sprinkler, melting-chocolate-or-ice-cream, dog-on-cool-tiles, fan-or-aircon, shade-seeking, biltong-reference, slip-slop-melt, sunburn-line, hose-pipe-cool-down, ice-water-jug
+- **storm:** lightning-bolt, hailstones, candle-or-lantern, dog-under-bed, washing-being-rescued, swimming-pool-overflow, gas-cooker-bredie, leaking-roof-bucket, hail-on-bakkie, child-window-watching, power-out-darkness, sirens-or-emergency
+- **rain:** wet-dog, wellies-puddle, umbrella, leaking-gutter, fogged-window, raincoat-hood, wet-suede-or-canvas, cat-watching-from-sill, kitchen-light-on, soup-on-stove, rain-on-roof-tin
+- **fog:** GPS-confused, dog-walker-trust-exercise, headlights-low, vanishing-fence-or-path, isolated-figure, light-cone-from-window, mist-on-mountain, spider-web-jeweled
+- **cold:** soup, double-jersey, breath-cloud, duvet-or-blanket, hot-water-bottle, scarf-pulled-up, beanie-and-mug, fireplace-or-heater, dog-in-jersey
+- **cold-clear:** frost-on-grass, breath-cloud, puffer-with-sunglasses, frozen-bird-bath, dignified-squinting-dog, frost-on-trampoline, bare-jacaranda-silhouette, frosted-patio-furniture, frozen-pool-cover
+- **clear:** beach, jacaranda, hadeda, pool-occupied, garden-fynbos, blue-sky-overhead, golden-hour-lawn, kombuis-window-light, surfer-walk, mountain-bike-trail
+- **cloudy:** indecisive-sky, dog-walk-jersey, woolies-bag, beige-vibe, half-blue-half-grey, neutral-light-lounge, jacket-over-arm, two-views-from-window
+
+**The rule** (refined from "no motif more than once" per Al's feedback — that was too strict and starved real batches):
+
+- **No motif may appear more than 3 times per 47-brief batch.** Within that limit, **no two instances of the same motif may share scene-type** — same motif + same scene-type is a visual repeat and fails. Example: three `pool` images in heat are fine if one is kids cannonballing, one is a lone dawn-lap swimmer, one is an abandoned-floaty dusk reflection. Three `pool` images where all show kids splashing = fail.
+- **Prohibit motif clustering** (same motif + same scene-type). **Allow motif rotation** (same motif + different scene-type). A motif may recur up to 3× only if every instance is a genuinely different scene-type.
+- **Canonical ★ anchors get strict treatment.** The lines marked ★ in the Humour Register are bucket-defining shorthand — their motif appears **EXACTLY ONCE per 47-brief batch**. The ★ marks them as the bucket's signature, not as the brief-writer's favourite hook to reuse. (For wind the ★ anchors are the trampoline and the involuntary-yoga trees; the trampoline maps to the `trampoline-airborne` motif, which therefore appears once and once only in a wind batch.)
+
 ---
 
 ## Humour Register (NEW v2.4)
 
-PW's hero copy includes weather-specific witty lines — koud-maar-lekker absurdity, SA winks, gentle truth-telling. The full T-table lives in `assets/weather-copy.js` (also catalogued for image-brief reference at `pw-image-staging/batches/v2.4-humour-pull.md`). **Curated energy-anchor lines per bucket, English:**
+PW's hero copy includes weather-specific witty lines — koud-maar-lekker absurdity, SA winks, gentle truth-telling. The full T-table lives in `assets/weather-copy.js` (also catalogued for image-brief reference at `pw-image-staging/batches/v2.4-humour-pull.md`).
+
+**COGNITIVE-DISSONANCE REGISTER (generalised, v2.6)** — applies across buckets where natural. The visual cues say one condition while the actual condition is the opposite. The viewer's brief recalibration IS the joke. Cold-clear is the clearest example (looks like summer, is winter — see the dedicated subsection below). Other candidates: heat dusk/night (looks like a cool evening, the bakkie-seat still burns at 7pm), storm intervals (golden light between thunder cells, deceptive calm), fog clearing (feels like dawn, actually noon). When writing briefs in these buckets, ask: is there a moment where the visual register can briefly read as a different condition before the actual signals reveal the truth? That moment is high-value humour.
+
+**Curated energy-anchor lines per bucket, English** (★ marks the canonical bucket-defining anchor — see Motif Diversity for its strict once-per-batch treatment):
 
 **clear** — "Africa's sky just hits different." · "Main character weather right here." · "The Helderberg is showing off today." · "Even the hadedas sound happy." · "The kind of day that makes people text 'lekker dag hey'." · "Africa showing off again. Quietly devastating."
 
@@ -392,7 +416,7 @@ PW's hero copy includes weather-specific witty lines — koud-maar-lekker absurd
 
 **storm** — "The dog's under the bed. Smart move, honestly." · "Even the hadedas are quiet." · "This is why Noah built a boat." · "The braai is cancelled. Yes, really." · "Somewhere a roof is someone's new kite." · "Pak die kar onder die boom in."
 
-**wind** — **"The trees are doing involuntary yoga."** · **"Someone's trampoline is now two streets away."** · "Table Mountain's tablecloth is out." · "The Cape Doctor is making house calls." · "Even the seagulls are walking today." · "Your washing just moved to the neighbour's yard." · "The braai cover is in the next suburb."
+**wind** — ★ **"The trees are doing involuntary yoga."** · ★ **"Someone's trampoline is now two streets away."** · "Table Mountain's tablecloth is out." · "The Cape Doctor is making house calls." · "Even the seagulls are walking today." · "Your washing just moved to the neighbour's yard." · "The braai cover is in the next suburb."
 
 ### How to USE these in image briefs
 
@@ -449,7 +473,7 @@ The viewer should briefly think "oh, nice day" before clocking the cold-weather 
 
 ## Prompt discipline (locked 2026-05-17)
 
-**Moment, not tableau.** Every prompt must specify what is HAPPENING, not just the setting.
+**Moment, not tableau.** Every prompt must specify what is HAPPENING, not just the setting. This is now formalised as **Critical Rule #17** — every brief tells a complete micro-story. Apply the **verb test**: the brief's one-sentence summary must contain a subject + active verb + consequence (or implied consequence). "X is happening" fails; "X does Y because Z" / "X has just done Y" / "X is about to Y" pass.
 
 - Tableau (fails): "Mom blows on mug, son stands there"
 - Moment (lands): "Mom reaches to button son's school-blazer collar as he checks the gate"
@@ -465,6 +489,8 @@ Before sending any prompt for generation, count the humans you actually wrote in
 3. **No engineered demographics in small groups.** If you wrote a 2-3 person scene and the prompt still says "Black, Coloured, White, and Indian South Africans together," delete that line. The four-group boilerplate is for Count 4+ only.
 4. **Architectural type stated affirmatively.** Confirm the prompt picks ONE of the 9 canonical SA types and commits to its details — not bare "face-brick" or "modern suburban". (v2.4)
 5. **High-risk props worded affirmatively.** Confirm any bottles, mugs, vehicles, school items, signage are described as "plain unbranded ___" / "generic ___" / etc. in the positive prompt, not just listed in the negative. (v2.4)
+6. **Motif uniqueness within batch.** (v2.6) Confirm this brief's primary motif (from the canonical vocabulary in Motif Diversity) doesn't already appear 3 times in this batch's manifest, and isn't a canonical ★ anchor that has already been used once. If it does, change one of them — usually this one, since later briefs in the batch have less flexibility.
+7. **Story has a verb.** (v2.6) Confirm the brief's one-sentence summary contains a subject + active verb + consequence (or implied consequence). "X is happening" fails. "X does Y because Z" / "X has just done Y" / "X is about to Y" all pass.
 
 ## Banned content (in addition to the universal negative prompt)
 
@@ -556,7 +582,7 @@ Before committing any new image to the repo (or promoting from pw-image-staging)
 1. **No text/signs/words** visible anywhere in the image
 2. **No deformed hands/faces** — AI generation artifact check
 3. **Correct orientation and ratio** — portrait 1008 × 1792 (true 9:16, OpenArt 1k preset or Higgsfield 9:16 / 2k). All pre-v2.5 grandfathered dimensions are fine alongside in-cycle.
-4. **File size** — should be under 500 KB for web performance. PNG output from OpenArt at 1k is ~2 MB; `promote.py` JPG-conversion step lands closer to target. If still over 1 MB, resize or convert to WebP.
+4. **File size** — should be under 500 KB for web performance. PNG output from OpenArt at 1k is ~2 MB; `review.py`'s JPG q92 conversion (on approve) lands closer to target. If a reviewed JPG is still over 500 KB, the resize/WebP step in `promote.py` handles it — but the bulk of the size reduction is `review.py`'s work.
 5. **SA authenticity** — does it look like South Africa, not California or Europe?
 6. **Mood match** — does the image match the condition folder's mood?
 7. **Human count matches diversity rule** — 0 humans = no diversity clause was needed; 1 human = identity specified; 2-3 humans = each identity specified, no four-group demand; 4+ humans = group boilerplate applied. The image should match the bucket the prompt was built for.
@@ -595,11 +621,23 @@ pw-image-staging/
 
 **The PW production repo stays untouched until Al explicitly promotes.**
 
-### promote.py re-compression step (operational note, v2.5)
+### Compression & promote.py (operational note, corrected v2.6)
 
-OpenArt's gpt-image-2 outputs PNG at ~2 MB per image (verified 2026-05-19 recon). PW's image size target is 200–500 KB. **Before `promote.py` copies files from `pw-image-staging/reviewed/` to PW repo's `assets/images/bg/`, files MUST be re-compressed:** PNG → JPG quality 85 (or WebP), targeting under 500 KB.
+OpenArt's gpt-image-2 outputs PNG at ~2 MB per image (verified 2026-05-19 recon). PW's image size target is 200–500 KB. **PNG → JPG q92 compression happens at REVIEW time via `review.py`'s `to_jpg` function.** By the time files reach the `reviewed/` folder they are already JPG. `promote.py` is therefore a **pure move-and-rename operation** — it copies approved JPGs from `reviewed/<condition>/<slot>/` to `assets/images/bg/<condition>/`, renames per the slot scheme, and commits. It does NOT compress.
 
-This is a `promote.py` implementation detail (the script's job, not the brief-writer's), not a skill rule — but the skill documents it so future maintainers know why files in the repo are visibly smaller than what OpenArt produces, and so the next person touching `promote.py` doesn't accidentally remove the compression step.
+*(Corrected in v2.6 — v2.5 wrongly described promote.py as the compression step. The compression has always been review.py's job, on approve. If a reviewed JPG is still over 500 KB, a resize / WebP fallback in promote.py handles the residue — but the bulk of the size reduction is review.py's q92 conversion.)*
+
+---
+
+## Rejection feedback loop (added v2.6)
+
+When Al rejects an image in `review.py`, the script appends one JSON line to `pw-image-staging/batches/_rejection-motifs.jsonl` capturing the slot, condition, motif (from the sidecar), scene_type, and an optional one-line reason Al types at reject time.
+
+**When generating a REPLACEMENT batch** (e.g. a wind round 2 to refill rejected slots), the brief-writer MUST read `_rejection-motifs.jsonl` first and treat every motif listed there as an **ANTI-anchor for that bucket** — penalised harder than the standard 3-per-batch Motif Diversity rule. A motif that was just rejected should be avoided entirely in the replacement batch, or used at most once and only in a markedly different scene-type. The goal: do not regenerate the same kind of image that just got rejected.
+
+The brief-writer must **log the applied anti-list to the replacement manifest's meta-pass section** so Al can see, at a glance, which rejected motifs were steered away from and by how much. If `_rejection-motifs.jsonl` is absent or empty, note "no prior rejections on file" in the meta-pass and proceed normally.
+
+This loop only bites on replacement/round-2 batches. A first-pass batch for a fresh bucket has no rejection history to read.
 
 ---
 
@@ -614,6 +652,27 @@ The 28-day-day / 14-slot-time-variants cycle is the current shipping system (ext
 Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 
 **Implementation deferred** until pools are full enough to launch rotation cleanly. Until then, the in-place cycle stays (extended to 28-day for day slots / 14-slot for time variants). Picker-side changes for rotation are pw-weather-logic's territory — see "Out of scope" for the picker-extension note.
+
+### Weekly-batch composition note (NEW v2.6)
+
+When `active.json` is composed weekly, the picker logic **must not select two images that share a motif within the same 7-day active window** — two `trampoline-airborne` wind images in one week reads as a repeat to a daily user. This is a **pw-weather-logic requirement for when rotation ships**: pw-image-system cannot enforce it directly (this skill writes briefs, it does not pick), but the rotation picker depends on motif metadata being present.
+
+Therefore, **every brief from v2.6 onward MUST include a `motif` field in its JSON sidecar**, drawn from the canonical motif vocabulary in the Motif Diversity subsection. Pair it with a `scene_type` field so the clustering rule (same motif + same scene-type) is machine-checkable. Example sidecar:
+
+```json
+{
+  "condition": "wind",
+  "slot": "day_19",
+  "count_bucket": "0",
+  "humour_register": "humorous",
+  "motif": "trampoline-airborne",
+  "scene_type": "object-only-aftermath",
+  "architectural_type": 8,
+  "anchor_line": "Someone's trampoline is now two streets away."
+}
+```
+
+Without the `motif` field in every sidecar, the rotation system has no way to space motifs across the weekly set — so this is a hard requirement on brief output, not an optional nicety.
 
 ---
 
@@ -635,6 +694,7 @@ Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 14. **No loadshedding as a default** — SA loadshedding has been largely resolved; only include if specifically relevant
 15. **This skill never touches the weather algorithm** — image system is downstream of weather decisions
 16. **OpenArt Auto Polish toggle MUST be OFF for every PW generation.** Auto Polish rewrites the v2.x brief with OpenArt's own prompt enhancement, producing unpredictable output. The brief integrity check assumes the brief lands exactly as written. Auto Polish breaks that assumption. (v2.4)
+17. **Every brief must specify a moment that tells a complete micro-story.** Not a still life of a bucket signature — a small narrative beat with implied before/after. Test: the brief's one-sentence summary must contain a subject + active verb + consequence (or implied consequence). "Wind blowing through trees" fails. "Sunglasses fly off a Camps Bay jogger and skid across the boardwalk" lands. (v2.6) — *companion metadata note:* every v2.6+ JSON sidecar must also carry a `motif` field drawn from the canonical vocabulary in Motif Diversity, so the rotation system can space motifs across the weekly active set.
 
 ---
 
@@ -648,6 +708,7 @@ Frontend reads `active.json`. Existing SW propagation handles instant rollout.
 - **v2.4** (2026-05-19, evening) — Ten-item folded update from Al's overnight-batch feedback + OpenArt platform recon. (1) Canonical dimension is now **1008 × 1792** (true 9:16, OpenArt 1k preset / Higgsfield 9:16 target). 2:3 cold-clear anchors and 19 overnight-batch 9:16/2k candidates grandfathered. (2) **Default model = `gpt-image-2`**; `nano_banana_2` reserved for promo + grandfathered set. (3) **Default quality = Medium** (35 cr/img at OpenArt); High reserved for non-UI-occluded marketing assets. (4) Auto Polish MUST be OFF (new Critical Rule #16). (5) **Architectural Variety mandate (NEW section)** — 9 canonical SA types with regional appropriateness map; bare "face-brick" / "modern suburban" / "middle-class SA home" banned (all anchor red brick); rotate at the bucket level. (6) **Humour Register (NEW section)** — curated T-table lines per bucket as mood/energy anchors, not literal scene scripts; canonical wind anchors "trees doing involuntary yoga" + "trampoline two streets away" preserved. (7) Scene-aware day-only negative — `artificial lighting indoors` modifier now fires on OUTDOOR day-slot scenes only; indoor day-slot scenes use base + prop block alone. (8) High-risk prop blacklist extends the base negative — prefer affirmative-positive phrasing over negative blocks. (9) Worktree-vs-main parity check note added at the top. (10) **Platform Knowledge section (NEW LIVING)** — OpenArt entry verified 2026-05-19 with full deep-link / credit / wall-time / quirks coverage.
 - **v2.5** (2026-05-19, late) — Five-item folded update from the 2026-05-19 full filesystem audit + new target counts. **All v2.4 rules unchanged** (architectural variety, humour register, count-aware diversity, gpt-image-2 default, OpenArt platform knowledge). (1) **New target counts:** 28 day images per condition (was 14), 14 dawn / 14 dusk / 14 night per condition (was 3 each), 1 day.jpg fallback (unchanged) → **71 per bucket, ~639 across 9 buckets** at pre-launch minimum. (2) **Day-of-week mapping extended to 28-slot mod-28 rotation** — Saturday slots are now `day_6`, `day_13`, `day_20`, `day_27`; Sunday slots are `day_7`, `day_14`, `day_21`, `day_28`. Dawn / dusk / night stay on a 14-slot Mon→Sun→Mon→Sun cadence (Saturdays at `*_6` and `*_13`, Sundays at `*_7` and `*_14`). (3) **Audit-grounded bucket-by-bucket reality table replaces v2.4's "12+ more needed" stale claim** — actual filesystem state: 8 condition folders fully populated with 24 files each (193 total), cold-clear folder absent (23 in staging pipeline). 47 new slots per bucket = **~423 new images total** for full v2.5 library. Existing 193 stay untouched per Al's 2026-05-19 decision. (4) **Existing image dimensions clarification** — audit catalogued four dimension classes: 7 squares (2 in clear, 5 in wind), 3 16:9 landscapes (2 in wind + bg/default.jpg), 2 reversed-portrait (wind), 181 ~9:16-adjacent portraits at three sub-resolutions. All grandfathered; rotation system handles reconciliation post-launch. v2.4's claim of "105 v1.0 squares" was stale — the audit found 7. (5) **promote.py re-compression operational note** — PNG-from-OpenArt at 2 MB must be JPG-q85 or WebP-compressed before landing in the PW repo (target under 500 KB). Documented in pw-image-staging section so the compression step survives future maintainer rewrites. Architectural variety rotation rule re-worded for clarity at 28-slot scale (no type > 3 in any 14-slot window, so no type > 6 across 28 day slots). Image Quality Checklist items 8 and 9 wording refreshed for full-cycle scope.
 - **v2.5.1** (2026-05-19) — Single surgical addition: **cold-clear humour register** subsection added to the Humour Register section. Fills the gap flagged in the v2.4 humour pull ("cold-clear has no dedicated witty bucket"). Captured from Al's review.py walkthrough of the cold-clear staging inbox: the bucket's humour is **cognitive dissonance** — the scene looks like a perfect summer day until the cold-weather signals (visible breath, frost, puffer jackets, bare jacaranda) reveal the truth. NOT slapstick, NOT accident-based. Apply to ~40% of cold-clear briefs (vs the general 30% humour rate), the other 60% quiet/contemplative. The earlier "cold-clear uses `cold` lines" note updated to point at the new subsection.
+- **v2.6** (2026-05-21) — Eight-item folded update from Al's wind+heat review.py session (94 generated, motif-clustering rejections identified as the primary failure mode). All v2.5.1 rules unchanged. (1) **Motif Diversity (NEW subsection)** — canonical motif vocabularies per bucket; rule cap of 3-per-batch per motif AND no two same-motif briefs may share scene-type; canonical ★ anchors strictly once-per-batch. (2) **Critical Rule #17 (NEW)** — every brief tells a story (subject + active verb + consequence). (3) **Rotation system note** — picker must not select two same-motif images within a 7-day active.json window; all v2.6+ briefs require a `motif` field in the JSON sidecar. (4) **Brief integrity check items 6+7** — motif uniqueness, story-verb check. (5) **Cognitive-dissonance humour generalised** — register applies across buckets (heat dusk, storm intervals, fog clearing) not just cold-clear. (6) **Rejection feedback loop (NEW section)** — review.py appends rejections to _rejection-motifs.jsonl; replacement-batch brief-writer reads file as anti-anchor list. (7) **Promote.py spec corrected** — review.py does PNG→JPG-q92 at approve time; promote.py is move-and-rename only. (8) **Motif clustering refinement** — folded into Motif Diversity rule wording: prohibit same-motif + same-scene-type, allow same-motif + different-scene-type.
 
 ---
 
