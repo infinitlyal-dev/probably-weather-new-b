@@ -75,4 +75,49 @@ export function pickSearchResultEmoji(conditionKey, isDay = true) {
   return pickConditionEmojiForTime(conditionKey, isDay);
 }
 
+// ---------------------------------------------------------------------------
+// Bug 2b (2026-05-24) — real solar day/night for hourly emojis.
+//
+// The hourly forecast rows used to hardcode "night" as hour >= 20 || hour < 5.
+// On 2026-05-21 Cape Town's sunset was ~17:45, so the 18:00 and 19:00 slots
+// rendered a bright ☀️ nearly two hours after dark. These helpers replace the
+// clock band with the day's actual sunrise/sunset.
+// ---------------------------------------------------------------------------
+
+/**
+ * Parse a local-labelled ISO timestamp ("2026-05-21T17:45", no timezone) to
+ * minutes since local midnight. Open-Meteo / the PW API emit times in exactly
+ * this shape. Returns null when the input is missing or unparseable.
+ */
+export function parseLocalIsoMinutes(iso) {
+  if (typeof iso !== 'string' || iso.length < 16) return null;
+  const h = parseInt(iso.slice(11, 13), 10);
+  const m = parseInt(iso.slice(14, 16), 10);
+  return (Number.isFinite(h) && Number.isFinite(m)) ? h * 60 + m : null;
+}
+
+/**
+ * Is a given hourly slot in daylight?
+ *
+ * Compares the slot's MIDPOINT (hour:30) against the day's sunrise/sunset.
+ * The comparison is hour-of-day vs time-of-day, so it is inherently correct
+ * across the midnight boundary: a tomorrow-02:00 slot and a today-02:00 slot
+ * both resolve to night against the same sunrise. Sunrise/sunset drift under
+ * ~2 min between consecutive days, so a single day's values are accurate for
+ * the whole 48-hour hourly window — no per-day solar data is needed.
+ *
+ * @param {number} hourNum     hour-of-day 0-23
+ * @param {number|null} sunriseMin minutes-since-midnight of sunrise
+ * @param {number|null} sunsetMin  minutes-since-midnight of sunset
+ * @returns {boolean|null}  true=day, false=night, null=no solar data (caller
+ *                          should fall back to its own default)
+ */
+export function isHourDaylight(hourNum, sunriseMin, sunsetMin) {
+  if (!Number.isInteger(hourNum)) return null;
+  const okNum = (n) => typeof n === 'number' && Number.isFinite(n);
+  if (!okNum(sunriseMin) || !okNum(sunsetMin)) return null;
+  const slotMidMin = hourNum * 60 + 30;
+  return slotMidMin >= sunriseMin && slotMidMin < sunsetMin;
+}
+
 export const __WEATHER_EMOJI_MAP = CONDITION_EMOJI_MAP;

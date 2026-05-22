@@ -12,11 +12,13 @@
 // handler already used (15 min).
 export const FRESHNESS_MS = 15 * 60 * 1000;
 
-// Distance threshold (km) for "the user has moved". 5 km is small enough
-// to catch driving between SA towns (Strand → Somerset West ≈ 8 km, Strand
-// → Paarl ≈ 50 km, Cape Town CBD → Sea Point ≈ 5 km) and big enough to
-// ignore GPS drift on the same property.
-export const SIGNIFICANT_MOVE_KM = 5;
+// Distance threshold (km) for "the user has moved".
+// Bug 3 (2026-05-24): lowered 5 km → 1.5 km. The 5 km gate was larger than
+// the real Strand→Somerset West suburb distance (~3 km), so a genuine
+// inter-suburb drive never tripped a re-detect. 1.5 km is small enough to
+// catch a drive between neighbouring suburbs, large enough to ignore GPS
+// drift while parked (consumer GPS jitter is typically <100 m).
+export const SIGNIFICANT_MOVE_KM = 1.5;
 
 // Place "mode" values. A place is either:
 //   - 'gps':    auto-derived from device sensors (or IP fallback). On next
@@ -83,6 +85,46 @@ export function shouldUpdateLocation({ activePlace, newGps }) {
   );
   if (!Number.isFinite(distance)) return false;
   return distance > SIGNIFICANT_MOVE_KM;
+}
+
+// ---------------------------------------------------------------------------
+// Bug 3 (2026-05-24) — continuous position watch.
+//
+// watchPosition() fires far more often than the user actually moves, so a raw
+// listener would re-geocode and re-fetch on every GPS jitter. shouldAcceptWatch-
+// Update() is the pure gate that decides whether a watchPosition event is worth
+// acting on. app.js owns the watchPosition wiring; this owns the decision so it
+// is unit-testable.
+// ---------------------------------------------------------------------------
+
+// Debounce window — ignore watch updates that arrive within this of the last
+// ACCEPTED update. 60 s smooths out GPS chatter without missing a real drive
+// (a suburb-to-suburb trip takes minutes, not seconds).
+export const WATCH_DEBOUNCE_MS = 60 * 1000;
+
+// After a manual "Use my location" tap, the watch will not override the chosen
+// place for this long — the user's explicit pick wins. 30 minutes.
+export const MANUAL_OVERRIDE_GRACE_MS = 30 * 60 * 1000;
+
+/**
+ * Decide whether a watchPosition() update should be acted on.
+ *
+ * @param {object} args
+ * @param {number} args.now            Date.now() at the event
+ * @param {number} args.lastAcceptedAt epoch ms of the last ACCEPTED watch update (0 if none)
+ * @param {number} args.manualSetAt    epoch ms of the last manual "Use my location" tap (0 if none)
+ * @param {object} args.activePlace    currently-displayed place { lat, lon, mode }
+ * @param {object} args.newGps         fresh watch coords { lat, lon }
+ * @returns {boolean}
+ *
+ * Order: debounce first (cheapest), then the manual-override grace window,
+ * then the shared GPS-mode + SIGNIFICANT_MOVE_KM distance gate.
+ */
+export function shouldAcceptWatchUpdate({ now, lastAcceptedAt, manualSetAt, activePlace, newGps }) {
+  if (!Number.isFinite(now)) return false;
+  if (now - (lastAcceptedAt || 0) < WATCH_DEBOUNCE_MS) return false;
+  if (manualSetAt && (now - manualSetAt) < MANUAL_OVERRIDE_GRACE_MS) return false;
+  return shouldUpdateLocation({ activePlace, newGps });
 }
 
 /**

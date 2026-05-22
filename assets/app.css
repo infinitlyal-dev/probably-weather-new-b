@@ -654,7 +654,11 @@ body.ui-dark .daily-card {
 }
 
 .hourly-row .h-icon {
-  font-size: 1.2rem;
+  /* Bug 2a (2026-05-24): 1.2rem → 1.45rem. The fog glyph 🌫️ renders as a
+     faint low-contrast band on several iOS/Android/Windows emoji fonts and
+     was barely legible at 1.2rem. The bump lifts every weather glyph to a
+     comfortable read in the dense hourly row — fog benefits most. */
+  font-size: 1.45rem;
   text-align: center;
 }
 
@@ -715,7 +719,9 @@ body.ui-dark .daily-card {
 }
 
 .daily-row .d-icon {
-  font-size: 1.2rem;
+  /* Bug 2a (2026-05-24): matched to .h-icon — see that rule. Keeps the fog
+     glyph legible on the week list too. */
+  font-size: 1.45rem;
   text-align: center;
 }
 

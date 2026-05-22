@@ -2,7 +2,7 @@ import { getSharedPlaceFromSearch } from './startup-location.js';
 import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './language-preferences.js';
 import { WEATHER_COPY } from './weather-copy.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
-import { pickConditionEmojiForTime, pickHourlyEmoji } from './weather-emoji.js';
+import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { buildShareUrl } from './share-url.js';
 import { initInstallExperience } from './install.js';
 import {
@@ -13,6 +13,7 @@ import {
   haversineKm,
   shouldRefetchWeather,
   shouldUpdateLocation,
+  shouldAcceptWatchUpdate,
   PTR_THRESHOLD_PX,
   PTR_MAX_OVERSCROLL_PX,
   PTR_RESISTANCE,
@@ -116,6 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const db = await openCacheDB();
       const tx = db.transaction(CACHE_STORE, 'readwrite');
       tx.objectStore(CACHE_STORE).put({ payload, timestamp: Date.now() }, cacheKey(place));
+    } catch { /* silent fail */ }
+  }
+  // Bug 3 (2026-05-24): evict a stale cached payload when the user moves away
+  // from a location. The cache is keyed by lat/lon (so locations never read
+  // each other's data), but leaving the old entry behind grows the store
+  // unbounded as the user drives between places — and a quick return trip
+  // would render visibly stale weather before the network refresh lands.
+  async function evictWeatherCache(place) {
+    if (!place || !Number.isFinite(parseFloat(place.lat)) || !Number.isFinite(parseFloat(place.lon))) return;
+    try {
+      const db = await openCacheDB();
+      const tx = db.transaction(CACHE_STORE, 'readwrite');
+      tx.objectStore(CACHE_STORE).delete(cacheKey(place));
+      debugLog('[Cache] evicted stale weather for', cacheKey(place));
     } catch { /* silent fail */ }
   }
   const offlineEl = document.getElementById('offlineIndicator');
@@ -1623,6 +1638,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
     const nowHour = getLocationHour(activePlace?.lon);
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
+    // Bug 2b: solar day/night for the hourly icons. Sunrise/sunset parsed once
+    // per render — they drift under 2 minutes across the 48h window so a
+    // single day's values cover the whole list.
+    const sunriseMin = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunrise);
+    const sunsetMin  = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunset);
     const header = document.createElement('div');
     header.classList.add('hourly-row', 'hourly-header');
     header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
@@ -1635,8 +1655,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const hourNum = (nowHour + i) % 24;
       const ht = settings.time === '12' ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}` : `${String(hourNum).padStart(2, '0')}:00`;
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
-      // BUG-2 fix: night hours (20:00-05:00) get moon icon instead of sun
-      const isNightHour = hourNum >= 20 || hourNum < 5;
+      // Bug 2b: real sunrise/sunset day-night, not a hardcoded 20:00 band.
+      // Falls back to the old 20:00-05:00 band only when no solar data exists.
+      const daylight = isHourDaylight(hourNum, sunriseMin, sunsetMin);
+      const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
@@ -1732,6 +1754,9 @@ document.addEventListener("DOMContentLoaded", () => {
     header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
     container.appendChild(header);
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
+    // Bug 2b: solar day/night for day-detail hourly icons (see renderHourly).
+    const sunriseMin = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunrise);
+    const sunsetMin  = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunset);
     hourlySlice.forEach((h, i) => {
       if (!h) return;
       const div = document.createElement('div'); div.classList.add('hourly-row');
@@ -1740,7 +1765,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}`
         : `${String(hourNum).padStart(2, '0')}:00`;
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
-      const isNightHour = hourNum >= 20 || hourNum < 5;
+      // Bug 2b: real sunrise/sunset day-night, not a hardcoded 20:00 band.
+      const daylight = isHourDaylight(hourNum, sunriseMin, sunsetMin);
+      const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
@@ -2048,6 +2075,10 @@ document.addEventListener("DOMContentLoaded", () => {
       renderLoading("Getting location…");
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10000) / 10000, lon = Math.round(pos.coords.longitude * 10000) / 10000;
+        // Bug 3: record the manual "Use my location" tap. The position watch
+        // will not override this pick for MANUAL_OVERRIDE_GRACE_MS (30 min) —
+        // the user's explicit choice wins over passive re-detection.
+        manualLocationAt = Date.now();
         try {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`);
           const data = await rev.json();
@@ -2298,9 +2329,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Background interval — keep data fresh while app is open in foreground.
   // Uses the same attemptRefresh path so the 15-min freshness guard and GPS
-  // re-detection still apply uniformly. 30 min interval > 15 min guard, so
-  // always passes the freshness check.
-  const REFRESH_INTERVAL_MS = 30 * 60 * 1000;
+  // re-detection still apply uniformly.
+  // Bug 3 (2026-05-24): dropped 30 min → 10 min. A 15-minute drive between
+  // suburbs could finish between two 30-min ticks. At 10 min the interval is
+  // the backstop for devices where watchPosition is throttled (battery-saver,
+  // older Android). 10 min < the 15-min freshness guard, so a stationary tick
+  // re-checks GPS but skips the weather re-fetch — exactly what we want.
+  const REFRESH_INTERVAL_MS = 10 * 60 * 1000;
   setInterval(() => {
     if (document.visibilityState === 'visible') attemptRefresh({ source: 'interval' });
   }, REFRESH_INTERVAL_MS);
@@ -2329,6 +2364,97 @@ document.addEventListener("DOMContentLoaded", () => {
   // resume. A short delay lets the initial fetch settle (so the freshness
   // guard sees lastFetchTime correctly).
   setTimeout(() => attemptRefresh({ source: 'launch' }), 500);
+
+  // ========== BUG 3: CONTINUOUS POSITION WATCH ==========
+  // attemptRefresh (interval / visibilitychange / launch / PTR) only samples
+  // GPS at discrete moments — a user driving Strand→Somerset West with the app
+  // open could cover the whole trip between two ticks. watchPosition() streams
+  // position updates as the user actually moves, closing that gap.
+  //
+  // shouldAcceptWatchUpdate() (refresh-behaviour.js) is the pure decision gate:
+  //   · 60s debounce        — GPS chatters; don't act on every micro-update
+  //   · 30min manual grace  — a manual "Use my location" pick is not overridden
+  //   · GPS-mode + >1.5km   — the shared shouldUpdateLocation distance test
+  let lastWatchAcceptedAt = 0;   // debounce clock — last ACCEPTED watch update
+  let positionWatchId = null;
+  // manualLocationAt is assigned by getCurrentLocation() on a manual tap. It is
+  // declared here (after that function's definition but before any runtime
+  // call) so the watch and the manual handler share one timestamp.
+  let manualLocationAt = 0;
+
+  // Reverse-geocode a watched move and swap to the new place. Mirrors the
+  // GPS-success path of attemptRefresh, but push-driven (no getCurrentPosition
+  // round-trip) and with old-location cache eviction.
+  async function applyWatchedMove(newGps) {
+    const previousPlace = activePlace;
+    saveJSON(STORAGE.lastGps, { lat: newGps.lat, lon: newGps.lon, ts: Date.now() });
+    let displayName = previousPlace?.name || 'My Location';
+    try {
+      const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newGps.lat)}&lon=${encodeURIComponent(newGps.lon)}`);
+      const data = await rev.json();
+      displayName = buildLocationName(data, newGps.lat, newGps.lon);
+      saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat: newGps.lat, lon: newGps.lon });
+    } catch {
+      try { displayName = (await reverseGeocode(newGps.lat, newGps.lon)) || displayName; } catch { /* keep previous name */ }
+    }
+    // Bug 3: evict the cached weather for the place we just left.
+    if (previousPlace) evictWeatherCache(previousPlace);
+    const newPlace = { name: displayName, lat: newGps.lat, lon: newGps.lon, mode: PLACE_MODE_GPS };
+    homePlace = newPlace;
+    saveJSON(STORAGE.home, homePlace);
+    // Only swap the view if the user hasn't navigated elsewhere during the
+    // reverse-geocode wait (same guard attemptRefresh uses).
+    if (activePlace === previousPlace) {
+      loadAndRender(newPlace);
+      lastFetchTime = Date.now();
+      showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
+    }
+  }
+
+  function onWatchedPosition(pos) {
+    // Skip fixes too imprecise to trust against a 1.5km threshold. With
+    // enableHighAccuracy:false the browser may return a cell/wifi fix whose
+    // own accuracy radius is 1-3km — that fix cannot tell a real 1.5km move
+    // from positioning noise, so acting on it would chatter the location.
+    const acc = pos?.coords?.accuracy;
+    if (typeof acc === 'number' && acc > 2000) {
+      debugLog('[watchPosition] fix accuracy ~' + Math.round(acc) + 'm too low — ignoring');
+      return;
+    }
+    const newGps = {
+      lat: Math.round(pos.coords.latitude * 10000) / 10000,
+      lon: Math.round(pos.coords.longitude * 10000) / 10000,
+    };
+    const accept = shouldAcceptWatchUpdate({
+      now: Date.now(),
+      lastAcceptedAt: lastWatchAcceptedAt,
+      manualSetAt: manualLocationAt,
+      activePlace,
+      newGps,
+    });
+    if (!accept) return;
+    lastWatchAcceptedAt = Date.now();
+    debugLog('[watchPosition] movement accepted — re-detecting location');
+    applyWatchedMove(newGps);
+  }
+
+  function setupPositionWatch() {
+    if (!('geolocation' in navigator) || typeof navigator.geolocation.watchPosition !== 'function') return;
+    try {
+      positionWatchId = navigator.geolocation.watchPosition(
+        onWatchedPosition,
+        (err) => {
+          // Permission denied / position unavailable. The 10-min attemptRefresh
+          // interval (also GPS + 1.5km) stays as the backstop — no UI change.
+          debugLog('[watchPosition] error', err?.code, err?.message);
+        },
+        { enableHighAccuracy: false, timeout: 20000, maximumAge: 60000 },
+      );
+    } catch (e) {
+      debugLog('[watchPosition] setup failed', e);
+    }
+  }
+  setupPositionWatch();
 
   // ========== PULL-TO-REFRESH (Home tab) ==========
   // Native pull-to-refresh isn't available in iOS PWA standalone mode (no

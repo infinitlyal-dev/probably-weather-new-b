@@ -109,8 +109,11 @@ describe('shouldUpdateLocation — GPS-mode-only move detection', () => {
     expect(shouldUpdateLocation({ activePlace: { lat: 0, lon: 0, mode: PLACE_MODE_GPS }, newGps: null })).toBe(false);
   });
 
-  it("SIGNIFICANT_MOVE_KM is exactly 5km", () => {
-    expect(SIGNIFICANT_MOVE_KM).toBe(5);
+  // Bug 3 (2026-05-24): SIGNIFICANT_MOVE_KM lowered 5 → 1.5 km. The 5 km gate
+  // never tripped on a real inter-suburb drive (Strand→Somerset West ≈ 3 km).
+  // This value-pin assertion is updated to track the intentional change.
+  it("SIGNIFICANT_MOVE_KM is exactly 1.5km", () => {
+    expect(SIGNIFICANT_MOVE_KM).toBe(1.5);
   });
 });
 
