@@ -292,6 +292,8 @@ clothing/style.
 
 This is the canonical scope for PW. The rule is "do not let the model default to one race only in group scenes AND vary demographics across the cycle in single/small scenes," not "force diversity in every frame regardless of subject."
 
+**Multi-racial couples in 2-3 person briefs (v2.6.2 model-limitation note).** gpt-image-2 currently renders multi-racial couples poorly — mismatched proportions, anatomy issues, off-faces. Brief them as **colleagues / friends / neighbours / siblings / parent-child** instead of as romantic partners. Multi-racial couples remain fine in 4+ group scenes where they are not the primary visual focus. This is a model-limitation note, not an editorial preference — review when image models improve.
+
 ---
 
 ## SA Image Aesthetic Rules
@@ -376,19 +378,87 @@ Mirror the architecture rotation rule for thematic motifs. A bucket has a vocabu
 
 - **wind:** trampoline-airborne, washing-on-line, braai-cover-chase, dustbin-blown-over, sunglasses-or-cap-blown-off, kite-or-flag, leaf-or-paper-vortex, hair-horizontal, shop-canopy-flapping, patio-umbrella-inverted, plant-pot-toppled, gate-swinging, dog-ears-back
 - **heat:** pool, ice-cube, sweat-bead, hot-bakkie-seat, sprinkler, melting-chocolate-or-ice-cream, dog-on-cool-tiles, fan-or-aircon, shade-seeking, biltong-reference, slip-slop-melt, sunburn-line, hose-pipe-cool-down, ice-water-jug
-- **storm:** lightning-bolt, hailstones, candle-or-lantern, dog-under-bed, washing-being-rescued, swimming-pool-overflow, gas-cooker-bredie, leaking-roof-bucket, hail-on-bakkie, child-window-watching, power-out-darkness, sirens-or-emergency
-- **rain:** wet-dog, wellies-puddle, umbrella, leaking-gutter, fogged-window, raincoat-hood, wet-suede-or-canvas, cat-watching-from-sill, kitchen-light-on, soup-on-stove, rain-on-roof-tin
-- **fog:** GPS-confused, dog-walker-trust-exercise, headlights-low, vanishing-fence-or-path, isolated-figure, light-cone-from-window, mist-on-mountain, spider-web-jeweled
+- **storm:** lightning-bolt, hailstones, candle-or-lantern, dog-under-bed, washing-being-rescued, swimming-pool-overflow, gas-cooker-bredie, leaking-roof-bucket, hail-on-bakkie, child-window-watching, power-out-darkness, sirens-or-emergency, lightning-flash-lit, hail-bouncing-off-bakkie, child-window-watching-storm, candles-during-power-out, gas-cooker-bredie-power-out, washing-being-rescued-mid-storm  *(v2.6.2: last six canonicalised from the storm v2.6 batch)*
+- **rain:** wet-dog, wellies-puddle, umbrella, leaking-gutter, fogged-window, raincoat-hood, wet-suede-or-canvas, cat-watching-from-sill, kitchen-light-on, soup-on-stove, rain-on-roof-tin, rain-streaked-glass, puddle-reflection, wipers-on-windshield, rain-on-pool-surface, soggy-newspaper-on-table, dripping-roof-eave, steamy-cafe-window, boots-by-front-door, kettle-and-mug, child-bathroom-mirror-fog  *(v2.6.2: last ten canonicalised from the rain v2.6 batch)*
+- **fog:** GPS-confused, dog-walker-trust-exercise, headlights-low, vanishing-fence-or-path, isolated-figure, light-cone-from-window, mist-on-mountain, spider-web-jeweled, road-sign-fog-eaten, single-tree-half-visible, cyclist-emerging, runner-vanishing, mist-burning-off-vineyard, fog-on-water-surface  *(v2.6.2: last six canonicalised from the fog v2.6 batch)*
 - **cold:** soup, double-jersey, breath-cloud, duvet-or-blanket, hot-water-bottle, scarf-pulled-up, beanie-and-mug, fireplace-or-heater, dog-in-jersey
 - **cold-clear:** frost-on-grass, breath-cloud, puffer-with-sunglasses, frozen-bird-bath, dignified-squinting-dog, frost-on-trampoline, bare-jacaranda-silhouette, frosted-patio-furniture, frozen-pool-cover
 - **clear:** beach, jacaranda, hadeda, pool-occupied, garden-fynbos, blue-sky-overhead, golden-hour-lawn, kombuis-window-light, surfer-walk, mountain-bike-trail
-- **cloudy:** indecisive-sky, dog-walk-jersey, woolies-bag, beige-vibe, half-blue-half-grey, neutral-light-lounge, jacket-over-arm, two-views-from-window
+- **cloudy:** indecisive-sky, dog-walk-jersey, shopping-bag-generic, beige-vibe, half-blue-half-grey, neutral-light-lounge, jacket-over-arm, two-views-from-window  *(v2.6.2: `woolies-bag` → `shopping-bag-generic` per the no-brands rejection, active from the rain v2.6 batch onwards)*
 
 **The rule** (refined from "no motif more than once" per Al's feedback — that was too strict and starved real batches):
 
 - **No motif may appear more than 3 times per 47-brief batch.** Within that limit, **no two instances of the same motif may share scene-type** — same motif + same scene-type is a visual repeat and fails. Example: three `pool` images in heat are fine if one is kids cannonballing, one is a lone dawn-lap swimmer, one is an abandoned-floaty dusk reflection. Three `pool` images where all show kids splashing = fail.
 - **Prohibit motif clustering** (same motif + same scene-type). **Allow motif rotation** (same motif + different scene-type). A motif may recur up to 3× only if every instance is a genuinely different scene-type.
 - **Canonical ★ anchors get strict treatment.** The lines marked ★ in the Humour Register are bucket-defining shorthand — their motif appears **EXACTLY ONCE per 47-brief batch**. The ★ marks them as the bucket's signature, not as the brief-writer's favourite hook to reuse. (For wind the ★ anchors are the trampoline and the involuntary-yoga trees; the trampoline maps to the `trampoline-airborne` motif, which therefore appears once and once only in a wind batch.)
+
+---
+
+## Variety Spread Guidelines (NEW v2.6.2)
+
+These guidelines spread the batch across diversity dimensions — scene-archetype, age-group, activity-verb, pets, human-less, child-as-subject, atmospheric. They are **GUIDELINES, not hard caps**, per Critical Rule #18 (soul trumps spread). The brief-writer MAY exceed a soft cap if the alternative is a soul-violating brief. The brief-writer MUST track and report any exceeded cap in the meta-pass, with reasoning (e.g. "scene-archetype 'group-gathering' exceeded at 3/2 because all 3 are genuinely different cultural moments and demoting one would lose the SA register").
+
+**Soft caps and minimums for a 47-brief batch:**
+
+| Dimension | Target | Notes |
+|---|---|---|
+| Scene-archetype | ≤2 per archetype | Cluster of 16 named archetypes + new ones logged in meta-pass. |
+| Age-group | all 6 generations present, none over ~6 | Literal "≤3 per generation × 6 = 18" ceiling is mathematically infeasible for a 47-brief people-heavy batch (~30+ lead-human briefs). The practical resolution is **all six generations represented, none dominates** — mirroring the architecture ≤6 cap. Document the spread in meta-pass. |
+| Activity-verb | ≤3 per verb (soft) | If a bucket's soul concentrates a verb (cold leans on `cooking` / `lounging`; clear on `playing` / `gathering`), state it; ≤5 is a safe deviation if soul demands. |
+| Pets | ≤4 across the batch | Pet briefs are charming but a crutch when over-used. |
+| Human-less | ≥6, spread across day / dawn / dusk / night | Let the weather BE the subject sometimes. |
+| Child-as-primary | ≥3 | See "Children as subject — framing requirements" below. |
+| Purely-atmospheric | ≥2 | Wall-hanging quality; no humans, no buildings, no objects — just weather and land/sky. |
+
+**Children as subject — framing requirements** (canonicalised v2.6.2 after CLEAR `day_19` content block + COLD 7-cleared sample). The CLEAR `day_19` brief (lone identifiable ~11-yo girl, sole close subject on a street) was silently refused by gpt-image-2 across three attempts. The seven lone-minor briefs in COLD all generated cleanly — because every framing was cosy / bundled / domestic. SAFE framings for child-as-primary:
+
+(a) action-blurred (running, jumping, splashing, cycling fast — face not pin-sharp)
+(b) partial profile or back-turned
+(c) bundled in weather gear that obscures features (beanie pulled low, scarf up, raincoat hood)
+(d) in clear domestic / group context (a child within a family scene, a school classroom with peers, a kitchen with a parent)
+(e) interacting with an object as the primary subject (puddle, sandcastle, kite, ball)
+
+The UNSAFE framing — which triggers content blocks on gpt-image-2 — is the **lone, identifiable, close-framed child in an exterior public space**. Avoid this framing entirely. The block is about isolated-minor portraits, not children as such.
+
+---
+
+## Bucket Souls (NEW v2.6.2)
+
+Variety produces breadth; soul produces feeling. The 2026-05-22 mass review of three fresh batches (CLEAR / CLOUDY / COLD) surfaced ~40 rejections whose dominant pattern was diverse-but-soulless — the variety table was satisfied while the bucket spirit was missing. Each bucket has a soul. Every brief must embody it. The variety caps are subordinate (see Critical Rule #18).
+
+**CLEAR — Lekker. Getting out.** Doing stuff because the weather earned it. No excuses to stay inside. Two ladies improvising a beach on a rooftop. A dad in a deckchair while his ten-year-old mows the lawn for him. Saturday energy. "Lekker to be South African" as a feeling, not a slogan. **Window-staring with a mug is BANNED in this bucket** — clear weather means people are outside making the most of it.
+
+**CLOUDY — SA defiance.** The middle finger to bad weather. "Ag, we'll find something." Indoor improvisation, the kuier moved inside and gained character. The braai that's still on because Cape Town doesn't quit. Reading on the couch becomes a legitimate weekend plan. Quiet-wry humour, not joke-driven.
+
+**COLD — Cosy-survival with humour.** SA isn't built for cold. Single-pane windows, tile floors, no central heating. The *"ek vrek van koue"* mood. Three jerseys, still cold, but lekker. Indoor warmth as resourceful, not luxurious. Domestic, layered, funny.
+
+**COLD-CLEAR — Cognitive dissonance.** Looks like summer in the sky, is winter at ground level. The dignified squinting dog. Frost on the trampoline. The puffer-jacket-with-sunglasses moment. Quiet absurdity from the gap between what you see and what you feel.
+
+**FOG — Atmospheric.** Visibility itself is the subject. Suggestion over revelation. The Stellenbosch vineyard emerging. The Cape Town "where did Lion's Head go" recalibration. Cinematic-quiet, not joke-driven. Mountain mist as theatre.
+
+**HEAT — Dignified suffering.** Humans melting with grace. Pool envy, biltong threat, hot-bakkie seats, aircon politics. Specific physical tells: a bead of sweat at the temple, a hand recoiling from a steering wheel, a dog sprawled on cool tiles. Not slapstick — quiet absurdity from the everyday-relatable register.
+
+**RAIN — Two distinct moods held in balance.** *Welcome* rain (relief, dams filling, "dis lekker hoor") AND *irritation* rain (Cape Town grey week three, soggy school shoes, the leaking gutter). Wet-dog energy. The kuier moved indoors and improved. Aim for a 50/50 split between the two moods within any batch.
+
+**STORM — Dramatic but contained.** Humans bracing, not fleeing. The "kyk hoe lyk dit nou" energy. Lightning is theatre, hail is event, power going out is a shared moment. Less dignity-loss than wind, more quiet awe + dark comedy. Domestic improvisation under siege.
+
+**WIND — Humans losing dignity to nature, with grace.** Trees doing involuntary yoga. The trampoline two streets away. Cape Doctor menace. The braai cover chase. Objects as protagonists, humans as accidental sidekicks. Higher humour register than most buckets.
+
+**When in doubt about a brief, ask "is this on-soul for this bucket?" *before* "does this satisfy the variety table?". Soul trumps spread.**
+
+---
+
+## The Mzansi Test (NEW v2.6.2)
+
+When reviewing a finished brief, ask three questions:
+
+**1. Could this image have been generated for a weather app in Australia, the UK, or California?** If yes — the brief is generic. Rewrite to include something culturally-SA-specific: a fynbos plant in the foreground, a Pakistani-Indian-Cape Malay shopkeeper detail, a Bo-Kaap blue wall, a Highveld 4pm thunderhead, a Karoo flat-roof, a Stellenbosch jacaranda, a school uniform tie, a Boland farm fence, a slip-slop on a tile, a koeksister tray, a kuier moment, a kombuis lamp at 5am, a granny knitting in the dorpie. The cue must be **visual, not just titular**.
+
+**2. Is there a cultural joke the brief is making?** If yes — does it land naturally, or is it forced? Forced jokes (a Springbok jersey, "load shedding" mentioned) are weaker than implicit ones (a candle on a kitchen table at 6pm, three jerseys layered).
+
+**3. Would my SA aunt recognise herself, her neighbour, or her grandkid in this brief?** If "no, this is a generic family / generic granny / generic kid" — the brief is borrowed. Specify until she would.
+
+When in doubt, **more Mzansi, not less**.
 
 ---
 
@@ -491,6 +561,7 @@ Before sending any prompt for generation, count the humans you actually wrote in
 5. **High-risk props worded affirmatively.** Confirm any bottles, mugs, vehicles, school items, signage are described as "plain unbranded ___" / "generic ___" / etc. in the positive prompt, not just listed in the negative. (v2.4)
 6. **Motif uniqueness within batch.** (v2.6) Confirm this brief's primary motif (from the canonical vocabulary in Motif Diversity) doesn't already appear 3 times in this batch's manifest, and isn't a canonical ★ anchor that has already been used once. If it does, change one of them — usually this one, since later briefs in the batch have less flexibility.
 7. **Story has a verb.** (v2.6) Confirm the brief's one-sentence summary contains a subject + active verb + consequence (or implied consequence). "X is happening" fails. "X does Y because Z" / "X has just done Y" / "X is about to Y" all pass.
+8. **The Getty Images test.** (v2.6.2) For each brief, ask: if this exact image were a Getty Images search result, what would the title be? If the title is bland and could apply to any country ("Woman drinking coffee at window", "Family eating dinner", "Person reading on porch"), the brief **FAILS** — it is generic stock-photo register, not Probably Weather register. PASS: the title contains SA-specific cultural cues ("Cape Town family braai postponed by hail", "Bryanston gran finds the trampoline two streets over"), absurdity ("Office workers improvise rooftop beach on heatwave day"), or weather-protagonist energy ("Wind takes the patio umbrella to Bloubergstrand"). The image must feel like it could only have happened HERE, in THIS weather, with THESE people. Failed briefs get rewritten or replaced. See the Mzansi Test section for the diagnostic questions.
 
 ## Banned content (in addition to the universal negative prompt)
 
@@ -694,7 +765,10 @@ Without the `motif` field in every sidecar, the rotation system has no way to sp
 14. **No loadshedding as a default** — SA loadshedding has been largely resolved; only include if specifically relevant
 15. **This skill never touches the weather algorithm** — image system is downstream of weather decisions
 16. **OpenArt Auto Polish toggle MUST be OFF for every PW generation.** Auto Polish rewrites the v2.x brief with OpenArt's own prompt enhancement, producing unpredictable output. The brief integrity check assumes the brief lands exactly as written. Auto Polish breaks that assumption. (v2.4)
-17. **Every brief must specify a moment that tells a complete micro-story.** Not a still life of a bucket signature — a small narrative beat with implied before/after. Test: the brief's one-sentence summary must contain a subject + active verb + consequence (or implied consequence). "Wind blowing through trees" fails. "Sunglasses fly off a Camps Bay jogger and skid across the boardwalk" lands. (v2.6) — *companion metadata note:* every v2.6+ JSON sidecar must also carry a `motif` field drawn from the canonical vocabulary in Motif Diversity, so the rotation system can space motifs across the weekly active set.
+17. **Every brief must specify a moment that tells a complete micro-story.** Not a still life of a bucket signature — a small narrative beat with implied before/after. Test: the brief's one-sentence summary must contain a subject + active verb + consequence (or implied consequence). "Wind blowing through trees" fails. "Sunglasses fly off a Camps Bay jogger and skid across the boardwalk" lands. (v2.6) — *companion metadata note:* every v2.6+ JSON sidecar must also carry a `motif` field drawn from the canonical vocabulary in Motif Diversity, so the rotation system can space motifs across the weekly active set. **(v2.6.2 clarification):** Passive-observation verbs are NOT story-verbs. *Staring, looking, watching, gazing, observing, contemplating* do NOT satisfy this rule unless paired with (a) a clear consequence ("watching the storm rolling in *before* running to bring the washing"), (b) absurdity ("watching their own trampoline land in someone else's yard"), or (c) a specific shared moment ("three friends watching a hail burst from a covered stoep, all flinching simultaneously"). "Person looking through window" / "lady stirring pot" / "guy reading on porch chair" — if these are the brief's primary action, the brief FAILS Rule #17 and must be rewritten. The Getty Images test (Brief integrity check item #8) catches these.
+18. **EVERY BRIEF MUST EMBODY THE BUCKET'S SOUL.** (v2.6.2) Variety rules (motif diversity, scene-archetype caps, age-group spread, activity-verb spread) are **SPREAD GUIDELINES, not hard constraints**. They MUST NOT override bucket soul. If satisfying a variety cap would produce a brief that betrays the bucket's spirit (see Bucket Souls section), the brief is rewritten OR the variety table accepts the imbalance and the meta-pass logs the exception with reasoning. **Soul trumps spread.**
+19. **WINDOW-STARING is a context-specific motif, not a universal one.** (v2.6.2) ALLOWED in buckets where the story is staying inside: cold, storm, fog, rain, cold-clear. BANNED in clear (the weather earned the outside). LIMITED (max 2 per batch) in cloudy, heat. The "person at window with mug" tableau is the failure-mode shape: passive observer, no story, no consequence, stock-photo register. Even where window-staring is allowed, the briefer MUST add a story-verb — what is the watcher about to do, just did, or noticing? "Watching the trampoline land in the neighbour's yard" is a story. "Watching the rain with a mug" is a tableau.
+20. **NO national sports kit, no team kit, no branded apparel, no licensed IP.** (v2.6.2) No Springboks / Proteas / Bafana / Banyana kits. No recognisable team kit (any club, professional or amateur). No branded apparel with visible logos (Nike, Adidas, Puma, any). No national flag colours rendered as apparel. No Vodacom, MTN, Telkom, or any branded item visible. No Woolworths, Pick n Pay, Checkers, Spar bags. SA culture in image briefs is conveyed through architecture, light, fynbos, behaviour, language register in copy — NOT through trademarks or licensed property. Generic SA dress codes are fine (*regte tannie* outfits, school uniforms in plain colours, casual button-down with chinos, summer dress, double-jersey, beanie, slip-slops, veldskoens). Specific brands or licensed teams are NOT.
 
 ---
 
@@ -709,6 +783,7 @@ Without the `motif` field in every sidecar, the rotation system has no way to sp
 - **v2.5** (2026-05-19, late) — Five-item folded update from the 2026-05-19 full filesystem audit + new target counts. **All v2.4 rules unchanged** (architectural variety, humour register, count-aware diversity, gpt-image-2 default, OpenArt platform knowledge). (1) **New target counts:** 28 day images per condition (was 14), 14 dawn / 14 dusk / 14 night per condition (was 3 each), 1 day.jpg fallback (unchanged) → **71 per bucket, ~639 across 9 buckets** at pre-launch minimum. (2) **Day-of-week mapping extended to 28-slot mod-28 rotation** — Saturday slots are now `day_6`, `day_13`, `day_20`, `day_27`; Sunday slots are `day_7`, `day_14`, `day_21`, `day_28`. Dawn / dusk / night stay on a 14-slot Mon→Sun→Mon→Sun cadence (Saturdays at `*_6` and `*_13`, Sundays at `*_7` and `*_14`). (3) **Audit-grounded bucket-by-bucket reality table replaces v2.4's "12+ more needed" stale claim** — actual filesystem state: 8 condition folders fully populated with 24 files each (193 total), cold-clear folder absent (23 in staging pipeline). 47 new slots per bucket = **~423 new images total** for full v2.5 library. Existing 193 stay untouched per Al's 2026-05-19 decision. (4) **Existing image dimensions clarification** — audit catalogued four dimension classes: 7 squares (2 in clear, 5 in wind), 3 16:9 landscapes (2 in wind + bg/default.jpg), 2 reversed-portrait (wind), 181 ~9:16-adjacent portraits at three sub-resolutions. All grandfathered; rotation system handles reconciliation post-launch. v2.4's claim of "105 v1.0 squares" was stale — the audit found 7. (5) **promote.py re-compression operational note** — PNG-from-OpenArt at 2 MB must be JPG-q85 or WebP-compressed before landing in the PW repo (target under 500 KB). Documented in pw-image-staging section so the compression step survives future maintainer rewrites. Architectural variety rotation rule re-worded for clarity at 28-slot scale (no type > 3 in any 14-slot window, so no type > 6 across 28 day slots). Image Quality Checklist items 8 and 9 wording refreshed for full-cycle scope.
 - **v2.5.1** (2026-05-19) — Single surgical addition: **cold-clear humour register** subsection added to the Humour Register section. Fills the gap flagged in the v2.4 humour pull ("cold-clear has no dedicated witty bucket"). Captured from Al's review.py walkthrough of the cold-clear staging inbox: the bucket's humour is **cognitive dissonance** — the scene looks like a perfect summer day until the cold-weather signals (visible breath, frost, puffer jackets, bare jacaranda) reveal the truth. NOT slapstick, NOT accident-based. Apply to ~40% of cold-clear briefs (vs the general 30% humour rate), the other 60% quiet/contemplative. The earlier "cold-clear uses `cold` lines" note updated to point at the new subsection.
 - **v2.6** (2026-05-21) — Eight-item folded update from Al's wind+heat review.py session (94 generated, motif-clustering rejections identified as the primary failure mode). All v2.5.1 rules unchanged. (1) **Motif Diversity (NEW subsection)** — canonical motif vocabularies per bucket; rule cap of 3-per-batch per motif AND no two same-motif briefs may share scene-type; canonical ★ anchors strictly once-per-batch. (2) **Critical Rule #17 (NEW)** — every brief tells a story (subject + active verb + consequence). (3) **Rotation system note** — picker must not select two same-motif images within a 7-day active.json window; all v2.6+ briefs require a `motif` field in the JSON sidecar. (4) **Brief integrity check items 6+7** — motif uniqueness, story-verb check. (5) **Cognitive-dissonance humour generalised** — register applies across buckets (heat dusk, storm intervals, fog clearing) not just cold-clear. (6) **Rejection feedback loop (NEW section)** — review.py appends rejections to _rejection-motifs.jsonl; replacement-batch brief-writer reads file as anti-anchor list. (7) **Promote.py spec corrected** — review.py does PNG→JPG-q92 at approve time; promote.py is move-and-rename only. (8) **Motif clustering refinement** — folded into Motif Diversity rule wording: prohibit same-motif + same-scene-type, allow same-motif + different-scene-type.
+- **v2.6.2** (2026-05-22) — Eight-item folded update from Al's mass review of CLEAR/CLOUDY/COLD fresh batches (~40 rejections, dominant pattern: stock-photo register from variety-rule optimisation displacing bucket soul). (1) **Critical Rule #18 (NEW)** — soul trumps spread; variety rules demoted to guidelines. (2) **Bucket Souls (NEW section)** — explicit soul definition per condition. (3) **Critical Rule #19 (NEW)** — window-staring is condition-gated, banned in clear, limited in cloudy/heat. (4) **Critical Rule #17 tightened** — passive-observation verbs explicitly disallowed without consequence or absurdity. (5) **Brief Integrity Check #8 (NEW)** — the Getty Images test for stock-photo register. (6) **Critical Rule #20 (NEW)** — no national sports kit, no team kit, no branded apparel, no licensed IP. (7) **The Mzansi Test (NEW section)** — could this have been generated for any other country's weather app. (8) **Housekeeping** — folded 22 new canonical motifs from storm/rain/fog runs into vocabularies; canonicalised the children-framing rule from `day_19` + 7-cleared sample (under Variety Spread Guidelines); canonicalised the multi-racial-couples 2-3-person framing rule (under Diversity Instructions); replaced `woolies-bag` with `shopping-bag-generic` in the cloudy motif vocab.
 
 ---
 
