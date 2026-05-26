@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 // Build static per-condition OG share images (1200x630 JPEG, <300KB).
-// Source: assets/images/bg/<condition>/day_1.jpg → og/<condition>.jpg
+// Source: assets/images/bg/<condition>/week_1/day/1.webp → og/<condition>.jpg
 // Run with: node tools/build-og-images.mjs
+//
+// Why week_1/day/1.webp: matches the canonical OG source convention used by
+// the /api/og dynamic renderer (see assets/weather-visuals.js getOgBackgroundPath).
+// Sharp reads WebP natively; output remains JPEG because some share platforms
+// still prefer it and the existing /og/<condition>.jpg URLs are referenced from
+// middleware.js (Vercel Edge) without an extension switch.
 
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
@@ -14,15 +20,15 @@ const ROOT = path.resolve(__dirname, '..');
 // 9-condition allowlist mapped to source folder for OG generation.
 // Aliases: uv → clear, rain-possible → cloudy (copied after primaries are built).
 const CONDITIONS = [
-  { name: 'clear',          source: 'assets/images/bg/clear/day_1.jpg' },
-  { name: 'cloudy',         source: 'assets/images/bg/cloudy/day_1.jpg' },
-  { name: 'cold',           source: 'assets/images/bg/cold/day_1.jpg' },
-  { name: 'fog',            source: 'assets/images/bg/fog/day_1.jpg' },
-  { name: 'heat',           source: 'assets/images/bg/heat/day_1.jpg' },
-  { name: 'rain',           source: 'assets/images/bg/rain/day_1.jpg' },
-  { name: 'storm',          source: 'assets/images/bg/storm/day_1.jpg' },
-  { name: 'wind',           source: 'assets/images/bg/wind/day_1.jpg' },
-  { name: 'default',        source: 'assets/images/bg/clear/day_1.jpg' },
+  { name: 'clear',          source: 'assets/images/bg/clear/week_1/day/1.webp' },
+  { name: 'cloudy',         source: 'assets/images/bg/cloudy/week_1/day/1.webp' },
+  { name: 'cold',           source: 'assets/images/bg/cold/week_1/day/1.webp' },
+  { name: 'fog',            source: 'assets/images/bg/fog/week_1/day/1.webp' },
+  { name: 'heat',           source: 'assets/images/bg/heat/week_1/day/1.webp' },
+  { name: 'rain',           source: 'assets/images/bg/rain/week_1/day/1.webp' },
+  { name: 'storm',          source: 'assets/images/bg/storm/week_1/day/1.webp' },
+  { name: 'wind',           source: 'assets/images/bg/wind/week_1/day/1.webp' },
+  { name: 'default',        source: 'assets/images/bg/clear/week_1/day/1.webp' },
 ];
 
 const ALIASES = [

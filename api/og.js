@@ -4,7 +4,11 @@ import { ImageResponse } from '@vercel/og';
 
 import weatherHandler from './weather.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
-import { getOgBackgroundPath, getWeatherBackgroundFallbackFolder } from '../assets/weather-visuals.js';
+import {
+  getOgBackgroundFallbackChain,
+  getOgBackgroundPath,
+  getTimeOfDaySlot,
+} from '../assets/weather-visuals.js';
 
 export const config = { runtime: 'nodejs' };
 export const CACHE_CONTROL = 'public, max-age=300, s-maxage=300';
@@ -65,6 +69,10 @@ export function buildOgViewModel(payload, options = {}) {
   const today = payload?.daily?.[0] || {};
   const location = payload?.location?.name || options.locationName || 'South Africa';
   const condition = now.conditionKey || today.conditionKey || 'clear';
+  // Compute timeOfDay server-side from the same sunrise/sunset signals the
+  // browser uses. This is what picks one of 36 canonical OG sources
+  // (9 conditions × 4 times). Falls back to 'day' if signals are missing.
+  const timeOfDay = getTimeOfDaySlot(payload);
   const low = formatTemp(today.lowC ?? today.minC ?? now.tempC ?? now.temperature_2m);
   const high = formatTemp(today.highC ?? today.maxC ?? now.tempC ?? now.temperature_2m);
   const current = formatTemp(now.tempC ?? now.temperature_2m);
@@ -79,12 +87,13 @@ export function buildOgViewModel(payload, options = {}) {
     lang,
     location,
     condition,
+    timeOfDay,
     tempRange,
     headline: pickLocalized(WEATHER_COPY.headlines, condition, lang, 'Probably weather.'),
     heroLabel: pickLocalized(WEATHER_COPY.heroLabels, condition, lang, 'Weather'),
     witty: pickWitty(condition, lang, seed),
     stats: `${labels.wind} ${wind} • ${labels.rain} ${rain} • ${labels.uv} ${uv}`,
-    backgroundPath: getOgBackgroundPath(condition),
+    backgroundPath: getOgBackgroundPath(condition, timeOfDay),
   };
 }
 
@@ -94,12 +103,13 @@ export function buildFallbackViewModel(lang = 'en') {
     lang: safeLang,
     location: 'South Africa',
     condition: 'clear',
+    timeOfDay: 'day',
     tempRange: 'Probably',
     headline: 'South African weather',
     heroLabel: 'Probably Weather',
     witty: 'Weather that speaks your language.',
     stats: 'Live local forecast • Wind • Rain • UV',
-    backgroundPath: getOgBackgroundPath('clear'),
+    backgroundPath: getOgBackgroundPath('clear', 'day'),
   };
 }
 
@@ -124,22 +134,44 @@ async function callWeatherHandler(lat, lon) {
   return body;
 }
 
-async function readBackgroundDataUrl(model) {
-  const candidates = [
-    model.backgroundPath,
-    `assets/images/bg/${getWeatherBackgroundFallbackFolder(model.condition)}/day.jpg`,
-    'assets/images/bg/default.jpg',
-  ];
+function mimeForPath(p) {
+  // Path-based MIME detection. .webp now dominates after the picker rewrite;
+  // default.jpg is the only remaining JPEG path in the OG chain.
+  if (typeof p === 'string' && p.toLowerCase().endsWith('.webp')) return 'image/webp';
+  return 'image/jpeg';
+}
 
-  for (const candidate of candidates) {
+async function readBackgroundDataUrl(model) {
+  // Build the candidate list from the OG-specific chain (week_1 only, never
+  // randomised), with model.backgroundPath as the primary so any caller-side
+  // override (e.g. fallback view-model) wins step 1.
+  const chain = getOgBackgroundFallbackChain(model.condition, model.timeOfDay);
+  const candidates = [model.backgroundPath, ...chain];
+
+  // Dedupe-preserving-order — when timeOfDay === 'day' and condition resolves
+  // to 'clear', primary + chain[0] + chain[1] + chain[2] all collapse.
+  const seen = new Set();
+  const ordered = candidates.filter((c) => {
+    if (!c || seen.has(c)) return false;
+    seen.add(c);
+    return true;
+  });
+
+  for (let i = 0; i < ordered.length; i += 1) {
+    const candidate = ordered[i];
     try {
       const bytes = await readFile(new URL(`../${candidate}`, import.meta.url));
-      return `data:image/jpeg;base64,${bytes.toString('base64')}`;
+      if (i > 0) {
+        // Log only on actual fallback events to match the picker's [Image picker] logging shape.
+        console.log(`[OG picker] fallback step ${i} → ${candidate}`);
+      }
+      return `data:${mimeForPath(candidate)};base64,${bytes.toString('base64')}`;
     } catch {
       // Try the next candidate.
     }
   }
 
+  console.log('[OG picker] fallback chain exhausted — rendering card without background');
   return null;
 }
 
