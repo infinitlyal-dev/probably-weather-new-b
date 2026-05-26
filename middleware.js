@@ -17,7 +17,7 @@ export const config = {
 const ORIGIN = 'https://www.probablyweather.co.za';
 
 const CONDITION_ALLOWLIST = new Set([
-  'clear', 'cloudy', 'cold', 'fog', 'heat', 'rain',
+  'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain',
   'storm', 'wind', 'rain-possible', 'uv', 'default',
 ]);
 

@@ -1098,6 +1098,13 @@ export default async function handler(req, res) {
         uvIndex:   uv,
         cloudPct:  aggregatedHourly[noonIdx]?.cloudPct ?? null,
         isDay:     true,
+        // Daily low for the cold-clear rung — lets a 4°C dawn on a 14°C clear
+        // day route to cold-clear instead of being clobbered by tempC=highC.
+        dailyLowC: lowC,
+        // Daily high for the cold-clear ceiling gate — a 22°C-high day with a
+        // 5°C dawn is "cold morning warming up", not cold-clear all day. Also
+        // restores the standard UV/cold priority for daily decisions.
+        dailyHighC: highC,
         // Per-source descriptions for this day, used by the hail/thunder
         // consensus rungs at the top of deriveCondition.
         sourceDescs: dailySourceDescs,
@@ -1315,6 +1322,9 @@ export default async function handler(req, res) {
       maxWindKph,
       isDay,
       dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
+      // Today's low — paired with cloudPct for the cold-clear branch so a
+      // sub-zero dawn on a clear day routes through the Highveld register.
+      dailyLowC:  aggregatedDaily?.[0]?.lowC ?? null,
       // Per-source raw descriptions feed the hail/thunder consensus rungs.
       sourceDescs: nowSourceDescs,
     });
@@ -1812,7 +1822,7 @@ function calcFeelsLike(tempC, windKph, humidity) {
  *   labelled cold for the whole day.
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, sourceDescs }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -1872,6 +1882,55 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
 
   // 1. Storm (single-source thunder/storm/tornado wins via the description vote)
   if (d.includes('thunder') || d.includes('storm') || d.includes('tornado')) return { key: 'storm', reason: 'desc-storm-keyword' };
+
+  // 1.5 Cold-clear — Highveld dry-cold-with-blue-sky.
+  //   Bloemfontein / Joburg / Free State winter morning vibe: feels chilly,
+  //   sky is near-clear, no rain risk. Distinct from overcast 'cold' and
+  //   braai-warm 'clear'.
+  //
+  //   Defensive gates (added per adversarial code review):
+  //   - !isPrecipOrFogDesc — snow/rain/fog/mist descs route to their own
+  //     dedicated branches lower down. Without this, a 'snow' desc at 8°C
+  //     would steal from the winter-precip rung.
+  //   - hasClearSkySignal — accepts either cloudPct < 30 OR (when cloudPct
+  //     is missing) a clear/sunny/fair desc keyword. Otherwise a MET-Norway
+  //     payload with no cloudPct would silently never emit cold-clear.
+  //   - dailyMaxAllowsColdClear — if the day will warm above 18°C, the day's
+  //     register is more "cold morning warming up" than "cold-clear all day".
+  //     This also resolves the UV-priority concern: a warm sunny day with
+  //     high UV correctly falls through to the UV rung.
+  //   - rainChance gate accepts undefined ONLY when desc has no precip
+  //     keywords (otherwise be conservative — don't assume dry).
+  {
+    const isPrecipOrFogDesc =
+      d.includes('snow') || d.includes('sleet') || d.includes('ice') ||
+      d.includes('hail') || d.includes('blizzard') || d.includes('freezing') ||
+      d.includes('rain') || d.includes('drizzle') || d.includes('shower') ||
+      d.includes('precip') || d.includes('fog') || d.includes('mist') ||
+      d.includes('haze') || d.includes('thunder') || d.includes('storm');
+
+    const hasClearSkySignal =
+      (isNum(cloudPct) && cloudPct < 30) ||
+      (!isNum(cloudPct) && (d.includes('clear') || d.includes('sunny') || d.includes('fair')));
+
+    const hasColdSignal =
+      (isNum(feelsLikeC) && feelsLikeC <= 12) ||
+      (isNum(dailyLowC)  && dailyLowC  <= 6)  ||
+      (isNum(tempC)      && tempC      <= 12);
+
+    const isDryDay = isNum(rainChance) ? rainChance < 20 : !isPrecipOrFogDesc;
+    const dailyMaxAllowsColdClear = !isNum(dailyHighC) || dailyHighC <= 18;
+
+    if (
+      hasColdSignal
+      && hasClearSkySignal
+      && isDryDay
+      && !isPrecipOrFogDesc
+      && dailyMaxAllowsColdClear
+    ) {
+      return { key: 'cold-clear', reason: 'dry-cold-clear-sky' };
+    }
+  }
 
   // 2. Extreme cold
   if (isNum(feelsLikeC) && feelsLikeC <= -5) return { key: 'cold', reason: 'extreme-cold-feels-like' };
@@ -1975,7 +2034,7 @@ function categorizeDesc(desc) {
 function conditionKeyToVoteBucket(key) {
   switch (key) {
     case 'storm': case 'thunder': case 'hail': return 'storm';
-    case 'cold':                               return 'cold';
+    case 'cold': case 'cold-clear':            return 'cold';
     case 'rain': case 'rain-possible':         return 'rain';
     case 'cloudy':                             return 'cloudy';
     case 'fog':                                return 'fog';

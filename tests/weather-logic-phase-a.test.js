@@ -65,10 +65,14 @@ describe('UV temp gate (Bug 2)', () => {
   });
 
   it("returns 'uv' at exactly dailyHighC=15 (boundary — NOT blocked)", () => {
+    // cloudPct overridden to 30 so the new cold-clear branch (cloudPct<30) does
+    // not catch this chilly-clear case. UV's own cloud gates accept cloudPct=30
+    // (only blocks at >=55), so this still tests the UV-boundary intent.
     const result = deriveCondition({
       ...baseArgs,
       desc: 'Clear sky',
       tempC: 12,
+      cloudPct: 30,
       uvIndex: 8,
       dailyHighC: 15,
     });

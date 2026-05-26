@@ -46,7 +46,10 @@ describe('deriveCondition return shape: { key, reason }', () => {
   });
 
   it("priority 14 chilly with daily gate → reason='chilly-with-daily-gate'", () => {
-    const result = deriveCondition({ ...baseArgs, desc: 'Clear sky', tempC: 8, dailyHighC: 12 });
+    // cloudPct overridden to 50 so the new cold-clear branch (requires cloudPct<30)
+    // does not catch this chilly-cloudy case first. The chilly-cold rung still
+    // owns the chilly+cloudy zone — cold-clear only owns chilly+clear.
+    const result = deriveCondition({ ...baseArgs, desc: 'Clear sky', tempC: 8, cloudPct: 50, dailyHighC: 12 });
     expect(result.key).toBe('cold');
     expect(result.reason).toBe('chilly-with-daily-gate');
   });

@@ -937,6 +937,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (apiCondition === 'hail') return 'hail';
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
+    // cold-clear is preserved as its own display condition so the picker reads
+    // from the cold-clear image bucket. Falls through to 'cold' display only if
+    // the API didn't classify it that way.
+    if (apiCondition === 'cold-clear') return 'cold-clear';
     if (apiCondition === 'heat') return 'heat';
     if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
     if (isNum(dailyRain) && dailyRain >= 30) return 'rain';
@@ -986,6 +990,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (apiCondition === 'hail') return 'hail';
     if (apiCondition === 'storm') return 'storm';
     if (apiCondition === 'cold') return 'cold';
+    // cold-clear preserved here too — same rationale as computeTodaysHero.
+    if (apiCondition === 'cold-clear') return 'cold-clear';
     if (apiCondition === 'heat') return 'heat';
     // FIX: trust the API's rain verdict when 2+ sources voted rain/storm. The API
     // already aggregated source agreement; without this, a unanimous-rain payload
@@ -1122,7 +1128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function getDayBadge(d, dayIndex, hourlyData) {
     const ck = (d.conditionKey || '').toLowerCase();
     if (ck === 'storm') return t('badges', 'rainy');
-    if (ck === 'cold') return t('badges', 'cold');
+    if (ck === 'cold' || ck === 'cold-clear') return t('badges', 'cold');
     if (ck === 'heat') return t('badges', 'hot');
     const r = d.rainChance;
     const isRainy = ck === 'rain' || ck === 'rain-possible' || (isNum(r) && r >= 30);

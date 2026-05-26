@@ -23,6 +23,12 @@ const CONDITION_EMOJI_MAP = {
   fog:             { day: '🌫️', night: '🌫️' },
   wind:            { day: '💨',  night: '💨'  },
   cold:            { day: '🧥',  night: '🧥'  },
+  // cold-clear: Highveld dry-cold under blue sky. The cold-face emoji 🥶 captures
+  // the "deceptively beautiful" register better than ❄️ (which would conflict
+  // with the snow particles rendered for plain 'cold'). Single glyph both day
+  // and night — no composite sequences (iOS Safari renders multi-emoji side by
+  // side which can break tight UI badges).
+  'cold-clear':    { day: '🥶',  night: '🥶'  },
   heat:            { day: '🔥',  night: '🔥'  },
   hot:             { day: '🔥',  night: '🔥'  },
   uv:              { day: '☀️',  night: '🌙'  },

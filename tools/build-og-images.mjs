@@ -23,6 +23,7 @@ const CONDITIONS = [
   { name: 'clear',          source: 'assets/images/bg/clear/week_1/day/1.webp' },
   { name: 'cloudy',         source: 'assets/images/bg/cloudy/week_1/day/1.webp' },
   { name: 'cold',           source: 'assets/images/bg/cold/week_1/day/1.webp' },
+  { name: 'cold-clear',     source: 'assets/images/bg/cold-clear/week_1/day/1.webp' },
   { name: 'fog',            source: 'assets/images/bg/fog/week_1/day/1.webp' },
   { name: 'heat',           source: 'assets/images/bg/heat/week_1/day/1.webp' },
   { name: 'rain',           source: 'assets/images/bg/rain/week_1/day/1.webp' },
