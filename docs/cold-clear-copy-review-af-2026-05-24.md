@@ -43,3 +43,40 @@ Two additional minor improvements applied:
 - Line 10 polish: `"Billike ruil"` → `"Dis 'n billike ruil"`
 
 **Verdict**: CLEAN. Ship-ready. Most-native lines per reviewer: 2, 5, 7, 8, 9, 14, 15, 17, 18, 20.
+
+---
+
+## 2026-05-24 (Al rewrite) — Round 1 + 2 appendix
+
+Al rewrote the EN canonical with 30 Highveld-specific lived references (Bloemfontein 6am, Free State, Welkom, Karoo, Maluti, Sasolburg, Kroonstad, N1 cattle, Toyota, etc.) replacing the previous 20-line bin. AF retranslated with stricter SA code-switching preservation: proper nouns and SA Afrikaans phrases (`takkies`, `lapa`, `lekker koud`, `koue belt`, `hadedas`, `koppies`, `jacaranda`, `stoep`, `braai`, `bakkie`, `geyser`) preserved verbatim; English words used in SA code-switching (`crispy`, `keen`, `Highveld classic`, `try`, `export`, `winter-setting`, `fine`) retained.
+
+### Round 1 — codex review (2026-05-24)
+
+**CRITICAL (2)**
+- L2: `"Die Vrystaat"` → `"Die Free State"` (proper-noun rule)
+- L13: `"bleek"` (pale) → `"troosteloos"` (preserves "bleak" image)
+
+**MAJOR (8)**
+- L1: `"'n dapper gesig"` → `"'n gesig wat maak of alles fine is"`
+- L2: `"winter-instelling"` → `"winter-setting"` (code-switch joke)
+- L5: `"steeds reg / altyd reg"` → `"nog steeds keen / altyd keen"`
+- L9: `"bros"` → `"crispy"` (preserve sharper code-switch image)
+- L16: `"Ketel-twee-keer-kook weer"` → `"Kook-die-ketel-twee-keer weer"`
+- L22: `"Google na 'vloerverwarming...'"` → `"Google: vloerverwarming Bloemfontein."`
+
+**MINOR (8)**
+- L3: `"ingestem het om te vat"` → `"besluit het om te vat"`
+- L8: `"troeteldier se bak"` → `"hond se bak"` (later revised to `"troeteldierbak"` in round 2)
+- L11: `"maak of hy nie het nie"` → `"voorgee hy nie het nie"`
+- L14: `"Trek iets aan jou voete aan"` → `"Sit iets aan jou voete"`
+- L20: `"Hoëveld-klassiek"` → `"Highveld classic"` (preserve English punchline)
+- L25: `"eerste probeerslag"` → `"eerste try"` (code-switch)
+- L27: `"saamgedruk"` → `"in 'n bondel"`
+- L29: `"voer dit verniet uit"` → `"export dit gratis"`
+
+### Round 2 — codex review (2026-05-24)
+
+Only one finding:
+- L8 [MINOR]: `"hond se bak"` narrows source "pet bowl" to dog-specific. Suggested `"troeteldierbak"` (compound). **Applied.**
+
+**Verdict**: CLEAN after round 2 — round 1 CRITICAL/MAJOR all resolved; sole minor folded in.

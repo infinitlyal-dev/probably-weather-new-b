@@ -5,6 +5,8 @@ Task: wire the `cold-clear` condition fully across the Probably Weather app — 
 
 Result: 112 pre-staged WebP images for the cold-clear bucket are now reachable from the Highveld dry-cold-with-blue-sky weather scenarios.
 
+**Update 2026-05-24:** EN witty bin rewritten by Al (30 Highveld-specific lived references replacing the original 20 generic lines); 4 language translations regenerated with stricter SA code-switching preservation rules (proper nouns + SA Afrikaans words like `takkies`, `lapa`, `lekker koud`, `koue belt`, `hadedas`, `koppies`, `stoep`, `braai`, `bakkie`, `geyser` preserved verbatim; English nouns like `jersey`, `scarf`, `kettle`, `coffee`, `heater`, `relationship`, `freezer`, `bird feeder`, `cooler box`, `first try` retained as natural SA code-switches). See `cold-clear-copy-review-{af,zu,xh,st}-2026-05-24.md` round 2 and 3 appendices.
+
 ---
 
 ## Trigger logic

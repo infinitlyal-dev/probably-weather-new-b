@@ -56,3 +56,47 @@ Small flags noted for native polish (not applied — borderline / register depen
 All xh entries flagged for native-speaker review.
 
 **Status**: pre-native-review CLEAN. Ship to native reviewer.
+
+---
+
+## 2026-05-24 (Al rewrite) — Round 1 + 2 appendix
+
+Al rewrote the EN canonical with 30 Highveld-specific lived references replacing the previous 20-line bin. XH retranslated with stricter SA code-switching preservation: SA Xhosa speakers code-switch heavily with English, Afrikaans, place names, and brand names. Round 1 found I had over-translated several words (`isiqandisi` for freezer, `iikhushini` for cushions, `ngumkhuthuzi` for villain, etc.) that SA Xhosa speakers actually leave in English.
+
+### Round 1 — codex review (2026-05-24)
+
+**CRITICAL (3)**
+- L13: `"ehambe-i-jacaranda"` (jacaranda left) + `"nemnyama"` (black/dark) → `"IPretoria-bare-jacaranda energy. Intle, kodwa ibuhlungu kancinci."` (preserve image)
+- L22: `"ufakele ku-Google"` (install into Google) → `"olukwenza u-Google ..."` (Googling action)
+- L25: `"ivuke"` (woke up) → `"i-startile nge-try yokuqala"` (started first try)
+
+**MAJOR (15)** — over-translation of code-switches and wrong-register words:
+- L1 `iskhafu` → `i-scarf`
+- L3 `ukuduma` (thunder/noise) → `uku-starta`
+- L4 `iibhatyi` → `ii-jackets`
+- L5 `isafuna` (still wants) → `isekeen` (still keen) + `Intlonipho` → `Respect`
+- L9 `zaqhwaba` (clapped) → `zi-crispy`
+- L11 reword; L12 `aza kubonakala emahle ngokukhawuleza` → `sele eza kujongeka perfect`
+- L14 `ngumkhuthuzi` (robber) → `yi-villain`
+- L16 `kettle` half-Xhosafied → keep code-switch (later corrected to `boiling` not `boil` in round 2)
+- L18 `kukuhlobana` → `relationship`
+- L19 `yokubanda` → `i-koue thing yayo` (preserve Afrikaans phrase)
+- L21 `Amakoppies` → `Ii-koppies` (preserve `koppies`)
+- L23 `isiqandisi` → `i-freezer`
+- L24 `Iihadeda` → `Ii-hadedas` + `e-bird feeder`
+- L26 `ibhokisi yokupholisa` → `i-cooler box`
+- L27 `Nde` (wrong word) → `Nkqu`
+- L29 reword
+
+**MINOR (5)**: L6 keep `Welkom-cold` compact; L8 `engcangceni` → `engceni`; L15 `begqoke` → `benxibe`; L20 `Khipha/Faka` → `off/on`; L30 reword.
+
+### Round 2 — codex review (2026-05-24)
+
+**MAJOR (1)**
+- L16: `"boil-the-kettle-twice"` → `"boiling-the-kettle-twice"` (preserve exact locked phrase). **Applied.**
+
+**MINOR (2)**
+- L14: `"yanamhlanje ebusuku"` redundant for "tonight's villain" → trimmed to `"yanamhlanje"`. **Applied.**
+- L30: `"e-stoep"` → `"kwi-stoep"` (more natural locative). **Applied.**
+
+**Verdict**: CLEAN after round 2. Code-switching restored; locked English phrase L16 fixed.

@@ -56,3 +56,45 @@ Reviewer found 5 critical issues + 8 majors + 7 minors. Strong AI-translation pa
 All st entries flagged for native-speaker review. Free State testers should be primary audience.
 
 **Status**: pre-native-review CLEAN. Ship to native reviewer.
+
+---
+
+## 2026-05-24 (Al rewrite) — Round 1 + 2 appendix
+
+Al rewrote the EN canonical with 30 Highveld-specific lived references replacing the previous 20-line bin. ST retranslated targeting the Free State register specifically — Highveld is the spiritual home of cold-clear, so the SA Sesotho register matters most here. Round 1 found the draft was "too 'school Sesotho' in places" and repeatedly smoothed away Free State code-switching.
+
+### Round 1 — codex review (2026-05-24)
+
+**CRITICAL (3)**
+- L5: `"Ntja e sa batla"` (still wants) → `"Ntja e ntse e le keen"` (still keen — preserves character)
+- L10: `"Letsatsi le phumetse"` (reads as sun has set) → `"Letsatsi le tjhabile"` (sun is shining)
+- L14: `"Lifate tsa tile"` (tile trees) → `"Tile floors"` (preserve image; was mistranslated)
+- L29: `"e ntšitse mahala"` → `"e a e exporta mahala"` (preserve "exporting" code-switch)
+
+**MAJOR (13)** — code-switching restoration:
+- L2 `setlhophiso sa mariha` → `winter setting`
+- L4 `lijase tse peli` → `jackets tse pedi` + `poso` → `post`
+- L6 keep `Welkom-cold` compact
+- L8 `Leqhoa lehlakeng` → `Frost lawneng. Frost ho bakkie. Frost sejaneng sa pet.` (later trimmed to `Frost ho pet bowl` in round 2)
+- L9 `e khathohanyetse` → `di crispy`
+- L11 reword
+- L12 `libaka tsa rugby` → `di-rugby fields`
+- L13 reword + `bohloko` (pain) → `bleak`
+- L16 `Leholimo la ho bedisa-ketlele-habeli` → `Boiling-the-kettle-twice weather`
+- L18 `Setjhesi sa koloi` → `Heater ya koloi` + `kamano` → `relationship`
+- L21 `poskoto` → `postcard` + `liblokisi tsa leqhoa` → `ice blocks`
+- L24 `Hadeda tse tharo / sebakeng sa lijo tsa linonyana` → `Hadedas tse tharo... bird feedereng` (later refined)
+- L25 `qaletse ka boiteko ba pele` → `startile first try`
+- L26 reword with `cooler box`
+- L27 `likhomo tsa N1` (cattle owned by N1) → `dikgomo tse pela N1`
+
+**MINOR (9)**: L1 `sebete` → `brave face`; L3 `ho qala` → `ho starta`; L7 `Ehlile` → `Of course`; L15 add `school/shorts` code-switch; L17 keep `farmer`; L20 `Sa khale` → `Highveld classic`; L22 keep `Cold` in English; L23 `sehatsetsi` → `freezer`; L28 verb structure; L30 reword.
+
+### Round 2 — codex review (2026-05-24)
+
+Only 3 MINOR findings:
+- L8: `"sejaneng sa pet"` partly translates "pet bowl" → `"Frost ho pet bowl"` (preserve verbatim). **Applied.**
+- L16: `"Boil-the-kettle-twice"` → `"Boiling-the-kettle-twice"` (locked English phrase). **Applied.**
+- L24: `"bird feedereng"` → `"ho bird feeder"` (preserve verbatim). **Applied.**
+
+**Verdict**: CLEAN after round 2 — no CRITICAL or MAJOR remaining; 3 minor textual preservation fixes applied.

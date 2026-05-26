@@ -54,3 +54,35 @@ Reviewer flagged 9 more polish items. Applied each suggested rewrite:
 All zu entries (heroLabels, headlines, witty) flagged for native-speaker review per the project rule for low-resource languages. Codex caught the most obvious AI-translation tells; final naturalness needs a real isiZulu speaker.
 
 **Status**: pre-native-review CLEAN. Ship to native reviewer.
+
+---
+
+## 2026-05-24 (Al rewrite) — Round 1 + 2 appendix
+
+Al rewrote the EN canonical with 30 Highveld-specific lived references replacing the previous 20-line bin. ZU retranslated with stricter SA code-switching preservation: SA Zulu speakers code-switch heavily with English (jersey, scarf, kettle, coffee, heater, relationship, freezer, bird feeder, cooler box, first try, Highveld classic), Afrikaans (lekker koud, koue belt, hadedas, koppies, stoep, braai, bakkie, takkies, lapa, geyser), and use locative prefixes on place names (eBloemfontein, eWelkom). Round 1 found I had "smoothed away" too many of these — round 2 confirms restored.
+
+### Round 1 — codex review (2026-05-24)
+
+**CRITICAL (2)**
+- L12: `"amabhola erugby"` (rugby balls) → `"ama-rugby fields"` (preserve image)
+- L21: `"izinyawo zibukeka njengamablokisi"` (look like) → `"zizwakala njenge-ice blocks"` (feel like)
+
+**MAJOR (18)** — all flagged for over-translating English code-switches that SA Zulu speakers do naturally use:
+- L1: `isikhafu` → `i-scarf`
+- L2: `inesetelo sobusika` → `ine-winter setting`
+- L4: `amajazi` → `ama-jacket`
+- L5: `Inja isafuna` → `Inja isafuna ukuhamba` + `Inhlonipho` → `Respect`
+- L6, L8 (`esitsheni sesilwane` → `ku-pet bowl`), L9 (`Amakhushini` → `Ama-cushions`), L11, L13 (`Kuhle futhi kudangele` → `Yinhle futhi i-bleak`), L16 (`isimo sezulu` → `i-weather`, preserve `i-kettle`/`i-coffee`), L18 (`Umshisi/ubudlelwane` → `i-heater/relationship`), L20 (`Okwasendulo` → `I-Highveld classic`), L22, L24 (`Amahadeda/endaweni yenyoni` → `Ama-hadedas/ku-bird feeder`), L25 (`ivuke ngokuzama kokuqala` → `i-startile nge-first try`), L26 (`ibhokisi yokupholisa` → `i-cooler box`), L27, L29 (`liyakuthumela ngaphandle` → `iyayi-exporta`)
+
+**MINOR (6)**: L3 `ukuduma` → `uku-starta`; L14 `umbulali` → `i-villain`; L15 grammar `Zazi` → `Ziyazi`; L23 `ifriza` → `i-freezer`; L28 `iqhubeka` → `yenzeka`; L30 reword.
+
+### Round 2 — codex review (2026-05-24)
+
+**MAJOR (1)**
+- L22: `"usu-Googler ukuthi"` → `"olukwenza ugcine usu-Google'a 'underfloor heating Bloemfontein'."` **Applied.**
+
+**MINOR (2)**
+- L1: `"nokwenza isibindi"` → `"nobuso obunesibindi"` (better captures "brave face" image). **Applied.**
+- L27: `"zikhokhele le cold"` → `"zikhokhele indawo"` (preserves "paid for the spot" joke). **Applied.**
+
+**Verdict**: CLEAN after round 2. Code-switching restored throughout; remaining changes were textual polish, not meaning errors.
