@@ -2,6 +2,7 @@ import { getSharedPlaceFromSearch } from './startup-location.js';
 import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './language-preferences.js';
 import { WEATHER_COPY } from './weather-copy.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
+import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { buildShareUrl } from './share-url.js';
 import { initInstallExperience } from './install.js';
@@ -1274,31 +1275,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return fallback;
   }
+  // Picker state — module-scoped so race-guarding + memoization survive across
+  // rapid setBackgroundFor calls (pull-to-refresh fires this 2-3x in succession).
+  let __pickerToken = 0;
+  // Map keyed by 'folder|time|week'. Map (not single-slot) so condition
+  // oscillation A→B→A reuses A's original pick instead of re-rolling.
+  // Capped at 16 entries; oldest evicted on overflow (Map preserves insertion order).
+  const __pickerMemo = new Map();
+  const PICKER_MEMO_CAP = 16;
   function setBackgroundFor(condition) {
-    const base = 'assets/images/bg';
+    if (!bgImg) return;
+    // 4-week date-based rotation (see assets/image-picker.js + docs/picker-rotation-logic.md).
+    // The picker reads from the new WebP folder structure:
+    //   assets/images/bg/<condition>/week_<1..4>/<dawn|day|dusk|night>/<1..7>.webp
+    // Time-of-day comes from getTimeOfDay() (solar-aware, unchanged).
+    // Week comes from getRotationWeek() (UTC-anchored to SAST launch Saturday).
     const folder = getWeatherBackgroundFolder(condition);
     const fallbackFolder = getWeatherBackgroundFallbackFolder(condition);
     const timeOfDay = getTimeOfDay();
-    const dayOfYear = getLocationDayOfYear();
-    let imgFile;
-    if (timeOfDay === 'day') {
-      // 14-day cycle: day_1 through day_14
-      // Sat always day_6 or day_13, Sun always day_7 or day_14
-      const dayOfWeek = getLocationDayOfWeek(); // 0=Sun, 1=Mon...6=Sat
-      const baseSlot = dayOfWeek === 0 ? 7 : dayOfWeek; // Mon=1...Sat=6, Sun=7
-      const weekParity = Math.floor((dayOfYear - 1) / 7) % 2; // 0=week1, 1=week2
-      const dayNum = baseSlot + (weekParity * 7); // 1-7 or 8-14
-      imgFile = `day_${dayNum}`;
+    const week = getRotationWeek();
+
+    // Memoize the random pick by (folder, time, week). Without this, every
+    // re-render (refresh, sidebar re-paint) would pick a fresh image and the
+    // background would flicker mid-frame. The memo invalidates the moment any
+    // of the three signals changes (condition/time-of-day transition, weekly
+    // rollover), so users still get rotation — just not on every paint.
+    const key = `${folder}|${timeOfDay}|${week}`;
+    let r;
+    if (__pickerMemo.has(key)) {
+      r = __pickerMemo.get(key);
     } else {
-      // Dawn/dusk/night: rotate through 3 options using day of year
-      const slot = ((dayOfYear - 1) % 3) + 1; // 1, 2, or 3
-      imgFile = `${timeOfDay}_${slot}`;
+      r = pickRandomIndex();
+      __pickerMemo.set(key, r);
+      if (__pickerMemo.size > PICKER_MEMO_CAP) {
+        const oldest = __pickerMemo.keys().next().value;
+        __pickerMemo.delete(oldest);
+      }
     }
-    debugLog(`[Image picker] Condition: ${condition}, Folder: ${folder}, Day of year: ${dayOfYear}, Time: ${timeOfDay}, Image: ${imgFile}.jpg`);
-    if (bgImg) {
-      bgImg.src = `${base}/${folder}/${imgFile}.jpg`;
-      bgImg.onerror = () => { bgImg.src = `${base}/${folder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/${fallbackFolder}/day.jpg`; bgImg.onerror = () => { bgImg.src = `${base}/default.jpg`; }; }; };
-    }
+    const chain = buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r);
+
+    debugLog(`[Image picker] condition=${condition} folder=${folder} week=${week} time=${timeOfDay} pick=${r}/7 → ${chain[0]}`);
+
+    // Race-guarded fallback walk. Each call captures a token; any error/load
+    // event from a stale call (cancelled by a later src reassignment) is
+    // ignored. Without this, a late error from an aborted load could advance
+    // the new chain by one step and show the wrong fallback image.
+    const myToken = ++__pickerToken;
+    let i = 0;
+    const step = () => {
+      if (myToken !== __pickerToken) return; // stale
+      if (i >= chain.length) {
+        debugLog('[Image picker] fallback chain exhausted');
+        return;
+      }
+      if (i > 0) debugLog(`[Image picker] fallback step ${i} → ${chain[i]}`);
+      bgImg.src = chain[i];
+      i++;
+    };
+    bgImg.onload = () => {
+      if (myToken !== __pickerToken) return;
+      // Detach so a later cache eviction / network blip can't replay the chain.
+      bgImg.onerror = null;
+      bgImg.onload = null;
+    };
+    bgImg.onerror = step;
+    step();
   }
   function createParticles(condition) {
     if (!particlesEl) return; particlesEl.innerHTML = '';

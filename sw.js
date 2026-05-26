@@ -1,13 +1,16 @@
-/* Probably Weather — Service Worker v13
-   Upgrades from v12:
-   - CACHE_VERSION bumped → clears stale caches from the home-buttons restructure.
+/* Probably Weather — Service Worker v14
+   Upgrades from v13:
+   - CACHE_VERSION bumped → purges old JPG background entries from IMG_CACHE
+     so the 4-week WebP picker (assets/image-picker.js) is fed by a clean
+     cache instead of stale JPG hits on the new path shape.
+   - Image fetch matcher already includes .webp (line 208), no change needed.
    - Console version log on activate so future propagation issues are debuggable.
    Cache-Control: no-cache, no-store, must-revalidate on /sw.js (vercel.json)
    ensures the browser ALWAYS revalidates the SW script on each update check,
    so deploys after this one propagate on next launch without manual reset.
 */
 
-const CACHE_VERSION = 'pw-v2026-05-16-001';
+const CACHE_VERSION = 'pw-v2026-05-26-001';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const API_CACHE = `${CACHE_VERSION}-api`;
@@ -24,7 +27,10 @@ const CORE_ASSETS = [
   '/manifest.json',
 ];
 
-const MAX_IMG_CACHE = 60;
+// 1,008-image rotation space (9 conditions × 4 weeks × 4 time-slots × 7 picks).
+// Cap raised from 60 → 120 so a typical user's recently-seen buckets survive
+// week-boundary transitions instead of churning on every rollover.
+const MAX_IMG_CACHE = 120;
 const API_CACHE_MAX_AGE = 3 * 60 * 60 * 1000; // 3 hours
 
 self.addEventListener('install', (event) => {
@@ -211,7 +217,10 @@ self.addEventListener('fetch', (event) => {
       const cached = await cache.match(req);
 
       const fetchPromise = fetch(req).then((fresh) => {
-        if (fresh.ok) {
+        // Restrict caching to fully-loaded 200 responses. fresh.ok also matches
+        // 206 Partial Content (range requests), which would cache a partial
+        // image as if it were the full asset.
+        if (fresh.status === 200) {
           cache.put(req, fresh.clone()).catch(() => {});
           trimCache(IMG_CACHE, MAX_IMG_CACHE).catch(() => {});
         }
