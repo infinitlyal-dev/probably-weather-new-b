@@ -1,2 +1,14 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Binary asset types — explicit so text=auto LF normalization never touches them
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.mp4 binary
+*.pdf binary

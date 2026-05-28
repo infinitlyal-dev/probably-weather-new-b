@@ -1,0 +1,54 @@
+Promote image library to production — 1,008 WebP, 4-week rotation, cold-clear live, OG static-JPEG fix
+
+Asset migration:
+- 1,008 new WebPs at assets/images/bg/<cond>/week_<1..4>/<time>/<1..7>.webp
+  (9 buckets: clear cloudy cold cold-clear fog heat rain storm wind)
+- ~191 pre-rotation flat JPGs removed from 8 OLD condition folders
+  (max-depth 1; nothing under week_*/ touched)
+- default.jpg root fallback preserved (last step of picker fallback chain)
+
+OG cards regenerated from new WebP sources:
+- og/cold-clear.jpg is NEW (cold-clear is a brand new condition)
+- og/clear.jpg, og/cloudy.jpg, og/cold.jpg, og/fog.jpg, og/heat.jpg,
+  og/rain.jpg, og/storm.jpg, og/wind.jpg, og/default.jpg refreshed
+- og/uv.jpg (alias of clear) and og/rain-possible.jpg (alias of cloudy)
+  re-copied
+
+OG renderer WebP-incompatibility fix (Option B):
+The dynamic /api/og endpoint was feeding the new WebPs to @vercel/og 0.11.1
+(Satori), which throws "u2 is not iterable" on certain WebP encodings. Fix:
+read the pre-built static og/<condition>.jpg files (JPEG) instead of source
+WebPs. Loss of time-of-day variation in dynamic OG cards is invisible to
+users — social platforms cache one preview per shared URL for ~30 days, so
+time-of-day variation never reached them anyway.
+
+- api/og.js — switched to getOgStaticBackground* helpers; removed
+  mimeForPath() (everything is JPEG now); dropped timeOfDay→backgroundPath
+  link; wrapped fallback render in own try/catch with safe 500 response
+- assets/weather-visuals.js — added OG_BACKGROUND_ALIASES (narrower than
+  the picker's: uv and rain-possible NOT aliased so dedicated og/uv.jpg
+  and og/rain-possible.jpg are served as-is), resolveOgFolder() with
+  lowercase normalization, getOgStaticBackgroundPath(),
+  getOgStaticBackgroundFallbackChain(). Existing WebP-path helpers untouched.
+- tests/og-paths.test.js — added 16 tests for the new helpers covering
+  aliases, cold-clear, fallback chain, uv/rain-possible passthrough, case
+  normalization, edge cases
+
+Supporting changes:
+- .gitattributes gets explicit `*.webp binary` rules (and friends) so
+  text=auto LF normalization never touches binary blobs
+- docs/promote-plan-2026-05-24.md — full pre-promote plan
+- docs/promote-review-2026-05-24.md — promote-script adversarial review
+- docs/promote-report-2026-05-24.md — execution + verification report
+- docs/promote-commit-message.txt — this message, kept on disk
+- docs/og-fix-review-2026-05-24.md — OG fix adversarial review (2 rounds)
+- scripts/promote-image-library.sh — the executed promote script
+
+Adversarial review:
+- Promote script: 2 rounds, codex-rescue SHIP verdict
+- OG fix: 2 rounds, codex-rescue SHIP verdict
+
+Post-fix test state: 4501 passing / 118 files / 0 fail
+(4485 baseline + 16 new OG-path helper tests = 4501)
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>

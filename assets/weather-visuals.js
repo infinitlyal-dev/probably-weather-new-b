@@ -103,3 +103,78 @@ export function getOgBackgroundFallbackChain(condition, timeOfDay = 'day') {
   ];
   return Array.from(new Set(raw));
 }
+
+/**
+ * OG-specific alias map — NARROWER than WEATHER_BACKGROUND_ALIASES.
+ *
+ * The picker's WEATHER_BACKGROUND_ALIASES treats `uv` and `rain-possible`
+ * as aliases of `clear` and `cloudy` because there are NO dedicated
+ * `assets/images/bg/uv/` or `assets/images/bg/rain-possible/` WebP folders.
+ *
+ * But `og/uv.jpg` and `og/rain-possible.jpg` ARE pre-built as dedicated
+ * static OG cards (`tools/build-og-images.mjs` ALIASES block creates them).
+ * If we re-used the picker's alias map for OG paths, those dedicated files
+ * would never be served — `uv` would silently map to `og/clear.jpg`,
+ * regressing the marketing-specific OG cards. So we maintain a separate
+ * OG alias map that only collapses conditions WITHOUT a dedicated og file.
+ *
+ * partly-cloudy / hail / thunder do NOT have dedicated og files (not in
+ * build-og-images.mjs CONDITIONS or ALIASES), so they map to existing ones.
+ */
+const OG_BACKGROUND_ALIASES = {
+  'partly-cloudy': 'cloudy',
+  hail: 'storm',
+  thunder: 'storm',
+};
+
+function resolveOgFolder(condition) {
+  const safe = String(condition || '').toLowerCase();
+  return OG_BACKGROUND_ALIASES[safe] || safe || 'clear';
+}
+
+/**
+ * STATIC OG background source — the pre-rendered og/<condition>.jpg files
+ * produced by tools/build-og-images.mjs. JPEG instead of WebP because
+ * @vercel/og 0.11.1 (Satori) can't render WebP cleanly inside an embedded
+ * <img> data-URL — it throws "u2 is not iterable" deep in the Satori parser.
+ *
+ * Used by api/og.js. ONE canonical image per condition — no time-of-day
+ * variation in dynamic OG cards (social/WhatsApp previews cache per shared
+ * URL for ~30 days, so per-time variation is invisible to users anyway).
+ *
+ * Alias resolution uses OG_BACKGROUND_ALIASES (narrower than the picker's)
+ * so dedicated og/uv.jpg and og/rain-possible.jpg are served as-is rather
+ * than collapsed into og/clear.jpg / og/cloudy.jpg.
+ *
+ * Condition is lowercased defensively — on Linux/Vercel the filesystem is
+ * case-sensitive so 'Storm' must not become a 404.
+ */
+export function getOgStaticBackgroundPath(condition) {
+  return `og/${resolveOgFolder(condition)}.jpg`;
+}
+
+/**
+ * 3-step fallback chain for the OG static background:
+ *
+ *   1. og/<resolved-folder>.jpg — primary
+ *   2. og/clear.jpg             — condition collapse (always pre-built)
+ *   3. og/default.jpg           — final guard (also pre-built by build-og-images)
+ *
+ * Order-preserving dedupe — if the resolved condition is already 'clear',
+ * step 1 collapses into step 2.
+ *
+ * Final fallback is `og/default.jpg` (not `assets/images/bg/default.jpg`)
+ * because all OG sources should live under og/ — build-og-images.mjs
+ * explicitly produces og/default.jpg from the same source as og/clear.jpg.
+ *
+ * No timeOfDay parameter — OG static cards are per-condition only.
+ */
+export function getOgStaticBackgroundFallbackChain(condition) {
+  const folder = resolveOgFolder(condition);
+  const raw = [
+    `og/${folder}.jpg`,
+    `og/clear.jpg`,
+    `og/default.jpg`,
+  ];
+  return Array.from(new Set(raw));
+}

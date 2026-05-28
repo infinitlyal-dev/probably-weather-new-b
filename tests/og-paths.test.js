@@ -9,6 +9,8 @@ import {
   WEATHER_BACKGROUND_ALIASES,
   getOgBackgroundFallbackChain,
   getOgBackgroundPath,
+  getOgStaticBackgroundFallbackChain,
+  getOgStaticBackgroundPath,
   getTimeOfDaySlot,
   getWeatherBackgroundFallbackFolder,
   getWeatherBackgroundFolder,
@@ -203,5 +205,154 @@ describe('back-compat surface', () => {
     expect(typeof getWeatherBackgroundFallbackFolder).toBe('function');
     expect(getWeatherBackgroundFallbackFolder('cold')).toBe('cloudy');
     expect(getWeatherBackgroundFallbackFolder('rain')).toBe('clear');
+  });
+});
+
+// --- Static OG helpers (added 2026-05-24 after @vercel/og WebP-incompat fix) ---
+// Background source for api/og.js is now og/<condition>.jpg (JPEG), not the
+// week_1 WebP — Satori inside @vercel/og 0.11.1 can't render WebP cleanly.
+
+describe('getOgStaticBackgroundPath', () => {
+  const STATIC_CONDITIONS = ['clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind'];
+
+  it('returns og/<condition>.jpg for each known bucket', () => {
+    for (const c of STATIC_CONDITIONS) {
+      expect(getOgStaticBackgroundPath(c)).toBe(`og/${c}.jpg`);
+    }
+  });
+
+  it('always ends in .jpg (never .webp)', () => {
+    for (const c of STATIC_CONDITIONS) {
+      expect(getOgStaticBackgroundPath(c)).toMatch(/\.jpg$/);
+      expect(getOgStaticBackgroundPath(c)).not.toMatch(/\.webp$/);
+    }
+  });
+
+  it('OG-specific aliases only collapse conditions WITHOUT a dedicated og file', () => {
+    // partly-cloudy / hail / thunder have no dedicated og/*.jpg → must alias
+    expect(getOgStaticBackgroundPath('partly-cloudy')).toBe('og/cloudy.jpg');
+    expect(getOgStaticBackgroundPath('hail')).toBe('og/storm.jpg');
+    expect(getOgStaticBackgroundPath('thunder')).toBe('og/storm.jpg');
+  });
+
+  it('uv and rain-possible are NOT aliased (dedicated og files exist)', () => {
+    // build-og-images.mjs ALIASES block creates og/uv.jpg and og/rain-possible.jpg
+    // as copies of clear/cloudy. The OG helper must preserve those paths so the
+    // dedicated files are served as-is, not collapsed by the picker's alias map.
+    expect(getOgStaticBackgroundPath('uv')).toBe('og/uv.jpg');
+    expect(getOgStaticBackgroundPath('rain-possible')).toBe('og/rain-possible.jpg');
+  });
+
+  it('cold-clear is NOT aliased (has its own og/cold-clear.jpg)', () => {
+    expect(getOgStaticBackgroundPath('cold-clear')).toBe('og/cold-clear.jpg');
+  });
+
+  it('falls through to og/clear.jpg for empty / null / undefined condition', () => {
+    expect(getOgStaticBackgroundPath('')).toBe('og/clear.jpg');
+    expect(getOgStaticBackgroundPath(null)).toBe('og/clear.jpg');
+    expect(getOgStaticBackgroundPath(undefined)).toBe('og/clear.jpg');
+  });
+
+  it('lowercases the condition (Linux/Vercel filesystem is case-sensitive)', () => {
+    expect(getOgStaticBackgroundPath('Storm')).toBe('og/storm.jpg');
+    expect(getOgStaticBackgroundPath('COLD-CLEAR')).toBe('og/cold-clear.jpg');
+    expect(getOgStaticBackgroundPath('Rain-Possible')).toBe('og/rain-possible.jpg');
+  });
+
+  it('passes through unknown conditions verbatim (caller decides fallback)', () => {
+    // deriveCondition() in api/weather.js never emits these, but defensively
+    // any unknown lowercase string yields og/<that>.jpg so the fallback chain
+    // resolves it to og/clear.jpg → og/default.jpg.
+    expect(getOgStaticBackgroundPath('mist')).toBe('og/mist.jpg');
+  });
+});
+
+describe('getOgStaticBackgroundFallbackChain', () => {
+  it('returns a 3-step chain for storm (no collapse)', () => {
+    expect(getOgStaticBackgroundFallbackChain('storm')).toEqual([
+      'og/storm.jpg',
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
+  });
+
+  it('dedupes when condition is clear (step 1 + 2 collapse to 2 entries)', () => {
+    expect(getOgStaticBackgroundFallbackChain('clear')).toEqual([
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
+  });
+
+  it('applies OG-narrower alias resolution before building the chain', () => {
+    // hail → storm → og/storm.jpg primary
+    expect(getOgStaticBackgroundFallbackChain('hail')).toEqual([
+      'og/storm.jpg',
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
+    // partly-cloudy → cloudy
+    expect(getOgStaticBackgroundFallbackChain('partly-cloudy')).toEqual([
+      'og/cloudy.jpg',
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
+    // uv keeps its dedicated og/uv.jpg (NOT collapsed to clear)
+    expect(getOgStaticBackgroundFallbackChain('uv')).toEqual([
+      'og/uv.jpg',
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
+    // rain-possible keeps its dedicated og/rain-possible.jpg (NOT collapsed)
+    expect(getOgStaticBackgroundFallbackChain('rain-possible')).toEqual([
+      'og/rain-possible.jpg',
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
+  });
+
+  it('cold-clear lands on og/cold-clear.jpg primary', () => {
+    expect(getOgStaticBackgroundFallbackChain('cold-clear')).toEqual([
+      'og/cold-clear.jpg',
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
+  });
+
+  it('last entry is always og/default.jpg final guard, for every condition', () => {
+    const everything = [
+      'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind',
+      'rain-possible', 'partly-cloudy', 'uv', 'hail', 'thunder',
+      '', null, undefined, 'mist', 'unknown-condition',
+    ];
+    for (const c of everything) {
+      const chain = getOgStaticBackgroundFallbackChain(c);
+      expect(chain[chain.length - 1]).toBe('og/default.jpg');
+    }
+  });
+
+  it('all entries are unique (Set-cardinality test)', () => {
+    const everything = [
+      'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind',
+      'rain-possible', 'partly-cloudy', 'uv', 'hail', 'thunder',
+    ];
+    for (const c of everything) {
+      const chain = getOgStaticBackgroundFallbackChain(c);
+      expect(new Set(chain).size).toBe(chain.length);
+    }
+  });
+
+  it('produces exactly one og/clear.jpg entry (the collapse guard)', () => {
+    // clear-as-primary collapses; everything else has og/clear.jpg as step 2.
+    expect(getOgStaticBackgroundFallbackChain('storm').filter((p) => p === 'og/clear.jpg').length).toBe(1);
+    expect(getOgStaticBackgroundFallbackChain('clear').filter((p) => p === 'og/clear.jpg').length).toBe(1);
+    expect(getOgStaticBackgroundFallbackChain('uv').filter((p) => p === 'og/clear.jpg').length).toBe(1);
+  });
+
+  it('handles uppercase input via lowercase normalization', () => {
+    expect(getOgStaticBackgroundFallbackChain('STORM')).toEqual([
+      'og/storm.jpg',
+      'og/clear.jpg',
+      'og/default.jpg',
+    ]);
   });
 });

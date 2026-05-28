@@ -5,8 +5,8 @@ import { ImageResponse } from '@vercel/og';
 import weatherHandler from './weather.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 import {
-  getOgBackgroundFallbackChain,
-  getOgBackgroundPath,
+  getOgStaticBackgroundFallbackChain,
+  getOgStaticBackgroundPath,
   getTimeOfDaySlot,
 } from '../assets/weather-visuals.js';
 
@@ -93,7 +93,9 @@ export function buildOgViewModel(payload, options = {}) {
     heroLabel: pickLocalized(WEATHER_COPY.heroLabels, condition, lang, 'Weather'),
     witty: pickWitty(condition, lang, seed),
     stats: `${labels.wind} ${wind} • ${labels.rain} ${rain} • ${labels.uv} ${uv}`,
-    backgroundPath: getOgBackgroundPath(condition, timeOfDay),
+    // backgroundPath is now the static og/<condition>.jpg (no time-of-day) —
+    // see getOgStaticBackgroundPath docblock for the @vercel/og WebP reason.
+    backgroundPath: getOgStaticBackgroundPath(condition),
   };
 }
 
@@ -109,7 +111,7 @@ export function buildFallbackViewModel(lang = 'en') {
     heroLabel: 'Probably Weather',
     witty: 'Weather that speaks your language.',
     stats: 'Live local forecast • Wind • Rain • UV',
-    backgroundPath: getOgBackgroundPath('clear', 'day'),
+    backgroundPath: getOgStaticBackgroundPath('clear'),
   };
 }
 
@@ -134,28 +136,21 @@ async function callWeatherHandler(lat, lon) {
   return body;
 }
 
-function mimeForPath(p) {
-  // Path-based MIME detection. .webp now dominates after the picker rewrite;
-  // default.jpg is the only remaining JPEG path in the OG chain.
-  if (typeof p === 'string' && p.toLowerCase().endsWith('.webp')) return 'image/webp';
-  return 'image/jpeg';
-}
-
 async function readBackgroundDataUrl(model) {
-  // Build the candidate list from the OG-specific chain (week_1 only, never
-  // randomised), with model.backgroundPath as the primary so any caller-side
-  // override (e.g. fallback view-model) wins step 1.
-  const chain = getOgBackgroundFallbackChain(model.condition, model.timeOfDay);
-  const candidates = [model.backgroundPath, ...chain];
-
-  // Dedupe-preserving-order — when timeOfDay === 'day' and condition resolves
-  // to 'clear', primary + chain[0] + chain[1] + chain[2] all collapse.
-  const seen = new Set();
-  const ordered = candidates.filter((c) => {
-    if (!c || seen.has(c)) return false;
-    seen.add(c);
-    return true;
-  });
+  // STATIC OG sources — every candidate is a JPEG under og/. We previously
+  // embedded a WebP into Satori (@vercel/og 0.11.1) which threw
+  // "u2 is not iterable" deep in the Satori parser. Switching to the
+  // pre-built og/*.jpg files (produced by tools/build-og-images.mjs) keeps
+  // every embedded image as JPEG, which Satori handles cleanly.
+  //
+  // No time-of-day variation here. Social cards cache per shared URL for
+  // ~30 days on WhatsApp/Twitter, so per-time variation was invisible anyway.
+  // Path-only ?bg= and ?lang= share-URL handling is unaffected — those run
+  // upstream of this background lookup, in the view-model construction.
+  //
+  // Chain already starts with `og/<resolved-folder>.jpg` which equals
+  // model.backgroundPath in normal use — no redundant prepend.
+  const ordered = getOgStaticBackgroundFallbackChain(model.condition);
 
   for (let i = 0; i < ordered.length; i += 1) {
     const candidate = ordered[i];
@@ -165,7 +160,9 @@ async function readBackgroundDataUrl(model) {
         // Log only on actual fallback events to match the picker's [Image picker] logging shape.
         console.log(`[OG picker] fallback step ${i} → ${candidate}`);
       }
-      return `data:${mimeForPath(candidate)};base64,${bytes.toString('base64')}`;
+      // Every candidate is JPEG under og/. No MIME detection needed — and no
+      // chance of accidentally serving a WebP back to Satori.
+      return `data:image/jpeg;base64,${bytes.toString('base64')}`;
     } catch {
       // Try the next candidate.
     }
@@ -332,6 +329,16 @@ export default async function handler(req, res) {
     const model = payload ? buildOgViewModel(payload, { lang }) : buildFallbackViewModel(lang);
     sendPng(res, 200, await renderPng(model));
   } catch {
-    sendPng(res, 200, await renderPng(buildFallbackViewModel(lang)));
+    // Primary render failed. Try the safe fallback model. If THAT also throws
+    // (e.g. Satori-side breakage, missing font), respond with a no-cache 500
+    // instead of letting the handler crash and Vercel return its own default.
+    try {
+      sendPng(res, 200, await renderPng(buildFallbackViewModel(lang)));
+    } catch (err) {
+      console.error('[OG] fallback render also failed:', err);
+      res.setHeader('Content-Type', 'text/plain');
+      res.setHeader('Cache-Control', 'no-store');
+      res.status(500).end('OG render failed');
+    }
   }
 }
