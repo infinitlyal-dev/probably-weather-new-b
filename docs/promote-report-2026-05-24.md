@@ -102,7 +102,52 @@ Per task brief: "If anything is ambiguous or risky, HALT and ask Al rather than 
 
 ---
 
-## Recommendation for Al
+## Phase 7-9 — Re-run after OG fix (Option B applied)
+
+After Al chose Option B (point api/og.js at static og/*.jpg files):
+
+- `api/og.js`, `assets/weather-visuals.js`, `tests/og-paths.test.js` modified to use new `getOgStaticBackground*` helpers.
+- 2-round codex-rescue adversarial review on the OG fix → SHIP verdict.
+  See `docs/og-fix-review-2026-05-24.md` for the full review log.
+- Re-ran `scripts/promote-image-library.sh`. All 7 phases passed:
+  - Pre-flight: 1008 staging WebPs verified, 4501 tests baseline (4485 + 16 new OG-helper tests).
+  - Copy: 1008 WebPs into `assets/images/bg/<cond>/week_<1..4>/<time>/<1..7>.webp`.
+  - Delete: 191 old JPGs removed from 8 condition folders.
+  - OG regen: 12 og/*.jpg refreshed including new `og/cold-clear.jpg`.
+  - **Post-promote vitest: 4501 passing (zero regression)** — the OG fix DID resolve the @vercel/og + WebP failure.
+  - Scoped `git add` staged exactly 1,222 files (1008 WebPs + 192 JPG deletes + 12 og files + 10 code/docs). Zero junk staged.
+- Commit `f960705` created with full bundled changelog.
+- Pushed to origin/main as a single push (`24210a5..f960705`).
+
+## Phase 10 — Production verification (post-deploy)
+
+Vercel auto-deploy `dpl_CrTZ7FyEFmYnMSyXzimYwBbfYzCF` for commit `f960705`:
+
+- Polled with retry loop on `/assets/images/bg/cold-clear/week_1/day/1.webp` — 200 after ~20s.
+- Full HTTP verification suite, all GREEN:
+
+| # | Test | Result |
+|---|------|--------|
+| 1 | `/assets/images/bg/cold-clear/week_1/day/1.webp` | 200, `image/webp`, immutable 1-year cache ✓ |
+| 2 | `/assets/images/bg/clear/week_2/dawn/3.webp` | 200, `image/webp`, immutable ✓ |
+| 3 | `/og/cold-clear.jpg` | 200, `image/jpeg`, 7-day browser / 30-day CDN ✓ |
+| 4 | `/og/uv.jpg` (round-1 preservation test) | 200, `image/jpeg` — dedicated file served, not collapsed to clear ✓ |
+| 5 | `/api/og?lat=-34.1&lon=18.83&lang=en` (the WebP-breaking endpoint) | **200, `image/png`** ✓ |
+| 6 | `/api/og?lat=-34.1&lon=18.83&lang=af` | 200, `image/png` — `?lang=` preserved ✓ |
+| 7 | `/api/weather?lat=-29.1&lon=26.2` (Bloemfontein) | `ok:true`, condition derived ✓ |
+| 8 | Root page `/` | 200, `text/html` ✓ |
+
+The critical previously-failing case — `/api/og` for a Strand lat/lon — now returns a valid PNG share card. The WebP/Satori incompatibility is resolved by reading static JPEGs from `og/`.
+
+## Final state
+
+- **production:** healthy, serving 4-week WebP rotation + cold-clear backgrounds + per-condition dynamic OG cards + static OG card with new `og/cold-clear.jpg`
+- **rollback artifacts preserved on disk:** `../pw-image-staging/compressed/` (181 MB), prior-deploy JPGs still in git history at `origin/main~1` and earlier
+- **next steps for operator:** none. Deploy successful. Promote operation complete.
+
+---
+
+## Original HALT recommendation (kept for history)
 
 The promote script worked exactly as designed. It caught a real production-breaking regression at the local-verification gate (Phase 6 vitest) before any push happened. **No production impact. HEAD unchanged. All 6 commits still queued for push.**
 
