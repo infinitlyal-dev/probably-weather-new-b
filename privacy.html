@@ -20,52 +20,62 @@
 <body>
 <div class="container">
   <h1>Privacy Policy</h1>
-  <p class="date">Last updated: 12 May 2026</p>
+  <p class="date">Last updated: 30 May 2026</p>
 
-  <p>Probably Weather is a free weather application built and operated from South Africa. Your privacy matters to us, and we've kept things as simple as possible. This policy explains how the app handles data under the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
+  <p>Probably Weather is a free, advertising-supported weather application built and operated from South Africa. This policy explains, honestly and in plain language, what data the app handles, who it is shared with, and why — in line with the Protection of Personal Information Act 4 of 2013 (POPIA).</p>
 
-  <h2>POPIA at a glance</h2>
-  <p>We do not collect, store, or process personal information as defined by POPIA. We do not have a database of users. We do not run analytics, advertising, or tracking. The app exchanges only the data strictly required to fetch a weather forecast for the location you choose, and only with the third-party weather and mapping providers listed below.</p>
+  <h2>The short version</h2>
+  <p>We keep data collection to the minimum needed to run a free, ad-supported weather app. We do not require an account, we do not ask for your name or email, we do not build a profile of you, and we never sell your data. We do use a privacy-friendly analytics tool and we show ads, both described below. The app sends your approximate location to weather and mapping providers so it can show you a forecast. Your IP address — as with any website — is seen by our host, our analytics tool, our ad partners, and a couple of supporting services. Everything that leaves your device is listed below.</p>
 
-  <h2>What we collect</h2>
-  <p>When you use Probably Weather, we request your device's location (latitude and longitude) to fetch weather data for where you are. If GPS is unavailable or blocked, the app may use an approximate IP-based location so it can still show a forecast. We do not store, log, or track your location on our servers.</p>
+  <h2>Location data</h2>
+  <p>To show you a forecast, the app needs a location. With your permission it uses your device's GPS coordinates (latitude and longitude), rounded to roughly four decimal places. If GPS is unavailable or you decline it, the app falls back to an approximate, city-level location derived from your IP address (see "IP-based location" below). Your coordinates are sent to the weather and mapping providers listed below to fetch the forecast and a readable place name. We do not store your location in any account, profile, or database; forecast requests are processed in memory and are not retained by us, though brief operational logs kept by our host may transiently contain technical request data.</p>
 
-  <h2>Saved locations</h2>
-  <p>If you save locations (like "Home" or "Work"), these are stored locally on your device only — in your browser's local storage or on the Android app's local data. We never see or access your saved places.</p>
+  <h2>Analytics</h2>
+  <p>Probably Weather uses <strong>Vercel Web Analytics</strong>, a cookie-less, privacy-focused analytics tool provided by our host, Vercel Inc. It records anonymous, aggregated usage events (for example, page views and a one-off "app installed" event) together with coarse technical details derived from your request — an approximate country (from your IP address), device type, browser, and the referring page. It does not use cookies, does not track you across other websites, and does not identify you personally. See Vercel's privacy policy: <a href="https://vercel.com/legal/privacy-policy">vercel.com/legal/privacy-policy</a></p>
 
-  <h2>No accounts, no tracking</h2>
-  <p>Probably Weather does not require registration or sign-in. We do not use cookies for tracking. We do not use analytics services. We do not serve advertisements. We do not collect personal information of any kind.</p>
+  <h2>Advertising</h2>
+  <p>To keep Probably Weather free, the app is supported by advertising served through third-party ad networks — <strong>Adsterra</strong> and <strong>Media.net</strong>. When ads are shown, these networks may collect and process technical data such as your IP address, device and browser information, the referring page, and your interactions with the ads, and they may set their own cookies or use similar technologies. This processing is governed by each network's own privacy policy:</p>
+  <p>Adsterra: <a href="https://adsterra.com/privacy-policy/">adsterra.com/privacy-policy</a> · Media.net: <a href="https://www.media.net/privacy-policy/">media.net/privacy-policy</a></p>
+  <p>Advertising is being rolled out; depending on when you read this, you may not yet see ads in the app. We disclose it here in advance so this policy is accurate the moment ads go live. We do not share your saved locations or any data you enter with advertisers.</p>
 
-  <h2>Third-party weather providers</h2>
-  <p>Your location coordinates are sent to the following services to retrieve weather data:</p>
-  <p><strong>Open-Meteo</strong> (open-meteo.com) receives approximate latitude and longitude to return forecast data. It is necessary because it is one of our forecast sources. Privacy/terms: <a href="https://open-meteo.com/en/terms">open-meteo.com/en/terms</a></p>
-  <p><strong>WeatherAPI.com</strong> (weatherapi.com) receives approximate latitude and longitude to return forecast and condition-code data. It is necessary because it is one of our forecast sources. Privacy policy: <a href="https://www.weatherapi.com/privacy.aspx">weatherapi.com/privacy.aspx</a></p>
-  <p><strong>MET Norway</strong> (Norwegian Meteorological Institute, api.met.no) receives approximate latitude and longitude to return forecast data. It is necessary because it is one of our forecast sources. Privacy policy: <a href="https://www.met.no/en/About-us/privacy">met.no privacy policy</a></p>
-  <p><strong>Pirate Weather</strong> (api.pirateweather.net, API access via Apiable) receives approximate latitude and longitude to return forecast data. It is necessary because it is one of our forecast sources. API information: <a href="https://docs.pirateweather.net/en/latest/API/">docs.pirateweather.net</a> · Apiable privacy policy: <a href="https://www.apiable.io/terms/privacy-policy">apiable.io/terms/privacy-policy</a></p>
-  <p>Each of these services has their own privacy policies. We encourage you to review them if you have concerns.</p>
+  <h2>Cookies</h2>
+  <p>Probably Weather itself does not set tracking cookies, and our analytics tool is cookie-less. The third-party advertising networks named above may set their own cookies or similar identifiers when ads are served. You can control cookies through your browser settings.</p>
 
-  <h2>Location lookup services</h2>
-  <p><strong>Nominatim / OpenStreetMap</strong> (operated by the OpenStreetMap Foundation) receives your typed search query when you search for a place, and receives approximate latitude and longitude when the app converts coordinates into a readable place name. This is necessary for location search and place-name lookup. Privacy policy: <a href="https://osmfoundation.org/wiki/Privacy_Policy">osmfoundation.org/wiki/Privacy_Policy</a> · Nominatim usage policy: <a href="https://operations.osmfoundation.org/policies/nominatim/">operations.osmfoundation.org/policies/nominatim</a></p>
-  <p><strong>ipapi.co</strong> (Kloudend, Inc.) may receive your IP address when GPS is unavailable or denied, so the app can estimate a nearby city and still show a useful forecast. This fallback is only used when the app cannot get a device GPS location. Privacy policy: <a href="https://ipapi.co/privacy/">ipapi.co/privacy</a></p>
+  <h2>Saved locations and preferences</h2>
+  <p>If you save locations (like "Home" or "Work") or change settings (temperature units, wind units, language), these are stored locally on your device only — in your browser's local storage or the Android app's local data. We never see or access them, and you can clear them at any time through your browser or app settings.</p>
 
-  <h2>Data stored on your device</h2>
-  <p>The app stores your preferences (temperature units, wind units, language) and saved locations in local storage on your device. You can clear this data at any time through your browser or Android app settings.</p>
+  <h2>Weather providers</h2>
+  <p>Your approximate latitude and longitude are sent to the following forecast sources, each governed by its own privacy policy:</p>
+  <p><strong>Open-Meteo</strong> — <a href="https://open-meteo.com/en/terms">open-meteo.com/en/terms</a></p>
+  <p><strong>WeatherAPI.com</strong> — <a href="https://www.weatherapi.com/privacy.aspx">weatherapi.com/privacy.aspx</a></p>
+  <p><strong>MET Norway</strong> (Norwegian Meteorological Institute) — <a href="https://www.met.no/en/About-us/privacy">met.no privacy policy</a></p>
+  <p><strong>Pirate Weather</strong> (API access via Apiable) — <a href="https://docs.pirateweather.net/en/latest/API/">docs.pirateweather.net</a> · <a href="https://www.apiable.io/terms/privacy-policy">apiable.io privacy policy</a></p>
+  <p><strong>Tomorrow.io</strong> — <a href="https://www.tomorrow.io/legal/product-privacy-policy/">tomorrow.io/legal/product-privacy-policy</a></p>
 
-  <h2>Children's privacy</h2>
-  <p>Probably Weather is suitable for all ages. We do not knowingly collect any personal information from children or anyone else.</p>
+  <h2>Location lookup (search and place names)</h2>
+  <p><strong>LocationIQ</strong> (operated by Unwired Labs) powers place search and place-name lookup. When you type in the search box, your search text is sent to LocationIQ to return matching places. When the app needs to turn coordinates into a readable place name (for example, "Strand, Western Cape"), your approximate latitude and longitude are sent to LocationIQ. Privacy policy: <a href="https://locationiq.com/privacy">locationiq.com/privacy</a></p>
+
+  <h2>IP-based location</h2>
+  <p><strong>ipapi.co</strong> (Kloudend, Inc.) is used as a location fallback. To make the app feel fast, your browser opens a network connection to ipapi.co as the app starts up, which means ipapi.co's servers may see your IP address on each visit. The app only sends an actual lookup request to ipapi.co — to estimate your city — when it cannot get a GPS location from your device. Privacy policy: <a href="https://ipapi.co/privacy/">ipapi.co/privacy</a></p>
+
+  <h2>Install QR code</h2>
+  <p>On the "install" page, the app shows a QR code so you can open the site on your phone. The QR image is generated by <strong>goQR.me</strong> (api.qrserver.com). Your browser requests the image from that service, so it may see your IP address; the only data encoded in the QR code is the app's public install web address — nothing personal about you. Privacy policy: <a href="https://goqr.me/privacy-safety-security/">goqr.me/privacy-safety-security</a></p>
 
   <h2>Hosting and cross-border processing</h2>
-  <p>The app is hosted on Vercel Inc. (United States). When you load the app, Vercel may briefly process standard request metadata (your IP address, user-agent, and the URL you requested) as part of routing the response. This is the same metadata any web host sees for any website visit, and it is governed by Vercel's own privacy policy: <a href="https://vercel.com/legal/privacy-policy">vercel.com/legal/privacy-policy</a>. We do not log or retain this metadata on our side. Because hosting is in the US, any incidental processing of request metadata constitutes a cross-border transfer under POPIA section 72; the Vercel platform's contractual safeguards apply.</p>
+  <p>The app is hosted on Vercel Inc. (United States). When you load the app, Vercel processes standard request metadata (your IP address, user-agent, and the URL you requested) to route the response — the same metadata any web host sees for any visit. Privacy policy: <a href="https://vercel.com/legal/privacy-policy">vercel.com/legal/privacy-policy</a>. Because hosting, analytics, advertising, and some providers are outside South Africa, the processing described here involves cross-border transfers of personal information under POPIA section 72; we rely on the recipients' own contractual and legal safeguards.</p>
+
+  <h2>Children's privacy</h2>
+  <p>Probably Weather is suitable for all ages. We do not knowingly collect personal information from children. Note that the third-party advertising networks above operate under their own policies; we have configured advertising for a general audience.</p>
 
   <h2>Your rights under POPIA</h2>
-  <p>POPIA gives you the right to: confirm whether we hold personal information about you, request access to it, request that it be corrected or deleted, object to its processing, and lodge a complaint with the Information Regulator. Because we do not collect or store personal information, requests to access, correct, or delete will return nothing — but you are welcome to write to us and we will confirm this in writing.</p>
+  <p>POPIA gives you the right to: confirm whether personal information about you is being processed, request access to it, request correction or deletion, object to processing, and lodge a complaint with the Information Regulator. We ourselves hold no account or profile to retrieve — but because your IP address and usage data are processed by the analytics, advertising, hosting, and provider services listed above, you may also exercise these rights directly with them under their policies. Write to us and we will help where we can.</p>
   <p>Information Regulator (South Africa): <a href="https://inforegulator.org.za">inforegulator.org.za</a> · POPIAComplaints.IR@justice.gov.za</p>
 
   <h2>Share links and the share preview</h2>
   <p>When you share weather using the in-app Share button, the link you send may include the coordinates of the location you were viewing, a language code, and a weather-condition tag used to pick the share-preview image. No personal information about you is encoded in the link. The optional city name in the share preview is the public place name (e.g. "Cape Town") — not your home address.</p>
 
   <h2>Changes to this policy</h2>
-  <p>If we make changes, we'll update the date at the top of this page. Since we don't collect email addresses, we can't notify you directly — but there's nothing to worry about because we don't collect your data in the first place.</p>
+  <p>If we make changes, we'll update the date at the top of this page. Because we don't collect email addresses, we can't notify you directly, so please check back here from time to time.</p>
 
   <h2>Contact</h2>
   <p>Questions or concerns? Reach us at <a href="mailto:howzit@probablyweather.co.za">howzit@probablyweather.co.za</a></p>
