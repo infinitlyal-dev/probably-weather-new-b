@@ -18,20 +18,60 @@ const debugLog = (...args) => {
   if (DEBUG) console.log(...args);
 };
 
+// Strict coordinate parser. parseFloat() does PARTIAL parsing — parseFloat('90abc')
+// === 90, parseFloat('0x10') === 0 — so junk-but-prefixed strings would coerce to
+// a finite, in-range number and slip past a range check, defeating the quota guard
+// (codex adversarial finding, 2026-05-30). Also rejects array-valued params
+// (?lat=1&lat=2 arrives as an array on Vercel) and any value where the WHOLE
+// trimmed string isn't a clean decimal. Returns NaN on any rejection so callers
+// can fail with a single Number.isFinite check.
+function parseCoord(value) {
+  if (typeof value !== 'string') return NaN;          // arrays / undefined → reject
+  const s = value.trim();
+  if (s === '') return NaN;
+  // Whole-string decimal: optional sign, digits with optional fraction, or bare
+  // fraction (.5). No hex (0x10), no trailing junk (90abc), no exponent games.
+  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
+  return Number(s);
+}
+
 export default async function handler(req, res) {
   try {
-    const lat = parseFloat(req.query.lat);
-    const lon = parseFloat(req.query.lon);
-    const rawName = typeof req.query.name === 'string' ? req.query.name.trim() : '';
+    // parseCoord (not parseFloat) — strict whole-string parse so '90abc',
+    // '0x10', and array-valued ?lat=1&lat=2 are rejected, not partial-parsed.
+    const lat = parseCoord(req.query.lat);
+    const lon = parseCoord(req.query.lon);
+    // The `typeof === 'string'` guard is security-load-bearing: on Vercel a
+    // repeated query param (?name=a&name=b) arrives as an ARRAY. Coercing only
+    // string values means an array name collapses to '' rather than slipping
+    // past the length cap below — do not weaken this to a bare String(...).
+    const rawNameInput = typeof req.query.name === 'string' ? req.query.name.trim() : '';
+
+    // Coordinate validation — REJECT (don't clamp) out-of-range coords. This
+    // single guard sits above every downstream branch (forward forecast, the
+    // ?reverse=1 geocode path, and the name-resolution reverse lookup), so a
+    // bad lat/lon never fans out to the 5 weather providers or to LocationIQ.
+    // Clamping was rejected deliberately: clamping a junk coord to a valid edge
+    // value still issues real upstream calls and burns provider quota.
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)
+        || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+      return res.status(400).json({ ok: false, error: 'Invalid lat/lon' });
+    }
+
+    // Length-cap the caller-supplied place name. It is echoed back in the
+    // response payload (location.name) and used in reverse-lookup decisions;
+    // an unbounded value is needless response/memory amplification. Reject
+    // rather than truncate so a malformed caller gets a clear signal.
+    const MAX_NAME_LEN = 120;
+    if (rawNameInput.length > MAX_NAME_LEN) {
+      return res.status(400).json({ ok: false, error: 'name too long' });
+    }
+    const rawName = rawNameInput;
     const isPlaceholder =
       !rawName ||
       /^unknown\b/i.test(rawName) ||
       /^unknown location\b/i.test(rawName);
     const name = rawName || null;
-
-    if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
-      return res.status(400).json({ ok: false, error: 'Invalid lat/lon' });
-    }
 
     const WEATHERAPI_KEY     = process.env.WEATHERAPI_KEY     || null;
     const PIRATE_WEATHER_KEY = process.env.PIRATE_WEATHER_KEY || null;

@@ -13,6 +13,19 @@
 const TIMEOUT_MS = 9000;
 const GEOCODE_UA = process.env.MET_USER_AGENT || 'ProbablyWeather/1.0 (contact: howzit@probablyweather.co.za)';
 
+// Strict coordinate parser — mirrors api/weather.js. parseFloat() partial-parses
+// ('90abc' → 90, '0x10' → 0) which would let junk coords through the range check
+// and burn LocationIQ reverse quota (codex finding, 2026-05-30). Rejects
+// non-string / array params and any value whose whole trimmed string isn't a
+// clean decimal. Returns NaN on rejection.
+function parseCoord(value) {
+  if (typeof value !== 'string') return NaN;
+  const s = value.trim();
+  if (s === '') return NaN;
+  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
+  return Number(s);
+}
+
 // isBadLabel — reject empty labels, "Ward 4"-style admin labels, and bare numbers.
 // Same logic as api/weather.js's name-resolution block.
 function isBadLabel(s) {
@@ -135,9 +148,19 @@ export default async function handler(req, res) {
     // SEARCH — ?type=search&q=<query>
     // ---------------------------------------------------------------------
     if (type === 'search') {
+      // The `typeof === 'string'` guard is security-load-bearing: a repeated
+      // ?q=a&q=b arrives as an array on Vercel; coercing only strings means an
+      // array q collapses to '' and never reaches the length cap or LocationIQ.
       const q = typeof req.query.q === 'string' ? req.query.q.trim() : '';
       if (q.length < 2) {
         return res.status(200).json({ ok: true, results: [] });
+      }
+      // Length-cap the search term before it is URL-encoded into one or two
+      // LocationIQ upstream calls. No real place name approaches this; an
+      // over-length q is abuse/accident — reject rather than forward it.
+      const MAX_Q_LEN = 120;
+      if (q.length > MAX_Q_LEN) {
+        return res.status(400).json({ ok: false, error: 'query too long', results: [] });
       }
 
       // /v1/autocomplete is LocationIQ's purpose-built type-ahead endpoint and
@@ -184,9 +207,15 @@ export default async function handler(req, res) {
     // REVERSE — ?type=reverse&lat=<lat>&lon=<lon>
     // ---------------------------------------------------------------------
     if (type === 'reverse') {
-      const lat = parseFloat(req.query.lat);
-      const lon = parseFloat(req.query.lon);
-      if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
+      // parseCoord (not parseFloat) — strict whole-string parse; rejects
+      // '90abc', '0x10', and array-valued ?lat=1&lat=2.
+      const lat = parseCoord(req.query.lat);
+      const lon = parseCoord(req.query.lon);
+      // REJECT out-of-range coords (not just non-finite) before the LocationIQ
+      // reverse call — same rule as api/weather.js. Prevents reverse-geocode
+      // quota burn from junk-but-numeric coordinates.
+      if (!Number.isFinite(lat) || !Number.isFinite(lon)
+          || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
         return res.status(400).json({ ok: false, error: 'Invalid lat/lon' });
       }
 
