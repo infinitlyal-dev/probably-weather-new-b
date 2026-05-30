@@ -20,6 +20,7 @@ import {
   PTR_RESISTANCE,
   PTR_COPY,
 } from './refresh-behaviour.js';
+import { startFirstOpenLocation } from './first-open-location.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
@@ -2264,24 +2265,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   else { showScreen(screenHome); renderLoading("Locating…");
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(async (pos) => {
-        const lat = Math.round(pos.coords.latitude * 10000) / 10000, lon = Math.round(pos.coords.longitude * 10000) / 10000;
-        try {
-          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`); const data = await rev.json();
-          const displayName = buildLocationName(data, lat, lon);
-          saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat, lon });
+      // First-open with no saved location. Previously this waited up to 8s on
+      // getCurrentPosition before any IP fallback ran — a fresh install showed a
+      // blank "Locating…" for the whole timeout. The coordinator now races GPS
+      // against a ~1s grace timer: IP paints fast if GPS is slow, and a late GPS
+      // fix upgrades to precise coords without clobbering a place the user chose
+      // in the meantime. See assets/first-open-location.js.
+      startFirstOpenLocation({
+        getCurrentPosition: (onSuccess, onError) => navigator.geolocation.getCurrentPosition(
+          (pos) => onSuccess(pos.coords), onError,
+          { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 },
+        ),
+        gpsPlaceFromCoords: (coords) => {
+          const lat = Math.round(coords.latitude * 10000) / 10000, lon = Math.round(coords.longitude * 10000) / 10000;
           saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
-          homePlace = { name: displayName, lat, lon, mode: PLACE_MODE_GPS }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
-        } catch {
-          const fn = await reverseGeocode(lat, lon);
-          saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
-          homePlace = { name: fn || 'South Africa', lat, lon, mode: PLACE_MODE_GPS }; saveJSON(STORAGE.home, homePlace); loadAndRender(homePlace);
-        }
-      }, (err) => {
-        // GPS blocked on first visit - use IP geolocation instead of hardcoded city
-        showGeolocationErrorToast(err);
-        loadApproximateLocation();
-      }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 });
+          // Placeholder name so the weather paints immediately — renderHome
+          // reverse-geocodes the real label in parallel and writes it back to
+          // homePlace/STORAGE.home (same path shared links already use).
+          return { name: 'My Location', lat, lon, mode: PLACE_MODE_GPS };
+        },
+        fetchIpPlace: async () => ({ ...(await getIPLocation()), mode: PLACE_MODE_GPS }),
+        paint: (place) => loadAndRender(place),
+        persistHome: (place) => { homePlace = place; saveJSON(STORAGE.home, homePlace); },
+        getActivePlace: () => activePlace,
+        onApproxToast: (err) => showGeolocationErrorToast(err),
+      });
     } else {
       // No geolocation support - use IP geolocation
       showToast("Couldn't get location. Using approximate location instead.", 5000);
