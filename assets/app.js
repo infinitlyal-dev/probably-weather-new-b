@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
       veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" },
       // Table headers
       time: { en: "Time", af: "Tyd", zu: "Isikhathi", xh: "Ixesha", st: "Nako" },
-      temp: { en: "Temp", af: "Temp", zu: "Temp", xh: "Temp", st: "Temp" },
+      temp: { en: "Temp", af: "Temp", zu: "Izinga lokushisa", xh: "Temp", st: "Temp" },
       day: { en: "Day", af: "Dag", zu: "Usuku", xh: "Usuku", st: "Letsatsi" },
       sunrise: { en: "Sunrise", af: "Sonop", zu: "Ukuphuma kwelanga", xh: "Ukuphuma kwelanga", st: "Mafube" },
       sunset:  { en: "Sunset",  af: "Sononder", zu: "Ukushona kwelanga", xh: "Ukutshona kwelanga", st: "Letsatsi le likela" },
@@ -277,13 +277,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Day hero badges
     badges: {
       rainy: { en: "Rainy", af: "Reënerig", zu: "Linemvula", xh: "Linemvula", st: "Pula" },
-      showers: { en: "Showers", af: "Buie", zu: "Izihlambi", xh: "Iimvula", st: "Lipula" },
+      showers: { en: "Showers", af: "Buie", zu: "Izihlambi zemvula", xh: "Iimvula", st: "Lipula" },
       rainLater: { en: "Rain later", af: "Reën later", zu: "Imvula kamuva", xh: "Imvula kamva", st: "Pula hamorao" },
       rainTonight: { en: "Rain tonight", af: "Reën vanaand", zu: "Imvula ebusuku", xh: "Imvula ngokuhlwa", st: "Pula bosiu" },
       rainMorning: { en: "Rain AM", af: "Reën oggend", zu: "Imvula ekuseni", xh: "Imvula kusasa", st: "Pula hoseng" },
       highUV: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e Phahameng" },
       hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
-      cold: { en: "Cold", af: "Koud", zu: "Kubanda", xh: "Kubanda", st: "Ho bata" },
+      cold: { en: "Cold", af: "Koud", zu: "Makhaza", xh: "Kubanda", st: "Ho bata" },
       uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
     },
     // Hero labels
