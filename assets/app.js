@@ -1,6 +1,6 @@
 import { getSharedPlaceFromSearch } from './startup-location.js';
 import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './language-preferences.js';
-import { WEATHER_COPY } from './weather-copy.js';
+import { WEATHER_COPY, filterWeekendPoolForDay } from './weather-copy.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
@@ -1097,7 +1097,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
-      const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en; return wl[Math.floor(Math.random() * wl.length)];
+      // Day-named weekend lines (e.g. "Saturday energy") must only appear on
+      // their day — filter the pool by the already-correct computed `day`
+      // before the random pick, so a Sunday/Friday-evening draw can't surface
+      // a Saturday line. See filterWeekendPoolForDay in weather-copy.js.
+      const wl = filterWeekendPoolForDay(T.witty.weekend[settings.lang] || T.witty.weekend.en, day);
+      return wl[Math.floor(Math.random() * wl.length)];
     }
     const fb = COPY_FALLBACK[condition];
     let lines = T.witty[condition]?.[settings.lang]
