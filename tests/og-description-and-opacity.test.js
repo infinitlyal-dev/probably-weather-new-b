@@ -3,9 +3,12 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const weatherHandlerMock = vi.hoisted(() => vi.fn());
 
-vi.mock('../api/weather.js', () => ({
-  default: weatherHandlerMock,
-}));
+// Preserve the real exports (esp. parseCoord, which api/share.js now imports)
+// and override only the default handler with the spy.
+vi.mock('../api/weather.js', async () => {
+  const actual = await vi.importActual('../api/weather.js');
+  return { ...actual, default: weatherHandlerMock };
+});
 
 const { default: shareHandler } = await import('../api/share.js');
 

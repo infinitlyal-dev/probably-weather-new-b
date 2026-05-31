@@ -25,7 +25,9 @@ const debugLog = (...args) => {
 // (?lat=1&lat=2 arrives as an array on Vercel) and any value where the WHOLE
 // trimmed string isn't a clean decimal. Returns NaN on any rejection so callers
 // can fail with a single Number.isFinite check.
-function parseCoord(value) {
+// Exported so other coordinate entry points (api/share.js) reuse the exact same
+// strict parser instead of a looser Number() check — one validator, no drift.
+export function parseCoord(value) {
   if (typeof value !== 'string') return NaN;          // arrays / undefined → reject
   const s = value.trim();
   if (s === '') return NaN;

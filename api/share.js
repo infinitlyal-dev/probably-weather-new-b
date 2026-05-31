@@ -1,6 +1,6 @@
 import { buildOgImageUrl, SHARE_ORIGIN } from '../assets/share-url.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
-import weatherHandler from './weather.js';
+import weatherHandler, { parseCoord } from './weather.js';
 
 const STATIC_DESCRIPTION = 'South African weather, in your language.';
 const SUPPORTED_LANGS = new Set(['en', 'af', 'zu', 'xh', 'st']);
@@ -42,8 +42,11 @@ function safeStringifyForScript(value) {
   }
 }
 
-const isValidLat = (value) => Number.isFinite(Number(value)) && Number(value) >= -90 && Number(value) <= 90;
-const isValidLon = (value) => Number.isFinite(Number(value)) && Number(value) >= -180 && Number(value) <= 180;
+// Strict parseCoord (shared with api/weather.js) rejects hex/partial/empty
+// before the range check — '0x10', '', '90abc' no longer slip through as the
+// old Number() check let them. Matches the other 4 coord entry points.
+const isValidLat = (value) => { const n = parseCoord(value); return Number.isFinite(n) && n >= -90 && n <= 90; };
+const isValidLon = (value) => { const n = parseCoord(value); return Number.isFinite(n) && n >= -180 && n <= 180; };
 const clampLang = (lang) => SUPPORTED_LANGS.has(lang) ? lang : 'en';
 const isFiniteNumber = (value) => Number.isFinite(Number(value));
 const formatTemp = (value) => `${Math.round(Number(value))}°`;
