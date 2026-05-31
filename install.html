@@ -42,6 +42,14 @@
       } catch (e) { /* swallow */ }
     })();
   </script>
+  <!-- Vercel Web Analytics — vanilla static-site snippet. Sets up the
+       window.va queue so calls made before /_vercel/insights/script.js
+       loads are buffered, then injects the loader. Production-only
+       collection; in dev it logs to console. -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
   <style>
     body.install-page {
       background: linear-gradient(160deg, #1a1a2e 0%, #2a1f3a 60%, #1a1a2e 100%);
