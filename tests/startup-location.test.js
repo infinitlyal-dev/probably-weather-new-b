@@ -19,6 +19,25 @@ describe('shared location startup params', () => {
     expect(getSharedPlaceFromSearch('?lat=nope&lon=18.42')).toBeNull();
   });
 
+  // codex cross-layer finding 2026-05-30: Number.parseFloat partial-parses
+  // '90abc'→90 and '0x10'→0, so a corrupted share link would silently resolve
+  // to a wrong-but-in-range location and trigger a /api/weather call for it.
+  // parseCoord requires the WHOLE string to be a clean decimal → these return null
+  // and the app falls back to the user's real geolocation.
+  it('rejects partial-numeric and malformed coordinate strings', () => {
+    expect(getSharedPlaceFromSearch('?lat=90abc&lon=18.42')).toBeNull();
+    expect(getSharedPlaceFromSearch('?lat=-33.92&lon=18.42abc')).toBeNull();
+    expect(getSharedPlaceFromSearch('?lat=0x10&lon=18.42')).toBeNull();
+    expect(getSharedPlaceFromSearch('?lat=1e3&lon=18.42')).toBeNull();
+    expect(getSharedPlaceFromSearch('?lat=  &lon=18.42')).toBeNull();
+  });
+
+  it('still accepts clean signed/decimal share coords (no regression)', () => {
+    expect(getSharedPlaceFromSearch('?lat=-34.1163&lon=18.8362')).toMatchObject({ lat: -34.1163, lon: 18.8362 });
+    expect(getSharedPlaceFromSearch('?lat=%20-33.92%20&lon=18.42')).toMatchObject({ lat: -33.92, lon: 18.42 }); // trimmed
+    expect(getSharedPlaceFromSearch('?lat=0&lon=0')).toMatchObject({ lat: 0, lon: 0 });
+  });
+
   // Phase 2 audit fix Z4 — share URLs emit ?city= (see assets/share-url.js).
   // The recipient should see the sender's location label immediately rather
   // than the "Unknown location" placeholder until reverse-geocode resolves.
