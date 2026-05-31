@@ -1,0 +1,35 @@
+# Files excluded from the Vercel deployment.
+#
+# Probably Weather is a zero-build static deploy: each deploy uploads the repo
+# minus the patterns below, and whatever is uploaded is what the site serves at
+# its root. Before this file existed, internal docs were publicly fetchable
+# (audit 2026-05-31, FIX 1: /CLAUDE.md, /AUDIT_REPORT.md,
+# /PROBABLY_WEATHER_MONETISATION_INFRA_REPORT.md, /lighthouse-report.json all
+# returned 200 on prod). These are info-disclosure, not secrets (no tokens are
+# committed; keys live in env vars).
+#
+# SAFE-TO-EXCLUDE check: the running site serves only HTML pages
+# (index.html, install.html, privacy.html), assets/**, api/**, og/**,
+# manifest.json, sw.js, vercel.json, and .well-known/** — NONE of which is a
+# .md file, so excluding all markdown cannot drop a user-facing page. The only
+# in-repo .md reference is a code comment (app.js → docs/picker-rotation-logic.md),
+# not a runtime fetch.
+
+# Internal planning / audit / review / ship-notes docs — all markdown, none served.
+*.md
+docs/
+
+# Lighthouse report artifact.
+lighthouse-report.json
+
+# Stray MyChannel screenshots accidentally dropped into this repo.
+mc-*.png
+
+# Internal tooling / config — committed but never runtime-served (verified: no
+# api/** or assets/** import or fetch references tools/ or scripts/). The OG
+# generator under tools/ is run locally; its output (og/*.jpg) is committed
+# separately and served from og/.
+tools/
+scripts/
+.claude/
+.github/
