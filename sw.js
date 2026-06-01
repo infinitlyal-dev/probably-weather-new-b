@@ -34,6 +34,7 @@ const CORE_ASSETS = [
   '/assets/share-url.js',
   '/assets/refresh-behaviour.js',
   '/assets/first-open-location.js',
+  '/assets/home-name.js',
   '/manifest.json',
 ];
 

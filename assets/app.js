@@ -21,6 +21,7 @@ import {
   PTR_COPY,
 } from './refresh-behaviour.js';
 import { startFirstOpenLocation } from './first-open-location.js';
+import { shouldPersistHomeName } from './home-name.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
@@ -1614,6 +1615,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add(`weather-${cssVariant}`);
     let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
     setSharedLocationIndicator(!!activePlace?.shared);
+    // GPS-home name persistence (fix: returning-user open showed raw coords).
+    // The weather endpoint's location.name is display-only; the stored
+    // homePlace.name came from buildLocationName coords-fallbacks and was never
+    // healed (the placeholder block below skips a stuck coords string). Write the
+    // good name back onto the GPS home so the next-day open reads it. The
+    // predicate refuses a coords-shaped name (never re-seed the bug) and a place
+    // whose coords don't match the home (never clobber a pinned/shared place).
+    if (shouldPersistHomeName({ locationName: norm.locationName, homePlace, activePlace })) {
+      homePlace.name = norm.locationName;
+      saveJSON(STORAGE.home, homePlace);
+    }
     if (isPlaceholderName(locationName) && activePlace?.lat && activePlace?.lon) {
       const cp = activePlace; reverseGeocode(activePlace.lat, activePlace.lon).then(cn => { if (cn && cp === activePlace) { safeText(locationEl, cn); if (activePlace) activePlace.name = cn; if (homePlace && homePlace.lat === cp.lat && homePlace.lon === cp.lon) { homePlace.name = cn; saveJSON(STORAGE.home, homePlace); } } }).catch(() => {});
     }
