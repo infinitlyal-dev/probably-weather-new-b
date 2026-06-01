@@ -70,3 +70,28 @@ describe('/api/share — strict coordinate validation (Gap C)', () => {
     expect(html).toContain('lon=18.42');
   });
 });
+
+// C3 residual: buildOgImageUrl was called OUTSIDE the hasCoords guard with raw
+// query coords, and its own loose Number() validator accepts hex ('0x10'→16),
+// so a junk coord was reflected into the og:image / twitter:image tags (the app
+// redirect URL — covered above — was already gated, which masked this).
+const ogImageOf = (html) => html.match(/property="og:image" content="([^"]*)"/)?.[1] ?? '';
+const twitterImageOf = (html) => html.match(/name="twitter:image" content="([^"]*)"/)?.[1] ?? '';
+
+describe('/api/share — junk coords never reach the og:image / twitter:image tags (C3)', () => {
+  for (const bad of ['0x10', '90abc']) {
+    it(`lat=${bad} is absent from og:image, twitter:image, and the whole response`, async () => {
+      const html = await buildShareMetaHtml({ lat: bad, lon: '18.42', lang: 'en' });
+      expect(ogImageOf(html)).not.toContain(bad);
+      expect(twitterImageOf(html)).not.toContain(bad);
+      expect(ogImageOf(html)).not.toContain('lat=');   // junk input → default OG card, no coords
+      expect(html).not.toContain(bad);                 // belt-and-braces: nowhere in the body
+    });
+  }
+
+  it('valid coords DO reach the og:image card', async () => {
+    const html = await buildShareMetaHtml({ lat: '-33.92', lon: '18.42', lang: 'en' });
+    expect(ogImageOf(html)).toContain('lat=-33.92');
+    expect(ogImageOf(html)).toContain('lon=18.42');
+  });
+});

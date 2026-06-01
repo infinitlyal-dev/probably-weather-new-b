@@ -134,7 +134,12 @@ export async function buildShareMetaHtml(query = {}) {
   }
   appParams.set('lang', String(lang));
   const appUrl = `${SHARE_ORIGIN}/?${appParams.toString()}`;
-  const ogImage = buildOgImageUrl({ lat, lon, lang });
+  // Only feed coords into the OG image URL when they pass the SAME strict
+  // parseCoord gate as the rest of this handler (hasCoords). buildOgImageUrl's
+  // own validator is a loose Number() that accepts hex ('0x10'→16), so passing
+  // raw query coords here reflected junk into the og:image/twitter:image tags.
+  // No valid coords → default OG card.
+  const ogImage = buildOgImageUrl(hasCoords ? { lat, lon, lang } : { lang });
   const shareUrl = `${SHARE_ORIGIN}/share?${new URLSearchParams({ ...(hasCoords ? { lat: String(lat), lon: String(lon) } : {}), lang: String(lang) }).toString()}`;
 
   return `<!doctype html>
