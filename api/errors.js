@@ -23,8 +23,11 @@
 // is blocked because we never return a permissive CORS grant on preflight;
 // non-browser clients are blocked by the server-side origin check below.
 // NOTE: a determined non-browser client can still spoof the Origin header —
-// the durable complement to this is per-IP rate limiting (audit #3), tracked
-// separately. This change closes the trivial open-sink, not the rate problem.
+// the durable complement to this is per-IP rate limiting (audit #3), now
+// implemented below via the shared Upstash limiter (fails open if unreachable).
+
+import { checkRateLimit } from './_lib/rate-limit.js';
+import { errorsLimiter } from './_lib/limiters.js';
 
 // Production origins are always allowed. Additional origins (e.g. a Vercel
 // preview host or http://localhost:3000 during dev) can be opted in via the
@@ -104,6 +107,15 @@ export default async function handler(req, res) {
     return;
   }
   applyCors(req, res);
+
+  // Per-IP rate limit (after the origin gate so only same-origin POSTs count).
+  // Fails open if Upstash is unreachable — error reporting is fire-and-forget,
+  // so a 429 is silently ignored client-side either way.
+  const rl = await checkRateLimit(req, errorsLimiter());
+  if (!rl.allowed) {
+    res.status(429).json({ ok: false, error: 'Too many requests' });
+    return;
+  }
 
   try {
     // Body shape (best-effort — client may send less):

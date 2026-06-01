@@ -18,6 +18,9 @@ const GEOCODE_UA = process.env.MET_USER_AGENT || 'ProbablyWeather/1.0 (contact: 
 // and burn LocationIQ reverse quota (codex finding, 2026-05-30). Rejects
 // non-string / array params and any value whose whole trimmed string isn't a
 // clean decimal. Returns NaN on rejection.
+import { checkRateLimit } from './_lib/rate-limit.js';
+import { geocodeLimiter } from './_lib/limiters.js';
+
 function parseCoord(value) {
   if (typeof value !== 'string') return NaN;
   const s = value.trim();
@@ -135,6 +138,11 @@ function buildReverseName(addr) {
 }
 
 export default async function handler(req, res) {
+  // Per-IP rate limit — fails open if Upstash is unreachable (never blocks).
+  // results:[] keeps the 429 shape compatible with the search response the
+  // client reads; the reverse path ignores it.
+  const rl = await checkRateLimit(req, geocodeLimiter());
+  if (!rl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests', results: [] });
   const TOKEN = process.env.LOCATIONIQ_TOKEN || null;
   const type = typeof req.query.type === 'string' ? req.query.type.toLowerCase() : '';
 

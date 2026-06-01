@@ -13,6 +13,9 @@
 // NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts
 // at the current hour (not midnight), making alignment with other sources impossible.
 
+import { checkRateLimit } from './_lib/rate-limit.js';
+import { weatherLimiter } from './_lib/limiters.js';
+
 const DEBUG = false;
 const debugLog = (...args) => {
   if (DEBUG) console.log(...args);
@@ -39,6 +42,10 @@ export function parseCoord(value) {
 
 export default async function handler(req, res) {
   try {
+    // Per-IP rate limit — first thing, before any upstream work. Fails open if
+    // Upstash is unreachable (checkRateLimit) so a limiter outage never blocks.
+    const rl = await checkRateLimit(req, weatherLimiter());
+    if (!rl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests' });
     // parseCoord (not parseFloat) — strict whole-string parse so '90abc',
     // '0x10', and array-valued ?lat=1&lat=2 are rejected, not partial-parsed.
     const lat = parseCoord(req.query.lat);
