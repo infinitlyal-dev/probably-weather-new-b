@@ -1158,14 +1158,16 @@ export default async function handler(req, res) {
       // BUG-1 fix: trust Open-Meteo or MET Norway rain votes even without majority
       if ((dailyConditionKey === 'rain-possible' || dailyConditionKey === 'cloudy') && descEntries.length >= 3) {
         const dailyVotes = descEntries.map(e => categorizeDesc(e.desc));
-        const rainOrCloudyCount = dailyVotes.filter(v => v === 'rain' || v === 'cloudy' || v === 'storm').length;
+        // CHANGE 1 (fog bug): include 'fog' via countsAsWeatherVote so a daily
+        // fog vote counts as real weather and isn't flipped to clear.
+        const rainOrCloudyCount = dailyVotes.filter(countsAsWeatherVote).length;
         // Check if Open-Meteo (index 0) or MET Norway (index 3) votes rain for this day
         const omRain = dailies[0]?.descs?.[i] && categorizeDesc(dailies[0].descs[i]) === 'rain';
         const metRain = dailies[3]?.descs?.[i] && categorizeDesc(dailies[3].descs[i]) === 'rain';
         const trustedDailyRain = omRain || metRain;
         if (rainOrCloudyCount < 2 && !trustedDailyRain) {
           debugLog(`[Rec 4] Day ${i}: ${dailyConditionKey} → clear (only ${rainOrCloudyCount}/${descEntries.length} sources vote rain/cloudy, no trusted rain)`);
-          dailyOverrides.push({ rule: 'majority-override-clear', from: dailyConditionKey, to: 'clear', reasonDetail: `${rainOrCloudyCount}/${descEntries.length} sources voted rain/cloudy/storm, no trusted-source rain` });
+          dailyOverrides.push({ rule: 'majority-override-clear', from: dailyConditionKey, to: 'clear', reasonDetail: `${rainOrCloudyCount}/${descEntries.length} sources voted rain/cloudy/storm/fog, no trusted-source rain` });
           dailyConditionKey = 'clear';
           dailyConditionReason = 'majority-override-clear';
         } else if (rainOrCloudyCount < 2 && trustedDailyRain) {
@@ -1385,18 +1387,18 @@ export default async function handler(req, res) {
     // Requires ≥2 sources to agree on rain/cloudy before the app declares it
     // BUG-1 fix: EXCEPTION — if Open-Meteo or MET Norway (most reliable for SA) votes rain, trust it
     if ((nowConditionKey === 'rain-possible' || nowConditionKey === 'cloudy') && activeNorms.length >= 3) {
-      const rainOrCloudyVotes = sourceConditionVotes.filter(v =>
-        v.vote === 'rain' || v.vote === 'cloudy' || v.vote === 'storm'
-      );
-      const trustedRainVote = rainOrCloudyVotes.some(v =>
+      // CHANGE 1 (fog bug): countsAsWeatherVote includes 'fog', so explicit fog
+      // votes count as real weather and can never be discarded by a clear-flip.
+      const weatherVotes = sourceConditionVotes.filter(v => countsAsWeatherVote(v.vote));
+      const trustedRainVote = weatherVotes.some(v =>
         (v.source === 'Open-Meteo' || v.source === 'MET Norway') && v.vote === 'rain'
       );
-      if (rainOrCloudyVotes.length < 2 && !trustedRainVote) {
-        debugLog(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${rainOrCloudyVotes.length}/${activeNorms.length} sources vote rain/cloudy, no trusted rain vote)`);
-        nowOverrides.push({ rule: 'majority-override-clear', from: nowConditionKey, to: 'clear', reasonDetail: `${rainOrCloudyVotes.length}/${activeNorms.length} sources voted rain/cloudy/storm, no trusted-source rain` });
+      if (weatherVotes.length < 2 && !trustedRainVote) {
+        debugLog(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${weatherVotes.length}/${activeNorms.length} sources vote rain/cloudy/storm/fog, no trusted rain vote)`);
+        nowOverrides.push({ rule: 'majority-override-clear', from: nowConditionKey, to: 'clear', reasonDetail: `${weatherVotes.length}/${activeNorms.length} sources voted rain/cloudy/storm/fog, no trusted-source rain` });
         nowConditionKey = 'clear';
         nowConditionReason = 'majority-override-clear';
-      } else if (rainOrCloudyVotes.length < 2 && trustedRainVote) {
+      } else if (weatherVotes.length < 2 && trustedRainVote) {
         debugLog(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
       }
     }
@@ -1523,6 +1525,27 @@ export default async function handler(req, res) {
       // ensemble's condition, but flag it so the frontend hedges its copy.
       fogTrendIncoming = true;
       debugLog(`[Layer A fog detector] fog trend incoming (next 1-3h) — condition stays ${nowConditionKey}, confidence lowered`);
+    }
+
+    // Layer A.2 — corroborated single/low-vote fog (fog bug, 2026-06-01).
+    // Complements the single-source visibility detector above: when a source
+    // explicitly votes fog but Open-Meteo's visibility missed it (Strand: OM
+    // forecast 43.7km in dense ground fog), upgrade clear/partly/cloudy → fog
+    // IF the consensus humidity AND wind corroborate it. Runs AFTER the detector
+    // so detector-fog (Masi) keeps precedence; a fog VOTE is required so humidity
+    // alone never fabricates fog. See corroboratedFogUpgrade + its unit tests.
+    const nowFogVoteCount = sourceConditionVotes.filter(v => v.vote === 'fog').length;
+    if (corroboratedFogUpgrade({ conditionKey: nowConditionKey, fogVoteCount: nowFogVoteCount, humidity: medHumidity, windKph: medWindKph })) {
+      const fogVoteSources = sourceConditionVotes.filter(v => v.vote === 'fog').map(v => v.source);
+      debugLog(`[Layer A.2 corroborated fog] ${nowFogVoteCount} fog vote(s) [${fogVoteSources.join(', ')}] + consensus humidity ${medHumidity}% + wind ${medWindKph}km/h → fog (was ${nowConditionKey})`);
+      nowOverrides.push({
+        rule: 'corroborated-fog-vote',
+        from: nowConditionKey,
+        to: 'fog',
+        reasonDetail: `${nowFogVoteCount} source(s) voted fog, consensus humidity ${medHumidity}%, wind ${medWindKph}km/h`,
+      });
+      nowConditionKey = 'fog';
+      nowConditionReason = 'corroborated-fog-vote';
     }
 
     // Confidence verdict — computed server-side as the single source of truth so
@@ -2170,6 +2193,58 @@ function detectAdvectionFog(omHourly, currentHourIdx) {
   return out;
 }
 
+// ===========================================================================
+// Fog bug fix (2026-06-01). Two pure helpers, unit-tested in
+// tests/fog-corroboration.test.js against live calibration fixtures.
+// ===========================================================================
+
+/**
+ * Does a condition vote represent "real weather is present"?
+ *
+ * Used by the majority-override-clear guards (now + daily): a lone non-clear
+ * vote must not flip a clear consensus, but a vote that DOES land here counts
+ * toward the ≥2 threshold and so blocks the flip-to-clear.
+ *
+ * CHANGE 1: 'fog' was missing here, so two real "Fog" votes (Stellenbosch,
+ * 2026-06-01) registered as ZERO weather votes and the condition was flipped to
+ * clear. A source explicitly reporting fog must never be discarded as clear.
+ */
+function countsAsWeatherVote(vote) {
+  return vote === 'rain' || vote === 'cloudy' || vote === 'storm' || vote === 'fog';
+}
+
+// Corroborated-fog thresholds (consensus blend, NOT a single source).
+// Calibrated to live 2026-06-01 ~06:00 SAST pulls:
+//   · STRAND foggy:      humidity 80.4%, wind 4.4 km/h → must pass.
+//   · STELLENBOSCH clear: humidity 66%             → must fail (66 < 78).
+// 78 sits below Strand's real reading with a small margin while clearing
+// Stellenbosch by 12 points; 10 km/h admits Strand's calm wind while a fog
+// vote in a stiff breeze (which disperses fog) is rejected.
+export const FOG_VOTE_MIN_HUMIDITY = 78;   // %
+export const FOG_VOTE_MAX_WIND_KPH = 10;   // km/h
+
+/**
+ * Vote-driven fog path that complements the single-source visibility detector.
+ *
+ * The detector reads visibility from Open-Meteo only; when OM's global grid
+ * mis-forecasts a location's visibility (Strand 2026-06-01: 43.7 km in dense
+ * fog) a real "Fog" vote from another source has no path to the headline. This
+ * upgrades clear/partly-cloudy/cloudy → fog when:
+ *   1. a source EXPLICITLY votes fog (≥1) — humidity alone never makes fog, and
+ *   2. the consensus humidity AND wind corroborate that it is believable.
+ *
+ * Note: ≥2 fog votes do NOT bypass corroboration — the only 2-vote fixture
+ * (Stellenbosch, 66%) must NOT be fog, so corroboration gates every vote count.
+ * The detector path and the fog-wins-plurality ≥2-vote path are unchanged.
+ */
+function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph }) {
+  if (conditionKey !== 'clear' && conditionKey !== 'partly-cloudy' && conditionKey !== 'cloudy') return false;
+  if (!(fogVoteCount >= 1)) return false;                                  // a fog VOTE is required
+  if (!(isNum(humidity) && humidity >= FOG_VOTE_MIN_HUMIDITY)) return false;
+  if (!(isNum(windKph) && windKph <= FOG_VOTE_MAX_WIND_KPH)) return false;
+  return true;
+}
+
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc, pickWeightedMostCommon, detectAdvectionFog, conditionKeyToVoteBucket };
+export { deriveCondition, categorizeDesc, pickWeightedMostCommon, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade };
