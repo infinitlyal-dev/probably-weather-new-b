@@ -76,7 +76,7 @@ describe('Offline fallback guarantees', () => {
   });
 
   it('bumps cache version per deploy so stale offline payloads do not linger forever', () => {
-    expect(sw()).toMatch(/CACHE_VERSION\s*=\s*'pw-v2026-05-26-001'/);
+    expect(sw()).toMatch(/CACHE_VERSION\s*=\s*'pw-v2026-05-31-001'/);
   });
 
   // -------------------------------------------------------------------------

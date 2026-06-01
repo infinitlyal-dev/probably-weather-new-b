@@ -10,7 +10,7 @@
    so deploys after this one propagate on next launch without manual reset.
 */
 
-const CACHE_VERSION = 'pw-v2026-05-26-001';
+const CACHE_VERSION = 'pw-v2026-05-31-001';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
 const API_CACHE = `${CACHE_VERSION}-api`;
@@ -22,8 +22,18 @@ const CORE_ASSETS = [
   '/install.html',
   '/assets/app.css',
   '/assets/app.js',
+  // Every ES module app.js imports — the offline shell white-screens if any is
+  // missing (app.js loads from cache, then its first un-cached `import` rejects).
   '/assets/install.js',
   '/assets/startup-location.js',
+  '/assets/language-preferences.js',
+  '/assets/weather-copy.js',
+  '/assets/weather-visuals.js',
+  '/assets/image-picker.js',
+  '/assets/weather-emoji.js',
+  '/assets/share-url.js',
+  '/assets/refresh-behaviour.js',
+  '/assets/first-open-location.js',
   '/manifest.json',
 ];
 
@@ -90,18 +100,12 @@ function isHtml(req) {
   return req.mode === 'navigate' || (req.headers.get('accept') || '').includes('text/html');
 }
 
+// Derived from CORE_ASSETS so the runtime "network-first + cache" routing can
+// never drift out of sync with the precache list — that drift is exactly what
+// left 8 of app.js's 10 imported modules uncached and broke the offline shell.
+const CORE_ASSET_PATHS = new Set(CORE_ASSETS);
 function isCoreAsset(url) {
-  return (
-    url.pathname === '/' ||
-    url.pathname === '/index.html' ||
-    url.pathname === '/install' ||
-    url.pathname === '/install.html' ||
-    url.pathname === '/assets/app.css' ||
-    url.pathname === '/assets/app.js' ||
-    url.pathname === '/assets/install.js' ||
-    url.pathname === '/assets/startup-location.js' ||
-    url.pathname === '/manifest.json'
-  );
+  return CORE_ASSET_PATHS.has(url.pathname);
 }
 
 function isWeatherApi(url) {
