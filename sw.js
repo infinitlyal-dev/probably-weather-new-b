@@ -1,13 +1,25 @@
-/* Probably Weather — Service Worker v14
-   Upgrades from v13:
-   - CACHE_VERSION bumped → purges old JPG background entries from IMG_CACHE
-     so the 4-week WebP picker (assets/image-picker.js) is fed by a clean
-     cache instead of stale JPG hits on the new path shape.
-   - Image fetch matcher already includes .webp (line 208), no change needed.
-   - Console version log on activate so future propagation issues are debuggable.
+/* Probably Weather — Service Worker v15
+   Upgrades from v14:
+   - App shell (HTML + core assets) switched from NETWORK-FIRST to
+     STALE-WHILE-REVALIDATE. The cached shell is served immediately so the
+     app paints on every open without waiting on the network; a background
+     fetch refreshes the cache and the update paints on the NEXT open.
+     This removes the once-per-deploy white-screen: on the first open after a
+     CACHE_VERSION bump the page now paints instantly from the old cache while
+     the new SW precaches the new shell in the background, instead of racing a
+     network fetch for render-blocking HTML/CSS.
+   - Weather data is UNAFFECTED — /api/weather keeps its own network-first
+     branch above, so forecasts are still fetched fresh on every open. Only the
+     app shell (which only changes on deploy) is served cache-first.
+   - CACHE_VERSION intentionally NOT bumped: no cached asset content changed,
+     only SW routing logic, which propagates via the SW byte diff on next
+     launch (vercel.json forces /sw.js revalidation). The existing caches stay
+     valid; bumping would force a needless precache churn.
+   - Asset paths are stable (/assets/app.js, not hashed), so serving a cached
+     index.html alongside cached assets can never reference a missing hash —
+     the classic SWR footgun does not apply here.
    Cache-Control: no-cache, no-store, must-revalidate on /sw.js (vercel.json)
-   ensures the browser ALWAYS revalidates the SW script on each update check,
-   so deploys after this one propagate on next launch without manual reset.
+   ensures the browser ALWAYS revalidates the SW script on each update check.
 */
 
 const CACHE_VERSION = 'pw-v2026-05-31-001';
@@ -194,23 +206,38 @@ self.addEventListener('fetch', (event) => {
   // Reverse geocode: pass through
   if (url.pathname.startsWith('/api/')) return;
 
-  // HTML + core assets: NETWORK FIRST
+  // HTML + core assets: STALE-WHILE-REVALIDATE
+  // Serve the cached shell instantly (no network wait → no white screen),
+  // refresh the cache in the background, paint the update on the next open.
+  // Weather freshness is handled by the /api/weather branch above; the shell
+  // itself only changes on deploy, so serving it cache-first is safe.
   if (isHtml(req) || isCoreAsset(url)) {
     event.respondWith((async () => {
-      try {
-        const fresh = await fetch(req);
-        const cache = await caches.open(CORE_CACHE);
-        cache.put(req, fresh.clone()).catch(() => {});
+      const cache = await caches.open(CORE_CACHE);
+      const cached = await cache.match(req);
+
+      const fetchPromise = fetch(req).then((fresh) => {
+        if (fresh && fresh.ok) cache.put(req, fresh.clone()).catch(() => {});
         return fresh;
-      } catch {
-        const cached = await caches.match(req);
-        if (cached) return cached;
-        if (isHtml(req)) {
-          const cachedIndex = await caches.match('/index.html');
-          if (cachedIndex) return cachedIndex;
-        }
-        return new Response('Offline', { status: 503 });
+      }).catch(() => null);
+
+      if (cached) {
+        // Background refresh; never block first paint on it.
+        fetchPromise.catch(() => {});
+        return cached;
       }
+
+      // Nothing cached for this request yet (first-ever visit, or an asset the
+      // atomic precache missed) — fall back to the network.
+      const fresh = await fetchPromise;
+      if (fresh) return fresh;
+
+      // Offline with no cached copy of this exact request.
+      if (isHtml(req)) {
+        const cachedIndex = await cache.match('/index.html');
+        if (cachedIndex) return cachedIndex;
+      }
+      return new Response('Offline', { status: 503 });
     })());
     return;
   }
