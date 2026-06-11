@@ -66,43 +66,10 @@ export function getTimeOfDaySlot(payload, nowMs = Date.now()) {
   return 'night';
 }
 
-/**
- * Canonical OG background source — ONE image per condition+time slot
- * (9 conditions × 4 times = 36 canonical files). Always week_1, never
- * randomised — OG cards are server-rendered and cached by Vercel /
- * scraped by WhatsApp etc., so per-user rotation makes no sense.
- *
- * timeOfDay defaults to 'day' for backward compatibility with older
- * callers that don't pass it.
- */
-export function getOgBackgroundPath(condition, timeOfDay = 'day') {
-  const folder = getWeatherBackgroundFolder(condition);
-  const time = VALID_TIMES.has(timeOfDay) ? timeOfDay : 'day';
-  return `assets/images/bg/${folder}/week_1/${time}/1.webp`;
-}
-
-/**
- * 4-step fallback chain for the OG renderer's background lookup. Mirrors the
- * picker's defensive shape but specialised for OG semantics (always week_1,
- * always image #1). Dedupe-preserving-order so collapse cases (e.g. condition
- * is already 'clear' and time is already 'day') don't issue redundant reads.
- *
- * 1. <condition>/week_1/<time>/1.webp        — primary
- * 2. <condition>/week_1/day/1.webp           — time collapse
- * 3. clear/week_1/day/1.webp                 — condition collapse to clear+day
- * 4. assets/images/bg/default.jpg            — last resort (pre-existing JPG)
- */
-export function getOgBackgroundFallbackChain(condition, timeOfDay = 'day') {
-  const folder = getWeatherBackgroundFolder(condition);
-  const time = VALID_TIMES.has(timeOfDay) ? timeOfDay : 'day';
-  const raw = [
-    `assets/images/bg/${folder}/week_1/${time}/1.webp`,
-    `assets/images/bg/${folder}/week_1/day/1.webp`,
-    `assets/images/bg/clear/week_1/day/1.webp`,
-    `assets/images/bg/default.jpg`,
-  ];
-  return Array.from(new Set(raw));
-}
+// (L1 cleanup, 2026-06-11: getOgBackgroundPath + getOgBackgroundFallbackChain
+// deleted — the WebP OG chain from a previous OG implementation. api/og.js
+// uses the STATIC JPEG variants below; the WebP pair was exported and tested
+// but never called in production.)
 
 /**
  * OG-specific alias map — NARROWER than WEATHER_BACKGROUND_ALIASES.

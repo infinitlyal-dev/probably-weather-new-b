@@ -1,19 +1,8 @@
-// Strict coordinate parser — parity with api/weather.js, api/geocode.js, api/og.js.
-// Number.parseFloat partial-parses ('90abc'→90, '0x10'→0), so a corrupted share
-// link like ?lat=90abc would silently resolve to an in-range but WRONG location
-// (90,N) and trigger a /api/weather call for it (codex cross-layer finding,
-// 2026-05-30). Requiring the whole trimmed string to be a clean decimal means a
-// malformed share coord returns null here and the app falls back to the user's
-// own geolocation instead of showing the wrong place. Valid share links
-// (-34.1163 / 18.8362 etc.) are unaffected. URLSearchParams.get returns a string
-// or null, so the typeof guard mainly future-proofs against non-string callers.
-function parseCoord(value) {
-  if (typeof value !== 'string') return NaN;
-  const s = value.trim();
-  if (s === '') return NaN;
-  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
-  return Number(s);
-}
+// Strict coordinate parser — single implementation (L2 dedupe), see
+// assets/coord-parse.js. A malformed share coord (?lat=90abc) parses to NaN
+// here and the app falls back to the user's own geolocation instead of
+// showing the wrong place.
+import { parseCoord } from './coord-parse.js';
 
 export function getSharedPlaceFromSearch(search) {
   const params = new URLSearchParams(search || '');

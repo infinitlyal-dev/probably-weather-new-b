@@ -13,21 +13,11 @@
 const TIMEOUT_MS = 9000;
 const GEOCODE_UA = process.env.MET_USER_AGENT || 'ProbablyWeather/1.0 (contact: howzit@probablyweather.co.za)';
 
-// Strict coordinate parser — mirrors api/weather.js. parseFloat() partial-parses
-// ('90abc' → 90, '0x10' → 0) which would let junk coords through the range check
-// and burn LocationIQ reverse quota (codex finding, 2026-05-30). Rejects
-// non-string / array params and any value whose whole trimmed string isn't a
-// clean decimal. Returns NaN on rejection.
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { geocodeLimiter } from './_lib/limiters.js';
-
-function parseCoord(value) {
-  if (typeof value !== 'string') return NaN;
-  const s = value.trim();
-  if (s === '') return NaN;
-  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
-  return Number(s);
-}
+// Strict coordinate parser — single implementation (L2 dedupe), see
+// assets/coord-parse.js for the partial-parse rationale.
+import { parseCoord } from '../assets/coord-parse.js';
 
 // isBadLabel — reject empty labels, "Ward 4"-style admin labels, and bare numbers.
 // Same logic as api/weather.js's name-resolution block.

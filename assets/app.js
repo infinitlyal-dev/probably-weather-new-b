@@ -387,9 +387,34 @@ document.addEventListener("DOMContentLoaded", () => {
         zu: "indawo yakho",
         xh: "indawo yakho",
         st: "sebakeng sa hao"
+      },
+      // L4: shown under the location name when viewing a shared link.
+      // zu/xh/st are PROVISIONAL pending native review (mirrors the existing
+      // share vocabulary: yabelana/arolelana + indawo/sebaka).
+      viewingShared: {
+        en: "Viewing shared location",
+        af: "Kyk na gedeelde ligging",
+        zu: "Ubuka indawo eyabelwane ngayo",
+        xh: "Ujonge indawo ekwabelwene ngayo",
+        st: "O sheba sebaka se arolelanoeng"
+      },
+      // L3: footer attribution — five sources, translated. Derived from the
+      // native-reviewed sources.attribution strings (short form).
+      dataFrom: {
+        en: "Data from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io",
+        af: "Data van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io",
+        zu: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io",
+        xh: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io",
+        st: "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io"
       }
     }
   };
+
+  // L6: the ONE place the user-facing version string lives. index.html ships
+  // a static copy as the pre-JS fallback; updateUILanguage overwrites it from
+  // here. Bumped 1.4 → 1.5 with this release (splash, per-language bundles,
+  // server cache, GPS-name fix).
+  const APP_VERSION = '1.5';
 
   // Helper to get translation
   const t = (category, key) => {
@@ -796,7 +821,7 @@ document.addEventListener("DOMContentLoaded", () => {
         indicator.className = 'shared-location-indicator';
         locationEl.insertAdjacentElement('afterend', indicator);
       }
-      indicator.textContent = 'Viewing shared location';
+      indicator.textContent = t('misc', 'viewingShared');
     } else if (indicator) {
       indicator.remove();
     }
@@ -844,6 +869,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
+    // L3/L4/L6: footer attribution + shared-location indicator + version are
+    // language-managed too.
+    const footerAttribution = document.getElementById('footerAttribution');
+    if (footerAttribution) footerAttribution.textContent = t('misc', 'dataFrom');
+    const versionEl = document.getElementById('appVersion');
+    if (versionEl) versionEl.textContent = `Version ${APP_VERSION}`;
+    const sharedIndicator = document.getElementById('sharedLocationIndicator');
+    if (sharedIndicator) sharedIndicator.textContent = t('misc', 'viewingShared');
     refreshSaveButtonState();
   }
 

@@ -47,10 +47,13 @@ function loadServiceWorkerContext() {
 }
 
 // Group 6: app.js also DYNAMICALLY imports modules (lazy install.js, the
-// per-language copy banks via copy-loader.js). They never appear in the
-// static `from './x.js'` graph but the offline shell still needs them.
+// per-language copy banks via copy-loader.js), and the L2 dedupe added a
+// TRANSITIVE static dep (coord-parse.js via startup-location.js). None of
+// these appear in app.js's own `from './x.js'` graph but the offline shell
+// still needs every one of them.
 const dynamicModules = [
   '/assets/install.js',
+  '/assets/coord-parse.js',
   '/assets/copy/en.js',
   '/assets/copy/af.js',
   '/assets/copy/zu.js',
@@ -60,8 +63,10 @@ const dynamicModules = [
 
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
-    // 12 static imports: weather-copy.js + install.js left the static graph
+    // 12 direct static imports: weather-copy.js + install.js left the graph
     // (Group 6 split), copy-loader.js + weekend-filter.js joined it.
+    // (coord-parse.js is a TRANSITIVE dep via startup-location.js — covered
+    // by the dynamicModules precache check below.)
     expect(importedModules.length).toBe(12);
     for (const mod of [
       '/assets/language-preferences.js',

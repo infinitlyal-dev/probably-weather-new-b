@@ -30,7 +30,6 @@ const CONDITION_EMOJI_MAP = {
   // side which can break tight UI badges).
   'cold-clear':    { day: '🥶',  night: '🥶'  },
   heat:            { day: '🔥',  night: '🔥'  },
-  hot:             { day: '🔥',  night: '🔥'  },
   uv:              { day: '☀️',  night: '🌙'  },
   clear:           { day: '☀️',  night: '🌙'  },
 };
@@ -73,12 +72,6 @@ export function pickHourlyEmoji({ rainPct, cloudPct, tempC, isNight, condition }
   if (isNum(cloudPct) && cloudPct >= 30) return pickConditionEmojiForTime('partly-cloudy', isDay);
   if (isNum(tempC) && tempC <= 10)       return pickConditionEmojiForTime('cold', isDay);
   return pickConditionEmojiForTime('clear', isDay);
-}
-
-// Small-icon variant used in search results / mini cards. Keeps the same
-// day/night discipline as the main map.
-export function pickSearchResultEmoji(conditionKey, isDay = true) {
-  return pickConditionEmojiForTime(conditionKey, isDay);
 }
 
 // ---------------------------------------------------------------------------

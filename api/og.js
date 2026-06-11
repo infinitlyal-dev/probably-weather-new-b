@@ -5,6 +5,8 @@ import { ImageResponse } from '@vercel/og';
 import weatherHandler from './weather.js';
 import { getClientIp } from './_lib/rate-limit.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
+// L2 dedupe: one language list for the whole app (was three copies).
+import { SUPPORTED_LANGS } from '../assets/language-preferences.js';
 import {
   getOgStaticBackgroundFallbackChain,
   getOgStaticBackgroundPath,
@@ -16,7 +18,6 @@ export const CACHE_CONTROL = 'public, max-age=300, s-maxage=300';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
-const SUPPORTED_LANGS = ['en', 'af', 'zu', 'xh', 'st'];
 
 const STAT_LABELS = {
   en: { wind: 'Wind', rain: 'Rain', uv: 'UV' },
@@ -39,22 +40,12 @@ const round = (value) => Math.round(Number(value));
 const clampLang = (lang) => SUPPORTED_LANGS.includes(lang) ? lang : 'en';
 const formatTemp = (value) => isNum(value) ? `${round(value)}°` : null;
 
-// Strict coordinate parser — mirrors api/weather.js & api/geocode.js. This
-// endpoint is a SECOND entry point into the weather aggregation: it calls
-// callWeatherHandler(lat, lon) → weatherHandler internally, so it must reject
-// malformed coords with the same rigor or it re-opens the quota-burn hole the
-// /api/weather guard closes (codex cross-API finding, 2026-05-30). parseFloat
-// partial-parses '90abc'→90 / '0x10'→0; parseCoord requires the whole trimmed
-// string to be a clean decimal and rejects non-string / array params. NaN on
-// reject → the existing hasValidCoords check then falls back to the generic
-// OG card (no per-location weather call), which is the correct safe behaviour.
-const parseCoord = (value) => {
-  if (typeof value !== 'string') return NaN;
-  const s = value.trim();
-  if (s === '') return NaN;
-  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
-  return Number(s);
-};
+// Strict coordinate parser — single implementation (L2 dedupe). This endpoint
+// is a SECOND entry point into the weather aggregation (callWeatherHandler →
+// weatherHandler), so it must reject malformed coords with the same rigor or
+// it re-opens the quota-burn hole the /api/weather guard closes. NaN on
+// reject → hasValidCoords falls back to the generic OG card (no weather call).
+import { parseCoord } from '../assets/coord-parse.js';
 
 function getQuery(req) {
   if (req?.query) return req.query;

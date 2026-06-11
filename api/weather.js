@@ -25,24 +25,12 @@ const debugLog = (...args) => {
   if (DEBUG) console.log(...args);
 };
 
-// Strict coordinate parser. parseFloat() does PARTIAL parsing — parseFloat('90abc')
-// === 90, parseFloat('0x10') === 0 — so junk-but-prefixed strings would coerce to
-// a finite, in-range number and slip past a range check, defeating the quota guard
-// (codex adversarial finding, 2026-05-30). Also rejects array-valued params
-// (?lat=1&lat=2 arrives as an array on Vercel) and any value where the WHOLE
-// trimmed string isn't a clean decimal. Returns NaN on any rejection so callers
-// can fail with a single Number.isFinite check.
-// Exported so other coordinate entry points (api/share.js) reuse the exact same
-// strict parser instead of a looser Number() check — one validator, no drift.
-export function parseCoord(value) {
-  if (typeof value !== 'string') return NaN;          // arrays / undefined → reject
-  const s = value.trim();
-  if (s === '') return NaN;
-  // Whole-string decimal: optional sign, digits with optional fraction, or bare
-  // fraction (.5). No hex (0x10), no trailing junk (90abc), no exponent games.
-  if (!/^[+-]?(\d+\.?\d*|\.\d+)$/.test(s)) return NaN;
-  return Number(s);
-}
+// Strict coordinate parser — single implementation in assets/coord-parse.js
+// (L2 dedupe, was four byte-identical copies). Imported for local use AND
+// re-exported so api/share.js's existing `import { parseCoord } from
+// './weather.js'` keeps working.
+import { parseCoord } from '../assets/coord-parse.js';
+export { parseCoord };
 
 export default async function handler(req, res) {
   try {
@@ -1091,8 +1079,12 @@ export default async function handler(req, res) {
       const active = arr.map((item, i) => item !== null ? (baseWeights[i] ?? 0) : 0);
       const total  = active.reduce((s, v) => s + v, 0);
       if (total === 0) {
+        // L8 guard: count can be 0 when every slot is null — 1/0 would put an
+        // eagerly-evaluated Infinity in the map even though no caller reads it
+        // today. Keep the failure mode boring: all-zero weights.
         const count = arr.filter(Boolean).length;
-        return arr.map(item => item !== null ? 1 / count : 0);
+        const equalWeight = count > 0 ? 1 / count : 0;
+        return arr.map(item => item !== null ? equalWeight : 0);
       }
       return active.map(v => v / total);
     }

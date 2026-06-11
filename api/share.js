@@ -1,10 +1,13 @@
 import { buildOgImageUrl, SHARE_ORIGIN } from '../assets/share-url.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
+import { SUPPORTED_LANGS } from '../assets/language-preferences.js';
 import weatherHandler, { parseCoord } from './weather.js';
 import { getClientIp } from './_lib/rate-limit.js';
 
 const STATIC_DESCRIPTION = 'South African weather, in your language.';
-const SUPPORTED_LANGS = new Set(['en', 'af', 'zu', 'xh', 'st']);
+// L2 dedupe: one language list for the whole app (was three copies). Kept as
+// a Set locally — clampLang uses .has().
+const LANG_SET = new Set(SUPPORTED_LANGS);
 const PROBABLY_WORD = {
   en: 'Probably',
   af: 'Waarskynlik',
@@ -48,7 +51,7 @@ function safeStringifyForScript(value) {
 // old Number() check let them. Matches the other 4 coord entry points.
 const isValidLat = (value) => { const n = parseCoord(value); return Number.isFinite(n) && n >= -90 && n <= 90; };
 const isValidLon = (value) => { const n = parseCoord(value); return Number.isFinite(n) && n >= -180 && n <= 180; };
-const clampLang = (lang) => SUPPORTED_LANGS.has(lang) ? lang : 'en';
+const clampLang = (lang) => LANG_SET.has(lang) ? lang : 'en';
 const isFiniteNumber = (value) => Number.isFinite(Number(value));
 const formatTemp = (value) => `${Math.round(Number(value))}°`;
 

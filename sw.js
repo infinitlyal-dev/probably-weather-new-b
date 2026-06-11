@@ -38,6 +38,7 @@ const CORE_ASSETS = [
   // missing (app.js loads from cache, then its first un-cached `import` rejects).
   '/assets/install.js',
   '/assets/startup-location.js',
+  '/assets/coord-parse.js',
   '/assets/language-preferences.js',
   // Per-language copy banks (Group 6): app.js dynamically imports ONE per
   // session via copy-loader.js, but all five are precached (~200 KB once at
