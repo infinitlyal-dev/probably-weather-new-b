@@ -16,6 +16,7 @@
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { weatherLimiter } from './_lib/limiters.js';
 import { weatherCacheKey, weatherCacheGet, weatherCacheSet } from './_lib/weather-cache.js';
+import { consumeProviderBudgets } from './_lib/provider-budget.js';
 // M4: heat thresholds shared with the client (assets/app.js) — one constant
 // family, no more 32-vs-35 badge/condition drift.
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../assets/weather-thresholds.js';
@@ -356,7 +357,29 @@ export default async function handler(req, res) {
       8000: 'Thunderstorm',
     };
 
-    const openMeteoRequest = fetchJson(
+    // -------------------------------------------------------------------------
+    // Provider-budget guard (HIGH-1). Consume one global budget slot per ENABLED
+    // provider BEFORE issuing any fetch. A provider over its ceiling is skipped
+    // for the window (request becomes Promise.resolve(null) — same path as a
+    // missing key), and the ensemble proceeds on whoever's left. This is keyed
+    // per-provider, so coordinate-varying requests that bypass the per-IP cache
+    // cannot bypass it. Fail-open on availability: Redis down → conservative
+    // per-instance ceilings inside consumeProviderBudgets, never unlimited.
+    // 'open-meteo' and 'met' have no key (always enabled); the rest gate on key.
+    const enabledProviders = [
+      'open-meteo',
+      ...(WEATHERAPI_KEY ? ['weatherapi'] : []),
+      ...(PIRATE_WEATHER_KEY ? ['pirate'] : []),
+      'met',
+      ...(TOMORROWIO_API_KEY ? ['tomorrow'] : []),
+    ];
+    const budget = await consumeProviderBudgets(enabledProviders);
+    const budgetAllows = (p) => budget[p] !== false; // undefined ⇒ allowed (safety)
+    for (const p of enabledProviders) {
+      if (!budgetAllows(p)) console.warn(`[pw-budget] ${p} over ceiling — skipped this request`);
+    }
+
+    const openMeteoRequest = budgetAllows('open-meteo') ? fetchJson(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
       `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
       // Phase B-1 Item 3: hourly weather_code added so per-hour condition can be preserved
@@ -367,8 +390,8 @@ export default async function handler(req, res) {
       `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
       `&timezone=auto&forecast_days=7`
-    );
-    const weatherApiRequest = WEATHERAPI_KEY
+    ) : Promise.resolve(null);
+    const weatherApiRequest = (WEATHERAPI_KEY && budgetAllows('weatherapi'))
       ? fetchJson(
           `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}` +
           `&q=${lat},${lon}&days=7&aqi=no&alerts=no`
@@ -379,25 +402,25 @@ export default async function handler(req, res) {
     // adds mist/haze/smoke/mixed/possible-* variants for better fidelity.
     // The map below handles both the original and expanded names so existing
     // forecasts keep working even if PW changes default behaviour.
-    const pirateWeatherRequest = PIRATE_WEATHER_KEY
+    const pirateWeatherRequest = (PIRATE_WEATHER_KEY && budgetAllows('pirate'))
       ? fetchJson(
           `https://api.pirateweather.net/forecast/${PIRATE_WEATHER_KEY}/${lat},${lon}` +
           `?units=si&icon=pirate`
         )
       : Promise.resolve(null);
-    const metNorwayRequest = fetch(
+    const metNorwayRequest = budgetAllows('met') ? fetch(
       `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`,
       { headers: { 'User-Agent': NOMINATIM_UA }, signal: AbortSignal.timeout(timeoutMs) }
     ).then(async met => {
       if (!met.ok) throw new Error(`HTTP ${met.status}`);
       return await met.json();
-    });
+    }) : Promise.resolve(null);
     // Tomorrow.io Timelines API — 48h hourly window with radar-derived precipitation
     // intensity. Use units=metric (temperature °C, precipitationIntensity mm/h,
     // windSpeed m/s, humidity %, cloudCover %). startTime=now rounds to the top
     // of the current local hour at Tomorrow.io's end, returning ~49 intervals.
     // Without a key, resolves to null and the source is treated as unavailable.
-    const tomorrowIoRequest = TOMORROWIO_API_KEY
+    const tomorrowIoRequest = (TOMORROWIO_API_KEY && budgetAllows('tomorrow'))
       ? fetchJson(
           `https://api.tomorrow.io/v4/timelines?location=${lat},${lon}` +
           `&fields=temperature,precipitationIntensity,precipitationProbability,weatherCode,windSpeed,humidity,cloudCover` +
@@ -420,7 +443,14 @@ export default async function handler(req, res) {
     ]);
 
     function getSettledValue(result) {
-      if (result.status === 'fulfilled') return result.value;
+      if (result.status === 'fulfilled') {
+        // A null fulfilled value means the provider was unavailable this
+        // request — no key, or budget-blocked by the provider guard. Treat it
+        // as a clean failure so each source block's catch records it in
+        // `failures` instead of NPE-ing on `value.someField`.
+        if (result.value == null) throw new Error('Provider unavailable (no key or budget-blocked)');
+        return result.value;
+      }
       throw result.reason ?? new Error('Provider failed');
     }
 

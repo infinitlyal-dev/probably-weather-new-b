@@ -19,20 +19,27 @@ import { Redis } from '@upstash/redis';
 // IP, and every 429 on ?reverse=1 used to seed the coords-name bug (H2 — now
 // non-destructive, but a 429 still costs the user a name resolution).
 //
-// New posture: caps sized so no plausible NAT-bucket of real users hits them
-// (~40 concurrent active users × ~8 calls in a burst minute), while a
-// single-machine hammering script (hundreds/min sustained from one IP without
-// NAT-scale diversity) still trips. The sliding window already smooths bursts;
-// these are ceilings, not targets — Upstash cost scales with requests, not
-// with the cap size.
-//   · weather 480 — search minis (~8/search) × NAT concurrency + first-open
-//     bursts (weather + reverse + launch refresh). Protects the 5-provider
-//     fan-out from scripted quota burn, not from real users.
+// 2026-06-12 (HIGH-1 fix): the per-IP weather cap is no longer the quota
+// guard. Provider quota is now protected DIRECTLY by the global per-provider
+// budget (api/_lib/provider-budget.js), which a coordinate-varying attacker
+// cannot bypass (the per-IP cap could — every varied coord misses the cache).
+// So the per-IP cap is now purely ABUSE-DAMPENING: stop one IP from
+// monopolising function concurrency / Redis, not from burning provider quota.
+//
+// weather 480 → 240. Rationale: with quota protection moved to the provider
+// budget, the cap can stay CGNAT-generous without the quota risk that made 480
+// dangerous — but 480 was set to defend quota it no longer defends, so trim it
+// to match geocode. 240/min ≈ 4 req/s sustained per IP comfortably covers a
+// busy carrier-NAT bucket (search-mini bursts of ~8/search × concurrent users,
+// most now served from the server cache anyway) while halving the single-IP
+// flood surface vs 480. The sliding window smooths bursts; these are ceilings,
+// not targets.
+//   · weather 240 — abuse-dampening only (quota is the provider budget's job).
 //   · geocode 240 — search-as-you-type + reverse-geocode bursts.
 //   · errors   30 — pure log-spam vector; stays tight (error reporting is
 //     client-capped at 10/session, so 30/min/IP is already generous).
 export const RATE_LIMITS = {
-  weather: { max: 480, window: '60 s' },
+  weather: { max: 240, window: '60 s' },
   geocode: { max: 240, window: '60 s' },
   errors:  { max: 30, window: '60 s' },
 };
