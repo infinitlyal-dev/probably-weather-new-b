@@ -54,12 +54,20 @@ export function responseLocationName({ isPlaceholder, callerName, cachedName }) 
   return cachedName || 'Unknown';
 }
 
-/** Cache key for a coordinate pair, or null when either coord is junk. */
+/**
+ * Cache key for a coordinate pair, or null when either coord is junk.
+ *
+ * Key VERSION bumped v1→v2 (2026-06-12) so the HIGH-3 name-poisoning fix takes
+ * effect instantly: every pre-fix `pw-wx:v1` entry (which could still hold a
+ * caller-supplied name) is abandoned the moment this ships, rather than
+ * remaining servable for up to its 5-min TTL. Bump this version on any change
+ * to the cached payload's shape or trust assumptions.
+ */
 export function weatherCacheKey(lat, lon) {
   const sLat = snapCoord(lat);
   const sLon = snapCoord(lon);
   if (sLat === null || sLon === null) return null;
-  return `pw-wx:v1:${sLat},${sLon}`;
+  return `pw-wx:v2:${sLat},${sLon}`;
 }
 
 /**

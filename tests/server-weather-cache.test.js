@@ -61,7 +61,7 @@ describe('snapCoord — 0.02° cache grid', () => {
 
 describe('weatherCacheKey', () => {
   it('builds a versioned key from snapped coords', () => {
-    expect(weatherCacheKey(-34.1163, 18.8362)).toBe('pw-wx:v1:-34.12,18.84');
+    expect(weatherCacheKey(-34.1163, 18.8362)).toBe('pw-wx:v2:-34.12,18.84');
   });
 
   it('nearby coords share a key; distant coords do not', () => {
@@ -92,7 +92,7 @@ describe('weatherCacheGet / weatherCacheSet', () => {
   });
 
   it('returns null on a cold key (miss)', async () => {
-    expect(await weatherCacheGet('pw-wx:v1:0.00,0.00', fakeRedis())).toBe(null);
+    expect(await weatherCacheGet('pw-wx:v2:0.00,0.00', fakeRedis())).toBe(null);
   });
 
   it('refuses to cache non-ok payloads — a degraded response must not be served to a suburb', async () => {
