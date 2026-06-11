@@ -29,6 +29,10 @@ import { shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+  // G4: signal to the index.html boot-failure guard that app.js loaded and
+  // started executing. If app.js 404s / fails to parse, this stays unset and
+  // the guard shows an honest error state instead of a silent "Loading…" shell.
+  window.__PW_ALIVE = true;
   // HIGH-2: in-app splash failsafe — the belt closest to the throw. If anything
   // in this init handler throws before the first render lands (corrupt
   // localStorage in loadSettings, a throw in applySettings, the first-open
@@ -1614,6 +1618,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // up until the FIRST real render (weather content or an explicit error).
   // renderLoading keeps it up on purpose: "Locating…" is still pre-content.
   function hideSplash() {
+    // G4: mark that a real render landed, so the index.html boot-failure guard
+    // knows the boot succeeded and never shows its error state.
+    window.__PW_FIRST_RENDER = true;
     const splash = document.getElementById('pwSplash');
     if (!splash) return;
     splash.classList.add('splash-done');

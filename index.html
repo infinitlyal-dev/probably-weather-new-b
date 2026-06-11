@@ -109,6 +109,25 @@
       .pw-splash-lines span { animation: none; }
       .pw-splash-lines span:first-child { opacity: 1; }
     }
+    /* G4 boot-failure state: shown only when app.js fails to load/run (a dead
+       boot) — replaces the silent forever-"Loading…" shell with an honest
+       message + reload action. Built by the inline failsafe script below. */
+    #pwBootError {
+      position: fixed; inset: 0; z-index: 2147483600; /* above #pwSplash */
+      background: #1a1a2e; color: #fff;
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      gap: 20px; padding: 28px; text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    #pwBootError.visible { display: flex; }
+    .pw-boot-error-msg { max-width: 22em; line-height: 1.5; }
+    .pw-boot-error-msg span { display: block; opacity: .8; font-size: .85rem; }
+    .pw-boot-error-msg span:first-child { opacity: 1; font-weight: 600; font-size: 1rem; margin-bottom: 6px; }
+    .pw-boot-error-reload {
+      appearance: none; border: 0; cursor: pointer;
+      background: #FFC400; color: #1a1a2e; font-weight: 700;
+      padding: 12px 30px; border-radius: 999px; font-size: 1rem;
+    }
   </style>
   <script>
     // ?reset=1 emergency wipe of all install-related localStorage. Runs
@@ -165,22 +184,79 @@
     </div>
   </div>
   <script>
-    // Splash failsafe (HIGH-2). Belt to the CSS braces (#pwSplash auto-hides at
-    // 8s). Three independent dismissals so the splash can NEVER outlive a broken
-    // boot, including the cases an app.js-internal try/catch can't reach:
-    //   · window 'error' — any uncaught script error (incl. app.js init throw)
-    //     hides it immediately (filtered to script errors, not resource 404s).
-    //   · window 'load' + short grace — a silent hang where app.js loaded but
-    //     never reached a render and never threw.
-    // Lives in index.html, NOT app.js, on purpose: it must survive app.js
-    // failing to LOAD or PARSE, which an app.js try/catch never would.
+    // Splash failsafe (HIGH-2) + boot-failure state (G4). The splash can NEVER
+    // outlive a broken boot, AND a genuinely DEAD boot (app.js 404s / fails to
+    // parse) shows an honest error + reload instead of fading into a silent
+    // forever-"Loading…" shell. Lives in index.html, NOT app.js, so it survives
+    // app.js failing to load/parse — which an app.js try/catch never would.
+    //   · window 'error' (bubble, script errors) — an init throw before render
+    //     clears the splash AND surfaces the boot-error state.
+    //   · window 'error' (capture) — catches the app.js/app.css resource 404
+    //     (resource errors don't bubble) and surfaces the boot-error state.
+    //   · window 'load' + grace — if app.js never set __PW_ALIVE, the boot is
+    //     dead → boot-error state. (A slow-but-alive app is left to render or
+    //     to raise its own error; we only clear the splash for it.)
+    // CSS auto-hides #pwSplash at 8s as the final, JS-free splash backstop.
     (function () {
-      var kill = function () {
+      var clearSplash = function () {
         var s = document.getElementById('pwSplash');
         if (s) s.classList.add('splash-done');
       };
-      window.addEventListener('error', function (e) { if (e && (e.error || e.message)) kill(); });
-      window.addEventListener('load', function () { setTimeout(kill, 3000); });
+      var shown = false;
+      function showBootError() {
+        if (shown) return; shown = true;
+        clearSplash();
+        // EN + AF ship-ready; zu/xh/st PROVISIONAL — flag for native review.
+        var lines = [
+          "Couldn't load. Tap reload to try again.",
+          "Kon nie laai nie. Tik herlaai om weer te probeer.",
+          "Yehlulekile ukulayisha. Thepha ukulayisha kabusha.",
+          "Ayikwazanga ukulayisha. Cofa ukulayisha kwakhona.",
+          "Ha ea khona ho jarolla. Tobetsa ho jarolla hape."
+        ];
+        var box = document.createElement('div');
+        box.id = 'pwBootError';
+        box.setAttribute('role', 'alert');
+        var msg = document.createElement('div');
+        msg.className = 'pw-boot-error-msg';
+        for (var i = 0; i < lines.length; i++) {
+          var span = document.createElement('span');
+          if (i > 0) span.setAttribute('lang', ['', 'af', 'zu', 'xh', 'st'][i]);
+          span.textContent = lines[i];
+          msg.appendChild(span);
+        }
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'pw-boot-error-reload';
+        btn.textContent = '↻ Reload';
+        btn.addEventListener('click', function () { window.location.reload(); });
+        box.appendChild(msg);
+        box.appendChild(btn);
+        document.body.appendChild(box);
+        box.classList.add('visible');
+      }
+
+      // Init threw before render → broken boot.
+      window.addEventListener('error', function (e) {
+        if (!(e && (e.error || e.message))) return; // ignore resource errors here
+        clearSplash();
+        if (!window.__PW_FIRST_RENDER) showBootError();
+      });
+      // app.js / app.css resource 404 (resource errors don't bubble → capture).
+      window.addEventListener('error', function (e) {
+        var n = e && e.target;
+        var src = n && (n.src || n.href) || '';
+        if (n && (n.tagName === 'SCRIPT' || n.tagName === 'LINK') && /\/assets\/app\.(js|css)/.test(src)) {
+          showBootError();
+        }
+      }, true);
+      // Dead boot: app.js never came alive. (Slow-but-alive → just clear splash.)
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          clearSplash();
+          if (!window.__PW_ALIVE) showBootError();
+        }, 3000);
+      });
     })();
   </script>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
