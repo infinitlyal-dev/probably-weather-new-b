@@ -88,6 +88,21 @@ function walk(dir, out = []) {
   return out;
 }
 
+// L-ii: weather-copy.js is now server-only and deleted from dist above. If ANY
+// client module still imports it, that import 404s at runtime (it minifies and
+// ships fine — the missing file only surfaces in the browser). Guard it at
+// build time: scan the served JS for an import of weather-copy.js and fail.
+const clientJs = walk(path.join(dist, 'assets')).filter((f) => /\.js$/i.test(f));
+const offenders = clientJs.filter((f) => /from\s*['"][^'"]*weather-copy\.js['"]|import\(\s*['"][^'"]*weather-copy\.js['"]/.test(readFileSync(f, 'utf8')));
+if (offenders.length) {
+  console.error(
+    '[build] FATAL: client module(s) import the server-only weather-copy.js ' +
+    '(deleted from dist — would 404 at runtime):',
+    offenders.map((f) => path.relative(dist, f)),
+  );
+  process.exit(1);
+}
+
 const files = walk(dist).filter((f) => /\.(js|css)$/i.test(f));
 let before = 0;
 let after = 0;
@@ -109,18 +124,53 @@ for (const file of files) {
   after += Buffer.byteLength(code);
 }
 
-// Build-time invariant: every path sw.js precaches must exist in dist —
-// a missing one would brick the offline shell for every user on deploy.
-const swSrc = readFileSync(path.join(dist, 'sw.js'), 'utf8');
-const coreAssets = [...swSrc.matchAll(/['"](\/[A-Za-z0-9_./-]+)['"]/g)]
-  .map((m) => m[1])
-  .filter((p) => /\.(js|css|json|html)$/.test(p));
-const missing = coreAssets.filter((p) => {
-  try { statSync(path.join(dist, p)); return false; } catch { return true; }
-});
+// Build-time invariant: EVERY precached path must resolve in dist — a missing
+// one bricks the offline shell on deploy.
+//
+// L-i: extensionless precache entries (Vercel rewrites like '/' and '/install')
+// used to be silently dropped by an extension filter, so the gate's "every
+// precache path verified" claim was overstated — a future extensionless entry
+// with no served file would slip through. Now the gate parses the CORE_ASSETS
+// array directly and resolves EVERY entry: a file with an extension is statted
+// as-is; a known rewrite is statted via its target; an UNKNOWN extensionless
+// path is a hard failure (it can't be verified, so it must not pass silently).
+// Read the precache LIST from the SOURCE sw.js (the dist copy is minified, so
+// the CORE_ASSETS array structure isn't reliably parseable there); verify the
+// FILES exist in dist.
+const swSrc = readFileSync(path.join(root, 'sw.js'), 'utf8');
+
+// Vercel rewrites (see vercel.json): the precached URL → the dist file served.
+const REWRITE_TARGETS = {
+  '/': 'index.html',
+  '/install': 'install.html',
+};
+
+const coreBlock = swSrc.match(/CORE_ASSETS\s*=\s*\[([\s\S]*?)\]/);
+if (!coreBlock) {
+  console.error('[build] FATAL: could not locate CORE_ASSETS in sw.js');
+  process.exit(1);
+}
+const coreAssets = [...coreBlock[1].matchAll(/['"](\/[^'"]*)['"]/g)].map((m) => m[1]);
+
+const missing = [];
+const unverifiable = [];
+for (const p of coreAssets) {
+  let target = null;
+  if (/\.[a-z0-9]+$/i.test(p)) target = p;                 // has an extension
+  else if (p in REWRITE_TARGETS) target = '/' + REWRITE_TARGETS[p]; // known rewrite
+  else { unverifiable.push(p); continue; }                  // extensionless, unmapped
+  try { statSync(path.join(dist, target)); } catch { missing.push(`${p} → ${target}`); }
+}
+if (unverifiable.length) {
+  console.error(
+    `[build] FATAL: CORE_ASSETS has extensionless path(s) the gate can't verify: ${unverifiable.join(', ')}.\n` +
+    `        Add a REWRITE_TARGETS mapping in scripts/build.mjs (and a vercel.json rewrite).`
+  );
+  process.exit(1);
+}
 if (missing.length) {
-  console.error('[build] FATAL: sw.js references paths missing from dist:', missing);
+  console.error('[build] FATAL: sw.js precaches paths missing from dist:', missing);
   process.exit(1);
 }
 
-console.log(`[build] done. JS/CSS ${Math.round(before / 1024)} KB → ${Math.round(after / 1024)} KB (${Math.round((1 - after / before) * 100)}% smaller). sw.js asset check: ${coreAssets.length} paths OK.`);
+console.log(`[build] done. JS/CSS ${Math.round(before / 1024)} KB → ${Math.round(after / 1024)} KB (${Math.round((1 - after / before) * 100)}% smaller). sw.js asset check: ${coreAssets.length}/${coreAssets.length} precache paths OK (incl. rewrites).`);

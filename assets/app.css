@@ -52,6 +52,11 @@ button,
 }
 .skip-link:focus {
   top: 0;
+  /* L-iv: lift the focused skip-link ABOVE the splash (#pwSplash z-index
+     2147483000). Without this, a keyboard user tabbing during the load window
+     focuses the skip-link but it renders behind the opaque splash — visible
+     focus, invisible target. Max int keeps it on top of everything. */
+  z-index: 2147483647;
 }
 
 /* Global focus ring. 2px high-contrast white outline + a 4px dark halo so it

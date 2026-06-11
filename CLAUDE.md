@@ -49,7 +49,7 @@ Console logs show the active weights for each API call for debugging.
 
 ## CONDITION & IMAGE SYSTEM
 Images live in: `assets/images/bg/[condition]/[filename].jpg`
-Condition folders: `clear`, `cloudy`, `rain`, `wind`, `storm`, `cold`, `hot`, `uv` (alias to clear), `rain-possible` (alias to cloudy)
+Condition folders (9, see KNOWN_FOLDERS in assets/image-picker.js): `clear`, `cloudy`, `rain`, `wind`, `storm`, `cold`, `cold-clear`, `fog`, `heat`. Aliased conditions with no own folder: `uv` → clear, `rain-possible`/`partly-cloudy` → cloudy, `hail`/`thunder` → storm. (The hot-weather condition/key is `heat`, not `hot` — there is no `hot` folder or emoji.)
 
 Time slots (used in filenames):
 - `dawn` — 05:00–08:00
