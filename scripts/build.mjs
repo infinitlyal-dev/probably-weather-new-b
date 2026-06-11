@@ -22,6 +22,7 @@ import path from 'node:path';
 import esbuild from 'esbuild';
 
 import { LANGS, buildModuleSource } from './generate-copy-splits.mjs';
+import { importsModule } from './import-scan.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
@@ -88,12 +89,13 @@ function walk(dir, out = []) {
   return out;
 }
 
-// L-ii: weather-copy.js is now server-only and deleted from dist above. If ANY
-// client module still imports it, that import 404s at runtime (it minifies and
-// ships fine — the missing file only surfaces in the browser). Guard it at
-// build time: scan the served JS for an import of weather-copy.js and fail.
+// L-ii / G5: weather-copy.js is server-only and deleted from dist above. If ANY
+// client module still imports it — in ANY form, incl. the bare side-effect
+// import `import './weather-copy.js'` the old regex missed — that import 404s
+// at runtime (it minifies and ships fine; the missing file only surfaces in
+// the browser). importsModule (scripts/import-scan.mjs) covers every form.
 const clientJs = walk(path.join(dist, 'assets')).filter((f) => /\.js$/i.test(f));
-const offenders = clientJs.filter((f) => /from\s*['"][^'"]*weather-copy\.js['"]|import\(\s*['"][^'"]*weather-copy\.js['"]/.test(readFileSync(f, 'utf8')));
+const offenders = clientJs.filter((f) => importsModule(readFileSync(f, 'utf8'), 'weather-copy.js'));
 if (offenders.length) {
   console.error(
     '[build] FATAL: client module(s) import the server-only weather-copy.js ' +
