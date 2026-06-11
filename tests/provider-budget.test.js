@@ -25,6 +25,11 @@ function fakeRedis() {
       store.set(key, n);
       return n;
     },
+    async decr(key) {
+      const n = (store.get(key) ?? 0) - 1;
+      store.set(key, n);
+      return n;
+    },
     async expire(key, ttl) { this.expireCalls.push([key, ttl]); return 1; },
   };
 }
@@ -71,6 +76,31 @@ describe('consumeProviderBudgets — enforcement before fetch', () => {
     redis.store.set(`pw-budget:pirate:d:${Math.floor(NOW / 86400000)}`, PROVIDER_BUDGETS.pirate.perDay);
     const res = await consumeProviderBudgets(['pirate'], redis, NOW);
     expect(res.pirate).toBe(false);
+  });
+
+  // Codex DoS — minute-capped rejected attempts must NOT advance the day
+  // counter, or cheap floods lock a provider out for the whole UTC day.
+  it('minute-capped rejected attempts do NOT advance the day counter (no self-DoS)', async () => {
+    const redis = fakeRedis();
+    const dayKey = `pw-budget:pirate:d:${Math.floor(NOW / 86400000)}`;
+    // Far more attempts than the minute cap, all in the SAME minute.
+    for (let i = 0; i < 600; i++) await consumeProviderBudgets(['pirate'], redis, NOW);
+    // Only the minute-ALLOWED attempts (perMin = 20) consumed a day slot —
+    // not all 600. Old behaviour drained the day to 600 and locked it.
+    expect(redis.store.get(dayKey)).toBe(PROVIDER_BUDGETS.pirate.perMin);
+    expect(redis.store.get(dayKey)).toBeLessThan(PROVIDER_BUDGETS.pirate.perDay);
+    // Proof it's not locked: the NEXT minute, pirate is allowed again.
+    expect((await consumeProviderBudgets(['pirate'], redis, NOW + 60000)).pirate).toBe(true);
+  });
+
+  it('a day-rejected (minute-ok) attempt reverts its day increment (never spends a slot it cannot use)', async () => {
+    const redis = fakeRedis();
+    const dayKey = `pw-budget:tomorrow:d:${Math.floor(NOW / 86400000)}`;
+    redis.store.set(dayKey, PROVIDER_BUDGETS.tomorrow.perDay); // day already at cap
+    const res = await consumeProviderBudgets(['tomorrow'], redis, NOW);
+    expect(res.tomorrow).toBe(false);
+    // The increment was reverted — counter stays at cap, not cap+1.
+    expect(redis.store.get(dayKey)).toBe(PROVIDER_BUDGETS.tomorrow.perDay);
   });
 
   it('an exhausted provider is skipped while the rest proceed (all-but-one)', async () => {

@@ -122,17 +122,29 @@ export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = 
     const cfg = PROVIDER_BUDGETS[p];
     if (!cfg) { result[p] = true; return; } // unbudgeted provider — never block
     try {
-      // Day window first (cheap short-circuit on the binding monthly tier),
-      // then minute. Both must pass. Each over-ceiling increment stays counted
-      // (conservative: a flood keeps the window pinned blocked).
+      // MINUTE window first. Its counter increments on every attempt (a flood
+      // keeps the minute window pinned — intended, and the minute key resets
+      // every 60s so it can't lock anything for long).
       let allowed = true;
-      if (Number.isFinite(cfg.perDay)) {
-        const dayOk = await consumeWindow(redis, `pw-budget:${p}:d:${db}`, 90000, cfg.perDay);
-        allowed = allowed && dayOk;
-      }
       if (Number.isFinite(cfg.perMin)) {
-        const minOk = await consumeWindow(redis, `pw-budget:${p}:m:${mb}`, 90, cfg.perMin);
-        allowed = allowed && minOk;
+        allowed = await consumeWindow(redis, `pw-budget:${p}:m:${mb}`, 90, cfg.perMin);
+      }
+      // DAY window consumed ONLY when the call is permitted so far (minute
+      // passed). This closes the self-DoS Codex found: previously the day
+      // counter incremented on EVERY attempt, so a burst of cheap
+      // minute-rejected attempts (600 in one minute) drained the day budget and
+      // locked the provider for the whole UTC day. Now a minute-rejected
+      // attempt never touches the day counter. If the day itself is over
+      // ceiling, the increment is reverted so a day-rejected attempt also never
+      // spends a day slot.
+      if (allowed && Number.isFinite(cfg.perDay)) {
+        const dayKey = `pw-budget:${p}:d:${db}`;
+        const dayCount = await redis.incr(dayKey);
+        if (dayCount === 1) { try { await redis.expire(dayKey, 90000); } catch { /* non-fatal */ } }
+        if (dayCount > cfg.perDay) {
+          allowed = false;
+          try { await redis.decr(dayKey); } catch { /* best-effort revert */ }
+        }
       }
       result[p] = allowed;
     } catch {
