@@ -400,3 +400,71 @@ None. All gates passed: every touched JS `node --check` clean; suite 1521/1521 g
 - Watch the first deploy after push — the build now has two new hard gates (copy-bank drift, client weather-copy import) plus the rewrite-aware precache check; all pass locally.
 - Provider-budget ceilings are conservative starting points sized from published free tiers — tune perMin/perDay from real Vercel traffic once observed (the `[pw-budget]` skip logs surface throttling).
 - Provisional zu/xh/st splash strings from the prior session still pending native review (unchanged here).
+
+---
+# Checkpoint: Fix session from the Codex adversarial review (G0–G5)
+**Generated:** 2026-06-12 (SAST)
+**Task:** Action the Codex review findings. Sequenced atomic commits, suite green after every group, push at end. Excluded: H4 banner, Honor OEM flow, reviewer-approved Sesotho weather terms, the documented rate-limiter fail-open.
+**Skills Used:** supervisor (this checkpoint).
+
+## LEAD — Group 0 GATE finding: /share IS query-dependent (HIGH, fixed)
+**Evidence:** `vercel.json` rewrites `/share` → `/api/share` (a server-rendered function — there is no static `share.html`). `api/share.js` `buildShareMetaHtml` bakes per-coordinate values into the HTML body: `description` (the weather summary for those coords), `og:image`/`twitter:image` = `buildOgImageUrl({lat,lon,lang})`, `og:url`, and the redirect `window.location.replace('/?lat=…&lon=…&lang=…')`. `Content-Type: text/html`. So `/share` HTML is **query-dependent**, NOT a static runtime-reading shell — Codex's concern is real.
+
+**The bug:** the SW sees the request path as `/share` (the `/api` rewrite is server-side), which doesn't match the `/api/` early-return, so it fell into the HTML branch. That branch applied `ignoreSearch` + a canonical query-stripped write-back to ALL HTML navigations. Opening `/share?lat=<B>` after `/share?lat=<A>` matched the cached canonical `/share` (A's body) via `ignoreSearch` and served — and redirected to — A's location.
+
+**Fix (sw.js):** scope `ignoreSearch` + canonical write-back to the static, query-INDEPENDENT shell pages only (`isShellPage`: `/`, `/index.html`, `/install`, `/install.html` — they read `location.search` at runtime). Query-dependent navigations like `/share` now match and cache under their EXACT, query-bearing URL, so distinct coordinates never collapse. No `CACHE_VERSION` bump (routing-only; the stale canonical `/share` entry becomes unreachable under exact-match). Behavioural test drives the real sw.js fetch handler against a fake `ignoreSearch`-honouring CacheStorage: two `/share?lat=` URLs each get their own body, `/share` is keyed exactly, and `/` shell variants still share one entry.
+
+## Per-commit map (base 2bb3146 → HEAD)
+| SHA | Group | Severity | What it does |
+|-----|-------|----------|--------------|
+| `fa2f4db` | G0 | HIGH | /share query-dependent → sw.js no longer collapses distinct share links |
+| `7ab7006` | G1 | HIGH | provider-budget day counter consumes only on permitted fetches (self-DoS) |
+| `2f6022a` | G2 | MEDIUM | weather cache key v1→v2 — name-poisoning fix takes effect instantly |
+| `1f7d0b3` | G3 | MEDIUM | honest low confidence when few sources actually returned data |
+| `d9589fb` | G4 | MEDIUM | explicit boot-failure state instead of a silent forever-Loading shell |
+| `42c2112` | G5 | LOW | build import-gate catches bare side-effect / re-export imports |
+
+## Decisions Made
+- **G1 — minute-first ordering + day-revert.** Check the minute window first; consume the day slot only when the minute check passed; if the day is over ceiling, `decr` the increment. Why: a minute-rejected attempt (cheap to flood) must never touch the long-lived day counter, and a day-rejected attempt must not spend a slot it can't use. Alternative considered: leaving over-ceiling increments counted (the old "conservative" stance) — rejected, that IS the DoS.
+- **G0 — scope to shell pages vs exclude /share.** Chose "shell pages get the SWR collapse; everything else exact-match" over "blocklist /share." Why: a positive allow-list of query-independent pages is safer than a blocklist — a future query-dependent route is correct-by-default (exact-match), not a new collapse waiting to happen.
+- **G2 — bump key vs flush Redis.** Bumped the key prefix (v1→v2). Why: instant, code-only, no ops action; old `v1` entries simply expire on their 5-min TTL untouched. `weatherCacheKey` is the only producer and the only read path.
+- **G3 — single-source = low, two-source left as-is.** Forced low confidence at `<2` active sources and required `≥2` for strong/decent. Why: a single source has zero corroboration (unarguably low); two independent sources agreeing is reasonable, so I didn't over-flag normal degraded days. The count uses `norms.filter(Boolean).length`, which already excludes budget-blocked/failed sources — "sources that truly returned data this request."
+- **G4 — boot-error in index.html, gated on liveness flags.** app.js sets `__PW_ALIVE` (init started) and `__PW_FIRST_RENDER` (rendered). The overlay shows on: a pre-render script error, a capture-phase `assets/app.(js|css)` resource 404, or load+grace with `__PW_ALIVE` unset. A slow-but-alive app is left alone (only the splash clears). Why: distinguishes a genuinely dead boot from a slow one, so we never error a working-but-slow app; lives in index.html so it survives app.js failing to load/parse.
+- **G5 — extracted matcher to scripts/import-scan.mjs.** Why: build.mjs runs side-effects on import (can't be imported in a test); a separate pure module makes the scan unit-testable against the real implementation.
+
+## PROVISIONAL strings — flag for native review (G4 boot-error)
+EN + AF ship-ready; zu/xh/st PROVISIONAL:
+- zu: "Yehlulekile ukulayisha. Thepha ukulayisha kabusha."
+- xh: "Ayikwazanga ukulayisha. Cofa ukulayisha kwakhona."
+- st: "Ha ea khona ho jarolla. Tobetsa ho jarolla hape."
+(New strings, not the reviewer-approved weather terms — queue with the next zu-qc/xh-qc/st-qc pass.)
+
+## Acknowledged tradeoffs — ON THE RECORD (not defects, not "fixed")
+1. **Provider-budget Redis-down fallback is per-INSTANCE, not fleet-wide.** During an Upstash outage the structural `perDay` guarantee (Pirate ≤ 600/day → monthly tier safe) weakens to a loose per-instance bound: each Fluid Compute instance enforces its own conservative per-minute ceiling, so the true global total during an outage is `instances × ceiling`, not a single shared budget. This is the deliberate fail-OPEN-on-availability choice (an outage degrades fidelity, not uptime). Outages are typically short; the alternative (fail closed on Redis loss) would take the app down. Documented in `api/_lib/provider-budget.js`.
+2. **The 240/min per-IP weather cap sits BEFORE cache-eligibility.** A CGNAT burst (many real users behind one carrier IP) is counted against the per-IP cap before the request reaches the rounded-coords cache, so a busy carrier NAT could 429 organic users even though most of their requests would have been cache hits. Now that the provider budget owns quota protection, the per-IP cap is purely abuse-dampening — this is a TUNING LEVER (raise the weather cap, or move the limiter after cache-eligibility), not a defect. Noted for future tuning from real traffic.
+
+## Issues Found
+- Issue: /share cross-contamination via SW cache collapse. Severity: CRITICAL (HIGH). Status: FIXED (G0).
+- Issue: provider-budget self-DoS via day-counter on rejected attempts. Severity: IMPORTANT (HIGH). Status: FIXED (G1).
+- Issue: stale v1 cache entries could still serve a poisoned name post-fix. Severity: IMPORTANT. Status: FIXED (G2).
+- Issue: dishonest 'decent'/'high' confidence on single-source responses. Severity: IMPORTANT. Status: FIXED (G3).
+- Issue: silent forever-Loading shell on a dead boot. Severity: IMPORTANT. Status: FIXED (G4).
+- Issue: import-gate missed side-effect imports. Severity: MINOR. Status: FIXED (G5).
+
+## Blockers
+None. All gates passed: every touched JS `node --check` clean; suite 1543/1543 green after every group; `npm run build` clean (26/26 precache paths, drift gate + tightened import guard active); G0 share-collapse and G1 day-counter behaviourally tested; G4 boot-error verified live (healthy boot shows no error + clears splash; simulated app.js 404 renders the overlay with 5 lines + a working ↻ Reload).
+
+## Quality Checklist
+- [x] Supervisor loaded; checkpoint appended
+- [x] HEAD confirmed 2bb3146 (== origin/main) before starting
+- [x] Sequenced atomic commits; suite green after every group; node --check per group
+- [x] G0 resolved as a GATE with explicit evidence before touching sw.js
+- [x] Exclusions honoured (H4, Honor flow, reviewer-approved Sesotho terms, documented fail-open)
+- [x] Provisional zu/xh/st boot-error strings flagged
+- [x] Two acknowledged tradeoffs recorded (not fixed)
+- [x] Pushed to main
+
+## Next Steps
+- Watch the first deploy after push (sw.js routing change activates on the next SW update; the v2 cache key takes effect immediately).
+- Tune the per-IP weather cap / limiter placement and the provider-budget ceilings from observed Vercel traffic (tradeoffs #1, #2).
+- Native review of the 3 provisional boot-error strings.
