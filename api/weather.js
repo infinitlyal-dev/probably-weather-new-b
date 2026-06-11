@@ -15,6 +15,9 @@
 
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { weatherLimiter } from './_lib/limiters.js';
+// M4: heat thresholds shared with the client (assets/app.js) — one constant
+// family, no more 32-vs-35 badge/condition drift.
+import { HEAT_WARM_C, HEAT_EXTREME_C } from '../assets/weather-thresholds.js';
 
 const DEBUG = false;
 const debugLog = (...args) => {
@@ -995,6 +998,13 @@ export default async function handler(req, res) {
     // MET Norway's high-res model is more accurate for local extremes.
     // =========================================================================
 
+    // Snapshot the pre-adjustment weights: LOW_WEIGHTS (V2-3, below) must be
+    // rebuilt from these, applying only the adjustments whose rationale holds
+    // for daily LOWS — the MET boost is a daily-HIGHS argument and must not
+    // leak into the low blend via the mutated array (M6).
+    const BASE_WEIGHTS = [...SOURCE_WEIGHTS];
+    let waDedupFactor = 1;
+
     // Rec 1: When Open-Meteo and WeatherAPI daily highs are near-identical
     // (within 0.5°C), they're likely the same ECMWF model — halve WA weight
     if (isNum(norms[0]?.todayHigh) && isNum(norms[1]?.todayHigh)) {
@@ -1002,6 +1012,7 @@ export default async function handler(req, res) {
       if (ecmwfSpread <= 0.5) {
         debugLog(`[Weight adjust] OM=${norms[0].todayHigh}°C WA=${norms[1].todayHigh}°C (spread ${ecmwfSpread}°C ≤ 0.5) — halving WA weight (likely same ECMWF model)`);
         SOURCE_WEIGHTS[1] = SOURCE_WEIGHTS[1] / 2; // 0.25 → 0.125
+        waDedupFactor = 0.5; // model-identity argument applies to lows too
       }
     }
 
@@ -1028,9 +1039,12 @@ export default async function handler(req, res) {
 
     // Recompute hourly weights from adjusted source weights (excl Pirate Weather).
     // Order: OM, WA, MET, Tomorrow.io — mirrors hourlies array layout.
+    // M5: no intermediate rounding — the old `Math.round(x*100)/100` here made
+    // the weights sum to ≠1.0, which resolveWeights() then re-normalised,
+    // silently shifting each source's intended share after a boost fired.
     const hBase = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[3], SOURCE_WEIGHTS[4]];
     const hTotal = hBase.reduce((a, b) => a + b, 0);
-    HOURLY_SOURCE_WEIGHTS = hBase.map(w => Math.round(w / hTotal * 100) / 100);
+    HOURLY_SOURCE_WEIGHTS = hBase.map(w => w / hTotal);
 
     debugLog(`[Weights] OM=${SOURCE_WEIGHTS[0]} WA=${SOURCE_WEIGHTS[1]} PW=${SOURCE_WEIGHTS[2]} MET=${SOURCE_WEIGHTS[3]} TI=${SOURCE_WEIGHTS[4]} | Hourly=[${HOURLY_SOURCE_WEIGHTS.join(',')}]`);
 
@@ -1057,7 +1071,14 @@ export default async function handler(req, res) {
     // Research found MET Norway todayLow runs +3.9°C warm on average across all 10 SA locations.
     // The model doesn't capture nighttime radiative cooling well for SA inland conditions.
     // [0]=OM, [1]=WA, [2]=PW, [3]=MET, [4]=Tomorrow.io
-    const LOW_WEIGHTS = [SOURCE_WEIGHTS[0], SOURCE_WEIGHTS[1], SOURCE_WEIGHTS[2], 0.10, SOURCE_WEIGHTS[4]];
+    //
+    // M6: rebuilt from BASE_WEIGHTS, not the mutated SOURCE_WEIGHTS. Each
+    // dynamic adjustment is applied only where its rationale covers lows:
+    //   · ECMWF dedup (waDedupFactor) — model identity, applies to lows: YES
+    //   · MET high-boost (OM 0.30→0.25, MET→0.40) — a daily-HIGHS accuracy
+    //     argument; previously its OM reduction leaked in here while MET
+    //     stayed pinned at 0.10, skewing the low blend for no reason: NO
+    const LOW_WEIGHTS = [BASE_WEIGHTS[0], BASE_WEIGHTS[1] * waDedupFactor, BASE_WEIGHTS[2], 0.10, BASE_WEIGHTS[4]];
     const dailyLowW = resolveWeights(dailies, LOW_WEIGHTS);
 
     // Weighted average across source slots (skips nulls).
@@ -1213,7 +1234,7 @@ export default async function handler(req, res) {
       // each source's own daily high/low/desc.
       const dailyConsensusPredicates = {
         storm: (d) => d && categorizeDesc(d.descs?.[i]) === 'storm',
-        heat:  (d) => d && isNum(d.highs?.[i]) && d.highs[i] >= 30,
+        heat:  (d) => d && isNum(d.highs?.[i]) && d.highs[i] >= HEAT_WARM_C,
         cold:  (d) => d && ((isNum(d.highs?.[i]) && d.highs[i] <= 10) || (isNum(d.lows?.[i]) && d.lows[i] <= 0)),
       };
       if (dailyConsensusPredicates[dailyConditionKey] && descEntries.length >= 3) {
@@ -1458,7 +1479,7 @@ export default async function handler(req, res) {
     const consensusPredicates = {
       storm: (n) => categorizeDesc(n.desc) === 'storm',
       wind:  (n) => isNum(n.windKph) && n.windKph >= 25,
-      heat:  (n) => (isNum(n.nowTemp) && n.nowTemp >= 30) || (isNum(n.feelsLike) && n.feelsLike >= 35),
+      heat:  (n) => (isNum(n.nowTemp) && n.nowTemp >= HEAT_WARM_C) || (isNum(n.feelsLike) && n.feelsLike >= HEAT_EXTREME_C),
       cold:  (n) => (isNum(n.nowTemp) && n.nowTemp <= 10) || (isNum(n.feelsLike) && n.feelsLike <= -5),
     };
     if (consensusPredicates[nowConditionKey] && activeNorms.length >= 3) {
@@ -2061,7 +2082,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
       d.includes('hail') || d.includes('blizzard') || d.includes('freezing')) return { key: 'cold', reason: 'desc-winter-precip' };
 
   // 4. Extreme heat
-  if (isNum(tempC) && tempC >= 35)            return { key: 'heat', reason: 'extreme-heat-temp' };
+  if (isNum(tempC) && tempC >= HEAT_EXTREME_C) return { key: 'heat', reason: 'extreme-heat-temp' };
   if (isNum(feelsLikeC) && feelsLikeC >= 38) return { key: 'heat', reason: 'extreme-heat-feels-like' };
 
   // 5. Heavy rain
@@ -2102,7 +2123,7 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   }
 
   // 15. Hot (not extreme, but warm)
-  if (isNum(tempC) && tempC >= 30)            return { key: 'heat', reason: 'warm-temp' };
+  if (isNum(tempC) && tempC >= HEAT_WARM_C)   return { key: 'heat', reason: 'warm-temp' };
 
   // 16. Moderate UV — daytime only, not significantly cloudy (40%+ blocks UV), not a cold day
   if (isDay && isNum(uvIndex) && uvIndex >= 6 && !(isSignificantCloud || isMostlyCloudy || cloudyByDesc) && !uvBlockedByCold) return { key: 'uv', reason: 'moderate-uv-with-temp-gate' };

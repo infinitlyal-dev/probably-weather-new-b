@@ -126,6 +126,11 @@ async function resolveShareDescription({ lat, lon, lang, hasCoords, clientIp }) 
     const payload = await callWeatherHandler(lat, lon, clientIp);
     return buildShareDescription(payload, lang);
   } catch (error) {
+    // M8: the static-description fallback is correct UX, but silently eating
+    // the error left the operator blind to systematic failures (quota
+    // exhaustion, rate-limit saturation, a geographic hole). Greppable
+    // prefix matches the [pw-source-fail] convention in api/weather.js.
+    console.error(`[pw-share-fail] weather fetch failed lat=${lat} lon=${lon}: ${error?.message || error}`);
     return STATIC_DESCRIPTION;
   }
 }

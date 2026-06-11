@@ -22,6 +22,7 @@ import {
 } from './refresh-behaviour.js';
 import { startFirstOpenLocation } from './first-open-location.js';
 import { shouldPersistHomeName } from './home-name.js';
+import { HEAT_EXTREME_C } from './weather-thresholds.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel) => document.querySelector(sel);
@@ -82,7 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const STORAGE = { favorites: "pw_favorites", recents: "pw_recents", home: "pw_home", location: "pw_location", lastGps: "pw_last_gps" };
   const SCREENS = [screenHome, screenHourly, screenWeek, screenDayDetail, screenSearch, screenSettings, screenSources];
-  const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: 32 };
+  // M4: HOT_C now reads the shared extreme-heat constant (35, was a local 32).
+  // These numeric rungs are FALLBACKS behind the server's conditionKey — the
+  // old 32 let the client second-guess the server's verdict in the 32-34 band.
+  const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: HEAT_EXTREME_C };
 
   // ========== INDEXEDDB WEATHER CACHE ==========
   const CACHE_DB = 'pw_weather_cache';

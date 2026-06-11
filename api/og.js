@@ -353,7 +353,16 @@ export default async function handler(req, res) {
 
   try {
     const hasValidCoords = Number.isFinite(lat) && Number.isFinite(lon) && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
-    const payload = hasValidCoords ? await callWeatherHandler(lat, lon, getClientIp(req)) : null;
+    let payload = null;
+    if (hasValidCoords) {
+      try {
+        payload = await callWeatherHandler(lat, lon, getClientIp(req));
+      } catch (weatherErr) {
+        // M8: weather failure → generic card is correct, but log it so quota /
+        // rate-limit saturation is visible in the function logs.
+        console.error(`[pw-og-fail] weather fetch failed lat=${lat} lon=${lon}: ${weatherErr?.message || weatherErr}`);
+      }
+    }
     const model = payload ? buildOgViewModel(payload, { lang }) : buildFallbackViewModel(lang);
     sendPng(res, 200, await renderPng(model));
   } catch {

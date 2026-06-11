@@ -48,7 +48,7 @@ function loadServiceWorkerContext() {
 
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
-    expect(importedModules.length).toBe(11);
+    expect(importedModules.length).toBe(12); // +weather-thresholds.js (M4, 2026-06-11)
     // Spot-check the ones that were previously missing from the shell
     // (incl. refresh-behaviour.js — a multiline import that's easy to miss).
     for (const mod of [
@@ -61,6 +61,7 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
       '/assets/refresh-behaviour.js',
       '/assets/first-open-location.js',
       '/assets/home-name.js',
+      '/assets/weather-thresholds.js',
     ]) {
       expect(importedModules).toContain(mod);
     }

@@ -10,18 +10,30 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
-// Per-IP per-minute caps (sliding window). Sized so a real user never hits them
-// (60/min = 1 req/s sustained, which no human holds) but a hammering script
-// trips instantly:
-//   · weather 60 — bursty legit usage (miniFetchTemp fires one /api/weather per
-//     search result, ~8/search, cached) needs headroom, and it protects the
-//     5-provider fan-out from quota burn.
-//   · geocode 60 — search-as-you-type + reverse-geocode bursts.
-//   · errors  30 — pure log-spam vector (errors.js flagged this as the deferred
-//     complement to origin-gating); kept tightest.
+// Per-IP per-minute caps (sliding window).
+//
+// M7 (2026-06-11): resized for SA carrier CGNAT. "Per IP" on mobile here means
+// per NAT gateway — MTN/Vodacom put hundreds-to-thousands of users behind one
+// public IP, and each search renders up to ~8 mini weather calls. The old
+// weather/geocode 60/min could trip on ORGANIC traffic from one busy carrier
+// IP, and every 429 on ?reverse=1 used to seed the coords-name bug (H2 — now
+// non-destructive, but a 429 still costs the user a name resolution).
+//
+// New posture: caps sized so no plausible NAT-bucket of real users hits them
+// (~40 concurrent active users × ~8 calls in a burst minute), while a
+// single-machine hammering script (hundreds/min sustained from one IP without
+// NAT-scale diversity) still trips. The sliding window already smooths bursts;
+// these are ceilings, not targets — Upstash cost scales with requests, not
+// with the cap size.
+//   · weather 480 — search minis (~8/search) × NAT concurrency + first-open
+//     bursts (weather + reverse + launch refresh). Protects the 5-provider
+//     fan-out from scripted quota burn, not from real users.
+//   · geocode 240 — search-as-you-type + reverse-geocode bursts.
+//   · errors   30 — pure log-spam vector; stays tight (error reporting is
+//     client-capped at 10/session, so 30/min/IP is already generous).
 export const RATE_LIMITS = {
-  weather: { max: 60, window: '60 s' },
-  geocode: { max: 60, window: '60 s' },
+  weather: { max: 480, window: '60 s' },
+  geocode: { max: 240, window: '60 s' },
   errors:  { max: 30, window: '60 s' },
 };
 
