@@ -329,3 +329,74 @@ None for the review itself (completed via substitute reviewers + independent ver
 ## Next Steps
 - Fix session priority: HIGH-1 (limiter/budget) → HIGH-2 (splash failsafe) → HIGH-3 (cache name). HIGH-2 and HIGH-3 are small, contained edits; HIGH-1 is a design decision (cap vs Redis-independent provider budget).
 - These findings are review output only — nothing was changed. A separate session should action them.
+
+---
+# Checkpoint: Fix session from the adversarial review (HIGH-1/2/3, MEDIUMs, LOWs)
+**Generated:** 2026-06-12 (SAST)
+**Task:** Action the findings from the adversarial self-review (commit 10cd039). Sequenced atomic commits, suite green after every group, push at end. Excluded: H4 banner placement, Honor OEM flow, anything Sesotho.
+**Skills Used:** supervisor (this checkpoint).
+
+## Per-commit map (base 4eba23c → HEAD)
+| SHA | Group | What it does |
+|-----|-------|--------------|
+| `8c25fff` | 1 (HIGH-1) | Global per-provider call-budget guard (`api/_lib/provider-budget.js`), enforced before fetch, keyed per-provider; per-IP weather cap 480→240. |
+| `890dbc1` | 2 (HIGH-2) | Splash failsafe — CSS 8s auto-hide + index.html window error/load handlers + app.js in-handler guard. |
+| `73a8266` | — | Test hygiene: `vitest.config.js` excludes stale `.claude/worktrees/*` clones (made the gate deterministic). |
+| `879eff6` | 3 (HIGH-3) | Cache stores/serves only the server-resolved name, never the caller's `&name=`; two pure helpers + 12 tests. Also closes M-i. |
+| `ceaf338` | 4 (MEDIUM) | `pw_last_bg` onerror→default (M-ii); build regenerate→**verify**, hard-fails on stale banks (M-iii). |
+| `8474cbc` | 5 (LOW) | Build gate covers rewrite paths (L-i) + weather-copy client-import guard (L-ii); CLAUDE.md folder list (L-iii); skip-link z-index over splash (L-iv). |
+
+## HIGH-1 — the Pirate-quota math behind the provider ceiling
+**Why the per-IP cap couldn't protect quota:** the weather cache key is derived from caller coordinates, so an attacker varying coords by 0.02°/request misses the cache every time → full 5-provider fan-out per request. At the old 480/min per-IP cap, one IP exhausts Pirate Weather's **20,000/MONTH** free tier in ~42 min; and an Upstash outage fails the per-IP limiter open too.
+
+**Fix — protect quota directly, keyed per-provider (coordinate-varying can't bypass):**
+- **fail CLOSED on quota** (never a call past the ceiling), **fail OPEN on availability** (Redis down → conservative per-instance ceiling, never unlimited).
+- Ceilings = each provider's published free tier with margin. **Pirate is binding (20k/month):**
+  - `20000 / 31 days ≈ 645/day` → **perDay 600** (max `600 × 31 = 18,600 < 20,000` → exhausting the monthly tier is now *structurally impossible*, regardless of attacker behaviour or coordinate variation).
+  - `600 / 1440 min ≈ 0.42/min avg` → **perMin 20** (single-minute spike cap; was effectively unbounded at 480/min/IP).
+  - Others: OM 600/min·10k/day, WA 200/min·30k/day, MET 300/min, Tomorrow.io 25/min·500/day — all their published free limits.
+- A provider over ceiling is skipped (request→null, ensemble proceeds on the rest); all-exhausted falls through to the existing 503 → SW/client serves its own cache.
+
+**Proposed new per-IP weather cap: 240/min (down from 480).** Reasoning: with quota now owned by the provider budget, the per-IP cap is *purely abuse-dampening* (stop one IP monopolising function concurrency/Redis) — it no longer needs the 480 it was raised to (which defended quota it couldn't actually defend, and was the HIGH-1 vector). 240/min ≈ 4 req/s sustained per IP stays CGNAT-generous: a busy carrier-NAT bucket's search-mini bursts (~8/search × concurrent users, mostly cache-served now) clear comfortably, while the single-IP flood surface halves vs 480. Matches the geocode cap. Could go lower, but 240 keeps margin for genuine CGNAT peaks now that quota risk is decoupled.
+
+## Decisions Made
+- **Decision:** add a per-DAY window for Pirate (and Tomorrow.io), not just per-minute. **Why:** a per-minute cap alone can't bound a 20k/MONTH tier for bursty traffic; the daily cap is what makes monthly exhaustion structurally impossible. **Alternative considered:** per-minute only (the literal ask) — rejected as insufficient for the binding constraint; documented the math.
+- **Decision:** skip the budget guard under vitest on the *implicit default path* (sentinel-distinguished from explicit-null). **Why:** mocked-fetch unit tests have no real upstream calls, so the budget is meaningless and the conservative instance fallback (pirate 5/min) would trip across a test file's many frozen-time handler calls. The guard logic is unit-tested directly with an injected client+clock; explicit-null callers still exercise the real instance fallback. **Alternative considered:** raising instance ceilings to not trip tests — rejected (weakens real outage protection).
+- **Decision:** splash failsafe lives primarily in **index.html**, not app.js. **Why:** it must survive app.js failing to *load/parse*, which an app.js-internal try/catch can't. Three independent layers (CSS / index.html JS / app.js guard) so no single failure mode keeps the splash up. **Alternative considered:** a try/finally wrapping app.js init — rejected: init kicks async render, so `finally` would hide the splash before data loads; and it wouldn't cover module-load failure.
+- **Decision:** HIGH-3 caches only the server-resolved name; a non-placeholder caller's real name is NOT shared to the cell (cell caches 'Unknown', neighbours re-resolve). **Why:** "never cache or re-serve a caller-supplied name" is the only safe rule — even a real typed name is caller-supplied. Slightly less cache benefit (one extra client geocode for a placeholder neighbour) for a hard guarantee.
+- **Decision:** build M-iii is regenerate-and-**verify** (hard-fail on drift), not regenerate-overwrite. **Why:** the review's concern was silent self-heal masking divergence; failing the build forces the committed banks to stay correct.
+- **Decision:** added `vitest.config.js` excluding worktrees (its own commit). **Why:** the suite was scanning 3 stale worktree clones, inflating the count ~3× (the real suite is 1521 tests, not ~4687) and causing the intermittent "1 failed" flakes seen across sessions. This makes "suite green after every group" actually deterministic.
+
+## Code Changes (what each does)
+- `api/_lib/provider-budget.js` (new) — per-provider Redis budget with per-minute/per-day windows, per-instance fallback, injectable client+clock.
+- `api/weather.js` — consume budgets before the 5-provider fan-out, gate each request; `getSettledValue` treats fulfilled-null as a clean failure; split server-resolved name from caller name; cache only the sanitized name; serve `responseLocationName` on hit.
+- `api/_lib/weather-cache.js` — `cacheableLocationName` + `responseLocationName` helpers (HIGH-3 + M-i).
+- `api/_lib/limiters.js` — weather cap 480→240 with reasoning.
+- `index.html` — splash CSS failsafe keyframe + inline window error/load handlers; `pw_last_bg` onerror→default.
+- `assets/app.js` — in-handler splash error guard.
+- `assets/app.css` — `.skip-link:focus` z-index above splash.
+- `scripts/build.mjs` — copy-bank drift verify (fail on stale); precache gate covers rewrite/extensionless paths; client weather-copy import guard.
+- `CLAUDE.md` — condition-folder list reconciled.
+- `vitest.config.js` (new) — scope to `tests/`, exclude worktrees/dist.
+
+## Issues Found
+- Issue: the suite count was inflated ~3× by stale worktree clones; real suite is 1521 tests. Severity: MINOR (measurement). Status: FIXED (`vitest.config.js`). Note for the architect: prior "4636/4687 green" reports counted worktree duplicates — the canonical figure is 1521.
+- Issue: per-minute provider ceilings alone can't guarantee a monthly free tier for bursty traffic. Severity: addressed via per-DAY window on the binding providers. Status: FIXED.
+- Issue: during an Upstash outage the per-instance fallback bounds *each instance*, not the true global total (many Fluid instances). Severity: MINOR (outages are short; far better than unlimited). Status: ACCEPTED + documented in provider-budget.js.
+
+## Blockers
+None. All gates passed: every touched JS `node --check` clean; suite 1521/1521 green after every group (deterministic post-config); `npm run build` clean (26/26 precache paths, drift gate + import guard active); provider-budget fail-path and splash throw-path behaviourally tested.
+
+## Quality Checklist
+- [x] Supervisor loaded; checkpoint appended
+- [x] HEAD confirmed (10cd039 = 4eba23c + review doc; origin/main at 4eba23c)
+- [x] Sequenced atomic commits; suite green after every group; node --check per group
+- [x] Exclusions honoured (H4, Honor flow, Sesotho)
+- [x] Provider-budget tests: enforce-before-fetch, per-provider isolation, per-day cap, exhausted-skip, all-exhausted, Redis-down fallback
+- [x] Splash throw-path tested; HIGH-3 cross-user poisoning tested end-to-end
+- [x] Pushed to main (this checkpoint + 6 fix commits + the prior review doc)
+
+## Next Steps
+- Watch the first deploy after push — the build now has two new hard gates (copy-bank drift, client weather-copy import) plus the rewrite-aware precache check; all pass locally.
+- Provider-budget ceilings are conservative starting points sized from published free tiers — tune perMin/perDay from real Vercel traffic once observed (the `[pw-budget]` skip logs surface throttling).
+- Provisional zu/xh/st splash strings from the prior session still pending native review (unchanged here).
