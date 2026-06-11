@@ -229,3 +229,103 @@ None. All gates passed: suite green after every group (final: 132 files / 4,663 
 - Watch the first Vercel deploy (new build pipeline) — verify www serves minified assets and /api/locate returns real coords in production.
 - Queue zu-qc / xh-qc / st-qc passes for the provisional strings.
 - H4 (install banner over the CTA row) remains open by design — feeds the upcoming front-end pass with L7.
+
+---
+# Checkpoint: Adversarial self-review of session 2931d9f..4eba23c (findings only, no code changes)
+**Generated:** 2026-06-11 (SAST)
+**Task:** Adversarial review of the 9-commit backend/wiring session, via codex-rescue (standing discipline). No code changes. Scope: git diff 2931d9f..4eba23c.
+**Skills Used:** supervisor (this checkpoint); codex:rescue + codex:setup (attempted — see Tooling note).
+
+## TOOLING NOTE — codex-rescue could not run; substituted independent subagents
+- `codex:rescue` failed: Codex CLI is installed (v0.130.0) but **not authenticated**, and `~/.codex/config.toml:5` has a parse error (`unknown variant 'default', expected 'fast' or 'flex'`). Authentication needs an interactive `codex login` (browser/device flow) that cannot be completed autonomously.
+- Per the prompt's hard rule (never let codex-rescue fetch the wrong repo on Windows), I had already generated the diff + full high-risk file contents LOCALLY and embedded them in two payload files (REVIEW_PAYLOAD_A/B.md, since deleted). Nothing was ever fetched.
+- Substitute: two fresh-context general-purpose subagents ran the adversarial passes against those local payloads, plus my own independent verification of the headline findings (Node probes of snapCoord; grep traces of the import graph, build gate, splash failsafe; manual trace of the cache→persistence chain). When `codex login` is completed, re-running through Codex specifically is a one-command follow-up.
+- ACTION FOR AL: run `codex login` (and fix the `default` profile in `~/.codex/config.toml`) if you want the Codex engine itself on future reviews.
+
+## FINDINGS (severity-ordered)
+
+### HIGH-1 — The 480/min weather cap is defeated by coordinate variation AND coupled to the limiter's own fail-open; one IP can exhaust Pirate Weather's monthly free tier in ~42 minutes.
+**Files:** `api/_lib/limiters.js:23` (`weather: { max: 480 }`), `api/_lib/weather-cache.js` (`weatherCacheKey` derives the key from caller coords), `api/weather.js:182-183` (cache lookup), shared `getRedis()` `api/_lib/limiters.js:31`.
+- The 60→480 raise was justified by "the rounded-coords cache protects the 5-provider fan-out." **False against any adversary**: the cache key is `weatherCacheKey(lat, lon)` and the caller controls lat/lon. Incrementing lon by 0.02° each request yields a fresh key → guaranteed miss → full fan-out every request. The cache only ever helps organic clustering; it gives zero adversarial protection.
+- Quota math (binding constraint = Pirate Weather, 1 call per uncached request, 20,000 calls/**month** free tier): one IP at the cap = 480 Pirate calls/min → **20000 / 480 ≈ 42 min** for a single IP (no spoofing, no botnet) to burn the whole month and take Pirate offline app-wide. Total upstream burn 480 × 5 = 2,400 provider calls/min/IP. The raise multiplied single-IP burn capacity ~8× (60/min was ~5.5h).
+- **Fail-open coupling:** the limiter and the cache share ONE Redis client. On an Upstash outage / missing env (`limiters.js:35` → null → `rate-limit.js:42` allows everything; `weather-cache.js` → permanent miss), the 480 ceiling vanishes at the *same instant* the cache vanishes → unbounded fan-out from one IP. Even with zero attackers, the comment's own organic scenario (≈320 req/min behind a busy carrier NAT) becomes all-misses across several carrier IPs → organic quota death.
+- Pass A rated this BLOCKER; I rate it HIGH (availability/quota DoS on a free weather app, not RCE) — but it undercuts the central justification for the whole Group-3 limiter change. Note for fix session: a low per-IP weather cap, a Redis-independent global/provider budget guard, or per-provider call accounting that sheds Pirate before exhaustion.
+
+### HIGH-2 — The splash has no failsafe dismissal; any throw in app.js init leaves the full-screen #1a1a2e splash stuck forever — the black screen, recolored.
+**Files:** `index.html:62-90` (CSS — only `.splash-done` hides it; no `window.load`/`setTimeout`/CSS auto-hide), `assets/app.js:31` (entire init is one `DOMContentLoaded` handler), `:1606` (`hideSplash` only called by `renderHome`/`renderError`), `:2323` (`loadSettings()` runs before any render).
+- `#pwSplash` is opaque, `inset:0`, `z-index:2147483000`, and is removed ONLY when app.js adds `.splash-done`. There is no independent failsafe. If init throws before the first render lands — corrupt `localStorage` JSON in `loadSettings`, a throw in `applySettings`, or any uncaught error on the first-open path (the no-`homePlace`/no-`savedLoc` branch) — the splash outlives the broken boot permanently, with no device console to diagnose it.
+- This is the exact permanent-blank failure the session set out to kill (and the project's own history of "silent throws from install.js caused unexplained iPhone regressions" makes an init throw realistic). `install.js` is wrapped in an error boundary; the main app.js init shown is not. Verified independently: single DOMContentLoaded handler, no failsafe, settings load pre-render.
+
+### HIGH-3 — Server cache poisons the location label cross-user AND the poisoned name is persisted into a stranger's STORAGE.home.
+**Files:** `api/weather.js:1677` (miss path caches `name: resolvedName || name` — `name` is the caller-supplied `&name=`, capped 120 but arbitrary), `:200` (hit path serves `(!isPlaceholder && name) || cachedPayload.location?.name` — placeholder callers get the cached string), `api/_lib/weather-cache.js` `weatherCacheSet` (only refuses non-ok; doesn't distinguish caller-supplied from server-resolved name), `assets/home-name.js:40` `shouldPersistHomeName`, `assets/app.js:1688` (renderHome persists).
+- Exploit: attacker primes a cell `GET /api/weather?lat=X&lon=Y&name=<arbitrary>` (non-placeholder → stored verbatim). For 5 min, every *placeholder* caller in that ~2.2 km cell gets the attacker's string as their location label.
+- **Reaches real users:** the H1 change made the GPS first-open name `'My Location'` a server-side placeholder, so a genuine first-open GPS user in a primed cell renders the attacker string. Rendering is `safeText`/textContent → **no XSS**, but it is attacker-controlled cross-user location text.
+- **Persistence escalation (both agents underweighted this):** for that GPS user, `shouldPersistHomeName({locationName:"<attacker>", homePlace, activePlace})` passes every gate — the string is not a placeholder, not coords-shaped; homePlace/activePlace coords match (GPS home == active); name differs — so `renderHome` WRITES `homePlace.name = "<attacker>"` to `STORAGE.home`. It then sticks (it's non-placeholder, so the placeholder-heal won't fire either) until a later uncached resolve returns the real name. So it is not purely transient — it writes to storage. Low real-world blast radius (no auth/money, textContent), but a trivially reproducible cross-user integrity + privacy leak. The non-malicious version: one user's custom favourite name ("Mom's house") leaks to strangers in the same cell. Seam to fix: never serve cached `location.name` to a different caller — strip the caller-supplied name before caching, or always re-resolve per request.
+
+### MEDIUM-1 — Cache amplifies the coords-name problem per-cell during a LocationIQ outage; contradicts "coords loop closed for good."
+**Files:** `api/weather.js:200/1677` (coords echoed when `resolvedName` stays null), `weatherCacheSet` (caches the ok:true coords-named payload), `assets/home-name.js` `isCoordsName`, `assets/app.js:1688` heal.
+- When LocationIQ is down/token missing/limited: a coords-shaped legacy name → `isPlaceholder` true → `resolvedName=null` → LocationIQ resolve fails → final `location.name` = the coords string. That ok:true payload is **cached for the whole cell**. For 5 min every placeholder caller in the cell gets the coords string — and `isCoordsName` → `shouldPersistHomeName` false (won't overwrite) AND `isPlaceholderName(coords)` false → the renderHome heal never fires, so **neither side heals it** during the window, even for callers whose own resolve would have succeeded. Not permanent (a later success heals), but the new cache amplified a transient per-request failure into a per-cell 5-minute one. Don't cache/echo a coords- or placeholder-shaped `location.name`.
+
+### MEDIUM-2 — `pw_last_bg` inline upgrade swaps a guaranteed-good default for an unverified path with no onerror.
+**Files:** `index.html` (inline `pw_last_bg` script, ~L854-865), `assets/app.js:1402` (persist).
+- `bgImg` ships `src="assets/images/bg/default.jpg"` (always present); the inline script overwrites it with `localStorage.pw_last_bg` and attaches **no `onerror`**. A stale stored pick — image-set redeploy that renames/drops a webp, evicted IMG_CACHE while offline, cleared cache — blanks the background for the entire cold-open window (the 8-10s the feature exists to fix), worse than leaving default.jpg. Self-corrects only when `setBackgroundFor` later runs its own chain. (one-line `img.onerror` reset would close it.)
+
+### MEDIUM-3 — Build regenerates copy banks into the source tree and tests aren't in the build command, so prod self-heals while the committed artifact / drift test / local preview can silently diverge.
+**Files:** `scripts/build.mjs` (regenerates before packaging), `scripts/generate-copy-splits.mjs` (writes to `assets/copy/` source), `vercel.json` (`buildCommand: npm run build` only — no test step).
+- Edit `weather-copy.js`, forget to regenerate, forget to run tests, push → Vercel regenerates and ships **correct** banks, but committed `assets/copy/*.js` stay stale and `tests/copy-splits.test.js` only fails if someone runs it. `vercel dev`, the python preview, and the checked-in artifact diverge from the source of truth with no deploy-time signal. Benign for prod users; the "drift gate" doesn't bite on the path that actually deploys.
+
+### LOW-1 — Build's "every precache path exists in dist" gate silently skips extensionless paths.
+**Files:** `scripts/build.mjs` (sw-asset check filters matches by `/\.(js|css|json|html)$/`).
+- `/` and `/install` from CORE_ASSETS are never `statSync`'d (no extension). Currently safe (`/`→index.html is checked; `/install`→vercel rewrite, not a literal dist file), but the gate's guarantee is weaker than its comment — a future extensionless precache entry (e.g. `/offline`) that 404s would sail through and white-screen the offline shell, the exact failure the gate exists to prevent. Verified by Node probe: 25/25 extension paths covered, `/install` uncovered.
+
+### LOW-2 — No build invariant guards client imports of the dist-deleted weather-copy.js.
+**Files:** `scripts/build.mjs` (`rmSync dist/assets/weather-copy.js`).
+- Current client graph is clean (verified: only `api/og.js` + `api/share.js` import it, both server-side; `offline-shell-modules.test.js` asserts app.js doesn't). But the only build invariant checks sw.js's precache list, not the import graph — a future `import … from './weather-copy.js'` in a client module 404s in prod silently (minifies & ships fine; missing file only surfaces at runtime).
+
+### LOW-3 — `hot` emoji key deleted while CLAUDE.md still lists `hot` as a condition folder/alias.
+**Files:** `assets/weather-emoji.js` (CONDITION_EMOJI_MAP, `hot` removed), `CLAUDE.md` (condition folder list).
+- Hero/badge logic uses `heat`, so normally fine. If `api/weather` ever emits `conditionKey:'hot'`, the emoji falls through to the `clear` default (☀️/🌙) instead of 🔥. Low likelihood; the doc/code disagreement is the smell. (`pickSearchResultEmoji` removal is safe — not in app.js's import list.)
+
+### LOW-4 — Splash overlays the skip-link during the load window (minor a11y).
+**Files:** `index.html` (`#pwSplash` renders before `.skip-link`, pointer-events active, aria-hidden correct).
+- A keyboard user tabbing during load focuses a visually-obscured skip-link. Brief and minor; `prefers-reduced-motion` is handled correctly.
+
+## SAFE SURFACES — verified by both passes + my own checks (no action)
+- **snapCoord precision / antimeridian / poles** (`weather-cache.js`): Node-probed — `toFixed(2)`+`+0` normalises `-0`; ±180/±90 give distinct well-formed keys (two entries for one physical meridian = harmless inefficiency, not collision/crash). No exploitable float path.
+- **Cross-user EXACT-coord leak on hit path** (`weather.js:201`): `location.lat/lon` overwritten with caller B's own coords; `meta.localHour` recomputed. Caller A's exact coordinates are NOT re-served — only `location.name` leaks (HIGH-3).
+- **/api/locate header spoofing** (`api/locate.js`): `x-vercel-ip-*` are edge-set; a forged header returns only to that same caller (`Cache-Control: private, no-store` blocks cross-user CDN caching) — a spoofer only fools themselves; seeds an approximate default, no trust impact.
+- **/api/locate headers absent** → `{ok:false}`; client `getIPLocation` falls back to Johannesburg and never rejects → first-open coordinator can't strand the spinner. No crash.
+- **decodeURIComponent on city**: try/catch falls back to raw value; cannot throw uncaught.
+- **sw.js v16 ignoreSearch + canonical write-back** (Attack surface 5): SAFE. index.html is a static shell — coords/lang/og-meta come from `window.location.search` read live on each load. Caching a `/?lat=&lon=&lang=` navigation under bare `/` serves identical static bytes; no shared-location/language HTML leaks to a later plain-`/` visit. ignoreSearch collapses query only, not pathnames (`/install` vs `/install.html` stay distinct). `new Request(canonical)` is a default GET matching the navigations cached. Crawler share-scrapes hit `/api/share` (no SW), unaffected.
+- **Catch-all default branch**: the `respondWith(undefined)` footgun is closed — cache miss returns explicit 504.
+- **getClientIp threading into og.js/share.js**: correctly replaces the pooled `0.0.0.0` bucket via `x-real-ip` (the Vercel-overwritten trustworthy header, not appendable XFF). No new issue.
+- **buildLocationName null handling**: every caller coalesces (`|| 'My Location'` / `|| displayName` / `|| 'Unknown'`); null never persisted as a value or the literal `"null"`.
+- **Share-link entry**: shared place is PLACE_MODE_PINNED, NOT written to STORAGE.home; coords won't match the GPS home so shouldPersistHomeName can't clobber it. A hostile/empty `city` only affects the transient (textContent) view.
+- **parseCoord / SUPPORTED_LANGS dedupe**: `startup-location.js`→`coord-parse.js` precached + covered by `dynamicModules` in offline-shell test; app.js imports SUPPORTED_LANGS from language-preferences.js. Resolves cleanly.
+- **OG dead-code deletion**: getOgBackgroundPath/FallbackChain + their tests removed together; getOgStaticBackgroundPath (the one api/og.js uses) retained.
+
+## Footnote — pre-existing, OUT of this diff's scope
+- `API_CACHE` (sw.js) has no `trimCache` cap (unlike IMG_CACHE's 120) — each unique lat/lon `/api/weather` response is a permanent SW-cache entry; a user searching many cities grows it unbounded. Not introduced this session; flagged for a future pass.
+
+## Issues Found (for the architect's queue)
+- Issue: HIGH-1 quota/limiter design — the 480 raise is unsafe; the cache it relies on is adversary-bypassable and fails open with the limiter. Severity: CRITICAL. Status: NEEDS ARCHITECT INPUT (design — cap size vs provider budget guard).
+- Issue: HIGH-2 splash failsafe — recreates the black-screen on any init throw. Severity: IMPORTANT. Status: NEEDS FIX (independent auto-dismiss).
+- Issue: HIGH-3 cache name poisoning + persistence — cross-user label injection written to a stranger's home. Severity: IMPORTANT. Status: NEEDS FIX (don't cache caller-supplied name).
+- Issue: MEDIUM-1/2/3 — coords-cell amplification, pw_last_bg no-onerror, build/source divergence. Severity: MINOR-IMPORTANT. Status: DEFERRED to a follow-up fix session.
+- Issue: codex-rescue unauthenticated + config.toml parse error. Severity: MINOR (tooling). Status: NEEDS AL (codex login + config fix).
+
+## Blockers
+None for the review itself (completed via substitute reviewers + independent verification). codex-rescue engine itself was unavailable — flagged above.
+
+## Quality Checklist
+- [x] Supervisor loaded; checkpoint appended (this entry)
+- [x] Scope = git diff 2931d9f..4eba23c; NO code changes made (findings only)
+- [x] No repo fetched — diff + file contents embedded locally; payload files cleaned up after
+- [x] codex-rescue attempted; unavailability flagged; substitute independent passes run
+- [x] Sesotho tjhesa/chesa/mohodi/moholi forms treated as reviewer-approved (not findings)
+- [x] Findings severity-ordered with file:line and reproduction
+- [x] Headline findings independently re-verified (Node probes + manual traces), not just relayed
+
+## Next Steps
+- Fix session priority: HIGH-1 (limiter/budget) → HIGH-2 (splash failsafe) → HIGH-3 (cache name). HIGH-2 and HIGH-3 are small, contained edits; HIGH-1 is a design decision (cap vs Redis-independent provider budget).
+- These findings are review output only — nothing was changed. A separate session should action them.
