@@ -56,6 +56,51 @@
   <link rel="apple-touch-icon" href="assets/icon-192.png"/>
   <link rel="stylesheet" href="assets/app.css"/>
   <link rel="manifest" href="manifest.json"/>
+  <style>
+    /* Splash — pure HTML/CSS, zero JS, zero network. Visible from the first
+       HTML paint; app.js removes it the moment the first real render lands
+       (renderHome/renderError → hideSplash). This is the floor under whatever
+       load time remains: the user never stares at a black screen again. */
+    #pwSplash {
+      position: fixed; inset: 0; z-index: 2147483000;
+      background: #1a1a2e;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 22px; transition: opacity .4s ease;
+    }
+    #pwSplash.splash-done { opacity: 0; pointer-events: none; }
+    .pw-splash-logo { animation: pwSplashPulse 2.2s ease-in-out infinite; }
+    @keyframes pwSplashPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.07); opacity: .82; }
+    }
+    /* Five languages, one slot: lines are stacked and cycle via opacity.
+       The shell can't know the user's language without JS, so the splash
+       honours all five — EN leads, then af/zu/xh/st at 1.8s each. */
+    .pw-splash-lines { position: relative; height: 1.6em; width: 100%; text-align: center; }
+    .pw-splash-lines span {
+      position: absolute; left: 0; right: 0; top: 0;
+      color: rgba(255, 255, 255, .85);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 1rem; letter-spacing: .02em;
+      opacity: 0; animation: pwSplashCycle 9s linear infinite;
+    }
+    .pw-splash-lines span:nth-child(2) { animation-delay: 1.8s; }
+    .pw-splash-lines span:nth-child(3) { animation-delay: 3.6s; }
+    .pw-splash-lines span:nth-child(4) { animation-delay: 5.4s; }
+    .pw-splash-lines span:nth-child(5) { animation-delay: 7.2s; }
+    @keyframes pwSplashCycle {
+      0% { opacity: 0; }
+      3% { opacity: 1; }
+      18% { opacity: 1; }
+      21% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pw-splash-logo { animation: none; }
+      .pw-splash-lines span { animation: none; }
+      .pw-splash-lines span:first-child { opacity: 1; }
+    }
+  </style>
   <script>
     // ?reset=1 emergency wipe of all install-related localStorage. Runs
     // synchronously BEFORE app.js / install.js so they see clean state.
@@ -89,6 +134,27 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="home-active">
+  <!-- Splash: first thing in the body so it paints with the initial HTML,
+       before any script or stylesheet-dependent layout. Logo artwork mirrors
+       pwLogoSvg() in assets/install.js (gradient id namespaced to avoid
+       clashing with the header logo's). zu/xh/st lines are PROVISIONAL
+       pending native-speaker review. -->
+  <div id="pwSplash" aria-hidden="true">
+    <svg class="pw-splash-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="84" height="84" aria-hidden="true">
+      <defs><linearGradient id="pwGradSplash" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFDD44"/><stop offset="100%" stop-color="#FFAA00"/>
+      </linearGradient></defs>
+      <circle cx="50" cy="50" r="48" fill="url(#pwGradSplash)"/>
+      <path fill="#fff" d="M25 22 L25 78 L40 78 L40 54 L52 54 Q70 54 70 38 Q70 22 52 22 Z M40 34 L50 34 Q56 34 56 38 Q56 44 50 44 L40 44 Z"/>
+    </svg>
+    <div class="pw-splash-lines">
+      <span>Probably loading…</span>
+      <span lang="af">Waarskynlik besig om te laai…</span>
+      <span lang="zu">Cishe iyalayisha…</span>
+      <span lang="xh">Mhlawumbi iyalayisha…</span>
+      <span lang="st">Mohlomong e a jarolla…</span>
+    </div>
+  </div>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
   <div id="bg" aria-hidden="true">
     <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080"/>

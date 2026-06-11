@@ -1547,8 +1547,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ========== RENDER ==========
+  // Splash teardown — the static shell splash (#pwSplash in index.html) stays
+  // up until the FIRST real render (weather content or an explicit error).
+  // renderLoading keeps it up on purpose: "Locating…" is still pre-content.
+  function hideSplash() {
+    const splash = document.getElementById('pwSplash');
+    if (!splash) return;
+    splash.classList.add('splash-done');
+    setTimeout(() => splash.remove(), 450);
+  }
   function renderLoading(name) { showLoader(true); safeText(locationEl, name); safeText(headlineEl, t('misc', 'loading')); safeText(tempEl, '--°'); safeText(descriptionEl, '—'); }
-  function renderError(msg) { showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
+  function renderError(msg) { hideSplash(); showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
     // Source-list rendering moved to the dedicated /Sources nav page. The old
@@ -1604,6 +1613,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return slot;
   }
   function renderHome(norm) {
+    hideSplash();
     showLoader(false);
     const currentTemp = norm.nowTemp, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);
