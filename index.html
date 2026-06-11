@@ -201,7 +201,18 @@
       try {
         var last = localStorage.getItem('pw_last_bg');
         var img = document.getElementById('bgImg');
-        if (last && img) img.src = last;
+        if (last && img) {
+          // M-ii: if the stored pick no longer resolves (image-set redeploy
+          // renamed/dropped it, evicted cache while offline, cleared cache),
+          // fall straight back to the guaranteed-present default rather than
+          // blanking the background for the whole cold-open window. One-shot
+          // handler; cleared on success so a later real swap isn't affected.
+          img.onerror = function () {
+            img.onerror = null;
+            img.src = 'assets/images/bg/default.jpg';
+          };
+          img.src = last;
+        }
       } catch (e) { /* default.jpg stays */ }
     })();
   </script>

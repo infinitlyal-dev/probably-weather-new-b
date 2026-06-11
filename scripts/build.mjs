@@ -15,12 +15,13 @@
 // never ship even if someone forgot to re-run the generator (the drift test
 // also fails the suite in that case).
 
-import { execFileSync } from 'node:child_process';
 import { cpSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 import esbuild from 'esbuild';
+
+import { LANGS, buildModuleSource } from './generate-copy-splits.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
@@ -38,8 +39,29 @@ const STATIC_ENTRIES = [
   '.well-known',
 ];
 
-console.log('[build] regenerating per-language copy splits…');
-execFileSync(process.execPath, [path.join(root, 'scripts', 'generate-copy-splits.mjs')], { stdio: 'inherit' });
+// M-iii: VERIFY the committed per-language banks match a fresh regeneration —
+// fail the build if a copy edit to assets/weather-copy.js skipped the
+// generator. The old behaviour regenerated into the source tree, which made
+// prod silently self-heal while the committed banks / drift test / local
+// preview diverged. Now drift is a hard build error with a one-line fix.
+console.log('[build] verifying per-language copy splits are in sync…');
+{
+  const stale = [];
+  for (const lang of LANGS) {
+    const file = path.join(root, 'assets', 'copy', `${lang}.js`);
+    let onDisk = null;
+    try { onDisk = readFileSync(file, 'utf8'); } catch { /* missing → stale */ }
+    if (onDisk !== buildModuleSource(lang)) stale.push(`${lang}.js`);
+  }
+  if (stale.length) {
+    console.error(
+      `[build] FATAL: per-language copy banks are stale (${stale.join(', ')}).\n` +
+      `        assets/weather-copy.js changed without regenerating the splits.\n` +
+      `        Run: npm run copy:generate   then commit assets/copy/*.js`
+    );
+    process.exit(1);
+  }
+}
 
 console.log('[build] cleaning dist/…');
 rmSync(dist, { recursive: true, force: true });
