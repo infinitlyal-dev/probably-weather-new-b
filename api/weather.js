@@ -15,7 +15,7 @@
 
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { weatherLimiter } from './_lib/limiters.js';
-import { weatherCacheKey, weatherCacheGet, weatherCacheSet } from './_lib/weather-cache.js';
+import { weatherCacheKey, weatherCacheGet, weatherCacheSet, cacheableLocationName, responseLocationName } from './_lib/weather-cache.js';
 import { consumeProviderBudgets } from './_lib/provider-budget.js';
 // M4: heat thresholds shared with the client (assets/app.js) — one constant
 // family, no more 32-vs-35 badge/condition drift.
@@ -198,7 +198,10 @@ export default async function handler(req, res) {
         ...cachedPayload,
         location: {
           ...(cachedPayload.location || {}),
-          name: (!isPlaceholder && name) || cachedPayload.location?.name || 'Unknown',
+          // HIGH-3: caller's own name wins; placeholder callers get the cached
+          // SERVER-resolved name (never another caller's supplied string), or
+          // 'Unknown' → the client resolves it itself.
+          name: responseLocationName({ isPlaceholder, callerName: name, cachedName: cachedPayload.location?.name }),
           lat, lon,
         },
         meta: { ...(cachedPayload.meta || {}), localHour: freshLocalHour, serverCache: 'hit' },
@@ -208,6 +211,12 @@ export default async function handler(req, res) {
     // Resolve location name — cascading strategy for small-town accuracy
     // Priority: village/town/suburb BEFORE city so Wilderness beats George
     let resolvedName = isPlaceholder ? null : name;
+    // HIGH-3: track the SERVER-resolved name (LocationIQ output) separately from
+    // the caller-supplied `name`. Only the server-resolved name may be cached
+    // and re-served to OTHER callers in the cell — caching the raw `&name=`
+    // let one caller's arbitrary string (or a custom favourite name) appear as,
+    // and get persisted as, a stranger's location label.
+    let serverResolvedName = null;
     if (!resolvedName && LOCATIONIQ_TOKEN) {
       try {
         const rev = await fetchJson(
@@ -244,7 +253,7 @@ export default async function handler(req, res) {
         } else if (country) {
           parts.push(country);
         }
-        if (parts.length) resolvedName = parts.join(', ');
+        if (parts.length) { resolvedName = parts.join(', '); serverResolvedName = resolvedName; }
       } catch { /* Keep fallback name if reverse geocode fails */ }
     }
 
@@ -1791,7 +1800,19 @@ export default async function handler(req, res) {
     // the moment the response returns, dropping an un-awaited write. Fail-open
     // inside weatherCacheSet — a Redis hiccup never delays the response by
     // more than its own timeout, and never errors it.
-    await weatherCacheSet(serverCacheKey, responsePayload);
+    //
+    // HIGH-3: the CACHED copy carries ONLY the server-resolved name (LocationIQ
+    // output), never the caller-supplied `name`. When LocationIQ didn't resolve
+    // one, cache 'Unknown' — a placeholder caller hitting the cell then gets
+    // 'Unknown' (which the client treats as a placeholder and resolves itself,
+    // exactly as on a miss), instead of inheriting a stranger's label. This
+    // also means an unresolved coords-shaped name is never cached as if it were
+    // resolved (M-i). The live response still shows THIS caller their own name.
+    const cacheablePayload = {
+      ...responsePayload,
+      location: { ...responsePayload.location, name: cacheableLocationName(serverResolvedName) },
+    };
+    await weatherCacheSet(serverCacheKey, cacheablePayload);
 
     return res.status(200).json(responsePayload);
 

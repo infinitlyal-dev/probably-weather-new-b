@@ -28,6 +28,32 @@ export function snapCoord(value) {
   return (snapped + 0).toFixed(2);
 }
 
+// HIGH-3 — location-name handling that keeps one caller's name from leaking to
+// (and being persisted by) another caller in the same cell.
+
+/**
+ * The location name that is SAFE to cache and re-serve to OTHER callers in a
+ * cell: the server-resolved (LocationIQ) name only — NEVER a caller-supplied
+ * `&name=`. When the server resolved nothing, returns 'Unknown', which the
+ * client treats as a placeholder and re-resolves itself (so an unresolved or
+ * coords-shaped name is never cached as if it were resolved).
+ */
+export function cacheableLocationName(serverResolvedName) {
+  return serverResolvedName || 'Unknown';
+}
+
+/**
+ * The location name to SHOW the current caller. A non-placeholder caller keeps
+ * their own real name; a placeholder caller gets the cached server-resolved
+ * name, or 'Unknown' (which the client re-resolves). Because the cache only
+ * ever holds a server-resolved name (see cacheableLocationName), this can never
+ * surface another caller's supplied string.
+ */
+export function responseLocationName({ isPlaceholder, callerName, cachedName }) {
+  if (!isPlaceholder && callerName) return callerName;
+  return cachedName || 'Unknown';
+}
+
 /** Cache key for a coordinate pair, or null when either coord is junk. */
 export function weatherCacheKey(lat, lon) {
   const sLat = snapCoord(lat);

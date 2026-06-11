@@ -9,6 +9,8 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   SNAP_DEGREES,
   WEATHER_CACHE_TTL_SECONDS,
+  cacheableLocationName,
+  responseLocationName,
   snapCoord,
   weatherCacheGet,
   weatherCacheKey,
@@ -128,5 +130,55 @@ describe('weatherCacheGet / weatherCacheSet', () => {
     const redis = fakeRedis();
     expect(await weatherCacheGet(null, redis)).toBe(null);
     expect(await weatherCacheSet(null, okPayload, redis)).toBe(false);
+  });
+});
+
+// HIGH-3 — caller A's &name= must never reach caller B (cache poisoning).
+describe('cacheableLocationName — only the server-resolved name is cacheable', () => {
+  it('caches the server-resolved name when present', () => {
+    expect(cacheableLocationName('Strand, Western Cape')).toBe('Strand, Western Cape');
+  });
+  it("a caller-supplied name is NEVER what gets cached — only serverResolved feeds it", () => {
+    // The function takes ONLY serverResolvedName; the caller's &name= is not a
+    // parameter, so it structurally cannot be cached. No server name → 'Unknown'.
+    expect(cacheableLocationName(null)).toBe('Unknown');
+    expect(cacheableLocationName('')).toBe('Unknown');
+    expect(cacheableLocationName(undefined)).toBe('Unknown');
+  });
+  it("an unresolved coords-shaped name is not cached as resolved (caches 'Unknown')", () => {
+    // serverResolvedName stays null when LocationIQ is down; the coords string
+    // lives only in the caller-supplied `name`, which never reaches here (M-i).
+    expect(cacheableLocationName(null)).toBe('Unknown');
+  });
+});
+
+describe('responseLocationName — the cross-user poisoning chain is severed', () => {
+  it('a non-placeholder caller keeps their OWN name (not the cache)', () => {
+    expect(responseLocationName({ isPlaceholder: false, callerName: 'My Spot', cachedName: 'Strand' }))
+      .toBe('My Spot');
+  });
+  it('a placeholder caller gets the cached SERVER-resolved name', () => {
+    expect(responseLocationName({ isPlaceholder: true, callerName: 'My Location', cachedName: 'Strand, Western Cape' }))
+      .toBe('Strand, Western Cape');
+  });
+  it("a placeholder caller with no cached name gets 'Unknown' (client re-resolves)", () => {
+    expect(responseLocationName({ isPlaceholder: true, callerName: 'My Location', cachedName: 'Unknown' }))
+      .toBe('Unknown');
+    expect(responseLocationName({ isPlaceholder: true, callerName: 'My Location', cachedName: null }))
+      .toBe('Unknown');
+  });
+
+  it("end-to-end: attacker A's arbitrary name cannot surface for placeholder caller B", () => {
+    // A sends a non-placeholder &name= → server caches only its OWN resolved
+    // name. Simulate A resolving nothing server-side (so cache holds 'Unknown')
+    // and confirm B (a placeholder GPS first-open) never sees A's string.
+    const aSuppliedName = '<script>EVIL</script> 42 Oak Ave';
+    const cachedForCell = cacheableLocationName(/* serverResolvedName */ null); // A supplied a name, LocationIQ skipped
+    expect(cachedForCell).toBe('Unknown');
+    expect(cachedForCell).not.toContain('Oak Ave');
+    const bSees = responseLocationName({ isPlaceholder: true, callerName: 'My Location', cachedName: cachedForCell });
+    expect(bSees).toBe('Unknown');
+    expect(bSees).not.toContain('Oak Ave');
+    expect(bSees).not.toBe(aSuppliedName);
   });
 });
