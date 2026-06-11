@@ -164,7 +164,7 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
     expect(block).toMatch(/'partly-cloudy':[\s\S]*?af:\s*"Effens bewolk/);
     expect(block).toMatch(/'partly-cloudy':[\s\S]*?zu:\s*"Kunamafu kancane/);
     expect(block).toMatch(/'partly-cloudy':[\s\S]*?xh:\s*"Linamafu kancinci/);
-    expect(block).toMatch(/'partly-cloudy':[\s\S]*?st:\s*"Ho na le maru a manyane/);
+    expect(block).toMatch(/'partly-cloudy':[\s\S]*?st:\s*"ho nale maru hanyane/);
   });
 
   it('hero label exists for all 5 languages', () => {

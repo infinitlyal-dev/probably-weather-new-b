@@ -111,7 +111,12 @@ describe('getRotationWeek', () => {
     expect(getRotationWeek(NaN)).toBe(1);
     expect(getRotationWeek(Infinity)).toBe(1);
     expect(getRotationWeek(-Infinity)).toBe(1);
-    expect(getRotationWeek(undefined)).toBe(1);
+    // `undefined` is NOT a non-finite input — it triggers the default param
+    // (nowMs = Date.now()) and returns the CURRENT rotation week. Asserting
+    // toBe(1) here made the test date-dependent: it passed during week_1 and
+    // started failing the day the rotation entered week_2 (2026-06-06).
+    expect(getRotationWeek(undefined)).toBe(getRotationWeek(Date.now()));
+    expect([1, 2, 3, 4]).toContain(getRotationWeek(undefined));
   });
 
   it('flips on the exact week boundary, not 1ms earlier', () => {

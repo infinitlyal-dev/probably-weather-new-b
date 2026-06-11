@@ -90,14 +90,17 @@ describe('api/weather.js input hardening', () => {
     expect(over.statusCode).toBe(400);
 
     // 90 / 180 are valid edges — they must NOT trip the bounds guard. The guard
-    // returns 400 SYNCHRONOUSLY before any network call, so if it had fired we'd
-    // see 400 deterministically regardless of fetch. We tolerate a downstream
-    // network rejection (no providers reachable in test) and only assert the
-    // guard itself did not reject the boundary coord.
+    // returns 400 SYNCHRONOUSLY before any network call. Stub fetch to reject
+    // instantly so the boundary call never leaves the machine: unstubbed, the
+    // handler fanned out to all five real providers (9s timeouts each), which
+    // intermittently blew vitest's 5s test timeout under the full parallel run
+    // — this was the source of the suite's flake, not the guard logic.
+    const fetchStub = vi.spyOn(globalThis, 'fetch').mockRejectedValue(new Error('offline (test stub)'));
     const edge = makeRes();
     try {
       await weatherHandler({ query: { lat: '90', lon: '180' } }, edge);
-    } catch { /* downstream network failure is fine — the guard already passed */ }
+    } catch { /* downstream failure is fine — the guard already passed */ }
+    fetchStub.mockRestore();
     expect(edge.statusCode).not.toBe(400);
   });
 

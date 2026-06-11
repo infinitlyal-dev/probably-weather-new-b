@@ -50,11 +50,19 @@ describe('Offline fallback guarantees', () => {
   });
 
   it('falls back to cached index.html for any HTML navigation when offline', () => {
+    // v15 SWR contract: the shell branch serves cache FIRST (cache.match(req)
+    // before the fetch result is awaited), refreshes in the background, and —
+    // when nothing is cached and the network is down — still recovers HTML
+    // navigations via the cached '/index.html'.
     const src = sw();
     const htmlBlock = src.match(/if \(isHtml\(req\) \|\| isCoreAsset\(url\)\) \{[\s\S]*?\}\)\(\)\);\s*\n\s*return;\s*\}/);
     expect(htmlBlock, 'HTML/core-asset fetch handler found').toBeTruthy();
-    expect(htmlBlock[0]).toMatch(/catch\s*\{[\s\S]*?caches\.match\(req\)/);
-    expect(htmlBlock[0]).toMatch(/caches\.match\(['"]\/index\.html['"]\)/);
+    // Cached shell is consulted before the network result.
+    expect(htmlBlock[0]).toMatch(/await cache\.match\(req[\s\S]*?fetch\(req\)/);
+    // The background fetch can never reject unhandled.
+    expect(htmlBlock[0]).toMatch(/fetch\(req\)[\s\S]*?\.catch\(\(\)\s*=>\s*null\)/);
+    // Offline + uncached HTML navigation still gets the cached shell.
+    expect(htmlBlock[0]).toMatch(/cache\.match\(['"]\/index\.html['"]\)/);
   });
 
   it('falls back to cache for every other request type on network failure', () => {
