@@ -45,11 +45,9 @@
       setMeta('meta[property="og:url"]', canonical);
     })();
   </script>
-  <!-- Preconnect to ipapi.co — Lighthouse flagged it as the top
-       performance opportunity (~320ms LCP saving). It's our IP-geolocation
-       fallback when GPS is unavailable, so we hit it during startup. -->
-  <link rel="preconnect" href="https://ipapi.co" crossorigin="anonymous"/>
-  <link rel="dns-prefetch" href="https://ipapi.co"/>
+  <!-- ipapi.co preconnect removed: IP-geolocation now rides Vercel's
+       x-vercel-ip-* headers via same-origin /api/locate — no third-party
+       handshake on the startup path at all. -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png"/>
@@ -157,9 +155,26 @@
   </div>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
   <div id="bg" aria-hidden="true">
-    <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080"/>
+    <!-- Static default src: the background paints with the shell instead of
+         waiting for the weather ensemble (the old behaviour left this img
+         src-less until renderHome — text on black for the whole first fetch).
+         The inline script upgrades to the last-known condition image, and the
+         real picker swaps in the correct pick when data lands. -->
+    <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080" src="assets/images/bg/default.jpg"/>
     <div id="scrim"></div>
   </div>
+  <script>
+    // Upgrade the default background to the last condition-correct pick this
+    // device saw (persisted by setBackgroundFor in app.js). Runs before
+    // app.js; same-origin localStorage only; failure leaves default.jpg up.
+    (function () {
+      try {
+        var last = localStorage.getItem('pw_last_bg');
+        var img = document.getElementById('bgImg');
+        if (last && img) img.src = last;
+      } catch (e) { /* default.jpg stays */ }
+    })();
+  </script>
 
   <div id="particles" aria-hidden="true"></div>
 

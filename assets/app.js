@@ -435,18 +435,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const conditionEmoji = (key, isDay = true) => pickConditionEmojiForTime(key, isDay);
 
   // ========== IP GEOLOCATION FALLBACK ==========
-  // Used when GPS is blocked (e.g. WhatsApp in-app browser)
+  // Used when GPS is blocked (e.g. WhatsApp in-app browser).
+  // Same-origin /api/locate reads Vercel's x-vercel-ip-* geo headers — the old
+  // ipapi.co call was a third-party handshake with a 5s timeout sitting on the
+  // first-open critical path (and ipapi throttles hard behind SA carrier NAT).
+  // The server rounds coords to 1dp, preserving the old privacy posture.
   async function getIPLocation() {
     try {
-      const resp = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(5000) });
+      const resp = await fetch('/api/locate', { signal: AbortSignal.timeout(4000) });
       if (!resp.ok) throw new Error('IP lookup failed');
       const data = await resp.json();
-      if (data.latitude && data.longitude) {
-        return {
-          name: data.city && data.country_code ? `${data.city}, ${data.country_code}` : (data.city || 'My Location'),
-          lat: Math.round(data.latitude * 10) / 10,
-          lon: Math.round(data.longitude * 10) / 10
-        };
+      if (data?.ok && isNum(data.lat) && isNum(data.lon)) {
+        return { name: data.name || 'My Location', lat: data.lat, lon: data.lon };
       }
     } catch (e) { debugLog('IP geolocation failed:', e); }
     // Ultimate fallback - Johannesburg (most populated SA city)
@@ -1347,6 +1347,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     bgImg.onload = () => {
       if (myToken !== __pickerToken) return;
+      // Persist the landed pick so the NEXT cold open paints it immediately
+      // from the static shell (index.html inline script reads pw_last_bg)
+      // instead of waiting out grace → locate → weather → image — the serial
+      // chain measured at 8-10s of black screen on mobile.
+      try { localStorage.setItem('pw_last_bg', bgImg.getAttribute('src') || ''); } catch (_) {}
       // Detach so a later cache eviction / network blip can't replay the chain.
       bgImg.onerror = null;
       bgImg.onload = null;
@@ -1934,7 +1939,12 @@ document.addEventListener("DOMContentLoaded", () => {
     activeWeatherController = requestController;
     activePlace = place; renderLoading(place.name || 'My Location');
     refreshSaveButtonState();
-    // 1. Try showing cached data instantly
+    // Kick the network fetch FIRST and let it run while IndexedDB opens —
+    // the old `await getCachedWeather()` before fetch serialized a cold IDB
+    // open (100-500ms on first launch) in front of the network round-trip.
+    const fetchPromise = fetchProbable(place, { signal: requestController.signal });
+    fetchPromise.catch(() => {}); // handled at the await below; never unhandled
+    // 1. Try showing cached data instantly (now in parallel with the fetch)
     const cached = await getCachedWeather(place);
     if (thisSeq !== activeLocationSeq) return;
     if (cached) {
@@ -1946,9 +1956,9 @@ document.addEventListener("DOMContentLoaded", () => {
         showCacheAge(cached.timestamp);
       } catch { /* stale cache, ignore */ }
     }
-    // 2. Fetch fresh data from network
+    // 2. Await the network fetch that was started above
     try {
-      const payload = await fetchProbable(place, { signal: requestController.signal });
+      const payload = await fetchPromise;
       if (thisSeq !== activeLocationSeq) return;
       lastPayload = payload;
       const norm = normalizePayload(payload);
