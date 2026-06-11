@@ -215,10 +215,19 @@ self.addEventListener('fetch', (event) => {
   if (isHtml(req) || isCoreAsset(url)) {
     event.respondWith((async () => {
       const cache = await caches.open(CORE_CACHE);
-      const cached = await cache.match(req);
+      // ignoreSearch — a share-link navigation (/?lat=…&lon=…&lang=af) must
+      // hit the precached '/'. Without it, every share open missed the cached
+      // shell (no instant SWR paint, the whole point of v15) AND cache.put
+      // stored each unique share URL as a new permanent CORE_CACHE entry.
+      const cached = await cache.match(req, { ignoreSearch: true });
 
       const fetchPromise = fetch(req).then((fresh) => {
-        if (fresh && fresh.ok) cache.put(req, fresh.clone()).catch(() => {});
+        if (fresh && fresh.ok) {
+          // Write back under the CANONICAL search-less URL so query variants
+          // refresh the one shared entry instead of accumulating forever.
+          const canonical = new URL(url.pathname, url.origin).href;
+          cache.put(new Request(canonical), fresh.clone()).catch(() => {});
+        }
         return fresh;
       }).catch(() => null);
 
@@ -265,10 +274,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Default: network, fallback cache
-  event.respondWith(
-    fetch(req).catch(() => caches.match(req))
-  );
+  // Default: network, fallback cache. The fallback must never resolve to
+  // undefined — respondWith(undefined) is a TypeError that surfaces as a
+  // generic network error. A cache miss now returns an explicit 504.
+  event.respondWith((async () => {
+    try {
+      return await fetch(req);
+    } catch {
+      return (await caches.match(req)) || new Response('', { status: 504 });
+    }
+  })());
 });
 
 self.addEventListener('message', (event) => {

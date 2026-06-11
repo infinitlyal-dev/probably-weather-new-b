@@ -66,10 +66,13 @@ describe('Offline fallback guarantees', () => {
   });
 
   it('falls back to cache for every other request type on network failure', () => {
-    // Catch-all at the bottom: any GET we haven't routed explicitly
-    // still gets a cache attempt on failure. Belt-and-braces for
-    // first-party resources we don't classify.
-    expect(sw()).toMatch(/fetch\(req\)\.catch\(\(\)\s*=>\s*caches\.match\(req\)\)/);
+    // Catch-all at the bottom: any GET we haven't routed explicitly still
+    // gets a cache attempt on failure — and a cache MISS must resolve to an
+    // explicit 504, never undefined (respondWith(undefined) is a TypeError).
+    const src = sw();
+    const tail = src.slice(src.lastIndexOf('// Default:'));
+    expect(tail).toMatch(/await caches\.match\(req\)/);
+    expect(tail).toMatch(/new Response\(''\s*,\s*\{\s*status:\s*504\s*\}\)/);
   });
 
   it('uses stale-while-revalidate for background images so cached art survives offline', () => {
