@@ -1,0 +1,71 @@
+// Server-side ensemble response cache — rounded-coordinate keys on the same
+// Upstash Redis the rate limiter already uses.
+//
+// WHY: Vercel's edge cache (s-maxage=300) only dedupes EXACT lat/lon strings.
+// GPS users never collide on exact coords, so every open in a city fans out
+// to all five providers. Snapping the key to 0.02° (~2.2 km) collapses a
+// whole suburb into one entry per 5 minutes — the difference between the
+// free provider tiers holding at 10k DAU (Pirate Weather: 20k calls/MONTH)
+// and dying in week one.
+//
+// FAIL-OPEN is load-bearing, same contract as rate-limit.js: missing env,
+// Redis outage, malformed payload → cache miss / no-op set. The cache must
+// never be the reason a forecast fails.
+
+import { getRedis } from './limiters.js';
+
+export const WEATHER_CACHE_TTL_SECONDS = 300; // mirrors the edge s-maxage
+export const SNAP_DEGREES = 0.02;             // ~2.2 km latitude
+
+/**
+ * Snap a coordinate to the cache grid. Returns a STRING with exactly two
+ * decimals so float artifacts (0.060000000000000005) can't fragment keys.
+ */
+export function snapCoord(value) {
+  if (!Number.isFinite(value)) return null;
+  const snapped = Math.round(value / SNAP_DEGREES) * SNAP_DEGREES;
+  // +0 normalises -0 so "-0.00" never appears in a key.
+  return (snapped + 0).toFixed(2);
+}
+
+/** Cache key for a coordinate pair, or null when either coord is junk. */
+export function weatherCacheKey(lat, lon) {
+  const sLat = snapCoord(lat);
+  const sLon = snapCoord(lon);
+  if (sLat === null || sLon === null) return null;
+  return `pw-wx:v1:${sLat},${sLon}`;
+}
+
+/**
+ * Fetch a cached ensemble payload. Returns the parsed payload object or null.
+ * `redis` is injectable for tests; defaults to the shared Upstash client
+ * (null when env is missing → permanent miss, fail-open).
+ */
+export async function weatherCacheGet(key, redis = getRedis()) {
+  if (!key || !redis) return null;
+  try {
+    const value = await redis.get(key);
+    if (!value) return null;
+    // @upstash/redis deserialises JSON automatically; tolerate a string from
+    // an injected test double or an older client.
+    const payload = typeof value === 'string' ? JSON.parse(value) : value;
+    return payload && payload.ok === true ? payload : null;
+  } catch {
+    return null; // fail-open: Redis trouble = cache miss
+  }
+}
+
+/**
+ * Store an ensemble payload under `key` with the standard TTL. Never throws.
+ * Only ok:true payloads are cached — a degraded/error response must not be
+ * served to a whole suburb for 5 minutes.
+ */
+export async function weatherCacheSet(key, payload, redis = getRedis()) {
+  if (!key || !redis || !payload || payload.ok !== true) return false;
+  try {
+    await redis.set(key, JSON.stringify(payload), { ex: WEATHER_CACHE_TTL_SECONDS });
+    return true;
+  } catch {
+    return false; // fail-open
+  }
+}

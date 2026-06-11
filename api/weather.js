@@ -15,6 +15,7 @@
 
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { weatherLimiter } from './_lib/limiters.js';
+import { weatherCacheKey, weatherCacheGet, weatherCacheSet } from './_lib/weather-cache.js';
 // M4: heat thresholds shared with the client (assets/app.js) — one constant
 // family, no more 32-vs-35 badge/condition drift.
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../assets/weather-thresholds.js';
@@ -180,6 +181,39 @@ export default async function handler(req, res) {
       } catch {
         return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
       }
+    }
+
+    // -------------------------------------------------------------------------
+    // Server-side ensemble cache (rounded coords, 5-min TTL, fail-open).
+    // Sits BEFORE name resolution and the provider fan-out: a hit skips both
+    // the LocationIQ lookup and all five upstream calls. Key snaps to 0.02°
+    // (~2.2 km) so a whole suburb shares one entry — the per-exact-coord edge
+    // cache (s-maxage) never collides for GPS users. The search-mini path
+    // (one /api/weather per search result) rides this automatically.
+    // -------------------------------------------------------------------------
+    const serverCacheKey = weatherCacheKey(lat, lon);
+    const cachedPayload = await weatherCacheGet(serverCacheKey);
+    if (cachedPayload) {
+      // Per-request fields the shared entry must not leak across callers:
+      //   · location.name — a caller-supplied real name wins; placeholder
+      //     callers get the populator's resolved name (≤2.2 km off, the same
+      //     tolerance the IP-locate path already accepts).
+      //   · meta.localHour — recomputed so an hour boundary inside the TTL
+      //     doesn't skew the client's hourly slicing.
+      const cachedOffset = cachedPayload.meta?.utcOffsetSeconds;
+      const freshLocalHour = Number.isFinite(cachedOffset)
+        ? Math.floor(((Date.now() / 1000) + cachedOffset) / 3600) % 24
+        : cachedPayload.meta?.localHour ?? null;
+      res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
+      return res.status(200).json({
+        ...cachedPayload,
+        location: {
+          ...(cachedPayload.location || {}),
+          name: (!isPlaceholder && name) || cachedPayload.location?.name || 'Unknown',
+          lat, lon,
+        },
+        meta: { ...(cachedPayload.meta || {}), localHour: freshLocalHour, serverCache: 'hit' },
+      });
     }
 
     // Resolve location name — cascading strategy for small-town accuracy
@@ -1646,7 +1680,7 @@ export default async function handler(req, res) {
     };
 
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
-    return res.status(200).json({
+    const responsePayload = {
       ok: true,
       location: { name: resolvedName || name || 'Unknown', lat, lon },
       wind_kph:   effectiveDisplayWind,
@@ -1726,8 +1760,18 @@ export default async function handler(req, res) {
             ? { visKm: fogDetector.visKm, humidity: fogDetector.humidity, dewSpread: fogDetector.dewSpread }
             : null,
         },
+        serverCache: 'miss',
       },
-    });
+    };
+
+    // Populate the rounded-coords cache for the next caller in this ~2 km
+    // cell. Awaited (not fire-and-forget): Vercel can suspend the function
+    // the moment the response returns, dropping an un-awaited write. Fail-open
+    // inside weatherCacheSet — a Redis hiccup never delays the response by
+    // more than its own timeout, and never errors it.
+    await weatherCacheSet(serverCacheKey, responsePayload);
+
+    return res.status(200).json(responsePayload);
 
   } catch (e) {
     console.error('Weather API error:', e);

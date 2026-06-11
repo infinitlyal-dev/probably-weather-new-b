@@ -39,8 +39,9 @@ export const RATE_LIMITS = {
 
 // Build the shared Redis client once (memoised across warm Fluid-Compute
 // invocations). undefined = not-yet-resolved; null = no config (disabled).
+// Exported: api/_lib/weather-cache.js rides the same client/connection.
 let _redis;
-function getRedis() {
+export function getRedis() {
   if (_redis !== undefined) return _redis;
   const url = process.env.UPSTASH_KV_REST_API_URL;
   const token = process.env.UPSTASH_KV_REST_API_TOKEN;
