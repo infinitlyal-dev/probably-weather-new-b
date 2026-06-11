@@ -1,6 +1,7 @@
 import { buildOgImageUrl, SHARE_ORIGIN } from '../assets/share-url.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 import weatherHandler, { parseCoord } from './weather.js';
+import { getClientIp } from './_lib/rate-limit.js';
 
 const STATIC_DESCRIPTION = 'South African weather, in your language.';
 const SUPPORTED_LANGS = new Set(['en', 'af', 'zu', 'xh', 'st']);
@@ -62,10 +63,18 @@ function pickLocalized(bank, key, lang, fallback = '') {
   return values?.[lang] || values?.en || fallback;
 }
 
-async function callWeatherHandler(lat, lon) {
+async function callWeatherHandler(lat, lon, clientIp) {
   let statusCode = 200;
   let body;
-  const req = { query: { lat, lon } };
+  // H3: thread the REAL client IP into the synthetic request. Without it,
+  // getClientIp() inside weatherHandler fell through to '0.0.0.0' and every
+  // share-card weather lookup worldwide shared ONE 60/min rate-limit bucket —
+  // WhatsApp preview crawlers alone could saturate it, silently degrading all
+  // share cards to the static description (and one attacker could force it).
+  // Keeping the limiter in the loop (vs bypassing for internal calls) was
+  // deliberate: /api/share is itself unauthenticated, so a bypass would
+  // reopen the per-IP quota-burn hole through crafted share URLs.
+  const req = { query: { lat, lon }, headers: clientIp ? { 'x-real-ip': clientIp } : {} };
   const res = {
     status(code) {
       statusCode = code;
@@ -110,23 +119,23 @@ export function buildShareDescription(payload, lang = 'en') {
   return `${location}: ${PROBABLY_WORD[safeLang]} ${temp}. ${condition}`;
 }
 
-async function resolveShareDescription({ lat, lon, lang, hasCoords }) {
+async function resolveShareDescription({ lat, lon, lang, hasCoords, clientIp }) {
   if (!hasCoords) return STATIC_DESCRIPTION;
 
   try {
-    const payload = await callWeatherHandler(lat, lon);
+    const payload = await callWeatherHandler(lat, lon, clientIp);
     return buildShareDescription(payload, lang);
   } catch (error) {
     return STATIC_DESCRIPTION;
   }
 }
 
-export async function buildShareMetaHtml(query = {}) {
+export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
   const lat = query.lat;
   const lon = query.lon;
   const lang = clampLang(query.lang || 'en');
   const hasCoords = isValidLat(lat) && isValidLon(lon);
-  const description = await resolveShareDescription({ lat, lon, lang, hasCoords });
+  const description = await resolveShareDescription({ lat, lon, lang, hasCoords, clientIp });
   const appParams = new URLSearchParams();
   if (hasCoords) {
     appParams.set('lat', String(lat));
@@ -173,7 +182,7 @@ export default async function handler(req, res) {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=300');
   try {
-    const html = await buildShareMetaHtml(getQuery(req));
+    const html = await buildShareMetaHtml(getQuery(req), { clientIp: getClientIp(req) });
     res.status(200).end(html);
   } catch (err) {
     if (err instanceof ShareSerializationError) {

@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { ImageResponse } from '@vercel/og';
 
 import weatherHandler from './weather.js';
+import { getClientIp } from './_lib/rate-limit.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 import {
   getOgStaticBackgroundFallbackChain,
@@ -132,10 +133,18 @@ export function buildFallbackViewModel(lang = 'en') {
   };
 }
 
-async function callWeatherHandler(lat, lon) {
+async function callWeatherHandler(lat, lon, clientIp) {
   let statusCode = 200;
   let body = null;
-  const req = { query: { lat: String(lat), lon: String(lon), name: 'Shared location' } };
+  // H3: carry the real client IP into the synthetic request so the internal
+  // weather call is rate-limited per actual caller, not pooled under the
+  // '0.0.0.0' fallback bucket shared by every OG render worldwide. The
+  // 'Shared location' name is now treated as a placeholder by weatherHandler,
+  // so the card shows the resolved city instead of the literal label.
+  const req = {
+    query: { lat: String(lat), lon: String(lon), name: 'Shared location' },
+    headers: clientIp ? { 'x-real-ip': clientIp } : {},
+  };
   const res = {
     setHeader() { return this; },
     status(code) {
@@ -344,7 +353,7 @@ export default async function handler(req, res) {
 
   try {
     const hasValidCoords = Number.isFinite(lat) && Number.isFinite(lon) && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
-    const payload = hasValidCoords ? await callWeatherHandler(lat, lon) : null;
+    const payload = hasValidCoords ? await callWeatherHandler(lat, lon, getClientIp(req)) : null;
     const model = payload ? buildOgViewModel(payload, { lang }) : buildFallbackViewModel(lang);
     sendPng(res, 200, await renderPng(model));
   } catch {

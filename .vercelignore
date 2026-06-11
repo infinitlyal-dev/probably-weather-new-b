@@ -33,3 +33,10 @@ tools/
 scripts/
 .claude/
 .github/
+
+# Test suite + eval harness — were publicly fetchable on prod (verified
+# 2026-06-11: /tests/home-name.test.js returned 200). Same info-disclosure
+# class as the *.md exclusion above: tests document internals, bug history,
+# and rate-limit thresholds. Nothing at runtime imports from tests/ or eval/.
+tests/
+eval/

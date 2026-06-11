@@ -2114,16 +2114,20 @@ document.addEventListener("DOMContentLoaded", () => {
   navHourlyHome?.addEventListener('click', openHourly);
   hourlyBack?.addEventListener('click', () => showScreen(screenHome));
   
-  // Build a display name from reverse geocode data — never returns "My Location, ZA"
-  function buildLocationName(data, lat, lon) {
-    const city = data?.city;
-    const admin1 = data?.admin1;
-    const nearCity = data?.nearCity;
+  // Build a display name from reverse geocode data. Returns NULL when the
+  // payload has no usable fields — callers fall back to their previous name
+  // or the 'My Location' placeholder. The old behaviour returned a coords
+  // string ("34.1°S, 18.8°E") here, which then got PERSISTED to STORAGE.home
+  // by the GPS paths and could never self-heal: a coords name is not a
+  // placeholder (no client re-geocode) and the API used to echo it back
+  // (no server resolution). Placeholders, by contrast, heal on the next
+  // weather call now that api/weather.js resolves them server-side.
+  function buildLocationName(data) {
+    if (!data || data.ok === false) return null;
+    const city = data.city;
+    const admin1 = data.admin1;
     if (city && admin1) return `${city}, ${admin1}`;
-    if (city) return city;
-    if (admin1) return admin1;
-    // Ultimate fallback: use coordinates rounded for display
-    return `${Math.abs(lat).toFixed(1)}°${lat < 0 ? 'S' : 'N'}, ${Math.abs(lon).toFixed(1)}°${lon < 0 ? 'W' : 'E'}`;
+    return city || admin1 || null;
   }
 
   function isStandaloneMode() {
@@ -2166,19 +2170,26 @@ document.addEventListener("DOMContentLoaded", () => {
         manualLocationAt = Date.now();
         try {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`);
+          // H2: a 429 (rate limiter) or 5xx here used to fall through .json()
+          // into the catch and seed a coords-shaped name into STORAGE.home —
+          // permanently, since coords names never healed. Throw early instead.
+          if (!rev.ok) throw new Error(`reverse geocode HTTP ${rev.status}`);
           const data = await rev.json();
-          const displayName = buildLocationName(data, lat, lon);
-          saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat, lon });
+          const displayName = buildLocationName(data) || 'My Location';
+          if (data?.ok !== false) saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat, lon });
           saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
           homePlace = { name: displayName, lat, lon, mode: PLACE_MODE_GPS };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
           showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
         } catch {
-          // API failed — try client-side reverse geocode
+          // API failed — try client-side reverse geocode. NEVER seed coords:
+          // a null falls back to the 'My Location' placeholder, which the
+          // weather call now heals server-side (api/weather.js placeholder
+          // resolution + shouldPersistHomeName write-back).
           const fallbackName = await reverseGeocode(lat, lon);
           saveJSON(STORAGE.lastGps, { lat, lon, ts: Date.now() });
-          homePlace = { name: fallbackName || `${Math.abs(lat).toFixed(1)}°S, ${Math.abs(lon).toFixed(1)}°E`, lat, lon, mode: PLACE_MODE_GPS };
+          homePlace = { name: fallbackName || 'My Location', lat, lon, mode: PLACE_MODE_GPS };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
         }
@@ -2382,12 +2393,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (shouldUpdateLocation({ activePlace: placeAtRequestTime, newGps })) {
         debugLog(`[Refresh] GPS moved ${haversineKm({ lat: placeAtRequestTime.lat, lon: placeAtRequestTime.lon }, newGps).toFixed(1)}km from ${placeAtRequestTime.name} (${source}) — re-detecting`);
         // Reverse-geocode for a display name, then load fresh weather.
+        // H2: failures are non-destructive — keep the previous display name
+        // rather than ever writing a coords string into STORAGE.home.
         let displayName = placeAtRequestTime.name;
         try {
           const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newLat)}&lon=${encodeURIComponent(newLon)}`);
+          if (!rev.ok) throw new Error(`reverse geocode HTTP ${rev.status}`);
           const data = await rev.json();
-          displayName = buildLocationName(data, newLat, newLon);
-          saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat: newLat, lon: newLon });
+          displayName = buildLocationName(data) || displayName;
+          if (data?.ok !== false) saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat: newLat, lon: newLon });
         } catch {
           try { displayName = (await reverseGeocode(newLat, newLon)) || displayName; } catch {}
         }
@@ -2483,9 +2497,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let displayName = previousPlace?.name || 'My Location';
     try {
       const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newGps.lat)}&lon=${encodeURIComponent(newGps.lon)}`);
+      // H2: non-OK responses (rate-limit 429, 5xx) must not crash through
+      // .json() into a coords-name seed — keep the previous name instead.
+      if (!rev.ok) throw new Error(`reverse geocode HTTP ${rev.status}`);
       const data = await rev.json();
-      displayName = buildLocationName(data, newGps.lat, newGps.lon);
-      saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat: newGps.lat, lon: newGps.lon });
+      displayName = buildLocationName(data) || displayName;
+      if (data?.ok !== false) saveJSON(STORAGE.location, { city: data?.city, admin1: data?.admin1, countryCode: data?.countryCode, lat: newGps.lat, lon: newGps.lon });
     } catch {
       try { displayName = (await reverseGeocode(newGps.lat, newGps.lon)) || displayName; } catch { /* keep previous name */ }
     }

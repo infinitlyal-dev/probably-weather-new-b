@@ -76,10 +76,23 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: 'name too long' });
     }
     const rawName = rawNameInput;
+    // Placeholder detection MUST agree with the client (assets/home-name.js
+    // isPlaceholderName + isCoordsName). The old predicate only caught
+    // "unknown*": a client sending name="My Location" (first-open GPS path) or
+    // a coords-shaped name ("34.1°S, 18.8°E", the legacy buildLocationName
+    // fallback) got its junk name ECHOED BACK as location.name — so the
+    // renderHome heal (shouldPersistHomeName) never received a clean name and
+    // a coords-seeded home could never self-repair. Treat all of those as
+    // placeholders so the LocationIQ resolution below always returns a real
+    // name. "Shared location" is og.js's internal label — resolving it gives
+    // share cards the actual city instead of literal "Shared location".
+    const COORDS_NAME_RE = /^\s*\d+(?:\.\d+)?°[NS],\s*\d+(?:\.\d+)?°[EW]\s*$/;
     const isPlaceholder =
       !rawName ||
       /^unknown\b/i.test(rawName) ||
-      /^unknown location\b/i.test(rawName);
+      /^my location\b/i.test(rawName) ||
+      /^shared location\b/i.test(rawName) ||
+      COORDS_NAME_RE.test(rawName);
     const name = rawName || null;
 
     const WEATHERAPI_KEY     = process.env.WEATHERAPI_KEY     || null;
@@ -1309,6 +1322,19 @@ export default async function handler(req, res) {
     // separately for UI display as "(gusts X km/h)" — not inflated into the main number.
     const effectiveDisplayWind = medWindKph ?? 0;
 
+    // Last-resort offset: when Open-Meteo, Pirate AND WeatherAPI all failed to
+    // supply one, the old behaviour silently kept 0 (UTC). For SA (UTC+2) that
+    // shifted every downstream local-time decision by 2 hours — localHour
+    // slicing, isDay, and the client's day-of-week (the "Saturday energy on a
+    // Sunday morning" residual: SAST Sun 00:00-01:59 computed as Saturday).
+    // A coordinate-based estimate is strictly better than 0: exact for the SA
+    // bounding box, longitude-derived elsewhere.
+    if (utcOffsetSource === 'default-utc') {
+      utcOffsetSeconds = estimateUtcOffsetSeconds(lat, lon);
+      utcOffsetSource = 'coord-estimate';
+      console.warn(`[pw-tz] all sources failed to provide a UTC offset — using coord estimate ${utcOffsetSeconds}s for lat=${lat} lon=${lon}`);
+    }
+
     // Correct local hour using UTC offset from Open-Meteo.
     // Vercel runs UTC so new Date().getHours() would be wrong for non-UTC zones.
     // e.g. South Africa (UTC+2): 21:31 SAST = 19:31 UTC. Without this fix,
@@ -1729,6 +1755,28 @@ function computeTimezoneOffsetFromTzId(tzId) {
   } catch (_) {
     return null;
   }
+}
+
+/**
+ * Coordinate-based UTC offset estimate — the last rung of the offset chain,
+ * used only when Open-Meteo, Pirate Weather AND WeatherAPI all failed to
+ * supply one (previously this silently defaulted to 0/UTC, shifting every
+ * SA local-time decision by 2 hours).
+ *
+ * Inside the South African bounding box the answer is exact: SAST is UTC+2
+ * year-round, no DST. Elsewhere fall back to the longitude band (lon/15h) —
+ * crude, but within ±1h almost everywhere and strictly better than UTC.
+ * Exported for tests/utc-offset-fallback.test.js.
+ */
+export function estimateUtcOffsetSeconds(lat, lon) {
+  if (Number.isFinite(lat) && Number.isFinite(lon)
+      && lat >= -35.5 && lat <= -22 && lon >= 16 && lon <= 33.5) {
+    return 7200; // SAST, the app's home turf
+  }
+  if (!Number.isFinite(lon)) return 0;
+  // `|| 0` normalises the -0 that Math.round emits for small negative
+  // longitudes (Object.is(-0, 0) is false — it leaks into JSON and tests).
+  return Math.round(lon / 15) * 3600 || 0;
 }
 
 function pickMostCommon(arr) {

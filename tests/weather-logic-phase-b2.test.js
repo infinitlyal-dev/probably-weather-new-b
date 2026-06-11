@@ -267,11 +267,15 @@ describe('Item 1: all sources fail, default to UTC with explicit source label', 
   });
   afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
-  it("when only MET responds (no offset source available), utcOffsetSource === 'default-utc'", async () => {
+  it("when only MET responds (no offset source available), the coord-estimate rung fires", async () => {
     // No WEATHERAPI_KEY, no PIRATE_WEATHER_KEY → only MET is live.
+    // M2 (2026-06-11): the chain's last rung is no longer a silent 0/UTC —
+    // it estimates from coordinates. Strand sits in the SA bounding box, so
+    // the estimate is exact SAST (+7200) and SA users keep correct local
+    // hours / day-of-week even with every offset source down.
     const { body } = await callWeather({ WEATHERAPI_KEY: '', PIRATE_WEATHER_KEY: '' });
-    expect(body.meta.utcOffsetSource).toBe('default-utc');
-    expect(body.meta.utcOffsetSeconds).toBe(0);
+    expect(body.meta.utcOffsetSource).toBe('coord-estimate');
+    expect(body.meta.utcOffsetSeconds).toBe(7200);
   });
 });
 
