@@ -39,7 +39,17 @@ const CORE_ASSETS = [
   '/assets/install.js',
   '/assets/startup-location.js',
   '/assets/language-preferences.js',
-  '/assets/weather-copy.js',
+  // Per-language copy banks (Group 6): app.js dynamically imports ONE per
+  // session via copy-loader.js, but all five are precached (~200 KB once at
+  // install) so offline language switching keeps working. The old monolith
+  // /assets/weather-copy.js is server-side only now — not precached.
+  '/assets/copy-loader.js',
+  '/assets/weekend-filter.js',
+  '/assets/copy/en.js',
+  '/assets/copy/af.js',
+  '/assets/copy/zu.js',
+  '/assets/copy/xh.js',
+  '/assets/copy/st.js',
   '/assets/weather-visuals.js',
   '/assets/image-picker.js',
   '/assets/weather-emoji.js',

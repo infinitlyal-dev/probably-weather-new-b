@@ -25,12 +25,14 @@ lighthouse-report.json
 # Stray MyChannel screenshots accidentally dropped into this repo.
 mc-*.png
 
-# Internal tooling / config — committed but never runtime-served (verified: no
-# api/** or assets/** import or fetch references tools/ or scripts/). The OG
-# generator under tools/ is run locally; its output (og/*.jpg) is committed
-# separately and served from og/.
+# Internal tooling — committed but never runtime-served. The OG generator
+# under tools/ is run locally; its output (og/*.jpg) is committed separately
+# and served from og/.
+# NOTE: scripts/ is NOT excluded any more — the Group 6 build pipeline
+# (buildCommand: npm run build → scripts/build.mjs) runs in Vercel's build
+# container and needs it uploaded. It is build-input, not deploy output:
+# only dist/ is served.
 tools/
-scripts/
 .claude/
 .github/
 

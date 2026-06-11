@@ -46,14 +46,27 @@ function loadServiceWorkerContext() {
   return context;
 }
 
+// Group 6: app.js also DYNAMICALLY imports modules (lazy install.js, the
+// per-language copy banks via copy-loader.js). They never appear in the
+// static `from './x.js'` graph but the offline shell still needs them.
+const dynamicModules = [
+  '/assets/install.js',
+  '/assets/copy/en.js',
+  '/assets/copy/af.js',
+  '/assets/copy/zu.js',
+  '/assets/copy/xh.js',
+  '/assets/copy/st.js',
+];
+
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
-    expect(importedModules.length).toBe(12); // +weather-thresholds.js (M4, 2026-06-11)
-    // Spot-check the ones that were previously missing from the shell
-    // (incl. refresh-behaviour.js — a multiline import that's easy to miss).
+    // 12 static imports: weather-copy.js + install.js left the static graph
+    // (Group 6 split), copy-loader.js + weekend-filter.js joined it.
+    expect(importedModules.length).toBe(12);
     for (const mod of [
       '/assets/language-preferences.js',
-      '/assets/weather-copy.js',
+      '/assets/copy-loader.js',
+      '/assets/weekend-filter.js',
       '/assets/weather-visuals.js',
       '/assets/image-picker.js',
       '/assets/weather-emoji.js',
@@ -64,6 +77,21 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
       '/assets/weather-thresholds.js',
     ]) {
       expect(importedModules).toContain(mod);
+    }
+    // The static graph must NOT pull the five-language monolith back in —
+    // that would undo the per-language split.
+    expect(importedModules).not.toContain('/assets/weather-copy.js');
+  });
+
+  it('app.js dynamically imports install.js and the per-language banks', () => {
+    expect(appSrc).toMatch(/import\(['"]\.\/install\.js['"]\)/);
+    expect(appSrc).toMatch(/loadCopyBank\(/);
+  });
+
+  it('CORE_ASSETS precaches every dynamically-imported module', () => {
+    const coreBlock = swSrc.match(/CORE_ASSETS\s*=\s*\[([\s\S]*?)\]/)[1];
+    for (const mod of dynamicModules) {
+      expect(coreBlock, `${mod} missing from CORE_ASSETS (precache)`).toContain(`'${mod}'`);
     }
   });
 

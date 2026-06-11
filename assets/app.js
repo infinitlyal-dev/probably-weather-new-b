@@ -1,11 +1,15 @@
 import { getSharedPlaceFromSearch } from './startup-location.js';
 import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './language-preferences.js';
-import { WEATHER_COPY, filterWeekendPoolForDay } from './weather-copy.js';
+// Group 6 bundle split: the five-language bank is no longer a static import.
+// COPY_BANK is a live object the per-language file merges into (T below holds
+// references to its nested objects); the weekend filter moved to its own
+// micro-module so importing it doesn't drag the bank along.
+import { COPY_BANK, loadCopyBank } from './copy-loader.js';
+import { filterWeekendPoolForDay } from './weekend-filter.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { buildShareUrl } from './share-url.js';
-import { initInstallExperience } from './install.js';
 import {
   FRESHNESS_MS,
   SIGNIFICANT_MOVE_KM,
@@ -291,8 +295,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cold: { en: "Cold", af: "Koud", zu: "Makhaza", xh: "Kubanda", st: "Ho bata" },
       uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
     },
-    // Hero labels
-    heroLabels: WEATHER_COPY.heroLabels,
+    // Hero labels — live reference into COPY_BANK; loadCopyBank merges the
+    // active language's strings into these exact objects.
+    heroLabels: COPY_BANK.heroLabels,
     // Day names (short).
     // Afrikaans abbreviations flagged by tester 2026-05-11:
     //   Maandag → Ma, Dinsdag → Dins, Woensdag → Wo, Donderdag → Don,
@@ -309,11 +314,11 @@ document.addEventListener("DOMContentLoaded", () => {
       sat: { en: "Sat", af: "Sat",  zu: "Mgq", xh: "Mgqi",  st: "Moq" }
     },
     // Headlines
-    headlines: WEATHER_COPY.headlines,
+    headlines: COPY_BANK.headlines,
     // Witty lines
-    witty: WEATHER_COPY.witty,
+    witty: COPY_BANK.witty,
     // Layer B (Bug 1): hedged "probably" register, used when meta.confidence is 'low'.
-    witty_low_confidence: WEATHER_COPY.witty_low_confidence,
+    witty_low_confidence: COPY_BANK.witty_low_confidence,
     // Cape Doctor wind alert
     capeDr: {
       warningLabel: {
@@ -896,10 +901,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!SUPPORTED_LANGS.includes(lang)) return;
     settings.lang = lang;
     saveSettings();
-    applySettings();
-    closeLanguageMenu();
-    languageBtn?.focus();
-    installExperience?.refreshLanguage?.();
+    // Ensure the new language's copy bank is loaded (≈30 KB, SW-precached →
+    // instant when offline/repeat). applySettings runs in finally so the UI
+    // chrome switches immediately even if the bank fetch fails — the witty/
+    // headline banks then fall back to en until a later retry succeeds.
+    loadCopyBank(lang).catch((e) => console.error('[copy] bank load failed:', e)).finally(() => {
+      applySettings();
+      closeLanguageMenu();
+      languageBtn?.focus();
+      installExperience?.refreshLanguage?.();
+    });
   }
 
   function moveLanguageFocus(delta) {
@@ -2276,15 +2287,22 @@ document.addEventListener("DOMContentLoaded", () => {
   setupServiceWorkerUpdates();
   setupErrorReporting();
   setupVersionBanner();
-  loadSettings(); applySettings(); renderRecents(); renderFavorites();
-  // Wrap install init in a visible error boundary. Silent throws from
-  // install.js have caused multiple unexplained iPhone regressions where
-  // the banner just doesn't appear and there's no way to see why without
-  // device-side console access. This makes any sync init failure
-  // immediately visible on the user's screen.
-  try {
-    installExperience = initInstallExperience({ getLanguage: () => settings.lang || 'en', showToast });
-  } catch (installInitErr) {
+  loadSettings();
+  // Kick the per-language copy fetch immediately after the language is known.
+  // Not awaited: rendering never blocks on copy (the COPY_BANK seed keeps the
+  // getters safe), and in practice this ~30 KB same-origin file always beats
+  // the weather fetch. When it lands, re-render so any seed strings update.
+  loadCopyBank(settings.lang)
+    .then((fresh) => { if (fresh) applySettings(); })
+    .catch((e) => console.error('[copy] bank load failed:', e));
+  applySettings(); renderRecents(); renderFavorites();
+  // Lazy-load install.js (Group 6): 48 KB of install UX that most sessions
+  // never exercise no longer sits in the boot module graph. The dynamic
+  // import starts immediately (not idle-gated — the engagement gate inside
+  // install.js is only 1.5s) but parses off the critical path. The visible
+  // error boundary survives: silent throws from install.js caused multiple
+  // unexplained iPhone regressions with no device console access.
+  const surfaceInstallError = (installInitErr) => {
     try {
       const errBanner = document.createElement('div');
       errBanner.id = 'pwInstallErrorBanner';
@@ -2293,7 +2311,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(errBanner);
     } catch (_) { /* if rendering the error banner itself fails, fall through silently */ }
     console.error('[install] init failed', installInitErr);
-  }
+  };
+  import('./install.js')
+    .then((mod) => {
+      try {
+        installExperience = mod.initInstallExperience({ getLanguage: () => settings.lang || 'en', showToast });
+      } catch (installInitErr) {
+        surfaceInstallError(installInitErr);
+      }
+    })
+    .catch((loadErr) => surfaceInstallError(loadErr));
   homePlace = loadJSON(STORAGE.home, null);
   // Migration: pre-Phase-B-3 homePlace records had no `mode` field. Default
   // legacy data to 'gps' since the previous code only set homePlace from
