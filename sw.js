@@ -133,6 +133,16 @@ function isCoreAsset(url) {
   return CORE_ASSET_PATHS.has(url.pathname);
 }
 
+// The static, query-INDEPENDENT shell pages — these read location.search at
+// runtime, so their HTML body is identical for any query string. ONLY these
+// may be served with ignoreSearch (query variants share one cached entry).
+// Query-dependent navigations like /share (server-rendered per-coordinate)
+// must never be collapsed — see the HTML branch in the fetch handler.
+const SHELL_PAGES = new Set(['/', '/index.html', '/install', '/install.html']);
+function isShellPage(url) {
+  return SHELL_PAGES.has(url.pathname);
+}
+
 function isWeatherApi(url) {
   return url.pathname.startsWith('/api/weather') && !url.searchParams.has('reverse');
 }
@@ -226,18 +236,26 @@ self.addEventListener('fetch', (event) => {
   if (isHtml(req) || isCoreAsset(url)) {
     event.respondWith((async () => {
       const cache = await caches.open(CORE_CACHE);
-      // ignoreSearch — a share-link navigation (/?lat=…&lon=…&lang=af) must
-      // hit the precached '/'. Without it, every share open missed the cached
-      // shell (no instant SWR paint, the whole point of v15) AND cache.put
-      // stored each unique share URL as a new permanent CORE_CACHE entry.
-      const cached = await cache.match(req, { ignoreSearch: true });
+      // ignoreSearch + canonical (query-stripped) write-back apply ONLY to the
+      // static, query-INDEPENDENT shell pages (isShellPage). Their HTML is
+      // identical for any query — they read location.search at runtime — so a
+      // '/?lat=…&lon=…&lang=af' share-open can safely share the precached '/'
+      // entry, and variants must not accumulate.
+      //
+      // A query-DEPENDENT navigation like /share must NOT be collapsed: it is
+      // server-rendered (/api/share) with a per-coordinate og:image and a
+      // per-coordinate `location.replace('/?lat=…')` redirect baked into the
+      // body. Under ignoreSearch + canonical write-back, opening
+      // /share?lat=<B> after /share?lat=<A> served <A>'s body and redirected
+      // to <A>'s location (Codex finding). Non-shell HTML therefore matches
+      // and writes back under its EXACT, query-bearing URL.
+      const shell = isShellPage(url);
+      const cached = await cache.match(req, shell ? { ignoreSearch: true } : undefined);
 
       const fetchPromise = fetch(req).then((fresh) => {
         if (fresh && fresh.ok) {
-          // Write back under the CANONICAL search-less URL so query variants
-          // refresh the one shared entry instead of accumulating forever.
-          const canonical = new URL(url.pathname, url.origin).href;
-          cache.put(new Request(canonical), fresh.clone()).catch(() => {});
+          const writeReq = shell ? new Request(new URL(url.pathname, url.origin).href) : req;
+          cache.put(writeReq, fresh.clone()).catch(() => {});
         }
         return fresh;
       }).catch(() => null);
