@@ -277,6 +277,21 @@ describe('Item 1: all sources fail, default to UTC with explicit source label', 
     expect(body.meta.utcOffsetSource).toBe('coord-estimate');
     expect(body.meta.utcOffsetSeconds).toBe(7200);
   });
+
+  // G3 (Codex) — a response backed by a single surviving source must report
+  // honest LOW confidence, not the old 'decent'/'high'.
+  it('a single-source response reports honest low confidence (not decent)', async () => {
+    const { body } = await callWeather({ WEATHERAPI_KEY: '', PIRATE_WEATHER_KEY: '' });
+    // Sanity: exactly one source actually returned data this request.
+    const okSources = body.meta.sources.filter((s) => s.ok);
+    expect(okSources).toHaveLength(1);
+    expect(okSources[0].name).toMatch(/MET/i);
+    // confidenceKey: no OM+WA corroboration → 'mixed', never 'decent'/'strong'.
+    expect(body.consensus.confidenceKey).toBe('mixed');
+    expect(body.consensus.confidenceKey).not.toBe('decent');
+    // meta.confidence: a single source has no corroboration → 'low'.
+    expect(body.meta.confidence).toBe('low');
+  });
 });
 
 // ---------------------------------------------------------------------------

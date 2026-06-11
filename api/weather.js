@@ -1348,12 +1348,18 @@ export default async function handler(req, res) {
     const pwNorm  = norms[2];
     const metNorm = norms[3];
 
+    // G3 (Codex): confidence must reflect sources that ACTUALLY returned data
+    // this request (budget-blocked/failed sources are null in `norms`), not the
+    // nominal 5-source ensemble. 'strong'/'decent' require the OM+WA pair to
+    // BOTH have returned (≥2 corroborating sources). A single surviving source
+    // (e.g. 4 of 5 budget-blocked) has NO corroboration → it stays at the
+    // honest default 'mixed'. The old `length === 1 → 'decent'` branch reported
+    // a single-source response as decent, which was dishonest.
+    const sourcesWithData = norms.filter(Boolean).length;
     let confidenceKey = 'mixed';
-    if (isNum(omNorm?.nowTemp) && isNum(waNorm?.nowTemp)) {
+    if (sourcesWithData >= 2 && isNum(omNorm?.nowTemp) && isNum(waNorm?.nowTemp)) {
       const spread = Math.abs(omNorm.nowTemp - waNorm.nowTemp);
       confidenceKey = spread <= 1.5 ? 'strong' : spread <= 3.5 ? 'decent' : 'mixed';
-    } else if (norms.filter(Boolean).length === 1) {
-      confidenceKey = 'decent';
     }
 
     // GFS divergence check: when GFS and ECMWF disagree strongly, honest downgrade
@@ -1684,6 +1690,11 @@ export default async function handler(req, res) {
     // → need 2) instead of falsely flagging a unanimous 3-source day as low.
     const lowConfidence = (
       fogTrendIncoming ||
+      // G3: a single surviving source (4 of 5 budget-blocked/failed) has no
+      // corroboration — honest low confidence. Without this, the disagreement
+      // branch below only fired at ≥3 sources, so a one-source response
+      // reported 'high'.
+      activeNorms.length < 2 ||
       (activeNorms.length >= 3 && agreeingSources < (activeNorms.length - 1) && nowConditionReason !== 'visibility-humidity-fog-detector')
     );
     const conditionConfidence = lowConfidence ? 'low' : 'high';
