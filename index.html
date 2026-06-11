@@ -64,8 +64,19 @@
       background: #1a1a2e;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       gap: 22px; transition: opacity .4s ease;
+      /* HIGH-2 failsafe: a CSS-only auto-hide at 8s with ZERO JS dependency.
+         If app.js throws during init (or fails to load/parse) and never adds
+         .splash-done, this keyframe still clears the splash so it can never
+         outlive a broken boot — the recolored black screen the review flagged.
+         Deliberately kept OUT of the prefers-reduced-motion override below so
+         the failsafe always fires. JS hideSplash on first render fires far
+         sooner on a healthy boot. */
+      animation: pwSplashFailsafe .6s ease 8s forwards;
     }
     #pwSplash.splash-done { opacity: 0; pointer-events: none; }
+    @keyframes pwSplashFailsafe {
+      to { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
     .pw-splash-logo { animation: pwSplashPulse 2.2s ease-in-out infinite; }
     @keyframes pwSplashPulse {
       0%, 100% { transform: scale(1); opacity: 1; }
@@ -153,6 +164,25 @@
       <span lang="st">Mohlomong e a jarolla…</span>
     </div>
   </div>
+  <script>
+    // Splash failsafe (HIGH-2). Belt to the CSS braces (#pwSplash auto-hides at
+    // 8s). Three independent dismissals so the splash can NEVER outlive a broken
+    // boot, including the cases an app.js-internal try/catch can't reach:
+    //   · window 'error' — any uncaught script error (incl. app.js init throw)
+    //     hides it immediately (filtered to script errors, not resource 404s).
+    //   · window 'load' + short grace — a silent hang where app.js loaded but
+    //     never reached a render and never threw.
+    // Lives in index.html, NOT app.js, on purpose: it must survive app.js
+    // failing to LOAD or PARSE, which an app.js try/catch never would.
+    (function () {
+      var kill = function () {
+        var s = document.getElementById('pwSplash');
+        if (s) s.classList.add('splash-done');
+      };
+      window.addEventListener('error', function (e) { if (e && (e.error || e.message)) kill(); });
+      window.addEventListener('load', function () { setTimeout(kill, 3000); });
+    })();
+  </script>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
   <div id="bg" aria-hidden="true">
     <!-- Static default src: the background paints with the shell instead of

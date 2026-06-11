@@ -29,6 +29,16 @@ import { shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+  // HIGH-2: in-app splash failsafe — the belt closest to the throw. If anything
+  // in this init handler throws before the first render lands (corrupt
+  // localStorage in loadSettings, a throw in applySettings, the first-open
+  // path), drop the splash so it can't outlive a broken boot. The index.html
+  // inline failsafe is the PRIMARY guard (it also survives app.js failing to
+  // load/parse, which this listener cannot); this fires a tick sooner on an
+  // init throw. CSS auto-hides at 8s as the final backstop.
+  window.addEventListener('error', () => {
+    document.getElementById('pwSplash')?.classList.add('splash-done');
+  }, { once: true });
   const $ = (sel) => document.querySelector(sel);
   const DEBUG = false;
   const debugLog = (...args) => {
