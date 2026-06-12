@@ -468,3 +468,59 @@ None. All gates passed: every touched JS `node --check` clean; suite 1543/1543 g
 - Watch the first deploy after push (sw.js routing change activates on the next SW update; the v2 cache key takes effect immediately).
 - Tune the per-IP weather cap / limiter placement and the provider-budget ceilings from observed Vercel traffic (tradeoffs #1, #2).
 - Native review of the 3 provisional boot-error strings.
+
+---
+# Checkpoint: 5s black screen before splash — diagnosed + fixed (upgrade path)
+**Generated:** 2026-06-12 ~10:15 SAST
+**Task:** Al's phone (live prod, old SW + old caches installed): ~5s pure black on open, then PW splash 1-2s, then app. Requirement: logo visible from the first instant. Diagnose for real on the upgrade path, fix, verify, deploy.
+**Skills Used:** pw-deploy, supervisor (this report). Repro harness: Playwright MCP + custom latency server.
+
+## What Was Done
+- Reconstructed the exact device state: git history shows pre-v15 SWs (v14 at a624c2e and older) served HTML + core assets NETWORK-FIRST with no timeout. Al's device was on one of those.
+- Built a repro harness (eval/upgrade-repro-server.mjs, untracked like the rest of eval/): serves the OLD shipped tree (worktree of a624c2e) then flips to the NEW tree mid-session like a Vercel deploy, with 800ms artificial latency per request; optional sw-pinning so first-load paint timings survive the deliberate controllerchange auto-reload.
+- Reproduced: upgrade open painted at FCP 1712ms — HTML (829ms, network-first via old SW) + render-blocking app.css in <head> (done 1674ms), serialized. The new SW's 25-asset addAll ran in the same window, competing for the link. Scaled to real mobile (radio wake, DNS/TLS, SW cold start) ≈ the observed ~5s of black.
+- Fix 1 (index.html): moved <link rel="stylesheet" app.css> from <head> to <body>, directly below the splash markup + inline failsafe script. Splash now paints with the HTML alone; everything below the link stays render-blocked (no visible FOUC — opaque splash covers it).
+- Fix 2 (sw.js → v16): install precache now waits PRECACHE_YIELD_MS = 4000ms before cache.addAll, so the upgrade-window precache never competes with paint-critical fetches.
+- Verified in harness: (a) pinned-SW upgrade open: FCP 1712ms → 900ms (58ms after HTML; CSS still in flight — fcpBeforeCss=true). (b) Full unpinned upgrade: server log shows precache flood starts t≈9.0s, after the boot chain (0–4.2s); core cache complete (27 entries); silent reload still fires; post-reload SWR FCP 84ms.
+- Suite: 1543/1543 green (55 files). Build green, precache gate 26/26.
+
+## Files Changed
+| File | Action | What Changed |
+|------|--------|-------------|
+| index.html | Modified | app.css link moved head → body (below splash); explanatory comments |
+| sw.js | Modified | v16 header; PRECACHE_YIELD_MS=4000 delay before install addAll |
+| eval/upgrade-repro-server.mjs | Created (untracked) | repro/verification harness, kept out of the deploy like the rest of eval/ |
+
+## Decisions Made
+- Decision: fix splash paint via body-level stylesheet link rather than async CSS (media=print trick) or inlining critical CSS.
+  - Why: body-level link keeps the app shell render-blocked (zero FOUC risk) while freeing the splash; smallest diff; preload scanner still fetches CSS at the same time, so total load is unchanged.
+  - Alternative considered: fully async CSS — rejected, could expose an unstyled shell if the splash clears early.
+- Decision: CACHE_VERSION NOT bumped for v16.
+  - Why: install addAll refetches every core asset (incl. new index.html) into the existing cache, and SWR background refresh updates the shell on every open; a bump only forces churn. Same reasoning as the v15 precedent, documented in the sw.js header.
+  - Alternative considered: bump — rejected per above.
+- Decision: 4s precache yield (not critical/rest split).
+  - Why: covers the paint-critical window at slow-mobile latency with a 3-line change; a split precache adds complexity and changes offline-shell atomicity guarantees.
+  - Tradeoff on record: install completes ~4s later; if a user opens-and-closes within ~5-10s on the upgrade open, the SW update retries next open (old behaviour: also possible, just less likely). Accepted.
+
+## Issues Found
+- Issue: the residual gap — on upgrade opens from pre-v15 SWs and on first-ever visits, the splash still cannot appear before the HTML arrives (~1 network RTT). That gap is only coverable by the OS-level splash (manifest background_color #1a1a2e + icons, all present and correct). If Al saw PURE black with no icon during launch, his installed instance may be a plain shortcut rather than a WebAPK/TWA — reinstalling the PWA from the updated site restores the OS splash.
+  - Severity: MINOR (one-time per device; self-heals)
+  - Status: NEEDS ARCHITECT INPUT (whether to nudge testers to reinstall)
+- Issue: Al's specific device has ALREADY self-healed by this open (v15+ SWR SW now controls; measured 84-88ms FCP equivalent locally). The 5s black will not recur there even without this deploy; this deploy fixes the same experience for every other device still on an old SW, and halves first-visit black time for new users.
+  - Severity: informational
+  - Status: N/A
+
+## Before & After
+- Upgrade open (800ms simulated latency): black until FCP 1712ms → splash at FCP 900ms, CSS no longer on the splash critical path.
+- SW install precache: starts immediately, contends with boot → starts at boot+~4s, zero contention, cache still complete.
+- Post-upgrade opens: unchanged (SWR instant, FCP ~84ms in harness).
+
+## Quality Checklist
+- [x] Suite green: 1543/1543
+- [x] Build green incl. precache path gate (26/26)
+- [x] No regression to SWR shell, splash failsafes (tests pass), /share scoping (sw-share-no-collapse green), offline shell (offline-* tests green)
+- [x] Atomic commits (f9ff458 index.html, ee9f5f5 sw.js)
+- [x] Pushed to main / Vercel deploy confirmed (see below)
+
+## Next Steps
+- Optional: nudge testers still on old installs to open the app once (self-heals) — no action needed otherwise.
