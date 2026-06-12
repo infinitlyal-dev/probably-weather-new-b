@@ -1,4 +1,18 @@
-/* Probably Weather — Service Worker v15
+/* Probably Weather — Service Worker v16
+   Upgrades from v15:
+   - Install-time precache now starts after a 4s PRECACHE_YIELD_MS delay. On
+     the one open where a device upgrades from a pre-SWR SW (v14 and older,
+     network-first shell), the page's own critical fetches (HTML, app.css,
+     app.js — all blocking first paint through the OLD SW) used to compete
+     with this SW's ~25-asset addAll on the same mobile link. The delay hands
+     the link to first paint; precache (and therefore activate → the silent
+     controllerchange reload) runs a few seconds later, which the user never
+     sees. Devices already on a SWR SW paint from cache instantly, so the
+     delay costs them nothing.
+   - CACHE_VERSION again NOT bumped: install addAll refetches every core asset
+     fresh (including the updated index.html) into the existing cache, and the
+     SWR runtime refresh keeps doing so on every open — a bump would only
+     force needless precache churn on every device.
    Upgrades from v14:
    - App shell (HTML + core assets) switched from NETWORK-FIRST to
      STALE-WHILE-REVALIDATE. The cached shell is served immediately so the
@@ -68,9 +82,15 @@ const CORE_ASSETS = [
 const MAX_IMG_CACHE = 120;
 const API_CACHE_MAX_AGE = 3 * 60 * 60 * 1000; // 3 hours
 
+// How long install waits before precaching. Covers the page's paint-critical
+// window (HTML + CSS + JS over a slow mobile link) so the ~25-asset addAll
+// never competes with first paint — see v16 header note.
+const PRECACHE_YIELD_MS = 4000;
+
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil((async () => {
+    await new Promise((resolve) => setTimeout(resolve, PRECACHE_YIELD_MS));
     try {
       const cache = await caches.open(CORE_CACHE);
       // addAll is atomic — if any single asset fails, the cache is left empty.
