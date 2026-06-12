@@ -52,7 +52,13 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png"/>
   <link rel="apple-touch-icon" href="assets/icon-192.png"/>
-  <link rel="stylesheet" href="assets/app.css"/>
+  <!-- app.css is linked in <body> BELOW the splash, not here. A render-blocking
+       stylesheet in <head> blocks the FIRST PAINT of the whole page — including
+       the inline-styled splash — until the CSS arrives over the network. On the
+       upgrade path (an old network-first SW controlling the page) that meant
+       HTML fetch + CSS fetch back-to-back before the splash could appear: the
+       measured 2×RTT black screen. A body-level link only blocks content AFTER
+       it in the DOM, so the splash paints with the HTML itself. -->
   <link rel="manifest" href="manifest.json"/>
   <style>
     /* Splash — pure HTML/CSS, zero JS, zero network. Visible from the first
@@ -259,6 +265,12 @@
       });
     })();
   </script>
+  <!-- Render-blocking ONLY for everything below this line — the splash above
+       paints from the inline head <style> while app.css loads. The opaque
+       full-viewport splash covers the (blocked, never-visible) shell, so there
+       is no FOUC window; hideSplash fires on first real render, long after CSS
+       settles on any realistic path. -->
+  <link rel="stylesheet" href="assets/app.css"/>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
   <div id="bg" aria-hidden="true">
     <!-- Static default src: the background paints with the shell instead of
