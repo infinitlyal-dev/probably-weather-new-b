@@ -524,3 +524,62 @@ None. All gates passed: every touched JS `node --check` clean; suite 1543/1543 g
 
 ## Next Steps
 - Optional: nudge testers still on old installs to open the app once (self-heals) — no action needed otherwise.
+
+---
+# Checkpoint: witty-bin index-alignment audit (READ-ONLY — no strings changed)
+**Generated:** 2026-06-12 ~11:00 SAST
+**Task:** Native XH reviewer found the partly-cloudy witty bin scrambled vs English. Determine: (1) banks or review-doc generator; (2) exact extent; (3) audit ALL bins x ALL 5 languages; (4) the introducing commit. No fixes.
+**Skills Used:** pw-ui-copy, supervisor. 4 parallel audit subagents (af/zu/xh/st), one per language, each judging all 27 bins / 483 rows.
+
+## Findings
+
+### (1) Where the scramble lives
+IN THE BANKS THEMSELVES — read directly from assets/weather-copy.js (source of truth; the generated assets/copy/<lang>.js splits mirror it via the drift gate). No witty-bin review-doc generator exists in the repo; any row-paired review doc inherits the bank order.
+
+### (2+3) Extent — full audit, 27 bins x 4 languages, 483 rows
+TWO defective bins; all other 25 bins ALIGNED in all languages.
+
+**Defect A — witty['partly-cloudy'] (20 rows): scrambled in AF, ZU, XH; mostly aligned in ST.**
+Confident misalignment maps (lang[i] → EN[j]):
+- AF: 4→11, 7→12, 8→13, 9→14, 10→17, 11→18, 13→9, 15→3, 16→19, 17→16, 19→15. Aligned: 0,1,2. Borderline (human eyes): 3, 5, 6, 12, 14, 18. Unclaimed EN rows: 4,6,7,8.
+- ZU: 3→5, 5→12, 6→13, 7→14, 8→18, 14→10. Aligned: 0,1,2,11,15,16. Borderline: 4, 9, 10, 12, 13, 17, 18, 19 (several look freely written, not displaced translations).
+- XH: 5→12, 6→13, 7→14, 8→18, 14→10, 18→5. Aligned: 0,1,2,11,15,16 (16 loose). Borderline: 3, 4, 9, 10, 12, 13, 17, 19. EN[9] (Highveld thunderstorm) has NO XH counterpart anywhere in the bin.
+- ST: 4→16 (confident). Borderline: 3, 16, 17, 18, 19. Aligned: rest (14 rows).
+- ZU and XH share the same internal order (translated from a common scrambled intermediate); AF has its own distinct scramble; ST mostly follows EN.
+- NOT a clean permutation in any language — some rows are orphans/free lines; several EN rows have no translation at all in a given language.
+
+**Defect B — witty_low_confidence['clear'] (6 rows): +1 shift in ZU, XH, ST (identical pattern, found independently by all three auditors). AF aligned.**
+- zu/xh/st[2]→EN[3], [3]→EN[4], [4]→EN[5]; rows 0-1 aligned; row [5] is a generic "probably nice, not fully sure" filler.
+- EN[2] "Clear, in theory. The Cape Doctor doesn't always RSVP." has NO translation in ZU/XH/ST (AF has it: "Helder, in teorie. Die Kaapse Dokter RSVP nie altyd nie.").
+
+### (4) How it got in — the commits
+Both defects were BORN AT BANK CREATION; no later reorder ever touched them:
+- Defect A: a3cbfd3 (2026-04-28, "fix(copy): add partly-cloudy witty bucket") — the en/af/zu/xh/st arrays were added in that commit already in their current, divergent orders. Each language column was composed as a free-standing 20-line list, not row-by-row translations. Verified: current arrays byte-match the a3cbfd3 additions (bank then migrated app.js → weather-copy.js @0556453 → copy splits @b54fa96, order preserved).
+- Defect B: e683a38 (2026-05-21, "confidence-aware copy register") — EN+AF were written WITH the Cape Doctor line at [2]; ZU/XH/ST were written WITHOUT it and padded with a 6th filler line. The bank's own _meta says requires_native_review: ['zu','xh','st'].
+
+### Corroborating detail
+sesotho-replacements.txt [T12R6] (the row-keyed ST review) paired EN[5] "peek-a-boo" with ST row 6 (1-based) and the correction landed correctly because ST's column was EN-ordered — confirming row-keyed review is safe ONLY on aligned banks, which is exactly why XH corrections cannot be applied yet.
+
+### Bonus quality flags (ALIGNED rows — translation-quality only, native-reviewer territory, NOT touched)
+- ZU: storm[10] "umkhumbi" (ship) for "kite"; fog[3] "iqanda" (egg) for "zero"; rain[3] "amapulazi" (farms) for "pools"; wind[9] "izinkonjane" (swallows) for "seagulls"; cloudy[36] "izindlela" (roads) for "expectations"; partly-cloudy[7] "isijele" (jail) for "ijezi" (jersey).
+- XH: storm[10] "umntla" (north) for "kite"; cold[24] "kushushu" (heat) in a cold line; heat[35] "ucango" (door) for "buckle".
+- ST: rain[16] "Boko" (brain) for "betrayal"; fog[21] "sponsored by a person" for "by nobody"; lc-fog[2] "tlosa mabone" (remove lights) for "switch on".
+- AF: partly-cloudy[16] ends "...om te kers" — looks truncated/corrupted; partly-cloudy[14] is half-English ("Sky's playing kat-en-muis").
+
+## Files Changed
+| File | Action | What Changed |
+|------|--------|-------------|
+| eval/dump-bins.mjs, eval/bins-dump.json, eval/audit-{af,zu,xh,st}.json | Created (untracked) | audit working artifacts, kept for the fix session |
+| CHECKPOINT.md | Modified | this entry |
+NO language strings, code, or tests modified.
+
+## Decisions Made
+- Decision: audit via 4 parallel language subagents over a JSON dump of the live module (import-based, not regex) — guarantees we audited exactly what ships.
+- Decision: flagged borderline rows instead of forcing a permutation — per instruction; partly-cloudy is NOT a clean permutation, so a forced mapping would corrupt it further.
+- Decision: committed only CHECKPOINT.md (read-only mandate).
+
+## Next Steps (for the Architect)
+1. Fix strategy decision needed for witty['partly-cloudy']: re-shuffling cannot fully repair it (orphans + missing EN rows in all four languages). Recommend: treat EN order as canonical, move the confidently-mapped rows to their true indices, and hand the borderline/orphan slots to native reviewers as a short gap-fill list per language.
+2. witty_low_confidence['clear'] zu/xh/st is a clean mechanical fix: shift [2..4]→[3..5], leaving [2] open for a fresh native translation of the Cape Doctor line; current filler [5] can be discarded or audited.
+3. Only after re-alignment: apply the XH row-keyed review corrections.
+4. The bonus quality flags above should ride along in the next native-review round.
