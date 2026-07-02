@@ -76,15 +76,23 @@ describe('filterWeekendPoolForDay — day correctness across all 5 languages', (
 // ---------------------------------------------------------------------------
 // app.js wiring — the weekend branch must apply the day filter, not raw-random.
 // ---------------------------------------------------------------------------
-describe('app.js wiring — weekend pool is day-filtered', () => {
+describe('app.js wiring — weekend pool is day-filtered via structural tags', () => {
+  // 2026-07-02: the substring blocklist + filterWeekendPoolForDay were replaced
+  // by structural day metadata (witty-day-tags.js). weekend[19]='sat' now gates
+  // the Saturday line through the single enforcement point, dayAwarePool().
   const appSrc = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
 
-  it('imports filterWeekendPoolForDay from weather-copy.js', () => {
-    expect(appSrc).toMatch(/filterWeekendPoolForDay/);
+  it('imports the day-tag enforcement (WITTY_DAY_TAGS + dayAwarePool)', () => {
+    expect(appSrc).toMatch(/import\s*\{[^}]*WITTY_DAY_TAGS[^}]*dayAwarePool[^}]*\}\s*from\s*['"]\.\/witty-day-tags\.js['"]/);
   });
 
-  it('applies the day filter inside the weekend branch (not a raw random pick)', () => {
-    // The weekend branch must pass the computed `day` through the filter.
-    expect(appSrc).toMatch(/filterWeekendPoolForDay\(\s*[^,]+,\s*day\s*\)/);
+  it('runs the weekend pool through dayAwarePool with WITTY_DAY_TAGS.witty.weekend and the computed day', () => {
+    expect(appSrc).toMatch(/dayAwarePool\(\s*WITTY_DAY_TAGS\.witty\.weekend\s*,[^)]*\bday\b/);
+  });
+
+  it('no longer declares the old WEEKDAY_ONLY_FRAGMENTS substring blocklist', () => {
+    // A historical mention in a comment is fine; the const/usage must be gone.
+    expect(appSrc).not.toMatch(/const\s+WEEKDAY_ONLY_FRAGMENTS/);
+    expect(appSrc).not.toMatch(/WEEKDAY_ONLY_FRAGMENTS\s*\.\s*some/);
   });
 });

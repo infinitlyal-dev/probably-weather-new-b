@@ -12,6 +12,7 @@ import {
   getOgStaticBackgroundPath,
   getTimeOfDaySlot,
 } from '../assets/weather-visuals.js';
+import { WITTY_DAY_TAGS, dayAwarePool } from '../assets/witty-day-tags.js';
 
 export const config = { runtime: 'nodejs' };
 export const CACHE_CONTROL = 'public, max-age=300, s-maxage=300';
@@ -66,10 +67,15 @@ function pickLocalized(bank, key, lang, fallback = '') {
   return entry?.[lang] || entry?.en || fallback;
 }
 
-function pickWitty(condition, lang, seed) {
-  const raw = WEATHER_COPY.witty?.[condition]?.[lang] || WEATHER_COPY.witty?.[condition]?.en || WEATHER_COPY.witty.clear.en;
-  // Skip intentional empty slots (partly-cloudy realignment gap-fill placeholders).
-  const lines = Array.isArray(raw) ? raw.filter(s => typeof s === 'string' && s.trim() !== '') : [];
+function pickWitty(condition, lang, seed, day, hour) {
+  // Resolve the bin so day-tags line up with the array, then apply the SAME
+  // day-aware + empty-slot filter the app uses (witty-day-tags.js). Deterministic
+  // hash pick over the filtered pool.
+  let bin = condition;
+  let raw = WEATHER_COPY.witty?.[condition]?.[lang];
+  if (!raw) raw = WEATHER_COPY.witty?.[condition]?.en;
+  if (!raw) { bin = 'clear'; raw = WEATHER_COPY.witty.clear.en; }
+  const lines = dayAwarePool(WITTY_DAY_TAGS.witty[bin], raw, day, hour);
   if (lines.length === 0) return '';
   return lines[hashString(seed) % lines.length];
 }
@@ -93,6 +99,13 @@ export function buildOgViewModel(payload, options = {}) {
   const rain = isNum(now.rainChance ?? today.rainChance) ? `${round(now.rainChance ?? today.rainChance)}%` : '--';
   const uv = isNum(now.uv ?? today.uv) ? String(round(now.uv ?? today.uv)) : '--';
   const seed = `${location}|${condition}|${lang}|${new Date().toISOString().slice(0, 10)}`;
+  // Local day/hour at the shared location, so the card's witty line obeys the
+  // same day-tags as the app (no "just Tuesday" line on a Friday share card).
+  const offsetS = payload?.utcOffsetSeconds;
+  const locMs = isNum(offsetS) ? Date.now() + Number(offsetS) * 1000 : Date.now();
+  const locDate = new Date(locMs);
+  const day = isNum(offsetS) ? locDate.getUTCDay() : locDate.getDay();
+  const hour = isNum(offsetS) ? locDate.getUTCHours() : locDate.getHours();
 
   return {
     lang,
@@ -102,7 +115,7 @@ export function buildOgViewModel(payload, options = {}) {
     tempRange,
     headline: pickLocalized(WEATHER_COPY.headlines, condition, lang, 'Probably weather.'),
     heroLabel: pickLocalized(WEATHER_COPY.heroLabels, condition, lang, 'Weather'),
-    witty: pickWitty(condition, lang, seed),
+    witty: pickWitty(condition, lang, seed, day, hour),
     stats: `${labels.wind} ${wind} • ${labels.rain} ${rain} • ${labels.uv} ${uv}`,
     // backgroundPath is now the static og/<condition>.jpg (no time-of-day) —
     // see getOgStaticBackgroundPath docblock for the @vercel/og WebP reason.

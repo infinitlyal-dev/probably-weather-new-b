@@ -5,7 +5,7 @@ import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './lan
 // references to its nested objects); the weekend filter moved to its own
 // micro-module so importing it doesn't drag the bank along.
 import { COPY_BANK, loadCopyBank } from './copy-loader.js';
-import { filterWeekendPoolForDay } from './weekend-filter.js';
+import { WITTY_DAY_TAGS, dayAwarePool } from './witty-day-tags.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
@@ -1116,91 +1116,40 @@ document.addEventListener("DOMContentLoaded", () => {
       || (fb && T.heroLabels[fb]?.en)
       || "Pleasant";
   }
-  // Lowercase substrings that mark a witty line as weekday-coded (commute / office /
-  // Monday references). On Sat/Sun we filter these out of the pool so they don't fire
-  // out of context. Match against the lowercased line — fragments stay lowercase here.
-  // Sotho lines use straight ASCII apostrophes, not curly ones — match accordingly.
-  const WEEKDAY_ONLY_FRAGMENTS = [
-    // English commute / office / weekday markers
-    'commute', 'traffic', 'office', 'taxi on the road', 'school run',
-    'monday', 'past-you made plans', 'hair plans',
-    'aircon war', 'aircon debate', 'garage pie for lunch',
-    'joburg drivers', 'every taxi',
-    // Afrikaans
-    'die rit', 'die verkeer', 'kantoor', 'maandag',
-    'joburg-bestuurders', 'elke taxi', 'haarplanne',
-    'garage-pastei', 'aircon oorlog', 'aircon debat',
-    // Zulu
-    'ithrafikhi', 'ihhovisi', 'umsombuluko',
-    'itekisi emgwaqweni', 'izinhlelo zezinwele',
-    'i-aircon yasehhovisi',
-    // Xhosa
-    'itrafikhi', 'iofisi', 'umvulo',
-    'itekisi endleleni', 'izicwangciso zeenwele',
-    'i-aircon yaseofisini',
-    // Sotho
-    'sephethephethe', 'ofisi', 'mantaha',
-    "tekisi e 'ngoe le e 'ngoe tseleng", 'merero ea moriri',
-    'aircon ea ofisi'
-  ];
-  // A witty pool may hold intentional empty slots — the partly-cloudy and
-  // low-confidence realignment leaves some indices "" pending native gap-fill.
-  // Never surface a blank line: filter empties before the random pick.
-  function pickWittyLine(pool) {
-    const clean = Array.isArray(pool) ? pool.filter(s => typeof s === 'string' && s.trim() !== '') : [];
-    return clean.length ? clean[Math.floor(Math.random() * clean.length)] : '';
-  }
+  // Witty pools may hold intentional empty slots (partly-cloudy / low-confidence
+  // realignment) and day-tagged lines (weekday / weekend / day-named — see
+  // witty-day-tags.js). dayAwarePool() is the SINGLE enforcement point: it drops
+  // empties and lines not allowed on the current local day, with a never-empty
+  // fallback. This replaced the old WEEKDAY_ONLY_FRAGMENTS substring blocklist +
+  // weekend-filter.js — structural row-index metadata, not string matching, so a
+  // day-named line ("just Tuesday") can never fire on the wrong day in any language.
+  const pickRandom = pool => pool.length ? pool[Math.floor(Math.random() * pool.length)] : '';
   function getWittyLine(condition) {
     const day = getLocationDayOfWeek(), hour = getLocationHour(activePlace?.lon);
     const isWeekend = day === 0 || day === 6 || (day === 5 && hour >= 16);
-    // Layer B (Bug 1): when the API flags the verdict as low-confidence — a fog
-    // trend is forming, or the sources disagree — drop into the honest
-    // "probably" register instead of projecting false certainty. This takes
-    // precedence over the weekend pool (honesty beats a braai pun when we're
-    // unsure). Conditions with no low-confidence bank fall through unchanged.
+    // Low-confidence register takes precedence (honesty beats a braai pun when unsure).
     if (window.__PW_LAST_NORM?.confidence === 'low') {
       const lcPool = T.witty_low_confidence?.[condition]?.[settings.lang]
         || T.witty_low_confidence?.[condition]?.en;
       if (Array.isArray(lcPool) && lcPool.some(s => s && s.trim())) {
         debugLog(`[Witty register] LOW-CONFIDENCE pool for ${condition}/${settings.lang}`);
-        return pickWittyLine(lcPool);
+        return pickRandom(dayAwarePool(WITTY_DAY_TAGS.witty_low_confidence[condition], lcPool, day, hour));
       }
     }
+    // clear/heat on the weekend route to the dedicated weekend pool.
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
-      // Day-named weekend lines (e.g. "Saturday energy") must only appear on
-      // their day — filter the pool by the already-correct computed `day`
-      // before the random pick, so a Sunday/Friday-evening draw can't surface
-      // a Saturday line. See filterWeekendPoolForDay in weather-copy.js.
-      const wl = filterWeekendPoolForDay(T.witty.weekend[settings.lang] || T.witty.weekend.en, day);
-      const wlPick = pickWittyLine(wl);
+      const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en;
+      const wlPick = pickRandom(dayAwarePool(WITTY_DAY_TAGS.witty.weekend, wl, day, hour));
       if (wlPick) return wlPick;
     }
     const fb = COPY_FALLBACK[condition];
-    let lines = T.witty[condition]?.[settings.lang]
-      || (fb && T.witty[fb]?.[settings.lang])
-      || T.witty[condition]?.en
-      || (fb && T.witty[fb]?.en)
-      || T.witty.clear.en;
-    // On strict Sat/Sun, filter out weekday-coded jokes. Friday-after-16:00 already
-    // routes to the weekend pool above for clear/heat, so it doesn't need filtering here.
-    const isStrictWeekend = day === 0 || day === 6;
-    if (isStrictWeekend) {
-      const filtered = lines.filter(line => {
-        const lower = line.toLowerCase();
-        return !WEEKDAY_ONLY_FRAGMENTS.some(frag => lower.includes(frag));
-      });
-      // Safety: if the filter would leave fewer than 3 lines, keep the full pool —
-      // better a slightly off line than the same line every refresh.
-      if (filtered.length >= 3) {
-        if (filtered.length < lines.length) {
-          debugLog(`[Witty filter] ${condition}/${settings.lang}: ${lines.length}→${filtered.length} lines (weekend filter)`);
-        }
-        lines = filtered;
-      } else {
-        debugLog(`[Witty filter] ${condition}/${settings.lang}: filtered pool too small (${filtered.length}), using full pool`);
-      }
-    }
-    return pickWittyLine(lines);
+    // Resolve which bin `lines` came from so the day-tags line up with the array.
+    let bin = condition, lines = T.witty[condition]?.[settings.lang];
+    if (!lines && fb && T.witty[fb]?.[settings.lang]) { bin = fb; lines = T.witty[fb][settings.lang]; }
+    if (!lines && T.witty[condition]?.en) { bin = condition; lines = T.witty[condition].en; }
+    if (!lines && fb && T.witty[fb]?.en) { bin = fb; lines = T.witty[fb].en; }
+    if (!lines) { bin = 'clear'; lines = T.witty.clear.en; }
+    return pickRandom(dayAwarePool(WITTY_DAY_TAGS.witty[bin], lines, day, hour));
   }
   function getDayBadge(d, dayIndex, hourlyData) {
     const ck = (d.conditionKey || '').toLowerCase();

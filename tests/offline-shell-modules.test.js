@@ -63,15 +63,15 @@ const dynamicModules = [
 
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
-    // 12 direct static imports: weather-copy.js + install.js left the graph
-    // (Group 6 split), copy-loader.js + weekend-filter.js joined it.
-    // (coord-parse.js is a TRANSITIVE dep via startup-location.js — covered
-    // by the dynamicModules precache check below.)
+    // 12 direct static imports. 2026-07-02: weekend-filter.js left app.js's
+    // graph (day-filtering moved to structural tags) and witty-day-tags.js
+    // joined it — still 12. (coord-parse.js is a TRANSITIVE dep via
+    // startup-location.js — covered by the dynamicModules precache check below.)
     expect(importedModules.length).toBe(12);
     for (const mod of [
       '/assets/language-preferences.js',
       '/assets/copy-loader.js',
-      '/assets/weekend-filter.js',
+      '/assets/witty-day-tags.js',
       '/assets/weather-visuals.js',
       '/assets/image-picker.js',
       '/assets/weather-emoji.js',
