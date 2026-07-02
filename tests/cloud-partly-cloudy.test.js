@@ -163,7 +163,7 @@ describe('partly-cloudy: home and hourly stay consistent', () => {
     expect(block).toMatch(/'partly-cloudy':\s*\{[\s\S]*?en:\s*"Partly cloudy/);
     expect(block).toMatch(/'partly-cloudy':[\s\S]*?af:\s*"Effens bewolk/);
     expect(block).toMatch(/'partly-cloudy':[\s\S]*?zu:\s*"Kunamafu kancane/);
-    expect(block).toMatch(/'partly-cloudy':[\s\S]*?xh:\s*"Linamafu kancinci/);
+    expect(block).toMatch(/'partly-cloudy':[\s\S]*?xh:\s*"Kunamafu kancinci/);
     expect(block).toMatch(/'partly-cloudy':[\s\S]*?st:\s*"ho nale maru hanyane/);
   });
 
