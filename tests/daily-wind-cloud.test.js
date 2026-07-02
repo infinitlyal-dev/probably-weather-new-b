@@ -112,3 +112,33 @@ describe('daily wind/cloud — days 2–6 sourced from provider daily aggregates
     expect(['cloudy', 'partly-cloudy']).toContain(body.daily[3].conditionKey);
   });
 });
+
+describe('daily fog — under-corroborated fog on far days is demoted (>=2-source rule)', () => {
+  // Reproduces the live Weekly-tab symptom: WeatherAPI free tier stops at day 2,
+  // so far days have only OM + Pirate descs. Here OM says Overcast and Pirate says
+  // Fog on day 4 — a single fog vote of two. The daily fog guard must demote it.
+  const om = JSON.parse(JSON.stringify(openMeteoPayload));
+  om.daily.weather_code = [0, 0, 0, 0, 3, 0, 0];      // day 4 overcast (not fog)
+  const wa3 = JSON.parse(JSON.stringify(weatherApiPayload));
+  wa3.forecast.forecastday = wa3.forecast.forecastday.slice(0, 3); // free-tier: 3 days
+  const pir = JSON.parse(JSON.stringify(piratePayload));
+  pir.daily.data = pir.daily.data.map((d, i) => i === 4 ? { ...d, icon: 'fog', cloudCover: 0.4 } : d);
+
+  const stub = vi.fn(async (url) => {
+    const href = String(url);
+    if (href.startsWith('https://api.open-meteo.com/')) return makeResponse(om);
+    if (href.startsWith('https://api.weatherapi.com/')) return makeResponse(wa3);
+    if (href.startsWith('https://api.pirateweather.net/')) return makeResponse(pir);
+    if (href.startsWith('https://api.met.no/')) return makeResponse(metPayload);
+    throw new Error(`Unexpected URL: ${href}`);
+  });
+
+  it('day 4 (OM Overcast + Pirate Fog = 1/2 fog votes) does NOT render fog', async () => {
+    vi.stubGlobal('fetch', stub);
+    let body;
+    const res = { setHeader: vi.fn(), status() { return this; }, json(p) { body = p; return this; } };
+    await handler({ query: { lat: '-34.1163', lon: '18.8362', name: 'Strand' } }, res);
+    expect(body.daily[4].conditionSignals.sourceDescs.length).toBe(2); // only OM + Pirate
+    expect(body.daily[4].conditionKey).not.toBe('fog');
+  });
+});
