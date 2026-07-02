@@ -12,7 +12,6 @@ vi.mock('../api/_lib/limiters.js', () => ({
   geocodeLimiter: () => blocking,
   errorsLimiter: () => blocking,
   RATE_LIMITS: {},
-  _resetLimiters: () => {},
 }));
 
 const { default: weatherHandler } = await import('../api/weather.js');

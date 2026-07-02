@@ -59,7 +59,6 @@ const CORE_ASSETS = [
   // install) so offline language switching keeps working. The old monolith
   // /assets/weather-copy.js is server-side only now — not precached.
   '/assets/copy-loader.js',
-  '/assets/weekend-filter.js',
   '/assets/witty-day-tags.js',
   '/assets/copy/en.js',
   '/assets/copy/af.js',

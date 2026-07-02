@@ -1,4 +1,6 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { WEATHER_COPY } from '../assets/weather-copy.js';
+import { WITTY_DAY_TAGS, dayAwarePool } from '../assets/witty-day-tags.js';
 
 const weatherPayload = {
   ok: true,
@@ -95,5 +97,95 @@ describe('dynamic OG image share endpoint', () => {
 
     expect(res.headers.get('cache-control')).toBe(CACHE_CONTROL);
     expect(res.headers.get('cache-control')).toContain('max-age=300');
+  });
+});
+
+// F1 regression guard. The card's witty line must be gated by the LOCATION's
+// local day (from payload.meta.utcOffsetSeconds), never the server's UTC day.
+// buildOgViewModel picks lines[hashString(seed) % lines.length] over the
+// day-filtered pool, seeded with the server-UTC date — so to make the assertion
+// deterministic AND able to fail on the old top-level `payload.utcOffsetSeconds`
+// read (which was always undefined → server-UTC), we pin a location whose hash
+// lands on the one day-named fog line (fog[7] = "…just Tuesday.", tag 'tue').
+describe('OG card gates the witty line by the LOCATION day, not server-UTC (F1)', () => {
+  // Mirror of hashString in api/og.js — used only to pick a seed-hitting location.
+  const hashString = (value) => {
+    let hash = 0;
+    for (let i = 0; i < value.length; i += 1) hash = ((hash << 5) - hash + value.charCodeAt(i)) | 0;
+    return Math.abs(hash);
+  };
+
+  const FOG = WEATHER_COPY.witty.fog.en;
+  const TUE_LINE = FOG[7]; // the only day-named fog line
+
+  // On Tuesday nothing is filtered, so the pool is the full fog array and the
+  // Tuesday line sits at index 7. Find a location whose seed selects index 7.
+  const TUE_POOL_LEN = dayAwarePool(WITTY_DAY_TAGS.witty.fog, FOG, 2, 12).length;
+  const locHittingTuesdayLine = (dateStr) => {
+    for (let i = 0; i < 100000; i += 1) {
+      const name = `FogTown${i}`;
+      if (hashString(`${name}|fog|en|${dateStr}`) % TUE_POOL_LEN === 7) return name;
+    }
+    throw new Error('no location seed selected the Tuesday fog line');
+  };
+
+  const fogPayload = (name, utcOffsetSeconds) => ({
+    ok: true,
+    location: { name },
+    now: { conditionKey: 'fog', tempC: 12 },
+    daily: [{ conditionKey: 'fog' }],
+    meta: { utcOffsetSeconds },
+  });
+
+  // First UTC instant on/after 2026-07-01 that is `hourUTC`:30 on weekday `dow`.
+  const utcInstant = (dow, hourUTC) => {
+    let ms = Date.UTC(2026, 6, 1, hourUTC, 30, 0);
+    while (new Date(ms).getUTCDay() !== dow) ms += 86400000;
+    return ms;
+  };
+
+  // The card runs on Vercel where the server TZ is UTC, so pin the test TZ to UTC:
+  // the OLD fallback used locDate.getDay() (server-LOCAL), and a runner in the
+  // location's own TZ (e.g. UTC+2) would mask the bug in one direction. Scoped +
+  // restored so sibling test files keep their ambient TZ.
+  let savedTZ;
+  beforeAll(() => { savedTZ = process.env.TZ; process.env.TZ = 'UTC'; });
+  afterAll(() => { if (savedTZ === undefined) delete process.env.TZ; else process.env.TZ = savedTZ; });
+  afterEach(() => { vi.useRealTimers(); });
+
+  it('INCLUDES the Tuesday line when it is Tuesday at the location but Monday at UTC', () => {
+    // Server UTC = Monday 23:30; location UTC+2 → Tuesday 01:30.
+    const nowMs = utcInstant(1, 23);
+    expect(new Date(nowMs).getUTCDay()).toBe(1);                 // Mon at UTC
+    expect(new Date(nowMs + 7200 * 1000).getUTCDay()).toBe(2);  // Tue at location
+    vi.useFakeTimers();
+    vi.setSystemTime(nowMs);
+
+    const serverDate = new Date(nowMs).toISOString().slice(0, 10);
+    const model = buildOgViewModel(fogPayload(locHittingTuesdayLine(serverDate), 7200), { lang: 'en' });
+
+    // Location is Tuesday → the Tuesday line is in the pool and our seed selects
+    // it. The old server-UTC (Monday) read filtered it out, so it could never be
+    // produced here — this is the guard the old suite lacked.
+    expect(model.witty).toBe(TUE_LINE);
+  });
+
+  it('EXCLUDES the Tuesday line when it is Monday at the location but Tuesday at UTC', () => {
+    // Server UTC = Tuesday 00:30; location UTC-2 → Monday 22:30.
+    const nowMs = utcInstant(2, 0);
+    expect(new Date(nowMs).getUTCDay()).toBe(2);                 // Tue at UTC
+    expect(new Date(nowMs - 7200 * 1000).getUTCDay()).toBe(1);  // Mon at location
+    vi.useFakeTimers();
+    vi.setSystemTime(nowMs);
+
+    const serverDate = new Date(nowMs).toISOString().slice(0, 10);
+    // This location WOULD select index 7 against the server-UTC (Tuesday) pool,
+    // so the old read surfaces the Tuesday line on a Monday card.
+    const model = buildOgViewModel(fogPayload(locHittingTuesdayLine(serverDate), -7200), { lang: 'en' });
+
+    // Location is Monday → the Tuesday line must be filtered out, and the pick
+    // must come from the Monday (location-day) pool.
+    expect(model.witty).not.toBe(TUE_LINE);
+    expect(dayAwarePool(WITTY_DAY_TAGS.witty.fog, FOG, 1, 22)).toContain(model.witty);
   });
 });

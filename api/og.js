@@ -101,7 +101,11 @@ export function buildOgViewModel(payload, options = {}) {
   const seed = `${location}|${condition}|${lang}|${new Date().toISOString().slice(0, 10)}`;
   // Local day/hour at the shared location, so the card's witty line obeys the
   // same day-tags as the app (no "just Tuesday" line on a Friday share card).
-  const offsetS = payload?.utcOffsetSeconds;
+  // The offset lives under meta — weather.js emits it at meta.utcOffsetSeconds
+  // (read back the same way at weather.js:192; getTimeOfDaySlot also reads it
+  // from meta). A top-level read here was always undefined, silently falling the
+  // card back to server-UTC day/hour and gating witty by the wrong day.
+  const offsetS = payload?.meta?.utcOffsetSeconds;
   const locMs = isNum(offsetS) ? Date.now() + Number(offsetS) * 1000 : Date.now();
   const locDate = new Date(locMs);
   const day = isNum(offsetS) ? locDate.getUTCDay() : locDate.getDay();
