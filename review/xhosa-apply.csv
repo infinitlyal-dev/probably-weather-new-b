@@ -1,0 +1,257 @@
+section,english,shipped,final,source,confidence,future_review,flags
+Main weather labels,Severe weather,Imozulu embi,Imozulu embi kakhulu,A,HIGH,False,
+Main weather labels,Cold but clear,"Kubanda, kucwebile","Kubanda, kodwa kucacile",A,HIGH,False,commentary-stripped
+Main weather labels,Low visibility,Ukubonakala okuphantsi,Ukungabonakali kakuhle,A,HIGH,False,
+Main weather labels,Overcast,Linamafu,Linamafu ngokupheleleyo,A,HIGH,False,
+Main weather labels,Clear night,Ubusuku obuhle,Ubusuku obucacileyo,A,MED,False,commentary-stripped
+Headlines,Cloudy vibes.,Linamafu.,Kunamafu,A,HIGH,False,
+Headlines,Partly cloudy.,Linamafu kancinci.,Kunamafu kancinci.,A,HIGH,False,
+Headlines,Wind's up.,Umoya uvuthuza.,Umoya uphezulu,B,LOW,True,possible typos (unattested): ['uphezulu']
+Headlines,Foggy out there.,Linenkungula.,Kukho inkungu.,A,MED,False,
+Headlines,Clear skies.,Isibhakabhaka sihlanzekile.,Isibhakabhaka sicacile,A,HIGH,False,
+Day status tags,Cold,Kubanda,Kuyabanda,A,MED,False,commentary-stripped
+Weather words&labels,Feels like,Kuziva ngathi,Ingathi,B,HIGH,False,
+Weather words&labels,gusts,ukuya kuthi ga kwi,ukuqhwithela komoya / izivuthuvuthu zomoya,A,HIGH,False,
+Part 2 — The witty one-liners,"Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.","EBloemfontein nge-6 kusasa: i-jersey, i-gown, i-scarf, ii-takkies, nobuso obunesibindi.",Ngo - 6,B,HIGH,False,
+Part 2 — The witty one-liners,The Free State just remembered it has a winter setting.,I-Free State isanda kukhumbula ukuba ine-winter setting.,IFree State isand’ ukukhumbula ukuba nayo inemowudi yasebusika,A,HIGH,False,
+Part 2 — The witty one-liners,The dog is still keen. The dog is always keen. Respect.,Inja isekeen. Inja ihlala i-keen. Respect.,Inja inomnqweno. Inja isoloko inomnqweno. Hlonipha.,B,LOW,True,"possible typos (unattested): ['isoloko', 'hlonipha']"
+Part 2 — The witty one-liners,Welkom-cold today. The kind that goes through three jerseys like they aren't there.,Yi-Welkom-cold namhlanje. La makhaza adlula kwii-jersey ezintathu ngathi azikho.,iWelkom iyabanda namhlanje. Okwakubanda kuphumela kwii-jersey ezintathu ingathi azikho.,B,MED,True,"B typos: ['iwelkom', 'okwakubanda', 'kuphumela']; commentary-stripped"
+Part 2 — The witty one-liners,The geyser tripped overnight. Of course it did.,"I-geyser i-tripile ebusuku. Ewe, vele.","Igeyser icimile ebusuku. Ewe, bekulindelekile",A,HIGH,False,
+Part 2 — The witty one-liners,Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.,Iqabaka engceni. Iqabaka kwi-bakkie. Iqabaka kwi-pet bowl.,Iqabaka engceni. Iqabaka kwi-bakkie. Iqabaka nakwisitya samanzi sesilwanyana.,A,HIGH,False,
+Part 2 — The witty one-liners,The lapa cushions are crispy.,Ii-cushions ze-lapa zi-crispy.,Imiqamelo ye-Lapa ii-crispy.,B,MED,True,"B typos: ['imiqamelo', 'ye-lapa', 'ii-crispy']"
+Part 2 — The witty one-liners,Sun's out. Don't be fooled. Nature is lying.,Ilanga liphumile. Ungaxokiswa. Indalo iyaxoka.,Ilanga liphumile. Musa ukukhohliswa. Indalo iyakuxoka.,A,HIGH,False,
+Part 2 — The witty one-liners,"Lekker koud, but the rugby fields are about to look perfect.","Lekker koud, kodwa amabala e-rugby sele eza kujongeka perfect.","Kubanda kamnandi, kodwa amabala ombhoxo sele ezakubamahle.",B,LOW,True,"possible typos (unattested): ['kamnandi', 'ombhoxo', 'ezakubamahle']"
+Part 2 — The witty one-liners,"Boiling-the-kettle-twice weather: once for the coffee, once for the hands.","Yi-boiling-the-kettle-twice weather: kube kanye ye-coffee, kube kanye yezandla.","Yimozulu yokubilisa i-ketile kabini. Kube kanye eye-kofu, kubekanye eye-zandla",B,LOW,True,"possible typos (unattested): ['yokubilisa', 'i-ketile', 'eye-kofu', 'kubekanye', 'eye-zandla']"
+Part 2 — The witty one-liners,"Welkom, Sasolburg, Kroonstad: the koue belt is doing its koue thing.","EWelkom, eSasolburg, eKroonstad: i-koue belt yenza i-koue thing yayo.","eWelkom, Sasolburg, Koroonstad: ibhanti lengqele lenza izinto zengqele zayo.",B,LOW,True,"possible typos (unattested): ['sasolburg', 'koroonstad', 'ibhanti', 'lengqele', 'lenza', 'zengqele', 'zayo']"
+Part 2 — The witty one-liners,Layers off by 11. Layers on by 4. Highveld classic.,Ii-layers off ngo-11. Ii-layers on ngo-4. Highveld classic.,Ii-layers ziyakhutshwa ngo-11. Ziphinde zifakwe ngo-4. Highveld classic.,A,HIGH,False,
+Part 2 — The witty one-liners,The koppies look like a postcard. Your feet feel like ice blocks.,Ii-koppies zijongeka njenge-postcard. Iinyawo zakho zivakala ngathi zi-ice blocks.,Ii-koppies zijongeka njengeposikhadi. Iinyawo zakho zivakala njengeebhloko zomkhenkce,A,HIGH,False,
+Part 2 — The witty one-liners,The kind of cold that has you Googling 'underfloor heating Bloemfontein'.,Uhlobo lwamakhaza olukwenza u-Google 'underfloor heating Bloemfontein'.,Uhlobo lwengqeleolukwenza u-Google underfloor heating Bloenfontein,B,LOW,True,"possible typos (unattested): ['lwengqeleolukwenza', 'underfloor', 'bloenfontein']"
+Part 2 — The witty one-liners,"Three hadedas, two crows, one shivering human at the bird feeder.","Ii-hadedas ezintathu, ama-crows amabini, umntu omnye ongcangcazelayo e-bird feeder.","ii-Hadedas ezintathu, ii-crows ezimbini, nomntu omnye ongcangcazelayo e-bird feeder.",B,LOW,True,B unattested: ['ii-crows']; commentary-stripped
+Part 2 — The witty one-liners,The Toyota started first try. You owe it a wash.,I-Toyota i-startile nge-try yokuqala. Uyikweleta i-wash.,iToyota idume ngemizamo yokuqala. Uyityala i-wash.,B,LOW,True,"possible typos (unattested): ['itoyota', 'idume', 'ngemizamo', 'uyityala']"
+Storms / severe weather,"The dog's under the bed. Smart move, honestly.","Inja ingaphantsi kombhede. Icebo elihle, ngenene.","Inja iphantsi kwebhedi. Icebo elihle, inene.",B,LOW,True,"possible typos (unattested): ['iphantsi', 'kwebhedi', 'inene']"
+Storms / severe weather,Even the hadedas are quiet.,Iintaka zithe cwaka.,Nditsho neeNtaka zithe cwaka.,B,LOW,True,possible typos (unattested): ['neentaka']
+Storms / severe weather,Weather so dramatic it needs a Carte Blanche segment.,Imozulu edramatiki kakhulu ifuna i-Carte Blanche.,Imozulu ine drama ifuna uCarte Blanche.,B,LOW,True,"B unattested: ['drama', 'ucarte']"
+Storms / severe weather,This is why Noah built a boat.,Yiyo le nto uNowa wakha umkhombe.,Lo ngunobangela wokuba uNoah okhe uMkhombe.,B,LOW,True,"possible typos (unattested): ['ngunobangela', 'wokuba', 'unoah', 'okhe']"
+Storms / severe weather,"The braai is cancelled. Yes, really.","Ukugrila kurhoxisiwe. Ewe, nyhani.",uBraai irhoxisiwe. Ewe nyhani.,B,MED,False,normalized 'irboxisiwe'->'irhoxisiwe' ('rb' impossible in Xhosa orthography; stem -rhoxisiwe attested (shipped 'kurhoxisiwe'))
+Storms / severe weather,Somewhere a roof is someone's new kite.,Kwezinye iindawo uphahla lungumntla omtsha.,Kwezinye iindawo uphahla luguquke lwaba yikhayithi.,A,HIGH,False,
+Storms / severe weather,Respect the thunder. It's earned it.,Hlonela iindudumo. Zikufanele.,"Yihloniphe induduma, iyakufanele""",A,HIGH,False,
+Storms / severe weather,Nature's having a word. Best to listen.,Indalo ifuna ukuthetha. Kulungile ukuphulaphula.,"Indalo iyathetha, kungcono ukuphulaphula",A,HIGH,False,
+Storms / severe weather,Wait it out indoors. The mountains aren't going anywhere.,Yima phakathi. Iintaba aziyi ndawo.,Yilinde ngaphakathi le meko. Iintaba azisayi ndawo,A,HIGH,False,
+Hail,Tiny ice bombs falling. Indoors is the only plan.,Iibhombu ezincinci zomkhenkce ziyawa. Ngaphakathi kuphela.,iiBhombu ezincinci zomkhenkce ziyawa. Hlala ngaphakathi qha.,B,LOW,True,
+Rain,The clouds are having a moment.,Amafu anethuba lawo.,Amafu ayazibonakalisa namhlanje.,A,HIGH,False,
+Rain,"Grab your brolly, boet.","Thatha isambreli sakho, boet.","Thatha iambrela yakho, bhuti.",A,HIGH,False,
+Rain,The garden's saying dankie at last.,Igadi ithi ekugqibeleni enkosi.,Igadi ithi enkosi ekugqibeleni.,B,LOW,True,
+Rain,The potholes are becoming swimming pools.,Imingxunya iba ziipuli zokuqubha.,Imingxuma endleleni ijika ibe ngamadama okuqubha.,A,HIGH,False,
+Rain,Joburg drivers are panicking already.,Abaqhubi baseJohanesburg sele beyoyika.,Abaqhubi baseJoburg sele beqalile ukuphakuzela.,A,HIGH,False,
+Rain,The dams are doing a happy dance.,Amadama enza umdaniso ovuyayo.,Amadama enza umdaniso wolonwabo.,A,HIGH,False,
+Rain,The N1 is now a waterpark.,I-N1 ngoku yi-waterpark.,uN1 yi paki yamanzi ngoku.,B,LOW,True,possible typos (unattested): ['paki']
+Rain,"Good soup weather, not gonna lie.",Imozulu elungele isuphu.,"Imozulu elungele isuphu, andizuxoka.",A,HIGH,False,re-picked: B semantic slip (isepha=soap)
+Rain,Someone's braai just got ruined.,Ukugrila komntu kusanda konakala.,iBraai yomntu isando konakala.,B,LOW,True,B unattested: ['isando']
+Rain,Rain so heavy it should pay rent.,Imvula enzima kufanele ihlawule irenti.,Imvula inetha ngamandla kangangokuba kufanele ihlawule irenti.,A,HIGH,False,
+Rain,Everyone's forgotten how to drive. Again.,Bonke balibele ukuqhuba. Kwakhona.,Bonke balibele ukuba kuqhutywa njani. Kwakhona.,B,LOW,True,"possible typos (unattested): ['kuqhutywa', 'njani']"
+Rain,The umbrella broke on the first gust. Classic.,Isambreli saphuke ngomoya wokuqala. Okwesiqhelo.,Iambrela yophuke nje kwakuvuthuza umoya wokuqala. Okwesiqhelo.,A,HIGH,False,
+Rain,Wet socks. The ultimate betrayal.,Iikawusi ezimanzi. Ukukreqwa okukhulu.,Iikawusi ezimanzi. Olona kungcatshwa lukhulu.,A,HIGH,False,
+Rain,At least the garden's happy. Someone has to be.,Ubuncinane igadi iyavuya. Umntu kufuneka avuye.,Noko igadi iyavuya. Umntu angavuya.,B,LOW,True,B unattested: ['angavuya']
+Rain,Your suede shoes chose today? Bold.,Izihlangu zakho zesuede zikhethe namhlanje? Isibindi.,Izihlangu zakho zesuede zikhethe namhlanje? Sisibindi eso.,A,HIGH,False,
+Rain,Somewhere an umbrella just turned inside out. Moment of silence.,Ndaweni ithile isambreli sisanda kuguquka ngaphakathi. Umzuzu wokuthi cwaka.,Kwenye indawo iambrela isand’ ukujikwa ngumoya ngaphakathi ngaphandle. Umzuzu wokuthi cwaka.,A,HIGH,False,
+Rain,Every taxi on the road has decided to freestyle.,Yonke itekisi endleleni ikhethe ukudlala ngokukhululekileyo.,Yonke iteksi endleleni igqibe kwelokuba izenzele umthetho wayo.,A,HIGH,False,
+Rain,"Yes, it's raining sideways. South Africa speciality.","Ewe, imvula iyana ngecala. Eyodwa yaseMzantsi Afrika.","Ewe, imvula ina ngecala. Yinto eqhelekileyo yaseMzantsi Afrika.",A,HIGH,False,
+Rain,Forgot your jacket? The universe noticed.,Ulibele ibhatyi yakho? Indalo iqaphele.,Uyilibele ibhatyi yakho? Indalo iphela ikuqaphele oko.,A,HIGH,False,
+Rain,The dog is staring at the rain like it's a personal insult.,Inja ijonge imvula ngathi yinto yobuqu.,Inja ijonga imvula ngathi iyithuka buqu.,A,HIGH,False,
+Possible rain (showers),"Maybe rain, maybe not. Classic.","Mhlawumbi imvula, mhlawumbi hayi. Okwesiqhelo.","Mhlawumbi iza kuna, mhlawumbi hayi. Into eqhelekileyo leyo.",A,HIGH,False,
+Possible rain (showers),Clouds looking proper suspicious.,Amafu abonakala erhanela ngokwenene.,Amafu akhangeleka erhaneleka nyhani.,A,HIGH,False,
+Possible rain (showers),"Take a brolly just in case, hey.","Thatha isambreli ukuba kunokwenzeka, hey.","Phatha isambreli nje xa kunokwenzeka, hey.",A,HIGH,False,
+Possible rain (showers),Don't trust those clouds. They're plotting.,Musa ukuwathemba lawo mafu. Ayaceba.,Sukuwathemba loo-mafu. Ayadibana.,B,LOW,True,"B unattested: ['sukuwathemba', 'loo-mafu', 'ayadibana']"
+Possible rain (showers),Weather's being more indecisive than you at Spur.,Imozulu ayikwazi ukuzigqiba njengawe eSpur.,Imozulu ayikwazi kuzenzela sigqibo ngakumbi kunawe eSpur.,A,HIGH,False,
+Possible rain (showers),The sky can't make up its mind. Join the club.,Isibhakabhaka asikwazi ukuzigqiba. Joyina iklabhu.,Isibhakabhaka asikwazi ukwenza isigqibo. Wamkelekile eklabhini,A,HIGH,False,
+Possible rain (showers),Forecast says maybe. We say probably.,Isibikezelo sithi mhlawumbi. Sithi mhlawumbi.,Isibikezelo sithi mhlawumbi. Thina sithi kusenokwenzeka,A,HIGH,False,
+Possible rain (showers),Bring a jacket. Or sunscreen. Or both.,Zisa ijekithi. Okanye isithinteli selanga. Okanye zombini.,Yiza nesilamba. Okanye iSunscreen. Okanye zombini.,B,MED,True,B typos: ['nesilamba']
+Possible rain (showers),The sky's giving mixed signals again.,Isibhakabhaka siphinda sinika imiqondiso exubileyo.,Isibhakabhaka siphinda sithumele imiqondiso exubeneyo.,A,HIGH,False,
+Possible rain (showers),Schrodinger's rain. It both is and isn't.,Imvula kaSchrödinger. Iyakho futhi ayikho.,Imvula kaSchrödinger — ikhona kodwa kwangaxeshanye ayikho,A,HIGH,False,
+Possible rain (showers),The washing's on the line and you're feeling brave.,Impahla yokuhlamba isemthayeni kwaye uziva unesibindi.,Impahla yonekwe ecingweni yaye uziva unesbindi.,B,LOW,True,"possible typos (unattested): ['yonekwe', 'ecingweni', 'unesbindi']"
+Possible rain (showers),Even the weather apps are arguing about this one.,Kwanee-app zemozulu ziyaxabana ngale nto.,Nokuba nee-app zemozulu ziyaphikisana ngale meko,A,HIGH,False,
+Possible rain (showers),Somewhere between fine and soaked. Good luck.,Phakathi kokuhle nokuba manzi. Inyhani enhle.,Phakathi kobamhle nokuba manzi. Unqweno omhle.,B,LOW,True,"B unattested: ['kobamhle', 'unqweno']"
+Possible rain (showers),The clouds are just vibing. No promises.,Amafu akhona nje. Akukho zithembiso.,Amafu azihambela nje. Akukho zithembiso namhlanje,A,HIGH,False,
+Possible rain (showers),Trust issues with the sky today.,Iingxaki zokuthemba isibhakabhaka namhlanje.,Namhlanje isibhakabhaka asinakuthembeka.,A,HIGH,False,
+Overcast / cloudy,The sky's giving absolutely nothing.,Isibhakabhaka asiniki nto.,Isibhakabhaka asiniki kwanto tu.,A,HIGH,False,
+Overcast / cloudy,Overcast but we'll survive.,Linamafu kodwa siya kuphila.,Kunamafu kodwa siza kuphila.,A,HIGH,False,
+Overcast / cloudy,"Good day for a walk, bad day for a tan.","Imini entle yokuhamba, embi yokutshisa.","Lusuku oluhle lokuhamba, kodwa alulungelanga ukutshisa.",A,HIGH,False,
+Overcast / cloudy,The sun's bunking today.,Ilanga liyabaleka namhlanje.,Ilanga alibonakali namhlanje.,A,HIGH,False,
+Overcast / cloudy,"Moody weather. Same, honestly.",Imozulu ezithwele. Njengam.,Imozulu iyatshintsha-tshintsha. Nam ke kunjalo.,A,HIGH,False,
+Overcast / cloudy,"Not bad, not great. Like a 6/10 date.","Ayimbi, ayintle. Njengedethi ye-6/10.","Ayikho mbi, ayikho ntle. Njeng date ye6/10",B,LOW,True,"possible typos (unattested): ['ntle', 'njeng', 'date']"
+Overcast / cloudy,Perfect weather for a Woolies run and Netflix.,Imozulu elungele uWoolies neNetflix.,Imozulu efanelekileyo yokuya eWoolies nokubukela iNetflix.,A,HIGH,False,
+Overcast / cloudy,Eskom-friendly weather. No solar today.,Imozulu elungele i-Eskom. Akukho solar.,Imozulu ye-Eskom. Ayikho i-solar namhlanje.,A,HIGH,False,
+Overcast / cloudy,It is what it is.,Kuyiloo nto iyiyo.,Kunjalo nje.,A,HIGH,False,
+Overcast / cloudy,The sun's on a tea break. No ETA.,Ilanga lisekhefu letiye. Akukho ETA.,Ilanga lithathe ikhefu leti. Akukho mntu waziyo ukuba libuya nini.,A,HIGH,False,
+Overcast / cloudy,Not depressing. Just... underwhelming.,Ayidakumbi. Nje... ayihlabi umxhwele.,Ayidakumbisi. Kodwa... ayinamdla tu.,A,HIGH,False,
+Overcast / cloudy,A hoodie and an attitude. That's today.,I-hoodie nesimilo. Namhlanje kunje.,Namhlanje yi-hoodie nesimo sengqondo nje.,A,HIGH,False,
+Overcast / cloudy,Could be worse. Could also be better.,Kunokuba kubi kakhulu. Kunokuba bhetele futhi.,Bekunokuba kubi ngakumbi. Bekunokuba bhetele nayo.,A,HIGH,False,
+Overcast / cloudy,The sky's giving 'I'll try again tomorrow' energy.,Isibhakabhaka sinika 'ndiya kuzama ngomso' amandla.,Isibhakabhaka sinika loo vibe ka “ndiza kuphinda ndizame ngomso.”,A,HIGH,False,
+Overcast / cloudy,"Good enough weather. Not great, not terrible.","Imozulu eyaneleyo. Ayinkulu, ayimbi.","Imozulu ilungile ngokwaneleyo. Ayintle kakhulu, ayimbi kakhulu.",A,HIGH,False,
+Overcast / cloudy,Nobody's posting this sunset on Instagram.,Akukho mntu uza kuposta oku kwi-Instagram.,Akukho mntu uza kuposta le sunset kwi-Instagram.,A,HIGH,False,
+Overcast / cloudy,The clouds are here but they're not doing anything.,Amafu akho kodwa awenzi nto.,"Amafu akhona, kodwa akukho nto ayenzayo.",A,HIGH,False,
+Overcast / cloudy,Not Instagram weather. Not the end of the world.,Ayiyomozulu ye-Instagram. Ayikokuphela kwehlabathi.,Ayiyomozulu ye-Instagram. Ayisosiphelo sehlabathi.,A,HIGH,False,
+Overcast / cloudy,The sun sent an out-of-office reply.,Ilanga lithumele i-out-of-office.,Ilanga lithumele impendulo ka out-of-office,B,LOW,True,possible typos (unattested): ['out-of-office']
+Overcast / cloudy,At least it's not raining. That's the bar.,Ubuncinane ayimvula. Yilonto kuphela.,Noko akunethi. Yilonto qha.,B,LOW,True,B unattested: ['akunethi']
+Overcast / cloudy,Perfect weather for existing without enthusiasm.,Imozulu elungele ukuphila ngaphandle kwentshisekelo.,Imozulu efanele ukuphila ngaphandle komdla.,A,HIGH,False,
+Overcast / cloudy,The clouds are committed to being average.,Amafu azibophelele ekubeni phakathi naphakathi.,Amafu azimisele ngokuba phakathi nendawo nje.,A,HIGH,False,
+Overcast / cloudy,The sky picked a vibe and the vibe is shrug.,Isibhakabhaka sikhethe i-vibe kwaye i-vibe kukunyusa amagxa.,"Isibhakabhaka sikhethe i-vibe, kwaye loo vibe kukuziphakamisa amagxa nje",A,HIGH,False,
+Overcast / cloudy,Cloud cover with a side of who-cares.,Amafu nelinye icala lokuba ngubani onomdla.,"Amafu agqume isibhakabhaka, ehamba nomoya wokungakhathali.",A,HIGH,False,
+Overcast / cloudy,A perfectly average sky doing perfectly average things.,Isibhakabhaka esiphakathi esenza izinto eziphakathi.,Isibhakabhaka esiqhelekileyo sisenza izinto eziqhelekileyo nje.,A,HIGH,False,
+Overcast / cloudy,The clouds RSVP'd 'maybe' and showed up anyway.,Amafu aphendule athi 'mhlawumbi' aze nje.,"Amafu aphendule athi “mhlawumbi,” kodwa avele afika kunjalo.",A,HIGH,False,
+Overcast / cloudy,"Forecast: vibes neutral, expectations lower.","Isibikezelo: ii-vibes ezingenamfuneko, indlela eziphantsi.","Uqikelelo: ii-vibes eziphakathi, ulindeleko lusezantsi.",B,LOW,True,B unattested: ['ulindeleko']
+Overcast / cloudy,The sun is technically present. Spiritually elsewhere.,Ilanga ngokwasemthethweni likho. Ngokomoya likwenye indawo.,Ilanga likhona ngokwasemthethweni. Kodwa ngomoya likwenye indawo.,A,HIGH,False,
+Strong sun (high UV),"Sunscreen is not optional, boet.","Ikhrimu yelanga ayinakukhethwa, boet.","Ikhrimu yelanga ayisosikhetho, boet.",A,HIGH,False,
+Strong sun (high UV),The sun's not playing games today.,Ilanga alidlali namhlanje.,Ilanga lidlala imidlalo namhlanje.,B,LOW,True,possible typos (unattested): ['imidlalo']
+Strong sun (high UV),You will look like a lobster. You've been warned.,Uya kubonakala njenge-lobster. Ulumkisiwe.,Uza kubomvu njenge-lobster. Ulumkisiwe.,A,HIGH,False,
+Strong sun (high UV),Protect that face! It's the only one you've got.,Khusela elo buso! Lelinye kuphela onalo.,Khusela obo buso! Bubo kuphela onabo.,A,MED,False,
+Strong sun (high UV),The ozone layer called. It's on leave.,I-ozone layer ifownile. Iku-leave.,I-ozone layer ifownile — ithathe ileave.,A,HIGH,False,
+Strong sun (high UV),Reapply that sunscreen or suffer.,Sebenzisa kwakhona okanye ubandezeleke.,Sebenzisa lo sunscreen okanye kuzakubanzima kuwe.,B,MED,True,B typos: ['kuzakubanzima']
+Strong sun (high UV),"Hat, sunnies, sunscreen. Non-negotiable.","Umnqwazi, izipeki, ikhrimu. Akuxoxwa.","iHat, izipeksi, sunscreen. Ayixoxisi.",B,LOW,True,"possible typos (unattested): ['ihat', 'izipeksi', 'ayixoxisi']"
+Strong sun (high UV),You could braai a steak on the pavement right now.,Ungagrila isteki epavimentini ngoku.,Unga braai inyama kwi pavement ngalomzuzu.,B,LOW,True,"B unattested: ['unga', 'pavement']"
+Strong sun (high UV),Your future self will thank you for that sunscreen.,Wena wakusasa uya kukubulela ngekhrimu yelanga.,Ingomso lakho lakho lizakubulela ngalo sunscreen,B,MED,True,"B typos: ['ingomso', 'lizakubulela']"
+Strong sun (high UV),Walking to the car counts as a sun hazard today.,Ukuhamba uye emotweni kubhekwa njengengozi yelanga namhlanje.,Nokuhamba uye emotweni namhlanje kubeka emngciphekweni welanga.,A,HIGH,False,
+Strong sun (high UV),Tan lines are not a personality trait.,Imigca yokutshisa ayisiyonto yobuqu.,Izivubeko zokutsha azinasimilo,B,LOW,True,"B unattested: ['izivubeko', 'zokutsha', 'azinasimilo']"
+Strong sun (high UV),The back of your neck. You forgot that bit.,Umva wentamo yakho. Ukulibele loo ndawo.,Umva wentamo yakho — loo ndawo uyilibele.,A,HIGH,False,
+Strong sun (high UV),Sunscreen budget: higher than your data bill.,Iibhajethi zekhrimu yelanga: ngaphezu kwebhili yakho yedatha.,Ibhajethi yekrimu yelanga: ingaphezulu kwebhili yakho yedatha.,A,HIGH,False,
+Strong sun (high UV),Today's forecast: medium rare.,Isibikezelo sanamhlanje: medium rare.,Uqikelelo lwanamhlanje: aluvuthwanga kakuhle,B,LOW,True,"B unattested: ['lwanamhlanje', 'aluvuthwanga']"
+Strong sun (high UV),Even the shade is warm. Good luck out there.,Kwanomthunzi ufudumele. Inyhani enhle.,Nditsho nomthunzi lo ushushu. Ndininqwenelela impumelelo phandl’apha,B,LOW,True,"B unattested: ['ndininqwenelela', 'impumelelo', 'phandl’apha']"
+Wind,"The southeaster's arrived. Uninvited, as usual.","Umoya wasemzantsi ufikile. Ungamenyanga, njengoko eqhelile.",Umoya wemzantsi mpuma ufikile. Ungamenywanga njengesiqhelo.,B,LOW,True,"possible typos (unattested): ['wemzantsi', 'mpuma']"
+Wind,Table Mountain's tablecloth is out.,Ilaphu leTable Mountain liphumile.,Ilaphu lentaba ye tafile liphumile.,B,LOW,True,"possible typos (unattested): ['lentaba', 'tafile']"
+Wind,The Cape Doctor is making house calls.,UGqirha waseKapa wenza iindwendwe.,Sizakundwendwelwa ngumoya woGqirha waseKapa.,B,LOW,True,"B unattested: ['sizakundwendwelwa', 'wogqirha']"
+Wind,The trees are doing involuntary yoga.,Imithi yenza i-yoga engafunekiyo.,Imithi yenza i-yoga ngenkani.,A,HIGH,False,
+Wind,Someone's trampoline is now two streets away.,I-trampoline yomntu ngoku zizitalato ezimbini.,iTrampoline yomntu iphaphathekile ngapha kwezitalato ezimbini.,B,LOW,True,"possible typos (unattested): ['itrampoline', 'iphaphathekile', 'ngapha', 'kwezitalato']"
+Wind,Perfect conditions for losing your dignity.,Iimeko ezilungileyo zokulahlekelwa sisidima.,Iimeko ezigqibeleleyo zokulahlekelwa sisidima sakho.,A,HIGH,False,
+Wind,Even the seagulls are walking today.,Neenkonjane ziyahamba namhlanje.,Neengabangaba zihamba ngeenyawo namhlanje.,A,HIGH,False,
+Wind,The bins are on an adventure again.,Iibhini zikwi-adventure kwakhona.,Iibhini ziphinde zangena kwi-adventure,A,HIGH,False,
+Wind,Your washing just moved to the neighbour's yard.,Impahla yakho isanda kukhutshelwa kwiyadhi yommelwane.,Impahla yakho iphaphathekele kwamelwane.,B,LOW,True,"possible typos (unattested): ['iphaphathekele', 'kwamelwane']"
+Wind,Sand in places sand should never be.,Intlabathi kwiindawo intlabathi engamele ibe kuzo.,Isanti ikwindawo ebekungafanelakanga ikuzo.,B,LOW,True,"possible typos (unattested): ['isanti', 'ikwindawo', 'ebekungafanelakanga', 'ikuzo']"
+Wind,Ponytail holders are doing overtime.,Izibopho zeenwele zisebenza ngokungaphezulu.,Abanamaphondo ezinweleni basebenza i overtime.,B,MED,True,"B typos: ['abanamaphondo', 'ezinweleni', 'basebenza', 'overtime']"
+Wind,The braai cover is in the next suburb.,Isigqubuthelo sebraai sisekwisifunda esilandelayo.,Isigqubuthelo se braai sikwingingqi elandelayo.,B,LOW,True,"B unattested: ['sikwingingqi', 'elandelayo']"
+Cold,Layer up like you're climbing Sani Pass.,Faka iingubo ezininzi njengokunyuka uSani Pass.,Fumbelo okungathi uzakunyuka intaba ye Sani Pass,B,LOW,True,"B unattested: ['fumbelo', 'okungathi', 'uzakunyuka', 'sani']"
+Cold,The heater is your best friend. Your only friend.,I-heater ngumhlobo wakho omkhulu. Owodwa.,"I-heater ngumhlobo wakho omkhulu. Enyanisweni, kuphela kwakhe",A,HIGH,False,
+Cold,Even the Capetonians are admitting it's cold.,Nabantu baseCape bayavuma kuyabanda.,Nditsho nabantu baseKapa bayavuma ukuba kuyabanda.,B,LOW,True,possible typos (unattested): ['basekapa']
+Cold,This is not what the tourism brochure promised.,Oku akukokuthenjiswa yincwadi yokhenketho.,Le ayisiyiyo into eyathenjiswa yibrochure yezokhenketho,A,HIGH,False,
+Cold,The duvet had the right idea this morning.,I-duvet yayinecebo elifanelekileyo ngale ntsasa.,I-duvet ibinombono ongcono kule ntsasa.,A,HIGH,False,
+Cold,Three pairs of socks and still not enough.,Amapheya amathathu eekawusi kodwa ayanelanga.,Izibini ezintathu zee kawusi kodwa kunjalo azonelanga.,B,LOW,True,"possible typos (unattested): ['izibini', 'kawusi', 'azonelanga']"
+Cold,The car seats are freezing. Everything is freezing.,Izihlalo zemoto ziyaqanda. Yonke into iyaqanda.,Izihlalo zemoto ziyabanda. Yonke into iyabanda.,B,HIGH,False,normalized 'ziyaband.'->'ziyabanda.' (truncated final 'a'; 'iyabanda' attested in B's own same sentence)
+Cold,Rooibos consumption just doubled.,Ukusetyenziswa kwerooibos kusanda kuphindaphindeka.,Ukuselwa kwerooibos kuphindaphindeke kabini ngoku.,A,HIGH,False,
+Cold,The dog refused to go outside. Fair.,Inja yala ukuphuma. Kulungile.,Nditsho nenja ayivumi ukuphuma phandle. Iyavakala loo nto.,A,HIGH,False,
+Cold,The cold front is here and it brought friends.,Amakhaza afikile kwaye azise abahlobo.,Ingqele ifikile yaye ize nabahlobo bayo.,B,LOW,True,"B unattested: ['ingqele', 'nabahlobo', 'bayo']"
+Cold,"You're not cold, you're 'lekker koud'. Big difference.","Akubandi, u-'lekker koud'. Umahluko omkhulu.","Awugodoli, u “lekker koud”. Mkhulu umahluko.",B,LOW,True,B unattested: ['awugodoli']
+Cold,The kettle is working harder than anyone today.,Iketile isebenza ngamandla kunabo bonke namhlanje.,Iketile isebenza ngaphezu kwakhe wonke umntu namhlanje.,A,MED,False,
+Cold,Nobody signed up for this temperature.,Akukho mntu ubhalisele oku kushushu.,Akhomtu ubhalisele le mozulu.,B,LOW,True,B unattested: ['akhomtu']
+Cold,Your motivation froze on the way to the door.,Inkuthazo yakho iqandile endleleni eya emnyango.,Inkuthazo yakho iqandusele endleleni eya emnyango.,A,HIGH,False,
+Cold,Outside is a test of character. You're failing.,Ngaphandle luvavanyo lwesimilo. Uyaphulukana.,Phandle luvavanyo lwesimilo — kwaye uyasilela.,A,HIGH,False,
+Cold,Hot water bottle is the real MVP today.,Ibhotile yamanzi ashushu ngumqhubi wangempela namhlanje.,Ibhotile yamanzi ashushu yeyona MVP yokwenyani namhlanje.,A,HIGH,False,
+Cold,Why did past-you make plans? Past-you is the worst.,Kutheni wena-wexesha-elidlulileyo wenze izicwangciso? Wena-wexesha-elidlulileyo mbi.,Kutheni wena wakudala wenza izicwangciso? Wena wakudala ngoyena mbi.,A,HIGH,False,
+Cold,You miss your bed and you've been gone twelve minutes.,Ukhumbula ibhedi yakho kwaye sele iyimizuzu elishumi elinambini uhambile.,Sewukhumbula ibhedi yakho kodwa unemizuzu nje elishumi elinesibini uphumile.,B,LOW,True,"B unattested: ['sewukhumbula', 'unemizuzu', 'uphumile']; commentary-stripped"
+Cold,The shower was the highlight. It is downhill from here.,Ishawa yayiyincopho. Konke kuya ezantsi ngoku.,iShower ibigqamile. Kuyehlela ukususela apha.,B,MED,True,"B typos: ['ishower', 'ibigqamile', 'kuyehlela', 'ukususela']"
+Cold,Your toes have filed a formal complaint.,Iinzwane zakho zifake isikhalazo esisesikweni.,Iinzwane zakho zifake isikhalazo esisemthethweni.,A,HIGH,False,
+Cold,Coffee count: rising. Motivation count: still zero.,Ukubalwa kwekofu: kunyuka. Ukubalwa kwenkuthazo: kuse zero.,Ukubalwa kwe kofu kuyenyuka. Inkuthazo iku zero.,B,LOW,True,B unattested: ['kofu']
+Cold,Outside has betrayed you and you went anyway.,Ngaphandle kukukhaphele kwaye nokuba kunjalo uhambile.,Umphandle ukuphoxe wahamba.,B,LOW,True,"B unattested: ['umphandle', 'ukuphoxe', 'wahamba']; A-note cell-bleed: contains a stray sentence likely belonging to another row — excluded"
+Very hot,"Jislaaik, it's properly hot!","Yhuu, kushushu ngempela!","Yhuu, kushushu nyhani!",B,HIGH,False,
+Very hot,You could fry an egg on the N1.,Ungabhaka iqanda kwi-N1.,Ungabhaqa inqa kuN1,B,LOW,True,"B unattested: ['ungabhaqa', 'inqa']"
+Very hot,Ice cream isn't a treat. It's survival.,I-ice cream ayisosipho. Kukuphila.,I-ice cream ayisosipho — kukusinda.,A,MED,False,
+Very hot,The pool is not optional.,Ipuli ayinakukhethwa.,Ipuli ayisosigqibo — iyafuneka,A,HIGH,False,
+Very hot,The AC is begging for mercy.,I-AC icela inceba.,I-aircon icela inceba.,A,HIGH,False,
+Very hot,Your car seat is a weapon right now.,Isihlalo semoto sakho sisixhobo ngoku.,Isihlalo semoto yakho sisixhobo ngoku.,A,MED,False,
+Very hot,Too hot to argue. Too hot to function.,Kushushu kakhulu ukuxoxa. Kushushu kakhulu ukusebenza.,Kushushu kakhulu ube uxoxa. Kushushu kakhulu for nukusebenza.,B,LOW,True,"possible typos (unattested): ['uxoxa', 'nukusebenza']"
+Very hot,Even your phone's overheating.,Nefowuni yakho iyashushu.,Nditsho ne phone ishushu kakhulu.,B,MED,False,normalized 'kakhulku'->'kakhulu' (transposition; 'kakhulu' attested 50+ times)
+Very hot,The tar is soft. The people are softer.,I-tar ithambile. Abantu bathambile.,iTar ithambile. Abantu bathambe ngaphezulu.,B,LOW,True,"possible typos (unattested): ['itar', 'bathambe']"
+Very hot,Somewhere a chocolate bar just died.,Kwezinye iindawo ishokolethi isanda kufa.,Itshokolethi isandokufa kwenye indawo.,B,LOW,True,possible typos (unattested): ['isandokufa']
+Very hot,Everyone with a pool just became very popular.,Bonke abanepuli basanda kuba bathandwa kakhulu.,Wonke umntu one pool ngusaziwayo ngoku bayathandwa.,B,MED,True,"B typos: ['ngusaziwayo', 'bayathandwa']"
+Very hot,You're not sweating. You're 'glowing'. Sure.,Awubili. U-'glow'. Ewe.,Awubilanga uya glowa qha.,B,LOW,True,"possible typos (unattested): ['awubilanga', 'glowa']"
+Very hot,Flip-flops on tar was a mistake.,Iislipas kwi-tar yayiyimpazamo.,iFlops etheni ibeyeyona mpazamo.,B,LOW,True,"possible typos (unattested): ['iflops', 'etheni', 'ibeyeyona', 'mpazamo']"
+Very hot,Shorts weather? This is underwear weather.,Imozulu yamabhlukhwe amafutshane? Le yimozulu yamanqisi.,Ayomozulu yo shorty lena. Yimozulu yempahla yangapohantsi.,B,LOW,True,"B unattested: ['ayomozulu', 'shorty', 'lena', 'yangapohantsi']"
+Very hot,The shade is working harder than you today.,Umthunzi usebenza ngamandla kunawe namhlanje.,Umthunzi usebenza nzima kunawe namhlanje.,A,HIGH,False,
+Very hot,The office aircon debate just went to level 5.,Ingxoxo ye-aircon yaseofisini isanda kufikelela inqanaba 5.,Ingxoxo nge-aircon yaseofisini ifikelele kwinqanaba lesi-5 ngoku.,A,HIGH,False,
+Very hot,Everyone's suddenly your friend when you have a pool.,Bonke bangabahlobo bakho xa unepuli.,Wonke umntu uba ngumhlobho wakho xa une pool.,B,LOW,True,possible typos (unattested): ['ngumhlobho']
+Very hot,Your steering wheel is a hot plate.,Isitiyeli sakho sisitya esishushu.,Istiyeringi yemoto yakho ishushu okwepani.,A,HIGH,False,
+Very hot,The fridge door is getting a workout today.,Ucango lwefriji lufumana ukuzilolonga namhlanje.,Ucango lwe fridge yakho luya gyma namhlanje.,B,MED,True,"B typos: ['fridge', 'luya', 'gyma']"
+Very hot,Your makeup has an expiry date of 9am.,I-makeup yakho ixesha lokugqibela ngu-9 kusasa.,iMake up yakho iyaphelelwa ngo9,B,LOW,True,"possible typos (unattested): ['imake', 'iyaphelelwa']"
+Very hot,The ice cream van is playing everyone's anthem.,Imoto ye-ice cream idlala ingoma yabo bonke abantu.,Imoto ye ice cream idlale umhobe womntu wonke.,B,LOW,True,"possible typos (unattested): ['idlale', 'umhobe', 'womntu']"
+Very hot,Slowly becoming a puddle in the corner.,Kancinane ndijika ndiba lichibana ekoneni.,Kancinci kancinci ndinyibilika ndibe lichibi ekoneni.,A,HIGH,False,
+Very hot,The aircon remote is now public property. Negotiate.,I-aircon remote ngoku yimpahla kawonke-wonke. Xoxa.,Iremote ye-aircon ngoku yeyomntu wonke. Thethani kakuhle.,A,HIGH,False,
+Very hot,Even the shade is sweating.,Nawumthunzi uyabila.,Nditsho nomthunzi lo uyabila.,B,LOW,True,
+Very hot,"The ceiling fan is doing its best, but its best is not enough.","Ifeni yophahla yenza okusemandleni ayo, kodwa okusemandleni ayo akwanelanga.","Ifeni yophahla yenza konke okusemandleni ayo, kodwa akwanele",A,HIGH,False,
+Very hot,Your iced coffee melted before you reached the car.,Ikofu yakho yomkhenkce inyibilikile ngaphambi kokufika emotweni.,Ikhofi yakho elineqhwa incibilikile ngaphambi kokuba ufike emotweni,A,HIGH,False,
+Very hot,The neighbours' pool has never looked so tempting.,Ipuli yommelwane ayikaze ibonakale ihehayo kangaka.,Ipuli yommelwane ayikaze ibonakale iheha kangaka,A,HIGH,False,
+Very hot,Don't touch the seatbelt buckle. Trust us.,Ungaluchukumisi ucango lwebhande lokukhusela. Sithembe.,Ungaluchukumisi iqhosha lebhande lokhuseleko. Sithembe.,A,MED,False,commentary-stripped
+Fog / low visibility,Can't see a thing. Not a thing.,Andiboni nto. Nto.,Andiboni nto. Nento encinci.,A,HIGH,False,
+Fog / low visibility,Visibility: basically zero.,Ukubonakala: phantse iqanda.,Ukubonakala: phantse kungabikho.,A,HIGH,False,
+Fog / low visibility,Perfect weather for a horror movie.,Imozulu elungele ifilimu yoyiko.,Yimozulu efanele ifilimu eyoyikisayo,A,HIGH,False,
+Fog / low visibility,Ghost town. But it's just Tuesday.,Idolophu yesipoki. Kodwa ngolwesiBini nje.,Kufana nedolophu yeziporho. Kanti nguLwesibini nje,A,HIGH,False,
+Fog / low visibility,"If you can read this, you're too close.","Ukuba ungafunda oku, ukufutshane kakhulu.","Ukuba uyakwazi ukufunda oku, ukufutshane kakhulu.",A,HIGH,False,
+Fog / low visibility,The streetlights are trying their best.,Izibane zesitalato zizama ngako konke.,Izibane zesitalato zizama ngako konke ezinako.,A,HIGH,False,
+Fog / low visibility,Somewhere out there is the road. We think.,Ndaweni ithile ngaphandle kukho indlela. Sicinga.,Ndaweni ithile phaya kukho indlela. Mhlawumbi,A,HIGH,False,
+Fog / low visibility,The mountains are on holiday today.,Iintaba ziholide namhlanje.,Iintaba zithathe usuku lokuphumla namhlanje,A,HIGH,False,
+Fog / low visibility,"Your high beams are making it worse, boet.","Ii-high beam zakho zenza kube kubi, boet.","Cima ii-high beam, boet. Azincedi nganto ngoku",A,HIGH,False,
+Fog / low visibility,The neighbours exist. Apparently. Can't confirm.,Abamelwane bakho. Kubonakala kanjalo. Andinakuqinisekisa.,Abamelwane bakho bakhona. Kuthiwa kunjalo. Andinakuqinisekisa.,A,HIGH,False,
+Fog / low visibility,The street signs gave up.,Izimpawu zendlela ziyekile.,Izimpawu zendlela zinikezele.,A,HIGH,False,
+Fog / low visibility,The world ends two metres past the gate.,Ihlabathi liphela kwiimitha ezimbini ngaphesheya kwesango.,umhlaba uphela kwiimitha ezimbini ngaphesheya kwesango.,A,HIGH,False,
+Clear&pleasant,Even the hadedas sound happy.,Iintaka zivakala zivuya.,lintaka zivakala zivuyile,A,HIGH,False,
+Clear&pleasant,The kind of day that makes you forget load shedding.,Uhlobo lwemini olwenza ulibale i-load shedding.,Luhlobo lwemini olukwenza ulibale nge-load shedding.,A,HIGH,False,
+Clear&pleasant,Somewhere an estate agent is saying 'lifestyle'.,Kwezinye iindawo umthengisi wendlu uthi 'lifestyle'.,Kwenye indawo umthengisi wezindlu uthi “lifestyle”.,A,HIGH,False,
+Clear&pleasant,Save this one in the memory bank.,Gcina le mini kwinkumbulo.,Yigcine le mini kwibhanki yeenkumbulo,A,HIGH,False,
+Clear&pleasant,The kind of day you text someone about.,Uhlobo lwemini othumela umntu umyalezo ngalo.,Luhlobo lwemini olwenza uthumele umntu umyalezo ngayo.,A,HIGH,False,
+Clear&pleasant,Africa's sky just hits different.,Isibhakabhaka saseAfrika sihlukile nje.,Isibhakabhaka saseAfrika sahlukile nyhani.,A,HIGH,False,
+Clear&pleasant,Take a moment. Look up. You're welcome.,Thatha umzuzu. Jonga phezulu. Wamkelekile.,Thatha umzuzwana. Jonga phezulu. Wamkelekile.,A,HIGH,False,
+Clear&pleasant,The Helderberg is showing off today.,I-Helderberg iyaziqhayisa namhlanje.,IHelderberg iyazibonakalisa namhlanje.,A,HIGH,False,
+Clear&pleasant,Days like this should come with a soundtrack.,Iimini ezinje kufanele zize ne-soundtrack.,Iimini ezinje kufanele zibe ne-soundtrack yazo.,A,HIGH,False,
+Clear&pleasant,The fynbos is loving it. You should too.,Ifynbos iyakuthanda. Nawe kufanele.,IFynbos iyayonwabela le mozulu. Nawe kufanele.,A,HIGH,False,
+Clear&pleasant,"Blue sky, warm breeze. The simple stuff.","Isibhakabhaka esiluhlaza, umoya ofudumeleyo. Izinto ezilula.","Isibhakabhaka esiluhlaza, impepho efudumeleyo. Izinto ezilula.",A,HIGH,False,
+Clear&pleasant,Africa showing off again. Quietly devastating.,I-Afrika iyaziqhayisa kwakhona. Ngokuzolileyo ngokumangalisayo.,I-Afrika iyaziqhayisa kwakhona. Ngokuzolileyo ngokumangalisayo.,A,HIGH,False,
+Clear night,Perfect night to actually see the Milky Way.,Ubusuku obulungileyo bokubona iNdlela yaseSisi.,Ubusuku obulungileyo bokubona iNdlela yeMilky Way.,A,HIGH,False,
+Clear night,The moon's doing the most tonight.,Inyanga ibonakala ngokukhethekileyo ngokuhlwa.,Inyanga izenza eyona nkanyezi ephambili ngokuhlwa.,A,HIGH,False,
+Clear night,Somewhere a cricket is really giving it.,Ndaweni ithile irhejane lizimisele ngokwenene.,Ndaweni ithile irhejane lisenza umboniso walo ngokupheleleyo.,A,HIGH,False,
+Clear night,Even Table Mountain's called it a day.,Kwanentaba yeTafile iphumle ngoku.,kwa ne Table mountain igqibe ngalo mhla,A,HIGH,False,
+Clear night,The frogs have entered the chat.,Amasele angene kwinkcazo.,Amasele angene kwincoko.,A,HIGH,False,
+Weekend,"Braai weather, boet! No excuses.","Imozulu yokugrila, boet! Akukho zaba.",Imozulu yo ukosa inyama boet! Akukho zaba.ukosa inyama,A,HIGH,False,
+Weekend,The weather gods are showing off.,Oothixo bemozulu bayaziqhayisa.,Oothixo bemozulu bayazibonakalisa kwakhona.,A,HIGH,False,
+Weekend,Beach or braai? Yes.,Ibhitshi okanye ukugrila? Ewe.,Ibhitshi okanye,A,HIGH,False,
+Weekend,"If you're working today, we feel sorry for you.","Ukuba usebenza namhlanje, siyakuzwela.",Ukuba usebenza namhlanje… siyakuqonda ukubandezeleka kwakho.,A,HIGH,False,
+Weekend,Saturday energy: maximum. Responsibilities: minimum.,Amandla angoMgqibelo: aphezulu. Uxanduva: lusezantsi.,NgoMgqibelo amandla aphezulu. Uxanduva luphantsi.,A,HIGH,False,
+Weekend,Marinade in. Phone off. Day starts now.,Faka i-marinade. Cima ifowuni. Imini iqala ngoku.,I-marinade ifakiwe. Ifowuni icinyiwe. Imini iqala ngoku.,A,HIGH,False,
+Weekend,The chops are calling. So is the chair.,Iitshophu ziyabiza. Nesitulo nayo.,Iitshops ziyabiza. Nesitulo naso silindile.,A,HIGH,False,
+Weekend,Boerie roll for breakfast? On a weekend? Acceptable.,Iboerie roll yebhrekfesi? Ngempelaveki? Iyamkeleka.,I-boerie roll yesidlo sakusasa? Ngempelaveki? Yamkelekile.,A,HIGH,False,
+Weekend,The braai is the social calendar. Show up.,Ukugrila yikhalenda yentlalo. Bonakala.,ukosa inyama yikhalenda yentlalo. Yiza uzibonakalise.,A,HIGH,False,
+Clear&pleasant — uncertain version,Looks clear-ish. The models and the sky don't always agree.,Kubonakala kuhle. Iimodeli nesibhakabhaka azivumelani rhoqo.,Kubonakala kucacile kancinci. Iimodeli nesibhakabhaka azisoloko zivumelana.,A,HIGH,False,
+Clear&pleasant — uncertain version,"Clear, in theory. The Cape Doctor doesn't always RSVP.",Mhlawumbi yimini entle. Siqinisekile malunga ne-80%.,Kucacile ngokwethiyori. I-Cape Doctor ayisoloko ifika xa ilindelwe.,A,HIGH,False,
+Clear&pleasant — uncertain version,Probably a good one. We're about 80% sure.,"Isibhakabhaka sicacile, itsho imathematika. Jonga nesibhakabhaka sokwenene.",Kubonakala kuyimini entle. Siqinisekile malunga ne-80%.,A,HIGH,False,
+Clear&pleasant — uncertain version,"Clear skies, says the maths. Check the actual sky too.",Iimodeli zithi kuhle. Inyaniso inelungelo lokwahluka.,Iimodeli zithi isibhakabhaka sicacile. Kodwa jonga nesibhakabhaka sokwenene.,A,HIGH,False,
+Clear&pleasant — uncertain version,Models say lovely. Reality reserves the right to differ.,Asiqinisekanga Mhlawumbi kuhle. ngokupheleleyo.,Iimodeli zithi kuhle. Inyaniso inelungelo lokwahluka,A,HIGH,False,
+Overcast / cloudy — uncertain version,"Probably grey. Could lift, could thicken.","Mhlawumbi limpunga. Linganyuka, lingaba shinyene.","Mhlawumbi mpunga. Inokucaca, inokujiya.",A,HIGH,False,
+Overcast / cloudy — uncertain version,Cloudy-ish. Don't bet the braai on it.,Linamafu-ish. Ungabhejeli ukugrila kuko.,Kunamafu kancinci. Ungabhejeli ukosa inyama kuko,A,MED,False,commentary-stripped
+Overcast / cloudy — uncertain version,Cloud's the call. With an asterisk.,Amafu lulo uluvo. Kunophawu.,"Amafu sesona sigqibo, kodwa kunophawu.",A,HIGH,False,
+Fog / low visibility — uncertain version,Fog might be rolling in. Keep an eye on the mountain.,Inkungu ingangena. Jonga intaba.,Inkungu isenokusondela. Gcina iliso entabeni.,A,HIGH,False,
+Fog / low visibility — uncertain version,"Mist building, maybe. Headlights wouldn't hurt.","Inkungu iyakheka, mhlawumbi. Layita izibane.",Inkungu iyanda. Izibane zemoto aziyingozi,A,HIGH,False,
+Fog / low visibility — uncertain version,Fog's on the cards. The sky's being coy about it.,Inkungu ikwithuba. Isibhakabhaka siyazenza.,Inkungu inokwenzeka. Isibhakabhaka asicaci.,A,HIGH,False,
+Fog / low visibility — uncertain version,Watch for fog — it likes to arrive unannounced.,Lumkela inkungu — ithanda ukufika ingazange yazise.,Lumkela inkungu — ithanda ukufika ingalindelekanga.,A,HIGH,False,
+Rain — uncertain version,"Wet conditions, probably. Don't quote us at the braai.","Iimeko ezimanzi, mhlawumbi. Ungasicaphuli ekugrileni.","Iimeko ezimanzi, mhlawumbi. Ungasicaphuli kwi braai.",A,HIGH,False,
+Wind — uncertain version,Probably windy. The Cape Doctor keeps its own diary.,Mhlawumbi kunomoya. I-Cape Doctor inebhukana layo.,Mhlawumbi kunomoya. I-Cape Doctor inendlela yayo yokuziphatha.,A,HIGH,False,
+Wind — uncertain version,Wind's likely. Hold onto the braai cover.,Umoya umhlawumbi ukho. Bambelela kwisigqubuthelo sokugrila.,Umoya unokwenzeka. Bambelela kwisigqubuthelo sokosa inyama,A,HIGH,False,
+Wind — uncertain version,Could get gusty. The forecast's a bit loose on this one.,Kunokuba nomoya. Uqikelelo luxega kule nto.,Kunokuba nomoya onamandla ngamaxesha athile. Uqikelelo aluqinisekanga kule meko,A,HIGH,False,
+Wind — uncertain version,Wind's on the cards. Peg the washing down.,Umoya ukwithuba. Bopha impahla yokuhlamba.,Umoya ulindelekile. Bopha impahla yokuhlamba ngeziqhoboshi.,A,HIGH,False,
+Cold — uncertain version,Probably nippy. The Boland mornings do this.,Mhlawumbi kuyaqanda. I-Boland yenza oku kusasa.,kuyaqanda mhlawumbi Iintsasa zaseBoland zihlala zinje,A,HIGH,False,
+Very hot — uncertain version,Looks warm. How warm is a moving target.,Kubonakala kufudumele. Ukuba kufudumele kangakanani kuyatshintsha.,Kubonakala kufudumele. Kodwa ubushushu buhlala butshintsha.,A,HIGH,False,
+Very hot — uncertain version,"Hot-ish, likely. Keep the water close.",Kushushu mhlawumbi. Gcina amanzi ekufutshane.,"Kushushu kancinci, mhlawumbi. Gcina amanzi ekufutshane.",A,HIGH,False,
+Very hot — uncertain version,Probably a scorcher. A hat's not a bad idea.,Mhlawumbi imini eshushu. Umnqwazi asiyongcinga embi.,Mhlawumbi kushushu kakhulu. Umnqwazi awuyongcamango embi,A,HIGH,False,
+Storms / severe weather — uncertain version,Could turn stormy. Keep one eye on the sky.,Kunokuba sisaqhwithi. Jongaisibhakabhaka.,Kunokuthi kuze isaqhwithi. Jonga isibhakabhaka.,A,HIGH,False,
+Storms / severe weather — uncertain version,Weather might get serious. Stay loosely on alert.,Imozulu ingaba nzima. Hlala ulindile.,Imozulu inganzima. Hlala ulumkile.,A,MED,False,commentary-stripped
+Storms / severe weather — uncertain version,"Storm on the cards, not yet confirmed. Stay sharp.","Isaqhwithi sikwithuba, asikaqinisekiswa. Hlala uphaphile.","Sisenokwenzeka isaqhwithi, asikaqinisekiswa. Hlala uphaphile.",A,HIGH,False,
+Storms / severe weather — uncertain version,Sky's looking moody. Could escalate.,Isibhakabhaka sibonakala sinomsindo. Kunganyuka.,Isibhakabhaka sibonakala sinomsindo. Kungaqatsela.,A,HIGH,False,
+Clear night — uncertain version,Clear-ish night. Don't hold us to the stars.,Ubusuku obuhle-ish. Ungasibambi kwiinkwenkwezi.,Ubusuku obucacileyo kancinci. Musa ukusibamba ngeenkwenkwezi,A,HIGH,False,
+Search screen,No saved places yet.,Akukho ndawo igciniweyo.,Akukho ndawo igciniweyo okwangoku.,A,HIGH,False,
+Search screen,Clear recents,Susa okutsha,Susa okukhangelwe kutshanje,A,HIGH,False,
+Search screen,Done,Kwenziwe,Kugqityiwe.,A,MED,False,commentary-stripped
+Settings screen,"Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather&Tomorrow.io to give you a more reliable prediction.","I-Probably Weather idibanisa izithembiso ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukukunika isithembiso esithembekileyo.","I-Probably Weather idibanisa uqikelelo lwemozulu oluvela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukuze ikunike uqikelelo oluthembeke ngakumbi.",A,HIGH,False,
+Buttons&the share message,Couldn't fetch weather right now.,Ayikwazanga ukufumana imozulu.,Ayikwazanga ukufumana ulwazi lwemozulu ngoku.,A,HIGH,False,
+Pop-up messages,No saved places,Akukho ndawo,akukho ndawo zigciniweyo,A,HIGH,False,
+Pop-up messages,Could not get location,Ayikwazanga ukufumana indawo,Ayikwazanga ukufumana indawo okuyo,A,HIGH,False,
+Pop-up messages,Using saved location,Isebenzisa indawo egciniweyo,Kusetyenziswa indawo egciniweyo,A,MED,False,commentary-stripped
+Pop-up messages,Weather lookup taking too long. Try again.,Ukubuka isimo sezulu kuthatha ixesha elide. Zama kwakhona.,Ukukhangela isimo sezulu kuthatha ixesha elide. Zama kwakhona,A,MED,False,commentary-stripped
+Cape Town wind warning,Cape Doctor is doing rounds today,UGqirha waseKapa wenza iindwendwe namhlanje,UGqirha waseKapa uyajikeleza namhlanje,A,MED,False,commentary-stripped
+Cape Town wind warning,"Hold onto your hat, the Southeaster means business","Bamba umnqwazi, iSoutheaster iyasebenza","Bamba umnqwazi wakho, umoya waseMzantsi-Mpuma uzimisele namhlanje",A,HIGH,False,
+Cape Town wind warning,The Southeaster arrived uninvited — as always,Umoya waseMzantsi ufikile ungamenywanga — njengoko eqhelile,Umoya waseMzantsi-Mpuma ufike ungamenywanga njengesiqhelo,A,HIGH,False,
+Cape Town wind warning,Wind's hectic — even the seagulls are walking,Umoya unamandla — neenkonjane ziyahamba,Umoya unamandla — neengabangaba zihamba ngeenyawo,A,MED,False,commentary-stripped
