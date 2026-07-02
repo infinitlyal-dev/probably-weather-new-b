@@ -706,3 +706,31 @@ Deterministic transforms from the CHECKPOINT scramble-audit maps:
 - Al: af-gapfill.md (4 empty AF slots + 4 displaced lines + placement confirms).
 - Zulu reviewer: zu-addendum.md (empties/displaced + Cape-Doctor lc gap + quality flags).
 - Xhosa/Sesotho: xh-st-addendum.md (67 future_review XH rows, ST[2] Cape-Doctor gap, ST realignment, provisional strings).
+
+---
+# Checkpoint: AF gap-fill + day-tagging + eval fix wave + memory (G0-G5) — DONE
+**Generated:** 2026-07-02 ~22:40 SAST
+**Task:** G0 AF gap-fill apply; G1 structural witty day-tagging; G2 daily wind/cloud days 2-6; G3 first-paint language + cache identity; G4 small fixes + hygiene; G5 Son-Memory. Fable mode, harness armed. Atomic per-group commits, suite green + deploy verified per group.
+**Skills Used:** work-like-fable (harness), supervisor. Abort-gated codemods; 7day×5lang day-tag probe; 7-day weather fixture; live curl/Playwright smoke per deploy.
+
+## Per-commit map (all pushed + deploy-verified)
+- 2fe4972 — G0: apply owner's AF gap-fill, 14 partly-cloudy deltas verbatim; AF empties now []. Live.
+- 817d64c — G1: structural day-tagging (witty-day-tags.js) replaces substring blocklist; braai plan/imagery ruling; fog Tuesday-gated; one enforcement point + never-empty fallback. Live, 0 console errors.
+- 7b5b9b1 + f81adbb + eaa69a5 — G2: days 2-6 wind/cloud from provider daily aggregates (no clamp) + under-corroborated far-day fog demotion + test. Live: days 2-6 carry real wind/cloud; day 4/6 demote, day 5 legit fog preserved.
+- acef56f — G3: M-5 first-paint await bank (no English flash) + M-6 gps/pinned/shared cache-key discriminator. Live, zu boots clean.
+- 7250d85 — G4 code: og includeFiles (bg photo fixed — verified live), middleware dead branch, mobile-web-app-capable, dead _resetLimiters, searchMiniCache bound, beforeinstallprompt leak, Cape banner pin, MET rainProxy today-filter, tz fractional. Live.
+- 819913d — G4 docs: CLAUDE.md (5 sources/sizes/2684 tests), AGENTS.md v3, audit artifacts homed, scratch gitignored. Live (final HEAD).
+- Son-Memory e376427 — G5: projects/probably-weather.md + MASTER-MEMORY.md updated, pushed.
+
+## Decisions Made
+- AF: applied owner's wording verbatim (deference); flagged AF[5]==AF[0] duplicate + unplaced kat-en-muis rewrite rather than guessing.
+- Day-tags: braai plan (partly-cloudy[12]) weekend-only, braai imagery any-day per Al's ruling; fixed 'office'-in-'out-of-office' substring false positives; kept weekday behaviour for traffic/taxi lines but flagged as possibly any-day.
+- G2: NO index clamp (would feed day-1 forward); far-day fog demotion applies the >=2-source corroboration rule that only fired at >=3 before. Fog symptom is NOT a null-data artifact — it was 2-source under-corroboration; legit corroborated fog preserved (verified live).
+- Updated 5 tests to new specs (empty-slot AF=[]; weekend-witty wiring; offline-shell import graph; cloud-partly-cloudy XH headline; Cape banner var). Legitimate spec changes, not gate-gaming.
+- Audit artifacts: native reviews -> review/, audit reports -> docs/, working dirs (eval/voiceover/.agents/.playwright-mcp/.fable) gitignored.
+
+## Verification
+- 2,684/2,684 tests pass; build + drift + import-scan green after every group. Live == HEAD (819913d). og-card bg photo, XH/zu render, days 2-6 wind/cloud all confirmed live.
+
+## Still open (owner-deferred, reported not fixed)
+WhatsApp share M-2 (unbranded/off-brand preview photo) + M-3 (long URL message) pending Al's screenshots + design chat; install-banner/home-screen UI wave pending owner evidence; Honor OEM flow blocked on device data. All excluded from this session by the brief.
