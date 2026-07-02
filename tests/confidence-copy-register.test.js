@@ -38,16 +38,18 @@ describe('witty_low_confidence — every condition pool is well-formed', () => {
 
   for (const cond of conditionKeys) {
     for (const lang of LANGS) {
-      it(`${cond}/${lang}: 5-8 non-empty lines, no duplicates`, () => {
+      it(`${cond}/${lang}: >=5 non-empty lines (empty placeholders allowed), no duplicates`, () => {
         const pool = WEATHER_COPY.witty_low_confidence[cond][lang];
         expect(Array.isArray(pool)).toBe(true);
-        expect(pool.length).toBeGreaterThanOrEqual(5);
         expect(pool.length).toBeLessThanOrEqual(8);
-        pool.forEach(line => {
-          expect(typeof line).toBe('string');
-          expect(line.trim().length).toBeGreaterThan(0);
-        });
-        expect(new Set(pool).size).toBe(pool.length); // no duplicate lines
+        // Realignment (2026-07-02) may leave intentional empty placeholder slots
+        // — e.g. the lc-clear Cape-Doctor gap in zu/xh/st pending native gap-fill.
+        // The picker (pickWittyLine / og.js pickWitty) filters empties, so the
+        // shape invariant is on the NON-EMPTY lines, and there must be enough of
+        // them that the picker always has something to return.
+        const nonEmpty = pool.filter(line => typeof line === 'string' && line.trim().length > 0);
+        expect(nonEmpty.length).toBeGreaterThanOrEqual(5);
+        expect(new Set(nonEmpty).size).toBe(nonEmpty.length); // no duplicate non-empty lines
       });
     }
   }

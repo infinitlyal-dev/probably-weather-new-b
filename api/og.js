@@ -67,8 +67,10 @@ function pickLocalized(bank, key, lang, fallback = '') {
 }
 
 function pickWitty(condition, lang, seed) {
-  const lines = WEATHER_COPY.witty?.[condition]?.[lang] || WEATHER_COPY.witty?.[condition]?.en || WEATHER_COPY.witty.clear.en;
-  if (!Array.isArray(lines) || lines.length === 0) return '';
+  const raw = WEATHER_COPY.witty?.[condition]?.[lang] || WEATHER_COPY.witty?.[condition]?.en || WEATHER_COPY.witty.clear.en;
+  // Skip intentional empty slots (partly-cloudy realignment gap-fill placeholders).
+  const lines = Array.isArray(raw) ? raw.filter(s => typeof s === 'string' && s.trim() !== '') : [];
+  if (lines.length === 0) return '';
   return lines[hashString(seed) % lines.length];
 }
 

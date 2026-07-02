@@ -1143,6 +1143,13 @@ document.addEventListener("DOMContentLoaded", () => {
     "tekisi e 'ngoe le e 'ngoe tseleng", 'merero ea moriri',
     'aircon ea ofisi'
   ];
+  // A witty pool may hold intentional empty slots — the partly-cloudy and
+  // low-confidence realignment leaves some indices "" pending native gap-fill.
+  // Never surface a blank line: filter empties before the random pick.
+  function pickWittyLine(pool) {
+    const clean = Array.isArray(pool) ? pool.filter(s => typeof s === 'string' && s.trim() !== '') : [];
+    return clean.length ? clean[Math.floor(Math.random() * clean.length)] : '';
+  }
   function getWittyLine(condition) {
     const day = getLocationDayOfWeek(), hour = getLocationHour(activePlace?.lon);
     const isWeekend = day === 0 || day === 6 || (day === 5 && hour >= 16);
@@ -1154,9 +1161,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.__PW_LAST_NORM?.confidence === 'low') {
       const lcPool = T.witty_low_confidence?.[condition]?.[settings.lang]
         || T.witty_low_confidence?.[condition]?.en;
-      if (Array.isArray(lcPool) && lcPool.length) {
+      if (Array.isArray(lcPool) && lcPool.some(s => s && s.trim())) {
         debugLog(`[Witty register] LOW-CONFIDENCE pool for ${condition}/${settings.lang}`);
-        return lcPool[Math.floor(Math.random() * lcPool.length)];
+        return pickWittyLine(lcPool);
       }
     }
     if (isWeekend && (condition === 'clear' || condition === 'heat')) {
@@ -1165,7 +1172,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // before the random pick, so a Sunday/Friday-evening draw can't surface
       // a Saturday line. See filterWeekendPoolForDay in weather-copy.js.
       const wl = filterWeekendPoolForDay(T.witty.weekend[settings.lang] || T.witty.weekend.en, day);
-      return wl[Math.floor(Math.random() * wl.length)];
+      const wlPick = pickWittyLine(wl);
+      if (wlPick) return wlPick;
     }
     const fb = COPY_FALLBACK[condition];
     let lines = T.witty[condition]?.[settings.lang]
@@ -1192,7 +1200,7 @@ document.addEventListener("DOMContentLoaded", () => {
         debugLog(`[Witty filter] ${condition}/${settings.lang}: filtered pool too small (${filtered.length}), using full pool`);
       }
     }
-    return lines[Math.floor(Math.random() * lines.length)];
+    return pickWittyLine(lines);
   }
   function getDayBadge(d, dayIndex, hourlyData) {
     const ck = (d.conditionKey || '').toLowerCase();
