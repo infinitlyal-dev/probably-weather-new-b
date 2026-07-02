@@ -1301,15 +1301,23 @@ export default async function handler(req, res) {
         }
       }
 
-      // FIX-002: Fog majority check for daily forecasts — same consensus rule
-      if (dailyConditionKey === 'fog' && descEntries.length >= 3) {
+      // FIX-002: Fog majority check for daily forecasts — same consensus rule.
+      // H-2 follow-up: apply at >=2 sources (not >=3). Far days (2-6) often have
+      // only OM + Pirate daily descs, where a single "Mist" beats "Overcast" in a
+      // weighted tie and slips through — the exact live Weekly-tab fog symptom.
+      // Require >=2 sources to agree on fog; if not, demote using the now-available
+      // daily cloud (partly-cloudy / cloudy) rather than a hard 'clear'.
+      if (dailyConditionKey === 'fog' && descEntries.length >= 2) {
         const sourceNames = ['Open-Meteo', 'WeatherAPI', 'Pirate Weather', 'MET Norway', 'Tomorrow.io'];
         const dailyFogSources = dailies.map((d, si) => d && d.descs[i] && categorizeDesc(d.descs[i]) === 'fog' ? sourceNames[si] : null).filter(Boolean);
         if (dailyFogSources.length < 2) {
-          debugLog(`[ProbablyWeather] Fog blocked — single source only: ${dailyFogSources.join(', ')} (day ${i})`);
-          dailyOverrides.push({ rule: 'fog-blocked-single-source', from: 'fog', to: 'clear', reasonDetail: `only ${dailyFogSources.length} source(s) voted fog` });
-          dailyConditionKey = 'clear';
-          dailyConditionReason = 'fog-blocked-single-source';
+          const demoteTo = isNum(cloudPct) && cloudPct >= 55 ? 'cloudy'
+                         : isNum(cloudPct) && cloudPct >= 30 ? 'partly-cloudy'
+                         : 'clear';
+          debugLog(`[ProbablyWeather] Fog under-corroborated (${dailyFogSources.length}/${descEntries.length}) — demote to ${demoteTo} via cloud ${cloudPct} (day ${i})`);
+          dailyOverrides.push({ rule: 'fog-blocked-insufficient-corroboration', from: 'fog', to: demoteTo, reasonDetail: `only ${dailyFogSources.length}/${descEntries.length} source(s) voted fog; cloud ${isNum(cloudPct) ? Math.round(cloudPct) + '%' : 'n/a'}` });
+          dailyConditionKey = demoteTo;
+          dailyConditionReason = 'fog-blocked-insufficient-corroboration';
         }
       }
 
