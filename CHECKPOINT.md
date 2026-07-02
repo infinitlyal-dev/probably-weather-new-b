@@ -583,3 +583,126 @@ NO language strings, code, or tests modified.
 2. witty_low_confidence['clear'] zu/xh/st is a clean mechanical fix: shift [2..4]→[3..5], leaving [2] open for a fresh native translation of the Cape Doctor line; current filler [5] can be discarded or audited.
 3. Only after re-alignment: apply the XH row-keyed review corrections.
 4. The bonus quality flags above should ride along in the next native-review round.
+
+---
+# Checkpoint: full read-only re-evaluation (Fable mode, harness armed)
+**Generated:** 2026-07-02 ~09:20 SAST
+**Task:** Three-weeks-idle re-eval. Ground truth first (HEAD, what landed after 269b056, whether the Xhosa-apply/language-bank realignment ran, whether review/af-gapfill.md + addenda exist). Then audit correctness/wiring/perf/dead-code/tests/prod-state; screenshot prod mobile + honest UI opinion; diagnose the three known open items (H4, day-of-week witty mismatch, WhatsApp share). READ-ONLY — no code changes.
+**Skills Used:** work-like-fable (harness armed via .fable/TASK.md), supervisor. 3 parallel read-only audit subagents (backend / frontend+SW / tests+dead-code). Live probes: node day-name coverage probe, curl live headers+OG, Playwright live DOM+box geometry at 390x844.
+
+## Ground truth (shipped vs pending)
+- HEAD = eec29d8 == origin/main == production (/api/version returns eec29d8). Edge Age ~19.5 days. NOTHING committed or deployed in 3 weeks. Prod is exactly repo HEAD.
+- Xhosa-apply / language-bank realignment: **NEVER RAN.** No review/ dir; no xhosa-apply.csv, xhosa-quarantine.csv, af-gapfill.md, or any *addendum* file in the working tree OR all-branches git history. Last commit (eec29d8) is the READ-ONLY scramble audit itself; its own Next Steps say the fix strategy is undecided and XH corrections "cannot be applied yet" (banks still misaligned). So the two defective bins (witty['partly-cloudy'], witty_low_confidence['clear']) remain unfixed.
+- Untracked prior-session artifacts sitting uncommitted: AGENTS.md, NATIVE_REVIEW_{ST,XH,ZU}.md, PERF_AUDIT.md, SECURITY_AUDIT.md, CODEX_REVIEW_FIRSTOPEN.md, docs/audit-2026-05-31.md, eval/, sesotho-replacements.txt, voiceover-output/, .agents/, .playwright-mcp/.
+- Doc drift in CLAUDE.md: says 4 weather sources (actually 5 — Tomorrow.io is live, DESC_WEIGHTS=[1,0.1,1,1,1] weather.js:1225); app.js "910 lines" (2815); weather.js "~1036" (2424).
+
+## Findings (severity-ordered; file:line)
+HIGH
+- Day-of-week witty mismatch (OWNER COMPLAINT). witty.fog[en][7] "Ghost town. But it's just Tuesday." / [af][7] "...net Dinsdag." — a hardcoded weekday name in a bin with zero day-gating; fires any foggy day, any weekday (even Sat/Sun; not in WEEKDAY_ONLY_FRAGMENTS). ac6ced5 only fixed the weekend pool's Saturday line. Root cause: day-filter is a curated substring blocklist (app.js:1123-1145 + weekend-filter.js), not structural day-tagging. Day NUMBER is correct for SA (app.js:1251); the bug is filter coverage. Measured via node probe over the live module.
+- Daily wind & noon cloud null for forecast days 2-6. weather.js:1168 (aggregatedHourly=48 slots) + 1237 (noonIdx=i*24+12 -> 60..156 out of range) + 1238/1247. Days 2-6 never derive a wind condition or use cloud. UI corroboration: Weekly tab days 2-6 render emoji-only and Mon/Tue/Wed default to fog at mild temps (inferred symptom).
+- H4 install banner covers the CTA row (OWNER-KNOWN). Measured at 390x844: install region y=694-760 fully covers the Save button (x312-378,y712-756) and overlaps Hourly; tab bar (y772-844) is clear.
+MEDIUM
+- 45 braai lines in non-weekend bins (storm/rain/uv/wind/cold-clear/heat/low-confidence) fire on weekdays -> violates CLAUDE.md "braai only on weekends".
+- WhatsApp share preview = plain unbranded stock photo /og/<cond>.jpg (middleware.js:219), NOT the branded /api/og card. rain.jpg is a distressed woman + broken umbrella -> off "positive vibes only" brand rule; zero app branding.
+- WhatsApp share message long/technical: full apex URL w/ bg+lat/lon floats+lang+city (~95 chars) embedded in text (app.js:1592, share-url.js:47).
+- Content-only deploys don't purge caches or fire the documented PW_UPDATE_AVAILABLE auto-reload (sw.js:39,122-142); propagation is SWR one-open-late + /api/version banner. Doc-vs-behaviour gap.
+- First-paint race: copy bank not awaited; non-English users / non-clear conditions flash English seed strings for ~1s (app.js:2345, copy-loader.js:20).
+- IDB weather cache keyed by rounded lat/lon only -> shared vs GPS place at same coords collide, can flash other place's name (app.js:124,2013).
+- Confidence hardwired to OM+WA pair -> under-reports when OM is the failed source (weather.js:1360-1363).
+- Tomorrow.io rolling next-24h "today" blended into day-0 with full weight (weather.js:979-984,1037-1040); no min-interval guard (980-982).
+- middleware matcher ['/'] doesn't cover /index.html though code handles it (middleware.js:14,201).
+LOW
+- MET rainProxy from raw next-48h series, not today-filtered (weather.js:806-815). Hourly gusts discarded (maxWind unused, weather.js:1172). Cape Doctor banner re-rolls random line each re-render (app.js:1559). searchMiniCache unbounded (app.js:2113). beforeinstallprompt listener leak (install.js:534,891,977). Default /api/og card renders with no bg photo on Vercel (og.js:156-190). apple-mobile-web-app-capable deprecated meta (console warning). _resetLimiters dead export (api/_lib/limiters.js:80). tz-offset regex can't parse fractional-hour zones (weather.js:1868).
+
+## Test-suite health
+1543/1543 pass, 55 files, 5.71s (npx vitest run). Gaps: app.js entry module has no direct/integration test; install.js lightly covered; no e2e/browser test; middleware only via unit.
+
+## UI opinion (honest, no flattery)
+Functionally solid; voice is genuinely strong. Polish gaps: (1) H4 install banner collision on first open; (2) inverted type hierarchy — city h1 14.4px/600 vs witty subtitle 22.4px/800 (the joke is the biggest text, location/temp subordinate); (3) ad placeholder wedged mid-forecast between Sat and Sun; (4) off-brand/unbranded WhatsApp share imagery. Palette (#fff8f0 warm off-white) cohesive; tab labels clear.
+
+## Decisions Made
+- Decision: recalibrated the frontend agent's "stale code" finding from HIGH to MEDIUM. Why: SWR refreshes on next open (update paints the open after) + /api/version banner is a second path, so it is not "stuck on stale code," it is one-open-late + a dead auto-reload UX. Alternative considered: keeping HIGH — rejected, evidence shows convergence.
+- Decision: measured the day bug with a node probe over the live weather-copy module instead of asserting from code reading. Why: Fable "measure don't assert"; the probe found the exact fog "Tuesday" line + 45 braai lines.
+- Decision: wrote this checkpoint but did NOT git commit/push it. Why: read-only mandate on repo history; Al decides whether to commit.
+
+## Issues / Blockers
+- Could not retrieve pixel screenshots: the Playwright MCP writes image files to its own sandbox fs (unreadable from host); box geometry + computed styles + OG image assets used instead (more precise for H4 and typography anyway). Not a blocker for findings.
+
+## Next Steps (for the Architect)
+Top-5 fix-first: (1) day-of-week witty (fog Tuesday line + braai-on-weekday + move to structural day-tagging); (2) daily wind/cloud days 2-6 (weather.js:1237); (3) H4 install banner vs CTA row; (4) WhatsApp share image branding + message length; (5) first-paint English-seed flash for non-English users. Separately: the pending Xhosa-apply/realignment session still needs the fix-strategy decision the eec29d8 audit called for.
+
+---
+# Checkpoint: language-bank repair + Xhosa application — BLOCKED at input integrity
+**Generated:** 2026-07-02 ~16:20 SAST
+**Task:** G1 structural realignment (partly-cloudy AF/ZU/ST + lc-clear zu/xh/st) + empty-slot picker filter; G2 apply 256 Xhosa rows verbatim by EN match + rebuild XH partly-cloudy from quarantine + regen splits; G3 gap-fill lists. Fable mode, harness armed.
+**Skills Used:** work-like-fable, supervisor. Node probes (CSV parse + bleed detection + shipped verification + array dumps).
+
+## Ground truth
+- HEAD eec29d8 == origin/main. review/ inputs present (created today 14:04-14:06): xhosa-apply.csv (256 rows), xhosa-quarantine.csv (20 rows), Xhosa-Review-Merge.xlsx.
+
+## BLOCKER (terminal) — commentary bleed in xhosa-apply.csv `final` column
+10 of 256 rows carry trailing English reviewer commentary in the `final` string. Applying verbatim ships reviewer notes as live UI; the brief forbids me editing native wording. Rows (CSV line):
+- L180 Very hot: '...Sithembe. - "ucango" means " door "'
+- L213 Weekend: '...kwakho.- siyakuzwela is pity in isizulu'
+- L214 Weekend: '...Uxanduva luphantsi - lusezantsi means underneath whereas luphantsi means down'
+- L215 Weekend: '...Imini iqala ngoku. -this sentence is literal unlike the original xhosa version'
+- L219 Clear-uncertain: '...azisoloko zivumelana.- replace rhoqo with azisoloko for a more relaxed tone.'
+- L231 Rain-uncertain: '...Ungasicaphuli kwi braai. ekugrileni sounds stiff not everyone is familiar...'
+- L232 Wind-uncertain: '...yokuziphatha. - there is no such a word as bhukana in isixhosa'
+- L241 Storms-uncertain: '...Hlala ulumkile. ulindile means waiting rather than stay alert.'
+- L247 Search screen (Done button): 'Kugqityiwe. .In isiXhosa, "kwenziwe" means "it has been done".'
+- L252 Pop-up (Using saved location): 'Kusetyenziswa indawo egciniweyo sounds.'
+L214 also has genuine wording ambiguity (luphantsi vs lusezantsi) only the reviewer can settle. Likely cause: lossy CSV export from Xhosa-Review-Merge.xlsx concatenated a notes column into `final`.
+
+## Secondary G2 findings (report, not guess — per brief)
+- Shipped mismatch (2): L223 (word order: csv "Asiqinisekanga Mhlawumbi kuhle..." vs bank "Mhlawumbi kuhle. Asiqinisekanga..."), L240 (missing space: csv "Jongaisibhakabhaka" vs bank "Jonga isibhakabhaka").
+- EN-key defects that break EN-string keying (2): L85 english="by" (truncated — real EN ~"The sun's on a tea break. No ETA."), L92 english="...doinganything." (missing space vs bank "doing anything").
+- Scope: ~16 apply rows (labels/buttons/popups/Cape-wind/settings/Search/"Done"/"Feels like"/"gusts"/"Cold") live in app.js `translations`, NOT weather-copy.js — so the apply must target TWO files. Not a blocker; a scope confirmation.
+- Quarantine (XH partly-cloudy) fill_final: CLEAN, ready.
+
+## G1 — computed and ready (CSV-independent; not yet applied)
+Deterministic transforms from the CHECKPOINT scramble-audit maps:
+- witty[partly-cloudy].AF: moves 4->11,7->12,8->13,9->14,10->17,11->18,13->9,15->3,16->19,17->16,19->15; empties {4,7,8,10}; displaced borderline dropped to af-gapfill: old[3,12,14,18].
+- witty[partly-cloudy].ZU: moves 3->5,5->12,6->13,7->14,8->18,14->10; empties {3,6,7,8}; dropped to zu-addendum: old[10,12,13,18].
+- witty[partly-cloudy].ST: 4->16; slot4 empty; old[16] dropped to xh-st-addendum (ST).
+- witty_low_confidence[clear] zu/st: [3..5]=old[2..4], [2]="", drop old[5] filler. (xh same in G1 but G2 overwrites [1..5], incl. fills [2] with L220 Cape Doctor final — so XH[2] is NOT a permanent gap; only ST[2] is.)
+- Code: empty-string filter in app.js getWittyLine (all 3 branches) + api/og.js pickWitty; tests: equal array length across 5 langs per bin + no empty can surface.
+
+## Decisions Made
+- Decision: PAUSED before mutating banks (did not run G1 despite it being CSV-independent). Why: the whole task is native-bank surgery under an explicit language-deference mandate; I found the sibling native input is contaminated; G1 also drops native-written rows. Presenting the full computed plan + blocker for one architect pass, then executing G1+G2+G3 in one clean run, respects the imbatata rule better than a unilateral partial deploy of native-row drops. Alternative considered: ship G1 now, block G2 — rejected to avoid two tester-facing deploys and to keep the audit trail single-pass.
+- Decision: did NOT commit the 3 input files yet. Why: they will be re-cut to fix the bleed; the audit trail should record the FINAL applied version, not the contaminated intermediate. Will commit clean inputs with G2.
+
+## Next Steps (for the Architect) — to unblock
+1. Re-export xhosa-apply.csv from the xlsx with `final` cleanly separated from reviewer notes (the 10 rows), OR authorize a precise strip rule (but that has me editing native strings — re-export preferred).
+2. Confirm the 2 EN-key fixes (L85 "by", L92 "doinganything") so string-keying resolves them.
+3. Confirm G2 should also write the ~16 label/button rows into app.js translations.
+4. On receipt: I run G1 -> test -> commit -> deploy; G2 -> regen splits -> drift gate -> test -> commit -> deploy; G3 gap-fill lists -> commit. Atomic per group, per your brief.
+
+---
+# Checkpoint: language-bank repair + Xhosa application — DONE (G1→G2→G3 shipped)
+**Generated:** 2026-07-02 ~17:45 SAST
+**Task:** Architect unblocked all 3 rulings; ran G1 realignment + G2 Xhosa verbatim application + G3 gap-fill lists, end-to-end, atomic per-group commits, live deploy verified.
+**Skills Used:** work-like-fable (harness armed), supervisor. Deterministic Node codemods with abort-on-mismatch gates; live smoke via Playwright + curl.
+
+## What shipped (per-commit)
+- bcf25ca — G1: partly-cloudy AF/ZU/ST realigned + lc-clear zu/xh/st shifted; empty-slot picker filter (app.js pickWittyLine ×3 branches + og.js pickWitty); +2 invariant tests. Deploy verified (/api/version=bcf25ca).
+- 00ee534 — corrected input files (audit trail): 10 bleed rows cut at architect markers, 2 EN-keys repaired from bank; no-English gate = 0.
+- 0510415 — G2: 256 Xhosa rows applied verbatim by EN match (240 weather-copy + 16 app.js), XH partly-cloudy rebuilt from quarantine (20, index-ordered), lc-clear XH[2] filled. Splits regenerated. Deploy verified (/api/version=0510415); live XH render smoke passed.
+- 5af46db — G3: af-gapfill.md, zu-addendum.md, xh-st-addendum.md. Final deploy live.
+
+## Decisions Made
+- Applied the architect's 10 cut boundaries mechanically (marker-inclusive cut + trim; L214 dot restored); verified each result against the ruled tail. No Xhosa composed/judged.
+- Repaired 2 EN keys from the bank by shipped-XH match (never guessed).
+- Quarantine rebuilt by INDEX (rows 1-19 match EN by text AND order → provably index-ordered); row-20 english is a stale reference, placed by index and flagged in xh-st-addendum. Reported, not guessed.
+- Shipped-column drift treated advisory (logged): 4 induced by G1 lc-clear shift + L240 whitespace. Ambiguous EN ("Maybe rain, maybe not.") disambiguated by shipped value.
+- Updated 2 tests to the new spec (confidence-copy-register allows intentional empty placeholders; cloud-partly-cloudy headline XH to native "Kunamafu kancinci"). Legitimate design/wording changes, not gate-gaming.
+
+## Verification
+- 1709/1709 tests pass; build + drift gate + import-scan green after each group.
+- No-commentary scan over applied XH banks: clean. Equal-length invariant across 5 langs: holds. No empty line can surface (picker filter + invariant test).
+- Live: deployed XH split contains new values, old scrambled value gone; app renders in isiXhosa at mobile with 0 console errors.
+
+## Follow-ups (in review/, for the owner/native reviewers)
+- Al: af-gapfill.md (4 empty AF slots + 4 displaced lines + placement confirms).
+- Zulu reviewer: zu-addendum.md (empties/displaced + Cape-Doctor lc gap + quality flags).
+- Xhosa/Sesotho: xh-st-addendum.md (67 future_review XH rows, ST[2] Cape-Doctor gap, ST realignment, provisional strings).
