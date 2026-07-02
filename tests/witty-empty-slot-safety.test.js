@@ -60,7 +60,7 @@ describe('witty bins — realignment empties are exactly where expected', () => 
     (Array.isArray(arr) ? arr : []).map((s, i) => (typeof s === 'string' && s.trim() === '' ? i : -1)).filter((i) => i >= 0);
   const pc = WEATHER_COPY.witty['partly-cloudy'];
   const lc = WEATHER_COPY.witty_low_confidence.clear;
-  it('partly-cloudy AF empties at [4,7,8,10]', () => expect(emptiesOf(pc.af)).toEqual([4, 7, 8, 10]));
+  it('partly-cloudy AF has no empties (owner filled the gap-fill slots, G0)', () => expect(emptiesOf(pc.af)).toEqual([]));
   it('partly-cloudy ZU empties at [3,6,7,8]', () => expect(emptiesOf(pc.zu)).toEqual([3, 6, 7, 8]));
   it('partly-cloudy ST empties at [4]', () => expect(emptiesOf(pc.st)).toEqual([4]));
   it('lc-clear ZU/ST empty at [2]', () => {
