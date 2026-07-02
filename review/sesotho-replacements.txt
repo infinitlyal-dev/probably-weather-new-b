@@ -1,0 +1,374 @@
+# SESOTHO NATIVE-SPEAKER REVIEW — CONFIRMED REPLACEMENTS
+# 90 strings. Replace the CURRENT Sesotho with FINAL. Match by English key + current string.
+# DISCIPLINE: replace reviewed lines only. NO GPT translation. NO new strings invented.
+# Global spelling fixes already folded in where flagged: mohodi->moholi (fog),
+#   Hlonepha->Hlompha (respect), tjhesa->chesa (hot), setofo->setlolo sa letsatsi (sunscreen).
+
+[T0R1] EN: Severe weather
+  FROM: Leholimo le lebe
+  TO:   Boemo ba leholimo bo matla
+
+[T0R2] EN: Thunder
+  FROM: Modumo wa leholimo
+  TO:   Modumo wa seaduma
+
+[T0R4] EN: Wet conditions
+  FROM: Maemo a metsi
+  TO:   Maemo a mongobo
+
+[T0R7] EN: Chilly
+  FROM: Ho bata
+  TO:   ho phodile
+
+[T0R11] EN: Low visibility
+  FROM: Pono e tlase
+  TO:   Ponahalo e tlase
+
+[T0R12] EN: Overcast
+  FROM: Maru
+  TO:   Ho aparetse ka maru
+
+[T0R13] EN: Partly cloudy
+  FROM: Ho na le maru a manyane
+  TO:   Ho na le maru hanyane
+
+[T1R1] EN: Storms rolling in.
+  FROM: Ledimo le a tla.
+  TO:   sefefo se atla
+
+[T1R2] EN: Thunder rolling in.
+  FROM: Modumo o a tla.
+  TO:   Modumo wa seaduma o a tla
+
+[T1R4] EN: Rain's here.
+  FROM: Pula e a na.
+  TO:   Pula e fihlile
+
+[T1R5] EN: Might rain.
+  FROM: Mohlomong pula.
+  TO:   pula e ka na
+
+[T1R6] EN: Cloudy vibes.
+  FROM: Maru a teng.
+  TO:   ho nale maru
+
+[T1R7] EN: Partly cloudy.
+  FROM: Ho na le maru a manyane.
+  TO:   ho nale maru hanyane
+
+[T1R11] EN: It's hot.
+  FROM: Ho tjhesa.
+  TO:   ho  a tjhesa
+
+[T1R12] EN: UV's hectic.
+  FROM: UV e hodimo.
+  TO:   uv. e hodimu  haholo
+
+[T1R13] EN: Foggy out there.
+  FROM: Ho na le mohodi.
+  TO:   The correct Sesotho spelling is moholi (fog/mist), not mohodi.
+
+[T2R6] EN: High UV
+  FROM: UV e Phahameng
+  TO:   rather use Boemo ba UV bo phahameng
+
+[T2R7] EN: Hot
+  FROM: Ho tjhesa
+  TO:   Ho chesa" is the standard spelling for "It's hot" (rather than Ho tjhesa).
+
+[T4R8] EN: gusts
+  FROM: moea o otlang ka sefutho
+  TO:   Meea e fokang ka sefutho  
+
+meea would be plural form for gusts
+
+[T4R18] EN: Temp
+  FROM: Temp
+  TO:   Mocheso
+
+[T4R20] EN: Sunrise
+  FROM: Mafube
+  TO:   Ho chaba ha letsatsi
+  (raw note was: Ho chaba ha letsatsi ( mafube is still correct but ho chaba ha letsatsi is  less stiff ))
+
+[T4R21] EN: Sunset
+  FROM: Letsatsi le likela
+  TO:   Ho likela ha letsatsi
+
+[T5R1] EN: Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.
+  FROM: Bloemfontein ka 6 hoseng: jersey, gown, scarf, takkies, le brave face.
+  TO:   Bloemfontein ka 6 hoseng: jersey, gown, scarf, takkies, le pelo e tiileng.
+
+[T5R2] EN: The Free State just remembered it has a winter setting.
+  FROM: Free State e sa tswa hopola hore e na le winter setting.
+  TO:   Free State e sa tsoa hopola hore e na le mokgwa wa mariha  can still use  winter setting  at the end of the sentence to make it sound less stiff
+  (raw note was: "Free State e sa tsoa hopola hore e na le mokgwa wa mariha  can still use  winter setting  at the end of the sentence to make it sound less stiff)
+
+[T5R4] EN: Highveld winter: the only place where you wear two jackets to fetch the post.
+  FROM: Highveld winter: ke moo o aparang jackets tse pedi ho lata post.
+  TO:   jackets → dijakete
+
+[T5R5] EN: The dog is still keen. The dog is always keen. Respect.
+  FROM: Ntja e ntse e le keen. Ntja e dula e le keen. Respect.
+  TO:   Ntja e ntse e le mafolofolo. Ntja e dula e le mafolofolo. Respect.
+
+[T5R6] EN: Welkom-cold today. The kind that goes through three jerseys like they aren't there.
+  FROM: Welkom-cold kajeno. Serame se fetang ka di-jersey tse tharo jwalo ka ha di se teng.
+  TO:   Welkom-cold kajeno. Serame se phunyeletsang di-jersey tse tharo eka ha di yo.
+
+[T5R7] EN: The geyser tripped overnight. Of course it did.
+  FROM: Geyser e tripile bosiu. Of course e entse jwalo.
+  TO:   Geyser e tripile bosiu. Ehlile e entse jwalo.
+
+[T5R8] EN: Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.
+  FROM: Frost lawneng. Frost ho bakkie. Frost ho pet bowl.
+  TO:   Serame mohloeng. Serame ho bakkie. Serame ka sekotlolong sa phoofolo ea lapeng.
+
+[T5R9] EN: The lapa cushions are crispy.
+  FROM: Di-cushion tsa lapa di crispy.
+  TO:   mesamo ya lapa e thatafetse ke serame
+
+[T5R12] EN: Lekker koud, but the rugby fields are about to look perfect.
+  FROM: Lekker koud, empa di-rugby fields di se di tlo shebahala perfect.
+  TO:   Ho bata hantle, empa mabala a rugby a tlo shebahala a le perfect
+
+[T5R13] EN: Pretoria-bare-jacaranda energy. Beautiful and bleak.
+  FROM: Pretoria-bare-jacaranda energy. E ntle, empa e bleak.
+  TO:   Pretoria-bare-jacaranda energy. E ntle, empa e lerootho.
+
+[T5R14] EN: Tile floors are tonight's villain. Wear something on your feet.
+  FROM: Tile floors ke villain ya bosiu bona. Apara ntho maotong.
+  TO:   Dithaele tsa fatše bosiung ba  kajeno ke balotsana ,bona hore o apara ntho maotong
+
+[T5R15] EN: (kids-in-shorts line)
+  FROM: Bana ba ntse ba ya school ka shorts. Ba tseba dintho tseo rona re sa di tsebeng.
+  TO:   Bana ba ntse ba ya sekolong ka shorts. Ba tseba dintho tseo rona re sa di tsebeng.
+  (raw note was: sekolong)
+
+[T5R16] EN: Boiling-the-kettle-twice weather: once for the coffee, once for the hands.
+  FROM: Boiling-the-kettle-twice weather: hang bakeng sa coffee, hang bakeng sa matsoho.
+  TO:   o belisa ketlele habeli — hang bakeng sa kofi, hang ho futhumatsa matsoho.
+
+[T5R17] EN: Karoo morning. The kind that makes you respect every farmer who chose this.
+  FROM: Karoo morning. Mofuta o etsang hore o hlomphe farmer e mong le e mong ya kgethileng bophelo bona.
+  TO:   Karoo morning. Mofuta o etsang hore o hlomphe molemi e mong le e mong ya kgethileng bophelo bona.
+
+[T5R18] EN: The car's heater is the most important relationship in your life right now.
+  FROM: Heater ya koloi ke relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale.
+  TO:   Heater ya koloi ke yona relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale.
+
+[T5R24] EN: Three hadedas, two crows, one shivering human at the bird feeder.
+  FROM: Hadedas tse tharo, crows tse pedi, human a le mong ya thothomelang ho bird feeder.
+  TO:   Hadedas tse tharo, makhoaba a mabeli, le motho a le mong ea thothomelang haufi le sebaka sa linonyana.
+
+[T5R25] EN: The Toyota started first try. You owe it a wash.
+  FROM: Toyota e startile first try. O e kolota wash.
+  TO:   Toyota e qalile ka lekhetlo la pele. U e kolota ho e hlatsoa
+
+[T5R27] EN: Even the cattle on the N1 are huddled like they paid for it.
+  FROM: Esita le dikgomo tse pela N1 di huddled jwalo ka ha di patetse sebaka.
+  TO:   Esita le dikgomo tse pela N1 di petetsane jwaloka eka di lefile ho ba te
+
+[T6R12] EN: Even the bakkies on the N2 pulled over.
+  FROM: Esita le li-bakkie tsa N2 li emile ka thoko.
+  TO:   esita le li-bakkie tsa N2 li eme ka thoko ho tsela
+
+[T6R16] EN: Respect the thunder. It's earned it.
+  FROM: Hlonepha modumo. O e tšoanetse.
+  TO:   Hlompha modumo .o e tsoanetse
+  (raw note was: Hlompha modumo .o e tsoanetse( Hlonepha is the zulu/ xhosa version of respect ))
+
+[T6R18] EN: Windows closed, kettle on, and wait.
+  FROM: Lifensetere li koetsoe, ketlele e butsoe, ema.
+  TO:   Lifensetere li koetsoe, ketlele e tuka, ema
+
+[T6R25] EN: Don't even think about driving somewhere.
+  FROM: Se ke oa nahana ho otlela kae kapa kae.
+  TO:   Se ke oa nahana le ho khanna ho ea kae kapa kae
+
+[T6R31] EN: 
+  FROM: Ema ka hare. Lithaba ha li ee kae.
+  TO:   Lula ka ntlong. Lithaba li ntse li le teng moo li leng teng.
+
+[T9R6] EN: Joburg drivers are panicking already.
+  FROM: Baotleli ba Joburg ba se ba tšohile.
+  TO:   Bakhanni ba joburg ba se ba tsohile
+
+[T9R10] EN: Good soup weather, not gonna lie.
+  FROM: Leholimo le letle la soupa.
+  TO:   Leholimo le letle la  sopho
+
+[T11R3] EN: Good day for a walk, bad day for a tan.
+  FROM: Letsatsi le letle la ho tsamaea, le lebe la ho tjhesa.
+  TO:   Letsatsi le monate la ho tsamaea, empa le lebe ho leka ho chesa letlalo.”
+
+[T11R19] EN: Nobody's posting this sunset on Instagram.
+  FROM: Ha ho motho ea tla posta sena ho Instagram.
+  TO:   Ha ho motho ea tla post-a sunset ena ho Instagram.
+
+[T12R6] EN: Sun's playing peek-a-boo.
+  FROM: Hoo ke letsatsi la braai.
+  TO:   letsatsi le bapala peek-a-boo
+
+[T12R7] EN: Clouds today, vibes optional.
+  FROM: Liaparo li bolokehile. Mohlomong.
+  TO:   Maru kajeno, vibes ke optional.
+
+[T12R8] EN: Sky's drafting, not committing.
+  FROM: Tšoara hempe le hoodie - ka bobeli.
+  TO:   Leholimo ha le e-s’o etse qeto
+
+[T12R9] EN: Patchy ambitions.
+  FROM: Lehodimo le ithata kajeno.
+  TO:   Maikemisetso a sa tsitsang
+
+[T12R10] EN: Halfway to a Highveld thunderstorm. Or not.
+  FROM: Maru a manyane, letsatsi le leholo.
+  TO:   Re se re le tseleng ea sefefo sa Highveld… kapa mohlomong che
+
+[T12R11] EN: Clouds, but make it casual.
+  FROM: Ha ho monate, ha ho mobe - mahareng.
+  TO:   Ho na le maru, empa ha se taba e kholo.
+
+[T12R13] EN: Almost a braai day.
+  FROM: Maru a tla tla a tsamaee.
+  TO:   E batla e le letsatsi la braai.
+
+[T12R14] EN: Washing's still safe. Probably.
+  FROM: Letsatsi la mohlomong.
+  TO:   Ho fanyeha liaparo ho ntse ho bolokehile. Mohlomong
+
+[T12R15] EN: Sunscreen, but keep a hoodie close.
+  FROM: Maru, empa ha ho na bothata.
+  TO:   Tlotsa sunscreen, empa boloka hoodie e le haufi.
+
+[T13R1] EN: Sunscreen is not optional, boet.
+  FROM: Setofo sa letsatsi ha se kgetho, boet.
+  TO:   setlolo sa letsatsi hase kgetho  boet
+
+[T13R6] EN: The ozone layer called. It's on leave.
+  FROM: Ozone layer e llelitse. E leaveng.
+  TO:   Ozone layer e llelitse. E matsatsing a phomolo
+
+[T13R7] EN: Reapply that sunscreen or suffer.
+  FROM: Tšoaea hape kapa o hloke.
+  TO:   Tlotsa hape sunscreen, kapa letsatsi le tla u bontša mosebetsi oa lona.
+
+[T13R9] EN: Hat, sunnies, sunscreen. Non-negotiable.
+  FROM: Katiba, liborele, setofo. Ha ho buisanoe.
+  TO:   katiba ,liborele,setlolo sa letsatsi ha ho buisanoe
+
+[T13R10] EN: You could braai a steak on the pavement right now.
+  FROM: O ka chesa steak ho pavement joale.
+  TO:   O ka besa steak holim'a pavement hona joale.
+
+[T13R11] EN: Your future self will thank you for that sunscreen.
+  FROM: Uena oa hosane o tla leboha ka setofo sa letsatsi.
+  TO:   setlolo sa letsatsi
+
+[T13R18] EN: Sunscreen budget: higher than your data bill.
+  FROM: Bajete ea setofo sa letsatsi: e phahameng ho feta akhaonto ea data.
+  TO:   Bajete ea Setlolo sa letsatsi  e phahame ho feta akhaonto ea  data
+
+[T14R3] EN: Table Mountain's tablecloth is out.
+  FROM: Lesela la Table Mountain le tšoeu.
+  TO:   Lesela la Table mountain le aparetse thaba.
+
+[T14R5] EN: Your hairstyle? Gone. Accept it.
+  FROM: Moriri oa hao? O ile. Amohela.
+  TO:   hairstyle ya hao ile ?  amohela
+
+[T15R2] EN: Time to dig out that ugly beanie.
+  FROM: Nako ea ho qhala beanie e mpe eo.
+  TO:   ke nako ya ho ntsha katiba yane empe
+
+[T15R3] EN: Cold enough for soup. And a second soup.
+  FROM: Ho bata ho lekana le soupa. Le soupa ea bobeli.
+  TO:   Ho bata ho lekana le sopho. Le sopho ea bobeli
+
+[T15R20] EN: You're not cold, you're 'lekker koud'. Big difference.
+  FROM: Ha o bate, o 'lekker koud'. Phapang e kholo.
+  TO:   ha wa hatsela fela ,o hatsetse haholo phapang e kgolo
+
+[T16R4] EN: Stay hydrated or become a biltong.
+  FROM: .Dula o na le metsi kapa o fetohe biltong
+  TO:   Dula o na le metsi kapa o   fetohe sehwapa
+
+[T17R17] EN: The mountains are on holiday today.
+  FROM: Lithaba li holideining kajeno.
+  TO:   lithaba li matsatsi a phomolo
+
+[T17R38] EN: The morning forgot to render.
+  FROM: Hoseng ho lebetse ho rendera.
+  TO:   hoseng ho lebetse ho fetolela
+
+[T18R1] EN: Absolutely beautiful out there.
+  FROM: Ho motle haholo kantle.
+  TO:   ho hotle kantle
+  (raw note was: ho hotle kantle (motle  is beautiful but is used to describe a person))
+
+[T19R2] EN: Perfect night to actually see the Milky Way.
+  FROM: Bosiu bo motle ba ho bona Tsela ea Lebese.
+  TO:   ke bosiu bobotle ho bona Molalatladi
+
+[T19R9] EN: Somewhere a cricket is really giving it.
+  FROM: Kae-kae tšie e binela ka matla.
+  TO:   Kae-kae tswiritswiri e binela ka matla.
+  (raw note was: Kae-kae tswiritswiri e binela ka matla.(tsie is a grasshopper ))
+
+[T19R10] EN: Even Table Mountain's called it a day.
+  FROM: Esita le Thaba ea Table e ithobaletse.
+  TO:   Esita le Table Mountain e se e phomotse.
+
+[T19R15] EN: The owls are judging your screen time.
+  FROM: Dikgogo di ahlola nako ea hao ea skrini.
+  TO:   Merubisi e ahlola nako ea hao ea skrini.
+
+[T20R6] EN: If you're working today, we feel sorry for you.
+  FROM: Haeba o sebetsa kajeno, re oa utsoarela.
+  TO:   Haeba u sebetsa kajeno, re u utloela bohloko.”
+  (raw note was: Haeba u sebetsa kajeno, re u utloela bohloko.”  (toarela is forgiveness it wouldn't make sense in this sentence ))
+
+[T20R18] EN: This is the weather the weekend was invented for.
+  FROM: Lena ke leholimo phomolo e entsoeng bakeng sa lona.
+  TO:   Lena ke boemo ba leholimo boo mafelo-beke a etselitsoeng bona
+
+[T23R2] EN: Cloudy-ish. Don't bet the braai on it.
+  FROM: Ho na le maru-ish. U se ke ua beha braai holim'a sona.
+  TO:   Ho na le maru. Braai ha e na tiisetso kajeno
+
+[T24R3] EN: Mist building, maybe. Headlights wouldn't hurt.
+  FROM: Mohodi oa eketseha, mohlomong. Tlhabisa mabone.
+  TO:   mohodi oa eketseha  tlosa mabone  a koloi
+
+[T25R1] EN: Probably rain. Take the umbrella, settle the argument.
+  FROM: Mohlomong pula. Nka ambrela.
+  TO:   Mohlomong pula. Nka sekhele, re felise khang.
+
+[T29R3] EN: Hot-ish, likely. Keep the water close.
+  FROM: Ho chesa mohlomong. Boloka metsi haufi.
+  TO:   Ho ka chesa. Boloka metsi haufi.
+
+[T30R1] EN: Could turn stormy. Keep one eye on the sky.
+  FROM: Ho ka ba sefefo. Sheba leholimo.
+  TO:   Ho kana ha fetoha sefefo. Lula u shebile leholimo ka hloko.
+
+[T31R5] EN: Clear-ish night. Don't hold us to the stars.
+  FROM: Bosiu bo hlakileng-ish. U se ke ua re tšoara linaleling.
+  TO:   Bosiu bo hlakile hanyane. U se ke ua re tshepisa ka linaleli.
+
+[T37R5] EN: Cleared
+  FROM: E hlakiloe
+  TO:   E hlakotsoe
+
+[T37R6] EN: No saved places
+  FROM: Ha ho libaka
+  TO:   Ha ho libaka tse bolokiloeng
+
+[T40R2] EN: Ag no, the tablecloth is out 💨
+  FROM: Eish, lesela la tafoleng le teng 💨
+  TO:   Ag no, lesela la tafoleng le foka moea
+
+[T40R4] EN: Hold onto your hat, the Southeaster means business
+  FROM: Tšoara katiba ea hao, Southeaster e bolela ka nnete
+  TO:   Tšoara katiba ea hao — Southeaster e tla ka matla, ha e bapale.

@@ -2,7 +2,7 @@
 
 ## PROJECT IDENTITY
 Probably Weather (probablyweather.co.za) is a South African PWA weather app with a strong personality.
-It combines 4 weather sources into a weighted ensemble forecast and serves it with SA-flavoured humour and warmth.
+It combines 5 weather sources into a weighted ensemble forecast and serves it with SA-flavoured humour and warmth.
 The app's personality is its superpower. Never let technical work dilute the SA tone.
 
 ## THE DEVELOPER
@@ -19,19 +19,23 @@ Never instruct Al to manually edit a file. All changes go via GitHub → Vercel 
 - Local repo path: C:\Users\27741\OneDrive\Desktop\Probably weather new\probably-weather-new-b
 
 ## KEY FILES
-- `api/weather.js` — main API (~1036 lines), aggregates 4 weather sources with dynamic weights
-- `assets/app.js` — main frontend (910 lines), all rendering and UI logic
-- `assets/app.css` — all styling
+- `api/weather.js` — main API (~2456 lines), aggregates 5 weather sources with dynamic weights
+- `assets/app.js` — main frontend (~2793 lines), all rendering and UI logic
+- `assets/weather-copy.js` — server-side 5-language copy bank (source of truth; split to `assets/copy/<lang>.js` at build time)
+- `assets/witty-day-tags.js` — structural day-of-week metadata for witty lines (weekday/weekend/day-named gating)
+- `assets/app.css` — all styling (~3306 lines)
 - `index.html` — single page shell with all meta/OG tags
 - `sw.js` — service worker (offline/cache logic)
 - `manifest.json` — PWA manifest
 - `assets/images/bg/` — background images by condition folder
+- Tests: `npx vitest run` → ~2684 tests across 59 files (2026-07-02); `npm run build` runs the copy-split drift gate + import-scan.
 
-## THE 4 WEATHER SOURCES
+## THE 5 WEATHER SOURCES
 1. **Open-Meteo** (ECMWF IFS) — free, no key, high accuracy, primary source
 2. **WeatherAPI.com** — has condition codes, tendency to overcook wind gusts and flag "rain possible" incorrectly. **Often mirrors ECMWF data** — not truly independent.
 3. **MET Norway (yr.no)** — very reliable for SA coastal conditions, handles heat waves better than ECMWF
-4. **Pirate Weather** (NOAA GFS/GEFS) — genuinely independent model, good for precipitation probability
+4. **Pirate Weather** (NOAA GFS/GEFS) — genuinely independent model, good for precipitation probability. Only source with daily wind+cloud (used for forecast days 2–6).
+5. **Tomorrow.io** — radar-informed hourly precipitation (added 2026-05). Full weight in description voting + a live precip override; daily coverage is day-0 only.
 
 **Known WeatherAPI issue**: condition code 1003 (Partly cloudy) with 0mm precip should map to "clear", not "rain-possible". WeatherAPI frequently flags rain on clear days — do not trust its rain_chance alone.
 
@@ -41,9 +45,9 @@ Base weights: 35% Open-Meteo | 25% WeatherAPI | 15% Pirate Weather | 25% MET Nor
 Weights are **dynamically adjusted** at runtime based on source agreement:
 - **ECMWF dedup**: When OM and WA daily highs are within 0.5°C (same underlying model), WA weight is halved (25% → 12.5%)
 - **MET Norway boost**: When MET Norway daily high is >5°C above ECMWF-family average (common during SA heat waves), MET Norway weight increases to 40% and OM drops to 25%
-- **Description voting**: WeatherAPI gets only 10% weight for condition description voting (unreliable rain flags)
+- **Description voting**: WeatherAPI gets only 10% weight for condition description voting (unreliable rain flags); Tomorrow.io gets full weight. See `DESC_WEIGHTS` / `HOURLY_DESC_WEIGHTS` in api/weather.js for the live 5-source weight arrays.
 - **Cloud cover**: Uses modal (most frequent category) not average — prevents bimodal averaging artifacts
-- Hourly weights are recomputed from the adjusted source weights (excluding Pirate Weather)
+- Hourly weights are recomputed from the adjusted source weights (excluding Pirate Weather; Tomorrow.io is included hourly)
 
 Console logs show the active weights for each API call for debugging.
 

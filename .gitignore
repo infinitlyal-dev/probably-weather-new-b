@@ -17,3 +17,10 @@ _acccheck/
 # scripts/verify-safe-area.mjs and don't belong in the repo. The script
 # itself stays checked in for future audits.
 pw-verify-*.png
+
+# Working artifacts / scratch — not source
+eval/
+voiceover-output/
+.agents/
+.playwright-mcp/
+.fable/
