@@ -39,17 +39,31 @@ function mergeInPlace(target, source) {
 }
 
 const loadedLangs = new Set();
+const inFlight = new Map(); // lang -> Promise, so concurrent callers share one import
 
 /**
  * Ensure the bank for `lang` is merged into COPY_BANK.
  * Resolves true when a NEW bank was merged (caller should re-render),
  * false when it was already loaded. Rejects on import failure.
+ *
+ * In-flight de-dupe: M-5 has bootstrap AND loadAndRender both requesting the
+ * bank on first paint; without this they'd double-import and double-merge.
+ * A failed load clears the in-flight entry so the next call retries.
  */
 export async function loadCopyBank(lang) {
   const safe = SUPPORTED.includes(lang) ? lang : 'en';
   if (loadedLangs.has(safe)) return false;
-  const mod = await import(`./copy/${safe}.js`);
-  mergeInPlace(COPY_BANK, mod.WEATHER_COPY);
-  loadedLangs.add(safe);
-  return true;
+  if (inFlight.has(safe)) return inFlight.get(safe);
+  const p = (async () => {
+    try {
+      const mod = await import(`./copy/${safe}.js`);
+      mergeInPlace(COPY_BANK, mod.WEATHER_COPY);
+      loadedLangs.add(safe);
+      return true;
+    } finally {
+      inFlight.delete(safe);
+    }
+  })();
+  inFlight.set(safe, p);
+  return p;
 }

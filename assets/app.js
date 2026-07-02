@@ -121,7 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
       req.onerror = () => reject(req.error);
     });
   }
-  function cacheKey(place) { return `${parseFloat(place.lat).toFixed(3)},${parseFloat(place.lon).toFixed(3)}`; }
+  // M-6: the IDB weather cache is keyed by rounded coords PLUS a source
+  // discriminator (gps / pinned / shared) so a shared-link place and the user's
+  // own place at identical 3-dp coords can't serve each other's cached payload
+  // (which carries location.name). Migration-safe: old coord-only keys just miss.
+  function cacheSource(place) {
+    return place?.shared ? 'shared' : (place?.mode === PLACE_MODE_PINNED ? 'pinned' : 'gps');
+  }
+  function cacheKey(place) { return `${parseFloat(place.lat).toFixed(3)},${parseFloat(place.lon).toFixed(3)}|${cacheSource(place)}`; }
   async function getCachedWeather(place) {
     try {
       const db = await openCacheDB();
@@ -1966,9 +1973,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // open (100-500ms on first launch) in front of the network round-trip.
     const fetchPromise = fetchProbable(place, { signal: requestController.signal });
     fetchPromise.catch(() => {}); // handled at the await below; never unhandled
+    // M-5: the active language's copy bank MUST be merged before any content
+    // render, or a non-English first paint flashes English seed strings. Kicked
+    // here (and at bootstrap) so it loads in parallel with the IDB open below;
+    // awaited before the cached/fresh render. Resolves instantly once loaded, so
+    // it adds no paint delay beyond the splash floor in the common case.
+    const bankReady = loadCopyBank(settings.lang).catch(() => {});
     // 1. Try showing cached data instantly (now in parallel with the fetch)
     const cached = await getCachedWeather(place);
     if (thisSeq !== activeLocationSeq) return;
+    await bankReady;
     if (cached) {
       try {
         lastPayload = cached.payload;
