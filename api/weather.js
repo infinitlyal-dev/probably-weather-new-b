@@ -397,7 +397,7 @@ export default async function handler(req, res) {
       // advection-fog detector can see low-visibility/saturated-air signals the
       // model-based condition vote ignores. Both fields are free on this endpoint.
       `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
-      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,sunrise,sunset` +
+      `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,wind_speed_10m_max,sunrise,sunset` +
       `&timezone=auto&forecast_days=7`
     ) : Promise.resolve(null);
     const weatherApiRequest = (WEATHERAPI_KEY && budgetAllows('weatherapi'))
@@ -522,6 +522,10 @@ export default async function handler(req, res) {
         lows:     om.daily?.temperature_2m_min                          ?? [],
         rains:    om.daily?.precipitation_probability_max               ?? [],
         uvs:      om.daily?.uv_index_max                                ?? [],
+        // H-2: per-day max wind (km/h — OM default unit) so days 2-6 (past the
+        // 48-slot hourly array) still have a real wind signal. OM daily has no
+        // cloud mean, so clouds stays empty here (Pirate covers daily cloud).
+        winds:    om.daily?.wind_speed_10m_max                          ?? [],
         descs:    om.daily?.weather_code?.map(c => openMeteoCodeMap[c] ?? 'Unknown') ?? [],
         sunrises: om.daily?.sunrise                                     ?? [],
         sunsets:  om.daily?.sunset                                      ?? [],
@@ -622,6 +626,8 @@ export default async function handler(req, res) {
           source:   'WeatherAPI',
           highs:    wa.forecast.forecastday.map(fd => fd.day.maxtemp_c),
           lows:     wa.forecast.forecastday.map(fd => fd.day.mintemp_c),
+          // H-2: per-day max wind (km/h) for the days-2-6 daily fallback.
+          winds:    wa.forecast.forecastday.map(fd => isNum(fd.day.maxwind_kph) ? fd.day.maxwind_kph : null),
           // V2-4: Clamp rain chance when condition code says clear/sunny AND no precip
           // BUG-1 fix: only clamp when daily precip is also 0mm — a day can start sunny then rain
           rains:    wa.forecast.forecastday.map(fd => {
@@ -708,6 +714,11 @@ export default async function handler(req, res) {
           lows:     dly.slice(0, 7).map(d => isNum(d.temperatureLow)  ? d.temperatureLow  : null),
           rains:    dly.slice(0, 7).map(d => toPct(d.precipProbability)),
           uvs:      dly.slice(0, 7).map(d => isNum(d.uvIndex)         ? d.uvIndex          : null),
+          // H-2: Pirate (units=si) offers both daily wind (m/s → km/h) and daily
+          // cloud (0-1 fraction → %). It's the primary daily-cloud source for
+          // days 2-6, so a windy/cloudy far-out day no longer defaults toward fog.
+          winds:    dly.slice(0, 7).map(d => isNum(d.windSpeed)  ? toKph(d.windSpeed)  : null),
+          clouds:   dly.slice(0, 7).map(d => isNum(d.cloudCover) ? toPct(d.cloudCover) : null),
           descs:    dly.slice(0, 7).map(d => pwDesc(d.icon)),
           sunrises: dly.slice(0, 7).map(d => toIso(d.sunriseTime)),
           sunsets:  dly.slice(0, 7).map(d => toIso(d.sunsetTime)),
@@ -1233,9 +1244,18 @@ export default async function handler(req, res) {
       const lowC         = wAvg(dailies, dailyLowW, d => d.lows[i]);  // V2-3: MET Norway reduced weight for lows
       const rainChance   = wAvg(dailies, dailyW, d => d.rains[i]);
       const uv           = wAvg(dailies, dailyW, d => d.uvs[i]);
-      // Use midday wind estimate (index 12 = noon local time, day 1 = index 36)
+      // Wind/cloud: days 0-1 sit inside the 48-hour hourly array (noon index 12
+      // and 36); days 2-6 index PAST it. Rather than clamp the index (which would
+      // feed day-1 data forward), fall back to the providers' own daily aggregates
+      // — OM/WA/Pirate max wind, Pirate cloud — blended per the daily weights.
+      // wAvg skips sources with no value, so this degrades honestly to null only
+      // when nobody offers one (deriveCondition handles partial data — the fog
+      // fallback needs a fog description, not merely missing cloud).
       const noonIdx      = i * 24 + 12;
-      const windKph      = aggregatedHourly[noonIdx]?.windKph ?? null;
+      const dailyWind    = wAvg(dailies, dailyW, d => d.winds?.[i]);
+      const dailyCloud   = wAvg(dailies, dailyW, d => d.clouds?.[i]);
+      const windKph      = aggregatedHourly[noonIdx]?.windKph  ?? dailyWind;
+      const cloudPct     = aggregatedHourly[noonIdx]?.cloudPct ?? dailyCloud;
 
       const dailySourceDescs = dailies.map(dd => dd?.descs?.[i]).filter(Boolean);
       let { key: dailyConditionKey, reason: dailyConditionReason } = deriveCondition({
@@ -1244,7 +1264,7 @@ export default async function handler(req, res) {
         tempC:     highC,
         windKph,
         uvIndex:   uv,
-        cloudPct:  aggregatedHourly[noonIdx]?.cloudPct ?? null,
+        cloudPct,
         isDay:     true,
         // Daily low for the cold-clear rung — lets a 4°C dawn on a 14°C clear
         // day route to cold-clear instead of being clobbered by tempC=highC.
@@ -1328,7 +1348,7 @@ export default async function handler(req, res) {
         conditionReason: dailyConditionReason,
         conditionSignals: {
           descWinner: conditionLabel,
-          numeric: { rainChance, highC, uvIndex: uv, cloudPct: aggregatedHourly[noonIdx]?.cloudPct ?? null, windKph },
+          numeric: { rainChance, highC, uvIndex: uv, cloudPct, windKph },
           sourceDescs: dailySourceDescs,
           overrides: dailyOverrides,
         },
