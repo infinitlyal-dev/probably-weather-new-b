@@ -1,6 +1,9 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "functions": {
+    "api/og.js": { "includeFiles": "og/**" }
+  },
   "redirects": [
     {
       "source": "/(.*)",

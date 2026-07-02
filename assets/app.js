@@ -1520,14 +1520,21 @@ document.addEventListener("DOMContentLoaded", () => {
       if (h > 0) document.documentElement.style.setProperty('--cape-wind-offset', `${Math.ceil(h)}px`);
     });
   }
+  // Pin the Cape-Doctor warning line per appearance so it doesn't re-roll on
+  // every re-render (unit switch, language switch, PTR, interval refresh) — that
+  // flicker read as a glitch. Re-picks only when the language changes.
+  let capeWindLine = null, capeWindLineKey = null;
   function renderCapeWind(norm) {
     if (!capeWindBanner) return;
     const wind = norm.windKph;
     if (!isCapeWindDismissed() && isWesternCape(activePlace) && isNum(wind) && wind >= 50) {
       const lines = T.capeDr.lines[settings.lang] || T.capeDr.lines.en;
       const label = T.capeDr.warningLabel?.[settings.lang] || T.capeDr.warningLabel?.en || 'WIND WARNING';
-      const witty = lines[Math.floor(Math.random() * lines.length)];
-      safeText(capeWindText, `⚠️ ${label} — ${witty}`);
+      if (capeWindLineKey !== settings.lang || !capeWindLine) {
+        capeWindLine = lines[Math.floor(Math.random() * lines.length)];
+        capeWindLineKey = settings.lang;
+      }
+      safeText(capeWindText, `⚠️ ${label} — ${capeWindLine}`);
       capeWindBanner.classList.remove('hidden');
       syncCapeWindOffset();
     } else {
@@ -2112,7 +2119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Lead with the feature's OWN name (r.name = the actual searched place) so
   // "Bryn Mawr" shows as itself, not its container "Lower Merion Township".
   function formatSearchResult(r) { const a = r.address || {}; const city = r.name || a.town || a.village || a.city || 'Unknown'; return a.country ? `${city}, ${a.country}` : city; }
-  async function miniFetchTemp(lat, lon) { const key = `${lat.toFixed(2)},${lon.toFixed(2)}`; if (searchMiniCache.has(key)) return searchMiniCache.get(key); try { const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' })); const r = { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) }; searchMiniCache.set(key, r); return r; } catch { return { temp: '--°', icon: '⛅' }; } }
+  async function miniFetchTemp(lat, lon) { const key = `${lat.toFixed(2)},${lon.toFixed(2)}`; if (searchMiniCache.has(key)) return searchMiniCache.get(key); try { const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' })); const r = { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) }; if (searchMiniCache.size >= 120) searchMiniCache.delete(searchMiniCache.keys().next().value); searchMiniCache.set(key, r); return r; } catch { return { temp: '--°', icon: '⛅' }; } }
   function renderSearchResults(results) {
     const rl = document.getElementById('searchResults') || (() => { const ul = document.createElement('ul'); ul.id = 'searchResults'; ul.className = 'search-results'; document.querySelector('.search-body')?.prepend(ul); return ul; })();
     if (!results.length) { rl.innerHTML = ''; return; }

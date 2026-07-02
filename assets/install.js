@@ -887,13 +887,15 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
   // Wire interactive bits
   const installNowBtn = host.querySelector('#landingInstallNow');
   if (installNowBtn) {
-    let deferredPrompt = null;
-    window.addEventListener('beforeinstallprompt', (ev) => {
-      ev.preventDefault();
-      deferredPrompt = ev;
-    });
+    // Capture beforeinstallprompt ONCE (renderLandingPage re-runs on language
+    // change; the old per-run addEventListener leaked a window listener each
+    // time). The deferred event is shared via window so every render reads it.
+    if (!window.__pwLandingBipWired) {
+      window.__pwLandingBipWired = true;
+      window.addEventListener('beforeinstallprompt', (ev) => { ev.preventDefault(); window.__pwLandingDeferred = ev; });
+    }
     installNowBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) {
+      if (!window.__pwLandingDeferred) {
         const hint = host.querySelector('#landingInstallHint');
         if (hint) {
           // The Install button only renders on android-chrome / desktop-chrome,
@@ -907,9 +909,9 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
         return;
       }
       try {
-        deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        deferredPrompt = null;
+        window.__pwLandingDeferred.prompt();
+        const choice = await window.__pwLandingDeferred.userChoice;
+        window.__pwLandingDeferred = null;
         if (choice?.outcome === 'accepted') {
           try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
           try { localStorage.setItem(STORAGE_KEYS.installed, 'true'); } catch {}
@@ -973,11 +975,13 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
       text: tx('inAppFallbackHint'),
     });
     ctaCard.appendChild(fallbackHint);
-    let promptFiredOrClicked = false;
-    window.addEventListener('beforeinstallprompt', () => { promptFiredOrClicked = true; });
-    installNowBtn?.addEventListener('click', () => { promptFiredOrClicked = true; });
+    // Reuse the shared beforeinstallprompt capture above — no extra window
+    // listener here. Show the fallback hint only if the prompt never armed AND
+    // the user didn't click within 3s.
+    let clicked = false;
+    installNowBtn?.addEventListener('click', () => { clicked = true; });
     setTimeout(() => {
-      if (!promptFiredOrClicked) fallbackHint.hidden = false;
+      if (!window.__pwLandingDeferred && !clicked) fallbackHint.hidden = false;
     }, 3000);
   }
 

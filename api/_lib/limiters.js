@@ -75,9 +75,3 @@ function getLimiter(name) {
 export const weatherLimiter = () => getLimiter('weather');
 export const geocodeLimiter = () => getLimiter('geocode');
 export const errorsLimiter = () => getLimiter('errors');
-
-/** Test-only — reset memoised clients so an env stub takes effect deterministically. */
-export function _resetLimiters() {
-  _redis = undefined;
-  for (const k of Object.keys(_limiters)) delete _limiters[k];
-}

@@ -813,8 +813,10 @@ export default async function handler(req, res) {
       const metHumidity = isNum(details.relative_humidity) ? details.relative_humidity : null;
       const metTemp     = isNum(details.air_temperature) ? details.air_temperature : null;
 
-      // Rain proxy: convert max precipitation in next 24h to rough probability
-      const precipAmounts = series.slice(0, 48).map(p =>
+      // Rain proxy: max precip over TODAY's local-midnight-aligned slice. The old
+      // series.slice(0, 48) leaked tomorrow's rain into today's proxy (same class
+      // as the Rec-3 temp fix below); alignedMetSeries.slice(0, 24) is today only.
+      const precipAmounts = alignedMetSeries.slice(0, 24).filter(Boolean).map(p =>
         p.data?.next_1_hours?.details?.precipitation_amount ??
         p.data?.next_6_hours?.details?.precipitation_amount ?? 0
       );
@@ -1893,7 +1895,9 @@ function computeTimezoneOffsetFromTzId(tzId) {
     // "GMT" alone (or "UTC") means zero offset.
     if (v === 'GMT' || v === 'UTC') return 0;
     // Otherwise "GMT+HH:MM" or "GMT-HH:MM" — and a few engines emit "GMT+H".
-    const match = v.match(/GMT([+-])(\d{1,2})(?::(\d{2}))?/);
+    // Accept "GMT+HH:MM", "GMT+H", and colon-less "GMT+HHMM" so 45-min zones
+    // (Kathmandu +5:45, Chatham +12:45) survive engines that drop the colon.
+    const match = v.match(/GMT([+-])(\d{1,2})(?::?(\d{2}))?/);
     if (!match) return null;
     const sign = match[1] === '+' ? 1 : -1;
     const hours = parseInt(match[2], 10);

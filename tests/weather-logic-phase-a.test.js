@@ -383,8 +383,9 @@ describe('Wind banner — ⚠️ Wind Warning label', () => {
   });
 
   it("renderCapeWind prefixes the banner with the ⚠️ warning label", () => {
-    // renderCapeWind constructs `⚠️ ${label} — ${witty}` and feeds it to safeText.
-    expect(src).toMatch(/safeText\(capeWindText,\s*`⚠️ \$\{label\} — \$\{witty\}`\)/);
+    // renderCapeWind constructs `⚠️ ${label} — ${capeWindLine}` and feeds it to
+    // safeText (the line is now pinned per appearance to stop re-render flicker).
+    expect(src).toMatch(/safeText\(capeWindText,\s*`⚠️ \$\{label\} — \$\{capeWindLine\}`\)/);
   });
 });
 

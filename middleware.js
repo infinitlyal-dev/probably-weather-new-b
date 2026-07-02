@@ -196,9 +196,10 @@ function swapMeta(html, attrType, attrValue, newContent) {
 export default async function middleware(request) {
   const url = new URL(request.url);
 
-  // Only process GETs to the root document.
+  // Only process GETs to the root document. The matcher is ['/'] (see config
+  // below), so /index.html never reaches here — the old extra branch was dead.
   if (request.method !== 'GET') return;
-  if (url.pathname !== '/' && url.pathname !== '/index.html') return;
+  if (url.pathname !== '/') return;
 
   const bgParam = url.searchParams.get('bg');
   const city = (url.searchParams.get('city') || '').slice(0, 80) || null;
