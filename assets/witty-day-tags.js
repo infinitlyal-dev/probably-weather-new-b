@@ -21,21 +21,97 @@ import { isRegionTagAt } from './geo-regions.js';
 
 const DAY_INDEX = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
 const COPY_FALLBACK = { hail: 'storm', thunder: 'storm' };
+const WINTER_MONTHS = [5, 6, 7, 8, 9];
+const SUMMER_MONTHS = [10, 11, 12, 1, 2, 3];
 
 export const WITTY_DAY_TAGS = {
   witty: {
     // Day-named lines — show only on the day they name.
-    fog: { 7: { day: 'tue' } },            // "Ghost town. But it's just Tuesday." (+ row-aligned af/zu/xh/st)
-    'partly-cloudy': { 12: { day: 'weekend' } }, // "Almost a braai day." — braai PLAN
-    weekend: { 19: { day: 'sat' } },       // "Saturday energy: maximum..."
+    fog: {
+      7: { day: 'tue' }, // "Ghost town. But it's just Tuesday." (+ row-aligned af/zu/xh/st)
+      9: { region: 'western-cape' },
+      12: { time: ['morning'] },
+      30: { region: 'western-cape' },
+      37: { time: ['morning'] },
+    },
+    'partly-cloudy': {
+      9: { region: 'gauteng' },
+      12: { day: 'weekend' }, // "Almost a braai day." — braai PLAN
+      16: { months: SUMMER_MONTHS },
+    },
+    weekend: {
+      19: { day: 'sat' }, // "Saturday energy: maximum..."
+      22: { time: ['morning'] },
+    },
     // Work-week lines — Mon–Fri only. cloudy[9] names Monday, so it is 'mon'.
-    cloudy: { 9: { day: 'mon' } },
-    heat: { 12: { day: 'weekday' }, 19: { day: 'weekday' }, 21: { day: 'weekday' } },
-    rain: { 5: { day: 'weekday' }, 13: { day: 'weekday' }, 24: { day: 'weekday' }, 25: { day: 'weekday' }, 27: { day: 'weekday' }, 35: { day: 'weekday' } },
-    clear: { 21: { day: 'weekday' } },
+    cloudy: {
+      9: { day: 'mon' },
+      18: { time: ['evening'] },
+      22: { day: 'weekday' },
+    },
+    cold: {
+      11: { time: ['morning'] },
+      35: { time: ['morning'] },
+    },
+    'cold-clear': {
+      0: { region: 'free-state', time: ['morning'] },
+      1: { region: 'free-state', months: WINTER_MONTHS },
+      3: { region: 'gauteng', months: WINTER_MONTHS },
+      10: { region: 'gauteng' },
+      12: { region: 'gauteng' },
+      13: { time: ['evening', 'night'] },
+      15: { time: ['morning'] },
+      16: { region: 'karoo', time: ['morning'] },
+      19: { region: 'gauteng' },
+      21: { region: 'free-state' },
+      28: { region: 'free-state', time: ['morning'] },
+      29: { time: ['morning'] },
+    },
+    heat: {
+      5: { time: ['day'] },
+      12: { day: 'weekday' },
+      19: { day: 'weekday', time: ['day'] },
+      21: { day: 'weekday' },
+      26: { time: ['morning'] },
+      33: { time: ['morning'] },
+    },
+    rain: {
+      13: { day: 'weekday' },
+      24: { day: 'weekday' },
+      25: { day: 'weekday' },
+      27: { day: 'weekday' },
+      35: { day: 'weekday' },
+    },
+    clear: {
+      15: { region: 'western-cape' },
+      18: { region: 'western-cape' },
+    },
+    uv: {
+      1: { time: ['morning', 'day'] },
+      13: { time: ['morning', 'day'] },
+    },
+    wind: {
+      2: { region: 'western-cape' },
+      3: { region: 'western-cape' },
+    },
+    night: {
+      9: { region: 'western-cape' },
+      15: { region: 'western-cape' },
+    },
   },
   witty_low_confidence: {
-    // braai lines here are all imagery/idiom ("don't bet the braai on it") — any day.
+    clear: {
+      2: { region: 'western-cape' },
+    },
+    fog: {
+      1: { region: 'western-cape' },
+    },
+    wind: {
+      0: { region: 'western-cape' },
+    },
+    cold: {
+      5: { region: 'western-cape', time: ['morning'] },
+    },
   },
 };
 
@@ -49,8 +125,8 @@ export function timeSlotForHour(hour) {
 }
 
 export function seasonMonths(season) {
-  if (season === 'winter') return [5, 6, 7, 8, 9];
-  if (season === 'summer') return [10, 11, 12, 1, 2, 3];
+  if (season === 'winter') return [...WINTER_MONTHS];
+  if (season === 'summer') return [...SUMMER_MONTHS];
   return [];
 }
 
