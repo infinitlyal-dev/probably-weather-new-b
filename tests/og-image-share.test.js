@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
-import { WITTY_DAY_TAGS, dayAwarePool } from '../assets/witty-day-tags.js';
+import { WITTY_DAY_TAGS, dayAwarePool, eligibleWittyPool } from '../assets/witty-day-tags.js';
 
 const weatherPayload = {
   ok: true,
@@ -97,6 +97,34 @@ describe('dynamic OG image share endpoint', () => {
 
     expect(res.headers.get('cache-control')).toBe(CACHE_CONTROL);
     expect(res.headers.get('cache-control')).toContain('max-age=300');
+  });
+});
+
+describe('OG card uses the same eligible witty pool as the app', () => {
+  afterEach(() => { vi.useRealTimers(); });
+
+  it('same payload/context resolves the shared weekend-aware pool', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(Date.UTC(2026, 6, 4, 8, 0, 0)); // Saturday 10:00 SAST.
+    const payload = {
+      ...weatherPayload,
+      location: { name: 'Cape Town, Western Cape', lat: -33.9249, lon: 18.4241 },
+      now: { ...weatherPayload.now, conditionKey: 'clear' },
+      daily: [{ ...weatherPayload.daily[0], conditionKey: 'clear' }],
+      meta: { utcOffsetSeconds: 7200 },
+    };
+    const context = { day: 6, hour: 10, month: 7, lat: -33.9249, lon: 18.4241 };
+    const appEligible = eligibleWittyPool({
+      copy: WEATHER_COPY,
+      tags: WITTY_DAY_TAGS,
+      condition: 'clear',
+      lang: 'en',
+      context,
+    }).pool;
+    expect(appEligible).toEqual(dayAwarePool(WITTY_DAY_TAGS.witty.weekend, WEATHER_COPY.witty.weekend.en, context));
+
+    const model = buildOgViewModel(payload, { lang: 'en' });
+    expect(appEligible).toContain(model.witty);
   });
 });
 

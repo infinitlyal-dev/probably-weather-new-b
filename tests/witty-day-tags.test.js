@@ -10,8 +10,26 @@ import { WITTY_DAY_TAGS, dayTagAllows, dayAwarePool, timeSlotForHour } from '../
 
 const LANGS = ['en', 'af', 'zu', 'xh', 'st'];
 const DAYS = [0, 1, 2, 3, 4, 5, 6];
+const HOURS = Array.from({ length: 24 }, (_, i) => i);
+const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const PROBE_LOCATIONS = [
+  { name: 'Cape Town', lat: -33.9249, lon: 18.4241 },
+  { name: 'Joburg', lat: -26.2041, lon: 28.0473 },
+  { name: 'Bloemfontein', lat: -29.0852, lon: 26.1596 },
+  { name: 'Beaufort West', lat: -32.3567, lon: 22.5820 },
+  { name: 'Durban', lat: -29.8587, lon: 31.0218 },
+];
 const groups = { witty: WEATHER_COPY.witty, witty_low_confidence: WEATHER_COPY.witty_low_confidence };
 const tagDay = (tag) => (typeof tag === 'string' ? tag : tag?.day);
+const tagObj = (tag) => (typeof tag === 'string' ? { day: tag } : (tag || {}));
+const sampleHour = { morning: 6, day: 13, evening: 18, night: 22 };
+const sampleRegion = {
+  'western-cape': PROBE_LOCATIONS[0],
+  gauteng: PROBE_LOCATIONS[1],
+  highveld: PROBE_LOCATIONS[1],
+  'free-state': PROBE_LOCATIONS[2],
+  karoo: PROBE_LOCATIONS[3],
+};
 
 describe('dayTagAllows — semantics', () => {
   it('weekday = Mon–Fri only', () => {
@@ -106,4 +124,151 @@ describe('every bin/lang/day yields a non-empty pool', () => {
       }
     }
   }
+});
+
+describe('every bin/lang/day/hour/month/probe location yields a non-empty pool', () => {
+  it('covers full Layer-1 context grid, including thin pools', () => {
+    let checked = 0;
+    for (const [ns, obj] of Object.entries(groups)) {
+      for (const bin of Object.keys(obj)) {
+        if (bin === '_meta') continue;
+        const entry = obj[bin];
+        if (!entry || !Array.isArray(entry.en)) continue;
+        const tags = (WITTY_DAY_TAGS[ns] || {})[bin];
+        for (const lang of LANGS) {
+          for (const day of DAYS) {
+            for (const hour of HOURS) {
+              for (const month of MONTHS) {
+                for (const place of PROBE_LOCATIONS) {
+                  const pool = dayAwarePool(tags, entry[lang], { day, hour, month, lat: place.lat, lon: place.lon });
+                  checked += 1;
+                  if (pool.length < 1) {
+                    throw new Error(`${ns}.${bin}.${lang} empty at day=${day} hour=${hour} month=${month} place=${place.name}`);
+                  }
+                  if (!pool.every((s) => typeof s === 'string' && s.trim() !== '')) {
+                    throw new Error(`${ns}.${bin}.${lang} blank line at day=${day} hour=${hour} month=${month} place=${place.name}`);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    expect(checked).toBe(1360800);
+  });
+});
+
+describe('context tags exclude their ruled lines outside their context', () => {
+  const baseContextFor = (tag) => {
+    const t = tagObj(tag);
+    const day = t.day === 'sun' ? 0
+      : t.day === 'sat' || t.day === 'weekend' ? 6
+        : t.day && t.day !== 'weekday' ? DAYS.find((d) => dayTagAllows(t.day, d, 12))
+          : 1;
+    const hour = t.time ? sampleHour[(Array.isArray(t.time) ? t.time[0] : t.time)] : 12;
+    const month = t.months ? (Array.isArray(t.months) ? t.months[0] : t.months) : 7;
+    const region = Array.isArray(t.region) ? t.region[0] : t.region;
+    const place = region ? sampleRegion[region] : PROBE_LOCATIONS[4];
+    return { day, hour, month, lat: place.lat, lon: place.lon };
+  };
+
+  for (const [ns, binMap] of Object.entries(WITTY_DAY_TAGS)) {
+    for (const [bin, tags] of Object.entries(binMap)) {
+      for (const [idxStr, tag] of Object.entries(tags)) {
+        const idx = Number(idxStr);
+        const t = tagObj(tag);
+        for (const lang of LANGS) {
+          const arr = groups[ns][bin][lang];
+          const line = arr[idx];
+
+          if (t.time) {
+            const slots = Array.isArray(t.time) ? t.time : [t.time];
+            for (const [slot, hour] of Object.entries(sampleHour)) {
+              if (slots.includes(slot)) continue;
+              it(`${ns}.${bin}[${idx}] ${lang} excluded outside time slot ${slot}`, () => {
+                const pool = dayAwarePool(tags, arr, { ...baseContextFor(t), hour });
+                expect(pool).not.toContain(line);
+              });
+            }
+          }
+
+          if (t.region) {
+            const regions = Array.isArray(t.region) ? t.region : [t.region];
+            for (const place of PROBE_LOCATIONS) {
+              if (regions.some((region) => sampleRegion[region]?.name === place.name)) continue;
+              it(`${ns}.${bin}[${idx}] ${lang} excluded outside region at ${place.name}`, () => {
+                const pool = dayAwarePool(tags, arr, { ...baseContextFor(t), lat: place.lat, lon: place.lon });
+                expect(pool).not.toContain(line);
+              });
+            }
+          }
+
+          if (t.months) {
+            const months = Array.isArray(t.months) ? t.months : [t.months];
+            for (const month of MONTHS) {
+              if (months.includes(month)) continue;
+              it(`${ns}.${bin}[${idx}] ${lang} excluded outside month ${month}`, () => {
+                const pool = dayAwarePool(tags, arr, { ...baseContextFor(t), month });
+                expect(pool).not.toContain(line);
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+
+  it('Karoo-morning cold-clear[16] never fires in Joburg nor at 19:23 anywhere', () => {
+    const tags = WITTY_DAY_TAGS.witty['cold-clear'];
+    const line = WEATHER_COPY.witty['cold-clear'].en[16];
+    expect(dayAwarePool(tags, WEATHER_COPY.witty['cold-clear'].en, {
+      day: 1,
+      hour: 6,
+      month: 7,
+      lat: PROBE_LOCATIONS[1].lat,
+      lon: PROBE_LOCATIONS[1].lon,
+    })).not.toContain(line);
+    for (const place of PROBE_LOCATIONS) {
+      expect(dayAwarePool(tags, WEATHER_COPY.witty['cold-clear'].en, {
+        day: 1,
+        hour: 19 + (23 / 60),
+        month: 7,
+        lat: place.lat,
+        lon: place.lon,
+      }), place.name).not.toContain(line);
+    }
+  });
+
+  it('Boland low-confidence fog line never fires outside the Western Cape box', () => {
+    const tags = WITTY_DAY_TAGS.witty_low_confidence.fog;
+    const line = WEATHER_COPY.witty_low_confidence.fog.en[1];
+    for (const place of PROBE_LOCATIONS.slice(1)) {
+      expect(dayAwarePool(tags, WEATHER_COPY.witty_low_confidence.fog.en, {
+        day: 1,
+        hour: 9,
+        month: 7,
+        lat: place.lat,
+        lon: place.lon,
+      }), place.name).not.toContain(line);
+    }
+  });
+
+  it('summer-admin partly-cloudy[16] never fires in July', () => {
+    const tags = WITTY_DAY_TAGS.witty['partly-cloudy'];
+    const line = WEATHER_COPY.witty['partly-cloudy'].en[16];
+    for (const place of PROBE_LOCATIONS) {
+      for (const day of DAYS) {
+        for (const hour of HOURS) {
+          expect(dayAwarePool(tags, WEATHER_COPY.witty['partly-cloudy'].en, {
+            day,
+            hour,
+            month: 7,
+            lat: place.lat,
+            lon: place.lon,
+          }), `${place.name} day=${day} hour=${hour}`).not.toContain(line);
+        }
+      }
+    }
+  });
 });
