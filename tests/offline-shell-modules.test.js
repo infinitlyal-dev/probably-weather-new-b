@@ -63,15 +63,17 @@ const dynamicModules = [
 
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
-    // 12 direct static imports. 2026-07-02: weekend-filter.js left app.js's
+    // 13 direct static imports. 2026-07-02: weekend-filter.js left app.js's
     // graph (day-filtering moved to structural tags) and witty-day-tags.js
-    // joined it — still 12. (coord-parse.js is a TRANSITIVE dep via
+    // joined it; 2026-07-03 adds geo-regions.js for context gating.
+    // (coord-parse.js is a TRANSITIVE dep via
     // startup-location.js — covered by the dynamicModules precache check below.)
-    expect(importedModules.length).toBe(12);
+    expect(importedModules.length).toBe(13);
     for (const mod of [
       '/assets/language-preferences.js',
       '/assets/copy-loader.js',
       '/assets/witty-day-tags.js',
+      '/assets/geo-regions.js',
       '/assets/weather-visuals.js',
       '/assets/image-picker.js',
       '/assets/weather-emoji.js',

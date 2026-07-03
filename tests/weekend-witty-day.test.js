@@ -82,12 +82,13 @@ describe('app.js wiring — weekend pool is day-filtered via structural tags', (
   // the Saturday line through the single enforcement point, dayAwarePool().
   const appSrc = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
 
-  it('imports the day-tag enforcement (WITTY_DAY_TAGS + dayAwarePool)', () => {
-    expect(appSrc).toMatch(/import\s*\{[^}]*WITTY_DAY_TAGS[^}]*dayAwarePool[^}]*\}\s*from\s*['"]\.\/witty-day-tags\.js['"]/);
+  it('imports the shared witty pool resolver', () => {
+    expect(appSrc).toMatch(/import\s*\{[^}]*WITTY_DAY_TAGS[^}]*eligibleWittyPool[^}]*\}\s*from\s*['"]\.\/witty-day-tags\.js['"]/);
   });
 
-  it('runs the weekend pool through dayAwarePool with WITTY_DAY_TAGS.witty.weekend and the computed day', () => {
-    expect(appSrc).toMatch(/dayAwarePool\(\s*WITTY_DAY_TAGS\.witty\.weekend\s*,[^)]*\bday\b/);
+  it('passes day/hour/lat/lon/month context into eligibleWittyPool', () => {
+    expect(appSrc).toMatch(/context\s*=\s*\{\s*day,\s*hour,\s*lat:\s*activePlace\?\.lat,\s*lon:\s*activePlace\?\.lon,\s*month:\s*getLocationMonth\(\)\s*\}/);
+    expect(appSrc).toMatch(/eligibleWittyPool\(\{\s*copy:\s*T,\s*tags:\s*WITTY_DAY_TAGS,\s*condition,\s*lang:\s*settings\.lang,\s*context,/);
   });
 
   it('no longer declares the old WEEKDAY_ONLY_FRAGMENTS substring blocklist', () => {

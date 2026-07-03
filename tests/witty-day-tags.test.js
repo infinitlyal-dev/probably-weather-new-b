@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
-import { WITTY_DAY_TAGS, dayTagAllows, dayAwarePool } from '../assets/witty-day-tags.js';
+import { WITTY_DAY_TAGS, dayTagAllows, dayAwarePool, timeSlotForHour } from '../assets/witty-day-tags.js';
 
 // ---------------------------------------------------------------------------
 // Structural day-tagging (2026-07-02, H-1 + M-1). Replaces the old
@@ -11,6 +11,7 @@ import { WITTY_DAY_TAGS, dayTagAllows, dayAwarePool } from '../assets/witty-day-
 const LANGS = ['en', 'af', 'zu', 'xh', 'st'];
 const DAYS = [0, 1, 2, 3, 4, 5, 6];
 const groups = { witty: WEATHER_COPY.witty, witty_low_confidence: WEATHER_COPY.witty_low_confidence };
+const tagDay = (tag) => (typeof tag === 'string' ? tag : tag?.day);
 
 describe('dayTagAllows — semantics', () => {
   it('weekday = Mon–Fri only', () => {
@@ -31,6 +32,19 @@ describe('dayTagAllows — semantics', () => {
   });
 });
 
+describe('timeSlotForHour — owner slot law', () => {
+  it('maps morning/day/evening/night on the ruled boundaries', () => {
+    expect(timeSlotForHour(4)).toBe('night');
+    expect(timeSlotForHour(5)).toBe('morning');
+    expect(timeSlotForHour(11)).toBe('morning');
+    expect(timeSlotForHour(12)).toBe('day');
+    expect(timeSlotForHour(16)).toBe('day');
+    expect(timeSlotForHour(17)).toBe('evening');
+    expect(timeSlotForHour(20)).toBe('evening');
+    expect(timeSlotForHour(21)).toBe('night');
+  });
+});
+
 describe('no day-named line can render on the wrong day (7 days × 5 langs)', () => {
   // For every day-specific tag, the tagged line at that index must be absent from
   // the pool on disallowed days and present on allowed days, in EVERY language.
@@ -38,18 +52,19 @@ describe('no day-named line can render on the wrong day (7 days × 5 langs)', ()
   for (const [ns, binMap] of Object.entries(WITTY_DAY_TAGS)) {
     for (const [bin, tags] of Object.entries(binMap)) {
       for (const [idxStr, tag] of Object.entries(tags)) {
-        if (!dayTags.includes(tag)) continue;
+        const dayTag = tagDay(tag);
+        if (!dayTags.includes(dayTag)) continue;
         const idx = Number(idxStr);
         for (const lang of LANGS) {
           const arr = groups[ns][bin][lang];
           const line = arr[idx];
-          it(`${ns}.${bin}[${idx}] (${tag}) "${String(line).slice(0, 24)}" — ${lang}: only on its day`, () => {
+          it(`${ns}.${bin}[${idx}] (${dayTag}) "${String(line).slice(0, 24)}" — ${lang}: only on its day`, () => {
             for (const day of DAYS) {
-              const pool = dayAwarePool(tags, arr, day, 12);
+              const pool = dayAwarePool(tags, arr, { day, hour: 12, month: 7 });
               const present = pool.includes(line);
               // present iff the tag allows this day (fallback can't resurrect it
               // because other lines in the bin are always available)
-              expect(present).toBe(dayTagAllows(tag, day, 12));
+              expect(present).toBe(dayTagAllows(dayTag, day, 12));
             }
           });
         }
@@ -62,18 +77,18 @@ describe('braai plan is weekend-gated, imagery is any-day', () => {
   const pc = WEATHER_COPY.witty['partly-cloudy'];
   it('"Almost a braai day." (plan) absent on weekdays, present on weekend', () => {
     const line = pc.en[12];
-    expect(dayAwarePool(WITTY_DAY_TAGS.witty['partly-cloudy'], pc.en, 2, 12).includes(line)).toBe(false); // Tue
-    expect(dayAwarePool(WITTY_DAY_TAGS.witty['partly-cloudy'], pc.en, 6, 12).includes(line)).toBe(true);  // Sat
+    expect(dayAwarePool(WITTY_DAY_TAGS.witty['partly-cloudy'], pc.en, { day: 2, hour: 12, month: 7 }).includes(line)).toBe(false); // Tue
+    expect(dayAwarePool(WITTY_DAY_TAGS.witty['partly-cloudy'], pc.en, { day: 6, hour: 12, month: 7 }).includes(line)).toBe(true);  // Sat
   });
   it('braai imagery ("The braai is cancelled.") shows any day', () => {
     const line = WEATHER_COPY.witty.storm.en[9];
     for (const day of DAYS) {
-      expect(dayAwarePool(WITTY_DAY_TAGS.witty.storm, WEATHER_COPY.witty.storm.en, day, 12).includes(line)).toBe(true);
+      expect(dayAwarePool(WITTY_DAY_TAGS.witty.storm, WEATHER_COPY.witty.storm.en, { day, hour: 12, month: 7 }).includes(line)).toBe(true);
     }
   });
 });
 
-describe('every bin/lang/day yields a non-empty pool (never-empty fallback)', () => {
+describe('every bin/lang/day yields a non-empty pool', () => {
   for (const [ns, obj] of Object.entries(groups)) {
     for (const bin of Object.keys(obj)) {
       if (bin === '_meta') continue;
@@ -83,7 +98,7 @@ describe('every bin/lang/day yields a non-empty pool (never-empty fallback)', ()
       for (const lang of LANGS) {
         for (const day of DAYS) {
           it(`${ns}.${bin}.${lang} day ${day} non-empty`, () => {
-            const pool = dayAwarePool(tags, entry[lang], day, 12);
+            const pool = dayAwarePool(tags, entry[lang], { day, hour: 12, month: 7 });
             expect(pool.length).toBeGreaterThanOrEqual(1);
             expect(pool.every((s) => typeof s === 'string' && s.trim() !== '')).toBe(true);
           });

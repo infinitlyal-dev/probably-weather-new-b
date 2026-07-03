@@ -12,7 +12,7 @@ import {
   getOgStaticBackgroundPath,
   getTimeOfDaySlot,
 } from '../assets/weather-visuals.js';
-import { WITTY_DAY_TAGS, dayAwarePool } from '../assets/witty-day-tags.js';
+import { WITTY_DAY_TAGS, eligibleWittyPool } from '../assets/witty-day-tags.js';
 
 export const config = { runtime: 'nodejs' };
 export const CACHE_CONTROL = 'public, max-age=300, s-maxage=300';
@@ -67,15 +67,17 @@ function pickLocalized(bank, key, lang, fallback = '') {
   return entry?.[lang] || entry?.en || fallback;
 }
 
-function pickWitty(condition, lang, seed, day, hour) {
-  // Resolve the bin so day-tags line up with the array, then apply the SAME
-  // day-aware + empty-slot filter the app uses (witty-day-tags.js). Deterministic
-  // hash pick over the filtered pool.
-  let bin = condition;
-  let raw = WEATHER_COPY.witty?.[condition]?.[lang];
-  if (!raw) raw = WEATHER_COPY.witty?.[condition]?.en;
-  if (!raw) { bin = 'clear'; raw = WEATHER_COPY.witty.clear.en; }
-  const lines = dayAwarePool(WITTY_DAY_TAGS.witty[bin], raw, day, hour);
+function pickWitty(condition, lang, seed, context) {
+  // Resolve the bin/register the same way as the app, then apply the SAME
+  // context + empty-slot filter (witty-day-tags.js). Deterministic hash pick
+  // over the filtered pool.
+  const { pool: lines } = eligibleWittyPool({
+    copy: WEATHER_COPY,
+    tags: WITTY_DAY_TAGS,
+    condition,
+    lang,
+    context,
+  });
   if (lines.length === 0) return '';
   return lines[hashString(seed) % lines.length];
 }
@@ -85,6 +87,8 @@ export function buildOgViewModel(payload, options = {}) {
   const now = payload?.now || payload?.current || {};
   const today = payload?.daily?.[0] || {};
   const location = payload?.location?.name || options.locationName || 'South Africa';
+  const locationLat = payload?.location?.lat;
+  const locationLon = payload?.location?.lon;
   const condition = now.conditionKey || today.conditionKey || 'clear';
   // Compute timeOfDay server-side from the same sunrise/sunset signals the
   // browser uses. This is what picks one of 36 canonical OG sources
@@ -110,6 +114,8 @@ export function buildOgViewModel(payload, options = {}) {
   const locDate = new Date(locMs);
   const day = isNum(offsetS) ? locDate.getUTCDay() : locDate.getDay();
   const hour = isNum(offsetS) ? locDate.getUTCHours() : locDate.getHours();
+  const month = isNum(offsetS) ? locDate.getUTCMonth() + 1 : locDate.getMonth() + 1;
+  const wittyContext = { day, hour, lat: locationLat, lon: locationLon, month };
 
   return {
     lang,
@@ -119,7 +125,7 @@ export function buildOgViewModel(payload, options = {}) {
     tempRange,
     headline: pickLocalized(WEATHER_COPY.headlines, condition, lang, 'Probably weather.'),
     heroLabel: pickLocalized(WEATHER_COPY.heroLabels, condition, lang, 'Weather'),
-    witty: pickWitty(condition, lang, seed, day, hour),
+    witty: pickWitty(condition, lang, seed, wittyContext),
     stats: `${labels.wind} ${wind} • ${labels.rain} ${rain} • ${labels.uv} ${uv}`,
     // backgroundPath is now the static og/<condition>.jpg (no time-of-day) —
     // see getOgStaticBackgroundPath docblock for the @vercel/og WebP reason.

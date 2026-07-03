@@ -5,7 +5,8 @@ import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './lan
 // references to its nested objects); the weekend filter moved to its own
 // micro-module so importing it doesn't drag the bank along.
 import { COPY_BANK, loadCopyBank } from './copy-loader.js';
-import { WITTY_DAY_TAGS, dayAwarePool } from './witty-day-tags.js';
+import { WITTY_DAY_TAGS, eligibleWittyPool } from './witty-day-tags.js';
+import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
@@ -1131,32 +1132,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // weekend-filter.js — structural row-index metadata, not string matching, so a
   // day-named line ("just Tuesday") can never fire on the wrong day in any language.
   const pickRandom = pool => pool.length ? pool[Math.floor(Math.random() * pool.length)] : '';
+  function getLocationMonth() {
+    const offset = window.__PW_LAST_NORM?.utcOffsetSeconds;
+    if (isNum(offset)) {
+      const locMs = Date.now() + offset * 1000;
+      return new Date(locMs).getUTCMonth() + 1;
+    }
+    return new Date().getMonth() + 1;
+  }
   function getWittyLine(condition) {
     const day = getLocationDayOfWeek(), hour = getLocationHour(activePlace?.lon);
-    const isWeekend = day === 0 || day === 6 || (day === 5 && hour >= 16);
-    // Low-confidence register takes precedence (honesty beats a braai pun when unsure).
-    if (window.__PW_LAST_NORM?.confidence === 'low') {
-      const lcPool = T.witty_low_confidence?.[condition]?.[settings.lang]
-        || T.witty_low_confidence?.[condition]?.en;
-      if (Array.isArray(lcPool) && lcPool.some(s => s && s.trim())) {
-        debugLog(`[Witty register] LOW-CONFIDENCE pool for ${condition}/${settings.lang}`);
-        return pickRandom(dayAwarePool(WITTY_DAY_TAGS.witty_low_confidence[condition], lcPool, day, hour));
-      }
+    const context = { day, hour, lat: activePlace?.lat, lon: activePlace?.lon, month: getLocationMonth() };
+    const result = eligibleWittyPool({
+      copy: T,
+      tags: WITTY_DAY_TAGS,
+      condition,
+      lang: settings.lang,
+      context,
+      lowConfidence: window.__PW_LAST_NORM?.confidence === 'low',
+    });
+    if (result.namespace === 'witty_low_confidence') {
+      debugLog(`[Witty register] LOW-CONFIDENCE pool for ${condition}/${settings.lang}`);
     }
-    // clear/heat on the weekend route to the dedicated weekend pool.
-    if (isWeekend && (condition === 'clear' || condition === 'heat')) {
-      const wl = T.witty.weekend[settings.lang] || T.witty.weekend.en;
-      const wlPick = pickRandom(dayAwarePool(WITTY_DAY_TAGS.witty.weekend, wl, day, hour));
-      if (wlPick) return wlPick;
-    }
-    const fb = COPY_FALLBACK[condition];
-    // Resolve which bin `lines` came from so the day-tags line up with the array.
-    let bin = condition, lines = T.witty[condition]?.[settings.lang];
-    if (!lines && fb && T.witty[fb]?.[settings.lang]) { bin = fb; lines = T.witty[fb][settings.lang]; }
-    if (!lines && T.witty[condition]?.en) { bin = condition; lines = T.witty[condition].en; }
-    if (!lines && fb && T.witty[fb]?.en) { bin = fb; lines = T.witty[fb].en; }
-    if (!lines) { bin = 'clear'; lines = T.witty.clear.en; }
-    return pickRandom(dayAwarePool(WITTY_DAY_TAGS.witty[bin], lines, day, hour));
+    return pickRandom(result.pool);
   }
   function getDayBadge(d, dayIndex, hourlyData) {
     const ck = (d.conditionKey || '').toLowerCase();
@@ -1503,10 +1501,6 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       localStorage.setItem(WIND_BANNER_DISMISS_KEY, String(Date.now() + WIND_BANNER_DISMISS_MS));
     } catch (_) {}
-  }
-  function isWesternCape(place) {
-    if (!place || !isNum(place.lat) || !isNum(place.lon)) return false;
-    return place.lat >= -34.5 && place.lat <= -33.0 && place.lon >= 17.5 && place.lon <= 20.0;
   }
   function syncCapeWindOffset() {
     if (!capeWindBanner) return;

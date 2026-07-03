@@ -60,6 +60,7 @@ const CORE_ASSETS = [
   // /assets/weather-copy.js is server-side only now — not precached.
   '/assets/copy-loader.js',
   '/assets/witty-day-tags.js',
+  '/assets/geo-regions.js',
   '/assets/copy/en.js',
   '/assets/copy/af.js',
   '/assets/copy/zu.js',
