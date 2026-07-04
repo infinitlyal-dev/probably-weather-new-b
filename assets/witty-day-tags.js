@@ -130,6 +130,23 @@ export function seasonMonths(season) {
   return [];
 }
 
+export function isNightWittyWindow(context = {}) {
+  return timeSlotForHour(context.hour) === 'night';
+}
+
+export function resolveNightAwareCopyCondition({
+  displayCondition,
+  timeOfDay,
+  hour,
+  fallbackCondition,
+} = {}) {
+  const condition = displayCondition || fallbackCondition || 'clear';
+  const fallback = fallbackCondition || 'clear';
+  if (condition === 'night') return isNightWittyWindow({ hour }) ? 'night' : fallback;
+  if (timeOfDay === 'night' && condition === 'clear' && isNightWittyWindow({ hour })) return 'night';
+  return condition;
+}
+
 function normalizeContext(contextOrDay, hour) {
   if (contextOrDay && typeof contextOrDay === 'object' && !Array.isArray(contextOrDay)) {
     return contextOrDay;
@@ -220,7 +237,10 @@ export function eligibleWittyPool({
   context = {},
   lowConfidence = false,
 } = {}) {
-  const safeCondition = condition || 'clear';
+  let safeCondition = condition || 'clear';
+  if (safeCondition === 'night' && !isNightWittyWindow(context)) {
+    safeCondition = context.fallbackCondition || 'clear';
+  }
 
   if (lowConfidence) {
     const lcPool = localizedPool(copy?.witty_low_confidence, safeCondition, lang);

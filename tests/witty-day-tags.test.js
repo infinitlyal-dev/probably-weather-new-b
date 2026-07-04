@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
-import { WITTY_DAY_TAGS, dayTagAllows, dayAwarePool, timeSlotForHour } from '../assets/witty-day-tags.js';
+import {
+  WITTY_DAY_TAGS,
+  dayTagAllows,
+  dayAwarePool,
+  eligibleWittyPool,
+  resolveNightAwareCopyCondition,
+  timeSlotForHour,
+} from '../assets/witty-day-tags.js';
 
 // ---------------------------------------------------------------------------
 // Structural day-tagging (2026-07-02, H-1 + M-1). Replaces the old
@@ -12,6 +19,8 @@ const LANGS = ['en', 'af', 'zu', 'xh', 'st'];
 const DAYS = [0, 1, 2, 3, 4, 5, 6];
 const HOURS = Array.from({ length: 24 }, (_, i) => i);
 const MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const SEASONS = [{ name: 'summer', month: 1 }, { name: 'winter', month: 7 }];
+const PRE_SUNRISE_HOURS = [5, 6, 7];
 const PROBE_LOCATIONS = [
   { name: 'Cape Town', lat: -33.9249, lon: 18.4241 },
   { name: 'Joburg', lat: -26.2041, lon: 28.0473 },
@@ -60,6 +69,38 @@ describe('timeSlotForHour — owner slot law', () => {
     expect(timeSlotForHour(17)).toBe('evening');
     expect(timeSlotForHour(20)).toBe('evening');
     expect(timeSlotForHour(21)).toBe('night');
+  });
+});
+
+describe('night witty bin — 05:00 cap', () => {
+  it('maps clear solar-night copy to night only from 21:00 through 04:59', () => {
+    expect(resolveNightAwareCopyCondition({ displayCondition: 'clear', timeOfDay: 'night', hour: 4 })).toBe('night');
+    expect(resolveNightAwareCopyCondition({ displayCondition: 'clear', timeOfDay: 'night', hour: 21 })).toBe('night');
+    expect(resolveNightAwareCopyCondition({ displayCondition: 'clear', timeOfDay: 'night', hour: 5 })).toBe('clear');
+    expect(resolveNightAwareCopyCondition({ displayCondition: 'clear', timeOfDay: 'night', hour: 6 })).toBe('clear');
+    expect(resolveNightAwareCopyCondition({ displayCondition: 'clear', timeOfDay: 'night', hour: 7 })).toBe('clear');
+    expect(resolveNightAwareCopyCondition({ displayCondition: 'clear', timeOfDay: 'dawn', hour: 4 })).toBe('clear');
+  });
+
+  it('direct night-bin requests fall back to the underlying pool outside 21:00-04:59', () => {
+    const nightLine = WEATHER_COPY.witty.night.en[0];
+    const allowed = eligibleWittyPool({
+      copy: WEATHER_COPY,
+      tags: WITTY_DAY_TAGS,
+      condition: 'night',
+      lang: 'en',
+      context: { day: 1, hour: 4, month: 7, fallbackCondition: 'clear' },
+    }).pool;
+    const capped = eligibleWittyPool({
+      copy: WEATHER_COPY,
+      tags: WITTY_DAY_TAGS,
+      condition: 'night',
+      lang: 'en',
+      context: { day: 1, hour: 5, month: 7, fallbackCondition: 'clear' },
+    }).pool;
+    expect(allowed).toContain(nightLine);
+    expect(capped).not.toContain(nightLine);
+    expect(capped).toEqual(dayAwarePool(WITTY_DAY_TAGS.witty.clear, WEATHER_COPY.witty.clear.en, { day: 1, hour: 5, month: 7 }));
   });
 });
 
@@ -156,6 +197,50 @@ describe('every bin/lang/day/hour/month/probe location yields a non-empty pool',
       }
     }
     expect(checked).toBe(1360800);
+  }, 15000);
+});
+
+describe('05:00-sunrise dark fallback grid', () => {
+  it('falls back to the underlying normal pool across bin/lang/hour/season/proof-city', () => {
+    const displayBins = Object.keys(WEATHER_COPY.witty).filter((bin) => bin !== 'weekend');
+    let checked = 0;
+    for (const bin of displayBins) {
+      for (const lang of LANGS) {
+        for (const hour of PRE_SUNRISE_HOURS) {
+          for (const season of SEASONS) {
+            for (const place of PROBE_LOCATIONS) {
+              const fallbackCondition = bin === 'night' ? 'clear' : bin;
+              const resolved = resolveNightAwareCopyCondition({
+                displayCondition: bin,
+                timeOfDay: 'night',
+                hour,
+                fallbackCondition,
+              });
+              const result = eligibleWittyPool({
+                copy: WEATHER_COPY,
+                tags: WITTY_DAY_TAGS,
+                condition: resolved,
+                lang,
+                context: {
+                  day: 1,
+                  hour,
+                  month: season.month,
+                  lat: place.lat,
+                  lon: place.lon,
+                  fallbackCondition,
+                },
+              });
+              checked += 1;
+              if (result.pool.length < 1) {
+                throw new Error(`${bin}.${lang} empty at ${hour}:00 ${season.name} ${place.name}`);
+              }
+              expect(result.bin, `${bin}.${lang} ${hour}:00 ${season.name} ${place.name}`).not.toBe('night');
+            }
+          }
+        }
+      }
+    }
+    expect(checked).toBe(displayBins.length * LANGS.length * PRE_SUNRISE_HOURS.length * SEASONS.length * PROBE_LOCATIONS.length);
   });
 });
 

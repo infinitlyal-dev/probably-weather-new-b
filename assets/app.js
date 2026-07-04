@@ -5,7 +5,7 @@ import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './lan
 // references to its nested objects); the weekend filter moved to its own
 // micro-module so importing it doesn't drag the bank along.
 import { COPY_BANK, loadCopyBank } from './copy-loader.js';
-import { WITTY_DAY_TAGS, eligibleWittyPool } from './witty-day-tags.js';
+import { WITTY_DAY_TAGS, eligibleWittyPool, resolveNightAwareCopyCondition } from './witty-day-tags.js';
 import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
@@ -1696,11 +1696,17 @@ document.addEventListener("DOMContentLoaded", () => {
       hiLoEl.textContent = '';
       hiLoEl.style.display = 'none';
     }
-    // At night, override 'clear' copy so we don't say "Beach or braai?" at midnight.
-    // Use real solar bucketing so dawn/dusk don't get mislabelled as night.
-    // (timeOfDay was already computed earlier for the hero range — reuse it.)
-    const displayConditionForCopy = (timeOfDay === 'night' && displayCondition === 'clear') ? 'night' : displayCondition;
-    debugLog('[Hero copy] timeOfDay:', timeOfDay, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
+    // Night copy is clock-capped: 21:00-04:59 only. Solar night still drives
+    // image/range selection, but dark 05:00-sunrise falls back to the normal
+    // condition pool.
+    const copyHour = getLocationHour(activePlace?.lon);
+    const displayConditionForCopy = resolveNightAwareCopyCondition({
+      displayCondition,
+      timeOfDay,
+      hour: copyHour,
+      fallbackCondition: displayCondition,
+    });
+    debugLog('[Hero copy] timeOfDay:', timeOfDay, 'copyHour:', copyHour, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
     safeText(headlineEl, getWittyLine(displayConditionForCopy));
     safeText(descriptionEl, getHeadline(displayConditionForCopy));
     debugLog('[Layout] description:', descriptionEl?.textContent, 'headline:', headlineEl?.textContent);
