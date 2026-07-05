@@ -1,0 +1,4840 @@
+{
+  "generated": "2026-07-05T13:40:10.301Z",
+  "production": "58d6df3",
+  "total": 483,
+  "kept": 483,
+  "killed": 0,
+  "reworded": 54,
+  "rulings": [
+    {
+      "key": "witty:clear:0",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Absoluut pragtig daar buite.",
+      "en": "Absolutely beautiful out there.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:1",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Perfekte dag. Geen verskonings nie. Gaan uit.",
+      "en": "Perfect day. No excuses. Get out.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:2",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Dis hoekom ons in Suid-Afrika bly.",
+      "en": "This is why we live in South Africa.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:3",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Nie 'n wolk in sig nie. Nie een nie.",
+      "en": "Not a cloud in sight. Not one.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:4",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Hoofkarakter weer reg hier.",
+      "en": "Main character weather right here.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:5",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Selfs die hadedas klink gelukkig.",
+      "en": "Even the hadedas sound happy.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:6",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "As jy binne is, doen jy dit verkeerd.",
+      "en": "If you're inside, you're doing it wrong.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:7",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Natuur pronk en ons is hier daarvoor.",
+      "en": "Nature's flexing and we're here for it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:8",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Poskaart weer. Plesier.",
+      "en": "Postcard weather. You're welcome.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:9",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Die soort dag wat jou laat vergeet van beurtkrag.",
+      "en": "The kind of day that makes you forget load shedding.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:10",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Iewers sê 'n eiendomsagent 'lifestyle'.",
+      "en": "Somewhere an estate agent is saying 'lifestyle'.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:11",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Stoor hierdie een in die geheue-bank.",
+      "en": "Save this one in the memory bank.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:12",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Die soort dag waaroor jy iemand 'n boodskap stuur.",
+      "en": "The kind of day you text someone about.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:13",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Afrika se lug tref net anders.",
+      "en": "Africa's sky just hits different.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:14",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Neem 'n oomblik. Kyk op. Plesier.",
+      "en": "Take a moment. Look up. You're welcome.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:15",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "@western-cape",
+      "af": "Die Helderberg pronk vandag.",
+      "en": "The Helderberg is showing off today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:16",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Dae soos hierdie behoort 'n klankbaan te hê.",
+      "en": "Days like this should come with a soundtrack.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:17",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Jou vitamien D-vlakke bedank jou.",
+      "en": "Your vitamin D levels are thanking you.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:18",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "@western-cape",
+      "af": "Die fynbos geniet dit. Jy moet ook.",
+      "en": "The fynbos is loving it. You should too.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:19",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Blou lug, warm briesie. Die eenvoudige goed.",
+      "en": "Blue sky, warm breeze. The simple stuff.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:20",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Die lug gee alles vandag.",
+      "en": "The sky's giving everything today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:21",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Dit is die weer wat jy sal mis in Desember-verkeer.",
+      "en": "This is the weather you'll miss in December traffic.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:22",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Selfs die parkeerterrein lyk mooi vandag.",
+      "en": "Even the parking lot looks pretty today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:23",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Geen filter nodig nie. Kyk net buite.",
+      "en": "No filter needed. Just look outside.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:24",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Die soort dag wat mense laat 'lekker dag hey' stuur.",
+      "en": "The type of day that makes people text 'lekker dag hey'.",
+      "verdict": "KEEP",
+      "comment": "Die soort dag wat mense laat 'lekker dag ne' stuur."
+    },
+    {
+      "key": "witty:clear:25",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Vat jou koffie buitentoe. Jy verdien dit.",
+      "en": "Take your coffee outside. You deserve it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:26",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Alles lyk 4K vandag. Die lug is in ultra modus.",
+      "en": "Everything looks 4K today. The sky's in ultra mode.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:27",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Dit is die dag waaroor die brosjure gepraat het.",
+      "en": "This is the day the brochure was talking about.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:28",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Jou verskoning om binne te bly het pas verval.",
+      "en": "Your excuse to stay inside just expired.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:29",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Dae soos hierdie is hoekom ons die beurtkrag verduur.",
+      "en": "Days like this is why we put up with the load shedding.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:30",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Dit is die ding. Reg hier.",
+      "en": "This is the stuff. Right here.",
+      "verdict": "KEEP",
+      "comment": "Hierdie is die weer wat ons wil he. Net soos dit is."
+    },
+    {
+      "key": "witty:clear:31",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "'n Behoorlike goeie een. Moenie dit mors nie.",
+      "en": "A proper good one. Don't waste it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:32",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Die soort lug wat jou dankbaar laat voel vir gratis goed.",
+      "en": "The kind of sky that makes you grateful for free things.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:33",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Skink die koffie buite. Vertrou ons.",
+      "en": "Pour the coffee outside. Trust us.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:34",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Afrika pronk weer. Stilweg verwoestend.",
+      "en": "Africa showing off again. Quietly devastating.",
+      "verdict": "KEEP",
+      "comment": "Afrika pronk weer. Dit mag maar."
+    },
+    {
+      "key": "witty:clear:35",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Dit is die weer waaroor ons oorsee spog.",
+      "en": "This is the weather we brag about overseas.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:clear:36",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Voel of die land op sy beste gedrag is.",
+      "en": "Feels like the country is on its best behaviour.",
+      "verdict": "KEEP",
+      "comment": "Voel of die weer op sy beste gedrag is."
+    },
+    {
+      "key": "witty:clear:37",
+      "tier": "witty",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Bottel hierdie een. Maak hom oop in die winter.",
+      "en": "Bottle this one. Open it in winter.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:0",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Die lug speel kat en muis.",
+      "en": "Sun, hide-and-seek champion of the day.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:1",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Lug kan nie besluit nie.",
+      "en": "Sky can't make up its mind.",
+      "verdict": "KEEP",
+      "comment": "Lug kan nie besluit wat dit wil wees nie."
+    },
+    {
+      "key": "witty:partly-cloudy:2",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Halfgewillig bewolk.",
+      "en": "Half-committed clouds.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:3",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Die lug wen, maar dis nie veel van n kompetisie nie.",
+      "en": "Sky's doing the most, but only a little.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:4",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Bewolk, maar nie juis asof dit moeite gedoen het nie.",
+      "en": "Cloud cover, low effort.",
+      "verdict": "KEEP",
+      "comment": "Bewolk, maar dit sit nie juis moeite in nie."
+    },
+    {
+      "key": "witty:partly-cloudy:5",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Son speel wegkruipertjie.",
+      "en": "Sun's playing peek-a-boo.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:6",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Windgat wolke vandag.",
+      "en": "Clouds today, vibes optional.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:7",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Die lug will will, maar wil ook nie.",
+      "en": "Sky's drafting, not committing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:8",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Bewolk maar met min ambisie.",
+      "en": "Patchy ambitions.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:9",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "@gauteng",
+      "af": "Halfpad na 'n Hoeveld bui. Of nie.",
+      "en": "Halfway to a Highveld thunderstorm. Or not.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:10",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Net n halwe koppie wolke asb.",
+      "en": "Clouds, but make it casual.",
+      "verdict": "KEEP",
+      "comment": "Net n halwe koppie wolke vir vandag se resep."
+    },
+    {
+      "key": "witty:partly-cloudy:11",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Son is op tjailatyd.",
+      "en": "Sun on a smoke break.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:12",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "weekend",
+      "af": "Amper 'n braaidag.",
+      "en": "Almost a braai day.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:13",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Wasgoed is veilig. Hopelik.",
+      "en": "Washing's still safe. Probably.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:14",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Sonskerm en 'n trui — vat altwee.",
+      "en": "Sunscreen, but keep a hoodie close.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:15",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Lug op 'n maybe-vibe.",
+      "en": "Indecisive sky energy.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:16",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "summer",
+      "af": "Sonnig met n spatsel wolke. SA somer in een prentjie.",
+      "en": "Some clouds. Some sun. South African summer admin.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:17",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Lug doen afskeep werk.",
+      "en": "The sky's doing freelance today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:18",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Wolke met hoofseun sindroom.",
+      "en": "Cloud cover with main-character syndrome.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:partly-cloudy:19",
+      "tier": "witty",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Bewolk genoeg om te kla, sonnig genoeg om jou bek te hou.",
+      "en": "Cloudy enough to comment, sunny enough to ignore.",
+      "verdict": "KEEP",
+      "comment": "Bewolk genoeg om te kla, sonnig genoeg om jou te maak hoop."
+    },
+    {
+      "key": "witty:cloudy:0",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die lug gee absoluut niks.",
+      "en": "The sky's giving absolutely nothing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:1",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Bewolk maar ons sal oorleef.",
+      "en": "Overcast but we'll survive.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:2",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Goeie dag vir 'n stap, slegte dag vir 'n bruining.",
+      "en": "Good day for a walk, bad day for a tan.",
+      "verdict": "KEEP",
+      "comment": "Goeie dag vir n stap, slegste dag vir n tan."
+    },
+    {
+      "key": "witty:cloudy:3",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die son bunk vandag.",
+      "en": "The sun's bunking today.",
+      "verdict": "KEEP",
+      "comment": "Die son speel siek vandag."
+    },
+    {
+      "key": "witty:cloudy:4",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Humeurige weer. Ek ook, eerlikwaar.",
+      "en": "Moody weather. Same, honestly.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:5",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Nie sleg nie, nie great nie. Soos 'n 6/10 date.",
+      "en": "Not bad, not great. Like a 6/10 date.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:6",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Perfekte weer vir 'n Woolies-draai en Netflix.",
+      "en": "Perfect weather for a Woolies run and Netflix.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:7",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die lug buffer.",
+      "en": "The sky is buffering.",
+      "verdict": "KEEP",
+      "comment": "Die lug hakkel."
+    },
+    {
+      "key": "witty:cloudy:8",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Selfs die weer kan nie gepla word vandag nie.",
+      "en": "Even the weather can't be bothered today.",
+      "verdict": "KEEP",
+      "comment": "Selfs die weer kan nie gepla wees vandag nie."
+    },
+    {
+      "key": "witty:cloudy:9",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "mon",
+      "af": "Grys vibes. Die lug pas by my Maandag.",
+      "en": "Grey vibes. The sky matched my Monday.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:10",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Eskom-vriendelike weer. Geen solar vandag nie.",
+      "en": "Eskom-friendly weather. No solar today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:11",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Dit is wat dit is.",
+      "en": "It is what it is.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:12",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die son is op teebreek. Geen ETA nie.",
+      "en": "The sun's on a tea break. No ETA.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:13",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Nie depressief nie. Net... ondermaats.",
+      "en": "Not depressing. Just... underwhelming.",
+      "verdict": "KEEP",
+      "comment": "Nie depressief nie. Net...grys."
+    },
+    {
+      "key": "witty:cloudy:14",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "'n Hoodie en 'n houding. Dis vandag.",
+      "en": "A hoodie and an attitude. That's today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:15",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Kon erger gewees het. Kon ook beter gewees het.",
+      "en": "Could be worse. Could also be better.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:16",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die lug gee 'ek probeer weer môre' energie.",
+      "en": "The sky's giving 'I'll try again tomorrow' energy.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:17",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Goeie genoeg weer. Nie great nie, nie verskriklik nie.",
+      "en": "Good enough weather. Not great, not terrible.",
+      "verdict": "KEEP",
+      "comment": "So-so weer. Nie wonderlik nie, nie verskriklik nie."
+    },
+    {
+      "key": "witty:cloudy:18",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "evening",
+      "af": "Niemand gaan hierdie sononder op Instagram sit nie.",
+      "en": "Nobody's posting this sunset on Instagram.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:19",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die wolke is hier maar hulle doen niks.",
+      "en": "The clouds are here but they're not doing anything.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:20",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die lug is op stil. Niemand kla nie.",
+      "en": "The sky's on mute. Nobody's complaining.",
+      "verdict": "KEEP",
+      "comment": "Die lug is op mute. Niemand kla nie."
+    },
+    {
+      "key": "witty:cloudy:21",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Nie Instagram-weer nie. Nie die einde van die wêreld nie.",
+      "en": "Not Instagram weather. Not the end of the world.",
+      "verdict": "KEEP",
+      "comment": "Nie Troufoto weer nie. Nie die einde van die wereld nie."
+    },
+    {
+      "key": "witty:cloudy:22",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "weekday",
+      "af": "Die son het 'n out-of-office gestuur.",
+      "en": "The sun sent an out-of-office reply.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:23",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Hierdie weer het 'meh' oor alles geskryf.",
+      "en": "This weather has 'meh' written all over it.",
+      "verdict": "KEEP",
+      "comment": "Hierdie weer het n 'meh' houding."
+    },
+    {
+      "key": "witty:cloudy:24",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Ten minste dit reën nie. Dis die standaard.",
+      "en": "At least it's not raining. That's the bar.",
+      "verdict": "KEEP",
+      "comment": "Ten minste reen dit nie. Dis die standaard."
+    },
+    {
+      "key": "witty:cloudy:25",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die vibe is beige. Aanvaar dit.",
+      "en": "The vibe is beige. Accept it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:26",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Perfekte weer vir bestaan sonder entoesiasme.",
+      "en": "Perfect weather for existing without enthusiasm.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:27",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die wolke is toegewy aan gemiddeld wees.",
+      "en": "The clouds are committed to being average.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:28",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Niks om te sien hier nie. Letterlik.",
+      "en": "Nothing to see here. Literally.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:29",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die lug het 'n vibe gekies en die vibe is skouerophaal.",
+      "en": "The sky picked a vibe and the vibe is shrug.",
+      "verdict": "KEEP",
+      "comment": "Die lug het n vibe gekies en die vibe is slapgat."
+    },
+    {
+      "key": "witty:cloudy:30",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Bewolk met 'n sytjie van wie-gee-om.",
+      "en": "Cloud cover with a side of who-cares.",
+      "verdict": "KEEP",
+      "comment": "Bewolk met n spatsel van wie-gee-om lug."
+    },
+    {
+      "key": "witty:cloudy:31",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die son is op vliegtuigmodus.",
+      "en": "The sun's on airplane mode.",
+      "verdict": "KEEP",
+      "comment": "Die son is op airplane mode."
+    },
+    {
+      "key": "witty:cloudy:32",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "'n Perfek gemiddelde lug wat perfek gemiddelde goed doen.",
+      "en": "A perfectly average sky doing perfectly average things.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:33",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die wolke het 'miskien' geRSVP en in elk geval opgedaag.",
+      "en": "The clouds RSVP'd 'maybe' and showed up anyway.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:34",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Vandag se weer: laai nog.",
+      "en": "Today's weather: still loading.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:35",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die lug is die kleur van 'n ou Tupperware-deksel.",
+      "en": "The sky is the colour of an old Tupperware lid.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:36",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Voorspelling: vibes neutraal, verwagtinge laer.",
+      "en": "Forecast: vibes neutral, expectations lower.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cloudy:37",
+      "tier": "witty",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Die son is tegnies hier. Geestelik elders.",
+      "en": "The sun is technically present. Spiritually elsewhere.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:0",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Kan niks sien nie. Niks.",
+      "en": "Can't see a thing. Not a thing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:1",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Stadig ry is nie 'n voorstel nie.",
+      "en": "Driving slow is not a suggestion.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:2",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Silent Hill vibes. Sonder die monsters. Hopelik.",
+      "en": "Silent Hill vibes. Without the monsters. Hopefully.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:3",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Sigbaarheid: basies nul.",
+      "en": "Visibility: basically zero.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:4",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Selfs jou GPS is verward.",
+      "en": "Even your GPS is confused.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:5",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die wêreld het net... verdwyn.",
+      "en": "The world just... disappeared.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:6",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Perfekte weer vir 'n griller.",
+      "en": "Perfect weather for a horror movie.",
+      "verdict": "KEEP",
+      "comment": "Perfekte weer vir n horror movie."
+    },
+    {
+      "key": "witty:fog:7",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "tue",
+      "af": "Spookdorp. Maar dis net Dinsdag.",
+      "en": "Ghost town. But it's just Tuesday.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:8",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "As jy dit kan lees, is jy te naby.",
+      "en": "If you can read this, you're too close.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:9",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "@western-cape",
+      "af": "Tafelberg? Watter Tafelberg?",
+      "en": "Table Mountain? What Table Mountain?",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:10",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die mis het die buurt opgeëet.",
+      "en": "The fog ate the neighbourhood.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:11",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Jou kar is daarbuite. Iewers. Waarskynlik.",
+      "en": "Your car is out there. Somewhere. Probably.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:12",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "morning",
+      "af": "Die wêreld het 'n sagte filter gekry vanoggend.",
+      "en": "The world got a soft filter this morning.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:13",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Om die hond te stap het 'n vertroue-oefening geword.",
+      "en": "Walking the dog has become a trust exercise.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:14",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die straatligte probeer hul bes.",
+      "en": "The streetlights are trying their best.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:15",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Iewers daarbuite is die pad. Ons dink.",
+      "en": "Somewhere out there is the road. We think.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:16",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die berge is op vakansie vandag.",
+      "en": "The mountains are on holiday today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:17",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Alles lyk soos 'n filmtoneel. 'n Grillerige een.",
+      "en": "Everything looks like a film scene. A creepy one.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:18",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Jou brights maak dit erger, boet.",
+      "en": "Your high beams are making it worse, boet.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:19",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die mis gee nie om oor jou skedule nie.",
+      "en": "The fog doesn't care about your schedule.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:20",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die bure bestaan. Glo so. Kan nie bevestig nie.",
+      "en": "The neighbours exist. Apparently. Can't confirm.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:21",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Sigbaarheid geborg deur niemand nie.",
+      "en": "Visibility sponsored by nobody.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:22",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Jou voorhek is nou die rand van die bekende wêreld.",
+      "en": "Your front gate is now the edge of the known world.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:23",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die straatborde het tou opgegooi.",
+      "en": "The street signs gave up.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:24",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Selfs Google Maps is vaag vandag.",
+      "en": "Even Google Maps is being vague today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:25",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Mis so dik dit het menings.",
+      "en": "Fog so thick it has opinions.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:26",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die verkeersligte vibe in die mis.",
+      "en": "The traffic lights are vibing in the mist.",
+      "verdict": "KEEP",
+      "comment": "Die verkeersligte disco in die mis."
+    },
+    {
+      "key": "witty:fog:27",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Jou oprit is 'n spanningsroman nou.",
+      "en": "Your driveway is a mystery novel right now.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:28",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die mis het onverwags opgedaag. Klassieke mis.",
+      "en": "The fog arrived unannounced. Classic fog.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:29",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die kar is daarbuite. Glo so.",
+      "en": "The car is out there. Allegedly.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:30",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "@western-cape",
+      "af": "Kaapstad het 'n dimmer skakelaar gekry.",
+      "en": "Cape Town just got a dimmer switch.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:31",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die wêreld eindig twee meter verby die hek.",
+      "en": "The world ends two metres past the gate.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:32",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Jou koplampe doen 'n 'gedagtes en gebede'.",
+      "en": "Your headlights are doing a 'thoughts and prayers'.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:33",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die mis het die berg opgedrink.",
+      "en": "The fog drank the mountain.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:34",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Stap na die asblik is nou 'n ekspedisie.",
+      "en": "Walking to the bin is now an expedition.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:35",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Sigbaarheid: net vibes.",
+      "en": "Visibility: vibes only.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:36",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Die tuin is iewers daar buite. Ons vertrou die proses.",
+      "en": "The garden is somewhere out there. We trust the process.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:fog:37",
+      "tier": "witty",
+      "condition": "fog",
+      "bin": "morning",
+      "af": "Die oggend het vergeet om te laai.",
+      "en": "The morning forgot to render.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:0",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die wolke het 'n oomblik.",
+      "en": "The clouds are having a moment.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:1",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Vat jou sambreel, boet.",
+      "en": "Grab your brolly, boet.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:2",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die tuin sê uiteindelik dankie.",
+      "en": "The garden's saying dankie at last.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:3",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die slaggate word swembaddens.",
+      "en": "The potholes are becoming swimming pools.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:4",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Jou karwas was geldmors.",
+      "en": "Your car wash was a waste of money.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:5",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Joburg-bestuurders paniek al klaar.",
+      "en": "Joburg drivers are panicking already.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:6",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Perfekte verskoning om planne te kanselleer.",
+      "en": "Perfect excuse to cancel plans.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:7",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die damme doen 'n bly dansie.",
+      "en": "The dams are doing a happy dance.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:8",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die N1 is nou 'n waterpark.",
+      "en": "The N1 is now a waterpark.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:9",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Goeie sopweer, eerlikwaar.",
+      "en": "Good soup weather, not gonna lie.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:10",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Iemand se braai is sopnat.",
+      "en": "Someone's braai just got ruined.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:11",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Reën so swaar dit moet huur betaal.",
+      "en": "Rain so heavy it should pay rent.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:12",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Jou skoene gaan 'n slegte dag hê.",
+      "en": "Your shoes are about to have a bad day.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:13",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "weekday",
+      "af": "Die rit het 'n spansport geword.",
+      "en": "The commute just became a team sport.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:14",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Almal het vergeet hoe om te bestuur. Weer.",
+      "en": "Everyone's forgotten how to drive. Again.",
+      "verdict": "KEEP",
+      "comment": "Almal het vergeet hoe om te bestuur weer.                                                                                                                                   Everyone's forgotten how to drive weather."
+    },
+    {
+      "key": "witty:rain:15",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die sambreel het gebreek met die eerste wind. Klassiek.",
+      "en": "The umbrella broke on the first gust. Classic.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:16",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Nat sokkies. Die finale verraad.",
+      "en": "Wet socks. The ultimate betrayal.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:17",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Jy sal droog word. Uiteindelik. Waarskynlik.",
+      "en": "You'll dry. Eventually. Probably.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:18",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Ten minste die tuin is bly. Iemand moet wees.",
+      "en": "At least the garden's happy. Someone has to be.",
+      "verdict": "KEEP",
+      "comment": "Ten minste is die tuin bly. Iemand moet wees."
+    },
+    {
+      "key": "witty:rain:19",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die veërs is op max en dit is steeds nie genoeg nie.",
+      "en": "The wipers are on max and it's still not enough.",
+      "verdict": "KEEP",
+      "comment": "Die wipers is op max en dit is steeds nie genoeg nie."
+    },
+    {
+      "key": "witty:rain:20",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Jou suede skoene het vandag gekies? Dapper.",
+      "en": "Your suede shoes chose today? Bold.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:21",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die ry by die petrolstasie het net verdriedubbel.",
+      "en": "The queue at the petrol station just tripled.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:22",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Iewers het 'n sambreel net binnestebuite gedraai. Oomblik van stilte.",
+      "en": "Somewhere an umbrella just turned inside out. Moment of silence.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:23",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die poel was dieper as wat dit gelyk het. Dis altyd dieper.",
+      "en": "The puddle was deeper than it looked. It's always deeper.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:24",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "weekday",
+      "af": "Haarplanne: gekanselleer.",
+      "en": "Hair plans: cancelled.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:25",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "weekday",
+      "af": "Die verkeer is emosioneel.",
+      "en": "The traffic is emotional.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:26",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Niemand het die voorspelling gesê nie. Dit het net opgedaag.",
+      "en": "Nobody told the forecast. It just arrived.",
+      "verdict": "KEEP",
+      "comment": "Die wolke gaan tjank soos NZ by die 23 Rugby WC.                                                                                                                     The clowds are going to cry like NZ at the 23 Rugby WC."
+    },
+    {
+      "key": "witty:rain:27",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "weekday",
+      "af": "Elke taxi op die pad het besluit om te vrystyl.",
+      "en": "Every taxi on the road has decided to freestyle.",
+      "verdict": "KEEP",
+      "comment": "Elke taxi op die pad het besluit om te freestyle."
+    },
+    {
+      "key": "witty:rain:28",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Ja, dit reën sywaarts. Suid-Afrikaanse spesialiteit.",
+      "en": "Yes, it's raining sideways. South Africa speciality.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:29",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die sambreelbelasting is nou van krag.",
+      "en": "The umbrella tax is now in effect.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:30",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Nat jeans vir die res van die dag. Die klassieke straf.",
+      "en": "Wet jeans for the rest of the day. The classic punishment.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:31",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Solidariteit aan almal met een nat skoen nou.",
+      "en": "Solidarity to everyone with one wet shoe right now.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:32",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die sypaadjie is 'n rivier en die rivier het planne.",
+      "en": "The pavement is a river and the river has plans.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:33",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Jou baadjie vergeet? Die heelal het opgemerk.",
+      "en": "Forgot your jacket? The universe noticed.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain:34",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Die hond staar na die reën soos dit 'n persoonlike belediging is.",
+      "en": "The dog is staring at the rain like it's a personal insult.",
+      "verdict": "KEEP",
+      "comment": "Die hond staar na die reen asof dit n persoonlike belediging is."
+    },
+    {
+      "key": "witty:rain:35",
+      "tier": "witty",
+      "condition": "rain",
+      "bin": "weekday",
+      "af": "Die verkeer het pas onthou reën bestaan. Weer.",
+      "en": "The traffic just remembered rain exists. Again.",
+      "verdict": "KEEP",
+      "comment": "Die verkeer het pas onthou daar is n ding soos reen bestaan weer."
+    },
+    {
+      "key": "witty:rain-possible:0",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Miskien reën, miskien nie. Klassiek.",
+      "en": "Maybe rain, maybe not. Classic.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:1",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Wolke lyk behoorlik verdag.",
+      "en": "Clouds looking proper suspicious.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:2",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Vat 'n sambreel net vir ingeval, hey.",
+      "en": "Take a brolly just in case, hey.",
+      "verdict": "KEEP",
+      "comment": "Vat n sambreel net vir ingeval, ne."
+    },
+    {
+      "key": "witty:rain-possible:3",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "50/50 kans om nat te word. Soos 'n muntstuk.",
+      "en": "50/50 on getting wet. Like a coin toss.",
+      "verdict": "KEEP",
+      "comment": "50/50 kans om nat te word. Better odds as om die Lotto te wen..."
+    },
+    {
+      "key": "witty:rain-possible:4",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Moenie daai wolke vertrou nie. Hulle beplan.",
+      "en": "Don't trust those clouds. They're plotting.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:5",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Die weer is meer besluiteloos as jy by Spur.",
+      "en": "Weather's being more indecisive than you at Spur.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:6",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Pak 'n sambreel. Of moenie. Ons weet ook nie.",
+      "en": "Pack an umbrella. Or don't. We don't know either.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:7",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Die lug kan nie besluit nie. Sluit by die klub aan.",
+      "en": "The sky can't make up its mind. Join the club.",
+      "verdict": "KEEP",
+      "comment": "Die lug kan nie besluit nie. Tipies."
+    },
+    {
+      "key": "witty:rain-possible:8",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Die wolke dreig maar bluf waarskynlik.",
+      "en": "The clouds are threatening but probably bluffing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:9",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Voorspelling sê miskien. Ons sê waarskynlik.",
+      "en": "Forecast says maybe. We say probably.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:10",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Bring 'n baadjie. Of sonbrandroom. Of albei.",
+      "en": "Bring a jacket. Or sunscreen. Or both.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:11",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Die lug gee weer gemengde seine.",
+      "en": "The sky's giving mixed signals again.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:12",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Reën? Moontlik. Verbintenis? Nooit.",
+      "en": "Rain? Possibly. Commitment? Never.",
+      "verdict": "KEEP",
+      "comment": "Reen? Moontlik. Sal ek my lewe daar op wed? Nooit."
+    },
+    {
+      "key": "witty:rain-possible:13",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Hierdie weer het 'n lewensafrigter nodig.",
+      "en": "This weather needs a life coach.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:14",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Schrödinger se reën. Dit is én is nie.",
+      "en": "Schrodinger's rain. It both is and isn't.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:15",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Die wasgoed hang buite en jy voel dapper.",
+      "en": "The washing's on the line and you're feeling brave.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:16",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Selfs die weer-apps baklei oor hierdie een.",
+      "en": "Even the weather apps are arguing about this one.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:17",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Iewers tussen fine en pap nat. Sterkte.",
+      "en": "Somewhere between fine and soaked. Good luck.",
+      "verdict": "KEEP",
+      "comment": "Iewers tussen oukei en pap nat. Sterkte."
+    },
+    {
+      "key": "witty:rain-possible:18",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Die wolke vibe net. Geen beloftes nie.",
+      "en": "The clouds are just vibing. No promises.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:rain-possible:19",
+      "tier": "witty",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Vertroueprobleme met die lug vandag.",
+      "en": "Trust issues with the sky today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:0",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Jinne, bly binne!",
+      "en": "Jislaaik, stay inside!",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:1",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die donder dreun.",
+      "en": "Thunder's grumbling, hey.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:2",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die hond is onder die bed. Slim skuif, eerlikwaar.",
+      "en": "The dog's under the bed. Smart move, honestly.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:3",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Selfs die hadedas is stil.",
+      "en": "Even the hadedas are quiet.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:4",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die lug het 'n volle woedebuie.",
+      "en": "The sky's having a full-on tantrum.",
+      "verdict": "KEEP",
+      "comment": "Die lug het n volle vloermoer."
+    },
+    {
+      "key": "witty:storm:5",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Natuur doen sy eie beurtkrag.",
+      "en": "Nature's doing its own load shedding.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:6",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Kanselleer alles. Selfs jou verskonings.",
+      "en": "Cancel everything. Even your excuses.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:7",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Weer so dramaties dit het 'n Carte Blanche insetsel nodig.",
+      "en": "Weather so dramatic it needs a Carte Blanche segment.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:8",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Dis hoekom Noag 'n ark gebou het.",
+      "en": "This is why Noah built a boat.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:9",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die braai is gekanselleer. Ja, regtig.",
+      "en": "The braai is cancelled. Yes, really.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:10",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Iewers is 'n dak iemand se nuwe vlieër.",
+      "en": "Somewhere a roof is someone's new kite.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:11",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Selfs die bakkies op die N2 het stilgehou.",
+      "en": "Even the bakkies on the N2 pulled over.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:12",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Eskom wens hy het hierdie krag.",
+      "en": "Eskom wishes it had this power.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:13",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Weerlig sit Eskom se kragnet in die skadu.",
+      "en": "Lightning's putting Eskom's grid to shame.",
+      "verdict": "KEEP",
+      "comment": "Weerlig laat Eskom se kragnetwerk pateties lyk."
+    },
+    {
+      "key": "witty:storm:14",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die lug het voluit Carte Blanche gegaan.",
+      "en": "The sky just went full Carte Blanche.",
+      "verdict": "KEEP",
+      "comment": "Die lug het voluit bedonerd gegaan."
+    },
+    {
+      "key": "witty:storm:15",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Respekteer die donder. Hy het dit verdien.",
+      "en": "Respect the thunder. It's earned it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:16",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die weerlig sit 'n ordentlike show op.",
+      "en": "The lightning is putting on a proper show.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:17",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Vensters toe, ketel aan, en wag.",
+      "en": "Windows closed, kettle on, and wait.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:18",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Nie die tyd vir heldedade nie, hey.",
+      "en": "Not the time for hero moves, hey.",
+      "verdict": "KEEP",
+      "comment": "Nie tyd vir heldedade nie, ne!"
+    },
+    {
+      "key": "witty:storm:19",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die lug herinner ons wie die baas is.",
+      "en": "The sky's reminding us who's boss.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:20",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Natuur het ons net herinner wie eerste is.",
+      "en": "Nature just reminded us of the pecking order.",
+      "verdict": "KEEP",
+      "comment": "Natuur maak dit duidelik wie regtig in beheer is."
+    },
+    {
+      "key": "witty:storm:21",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Die lug se CV is pas opgedateer.",
+      "en": "The sky's CV just got updated.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:22",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Iewers leef 'n weerverslaggewer sy beste lewe.",
+      "en": "Somewhere a weather reporter is living their best life.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:23",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Dit is die lug se prestasie-oorsig. Hy het geslaag.",
+      "en": "This is the sky's performance review. It passed.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:24",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Moenie eers dink om iewers heen te ry nie.",
+      "en": "Don't even think about driving somewhere.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:25",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Donder so naby die mure het geskud. Respek.",
+      "en": "Thunder so close the walls shook. Respect.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:26",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Bly veilig. Die lug maak 'n punt.",
+      "en": "Stay safe. The sky is making a point.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:27",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Natuur wil 'n woordjie sê. Beste om te luister.",
+      "en": "Nature's having a word. Best to listen.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:28",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Groot lug-energie. Klein menslike reaksie.",
+      "en": "Big sky energy. Small human response.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:29",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Trek die goed uit. Die lug het planne.",
+      "en": "Unplug the things. The sky has plans.",
+      "verdict": "KEEP",
+      "comment": "Skakel jou toestelle af. Die lug het planne."
+    },
+    {
+      "key": "witty:storm:30",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Wag dit binne uit. Die berge gaan nêrens nie.",
+      "en": "Wait it out indoors. The mountains aren't going anywhere.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:storm:31",
+      "tier": "witty",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Pragtig en skrikwekkend in gelyke mate.",
+      "en": "Beautiful and terrifying in equal measure.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:thunder:0",
+      "tier": "witty",
+      "condition": "thunder",
+      "bin": "any",
+      "af": "Donder kom nader. Binne is die plan.",
+      "en": "Thunder rolling in. Inside is the move.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:thunder:1",
+      "tier": "witty",
+      "condition": "thunder",
+      "bin": "any",
+      "af": "Die lug brom. Bly naby 'n dak.",
+      "en": "Sky's grumbling. Stay close to a roof.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:thunder:2",
+      "tier": "witty",
+      "condition": "thunder",
+      "bin": "any",
+      "af": "Weerlig sit 'n show op — kyk deur die venster.",
+      "en": "Lightning's putting on a show — watch from the window.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:hail:0",
+      "tier": "witty",
+      "condition": "hail",
+      "bin": "any",
+      "af": "Lug gooi klippe. Bly binne.",
+      "en": "Sky's throwing rocks. Stay inside.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:hail:1",
+      "tier": "witty",
+      "condition": "hail",
+      "bin": "any",
+      "af": "Hael val — gooi iets oor die bakkie.",
+      "en": "Hail's down — cover the bakkie.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:hail:2",
+      "tier": "witty",
+      "condition": "hail",
+      "bin": "any",
+      "af": "Klein ysbomme val. Binne is die enigste plan.",
+      "en": "Tiny ice bombs falling. Indoors is the only plan.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:0",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Hou jou hoed vas! En jou kinders.",
+      "en": "Hold onto your hat! And your kids.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:1",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Die suidooster het aangekom. Ongenooid, soos altyd.",
+      "en": "The southeaster's arrived. Uninvited, as usual.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:2",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "@western-cape",
+      "af": "Tafelberg se tafeldoek is uit.",
+      "en": "Table Mountain's tablecloth is out.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:3",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "@western-cape",
+      "af": "Die Kaapse Dokter maak huisbesoeke.",
+      "en": "The Cape Doctor is making house calls.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:4",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Jou haarstyl? Weg. Aanvaar dit.",
+      "en": "Your hairstyle? Gone. Accept it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:5",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Vlieërsurfers het die tyd van hul lewe.",
+      "en": "Kite surfers are having the time of their lives.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:6",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Die bome doen onvrywillige yoga.",
+      "en": "The trees are doing involuntary yoga.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:7",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Iemand se trampoline is nou twee strate weg.",
+      "en": "Someone's trampoline is now two streets away.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:8",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Perfekte toestande om jou waardigheid te verloor.",
+      "en": "Perfect conditions for losing your dignity.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:9",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Selfs die meeuë loop vandag.",
+      "en": "Even the seagulls are walking today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:10",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Die asblikke is weer op 'n avontuur.",
+      "en": "The bins are on an adventure again.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:11",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Jou wasgoed het na die buurman se erf getrek.",
+      "en": "Your washing just moved to the neighbour's yard.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:12",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Sand in plekke waar sand nooit moet wees nie.",
+      "en": "Sand in places sand should never be.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:13",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Poniestert-houer doen oortyd.",
+      "en": "Ponytail holders are doing overtime.",
+      "verdict": "KEEP",
+      "comment": "Poniestert-rekkies doen oortyd."
+    },
+    {
+      "key": "witty:wind:14",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Die wind het 'n persoonlike vendetta teen sambrele.",
+      "en": "The wind has a personal vendetta against umbrellas.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:15",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Elke los voorwerp in die tuin het geweld gekies.",
+      "en": "Every loose object in the garden has chosen violence.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:16",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Om daarin te loop voel soos 'n video game boss fight.",
+      "en": "Walking into it feels like a video game boss fight.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:17",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Jou kardeur het net 'n wapen geword.",
+      "en": "Your car door just became a weapon.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:18",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Die braai-deksel is in die volgende voorstad.",
+      "en": "The braai cover is in the next suburb.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:wind:19",
+      "tier": "witty",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Nie 'n haarstyl in sig nie. Net oorlewendes.",
+      "en": "Not a hairstyle in sight. Just survivors.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:0",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Sonbrandroom is nie opsioneel nie, boet.",
+      "en": "Sunscreen is not optional, boet.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:1",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "morning/day",
+      "af": "SPF 50 of jy sal spyt wees teen vanaand.",
+      "en": "SPF 50 or regret it by tonight.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:2",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Die son speel nie vandag nie.",
+      "en": "The sun's not playing games today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:3",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Jy gaan soos 'n kreef lyk. Jy is gewaarsku.",
+      "en": "You will look like a lobster. You've been warned.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:4",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Beskerm daai gesig! Dis die enigste een wat jy het.",
+      "en": "Protect that face! It's the only one you've got.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:5",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Die osoonlaag het gebel. Hy's op verlof.",
+      "en": "The ozone layer called. It's on leave.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:6",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Smeer weer aan of ly.",
+      "en": "Reapply that sunscreen or suffer.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:7",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Die son val jou persoonlik aan.",
+      "en": "The sun is personally attacking you.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:8",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Hoed, sonbrille, sonbrandroom. Nie onderhandelbaar nie.",
+      "en": "Hat, sunnies, sunscreen. Non-negotiable.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:9",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Jy kan 'n steak op die sypaadjie braai nou.",
+      "en": "You could braai a steak on the pavement right now.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:10",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Jou toekomstige self sal jou dankie sê vir daai sonbrandroom.",
+      "en": "Your future self will thank you for that sunscreen.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:11",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Die UV-indeks is hoër as jou verwagtinge.",
+      "en": "The UV index is higher than your expectations.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:12",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Stap na die kar tel as 'n songevaar vandag.",
+      "en": "Walking to the car counts as a sun hazard today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:13",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "morning/day",
+      "af": "Jou neus gaan jou verraai teen 3nm.",
+      "en": "Your nose is going to betray you by 3pm.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:14",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Die son gee nie om oor jou planne nie.",
+      "en": "The sun doesn't care about your plans.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:15",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Bruinmerkies is nie 'n persoonlikheidseienskap nie.",
+      "en": "Tan lines are not a personality trait.",
+      "verdict": "KEEP",
+      "comment": "Tan lines is nie n persoonlikheidseienskap nie."
+    },
+    {
+      "key": "witty:uv:16",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Die agterkant van jou nek. Jy het dit vergeet.",
+      "en": "The back of your neck. You forgot that bit.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:17",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Sonbrandroom-begroting: hoër as jou data-rekening.",
+      "en": "Sunscreen budget: higher than your data bill.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:18",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Vandag se voorspelling: medium gaar.",
+      "en": "Today's forecast: medium rare.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:uv:19",
+      "tier": "witty",
+      "condition": "uv",
+      "bin": "any",
+      "af": "Selfs die skaduwee is warm. Sterkte.",
+      "en": "Even the shade is warm. Good luck out there.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:0",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Jinne, dis ordentlik warm!",
+      "en": "Jislaaik, it's properly hot!",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:1",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Jy kan 'n eier braai op die N1.",
+      "en": "You could fry an egg on the N1.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:2",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Roomys is nie 'n lekkerny nie. Dis oorlewing.",
+      "en": "Ice cream isn't a treat. It's survival.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:3",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Bly gehidreer of word biltong.",
+      "en": "Stay hydrated or become a biltong.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:4",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die swembad is nie opsioneel nie.",
+      "en": "The pool is not optional.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:5",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "day",
+      "af": "Warmer as 'n bakkie se dashboard teen middag.",
+      "en": "Hotter than a bakkie dashboard at noon.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:6",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die AC smeek om genade.",
+      "en": "The AC is begging for mercy.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:7",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Jou karsitplek is 'n wapen nou.",
+      "en": "Your car seat is a weapon right now.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:8",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Te warm om te stry. Te warm om te funksioneer.",
+      "en": "Too hot to argue. Too hot to function.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:9",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Selfs jou foon oorverhit.",
+      "en": "Even your phone's overheating.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:10",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die teer is sag. Die mense is sagter.",
+      "en": "The tar is soft. The people are softer.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:11",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Iewers het 'n sjokolade net gesterf.",
+      "en": "Somewhere a chocolate bar just died.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:12",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "weekday",
+      "af": "Die kantoor-aircon oorlog het begin.",
+      "en": "The office aircon war has begun.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:13",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Almal met 'n swembad het skielik baie populêr geword.",
+      "en": "Everyone with a pool just became very popular.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:14",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Jy sweet nie. Jy 'glow'. Ja, reg.",
+      "en": "You're not sweating. You're 'glowing'. Sure.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:15",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die yskas is die koolste kamer in die huis.",
+      "en": "The fridge is the coolest room in the house.",
+      "verdict": "KEEP",
+      "comment": "Die yskas is die koelste kamer in die huis."
+    },
+    {
+      "key": "witty:heat:16",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Plakkies op teer was 'n fout.",
+      "en": "Flip-flops on tar was a mistake.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:17",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Kortbroekie weer? Dis onderbroekie weer.",
+      "en": "Shorts weather? This is underwear weather.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:18",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die ys in jou drankie het presies 30 sekondes gehou.",
+      "en": "The ice in your drink lasted exactly 30 seconds.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:19",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "weekday · day",
+      "af": "Garage-pastei vir middagete want die kombuis is lawa.",
+      "en": "Garage pie for lunch because the kitchen is lava.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:20",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die skaduwee werk harder as jy vandag.",
+      "en": "The shade is working harder than you today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:21",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "weekday",
+      "af": "Die kantoor aircon debat het net vlak 5 bereik.",
+      "en": "The office aircon debate just went to level 5.",
+      "verdict": "KEEP",
+      "comment": "Die kantoor aircon debat het nou vlak 5 bereik."
+    },
+    {
+      "key": "witty:heat:22",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Almal is skielik jou vriend as jy 'n swembad het.",
+      "en": "Everyone's suddenly your friend when you have a pool.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:23",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Waterverbruik: ja. Alles.",
+      "en": "Water consumption: yes. All of it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:24",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Jou stuurwiel is 'n warmplaat.",
+      "en": "Your steering wheel is a hot plate.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:25",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die yskadeur kry 'n oefening vandag.",
+      "en": "The fridge door is getting a workout today.",
+      "verdict": "KEEP",
+      "comment": "Die yskasdeur kry baie oefening vandag."
+    },
+    {
+      "key": "witty:heat:26",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "morning",
+      "af": "Jou grimering se vervaldatum is 9vm.",
+      "en": "Your makeup has an expiry date of 9am.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:27",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die roomyswa speel almal se volkslied.",
+      "en": "The ice cream van is playing everyone's anthem.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:28",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Stadig besig om 'n poel in die hoek te word.",
+      "en": "Slowly becoming a puddle in the corner.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:29",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die aircon-afstandsbeheer is nou openbare eiendom. Onderhandel.",
+      "en": "The aircon remote is now public property. Negotiate.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:30",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Wie ook al vandag 'n swembad het is jou nuwe beste vriend.",
+      "en": "Whoever has a pool today is your new best friend.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:31",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Selfs die skaduwee sweet.",
+      "en": "Even the shade is sweating.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:32",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die plafonventilator probeer sy bes, maar sy bes is nie genoeg nie.",
+      "en": "The ceiling fan is doing its best, but its best is not enough.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:33",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "morning",
+      "af": "Jou ys-koffie het gesmelt voor jy by die kar gekom het.",
+      "en": "Your iced coffee melted before you reached the car.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:34",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Die bure se swembad het nog nooit so verleidelik gelyk nie.",
+      "en": "The neighbours' pool has never looked so tempting.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:heat:35",
+      "tier": "witty",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Moenie aan die veiligheidsgordel-gespe vat nie. Vertrou ons.",
+      "en": "Don't touch the seatbelt buckle. Trust us.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:0",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Ja, dis truiweer. Dubbel trui.",
+      "en": "Ja, it's jersey weather. Double jersey.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:1",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Tyd om daai lelike beanie te soek.",
+      "en": "Time to dig out that ugly beanie.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:2",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Koud genoeg vir sop. En 'n tweede sop.",
+      "en": "Cold enough for soup. And a second soup.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:3",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Warm sjokolade is nie 'n wens nie. Dis 'n behoefte.",
+      "en": "Hot chocolate is not a want. It's a need.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:4",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Trek lae aan asof jy Sani Pass klim.",
+      "en": "Layer up like you're climbing Sani Pass.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:5",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Twee-fleece minimum vandag.",
+      "en": "Two-fleece minimum today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:6",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die heater is jou beste vriend. Jou enigste vriend.",
+      "en": "The heater is your best friend. Your only friend.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:7",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Selfs die Kapenaars erken dit is koud.",
+      "en": "Even the Capetonians are admitting it's cold.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:8",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Jou asem doen spesiale effekte.",
+      "en": "Your breath is doing special effects.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:9",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Kombers burrito modus: geaktiveer.",
+      "en": "Blanket burrito mode: activated.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:10",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Dit is nie wat die toerisme brosjure beloof het nie.",
+      "en": "This is not what the tourism brochure promised.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:11",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "morning",
+      "af": "Die duvet het die regte idee gehad vanoggend.",
+      "en": "The duvet had the right idea this morning.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:12",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Hoekom het jy die huis verlaat? Eerlik.",
+      "en": "Why did you leave the house? Honestly.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:13",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Jou hande is in jou sakke en hulle kom nie uit nie.",
+      "en": "Your hands are in your pockets and they're not coming out.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:14",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Drie pare sokkies en steeds nie genoeg nie.",
+      "en": "Three pairs of socks and still not enough.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:15",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die karsitplekke vries. Alles vries.",
+      "en": "The car seats are freezing. Everything is freezing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:16",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Rooibos-verbruik het net verdubbel.",
+      "en": "Rooibos consumption just doubled.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:17",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die hond het geweier om buite te gaan. Billik.",
+      "en": "The dog refused to go outside. Fair.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:18",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die kouefront is hier en hy het maats gebring.",
+      "en": "The cold front is here and it brought friends.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:19",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Jy is nie koud nie, jy is 'lekker koud'. Groot verskil.",
+      "en": "You're not cold, you're 'lekker koud'. Big difference.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:20",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Om op te staan was 'n fout. 'n Gedokumenteerde een.",
+      "en": "Getting out of bed was a mistake. A documented one.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:21",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die duvet het die opdrag verstaan.",
+      "en": "The duvet understood the assignment.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:22",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Jou baadjie het 'n baadjie. Dis daai soort dag.",
+      "en": "Your jacket has a jacket. It's that kind of day.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:23",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die ketel werk harder as enigiemand vandag.",
+      "en": "The kettle is working harder than anyone today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:24",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Niemand het hiervoor ingeteken nie.",
+      "en": "Nobody signed up for this temperature.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:25",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Jou motivering het gevries op pad deur toe.",
+      "en": "Your motivation froze on the way to the door.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:26",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die bank het 'n oortuigende saak gemaak vir bly.",
+      "en": "The couch has made a compelling case for staying.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:27",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Buite is 'n karaktertoets. Jy druip.",
+      "en": "Outside is a test of character. You're failing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:28",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Warmwaterbottel is die werklike held vandag.",
+      "en": "Hot water bottle is the real MVP today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:29",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Hoekom het verlede-jy planne gemaak? Verlede-jy is die ergste.",
+      "en": "Why did past-you make plans? Past-you is the worst.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:30",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die duvet roep en die duvet wen.",
+      "en": "The duvet is calling and the duvet is winning.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:31",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Selfs die geyser sit ekstra ure in.",
+      "en": "Even the geyser is putting in extra hours.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:32",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Jy mis jou bed en jy is twaalf minute weg.",
+      "en": "You miss your bed and you've been gone twelve minutes.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:33",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die stort was die hoogtepunt. Dit gaan nou afdraand.",
+      "en": "The shower was the highlight. It is downhill from here.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:34",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Jou tone het 'n formele klagte ingedien.",
+      "en": "Your toes have filed a formal complaint.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:35",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "morning",
+      "af": "Koffie-telling: styg. Motiverings-telling: steeds nul.",
+      "en": "Coffee count: rising. Motivation count: still zero.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:36",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Buite het jou verraai en jy het in elk geval gegaan.",
+      "en": "Outside has betrayed you and you went anyway.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold:37",
+      "tier": "witty",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Die yskas voel warmer as die sitkamer vandag.",
+      "en": "The fridge feels warmer than the lounge today.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:0",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "morning · @free-state",
+      "af": "Bloemfontein om 6vm: trui, kamerjas, serp, takkies, en 'n gesig wat maak of alles fine is.",
+      "en": "Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:1",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "@free-state · winter",
+      "af": "Die Vrystaat het pas onthou hy het 'n winter-setting.",
+      "en": "The Free State just remembered it has a winter setting.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:2",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die kar het twee keer gehoes voor hy besluit het om te vat.",
+      "en": "The car coughed twice before it agreed to start.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:3",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "@gauteng · winter",
+      "af": "Hoëveld-winter: die enigste plek waar jy twee jasse aantrek om die pos te gaan haal.",
+      "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:4",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die hond is nog steeds keen. Die hond is altyd keen. Respek.",
+      "en": "The dog is still keen. The dog is always keen. Respect.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:5",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Welkom-koud vandag. Die soort wat deur drie truie gaan asof hulle nie daar is nie.",
+      "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:6",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die geyser het oornag getrip. Natuurlik het hy.",
+      "en": "The geyser tripped overnight. Of course it did.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:7",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Ryp op die grasperk. Ryp op die bakkie. Ryp in die troeteldierbak.",
+      "en": "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:8",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die lapa-kussings is crispy.",
+      "en": "The lapa cushions are crispy.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:9",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Son is uit. Moenie geflous word nie. Die natuur lieg.",
+      "en": "Sun's out. Don't be fooled. Nature is lying.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:10",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "@gauteng",
+      "af": "Die soort dag wat Joburg voorgee hy nie het nie totdat jy daarin staan.",
+      "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:11",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Lekker koud, maar die rugbyvelde gaan nou-nou perfek lyk.",
+      "en": "Lekker koud, but the rugby fields are about to look perfect.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:12",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "@gauteng",
+      "af": "Pretoria-kaal-jacaranda energie. Pragtig en troosteloos.",
+      "en": "Pretoria-bare-jacaranda energy. Beautiful and bleak.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:13",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "evening/night",
+      "af": "Teëlvloere is vanaand se skurk. Sit iets aan jou voete.",
+      "en": "Tile floors are tonight's villain. Wear something on your feet.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:14",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die kinders gaan steeds skool toe in kortbroek. Hulle weet dinge wat ons nie weet nie.",
+      "en": "The kids still going to school in shorts. They know things we don't.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:15",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "morning",
+      "af": "Kook-die-ketel-twee-keer weer: een keer vir die koffie, een keer vir die hande.",
+      "en": "Boiling-the-kettle-twice weather: once for the coffee, once for the hands.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:16",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "morning · @karoo",
+      "af": "Karoo-oggend. Die soort wat jou laat respek hê vir elke boer wat dit gekies het.",
+      "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:17",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die kar se verwarmer is die belangrikste verhouding in jou lewe op die oomblik.",
+      "en": "The car's heater is the most important relationship in your life right now.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:18",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Welkom, Sasolburg, Kroonstad: die koue belt doen sy koue ding.",
+      "en": "Welkom, Sasolburg, Kroonstad: the koue belt is doing its koue thing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:19",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "@gauteng",
+      "af": "Lae af teen 11-uur. Lae aan teen 4-uur. Highveld classic.",
+      "en": "Layers off by 11. Layers on by 4. Highveld classic.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:20",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die koppies lyk soos 'n poskaart. Jou voete voel soos ysblokke.",
+      "en": "The koppies look like a postcard. Your feet feel like ice blocks.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:21",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "@free-state",
+      "af": "Die soort koud wat jou laat Google: vloerverwarming Bloemfontein.",
+      "en": "The kind of cold that has you Googling 'underfloor heating Bloemfontein'.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:22",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Son op jou rug, vrieskas op jou gesig.",
+      "en": "Sun on your back, freezer on your face.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:23",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Drie hadedas, twee kraaie, een rillende mens by die voëlbak.",
+      "en": "Three hadedas, two crows, one shivering human at the bird feeder.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:24",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die Toyota het met die eerste try gevat. Jy skuld hom 'n was.",
+      "en": "The Toyota started first try. You owe it a wash.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:25",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Koud genoeg dat die melkbottel-op-die-stoep nou 'n koelboks is.",
+      "en": "Cold enough that the milk-bottle-on-the-stoep is now a cooler box.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:26",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Selfs die beeste op die N1 staan in 'n bondel asof hulle daarvoor betaal het.",
+      "en": "Even the cattle on the N1 are huddled like they paid for it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:27",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "any",
+      "af": "Die braai gaan aan. Die braai gaan altyd aan. Ons trek net die stoele nader.",
+      "en": "The braai is happening. The braai always happens. We just pull the chairs closer.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:28",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "morning · @free-state",
+      "af": "Maluti-ryp-oggend. Lesotho export dit gratis.",
+      "en": "Maluti-frost morning. Lesotho's exporting it for free.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:cold-clear:29",
+      "tier": "witty",
+      "condition": "cold-clear",
+      "bin": "morning",
+      "af": "Koffie in die son op die stoep. Die hele rede hoekom ons hier bly.",
+      "en": "Coffee in the sun on the stoep. The whole reason we live here.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:0",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Sterre uit, beurtkrag kan dit nie raak nie.",
+      "en": "Stars out, load shedding can't touch this.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:1",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Perfekte nag om die Melkweg te sien.",
+      "en": "Perfect night to actually see the Milky Way.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:2",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Stil daarbuite. Byna verdag.",
+      "en": "Quiet out there. Almost suspicious.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:3",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Die hadedas slaap. Uiteindelik.",
+      "en": "The hadedas are sleeping. Finally.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:4",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Nagskof weer: goedgekeur.",
+      "en": "Night shift weather: approved.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:5",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Donker buite, helder môre.",
+      "en": "Dark outside, bright tomorrow.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:6",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Goeienag, Suid-Afrika.",
+      "en": "Good night, South Africa.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:7",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Die maan doen sy bes vanaand.",
+      "en": "The moon's doing the most tonight.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:8",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Iewers is 'n kriek besig om sy hart uit te sing.",
+      "en": "Somewhere a cricket is really giving it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:9",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "@western-cape",
+      "af": "Selfs Tafelberg het dit 'n dag genoem.",
+      "en": "Even Table Mountain's called it a day.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:10",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Niks wat 'n koppie rooibos nie kan regmaak nie.",
+      "en": "Nothing a cup of rooibos won't fix.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:11",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Die buurt se katte het oorgevat.",
+      "en": "The neighbourhood cats have taken over.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:12",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Perfekte weer om voor te gee jy gaan vroeg slaap.",
+      "en": "Perfect weather for pretending you'll go to bed early.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:13",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Nie 'n wolk nie. Net jy en die Suiderkruis.",
+      "en": "Not a cloud. Just you and the Southern Cross.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:14",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Die uile oordeel jou skermtyd.",
+      "en": "The owls are judging your screen time.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:15",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "@western-cape",
+      "af": "Kaapstad glinster. Waarskynlik.",
+      "en": "Cape Town's twinkling. Probably.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:16",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Môre se weer is môre se probleem.",
+      "en": "Tomorrow's weather is tomorrow's problem.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:17",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Die paddas het die gesprek betree.",
+      "en": "The frogs have entered the chat.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:18",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Warm genoeg om die venster oop te los. Dapper genoeg?",
+      "en": "Warm enough to leave the window open. Brave enough?",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:night:19",
+      "tier": "witty",
+      "condition": "night",
+      "bin": "any",
+      "af": "Die lug lyk of dit pronk.",
+      "en": "The sky looks like it's showing off.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:0",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Braaiweer, boet! Geen verskonings nie.",
+      "en": "Braai weather, boet! No excuses.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:1",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Steek die Weber aan. Dit is die wet.",
+      "en": "Fire up the Weber. It's the law.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:2",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Die weergode pronk vandag.",
+      "en": "The weather gods are showing off.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:3",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Strand of braai? Ja.",
+      "en": "Beach or braai? Yes.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:4",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Naweek vibes so sterk hulle het hul eie playlist nodig.",
+      "en": "Weekend vibes so strong they need their own playlist.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:5",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "As jy vandag werk, jammer vir jou.",
+      "en": "If you're working today, we feel sorry for you.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:6",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Perfek om absoluut niks te doen nie.",
+      "en": "Perfect for doing absolutely nothing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:7",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Bel die tjommies. Kry die vleis. Kom ons gaan.",
+      "en": "Call the mates. Get the meat. Let's go.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:8",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Vandag se planne: bestaan buitentoe.",
+      "en": "Today's plans: exist outside.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:9",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Die naweek word nie beter as dit nie.",
+      "en": "The weekend doesn't get better than this.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:10",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Die kole gaan nie hulself aansteek nie.",
+      "en": "The coals aren't going to light themselves.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:11",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Skoene opsioneel. Houding verpligtend.",
+      "en": "Shoes optional. Attitude mandatory.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:12",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Jou out-of-office doen die swaar werk.",
+      "en": "Your out-of-office is doing the heavy lifting.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:13",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Kuierweer. Kry die mense bymekaar.",
+      "en": "Kuier weather. Get the people together.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:14",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Die Weber het die hele week hiervoor gewag.",
+      "en": "The Weber's been waiting all week for this.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:15",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Die tang roep. Antwoord dit.",
+      "en": "The tongs are calling. Answer them.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:16",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Geen alarm. Geen agenda. Net vibes.",
+      "en": "No alarm. No agenda. Just vibes.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:17",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Dit is die weer waarvoor die naweek uitgevind is.",
+      "en": "This is the weather the weekend was invented for.",
+      "verdict": "KEEP",
+      "comment": "Dit is die weer waarvoor naweke geskep is."
+    },
+    {
+      "key": "witty:weekend:18",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Jou enigste verantwoordelikheid is kies houtskool of hout.",
+      "en": "Your only responsibility is choosing charcoal or wood.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:19",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "sat",
+      "af": "Saterdagenergie: maksimum. Verantwoordelikhede: minimum.",
+      "en": "Saturday energy: maximum. Responsibilities: minimum.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:20",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Marinade in. Foon af. Dag begin nou.",
+      "en": "Marinade in. Phone off. Day starts now.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:21",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Die tjoppies roep. Die stoel ook.",
+      "en": "The chops are calling. So is the chair.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:22",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "morning",
+      "af": "Boerierol vir ontbyt? Op 'n naweek? Aanvaarbaar.",
+      "en": "Boerie roll for breakfast? On a weekend? Acceptable.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:23",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Slip-slops, kortbroek, son. Die drie-eenheid.",
+      "en": "Slip-slops, shorts, sun. The trinity.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty:weekend:24",
+      "tier": "witty",
+      "condition": "weekend",
+      "bin": "any",
+      "af": "Die braai is die sosiale kalender. Daag op.",
+      "en": "The braai is the social calendar. Show up.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:clear:0",
+      "tier": "witty_low_confidence",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Waarskynlik helder. Jou venster het die laaste sê.",
+      "en": "Probably clear. Your window's the final say.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:clear:1",
+      "tier": "witty_low_confidence",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Lyk helder-ish. Die modelle en die lug stem nie altyd saam nie.",
+      "en": "Looks clear-ish. The models and the sky don't always agree.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:clear:2",
+      "tier": "witty_low_confidence",
+      "condition": "clear",
+      "bin": "@western-cape",
+      "af": "Helder, in teorie. Die Kaapse Dokter RSVP nie altyd nie.",
+      "en": "Clear, in theory. The Cape Doctor doesn't always RSVP.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:clear:3",
+      "tier": "witty_low_confidence",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Waarskynlik 'n goeie een. Ons is so 80% seker.",
+      "en": "Probably a good one. We're about 80% sure.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:clear:4",
+      "tier": "witty_low_confidence",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Helder lug, sê die somme. Kyk ook na die regte lug.",
+      "en": "Clear skies, says the maths. Check the actual sky too.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:clear:5",
+      "tier": "witty_low_confidence",
+      "condition": "clear",
+      "bin": "any",
+      "af": "Modelle sê pragtig. Die werklikheid hou voor om te verskil.",
+      "en": "Models say lovely. Reality reserves the right to differ.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:partly-cloudy:0",
+      "tier": "witty_low_confidence",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Waarskynlik 'n bietjie wolk. Of baie. Moeilik om te sê.",
+      "en": "Probably a bit of cloud. Or a lot. Hard to call.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:partly-cloudy:1",
+      "tier": "witty_low_confidence",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Effens bewolk, effens geraai.",
+      "en": "Partly cloudy, partly guessing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:partly-cloudy:2",
+      "tier": "witty_low_confidence",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Bietjie wolk, bietjie son. Die verhouding is enigiemand se raaiskoot.",
+      "en": "Some cloud, some sun. The ratio's anyone's guess.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:partly-cloudy:3",
+      "tier": "witty_low_confidence",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Gemengde sak daar buite. Ons hou voor.",
+      "en": "Mixed bag out there. We're hedging.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:partly-cloudy:4",
+      "tier": "witty_low_confidence",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Wolke is rond. Hoeveel is oop vir debat.",
+      "en": "Cloud's around. How much is up for debate.",
+      "verdict": "KEEP",
+      "comment": "Wolke is hier. Hoeveel is oop vir debat."
+    },
+    {
+      "key": "witty_low_confidence:partly-cloudy:5",
+      "tier": "witty_low_confidence",
+      "condition": "partly-cloudy",
+      "bin": "any",
+      "af": "Bietjie van alles. Klassieke tussen-in dag.",
+      "en": "Bit of everything. Classic in-between day.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cloudy:0",
+      "tier": "witty_low_confidence",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Waarskynlik grys. Kan optrek, kan verdik.",
+      "en": "Probably grey. Could lift, could thicken.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cloudy:1",
+      "tier": "witty_low_confidence",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Bewolk-ish. Moenie die braai daarop wed nie.",
+      "en": "Cloudy-ish. Don't bet the braai on it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cloudy:2",
+      "tier": "witty_low_confidence",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Grys lug, lae oortuiging.",
+      "en": "Grey skies, low conviction.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cloudy:3",
+      "tier": "witty_low_confidence",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Lyk toegetrek. Die bronne is nie eenparig nie.",
+      "en": "Looks overcast. The sources aren't unanimous.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cloudy:4",
+      "tier": "witty_low_confidence",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Wolk is die roep. Met 'n sterretjie.",
+      "en": "Cloud's the call. With an asterisk.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cloudy:5",
+      "tier": "witty_low_confidence",
+      "condition": "cloudy",
+      "bin": "any",
+      "af": "Grys, waarskynlik. Ons het dit al sien verras.",
+      "en": "Grey, probably. We've seen it surprise us.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:fog:0",
+      "tier": "witty_low_confidence",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Mis kan inrol. Hou die berg dop.",
+      "en": "Fog might be rolling in. Keep an eye on the mountain.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:fog:1",
+      "tier": "witty_low_confidence",
+      "condition": "fog",
+      "bin": "@western-cape",
+      "af": "Waarskynlik mis later. Die Boland doen dit.",
+      "en": "Probably fog later. The Boland does this.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:fog:2",
+      "tier": "witty_low_confidence",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Mis bou dalk op. Ligte sal nie skade doen nie.",
+      "en": "Mist building, maybe. Headlights wouldn't hurt.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:fog:3",
+      "tier": "witty_low_confidence",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Mis is op die kaarte. Die lug is skaam daaroor.",
+      "en": "Fog's on the cards. The sky's being coy about it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:fog:4",
+      "tier": "witty_low_confidence",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Kan mistig word. Die doupunt flankeer daarmee.",
+      "en": "Could go misty. The dew point's flirting with it.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:fog:5",
+      "tier": "witty_low_confidence",
+      "condition": "fog",
+      "bin": "any",
+      "af": "Pasop vir mis — dit hou daarvan om onaangekondig op te daag.",
+      "en": "Watch for fog — it likes to arrive unannounced.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain:0",
+      "tier": "witty_low_confidence",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Waarskynlik reën. Vat die sambreel, sluit die argument af.",
+      "en": "Probably rain. Take the umbrella, settle the argument.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain:1",
+      "tier": "witty_low_confidence",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Reën is taamlik waarskynlik. Die lug het niks geteken nie.",
+      "en": "Rain's likely-ish. The sky hasn't signed anything.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain:2",
+      "tier": "witty_low_confidence",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Lyk nat. Die modelle is redelik seker, nie seker nie.",
+      "en": "Looks wet. The models are fairly sure, not certain.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain:3",
+      "tier": "witty_low_confidence",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Waarskynlik 'n klam een. Pak reg.",
+      "en": "Probably a damp one. Pack accordingly.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain:4",
+      "tier": "witty_low_confidence",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Reën op pad, min of meer.",
+      "en": "Rain on the way, give or take.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain:5",
+      "tier": "witty_low_confidence",
+      "condition": "rain",
+      "bin": "any",
+      "af": "Nat toestande, waarskynlik. Moenie ons by die braai aanhaal nie.",
+      "en": "Wet conditions, probably. Don't quote us at the braai.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain-possible:0",
+      "tier": "witty_low_confidence",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Dalk reën, dalk nie. Klassiek.",
+      "en": "Maybe rain, maybe not. Classic.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain-possible:1",
+      "tier": "witty_low_confidence",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Kan reën. Kan net dreig.",
+      "en": "Could rain. Could just threaten to.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain-possible:2",
+      "tier": "witty_low_confidence",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Reën is moontlik. So is om heeltemal verkeerd te wees.",
+      "en": "Rain's possible. So is being completely wrong.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain-possible:3",
+      "tier": "witty_low_confidence",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Die lug is besluiteloos. Ons ook.",
+      "en": "The sky's undecided. So are we.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:rain-possible:4",
+      "tier": "witty_low_confidence",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "Mag 'n bietjie spoeg. Mag nie moeite doen nie.",
+      "en": "Might spit a bit. Might not bother.",
+      "verdict": "KEEP",
+      "comment": "Mag n bietjie spoeg. Mag dalk nie moeite doen daarmee nie."
+    },
+    {
+      "key": "witty_low_confidence:rain-possible:5",
+      "tier": "witty_low_confidence",
+      "condition": "rain-possible",
+      "bin": "any",
+      "af": "50/50 op die reën. Vat 'n baadjie, net ingeval.",
+      "en": "50/50 on the rain. Bring a jacket, just in case.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:storm:0",
+      "tier": "witty_low_confidence",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Kan stormagtig raak. Hou een oog op die lug.",
+      "en": "Could turn stormy. Keep one eye on the sky.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:storm:1",
+      "tier": "witty_low_confidence",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Storm is moontlik. Die braai mag 'n reëndatum nodig kry.",
+      "en": "Storm's possible. The braai might need a rain check.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:storm:2",
+      "tier": "witty_low_confidence",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Weer kan ernstig raak. Bly los op wag.",
+      "en": "Weather might get serious. Stay loosely on alert.",
+      "verdict": "KEEP",
+      "comment": "Weer kan ernstig raak. Bes om peraat te bly."
+    },
+    {
+      "key": "witty_low_confidence:storm:3",
+      "tier": "witty_low_confidence",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Waarskynlik iets aan die brou. Bly naby 'n dak.",
+      "en": "Probably brewing something. Stay close to a roof.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:storm:4",
+      "tier": "witty_low_confidence",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Storm op die kaarte, nog nie bevestig nie. Bly skerp.",
+      "en": "Storm on the cards, not yet confirmed. Stay sharp.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:storm:5",
+      "tier": "witty_low_confidence",
+      "condition": "storm",
+      "bin": "any",
+      "af": "Lug lyk nukkerig. Kan eskaleer.",
+      "en": "Sky's looking moody. Could escalate.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:wind:0",
+      "tier": "witty_low_confidence",
+      "condition": "wind",
+      "bin": "@western-cape",
+      "af": "Waarskynlik winderig. Die Kaapse Dokter hou sy eie dagboek.",
+      "en": "Probably windy. The Cape Doctor keeps its own diary.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:wind:1",
+      "tier": "witty_low_confidence",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Wind is waarskynlik. Hou vas aan die braai-oortrek.",
+      "en": "Wind's likely. Hold onto the braai cover.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:wind:2",
+      "tier": "witty_low_confidence",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Kan winderig raak. Die voorspelling is 'n bietjie los hieroor.",
+      "en": "Could get gusty. The forecast's a bit loose on this one.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:wind:3",
+      "tier": "witty_low_confidence",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Briesig, waarskynlik. Dalk meer.",
+      "en": "Breezy, probably. Maybe more.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:wind:4",
+      "tier": "witty_low_confidence",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Wind is op die kaarte. Peg die wasgoed vas.",
+      "en": "Wind's on the cards. Peg the washing down.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:wind:5",
+      "tier": "witty_low_confidence",
+      "condition": "wind",
+      "bin": "any",
+      "af": "Bietjie wind verwag. Sterkte nog onbeslis.",
+      "en": "Some wind expected. Strength still TBC.",
+      "verdict": "KEEP",
+      "comment": "Bietjie wind verwag. Hoeveel is nog onbeslis."
+    },
+    {
+      "key": "witty_low_confidence:heat:0",
+      "tier": "witty_low_confidence",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Waarskynlik warm. Ons gaan almal saam uitvind.",
+      "en": "Probably hot. We'll all find out together.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:heat:1",
+      "tier": "witty_low_confidence",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Lyk warm. Hoe warm is 'n bewegende teiken.",
+      "en": "Looks warm. How warm is a moving target.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:heat:2",
+      "tier": "witty_low_confidence",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Warm-ish, waarskynlik. Hou die water naby.",
+      "en": "Hot-ish, likely. Keep the water close.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:heat:3",
+      "tier": "witty_low_confidence",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Waarskynlik 'n blaker. 'n Hoed is nie 'n slegte idee nie.",
+      "en": "Probably a scorcher. A hat's not a bad idea.",
+      "verdict": "KEEP",
+      "comment": "Waarskynlik n scorcher. n Hoed is nie n slegte idee nie."
+    },
+    {
+      "key": "witty_low_confidence:heat:4",
+      "tier": "witty_low_confidence",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Warm een kom, gee of vat 'n paar grade.",
+      "en": "Warm one coming, give or take a few degrees.",
+      "verdict": "KEEP",
+      "comment": "Warm een kom, plus minus n paar grade."
+    },
+    {
+      "key": "witty_low_confidence:heat:5",
+      "tier": "witty_low_confidence",
+      "condition": "heat",
+      "bin": "any",
+      "af": "Hitte is waarskynlik. Die getal settle nog.",
+      "en": "Heat's likely. The number's still settling.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cold:0",
+      "tier": "witty_low_confidence",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Waarskynlik koud. Vat die trui, jy sal ons dank.",
+      "en": "Probably cold. Take the jersey, you'll thank us.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cold:1",
+      "tier": "witty_low_confidence",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Koel, heel waarskynlik. Trek aan om veilig te wees.",
+      "en": "Chilly, most likely. Layer up to be safe.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cold:2",
+      "tier": "witty_low_confidence",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Lyk koud-ish. Die termometer hou ons aan die raai.",
+      "en": "Looks cold-ish. The thermometer's keeping us guessing.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cold:3",
+      "tier": "witty_low_confidence",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Koud is die weddenskap. Moenie 'n sonnige venster in die winter vertrou nie.",
+      "en": "Cold's the bet. Don't trust a sunny window in winter.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cold:4",
+      "tier": "witty_low_confidence",
+      "condition": "cold",
+      "bin": "any",
+      "af": "Vat 'n baadjie. Of nie. Ons is net redelik seker.",
+      "en": "Bring a jacket. Or don't. We're only fairly sure.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:cold:5",
+      "tier": "witty_low_confidence",
+      "condition": "cold",
+      "bin": "morning · @western-cape",
+      "af": "Waarskynlik kil. Die Boland-oggende doen dit.",
+      "en": "Probably nippy. The Boland mornings do this.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:night:0",
+      "tier": "witty_low_confidence",
+      "condition": "night",
+      "bin": "any",
+      "af": "Waarskynlik 'n helder nag. Die sterre het nog nie bevestig nie.",
+      "en": "Probably a clear night. The stars haven't confirmed.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:night:1",
+      "tier": "witty_low_confidence",
+      "condition": "night",
+      "bin": "any",
+      "af": "Kalm nag, heel waarskynlik. Die lug hou voor om te verander.",
+      "en": "Calm night, most likely. The sky reserves the right to change.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:night:2",
+      "tier": "witty_low_confidence",
+      "condition": "night",
+      "bin": "any",
+      "af": "Lyk rustig daar buite. Min of meer.",
+      "en": "Looks settled out there. Roughly.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:night:3",
+      "tier": "witty_low_confidence",
+      "condition": "night",
+      "bin": "any",
+      "af": "Waarskynlik stil lug. Ons is redelik seker.",
+      "en": "Probably quiet skies. We're fairly sure.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:night:4",
+      "tier": "witty_low_confidence",
+      "condition": "night",
+      "bin": "any",
+      "af": "Helder-ish nag. Moenie ons by die sterre hou nie.",
+      "en": "Clear-ish night. Don't hold us to the stars.",
+      "verdict": "KEEP",
+      "comment": ""
+    },
+    {
+      "key": "witty_low_confidence:night:5",
+      "tier": "witty_low_confidence",
+      "condition": "night",
+      "bin": "any",
+      "af": "Nag lyk kalm. Modelle toelaat.",
+      "en": "Night looks calm. Models permitting.",
+      "verdict": "KEEP",
+      "comment": "Nag lyk kalM. As die modelle dit reg het."
+    }
+  ]
+}
