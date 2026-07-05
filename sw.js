@@ -1,4 +1,30 @@
-/* Probably Weather — Service Worker v16
+/* Probably Weather — Service Worker v17
+   Upgrades from v16 — THE update-propagation fix:
+   - Every deploy now changes sw.js's bytes: scripts/build.mjs injects the Vercel
+     commit SHA into the BUILD_ID constant below. This fixes the field failure
+     where an already-installed app kept running the PREVIOUS deploy's code — a
+     share still used the old /?bg= path after the web build had refreshed.
+   - Root cause (why v16 silently stopped propagating app-only deploys): the shell
+     is served stale-while-revalidate, which serves the OLD app.js on the open it
+     runs and only caches the new one for the NEXT open — always one open behind.
+     The skipWaiting → activate → clients.claim → controllerchange → one-reload
+     flow (still present + correct below) would have closed that gap, BUT it only
+     fires when the browser detects a NEW SW, and a deploy that touched only app.js
+     left sw.js byte-identical, so registration.update() saw the same script and
+     NO new SW ever installed. The missing ingredient was never the cache version —
+     it was that sw.js itself had to change so the install runs at all.
+   - The fix is deliberately minimal: BUILD_ID makes sw.js byte-differ every deploy.
+     On the next update check the browser installs the new SW; its install-time
+     addAll REFETCHES and OVERWRITES the shell (index.html, app.js, …) IN PLACE in
+     the existing same-named cache (Cache.put replaces matching entries); activate
+     → clients.claim → the page's controllerchange handler reloads once onto the
+     fresh shell. CACHE_VERSION is still NOT bumped, and that is correct: same cache
+     identity, overwrite-in-place, so the image/api caches are never touched (no
+     re-download churn) and — critically — the shell cache is never EMPTIED, so a
+     flaky-network precache can't strand an offline user with no shell (it keeps
+     whatever it already had; stable non-hashed asset paths make a mixed old/new
+     shell boot fine). Rotating to a fresh per-deploy cache name was considered and
+     rejected for exactly that offline-safety reason.
    Upgrades from v15:
    - Install-time precache now starts after a 4s PRECACHE_YIELD_MS delay. On
      the one open where a device upgrades from a pre-SWR SW (v14 and older,
@@ -36,6 +62,20 @@
    ensures the browser ALWAYS revalidates the SW script on each update check.
 */
 
+// Per-deploy build stamp. scripts/build.mjs rewrites __BUILD_ID__ to the Vercel
+// commit SHA on every production build, so the shipped sw.js differs byte-for-byte
+// every deploy — the ONLY thing that makes an already-installed browser notice a
+// new SW and run the update flow (install → activate → clients.claim →
+// controllerchange → one reload). Unbuilt (tests, vercel dev, python preview) it
+// stays the literal placeholder. It is referenced in activate's diagnostic log so
+// minification keeps it (and the build's __BUILD_ID__ presence check guards it).
+const BUILD_ID = '__BUILD_ID__';
+
+// Cache identity is STABLE across deploys. The new SW's install-time addAll
+// overwrites the shell in place (Cache.put replaces matching entries), so a code
+// deploy refreshes app.js/index.html/etc. without a version bump — and the image
+// cache (the big payload) is never re-downloaded. Bump this literal BY HAND only
+// to deliberately invalidate caches. (Tests pin the literal + its date format.)
 const CACHE_VERSION = 'pw-v2026-05-31-001';
 const CORE_CACHE = `${CACHE_VERSION}-core`;
 const IMG_CACHE = `${CACHE_VERSION}-img`;
@@ -88,9 +128,21 @@ const API_CACHE_MAX_AGE = 3 * 60 * 60 * 1000; // 3 hours
 // never competes with first paint — see v16 header note.
 const PRECACHE_YIELD_MS = 4000;
 
+// Set during install: true when a cache already existed, i.e. a prior SW ran
+// here (an UPDATE), false on a first-ever install. activate uses it to decide
+// whether to broadcast PW_UPDATE_AVAILABLE — the reload fallback for clients
+// whose `controllerchange` event never fires (notably iOS standalone PWAs).
+// Because cache names are stable across deploys, oldCaches is empty on a routine
+// same-CACHE_VERSION deploy, so oldCaches.length alone can no longer tell an
+// update apart from a first install — this flag does.
+let hadPriorCaches = false;
+
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil((async () => {
+    // Read BEFORE we open our own cache (open would create one). Any existing
+    // cache ⇒ a prior SW ran here ⇒ this is an update, not a first install.
+    hadPriorCaches = (await caches.keys()).length > 0;
     await new Promise((resolve) => setTimeout(resolve, PRECACHE_YIELD_MS));
     try {
       const cache = await caches.open(CORE_CACHE);
@@ -126,11 +178,19 @@ self.addEventListener('activate', (event) => {
     const oldCaches = keys.filter((k) => !k.startsWith(CACHE_VERSION));
     await Promise.all(oldCaches.map((k) => caches.delete(k)));
     await self.clients.claim();
-    // Surface the active SW version on the console for diagnostic purposes —
+    // Surface the active SW version + build on the console for diagnostics —
     // visible via Application → Service Workers in DevTools, or via
-    // navigator.serviceWorker.controller?.scriptURL inspection.
-    console.log('[SW] Activated', CACHE_VERSION, '— purged', oldCaches.length, 'old caches');
-    if (oldCaches.length) {
+    // navigator.serviceWorker.controller?.scriptURL inspection. Referencing
+    // BUILD_ID here also keeps minification from dropping the const (see its
+    // docblock); the reload path is driven by controllerchange on the page.
+    console.log('[SW] Activated', CACHE_VERSION, 'build', BUILD_ID, '— purged', oldCaches.length, 'old caches');
+    // Broadcast on ANY real update (a prior SW existed), not only when caches
+    // were purged. Cache names are stable across deploys, so a routine deploy
+    // clears no caches — yet the page still needs the belt-and-braces reload
+    // signal for the case where `controllerchange` silently doesn't fire (iOS
+    // standalone). Gated by hadPriorCaches so a first-ever install never posts
+    // it (which would reload the user on their first visit).
+    if (hadPriorCaches || oldCaches.length) {
       const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
       clients.forEach((client) => {
         // Include the new cache version so the page can stash it in

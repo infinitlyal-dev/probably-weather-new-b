@@ -32,7 +32,7 @@ vi.mock('../api/weather.js', () => ({
   default: vi.fn(async (_req, res) => res.status(200).json(weatherPayload)),
 }));
 
-const { default: ogHandler, buildOgViewModel, normalizeConditionParam, CACHE_CONTROL } = await import('../api/og.js');
+const { default: ogHandler, buildOgViewModel, buildFallbackViewModel, normalizeConditionParam, CACHE_CONTROL } = await import('../api/og.js');
 
 const callOg = async (query = {}) => {
   let statusCode = 200;
@@ -299,5 +299,42 @@ describe('OG share card threads the sender condition (?c=) + respects the night-
     const nightPool = eligibleWittyPool({ copy: WEATHER_COPY, tags: WITTY_DAY_TAGS, condition: 'night', lang: 'en', context }).pool;
     const model = buildOgViewModel(payloadWith({ conditionKey: 'clear' }), { lang: 'en', conditionOverride: 'night' });
     expect(nightPool).toContain(model.witty);
+  });
+});
+
+describe('coord-less legacy share (?bg=<cond>, no lat/lon) → condition-matched fallback card', () => {
+  // A legacy /?bg=storm link carries no coords, so /api/og renders the fallback
+  // view-model (no weather fetch). It MUST honour the condition — not regress to
+  // a generic clear card — so the WhatsApp preview still shows storm. This pins
+  // the fix for the coord-less fidelity regression the middleware change exposed.
+  it('honours a valid conditionOverride: right condition, localized headline, condition background', () => {
+    const model = buildFallbackViewModel('en', 'storm');
+    expect(model.condition).toBe('storm');
+    expect(model.headline).toBe(WEATHER_COPY.headlines.storm.en);
+    expect(model.backgroundPath).toBe('og/storm.jpg');
+  });
+
+  it('localizes the fallback headline (af)', () => {
+    const model = buildFallbackViewModel('af', 'rain');
+    expect(model.condition).toBe('rain');
+    expect(model.headline).toBe(WEATHER_COPY.headlines.rain.af);
+  });
+
+  it('folds a partly-cloudy override to the cloudy OG background', () => {
+    const model = buildFallbackViewModel('en', 'partly-cloudy');
+    expect(model.condition).toBe('partly-cloudy');
+    expect(model.backgroundPath).toBe('og/cloudy.jpg');
+  });
+
+  it('no override → the generic clear brand card (unchanged behavior)', () => {
+    const model = buildFallbackViewModel('en');
+    expect(model.condition).toBe('clear');
+    expect(model.headline).toBe('South African weather');
+    expect(model.backgroundPath).toBe('og/clear.jpg');
+  });
+
+  it('junk override is rejected → generic clear card (no crafted-condition injection)', () => {
+    const model = buildFallbackViewModel('en', 'drop-table');
+    expect(model.condition).toBe('clear');
   });
 });

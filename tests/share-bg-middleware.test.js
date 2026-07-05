@@ -140,14 +140,19 @@ describe('middleware rewrite end-to-end (mocked fetch)', () => {
     };
   }
 
-  it('rewrites og:image to /og/<bg>.jpg when ?bg=storm is present', async () => {
+  it('rewrites og:image to the branded /api/og card (with ?c=<bg>) when ?bg=storm is present', async () => {
     const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=storm&city=Strand');
     try {
       const res = await middleware(request);
       expect(res).toBeInstanceOf(Response);
       const html = await res.text();
-      expect(html).toContain('property="og:image" content="https://www.probablyweather.co.za/og/storm.jpg"');
-      expect(html).toContain('name="twitter:image" content="https://www.probablyweather.co.za/og/storm.jpg"');
+      // Legacy stock-photo path retired: og:image now points at the branded
+      // /api/og card and reproduces the sender's condition via ?c=. swapMeta
+      // HTML-escapes the query '&' to '&amp;' in the attribute (crawlers decode
+      // it back to '&' when reading the URL).
+      expect(html).toContain('property="og:image" content="https://www.probablyweather.co.za/api/og?lang=en&amp;c=storm"');
+      expect(html).toContain('name="twitter:image" content="https://www.probablyweather.co.za/api/og?lang=en&amp;c=storm"');
+      expect(html).not.toContain('/og/storm.jpg');
       expect(html).toContain('Storm watch');
       expect(html).toContain('Strand —');
       expect(res.headers.get('x-pw-share-bg')).toBe('storm');
@@ -156,13 +161,43 @@ describe('middleware rewrite end-to-end (mocked fetch)', () => {
     }
   });
 
-  it('falls back to clear when ?bg= is unknown', async () => {
+  it('threads the coords a share link carries into /api/og so it renders the full weather card', async () => {
+    const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=rain&lat=-33.92&lon=18.42&lang=af');
+    try {
+      const res = await middleware(request);
+      const html = await res.text();
+      expect(html).toContain('property="og:image" content="https://www.probablyweather.co.za/api/og?lang=af&amp;c=rain&amp;lat=-33.92&amp;lon=18.42"');
+      expect(html).toContain('name="twitter:image" content="https://www.probablyweather.co.za/api/og?lang=af&amp;c=rain&amp;lat=-33.92&amp;lon=18.42"');
+      expect(res.headers.get('x-pw-share-bg')).toBe('rain');
+    } finally {
+      restore();
+    }
+  });
+
+  it('falls back to clear (branded /api/og card) when ?bg= is unknown', async () => {
     const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=garbage');
     try {
       const res = await middleware(request);
       const html = await res.text();
-      expect(html).toContain('/og/clear.jpg');
+      expect(html).toContain('/api/og?lang=en&amp;c=clear');
+      expect(html).not.toContain('/og/clear.jpg');
       expect(res.headers.get('x-pw-share-bg')).toBe('clear');
+    } finally {
+      restore();
+    }
+  });
+
+  it('omits ?c= for the explicit ?bg=default sentinel (no bogus c=default reaches /api/og)', async () => {
+    // buildShareUrl emits ?bg=default for unknown/missing conditions. /api/og
+    // would reject c=default anyway; the middleware just omits it so the card
+    // falls to /api/og's branded generic render.
+    const { request, restore } = mockGet('https://www.probablyweather.co.za/?bg=default&lang=af');
+    try {
+      const res = await middleware(request);
+      const html = await res.text();
+      expect(html).toContain('property="og:image" content="https://www.probablyweather.co.za/api/og?lang=af"');
+      expect(html).not.toContain('c=default');
+      expect(res.headers.get('x-pw-share-bg')).toBe('default');
     } finally {
       restore();
     }

@@ -126,6 +126,36 @@ for (const file of files) {
   after += Buffer.byteLength(code);
 }
 
+// Stamp the deploy commit SHA into the shipped shell. Two effects, both about
+// update propagation:
+//   (a) sw.js ships different bytes every deploy — the trigger an already-
+//       installed browser needs to notice a new SW and run its update flow. The
+//       whole point of the fix; without it, app-only deploys never reach a
+//       returning user until their SECOND open (stale-while-revalidate lag).
+//   (b) app.js carries the running bundle's identity (an inline BUILD_ID const)
+//       so Settings can display it and the update banner can compare it against
+//       /api/version. Kept in app.js itself (not a separate imported module) so a
+//       partial precache can't strand app.js importing a module that didn't cache.
+// Vercel sets VERCEL_GIT_COMMIT_SHA on every deploy; a local build (unset) → 'local'.
+// The placeholder MUST be present in both files or propagation silently breaks,
+// so a miss is a hard build failure — never ship a shell that can't self-update.
+{
+  const buildId = process.env.VERCEL_GIT_COMMIT_SHA || 'local';
+  for (const rel of ['sw.js', 'assets/app.js']) {
+    const target = path.join(dist, rel);
+    const source = readFileSync(target, 'utf8');
+    if (!source.includes('__BUILD_ID__')) {
+      console.error(
+        `[build] FATAL: build-stamp placeholder __BUILD_ID__ not found in dist/${rel}.\n` +
+        `        Deploys would stop propagating to installed apps — refusing to ship.`
+      );
+      process.exit(1);
+    }
+    writeFileSync(target, source.replaceAll('__BUILD_ID__', buildId), 'utf8');
+  }
+  console.log(`[build] stamped build id "${buildId}" into sw.js + assets/app.js.`);
+}
+
 // Build-time invariant: EVERY precached path must resolve in dist — a missing
 // one bricks the offline shell on deploy.
 //

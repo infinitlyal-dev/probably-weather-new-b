@@ -29,9 +29,14 @@ describe('sw.js — lifecycle plumbing', () => {
     expect(activateBlock).toMatch(/self\.clients\.claim\(\)/);
   });
 
-  it('activate event broadcasts PW_UPDATE_AVAILABLE only when old caches were cleaned (i.e. real update, not first install)', () => {
+  it('activate broadcasts PW_UPDATE_AVAILABLE on any real update (prior SW existed), never on a first-ever install', () => {
+    // Cache names are stable across deploys, so a routine deploy purges no caches
+    // (oldCaches empty). The page still needs the belt-and-braces reload signal
+    // when its controllerchange doesn't fire (iOS standalone), so the broadcast
+    // is gated on hadPriorCaches (a prior SW ran here) OR oldCaches — but NOT on
+    // a first-ever install (both false → no unwanted first-visit reload).
     const activateBlock = swSrc.match(/addEventListener\('activate',[\s\S]*?\}\)\(\)\);/)?.[0] || '';
-    expect(activateBlock).toMatch(/if \(oldCaches\.length\)/);
+    expect(activateBlock).toMatch(/if \(hadPriorCaches \|\| oldCaches\.length\)/);
     expect(activateBlock).toMatch(/postMessage\(\{[\s\S]*?type:\s*['"]PW_UPDATE_AVAILABLE['"]/);
   });
 
@@ -96,6 +101,15 @@ describe('setupServiceWorkerUpdates — page-side wiring', () => {
 
   it('listens for PW_UPDATE_AVAILABLE messages from the SW', () => {
     expect(fnBody).toMatch(/event\.data\??\.type\s*!==?\s*['"]PW_UPDATE_AVAILABLE['"]/);
+  });
+
+  it('the PW_UPDATE_AVAILABLE message reload is gated on hadControllerAtStart (independent guard vs a first-visit / already-fresh reload)', () => {
+    // A client with no controller at load fetched fresh code from the network,
+    // so it needs no reload; and this is the second line of defence (besides the
+    // SW's hadPriorCaches broadcast gate) against reloading a first-ever visit.
+    const msgHandler = fnBody.match(/addEventListener\(['"]message['"][\s\S]*?\}\);/)?.[0] ?? '';
+    expect(msgHandler).toMatch(/PW_UPDATE_AVAILABLE/);
+    expect(msgHandler).toMatch(/if \(!hadControllerAtStart\) return/);
   });
 
   it('first controllerchange after a fresh install is ignored (no prior controller, not an update)', () => {

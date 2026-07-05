@@ -217,7 +217,22 @@ export default async function middleware(request) {
 
   let html = await upstream.text();
 
-  const ogImage = `${ORIGIN}/og/${condition}.jpg`;
+  // Legacy ?bg= links used to preview a static stock photo (/og/<cond>.jpg).
+  // Point them at the branded /api/og card instead, so links ALREADY shared in
+  // the wild start previewing the real card on their next crawl — no reshare
+  // needed. Thread the coords the share link carries (buildShareUrl always
+  // includes lat/lon when the sender had a location) so /api/og renders the full
+  // weather card; ?c= reproduces the sender's on-screen condition family. A
+  // coord-less legacy link falls through to /api/og's branded generic card.
+  // /api/og strictly re-validates lat/lon/c, so passing them through raw is safe.
+  const ogParams = new URLSearchParams();
+  ogParams.set('lang', lang);
+  if (condition !== 'default') ogParams.set('c', condition);
+  const shareLat = url.searchParams.get('lat');
+  const shareLon = url.searchParams.get('lon');
+  if (shareLat) ogParams.set('lat', shareLat);
+  if (shareLon) ogParams.set('lon', shareLon);
+  const ogImage = `${ORIGIN}/api/og?${ogParams.toString()}`;
   const canonical = buildCanonicalUrl(url, condition, city);
   const title = resolveTitle(lang, condition);
   const baseDescription = resolveDescription(lang, condition);

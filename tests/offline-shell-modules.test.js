@@ -68,6 +68,8 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
     // joined it; 2026-07-03 adds geo-regions.js for context gating.
     // (coord-parse.js is a TRANSITIVE dep via
     // startup-location.js — covered by the dynamicModules precache check below.)
+    // The deploy stamp (BUILD_ID) is kept INLINE in app.js — deliberately not a
+    // separate imported module — so it never adds a hard offline-boot dependency.
     expect(importedModules.length).toBe(13);
     for (const mod of [
       '/assets/language-preferences.js',

@@ -29,6 +29,15 @@ import { startFirstOpenLocation } from './first-open-location.js';
 import { shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 
+// Deploy identity baked into THIS bundle. scripts/build.mjs rewrites the
+// __BUILD_ID__ placeholder to the Vercel commit SHA at build time (the string
+// literal survives minification). Kept inline in app.js — NOT a separate
+// imported module — so a partial precache can never leave app.js statically
+// importing a module that failed to cache, which would 503 the offline boot.
+// Unbuilt (dev/tests) it stays the placeholder and is treated as 'dev'. Shown
+// in Settings and compared against /api/version to detect a stale bundle.
+const BUILD_ID = '__BUILD_ID__';
+
 document.addEventListener("DOMContentLoaded", () => {
   // G4: signal to the index.html boot-failure guard that app.js loaded and
   // started executing. If app.js 404s / fails to parse, this stays unset and
@@ -431,6 +440,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // here. Bumped 1.4 → 1.5 with this release (splash, per-language bundles,
   // server cache, GPS-name fix).
   const APP_VERSION = '1.5';
+  // Short, human-diffable form of the deploy SHA baked into THIS bundle. 'dev'
+  // when unbuilt (placeholder still present or 'local') so Settings never shows a
+  // raw token. Al compares this against the live /api/version to confirm on-device
+  // in seconds that new code actually reached the installed app.
+  const isBuiltBuildId = !!BUILD_ID && !BUILD_ID.startsWith('__') && BUILD_ID !== 'local';
+  const BUILD_SHORT = isBuiltBuildId ? BUILD_ID.slice(0, 7) : 'dev';
 
   // Helper to get translation
   const t = (category, key) => {
@@ -620,12 +635,18 @@ document.addEventListener("DOMContentLoaded", () => {
       reloadForUpdate();
     });
 
-    // PW_UPDATE_AVAILABLE message from the SW activate handler — belt-and-
-    // braces alongside controllerchange. If for any reason controllerchange
-    // doesn't fire (which can happen in some browsers when a tab was never
-    // controlled), the explicit message still triggers the reload.
+    // PW_UPDATE_AVAILABLE message from the SW activate handler — belt-and-braces
+    // for the case that matters: a CONTROLLED client (installed PWA) whose
+    // `controllerchange` silently doesn't fire on the new SW (notably iOS
+    // standalone). Gated on hadControllerAtStart: a client that had NO controller
+    // at load fetched its code straight from the network (uncontrolled → no SW
+    // cache, and app.js is served must-revalidate), so it is already fresh and
+    // needs no reload. This gate is also the independent second line of defence
+    // against a first-visit reload — the SW additionally only broadcasts on a
+    // real update (hadPriorCaches), so the two guards agree.
     navigator.serviceWorker.addEventListener('message', (event) => {
       if (event.data?.type !== 'PW_UPDATE_AVAILABLE') return;
+      if (!hadControllerAtStart) return;
       reloadForUpdate(event.data.version);
     });
 
@@ -777,13 +798,32 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!resp.ok) return;
         const data = await resp.json();
         if (!data || typeof data.version !== 'string') return;
+        const server = data.version;
+        // Preferred signal: compare the SHA baked into THIS running bundle against
+        // the live deploy. This catches the real field failure — a returning user
+        // who OPENED onto stale code (the old SW served the previous deploy's
+        // app.js) — which the old session-baseline compare structurally could not
+        // (it recorded the already-new server SHA at boot, so server===baseline
+        // held forever and the banner never showed). The SW auto-reload is the
+        // primary cure; this banner is the belt-and-braces if that path is blocked
+        // (iOS PWA quirk, HTTP cache stuck), and it now covers the case that bit.
+        if (isBuiltBuildId) {
+          if (server !== BUILD_ID && !bannerShown) {
+            debugLog('[version] running stale bundle', BUILD_ID, '— live is', server);
+            showVersionBanner();
+            bannerShown = true;
+          }
+          return;
+        }
+        // Unbuilt bundle (dev/preview): no baked SHA to compare, so keep the
+        // session-baseline heuristic (detects a deploy that lands mid-session).
         if (sessionVersion === null) {
-          sessionVersion = data.version;
+          sessionVersion = server;
           debugLog('[version] session started on', sessionVersion);
           return;
         }
-        if (data.version !== sessionVersion && !bannerShown) {
-          debugLog('[version] new server version detected:', data.version, 'was', sessionVersion);
+        if (server !== sessionVersion && !bannerShown) {
+          debugLog('[version] new server version detected:', server, 'was', sessionVersion);
           showVersionBanner();
           bannerShown = true;
         }
@@ -893,7 +933,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const footerAttribution = document.getElementById('footerAttribution');
     if (footerAttribution) footerAttribution.textContent = t('misc', 'dataFrom');
     const versionEl = document.getElementById('appVersion');
-    if (versionEl) versionEl.textContent = `Version ${APP_VERSION}`;
+    if (versionEl) versionEl.textContent = `Version ${APP_VERSION} · Build ${BUILD_SHORT}`;
     const sharedIndicator = document.getElementById('sharedLocationIndicator');
     if (sharedIndicator) sharedIndicator.textContent = t('misc', 'viewingShared');
     refreshSaveButtonState();

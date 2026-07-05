@@ -147,8 +147,30 @@ export function buildOgViewModel(payload, options = {}) {
   };
 }
 
-export function buildFallbackViewModel(lang = 'en') {
+export function buildFallbackViewModel(lang = 'en', conditionOverride = null) {
   const safeLang = clampLang(lang);
+  // With no coordinates there's no live weather, but a legacy ?bg=<cond> share
+  // still carries the sender's on-screen condition. Honour it so the card shows
+  // the right background + localized headline + hero label (branded AND
+  // condition-matched) instead of a generic clear card — the coord-less legacy
+  // links are exactly the "already shared in the wild" ones this path improves.
+  // Temps/stats stay generic (no forecast without coords); the witty line stays
+  // the context-free brand tagline so no day/region-gated line can misfire here.
+  const condition = normalizeConditionParam(conditionOverride);
+  if (condition) {
+    return {
+      lang: safeLang,
+      location: 'South Africa',
+      condition,
+      timeOfDay: 'day',
+      tempRange: 'Probably',
+      headline: pickLocalized(WEATHER_COPY.headlines, condition, safeLang, 'South African weather'),
+      heroLabel: pickLocalized(WEATHER_COPY.heroLabels, condition, safeLang, 'Probably Weather'),
+      witty: 'Weather that speaks your language.',
+      stats: 'Live local forecast • Wind • Rain • UV',
+      backgroundPath: getOgStaticBackgroundPath(condition),
+    };
+  }
   return {
     lang: safeLang,
     location: 'South Africa',
@@ -396,14 +418,14 @@ export default async function handler(req, res) {
         console.error(`[pw-og-fail] weather fetch failed lat=${lat} lon=${lon}: ${weatherErr?.message || weatherErr}`);
       }
     }
-    const model = payload ? buildOgViewModel(payload, { lang, conditionOverride }) : buildFallbackViewModel(lang);
+    const model = payload ? buildOgViewModel(payload, { lang, conditionOverride }) : buildFallbackViewModel(lang, conditionOverride);
     sendPng(res, 200, await renderPng(model));
   } catch {
     // Primary render failed. Try the safe fallback model. If THAT also throws
     // (e.g. Satori-side breakage, missing font), respond with a no-cache 500
     // instead of letting the handler crash and Vercel return its own default.
     try {
-      sendPng(res, 200, await renderPng(buildFallbackViewModel(lang)));
+      sendPng(res, 200, await renderPng(buildFallbackViewModel(lang, conditionOverride)));
     } catch (err) {
       console.error('[OG] fallback render also failed:', err);
       res.setHeader('Content-Type', 'text/plain');
