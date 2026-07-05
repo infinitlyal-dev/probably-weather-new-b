@@ -734,3 +734,53 @@ Deterministic transforms from the CHECKPOINT scramble-audit maps:
 
 ## Still open (owner-deferred, reported not fixed)
 WhatsApp share M-2 (unbranded/off-brand preview photo) + M-3 (long URL message) pending Al's screenshots + design chat; install-banner/home-screen UI wave pending owner evidence; Honor OEM flow blocked on device data. All excluded from this session by the brief.
+
+---
+# Checkpoint: BRIEF 1 — UI wave + WhatsApp share redesign (M-2/M-3)
+**Generated:** 2026-07-05 (SAST) — Vigil / Opus 4.8 via Claude Code, work-like-fable v3 armed
+**Task:** Valk-spec front-end brief. Baseline moved past the brief's cited 58d6df3 → HEAD was 95fa5e8 (line-rulings apply session landed, as the brief anticipated). Shipped as bfae7b9.
+**Skills Used:** work-like-fable v3 (harness: .fable/TASK.md + stop/read gates), supervisor (this checkpoint).
+
+## What Was Done
+- **Task 1 — Button swap:** My Location took Save's old home right-slot (id=myLocationHome, .my-location-btn), wired to getCurrentLocation() (GPS → saved-home fallback → IP; works for both user types). Save (id=saveCurrent) relocated into the Search screen, restyled .use-location-btn; showScreen now toggles My Location home-only.
+- **Task 2 — Install banner (H-3):** bottom +12px → +78px (above the action row), min-height 56→48. Measured 16px gap at 390×844, overlaps=false.
+- **Task 3 — Ad placeholder:** buildAdSlot returns an empty anchor; .pw-ad-slot:empty collapses to zero (measured display:none→block when filled). Orphaned adSlot copy removed (Codex note).
+- **Task 4 — WhatsApp share:** shares the branded /share card link (buildShareLink) threaded with the display condition (?c=); api/og.js validates ?c= and re-applies context gates + night-cap (wittyContext.fallbackCondition). Message dropped the raw URL; link rides navigator.share url field. Legacy ?bg= kept.
+
+## Files Changed
+| File | Action | What Changed |
+|------|--------|-------------|
+| index.html | Modified | Home action row Save→My Location; Save moved into search header |
+| assets/app.js | Modified | myLocationHome wiring + label + showScreen toggle; buildAdSlot empty; share handler (buildShareLink + url field, no {url}); shareMessage trimmed; adSlot copy removed |
+| assets/app.css | Modified | .my-location-btn (renamed from home Save pill) + .use-location-btn.is-saved; install-banner reposition/slim; .pw-ad-slot:empty collapse |
+| assets/share-url.js | Modified | +buildShareLink, +sanitizeRawCondition, buildOgImageUrl threads ?c= |
+| api/share.js | Modified | threads query.c into the branded og:image |
+| api/og.js | Modified | +normalizeConditionParam; conditionOverride + fallbackCondition (night-cap) |
+| tests/*.test.js (3) | Modified | search-with-my-location (new layout), pre-resubmission-tier-1 (new share shape), og-image-share (+9 tests: share plumbing, condition thread, night-cap) |
+
+## Decisions Made
+- My Location → getCurrentLocation() (the proven shared flow) rather than a new bespoke handler. Why: it already cascades GPS→saved→IP, satisfying "works for GPS and saved-home users" verbatim; simplest correct thing.
+- Single cohesive commit (not 4 atomic). Why: app.js/app.css each span multiple tasks (interleaved hunks); non-interactive git can't split them without leaving a red-gate commit. Every commit stays green as a unit.
+- Short-link mechanism = existing /share (branded, already SW-query-distinct), NOT a new /s route. Why: lightest mechanism that keeps the WhatsApp preview working; a new route would need service-worker teaching + tests for zero real gain.
+- Condition threaded as raw ?c= (not normalizeShareCondition) so the card picks the precise witty bin (partly-cloudy, not cloudy). og.js allowlists it; junk falls back.
+- search-with-my-location.test.js:28-30 (which FORBADE my-location on home under the OLD design) rewritten to the new layout — disclosed spec-alignment, not gate-gaming.
+
+## Verification Evidence (per-item)
+- Suite: `npx vitest run` → **3517 passed / 3517** (start-count 3508; +1 test-split, +8 Task-4). Quoted output captured.
+- Build: `npm run build` → exit 0 (copy-split in sync, import-scan clean, 27/27 SW precache).
+- Codex (GPT-5.5) cross-family review: **no confirmed defects**; one note (stale adSlot comment/copy) — fixed. Its own vitest failed on a PowerShell-quoting artifact; my run passes.
+- Live deploy: `curl /api/version` → bfae7b9 (verified live).
+- M-2 live: `curl -A WhatsApp/2.23 /share?...&c=partly-cloudy` → og:image = the BRANDED `/api/og?...&c=partly-cloudy` (server-rendered, no JS) + localized og:description "Somerset West...: Waarskynlik 11°/18°. Effens bewolk." Card PNG viewed: bg photo + 11°/18° + AF witty "Bewolk maar met min ambisie." (the partly-cloudy bin — proves ?c= drove the bin).
+- Night-cap: live c=night at Somerset West (localHour 23 = genuinely night) → night card correct; unit test proves daytime (hour 14) demotes to the fallback pool. Both directions green.
+- Injection: junk `c=DROP TABLE` → rejected, still a valid fallback card (200 PNG).
+- UI at 390×844 (live production, Playwright): My Location in right slot, Save NOT on home (saveOnHome=false), banner bottom 694 vs action-row top 710 = 16px gap. Screenshot captured + delivered to Al.
+
+## Issues / Notes for the architect
+- **Provisional copy (native review):** new `misc.myLocation` zu/xh/st ("Indawo yami"/"Indawo yam"/"Sebaka sa ka") + the trimmed `shareMessage` zu/xh/st (": {url}" tail removed). Tagged provisional — fold into the pending Zu/Xh/St native pass.
+- **Night share bg:** c=night has no dedicated `og/night.jpg`, so the card bg falls back to `og/clear.jpg` (a daytime coastal shot) while the label/witty are correct-for-night. Pre-existing Option-B static-OG limitation, not a regression (old path showed a 'clear' card entirely). Post-launch: add og/night.jpg if a night-accurate share bg is wanted.
+- **scripts/verify-safe-area.mjs:71** still queries #saveCurrent (now in the search panel, hidden by default) — it only LOGS saveButtonTop (no assertion), so it doesn't fail; stale diagnostic, safe to leave or repoint to #myLocationHome later.
+- **preview_screenshot tool** timed out repeatedly this session (env/headless issue) — used direct DOM geometry measurement + Playwright for the production screenshot instead (more precise than a screenshot anyway).
+
+## Next Steps
+- Native Zu/Xh/St pass to cover the new provisional strings (myLocation + trimmed shareMessage).
+- Optional post-launch: og/night.jpg for night-accurate share bg; repoint verify-safe-area.mjs.
