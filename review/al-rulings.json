@@ -1,0 +1,5483 @@
+{
+  "generated": "2026-07-05T08:25:27.308Z",
+  "production": "58d6df3",
+  "total": 608,
+  "survivors": 410,
+  "killed": 198,
+  "unruled": 0,
+  "changed": 206,
+  "rulings": [
+    {
+      "index": 1,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 2,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 3,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 4,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 5,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 6,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 7,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 8,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 9,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 10,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 11,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 12,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 13,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 14,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 15,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 16,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 17,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 18,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 19,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 20,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 21,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 22,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 23,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 24,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 25,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 26,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 27,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 28,
+      "condition": "clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 29,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 30,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 31,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 32,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 33,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 34,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 35,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 36,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 37,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 38,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 39,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 40,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 41,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 42,
+      "condition": "clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 43,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 44,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 45,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 46,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 47,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 48,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 49,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 50,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 51,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 52,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 53,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 54,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 55,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 56,
+      "condition": "clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 57,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 58,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 59,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 60,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 61,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 62,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 63,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 64,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 65,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 66,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 67,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 68,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 69,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 70,
+      "condition": "clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 71,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 72,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 73,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 74,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 75,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 76,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 77,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 78,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 79,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 80,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 81,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 82,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 83,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 84,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 85,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 86,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 87,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 88,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 89,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 90,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 91,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 92,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 93,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 94,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 95,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 96,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 97,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 98,
+      "condition": "cloudy",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 99,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 100,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 101,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 102,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 103,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 104,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 105,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 106,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 107,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 108,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 109,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "BORDERLINE",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 110,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 111,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 112,
+      "condition": "cloudy",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 113,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 114,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 115,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 116,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 117,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 118,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 119,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 120,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 121,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 122,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 123,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 124,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 125,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 126,
+      "condition": "cloudy",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 127,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 128,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 129,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 130,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 131,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 132,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 133,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 134,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 135,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 136,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 137,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 138,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 139,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 140,
+      "condition": "cloudy",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 141,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 142,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 143,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 144,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 145,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 146,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 147,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 148,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 149,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 150,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 151,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 152,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 153,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 154,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 155,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 156,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 157,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 158,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 159,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 160,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 161,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 162,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 163,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 164,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 165,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 166,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 167,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 168,
+      "condition": "cold",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 169,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 170,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 171,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 172,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 173,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 174,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 175,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 176,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 177,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 178,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 179,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 180,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 181,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 182,
+      "condition": "cold",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 183,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 184,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 185,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 186,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 187,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 188,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 189,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 190,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 191,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 192,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 193,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 194,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 195,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 196,
+      "condition": "cold",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 197,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 198,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 199,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 200,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 201,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 202,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 203,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 204,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 205,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 206,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 207,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 208,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 209,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 210,
+      "condition": "cold",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 211,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 212,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 213,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 214,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 215,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 216,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 217,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 218,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 219,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 220,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 221,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 222,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 223,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 224,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 225,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 226,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 227,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 228,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 229,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 230,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 231,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 232,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 233,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 234,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 235,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 236,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 237,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 238,
+      "condition": "cold-clear",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 239,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 240,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 241,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 242,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 243,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 244,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 245,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 246,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 247,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 248,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 249,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 250,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 251,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 252,
+      "condition": "cold-clear",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 253,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 254,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 255,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 256,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 257,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 258,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 259,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 260,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 261,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 262,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 263,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 264,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 265,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 266,
+      "condition": "cold-clear",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 267,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 268,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 269,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 270,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 271,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 272,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 273,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 274,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 275,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 276,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 277,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 278,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 279,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 280,
+      "condition": "cold-clear",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 281,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 282,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 283,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 284,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 285,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 286,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 287,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 288,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 289,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 290,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 291,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 292,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 293,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 294,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 295,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 296,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 297,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 298,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 299,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 300,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 301,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 302,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 303,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 304,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 305,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 306,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 307,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 308,
+      "condition": "fog",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 309,
+      "condition": "fog",
+      "slot": "dawn",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 310,
+      "condition": "fog",
+      "slot": "dawn",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 311,
+      "condition": "fog",
+      "slot": "dawn",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 312,
+      "condition": "fog",
+      "slot": "dawn",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 313,
+      "condition": "fog",
+      "slot": "dawn",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 314,
+      "condition": "fog",
+      "slot": "dawn",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 315,
+      "condition": "fog",
+      "slot": "dawn",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 316,
+      "condition": "fog",
+      "slot": "dusk",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 317,
+      "condition": "fog",
+      "slot": "dusk",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 318,
+      "condition": "fog",
+      "slot": "dusk",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 319,
+      "condition": "fog",
+      "slot": "dusk",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 320,
+      "condition": "fog",
+      "slot": "dusk",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 321,
+      "condition": "fog",
+      "slot": "dusk",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 322,
+      "condition": "fog",
+      "slot": "dusk",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 323,
+      "condition": "fog",
+      "slot": "night",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 324,
+      "condition": "fog",
+      "slot": "night",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 325,
+      "condition": "fog",
+      "slot": "night",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 326,
+      "condition": "fog",
+      "slot": "night",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 327,
+      "condition": "fog",
+      "slot": "night",
+      "slots_served": 4,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 328,
+      "condition": "fog",
+      "slot": "night",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 329,
+      "condition": "fog",
+      "slot": "night",
+      "slots_served": 4,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 330,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 331,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 332,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 333,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 334,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 335,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 336,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 337,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 338,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 339,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 340,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 341,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 342,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 343,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 344,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 345,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 346,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 347,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 348,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 349,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 350,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 351,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 352,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 353,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 354,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 355,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 356,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 357,
+      "condition": "heat",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 358,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 359,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 360,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 361,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 362,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 363,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 364,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 365,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 366,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 367,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 368,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 369,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 370,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 371,
+      "condition": "heat",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 372,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 373,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 374,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 375,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 376,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 377,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 378,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 379,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 380,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 381,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 382,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 383,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 384,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 385,
+      "condition": "heat",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 386,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 387,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 388,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 389,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 390,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 391,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 392,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 393,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 394,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 395,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 396,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 397,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 398,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 399,
+      "condition": "heat",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 400,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 401,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 402,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 403,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 404,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 405,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 406,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 407,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 408,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 409,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 410,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 411,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 412,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 413,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 414,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 415,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 416,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 417,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 418,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 419,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 420,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 421,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 422,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 423,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 424,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 425,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 426,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 427,
+      "condition": "rain",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 428,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 429,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 430,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 431,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 432,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 433,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 434,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 435,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 436,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 437,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 438,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 439,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 440,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 441,
+      "condition": "rain",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 442,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 443,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 444,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 445,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 446,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 447,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 448,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 449,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 450,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 451,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 452,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 453,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 454,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 455,
+      "condition": "rain",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 456,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 457,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 458,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 459,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 460,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 461,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 462,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 463,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 464,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 465,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 466,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 467,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 468,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 469,
+      "condition": "rain",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 470,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 471,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 472,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 473,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 474,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 475,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 476,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 477,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 478,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 479,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 480,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 481,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 482,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 483,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 484,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 485,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 486,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 487,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 488,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 489,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 490,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 491,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 492,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 493,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 494,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 495,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 496,
+      "condition": "storm",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 497,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 498,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 499,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 3,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 500,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 501,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 502,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 503,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 504,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 505,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 506,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 507,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 508,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 509,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KILL",
+      "changed": true
+    },
+    {
+      "index": 510,
+      "condition": "storm",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 511,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 512,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 513,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 514,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 515,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 516,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 517,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 518,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 519,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 520,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 521,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 522,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 523,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 524,
+      "condition": "storm",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 525,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 526,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 527,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 528,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 529,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 530,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 531,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 532,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 533,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 534,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 535,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 536,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 537,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 538,
+      "condition": "storm",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 539,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 540,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 541,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 542,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 543,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 544,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 545,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 546,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 547,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 548,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 549,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 550,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 551,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 552,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 553,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 554,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 555,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 556,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 557,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 558,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 559,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 560,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 561,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 562,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 563,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 564,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 565,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 566,
+      "condition": "wind",
+      "slot": "day",
+      "slots_served": 1,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 567,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 568,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 569,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 570,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 571,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 572,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 573,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 574,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-BEAUTIFUL",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 575,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 576,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 577,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 578,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 579,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 580,
+      "condition": "wind",
+      "slot": "dawn",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 581,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 582,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 583,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 584,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 585,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 586,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 587,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 588,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 589,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 590,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 591,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 592,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 593,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 594,
+      "condition": "wind",
+      "slot": "dusk",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 595,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 596,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 597,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 598,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 599,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 600,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 601,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 602,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 603,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 604,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KEEP-FUNNY",
+      "al_verdict": "KEEP",
+      "changed": false
+    },
+    {
+      "index": 605,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 606,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    },
+    {
+      "index": 607,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KILL",
+      "changed": false
+    },
+    {
+      "index": 608,
+      "condition": "wind",
+      "slot": "night",
+      "slots_served": 2,
+      "vigil_verdict": "KILL-GENERIC",
+      "al_verdict": "KEEP",
+      "changed": true
+    }
+  ]
+}
