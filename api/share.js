@@ -156,7 +156,11 @@ export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
   // own validator is a loose Number() that accepts hex ('0x10'→16), so passing
   // raw query coords here reflected junk into the og:image/twitter:image tags.
   // No valid coords → default OG card.
-  const ogImage = buildOgImageUrl(hasCoords ? { lat, lon, lang } : { lang });
+  // condition (?c=) reproduces the sender's on-screen bg family + witty bin on
+  // the dynamic card. buildOgImageUrl format-sanitizes it; api/og.js does the
+  // semantic allowlist check. Only threaded alongside valid coords (the
+  // fallback card ignores condition anyway).
+  const ogImage = buildOgImageUrl(hasCoords ? { lat, lon, lang, condition: query.c } : { lang });
   const shareUrl = `${SHARE_ORIGIN}/share?${new URLSearchParams({ ...(hasCoords ? { lat: String(lat), lon: String(lon) } : {}), lang: String(lang) }).toString()}`;
 
   return `<!doctype html>

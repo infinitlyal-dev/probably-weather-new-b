@@ -18,7 +18,7 @@ button,
 }
 
 .share-btn,
-.save-current-btn,
+.my-location-btn,
 .language-btn,
 .use-location-btn {
   min-block-size: 44px;
@@ -843,6 +843,13 @@ body.ui-dark .daily-card {
 
 .use-location-btn:hover {
   background: rgba(255, 188, 64, 0.95);
+}
+
+/* Save-current button (relocated into the search header) reuses the
+   .use-location-btn pill; when the active place is saved it flips to a
+   brighter gold to reinforce the ★ Saved text state. */
+.use-location-btn.is-saved {
+  background: rgba(255, 221, 68, 0.95);
 }
 
 .search-body {
@@ -1843,11 +1850,11 @@ main#home-screen.main #confidence {
 /* ========== WEATHER ICONS ========== */
 .weather-icon { font-size: 1.4em; margin-right: 4px; }
 
-/* Share & Save buttons: hidden on desktop, shown on mobile via media query.
-   PW is mobile-first; desktop users get the same Save flow via the search
-   panel's per-row star buttons. */
+/* Share & My Location pills: hidden on desktop, shown on mobile via media
+   query. PW is mobile-first; desktop users navigate via the bottom nav, and
+   the Save flow lives in the search panel. */
 .share-btn,
-.save-current-btn {
+.my-location-btn {
   display: none;
 }
 
@@ -2296,10 +2303,11 @@ main#home-screen.main #confidence {
     opacity: 0.7;
   }
 
-  /* ── Save button: bottom-RIGHT pill, same style as Share; flips to
-     #FFDD44 (Probably gold) when the active place is in favourites. The
-     Hourly pill took the CENTRE slot as the primary CTA on home. ── */
-  .save-current-btn {
+  /* ── My Location button: bottom-RIGHT pill, same style as Share. One tap
+     back to the user's own weather (GPS or saved home) after browsing other
+     places. The Hourly pill took the CENTRE slot as the primary CTA on home.
+     Save moved into the Search panel (styled as a .use-location-btn). ── */
+  .my-location-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2319,14 +2327,10 @@ main#home-screen.main #confidence {
     white-space: nowrap;
     z-index: 50;
     text-shadow: 0 1px 4px rgba(0,0,0,0.35);
-    transition: opacity 0.2s ease, color 0.15s ease;
+    transition: opacity 0.2s ease;
   }
 
-  .save-current-btn.is-saved {
-    color: #FFDD44;
-  }
-
-  .save-current-btn:active {
+  .my-location-btn:active {
     opacity: 0.7;
   }
 
@@ -2640,18 +2644,24 @@ body.standalone-mode .install-footer-link {
   display: none !important;
 }
 
-/* Smart install banner — sits above the bottom nav */
+/* Smart install banner — a SLIM dismissible bar that sits ABOVE the home
+   action row (Share / Hourly / My Location), never overlapping it. It previously
+   shared the action row's bottom band (+12px) and, being full-width at
+   z-180, painted over all three buttons on a 390x844 screen (H-3). The
+   +78px offset clears the tallest action-row element (Hourly pill top ≈
+   +62px) with a comfortable gap; both use the same safe-area variable so
+   the gap holds on notched devices. */
 .install-banner {
   position: fixed;
   left: 12px;
   right: 12px;
-  bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom, 0px) + 12px);
+  bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom, 0px) + 78px);
   z-index: 180;
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 56px;
-  padding: 10px 14px;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 12px;
   border-radius: 14px;
   background: var(--panel-bg);
   backdrop-filter: blur(16px) saturate(120%);
@@ -2847,7 +2857,7 @@ body.standalone-mode .install-footer-link {
    iOS's native Share sheet pops up. Hide it while the iOS install modal
    is open so the user's attention isn't split between two share affordances. */
 body.install-modal-active .share-btn { display: none !important; }
-body.install-modal-active .save-current-btn { display: none !important; }
+body.install-modal-active .my-location-btn { display: none !important; }
 body.install-modal-active .nav-hourly-pill { display: none !important; }
 .install-step-list {
   list-style: none;
@@ -3201,42 +3211,17 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   color: rgba(255,255,255,0.65);
 }
 
-/* Reserved native ad slot — empty container with a witty placeholder until
-   Adsterra/Media.net approval lands. Designed to feel like part of the app
-   (rounded corners, subtle tint) not a dropped-in third-party widget. */
+/* Reserved native ad slot — an EMPTY layout anchor that stays ZERO height
+   until a real ad is injected. No dead grey box in the forecast when unfilled:
+   the slot collapses via :empty. When Adsterra/Media.net approval lands, the
+   ad node is appended here, the slot becomes non-empty and reclaims spacing. */
+.pw-ad-slot:empty {
+  display: none;
+}
 .pw-ad-slot {
   margin: 8px 0;
-  min-height: 100px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.04);
-  border: 1px dashed rgba(255,255,255,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 16px;
-  box-sizing: border-box;
-}
-.pw-ad-placeholder {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.pw-ad-label {
-  font-size: 0.85rem;
-  font-style: italic;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.4;
-}
-@media (max-width: 768px) {
-  .pw-ad-slot {
-    min-height: 80px;
-    padding: 10px 12px;
-  }
-  .pw-ad-label {
-    font-size: 0.8rem;
-  }
+  overflow: hidden;
 }
 
 /* ========== VERSION UPDATE BANNER ==========

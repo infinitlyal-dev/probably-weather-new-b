@@ -24,9 +24,28 @@ describe('search panel my-location entry point', () => {
     expect(app()).toMatch(/useMyLocationBtn\?\.addEventListener\('click'[\s\S]*getCurrentLocation/);
   });
 
-  it('removes the old top-right My Location button from the DOM and CSS', () => {
-    expect(html()).not.toMatch(/id="myLocationBtn"|my-location-btn/);
-    expect(app()).not.toMatch(/myLocationBtn/);
-    expect(css()).not.toMatch(/my-location-btn/);
+  it('places a My Location button in the home action row, wired to the shared geolocation flow', () => {
+    // Valk's UI wave: My Location took Save's old home right-slot — one tap
+    // back to the user's own weather (GPS or saved home) via getCurrentLocation.
+    // (Supersedes the earlier "no my-location button on home" guard.)
+    const source = html();
+    expect(source).toMatch(/id="myLocationHome"[^>]*class="my-location-btn"/);
+    expect(source).toMatch(/id="myLocationHome"[\s\S]*📍/);
+    expect(css()).toMatch(/\.my-location-btn\s*\{/);
+    expect(app()).toMatch(/const myLocationHome\s*=\s*\$\('#myLocationHome'\)/);
+    expect(app()).toMatch(/myLocationHome\?\.addEventListener\('click'[\s\S]*getCurrentLocation/);
+  });
+
+  it('relocates the Save button out of the home action row into the Search flow', () => {
+    const source = html();
+    const searchIdx = source.indexOf('id="search-screen"');
+    const saveIdx = source.indexOf('id="saveCurrent"');
+    expect(saveIdx).toBeGreaterThan(-1);
+    expect(searchIdx).toBeGreaterThan(-1);
+    // Save now lives inside the search screen (the favourites hub), not the
+    // home action row — its markup appears after the search-screen opens.
+    expect(saveIdx).toBeGreaterThan(searchIdx);
+    // And it is no longer the fixed bottom-right home pill.
+    expect(source).not.toMatch(/id="saveCurrent"[^>]*class="save-current-btn"/);
   });
 });

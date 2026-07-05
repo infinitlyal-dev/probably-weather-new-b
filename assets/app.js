@@ -10,7 +10,7 @@ import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
-import { buildShareUrl } from './share-url.js';
+import { buildShareLink } from './share-url.js';
 import {
   FRESHNESS_MS,
   SIGNIFICANT_MOVE_KM,
@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const descriptionEl = $('#description');
   const bgImg = $('#bgImg');
   const saveCurrent = $('#saveCurrent');
+  const myLocationHome = $('#myLocationHome');
   const particlesEl = $('#particles');
   const languageBtn = $('#languageBtn');
   const languageMenu = $('#languageMenu');
@@ -230,18 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     },
-    // Native ad slot placeholder — shown while Adsterra approval is pending.
-    // The .pw-ad-placeholder div gets swapped for the real ad iframe when
-    // live; the .pw-ad-slot wrapper stays as the layout anchor.
-    adSlot: {
-      placeholder: {
-        en: "Possible ad one day. Sadly, weather websites don't grow on trees.",
-        af: "Dalk eendag 'n advertensie. Ongelukkig groei weersvoorspellingswebwerwe nie op bome nie.",
-        zu: "Mhlawumbe isikhangiso ngelinye ilanga. Ngeshwa, amawebhusayithi esimo sezulu awakhuli ezihlahleni.",
-        xh: "Mhlawumbi intengiso ngenye imini. Ngelishwa, iiwebhusayithi zemozulu azikhuli emithini.",
-        st: "Mohlomong papatso ka tsatsi le leng. Ka bomadimabe, liwebsaete tsa boemo ba leholimo ha li hole lifateng."
-      }
-    },
     // Search screen
     search: {
       placeholder: { en: "Search for a place", af: "Soek 'n plek", zu: "Sesha indawo", xh: "Khangela indawo", st: "Batla sebaka" },
@@ -392,16 +381,21 @@ document.addEventListener("DOMContentLoaded", () => {
       savePlace: { en: "Save this place", af: "Stoor hierdie plek", zu: "Londoloza le ndawo", xh: "Gcina le ndawo", st: "Boloka sebaka sena" },
       share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
       shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" },
-      // Branded share message body. {city} is replaced with the location name
-      // (or "your area" when missing). {url} is the share URL. Tone stays
-      // warm and SA-flavoured; native-review flagged for ZU/XH/ST in
-      // SHARE_OG_NOTES.md.
+      // Home "My Location" button label — one tap back to the user's own weather.
+      // zu/xh/st PROVISIONAL pending native review (mirror indawo/sebaka vocab).
+      myLocation: { en: "My Location", af: "My Ligging", zu: "Indawo yami", xh: "Indawo yam", st: "Sebaka sa ka" },
+      // Branded share message body — a SHORT caption. {city} is replaced with
+      // the location name (or "your area" when missing). The share link now
+      // rides navigator.share's dedicated `url` field (NOT interpolated here),
+      // so the message body carries no raw URL (M-3). ZU/XH/ST are the existing
+      // native strings with the ": {url}" tail trimmed — PROVISIONAL, native
+      // review flagged in SHARE_OG_NOTES.md.
       shareMessage: {
-        en: "Check the weather in {city} — South African weather in your language: {url}",
-        af: "Check die weer in {city} — Suid-Afrikaanse weer in jou taal: {url}",
-        zu: "Bheka isimo sezulu e-{city} — isimo sezulu saseNingizimu Afrika ngolimi lwakho: {url}",
-        xh: "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho: {url}",
-        st: "Sheba boemo ba leholimo {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao: {url}"
+        en: "Check the weather in {city} — South African weather in your language.",
+        af: "Check die weer in {city} — Suid-Afrikaanse weer in jou taal.",
+        zu: "Bheka isimo sezulu e-{city} — isimo sezulu saseNingizimu Afrika ngolimi lwakho.",
+        xh: "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho.",
+        st: "Sheba boemo ba leholimo {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao."
       },
       shareYourArea: {
         en: "your area",
@@ -554,7 +548,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.body.classList.toggle('modal-open', which && which !== screenHome);
     document.body.classList.toggle('home-active', which === screenHome);
-    if (saveCurrent) saveCurrent.style.display = which === screenHome ? '' : 'none';
+    // Save moved into the Search panel (hidden with it) — no home-only toggle.
+    // My Location takes the home right-slot, shown only on home like Hourly.
+    if (myLocationHome) myLocationHome.style.display = which === screenHome ? '' : 'none';
     if (shareBtn) shareBtn.style.display = which === screenHome ? '' : 'none';
     if (navHourlyHome) navHourlyHome.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
@@ -891,6 +887,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
+    if (myLocationHome) myLocationHome.textContent = `📍 ${t('misc', 'myLocation')}`;
     // L3/L4/L6: footer attribution + shared-location indicator + version are
     // language-managed too.
     const footerAttribution = document.getElementById('footerAttribution');
@@ -1553,26 +1550,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const lang = settings.lang || 'en';
       const displayCond = window.__PW_LAST_DISPLAY || 'clear';
       const rawCity = (locationEl?.textContent || '').trim();
-      const cityForUrl = rawCity || null;
-      const url = buildShareUrl({ lat, lon, lang, condition: displayCond, city: cityForUrl });
+      // Share the branded /share card link. WhatsApp's crawler reads the
+      // server-rendered og:image — the /api/og card (background + temp + witty
+      // in the sender's language) — NOT the old ?bg= root URL whose middleware
+      // served a raw /og/<cond>.jpg stock photo (M-2). The display condition
+      // rides along (?c=) so the card reproduces the exact bg + witty bin the
+      // sender is looking at; api/og.js re-applies the context gates + night-cap.
+      const shareLink = buildShareLink({ lat, lon, lang, condition: displayCond });
       const cityForCopy = rawCity || t('misc', 'shareYourArea');
-      const text = t('misc', 'shareMessage')
-        .replace('{city}', cityForCopy)
-        .replace('{url}', url);
+      // Short caption — NO raw URL in the text (M-3). The link rides the
+      // dedicated navigator.share `url` field, so WhatsApp shows one clean link
+      // + the rich preview instead of a ~95-char URL glued into the sentence.
+      const text = t('misc', 'shareMessage').replace('{city}', cityForCopy);
       try {
         if (navigator.share) {
-          // URL is already interpolated into `text` via the {url} placeholder
-          // in T.misc.shareMessage. Passing it again as the dedicated `url`
-          // field made WhatsApp render the link twice in the message body
-          // (Codex Z5 finding, Phase 2). Dropping the field keeps WhatsApp's
-          // preview-card generation intact (it parses URLs from text) while
-          // removing the duplication.
-          await navigator.share({ title: 'Probably Weather', text });
+          await navigator.share({ title: 'Probably Weather', text, url: shareLink });
         } else if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(text);
+          await navigator.clipboard.writeText(`${text} ${shareLink}`);
           showToast('Share link copied');
         } else {
-          window.prompt('Copy this share link', text);
+          window.prompt('Copy this share link', `${text} ${shareLink}`);
         }
       } catch {}
     });
@@ -1630,21 +1627,15 @@ document.addEventListener("DOMContentLoaded", () => {
       listEl.appendChild(li);
     }
   }
-  // Reserved ad slot — empty container that ships with a witty placeholder.
-  // When Adsterra/Media.net approval lands, the .pw-ad-placeholder child gets
-  // swapped for the real ad iframe; the .pw-ad-slot wrapper stays as the
-  // layout anchor so spacing/sizing don't shift.
+  // Reserved ad slot — an EMPTY layout anchor that stays zero-height until a
+  // real ad is injected. No dead grey placeholder box in the forecast when
+  // unfilled (CSS collapses .pw-ad-slot:empty). When Adsterra/Media.net
+  // approval lands, the ad node is appended into this wrapper, which makes it
+  // non-empty and reclaims its spacing.
   function buildAdSlot(slotName) {
     const slot = document.createElement('div');
     slot.className = 'pw-ad-slot';
     slot.setAttribute('data-ad-slot', slotName);
-    const placeholder = document.createElement('div');
-    placeholder.className = 'pw-ad-placeholder';
-    const label = document.createElement('span');
-    label.className = 'pw-ad-label';
-    label.textContent = t('adSlot', 'placeholder');
-    placeholder.appendChild(label);
-    slot.appendChild(placeholder);
     return slot;
   }
   function renderHome(norm) {
@@ -2297,6 +2288,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (ev.key === 'Escape' && languageMenu?.classList.contains('open')) closeLanguageMenu();
   });
   saveCurrent?.addEventListener('click', () => { if (activePlace) toggleFavorite(activePlace); });
+  // My Location (home right-slot) → the shared geolocation flow, which returns
+  // the user to their own weather: GPS when available, saved home otherwise.
+  myLocationHome?.addEventListener('click', () => { getCurrentLocation(); });
   useMyLocationBtn?.addEventListener('click', () => { getCurrentLocation(); });
   searchCancel?.addEventListener('click', () => { setSearchEditMode(false); showScreen(screenHome); if (searchInput) searchInput.value = ''; });
   searchEditToggle?.addEventListener('click', () => { searchEditMode = !searchEditMode; setSearchEditMode(searchEditMode); });

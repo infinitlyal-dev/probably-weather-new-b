@@ -26,13 +26,29 @@ export function normalizeShareCondition(condition) {
   return 'default';
 }
 
-export function buildOgImageUrl({ lat, lon, lang = 'en' } = {}, origin = SHARE_ORIGIN) {
+// Format-sanitize a raw display condition for the ?c= share param — lowercase,
+// letters + hyphen only, length-capped. Preserves the PRECISE condition
+// (partly-cloudy, cold-clear) so the OG card can pick the exact witty bin,
+// unlike normalizeShareCondition which folds families for the static /og image.
+// api/og.js does the semantic allowlist check (KNOWN_CONDITIONS) on top of this.
+export function sanitizeRawCondition(condition) {
+  if (!condition) return '';
+  const v = String(condition).toLowerCase().trim();
+  return /^[a-z][a-z-]{1,20}$/.test(v) ? v : '';
+}
+
+export function buildOgImageUrl({ lat, lon, lang = 'en', condition } = {}, origin = SHARE_ORIGIN) {
   const safeLang = String(lang || 'en');
   const params = new URLSearchParams({ lang: safeLang });
   if (isValidLat(lat) && isValidLon(lon)) {
     params.set('lat', String(lat));
     params.set('lon', String(lon));
   }
+  // ?c= threads the sender's exact display condition so the dynamic card
+  // reproduces their background family + witty bin (api/og.js applies the
+  // Layer-1 context gates + night-cap on top).
+  const c = sanitizeRawCondition(condition);
+  if (c) params.set('c', c);
   return `${origin}/api/og?${params.toString()}`;
 }
 
@@ -57,4 +73,28 @@ export function buildShareUrl({ lat, lon, lang = 'en', condition, city } = {}, o
     if (trimmed) params.set('city', trimmed);
   }
   return `${origin}/?${params.toString()}`;
+}
+
+// Build the branded, crawler-friendly share link. Recipients — and WhatsApp's
+// link-preview crawler — land on /share (server-rendered by api/share.js):
+//   • og:image → the dynamic /api/og card (background photo + temperature +
+//     witty line in the sender's language), NOT a raw /og/<cond>.jpg stock
+//     photo. This is the M-2 fix: the share sends the meme, not a stock photo.
+//   • ?c=<condition> reproduces the exact condition the sender is looking at
+//     (bg family + witty bin); api/og.js re-applies the Layer-1 context gates
+//     and the night-cap on top, so no impossible combination ships.
+//   • /share then redirects a human tap to /?lat&lon&lang (the app root).
+// Shorter than the old ?bg=&lat=&lon=&lang=&city= root URL, and it rides
+// navigator.share's dedicated `url` field so the message text carries no raw
+// URL (M-3). /share is already SW-correct (query-distinct, never collapsed),
+// so this needs no new route or service-worker handling.
+export function buildShareLink({ lat, lon, lang = 'en', condition } = {}, origin = SHARE_ORIGIN) {
+  const params = new URLSearchParams({ lang: String(lang || 'en') });
+  if (isValidLat(lat) && isValidLon(lon)) {
+    params.set('lat', String(lat));
+    params.set('lon', String(lon));
+  }
+  const c = sanitizeRawCondition(condition);
+  if (c) params.set('c', c);
+  return `${origin}/share?${params.toString()}`;
 }

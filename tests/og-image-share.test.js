@@ -1,6 +1,7 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 import { WITTY_DAY_TAGS, dayAwarePool, eligibleWittyPool } from '../assets/witty-day-tags.js';
+import { buildShareLink, buildOgImageUrl, sanitizeRawCondition } from '../assets/share-url.js';
 
 const weatherPayload = {
   ok: true,
@@ -31,7 +32,7 @@ vi.mock('../api/weather.js', () => ({
   default: vi.fn(async (_req, res) => res.status(200).json(weatherPayload)),
 }));
 
-const { default: ogHandler, buildOgViewModel, CACHE_CONTROL } = await import('../api/og.js');
+const { default: ogHandler, buildOgViewModel, normalizeConditionParam, CACHE_CONTROL } = await import('../api/og.js');
 
 const callOg = async (query = {}) => {
   let statusCode = 200;
@@ -215,5 +216,88 @@ describe('OG card gates the witty line by the LOCATION day, not server-UTC (F1)'
     // must come from the Monday (location-day) pool.
     expect(model.witty).not.toBe(TUE_LINE);
     expect(dayAwarePool(WITTY_DAY_TAGS.witty.fog, FOG, 1, 22)).toContain(model.witty);
+  });
+});
+
+// BRIEF 1 / Task 4 — WhatsApp share redesign (M-2/M-3). The share must send the
+// branded /api/og card (not a /og/*.jpg stock photo), reproduce the sender's
+// on-screen condition, and never ship an impossible combination (night-cap).
+describe('branded share link (M-2/M-3 pipeline)', () => {
+  it('buildShareLink points at /share (branded card), not the ?bg= root, and threads ?c=', () => {
+    const link = buildShareLink({ lat: -34.1, lon: 18.83, lang: 'af', condition: 'partly-cloudy' });
+    const u = new URL(link);
+    expect(u.origin).toBe('https://probablyweather.co.za');
+    expect(u.pathname).toBe('/share');          // branded, server-rendered card
+    expect(link).not.toContain('/?bg=');         // NOT the old middleware stock-photo path
+    expect(u.searchParams.get('lat')).toBe('-34.1');
+    expect(u.searchParams.get('lon')).toBe('18.83');
+    expect(u.searchParams.get('lang')).toBe('af');
+    expect(u.searchParams.get('c')).toBe('partly-cloudy');
+  });
+
+  it('buildOgImageUrl threads the sanitized condition into the dynamic card URL', () => {
+    const og = buildOgImageUrl({ lat: -34.1, lon: 18.83, lang: 'en', condition: 'cold-clear' });
+    expect(new URL(og).searchParams.get('c')).toBe('cold-clear');
+  });
+
+  it('sanitizeRawCondition keeps valid conditions and rejects junk', () => {
+    expect(sanitizeRawCondition('partly-cloudy')).toBe('partly-cloudy');
+    expect(sanitizeRawCondition('COLD-CLEAR')).toBe('cold-clear');
+    expect(sanitizeRawCondition('drop table')).toBe('');   // space → rejected
+    expect(sanitizeRawCondition('')).toBe('');
+    expect(sanitizeRawCondition(undefined)).toBe('');
+  });
+
+  it('normalizeConditionParam (api/og.js) allowlists against the copy banks', () => {
+    expect(normalizeConditionParam('partly-cloudy')).toBe('partly-cloudy');
+    expect(normalizeConditionParam('night')).toBe('night');
+    expect(normalizeConditionParam('nonsense')).toBeNull();
+    expect(normalizeConditionParam('')).toBeNull();
+  });
+});
+
+describe('OG share card threads the sender condition (?c=) + respects the night-cap', () => {
+  afterEach(() => { vi.useRealTimers(); });
+
+  const payloadWith = ({ conditionKey = 'clear', offsetS = 7200 } = {}) => ({
+    ...weatherPayload,
+    location: { name: 'Cape Town, Western Cape', lat: -33.9249, lon: 18.4241 },
+    now: { ...weatherPayload.now, conditionKey },
+    daily: [{ ...weatherPayload.daily[0], conditionKey }],
+    meta: { utcOffsetSeconds: offsetS },
+  });
+
+  it('conditionOverride drives the card condition, background and headline', () => {
+    // Sender screen shows partly-cloudy even though the fresh fetch derived clear.
+    const model = buildOgViewModel(payloadWith({ conditionKey: 'clear' }), { lang: 'en', conditionOverride: 'partly-cloudy' });
+    expect(model.condition).toBe('partly-cloudy');
+    expect(model.backgroundPath).toBe('og/cloudy.jpg');   // OG alias folds partly-cloudy → cloudy
+    expect(model.headline).toBe(WEATHER_COPY.headlines['partly-cloudy'].en);
+  });
+
+  it('without an override, the card uses the weather-derived condition', () => {
+    const model = buildOgViewModel(payloadWith({ conditionKey: 'rain' }), { lang: 'en' });
+    expect(model.condition).toBe('rain');
+    expect(model.headline).toBe(WEATHER_COPY.headlines.rain.en);
+  });
+
+  it('night-cap: a night override in a DAYTIME context falls back to the day pool (no impossible combo)', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(Date.UTC(2026, 6, 6, 12, 0, 0)); // Mon 12:00 UTC → local 14:00 (UTC+2, daytime)
+    const context = { day: 1, hour: 14, month: 7, lat: -33.9249, lon: 18.4241, fallbackCondition: 'clear' };
+    const cappedPool = eligibleWittyPool({ copy: WEATHER_COPY, tags: WITTY_DAY_TAGS, condition: 'night', lang: 'en', context }).pool;
+    const model = buildOgViewModel(payloadWith({ conditionKey: 'clear' }), { lang: 'en', conditionOverride: 'night' });
+    expect(model.condition).toBe('night');                 // bg/label still reflect the sender's screen
+    expect(cappedPool).toContain(model.witty);             // ...but the witty line came from the fallback pool
+    expect(cappedPool).not.toEqual(WEATHER_COPY.witty.night.en); // proves the cap fired (not the night bin)
+  });
+
+  it('night-cap: a night override IN the night window keeps the night pool', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(Date.UTC(2026, 6, 6, 21, 0, 0)); // Mon 21:00 UTC → local 23:00 (UTC+2, night)
+    const context = { day: 1, hour: 23, month: 7, lat: -33.9249, lon: 18.4241, fallbackCondition: 'clear' };
+    const nightPool = eligibleWittyPool({ copy: WEATHER_COPY, tags: WITTY_DAY_TAGS, condition: 'night', lang: 'en', context }).pool;
+    const model = buildOgViewModel(payloadWith({ conditionKey: 'clear' }), { lang: 'en', conditionOverride: 'night' });
+    expect(nightPool).toContain(model.witty);
   });
 });

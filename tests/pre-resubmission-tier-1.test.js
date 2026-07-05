@@ -52,10 +52,13 @@ describe('tier 1 pre-resubmission fixes', () => {
     expect(source).toMatch(/shareMessage:\s*\{\s*en:\s*"Check the weather in \{city\}[\s\S]*?af:\s*"Check die weer in \{city\}[\s\S]*?zu:\s*"[\s\S]*?xh:\s*"[\s\S]*?st:\s*"/);
     expect(source).toMatch(/shareYourArea:\s*\{\s*en:\s*"your area",\s*af:\s*"jou omgewing"/);
 
-    // Share handler composes the message from the template and the URL.
+    // Share handler composes a SHORT caption from the template (city only — no
+    // {url} in the text; M-3) and passes the branded /share link via the
+    // dedicated navigator.share `url` field so WhatsApp shows a clean preview.
     expect(shareBlock).toMatch(/t\('misc',\s*'shareMessage'\)/);
     expect(shareBlock).toMatch(/\.replace\('\{city\}'/);
-    expect(shareBlock).toMatch(/\.replace\('\{url\}'/);
-    expect(shareBlock).toMatch(/buildShareUrl\(\{[\s\S]*?condition:\s*displayCond[\s\S]*?city:\s*cityForUrl/);
+    expect(shareBlock).not.toMatch(/\.replace\('\{url\}'/);
+    expect(shareBlock).toMatch(/buildShareLink\(\{[\s\S]*?condition:\s*displayCond/);
+    expect(shareBlock).toMatch(/navigator\.share\(\{[\s\S]*?url:\s*shareLink/);
   });
 });

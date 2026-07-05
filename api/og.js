@@ -82,6 +82,17 @@ function pickWitty(condition, lang, seed, context) {
   return lines[hashString(seed) % lines.length];
 }
 
+// Display conditions the client may thread via ?c= on a share card. Validated
+// against the copy banks so a crafted /api/og?c=<junk> can't select an unknown
+// bin — junk (or absent) falls back to the weather-derived condition. Semantic
+// gate on top of share-url.js's format sanitizer.
+const KNOWN_CONDITIONS = new Set(Object.keys(WEATHER_COPY.headlines));
+export function normalizeConditionParam(value) {
+  if (!value) return null;
+  const v = String(value).toLowerCase().trim();
+  return KNOWN_CONDITIONS.has(v) ? v : null;
+}
+
 export function buildOgViewModel(payload, options = {}) {
   const lang = clampLang(options.lang);
   const now = payload?.now || payload?.current || {};
@@ -89,7 +100,10 @@ export function buildOgViewModel(payload, options = {}) {
   const location = payload?.location?.name || options.locationName || 'South Africa';
   const locationLat = payload?.location?.lat;
   const locationLon = payload?.location?.lon;
-  const condition = now.conditionKey || today.conditionKey || 'clear';
+  // ?c= override reproduces the sender's exact on-screen condition (bg family +
+  // witty bin); the weather-derived condition is the night-cap fallback.
+  const derivedCondition = now.conditionKey || today.conditionKey || 'clear';
+  const condition = options.conditionOverride || derivedCondition;
   // Compute timeOfDay server-side from the same sunrise/sunset signals the
   // browser uses. This is what picks one of 36 canonical OG sources
   // (9 conditions × 4 times). Falls back to 'day' if signals are missing.
@@ -115,7 +129,7 @@ export function buildOgViewModel(payload, options = {}) {
   const day = isNum(offsetS) ? locDate.getUTCDay() : locDate.getDay();
   const hour = isNum(offsetS) ? locDate.getUTCHours() : locDate.getHours();
   const month = isNum(offsetS) ? locDate.getUTCMonth() + 1 : locDate.getMonth() + 1;
-  const wittyContext = { day, hour, lat: locationLat, lon: locationLon, month };
+  const wittyContext = { day, hour, lat: locationLat, lon: locationLon, month, fallbackCondition: derivedCondition };
 
   return {
     lang,
@@ -366,6 +380,9 @@ export default async function handler(req, res) {
   // / array params don't slip through to the internal weatherHandler call.
   const lat = parseCoord(query.lat);
   const lon = parseCoord(query.lon);
+  // ?c= (validated) lets a share card reproduce the sender's exact display
+  // condition — the bg family + witty bin they're looking at.
+  const conditionOverride = normalizeConditionParam(query.c);
 
   try {
     const hasValidCoords = Number.isFinite(lat) && Number.isFinite(lon) && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
@@ -379,7 +396,7 @@ export default async function handler(req, res) {
         console.error(`[pw-og-fail] weather fetch failed lat=${lat} lon=${lon}: ${weatherErr?.message || weatherErr}`);
       }
     }
-    const model = payload ? buildOgViewModel(payload, { lang }) : buildFallbackViewModel(lang);
+    const model = payload ? buildOgViewModel(payload, { lang, conditionOverride }) : buildFallbackViewModel(lang);
     sendPng(res, 200, await renderPng(model));
   } catch {
     // Primary render failed. Try the safe fallback model. If THAT also throws
