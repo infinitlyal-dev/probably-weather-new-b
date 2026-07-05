@@ -1413,6 +1413,10 @@ document.addEventListener("DOMContentLoaded", () => {
       // instead of waiting out grace → locate → weather → image — the serial
       // chain measured at 8-10s of black screen on mobile.
       try { localStorage.setItem('pw_last_bg', bgImg.getAttribute('src') || ''); } catch (_) {}
+      // Expose the landed hero URL to CSS so the desktop (>768px) contained-frame
+      // layout can paint the wide gutters with a blurred, darkened copy of the
+      // very same image. No-op on mobile (the gutter layer is desktop-only CSS).
+      try { document.documentElement.style.setProperty('--hero-url', `url("${bgImg.currentSrc || bgImg.src}")`); } catch (_) {}
       // Detach so a later cache eviction / network blip can't replay the chain.
       bgImg.onerror = null;
       bgImg.onload = null;

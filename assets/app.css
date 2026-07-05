@@ -2374,13 +2374,124 @@ main#home-screen.main #confidence {
   }
 }
 
-/* Desktop (≥769px): the bottom-CENTRE Hourly pill is mobile-only. Desktop
-   users navigate via the bottom-nav and the gold pill would compete with
-   the desktop sidebar layout. PW has been mobile-first throughout. */
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESKTOP CONTAINED FRAME (>768px)  [Task 2]
+   PW is mobile-first; on desktop we contain the FULL mobile layout in a centred
+   ~520px "phone" column and fill the wide gutters with the current background
+   image, heavily blurred + darkened, edge-to-edge. The hero keeps its portrait
+   composition (contained to the column → the same cover-crop as the phone, never
+   a wide horizontal stretch-crop). Every mobile control stays visible + working,
+   anchored to the column edges. This SUPERSEDES the earlier desktop rules that
+   hid the action-row pills (the base .share-btn/.my-location-btn display:none and
+   the old .nav-hourly-pill desktop hide) — desktop users need Share and Hourly.
+   ═════════════════════════════════════════════════════════════════════════ */
 @media (min-width: 769px) {
-  .nav-hourly-pill {
-    display: none;
+  :root { --pw-col: 520px; }
+
+  .container { max-width: var(--pw-col); }
+
+  /* Bottom nav rides the column, not the full viewport width. */
+  .nav {
+    left: 0; right: 0;
+    width: 100%;
+    max-width: var(--pw-col);
+    margin-inline: auto;
   }
+
+  /* Install banner rides the column too. */
+  .install-banner {
+    max-width: var(--pw-col);
+    margin-inline: auto;
+  }
+
+  /* Footer attribution: anchor to the column's right edge (not the viewport's)
+     and cap its width so the long "Data from…" line wraps inside the column
+     instead of running across the gutter and under the My Location pill. */
+  .footer {
+    right: calc(50% - (var(--pw-col) / 2) + 10px);
+    max-width: calc(var(--pw-col) - 140px);
+    text-align: right;
+  }
+
+  /* Hero: sharp portrait image, contained to the column so it keeps the phone's
+     composition (cover-crops top/bottom, never the wide horizontal crop). */
+  #bg { display: flex; justify-content: center; }
+  #bgImg {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    width: var(--pw-col);
+  }
+  /* Gutters: the same hero (via --hero-url, set in setBackgroundFor), heavily
+     blurred + darkened, edge-to-edge behind the sharp hero. scale() hides the
+     transparent edge-bleed a large blur radius pulls in. */
+  #bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: var(--hero-url, none);
+    background-size: cover;
+    background-position: center center;
+    filter: blur(34px) brightness(0.4) saturate(1.05);
+    transform: scale(1.15);
+  }
+  #scrim { z-index: 2; }
+
+  /* Restore the mobile action row (base rules hide these on desktop). Share &
+     My Location anchor to the COLUMN edges; the gold Hourly pill is already
+     viewport-centred, which coincides with the centred column. */
+  .share-btn,
+  .my-location-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: fixed;
+    bottom: calc(var(--nav-h, 72px) + 16px);
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 50;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    transition: opacity 0.2s ease;
+  }
+  .share-btn:active,
+  .my-location-btn:active { opacity: 0.7; }
+  .share-btn  { left:  calc(50% - (var(--pw-col) / 2) + 12px); right: auto; }
+  .my-location-btn { right: calc(50% - (var(--pw-col) / 2) + 12px); left: auto; }
+
+  .nav-hourly-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(var(--nav-h, 72px) + 12px);
+    padding: 10px 24px;
+    min-height: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+    background: linear-gradient(135deg, #FFDD44, #FFAA00);
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    white-space: nowrap;
+    z-index: 51;
+    box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
+    font-family: inherit;
+  }
+  .nav-hourly-pill:active { transform: translateX(-50%) scale(0.97); }
 }
 
 /* ========== SHORT-HEIGHT MOBILE DEVICES ========== */
