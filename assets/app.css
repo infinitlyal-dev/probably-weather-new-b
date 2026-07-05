@@ -2404,14 +2404,11 @@ main#home-screen.main #confidence {
     margin-inline: auto;
   }
 
-  /* Footer attribution: anchor to the column's right edge (not the viewport's)
-     and cap its width so the long "Data from…" line wraps inside the column
-     instead of running across the gutter and under the My Location pill. */
-  .footer {
-    right: calc(50% - (var(--pw-col) / 2) + 10px);
-    max-width: calc(var(--pw-col) - 140px);
-    text-align: right;
-  }
+  /* Footer attribution is hidden on desktop: the long "Data from…" byline
+     collides with the action row in the narrow column, and the full attribution
+     already lives on the Sources page (in the bottom nav). Keeps the column
+     bottom clean. Mobile keeps its footer (this block is >768px only). */
+  .footer { display: none; }
 
   /* Hero: sharp portrait image, contained to the column so it keeps the phone's
      composition (cover-crops top/bottom, never the wide horizontal crop). */
