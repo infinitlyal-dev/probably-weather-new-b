@@ -784,3 +784,42 @@ WhatsApp share M-2 (unbranded/off-brand preview photo) + M-3 (long URL message) 
 ## Next Steps
 - Native Zu/Xh/St pass to cover the new provisional strings (myLocation + trimmed shareMessage).
 - Optional post-launch: og/night.jpg for night-accurate share bg; repoint verify-safe-area.mjs.
+
+---
+
+# Checkpoint: BRIEF 3 — share image fix + UI polish + fog sensitivity (5 tasks)
+**Generated:** 2026-07-06 (SAST)
+**Engine:** Valk (Fable 5) via Claude Code, work-like-fable v3 armed. Codex (GPT-5.5) cross-family review before every push.
+**Start:** HEAD d247e88 = live /api/version. Baseline suite 3,540/3,540 (one pre-existing flake, fixed — see T1). **End:** HEAD dbaabc0 live, 3,549/3,549.
+
+## Task 1 — WhatsApp preview image (823bee1 + 866af86 + ce4bc09)
+- Root cause of the field failure: /api/og served an 842KB PNG; WhatsApp silently drops oversized preview images. Now Satori's PNG is transcoded to JPEG via sharp (q82-first, hard 300KB budget). **Live: 200 image/jpeg 52,398 bytes** on the field-case URL; local probe of all 15 conditions: heaviest 80.7KB.
+- Cold generation 3.7s (incl. weather aggregation) — inside crawler patience; CDN s-maxage=3600+SWR → repeat fetch 65ms (X-Vercel-Cache HIT). Codex finding fixed: degraded renders (weather fetch fails on valid coords / render catch-path) short-cache 60s so a transient failure can't pin a generic card for an hour.
+- Share URL shortened: buildShareLink rounds to 2dp (~1km) — live-verified both field coords (West New York) and Strand resolve correctly; numbers-only guard (no Number() junk coercion — Codex finding).
+- AF share string now "Kyk na die weer in {city} — …" (Al's wording verbatim; EN unchanged; zu/xh/st untouched provisional debt).
+- **Deploy drama, disclosed:** first push 500'd /api/og live for ~20min — the Windows-generated package-lock.json carried ONLY @img/sharp-win32-x64, so Vercel's linux builder never installed sharp's linux binary. Fixed via `npm install --os=linux --cpu=x64 sharp` (lockfile now carries all platforms); an interim includeFiles brace-glob experiment (866af86) was reverted. /share itself never broke (previews were imageless during the window, as they already were from the field bug).
+- Flake fix (disclosed test change): tests/api-input-hardening.test.js 120-char boundary test does live network and died at vitest's 5s default (5023ms observed at baseline, pre-change); now 20s timeout.
+
+## Task 2 — Action row rebalance (b510e61)
+- Al's ruling implemented: Hourly LEFT (dark) · Share CENTRE (gold primary — growth engine) · My Location RIGHT (dark). Equal thirds: 117×46 each at y=714, 8px gaps @390×844 (measured locally AND on production). zu longest labels fit (no overflow). Desktop >769px gets the same trio anchored to the 520px column. DOM reordered to visual order. Codex SHIP.
+
+## Task 3 — Particles z-order (ccfb00f)
+- Diagnosis: reproduced Al's field evidence in Chromium — the animated-transform streaks get compositor-promoted and painted ABOVE the z:10 container from a body-level fixed layer at z:5 (classic layer-sort escape; worst on iOS).
+- Structural fix: #particles now lives INSIDE #bg (fixed, z:-1) at z:3 — above photo+scrim, and the whole background context is below all UI, so promotion can't escape. Verified with dense rain + storm mixes: streaks under header/banner/pills/nav, over the photo. Reduced-motion hide intact. Codex SHIP, no findings.
+
+## Task 4 — Search hierarchy (d190676)
+- One gold primary per screen: "Use my location" keeps gold; #saveCurrent (+.save-secondary) is a dark glass pill; saved state = gold star/text + gold border on dark. Verified AF both states @390×844. Codex SHIP 4/4 clean.
+
+## Task 5 — Fog over-sensitivity (dbaabc0)
+- **Diagnosis first (from the captured live payload):** rule `corroborated-fog-vote` upgraded cloudy→fog on ONE fog-family vote — Pirate's desc "Mist" (categorizeDesc buckets mist→fog) — "corroborated" by consensus humidity 78.7% (threshold 78, calibrated on real 80.4% fog) + wind 3km/h. That's the whole false positive: a mist desc + a damp morning.
+- Fix 1: isTrueFogDesc() — only descs saying fog (not mist/haze/smoke) count as votes for the corroborated upgrade. All 5 sources keep a reachable true-fog desc (verified in the mappers); the 2026-06-01 real-fog fixture (desc "Fog", 80.4%) still upgrades — thresholds untouched.
+- Fix 2: detectAdvectionFog current-fog gate 5km→1.5km on RAW metres (1–5km = mist band; 4.9km-fires was the false-positive class). Trend gate (2km, confidence-only) untouched.
+- **Interaction with accepted Codex residuals (extended, not undone):** mist/haze still bucket to 'fog' for description voting, majority-override-clear and the far-day ≥2-vote demotion — all unchanged. NEW disclosed residuals from this review: (a) two mist votes winning the weighted plurality can still produce a fog headline (pre-existing path, untouched); (b) WeatherAPI "Freezing fog" buckets to cold, so it can't contribute a true-fog vote (rare in SA; disclosed).
+- Named regression: `STRAND 2026-07-06` describe — both directions proven. **Live proof:** post-deploy Strand pull shows Pirate STILL voting "Mist" and the condition resolving cloudy with zero fog overrides — the exact field configuration, fixed in production.
+
+## Gates
+Suite 3,540 → 3,549 (all green); npm run build green every push; Codex cross-family review before every push (2 real findings fixed pre-push T1; 3 minors fixed pre-push T5); /api/version verified after every push. Final HEAD dbaabc0 live.
+
+## Awaiting Al
+- One real WhatsApp share from his phone (T1 final confirmation — the crawler/bytes side is proven; his device seeing the image is the last mile). NOTE: WhatsApp may serve a cached old preview for a URL shared before today; a share of a NEW location/condition combination is the clean test.
+- Eyes on the new action row / search screen / rain overlay on the real device (preview-measured + production-measured, but phone eyes are source of truth).
