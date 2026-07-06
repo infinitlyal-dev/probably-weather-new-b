@@ -101,14 +101,31 @@ describe('detectAdvectionFog — trend detection', () => {
 });
 
 describe('detectAdvectionFog — boundaries and edge cases', () => {
-  it('visibility exactly 5km does NOT fire (strict < 5km)', () => {
-    const h = omHourly({ visM: 5000, rh: 97, tempC: 15, dewC: 14.5, precipProb: 0, precipMm: 0 });
+  // 2026-07-06 tightening: the current-fog visibility gate moved 5km → 1.5km.
+  // 1-5km is the MIST band (industry convention: fog <1km, mist 1-5km) and
+  // must not present as the fog condition — the old 4.9km-fires behaviour was
+  // the light-mist false-positive class from the Strand field report.
+  it('visibility 1.5km does NOT fire (strict < 1.5km — mist band starts here)', () => {
+    const h = omHourly({ visM: 1500, rh: 97, tempC: 15, dewC: 14.5, precipProb: 0, precipMm: 0 });
     expect(detectAdvectionFog(h, 10).currentFog).toBe(false);
   });
 
-  it('visibility 4.9km with saturated air DOES fire', () => {
-    const h = omHourly({ visM: 4900, rh: 95, tempC: 15, dewC: 13.5, precipProb: 0, precipMm: 0 });
+  it('visibility 1.4km with saturated air DOES fire (fog-grade murk)', () => {
+    const h = omHourly({ visM: 1400, rh: 95, tempC: 15, dewC: 13.5, precipProb: 0, precipMm: 0 });
     expect(detectAdvectionFog(h, 10).currentFog).toBe(true);
+  });
+
+  it('visibility 1450m fires — the gate compares RAW metres, not the 0.1-rounded visKm (Codex finding)', () => {
+    // 1450m rounds to visKm 1.5; a rounded compare would wrongly miss it.
+    const h = omHourly({ visM: 1450, rh: 95, tempC: 15, dewC: 14, precipProb: 0, precipMm: 0 });
+    const r = detectAdvectionFog(h, 10);
+    expect(r.visKm).toBe(1.5);
+    expect(r.currentFog).toBe(true);
+  });
+
+  it('visibility 3km with saturated air does NOT fire — mist must fall through', () => {
+    const h = omHourly({ visM: 3000, rh: 95, tempC: 15, dewC: 13.5, precipProb: 0, precipMm: 0 });
+    expect(detectAdvectionFog(h, 10).currentFog).toBe(false);
   });
 
   it('humidity 89% (just below the 90% gate) does NOT fire', () => {

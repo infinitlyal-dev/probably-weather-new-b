@@ -1689,15 +1689,24 @@ export default async function handler(req, res) {
     // IF the consensus humidity AND wind corroborate it. Runs AFTER the detector
     // so detector-fog (Masi) keeps precedence; a fog VOTE is required so humidity
     // alone never fabricates fog. See corroboratedFogUpgrade + its unit tests.
-    const nowFogVoteCount = sourceConditionVotes.filter(v => v.vote === 'fog').length;
+    //
+    // 2026-07-06 field false positive (Strand ~07:45): Pirate Weather's "Mist"
+    // desc buckets to the fog vote-family, and one mist vote + humidity 78.7%
+    // + wind 3km/h cleared this upgrade — the app said "Foggy out there." over
+    // a crisp mountain horizon. Mist (1-5km) is NOT fog-grade evidence (fog =
+    // <1km, industry convention), so ONLY true-fog descs count as votes here.
+    // Mist/haze still bucket to 'fog' everywhere else (description voting,
+    // majority-override guard, far-day demotion) — those are the accepted
+    // Codex-review trade-offs and are unchanged.
+    const nowFogVoteCount = sourceConditionVotes.filter(v => v.vote === 'fog' && isTrueFogDesc(v.desc)).length;
     if (corroboratedFogUpgrade({ conditionKey: nowConditionKey, fogVoteCount: nowFogVoteCount, humidity: medHumidity, windKph: medWindKph })) {
-      const fogVoteSources = sourceConditionVotes.filter(v => v.vote === 'fog').map(v => v.source);
+      const fogVoteSources = sourceConditionVotes.filter(v => v.vote === 'fog' && isTrueFogDesc(v.desc)).map(v => v.source);
       debugLog(`[Layer A.2 corroborated fog] ${nowFogVoteCount} fog vote(s) [${fogVoteSources.join(', ')}] + consensus humidity ${medHumidity}% + wind ${medWindKph}km/h → fog (was ${nowConditionKey})`);
       nowOverrides.push({
         rule: 'corroborated-fog-vote',
         from: nowConditionKey,
         to: 'fog',
-        reasonDetail: `${nowFogVoteCount} source(s) voted fog, consensus humidity ${medHumidity}%, wind ${medWindKph}km/h`,
+        reasonDetail: `${nowFogVoteCount} true-fog vote(s) (mist/haze excluded), consensus humidity ${medHumidity}%, wind ${medWindKph}km/h`,
       });
       nowConditionKey = 'fog';
       nowConditionReason = 'corroborated-fog-vote';
@@ -1708,7 +1717,7 @@ export default async function handler(req, res) {
     //   · a fog trend is incoming (detector saw it forming, ensemble hasn't), OR
     //   · fewer than 4 active sources agree with the final condition's category.
     // A confirmed CURRENT-hour fog override stays HIGH — the detector's gates
-    // (vis<5km + humidity>=90 + dew-spread<=2 + no precip) make it near-certain.
+    // (vis<1.5km + humidity>=90 + dew-spread<=2 + no precip) make it near-certain.
     const finalVoteBucket = conditionKeyToVoteBucket(nowConditionKey);
     const agreeingSources = sourceConditionVotes.filter(v => v.vote === finalVoteBucket).length;
     const detectorVerdict = fogDetector.currentFog ? 'fog'
@@ -2366,8 +2375,18 @@ function detectAdvectionFog(omHourly, currentHourIdx) {
   out.dewSpread  = dewSpread;
 
   // Current-hour fog: murk + saturated air + nothing wet to explain the murk.
+  // Visibility gate tightened 5km → 1.5km (2026-07-06): 1-5km is the MIST
+  // band by industry convention and must not present as the fog condition —
+  // 4.9km + saturated air used to fire, which is exactly the light-mist
+  // false-positive class from the Strand field report. 1.5 (not a strict 1.0)
+  // keeps headroom for OM's grid visibility under-resolving dense patches;
+  // every real-fog calibration fixture (Strand 1.0km, Masi 0.2km) sits under
+  // it. The 2km TREND gate below is unchanged — it only lowers copy
+  // confidence, never the condition.
+  // Gate on RAW metres (not the display-rounded visKm): 1450m rounds to
+  // visKm 1.5 and would wrongly miss the strict <1.5km compare.
   out.currentFog = (
-    out.visKm < 5 &&
+    visM < 1500 &&
     humidity >= 90 &&
     dewSpread !== null && dewSpread <= 2 &&
     (precipProb === null || precipProb < 30) &&
@@ -2430,6 +2449,23 @@ export const FOG_VOTE_MIN_HUMIDITY = 78;   // %
 export const FOG_VOTE_MAX_WIND_KPH = 10;   // km/h
 
 /**
+ * Is a source description TRUE fog (visibility <1km class) rather than
+ * mist/haze/smoke (1-5km class)?
+ *
+ * categorizeDesc deliberately buckets mist/haze/smoke into the 'fog' vote
+ * family so low-visibility weather never reads "Pleasant" — that stays. But
+ * the corroborated single-vote UPGRADE (clear/cloudy → fog headline) needs
+ * fog-grade evidence: on 2026-07-06 the faintest Strand morning mist (Pirate
+ * "Mist", humidity 78.7%, wind 3km/h, mountain crisp on the horizon) hit the
+ * fog hero. Mist/haze must fall through to the otherwise-prevailing
+ * condition; only a source explicitly saying fog can drive the upgrade.
+ */
+function isTrueFogDesc(desc) {
+  const d = String(desc || '').toLowerCase();
+  return d.includes('fog') && !d.includes('mist') && !d.includes('haze') && !d.includes('smoke');
+}
+
+/**
  * Vote-driven fog path that complements the single-source visibility detector.
  *
  * The detector reads visibility from Open-Meteo only; when OM's global grid
@@ -2453,4 +2489,4 @@ function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph 
 
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc, pickWeightedMostCommon, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade };
+export { deriveCondition, categorizeDesc, pickWeightedMostCommon, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc };

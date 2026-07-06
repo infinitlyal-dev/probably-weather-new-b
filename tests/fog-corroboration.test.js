@@ -17,9 +17,11 @@ import { describe, expect, it } from 'vitest';
 import {
   countsAsWeatherVote,
   corroboratedFogUpgrade,
+  categorizeDesc,
   FOG_VOTE_MIN_HUMIDITY,
   FOG_VOTE_MAX_WIND_KPH,
   detectAdvectionFog,
+  isTrueFogDesc,
 } from '../api/weather.js';
 
 describe('CHANGE 1 — fog votes count as real weather (block majority-override-clear)', () => {
@@ -75,6 +77,65 @@ describe('CHANGE 2 — corroborated fog: thresholds separate the live fixtures',
   it('missing humidity/wind data → no upgrade (cannot corroborate)', () => {
     expect(corroboratedFogUpgrade({ conditionKey: 'cloudy', fogVoteCount: 1, humidity: null, windKph: 4 })).toBe(false);
     expect(corroboratedFogUpgrade({ conditionKey: 'cloudy', fogVoteCount: 1, humidity: 85, windKph: null })).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 2026-07-06 field false positive — mist is NOT fog-grade evidence.
+//
+// Live Strand pull ~07:45 SAST (captured payload): sourceVotes = OM "Overcast"
+// (cloudy), WA "Clear sky" (clear), Pirate "Mist" (fog bucket), MET "Partly
+// cloudy" (clear), Tomorrow.io "Overcast" (cloudy). Ensemble said cloudy; the
+// corroborated-fog-vote rule then upgraded to FOG on Pirate's lone "Mist" +
+// consensus humidity 78.7% + wind 3km/h — while Al's photo shows a broadly
+// clear morning, mountain crisp on the horizon. Industry convention: fog is
+// visibility <1km; mist is 1-5km and must fall through to the prevailing
+// condition. The fix counts ONLY true-fog descs as votes for the upgrade;
+// mist/haze/smoke keep their 'fog' bucket everywhere else (description
+// voting, majority-override guard, far-day demotion — the accepted
+// Codex-review trade-offs are unchanged).
+// ---------------------------------------------------------------------------
+describe('STRAND 2026-07-06 regression — light mist must not present as fog', () => {
+  const strandVotes = [
+    { source: 'Open-Meteo',     desc: 'Overcast',      vote: categorizeDesc('Overcast') },
+    { source: 'WeatherAPI',     desc: 'Clear sky',     vote: categorizeDesc('Clear sky') },
+    { source: 'Pirate Weather', desc: 'Mist',          vote: categorizeDesc('Mist') },
+    { source: 'MET Norway',     desc: 'Partly cloudy', vote: categorizeDesc('Partly cloudy') },
+    { source: 'Tomorrow.io',    desc: 'Overcast',      vote: categorizeDesc('Overcast') },
+  ];
+
+  it('FIELD CASE: 1 Mist vote + humidity 78.7% + wind 3km/h → upgrade does NOT fire', () => {
+    // Same filter as the api/weather.js call site.
+    const trueFogVotes = strandVotes.filter(v => v.vote === 'fog' && isTrueFogDesc(v.desc)).length;
+    expect(trueFogVotes).toBe(0);
+    expect(corroboratedFogUpgrade({ conditionKey: 'cloudy', fogVoteCount: trueFogVotes, humidity: 78.7, windKph: 3 }))
+      .toBe(false);
+  });
+
+  it('TRUE FOG preserved: the 2026-06-01 Strand fixture (Pirate "Fog") still upgrades', () => {
+    const votes = [...strandVotes];
+    votes[2] = { source: 'Pirate Weather', desc: 'Fog', vote: categorizeDesc('Fog') };
+    const trueFogVotes = votes.filter(v => v.vote === 'fog' && isTrueFogDesc(v.desc)).length;
+    expect(trueFogVotes).toBe(1);
+    expect(corroboratedFogUpgrade({ conditionKey: 'cloudy', fogVoteCount: trueFogVotes, humidity: 80.4, windKph: 4.4 }))
+      .toBe(true);
+  });
+
+  it('isTrueFogDesc separates the fog class from the mist/haze/smoke class', () => {
+    expect(isTrueFogDesc('Fog')).toBe(true);
+    expect(isTrueFogDesc('Depositing rime fog')).toBe(true);
+    expect(isTrueFogDesc('Light fog')).toBe(true);
+    expect(isTrueFogDesc('Mist')).toBe(false);
+    expect(isTrueFogDesc('Haze')).toBe(false);
+    expect(isTrueFogDesc('Smoke')).toBe(false);
+    expect(isTrueFogDesc('')).toBe(false);
+    // mist/haze STILL bucket to the fog vote-family for everything else
+    expect(categorizeDesc('Mist')).toBe('fog');
+    expect(categorizeDesc('Haze')).toBe('fog');
+  });
+
+  it('mist still counts as weather for the majority-override-clear guard (unchanged trade-off)', () => {
+    expect(countsAsWeatherVote(categorizeDesc('Mist'))).toBe(true);
   });
 });
 
