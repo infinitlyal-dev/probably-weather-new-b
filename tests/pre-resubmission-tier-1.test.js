@@ -49,7 +49,8 @@ describe('tier 1 pre-resubmission fixes', () => {
     const shareBlock = source.match(/shareBtn\.addEventListener\('click', async \(\) => \{(?<body>[\s\S]*?)\n    \}\);/)?.groups?.body || '';
 
     // shareMessage and shareYourArea translation banks exist for all 5 langs.
-    expect(source).toMatch(/shareMessage:\s*\{\s*en:\s*"Check the weather in \{city\}[\s\S]*?af:\s*"Check die weer in \{city\}[\s\S]*?zu:\s*"[\s\S]*?xh:\s*"[\s\S]*?st:\s*"/);
+    // AF opener is Al's exact wording (2026-07-06): "Kyk na die weer in {place}…"
+    expect(source).toMatch(/shareMessage:\s*\{\s*en:\s*"Check the weather in \{city\}[\s\S]*?af:\s*"Kyk na die weer in \{city\}[\s\S]*?zu:\s*"[\s\S]*?xh:\s*"[\s\S]*?st:\s*"/);
     expect(source).toMatch(/shareYourArea:\s*\{\s*en:\s*"your area",\s*af:\s*"jou omgewing"/);
 
     // Share handler composes a SHORT caption from the template (city only — no

@@ -32,7 +32,8 @@ vi.mock('../api/weather.js', () => ({
   default: vi.fn(async (_req, res) => res.status(200).json(weatherPayload)),
 }));
 
-const { default: ogHandler, buildOgViewModel, buildFallbackViewModel, normalizeConditionParam, CACHE_CONTROL } = await import('../api/og.js');
+const { default: ogHandler, buildOgViewModel, buildFallbackViewModel, normalizeConditionParam, CACHE_CONTROL, DEGRADED_CACHE_CONTROL, JPEG_BYTE_BUDGET } = await import('../api/og.js');
+const { default: weatherMock } = await import('../api/weather.js');
 
 const callOg = async (query = {}) => {
   let statusCode = 200;
@@ -66,13 +67,18 @@ describe('dynamic OG image share endpoint', () => {
     vi.clearAllMocks();
   });
 
-  it('returns a 200 PNG for a valid shared weather location', async () => {
+  it('returns a 200 JPEG under the WhatsApp byte budget for a valid shared weather location', async () => {
     const res = await callOg({ lat: '-34.1', lon: '18.83', lang: 'en' });
 
     expect(res.statusCode).toBe(200);
-    expect(res.headers.get('content-type')).toContain('image/png');
+    expect(res.headers.get('content-type')).toContain('image/jpeg');
     expect(res.body).toBeInstanceOf(Buffer);
     expect(res.body.length).toBeGreaterThan(1000);
+    // JPEG magic bytes (SOI marker) — the transcode really happened.
+    expect(res.body[0]).toBe(0xff);
+    expect(res.body[1]).toBe(0xd8);
+    // WhatsApp silently drops oversized preview images (field failure 2026-07-06).
+    expect(res.body.length).toBeLessThan(JPEG_BYTE_BUDGET);
   });
 
   it('uses the lang param to pull copy from the requested language bank', () => {
@@ -88,16 +94,31 @@ describe('dynamic OG image share endpoint', () => {
     const res = await callOg({});
 
     expect(res.statusCode).toBe(200);
-    expect(res.headers.get('content-type')).toContain('image/png');
+    expect(res.headers.get('content-type')).toContain('image/jpeg');
     expect(res.body).toBeInstanceOf(Buffer);
     expect(res.body.length).toBeGreaterThan(1000);
+    expect(res.body.length).toBeLessThan(JPEG_BYTE_BUDGET);
   });
 
-  it('sets the 5 minute cache header', async () => {
+  it('sets browser + CDN cache headers (repeat crawler fetches served from edge)', async () => {
     const res = await callOg({ lat: '-34.1', lon: '18.83', lang: 'en' });
 
     expect(res.headers.get('cache-control')).toBe(CACHE_CONTROL);
     expect(res.headers.get('cache-control')).toContain('max-age=300');
+    expect(res.headers.get('cache-control')).toContain('s-maxage=3600');
+    expect(res.headers.get('cache-control')).toContain('stale-while-revalidate');
+  });
+
+  it('short-caches the fallback card when weather fails for VALID coords (no 1h CDN poisoning)', async () => {
+    // Codex finding 2026-07-06: a transient limiter/provider failure must not
+    // pin a generic card to this share URL at the CDN for an hour.
+    weatherMock.mockImplementationOnce(async (_req, res) => res.status(429).json({ ok: false, error: 'rate limited' }));
+    const res = await callOg({ lat: '-34.1', lon: '18.83', lang: 'af' });
+
+    expect(res.statusCode).toBe(200);
+    expect(res.headers.get('content-type')).toContain('image/jpeg');
+    expect(res.headers.get('cache-control')).toBe(DEGRADED_CACHE_CONTROL);
+    expect(res.headers.get('cache-control')).not.toContain('s-maxage=3600');
   });
 });
 
@@ -233,6 +254,24 @@ describe('branded share link (M-2/M-3 pipeline)', () => {
     expect(u.searchParams.get('lon')).toBe('18.83');
     expect(u.searchParams.get('lang')).toBe('af');
     expect(u.searchParams.get('c')).toBe('partly-cloudy');
+  });
+
+  it('buildShareLink rounds coords to 2 decimals (~1km) to keep the URL short', () => {
+    const link = buildShareLink({ lat: 40.7856117, lon: -74.0093129, lang: 'af', condition: 'rain' });
+    const u = new URL(link);
+    expect(u.searchParams.get('lat')).toBe('40.79');
+    expect(u.searchParams.get('lon')).toBe('-74.01');
+    // Full-precision coords must never leak into the share URL.
+    expect(link).not.toContain('40.7856117');
+  });
+
+  it('buildShareLink refuses non-number coords (no Number() canonicalisation of junk)', () => {
+    // Codex finding 2026-07-06: Number('0x10') = 16 would turn junk into a
+    // valid-looking coord BEFORE the server's strict parseCoord gate.
+    const link = buildShareLink({ lat: '0x10', lon: '0x10', lang: 'en' });
+    const u = new URL(link);
+    expect(u.searchParams.get('lat')).toBeNull();
+    expect(u.searchParams.get('lon')).toBeNull();
   });
 
   it('buildOgImageUrl threads the sanitized condition into the dynamic card URL', () => {

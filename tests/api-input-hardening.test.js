@@ -131,7 +131,10 @@ describe('api/weather.js input hardening', () => {
       await weatherHandler({ query: { lat: '-34', lon: '18', name: 'a'.repeat(120) } }, res);
     } catch { /* downstream network failure is fine — the guard already passed */ }
     expect(res.statusCode).not.toBe(400);
-  });
+    // 20s timeout: this test intentionally lets the REAL aggregation run (live
+    // provider fetches) — under the 5s vitest default it flaked whenever the
+    // slowest provider took >5s (observed 5023ms failures on 2026-07-06).
+  }, 20000);
 });
 
 // ---------------------------------------------------------------------------

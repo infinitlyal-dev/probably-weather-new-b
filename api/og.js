@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 
 import { ImageResponse } from '@vercel/og';
+import sharp from 'sharp';
 
 import weatherHandler from './weather.js';
 import { getClientIp } from './_lib/rate-limit.js';
@@ -15,7 +16,23 @@ import {
 import { WITTY_DAY_TAGS, eligibleWittyPool } from '../assets/witty-day-tags.js';
 
 export const config = { runtime: 'nodejs' };
-export const CACHE_CONTROL = 'public, max-age=300, s-maxage=300';
+// s-maxage=3600: Vercel's CDN keys on the full URL (query included), so a
+// repeat crawler fetch of the same share link is served from the edge without
+// re-rendering. stale-while-revalidate keeps even an expired card instant for
+// the crawler while the refresh happens in the background — WhatsApp's
+// preview fetcher gives up fast on slow origins.
+export const CACHE_CONTROL = 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400';
+
+// Degraded renders (weather fetch failed for VALID coords, or the primary
+// render threw) must not poison the CDN for an hour with a generic card under
+// a real share URL — cache them just long enough to absorb a crawler burst.
+export const DEGRADED_CACHE_CONTROL = 'public, max-age=60, s-maxage=60';
+
+// WhatsApp silently drops large link-preview images (branded card rendered
+// fine for the crawler but never showed on the phone — field evidence
+// 2026-07-06). Hard budget: every card ships as JPEG under 300KB.
+export const JPEG_BYTE_BUDGET = 300 * 1024;
+const JPEG_QUALITY_STEPS = [82, 70, 58, 45];
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -383,15 +400,29 @@ function ogElement(model, backgroundDataUrl) {
   );
 }
 
-async function renderPng(model) {
+async function renderJpeg(model) {
   const background = await readBackgroundDataUrl(model);
   const image = new ImageResponse(ogElement(model, background), { width: WIDTH, height: HEIGHT });
-  return Buffer.from(await image.arrayBuffer());
+  const png = Buffer.from(await image.arrayBuffer());
+  // Transcode Satori's PNG (previously ~500-850KB on photo-dense cards — over
+  // WhatsApp's preview budget) to JPEG, stepping quality down until the card
+  // fits the byte budget. q82 lands well under 300KB in practice; the lower
+  // steps are insurance, not the expected path.
+  let jpeg = null;
+  for (const quality of JPEG_QUALITY_STEPS) {
+    jpeg = await sharp(png).jpeg({ quality, mozjpeg: true }).toBuffer();
+    if (jpeg.length <= JPEG_BYTE_BUDGET) {
+      console.log(`[OG jpeg] q${quality} → ${(jpeg.length / 1024).toFixed(0)}KB`);
+      return jpeg;
+    }
+  }
+  console.error(`[OG jpeg] over budget at q${JPEG_QUALITY_STEPS.at(-1)}: ${jpeg.length} bytes`);
+  return jpeg;
 }
 
-function sendPng(res, statusCode, buffer) {
-  res.setHeader('Content-Type', 'image/png');
-  res.setHeader('Cache-Control', CACHE_CONTROL);
+function sendJpeg(res, statusCode, buffer, cacheControl = CACHE_CONTROL) {
+  res.setHeader('Content-Type', 'image/jpeg');
+  res.setHeader('Cache-Control', cacheControl);
   res.status(statusCode).end(buffer);
 }
 
@@ -419,13 +450,17 @@ export default async function handler(req, res) {
       }
     }
     const model = payload ? buildOgViewModel(payload, { lang, conditionOverride }) : buildFallbackViewModel(lang, conditionOverride);
-    sendPng(res, 200, await renderPng(model));
+    // Valid coords but no weather (limiter/provider failure) → the generic
+    // card is a TRANSIENT stand-in for this URL; short cache so the CDN
+    // retries soon instead of pinning the wrong card for an hour.
+    const degraded = Number.isFinite(lat) && Number.isFinite(lon) && !payload;
+    sendJpeg(res, 200, await renderJpeg(model), degraded ? DEGRADED_CACHE_CONTROL : CACHE_CONTROL);
   } catch {
     // Primary render failed. Try the safe fallback model. If THAT also throws
     // (e.g. Satori-side breakage, missing font), respond with a no-cache 500
     // instead of letting the handler crash and Vercel return its own default.
     try {
-      sendPng(res, 200, await renderPng(buildFallbackViewModel(lang, conditionOverride)));
+      sendJpeg(res, 200, await renderJpeg(buildFallbackViewModel(lang, conditionOverride)), DEGRADED_CACHE_CONTROL);
     } catch (err) {
       console.error('[OG] fallback render also failed:', err);
       res.setHeader('Content-Type', 'text/plain');

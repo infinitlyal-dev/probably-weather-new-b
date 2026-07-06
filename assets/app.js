@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // review flagged in SHARE_OG_NOTES.md.
       shareMessage: {
         en: "Check the weather in {city} — South African weather in your language.",
-        af: "Check die weer in {city} — Suid-Afrikaanse weer in jou taal.",
+        af: "Kyk na die weer in {city} — Suid-Afrikaanse weer in jou taal.",
         zu: "Bheka isimo sezulu e-{city} — isimo sezulu saseNingizimu Afrika ngolimi lwakho.",
         xh: "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho.",
         st: "Sheba boemo ba leholimo {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao."

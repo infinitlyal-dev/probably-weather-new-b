@@ -90,9 +90,15 @@ export function buildShareUrl({ lat, lon, lang = 'en', condition, city } = {}, o
 // so this needs no new route or service-worker handling.
 export function buildShareLink({ lat, lon, lang = 'en', condition } = {}, origin = SHARE_ORIGIN) {
   const params = new URLSearchParams({ lang: String(lang || 'en') });
-  if (isValidLat(lat) && isValidLon(lon)) {
-    params.set('lat', String(lat));
-    params.set('lon', String(lon));
+  // NUMBERS only (callers pass activePlace coords, already numeric). A loose
+  // Number() coercion here would canonicalise junk strings ('0x10' → 16) into
+  // valid-looking coords BEFORE the server's strict parseCoord gate sees them.
+  if (typeof lat === 'number' && typeof lon === 'number' && isValidLat(lat) && isValidLon(lon)) {
+    // 2-decimal coords (~1.1km) — plenty for a weather forecast, and it keeps
+    // the visible share URL short. Rounding happens ONLY here (the share link);
+    // the app itself keeps full precision.
+    params.set('lat', String(Math.round(lat * 100) / 100));
+    params.set('lon', String(Math.round(lon * 100) / 100));
   }
   const c = sanitizeRawCondition(condition);
   if (c) params.set('c', c);
