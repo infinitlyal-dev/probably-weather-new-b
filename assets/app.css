@@ -1285,13 +1285,16 @@ select option {
 }
 
 #particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  /* Child of #bg (fixed, z:-1) — NOT a body-level layer. Above the photo and
+     the scrim (z 3 > #bgImg 1 / #scrim 2 in the desktop block; DOM order on
+     mobile), and structurally below ALL UI chrome because the whole #bg
+     stacking context sits at z:-1. The compositor promoting the animated
+     streaks (transform keyframes) can no longer lift them above the header /
+     nav / pills — the promotion stays inside #bg's context. */
+  position: absolute;
+  inset: 0;
   pointer-events: none;
-  z-index: 5;
+  z-index: 3;
   overflow: hidden;
 }
 

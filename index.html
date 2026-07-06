@@ -281,6 +281,12 @@
          real picker swaps in the correct pick when data lands. -->
     <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080" src="assets/images/bg/default.jpg"/>
     <div id="scrim"></div>
+    <!-- Weather particles live INSIDE the background layer (z:-1 stacking
+         context): the compositor can promote the animated streaks however it
+         likes, they can never paint above UI chrome. Field evidence
+         2026-07-06: as a body-level fixed layer, rain streaks rendered over
+         the header text / nav / action pills on Al's phone. -->
+    <div id="particles" aria-hidden="true"></div>
   </div>
   <script>
     // Upgrade the default background to the last condition-correct pick this
@@ -305,8 +311,6 @@
       } catch (e) { /* default.jpg stays */ }
     })();
   </script>
-
-  <div id="particles" aria-hidden="true"></div>
 
   <div id="capeWindBanner" class="cape-wind-banner hidden">
     <span id="capeWindText"></span>
