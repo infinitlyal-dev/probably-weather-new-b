@@ -117,6 +117,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // old 32 let the client second-guess the server's verdict in the 32-34 band.
   const THRESH = { RAIN_PCT: 40, WIND_KPH: 25, COLD_C: 16, HOT_C: HEAT_EXTREME_C };
 
+  // First-visit-only brand tagline (Task 1, 2026-07-06). "No more Ja-No-Maybe
+  // weather. Just Probably." is a first-impression line, not a permanent header
+  // row. Show it only on a genuine first visit; returning users get the clean
+  // recurring header. Signal = STORAGE.home: it's written on EVERY successful
+  // location resolution (GPS / IP / saved), so its presence means this browser
+  // has completed a session before. Read once at boot, before the async
+  // location write lands, so a true first visit still shows it for that session.
+  // The tagline STRING stays in index.html (first visit) and in the share/OG
+  // surfaces (permanent) — only its home-header persistence is retired.
+  try {
+    if (localStorage.getItem(STORAGE.home)) {
+      document.querySelector('.tagline')?.classList.add('hidden');
+    }
+  } catch { /* localStorage unavailable (private mode) — leave the tagline shown */ }
+
   // ========== INDEXEDDB WEATHER CACHE ==========
   const CACHE_DB = 'pw_weather_cache';
   const CACHE_STORE = 'responses';
@@ -474,6 +489,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== UTILITIES ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
+  // Hero temp render (Task 2, 2026-07-06): the brand word on its own line, then
+  // the temperature pair as ONE unbreakable run. Built from element nodes (not
+  // innerHTML) so the range can never be an injection vector; the literal space
+  // between the spans keeps textContent / screen-reader output as
+  // "Probably 11° / 17°". .hero-range carries white-space:nowrap in CSS.
+  const setHeroTemp = (el, label, range) => {
+    if (!el) return;
+    el.textContent = '';
+    const l = document.createElement('span'); l.className = 'hero-probably'; l.textContent = label;
+    const r = document.createElement('span'); r.className = 'hero-range'; r.textContent = range;
+    el.append(l, ' ', r);
+  };
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
   const round0 = (n) => isNum(n) ? Math.round(n) : null;
   const loadJSON = (key, fb) => { try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fb; } catch { return fb; } };
@@ -1718,14 +1745,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const probablyLabel = t('weather', 'probably');
     const hiStr = isNum(high) ? formatTemp(high) : '--°';
     const loStr = isNum(low) ? formatTemp(low) : '--°';
+    // Task 2 (2026-07-06): split the hero into "Probably" (own line) + the temp
+    // pair as one unbreakable unit so the range never wraps mid-pair.
+    let rangeText;
     if (format === 'directional') {
       // dawn: current (low) → today's high. dusk: current (high) → tonight's low.
       const fromStr = (timeOfDay === 'dusk') ? hiStr : loStr;
       const toStr   = (timeOfDay === 'dusk') ? loStr : hiStr;
-      safeText(tempEl, `${probablyLabel} ${fromStr} → ${toStr}`);
+      rangeText = `${fromStr} → ${toStr}`;
     } else {
-      safeText(tempEl, `${probablyLabel} ${loStr} / ${hiStr}`);
+      rangeText = `${loStr} / ${hiStr}`;
     }
+    setHeroTemp(tempEl, probablyLabel, rangeText);
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
       hiLoEl.textContent = '';
@@ -1749,9 +1780,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (bylineEl) {
       const gust = norm.gustKph;
       const showGust = isNum(gust) && isNum(wind) && gust > wind * 1.3;
-      const ws = isNum(wind) ? (showGust ? `${formatWind(wind)} (${t('weather','gusts')||'gusts'} ${formatWind(gust)})` : formatWind(wind)) : '--';
+      const ws = isNum(wind) ? (showGust ? `${formatWind(wind)} (${t('weather','gusts')||'gusts'} ${formatWind(gust)})` : formatWind(wind)) : null;
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
-      let rs = '--';
+      let rs = null;
       if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
       // Don't say "Unlikely" / "None" when today's daily ensemble says rain — that contradicts the day's outlook
       const todayKey = (norm.daily?.[0]?.conditionKey || '').toLowerCase();
@@ -1759,14 +1790,18 @@ document.addEventListener("DOMContentLoaded", () => {
         rs = t('weather', 'possibleLater') || 'Possible later';
       }
       if (norm.rainLater) { rs = t('weather', 'later') || 'Later'; }
-      // uv is null at night (API nulls now.uv after sunset) — show nothing
-      let us = '--'; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
+      // uv is null at night (API nulls now.uv after sunset)
+      let us = null; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
       const feels = norm.feelsLike;
       const showFeels = isNum(feels) && isNum(currentTemp) && Math.abs(feels - currentTemp) >= 3;
-      const feelsStr = showFeels ? `${t('weather', 'feelsLike')} ${formatTemp(feels)}` : '';
-      const line1 = `${windLabel} ${ws} • ${rainLabel} ${rs}`;
-      const line2 = `${uvLabel} ${us}${feelsStr ? ' • ' + feelsStr : ''}`;
-      bylineEl.innerHTML = `<div class="byline-row">${line1}</div><div class="byline-row">${line2}</div>`;
+      const feelsStr = showFeels ? `${t('weather', 'feelsLike')} ${formatTemp(feels)}` : null;
+      // Task 4 (2026-07-06): drop absent stats entirely rather than rendering
+      // "--". Each row shows only the stats it actually has; an empty row is
+      // omitted; if nothing is known the byline renders nothing (no dead dashes).
+      const row1 = [ws != null ? `${windLabel} ${ws}` : null, rs != null ? `${rainLabel} ${rs}` : null].filter(Boolean);
+      const row2 = [us != null ? `${uvLabel} ${us}` : null, feelsStr].filter(Boolean);
+      const rows = [row1, row2].filter((r) => r.length).map((r) => `<div class="byline-row">${r.join(' • ')}</div>`);
+      bylineEl.innerHTML = rows.join('');
     }
     const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
     // partly-cloudy reuses the cloudy hero colour — no dedicated CSS yet.

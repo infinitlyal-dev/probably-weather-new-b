@@ -251,10 +251,26 @@ body:not(.home-active) .language-picker {
   line-height: 1.1;
   margin: 0.25rem 0 0.15rem;
   color: #ffd700;
-  text-shadow: 
+  text-shadow:
     0 0 20px rgba(255, 215, 0, 0.6),
     0 0 40px rgba(255, 215, 0, 0.4),
     3px 3px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Task 2 (2026-07-06): the hero temp is a two-line unit — "Probably" on its own
+   line, then the temperature pair on the next as ONE unbreakable run. nowrap
+   stops the pair splitting mid-range ("11°" over "→ 17°"). The pair inherits
+   .temp's existing responsive size (4rem → 2.8rem ≤900px → 2.4rem on small
+   phones), so the widest realistic case ("−1° → 41°") stays on one line inside
+   the column — measured no-overflow at 390 / 360 / 320px across all five
+   language labels. Both lines share the .temp size so the range never renders
+   smaller than the label. */
+.hero-probably {
+  display: block;
+}
+.hero-range {
+  display: block;
+  white-space: nowrap;
 }
 
 /* High/Low underneath - better contrast */
@@ -482,16 +498,16 @@ body:not(.home-active) .language-picker {
   margin-bottom: 0;
   font-weight: 700;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  /* Task 3 (2026-07-06): panel titles use ONE warm brand token across every
+     panel and every condition — the hero gold. The title used to be condition-
+     themed and rendered off-brand blue on cold/rain (and grey on wind/fog);
+     blue is now retired from the heading role entirely. Semantic blues
+     elsewhere (body temp text ~lines 86-100, #tempHiLo .lo, .temp-cold /
+     .temp-freezing) are deliberately left untouched. Gold on the dark glass
+     panel (--panel-bg rgba(0,0,0,.5) over a blurred photo) clears WCAG AA for
+     large text with wide margin. */
+  color: #ffd700;
 }
-
-/* Weather-themed screen title colors */
-body.weather-clear .screen-title { color: #ffd700; }
-body.weather-heat .screen-title { color: #ff8c42; }
-body.weather-cold .screen-title { color: #00bfff; }
-body.weather-rain .screen-title { color: #64b5f6; }
-body.weather-storm .screen-title { color: #9575cd; }
-body.weather-wind .screen-title { color: #90a4ae; }
-body.weather-fog .screen-title { color: #b0bec5; }
 
 @media (max-width: 900px) {
   :root {

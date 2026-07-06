@@ -130,9 +130,16 @@ export function buildOgViewModel(payload, options = {}) {
   const current = formatTemp(now.tempC ?? now.temperature_2m);
   const tempRange = low && high && low !== high ? `${low} / ${high}` : (current || high || low || '--°');
   const labels = STAT_LABELS[lang] || STAT_LABELS.en;
-  const wind = isNum(now.windKph ?? now.wind_kph ?? payload?.wind_kph) ? `${round(now.windKph ?? now.wind_kph ?? payload.wind_kph)} km/h` : '--';
-  const rain = isNum(now.rainChance ?? today.rainChance) ? `${round(now.rainChance ?? today.rainChance)}%` : '--';
-  const uv = isNum(now.uv ?? today.uv) ? String(round(now.uv ?? today.uv)) : '--';
+  // Task 4 (2026-07-06): mirror the home byline — a stat with no source value
+  // (e.g. UV after sunset) is dropped from the card, not rendered as "--".
+  const wind = isNum(now.windKph ?? now.wind_kph ?? payload?.wind_kph) ? `${round(now.windKph ?? now.wind_kph ?? payload.wind_kph)} km/h` : null;
+  const rain = isNum(now.rainChance ?? today.rainChance) ? `${round(now.rainChance ?? today.rainChance)}%` : null;
+  const uv = isNum(now.uv ?? today.uv) ? String(round(now.uv ?? today.uv)) : null;
+  const statParts = [
+    wind != null ? `${labels.wind} ${wind}` : null,
+    rain != null ? `${labels.rain} ${rain}` : null,
+    uv != null ? `${labels.uv} ${uv}` : null,
+  ].filter(Boolean);
   const seed = `${location}|${condition}|${lang}|${new Date().toISOString().slice(0, 10)}`;
   // Local day/hour at the shared location, so the card's witty line obeys the
   // same day-tags as the app (no "just Tuesday" line on a Friday share card).
@@ -157,7 +164,7 @@ export function buildOgViewModel(payload, options = {}) {
     headline: pickLocalized(WEATHER_COPY.headlines, condition, lang, 'Probably weather.'),
     heroLabel: pickLocalized(WEATHER_COPY.heroLabels, condition, lang, 'Weather'),
     witty: pickWitty(condition, lang, seed, wittyContext),
-    stats: `${labels.wind} ${wind} • ${labels.rain} ${rain} • ${labels.uv} ${uv}`,
+    stats: statParts.join(' • '),
     // backgroundPath is now the static og/<condition>.jpg (no time-of-day) —
     // see getOgStaticBackgroundPath docblock for the @vercel/og WebP reason.
     backgroundPath: getOgStaticBackgroundPath(condition),
