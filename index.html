@@ -427,8 +427,10 @@
         <h2 class="screen-title">Search & Favourites</h2>
         <button id="useMyLocationBtn" class="use-location-btn" type="button" aria-label="Use my location">📍 <span>Use my location</span></button>
         <!-- Save relocated here from the home action row: the search screen is the
-             favourites hub, so saving the current place lives with the saved list. -->
-        <button id="saveCurrent" class="use-location-btn" type="button" aria-pressed="false" aria-label="Save this place" title="Save this place">☆ Save</button>
+             favourites hub, so saving the current place lives with the saved list.
+             save-secondary: ONE gold primary per screen (Al's ruling 2026-07-06) —
+             "Use my location" keeps it, Save/Stoor is a dark secondary pill. -->
+        <button id="saveCurrent" class="use-location-btn save-secondary" type="button" aria-pressed="false" aria-label="Save this place" title="Save this place">☆ Save</button>
         <label class="sr-only" for="searchInput">Search location</label>
         <input id="searchInput" type="search" enterkeyhint="search" inputmode="search" autocomplete="off" placeholder="Search for a place" aria-label="Search location">
         <div class="search-panel-actions">

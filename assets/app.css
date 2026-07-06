@@ -846,10 +846,23 @@ body.ui-dark .daily-card {
 }
 
 /* Save-current button (relocated into the search header) reuses the
-   .use-location-btn pill; when the active place is saved it flips to a
-   brighter gold to reinforce the ★ Saved text state. */
-.use-location-btn.is-saved {
-  background: rgba(255, 221, 68, 0.95);
+   .use-location-btn pill SHAPE but demotes to a dark secondary — one gold
+   primary per screen (Al's ruling 2026-07-06): "Use my location" keeps the
+   gold. When saved, the star + border go gold instead of the whole pill. */
+.use-location-btn.save-secondary {
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+.use-location-btn.save-secondary:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.use-location-btn.save-secondary.is-saved {
+  color: #FFDD44;
+  border-color: rgba(255, 221, 68, 0.55);
 }
 
 .search-body {
