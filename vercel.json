@@ -2,7 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "functions": {
-    "api/og.js": { "includeFiles": "{og/**,node_modules/@img/**}" }
+    "api/og.js": { "includeFiles": "og/**" }
   },
   "redirects": [
     {
