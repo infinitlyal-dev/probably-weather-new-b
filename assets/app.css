@@ -2275,101 +2275,64 @@ main#home-screen.main #confidence {
     transition: opacity 0.25s ease;
   }
 
-  /* ── Share button: bottom-left pill ── */
-  .share-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    position: fixed;
-    left: 12px;
-    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #fff;
-    background: rgba(0,0,0,0.5);
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap;
-    z-index: 50;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
-    transition: opacity 0.2s ease;
-  }
-
-  .share-btn:active {
-    opacity: 0.7;
-  }
-
-  /* ── My Location button: bottom-RIGHT pill, same style as Share. One tap
-     back to the user's own weather (GPS or saved home) after browsing other
-     places. The Hourly pill took the CENTRE slot as the primary CTA on home.
-     Save moved into the Search panel (styled as a .use-location-btn). ── */
-  .my-location-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    position: fixed;
-    right: 12px;
-    bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #fff;
-    background: rgba(0,0,0,0.5);
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap;
-    z-index: 50;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
-    transition: opacity 0.2s ease;
-  }
-
-  .my-location-btn:active {
-    opacity: 0.7;
-  }
-
-  /* ── Hourly pill: bottom-CENTRE primary CTA on home (mobile only).
-     Brand-gold gradient (same #FFDD44 → #FFAA00 as install banner) so it
-     stands above Share/Save as the main entry to the ad-bearing screens.
-     ~1.3x width / ~1.15x height of the utility pills, but stays on one line
-     for the longest translation (Ngamahora / Ngeyure). ── */
+  /* ── Action row (Al's ruling 2026-07-06): THREE EQUAL pills, one primary.
+     Hourly LEFT (dark) · Share CENTRE (gold primary — the growth engine gets
+     the one primary slot) · My Location RIGHT (dark). Same height, same
+     shape, equal thirds of the row; thumb-reach preserved above the nav. ── */
+  .share-btn,
+  .my-location-btn,
   .nav-hourly-pill {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
     position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
     bottom: calc(var(--nav-h, 72px) + env(safe-area-inset-bottom) + 12px);
-    padding: 10px 24px;
-    min-height: 50px;
-    font-size: 14px;
+    width: calc((100% - 40px) / 3);
+    min-height: 46px;
+    padding: 8px 6px;
+    font-size: 12.5px;
     font-weight: 700;
-    color: #1a1a2e;
-    background: linear-gradient(135deg, #FFDD44, #FFAA00);
     border: none;
-    border-radius: 22px;
+    border-radius: 23px;
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
-    z-index: 51;
-    box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    z-index: 50;
     font-family: inherit;
+    transition: opacity 0.2s ease;
   }
 
-  .nav-hourly-pill:hover {
+  .nav-hourly-pill { left: 12px; }
+  .share-btn { left: 50%; transform: translateX(-50%); z-index: 51; }
+  .my-location-btn { right: 12px; }
+
+  /* Utility pills: dark glass. */
+  .nav-hourly-pill,
+  .my-location-btn {
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  }
+
+  .nav-hourly-pill:active,
+  .my-location-btn:active {
+    opacity: 0.7;
+  }
+
+  /* Share: the ONE gold primary (same #FFDD44 → #FFAA00 as install banner). */
+  .share-btn {
+    color: #1a1a2e;
+    background: linear-gradient(135deg, #FFDD44, #FFAA00);
+    box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+
+  .share-btn:hover {
     box-shadow: 0 6px 18px rgba(255,170,0,0.45), 0 1px 3px rgba(0,0,0,0.25);
   }
 
-  .nav-hourly-pill:active {
+  .share-btn:active {
     transform: translateX(-50%) scale(0.97);
   }
 }
@@ -2435,60 +2398,53 @@ main#home-screen.main #confidence {
   }
   #scrim { z-index: 2; }
 
-  /* Restore the mobile action row (base rules hide these on desktop). Share &
-     My Location anchor to the COLUMN edges; the gold Hourly pill is already
-     viewport-centred, which coincides with the centred column. */
+  /* Restore the mobile action row (base rules hide these on desktop) with the
+     same trio as mobile — Hourly left (dark) · Share centre (gold primary) ·
+     My Location right (dark) — equal thirds of the COLUMN, anchored to its
+     edges. */
   .share-btn,
-  .my-location-btn {
+  .my-location-btn,
+  .nav-hourly-pill {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
     position: fixed;
-    bottom: calc(var(--nav-h, 72px) + 16px);
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #fff;
-    background: rgba(0,0,0,0.5);
+    bottom: calc(var(--nav-h, 72px) + 12px);
+    width: calc((var(--pw-col) - 40px) / 3);
+    min-height: 46px;
+    padding: 8px 6px;
+    font-size: 12.5px;
+    font-weight: 700;
     border: none;
-    border-radius: 20px;
+    border-radius: 23px;
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
     z-index: 50;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    font-family: inherit;
     transition: opacity 0.2s ease;
   }
-  .share-btn:active,
-  .my-location-btn:active { opacity: 0.7; }
-  .share-btn  { left:  calc(50% - (var(--pw-col) / 2) + 12px); right: auto; }
+  .nav-hourly-pill { left: calc(50% - (var(--pw-col) / 2) + 12px); right: auto; transform: none; }
+  .share-btn { left: 50%; right: auto; transform: translateX(-50%); z-index: 51; }
   .my-location-btn { right: calc(50% - (var(--pw-col) / 2) + 12px); left: auto; }
 
-  .nav-hourly-pill {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: calc(var(--nav-h, 72px) + 12px);
-    padding: 10px 24px;
-    min-height: 50px;
-    font-size: 14px;
-    font-weight: 700;
+  .nav-hourly-pill,
+  .my-location-btn {
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  }
+  .nav-hourly-pill:active,
+  .my-location-btn:active { opacity: 0.7; }
+
+  .share-btn {
     color: #1a1a2e;
     background: linear-gradient(135deg, #FFDD44, #FFAA00);
-    border: none;
-    border-radius: 22px;
-    cursor: pointer;
-    white-space: nowrap;
-    z-index: 51;
     box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
-    font-family: inherit;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
-  .nav-hourly-pill:active { transform: translateX(-50%) scale(0.97); }
+  .share-btn:active { transform: translateX(-50%) scale(0.97); }
 }
 
 /* ========== SHORT-HEIGHT MOBILE DEVICES ========== */
