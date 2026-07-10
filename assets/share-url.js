@@ -37,6 +37,29 @@ export function sanitizeRawCondition(condition) {
   return /^[a-z][a-z-]{1,20}$/.test(v) ? v : '';
 }
 
+const TELEMETRY_LANGS = new Set(['en', 'af', 'zu', 'xh', 'st']);
+
+// Error telemetry needs the failing route and display context, not a user's
+// precise location or arbitrary query state. Keep only the path, language and
+// condition; legacy ?bg= is normalized to ?c= for one stable log shape.
+export function sanitizeTelemetryUrl(value) {
+  try {
+    const raw = typeof value === 'string' ? value.trim() : '';
+    if (!raw) return '';
+    const url = new URL(raw, SHARE_ORIGIN);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return '';
+    const params = new URLSearchParams();
+    const lang = String(url.searchParams.get('lang') || '').toLowerCase();
+    if (TELEMETRY_LANGS.has(lang)) params.set('lang', lang);
+    const condition = sanitizeRawCondition(url.searchParams.get('c') || url.searchParams.get('bg'));
+    if (condition) params.set('c', condition);
+    const query = params.toString();
+    return `${url.pathname || '/'}${query ? `?${query}` : ''}`.slice(0, 300);
+  } catch {
+    return '';
+  }
+}
+
 export function buildOgImageUrl({ lat, lon, lang = 'en', condition } = {}, origin = SHARE_ORIGIN) {
   const safeLang = String(lang || 'en');
   const params = new URLSearchParams({ lang: safeLang });

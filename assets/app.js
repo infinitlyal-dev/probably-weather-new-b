@@ -10,7 +10,7 @@ import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
-import { buildShareLink } from './share-url.js';
+import { buildShareLink, sanitizeTelemetryUrl } from './share-url.js';
 import {
   FRESHNESS_MS,
   SIGNIFICANT_MOVE_KM,
@@ -758,7 +758,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sent++;
         const body = JSON.stringify({
           ...payload,
-          url: location.href,
+          url: sanitizeTelemetryUrl(location.href),
           userAgent: navigator.userAgent,
           timestamp: new Date().toISOString(),
         });

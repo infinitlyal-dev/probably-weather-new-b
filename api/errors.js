@@ -28,6 +28,7 @@
 
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { errorsLimiter } from './_lib/limiters.js';
+import { sanitizeTelemetryUrl } from '../assets/share-url.js';
 
 // Production origins are always allowed. Additional origins (e.g. a Vercel
 // preview host or http://localhost:3000 during dev) can be opted in via the
@@ -87,6 +88,12 @@ function applyCors(req, res) {
   }
 }
 
+function sanitizeTelemetryLogText(value, maxLength) {
+  return String(value || '')
+    .replace(/https?:\/\/[^\s)\]}>"']+/g, (url) => sanitizeTelemetryUrl(url))
+    .slice(0, maxLength);
+}
+
 export default async function handler(req, res) {
   // CORS preflight. Only an allowlisted Origin gets a grant; everything else
   // gets a bare 204 with no Access-Control-Allow-Origin, so the browser blocks
@@ -124,9 +131,11 @@ export default async function handler(req, res) {
     const body = req.body || {};
     const summary = {
       kind: body.kind || 'error',
-      message: String(body.message || 'no-message').slice(0, 500),
-      url: String(body.url || '').slice(0, 300),
-      source: String(body.source || '').slice(0, 300),
+      message: sanitizeTelemetryLogText(body.message || 'no-message', 500),
+      // Enforce privacy at the sink even if a forged client bypasses the app's
+      // matching sanitizer. Exact coords and unrelated query params never log.
+      url: sanitizeTelemetryUrl(body.url),
+      source: sanitizeTelemetryLogText(body.source, 300),
       line: body.line ?? null,
       col: body.col ?? null,
       sw: body.swVersion || null,
@@ -137,7 +146,7 @@ export default async function handler(req, res) {
     // stays compact and grep-friendly in the Vercel log viewer.
     console.error('[pw-error]', JSON.stringify(summary));
     if (body.stack) {
-      console.error('[pw-error-stack]', String(body.stack).slice(0, 4000));
+      console.error('[pw-error-stack]', sanitizeTelemetryLogText(body.stack, 4000));
     }
     res.status(204).end();
   } catch (err) {
