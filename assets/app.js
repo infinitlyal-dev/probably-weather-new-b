@@ -1231,11 +1231,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentHour = getLocationHour(activePlace?.lon);
       const rainThreshold = 25;
       let firstRainHour = -1;
-      for (let i = 0; i < Math.min(24, hourlyData.length); i++) {
+      for (let i = currentHour; i < Math.min(24, hourlyData.length); i++) {
         const h = hourlyData[i];
-        if (isNum(h.rainChance) && h.rainChance >= rainThreshold) { firstRainHour = (currentHour + i) % 24; break; }
+        if (isNum(h.rainChance) && h.rainChance >= rainThreshold) { firstRainHour = i; break; }
       }
-      if (firstRainHour === -1) return isNum(r) && r >= 50 ? t('badges', 'rainLater') : t('badges', 'showers');
+      if (firstRainHour === -1) return t('badges', 'showers');
       const hoursUntilRain = firstRainHour >= currentHour ? firstRainHour - currentHour : (24 - currentHour) + firstRainHour;
       if (hoursUntilRain <= 2) return isNum(r) && r >= 50 ? t('badges', 'rainy') : t('badges', 'showers');
       else if (firstRainHour >= 18 || firstRainHour < 5) return t('badges', 'rainTonight');
