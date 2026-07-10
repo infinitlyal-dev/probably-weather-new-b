@@ -491,7 +491,7 @@ function setI18nText(node, str) {
 
 /* -------- DOM init (only runs in browser) -------- */
 
-export function initInstallExperience({ getLanguage = () => 'en', showToast = null } = {}) {
+export function initInstallExperience({ getLanguage = () => 'en', showToast = null, capturedPrompt = null } = {}) {
   if (typeof window === 'undefined') return null;
 
   const banner = document.getElementById('installBanner');
@@ -530,7 +530,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     }
   } catch {}
 
-  let deferredPrompt = null;
+  let deferredPrompt = capturedPrompt;
   window.addEventListener('beforeinstallprompt', (ev) => {
     ev.preventDefault();
     deferredPrompt = ev;

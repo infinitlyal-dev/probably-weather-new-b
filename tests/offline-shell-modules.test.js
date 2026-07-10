@@ -63,14 +63,14 @@ const dynamicModules = [
 
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
-    // 14 direct static imports. 2026-07-02: weekend-filter.js left app.js's
+    // 15 direct static imports. 2026-07-02: weekend-filter.js left app.js's
     // graph (day-filtering moved to structural tags) and witty-day-tags.js
     // joined it; 2026-07-03 adds geo-regions.js for context gating.
     // (coord-parse.js is a TRANSITIVE dep via
     // startup-location.js — covered by the dynamicModules precache check below.)
     // The deploy stamp (BUILD_ID) is kept INLINE in app.js — deliberately not a
     // separate imported module — so it never adds a hard offline-boot dependency.
-    expect(importedModules.length).toBe(14);
+    expect(importedModules.length).toBe(15);
     for (const mod of [
       '/assets/language-preferences.js',
       '/assets/copy-loader.js',
@@ -85,6 +85,7 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
       '/assets/home-name.js',
       '/assets/weather-thresholds.js',
       '/assets/search-mini-weather.js',
+      '/assets/install-loader.js',
     ]) {
       expect(importedModules).toContain(mod);
     }

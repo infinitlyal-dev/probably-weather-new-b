@@ -113,6 +113,7 @@ const CORE_ASSETS = [
   '/assets/home-name.js',
   '/assets/weather-thresholds.js',
   '/assets/search-mini-weather.js',
+  '/assets/install-loader.js',
   '/manifest.json',
 ];
 

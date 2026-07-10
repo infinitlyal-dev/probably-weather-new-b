@@ -29,6 +29,7 @@ import { startFirstOpenLocation } from './first-open-location.js';
 import { shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
+import { setupDeferredInstallLoad } from './install-loader.js';
 
 // Deploy identity baked into THIS bundle. scripts/build.mjs rewrites the
 // __BUILD_ID__ placeholder to the Vercel commit SHA at build time (the string
@@ -2407,12 +2408,10 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((fresh) => { if (fresh) applySettings(); })
     .catch((e) => console.error('[copy] bank load failed:', e));
   applySettings(); renderRecents(); renderFavorites();
-  // Lazy-load install.js (Group 6): 48 KB of install UX that most sessions
-  // never exercise no longer sits in the boot module graph. The dynamic
-  // import starts immediately (not idle-gated — the engagement gate inside
-  // install.js is only 1.5s) but parses off the critical path. The visible
-  // error boundary survives: silent throws from install.js caused multiple
-  // unexplained iPhone regressions with no device console access.
+  // Keep only the tiny beforeinstallprompt capture on the boot path. The full
+  // install UI loads at browser idle, or immediately if the one-shot prompt
+  // arrives first. This preserves the event while removing install.js parse/
+  // evaluation from normal first paint.
   const surfaceInstallError = (installInitErr) => {
     try {
       const errBanner = document.createElement('div');
@@ -2423,15 +2422,19 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (_) { /* if rendering the error banner itself fails, fall through silently */ }
     console.error('[install] init failed', installInitErr);
   };
-  import('./install.js')
-    .then((mod) => {
+  setupDeferredInstallLoad({
+    windowRef: window,
+    load: async (capturedPrompt) => {
       try {
-        installExperience = mod.initInstallExperience({ getLanguage: () => settings.lang || 'en', showToast });
+        const mod = await import('./install.js');
+        installExperience = mod.initInstallExperience({ getLanguage: () => settings.lang || 'en', showToast, capturedPrompt });
+        return installExperience;
       } catch (installInitErr) {
         surfaceInstallError(installInitErr);
+        return null;
       }
-    })
-    .catch((loadErr) => surfaceInstallError(loadErr));
+    },
+  });
   homePlace = loadJSON(STORAGE.home, null);
   // Migration: pre-Phase-B-3 homePlace records had no `mode` field. Default
   // legacy data to 'gps' since the previous code only set homePlace from
