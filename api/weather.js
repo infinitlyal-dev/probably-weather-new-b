@@ -20,7 +20,7 @@ import {
   weatherCacheGet,
   weatherCacheGetStale,
   weatherCacheKey,
-  weatherCacheSet,
+  weatherCacheSetDeferred,
   waitForWeatherCache,
   cacheableLocationName,
   responseLocationName,
@@ -1944,7 +1944,7 @@ export default async function handler(req, res) {
       ...responsePayload,
       location: { ...responsePayload.location, name: cacheableLocationName(serverResolvedName) },
     };
-    await weatherCacheSet(serverCacheKey, cacheablePayload);
+    weatherCacheSetDeferred(serverCacheKey, cacheablePayload);
     completeLocalMiss(cacheablePayload);
 
     return res.status(200).json(responsePayload);

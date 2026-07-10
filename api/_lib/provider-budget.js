@@ -78,16 +78,33 @@ export function _resetInstanceBudget() { _mem.clear(); }
 // the real fallback.
 const _UNSET = Symbol('redis-unset');
 
-// Increment one rolling-window counter and report whether it is within ceiling.
-// Sets the TTL only on the first increment of a fresh window (value === 1).
-async function consumeWindow(redis, key, ttlSeconds, ceiling) {
-  const count = await redis.incr(key);
-  if (count === 1) {
-    // Best-effort expiry; if it fails the key still expires on the next window
-    // boundary's overwrite is impossible (bucket is time-keyed), so guard it.
-    try { await redis.expire(key, ttlSeconds); } catch { /* non-fatal */ }
-  }
-  return count <= ceiling;
+// One atomic Redis operation per provider. Windows are supplied shortest-first;
+// Lua stops at the first rejection, so a short burst never drains longer-lived
+// quota. The final daily increment is reverted when the day is already full,
+// preserving the existing "rejected attempts spend no daily slot" contract.
+const CONSUME_WINDOWS_SCRIPT = `
+  for i, key in ipairs(KEYS) do
+    local base = (i - 1) * 3
+    local ceiling = tonumber(ARGV[base + 1])
+    local ttl = tonumber(ARGV[base + 2])
+    local revert = tonumber(ARGV[base + 3])
+    local count = redis.call('incr', key)
+    if count == 1 then redis.call('expire', key, ttl) end
+    if count > ceiling then
+      if revert == 1 then redis.call('decr', key) end
+      return 0
+    end
+  end
+  return 1
+`;
+
+function providerWindows(provider, cfg, nowMs) {
+  const windows = [];
+  if (Number.isFinite(cfg.perSecond)) windows.push([`pw-budget:${provider}:s:${secondBucket(nowMs)}`, cfg.perSecond, 10, 0]);
+  if (Number.isFinite(cfg.perMin)) windows.push([`pw-budget:${provider}:m:${minBucket(nowMs)}`, cfg.perMin, 90, 0]);
+  if (Number.isFinite(cfg.perHour)) windows.push([`pw-budget:${provider}:h:${hourBucket(nowMs)}`, cfg.perHour, 3900, 0]);
+  if (Number.isFinite(cfg.perDay)) windows.push([`pw-budget:${provider}:d:${dayBucket(nowMs)}`, cfg.perDay, 90000, 1]);
+  return windows;
 }
 
 /**
@@ -119,44 +136,15 @@ export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = 
     for (const p of providers) result[p] = instanceFallbackAllows(p, nowMs);
     return result;
   }
-  const sb = secondBucket(nowMs);
-  const mb = minBucket(nowMs);
-  const hb = hourBucket(nowMs);
-  const db = dayBucket(nowMs);
   await Promise.all(providers.map(async (p) => {
     const cfg = PROVIDER_BUDGETS[p];
     if (!cfg) { result[p] = true; return; } // unbudgeted provider — never block
     try {
-      // Shortest windows first. A rejected short-window attempt never consumes
-      // a longer-lived window, preventing a burst from causing a long lockout.
-      let allowed = true;
-      if (Number.isFinite(cfg.perSecond)) {
-        allowed = await consumeWindow(redis, `pw-budget:${p}:s:${sb}`, 10, cfg.perSecond);
-      }
-      if (Number.isFinite(cfg.perMin)) {
-        allowed = allowed && await consumeWindow(redis, `pw-budget:${p}:m:${mb}`, 90, cfg.perMin);
-      }
-      if (allowed && Number.isFinite(cfg.perHour)) {
-        allowed = await consumeWindow(redis, `pw-budget:${p}:h:${hb}`, 3900, cfg.perHour);
-      }
-      // DAY window consumed ONLY when the call is permitted by every shorter
-      // window. This closes the self-DoS Codex found: previously the day
-      // counter incremented on EVERY attempt, so a burst of cheap
-      // minute-rejected attempts (600 in one minute) drained the day budget and
-      // locked the provider for the whole UTC day. Now a minute-rejected
-      // attempt never touches the day counter. If the day itself is over
-      // ceiling, the increment is reverted so a day-rejected attempt also never
-      // spends a day slot.
-      if (allowed && Number.isFinite(cfg.perDay)) {
-        const dayKey = `pw-budget:${p}:d:${db}`;
-        const dayCount = await redis.incr(dayKey);
-        if (dayCount === 1) { try { await redis.expire(dayKey, 90000); } catch { /* non-fatal */ } }
-        if (dayCount > cfg.perDay) {
-          allowed = false;
-          try { await redis.decr(dayKey); } catch { /* best-effort revert */ }
-        }
-      }
-      result[p] = allowed;
+      const windows = providerWindows(p, cfg, nowMs);
+      const keys = windows.map(([key]) => key);
+      const args = windows.flatMap(([, ceiling, ttl, revert]) => [String(ceiling), String(ttl), String(revert)]);
+      const allowed = await redis.eval(CONSUME_WINDOWS_SCRIPT, keys, args);
+      result[p] = allowed === 1 || allowed === '1' || allowed === true;
     } catch {
       // Redis hiccup for this provider — conservative per-instance fallback.
       result[p] = instanceFallbackAllows(p, nowMs);

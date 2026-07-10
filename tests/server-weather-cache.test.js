@@ -21,6 +21,7 @@ import {
   weatherCacheGetStale,
   weatherCacheKey,
   weatherCacheSet,
+  weatherCacheSetDeferred,
 } from '../api/_lib/weather-cache.js';
 import { LOCAL_MISS_WAIT_MS, WEATHER_UPSTREAM_TIMEOUT_MS } from '../api/weather.js';
 
@@ -147,6 +148,20 @@ describe('weatherCacheGet / weatherCacheSet', () => {
     const redis = fakeRedis();
     expect(await weatherCacheGet(null, redis)).toBe(null);
     expect(await weatherCacheSet(null, okPayload, redis)).toBe(false);
+  });
+});
+
+describe('P5 deferred final cache write', () => {
+  it('P5 hands the complete final cache write to a lifecycle scheduler', async () => {
+    const redis = fakeRedis();
+    const scheduled = [];
+    const payload = { ok: true, location: { name: 'Strand, Western Cape' } };
+    const accepted = weatherCacheSetDeferred('cell', payload, redis, (promise) => scheduled.push(promise));
+
+    expect(accepted).toBe(true);
+    expect(scheduled).toHaveLength(1);
+    await scheduled[0];
+    expect(await weatherCacheGet('cell', redis)).toEqual(payload);
   });
 });
 

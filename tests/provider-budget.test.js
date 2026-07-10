@@ -19,6 +19,7 @@ function fakeRedis() {
     store,
     incrCalls: [],
     expireCalls: [],
+    evalCalls: [],
     async incr(key) {
       this.incrCalls.push(key);
       const n = (store.get(key) ?? 0) + 1;
@@ -31,6 +32,22 @@ function fakeRedis() {
       return n;
     },
     async expire(key, ttl) { this.expireCalls.push([key, ttl]); return 1; },
+    async eval(script, keys, args) {
+      this.evalCalls.push({ script, keys, args });
+      for (let i = 0; i < keys.length; i++) {
+        const ceiling = Number(args[i * 3]);
+        const ttl = Number(args[i * 3 + 1]);
+        const revert = Number(args[i * 3 + 2]);
+        const key = keys[i];
+        const count = await this.incr(key);
+        if (count === 1) await this.expire(key, ttl);
+        if (count > ceiling) {
+          if (revert === 1) await this.decr(key);
+          return 0;
+        }
+      }
+      return 1;
+    },
   };
 }
 
@@ -62,6 +79,23 @@ describe('PROVIDER_BUDGETS — Tomorrow.io published free-tier windows', () => {
 });
 
 describe('consumeProviderBudgets — enforcement before fetch', () => {
+  it('P5 consumes every configured window in one atomic Redis round trip per provider', async () => {
+    const redis = {
+      evalCalls: [],
+      async eval(script, keys, args) {
+        this.evalCalls.push({ script, keys, args });
+        return 1;
+      },
+      async incr() { throw new Error('non-atomic counter command used'); },
+    };
+
+    const providers = ['open-meteo', 'weatherapi', 'pirate', 'met', 'tomorrow'];
+    const result = await consumeProviderBudgets(providers, redis, NOW);
+
+    expect(Object.values(result).every(Boolean)).toBe(true);
+    expect(redis.evalCalls).toHaveLength(providers.length);
+  });
+
   it('allows providers under ceiling and consumes one slot each', async () => {
     const redis = fakeRedis();
     const res = await consumeProviderBudgets(['open-meteo', 'pirate'], redis, NOW);

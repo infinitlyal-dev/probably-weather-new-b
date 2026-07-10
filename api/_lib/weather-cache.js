@@ -13,6 +13,7 @@
 // never be the reason a forecast fails.
 
 import { randomUUID } from 'node:crypto';
+import { waitUntil } from '@vercel/functions';
 import { getRedis } from './limiters.js';
 
 export const WEATHER_CACHE_TTL_SECONDS = 300; // mirrors the edge s-maxage
@@ -123,6 +124,25 @@ export async function weatherCacheSet(key, payload, redis = getRedis()) {
     return true;
   } catch {
     return false; // fail-open
+  }
+}
+
+/**
+ * Keep the final cache write off response latency while extending the Vercel
+ * invocation until both fresh and stale SETs settle. The scheduler is injected
+ * in tests; production uses the documented Vercel lifecycle primitive.
+ */
+export function weatherCacheSetDeferred(key, payload, redis = getRedis(), schedule = waitUntil) {
+  if (!key || !redis || !payload || payload.ok !== true) return false;
+  const pending = weatherCacheSet(key, payload, redis);
+  try {
+    schedule(pending);
+    return true;
+  } catch {
+    // The write was already started. Absorb rejection because this cache is
+    // explicitly fail-open and must never turn a forecast into a 500.
+    pending.catch(() => {});
+    return false;
   }
 }
 
