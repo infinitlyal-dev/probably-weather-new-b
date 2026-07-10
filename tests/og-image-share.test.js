@@ -35,7 +35,7 @@ vi.mock('../api/weather.js', () => ({
 const { default: ogHandler, buildOgViewModel, buildFallbackViewModel, normalizeConditionParam, CACHE_CONTROL, DEGRADED_CACHE_CONTROL, JPEG_BYTE_BUDGET } = await import('../api/og.js');
 const { default: weatherMock } = await import('../api/weather.js');
 
-const callOg = async (query = {}) => {
+const callOgRequest = async (req) => {
   let statusCode = 200;
   let body;
   const headers = new Map();
@@ -58,9 +58,11 @@ const callOg = async (query = {}) => {
     },
   };
 
-  await ogHandler({ query }, res);
+  await ogHandler(req, res);
   return { statusCode, headers, body };
 };
+
+const callOg = async (query = {}) => callOgRequest({ query });
 
 describe('dynamic OG image share endpoint', () => {
   beforeEach(() => {
@@ -119,6 +121,29 @@ describe('dynamic OG image share endpoint', () => {
     expect(res.headers.get('content-type')).toContain('image/jpeg');
     expect(res.headers.get('cache-control')).toBe(DEGRADED_CACHE_CONTROL);
     expect(res.headers.get('cache-control')).not.toContain('s-maxage=3600');
+  });
+
+  it('S2 redirects junk, order and precision variants to one canonical OG URL before rendering', async () => {
+    const res = await callOgRequest({
+      url: '/api/og?nonce=1&lon=18.8362&lang=EN&lat=-34.1163&c=storm',
+      headers: { 'x-real-ip': '41.2.3.4' },
+    });
+
+    expect(res.statusCode).toBe(301);
+    expect(res.headers.get('location')).toBe('/api/og?lang=en&lat=-34.12&lon=18.84&c=storm');
+    expect(weatherMock).not.toHaveBeenCalled();
+  });
+
+  it('S2 renders an already canonical OG URL without redirecting', async () => {
+    const res = await callOgRequest({
+      url: '/api/og?lang=en&lat=-34.1&lon=18.83&c=clear',
+      headers: { 'x-real-ip': '41.2.3.4' },
+    });
+
+    expect(res.statusCode).toBe(200);
+    expect(res.headers.get('location')).toBeUndefined();
+    expect(res.headers.get('content-type')).toContain('image/jpeg');
+    expect(weatherMock).toHaveBeenCalledTimes(1);
   });
 });
 

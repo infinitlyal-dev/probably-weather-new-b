@@ -166,8 +166,8 @@ describe('middleware rewrite end-to-end (mocked fetch)', () => {
     try {
       const res = await middleware(request);
       const html = await res.text();
-      expect(html).toContain('property="og:image" content="https://www.probablyweather.co.za/api/og?lang=af&amp;c=rain&amp;lat=-33.92&amp;lon=18.42"');
-      expect(html).toContain('name="twitter:image" content="https://www.probablyweather.co.za/api/og?lang=af&amp;c=rain&amp;lat=-33.92&amp;lon=18.42"');
+      expect(html).toContain('property="og:image" content="https://www.probablyweather.co.za/api/og?lang=af&amp;lat=-33.92&amp;lon=18.42&amp;c=rain"');
+      expect(html).toContain('name="twitter:image" content="https://www.probablyweather.co.za/api/og?lang=af&amp;lat=-33.92&amp;lon=18.42&amp;c=rain"');
       expect(res.headers.get('x-pw-share-bg')).toBe('rain');
     } finally {
       restore();

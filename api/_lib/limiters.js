@@ -38,10 +38,13 @@ import { Redis } from '@upstash/redis';
 //   · geocode 240 — search-as-you-type + reverse-geocode bursts.
 //   · errors   30 — pure log-spam vector; stays tight (error reporting is
 //     client-capped at 10/session, so 30/min/IP is already generous).
+//   · og       60 — crawler previews are bursty, but a single IP has no valid
+//     reason to trigger more than one expensive image render per second.
 export const RATE_LIMITS = {
   weather: { max: 240, window: '60 s' },
   geocode: { max: 240, window: '60 s' },
   errors:  { max: 30, window: '60 s' },
+  og:      { max: 60, window: '60 s' },
 };
 
 // Build the shared Redis client once (memoised across warm Fluid-Compute
@@ -75,3 +78,4 @@ function getLimiter(name) {
 export const weatherLimiter = () => getLimiter('weather');
 export const geocodeLimiter = () => getLimiter('geocode');
 export const errorsLimiter = () => getLimiter('errors');
+export const ogLimiter = () => getLimiter('og');

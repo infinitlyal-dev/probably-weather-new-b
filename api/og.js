@@ -4,7 +4,8 @@ import { ImageResponse } from '@vercel/og';
 import sharp from 'sharp';
 
 import weatherHandler from './weather.js';
-import { getClientIp } from './_lib/rate-limit.js';
+import { checkRateLimit, getClientIp } from './_lib/rate-limit.js';
+import { ogLimiter } from './_lib/limiters.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 // L2 dedupe: one language list for the whole app (was three copies).
 import { SUPPORTED_LANGS } from '../assets/language-preferences.js';
@@ -69,6 +70,39 @@ function getQuery(req) {
   if (req?.query) return req.query;
   const url = new URL(req?.url || '/', 'https://probablyweather.co.za');
   return Object.fromEntries(url.searchParams.entries());
+}
+
+const formatShareCoord = (value) => String(Math.round(value * 100) / 100);
+
+export function canonicalizeOgRequest(req) {
+  const requestUrl = req?.url ? new URL(req.url, 'https://probablyweather.co.za') : null;
+  const query = requestUrl ? Object.fromEntries(requestUrl.searchParams.entries()) : getQuery(req);
+  const lang = clampLang(String(query.lang || 'en').toLowerCase());
+  const lat = parseCoord(query.lat);
+  const lon = parseCoord(query.lon);
+  const hasValidCoords = Number.isFinite(lat) && Number.isFinite(lon)
+    && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
+  const conditionOverride = normalizeConditionParam(query.c);
+  const params = new URLSearchParams({ lang });
+
+  if (hasValidCoords) {
+    params.set('lat', formatShareCoord(lat));
+    params.set('lon', formatShareCoord(lon));
+  }
+  if (conditionOverride) params.set('c', conditionOverride);
+
+  const canonicalQuery = params.toString();
+  return {
+    lang,
+    lat: hasValidCoords ? Number(params.get('lat')) : Number.NaN,
+    lon: hasValidCoords ? Number(params.get('lon')) : Number.NaN,
+    hasValidCoords,
+    conditionOverride,
+    canonicalPath: `/api/og?${canonicalQuery}`,
+    // Direct unit callers often provide req.query without an HTTP URL. They
+    // still receive normalized values, but only a real request can redirect.
+    needsRedirect: Boolean(requestUrl && requestUrl.searchParams.toString() !== canonicalQuery),
+  };
 }
 
 function hashString(value) {
@@ -478,18 +512,32 @@ function sendJpeg(res, statusCode, buffer, cacheControl = CACHE_CONTROL) {
 }
 
 export default async function handler(req, res) {
-  const query = getQuery(req);
-  const lang = clampLang(String(query.lang || 'en'));
-  // parseCoord (not parseFloat) — strict whole-string parse so '90abc' / '0x10'
-  // / array params don't slip through to the internal weatherHandler call.
-  const lat = parseCoord(query.lat);
-  const lon = parseCoord(query.lon);
-  // ?c= (validated) lets a share card reproduce the sender's exact display
-  // condition — the bg family + witty bin they're looking at.
-  const conditionOverride = normalizeConditionParam(query.c);
+  const {
+    lang,
+    lat,
+    lon,
+    hasValidCoords,
+    conditionOverride,
+    canonicalPath,
+    needsRedirect,
+  } = canonicalizeOgRequest(req);
+
+  // Collapse junk params, alternate ordering and over-precise coordinates to
+  // one CDN key before any weather lookup or image render occurs.
+  if (needsRedirect) {
+    res.setHeader('Location', canonicalPath);
+    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=86400');
+    return res.status(301).end();
+  }
+
+  const rate = await checkRateLimit(req, ogLimiter());
+  if (!rate.allowed) {
+    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader('Cache-Control', 'no-store');
+    return res.status(429).end('Too many requests');
+  }
 
   try {
-    const hasValidCoords = Number.isFinite(lat) && Number.isFinite(lon) && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
     let payload = null;
     if (hasValidCoords) {
       try {
@@ -504,7 +552,7 @@ export default async function handler(req, res) {
     // Valid coords but no weather (limiter/provider failure) → the generic
     // card is a TRANSIENT stand-in for this URL; short cache so the CDN
     // retries soon instead of pinning the wrong card for an hour.
-    const degraded = Number.isFinite(lat) && Number.isFinite(lon) && !payload;
+    const degraded = hasValidCoords && !payload;
     sendJpeg(res, 200, await renderJpeg(model), degraded ? DEGRADED_CACHE_CONTROL : CACHE_CONTROL);
   } catch {
     // Primary render failed. Try the safe fallback model. If THAT also throws

@@ -11,12 +11,14 @@ vi.mock('../api/_lib/limiters.js', () => ({
   weatherLimiter: () => blocking,
   geocodeLimiter: () => blocking,
   errorsLimiter: () => blocking,
+  ogLimiter: () => blocking,
   RATE_LIMITS: {},
 }));
 
 const { default: weatherHandler } = await import('../api/weather.js');
 const { default: geocodeHandler } = await import('../api/geocode.js');
 const { default: errorsHandler } = await import('../api/errors.js');
+const { default: ogHandler } = await import('../api/og.js');
 
 const APP_ORIGIN = 'https://www.probablyweather.co.za';
 
@@ -54,6 +56,14 @@ describe('rate-limited endpoints return 429 (matching the existing error shape) 
     await errorsHandler({ method: 'POST', headers: { origin: APP_ORIGIN, ...IP }, body: { message: 'x' } }, res);
     expect(res.statusCode).toBe(429);
     expect(res.body).toMatchObject({ ok: false, error: 'Too many requests' });
+  });
+
+  it('/api/og → 429 before weather lookup or image rendering', async () => {
+    const res = makeRes();
+    await ogHandler({ headers: IP, query: { lang: 'en' } }, res);
+    expect(res.statusCode).toBe(429);
+    expect(res.body).toBe('Too many requests');
+    expect(res.headers.get('cache-control')).toBe('no-store');
   });
 
   it('/api/errors still rejects a cross-origin POST BEFORE rate limiting (403, not 429)', async () => {

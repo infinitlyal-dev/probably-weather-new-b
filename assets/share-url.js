@@ -41,8 +41,10 @@ export function buildOgImageUrl({ lat, lon, lang = 'en', condition } = {}, origi
   const safeLang = String(lang || 'en');
   const params = new URLSearchParams({ lang: safeLang });
   if (isValidLat(lat) && isValidLon(lon)) {
-    params.set('lat', String(lat));
-    params.set('lon', String(lon));
+    // Match /share's public precision so callers emit the canonical OG URL
+    // directly instead of making preview crawlers follow a redirect.
+    params.set('lat', String(Math.round(Number(lat) * 100) / 100));
+    params.set('lon', String(Math.round(Number(lon) * 100) / 100));
   }
   // ?c= threads the sender's exact display condition so the dynamic card
   // reproduces their background family + witty bin (api/og.js applies the

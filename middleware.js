@@ -227,11 +227,11 @@ export default async function middleware(request) {
   // /api/og strictly re-validates lat/lon/c, so passing them through raw is safe.
   const ogParams = new URLSearchParams();
   ogParams.set('lang', lang);
-  if (condition !== 'default') ogParams.set('c', condition);
   const shareLat = url.searchParams.get('lat');
   const shareLon = url.searchParams.get('lon');
   if (shareLat) ogParams.set('lat', shareLat);
   if (shareLon) ogParams.set('lon', shareLon);
+  if (condition !== 'default') ogParams.set('c', condition);
   const ogImage = `${ORIGIN}/api/og?${ogParams.toString()}`;
   const canonical = buildCanonicalUrl(url, condition, city);
   const title = resolveTitle(lang, condition);
