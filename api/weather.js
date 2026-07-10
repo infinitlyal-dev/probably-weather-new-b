@@ -689,7 +689,6 @@ export default async function handler(req, res) {
 
         const toKph = v => isNum(v) ? Math.round(v * 3.6 * 10) / 10 : null; // m/s -> km/h
         const toPct = v => isNum(v) ? Math.round(v * 100) : null;            // 0-1 -> %
-        const toIso = v => isNum(v) ? new Date(v * 1000).toISOString() : null; // Unix -> ISO
 
         const pwDesc = icon => pirateIconMap[icon] ?? icon ?? 'Unknown';
 
@@ -709,8 +708,8 @@ export default async function handler(req, res) {
           windKph:   curWindKph,
           gustKph:   toKph(cur.windGust),   // PW provides windGust in m/s (si units)
           humidity:  curHumPct,
-          sunrise:   toIso(dly[0]?.sunriseTime),
-          sunset:    toIso(dly[0]?.sunsetTime),
+          sunrise:   unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds),
+          sunset:    unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds),
         };
 
         dailies[2] = {
@@ -725,8 +724,8 @@ export default async function handler(req, res) {
           winds:    dly.slice(0, 7).map(d => isNum(d.windSpeed)  ? toKph(d.windSpeed)  : null),
           clouds:   dly.slice(0, 7).map(d => isNum(d.cloudCover) ? toPct(d.cloudCover) : null),
           descs:    dly.slice(0, 7).map(d => pwDesc(d.icon)),
-          sunrises: dly.slice(0, 7).map(d => toIso(d.sunriseTime)),
-          sunsets:  dly.slice(0, 7).map(d => toIso(d.sunsetTime)),
+          sunrises: dly.slice(0, 7).map(d => unixToLocalIso(d.sunriseTime, utcOffsetSeconds)),
+          sunsets:  dly.slice(0, 7).map(d => unixToLocalIso(d.sunsetTime, utcOffsetSeconds)),
         };
       } catch (err) {
         logSourceFailure('Pirate Weather', err);
@@ -1886,6 +1885,13 @@ export default async function handler(req, res) {
 
 function isNum(v) {
   return typeof v === 'number' && Number.isFinite(v);
+}
+
+/** Convert a Unix timestamp to the API's location-local, timezone-free ISO contract. */
+export function unixToLocalIso(unixSeconds, utcOffsetSeconds) {
+  if (!isNum(unixSeconds)) return null;
+  const offsetSeconds = isNum(utcOffsetSeconds) ? utcOffsetSeconds : 0;
+  return new Date((unixSeconds + offsetSeconds) * 1000).toISOString().slice(0, 19);
 }
 
 /**
