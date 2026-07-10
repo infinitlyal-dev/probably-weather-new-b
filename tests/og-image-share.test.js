@@ -306,6 +306,29 @@ describe('OG share card threads the sender condition (?c=) + respects the night-
     meta: { utcOffsetSeconds: offsetS },
   });
 
+  it('S3 keeps an honest matching storm share rendered as storm', () => {
+    const model = buildOgViewModel(payloadWith({ conditionKey: 'storm' }), { lang: 'en', conditionOverride: 'storm' });
+
+    expect(model.condition).toBe('storm');
+    expect(model.headline).toBe(WEATHER_COPY.headlines.storm.en);
+    expect(model.backgroundPath).toBe('og/storm.jpg');
+  });
+
+  it('S3 silently corrects a storm override over live clear weather to clear', () => {
+    const model = buildOgViewModel(payloadWith({ conditionKey: 'clear' }), { lang: 'en', conditionOverride: 'storm' });
+
+    expect(model.condition).toBe('clear');
+    expect(model.headline).toBe(WEATHER_COPY.headlines.clear.en);
+    expect(model.backgroundPath).toBe('og/clear.jpg');
+  });
+
+  it('S3 rejects severe storm and hail overrides when live weather is only rain', () => {
+    const payload = payloadWith({ conditionKey: 'rain' });
+
+    expect(buildOgViewModel(payload, { lang: 'en', conditionOverride: 'storm' }).condition).toBe('rain');
+    expect(buildOgViewModel(payload, { lang: 'en', conditionOverride: 'hail' }).condition).toBe('rain');
+  });
+
   it('conditionOverride drives the card condition, background and headline', () => {
     // Sender screen shows partly-cloudy even though the fresh fetch derived clear.
     const model = buildOgViewModel(payloadWith({ conditionKey: 'clear' }), { lang: 'en', conditionOverride: 'partly-cloudy' });

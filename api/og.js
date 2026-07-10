@@ -110,6 +110,49 @@ export function normalizeConditionParam(value) {
   return KNOWN_CONDITIONS.has(v) ? v : null;
 }
 
+// Owner-ruled plausibility graph for a sender's display condition versus the
+// freshly fetched live condition. Links are explicit and symmetric: storm ↔
+// rain ↔ rain-possible is a chain (storm is not adjacent to rain-possible),
+// clear ↔ partly-cloudy, clear ↔ UV/night, and cloudy neighbours the softer
+// visibility/wind states. Severe overrides are stricter below: storm-family,
+// heat, and cold may only stand when live weather is in that same family.
+export const CONDITION_ADJACENCY = Object.freeze({
+  clear:          ['partly-cloudy', 'uv', 'night'],
+  'partly-cloudy': ['clear', 'cloudy', 'rain-possible'],
+  cloudy:         ['partly-cloudy', 'fog', 'rain-possible', 'wind'],
+  fog:            ['cloudy'],
+  wind:           ['cloudy'],
+  uv:             ['clear'],
+  night:          ['clear'],
+  'rain-possible': ['partly-cloudy', 'cloudy', 'rain'],
+  rain:           ['rain-possible', 'storm', 'thunder', 'hail'],
+  storm:          ['rain', 'thunder', 'hail'],
+  thunder:        ['rain', 'storm', 'hail'],
+  hail:           ['rain', 'storm', 'thunder'],
+  heat:           [],
+  cold:           ['cold-clear'],
+  'cold-clear':   ['cold'],
+});
+
+const SEVERE_OVERRIDE_FAMILIES = Object.freeze({
+  storm:       new Set(['storm', 'thunder', 'hail']),
+  thunder:     new Set(['storm', 'thunder', 'hail']),
+  hail:        new Set(['storm', 'thunder', 'hail']),
+  heat:        new Set(['heat']),
+  cold:        new Set(['cold', 'cold-clear']),
+  'cold-clear': new Set(['cold', 'cold-clear']),
+});
+
+export function verifyConditionOverride(conditionOverride, liveCondition) {
+  const live = normalizeConditionParam(liveCondition) || 'clear';
+  const requested = normalizeConditionParam(conditionOverride);
+  if (!requested || requested === live) return live;
+
+  const severeFamily = SEVERE_OVERRIDE_FAMILIES[requested];
+  if (severeFamily) return severeFamily.has(live) ? requested : live;
+  return CONDITION_ADJACENCY[live]?.includes(requested) ? requested : live;
+}
+
 export function buildOgViewModel(payload, options = {}) {
   const lang = clampLang(options.lang);
   const now = payload?.now || payload?.current || {};
@@ -117,10 +160,11 @@ export function buildOgViewModel(payload, options = {}) {
   const location = payload?.location?.name || options.locationName || 'South Africa';
   const locationLat = payload?.location?.lat;
   const locationLon = payload?.location?.lon;
-  // ?c= override reproduces the sender's exact on-screen condition (bg family +
-  // witty bin); the weather-derived condition is the night-cap fallback.
+  // ?c= reproduces an honest sender's on-screen condition only when it matches
+  // or plausibly neighbours the live weather. Implausible values silently fall
+  // back to live truth; generic no-coordinate cards are handled separately.
   const derivedCondition = now.conditionKey || today.conditionKey || 'clear';
-  const condition = options.conditionOverride || derivedCondition;
+  const condition = verifyConditionOverride(options.conditionOverride, derivedCondition);
   // Compute timeOfDay server-side from the same sunrise/sunset signals the
   // browser uses. This is what picks one of 36 canonical OG sources
   // (9 conditions × 4 times). Falls back to 'day' if signals are missing.
