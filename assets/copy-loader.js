@@ -12,6 +12,13 @@
 // degraded but alive, and the next loadCopyBank call retries.
 
 const SUPPORTED = ['en', 'af', 'zu', 'xh', 'st'];
+const COPY_LOADERS = {
+  en: () => import('./copy/en.js'),
+  af: () => import('./copy/af.js'),
+  zu: () => import('./copy/zu.js'),
+  xh: () => import('./copy/xh.js'),
+  st: () => import('./copy/st.js'),
+};
 
 // Minimal seed so the copy getters in app.js (which end in hard fallbacks
 // like `|| T.witty.clear.en`) can never throw before the real bank lands.
@@ -56,7 +63,7 @@ export async function loadCopyBank(lang) {
   if (inFlight.has(safe)) return inFlight.get(safe);
   const p = (async () => {
     try {
-      const mod = await import(`./copy/${safe}.js`);
+      const mod = await COPY_LOADERS[safe]();
       mergeInPlace(COPY_BANK, mod.WEATHER_COPY);
       loadedLangs.add(safe);
       return true;

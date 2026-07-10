@@ -18,10 +18,12 @@
 import { cpSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync, readFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 import esbuild from 'esbuild';
 
 import { LANGS, buildModuleSource } from './generate-copy-splits.mjs';
+import { emitClientBundle } from './client-bundle.mjs';
 import { emitBackgroundImageArtifact, verifyBackgroundImageArtifact } from './image-slot-manifest.mjs';
 import { importsModule } from './import-scan.mjs';
 
@@ -98,6 +100,19 @@ console.log(
   `${imageArtifact.manifestBytes}-byte manifest (${imageArtifact.manifestGzipBytes} gzip).`,
 );
 
+// Verify the generated picker before P6 folds it into app.js and removes the
+// standalone source modules from the deployment tree.
+const builtPicker = await import(`${pathToFileURL(path.join(dist, 'assets', 'image-picker.js')).href}?build=${Date.now()}`);
+const imageVerification = verifyBackgroundImageArtifact({
+  sourceImageRoot: path.join(root, 'assets', 'images', 'bg'),
+  distRoot: dist,
+  picker: builtPicker,
+});
+console.log(
+  `[build] P9 image resolution: ${imageVerification.checked}/${imageVerification.checked} slots byte-equivalent; ` +
+  `${imageVerification.uniqueFiles} canonical WebPs.`,
+);
+
 // Collect every .js/.css under dist (assets + sw.js) for in-place minification.
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
@@ -124,14 +139,58 @@ if (offenders.length) {
   process.exit(1);
 }
 
+const before = walk(dist)
+  .filter((f) => /\.(js|css)$/i.test(f))
+  .reduce((total, file) => total + Buffer.byteLength(readFileSync(file, 'utf8')), 0);
+
+// P6: bundle the initial static dependency graph into app.js. Explicit dynamic
+// imports remain split: install UI plus one chunk for each language bank.
+const clientBundle = await emitClientBundle(path.join(dist, 'assets'));
+const lazyEntryPoints = Object.values(clientBundle.metafile.outputs)
+  .map((output) => output.entryPoint?.replaceAll('\\', '/'))
+  .filter(Boolean);
+for (const required of ['install.js', 'copy/en.js', 'copy/af.js', 'copy/zu.js', 'copy/xh.js', 'copy/st.js']) {
+  if (!lazyEntryPoints.some((entry) => entry.endsWith(`/${required}`))) {
+    console.error(`[build] FATAL: P6 lazy client entry missing: ${required}`);
+    process.exit(1);
+  }
+}
+const appOutput = clientBundle.outputFiles.find((output) => output.path.endsWith(`${path.sep}app.js`));
+const appMeta = Object.values(clientBundle.metafile.outputs)
+  .find((output) => output.entryPoint?.replaceAll('\\', '/').endsWith('/app.js'));
+if (!appOutput || appMeta?.imports.some((entry) => entry.kind === 'import-statement')) {
+  console.error('[build] FATAL: P6 app.js still has a static module fan-out.');
+  process.exit(1);
+}
+
+// Source sw.js retains the unbundled list so the source tree remains directly
+// previewable. Only dist/sw.js receives the generated, hashed bundle paths.
+const CLIENT_ASSET_BLOCK = /\/\/ __CLIENT_BUNDLE_ASSETS_START__[\s\S]*?\/\/ __CLIENT_BUNDLE_ASSETS_END__/;
+const distSwPath = path.join(dist, 'sw.js');
+const generatedClientAssets = clientBundle.coreAssetUrls.map((url) => `  '${url}',`).join('\n');
+const bundledSwSource = readFileSync(distSwPath, 'utf8').replace(
+  CLIENT_ASSET_BLOCK,
+  `// __CLIENT_BUNDLE_ASSETS_START__\n${generatedClientAssets}\n  // __CLIENT_BUNDLE_ASSETS_END__`,
+);
+writeFileSync(distSwPath, bundledSwSource, 'utf8');
+
+const builtCoreBlock = bundledSwSource.match(/CORE_ASSETS\s*=\s*\[([\s\S]*?)\]/);
+if (!builtCoreBlock) {
+  console.error('[build] FATAL: could not locate built CORE_ASSETS in dist/sw.js');
+  process.exit(1);
+}
+const coreAssets = [...builtCoreBlock[1].matchAll(/['"](\/[^'"]*)['"]/g)].map((match) => match[1]);
+console.log(
+  `[build] P6 initial JS: 1 request, ${appOutput.contents.length} bytes ` +
+  `(${gzipSync(appOutput.contents).length} gzip); ${clientBundle.coreAssetUrls.length - 1} lazy chunks.`,
+);
+
 const files = walk(dist).filter((f) => /\.(js|css)$/i.test(f));
-let before = 0;
 let after = 0;
 
 console.log(`[build] minifying ${files.length} JS/CSS files…`);
 for (const file of files) {
   const source = readFileSync(file, 'utf8');
-  before += Buffer.byteLength(source);
   const isCss = file.endsWith('.css');
   const { code } = esbuild.transformSync(source, {
     loader: isCss ? 'css' : 'js',
@@ -185,23 +244,11 @@ for (const file of files) {
 // array directly and resolves EVERY entry: a file with an extension is statted
 // as-is; a known rewrite is statted via its target; an UNKNOWN extensionless
 // path is a hard failure (it can't be verified, so it must not pass silently).
-// Read the precache LIST from the SOURCE sw.js (the dist copy is minified, so
-// the CORE_ASSETS array structure isn't reliably parseable there); verify the
-// FILES exist in dist.
-const swSrc = readFileSync(path.join(root, 'sw.js'), 'utf8');
-
 // Vercel rewrites (see vercel.json): the precached URL → the dist file served.
 const REWRITE_TARGETS = {
   '/': 'index.html',
   '/install': 'install.html',
 };
-
-const coreBlock = swSrc.match(/CORE_ASSETS\s*=\s*\[([\s\S]*?)\]/);
-if (!coreBlock) {
-  console.error('[build] FATAL: could not locate CORE_ASSETS in sw.js');
-  process.exit(1);
-}
-const coreAssets = [...coreBlock[1].matchAll(/['"](\/[^'"]*)['"]/g)].map((m) => m[1]);
 
 const missing = [];
 const unverifiable = [];
@@ -223,16 +270,5 @@ if (missing.length) {
   console.error('[build] FATAL: sw.js precaches paths missing from dist:', missing);
   process.exit(1);
 }
-
-const builtPicker = await import(`${pathToFileURL(path.join(dist, 'assets', 'image-picker.js')).href}?build=${Date.now()}`);
-const imageVerification = verifyBackgroundImageArtifact({
-  sourceImageRoot: path.join(root, 'assets', 'images', 'bg'),
-  distRoot: dist,
-  picker: builtPicker,
-});
-console.log(
-  `[build] P9 image resolution: ${imageVerification.checked}/${imageVerification.checked} slots byte-equivalent; ` +
-  `${imageVerification.uniqueFiles} canonical WebPs.`,
-);
 
 console.log(`[build] done. JS/CSS ${Math.round(before / 1024)} KB → ${Math.round(after / 1024)} KB (${Math.round((1 - after / before) * 100)}% smaller). sw.js asset check: ${coreAssets.length}/${coreAssets.length} precache paths OK (incl. rewrites).`);

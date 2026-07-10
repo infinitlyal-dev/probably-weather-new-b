@@ -85,6 +85,7 @@ const CORE_ASSETS = [
   '/install',
   '/install.html',
   '/assets/app.css',
+  // __CLIENT_BUNDLE_ASSETS_START__
   '/assets/app.js',
   // Every ES module app.js imports — the offline shell white-screens if any is
   // missing (app.js loads from cache, then its first un-cached `import` rejects).
@@ -114,6 +115,7 @@ const CORE_ASSETS = [
   '/assets/weather-thresholds.js',
   '/assets/search-mini-weather.js',
   '/assets/install-loader.js',
+  // __CLIENT_BUNDLE_ASSETS_END__
   '/manifest.json',
 ];
 
