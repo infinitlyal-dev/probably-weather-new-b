@@ -138,10 +138,10 @@ describe('Offline fallback guarantees', () => {
       expect(installBlock[0]).toMatch(/console\.warn\(/);
     });
 
-    it('still installs (skipWaiting) even when precache fails so the SW lifecycle does not stall', () => {
+    it('calls skipWaiting only after the atomic core precache succeeds', () => {
       const src = sw();
       const installBlock = src.match(/addEventListener\(['"]install['"][\s\S]*?\}\)\(\)\);\s*\}\);/);
-      expect(installBlock[0]).toMatch(/self\.skipWaiting\(\)/);
+      expect(installBlock[0].indexOf('self.skipWaiting()')).toBeGreaterThan(installBlock[0].indexOf('cache.addAll(CORE_ASSETS)'));
     });
   });
 });

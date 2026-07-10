@@ -20,11 +20,9 @@
      → clients.claim → the page's controllerchange handler reloads once onto the
      fresh shell. CACHE_VERSION is still NOT bumped, and that is correct: same cache
      identity, overwrite-in-place, so the image/api caches are never touched (no
-     re-download churn) and — critically — the shell cache is never EMPTIED, so a
-     flaky-network precache can't strand an offline user with no shell (it keeps
-     whatever it already had; stable non-hashed asset paths make a mixed old/new
-     shell boot fine). Rotating to a fresh per-deploy cache name was considered and
-     rejected for exactly that offline-safety reason.
+     re-download churn). The atomic addAll must complete before skipWaiting runs;
+     any precache failure rejects installation so the old worker and complete shell
+     stay in control until the next update check retries.
    Upgrades from v15:
    - Install-time precache now starts after a 4s PRECACHE_YIELD_MS delay. On
      the one open where a device upgrades from a pre-SWR SW (v14 and older,
@@ -138,7 +136,6 @@ const PRECACHE_YIELD_MS = 4000;
 let hadPriorCaches = false;
 
 self.addEventListener('install', (event) => {
-  self.skipWaiting();
   event.waitUntil((async () => {
     // Read BEFORE we open our own cache (open would create one). Any existing
     // cache ⇒ a prior SW ran here ⇒ this is an update, not a first install.
@@ -146,29 +143,19 @@ self.addEventListener('install', (event) => {
     await new Promise((resolve) => setTimeout(resolve, PRECACHE_YIELD_MS));
     try {
       const cache = await caches.open(CORE_CACHE);
-      // addAll is atomic — if any single asset fails, the cache is left empty.
-      // Try the atomic path first so we either get the full offline shell or
-      // none of it, but if that fails fall back to a best-effort per-asset
-      // loop that logs each miss. Both outcomes leave the SW installed; the
-      // log surfaces missing assets to anyone watching the console after a
-      // deploy.
-      try {
-        await cache.addAll(CORE_ASSETS);
-      } catch (err) {
-        const cached = new Set();
-        for (const asset of CORE_ASSETS) {
-          try {
-            await cache.add(asset);
-            cached.add(asset);
-          } catch (assetErr) {
-            console.warn('[SW] core asset failed to cache:', asset, assetErr?.message || assetErr);
-          }
-        }
-        console.warn('[SW] core precache partial:', cached.size, '/', CORE_ASSETS.length, 'assets cached; addAll error:', err?.message || err);
-      }
+      // Cache.addAll is atomic: any failed core request rejects without
+      // overwriting a subset of the stable shell cache. Do not activate until
+      // the complete graph is present.
+      await cache.addAll(CORE_ASSETS);
     } catch (err) {
-      console.warn('[SW] core cache open failed:', err?.message || err);
+      console.warn('[SW] core precache failed; install aborted:', err?.message || err);
+      // A failed first-ever install creates an empty cache via caches.open().
+      // Remove it so the next attempt is still recognised as a first install.
+      // On updates, preserve the prior worker's complete stable cache.
+      if (!hadPriorCaches) await caches.delete(CORE_CACHE).catch(() => {});
+      throw err;
     }
+    await self.skipWaiting();
   })());
 });
 

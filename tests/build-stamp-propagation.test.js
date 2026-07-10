@@ -101,12 +101,15 @@ describe('app.js consumes BUILD_ID (inline, not a separate imported module)', ()
 // deploy populated the shell — and that a later deploy OVERWRITES it in place.
 function makeCacheStore() {
   const store = new Map(); // cacheName -> Map(url -> body)
-  const makeCaches = (buildId) => ({
+  const makeCaches = (buildId, { failAddAll = false } = {}) => ({
     async open(name) {
       if (!store.has(name)) store.set(name, new Map());
       const c = store.get(name);
       return {
-        async addAll(list) { for (const u of list) c.set(u, `${buildId}:${u}`); },
+        async addAll(list) {
+          if (failAddAll) throw new Error('core precache failed');
+          for (const u of list) c.set(u, `${buildId}:${u}`);
+        },
         async add(u) { c.set(u, `${buildId}:${u}`); },
         async put(req, res) { c.set(typeof req === 'string' ? req : req.url, res); },
         async match(req) { return c.get(typeof req === 'string' ? req : req.url); },
@@ -123,21 +126,23 @@ function makeCacheStore() {
 
 // Load sw.js as a specific deploy, capture its lifecycle handlers + any client
 // messages, and return drivers for install/activate.
-function loadDeploy(buildId, makeCaches) {
+function loadDeploy(buildId, makeCaches, { failAddAll = false } = {}) {
   const handlers = {};
   const postedMessages = [];
+  let skipWaitingCalls = 0;
+  let claimCalls = 0;
   const fakeClient = { postMessage: (m) => postedMessages.push(m) };
   const context = {
     self: {
       addEventListener: (type, fn) => { handlers[type] = fn; },
-      skipWaiting: () => {},
+      skipWaiting: () => { skipWaitingCalls += 1; },
       clients: {
-        claim: async () => {},
+        claim: async () => { claimCalls += 1; },
         matchAll: async () => [fakeClient],
       },
       location: { origin: 'https://probablyweather.co.za' },
     },
-    caches: makeCaches(buildId),
+    caches: makeCaches(buildId, { failAddAll }),
     fetch: async () => new Response('ok', { status: 200 }),
     setTimeout: (fn) => { fn(); return 0; }, // collapse PRECACHE_YIELD_MS
     URL, Headers, Response, Promise, Date, console, Set,
@@ -150,7 +155,12 @@ function loadDeploy(buildId, makeCaches) {
     handlers[type]({ waitUntil: (p) => waited.push(p) });
     await Promise.all(waited);
   };
-  return { drive, postedMessages };
+  return {
+    drive,
+    postedMessages,
+    get skipWaitingCalls() { return skipWaitingCalls; },
+    get claimCalls() { return claimCalls; },
+  };
 }
 
 const SHELL = 'pw-v2026-05-31-001-core';
@@ -158,6 +168,22 @@ const IMG = 'pw-v2026-05-31-001-img';
 const UPDATE_MSG = { type: 'PW_UPDATE_AVAILABLE', version: 'pw-v2026-05-31-001' };
 
 describe('two-deploy lifecycle: stale SW → new deploy → next open runs new code', () => {
+  it('B2 rejects a partial core precache without replacing or activating over the old worker', async () => {
+    const { store, makeCaches } = makeCacheStore();
+    const current = loadDeploy('deployAAA', makeCaches);
+    await current.drive('install');
+    await current.drive('activate');
+    const oldApp = store.get(SHELL).get('/assets/app.js');
+
+    const broken = loadDeploy('deployBBB', makeCaches, { failAddAll: true });
+    await expect(broken.drive('install')).rejects.toThrow('core precache failed');
+
+    expect(store.get(SHELL).get('/assets/app.js')).toBe(oldApp);
+    expect(broken.skipWaitingCalls).toBe(0);
+    expect(broken.claimCalls).toBe(0);
+    expect(broken.postedMessages).toHaveLength(0);
+  });
+
   it('overwrites the shell with fresh code IN PLACE, PRESERVES images, never empties the shell, and broadcasts the reload signal', async () => {
     const { store, makeCaches } = makeCacheStore();
 

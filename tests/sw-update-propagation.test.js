@@ -19,9 +19,12 @@ const appSrc = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8'
 // ---------------------------------------------------------------------------
 
 describe('sw.js — lifecycle plumbing', () => {
-  it('install event calls self.skipWaiting() so the new SW activates immediately', () => {
-    const installBlock = swSrc.match(/addEventListener\('install',[\s\S]*?\}\);/)?.[0] || '';
+  it('install event calls self.skipWaiting() only after the complete core precache', () => {
+    const start = swSrc.indexOf("self.addEventListener('install'");
+    const end = swSrc.indexOf("self.addEventListener('activate'");
+    const installBlock = swSrc.slice(start, end);
     expect(installBlock).toMatch(/self\.skipWaiting\(\)/);
+    expect(installBlock.indexOf('self.skipWaiting()')).toBeGreaterThan(installBlock.indexOf('cache.addAll(CORE_ASSETS)'));
   });
 
   it('activate event calls self.clients.claim() so the new SW takes over open clients', () => {
