@@ -16,13 +16,34 @@ export const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 // of retaining the old body at the stable filesystem path.
 export const BG_IMAGE_URL_VERSION = '20260710-p1';
 
-const VALID_TIMES = new Set(['dawn', 'day', 'dusk', 'night']);
+export const BG_IMAGE_SLOT_FOLDERS = [
+  'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind',
+];
+export const BG_IMAGE_SLOT_TIMES = ['dawn', 'day', 'dusk', 'night'];
+const VALID_TIMES = new Set(BG_IMAGE_SLOT_TIMES);
 // The 9 promoted folders. Folder names outside this set are *not* rejected —
 // the picker is downstream and stays permissive — but a one-line console.warn
 // surfaces typos that would otherwise silently 404 through the whole chain.
-const KNOWN_FOLDERS = new Set([
-  'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind',
-]);
+const KNOWN_FOLDERS = new Set(BG_IMAGE_SLOT_FOLDERS);
+
+// The source tree stays directly previewable using its slot paths. Production
+// build replaces this exact marker with a compact slot→content-hash manifest,
+// then ships each unique WebP once under bg-canonical/.
+const BG_IMAGE_SLOT_MANIFEST = /* __BG_IMAGE_SLOT_MANIFEST__ */ null;
+
+function rotatingImagePath(base, folder, time, week, index) {
+  if (base === 'assets/images/bg' && BG_IMAGE_SLOT_MANIFEST) {
+    const folderIndex = BG_IMAGE_SLOT_FOLDERS.indexOf(folder);
+    const timeIndex = BG_IMAGE_SLOT_TIMES.indexOf(time);
+    if (folderIndex >= 0 && timeIndex >= 0) {
+      const slotIndex = folderIndex * 112 + (week - 1) * 28 + timeIndex * 7 + (index - 1);
+      const hashId = BG_IMAGE_SLOT_MANIFEST.slots[slotIndex];
+      const hash = BG_IMAGE_SLOT_MANIFEST.hashes[hashId];
+      if (hash) return `assets/images/bg-canonical/${hash}.webp`;
+    }
+  }
+  return `${base}/${folder}/week_${week}/${time}/${index}.webp`;
+}
 
 // Warn-once per folder per session — without this, every pull-to-refresh
 // fires 2-3 buildPickerPaths calls and would re-spam the same warning.
@@ -85,9 +106,9 @@ export function buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r, bas
   // Without dedupe, the chain wastes 1-2 redundant fetches before reaching default.jpg.
   const versionedWebp = (url) => `${url}?v=${BG_IMAGE_URL_VERSION}`;
   const raw = [
-    versionedWebp(`${base}/${safeFolder}/week_${safeWeek}/${safeTime}/${safeR}.webp`),
-    versionedWebp(`${base}/${safeFolder}/week_1/${safeTime}/1.webp`),
-    versionedWebp(`${base}/${safeFallback}/week_1/${safeTime}/1.webp`),
+    versionedWebp(rotatingImagePath(base, safeFolder, safeTime, safeWeek, safeR)),
+    versionedWebp(rotatingImagePath(base, safeFolder, safeTime, 1, 1)),
+    versionedWebp(rotatingImagePath(base, safeFallback, safeTime, 1, 1)),
     `${base}/default.jpg`,
   ];
   return Array.from(new Set(raw));

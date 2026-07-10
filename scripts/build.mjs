@@ -16,12 +16,13 @@
 // also fails the suite in that case).
 
 import { cpSync, mkdirSync, readdirSync, rmSync, statSync, writeFileSync, readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import path from 'node:path';
 
 import esbuild from 'esbuild';
 
 import { LANGS, buildModuleSource } from './generate-copy-splits.mjs';
+import { emitBackgroundImageArtifact, verifyBackgroundImageArtifact } from './image-slot-manifest.mjs';
 import { importsModule } from './import-scan.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -78,6 +79,24 @@ for (const entry of STATIC_ENTRIES) {
 // (api/* imports it from source; no client path fetches it) — keep it out
 // of the served output.
 rmSync(path.join(dist, 'assets', 'weather-copy.js'), { force: true });
+
+// P9: all 1,008 rotation slots remain addressable, but equal WebP bodies ship
+// once at a content-addressed URL. The compact manifest is embedded into the
+// built picker; source paths remain intact for unbuilt local previews.
+const imageArtifact = emitBackgroundImageArtifact({
+  sourceImageRoot: path.join(root, 'assets', 'images', 'bg'),
+  distRoot: dist,
+  pickerFile: path.join(dist, 'assets', 'image-picker.js'),
+});
+if (imageArtifact.slots !== 1008) {
+  console.error(`[build] FATAL: background manifest has ${imageArtifact.slots}/1008 slots.`);
+  process.exit(1);
+}
+console.log(
+  `[build] P9 image manifest: ${imageArtifact.slots} slots → ${imageArtifact.uniqueFiles} unique WebPs; ` +
+  `${imageArtifact.originalBytes} → ${imageArtifact.uniqueBytes} bytes + ` +
+  `${imageArtifact.manifestBytes}-byte manifest (${imageArtifact.manifestGzipBytes} gzip).`,
+);
 
 // Collect every .js/.css under dist (assets + sw.js) for in-place minification.
 function walk(dir, out = []) {
@@ -204,5 +223,16 @@ if (missing.length) {
   console.error('[build] FATAL: sw.js precaches paths missing from dist:', missing);
   process.exit(1);
 }
+
+const builtPicker = await import(`${pathToFileURL(path.join(dist, 'assets', 'image-picker.js')).href}?build=${Date.now()}`);
+const imageVerification = verifyBackgroundImageArtifact({
+  sourceImageRoot: path.join(root, 'assets', 'images', 'bg'),
+  distRoot: dist,
+  picker: builtPicker,
+});
+console.log(
+  `[build] P9 image resolution: ${imageVerification.checked}/${imageVerification.checked} slots byte-equivalent; ` +
+  `${imageVerification.uniqueFiles} canonical WebPs.`,
+);
 
 console.log(`[build] done. JS/CSS ${Math.round(before / 1024)} KB → ${Math.round(after / 1024)} KB (${Math.round((1 - after / before) * 100)}% smaller). sw.js asset check: ${coreAssets.length}/${coreAssets.length} precache paths OK (incl. rewrites).`);
