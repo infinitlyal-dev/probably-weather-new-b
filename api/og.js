@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 
-import { ImageResponse } from '@vercel/og';
+import satori from 'satori';
 import sharp from 'sharp';
 
 import weatherHandler from './weather.js';
@@ -33,10 +33,12 @@ export const DEGRADED_CACHE_CONTROL = 'public, max-age=60, s-maxage=60';
 // fine for the crawler but never showed on the phone — field evidence
 // 2026-07-06). Hard budget: every card ships as JPEG under 300KB.
 export const JPEG_BYTE_BUDGET = 300 * 1024;
-const JPEG_QUALITY_STEPS = [82, 70, 58, 45];
+const JPEG_QUALITY = 82;
 
 const WIDTH = 1200;
 const HEIGHT = 630;
+const BACKGROUND_DATA_URL_CACHE = new Map();
+const FONT_DATA_PROMISE = readFile(new URL('../og/Geist-Regular.ttf', import.meta.url));
 
 const STAT_LABELS = {
   en: { wind: 'Wind', rain: 'Rain', uv: 'UV' },
@@ -334,6 +336,8 @@ async function readBackgroundDataUrl(model) {
 
   for (let i = 0; i < ordered.length; i += 1) {
     const candidate = ordered[i];
+    const cached = BACKGROUND_DATA_URL_CACHE.get(candidate);
+    if (cached) return cached;
     try {
       const bytes = await readFile(new URL(`../${candidate}`, import.meta.url));
       if (i > 0) {
@@ -342,7 +346,9 @@ async function readBackgroundDataUrl(model) {
       }
       // Every candidate is JPEG under og/. No MIME detection needed — and no
       // chance of accidentally serving a WebP back to Satori.
-      return `data:image/jpeg;base64,${bytes.toString('base64')}`;
+      const dataUrl = `data:image/jpeg;base64,${bytes.toString('base64')}`;
+      BACKGROUND_DATA_URL_CACHE.set(candidate, dataUrl);
+      return dataUrl;
     } catch {
       // Try the next candidate.
     }
@@ -485,23 +491,19 @@ function ogElement(model, backgroundDataUrl) {
   );
 }
 
-async function renderJpeg(model) {
+export async function renderJpeg(model) {
   const background = await readBackgroundDataUrl(model);
-  const image = new ImageResponse(ogElement(model, background), { width: WIDTH, height: HEIGHT });
-  const png = Buffer.from(await image.arrayBuffer());
-  // Transcode Satori's PNG (previously ~500-850KB on photo-dense cards — over
-  // WhatsApp's preview budget) to JPEG, stepping quality down until the card
-  // fits the byte budget. q82 lands well under 300KB in practice; the lower
-  // steps are insurance, not the expected path.
-  let jpeg = null;
-  for (const quality of JPEG_QUALITY_STEPS) {
-    jpeg = await sharp(png).jpeg({ quality, mozjpeg: true }).toBuffer();
-    if (jpeg.length <= JPEG_BYTE_BUDGET) {
-      console.log(`[OG jpeg] q${quality} → ${(jpeg.length / 1024).toFixed(0)}KB`);
-      return jpeg;
-    }
+  const fontData = await FONT_DATA_PROMISE;
+  const svg = await satori(ogElement(model, background), {
+    width: WIDTH,
+    height: HEIGHT,
+    fonts: [{ name: 'geist', data: fontData, weight: 400, style: 'normal' }],
+  });
+  const jpeg = await sharp(Buffer.from(svg)).jpeg({ quality: JPEG_QUALITY, mozjpeg: true }).toBuffer();
+  if (jpeg.length > JPEG_BYTE_BUDGET) {
+    throw new Error(`[OG jpeg] over budget at q${JPEG_QUALITY}: ${jpeg.length} bytes`);
   }
-  console.error(`[OG jpeg] over budget at q${JPEG_QUALITY_STEPS.at(-1)}: ${jpeg.length} bytes`);
+  console.log(`[OG jpeg] q${JPEG_QUALITY} → ${(jpeg.length / 1024).toFixed(0)}KB`);
   return jpeg;
 }
 
