@@ -26,7 +26,7 @@ import {
   PTR_COPY,
 } from './refresh-behaviour.js';
 import { startFirstOpenLocation } from './first-open-location.js';
-import { shouldPersistHomeName } from './home-name.js';
+import { isStoredHomeObject, shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
 import { setupDeferredInstallLoad } from './install-loader.js';
@@ -506,6 +506,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
   const round0 = (n) => isNum(n) ? Math.round(n) : null;
   const loadJSON = (key, fb) => { try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fb; } catch { return fb; } };
+  const loadHomeJSON = (key, fb) => { const value = loadJSON(key, fb); return isStoredHomeObject(value) ? value : fb; };
   const saveJSON = (key, val) => { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} };
   function normalizeStoredPlaces(places) {
     if (!Array.isArray(places)) return [];
@@ -2435,7 +2436,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
   });
-  homePlace = loadJSON(STORAGE.home, null);
+  homePlace = loadHomeJSON(STORAGE.home, null);
   // Migration: pre-Phase-B-3 homePlace records had no `mode` field. Default
   // legacy data to 'gps' since the previous code only set homePlace from
   // getCurrentPosition or IP fallback (never from search-tab pins).

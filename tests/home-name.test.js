@@ -13,7 +13,7 @@
 // re-seeded, and a pinned search / shared-link place is never clobbered.
 
 import { describe, expect, it } from 'vitest';
-import { isCoordsName, isPlaceholderName, shouldPersistHomeName } from '../assets/home-name.js';
+import { isCoordsName, isPlaceholderName, isStoredHomeObject, shouldPersistHomeName } from '../assets/home-name.js';
 
 const HOME = { name: 'My Location', lat: -34.1163, lon: 18.8362 };
 const COORDS_STUCK = { name: '34.1°S, 18.8°E', lat: -34.1163, lon: 18.8362 };
@@ -90,6 +90,20 @@ describe('isPlaceholderName (module copy mirrors app.js semantics)', () => {
   });
 });
 
+describe('B7 stored-home shape validation', () => {
+  it('B7 rejects valid-JSON primitives and arrays as corrupt home records', () => {
+    expect(isStoredHomeObject(true)).toBe(false);
+    expect(isStoredHomeObject('x')).toBe(false);
+    expect(isStoredHomeObject(42)).toBe(false);
+    expect(isStoredHomeObject(null)).toBe(false);
+    expect(isStoredHomeObject([])).toBe(false);
+  });
+
+  it('B7 accepts an object-shaped home record for the existing migration path', () => {
+    expect(isStoredHomeObject({ name: 'Strand', lat: -34.1, lon: 18.8 })).toBe(true);
+  });
+});
+
 // app.js wiring — renderHome must call the predicate and persist to STORAGE.home.
 import { readFileSync } from 'node:fs';
 describe('app.js wiring — renderHome persists the resolved GPS-home name', () => {
@@ -100,5 +114,9 @@ describe('app.js wiring — renderHome persists the resolved GPS-home name', () 
   it('persists norm.locationName to STORAGE.home behind the predicate', () => {
     expect(appSrc).toMatch(/shouldPersistHomeName\(\{[\s\S]*?locationName:\s*norm\.locationName/);
     expect(appSrc).toMatch(/homePlace\.name\s*=\s*norm\.locationName[\s\S]*?saveJSON\(STORAGE\.home/);
+  });
+  it('B7 loads pw_home through the object-shape gate', () => {
+    expect(appSrc).toMatch(/const loadHomeJSON[\s\S]*?isStoredHomeObject/);
+    expect(appSrc).toMatch(/homePlace\s*=\s*loadHomeJSON\(STORAGE\.home/);
   });
 });

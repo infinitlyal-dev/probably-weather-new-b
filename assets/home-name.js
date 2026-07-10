@@ -25,6 +25,11 @@ export function isPlaceholderName(name) {
   return v === '' || /^unknown\b/i.test(v) || /^my location\b/i.test(v);
 }
 
+/** True only for the object shape that pw_home's migration can safely mutate. */
+export function isStoredHomeObject(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
 /**
  * Should the freshly-resolved weather location.name be persisted onto the GPS
  * home place? Only when ALL hold:
