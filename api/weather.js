@@ -1198,8 +1198,12 @@ export default async function handler(req, res) {
       // Rec 5: Modal cloud cover — use most frequent cloud category for condition logic.
       // Cloud cover is bimodal (clear or overcast), so averaging 10% and 90% gives 50%
       // which is meaningless. Modal approach picks the category most sources agree on.
-      const cloudVals = hourlies.map(h => h ? h.clouds?.[i] : null).filter(isNum);
-      const modalCloud = cloudVals.length > 0 ? pickModalCloud(cloudVals) : null;
+      const cloudEntries = hourlies
+        .map((h, si) => h && isNum(h.clouds?.[i]) ? { value: h.clouds[i], weight: hourlyW[si] } : null)
+        .filter(Boolean);
+      const modalCloud = cloudEntries.length > 0
+        ? pickModalCloud(cloudEntries.map(e => e.value), cloudEntries.map(e => e.weight))
+        : null;
 
       // Phase B-1 Item 3: per-hour categorised condition. Closes the
       // investigation finding that aggregatedHourly drops descriptions, so
@@ -1995,7 +1999,7 @@ function pickWeightedMostCommon(entries) {
  * finds the most common bucket, then returns the median value within that bucket.
  * This avoids averaging bimodal data (e.g. 10% and 90% → meaningless 50%).
  */
-function pickModalCloud(values) {
+function pickModalCloud(values, weights = []) {
   if (values.length === 0) return null;
   if (values.length === 1) return values[0];
 
@@ -2008,13 +2012,28 @@ function pickModalCloud(values) {
     else             buckets.overcast.push(v);
   }
 
-  // Find bucket with most votes
+  // Find bucket with most votes. A tied plurality has no modal category;
+  // resolve it with the active providers' weighted median instead of letting
+  // object insertion order systematically prefer the clearest tied bucket.
   let winner = 'clear';
   let maxCount = 0;
   for (const [name, vals] of Object.entries(buckets)) {
     if (vals.length > maxCount) {
       maxCount = vals.length;
       winner = name;
+    }
+  }
+
+  const tiedBucketCount = Object.values(buckets).filter(vals => vals.length === maxCount).length;
+  if (tiedBucketCount > 1) {
+    const ordered = values
+      .map((value, i) => ({ value, weight: isNum(weights[i]) && weights[i] > 0 ? weights[i] : 1 }))
+      .sort((a, b) => a.value - b.value);
+    const totalWeight = ordered.reduce((sum, entry) => sum + entry.weight, 0);
+    let cumulativeWeight = 0;
+    for (const entry of ordered) {
+      cumulativeWeight += entry.weight;
+      if (cumulativeWeight >= totalWeight / 2) return entry.value;
     }
   }
 
@@ -2493,4 +2512,4 @@ function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph 
 
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc, pickWeightedMostCommon, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc };
+export { deriveCondition, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc };
