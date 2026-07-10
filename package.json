@@ -6,10 +6,12 @@
     "build": "node scripts/verify-bg-image-budget.mjs && node scripts/build.mjs",
     "images:recompress": "node scripts/recompress-bg-images.mjs",
     "images:verify": "node scripts/verify-bg-image-budget.mjs",
-    "copy:generate": "node scripts/generate-copy-splits.mjs"
+    "copy:generate": "node scripts/generate-copy-splits.mjs",
+    "profile:particles": "node scripts/profile-particles.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.28.0",
+    "playwright": "^1.58.2",
     "vitest": "^4.1.5"
   },
   "dependencies": {

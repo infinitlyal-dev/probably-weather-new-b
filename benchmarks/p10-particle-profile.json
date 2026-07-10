@@ -1,0 +1,696 @@
+{
+  "generatedAt": "2026-07-10T22:42:58.582Z",
+  "method": "Local Chromium headless; 3 paired particle/control trials per condition; CDP 6x CPU throttle; 30000ms rAF + DevTools trace per trial.",
+  "environment": {
+    "platform": "win32 10.0.26200 x64",
+    "cpu": "AMD Ryzen 5 7530U with Radeon Graphics         ",
+    "logicalCpus": 12,
+    "node": "v20.20.0",
+    "browser": "145.0.7632.6"
+  },
+  "profiles": [
+    {
+      "condition": "rain",
+      "mode": "particles",
+      "trial": 1,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 28,
+      "frames": {
+        "samples": 1799,
+        "meanMs": 16.67526403557532,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.799999999999272,
+        "p99Ms": 16.80000000000109,
+        "maxMs": 33.29999999999927,
+        "observedFps": 59.96906542928383,
+        "deadlineMissPct": 0.055586436909394105,
+        "estimatedDroppedFrames": 1,
+        "estimatedDroppedFramePct": 0.05555555555555555
+      },
+      "mainThread": {
+        "taskDurationMs": 13104.688999999998,
+        "taskPct": 43.68229666666666,
+        "scriptDurationMs": 609.466,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 4561.878999999999,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 3157.4129999999914,
+          "longFrames": 0,
+          "longestMainFrameMs": 11.799
+        }
+      },
+      "layers": {
+        "count": 49,
+        "drawsContent": 41,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19415840,
+        "particleLayerCount": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1906484,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-rain-particles-trial1-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 4908633
+    },
+    {
+      "condition": "rain",
+      "mode": "control",
+      "trial": 1,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 0,
+      "frames": {
+        "samples": 1801,
+        "meanMs": 16.66596335369239,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000004366,
+        "p99Ms": 16.800000000000182,
+        "maxMs": 16.80000000000291,
+        "observedFps": 60.002532033556115,
+        "deadlineMissPct": 0,
+        "estimatedDroppedFrames": 0,
+        "estimatedDroppedFramePct": 0
+      },
+      "mainThread": {
+        "taskDurationMs": 3650.243,
+        "taskPct": 12.167476666666667,
+        "scriptDurationMs": 457.72400000000005,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 0,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 1311.6909999999991,
+          "longFrames": 0,
+          "longestMainFrameMs": 10.586
+        }
+      },
+      "layers": {
+        "count": 21,
+        "drawsContent": 13,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19498720,
+        "particleLayerCount": 0,
+        "estimatedParticleSurfaceBytesUpperBound": 0,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1906136,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-rain-control-trial1-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 2400702
+    },
+    {
+      "condition": "rain",
+      "mode": "particles",
+      "trial": 2,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 28,
+      "frames": {
+        "samples": 1798,
+        "meanMs": 16.693770856507232,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000000728,
+        "p99Ms": 16.800000000000182,
+        "maxMs": 33.400000000001455,
+        "observedFps": 59.90258334055184,
+        "deadlineMissPct": 0.16685205784204674,
+        "estimatedDroppedFrames": 3,
+        "estimatedDroppedFramePct": 0.1665741254858412
+      },
+      "mainThread": {
+        "taskDurationMs": 11959.865,
+        "taskPct": 39.866216666666666,
+        "scriptDurationMs": 470.854,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 3984.681,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 2724.5090000000055,
+          "longFrames": 0,
+          "longestMainFrameMs": 19.842
+        }
+      },
+      "layers": {
+        "count": 49,
+        "drawsContent": 41,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19434640,
+        "particleLayerCount": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1905712,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-rain-particles-trial2-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 4910822
+    },
+    {
+      "condition": "rain",
+      "mode": "control",
+      "trial": 2,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 0,
+      "frames": {
+        "samples": 1801,
+        "meanMs": 16.666018878400887,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000004366,
+        "p99Ms": 16.800000000000182,
+        "maxMs": 16.80000000000291,
+        "observedFps": 60.002332128400326,
+        "deadlineMissPct": 0,
+        "estimatedDroppedFrames": 0,
+        "estimatedDroppedFramePct": 0
+      },
+      "mainThread": {
+        "taskDurationMs": 3784.3709999999996,
+        "taskPct": 12.61457,
+        "scriptDurationMs": 474.359,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 0,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 1410.2680000000003,
+          "longFrames": 0,
+          "longestMainFrameMs": 10.161
+        }
+      },
+      "layers": {
+        "count": 21,
+        "drawsContent": 13,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19518352,
+        "particleLayerCount": 0,
+        "estimatedParticleSurfaceBytesUpperBound": 0,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1905360,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-rain-control-trial2-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 2419172
+    },
+    {
+      "condition": "rain",
+      "mode": "particles",
+      "trial": 3,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 28,
+      "frames": {
+        "samples": 1800,
+        "meanMs": 16.666,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000004366,
+        "p99Ms": 16.80000000000109,
+        "maxMs": 16.80000000000291,
+        "observedFps": 60.00240009600383,
+        "deadlineMissPct": 0,
+        "estimatedDroppedFrames": 0,
+        "estimatedDroppedFramePct": 0
+      },
+      "mainThread": {
+        "taskDurationMs": 11993.185000000001,
+        "taskPct": 39.97728333333333,
+        "scriptDurationMs": 549.23,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 4029.4350000000004,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 2996.393,
+          "longFrames": 0,
+          "longestMainFrameMs": 13.525
+        }
+      },
+      "layers": {
+        "count": 49,
+        "drawsContent": 41,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19547872,
+        "particleLayerCount": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1904700,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-rain-particles-trial3-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 4874358
+    },
+    {
+      "condition": "rain",
+      "mode": "control",
+      "trial": 3,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 0,
+      "frames": {
+        "samples": 1801,
+        "meanMs": 16.666018878400887,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000000728,
+        "p99Ms": 16.800000000000182,
+        "maxMs": 16.80000000000291,
+        "observedFps": 60.002332128400326,
+        "deadlineMissPct": 0,
+        "estimatedDroppedFrames": 0,
+        "estimatedDroppedFramePct": 0
+      },
+      "mainThread": {
+        "taskDurationMs": 3583.6459999999997,
+        "taskPct": 11.945486666666666,
+        "scriptDurationMs": 447.466,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 0,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 1260.8150000000023,
+          "longFrames": 0,
+          "longestMainFrameMs": 11.208
+        }
+      },
+      "layers": {
+        "count": 21,
+        "drawsContent": 13,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19506736,
+        "particleLayerCount": 0,
+        "estimatedParticleSurfaceBytesUpperBound": 0,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1907132,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-rain-control-trial3-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 2404760
+    },
+    {
+      "condition": "storm",
+      "mode": "particles",
+      "trial": 1,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 28,
+      "frames": {
+        "samples": 1799,
+        "meanMs": 16.67531962201223,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.799999999999272,
+        "p99Ms": 16.80000000000109,
+        "maxMs": 33.39999999999782,
+        "observedFps": 59.96886552506925,
+        "deadlineMissPct": 0.055586436909394105,
+        "estimatedDroppedFrames": 1,
+        "estimatedDroppedFramePct": 0.05555555555555555
+      },
+      "mainThread": {
+        "taskDurationMs": 10726.62,
+        "taskPct": 35.7554,
+        "scriptDurationMs": 428.153,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 3516.7200000000003,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 2469.2650000000003,
+          "longFrames": 0,
+          "longestMainFrameMs": 12.206
+        }
+      },
+      "layers": {
+        "count": 49,
+        "drawsContent": 41,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19433120,
+        "particleLayerCount": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1905780,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-storm-particles-trial1-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 4863053
+    },
+    {
+      "condition": "storm",
+      "mode": "control",
+      "trial": 1,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 0,
+      "frames": {
+        "samples": 1801,
+        "meanMs": 16.666018878400887,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000000728,
+        "p99Ms": 16.80000000000109,
+        "maxMs": 16.80000000000291,
+        "observedFps": 60.002332128400326,
+        "deadlineMissPct": 0,
+        "estimatedDroppedFrames": 0,
+        "estimatedDroppedFramePct": 0
+      },
+      "mainThread": {
+        "taskDurationMs": 3406.49,
+        "taskPct": 11.354966666666666,
+        "scriptDurationMs": 431.58,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 0,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 1248.0520000000015,
+          "longFrames": 0,
+          "longestMainFrameMs": 12.883
+        }
+      },
+      "layers": {
+        "count": 21,
+        "drawsContent": 13,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19502624,
+        "particleLayerCount": 0,
+        "estimatedParticleSurfaceBytesUpperBound": 0,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1905376,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-storm-control-trial1-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 2393655
+    },
+    {
+      "condition": "storm",
+      "mode": "particles",
+      "trial": 2,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 28,
+      "frames": {
+        "samples": 1799,
+        "meanMs": 16.67526403557532,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000004366,
+        "p99Ms": 16.80000000000109,
+        "maxMs": 33.400000000001455,
+        "observedFps": 59.96906542928384,
+        "deadlineMissPct": 0.055586436909394105,
+        "estimatedDroppedFrames": 1,
+        "estimatedDroppedFramePct": 0.05555555555555555
+      },
+      "mainThread": {
+        "taskDurationMs": 10980.682999999999,
+        "taskPct": 36.60227666666666,
+        "scriptDurationMs": 500.63199999999995,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 3564.6780000000003,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 2837.2890000000016,
+          "longFrames": 0,
+          "longestMainFrameMs": 16.323
+        }
+      },
+      "layers": {
+        "count": 49,
+        "drawsContent": 41,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19534208,
+        "particleLayerCount": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1905188,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-storm-particles-trial2-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 4844627
+    },
+    {
+      "condition": "storm",
+      "mode": "control",
+      "trial": 2,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 0,
+      "frames": {
+        "samples": 1801,
+        "meanMs": 16.665963353692394,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000004366,
+        "p99Ms": 16.800000000000182,
+        "maxMs": 16.80000000000291,
+        "observedFps": 60.0025320335561,
+        "deadlineMissPct": 0,
+        "estimatedDroppedFrames": 0,
+        "estimatedDroppedFramePct": 0
+      },
+      "mainThread": {
+        "taskDurationMs": 3333.9590000000003,
+        "taskPct": 11.113196666666667,
+        "scriptDurationMs": 407.54099999999994,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 0,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 1146.3690000000008,
+          "longFrames": 0,
+          "longestMainFrameMs": 10.987
+        }
+      },
+      "layers": {
+        "count": 21,
+        "drawsContent": 13,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19516288,
+        "particleLayerCount": 0,
+        "estimatedParticleSurfaceBytesUpperBound": 0,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1905628,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-storm-control-trial2-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 2386866
+    },
+    {
+      "condition": "storm",
+      "mode": "particles",
+      "trial": 3,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 28,
+      "frames": {
+        "samples": 1799,
+        "meanMs": 16.67526403557532,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.799999999999272,
+        "p99Ms": 16.800000000000182,
+        "maxMs": 33.400000000001455,
+        "observedFps": 59.96906542928384,
+        "deadlineMissPct": 0.055586436909394105,
+        "estimatedDroppedFrames": 1,
+        "estimatedDroppedFramePct": 0.05555555555555555
+      },
+      "mainThread": {
+        "taskDurationMs": 10182.237,
+        "taskPct": 33.94079,
+        "scriptDurationMs": 395.33400000000006,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 3348.052,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 2260.885999999997,
+          "longFrames": 0,
+          "longestMainFrameMs": 12.652
+        }
+      },
+      "layers": {
+        "count": 49,
+        "drawsContent": 41,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19526720,
+        "particleLayerCount": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1905404,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-storm-particles-trial3-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 4837327
+    },
+    {
+      "condition": "storm",
+      "mode": "control",
+      "trial": 3,
+      "durationMs": 30000,
+      "cpuThrottle": 6,
+      "viewport": "400x800@2x",
+      "particleCount": 0,
+      "frames": {
+        "samples": 1801,
+        "meanMs": 16.66596335369239,
+        "p50Ms": 16.69999999999891,
+        "p95Ms": 16.700000000004366,
+        "p99Ms": 16.80000000000109,
+        "maxMs": 16.80000000000291,
+        "observedFps": 60.00253203355612,
+        "deadlineMissPct": 0,
+        "estimatedDroppedFrames": 0,
+        "estimatedDroppedFramePct": 0
+      },
+      "mainThread": {
+        "taskDurationMs": 3306.9030000000002,
+        "taskPct": 11.023010000000001,
+        "scriptDurationMs": 418.206,
+        "layoutDurationMs": 0,
+        "recalcStyleDurationMs": 0,
+        "longTasksFromObserver": 0,
+        "longestObserverTaskMs": 0,
+        "trace": {
+          "beginMainFrameTimeMs": 1190.2820000000022,
+          "longFrames": 0,
+          "longestMainFrameMs": 11.586
+        }
+      },
+      "layers": {
+        "count": 21,
+        "drawsContent": 13,
+        "memoryBytes": null,
+        "memoryUnavailableReason": "Chrome DevTools LayerTree exposes geometry, not compositor backing-store memory.",
+        "estimatedSurfaceBytesUpperBound": 19628608,
+        "particleLayerCount": 0,
+        "estimatedParticleSurfaceBytesUpperBound": 0,
+        "estimateBasis": "sum(drawsContent layer CSS width × height × 4 bytes × deviceScaleFactor²)"
+      },
+      "jsHeap": {
+        "usedBytesEnd": 1904588,
+        "totalBytesEnd": 2928640
+      },
+      "traceFile": "benchmarks/traces/p10-storm-control-trial3-6x-30000ms.trace.json.gz",
+      "traceCompressedBytes": 2380998
+    }
+  ],
+  "summary": [
+    {
+      "condition": "rain",
+      "particles": {
+        "trials": 3,
+        "observedFpsMedian": 59.96906542928383,
+        "p95FrameMsMedian": 16.700000000004366,
+        "estimatedDroppedFramePctMedian": 0.05555555555555555,
+        "mainThreadTaskPctMedian": 39.97728333333333,
+        "recalcStyleDurationMsMedian": 4029.4350000000004,
+        "longTasksTotal": 0,
+        "particleLayerCountMedian": 28,
+        "estimatedParticleSurfaceBytesUpperBoundMedian": 17920
+      },
+      "control": {
+        "trials": 3,
+        "observedFpsMedian": 60.002332128400326,
+        "p95FrameMsMedian": 16.700000000004366,
+        "estimatedDroppedFramePctMedian": 0,
+        "mainThreadTaskPctMedian": 12.167476666666667,
+        "recalcStyleDurationMsMedian": 0,
+        "longTasksTotal": 0,
+        "particleLayerCountMedian": 0,
+        "estimatedParticleSurfaceBytesUpperBoundMedian": 0
+      },
+      "attributableMedianDelta": {
+        "estimatedDroppedFramePct": 0.05555555555555555,
+        "mainThreadTaskPct": 27.809806666666667,
+        "recalcStyleDurationMs": 4029.4350000000004,
+        "particleLayers": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920
+      }
+    },
+    {
+      "condition": "storm",
+      "particles": {
+        "trials": 3,
+        "observedFpsMedian": 59.96906542928384,
+        "p95FrameMsMedian": 16.799999999999272,
+        "estimatedDroppedFramePctMedian": 0.05555555555555555,
+        "mainThreadTaskPctMedian": 35.7554,
+        "recalcStyleDurationMsMedian": 3516.7200000000003,
+        "longTasksTotal": 0,
+        "particleLayerCountMedian": 28,
+        "estimatedParticleSurfaceBytesUpperBoundMedian": 17920
+      },
+      "control": {
+        "trials": 3,
+        "observedFpsMedian": 60.0025320335561,
+        "p95FrameMsMedian": 16.700000000004366,
+        "estimatedDroppedFramePctMedian": 0,
+        "mainThreadTaskPctMedian": 11.113196666666667,
+        "recalcStyleDurationMsMedian": 0,
+        "longTasksTotal": 0,
+        "particleLayerCountMedian": 0,
+        "estimatedParticleSurfaceBytesUpperBoundMedian": 0
+      },
+      "attributableMedianDelta": {
+        "estimatedDroppedFramePct": 0.05555555555555555,
+        "mainThreadTaskPct": 24.642203333333335,
+        "recalcStyleDurationMs": 3516.7200000000003,
+        "particleLayers": 28,
+        "estimatedParticleSurfaceBytesUpperBound": 17920
+      }
+    }
+  ],
+  "limitations": [
+    "CDP CPU throttling slows the renderer main thread but does not emulate a low-end mobile GPU.",
+    "Headless desktop Chromium is a local proxy, not an on-device battery or thermal measurement."
+  ],
+  "verdict": "within budget, leave alone"
+}
