@@ -9,13 +9,20 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   SNAP_DEGREES,
   WEATHER_CACHE_TTL_SECONDS,
+  WEATHER_LOCK_TTL_SECONDS,
+  WEATHER_LOCK_WAIT_MS,
+  WEATHER_STALE_TTL_SECONDS,
   cacheableLocationName,
   responseLocationName,
   snapCoord,
+  waitForWeatherCache,
+  weatherCacheAcquireLock,
   weatherCacheGet,
+  weatherCacheGetStale,
   weatherCacheKey,
   weatherCacheSet,
 } from '../api/_lib/weather-cache.js';
+import { LOCAL_MISS_WAIT_MS, WEATHER_UPSTREAM_TIMEOUT_MS } from '../api/weather.js';
 
 const fakeRedis = (store = new Map()) => ({
   store,
@@ -91,6 +98,16 @@ describe('weatherCacheGet / weatherCacheSet', () => {
     expect(hit).toEqual(okPayload);
   });
 
+  it('P3 writes and serves a longer-lived stale shadow for lock waiters', async () => {
+    const redis = fakeRedis();
+    const key = weatherCacheKey(-34.1163, 18.8362);
+    await weatherCacheSet(key, okPayload, redis);
+
+    expect(redis.setCalls).toHaveLength(2);
+    expect(redis.setCalls[1].opts).toEqual({ ex: WEATHER_STALE_TTL_SECONDS });
+    expect(await weatherCacheGetStale(key, redis)).toEqual(okPayload);
+  });
+
   it('returns null on a cold key (miss)', async () => {
     expect(await weatherCacheGet('pw-wx:v2:0.00,0.00', fakeRedis())).toBe(null);
   });
@@ -130,6 +147,51 @@ describe('weatherCacheGet / weatherCacheSet', () => {
     const redis = fakeRedis();
     expect(await weatherCacheGet(null, redis)).toBe(null);
     expect(await weatherCacheSet(null, okPayload, redis)).toBe(false);
+  });
+});
+
+describe('P3 distributed miss lock', () => {
+  it('P3 coalescing windows cover sequential location and provider timeouts', () => {
+    const slowSuccessfulLeaderMs = WEATHER_UPSTREAM_TIMEOUT_MS * 2;
+    expect(LOCAL_MISS_WAIT_MS).toBeGreaterThan(slowSuccessfulLeaderMs);
+    expect(WEATHER_LOCK_WAIT_MS).toBeGreaterThan(slowSuccessfulLeaderMs);
+    expect(WEATHER_LOCK_TTL_SECONDS * 1000).toBeGreaterThan(WEATHER_LOCK_WAIT_MS);
+  });
+
+  it('P3 grants one Redis lock holder and releases only its token', async () => {
+    const store = new Map();
+    const redis = {
+      evalCalls: [],
+      async set(key, value, options) {
+        if (options?.nx && store.has(key)) return null;
+        store.set(key, value);
+        return 'OK';
+      },
+      async eval(script, keys, args) {
+        this.evalCalls.push({ script, keys, args });
+        if (store.get(keys[0]) === args[0]) { store.delete(keys[0]); return 1; }
+        return 0;
+      },
+    };
+
+    const first = await weatherCacheAcquireLock('cell', redis, 'holder-a');
+    const second = await weatherCacheAcquireLock('cell', redis, 'holder-b');
+    expect(first.acquired).toBe(true);
+    expect(second.acquired).toBe(false);
+    await first.release();
+    expect(redis.evalCalls).toHaveLength(1);
+    expect((await weatherCacheAcquireLock('cell', redis, 'holder-c')).acquired).toBe(true);
+  });
+
+  it('P3 bounds a dead lock-holder wait and returns null so the caller can proceed', async () => {
+    const redis = { get: vi.fn(async () => null) };
+    const start = performance.now();
+    const result = await waitForWeatherCache('cell', redis, { maxWaitMs: 30, pollMs: 5 });
+    const elapsed = performance.now() - start;
+
+    expect(result).toBe(null);
+    expect(elapsed).toBeGreaterThanOrEqual(20);
+    expect(elapsed).toBeLessThan(250);
   });
 });
 

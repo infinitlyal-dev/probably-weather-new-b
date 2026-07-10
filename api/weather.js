@@ -15,7 +15,16 @@
 
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { weatherDailyLimiter, weatherLimiter } from './_lib/limiters.js';
-import { weatherCacheKey, weatherCacheGet, weatherCacheSet, cacheableLocationName, responseLocationName } from './_lib/weather-cache.js';
+import {
+  weatherCacheAcquireLock,
+  weatherCacheGet,
+  weatherCacheGetStale,
+  weatherCacheKey,
+  weatherCacheSet,
+  waitForWeatherCache,
+  cacheableLocationName,
+  responseLocationName,
+} from './_lib/weather-cache.js';
 import { consumeProviderBudgets } from './_lib/provider-budget.js';
 // M4: heat thresholds shared with the client (assets/app.js) — one constant
 // family, no more 32-vs-35 badge/condition drift.
@@ -26,6 +35,22 @@ const debugLog = (...args) => {
   if (DEBUG) console.log(...args);
 };
 
+const WEATHER_MISS_IN_FLIGHT = new Map();
+export const WEATHER_UPSTREAM_TIMEOUT_MS = 9000;
+export const LOCAL_MISS_WAIT_MS = 22000;
+
+async function waitForLocalWeatherMiss(record) {
+  let timeoutId;
+  try {
+    return await Promise.race([
+      record.promise,
+      new Promise((resolve) => { timeoutId = setTimeout(() => resolve(null), LOCAL_MISS_WAIT_MS); }),
+    ]);
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 // Strict coordinate parser — single implementation in assets/coord-parse.js
 // (L2 dedupe, was four byte-identical copies). Imported for local use AND
 // re-exported so api/share.js's existing `import { parseCoord } from
@@ -34,6 +59,8 @@ import { parseCoord } from '../assets/coord-parse.js';
 export { parseCoord };
 
 export default async function handler(req, res) {
+  let finishLocalMiss = null;
+  let distributedMissLock = null;
   try {
     // Per-IP rate limit — first thing, before any upstream work. Fails open if
     // Upstash is unreachable (checkRateLimit) so a limiter outage never blocks.
@@ -101,7 +128,7 @@ export default async function handler(req, res) {
     // Token lives server-side only; never exposed to the browser.
     const LOCATIONIQ_TOKEN   = process.env.LOCATIONIQ_TOKEN   || null;
 
-    const timeoutMs = 9000;
+    const timeoutMs = WEATHER_UPSTREAM_TIMEOUT_MS;
 
     async function fetchJson(url, options = {}) {
       const controller = new AbortController();
@@ -186,6 +213,22 @@ export default async function handler(req, res) {
     // (one /api/weather per search result) rides this automatically.
     // -------------------------------------------------------------------------
     const serverCacheKey = weatherCacheKey(lat, lon);
+    const respondWithCachedPayload = (payload, serverCache = 'hit', cacheControl = 's-maxage=300, stale-while-revalidate=60') => {
+      const cachedOffset = payload.meta?.utcOffsetSeconds;
+      const freshLocalHour = Number.isFinite(cachedOffset)
+        ? Math.floor(((Date.now() / 1000) + cachedOffset) / 3600) % 24
+        : payload.meta?.localHour ?? null;
+      res.setHeader('Cache-Control', cacheControl);
+      return res.status(200).json({
+        ...payload,
+        location: {
+          ...(payload.location || {}),
+          name: responseLocationName({ isPlaceholder, callerName: name, cachedName: payload.location?.name }),
+          lat, lon,
+        },
+        meta: { ...(payload.meta || {}), localHour: freshLocalHour, serverCache },
+      });
+    };
     const cachedPayload = await weatherCacheGet(serverCacheKey);
     if (cachedPayload) {
       // Per-request fields the shared entry must not leak across callers:
@@ -194,23 +237,55 @@ export default async function handler(req, res) {
       //     tolerance the IP-locate path already accepts).
       //   · meta.localHour — recomputed so an hour boundary inside the TTL
       //     doesn't skew the client's hourly slicing.
-      const cachedOffset = cachedPayload.meta?.utcOffsetSeconds;
-      const freshLocalHour = Number.isFinite(cachedOffset)
-        ? Math.floor(((Date.now() / 1000) + cachedOffset) / 3600) % 24
-        : cachedPayload.meta?.localHour ?? null;
-      res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
-      return res.status(200).json({
-        ...cachedPayload,
-        location: {
-          ...(cachedPayload.location || {}),
-          // HIGH-3: caller's own name wins; placeholder callers get the cached
-          // SERVER-resolved name (never another caller's supplied string), or
-          // 'Unknown' → the client resolves it itself.
-          name: responseLocationName({ isPlaceholder, callerName: name, cachedName: cachedPayload.location?.name }),
-          lat, lon,
-        },
-        meta: { ...(cachedPayload.meta || {}), localHour: freshLocalHour, serverCache: 'hit' },
-      });
+      return respondWithCachedPayload(cachedPayload);
+    }
+
+    // First layer: same warm instance. The leader publishes the safe cache
+    // payload directly, so coalescing still works when Redis is unavailable.
+    while (!finishLocalMiss) {
+      const existing = WEATHER_MISS_IN_FLIGHT.get(serverCacheKey);
+      if (existing) {
+        const sharedPayload = await waitForLocalWeatherMiss(existing);
+        if (sharedPayload) return respondWithCachedPayload(sharedPayload, 'coalesced-local');
+        if (WEATHER_MISS_IN_FLIGHT.get(serverCacheKey) === existing) {
+          WEATHER_MISS_IN_FLIGHT.delete(serverCacheKey);
+        }
+        continue;
+      }
+
+      let resolveMiss;
+      const record = { promise: new Promise((resolve) => { resolveMiss = resolve; }) };
+      WEATHER_MISS_IN_FLIGHT.set(serverCacheKey, record);
+      finishLocalMiss = (payload) => {
+        if (WEATHER_MISS_IN_FLIGHT.get(serverCacheKey) === record) {
+          WEATHER_MISS_IN_FLIGHT.delete(serverCacheKey);
+        }
+        resolveMiss(payload);
+      };
+    }
+
+    const completeLocalMiss = (payload) => {
+      if (!finishLocalMiss) return;
+      const finish = finishLocalMiss;
+      finishLocalMiss = null;
+      finish(payload);
+    };
+
+    // Second layer: cross-instance Redis lock. A waiter serves the last good
+    // stale value immediately when available; otherwise it polls for a bounded
+    // period and then proceeds itself, so a dead lock holder can never hang it.
+    distributedMissLock = await weatherCacheAcquireLock(serverCacheKey);
+    if (!distributedMissLock.acquired) {
+      const stalePayload = await weatherCacheGetStale(serverCacheKey);
+      if (stalePayload) {
+        completeLocalMiss(stalePayload);
+        return respondWithCachedPayload(stalePayload, 'stale-lock-wait', 's-maxage=30, stale-while-revalidate=60');
+      }
+      const filledPayload = await waitForWeatherCache(serverCacheKey);
+      if (filledPayload) {
+        completeLocalMiss(filledPayload);
+        return respondWithCachedPayload(filledPayload, 'coalesced-redis');
+      }
     }
 
     // Resolve location name — cascading strategy for small-town accuracy
@@ -1870,12 +1945,17 @@ export default async function handler(req, res) {
       location: { ...responsePayload.location, name: cacheableLocationName(serverResolvedName) },
     };
     await weatherCacheSet(serverCacheKey, cacheablePayload);
+    completeLocalMiss(cacheablePayload);
 
     return res.status(200).json(responsePayload);
 
   } catch (e) {
     console.error('Weather API error:', e);
     return res.status(500).json({ ok: false, error: 'Server error' });
+  } finally {
+    try { await distributedMissLock?.release?.(); } finally {
+      if (finishLocalMiss) finishLocalMiss(null);
+    }
   }
 }
 

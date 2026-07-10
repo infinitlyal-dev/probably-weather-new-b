@@ -12,10 +12,23 @@
 // Redis outage, malformed payload → cache miss / no-op set. The cache must
 // never be the reason a forecast fails.
 
+import { randomUUID } from 'node:crypto';
 import { getRedis } from './limiters.js';
 
 export const WEATHER_CACHE_TTL_SECONDS = 300; // mirrors the edge s-maxage
+export const WEATHER_STALE_TTL_SECONDS = 900;
+export const WEATHER_LOCK_TTL_SECONDS = 30;
+export const WEATHER_LOCK_WAIT_MS = 22000;
 export const SNAP_DEGREES = 0.02;             // ~2.2 km latitude
+
+const weatherCacheStaleKey = (key) => `${key}:stale`;
+const weatherCacheLockKey = (key) => `${key}:lock`;
+const RELEASE_LOCK_SCRIPT = `
+  if redis.call('get', KEYS[1]) == ARGV[1] then
+    return redis.call('del', KEYS[1])
+  end
+  return 0
+`;
 
 /**
  * Snap a coordinate to the cache grid. Returns a STRING with exactly two
@@ -89,6 +102,11 @@ export async function weatherCacheGet(key, redis = getRedis()) {
   }
 }
 
+/** Last successful value retained beyond the fresh TTL for lock waiters only. */
+export async function weatherCacheGetStale(key, redis = getRedis()) {
+  return weatherCacheGet(key ? weatherCacheStaleKey(key) : null, redis);
+}
+
 /**
  * Store an ensemble payload under `key` with the standard TTL. Never throws.
  * Only ok:true payloads are cached — a degraded/error response must not be
@@ -97,9 +115,53 @@ export async function weatherCacheGet(key, redis = getRedis()) {
 export async function weatherCacheSet(key, payload, redis = getRedis()) {
   if (!key || !redis || !payload || payload.ok !== true) return false;
   try {
-    await redis.set(key, JSON.stringify(payload), { ex: WEATHER_CACHE_TTL_SECONDS });
+    const serialized = JSON.stringify(payload);
+    await Promise.all([
+      redis.set(key, serialized, { ex: WEATHER_CACHE_TTL_SECONDS }),
+      redis.set(weatherCacheStaleKey(key), serialized, { ex: WEATHER_STALE_TTL_SECONDS }),
+    ]);
     return true;
   } catch {
     return false; // fail-open
   }
+}
+
+/**
+ * Claim the short distributed miss lock. No Redis or Redis failure fails open:
+ * this instance proceeds, while the per-instance promise map still coalesces.
+ */
+export async function weatherCacheAcquireLock(key, redis = getRedis(), token = randomUUID()) {
+  if (!key || !redis) return { acquired: true, release: async () => {} };
+  const lockKey = weatherCacheLockKey(key);
+  try {
+    const result = await redis.set(lockKey, token, { nx: true, ex: WEATHER_LOCK_TTL_SECONDS });
+    const acquired = result === 'OK' || result === true;
+    return {
+      acquired,
+      release: async () => {
+        if (!acquired) return;
+        try { await redis.eval(RELEASE_LOCK_SCRIPT, [lockKey], [token]); } catch { /* lock expires */ }
+      },
+    };
+  } catch {
+    return { acquired: true, release: async () => {} };
+  }
+}
+
+/** Poll for the lock holder's fresh value, but never wait indefinitely. */
+export async function waitForWeatherCache(
+  key,
+  redis = getRedis(),
+  { maxWaitMs = WEATHER_LOCK_WAIT_MS, pollMs = 200 } = {},
+) {
+  if (!key || !redis) return null;
+  const deadline = Date.now() + Math.max(0, maxWaitMs);
+  do {
+    const cached = await weatherCacheGet(key, redis);
+    if (cached) return cached;
+    const remaining = deadline - Date.now();
+    if (remaining <= 0) break;
+    await new Promise((resolve) => setTimeout(resolve, Math.min(Math.max(1, pollMs), remaining)));
+  } while (Date.now() < deadline);
+  return weatherCacheGet(key, redis);
 }
