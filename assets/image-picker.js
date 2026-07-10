@@ -11,6 +11,10 @@
 // SAST midnight = 22:00 UTC the previous day, hence Date.UTC(2026, 4, 29, 22).
 export const LAUNCH_DATE_MS = Date.UTC(2026, 4, 29, 22, 0, 0, 0);
 export const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+// Backgrounds are CDN-cached immutable for one year. Bump this whenever any
+// rotating WebP bytes change so returning clients request a fresh URL instead
+// of retaining the old body at the stable filesystem path.
+export const BG_IMAGE_URL_VERSION = '20260710-p1';
 
 const VALID_TIMES = new Set(['dawn', 'day', 'dusk', 'night']);
 // The 9 promoted folders. Folder names outside this set are *not* rejected —
@@ -79,10 +83,11 @@ export function buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r, bas
   //   folder === fallbackFolder     → week_1 fallback == sibling fallback
   //   both                          → all three primary entries collapse to one
   // Without dedupe, the chain wastes 1-2 redundant fetches before reaching default.jpg.
+  const versionedWebp = (url) => `${url}?v=${BG_IMAGE_URL_VERSION}`;
   const raw = [
-    `${base}/${safeFolder}/week_${safeWeek}/${safeTime}/${safeR}.webp`,
-    `${base}/${safeFolder}/week_1/${safeTime}/1.webp`,
-    `${base}/${safeFallback}/week_1/${safeTime}/1.webp`,
+    versionedWebp(`${base}/${safeFolder}/week_${safeWeek}/${safeTime}/${safeR}.webp`),
+    versionedWebp(`${base}/${safeFolder}/week_1/${safeTime}/1.webp`),
+    versionedWebp(`${base}/${safeFallback}/week_1/${safeTime}/1.webp`),
     `${base}/default.jpg`,
   ];
   return Array.from(new Set(raw));

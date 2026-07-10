@@ -3,7 +3,9 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "build": "node scripts/build.mjs",
+    "build": "node scripts/verify-bg-image-budget.mjs && node scripts/build.mjs",
+    "images:recompress": "node scripts/recompress-bg-images.mjs",
+    "images:verify": "node scripts/verify-bg-image-budget.mjs",
     "copy:generate": "node scripts/generate-copy-splits.mjs"
   },
   "devDependencies": {
