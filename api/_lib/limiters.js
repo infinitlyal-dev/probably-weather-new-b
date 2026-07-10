@@ -10,7 +10,7 @@
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 
-// Per-IP per-minute caps (sliding window).
+// Per-IP caps (sliding windows).
 //
 // M7 (2026-06-11): resized for SA carrier CGNAT. "Per IP" on mobile here means
 // per NAT gateway — MTN/Vodacom put hundreds-to-thousands of users behind one
@@ -40,8 +40,12 @@ import { Redis } from '@upstash/redis';
 //     client-capped at 10/session, so 30/min/IP is already generous).
 //   · og       60 — crawler previews are bursty, but a single IP has no valid
 //     reason to trigger more than one expensive image render per second.
+//   · weatherDaily 300 — deliberately in the hundreds for SA carrier CGNAT:
+//     enough for ordinary shared-IP use, while one client can consume at most
+//     60% of Tomorrow.io's 500/day and 50% of Pirate's 600/day guard.
 export const RATE_LIMITS = {
   weather: { max: 240, window: '60 s' },
+  weatherDaily: { max: 300, window: '1 d' },
   geocode: { max: 240, window: '60 s' },
   errors:  { max: 30, window: '60 s' },
   og:      { max: 60, window: '60 s' },
@@ -76,6 +80,7 @@ function getLimiter(name) {
 }
 
 export const weatherLimiter = () => getLimiter('weather');
+export const weatherDailyLimiter = () => getLimiter('weatherDaily');
 export const geocodeLimiter = () => getLimiter('geocode');
 export const errorsLimiter = () => getLimiter('errors');
 export const ogLimiter = () => getLimiter('og');

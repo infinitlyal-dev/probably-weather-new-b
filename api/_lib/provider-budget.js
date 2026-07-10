@@ -16,10 +16,8 @@
 //     fall back to a conservative per-INSTANCE in-memory ceiling (tight, but
 //     never "unlimited"), so an Upstash outage degrades fidelity, not uptime.
 //
-// CEILINGS — each provider's published free-tier limit, with margin. Two
-// windows where the monthly tier is the binding constraint:
-//   · perMin bounds the worst single minute (runaway guard).
-//   · perDay bounds the monthly free tier.
+// CEILINGS — each provider's published free-tier limit, with margin. The
+// configured second/minute/hour/day windows are all enforced before fetch.
 //
 // PIRATE WEATHER is the binding constraint (20,000 calls/MONTH):
 //   20000 / 31 days ≈ 645 calls/day      → perDay 600  (max 600×31 = 18,600 < 20,000)
@@ -34,36 +32,41 @@ export const PROVIDER_BUDGETS = {
   'weatherapi': { perMin: 200, perDay: 30000 }, // WeatherAPI free: ~1M/month
   'pirate':     { perMin: 20,  perDay: 600 },   // Pirate Weather free: 20k/MONTH — BINDING
   'met':        { perMin: 300 },                // MET Norway: no key; stay courteous
-  'tomorrow':   { perMin: 25,  perDay: 500 },   // Tomorrow.io free: 500/day, 25/hr
+  // Tomorrow.io free (official): 3/second, 25/hour, 500/day.
+  'tomorrow':   { perSecond: 3, perHour: 25, perDay: 500 },
 };
 
-// Conservative per-INSTANCE per-minute ceilings, used ONLY when Redis is
-// unreachable. Deliberately far tighter than the global ceilings: many Fluid
-// Compute instances may run, so this bounds each instance's contribution, not
-// the true global total. "Never unlimited" is the goal during an outage.
-const INSTANCE_FALLBACK_PER_MIN = {
-  'open-meteo': 120, 'weatherapi': 60, 'pirate': 5, 'met': 120, 'tomorrow': 5,
+// Conservative per-INSTANCE ceilings, used ONLY when Redis is unreachable.
+// Tomorrow.io uses an hourly fallback so an outage cannot turn its real 25/hr
+// limit back into a nominal per-minute limit.
+const INSTANCE_FALLBACK_LIMITS = {
+  'open-meteo': [{ max: 120, windowMs: 60000 }],
+  'weatherapi': [{ max: 60, windowMs: 60000 }],
+  'pirate': [{ max: 5, windowMs: 60000 }],
+  'met': [{ max: 120, windowMs: 60000 }],
+  // Preserve both published burst protection and a tighter outage-hour cap.
+  'tomorrow': [{ max: 3, windowMs: 1000 }, { max: 5, windowMs: 3600000 }],
 };
-const INSTANCE_FALLBACK_DEFAULT = 30;
+const INSTANCE_FALLBACK_DEFAULT = [{ max: 30, windowMs: 60000 }];
 
+const secondBucket = (nowMs) => Math.floor(nowMs / 1000);
 const minBucket = (nowMs) => Math.floor(nowMs / 60000);
+const hourBucket = (nowMs) => Math.floor(nowMs / 3600000);
 const dayBucket = (nowMs) => Math.floor(nowMs / 86400000);
 
-// Per-instance fallback counters: key `${provider}:${minuteBucket}` → count.
+// One current counter per provider; changing windows replace the old entry.
 const _mem = new Map();
 function instanceFallbackAllows(provider, nowMs) {
-  const ceiling = INSTANCE_FALLBACK_PER_MIN[provider] ?? INSTANCE_FALLBACK_DEFAULT;
-  const mb = minBucket(nowMs);
-  const key = `${provider}:${mb}`;
-  const n = (_mem.get(key) ?? 0) + 1;
-  _mem.set(key, n);
-  // Cheap prune: drop buckets older than the previous minute.
-  if (_mem.size > 64) {
-    for (const k of _mem.keys()) {
-      if (Number(k.slice(k.indexOf(':') + 1)) < mb - 1) _mem.delete(k);
-    }
+  const limits = INSTANCE_FALLBACK_LIMITS[provider] ?? INSTANCE_FALLBACK_DEFAULT;
+  for (const limit of limits) {
+    const bucket = Math.floor(nowMs / limit.windowMs);
+    const key = `${provider}:${limit.windowMs}`;
+    const previous = _mem.get(key);
+    const count = previous?.bucket === bucket ? previous.count + 1 : 1;
+    _mem.set(key, { bucket, count });
+    if (count > limit.max) return false;
   }
-  return n <= ceiling;
+  return true;
 }
 
 /** Test-only — reset the per-instance fallback counters. */
@@ -90,7 +93,7 @@ async function consumeWindow(redis, key, ttlSeconds, ceiling) {
 /**
  * Consume one budget slot for each provider in `providers` and return a map
  * { provider: allowed:boolean }. A provider is allowed only when EVERY
- * configured window (minute, and day where set) is within ceiling.
+ * configured window is within ceiling.
  *
  * Fail-open on availability: a null client or any Redis error routes ALL
  * providers through the per-instance fallback instead of throwing.
@@ -116,21 +119,28 @@ export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = 
     for (const p of providers) result[p] = instanceFallbackAllows(p, nowMs);
     return result;
   }
+  const sb = secondBucket(nowMs);
   const mb = minBucket(nowMs);
+  const hb = hourBucket(nowMs);
   const db = dayBucket(nowMs);
   await Promise.all(providers.map(async (p) => {
     const cfg = PROVIDER_BUDGETS[p];
     if (!cfg) { result[p] = true; return; } // unbudgeted provider — never block
     try {
-      // MINUTE window first. Its counter increments on every attempt (a flood
-      // keeps the minute window pinned — intended, and the minute key resets
-      // every 60s so it can't lock anything for long).
+      // Shortest windows first. A rejected short-window attempt never consumes
+      // a longer-lived window, preventing a burst from causing a long lockout.
       let allowed = true;
-      if (Number.isFinite(cfg.perMin)) {
-        allowed = await consumeWindow(redis, `pw-budget:${p}:m:${mb}`, 90, cfg.perMin);
+      if (Number.isFinite(cfg.perSecond)) {
+        allowed = await consumeWindow(redis, `pw-budget:${p}:s:${sb}`, 10, cfg.perSecond);
       }
-      // DAY window consumed ONLY when the call is permitted so far (minute
-      // passed). This closes the self-DoS Codex found: previously the day
+      if (Number.isFinite(cfg.perMin)) {
+        allowed = allowed && await consumeWindow(redis, `pw-budget:${p}:m:${mb}`, 90, cfg.perMin);
+      }
+      if (allowed && Number.isFinite(cfg.perHour)) {
+        allowed = await consumeWindow(redis, `pw-budget:${p}:h:${hb}`, 3900, cfg.perHour);
+      }
+      // DAY window consumed ONLY when the call is permitted by every shorter
+      // window. This closes the self-DoS Codex found: previously the day
       // counter incremented on EVERY attempt, so a burst of cheap
       // minute-rejected attempts (600 in one minute) drained the day budget and
       // locked the provider for the whole UTC day. Now a minute-rejected

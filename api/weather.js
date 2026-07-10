@@ -14,7 +14,7 @@
 // at the current hour (not midnight), making alignment with other sources impossible.
 
 import { checkRateLimit } from './_lib/rate-limit.js';
-import { weatherLimiter } from './_lib/limiters.js';
+import { weatherDailyLimiter, weatherLimiter } from './_lib/limiters.js';
 import { weatherCacheKey, weatherCacheGet, weatherCacheSet, cacheableLocationName, responseLocationName } from './_lib/weather-cache.js';
 import { consumeProviderBudgets } from './_lib/provider-budget.js';
 // M4: heat thresholds shared with the client (assets/app.js) — one constant
@@ -39,6 +39,11 @@ export default async function handler(req, res) {
     // Upstash is unreachable (checkRateLimit) so a limiter outage never blocks.
     const rl = await checkRateLimit(req, weatherLimiter());
     if (!rl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests' });
+    // Consume the longer window only after the minute gate passes. Otherwise a
+    // minute-rate flood could spend the whole daily allowance without doing
+    // any real weather work and lock a shared carrier IP out for a day.
+    const dailyRl = await checkRateLimit(req, weatherDailyLimiter());
+    if (!dailyRl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests' });
     // parseCoord (not parseFloat) — strict whole-string parse so '90abc',
     // '0x10', and array-valued ?lat=1&lat=2 are rejected, not partial-parsed.
     const lat = parseCoord(req.query.lat);

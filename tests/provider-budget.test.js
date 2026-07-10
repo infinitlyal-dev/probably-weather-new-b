@@ -48,6 +48,19 @@ describe('PROVIDER_BUDGETS — Pirate is the binding monthly tier', () => {
   });
 });
 
+describe('PROVIDER_BUDGETS — Tomorrow.io published free-tier windows', () => {
+  it('S1 enforces Tomorrow.io at 3/second, 25/hour and 500/day', async () => {
+    expect(PROVIDER_BUDGETS.tomorrow).toEqual({ perSecond: 3, perHour: 25, perDay: 500 });
+
+    const redis = fakeRedis();
+    const hourKey = `pw-budget:tomorrow:h:${Math.floor(NOW / 3600000)}`;
+    redis.store.set(hourKey, PROVIDER_BUDGETS.tomorrow.perHour);
+    const res = await consumeProviderBudgets(['tomorrow'], redis, NOW);
+
+    expect(res.tomorrow).toBe(false);
+  });
+});
+
 describe('consumeProviderBudgets — enforcement before fetch', () => {
   it('allows providers under ceiling and consumes one slot each', async () => {
     const redis = fakeRedis();
@@ -105,8 +118,8 @@ describe('consumeProviderBudgets — enforcement before fetch', () => {
 
   it('an exhausted provider is skipped while the rest proceed (all-but-one)', async () => {
     const redis = fakeRedis();
-    // Exhaust only tomorrow.io's per-minute window.
-    redis.store.set(`pw-budget:tomorrow:m:${Math.floor(NOW / 60000)}`, PROVIDER_BUDGETS.tomorrow.perMin);
+    // Exhaust only Tomorrow.io's official hourly window.
+    redis.store.set(`pw-budget:tomorrow:h:${Math.floor(NOW / 3600000)}`, PROVIDER_BUDGETS.tomorrow.perHour);
     const res = await consumeProviderBudgets(['open-meteo', 'weatherapi', 'pirate', 'met', 'tomorrow'], redis, NOW);
     expect(res.tomorrow).toBe(false);
     expect(res['open-meteo']).toBe(true);
@@ -119,7 +132,11 @@ describe('consumeProviderBudgets — enforcement before fetch', () => {
     const redis = fakeRedis();
     const mb = Math.floor(NOW / 60000);
     for (const p of ['open-meteo', 'weatherapi', 'pirate', 'met', 'tomorrow']) {
-      redis.store.set(`pw-budget:${p}:m:${mb}`, PROVIDER_BUDGETS[p].perMin);
+      if (Number.isFinite(PROVIDER_BUDGETS[p].perMin)) {
+        redis.store.set(`pw-budget:${p}:m:${mb}`, PROVIDER_BUDGETS[p].perMin);
+      } else {
+        redis.store.set(`pw-budget:${p}:h:${Math.floor(NOW / 3600000)}`, PROVIDER_BUDGETS[p].perHour);
+      }
     }
     const res = await consumeProviderBudgets(['open-meteo', 'weatherapi', 'pirate', 'met', 'tomorrow'], redis, NOW);
     expect(Object.values(res).every((v) => v === false)).toBe(true);
@@ -145,6 +162,14 @@ describe('fail-open on availability — Redis unreachable', () => {
     const res = await consumeProviderBudgets(['open-meteo'], broken, NOW);
     expect(typeof res['open-meteo']).toBe('boolean');
     expect(res['open-meteo']).toBe(true);
+  });
+
+  it('S1 Redis-down Tomorrow fallback still enforces three requests per second', async () => {
+    const results = [];
+    for (let i = 0; i < 4; i++) {
+      results.push((await consumeProviderBudgets(['tomorrow'], null, NOW)).tomorrow);
+    }
+    expect(results).toEqual([true, true, true, false]);
   });
 
   it('instance fallback isolates per provider and resets between minutes', async () => {

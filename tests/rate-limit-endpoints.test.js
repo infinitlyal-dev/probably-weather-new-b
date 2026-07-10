@@ -4,11 +4,15 @@
 // rate-limit check is the first thing each handler does and returns before any
 // upstream fetch.
 
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const blocking = { limit: async () => ({ success: false }) };
+const blocking = { limit: vi.fn(async () => ({ success: false })) };
+const allowing = { limit: vi.fn(async () => ({ success: true, remaining: 299 })) };
+let weatherMinute = blocking;
+let weatherDaily = blocking;
 vi.mock('../api/_lib/limiters.js', () => ({
-  weatherLimiter: () => blocking,
+  weatherLimiter: () => weatherMinute,
+  weatherDailyLimiter: () => weatherDaily,
   geocodeLimiter: () => blocking,
   errorsLimiter: () => blocking,
   ogLimiter: () => blocking,
@@ -37,11 +41,28 @@ function makeRes() {
 const IP = { 'x-forwarded-for': '41.2.3.4' };
 
 describe('rate-limited endpoints return 429 (matching the existing error shape) when blocked', () => {
+  beforeEach(() => {
+    weatherMinute = blocking;
+    weatherDaily = blocking;
+    vi.clearAllMocks();
+  });
+
   it('/api/weather → 429 { ok:false, error }', async () => {
     const res = makeRes();
     await weatherHandler({ headers: IP, query: { lat: '-33.92', lon: '18.42' } }, res);
     expect(res.statusCode).toBe(429);
     expect(res.body).toMatchObject({ ok: false, error: 'Too many requests' });
+  });
+
+  it('S1 /api/weather daily limiter blocks after the minute limiter allows', async () => {
+    weatherMinute = allowing;
+    weatherDaily = blocking;
+    const res = makeRes();
+    await weatherHandler({ headers: IP, query: { lat: 'bad', lon: 'bad' } }, res);
+    expect(res.statusCode).toBe(429);
+    expect(res.body).toMatchObject({ ok: false, error: 'Too many requests' });
+    expect(allowing.limit).toHaveBeenCalled();
+    expect(blocking.limit).toHaveBeenCalled();
   });
 
   it('/api/geocode → 429 { ok:false, error, results:[] } (search-compatible)', async () => {
