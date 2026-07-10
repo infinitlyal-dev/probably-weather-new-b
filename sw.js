@@ -246,8 +246,9 @@ self.addEventListener('fetch', (event) => {
   // Weather API: NETWORK FIRST, cache for offline
   if (isWeatherApi(url)) {
     event.respondWith((async () => {
+      let fresh = null;
       try {
-        const fresh = await fetch(req);
+        fresh = await fetch(req);
         if (fresh.ok) {
           const cache = await caches.open(API_CACHE);
           const headers = new Headers(fresh.headers);
@@ -258,36 +259,40 @@ self.addEventListener('fetch', (event) => {
             headers,
           });
           cache.put(req, cachedResponse).catch(() => {});
+          return fresh;
         }
-        return fresh;
       } catch {
-        const cache = await caches.open(API_CACHE);
-        const cached = await cache.match(req);
-        if (cached) {
-          // Honour API_CACHE_MAX_AGE — if the offline copy is older than the
-          // cap, refuse to serve it. Showing 3+ hour stale weather as a
-          // confident offline mode is worse than a clear "offline" error,
-          // especially for SA testers driving between regions on the N2.
-          const cachedAt = Number.parseInt(cached.headers.get('sw-cached-at') || '0', 10);
-          const age = Number.isFinite(cachedAt) && cachedAt > 0 ? Date.now() - cachedAt : Infinity;
-          if (age <= API_CACHE_MAX_AGE) {
-            const headers = new Headers(cached.headers);
-            headers.set('sw-offline', 'true');
-            headers.set('sw-cache-age-ms', String(age));
-            return new Response(await cached.blob(), {
-              status: cached.status,
-              statusText: cached.statusText,
-              headers,
-            });
-          }
-          // Cached payload too old — fall through to the 503 below so the page
-          // can render an explicit offline state rather than stale data.
-        }
-        return new Response(JSON.stringify({ ok: false, error: 'offline' }), {
-          status: 503,
-          headers: { 'Content-Type': 'application/json' },
-        });
+        // A rejected fetch and a non-OK HTTP response share the same cached
+        // fallback below. `fresh` stays null only for the rejected-fetch case.
       }
+
+      const cache = await caches.open(API_CACHE);
+      const cached = await cache.match(req);
+      if (cached) {
+        // Honour API_CACHE_MAX_AGE — if the offline copy is older than the
+        // cap, refuse to serve it. Showing 3+ hour stale weather as a
+        // confident offline mode is worse than a clear "offline" error,
+        // especially for SA testers driving between regions on the N2.
+        const cachedAt = Number.parseInt(cached.headers.get('sw-cached-at') || '0', 10);
+        const age = Number.isFinite(cachedAt) && cachedAt > 0 ? Date.now() - cachedAt : Infinity;
+        if (age <= API_CACHE_MAX_AGE) {
+          const headers = new Headers(cached.headers);
+          headers.set('sw-offline', 'true');
+          headers.set('sw-cache-age-ms', String(age));
+          return new Response(await cached.blob(), {
+            status: cached.status,
+            statusText: cached.statusText,
+            headers,
+          });
+        }
+        // Cached payload too old — fall through to the network error or the
+        // 503 below so the page never renders over-age weather as current.
+      }
+      if (fresh) return fresh;
+      return new Response(JSON.stringify({ ok: false, error: 'offline' }), {
+        status: 503,
+        headers: { 'Content-Type': 'application/json' },
+      });
     })());
     return;
   }
