@@ -198,6 +198,25 @@ const tomorrowIoClearPayload = {
   },
 };
 
+const tomorrowIoCalendarBoundaryPayload = {
+  data: {
+    timelines: [{
+      intervals: Array.from({ length: 48 }, (_, i) => ({
+        startTime: new Date(Date.UTC(2026, 4, 19, 8 + i, 0, 0)).toISOString(),
+        values: {
+          temperature: i === 14 ? 50 : 20,
+          precipitationIntensity: 0,
+          precipitationProbability: i === 14 ? 100 : 10,
+          weatherCode: 1000,
+          windSpeed: 4,
+          humidity: 50,
+          cloudCover: 10,
+        },
+      })),
+    }],
+  },
+};
+
 // ---------------------------------------------------------------------------
 // Test harness
 // ---------------------------------------------------------------------------
@@ -417,5 +436,18 @@ describe('Source weights and meta surfacing', () => {
     expect(tiSource?.ok).toBe(false);
     // sourceWeights entry for Tomorrow.io should be null when the source is unavailable
     expect(body.meta.sourceWeights['Tomorrow.io']).toBeNull();
+  });
+});
+
+describe('Tomorrow.io local-calendar daily aggregation', () => {
+  it("B3 excludes tomorrow's midnight spike from day zero without changing day one", async () => {
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(tomorrowIoCalendarBoundaryPayload)));
+
+    const { body } = await callHandler();
+    const tomorrowRange = body.meta.sourceRanges.find((source) => source.name === 'Tomorrow.io');
+
+    expect(tomorrowRange).toEqual({ name: 'Tomorrow.io', minTemp: 20, maxTemp: 20 });
+    expect(body.daily[1].highC).toBe(24);
   });
 });

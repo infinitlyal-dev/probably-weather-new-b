@@ -985,15 +985,14 @@ export default async function handler(req, res) {
         const tiCode     = tiVals.weatherCode;
         const tiDesc     = tomorrowIoCodeMap[tiCode] ?? 'Unknown';
 
-        // Daily high/low from the next-24h window (no daily endpoint in this
-        // call — Tomorrow.io has a separate daily timestep, but the 24h window
-        // approximation is good enough for the consensus blend and matches how
-        // MET Norway's daily values are computed from its 48h series).
-        const next24 = intervals.slice(0, 24);
-        const next24Temps = next24.map(iv => iv?.values?.temperature).filter(isNum);
-        const tiTodayHigh = next24Temps.length ? next24Temps.reduce((a, b) => Math.max(a, b), -Infinity) : null;
-        const tiTodayLow  = next24Temps.length ? next24Temps.reduce((a, b) => Math.min(a, b), Infinity)  : null;
-        const tiTodayRainArr = next24.map(iv => iv?.values?.precipitationProbability).filter(isNum);
+        // Day zero must use the location's calendar day, not the next 24 hours
+        // from now (which crosses midnight and leaks tomorrow into today).
+        // Earlier hours are null because Tomorrow.io starts at the current hour.
+        const todayIntervals = aligned.slice(0, 24).filter(Boolean);
+        const todayTemps = todayIntervals.map(iv => iv?.values?.temperature).filter(isNum);
+        const tiTodayHigh = todayTemps.length ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null;
+        const tiTodayLow  = todayTemps.length ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)  : null;
+        const tiTodayRainArr = todayIntervals.map(iv => iv?.values?.precipitationProbability).filter(isNum);
         const tiTodayRain = tiTodayRainArr.length ? Math.max(...tiTodayRainArr) : null;
 
         norms[4] = {
