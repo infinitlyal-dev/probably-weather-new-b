@@ -112,6 +112,7 @@ const CORE_ASSETS = [
   '/assets/first-open-location.js',
   '/assets/home-name.js',
   '/assets/weather-thresholds.js',
+  '/assets/search-mini-weather.js',
   '/manifest.json',
 ];
 

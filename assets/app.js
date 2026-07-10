@@ -28,6 +28,7 @@ import {
 import { startFirstOpenLocation } from './first-open-location.js';
 import { shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
+import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
 
 // Deploy identity baked into THIS bundle. scripts/build.mjs rewrites the
 // __BUILD_ID__ placeholder to the Vercel commit SHA at build time (the string
@@ -2162,7 +2163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== SEARCH ==========
   let searchTimeout = null, searchResults = [], activeSearchController = null, searchSeq = 0;
-  const searchMiniCache = new Map();
+  const loadSearchMini = createSearchMiniPromiseCache();
   async function runSearch(query) {
     if (!query || query.length < 2) { renderSearchResults([]); return; }
     const thisSeq = ++searchSeq; if (activeSearchController) activeSearchController.abort(); activeSearchController = new AbortController();
@@ -2193,19 +2194,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // Lead with the feature's OWN name (r.name = the actual searched place) so
   // "Bryn Mawr" shows as itself, not its container "Lower Merion Township".
   function formatSearchResult(r) { const a = r.address || {}; const city = r.name || a.town || a.village || a.city || 'Unknown'; return a.country ? `${city}, ${a.country}` : city; }
-  async function miniFetchTemp(lat, lon) { const key = `${lat.toFixed(2)},${lon.toFixed(2)}`; if (searchMiniCache.has(key)) return searchMiniCache.get(key); try { const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' })); const r = { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) }; if (searchMiniCache.size >= 120) searchMiniCache.delete(searchMiniCache.keys().next().value); searchMiniCache.set(key, r); return r; } catch { return { temp: '--°', icon: '⛅' }; } }
+  function miniFetchTemp(lat, lon) {
+    return loadSearchMini(lat, lon, async () => {
+      const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' }));
+      return { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) };
+    }).catch(() => ({ temp: '--°', icon: '⛅' }));
+  }
   function renderSearchResults(results) {
     const rl = document.getElementById('searchResults') || (() => { const ul = document.createElement('ul'); ul.id = 'searchResults'; ul.className = 'search-results'; document.querySelector('.search-body')?.prepend(ul); return ul; })();
     if (!results.length) { rl.innerHTML = ''; return; }
     const favs = loadFavorites();
-    rl.innerHTML = results.map(r => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="Toggle favourite" data-lat="${r.lat}" data-lon="${r.lon}">${isFav ? '★' : '☆'}</button><span class="result-icon" aria-hidden="true">⛅</span><span class="result-name">${fn}</span><span class="result-temp">--°</span></li>`; }).join('');
+    rl.innerHTML = results.map((r, index) => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); const hasMini = index < SEARCH_MINI_VISIBLE_LIMIT; const icon = `<span class="result-icon" aria-hidden="true">${hasMini ? '⛅' : ''}</span>`; const temp = hasMini ? '<span class="result-temp">--°</span>' : ''; return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="Toggle favourite" data-lat="${r.lat}" data-lon="${r.lon}">${isFav ? '★' : '☆'}</button>${icon}<span class="result-name">${fn}</span>${temp}</li>`; }).join('');
     rl.querySelectorAll('li[data-lat]').forEach(li => {
       const activate = async (e) => { if (e && e.target && e.target.closest('.fav-star')) return; const place = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }; showScreen(screenHome); loadAndRender(place); if (searchInput) searchInput.value = ''; rl.innerHTML = ''; addRecentIfNew(place).catch(() => {}); };
       li.addEventListener('click', activate);
       li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(ev); } });
     });
     rl.querySelectorAll('.fav-star').forEach(btn => { btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); renderSearchResults(results); }); });
-    rl.querySelectorAll('li[data-lat]').forEach(async (li) => { const mini = await miniFetchTemp(parseFloat(li.dataset.lat), parseFloat(li.dataset.lon)); const ie = li.querySelector('.result-icon'), te = li.querySelector('.result-temp'); if (ie) ie.textContent = mini.icon || '⛅'; if (te) te.textContent = mini.temp || '--°'; });
+    Array.from(rl.querySelectorAll('li[data-lat]')).slice(0, SEARCH_MINI_VISIBLE_LIMIT).forEach(async (li) => { const mini = await miniFetchTemp(parseFloat(li.dataset.lat), parseFloat(li.dataset.lon)); const ie = li.querySelector('.result-icon'), te = li.querySelector('.result-temp'); if (ie) ie.textContent = mini.icon || '⛅'; if (te) te.textContent = mini.temp || '--°'; });
   }
   if (searchInput) searchInput.addEventListener('input', (e) => { clearTimeout(searchTimeout); searchTimeout = setTimeout(() => runSearch(e.target.value), 300); });
 
