@@ -2038,6 +2038,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
     renderFavorites(); renderRecents();
   }
+  let lastFetchTime = null;
   async function loadAndRender(place) {
     const thisSeq = ++activeLocationSeq;
     activeWeatherController?.abort();
@@ -2058,7 +2059,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const bankReady = loadCopyBank(settings.lang).catch(() => {});
     // 1. Try showing cached data instantly (now in parallel with the fetch)
     const cached = await getCachedWeather(place);
-    if (thisSeq !== activeLocationSeq) return;
+    if (thisSeq !== activeLocationSeq) return false;
     await bankReady;
     if (cached) {
       try {
@@ -2072,18 +2073,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Await the network fetch that was started above
     try {
       const payload = await fetchPromise;
-      if (thisSeq !== activeLocationSeq) return;
+      if (thisSeq !== activeLocationSeq) return false;
       lastPayload = payload;
       const norm = normalizePayload(payload);
       window.__PW_LAST_NORM = norm;
       renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
       hideCacheAge();
       setCachedWeather(place, payload);
+      lastFetchTime = Date.now();
+      return true;
     } catch (e) {
-      if (thisSeq !== activeLocationSeq || (e?.name === 'AbortError' && !e.weatherTimeout)) return;
+      if (thisSeq !== activeLocationSeq || (e?.name === 'AbortError' && !e.weatherTimeout)) return false;
       console.error("Load failed:", e);
       if (!cached) renderError(t('misc', 'couldntFetch'));
       // If cached data was shown, user still sees stale but usable data
+      return false;
     } finally {
       if (activeWeatherController === requestController) activeWeatherController = null;
     }
@@ -2483,10 +2487,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // cached homePlace; it never asked GPS for a new fix. The new attemptRefresh
   // path re-detects location for GPS-mode places, re-fetches weather when data
   // is stale, and leaves pinned places alone.
-  let lastFetchTime = Date.now();
 
   function attemptRefresh({ source }) {
     if (!activePlace) return;
+    if (activeWeatherController && source !== 'pull-to-refresh') return;
     // Snapshot the place at request time. GPS / weather-fetch responses can
     // arrive seconds later, by which point the user may have tapped a saved
     // place or a search result. Without the snapshot the success callback
@@ -2502,7 +2506,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // still on this place.
       if (wantsFetch && activePlace === placeAtRequestTime) {
         loadAndRender(placeAtRequestTime);
-        lastFetchTime = Date.now();
       }
       return;
     }
@@ -2512,7 +2515,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Silent fallback — no GPS API. Just refresh weather if stale.
       if (wantsFetch && activePlace === placeAtRequestTime) {
         loadAndRender(placeAtRequestTime);
-        lastFetchTime = Date.now();
       }
       return;
     }
@@ -2546,12 +2548,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // they switched views during the GPS wait, don't hijack their UI.
         if (activePlace === placeAtRequestTime) {
           loadAndRender(newPlace);
-          lastFetchTime = Date.now();
           showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
         }
       } else if (wantsFetch && activePlace === placeAtRequestTime) {
         loadAndRender(placeAtRequestTime);
-        lastFetchTime = Date.now();
       }
     }, (err) => {
       // Silent fallback per spec: keep showing existing data, no UI crash,
@@ -2560,7 +2560,6 @@ document.addEventListener("DOMContentLoaded", () => {
       debugLog('[Refresh] GPS failed (' + source + '):', err.code, err.message);
       if (wantsFetch && activePlace === placeAtRequestTime) {
         loadAndRender(placeAtRequestTime);
-        lastFetchTime = Date.now();
       }
     }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 });
   }
@@ -2647,7 +2646,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // reverse-geocode wait (same guard attemptRefresh uses).
     if (activePlace === previousPlace) {
       loadAndRender(newPlace);
-      lastFetchTime = Date.now();
       showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
     }
   }

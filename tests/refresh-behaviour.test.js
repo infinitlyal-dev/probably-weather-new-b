@@ -171,6 +171,23 @@ describe('PTR thresholds and resistance', () => {
 describe('app.js wiring — auto-refresh + PTR are present', () => {
   const appSrc = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
 
+  it('B5 records freshness only on the successful network-render path', () => {
+    const loadAndRender = appSrc.match(/async function loadAndRender\(place\) \{[\s\S]*?\n  \}/)?.[0] ?? '';
+    expect(appSrc).toMatch(/let lastFetchTime\s*=\s*null/);
+    expect(loadAndRender).toMatch(/setCachedWeather\(place, payload\);\s*lastFetchTime = Date\.now\(\);\s*return true/);
+    expect(loadAndRender).toMatch(/catch \(e\) \{[\s\S]*?return false;[\s\S]*?finally/);
+  });
+
+  it('B5 has one post-success timestamp write instead of eager writes at refresh callsites', () => {
+    const assignments = appSrc.match(/lastFetchTime\s*=\s*Date\.now\(\)/g) || [];
+    expect(assignments).toHaveLength(1);
+  });
+
+  it('B5 does not race an unfinished automatic fetch while pull-to-refresh still overrides', () => {
+    const attemptRefresh = appSrc.match(/function attemptRefresh\(\{[^}]*\}\)\s*\{[\s\S]*?\n  \}/)?.[0] ?? '';
+    expect(attemptRefresh).toMatch(/if \(activeWeatherController && source !== 'pull-to-refresh'\) return/);
+  });
+
   it("imports from refresh-behaviour.js", () => {
     expect(appSrc).toMatch(/from\s+['"]\.\/refresh-behaviour\.js['"]/);
   });
