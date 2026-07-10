@@ -79,11 +79,15 @@ describe('Offline fallback guarantees', () => {
     // Background images are the most visible offline signal — keep the
     // cache-first behaviour locked in.
     const src = sw();
-    const imgBlock = src.match(/destination === ['"]image['"][\s\S]*?\}\)\(\)\);\s*\n\s*return;\s*\}/);
-    expect(imgBlock, 'image branch found').toBeTruthy();
-    // cache.match called before fetchPromise → cache-first behaviour.
-    expect(imgBlock[0]).toMatch(/cache\.match\(req\)[\s\S]*?fetch\(req\)/);
-    expect(imgBlock[0]).toMatch(/return cached \|\| \(await fetchPromise\)/);
+    const imageStart = src.indexOf('// Images: STALE-WHILE-REVALIDATE');
+    const defaultStart = src.indexOf('// Default:', imageStart);
+    expect(imageStart, 'image branch found').toBeGreaterThanOrEqual(0);
+    expect(defaultStart, 'default branch follows image branch').toBeGreaterThan(imageStart);
+    const imgBlock = src.slice(imageStart, defaultStart);
+    // cache.match is consulted before the network revalidation is awaited.
+    expect(imgBlock).toMatch(/cache\.match\(req\)[\s\S]*?fetch\(req\)/);
+    expect(imgBlock).toMatch(/return cached \|\| \(await \w+\)/);
+    expect(imgBlock).toMatch(/event\.waitUntil\(/);
   });
 
   it('bumps cache version per deploy so stale offline payloads do not linger forever', () => {

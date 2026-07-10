@@ -120,6 +120,8 @@ const CORE_ASSETS = [
 // Cap raised from 60 → 120 so a typical user's recently-seen buckets survive
 // week-boundary transitions instead of churning on every rollover.
 const MAX_IMG_CACHE = 120;
+const MAX_API_CACHE = 60;
+const MAX_OG_CACHE = 32;
 const API_CACHE_MAX_AGE = 3 * 60 * 60 * 1000; // 3 hours
 
 // How long install waits before precaching. Covers the page's paint-critical
@@ -216,9 +218,9 @@ function isWeatherApi(url) {
   return url.pathname.startsWith('/api/weather') && !url.searchParams.has('reverse');
 }
 
-async function trimCache(cacheName, maxItems) {
+async function trimCache(cacheName, maxItems, shouldInclude = () => true) {
   const cache = await caches.open(cacheName);
-  const keys = await cache.keys();
+  const keys = (await cache.keys()).filter(shouldInclude);
   if (keys.length > maxItems) {
     const toDelete = keys.slice(0, keys.length - maxItems);
     await Promise.all(toDelete.map(k => cache.delete(k)));
@@ -233,7 +235,8 @@ self.addEventListener('fetch', (event) => {
 
   // Weather API: NETWORK FIRST, cache for offline
   if (isWeatherApi(url)) {
-    event.respondWith((async () => {
+    let cacheMaintenance = Promise.resolve();
+    const responsePromise = (async () => {
       let fresh = null;
       try {
         fresh = await fetch(req);
@@ -246,7 +249,9 @@ self.addEventListener('fetch', (event) => {
             statusText: fresh.statusText,
             headers,
           });
-          cache.put(req, cachedResponse).catch(() => {});
+          cacheMaintenance = cache.put(req, cachedResponse)
+            .then(() => trimCache(API_CACHE, MAX_API_CACHE))
+            .catch(() => {});
           return fresh;
         }
       } catch {
@@ -273,6 +278,7 @@ self.addEventListener('fetch', (event) => {
             headers,
           });
         }
+        await cache.delete(req).catch(() => {});
         // Cached payload too old — fall through to the network error or the
         // 503 below so the page never renders over-age weather as current.
       }
@@ -281,21 +287,39 @@ self.addEventListener('fetch', (event) => {
         status: 503,
         headers: { 'Content-Type': 'application/json' },
       });
-    })());
+    })();
+    event.respondWith(responsePromise);
+    // Keep the worker alive after the network response is released so the
+    // write and cap enforcement cannot be cut short by worker termination.
+    event.waitUntil(responsePromise.then(() => cacheMaintenance, () => cacheMaintenance));
     return;
   }
 
   // Dynamic OG images: STALE-WHILE-REVALIDATE
   if (url.pathname.startsWith('/api/og')) {
-    event.respondWith((async () => {
+    let revalidationPromise = Promise.resolve(null);
+    let cacheMaintenance = Promise.resolve();
+    const responsePromise = (async () => {
       const cache = await caches.open(IMG_CACHE);
       const cached = await cache.match(req);
-      const fetchPromise = fetch(req).then((fresh) => {
-        if (fresh.ok) cache.put(req, fresh.clone()).catch(() => {});
+      revalidationPromise = fetch(req).then((fresh) => {
+        if (fresh.ok) {
+          cacheMaintenance = cache.put(req, fresh.clone())
+            .then(() => trimCache(IMG_CACHE, MAX_OG_CACHE, (key) => new URL(key.url).pathname === '/api/og'))
+            .catch(() => {});
+        }
         return fresh;
       }).catch(() => null);
-      return cached || (await fetchPromise) || new Response('', { status: 504 });
-    })());
+      return cached || (await revalidationPromise) || new Response('', { status: 504 });
+    })();
+    event.respondWith(responsePromise);
+    // A cached OG response returns immediately; keep its network revalidation,
+    // cache write, and subspace trim alive in the background.
+    event.waitUntil(
+      responsePromise
+        .then(() => revalidationPromise, () => revalidationPromise)
+        .then(() => cacheMaintenance, () => cacheMaintenance)
+    );
     return;
   }
 
@@ -357,23 +381,32 @@ self.addEventListener('fetch', (event) => {
 
   // Images: STALE-WHILE-REVALIDATE (caches bg images on first load)
   if (req.destination === 'image' || url.pathname.match(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/i)) {
-    event.respondWith((async () => {
+    let revalidationPromise = Promise.resolve(null);
+    let cacheMaintenance = Promise.resolve();
+    const responsePromise = (async () => {
       const cache = await caches.open(IMG_CACHE);
       const cached = await cache.match(req);
 
-      const fetchPromise = fetch(req).then((fresh) => {
+      revalidationPromise = fetch(req).then((fresh) => {
         // Restrict caching to fully-loaded 200 responses. fresh.ok also matches
         // 206 Partial Content (range requests), which would cache a partial
         // image as if it were the full asset.
         if (fresh.status === 200) {
-          cache.put(req, fresh.clone()).catch(() => {});
-          trimCache(IMG_CACHE, MAX_IMG_CACHE).catch(() => {});
+          cacheMaintenance = cache.put(req, fresh.clone())
+            .then(() => trimCache(IMG_CACHE, MAX_IMG_CACHE, (key) => new URL(key.url).pathname !== '/api/og'))
+            .catch(() => {});
         }
         return fresh;
       }).catch(() => null);
 
-      return cached || (await fetchPromise) || new Response('', { status: 504 });
-    })());
+      return cached || (await revalidationPromise) || new Response('', { status: 504 });
+    })();
+    event.respondWith(responsePromise);
+    event.waitUntil(
+      responsePromise
+        .then(() => revalidationPromise, () => revalidationPromise)
+        .then(() => cacheMaintenance, () => cacheMaintenance)
+    );
     return;
   }
 
