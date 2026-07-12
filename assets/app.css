@@ -2479,6 +2479,400 @@ main#home-screen.main #confidence {
   .share-btn:active { transform: translateX(-50%) scale(0.97); }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESKTOP POSTCARD HOME (>=1024px)
+   Owner-approved wide-screen composition. This block only overrides the
+   existing tablet/desktop frame when there is room for a postcard and voice;
+   every mobile rule remains byte-for-byte untouched above.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  :root {
+    --postcard-unit: min(1080px, calc(100vw - 96px));
+    --postcard-left: calc((100vw - var(--postcard-unit)) / 2);
+    --postcard-photo-w: clamp(340px, 28vw, 410px);
+    --postcard-photo-h: clamp(430px, 54vh, 560px);
+    --postcard-gap: clamp(64px, 6vw, 110px);
+    --postcard-voice-left: calc(var(--postcard-left) + var(--postcard-photo-w) + var(--postcard-gap) + 32px);
+    --postcard-voice-w: min(520px, calc(var(--postcard-unit) - var(--postcard-photo-w) - var(--postcard-gap) - 32px));
+    --postcard-center-y: calc(50vh - 8px);
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+  }
+
+  /* Full-viewport atmosphere. The sharp image and the backdrop both point at
+     the landed --hero-url; immutable caching means one transferred resource. */
+  #bg {
+    display: block;
+    z-index: -1;
+    overflow: hidden;
+  }
+  #bg::before {
+    content: "";
+    position: absolute;
+    inset: -36px;
+    z-index: 0;
+    background-image: var(--hero-url, none);
+    background-size: cover;
+    background-position: center center;
+    filter: blur(28px) brightness(0.45) saturate(1.04);
+    transform: scale(1.06);
+  }
+
+  /* The image's own border is the polaroid frame, so photo, cream surround,
+     thick caption foot and rotation are one composited element. */
+  #bgImg {
+    position: absolute;
+    left: var(--postcard-left);
+    top: calc(var(--postcard-center-y) - (var(--postcard-photo-h) / 2) - 63px);
+    width: var(--postcard-photo-w);
+    height: var(--postcard-photo-h);
+    box-sizing: content-box;
+    object-fit: cover;
+    object-position: center center;
+    border: 16px solid #f6f2e8;
+    border-bottom-width: 110px;
+    border-radius: 2px;
+    background: #f6f2e8;
+    filter: none;
+    transform: rotate(-2.4deg);
+    transform-origin: center center;
+    box-shadow: 0 34px 80px rgba(0,0,0,0.55), 0 10px 24px rgba(0,0,0,0.38);
+    z-index: 2;
+  }
+
+  /* The old full-screen scrim becomes the single gold pin. It can no longer
+     sit above, darken or intercept the desktop hero voice. */
+  #scrim {
+    position: absolute;
+    left: calc(var(--postcard-left) + (var(--postcard-photo-w) / 2) + 5px);
+    top: calc(var(--postcard-center-y) - (var(--postcard-photo-h) / 2) - 70px);
+    width: 22px;
+    height: 22px;
+    border: 3px solid #f6f2e8;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffdf4d, #f5a623);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.45), inset 0 1px 2px rgba(255,255,255,0.65);
+    z-index: 3;
+  }
+
+  /* Calm desktop backdrop: weather motion belongs to the mobile/tablet app,
+     not behind or across the postcard. */
+  #particles {
+    display: none !important;
+  }
+
+  /* Witty copy is not duplicated: the one #headline node populated by
+     getWittyLine becomes the handwritten caption on the cream foot. */
+  #headline {
+    position: fixed;
+    left: calc(var(--postcard-left) + 32px);
+    top: calc(var(--postcard-center-y) + (var(--postcard-photo-h) / 2) - 31px);
+    width: calc(var(--postcard-photo-w) - 32px);
+    min-height: 82px;
+    max-height: 92px;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    font-family: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+    font-size: clamp(15.5px, 1.35vw, 20px);
+    font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #24211d;
+    text-shadow: none;
+    transform: rotate(-2.4deg);
+    transform-origin: center center;
+    z-index: 31;
+  }
+
+  /* Top bar: brand at left, primary nav centred, language at right. */
+  .header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 82px;
+    margin: 0;
+    z-index: 120;
+    pointer-events: none;
+  }
+  .brand {
+    position: fixed;
+    top: 20px;
+    left: 28px;
+    width: auto;
+    margin: 0;
+    justify-content: flex-start;
+    pointer-events: auto;
+  }
+  #logoCircle {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+  }
+  #logoCircle svg {
+    width: 34px;
+    height: 34px;
+  }
+  .brand-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.75);
+  }
+  .tagline { display: none; }
+  .language-picker {
+    position: fixed;
+    top: 18px;
+    right: 28px;
+    pointer-events: auto;
+  }
+  .nav {
+    top: 14px;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    width: min(590px, calc(100vw - 520px));
+    max-width: none;
+    height: 56px;
+    margin: 0;
+    padding: 6px 14px;
+    gap: clamp(12px, 1.8vw, 28px);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 999px;
+    background: rgba(0,0,0,0.42);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    transform: translateX(-50%);
+    z-index: 121;
+  }
+  .nav button {
+    padding: 0 4px;
+    font-size: 0.88rem;
+  }
+
+  /* Right-hand voice. All copy lives in the UI stacking context (z 10/30+),
+     while the photograph and pin remain in #bg (z -1). */
+  #home-screen {
+    position: fixed;
+    left: var(--postcard-voice-left);
+    top: calc(var(--postcard-center-y) - 160px);
+    width: var(--postcard-voice-w);
+    min-height: 0;
+    padding: 0;
+    align-items: flex-start;
+    justify-content: center;
+    transform: none;
+    z-index: 30;
+  }
+  #location {
+    position: fixed;
+    left: var(--postcard-voice-left);
+    top: calc(var(--postcard-center-y) - 240px);
+    width: var(--postcard-voice-w);
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.88;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    z-index: 32;
+  }
+  #temp,
+  #temp.hero-storm,
+  #temp.hero-rain,
+  #temp.hero-heat,
+  #temp.hero-cold,
+  #temp.hero-wind,
+  #temp.hero-uv,
+  #temp.hero-clear,
+  #temp.hero-cloudy,
+  #temp.hero-fog {
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 5px 22px rgba(0,0,0,0.78), 0 2px 5px rgba(0,0,0,0.95);
+  }
+  .hero-probably {
+    font-size: clamp(54px, 4.7vw, 76px);
+    font-weight: 300;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+  .hero-range {
+    margin-top: 6px;
+    font-size: clamp(76px, 6.8vw, 108px);
+    font-weight: 900;
+    line-height: 0.96;
+    letter-spacing: -0.07em;
+    white-space: nowrap;
+  }
+  #home-screen #description {
+    margin: 16px 0 0;
+    font-size: clamp(27px, 2.4vw, 38px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #f5a623;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.95);
+  }
+  .sidebar {
+    position: fixed;
+    left: var(--postcard-voice-left);
+    right: auto;
+    top: calc(var(--postcard-center-y) + 156px);
+    bottom: auto;
+    width: var(--postcard-voice-w);
+    max-width: none;
+    align-items: flex-start;
+    text-align: left;
+    z-index: 32;
+  }
+  .sidebar .weather-byline,
+  .sidebar .byline-row {
+    margin: 0;
+    font-size: 0.94rem;
+    line-height: 1.5;
+    color: #fff;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.95);
+  }
+
+  /* The voice actions form one local row: Share is visibly the largest and
+     remains the only gold primary. */
+  .share-btn,
+  .my-location-btn,
+  .nav-hourly-pill {
+    top: calc(var(--postcard-center-y) + 220px);
+    bottom: auto;
+    right: auto;
+    min-height: 52px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    z-index: 50;
+    transform: none;
+  }
+  .nav-hourly-pill {
+    left: var(--postcard-voice-left);
+    width: 138px;
+  }
+  .share-btn {
+    left: calc(var(--postcard-voice-left) + 148px);
+    width: 172px;
+    font-size: 1rem;
+    z-index: 51;
+  }
+  .my-location-btn {
+    left: calc(var(--postcard-voice-left) + 330px);
+    width: 158px;
+  }
+  .share-btn:active { transform: scale(0.97); }
+
+  /* On Home, the already-rendered Weekly panel doubles as a compact strip.
+     Clicking Weekly still promotes the same panel to the normal centred view. */
+  body.home-active #week-screen.hidden {
+    display: flex !important;
+    position: fixed;
+    top: auto;
+    bottom: 18px;
+    left: 50%;
+    right: auto;
+    width: min(1120px, calc(100vw - 80px));
+    height: 106px;
+    max-height: none;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transform: translateX(-50%);
+    z-index: 25;
+  }
+  body.home-active #week-screen .screen-panel-header,
+  body.home-active #week-screen .daily-header,
+  body.home-active #week-screen .pw-ad-slot {
+    display: none !important;
+  }
+  body.home-active #week-screen .screen-panel-body {
+    display: block;
+  }
+  body.home-active #week-screen .daily-cards {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+    height: 100%;
+    overflow: visible;
+  }
+  body.home-active #week-screen .daily-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "day icon" "high low" "rain rain";
+    gap: 2px 8px;
+    min-width: 0;
+    height: 100%;
+    margin: 0;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 14px;
+    background: rgba(10,10,12,0.48);
+    backdrop-filter: blur(12px) saturate(115%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+  body.home-active #week-screen .d-day { grid-area: day; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.8rem; }
+  body.home-active #week-screen .d-icon { grid-area: icon; font-size: 1.1rem; }
+  body.home-active #week-screen .d-high { grid-area: high; text-align: left; font-size: 1rem; }
+  body.home-active #week-screen .d-low { grid-area: low; text-align: right; font-size: 0.9rem; }
+  body.home-active #week-screen .d-rain { grid-area: rain; text-align: left; font-size: 0.72rem; }
+  body.home-active #week-screen .day-badge { display: none; }
+
+  /* Non-home destinations keep the familiar centred glass panel. */
+  body:not(.home-active) .screenPanel {
+    top: 104px;
+    bottom: 36px;
+    left: 50%;
+    right: auto;
+    width: min(520px, calc(100vw - 96px));
+    max-height: none;
+    transform: translateX(-50%);
+  }
+
+  .install-banner {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+/* Short desktop windows keep the same Postcard, but tighten its vertical
+   rhythm so the actions, frame and forecast strip never collide. */
+@media (min-width: 1024px) and (max-height: 820px) {
+  :root {
+    --postcard-photo-h: clamp(360px, 48vh, 410px);
+    --postcard-center-y: calc(50vh - 34px);
+  }
+  #home-screen { top: calc(var(--postcard-center-y) - 145px); }
+  #location { top: calc(var(--postcard-center-y) - 215px); }
+  .sidebar { top: calc(var(--postcard-center-y) + 130px); }
+  .share-btn,
+  .my-location-btn,
+  .nav-hourly-pill { top: calc(var(--postcard-center-y) + 180px); }
+  body.home-active #week-screen.hidden {
+    bottom: 10px;
+    height: 90px;
+  }
+}
+
 /* ========== SHORT-HEIGHT MOBILE DEVICES ========== */
 /* Only layout adjustments - text sizes inherit from main mobile query */
 @media (max-width: 480px) and (max-height: 700px) {

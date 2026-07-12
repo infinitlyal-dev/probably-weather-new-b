@@ -1,0 +1,270 @@
+import { execFileSync } from 'node:child_process';
+import { createServer } from 'node:http';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { transformSync } from 'esbuild';
+import { chromium } from 'playwright';
+import { WEATHER_COPY } from '../assets/weather-copy.js';
+
+const root = fileURLToPath(new URL('..', import.meta.url));
+const dist = path.join(root, 'dist');
+const output = path.join(root, 'output', 'desktop-postcard');
+const baselineCss = transformSync(
+  execFileSync('git', ['show', 'aa6e3b3:assets/app.css'], { cwd: root }).toString(),
+  { loader: 'css', minify: true },
+).code;
+const conditions = {
+  clear: { tempC: 27, rainChance: 0, cloudPct: 8, conditionKey: 'clear', conditionLabel: 'Clear', sunrise: '2026-07-11T00:00', sunset: '2026-07-11T23:59' },
+  rain: { tempC: 17, rainChance: 88, cloudPct: 96, conditionKey: 'rain', conditionLabel: 'Rain', sunrise: '2026-07-11T00:00', sunset: '2026-07-11T23:59' },
+  fog: { tempC: 10, rainChance: 8, cloudPct: 100, conditionKey: 'fog', conditionLabel: 'Fog', sunrise: '2026-07-11T08:00', sunset: '2026-07-11T17:00' },
+};
+const desktopViewports = [{ width: 1440, height: 900 }, { width: 1920, height: 1080 }];
+const screenshotViewports = [...desktopViewports, { width: 2560, height: 1440 }];
+const mobileViewports = [{ width: 390, height: 844 }, { width: 360, height: 800 }, { width: 320, height: 700 }];
+
+function weatherPayload(kind) {
+  const c = conditions[kind];
+  const hourly = Array.from({ length: 48 }, () => ({ tempC: c.tempC, feelsLikeC: c.tempC, rainChance: c.rainChance, precipMm: c.rainChance ? 2 : 0, windKph: 15, cloudPct: c.cloudPct, humidity: 75, uv: 3, condition: c.conditionKey }));
+  const daily = Array.from({ length: 7 }, (_, day) => ({ highC: c.tempC + 3 + (day % 2), lowC: c.tempC - 4 + (day % 2), rainChance: c.rainChance, uv: 3, windKph: 15, conditionKey: c.conditionKey, conditionLabel: c.conditionLabel, sunrise: c.sunrise, sunset: c.sunset }));
+  return {
+    ok: true,
+    location: { name: 'Strand, Western Cape', lat: -34.12, lon: 18.84 },
+    now: { ...c, feelsLikeC: c.tempC, uv: 3, isDay: kind !== 'fog', windKph: 15 },
+    hourly, daily, wind_kph: 15, maxWindKph: 20, gustKph: 24,
+    consensus: { confidenceKey: 'high' },
+    meta: { localHour: kind === 'fog' ? 2 : 14, utcOffsetSeconds: 7200, confidence: 'high', sources: [{ name: 'Open-Meteo', ok: true }], sourceConditions: [{ source: 'Open-Meteo', vote: c.conditionKey, desc: c.conditionLabel }], sourceRanges: [] },
+  };
+}
+
+function startServer() {
+  const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml' };
+  const server = createServer((req, res) => {
+    const pathname = decodeURIComponent(new URL(req.url, 'http://127.0.0.1').pathname);
+    if (pathname.startsWith('/api/')) {
+      const kind = conditions[req.headers['x-pw-test-condition']] ? req.headers['x-pw-test-condition'] : 'clear';
+      const body = pathname === '/api/weather' ? weatherPayload(kind)
+        : pathname === '/api/locate' ? { ok: true, lat: -34.12, lon: 18.84, name: 'Strand, Western Cape' }
+          : pathname === '/api/version' ? { buildId: 'local' } : {};
+      res.writeHead(200, { 'Content-Type': 'application/json' }).end(JSON.stringify(body));
+      return;
+    }
+    if (pathname.startsWith('/_vercel/')) { res.writeHead(204).end(); return; }
+    const relative = pathname === '/' ? 'index.html' : pathname === '/install' ? 'install.html' : pathname.slice(1);
+    const file = path.resolve(dist, relative);
+    if (!file.startsWith(`${dist}${path.sep}`) && file !== path.join(dist, 'index.html')) return res.writeHead(403).end();
+    try {
+      const body = relative === 'assets/app.min.css' && req.headers['x-pw-style-baseline'] === 'true' ? baselineCss : readFileSync(file);
+      const headers = { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' };
+      if (['.webp', '.jpg'].includes(path.extname(file))) headers['Cache-Control'] = 'public, max-age=31536000, immutable';
+      res.writeHead(200, headers).end(body);
+    } catch { res.writeHead(404).end(); }
+  });
+  return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve({ server, origin: `http://127.0.0.1:${server.address().port}` })));
+}
+
+async function openApp(browser, origin, viewport, { condition = 'clear', lang = 'en', baseline = false, measure = false } = {}) {
+  const context = await browser.newContext({ viewport, serviceWorkers: 'block', reducedMotion: 'no-preference', extraHTTPHeaders: { 'x-pw-test-condition': condition, 'x-pw-style-baseline': String(baseline) } });
+  const imageRequests = [];
+  context.on('request', (request) => { if (request.resourceType() === 'image') imageRequests.push(new URL(request.url()).pathname); });
+  await context.addInitScript(({ selectedLang }) => {
+    const NativeDate = Date;
+    const fixedNow = new NativeDate('2026-07-11T00:30:00Z').valueOf();
+    class FixedDate extends NativeDate { constructor(...args) { super(...(args.length ? args : [fixedNow])); } static now() { return fixedNow; } }
+    window.Date = FixedDate;
+    Math.random = () => 0.123456;
+    localStorage.setItem('pw_home', JSON.stringify({ name: 'Strand, Western Cape', lat: -34.12, lon: 18.84, mode: 'gps' }));
+    localStorage.setItem('lang', JSON.stringify(selectedLang));
+    localStorage.setItem('pw_install_dismissed_at', String(Date.now()));
+    window.__PW_SHARE_CALLS = [];
+    window.__PW_GEO_CALLS = 0;
+    Object.defineProperty(navigator, 'share', { configurable: true, value: async (data) => { window.__PW_SHARE_CALLS.push(data); } });
+    Object.defineProperty(navigator, 'geolocation', { configurable: true, value: { getCurrentPosition(ok) { window.__PW_GEO_CALLS += 1; ok({ coords: { latitude: -34.12, longitude: 18.84, accuracy: 10 } }); } } });
+  }, { selectedLang: lang });
+  const page = await context.newPage();
+  const performanceClient = measure ? await context.newCDPSession(page) : null;
+  if (performanceClient) await performanceClient.send('Performance.enable');
+  await page.goto(origin, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction((expected) => window.__PW_FIRST_RENDER === true && window.__PW_LAST_DISPLAY === expected, conditions[condition].conditionKey);
+  await page.waitForFunction(() => { const image = document.getElementById('bgImg'); return image?.complete && image.naturalWidth > 0 && getComputedStyle(document.documentElement).getPropertyValue('--hero-url').includes('webp'); });
+  await page.locator('#pwSplash').waitFor({ state: 'hidden' });
+  await page.waitForTimeout(500);
+  return { page, context, imageRequests, performanceClient };
+}
+
+function assert(value, message) { if (!value) throw new Error(message); }
+
+async function snapshotGeometry(page) {
+  return page.evaluate(() => {
+    const box = (selector) => { const r = document.querySelector(selector).getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height, right: r.right, bottom: r.bottom }; };
+    const style = (selector) => getComputedStyle(document.querySelector(selector));
+    const backdrop = getComputedStyle(document.getElementById('bg'), '::before');
+    return {
+      viewport: { width: innerWidth, height: innerHeight },
+      image: box('#bgImg'), caption: box('#headline'), voice: box('#home-screen'), nav: box('.nav'), strip: box('#week-screen'), particles: box('#particles'),
+      actions: [box('#navHourlyHome'), box('#shareBtn'), box('#myLocationHome')],
+      hero: { probably: box('.hero-probably'), range: box('.hero-range'), nowrap: document.querySelector('.hero-range').scrollWidth <= document.querySelector('.hero-range').clientWidth },
+      z: { bg: style('#bg').zIndex, container: style('.container').zIndex, home: style('#home-screen').zIndex, caption: style('#headline').zIndex },
+      colors: { temp: style('#temp').color, condition: style('#description').color, caption: style('#headline').color },
+      backdrop: { backgroundImage: backdrop.backgroundImage, filter: backdrop.filter },
+      captionText: document.getElementById('headline').textContent,
+      stripDays: document.querySelectorAll('#week-screen .daily-row-tappable').length,
+      particlesDisplay: style('#particles').display,
+    };
+  });
+}
+
+async function mobileComparison(browser, origin) {
+  const before = {}, after = {};
+  for (const viewport of mobileViewports) {
+    for (const [label, baseline] of [['before', true], ['after', false]]) {
+      const { page, context } = await openApp(browser, origin, viewport, { baseline });
+      const geometry = await page.evaluate(() => {
+        const box = (selector) => { const r = document.querySelector(selector).getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; };
+        return { container: box('.container'), nav: box('.nav'), image: box('#bgImg'), particles: box('#particles'), actions: ['#navHourlyHome', '#shareBtn', '#myLocationHome'].map(box), hero: ['.hero-probably', '.hero-range'].map(box), postcardVar: getComputedStyle(document.documentElement).getPropertyValue('--postcard-unit').trim() };
+      });
+      (label === 'before' ? before : after)[`${viewport.width}x${viewport.height}`] = geometry;
+      await context.close();
+    }
+  }
+  mkdirSync(output, { recursive: true });
+  writeFileSync(path.join(output, 'mobile-comparison.json'), `${JSON.stringify({ before, after }, null, 2)}\n`);
+  assert(JSON.stringify(before) === JSON.stringify(after), 'Mobile geometry differs from aa6e3b3');
+  assert(Object.values(after).every((value) => value.postcardVar === ''), 'Postcard variables leaked below 1024px');
+  return { result: 'PASS — measurement-identical to aa6e3b3', viewports: Object.keys(after), before, after };
+}
+
+async function clickThrough(browser, origin, viewport) {
+  const { page, context } = await openApp(browser, origin, viewport);
+  const visible = async (selector) => assert(await page.locator(selector).isVisible(), `${selector} not visible at ${viewport.width}x${viewport.height}`);
+  for (const selector of ['#navHourlyHome', '#shareBtn', '#myLocationHome', '#navHome', '#navWeek', '#navSearch', '#navSettings', '#navSources', '#languageBtn']) await visible(selector);
+  await page.click('#languageBtn'); await visible('#languageMenu'); await page.keyboard.press('Escape');
+  await page.click('#navHourlyHome'); await visible('#hourly-screen');
+  await page.click('#navHome'); await visible('#home-screen');
+  await page.click('#shareBtn'); assert(await page.evaluate(() => window.__PW_SHARE_CALLS.length) === 1, 'Share did not fire');
+  const beforeGeo = await page.evaluate(() => window.__PW_GEO_CALLS); await page.click('#myLocationHome'); await page.waitForFunction((before) => window.__PW_GEO_CALLS > before, beforeGeo);
+  for (const [nav, screen] of [['#navHome', '#home-screen'], ['#navWeek', '#week-screen'], ['#navSearch', '#search-screen'], ['#navSettings', '#settings-screen'], ['#navSources', '#sources-screen']]) {
+    await page.click(nav); await visible(screen);
+    if (screen !== '#home-screen') {
+      const panel = await page.locator(screen).boundingBox();
+      assert(panel.width <= 521 && Math.abs((panel.x + panel.width / 2) - viewport.width / 2) < 2, `${screen} is not centred at ${viewport.width}`);
+    }
+  }
+  await context.close();
+  return { viewport: `${viewport.width}x${viewport.height}`, actions: 'Hourly, Share, My Location PASS', nav: 'Home, Weekly, Search, Settings, Sources PASS', language: 'PASS' };
+}
+
+async function responsiveGeometry(browser, origin) {
+  const { page: tablet, context: tabletContext } = await openApp(browser, origin, { width: 1023, height: 900 });
+  const tabletResult = await tablet.evaluate(() => ({ container: document.querySelector('.container').getBoundingClientRect().width, nav: document.querySelector('.nav').getBoundingClientRect().width, image: document.getElementById('bgImg').getBoundingClientRect().width, postcardVar: getComputedStyle(document.documentElement).getPropertyValue('--postcard-unit').trim() }));
+  assert(Math.round(tabletResult.container) === 520 && Math.round(tabletResult.nav) === 520 && Math.round(tabletResult.image) === 520 && tabletResult.postcardVar === '', '1023px tablet frame changed');
+  await tabletContext.close();
+  const centres = [];
+  for (const width of [1280, 1440, 1920, 2560]) {
+    const { page, context } = await openApp(browser, origin, { width, height: width === 1280 ? 900 : width === 1440 ? 900 : width === 1920 ? 1080 : 1440 });
+    const geometry = await snapshotGeometry(page);
+    const unionLeft = Math.min(geometry.image.x, geometry.voice.x); const unionRight = Math.max(geometry.image.right, geometry.voice.right);
+    const offsetPx = ((unionLeft + unionRight) / 2) - (width / 2);
+    assert(Math.abs(offsetPx) < 80, `Composition is not centred at ${width}`);
+    centres.push({ width, centreOffsetPx: offsetPx });
+    await context.close();
+  }
+  const shortHeights = [];
+  for (const viewport of [{ width: 1366, height: 768 }, { width: 1024, height: 700 }]) {
+    const { page, context } = await openApp(browser, origin, viewport);
+    const geometry = await snapshotGeometry(page);
+    const actionsBottom = Math.max(...geometry.actions.map((action) => action.bottom));
+    assert(actionsBottom + 8 <= geometry.strip.y && geometry.image.bottom + 8 <= geometry.strip.y, `Postcard overlaps forecast strip at ${viewport.width}x${viewport.height}`);
+    shortHeights.push({ viewport: `${viewport.width}x${viewport.height}`, imageBottom: geometry.image.bottom, actionsBottom, stripTop: geometry.strip.y });
+    await context.close();
+  }
+  return { tablet: tabletResult, postcardCentres: centres, shortHeights };
+}
+
+async function captionEvidence(browser, origin) {
+  const evidence = [];
+  for (const lang of ['en', 'af', 'zu', 'xh', 'st']) {
+    const lines = Object.values(WEATHER_COPY.witty).flatMap((bank) => bank?.[lang] || []);
+    const { page, context } = await openApp(browser, origin, { width: 1024, height: 900 }, { lang });
+    const measurement = await page.locator('#headline').evaluate((element, candidates) => {
+      const clone = element.cloneNode(false);
+      const availableWidth = element.clientWidth;
+      const availableHeight = element.clientHeight;
+      Object.assign(clone.style, { position: 'fixed', left: '-10000px', top: '0', width: `${availableWidth}px`, minHeight: '0', maxHeight: 'none', height: 'auto', overflow: 'visible', display: 'block', transform: 'none', webkitLineClamp: 'unset' });
+      document.body.appendChild(clone);
+      let worst = { text: '', naturalHeight: 0, naturalWidth: 0 };
+      for (const line of candidates) {
+        clone.textContent = line;
+        const candidate = { text: line, naturalHeight: clone.scrollHeight, naturalWidth: clone.scrollWidth };
+        if (candidate.naturalHeight > worst.naturalHeight || (candidate.naturalHeight === worst.naturalHeight && candidate.naturalWidth > worst.naturalWidth)) worst = candidate;
+      }
+      const computed = getComputedStyle(element);
+      clone.remove();
+      return { ...worst, availableWidth, availableHeight, fontSize: computed.fontSize, lineHeight: computed.lineHeight };
+    }, lines);
+    measurement.fits = measurement.naturalWidth <= measurement.availableWidth + 1 && measurement.naturalHeight <= measurement.availableHeight + 1;
+    assert(measurement.fits, `${lang} witty line clips naturally: ${measurement.text}`);
+    evidence.push({ lang, characters: measurement.text.length, testedLines: lines.length, ...measurement });
+    await context.close();
+  }
+  return evidence;
+}
+
+async function performancePass(browser, origin, baseline) {
+  const trials = [];
+  for (let trial = 0; trial < 5; trial += 1) {
+    const { page, context, performanceClient } = await openApp(browser, origin, { width: 2560, height: 1440 }, { baseline, measure: true });
+    await page.waitForTimeout(500);
+    const metrics = Object.fromEntries((await performanceClient.send('Performance.getMetrics')).metrics.map(({ name, value }) => [name, value]));
+    const paints = await page.evaluate(() => Object.fromEntries(performance.getEntriesByType('paint').map((entry) => [entry.name, entry.startTime])));
+    const lcpMs = await page.evaluate(() => new Promise((resolve) => { let value = null; const observer = new PerformanceObserver((list) => { value = list.getEntries().at(-1)?.startTime ?? value; }); observer.observe({ type: 'largest-contentful-paint', buffered: true }); setTimeout(() => { observer.disconnect(); resolve(value); }, 100); }));
+    trials.push({ fcpMs: paints['first-contentful-paint'], lcpMs, taskDurationMs: metrics.TaskDuration * 1000, layoutDurationMs: metrics.LayoutDuration * 1000 });
+    await context.close();
+  }
+  const median = (key) => trials.map(key).filter(Number.isFinite).sort((a, b) => a - b)[2] ?? null;
+  return { trials: 5, median: { fcpMs: median((x) => x.fcpMs), lcpMs: median((x) => x.lcpMs), taskDurationMs: median((x) => x.taskDurationMs), layoutDurationMs: median((x) => x.layoutDurationMs) } };
+}
+
+async function verify(browser, origin) {
+  const mobile = await mobileComparison(browser, origin);
+  console.log(`[mobile geometry] ${mobile.result}: ${mobile.viewports.join(', ')}`);
+  const responsive = await responsiveGeometry(browser, origin);
+  console.log(`[tablet 1023px] PASS: container/nav/image ${responsive.tablet.container}/${responsive.tablet.nav}/${responsive.tablet.image}px; Postcard inactive`);
+  console.log(`[postcard centring] PASS: ${responsive.postcardCentres.map((item) => `${item.width}px=${item.centreOffsetPx.toFixed(1)}px`).join(', ')}`);
+  console.log(`[short desktop] PASS: ${responsive.shortHeights.map((item) => `${item.viewport} image/actions ${item.imageBottom.toFixed(1)}/${item.actionsBottom.toFixed(1)} < strip ${item.stripTop.toFixed(1)}`).join('; ')}`);
+  const clicks = [];
+  for (const viewport of desktopViewports) { const result = await clickThrough(browser, origin, viewport); clicks.push(result); console.log(`[click-through ${result.viewport}] PASS: ${result.actions}; ${result.nav}; Language ${result.language}`); }
+  const captions = await captionEvidence(browser, origin);
+  for (const item of captions.filter((item) => ['af', 'xh'].includes(item.lang))) console.log(`[caption ${item.lang}] PASS: ${item.testedLines} lines tested; worst ${item.characters} chars, natural ${item.naturalWidth}x${item.naturalHeight} within ${item.availableWidth}x${item.availableHeight}`);
+
+  const screenshotDir = path.join(output, 'screenshots'); mkdirSync(screenshotDir, { recursive: true });
+  const screenshots = [];
+  for (const condition of Object.keys(conditions)) for (const viewport of screenshotViewports) {
+    const { page, context, imageRequests } = await openApp(browser, origin, viewport, { condition });
+    const geometry = await snapshotGeometry(page);
+    assert(geometry.z.bg === '-1' && Number(geometry.z.home) >= 30 && Number(geometry.z.caption) >= 31, `Z-order failed at ${viewport.width}`);
+    assert(geometry.colors.temp === 'rgb(255, 255, 255)' && geometry.colors.caption === 'rgb(36, 33, 29)', `Solid text colors failed at ${viewport.width}`);
+    assert(geometry.hero.nowrap && geometry.stripDays === 7 && geometry.particlesDisplay === 'none', `Postcard content contract failed at ${viewport.width}`);
+    assert(geometry.caption.x >= geometry.image.x - 4 && geometry.caption.right <= geometry.image.right + 4 && geometry.caption.y > geometry.image.y + (geometry.image.height * 0.7) && geometry.caption.bottom <= geometry.image.bottom + 4, `Caption escaped the polaroid at ${viewport.width}`);
+    assert((await page.locator('#shareBtn').textContent())?.trim().endsWith('Share'), `Share label did not paint at ${condition} ${viewport.width}`);
+    const unionLeft = Math.min(geometry.image.x, geometry.voice.x); const unionRight = Math.max(geometry.image.right, geometry.voice.right);
+    assert(Math.abs(((unionLeft + unionRight) / 2) - (viewport.width / 2)) < 80, `Composition is not centred at ${viewport.width}`);
+    const heroPath = await page.locator('#bgImg').evaluate((image) => new URL(image.currentSrc).pathname);
+    assert(imageRequests.filter((requestPath) => requestPath === heroPath).length >= 1, 'Hero was not requested');
+    const transfers = await page.locator('#bgImg').evaluate((image) => performance.getEntriesByName(image.currentSrc).map((entry) => entry.transferSize));
+    assert(transfers.filter((bytes) => bytes > 0).length <= 1, `Hero transferred more than once: ${transfers.join(',')}`);
+    const file = path.join(screenshotDir, `${condition}-${viewport.width}x${viewport.height}.png`); await page.screenshot({ path: file }); screenshots.push(path.relative(root, file).replaceAll('\\', '/'));
+    await context.close();
+  }
+  const performance = { before: await performancePass(browser, origin, true), after: await performancePass(browser, origin, false) };
+  assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, 'Postcard desktop paint exceeded 500ms locally');
+  console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms`);
+  const report = { clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
+  mkdirSync(output, { recursive: true }); writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, 2)}\n`);
+  return report;
+}
+
+const { server, origin } = await startServer();
+const browser = await chromium.launch({ headless: true });
+try { console.log(JSON.stringify(await verify(browser, origin), null, 2)); }
+finally { await browser.close(); server.close(); }
