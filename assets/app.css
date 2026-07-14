@@ -860,7 +860,7 @@ body.ui-dark .daily-card {
   padding: 0.85rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(245, 166, 35, 0.9);
+  background: var(--brand-gold);
   color: #15100a;
   font-weight: 800;
   font-size: 1rem;
@@ -869,7 +869,8 @@ body.ui-dark .daily-card {
 }
 
 .use-location-btn:hover {
-  background: rgba(255, 188, 64, 0.95);
+  background: var(--brand-gold);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.34);
 }
 
 /* Save-current button (relocated into the search header) reuses the
