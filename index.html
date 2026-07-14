@@ -288,9 +288,13 @@
         document.head.appendChild(link);
       }
       loadPrototypeStyle('pwTypePrototype', 'assets/type-prototype.css');
-      if (window.matchMedia('(min-width: 1024px)').matches) {
-        loadPrototypeStyle('pwTypePrototypeCaption', 'assets/type-prototype-caption.css');
+      var postcardMedia = window.matchMedia('(min-width: 1024px)');
+      function loadPostcardCaption(event) {
+        if (event.matches) loadPrototypeStyle('pwTypePrototypeCaption', 'assets/type-prototype-caption.css');
       }
+      loadPostcardCaption(postcardMedia);
+      if (postcardMedia.addEventListener) postcardMedia.addEventListener('change', loadPostcardCaption);
+      else postcardMedia.addListener(loadPostcardCaption);
     })();
   </script>
   <a href="#home-screen" class="skip-link">Skip to main content</a>

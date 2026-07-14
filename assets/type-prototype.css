@@ -60,7 +60,7 @@ html[data-type-prototype="true"] textarea {
     line-height: 1.12;
   }
 
-  html[data-type-prototype="true"] .sidebar .stat-value {
+  html[data-type-prototype="true"] .sidebar .weather-byline {
     font-size: 0.75rem;
     font-weight: 500;
   }
@@ -93,18 +93,20 @@ html[data-type-prototype="true"] textarea {
     line-height: 1.02;
   }
 
-  html[data-type-prototype="true"] .sidebar .stat-value {
+  html[data-type-prototype="true"] .sidebar .weather-byline {
     font-size: 0.9375rem;
     font-weight: 450;
   }
 
   html[data-type-prototype="true"] .nav button,
-  html[data-type-prototype="true"] .lang-select {
+  html[data-type-prototype="true"] .language-btn {
     font-size: 0.875rem;
     font-weight: 600;
   }
 
-  html[data-type-prototype="true"] .home-action-btn {
+  html[data-type-prototype="true"] .share-btn,
+  html[data-type-prototype="true"] .nav-hourly-pill,
+  html[data-type-prototype="true"] .my-location-btn {
     font-size: 0.9375rem;
     font-weight: 650;
   }

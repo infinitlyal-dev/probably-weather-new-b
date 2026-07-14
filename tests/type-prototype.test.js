@@ -14,7 +14,8 @@ describe('query-gated typography prototype', () => {
   });
 
   it('keeps the Caveat caption payload behind the desktop breakpoint', () => {
-    expect(index).toContain("matchMedia('(min-width: 1024px)').matches");
+    expect(index).toContain("matchMedia('(min-width: 1024px)')");
+    expect(index).toContain("postcardMedia.addEventListener('change', loadPostcardCaption)");
     expect(index).toContain("loadPrototypeStyle('pwTypePrototypeCaption', 'assets/type-prototype-caption.css')");
     expect(uiCss).not.toContain('Caveat Prototype');
     expect(captionCss).toContain("font-family: 'Caveat Prototype'");
@@ -35,6 +36,10 @@ describe('query-gated typography prototype', () => {
     expect(uiCss).toContain('font-size: 4.25rem;');
     expect(uiCss).toContain('font-size: 6.125rem;');
     expect(uiCss).toContain('letter-spacing: -0.045em;');
+    expect(uiCss).toContain('html[data-type-prototype="true"] .sidebar .weather-byline');
+    expect(uiCss).toContain('html[data-type-prototype="true"] .language-btn');
+    expect(uiCss).toMatch(/\.share-btn,[\s\S]*\.nav-hourly-pill,[\s\S]*\.my-location-btn\s*{[^}]*font-size:\s*0\.9375rem;[^}]*font-weight:\s*650;/);
+    expect(uiCss).not.toMatch(/\.stat-value|\.lang-select|\.home-action-btn/);
     expect(captionCss).toContain('font-size: clamp(1.25rem, 1.45vw, 1.375rem);');
   });
 

@@ -109,6 +109,25 @@ async function snapshot(page) {
         range: style('.hero-range').fontSize,
         condition: style('#description').fontSize,
         caption: style('#headline').fontSize,
+        stats: style('.sidebar .weather-byline').fontSize,
+        location: style('#location').fontSize,
+        share: style('#shareBtn').fontSize,
+        hourly: style('#navHourlyHome').fontSize,
+        myLocation: style('#myLocationHome').fontSize,
+        nav: style('#navHome').fontSize,
+        language: style('.language-btn').fontSize,
+      },
+      typeWeights: {
+        probably: style('.hero-probably').fontWeight,
+        range: style('.hero-range').fontWeight,
+        condition: style('#description').fontWeight,
+        stats: style('.sidebar .weather-byline').fontWeight,
+        location: style('#location').fontWeight,
+        share: style('#shareBtn').fontWeight,
+        hourly: style('#navHourlyHome').fontWeight,
+        myLocation: style('#myLocationHome').fontWeight,
+        nav: style('#navHome').fontWeight,
+        language: style('.language-btn').fontWeight,
       },
       text: {
         probably: document.querySelector('.hero-probably').textContent,
@@ -150,9 +169,14 @@ async function capturePair(browser, origin, viewport) {
     assert(result.prototype.fontRequests.length === 0, `Mobile prototype made font resource requests: ${result.prototype.fontRequests.join(', ')}`);
     assert(!result.prototype.stylesheets.some((url) => url.includes('type-prototype-caption')), 'Mobile prototype loaded the Caveat stylesheet');
     assert(!result.prototype.captionFamily.includes('Caveat Prototype'), 'Mobile prototype applied Caveat');
+    assert(result.prototype.typeSizes.stats === '12px' && result.prototype.typeWeights.stats === '500', `Mobile stats token missed the live byline: ${JSON.stringify(result.prototype)}`);
   } else {
     assert(result.prototype.captionFamily.includes('Caveat Prototype'), `${viewport.width}px prototype did not apply Caveat to the caption`);
     assert(result.prototype.stylesheets.some((url) => url.includes('type-prototype-caption')), `${viewport.width}px prototype did not load the desktop caption stylesheet`);
+    const expectedSizes = { probably: '68px', range: '98px', condition: '34px', stats: '15px', location: '13px', share: '16px', hourly: '15px', myLocation: '15px', nav: '14px', language: '14px' };
+    const expectedWeights = { probably: '300', range: '800', condition: '700', stats: '450', location: '700', share: '650', hourly: '650', myLocation: '650', nav: '600', language: '600' };
+    for (const [token, expected] of Object.entries(expectedSizes)) assert(result.prototype.typeSizes[token] === expected, `${viewport.width}px ${token} size ${result.prototype.typeSizes[token]} != ${expected}`);
+    for (const [token, expected] of Object.entries(expectedWeights)) assert(result.prototype.typeWeights[token] === expected, `${viewport.width}px ${token} weight ${result.prototype.typeWeights[token]} != ${expected}`);
   }
   return result;
 }
@@ -171,6 +195,19 @@ async function captureTextZoom(browser, origin, viewport) {
   return { normal: normal.typeSizes, zoomed: zoomed.typeSizes, rangeOverflowPx: zoomed.rangeOverflowPx, documentOverflowPx: zoomed.documentOverflowPx, screenshot: path.relative(root, file).replaceAll('\\', '/') };
 }
 
+async function responsiveCaptionLoad(browser, origin) {
+  const opened = await openApp(browser, origin, { width: 900, height: 900 }, true);
+  assert(!await opened.page.locator('#pwTypePrototypeCaption').count(), 'Tablet prototype eagerly loaded the Caveat stylesheet');
+  await opened.page.setViewportSize({ width: 1440, height: 900 });
+  await opened.page.waitForFunction(() => document.getElementById('pwTypePrototypeCaption')?.sheet);
+  await opened.page.evaluate(() => document.fonts.ready);
+  const captionFamily = await opened.page.locator('#headline').evaluate((element) => getComputedStyle(element).fontFamily);
+  assert(captionFamily.includes('Caveat Prototype'), `Tablet-to-Postcard resize kept the fallback caption: ${captionFamily}`);
+  const fontRequests = opened.requests.filter((request) => request.type === 'font').length;
+  await opened.context.close();
+  return { captionFamily, fontRequests };
+}
+
 mkdirSync(output, { recursive: true });
 const { server, origin } = await startServer();
 const browser = await chromium.launch({ headless: true });
@@ -187,6 +224,8 @@ try {
   assert(manifest.fonts.caveat.totalBytes <= manifest.fonts.caveat.budgetBytes, 'Caveat exceeds its prototype budget');
   console.log(`[font loading mobile] PASS — default prototype assets=0; proto font-resource requests=${mobile.fontRequests.length}; Caveat stylesheet=false; embedded Onest=${manifest.fonts.onest.totalBytes}/${manifest.fonts.onest.budgetBytes} bytes`);
   console.log(`[font loading desktop] PASS — Caveat desktop-only=${manifest.fonts.caveat.totalBytes}/${manifest.fonts.caveat.budgetBytes} bytes; caption family applied at 1440 and 1920`);
+  const responsiveCaption = await responsiveCaptionLoad(browser, origin);
+  console.log(`[font loading responsive] PASS — 900→1440 lazy-loaded Caveat on first Postcard entry; font-resource requests=${responsiveCaption.fontRequests}`);
 
   const zoom = {};
   for (const viewport of [viewports[0], viewports[1]]) {
@@ -195,7 +234,7 @@ try {
     console.log(`[text zoom ${key}] CAPTURED — 200% root; Probably ${zoom[key].normal.probably}->${zoom[key].zoomed.probably}; range nowrap; range overflow=${zoom[key].rangeOverflowPx}px; document overflow=${zoom[key].documentOverflowPx}px`);
   }
 
-  const evidence = { condition: 'clear day', pairs, zoom, fontManifest: manifest };
+  const evidence = { condition: 'clear day', pairs, zoom, responsiveCaption, fontManifest: manifest };
   writeFileSync(path.join(output, 'evidence.json'), `${JSON.stringify(evidence, null, 2)}\n`);
   console.log(`[type screenshots] PASS — six fair-pair gates + two 200% text-zoom captures in ${path.relative(root, output).replaceAll('\\', '/')}`);
 } finally {
