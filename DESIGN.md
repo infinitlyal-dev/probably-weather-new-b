@@ -79,7 +79,8 @@ System stack is intentional: PW reads native on each device, which makes it feel
 | `--brand-sun` | `#FFDD44` | The "Probably" yellow. Primary accent. |
 | `--brand-sun-deep` | `#FFAA00` | Gradient end-stop, hover state. |
 | `--brand-ink` | `#1a1a2e` | Sits on yellow (install button, "Use my location"). |
-| `--brand-amber` | `#F5A623` | Email link, secondary warm accent. |
+| `--brand-gold` | `#FFD700` | Solid brand accent. |
+| `--condition-amber` | `#F5A623` | Condition labels only; never general brand chrome. |
 | `--brand-cream` | `#FFF8F0` | Default body text on photo backgrounds. |
 
 The gradient `linear-gradient(135deg, #FFDD44, #FFAA00)` is reserved for **primary CTAs** (install, share, save-current) and the logo sun. Do not use it as decorative chrome.

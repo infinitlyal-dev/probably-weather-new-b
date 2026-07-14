@@ -414,7 +414,7 @@ function ogElement(model, backgroundDataUrl) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'linear-gradient(135deg, #ffdd44, #ff8c42)',
+            background: 'linear-gradient(135deg, #ffdd44, #ffaa00)',
             color: '#111',
             fontSize: 29,
             fontWeight: 900,
@@ -456,7 +456,7 @@ function ogElement(model, backgroundDataUrl) {
       h('div', {
         style: {
           marginTop: 26,
-          color: '#ff8c42',
+          color: '#f5a623',
           fontSize: 47,
           fontWeight: 850,
           lineHeight: 1.05,

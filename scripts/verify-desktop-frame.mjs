@@ -228,6 +228,30 @@ async function actionRowEvidence(browser, origin) {
   return evidence;
 }
 
+async function typeAndColourContract(browser, origin) {
+  const results = [];
+  for (const viewport of [mobileViewports[0], desktopViewports[0]]) {
+    const { page, context } = await openApp(browser, origin, viewport);
+    const result = await page.evaluate(() => {
+      const bodyFamily = getComputedStyle(document.body).fontFamily;
+      const controls = [...document.querySelectorAll('button, input, select, textarea')];
+      const mismatches = controls.filter((element) => getComputedStyle(element).fontFamily !== bodyFamily).map((element) => element.id || element.tagName);
+      const amber = 'rgb(245, 166, 35)';
+      const amberElements = [...document.querySelectorAll('body *')].filter((element) => {
+        const style = getComputedStyle(element);
+        return style.color === amber || style.backgroundColor === amber;
+      }).map((element) => element.id || element.className || element.tagName);
+      return { bodyFamily, controls: controls.length, mismatches, conditionColour: getComputedStyle(document.getElementById('description')).color, amberElements };
+    });
+    assert(result.mismatches.length === 0, `Controls escaped the app font cascade at ${viewport.width}: ${result.mismatches.join(', ')}`);
+    assert(result.conditionColour === 'rgb(245, 166, 35)', `Condition amber drifted at ${viewport.width}: ${result.conditionColour}`);
+    assert(JSON.stringify(result.amberElements) === JSON.stringify(['description']), `Amber escaped the condition at ${viewport.width}: ${result.amberElements.join(', ')}`);
+    results.push({ viewport: `${viewport.width}x${viewport.height}`, ...result });
+    await context.close();
+  }
+  return results;
+}
+
 async function clickThrough(browser, origin, viewport) {
   const { page, context } = await openApp(browser, origin, viewport);
   const visible = async (selector) => assert(await page.locator(selector).isVisible(), `${selector} not visible at ${viewport.width}x${viewport.height}`);
@@ -332,6 +356,8 @@ async function verify(browser, origin) {
   console.log(`[mobile geometry] ${mobile.result}: ${mobile.viewports.join(', ')}`);
   const actionRows = await actionRowEvidence(browser, origin);
   console.log(`[action screenshots] PASS: ${actionRows.map((item) => `${item.label}-${item.surface}`).join(', ')}`);
+  const typeAndColour = await typeAndColourContract(browser, origin);
+  console.log(`[type + colour] PASS: ${typeAndColour.map((item) => `${item.viewport} ${item.controls} controls inherit; amber=${item.amberElements.join(',')}`).join('; ')}`);
   const responsive = await responsiveGeometry(browser, origin);
   console.log(`[tablet 1023px] PASS: container/nav/image ${responsive.tablet.container}/${responsive.tablet.nav}/${responsive.tablet.image}px; Postcard inactive`);
   console.log(`[postcard centring] PASS: ${responsive.postcardCentres.map((item) => `${item.width}px=${item.centreOffsetPx.toFixed(1)}px`).join(', ')}`);
@@ -363,7 +389,7 @@ async function verify(browser, origin) {
   const performance = { before: await performancePass(browser, origin, true), after: await performancePass(browser, origin, false) };
   assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, 'Postcard desktop paint exceeded 500ms locally');
   console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms`);
-  const report = { glassBand, actionRows, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
+  const report = { glassBand, actionRows, typeAndColour, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
   mkdirSync(output, { recursive: true }); writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, 2)}\n`);
   return report;
 }

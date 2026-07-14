@@ -1,11 +1,22 @@
 :root {
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --brand-gold: #ffd700;
+  /* Owner ruling 2026-07-14: amber is semantic, not general brand chrome.
+     Only a weather condition label may use this token; brand accents use gold. */
+  --condition-amber: #f5a623;
   --focus-ring: #ffffff;
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
   --panel-bg: rgba(0, 0, 0, 0.5);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
 
 button, a, .daily-row-tappable, .recent-item, .favorite-item, .search-result-item, .nav button {
   touch-action: manipulation;
@@ -315,7 +326,7 @@ body:not(.home-active) .language-picker {
 .description {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #ff8c42;
+  color: var(--condition-amber);
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
@@ -2249,7 +2260,7 @@ main#home-screen.main #confidence {
     margin-bottom: 0.4rem;
     text-align: left;
     font-weight: 700;
-    color: #ff8c42;
+    color: var(--condition-amber);
     text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.7);
     line-height: 1.35;
     letter-spacing: 0.01em;
@@ -2559,7 +2570,7 @@ main#home-screen.main #confidence {
     height: 22px;
     border: 3px solid #f6f2e8;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ffdf4d, #f5a623);
+    background: var(--brand-gold);
     box-shadow: 0 5px 10px rgba(0,0,0,0.45), inset 0 1px 2px rgba(255,255,255,0.65);
     z-index: 3;
   }
@@ -2731,7 +2742,7 @@ main#home-screen.main #confidence {
     font-size: clamp(27px, 2.4vw, 38px);
     font-weight: 800;
     line-height: 1.1;
-    color: #f5a623;
+    color: var(--condition-amber);
     text-shadow: 0 3px 12px rgba(0,0,0,0.95);
   }
   .sidebar {
@@ -3457,7 +3468,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 /* Footer "Install" link (re-trigger after dismissal) */
 .install-footer-link {
   display: inline-block;
-  color: #F5A623;
+  color: var(--brand-gold);
   text-decoration: underline;
   background: none;
   border: none;
