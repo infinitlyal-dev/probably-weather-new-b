@@ -32,5 +32,7 @@ describe('draft Probably Weather product spine', () => {
     expect(dossier).toContain('`scripts/verify-type-prototype.mjs`');
     expect(dossier).toContain('`tests/type-prototype.test.js`');
     expect(dossier).not.toContain('tests/typography-contract.test.js');
+    expect(dossier).not.toContain('the fix is not deployed');
+    expect(dossier).toContain('production baseline `53f918f`');
   });
 });
