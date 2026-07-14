@@ -379,14 +379,15 @@
       <aside class="sidebar">
         <div id="weatherByline" class="weather-byline sidebar-stats">Wind <span id="windValue">—</span> • Rain <span id="rainValue">—</span> • UV <span id="uvValue">—</span></div>
       </aside>
-      <!-- Bottom-row CTAs, three EQUAL pills (Al's ruling 2026-07-06):
-           Hourly (LEFT, dark utility) · Share (CENTRE, gold primary) ·
+      <!-- Bottom-row CTAs, three EQUAL pills (owner ruling 2026-07-14,
+           deliberately superseding the 2026-07-06 centre-Share order):
+           Share (LEFT, gold primary) · Hourly (CENTRE, dark utility) ·
            My Location (RIGHT, dark utility). Share is the growth engine, so
            it owns the one primary slot. My Location is one tap back to the
            user's own weather (GPS or saved home) after browsing other places
            — older users don't pull-to-refresh. Save lives in the Search flow. -->
-      <button type="button" id="navHourlyHome" class="nav-hourly-pill" aria-label="Hourly forecast">→ Hourly</button>
       <button id="shareBtn" class="share-btn" aria-label="Share">↗ Share</button>
+      <button type="button" id="navHourlyHome" class="nav-hourly-pill" aria-label="Hourly forecast">→ Hourly</button>
       <button id="myLocationHome" class="my-location-btn" type="button" aria-label="My location">📍 My Location</button>
     </div>
 

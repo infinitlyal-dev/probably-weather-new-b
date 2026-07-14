@@ -2307,9 +2307,9 @@ main#home-screen.main #confidence {
     transition: opacity 0.25s ease;
   }
 
-  /* ── Action row (Al's ruling 2026-07-06): THREE EQUAL pills, one primary.
-     Hourly LEFT (dark) · Share CENTRE (gold primary — the growth engine gets
-     the one primary slot) · My Location RIGHT (dark). Same height, same
+  /* ── Action row (owner ruling 2026-07-14): THREE EQUAL pills, one primary.
+     Share LEFT (gold primary — the growth engine gets the one primary slot) ·
+     Hourly CENTRE (dark) · My Location RIGHT (dark). Same height, same
      shape, equal thirds of the row; thumb-reach preserved above the nav. ── */
   .share-btn,
   .my-location-btn,
@@ -2335,8 +2335,8 @@ main#home-screen.main #confidence {
     transition: opacity 0.2s ease;
   }
 
-  .nav-hourly-pill { left: 12px; }
-  .share-btn { left: 50%; transform: translateX(-50%); z-index: 51; }
+  .share-btn { left: 12px; z-index: 51; }
+  .nav-hourly-pill { left: 50%; transform: translateX(-50%); }
   .my-location-btn { right: 12px; }
 
   /* Utility pills: dark glass. */
@@ -2365,7 +2365,7 @@ main#home-screen.main #confidence {
   }
 
   .share-btn:active {
-    transform: translateX(-50%) scale(0.97);
+    transform: scale(0.97);
   }
 }
 
@@ -2431,7 +2431,7 @@ main#home-screen.main #confidence {
   #scrim { z-index: 2; }
 
   /* Restore the mobile action row (base rules hide these on desktop) with the
-     same trio as mobile — Hourly left (dark) · Share centre (gold primary) ·
+     same trio as mobile — Share left (gold primary) · Hourly centre (dark) ·
      My Location right (dark) — equal thirds of the COLUMN, anchored to its
      edges. */
   .share-btn,
@@ -2457,8 +2457,8 @@ main#home-screen.main #confidence {
     font-family: inherit;
     transition: opacity 0.2s ease;
   }
-  .nav-hourly-pill { left: calc(50% - (var(--pw-col) / 2) + 12px); right: auto; transform: none; }
-  .share-btn { left: 50%; right: auto; transform: translateX(-50%); z-index: 51; }
+  .share-btn { left: calc(50% - (var(--pw-col) / 2) + 12px); right: auto; transform: none; z-index: 51; }
+  .nav-hourly-pill { left: 50%; right: auto; transform: translateX(-50%); }
   .my-location-btn { right: calc(50% - (var(--pw-col) / 2) + 12px); left: auto; }
 
   .nav-hourly-pill,
@@ -2476,7 +2476,7 @@ main#home-screen.main #confidence {
     box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
-  .share-btn:active { transform: translateX(-50%) scale(0.97); }
+  .share-btn:active { transform: scale(0.97); }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -2495,6 +2495,9 @@ main#home-screen.main #confidence {
     --postcard-voice-left: calc(var(--postcard-left) + var(--postcard-photo-w) + var(--postcard-gap) + 32px);
     --postcard-voice-w: min(520px, calc(var(--postcard-unit) - var(--postcard-photo-w) - var(--postcard-gap) - 32px));
     --postcard-center-y: calc(50vh - 8px);
+    --postcard-share-w: clamp(146px, 12vw, 172px);
+    --postcard-hourly-w: clamp(126px, 10.3vw, 148px);
+    --postcard-location-w: clamp(136px, 11vw, 158px);
   }
 
   .container {
@@ -2753,8 +2756,8 @@ main#home-screen.main #confidence {
     text-shadow: 0 2px 8px rgba(0,0,0,0.95);
   }
 
-  /* The voice actions form one local row: Share is visibly the largest and
-     remains the only gold primary. */
+  /* The voice actions form one local row in the ruled order. Share remains
+     visibly primary without overwhelming the longer My Location label. */
   .share-btn,
   .my-location-btn,
   .nav-hourly-pill {
@@ -2767,19 +2770,19 @@ main#home-screen.main #confidence {
     z-index: 50;
     transform: none;
   }
-  .nav-hourly-pill {
-    left: var(--postcard-voice-left);
-    width: 138px;
-  }
   .share-btn {
-    left: calc(var(--postcard-voice-left) + 148px);
-    width: 172px;
+    left: var(--postcard-voice-left);
+    width: var(--postcard-share-w);
     font-size: 1rem;
     z-index: 51;
   }
+  .nav-hourly-pill {
+    left: calc(var(--postcard-voice-left) + var(--postcard-share-w) + 10px);
+    width: var(--postcard-hourly-w);
+  }
   .my-location-btn {
-    left: calc(var(--postcard-voice-left) + 330px);
-    width: 158px;
+    left: calc(var(--postcard-voice-left) + var(--postcard-share-w) + var(--postcard-hourly-w) + 20px);
+    width: var(--postcard-location-w);
   }
   .share-btn:active { transform: scale(0.97); }
 

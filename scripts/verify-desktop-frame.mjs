@@ -10,8 +10,12 @@ import { WEATHER_COPY } from '../assets/weather-copy.js';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
 const output = path.join(root, 'output', 'desktop-postcard');
-const baselineCss = transformSync(
+const glassBaselineCss = transformSync(
   execFileSync('git', ['show', '9424808:assets/app.css'], { cwd: root }).toString(),
+  { loader: 'css', minify: true },
+).code;
+const releaseBaselineCss = transformSync(
+  execFileSync('git', ['show', '53f918f:assets/app.css'], { cwd: root }).toString(),
   { loader: 'css', minify: true },
 ).code;
 const conditions = {
@@ -54,7 +58,10 @@ function startServer() {
     const file = path.resolve(dist, relative);
     if (!file.startsWith(`${dist}${path.sep}`) && file !== path.join(dist, 'index.html')) return res.writeHead(403).end();
     try {
-      const body = relative === 'assets/app.css' && req.headers['x-pw-style-baseline'] === 'true' ? baselineCss : readFileSync(file);
+      const styleBaseline = req.headers['x-pw-style-baseline'];
+      const body = relative === 'assets/app.css' && styleBaseline === 'pre-glass' ? glassBaselineCss
+        : relative === 'assets/app.css' && styleBaseline === 'release' ? releaseBaselineCss
+          : readFileSync(file);
       const headers = { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' };
       if (['.webp', '.jpg'].includes(path.extname(file))) headers['Cache-Control'] = 'public, max-age=31536000, immutable';
       res.writeHead(200, headers).end(body);
@@ -63,8 +70,8 @@ function startServer() {
   return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve({ server, origin: `http://127.0.0.1:${server.address().port}` })));
 }
 
-async function openApp(browser, origin, viewport, { condition = 'clear', lang = 'en', baseline = false, measure = false } = {}) {
-  const context = await browser.newContext({ viewport, serviceWorkers: 'block', reducedMotion: 'no-preference', extraHTTPHeaders: { 'x-pw-test-condition': condition, 'x-pw-style-baseline': String(baseline) } });
+async function openApp(browser, origin, viewport, { condition = 'clear', lang = 'en', styleBaseline = '', measure = false } = {}) {
+  const context = await browser.newContext({ viewport, serviceWorkers: 'block', reducedMotion: 'no-preference', extraHTTPHeaders: { 'x-pw-test-condition': condition, 'x-pw-style-baseline': styleBaseline } });
   const imageRequests = [];
   context.on('request', (request) => { if (request.resourceType() === 'image') imageRequests.push(new URL(request.url()).pathname); });
   await context.addInitScript(({ selectedLang }) => {
@@ -102,7 +109,7 @@ async function snapshotGeometry(page) {
     return {
       viewport: { width: innerWidth, height: innerHeight },
       image: box('#bgImg'), caption: box('#headline'), voice: box('#home-screen'), nav: box('.nav'), strip: box('#week-screen'), particles: box('#particles'),
-      actions: [box('#navHourlyHome'), box('#shareBtn'), box('#myLocationHome')],
+      actions: [box('#shareBtn'), box('#navHourlyHome'), box('#myLocationHome')],
       hero: { probably: box('.hero-probably'), range: box('.hero-range'), nowrap: document.querySelector('.hero-range').scrollWidth <= document.querySelector('.hero-range').clientWidth },
       z: { bg: style('#bg').zIndex, container: style('.container').zIndex, home: style('#home-screen').zIndex, caption: style('#headline').zIndex },
       colors: { temp: style('#temp').color, condition: style('#description').color, caption: style('#headline').color },
@@ -151,10 +158,10 @@ async function glassBandRegression(browser, origin) {
   const evidence = [];
   for (const viewport of desktopViewports) {
     for (const condition of ['clear', 'rain']) {
-      for (const [label, baseline] of [['before', true], ['after', false]]) {
-        const { page, context } = await openApp(browser, origin, viewport, { condition, baseline });
+      for (const [label, styleBaseline] of [['before', 'pre-glass'], ['after', '']]) {
+        const { page, context } = await openApp(browser, origin, viewport, { condition, styleBaseline });
         const scrim = await homeScrimGeometry(page);
-        if (baseline) {
+        if (styleBaseline) {
           assert(scrim.active && scrim.overlapWidth > 100 && scrim.overlapHeight > 100, `Baseline glass band was not reproduced at ${viewport.width}x${viewport.height}: ${JSON.stringify(scrim)}`);
         } else {
           assert(!scrim.active && scrim.overlapWidth === 0, `Home scrim still crosses the polaroid at ${viewport.width}x${viewport.height}`);
@@ -172,11 +179,11 @@ async function glassBandRegression(browser, origin) {
 async function mobileComparison(browser, origin) {
   const before = {}, after = {};
   for (const viewport of mobileViewports) {
-    for (const [label, baseline] of [['before', true], ['after', false]]) {
-      const { page, context } = await openApp(browser, origin, viewport, { baseline });
+    for (const [label, styleBaseline] of [['before', 'release'], ['after', '']]) {
+      const { page, context } = await openApp(browser, origin, viewport, { styleBaseline });
       const geometry = await page.evaluate(() => {
         const box = (selector) => { const r = document.querySelector(selector).getBoundingClientRect(); return [r.x, r.y, r.width, r.height]; };
-        return { container: box('.container'), nav: box('.nav'), image: box('#bgImg'), particles: box('#particles'), actions: ['#navHourlyHome', '#shareBtn', '#myLocationHome'].map(box), hero: ['.hero-probably', '.hero-range'].map(box), postcardVar: getComputedStyle(document.documentElement).getPropertyValue('--postcard-unit').trim() };
+        return { container: box('.container'), nav: box('.nav'), image: box('#bgImg'), particles: box('#particles'), actions: ['#shareBtn', '#navHourlyHome', '#myLocationHome'].map(box), hero: ['.hero-probably', '.hero-range'].map(box), postcardVar: getComputedStyle(document.documentElement).getPropertyValue('--postcard-unit').trim() };
       });
       (label === 'before' ? before : after)[`${viewport.width}x${viewport.height}`] = geometry;
       await context.close();
@@ -184,19 +191,53 @@ async function mobileComparison(browser, origin) {
   }
   mkdirSync(output, { recursive: true });
   writeFileSync(path.join(output, 'mobile-comparison.json'), `${JSON.stringify({ before, after }, null, 2)}\n`);
-  assert(JSON.stringify(before) === JSON.stringify(after), 'Mobile geometry differs from 9424808');
+  const stableGeometry = ({ actions, ...stable }) => stable;
+  for (const viewport of mobileViewports) {
+    const key = `${viewport.width}x${viewport.height}`;
+    assert(JSON.stringify(stableGeometry(before[key])) === JSON.stringify(stableGeometry(after[key])), `Non-action mobile geometry differs from 53f918f at ${key}`);
+  }
+  const expectedActions = {
+    '390x844': [[12, 714, 116.65625, 46], [136.671875, 714, 116.65625, 46], [261.34375, 714, 116.65625, 46]],
+    '360x800': [[12, 670, 106.65625, 46], [126.671875, 670, 106.65625, 46], [241.34375, 670, 106.65625, 46]],
+    '320x700': [[12, 570, 93.328125, 46], [113.3359375, 570, 93.328125, 46], [214.671875, 570, 93.328125, 46]],
+  };
+  for (const [key, expected] of Object.entries(expectedActions)) assert(JSON.stringify(after[key].actions) === JSON.stringify(expected), `Ruled Share / Hourly / My Location geometry drifted at ${key}: ${JSON.stringify(after[key].actions)}`);
   assert(Object.values(after).every((value) => value.postcardVar === ''), 'Postcard variables leaked below 1024px');
-  return { result: 'PASS — measurement-identical to 9424808', viewports: Object.keys(after), before, after };
+  return { result: 'PASS — non-action geometry matches 53f918f; Share / Hourly / My Location slots re-pinned', viewports: Object.keys(after), before, after };
+}
+
+async function actionRowEvidence(browser, origin) {
+  const screenshotDir = path.join(root, 'output', 'design-wave', 'action-row');
+  mkdirSync(screenshotDir, { recursive: true });
+  const evidence = [];
+  for (const item of [{ name: 'mobile', width: 390, height: 844 }, { name: 'postcard', width: 1440, height: 900 }]) {
+    for (const [label, styleBaseline] of [['before', 'release'], ['after', '']]) {
+      const { page, context } = await openApp(browser, origin, item, { styleBaseline });
+      const boxes = await page.evaluate(() => Object.fromEntries(['shareBtn', 'navHourlyHome', 'myLocationHome'].map((id) => {
+        const rect = document.getElementById(id).getBoundingClientRect();
+        return [id, { x: rect.x, width: rect.width }];
+      })));
+      if (label === 'before') assert(boxes.navHourlyHome.x < boxes.shareBtn.x && boxes.shareBtn.x < boxes.myLocationHome.x, `53f918f action baseline was not reproduced at ${item.name}`);
+      else assert(boxes.shareBtn.x < boxes.navHourlyHome.x && boxes.navHourlyHome.x < boxes.myLocationHome.x, `Ruled action order failed at ${item.name}`);
+      const file = path.join(screenshotDir, `${label}-${item.name}-${item.width}x${item.height}.png`);
+      await page.screenshot({ path: file });
+      evidence.push({ label, surface: item.name, viewport: `${item.width}x${item.height}`, boxes, screenshot: path.relative(root, file).replaceAll('\\', '/') });
+      await context.close();
+    }
+  }
+  return evidence;
 }
 
 async function clickThrough(browser, origin, viewport) {
   const { page, context } = await openApp(browser, origin, viewport);
   const visible = async (selector) => assert(await page.locator(selector).isVisible(), `${selector} not visible at ${viewport.width}x${viewport.height}`);
   for (const selector of ['#navHourlyHome', '#shareBtn', '#myLocationHome', '#navHome', '#navWeek', '#navSearch', '#navSettings', '#navSources', '#languageBtn']) await visible(selector);
+  const actionOrder = await page.evaluate(() => ['#shareBtn', '#navHourlyHome', '#myLocationHome'].map((selector) => document.querySelector(selector).getBoundingClientRect().x));
+  assert(actionOrder[0] < actionOrder[1] && actionOrder[1] < actionOrder[2], `Action order is not Share / Hourly / My Location at ${viewport.width}`);
   await page.click('#languageBtn'); await visible('#languageMenu'); await page.keyboard.press('Escape');
+  await page.click('#shareBtn'); assert(await page.evaluate(() => window.__PW_SHARE_CALLS.length) === 1, 'Share did not fire');
   await page.click('#navHourlyHome'); await visible('#hourly-screen');
   await page.click('#navHome'); await visible('#home-screen');
-  await page.click('#shareBtn'); assert(await page.evaluate(() => window.__PW_SHARE_CALLS.length) === 1, 'Share did not fire');
   const beforeGeo = await page.evaluate(() => window.__PW_GEO_CALLS); await page.click('#myLocationHome'); await page.waitForFunction((before) => window.__PW_GEO_CALLS > before, beforeGeo);
   for (const [nav, screen] of [['#navHome', '#home-screen'], ['#navWeek', '#week-screen'], ['#navSearch', '#search-screen'], ['#navSettings', '#settings-screen'], ['#navSources', '#sources-screen']]) {
     await page.click(nav); await visible(screen);
@@ -206,7 +247,7 @@ async function clickThrough(browser, origin, viewport) {
     }
   }
   await context.close();
-  return { viewport: `${viewport.width}x${viewport.height}`, actions: 'Hourly, Share, My Location PASS', nav: 'Home, Weekly, Search, Settings, Sources PASS', language: 'PASS' };
+  return { viewport: `${viewport.width}x${viewport.height}`, actions: 'Share, Hourly, My Location PASS (left→right)', nav: 'Home, Weekly, Search, Settings, Sources PASS', language: 'PASS' };
 }
 
 async function responsiveGeometry(browser, origin) {
@@ -268,7 +309,7 @@ async function captionEvidence(browser, origin) {
 async function performancePass(browser, origin, baseline) {
   const trials = [];
   for (let trial = 0; trial < 5; trial += 1) {
-    const { page, context, performanceClient } = await openApp(browser, origin, { width: 2560, height: 1440 }, { baseline, measure: true });
+    const { page, context, performanceClient } = await openApp(browser, origin, { width: 2560, height: 1440 }, { styleBaseline: baseline ? 'release' : '', measure: true });
     await page.waitForTimeout(500);
     const metrics = Object.fromEntries((await performanceClient.send('Performance.getMetrics')).metrics.map(({ name, value }) => [name, value]));
     const paints = await page.evaluate(() => Object.fromEntries(performance.getEntriesByType('paint').map((entry) => [entry.name, entry.startTime])));
@@ -289,12 +330,14 @@ async function verify(browser, origin) {
   }
   const mobile = await mobileComparison(browser, origin);
   console.log(`[mobile geometry] ${mobile.result}: ${mobile.viewports.join(', ')}`);
+  const actionRows = await actionRowEvidence(browser, origin);
+  console.log(`[action screenshots] PASS: ${actionRows.map((item) => `${item.label}-${item.surface}`).join(', ')}`);
   const responsive = await responsiveGeometry(browser, origin);
   console.log(`[tablet 1023px] PASS: container/nav/image ${responsive.tablet.container}/${responsive.tablet.nav}/${responsive.tablet.image}px; Postcard inactive`);
   console.log(`[postcard centring] PASS: ${responsive.postcardCentres.map((item) => `${item.width}px=${item.centreOffsetPx.toFixed(1)}px`).join(', ')}`);
   console.log(`[short desktop] PASS: ${responsive.shortHeights.map((item) => `${item.viewport} image/actions ${item.imageBottom.toFixed(1)}/${item.actionsBottom.toFixed(1)} < strip ${item.stripTop.toFixed(1)}`).join('; ')}`);
   const clicks = [];
-  for (const viewport of desktopViewports) { const result = await clickThrough(browser, origin, viewport); clicks.push(result); console.log(`[click-through ${result.viewport}] PASS: ${result.actions}; ${result.nav}; Language ${result.language}`); }
+  for (const viewport of [mobileViewports[0], ...desktopViewports]) { const result = await clickThrough(browser, origin, viewport); clicks.push(result); console.log(`[click-through ${result.viewport}] PASS: ${result.actions}; ${result.nav}; Language ${result.language}`); }
   const captions = await captionEvidence(browser, origin);
   for (const item of captions.filter((item) => ['af', 'xh'].includes(item.lang))) console.log(`[caption ${item.lang}] PASS: ${item.testedLines} lines tested; worst ${item.characters} chars, natural ${item.naturalWidth}x${item.naturalHeight} within ${item.availableWidth}x${item.availableHeight}`);
 
@@ -320,7 +363,7 @@ async function verify(browser, origin) {
   const performance = { before: await performancePass(browser, origin, true), after: await performancePass(browser, origin, false) };
   assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, 'Postcard desktop paint exceeded 500ms locally');
   console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms`);
-  const report = { glassBand, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
+  const report = { glassBand, actionRows, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
   mkdirSync(output, { recursive: true }); writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, 2)}\n`);
   return report;
 }
