@@ -25,4 +25,9 @@ describe('draft Probably Weather product spine', () => {
     expect(dossier).toMatch(/Deferred — Recommendation 6, severe alerts:[^\n]*source contract/);
     expect(dossier).toMatch(/Deferred — Recommendation 7, Share instrumentation:[^\n]*marketing project[^\n]*privacy review/);
   });
+
+  it('labels untracked dossier captures as local evidence instead of dead repository links', () => {
+    expect(dossier).toContain('local run artifacts under `research/smaak-run4/`');
+    expect(dossier).not.toMatch(/\]\((?:research|review|output)\//);
+  });
 });
