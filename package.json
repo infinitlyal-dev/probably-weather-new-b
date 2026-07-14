@@ -8,7 +8,9 @@
     "images:verify": "node scripts/verify-bg-image-budget.mjs",
     "copy:generate": "node scripts/generate-copy-splits.mjs",
     "profile:particles": "node scripts/profile-particles.mjs",
-    "verify:desktop": "node scripts/verify-desktop-frame.mjs"
+    "verify:desktop": "node scripts/verify-desktop-frame.mjs",
+    "type-prototype:generate": "node scripts/generate-type-prototype-fonts.mjs",
+    "verify:type-prototype": "node scripts/verify-type-prototype.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.28.0",

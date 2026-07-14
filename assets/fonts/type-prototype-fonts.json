@@ -1,0 +1,55 @@
+{
+  "purpose": "Query-gated typography taste prototype; not the production default",
+  "subsets": [
+    "latin",
+    "latin-ext"
+  ],
+  "fonts": {
+    "onest": {
+      "family": "Onest Prototype",
+      "source": "https://github.com/simpals/onest",
+      "cssSource": "https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "assets/fonts/OFL-Onest.txt",
+      "budgetBytes": 51200,
+      "totalBytes": 48228,
+      "faces": [
+        {
+          "subset": "latin-ext",
+          "sourceUrl": "https://fonts.gstatic.com/s/onest/v9/gNMKW3F-SZuj7xmR-HY6EQ.woff2",
+          "bytes": 15992,
+          "sha256": "391a9b24b5c46ebff5d21f53cdb2edaa31c3446da3b722f038ab07d75d02a82d"
+        },
+        {
+          "subset": "latin",
+          "sourceUrl": "https://fonts.gstatic.com/s/onest/v9/gNMKW3F-SZuj7xmf-HY.woff2",
+          "bytes": 32236,
+          "sha256": "67849bcc11e02177442da14ad954bfe1cc709553dad137b5003449b303e83fc3"
+        }
+      ]
+    },
+    "caveat": {
+      "family": "Caveat Prototype",
+      "source": "https://github.com/googlefonts/caveat",
+      "cssSource": "https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap",
+      "license": "SIL Open Font License 1.1",
+      "licenseFile": "assets/fonts/OFL-Caveat.txt",
+      "budgetBytes": 112640,
+      "totalBytes": 104404,
+      "faces": [
+        {
+          "subset": "latin-ext",
+          "sourceUrl": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7aDYYmg8.woff2",
+          "bytes": 29472,
+          "sha256": "f626b95c1efa95cf6b7c9b043d3bbe8862b6abbe5f55a082102f33f7de2fd4f9"
+        },
+        {
+          "subset": "latin",
+          "sourceUrl": "https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7ZjYY.woff2",
+          "bytes": 74932,
+          "sha256": "891951df5e8b5b0f0bc760d31375405e795c666b5add70437de12d4a6482b33f"
+        }
+      ]
+    }
+  }
+}

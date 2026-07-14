@@ -272,6 +272,27 @@
        is no FOUC window; hideSplash fires on first real render, long after CSS
        settles on any realistic path. -->
   <link rel="stylesheet" href="assets/app.css"/>
+  <script>
+    // Taste-gate only: the default app requests no prototype assets. Onest is
+    // isolated behind ?type=proto; the larger Caveat caption subset is loaded
+    // only when the Postcard breakpoint is active.
+    (function () {
+      if (new URLSearchParams(window.location.search).get('type') !== 'proto') return;
+      document.documentElement.dataset.typePrototype = 'true';
+      function loadPrototypeStyle(id, href) {
+        if (document.getElementById(id)) return;
+        var link = document.createElement('link');
+        link.id = id;
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      }
+      loadPrototypeStyle('pwTypePrototype', 'assets/type-prototype.css');
+      if (window.matchMedia('(min-width: 1024px)').matches) {
+        loadPrototypeStyle('pwTypePrototypeCaption', 'assets/type-prototype-caption.css');
+      }
+    })();
+  </script>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
   <div id="bg" aria-hidden="true">
     <!-- Static default src: the background paints with the shell instead of
