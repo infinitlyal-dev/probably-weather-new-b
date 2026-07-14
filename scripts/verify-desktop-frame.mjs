@@ -252,6 +252,63 @@ async function typeAndColourContract(browser, origin) {
   return results;
 }
 
+async function calmScreenEvidence(browser, origin) {
+  const viewport = { width: 1440, height: 900 };
+  const screenshotDir = path.join(root, 'output', 'design-wave', 'calm-screens');
+  mkdirSync(screenshotDir, { recursive: true });
+  const { page, context } = await openApp(browser, origin, viewport);
+  await page.waitForTimeout(900);
+  const homeSignature = async () => page.evaluate(() => {
+    const box = (selector) => { const rect = document.querySelector(selector).getBoundingClientRect(); return [rect.x, rect.y, rect.width, rect.height]; };
+    return { image: box('#bgImg'), home: box('#home-screen'), headline: box('#headline'), imageDisplay: getComputedStyle(document.getElementById('bgImg')).display, bodyHome: document.body.classList.contains('home-active') };
+  });
+  const beforeHome = await homeSignature();
+  const screenshots = [];
+  const destinations = [
+    ['hourly', '#navHourlyHome', '#hourly-screen'],
+    ['weekly', '#navWeek', '#week-screen'],
+    ['search', '#navSearch', '#search-screen'],
+    ['settings', '#navSettings', '#settings-screen'],
+    ['sources', '#navSources', '#sources-screen'],
+  ];
+  for (const [name, nav, screen] of destinations) {
+    await page.click(nav);
+    await page.locator(screen).waitFor({ state: 'visible' });
+    await page.waitForTimeout(250);
+    const state = await page.evaluate((selector) => {
+      const visiblePanels = [...document.querySelectorAll('.screenPanel')].filter((panel) => getComputedStyle(panel).display !== 'none' && panel.getBoundingClientRect().width > 0);
+      const panel = document.querySelector(selector).getBoundingClientRect();
+      const backdrop = getComputedStyle(document.getElementById('bg'), '::before');
+      return {
+        homeActive: document.body.classList.contains('home-active'),
+        sharpImage: getComputedStyle(document.getElementById('bgImg')).display,
+        pin: getComputedStyle(document.getElementById('scrim')).display,
+        location: getComputedStyle(document.getElementById('location')).display,
+        headline: getComputedStyle(document.getElementById('headline')).display,
+        visiblePanels: visiblePanels.map((element) => element.id),
+        panel: { x: panel.x, width: panel.width },
+        backdrop: { image: backdrop.backgroundImage, filter: backdrop.filter },
+      };
+    }, screen);
+    assert(!state.homeActive && state.sharpImage === 'none' && state.pin === 'none' && state.location === 'none' && state.headline === 'none', `Sharp Postcard artifacts remain on ${name}: ${JSON.stringify(state)}`);
+    assert(JSON.stringify(state.visiblePanels) === JSON.stringify([screen.slice(1)]), `Expected one visible panel on ${name}: ${state.visiblePanels.join(', ')}`);
+    assert(Math.round(state.panel.width) === 520 && Math.abs((state.panel.x + state.panel.width / 2) - viewport.width / 2) < 1, `${name} panel is not centred: ${JSON.stringify(state.panel)}`);
+    assert(state.backdrop.image.includes('webp') && state.backdrop.filter.includes('blur(28px)'), `${name} lost the current-weather backdrop`);
+    const file = path.join(screenshotDir, `${name}-1440x900.png`);
+    await page.screenshot({ path: file });
+    screenshots.push(path.relative(root, file).replaceAll('\\', '/'));
+    await page.click('#navHome');
+    await page.locator('#home-screen').waitFor({ state: 'visible' });
+    await page.waitForTimeout(1400);
+    const afterHome = await homeSignature();
+    assert(JSON.stringify(afterHome) === JSON.stringify(beforeHome), `Home Postcard changed after visiting ${name}: before=${JSON.stringify(beforeHome)} after=${JSON.stringify(afterHome)}`);
+  }
+  const homeFile = path.join(screenshotDir, 'home-unchanged-1440x900.png');
+  await page.screenshot({ path: homeFile });
+  await context.close();
+  return { result: 'PASS — five calm destinations; Home geometry unchanged', screenshots, homeScreenshot: path.relative(root, homeFile).replaceAll('\\', '/') };
+}
+
 async function clickThrough(browser, origin, viewport) {
   const { page, context } = await openApp(browser, origin, viewport);
   const visible = async (selector) => assert(await page.locator(selector).isVisible(), `${selector} not visible at ${viewport.width}x${viewport.height}`);
@@ -358,6 +415,8 @@ async function verify(browser, origin) {
   console.log(`[action screenshots] PASS: ${actionRows.map((item) => `${item.label}-${item.surface}`).join(', ')}`);
   const typeAndColour = await typeAndColourContract(browser, origin);
   console.log(`[type + colour] PASS: ${typeAndColour.map((item) => `${item.viewport} ${item.controls} controls inherit; amber=${item.amberElements.join(',')}`).join('; ')}`);
+  const calmScreens = await calmScreenEvidence(browser, origin);
+  console.log(`[calm desktop screens] ${calmScreens.result}: Hourly, Weekly, Search, Settings, Sources`);
   const responsive = await responsiveGeometry(browser, origin);
   console.log(`[tablet 1023px] PASS: container/nav/image ${responsive.tablet.container}/${responsive.tablet.nav}/${responsive.tablet.image}px; Postcard inactive`);
   console.log(`[postcard centring] PASS: ${responsive.postcardCentres.map((item) => `${item.width}px=${item.centreOffsetPx.toFixed(1)}px`).join(', ')}`);
@@ -389,7 +448,7 @@ async function verify(browser, origin) {
   const performance = { before: await performancePass(browser, origin, true), after: await performancePass(browser, origin, false) };
   assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, 'Postcard desktop paint exceeded 500ms locally');
   console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms`);
-  const report = { glassBand, actionRows, typeAndColour, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
+  const report = { glassBand, actionRows, typeAndColour, calmScreens, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
   mkdirSync(output, { recursive: true }); writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, 2)}\n`);
   return report;
 }

@@ -2857,13 +2857,25 @@ main#home-screen.main #confidence {
   body.home-active #week-screen .d-rain { grid-area: rain; text-align: left; font-size: 0.72rem; }
   body.home-active #week-screen .day-badge { display: none; }
 
-  /* Non-home destinations keep the familiar centred glass panel. */
+  /* Non-home destinations are a calm reading state: the current weather stays
+     present through the already-loaded blurred backdrop, while every sharp
+     Home/Postcard artifact leaves the stage. */
+  body:not(.home-active) #bgImg,
+  body:not(.home-active) #scrim,
+  body:not(.home-active) #headline,
+  body:not(.home-active) #location,
+  body:not(.home-active) .sidebar {
+    display: none !important;
+  }
+
+  /* The one active destination remains a familiar centred glass panel. */
   body:not(.home-active) .screenPanel {
     top: 104px;
     bottom: 36px;
     left: 50%;
     right: auto;
     width: min(520px, calc(100vw - 96px));
+    max-width: 520px;
     max-height: none;
     transform: translateX(-50%);
   }
