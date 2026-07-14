@@ -11,7 +11,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
 const output = path.join(root, 'output', 'desktop-postcard');
 const baselineCss = transformSync(
-  execFileSync('git', ['show', 'aa6e3b3:assets/app.css'], { cwd: root }).toString(),
+  execFileSync('git', ['show', '9424808:assets/app.css'], { cwd: root }).toString(),
   { loader: 'css', minify: true },
 ).code;
 const conditions = {
@@ -54,7 +54,7 @@ function startServer() {
     const file = path.resolve(dist, relative);
     if (!file.startsWith(`${dist}${path.sep}`) && file !== path.join(dist, 'index.html')) return res.writeHead(403).end();
     try {
-      const body = relative === 'assets/app.min.css' && req.headers['x-pw-style-baseline'] === 'true' ? baselineCss : readFileSync(file);
+      const body = relative === 'assets/app.css' && req.headers['x-pw-style-baseline'] === 'true' ? baselineCss : readFileSync(file);
       const headers = { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' };
       if (['.webp', '.jpg'].includes(path.extname(file))) headers['Cache-Control'] = 'public, max-age=31536000, immutable';
       res.writeHead(200, headers).end(body);
@@ -114,6 +114,61 @@ async function snapshotGeometry(page) {
   });
 }
 
+async function homeScrimGeometry(page) {
+  return page.evaluate(() => {
+    const home = document.querySelector('main#home-screen.main');
+    const image = document.getElementById('bgImg');
+    const homeBox = home.getBoundingClientRect();
+    const imageBox = image.getBoundingClientRect();
+    const style = getComputedStyle(home, '::before');
+    const px = (value) => Number.parseFloat(value) || 0;
+    const active = style.content !== 'none';
+    const box = active ? {
+      left: homeBox.left + px(style.left),
+      top: homeBox.top + px(style.top),
+      right: homeBox.right - px(style.right),
+      bottom: homeBox.bottom - px(style.bottom),
+    } : null;
+    const overlapWidth = box ? Math.max(0, Math.min(box.right, imageBox.right) - Math.max(box.left, imageBox.left)) : 0;
+    const overlapHeight = box ? Math.max(0, Math.min(box.bottom, imageBox.bottom) - Math.max(box.top, imageBox.top)) : 0;
+    return {
+      active,
+      content: style.content,
+      backgroundImage: style.backgroundImage,
+      homeZ: getComputedStyle(home).zIndex,
+      isolation: getComputedStyle(home).isolation,
+      box,
+      image: { left: imageBox.left, top: imageBox.top, right: imageBox.right, bottom: imageBox.bottom },
+      overlapWidth,
+      overlapHeight,
+    };
+  });
+}
+
+async function glassBandRegression(browser, origin) {
+  const screenshotDir = path.join(output, 'glass-band');
+  mkdirSync(screenshotDir, { recursive: true });
+  const evidence = [];
+  for (const viewport of desktopViewports) {
+    for (const condition of ['clear', 'rain']) {
+      for (const [label, baseline] of [['before', true], ['after', false]]) {
+        const { page, context } = await openApp(browser, origin, viewport, { condition, baseline });
+        const scrim = await homeScrimGeometry(page);
+        if (baseline) {
+          assert(scrim.active && scrim.overlapWidth > 100 && scrim.overlapHeight > 100, `Baseline glass band was not reproduced at ${viewport.width}x${viewport.height}: ${JSON.stringify(scrim)}`);
+        } else {
+          assert(!scrim.active && scrim.overlapWidth === 0, `Home scrim still crosses the polaroid at ${viewport.width}x${viewport.height}`);
+        }
+        const file = path.join(screenshotDir, `${label}-${condition}-${viewport.width}x${viewport.height}.png`);
+        await page.screenshot({ path: file });
+        evidence.push({ label, condition, viewport: `${viewport.width}x${viewport.height}`, scrim, screenshot: path.relative(root, file).replaceAll('\\', '/') });
+        await context.close();
+      }
+    }
+  }
+  return evidence;
+}
+
 async function mobileComparison(browser, origin) {
   const before = {}, after = {};
   for (const viewport of mobileViewports) {
@@ -129,9 +184,9 @@ async function mobileComparison(browser, origin) {
   }
   mkdirSync(output, { recursive: true });
   writeFileSync(path.join(output, 'mobile-comparison.json'), `${JSON.stringify({ before, after }, null, 2)}\n`);
-  assert(JSON.stringify(before) === JSON.stringify(after), 'Mobile geometry differs from aa6e3b3');
+  assert(JSON.stringify(before) === JSON.stringify(after), 'Mobile geometry differs from 9424808');
   assert(Object.values(after).every((value) => value.postcardVar === ''), 'Postcard variables leaked below 1024px');
-  return { result: 'PASS — measurement-identical to aa6e3b3', viewports: Object.keys(after), before, after };
+  return { result: 'PASS — measurement-identical to 9424808', viewports: Object.keys(after), before, after };
 }
 
 async function clickThrough(browser, origin, viewport) {
@@ -226,6 +281,12 @@ async function performancePass(browser, origin, baseline) {
 }
 
 async function verify(browser, origin) {
+  const glassBand = await glassBandRegression(browser, origin);
+  for (const viewport of desktopViewports) {
+    const before = glassBand.find((item) => item.label === 'before' && item.condition === 'clear' && item.viewport === `${viewport.width}x${viewport.height}`);
+    const after = glassBand.find((item) => item.label === 'after' && item.condition === 'clear' && item.viewport === `${viewport.width}x${viewport.height}`);
+    console.log(`[postcard glass-band ${before.viewport}] PASS: before scrim overlap ${before.scrim.overlapWidth.toFixed(1)}x${before.scrim.overlapHeight.toFixed(1)}px; after content ${after.scrim.content}, overlap ${after.scrim.overlapWidth}px`);
+  }
   const mobile = await mobileComparison(browser, origin);
   console.log(`[mobile geometry] ${mobile.result}: ${mobile.viewports.join(', ')}`);
   const responsive = await responsiveGeometry(browser, origin);
@@ -259,7 +320,7 @@ async function verify(browser, origin) {
   const performance = { before: await performancePass(browser, origin, true), after: await performancePass(browser, origin, false) };
   assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, 'Postcard desktop paint exceeded 500ms locally');
   console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms`);
-  const report = { clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
+  const report = { glassBand, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
   mkdirSync(output, { recursive: true }); writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, 2)}\n`);
   return report;
 }

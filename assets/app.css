@@ -2673,6 +2673,12 @@ main#home-screen.main #confidence {
     transform: none;
     z-index: 30;
   }
+  /* The mobile voice scrim lives inside this isolated z:30 layer. Its -20vw
+     inset otherwise reaches left across the z:-1 polaroid and paints a hard
+     vertical seam through the photo on wide screens. */
+  main#home-screen.main::before {
+    content: none;
+  }
   #location {
     position: fixed;
     left: var(--postcard-voice-left);

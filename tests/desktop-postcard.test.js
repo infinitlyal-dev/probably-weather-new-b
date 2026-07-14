@@ -49,6 +49,10 @@ describe('desktop Postcard home', () => {
     expect(postcard).toMatch(/#bgImg\s*{[^}]*border:\s*16px solid #f6f2e8/i);
   });
 
+  it('postcard neutralises the mobile home scrim before it can cross the polaroid', () => {
+    expect(postcard).toMatch(/main#home-screen\.main::before\s*{[^}]*content:\s*none/);
+  });
+
   it('postcard keeps the range unbroken and turns particles off above 1024px', () => {
     expect(postcard).toMatch(/\.hero-range\s*{[^}]*white-space:\s*nowrap/);
     expect(postcard).toMatch(/#particles\s*{[^}]*display:\s*none\s*!important/);
