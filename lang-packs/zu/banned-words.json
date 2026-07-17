@@ -1,0 +1,12 @@
+{
+  "note": "Machine-readable subset of errors-observed.md for the mechanical pre-screen (audit-drafts.mjs) and the Codex checker. hard=always wrong in this app; soft=historically misused, verify in context.",
+  "hard": [],
+  "soft": [
+    { "token": "umkhumbi", "means": "ship", "misused_for": "kite" },
+    { "token": "iqanda", "means": "egg", "misused_for": "zero" },
+    { "token": "amapulazi", "means": "farms", "misused_for": "pools" },
+    { "token": "izinkonjane", "means": "swallows", "misused_for": "seagulls" },
+    { "token": "izindlela", "means": "roads", "misused_for": "expectations" },
+    { "token": "isijele", "means": "jail", "misused_for": "jersey (should be ijezi)" }
+  ]
+}
