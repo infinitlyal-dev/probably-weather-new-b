@@ -12,11 +12,11 @@ beforeAll(() => {
 }, 30000);
 
 describe('P9 background slot manifest', () => {
-  it('P9 represents all 1008 picker slots with the 608 unique image bodies exactly once', () => {
+  it('P9 represents all 1008 picker slots with the 629 unique image bodies exactly once', () => {
     expect(manifest.entries).toHaveLength(1008);
-    expect(manifest.hashes).toHaveLength(608);
+    expect(manifest.hashes).toHaveLength(629);
     expect(manifest.slots).toHaveLength(1008);
-    expect(new Set(manifest.slots).size).toBe(608);
+    expect(new Set(manifest.slots).size).toBe(629);
   });
 
   it('P9 resolves every slot to a byte-equivalent canonical image', () => {

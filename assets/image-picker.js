@@ -14,7 +14,7 @@ export const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 // Backgrounds are CDN-cached immutable for one year. Bump this whenever any
 // rotating WebP bytes change so returning clients request a fresh URL instead
 // of retaining the old body at the stable filesystem path.
-export const BG_IMAGE_URL_VERSION = '20260710-p1';
+export const BG_IMAGE_URL_VERSION = '20260717-p1';
 
 export const BG_IMAGE_SLOT_FOLDERS = [
   'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind',

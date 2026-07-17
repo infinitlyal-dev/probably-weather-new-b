@@ -1,0 +1,3405 @@
+{
+  "count": 184,
+  "plan": [
+    {
+      "id": "clear-dawn-1",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dawn/1.webp",
+        "assets/images/bg/clear/week_3/dawn/1.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 153468,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-2",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-2-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dawn/3.webp",
+        "assets/images/bg/clear/week_3/dawn/3.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 137894,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-3",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-3-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dawn/4.webp",
+        "assets/images/bg/clear/week_3/dawn/4.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 132432,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-4",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-4-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dawn/5.webp",
+        "assets/images/bg/clear/week_3/dawn/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 143074,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-5",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dawn/6.webp",
+        "assets/images/bg/clear/week_3/dawn/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 111334,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-6",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-6-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_2/dawn/2.webp",
+        "assets/images/bg/clear/week_4/dawn/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 235942,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-7",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-7-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_2/dawn/3.webp",
+        "assets/images/bg/clear/week_4/dawn/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 103484,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-8",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-8-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_2/dawn/4.webp",
+        "assets/images/bg/clear/week_4/dawn/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 149492,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dawn-9",
+      "bin": "clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dawn-9-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_2/dawn/6.webp",
+        "assets/images/bg/clear/week_4/dawn/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 201174,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-day-1",
+      "bin": "clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-day-1-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/day/1.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 217632,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-day-3",
+      "bin": "clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-day-3-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/day/5.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 204728,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-day-4",
+      "bin": "clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-day-4-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/day/6.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 204074,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-day-5",
+      "bin": "clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-day-5-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_3/day/2.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 198528,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-day-6",
+      "bin": "clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-day-6-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_3/day/5.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 220320,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-day-7",
+      "bin": "clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-day-7-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_3/day/6.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 291526,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-day-9",
+      "bin": "clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-day-9-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_4/day/4.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 102150,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-1",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dusk/1.webp",
+        "assets/images/bg/clear/week_3/dusk/1.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 125516,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-2",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-2-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dusk/3.webp",
+        "assets/images/bg/clear/week_3/dusk/3.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 112196,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-3",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-3-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dusk/4.webp",
+        "assets/images/bg/clear/week_3/dusk/4.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 113246,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-4",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-4-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dusk/5.webp",
+        "assets/images/bg/clear/week_3/dusk/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 209878,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-5",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-5-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/dusk/6.webp",
+        "assets/images/bg/clear/week_3/dusk/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 131788,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-6",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-6-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_2/dusk/1.webp",
+        "assets/images/bg/clear/week_4/dusk/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 76696,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-7",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-7-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_2/dusk/2.webp",
+        "assets/images/bg/clear/week_4/dusk/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 106424,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-dusk-8",
+      "bin": "clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-dusk-8-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_2/dusk/7.webp",
+        "assets/images/bg/clear/week_4/dusk/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 78356,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-night-1",
+      "bin": "clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-night-1-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/night/3.webp",
+        "assets/images/bg/clear/week_3/night/3.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 224610,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "clear-night-2",
+      "bin": "clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/clear-night-2-a.jpg",
+      "targets": [
+        "assets/images/bg/clear/week_1/night/5.webp",
+        "assets/images/bg/clear/week_3/night/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 115966,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dawn-1",
+      "bin": "cloudy/dawn",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/cloudy-dawn-1-b.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_1/dawn/3.webp",
+        "assets/images/bg/cloudy/week_3/dawn/3.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 132632,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dawn-2",
+      "bin": "cloudy/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-dawn-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_1/dawn/6.webp",
+        "assets/images/bg/cloudy/week_3/dawn/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 154276,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-day-1",
+      "bin": "cloudy/day",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/cloudy-day-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/day/2.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 95982,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-day-4",
+      "bin": "cloudy/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-day-4-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/day/3.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 131848,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-day-5",
+      "bin": "cloudy/day",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/cloudy-day-5-b.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/day/4.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 126162,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-day-6",
+      "bin": "cloudy/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-day-6-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_3/day/3.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 110504,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-day-7",
+      "bin": "cloudy/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-day-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_3/day/6.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 189346,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-day-8",
+      "bin": "cloudy/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-day-8-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_3/day/7.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 150682,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-day-9",
+      "bin": "cloudy/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-day-9-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_1/day/5.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 53342,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dusk-1",
+      "bin": "cloudy/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_1/dusk/1.webp",
+        "assets/images/bg/cloudy/week_3/dusk/1.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 110734,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dusk-2",
+      "bin": "cloudy/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-dusk-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_1/dusk/5.webp",
+        "assets/images/bg/cloudy/week_3/dusk/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 178256,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dusk-3",
+      "bin": "cloudy/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-dusk-3-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_1/dusk/6.webp",
+        "assets/images/bg/cloudy/week_3/dusk/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 174588,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dusk-4",
+      "bin": "cloudy/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-dusk-4-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_1/dusk/7.webp",
+        "assets/images/bg/cloudy/week_3/dusk/7.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 94890,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dusk-6",
+      "bin": "cloudy/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-dusk-6-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/dusk/1.webp",
+        "assets/images/bg/cloudy/week_4/dusk/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 76188,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-dusk-8",
+      "bin": "cloudy/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-dusk-8-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/dusk/4.webp",
+        "assets/images/bg/cloudy/week_4/dusk/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 122174,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-night-3",
+      "bin": "cloudy/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-night-3-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/night/1.webp",
+        "assets/images/bg/cloudy/week_4/night/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 170196,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-night-4",
+      "bin": "cloudy/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-night-4-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/night/2.webp",
+        "assets/images/bg/cloudy/week_4/night/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 74338,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-night-5",
+      "bin": "cloudy/night",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/cloudy-night-5-b.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/night/3.webp",
+        "assets/images/bg/cloudy/week_4/night/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 168574,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-night-6",
+      "bin": "cloudy/night",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/cloudy-night-6-b.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/night/4.webp",
+        "assets/images/bg/cloudy/week_4/night/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 109044,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-night-7",
+      "bin": "cloudy/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-night-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/night/5.webp",
+        "assets/images/bg/cloudy/week_4/night/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 90088,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-night-8",
+      "bin": "cloudy/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-night-8-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/night/6.webp",
+        "assets/images/bg/cloudy/week_4/night/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 113518,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cloudy-night-9",
+      "bin": "cloudy/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cloudy-night-9-a.jpg",
+      "targets": [
+        "assets/images/bg/cloudy/week_2/night/7.webp",
+        "assets/images/bg/cloudy/week_4/night/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 94738,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dawn-1",
+      "bin": "cold-clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/cold-clear-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/dawn/1.webp",
+        "assets/images/bg/cold-clear/week_4/dawn/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 170338,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dawn-2",
+      "bin": "cold-clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dawn-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/dawn/2.webp",
+        "assets/images/bg/cold-clear/week_4/dawn/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 216624,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dawn-3",
+      "bin": "cold-clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dawn-3-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/dawn/4.webp",
+        "assets/images/bg/cold-clear/week_4/dawn/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 133996,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dawn-4",
+      "bin": "cold-clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dawn-4-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/dawn/5.webp",
+        "assets/images/bg/cold-clear/week_4/dawn/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 273352,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dawn-5",
+      "bin": "cold-clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/dawn/1.webp",
+        "assets/images/bg/cold-clear/week_3/dawn/1.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 213640,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dawn-7",
+      "bin": "cold-clear/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dawn-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/dawn/2.webp",
+        "assets/images/bg/cold-clear/week_3/dawn/2.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 283746,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "cold-clear-day-1",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_3/day/1.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 150094,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-10",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-10-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_3/day/3.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 258044,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "cold-clear-day-11",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-11-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_3/day/6.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 132364,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-13",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-13-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_3/day/7.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 216474,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-2",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_4/day/1.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 189818,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-3",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-3-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_4/day/3.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 260488,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-4",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-4-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_4/day/6.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 278914,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "cold-clear-day-5",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-5-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_4/day/7.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 269750,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-6",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-6-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/day/3.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 122306,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-7",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/day/4.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 276014,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "cold-clear-day-8",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-8-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/day/7.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 231760,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-day-9",
+      "bin": "cold-clear/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-day-9-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/day/5.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 249634,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dusk-1",
+      "bin": "cold-clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/dusk/1.webp",
+        "assets/images/bg/cold-clear/week_4/dusk/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 108540,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dusk-2",
+      "bin": "cold-clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dusk-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/dusk/2.webp",
+        "assets/images/bg/cold-clear/week_4/dusk/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 143474,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dusk-3",
+      "bin": "cold-clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dusk-3-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/dusk/7.webp",
+        "assets/images/bg/cold-clear/week_4/dusk/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 109350,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dusk-4",
+      "bin": "cold-clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dusk-4-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/dusk/3.webp",
+        "assets/images/bg/cold-clear/week_3/dusk/3.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 56492,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-dusk-5",
+      "bin": "cold-clear/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-dusk-5-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/dusk/6.webp",
+        "assets/images/bg/cold-clear/week_3/dusk/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 111490,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-1",
+      "bin": "cold-clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-night-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/night/1.webp",
+        "assets/images/bg/cold-clear/week_3/night/1.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 268048,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-2",
+      "bin": "cold-clear/night",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/cold-clear-night-2-b.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/night/4.webp",
+        "assets/images/bg/cold-clear/week_3/night/4.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 95452,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-3",
+      "bin": "cold-clear/night",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/cold-clear-night-3-b.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/night/5.webp",
+        "assets/images/bg/cold-clear/week_3/night/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 286060,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-5",
+      "bin": "cold-clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-night-5-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/night/6.webp",
+        "assets/images/bg/cold-clear/week_3/night/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 142448,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-6",
+      "bin": "cold-clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-night-6-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_1/night/7.webp",
+        "assets/images/bg/cold-clear/week_3/night/7.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 154284,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-7",
+      "bin": "cold-clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-night-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/night/3.webp",
+        "assets/images/bg/cold-clear/week_4/night/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 290992,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-8",
+      "bin": "cold-clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-night-8-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/night/5.webp",
+        "assets/images/bg/cold-clear/week_4/night/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 159908,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-clear-night-9",
+      "bin": "cold-clear/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-clear-night-9-a.jpg",
+      "targets": [
+        "assets/images/bg/cold-clear/week_2/night/6.webp",
+        "assets/images/bg/cold-clear/week_4/night/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 251010,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "cold-dawn-1",
+      "bin": "cold/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_2/dawn/1.webp",
+        "assets/images/bg/cold/week_4/dawn/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 164576,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dawn-2",
+      "bin": "cold/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dawn-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_2/dawn/2.webp",
+        "assets/images/bg/cold/week_4/dawn/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 227486,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dawn-4",
+      "bin": "cold/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dawn-4-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_2/dawn/3.webp",
+        "assets/images/bg/cold/week_4/dawn/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 176948,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dawn-5",
+      "bin": "cold/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_2/dawn/4.webp",
+        "assets/images/bg/cold/week_4/dawn/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 161368,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-1",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/cold-day-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_3/day/1.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 207926,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-11",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-day-11-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_3/day/2.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 166478,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-12",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-day-12-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_3/day/4.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 280216,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-13",
+      "bin": "cold/day",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/cold-day-13-b.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_3/day/7.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 189326,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-2",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-day-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/day/1.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 266060,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "cold-day-5",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-day-5-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/day/3.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 225082,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-6",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-day-6-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/day/4.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 154808,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-7",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-day-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_2/day/1.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 179316,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-day-9",
+      "bin": "cold/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-day-9-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_2/day/6.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 149534,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dusk-1",
+      "bin": "cold/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/dusk/2.webp",
+        "assets/images/bg/cold/week_3/dusk/2.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 188938,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dusk-5",
+      "bin": "cold/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dusk-5-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/dusk/3.webp",
+        "assets/images/bg/cold/week_3/dusk/3.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 135644,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dusk-6",
+      "bin": "cold/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dusk-6-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/dusk/4.webp",
+        "assets/images/bg/cold/week_3/dusk/4.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 140616,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dusk-7",
+      "bin": "cold/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dusk-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/dusk/5.webp",
+        "assets/images/bg/cold/week_3/dusk/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 171304,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-dusk-9",
+      "bin": "cold/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-dusk-9-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/dusk/6.webp",
+        "assets/images/bg/cold/week_3/dusk/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 202072,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-night-1",
+      "bin": "cold/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-night-1-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/night/1.webp",
+        "assets/images/bg/cold/week_3/night/1.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 284750,
+      "width": 1008,
+      "quality": 70
+    },
+    {
+      "id": "cold-night-2",
+      "bin": "cold/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-night-2-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/night/2.webp",
+        "assets/images/bg/cold/week_3/night/2.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 78472,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-night-3",
+      "bin": "cold/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-night-3-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/night/4.webp",
+        "assets/images/bg/cold/week_3/night/4.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 261044,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "cold-night-6",
+      "bin": "cold/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-night-6-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/night/5.webp",
+        "assets/images/bg/cold/week_3/night/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 277864,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "cold-night-7",
+      "bin": "cold/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/cold-night-7-a.jpg",
+      "targets": [
+        "assets/images/bg/cold/week_1/night/6.webp",
+        "assets/images/bg/cold/week_3/night/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 192866,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dawn-1",
+      "bin": "fog/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dawn/1.webp",
+        "assets/images/bg/fog/week_4/dawn/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dawn/1.webp",
+      "bytes": 156374,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dawn-2",
+      "bin": "fog/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dawn-2-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dawn/2.webp",
+        "assets/images/bg/fog/week_4/dawn/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dawn/2.webp",
+      "bytes": 140140,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dawn-3",
+      "bin": "fog/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dawn-3-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dawn/3.webp",
+        "assets/images/bg/fog/week_4/dawn/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dawn/3.webp",
+      "bytes": 229406,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dawn-4",
+      "bin": "fog/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dawn-4-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dawn/4.webp",
+        "assets/images/bg/fog/week_4/dawn/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dawn/4.webp",
+      "bytes": 138396,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dawn-5",
+      "bin": "fog/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dawn/5.webp",
+        "assets/images/bg/fog/week_4/dawn/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dawn/5.webp",
+      "bytes": 161550,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dawn-6",
+      "bin": "fog/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dawn-6-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dawn/6.webp",
+        "assets/images/bg/fog/week_4/dawn/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dawn/6.webp",
+      "bytes": 125962,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dawn-7",
+      "bin": "fog/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dawn-7-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dawn/7.webp",
+        "assets/images/bg/fog/week_4/dawn/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dawn/7.webp",
+      "bytes": 44366,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dusk-1",
+      "bin": "fog/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dusk/1.webp",
+        "assets/images/bg/fog/week_4/dusk/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dusk/1.webp",
+      "bytes": 130374,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dusk-2",
+      "bin": "fog/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dusk-2-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dusk/2.webp",
+        "assets/images/bg/fog/week_4/dusk/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dusk/2.webp",
+      "bytes": 73418,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dusk-3",
+      "bin": "fog/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/fog-dusk-3-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dusk/3.webp",
+        "assets/images/bg/fog/week_4/dusk/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dusk/3.webp",
+      "bytes": 187706,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dusk-4",
+      "bin": "fog/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dusk-4-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dusk/4.webp",
+        "assets/images/bg/fog/week_4/dusk/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dusk/4.webp",
+      "bytes": 270876,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dusk-5",
+      "bin": "fog/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dusk-5-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dusk/5.webp",
+        "assets/images/bg/fog/week_4/dusk/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dusk/5.webp",
+      "bytes": 91118,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dusk-6",
+      "bin": "fog/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dusk-6-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dusk/6.webp",
+        "assets/images/bg/fog/week_4/dusk/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dusk/6.webp",
+      "bytes": 148670,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-dusk-7",
+      "bin": "fog/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-dusk-7-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/dusk/7.webp",
+        "assets/images/bg/fog/week_4/dusk/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/dusk/7.webp",
+      "bytes": 61064,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-night-1",
+      "bin": "fog/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-night-1-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/night/1.webp",
+        "assets/images/bg/fog/week_4/night/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/night/1.webp",
+      "bytes": 141868,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-night-2",
+      "bin": "fog/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-night-2-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/night/2.webp",
+        "assets/images/bg/fog/week_4/night/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/night/2.webp",
+      "bytes": 63386,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-night-3",
+      "bin": "fog/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-night-3-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/night/3.webp",
+        "assets/images/bg/fog/week_4/night/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/night/3.webp",
+      "bytes": 42654,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-night-4",
+      "bin": "fog/night",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/fog-night-4-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/night/4.webp",
+        "assets/images/bg/fog/week_4/night/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/night/4.webp",
+      "bytes": 100338,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-night-5",
+      "bin": "fog/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-night-5-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/night/5.webp",
+        "assets/images/bg/fog/week_4/night/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/night/5.webp",
+      "bytes": 95886,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-night-6",
+      "bin": "fog/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-night-6-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/night/6.webp",
+        "assets/images/bg/fog/week_4/night/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/night/6.webp",
+      "bytes": 55390,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "fog-night-7",
+      "bin": "fog/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/fog-night-7-a.jpg",
+      "targets": [
+        "assets/images/bg/fog/week_2/night/7.webp",
+        "assets/images/bg/fog/week_4/night/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "fog-demotion",
+      "demotes": "assets/images/bg/fog/week_1/night/7.webp",
+      "bytes": 122050,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dawn-1",
+      "bin": "heat/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dawn/1.webp",
+        "assets/images/bg/heat/week_4/dawn/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 143528,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dawn-2",
+      "bin": "heat/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dawn-2-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dawn/2.webp",
+        "assets/images/bg/heat/week_4/dawn/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 189978,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dawn-3",
+      "bin": "heat/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dawn-3-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dawn/4.webp",
+        "assets/images/bg/heat/week_4/dawn/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 179444,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dawn-4",
+      "bin": "heat/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dawn-4-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dawn/6.webp",
+        "assets/images/bg/heat/week_4/dawn/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 94374,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dawn-5",
+      "bin": "heat/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dawn/7.webp",
+        "assets/images/bg/heat/week_4/dawn/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 232712,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dawn-6",
+      "bin": "heat/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dawn-6-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_1/dawn/5.webp",
+        "assets/images/bg/heat/week_3/dawn/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 107034,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dawn-7",
+      "bin": "heat/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dawn-7-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_1/dawn/7.webp",
+        "assets/images/bg/heat/week_3/dawn/7.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 189544,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-day-1",
+      "bin": "heat/day",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/heat-day-1-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_1/day/2.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 131084,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-day-2",
+      "bin": "heat/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-day-2-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_1/day/7.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 160312,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-day-3",
+      "bin": "heat/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-day-3-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_4/day/1.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 126528,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-day-4",
+      "bin": "heat/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-day-4-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_4/day/4.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 119832,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-day-5",
+      "bin": "heat/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-day-5-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/day/6.webp"
+      ],
+      "weeks": [
+        2
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 236372,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dusk-1",
+      "bin": "heat/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_1/dusk/2.webp",
+        "assets/images/bg/heat/week_3/dusk/2.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 112412,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dusk-2",
+      "bin": "heat/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dusk-2-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_1/dusk/5.webp",
+        "assets/images/bg/heat/week_3/dusk/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 228484,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dusk-3",
+      "bin": "heat/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dusk-3-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_1/dusk/6.webp",
+        "assets/images/bg/heat/week_3/dusk/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 113474,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dusk-4",
+      "bin": "heat/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dusk-4-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dusk/1.webp",
+        "assets/images/bg/heat/week_4/dusk/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 158956,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dusk-5",
+      "bin": "heat/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dusk-5-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dusk/5.webp",
+        "assets/images/bg/heat/week_4/dusk/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 90490,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "heat-dusk-6",
+      "bin": "heat/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/heat-dusk-6-a.jpg",
+      "targets": [
+        "assets/images/bg/heat/week_2/dusk/7.webp",
+        "assets/images/bg/heat/week_4/dusk/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 249180,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dawn-1",
+      "bin": "rain/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/dawn/1.webp",
+        "assets/images/bg/rain/week_4/dawn/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 189514,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dawn-2",
+      "bin": "rain/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dawn-2-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/dawn/2.webp",
+        "assets/images/bg/rain/week_4/dawn/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 191608,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dawn-3",
+      "bin": "rain/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dawn-3-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/dawn/4.webp",
+        "assets/images/bg/rain/week_4/dawn/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 129390,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dawn-5",
+      "bin": "rain/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/dawn/6.webp",
+        "assets/images/bg/rain/week_4/dawn/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 209648,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dawn-6",
+      "bin": "rain/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dawn-6-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/dawn/7.webp",
+        "assets/images/bg/rain/week_4/dawn/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 209928,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dawn-7",
+      "bin": "rain/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dawn-7-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_1/dawn/5.webp",
+        "assets/images/bg/rain/week_3/dawn/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 158978,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dawn-8",
+      "bin": "rain/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dawn-8-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_1/dawn/6.webp",
+        "assets/images/bg/rain/week_3/dawn/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 266558,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "rain-day-1",
+      "bin": "rain/day",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/rain-day-1-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_3/day/2.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 127984,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-day-2",
+      "bin": "rain/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-day-2-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_3/day/4.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 146256,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-day-3",
+      "bin": "rain/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-day-3-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_3/day/5.webp"
+      ],
+      "weeks": [
+        3
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 165210,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-day-5",
+      "bin": "rain/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-day-5-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_4/day/1.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 141710,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-day-6",
+      "bin": "rain/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-day-6-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_4/day/6.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 178836,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-day-7",
+      "bin": "rain/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-day-7-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_4/day/7.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 141952,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-day-8",
+      "bin": "rain/day",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/rain-day-8-b.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_1/day/6.webp"
+      ],
+      "weeks": [
+        1
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 271996,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dusk-1",
+      "bin": "rain/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/dusk/1.webp",
+        "assets/images/bg/rain/week_4/dusk/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 260544,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dusk-2",
+      "bin": "rain/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dusk-2-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/dusk/5.webp",
+        "assets/images/bg/rain/week_4/dusk/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 146484,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-dusk-3",
+      "bin": "rain/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-dusk-3-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_1/dusk/7.webp",
+        "assets/images/bg/rain/week_3/dusk/7.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 111374,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-night-1",
+      "bin": "rain/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-night-1-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/night/1.webp",
+        "assets/images/bg/rain/week_4/night/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 169976,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-night-3",
+      "bin": "rain/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-night-3-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/night/2.webp",
+        "assets/images/bg/rain/week_4/night/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 74170,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "rain-night-5",
+      "bin": "rain/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/rain-night-5-a.jpg",
+      "targets": [
+        "assets/images/bg/rain/week_2/night/5.webp",
+        "assets/images/bg/rain/week_4/night/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 127382,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dawn-1",
+      "bin": "storm/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/storm-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_2/dawn/1.webp",
+        "assets/images/bg/storm/week_4/dawn/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 163134,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dawn-3",
+      "bin": "storm/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-dawn-3-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_2/dawn/4.webp",
+        "assets/images/bg/storm/week_4/dawn/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 84418,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dawn-4",
+      "bin": "storm/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-dawn-4-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_2/dawn/5.webp",
+        "assets/images/bg/storm/week_4/dawn/5.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 157594,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dawn-5",
+      "bin": "storm/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_2/dawn/6.webp",
+        "assets/images/bg/storm/week_4/dawn/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 42658,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dawn-6",
+      "bin": "storm/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-dawn-6-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_2/dawn/7.webp",
+        "assets/images/bg/storm/week_4/dawn/7.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 162868,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dawn-7",
+      "bin": "storm/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-dawn-7-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_1/dawn/4.webp",
+        "assets/images/bg/storm/week_3/dawn/4.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 99270,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dawn-8",
+      "bin": "storm/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-dawn-8-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_1/dawn/5.webp",
+        "assets/images/bg/storm/week_3/dawn/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 225962,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-dusk-1",
+      "bin": "storm/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-dusk-1-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_1/dusk/6.webp",
+        "assets/images/bg/storm/week_3/dusk/6.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 123682,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-night-1",
+      "bin": "storm/night",
+      "chosen": "b",
+      "src": "output/meme-gen/batch/storm-night-1-b.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_2/night/2.webp",
+        "assets/images/bg/storm/week_4/night/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 118462,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "storm-night-2",
+      "bin": "storm/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/storm-night-2-a.jpg",
+      "targets": [
+        "assets/images/bg/storm/week_2/night/6.webp",
+        "assets/images/bg/storm/week_4/night/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 204094,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-dawn-1",
+      "bin": "wind/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-dawn-1-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_1/dawn/3.webp",
+        "assets/images/bg/wind/week_3/dawn/3.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 116686,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-dawn-3",
+      "bin": "wind/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-dawn-3-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_1/dawn/5.webp",
+        "assets/images/bg/wind/week_3/dawn/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 147034,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-dawn-4",
+      "bin": "wind/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-dawn-4-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_1/dawn/7.webp",
+        "assets/images/bg/wind/week_3/dawn/7.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 213102,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-dawn-5",
+      "bin": "wind/dawn",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-dawn-5-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_2/dawn/2.webp",
+        "assets/images/bg/wind/week_4/dawn/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 135422,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-day-1",
+      "bin": "wind/day",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-day-1-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_4/day/1.webp"
+      ],
+      "weeks": [
+        4
+      ],
+      "source": "kill-slot",
+      "demotes": null,
+      "bytes": 223664,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-dusk-2",
+      "bin": "wind/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-dusk-2-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_1/dusk/2.webp",
+        "assets/images/bg/wind/week_3/dusk/2.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 213758,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-dusk-3",
+      "bin": "wind/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-dusk-3-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_1/dusk/5.webp",
+        "assets/images/bg/wind/week_3/dusk/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 115860,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-dusk-4",
+      "bin": "wind/dusk",
+      "chosen": "a",
+      "src": "output/meme-gen/pilot/wind-dusk-4-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_2/dusk/3.webp",
+        "assets/images/bg/wind/week_4/dusk/3.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 196090,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-night-1",
+      "bin": "wind/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-night-1-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_2/night/1.webp",
+        "assets/images/bg/wind/week_4/night/1.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 118724,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-night-2",
+      "bin": "wind/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-night-2-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_2/night/2.webp",
+        "assets/images/bg/wind/week_4/night/2.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 165158,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-night-3",
+      "bin": "wind/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-night-3-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_2/night/4.webp",
+        "assets/images/bg/wind/week_4/night/4.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 225570,
+      "width": 1008,
+      "quality": 82
+    },
+    {
+      "id": "wind-night-5",
+      "bin": "wind/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-night-5-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_2/night/6.webp",
+        "assets/images/bg/wind/week_4/night/6.webp"
+      ],
+      "weeks": [
+        2,
+        4
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 273368,
+      "width": 1008,
+      "quality": 78
+    },
+    {
+      "id": "wind-night-6",
+      "bin": "wind/night",
+      "chosen": "a",
+      "src": "output/meme-gen/batch/wind-night-6-a.jpg",
+      "targets": [
+        "assets/images/bg/wind/week_1/night/5.webp",
+        "assets/images/bg/wind/week_3/night/5.webp"
+      ],
+      "weeks": [
+        1,
+        3
+      ],
+      "source": "kill-pair",
+      "demotes": null,
+      "bytes": 146728,
+      "width": 1008,
+      "quality": 82
+    }
+  ]
+}

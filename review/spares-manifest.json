@@ -1,0 +1,1286 @@
+{
+  "note": "Banked unchosen candidates for future week-depth. Not wired, not deleted.",
+  "count": 160,
+  "spares": [
+    {
+      "id": "wind-dawn-1",
+      "condition": "wind",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-dawn-3",
+      "condition": "wind",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-dawn-4",
+      "condition": "wind",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-dawn-5",
+      "condition": "wind",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-day-1",
+      "condition": "wind",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-dusk-2",
+      "condition": "wind",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-dusk-3",
+      "condition": "wind",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-dusk-4",
+      "condition": "wind",
+      "bin": "dusk",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-night-1",
+      "condition": "wind",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-night-2",
+      "condition": "wind",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-night-3",
+      "condition": "wind",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-night-5",
+      "condition": "wind",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "wind-night-6",
+      "condition": "wind",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-dawn-1",
+      "condition": "storm",
+      "bin": "dawn",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-dawn-3",
+      "condition": "storm",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-dawn-4",
+      "condition": "storm",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-dawn-5",
+      "condition": "storm",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half, not explicitly rejected"
+    },
+    {
+      "id": "storm-dawn-6",
+      "condition": "storm",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-dawn-7",
+      "condition": "storm",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-dawn-8",
+      "condition": "storm",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-dusk-1",
+      "condition": "storm",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "storm-night-1",
+      "condition": "storm",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "a",
+      "reason": "unchosen half, not explicitly rejected"
+    },
+    {
+      "id": "storm-night-2",
+      "condition": "storm",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-1",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-2",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-3",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-4",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-5",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-6",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-7",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-8",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dawn-9",
+      "condition": "clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-day-1",
+      "condition": "clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-day-3",
+      "condition": "clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-day-4",
+      "condition": "clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-day-5",
+      "condition": "clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-day-6",
+      "condition": "clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-day-7",
+      "condition": "clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-day-9",
+      "condition": "clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dusk-1",
+      "condition": "clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dusk-3",
+      "condition": "clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dusk-4",
+      "condition": "clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dusk-5",
+      "condition": "clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dusk-6",
+      "condition": "clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dusk-7",
+      "condition": "clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-dusk-8",
+      "condition": "clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-night-1",
+      "condition": "clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "clear-night-2",
+      "condition": "clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dawn-1",
+      "condition": "rain",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dawn-2",
+      "condition": "rain",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dawn-3",
+      "condition": "rain",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dawn-5",
+      "condition": "rain",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dawn-6",
+      "condition": "rain",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dawn-7",
+      "condition": "rain",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dawn-8",
+      "condition": "rain",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-day-2",
+      "condition": "rain",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-day-3",
+      "condition": "rain",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-day-5",
+      "condition": "rain",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-day-6",
+      "condition": "rain",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-day-7",
+      "condition": "rain",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dusk-1",
+      "condition": "rain",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-dusk-2",
+      "condition": "rain",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-night-1",
+      "condition": "rain",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-night-3",
+      "condition": "rain",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "rain-night-5",
+      "condition": "rain",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-dawn-2",
+      "condition": "cloudy",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-day-1",
+      "condition": "cloudy",
+      "bin": "day",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-day-6",
+      "condition": "cloudy",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-day-7",
+      "condition": "cloudy",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-day-8",
+      "condition": "cloudy",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-day-9",
+      "condition": "cloudy",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-dusk-1",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-dusk-2",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-dusk-3",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-dusk-4",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-dusk-6",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-dusk-8",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-night-4",
+      "condition": "cloudy",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-night-7",
+      "condition": "cloudy",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-night-8",
+      "condition": "cloudy",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cloudy-night-9",
+      "condition": "cloudy",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-dawn-1",
+      "condition": "cold",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-dawn-2",
+      "condition": "cold",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-dawn-5",
+      "condition": "cold",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-day-1",
+      "condition": "cold",
+      "bin": "day",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-day-2",
+      "condition": "cold",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-day-5",
+      "condition": "cold",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-day-9",
+      "condition": "cold",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-day-11",
+      "condition": "cold",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-day-12",
+      "condition": "cold",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-dusk-1",
+      "condition": "cold",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-dusk-5",
+      "condition": "cold",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-dusk-6",
+      "condition": "cold",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-dusk-7",
+      "condition": "cold",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-night-1",
+      "condition": "cold",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-night-2",
+      "condition": "cold",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-night-3",
+      "condition": "cold",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-night-7",
+      "condition": "cold",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-dawn-1",
+      "condition": "cold-clear",
+      "bin": "dawn",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-dawn-2",
+      "condition": "cold-clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-dawn-7",
+      "condition": "cold-clear",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-1",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-2",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-4",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-5",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-6",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-7",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-8",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-9",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-11",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-day-13",
+      "condition": "cold-clear",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-dusk-1",
+      "condition": "cold-clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-dusk-2",
+      "condition": "cold-clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-dusk-3",
+      "condition": "cold-clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-dusk-4",
+      "condition": "cold-clear",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-night-1",
+      "condition": "cold-clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-night-5",
+      "condition": "cold-clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-night-6",
+      "condition": "cold-clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-night-7",
+      "condition": "cold-clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-night-8",
+      "condition": "cold-clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "cold-clear-night-9",
+      "condition": "cold-clear",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dawn-1",
+      "condition": "heat",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dawn-2",
+      "condition": "heat",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dawn-3",
+      "condition": "heat",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dawn-4",
+      "condition": "heat",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dawn-5",
+      "condition": "heat",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dawn-6",
+      "condition": "heat",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dawn-7",
+      "condition": "heat",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-day-1",
+      "condition": "heat",
+      "bin": "day",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-day-2",
+      "condition": "heat",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-day-3",
+      "condition": "heat",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-day-4",
+      "condition": "heat",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-day-5",
+      "condition": "heat",
+      "bin": "day",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dusk-1",
+      "condition": "heat",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dusk-2",
+      "condition": "heat",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dusk-3",
+      "condition": "heat",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dusk-4",
+      "condition": "heat",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dusk-5",
+      "condition": "heat",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "heat-dusk-6",
+      "condition": "heat",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dawn-1",
+      "condition": "fog",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dawn-2",
+      "condition": "fog",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dawn-3",
+      "condition": "fog",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dawn-4",
+      "condition": "fog",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dawn-5",
+      "condition": "fog",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dawn-6",
+      "condition": "fog",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dawn-7",
+      "condition": "fog",
+      "bin": "dawn",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dusk-1",
+      "condition": "fog",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dusk-2",
+      "condition": "fog",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dusk-3",
+      "condition": "fog",
+      "bin": "dusk",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dusk-4",
+      "condition": "fog",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dusk-5",
+      "condition": "fog",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dusk-6",
+      "condition": "fog",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-dusk-7",
+      "condition": "fog",
+      "bin": "dusk",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-night-1",
+      "condition": "fog",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-night-2",
+      "condition": "fog",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-night-3",
+      "condition": "fog",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-night-4",
+      "condition": "fog",
+      "bin": "night",
+      "dir": "pilot",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-night-5",
+      "condition": "fog",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-night-6",
+      "condition": "fog",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    },
+    {
+      "id": "fog-night-7",
+      "condition": "fog",
+      "bin": "night",
+      "dir": "batch",
+      "candidate": "b",
+      "reason": "unchosen half of no-comment default"
+    }
+  ]
+}
