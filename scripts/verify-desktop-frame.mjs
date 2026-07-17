@@ -96,10 +96,33 @@ async function openApp(browser, origin, viewport, { condition = 'clear', lang = 
   await page.waitForFunction(() => { const image = document.getElementById('bgImg'); return image?.complete && image.naturalWidth > 0 && getComputedStyle(document.documentElement).getPropertyValue('--hero-url').includes('webp'); });
   await page.locator('#pwSplash').waitFor({ state: 'hidden' });
   await page.waitForTimeout(500);
+  // Settle the one-time hero entrance before any measurement. #home-screen .headline/.temp/
+  // .temp-hilo run `heroFadeIn` (translateY 20px→0, 1s, staggered delays). A fixed post-splash
+  // delay samples that mid-flight, and image-decode timing shifts the phase — so identical CSS
+  // measured at different image weights reported a spurious ~2px hero drift. Wait for the finite
+  // entrance animations to reach their forwards-filled end state (translateY 0) before reading.
+  await page.evaluate(async () => {
+    window.scrollTo(0, 0);
+    const finite = document.getAnimations().filter((animation) => {
+      const timing = animation.effect && animation.effect.getComputedTiming ? animation.effect.getComputedTiming() : null;
+      return timing ? Number.isFinite(timing.iterations) : true;
+    });
+    await Promise.all(finite.map((animation) => animation.finished.catch(() => {})));
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  });
   return { page, context, imageRequests, performanceClient };
 }
 
 function assert(value, message) { if (!value) throw new Error(message); }
+
+// Sub-pixel comparison key. getBoundingClientRect returns fractional pixels whose last
+// digits are layout-engine noise (e.g. headline top 654 vs 654.002 across otherwise identical
+// renders). Rounding every number to 0.1px before an equality check tolerates that noise while
+// still catching any drift a human could see. This is NOT a widened tolerance for real movement —
+// 0.1px is below display resolution; anything larger still fails.
+function geoKey(value) {
+  return JSON.stringify(value, (_, v) => (typeof v === 'number' ? Math.round(v * 10) / 10 : v));
+}
 
 async function snapshotGeometry(page) {
   return page.evaluate(() => {
@@ -194,7 +217,7 @@ async function mobileComparison(browser, origin) {
   const stableGeometry = ({ actions, ...stable }) => stable;
   for (const viewport of mobileViewports) {
     const key = `${viewport.width}x${viewport.height}`;
-    assert(JSON.stringify(stableGeometry(before[key])) === JSON.stringify(stableGeometry(after[key])), `Non-action mobile geometry differs from 53f918f at ${key}`);
+    assert(geoKey(stableGeometry(before[key])) === geoKey(stableGeometry(after[key])), `Non-action mobile geometry differs from 53f918f at ${key}`);
   }
   const expectedActions = {
     '390x844': [[12, 714, 116.65625, 46], [136.671875, 714, 116.65625, 46], [261.34375, 714, 116.65625, 46]],
@@ -301,7 +324,7 @@ async function calmScreenEvidence(browser, origin) {
     await page.locator('#home-screen').waitFor({ state: 'visible' });
     await page.waitForTimeout(1400);
     const afterHome = await homeSignature();
-    assert(JSON.stringify(afterHome) === JSON.stringify(beforeHome), `Home Postcard changed after visiting ${name}: before=${JSON.stringify(beforeHome)} after=${JSON.stringify(afterHome)}`);
+    assert(geoKey(afterHome) === geoKey(beforeHome), `Home Postcard changed after visiting ${name}: before=${JSON.stringify(beforeHome)} after=${JSON.stringify(afterHome)}`);
   }
   const homeFile = path.join(screenshotDir, 'home-unchanged-1440x900.png');
   await page.screenshot({ path: homeFile });
@@ -446,7 +469,7 @@ async function verify(browser, origin) {
     await context.close();
   }
   const performance = { before: await performancePass(browser, origin, true), after: await performancePass(browser, origin, false) };
-  assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, 'Postcard desktop paint exceeded 500ms locally');
+  assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, `Postcard desktop paint exceeded 500ms locally: FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms (before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms)`);
   console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms`);
   const report = { glassBand, actionRows, typeAndColour, calmScreens, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
   mkdirSync(output, { recursive: true }); writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, 2)}\n`);

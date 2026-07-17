@@ -25,3 +25,4 @@ voiceover-output/
 .playwright-mcp/
 .fable/
 benchmarks/traces/
+.scratch/
