@@ -193,13 +193,22 @@ describe('OG card gates the witty line by the LOCATION day, not server-UTC (F1)'
   const FOG = WEATHER_COPY.witty.fog.en;
   const TUE_LINE = FOG[7]; // the only day-named fog line
 
-  // On Tuesday nothing is filtered, so the pool is the full fog array and the
-  // Tuesday line sits at index 7. Find a location whose seed selects index 7.
-  const TUE_POOL_LEN = dayAwarePool(WITTY_DAY_TAGS.witty.fog, FOG, 2, 12).length;
+  // Model the pool EXACTLY as buildOgViewModel does: eligibleWittyPool over the
+  // real context for these tests — Tuesday 01:30 at the location (day 2, hour 1,
+  // month 7). fogPayload carries NO lat/lon, so region tags resolve locationless.
+  // Meme-batch lines added region/time tags to fog, so the naïve dayAwarePool(2,12)
+  // model no longer matches the runtime pool. fog[0..6] are untagged and fog[7] is
+  // 'tue', so the Tuesday line still sits at index 7 — but the pool LENGTH is
+  // context-dependent, so derive both live from the real pool.
+  const TUE_CONTEXT = { day: 2, hour: 1, month: 7 };
+  const TUE_POOL = eligibleWittyPool({ copy: WEATHER_COPY, tags: WITTY_DAY_TAGS, condition: 'fog', lang: 'en', context: TUE_CONTEXT }).pool;
+  const TUE_POOL_LEN = TUE_POOL.length;
+  const TUE_TARGET_INDEX = TUE_POOL.indexOf(TUE_LINE);
   const locHittingTuesdayLine = (dateStr) => {
+    if (TUE_TARGET_INDEX < 0) throw new Error('Tuesday fog line not in the location pool');
     for (let i = 0; i < 100000; i += 1) {
       const name = `FogTown${i}`;
-      if (hashString(`${name}|fog|en|${dateStr}`) % TUE_POOL_LEN === 7) return name;
+      if (hashString(`${name}|fog|en|${dateStr}`) % TUE_POOL_LEN === TUE_TARGET_INDEX) return name;
     }
     throw new Error('no location seed selected the Tuesday fog line');
   };

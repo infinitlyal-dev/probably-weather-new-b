@@ -1,0 +1,6933 @@
+{
+  "generated_note": "Provisional debt from meme-batch-2 line application (wired-184 scope). No fabricated translations.",
+  "translation_debt": {
+    "count": 476,
+    "note": "each entry needs zu+xh+st native translation; currently \"\" placeholders (dayAwarePool filters empties; en/af serve)",
+    "entries": [
+      {
+        "condition": "clear",
+        "index": 38,
+        "en": "The sun clocked in before your alarm even tried.",
+        "af": "Die son het ingeklok voor jou wekker eers probeer het.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-1"
+      },
+      {
+        "condition": "clear",
+        "index": 39,
+        "en": "Air this clear should come with a warning: plans will be made.",
+        "af": "Lug so skoon, jy kan amper tot môre toe sien.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-1"
+      },
+      {
+        "condition": "clear",
+        "index": 40,
+        "en": "This is leave-form weather and HR knows it.",
+        "af": "Weer soos dié vra mooi vir 'n verlofvorm.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-1"
+      },
+      {
+        "condition": "clear",
+        "index": 41,
+        "en": "'Quick dip before work.' Nobody in history has been quick.",
+        "af": "Nog 'n 'vinnige swem voor werk' — die Kaap se oudste leuen.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-2"
+      },
+      {
+        "condition": "clear",
+        "index": 42,
+        "en": "Zero mistakes from today so far. Sky included.",
+        "af": "Die dag het nog niks verkeerd gedoen nie. Gee hom kans.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-2"
+      },
+      {
+        "condition": "clear",
+        "index": 43,
+        "en": "Highveld mornings: freezing, gorgeous, zero apologies.",
+        "af": "Hoëveld-oggend: koud genoeg vir 'n jas, mooi genoeg dat jy nie omgee nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-3"
+      },
+      {
+        "condition": "clear",
+        "index": 44,
+        "en": "Inbox: 47. Sky: flawless. Priorities: sorted.",
+        "af": "Eerste koffie buite. Die e-posse kan wag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-3"
+      },
+      {
+        "condition": "clear",
+        "index": 45,
+        "en": "Weather this well-behaved is definitely up to something.",
+        "af": "Als dié blou, dié vroeg? Iets broei.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-3"
+      },
+      {
+        "condition": "clear",
+        "index": 46,
+        "en": "Mornings like this are why Capetonians never stop mentioning it.",
+        "af": "Oggende soos dié is hoekom Kapenaars nooit ophou spog nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-4"
+      },
+      {
+        "condition": "clear",
+        "index": 47,
+        "en": "The sun took its time this morning. Worth the wait.",
+        "af": "Die son vat sy tyd vanoggend, en dit wys.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-4"
+      },
+      {
+        "condition": "clear",
+        "index": 48,
+        "en": "Signal: weak. Views: unfair. Deadlines: whose?",
+        "af": "Berg-oggende laat jou vergeet wat 'n deadline is.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-5"
+      },
+      {
+        "condition": "clear",
+        "index": 49,
+        "en": "One of those days the group chat will hear about for years.",
+        "af": "Dis die soort dag waarvan die groepchat nog jare gaan hoor.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-5"
+      },
+      {
+        "condition": "clear",
+        "index": 50,
+        "en": "Enjoy it. There's a cold front out there doing warm-ups.",
+        "af": "Geniet dit. Die koue front het klaar sy tasse gepak.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-6"
+      },
+      {
+        "condition": "clear",
+        "index": 51,
+        "en": "One perfect day issued. Non-transferable. Spend it wisely.",
+        "af": "Een perfekte dag uitgereik. Moet hom nie op admin mors nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-6"
+      },
+      {
+        "condition": "clear",
+        "index": 52,
+        "en": "The sun woke up and chose glorious.",
+        "af": "Vandag se son het opgedaag met attitude.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-7"
+      },
+      {
+        "condition": "clear",
+        "index": 53,
+        "en": "Morning people might be onto something. Don't tell them.",
+        "af": "Oggendmense is dalk oor iets reg. Sê dit net vir niemand nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-7"
+      },
+      {
+        "condition": "clear",
+        "index": 54,
+        "en": "Small-town quiet: you can actually hear yourself think. Terrifying.",
+        "af": "Platteland-stilte: jy kan jou eie gedagtes hoor. Skrikwekkend.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-8"
+      },
+      {
+        "condition": "clear",
+        "index": 55,
+        "en": "Out here even the sun refuses to rush.",
+        "af": "Hier jaag niemand nie. Die son ook nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-8"
+      },
+      {
+        "condition": "clear",
+        "index": 56,
+        "en": "Even Monday looks photogenic in this light.",
+        "af": "Oggendson wat só lyk maak selfs Maandag draaglik.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-9"
+      },
+      {
+        "condition": "clear",
+        "index": 57,
+        "en": "Zero drama in the sky. Highly unusual. Gladly accepted.",
+        "af": "Die dag begin sonder drama. Verdag, maar ons vat dit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dawn-9"
+      },
+      {
+        "condition": "clear",
+        "index": 58,
+        "en": "'One hour at the beach.' History's most confident lie.",
+        "af": "'Net 'n uurtjie strand toe.' Vier uur later...",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-1"
+      },
+      {
+        "condition": "clear",
+        "index": 59,
+        "en": "Atlantic rule: the water is freezing and everyone lies about it.",
+        "af": "Die water is yskoud en almal maak of dit lekker is. Tradisie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-1"
+      },
+      {
+        "condition": "clear",
+        "index": 60,
+        "en": "Weather this perfect is on loan. The southeaster keeps receipts.",
+        "af": "Weer só mooi is nie gratis nie. Iewers wag 'n suidooster.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-1"
+      },
+      {
+        "condition": "clear",
+        "index": 61,
+        "en": "Tidal pool water: instant regret, then instant youth.",
+        "af": "Getypoel-water: eers spyt, dan skielik tien jaar jonger.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-3"
+      },
+      {
+        "condition": "clear",
+        "index": 62,
+        "en": "All meetings moved to the shallow end.",
+        "af": "Vandag se enigste vergadering is by die vlak kant.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-3"
+      },
+      {
+        "condition": "clear",
+        "index": 63,
+        "en": "Highveld winter flex: laundry dry before the kettle's even done.",
+        "af": "Hoëveld-winter: die wasgoed is droog voor die ketel kook.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-4"
+      },
+      {
+        "condition": "clear",
+        "index": 64,
+        "en": "Clear sky, clear diary. One of those is a lie.",
+        "af": "Nul wolke. Nul verskonings. Nul kans dat ek binne bly.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-4"
+      },
+      {
+        "condition": "clear",
+        "index": 65,
+        "en": "The weather made the plans. We just RSVP'd.",
+        "af": "Die weer het die planne gemaak. Ons het net opgedaag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-5"
+      },
+      {
+        "condition": "clear",
+        "index": 66,
+        "en": "You don't waste a sky like this on being sensible.",
+        "af": "Sonskyn soos dié los jy nie vir Maandag nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-5"
+      },
+      {
+        "condition": "clear",
+        "index": 67,
+        "en": "Karoo sky: same flawless blue for the next 400 km. Guaranteed.",
+        "af": "Karoo-blou: presies dieselfde perfekte kleur van hier tot môre.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-6"
+      },
+      {
+        "condition": "clear",
+        "index": 68,
+        "en": "Padkos hits different under infinite sky. That's just science.",
+        "af": "Padkos smaak beter onder 'n lug sonder einde.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-6"
+      },
+      {
+        "condition": "clear",
+        "index": 69,
+        "en": "The mountain skipped the tablecloth today. Full outfit reveal.",
+        "af": "Die berg het vandag sy tafeldoek by die huis gelos. Volle mondering.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-7"
+      },
+      {
+        "condition": "clear",
+        "index": 70,
+        "en": "Days like this aren't earned. They're issued.",
+        "af": "Só 'n dag koop jy nie. Jy kry hom net.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-7"
+      },
+      {
+        "condition": "clear",
+        "index": 71,
+        "en": "Cancel everything. This is THE day winter was hiding.",
+        "af": "Kanselleer alles. Dis DIÉ dag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-9"
+      },
+      {
+        "condition": "clear",
+        "index": 72,
+        "en": "Off-season beach: same ocean, zero fight for parking.",
+        "af": "Strand in die winter: dieselfde see, nul geveg oor parkering.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-day-9"
+      },
+      {
+        "condition": "clear",
+        "index": 73,
+        "en": "'Just one sundowner' — famous last words, every single time.",
+        "af": "'Een sundowner,' sê die mense wat die sterre gaan sien uitkom.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-1"
+      },
+      {
+        "condition": "clear",
+        "index": 74,
+        "en": "The sun is really milking this exit. Honestly, deserved.",
+        "af": "Die son gaan af soos hy weet ons kyk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-1"
+      },
+      {
+        "condition": "clear",
+        "index": 75,
+        "en": "Nobody's leaving early under a sky like this.",
+        "af": "Dié lug is die rede hoekom niemand vanaand vroeg huis toe gaan nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-2"
+      },
+      {
+        "condition": "clear",
+        "index": 76,
+        "en": "When the weather behaves this well, so do we. Roughly.",
+        "af": "As die weer só gedra, gedra ons ook. Min of meer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-2"
+      },
+      {
+        "condition": "clear",
+        "index": 77,
+        "en": "Be honest — you opened this app to confirm Saturday's braai.",
+        "af": "Check jy die weer, of check jy of Saterdag se braai aan is? Presies.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-2"
+      },
+      {
+        "condition": "clear",
+        "index": 78,
+        "en": "A day so good even rush hour felt optional.",
+        "af": "Die dag was so mooi, selfs die verkeer het saamgespeel.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-3"
+      },
+      {
+        "condition": "clear",
+        "index": 79,
+        "en": "Highveld golden hour: costs nothing, upstages everything.",
+        "af": "Goue uur op die Hoëveld: gratis, en steeds onbetaalbaar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-3"
+      },
+      {
+        "condition": "clear",
+        "index": 80,
+        "en": "Golden hour runs daily. Attendance still somehow optional.",
+        "af": "Goue uur: elke dag gratis, en ons is elke dag weer verbaas.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-4"
+      },
+      {
+        "condition": "clear",
+        "index": 81,
+        "en": "The evening showed up in its Sunday best.",
+        "af": "Die aand het opgedaag met sy Sondagklere aan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-4"
+      },
+      {
+        "condition": "clear",
+        "index": 82,
+        "en": "Verandah weather. The couch will understand.",
+        "af": "Stoepsit-weer. Die TV kan maar wag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-5"
+      },
+      {
+        "condition": "clear",
+        "index": 83,
+        "en": "Best seat in the house isn't in the house.",
+        "af": "Die beste sitplek in die huis is buite.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-5"
+      },
+      {
+        "condition": "clear",
+        "index": 84,
+        "en": "Last swim of the day always feels like a secret.",
+        "af": "Laaste swem van die dag voel altyd soos 'n geheim.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-6"
+      },
+      {
+        "condition": "clear",
+        "index": 85,
+        "en": "Suspiciously calm out there. We'll allow it.",
+        "af": "Weer só rustig maak 'n mens agterdogtig én dankbaar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-6"
+      },
+      {
+        "condition": "clear",
+        "index": 86,
+        "en": "House rules: last over when the streetlights win.",
+        "af": "Die reëls is eenvoudig: laaste boulbeurt wanneer die straatligte aankom.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-7"
+      },
+      {
+        "condition": "clear",
+        "index": 87,
+        "en": "Small town, giant sky, zero rush.",
+        "af": "Klein dorpie, groot lug, geen haas nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-7"
+      },
+      {
+        "condition": "clear",
+        "index": 88,
+        "en": "Every so often Cape Town explains itself. No notes.",
+        "af": "Die Kaap wys af en toe presies hoekom almal so aangaan oor hom.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-8"
+      },
+      {
+        "condition": "clear",
+        "index": 89,
+        "en": "Dinner tastes better when the walk there looks like this.",
+        "af": "Aandete smaak beter as die pad soontoe só lyk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-dusk-8"
+      },
+      {
+        "condition": "clear",
+        "index": 90,
+        "en": "Someone turned the stars up to full volume.",
+        "af": "Iemand het die sterre se volume opgedraai.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-night-1"
+      },
+      {
+        "condition": "clear",
+        "index": 91,
+        "en": "Coals fading, stories only warming up.",
+        "af": "Die kole is amper dood. Die stories kom nou eers by.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-night-1"
+      },
+      {
+        "condition": "clear",
+        "index": 92,
+        "en": "City folk pay good money for this ceiling.",
+        "af": "Stadsmense betaal groot geld hiervoor. Hier's dit sommer verniet.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-night-1"
+      },
+      {
+        "condition": "clear",
+        "index": 93,
+        "en": "Sky this clear means tomorrow's a scorcher. Stay a while.",
+        "af": "Lug só helder beteken môre skroei. Sit gerus nog 'n rukkie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-night-2"
+      },
+      {
+        "condition": "clear",
+        "index": 94,
+        "en": "Nobody's called it a night. The night agrees.",
+        "af": "Niemand het 'huis toe' gesê nie. Niemand gaan ook nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "clear-night-2"
+      },
+      {
+        "condition": "cloudy",
+        "index": 38,
+        "en": "The sun hit snooze again. Honestly? Same.",
+        "af": "Die son het snooze gedruk. Weer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dawn-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 39,
+        "en": "Early grey. Like the tea, just let it steep.",
+        "af": "Vroeë grys — soos die tee, laat dit net trek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dawn-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 40,
+        "en": "The day is starting on eco-mode. Hop in anyway.",
+        "af": "Die dag begin op eco-mode. Klim maar in.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dawn-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 41,
+        "en": "Morning is coming in soft, almost like an apology.",
+        "af": "Die oggend kom sag in, amper soos 'n verskoning.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dawn-2"
+      },
+      {
+        "condition": "cloudy",
+        "index": 42,
+        "en": "Under this sky a second coffee isn't a luxury, it's procedure.",
+        "af": "Onder dié lug is 'n tweede koffie nie 'n luukse nie, dis prosedure.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dawn-2"
+      },
+      {
+        "condition": "cloudy",
+        "index": 43,
+        "en": "Washing-line roulette: do you hang, or do you fold?",
+        "af": "Wasgoed-roulette: hang jy, of vou jy?",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 44,
+        "en": "The app says cloudy. Aunty's knee says rain. We trust the knee.",
+        "af": "Die app sê bewolk. Tannie se knie sê reën. Ons vertrou die knie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 45,
+        "en": "Chance of rain: maybe. Chance of everyone discussing it: 100%.",
+        "af": "Kans op reën: miskien. Kans dat almal daaroor praat: 100%.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 46,
+        "en": "Grey is also a colour, says my ma. Today I believe her.",
+        "af": "Grys is ook 'n kleur, sê my ma. Vandag glo ek haar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-4"
+      },
+      {
+        "condition": "cloudy",
+        "index": 47,
+        "en": "The sun is buffering. Do not refresh the page.",
+        "af": "Die son buffer nog. Moenie die bladsy verfris nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-4"
+      },
+      {
+        "condition": "cloudy",
+        "index": 48,
+        "en": "'We'll see how it looks' — South Africa's official RSVP.",
+        "af": "'Ons kyk hoe dit lyk' — Suid-Afrika se amptelike RSVP.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-4"
+      },
+      {
+        "condition": "cloudy",
+        "index": 49,
+        "en": "The weather is 50/50. We are 100% going anyway.",
+        "af": "50/50-weer, en ons is 100% klaar aan die gang.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-5"
+      },
+      {
+        "condition": "cloudy",
+        "index": 50,
+        "en": "Overcast isn't a cancellation, it's ambience.",
+        "af": "Bewolk is nie 'n rede om te kanselleer nie, dis atmosfeer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-5"
+      },
+      {
+        "condition": "cloudy",
+        "index": 51,
+        "en": "Duvet weather on a workday. Strength, Mzansi.",
+        "af": "Duvet-weer op 'n werksdag. Sterkte, Mzansi.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-6"
+      },
+      {
+        "condition": "cloudy",
+        "index": 52,
+        "en": "The family group says rain. The sky has declined to comment.",
+        "af": "Die familiegroep sê reën. Die lug weier kommentaar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-6"
+      },
+      {
+        "condition": "cloudy",
+        "index": 53,
+        "en": "Clouds like these mean swing bowling. Ask any oom at the gate.",
+        "af": "Daai wolke beteken swaai-boulwerk. Vra enige oom by die hek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-7"
+      },
+      {
+        "condition": "cloudy",
+        "index": 54,
+        "en": "The chops don't know it's cloudy. The braai proceeds.",
+        "af": "Die tjops weet nie dis bewolk nie. Die braai gaan voort.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-7"
+      },
+      {
+        "condition": "cloudy",
+        "index": 55,
+        "en": "The sky is in its interview suit: grey, neat, giving nothing away.",
+        "af": "Die lug dra sy onderhoudspak: grys, netjies, sê niks.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-7"
+      },
+      {
+        "condition": "cloudy",
+        "index": 56,
+        "en": "Weekend grey: official permission to do absolutely nothing.",
+        "af": "Naweek-grys: amptelike toestemming om niks te doen nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-8"
+      },
+      {
+        "condition": "cloudy",
+        "index": 57,
+        "en": "It's rusk-dunking weather, and that is not up for debate.",
+        "af": "Dis tee-en-beskuit-weer, en dit is nie onderhandelbaar nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-8"
+      },
+      {
+        "condition": "cloudy",
+        "index": 58,
+        "en": "Clouds rolling in like family — no phone call first.",
+        "af": "Wolke rol in soos familie — sonder om eers te bel.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-8"
+      },
+      {
+        "condition": "cloudy",
+        "index": 59,
+        "en": "Free studio lighting today. Take the selfie.",
+        "af": "Gratis ateljee-beligting vandag. Vat die selfie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-9"
+      },
+      {
+        "condition": "cloudy",
+        "index": 60,
+        "en": "These clouds have rehearsed a storm all day. It never shows up for the audition.",
+        "af": "Die wolke oefen heeldag vir 'n storm wat nooit vir die oudisie opdaag nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-9"
+      },
+      {
+        "condition": "cloudy",
+        "index": 61,
+        "en": "Grey day equals baking day. Somebody's kitchen already smells amazing.",
+        "af": "Grys dag is bak-dag. Iemand se kombuis ruik nou al lekker.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-day-9"
+      },
+      {
+        "condition": "cloudy",
+        "index": 62,
+        "en": "Tonight's sunset is behind a paywall.",
+        "af": "Die wolke het vanaand se sonsondergang agter 'n betaalmuur gesit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 63,
+        "en": "No sunset pics tonight. The sky's privacy settings are on.",
+        "af": "Geen sonsondergangfoto's nie — die hemel se privaatheid-instellings is aan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-1"
+      },
+      {
+        "condition": "cloudy",
+        "index": 64,
+        "en": "Streetlights on early tonight, and not a single complaint.",
+        "af": "Die straatligte gaan vroeg aan en niemand kla nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-2"
+      },
+      {
+        "condition": "cloudy",
+        "index": 65,
+        "en": "The sun clocked out without saying bye. Rude, but relatable.",
+        "af": "Die son het uitgeklok sonder om te groet. Onbeskof, maar relatable.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-2"
+      },
+      {
+        "condition": "cloudy",
+        "index": 66,
+        "en": "The day is going out like a candle, not a firework. Respect.",
+        "af": "Die dag gaan uit soos 'n kers, nie 'n vuurwerk nie. Respek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-3"
+      },
+      {
+        "condition": "cloudy",
+        "index": 67,
+        "en": "Looks like the clouds are staying for supper.",
+        "af": "Die wolke bly oor vir aandete, lyk dit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-3"
+      },
+      {
+        "condition": "cloudy",
+        "index": 68,
+        "en": "The day is ending like a voicenote that just cuts off mid-",
+        "af": "Die dag eindig soos 'n voicenote wat net skielik ophou.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-4"
+      },
+      {
+        "condition": "cloudy",
+        "index": 69,
+        "en": "Dusk is on mute tonight. The evening showed up anyway.",
+        "af": "Skemer op mute vanaand. Die aand het nogtans opgedaag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-4"
+      },
+      {
+        "condition": "cloudy",
+        "index": 70,
+        "en": "The day is logging off without drama. We'll take that.",
+        "af": "Die dag teken af sonder drama. Ons vat dit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-6"
+      },
+      {
+        "condition": "cloudy",
+        "index": 71,
+        "en": "Tonight's sunset is an indoors-only event.",
+        "af": "Vanaand se sonsondergang is 'n binnenshuise geleentheid.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-6"
+      },
+      {
+        "condition": "cloudy",
+        "index": 72,
+        "en": "No colours in the sky tonight, just shades of calm.",
+        "af": "Geen kleure in die lug vanaand nie, net skakerings van rustig.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-8"
+      },
+      {
+        "condition": "cloudy",
+        "index": 73,
+        "en": "The evening is tiptoeing in on socks.",
+        "af": "Die aand kom binne op sokkies.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-dusk-8"
+      },
+      {
+        "condition": "cloudy",
+        "index": 74,
+        "en": "The sky is under the covers. Yours are waiting. Coincidence? Never.",
+        "af": "Die lug is oorgetrek. Jou bed ook. Toeval? Nooit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-3"
+      },
+      {
+        "condition": "cloudy",
+        "index": 75,
+        "en": "The clouds switched off the big light. Go to bed, Mzansi.",
+        "af": "Die wolke het die groot lig afgesit. Gaan slaap, Mzansi.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-3"
+      },
+      {
+        "condition": "cloudy",
+        "index": 76,
+        "en": "No stars tonight, but the neighbourhood dogs still have opinions.",
+        "af": "Geen sterre nie, maar die buurt se honde het steeds opinies.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-4"
+      },
+      {
+        "condition": "cloudy",
+        "index": 77,
+        "en": "The sky is on aeroplane mode. No notifications till morning.",
+        "af": "Die hemel is op vliegtuigmodus. Geen kennisgewings tot môre nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-4"
+      },
+      {
+        "condition": "cloudy",
+        "index": 78,
+        "en": "The moon has hung out a do-not-disturb sign.",
+        "af": "Die maan het 'n 'moenie steur nie'-bordjie opgehang.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-5"
+      },
+      {
+        "condition": "cloudy",
+        "index": 79,
+        "en": "The sky's curtains are drawn. Privacy, please.",
+        "af": "Die hemel se gordyne is toe. Privaatheid, asseblief.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-5"
+      },
+      {
+        "condition": "cloudy",
+        "index": 80,
+        "en": "The moon has signal tonight, just no bars.",
+        "af": "Die maan het sein, net geen strepies vanaand nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-6"
+      },
+      {
+        "condition": "cloudy",
+        "index": 81,
+        "en": "Tomorrow is a fresh negotiation with the weather. Tonight we rest.",
+        "af": "Môre is 'n nuwe onderhandeling met die weer. Vanaand rus ons.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-6"
+      },
+      {
+        "condition": "cloudy",
+        "index": 82,
+        "en": "The night has thrown a weighted blanket over everything.",
+        "af": "Die nag het 'n weighted blanket oor alles kom gooi.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-7"
+      },
+      {
+        "condition": "cloudy",
+        "index": 83,
+        "en": "Night clouds are the sky's way of saying: let's talk tomorrow.",
+        "af": "Nagwolke is die hemel se manier van sê: ons praat môre weer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-7"
+      },
+      {
+        "condition": "cloudy",
+        "index": 84,
+        "en": "Somewhere a braai is down to its last coals, no stars — the conversation carries the night.",
+        "af": "Iewers is 'n braai op sy laaste kole, geen sterre nie — die gesels dra die aand.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-8"
+      },
+      {
+        "condition": "cloudy",
+        "index": 85,
+        "en": "Night-shift clouds: just keeping the place warm till the sun gets back.",
+        "af": "Nagskof-wolke: hulle hou net die plek warm tot die son terug is.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-8"
+      },
+      {
+        "condition": "cloudy",
+        "index": 86,
+        "en": "The sky put the stars on silent. They're still up there, promise.",
+        "af": "Die hemel het die sterre op stil gesit. Hulle is nog daar, belowe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-9"
+      },
+      {
+        "condition": "cloudy",
+        "index": 87,
+        "en": "Top-shelf sleeping weather. The clouds made sure of it.",
+        "af": "Slaapweer van die boonste rak. Die wolke het seker gemaak.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cloudy-night-9"
+      },
+      {
+        "condition": "cold",
+        "index": 38,
+        "en": "The house is colder inside than outside. Architecture is a beautiful thing.",
+        "af": "Die huis is kouer binne as buite. Argitektuur is 'n mooi ding.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-1"
+      },
+      {
+        "condition": "cold",
+        "index": 39,
+        "en": "First one up puts the kettle on. That's the law.",
+        "af": "Eerste een op moet die ketel aansit. Dis die wet.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-1"
+      },
+      {
+        "condition": "cold",
+        "index": 40,
+        "en": "Five more minutes. Okay ten. Okay until the sun reaches the bed.",
+        "af": "Vyf minute nog. Oukei tien. Oukei tot die son op die bed val.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-1"
+      },
+      {
+        "condition": "cold",
+        "index": 41,
+        "en": "The dog looked out the front door, turned around, and went back to bed. Says it all.",
+        "af": "Die hond het by die voordeur gekyk, omgedraai, en teruggegaan bed toe. Wys jou.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-2"
+      },
+      {
+        "condition": "cold",
+        "index": 42,
+        "en": "Frost on the grass, frost on the bakkie, frost on my will to live.",
+        "af": "Ryp op die gras, ryp op die bakkie, ryp op my moed.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-2"
+      },
+      {
+        "condition": "cold",
+        "index": 43,
+        "en": "Most beautiful time of day. Say the people who stay inside.",
+        "af": "Mooiste tyd van die dag. Sê die mense wat binne bly.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-2"
+      },
+      {
+        "condition": "cold",
+        "index": 44,
+        "en": "Cape cold is wet cold. It moves into your bones and unpacks.",
+        "af": "Kaapse koue is nat koue. Dit klim in jou bene en pak uit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-4"
+      },
+      {
+        "condition": "cold",
+        "index": 45,
+        "en": "The gown is daywear now. We're calling it winter couture.",
+        "af": "Die kamerjas is nou dagdrag. Ons noem dit winter couture.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-4"
+      },
+      {
+        "condition": "cold",
+        "index": 46,
+        "en": "Somewhere out there people are going for a run right now. Strength to them.",
+        "af": "Iewers is daar mense wat nou gaan draf. Sterkte vir hulle.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-4"
+      },
+      {
+        "condition": "cold",
+        "index": 47,
+        "en": "Snow on the mountains means one thing: everyone is going to tell you about it today.",
+        "af": "Sneeu op die berge beteken een ding: almal gaan dit vandag vir jou sê.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-5"
+      },
+      {
+        "condition": "cold",
+        "index": 48,
+        "en": "Getting out of bed was the hardest summit of the day.",
+        "af": "Uit die bed uit was die moeilikste bergklim van die dag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-5"
+      },
+      {
+        "condition": "cold",
+        "index": 49,
+        "en": "Two duvets and a prayer. That's the system.",
+        "af": "Twee duvets en 'n gebed. So oorleef ons.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dawn-5"
+      },
+      {
+        "condition": "cold",
+        "index": 50,
+        "en": "The sun is out. It means nothing. The sun is lying.",
+        "af": "Die son is uit. Dit beteken niks. Die son jok.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-1"
+      },
+      {
+        "condition": "cold",
+        "index": 51,
+        "en": "Prettiest blue sky in the country, and it feels like a fridge with a view.",
+        "af": "Mooiste blou lug in die land, en dit voel soos 'n yskas met uitsig.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-1"
+      },
+      {
+        "condition": "cold",
+        "index": 52,
+        "en": "Highveld winter: sunburn and frostbite achievable on the same day.",
+        "af": "Highveld winter: sonbrand en verkluiming op dieselfde dag moontlik.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-1"
+      },
+      {
+        "condition": "cold",
+        "index": 53,
+        "en": "Joburg winter: jacket in the morning, T-shirt by two, jacket again by four.",
+        "af": "Joburg-winter: jas in die oggend, T-hemp teen twee, jas weer teen vier.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-11"
+      },
+      {
+        "condition": "cold",
+        "index": 54,
+        "en": "The flask of tea is the original social network.",
+        "af": "Die fles tee is die ware sosiale netwerk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-11"
+      },
+      {
+        "condition": "cold",
+        "index": 55,
+        "en": "Sitting in the sun, complaining about the cold. National sport.",
+        "af": "Sit in die son, klae oor die koue. Nasionale sport.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-11"
+      },
+      {
+        "condition": "cold",
+        "index": 56,
+        "en": "The mountains got rain and now think they're in Scotland.",
+        "af": "Die berge het reën gekry en dink hulle is nou in Skotland.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-12"
+      },
+      {
+        "condition": "cold",
+        "index": 57,
+        "en": "Rooibos was born for exactly this weather. Drink it where it grows.",
+        "af": "Rooibos is gebore vir presies hierdie weer. Drink dit waar dit groei.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-12"
+      },
+      {
+        "condition": "cold",
+        "index": 58,
+        "en": "Cold plus beautiful is an honest trade. We'll take it.",
+        "af": "Koue plus mooi is 'n eerlike transaksie. Ons vat dit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-12"
+      },
+      {
+        "condition": "cold",
+        "index": 59,
+        "en": "The washing is not going to dry. We hang it up for hope.",
+        "af": "Die wasgoed gaan nie droog word nie. Ons hang dit op vir die hoop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-13"
+      },
+      {
+        "condition": "cold",
+        "index": 60,
+        "en": "The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.",
+        "af": "Die worshond het 'n trui. Hy het dit nie gevra nie, maar hy dra dit met waardigheid.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-13"
+      },
+      {
+        "condition": "cold",
+        "index": 61,
+        "en": "Winter sun: all of the light, none of the heat. Nice try, sun.",
+        "af": "Winterson: al die lig, nul van die hitte. Mooi probeer, son.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-13"
+      },
+      {
+        "condition": "cold",
+        "index": 62,
+        "en": "The aloes are blooming. They're the only ones enjoying winter.",
+        "af": "Die aalwyne blom. Hulle is die enigstes wat die winter geniet.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-2"
+      },
+      {
+        "condition": "cold",
+        "index": 63,
+        "en": "Even the plants have decided orange is the answer to cold.",
+        "af": "Selfs die plante het besluit oranje is die antwoord op koue.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-2"
+      },
+      {
+        "condition": "cold",
+        "index": 64,
+        "en": "Dress like an aloe: layers on layers, and refuse to fall over.",
+        "af": "Trek aan soos 'n aalwyn: lae op lae, en bly staan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-2"
+      },
+      {
+        "condition": "cold",
+        "index": 65,
+        "en": "Snow on the mountains. Every family WhatsApp group now has the same photo.",
+        "af": "Sneeu op die berge. Elke familiegroep het nou dieselfde foto.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-5"
+      },
+      {
+        "condition": "cold",
+        "index": 66,
+        "en": "Close enough to admire, far enough that you don't have to shovel it. Perfect.",
+        "af": "Naby genoeg om te bewonder, ver genoeg om nie te skep nie. Perfek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-5"
+      },
+      {
+        "condition": "cold",
+        "index": 67,
+        "en": "Someone is driving up there 'just to look'. They are going to sit in traffic.",
+        "af": "Iemand ry nou soontoe 'om te gaan kyk'. Hulle gaan in die verkeer sit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-5"
+      },
+      {
+        "condition": "cold",
+        "index": 68,
+        "en": "The dog took the best spot. Nobody is brave enough to move him.",
+        "af": "Die hond het die beste plek gevat. Niemand is dapper genoeg om te skuif nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-6"
+      },
+      {
+        "condition": "cold",
+        "index": 69,
+        "en": "Fire lit before noon. We are no longer playing games.",
+        "af": "Vuur aan voor twaalf. Ons speel nie meer nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-6"
+      },
+      {
+        "condition": "cold",
+        "index": 70,
+        "en": "The great debate: do we switch the heater on too, or are we not made of money?",
+        "af": "Die groot debat: sit die verwarmer óók aan, of is ons nie gemaak van geld nie?",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-6"
+      },
+      {
+        "condition": "cold",
+        "index": 71,
+        "en": "So cold the frost stayed for lunch.",
+        "af": "So koud dat die ryp middagete gebly het.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-7"
+      },
+      {
+        "condition": "cold",
+        "index": 72,
+        "en": "Trout weather. Lovely for the fish. Character-building for the fisherman.",
+        "af": "Forelweer. Vir die vis is dit lekker. Vir die visserman is dit karakterbou.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-7"
+      },
+      {
+        "condition": "cold",
+        "index": 73,
+        "en": "The water looks like glass. It feels like ice. Do not run the experiment.",
+        "af": "Die water lyk soos glas. Dit voel soos ys. Moenie eksperimenteer nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-7"
+      },
+      {
+        "condition": "cold",
+        "index": 74,
+        "en": "Wet sea cold: the kind that gets through four layers and a good mood.",
+        "af": "Nat koue by die see: die soort wat deur vier lae en 'n goeie humeur trek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-9"
+      },
+      {
+        "condition": "cold",
+        "index": 75,
+        "en": "Today is a fish-and-chips-out-the-paper day. Doctor's orders.",
+        "af": "Vandag is 'n vis-en-tjips-uit-die-papier dag. Dokter se orders.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-9"
+      },
+      {
+        "condition": "cold",
+        "index": 76,
+        "en": "The seagulls sound furious about it. Same, seagulls. Same.",
+        "af": "Die meeue klink kwaad. Dieselfde, meeue. Dieselfde.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-day-9"
+      },
+      {
+        "condition": "cold",
+        "index": 77,
+        "en": "The sun is leaving and taking all the degrees with it.",
+        "af": "Die son gaan weg en vat al die grade saam.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-1"
+      },
+      {
+        "condition": "cold",
+        "index": 78,
+        "en": "You can watch the cold arriving. It's not even being subtle about it.",
+        "af": "Jy kan die koue sien inkom. Dit maak nie eers geheim daarvan nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-1"
+      },
+      {
+        "condition": "cold",
+        "index": 79,
+        "en": "Woodsmoke at dusk: the Highveld's winter perfume.",
+        "af": "Houtrook teen skemer: die Highveld se winterparfuum.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-1"
+      },
+      {
+        "condition": "cold",
+        "index": 80,
+        "en": "Somebody's driving home right now with the heater on full and the seat warmer as a bonus.",
+        "af": "Iemand ry nou huis toe met die verwarmer op vol en die sitplekverwarmer as bonus.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-5"
+      },
+      {
+        "condition": "cold",
+        "index": 81,
+        "en": "The pass is beautiful. The pass is also the opening act for -2°C.",
+        "af": "Die pas is mooi. Die pas is ook -2°C se voorprogram.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-5"
+      },
+      {
+        "condition": "cold",
+        "index": 82,
+        "en": "Last one home lights the fire. Drive, friend, drive.",
+        "af": "Laaste een by die huis maak die kaggel aan. Ry, vriend, ry.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-5"
+      },
+      {
+        "condition": "cold",
+        "index": 83,
+        "en": "Blanket around the shoulders on the stoep: national dress of winter.",
+        "af": "Kombers om die skouers op die stoep: nasionale drag van die winter.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-6"
+      },
+      {
+        "condition": "cold",
+        "index": 84,
+        "en": "We're visiting outside in the cold because inside is, honestly, colder.",
+        "af": "Ons kuier buite in die koue want binne is dit, eerlikwaar, kouer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-6"
+      },
+      {
+        "condition": "cold",
+        "index": 85,
+        "en": "One brazier, three neighbours, zero hurry.",
+        "af": "Een konka, drie bure, geen haas nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-6"
+      },
+      {
+        "condition": "cold",
+        "index": 86,
+        "en": "Snow on the Twelve Apostles. Cape Town will talk about this for a week.",
+        "af": "Sneeu op die Twaalf Apostels. Kaapstad gaan vir 'n week hieroor praat.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-7"
+      },
+      {
+        "condition": "cold",
+        "index": 87,
+        "en": "At least the cold front left a beautiful receipt.",
+        "af": "Die koue front het darem 'n mooi kwitansie gelos.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-7"
+      },
+      {
+        "condition": "cold",
+        "index": 88,
+        "en": "Look quickly. By tomorrow it's gone and nobody will believe you.",
+        "af": "Kyk vinnig. Teen môre is dit weg en niemand gaan jou glo nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-7"
+      },
+      {
+        "condition": "cold",
+        "index": 89,
+        "en": "The mountain glows like a fireplace. Unfortunately it only warms the eyes.",
+        "af": "Die berg gloei soos 'n kaggel. Ongelukkig werk dit net vir die oë.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-9"
+      },
+      {
+        "condition": "cold",
+        "index": 90,
+        "en": "The blesbok wear no scarves and file no complaints. We could learn something. We won't, but we could.",
+        "af": "Die blesbokke dra nie serpe nie en kla ook nie. Ons kan iets leer. Ons gaan nie, maar ons kan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-9"
+      },
+      {
+        "condition": "cold",
+        "index": 91,
+        "en": "Free State dusk: the most beautiful ten minutes of the coldest night.",
+        "af": "Vrystaat-skemer: die mooiste tien minute van die koudste aand.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-dusk-9"
+      },
+      {
+        "condition": "cold",
+        "index": 92,
+        "en": "The stars shine brighter when it's cold. The universe's way of apologising.",
+        "af": "Die sterre is helderder as dit koud is. Die heelal se manier van jammer sê.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-1"
+      },
+      {
+        "condition": "cold",
+        "index": 93,
+        "en": "Five minutes of stargazing. Then you run back inside. That's the deal.",
+        "af": "Vyf minute sterre kyk. Dan hardloop jy terug binnetoe. Dis die deal.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-1"
+      },
+      {
+        "condition": "cold",
+        "index": 94,
+        "en": "Somewhere under those stars, someone is tiptoeing barefoot to the bathroom. Strength.",
+        "af": "Iewers onder daardie sterre trippel iemand kaalvoet badkamer toe. Sterkte.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-1"
+      },
+      {
+        "condition": "cold",
+        "index": 95,
+        "en": "The chair is taken. The dog got there first. Rules are rules.",
+        "af": "Die stoel is gevat. Die hond het eerste gekom. Die reëls is die reëls.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-2"
+      },
+      {
+        "condition": "cold",
+        "index": 96,
+        "en": "Outside: 2 degrees. Inside: 9 degrees and a very good fire. SA homes, hey.",
+        "af": "Buite: 2 grade. Binne: 9 grade en 'n baie goeie vuur. SA huise, nè.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-2"
+      },
+      {
+        "condition": "cold",
+        "index": 97,
+        "en": "The last log is a decision, not an inventory item.",
+        "af": "Die laaste blok hout is 'n besluit, nie 'n voorraaditem nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-2"
+      },
+      {
+        "condition": "cold",
+        "index": 98,
+        "en": "Rain sounds lovely on the roof. Provided you are not in it.",
+        "af": "Die reën klink lekker op die dak. Solank jy nié in dit is nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-3"
+      },
+      {
+        "condition": "cold",
+        "index": 99,
+        "en": "Cape winter night: the mountain's still there, you'll see it again tomorrow.",
+        "af": "Kaapse winternag: die berg is daar, jy sal hom môre weer sien.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-3"
+      },
+      {
+        "condition": "cold",
+        "index": 100,
+        "en": "Forgot to switch the electric blanket on in advance. Every. Single. Night.",
+        "af": "Elektriese kombers weer vergeet om vooraf aan te sit. Elke. Enkele. Aand.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-3"
+      },
+      {
+        "condition": "cold",
+        "index": 101,
+        "en": "The Berg is wearing snow tonight. Somewhere a farmer's dog has already moved indoors.",
+        "af": "Die Berg dra sneeu vanaand. Iewers is 'n boer se hond klaar in die huis.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-6"
+      },
+      {
+        "condition": "cold",
+        "index": 102,
+        "en": "That one little light is someone doing winter correctly: hut, fire, done.",
+        "af": "Daardie een liggie is iemand wat winter reg doen: hut, vuur, klaar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-6"
+      },
+      {
+        "condition": "cold",
+        "index": 103,
+        "en": "Beautiful enough to climb out of the blanket for a photo. Almost.",
+        "af": "Mooi genoeg om vir 'n foto uit die kombers uit te klim. Amper.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-6"
+      },
+      {
+        "condition": "cold",
+        "index": 104,
+        "en": "The town decided at seven that it's blanket time. The town is correct.",
+        "af": "Die dorp het sewe-uur al besluit dis kombers-tyd. Die dorp is reg.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-7"
+      },
+      {
+        "condition": "cold",
+        "index": 105,
+        "en": "Wet and cold is the Cape's winter recipe. Two ingredients, every time.",
+        "af": "Nat en koud is die Kaap se winterresep. Twee bestanddele, elke keer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-7"
+      },
+      {
+        "condition": "cold",
+        "index": 106,
+        "en": "Last one closing up, please leave the light on. It looks lovely.",
+        "af": "Laaste een wat toemaak, los asseblief die liggie aan. Dit lyk mooi.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-night-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 30,
+        "en": "The sun has arrived. It has not yet started working.",
+        "af": "Die son is op, maar hy werk nog nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 31,
+        "en": "The prettiest lie you'll see all day.",
+        "af": "Mooiste leuen wat jy vandag gaan sien.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 32,
+        "en": "The lawn caught frost overnight. You're next.",
+        "af": "Die gras het ryp gevang. Jy is volgende.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 33,
+        "en": "Zero wind. Zero clouds. Zero mercy.",
+        "af": "Nul wind, nul wolke, nul genade.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 34,
+        "en": "Somebody left the freezer door open overnight.",
+        "af": "Die Karoo het die verkoeler oopgelos.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 35,
+        "en": "Gorgeous, right? Do not trust it.",
+        "af": "Pragtig, nè? Moenie hom vertrou nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 36,
+        "en": "Looks like a tourism ad. Feels like the inside of a fridge.",
+        "af": "Joburg lyk soos 'n advertensie en voel soos 'n yskas.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 37,
+        "en": "That first breath of air will wake you better than coffee.",
+        "af": "Daai eerste asemteug gaan jou wakker maak. Belowe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 38,
+        "en": "Sunshine: 10/10. Feels-like: don't ask.",
+        "af": "Sonskyn: 10/10. Gevoel: vra liewer nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 39,
+        "en": "The front left. The cold just moved in permanently.",
+        "af": "Die front is weg. Die koue het net getrek, nie geloop nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-4"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 40,
+        "en": "Snow on the mountains means socks in bed. That's the law.",
+        "af": "Sneeu op die berge beteken sokkies in die bed.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-4"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 41,
+        "en": "Today's sky: freshly washed, ice-pressed.",
+        "af": "Vandag se lug is skoongewas en yskoud gestryk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-4"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 42,
+        "en": "Even the dog's breath is showing. That's the reading.",
+        "af": "Die hond se asem wys ook. Dis hoe koud dit is.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 43,
+        "en": "Frost on the fence, sun in your eyes, feeling in zero fingers.",
+        "af": "Ryp op die draad, son in die oë, gevoel in nul vingers.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 44,
+        "en": "Clear skies, open roads, running nose. The full winter set.",
+        "af": "Die lug is oop, die pad is oop, jou neus loop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 45,
+        "en": "The 7am sun isn't giving heat yet. Only vibes.",
+        "af": "Sewe-uur se son deel nog nie hitte uit nie, net vibes.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dawn-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 46,
+        "en": "The sun is doing summer. The air didn't get the memo.",
+        "af": "Die son skyn soos somer. Die lug het nie die memo gekry nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 47,
+        "en": "Full sunshine, full jacket. Both are non-negotiable.",
+        "af": "Volle sonskyn, volle baadjie. Altwee is nodig.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 48,
+        "en": "It's a beautiful day to stay indoors.",
+        "af": "Dis 'n mooi dag om binne te wees.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 49,
+        "en": "The water is so clear you can basically see the cold.",
+        "af": "Die water is so helder jy kan die koue sien.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-10"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 50,
+        "en": "Snow on those mountains, ice in this breeze. Connected? Very.",
+        "af": "Sneeu op daai berge, ys in hierdie briesie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-10"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 51,
+        "en": "Prettiest day of winter. Feels like the coldest one.",
+        "af": "Mooiste dag van die winter. Voel soos die koudste een.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-10"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 52,
+        "en": "Window sun is the only sun doing its job today.",
+        "af": "Vensterson is die enigste son wat vandag werk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-11"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 53,
+        "en": "This table is not available. We live here until September now.",
+        "af": "Dié tafel is nie te koop nie. Ons bly tot September.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-11"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 54,
+        "en": "It looks lovely out there. We've chosen to believe it from in here.",
+        "af": "Buite lyk dit heerlik. Ons het besluit om dit te glo van hier af.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-11"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 55,
+        "en": "Perfect drying weather. The washing will dry and freeze, in that order.",
+        "af": "Perfekte wasgoedweer. Die wasgoed gaan droog word én bevries.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-13"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 56,
+        "en": "The sun is doing admin out here. Heat was not part of the package.",
+        "af": "Die son doen sy admin buite. Hitte is nie deel van die pakket nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-13"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 57,
+        "en": "Those sheets are coming off the line in cardboard form.",
+        "af": "Lakens gaan vandag in kartonvorm afgehaal word.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-13"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 58,
+        "en": "The sea is sparkling like holidays. The air says otherwise.",
+        "af": "Die see blink soos vakansie. Die wind chill sê andersins.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 59,
+        "en": "Cape Town after a front: clean, bright, and honestly freezing.",
+        "af": "Kaapstad ná 'n front: skoon, helder, en yskoud eerlik.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 60,
+        "en": "Sunglasses and a scarf. It's that kind of day.",
+        "af": "Sonbril én serp. Dis daai soort dag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 61,
+        "en": "Perfect rugby weather. For the spectators with blankets.",
+        "af": "Perfekte rugbyweer. Vir die toeskouers met komberse.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 62,
+        "en": "The shady side of the field is a separate climate zone.",
+        "af": "Daai skadu-kant van die veld is 'n ander klimaatsone.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 63,
+        "en": "Sunny, with a 100% chance of shivering.",
+        "af": "Sonnig met 'n honderd persent kans van bibber.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 64,
+        "en": "Three hundred years old and still better dressed for this cold than you.",
+        "af": "Driehonderd jaar oud en steeds beter geklee vir die koue as jy.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-4"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 65,
+        "en": "The mountains put on snow. You should put on everything.",
+        "af": "Die berge het sneeu aangetrek. Trek jy ook maar alles aan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-4"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 66,
+        "en": "The aloes are blooming because they're the only ones enjoying this.",
+        "af": "Die aalwyne blom, want hulle is die enigstes wat die koue geniet.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 67,
+        "en": "Orange flowers, blue sky, blue lips.",
+        "af": "Oranje blomme, blou lug, blou lippe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 68,
+        "en": "Mzansi winter does colour like nobody else. Warmth, though...",
+        "af": "Winter in Mzansi doen kleur soos niemand anders nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 69,
+        "en": "In the sun: bearable. Two steps left: Antarctica.",
+        "af": "In die son: draaglik. Twee treë links: Antarktika.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-6"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 70,
+        "en": "Padstal coffee is functioning as central heating today.",
+        "af": "Padstalkoffie werk vandag as sentrale verhitting.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-6"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 71,
+        "en": "The Karoo doesn't lie about the weather. It brags about it.",
+        "af": "Die Karoo lieg nie oor die weer nie. Hy spog daarmee.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-6"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 72,
+        "en": "The view is free. So is the feeling in your ears — gone.",
+        "af": "Die uitsig is gratis. Die gevoel in jou ore ook weg.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 73,
+        "en": "The bluer the sky, the colder the truth.",
+        "af": "Hoe blouer die lug, hoe kouer die waarheid.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 74,
+        "en": "One blanket, two people, zero shame.",
+        "af": "Een kombers, twee mense, geen skaamte nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-8"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 75,
+        "en": "The ducks look comfortable. The ducks have feathers.",
+        "af": "Die eende lyk gemaklik. Die eende het vere.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-8"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 76,
+        "en": "Picnic weather according to your eyes. Soup weather according to everything else.",
+        "af": "Picnic-weer volgens die oë. Sop-weer volgens die res.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-8"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 77,
+        "en": "Not a cloud in sight. Not a degree either.",
+        "af": "Nie 'n wolk in sig nie. Ook nie 'n graad nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-9"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 78,
+        "en": "The Free State sky is too big for its thermometer today.",
+        "af": "Die Vrystaat se lug is vandag te groot vir sy termometer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-day-9"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 79,
+        "en": "The sun is heading home now, taking the last three degrees with it.",
+        "af": "Die son gaan nou huis toe. Vat sy laaste drie grade saam.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 80,
+        "en": "Prettiest moment of the day. Also the shortest. Run.",
+        "af": "Mooiste tyd van die dag. Kortste ook. Hardloop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 81,
+        "en": "The sunset is free of charge. So is the head cold.",
+        "af": "Die sonsondergang is verniet. Die verkoue ook.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 82,
+        "en": "Golden hour, ice-cold air. Cape Town loves a dramatic contrast.",
+        "af": "Golden hour, yskoue lug. Kaapstad hou van drama.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 83,
+        "en": "Look quickly. In ten minutes it's night and the North Pole.",
+        "af": "Kyk mooi. Oor tien minute is dit nag én Noordpool.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 84,
+        "en": "The fire isn't for atmosphere. The fire is for survival.",
+        "af": "Die vuur is nie vir gesellig nie. Die vuur is vir oorlewing.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 85,
+        "en": "Sit closer. No, closer. Yes, basically in the fire.",
+        "af": "Sit nader. Nee, nader. Ja, amper ín die vuur.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 86,
+        "en": "Clear sky tonight. That means the cold has an all-access pass.",
+        "af": "Skoon lug vanaand. Dit beteken die koue het vrye toegang.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 87,
+        "en": "First star is out. First ten degrees have also left.",
+        "af": "Eerste ster is uit. Eerste tien grade is ook uit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-4"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 88,
+        "en": "The Karoo is opening its roof for the night. Dress warm for the show.",
+        "af": "Die Karoo maak nou die dak oop. Trek warm aan vir die vertoning.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-4"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 89,
+        "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
+        "af": "Joburg se sonsondergange is winter se troosprys.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 90,
+        "en": "Enjoy the colours. The temperature has already gone to the car.",
+        "af": "Geniet die kleure. Die temperatuur is klaar in die kar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-dusk-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 91,
+        "en": "The brighter the stars, the harder your blanket has to work.",
+        "af": "Hoe helderder die sterre, hoe harder werk die kombers.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 92,
+        "en": "Free planetarium tonight. Admission: your toes.",
+        "af": "Gratis planetarium vanaand. Toegangsprys: jou tone.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 93,
+        "en": "The universe is showing off tonight. Look fast, freeze slowly.",
+        "af": "Die heelal wys af vanaand. Kyk vinnig, vries stadig.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-1"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 94,
+        "en": "Five minutes of stargazing. Then back inside forever.",
+        "af": "Vyf minute se sterrekyk. Dan terug binnetoe vir ewig.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 95,
+        "en": "The frost has already started its shift. By dawn the lawn will be glass.",
+        "af": "Die ryp is klaar besig. Teen dagbreek is die grasperk 'n spieël.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 96,
+        "en": "Rooibos in hand, blanket to the ears. Full kit.",
+        "af": "Rooibos in die hande, kombers tot by die ore. Volkome uitrusting.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-2"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 97,
+        "en": "The city only looks this sharp when it genuinely hurts outside.",
+        "af": "So helder sien jy Kaapstad net wanneer dit regtig seer is buite.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 98,
+        "en": "No wind, no clouds, no excuse for that thin jacket.",
+        "af": "Geen wind, geen wolke, geen verskoning om nie warm aan te trek nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-3"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 99,
+        "en": "The moon switched the mountains on. The heat, however, stays off.",
+        "af": "Die maan het die berge aangeskakel. Die hitte, egter, nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 100,
+        "en": "Breathing like a dragon, view like a dream.",
+        "af": "Asem soos 'n draak, uitsig soos 'n droom.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-5"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 101,
+        "en": "Nobody's standing at the coals for the food. We're here for the heat.",
+        "af": "Niemand staan by die kole vir die kos nie. Ons staan vir die hitte.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-6"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 102,
+        "en": "Winter night rule: the tongs get shared. The spot next to the fire doesn't.",
+        "af": "Winteraand-reël: die tang word gedeel, die vuurplek nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-6"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 103,
+        "en": "Stars above, coals below, friends around. The cold can try its best.",
+        "af": "Sterre bo, kole onder, vriende rondom. Die koue kan maar probeer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-6"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 104,
+        "en": "Tomorrow's first task: five minutes of windscreen scraping in your work clothes.",
+        "af": "Môreoggend se eerste taak: vyf minute ys krap in jou kerkklere.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 105,
+        "en": "The cars have surrendered. They're sleeping under ice tonight.",
+        "af": "Die karre het klaar opgegee. Hulle slaap onder ys.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 106,
+        "en": "Still, clear, freezing. The classic Highveld triple.",
+        "af": "Stil, helder, vriesend. Die klassieke Hoëveld-drieling.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-7"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 107,
+        "en": "The vines are asleep. The cold is working the night shift.",
+        "af": "Die wingerd slaap. Die koue werk nagskof.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-8"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 108,
+        "en": "Snow in the moonlight: beautiful on the mountain, brutal in the air.",
+        "af": "Sneeu in die maanlig — mooi op die berg, verskriklik in die lug.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-8"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 109,
+        "en": "Five-star accommodation. Wait, no — five million.",
+        "af": "Vyf-ster akkommodasie. Nee wag — vyf miljoen.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-9"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 110,
+        "en": "The plan was ten minutes. The noses tapped out after two.",
+        "af": "Die plan was tien minute. Die neuse het ná twee ingegee.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-9"
+      },
+      {
+        "condition": "cold-clear",
+        "index": 111,
+        "en": "Clear nights are winter's way of apologising.",
+        "af": "Helder nagte is die winter se jammer-sê.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "cold-clear-night-9"
+      },
+      {
+        "condition": "fog",
+        "index": 38,
+        "en": "Five metres of visibility. Same as your five-year plan.",
+        "af": "Vyf meter sig. Nes jou vyfjaarplan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-1"
+      },
+      {
+        "condition": "fog",
+        "index": 39,
+        "en": "The farm is still there. We're all just taking each other's word for it.",
+        "af": "Die plaas is nog daar. Ons vat maar mekaar se woord daarvoor.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-1"
+      },
+      {
+        "condition": "fog",
+        "index": 40,
+        "en": "Your GPS says you have arrived. Your GPS is lying.",
+        "af": "Die GPS sê jy het opgedaag. Die GPS jok.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-1"
+      },
+      {
+        "condition": "fog",
+        "index": 41,
+        "en": "Snoek weather, say the uncles. The uncles have never once been wrong.",
+        "af": "Snoekweer, sê die ooms. Die ooms is nog nooit verkeerd nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-2"
+      },
+      {
+        "condition": "fog",
+        "index": 42,
+        "en": "The horizon took the day off.",
+        "af": "Die horison het vandag verlof gevat.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-2"
+      },
+      {
+        "condition": "fog",
+        "index": 43,
+        "en": "The sea mist clocked in before everyone else.",
+        "af": "Die seemis het voor almal ingeklok.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-2"
+      },
+      {
+        "condition": "fog",
+        "index": 44,
+        "en": "The cows know exactly where they are. Which is more than the rest of us can say.",
+        "af": "Die koeie weet presies waar hulle is. Meer as wat ons kan sê.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-3"
+      },
+      {
+        "condition": "fog",
+        "index": 45,
+        "en": "Everything under the blanket is officially not today's problem.",
+        "af": "Alles onder die kombers is amptelik nie vandag se probleem nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-3"
+      },
+      {
+        "condition": "fog",
+        "index": 46,
+        "en": "In the Karoo, fog is an event. The whole district will be talking about this tomorrow.",
+        "af": "In die Karoo is mis 'n gebeurtenis. Môre praat die hele distrik hieroor.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-4"
+      },
+      {
+        "condition": "fog",
+        "index": 47,
+        "en": "The silence put on a blanket this morning.",
+        "af": "Die stilte het vanoggend 'n kombers aangetrek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-4"
+      },
+      {
+        "condition": "fog",
+        "index": 48,
+        "en": "Even the plains are keeping secrets today.",
+        "af": "Selfs die vlaktes hou vandag geheime.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-4"
+      },
+      {
+        "condition": "fog",
+        "index": 49,
+        "en": "The sea is down there. Probably.",
+        "af": "Die see is daar onder. Waarskynlik.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-5"
+      },
+      {
+        "condition": "fog",
+        "index": 50,
+        "en": "Chappies is asking for faith this morning, not just a licence.",
+        "af": "Chappies vra vanoggend geloof, nie net 'n lisensie nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-5"
+      },
+      {
+        "condition": "fog",
+        "index": 51,
+        "en": "Drive like your mother is watching.",
+        "af": "Ry soos jou ma kyk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-5"
+      },
+      {
+        "condition": "fog",
+        "index": 52,
+        "en": "The neighbourhood is gone. Coffee first, then we'll check again.",
+        "af": "Die buurt is weg. Koffie eers, dan kyk ons weer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-6"
+      },
+      {
+        "condition": "fog",
+        "index": 53,
+        "en": "You can hear the hadedas but you can't see them. Ominous? No. Just Tuesday.",
+        "af": "Jy hoor die hadidas, maar jy sien niks. Onheilspellend? Nee. Net Dinsdag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-6"
+      },
+      {
+        "condition": "fog",
+        "index": 54,
+        "en": "Visibility: zero. Mood: surprisingly at peace with it.",
+        "af": "Sig: nul. Gemoed: verbasend rustig daaroor.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-6"
+      },
+      {
+        "condition": "fog",
+        "index": 55,
+        "en": "There's a view here somewhere. The brochure promised.",
+        "af": "Iewers hier is 'n uitsig. Die brosjure het belowe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-7"
+      },
+      {
+        "condition": "fog",
+        "index": 56,
+        "en": "Relax, the mountains are just buffering.",
+        "af": "Moenie stres nie — die berge buffer nog.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-7"
+      },
+      {
+        "condition": "fog",
+        "index": 57,
+        "en": "This morning's rush hour: one canoe.",
+        "af": "Vanoggend se spitsverkeer: een kano.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dawn-7"
+      },
+      {
+        "condition": "fog",
+        "index": 58,
+        "en": "Visibility: poor. Vibes: untouchable.",
+        "af": "Sig: swak. Vibes: onaantasbaar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-1"
+      },
+      {
+        "condition": "fog",
+        "index": 59,
+        "en": "The fog is borrowing the colours. It'll return them in the morning.",
+        "af": "Die mis het die kleure kom leen. Hy bring hulle môre terug.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-1"
+      },
+      {
+        "condition": "fog",
+        "index": 60,
+        "en": "Every window switching on is someone deciding: that's enough for today.",
+        "af": "Elke venster wat aangaan is iemand wat besluit het: genoeg vir vandag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-1"
+      },
+      {
+        "condition": "fog",
+        "index": 61,
+        "en": "The fog says stay. Who are we to argue?",
+        "af": "Die mis sê bly. Wie's ons om te stry?",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-2"
+      },
+      {
+        "condition": "fog",
+        "index": 62,
+        "en": "Nobody is driving home in this. That's not laziness, that's science.",
+        "af": "Niemand ry nou nog huis toe nie. Dis nie luiheid nie, dis wetenskap.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-2"
+      },
+      {
+        "condition": "fog",
+        "index": 63,
+        "en": "Fireplace weather showed up without even asking.",
+        "af": "Kaggelweer het opgedaag sonder om eers te vra.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-2"
+      },
+      {
+        "condition": "fog",
+        "index": 64,
+        "en": "Perfect weather to bump into someone you've 'been meaning to call'.",
+        "af": "Perfekte weer om iemand raak te loop wat jy 'nog wou bel'.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-3"
+      },
+      {
+        "condition": "fog",
+        "index": 65,
+        "en": "The whole town just switched itself to whisper volume.",
+        "af": "Die dorp het homself op fluistervolume gesit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-3"
+      },
+      {
+        "condition": "fog",
+        "index": 66,
+        "en": "Every streetlamp thinks it's the moon tonight.",
+        "af": "Elke straatlig dink hy's vanaand die maan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-3"
+      },
+      {
+        "condition": "fog",
+        "index": 67,
+        "en": "The whole street smells like someone else's dinner and the fog won't say whose.",
+        "af": "Die hele straat ruik na iemand anders se kos. Die mis hou die geheim.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-4"
+      },
+      {
+        "condition": "fog",
+        "index": 68,
+        "en": "Let's call it atmosphere and go inside.",
+        "af": "Kom ons noem dit atmosfeer en gaan in.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-4"
+      },
+      {
+        "condition": "fog",
+        "index": 69,
+        "en": "Highveld fog: rare enough that everyone's photographing it.",
+        "af": "Highveld-mis: skaars genoeg dat almal dit afneem.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-4"
+      },
+      {
+        "condition": "fog",
+        "index": 70,
+        "en": "Ice swimmers don't check the weather. The weather checks them.",
+        "af": "Ysswemmers check nie die weer nie. Die weer check hulle.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-5"
+      },
+      {
+        "condition": "fog",
+        "index": 71,
+        "en": "Visibility is for people who turn back.",
+        "af": "Sig is vir mense wat omdraai.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-5"
+      },
+      {
+        "condition": "fog",
+        "index": 72,
+        "en": "The sea has vanished but the tannies are here. Priorities.",
+        "af": "Die see is weg maar die tannies is hier. Prioriteite.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-5"
+      },
+      {
+        "condition": "fog",
+        "index": 73,
+        "en": "You can't see the house. You believe the house.",
+        "af": "Jy sien nie die huis nie. Jy gló die huis.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-6"
+      },
+      {
+        "condition": "fog",
+        "index": 74,
+        "en": "The mountains went to bed early tonight.",
+        "af": "Die berge het vanaand vroeg gaan slaap.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-6"
+      },
+      {
+        "condition": "fog",
+        "index": 75,
+        "en": "Last one through closes the gate. Even if nobody can see it.",
+        "af": "Laaste een by die hek maak toe. Al sien niemand dit nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-6"
+      },
+      {
+        "condition": "fog",
+        "index": 76,
+        "en": "The Heads are closed. The evening is open.",
+        "af": "Die Koppe is toe. Die aand is oop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-7"
+      },
+      {
+        "condition": "fog",
+        "index": 77,
+        "en": "Somewhere a dog is barking and everyone's pretending they know where.",
+        "af": "Iewers blaf 'n hond en almal maak of hulle weet waar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-7"
+      },
+      {
+        "condition": "fog",
+        "index": 78,
+        "en": "The fog came early to gift-wrap the evening.",
+        "af": "Die mis het die aand vroeg kom toedraai. Soos 'n present.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-dusk-7"
+      },
+      {
+        "condition": "fog",
+        "index": 79,
+        "en": "The city pulled up its duvet. Leave it alone.",
+        "af": "Die stad het sy duvet opgetrek. Los hom.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-1"
+      },
+      {
+        "condition": "fog",
+        "index": 80,
+        "en": "Every glow down there is someone else who also can't believe it's already winter.",
+        "af": "Elke liggie daar onder is iemand wat ook nie kan glo dis al winter nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-1"
+      },
+      {
+        "condition": "fog",
+        "index": 81,
+        "en": "From up here everyone's problems look out of focus. Works for me.",
+        "af": "Van hier bo lyk almal se probleme onskerp. Werk vir my.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-1"
+      },
+      {
+        "condition": "fog",
+        "index": 82,
+        "en": "The foghorn is Sea Point's free white-noise machine.",
+        "af": "Die mishoring is Seepunt se gratis witgeraas-masjien.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-2"
+      },
+      {
+        "condition": "fog",
+        "index": 83,
+        "en": "Somewhere the foghorn moans and a thousand people say 'ag nee' at exactly the same time.",
+        "af": "Iewers loei die mishoring en 'n duisend mense sê gelyk 'ag nee'.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-2"
+      },
+      {
+        "condition": "fog",
+        "index": 84,
+        "en": "Seventeenth floor, zero view, one hundred percent snug.",
+        "af": "Sewentiende verdieping, nul uitsig, honderd persent snug.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-2"
+      },
+      {
+        "condition": "fog",
+        "index": 85,
+        "en": "Night fog in the vineyards: spa night for the grapes.",
+        "af": "Nagmis in die wingerde: die druiwe se spa-aand.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-3"
+      },
+      {
+        "condition": "fog",
+        "index": 86,
+        "en": "Everything you can hear tonight is one owl with strong opinions.",
+        "af": "Al wat jy vanaand hoor, is een uil met sterk opinies.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-3"
+      },
+      {
+        "condition": "fog",
+        "index": 87,
+        "en": "The gable has seen worse in three hundred years. Sleep easy.",
+        "af": "Die gewel het in driehonderd jaar erger gesien. Slaap gerus.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-3"
+      },
+      {
+        "condition": "fog",
+        "index": 88,
+        "en": "The dog doesn't understand where the world went. Same, boy. Same.",
+        "af": "Die hond verstaan nie waar die wêreld heen is nie. Ons ook nie, boytjie. Ons ook nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-4"
+      },
+      {
+        "condition": "fog",
+        "index": 89,
+        "en": "Ten pm fog turns every street into a film set.",
+        "af": "Tienuur se mis maak elke straat 'n fliekstel.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-4"
+      },
+      {
+        "condition": "fog",
+        "index": 90,
+        "en": "Joburg does fog so rarely it feels like a limited edition.",
+        "af": "Joburg doen mis so selde dat dit soos 'n spesiale uitgawe voel.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-4"
+      },
+      {
+        "condition": "fog",
+        "index": 91,
+        "en": "Slap chips taste better when the world ends at the harbour wall.",
+        "af": "Slaptjips proe beter as die wêreld by die hawemuur ophou.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-5"
+      },
+      {
+        "condition": "fog",
+        "index": 92,
+        "en": "The sea is still out there. You can smell it, but it can't see you.",
+        "af": "Die see is nog daar. Jy ruik hom, hy sien jou nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-5"
+      },
+      {
+        "condition": "fog",
+        "index": 93,
+        "en": "Four friends, one parcel of chips, zero visibility. Perfect evening.",
+        "af": "Vier vriende, een pakkie tjips, nul sig. Perfekte aand.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-5"
+      },
+      {
+        "condition": "fog",
+        "index": 94,
+        "en": "The stars took a night off. Even them.",
+        "af": "Die sterre het 'n aand af gevat. Selfs húlle.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-6"
+      },
+      {
+        "condition": "fog",
+        "index": 95,
+        "en": "Karoo night fog: rare enough that it'll get mentioned in church on Sunday.",
+        "af": "Karoo-nagmis: so skaars dat die dominee dit môre gaan noem.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-6"
+      },
+      {
+        "condition": "fog",
+        "index": 96,
+        "en": "The nearest neighbours are thirty kilometres away and tonight they can see you even less.",
+        "af": "Die naaste bure is dertig kilometer weg en vanaand kan hulle jou nog minder sien.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-6"
+      },
+      {
+        "condition": "fog",
+        "index": 97,
+        "en": "Deep in the forest, deep under a blanket — exact same energy.",
+        "af": "Diep in die bos, diep onder 'n kombers — dieselfde energie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-7"
+      },
+      {
+        "condition": "fog",
+        "index": 98,
+        "en": "No streaming service has a genre for this.",
+        "af": "Geen stroomdiens het 'n genre vir hierdie nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-7"
+      },
+      {
+        "condition": "fog",
+        "index": 99,
+        "en": "Tonight the forest is telling its stories in a whisper.",
+        "af": "Die bos vertel vanaand sy stories op fluistertoon.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "fog-night-7"
+      },
+      {
+        "condition": "heat",
+        "index": 36,
+        "en": "6am and the sun is already done warming up. That wasn't a warm-up, that was a warning.",
+        "af": "06:00 en die son is klaar klaar met opwarm. Dit was nie 'n opwarming nie, dit was 'n waarskuwing.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-1"
+      },
+      {
+        "condition": "heat",
+        "index": 37,
+        "en": "The day hasn't even started yet and it's already winning.",
+        "af": "Die dag het nog nie eers begin nie en hy wen alreeds.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-1"
+      },
+      {
+        "condition": "heat",
+        "index": 38,
+        "en": "Drink your coffee fast. By seven it's soup.",
+        "af": "Drink jou koffie gou. Teen sewe is dit sop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-1"
+      },
+      {
+        "condition": "heat",
+        "index": 39,
+        "en": "If it feels like this now, second break is going to be a survival sport.",
+        "af": "As dit nóú al so voel, gaan tweede pouse 'n oorlewingsport wees.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-2"
+      },
+      {
+        "condition": "heat",
+        "index": 40,
+        "en": "Long pants with the uniform was a gamble today. Strength, my child.",
+        "af": "Skooldrag met 'n langbroek was vandag 'n gok. Sterkte, my kind.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-2"
+      },
+      {
+        "condition": "heat",
+        "index": 41,
+        "en": "6:30 and the tar is already considering melting.",
+        "af": "06:30 en die teer dink al aan smelt.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-2"
+      },
+      {
+        "condition": "heat",
+        "index": 42,
+        "en": "The birds have already gone quiet. They know something.",
+        "af": "Die voëls het klaar stil geraak. Hulle weet iets.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-3"
+      },
+      {
+        "condition": "heat",
+        "index": 43,
+        "en": "Today's workout: car to aircon.",
+        "af": "Vandag se oefensessie: van die kar tot by die aircon.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-3"
+      },
+      {
+        "condition": "heat",
+        "index": 44,
+        "en": "The berg wind turned overnight. Cape Town, today you're basically Upington.",
+        "af": "Die bergwind het in die nag gedraai. Kaapstad, vandag is jy Upington.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-4"
+      },
+      {
+        "condition": "heat",
+        "index": 45,
+        "en": "The sea is 12 degrees. By ten o'clock it's going to feel like a spa.",
+        "af": "Die see is 12 grade. Teen tienuur gaan dit soos 'n spa voel.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-4"
+      },
+      {
+        "condition": "heat",
+        "index": 46,
+        "en": "Today even the people who 'just came to watch' are swimming.",
+        "af": "Vandag swem selfs die mense wat 'net kom kyk het'.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-4"
+      },
+      {
+        "condition": "heat",
+        "index": 47,
+        "en": "Everyone running now will be bragging about it by lunch. That's the whole point.",
+        "af": "Almal wat nou draf, gaan teen middagete daaroor spog. Dis die hele punt.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-5"
+      },
+      {
+        "condition": "heat",
+        "index": 48,
+        "en": "The 5:30 runners aren't fitter than us. They're just smarter.",
+        "af": "Die 05:30-drawwers is nie fikser as ons nie. Hulle is net slimmer.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-5"
+      },
+      {
+        "condition": "heat",
+        "index": 49,
+        "en": "Even the sun got up early to beat the traffic.",
+        "af": "Selfs die son het vroeg opgestaan om die verkeer te klop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-5"
+      },
+      {
+        "condition": "heat",
+        "index": 50,
+        "en": "The pool is already fully booked. By everyone. For the whole day.",
+        "af": "Die swembad is reeds bespreek. Deur almal. Vir die hele dag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-6"
+      },
+      {
+        "condition": "heat",
+        "index": 51,
+        "en": "First one in doesn't get to complain that it's cold. That's the rule.",
+        "af": "Die eerste een in mag nie kla dis koud nie. Dis die reël.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-6"
+      },
+      {
+        "condition": "heat",
+        "index": 52,
+        "en": "By noon this water is bath temperature. Plan accordingly.",
+        "af": "Teen twaalfuur is hierdie water bad-temperatuur. Beplan daarvolgens.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-6"
+      },
+      {
+        "condition": "heat",
+        "index": 53,
+        "en": "Even the dog checked the forecast and went straight back to bed.",
+        "af": "Selfs die hond het die voorspelling gecheck en teruggegaan bed toe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-7"
+      },
+      {
+        "condition": "heat",
+        "index": 54,
+        "en": "The windpomp is dead still. Even the wind isn't coming in to work today.",
+        "af": "Die windpomp staan doodstil. Nie eers die wind wil vandag werk nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-7"
+      },
+      {
+        "condition": "heat",
+        "index": 55,
+        "en": "Shade-hunting season officially opens at seven.",
+        "af": "Skaduwee-jagseisoen maak amptelik om sewe-uur oop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dawn-7"
+      },
+      {
+        "condition": "heat",
+        "index": 56,
+        "en": "35 in the shade. In the sun, nobody's counting anymore.",
+        "af": "35 in die skadu. In die son tel niemand meer nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-1"
+      },
+      {
+        "condition": "heat",
+        "index": 57,
+        "en": "Today's plan is the stoep. That's the entire plan.",
+        "af": "Die plan vir vandag is die stoep. Dis die hele plan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-1"
+      },
+      {
+        "condition": "heat",
+        "index": 58,
+        "en": "Move slowly. Speak slowly. Survive.",
+        "af": "Beweeg stadig. Praat stadig. Oorleef.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-1"
+      },
+      {
+        "condition": "heat",
+        "index": 59,
+        "en": "Funny how everyone suddenly remembers they love you when you own a pool.",
+        "af": "Snaaks hoe almal skielik onthou hulle is lief vir jou wanneer jy 'n swembad het.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-2"
+      },
+      {
+        "condition": "heat",
+        "index": 60,
+        "en": "Bring your own ice. The friendship doesn't cover ice.",
+        "af": "Bring jou eie ys. Die vriendskap dek nie ys nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-2"
+      },
+      {
+        "condition": "heat",
+        "index": 61,
+        "en": "Pool access is the new currency.",
+        "af": "Swembad-toegang is die nuwe geldeenheid.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-2"
+      },
+      {
+        "condition": "heat",
+        "index": 62,
+        "en": "The air says 34. The water says 13. Pick your fight.",
+        "af": "Die lug sê 34. Die water sê 13. Kies jou geveg.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-4"
+      },
+      {
+        "condition": "heat",
+        "index": 63,
+        "en": "The Atlantic: the only place where you can burn and freeze at the same time.",
+        "af": "Die Atlantiese Oseaan: die enigste plek waar jy gelyktydig kan verbrand én verkluim.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-4"
+      },
+      {
+        "condition": "heat",
+        "index": 64,
+        "en": "Brave is whoever goes in past the knees.",
+        "af": "Dapper is die een wat verby die knieë ingaan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-4"
+      },
+      {
+        "condition": "heat",
+        "index": 65,
+        "en": "Watermelon isn't dessert. It's first aid.",
+        "af": "Waatlemoen is nie nagereg nie. Dis noodhulp.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-5"
+      },
+      {
+        "condition": "heat",
+        "index": 66,
+        "en": "Lunch moved outside because inside is hotter than outside. Nobody can explain it.",
+        "af": "Middagete het buitetoe getrek, want binne is warmer as buite. Niemand kan dit verklaar nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-5"
+      },
+      {
+        "condition": "heat",
+        "index": 67,
+        "en": "The oldest tree has the best seats. As always.",
+        "af": "Die oudste boom het die beste sitplekke. Soos altyd.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-day-5"
+      },
+      {
+        "condition": "heat",
+        "index": 68,
+        "en": "The day is finally exhaling. So are we.",
+        "af": "Die dag blaas uiteindelik uit. Ons ook.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-1"
+      },
+      {
+        "condition": "heat",
+        "index": 69,
+        "en": "The first sip after a 35-degree day should honestly be taxable.",
+        "af": "Die eerste sluk ná 'n 35-grade dag behoort eerlikwaar belasbaar te wees.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-1"
+      },
+      {
+        "condition": "heat",
+        "index": 70,
+        "en": "We don't talk about today. Today is over. We're proud of us.",
+        "af": "Ons praat nie oor vandag nie. Vandag is verby. Ons is trots op ons.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-1"
+      },
+      {
+        "condition": "heat",
+        "index": 71,
+        "en": "Nobody is getting out. The water has only just forgiven us.",
+        "af": "Niemand klim uit nie. Die water het ons nou eers vergewe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-2"
+      },
+      {
+        "condition": "heat",
+        "index": 72,
+        "en": "Supper can wait. Golden hour in the pool cannot.",
+        "af": "Aandete kan wag. Goue uur in die swembad kan nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-2"
+      },
+      {
+        "condition": "heat",
+        "index": 73,
+        "en": "'Five more minutes' has been going for forty minutes now. Let them.",
+        "af": "'Nog vyf minute' is nou al veertig minute lank. Laat hulle.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-2"
+      },
+      {
+        "condition": "heat",
+        "index": 74,
+        "en": "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements.",
+        "af": "19:00 en steeds 30 grade. Die Karoo maak nie foute nie, net stellings.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-3"
+      },
+      {
+        "condition": "heat",
+        "index": 75,
+        "en": "The rocks will be handing out today's heat all night. Free of charge.",
+        "af": "Die klippe gaan vannag nog die dag se hitte uitdeel. Verniet.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-3"
+      },
+      {
+        "condition": "heat",
+        "index": 76,
+        "en": "Sunset is the Karoo's way of apologising.",
+        "af": "Sonsondergang is die Karoo se manier van jammer sê.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-3"
+      },
+      {
+        "condition": "heat",
+        "index": 77,
+        "en": "The whole city had the same plan tonight. Look at us all.",
+        "af": "Die hele stad het vanaand dieselfde plan gehad. Kyk hoe lyk ons.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-4"
+      },
+      {
+        "condition": "heat",
+        "index": 78,
+        "en": "Ice cream at eight isn't dessert, it's a recovery plan.",
+        "af": "Roomys om agtuur is nie nagereg nie, dis 'n herstelplan.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-4"
+      },
+      {
+        "condition": "heat",
+        "index": 79,
+        "en": "The sun only sets after eight. Summer knows how to stretch an evening.",
+        "af": "Die son sak eers ná agt. Somer weet hoe om 'n aand te rek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-4"
+      },
+      {
+        "condition": "heat",
+        "index": 80,
+        "en": "The first breeze of the day has just arrived. Give it a round of applause.",
+        "af": "Die eerste briesie van die dag het nou net opgedaag. Gee hom applous.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-5"
+      },
+      {
+        "condition": "heat",
+        "index": 81,
+        "en": "The day tried to finish us. We're drinking to that now.",
+        "af": "Die dag het ons probeer opeet. Ons drink nou daarop.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-5"
+      },
+      {
+        "condition": "heat",
+        "index": 82,
+        "en": "The sprinkler is supposedly for the lawn. Look who's all standing in the water.",
+        "af": "Die sproeier is kamma vir die gras. Kyk wie staan almal in die water.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-6"
+      },
+      {
+        "condition": "heat",
+        "index": 83,
+        "en": "Adults 'just taking a garden stroll' exactly where the sprinkler sprays. Coincidence, nè.",
+        "af": "Grootmense wat 'net deur die tuin stap' presies waar die sproeier spuit. Toeval, nè.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-6"
+      },
+      {
+        "condition": "heat",
+        "index": 84,
+        "en": "The lawn gets water. The people get therapy.",
+        "af": "Die gras kry water. Die mense kry terapie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "heat-dusk-6"
+      },
+      {
+        "condition": "rain",
+        "index": 36,
+        "en": "The dams get their drink before you get your coffee. Know your place.",
+        "af": "Die damme drink eerste. Jy kry jou koffie tweede.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-1"
+      },
+      {
+        "condition": "rain",
+        "index": 37,
+        "en": "Cape winter: the mountain is getting its water back, with interest.",
+        "af": "Kaapse winter: die berg kry sy water terug, met rente.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-1"
+      },
+      {
+        "condition": "rain",
+        "index": 38,
+        "en": "Every farmer in the Boland is smiling in their sleep right now.",
+        "af": "Elke boer in die Boland glimlag nou in sy slaap.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-1"
+      },
+      {
+        "condition": "rain",
+        "index": 39,
+        "en": "In the Karoo this isn't rain. It's a celebrity appearance.",
+        "af": "In die Karoo is dit nie reën nie. Dis 'n verskyning.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-2"
+      },
+      {
+        "condition": "rain",
+        "index": 40,
+        "en": "Even the sheep are standing still for this one.",
+        "af": "Selfs die skape staan stil vir hierdie een.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-2"
+      },
+      {
+        "condition": "rain",
+        "index": 41,
+        "en": "Somebody's birthday-candle wish just paid out.",
+        "af": "Iemand het reggewens by die verjaarsdagkoek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-2"
+      },
+      {
+        "condition": "rain",
+        "index": 42,
+        "en": "That sound on the roof just hit snooze for the entire country.",
+        "af": "Die reën op die dak het net amptelik snooze gedruk vir die hele land.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-3"
+      },
+      {
+        "condition": "rain",
+        "index": 43,
+        "en": "Five more minutes. The weather itself signed off on it.",
+        "af": "Vyf minute nog. Die weer het self so gesê.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-3"
+      },
+      {
+        "condition": "rain",
+        "index": 44,
+        "en": "One breath of rain air and suddenly the whole country is a poet.",
+        "af": "Een teug reënlug en skielik is almal in hierdie land 'n digter.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-5"
+      },
+      {
+        "condition": "rain",
+        "index": 45,
+        "en": "Petrichor is the Greek word for it. Our word is 'sjoe'.",
+        "af": "Petrichor is die Griekse woord. Ons woord is 'sjoe'.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-5"
+      },
+      {
+        "condition": "rain",
+        "index": 46,
+        "en": "Dam levels are the Cape's real Currie Cup.",
+        "af": "Damvlakke is die Kaap se eintlike Currie Cup.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-6"
+      },
+      {
+        "condition": "rain",
+        "index": 47,
+        "en": "Every percentage point gets its own family WhatsApp announcement.",
+        "af": "Elke persentasiepunt kry sy eie familie-WhatsApp.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-6"
+      },
+      {
+        "condition": "rain",
+        "index": 48,
+        "en": "Theewaterskloof is about to trend in the group chat.",
+        "af": "Theewaterskloof gaan vanoggend viraal in die groepsgesprek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-6"
+      },
+      {
+        "condition": "rain",
+        "index": 49,
+        "en": "Rain on a farm isn't weather. It's a salary falling from the sky.",
+        "af": "Reën op 'n plaas is nie weer nie. Dis 'n salaris wat val.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-7"
+      },
+      {
+        "condition": "rain",
+        "index": 50,
+        "en": "Somewhere a farmer is doing a small private dance nobody's allowed to see.",
+        "af": "Iewers doen 'n boer nou 'n klein dansie wat niemand mag sien nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-7"
+      },
+      {
+        "condition": "rain",
+        "index": 51,
+        "en": "Wet tar at sunrise. That's not a smell, that's heritage.",
+        "af": "Nat teer by sonsopkoms. Dis nie 'n reuk nie, dis 'n erfenis.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-8"
+      },
+      {
+        "condition": "rain",
+        "index": 52,
+        "en": "Post-storm Highveld air should be bottled and sold overseas.",
+        "af": "Die Hooglandlug ná reën behoort in 'n botteltjie verkoop te word.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dawn-8"
+      },
+      {
+        "condition": "rain",
+        "index": 53,
+        "en": "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies.",
+        "af": "Joburg se reën hou dagboek: 14:00, stiptelik, vol drama.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-1"
+      },
+      {
+        "condition": "rain",
+        "index": 54,
+        "en": "Twenty minutes of opera, then the sun acts like nothing happened.",
+        "af": "Twintig minute se opera, dan maak die son of niks gebeur het nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-1"
+      },
+      {
+        "condition": "rain",
+        "index": 55,
+        "en": "Other cities get weather. Joburg gets a production.",
+        "af": "Ander stede kry weer. Joburg kry 'n vertoning.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-1"
+      },
+      {
+        "condition": "rain",
+        "index": 56,
+        "en": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+        "af": "Twee druppels op die voorruit en die hele N1 se geheue is skoon gewas.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-2"
+      },
+      {
+        "condition": "rain",
+        "index": 57,
+        "en": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+        "af": "Reën verander elke Suid-Afrikaanse bestuurder terug in 'n leerling.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-2"
+      },
+      {
+        "condition": "rain",
+        "index": 58,
+        "en": "Capetonians don't run from rain. They run towards it, cheering.",
+        "af": "Kapenaars hardloop nie weg van die reën nie. Hulle hardloop soontoe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-3"
+      },
+      {
+        "condition": "rain",
+        "index": 59,
+        "en": "One drought in living memory and now every downpour is a lottery win.",
+        "af": "Drie jaar se droogte-geheue en skielik is elke bui 'n lotto-wen.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-3"
+      },
+      {
+        "condition": "rain",
+        "index": 60,
+        "en": "Rain is just weather's way of saying stay where the coffee is.",
+        "af": "Reën is net die weer se manier om te sê: bly waar die koffie is.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-5"
+      },
+      {
+        "condition": "rain",
+        "index": 61,
+        "en": "All plans are officially moved to 'when it clears up'. Which is never. Shame.",
+        "af": "Alle afsprake is amptelik verskuif na 'wanneer dit opklaar'.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-5"
+      },
+      {
+        "condition": "rain",
+        "index": 62,
+        "en": "You smell Highveld rain before you see it. That's the trailer.",
+        "af": "Jy ruik Hoëveldse reën voor jy hom sien. Dis die lokprent.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-6"
+      },
+      {
+        "condition": "rain",
+        "index": 63,
+        "en": "The veld already knows. The veld always knows first.",
+        "af": "Die veld weet reeds. Die veld weet altyd eerste.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-6"
+      },
+      {
+        "condition": "rain",
+        "index": 64,
+        "en": "In the Cape, wine genuinely tastes better when the dam levels are rising.",
+        "af": "In die Kaap proe die wyn beter as die damme styg.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-7"
+      },
+      {
+        "condition": "rain",
+        "index": 65,
+        "en": "To the dam levels! Every downpour is a round on the house.",
+        "af": "Op die damvlakke! Elke bui is 'n rondte op die huis.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-7"
+      },
+      {
+        "condition": "rain",
+        "index": 66,
+        "en": "Breaking news: the puddles are open for business.",
+        "af": "Groot nuus: die plasse is oop vir besigheid.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-8"
+      },
+      {
+        "condition": "rain",
+        "index": 67,
+        "en": "School shoes' greatest enemy has just landed.",
+        "af": "Skoolskoene se grootste vyand het pas geland.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-8"
+      },
+      {
+        "condition": "rain",
+        "index": 68,
+        "en": "Somebody's mom is going to have words. Worth it.",
+        "af": "Iemand se ma gaan iets sê. Dit was die moeite werd.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-day-8"
+      },
+      {
+        "condition": "rain",
+        "index": 69,
+        "en": "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
+        "af": "Joburg reën twintig minute en verf dan die lug asof niks gebeur het nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dusk-1"
+      },
+      {
+        "condition": "rain",
+        "index": 70,
+        "en": "The storm was the performance. This is the bow.",
+        "af": "Die storm was die opvoering. Dít is die buiging.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dusk-1"
+      },
+      {
+        "condition": "rain",
+        "index": 71,
+        "en": "Dusk rain turns the whole city's volume down a notch.",
+        "af": "Skemer-reën draai die hele stad se volume saggies af.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dusk-2"
+      },
+      {
+        "condition": "rain",
+        "index": 72,
+        "en": "The mountain is having a quiet drink. So is half the city, probably.",
+        "af": "Die berg drink rustig. Die stad ook, waarskynlik.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dusk-2"
+      },
+      {
+        "condition": "rain",
+        "index": 73,
+        "en": "Distant lightning and a warm mug: best channel on television.",
+        "af": "Weerlig in die verte, koffie in die hand — beste kanaal op televisie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dusk-3"
+      },
+      {
+        "condition": "rain",
+        "index": 74,
+        "en": "In the Karoo you watch rain the way other people watch rugby.",
+        "af": "In die Karoo kyk jy reën soos ander mense rugby kyk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dusk-3"
+      },
+      {
+        "condition": "rain",
+        "index": 75,
+        "en": "It's still fifty kilometres away and the stoep is already sold out.",
+        "af": "Dis nog vyftig kilometer weg en die stoep is klaar vol.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-dusk-3"
+      },
+      {
+        "condition": "rain",
+        "index": 76,
+        "en": "Rain on a tin roof: the official national lullaby.",
+        "af": "Reën op 'n sinkdak: die land se amptelike slaapliedjie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-night-1"
+      },
+      {
+        "condition": "rain",
+        "index": 77,
+        "en": "No sleep app on earth can compete with a tin roof.",
+        "af": "Geen slaap-app op aarde kan met 'n sinkdak meeding nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-night-1"
+      },
+      {
+        "condition": "rain",
+        "index": 78,
+        "en": "Put the phone down. The roof is talking.",
+        "af": "Sit die foon neer. Die dak is besig om te praat.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-night-1"
+      },
+      {
+        "condition": "rain",
+        "index": 79,
+        "en": "Free fireworks, no tickets, best seats in the house.",
+        "af": "Gratis vuurwerke. Geen kaartjies. Beste sitplekke in die huis.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-night-3"
+      },
+      {
+        "condition": "rain",
+        "index": 80,
+        "en": "The Highveld doesn't do subtle, and honestly we're grateful.",
+        "af": "Die Hoëveld hou nie van subtiel nie en ons is dankbaar.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-night-3"
+      },
+      {
+        "condition": "rain",
+        "index": 81,
+        "en": "Sleep tight, dams. You worked hard today.",
+        "af": "Slaap lekker, damme. Julle het vandag hard gewerk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-night-5"
+      },
+      {
+        "condition": "rain",
+        "index": 82,
+        "en": "The Boland is getting watered in its sleep and will absolutely brag about it tomorrow.",
+        "af": "Die Boland word in sy slaap natgelê en môre spog hy daaroor.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "rain-night-5"
+      },
+      {
+        "condition": "storm",
+        "index": 32,
+        "en": "The sky woke up in a mood.",
+        "af": "Die lug het wakker geword met 'n houding.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-1"
+      },
+      {
+        "condition": "storm",
+        "index": 33,
+        "en": "6am and the sky has already called a meeting.",
+        "af": "06:00 en die hemel het reeds 'n vergadering belê.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-1"
+      },
+      {
+        "condition": "storm",
+        "index": 34,
+        "en": "Not even coffee is fixing this mood.",
+        "af": "Nie eens koffie gaan dié bui regmaak nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-1"
+      },
+      {
+        "condition": "storm",
+        "index": 35,
+        "en": "Rusks first. Panic later.",
+        "af": "Beskuit eerste. Paniek later.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-3"
+      },
+      {
+        "condition": "storm",
+        "index": 36,
+        "en": "Free IMAX this morning, boet.",
+        "af": "Gratis IMAX vanoggend, boet.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-3"
+      },
+      {
+        "condition": "storm",
+        "index": 37,
+        "en": "The dog has already booked his spot under the bed.",
+        "af": "Die hond het klaar sy plek onder die bed bespreek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-3"
+      },
+      {
+        "condition": "storm",
+        "index": 38,
+        "en": "Sunrise chose drama today.",
+        "af": "Die sonsopkoms het vanoggend op drama besluit.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-4"
+      },
+      {
+        "condition": "storm",
+        "index": 39,
+        "en": "Somewhere a farmer is very chuffed right now.",
+        "af": "Iewers is 'n boer nou baie in sy noppies.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-4"
+      },
+      {
+        "condition": "storm",
+        "index": 40,
+        "en": "Even the water is holding its breath.",
+        "af": "Selfs die water hou sy asem op.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-5"
+      },
+      {
+        "condition": "storm",
+        "index": 41,
+        "en": "Gorgeous, but I trust it zero percent.",
+        "af": "Pragtig, maar ek vertrou dit vir niks.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-5"
+      },
+      {
+        "condition": "storm",
+        "index": 42,
+        "en": "The calm before the group chat explodes.",
+        "af": "Dis die stilte voor die groepsgesprek ontplof.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-5"
+      },
+      {
+        "condition": "storm",
+        "index": 43,
+        "en": "Drive now, wonder later.",
+        "af": "Ry nou, wonder later.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-6"
+      },
+      {
+        "condition": "storm",
+        "index": 44,
+        "en": "The horizon looks like a movie finale.",
+        "af": "Die horison lyk soos 'n fliek se slottoneel.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-6"
+      },
+      {
+        "condition": "storm",
+        "index": 45,
+        "en": "Neighbourhood watch has a new agenda: the sky.",
+        "af": "Buurtwag se nuwe agenda: die lug.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-7"
+      },
+      {
+        "condition": "storm",
+        "index": 46,
+        "en": "Nobody is being on time today.",
+        "af": "Niemand gaan vandag betyds wees nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-7"
+      },
+      {
+        "condition": "storm",
+        "index": 47,
+        "en": "Those aren't clouds, that's a trailer.",
+        "af": "Dis nie wolke nie, dis 'n lokprent.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-7"
+      },
+      {
+        "condition": "storm",
+        "index": 48,
+        "en": "Today's forecast: special effects.",
+        "af": "Vandag se voorspelling: verhoogeffekte.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-8"
+      },
+      {
+        "condition": "storm",
+        "index": 49,
+        "en": "Someone cranked the contrast way too high.",
+        "af": "Iemand het die kontras heeltemal te hoog gestel.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-8"
+      },
+      {
+        "condition": "storm",
+        "index": 50,
+        "en": "The smell of rain has already RSVP'd.",
+        "af": "Die reuk van reën het klaar ge-RSVP.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dawn-8"
+      },
+      {
+        "condition": "storm",
+        "index": 51,
+        "en": "The braai continues. So does the show.",
+        "af": "Die braai gaan aan. Die vertoning ook.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dusk-1"
+      },
+      {
+        "condition": "storm",
+        "index": 52,
+        "en": "Unplug the TV — it's tradition.",
+        "af": "Onthou om die TV se prop uit te trek — dis tradisie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dusk-1"
+      },
+      {
+        "condition": "storm",
+        "index": 53,
+        "en": "Free fireworks, no tickets needed.",
+        "af": "Gratis vuurwerke, geen kaartjies nodig nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-dusk-1"
+      },
+      {
+        "condition": "storm",
+        "index": 54,
+        "en": "Midnight and the sky is showing off.",
+        "af": "Middernag en die lug wys af.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-night-1"
+      },
+      {
+        "condition": "storm",
+        "index": 55,
+        "en": "Sleep is cancelled, but look at that shot.",
+        "af": "Slaap is gekanselleer, maar kyk net daai skoot.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-night-1"
+      },
+      {
+        "condition": "storm",
+        "index": 56,
+        "en": "Thunder at volume ten, the neighbour's dog at eleven.",
+        "af": "Donderweer op volume tien, die buurman se hond op elf.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-night-1"
+      },
+      {
+        "condition": "storm",
+        "index": 57,
+        "en": "The farm's best TV channel.",
+        "af": "Die plaas se beste TV-kanaal.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-night-2"
+      },
+      {
+        "condition": "storm",
+        "index": 58,
+        "en": "Every flash is a photo nobody takes in time.",
+        "af": "Elke weerligstraal is 'n foto wat niemand betyds neem nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "storm-night-2"
+      },
+      {
+        "condition": "wind",
+        "index": 20,
+        "en": "The Doctor's on morning rounds. No appointment needed, unfortunately.",
+        "af": "Die Dokter doen sy oggendrondtes. Geen afspraak nodig nie, ongelukkig.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-1"
+      },
+      {
+        "condition": "wind",
+        "index": 21,
+        "en": "The tablecloth was laid before anyone even ordered breakfast.",
+        "af": "Die tafeldoek is gedek voor enigiemand ontbyt bestel het.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-1"
+      },
+      {
+        "condition": "wind",
+        "index": 22,
+        "en": "Your hairstyle took one look and went back to bed.",
+        "af": "Jou haarstyl het een kyk gevat en teruggegaan bed toe.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-1"
+      },
+      {
+        "condition": "wind",
+        "index": 23,
+        "en": "Cape Town sends solidarity. And a spare cap.",
+        "af": "Kaapstad stuur sterkte. En 'n ekstra pet.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-3"
+      },
+      {
+        "condition": "wind",
+        "index": 24,
+        "en": "Everyone's jogging at a slight angle this morning.",
+        "af": "Almal draf vanoggend teen 'n effense hoek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-4"
+      },
+      {
+        "condition": "wind",
+        "index": 25,
+        "en": "Free microdermabrasion on the promenade today.",
+        "af": "Gratis mikrodermabrasie op die promenade vandag.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-4"
+      },
+      {
+        "condition": "wind",
+        "index": 26,
+        "en": "The South-Easter has no off switch. We've looked.",
+        "af": "Die Suidoos het nie 'n af-knoppie nie. Ons het gesoek.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-4"
+      },
+      {
+        "condition": "wind",
+        "index": 27,
+        "en": "The windpump's doing overtime and not even charging double.",
+        "af": "Die windpomp werk oortyd en vra nie eens dubbeltarief nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-5"
+      },
+      {
+        "condition": "wind",
+        "index": 28,
+        "en": "Even the sheep are wearing their fringes slicked back today.",
+        "af": "Selfs die skape se kuiwe lê vandag agteroor.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dawn-5"
+      },
+      {
+        "condition": "wind",
+        "index": 29,
+        "en": "The mountain has set the table. For two hundred guests.",
+        "af": "Die berg het die tafel gedek. Vir tweehonderd gaste.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-day-1"
+      },
+      {
+        "condition": "wind",
+        "index": 30,
+        "en": "The Cape Doctor is working straight through lunch.",
+        "af": "Die Kaapse Dokter werk deur etenstyd.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-day-1"
+      },
+      {
+        "condition": "wind",
+        "index": 31,
+        "en": "Hold your hat. Hold your kid. Just hold on.",
+        "af": "Hou jou hoed. Hou jou kind. Hou net vas.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-day-1"
+      },
+      {
+        "condition": "wind",
+        "index": 32,
+        "en": "The sea applauds, the wind takes a bow. We just want to get home.",
+        "af": "Die see klap hande, die wind buig. Ons wil net huis toe kom.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-2"
+      },
+      {
+        "condition": "wind",
+        "index": 33,
+        "en": "The boats are staying in. Take the hint.",
+        "af": "Die bote bly binne. Vat die wenk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-2"
+      },
+      {
+        "condition": "wind",
+        "index": 34,
+        "en": "Sunset with special effects, at no extra charge.",
+        "af": "Sonsondergang met spesiale effekte, geen ekstra koste nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-2"
+      },
+      {
+        "condition": "wind",
+        "index": 35,
+        "en": "At least somebody's making money out of this wind.",
+        "af": "Ten minste maak iemand geld uit hierdie wind.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-3"
+      },
+      {
+        "condition": "wind",
+        "index": 36,
+        "en": "Even the turbines look like they could use a breather.",
+        "af": "Selfs die turbines lyk of hulle 'n blaaskans wil vat.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-3"
+      },
+      {
+        "condition": "wind",
+        "index": 37,
+        "en": "The stoep cushions have called a meeting about relocating.",
+        "af": "Die stoepkussings het 'n vergadering belê oor verhuising.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-4"
+      },
+      {
+        "condition": "wind",
+        "index": 38,
+        "en": "Everything lightweight has ambitions tonight.",
+        "af": "Alles wat lig is, het vanaand ambisie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-4"
+      },
+      {
+        "condition": "wind",
+        "index": 39,
+        "en": "Close it, tie it down, surrender.",
+        "af": "Maak toe, maak vas, gee oor.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-dusk-4"
+      },
+      {
+        "condition": "wind",
+        "index": 40,
+        "en": "Turns out the Doctor also works night shift.",
+        "af": "Blyk die Dokter werk óók nagskof.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-1"
+      },
+      {
+        "condition": "wind",
+        "index": 41,
+        "en": "The tablecloth is pressed and ready for tomorrow's service.",
+        "af": "Die tafeldoek is gestryk en reg vir môre se diens.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-1"
+      },
+      {
+        "condition": "wind",
+        "index": 42,
+        "en": "Sleep tight. The wind will watch the house. Loudly.",
+        "af": "Slaap lekker. Die wind sal die huis oppas. Hard.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-1"
+      },
+      {
+        "condition": "wind",
+        "index": 43,
+        "en": "The masts are holding a concert tonight. No tickets required.",
+        "af": "Die maste hou vanaand 'n konsert. Geen kaartjies nodig nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-2"
+      },
+      {
+        "condition": "wind",
+        "index": 44,
+        "en": "The clouds are rushing like they're late for something.",
+        "af": "Die wolke jaag asof hulle laat is vir iets.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-3"
+      },
+      {
+        "condition": "wind",
+        "index": 45,
+        "en": "Every tree on the street is bowing the same way. Peer pressure.",
+        "af": "Elke boom in die straat buig dieselfde kant toe. Groepsdruk.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-3"
+      },
+      {
+        "condition": "wind",
+        "index": 46,
+        "en": "Tonight's wind has opinions.",
+        "af": "Vanaand se wind het opinies.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-3"
+      },
+      {
+        "condition": "wind",
+        "index": 47,
+        "en": "The wind swept the clouds away so you could see the stars. Apologies about everything else.",
+        "af": "Die wind het die wolke kom wegvee sodat jy die sterre kan sien. Jammer oor al die res.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-5"
+      },
+      {
+        "condition": "wind",
+        "index": 48,
+        "en": "Karoo white noise: one windpump, no off switch.",
+        "af": "Plattelandse wit-geraas: een windpomp, geen af-knoppie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-5"
+      },
+      {
+        "condition": "wind",
+        "index": 49,
+        "en": "Tonight you're not counting sheep, you're counting gusts.",
+        "af": "Vanaand tel jy nie skape nie, jy tel windvlae.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-5"
+      },
+      {
+        "condition": "wind",
+        "index": 50,
+        "en": "Somebody forgot to bring in the washing. The washing has not forgotten.",
+        "af": "Iemand het vergeet om die wasgoed in te bring. Die wasgoed het nie vergeet nie.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-6"
+      },
+      {
+        "condition": "wind",
+        "index": 51,
+        "en": "Tomorrow morning's first job: a search party.",
+        "af": "Môreoggend se eerste taak: 'n soekgeselskap.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-6"
+      },
+      {
+        "condition": "wind",
+        "index": 52,
+        "en": "Every peg in the village is holding thumbs tonight.",
+        "af": "Die hele dorp se wasgoedpennetjies hou vanaand duim vas.",
+        "needs": [
+          "zu",
+          "xh",
+          "st"
+        ],
+        "from": "wind-night-6"
+      }
+    ]
+  },
+  "held_lines_pending_reroll": {
+    "count": 98,
+    "concepts": 36,
+    "note": "lines for concepts whose image was NO/benched; apply once images re-rolled",
+    "concepts_detail": [
+      {
+        "id": "wind-dawn-2",
+        "condition": "wind",
+        "bin": "dawn",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die wasgoed hang nie meer nie, dit vlieg in formasie.",
+            "en": "The washing isn't hanging anymore, it's flying in formation.",
+            "tags": [
+              "region:any"
+            ]
+          },
+          {
+            "af": "Liewe buurvrou: jou laken het veilig by ons geland.",
+            "en": "Dear neighbour: your sheet has landed safely at our place.",
+            "tags": [
+              "region:any"
+            ]
+          },
+          {
+            "af": "Wasgoedpennetjies verdien vandag gevaartoelae.",
+            "en": "Pegs are earning danger pay today.",
+            "tags": [
+              "region:any"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wind-dusk-1",
+        "condition": "wind",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Iewers klim 'n trampolien nou oor 'n muur.",
+            "en": "Somewhere out there, a trampoline is clearing a wall.",
+            "tags": [
+              "region:any"
+            ]
+          },
+          {
+            "af": "As jou trampolien vanaand by die huis slaap, is jy die uitsondering.",
+            "en": "If your trampoline sleeps at home tonight, you're the exception.",
+            "tags": [
+              "region:any"
+            ]
+          },
+          {
+            "af": "Die bure se swembad het weer 'n besoeker.",
+            "en": "The neighbour's pool has a visitor again.",
+            "tags": [
+              "region:any"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wind-night-4",
+        "condition": "wind",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Twaalfde verdieping, en die see kom kuier steeds.",
+            "en": "Twelfth floor, and the sea still pops up to visit.",
+            "tags": [
+              "region:any"
+            ]
+          },
+          {
+            "af": "Die Suidoos lees nie die regspersoon se huisreëls nie.",
+            "en": "The South-Easter doesn't read the body corporate rules.",
+            "tags": [
+              "region:western-cape"
+            ]
+          },
+          {
+            "af": "Vensters toe. Die wind maak in elk geval sy punt.",
+            "en": "Windows closed. The wind is making its point anyway.",
+            "tags": [
+              "region:any"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "storm-dawn-2",
+        "condition": "storm",
+        "bin": "dawn",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die weer het vroeg opgestaan om te kom oefen.",
+            "en": "The weather got up early to rehearse.",
+            "tags": [
+              "region:inland",
+              "time:dawn",
+              "season:summer"
+            ]
+          },
+          {
+            "af": "Daai wolk het duidelik nie geslaap nie.",
+            "en": "That cloud clearly did not sleep.",
+            "tags": [
+              "region:inland",
+              "time:dawn",
+              "season:summer"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "storm-day-1",
+        "condition": "storm",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "16:00. Op die kop. Soos altyd.",
+            "en": "4pm. On the dot. As always.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:summer"
+            ]
+          },
+          {
+            "af": "Jy kan jou horlosie hierop stel.",
+            "en": "You can set your watch by this.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:summer"
+            ]
+          },
+          {
+            "af": "Uit die kantoor gestap, reguit in 'n rolprent in.",
+            "en": "Walked out the office straight into a blockbuster.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:summer"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "storm-day-2",
+        "condition": "storm",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Almal onthou skielik waar hulle karre staan.",
+            "en": "Everyone suddenly remembers where they parked.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:summer"
+            ]
+          },
+          {
+            "af": "Die haelgebede het amptelik begin.",
+            "en": "The hail prayers have officially begun.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:summer"
+            ]
+          },
+          {
+            "af": "Die motorafdak is nou die gewildste plek in die land.",
+            "en": "The carport is now the most popular spot in the country.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:summer"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "storm-dusk-2",
+        "condition": "storm",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die hond het eerste by die bed uitgekom.",
+            "en": "The dog reached the bed first.",
+            "tags": [
+              "region:inland",
+              "time:dusk",
+              "season:summer"
+            ]
+          },
+          {
+            "af": "Ons tel sekondes soos Oupa ons geleer het.",
+            "en": "Counting the seconds like Oupa taught us.",
+            "tags": [
+              "region:inland",
+              "time:dusk",
+              "season:summer"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "clear-day-2",
+        "condition": "clear",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "My skerm het 40 tabs oop. Die venster het een. Die venster wen.",
+            "en": "Forty tabs open. The window still wins.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Produktiwiteit het gevra om verskoon te word. Die lug is dan só.",
+            "en": "Productivity has left the meeting. Reason: sky.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Dié soort blou is basies 'n braai-dagvaarding.",
+            "en": "Skies like this are legally a braai summons.",
+            "tags": [
+              "region:any",
+              "time:day",
+              "weekend"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "clear-day-8",
+        "condition": "clear",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Ons voorspelling: mooi. Ons het dit self twee keer gecheck.",
+            "en": "Forecast: gorgeous. We double-checked. Still gorgeous.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          },
+          {
+            "af": "'Waarskynlik sonnig' was nog nooit só maklik om te sê nie.",
+            "en": "'Probably sunny' has never felt less like guessing.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "clear-night-3",
+        "condition": "clear",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die maan doen vanaand oortyd oor die see.",
+            "en": "The moon is doing overtime over the Atlantic tonight.",
+            "tags": [
+              "region:western-cape",
+              "time:night"
+            ]
+          },
+          {
+            "af": "Die lug wys af. Ons klap maar beleefd saam.",
+            "en": "The sky is showing off. Politely, we're letting it.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rain-dawn-4",
+        "condition": "rain",
+        "bin": "dawn",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die hele stad het vergeet hoe om te bestuur. Ek het vergeet hoe om aan te trek.",
+            "en": "The whole city forgot how to drive. I forgot how to get dressed. We're even.",
+            "tags": [
+              "region:any",
+              "time:dawn"
+            ]
+          },
+          {
+            "af": "Verkeersverslag: chaos. My verslag: koffie.",
+            "en": "Traffic report: chaos. My report: coffee.",
+            "tags": [
+              "region:any",
+              "time:dawn"
+            ]
+          },
+          {
+            "af": "Werk-van-die-huis het nog nooit so geregverdig gevoel nie.",
+            "en": "Working from home has never felt this morally correct.",
+            "tags": [
+              "region:any",
+              "time:dawn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rain-day-4",
+        "condition": "rain",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "'n Padstalpastei in die reën is fynproewerskos. Moenie stry nie.",
+            "en": "A padstal pie in the rain is fine dining. This is not up for debate.",
+            "tags": [
+              "region:inland",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Die reis kan wag. Die pastei kan nie.",
+            "en": "The road trip can wait. The pie cannot.",
+            "tags": [
+              "region:inland",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Sommige oomblikke kies hulle eie afrit.",
+            "en": "Some moments choose their own off-ramp.",
+            "tags": [
+              "region:inland",
+              "time:day"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rain-night-2",
+        "condition": "rain",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die stad blink soos iets wat pas gewas is. Want dit is.",
+            "en": "The city is gleaming like it's just been washed. Because it has.",
+            "tags": [
+              "region:western-cape",
+              "time:night",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Elke straatlig is nou 'n kunswerk. Dankie, reën.",
+            "en": "Every streetlight is suddenly an art installation. Rain's doing.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rain-night-4",
+        "condition": "rain",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Buite gooi die weer sy beste vertoning. Binne wen Ouma nogsteeds.",
+            "en": "Weather's giving its big performance outside. Gran is still winning inside.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          },
+          {
+            "af": "Reënaand-reël: die hele huis trek na dieselfde kamer.",
+            "en": "Rainy night law: the whole house migrates to the same room.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          },
+          {
+            "af": "Niemand het beplan om bord te speel nie. Die reën het besluit.",
+            "en": "Nobody planned a games night. The rain decided.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cloudy-day-2",
+        "condition": "cloudy",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die lug het ons boodskap gelees en nie geantwoord nie.",
+            "en": "The sky has left the whole country on read.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Dis nie reënweer nie, dis dreigweer.",
+            "en": "Not rain weather. Threatening-to-rain weather. Big difference.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Die son is agter die wolke besig met admin. Hy kom nou-nou.",
+            "en": "The sun is behind the clouds doing admin. Back shortly.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cloudy-day-3",
+        "condition": "cloudy",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Hoëveldse wolke: baie lokprent, min fliek.",
+            "en": "Highveld clouds: all trailer, no movie.",
+            "tags": [
+              "region:inland",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Die wolke hou 'n vergadering en ons is nie genooi nie.",
+            "en": "The clouds are in a meeting and we're not on the invite.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Selfs die lug lyk of hy vandag van die huis af wou werk.",
+            "en": "Even the sky looks like it applied to work from home today.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cloudy-dusk-5",
+        "condition": "cloudy",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die hemel draai die dimmer stadig af. Klas.",
+            "en": "The sky is easing the dimmer down slowly. Classy.",
+            "tags": [
+              "region:inland",
+              "time:evening"
+            ]
+          },
+          {
+            "af": "Môre se son is klaar gebook. Ontspan.",
+            "en": "Tomorrow's sun is already booked. Relax.",
+            "tags": [
+              "region:any",
+              "time:evening"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cloudy-dusk-7",
+        "condition": "cloudy",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Verkeer onder, wolkverkeer bo. Almal kruip stadig huis toe.",
+            "en": "Traffic below, cloud traffic above. Everyone is crawling home.",
+            "tags": [
+              "region:inland",
+              "time:evening"
+            ]
+          },
+          {
+            "af": "Die son het vroeg gery — 'n 'ander verpligting', glo.",
+            "en": "The sun ducked out early — 'another commitment', apparently.",
+            "tags": [
+              "region:any",
+              "time:evening"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cloudy-night-1",
+        "condition": "cloudy",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die sterre het verskoning gestuur vir vanaand se vergadering.",
+            "en": "The stars sent their apologies for tonight's meeting.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          },
+          {
+            "af": "Selfs die maan werk vanaand van die huis af.",
+            "en": "Even the moon is working from home tonight.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cloudy-night-2",
+        "condition": "cloudy",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die Melkweg vat 'n aand af. Selfs sterre het grense.",
+            "en": "The Milky Way took the night off. Even stars have boundaries.",
+            "tags": [
+              "region:inland",
+              "time:night"
+            ]
+          },
+          {
+            "af": "Niks sterre om te tel nie — tel skape, of seëninge. Jou keuse.",
+            "en": "No stars to count tonight. Count sheep or blessings, dealer's choice.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-dawn-3",
+        "condition": "cold",
+        "bin": "dawn",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Ketel gekook vir die koffie. Ketel weer gekook vir die hande.",
+            "en": "Boiled the kettle for the coffee. Boiled it again for my hands.",
+            "tags": [
+              "region:inland",
+              "time:dawn",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "As die rook reguit op staan, is dit amptelik te koud vir grappies.",
+            "en": "When the smoke rises dead straight, it's officially too cold for jokes.",
+            "tags": [
+              "region:inland",
+              "time:dawn",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die koffie word koud tussen die ketel en die tafel. Respekteer die spoed.",
+            "en": "The coffee goes cold between the kettle and the table. Respect the pace required.",
+            "tags": [
+              "region:any",
+              "time:dawn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-dawn-6",
+        "condition": "cold",
+        "bin": "dawn",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die teëls is 'n ekstreme sport voor agtuur.",
+            "en": "The tiles are an extreme sport before 8am.",
+            "tags": [
+              "region:any",
+              "time:dawn",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Van die bed na die kombuis is 'n naelloop. Daar is nie tyd vir grasie nie.",
+            "en": "Bed to kitchen is a sprint event. There is no time for grace.",
+            "tags": [
+              "region:any",
+              "time:dawn"
+            ]
+          },
+          {
+            "af": "Binne-in daardie huis is dit ook koud. Moenie jou laat flous nie.",
+            "en": "It's cold inside that house too. Don't be fooled.",
+            "tags": [
+              "region:any",
+              "time:dawn",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-day-3",
+        "condition": "cold",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die strand is nou net vir die dapperes en die honde.",
+            "en": "The beach belongs to the brave and the dogs now.",
+            "tags": [
+              "region:western-cape",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Winterlug: die berge lyk naby genoeg om aan te raak. Steeds te koud om te swem.",
+            "en": "Winter air: the mountains look close enough to touch. Still too cold to swim.",
+            "tags": [
+              "region:western-cape",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Iemand gaan nou-nou sê 'verfrissend'. Moenie hulle glo nie.",
+            "en": "Someone is about to say 'refreshing'. Do not believe them.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-day-4",
+        "condition": "cold",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Een kombers, twee mense. Onderhandelinge duur voort.",
+            "en": "One blanket, two people. Negotiations are ongoing.",
+            "tags": [
+              "region:any",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "'n Beskuitjie doop jy stadig in koue weer. Dis nie 'n reël nie, dis 'n kultuur.",
+            "en": "You dunk a rusk slowly in cold weather. It's not a rule, it's a culture.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          },
+          {
+            "af": "Die stoep is die warmste kamer in die huis. Dink daaroor.",
+            "en": "The stoep is the warmest room in the house. Sit with that.",
+            "tags": [
+              "region:any",
+              "time:day",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-day-8",
+        "condition": "cold",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Jou asem maak wolkies. Gratis spesiale effekte, hele winter lank.",
+            "en": "Your breath is making clouds. Free special effects, all winter long.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Vrystaat-koue: droog, eerlik, en persoonlik.",
+            "en": "Free State cold: dry, honest, and personal.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die uitsig is die beloning. Die gevoel in jou vingers kom later terug.",
+            "en": "The view is the reward. The feeling in your fingers returns later.",
+            "tags": [
+              "region:inland",
+              "time:day"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-day-10",
+        "condition": "cold",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Padstal-pannekoek in die winter is nie 'n versnapering nie, dis noodhulp.",
+            "en": "Padstal pancakes in winter aren't a snack, they're first aid.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die Karoo het twee seisoene: warm genoeg om te kla, en dit.",
+            "en": "The Karoo has two seasons: hot enough to complain about, and this.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Kaneelsuiker los meer probleme op as wat mense wil erken.",
+            "en": "Cinnamon sugar solves more problems than people are willing to admit.",
+            "tags": [
+              "region:any",
+              "time:day"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-dusk-2",
+        "condition": "cold",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Selfs die kat het besluit buite is 'n fout.",
+            "en": "Even the cat has decided outside was a mistake.",
+            "tags": [
+              "region:inland",
+              "time:dusk",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die bakkie gaan môreoggend twee keer hoes voor hy vat. Boek dit.",
+            "en": "The bakkie is going to cough twice before it starts tomorrow. Book it.",
+            "tags": [
+              "region:inland",
+              "time:dusk",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Gordyne toe, kaggel aan, wêreld af.",
+            "en": "Curtains closed, fire on, world off.",
+            "tags": [
+              "region:any",
+              "time:dusk"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-dusk-3",
+        "condition": "cold",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Die Atlantiese Oseaan is altyd hierdie koud. Vanaand het die lug net besluit om saam te speel.",
+            "en": "The Atlantic is always this cold. Tonight the air just decided to match it.",
+            "tags": [
+              "region:western-cape",
+              "time:dusk"
+            ]
+          },
+          {
+            "af": "Draffers in langbroeke: die amptelike teken dat winter ernstig is.",
+            "en": "Joggers in long pants: the official sign that winter means business.",
+            "tags": [
+              "region:western-cape",
+              "time:dusk",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die hond is in sy element. Die mens is in vier lae.",
+            "en": "The dog is in his element. The human is in four layers.",
+            "tags": [
+              "region:any",
+              "time:dusk"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-dusk-4",
+        "condition": "cold",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Sop-seisoen is amptelik oop. Alle ander etes is opgeskort.",
+            "en": "Soup season is officially open. All other meals are suspended.",
+            "tags": [
+              "region:any",
+              "time:dusk",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die huis met die potjie op die stoof wen vanaand die buurt.",
+            "en": "The house with the pot on the stove wins the neighbourhood tonight.",
+            "tags": [
+              "region:any",
+              "time:dusk"
+            ]
+          },
+          {
+            "af": "Binne daardie prentjie is dit ook koud. Hulle staan net naby die stoof vir oorlewing.",
+            "en": "It's cold inside that picture too. They're just standing near the stove for survival.",
+            "tags": [
+              "region:any",
+              "time:dusk",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-dusk-8",
+        "condition": "cold",
+        "bin": "dusk",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Hout indra is die winter se gym-sessie.",
+            "en": "Carrying in firewood is winter's gym session.",
+            "tags": [
+              "region:inland",
+              "time:dusk",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die hond dra een stokkie en is trotser as al die mense saam.",
+            "en": "The dog carries one twig and is prouder than all the humans combined.",
+            "tags": [
+              "region:any",
+              "time:dusk"
+            ]
+          },
+          {
+            "af": "Vanaand se agenda: vuur, kos, kombers, klaar.",
+            "en": "Tonight's agenda: fire, food, blanket, done.",
+            "tags": [
+              "region:any",
+              "time:dusk",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-night-4",
+        "condition": "cold",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Komberse aan tafel. Ons is verby skaamte, ons is by oorlewing.",
+            "en": "Blankets at the dinner table. We are past shame, we are into survival.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die stoof maak die kos warm én die kombuis. Dubbelverdiener.",
+            "en": "The stove heats the food and the kitchen. Double income.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Ouma het gesê trek 'n trui aan. Ouma het, soos altyd, reg gehad.",
+            "en": "Gran said put on a jersey. Gran was, as always, right.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-night-5",
+        "condition": "cold",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Koue stop nie 'n braai nie. Dit skuif net die mense nader aan die vuur.",
+            "en": "Cold doesn't stop a braai. It just moves the people closer to the fire.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Een vriend het binne gebly. Ons noem hom die verstandige een. Sag.",
+            "en": "One friend stayed inside. We call him the sensible one. Quietly.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          },
+          {
+            "af": "Winterbraai-reël: die tang word gedeel, die hitte word nie.",
+            "en": "Winter braai rule: the tongs get shared, the heat does not.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-night-8",
+        "condition": "cold",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Een kombers, twee mense, een hond. Volmaakte verhouding.",
+            "en": "One blanket, two humans, one dog. The perfect ratio.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die afstandbeheer is aan die ander kant van die kamer. Dis nou vir ewig daar.",
+            "en": "The remote is on the other side of the room. It lives there now.",
+            "tags": [
+              "region:any",
+              "time:night"
+            ]
+          },
+          {
+            "af": "Ryp teen die ruite beteken net een ding: niemand gaan êrens heen nie.",
+            "en": "Frost on the windows means one thing only: nobody is going anywhere.",
+            "tags": [
+              "region:inland",
+              "time:night",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-clear-dawn-6",
+        "condition": "cold-clear",
+        "bin": "dawn",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "As die rook reguit op staan, bly jy reguit in die bed lê.",
+            "en": "When the chimney smoke goes straight up, you stay straight in bed.",
+            "tags": [
+              "region:inland",
+              "time:dawn",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Windstil is net 'n mooi woord vir vrieskas.",
+            "en": "'Perfectly still' is just a polite word for freezer.",
+            "tags": [
+              "region:any",
+              "time:dawn",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Iewers binne is dit lekker. Buite is net vir kyk.",
+            "en": "Somewhere inside, it's cosy. Outside is display only.",
+            "tags": [
+              "region:any",
+              "time:dawn",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-clear-day-12",
+        "condition": "cold-clear",
+        "bin": "day",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Selfs die perde stoom vanoggend.",
+            "en": "Even the horses are steaming this morning.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die Midlands doen winter soos 'n skildery. 'n Baie koue skildery.",
+            "en": "The Midlands does winter like a painting. A very cold painting.",
+            "tags": [
+              "region:inland",
+              "time:day",
+              "season:winter"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cold-clear-night-4",
+        "condition": "cold-clear",
+        "bin": "night",
+        "image_status": "benched",
+        "lines": [
+          {
+            "af": "Binne daardie venster is die beste plek in die land vanaand.",
+            "en": "Inside that window is currently the best location in the country.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Kaggelweer. Amptelik. Die app sê so.",
+            "en": "Fireplace weather. Official. The app said so.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          },
+          {
+            "af": "Die sterre is pragtig. Bewonder hulle deur die venster.",
+            "en": "The stars are stunning. Admire them through the window.",
+            "tags": [
+              "region:any",
+              "time:night",
+              "season:winter"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "held_no_box_region": {
+    "count": 10,
+    "note": "Layer-1 regional honesty: content names a region with NO gating box (Lowveld/bushveld, KZN Midlands, Eastern Cape). Cannot serve honestly nationally, cannot gate. Needs a new region box in geo-regions.js OR a rewrite. NOT applied to the bank.",
+    "lines": [
+      {
+        "condition": "fog",
+        "id": "fog-dawn-3",
+        "en": "Midlands mist: the countryside's privacy setting.",
+        "af": "Midlands-mis: die platteland se privaatheid-instelling.",
+        "names": "midlands",
+        "reason": "no box for 'midlands' (KZN Midlands)"
+      },
+      {
+        "condition": "heat",
+        "id": "heat-dawn-3",
+        "en": "Walk now or don't walk at all. The Lowveld gives you until seven.",
+        "af": "Stap nou of stap glad nie. Die Laeveld gee jou tot sewe-uur.",
+        "names": "lowveld",
+        "reason": "no box for 'lowveld' (Lowveld/bushveld)"
+      },
+      {
+        "condition": "heat",
+        "id": "heat-day-3",
+        "en": "Even the impala are standing in the shade rethinking their choices.",
+        "af": "Selfs die rooibokke staan in die skadu en heroorweeg hul keuses.",
+        "names": "impala",
+        "reason": "no box for 'impala' (Lowveld/bushveld)"
+      },
+      {
+        "condition": "heat",
+        "id": "heat-day-3",
+        "en": "Lowveld summer: you don't sweat, you melt with dignity.",
+        "af": "Laeveld-somer: jy sweet nie, jy smelt met waardigheid.",
+        "names": "lowveld",
+        "reason": "no box for 'lowveld' (Lowveld/bushveld)"
+      },
+      {
+        "condition": "heat",
+        "id": "heat-day-3",
+        "en": "The bushveld is on silent mode today. Everyone. Everything.",
+        "af": "Die bosveld is vandag op stille modus. Almal. Alles.",
+        "names": "bushveld",
+        "reason": "no box for 'bushveld' (Lowveld/bushveld)"
+      },
+      {
+        "condition": "heat",
+        "id": "heat-dusk-5",
+        "en": "Sundowners aren't a luxury in the Lowveld. They're medical.",
+        "af": "Sundowners is nie 'n luukse in die Laeveld nie. Dis medies.",
+        "names": "lowveld",
+        "reason": "no box for 'lowveld' (Lowveld/bushveld)"
+      },
+      {
+        "condition": "wind",
+        "id": "wind-dawn-3",
+        "en": "Gqeberha, we know. We know.",
+        "af": "Gqeberha, ons weet. Ons wéét.",
+        "names": "gqeberha",
+        "reason": "no box for 'gqeberha' (Eastern Cape)"
+      },
+      {
+        "condition": "wind",
+        "id": "wind-dawn-3",
+        "en": "The Friendly City never asked to be the Windy City, and yet.",
+        "af": "Die Vriendelike Stad het nie gevra om die Winderige Stad te wees nie, en tog.",
+        "names": "friendly city",
+        "reason": "no box for 'friendly city' (Eastern Cape)"
+      },
+      {
+        "condition": "wind",
+        "id": "wind-dusk-3",
+        "en": "Jeffreys Bay: where the wind warms up before its Cape Town shift.",
+        "af": "Jeffreysbaai: waar die wind oefen voor sy Kaapse skof.",
+        "names": "jeffreys",
+        "reason": "no box for 'jeffreys' (Eastern Cape)"
+      },
+      {
+        "condition": "wind",
+        "id": "wind-night-2",
+        "en": "Gqeberha doesn't sleep, it just holds on.",
+        "af": "Gqeberha slaap nie, dit hou net vas.",
+        "names": "gqeberha",
+        "reason": "no box for 'gqeberha' (Eastern Cape)"
+      }
+    ]
+  },
+  "region_retag_summary": {
+    "note": "region:inland/kzn/eastern-cape resolved by content (review/inland-retag-audit.json)",
+    "tally": {
+      "NAT": 117,
+      "highveld": 18,
+      "karoo": 12,
+      "gauteng": 5,
+      "free-state": 4,
+      "HELD": 10
+    }
+  }
+}

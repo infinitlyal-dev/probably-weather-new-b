@@ -243,7 +243,10 @@ describe('weather-copy — cold-clear has entries in all 5 languages', () => {
 
   it('witty entries are unique per language (no duplicates within a bin)', () => {
     for (const lang of LANGS) {
-      const lines = WEATHER_COPY.witty['cold-clear'][lang];
+      // Ignore "" debt placeholders: zu/xh/st carry empty rows for meme-batch lines
+      // pending native translation (the sanctioned pattern in witty-empty-slot-safety).
+      // Real duplicate wording is still caught among the non-empty lines.
+      const lines = WEATHER_COPY.witty['cold-clear'][lang].filter((s) => typeof s === 'string' && s.trim() !== '');
       expect(new Set(lines).size).toBe(lines.length);
     }
   });

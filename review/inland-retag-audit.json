@@ -1,0 +1,2625 @@
+{
+  "note": "Layer-1 regional honesty re-tag of region:inland/kzn/eastern-cape lines. Judged by content.",
+  "test": "Would the line ring false in coastal Western Cape? If yes and a box fits -> tag it; if yes and no box -> HELD; else national.",
+  "tally": {
+    "NAT": 117,
+    "highveld": 18,
+    "karoo": 12,
+    "gauteng": 5,
+    "free-state": 4,
+    "HELD": 10
+  },
+  "count": 166,
+  "rows": [
+    {
+      "cond": "clear",
+      "index_at_apply": 39,
+      "id": "clear-dawn-1",
+      "en": "Air this clear should come with a warning: plans will be made.",
+      "af": "Lug so skoon, jy kan amper tot môre toe sien.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:morning"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 43,
+      "id": "clear-dawn-3",
+      "en": "Highveld mornings: freezing, gorgeous, zero apologies.",
+      "af": "Hoëveld-oggend: koud genoeg vir 'n jas, mooi genoeg dat jy nie omgee nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:morning"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 48,
+      "id": "clear-dawn-5",
+      "en": "Signal: weak. Views: unfair. Deadlines: whose?",
+      "af": "Berg-oggende laat jou vergeet wat 'n deadline is.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:morning"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 54,
+      "id": "clear-dawn-8",
+      "en": "Small-town quiet: you can actually hear yourself think. Terrifying.",
+      "af": "Platteland-stilte: jy kan jou eie gedagtes hoor. Skrikwekkend.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:morning"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 55,
+      "id": "clear-dawn-8",
+      "en": "Out here even the sun refuses to rush.",
+      "af": "Hier jaag niemand nie. Die son ook nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:morning"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 63,
+      "id": "clear-day-4",
+      "en": "Highveld winter flex: laundry dry before the kettle's even done.",
+      "af": "Hoëveld-winter: die wasgoed is droog voor die ketel kook.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 67,
+      "id": "clear-day-6",
+      "en": "Karoo sky: same flawless blue for the next 400 km. Guaranteed.",
+      "af": "Karoo-blou: presies dieselfde perfekte kleur van hier tot môre.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "names the Karoo",
+      "phrase": "karoo"
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 68,
+      "id": "clear-day-6",
+      "en": "Padkos hits different under infinite sky. That's just science.",
+      "af": "Padkos smaak beter onder 'n lug sonder einde.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 78,
+      "id": "clear-dusk-3",
+      "en": "A day so good even rush hour felt optional.",
+      "af": "Die dag was so mooi, selfs die verkeer het saamgespeel.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 79,
+      "id": "clear-dusk-3",
+      "en": "Highveld golden hour: costs nothing, upstages everything.",
+      "af": "Goue uur op die Hoëveld: gratis, en steeds onbetaalbaar.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 82,
+      "id": "clear-dusk-5",
+      "en": "Verandah weather. The couch will understand.",
+      "af": "Stoepsit-weer. Die TV kan maar wag.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 86,
+      "id": "clear-dusk-7",
+      "en": "House rules: last over when the streetlights win.",
+      "af": "Die reëls is eenvoudig: laaste boulbeurt wanneer die straatligte aankom.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 87,
+      "id": "clear-dusk-7",
+      "en": "Small town, giant sky, zero rush.",
+      "af": "Klein dorpie, groot lug, geen haas nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 90,
+      "id": "clear-night-1",
+      "en": "Someone turned the stars up to full volume.",
+      "af": "Iemand het die sterre se volume opgedraai.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "clear",
+      "index_at_apply": 92,
+      "id": "clear-night-1",
+      "en": "City folk pay good money for this ceiling.",
+      "af": "Stadsmense betaal groot geld hiervoor. Hier's dit sommer verniet.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cloudy",
+      "index_at_apply": 64,
+      "id": "cloudy-dusk-2",
+      "en": "Streetlights on early tonight, and not a single complaint.",
+      "af": "Die straatligte gaan vroeg aan en niemand kla nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 38,
+      "id": "cold-dawn-1",
+      "en": "The house is colder inside than outside. Architecture is a beautiful thing.",
+      "af": "Die huis is kouer binne as buite. Argitektuur is 'n mooi ding.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 41,
+      "id": "cold-dawn-2",
+      "en": "The dog looked out the front door, turned around, and went back to bed. Says it all.",
+      "af": "Die hond het by die voordeur gekyk, omgedraai, en teruggegaan bed toe. Wys jou.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 42,
+      "id": "cold-dawn-2",
+      "en": "Frost on the grass, frost on the bakkie, frost on my will to live.",
+      "af": "Ryp op die gras, ryp op die bakkie, ryp op my moed.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('frost') rings false in coastal WC",
+      "phrase": "frost"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 43,
+      "id": "cold-dawn-2",
+      "en": "Most beautiful time of day. Say the people who stay inside.",
+      "af": "Mooiste tyd van die dag. Sê die mense wat binne bly.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 47,
+      "id": "cold-dawn-5",
+      "en": "Snow on the mountains means one thing: everyone is going to tell you about it today.",
+      "af": "Sneeu op die berge beteken een ding: almal gaan dit vandag vir jou sê.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 49,
+      "id": "cold-dawn-5",
+      "en": "Two duvets and a prayer. That's the system.",
+      "af": "Twee duvets en 'n gebed. So oorleef ons.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 50,
+      "id": "cold-day-1",
+      "en": "The sun is out. It means nothing. The sun is lying.",
+      "af": "Die son is uit. Dit beteken niks. Die son jok.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 51,
+      "id": "cold-day-1",
+      "en": "Prettiest blue sky in the country, and it feels like a fridge with a view.",
+      "af": "Mooiste blou lug in die land, en dit voel soos 'n yskas met uitsig.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 52,
+      "id": "cold-day-1",
+      "en": "Highveld winter: sunburn and frostbite achievable on the same day.",
+      "af": "Highveld winter: sonbrand en verkluiming op dieselfde dag moontlik.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 53,
+      "id": "cold-day-11",
+      "en": "Joburg winter: jacket in the morning, T-shirt by two, jacket again by four.",
+      "af": "Joburg-winter: jas in die oggend, T-hemp teen twee, jas weer teen vier.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "gauteng",
+      "why": "names a Gauteng city ('joburg')",
+      "phrase": "joburg"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 55,
+      "id": "cold-day-11",
+      "en": "Sitting in the sun, complaining about the cold. National sport.",
+      "af": "Sit in die son, klae oor die koue. Nasionale sport.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 71,
+      "id": "cold-day-7",
+      "en": "So cold the frost stayed for lunch.",
+      "af": "So koud dat die ryp middagete gebly het.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('frost') rings false in coastal WC",
+      "phrase": "frost"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 72,
+      "id": "cold-day-7",
+      "en": "Trout weather. Lovely for the fish. Character-building for the fisherman.",
+      "af": "Forelweer. Vir die vis is dit lekker. Vir die visserman is dit karakterbou.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 73,
+      "id": "cold-day-7",
+      "en": "The water looks like glass. It feels like ice. Do not run the experiment.",
+      "af": "Die water lyk soos glas. Dit voel soos ys. Moenie eksperimenteer nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 77,
+      "id": "cold-dusk-1",
+      "en": "The sun is leaving and taking all the degrees with it.",
+      "af": "Die son gaan weg en vat al die grade saam.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 78,
+      "id": "cold-dusk-1",
+      "en": "You can watch the cold arriving. It's not even being subtle about it.",
+      "af": "Jy kan die koue sien inkom. Dit maak nie eers geheim daarvan nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 79,
+      "id": "cold-dusk-1",
+      "en": "Woodsmoke at dusk: the Highveld's winter perfume.",
+      "af": "Houtrook teen skemer: die Highveld se winterparfuum.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 80,
+      "id": "cold-dusk-5",
+      "en": "Somebody's driving home right now with the heater on full and the seat warmer as a bonus.",
+      "af": "Iemand ry nou huis toe met die verwarmer op vol en die sitplekverwarmer as bonus.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 81,
+      "id": "cold-dusk-5",
+      "en": "The pass is beautiful. The pass is also the opening act for -2°C.",
+      "af": "Die pas is mooi. Die pas is ook -2°C se voorprogram.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 89,
+      "id": "cold-dusk-9",
+      "en": "The mountain glows like a fireplace. Unfortunately it only warms the eyes.",
+      "af": "Die berg gloei soos 'n kaggel. Ongelukkig werk dit net vir die oë.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 90,
+      "id": "cold-dusk-9",
+      "en": "The blesbok wear no scarves and file no complaints. We could learn something. We won't, but we could.",
+      "af": "Die blesbokke dra nie serpe nie en kla ook nie. Ons kan iets leer. Ons gaan nie, maar ons kan.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "free-state",
+      "why": "blesbok — Free State/Highveld grassland",
+      "phrase": "blesbok"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 91,
+      "id": "cold-dusk-9",
+      "en": "Free State dusk: the most beautiful ten minutes of the coldest night.",
+      "af": "Vrystaat-skemer: die mooiste tien minute van die koudste aand.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "free-state",
+      "why": "names the Free State",
+      "phrase": "free state"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 92,
+      "id": "cold-night-1",
+      "en": "The stars shine brighter when it's cold. The universe's way of apologising.",
+      "af": "Die sterre is helderder as dit koud is. Die heelal se manier van jammer sê.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 93,
+      "id": "cold-night-1",
+      "en": "Five minutes of stargazing. Then you run back inside. That's the deal.",
+      "af": "Vyf minute sterre kyk. Dan hardloop jy terug binnetoe. Dis die deal.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 101,
+      "id": "cold-night-6",
+      "en": "The Berg is wearing snow tonight. Somewhere a farmer's dog has already moved indoors.",
+      "af": "Die Berg dra sneeu vanaand. Iewers is 'n boer se hond klaar in die huis.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "free-state",
+      "why": "the Berg — E. Free State highlands",
+      "phrase": "the berg"
+    },
+    {
+      "cond": "cold",
+      "index_at_apply": 102,
+      "id": "cold-night-6",
+      "en": "That one little light is someone doing winter correctly: hut, fire, done.",
+      "af": "Daardie een liggie is iemand wat winter reg doen: hut, vuur, klaar.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 32,
+      "id": "cold-clear-dawn-1",
+      "en": "The lawn caught frost overnight. You're next.",
+      "af": "Die gras het ryp gevang. Jy is volgende.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('frost') rings false in coastal WC",
+      "phrase": "frost"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 33,
+      "id": "cold-clear-dawn-2",
+      "en": "Zero wind. Zero clouds. Zero mercy.",
+      "af": "Nul wind, nul wolke, nul genade.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 34,
+      "id": "cold-clear-dawn-2",
+      "en": "Somebody left the freezer door open overnight.",
+      "af": "Die Karoo het die verkoeler oopgelos.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 36,
+      "id": "cold-clear-dawn-3",
+      "en": "Looks like a tourism ad. Feels like the inside of a fridge.",
+      "af": "Joburg lyk soos 'n advertensie en voel soos 'n yskas.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 37,
+      "id": "cold-clear-dawn-3",
+      "en": "That first breath of air will wake you better than coffee.",
+      "af": "Daai eerste asemteug gaan jou wakker maak. Belowe.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 42,
+      "id": "cold-clear-dawn-5",
+      "en": "Even the dog's breath is showing. That's the reading.",
+      "af": "Die hond se asem wys ook. Dis hoe koud dit is.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 43,
+      "id": "cold-clear-dawn-5",
+      "en": "Frost on the fence, sun in your eyes, feeling in zero fingers.",
+      "af": "Ryp op die draad, son in die oë, gevoel in nul vingers.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('frost') rings false in coastal WC",
+      "phrase": "frost"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 44,
+      "id": "cold-clear-dawn-7",
+      "en": "Clear skies, open roads, running nose. The full winter set.",
+      "af": "Die lug is oop, die pad is oop, jou neus loop.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 46,
+      "id": "cold-clear-day-1",
+      "en": "The sun is doing summer. The air didn't get the memo.",
+      "af": "Die son skyn soos somer. Die lug het nie die memo gekry nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 55,
+      "id": "cold-clear-day-13",
+      "en": "Perfect drying weather. The washing will dry and freeze, in that order.",
+      "af": "Perfekte wasgoedweer. Die wasgoed gaan droog word én bevries.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('dry and freeze') rings false in coastal WC",
+      "phrase": "dry and freeze"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 57,
+      "id": "cold-clear-day-13",
+      "en": "Those sheets are coming off the line in cardboard form.",
+      "af": "Lakens gaan vandag in kartonvorm afgehaal word.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('cardboard form') rings false in coastal WC",
+      "phrase": "cardboard form"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 61,
+      "id": "cold-clear-day-3",
+      "en": "Perfect rugby weather. For the spectators with blankets.",
+      "af": "Perfekte rugbyweer. Vir die toeskouers met komberse.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 62,
+      "id": "cold-clear-day-3",
+      "en": "The shady side of the field is a separate climate zone.",
+      "af": "Daai skadu-kant van die veld is 'n ander klimaatsone.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 66,
+      "id": "cold-clear-day-5",
+      "en": "The aloes are blooming because they're the only ones enjoying this.",
+      "af": "Die aalwyne blom, want hulle is die enigstes wat die koue geniet.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "Karoo/inland ('aloe') rings false in coastal WC",
+      "phrase": "aloe"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 67,
+      "id": "cold-clear-day-5",
+      "en": "Orange flowers, blue sky, blue lips.",
+      "af": "Oranje blomme, blou lug, blou lippe.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 69,
+      "id": "cold-clear-day-6",
+      "en": "In the sun: bearable. Two steps left: Antarctica.",
+      "af": "In die son: draaglik. Twee treë links: Antarktika.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 70,
+      "id": "cold-clear-day-6",
+      "en": "Padstal coffee is functioning as central heating today.",
+      "af": "Padstalkoffie werk vandag as sentrale verhitting.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "Karoo/inland ('padstal') rings false in coastal WC",
+      "phrase": "padstal"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 71,
+      "id": "cold-clear-day-6",
+      "en": "The Karoo doesn't lie about the weather. It brags about it.",
+      "af": "Die Karoo lieg nie oor die weer nie. Hy spog daarmee.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "names the Karoo",
+      "phrase": "karoo"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 72,
+      "id": "cold-clear-day-7",
+      "en": "The view is free. So is the feeling in your ears — gone.",
+      "af": "Die uitsig is gratis. Die gevoel in jou ore ook weg.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 74,
+      "id": "cold-clear-day-8",
+      "en": "One blanket, two people, zero shame.",
+      "af": "Een kombers, twee mense, geen skaamte nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 77,
+      "id": "cold-clear-day-9",
+      "en": "Not a cloud in sight. Not a degree either.",
+      "af": "Nie 'n wolk in sig nie. Ook nie 'n graad nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 78,
+      "id": "cold-clear-day-9",
+      "en": "The Free State sky is too big for its thermometer today.",
+      "af": "Die Vrystaat se lug is vandag te groot vir sy termometer.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "free-state",
+      "why": "names the Free State",
+      "phrase": "free state"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 79,
+      "id": "cold-clear-dusk-1",
+      "en": "The sun is heading home now, taking the last three degrees with it.",
+      "af": "Die son gaan nou huis toe. Vat sy laaste drie grade saam.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 87,
+      "id": "cold-clear-dusk-4",
+      "en": "First star is out. First ten degrees have also left.",
+      "af": "Eerste ster is uit. Eerste tien grade is ook uit.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 88,
+      "id": "cold-clear-dusk-4",
+      "en": "The Karoo is opening its roof for the night. Dress warm for the show.",
+      "af": "Die Karoo maak nou die dak oop. Trek warm aan vir die vertoning.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "names the Karoo",
+      "phrase": "karoo"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 89,
+      "id": "cold-clear-dusk-5",
+      "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
+      "af": "Joburg se sonsondergange is winter se troosprys.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "gauteng",
+      "why": "names a Gauteng city ('joburg')",
+      "phrase": "joburg"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 91,
+      "id": "cold-clear-night-1",
+      "en": "The brighter the stars, the harder your blanket has to work.",
+      "af": "Hoe helderder die sterre, hoe harder werk die kombers.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 92,
+      "id": "cold-clear-night-1",
+      "en": "Free planetarium tonight. Admission: your toes.",
+      "af": "Gratis planetarium vanaand. Toegangsprys: jou tone.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 95,
+      "id": "cold-clear-night-2",
+      "en": "The frost has already started its shift. By dawn the lawn will be glass.",
+      "af": "Die ryp is klaar besig. Teen dagbreek is die grasperk 'n spieël.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('frost') rings false in coastal WC",
+      "phrase": "frost"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 99,
+      "id": "cold-clear-night-5",
+      "en": "The moon switched the mountains on. The heat, however, stays off.",
+      "af": "Die maan het die berge aangeskakel. Die hitte, egter, nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 100,
+      "id": "cold-clear-night-5",
+      "en": "Breathing like a dragon, view like a dream.",
+      "af": "Asem soos 'n draak, uitsig soos 'n droom.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 104,
+      "id": "cold-clear-night-7",
+      "en": "Tomorrow's first task: five minutes of windscreen scraping in your work clothes.",
+      "af": "Môreoggend se eerste taak: vyf minute ys krap in jou kerkklere.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('windscreen scrap') rings false in coastal WC",
+      "phrase": "windscreen scrap"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 105,
+      "id": "cold-clear-night-7",
+      "en": "The cars have surrendered. They're sleeping under ice tonight.",
+      "af": "Die karre het klaar opgegee. Hulle slaap onder ys.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "frost/ice ('under ice') rings false in coastal WC",
+      "phrase": "under ice"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 106,
+      "id": "cold-clear-night-7",
+      "en": "Still, clear, freezing. The classic Highveld triple.",
+      "af": "Stil, helder, vriesend. Die klassieke Hoëveld-drieling.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 109,
+      "id": "cold-clear-night-9",
+      "en": "Five-star accommodation. Wait, no — five million.",
+      "af": "Vyf-ster akkommodasie. Nee wag — vyf miljoen.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "cold-clear",
+      "index_at_apply": 110,
+      "id": "cold-clear-night-9",
+      "en": "The plan was ten minutes. The noses tapped out after two.",
+      "af": "Die plan was tien minute. Die neuse het ná twee ingegee.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:winter"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "fog",
+      "index_at_apply": 44,
+      "id": "fog-dawn-3",
+      "en": "The cows know exactly where they are. Which is more than the rest of us can say.",
+      "af": "Die koeie weet presies waar hulle is. Meer as wat ons kan sê.",
+      "oldTag": "region:kzn",
+      "otherTags": [
+        "time:morning"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "fog",
+      "index_at_apply": 45,
+      "id": "fog-dawn-3",
+      "en": "Midlands mist: the countryside's privacy setting.",
+      "af": "Midlands-mis: die platteland se privaatheid-instelling.",
+      "oldTag": "region:kzn",
+      "otherTags": [
+        "time:morning"
+      ],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'midlands' (KZN Midlands)",
+      "phrase": "midlands"
+    },
+    {
+      "cond": "fog",
+      "index_at_apply": 74,
+      "id": "fog-dusk-6",
+      "en": "You can't see the house. You believe the house.",
+      "af": "Jy sien nie die huis nie. Jy gló die huis.",
+      "oldTag": "region:kzn",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "fog",
+      "index_at_apply": 75,
+      "id": "fog-dusk-6",
+      "en": "The mountains went to bed early tonight.",
+      "af": "Die berge het vanaand vroeg gaan slaap.",
+      "oldTag": "region:kzn",
+      "otherTags": [
+        "time:evening"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 36,
+      "id": "heat-dawn-1",
+      "en": "6am and the sun is already done warming up. That wasn't a warm-up, that was a warning.",
+      "af": "06:00 en die son is klaar klaar met opwarm. Dit was nie 'n opwarming nie, dit was 'n waarskuwing.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 37,
+      "id": "heat-dawn-1",
+      "en": "The day hasn't even started yet and it's already winning.",
+      "af": "Die dag het nog nie eers begin nie en hy wen alreeds.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 38,
+      "id": "heat-dawn-1",
+      "en": "Drink your coffee fast. By seven it's soup.",
+      "af": "Drink jou koffie gou. Teen sewe is dit sop.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 39,
+      "id": "heat-dawn-2",
+      "en": "If it feels like this now, second break is going to be a survival sport.",
+      "af": "As dit nóú al so voel, gaan tweede pouse 'n oorlewingsport wees.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 40,
+      "id": "heat-dawn-2",
+      "en": "Long pants with the uniform was a gamble today. Strength, my child.",
+      "af": "Skooldrag met 'n langbroek was vandag 'n gok. Sterkte, my kind.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 41,
+      "id": "heat-dawn-2",
+      "en": "6:30 and the tar is already considering melting.",
+      "af": "06:30 en die teer dink al aan smelt.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 42,
+      "id": "heat-dawn-3",
+      "en": "Walk now or don't walk at all. The Lowveld gives you until seven.",
+      "af": "Stap nou of stap glad nie. Die Laeveld gee jou tot sewe-uur.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'lowveld' (Lowveld/bushveld)",
+      "phrase": "lowveld"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 43,
+      "id": "heat-dawn-3",
+      "en": "The birds have already gone quiet. They know something.",
+      "af": "Die voëls het klaar stil geraak. Hulle weet iets.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 44,
+      "id": "heat-dawn-3",
+      "en": "Today's workout: car to aircon.",
+      "af": "Vandag se oefensessie: van die kar tot by die aircon.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 48,
+      "id": "heat-dawn-5",
+      "en": "Everyone running now will be bragging about it by lunch. That's the whole point.",
+      "af": "Almal wat nou draf, gaan teen middagete daaroor spog. Dis die hele punt.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 49,
+      "id": "heat-dawn-5",
+      "en": "The 5:30 runners aren't fitter than us. They're just smarter.",
+      "af": "Die 05:30-drawwers is nie fikser as ons nie. Hulle is net slimmer.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 50,
+      "id": "heat-dawn-5",
+      "en": "Even the sun got up early to beat the traffic.",
+      "af": "Selfs die son het vroeg opgestaan om die verkeer te klop.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 54,
+      "id": "heat-dawn-7",
+      "en": "Even the dog checked the forecast and went straight back to bed.",
+      "af": "Selfs die hond het die voorspelling gecheck en teruggegaan bed toe.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 55,
+      "id": "heat-dawn-7",
+      "en": "The windpomp is dead still. Even the wind isn't coming in to work today.",
+      "af": "Die windpomp staan doodstil. Nie eers die wind wil vandag werk nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "Karoo/inland ('windpomp') rings false in coastal WC",
+      "phrase": "windpomp"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 56,
+      "id": "heat-dawn-7",
+      "en": "Shade-hunting season officially opens at seven.",
+      "af": "Skaduwee-jagseisoen maak amptelik om sewe-uur oop.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 57,
+      "id": "heat-day-1",
+      "en": "35 in the shade. In the sun, nobody's counting anymore.",
+      "af": "35 in die skadu. In die son tel niemand meer nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 58,
+      "id": "heat-day-1",
+      "en": "Today's plan is the stoep. That's the entire plan.",
+      "af": "Die plan vir vandag is die stoep. Dis die hele plan.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 59,
+      "id": "heat-day-1",
+      "en": "Move slowly. Speak slowly. Survive.",
+      "af": "Beweeg stadig. Praat stadig. Oorleef.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 63,
+      "id": "heat-day-3",
+      "en": "Even the impala are standing in the shade rethinking their choices.",
+      "af": "Selfs die rooibokke staan in die skadu en heroorweeg hul keuses.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'impala' (Lowveld/bushveld)",
+      "phrase": "impala"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 64,
+      "id": "heat-day-3",
+      "en": "Lowveld summer: you don't sweat, you melt with dignity.",
+      "af": "Laeveld-somer: jy sweet nie, jy smelt met waardigheid.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'lowveld' (Lowveld/bushveld)",
+      "phrase": "lowveld"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 65,
+      "id": "heat-day-3",
+      "en": "The bushveld is on silent mode today. Everyone. Everything.",
+      "af": "Die bosveld is vandag op stille modus. Almal. Alles.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'bushveld' (Lowveld/bushveld)",
+      "phrase": "bushveld"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 69,
+      "id": "heat-day-5",
+      "en": "Watermelon isn't dessert. It's first aid.",
+      "af": "Waatlemoen is nie nagereg nie. Dis noodhulp.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 70,
+      "id": "heat-day-5",
+      "en": "Lunch moved outside because inside is hotter than outside. Nobody can explain it.",
+      "af": "Middagete het buitetoe getrek, want binne is warmer as buite. Niemand kan dit verklaar nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 78,
+      "id": "heat-dusk-3",
+      "en": "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements.",
+      "af": "19:00 en steeds 30 grade. Die Karoo maak nie foute nie, net stellings.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "names the Karoo",
+      "phrase": "karoo"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 79,
+      "id": "heat-dusk-3",
+      "en": "The rocks will be handing out today's heat all night. Free of charge.",
+      "af": "Die klippe gaan vannag nog die dag se hitte uitdeel. Verniet.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 80,
+      "id": "heat-dusk-3",
+      "en": "Sunset is the Karoo's way of apologising.",
+      "af": "Sonsondergang is die Karoo se manier van jammer sê.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "names the Karoo",
+      "phrase": "karoo"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 84,
+      "id": "heat-dusk-5",
+      "en": "The first breeze of the day has just arrived. Give it a round of applause.",
+      "af": "Die eerste briesie van die dag het nou net opgedaag. Gee hom applous.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 85,
+      "id": "heat-dusk-5",
+      "en": "Sundowners aren't a luxury in the Lowveld. They're medical.",
+      "af": "Sundowners is nie 'n luukse in die Laeveld nie. Dis medies.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'lowveld' (Lowveld/bushveld)",
+      "phrase": "lowveld"
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 86,
+      "id": "heat-dusk-5",
+      "en": "The day tried to finish us. We're drinking to that now.",
+      "af": "Die dag het ons probeer opeet. Ons drink nou daarop.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 87,
+      "id": "heat-dusk-6",
+      "en": "The sprinkler is supposedly for the lawn. Look who's all standing in the water.",
+      "af": "Die sproeier is kamma vir die gras. Kyk wie staan almal in die water.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "heat",
+      "index_at_apply": 88,
+      "id": "heat-dusk-6",
+      "en": "Adults 'just taking a garden stroll' exactly where the sprinkler sprays. Coincidence, nè.",
+      "af": "Grootmense wat 'net deur die tuin stap' presies waar die sproeier spuit. Toeval, nè.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 39,
+      "id": "rain-dawn-2",
+      "en": "In the Karoo this isn't rain. It's a celebrity appearance.",
+      "af": "In die Karoo is dit nie reën nie. Dis 'n verskyning.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "names the Karoo",
+      "phrase": "karoo"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 40,
+      "id": "rain-dawn-2",
+      "en": "Even the sheep are standing still for this one.",
+      "af": "Selfs die skape staan stil vir hierdie een.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 41,
+      "id": "rain-dawn-2",
+      "en": "Somebody's birthday-candle wish just paid out.",
+      "af": "Iemand het reggewens by die verjaarsdagkoek.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 49,
+      "id": "rain-dawn-7",
+      "en": "Rain on a farm isn't weather. It's a salary falling from the sky.",
+      "af": "Reën op 'n plaas is nie weer nie. Dis 'n salaris wat val.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 50,
+      "id": "rain-dawn-7",
+      "en": "Somewhere a farmer is doing a small private dance nobody's allowed to see.",
+      "af": "Iewers doen 'n boer nou 'n klein dansie wat niemand mag sien nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 51,
+      "id": "rain-dawn-8",
+      "en": "Wet tar at sunrise. That's not a smell, that's heritage.",
+      "af": "Nat teer by sonsopkoms. Dis nie 'n reuk nie, dis 'n erfenis.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 52,
+      "id": "rain-dawn-8",
+      "en": "Post-storm Highveld air should be bottled and sold overseas.",
+      "af": "Die Hooglandlug ná reën behoort in 'n botteltjie verkoop te word.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 53,
+      "id": "rain-day-1",
+      "en": "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies.",
+      "af": "Joburg se reën hou dagboek: 14:00, stiptelik, vol drama.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "gauteng",
+      "why": "names a Gauteng city ('joburg')",
+      "phrase": "joburg"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 54,
+      "id": "rain-day-1",
+      "en": "Twenty minutes of opera, then the sun acts like nothing happened.",
+      "af": "Twintig minute se opera, dan maak die son of niks gebeur het nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 55,
+      "id": "rain-day-1",
+      "en": "Other cities get weather. Joburg gets a production.",
+      "af": "Ander stede kry weer. Joburg kry 'n vertoning.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "gauteng",
+      "why": "names a Gauteng city ('joburg')",
+      "phrase": "joburg"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 56,
+      "id": "rain-day-2",
+      "en": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+      "af": "Twee druppels op die voorruit en die hele N1 se geheue is skoon gewas.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 62,
+      "id": "rain-day-6",
+      "en": "You smell Highveld rain before you see it. That's the trailer.",
+      "af": "Jy ruik Hoëveldse reën voor jy hom sien. Dis die lokprent.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 63,
+      "id": "rain-day-6",
+      "en": "The veld already knows. The veld always knows first.",
+      "af": "Die veld weet reeds. Die veld weet altyd eerste.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:day",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "Karoo/inland ('veld') rings false in coastal WC",
+      "phrase": "veld"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 69,
+      "id": "rain-dusk-1",
+      "en": "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
+      "af": "Joburg reën twintig minute en verf dan die lug asof niks gebeur het nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "gauteng",
+      "why": "names a Gauteng city ('joburg')",
+      "phrase": "joburg"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 70,
+      "id": "rain-dusk-1",
+      "en": "The storm was the performance. This is the bow.",
+      "af": "Die storm was die opvoering. Dít is die buiging.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 73,
+      "id": "rain-dusk-3",
+      "en": "Distant lightning and a warm mug: best channel on television.",
+      "af": "Weerlig in die verte, koffie in die hand — beste kanaal op televisie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 74,
+      "id": "rain-dusk-3",
+      "en": "In the Karoo you watch rain the way other people watch rugby.",
+      "af": "In die Karoo kyk jy reën soos ander mense rugby kyk.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "names the Karoo",
+      "phrase": "karoo"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 75,
+      "id": "rain-dusk-3",
+      "en": "It's still fifty kilometres away and the stoep is already sold out.",
+      "af": "Dis nog vyftig kilometer weg en die stoep is klaar vol.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk"
+      ],
+      "decision": "TAG",
+      "region": "karoo",
+      "why": "watching rain approach 50km off — inland big-sky, false in coastal WC",
+      "phrase": "fifty kilometres away"
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 76,
+      "id": "rain-night-1",
+      "en": "Rain on a tin roof: the official national lullaby.",
+      "af": "Reën op 'n sinkdak: die land se amptelike slaapliedjie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 79,
+      "id": "rain-night-3",
+      "en": "Free fireworks, no tickets, best seats in the house.",
+      "af": "Gratis vuurwerke. Geen kaartjies. Beste sitplekke in die huis.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "rain",
+      "index_at_apply": 80,
+      "id": "rain-night-3",
+      "en": "The Highveld doesn't do subtle, and honestly we're grateful.",
+      "af": "Die Hoëveld hou nie van subtiel nie en ons is dankbaar.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:summer"
+      ],
+      "decision": "TAG",
+      "region": "highveld",
+      "why": "names the Highveld",
+      "phrase": "highveld"
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 32,
+      "id": "storm-dawn-1",
+      "en": "The sky woke up in a mood.",
+      "af": "Die lug het wakker geword met 'n houding.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 33,
+      "id": "storm-dawn-1",
+      "en": "6am and the sky has already called a meeting.",
+      "af": "06:00 en die hemel het reeds 'n vergadering belê.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 34,
+      "id": "storm-dawn-1",
+      "en": "Not even coffee is fixing this mood.",
+      "af": "Nie eens koffie gaan dié bui regmaak nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 35,
+      "id": "storm-dawn-3",
+      "en": "Rusks first. Panic later.",
+      "af": "Beskuit eerste. Paniek later.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 36,
+      "id": "storm-dawn-3",
+      "en": "Free IMAX this morning, boet.",
+      "af": "Gratis IMAX vanoggend, boet.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 37,
+      "id": "storm-dawn-3",
+      "en": "The dog has already booked his spot under the bed.",
+      "af": "Die hond het klaar sy plek onder die bed bespreek.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 38,
+      "id": "storm-dawn-4",
+      "en": "Sunrise chose drama today.",
+      "af": "Die sonsopkoms het vanoggend op drama besluit.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 39,
+      "id": "storm-dawn-4",
+      "en": "Somewhere a farmer is very chuffed right now.",
+      "af": "Iewers is 'n boer nou baie in sy noppies.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 40,
+      "id": "storm-dawn-5",
+      "en": "Even the water is holding its breath.",
+      "af": "Selfs die water hou sy asem op.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 41,
+      "id": "storm-dawn-5",
+      "en": "Gorgeous, but I trust it zero percent.",
+      "af": "Pragtig, maar ek vertrou dit vir niks.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 42,
+      "id": "storm-dawn-5",
+      "en": "The calm before the group chat explodes.",
+      "af": "Dis die stilte voor die groepsgesprek ontplof.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 43,
+      "id": "storm-dawn-6",
+      "en": "Drive now, wonder later.",
+      "af": "Ry nou, wonder later.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 44,
+      "id": "storm-dawn-6",
+      "en": "The horizon looks like a movie finale.",
+      "af": "Die horison lyk soos 'n fliek se slottoneel.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 45,
+      "id": "storm-dawn-7",
+      "en": "Neighbourhood watch has a new agenda: the sky.",
+      "af": "Buurtwag se nuwe agenda: die lug.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 46,
+      "id": "storm-dawn-7",
+      "en": "Nobody is being on time today.",
+      "af": "Niemand gaan vandag betyds wees nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 47,
+      "id": "storm-dawn-7",
+      "en": "Those aren't clouds, that's a trailer.",
+      "af": "Dis nie wolke nie, dis 'n lokprent.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 48,
+      "id": "storm-dawn-8",
+      "en": "Today's forecast: special effects.",
+      "af": "Vandag se voorspelling: verhoogeffekte.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 49,
+      "id": "storm-dawn-8",
+      "en": "Someone cranked the contrast way too high.",
+      "af": "Iemand het die kontras heeltemal te hoog gestel.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 50,
+      "id": "storm-dawn-8",
+      "en": "The smell of rain has already RSVP'd.",
+      "af": "Die reuk van reën het klaar ge-RSVP.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dawn",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 51,
+      "id": "storm-dusk-1",
+      "en": "The braai continues. So does the show.",
+      "af": "Die braai gaan aan. Die vertoning ook.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 52,
+      "id": "storm-dusk-1",
+      "en": "Unplug the TV — it's tradition.",
+      "af": "Onthou om die TV se prop uit te trek — dis tradisie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 53,
+      "id": "storm-dusk-1",
+      "en": "Free fireworks, no tickets needed.",
+      "af": "Gratis vuurwerke, geen kaartjies nodig nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:dusk",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 54,
+      "id": "storm-night-1",
+      "en": "Midnight and the sky is showing off.",
+      "af": "Middernag en die lug wys af.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 55,
+      "id": "storm-night-1",
+      "en": "Sleep is cancelled, but look at that shot.",
+      "af": "Slaap is gekanselleer, maar kyk net daai skoot.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 56,
+      "id": "storm-night-1",
+      "en": "Thunder at volume ten, the neighbour's dog at eleven.",
+      "af": "Donderweer op volume tien, die buurman se hond op elf.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 57,
+      "id": "storm-night-2",
+      "en": "The farm's best TV channel.",
+      "af": "Die plaas se beste TV-kanaal.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "storm",
+      "index_at_apply": 58,
+      "id": "storm-night-2",
+      "en": "Every flash is a photo nobody takes in time.",
+      "af": "Elke weerligstraal is 'n foto wat niemand betyds neem nie.",
+      "oldTag": "region:inland",
+      "otherTags": [
+        "time:night",
+        "season:summer"
+      ],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "wind",
+      "index_at_apply": 23,
+      "id": "wind-dawn-3",
+      "en": "Gqeberha, we know. We know.",
+      "af": "Gqeberha, ons weet. Ons wéét.",
+      "oldTag": "region:eastern-cape",
+      "otherTags": [],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'gqeberha' (Eastern Cape)",
+      "phrase": "gqeberha"
+    },
+    {
+      "cond": "wind",
+      "index_at_apply": 24,
+      "id": "wind-dawn-3",
+      "en": "The Friendly City never asked to be the Windy City, and yet.",
+      "af": "Die Vriendelike Stad het nie gevra om die Winderige Stad te wees nie, en tog.",
+      "oldTag": "region:eastern-cape",
+      "otherTags": [],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'friendly city' (Eastern Cape)",
+      "phrase": "friendly city"
+    },
+    {
+      "cond": "wind",
+      "index_at_apply": 25,
+      "id": "wind-dawn-3",
+      "en": "Cape Town sends solidarity. And a spare cap.",
+      "af": "Kaapstad stuur sterkte. En 'n ekstra pet.",
+      "oldTag": "region:eastern-cape",
+      "otherTags": [],
+      "decision": "NAT",
+      "region": null,
+      "why": "place-free / true in coastal WC",
+      "phrase": null
+    },
+    {
+      "cond": "wind",
+      "index_at_apply": 39,
+      "id": "wind-dusk-3",
+      "en": "Jeffreys Bay: where the wind warms up before its Cape Town shift.",
+      "af": "Jeffreysbaai: waar die wind oefen voor sy Kaapse skof.",
+      "oldTag": "region:eastern-cape",
+      "otherTags": [],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'jeffreys' (Eastern Cape)",
+      "phrase": "jeffreys"
+    },
+    {
+      "cond": "wind",
+      "index_at_apply": 47,
+      "id": "wind-night-2",
+      "en": "Gqeberha doesn't sleep, it just holds on.",
+      "af": "Gqeberha slaap nie, dit hou net vas.",
+      "oldTag": "region:eastern-cape",
+      "otherTags": [],
+      "decision": "HELD",
+      "region": null,
+      "why": "no box for 'gqeberha' (Eastern Cape)",
+      "phrase": "gqeberha"
+    }
+  ]
+}
