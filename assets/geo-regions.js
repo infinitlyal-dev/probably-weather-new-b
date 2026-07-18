@@ -12,6 +12,13 @@ export const REGION_BOXES = {
   highveld: { minLat: -26.6, maxLat: -25.2, minLon: 27.4, maxLon: 28.7 },
   'free-state': { minLat: -30.8, maxLat: -26.4, minLon: 24.4, maxLon: 29.2 },
   karoo: { minLat: -33.6, maxLat: -30.0, minLon: 20.0, maxLon: 25.6 },
+  // Mpumalanga/Limpopo Lowveld & bushveld (Nelspruit/Mbombela, Hoedspruit, Kruger) —
+  // low-lying, hot, east of the escarpment.
+  lowveld: { minLat: -26.0, maxLat: -22.8, minLon: 30.5, maxLon: 32.0 },
+  // KwaZulu-Natal: coastal belt + Midlands (Durban, Pietermaritzburg, Howick).
+  kzn: { minLat: -31.0, maxLat: -27.0, minLon: 29.0, maxLon: 32.9 },
+  // Eastern Cape (Gqeberha, Jeffreys Bay, East London) — the windward SE.
+  'eastern-cape': { minLat: -34.3, maxLat: -30.5, minLon: 24.0, maxLon: 30.0 },
 };
 
 export function isWesternCape(placeOrLat, maybeLon) {
