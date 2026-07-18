@@ -48,7 +48,7 @@ export function buildCsp(hashes) {
     `script-src ${scriptSrc}`,
     "style-src 'self' 'unsafe-inline'", // inline style="" attributes in index.html can't be hashed
     "img-src 'self' data: blob:", // /assets, /cdn (same-origin), canvas data:, share blob:
-    "font-src 'self'",
+    "font-src 'self' data:", // Onest/Caveat woff2 are embedded as data: URIs
     "connect-src 'self'", // /api/* + the Vercel Insights beacon are same-origin
     "worker-src 'self'",
     "manifest-src 'self'",
