@@ -1,0 +1,127 @@
+{
+  "note": "Reroll wave 1 — slots ruled NEITHER at GATE 1. CLOSED BY OWNER (Al) on 2026-07-18: no reroll, ever. This wave is over; not a residual reroll ledger.",
+  "wave": "reroll-wave-1",
+  "count": 17,
+  "status": "closed by owner — no reroll",
+  "slots": [
+    {
+      "id": "storm-day-1",
+      "condition": "storm",
+      "bin": "day",
+      "reason": "Still doesnt look like a recognizable cityscape.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "storm-dusk-2",
+      "condition": "storm",
+      "bin": "dusk",
+      "reason": "Both images still looks Ai made, humans look fake.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "clear-day-2",
+      "condition": "clear",
+      "bin": "day",
+      "reason": "Buildings in the background are duplicated like the twin towers.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "clear-day-8",
+      "condition": "clear",
+      "bin": "day",
+      "reason": "Town center still looks fake and mountains in the back look like usa mountains.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "rain-dawn-4",
+      "condition": "rain",
+      "bin": "dawn",
+      "reason": "Women in pick a is standing at an entrance but the doors hanlde makes it look like it should be closed. Pick b the women is standing outside in the rain, doesnt make sense.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "rain-night-4",
+      "condition": "rain",
+      "bin": "night",
+      "reason": "Both look fake.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cloudy-day-3",
+      "condition": "cloudy",
+      "bin": "day",
+      "reason": "Dont trust the skyline. Buildings are duplicated.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cloudy-dusk-5",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "reason": "Because the people are still walking away from the house.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cloudy-dusk-7",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "reason": "Dont trust the skyline. Buildings are duplicated.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cloudy-night-1",
+      "condition": "cloudy",
+      "bin": "night",
+      "reason": "Still looks fake and city at the bottom doesnt look right.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cold-dawn-6",
+      "condition": "cold",
+      "bin": "dawn",
+      "reason": "Both just look wrong.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cold-day-3",
+      "condition": "cold",
+      "bin": "day",
+      "reason": "Gordons bay mountain has a big insignia on it plys there are no skyrises in gordonsbay.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cold-day-8",
+      "condition": "cold",
+      "bin": "day",
+      "reason": "I ont trust the background.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cold-dusk-4",
+      "condition": "cold",
+      "bin": "dusk",
+      "reason": "They all lokk fake. Humans look ai made.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cold-night-4",
+      "condition": "cold",
+      "bin": "night",
+      "reason": "All looks fake.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cold-night-8",
+      "condition": "cold",
+      "bin": "night",
+      "reason": "Both looks weird and fucking fake.",
+      "status": "closed by owner — no reroll"
+    },
+    {
+      "id": "cold-clear-day-12",
+      "condition": "cold-clear",
+      "bin": "day",
+      "reason": "Horses look weird, eveything looks weird.",
+      "status": "closed by owner — no reroll"
+    }
+  ]
+}

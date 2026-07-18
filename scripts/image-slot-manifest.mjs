@@ -119,8 +119,8 @@ export function verifyBackgroundImageArtifact({ sourceImageRoot, distRoot, picke
     }
   }
 
-  if (checked !== 1008 || resolved.size !== 629) {
-    throw new Error(`P9 resolution mismatch: ${checked}/1008 slots, ${resolved.size}/629 unique files`);
+  if (checked !== 1008 || resolved.size !== 644) {
+    throw new Error(`P9 resolution mismatch: ${checked}/1008 slots, ${resolved.size}/644 unique files`);
   }
   return { checked, uniqueFiles: resolved.size };
 }

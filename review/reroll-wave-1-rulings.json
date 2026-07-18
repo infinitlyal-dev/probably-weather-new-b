@@ -1,0 +1,333 @@
+{
+  "generated": "2026-07-18T19:03:41.517Z",
+  "wave": "reroll-wave-1",
+  "total": 36,
+  "ruled": 36,
+  "neither": 17,
+  "rulings": [
+    {
+      "id": "wind-dawn-2",
+      "condition": "wind",
+      "bin": "dawn",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/wind-dawn-2_A.jpg",
+      "candidateB": "reroll-candidates/wind-dawn-2_B.jpg"
+    },
+    {
+      "id": "wind-dusk-1",
+      "condition": "wind",
+      "bin": "dusk",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/wind-dusk-1_A.jpg",
+      "candidateB": "reroll-candidates/wind-dusk-1_B.jpg"
+    },
+    {
+      "id": "wind-night-4",
+      "condition": "wind",
+      "bin": "night",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/wind-night-4_A.jpg",
+      "candidateB": "reroll-candidates/wind-night-4_B.jpg"
+    },
+    {
+      "id": "storm-dawn-2",
+      "condition": "storm",
+      "bin": "dawn",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/storm-dawn-2_A.jpg",
+      "candidateB": "reroll-candidates/storm-dawn-2_B.jpg"
+    },
+    {
+      "id": "storm-day-1",
+      "condition": "storm",
+      "bin": "day",
+      "verdict": "NEITHER",
+      "notes": "Still doesnt look like a recognizable cityscape. ",
+      "candidateA": "reroll-candidates/storm-day-1_A.jpg",
+      "candidateB": "reroll-candidates/storm-day-1_B.jpg"
+    },
+    {
+      "id": "storm-day-2",
+      "condition": "storm",
+      "bin": "day",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/storm-day-2_A.jpg",
+      "candidateB": "reroll-candidates/storm-day-2_B.jpg"
+    },
+    {
+      "id": "storm-dusk-2",
+      "condition": "storm",
+      "bin": "dusk",
+      "verdict": "NEITHER",
+      "notes": "Both images still looks Ai made, humans look fake.",
+      "candidateA": "reroll-candidates/storm-dusk-2_A.jpg",
+      "candidateB": "reroll-candidates/storm-dusk-2_B.jpg"
+    },
+    {
+      "id": "clear-day-2",
+      "condition": "clear",
+      "bin": "day",
+      "verdict": "NEITHER",
+      "notes": "Buildings in the background are duplicated like the twin towers.",
+      "candidateA": "reroll-candidates/clear-day-2_A.jpg",
+      "candidateB": "reroll-candidates/clear-day-2_B.jpg"
+    },
+    {
+      "id": "clear-day-8",
+      "condition": "clear",
+      "bin": "day",
+      "verdict": "NEITHER",
+      "notes": "Town center still looks fake and mountains in the back look like usa mountains.",
+      "candidateA": "reroll-candidates/clear-day-8_A.jpg",
+      "candidateB": "reroll-candidates/clear-day-8_B.jpg"
+    },
+    {
+      "id": "clear-night-3",
+      "condition": "clear",
+      "bin": "night",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/clear-night-3_A.jpg",
+      "candidateB": "reroll-candidates/clear-night-3_B.jpg"
+    },
+    {
+      "id": "rain-dawn-4",
+      "condition": "rain",
+      "bin": "dawn",
+      "verdict": "NEITHER",
+      "notes": "Women in pick a is standing at an entrance but the doors hanlde makes it look like it should be closed. Pick b the women is standing outside in the rain, doesnt make sense. ",
+      "candidateA": "reroll-candidates/rain-dawn-4_A.jpg",
+      "candidateB": "reroll-candidates/rain-dawn-4_B.jpg"
+    },
+    {
+      "id": "rain-day-4",
+      "condition": "rain",
+      "bin": "day",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/rain-day-4_A.jpg",
+      "candidateB": "reroll-candidates/rain-day-4_B.jpg"
+    },
+    {
+      "id": "rain-night-2",
+      "condition": "rain",
+      "bin": "night",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/rain-night-2_A.jpg",
+      "candidateB": "reroll-candidates/rain-night-2_B.jpg"
+    },
+    {
+      "id": "rain-night-4",
+      "condition": "rain",
+      "bin": "night",
+      "verdict": "NEITHER",
+      "notes": "Both look fake.",
+      "candidateA": "reroll-candidates/rain-night-4_A.jpg",
+      "candidateB": "reroll-candidates/rain-night-4_B.jpg"
+    },
+    {
+      "id": "cloudy-day-2",
+      "condition": "cloudy",
+      "bin": "day",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/cloudy-day-2_A.jpg",
+      "candidateB": "reroll-candidates/cloudy-day-2_B.jpg"
+    },
+    {
+      "id": "cloudy-day-3",
+      "condition": "cloudy",
+      "bin": "day",
+      "verdict": "NEITHER",
+      "notes": "Dont trust the skyline. Buildings are duplicated.",
+      "candidateA": "reroll-candidates/cloudy-day-3_A.jpg",
+      "candidateB": "reroll-candidates/cloudy-day-3_B.jpg"
+    },
+    {
+      "id": "cloudy-dusk-5",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "verdict": "NEITHER",
+      "notes": "Because the people are still walking away from the house.",
+      "candidateA": "reroll-candidates/cloudy-dusk-5_A.jpg",
+      "candidateB": "reroll-candidates/cloudy-dusk-5_B.jpg"
+    },
+    {
+      "id": "cloudy-dusk-7",
+      "condition": "cloudy",
+      "bin": "dusk",
+      "verdict": "NEITHER",
+      "notes": "Dont trust the skyline. Buildings are duplicated.",
+      "candidateA": "reroll-candidates/cloudy-dusk-7_A.jpg",
+      "candidateB": "reroll-candidates/cloudy-dusk-7_B.jpg"
+    },
+    {
+      "id": "cloudy-night-1",
+      "condition": "cloudy",
+      "bin": "night",
+      "verdict": "NEITHER",
+      "notes": "Still looks fake and city at the bottom doesnt look right.",
+      "candidateA": "reroll-candidates/cloudy-night-1_A.jpg",
+      "candidateB": "reroll-candidates/cloudy-night-1_B.jpg"
+    },
+    {
+      "id": "cloudy-night-2",
+      "condition": "cloudy",
+      "bin": "night",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/cloudy-night-2_A.jpg",
+      "candidateB": "reroll-candidates/cloudy-night-2_B.jpg"
+    },
+    {
+      "id": "cold-dawn-3",
+      "condition": "cold",
+      "bin": "dawn",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-dawn-3_A.jpg",
+      "candidateB": "reroll-candidates/cold-dawn-3_B.jpg"
+    },
+    {
+      "id": "cold-dawn-6",
+      "condition": "cold",
+      "bin": "dawn",
+      "verdict": "NEITHER",
+      "notes": "Both just look wrong.",
+      "candidateA": "reroll-candidates/cold-dawn-6_A.jpg",
+      "candidateB": "reroll-candidates/cold-dawn-6_B.jpg"
+    },
+    {
+      "id": "cold-day-3",
+      "condition": "cold",
+      "bin": "day",
+      "verdict": "NEITHER",
+      "notes": "Gordons bay mountain has a big insignia on it plys there are no skyrises in gordonsbay.",
+      "candidateA": "reroll-candidates/cold-day-3_A.jpg",
+      "candidateB": "reroll-candidates/cold-day-3_B.jpg"
+    },
+    {
+      "id": "cold-day-4",
+      "condition": "cold",
+      "bin": "day",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-day-4_A.jpg",
+      "candidateB": "reroll-candidates/cold-day-4_B.jpg"
+    },
+    {
+      "id": "cold-day-8",
+      "condition": "cold",
+      "bin": "day",
+      "verdict": "NEITHER",
+      "notes": "I ont trust the background.",
+      "candidateA": "reroll-candidates/cold-day-8_A.jpg",
+      "candidateB": "reroll-candidates/cold-day-8_B.jpg"
+    },
+    {
+      "id": "cold-day-10",
+      "condition": "cold",
+      "bin": "day",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-day-10_A.jpg",
+      "candidateB": "reroll-candidates/cold-day-10_B.jpg"
+    },
+    {
+      "id": "cold-dusk-2",
+      "condition": "cold",
+      "bin": "dusk",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-dusk-2_A.jpg",
+      "candidateB": "reroll-candidates/cold-dusk-2_B.jpg"
+    },
+    {
+      "id": "cold-dusk-3",
+      "condition": "cold",
+      "bin": "dusk",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-dusk-3_A.jpg",
+      "candidateB": "reroll-candidates/cold-dusk-3_B.jpg"
+    },
+    {
+      "id": "cold-dusk-4",
+      "condition": "cold",
+      "bin": "dusk",
+      "verdict": "NEITHER",
+      "notes": "They all lokk fake. Humans look ai made.",
+      "candidateA": "reroll-candidates/cold-dusk-4_A.jpg",
+      "candidateB": "reroll-candidates/cold-dusk-4_B.jpg"
+    },
+    {
+      "id": "cold-dusk-8",
+      "condition": "cold",
+      "bin": "dusk",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-dusk-8_A.jpg",
+      "candidateB": "reroll-candidates/cold-dusk-8_B.jpg"
+    },
+    {
+      "id": "cold-night-4",
+      "condition": "cold",
+      "bin": "night",
+      "verdict": "NEITHER",
+      "notes": "All looks fake.",
+      "candidateA": "reroll-candidates/cold-night-4_A.jpg",
+      "candidateB": "reroll-candidates/cold-night-4_B.jpg"
+    },
+    {
+      "id": "cold-night-5",
+      "condition": "cold",
+      "bin": "night",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-night-5_A.jpg",
+      "candidateB": "reroll-candidates/cold-night-5_B.jpg"
+    },
+    {
+      "id": "cold-night-8",
+      "condition": "cold",
+      "bin": "night",
+      "verdict": "NEITHER",
+      "notes": "Both looks weird and fucking fake.",
+      "candidateA": "reroll-candidates/cold-night-8_A.jpg",
+      "candidateB": "reroll-candidates/cold-night-8_B.jpg"
+    },
+    {
+      "id": "cold-clear-dawn-6",
+      "condition": "cold-clear",
+      "bin": "dawn",
+      "verdict": "A",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-clear-dawn-6_A.jpg",
+      "candidateB": "reroll-candidates/cold-clear-dawn-6_B.jpg"
+    },
+    {
+      "id": "cold-clear-day-12",
+      "condition": "cold-clear",
+      "bin": "day",
+      "verdict": "NEITHER",
+      "notes": "Horses look weird, eveything looks weird.",
+      "candidateA": "reroll-candidates/cold-clear-day-12_A.jpg",
+      "candidateB": "reroll-candidates/cold-clear-day-12_B.jpg"
+    },
+    {
+      "id": "cold-clear-night-4",
+      "condition": "cold-clear",
+      "bin": "night",
+      "verdict": "B",
+      "notes": "",
+      "candidateA": "reroll-candidates/cold-clear-night-4_A.jpg",
+      "candidateB": "reroll-candidates/cold-clear-night-4_B.jpg"
+    }
+  ]
+}

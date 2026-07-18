@@ -147,7 +147,7 @@ describe('getRotationWeek', () => {
 describe('buildPickerPaths', () => {
   it('P1 versions every rotating WebP URL while leaving the JPG guard stable', () => {
     const paths = buildPickerPaths('cold', 'cloudy', 'night', 2, 5);
-    expect(paths.slice(0, -1).every((url) => url.endsWith('?v=20260717-p1'))).toBe(true);
+    expect(paths.slice(0, -1).every((url) => url.endsWith('?v=20260718-p1'))).toBe(true);
     expect(paths.at(-1)).toBe('assets/images/bg/default.jpg');
   });
 
@@ -156,8 +156,8 @@ describe('buildPickerPaths', () => {
     // produce the same path, so the deduper merges them.
     const c = buildPickerPaths('clear', 'clear', 'day', 1, 3);
     expect(c).toEqual([
-      'assets/images/bg/clear/week_1/day/3.webp?v=20260717-p1',
-      'assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1',
+      'assets/images/bg/clear/week_1/day/3.webp?v=20260718-p1',
+      'assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1',
       'assets/images/bg/default.jpg',
     ]);
   });
@@ -165,9 +165,9 @@ describe('buildPickerPaths', () => {
   it('uses cloudy as sibling fallback for cold (full 4-step chain — no collapse)', () => {
     const c = buildPickerPaths('cold', 'cloudy', 'night', 2, 5);
     expect(c).toEqual([
-      'assets/images/bg/cold/week_2/night/5.webp?v=20260717-p1',
-      'assets/images/bg/cold/week_1/night/1.webp?v=20260717-p1',
-      'assets/images/bg/cloudy/week_1/night/1.webp?v=20260717-p1',
+      'assets/images/bg/cold/week_2/night/5.webp?v=20260718-p1',
+      'assets/images/bg/cold/week_1/night/1.webp?v=20260718-p1',
+      'assets/images/bg/cloudy/week_1/night/1.webp?v=20260718-p1',
       'assets/images/bg/default.jpg',
     ]);
   });
@@ -176,8 +176,8 @@ describe('buildPickerPaths', () => {
     const c = buildPickerPaths('cold', 'cloudy', 'day', 1, 1);
     // primary = cold/week_1/day/1.webp == step 2 → dedupes
     expect(c).toEqual([
-      'assets/images/bg/cold/week_1/day/1.webp?v=20260717-p1',
-      'assets/images/bg/cloudy/week_1/day/1.webp?v=20260717-p1',
+      'assets/images/bg/cold/week_1/day/1.webp?v=20260718-p1',
+      'assets/images/bg/cloudy/week_1/day/1.webp?v=20260718-p1',
       'assets/images/bg/default.jpg',
     ]);
   });
@@ -185,21 +185,21 @@ describe('buildPickerPaths', () => {
   it('dedupes worst-case r=1 with folder == fallbackFolder → just 2 entries', () => {
     const c = buildPickerPaths('clear', 'clear', 'day', 1, 1);
     expect(c).toEqual([
-      'assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1',
+      'assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1',
       'assets/images/bg/default.jpg',
     ]);
   });
 
   it('handles cold-clear without URL encoding the hyphen', () => {
     const c = buildPickerPaths('cold-clear', 'clear', 'dawn', 4, 7);
-    expect(c[0]).toBe('assets/images/bg/cold-clear/week_4/dawn/7.webp?v=20260717-p1');
+    expect(c[0]).toBe('assets/images/bg/cold-clear/week_4/dawn/7.webp?v=20260718-p1');
     expect(c[0]).not.toMatch(/%/);
   });
 
   it('produces valid paths for all 9 conditions × 4 weeks × 4 times', () => {
     const conditions = ['clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind'];
     const times = ['dawn', 'day', 'dusk', 'night'];
-    const pattern = /^assets\/images\/bg\/[a-z-]+\/week_[1-4]\/(dawn|day|dusk|night)\/[1-7]\.webp\?v=20260717-p1$/;
+    const pattern = /^assets\/images\/bg\/[a-z-]+\/week_[1-4]\/(dawn|day|dusk|night)\/[1-7]\.webp\?v=20260718-p1$/;
     let combos = 0;
     for (const cond of conditions) {
       for (let w = 1; w <= 4; w++) {
@@ -216,34 +216,34 @@ describe('buildPickerPaths', () => {
   });
 
   it('clamps invalid week values to 1', () => {
-    expect(buildPickerPaths('clear', 'clear', 'day', 0, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', 'day', 5, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', 'day', -1, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', 'day', NaN, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260717-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', 0, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', 5, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', -1, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', NaN, 3)[0]).toBe('assets/images/bg/clear/week_1/day/3.webp?v=20260718-p1');
   });
 
   it('clamps invalid r values to 1', () => {
-    expect(buildPickerPaths('clear', 'clear', 'day', 1, 0)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', 'day', 1, 8)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', 'day', 1, 99)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', 'day', 1, -1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', 1, 0)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', 1, 8)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', 1, 99)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', 'day', 1, -1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
   });
 
   it('clamps invalid timeOfDay to day', () => {
-    expect(buildPickerPaths('clear', 'clear', 'twilight', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', '', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
-    expect(buildPickerPaths('clear', 'clear', null, 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
+    expect(buildPickerPaths('clear', 'clear', 'twilight', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', '', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
+    expect(buildPickerPaths('clear', 'clear', null, 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
   });
 
   it('defaults empty folder to clear', () => {
-    expect(buildPickerPaths('', 'clear', 'day', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
-    expect(buildPickerPaths(null, null, 'day', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
-    expect(buildPickerPaths(undefined, undefined, 'day', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260717-p1');
+    expect(buildPickerPaths('', 'clear', 'day', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
+    expect(buildPickerPaths(null, null, 'day', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
+    expect(buildPickerPaths(undefined, undefined, 'day', 1, 1)[0]).toBe('assets/images/bg/clear/week_1/day/1.webp?v=20260718-p1');
   });
 
   it('honours a custom base path (last entry is always the default guard)', () => {
     const c = buildPickerPaths('clear', 'clear', 'day', 2, 3, '/cdn/v2');
-    expect(c[0]).toBe('/cdn/v2/clear/week_2/day/3.webp?v=20260717-p1');
+    expect(c[0]).toBe('/cdn/v2/clear/week_2/day/3.webp?v=20260718-p1');
     expect(c[c.length - 1]).toBe('/cdn/v2/default.jpg');
   });
 
