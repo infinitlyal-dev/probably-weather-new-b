@@ -21,97 +21,101 @@
 
 /* Query-only prototype: these rem values equal the dossier's ruled pixel
    ladder at the normal 16px root while still responding to text zoom. */
-html[data-type-prototype="true"] {
+:root {
   --font-system: 'Onest Prototype', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-html[data-type-prototype="true"] body,
-html[data-type-prototype="true"] button,
-html[data-type-prototype="true"] input,
-html[data-type-prototype="true"] select,
-html[data-type-prototype="true"] textarea {
+body,
+button,
+input,
+select,
+textarea {
   font-family: var(--font-system);
 }
 
 @media (max-width: 768px) {
-  html[data-type-prototype="true"] .hero-probably {
-    font-size: clamp(2.75rem, 12vw, 3rem);
+  .hero-probably {
+    /* min() px cap keeps the ruled size at 100% but stops the rem from doubling
+       past the viewport at 200% text zoom (was clipping off the right edge). */
+    font-size: min(clamp(2.75rem, 12vw, 3rem), 68px);
     font-weight: 650;
     line-height: 0.98;
     letter-spacing: -0.035em;
   }
 
-  html[data-type-prototype="true"] .hero-range {
-    font-size: clamp(3rem, 13vw, 3.25rem);
+  .hero-range {
+    font-size: min(clamp(3rem, 13vw, 3.25rem), 72px);
     font-weight: 800;
     line-height: 0.96;
     letter-spacing: -0.045em;
   }
 
-  html[data-type-prototype="true"] #home-screen #description {
+  #home-screen #description {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.04;
   }
 
-  html[data-type-prototype="true"] #headline {
+  #headline {
     font-size: clamp(1.25rem, 5.6vw, 1.375rem);
     font-weight: 650;
     line-height: 1.12;
   }
 
-  html[data-type-prototype="true"] .sidebar .weather-byline {
+  .sidebar .weather-byline {
     font-size: 0.75rem;
     font-weight: 500;
   }
 }
 
 @media (min-width: 1024px) {
-  html[data-type-prototype="true"] #location {
+  #location {
     font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.14em;
   }
 
-  html[data-type-prototype="true"] .hero-probably {
-    font-size: 4.25rem;
+  .hero-probably {
+    /* px cap: ruled 68px at 100%; caps growth at 200% zoom so "Probably" fits the
+       voice column (which maxes at ~520px) instead of running past the frame. */
+    font-size: min(4.25rem, 100px);
     font-weight: 300;
     line-height: 0.98;
     letter-spacing: -0.035em;
   }
 
-  html[data-type-prototype="true"] .hero-range {
-    font-size: 6.125rem;
+  .hero-range {
+    font-size: min(6.125rem, 115px);
     font-weight: 800;
     line-height: 0.96;
     letter-spacing: -0.045em;
   }
 
-  html[data-type-prototype="true"] #home-screen #description {
+  #home-screen #description {
     font-size: 2.125rem;
     font-weight: 700;
     line-height: 1.02;
   }
 
-  html[data-type-prototype="true"] .sidebar .weather-byline {
+  .sidebar .weather-byline {
     font-size: 0.9375rem;
     font-weight: 450;
   }
 
-  html[data-type-prototype="true"] .nav button,
-  html[data-type-prototype="true"] .language-btn {
+  .nav button,
+  .language-btn {
     font-size: 0.875rem;
     font-weight: 600;
   }
 
-  html[data-type-prototype="true"] .share-btn,
-  html[data-type-prototype="true"] .nav-hourly-pill,
-  html[data-type-prototype="true"] .my-location-btn {
+  .share-btn,
+  .nav-hourly-pill,
+  .my-location-btn {
     font-size: 0.9375rem;
     font-weight: 650;
   }
 
-  html[data-type-prototype="true"] #shareBtn {
+  #shareBtn {
     font-size: 1rem;
   }
 }

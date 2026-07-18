@@ -272,29 +272,26 @@
        is no FOUC window; hideSplash fires on first real render, long after CSS
        settles on any realistic path. -->
   <link rel="stylesheet" href="assets/app.css"/>
+  <!-- Onest is the default UI type: one stylesheet with the woff2 embedded as
+       data: URIs, so there are ZERO font-file requests and it rides after app.css
+       (its rules win). The larger Caveat caption subset (desktop postcard only) is
+       JS media-gated below so mobile never downloads its caption bytes. -->
+  <link rel="stylesheet" href="assets/type-prototype.css"/>
   <script>
-    // Taste-gate only: the default app requests no prototype assets. Onest is
-    // isolated behind ?type=proto; the larger Caveat caption subset is loaded
-    // only when the Postcard breakpoint is active.
     (function () {
-      if (new URLSearchParams(window.location.search).get('type') !== 'proto') return;
-      document.documentElement.dataset.typePrototype = 'true';
-      function loadPrototypeStyle(id, href) {
-        if (document.getElementById(id)) return;
+      function loadCaption() {
+        if (document.getElementById('pwTypeCaption')) return;
         var link = document.createElement('link');
-        link.id = id;
+        link.id = 'pwTypeCaption';
         link.rel = 'stylesheet';
-        link.href = href;
+        link.href = 'assets/type-prototype-caption.css';
         document.head.appendChild(link);
       }
-      loadPrototypeStyle('pwTypePrototype', 'assets/type-prototype.css');
       var postcardMedia = window.matchMedia('(min-width: 1024px)');
-      function loadPostcardCaption(event) {
-        if (event.matches) loadPrototypeStyle('pwTypePrototypeCaption', 'assets/type-prototype-caption.css');
-      }
-      loadPostcardCaption(postcardMedia);
-      if (postcardMedia.addEventListener) postcardMedia.addEventListener('change', loadPostcardCaption);
-      else postcardMedia.addListener(loadPostcardCaption);
+      function onChange(event) { if (event.matches) loadCaption(); }
+      onChange(postcardMedia);
+      if (postcardMedia.addEventListener) postcardMedia.addEventListener('change', onChange);
+      else postcardMedia.addListener(onChange);
     })();
   </script>
   <a href="#home-screen" class="skip-link">Skip to main content</a>

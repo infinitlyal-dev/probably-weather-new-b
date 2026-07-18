@@ -1,5 +1,5 @@
 {
-  "purpose": "Query-gated typography taste prototype; not the production default",
+  "purpose": "Production default typography (Onest UI + Caveat desktop caption)",
   "subsets": [
     "latin",
     "latin-ext"

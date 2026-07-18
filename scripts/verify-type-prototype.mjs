@@ -1,3 +1,11 @@
+// Adopted-typography gate (was a current-vs-?type=proto comparison; the prototype
+// is now the default, so this asserts the shipped state directly):
+//   - Onest is the default UI family on mobile + desktop, with ZERO font-file
+//     requests (woff2 embedded as data: URIs).
+//   - Caveat is the desktop postcard caption only; mobile never loads it.
+//   - The ruled size/weight ladder holds at mobile + desktop.
+//   - 200% text zoom grows the display type but no longer overflows: the mobile
+//     hero clip and the 1440 range overflow are both 0.
 import { createServer } from 'node:http';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -14,9 +22,7 @@ const viewports = [
   { label: 'postcard', width: 1920, height: 1080 },
 ];
 
-function assert(value, message) {
-  if (!value) throw new Error(message);
-}
+function assert(value, message) { if (!value) throw new Error(message); }
 
 function weatherPayload() {
   const hourly = Array.from({ length: 48 }, () => ({ tempC: 27, feelsLikeC: 27, rainChance: 0, precipMm: 0, windKph: 15, cloudPct: 8, humidity: 52, uv: 3, condition: 'clear' }));
@@ -25,18 +31,14 @@ function weatherPayload() {
     ok: true,
     location: { name: 'Strand, Western Cape', lat: -34.12, lon: 18.84 },
     now: { tempC: 27, feelsLikeC: 27, rainChance: 0, cloudPct: 8, humidity: 52, uv: 3, conditionKey: 'clear', conditionLabel: 'Clear', isDay: true, windKph: 15 },
-    hourly,
-    daily,
-    wind_kph: 15,
-    maxWindKph: 20,
-    gustKph: 24,
+    hourly, daily, wind_kph: 15, maxWindKph: 20, gustKph: 24,
     consensus: { confidenceKey: 'high' },
     meta: { localHour: 14, utcOffsetSeconds: 7200, confidence: 'high', sources: [{ name: 'Open-Meteo', ok: true }], sourceConditions: [{ source: 'Open-Meteo', vote: 'clear', desc: 'Clear' }], sourceRanges: [] },
   };
 }
 
 function startServer() {
-  const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml' };
+  const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff2': 'font/woff2' };
   const server = createServer((req, res) => {
     const pathname = decodeURIComponent(new URL(req.url, 'http://127.0.0.1').pathname);
     if (pathname.startsWith('/api/')) {
@@ -50,26 +52,20 @@ function startServer() {
     const relative = pathname === '/' ? 'index.html' : pathname.slice(1);
     const file = path.resolve(dist, relative);
     if (!file.startsWith(`${dist}${path.sep}`) && file !== path.join(dist, 'index.html')) { res.writeHead(403).end(); return; }
-    try {
-      res.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' }).end(readFileSync(file));
-    } catch {
-      res.writeHead(404).end();
-    }
+    try { res.writeHead(200, { 'Content-Type': mime[path.extname(file)] || 'application/octet-stream' }).end(readFileSync(file)); }
+    catch { res.writeHead(404).end(); }
   });
   return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve({ server, origin: `http://127.0.0.1:${server.address().port}` })));
 }
 
-async function openApp(browser, origin, viewport, prototype) {
+async function openApp(browser, origin, viewport) {
   const context = await browser.newContext({ viewport, serviceWorkers: 'block', reducedMotion: 'reduce' });
   const requests = [];
   context.on('request', (request) => requests.push({ type: request.resourceType(), url: request.url() }));
   await context.addInitScript(() => {
     const NativeDate = Date;
     const fixedNow = new NativeDate('2026-07-11T12:00:00Z').valueOf();
-    class FixedDate extends NativeDate {
-      constructor(...args) { super(...(args.length ? args : [fixedNow])); }
-      static now() { return fixedNow; }
-    }
+    class FixedDate extends NativeDate { constructor(...args) { super(...(args.length ? args : [fixedNow])); } static now() { return fixedNow; } }
     window.Date = FixedDate;
     Math.random = () => 0.123456;
     localStorage.setItem('pw_home', JSON.stringify({ name: 'Strand, Western Cape', lat: -34.12, lon: 18.84, mode: 'gps' }));
@@ -77,166 +73,109 @@ async function openApp(browser, origin, viewport, prototype) {
     localStorage.setItem('pw_install_dismissed_at', String(Date.now()));
   });
   const page = await context.newPage();
-  await page.goto(`${origin}/${prototype ? '?type=proto' : ''}`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`${origin}/`, { waitUntil: 'domcontentloaded' });
   await page.waitForFunction(() => window.__PW_FIRST_RENDER === true && window.__PW_LAST_DISPLAY === 'clear');
   await page.waitForFunction(() => {
     const image = document.getElementById('bgImg');
     return image?.complete && image.naturalWidth > 0 && getComputedStyle(document.documentElement).getPropertyValue('--hero-url').includes('webp');
   });
-  if (prototype) {
-    await page.waitForFunction((desktop) => {
-      const ui = document.getElementById('pwTypePrototype');
-      const caption = document.getElementById('pwTypePrototypeCaption');
-      return ui?.sheet && (!desktop || caption?.sheet);
-    }, viewport.width >= 1024);
-  }
+  if (viewport.width >= 1024) await page.waitForFunction(() => document.getElementById('pwTypeCaption')?.sheet);
   await page.evaluate(() => document.fonts.ready);
   await page.locator('#pwSplash').waitFor({ state: 'hidden' });
   await page.waitForTimeout(250);
   return { context, page, requests };
 }
 
-async function snapshot(page) {
+function snapshot(page) {
   return page.evaluate(() => {
     const style = (selector) => getComputedStyle(document.querySelector(selector));
     const range = document.querySelector('.hero-range');
-    const headline = document.getElementById('headline');
+    const probably = document.querySelector('.hero-probably');
+    const ov = (el) => Math.max(0, el.scrollWidth - el.clientWidth);
+    const rightPastViewport = (el) => Math.max(0, Math.round(el.getBoundingClientRect().right) - window.innerWidth);
     return {
       bodyFamily: style('body').fontFamily,
       captionFamily: style('#headline').fontFamily,
       typeSizes: {
-        probably: style('.hero-probably').fontSize,
-        range: style('.hero-range').fontSize,
-        condition: style('#description').fontSize,
-        caption: style('#headline').fontSize,
-        stats: style('.sidebar .weather-byline').fontSize,
-        location: style('#location').fontSize,
-        share: style('#shareBtn').fontSize,
-        hourly: style('#navHourlyHome').fontSize,
-        myLocation: style('#myLocationHome').fontSize,
-        nav: style('#navHome').fontSize,
-        language: style('.language-btn').fontSize,
+        probably: style('.hero-probably').fontSize, range: style('.hero-range').fontSize,
+        condition: style('#description').fontSize, caption: style('#headline').fontSize,
+        stats: style('.sidebar .weather-byline').fontSize, location: style('#location').fontSize,
+        share: style('#shareBtn').fontSize, hourly: style('#navHourlyHome').fontSize,
+        myLocation: style('#myLocationHome').fontSize, nav: style('#navHome').fontSize, language: style('.language-btn').fontSize,
       },
       typeWeights: {
-        probably: style('.hero-probably').fontWeight,
-        range: style('.hero-range').fontWeight,
-        condition: style('#description').fontWeight,
-        stats: style('.sidebar .weather-byline').fontWeight,
-        location: style('#location').fontWeight,
-        share: style('#shareBtn').fontWeight,
-        hourly: style('#navHourlyHome').fontWeight,
-        myLocation: style('#myLocationHome').fontWeight,
-        nav: style('#navHome').fontWeight,
-        language: style('.language-btn').fontWeight,
+        probably: style('.hero-probably').fontWeight, range: style('.hero-range').fontWeight,
+        condition: style('#description').fontWeight, stats: style('.sidebar .weather-byline').fontWeight,
+        location: style('#location').fontWeight, share: style('#shareBtn').fontWeight,
+        hourly: style('#navHourlyHome').fontWeight, myLocation: style('#myLocationHome').fontWeight,
+        nav: style('#navHome').fontWeight, language: style('.language-btn').fontWeight,
       },
-      text: {
-        probably: document.querySelector('.hero-probably').textContent,
-        range: range.textContent,
-        condition: document.getElementById('description').textContent,
-        caption: headline.textContent,
-      },
-      background: new URL(document.getElementById('bgImg').currentSrc || document.getElementById('bgImg').src).pathname,
       rangeNowrap: style('.hero-range').whiteSpace === 'nowrap',
-      rangeOverflowPx: Math.max(0, range.scrollWidth - range.clientWidth),
+      rangeOverflowPx: ov(range),
+      probablyOverflowPx: ov(probably),
+      rangePastViewportPx: rightPastViewport(range),
+      probablyPastViewportPx: rightPastViewport(probably),
       documentOverflowPx: Math.max(0, document.documentElement.scrollWidth - innerWidth),
-      prototype: document.documentElement.dataset.typePrototype === 'true',
     };
   });
 }
 
-async function capturePair(browser, origin, viewport) {
-  const result = {};
-  for (const prototype of [false, true]) {
-    const state = prototype ? 'prototype' : 'current';
-    const opened = await openApp(browser, origin, viewport, prototype);
-    const file = path.join(output, `${state}-${viewport.label}-${viewport.width}x${viewport.height}.png`);
-    await opened.page.screenshot({ path: file });
-    result[state] = {
-      ...(await snapshot(opened.page)),
-      screenshot: path.relative(root, file).replaceAll('\\', '/'),
-      stylesheets: opened.requests.filter((request) => request.type === 'stylesheet').map((request) => new URL(request.url).pathname),
-      fontRequests: opened.requests.filter((request) => request.type === 'font').map((request) => request.url),
-    };
-    await opened.context.close();
-  }
+async function captureViewport(browser, origin, viewport) {
+  const opened = await openApp(browser, origin, viewport);
+  const normal = await snapshot(opened.page);
+  const fontRequests = opened.requests.filter((r) => r.type === 'font').map((r) => r.url);
+  const stylesheets = opened.requests.filter((r) => r.type === 'stylesheet').map((r) => new URL(r.url).pathname);
+  const file = path.join(output, `default-${viewport.label}-${viewport.width}x${viewport.height}.png`);
+  await opened.page.screenshot({ path: file });
 
-  assert(JSON.stringify(result.current.text) === JSON.stringify(result.prototype.text), `${viewport.width}px current/prototype copy differs`);
-  assert(result.current.background === result.prototype.background, `${viewport.width}px current/prototype background differs`);
-  assert(!result.current.prototype && !result.current.stylesheets.some((url) => url.includes('type-prototype')), `${viewport.width}px current state loaded prototype CSS`);
-  assert(result.prototype.bodyFamily.includes('Onest Prototype'), `${viewport.width}px prototype did not apply Onest`);
-  assert(result.prototype.rangeNowrap, `${viewport.width}px prototype temperature range wrapped`);
+  assert(normal.bodyFamily.includes('Onest Prototype'), `${viewport.width}px default did not apply Onest`);
+  assert(normal.rangeNowrap, `${viewport.width}px temperature range wrapped`);
+  assert(fontRequests.length === 0, `${viewport.width}px made font-file requests (should be 0, embedded): ${fontRequests.join(', ')}`);
+  assert(normal.rangeOverflowPx === 0 && normal.rangePastViewportPx === 0, `${viewport.width}px range overflows at 100%`);
+
   if (viewport.width < 1024) {
-    assert(result.prototype.fontRequests.length === 0, `Mobile prototype made font resource requests: ${result.prototype.fontRequests.join(', ')}`);
-    assert(!result.prototype.stylesheets.some((url) => url.includes('type-prototype-caption')), 'Mobile prototype loaded the Caveat stylesheet');
-    assert(!result.prototype.captionFamily.includes('Caveat Prototype'), 'Mobile prototype applied Caveat');
-    assert(result.prototype.typeSizes.stats === '12px' && result.prototype.typeWeights.stats === '500', `Mobile stats token missed the live byline: ${JSON.stringify(result.prototype)}`);
+    assert(!stylesheets.some((url) => url.includes('type-prototype-caption')), 'Mobile loaded the Caveat stylesheet');
+    assert(!normal.captionFamily.includes('Caveat Prototype'), 'Mobile applied Caveat');
+    assert(normal.typeSizes.stats === '12px' && normal.typeWeights.stats === '500', `Mobile stats token missed the live byline: ${JSON.stringify(normal.typeSizes)}`);
   } else {
-    assert(result.prototype.captionFamily.includes('Caveat Prototype'), `${viewport.width}px prototype did not apply Caveat to the caption`);
-    assert(result.prototype.stylesheets.some((url) => url.includes('type-prototype-caption')), `${viewport.width}px prototype did not load the desktop caption stylesheet`);
+    assert(normal.captionFamily.includes('Caveat Prototype'), `${viewport.width}px did not apply Caveat to the caption`);
+    assert(stylesheets.some((url) => url.includes('type-prototype-caption')), `${viewport.width}px did not load the desktop caption stylesheet`);
     const expectedSizes = { probably: '68px', range: '98px', condition: '34px', stats: '15px', location: '13px', share: '16px', hourly: '15px', myLocation: '15px', nav: '14px', language: '14px' };
     const expectedWeights = { probably: '300', range: '800', condition: '700', stats: '450', location: '700', share: '650', hourly: '650', myLocation: '650', nav: '600', language: '600' };
-    for (const [token, expected] of Object.entries(expectedSizes)) assert(result.prototype.typeSizes[token] === expected, `${viewport.width}px ${token} size ${result.prototype.typeSizes[token]} != ${expected}`);
-    for (const [token, expected] of Object.entries(expectedWeights)) assert(result.prototype.typeWeights[token] === expected, `${viewport.width}px ${token} weight ${result.prototype.typeWeights[token]} != ${expected}`);
+    for (const [token, expected] of Object.entries(expectedSizes)) assert(normal.typeSizes[token] === expected, `${viewport.width}px ${token} size ${normal.typeSizes[token]} != ${expected}`);
+    for (const [token, expected] of Object.entries(expectedWeights)) assert(normal.typeWeights[token] === expected, `${viewport.width}px ${token} weight ${normal.typeWeights[token]} != ${expected}`);
   }
-  return result;
-}
 
-async function captureTextZoom(browser, origin, viewport) {
-  const opened = await openApp(browser, origin, viewport, true);
-  const normal = await snapshot(opened.page);
+  // 200% text-zoom: display type grows, but the mobile hero clip and the 1440
+  // range overflow are gone (both 0).
   await opened.page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
   await opened.page.waitForTimeout(150);
   const zoomed = await snapshot(opened.page);
-  const file = path.join(output, `prototype-text-zoom-200-${viewport.label}-${viewport.width}x${viewport.height}.png`);
-  await opened.page.screenshot({ path: file });
-  assert(Number.parseFloat(zoomed.typeSizes.probably) > Number.parseFloat(normal.typeSizes.probably), `${viewport.width}px prototype display type ignored 200% text zoom`);
-  assert(zoomed.rangeNowrap, `${viewport.width}px 200% text zoom broke the temperature nowrap contract`);
-  await opened.context.close();
-  return { normal: normal.typeSizes, zoomed: zoomed.typeSizes, rangeOverflowPx: zoomed.rangeOverflowPx, documentOverflowPx: zoomed.documentOverflowPx, screenshot: path.relative(root, file).replaceAll('\\', '/') };
-}
+  await opened.page.screenshot({ path: path.join(output, `default-text-zoom-200-${viewport.label}-${viewport.width}x${viewport.height}.png`) });
+  assert(Number.parseFloat(zoomed.typeSizes.probably) > Number.parseFloat(normal.typeSizes.probably), `${viewport.width}px display type ignored 200% zoom`);
+  assert(zoomed.rangeNowrap, `${viewport.width}px 200% zoom broke the temperature nowrap contract`);
+  assert(zoomed.rangeOverflowPx === 0, `${viewport.width}px 200% range overflows its column by ${zoomed.rangeOverflowPx}px`);
+  assert(zoomed.probablyOverflowPx === 0, `${viewport.width}px 200% "Probably" overflows by ${zoomed.probablyOverflowPx}px`);
+  assert(zoomed.rangePastViewportPx === 0 && zoomed.probablyPastViewportPx === 0 && zoomed.documentOverflowPx === 0, `${viewport.width}px 200% hero clips past the viewport`);
 
-async function responsiveCaptionLoad(browser, origin) {
-  const opened = await openApp(browser, origin, { width: 900, height: 900 }, true);
-  assert(!await opened.page.locator('#pwTypePrototypeCaption').count(), 'Tablet prototype eagerly loaded the Caveat stylesheet');
-  await opened.page.setViewportSize({ width: 1440, height: 900 });
-  await opened.page.waitForFunction(() => document.getElementById('pwTypePrototypeCaption')?.sheet);
-  await opened.page.evaluate(() => document.fonts.ready);
-  const captionFamily = await opened.page.locator('#headline').evaluate((element) => getComputedStyle(element).fontFamily);
-  assert(captionFamily.includes('Caveat Prototype'), `Tablet-to-Postcard resize kept the fallback caption: ${captionFamily}`);
-  const fontRequests = opened.requests.filter((request) => request.type === 'font').length;
   await opened.context.close();
-  return { captionFamily, fontRequests };
+  return { normal, zoomed, fontRequests: fontRequests.length, stylesheets };
 }
 
 mkdirSync(output, { recursive: true });
 const { server, origin } = await startServer();
 const browser = await chromium.launch({ headless: true });
 try {
-  const pairs = {};
+  assert(manifest.fonts.onest.totalBytes <= manifest.fonts.onest.budgetBytes, 'Onest exceeds its budget');
+  assert(manifest.fonts.caveat.totalBytes <= manifest.fonts.caveat.budgetBytes, 'Caveat exceeds its budget');
+  const results = {};
   for (const viewport of viewports) {
     const key = `${viewport.width}x${viewport.height}`;
-    pairs[key] = await capturePair(browser, origin, viewport);
-    console.log(`[type gate ${key}] PASS — same clear copy/background; current=${pairs[key].current.bodyFamily}; prototype=${pairs[key].prototype.bodyFamily}; range nowrap`);
+    results[key] = await captureViewport(browser, origin, viewport);
+    console.log(`[type gate ${key}] PASS — Onest default (font reqs ${results[key].fontRequests}); ruled ladder; 200% zoom range overflow ${results[key].zoomed.rangeOverflowPx}px, hero past-viewport ${results[key].zoomed.rangePastViewportPx}px`);
   }
-
-  const mobile = pairs['390x844'].prototype;
-  assert(manifest.fonts.onest.totalBytes <= manifest.fonts.onest.budgetBytes, 'Onest exceeds its prototype budget');
-  assert(manifest.fonts.caveat.totalBytes <= manifest.fonts.caveat.budgetBytes, 'Caveat exceeds its prototype budget');
-  console.log(`[font loading mobile] PASS — default prototype assets=0; proto font-resource requests=${mobile.fontRequests.length}; Caveat stylesheet=false; embedded Onest=${manifest.fonts.onest.totalBytes}/${manifest.fonts.onest.budgetBytes} bytes`);
-  console.log(`[font loading desktop] PASS — Caveat desktop-only=${manifest.fonts.caveat.totalBytes}/${manifest.fonts.caveat.budgetBytes} bytes; caption family applied at 1440 and 1920`);
-  const responsiveCaption = await responsiveCaptionLoad(browser, origin);
-  console.log(`[font loading responsive] PASS — 900→1440 lazy-loaded Caveat on first Postcard entry; font-resource requests=${responsiveCaption.fontRequests}`);
-
-  const zoom = {};
-  for (const viewport of [viewports[0], viewports[1]]) {
-    const key = `${viewport.width}x${viewport.height}`;
-    zoom[key] = await captureTextZoom(browser, origin, viewport);
-    console.log(`[text zoom ${key}] CAPTURED — 200% root; Probably ${zoom[key].normal.probably}->${zoom[key].zoomed.probably}; range nowrap; range overflow=${zoom[key].rangeOverflowPx}px; document overflow=${zoom[key].documentOverflowPx}px`);
-  }
-
-  const evidence = { condition: 'clear day', pairs, zoom, responsiveCaption, fontManifest: manifest };
-  writeFileSync(path.join(output, 'evidence.json'), `${JSON.stringify(evidence, null, 2)}\n`);
-  console.log(`[type screenshots] PASS — six fair-pair gates + two 200% text-zoom captures in ${path.relative(root, output).replaceAll('\\', '/')}`);
+  writeFileSync(path.join(output, 'evidence.json'), `${JSON.stringify({ condition: 'clear day', results, fontManifest: manifest }, null, 2)}\n`);
+  console.log(`[type screenshots] PASS — three default gates + three 200% text-zoom captures in ${path.relative(root, output).replaceAll('\\', '/')}`);
 } finally {
   await browser.close();
   await new Promise((resolve) => server.close(resolve));
