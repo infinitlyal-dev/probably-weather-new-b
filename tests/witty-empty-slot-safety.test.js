@@ -53,18 +53,23 @@ describe('witty bins — the picker can never surface an empty line', () => {
 });
 
 describe('witty bins — realignment empties are exactly where expected', () => {
-  // Locks the intentional empty slots from the 2026-07-02 realignment so a later
-  // edit can't silently blank a different index. (XH lc-clear[2] and XH
-  // partly-cloudy are refilled by the Xhosa application step, G2.)
+  // Locks the intentional empty slots so a later edit can't silently blank a
+  // different index. Updated 2026-07-18: the provisional apply
+  // (scripts/apply-provisional-drafts.mjs) folded the checker-PASSED zu/xh/st
+  // drafts into these bins and recorded each in lang-packs/<lang>/provisional-manifest.jsonl.
+  // That closed partly-cloudy zu[3,7,8] + st[4] and lc-clear zu/st[2]; zu
+  // partly-cloudy[6] stays a FLAG debt (empty) pending native review. The
+  // sanctioned-fill guarantee (filled ⟺ in the manifest, byte-identical) is
+  // enforced by review/tools/verify-lines.mjs; this block pins the residual empties.
   const emptiesOf = (arr) =>
     (Array.isArray(arr) ? arr : []).map((s, i) => (typeof s === 'string' && s.trim() === '' ? i : -1)).filter((i) => i >= 0);
   const pc = WEATHER_COPY.witty['partly-cloudy'];
   const lc = WEATHER_COPY.witty_low_confidence.clear;
   it('partly-cloudy AF has no empties (owner filled the gap-fill slots, G0)', () => expect(emptiesOf(pc.af)).toEqual([]));
-  it('partly-cloudy ZU empties at [3,6,7,8]', () => expect(emptiesOf(pc.zu)).toEqual([3, 6, 7, 8]));
-  it('partly-cloudy ST empties at [4]', () => expect(emptiesOf(pc.st)).toEqual([4]));
-  it('lc-clear ZU/ST empty at [2]', () => {
-    expect(emptiesOf(lc.zu)).toEqual([2]);
-    expect(emptiesOf(lc.st)).toEqual([2]);
+  it('partly-cloudy ZU empty at [6] only (FLAG debt; PASS drafts filled [3,7,8])', () => expect(emptiesOf(pc.zu)).toEqual([6]));
+  it('partly-cloudy ST has no empties (provisional apply filled [4])', () => expect(emptiesOf(pc.st)).toEqual([]));
+  it('lc-clear ZU/ST have no empties (provisional apply filled [2])', () => {
+    expect(emptiesOf(lc.zu)).toEqual([]);
+    expect(emptiesOf(lc.st)).toEqual([]);
   });
 });

@@ -2,7 +2,7 @@
 
 **Language:** isiXhosa (urban South African register).
 **App:** Probably Weather — witty, warm, self-aware SA weather copy.
-**Confirmed corpus:** 513 live strings (`corpus-confirmed.jsonl`). **Debt:** 476 empty slots.
+**Confirmed corpus:** 513 live strings (`corpus-confirmed.jsonl`). **Debt:** 72 empty slots (was 476; 404 provisional fills applied 2026-07-18).
 **Native review:** rows applied as `future_review` (lower-confidence, pending a native pass —
 `review/xh-st-addendum.md`). Treat existing future_review strings as UNCONFIRMED, not corpus.
 
@@ -31,3 +31,9 @@
 ## Provisional discipline
 Drafts fill `""` slots as PROVISIONAL, consistent with how future_review rows are already handled
 in this app's data layer. Natives confirm later in cheap batches (`scripts/generate-review-batch.mjs`).
+
+## Report card — checker batch 1 (2026-07-18)
+Cross-family checker (Codex) screened all 476 provisional drafts:
+- **PASS: 404 / 476 = 85%** → folded into the copy banks as provisional (`provisional-manifest.jsonl`), pending native confirm.
+- **FLAG: 72** → held in `debt-ledger.jsonl` as `debt-flagged` with Sol's reasons attached, marked priority native review.
+- vs the ST native first-pass baseline of **67%**: xh's higher flag rate (mostly attestation/near-miss vocabulary) still clears the baseline by ~18 points. Next: native batches via `generate-review-batch.mjs` at Al's pace.

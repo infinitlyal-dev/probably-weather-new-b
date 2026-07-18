@@ -1,0 +1,476 @@
+{"key":"witty.storm[32]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[33]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[34]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[35]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[36]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[37]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[39]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[41]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[44]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[45]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[48]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[53]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[54]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[55]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[56]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.storm[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[36]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[37]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[39]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[41]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[44]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`umphefumlo` is soul/spirit here, not a single breath of rain air; the content noun is a false near-match.","suggested":""}
+{"key":"witty.rain[45]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[48]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[49]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`owa uvela` splits/misforms the relative verb needed for a salary falling from the sky.","suggested":""}
+{"key":"witty.rain[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[51]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`Asivumba` is not the valid negative copulative construction for `that is not a smell`.","suggested":""}
+{"key":"witty.rain[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[53]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`uxolo` means peace/apology as a noun; `akukho luxolo` says there is no peace, not that Joburg rain makes no apologies.","suggested":""}
+{"key":"witty.rain[54]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[55]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[56]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[59]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[60]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[61]","verdict":"FLAG","severity":"low","defect":"meaning-drift","reason":"`Usizi` is sadness/pity and loses the South African interjection `shame`.","suggested":""}
+{"key":"witty.rain[62]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"The draft says one feels/hears the rain wind before seeing it; it drops the defining smell of Highveld rain.","suggested":""}
+{"key":"witty.rain[63]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[64]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[65]","verdict":"FLAG","severity":"high","defect":"calque","reason":"`yirawundi yendlu` literally makes each shower a round belonging to the house, not a free round `on the house`.","suggested":""}
+{"key":"witty.rain[66]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`izisele zamanzi` denotes water cells/storage-like compartments, not puddles.","suggested":""}
+{"key":"witty.rain[67]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[68]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[69]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[70]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[71]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[72]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[73]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[74]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[75]","verdict":"FLAG","severity":"high","defect":"unattested","reason":"`Isekwikhulometha` is an unattested malformed distance expression, not standard isiXhosa for fifty kilometres away.","suggested":""}
+{"key":"witty.rain[76]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[77]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[78]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[79]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[80]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[81]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.rain[82]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[39]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`-mfusa` means purple; the required grey stem is `-ngwevu`, so the central colour is wrong.","suggested":""}
+{"key":"witty.cloudy[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[41]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[44]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[45]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[46]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`-mfusa` means purple; the required grey stem is `-ngwevu`, so the central colour is wrong.","suggested":""}
+{"key":"witty.cloudy[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[48]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[53]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[54]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[55]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`-mfusa` means purple; the required grey stem is `-ngwevu`, so the central colour is wrong.","suggested":""}
+{"key":"witty.cloudy[56]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`-mfusa` means purple; the required grey stem is `-ngwevu`, so the central colour is wrong.","suggested":""}
+{"key":"witty.cloudy[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[59]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[60]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[61]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`-mfusa` means purple; the required grey stem is `-ngwevu`, so the central colour is wrong.","suggested":""}
+{"key":"witty.cloudy[62]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[63]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[64]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[65]","verdict":"FLAG","severity":"high","defect":"meaning-drift","reason":"`lingashiyanga sisho` means leaving no saying/utterance, not clocking out without saying goodbye.","suggested":""}
+{"key":"witty.cloudy[66]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[67]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[68]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[69]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`nokokunjalo` is an unattested fused form; the standard phrase has a word boundary (`noko kunjalo`).","suggested":""}
+{"key":"witty.cloudy[70]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[71]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[72]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[73]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[74]","verdict":"FLAG","severity":"high","defect":"unattested","reason":"`Akungethanga` could not be attested and does not supply a valid word for `coincidence`.","suggested":""}
+{"key":"witty.cloudy[75]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[76]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[77]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[78]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[79]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[80]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[81]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[82]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[83]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[84]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[85]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[86]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cloudy[87]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[20]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`Akukho dinga lifunekayo` says no need is needed; `idinga`/the appointment sense is not expressed.","suggested":""}
+{"key":"witty.wind[21]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[22]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[23]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[24]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[25]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[26]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[27]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[28]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[29]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[30]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[31]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[32]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[33]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[34]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[35]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[36]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[37]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[39]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[41]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`licinyiwe` means extinguished/turned off, not pressed or ironed.","suggested":""}
+{"key":"witty.wind[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[44]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[45]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[48]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.wind[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[39]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[41]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[44]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`iphungule` does not mean to unpack belongings; the draft note's gloss is unsupported and the metaphor fails.","suggested":""}
+{"key":"witty.cold[45]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[48]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[52]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`ukuqhaqhazela kwengqele` is shivering from cold, not frostbite.","suggested":""}
+{"key":"witty.cold[53]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[54]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[55]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[56]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[59]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[60]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[61]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[62]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[63]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[64]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[65]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[66]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`-fumba` means heap/pile; it does not mean shovel or clear snow.","suggested":""}
+{"key":"witty.cold[67]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[68]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[69]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[70]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[71]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[72]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[73]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[74]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`kwimo-emyoli` fuses a noun and modifier with a hyphen where isiXhosa requires a word boundary.","suggested":""}
+{"key":"witty.cold[75]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[76]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[77]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[78]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`Ayizenzi mfihlo nokuyenza` duplicates the verb frame and is not a grammatical rendering of `not being subtle`.","suggested":""}
+{"key":"witty.cold[79]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[80]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[81]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[82]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[83]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[84]","verdict":"FLAG","severity":"high","defect":"wrong-dialect","reason":"`Sikhuluma` is the isiZulu form; standard isiXhosa uses the `-thetha` verb for speaking.","suggested":""}
+{"key":"witty.cold[85]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[86]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[87]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[88]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[89]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[90]","verdict":"FLAG","severity":"high","defect":"meaning-drift","reason":"The specific blesbok is reduced to generic game animals, weakening the animal-specific joke.","suggested":""}
+{"key":"witty.cold[91]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[92]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[93]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[94]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[95]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[96]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[97]","verdict":"FLAG","severity":"low","defect":"unattested","reason":"`Ikhuni` is an unconfirmed noun-class form for the last log; the attested firewood forms use `inkuni/iinkuni` or `ukhuni` by sense.","suggested":""}
+{"key":"witty.cold[98]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[99]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[100]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`Bonke. Ubusuku. Ngabunye.` mixes incompatible noun-class forms and does not form `every single night`.","suggested":""}
+{"key":"witty.cold[101]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[102]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[103]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[104]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[105]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold[106]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[30]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[31]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[32]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[33]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[34]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[35]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[36]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[37]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[39]","verdict":"FLAG","severity":"high","defect":"meaning-drift","reason":"The first sentence says the cold left and the second says the cold moved in permanently, creating the opposite of the cold-front contrast.","suggested":""}
+{"key":"witty.cold-clear[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[41]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`sacinywa` means it was extinguished/erased, not pressed.","suggested":""}
+{"key":"witty.cold-clear[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[44]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[45]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[48]","verdict":"FLAG","severity":"high","defect":"wrong-dialect","reason":"`enhle` is the isiZulu adjective form; isiXhosa requires the `-ntle` stem here.","suggested":""}
+{"key":"witty.cold-clear[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[53]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[54]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[55]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`iqhaqhazele` means shiver/tremble, not freeze, so washing is personified with the wrong event.","suggested":""}
+{"key":"witty.cold-clear[56]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[59]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[60]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[61]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[62]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`liyimimandla` gives a singular climate zone a plural `regions` complement and malformed agreement.","suggested":""}
+{"key":"witty.cold-clear[63]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[64]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[65]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[66]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[67]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[68]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[69]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[70]","verdict":"FLAG","severity":"high","defect":"calque","reason":"`ubushushu obuphakathi` is a word-for-word `middle heat`, not the system/concept `central heating`.","suggested":""}
+{"key":"witty.cold-clear[71]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[72]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[73]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[74]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[75]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[76]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[77]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[78]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[79]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[80]","verdict":"FLAG","severity":"low","defect":"boundary","reason":"`Eyona mizuzu` uses a plural noun for the singular `moment` and its concord does not match.","suggested":""}
+{"key":"witty.cold-clear[81]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[82]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[83]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`yimeko-emyoli` repeats the fused-boundary error and is not a valid phrase for atmosphere.","suggested":""}
+{"key":"witty.cold-clear[84]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[85]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[86]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[87]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[88]","verdict":"FLAG","severity":"low","defect":"boundary","reason":"`Nxiba ngokufudumeleyo umboniso` omits the relation meaning `for the show`.","suggested":""}
+{"key":"witty.cold-clear[89]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[90]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[91]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[92]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[93]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[94]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[95]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[96]","verdict":"FLAG","severity":"low","defect":"meaning-drift","reason":"`isixhobo` means a tool/instrument, not the full clothing kit described by the line.","suggested":""}
+{"key":"witty.cold-clear[97]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[98]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`ithambileyo` means soft, not thin; the reason the jacket is inadequate changes.","suggested":""}
+{"key":"witty.cold-clear[99]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[100]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`inamba` is a python, not a dragon; the draft substitutes a real animal word with the wrong meaning.","suggested":""}
+{"key":"witty.cold-clear[101]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[102]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[103]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[104]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[105]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[106]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[107]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[108]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[109]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[110]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.cold-clear[111]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[36]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[37]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[39]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[41]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[44]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`ibhagi` denotes a bag/loan form, not the Berg in `berg wind`; the named weather wind is lost.","suggested":""}
+{"key":"witty.heat[45]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`luziinga` is a fused, unattested form built from the concord and `izinga`; the temperature clause is malformed.","suggested":""}
+{"key":"witty.heat[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[48]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`abafanelekanga` means not suitable/eligible, not less physically fit.","suggested":""}
+{"key":"witty.heat[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[53]","verdict":"FLAG","severity":"high","defect":"wrong-dialect","reason":"`isibikezelo` is the isiZulu forecast form; the established isiXhosa term is `uqikelelo`.","suggested":""}
+{"key":"witty.heat[54]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[55]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[56]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[59]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[60]","verdict":"FLAG","severity":"low","defect":"boundary","reason":"`abuqukanga mkhenkce` has a malformed negative/transitive construction for `does not cover ice`.","suggested":""}
+{"key":"witty.heat[61]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[62]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[63]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[64]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[65]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[66]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[67]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[68]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[69]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`isuphu` means soup, not sip; this is a phonetically plausible content-word substitution.","suggested":""}
+{"key":"witty.heat[70]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`Namhlanje luphelile` assigns a noun-class concord to the adverb `namhlanje`; the clause is malformed.","suggested":""}
+{"key":"witty.heat[71]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[72]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[73]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[74]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[75]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[76]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[77]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[78]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[79]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[80]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`Mnike izandla` literally says give it hands, not give it a round of applause.","suggested":""}
+{"key":"witty.heat[81]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[82]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[83]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.heat[84]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[38]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[39]","verdict":"FLAG","severity":"low","defect":"calque","reason":"`sithatha ilizwi lomnye` is a word-for-word `take another's word` construction rather than an idiomatic reliance expression.","suggested":""}
+{"key":"witty.fog[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[41]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[42]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[43]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[44]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`Nto leyo esingekhoyo thina bantu bokungqina` is a malformed relative clause and does not express `more than the rest of us can say`.","suggested":""}
+{"key":"witty.fog[45]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[48]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[53]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[54]","verdict":"FLAG","severity":"high","defect":"meaning-drift","reason":"The draft makes the mood surprisingly forgiving; the English says the mood is at peace with the fog.","suggested":""}
+{"key":"witty.fog[55]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[56]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[59]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[60]","verdict":"FLAG","severity":"high","defect":"meaning-drift","reason":"`Ifestile ... evulekayo` is a window opening, not a window/light switching on.","suggested":""}
+{"key":"witty.fog[61]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[62]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[63]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`iveze` means expose/show; `showed up` requires the distinct `-vela` event.","suggested":""}
+{"key":"witty.fog[64]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`ukuqhubana` means deal/interact with someone, not bump into them by chance.","suggested":""}
+{"key":"witty.fog[65]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`izenze ivolumu` treats `volume` as a complement to `make itself` and leaves the clause malformed.","suggested":""}
+{"key":"witty.fog[66]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[67]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[68]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`imeko-emyoli` is a fused noun-plus-modifier boundary and is not standard isiXhosa orthography.","suggested":""}
+{"key":"witty.fog[69]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[70]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[71]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[72]","verdict":"FLAG","severity":"low","defect":"meaning-drift","reason":"`amanqaku aphambili` means main points, not priorities in the punchline.","suggested":""}
+{"key":"witty.fog[73]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[74]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[75]","verdict":"FLAG","severity":"low","defect":"boundary","reason":"The object concord in `usibonayo` does not agree with class-5 `isango`.","suggested":""}
+{"key":"witty.fog[76]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[77]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[78]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[79]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[80]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[81]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[82]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[83]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[84]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[85]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[86]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[87]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[88]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[89]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`ukushicilela ifilimu` means printing/publishing a film, not a film-shoot set.","suggested":""}
+{"key":"witty.fog[90]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[91]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[92]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[93]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[94]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[95]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[96]","verdict":"FLAG","severity":"low","defect":"meaning-drift","reason":"`bakubona ngakumbi kancinci` literally combines `more` and `a little`, obscuring the intended `see you even less`.","suggested":""}
+{"key":"witty.fog[97]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[98]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.fog[99]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[38]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`izame nokuzama` redundantly says `tried to try` and leaves the alarm clause malformed.","suggested":""}
+{"key":"witty.clear[39]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[40]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[41]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[42]","verdict":"FLAG","severity":"high","defect":"meaning-drift","reason":"`Nesibhakabhaka siquka` says the sky includes something; it reverses `sky included`.","suggested":""}
+{"key":"witty.clear[43]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`luxolo` means peace, not apologies; `akukho luxolo` changes the punchline.","suggested":""}
+{"key":"witty.clear[44]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[45]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`Imozulu ezithobileyo` uses plural agreement with singular `imozulu`.","suggested":""}
+{"key":"witty.clear[46]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[47]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[48]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[49]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[50]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[51]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[52]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[53]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[54]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[55]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`lala` means sleep/lie down, not refuse; the sun is made to sleep instead of refusing to rush.","suggested":""}
+{"key":"witty.clear[56]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[57]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[58]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[59]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[60]","verdict":"FLAG","severity":"high","defect":"wrong-word","reason":"`iboleke` means it borrowed, not that it is on loan; the direction of borrowing is reversed.","suggested":""}
+{"key":"witty.clear[61]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[62]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[63]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[64]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[65]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`si-RSVP'de` is an unattested malformed English-root inflection.","suggested":""}
+{"key":"witty.clear[66]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[67]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`ozuku-400` is a fused, unattested distance phrase and not valid isiXhosa morphology.","suggested":""}
+{"key":"witty.clear[68]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[69]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[70]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[71]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[72]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[73]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[74]","verdict":"FLAG","severity":"high","defect":"calque","reason":"`liyawusenga lo mphumo` literally milks an outcome/result; it calques the English and loses the sun's drawn-out exit.","suggested":""}
+{"key":"witty.clear[75]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[76]","verdict":"FLAG","severity":"high","defect":"meaning-drift","reason":"`Ngokumalunga` means approximately/about, not the joking qualifier `roughly` after `we behave`.","suggested":""}
+{"key":"witty.clear[77]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"`Yiba nyaniso` is not the grammatical imperative `be honest`.","suggested":""}
+{"key":"witty.clear[78]","verdict":"FLAG","severity":"high","defect":"boundary","reason":"The stray `nde` in `olulunge kangaka nde nkqu` breaks the clause and is unattested in that position.","suggested":""}
+{"key":"witty.clear[79]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[80]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[81]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[82]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[83]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[84]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[85]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[86]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[87]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[88]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[89]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[90]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[91]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[92]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[93]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}
+{"key":"witty.clear[94]","verdict":"PASS","severity":"none","defect":"none","reason":"","suggested":""}

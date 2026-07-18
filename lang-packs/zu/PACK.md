@@ -2,7 +2,7 @@
 
 **Language:** isiZulu (urban South African register).
 **App:** Probably Weather — witty, warm, self-aware SA weather copy.
-**Confirmed corpus:** 508 live strings (`corpus-confirmed.jsonl`). **Debt:** 481 empty slots.
+**Confirmed corpus:** 508 live strings (`corpus-confirmed.jsonl`). **Debt:** 38 empty slots (was 481; 443 provisional fills applied 2026-07-18).
 **Native review:** 30 applied corrections (commit d51b173); addendum flags open (`review/zu-addendum.md`).
 
 ## The voice (conceive IN isiZulu, do not translate word-for-word)
@@ -32,3 +32,9 @@
 Drafts fill `""` slots as PROVISIONAL (data-layer marker per the xh future_review convention).
 Natives confirm later in cheap batches (`scripts/generate-review-batch.mjs`). Raise first-pass
 acceptance; never wait on humans to translate from scratch.
+
+## Report card — checker batch 1 (2026-07-18)
+Cross-family checker (Codex) screened all 481 provisional drafts:
+- **PASS: 443 / 481 = 92%** → folded into the copy banks as provisional (`provisional-manifest.jsonl`), pending native confirm.
+- **FLAG: 38** → held in `debt-ledger.jsonl` as `debt-flagged` with Sol's reasons attached, marked priority native review.
+- vs the ST native first-pass baseline of **67%**: the drafter + cross-family-checker loop lifts first-pass acceptance ~25 points above the from-scratch native baseline. Next: native batches via `generate-review-batch.mjs` at Al's pace.
