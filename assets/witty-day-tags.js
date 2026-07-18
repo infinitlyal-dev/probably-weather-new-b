@@ -28,6 +28,7 @@ export const WITTY_DAY_TAGS = {
   witty: {
     // Day-named lines — show only on the day they name.
     fog: {
+      100: { time: ['morning'], region: 'kzn' },
       38: { time: ['morning'] },
       39: { time: ['morning'], region: 'western-cape' },
       40: { time: ['morning'] },
@@ -331,6 +332,11 @@ export const WITTY_DAY_TAGS = {
       29: { time: ['morning'] },
     },
     heat: {
+      85: { time: ['morning'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
+      86: { time: ['day'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
+      87: { time: ['day'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
+      88: { time: ['day'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
+      89: { time: ['evening'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
       36: { time: ['morning'], months: [10, 11, 12, 1, 2, 3] },
       37: { time: ['morning'], months: [10, 11, 12, 1, 2, 3] },
       38: { time: ['morning'], months: [10, 11, 12, 1, 2, 3] },
@@ -507,6 +513,10 @@ export const WITTY_DAY_TAGS = {
       13: { time: ['morning', 'day'] },
     },
     wind: {
+      53: { region: 'eastern-cape' },
+      54: { region: 'eastern-cape' },
+      55: { region: 'eastern-cape' },
+      56: { region: 'eastern-cape' },
       20: { region: 'western-cape' },
       21: { region: 'western-cape' },
       26: { region: 'western-cape' },

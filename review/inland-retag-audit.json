@@ -7,7 +7,10 @@
     "karoo": 12,
     "gauteng": 5,
     "free-state": 4,
-    "HELD": 10
+    "HELD": 0,
+    "lowveld": 5,
+    "kzn": 1,
+    "eastern-cape": 4
   },
   "count": 166,
   "rows": [
@@ -1266,9 +1269,9 @@
       "otherTags": [
         "time:morning"
       ],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'midlands' (KZN Midlands)",
+      "decision": "TAG",
+      "region": "kzn",
+      "why": "now has a box (kzn)",
       "phrase": "midlands"
     },
     {
@@ -1408,9 +1411,9 @@
         "time:dawn",
         "season:summer"
       ],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'lowveld' (Lowveld/bushveld)",
+      "decision": "TAG",
+      "region": "lowveld",
+      "why": "now has a box (lowveld)",
       "phrase": "lowveld"
     },
     {
@@ -1600,9 +1603,9 @@
         "time:day",
         "season:summer"
       ],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'impala' (Lowveld/bushveld)",
+      "decision": "TAG",
+      "region": "lowveld",
+      "why": "now has a box (lowveld)",
       "phrase": "impala"
     },
     {
@@ -1616,9 +1619,9 @@
         "time:day",
         "season:summer"
       ],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'lowveld' (Lowveld/bushveld)",
+      "decision": "TAG",
+      "region": "lowveld",
+      "why": "now has a box (lowveld)",
       "phrase": "lowveld"
     },
     {
@@ -1632,9 +1635,9 @@
         "time:day",
         "season:summer"
       ],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'bushveld' (Lowveld/bushveld)",
+      "decision": "TAG",
+      "region": "lowveld",
+      "why": "now has a box (lowveld)",
       "phrase": "bushveld"
     },
     {
@@ -1744,9 +1747,9 @@
         "time:dusk",
         "season:summer"
       ],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'lowveld' (Lowveld/bushveld)",
+      "decision": "TAG",
+      "region": "lowveld",
+      "why": "now has a box (lowveld)",
       "phrase": "lowveld"
     },
     {
@@ -2564,9 +2567,9 @@
       "af": "Gqeberha, ons weet. Ons wéét.",
       "oldTag": "region:eastern-cape",
       "otherTags": [],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'gqeberha' (Eastern Cape)",
+      "decision": "TAG",
+      "region": "eastern-cape",
+      "why": "now has a box (eastern-cape)",
       "phrase": "gqeberha"
     },
     {
@@ -2577,9 +2580,9 @@
       "af": "Die Vriendelike Stad het nie gevra om die Winderige Stad te wees nie, en tog.",
       "oldTag": "region:eastern-cape",
       "otherTags": [],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'friendly city' (Eastern Cape)",
+      "decision": "TAG",
+      "region": "eastern-cape",
+      "why": "now has a box (eastern-cape)",
       "phrase": "friendly city"
     },
     {
@@ -2603,9 +2606,9 @@
       "af": "Jeffreysbaai: waar die wind oefen voor sy Kaapse skof.",
       "oldTag": "region:eastern-cape",
       "otherTags": [],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'jeffreys' (Eastern Cape)",
+      "decision": "TAG",
+      "region": "eastern-cape",
+      "why": "now has a box (eastern-cape)",
       "phrase": "jeffreys"
     },
     {
@@ -2616,9 +2619,9 @@
       "af": "Gqeberha slaap nie, dit hou net vas.",
       "oldTag": "region:eastern-cape",
       "otherTags": [],
-      "decision": "HELD",
-      "region": null,
-      "why": "no box for 'gqeberha' (Eastern Cape)",
+      "decision": "TAG",
+      "region": "eastern-cape",
+      "why": "now has a box (eastern-cape)",
       "phrase": "gqeberha"
     }
   ]

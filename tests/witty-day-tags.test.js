@@ -38,6 +38,13 @@ const sampleRegion = {
   highveld: PROBE_LOCATIONS[1],
   'free-state': PROBE_LOCATIONS[2],
   karoo: PROBE_LOCATIONS[3],
+  // New boxes for the un-held meme-batch-2 lines. kzn's in-region probe is Durban
+  // (already a PROBE_LOCATION, so it is skipped in the region-exclusion loop);
+  // lowveld/eastern-cape need an in-region point for the base context (no probe
+  // sits inside them, so every PROBE_LOCATION correctly excludes their lines).
+  lowveld: { name: 'Nelspruit', lat: -25.4753, lon: 30.9694 },
+  kzn: PROBE_LOCATIONS[4],
+  'eastern-cape': { name: 'Gqeberha', lat: -33.9608, lon: 25.6022 },
 };
 
 describe('dayTagAllows — semantics', () => {

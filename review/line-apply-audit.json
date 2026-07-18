@@ -5053,8 +5053,8 @@
     },
     "fog": {
       "existing": 38,
-      "added": 62,
-      "newTotal": 100,
+      "added": 63,
+      "newTotal": 101,
       "lines": [
         {
           "index": 38,
@@ -6015,13 +6015,29 @@
               "night"
             ]
           }
+        },
+        {
+          "index": 100,
+          "en": "Midlands mist: the countryside's privacy setting.",
+          "af": "Midlands-mis: die platteland se privaatheid-instelling.",
+          "from": "fog-dawn-3",
+          "batchTags": [
+            "region:kzn",
+            "time:morning"
+          ],
+          "mappedTag": {
+            "time": [
+              "morning"
+            ],
+            "region": "kzn"
+          }
         }
       ]
     },
     "heat": {
       "existing": 36,
-      "added": 49,
-      "newTotal": 85,
+      "added": 54,
+      "newTotal": 90,
       "lines": [
         {
           "index": 36,
@@ -7209,6 +7225,131 @@
               2,
               3
             ]
+          }
+        },
+        {
+          "index": 85,
+          "en": "Walk now or don't walk at all. The Lowveld gives you until seven.",
+          "af": "Stap nou of stap glad nie. Die Laeveld gee jou tot sewe-uur.",
+          "from": "heat-dawn-3",
+          "batchTags": [
+            "region:inland",
+            "time:dawn",
+            "season:summer"
+          ],
+          "mappedTag": {
+            "time": [
+              "morning"
+            ],
+            "months": [
+              10,
+              11,
+              12,
+              1,
+              2,
+              3
+            ],
+            "region": "lowveld"
+          }
+        },
+        {
+          "index": 86,
+          "en": "Even the impala are standing in the shade rethinking their choices.",
+          "af": "Selfs die rooibokke staan in die skadu en heroorweeg hul keuses.",
+          "from": "heat-day-3",
+          "batchTags": [
+            "region:inland",
+            "time:day",
+            "season:summer"
+          ],
+          "mappedTag": {
+            "time": [
+              "day"
+            ],
+            "months": [
+              10,
+              11,
+              12,
+              1,
+              2,
+              3
+            ],
+            "region": "lowveld"
+          }
+        },
+        {
+          "index": 87,
+          "en": "Lowveld summer: you don't sweat, you melt with dignity.",
+          "af": "Laeveld-somer: jy sweet nie, jy smelt met waardigheid.",
+          "from": "heat-day-3",
+          "batchTags": [
+            "region:inland",
+            "time:day",
+            "season:summer"
+          ],
+          "mappedTag": {
+            "time": [
+              "day"
+            ],
+            "months": [
+              10,
+              11,
+              12,
+              1,
+              2,
+              3
+            ],
+            "region": "lowveld"
+          }
+        },
+        {
+          "index": 88,
+          "en": "The bushveld is on silent mode today. Everyone. Everything.",
+          "af": "Die bosveld is vandag op stille modus. Almal. Alles.",
+          "from": "heat-day-3",
+          "batchTags": [
+            "region:inland",
+            "time:day",
+            "season:summer"
+          ],
+          "mappedTag": {
+            "time": [
+              "day"
+            ],
+            "months": [
+              10,
+              11,
+              12,
+              1,
+              2,
+              3
+            ],
+            "region": "lowveld"
+          }
+        },
+        {
+          "index": 89,
+          "en": "Sundowners aren't a luxury in the Lowveld. They're medical.",
+          "af": "Sundowners is nie 'n luukse in die Laeveld nie. Dis medies.",
+          "from": "heat-dusk-5",
+          "batchTags": [
+            "region:inland",
+            "time:dusk",
+            "season:summer"
+          ],
+          "mappedTag": {
+            "time": [
+              "evening"
+            ],
+            "months": [
+              10,
+              11,
+              12,
+              1,
+              2,
+              3
+            ],
+            "region": "lowveld"
           }
         }
       ]
@@ -8844,8 +8985,8 @@
     },
     "wind": {
       "existing": 20,
-      "added": 33,
-      "newTotal": 53,
+      "added": 37,
+      "newTotal": 57,
       "lines": [
         {
           "index": 20,
@@ -9190,6 +9331,54 @@
             "region:any"
           ],
           "mappedTag": null
+        },
+        {
+          "index": 53,
+          "en": "Gqeberha, we know. We know.",
+          "af": "Gqeberha, ons weet. Ons wéét.",
+          "from": "wind-dawn-3",
+          "batchTags": [
+            "region:eastern-cape"
+          ],
+          "mappedTag": {
+            "region": "eastern-cape"
+          }
+        },
+        {
+          "index": 54,
+          "en": "The Friendly City never asked to be the Windy City, and yet.",
+          "af": "Die Vriendelike Stad het nie gevra om die Winderige Stad te wees nie, en tog.",
+          "from": "wind-dawn-3",
+          "batchTags": [
+            "region:eastern-cape"
+          ],
+          "mappedTag": {
+            "region": "eastern-cape"
+          }
+        },
+        {
+          "index": 55,
+          "en": "Jeffreys Bay: where the wind warms up before its Cape Town shift.",
+          "af": "Jeffreysbaai: waar die wind oefen voor sy Kaapse skof.",
+          "from": "wind-dusk-3",
+          "batchTags": [
+            "region:eastern-cape"
+          ],
+          "mappedTag": {
+            "region": "eastern-cape"
+          }
+        },
+        {
+          "index": 56,
+          "en": "Gqeberha doesn't sleep, it just holds on.",
+          "af": "Gqeberha slaap nie, dit hou net vas.",
+          "from": "wind-night-2",
+          "batchTags": [
+            "region:eastern-cape"
+          ],
+          "mappedTag": {
+            "region": "eastern-cape"
+          }
         }
       ]
     }
@@ -11848,6 +12037,12 @@
         "time": [
           "night"
         ]
+      },
+      "100": {
+        "time": [
+          "morning"
+        ],
+        "region": "kzn"
       }
     },
     "heat": {
@@ -12499,6 +12694,76 @@
           2,
           3
         ]
+      },
+      "85": {
+        "time": [
+          "morning"
+        ],
+        "months": [
+          10,
+          11,
+          12,
+          1,
+          2,
+          3
+        ],
+        "region": "lowveld"
+      },
+      "86": {
+        "time": [
+          "day"
+        ],
+        "months": [
+          10,
+          11,
+          12,
+          1,
+          2,
+          3
+        ],
+        "region": "lowveld"
+      },
+      "87": {
+        "time": [
+          "day"
+        ],
+        "months": [
+          10,
+          11,
+          12,
+          1,
+          2,
+          3
+        ],
+        "region": "lowveld"
+      },
+      "88": {
+        "time": [
+          "day"
+        ],
+        "months": [
+          10,
+          11,
+          12,
+          1,
+          2,
+          3
+        ],
+        "region": "lowveld"
+      },
+      "89": {
+        "time": [
+          "evening"
+        ],
+        "months": [
+          10,
+          11,
+          12,
+          1,
+          2,
+          3
+        ],
+        "region": "lowveld"
       }
     },
     "rain": {
@@ -13346,13 +13611,26 @@
       },
       "41": {
         "region": "western-cape"
+      },
+      "53": {
+        "region": "eastern-cape"
+      },
+      "54": {
+        "region": "eastern-cape"
+      },
+      "55": {
+        "region": "eastern-cape"
+      },
+      "56": {
+        "region": "eastern-cape"
       }
     }
   },
   "totals": {
     "concepts": 184,
-    "lines": 476,
+    "lines": 486,
     "conditions": 9,
-    "tagged": 450
-  }
+    "tagged": 460
+  },
+  "unhold_note": "+10 previously-HELD no-box-region lines applied after lowveld/kzn/eastern-cape boxes landed (2026-07-18)"
 }
