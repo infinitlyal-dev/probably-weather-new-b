@@ -2362,31 +2362,31 @@ main#home-screen.main #confidence {
   .my-location-btn { right: 12px; }
 
   /* Utility pills: dark glass. */
-  .nav-hourly-pill,
+  .share-btn,
   .my-location-btn {
     color: #fff;
     background: rgba(0,0,0,0.5);
     text-shadow: 0 1px 4px rgba(0,0,0,0.35);
   }
 
-  .nav-hourly-pill:active,
+  .share-btn:active,
   .my-location-btn:active {
     opacity: 0.7;
   }
 
-  /* Share: the ONE gold primary (same #FFDD44 → #FFAA00 as install banner). */
-  .share-btn {
+  /* Hourly: the ONE gold primary (same #FFDD44 → #FFAA00 as install banner). */
+  .nav-hourly-pill {
     color: #1a1a2e;
     background: linear-gradient(135deg, #FFDD44, #FFAA00);
     box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
 
-  .share-btn:hover {
+  .nav-hourly-pill:hover {
     box-shadow: 0 6px 18px rgba(255,170,0,0.45), 0 1px 3px rgba(0,0,0,0.25);
   }
 
-  .share-btn:active {
+  .nav-hourly-pill:active {
     transform: scale(0.97);
   }
 }
@@ -2483,22 +2483,22 @@ main#home-screen.main #confidence {
   .nav-hourly-pill { left: 50%; right: auto; transform: translateX(-50%); }
   .my-location-btn { right: calc(50% - (var(--pw-col) / 2) + 12px); left: auto; }
 
-  .nav-hourly-pill,
+  .share-btn,
   .my-location-btn {
     color: #fff;
     background: rgba(0,0,0,0.5);
     text-shadow: 0 1px 4px rgba(0,0,0,0.35);
   }
-  .nav-hourly-pill:active,
+  .share-btn:active,
   .my-location-btn:active { opacity: 0.7; }
 
-  .share-btn {
+  .nav-hourly-pill {
     color: #1a1a2e;
     background: linear-gradient(135deg, #FFDD44, #FFAA00);
     box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
-  .share-btn:active { transform: scale(0.97); }
+  .nav-hourly-pill:active { transform: scale(0.97); }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
