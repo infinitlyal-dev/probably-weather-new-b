@@ -1,12 +1,19 @@
 // Post-apply verifier / alignment audit for the meme-batch-2 line application,
 // evolved 2026-07-18 for the provisional language-pack apply.
 // Proves: (1) row-alignment holds, (2) every planned new en/af is byte-identical to
-// the ruling source at its index, (3) each zu/xh/st slot at those indices is EITHER
-// still an empty debt placeholder OR a PROVISIONAL fill recorded in
-// lang-packs/<lang>/provisional-manifest.jsonl with a byte-identical value — so no
-// slot can be silently filled (not in manifest), silently blanked (manifest says
-// filled but bank is empty), or drift from its manifest value,
-// (4) every planned tag is present at its index in witty-day-tags.
+// the ruling source at its index, (3) each zu/xh/st slot AT AN AUDIT-LINE INDEX is
+// EITHER still an empty debt placeholder OR a PROVISIONAL fill recorded in
+// lang-packs/<lang>/provisional-manifest.jsonl with a byte-identical value — so at
+// those indices no slot can be silently filled (not in manifest), silently blanked
+// (manifest says filled but bank is empty), or drift from its manifest value; plus a
+// comprehensive pass that reconciles EVERY manifested fill in any bin against
+// bank↔manifest↔source-draft↔PASS-verdict, (4) every planned tag is present at its
+// index in witty-day-tags.
+// KNOWN GAP (low severity, review/SESSION-FINDINGS.md): this does not independently
+// enumerate the bank, so a silent fill of a NON-manifested slot in a bin outside
+// audit.conditions (partly-cloudy / witty_low_confidence) is not caught here. Not
+// reachable via the apply (which writes bank+manifest together); the witty-empty-slot
+// -safety test additionally pins those bins' residual empties.
 
 import fs from 'node:fs';
 import { WEATHER_COPY } from '../../assets/weather-copy.js';
