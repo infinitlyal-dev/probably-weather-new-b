@@ -4,9 +4,10 @@ import { describe, expect, it } from 'vitest';
 const spine = readFileSync(new URL('../PRODUCT_SPINE.md', import.meta.url), 'utf8');
 const dossier = readFileSync(new URL('../DESIGN_DOSSIER_probably-weather_2026-07-14.md', import.meta.url), 'utf8');
 
-describe('draft Probably Weather product spine', () => {
-  it('stays explicitly unsigned until Al rules it final', () => {
-    expect(spine).toContain('DRAFT — AWAITING AL\'S SIGNATURE');
+describe('signed Probably Weather product spine', () => {
+  it('is signed and dated by Al (GATE 3)', () => {
+    expect(spine).toContain('SIGNED — Al Snyman, 2026-07-18');
+    expect(spine).not.toContain('DRAFT — AWAITING');
   });
 
   it('records all four owner-ruled kill criteria verbatim', () => {

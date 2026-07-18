@@ -1,8 +1,9 @@
 # Probably Weather product spine
 
-**Status: DRAFT — AWAITING AL'S SIGNATURE**
+**Status: SIGNED — Al Snyman, 2026-07-18**
 
 Date drafted: 2026-07-14
+Date signed: 2026-07-18
 
 A proposed capability belongs in Probably Weather only when it passes every criterion below:
 
