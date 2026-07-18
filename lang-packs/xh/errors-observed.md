@@ -30,6 +30,12 @@ say it (braai, Toyota, sunscreen, place names).
 See zu/lexicon-protected.md row #1 (imbatata). Never coin. Unconfirmed → plain attested word or
 descriptive phrase + LOW tag.
 
+## stray-character artifacts (mechanical, flagged for native confirm)
+`witty.storm[15]` shipped as `Yihloniphe induduma, iyakufanele"` with a trailing stray `"`
+(data-entry artifact). The dangling quote was removed 2026-07-18 (mechanical, no wording change).
+**Native to confirm:** is `Yihloniphe induduma, iyakufanele` the natural way to say "Respect the
+thunder. It's earned it." — or would a native phrase it differently? Wording untouched pending review.
+
 ## known-good anchors (confirmed by reviewer, reuse)
 `Inja iphantsi kwebhedi. Icebo elihle, inene.` (dog under bed) · `Nditsho neeNtaka zithe cwaka.`
 (even the birds are quiet) · `Igadi ithi enkosi ekugqibeleni.` (garden says thanks at last) —

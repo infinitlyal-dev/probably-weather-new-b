@@ -1858,6 +1858,16 @@ main#home-screen.main #confidence {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Desktop postcard caption keeps its -2.4deg tilt THROUGH the entrance fade.
+   Plain heroFadeIn animates transform:translateY, and a running/forwards
+   animation's transform overrides the static rotate(-2.4deg) on #headline —
+   flattening the caption. This variant folds the rotate into both keyframes so
+   the caption fades in AND stays tilted to match the postcard photo. */
+@keyframes heroFadeInPostcard {
+  from { opacity: 0; transform: translateY(20px) rotate(-2.4deg); }
+  to { opacity: 1; transform: rotate(-2.4deg); }
+}
+
 #home-screen .headline,
 #home-screen .temp,
 #home-screen .temp-hilo {
@@ -2607,6 +2617,15 @@ main#home-screen.main #confidence {
     transform: rotate(-2.4deg);
     transform-origin: center center;
     z-index: 31;
+  }
+
+  /* Beat #home-screen .headline's heroFadeIn (specificity 0,1,1,0) with a
+     two-id selector (0,2,0,0) so the caption entrance uses the rotate-preserving
+     keyframe instead of flattening the -2.4deg tilt. animation-delay is restated
+     because the `animation` shorthand resets it. */
+  #home-screen #headline {
+    animation: heroFadeInPostcard 1s ease-in forwards;
+    animation-delay: 0.3s;
   }
 
   /* Top bar: brand at left, primary nav centred, language at right. */
