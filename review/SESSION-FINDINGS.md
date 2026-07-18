@@ -47,3 +47,11 @@ files run in parallel (CPU contention) — a different one each run. Both pass i
 and the whole suite passes green with `npx vitest run --no-file-parallelism` (21632/21632).
 Not a regression from this session. Consider bumping those two `it` timeouts or marking them
 `sequential` if CI flakes.
+
+## 7. Mobile header brand title overlaps the Language button at 200% zoom (pre-existing)
+At 200% text zoom on mobile, the header brand "Probably Weather" grows enough to overlap the
+top-right Language button. Separate from the GATE-2 "mobile hero collision" (the Probably+temp
+display, which IS fixed) — this is header chrome whose size comes from app.css, unaffected by
+the Onest adoption, so it collides at 200% independent of this wave. Fix if wanted: cap/scale
+the mobile `.brand`/header title at zoom, or let the header stack. Logged, not fixed (Al named
+the hero; the header is a separate, pre-existing zoom issue).
