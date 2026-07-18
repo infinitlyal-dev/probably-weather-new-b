@@ -2559,7 +2559,10 @@ main#home-screen.main #confidence {
     height: var(--postcard-photo-h);
     box-sizing: content-box;
     object-fit: cover;
-    object-position: center center;
+    /* Sources are 9:16 portraits cropped into a ~0.8 frame — cover trims ~16% off
+       top+bottom. Bias the window UP (crop ~8% top / more bottom) so subjects'
+       heads keep headroom instead of clipping at the top edge (Al's ruling). */
+    object-position: center 25%;
     border: 16px solid #f6f2e8;
     border-bottom-width: 110px;
     border-radius: 2px;
