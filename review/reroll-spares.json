@@ -1,0 +1,40 @@
+{
+  "note": "Reroll wave 1 — 4 GATE-1-approved candidates whose DAY slot-swap was vetoed by owner 2026-07-18 (owner preferred the original daytime images). Banked as spares (NOT deleted) for possible future use. Images in this folder.",
+  "wave": "reroll-wave-1",
+  "count": 4,
+  "status": "approved, day-swap vetoed by owner, banked as spare",
+  "spares": [
+    {
+      "id": "rain-day-4",
+      "condition": "rain",
+      "bin": "day",
+      "verdict": "A",
+      "file": "review/reroll-spares/rain-day-4_A.jpg",
+      "reason_banked": "owner vetoed day swap, kept original rain/week_4/day/7"
+    },
+    {
+      "id": "cloudy-day-2",
+      "condition": "cloudy",
+      "bin": "day",
+      "verdict": "A",
+      "file": "review/reroll-spares/cloudy-day-2_A.jpg",
+      "reason_banked": "owner vetoed day swap, kept original cloudy/week_4/day/7"
+    },
+    {
+      "id": "cold-day-4",
+      "condition": "cold",
+      "bin": "day",
+      "verdict": "B",
+      "file": "review/reroll-spares/cold-day-4_B.jpg",
+      "reason_banked": "owner vetoed day swap, kept original cold/week_4/day/7"
+    },
+    {
+      "id": "cold-day-10",
+      "condition": "cold",
+      "bin": "day",
+      "verdict": "B",
+      "file": "review/reroll-spares/cold-day-10_B.jpg",
+      "reason_banked": "owner vetoed day swap, kept original cold/week_3/day/7"
+    }
+  ]
+}

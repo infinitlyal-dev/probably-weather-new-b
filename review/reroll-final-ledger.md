@@ -8,7 +8,8 @@ Wave 1 is **closed**. This is the standing image-slot ledger after Phase 4.
 - **30 un-hold slots awaiting native batches**
 
 ## (b) Reroll wave 1 outcome
-- **19 approved → wired** into serving (14 off-peak lossless week-demotes, 5 daytime swaps). Manifest 629 → 644 unique bodies. URL version bumped `20260717-p1` → `20260718-p1`. See `review/reroll-wiring-plan.json`.
+- **15 approved → wired** into serving (14 off-peak lossless week-demotes + 1 lossless day-into-duplicate, `storm-day-2`). Manifest 629 → 644 unique bodies. URL version `20260717-p1` → `20260718-p1`.
+- **4 approved → day-swap VETOED by owner (2026-07-18), banked as spares** (owner preferred the original daytime images): `rain-day-4`, `cloudy-day-2`, `cold-day-4`, `cold-day-10`. Original day slots restored from `f68b146`; candidates kept in `review/reroll-spares/` (see `review/reroll-spares.json`) — not deleted. No serving change for these 4 bins.
 - **17 NEITHER → CLOSED BY OWNER, no reroll, ever** (owner decision 2026-07-18 — this wave is over, "we have enough images"). Logged verbatim in `review/reroll-closed-slots.json`. **0 residual rerolls** — the owner closed them, so nothing carries to a residual reroll ledger.
 - 36 original rejects removed from the bench (`review/reroll-bench.json` emptied).
 
