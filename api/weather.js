@@ -506,13 +506,18 @@ export default async function handler(req, res) {
     }) : Promise.resolve(null);
     // Tomorrow.io Timelines API — 48h hourly window with radar-derived precipitation
     // intensity. Use units=metric (temperature °C, precipitationIntensity mm/h,
-    // windSpeed m/s, humidity %, cloudCover %). startTime=now rounds to the top
-    // of the current local hour at Tomorrow.io's end, returning ~49 intervals.
-    // Without a key, resolves to null and the source is treated as unavailable.
+    // windSpeed m/s, humidity %, cloudCover %, visibility KM). startTime=now rounds
+    // to the top of the current local hour at Tomorrow.io's end, returning ~49
+    // intervals. Without a key, resolves to null and the source is unavailable.
+    // 2026-08-03 (fog-incident-20260803): `visibility` added as the SECOND
+    // visibility signal for detectAdvectionFog. Open-Meteo's grid has now twice
+    // reported 35-44 km inside dense ground fog at Strand (2026-06-01: 43.7 km;
+    // 2026-08-03: 35.3 km), so a single-source visibility read is not enough.
+    // NOTE the unit difference: Tomorrow.io returns km, Open-Meteo returns metres.
     const tomorrowIoRequest = (TOMORROWIO_API_KEY && budgetAllows('tomorrow'))
       ? fetchJson(
           `https://api.tomorrow.io/v4/timelines?location=${lat},${lon}` +
-          `&fields=temperature,precipitationIntensity,precipitationProbability,weatherCode,windSpeed,humidity,cloudCover` +
+          `&fields=temperature,precipitationIntensity,precipitationProbability,weatherCode,windSpeed,humidity,cloudCover,visibility` +
           `&timesteps=1h&units=metric&startTime=now&endTime=nowPlus48h&apikey=${TOMORROWIO_API_KEY}`
         )
       : Promise.resolve(null);
@@ -586,9 +591,16 @@ export default async function handler(req, res) {
         clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
         humidity:   om.hourly?.relative_humidity_2m?.slice(0, 48)      ?? [],
         uvs:        om.hourly?.uv_index?.slice(0, 48)                  ?? [],
-        // Layer A (Bug 1): per-hour visibility (metres) + dew point (°C) feed
-        // detectAdvectionFog(). Open-Meteo only — the detector is single-source
-        // by design (the other four sources expose no visibility field).
+        // Layer A (Bug 1): per-hour visibility (METRES) + dew point (°C) feed
+        // detectAdvectionFog().
+        // 2026-08-03 correction (fog-incident-20260803): the previous comment here
+        // claimed "the other four sources expose no visibility field". That was
+        // factually wrong. Tomorrow.io exposes `visibility` (in KM) and is now
+        // requested and consumed as a second signal — see hourlies[3].visibilityKm
+        // and detectAdvectionFog(), which takes the MINIMUM of the available reads.
+        // WeatherAPI also exposes `current.vis_km` on its current/forecast payload
+        // — a possible THIRD signal, deliberately NOT wired pending a ruling
+        // (it is current-hour only, with no per-hour array to align to).
         visibility: om.hourly?.visibility?.slice(0, 48)                ?? [],
         dewPoints:  om.hourly?.dew_point_2m?.slice(0, 48)              ?? [],
         // Phase B-1 Item 3: per-hour description so the hourly aggregator can
@@ -1119,6 +1131,12 @@ export default async function handler(req, res) {
           }),
           clouds:     aligned.map(iv => iv?.values?.cloudCover ?? null),
           humidity:   aligned.map(iv => iv?.values?.humidity ?? null),
+          // 2026-08-03 (fog-incident-20260803): second visibility signal for
+          // detectAdvectionFog. Deliberately named visibilityKm, NOT visibility,
+          // so the unit difference against Open-Meteo's metres cannot be misread
+          // at a call site. Nulls where Tomorrow.io has no interval (hours before
+          // "now") or omits the field — the detector treats null as "no signal".
+          visibilityKm: aligned.map(iv => (isNum(iv?.values?.visibility) ? iv.values.visibility : null)),
           descs:      aligned.map(iv => {
             const code = iv?.values?.weatherCode;
             return isNum(code) ? (tomorrowIoCodeMap[code] ?? null) : null;
@@ -1745,10 +1763,17 @@ export default async function handler(req, res) {
     // precipitation, which together isolate fog specifically.
     // =========================================================================
     const ensembleVote = nowConditionKey; // condition the ensemble produced, pre-detector
-    const fogDetector = detectAdvectionFog(hourlies[0], localHour);
+    // hourlies[3] is Tomorrow.io (NOT norms[4]'s index — the two arrays differ).
+    // It supplies the second visibility read; absent/null degrades to OM-only.
+    const fogDetector = detectAdvectionFog(hourlies[0], localHour, hourlies[3]);
+    // Both raw reads are logged unconditionally so a future incident capture has
+    // the pair even when the detector does not fire (fog-incident-20260803: the
+    // whole diagnosis turned on knowing OM said 35 300 m).
+    const fogVisPair = `OM ${fogDetector.omVisM === null ? 'n/a' : `${fogDetector.omVisM}m`} / TIO ${fogDetector.tioVisM === null ? 'n/a' : `${fogDetector.tioVisM}m`} → using ${fogDetector.visKm === null ? 'n/a' : `${fogDetector.visKm}km`}${fogDetector.visSource ? ` (${fogDetector.visSource})` : ''}`;
+    debugLog(`[Layer A fog detector] visibility reads: ${fogVisPair}`);
     let fogTrendIncoming = false;
     if (fogDetector.currentFog && (nowConditionKey === 'clear' || nowConditionKey === 'partly-cloudy' || nowConditionKey === 'cloudy')) {
-      debugLog(`[Layer A fog detector] visibility ${fogDetector.visKm}km humidity ${fogDetector.humidity}% dewSpread ${fogDetector.dewSpread}°C → fog (was ${nowConditionKey})`);
+      debugLog(`[Layer A fog detector] visibility ${fogDetector.visKm}km (${fogVisPair}) humidity ${fogDetector.humidity}% dewSpread ${fogDetector.dewSpread}°C → fog (was ${nowConditionKey})`);
       nowOverrides.push({
         rule: 'visibility-humidity-fog-detector',
         from: nowConditionKey,
@@ -1919,8 +1944,19 @@ export default async function handler(req, res) {
           finalCondition:  nowConditionKey,
           fogTrendIncoming,
           sourceAgreement: `${agreeingSources}/${activeNorms.length}`,
+          // omVisM/tioVisM/visSource added 2026-08-03: during fog-incident-20260803
+          // the server debugLog was not reachable, and this payload was the only
+          // capturable evidence. The per-source pair belongs where an incident can
+          // actually read it.
           fogSignal: fogDetector.available
-            ? { visKm: fogDetector.visKm, humidity: fogDetector.humidity, dewSpread: fogDetector.dewSpread }
+            ? {
+                visKm: fogDetector.visKm,
+                humidity: fogDetector.humidity,
+                dewSpread: fogDetector.dewSpread,
+                omVisM: fogDetector.omVisM,
+                tioVisM: fogDetector.tioVisM,
+                visSource: fogDetector.visSource,
+              }
             : null,
         },
         serverCache: 'miss',
@@ -2447,15 +2483,31 @@ function conditionKeyToVoteBucket(key) {
  * when low visibility coincides with saturated air (high RH + tiny dew-point
  * spread) AND there is no precipitation to explain the murk.
  *
+ * Visibility is read from EVERY source that offers it and the MINIMUM is used
+ * (2026-08-03, fog-incident-20260803). Fog detection wants the most pessimistic
+ * credible read: a model grid that says 35 km cannot disprove a station-adjacent
+ * read of 0.8 km, but the reverse is decisive. Open-Meteo has now twice reported
+ * 35-44 km inside dense ground fog at Strand, which is what makes a single-source
+ * read unsafe. Thresholds are unchanged — only the number they are applied to.
+ *
  * @param {object|null} omHourly  hourlies[0] — Open-Meteo's parsed hourly arrays
- *                                 (visibility, humidity, temps, dewPoints,
- *                                  rains=precip-probability, precipMm).
+ *                                 (visibility in METRES, humidity, temps,
+ *                                  dewPoints, rains=precip-probability, precipMm).
  * @param {number} currentHourIdx local-hour index into those arrays (= localHour).
+ * @param {object|null} tioHourly hourlies[3] — Tomorrow.io's parsed hourly arrays.
+ *                                 Only `visibilityKm` (KILOMETRES) is read. Absent,
+ *                                 null or non-numeric ⇒ Open-Meteo-only behaviour,
+ *                                 byte-for-byte as before this parameter existed.
  * @returns {{currentFog:boolean, trendFog:boolean, available:boolean,
- *            visKm:number|null, humidity:number|null, dewSpread:number|null}}
+ *            visKm:number|null, humidity:number|null, dewSpread:number|null,
+ *            omVisM:number|null, tioVisM:number|null, visSource:string|null}}
  */
-function detectAdvectionFog(omHourly, currentHourIdx) {
-  const out = { currentFog: false, trendFog: false, available: false, visKm: null, humidity: null, dewSpread: null };
+function detectAdvectionFog(omHourly, currentHourIdx, tioHourly = null) {
+  const out = {
+    currentFog: false, trendFog: false, available: false,
+    visKm: null, humidity: null, dewSpread: null,
+    omVisM: null, tioVisM: null, visSource: null,
+  };
   if (!omHourly || !Number.isInteger(currentHourIdx) || currentHourIdx < 0) return out;
 
   const at = (arr, i) => (Array.isArray(arr) && isNum(arr[i]) ? arr[i] : null);
@@ -2465,8 +2517,30 @@ function detectAdvectionFog(omHourly, currentHourIdx) {
   const dew  = omHourly.dewPoints  || [];
   const pp   = omHourly.rains      || []; // precipitation_probability (%)
   const pm   = omHourly.precipMm   || []; // precipitation amount (mm)
+  const tioVis = tioHourly?.visibilityKm || []; // KM — converted below, never mixed
 
-  const visM       = at(vis,  currentHourIdx);
+  // Tomorrow.io publishes visibility in KILOMETRES; Open-Meteo in METRES. Convert
+  // once, here, to metres so every comparison downstream is single-unit. isNum via
+  // `at` rejects null/undefined/NaN, so no NaN can reach the arithmetic or the gates.
+  // Codex adversarial review, 2026-08-03: isNum() accepts negatives, so a
+  // provider sentinel (-1, -999, -9999 are all common "no data" encodings) would
+  // become the minimum and force currentFog on EVERY request — a permanent false
+  // positive, the worst possible failure for this detector. Negative visibility
+  // is physically impossible, so it is rejected as "no signal" rather than
+  // clamped. Zero is kept: 0.0 km is a real whiteout reading and matches how the
+  // Open-Meteo path already treats it.
+  // NOTE (flagged, not fixed): the Open-Meteo branch has this same negative-value
+  // exposure and has had it since 2026-05-21. Left exactly as-is here because this
+  // change is required to preserve OM-only behaviour byte-for-byte — it needs its
+  // own ruling.
+  const tioVisKmRaw = at(tioVis, currentHourIdx);
+  const tioVisM     = (tioVisKmRaw === null || tioVisKmRaw < 0) ? null : tioVisKmRaw * 1000;
+  const omVisM      = at(vis, currentHourIdx);
+
+  // Minimum of whatever is available. Both null ⇒ null (no signal at all).
+  const candidates = [omVisM, tioVisM].filter(v => v !== null);
+  const visM       = candidates.length ? Math.min(...candidates) : null;
+
   const humidity   = at(rh,   currentHourIdx);
   const tC         = at(temp, currentHourIdx);
   const dC         = at(dew,  currentHourIdx);
@@ -2479,6 +2553,12 @@ function detectAdvectionFog(omHourly, currentHourIdx) {
 
   out.available  = true;
   out.visKm      = Math.round((visM / 1000) * 10) / 10;
+  out.omVisM     = omVisM;
+  out.tioVisM    = tioVisM;
+  // Which source supplied the governing (minimum) read — for incident forensics.
+  out.visSource  = (tioVisM !== null && (omVisM === null || tioVisM < omVisM))
+    ? 'Tomorrow.io'
+    : (omVisM !== null ? 'Open-Meteo' : null);
   out.humidity   = humidity;
   const dewSpread = (tC !== null && dC !== null) ? Math.round((tC - dC) * 10) / 10 : null;
   out.dewSpread  = dewSpread;
@@ -2510,9 +2590,15 @@ function detectAdvectionFog(omHourly, currentHourIdx) {
   // visibility 0.3-1.0km sat at RH ~92% — a 95% gate silently missed it. A
   // trend flag only lowers the copy-confidence register, never the condition,
   // so a loose-but-honest gate is the right trade.
+  // Same min-of-available rule as the current hour — a trend read that used only
+  // Open-Meteo while the current hour used the minimum would be inconsistent.
   for (let k = 1; k <= 3; k++) {
     const i = currentHourIdx + k;
-    const v  = at(vis,  i);
+    const omV  = at(vis, i);
+    const tioKm = at(tioVis, i);
+    const tioV  = (tioKm === null || tioKm < 0) ? null : tioKm * 1000; // same sentinel guard as above
+    const cands = [omV, tioV].filter(x => x !== null);
+    const v  = cands.length ? Math.min(...cands) : null;
     const h  = at(rh,   i);
     const t2 = at(temp, i);
     const d2 = at(dew,  i);
