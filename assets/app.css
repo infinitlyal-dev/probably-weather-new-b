@@ -4045,10 +4045,12 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     background: var(--page-bg);
     border-top: 1px solid rgba(255,255,255,0.07);
   }
-  /* Share sits in the nav (Al, 2026-08-07) but is an ACTION, not a destination —
-     it never takes the active state, and the brand accent marks it as different
-     in kind from the four tabs beside it. */
-  #navShare { color: var(--brand-gold); font-weight: 700; }
+  /* Share sits in the nav (Al, 2026-08-07) but is an ACTION, not a destination,
+     so it never takes the active state. It deliberately does NOT carry the brand
+     gold either: gold in this nav means exactly one thing — the screen you are
+     on. A permanently gold Share read as "Share is selected" on every screen
+     with no nav slot of its own (Hourly, Sources, Day detail). */
+  #navShare { font-weight: 700; }
   main#home-screen.main {
     padding-bottom: calc(var(--nav-h, 72px) + 4px + env(safe-area-inset-bottom));
   }
@@ -4135,3 +4137,159 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 }
 .settings-row .settings-row-value { color: #aab0bd; font-weight: 500; }
 .settings-row .settings-row-value::after { content: " ›"; color: var(--brand-gold); font-weight: 700; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE FACELIFT M2 — NAV + PAGE CHROME (<=768px)
+   Secondary screens stop being floating translucent cards over the home screen
+   and become real full-screen pages, each with its own compact header and its
+   own way out. Appended after the M1 block, same scoping discipline: nothing
+   here may reach the >=769px frame or the >=1024px postcard.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ---------- Real pages, not modals ----------
+     Was: fixed and inset from every edge, max-height 70vh, translucent + 16px
+     blur, rounded — a sheet floating over a still-visible home screen. Now it
+     owns the viewport down to the nav, on the same solid surface as Home. */
+  /* Search carries its own max-width:500px + margin:0 auto at the same
+     specificity as .screenPanel, so without these it stayed a centred column
+     with Home visible either side on 501-768px viewports. */
+  .search-screen { max-width: none; margin: 0; }
+
+  .screenPanel {
+    /* The nav's real box is nav-h PLUS the safe area, so the inset has to match
+       it or the two edges do not meet on a notched device. */
+    inset: 0 0 calc(var(--nav-h, 72px) + env(safe-area-inset-bottom)) 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: none;
+    padding: max(0.5rem, env(safe-area-inset-top)) 16px 0;
+    border-radius: 0;
+    background: var(--page-bg);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    gap: 0;
+    /* auto, NOT hidden: #search-screen keeps its footer outside the scrolling
+       body, so a tall header (200% zoom, large system text, short viewport)
+       could push "Clear recents" past a hard clip with nothing to scroll. */
+    overflow-y: auto;
+  }
+  .screenPanel .screen-panel-footer { flex: none; padding-bottom: 12px; }
+
+  /* The page scrolls INSIDE its body, and its bottom padding clears the nav so
+     the last row is never buried under it. */
+  .screenPanel .screen-panel-body {
+    max-height: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* The panel already ends at the nav, so this only needs breathing room —
+       a second full nav-height here left ~72px of dead space at full scroll. */
+    padding-bottom: 12px;
+  }
+
+  /* ---------- One page header, every screen ----------
+     Back control + title, matching the approved mockups. The app header is not
+     rendered above these — .screenPanel covers the viewport — so the page title
+     is the only title, which is what "no app header above them" means. */
+  .screen-panel-header.page-head {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0 10px;
+    flex: none;
+  }
+  .page-back {
+    width: 38px; height: 38px; min-block-size: 38px; min-inline-size: 38px;
+    display: grid; place-items: center; flex: none;
+    border: 1px solid rgba(255,255,255,0.09); border-radius: var(--r-sm);
+    background: var(--surface); color: var(--ink);
+    font-size: 1.1rem; line-height: 1; cursor: pointer;
+    /* #hourlyBack and #sourcesBack also carry .day-detail-back for the >=769px
+       frame, and its 6px/12px padding would squeeze the glyph inside the square. */
+    padding: 0;
+  }
+  .page-back:active { transform: scale(0.94); }
+  /* The destination word belongs to the desktop form of these two buttons only —
+     on mobile the square is icon-only and the word lives in the aria-label. */
+  .page-back .page-back-label { display: none; }
+  .screen-panel-header.page-head .screen-title {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: none;
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* Search keeps its controls stacked under the title row. */
+  .search-screen .screen-panel-header.page-head {
+    flex-wrap: wrap;
+  }
+  .search-screen .screen-panel-header.page-head > :not(.page-back):not(.screen-title) {
+    flex-basis: 100%;
+  }
+
+  /* ---------- Bottom nav: five slots, clear active state ---------- */
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: stretch;
+    gap: 0;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+  .nav button {
+    min-inline-size: 0;
+    padding: 6px 2px;
+    border: 0;
+    background: none;
+    color: var(--ink-2);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border-radius: var(--r-sm);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* THE active state, which the brief recorded as missing. Driven by
+     aria-current, which showScreen maintains — not by a class that can drift
+     out of step with the attribute assistive tech actually reads. Share has no
+     aria-current because it is an action, so it can never light up. */
+  .nav button[aria-current="page"] {
+    color: var(--brand-gold);
+  }
+  .nav button[aria-current="page"]::after {
+    content: "";
+    display: block;
+    height: 2px;
+    margin: 4px auto 0;
+    width: 18px;
+    /* No radius: at 2px tall the rounding is invisible, and a third radius
+       token would break the two-radii discipline for nothing. */
+    background: var(--brand-gold);
+  }
+
+  /* ---------- 200% zoom: brand vs Language ----------
+     Ruled into M2 from the someday list. At 200% the fixed-width language chip
+     and the brand block collided because .brand had no wrap and .brand-text no
+     lower bound. The chip now shrinks and the brand text ellipsises instead of
+     overrunning it. */
+  .brand { flex-wrap: nowrap; min-width: 0; }
+  .brand-text { min-width: 0; overflow: hidden; }
+  .brand-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  /* The real cause: the picker was position:absolute;right:0, so it sat OUTSIDE
+     the flex flow and .brand-text ran straight underneath it at large text
+     sizes. Flex shrink cannot constrain an element that is not a flex item.
+     Back in flow, the two negotiate for width and the brand ellipsises.
+     RELATIVE, not static: static would silently discard the z-index below, and
+     the dropdown would paint behind the opaque hero card directly under it. */
+  .language-picker { position: relative; z-index: 30; flex: 0 1 auto; min-width: 0; }
+  .language-btn {
+    max-width: 34vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

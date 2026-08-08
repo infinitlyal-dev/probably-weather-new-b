@@ -989,12 +989,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // Same approved keys as the nav button it replaces — no new strings.
     const settingsSourcesHeading = $('#settingsSourcesHeading');
     const settingsSourcesLabel = $('#settingsSourcesLabel');
-    const sourcesBackBtn = $('#sourcesBack');
-    if (settingsSourcesHeading) settingsSourcesHeading.textContent = t('nav', 'sources');
+    // The section heading would just repeat the row label sitting under it, so
+    // the row carries the name and the heading stays blank — same treatment the
+    // Language section already gets.
+    if (settingsSourcesHeading) settingsSourcesHeading.textContent = '';
     if (settingsSourcesLabel) settingsSourcesLabel.textContent = t('nav', 'sources');
-    if (sourcesBackBtn) sourcesBackBtn.textContent = `← ${t('nav', 'settings')}`;
     if (navHourlyHome) navHourlyHome.textContent = `→ ${t('nav', 'hourly')}`;
-    if (hourlyBack) hourlyBack.textContent = `← ${t('nav', 'home')}`;
+    // Back controls are icon-only in the M2 page header, so the DESTINATION goes
+    // into the accessible name rather than the visible label. Setting textContent
+    // here would ERASE the arrow the markup carries — that is exactly what the
+    // old `← Settings` assignment did to #sourcesBack, spilling the words out of
+    // the 38px square and over the page title. The label span carries the word
+    // for the >=769px frame, where these two keep their pre-facelift form.
+    for (const [id, key] of [['#hourlyBack', 'home'], ['#weekBack', 'home'], ['#searchBack', 'home'], ['#settingsBack', 'home'], ['#sourcesBack', 'settings']]) {
+      const el = $(id);
+      if (!el) continue;
+      el.setAttribute('aria-label', t('nav', key));
+      const backLabel = el.querySelector('.page-back-label');
+      if (backLabel) backLabel.textContent = ` ${t('nav', key)}`;
+    }
     const dayDetailBackBtn = $('#dayDetailBack');
     if (dayDetailBackBtn) dayDetailBackBtn.textContent = `← ${t('nav', 'week')}`;
     // Sources page populated text — explainer + attribution. The dynamic
@@ -1017,16 +1030,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchEditToggle) searchEditToggle.textContent = searchEditMode ? t('search', 'done') : t('search', 'edit');
     const savedH = screenSearch?.querySelector('.section h3'); if (savedH) savedH.textContent = t('search', 'savedPlaces');
     const recentH = screenSearch?.querySelectorAll('.section h3')[1]; if (recentH) recentH.textContent = t('search', 'recent');
-    const unitsH = screenSettings?.querySelector('.settings-section h3'); if (unitsH) unitsH.textContent = t('settings', 'units');
+    // Settings headings are addressed by ID, never by NodeList position. They
+    // used to be [0]=units [1]=display [2]=language [3]=about, so inserting the
+    // Sources section shifted every index by one: the new Sources heading was
+    // relabelled "About" and the real About kept its own, giving two Abouts and
+    // no Sources. Position-indexed lookups break silently the next time anyone
+    // adds a section — ids do not.
+    const unitsH = $('#settingsUnitsHeading'); if (unitsH) unitsH.textContent = t('settings', 'units');
     const tempLabel = unitsTempSelect?.closest('.settings-option')?.querySelector('label'); if (tempLabel) tempLabel.textContent = t('settings', 'temperature');
     const windLabel = unitsWindSelect?.closest('.settings-option')?.querySelector('label'); if (windLabel) windLabel.textContent = t('settings', 'windSpeed');
     const precipLabel = unitsPrecipSelect?.closest('.settings-option')?.querySelector('label'); if (precipLabel) precipLabel.textContent = t('settings', 'precipitation');
-    const displayH = screenSettings?.querySelectorAll('.settings-section h3')[1]; if (displayH) displayH.textContent = t('settings', 'display');
+    const displayH = $('#settingsDisplayHeading'); if (displayH) displayH.textContent = t('settings', 'display');
     const timeLabel = timeFormatSelect?.closest('.settings-option')?.querySelector('label'); if (timeLabel) timeLabel.textContent = t('settings', 'timeFormat');
-    const langH = screenSettings?.querySelectorAll('.settings-section h3')[2]; if (langH) langH.textContent = '';
+    // Deliberately blank: the row's own label already says Language.
+    const langH = $('#settingsLanguageHeading'); if (langH) langH.textContent = '';
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
-    const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
-    const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
+    const aboutH = $('#settingsAboutHeading'); if (aboutH) aboutH.textContent = t('settings', 'about');
+    const aboutP = $('#aboutText'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
     // Controls whose label is not authored in the markup take their text from
     // the same approved keys as whatever they replaced — otherwise they stay
@@ -2434,6 +2454,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // keeps its own full screen, so it also needs its own way back.
   $('#settingsSourcesRow')?.addEventListener('click', openSources);
   $('#sourcesBack')?.addEventListener('click', () => showScreen(screenSettings));
+  // M2: every secondary page has a visible way out. Weekly / Search / Settings
+  // previously had none — you could only leave via the nav, which is the
+  // modal-over-home feel this milestone removes.
+  $('#weekBack')?.addEventListener('click', () => showScreen(screenHome));
+  $('#searchBack')?.addEventListener('click', () => showScreen(screenHome));
+  $('#settingsBack')?.addEventListener('click', () => showScreen(screenHome));
   // ----- Mobile facelift entry points -----
   // The three floating home buttons are gone (facelift brief), so each of their
   // destinations picked up a new, in-place route:

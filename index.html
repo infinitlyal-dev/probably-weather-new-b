@@ -482,8 +482,13 @@
     </div>
 
     <section id="hourly-screen" class="screenPanel hourly-screen hidden">
-      <div class="screen-panel-header day-detail-header">
-        <button id="hourlyBack" class="day-detail-back" aria-label="Back to home">← Home</button>
+      <!-- day-detail-header/day-detail-back are the PRE-facelift desktop form and
+           stay on the two screens that already had a back control. The M2 page-head
+           / page-back rules are scoped to <=768px, so above the breakpoint these
+           two render exactly as they did before the facelift; without them the
+           button falls back to a UA button stretched by the column flex header. -->
+      <div class="screen-panel-header page-head day-detail-header">
+        <button id="hourlyBack" class="page-back day-detail-back" type="button" aria-label="Back to home">←<span class="page-back-label"> Home</span></button>
         <h2 class="screen-title">Hourly Forecast</h2>
       </div>
       <div class="screen-panel-body">
@@ -492,7 +497,10 @@
     </section>
 
     <section id="week-screen" class="screenPanel week-screen hidden">
-      <div class="screen-panel-header">
+      <div class="screen-panel-header page-head">
+        <!-- m-only: Weekly/Search/Settings had NO back control before the facelift,
+             so the new one must not reach the >=769px frame. -->
+        <button id="weekBack" class="page-back m-only" type="button" aria-label="Back to home">←</button>
         <h2 class="screen-title">7-Day Forecast</h2>
       </div>
       <div class="screen-panel-body">
@@ -514,7 +522,8 @@
     </section>
 
     <section id="search-screen" class="screenPanel search-screen hidden">
-      <div class="screen-panel-header">
+      <div class="screen-panel-header page-head">
+        <button id="searchBack" class="page-back m-only" type="button" aria-label="Back to home">←</button>
         <h2 class="screen-title">Search & Favourites</h2>
         <button id="useMyLocationBtn" class="use-location-btn" type="button" aria-label="Use my location">📍 <span>Use my location</span></button>
         <!-- Save relocated here from the home action row: the search screen is the
@@ -552,10 +561,11 @@
     <!-- Sources page — full destination from the new nav button. Credibility +
          attribution. AD-FREE (ads here would undercut the whole point). -->
     <section id="sources-screen" class="screenPanel sources-screen hidden">
-      <div class="screen-panel-header day-detail-header">
+      <div class="screen-panel-header page-head day-detail-header">
         <!-- Sources left the bottom nav (Al, 2026-08-06) and is reached from a
-             Settings row, so it needs its own way back. -->
-        <button id="sourcesBack" class="day-detail-back" aria-label="Back to settings">← Settings</button>
+             Settings row, so its back control returns to Settings, not Home.
+             Keeps the pre-facelift classes for the same reason as #hourlyBack. -->
+        <button id="sourcesBack" class="page-back day-detail-back" type="button" aria-label="Back to settings">←<span class="page-back-label"> Settings</span></button>
         <h2 class="screen-title">Sources</h2>
       </div>
       <div class="screen-panel-body">
@@ -568,12 +578,13 @@
     </section>
 
     <section id="settings-screen" class="screenPanel settings-screen hidden">
-      <div class="screen-panel-header">
+      <div class="screen-panel-header page-head">
+        <button id="settingsBack" class="page-back m-only" type="button" aria-label="Back to home">←</button>
         <h2 class="screen-title settings-title">Settings</h2>
       </div>
       <div class="screen-panel-body">
         <div class="settings-section">
-        <h3>Units</h3>
+        <h3 id="settingsUnitsHeading">Units</h3>
         <div class="settings-option">
           <label for="unitsTemp">Temperature</label>
           <select id="unitsTemp">
@@ -598,7 +609,7 @@
         </div>
         </div>
         <div class="settings-section">
-        <h3>Forecast display</h3>
+        <h3 id="settingsDisplayHeading">Forecast display</h3>
         <div class="settings-option">
           <label for="timeFormat">Time format</label>
           <select id="timeFormat">
@@ -608,7 +619,7 @@
         </div>
         </div>
         <div class="settings-section">
-        <h3>Language</h3>
+        <h3 id="settingsLanguageHeading">Language</h3>
         <div class="settings-option">
           <label for="languageSelect">Language</label>
           <select id="languageSelect">
@@ -628,7 +639,7 @@
         </button>
         </div>
         <div class="settings-section">
-        <h3>About</h3>
+        <h3 id="settingsAboutHeading">About</h3>
         <p id="aboutText">Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather &amp; Tomorrow.io to give you a more reliable prediction.</p>
         <p id="appVersion" style="margin-top:8px;opacity:0.7;font-size:0.9em;">Version 1.5</p>
         <p style="margin-top:8px;opacity:0.7;font-size:0.9em;">Got feedback or an issue? Drop us a mail:</p>
