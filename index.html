@@ -600,6 +600,11 @@
       <div class="screen-panel-body">
         <div class="sources-page">
           <p id="sourcesExplainer" class="sources-explainer"></p>
+          <!-- M4 range chart is mobile-only; the >=769px Sources screen keeps the
+               plain list it always had. On mobile the list is hidden ONLY when the
+               chart actually rendered (.has-range-chart), so a payload with no
+               source ranges still shows something. -->
+          <div id="sourcesRangeChart" class="range-chart m-only" role="img"></div>
           <ul id="sourcesList" class="sources-list"></ul>
           <p id="sourcesAttribution" class="sources-attribution"></p>
         </div>

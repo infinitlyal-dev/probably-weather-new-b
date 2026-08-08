@@ -4610,3 +4610,138 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     margin: 14px 0 6px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE FACELIFT M4 — BRONNE RANGE CHART (<=768px)
+   Five sources on ONE shared temperature scale with Probably's own answer as a
+   gold band behind them. The app's credibility argument, made visual. Scoped to
+   mobile: the >=769px Sources screen keeps the plain list it always had.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .range-chart {
+    background: var(--surface);
+    border-radius: var(--r-sm);
+    padding: 14px 12px 12px;
+    margin-bottom: 12px;
+  }
+  .range-chart[hidden] { display: none; }
+  /* .chart-caption's rules are scoped to .hourly-chart, so reusing the class
+     here inherited nothing. Same grammar, stated once for this card. */
+  .range-chart .chart-caption {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 12px;
+  }
+  /* The list is the chart's ACCESSIBLE COPY, so it is hidden visually and left
+     in the a11y tree — display:none would have taken every source name, range
+     and value away from screen-reader users, since the chart itself is
+     aria-hidden decoration over this data. */
+  .sources-page.has-range-chart .sources-list {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .range-plot {
+    display: grid;
+    /* 92px: "Pirate Weather" truncated at 84. */
+    grid-template-columns: 92px 1fr 70px;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 9px;
+    position: relative;
+  }
+  .range-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .range-track {
+    position: relative;
+    height: 10px;
+    border-radius: 0;
+    /* The full domain, so an empty stretch of track reads as "not this source". */
+    background: rgba(255,255,255,0.06);
+  }
+  .range-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* Squared off — the two-radius discipline, and at 10px tall a radius would
+       eat most of a narrow range's width. */
+    border-radius: 0;
+    /* NEUTRAL, not blue: blue means rain in this app's colour system, and gold
+       has to be the only accent here or the consensus band stops being the
+       thing your eye lands on. */
+    background: rgba(255,255,255,0.88);
+    /* Pixels, not a percentage floor: a zero-span source must be visible without
+       being drawn the same size as a real half-degree range. */
+    min-width: 3px;
+  }
+  .range-val {
+    font-size: 0.72rem;
+    color: var(--ink-2);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  /* Probably's own low-high, spanning every row as one continuous column. It
+     sits BEHIND the bars: the point is that the gold contains the spread. */
+  /* align-self:stretch is load-bearing: .range-plot centres its items, so a
+     spanning cell with no intrinsic height collapsed to 0 and the band rendered
+     as an 8px sliver across the middle row instead of a full column. */
+  .range-band-cell { position: relative; z-index: 0; align-self: stretch; }
+  .range-band {
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    /* A HINT, not a block. At 0.16 the fill read as a solid olive slab and the
+       white bars crossing it went muddy; the two gold edges carry the precision
+       and the wash only has to say "in here". */
+    background: rgba(255, 215, 0, 0.07);
+    border-left: 2px solid var(--brand-gold);
+    border-right: 2px solid var(--brand-gold);
+    /* The 4px of borders already give a zero-width band presence, so the fill
+       needs no floor that would push its right edge past the true high. */
+    box-sizing: content-box;
+  }
+  .range-track, .range-name, .range-val { position: relative; z-index: 1; }
+
+  .range-scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.62rem;
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+    padding-top: 2px;
+  }
+  .range-legend {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .range-legend-swatch {
+    width: 14px;
+    height: 12px;
+    flex: none;
+    background: rgba(255, 215, 0, 0.07);
+    border-left: 2px solid var(--brand-gold);
+    border-right: 2px solid var(--brand-gold);
+  }
+}

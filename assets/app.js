@@ -1834,6 +1834,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!listEl) return;
     const sr = (norm && Array.isArray(norm.sourceRanges)) ? norm.sourceRanges : [];
     listEl.innerHTML = '';
+    // BEFORE the early return: an empty payload has to tear the chart down, or a
+    // place change leaves the previous location's ranges on screen with the
+    // replacement list hidden behind them.
+    renderSourcesRangeChart(norm);
     if (sr.length === 0) {
       const li = document.createElement('li');
       li.className = 'sources-list-empty';
@@ -1857,6 +1861,132 @@ document.addEventListener("DOMContentLoaded", () => {
       listEl.appendChild(li);
     }
   }
+
+  // ---- M4: source range chart (mobile only) ---------------------------------
+  // Every source on ONE shared temperature scale, so the reader can see at a
+  // glance how far the five disagree — and the gold band is what Probably
+  // actually says, sitting in the middle of that spread. This is the app's
+  // credibility argument made visual, so it is built to be looked at.
+  function renderSourcesRangeChart(norm) {
+    const host = $('#sourcesRangeChart');
+    const page = $('.sources-page');
+    if (!host) return;
+    const teardown = () => {
+      host.hidden = true;
+      host.replaceChildren();
+      page?.classList.remove('has-range-chart');
+    };
+    const sr = (norm && Array.isArray(norm.sourceRanges)) ? norm.sourceRanges : [];
+    // GEOMETRY USES RAW CONVERTED DEGREES. Rounding first and then positioning
+    // makes the scale lie: in °F the same five ranges came out with per-degree
+    // factors 12.5% apart, so the bars stopped being comparable — which is the
+    // one thing this chart exists to do. Rounded values are for TEXT only.
+    // A max below min is upstream nonsense; the row is dropped rather than
+    // drawn backwards or silently swapped.
+    const rows = sr
+      .filter((s) => isNum(s.minTemp) && isNum(s.maxTemp) && s.maxTemp >= s.minTemp)
+      .map((s) => ({ name: s.name || '—', lo: convertTemp(s.minTemp), hi: convertTemp(s.maxTemp) }));
+    if (rows.length < 2) { teardown(); return; }
+
+    const bandLoRaw = isNum(norm?.todayLow) ? convertTemp(norm.todayLow) : null;
+    const bandHiRaw = isNum(norm?.todayHigh) ? convertTemp(norm.todayHigh) : null;
+    const hasBand = isNum(bandLoRaw) && isNum(bandHiRaw) && bandHiRaw >= bandLoRaw;
+
+    const all = rows.flatMap((r) => [r.lo, r.hi]).concat(hasBand ? [bandLoRaw, bandHiRaw] : []);
+    let lo = Math.min(...all), hi = Math.max(...all);
+    if (hi === lo) { lo -= 1; hi += 1; }
+    const pad = Math.max(1, (hi - lo) * 0.08);
+    // Integer bounds AFTER padding, so the two scale labels are the exact ends
+    // of the domain the bars are drawn against rather than a rounded-inward
+    // approximation of it.
+    lo = Math.floor(lo - pad); hi = Math.ceil(hi + pad);
+    const span = hi - lo;
+    const pct = (v) => ((v - lo) / span) * 100;
+    const unit = settings.temp === 'F' ? '°F' : '°C';
+
+    host.hidden = false;
+    // The list stays the accessible copy, so the chart is decoration over it.
+    host.setAttribute('aria-hidden', 'true');
+    // Hide the list VISUALLY only, and only when the chart represents every
+    // source. Two good rows out of five must not bury the three the chart
+    // cannot draw.
+    const chartCoversEverySource = rows.length === sr.length;
+    page?.classList.toggle('has-range-chart', chartCoversEverySource);
+
+    const frag = document.createDocumentFragment();
+    const cap = document.createElement('div');
+    cap.className = 'chart-caption';
+    cap.textContent = `${t('weather', 'temp')} · ${unit}`;
+    frag.appendChild(cap);
+
+    const plot = document.createElement('div');
+    plot.className = 'range-plot';
+
+    if (hasBand) {
+      // One cell spanning every source row, so the band reads as a single
+      // continuous column behind the bars rather than a stripe per row.
+      const cell = document.createElement('div');
+      cell.className = 'range-band-cell';
+      cell.style.gridColumn = '2';
+      cell.style.gridRow = `1 / ${rows.length + 1}`;
+      const band = document.createElement('div');
+      band.className = 'range-band';
+      band.style.left = `${pct(bandLoRaw)}%`;
+      // No % floor here — a floor would push the right edge past the true high.
+      // A zero-width band is kept honest by a min-width in CSS instead.
+      band.style.width = `${pct(bandHiRaw) - pct(bandLoRaw)}%`;
+      cell.appendChild(band);
+      plot.appendChild(cell);
+    }
+
+    rows.forEach((r, i) => {
+      const row = String(i + 1);
+      const name = document.createElement('span');
+      name.className = 'range-name';
+      name.textContent = r.name;
+      name.style.gridColumn = '1'; name.style.gridRow = row;
+      const track = document.createElement('div');
+      track.className = 'range-track';
+      track.style.gridColumn = '2'; track.style.gridRow = row;
+      const bar = document.createElement('span');
+      bar.className = 'range-bar';
+      bar.style.left = `${pct(r.lo)}%`;
+      // True proportional width. A zero-span source gets its visibility from a
+      // CSS min-width in PIXELS, not from a percentage floor that would make a
+      // 0° range and a 0.5° range the same size.
+      bar.style.width = `${pct(r.hi) - pct(r.lo)}%`;
+      track.appendChild(bar);
+      const val = document.createElement('span');
+      val.className = 'range-val';
+      val.textContent = `${round0(r.lo)}° – ${round0(r.hi)}°`;
+      val.style.gridColumn = '3'; val.style.gridRow = row;
+      plot.append(name, track, val);
+    });
+
+    const scale = document.createElement('div');
+    scale.className = 'range-scale';
+    scale.style.gridColumn = '2'; scale.style.gridRow = String(rows.length + 1);
+    const s1 = document.createElement('span'); s1.textContent = `${lo}°`;
+    const s2 = document.createElement('span'); s2.textContent = `${hi}°`;
+    scale.append(s1, s2);
+    plot.appendChild(scale);
+    frag.appendChild(plot);
+
+    if (hasBand) {
+      // "Probably" is the brand word — it appears untranslated inside all five
+      // language explainers — so the legend costs no new translation debt.
+      const legend = document.createElement('div');
+      legend.className = 'range-legend';
+      const swatch = document.createElement('span');
+      swatch.className = 'range-legend-swatch';
+      const text = document.createElement('span');
+      text.textContent = `Probably ${round0(bandLoRaw)}° – ${round0(bandHiRaw)}°`;
+      legend.append(swatch, text);
+      frag.appendChild(legend);
+    }
+    host.replaceChildren(frag);
+  }
+
   // Reserved ad slot — an EMPTY layout anchor that stays zero-height until a
   // real ad is injected. No dead grey placeholder box in the forecast when
   // unfilled (CSS collapses .pw-ad-slot:empty). When Adsterra/Media.net
