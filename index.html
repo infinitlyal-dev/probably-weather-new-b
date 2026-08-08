@@ -287,11 +287,15 @@
         link.href = 'assets/type-prototype-caption.css';
         document.head.appendChild(link);
       }
-      var postcardMedia = window.matchMedia('(min-width: 1024px)');
-      function onChange(event) { if (event.matches) loadCaption(); }
-      onChange(postcardMedia);
-      if (postcardMedia.addEventListener) postcardMedia.addEventListener('change', onChange);
-      else postcardMedia.addListener(onChange);
+      // Caveat is now the witty-line hand on MOBILE too (Al's ruling 2026-08-06,
+      // caption option A), not just the desktop postcard caption — so the width
+      // gate is gone. The cost is real and deliberate: this stylesheet carries
+      // the woff2 as data: URIs (~104KB), which mobile previously never fetched.
+      // It is still injected by JS AFTER parse rather than linked in <head>, so
+      // it stays off the first-paint critical path, and font-display:swap means
+      // the caption renders in the fallback hand until it lands.
+      if ('requestIdleCallback' in window) window.requestIdleCallback(loadCaption, { timeout: 1500 });
+      else setTimeout(loadCaption, 0);
     })();
   </script>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
@@ -315,6 +319,15 @@
     // device saw (persisted by setBackgroundFor in app.js). Runs before
     // app.js; same-origin localStorage only; failure leaves default.jpg up.
     (function () {
+      // The stored path is app-written (setBackgroundFor persists the landed
+      // src), but it is still storage bytes going into a CSS url() string, so
+      // it is escaped rather than trusted: anything that could close the quote
+      // or the url() and start a second declaration is dropped.
+      function setHeroUrl(src) {
+        var safe = String(src || '').replace(/["'()\\\s]/g, '');
+        if (!safe) return;
+        document.documentElement.style.setProperty('--hero-url', 'url("' + safe + '")');
+      }
       try {
         var last = localStorage.getItem('pw_last_bg');
         var img = document.getElementById('bgImg');
@@ -327,10 +340,22 @@
           img.onerror = function () {
             img.onerror = null;
             img.src = 'assets/images/bg/default.jpg';
+            // Keep the mobile hero card in step with the fallback.
+            setHeroUrl('assets/images/bg/default.jpg');
           };
           img.src = last;
         }
-      } catch (e) { /* default.jpg stays */ }
+        // The mobile hero card paints from --hero-url. setBackgroundFor sets it
+        // on load, but that's after locate+weather; seeding it here from the
+        // same last-known pick means the card is filled at first paint instead
+        // of showing an empty frame for the whole cold-open window.
+        // Deliberately AFTER the getItem try/catch, in its own guard: when
+        // storage access throws, `last` is simply unknown — the card must still
+        // be seeded with the default rather than left unset and black.
+        setHeroUrl(last || 'assets/images/bg/default.jpg');
+      } catch (e) {
+        try { setHeroUrl('assets/images/bg/default.jpg'); } catch (_) {}
+      }
     })();
   </script>
 
@@ -386,13 +411,56 @@
     </header>
 
     <div class="home-layout">
+      <!-- MOBILE FACELIFT (<=768px) — the contained hero.
+           The photo is a CSS crop (background-image: var(--hero-url)) of the
+           very same full-res asset #bgImg loads, so the picker, the fallback
+           chain, the library and the manifests are untouched: this is the
+           desktop postcard's center-band principle brought to mobile. Text
+           never sits on the photograph — the witty line is the SOLID caption
+           foot below it, inside the same rounded frame, so the line and the
+           image still read as one meme unit. Share is the only thing over the
+           photo, and it's an icon, not text.
+           Hidden at >=769px, where the postcard block owns the home screen. -->
+      <section id="heroCard" class="hero-card">
+        <div id="heroPhoto" class="hero-photo"></div>
+      </section>
+
       <main id="home-screen" class="main" tabindex="-1">
         <div id="weatherStatus" class="weather-status" role="status" aria-live="polite">
           <div id="temp" class="temp">--°</div>
           <div id="tempHiLo" class="temp-hilo"></div>
           <div id="description" class="description">—</div>
         </div>
-        <p id="headline" class="headline">Loading…</p>
+        <!-- #headline stays exactly where it has always been. The mobile
+             facelift lifts it to the top of this flex column with `order: -1`
+             so it reads as the hero card's caption foot, WITHOUT moving it in
+             the DOM — moving it inside #heroCard blanked the desktop
+             postcard's handwritten caption, because display:none on the card
+             at >=769px takes the whole subtree with it (Sol, 2026-08-06). -->
+        <p id="headline" class="headline hero-caption">Loading…</p>
+        <!-- Facelift furniture. All .m-only: the desktop postcard positions its
+             own hero voice by fixed coordinates and must not see these. -->
+        <div id="feelsLine" class="feels-line m-only" hidden></div>
+        <div id="rangeLine" class="range-line m-only" hidden></div>
+        <!-- Source agreement, back on Home by Al's ruling 2026-08-07: plain text,
+             no pill chrome, tappable through to Bronne. It is the app's core
+             differentiator and had become invisible when the pill was removed. -->
+        <button id="agreeLine" class="agree-line m-only" type="button" hidden></button>
+        <!-- Stats row moves UP into the slot the Sources pill held (Al, 2026-08-06).
+             The Sources pill is gone from Home entirely; Bronne is now a Settings
+             row. Source agreement is therefore not surfaced on Home at all —
+             flagged to the owner, not re-added unilaterally. -->
+        <!-- Ruling 2026-08-07: Wind + Rain + UV collapse into ONE pill spanning
+             the width Wind->Rain used to hold, and the freed third slot becomes
+             the Hourly button. Hourly is the ad surface, so it has to invite the
+             tap — it carries the same yellow as the witty line. -->
+        <div class="stats-band m-only">
+          <div id="statsRow" class="stats-row" hidden></div>
+          <button type="button" id="homeHourly" class="hourly-cta">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <span id="homeHourlyLabel">Hourly</span>
+          </button>
+        </div>
         <!-- Hidden elements for JS compatibility -->
         <div id="confidence" class="hidden"></div>
         <div id="sources" class="hidden"></div>
@@ -484,7 +552,10 @@
     <!-- Sources page — full destination from the new nav button. Credibility +
          attribution. AD-FREE (ads here would undercut the whole point). -->
     <section id="sources-screen" class="screenPanel sources-screen hidden">
-      <div class="screen-panel-header">
+      <div class="screen-panel-header day-detail-header">
+        <!-- Sources left the bottom nav (Al, 2026-08-06) and is reached from a
+             Settings row, so it needs its own way back. -->
+        <button id="sourcesBack" class="day-detail-back" aria-label="Back to settings">← Settings</button>
         <h2 class="screen-title">Sources</h2>
       </div>
       <div class="screen-panel-body">
@@ -550,6 +621,13 @@
         </div>
         </div>
         <div class="settings-section">
+        <h3 id="settingsSourcesHeading">Sources</h3>
+        <button type="button" id="settingsSourcesRow" class="settings-row">
+          <span id="settingsSourcesLabel">Weather sources</span>
+          <span class="settings-row-value" id="settingsSourcesCount">5</span>
+        </button>
+        </div>
+        <div class="settings-section">
         <h3>About</h3>
         <p id="aboutText">Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather &amp; Tomorrow.io to give you a more reliable prediction.</p>
         <p id="appVersion" style="margin-top:8px;opacity:0.7;font-size:0.9em;">Version 1.5</p>
@@ -560,12 +638,20 @@
       </div>
     </section>
 
-    <nav class="nav" aria-label="Primary" role="tablist">
-      <button id="navHome" role="tab" aria-label="Home" aria-selected="true" aria-current="page">Home</button>
-      <button id="navWeek" role="tab" aria-label="Weekly forecast" aria-selected="false">Weekly</button>
-      <button id="navSearch" role="tab" aria-label="Search and favourites" aria-selected="false">Search</button>
-      <button id="navSettings" role="tab" aria-label="Settings" aria-selected="false">Settings</button>
-      <button id="navSources" role="tab" aria-label="Weather sources" aria-selected="false">Sources</button>
+    <nav class="nav" aria-label="Primary">
+      <button id="navHome" aria-label="Home" aria-current="page">Home</button>
+      <button id="navWeek" aria-label="Weekly forecast">Weekly</button>
+      <button id="navSearch" aria-label="Search and favourites">Search</button>
+      <button id="navSettings" aria-label="Settings">Settings</button>
+      <!-- Share is an ACTION, not a destination: it opens the share sheet and
+           leaves the current screen where it is, so it never takes the active
+           state. It is also the reason this nav is no longer a role="tablist" —
+           a tablist requires every child to be a role="tab", and forcing Share
+           into one would have been a lie about what it does. Active state is
+           carried by aria-current="page", which showScreen maintains.
+           .m-only: mobile only. The desktop postcard has its own share control,
+           and a second one here would break the "desktop untouched" guard. -->
+      <button id="navShare" class="m-only" type="button" aria-label="Share">Share</button>
     </nav>
   </div>
 

@@ -1,6 +1,10 @@
 :root {
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --brand-gold: #ffd700;
+  /* Two corner radii for the whole app, no third (facelift brief). Defined here
+     rather than inside the mobile block so shared components can honour them. */
+  --r-lg: 20px;
+  --r-sm: 10px;
   /* Owner ruling 2026-07-14: amber is semantic, not general brand chrome.
      Only a weather condition label may use this token; brand accents use gold. */
   --condition-amber: #f5a623;
@@ -326,7 +330,9 @@ body:not(.home-active) .language-picker {
 .description {
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--condition-amber);
+  /* WHITE since 2026-08-07 (Al): the 2026-07-14 amber-condition ruling is
+     retired; --condition-amber is now reserved for genuine weather warnings. */
+  color: #fff;
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
@@ -655,8 +661,8 @@ body.ui-dark .daily-card {
 /* Hourly row styling */
 .hourly-row {
   display: grid;
-  /* TIME | ICON | TEMP | RAIN% | MM | WIND | UV */
-  grid-template-columns: 60px 40px 60px 50px 45px 50px 40px;
+  /* TIME | ICON | TEMP | RAIN% | MM | WIND | DIR | UV */
+  grid-template-columns: 60px 40px 60px 50px 45px 50px 34px 40px;
   gap: 8px;
   align-items: center;
   padding: 10px 8px;
@@ -2168,8 +2174,8 @@ main#home-screen.main #confidence {
 
   /* Hourly row - mobile sizing */
   .hourly-row {
-    /* TIME | ICON | TEMP | RAIN% | MM | WIND | UV */
-    grid-template-columns: 42px 28px 46px 38px 34px 38px 28px;
+    /* TIME | ICON | TEMP | RAIN% | MM | WIND | DIR | UV */
+    grid-template-columns: 38px 24px 42px 32px 28px 32px 28px 24px;
     gap: 2px;
     padding: 10px 4px;
   }
@@ -2271,7 +2277,7 @@ main#home-screen.main #confidence {
     margin-bottom: 0.4rem;
     text-align: left;
     font-weight: 700;
-    color: var(--condition-amber);
+    color: #fff;
     text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.7);
     line-height: 1.35;
     letter-spacing: 0.01em;
@@ -2765,7 +2771,7 @@ main#home-screen.main #confidence {
     font-size: clamp(27px, 2.4vw, 38px);
     font-weight: 800;
     line-height: 1.1;
-    color: var(--condition-amber);
+    color: #fff;
     text-shadow: 0 3px 12px rgba(0,0,0,0.95);
   }
   .sidebar {
@@ -3834,3 +3840,298 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   from { transform: translate(-50%, -120%); opacity: 0; }
   to   { transform: translate(-50%, 0);     opacity: 1; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE FACELIFT — CONTAINED HERO HOME (<=768px)
+   Valk-ruled facelift brief. Appended as a self-contained block, exactly as the
+   desktop postcard block was, so every rule above stays byte-for-byte intact
+   and the >=769px frame (and the >=1024px postcard) is untouched.
+
+   The one architectural change: the photo stops running full-bleed under the
+   text. It becomes a framed card painted from var(--hero-url) — a CSS crop of
+   the same full-res asset #bgImg already loads — and ALL text sits on solid
+   near-black above and below it. The image library, the manifests and set-001
+   are not touched by any of this.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    --page-bg: #0d0d12;
+    --surface: #16171d;
+    --ink: #ffffff;
+    /* Secondary grey lightened for outdoor readability (was ~0.6 alpha white). */
+    --ink-2: #aab0bd;
+    --hero-h: var(--hero-card-h, clamp(230px, 36vh, 340px));
+  }
+
+  html, body { background: var(--page-bg); }
+
+  /* The photo layer stops being the page. #bgImg still loads — it is what sets
+     --hero-url, persists pw_last_bg and walks the fallback chain — it is just
+     no longer what you look at. #particles stays inside #bg at z-index -1, so
+     weather motion still plays behind the page and never over the text. */
+  #bgImg { opacity: 0; }
+  #scrim { display: none; }
+  #bg { background: var(--page-bg); }
+
+  .container { padding-bottom: 0; }
+
+  /* ---------- Compact header: logo, location, language chip ---------- */
+  .header { padding: max(0.5rem, env(safe-area-inset-top)) 12px 8px; margin-bottom: 0; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  #logoCircle, #logoCircle svg { width: 34px; height: 34px; }
+  .brand-text { flex: 1; min-width: 0; }
+  .brand-title { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+  .brand-location {
+    font-size: 0.86rem; font-weight: 500; color: var(--ink-2);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  .brand-location::after { content: " ›"; color: var(--brand-gold); font-weight: 700; }
+  .language-btn {
+    background: var(--surface) !important; border: 1px solid rgba(255,255,255,0.09);
+    border-radius: var(--r-sm); color: var(--ink-2);
+    font-size: 0.8rem; font-weight: 600; padding: 8px 12px; min-inline-size: 0;
+  }
+
+  /* ---------- The hero card ---------- */
+  .home-layout { display: block; padding: 0; }
+
+  .hero-card {
+    display: block; margin: 4px 16px 0;
+    background: var(--surface);
+    border-radius: var(--r-lg) var(--r-lg) 0 0; overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  }
+  .hero-photo {
+    position: relative; height: var(--hero-h);
+    background-color: #0a0a0e;
+    background-image: var(--hero-url, none);
+    background-size: cover;
+    /* Crop C — low band, 78% (Al's ruling 2026-08-06). Still a variable so
+       scripts/verify-facelift-options.mjs can shoot alternatives without
+       editing rules. */
+    background-position: center var(--hero-crop, 78%);
+    background-repeat: no-repeat;
+  }
+
+  /* The witty line: a SOLID caption foot, flush under the photo and sharing its
+     surface and side margins, so the two read as one meme unit. It stays in its
+     original DOM position inside #home-screen (that main is already a flex
+     column) and is lifted here with `order: -1` — moving it into .hero-card
+     blanked the desktop postcard caption, since display:none on the card at
+     >=769px takes the whole subtree with it. */
+  main#home-screen.main > .hero-caption {
+    order: -1;
+    margin: 0 0 18px; padding: 15px 16px 17px;
+    background: var(--surface);
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+    /* Caption A (Al's ruling 2026-08-06): Caveat, gold. The witty line is the
+       personality layer and has to read as a different voice from the data —
+       same hand the desktop postcard caption adopted at GATE-2. The font ships
+       from assets/type-prototype-caption.css, now loaded on mobile too. */
+    font-family: 'Caveat Prototype', 'Segoe Print', 'Bradley Hand', cursive;
+    color: var(--brand-gold);
+    font-size: 1.6rem; font-weight: 700; line-height: 1.15;
+    letter-spacing: 0; text-align: left;
+    text-shadow: none;
+  }
+
+  /* ---------- Data column, all on solid ---------- */
+  main#home-screen.main {
+    padding: 0 16px;
+    text-align: left;
+    background: transparent;
+    /* The base rule sets align-items: flex-start, which makes every child of
+       this flex column shrink to its own content width — the caption foot and
+       the stats row came out narrower than the photo above them. Stretch is
+       what the contained layout needs; the badge opts back out below. */
+    align-items: stretch;
+  }
+  /* The radial darkener existed to lift text off the photograph. There is no
+     photograph behind text any more. */
+  main#home-screen.main::before { content: none; }
+
+  #weatherStatus { margin: 0; }
+  .temp {
+    font-size: clamp(2.9rem, 13.5vw, 3.8rem); font-weight: 800;
+    line-height: 1.0; letter-spacing: -0.03em;
+    color: var(--ink); text-shadow: none;
+  }
+  /* The wordmark is a label, not the reading — it steps back so the temperature
+     is unmistakably the largest thing on the screen (Al, 2026-08-06). */
+  .temp .hero-probably {
+    display: block;
+    font-size: 0.42em; font-weight: 700; letter-spacing: 0.01em;
+    line-height: 1.1; color: var(--ink-2);
+  }
+  /* WHITE (Al's ruling 2026-08-07). This RETIRES the 2026-07-14 amber ruling
+     that pinned the condition label to --condition-amber: orange/red now signal
+     genuine weather warnings only, and the condition line is primary info. */
+  #home-screen #description {
+    margin: 6px 0 0; font-size: 1.02rem; font-weight: 600;
+    color: var(--ink); text-shadow: none;
+  }
+  /* Al's ruling 2026-08-06: current temperature is the mobile hero figure.
+     Both spans are rendered by setHeroTemp; the breakpoint chooses. */
+  .temp .hero-range { display: none; }
+  .temp .hero-now { white-space: nowrap; }
+
+  .feels-line { margin-top: 4px; font-size: 0.9rem; color: var(--ink-2); }
+  .range-line { margin-top: 2px; font-size: 0.9rem; color: var(--ink-2); }
+  .range-line .range-v { color: var(--ink); font-weight: 700; }
+  .range-line .range-sep { opacity: 0.5; margin: 0 7px; }
+
+  /* Condition-colour glows were built to survive photography. On solid black
+     they are the AI-built tell the reviews flagged, and they break the colour
+     rule (orange/red = real warnings only). Neutralised to white here; the
+     condition line carries the meaning in words. */
+  .temp.hero-storm, .temp.hero-rain, .temp.hero-heat, .temp.hero-cold,
+  .temp.hero-wind, .temp.hero-uv, .temp.hero-clear, .temp.hero-cloudy, .temp.hero-fog {
+    color: var(--ink); text-shadow: none; font-weight: 800;
+  }
+  /* renderHome stamps a per-condition hero-* class on the caption. The gold is
+     the ruled treatment, so those classes must not repaint it. */
+  .hero-caption.hero-storm, .hero-caption.hero-rain, .hero-caption.hero-heat,
+  .hero-caption.hero-cold, .hero-caption.hero-wind, .hero-caption.hero-uv,
+  .hero-caption.hero-clear, .hero-caption.hero-cloudy, .hero-caption.hero-fog {
+    color: var(--brand-gold); text-shadow: none; font-weight: 700;
+  }
+
+  /* ---------- Stats row: one aligned row ---------- */
+  /* The band is still three columns: the combined stats pill takes two, the
+     Hourly call-to-action takes the third. */
+  .stats-band {
+    display: grid; grid-template-columns: 2fr 1fr; gap: 8px;
+    margin-top: 16px; align-items: stretch;
+  }
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: var(--surface); border-radius: var(--r-sm);
+    padding: 11px 4px; min-width: 0;
+  }
+  /* Hairline dividers INSIDE the single pill, so the three metrics still read as
+     three columns without being three separate cards (GPT reference 01). */
+  .stats-row .stat + .stat {
+    border-left: 1px solid rgba(255,255,255,0.09);
+  }
+  .stats-row .stat {
+    padding: 0 7px; min-width: 0;
+  }
+  .stats-row .stat-unit {
+    font-size: 0.72em; font-weight: 600; color: var(--ink-2); margin-left: 2px;
+  }
+  .stats-row .stat-k {
+    font-size: 0.63rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink-2);
+  }
+  .stats-row .stat-v {
+    margin-top: 3px; font-size: 0.92rem; font-weight: 700; color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .stats-row .stat-sub {
+    margin-top: 1px; font-size: 0.7rem; color: var(--ink-2);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .stats-row .stat-sub:empty { display: none; }
+
+  /* ---------- Bottom nav: opaque, and content clears it ----------
+     The nav sat on a photograph before, so it could be transparent and still
+     read. On the solid page it was see-through and the stats row showed through
+     the labels. A full nav rebuild (four tabs, yellow active state) is the next
+     milestone — this is only the opacity and clearance the hero home needs to
+     be judged at all. */
+  .nav {
+    background: var(--page-bg);
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  /* Share sits in the nav (Al, 2026-08-07) but is an ACTION, not a destination —
+     it never takes the active state, and the brand accent marks it as different
+     in kind from the four tabs beside it. */
+  #navShare { color: var(--brand-gold); font-weight: 700; }
+  main#home-screen.main {
+    padding-bottom: calc(var(--nav-h, 72px) + 4px + env(safe-area-inset-bottom));
+  }
+
+  /* The card sits OUTSIDE #home-screen, so showScreen() — which only toggles
+     the screen panels — left it visible behind Hourly/Week/Search/Settings/
+     Sources. body.home-active is already maintained by showScreen. */
+  body:not(.home-active) .hero-card { display: none; }
+
+  /* The HTML `hidden` attribute is implemented as a UA `display: none` rule, so
+     any author `display` here silently outranks it and an empty badge / stats
+     grid would still paint. */
+  .stats-row[hidden], .agree-line[hidden] { display: none; }
+
+  /* ---------- Hourly call-to-action ----------
+     Hourly is the ad surface, so it has to invite the tap (Al, 2026-08-07). It
+     carries the SAME yellow as the witty line — deliberately, to tie the two
+     brand moments together. */
+  .hourly-cta {
+    /* Pinned: a hidden #statsRow is not a grid item, so without this the CTA
+       auto-places into the 2fr track and renders double-width on a degraded
+       payload where wind, rain and UV are all absent. */
+    grid-column: 2;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 3px; min-inline-size: 0; padding: 8px 6px;
+    border: 0; border-radius: var(--r-sm);
+    background: var(--brand-gold); color: #1a1a2e;
+    font-size: 0.86rem; font-weight: 800; line-height: 1.1; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255,215,0,0.22);
+  }
+  .hourly-cta:active { transform: scale(0.97); }
+
+  /* ---------- Source agreement: plain text, no pill chrome ---------- */
+  .agree-line {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 8px; padding: 0; min-block-size: 0; min-inline-size: 0;
+    background: none; border: 0; text-align: left;
+    color: var(--ink-2); font-size: 0.88rem; font-weight: 600;
+    font-variant-numeric: tabular-nums; cursor: pointer;
+  }
+  .agree-line::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--brand-gold); flex: none;
+  }
+  .agree-line.is-low::before { background: var(--condition-amber); }
+  .agree-line::after { content: " ›"; color: var(--brand-gold); font-weight: 700; }
+
+  /* ---------- Removed furniture ---------- */
+  /* The three floating buttons are gone: Share is the hero-card icon, Hourly is
+     the Hourly CTA, My Location is the header location name. showScreen only
+     ever sets these to '' or 'none' inline, so a plain display:none wins on
+     home without needing !important. */
+  .share-btn, .nav-hourly-pill, .my-location-btn { display: none; }
+  /* The old bottom-right byline pill is replaced by the stats row. */
+  .sidebar { display: none; }
+}
+
+/* The facelift furniture must never appear on the >=769px frame or inside the
+   desktop postcard, which positions its own hero voice by fixed coordinates. */
+@media (min-width: 769px) {
+  .hero-card { display: none; }
+  .m-only { display: none !important; }
+  /* Above the facelift breakpoint the hero keeps BUG-3's forward-looking range;
+     only the mobile home was superseded (Al, 2026-08-06). */
+  .temp .hero-now { display: none; }
+}
+
+/* Wind-direction column (scoped data exception, Al 2026-08-06). Open-Meteo's
+   bearing only — never aggregated, because a mean of 350deg and 10deg is 180deg.
+   Language-neutral arrow: cardinal letters are per-language and await approval. */
+.hourly-row .h-dir {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78em; font-weight: 700; color: #aab0bd;
+}
+
+/* Settings row grammar — label left, value right (GPT reference 04_settings).
+   Bronne became one of these when it left the bottom nav (Al, 2026-08-06). */
+.settings-row {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; min-block-size: 52px; padding: 12px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r-sm);
+  color: #fff; font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer;
+}
+.settings-row .settings-row-value { color: #aab0bd; font-weight: 500; }
+.settings-row .settings-row-value::after { content: " ›"; color: var(--brand-gold); font-weight: 700; }

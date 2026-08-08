@@ -73,11 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const languageBtn = $('#languageBtn');
   const languageMenu = $('#languageMenu');
 
+  // Mobile facelift furniture (<=768px). Every one of these is absent from the
+  // desktop postcard layout, so each render helper no-ops when its node is
+  // missing rather than branching on viewport width in JS.
+  const navShare = $('#navShare');
+  const homeHourly = $('#homeHourly');
+  const homeHourlyLabel = $('#homeHourlyLabel');
+  const feelsLineEl = $('#feelsLine');
+  const rangeLineEl = $('#rangeLine');
+  const agreeLineEl = $('#agreeLine');
+  const statsRowEl = $('#statsRow');
+
   const navHome = $('#navHome');
   const navWeek = $('#navWeek');
   const navSearch = $('#navSearch');
   const navSettings = $('#navSettings');
-  const navSources = $('#navSources');
   const navHourlyHome = $('#navHourlyHome');
   const hourlyBack = $('#hourlyBack');
 
@@ -423,6 +433,27 @@ document.addEventListener("DOMContentLoaded", () => {
         xh: "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho.",
         st: "Sheba boemo ba leholimo {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao."
       },
+      // Source-agreement line (Al's ruling 2026-08-07). {n} and {total} are the
+      // ensemble's own agreement count. EN and AF are both owner-approved
+      // (AF signed off 2026-08-08). zu/xh/st are PLACEHOLDER copies of the EN
+      // shape and are flagged for the native-review backlog.
+      sourcesAgree: {
+        en: "{n}/{total} sources agree",
+        af: "{n} van {total} bronne stem saam",       // APPROVED by Al 2026-08-08
+        zu: "{n}/{total} sources agree",              // PLACEHOLDER - requires_native_review
+        xh: "{n}/{total} sources agree",              // PLACEHOLDER - requires_native_review
+        st: "{n}/{total} sources agree"               // PLACEHOLDER - requires_native_review
+      },
+      // Compass points. EN and AF approved by Al 2026-08-07 (AF: noord, noordoos,
+      // oos, suidoos, suid, suidwes, wes, noordwes). zu/xh/st are PLACEHOLDER
+      // copies of the EN set - requires_native_review.
+      compass: {
+        en: "N,NE,E,SE,S,SW,W,NW",
+        af: "N,NO,O,SO,S,SW,W,NW",
+        zu: "N,NE,E,SE,S,SW,W,NW",                    // PLACEHOLDER - requires_native_review
+        xh: "N,NE,E,SE,S,SW,W,NW",                    // PLACEHOLDER - requires_native_review
+        st: "N,NE,E,SE,S,SW,W,NW"                     // PLACEHOLDER - requires_native_review
+      },
       shareYourArea: {
         en: "your area",
         af: "jou omgewing",
@@ -496,13 +527,40 @@ document.addEventListener("DOMContentLoaded", () => {
   // innerHTML) so the range can never be an injection vector; the literal space
   // between the spans keeps textContent / screen-reader output as
   // "Probably 11° / 17°". .hero-range carries white-space:nowrap in CSS.
-  const setHeroTemp = (el, label, range) => {
+  const setHeroTemp = (el, label, range, nowTemp) => {
     if (!el) return;
     el.textContent = '';
     const l = document.createElement('span'); l.className = 'hero-probably'; l.textContent = label;
     const r = document.createElement('span'); r.className = 'hero-range'; r.textContent = range;
     el.append(l, ' ', r);
+    // Al's ruling 2026-08-06: the MOBILE home hero shows the current temperature,
+    // not the forward-looking range — BUG-3's range hero survives everywhere else
+    // (desktop postcard, and the Laag/Hoog line below). Both figures are rendered;
+    // the <=768px block shows .hero-now and hides .hero-range, and above it the
+    // reverse. Doing this in CSS rather than JS keeps rotate/resize correct.
+    if (nowTemp != null) {
+      const n = document.createElement('span'); n.className = 'hero-now'; n.textContent = nowTemp;
+      el.append(' ', n);
+    }
   };
+
+  // Wind direction, rendered language-neutrally as a rotated arrow.
+  // Open-Meteo reports the bearing the wind blows FROM (meteorological
+  // convention), so the arrow is turned an extra 180 deg to point the way the
+  // air is actually travelling — which is what a reader expects an arrow to mean.
+  // Cardinal LETTERS (SO / NW / ...) are language-dependent and are not shipped
+  // until the owner approves the Afrikaans set.
+  // Bearing -> compass letters in the active language. Meteorological convention:
+  // this is the direction the wind comes FROM, which is how South Africans name a
+  // wind ("suidwester" = from the south-west), so it is NOT flipped like the arrow.
+  // 8 points, 45deg each, offset by 22.5 so 337.5-22.5 reads as N.
+  function windCompass(deg) {
+    if (!isNum(deg)) return '';
+    const points = String(t('misc', 'compass') || 'N,NE,E,SE,S,SW,W,NW').split(',');
+    if (points.length !== 8) return '';
+    return points[Math.round((((deg % 360) + 360) % 360) / 45) % 8].trim();
+  }
+
   const isNum = (v) => typeof v === "number" && Number.isFinite(v);
   const round0 = (n) => isNum(n) ? Math.round(n) : null;
   const loadJSON = (key, fb) => { try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fb; } catch { return fb; } };
@@ -579,9 +637,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return '';
   };
 
-  // Hourly has no bottom-nav button (reached from the home-screen pill instead),
-  // so it's absent from NAV_MAP. Sources is the new last slot.
-  const NAV_MAP = [[screenHome, navHome], [screenWeek, navWeek], [screenSearch, navSearch], [screenSettings, navSettings], [screenSources, navSources]];
+  // Hourly has no bottom-nav button (reached from the Hourly CTA on home).
+  // Sources left the nav entirely on 2026-08-06 and is reached from a Settings
+  // row. Share IS in the nav but is an action, not a destination, so it is not
+  // here either — nothing in this map should ever take an active state wrongly.
+  const NAV_MAP = [[screenHome, navHome], [screenWeek, navWeek], [screenSearch, navSearch], [screenSettings, navSettings]];
   function showScreen(which) {
     SCREENS.forEach(s => { if (s) { s.classList.add("hidden"); s.setAttribute('hidden', ''); } });
     if (which) { which.classList.remove("hidden"); which.removeAttribute('hidden'); }
@@ -589,6 +649,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!btn) return;
       const active = scr === which;
       btn.classList.toggle('active', active);
+      // aria-current is the whole active-state contract now. The nav used to be a
+      // role="tablist", but a tablist REQUIRES every child to be a role="tab" and
+      // Share is deliberately an action, not a destination — so the container role
+      // was dropped rather than forcing Share into a tab it isn't. Screens with no
+      // nav item of their own (Hourly, Sources, Day detail) leave all four unset.
       if (active) btn.setAttribute('aria-current', 'page'); else btn.removeAttribute('aria-current');
     });
     document.body.classList.toggle('modal-open', which && which !== screenHome);
@@ -921,7 +986,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navWeek) navWeek.textContent = t('nav', 'week');
     if (navSearch) navSearch.textContent = t('nav', 'search');
     if (navSettings) navSettings.textContent = t('nav', 'settings');
-    if (navSources) navSources.textContent = t('nav', 'sources');
+    // Same approved keys as the nav button it replaces — no new strings.
+    const settingsSourcesHeading = $('#settingsSourcesHeading');
+    const settingsSourcesLabel = $('#settingsSourcesLabel');
+    const sourcesBackBtn = $('#sourcesBack');
+    if (settingsSourcesHeading) settingsSourcesHeading.textContent = t('nav', 'sources');
+    if (settingsSourcesLabel) settingsSourcesLabel.textContent = t('nav', 'sources');
+    if (sourcesBackBtn) sourcesBackBtn.textContent = `← ${t('nav', 'settings')}`;
     if (navHourlyHome) navHourlyHome.textContent = `→ ${t('nav', 'hourly')}`;
     if (hourlyBack) hourlyBack.textContent = `← ${t('nav', 'home')}`;
     const dayDetailBackBtn = $('#dayDetailBack');
@@ -957,6 +1028,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const aboutH = screenSettings?.querySelectorAll('.settings-section h3')[3]; if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = screenSettings?.querySelector('.settings-section:last-of-type p'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
+    // Controls whose label is not authored in the markup take their text from
+    // the same approved keys as whatever they replaced — otherwise they stay
+    // English under af/zu/xh/st.
+    if (navShare) navShare.textContent = t('misc', 'share');
+    if (homeHourlyLabel) homeHourlyLabel.textContent = t('nav', 'hourly');
+    renderAgreeLine(window.__PW_LAST_NORM);
     if (myLocationHome) myLocationHome.textContent = `📍 ${t('misc', 'myLocation')}`;
     // L3/L4/L6: footer attribution + shared-location indicator + version are
     // language-managed too.
@@ -1546,6 +1623,8 @@ document.addEventListener("DOMContentLoaded", () => {
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
       used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [],
+      // Open-Meteo's bearing, unaggregated (scoped data exception, Al 2026-08-06).
+      windDir: isNum(payload.windDir) ? payload.windDir : null,
       sourceConditions: meta.sourceConditions || [], // FIX-001: per-source condition votes
       // Layer A/B (Bug 1): confidence register. 'high' unless the API flagged a
       // fog trend or source disagreement. getWittyLine reads `confidence`;
@@ -1712,6 +1791,124 @@ document.addEventListener("DOMContentLoaded", () => {
     slot.setAttribute('data-ad-slot', slotName);
     return slot;
   }
+  // ========== MOBILE FACELIFT RENDERERS (<=768px) ==========
+  // These run at EVERY width — the nodes always exist; it is CSS that hides
+  // their output above 768px. The null guards are for a missing node, not for a
+  // viewport. Kept branch-free on purpose: a JS width check would go stale on
+  // rotate/resize, where the media query never does. The work is trivial
+  // (four small string builds), so running it unconditionally is the cheap side
+  // of that trade.
+
+  // Feels-like belongs with the temperature, not buried in a stats row. Same
+  // >=3 degree divergence threshold the old two-row byline used.
+  function renderFeelsLine(norm) {
+    if (!feelsLineEl) return;
+    const feels = norm.feelsLike, nowT = norm.nowTemp;
+    const show = isNum(feels) && isNum(nowT) && Math.abs(feels - nowT) >= 3;
+    feelsLineEl.textContent = show ? `${t('weather', 'feelsLike')} ${formatTemp(feels)}` : '';
+    feelsLineEl.hidden = !show;
+  }
+
+  // Source agreement, plain text under Low/High, tappable through to Bronne
+  // (Al's ruling 2026-08-07). Reads the ensemble's OWN agreement count, the same
+  // figure it used to set its confidence register, so the line can never
+  // disagree with the forecast above it.
+  function renderAgreeLine(norm) {
+    if (!agreeLineEl) return;
+    const raw = norm?.conditionConfidence?.sourceAgreement;
+    const m = typeof raw === 'string' ? raw.match(/^(\d+)\/(\d+)$/) : null;
+    if (!m || !(Number(m[2]) > 0)) {
+      agreeLineEl.hidden = true;
+      agreeLineEl.textContent = '';
+      return;
+    }
+    // t() returns the KEY itself on a miss, so a plain || fallback is dead
+    // code — check for the token rather than for falsiness.
+    const raw_tpl = t('misc', 'sourcesAgree');
+    const tpl = (typeof raw_tpl === 'string' && raw_tpl.includes('{n}')) ? raw_tpl : '{n}/{total} sources agree';
+    agreeLineEl.textContent = tpl.replace('{n}', m[1]).replace('{total}', m[2]);
+    agreeLineEl.classList.toggle('is-low', norm.confidence === 'low');
+    agreeLineEl.hidden = false;
+  }
+
+  // Laag / Hoog, small, under the hero. Reinstated by Al's ruling 2026-08-06:
+  // the mobile hero now shows the CURRENT temperature, so this line is no longer
+  // a duplicate of it. Reads today's low/high, the same pair the hero used to show.
+  function renderRangeLine(norm) {
+    if (!rangeLineEl) return;
+    const parts = [];
+    if (isNum(norm.todayLow)) parts.push(`<span class="range-k">${t('weather', 'low') || 'Low'}</span> <span class="range-v">${formatTemp(norm.todayLow)}</span>`);
+    if (isNum(norm.todayHigh)) parts.push(`<span class="range-k">${t('weather', 'high') || 'High'}</span> <span class="range-v">${formatTemp(norm.todayHigh)}</span>`);
+    rangeLineEl.innerHTML = parts.join('<span class="range-sep">·</span>');
+    rangeLineEl.hidden = parts.length === 0;
+  }
+
+  // SUPERSEDED NOTE — no separate Low/High line. The facelift brief asks for "current temp
+  // large ... Laag/Hoog", but the hero already renders the RANGE as its primary
+  // figure by a prior owner ruling (the BUG-3 forward-looking hero: dawn shows
+  // current -> today's high, dusk current -> tonight's low, night tomorrow's
+  // range). Adding a Low/High line under it printed the same two numbers twice.
+  // Rather than silently reverse that ruling, the hero is left as it is and the
+  // duplicate line is not rendered — flagged for the owner's call.
+
+  // The confidence badge is GONE from Home (Al, 2026-08-06): the Sources pill
+  // was removed and Bronne moved to a Settings row. Source agreement is
+  // therefore not surfaced on Home at all — the owner is deciding whether a
+  // plain one-line mention returns under Low/High. Nothing speculative is left
+  // behind for it; meta.conditionConfidence.sourceAgreement is still shipped by
+  // the API and is where that line would read from.
+
+  // One aligned row: Wind / Rain / UV. Wind DIRECTION is absent from the payload
+  // entirely — adding it is a data-layer change the facelift brief's own scope
+  // guard forbids, so the slot is left out pending the owner's ruling.
+  function renderStatsRow(norm) {
+    if (!statsRowEl) return;
+    const wind = norm.windKph, gust = norm.gustKph, rain = norm.rainPct, uv = norm.uv;
+    const cells = [];
+    if (isNum(wind)) {
+      const showGust = isNum(gust) && gust > wind * 1.3;
+      // Letters only. They are the FROM bearing, which is how a South African
+      // names a wind ("suidwester" = from the south-west) and matches every
+      // forecast they have ever read.
+      const dir = windCompass(norm.windDir);
+      // Gust is the NUMBER only — the value above already carries the unit.
+      const gustNum = showGust ? round0(settings.wind === 'mph' ? gust * 0.621371 : settings.wind === 'ms' ? gust / 3.6 : gust) : null;
+      cells.push({
+        k: t('weather', 'wind') || 'Wind',
+        // Number big, unit small — three columns inside a two-thirds-width pill
+        // is too tight for "46 km/h" at one size, and it truncated to "46 k...".
+        // Same treatment the GPT reference uses.
+        v: formatWind(wind).replace(/^(\S+)\s+(.+)$/, '$1<span class="stat-unit">$2</span>'),
+        sub: [dir, gustNum != null ? `${t('weather', 'gusts') || 'gusts'} ${gustNum}` : ''].filter(Boolean).join(' · '),
+      });
+    }
+    if (isNum(rain)) {
+      // Same wording ladder and the same two overrides as the old byline — the
+      // stats row is a restyle of that data, not a re-derivation of it.
+      let word = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely');
+      const todayKey = (norm.daily?.[0]?.conditionKey || '').toLowerCase();
+      if ((todayKey === 'rain' || todayKey === 'rain-possible') && rain < 30) word = t('weather', 'possibleLater') || word;
+      if (norm.rainLater) word = t('weather', 'later') || word;
+      cells.push({ k: t('weather', 'rain') || 'Rain', v: `${round0(rain)}%`, sub: word });
+    }
+    if (isNum(uv)) {
+      const word = uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh');
+      cells.push({ k: t('weather', 'uv') || 'UV', v: String(round0(uv)), sub: word });
+    }
+    // ONE pill now (Al's ruling 2026-08-07), the three metrics divided inside it
+    // rather than sitting in three separate cards. The freed third column of the
+    // band is the Hourly call-to-action.
+    statsRowEl.innerHTML = cells
+      .map((c) => `<div class="stat"><div class="stat-k">${c.k}</div><div class="stat-v">${c.v}</div><div class="stat-sub">${c.sub}</div></div>`)
+      .join('');
+    statsRowEl.hidden = cells.length === 0;
+  }
+
+  // The six-hour strip was REMOVED from Home on 2026-08-08 (Al's ruling): it was
+  // cannibalising taps from the Hourly button, which is the ad surface, and its
+  // height was the reason Home could not fit above the fold. The Hourly CTA is
+  // now the sole route to hourly detail.
+
   function renderHome(norm) {
     hideSplash();
     showLoader(false);
@@ -1759,7 +1956,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       rangeText = `${loStr} / ${hiStr}`;
     }
-    setHeroTemp(tempEl, probablyLabel, rangeText);
+    setHeroTemp(tempEl, probablyLabel, rangeText, isNum(currentTemp) ? formatTemp(currentTemp) : null);
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
       hiLoEl.textContent = '';
@@ -1812,6 +2009,11 @@ document.addEventListener("DOMContentLoaded", () => {
     [headlineEl, tempEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + heroVariant); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
+    // Mobile facelift furniture — same `norm`, no second data path.
+    renderFeelsLine(norm);
+    renderRangeLine(norm);
+    renderAgreeLine(norm);
+    renderStatsRow(norm);
     renderCapeWind(norm);
   }
   // Hourly row icon. Delegates to pickHourlyEmoji so every branch
@@ -1834,7 +2036,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sunsetMin  = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunset);
     const header = document.createElement('div');
     header.classList.add('hourly-row', 'hourly-header');
-    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
+    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-dir"></span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
     hourlyTimeline.appendChild(header);
     // Hourly array starts at midnight local time. Slice from current hour so
     // the data shown matches the time label. Show remaining hours of today + up to 24 total.
@@ -1856,7 +2058,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const uvVal = isNum(h.uv) ? round0(h.uv) : '--';
       const uvClass = isNum(h.uv) ? (h.uv >= 8 ? 'uv-extreme' : h.uv >= 6 ? 'uv-high' : h.uv >= 3 ? 'uv-mod' : '') : '';
       const precipAmount = formatPrecipAmount(h.precipMm);
-      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-mm">${precipAmount}</span><span class="h-wind">${windSpeed}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
+      div.innerHTML = `<span class="h-time">${ht}</span><span class="h-icon">${icon}</span><span class="h-temp ${tempClass}">${formatTemp(h.tempC)}</span><span class="h-rain">${rainPct}</span><span class="h-mm">${precipAmount}</span><span class="h-wind">${windSpeed}</span><span class="h-dir">${windCompass(h.windDir)}</span><span class="h-uv ${uvClass}">${uvVal}</span>`;
       hourlyTimeline.appendChild(div);
       // Reserved ad slot — after row 6 (0-indexed i===5), so it sits between
       // the 6th and 7th hour. User has scrolled past a few hours but hasn't
@@ -2223,10 +2425,35 @@ document.addEventListener("DOMContentLoaded", () => {
   $('#dayDetailBack')?.addEventListener('click', () => showScreen(screenWeek));
   navSearch?.addEventListener('click', () => { showScreen(screenSearch); renderRecents(); renderFavorites(); });
   navSettings?.addEventListener('click', () => showScreen(screenSettings));
-  navSources?.addEventListener('click', () => {
+  const openSources = () => {
     // Re-render so the source list reflects the most recent payload.
     if (window.__PW_LAST_NORM) renderSourcesScreen(window.__PW_LAST_NORM);
     showScreen(screenSources);
+  };
+  // Bronne left the bottom nav and is now a Settings row (Al, 2026-08-06). It
+  // keeps its own full screen, so it also needs its own way back.
+  $('#settingsSourcesRow')?.addEventListener('click', openSources);
+  $('#sourcesBack')?.addEventListener('click', () => showScreen(screenSettings));
+  // ----- Mobile facelift entry points -----
+  // The three floating home buttons are gone (facelift brief), so each of their
+  // destinations picked up a new, in-place route:
+  //   Share    -> the icon on the hero card (delegates to the one #shareBtn
+  //               handler, so there is still exactly one share code path)
+  //   Hourly   -> the Hourly CTA in the stats band (sole route since 2026-08-08)
+  //   Location -> tapping the location name in the header
+  // Sources left the bottom nav; the source-agreement line is its entry point.
+  navShare?.addEventListener('click', () => shareBtn?.click());
+  homeHourly?.addEventListener('click', () => openHourly());
+  agreeLineEl?.addEventListener('click', openSources);
+  // Pointer affordance only, deliberately: #location is the page's one <h1>, so
+  // it keeps its heading semantics rather than being re-roled as a button.
+  // Keyboard and assistive-tech users reach the same screen via the Places tab.
+  // Gated to the facelift breakpoint — the desktop postcard has its own header
+  // and did not previously open Search when its H1 was clicked, and this must
+  // not change desktop behaviour.
+  locationEl?.addEventListener('click', () => {
+    if (!window.matchMedia('(max-width: 768px)').matches) return;
+    showScreen(screenSearch); renderRecents(); renderFavorites();
   });
   // Home-screen Hourly pill — opens the Hourly screen + resets scroll to top
   // (matches the bottom-nav screen-overlay behaviour, which always shows the

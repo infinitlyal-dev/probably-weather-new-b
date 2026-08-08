@@ -470,13 +470,13 @@ export default async function handler(req, res) {
 
     const openMeteoRequest = budgetAllows('open-meteo') ? fetchJson(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-      `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m,cloud_cover` +
+      `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,wind_direction_10m,relative_humidity_2m,cloud_cover` +
       // Phase B-1 Item 3: hourly weather_code added so per-hour condition can be preserved
       // through aggregation (previously only the daily weather_code was fetched).
       // Layer A (2026-05-21, Bug 1): visibility + dew_point_2m added so the
       // advection-fog detector can see low-visibility/saturated-air signals the
       // model-based condition vote ignores. Both fields are free on this endpoint.
-      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
+      `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,wind_direction_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,wind_speed_10m_max,sunrise,sunset` +
       `&timezone=auto&forecast_days=7`
     ) : Promise.resolve(null);
@@ -571,6 +571,14 @@ export default async function handler(req, res) {
         desc:      openMeteoCodeMap[om.current?.weather_code]   ?? 'Unknown',
         windKph:   om.current?.wind_speed_10m                    ?? null,
         gustKph:   om.current?.wind_gusts_10m                    ?? null,
+        // Wind DIRECTION is taken from Open-Meteo alone, never aggregated.
+        // Bearing is circular: a naive weighted mean of 350 deg and 10 deg
+        // returns 180 deg — the exact opposite of the true direction. Averaging
+        // it correctly needs a vector mean, which is a new aggregation rule and
+        // outside the scoped data exception (Al, 2026-08-06). Open-Meteo is the
+        // primary source and already the sole authority for hourly UV, so the
+        // same precedent applies here.
+        windDir:   om.current?.wind_direction_10m                ?? null,
         humidity:  om.current?.relative_humidity_2m              ?? null,
         sunrise:   om.daily?.sunrise?.[0]                        ?? null,
         sunset:    om.daily?.sunset?.[0]                         ?? null,
@@ -588,6 +596,7 @@ export default async function handler(req, res) {
         precipMm:   om.hourly?.precipitation?.slice(0, 48)             ?? [],
         winds:      om.hourly?.wind_speed_10m?.slice(0, 48)            ?? [],
         gusts:      om.hourly?.wind_gusts_10m?.slice(0, 48)            ?? [],
+        windDirs:   om.hourly?.wind_direction_10m?.slice(0, 48)        ?? [],
         clouds:     om.hourly?.cloud_cover?.slice(0, 48)               ?? [],
         humidity:   om.hourly?.relative_humidity_2m?.slice(0, 48)      ?? [],
         uvs:        om.hourly?.uv_index?.slice(0, 48)                  ?? [],
@@ -1325,6 +1334,8 @@ export default async function handler(req, res) {
         rainChance: wAvg(hourlies, hourlyW, h => h.rains[i]),
         precipMm,
         windKph:    effectiveHourlyWind,
+        // Open-Meteo only — see the windDir note on the current block.
+        windDir:    isNum(hourlies[0]?.windDirs?.[i]) ? hourlies[0].windDirs[i] : null,
         cloudPct:   modalCloud,  // Rec 5: use modal instead of averaged cloud cover
         uv:         isNum(uvVal) ? Math.round(uvVal * 10) / 10 : null,
         // Phase B-1 Item 3: categorised hourly condition + winning desc label
@@ -1874,6 +1885,9 @@ export default async function handler(req, res) {
       wind_kph:   effectiveDisplayWind,
       maxWindKph: maxWindKph > 0 ? maxWindKph : null,
       gustKph:    isNum(maxGust) && maxGust > effectiveDisplayWind * 1.5 ? maxGust : null,
+      // Open-Meteo's bearing, unaggregated — see the windDir note in norms[0].
+      // Null whenever OM is the source that failed; the UI simply omits it.
+      windDir:    isNum(norms[0]?.windDir) ? norms[0].windDir : null,
       now: {
         tempC:            medNowTemp,
         feelsLikeC:       finalFeelsLike,

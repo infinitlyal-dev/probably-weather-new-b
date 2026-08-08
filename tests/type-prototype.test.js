@@ -17,15 +17,22 @@ describe('adopted default typography (Onest + desktop Caveat)', () => {
     expect(uiCss).toContain("--font-system: 'Onest Prototype'");
   });
 
-  it('keeps the Caveat caption payload behind the desktop breakpoint (JS media-gated)', () => {
-    expect(index).toContain("matchMedia('(min-width: 1024px)')");
-    expect(index).toContain("postcardMedia.addEventListener('change', onChange)");
+  it('loads the Caveat caption payload off the first-paint critical path', () => {
+    // SUPERSEDED 2026-08-06 (Al's ruling — mobile facelift caption option A).
+    // This used to assert Caveat was gated to >=1024px so mobile never fetched
+    // its ~104KB. The witty line is now the Caveat hand on mobile too, so the
+    // width gate is gone ON PURPOSE and the bytes are a ruled, known cost.
+    // What still holds — and is what actually protected cold-open time — is
+    // that the stylesheet is injected by JS AFTER parse, never linked in <head>,
+    // so it stays off the first-paint critical path.
+    expect(index).not.toContain('<link rel="stylesheet" href="assets/type-prototype-caption.css"');
     expect(index).toContain("'assets/type-prototype-caption.css'");
-    // Onest stylesheet must NOT carry Caveat (mobile never downloads Caveat bytes).
+    expect(index).toContain('requestIdleCallback');
+    // Onest stylesheet still must NOT carry Caveat — they stay separate files,
+    // so the caption payload remains independently droppable.
     expect(uiCss).not.toContain('Caveat Prototype');
     expect(captionCss).toContain("font-family: 'Caveat Prototype'");
-    expect(captionCss).toContain('@media (min-width: 1024px)');
-    // 2-id selector so the caption beats app.css's #headline caption rule.
+    // 2-id selector so the desktop postcard caption still beats app.css.
     expect(captionCss).toContain('#home-screen #headline');
   });
 

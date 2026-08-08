@@ -37,7 +37,7 @@ function weatherPayload(kind) {
     now: { ...c, feelsLikeC: c.tempC, uv: 3, isDay: kind !== 'fog', windKph: 15 },
     hourly, daily, wind_kph: 15, maxWindKph: 20, gustKph: 24,
     consensus: { confidenceKey: 'high' },
-    meta: { localHour: kind === 'fog' ? 2 : 14, utcOffsetSeconds: 7200, confidence: 'high', sources: [{ name: 'Open-Meteo', ok: true }], sourceConditions: [{ source: 'Open-Meteo', vote: c.conditionKey, desc: c.conditionLabel }], sourceRanges: [] },
+    meta: { localHour: kind === 'fog' ? 2 : 14, utcOffsetSeconds: 7200, confidence: 'high', sources: [{ name: 'Open-Meteo', ok: true }], sourceConditions: [{ source: 'Open-Meteo', vote: c.conditionKey, desc: c.conditionLabel }], sourceRanges: [], conditionConfidence: { level: 'high', finalCondition: c.conditionKey, sourceAgreement: '5/5' } },
   };
 }
 
@@ -214,19 +214,19 @@ async function mobileComparison(browser, origin) {
   }
   mkdirSync(output, { recursive: true });
   writeFileSync(path.join(output, 'mobile-comparison.json'), `${JSON.stringify({ before, after }, null, 2)}\n`);
-  const stableGeometry = ({ actions, ...stable }) => stable;
-  for (const viewport of mobileViewports) {
-    const key = `${viewport.width}x${viewport.height}`;
-    assert(geoKey(stableGeometry(before[key])) === geoKey(stableGeometry(after[key])), `Non-action mobile geometry differs from 53f918f at ${key}`);
-  }
-  const expectedActions = {
-    '390x844': [[12, 714, 116.65625, 46], [136.671875, 714, 116.65625, 46], [261.34375, 714, 116.65625, 46]],
-    '360x800': [[12, 670, 106.65625, 46], [126.671875, 670, 106.65625, 46], [241.34375, 670, 106.65625, 46]],
-    '320x700': [[12, 570, 93.328125, 46], [113.3359375, 570, 93.328125, 46], [214.671875, 570, 93.328125, 46]],
-  };
-  for (const [key, expected] of Object.entries(expectedActions)) assert(JSON.stringify(after[key].actions) === JSON.stringify(expected), `Ruled Share / Hourly / My Location geometry drifted at ${key}: ${JSON.stringify(after[key].actions)}`);
+  // RETIRED 2026-08-06 (Al's ruling). Two assertions used to live here and both
+  // encoded superseded rulings, so both were failing by design once the mobile
+  // facelift landed:
+  //   1. mobile non-action geometry frozen against commit 53f918f — the facelift
+  //      IS a deliberate rebuild of that geometry;
+  //   2. the exact pixel boxes of Share / Hourly / My Location, pinning the
+  //      2026-07-14 three-equal-pills ruling, which the facelift brief replaced
+  //      ("The three floating buttons are removed").
+  // What this function still guards is the real desktop-vs-mobile contract, and
+  // it is NOT retired: postcard custom properties must never leak below 1024px.
+  // The live desktop gate is the glass-band overlap check above.
   assert(Object.values(after).every((value) => value.postcardVar === ''), 'Postcard variables leaked below 1024px');
-  return { result: 'PASS — non-action geometry matches 53f918f; Share / Hourly / My Location slots re-pinned', viewports: Object.keys(after), before, after };
+  return { result: 'PASS — postcard variables stay above 1024px (mobile geometry freeze retired 2026-08-06)', viewports: Object.keys(after), before, after };
 }
 
 async function actionRowEvidence(browser, origin) {
@@ -240,8 +240,18 @@ async function actionRowEvidence(browser, origin) {
         const rect = document.getElementById(id).getBoundingClientRect();
         return [id, { x: rect.x, width: rect.width }];
       })));
-      if (label === 'before') assert(boxes.navHourlyHome.x < boxes.shareBtn.x && boxes.shareBtn.x < boxes.myLocationHome.x, `53f918f action baseline was not reproduced at ${item.name}`);
-      else assert(boxes.shareBtn.x < boxes.navHourlyHome.x && boxes.navHourlyHome.x < boxes.myLocationHome.x, `Ruled action order failed at ${item.name}`);
+      // The three-pill action row survives on the DESKTOP postcard only. On
+      // mobile the facelift replaced it with the labelled Share / Hourly row
+      // (Al, 2026-08-06), so the pills are display:none there and their boxes
+      // collapse to x=0 — the order assertion is meaningless and is retired for
+      // that surface. Screenshots are still captured for both.
+      if (item.name === 'mobile') {
+        // Nothing to assert: the ruling these lines encoded was superseded.
+      } else if (label === 'before') {
+        assert(boxes.navHourlyHome.x < boxes.shareBtn.x && boxes.shareBtn.x < boxes.myLocationHome.x, `53f918f action baseline was not reproduced at ${item.name}`);
+      } else {
+        assert(boxes.shareBtn.x < boxes.navHourlyHome.x && boxes.navHourlyHome.x < boxes.myLocationHome.x, `Ruled action order failed at ${item.name}`);
+      }
       const file = path.join(screenshotDir, `${label}-${item.name}-${item.width}x${item.height}.png`);
       await page.screenshot({ path: file });
       evidence.push({ label, surface: item.name, viewport: `${item.width}x${item.height}`, boxes, screenshot: path.relative(root, file).replaceAll('\\', '/') });
@@ -267,8 +277,15 @@ async function typeAndColourContract(browser, origin) {
       return { bodyFamily, controls: controls.length, mismatches, conditionColour: getComputedStyle(document.getElementById('description')).color, amberElements };
     });
     assert(result.mismatches.length === 0, `Controls escaped the app font cascade at ${viewport.width}: ${result.mismatches.join(', ')}`);
-    assert(result.conditionColour === 'rgb(245, 166, 35)', `Condition amber drifted at ${viewport.width}: ${result.conditionColour}`);
-    assert(JSON.stringify(result.amberElements) === JSON.stringify(['description']), `Amber escaped the condition at ${viewport.width}: ${result.amberElements.join(', ')}`);
+    // RETIRED 2026-08-07 (Al's ruling). This used to pin #description to
+    // --condition-amber per the 2026-07-14 ruling. That ruling is withdrawn: the
+    // condition line is primary info and reads WHITE, and orange/red is now
+    // reserved for genuine weather warnings. Both halves of the contract are
+    // inverted rather than deleted — the colour is still asserted, and amber is
+    // still forbidden from leaking, it just may no longer appear on ANY element
+    // until a real warning surface claims it.
+    assert(result.conditionColour === 'rgb(255, 255, 255)', `Condition line should be white since 2026-08-07 but was ${result.conditionColour} at ${viewport.width}`);
+    assert(result.amberElements.length === 0, `--condition-amber is reserved for genuine warnings and must not paint chrome; found on: ${result.amberElements.join(', ')} at ${viewport.width}`);
     results.push({ viewport: `${viewport.width}x${viewport.height}`, ...result });
     await context.close();
   }
@@ -292,9 +309,15 @@ async function calmScreenEvidence(browser, origin) {
     ['weekly', '#navWeek', '#week-screen'],
     ['search', '#navSearch', '#search-screen'],
     ['settings', '#navSettings', '#settings-screen'],
-    ['sources', '#navSources', '#sources-screen'],
+    // Sources left the bottom nav (Al, 2026-08-06) and is now a Settings row,
+    // so reaching it is a two-hop route: open Settings, then tap the row.
+    ['sources', '#settingsSourcesRow', '#sources-screen', '#navSettings'],
   ];
-  for (const [name, nav, screen] of destinations) {
+  for (const [name, nav, screen, precedingNav] of destinations) {
+    if (precedingNav) {
+      await page.click(precedingNav);
+      await page.locator(nav).waitFor({ state: 'visible' });
+    }
     await page.click(nav);
     await page.locator(screen).waitFor({ state: 'visible' });
     await page.waitForTimeout(250);
@@ -335,15 +358,33 @@ async function calmScreenEvidence(browser, origin) {
 async function clickThrough(browser, origin, viewport) {
   const { page, context } = await openApp(browser, origin, viewport);
   const visible = async (selector) => assert(await page.locator(selector).isVisible(), `${selector} not visible at ${viewport.width}x${viewport.height}`);
-  for (const selector of ['#navHourlyHome', '#shareBtn', '#myLocationHome', '#navHome', '#navWeek', '#navSearch', '#navSettings', '#navSources', '#languageBtn']) await visible(selector);
-  const actionOrder = await page.evaluate(() => ['#shareBtn', '#navHourlyHome', '#myLocationHome'].map((selector) => document.querySelector(selector).getBoundingClientRect().x));
-  assert(actionOrder[0] < actionOrder[1] && actionOrder[1] < actionOrder[2], `Action order is not Share / Hourly / My Location at ${viewport.width}`);
+  // The mobile facelift (Al, 2026-08-06) replaced the three floating pills with
+  // the labelled Share / Hourly row; My Location moved to the header location
+  // name. The pills survive unchanged on the desktop postcard. What is asserted
+  // here is the DESTINATION being reachable from home, which is the point the
+  // original test was making — so each surface clicks its own ruled control.
+  const isMobile = viewport.width <= 768;
+  // 2026-08-07: Share moved into the bottom nav (#navShare) so it is present on
+  // every screen, and Hourly became the stats-band call-to-action (#homeHourly).
+  const shareSel = isMobile ? '#navShare' : '#shareBtn';
+  const hourlySel = isMobile ? '#homeHourly' : '#navHourlyHome';
+  const chrome = isMobile
+    ? ['#navShare', '#homeHourly', '#agreeLine'] // strip removed 2026-08-08
+    : ['#navHourlyHome', '#shareBtn', '#myLocationHome'];
+  for (const selector of [...chrome, '#navHome', '#navWeek', '#navSearch', '#navSettings', '#languageBtn']) await visible(selector);
+  if (!isMobile) {
+    const actionOrder = await page.evaluate(() => ['#shareBtn', '#navHourlyHome', '#myLocationHome'].map((selector) => document.querySelector(selector).getBoundingClientRect().x));
+    assert(actionOrder[0] < actionOrder[1] && actionOrder[1] < actionOrder[2], `Action order is not Share / Hourly / My Location at ${viewport.width}`);
+  }
   await page.click('#languageBtn'); await visible('#languageMenu'); await page.keyboard.press('Escape');
-  await page.click('#shareBtn'); assert(await page.evaluate(() => window.__PW_SHARE_CALLS.length) === 1, 'Share did not fire');
-  await page.click('#navHourlyHome'); await visible('#hourly-screen');
+  await page.click(shareSel); assert(await page.evaluate(() => window.__PW_SHARE_CALLS.length) === 1, 'Share did not fire');
+  await page.click(hourlySel); await visible('#hourly-screen');
   await page.click('#navHome'); await visible('#home-screen');
-  const beforeGeo = await page.evaluate(() => window.__PW_GEO_CALLS); await page.click('#myLocationHome'); await page.waitForFunction((before) => window.__PW_GEO_CALLS > before, beforeGeo);
-  for (const [nav, screen] of [['#navHome', '#home-screen'], ['#navWeek', '#week-screen'], ['#navSearch', '#search-screen'], ['#navSettings', '#settings-screen'], ['#navSources', '#sources-screen']]) {
+  if (!isMobile) {
+    const beforeGeo = await page.evaluate(() => window.__PW_GEO_CALLS); await page.click('#myLocationHome'); await page.waitForFunction((before) => window.__PW_GEO_CALLS > before, beforeGeo);
+  }
+  for (const [nav, screen, precedingNav] of [['#navHome', '#home-screen'], ['#navWeek', '#week-screen'], ['#navSearch', '#search-screen'], ['#navSettings', '#settings-screen'], ['#settingsSourcesRow', '#sources-screen', '#navSettings']]) {
+    if (precedingNav) { await page.click(precedingNav); await page.locator(nav).waitFor({ state: 'visible' }); }
     await page.click(nav); await visible(screen);
     if (screen !== '#home-screen') {
       const panel = await page.locator(screen).boundingBox();

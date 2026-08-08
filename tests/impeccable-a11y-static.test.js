@@ -11,7 +11,11 @@ describe('Impeccable accessibility hardening', () => {
 
   it('announces factual weather updates without making witty copy a live region', () => {
     expect(html()).toMatch(/id="weatherStatus"[^>]*role="status"[^>]*aria-live="polite"/);
-    expect(html()).toMatch(/<p id="headline" class="headline">Loading…<\/p>/);
+    // The class list grew (hero-caption, mobile facelift) — the assertion that
+    // matters is that the witty line stays a <p> OUTSIDE the role=status region,
+    // so it is never announced as a factual weather update.
+    expect(html()).toMatch(/<p id="headline" class="headline[^"]*">Loading…<\/p>/);
+    expect(html()).not.toMatch(/id="weatherStatus"[\s\S]*?id="headline"[\s\S]*?<\/div>\s*<div id="feelsLine"/);
   });
 
   it('adds solid byline text and a localized home text scrim for photo contrast', () => {
