@@ -21,7 +21,10 @@ describe('search panel my-location entry point', () => {
     expect(buttonIndex).toBeGreaterThan(-1);
     expect(inputIndex).toBeGreaterThan(-1);
     expect(buttonIndex).toBeLessThan(inputIndex);
-    expect(source).toMatch(/id="useMyLocationBtn"[^>]*class="use-location-btn"[\s\S]*📍[\s\S]*Use my location/);
+    // M5: the 📍 emoji became the icon family's drawn pin. Asserted at the same
+    // strength — the button still carries an icon BEFORE its label, and the
+    // icon is a family member (24-unit box, currentColor, weight 2).
+    expect(source).toMatch(/id="useMyLocationBtn"[^>]*class="use-location-btn"[\s\S]*viewBox="0 0 24 24"[\s\S]*stroke="currentColor"[\s\S]*stroke-width="2"[\s\S]*Use my location/);
     expect(css()).toMatch(/\.use-location-btn\s*{/);
   });
 
@@ -51,7 +54,10 @@ describe('search panel my-location entry point', () => {
     // (Supersedes the earlier "no my-location button on home" guard.)
     const source = html();
     expect(source).toMatch(/id="myLocationHome"[^>]*class="my-location-btn"/);
-    expect(source).toMatch(/id="myLocationHome"[\s\S]*📍/);
+    // M5: drawn pin, not 📍 — and the label re-render in app.js has to keep it,
+    // because updateUILanguage rewrites this button's whole contents.
+    expect(source).toMatch(/id="myLocationHome"[\s\S]*?class="pw-icon"/);
+    expect(app()).toMatch(/myLocationHome\.innerHTML\s*=\s*`\$\{weatherIconSvg\('pin'/);
     expect(css()).toMatch(/\.my-location-btn\s*\{/);
     expect(app()).toMatch(/const myLocationHome\s*=\s*\$\('#myLocationHome'\)/);
     expect(app()).toMatch(/myLocationHome\?\.addEventListener\('click'[\s\S]*getCurrentLocation/);

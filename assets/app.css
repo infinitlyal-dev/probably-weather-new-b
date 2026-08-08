@@ -1,12 +1,39 @@
 :root {
   --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* ── The colour system (M5) ────────────────────────────────────────────────
+     YELLOW is brand and primary action — nothing else.
+     ORANGE / RED are genuine warnings — nothing else.
+     BLUE is rain data, used sparingly.
+     WHITE is primary information; --ink-2 is the one secondary grey.
+     Every literal in this file that broke one of those rules was retired into
+     the tokens below, so a future colour can only enter through this block. */
   --brand-gold: #ffd700;
+  /* The two stops of the brand gradient (logo, install chrome). They are the
+     SAME yellow family as --brand-gold — three hex literals for one idea was
+     the drift M5 found; these are now the only two. */
+  --brand-gold-1: #ffdd44;
+  --brand-gold-2: #ffaa00;
+  /* Ink on gold: every gold surface carries this, never white. */
+  --on-gold: #1a1a2e;
+  /* Warnings. --warn-high is the "pay attention" step, --warn-max the severe
+     one. Used by UV high/extreme, the heat temperature step and the Cape
+     Doctor banner — and by nothing that is not a warning. */
+  --warn-high: #ff9800;
+  --warn-max: #f44336;
+  /* Rain. ONE blue in the app, and it only ever means precipitation. */
+  --rain-blue: #4a9eff;
+  /* Cold temperatures. Deliberately a different hue from --rain-blue so a cold
+     reading can never be misread as a wet one. */
+  --cold-blue: #7ec8e3;
   /* Two corner radii for the whole app, no third (facelift brief). Defined here
-     rather than inside the mobile block so shared components can honour them. */
+     rather than inside the mobile block so shared components can honour them.
+     Exempt, because they are shapes rather than corner treatments: 0, 50%
+     circles, and 999px pills. */
   --r-lg: 20px;
   --r-sm: 10px;
   /* Owner ruling 2026-07-14: amber is semantic, not general brand chrome.
-     Only a weather condition label may use this token; brand accents use gold. */
+     Retired from the in-app condition label by the 2026-08-07 white ruling;
+     the low-agreement dot is the one surface that still carries it. */
   --condition-amber: #f5a623;
   --focus-ring: #ffffff;
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
@@ -63,7 +90,7 @@ button,
   color: #fff;
   text-decoration: none;
   z-index: 9999;
-  border-radius: 0 0 4px 0;
+  border-radius: 0 0 var(--r-sm) 0;
 }
 .skip-link:focus {
   top: 0;
@@ -187,7 +214,7 @@ body:not(.home-active) .language-picker {
   padding: 8px;
   background: rgba(0,0,0,0.72);
   border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 16px 40px rgba(0,0,0,0.35);
@@ -201,7 +228,7 @@ body:not(.home-active) .language-picker {
   width: 100%;
   justify-content: flex-start;
   border: 0;
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   padding: 10px 12px;
   background: transparent;
   color: #fff;
@@ -380,7 +407,7 @@ body:not(.home-active) .language-picker {
   background: rgba(255,255,255,0.12);
   -webkit-backdrop-filter: blur(16px) saturate(120%);
   backdrop-filter: blur(16px) saturate(120%);
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.12);
@@ -429,7 +456,7 @@ body:not(.home-active) .language-picker {
   background: currentColor;
   opacity: 0.5;
   margin-top: 5px;
-  border-radius: 2px;
+  border-radius: 999px;
   transition: width 0.3s;
 }
 
@@ -472,7 +499,7 @@ body:not(.home-active) .language-picker {
   max-height: 70vh;
   overflow-y: auto;
   padding: 1rem;
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   background: var(--panel-bg);
   backdrop-filter: blur(16px) saturate(120%);
   -webkit-backdrop-filter: blur(16px) saturate(120%);
@@ -578,7 +605,7 @@ body:not(.home-active) .language-picker {
 .daily-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   padding: 1rem;
   min-width: 160px;
   gap: 0.5rem;
@@ -606,8 +633,10 @@ body.ui-dark .daily-card {
 .precip-bar {
   height: calc(var(--prob) * 1%);
   width: 4px;
-  background: #3b82f6;
-  border-radius: 4px;
+  background: var(--rain-blue);
+  /* Shorter than --r-sm, so the token would be clamped into a capsule anyway.
+     999px states the pill outright rather than pretending to a corner token. */
+  border-radius: 999px;
   align-self: flex-end;
 }
 
@@ -670,7 +699,7 @@ body.ui-dark .daily-card {
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   margin-bottom: 4px;
 }
 
@@ -692,12 +721,14 @@ body.ui-dark .daily-card {
 }
 
 .hourly-row .h-icon {
-  /* Bug 2a (2026-05-24): 1.2rem → 1.45rem. The fog glyph 🌫️ renders as a
-     faint low-contrast band on several iOS/Android/Windows emoji fonts and
-     was barely legible at 1.2rem. The bump lifts every weather glyph to a
-     comfortable read in the dense hourly row — fog benefits most. */
-  font-size: 1.45rem;
-  text-align: center;
+  /* M5 retired the emoji this slot used to size with font-size. Bug 2a
+     (2026-05-24) raised it to 1.45rem because the fog emoji rendered as a faint
+     low-contrast band on several device emoji fonts — a drawn icon at a fixed
+     22px has no such problem, and it is the same 22px on every device. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
 }
 
 .hourly-row .h-temp {
@@ -720,9 +751,12 @@ body.ui-dark .daily-card {
   text-align: right;
   color: #fff;
 }
-.hourly-row .h-uv.uv-mod { color: #fdd835; }
-.hourly-row .h-uv.uv-high { color: #ff9800; }
-.hourly-row .h-uv.uv-extreme { color: #f44336; }
+/* UV severity. Moderate UV is not a warning, so it lost its yellow (yellow is
+   brand) and reads as ordinary white information; high and extreme keep the two
+   warning colours, which is the whole reason the colour rule reserves them. */
+.hourly-row .h-uv.uv-mod { color: #fff; }
+.hourly-row .h-uv.uv-high { color: var(--warn-high); }
+.hourly-row .h-uv.uv-extreme { color: var(--warn-max); }
 
 /* Daily row styling */
 .daily-row {
@@ -735,7 +769,7 @@ body.ui-dark .daily-card {
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   margin-bottom: 4px;
 }
 
@@ -757,10 +791,11 @@ body.ui-dark .daily-card {
 }
 
 .daily-row .d-icon {
-  /* Bug 2a (2026-05-24): matched to .h-icon — see that rule. Keeps the fog
-     glyph legible on the week list too. */
-  font-size: 1.45rem;
-  text-align: center;
+  /* Matched to .h-icon — see that rule. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
 }
 
 .daily-row .d-high {
@@ -790,7 +825,8 @@ body.ui-dark .daily-card {
   text-transform: uppercase;
   background: rgba(255,255,255,0.15);
   padding: 2px 6px;
-  border-radius: 4px;
+  /* A 16px-tall chip: pill, not a corner token (see .precip-bar). */
+  border-radius: 999px;
   margin-left: 6px;
   vertical-align: middle;
 }
@@ -822,7 +858,10 @@ body.ui-dark .daily-card {
 }
 
 .result-icon {
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
 }
 
 
@@ -867,7 +906,7 @@ body.ui-dark .daily-card {
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.35);
   background: var(--brand-gold);
-  color: #15100a;
+  color: var(--on-gold);
   font-weight: 800;
   font-size: 1rem;
   cursor: pointer;
@@ -895,8 +934,8 @@ body.ui-dark .daily-card {
 }
 
 .use-location-btn.save-secondary.is-saved {
-  color: #FFDD44;
-  border-color: rgba(255, 221, 68, 0.55);
+  color: var(--brand-gold);
+  border-color: rgba(255, 215, 0, 0.55);
 }
 
 .search-body {
@@ -935,7 +974,7 @@ body.ui-dark .daily-card {
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.22);
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   color: inherit;
 }
 
@@ -956,16 +995,16 @@ body.ui-dark .daily-card {
   gap: 10px;
 }
 
+/* The favourite toggle is a drawn star (M5), outline when unsaved and filled
+   when saved. Both states are brand gold — saving is a primary action. */
 .fav-star {
   background: none;
   border: none;
   cursor: pointer;
-  color: #f5c542;
-  font-size: 1.1rem;
-}
-
-.fav-star.is-fav {
-  color: #f5c542;
+  color: var(--brand-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fav-icon {
@@ -1000,7 +1039,7 @@ body.ui-dark .daily-card {
   border: 1px solid rgba(255,255,255,0.25);
   color: inherit;
   padding: 0.5rem 1rem;
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -1082,7 +1121,7 @@ body.ui-dark .daily-card {
 .settings-screen .settings-option select {
   background: rgba(255,255,255,0.12);
   border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   color: inherit;
   font-size: 0.9rem;
 }
@@ -1130,7 +1169,7 @@ body.ui-dark .daily-card {
 .settings-option select {
   min-block-size: 44px;
   padding: 0.8rem 2.2rem 0.8rem 1rem;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   border: 1px solid rgba(0,0,0,0.08);
   background: rgba(255,255,255,0.95);
   color: #111;
@@ -1151,7 +1190,7 @@ body.ui-dark .daily-card {
   width: 50px;
   height: 30px;
   background: #c7c7c7;
-  border-radius: 15px;
+  border-radius: 999px;
   position: relative;
   cursor: pointer;
   border: 1px solid rgba(0,0,0,0.1);
@@ -1194,7 +1233,7 @@ select option {
   background: rgba(0,0,0,0.8);
   color: white;
   padding: 2rem 3rem;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   font-size: 1.2rem;
   z-index: 1000;
   backdrop-filter: blur(10px);
@@ -1280,7 +1319,7 @@ select option {
   height: 16px;
   border-radius: 50%;
   border: 2px solid rgba(255, 221, 68, 0.35);
-  border-top-color: #FFDD44;
+  border-top-color: var(--brand-gold-1);
   display: inline-block;
   animation: ptr-spin 0.9s linear infinite;
   animation-play-state: paused;
@@ -1291,7 +1330,7 @@ select option {
 }
 .ptr-affordance.ptr-armed .ptr-spinner {
   border-color: rgba(255, 221, 68, 0.6);
-  border-top-color: #FFDD44;
+  border-top-color: var(--brand-gold-1);
 }
 @keyframes ptr-spin {
   from { transform: rotate(0deg); }
@@ -1306,7 +1345,7 @@ select option {
   background: rgba(0,0,0,0.9);
   color: white;
   padding: 1rem 2rem;
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   font-size: 1rem;
   z-index: 1001;
   opacity: 0;
@@ -1471,7 +1510,7 @@ select option {
   color: currentColor;
   opacity: 0.75;
   padding: 0.75rem 1.5rem;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
@@ -1494,7 +1533,7 @@ select option {
   width: 100%;
   max-width: 500px;
   padding: 1rem;
-  border-radius: 30px;
+  border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.3);
   background: rgba(255,255,255,0.1);
   color: currentColor;
@@ -1513,7 +1552,7 @@ select option {
   border: 1px solid rgba(255,255,255,0.3);
   color: currentColor;
   padding: 0.75rem 1.5rem;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -1563,7 +1602,7 @@ select option {
   border: 1px solid rgba(255,255,255,0.15);
   padding: 1rem;
   margin: 0.5rem 0;
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   display: flex;
@@ -1624,7 +1663,7 @@ select option {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   padding: 1rem;
   text-align: center;
   display: flex;
@@ -1677,7 +1716,7 @@ select option {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   padding: 1rem;
   text-align: center;
   display: flex;
@@ -1706,7 +1745,7 @@ select option {
   opacity: 0.85;
   padding: 0.2rem 0.5rem;
   background: rgba(255,255,255,0.15);
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   margin: 0.25rem auto;
 }
 
@@ -1847,16 +1886,26 @@ main#home-screen.main #confidence {
 }
 
 /* ========== CONDITION-SPECIFIC TEXT EFFECTS ========== */
-/* Each class has: color glow + dark shadow for contrast on any background */
-.hero-storm { color: #9932cc; text-shadow: 0 0 15px #9932cc, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-rain { color: #4682b4; text-shadow: 0 0 10px #4682b4, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-heat { color: #ff6600; text-shadow: 0 0 10px #ff6600, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-cold { color: #00bfff; text-shadow: 0 0 10px #00bfff, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-wind { color: #a9a9a9; text-shadow: 0 0 8px #a9a9a9, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-uv { color: #ffd700; text-shadow: 0 0 10px #ffd700, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-clear { color: #ffffff; text-shadow: 0 0 5px #ffffff, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-cloudy { color: #c0c0c0; text-shadow: 0 0 5px #c0c0c0, 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; }
-.hero-fog { color: #a0a0a0; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); font-weight: 900; filter: blur(0.5px); }
+/* M5: these nine classes used to paint the hero temperature and caption in a
+   per-condition colour with a matching glow — purple for storm, steel blue for
+   rain, orange for heat, gold for UV, grey for wind/cloud/fog. The mobile
+   facelift already neutralised them below 769px and the postcard overrides them
+   above 1023px, which left ONE live band (769-1023px) still painting purple and
+   orange onto primary information. That breaks every rule in the colour system
+   at once, so the colour is gone here rather than patched per breakpoint. The
+   condition line still carries the meaning, in words.
+   The classes are kept (renderHome stamps them, and the two breakpoints below
+   and above key off them) — they now only carry the weight and the shadow. */
+.hero-storm, .hero-rain, .hero-heat, .hero-cold, .hero-wind,
+.hero-uv, .hero-clear, .hero-cloudy, .hero-fog {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  font-weight: 900;
+}
+/* Fog's half-pixel softening is a TEXTURE, not a colour, so it survives the
+   colour sweep — dropping it would have been M5 changing something outside its
+   own scope. */
+.hero-fog { filter: blur(0.5px); }
 
 /* ========== HERO FADE-IN ANIMATION ========== */
 @keyframes heroFadeIn {
@@ -1901,11 +1950,17 @@ main#home-screen.main #confidence {
   animation-delay: 0.3s;
 }
 
-/* ========== TEMPERATURE COLOR CLASSES ========== */
-.temp-hot { color: #ff6600; }
-.temp-warm { color: #ffaa00; }
-.temp-cold { color: #00bfff; }
-.temp-freezing { color: #87ceeb; }
+/* ========== TEMPERATURE COLOR CLASSES ==========
+   Four literals became two tokens plus white:
+   · hot (>=35C) is a genuine heat warning, so it keeps orange — the SAME
+     orange as UV-high, not a second one.
+   · warm (28-34C) was gold. Gold is brand and primary action in this app, and
+     28C is neither, so a warm reading is now plain primary-info white.
+   · cold and freezing share ONE blue, deliberately a different hue from
+     --rain-blue so a cold number can never be misread as a wet one. */
+.temp-hot { color: var(--warn-high); }
+.temp-warm { color: #fff; }
+.temp-cold, .temp-freezing { color: var(--cold-blue); }
 
 /* ========== WEATHER ICONS ========== */
 .weather-icon { font-size: 1.4em; margin-right: 4px; }
@@ -2310,7 +2365,7 @@ main#home-screen.main #confidence {
     text-align: right;
     padding: 8px 12px;
     margin-bottom: 0;
-    border-radius: 12px;
+    border-radius: var(--r-sm);
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
@@ -2354,7 +2409,7 @@ main#home-screen.main #confidence {
     font-size: 12.5px;
     font-weight: 700;
     border: none;
-    border-radius: 23px;
+    border-radius: 999px;
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
@@ -2382,8 +2437,8 @@ main#home-screen.main #confidence {
 
   /* Hourly: the ONE gold primary (same #FFDD44 → #FFAA00 as install banner). */
   .nav-hourly-pill {
-    color: #1a1a2e;
-    background: linear-gradient(135deg, #FFDD44, #FFAA00);
+    color: var(--on-gold);
+    background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
     box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
@@ -2477,7 +2532,7 @@ main#home-screen.main #confidence {
     font-size: 12.5px;
     font-weight: 700;
     border: none;
-    border-radius: 23px;
+    border-radius: 999px;
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
@@ -2499,8 +2554,8 @@ main#home-screen.main #confidence {
   .my-location-btn:active { opacity: 0.7; }
 
   .nav-hourly-pill {
-    color: #1a1a2e;
-    background: linear-gradient(135deg, #FFDD44, #FFAA00);
+    color: var(--on-gold);
+    background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
     box-shadow: 0 4px 14px rgba(255,170,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
@@ -2571,7 +2626,9 @@ main#home-screen.main #confidence {
     object-position: center 25%;
     border: 16px solid #f6f2e8;
     border-bottom-width: 110px;
-    border-radius: 2px;
+    /* A print has square corners. 0 is exempt from the two-radius discipline;
+       the old 2px was a third token doing nothing the eye can see. */
+    border-radius: 0;
     background: #f6f2e8;
     filter: none;
     transform: rotate(-2.4deg);
@@ -2873,7 +2930,7 @@ main#home-screen.main #confidence {
     margin: 0;
     padding: 10px 12px;
     border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 14px;
+    border-radius: var(--r-sm);
     background: rgba(10,10,12,0.48);
     backdrop-filter: blur(12px) saturate(115%);
     -webkit-backdrop-filter: blur(12px) saturate(115%);
@@ -3030,7 +3087,7 @@ body:has(#capeWindBanner:not(.hidden)) .container {
   -webkit-backdrop-filter: blur(8px);
   color: #fff;
   padding: 6px 16px;
-  border-radius: 20px;
+  border-radius: var(--r-lg);
   font-size: 0.75rem;
   z-index: 150;
   opacity: 0;
@@ -3063,7 +3120,7 @@ body:has(#capeWindBanner:not(.hidden)) .container {
   background: rgba(255,255,255,0.1);
   color: #fff;
   border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 6px;
+  border-radius: var(--r-sm);
   padding: 6px 12px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -3095,7 +3152,7 @@ body:has(#capeWindBanner:not(.hidden)) .container {
   background: rgba(0,0,0,0.4);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   padding: 18px;
   display: flex;
   flex-direction: column;
@@ -3107,8 +3164,9 @@ body:has(#capeWindBanner:not(.hidden)) .container {
   gap: 12px;
 }
 .ds-icon {
-  font-size: 2.2rem;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
 }
 .ds-condition {
   font-size: 1.25rem;
@@ -3213,7 +3271,7 @@ body.standalone-mode .install-footer-link {
   gap: 10px;
   min-height: 48px;
   padding: 8px 12px;
-  border-radius: 14px;
+  border-radius: var(--r-sm);
   background: var(--panel-bg);
   backdrop-filter: blur(16px) saturate(120%);
   -webkit-backdrop-filter: blur(16px) saturate(120%);
@@ -3239,8 +3297,8 @@ body.standalone-mode .install-footer-link {
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #FFDD44, #FFAA00);
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
   box-shadow: 0 2px 6px rgba(255,170,0,0.35);
 }
 .install-banner-text {
@@ -3257,10 +3315,10 @@ body.standalone-mode .install-footer-link {
   gap: 6px;
 }
 .install-banner-install {
-  background: linear-gradient(135deg, #FFDD44, #FFAA00);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
+  color: var(--on-gold);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   padding: 10px 16px;
   font-size: 0.92rem;
   font-weight: 700;
@@ -3275,7 +3333,7 @@ body.standalone-mode .install-footer-link {
   background: none;
   color: rgba(255,255,255,0.75);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   padding: 10px 12px;
   font-size: 0.85rem;
   font-weight: 500;
@@ -3311,8 +3369,8 @@ body.standalone-mode .install-footer-link {
   background: rgba(20,20,32,0.95);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+  border-top-left-radius: var(--r-lg);
+  border-top-right-radius: var(--r-lg);
   padding: 20px 20px calc(24px + env(safe-area-inset-bottom));
   color: #FFF8F0;
   transform: translateY(100%);
@@ -3322,7 +3380,7 @@ body.standalone-mode .install-footer-link {
 .install-modal.visible .install-modal-card { transform: translateY(0); }
 @media (min-width: 600px) {
   .install-modal { align-items: center; }
-  .install-modal-card { border-radius: 18px; }
+  .install-modal-card { border-radius: var(--r-lg); }
 }
 .install-modal-card h3 {
   margin: 0 0 14px;
@@ -3339,8 +3397,8 @@ body.standalone-mode .install-footer-link {
 #iosInstallModal .install-modal-card {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: var(--r-lg);
+  border-bottom-right-radius: var(--r-lg);
   padding: 20px 20px 24px;
   transform: translateY(-100%);
 }
@@ -3350,7 +3408,7 @@ body.standalone-mode .install-footer-link {
 #iosInstallModal.visible .install-modal-card { transform: translateY(0); }
 @media (min-width: 600px) {
   #iosInstallModal { align-items: center; padding-top: 0; }
-  #iosInstallModal .install-modal-card { border-radius: 18px; }
+  #iosInstallModal .install-modal-card { border-radius: var(--r-lg); }
 }
 .install-modal-header {
   display: flex;
@@ -3384,7 +3442,7 @@ body.standalone-mode .install-footer-link {
 }
 .install-modal-x:hover { background: rgba(255,255,255,0.12); color: #fff; }
 .install-modal-x:active { transform: scale(0.94); }
-.install-modal-x:focus-visible { outline: 2px solid #FFD466; outline-offset: 2px; }
+.install-modal-x:focus-visible { outline: 2px solid var(--brand-gold-1); outline-offset: 2px; }
 /* Confirmation line below the 3 steps — emphasized via gold tint and
    weight, but distinct from the numbered instructions: no number, no
    icon, slightly larger than the auxiliary hint below. */
@@ -3392,7 +3450,7 @@ body.standalone-mode .install-footer-link {
   margin: 4px 0 12px;
   font-size: 0.95rem;
   line-height: 1.4;
-  color: #FFE08A;
+  color: var(--brand-gold-1);
   font-weight: 500;
 }
 /* Auxiliary hint at the bottom of the iOS Safari modal — for users who
@@ -3430,8 +3488,8 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FFDD44, #FFAA00);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
+  color: var(--on-gold);
   font-weight: 700;
   font-size: 0.9rem;
   display: inline-flex;
@@ -3445,28 +3503,29 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   background: rgba(255,255,255,0.08);
-  color: #FFD466;
+  color: var(--brand-gold-1);
 }
 /* Inline pill for native-iOS UI labels (Share, Add to Home Screen, Add) that
    stay in English while the surrounding instruction is translated. */
 .install-os-label {
   display: inline-block;
   background: rgba(255, 221, 68, 0.14);
-  color: #FFE08A;
+  color: var(--brand-gold-1);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.92em;
   font-weight: 600;
   padding: 1px 6px;
-  border-radius: 5px;
+  /* Same as .day-badge — a chip this short is a pill. */
+  border-radius: 999px;
   white-space: nowrap;
 }
 .install-modal-close {
-  background: linear-gradient(135deg, #FFDD44, #FFAA00);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
+  color: var(--on-gold);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
@@ -3478,7 +3537,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   background: rgba(255,255,255,0.08);
   color: #FFF8F0;
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
@@ -3497,7 +3556,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   display: block;
   background: rgba(0,0,0,0.4);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   padding: 8px 10px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85rem;
@@ -3562,7 +3621,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   backdrop-filter: blur(14px) saturate(120%);
   -webkit-backdrop-filter: blur(14px) saturate(120%);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   padding: 18px;
   display: flex;
   flex-direction: column;
@@ -3576,10 +3635,10 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 .install-card ul, .install-card ol { margin: 0; padding-left: 22px; }
 .install-card li { line-height: 1.5; margin-bottom: 4px; }
 .install-cta-btn {
-  background: linear-gradient(135deg, #FFDD44, #FFAA00);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
+  color: var(--on-gold);
   border: none;
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   padding: 14px 20px;
   font-size: 1.02rem;
   font-weight: 700;
@@ -3599,7 +3658,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   display: block;
   background: rgba(0,0,0,0.4);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   padding: 8px 10px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85rem;
@@ -3619,7 +3678,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   justify-content: center;
   padding: 12px;
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--r-sm);
 }
 .install-qr img { display: block; max-width: 100%; height: auto; }
 .install-already {
@@ -3645,9 +3704,9 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   font-size: 0.88rem;
   line-height: 1.45;
   padding: 10px 12px;
-  border-left: 3px solid #FFAA00;
+  border-left: 3px solid var(--brand-gold-2);
   background: rgba(255,170,0,0.08);
-  border-radius: 6px;
+  border-radius: var(--r-sm);
 }
 /* Secondary CTA — same shape as the primary gold button but quieter, so the
    Copy-link fallback doesn't compete visually with "Open in Chrome". */
@@ -3682,7 +3741,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   font-weight: 600;
   padding: 10px 14px;
   background: var(--panel-bg);
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   border: 1px solid rgba(255,255,255,0.08);
   list-style: none;
 }
@@ -3692,8 +3751,8 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   background: var(--panel-bg);
   border: 1px solid rgba(255,255,255,0.08);
   border-top: none;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: var(--r-sm);
+  border-bottom-right-radius: var(--r-sm);
   padding: 14px;
   margin: 0;
   line-height: 1.5;
@@ -3737,7 +3796,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   padding: 10px 14px;
   background: rgba(0,0,0,0.35);
   border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   font-size: 0.95rem;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -3771,7 +3830,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 }
 .pw-ad-slot {
   margin: 8px 0;
-  border-radius: 10px;
+  border-radius: var(--r-sm);
   overflow: hidden;
 }
 
@@ -3789,8 +3848,8 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #FFDD44, #FFAA00);
-  color: #1a1a2e;
+  background: linear-gradient(135deg, var(--brand-gold-1), var(--brand-gold-2));
+  color: var(--on-gold);
   border-radius: 999px;
   padding: 8px 8px 8px 16px;
   font-size: 0.9rem;
@@ -3808,7 +3867,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 }
 .version-update-action {
   background: rgba(0,0,0,0.18);
-  color: #1a1a2e;
+  color: var(--on-gold);
   border: none;
   border-radius: 999px;
   padding: 6px 14px;
@@ -3825,7 +3884,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 .version-update-dismiss {
   background: transparent;
   border: none;
-  color: #1a1a2e;
+  color: var(--on-gold);
   font-size: 1.4rem;
   line-height: 1;
   padding: 4px 8px;
@@ -4077,7 +4136,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 3px; min-inline-size: 0; padding: 8px 6px;
     border: 0; border-radius: var(--r-sm);
-    background: var(--brand-gold); color: #1a1a2e;
+    background: var(--brand-gold); color: var(--on-gold);
     font-size: 0.86rem; font-weight: 800; line-height: 1.1; cursor: pointer;
     box-shadow: 0 4px 14px rgba(255,215,0,0.22);
   }
@@ -4349,7 +4408,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   }
   .seg-control .seg-option.is-on {
     background: var(--brand-gold);
-    color: #1a1a2e;
+    color: var(--on-gold);
     font-weight: 800;
   }
   .seg-wide { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; width: 100%; }
@@ -4393,7 +4452,13 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     font-variant-numeric: tabular-nums;
   }
   .hourly-chart .chart-line { display: block; width: 100%; height: 46px; margin: 2px 0 4px; }
-  .hourly-chart .chart-icon { font-size: 0.9rem; }
+  .hourly-chart .chart-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    color: var(--ink-2);
+  }
   .hourly-chart .chart-sub { margin-top: 4px; }
   .hourly-chart .chart-dir {
     font-size: 0.62rem; font-weight: 700; color: var(--ink-2);
@@ -4430,7 +4495,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   .hourly-chart .chart-bar {
     width: 100%;
     border-radius: 0;
-    background: #4a9eff;
+    background: var(--rain-blue);
   }
 }
 
@@ -4544,7 +4609,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     gap: 8px;
     width: 100%;
     background: var(--brand-gold);
-    color: #1a1a2e;
+    color: var(--on-gold);
     border: 0;
     border-radius: var(--r-sm);
     padding: 13px;
@@ -4745,3 +4810,57 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     border-right: 2px solid var(--brand-gold);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FACELIFT M5 — ONE ICON FAMILY (all widths)
+   Every in-app platform emoji is now an inline SVG drawn to a single contract
+   (assets/weather-icons.js): 24-unit viewBox, currentColor stroke, weight 2,
+   round caps and joins. Deliberately NOT scoped to <=768px — an icon family
+   that only holds on mobile is not a family, and the >=769px frame rendered
+   exactly the same emoji.
+   ═════════════════════════════════════════════════════════════════════════ */
+.pw-icon {
+  /* Never squashed by a flex parent, and sitting on the text baseline in the
+     inline runs (toast, banner) rather than dropping below it. */
+  flex: none;
+  vertical-align: -0.18em;
+}
+
+/* The favourite toggle is icon-only, so it gets the centring box. Deliberately
+   the ONLY icon+label control given a `display` here: #myLocationHome and
+   .share-btn are hidden by `.share-btn, .my-location-btn { display: none }` and
+   re-shown per breakpoint, so an unscoped display on an ID selector at the end
+   of this file would out-specify that and leak the pill onto desktop — the M2
+   #navShare defect, repeated. Those buttons lay their icon out inline instead,
+   which is what .pw-icon's baseline nudge is for. */
+.fav-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The Cape Doctor banner is the one place in the app that is allowed to be
+   orange: a real wind warning. The icon rides with the sentence. */
+.cape-wind-banner #capeWindText {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+}
+
+/* The install banner icon sits on the gold gradient tile, so currentColor has
+   to be the ink-on-gold, not the inherited white. */
+.install-banner-icon { color: var(--on-gold); }
+
+/* The toast icon is inline with a text node, so it takes the baseline nudge
+   from .pw-icon and needs nothing else. */
+
+/* Below 481px the hourly table's icon column is 24px wide with a 2px gap. An
+   emoji glyph carried its own side bearings inside that column; a drawn icon
+   fills its box edge to edge, so at the default 22px it touched the time on one
+   side and the temperature on the other. Measured, not guessed: 18px restores
+   the breathing room the glyph used to have for free. */
+@media (max-width: 480px) {
+  .hourly-row .h-icon .pw-icon { width: 18px; height: 18px; }
+}
+

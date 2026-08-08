@@ -108,6 +108,7 @@ const CORE_ASSETS = [
   '/assets/weather-visuals.js',
   '/assets/image-picker.js',
   '/assets/weather-emoji.js',
+  '/assets/weather-icons.js',
   '/assets/share-url.js',
   '/assets/refresh-behaviour.js',
   '/assets/first-open-location.js',

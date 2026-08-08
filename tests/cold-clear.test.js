@@ -10,7 +10,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { deriveCondition, conditionKeyToVoteBucket } from '../api/weather.js';
-import { pickConditionEmojiForTime, __WEATHER_EMOJI_MAP } from '../assets/weather-emoji.js';
+import { pickConditionIconForTime, __WEATHER_ICON_MAP } from '../assets/weather-emoji.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 
 const baseClear = { desc: 'Clear sky', rainChance: 0, windKph: 5, cloudPct: 10, isDay: true };
@@ -195,25 +195,25 @@ describe('conditionKeyToVoteBucket', () => {
 });
 
 describe('weather-emoji — cold-clear', () => {
-  it('has a CONDITION_EMOJI_MAP entry for cold-clear', () => {
-    expect(__WEATHER_EMOJI_MAP['cold-clear']).toBeDefined();
-    expect(__WEATHER_EMOJI_MAP['cold-clear']).toHaveProperty('day');
-    expect(__WEATHER_EMOJI_MAP['cold-clear']).toHaveProperty('night');
+  it('has a CONDITION_ICON_MAP entry for cold-clear', () => {
+    expect(__WEATHER_ICON_MAP['cold-clear']).toBeDefined();
+    expect(__WEATHER_ICON_MAP['cold-clear']).toHaveProperty('day');
+    expect(__WEATHER_ICON_MAP['cold-clear']).toHaveProperty('night');
   });
 
   it('returns the cold-clear day emoji', () => {
-    expect(pickConditionEmojiForTime('cold-clear', true)).toBe('🥶');
+    expect(pickConditionIconForTime('cold-clear', true)).toBe('cold-clear');
   });
 
   it('returns the cold-clear night emoji', () => {
-    expect(pickConditionEmojiForTime('cold-clear', false)).toBe('🥶');
+    expect(pickConditionIconForTime('cold-clear', false)).toBe('cold-clear');
   });
 
   it('does not fall back to the default emoji', () => {
-    // Default pair is { day: '⛅', night: '☁️' } — if cold-clear ever falls
+    // Default pair is { day: 'cloud-sun', night: 'cloud' } — if cold-clear ever falls
     // through to that, the visual signal is wrong.
-    expect(pickConditionEmojiForTime('cold-clear', true)).not.toBe('⛅');
-    expect(pickConditionEmojiForTime('cold-clear', false)).not.toBe('☁️');
+    expect(pickConditionIconForTime('cold-clear', true)).not.toBe('cloud-sun');
+    expect(pickConditionIconForTime('cold-clear', false)).not.toBe('cloud');
   });
 });
 

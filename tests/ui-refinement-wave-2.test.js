@@ -52,10 +52,27 @@ describe('UI refinement wave 2', () => {
       // ...and #64b5f6 (only ever the rain title) is gone from the sheet.
       expect(css).not.toContain('#64b5f6');
     });
-    it('leaves the semantic cold-temperature blues untouched', () => {
+    it('keeps a semantic cold-temperature blue, now as the one cold token', () => {
+      // The intent of this guard is unchanged — blue left the HEADING role but
+      // must survive where it means "cold". M5 moved it from two literals onto
+      // one token, and that token must not be the rain blue: a cold reading and
+      // a wet one have to stay tellable apart.
       const css = appCss();
-      expect(css).toMatch(/\.temp-cold\s*\{\s*color:\s*#00bfff/);
-      expect(css).toMatch(/\.hero-cold\s*\{\s*color:\s*#00bfff/);
+      expect(css).toMatch(/\.temp-cold,\s*\.temp-freezing\s*\{\s*color:\s*var\(--cold-blue\)/);
+      expect(css).toMatch(/--cold-blue:\s*#[0-9a-f]{6}/i);
+      const cold = /--cold-blue:\s*(#[0-9a-f]{6})/i.exec(css)[1].toLowerCase();
+      const rain = /--rain-blue:\s*(#[0-9a-f]{6})/i.exec(css)[1].toLowerCase();
+      expect(cold).not.toBe(rain);
+    });
+    it('retires the per-condition hero glow colours (M5 colour discipline)', () => {
+      // .hero-cold used to be #00bfff and .hero-storm #9932cc, live in the
+      // 769-1023px band. Purple and steel blue are in no rule of the colour
+      // system, so the whole set is white now.
+      const css = appCss();
+      for (const literal of ['#9932cc', '#4682b4', '#a9a9a9', '#c0c0c0', '#a0a0a0']) {
+        expect(css, `${literal} is back in the sheet`).not.toContain(literal);
+      }
+      expect(css).toMatch(/\.hero-storm,[\s\S]{0,200}\.hero-fog\s*\{\s*color:\s*#fff/);
     });
   });
 

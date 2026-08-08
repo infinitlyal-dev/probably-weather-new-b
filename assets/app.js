@@ -9,7 +9,8 @@ import { WITTY_DAY_TAGS, eligibleWittyPool, resolveNightAwareCopyCondition } fro
 import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
-import { pickConditionEmojiForTime, pickHourlyEmoji, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
+import { pickConditionIconForTime, pickHourlyIcon, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
+import { weatherIconSvg, ICON_CONDITION } from './weather-icons.js';
 import { buildShareLink, sanitizeTelemetryUrl } from './share-url.js';
 import {
   FRESHNESS_MS,
@@ -311,7 +312,10 @@ document.addEventListener("DOMContentLoaded", () => {
       rain: { en: "Rain", af: "Reën", zu: "Imvula", xh: "Imvula", st: "Pula" },
       uv: { en: "UV", af: "UV", zu: "UV", xh: "UV", st: "UV" },
       feelsLike: { en: "Feels like", af: "Voel soos", zu: "Kuzwakala sengathi", xh: "Ingathi", st: "Ho utlwahala joalo ka" },
-      later: { en: "Later ⏰", af: "Later ⏰", zu: "Kamuva ⏰", xh: "Kamva ⏰", st: "Hamorao ⏰" },
+      // M5: the trailing alarm-clock emoji was a platform glyph inside a translated
+      // string — it cannot become an inline icon without putting markup in the copy
+      // bank, and the word already carries the meaning.
+      later: { en: "Later", af: "Later", zu: "Kamuva", xh: "Kamva", st: "Hamorao" },
       none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
       gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "ukuqhwithela komoya / izivuthuvuthu zomoya", st: "Meea e fokang ka sefutho" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakulindeleka", xh: "Akunakulindeleka", st: "Ha ho kgonehe" },
@@ -381,11 +385,13 @@ document.addEventListener("DOMContentLoaded", () => {
         xh: "ISILUMKISO SOMOYA",
         st: "TLHOKOMELISO YA MOEA"
       },
+      // M5: the trailing wind-gust emoji came off the first line in en/af/zu/xh —
+      // same reason as `later` above. The banner carries a drawn warning icon now.
       lines: {
-        en: ["Ag no, the tablecloth is out 💨", "Cape Doctor is doing rounds today", "Hold onto your hat, the Southeaster means business", "The Southeaster arrived uninvited — as always", "Wind's hectic — even the seagulls are walking"],
-        af: ["Ag nee, die tafeldoek is uit 💨", "Die Kaapse Dokter maak vandag huisbesoeke", "Hou jou hoed vas, die Suidooster bedoel sake", "Die Suidooster het ongenooid opgedaag — soos altyd", "Die wind is hectic — selfs die meeuë loop"],
-        zu: ["Yoh, ilaphu letafel liphumile 💨", "UDokotela waseKapa uyashayela namuhla", "Bamba isigqoko sakho, iSoutheaster iyasebenza", "Umoya waseNingizimu ufikile ungamenyiwe — njengenjwayelo", "Umoya unamandla — ngisho nezinkonjane ziyahamba"],
-        xh: ["Yhuu, ilaphu letafile liphumile 💨", "UGqirha waseKapa uyajikeleza namhlanje", "Bamba umnqwazi wakho, umoya waseMzantsi-Mpuma uzimisele namhlanje", "Umoya waseMzantsi-Mpuma ufike ungamenywanga njengesiqhelo", "Umoya unamandla — neengabangaba zihamba ngeenyawo"],
+        en: ["Ag no, the tablecloth is out", "Cape Doctor is doing rounds today", "Hold onto your hat, the Southeaster means business", "The Southeaster arrived uninvited — as always", "Wind's hectic — even the seagulls are walking"],
+        af: ["Ag nee, die tafeldoek is uit", "Die Kaapse Dokter maak vandag huisbesoeke", "Hou jou hoed vas, die Suidooster bedoel sake", "Die Suidooster het ongenooid opgedaag — soos altyd", "Die wind is hectic — selfs die meeuë loop"],
+        zu: ["Yoh, ilaphu letafel liphumile", "UDokotela waseKapa uyashayela namuhla", "Bamba isigqoko sakho, iSoutheaster iyasebenza", "Umoya waseNingizimu ufikile ungamenyiwe — njengenjwayelo", "Umoya unamandla — ngisho nezinkonjane ziyahamba"],
+        xh: ["Yhuu, ilaphu letafile liphumile", "UGqirha waseKapa uyajikeleza namhlanje", "Bamba umnqwazi wakho, umoya waseMzantsi-Mpuma uzimisele namhlanje", "Umoya waseMzantsi-Mpuma ufike ungamenywanga njengesiqhelo", "Umoya unamandla — neengabangaba zihamba ngeenyawo"],
         st: ["Ag no, lesela la tafoleng le foka moea", "Ngaka ea Cape e etsa litšeliso kajeno", "Tšoara katiba ea hao — Southeaster e tla ka matla, ha e bapale.", "Moea oa boroa o fihlile o sa mengoa — joalo ka kamehla", "Moea o matla — esita le dikoekoe di tsamaea"]
       }
     },
@@ -616,11 +622,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const favoriteKey = (p) => `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
   const isPlaceholderName = (name) => { const v = String(name || '').trim(); return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v); };
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
-  // Routed through pickConditionEmojiForTime so search/mini cards also respect
-  // day/night. Callers that don't pass an isDay flag get the day glyph; the
+  // Routed through pickConditionIconForTime so search/mini cards also respect
+  // day/night. Callers that don't pass an isDay flag get the day icon; the
   // search result cards in this file fetch a fresh norm and don't have a local
-  // hour, so the daytime glyph is the safe default.
-  const conditionEmoji = (key, isDay = true) => pickConditionEmojiForTime(key, isDay);
+  // hour, so the daytime icon is the safe default.
+  // M5: returns SVG markup from the one icon family, not a platform emoji.
+  //
+  // `labelled` gives the icon its accessible name from heroLabels — the app's
+  // OWN five-language copy, already approved — because the emoji this replaced
+  // were announced by the screen reader in the user's language. A hard-coded
+  // English name here would have been a regression in af/zu/xh/st.
+  const iconLabel = (name) => t('heroLabels', ICON_CONDITION[name] || 'clear');
+  const withLabel = (name, opts = {}) => weatherIconSvg(name, opts.labelled ? { ...opts, label: iconLabel(name) } : opts);
+  const conditionIcon = (key, isDay = true, opts) => withLabel(pickConditionIconForTime(key, isDay), opts);
 
   // ========== IP GEOLOCATION FALLBACK ==========
   // Used when GPS is blocked (e.g. WhatsApp in-app browser).
@@ -707,9 +721,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
   }
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
-  function showToast(message, duration = 3000, action = null) {
+  function showToast(message, duration = 3000, action = null, icon = null) {
     if (!toast) return;
-    toast.textContent = message;
+    // M5: the pin prefix was a platform emoji glued onto the message string. The
+    // icon is now drawn markup and the message stays a TEXT NODE, so the copy
+    // can never become markup.
+    toast.textContent = '';
+    if (icon) toast.insertAdjacentHTML('beforeend', weatherIconSvg(icon, { size: 16 }));
+    toast.append(document.createTextNode(icon ? ` ${message}` : message));
     if (action?.label && typeof action.onClick === 'function') {
       const button = document.createElement('button');
       button.type = 'button';
@@ -1111,7 +1130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navShare) navShare.textContent = t('misc', 'share');
     if (homeHourlyLabel) homeHourlyLabel.textContent = t('nav', 'hourly');
     renderAgreeLine(window.__PW_LAST_NORM);
-    if (myLocationHome) myLocationHome.textContent = `📍 ${t('misc', 'myLocation')}`;
+    if (myLocationHome) myLocationHome.innerHTML = `${weatherIconSvg('pin', { size: 18 })} <span>${escapeHtml(t('misc', 'myLocation'))}</span>`;
     // L3/L4/L6: footer attribution + shared-location indicator + version are
     // language-managed too.
     const footerAttribution = document.getElementById('footerAttribution');
@@ -1123,15 +1142,15 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshSaveButtonState();
   }
 
-  // Save button has two states (☆ Save / ★ Saved) reflecting whether the
-  // active place is in favourites. Called whenever the favourites list,
+  // Save button has two states (outline star / filled star) reflecting whether
+  // the active place is in favourites. Called whenever the favourites list,
   // active place, or UI language changes so the pill stays in sync.
   function refreshSaveButtonState() {
     if (!saveCurrent) return;
     const saved = !!(activePlace && loadFavorites().some(p => samePlace(p, activePlace)));
     const label = saved ? t('misc', 'saved') : t('misc', 'save');
     const aria = saved ? t('misc', 'saved') : t('misc', 'savePlace');
-    saveCurrent.textContent = `${saved ? '★' : '☆'} ${label}`;
+    saveCurrent.innerHTML = `${weatherIconSvg('star', { size: 18, filled: saved })} <span>${escapeHtml(label)}</span>`;
     saveCurrent.title = aria;
     saveCurrent.setAttribute('aria-label', aria);
     saveCurrent.setAttribute('aria-pressed', String(saved));
@@ -1755,7 +1774,9 @@ document.addEventListener("DOMContentLoaded", () => {
         capeWindLine = lines[Math.floor(Math.random() * lines.length)];
         capeWindLineKey = settings.lang;
       }
-      safeText(capeWindText, `⚠️ ${label} — ${capeWindLine}`);
+      // The one place orange/red is legitimate: a real wind warning. Icon is
+      // drawn, not an emoji; the copy still goes in escaped.
+      if (capeWindText) capeWindText.innerHTML = `${weatherIconSvg('warning', { size: 18 })} <span>${escapeHtml(`${label} — ${capeWindLine}`)}</span>`;
       capeWindBanner.classList.remove('hidden');
       syncCapeWindOffset();
     } else {
@@ -2223,14 +2244,15 @@ document.addEventListener("DOMContentLoaded", () => {
     renderStatsRow(norm);
     renderCapeWind(norm);
   }
-  // Hourly row icon. Delegates to pickHourlyEmoji so every branch
+  // Hourly row icon. Delegates to pickHourlyIcon so every branch
   // (rain, partly cloudy, cloudy, clear, cold, heat) honours isNight — not
   // just the clear fallback. This fixes the 20:00 sun-with-rain-cloud bug
-  // (rain-possible was returning 🌦️ regardless of time of day).
+  // (rain-possible was returning the day icon regardless of time of day).
   // `cond` is the per-hour categorised condition from the API — lets thunder
   // and fog hours render correctly (the numeric ladder has no weather code).
-  function getWeatherIcon(rp, cp, tc, isNight, cond) {
-    return pickHourlyEmoji({ rainPct: rp, cloudPct: cp, tempC: tc, isNight: !!isNight, condition: cond });
+  // Returns SVG markup (M5); `opts` rides through to the icon family.
+  function getWeatherIcon(rp, cp, tc, isNight, cond, opts) {
+    return withLabel(pickHourlyIcon({ rainPct: rp, cloudPct: cp, tempC: tc, isNight: !!isNight, condition: cond }), opts);
   }
   // Shared by the hourly table and the M3 chart so the two can never disagree
   // about what "18:00" or "27" means.
@@ -2280,7 +2302,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Falls back to the old 20:00-05:00 band only when no solar data exists.
       const daylight = isHourDaylight(hourNum, sunriseMin, sunsetMin);
       const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
+      // labelled: in an hourly row the icon is the ONLY carrier of the
+      // condition, so it keeps the name the emoji used to announce.
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition, { labelled: true });
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = windValue(rawWind) ?? '--';
@@ -2407,6 +2431,9 @@ document.addEventListener("DOMContentLoaded", () => {
     frag.appendChild(cap);
 
     const cell = (text, cls) => { const s = document.createElement('span'); s.className = cls; s.textContent = text; return s; };
+    // Same cell, for the one column whose content is drawn markup from the icon
+    // family rather than text. Kept separate so `cell` stays textContent-only.
+    const iconCell = (markup, cls) => { const s = document.createElement('span'); s.className = cls; s.innerHTML = markup; return s; };
     const row = (cls) => { const d = document.createElement('div'); d.className = cls; return d; };
 
     if (metric === 'rain') {
@@ -2504,7 +2531,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const daylight = isHourDaylight(hourNum, sunriseMin, sunsetMin);
           const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
           const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
-          sub.appendChild(cell(getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition), 'chart-icon'));
+          // The chart itself is role="img" with its own label, so its icons are
+          // decoration inside it — aria-hidden, and markup rather than text.
+          sub.appendChild(iconCell(getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition, { size: 16 }), 'chart-icon'));
         }
       });
       frag.appendChild(sub);
@@ -2526,10 +2555,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const date = new Date(Date.now() + offsetMs + i * 86400000);
       const dayName = getTranslatedDayName(date.getUTCDay());
       const badge = getDayBadge(d, i, hourlyData);
-      // Daily emoji uses the full consensus conditionKey (deriveCondition output),
+      // Daily icon uses the full consensus conditionKey (deriveCondition output),
       // which carries the partly-cloudy / cloudy / storm / fog distinctions that a
       // rain+temp-only fallback cannot — so the week list agrees with the home hero.
-      const icon = conditionEmoji(d.conditionKey);
+      // labelled: like the hourly rows, it is the only condition carrier here.
+      const icon = conditionIcon(d.conditionKey, true, { labelled: true });
       const rainPct = isNum(d.rainChance) ? round0(d.rainChance) + '%' : '--';
       const highTempClass = getTempColorClass(d.highC);
       const lowTempClass = getTempColorClass(d.lowC);
@@ -2608,7 +2638,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Bug 2b: real sunrise/sunset day-night, not a hardcoded 20:00 band.
       const daylight = isHourDaylight(hourNum, sunriseMin, sunsetMin);
       const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
-      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
+      // labelled: in an hourly row the icon is the ONLY carrier of the
+      // condition, so it keeps the name the emoji used to announce.
+      const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition, { labelled: true });
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
       const windSpeed = windValue(rawWind) ?? '--';
@@ -2625,8 +2657,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderDayDetailSummary(container, day) {
     const card = document.createElement('div');
     card.classList.add('day-detail-summary-card');
-    // Daily emoji uses the full consensus conditionKey (see renderWeek).
-    const icon = conditionEmoji(day.conditionKey);
+    // Daily icon uses the full consensus conditionKey (see renderWeek). No
+    // label: .ds-condition beside it already names the condition in words.
+    const icon = conditionIcon(day.conditionKey, true, { size: 26 });
     const cond = day.conditionLabel || '—';
     const hi = isNum(day.highC) ? formatTemp(day.highC) : '--°';
     const lo = isNum(day.lowC)  ? formatTemp(day.lowC)  : '--°';
@@ -2850,21 +2883,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function miniFetchTemp(lat, lon) {
     return loadSearchMini(lat, lon, async () => {
       const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' }));
-      return { temp: formatTemp(norm.nowTemp), icon: conditionEmoji(norm.conditionKey) };
-    }).catch(() => ({ temp: '--°', icon: '⛅' }));
+      return { temp: formatTemp(norm.nowTemp), icon: conditionIcon(norm.conditionKey, true, { size: 18 }) };
+    }).catch(() => ({ temp: '--°', icon: weatherIconSvg('cloud-sun', { size: 18 }) }));
   }
   function renderSearchResults(results) {
     const rl = document.getElementById('searchResults') || (() => { const ul = document.createElement('ul'); ul.id = 'searchResults'; ul.className = 'search-results'; document.querySelector('.search-body')?.prepend(ul); return ul; })();
     if (!results.length) { rl.innerHTML = ''; return; }
     const favs = loadFavorites();
-    rl.innerHTML = results.map((r, index) => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); const hasMini = index < SEARCH_MINI_VISIBLE_LIMIT; const icon = `<span class="result-icon" aria-hidden="true">${hasMini ? '⛅' : ''}</span>`; const temp = hasMini ? '<span class="result-temp">--°</span>' : ''; return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="Toggle favourite" data-lat="${r.lat}" data-lon="${r.lon}">${isFav ? '★' : '☆'}</button>${icon}<span class="result-name">${fn}</span>${temp}</li>`; }).join('');
+    rl.innerHTML = results.map((r, index) => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); const hasMini = index < SEARCH_MINI_VISIBLE_LIMIT; const icon = `<span class="result-icon" aria-hidden="true">${hasMini ? weatherIconSvg('cloud-sun', { size: 18 }) : ''}</span>`; const temp = hasMini ? '<span class="result-temp">--°</span>' : ''; return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="${escapeHtml(isFav ? t('misc', 'saved') : t('misc', 'savePlace'))}" aria-pressed="${isFav}" data-lat="${r.lat}" data-lon="${r.lon}">${weatherIconSvg('star', { size: 18, filled: isFav })}</button>${icon}<span class="result-name">${fn}</span>${temp}</li>`; }).join('');
     rl.querySelectorAll('li[data-lat]').forEach(li => {
       const activate = async (e) => { if (e && e.target && e.target.closest('.fav-star')) return; const place = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }; showScreen(screenHome); loadAndRender(place); if (searchInput) searchInput.value = ''; rl.innerHTML = ''; addRecentIfNew(place).catch(() => {}); };
       li.addEventListener('click', activate);
       li.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); activate(ev); } });
     });
     rl.querySelectorAll('.fav-star').forEach(btn => { btn.addEventListener('click', async (e) => { e.stopPropagation(); await toggleFavorite({ name: btn.closest('li')?.dataset?.name, lat: parseFloat(btn.dataset.lat), lon: parseFloat(btn.dataset.lon) }); renderSearchResults(results); }); });
-    Array.from(rl.querySelectorAll('li[data-lat]')).slice(0, SEARCH_MINI_VISIBLE_LIMIT).forEach(async (li) => { const mini = await miniFetchTemp(parseFloat(li.dataset.lat), parseFloat(li.dataset.lon)); const ie = li.querySelector('.result-icon'), te = li.querySelector('.result-temp'); if (ie) ie.textContent = mini.icon || '⛅'; if (te) te.textContent = mini.temp || '--°'; });
+    Array.from(rl.querySelectorAll('li[data-lat]')).slice(0, SEARCH_MINI_VISIBLE_LIMIT).forEach(async (li) => { const mini = await miniFetchTemp(parseFloat(li.dataset.lat), parseFloat(li.dataset.lon)); const ie = li.querySelector('.result-icon'), te = li.querySelector('.result-temp'); if (ie) ie.innerHTML = mini.icon || weatherIconSvg('cloud-sun', { size: 18 }); if (te) te.textContent = mini.temp || '--°'; });
   }
   if (searchInput) searchInput.addEventListener('input', (e) => { clearTimeout(searchTimeout); searchTimeout = setTimeout(() => runSearch(e.target.value), 300); });
 
@@ -3018,7 +3051,7 @@ document.addEventListener("DOMContentLoaded", () => {
           homePlace = { name: displayName, lat, lon, mode: PLACE_MODE_GPS };
           saveJSON(STORAGE.home, homePlace);
           loadAndRender(homePlace);
-          showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
+          showToast(t('toasts', 'locationUpdated') || 'Location updated', 3000, null, 'pin');
         } catch {
           // API failed — try client-side reverse geocode. NEVER seed coords:
           // a null falls back to the 'My Location' placeholder, which the
@@ -3053,7 +3086,7 @@ document.addEventListener("DOMContentLoaded", () => {
         homePlace = { name: savedName, lat: savedGpsLoc.lat, lon: savedGpsLoc.lon, mode: PLACE_MODE_GPS };
         saveJSON(STORAGE.home, homePlace);
         loadAndRender(homePlace);
-        showToast('📍 ' + (t('toasts', 'usingSaved') || 'Using saved location'));
+        showToast(t('toasts', 'usingSaved') || 'Using saved location', 3000, null, 'pin');
       } else {
         showToast("Couldn't get location. Using approximate location instead.", 5000);
         loadApproximateLocation();
@@ -3270,7 +3303,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // they switched views during the GPS wait, don't hijack their UI.
         if (activePlace === placeAtRequestTime) {
           loadAndRender(newPlace);
-          showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
+          showToast(t('toasts', 'locationUpdated') || 'Location updated', 3000, null, 'pin');
         }
       } else if (wantsFetch && activePlace === placeAtRequestTime) {
         loadAndRender(placeAtRequestTime);
@@ -3368,7 +3401,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // reverse-geocode wait (same guard attemptRefresh uses).
     if (activePlace === previousPlace) {
       loadAndRender(newPlace);
-      showToast('📍 ' + (t('toasts', 'locationUpdated') || 'Location updated'));
+      showToast(t('toasts', 'locationUpdated') || 'Location updated', 3000, null, 'pin');
     }
   }
 

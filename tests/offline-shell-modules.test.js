@@ -63,14 +63,16 @@ const dynamicModules = [
 
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
-    // 15 direct static imports. 2026-07-02: weekend-filter.js left app.js's
+    // 16 direct static imports. 2026-07-02: weekend-filter.js left app.js's
     // graph (day-filtering moved to structural tags) and witty-day-tags.js
-    // joined it; 2026-07-03 adds geo-regions.js for context gating.
+    // joined it; 2026-07-03 adds geo-regions.js for context gating; M5
+    // (2026-08-08) adds weather-icons.js, which carries the drawings that
+    // replaced the platform emoji.
     // (coord-parse.js is a TRANSITIVE dep via
     // startup-location.js — covered by the dynamicModules precache check below.)
     // The deploy stamp (BUILD_ID) is kept INLINE in app.js — deliberately not a
     // separate imported module — so it never adds a hard offline-boot dependency.
-    expect(importedModules.length).toBe(15);
+    expect(importedModules.length).toBe(16);
     for (const mod of [
       '/assets/language-preferences.js',
       '/assets/copy-loader.js',
@@ -79,6 +81,7 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
       '/assets/weather-visuals.js',
       '/assets/image-picker.js',
       '/assets/weather-emoji.js',
+      '/assets/weather-icons.js',
       '/assets/share-url.js',
       '/assets/refresh-behaviour.js',
       '/assets/first-open-location.js',

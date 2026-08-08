@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   isHourDaylight,
   parseLocalIsoMinutes,
-  pickHourlyEmoji,
+  pickHourlyIcon,
 } from '../assets/weather-emoji.js';
 
 // ---------------------------------------------------------------------------
@@ -10,7 +10,7 @@ import {
 //
 // The hourly rows hardcoded "night" as hour >= 20 || hour < 5. On 2026-05-21
 // Cape Town's sunset was ~17:45, so the 18:00 and 19:00 slots showed a bright
-// ☀️ nearly two hours after dark. isHourDaylight() replaces the clock band
+// `sun` nearly two hours after dark. isHourDaylight() replaces the clock band
 // with the day's actual sunrise/sunset.
 // ---------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ describe('parseLocalIsoMinutes', () => {
 });
 
 describe('isHourDaylight — Cape Town, 21 May (the reported bug)', () => {
-  it('18:00 slot is NIGHT — sunset was 17:45 (this was the ☀️-after-dark bug)', () => {
+  it('18:00 slot is NIGHT — sunset was 17:45 (this was the `sun`-after-dark bug)', () => {
     expect(isHourDaylight(18, CT.sunrise, CT.sunset)).toBe(false);
   });
   it('19:00 slot is NIGHT', () => {
@@ -91,19 +91,19 @@ describe('isHourDaylight — missing data falls back to null', () => {
 });
 
 describe('integration — the 18:00 hourly emoji after a 17:45 sunset', () => {
-  it('a clear 18:00 hour renders the moon 🌙, not the sun ☀️', () => {
+  it('a clear 18:00 hour renders the moon `moon`, not the sun `sun`', () => {
     // This is what renderHourly now does: isNightHour = !isHourDaylight(...).
     const isNightHour = !isHourDaylight(18, CT.sunrise, CT.sunset);
     expect(isNightHour).toBe(true);
-    const icon = pickHourlyEmoji({ rainPct: 0, cloudPct: 5, tempC: 14, isNight: isNightHour });
-    expect(icon).toBe('🌙');
+    const icon = pickHourlyIcon({ rainPct: 0, cloudPct: 5, tempC: 14, isNight: isNightHour });
+    expect(icon).toBe('moon');
   });
 
-  it('a clear 13:00 hour still renders the sun ☀️', () => {
+  it('a clear 13:00 hour still renders the sun `sun`', () => {
     const isNightHour = !isHourDaylight(13, CT.sunrise, CT.sunset);
     expect(isNightHour).toBe(false);
-    const icon = pickHourlyEmoji({ rainPct: 0, cloudPct: 5, tempC: 22, isNight: isNightHour });
-    expect(icon).toBe('☀️');
+    const icon = pickHourlyIcon({ rainPct: 0, cloudPct: 5, tempC: 22, isNight: isNightHour });
+    expect(icon).toBe('sun');
   });
 
   it('fallback path: with no solar data, renderHourly keeps the old 20:00 band', () => {

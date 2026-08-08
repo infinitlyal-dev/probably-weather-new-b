@@ -368,10 +368,10 @@ describe('Hail/thunder copy in weather-copy.js', () => {
 });
 
 // ---------------------------------------------------------------------------
-// PART 3 — Wind banner: ⚠️ Wind Warning prefix + 24h localStorage dismissal
+// PART 3 — Wind banner: warning-icon prefix + 24h localStorage dismissal
 // ---------------------------------------------------------------------------
 
-describe('Wind banner — ⚠️ Wind Warning label', () => {
+describe('Wind banner — warning label', () => {
   const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
 
   it("T.capeDr.warningLabel has translations in all 5 languages", () => {
@@ -382,10 +382,16 @@ describe('Wind banner — ⚠️ Wind Warning label', () => {
     }
   });
 
-  it("renderCapeWind prefixes the banner with the ⚠️ warning label", () => {
-    // renderCapeWind constructs `⚠️ ${label} — ${capeWindLine}` and feeds it to
-    // safeText (the line is now pinned per appearance to stop re-render flicker).
-    expect(src).toMatch(/safeText\(capeWindText,\s*`⚠️ \$\{label\} — \$\{capeWindLine\}`\)/);
+  it('renderCapeWind prefixes the banner with the drawn warning icon', () => {
+    // M5 replaced the ⚠️ emoji with the icon family's warning glyph. Three
+    // things have to hold, not one: the icon is the drawn one, the label and
+    // line still ride together in that order, and the copy is still ESCAPED —
+    // the prefix moved from a text string into innerHTML, so losing the escape
+    // would turn a translated line into markup.
+    expect(src).toMatch(/weatherIconSvg\('warning',\s*\{\s*size:\s*\d+\s*\}\)/);
+    expect(src).toMatch(/capeWindText\.innerHTML\s*=[\s\S]{0,160}escapeHtml\(`\$\{label\} — \$\{capeWindLine\}`\)/);
+    // And the emoji must not come back anywhere in the app source.
+    expect(src).not.toMatch(/⚠/);
   });
 });
 

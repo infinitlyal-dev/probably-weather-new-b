@@ -510,8 +510,30 @@ async function verify(browser, origin) {
     await context.close();
   }
   const performance = { before: await performancePass(browser, origin, true), after: await performancePass(browser, origin, false) };
-  assert(performance.after.median.fcpMs < 500 && performance.after.median.lcpMs < 500, `Postcard desktop paint exceeded 500ms locally: FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms (before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms)`);
-  console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms`);
+  // RELATIVE, not a hard 500ms (M5, Al's ruling). The old absolute threshold
+  // measured the MACHINE as much as the app: it sat ~8ms inside its own ceiling
+  // and false-failed twice under nothing worse than vitest running in the same
+  // shell, which is how a red gate stops meaning anything. `before` is the same
+  // page rendered with the pre-postcard release CSS, measured in the SAME run on
+  // the SAME machine under the SAME load — so the comparison cancels the load
+  // out. The budget is whichever is more generous of +60% or +150ms, plus an
+  // absolute ceiling far enough out that only a real collapse trips it.
+  const budgetMs = (baseline) => Math.max(baseline * 1.6, baseline + 150);
+  const perfBudget = {
+    fcpMs: budgetMs(performance.before.median.fcpMs),
+    lcpMs: budgetMs(performance.before.median.lcpMs),
+    ceilingMs: 2000,
+  };
+  performance.budget = perfBudget;
+  assert(
+    performance.after.median.fcpMs <= perfBudget.fcpMs && performance.after.median.lcpMs <= perfBudget.lcpMs,
+    `Postcard paint regressed against the same-run baseline: FCP ${performance.after.median.fcpMs}ms (budget ${perfBudget.fcpMs.toFixed(0)}ms from baseline ${performance.before.median.fcpMs}ms) / LCP ${performance.after.median.lcpMs}ms (budget ${perfBudget.lcpMs.toFixed(0)}ms from baseline ${performance.before.median.lcpMs}ms)`,
+  );
+  assert(
+    performance.after.median.fcpMs < perfBudget.ceilingMs && performance.after.median.lcpMs < perfBudget.ceilingMs,
+    `Postcard desktop paint breached the absolute ceiling: FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms > ${perfBudget.ceilingMs}ms`,
+  );
+  console.log(`[perf median 2560x1440] before FCP ${performance.before.median.fcpMs}ms / LCP ${performance.before.median.lcpMs}ms / task ${performance.before.median.taskDurationMs.toFixed(2)}ms; after FCP ${performance.after.median.fcpMs}ms / LCP ${performance.after.median.lcpMs}ms / task ${performance.after.median.taskDurationMs.toFixed(2)}ms; budget FCP ${perfBudget.fcpMs.toFixed(0)}ms / LCP ${perfBudget.lcpMs.toFixed(0)}ms, ceiling ${perfBudget.ceilingMs}ms`);
   const report = { glassBand, actionRows, typeAndColour, calmScreens, clicks, mobile, responsive, captions, particles: 'off at >=1024px; unchanged below', screenshots, performance };
   mkdirSync(output, { recursive: true }); writeFileSync(path.join(output, 'verification.json'), `${JSON.stringify(report, null, 2)}\n`);
   return report;
