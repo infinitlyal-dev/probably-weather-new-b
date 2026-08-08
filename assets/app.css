@@ -4812,6 +4812,86 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   FACELIFT M8 — HOME FITS THE FOLD ON THE REAL DEVICE RANGE (<=768px)
+   The 390x844-only guarantee is retired. Measured before this block existed:
+   320x568 clipped by 275px, 375x667 by 163px, and even 390x844 clipped by 23px
+   on the longest Afrikaans witty line. Every one of those put the stats pill and
+   the Hourly CTA under the nav.
+   The cause was a stack sized in vw and rem only — it knew how WIDE the phone
+   was and nothing about how TALL. The fix is a height-aware budget: the three
+   things that own the vertical space (hero, caption, temperature) scale with vh
+   between honest floors and the current values as ceilings, and the rhythm
+   between them scales with them. Nothing is hidden; a small phone gets the whole
+   screen, smaller.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    /* Al's ruled range. 300px ceiling rather than 340 because the last 40px of
+       hero were bought with the Hourly CTA on every phone below 412px. */
+    --hero-card-h: clamp(104px, 25.5vh, 300px);
+    /* The witty line is the only element whose height is COPY-driven, so it is
+       the one that has to give first: 6 lines of 1.6rem at 320px was 206px of a
+       568px screen. Both axes, because a long line on a narrow phone is the
+       worst case and vh alone would not catch it. */
+    --cap-fs: clamp(0.78rem, min(2.35vh, 5.2vw), 1.6rem);
+    --temp-fs: clamp(1.5rem, min(5.9vh, 13.5vw), 3.8rem);
+    /* One rhythm unit for the whole column, so tightening the stack is one
+       number rather than nine margins drifting apart. */
+    --fold-rhythm: clamp(2px, 0.85vh, 12px);
+  }
+
+  main#home-screen.main > .hero-caption {
+    margin-bottom: calc(var(--fold-rhythm) * 1.5);
+    padding: calc(var(--fold-rhythm) * 1.2) 16px calc(var(--fold-rhythm) * 1.4);
+    font-size: var(--cap-fs);
+    line-height: 1.12;
+  }
+
+  .temp { font-size: var(--temp-fs); }
+  #home-screen #description {
+    margin-top: calc(var(--fold-rhythm) * 0.6);
+    font-size: clamp(0.78rem, min(1.85vh, 4.2vw), 1.02rem);
+  }
+  .feels-line, .range-line { font-size: clamp(0.66rem, min(1.5vh, 3.4vw), 0.9rem); }
+  .feels-line { margin-top: calc(var(--fold-rhythm) * 0.35); }
+  .range-line { margin-top: calc(var(--fold-rhythm) * 0.2); }
+  .agree-line {
+    margin-top: calc(var(--fold-rhythm) * 0.7);
+    font-size: clamp(0.66rem, min(1.5vh, 3.4vw), 0.88rem);
+  }
+
+  .stats-band { margin-top: calc(var(--fold-rhythm) * 1.3); }
+  .stats-row { padding: calc(var(--fold-rhythm) * 0.9) 4px; }
+  .stats-row .stat-k { font-size: clamp(0.48rem, min(1.1vh, 2.6vw), 0.63rem); }
+  .stats-row .stat-v { font-size: clamp(0.7rem, min(1.62vh, 3.7vw), 0.92rem); margin-top: 1px; }
+  .stats-row .stat-sub { font-size: clamp(0.52rem, min(1.25vh, 2.9vw), 0.7rem); }
+  .hourly-cta {
+    padding: calc(var(--fold-rhythm) * 0.7) 6px;
+    font-size: clamp(0.62rem, min(1.55vh, 3.5vw), 0.86rem);
+    gap: 2px;
+  }
+  .hourly-cta .pw-icon { width: clamp(13px, 2.2vh, 18px); height: clamp(13px, 2.2vh, 18px); }
+
+  /* The header is part of the budget too — it was a fixed ~56px on a 488px
+     screen. */
+  .header { padding: max(0.4rem, env(safe-area-inset-top)) 12px calc(var(--fold-rhythm) * 0.6); }
+  #logoCircle, #logoCircle svg { width: clamp(22px, 4vh, 34px); height: clamp(22px, 4vh, 34px); }
+  .brand-title { font-size: clamp(0.76rem, min(1.85vh, 4.2vw), 1.02rem); }
+  .brand-location { font-size: clamp(0.64rem, min(1.55vh, 3.6vw), 0.86rem); }
+  .language-btn { padding: calc(var(--fold-rhythm) * 0.6) 10px; font-size: clamp(0.68rem, 1.5vh, 0.8rem); }
+
+  .hero-card { margin-top: calc(var(--fold-rhythm) * 0.4); }
+
+  /* The nav is the floor the whole budget is measured against, so it shrinks
+     with everything else instead of staying a fixed 72px on a 488px screen. */
+  .nav { padding: calc(var(--fold-rhythm) * 0.6) 4px calc(var(--fold-rhythm) * 0.6 + env(safe-area-inset-bottom)); }
+  .nav button { padding: calc(var(--fold-rhythm) * 0.5) 2px; font-size: clamp(0.54rem, 1.35vh, 0.72rem); min-block-size: clamp(30px, 5.2vh, 44px); }
+  main#home-screen.main {
+    padding-bottom: calc(var(--nav-h, 72px) + var(--fold-rhythm) + env(safe-area-inset-bottom));
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    FACELIFT M5 — ONE ICON FAMILY (all widths)
    Every in-app platform emoji is now an inline SVG drawn to a single contract
    (assets/weather-icons.js): 24-unit viewBox, currentColor stroke, weight 2,
