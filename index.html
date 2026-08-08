@@ -492,6 +492,22 @@
         <h2 class="screen-title">Hourly Forecast</h2>
       </div>
       <div class="screen-panel-body">
+        <!-- M3 chart furniture is mobile-only. The >=769px hourly screen is
+             outside the facelift and keeps exactly the table it always had. -->
+        <p id="hourlySubtitle" class="page-sub m-only"></p>
+        <!-- The segmented track is #0d0d12, which is also the page colour, so on
+             this screen it needs a surface under it to read at all. In Settings
+             the same control reads because it sits on a #16171d row. -->
+        <div class="seg-surface m-only">
+          <div id="hourlyMetricToggle" class="seg-control seg-wide" role="group">
+            <button type="button" class="seg-option is-on" data-metric="temp" aria-pressed="true">Temp</button>
+            <button type="button" class="seg-option" data-metric="rain" aria-pressed="false">Rain</button>
+            <button type="button" class="seg-option" data-metric="wind" aria-pressed="false">Wind</button>
+          </div>
+        </div>
+        <!-- role=img with a label, not aria-hidden: the chart is a real summary,
+             and the table below it is the row-by-row accessible equivalent. -->
+        <div id="hourlyChart" class="hourly-chart m-only" role="img"></div>
         <div id="hourly-timeline" class="hourly-timeline"></div>
       </div>
     </section>
@@ -525,6 +541,19 @@
       <div class="screen-panel-header page-head">
         <button id="searchBack" class="page-back m-only" type="button" aria-label="Back to home">←</button>
         <h2 class="screen-title">Search & Favourites</h2>
+        <!-- M3 order, to the approved Plekke mockup: subtitle, search field
+             FIRST (it is what the screen is for), then the gold location CTA,
+             then the lists. Save/Edit/Cancel used to sit up here competing with
+             the search field for the top of the screen; they are now demoted to
+             a single maintenance row under the header (.search-panel-actions).
+             Every control keeps its id, its handler and its translated label. -->
+        <!-- DOM ORDER IS UNCHANGED from before M3, deliberately: this header is
+             flex-direction:column at base (unscoped), so DOM order IS the
+             >=769px visual order. The approved Plekke order (search first, then
+             the gold CTA, then one maintenance row) is produced by `order` and
+             `flex-wrap` inside the <=768px block instead. Reordering the markup
+             would have silently rearranged the desktop screen. -->
+        <p id="searchSubtitle" class="page-sub m-only"></p>
         <button id="useMyLocationBtn" class="use-location-btn" type="button" aria-label="Use my location">📍 <span>Use my location</span></button>
         <!-- Save relocated here from the home action row: the search screen is the
              favourites hub, so saving the current place lives with the saved list.
@@ -583,6 +612,7 @@
         <h2 class="screen-title settings-title">Settings</h2>
       </div>
       <div class="screen-panel-body">
+        <p id="settingsSubtitle" class="page-sub m-only"></p>
         <div class="settings-section">
         <h3 id="settingsUnitsHeading">Units</h3>
         <div class="settings-option">
@@ -596,7 +626,6 @@
           <label for="unitsWind">Wind speed</label>
           <select id="unitsWind">
             <option value="kmh">km/h</option>
-            <option value="ms">m/s</option>
             <option value="mph">mph</option>
           </select>
         </div>

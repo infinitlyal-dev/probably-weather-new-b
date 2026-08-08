@@ -100,6 +100,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const screenSources = $('#sources-screen');
 
   const hourlyTimeline = $('#hourly-timeline');
+  // M3 hourly chart state. The rows are captured by renderHourly so switching
+  // metric re-draws from the data already on screen without refetching.
+  let hourlyMetric = 'temp';
+  let hourlyChartHours = null;
+  let hourlyChartStart = 0;
+  let hourlyChartPlace = '';
   const dailyCards = $('#daily-cards');
 
   const searchInput = $('#searchInput');
@@ -454,6 +460,31 @@ document.addEventListener("DOMContentLoaded", () => {
         xh: "N,NE,E,SE,S,SW,W,NW",                    // PLACEHOLDER - requires_native_review
         st: "N,NE,E,SE,S,SW,W,NW"                     // PLACEHOLDER - requires_native_review
       },
+      // M3 page subtitles — the three genuinely NEW strings this milestone adds.
+      // Everything else on the new screens reuses an already-approved key.
+      // AF approved by Al on 2026-08-08, before this shipped.
+      // zu/xh/st follow the house convention — EN copy, greppable comment.
+      todayLabel: {
+        en: "Today",
+        af: "Vandag",                                 // APPROVED by Al 2026-08-08
+        zu: "Today",                                  // PLACEHOLDER - requires_native_review
+        xh: "Today",                                  // PLACEHOLDER - requires_native_review
+        st: "Today"                                   // PLACEHOLDER - requires_native_review
+      },
+      placesSubtitle: {
+        en: "Search, save, switch",
+        af: "Soek, stoor, wissel",                    // APPROVED by Al 2026-08-08
+        zu: "Search, save, switch",                   // PLACEHOLDER - requires_native_review
+        xh: "Search, save, switch",                   // PLACEHOLDER - requires_native_review
+        st: "Search, save, switch"                    // PLACEHOLDER - requires_native_review
+      },
+      settingsSubtitle: {
+        en: "Units, display and language",
+        af: "Eenhede, vertoning en taal",             // APPROVED by Al 2026-08-08
+        zu: "Units, display and language",            // PLACEHOLDER - requires_native_review
+        xh: "Units, display and language",            // PLACEHOLDER - requires_native_review
+        st: "Units, display and language"             // PLACEHOLDER - requires_native_review
+      },
       shareYourArea: {
         en: "your area",
         af: "jou omgewing",
@@ -518,6 +549,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const pendingFavMeta = new Set();
   const SETTINGS_KEYS = { temp: 'units.temp', wind: 'units.wind', precip: 'units.precip', time: 'format.time', lang: 'lang' };
   const DEFAULT_SETTINGS = { temp: 'C', wind: 'kmh', precip: 'mm', time: '24', lang: 'en' };
+  // m/s was retired as a wind unit (Al's ruling 2026-08-08, M3): the segmented
+  // control is two-up, km/h or mph. Kept as an allow-list rather than deleted
+  // silently, because anyone who already chose m/s has it in localStorage.
+  const WIND_UNITS = ['kmh', 'mph'];
   let settings = { ...DEFAULT_SETTINGS };
 
   // ========== UTILITIES ==========
@@ -611,11 +646,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const initialLang = resolveInitialLanguage({ stored: storedLang, navigatorLanguage: navigator.language, navigatorLanguages: navigator.languages });
     if (!storedLang) saveJSON(SETTINGS_KEYS.lang, initialLang);
     settings = { temp: loadJSON(SETTINGS_KEYS.temp, DEFAULT_SETTINGS.temp), wind: loadJSON(SETTINGS_KEYS.wind, DEFAULT_SETTINGS.wind), precip: loadJSON(SETTINGS_KEYS.precip, DEFAULT_SETTINGS.precip), time: loadJSON(SETTINGS_KEYS.time, DEFAULT_SETTINGS.time), lang: initialLang };
+    // A retired unit left in storage would strand the user on a value no
+    // control can display or change, so it is migrated to the default once.
+    if (!WIND_UNITS.includes(settings.wind)) {
+      settings.wind = DEFAULT_SETTINGS.wind;
+      saveJSON(SETTINGS_KEYS.wind, settings.wind);
+    }
   }
   function saveSettings() { saveJSON(SETTINGS_KEYS.temp, settings.temp); saveJSON(SETTINGS_KEYS.wind, settings.wind); saveJSON(SETTINGS_KEYS.precip, settings.precip); saveJSON(SETTINGS_KEYS.time, settings.time); saveJSON(SETTINGS_KEYS.lang, settings.lang); }
   const convertTemp = (c) => !isNum(c) ? null : settings.temp === 'F' ? (c * 9 / 5) + 32 : c;
   const formatTemp = (c) => { const v = convertTemp(c); return isNum(v) ? `${round0(v)}°` : '--°'; };
-  const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : settings.wind === 'ms' ? `${round0(kph / 3.6)} m/s` : `${round0(kph)} km/h`;
+  const formatWind = (kph) => !isNum(kph) ? '--' : settings.wind === 'mph' ? `${round0(kph * 0.621371)} mph` : `${round0(kph)} km/h`;
   // Precipitation amount — number only, no unit suffix (column header carries
   // the unit). Returns em-dash for null/0 so the column reads cleanly when no
   // rain is expected. Inches use more decimals because small values are common.
@@ -1021,6 +1062,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const hourlyScreenTitle = screenHourly?.querySelector('.screen-title');
     if (hourlyScreenTitle) hourlyScreenTitle.textContent = t('screens', 'hourly');
     const hourlyTitle = screenHourly?.querySelector('.screen-title'); if (hourlyTitle) hourlyTitle.textContent = t('screens', 'hourly');
+    // M3 segmented control — every label is an ALREADY-APPROVED key, so the
+    // control adds no new translation debt.
+    for (const b of document.querySelectorAll('#hourlyMetricToggle .seg-option')) {
+      b.textContent = t('weather', b.dataset.metric);
+    }
+    const metricToggle = $('#hourlyMetricToggle');
+    if (metricToggle) metricToggle.setAttribute('aria-label', `${t('weather', 'temp')} / ${t('weather', 'rain')} / ${t('weather', 'wind')}`);
+    updateHourlySubtitle();
+    const placesSub = $('#searchSubtitle'); if (placesSub) placesSub.textContent = t('misc', 'placesSubtitle');
+    const settingsSub = $('#settingsSubtitle'); if (settingsSub) settingsSub.textContent = t('misc', 'settingsSubtitle');
+
+    // Units/times inside the chart are language- and settings-dependent both.
+    renderHourlyChart();
     const weekTitle = screenWeek?.querySelector('.screen-title'); if (weekTitle) weekTitle.textContent = t('screens', 'week');
     const searchTitle = screenSearch?.querySelector('.screen-title'); if (searchTitle) searchTitle.textContent = t('screens', 'search');
     const settingsTitle = screenSettings?.querySelector('.screen-title'); if (settingsTitle) settingsTitle.textContent = t('screens', 'settings');
@@ -1047,6 +1101,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
     const aboutH = $('#settingsAboutHeading'); if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = $('#aboutText'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
+    // AFTER the row labels above — this reads them for the group's accessible
+    // name, so running it earlier pinned the aria-label to the old language.
+    syncSettingsSegs();
     if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
     // Controls whose label is not authored in the markup take their text from
     // the same approved keys as whatever they replaced — otherwise they stay
@@ -1892,7 +1949,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // forecast they have ever read.
       const dir = windCompass(norm.windDir);
       // Gust is the NUMBER only — the value above already carries the unit.
-      const gustNum = showGust ? round0(settings.wind === 'mph' ? gust * 0.621371 : settings.wind === 'ms' ? gust / 3.6 : gust) : null;
+      const gustNum = showGust ? round0(settings.wind === 'mph' ? gust * 0.621371 : gust) : null;
       cells.push({
         k: t('weather', 'wind') || 'Wind',
         // Number big, unit small — three columns inside a two-thirds-width pill
@@ -2045,6 +2102,22 @@ document.addEventListener("DOMContentLoaded", () => {
   function getWeatherIcon(rp, cp, tc, isNight, cond) {
     return pickHourlyEmoji({ rainPct: rp, cloudPct: cp, tempC: tc, isNight: !!isNight, condition: cond });
   }
+  // Shared by the hourly table and the M3 chart so the two can never disagree
+  // about what "18:00" or "27" means.
+  function hourLabel(hourNum) {
+    return settings.time === '12'
+      ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}`
+      : `${String(hourNum).padStart(2, '0')}:00`;
+  }
+  // One conversion for the wind column and the wind chart, so the two can never
+  // disagree about what "27" means.
+  function windValue(kph) {
+    if (!isNum(kph)) return null;
+    return settings.wind === 'mph' ? round0(kph * 0.621371) : round0(kph);
+  }
+  function windUnitLabel() {
+    return settings.wind === 'mph' ? 'mph' : 'km/h';
+  }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
     const nowHour = getLocationHour(activePlace?.lon);
@@ -2061,10 +2134,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hourly array starts at midnight local time. Slice from current hour so
     // the data shown matches the time label. Show remaining hours of today + up to 24 total.
     const slicedHourly = hourly.slice(nowHour, nowHour + 24);
+    // The chart reads the SAME sliced rows the table does — no second source,
+    // no second slice to drift out of step with the labels.
+    hourlyChartHours = slicedHourly;
+    hourlyChartStart = nowHour;
+    hourlyChartPlace = activePlace?.name || '';
+    updateHourlySubtitle();
+    renderHourlyChart();
     slicedHourly.forEach((h, i) => {
       const div = document.createElement('div'); div.classList.add('hourly-row');
       const hourNum = (nowHour + i) % 24;
-      const ht = settings.time === '12' ? `${hourNum === 0 ? 12 : hourNum > 12 ? hourNum - 12 : hourNum}${hourNum >= 12 ? 'pm' : 'am'}` : `${String(hourNum).padStart(2, '0')}:00`;
+      const ht = hourLabel(hourNum);
       const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
       // Bug 2b: real sunrise/sunset day-night, not a hardcoded 20:00 band.
       // Falls back to the old 20:00-05:00 band only when no solar data exists.
@@ -2073,7 +2153,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
-      const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
+      const windSpeed = windValue(rawWind) ?? '--';
       const tempClass = getTempColorClass(h.tempC);
       const uvVal = isNum(h.uv) ? round0(h.uv) : '--';
       const uvClass = isNum(h.uv) ? (h.uv >= 8 ? 'uv-extreme' : h.uv >= 6 ? 'uv-high' : h.uv >= 3 ? 'uv-mod' : '') : '';
@@ -2085,6 +2165,225 @@ document.addEventListener("DOMContentLoaded", () => {
       // reached the bottom yet.
       if (i === 5) hourlyTimeline.appendChild(buildAdSlot('hourly'));
     });
+  }
+
+  // ---- M3 Settings segmented controls (mobile only) -------------------------
+  // The native <select> stays in the DOM and stays the source of truth: every
+  // existing change listener, persistence path and desktop rendering is
+  // untouched. On mobile the select is display:none (so it leaves the a11y tree
+  // entirely rather than exposing two controls for one setting) and these
+  // buttons drive it. Compact labels come from the VALUE, not the option text —
+  // option text is prose that could be translated, "°C" is a symbol.
+  const SEG_LABELS = {
+    unitsTemp: { C: '°C', F: '°F' },
+    unitsWind: { kmh: 'km/h', mph: 'mph' },
+    unitsPrecip: { mm: 'mm', in: 'in' },
+    timeFormat: { 24: '24h', 12: '12h' },
+  };
+  function buildSettingsSegs() {
+    for (const [id, labels] of Object.entries(SEG_LABELS)) {
+      const select = $(`#${id}`);
+      const option = select?.closest('.settings-option');
+      if (!select || !option || option.querySelector('.seg-control')) continue;
+      const seg = document.createElement('div');
+      // m-only, or the >=769px frame shows BOTH the pills and the native select
+      // for the same setting — the #navShare leak all over again.
+      seg.className = 'seg-control settings-seg m-only';
+      seg.setAttribute('role', 'group');
+      seg.dataset.for = id;
+      for (const opt of select.options) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'seg-option';
+        b.dataset.value = opt.value;
+        b.textContent = labels[opt.value] || opt.value;
+        seg.appendChild(b);
+      }
+      option.appendChild(seg);
+    }
+    syncSettingsSegs();
+  }
+  function syncSettingsSegs() {
+    for (const seg of document.querySelectorAll('.settings-seg')) {
+      const select = $(`#${seg.dataset.for}`);
+      if (!select) continue;
+      // Label the group with the row's own label so the buttons are not four
+      // anonymous "°C" toggles to a screen reader.
+      const label = seg.closest('.settings-option')?.querySelector('label')?.textContent?.trim();
+      if (label) seg.setAttribute('aria-label', label);
+      for (const b of seg.querySelectorAll('.seg-option')) {
+        const on = b.dataset.value === select.value;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', String(on));
+      }
+    }
+  }
+
+  // "<place> · Today" under the Hourly title. Falls back to just the day when
+  // no place name has resolved yet, rather than printing a bare separator.
+  function updateHourlySubtitle() {
+    const el = $('#hourlySubtitle');
+    if (!el) return;
+    // The name captured WITH the rows, not live activePlace: a failed switch
+    // reassigns activePlace before the fetch, which would relabel place A's
+    // chart with place B's name on the next re-render.
+    const place = (hourlyChartPlace || '').trim();
+    const day = t('misc', 'todayLabel');
+    el.textContent = place ? `${place} · ${day}` : day;
+  }
+
+  // ---- M3 hourly chart (mobile only) ----------------------------------------
+  // ONE metric at a time, chosen by the segmented control (Al's ruling
+  // 2026-08-08) — never a mixed chart. 8 columns: 12 was measured crowding the
+  // time row at 390px while the mockups were built.
+  const HOURLY_CHART_COLS = 8;
+  const CHART_W = 330, CHART_H = 58;
+  function setHourlyMetric(metric) {
+    if (!['temp', 'rain', 'wind'].includes(metric)) return;
+    hourlyMetric = metric;
+    for (const b of document.querySelectorAll('#hourlyMetricToggle .seg-option')) {
+      const on = b.dataset.metric === metric;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', String(on));
+    }
+    renderHourlyChart();
+  }
+  function renderHourlyChart() {
+    const host = $('#hourlyChart');
+    if (!host) return;
+    const hours = (hourlyChartHours || []).slice(0, HOURLY_CHART_COLS);
+    // Author `display` on .hourly-chart outranks the UA [hidden] rule, so the
+    // empty state needs the explicit CSS guard the M1/M2 elements all carry.
+    if (!hours.length) { host.hidden = true; host.replaceChildren(); return; }
+    host.hidden = false;
+    const metric = hourlyMetric;
+    const label = t('weather', metric);
+    const unit = metric === 'temp' ? (settings.temp === 'F' ? '°F' : '°C')
+      : metric === 'rain' ? '%' : windUnitLabel();
+    host.setAttribute('aria-label', `${label} · ${unit}`);
+
+    // Values in DISPLAY units, so the chart and the column below it agree.
+    const values = hours.map((h, i) => metric === 'temp' ? (isNum(h.tempC) ? round0(convertTemp(h.tempC)) : null)
+      : metric === 'rain' ? (isNum(h.rainChance) ? round0(h.rainChance) : null)
+      // Same fallback chain as the table row, including the first-three-hours
+      // current-wind stand-in — otherwise the column and the row disagree.
+      : windValue(h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? (window.__PW_LAST_NORM?.windKph ?? null) : null)));
+    const suffix = metric === 'temp' ? '°' : metric === 'rain' ? '%' : '';
+
+    const frag = document.createDocumentFragment();
+    const cap = document.createElement('div');
+    cap.className = 'chart-caption';
+    cap.textContent = `${label} · ${unit}`;
+    frag.appendChild(cap);
+
+    const cell = (text, cls) => { const s = document.createElement('span'); s.className = cls; s.textContent = text; return s; };
+    const row = (cls) => { const d = document.createElement('div'); d.className = cls; return d; };
+
+    if (metric === 'rain') {
+      // A percentage has a fixed 0-100 range, so it gets an ABSOLUTE scale — a
+      // fitted one would draw 5% as a full bar on a dry day. Absolute alone left
+      // the card almost empty at realistic SA probabilities, so each column is a
+      // visible 100% track and the bar is the filled fraction of it: 15% reads
+      // as 15% of a whole rather than as a stub floating in a void.
+      const vals = row('chart-values');
+      for (const v of values) vals.appendChild(cell(isNum(v) ? `${v}%` : '--', 'chart-val'));
+      frag.appendChild(vals);
+      const bars = row('chart-bars');
+      for (const v of values) {
+        const col = row('chart-bar-col');
+        const track = document.createElement('span');
+        track.className = 'chart-bar-track';
+        const bar = document.createElement('span');
+        bar.className = 'chart-bar';
+        // A 0% hour draws NOTHING — the empty track is the zero. A minimum-height
+        // stub would paint "no rain" as a visible bar. Anything above zero keeps
+        // a 2px floor so a 1% hour does not vanish into a sub-pixel.
+        bar.style.height = `${isNum(v) && v > 0 ? Math.max(2, (v / 100) * CHART_H) : 0}px`;
+        track.appendChild(bar);
+        col.appendChild(track);
+        bars.appendChild(col);
+      }
+      frag.appendChild(bars);
+    } else {
+      const vals = row('chart-values');
+      for (const v of values) vals.appendChild(cell(isNum(v) ? `${v}${suffix}` : '--', 'chart-val'));
+      frag.appendChild(vals);
+      // Temp and wind are fitted to their own range — the interesting thing is
+      // the SHAPE of the change, and a 12-15°C day flattens to nothing on an
+      // absolute scale.
+      const nums = values.filter(isNum);
+      if (nums.length >= 2) {
+        const lo = Math.min(...nums), hi = Math.max(...nums);
+        const span = hi - lo;
+        const y = (v) => span === 0 ? CHART_H / 2 : CHART_H - ((v - lo) / span) * CHART_H;
+        // Cell CENTRES, not 0..CHART_W. The value and time rows are flex cells
+        // centred at (i+0.5)/n, so an edge-to-edge line put the peak ~20px away
+        // from the number naming it.
+        const x = (i) => ((i + 0.5) / values.length) * CHART_W;
+        // Contiguous runs, NOT one filtered polyline: dropping a null and
+        // joining its neighbours draws a straight segment through the missing
+        // hour, asserting data the values row prints as '--'.
+        const runs = [];
+        let run = [];
+        values.forEach((v, i) => {
+          if (isNum(v)) { run.push(`${x(i)},${y(v)}`); return; }
+          if (run.length) runs.push(run);
+          run = [];
+        });
+        if (run.length) runs.push(run);
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', `0 0 ${CHART_W} ${CHART_H}`);
+        svg.setAttribute('preserveAspectRatio', 'none');
+        svg.setAttribute('class', 'chart-line');
+        svg.setAttribute('aria-hidden', 'true');
+        for (const seg of runs) {
+          // A lone reading has no segment to draw, so it becomes a dot rather
+          // than disappearing from the chart entirely.
+          const el = document.createElementNS('http://www.w3.org/2000/svg',
+            seg.length === 1 ? 'circle' : 'polyline');
+          if (seg.length === 1) {
+            const [cx, cy] = seg[0].split(',');
+            el.setAttribute('cx', cx); el.setAttribute('cy', cy); el.setAttribute('r', '2.5');
+            el.setAttribute('fill', 'var(--brand-gold)');
+          } else {
+            el.setAttribute('points', seg.join(' '));
+            el.setAttribute('fill', 'none');
+            el.setAttribute('stroke', 'var(--brand-gold)');
+            el.setAttribute('stroke-width', '2.5');
+            el.setAttribute('stroke-linejoin', 'round');
+          }
+          // preserveAspectRatio=none stretches the stroke horizontally; this keeps
+          // it an even 2.5px instead of a smeared wedge.
+          el.setAttribute('vector-effect', 'non-scaling-stroke');
+          svg.appendChild(el);
+        }
+        frag.appendChild(svg);
+      }
+      // Under the line: weather icons for temp, compass letters for wind.
+      const sub = row('chart-sub');
+      const sunriseMin = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunrise);
+      const sunsetMin = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunset);
+      hours.forEach((h, i) => {
+        if (metric === 'wind') {
+          // windCompass returns '' when the bearing is absent — absent, never
+          // wrong. Open-Meteo is the sole bearing authority; this reads the same
+          // per-hour row the table does, never activeNorms[0].
+          sub.appendChild(cell(windCompass(h.windDir), 'chart-dir'));
+        } else {
+          const hourNum = (hourlyChartStart + i) % 24;
+          const daylight = isHourDaylight(hourNum, sunriseMin, sunsetMin);
+          const isNightHour = daylight === null ? (hourNum >= 20 || hourNum < 5) : !daylight;
+          const iconTemp = (isNum(h.feelsLikeC) && h.feelsLikeC < h.tempC) ? h.feelsLikeC : h.tempC;
+          sub.appendChild(cell(getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition), 'chart-icon'));
+        }
+      });
+      frag.appendChild(sub);
+    }
+
+    const times = row('chart-times');
+    hours.forEach((_, i) => times.appendChild(cell(hourLabel((hourlyChartStart + i) % 24), 'chart-time')));
+    frag.appendChild(times);
+    host.replaceChildren(frag);
   }
   function renderWeek(daily, hourlyData) {
     if (!dailyCards) return; dailyCards.innerHTML = '';
@@ -2182,7 +2481,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const icon = getWeatherIcon(h.rainChance, h.cloudPct, iconTemp, isNightHour, h.condition);
       const rainPct = isNum(h.rainChance) ? round0(h.rainChance) + '%' : '--';
       const rawWind = h.windKmh ?? h.windKph ?? h.wind_kph ?? (i < 3 ? currentWind : null);
-      const windSpeed = isNum(rawWind) ? (settings.wind === 'mph' ? round0(rawWind * 0.621371) : round0(rawWind)) : '--';
+      const windSpeed = windValue(rawWind) ?? '--';
       const tempClass = getTempColorClass(h.tempC);
       const uvVal = isNum(h.uv) ? round0(h.uv) : '--';
       const uvClass = isNum(h.uv) ? (h.uv >= 8 ? 'uv-extreme' : h.uv >= 6 ? 'uv-high' : h.uv >= 3 ? 'uv-mod' : '') : '';
@@ -2457,8 +2756,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // M2: every secondary page has a visible way out. Weekly / Search / Settings
   // previously had none — you could only leave via the nav, which is the
   // modal-over-home feel this milestone removes.
+  // M3: Settings segmented controls. Built once, then driven by delegation.
+  buildSettingsSegs();
+  screenSettings?.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.settings-seg .seg-option');
+    if (!btn) return;
+    const select = $(`#${btn.closest('.settings-seg').dataset.for}`);
+    if (!select || select.value === btn.dataset.value) return;
+    select.value = btn.dataset.value;
+    // The existing change listener owns persistence and re-render — this button
+    // only moves the select, so there is one code path for a unit change.
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    syncSettingsSegs();
+  });
+  // Keeps the pills honest when the value is changed from the native select
+  // (desktop, or assistive tech driving it directly).
+  screenSettings?.addEventListener('change', syncSettingsSegs);
+
+  // M3: metric toggle. Delegated, so the three buttons need no separate wiring
+  // and a future fourth metric costs nothing.
+  $('#hourlyMetricToggle')?.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.seg-option');
+    if (btn?.dataset.metric) setHourlyMetric(btn.dataset.metric);
+  });
   $('#weekBack')?.addEventListener('click', () => showScreen(screenHome));
-  $('#searchBack')?.addEventListener('click', () => showScreen(screenHome));
+  // M3: this arrow now does exactly what Cancel/Kanselleer did — leave edit
+  // mode, clear the query, go home — because Cancel is retired below 768px.
+  // Two controls that both mean "get me out of here" was the ambiguity.
+  $('#searchBack')?.addEventListener('click', () => {
+    setSearchEditMode(false);
+    if (searchInput) searchInput.value = '';
+    showScreen(screenHome);
+  });
   $('#settingsBack')?.addEventListener('click', () => showScreen(screenHome));
   // ----- Mobile facelift entry points -----
   // The three floating home buttons are gone (facelift brief), so each of their

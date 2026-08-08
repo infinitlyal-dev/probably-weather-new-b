@@ -6,7 +6,14 @@ const app = () => readFileSync(new URL('../assets/app.js', import.meta.url), 'ut
 const css = () => readFileSync(new URL('../assets/app.css', import.meta.url), 'utf8');
 
 describe('search panel my-location entry point', () => {
-  it('renders the Use my location button above the search input', () => {
+  // M3 (Al, 2026-08-08) splits this into two contracts that pull opposite ways.
+  // .screen-panel-header is flex-direction:column UNSCOPED, so DOM order is the
+  // >=769px visual order — reordering the markup would silently rearrange the
+  // desktop screen. So the MARKUP keeps the pre-M3 order (CTA above input) and
+  // the approved Plekke order (search field primary) is produced by `order`
+  // inside the <=768px block. Both halves are guarded, because satisfying
+  // either one alone is a regression of the other.
+  it('keeps the pre-M3 DOM order so the >=769px screen is unchanged', () => {
     const source = html();
     const buttonIndex = source.indexOf('id="useMyLocationBtn"');
     const inputIndex = source.indexOf('id="searchInput"');
@@ -16,6 +23,20 @@ describe('search panel my-location entry point', () => {
     expect(buttonIndex).toBeLessThan(inputIndex);
     expect(source).toMatch(/id="useMyLocationBtn"[^>]*class="use-location-btn"[\s\S]*📍[\s\S]*Use my location/);
     expect(css()).toMatch(/\.use-location-btn\s*{/);
+  });
+
+  it('puts the search field first on mobile via CSS order, not markup order', () => {
+    const sheet = css();
+    const mobileBlock = sheet.slice(sheet.indexOf('MOBILE FACELIFT M3'));
+    const orderOf = (sel) => {
+      const rule = new RegExp(`${sel}\\s*\\{[^}]*?order:\\s*(\\d+)`, 's').exec(mobileBlock);
+      return rule ? Number(rule[1]) : null;
+    };
+    const input = orderOf('#searchInput');
+    const cta = orderOf('#useMyLocationBtn');
+    expect(input, 'search input has no mobile order').not.toBeNull();
+    expect(cta, 'location CTA has no mobile order').not.toBeNull();
+    expect(input).toBeLessThan(cta);
   });
 
   it('tapping Use my location triggers the shared geolocation flow', () => {

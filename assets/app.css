@@ -4227,7 +4227,10 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   .search-screen .screen-panel-header.page-head {
     flex-wrap: wrap;
   }
-  .search-screen .screen-panel-header.page-head > :not(.page-back):not(.screen-title) {
+  /* M3 excludes Save and the actions row here rather than out-specifying this
+     rule from below: those two deliberately SHARE one line, and a specificity
+     duel between two rules with the same intent is how this drifts later. */
+  .search-screen .screen-panel-header.page-head > :not(.page-back):not(.screen-title):not(#saveCurrent):not(.search-panel-actions) {
     flex-basis: 100%;
   }
 
@@ -4291,5 +4294,319 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE FACELIFT M3 — CONTENT INSIDE THE M2 CHROME (<=768px)
+   Hourly metric toggle + per-metric chart, Places, Settings rows. Everything
+   here is mobile-scoped or .m-only: the >=769px frame and the >=1024px
+   postcard keep the screens they already had.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Page subtitle — the line under the page title on Hourly/Places/Settings. */
+  .page-sub {
+    margin: -4px 0 12px;
+    font-size: 0.84rem;
+    color: var(--ink-2);
+    text-align: left;
+  }
+  .page-sub[hidden] { display: none; }
+
+  /* ---------- ONE segmented-control grammar ----------
+     Shared by the Hourly metric toggle and the Settings unit toggles (Al's
+     ruling 2026-08-08): same shape, active is yellow-FILLED with dark text,
+     inactive is white on the dark track. */
+  .seg-control {
+    display: inline-grid;
+    grid-auto-flow: column;
+    background: var(--page-bg);
+    /* Both the track and the pill take --r-sm. The mockup drew 8px/6px, but the
+       facelift holds a ruled TWO-radius discipline (guarded by test), and a
+       third and fourth token are not worth breaking it for. */
+    border-radius: var(--r-sm);
+    padding: 3px;
+  }
+  .seg-control .seg-option {
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: var(--r-sm);
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    /* 44px BOTH ways. These are the primary tap targets on two of the three
+       screens this milestone touches; min-inline-size alone left them ~28px
+       tall while every other new row here carries a 44/48/52px floor. */
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    display: grid;
+    place-items: center;
+  }
+  .seg-control .seg-option.is-on {
+    background: var(--brand-gold);
+    color: #1a1a2e;
+    font-weight: 800;
+  }
+  .seg-wide { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; width: 100%; }
+  /* The track colour IS the page colour, so on a bare page the control has no
+     edges at all. In Settings it reads because it sits on a surface row; the
+     Hourly one gets its own surface for the same reason. */
+  .seg-surface {
+    background: var(--surface);
+    border-radius: var(--r-sm);
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  .seg-surface[hidden] { display: none; }
+
+  /* ---------- Hourly chart ---------- */
+  .hourly-chart {
+    background: var(--surface);
+    border-radius: var(--r-sm);
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+  .hourly-chart[hidden] { display: none; }
+  .hourly-chart .chart-caption {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-bottom: 8px;
+  }
+  .hourly-chart .chart-values,
+  .hourly-chart .chart-sub,
+  .hourly-chart .chart-times,
+  .hourly-chart .chart-bars { display: flex; }
+  .hourly-chart .chart-values > *,
+  .hourly-chart .chart-sub > *,
+  .hourly-chart .chart-times > *,
+  .hourly-chart .chart-bar-col { flex: 1 1 0; min-width: 0; text-align: center; }
+  .hourly-chart .chart-val {
+    font-size: 0.68rem; font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .hourly-chart .chart-line { display: block; width: 100%; height: 46px; margin: 2px 0 4px; }
+  .hourly-chart .chart-icon { font-size: 0.9rem; }
+  .hourly-chart .chart-sub { margin-top: 4px; }
+  .hourly-chart .chart-dir {
+    font-size: 0.62rem; font-weight: 700; color: var(--ink-2);
+  }
+  .hourly-chart .chart-times {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 8px;
+    padding-top: 6px;
+  }
+  .hourly-chart .chart-time {
+    font-size: 0.62rem; color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+  }
+  /* Rain: bars on an absolute 0-100 scale. A percentage has a fixed range, so
+     fitting it to the observed min/max would make a 0-5% day look dramatic. */
+  .hourly-chart .chart-bar-col {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    height: 58px;
+    margin: 4px 0;
+  }
+  /* The visible 100% whole. Without it an absolute scale draws a 15% day as a
+     stub in an empty card and the reader has nothing to judge it against. */
+  .hourly-chart .chart-bar-track {
+    display: flex;
+    align-items: flex-end;
+    width: 14px;
+    height: 58px;
+    background: rgba(255,255,255,0.06);
+    /* Squared off: --r-sm on a 14px bar reads as a lollipop, and a 3px token
+       would be a third radius. 0 is exempt from the two-radius rule. */
+    border-radius: 0;
+  }
+  .hourly-chart .chart-bar {
+    width: 100%;
+    border-radius: 0;
+    background: #4a9eff;
+  }
+}
+
+/* ---------- M3 Settings: list rows + segmented controls (<=768px) ----------
+   The mockup's grammar: a small-caps section label, then each setting as its
+   own surface row with the control on the right. The native <select> stays in
+   the DOM as the source of truth but is display:none here, so a screen reader
+   sees ONE control per setting, not a select and a button group. */
+@media (max-width: 768px) {
+  /* The base rule carries padding: 0.75rem 0, so two adjacent sections stacked
+     24px of padding under the heading's own margin and the groups drifted apart. */
+  .settings-screen .settings-section { padding: 0; margin-bottom: 4px; }
+  /* .screen-panel-body is a centring flex column on this screen, which makes a
+     direct-child <p> shrink to its text and sit in the middle. */
+  .settings-screen .page-sub { align-self: stretch; }
+  .settings-screen .settings-section h3 {
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 14px 0 6px;
+  }
+  /* An emptied heading (Language, Sources) must not hold open its margin. */
+  .settings-screen .settings-section h3:empty { display: none; }
+  .settings-screen .settings-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 0;
+    border-radius: var(--r-sm);
+    padding: 9px 12px;
+    margin-bottom: 6px;
+    min-block-size: 52px;
+  }
+  .settings-screen .settings-option label {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  /* The segmented control replaces the select on this breakpoint. */
+  .settings-screen .settings-option:has(.settings-seg) select { display: none; }
+  .settings-seg { flex: none; }
+
+  /* Language keeps its native select — five options is a picker, not a toggle,
+     and the OS picker is the better control for it. Styled as the mockup's
+     "English ›" value so it reads as a row rather than a form field. */
+  .settings-screen .settings-option select {
+    -webkit-appearance: none; appearance: none;
+    background: none;
+    border: 0;
+    padding: 0 14px 0 0;
+    color: var(--ink-2);
+    font-size: 0.94rem;
+    font-weight: 500;
+    text-align: right;
+    text-align-last: right;
+    max-width: 55%;
+    cursor: pointer;
+  }
+  /* The chevron the native arrow no longer draws. */
+  .settings-screen .settings-option:not(:has(.settings-seg)) {
+    position: relative;
+  }
+  .settings-screen .settings-option:not(:has(.settings-seg))::after {
+    content: "›";
+    position: absolute;
+    right: 12px;
+    color: var(--brand-gold);
+    font-weight: 700;
+    pointer-events: none;
+  }
+  /* The Sources row is already a .settings-row from M2 — match its rhythm. */
+  .settings-screen .settings-row { margin-bottom: 6px; }
+  /* About prose stays prose, just on the row surface so it does not float. */
+  .settings-screen .settings-section p { font-size: 0.86rem; }
+}
+
+/* ---------- M3 Places: search first, then the CTA, then the lists (<=768px) ----
+   The approved Plekke mockup. Search is the primary control and sits at the top;
+   the gold "Use my location" CTA is full width under it; Save/Edit/Cancel drop
+   to one quiet maintenance row instead of three pills fighting the search field
+   for the top of the screen (the Stoor/Wysig/Kanselleer ambiguity). */
+@media (max-width: 768px) {
+  /* The approved order is produced HERE, not in the markup: subtitle, search,
+     gold CTA, then Save + Edit sharing one maintenance line. Desktop keeps the
+     DOM order it always had. */
+  .search-screen .screen-panel-header.page-head { gap: 8px; flex-wrap: wrap; }
+  .search-screen #searchSubtitle { order: 0; }
+  .search-screen #searchInput {
+    order: 1;
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--r-sm);
+    padding: 13px 14px;
+    color: var(--ink);
+    font-size: 0.98rem;
+    min-block-size: 48px;
+  }
+  .search-screen #searchInput::placeholder { color: var(--ink-2); }
+  .search-screen #useMyLocationBtn {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--brand-gold);
+    color: #1a1a2e;
+    border: 0;
+    border-radius: var(--r-sm);
+    padding: 13px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    min-block-size: 48px;
+  }
+  /* Save and the Edit row share one line. The M2 rule below forces every header
+     child to flex-basis:100%, so these two need it undone to sit side by side. */
+  .search-screen #saveCurrent {
+    order: 3;
+    flex: 1 1 0;
+    flex-basis: 0;
+    min-inline-size: 0;
+    width: auto;
+    max-width: none;
+    align-self: auto;
+  }
+  /* Selector matches the M2 flex-basis:100% rule's specificity and comes later,
+     so this wins. A plain `.search-screen .search-panel-actions` loses to it and
+     the row wrapped onto its own line. */
+  .search-screen .screen-panel-header.page-head > .search-panel-actions {
+    order: 4;
+    display: flex;
+    gap: 8px;
+    flex: 1 1 0;
+    flex-basis: 0;
+    min-inline-size: 0;
+    /* The base rule's own margin offset this row from Save beside it. */
+    margin: 0;
+    align-items: stretch;
+  }
+  .search-screen #saveCurrent,
+  .search-screen .search-panel-actions button {
+    flex: 1 1 0;
+    min-inline-size: 0;
+    min-block-size: 44px;
+    /* .cancel-btn ships 0.75rem 1.5rem and .use-location-btn its own box; both
+       have to be normalised or the three pills come out different widths. */
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: var(--r-sm);
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: none;
+    box-shadow: none;
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+  /* Cancel is retired here: the page-head back arrow now performs the identical
+     action (leave edit mode, clear the query, go home). It stays on the >=769px
+     frame, which has no back control of its own. */
+  .search-screen #searchCancel { display: none; }
+  .search-screen .search-panel-actions button[hidden] { display: none; }
+  /* FAVOURITES / RECENT — the same small-caps section label as Settings. */
+  .search-screen .search-lists .section h3 {
+    font-size: 0.63rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 14px 0 6px;
   }
 }
