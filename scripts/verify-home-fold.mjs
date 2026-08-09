@@ -26,9 +26,17 @@ import { chromium } from 'playwright';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
-const output = path.join(root, 'output', 'm8-fold');
 const DATE = '2026-08-08';
 const SHOTS = process.argv.includes('--shots');
+
+// Design-pass hook. Unset in every normal run, so the standing gate is byte-for-
+// byte the same matrix it was: with PW_FOLD_CSS pointing at a stylesheet the gate
+// asserts the SAME 64 combinations with that stylesheet layered on, which is how
+// a candidate hero treatment earns the right to be looked at. PW_FOLD_LABEL keeps
+// each candidate's fold.json beside the baseline instead of on top of it.
+const EXTRA_CSS = process.env.PW_FOLD_CSS ? readFileSync(process.env.PW_FOLD_CSS, 'utf8') : null;
+const LABEL = process.env.PW_FOLD_LABEL || '';
+const output = path.join(root, 'output', LABEL ? `m8-fold-${LABEL}` : 'm8-fold');
 
 // The real-device range, not one lucky phone. The last entry is Al's own device
 // class, which is what caught this — a viewport nothing in the matrix covered.
@@ -205,6 +213,16 @@ for (const vp of VIEWPORTS) {
         const s = document.getElementById('pwSplash');
         return !s || s.classList.contains('splash-done');
       }, null, { timeout: 20000 });
+      // Appended to the END of <body>, not the head: index.html links app.css
+      // from the body, so a head-injected sheet loses every equal-specificity
+      // contest and the candidate silently does nothing.
+      if (EXTRA_CSS) {
+        await page.evaluate((css) => {
+          const s = document.createElement('style');
+          s.textContent = css;
+          document.body.appendChild(s);
+        }, EXTRA_CSS);
+      }
       await page.waitForTimeout(700);
 
       // Pin the caption so the two heights are deterministic rather than
@@ -263,4 +281,4 @@ if (failures.length) {
   for (const f of failures) console.error(`  - ${f}`);
   process.exit(1);
 }
-console.log(`\n[m8 fold] PASS — Home fits on all ${rows.length} combinations (${VIEWPORTS.length} viewports x EN/AF x one-line/longest).`);
+console.log(`\n[m8 fold${LABEL ? ` ${LABEL}` : ''}] PASS — Home fits on all ${rows.length} combinations (${VIEWPORTS.length} viewports x EN/AF x one-line/longest).`);

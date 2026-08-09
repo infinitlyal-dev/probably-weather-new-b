@@ -4944,3 +4944,176 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   .hourly-row .h-icon .pw-icon { width: 18px; height: 18px; }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   FACELIFT M9 — THE PHOTO TAKES THE ROOM (<=768px)
+   Al's ruling 2026-08-09, from output/hero-fill/ version C.
+
+   Two things, and they only work together.
+
+   1. The page fills the screen. Measured before this block existed: the content
+      simply ENDED and .nav (position:fixed) sat at the bottom of the viewport,
+      with nothing at all occupying the difference — 215px of it at 390x844,
+      255px at 428x926, 192px at 739x850. Only 320x488 had none to give (3px).
+      The column is now a flex box at least a screen tall in which the hero card
+      is the ONLY flexible child, so every spare pixel lands in the photograph
+      and nowhere else.
+
+   2. The photograph becomes a print. The desktop postcard's grammar — the same
+      cream stock, the same square corner, the same -2.4deg tilt — brought to the
+      phone, so the hero reads as a snapshot someone stuck on the page rather
+      than a panel. The witty line stays Caveat and becomes the ink on the foot.
+
+   Why it matters beyond the look: a taller frame at the same width is a SQUARER
+   window on the source. Measured on one photograph across both layouts, the
+   share of the picture the frame actually shows goes 35% -> 65% at 390x844,
+   35% -> 67% at 428x926 and 19% -> 33% at 739x850. That is the M7 crop problem
+   roughly halved by geometry alone. 320x488 does not move (26% -> 25%): that
+   screen was already full, and the frame costs it a few pixels.
+
+   Height discipline, because this block is one clamp away from breaking the fold
+   gate: the deeper foot and the tilt's overhang are bought back out of the photo
+   IN THIS BLOCK. Nothing here may add net column height. The whole matrix is
+   asserted by scripts/verify-home-fold.mjs — 64 combinations, and 320x488 on the
+   longest Afrikaans line passes with single-digit pixels to spare.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    /* The desktop postcard's own stock and ink (see #bgImg above). Reused rather
+       than re-picked: the two frames have to be the same print. */
+    --print-stock: #f6f2e8;
+    --print-ink: #24211d;
+    --print-frame: clamp(5px, 1.15vh, 11px);
+    --print-foot: clamp(4px, 1.1vh, 14px);
+    --hero-tilt: -2.4deg;
+    /* The tilt's vertical overhang is (card width / 2) * sin(2.4deg), and the
+       card is a little under a viewport wide — so ~2.1vw at each end. */
+    --tilt-pad: 2.1vw;
+  }
+
+  /* ---------- The column fills the screen ---------- */
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: 0;
+  }
+  .header { flex: 0 0 auto; }
+  .home-layout {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    /* The >=769px two-column rule leaves align-items:start on this element. As a
+       flex column that means children shrink to their own content width, and the
+       hero card collapses to 36px instead of filling the screen. */
+    align-items: stretch;
+    min-height: 0;
+  }
+  /* The text block sizes to its content and nothing more. It carries a
+     min-height at this width (595px at 739 wide) that otherwise swallows the
+     surplus before the hero can see it — left in, the photo came out SHORTER on
+     Al's own device class than it is today. */
+  main#home-screen.main { flex: 0 0 auto; min-height: 0; }
+
+  /* ---------- The print ---------- */
+  .hero-card {
+    /* The only flexible child: it takes the room, and it is also the thing that
+       gives it back. No min-height floor — a floor here stops the column
+       shrinking to fit on the smallest screen and pushes the stats pill under
+       the nav. */
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    position: relative;
+    background: var(--print-stock);
+    /* A print has square corners. 0 is exempt from the two-radius discipline. */
+    border-radius: 0;
+    /* The pin sits on the top frame, so the card can no longer clip. */
+    overflow: visible;
+    box-shadow: 0 18px 44px rgba(0,0,0,0.55), 0 6px 16px rgba(0,0,0,0.38);
+    transform: rotate(var(--hero-tilt));
+    transform-origin: 50% 100%;
+    margin-top: calc(var(--fold-rhythm) * 0.4 + var(--tilt-pad));
+  }
+  /* The gold pin. Absolutely positioned, so it costs zero column height, and it
+     sits ON the top frame rather than overhanging the card — an overhang would
+     collide with the header on the 488px-tall screen. */
+  .hero-card::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: clamp(2px, 0.5vh, 6px);
+    transform: translateX(-50%);
+    width: clamp(11px, 2.1vh, 18px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--brand-gold);
+    border: 2px solid var(--print-stock);
+    box-shadow: 0 4px 9px rgba(0,0,0,0.45), inset 0 1px 2px rgba(255,255,255,0.65);
+    z-index: 3;
+  }
+  .hero-photo {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+    border: var(--print-frame) solid var(--print-stock);
+    border-bottom-width: 0;
+  }
+
+  /* ---------- The caption becomes the foot of the print ----------
+     Ink on the stock, centred, and rotated about the SAME physical point as the
+     card — the centre of the seam between them (card 50% 100%, caption 50% 0) —
+     so the photo and its foot stay one rigid object instead of parting at the
+     corner. It cannot simply move inside .hero-card: display:none on that card
+     at >=769px would take the desktop postcard's caption with it. */
+  main#home-screen.main > .hero-caption {
+    background: var(--print-stock);
+    color: var(--print-ink);
+    border-radius: 0;
+    text-align: center;
+    padding-left: calc(16px + var(--print-frame));
+    padding-right: calc(16px + var(--print-frame));
+    padding-bottom: calc(var(--fold-rhythm) * 1.4 + var(--print-foot));
+    transform: rotate(var(--hero-tilt));
+    transform-origin: 50% 0;
+    margin-bottom: calc(var(--fold-rhythm) * 1.5 + var(--tilt-pad));
+  }
+  /* renderHome stamps a per-condition hero-* class on the caption, which repaints
+     it gold at 0,0,2,0. Gold on the cream foot is unreadable. */
+  main#home-screen.main > .hero-caption.hero-storm,
+  main#home-screen.main > .hero-caption.hero-rain,
+  main#home-screen.main > .hero-caption.hero-heat,
+  main#home-screen.main > .hero-caption.hero-cold,
+  main#home-screen.main > .hero-caption.hero-wind,
+  main#home-screen.main > .hero-caption.hero-uv,
+  main#home-screen.main > .hero-caption.hero-clear,
+  main#home-screen.main > .hero-caption.hero-cloudy,
+  main#home-screen.main > .hero-caption.hero-fog {
+    color: var(--print-ink);
+  }
+  /* The caption runs #home-screen .headline's heroFadeIn, and a RUNNING
+     animation's transform beats a declared one: without this the photo tilts and
+     the foot stays flat, hanging off the print at one corner. Identical trap to
+     the one heroFadeInPostcard exists for on desktop. Two-id specificity
+     (0,1,2,0) beats #home-screen .headline (0,1,1,0); animation-delay is
+     restated because the `animation` shorthand resets it. */
+  @keyframes heroFadeInPolaroid {
+    from { opacity: 0; transform: translateY(14px) rotate(var(--hero-tilt)); }
+    to   { opacity: 1; transform: rotate(var(--hero-tilt)); }
+  }
+  main#home-screen.main > .hero-caption {
+    animation: heroFadeInPolaroid 1s ease-in forwards;
+    animation-delay: 0.3s;
+  }
+
+  /* ---------- The data credit ----------
+     Already hidden below 481px and again at >=769px, so it only ever painted in
+     the 481-768px band — which is exactly Al's device class. It is position:fixed
+     above the nav, so it lived in the dead space and the collision was invisible;
+     now that the column fills the screen the stats pill lands on top of it.
+     Closing the band rather than moving it: the credit belongs to the desktop
+     frame, not the phone. */
+  .footer { display: none; }
+}
+
