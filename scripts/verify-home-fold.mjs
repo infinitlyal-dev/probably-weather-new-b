@@ -53,6 +53,12 @@ const VIEWPORTS = [
   { w: 360, h: 688, name: 'Android common + chrome' },
   { w: 375, h: 667, name: 'iPhone SE 2/3' },
   { w: 375, h: 574, name: 'iPhone SE 2/3 + chrome' },
+  // AL'S ACTUAL PHONE (iPhone X, 375x812). Added 2026-08-09 after he pointed out
+  // that the "Al's device class" label on the 739 entries below is wrong — 739 is
+  // not a phone at all, and every crop judgement made against it was made on a
+  // screen he does not own. Installed/standalone first, then with the Safari bars.
+  { w: 375, h: 812, name: "Al's iPhone X" },
+  { w: 375, h: 702, name: "Al's iPhone X + chrome" },
   { w: 390, h: 844, name: 'iPhone 14' },
   { w: 390, h: 734, name: 'iPhone 14 + chrome' },
   { w: 412, h: 915, name: 'Pixel 7' },
