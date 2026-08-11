@@ -328,6 +328,14 @@
         if (!safe) return;
         document.documentElement.style.setProperty('--hero-url', 'url("' + safe + '")');
       }
+      // M7: the stored crop belongs to the stored image and to nothing else.
+      // Every path that paints a DIFFERENT image than pw_last_bg — the 404
+      // fallback to default.jpg, or no stored pick at all — has to drop it,
+      // or default.jpg wears the previous photograph's offset for the whole
+      // cold-open window (and for the session if the chain never lands).
+      function clearHeroCrop() {
+        document.documentElement.style.removeProperty('--hero-crop');
+      }
       try {
         var last = localStorage.getItem('pw_last_bg');
         var img = document.getElementById('bgImg');
@@ -342,6 +350,7 @@
             img.src = 'assets/images/bg/default.jpg';
             // Keep the mobile hero card in step with the fallback.
             setHeroUrl('assets/images/bg/default.jpg');
+            clearHeroCrop();
           };
           img.src = last;
         }
@@ -353,6 +362,21 @@
         // storage access throws, `last` is simply unknown — the card must still
         // be seeded with the default rather than left unset and black.
         setHeroUrl(last || 'assets/images/bg/default.jpg');
+        // M7: seed the per-image crop offset the same way, so the cold-open
+        // paint uses the SAME crop app.js will settle on instead of painting at
+        // the default and then jumping. Seeded ONLY when the stored image is the
+        // one actually being painted; anything else clears it.
+        try {
+          var lastCrop = last ? localStorage.getItem('pw_last_crop') : null;
+          // /^\d+(\.\d+)?$/ not Number(): Number('  ') is 0 and Number('0x1e')
+          // is 30, so coercion alone would accept values app.js never writes.
+          var cropNum = (typeof lastCrop === 'string' && /^\d+(\.\d+)?$/.test(lastCrop)) ? parseFloat(lastCrop) : NaN;
+          if (isFinite(cropNum) && cropNum >= 0 && cropNum <= 100) {
+            document.documentElement.style.setProperty('--hero-crop', cropNum + '%');
+          } else {
+            clearHeroCrop();
+          }
+        } catch (e) { clearHeroCrop(); }
       } catch (e) {
         try { setHeroUrl('assets/images/bg/default.jpg'); } catch (_) {}
       }

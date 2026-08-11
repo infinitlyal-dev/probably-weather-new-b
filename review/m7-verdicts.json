@@ -1,0 +1,1056 @@
+{
+ "ruledBy": "Baken/Opus 5, 2026-08-09, by eye off output/m7-crop sheets",
+ "ruledAgainst": "worst-case hero box 739x850 -> 643x216.75, background-position 50% 78%",
+ "note": "Keys are bucket#position, matching the numbered cells on the sheets. Never joined by hash.",
+ "verdicts": {
+  "clear-dawn#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-dawn#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 70
+  },
+  "clear-dawn#3": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dawn#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-dawn#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-dawn#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-dawn#7": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 30
+  },
+  "clear-day#2": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 30
+  },
+  "clear-day#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 30
+  },
+  "clear-day#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "clear-day#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 30
+  },
+  "clear-day#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-day#8": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#9": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-day#10": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "clear-day#11": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#12": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#13": {
+   "verdict": "FIXABLE",
+   "anchorY": 30
+  },
+  "clear-day#14": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dusk#1": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dusk#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "clear-dusk#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "clear-dusk#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-dusk#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-dusk#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-dusk#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "clear-night#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-night#2": {
+   "verdict": "SURVIVES"
+  },
+  "clear-night#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "clear-night#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-night#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "clear-night#6": {
+   "verdict": "SURVIVES"
+  },
+  "clear-night#7": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-dawn#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-dawn#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-dawn#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-dawn#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-dawn#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-day#1": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-day#2": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 30
+  },
+  "cloudy-day#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cloudy-day#5": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-day#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cloudy-day#7": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-day#8": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-day#9": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cloudy-day#10": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-day#11": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-day#12": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cloudy-day#13": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cloudy-day#14": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-dusk#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cloudy-dusk#2": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-dusk#3": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-dusk#4": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-dusk#5": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-dusk#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cloudy-dusk#7": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-night#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cloudy-night#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-night#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cloudy-night#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cloudy-night#5": {
+   "verdict": "SURVIVES"
+  },
+  "cloudy-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cloudy-night#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-clear-dawn#1": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-dawn#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "cold-clear-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-clear-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-dawn#5": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-dawn#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-clear-dawn#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cold-clear-day#1": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-day#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "cold-clear-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-clear-day#4": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-day#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-clear-day#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "cold-clear-day#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cold-clear-dusk#1": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-dusk#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "cold-clear-dusk#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cold-clear-dusk#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "cold-clear-dusk#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-clear-dusk#6": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-dusk#7": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-night#1": {
+   "verdict": "SURVIVES"
+  },
+  "cold-clear-night#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-clear-night#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-clear-night#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-clear-night#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-clear-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "cold-clear-night#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-dawn#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-dawn#2": {
+   "verdict": "SURVIVES"
+  },
+  "cold-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "cold-dawn#5": {
+   "verdict": "SURVIVES"
+  },
+  "cold-dawn#6": {
+   "verdict": "SURVIVES"
+  },
+  "cold-dawn#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "cold-day#1": {
+   "verdict": "SURVIVES"
+  },
+  "cold-day#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cold-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cold-day#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-day#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-day#6": {
+   "verdict": "SURVIVES"
+  },
+  "cold-day#7": {
+   "verdict": "SURVIVES"
+  },
+  "cold-day#8": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-day#9": {
+   "verdict": "SURVIVES"
+  },
+  "cold-day#10": {
+   "verdict": "SURVIVES"
+  },
+  "cold-day#11": {
+   "verdict": "SURVIVES"
+  },
+  "cold-day#12": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cold-day#13": {
+   "verdict": "SURVIVES"
+  },
+  "cold-day#14": {
+   "verdict": "SURVIVES"
+  },
+  "cold-dusk#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "cold-dusk#2": {
+   "verdict": "SURVIVES"
+  },
+  "cold-dusk#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-dusk#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "cold-dusk#5": {
+   "verdict": "SURVIVES"
+  },
+  "cold-dusk#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-dusk#7": {
+   "verdict": "SURVIVES"
+  },
+  "cold-night#1": {
+   "verdict": "SURVIVES"
+  },
+  "cold-night#2": {
+   "verdict": "SURVIVES"
+  },
+  "cold-night#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "cold-night#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "cold-night#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "cold-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "cold-night#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "fog-dawn#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "fog-dawn#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "fog-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "fog-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dawn#5": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dawn#6": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dawn#7": {
+   "verdict": "SURVIVES"
+  },
+  "fog-day#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "fog-day#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "fog-day#3": {
+   "verdict": "SURVIVES"
+  },
+  "fog-day#4": {
+   "verdict": "SURVIVES"
+  },
+  "fog-day#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "fog-day#6": {
+   "verdict": "SURVIVES"
+  },
+  "fog-day#7": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dusk#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "fog-dusk#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "fog-dusk#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "fog-dusk#4": {
+   "verdict": "FAILS",
+   "cause": "near-black at every offset — no band carries a subject"
+  },
+  "fog-dusk#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "fog-dusk#6": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dusk#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "fog-night#1": {
+   "verdict": "SURVIVES"
+  },
+  "fog-night#2": {
+   "verdict": "SURVIVES"
+  },
+  "fog-night#3": {
+   "verdict": "SURVIVES"
+  },
+  "fog-night#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "fog-night#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "fog-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "fog-night#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "heat-dawn#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "heat-dawn#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "heat-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "heat-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "heat-dawn#5": {
+   "verdict": "SURVIVES"
+  },
+  "heat-dawn#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "heat-dawn#7": {
+   "verdict": "SURVIVES"
+  },
+  "heat-day#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "heat-day#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "heat-day#3": {
+   "verdict": "SURVIVES"
+  },
+  "heat-day#4": {
+   "verdict": "SURVIVES"
+  },
+  "heat-day#5": {
+   "verdict": "SURVIVES"
+  },
+  "heat-day#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "heat-day#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "heat-dusk#1": {
+   "verdict": "SURVIVES"
+  },
+  "heat-dusk#2": {
+   "verdict": "SURVIVES"
+  },
+  "heat-dusk#3": {
+   "verdict": "SURVIVES"
+  },
+  "heat-dusk#4": {
+   "verdict": "SURVIVES"
+  },
+  "heat-dusk#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "heat-dusk#6": {
+   "verdict": "SURVIVES"
+  },
+  "heat-dusk#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "heat-night#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "heat-night#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "heat-night#3": {
+   "verdict": "SURVIVES"
+  },
+  "heat-night#4": {
+   "verdict": "SURVIVES"
+  },
+  "heat-night#5": {
+   "verdict": "SURVIVES"
+  },
+  "heat-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "heat-night#7": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dawn#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "rain-dawn#2": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "rain-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dawn#5": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dawn#6": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dawn#7": {
+   "verdict": "SURVIVES"
+  },
+  "rain-day#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "rain-day#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "rain-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "rain-day#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "rain-day#5": {
+   "verdict": "SURVIVES"
+  },
+  "rain-day#6": {
+   "verdict": "SURVIVES"
+  },
+  "rain-day#7": {
+   "verdict": "SURVIVES"
+  },
+  "rain-day#8": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "rain-day#9": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "rain-day#10": {
+   "verdict": "SURVIVES"
+  },
+  "rain-day#11": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "rain-day#12": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "rain-day#13": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "rain-day#14": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dusk#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "rain-dusk#2": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dusk#3": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dusk#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "rain-dusk#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "rain-dusk#6": {
+   "verdict": "SURVIVES"
+  },
+  "rain-dusk#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "rain-night#1": {
+   "verdict": "SURVIVES"
+  },
+  "rain-night#2": {
+   "verdict": "SURVIVES"
+  },
+  "rain-night#3": {
+   "verdict": "SURVIVES"
+  },
+  "rain-night#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "rain-night#5": {
+   "verdict": "SURVIVES"
+  },
+  "rain-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "rain-night#7": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dawn#1": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dawn#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "storm-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "storm-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dawn#5": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dawn#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "storm-dawn#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "storm-day#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "storm-day#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "storm-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "storm-day#4": {
+   "verdict": "SURVIVES"
+  },
+  "storm-day#5": {
+   "verdict": "SURVIVES"
+  },
+  "storm-day#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "storm-day#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "storm-day#8": {
+   "verdict": "SURVIVES"
+  },
+  "storm-day#9": {
+   "verdict": "SURVIVES"
+  },
+  "storm-day#10": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "storm-day#11": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "storm-day#12": {
+   "verdict": "SURVIVES"
+  },
+  "storm-day#13": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "storm-day#14": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "storm-dusk#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "storm-dusk#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "storm-dusk#3": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dusk#4": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dusk#5": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dusk#6": {
+   "verdict": "SURVIVES"
+  },
+  "storm-dusk#7": {
+   "verdict": "SURVIVES"
+  },
+  "storm-night#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "storm-night#2": {
+   "verdict": "SURVIVES"
+  },
+  "storm-night#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "storm-night#4": {
+   "verdict": "SURVIVES"
+  },
+  "storm-night#5": {
+   "verdict": "SURVIVES"
+  },
+  "storm-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "storm-night#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "wind-dawn#1": {
+   "verdict": "SURVIVES"
+  },
+  "wind-dawn#2": {
+   "verdict": "SURVIVES"
+  },
+  "wind-dawn#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "wind-dawn#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "wind-dawn#5": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "wind-dawn#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "wind-dawn#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "wind-day#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "wind-day#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "wind-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "wind-day#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "wind-day#5": {
+   "verdict": "SURVIVES"
+  },
+  "wind-day#6": {
+   "verdict": "SURVIVES"
+  },
+  "wind-day#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 60
+  },
+  "wind-day#8": {
+   "verdict": "SURVIVES"
+  },
+  "wind-day#9": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "wind-day#10": {
+   "verdict": "SURVIVES"
+  },
+  "wind-day#11": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "wind-day#12": {
+   "verdict": "SURVIVES"
+  },
+  "wind-day#13": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "wind-day#14": {
+   "verdict": "SURVIVES"
+  },
+  "wind-dusk#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "wind-dusk#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "wind-dusk#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "wind-dusk#4": {
+   "verdict": "SURVIVES"
+  },
+  "wind-dusk#5": {
+   "verdict": "SURVIVES"
+  },
+  "wind-dusk#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "wind-dusk#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "wind-night#1": {
+   "verdict": "SURVIVES"
+  },
+  "wind-night#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "wind-night#3": {
+   "verdict": "SURVIVES"
+  },
+  "wind-night#4": {
+   "verdict": "SURVIVES"
+  },
+  "wind-night#5": {
+   "verdict": "SURVIVES"
+  },
+  "wind-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "wind-night#7": {
+   "verdict": "SURVIVES"
+  }
+ }
+}

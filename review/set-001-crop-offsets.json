@@ -1,0 +1,230 @@
+{
+ "note": "M7 DRAFT — per-image vertical ANCHOR (percentage), NOT shipped. Al ruled 2026-08-09: percentage anchors, not pixels. One optional anchor per image, honoured at EVERY hero height. The 27 offsets ruled on 2026-08-08 are DISCARDED: they were chosen by eye against a single 304px hero, and M8 made the hero viewport-dependent (104-300px), so they describe a band that no longer exists. Re-derived in the M7 re-render against both the 390x844 hero and the shortest-viewport hero.",
+ "generated": "2026-08-08",
+ "heroBand": {
+  "widthPx": 342,
+  "heightPx": 303.83,
+  "measuredAt": "390x844, production, 2026-08-08"
+ },
+ "offsets": {
+  "84beada2e358": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "slot": "A/mon",
+   "image": "clear/week_3/day/4.webp",
+   "reason": "man leaving a building — HEAD CUT at top of band",
+   "anchorY": null
+  },
+  "f673af851f9c": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "slot": "A/thu",
+   "image": "clear/week_3/day/1.webp",
+   "reason": "row of seated schoolkids — heads of the further kids cut mid-face",
+   "anchorY": null
+  },
+  "e9616cb7c61c": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "slot": "A/sat",
+   "image": "clear/week_2/day/4.webp",
+   "reason": "man in deck chair with beer — HEAD CUT at chin",
+   "anchorY": null
+  },
+  "448b951052cc": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "slot": "B/wed",
+   "image": "clear/week_4/day/2.webp",
+   "reason": "child on lawn — HEAD CUT, second figure cut at waist",
+   "anchorY": null
+  },
+  "7d50ec606bfc": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-dusk",
+   "slot": "A/wed",
+   "image": "clear/week_2/dusk/4.webp",
+   "reason": "mountain biker — rider CUT AT THE THIGH, upper body above the band",
+   "anchorY": null
+  },
+  "05cd0ad39fd6": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-night",
+   "slot": "A/thu",
+   "image": "clear/week_2/night/5.webp",
+   "reason": "cat on lawn is fine, but the people in the doorway behind are cut at the chest",
+   "anchorY": null
+  },
+  "2b750515575e": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-day",
+   "slot": "A/mon",
+   "image": "rain/week_1/day/2.webp",
+   "reason": "kid jumping in a puddle — HEAD CUT at the shoulders",
+   "anchorY": null
+  },
+  "e54bbf2b56b2": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-day",
+   "slot": "A/fri",
+   "image": "rain/week_3/day/3.webp",
+   "reason": "woman in heels leaping a puddle — CUT AT MID-TORSO",
+   "anchorY": null
+  },
+  "fe838c8901f7": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-day",
+   "slot": "B/mon",
+   "image": "rain/week_2/day/1.webp",
+   "reason": "hi-vis worker with a spade — HEAD CUT at the chin",
+   "anchorY": null
+  },
+  "d878b96a3f71": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-day",
+   "slot": "B/tue",
+   "image": "rain/week_1/day/1.webp",
+   "reason": "mother + two schoolkids splashing — the ADULT head is cut",
+   "anchorY": null
+  },
+  "d86d4f5699c2": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-day",
+   "slot": "B/thu",
+   "image": "rain/week_3/day/1.webp",
+   "reason": "row of schoolkids — ALL heads cut, legs and gumboots only",
+   "anchorY": null
+  },
+  "a0ef2720c507": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-day",
+   "slot": "B/fri",
+   "image": "rain/week_3/day/7.webp",
+   "reason": "two men under one umbrella — BOTH heads cut at the chin",
+   "anchorY": null
+  },
+  "41e6c19016c1": {
+   "verdict": "FIXABLE",
+   "bucket": "storm-day",
+   "slot": "A/tue",
+   "image": "storm/week_1/day/3.webp",
+   "reason": "people sheltering under an awning — HEADS CUT mid-face",
+   "anchorY": null
+  },
+  "10cac134f9d9": {
+   "verdict": "FIXABLE",
+   "bucket": "storm-day",
+   "slot": "B/fri",
+   "image": "storm/week_3/day/1.webp",
+   "reason": "man tying a tarp on a bakkie — HEAD CUT, chest down only",
+   "anchorY": null
+  },
+  "084405b1c79a": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-day",
+   "slot": "A/wed",
+   "image": "cold/week_2/day/5.webp",
+   "reason": "man scraping a frosted windscreen — HEAD CUT at the neck",
+   "anchorY": null
+  },
+  "36ffe52cf7ec": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-day",
+   "slot": "A/sun",
+   "image": "cold/week_2/day/4.webp",
+   "reason": "dog asleep by the bed is fine, but the people behind are legs-only",
+   "anchorY": null
+  },
+  "a373f1d83e2f": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-day",
+   "slot": "B/fri",
+   "image": "cold/week_4/day/1.webp",
+   "reason": "person blowing on their hands — HEAD CUT at the mouth",
+   "anchorY": null
+  },
+  "232bde6ed095": {
+   "verdict": "FIXABLE",
+   "bucket": "wind-day",
+   "slot": "A/mon",
+   "image": "wind/week_1/day/5.webp",
+   "reason": "two people battling wind — the right figure HEAD CUT",
+   "anchorY": null
+  },
+  "4d3a786acf48": {
+   "verdict": "FIXABLE",
+   "bucket": "wind-day",
+   "slot": "A/tue",
+   "image": "wind/week_2/day/1.webp",
+   "reason": "dress blowing up — subject CUT AT THE CHEST, legs and skirt only",
+   "anchorY": null
+  },
+  "eb217457f58d": {
+   "verdict": "FIXABLE",
+   "bucket": "wind-day",
+   "slot": "A/wed",
+   "image": "wind/week_1/day/7.webp",
+   "reason": "kid out of a car, adult holding the door — ADULT HEAD CUT",
+   "anchorY": null
+  },
+  "330bfae094d5": {
+   "verdict": "FIXABLE",
+   "bucket": "wind-day",
+   "slot": "B/tue",
+   "image": "wind/week_2/day/6.webp",
+   "reason": "man bent double in a dust gust — HEAD CUT at the shoulders",
+   "anchorY": null
+  },
+  "946282c83968": {
+   "verdict": "FIXABLE",
+   "bucket": "wind-day",
+   "slot": "B/sat",
+   "image": "wind/week_4/day/2.webp",
+   "reason": "man with a beach umbrella — HEAD CUT at the shoulders",
+   "anchorY": null
+  },
+  "5a72972b399b": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-day",
+   "slot": "A/thu",
+   "image": "cloudy/week_4/day/6.webp",
+   "reason": "man from behind with an umbrella — HEAD CUT at the shoulders",
+   "anchorY": null
+  },
+  "c16f8303d56e": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-day",
+   "slot": "A/sat",
+   "image": "cloudy/week_3/day/1.webp",
+   "reason": "man mowing — HEAD CUT at the chest",
+   "anchorY": null
+  },
+  "47550fce6c98": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-day",
+   "slot": "B/tue",
+   "image": "cloudy/week_3/day/4.webp",
+   "reason": "man on a roof by solar panels — HEAD CUT at the chest",
+   "anchorY": null
+  },
+  "98d89edda1cd": {
+   "verdict": "FIXABLE",
+   "bucket": "heat-day",
+   "slot": "A/mon",
+   "image": "heat/week_1/day/4.webp",
+   "reason": "egg frying on a car bonnet — the MAN is cut at the shoulders, kids are fine",
+   "anchorY": null
+  },
+  "d6593f52fb76": {
+   "verdict": "FIXABLE",
+   "bucket": "heat-day",
+   "slot": "A/tue",
+   "image": "heat/week_2/day/2.webp",
+   "reason": "office cubicles — BOTH women cut at the neck",
+   "anchorY": null
+  }
+ },
+ "anchorSemantics": "CSS background-position-y percentage: the image point at p% is aligned with the band point at p%. That is why it survives a changing hero height — it is a ratio, not a pixel offset. p=50 centres the image; the LIVE default is 78 (Al Crop C, 2026-08-06), NOT 50 — changing that default would re-frame all 294 images and needs Al eyes of its own.",
+ "discardedOn": "2026-08-09",
+ "liveDefaultAnchorY": 78
+}

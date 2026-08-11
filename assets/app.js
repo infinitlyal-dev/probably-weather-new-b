@@ -11,6 +11,7 @@ import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from '
 import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
 import { pickConditionIconForTime, pickHourlyIcon, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { weatherIconSvg, ICON_CONDITION } from './weather-icons.js';
+import { heroCropFor, applyHeroCrop } from './hero-crop.js';
 import { buildShareLink, sanitizeTelemetryUrl } from './share-url.js';
 import {
   FRESHNESS_MS,
@@ -1615,11 +1616,24 @@ document.addEventListener("DOMContentLoaded", () => {
       // from the static shell (index.html inline script reads pw_last_bg)
       // instead of waiting out grace → locate → weather → image — the serial
       // chain measured at 8-10s of black screen on mobile.
-      try { localStorage.setItem('pw_last_bg', bgImg.getAttribute('src') || ''); } catch (_) {}
+      // The path and its crop offset are written in ONE try, and the crop FIRST.
+      // Two separate try blocks can diverge: at storage quota the overwrite of an
+      // existing pw_last_bg succeeds while a first-ever pw_last_crop throws, and
+      // the next cold open would then pair the new image with the old offset.
+      try {
+        const landed = bgImg.getAttribute('src') || '';
+        const crop = heroCropFor(landed);
+        localStorage.setItem('pw_last_crop', crop == null ? '' : String(crop));
+        localStorage.setItem('pw_last_bg', landed);
+      } catch (_) {}
       // Expose the landed hero URL to CSS so the desktop (>768px) contained-frame
       // layout can paint the wide gutters with a blurred, darkened copy of the
       // very same image. No-op on mobile (the gutter layer is desktop-only CSS).
       try { document.documentElement.style.setProperty('--hero-url', `url("${bgImg.currentSrc || bgImg.src}")`); } catch (_) {}
+      // M7: an OPTIONAL per-image vertical crop offset. Null means "no entry" and
+      // CLEARS the property, so the CSS default is the single source of that
+      // number and a previous image's offset can never leak onto the next one.
+      try { applyHeroCrop(document.documentElement, heroCropFor(bgImg.getAttribute('src') || '')); } catch (_) {}
       // Detach so a later cache eviction / network blip can't replay the chain.
       bgImg.onerror = null;
       bgImg.onload = null;
