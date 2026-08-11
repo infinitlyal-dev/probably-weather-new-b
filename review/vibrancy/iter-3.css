@@ -1,0 +1,46 @@
+/* ITER 3 — THE EVIDENCE IS PRINTED ON THE SAME PAPER
+   Critique it answers: fixing the room and the voice made the BOTTOM half look
+   worse, not better. The top of the screen is now a photograph in a lit room
+   with a joke and a gold wordmark; underneath it sits 0.63rem letterspaced grey
+   micro-caps (WIND / RAIN / UV) on a flat charcoal pill — the enterprise
+   dashboard alphabet, unchanged since the facelift. Two design languages, one
+   screen, and the second one is the one every other weather app also uses.
+
+   The move: the evidence gets printed on the same stock as the joke. The stats
+   pill takes a whisper of the print's cream instead of flat charcoal, its
+   dividers and micro-caps become cream rather than grey, and the agreement line
+   picks up the same ink. Values stay white and the surface stays dark, so
+   nothing about the data's credibility changes — this is a change of PAPER, not
+   of legibility.
+
+   Explicitly NOT done here: no layout, no reordering, no new element, and the
+   pill keeps its geometry to the pixel. */
+@media (max-width: 768px) {
+  .stats-row {
+    /* Was flat var(--surface). Cream at 0.055 over the warm charcoal is the same
+       wash the Bronne consensus legend already carries, so the two evidence
+       surfaces in the app now match each other. */
+    background:
+      linear-gradient(rgba(246, 242, 232, 0.055), rgba(246, 242, 232, 0.055)),
+      var(--surface);
+    /* A printed edge rather than a component edge. */
+    border: 1px solid rgba(246, 242, 232, 0.10);
+  }
+  /* Hairlines between the three metrics: cream, not white — the same line the
+     print's foot would leave. */
+  .stats-row .stat + .stat {
+    border-left-color: rgba(246, 242, 232, 0.16);
+  }
+  /* The alphabet. Same size and tracking (this is not a type change — the fold
+     budget owns those numbers); only the ink moves from cool grey to the stock. */
+  .stats-row .stat-k,
+  .stats-row .stat-sub {
+    color: var(--paper-ink);
+  }
+  /* The agreement line is the app's credibility sentence — it belongs to the
+     same printed family. */
+  .agree-line { color: var(--paper-ink); }
+  /* Feels-like and the low/high line: the quiet supporting text, same ink. */
+  .feels-line,
+  .range-line { color: var(--paper-ink); }
+}

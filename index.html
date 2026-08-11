@@ -519,9 +519,9 @@
         <!-- M3 chart furniture is mobile-only. The >=769px hourly screen is
              outside the facelift and keeps exactly the table it always had. -->
         <p id="hourlySubtitle" class="page-sub m-only"></p>
-        <!-- The segmented track is #0d0d12, which is also the page colour, so on
-             this screen it needs a surface under it to read at all. In Settings
-             the same control reads because it sits on a #16171d row. -->
+        <!-- The segmented track is --page-bg, which is also the page colour, so
+             on this screen it needs a surface under it to read at all. In
+             Settings the same control reads because it sits on a --surface row. -->
         <div class="seg-surface m-only">
           <div id="hourlyMetricToggle" class="seg-control seg-wide" role="group">
             <button type="button" class="seg-option is-on" data-metric="temp" aria-pressed="true">Temp</button>
@@ -544,6 +544,10 @@
         <h2 class="screen-title">7-Day Forecast</h2>
       </div>
       <div class="screen-panel-body">
+        <!-- Warmth pass: the quiet one-liner slot. Starts hidden and is filled
+             by applyLanguage() only where the wording is approved, so an
+             unapproved language shows no slot at all rather than English. -->
+        <p id="weekSubtitle" class="page-sub m-only" hidden></p>
         <div id="daily-cards" class="daily-cards"></div>
       </div>
     </section>

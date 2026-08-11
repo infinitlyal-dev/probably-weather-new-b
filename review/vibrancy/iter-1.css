@@ -1,0 +1,85 @@
+/* ITER 1 — THE ROOM TAKES THE PHOTOGRAPH'S LIGHT
+   Critique it answers: the print is the only object in the room, and the room is
+   a flat charcoal rectangle with nothing to do with the picture, the weather or
+   the country. Top third is a holiday; bottom two thirds is a filing cabinet.
+   The desktop postcard never does this — it stands the photo on a surface MADE
+   from the photo (blurred gutters), and the old full-bleed home didn't either:
+   the photo was the room. That disconnect is the corporate tell.
+
+   The move: bring the desktop's own gutter grammar to the phone. A heavily
+   blurred, darkened copy of the SAME hero image behind the page, killed off by a
+   scrim before it reaches the data. No new DOM, no layout, no new asset — it
+   paints from --hero-url, which the shell already sets on mobile. Static layer,
+   composited once; nothing is generated per frame. */
+@media (max-width: 768px) {
+  /* THE LOAD-BEARING LINE. #bg is position:fixed at z-index:-1, and CSS paints
+     negative-z stacking contexts BEFORE in-flow block boxes — so body's own
+     opaque background sits on top of #bg and nothing inside it can be seen. The
+     base colour stays on <html> (which paints the canvas), body keeps its grain
+     image, and #bg finally reaches the glass. Verified by sampling a pixel: flat
+     page colour before, the photograph's own blue after. */
+  body { background-color: transparent; }
+
+  /* The wash sits INSIDE #bg (already fixed, full-viewport, z-index:-1) as a
+     pseudo-element, so no element is added to the document. z-index:-1 keeps it
+     behind #particles, so weather motion still plays over it. */
+  #bg::after {
+    content: "";
+    position: absolute;
+    /* Overscanned: a 40px blur samples transparent pixels at the edges and
+       leaves a pale halo if the layer stops at the viewport. */
+    inset: -12%;
+    z-index: -1;
+    background-image: var(--hero-url, none);
+    background-size: cover;
+    background-position: center 38%;
+    /* Dark enough that white text over it is unchanged in contrast, saturated
+       enough that the storm reads blue-violet and the beach reads turquoise.
+       The blur is what stops it being a second photograph competing with the
+       print. */
+    filter: blur(38px) saturate(1.35) brightness(0.42);
+    /* Static: no animation, no re-render trigger. */
+    pointer-events: none;
+  }
+  /* THE RAIN, NOW THAT YOU CAN SEE IT.
+     Al flagged "stray light dashes" on the wash frames. Measured, not guessed:
+     emptying #particles changes 684 pixels on the storm frame and 0 on the sunny
+     one, so they are the rain particles — 2x20px hard white bars at 0.75 alpha —
+     and nothing to do with the tape or the pin. They were invisible against flat
+     black and the lit room exposed them.
+     They are a feature (weather motion), so this makes them behave like rain
+     instead of debris: thinner, tapered from transparent at the head to visible
+     at the tail, cooler, and quieter. No blur — 28 animated elements with a
+     filter on them is a per-frame cost the brief rules out. */
+  .particle.rain {
+    width: 1.5px;
+    height: clamp(13px, 2.1vh, 20px);
+    opacity: 0.5;
+    background: linear-gradient(
+      to bottom,
+      rgba(216, 230, 247, 0) 0%,
+      rgba(216, 230, 247, 0.34) 45%,
+      rgba(216, 230, 247, 0.62) 100%
+    );
+  }
+
+  /* The scrim: the glow belongs to the top of the screen where the print is.
+     By the time the eye reaches the temperature and the stats pill the page is
+     the page colour again, so every data surface keeps the contrast it was
+     measured at. */
+  #bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(20, 17, 13, 0.34) 0%,
+        rgba(20, 17, 13, 0.52) 38%,
+        rgba(20, 17, 13, 0.92) 62%,
+        var(--page-bg) 78%
+      );
+    pointer-events: none;
+  }
+}

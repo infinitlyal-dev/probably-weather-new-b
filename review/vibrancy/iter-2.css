@@ -1,0 +1,35 @@
+/* ITER 2 — "PROBABLY" GETS THE SHARE CARD'S VOICE
+   Critique it answers: with the room fixed, the loudest remaining corporate tell
+   is that the app's own word is whispered. The share card — the anchor Al named
+   — sets "Probably" at 112px in #ffd700 at weight 900, and it is the whole
+   design. In-app the same word is a 0.42em grey label sitting above a plain
+   white number, so the screen shouts a measurement and mumbles the joke. A
+   weather app shows you a number; THIS app says "probably", and that is the
+   difference between the two products.
+
+   The move: bring the share card's treatment to the hero lockup. Gold wordmark,
+   heavier, larger relative to the number, and pulled tight so the two read as
+   one thing said in one breath — "Probably … 29°" — rather than a caption and a
+   readout. The NUMBER stays white: data stays data, and gold stays brand.
+
+   Not a colour-system breach: yellow is brand and primary action, and the
+   wordmark is the brand. Orange is untouched. */
+@media (max-width: 768px) {
+  .temp .hero-probably {
+    /* Was 0.42em / 700 / --ink-2 (M1 stepped it back so the number could
+       dominate). It still does not out-weigh the number — 0.52em of a 3.8rem
+       figure is ~1.98rem against ~3.8rem — it just stops apologising. */
+    font-size: 0.52em;
+    font-weight: 800;
+    color: var(--brand-gold);
+    letter-spacing: -0.015em;
+    /* Tight to the number: one lockup, not two stacked lines. */
+    line-height: 0.98;
+    margin-bottom: -0.04em;
+    /* The gold is on a photographic wash now, not flat charcoal, so it carries
+       the same soft dark backing the share card gives it. */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  }
+  /* The number keeps its own weight and colour; only the optical gap closes. */
+  .temp .hero-now { letter-spacing: -0.035em; }
+}

@@ -1,0 +1,109 @@
+/* ITER 5 — THE PRINT BECOMES AN OBJECT SOMEBODY STUCK THERE
+   Critique it answers: with the room lit, the voice gold, the evidence on the
+   same paper and the light following you through the app, the last thing that
+   still reads manufactured is the print itself. It is a perfect rectangle with a
+   perfect drop shadow and a symmetrical dot at dead centre — a card component
+   doing an impression of a photograph. The desktop postcard at its best (the
+   anchor) reads as a physical object on a surface; this reads as a div.
+   Nothing on the screen has a hand in it except the handwriting.
+
+   The move — one idea, physicality — spent in three places that are all the same
+   idea: a strip of tape holding the print down, a shadow that behaves like an
+   object lying ON something rather than floating over it, and a hairline of
+   warmth on the stock's edges so the cream has a thickness.
+
+   About the pin: it is REPLACED, not lost, and this is the one prior decision
+   this loop undoes. Reason, stated: tape and pin are two fasteners doing one
+   job, and the dot is the more generic of the two — it is the fastener a design
+   system would pick, the tape is the one a person would. If Al wants the pin
+   back it is one line (the ::after in the M9 block is untouched; this only hides
+   it), and iteration 5 is separable from 1-4. */
+@media (max-width: 768px) {
+  /* The pin steps aside for the tape. M9's rule is untouched — restoring it is
+     deleting this one line. */
+  .hero-card::after { display: none; }
+
+  /* THE TAPE. Drawn on the card's ::before (unused by M9), so no element is
+     added: a translucent band of the stock, slightly crooked against the
+     print's own -2.4deg, catching a little light along its top edge the way
+     matt tape does. It overhangs the corner, which is what sells it as holding
+     the print to the page rather than being printed on it. */
+  .hero-card::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    /* Laid ACROSS the corner, half on the print and half on the page.
+       GEOMETRY, MEASURED (Al's callout that it hits the app header): a strip of
+       width w rotated by r has a bounding box (w·sin r + h·cos r) tall, centred
+       on the strip's own centre. At w=86, r=40deg that is 74px tall centred at
+       card.top+2 — reaching y≈48 while the header only ends at y≈79. It was
+       lying across the brand, on every phone in the matrix.
+       Shorter, flatter, and started INSIDE the card: w≈70, r=30deg gives a 52px
+       box centred at card.top+22, so the top edge sits within a few pixels of
+       the print's own top and never enters the header band. */
+    top: clamp(9px, 1.4vh, 14px);
+    left: clamp(-16px, -3.4vw, -10px);
+    width: clamp(62px, 17.5vw, 78px);
+    height: clamp(17px, 2.4vh, 22px);
+    /* WARM, not cream-over-blue. The first pass used the print's own stock at
+       low alpha; over the storm's blue wash that composites to cold grey and
+       reads as plastic. Masking tape is a warm ochre-white and it TINTS what is
+       under it rather than veiling it — hence the amber cast and the screen
+       blend on the highlight edge. */
+    background:
+      linear-gradient(
+        102deg,
+        rgba(238, 214, 158, 0.34) 0%,
+        rgba(246, 231, 190, 0.68) 20%,
+        rgba(250, 240, 214, 0.74) 52%,
+        rgba(236, 214, 164, 0.46) 100%
+      );
+    /* The two torn ends, cut at slightly different angles so the strip is not
+       symmetrical. */
+    clip-path: polygon(3% 10%, 97% 0%, 100% 86%, 0% 100%);
+    transform: rotate(-30deg);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.30);
+    pointer-events: none;
+  }
+
+  /* THE SHADOW. Was 0 18px 44px / 0 6px 16px straight down — a card floating
+     above a surface. An object lying on a surface has a tight dark contact edge
+     and a long soft body, and it throws slightly to one side because the light
+     in this app comes from the top-left (see the tape's own highlight). */
+  .hero-card {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.55),
+      6px 14px 26px rgba(0, 0, 0, 0.50),
+      14px 30px 60px rgba(0, 0, 0, 0.42);
+  }
+
+  /* THE EDGE. A hairline warm-light on the top/left of the stock and a hairline
+     of shade on the bottom/right, so the cream has thickness instead of being a
+     fill. Inset only — no geometry changes, nothing grows by a pixel. */
+  .hero-card,
+  main#home-screen.main > .hero-caption {
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 253, 246, 0.55),
+      inset -1px -1px 0 rgba(90, 74, 52, 0.22);
+  }
+  /* The card needs BOTH its drop shadow and its inset edge; the rule above would
+     otherwise replace the one before it. */
+  .hero-card {
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 253, 246, 0.55),
+      inset -1px -1px 0 rgba(90, 74, 52, 0.22),
+      0 1px 2px rgba(0, 0, 0, 0.55),
+      6px 14px 26px rgba(0, 0, 0, 0.50),
+      14px 30px 60px rgba(0, 0, 0, 0.42);
+  }
+  /* The foot is the same sheet as the card, so its shadow has to agree with it
+     or the print looks like two objects. */
+  main#home-screen.main > .hero-caption {
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 253, 246, 0.55),
+      inset -1px -1px 0 rgba(90, 74, 52, 0.22),
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      6px 12px 22px rgba(0, 0, 0, 0.42),
+      12px 26px 48px rgba(0, 0, 0, 0.34);
+  }
+}

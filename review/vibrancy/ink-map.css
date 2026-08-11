@@ -1,0 +1,64 @@
+/* THE INK MAP — one marker per condition, proposed 2026-08-10 for Al's ruling.
+   Al's ink ruling: all four sampled inks approved, and the ink becomes
+   CONDITION-MAPPED — stable per condition, never per-day random, no gradients,
+   no glow, orange and red excluded.
+
+   Six inks over thirteen condition keys, in five families:
+
+     wets     petrol  #0b5c68   rain · rain-possible · storm · thunder · hail · fog
+     warm     pink    #a81259   heat · uv
+     mild     green   #1c6b3a   clear
+     cold     violet  #3c2f80   cold · cold-clear          (NEW candidate 1)
+     wind     umber   #5a3a22   wind                       (NEW candidate 2)
+     default  dark    #1b1813   cloudy — the everyday, the plain pen
+
+   Why cloudy takes the plain dark ink: it is the most common condition in the
+   Western Cape and the one with nothing to say. A day the weather has an opinion
+   about gets a coloured pen; an ordinary one gets the black one.
+
+   Why the two new candidates: with only the four sampled inks, cold and wind
+   would have to share with a family they have nothing to do with — a cold clear
+   morning inked the same as a heatwave is the map lying to you. Violet reads
+   cold, umber reads dust and wind. Both measured on the stock by
+   scripts/ink-map.mjs; both clear 4.5:1 with a lot of room.
+
+   Umber is a brown, NOT the warning orange (#ff9800): a third of its
+   saturation and half its lightness, and it never appears on a control. If it
+   still reads too close to the warning family for Al, wind folds into petrol and
+   the map is five inks.
+
+   All thirteen keys are covered explicitly. renderHome can emit thunder, hail,
+   rain-possible and cold-clear as well as the nine with folders, and an
+   unmapped key would fall through to the base ink and look like a bug. */
+@media (max-width: 768px) {
+  :root {
+    --ink-wets:   #0b5c68;
+    --ink-warm:   #a81259;
+    --ink-mild:   #1c6b3a;
+    --ink-cold:   #3c2f80;
+    --ink-wind:   #5a3a22;
+    --ink-plain:  #1b1813;
+  }
+
+  /* Two ids + two classes (0,2,2,0), matching the specificity the centring fix
+     needed — main#home-screen.main #headline is 0,2,1,0 and would otherwise win
+     the colour back for the base ink. */
+  main#home-screen.main > #headline.hero-rain,
+  main#home-screen.main > #headline.hero-rain-possible,
+  main#home-screen.main > #headline.hero-storm,
+  main#home-screen.main > #headline.hero-thunder,
+  main#home-screen.main > #headline.hero-hail,
+  main#home-screen.main > #headline.hero-fog { color: var(--ink-wets); }
+
+  main#home-screen.main > #headline.hero-heat,
+  main#home-screen.main > #headline.hero-uv { color: var(--ink-warm); }
+
+  main#home-screen.main > #headline.hero-clear { color: var(--ink-mild); }
+
+  main#home-screen.main > #headline.hero-cold,
+  main#home-screen.main > #headline.hero-cold-clear { color: var(--ink-cold); }
+
+  main#home-screen.main > #headline.hero-wind { color: var(--ink-wind); }
+
+  main#home-screen.main > #headline.hero-cloudy { color: var(--ink-plain); }
+}

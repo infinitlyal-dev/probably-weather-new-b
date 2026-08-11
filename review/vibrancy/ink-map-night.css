@@ -1,0 +1,28 @@
+/* THE NIGHT STEP — option, not a decision.
+   Al's ruling: separate hues per time bucket would multiply to 36 inks and
+   dissolve the identity, so night may DEEPEN the condition ink one step instead.
+
+   That is exactly what this is: the same six inks, each mixed 34% toward the
+   page colour (#14110d). No new hues, no per-slot variation, and the family a
+   reader learns in daylight is the same family at night — just written with a
+   pen that has been left in the cold.
+
+   One honest consequence: the plain ink barely moves (#1b1813 -> #191611),
+   because it is already almost the darkest thing on the stock. On a cloudy night
+   the step is invisible. That is not a bug to paper over — it is the map telling
+   the truth that a plain pen at night is a plain pen.
+
+   The hook: body.tod-night. The app does not set it today; the one-line diff is
+   in the review note. Everything else is inheritance — the inks are custom
+   properties, so redefining them on body re-inks every rule below without
+   touching a single selector. */
+@media (max-width: 768px) {
+  body.tod-night {
+    --ink-wets:   #0e4349;
+    --ink-warm:   #76123f;
+    --ink-mild:   #194c2b;
+    --ink-cold:   #2e2559;
+    --ink-wind:   #422c1b;
+    --ink-plain:  #191611;
+  }
+}

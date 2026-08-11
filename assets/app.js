@@ -539,6 +539,36 @@ document.addEventListener("DOMContentLoaded", () => {
     return T[category]?.[key]?.[lang] || T[category]?.[key]?.en || key;
   };
 
+  // ========== SCREEN-HEADER VOICE (warmth pass, 2026-08-10) ==========
+  // The one place outside the witty line where a secondary screen speaks in the
+  // app's own voice. Held OUTSIDE T and read through voiceLine(), never t():
+  // t() falls back to English, and an English voice line under an Afrikaans
+  // title is exactly the thing that must not ship. A language with no approved
+  // wording gets NO voice line and the screen keeps the copy it has today.
+  //
+  // EN APPROVED by Al 2026-08-10 (all five Hourly bins and the Weekly line, as
+  // proposed). AF is his to write when ready; zu/xh/st go to the native-review
+  // backlog. Until those exist, voiceLine() returns '' for them and the screens
+  // keep the copy they have today. requires_native_review.
+  const VOICE = {
+    // Clock bins, not solar: the wording is clock language ("through the
+    // night"), and a solar bin would call 21:00 in December "dusk".
+    hourly: [
+      { until: 5,  line: { en: "Through the night" } },
+      { until: 8,  line: { en: "The morning ahead" } },
+      { until: 12, line: { en: "Next few hours" } },
+      { until: 17, line: { en: "Rest of the afternoon" } },
+      { until: 20, line: { en: "Into the evening" } },
+      { until: 24, line: { en: "Through the night" } },
+    ],
+    week: { en: "The week, as the five sources see it" },
+  };
+  const voiceLine = (line) => (line && line[settings.lang || 'en']) || '';
+  const hourlyVoice = (hour) => {
+    const bin = VOICE.hourly.find((b) => hour < b.until);
+    return voiceLine(bin?.line);
+  };
+
   // ========== STATE ==========
   let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
   // Captured by setupServiceWorkerUpdates() so the consolidated
@@ -1092,6 +1122,15 @@ document.addEventListener("DOMContentLoaded", () => {
     updateHourlySubtitle();
     const placesSub = $('#searchSubtitle'); if (placesSub) placesSub.textContent = t('misc', 'placesSubtitle');
     const settingsSub = $('#settingsSubtitle'); if (settingsSub) settingsSub.textContent = t('misc', 'settingsSubtitle');
+    // Weekly's quiet one-liner. Unlike the other three subtitles this is VOICE,
+    // not a description, so it is present only where the wording is approved —
+    // and the slot collapses (hidden) rather than showing English in Afrikaans.
+    const weekSub = $('#weekSubtitle');
+    if (weekSub) {
+      const line = voiceLine(VOICE.week);
+      weekSub.textContent = line;
+      weekSub.hidden = !line;
+    }
 
     // Units/times inside the chart are language- and settings-dependent both.
     renderHourlyChart();
@@ -2245,12 +2284,29 @@ document.addEventListener("DOMContentLoaded", () => {
       const rows = [row1, row2].filter((r) => r.length).map((r) => `<div class="byline-row">${r.join(' • ')}</div>`);
       bylineEl.innerHTML = rows.join('');
     }
-    const hc = ['hero-storm', 'hero-rain', 'hero-heat', 'hero-cold', 'hero-wind', 'hero-uv', 'hero-clear', 'hero-cloudy', 'hero-fog'];
+    // EVERY key computeHomeDisplayCondition can return, not just the nine with
+    // CSS today. It returns thunder, hail, cold-clear and rain-possible too, and
+    // those four were missing here — so a cold-clear morning followed by a clear
+    // afternoon left BOTH hero-cold-clear and hero-clear on the caption, because
+    // remove() only takes exact tokens. Harmless while those keys had no colour;
+    // the moment the ink is condition-mapped it is two inks fighting over one
+    // line. Found 2026-08-10 while building the ink map.
+    const hc = ['hero-storm', 'hero-rain', 'hero-rain-possible', 'hero-thunder', 'hero-hail',
+      'hero-heat', 'hero-cold', 'hero-cold-clear', 'hero-wind', 'hero-uv', 'hero-clear',
+      'hero-cloudy', 'hero-fog'];
     // partly-cloudy reuses the cloudy hero colour — no dedicated CSS yet.
     const heroVariant = displayCondition === 'partly-cloudy' ? 'cloudy' : displayCondition;
     [headlineEl, tempEl].forEach(el => { if (el) { el.classList.remove(...hc); el.classList.add('hero-' + heroVariant); } });
     window.__PW_LAST_DISPLAY = displayCondition; window.__PW_LAST_HERO = hero;
     renderSidebar(norm, hero); setBackgroundFor(displayCondition); createParticles(displayCondition);
+    // The ink map's night step (Al's ruling 2026-08-10: night dimming ON). The
+    // SAME getTimeOfDay() the image picker uses, deliberately — the caption ink
+    // darkens on exactly the nights a night photograph is served, so the print
+    // and its handwriting can never disagree about what time it is.
+    // getTimeOfDay() reads window.__PW_LAST_NORM, which every caller assigns
+    // BEFORE calling renderHome (app.js:2798/2828/2839), so the solar bucket
+    // here is this payload's, not the previous place's. CSS-only: one class.
+    document.body.classList.toggle('tod-night', getTimeOfDay() === 'night');
     // Mobile facelift furniture — same `norm`, no second data path.
     renderFeelsLine(norm);
     renderRangeLine(norm);
@@ -2387,8 +2443,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // "<place> · Today" under the Hourly title. Falls back to just the day when
-  // no place name has resolved yet, rather than printing a bare separator.
+  // "<place> · Next few hours" under the Hourly title. Falls back to just the
+  // tail when no place name has resolved yet, rather than printing a bare
+  // separator.
   function updateHourlySubtitle() {
     const el = $('#hourlySubtitle');
     if (!el) return;
@@ -2396,8 +2453,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // reassigns activePlace before the fetch, which would relabel place A's
     // chart with place B's name on the next re-render.
     const place = (hourlyChartPlace || '').trim();
-    const day = t('misc', 'todayLabel');
-    el.textContent = place ? `${place} · ${day}` : day;
+    // The time-aware voice line where the active language has an approved one;
+    // the plain day label everywhere else. Hour comes from the LOCATION, not the
+    // device, so a shared Durban link at 22:00 there does not say "afternoon".
+    const tail = hourlyVoice(getLocationHour(activePlace?.lon)) || t('misc', 'todayLabel');
+    el.textContent = place ? `${place} · ${tail}` : tail;
   }
 
   // ---- M3 hourly chart (mobile only) ----------------------------------------
@@ -2825,10 +2885,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderRecents() {
     if (!recentList) return; const list = loadRecents();
     const logoMini = `<svg class="recent-logo" viewBox="0 0 40 40" width="18" height="18"><circle cx="20" cy="20" r="18" fill="url(#logoGrad)"/><text x="12" y="28" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="#fff">P</text><defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFDD44"/><stop offset="100%" stop-color="#FFAA00"/></linearGradient></defs></svg>`;
+    // Both empty states below use .list-empty rather than an inline opacity:
+    // the warmth pass paints them as a note on the polaroid's stock, and an
+    // inline style cannot be themed.
     recentList.innerHTML = list.map(p => {
       const rb = searchEditMode ? `<button class="remove-recent" aria-label="Remove recent" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
       return `<li class="recent-item" role="button" tabindex="0" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(p.name)}</span>${rb}</li>`;
-    }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noRecent')}</li>`;
+    }).join('') || `<li class="list-empty">${t('search', 'noRecent')}</li>`;
     recentList.querySelectorAll('li[data-lat]').forEach(li => {
       const activate = (ev) => { if (ev?.target?.closest('.remove-recent')) return; showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }); };
       li.addEventListener('click', activate);
@@ -2851,7 +2914,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
       const rb = searchEditMode ? `<button class="remove-fav" aria-label="Remove favourite" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
       return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><span class="fav-name" role="button" tabindex="0">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
-    }).join('') || `<li style="opacity:0.6;cursor:default;">${t('search', 'noSaved')}</li>`;
+    }).join('') || `<li class="list-empty">${t('search', 'noSaved')}</li>`;
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
       const activate = () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }); };
       span.addEventListener('click', activate);

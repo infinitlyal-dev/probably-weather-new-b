@@ -1,0 +1,59 @@
+/* ITER 4 — THE ROOM FOLLOWS YOU
+   Critique it answers: Home is alive and every other screen is a different
+   product. Tap Hourly and the photograph, the cream and the warmth all vanish in
+   one frame — what is left is a competent dark list with a gold line on it,
+   indistinguishable from any other weather app's hourly table. The identity
+   lives on exactly one screen, which is the same corporate tell as iteration 1,
+   one tap deeper.
+
+   The move: the secondary panels stop being opaque and let the SAME lit room
+   through, with their own scrim so the data half stays where it was. Nothing is
+   restructured, nothing moves, no photograph is added to these screens — the
+   panel simply stops painting a lid over the room that is already behind it.
+
+   Where the light is spent: the top of the panel, behind the page title and the
+   voice line. By the rows it is gone. The rows keep their own dark backgrounds,
+   so every value on these screens has the contrast it was measured at. */
+@media (max-width: 768px) {
+  /* FIRST, THE THING THE OPAQUE PANEL WAS SECRETLY DOING. M2's panel covers the
+     viewport, and the app header (brand + place + language chip) is simply left
+     painted underneath it — "no app header above these screens" was implemented
+     by hiding it behind a lid. Take the lid off and the header reappears
+     THROUGH the panel, colliding with the page title: the first render of this
+     iteration had "Hourly" sitting on top of "Probably Weather".
+     visibility, not display: nothing reflows, the header keeps its box, and the
+     panels' geometry is untouched. Home is unaffected (body.home-active). */
+  body:not(.home-active) .header { visibility: hidden; }
+
+  .screenPanel {
+    /* Was: background: var(--page-bg) — flat, opaque, a lid on #bg.
+       Now: the scrim IS the background, so the room shows at the top and the
+       page colour takes over well before the data. */
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(20, 17, 13, 0.55) 0%,
+        rgba(20, 17, 13, 0.78) 22%,
+        rgba(20, 17, 13, 0.93) 40%,
+        var(--page-bg) 58%
+      );
+  }
+  /* The grain rides on the panel already (warmth pass). Keep it over the scrim
+     rather than under it, so the lit part of the panel is textured too. */
+  .screenPanel {
+    background-image:
+      var(--grain),
+      linear-gradient(
+        to bottom,
+        rgba(20, 17, 13, 0.55) 0%,
+        rgba(20, 17, 13, 0.78) 22%,
+        rgba(20, 17, 13, 0.93) 40%,
+        var(--page-bg) 58%
+      );
+    background-repeat: repeat, no-repeat;
+    background-size: 64px 64px, auto;
+    background-color: transparent;
+  }
+  /* Day detail is a panel too, and it carries a photograph of its own day —
+     it gets the same treatment for free by being a .screenPanel. Nothing to do. */
+}

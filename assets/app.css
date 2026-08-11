@@ -35,6 +35,12 @@
      Retired from the in-app condition label by the 2026-08-07 white ruling;
      the low-agreement dot is the one surface that still carries it. */
   --condition-amber: #f5a623;
+  /* The ONE secondary ink. Warmed from #aab0bd by the 2026-08-10 warmth pass and
+     lifted out of the <=768px block to here, so it is a single definition the
+     >=769px frame can use too — the two rules below that carried the old grey as
+     a literal (.hourly-row .h-dir, .settings-row .settings-row-value) are not
+     width-scoped, and a blue-grey there was the same corporate tell. */
+  --ink-2: #b5ab9d;
   --focus-ring: #ffffff;
   --focus-ring-shadow: rgba(0, 0, 0, 0.85);
   --panel-bg: rgba(0, 0, 0, 0.5);
@@ -3814,6 +3820,15 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   color: rgba(255,255,255,0.6);
   font-size: 0.9rem;
 }
+/* The Plekke empty states ("No saved places yet"). They carried an inline
+   opacity:0.6 until the warmth pass needed to theme them; this base rule keeps
+   the >=769px frame looking exactly as it did, and the <=768px block repaints
+   it as a note on the print's stock. */
+.list-empty {
+  list-style: none;
+  cursor: default;
+  opacity: 0.6;
+}
 .sources-attribution {
   margin: 4px 0 0;
   font-size: 0.82rem;
@@ -3914,11 +3929,17 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
    ═════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   :root {
-    --page-bg: #0d0d12;
-    --surface: #16171d;
-    --ink: #ffffff;
-    /* Secondary grey lightened for outdoor readability (was ~0.6 alpha white). */
-    --ink-2: #aab0bd;
+    /* WARMTH PASS 2026-08-10 (Al's ruling). These four were a blue-grey
+       near-black (#0d0d12 / #16171d / #ffffff / #aab0bd) and that hue is most of
+       why the finished facelift read corporate. Same darkness, espresso
+       undertone: every surface in the app is painted from these, so the warmth
+       is one token change rather than a sweep of literals. */
+    --page-bg: #14110d;
+    --surface: #1f1a14;
+    --ink: #fffaf3;
+    /* --ink-2 (the one secondary grey, lightened for outdoor readability and
+       warmed with the rest — 7.5:1 on --surface, 8.3:1 on --page-bg) now lives
+       in the top :root so it is defined at every width. */
     --hero-h: var(--hero-card-h, clamp(230px, 36vh, 340px));
   }
 
@@ -3963,7 +3984,10 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   }
   .hero-photo {
     position: relative; height: var(--hero-h);
-    background-color: #0a0a0e;
+    /* The frame before the photograph lands. Warmed with the base (was #0a0a0e):
+       a cold rectangle inside a cream print is the one place the old blue-black
+       was actually visible against the stock. */
+    background-color: #0d0a07;
     background-image: var(--hero-url, none);
     background-size: cover;
     /* Crop C — low band, 78% (Al's ruling 2026-08-06). Still a variable so
@@ -4182,7 +4206,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
    Language-neutral arrow: cardinal letters are per-language and await approval. */
 .hourly-row .h-dir {
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.78em; font-weight: 700; color: #aab0bd;
+  font-size: 0.78em; font-weight: 700; color: var(--ink-2);
 }
 
 /* Settings row grammar — label left, value right (GPT reference 04_settings).
@@ -4194,7 +4218,7 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r-sm);
   color: #fff; font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer;
 }
-.settings-row .settings-row-value { color: #aab0bd; font-weight: 500; }
+.settings-row .settings-row-value { color: var(--ink-2); font-weight: 500; }
 .settings-row .settings-row-value::after { content: " ›"; color: var(--brand-gold); font-weight: 700; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -4832,8 +4856,13 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     /* The witty line is the only element whose height is COPY-driven, so it is
        the one that has to give first: 6 lines of 1.6rem at 320px was 206px of a
        568px screen. Both axes, because a long line on a narrow phone is the
-       worst case and vh alone would not catch it. */
-    --cap-fs: clamp(0.78rem, min(2.35vh, 5.2vw), 1.6rem);
+       worst case and vh alone would not catch it.
+       WARMTH PASS 2026-08-10: raised ~25% across the whole curve (was
+       0.78 / min(2.35vh, 5.2vw) / 1.6rem). The ceiling alone would have changed
+       nothing on Al's phone — at 375x812 the MIDDLE term binds, so the middle
+       term is what had to move. The caption has to read as the thing you would
+       screenshot; the fold matrix is what says how far it can go. */
+    --cap-fs: clamp(0.86rem, min(2.95vh, 6.4vw), 2rem);
     --temp-fs: clamp(1.5rem, min(5.9vh, 13.5vw), 3.8rem);
     /* One rhythm unit for the whole column, so tightening the stack is one
        number rather than nine margins drifting apart. */
@@ -4981,7 +5010,10 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     /* The desktop postcard's own stock and ink (see #bgImg above). Reused rather
        than re-picked: the two frames have to be the same print. */
     --print-stock: #f6f2e8;
-    --print-ink: #24211d;
+    /* WARMTH PASS 2026-08-10: darkened from the postcard's #24211d to a true
+       ink. On the cream foot the old value read as soft pencil at the new
+       caption size; this is the pen. 15.6:1 on the stock. */
+    --print-ink: #1b1813;
     --print-frame: clamp(5px, 1.15vh, 11px);
     --print-foot: clamp(4px, 1.1vh, 14px);
     --hero-tilt: -2.4deg;
@@ -5079,6 +5111,15 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     transform-origin: 50% 0;
     margin-bottom: calc(var(--fold-rhythm) * 1.5 + var(--tilt-pad));
   }
+  /* …and the centring above never actually took effect. `main#home-screen.main
+     #headline` (app.css:1865, TWO ids = 0,2,1,0) out-specifies the rule that
+     declares it (0,1,2,0), so the print's foot has been left-aligned since M9
+     shipped while the stylesheet said centred. Found 2026-08-10 by asking the
+     browser which rules matched, not by reading the file. Two ids plus two
+     classes wins it back without touching the 1865 rule, which other elements
+     on this screen still rely on. */
+  main#home-screen.main > #headline.hero-caption { text-align: center; }
+
   /* renderHome stamps a per-condition hero-* class on the caption, which repaints
      it gold at 0,0,2,0. Gold on the cream foot is unreadable. */
   main#home-screen.main > .hero-caption.hero-storm,
@@ -5117,3 +5158,563 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   .footer { display: none; }
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   WARMTH PASS W1 — THE PRINT'S WARMTH REACHES THE REST OF THE APP (<=768px)
+   Al's ruling 2026-08-10. The facelift was structurally right and read
+   corporate: a blue-grey near-black, a cool grey secondary ink and photographic
+   warmth confined to one card on one screen.
+
+   Four moves, no layout in any of them:
+     1. The base tokens went warm (in the M1 :root above — one definition each,
+        not an override stacked here).
+     2. Film grain on the page surfaces. A committed 64px tile
+        (scripts/generate-grain.mjs), NOT an feTurbulence filter: a filter is
+        rasterised on the main thread at viewport size on every resize, during
+        the exact window LCP is measured. This is one 3.2KB cached request that
+        repeats on the compositor and touches no layout.
+     3. The polaroid's stock travels — as cream INK on section labels and as a
+        thin cream wash on two accent surfaces. Small doses, and every data
+        surface (rows, values, charts, the range plot) stays dark: the app's
+        credibility argument is made on dark, legible data.
+     4. Warm yellow on the secondary-screen weather icons, which were the last
+        grey-white furniture left. Within the ruled colour system — yellow is
+        brand accent, orange stays warnings-only.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    /* ONE stock in the app: 246,242,232 below is --print-stock (#f6f2e8), the
+       desktop postcard's and the mobile print's cream, at two strengths. Spelt
+       as rgba literals rather than color-mix(var(--print-stock), …) so the
+       accents need no colour-function support to render at all.
+       Cream at 74% is the warm secondary ink for section labels — 8.8:1 on
+       --surface, 9.5:1 on --page-bg. */
+    --paper-ink: rgba(246, 242, 232, 0.74);
+    /* The wash. 0.05 is the level at which the surface reads as PAPER and not
+       as a grey box — anything heavier and it starts competing with the data. */
+    --paper-tint: rgba(246, 242, 232, 0.05);
+    --grain: url("images/grain.png");
+  }
+
+  /* ---------- 2. The grain ----------
+     body, NOT #bg. The first version of this block put the tile on #bg and it
+     never painted on Home: #bg is position:fixed with z-index:-1, and CSS paints
+     negative-z stacking contexts BEFORE in-flow block boxes — so body's own
+     opaque background covers #bg completely. Measured, not reasoned: sampling a
+     pixel beside the print returned the flat page colour with the tile on #bg,
+     and the layer underneath only appeared once body's background was removed.
+     These three are where the page colour actually reaches the glass. */
+  body,
+  .screenPanel,
+  .nav {
+    background-image: var(--grain);
+    background-repeat: repeat;
+    /* 1 CSS px per source px. On a 2x/3x screen the tile softens into a paper
+       mottle rather than a hard speckle, which is the intended read. */
+    background-size: 64px 64px;
+  }
+
+  /* ---------- 3. The stock travels ----------
+     Section labels and page subtitles carry the cream instead of the cool grey.
+     Same selectors as the rules above, restated later so they win without a
+     specificity duel. */
+  .page-sub,
+  .hourly-chart .chart-caption,
+  .range-chart .chart-caption,
+  .settings-screen .settings-section h3,
+  .search-screen .search-lists .section h3 {
+    color: var(--paper-ink);
+  }
+
+  /* The consensus band's legend — the one line that explains Probably's own
+     answer — sits on a sheet of the stock. The plot itself stays dark. */
+  .range-legend {
+    margin-top: 12px;
+    padding: 9px 10px;
+    border-top: 0;
+    background: var(--paper-tint);
+    border-radius: var(--r-sm);
+  }
+
+  /* Empty states read as a note on paper rather than as dead grey text. */
+  .sources-list-empty,
+  .list-empty {
+    background: var(--paper-tint);
+    border-radius: var(--r-sm);
+    color: var(--paper-ink);
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+  /* The base rule dims it to 0.6 for the desktop frame. Here the cream ink is
+     already the dimming, and 0.6 on top of it turns the note muddy. */
+  .list-empty { opacity: 1; }
+
+  /* ---------- 4. Warm icons ----------
+     The condition glyph on Hourly, Weekly and the Hourly chart was the app's
+     one remaining grey-white surface. Scoped to the two screens by ID so it
+     cannot reach Home's own furniture or the >=769px tables. */
+  #hourly-screen .hourly-row .h-icon,
+  #week-screen .daily-row .d-icon,
+  .hourly-chart .chart-icon {
+    color: var(--brand-gold);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VIBRANCY V1 — THE FACELIFT STOPS READING CORPORATE (<=768px)
+   Al's rulings 2026-08-10, in one block because they are one change: the app
+   was professional and serious, and the photograph+line unit did not pop.
+
+   Five iterations plus the ink map, merged here EXACTLY as they were gated —
+   each was shot on a storm photograph and a sunny one at 390x844, critiqued
+   against the anchors (the desktop postcard at its best, the share card's
+   energy, the approved pairs in review/PAIRING-TASTE.md, the old full-bleed
+   home's drama without its chaos), and run through the full 72-combination fold
+   matrix on its own cumulative stack. The loop, the critiques and the contact
+   sheets are in review/VIBRANCY-LOOP-2026-08-10.md and review/vibrancy/.
+
+     1. the room takes the photograph's light
+     2. "Probably" gets the share card's voice
+     3. the evidence is printed on the same paper
+     4. the room follows you onto the secondary screens
+     5. the print becomes an object somebody stuck there
+     +  the ink map: one marker per condition, deepened at night
+
+   The iteration comments below are kept verbatim. They are the reasoning that
+   earned each change, and the next person to touch this block needs the why
+   more than they need the what.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ITER 1 — THE ROOM TAKES THE PHOTOGRAPH'S LIGHT
+   Critique it answers: the print is the only object in the room, and the room is
+   a flat charcoal rectangle with nothing to do with the picture, the weather or
+   the country. Top third is a holiday; bottom two thirds is a filing cabinet.
+   The desktop postcard never does this — it stands the photo on a surface MADE
+   from the photo (blurred gutters), and the old full-bleed home didn't either:
+   the photo was the room. That disconnect is the corporate tell.
+
+   The move: bring the desktop's own gutter grammar to the phone. A heavily
+   blurred, darkened copy of the SAME hero image behind the page, killed off by a
+   scrim before it reaches the data. No new DOM, no layout, no new asset — it
+   paints from --hero-url, which the shell already sets on mobile. Static layer,
+   composited once; nothing is generated per frame. */
+@media (max-width: 768px) {
+  /* THE LOAD-BEARING LINE. #bg is position:fixed at z-index:-1, and CSS paints
+     negative-z stacking contexts BEFORE in-flow block boxes — so body's own
+     opaque background sits on top of #bg and nothing inside it can be seen. The
+     base colour stays on <html> (which paints the canvas), body keeps its grain
+     image, and #bg finally reaches the glass. Verified by sampling a pixel: flat
+     page colour before, the photograph's own blue after. */
+  body { background-color: transparent; }
+
+  /* The wash sits INSIDE #bg (already fixed, full-viewport, z-index:-1) as a
+     pseudo-element, so no element is added to the document. z-index:-1 keeps it
+     behind #particles, so weather motion still plays over it. */
+  #bg::after {
+    content: "";
+    position: absolute;
+    /* Overscanned: a 40px blur samples transparent pixels at the edges and
+       leaves a pale halo if the layer stops at the viewport. */
+    inset: -12%;
+    z-index: -1;
+    background-image: var(--hero-url, none);
+    background-size: cover;
+    background-position: center 38%;
+    /* Dark enough that white text over it is unchanged in contrast, saturated
+       enough that the storm reads blue-violet and the beach reads turquoise.
+       The blur is what stops it being a second photograph competing with the
+       print. */
+    filter: blur(38px) saturate(1.35) brightness(0.42);
+    /* Static: no animation, no re-render trigger. */
+    pointer-events: none;
+  }
+  /* THE RAIN, NOW THAT YOU CAN SEE IT.
+     Al flagged "stray light dashes" on the wash frames. Measured, not guessed:
+     emptying #particles changes 684 pixels on the storm frame and 0 on the sunny
+     one, so they are the rain particles — 2x20px hard white bars at 0.75 alpha —
+     and nothing to do with the tape or the pin. They were invisible against flat
+     black and the lit room exposed them.
+     They are a feature (weather motion), so this makes them behave like rain
+     instead of debris: thinner, tapered from transparent at the head to visible
+     at the tail, cooler, and quieter. No blur — 28 animated elements with a
+     filter on them is a per-frame cost the brief rules out. */
+  .particle.rain {
+    width: 1.5px;
+    height: clamp(13px, 2.1vh, 20px);
+    opacity: 0.5;
+    background: linear-gradient(
+      to bottom,
+      rgba(216, 230, 247, 0) 0%,
+      rgba(216, 230, 247, 0.34) 45%,
+      rgba(216, 230, 247, 0.62) 100%
+    );
+  }
+
+  /* The scrim: the glow belongs to the top of the screen where the print is.
+     By the time the eye reaches the temperature and the stats pill the page is
+     the page colour again, so every data surface keeps the contrast it was
+     measured at. */
+  #bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(20, 17, 13, 0.34) 0%,
+        rgba(20, 17, 13, 0.52) 38%,
+        rgba(20, 17, 13, 0.92) 62%,
+        var(--page-bg) 78%
+      );
+    pointer-events: none;
+  }
+}
+
+/* ITER 2 — "PROBABLY" GETS THE SHARE CARD'S VOICE
+   Critique it answers: with the room fixed, the loudest remaining corporate tell
+   is that the app's own word is whispered. The share card — the anchor Al named
+   — sets "Probably" at 112px in #ffd700 at weight 900, and it is the whole
+   design. In-app the same word is a 0.42em grey label sitting above a plain
+   white number, so the screen shouts a measurement and mumbles the joke. A
+   weather app shows you a number; THIS app says "probably", and that is the
+   difference between the two products.
+
+   The move: bring the share card's treatment to the hero lockup. Gold wordmark,
+   heavier, larger relative to the number, and pulled tight so the two read as
+   one thing said in one breath — "Probably … 29°" — rather than a caption and a
+   readout. The NUMBER stays white: data stays data, and gold stays brand.
+
+   Not a colour-system breach: yellow is brand and primary action, and the
+   wordmark is the brand. Orange is untouched. */
+@media (max-width: 768px) {
+  .temp .hero-probably {
+    /* Was 0.42em / 700 / --ink-2 (M1 stepped it back so the number could
+       dominate). It still does not out-weigh the number — 0.52em of a 3.8rem
+       figure is ~1.98rem against ~3.8rem — it just stops apologising. */
+    font-size: 0.52em;
+    font-weight: 800;
+    color: var(--brand-gold);
+    letter-spacing: -0.015em;
+    /* Tight to the number: one lockup, not two stacked lines. */
+    line-height: 0.98;
+    margin-bottom: -0.04em;
+    /* The gold is on a photographic wash now, not flat charcoal, so it carries
+       the same soft dark backing the share card gives it. */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  }
+  /* The number keeps its own weight and colour; only the optical gap closes. */
+  .temp .hero-now { letter-spacing: -0.035em; }
+}
+
+/* ITER 3 — THE EVIDENCE IS PRINTED ON THE SAME PAPER
+   Critique it answers: fixing the room and the voice made the BOTTOM half look
+   worse, not better. The top of the screen is now a photograph in a lit room
+   with a joke and a gold wordmark; underneath it sits 0.63rem letterspaced grey
+   micro-caps (WIND / RAIN / UV) on a flat charcoal pill — the enterprise
+   dashboard alphabet, unchanged since the facelift. Two design languages, one
+   screen, and the second one is the one every other weather app also uses.
+
+   The move: the evidence gets printed on the same stock as the joke. The stats
+   pill takes a whisper of the print's cream instead of flat charcoal, its
+   dividers and micro-caps become cream rather than grey, and the agreement line
+   picks up the same ink. Values stay white and the surface stays dark, so
+   nothing about the data's credibility changes — this is a change of PAPER, not
+   of legibility.
+
+   Explicitly NOT done here: no layout, no reordering, no new element, and the
+   pill keeps its geometry to the pixel. */
+@media (max-width: 768px) {
+  .stats-row {
+    /* Was flat var(--surface). Cream at 0.055 over the warm charcoal is the same
+       wash the Bronne consensus legend already carries, so the two evidence
+       surfaces in the app now match each other. */
+    background:
+      linear-gradient(rgba(246, 242, 232, 0.055), rgba(246, 242, 232, 0.055)),
+      var(--surface);
+    /* A printed edge rather than a component edge. */
+    border: 1px solid rgba(246, 242, 232, 0.10);
+  }
+  /* Hairlines between the three metrics: cream, not white — the same line the
+     print's foot would leave. */
+  .stats-row .stat + .stat {
+    border-left-color: rgba(246, 242, 232, 0.16);
+  }
+  /* The alphabet. Same size and tracking (this is not a type change — the fold
+     budget owns those numbers); only the ink moves from cool grey to the stock. */
+  .stats-row .stat-k,
+  .stats-row .stat-sub {
+    color: var(--paper-ink);
+  }
+  /* The agreement line is the app's credibility sentence — it belongs to the
+     same printed family. */
+  .agree-line { color: var(--paper-ink); }
+  /* Feels-like and the low/high line: the quiet supporting text, same ink. */
+  .feels-line,
+  .range-line { color: var(--paper-ink); }
+}
+
+/* ITER 4 — THE ROOM FOLLOWS YOU
+   Critique it answers: Home is alive and every other screen is a different
+   product. Tap Hourly and the photograph, the cream and the warmth all vanish in
+   one frame — what is left is a competent dark list with a gold line on it,
+   indistinguishable from any other weather app's hourly table. The identity
+   lives on exactly one screen, which is the same corporate tell as iteration 1,
+   one tap deeper.
+
+   The move: the secondary panels stop being opaque and let the SAME lit room
+   through, with their own scrim so the data half stays where it was. Nothing is
+   restructured, nothing moves, no photograph is added to these screens — the
+   panel simply stops painting a lid over the room that is already behind it.
+
+   Where the light is spent: the top of the panel, behind the page title and the
+   voice line. By the rows it is gone. The rows keep their own dark backgrounds,
+   so every value on these screens has the contrast it was measured at. */
+@media (max-width: 768px) {
+  /* FIRST, THE THING THE OPAQUE PANEL WAS SECRETLY DOING. M2's panel covers the
+     viewport, and the app header (brand + place + language chip) is simply left
+     painted underneath it — "no app header above these screens" was implemented
+     by hiding it behind a lid. Take the lid off and the header reappears
+     THROUGH the panel, colliding with the page title: the first render of this
+     iteration had "Hourly" sitting on top of "Probably Weather".
+     visibility, not display: nothing reflows, the header keeps its box, and the
+     panels' geometry is untouched. Home is unaffected (body.home-active). */
+  body:not(.home-active) .header { visibility: hidden; }
+
+  .screenPanel {
+    /* Was: background: var(--page-bg) — flat, opaque, a lid on #bg.
+       Now: the scrim IS the background, so the room shows at the top and the
+       page colour takes over well before the data. */
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(20, 17, 13, 0.55) 0%,
+        rgba(20, 17, 13, 0.78) 22%,
+        rgba(20, 17, 13, 0.93) 40%,
+        var(--page-bg) 58%
+      );
+  }
+  /* The grain rides on the panel already (warmth pass). Keep it over the scrim
+     rather than under it, so the lit part of the panel is textured too. */
+  .screenPanel {
+    background-image:
+      var(--grain),
+      linear-gradient(
+        to bottom,
+        rgba(20, 17, 13, 0.55) 0%,
+        rgba(20, 17, 13, 0.78) 22%,
+        rgba(20, 17, 13, 0.93) 40%,
+        var(--page-bg) 58%
+      );
+    background-repeat: repeat, no-repeat;
+    background-size: 64px 64px, auto;
+    background-color: transparent;
+  }
+  /* Day detail is a panel too, and it carries a photograph of its own day —
+     it gets the same treatment for free by being a .screenPanel. Nothing to do. */
+}
+
+/* ITER 5 — THE PRINT BECOMES AN OBJECT SOMEBODY STUCK THERE
+   Critique it answers: with the room lit, the voice gold, the evidence on the
+   same paper and the light following you through the app, the last thing that
+   still reads manufactured is the print itself. It is a perfect rectangle with a
+   perfect drop shadow and a symmetrical dot at dead centre — a card component
+   doing an impression of a photograph. The desktop postcard at its best (the
+   anchor) reads as a physical object on a surface; this reads as a div.
+   Nothing on the screen has a hand in it except the handwriting.
+
+   The move — one idea, physicality — spent in three places that are all the same
+   idea: a strip of tape holding the print down, a shadow that behaves like an
+   object lying ON something rather than floating over it, and a hairline of
+   warmth on the stock's edges so the cream has a thickness.
+
+   About the pin: it is REPLACED, not lost, and this is the one prior decision
+   this loop undoes. Reason, stated: tape and pin are two fasteners doing one
+   job, and the dot is the more generic of the two — it is the fastener a design
+   system would pick, the tape is the one a person would. If Al wants the pin
+   back it is one line (the ::after in the M9 block is untouched; this only hides
+   it), and iteration 5 is separable from 1-4. */
+@media (max-width: 768px) {
+  /* The pin steps aside for the tape. M9's rule is untouched — restoring it is
+     deleting this one line. */
+  .hero-card::after { display: none; }
+
+  /* THE TAPE. Drawn on the card's ::before (unused by M9), so no element is
+     added: a translucent band of the stock, slightly crooked against the
+     print's own -2.4deg, catching a little light along its top edge the way
+     matt tape does. It overhangs the corner, which is what sells it as holding
+     the print to the page rather than being printed on it. */
+  .hero-card::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    /* Laid ACROSS the corner, half on the print and half on the page.
+       GEOMETRY, MEASURED (Al's callout that it hits the app header): a strip of
+       width w rotated by r has a bounding box (w·sin r + h·cos r) tall, centred
+       on the strip's own centre. At w=86, r=40deg that is 74px tall centred at
+       card.top+2 — reaching y≈48 while the header only ends at y≈79. It was
+       lying across the brand, on every phone in the matrix.
+       Shorter, flatter, and started INSIDE the card: w≈70, r=30deg gives a 52px
+       box centred at card.top+22, so the top edge sits within a few pixels of
+       the print's own top and never enters the header band. */
+    top: clamp(9px, 1.4vh, 14px);
+    left: clamp(-16px, -3.4vw, -10px);
+    width: clamp(62px, 17.5vw, 78px);
+    height: clamp(17px, 2.4vh, 22px);
+    /* WARM, not cream-over-blue. The first pass used the print's own stock at
+       low alpha; over the storm's blue wash that composites to cold grey and
+       reads as plastic. Masking tape is a warm ochre-white and it TINTS what is
+       under it rather than veiling it — hence the amber cast and the screen
+       blend on the highlight edge. */
+    background:
+      linear-gradient(
+        102deg,
+        rgba(238, 214, 158, 0.34) 0%,
+        rgba(246, 231, 190, 0.68) 20%,
+        rgba(250, 240, 214, 0.74) 52%,
+        rgba(236, 214, 164, 0.46) 100%
+      );
+    /* The two torn ends, cut at slightly different angles so the strip is not
+       symmetrical. */
+    clip-path: polygon(3% 10%, 97% 0%, 100% 86%, 0% 100%);
+    transform: rotate(-30deg);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.30);
+    pointer-events: none;
+  }
+
+  /* THE SHADOW. Was 0 18px 44px / 0 6px 16px straight down — a card floating
+     above a surface. An object lying on a surface has a tight dark contact edge
+     and a long soft body, and it throws slightly to one side because the light
+     in this app comes from the top-left (see the tape's own highlight). */
+  .hero-card {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.55),
+      6px 14px 26px rgba(0, 0, 0, 0.50),
+      14px 30px 60px rgba(0, 0, 0, 0.42);
+  }
+
+  /* THE EDGE. A hairline warm-light on the top/left of the stock and a hairline
+     of shade on the bottom/right, so the cream has thickness instead of being a
+     fill. Inset only — no geometry changes, nothing grows by a pixel. */
+  .hero-card,
+  main#home-screen.main > .hero-caption {
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 253, 246, 0.55),
+      inset -1px -1px 0 rgba(90, 74, 52, 0.22);
+  }
+  /* The card needs BOTH its drop shadow and its inset edge; the rule above would
+     otherwise replace the one before it. */
+  .hero-card {
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 253, 246, 0.55),
+      inset -1px -1px 0 rgba(90, 74, 52, 0.22),
+      0 1px 2px rgba(0, 0, 0, 0.55),
+      6px 14px 26px rgba(0, 0, 0, 0.50),
+      14px 30px 60px rgba(0, 0, 0, 0.42);
+  }
+  /* The foot is the same sheet as the card, so its shadow has to agree with it
+     or the print looks like two objects. */
+  main#home-screen.main > .hero-caption {
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 253, 246, 0.55),
+      inset -1px -1px 0 rgba(90, 74, 52, 0.22),
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      6px 12px 22px rgba(0, 0, 0, 0.42),
+      12px 26px 48px rgba(0, 0, 0, 0.34);
+  }
+}
+
+/* THE INK MAP — one marker per condition. APPROVED by Al 2026-08-10 as proposed,
+   umber included.
+   Al's ink ruling: all four sampled inks approved, and the ink becomes
+   CONDITION-MAPPED — stable per condition, never per-day random, no gradients,
+   no glow, orange and red excluded.
+
+   Six inks over thirteen condition keys, in five families:
+
+     wets     petrol  #0b5c68   rain · rain-possible · storm · thunder · hail · fog
+     warm     pink    #a81259   heat · uv
+     mild     green   #1c6b3a   clear
+     cold     violet  #3c2f80   cold · cold-clear          (NEW candidate 1)
+     wind     umber   #5a3a22   wind                       (NEW candidate 2)
+     default  dark    #1b1813   cloudy — the everyday, the plain pen
+
+   Why cloudy takes the plain dark ink: it is the most common condition in the
+   Western Cape and the one with nothing to say. A day the weather has an opinion
+   about gets a coloured pen; an ordinary one gets the black one.
+
+   Why the two new candidates: with only the four sampled inks, cold and wind
+   would have to share with a family they have nothing to do with — a cold clear
+   morning inked the same as a heatwave is the map lying to you. Violet reads
+   cold, umber reads dust and wind. Both measured on the stock by
+   scripts/ink-map.mjs; both clear 4.5:1 with a lot of room.
+
+   Umber is a brown, NOT the warning orange (#ff9800): a third of its
+   saturation and half its lightness, and it never appears on a control. If it
+   still reads too close to the warning family for Al, wind folds into petrol and
+   the map is five inks.
+
+   All thirteen keys are covered explicitly. renderHome can emit thunder, hail,
+   rain-possible and cold-clear as well as the nine with folders, and an
+   unmapped key would fall through to the base ink and look like a bug. */
+@media (max-width: 768px) {
+  :root {
+    --ink-wets:   #0b5c68;
+    --ink-warm:   #a81259;
+    --ink-mild:   #1c6b3a;
+    --ink-cold:   #3c2f80;
+    --ink-wind:   #5a3a22;
+    --ink-plain:  #1b1813;
+  }
+
+  /* Two ids + two classes (0,2,2,0), matching the specificity the centring fix
+     needed — main#home-screen.main #headline is 0,2,1,0 and would otherwise win
+     the colour back for the base ink. */
+  main#home-screen.main > #headline.hero-rain,
+  main#home-screen.main > #headline.hero-rain-possible,
+  main#home-screen.main > #headline.hero-storm,
+  main#home-screen.main > #headline.hero-thunder,
+  main#home-screen.main > #headline.hero-hail,
+  main#home-screen.main > #headline.hero-fog { color: var(--ink-wets); }
+
+  main#home-screen.main > #headline.hero-heat,
+  main#home-screen.main > #headline.hero-uv { color: var(--ink-warm); }
+
+  main#home-screen.main > #headline.hero-clear { color: var(--ink-mild); }
+
+  main#home-screen.main > #headline.hero-cold,
+  main#home-screen.main > #headline.hero-cold-clear { color: var(--ink-cold); }
+
+  main#home-screen.main > #headline.hero-wind { color: var(--ink-wind); }
+
+  main#home-screen.main > #headline.hero-cloudy { color: var(--ink-plain); }
+}
+
+/* THE NIGHT STEP — APPROVED by Al 2026-08-10 (night dimming ON).
+   Al's ruling: separate hues per time bucket would multiply to 36 inks and
+   dissolve the identity, so night may DEEPEN the condition ink one step instead.
+
+   That is exactly what this is: the same six inks, each mixed 34% toward the
+   page colour (#14110d). No new hues, no per-slot variation, and the family a
+   reader learns in daylight is the same family at night — just written with a
+   pen that has been left in the cold.
+
+   One honest consequence: the plain ink barely moves (#1b1813 -> #191611),
+   because it is already almost the darkest thing on the stock. On a cloudy night
+   the step is invisible. That is not a bug to paper over — it is the map telling
+   the truth that a plain pen at night is a plain pen.
+
+   The hook: body.tod-night, set by renderHome alongside the weather-* class off
+   the SAME getTimeOfDay() the image picker uses — so the ink darkens on exactly
+   the nights the night photographs are served, and the two can never disagree.
+   Everything else is inheritance: the inks are custom properties, so redefining
+   them on body re-inks every rule above without touching a single selector. */
+@media (max-width: 768px) {
+  body.tod-night {
+    --ink-wets:   #0e4349;
+    --ink-warm:   #76123f;
+    --ink-mild:   #194c2b;
+    --ink-cold:   #2e2559;
+    --ink-wind:   #422c1b;
+    --ink-plain:  #191611;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "0": {
+    "title": "baseline",
+    "critique": "",
+    "move": "Where the warmth pass left it. Everything below is cumulative on top of this.",
+    "fold": "PASS 72/72 (the standing gate)"
+  },
+  "1": {
+    "title": "the room takes the photograph's light",
+    "critique": "The print is the only object in the room, and the room is a flat charcoal rectangle with nothing to do with the picture, the weather or the country. The desktop postcard stands its photo on a surface made from the photo; the old full-bleed home made the photo the room. Here the top third is a holiday and the bottom two thirds is a filing cabinet.",
+    "move": "A heavily blurred, darkened copy of the same hero image behind the page, killed off by a scrim before it reaches the data. Painted from --hero-url, which the shell already sets. No new element, no new asset, nothing generated per frame. ALSO (2026-08-10, Al's artifact callout): the rain particles now behave like rain — thinner, tapered, cooler, quieter. They are 2x20px hard white bars in the shipped app and this wash is what made them visible; measured at 684 changed pixels on storm, 0 on sunny.",
+    "fold": "PASS 72/72 · Hourly row contrast measured unchanged, voice line worst case 9.16:1 (was 9.46:1)"
+  },
+  "2": {
+    "title": "\"Probably\" gets the share card's voice",
+    "critique": "The app's own word is whispered. On the share card — Al's named anchor — \"Probably\" is 112px of #ffd700 at weight 900 and it IS the design. In-app the same word was a 0.42em grey label above a plain number, so the screen shouted a measurement and mumbled the joke.",
+    "move": "Gold wordmark, 0.52em, weight 800, pulled tight to the number so the two read as one breath. The number stays white — data stays data, gold stays brand.",
+    "fold": "PASS 72/72"
+  },
+  "3": {
+    "title": "the evidence is printed on the same paper",
+    "critique": "Fixing the room and the voice made the bottom half look worse: 0.63rem letterspaced grey micro-caps on a flat charcoal pill, the enterprise-dashboard alphabet, directly under a lit photograph and a handwritten joke.",
+    "move": "The stats pill takes a whisper of the print's cream instead of flat charcoal; dividers, micro-caps, feels-like, low/high and the agreement line all move from cool grey to the stock's ink. Values stay white, geometry unchanged — a change of paper, not of legibility.",
+    "fold": "PASS 72/72"
+  },
+  "4": {
+    "title": "the room follows you",
+    "critique": "Tap Hourly and the identity vanishes in one frame — no photograph, no cream, no warmth. A competent dark list with a gold line on it, indistinguishable from any other weather app. The personality lived on exactly one screen.",
+    "move": "The secondary panels stop being opaque lids and let the same lit room through, with their own scrim so the rows keep the contrast they were measured at. Required hiding the app header behind them (visibility only, no reflow) — the opaque panel had been covering it, and taking the lid off made \"Hourly\" collide with \"Probably Weather\".",
+    "fold": "PASS 72/72"
+  },
+  "5": {
+    "title": "the print becomes an object somebody stuck there",
+    "critique": "The last manufactured thing on the screen is the print itself: a perfect rectangle with a perfect drop shadow and a symmetrical dot at dead centre — a card component doing an impression of a photograph. Nothing on the screen has a hand in it except the handwriting.",
+    "move": "One idea — physicality — spent three ways: a warm strip of tape laid across the top-left corner, a shadow that behaves like an object lying on a surface (tight contact edge, long soft body, thrown to one side), and a hairline of light and shade on the stock so the cream has thickness. UNDOES the M9 gold pin, deliberately: two fasteners do one job, and the dot is the one a design system picks while the tape is the one a person picks. Restoring the pin is deleting one line. REVISED 2026-08-10 after Al's callout that the tape hit the app header: a strip of width w rotated r has a (w·sin r + h·cos r) bounding box, and at 86px/40deg that reached y≈48 while the header ends at y≈79 — it was lying across the brand on every phone. Now 70px at 30deg, started inside the card, so it never enters the header band.",
+    "fold": "PASS 72/72"
+  }
+}
