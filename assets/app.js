@@ -108,6 +108,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let hourlyChartHours = null;
   let hourlyChartStart = 0;
   let hourlyChartPlace = '';
+  // Captured WITH the rows, like the name above it. The subtitle's two halves —
+  // the place and the time-of-day line — have to describe the same place, and
+  // reading the hour off the live activePlace let them disagree for a frame
+  // during a switch ("Cape Town · Through the night" over Cape Town's
+  // afternoon rows, because Perth was already the active place).
+  let hourlyChartLon = null;
   const dailyCards = $('#daily-cards');
 
   const searchInput = $('#searchInput');
@@ -2361,6 +2367,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hourlyChartHours = slicedHourly;
     hourlyChartStart = nowHour;
     hourlyChartPlace = activePlace?.name || '';
+    hourlyChartLon = activePlace?.lon ?? null;
     updateHourlySubtitle();
     renderHourlyChart();
     slicedHourly.forEach((h, i) => {
@@ -2456,7 +2463,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // The time-aware voice line where the active language has an approved one;
     // the plain day label everywhere else. Hour comes from the LOCATION, not the
     // device, so a shared Durban link at 22:00 there does not say "afternoon".
-    const tail = hourlyVoice(getLocationHour(activePlace?.lon)) || t('misc', 'todayLabel');
+    const tail = hourlyVoice(getLocationHour(hourlyChartLon)) || t('misc', 'todayLabel');
     el.textContent = place ? `${place} · ${tail}` : tail;
   }
 

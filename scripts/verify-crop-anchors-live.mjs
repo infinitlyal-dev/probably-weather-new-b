@@ -19,8 +19,7 @@
 //
 //   node scripts/verify-crop-anchors-live.mjs
 import { createServer } from 'node:http';
-import { readFileSync, existsSync } from 'node:fs';
-import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';

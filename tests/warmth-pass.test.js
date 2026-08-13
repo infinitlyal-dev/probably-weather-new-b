@@ -139,7 +139,10 @@ describe('warmth pass — screen-header voice', () => {
   });
 
   it('bins the Hourly line by the LOCATION hour, not the device clock', () => {
-    expect(js).toMatch(/hourlyVoice\(getLocationHour\(activePlace\?\.lon\)\)/);
+    // hourlyChartLon, NOT activePlace: the name and the hour must describe the
+    // same place, and the live activePlace lets them disagree mid-switch.
+    expect(js).toMatch(/hourlyVoice\(getLocationHour\(hourlyChartLon\)\)/);
+    expect(js).toMatch(/hourlyChartLon = activePlace\?\.lon \?\? null;/);
     // Al's two named lines must both exist, spelled exactly as he wrote them.
     expect(js).toContain('"Through the night"');
     expect(js).toContain('"Next few hours"');
