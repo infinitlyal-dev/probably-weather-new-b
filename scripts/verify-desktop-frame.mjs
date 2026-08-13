@@ -10,6 +10,18 @@ import { WEATHER_COPY } from '../assets/weather-copy.js';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
 const output = path.join(root, 'output', 'desktop-postcard');
+
+// The primary ink, read from the ONE place it is declared rather than restated
+// here. A second home for this value is how the condition-line assertion below
+// went stale: it pinned rgb(255,255,255) and failed when the warmth pass warmed
+// --ink to #fffaf3, which was the ruling being followed, not broken.
+const INK_RGB = (() => {
+  const css = readFileSync(path.join(root, 'assets', 'app.css'), 'utf8');
+  const m = /--ink:\s*#([0-9a-f]{6})/i.exec(css);
+  if (!m) throw new Error('could not read --ink out of assets/app.css');
+  const [r, g, b] = [0, 2, 4].map((i) => parseInt(m[1].slice(i, i + 2), 16));
+  return `rgb(${r}, ${g}, ${b})`;
+})();
 const glassBaselineCss = transformSync(
   execFileSync('git', ['show', '9424808:assets/app.css'], { cwd: root }).toString(),
   { loader: 'css', minify: true },
@@ -284,7 +296,19 @@ async function typeAndColourContract(browser, origin) {
     // inverted rather than deleted — the colour is still asserted, and amber is
     // still forbidden from leaking, it just may no longer appear on ANY element
     // until a real warning surface claims it.
-    assert(result.conditionColour === 'rgb(255, 255, 255)', `Condition line should be white since 2026-08-07 but was ${result.conditionColour} at ${viewport.width}`);
+    // The 2026-08-07 ruling is "white, NOT amber" — it never named a hex. This
+    // pinned the literal rgb(255,255,255) and so failed the moment the warmth
+    // pass (Al, 2026-08-10) warmed --ink to #fffaf3, which is the same ruling
+    // still being obeyed. Assert the TOKEN the app actually paints from, read
+    // out of the stylesheet, so the contract survives the next tuning of the
+    // ink and still fails if the line goes amber, grey or transparent.
+    // Width-aware ON PURPOSE, and this asymmetry is itself the desktop-untouched
+    // guarantee: --ink is declared inside @media (max-width: 768px), so the
+    // warmth pass warmed the mobile condition line to #fffaf3 and left the
+    // >=769px frame on pure white. If a future change leaks the warm ink onto
+    // desktop — or reverts mobile to #ffffff — one of these two fails.
+    const expectedInk = viewport.width <= 768 ? INK_RGB : 'rgb(255, 255, 255)';
+    assert(result.conditionColour === expectedInk, `Condition line must be ${expectedInk} at ${viewport.width} (mobile = --ink since the warmth pass, desktop = untouched white since the 2026-08-07 ruling) but was ${result.conditionColour}`);
     assert(result.amberElements.length === 0, `--condition-amber is reserved for genuine warnings and must not paint chrome; found on: ${result.amberElements.join(', ')} at ${viewport.width}`);
     results.push({ viewport: `${viewport.width}x${viewport.height}`, ...result });
     await context.close();

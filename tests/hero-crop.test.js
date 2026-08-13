@@ -143,11 +143,31 @@ describe('the shipped table + the wiring', () => {
     expect(invalidEntries(HERO_CROP_OFFSETS)).toEqual([]);
   });
 
-  it('the shipped table is empty ON PURPOSE — the offsets await Al\'s ruling', () => {
-    // When the offsets DO ship this expectation flips, and the flip is the
-    // point: it makes shipping them a deliberate, visible act rather than
-    // something that leaks in with a regenerate.
-    expect(Object.keys(HERO_CROP_OFFSETS)).toHaveLength(0);
+  it('ships the anchors Al ruled on 2026-08-13, and only those', () => {
+    // This assertion used to read "the table is empty ON PURPOSE" — the gate
+    // that made shipping the offsets a deliberate act rather than something
+    // that leaks in with a regenerate. Al ruled on 2026-08-13 (167 images, one
+    // at a time, in review/crop-anchor-tool.html), so the gate has been passed
+    // and now guards the other direction: the table must match the ruling file
+    // exactly, and every entry must trace to a hash Al actually judged.
+    const ruling = JSON.parse(readFileSync(new URL('../review/set-001-crop-offsets.json', import.meta.url), 'utf8'));
+    const ruled = Object.values(ruling.offsets).filter((o) => typeof o.anchorY === 'number');
+    expect(ruled.length).toBe(167);
+    expect(Object.keys(HERO_CROP_OFFSETS).length).toBeGreaterThan(0);
+
+    // Every shipped VALUE must be one Al set. A regenerate that invented a
+    // number — or carried a stale one — fails here.
+    const ruledValues = new Set(ruled.map((o) => o.anchorY));
+    for (const [key, y] of Object.entries(HERO_CROP_OFFSETS)) {
+      expect(ruledValues.has(y), `${key} ships ${y}%, which is not a value Al ruled`).toBe(true);
+    }
+
+    // Both key shapes ship, or the mechanism is dead in one environment: the
+    // slot path for the previewable source tree, the content-addressed name for
+    // production.
+    const keys = Object.keys(HERO_CROP_OFFSETS);
+    expect(keys.some((k) => k.startsWith('bg/'))).toBe(true);
+    expect(keys.some((k) => k.startsWith('bg-canonical/'))).toBe(true);
   });
 
   it('the CSS default is 78% and is stated exactly once', () => {

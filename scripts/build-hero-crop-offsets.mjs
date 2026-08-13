@@ -48,15 +48,23 @@ const problems = [];
 for (const [hash, entry] of Object.entries(offsets.offsets || {})) {
   const paths = pathsByHash.get(hash);
   if (!paths) { problems.push(`${hash}: not present in set-001-draft.json`); continue; }
-  const y = entry.cropY;
+  // anchorY is the authoritative key since Al's "percentages, not pixels" ruling;
+  // cropY is the pre-ruling name and is still accepted so an old file keeps
+  // working. An entry carrying NEITHER is a hard failure, not a skip: the old
+  // `entry.cropY` read silently dropped every anchor in the current
+  // anchorY-keyed file and still exited 0, which would have shipped an empty
+  // map while reporting success.
+  const hasAnchor = 'anchorY' in entry || 'cropY' in entry;
+  const y = entry.anchorY ?? entry.cropY;
+  if (!hasAnchor) { problems.push(`${hash}: entry has neither anchorY nor cropY`); continue; }
   if (y === null || y === undefined) continue; // authored but not yet ruled
   if (typeof y !== 'number' || !Number.isFinite(y) || y < 0 || y > 100) {
-    problems.push(`${hash}: cropY ${JSON.stringify(y)} is not a percentage`);
+    problems.push(`${hash}: anchor ${JSON.stringify(y)} is not a percentage`);
     continue;
   }
   // The CSS default written explicitly would be a no-op entry pinning the
   // default in a second place — if it ever moves, these would keep the old one.
-  if (y === CSS_DEFAULT) { problems.push(`${hash}: cropY ${y} is the CSS default — drop the entry instead`); continue; }
+  if (y === CSS_DEFAULT) { problems.push(`${hash}: anchor ${y} is the CSS default — drop the entry instead`); continue; }
 
   for (const p of paths) {
     let bytes;

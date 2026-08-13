@@ -1,0 +1,153 @@
+{
+ "ruledBy": "Baken/Opus 5, 2026-08-10, by eye off output/m7-crop sheets",
+ "ruledAgainst": "CURRENT geometry — worst box 320x488 -> 276.79x131.47 (aspect 2.105), reference 390x844 -> 356.44x366.09, background-position 50% 78%",
+ "supersedes": "review/m7-verdicts.json, ruled 2026-08-09 against 739x850 -> 643x216.75 (aspect 2.97) — a box no device in the matrix shows any more",
+ "note": "Keys are bucket#position, matching the numbered cells on the sheets. Never joined by hash. S=SURVIVES, F=FIXABLE with anchorY, X=FAILS with a cause.",
+ "verdicts": {
+  "clear-dawn#1": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dawn#2": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dawn#3": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dawn#4": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dawn#5": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dawn#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "clear-dawn#7": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "clear-day#2": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "clear-day#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "clear-day#5": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "clear-day#7": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#8": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#9": {
+   "verdict": "FIXABLE",
+   "anchorY": 55
+  },
+  "clear-day#10": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "clear-day#11": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#12": {
+   "verdict": "SURVIVES"
+  },
+  "clear-day#13": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "clear-day#14": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dusk#1": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dusk#2": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "fog-dusk#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "fog-dusk#4": {
+   "verdict": "FAILS",
+   "cause": "near-black at every offset — no band carries a subject"
+  },
+  "fog-dusk#5": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dusk#6": {
+   "verdict": "SURVIVES"
+  },
+  "fog-dusk#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "clear-dusk#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  },
+  "clear-dusk#2": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dusk#3": {
+   "verdict": "FIXABLE",
+   "anchorY": 40
+  },
+  "clear-dusk#4": {
+   "verdict": "FIXABLE",
+   "anchorY": 45
+  },
+  "clear-dusk#5": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dusk#6": {
+   "verdict": "SURVIVES"
+  },
+  "clear-dusk#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "clear-night#1": {
+   "verdict": "FIXABLE",
+   "anchorY": 30
+  },
+  "clear-night#2": {
+   "verdict": "SURVIVES"
+  },
+  "clear-night#3": {
+   "verdict": "SURVIVES"
+  },
+  "clear-night#4": {
+   "verdict": "SURVIVES"
+  },
+  "clear-night#5": {
+   "verdict": "SURVIVES"
+  },
+  "clear-night#6": {
+   "verdict": "FIXABLE",
+   "anchorY": 50
+  },
+  "clear-night#7": {
+   "verdict": "FIXABLE",
+   "anchorY": 35
+  }
+ }
+}
