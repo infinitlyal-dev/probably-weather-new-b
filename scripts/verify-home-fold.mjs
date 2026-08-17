@@ -185,7 +185,12 @@ const MEASURE = (required) => {
     const lh = parseFloat(getComputedStyle(h).lineHeight);
     return Number.isFinite(lh) && lh > 0 ? Math.round(h.getBoundingClientRect().height / lh) : 0;
   })();
+  // Both axes. The height is the fold's business; the WIDTH is what the crop
+  // tools need to reproduce `background-size: cover` off-browser, and taking it
+  // here means the curation tool is sized by a gate rather than by arithmetic
+  // over margins that a later block can change.
   out.heroHeight = document.getElementById('heroPhoto')?.getBoundingClientRect().height ?? 0;
+  out.heroWidth = document.getElementById('heroPhoto')?.getBoundingClientRect().width ?? 0;
   out.tempFontPx = parseFloat(getComputedStyle(document.getElementById('temp')).fontSize);
   return out;
 };
@@ -257,7 +262,7 @@ for (const vp of VIEWPORTS) {
         .reduce((a, b) => (b.bottom > a.bottom ? b : a), { bottom: -Infinity, label: '-' });
       rows.push({
         viewport: `${vp.w}x${vp.h}`, device: vp.name, lang, caption: caption.label,
-        captionLines: m.captionLines, heroPx: Math.round(m.heroHeight), tempPx: Math.round(m.tempFontPx),
+        captionLines: m.captionLines, heroPx: Math.round(m.heroHeight), heroWpx: Math.round(m.heroWidth), tempPx: Math.round(m.tempFontPx),
         headroomPx: Math.round(m.navTop - worst.bottom), lowest: worst.label, maxScroll: Math.round(m.maxScroll),
       });
 
