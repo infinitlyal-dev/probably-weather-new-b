@@ -5718,3 +5718,337 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
     --ink-plain:  #191611;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE HOME MEME — THE JOKE GETS ON THE PHOTOGRAPH (<=768px)
+   Al's ruling 2026-08-14, mockup 1-meme from output/mockup-meme/:
+   "it doesnt feel like it still has a sense of humour... the images dont pop
+   and the humour feels like a weird byline."
+
+   Diagnosis this answers: the joke sat UNDER the picture in its own cream
+   strip. That is a caption, and a caption is a servant of the photograph — a
+   footnote, however good the line. A meme is ONE object: the words are on the
+   picture. Our own share card already works that way in a WhatsApp feed; the
+   app copied its gold wordmark and not its composition.
+
+   NO REPARENTING (Al's ruling on the handover's question 1). The obvious move
+   is `#heroCard.appendChild(#headline)`, and it is the one that breaks: at
+   >=769px `.hero-card` is `display:none`, which takes the whole subtree with
+   it, and the desktop postcard's handwritten caption is that same node — the
+   defect Sol recorded on 2026-08-06 and the M1 block still carries a comment
+   about. So the line stays exactly where it has always been in the DOM and is
+   POSITIONED over the card instead:
+
+     `main#home-screen.main` is already `position:relative` (app.css:1826), and
+     the card is its immediately preceding sibling with no margin between them.
+     So `bottom:100%` on the caption puts its bottom edge on main's top edge,
+     which IS the bottom edge of the photograph. No JS, no breakpoint check, no
+     shared node moved — and every rule in this block is inside the media query,
+     so >=769px is untouched by construction rather than by promise.
+
+   What that buys, beyond the look: the caption leaves the column, so the card
+   (the only flexible child since M9) absorbs its height. Measured off the
+   mockup, the visible share of the source photograph goes 56.4% -> 76.6% at
+   375x812 and 26.6% -> 32.9% at 320x488 — about a third more picture on a
+   normal phone, which is also the M7 crop problem shrinking by geometry.
+
+   Restated here on purpose, because moving the paint target drops what the old
+   rules said: the handwriting (Caveat is scoped to the old cream-foot rule),
+   the colour, and the sizing. The first mockup render came out in the system
+   sans for exactly this reason.
+
+   THE INK. White with a scrim, one ink for v1 (Al: "i dont care if we only
+   have one colour writing on the image, as long as it pops"). The ink map's
+   six pens were chosen to read as PEN ON CREAM STOCK; on a photograph they do
+   not survive. It is not deleted — the tokens and its condition rules are left
+   byte-for-byte above, so restoring it, or spending it on an accent, is not a
+   rebuild. The second ink for pale photographs (Al: "we can always easily have
+   another colour as well for the writing if an image loses the white") arrives
+   with the curation pass as a per-image toggle, not here.
+   Proven, not asserted: scripts/verify-wash-contrast.mjs --caption scores white
+   on the ACTUAL painted pixels behind the line, on the ten worst photographs in
+   the library for exactly this — see the CAPTION LEGIBILITY note there.
+
+   The print's furniture goes with it: stock, frame, tape, pin and tilt all
+   existed to make the photo an object on a page, and they also make it a small
+   object. The warm token base, the grain, the wash, the gold wordmark and the
+   data-on-solid discipline are untouched — this changes the hero unit, not the
+   facelift.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    /* The card's side margin and the caption's inset are ONE number: they are
+       the same edge, seen from two different boxes (the card's own margin box,
+       and main's padding box — both are the container's content width). */
+    --meme-inset: 16px;
+    /* The line is out of the column now, so its height no longer competes with
+       the stats pill and the fold budget no longer caps it. It gets the size
+       the mockup was ruled at: ~33px on Al's phone, against the old ~24px.
+       Both axes still, because a long line on a narrow phone is the worst case
+       and vh alone would not catch it. */
+    --meme-cap-fs: clamp(0.95rem, min(4.2vh, 8.8vw), 2.2rem);
+    /* The scrim's runway: the distance above the top line of text in which the
+       darkening fades back to nothing. It is ONE number because it is one edge
+       — the caption's top padding and the gradient's last stop are the same
+       place, and they have to move together (see the gradient below). */
+    --meme-runway: clamp(38px, 7vh, 76px);
+    /* The number steps back (Al, 2026-08-14). It is still the biggest DATA on
+       the screen; it is no longer the biggest THING on it. ~33px on Al's phone,
+       against the 48px it was — the mockup's 1.95rem, kept height-aware. */
+    --temp-fs: clamp(1.2rem, min(4vh, 9vw), 2.4rem);
+  }
+
+  /* ---------- The frame comes off ---------- */
+  .hero-card {
+    /* The tilt is gone, so the tilt's vertical overhang is not bought back. */
+    margin: calc(var(--fold-rhythm) * 0.4) var(--meme-inset) 0;
+    background: none;
+    border-radius: var(--r-lg);
+    /* Was visible for the pin, which has gone with the print. Hidden is what
+       makes the radius actually clip the photograph. */
+    overflow: hidden;
+    transform: none;
+    /* One honest shadow instead of the print's contact-edge stack: the picture
+       is not lying on a surface any more, it is a window in the page. */
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.40);
+  }
+  /* The tape (ITER 5) and the pin (M9). Both are fasteners for a print. */
+  .hero-card::before, .hero-card::after { display: none; }
+  /* The cream frame. `border: 0` ONLY — .hero-photo is a flex child that
+     already fills the card, and forcing a percentage height collapses it to
+     nothing (the first mockup render showed the page straight through an empty
+     card). */
+  .hero-photo { border: 0; }
+
+  /* ---------- The joke, on the photograph ---------- */
+  main#home-screen.main > .hero-caption {
+    position: absolute;
+    left: var(--meme-inset);
+    right: var(--meme-inset);
+    /* main's top padding edge = the card's bottom edge. */
+    bottom: 100%;
+    margin: 0;
+    padding: var(--meme-runway) 16px clamp(10px, 1.8vh, 20px);
+    /* MEASURED, not styled by eye. The mockup faded the scrim by PERCENTAGE of
+       the caption box — 0.58 at 42%, nothing at the top — and on a one-line
+       caption that is fine. On a long line the box grows, the percentages slide
+       with it, and the top row of text ends up sitting at ~0.24 of darkening on
+       bare photograph. scripts/verify-wash-contrast.mjs --caption caught exactly
+       that: 9 of the library's 10 worst photographs came in at 3.0-4.0:1 for
+       white, against a 4.5:1 bar, while their MEDIANS were 9-18:1. The failure
+       was entirely in the top rows.
+       So the last stop is pinned to the runway instead of to a percentage: full
+       strength everywhere the text can be, then the fade happens in the padding
+       above it — which is the only part of the picture the line is not on.
+       0.62 at that stop is the floor the arithmetic needs: against a pure white
+       pixel it composites to rgb(97,97,97), and white on that is 6.2:1. */
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.80) 0%,
+      rgba(0, 0, 0, 0.62) calc(100% - var(--meme-runway)),
+      rgba(0, 0, 0, 0) 100%
+    );
+    /* The caption is NOT inside the card, so the card's overflow cannot clip
+       it: without this its square bottom corners show outside the radius. */
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+    box-shadow: none;
+    font-family: 'Caveat Prototype', 'Segoe Print', 'Bradley Hand', cursive;
+    font-size: var(--meme-cap-fs);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: 0;
+    text-align: left;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.70), 0 1px 3px rgba(0, 0, 0, 0.80);
+    transform: none;
+  }
+  /* M9 centred the foot of the print at (0,2,2,0). A meme's line is set from
+     the left edge, like the share card's. Same specificity, later in the file. */
+  main#home-screen.main > #headline.hero-caption { text-align: left; }
+
+  /* THE ONE INK. (0,2,2,0) — the same specificity the ink map needed to beat
+     `main#home-screen.main #headline`, so this one rule retires all thirteen
+     condition inks from the hero without touching the block that declares them.
+     Pure white, not --ink: the scrim is tuned for #fff and the cream is half a
+     stop down on a bright photograph. */
+  main#home-screen.main > #headline.hero-caption { color: #ffffff; }
+
+  /* The entrance. #headline still runs #home-screen .headline's heroFadeIn, and
+     a RUNNING animation's transform beats a declared one — the polaroid variant
+     exists for that exact trap and would rotate the line off the picture. */
+  @keyframes heroFadeInMeme {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  main#home-screen.main > .hero-caption {
+    animation: heroFadeInMeme 1s ease-in forwards;
+    /* Restated: the `animation` shorthand resets it. */
+    animation-delay: 0.3s;
+  }
+
+  /* The wordmark rides the temperature down. At the old 0.42em of a number that
+     has itself stepped back, "Probably" would be 13px — a label so small it
+     reads as a mistake rather than as restraint. */
+  .temp .hero-probably { font-size: 0.62em; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE LIGHT COMES BACK (<=768px) — variant C, Al's ruling 2026-08-17 from
+   output/mockup-light/.
+   Al, on the shipped meme hero: "It does feel better. Only worry is the
+   homesreen still feels a bit dark. To moody almost. Its the overall black
+   design, not sure how to make it feel more SA viby like it used to feel."
+
+   Diagnosis, measured rather than felt: it is not WHICH black. The warmth pass
+   already took the base from blue-grey to espresso. It is HOW MUCH of the
+   screen is black. At 375x812 the photograph is ~54% of the screen and the
+   other ~46% — header band, temperature block, stats pill, nav — carried no
+   light at all. Before the facelift the photograph WAS the page, and that is
+   where the SA feeling lived: not in the hue we chose, but in the sheer
+   quantity of daylight on screen. We bought readability with light and only
+   paid back hue.
+
+   Two levers, both already built, neither touching the data-on-solid rule.
+
+   1. THE WASH STOPS BEING SWITCHED OFF HALFWAY DOWN. ITER 1 already paints a
+      blurred, saturated copy of the hero behind the page. Its scrim then
+      reached rgba(20,17,13,0.92) at 62% and landed on flat --page-bg at 78% —
+      so the bottom 40% of every screen was the filing cabinet again, and the
+      wash was doing nothing where the complaint actually lives. The scrim now
+      never closes: it ends at 0.78, so the photograph's own colour is still in
+      the page behind the temperature and the stats pill. The wash itself comes
+      up half a stop, because it was tuned to be barely perceptible UNDER a
+      scrim that then hid it anyway.
+
+   2. THE PHOTOGRAPH REACHES THE TOP OF THE SCREEN. The dark strip above the
+      card is reclaimed as picture: on home the header stops taking column
+      height and floats on the photograph, with its own gradient behind it.
+
+   NOT SHIPPED FROM THE MOCKUP: the glass nav. The mockup put the nav on
+   rgba(...,0.82) with a backdrop blur, and it looked right — but a see-through
+   nav is a defect this app has already had and fixed. The M1 block records it:
+   the nav was transparent and "the stats row showed through the labels". The
+   stats pill sits directly above the nav on home and nearly touches it on the
+   short phones. One dark strip at the very bottom of the screen is not the
+   problem Al described, so it stays opaque and the past bug stays fixed.
+
+   HOME ONLY, for lever 2. `body.home-active` is maintained by showScreen. The
+   secondary screens have their own page header (M2) and their panels run
+   full-bleed to the nav — taking the brand header out of the flow everywhere
+   would float it over those panels. Scoping to home is not caution here, it is
+   the difference between a fix and a regression.
+
+   THE COST THIS FORCES, stated because it is the whole risk: the brand and the
+   place name are now TEXT ON A PHOTOGRAPH, and the page under the data is
+   lighter than it was measured at. Both are proven the same way the caption
+   was — scripts/verify-wash-contrast.mjs --caption now scores all three bands
+   (header, caption, data) on the actual painted pixels, over the union of the
+   library's worst photographs for each band.
+   ═════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ---------- 0. THE SCRIM HAS NEVER PAINTED ----------
+     Found while measuring lever 1, and it is a defect in shipped code, not in
+     this change. ITER 1 gives BOTH pseudo-elements `z-index: -1`: `::after` is
+     the wash, `::before` is the scrim written to "kill the glow off before it
+     reaches the data". At equal z-index, paint order is tree order, and ::after
+     comes after ::before — so the wash has been painting ON TOP OF the scrim
+     since the vibrancy pass shipped, and the scrim has done nothing at all.
+
+     Proven, not deduced. Sampling the page behind the "feels like" line on
+     clear/week_1/day/1, at 375x812:
+       as shipped (wash + scrim)      rgb(91,75,65)
+       scrim forced to SOLID BLACK    rgb(91,75,65)   <- no effect whatsoever
+       scrim removed entirely         rgb(91,75,65)   <- no effect whatsoever
+       wash removed                   rgb(20,17,13)   <- the wash is all of it
+       scrim lifted above the wash    rgb(0,0,0)      <- it works once it is on top
+
+     Consequence for what is live right now: the data column on mobile home sits
+     on the raw wash rather than on the protected page, so its contrast is
+     whatever the photograph happens to give — and on the library's brightest
+     photographs --ink-2 does not clear 4.5:1 today.
+
+     The fix is one line and it is here rather than in ITER 1, so that block
+     stays the record of what was intended and this stays the record of what was
+     wrong. The wash drops to -2; the scrim keeps -1 and therefore paints over
+     it. #particles is z-index 3 and is above both either way, so weather motion
+     still plays over the room exactly as ITER 1 describes.
+
+     Read the scrim curve below as a dial that now MOVES. Every earlier number
+     in this app that assumed the scrim was working was measuring the wash. */
+  #bg::after { z-index: -2; }
+
+  /* ---------- 1. The room keeps the photograph's light ---------- */
+  #bg::after {
+    /* Was brightness(0.42). The wash is the only source of colour in the page,
+       and it was set to survive a scrim that has now been opened. */
+    filter: blur(38px) saturate(1.5) brightness(0.55);
+  }
+  #bg::before {
+    /* The ceiling is 0.78, not 1: at full opacity the page is --page-bg again
+       and the photograph might as well not be there. Every data surface on
+       home is an opaque panel or sits on this — which is why the inks are
+       re-measured against it rather than assumed to have survived. */
+    background: linear-gradient(
+      to bottom,
+      rgba(20, 17, 13, 0.11) 0%,
+      rgba(20, 17, 13, 0.18) 40%,
+      rgba(20, 17, 13, 0.27) 66%,
+      rgba(20, 17, 13, 0.34) 100%
+    );
+  }
+
+  /* ---------- 2. The photograph reaches the top ---------- */
+  body.home-active .container { padding-top: 0; }
+  body.home-active .header {
+    /* .container is position:relative (app.css:158), so this pins to its
+       padding box. The notch clearance travels with the header, which is
+       already where it lives (M8 put env(safe-area-inset-top) on this rule). */
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    /* Above the card, below nothing else: the language chip and the location
+       control must stay tappable over the photograph. */
+    z-index: 20;
+    padding: max(0.5rem, env(safe-area-inset-top)) 12px calc(var(--fold-rhythm) * 0.6 + 10px);
+    /* The header is on the picture now, and this gradient is sized by the gate
+       rather than by eye. FIRST ATTEMPT, recorded because the shape is the
+       lesson: 0.62 fading to 0 across the whole header. It fades by PERCENTAGE
+       of the strip, so the place name — which sits at ~70% of it — was standing
+       on about 0.25 of darkening and measured 2.2:1 on a bright sky. Same
+       mistake the caption's scrim made, in the same week.
+       So it HOLDS to 80% and fades only in the last fifth, below the text.
+       0.60 is the floor the arithmetic needs: over a blown-white sky it
+       composites to rgb(102,102,102), and white on that is 5.1:1. */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.74) 0%,
+      rgba(0, 0, 0, 0.60) 80%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  /* The place name was --ink-2, a warm grey chosen for a solid surface. On a
+     photograph it would need 0.74 of scrim to clear 4.5:1 — a black bar, which
+     is exactly the band being removed. It takes the primary ink instead, and
+     the gradient above is sized for white. */
+  body.home-active .brand-location { color: var(--ink); }
+  body.home-active .brand-title,
+  body.home-active .brand-location {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  }
+  body.home-active .hero-card {
+    margin-top: 0;
+    /* The top corners are off the screen now; only the foot is still a corner. */
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+  }
+
+  /* ---------- The three lines that lost their solid page ----------
+     --ink-2 is a warm grey picked against flat --page-bg, where it measured
+     7.5:1. On the lit page it measured 1.8:1 on the library's brightest
+     photographs — it is the ink that binds the whole change, needing the page
+     roughly three and a half times darker than white does. These three sit on
+     the page rather than in the stats pill, so they take the primary ink and
+     keep their hierarchy the way type normally does it: smaller and lighter,
+     not greyer. Everything inside .stats-row is on an opaque surface and is
+     deliberately untouched — the grey secondary ink survives where it works. */
+  body.home-active .feels-line,
+  body.home-active .range-line,
+  body.home-active .agree-line { color: var(--ink); }
+}

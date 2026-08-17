@@ -15,18 +15,50 @@ const faceliftBlock = () => {
   return css.slice(start);
 };
 
+// The home meme block (Al's ruling 2026-08-14) is appended after the facelift
+// blocks, in the same append-only style, so it is INSIDE faceliftBlock()'s
+// slice — which is how the two-radius and no-1024px guards reach it for free.
+// Sliced separately where a rule has to be attributed to the meme and not to
+// the M1/M9 rule of the same name that it overrides.
+const memeBlock = () => {
+  const start = css.indexOf('THE HOME MEME — THE JOKE GETS ON THE PHOTOGRAPH');
+  expect(start, 'home meme block missing from app.css').toBeGreaterThan(-1);
+  return css.slice(start);
+};
+
 describe('mobile facelift — contained hero (M1)', () => {
-  it('puts the witty line on a solid caption foot under the card, never on the photo', () => {
+  // RETITLED 2026-08-17. M1 put the line on a solid cream foot UNDER the photo
+  // and this test guarded that. Al's ruling of 2026-08-14 retires the foot: the
+  // line goes ON the photograph (the home meme), because a caption under a
+  // picture is a footnote however good it is. What the test guards is unchanged
+  // and now matters more, not less — the node must NOT move.
+  it('puts the witty line on the photograph without moving it out of #home-screen', () => {
     // #headline must stay INSIDE #home-screen. Nesting it in .hero-card blanked
     // the desktop postcard's handwritten caption, because display:none on the
     // card at >=769px takes the whole subtree with it. This is the regression
     // guard for that: the card contains the photo and nothing else.
     expect(html).toMatch(/<section id="heroCard" class="hero-card">\s*<div id="heroPhoto" class="hero-photo">[\s\S]*?<\/div>\s*<\/section>/);
     expect(html).toMatch(/<main id="home-screen"[\s\S]*?<p id="headline" class="headline hero-caption">/);
-    // It is lifted to the top of that flex column, and painted on an opaque
-    // surface rather than a translucent scrim.
-    expect(faceliftBlock()).toMatch(/main#home-screen\.main > \.hero-caption\s*{[^}]*order:\s*-1/s);
-    expect(faceliftBlock()).toMatch(/main#home-screen\.main > \.hero-caption\s*{[^}]*background:\s*var\(--surface\)/s);
+    // It reaches the photograph by POSITION, not by parentage: main is already
+    // position:relative and the card is its preceding sibling, so bottom:100%
+    // lands the line's bottom edge on the photo's bottom edge.
+    const meme = memeBlock();
+    expect(meme).toMatch(/main#home-screen\.main > \.hero-caption\s*{[^}]*position:\s*absolute/s);
+    expect(meme).toMatch(/main#home-screen\.main > \.hero-caption\s*{[^}]*bottom:\s*100%/s);
+    // On a scrim, in one white ink (Al: "i dont care if we only have one colour
+    // writing on the image, as long as it pops"), with the handwriting restated
+    // — moving the paint target drops every rule scoped to the old cream foot,
+    // and the first mockup render came out in the system sans for that reason.
+    expect(meme).toMatch(/main#home-screen\.main > \.hero-caption\s*{[^}]*background:\s*linear-gradient\(/s);
+    expect(meme).toMatch(/main#home-screen\.main > \.hero-caption\s*{[^}]*font-family:\s*'Caveat Prototype'/s);
+    expect(meme).toMatch(/main#home-screen\.main > #headline\.hero-caption\s*{\s*color:\s*#ffffff;\s*}/);
+    // The scrim's last stop is pinned to the caption's own top padding, not to
+    // a percentage of a box whose height is copy-driven. With percentages, a
+    // long line slid the fade down under its own top row and white measured
+    // 3.0-4.0:1 on the library's ten worst photographs (4.5:1 is the bar).
+    // Proof: node scripts/verify-wash-contrast.mjs --caption
+    expect(meme).toMatch(/rgba\(0, 0, 0, 0\.62\)\s*calc\(100% - var\(--meme-runway\)\)/);
+    expect(meme).toMatch(/padding:\s*var\(--meme-runway\)/);
   });
 
   it('hides the hero card on every screen except home', () => {
