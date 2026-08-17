@@ -1,0 +1,1740 @@
+{
+ "generated": "2026-08-14",
+ "ruledBy": "Al, drag tool",
+ "anchors": {
+  "dd736311b619": {
+   "verdict": "FIXABLE",
+   "anchorY": 63,
+   "bucket": "clear-dawn",
+   "image": "clear/week_2/dawn/5.webp"
+  },
+  "73d202837435": {
+   "verdict": "FIXABLE",
+   "anchorY": 68,
+   "bucket": "clear-dawn",
+   "image": "clear/week_2/dawn/6.webp"
+  },
+  "b698a0ccc12d": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-dawn",
+   "image": "clear/week_1/dawn/7.webp"
+  },
+  "7a76c59603c9": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "clear-dawn",
+   "image": "clear/week_1/dawn/5.webp"
+  },
+  "66d5e6cb3570": {
+   "verdict": "FIXABLE",
+   "anchorY": 71,
+   "bucket": "clear-dawn",
+   "image": "clear/week_1/dawn/3.webp"
+  },
+  "d529968dcb50": {
+   "verdict": "FAILS",
+   "bucket": "clear-dawn",
+   "image": "clear/week_2/dawn/7.webp"
+  },
+  "fcd87ed0e995": {
+   "verdict": "FAILS",
+   "bucket": "clear-dawn",
+   "image": "clear/week_2/dawn/2.webp"
+  },
+  "84beada2e358": {
+   "verdict": "FIXABLE",
+   "anchorY": 46,
+   "bucket": "clear-day",
+   "image": "clear/week_3/day/4.webp"
+  },
+  "5799efcdfd70": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/6.webp"
+  },
+  "77cfc93827e3": {
+   "verdict": "FIXABLE",
+   "anchorY": 58,
+   "bucket": "clear-day",
+   "image": "clear/week_3/day/7.webp"
+  },
+  "f673af851f9c": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "clear-day",
+   "image": "clear/week_3/day/1.webp"
+  },
+  "ca6d821f7c9b": {
+   "verdict": "FIXABLE",
+   "anchorY": 71,
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/5.webp"
+  },
+  "e9616cb7c61c": {
+   "verdict": "FIXABLE",
+   "anchorY": 34,
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/4.webp"
+  },
+  "45d964f74171": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/2.webp"
+  },
+  "0009c55ad6a5": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-day",
+   "image": "clear/week_3/day/3.webp"
+  },
+  "9ab8b9f07431": {
+   "verdict": "FIXABLE",
+   "anchorY": 60,
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/1.webp"
+  },
+  "448b951052cc": {
+   "verdict": "FIXABLE",
+   "anchorY": 34,
+   "bucket": "clear-day",
+   "image": "clear/week_4/day/2.webp"
+  },
+  "3d001539dcb5": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-day",
+   "image": "clear/week_4/day/6.webp"
+  },
+  "ed953578deec": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/7.webp"
+  },
+  "6e598ae56c12": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "clear-day",
+   "image": "clear/week_4/day/5.webp"
+  },
+  "03a31c2b8e88": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-day",
+   "image": "clear/week_1/day/7.webp"
+  },
+  "9059d175f28c": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-dusk",
+   "image": "clear/week_2/dusk/5.webp"
+  },
+  "1bd6b90924a1": {
+   "verdict": "FIXABLE",
+   "anchorY": 77,
+   "bucket": "clear-dusk",
+   "image": "clear/week_2/dusk/6.webp"
+  },
+  "7d50ec606bfc": {
+   "verdict": "FIXABLE",
+   "anchorY": 37,
+   "bucket": "clear-dusk",
+   "image": "clear/week_2/dusk/4.webp"
+  },
+  "cc951efb5d19": {
+   "verdict": "FIXABLE",
+   "anchorY": 52,
+   "bucket": "clear-dusk",
+   "image": "clear/week_2/dusk/3.webp"
+  },
+  "90a621539543": {
+   "verdict": "FIXABLE",
+   "anchorY": 82,
+   "bucket": "clear-dusk",
+   "image": "clear/week_2/dusk/2.webp"
+  },
+  "d097525bf5cf": {
+   "verdict": "FIXABLE",
+   "anchorY": 84,
+   "bucket": "clear-dusk",
+   "image": "clear/week_1/dusk/3.webp"
+  },
+  "525b2eea2ebc": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "clear-dusk",
+   "image": "clear/week_2/dusk/1.webp"
+  },
+  "970707aba87c": {
+   "verdict": "FIXABLE",
+   "anchorY": 45,
+   "bucket": "clear-night",
+   "image": "clear/week_2/night/6.webp"
+  },
+  "14f98c4f78fa": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-night",
+   "image": "clear/week_1/night/1.webp"
+  },
+  "de9514caac5f": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "clear-night",
+   "image": "clear/week_1/night/7.webp"
+  },
+  "05cd0ad39fd6": {
+   "verdict": "FIXABLE",
+   "anchorY": 70,
+   "bucket": "clear-night",
+   "image": "clear/week_2/night/5.webp"
+  },
+  "4138025d3128": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "clear-night",
+   "image": "clear/week_2/night/7.webp"
+  },
+  "127edee25245": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-night",
+   "image": "clear/week_1/night/3.webp"
+  },
+  "998833419718": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "clear-night",
+   "image": "clear/week_1/night/6.webp"
+  },
+  "08134a1e356e": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_2/dawn/3.webp"
+  },
+  "de1df07bf268": {
+   "verdict": "FIXABLE",
+   "anchorY": 14,
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_1/dawn/4.webp"
+  },
+  "03ff71985022": {
+   "verdict": "FIXABLE",
+   "anchorY": 71,
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_2/dawn/6.webp"
+  },
+  "4845b881f911": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_2/dawn/7.webp"
+  },
+  "3bfd9b9470d6": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_2/dawn/4.webp"
+  },
+  "b5793c36b69d": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_1/dawn/3.webp"
+  },
+  "e0e2d1182253": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "cloudy-dawn",
+   "image": "cloudy/week_1/dawn/7.webp"
+  },
+  "d16ca804a592": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_1/day/3.webp"
+  },
+  "4727610ce8f9": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_4/day/4.webp"
+  },
+  "5aea3d2e9887": {
+   "verdict": "FIXABLE",
+   "anchorY": 47,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_2/day/5.webp"
+  },
+  "5a72972b399b": {
+   "verdict": "FIXABLE",
+   "anchorY": 41,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_4/day/6.webp"
+  },
+  "dc71e7a692da": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_2/day/6.webp"
+  },
+  "c16f8303d56e": {
+   "verdict": "FIXABLE",
+   "anchorY": 33,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_3/day/1.webp"
+  },
+  "094ec6ba034c": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_2/day/7.webp"
+  },
+  "313ca13b51a5": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_4/day/7.webp"
+  },
+  "47550fce6c98": {
+   "verdict": "FIXABLE",
+   "anchorY": 32,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_3/day/4.webp"
+  },
+  "119e4a52f8a4": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_1/day/1.webp"
+  },
+  "31b58730d005": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_1/day/6.webp"
+  },
+  "5668c9f2edcb": {
+   "verdict": "FIXABLE",
+   "anchorY": 63,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_1/day/7.webp"
+  },
+  "e9f6b3850ce2": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_2/day/1.webp"
+  },
+  "04bdf14c306b": {
+   "verdict": "FIXABLE",
+   "anchorY": 71,
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_3/day/3.webp"
+  },
+  "20e80f881707": {
+   "verdict": "FIXABLE",
+   "anchorY": 51,
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_1/dusk/2.webp"
+  },
+  "018a0573e433": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/3.webp"
+  },
+  "444490756b06": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/5.webp"
+  },
+  "0ebee4d85540": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/6.webp"
+  },
+  "211c0291a514": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/7.webp"
+  },
+  "3ba329d5cea3": {
+   "verdict": "FIXABLE",
+   "anchorY": 49,
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_1/dusk/4.webp"
+  },
+  "6b5271665e34": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/2.webp"
+  },
+  "7b4c0256fd8d": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_1/night/1.webp"
+  },
+  "68317318c85d": {
+   "verdict": "FIXABLE",
+   "anchorY": 34,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_1/night/7.webp"
+  },
+  "76070c299a0b": {
+   "verdict": "FIXABLE",
+   "anchorY": 71,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_1/night/2.webp"
+  },
+  "bdc2741f86fb": {
+   "verdict": "FIXABLE",
+   "anchorY": 68,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_2/night/6.webp"
+  },
+  "e991afd863ba": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_1/night/6.webp"
+  },
+  "f3255e596b2c": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_2/night/5.webp"
+  },
+  "c6d4061cbef2": {
+   "verdict": "FIXABLE",
+   "anchorY": 64,
+   "bucket": "cloudy-night",
+   "image": "cloudy/week_2/night/4.webp"
+  },
+  "3e60dabd7ef7": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_2/dawn/3.webp"
+  },
+  "898c05f233a6": {
+   "verdict": "FIXABLE",
+   "anchorY": 55,
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_1/dawn/7.webp"
+  },
+  "5a6dd26eb7db": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_2/dawn/6.webp"
+  },
+  "caaa1c42d70a": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_1/dawn/2.webp"
+  },
+  "4040cfcfc732": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_2/dawn/7.webp"
+  },
+  "28129477b706": {
+   "verdict": "FIXABLE",
+   "anchorY": 33,
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_2/dawn/2.webp"
+  },
+  "6ca4d027da38": {
+   "verdict": "FIXABLE",
+   "anchorY": 49,
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_2/dawn/4.webp"
+  },
+  "45b1ac83db20": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_2/day/1.webp"
+  },
+  "21c809043132": {
+   "verdict": "FIXABLE",
+   "anchorY": 39,
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_1/day/1.webp"
+  },
+  "042ba0a95388": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_1/day/4.webp"
+  },
+  "bbb3d8348b00": {
+   "verdict": "FIXABLE",
+   "anchorY": 41,
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_3/day/5.webp"
+  },
+  "decff597fe6c": {
+   "verdict": "FIXABLE",
+   "anchorY": 63,
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_3/day/1.webp"
+  },
+  "bbad2500c852": {
+   "verdict": "FIXABLE",
+   "anchorY": 74,
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_4/day/3.webp"
+  },
+  "32dec9fbdcaa": {
+   "verdict": "FIXABLE",
+   "anchorY": 63,
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_2/day/2.webp"
+  },
+  "fbdf528f41c8": {
+   "verdict": "FIXABLE",
+   "anchorY": 46,
+   "bucket": "cold-clear-dusk",
+   "image": "cold-clear/week_1/dusk/4.webp"
+  },
+  "510b7a0d60c0": {
+   "verdict": "FIXABLE",
+   "anchorY": 76,
+   "bucket": "cold-clear-dusk",
+   "image": "cold-clear/week_1/dusk/2.webp"
+  },
+  "0b4330abc214": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "cold-clear-dusk",
+   "image": "cold-clear/week_2/dusk/3.webp"
+  },
+  "ff19d8654ec3": {
+   "verdict": "FIXABLE",
+   "anchorY": 33,
+   "bucket": "cold-clear-dusk",
+   "image": "cold-clear/week_2/dusk/6.webp"
+  },
+  "827554552d76": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "cold-clear-dusk",
+   "image": "cold-clear/week_1/dusk/5.webp"
+  },
+  "596049a5b397": {
+   "verdict": "FAILS",
+   "bucket": "cold-clear-dusk",
+   "image": "cold-clear/week_1/dusk/7.webp"
+  },
+  "1f74ef9146fb": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-clear-dusk",
+   "image": "cold-clear/week_2/dusk/5.webp"
+  },
+  "112364f9e477": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-clear-night",
+   "image": "cold-clear/week_2/night/3.webp"
+  },
+  "da90853b2ccb": {
+   "verdict": "FIXABLE",
+   "anchorY": 68,
+   "bucket": "cold-clear-night",
+   "image": "cold-clear/week_2/night/2.webp"
+  },
+  "d298c8c1f224": {
+   "verdict": "FIXABLE",
+   "anchorY": 55,
+   "bucket": "cold-clear-night",
+   "image": "cold-clear/week_2/night/4.webp"
+  },
+  "05aeb3b79581": {
+   "verdict": "FIXABLE",
+   "anchorY": 76,
+   "bucket": "cold-clear-night",
+   "image": "cold-clear/week_1/night/3.webp"
+  },
+  "f453a678f470": {
+   "verdict": "FIXABLE",
+   "anchorY": 57,
+   "bucket": "cold-clear-night",
+   "image": "cold-clear/week_2/night/6.webp"
+  },
+  "8fd1944f303b": {
+   "verdict": "FIXABLE",
+   "anchorY": 72,
+   "bucket": "cold-clear-night",
+   "image": "cold-clear/week_1/night/7.webp"
+  },
+  "da60a92cafd2": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "cold-clear-night",
+   "image": "cold-clear/week_1/night/4.webp"
+  },
+  "ea6e65a6bc63": {
+   "verdict": "FIXABLE",
+   "anchorY": 57,
+   "bucket": "cold-dawn",
+   "image": "cold/week_1/dawn/1.webp"
+  },
+  "91301942dc29": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-dawn",
+   "image": "cold/week_1/dawn/7.webp"
+  },
+  "1c5f757ee79a": {
+   "verdict": "FIXABLE",
+   "anchorY": 33,
+   "bucket": "cold-dawn",
+   "image": "cold/week_1/dawn/3.webp"
+  },
+  "41c9f776e0fb": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "cold-dawn",
+   "image": "cold/week_1/dawn/4.webp"
+  },
+  "484f2079f5aa": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "cold-dawn",
+   "image": "cold/week_2/dawn/5.webp"
+  },
+  "ba36a2982ee0": {
+   "verdict": "FIXABLE",
+   "anchorY": 85,
+   "bucket": "cold-dawn",
+   "image": "cold/week_4/dawn/1.webp"
+  },
+  "4210c1f4a1ad": {
+   "verdict": "FIXABLE",
+   "anchorY": 35,
+   "bucket": "cold-dawn",
+   "image": "cold/week_2/dawn/6.webp"
+  },
+  "4b92e51e69f8": {
+   "verdict": "FIXABLE",
+   "anchorY": 63,
+   "bucket": "cold-day",
+   "image": "cold/week_4/day/4.webp"
+  },
+  "77dad643efa6": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "cold-day",
+   "image": "cold/week_3/day/5.webp"
+  },
+  "084405b1c79a": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "cold-day",
+   "image": "cold/week_2/day/5.webp"
+  },
+  "e8b7a7602012": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "cold-day",
+   "image": "cold/week_1/day/6.webp"
+  },
+  "e938ce2769cd": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "cold-day",
+   "image": "cold/week_2/day/2.webp"
+  },
+  "bf942a9f6d66": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "cold-day",
+   "image": "cold/week_3/day/6.webp"
+  },
+  "36ffe52cf7ec": {
+   "verdict": "FIXABLE",
+   "anchorY": 70,
+   "bucket": "cold-day",
+   "image": "cold/week_2/day/4.webp"
+  },
+  "999e68c47bfc": {
+   "verdict": "FIXABLE",
+   "anchorY": 84,
+   "bucket": "cold-day",
+   "image": "cold/week_2/day/3.webp"
+  },
+  "d970e657c4d2": {
+   "verdict": "FIXABLE",
+   "anchorY": 71,
+   "bucket": "cold-day",
+   "image": "cold/week_4/day/5.webp"
+  },
+  "a37a31d9aa79": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-day",
+   "image": "cold/week_3/day/3.webp"
+  },
+  "59f61259d350": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "cold-day",
+   "image": "cold/week_1/day/7.webp"
+  },
+  "a373f1d83e2f": {
+   "verdict": "FIXABLE",
+   "anchorY": 22,
+   "bucket": "cold-day",
+   "image": "cold/week_4/day/1.webp"
+  },
+  "d003110fec9f": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-day",
+   "image": "cold/week_3/day/7.webp"
+  },
+  "3fd7aa0aae2e": {
+   "verdict": "FIXABLE",
+   "anchorY": 46,
+   "bucket": "cold-day",
+   "image": "cold/week_4/day/2.webp"
+  },
+  "420d1bd07555": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "cold-dusk",
+   "image": "cold/week_1/dusk/7.webp"
+  },
+  "55da2af2c2bd": {
+   "verdict": "FIXABLE",
+   "anchorY": 68,
+   "bucket": "cold-dusk",
+   "image": "cold/week_1/dusk/3.webp"
+  },
+  "50eb6a4aa792": {
+   "verdict": "FIXABLE",
+   "anchorY": 33,
+   "bucket": "cold-dusk",
+   "image": "cold/week_2/dusk/3.webp"
+  },
+  "f10b22cc14ac": {
+   "verdict": "FAILS",
+   "bucket": "cold-dusk",
+   "image": "cold/week_2/dusk/1.webp"
+  },
+  "917c4c0a6fac": {
+   "verdict": "FIXABLE",
+   "anchorY": 77,
+   "bucket": "cold-dusk",
+   "image": "cold/week_2/dusk/5.webp"
+  },
+  "39e28d40ecf1": {
+   "verdict": "FIXABLE",
+   "anchorY": 63,
+   "bucket": "cold-dusk",
+   "image": "cold/week_4/dusk/2.webp"
+  },
+  "6ab73d31bad6": {
+   "verdict": "FIXABLE",
+   "anchorY": 72,
+   "bucket": "cold-dusk",
+   "image": "cold/week_1/dusk/2.webp"
+  },
+  "a77b4dca45ae": {
+   "verdict": "FIXABLE",
+   "anchorY": 76,
+   "bucket": "cold-night",
+   "image": "cold/week_1/night/6.webp"
+  },
+  "6baabb00f226": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "cold-night",
+   "image": "cold/week_1/night/2.webp"
+  },
+  "cb132360385f": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "cold-night",
+   "image": "cold/week_2/night/2.webp"
+  },
+  "54f02eb5aac1": {
+   "verdict": "FIXABLE",
+   "anchorY": 36,
+   "bucket": "cold-night",
+   "image": "cold/week_2/night/3.webp"
+  },
+  "fbf101482bbd": {
+   "verdict": "FIXABLE",
+   "anchorY": 55,
+   "bucket": "cold-night",
+   "image": "cold/week_2/night/5.webp"
+  },
+  "13efc9191981": {
+   "verdict": "FIXABLE",
+   "anchorY": 74,
+   "bucket": "cold-night",
+   "image": "cold/week_4/night/1.webp"
+  },
+  "b850a52403e3": {
+   "verdict": "FIXABLE",
+   "anchorY": 36,
+   "bucket": "cold-night",
+   "image": "cold/week_1/night/7.webp"
+  },
+  "23b1b4b2af6d": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "fog-dawn",
+   "image": "fog/week_1/dawn/5.webp"
+  },
+  "591629dceb51": {
+   "verdict": "FIXABLE",
+   "anchorY": 53,
+   "bucket": "fog-dawn",
+   "image": "fog/week_1/dawn/1.webp"
+  },
+  "deaadb7968fe": {
+   "verdict": "FIXABLE",
+   "anchorY": 39,
+   "bucket": "fog-dawn",
+   "image": "fog/week_1/dawn/4.webp"
+  },
+  "13fa1ba0ce60": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "fog-dawn",
+   "image": "fog/week_2/dawn/1.webp"
+  },
+  "d903941f0dd8": {
+   "verdict": "FIXABLE",
+   "anchorY": 57,
+   "bucket": "fog-dawn",
+   "image": "fog/week_1/dawn/3.webp"
+  },
+  "48e51baff8be": {
+   "verdict": "FIXABLE",
+   "anchorY": 89,
+   "bucket": "fog-dawn",
+   "image": "fog/week_1/dawn/7.webp"
+  },
+  "8ea1dc6bec6a": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "fog-dawn",
+   "image": "fog/week_2/dawn/3.webp"
+  },
+  "2d71f451d0df": {
+   "verdict": "FIXABLE",
+   "anchorY": 54,
+   "bucket": "fog-day",
+   "image": "fog/week_1/day/3.webp"
+  },
+  "84811d2b9372": {
+   "verdict": "FIXABLE",
+   "anchorY": 51,
+   "bucket": "fog-day",
+   "image": "fog/week_3/day/2.webp"
+  },
+  "541778f8c617": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "fog-day",
+   "image": "fog/week_4/day/1.webp"
+  },
+  "62480343c313": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "fog-day",
+   "image": "fog/week_2/day/6.webp"
+  },
+  "dd6b06e34d3e": {
+   "verdict": "FIXABLE",
+   "anchorY": 58,
+   "bucket": "fog-day",
+   "image": "fog/week_3/day/7.webp"
+  },
+  "36972a49b9e6": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "fog-day",
+   "image": "fog/week_2/day/1.webp"
+  },
+  "f1d8b3873dff": {
+   "verdict": "FIXABLE",
+   "anchorY": 42,
+   "bucket": "fog-day",
+   "image": "fog/week_1/day/1.webp"
+  },
+  "4003b55c6c42": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "fog-dusk",
+   "image": "fog/week_1/dusk/1.webp"
+  },
+  "2ac9aa1f42fc": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "fog-dusk",
+   "image": "fog/week_1/dusk/5.webp"
+  },
+  "5cd228859e14": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "fog-dusk",
+   "image": "fog/week_2/dusk/3.webp"
+  },
+  "a0b24a9ae618": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "fog-dusk",
+   "image": "fog/week_1/dusk/4.webp"
+  },
+  "b5837596744c": {
+   "verdict": "FIXABLE",
+   "anchorY": 69,
+   "bucket": "fog-dusk",
+   "image": "fog/week_2/dusk/1.webp"
+  },
+  "838bd4824615": {
+   "verdict": "FIXABLE",
+   "anchorY": 57,
+   "bucket": "fog-dusk",
+   "image": "fog/week_2/dusk/7.webp"
+  },
+  "b64f87c2b2bc": {
+   "verdict": "FIXABLE",
+   "anchorY": 48,
+   "bucket": "fog-dusk",
+   "image": "fog/week_1/dusk/6.webp"
+  },
+  "90691a4a7825": {
+   "verdict": "FAILS",
+   "bucket": "fog-night",
+   "image": "fog/week_1/night/3.webp"
+  },
+  "05b3727f7c16": {
+   "verdict": "FIXABLE",
+   "anchorY": 32,
+   "bucket": "fog-night",
+   "image": "fog/week_1/night/5.webp"
+  },
+  "5a72ad3aac4b": {
+   "verdict": "FIXABLE",
+   "anchorY": 41,
+   "bucket": "fog-night",
+   "image": "fog/week_1/night/1.webp"
+  },
+  "c2a03f49e81e": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "fog-night",
+   "image": "fog/week_1/night/7.webp"
+  },
+  "7acec82c9b6f": {
+   "verdict": "FIXABLE",
+   "anchorY": 81,
+   "bucket": "fog-night",
+   "image": "fog/week_2/night/4.webp"
+  },
+  "39c515606f74": {
+   "verdict": "FIXABLE",
+   "anchorY": 65,
+   "bucket": "fog-night",
+   "image": "fog/week_1/night/4.webp"
+  },
+  "0467a4574c0b": {
+   "verdict": "FIXABLE",
+   "anchorY": 49,
+   "bucket": "fog-night",
+   "image": "fog/week_2/night/2.webp"
+  },
+  "4d63213b19b9": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/3.webp"
+  },
+  "0828ca00553f": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/4.webp"
+  },
+  "c6d266d04418": {
+   "verdict": "FIXABLE",
+   "anchorY": 69,
+   "bucket": "heat-dawn",
+   "image": "heat/week_2/dawn/7.webp"
+  },
+  "726c6aee069a": {
+   "verdict": "FIXABLE",
+   "anchorY": 88,
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/7.webp"
+  },
+  "818c078a2bda": {
+   "verdict": "FIXABLE",
+   "anchorY": 58,
+   "bucket": "heat-dawn",
+   "image": "heat/week_2/dawn/3.webp"
+  },
+  "b81a91a1f851": {
+   "verdict": "FIXABLE",
+   "anchorY": 55,
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/5.webp"
+  },
+  "437fd1add3cd": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/6.webp"
+  },
+  "98d89edda1cd": {
+   "verdict": "FIXABLE",
+   "anchorY": 49,
+   "bucket": "heat-day",
+   "image": "heat/week_1/day/4.webp"
+  },
+  "d6593f52fb76": {
+   "verdict": "FIXABLE",
+   "anchorY": 59,
+   "bucket": "heat-day",
+   "image": "heat/week_2/day/2.webp"
+  },
+  "6591bd91d1fc": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "heat-day",
+   "image": "heat/week_3/day/1.webp"
+  },
+  "afd3c9db83bd": {
+   "verdict": "FIXABLE",
+   "anchorY": 59,
+   "bucket": "heat-day",
+   "image": "heat/week_2/day/7.webp"
+  },
+  "6ce02da2ab7a": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "heat-day",
+   "image": "heat/week_3/day/5.webp"
+  },
+  "36881ce76889": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "heat-day",
+   "image": "heat/week_2/day/5.webp"
+  },
+  "0cc1648cbc13": {
+   "verdict": "FIXABLE",
+   "anchorY": 52,
+   "bucket": "heat-day",
+   "image": "heat/week_4/day/7.webp"
+  },
+  "5ed7621f5dd9": {
+   "verdict": "FIXABLE",
+   "anchorY": 54,
+   "bucket": "heat-dusk",
+   "image": "heat/week_1/dusk/3.webp"
+  },
+  "68661ff2b0dc": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "heat-dusk",
+   "image": "heat/week_1/dusk/4.webp"
+  },
+  "e120e45b0b33": {
+   "verdict": "FAILS",
+   "bucket": "heat-dusk",
+   "image": "heat/week_2/dusk/6.webp"
+  },
+  "3e88aef1fb06": {
+   "verdict": "FIXABLE",
+   "anchorY": 60,
+   "bucket": "heat-dusk",
+   "image": "heat/week_2/dusk/7.webp"
+  },
+  "93f4a43551af": {
+   "verdict": "FIXABLE",
+   "anchorY": 58,
+   "bucket": "heat-dusk",
+   "image": "heat/week_2/dusk/1.webp"
+  },
+  "b5a0db54507e": {
+   "verdict": "FAILS",
+   "bucket": "heat-dusk",
+   "image": "heat/week_2/dusk/3.webp"
+  },
+  "9728bed72ec6": {
+   "verdict": "FIXABLE",
+   "anchorY": 68,
+   "bucket": "heat-dusk",
+   "image": "heat/week_1/dusk/6.webp"
+  },
+  "f2e76528eca3": {
+   "verdict": "FIXABLE",
+   "anchorY": 51,
+   "bucket": "heat-night",
+   "image": "heat/week_1/night/4.webp"
+  },
+  "2a3a60226c30": {
+   "verdict": "FIXABLE",
+   "anchorY": 31,
+   "bucket": "heat-night",
+   "image": "heat/week_2/night/7.webp"
+  },
+  "e62c00a72fb4": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "heat-night",
+   "image": "heat/week_2/night/6.webp"
+  },
+  "98cbbbd04a22": {
+   "verdict": "FAILS",
+   "bucket": "heat-night",
+   "image": "heat/week_1/night/3.webp"
+  },
+  "73f8b2781c4c": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "heat-night",
+   "image": "heat/week_1/night/2.webp"
+  },
+  "87546db18e01": {
+   "verdict": "FIXABLE",
+   "anchorY": 68,
+   "bucket": "heat-night",
+   "image": "heat/week_2/night/2.webp"
+  },
+  "b1ba614f5ef5": {
+   "verdict": "FAILS",
+   "bucket": "heat-night",
+   "image": "heat/week_1/night/1.webp"
+  },
+  "e5b2e8ac2654": {
+   "verdict": "FIXABLE",
+   "anchorY": 42,
+   "bucket": "rain-dawn",
+   "image": "rain/week_1/dawn/2.webp"
+  },
+  "9e75b001c7c5": {
+   "verdict": "FIXABLE",
+   "anchorY": 58,
+   "bucket": "rain-dawn",
+   "image": "rain/week_1/dawn/3.webp"
+  },
+  "8071fe3f0719": {
+   "verdict": "FAILS",
+   "bucket": "rain-dawn",
+   "image": "rain/week_2/dawn/5.webp"
+  },
+  "69be9df302cf": {
+   "verdict": "FAILS",
+   "bucket": "rain-dawn",
+   "image": "rain/week_2/dawn/6.webp"
+  },
+  "7bd5758fb7b5": {
+   "verdict": "FIXABLE",
+   "anchorY": 49,
+   "bucket": "rain-dawn",
+   "image": "rain/week_2/dawn/2.webp"
+  },
+  "73567b0c612e": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "rain-dawn",
+   "image": "rain/week_1/dawn/6.webp"
+  },
+  "206f0a768ec9": {
+   "verdict": "FIXABLE",
+   "anchorY": 69,
+   "bucket": "rain-dawn",
+   "image": "rain/week_1/dawn/7.webp"
+  },
+  "2b750515575e": {
+   "verdict": "FIXABLE",
+   "anchorY": 48,
+   "bucket": "rain-day",
+   "image": "rain/week_1/day/2.webp"
+  },
+  "00a672556998": {
+   "verdict": "FIXABLE",
+   "anchorY": 47,
+   "bucket": "rain-day",
+   "image": "rain/week_1/day/3.webp"
+  },
+  "8ce35385e048": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "rain-day",
+   "image": "rain/week_2/day/6.webp"
+  },
+  "e7547cfdee94": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "rain-day",
+   "image": "rain/week_2/day/4.webp"
+  },
+  "e54bbf2b56b2": {
+   "verdict": "FIXABLE",
+   "anchorY": 39,
+   "bucket": "rain-day",
+   "image": "rain/week_3/day/3.webp"
+  },
+  "057e8c9e5039": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "rain-day",
+   "image": "rain/week_4/day/2.webp"
+  },
+  "d8d16083a690": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "rain-day",
+   "image": "rain/week_3/day/5.webp"
+  },
+  "fe838c8901f7": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "rain-day",
+   "image": "rain/week_2/day/1.webp"
+  },
+  "d878b96a3f71": {
+   "verdict": "FIXABLE",
+   "anchorY": 26,
+   "bucket": "rain-day",
+   "image": "rain/week_1/day/1.webp"
+  },
+  "3bd49d0acf2b": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "rain-day",
+   "image": "rain/week_2/day/5.webp"
+  },
+  "d86d4f5699c2": {
+   "verdict": "FIXABLE",
+   "anchorY": 25,
+   "bucket": "rain-day",
+   "image": "rain/week_3/day/1.webp"
+  },
+  "a0ef2720c507": {
+   "verdict": "FIXABLE",
+   "anchorY": 29,
+   "bucket": "rain-day",
+   "image": "rain/week_3/day/7.webp"
+  },
+  "c9c6fd784b69": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "rain-day",
+   "image": "rain/week_4/day/4.webp"
+  },
+  "c9050c0a05e5": {
+   "verdict": "FIXABLE",
+   "anchorY": 52,
+   "bucket": "rain-day",
+   "image": "rain/week_4/day/3.webp"
+  },
+  "71fdebcd3deb": {
+   "verdict": "FIXABLE",
+   "anchorY": 38,
+   "bucket": "rain-dusk",
+   "image": "rain/week_1/dusk/1.webp"
+  },
+  "09641df1432a": {
+   "verdict": "FIXABLE",
+   "anchorY": 35,
+   "bucket": "rain-dusk",
+   "image": "rain/week_2/dusk/3.webp"
+  },
+  "e95e8a2f22f0": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "rain-dusk",
+   "image": "rain/week_1/dusk/5.webp"
+  },
+  "abf80e59bae9": {
+   "verdict": "FIXABLE",
+   "anchorY": 42,
+   "bucket": "rain-dusk",
+   "image": "rain/week_2/dusk/6.webp"
+  },
+  "b4ee9d16720e": {
+   "verdict": "FIXABLE",
+   "anchorY": 32,
+   "bucket": "rain-dusk",
+   "image": "rain/week_2/dusk/4.webp"
+  },
+  "8412ccb17305": {
+   "verdict": "FAILS",
+   "bucket": "rain-dusk",
+   "image": "rain/week_2/dusk/2.webp"
+  },
+  "5f935cb18f17": {
+   "verdict": "FIXABLE",
+   "anchorY": 36,
+   "bucket": "rain-dusk",
+   "image": "rain/week_1/dusk/2.webp"
+  },
+  "26212db14903": {
+   "verdict": "FAILS",
+   "bucket": "rain-night",
+   "image": "rain/week_1/night/2.webp"
+  },
+  "504e55301184": {
+   "verdict": "FIXABLE",
+   "anchorY": 48,
+   "bucket": "rain-night",
+   "image": "rain/week_1/night/5.webp"
+  },
+  "8757a8b3e62b": {
+   "verdict": "FAILS",
+   "bucket": "rain-night",
+   "image": "rain/week_1/night/4.webp"
+  },
+  "c8df884e9ec0": {
+   "verdict": "FIXABLE",
+   "anchorY": 40,
+   "bucket": "rain-night",
+   "image": "rain/week_2/night/4.webp"
+  },
+  "19ddc2f8afd3": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "rain-night",
+   "image": "rain/week_2/night/6.webp"
+  },
+  "45578d2dd000": {
+   "verdict": "FAILS",
+   "bucket": "rain-night",
+   "image": "rain/week_1/night/6.webp"
+  },
+  "d28204abf829": {
+   "verdict": "FIXABLE",
+   "anchorY": 45,
+   "bucket": "rain-night",
+   "image": "rain/week_1/night/3.webp"
+  },
+  "91f980f76f82": {
+   "verdict": "FIXABLE",
+   "anchorY": 55,
+   "bucket": "storm-dawn",
+   "image": "storm/week_1/dawn/2.webp"
+  },
+  "55fac1141abf": {
+   "verdict": "FIXABLE",
+   "anchorY": 65,
+   "bucket": "storm-dawn",
+   "image": "storm/week_1/dawn/3.webp"
+  },
+  "f0b49be17750": {
+   "verdict": "FIXABLE",
+   "anchorY": 47,
+   "bucket": "storm-dawn",
+   "image": "storm/week_1/dawn/5.webp"
+  },
+  "a785060d7357": {
+   "verdict": "FIXABLE",
+   "anchorY": 63,
+   "bucket": "storm-dawn",
+   "image": "storm/week_1/dawn/7.webp"
+  },
+  "20ed2fe6b144": {
+   "verdict": "FIXABLE",
+   "anchorY": 62,
+   "bucket": "storm-dawn",
+   "image": "storm/week_2/dawn/7.webp"
+  },
+  "56af96f529d2": {
+   "verdict": "FIXABLE",
+   "anchorY": 31,
+   "bucket": "storm-dawn",
+   "image": "storm/week_2/dawn/2.webp"
+  },
+  "29a289619727": {
+   "verdict": "FIXABLE",
+   "anchorY": 40,
+   "bucket": "storm-dawn",
+   "image": "storm/week_2/dawn/3.webp"
+  },
+  "99d0821cdd98": {
+   "verdict": "FIXABLE",
+   "anchorY": 54,
+   "bucket": "storm-day",
+   "image": "storm/week_1/day/5.webp"
+  },
+  "41e6c19016c1": {
+   "verdict": "FIXABLE",
+   "anchorY": 53,
+   "bucket": "storm-day",
+   "image": "storm/week_1/day/3.webp"
+  },
+  "c152b51ebfa5": {
+   "verdict": "FIXABLE",
+   "anchorY": 48,
+   "bucket": "storm-day",
+   "image": "storm/week_2/day/2.webp"
+  },
+  "b08495c9d832": {
+   "verdict": "FIXABLE",
+   "anchorY": 69,
+   "bucket": "storm-day",
+   "image": "storm/week_3/day/5.webp"
+  },
+  "20f3d07d3c47": {
+   "verdict": "FIXABLE",
+   "anchorY": 69,
+   "bucket": "storm-day",
+   "image": "storm/week_3/day/3.webp"
+  },
+  "a02b40a1cdb7": {
+   "verdict": "FIXABLE",
+   "anchorY": 70,
+   "bucket": "storm-day",
+   "image": "storm/week_2/day/3.webp"
+  },
+  "f6562060468c": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "storm-day",
+   "image": "storm/week_4/day/6.webp"
+  },
+  "30a82fcff9d4": {
+   "verdict": "FIXABLE",
+   "anchorY": 64,
+   "bucket": "storm-day",
+   "image": "storm/week_2/day/6.webp"
+  },
+  "c2c016aabf8f": {
+   "verdict": "FIXABLE",
+   "anchorY": 62,
+   "bucket": "storm-day",
+   "image": "storm/week_2/day/4.webp"
+  },
+  "5528e24282b5": {
+   "verdict": "FAILS",
+   "bucket": "storm-day",
+   "image": "storm/week_4/day/1.webp"
+  },
+  "8c5812bded23": {
+   "verdict": "FIXABLE",
+   "anchorY": 71,
+   "bucket": "storm-day",
+   "image": "storm/week_4/day/5.webp"
+  },
+  "10cac134f9d9": {
+   "verdict": "FIXABLE",
+   "anchorY": 49,
+   "bucket": "storm-day",
+   "image": "storm/week_3/day/1.webp"
+  },
+  "676b8843cb92": {
+   "verdict": "FIXABLE",
+   "anchorY": 67,
+   "bucket": "storm-day",
+   "image": "storm/week_1/day/4.webp"
+  },
+  "777b9b465dbe": {
+   "verdict": "FIXABLE",
+   "anchorY": 69,
+   "bucket": "storm-day",
+   "image": "storm/week_2/day/5.webp"
+  },
+  "742e1675a5a4": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "storm-dusk",
+   "image": "storm/week_1/dusk/3.webp"
+  },
+  "adc69e7b4a17": {
+   "verdict": "FIXABLE",
+   "anchorY": 41,
+   "bucket": "storm-dusk",
+   "image": "storm/week_2/dusk/5.webp"
+  },
+  "53d4228e24c8": {
+   "verdict": "FIXABLE",
+   "anchorY": 55,
+   "bucket": "storm-dusk",
+   "image": "storm/week_1/dusk/4.webp"
+  },
+  "a61146a38b06": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "storm-dusk",
+   "image": "storm/week_1/dusk/2.webp"
+  },
+  "e0089512238b": {
+   "verdict": "FIXABLE",
+   "anchorY": 73,
+   "bucket": "storm-dusk",
+   "image": "storm/week_1/dusk/7.webp"
+  },
+  "f6818069c8bd": {
+   "verdict": "FIXABLE",
+   "anchorY": 47,
+   "bucket": "storm-dusk",
+   "image": "storm/week_2/dusk/4.webp"
+  },
+  "e5b510c8a1e4": {
+   "verdict": "FIXABLE",
+   "anchorY": 43,
+   "bucket": "storm-dusk",
+   "image": "storm/week_1/dusk/5.webp"
+  },
+  "1a34b1283d67": {
+   "verdict": "FAILS",
+   "bucket": "storm-night",
+   "image": "storm/week_1/night/5.webp"
+  },
+  "fa184bd3c2dd": {
+   "verdict": "FAILS",
+   "bucket": "storm-night",
+   "image": "storm/week_1/night/4.webp"
+  },
+  "faaf0b2003be": {
+   "verdict": "FIXABLE",
+   "anchorY": 29,
+   "bucket": "storm-night",
+   "image": "storm/week_2/night/1.webp"
+  },
+  "047249fa6b9a": {
+   "verdict": "FAILS",
+   "bucket": "storm-night",
+   "image": "storm/week_2/night/4.webp"
+  },
+  "afd4890b6ce6": {
+   "verdict": "FAILS",
+   "bucket": "storm-night",
+   "image": "storm/week_2/night/3.webp"
+  },
+  "2d2e6dd5d7fd": {
+   "verdict": "FIXABLE",
+   "anchorY": 42,
+   "bucket": "storm-night",
+   "image": "storm/week_2/night/5.webp"
+  },
+  "14c56f85c353": {
+   "verdict": "FIXABLE",
+   "anchorY": 23,
+   "bucket": "storm-night",
+   "image": "storm/week_1/night/7.webp"
+  },
+  "c121631aca0a": {
+   "verdict": "FIXABLE",
+   "anchorY": 42,
+   "bucket": "wind-dawn",
+   "image": "wind/week_1/dawn/2.webp"
+  },
+  "3556004712b7": {
+   "verdict": "FIXABLE",
+   "anchorY": 48,
+   "bucket": "wind-dawn",
+   "image": "wind/week_2/dawn/5.webp"
+  },
+  "c66c7fd4f50e": {
+   "verdict": "FIXABLE",
+   "anchorY": 55,
+   "bucket": "wind-dawn",
+   "image": "wind/week_2/dawn/4.webp"
+  },
+  "45b7693ad9e4": {
+   "verdict": "FIXABLE",
+   "anchorY": 39,
+   "bucket": "wind-dawn",
+   "image": "wind/week_1/dawn/6.webp"
+  },
+  "f1a06c34c049": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "wind-dawn",
+   "image": "wind/week_4/dawn/1.webp"
+  },
+  "d0a60d414066": {
+   "verdict": "FIXABLE",
+   "anchorY": 74,
+   "bucket": "wind-dawn",
+   "image": "wind/week_1/dawn/7.webp"
+  },
+  "337d1a2fe2c2": {
+   "verdict": "FIXABLE",
+   "anchorY": 77,
+   "bucket": "wind-dawn",
+   "image": "wind/week_1/dawn/5.webp"
+  },
+  "232bde6ed095": {
+   "verdict": "FIXABLE",
+   "anchorY": 46,
+   "bucket": "wind-day",
+   "image": "wind/week_1/day/5.webp"
+  },
+  "4d3a786acf48": {
+   "verdict": "FIXABLE",
+   "anchorY": 16,
+   "bucket": "wind-day",
+   "image": "wind/week_2/day/1.webp"
+  },
+  "eb217457f58d": {
+   "verdict": "FIXABLE",
+   "anchorY": 39,
+   "bucket": "wind-day",
+   "image": "wind/week_1/day/7.webp"
+  },
+  "e3f0d69977ca": {
+   "verdict": "FIXABLE",
+   "anchorY": 46,
+   "bucket": "wind-day",
+   "image": "wind/week_2/day/3.webp"
+  },
+  "19801ea908d0": {
+   "verdict": "FIXABLE",
+   "anchorY": 66,
+   "bucket": "wind-day",
+   "image": "wind/week_3/day/1.webp"
+  },
+  "0a51c4d3a320": {
+   "verdict": "FAILS",
+   "bucket": "wind-day",
+   "image": "wind/week_1/day/4.webp"
+  },
+  "92ef82c2d34a": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "wind-day",
+   "image": "wind/week_3/day/3.webp"
+  },
+  "05cea2b8788d": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "wind-day",
+   "image": "wind/week_2/day/4.webp"
+  },
+  "330bfae094d5": {
+   "verdict": "FIXABLE",
+   "anchorY": 44,
+   "bucket": "wind-day",
+   "image": "wind/week_2/day/6.webp"
+  },
+  "9bada961b0a7": {
+   "verdict": "FIXABLE",
+   "anchorY": 68,
+   "bucket": "wind-day",
+   "image": "wind/week_1/day/3.webp"
+  },
+  "71a91034be58": {
+   "verdict": "FAILS",
+   "bucket": "wind-day",
+   "image": "wind/week_4/day/7.webp"
+  },
+  "190f5942c930": {
+   "verdict": "FAILS",
+   "bucket": "wind-day",
+   "image": "wind/week_4/day/6.webp"
+  },
+  "946282c83968": {
+   "verdict": "FAILS",
+   "bucket": "wind-day",
+   "image": "wind/week_4/day/2.webp"
+  },
+  "2df0ce79294a": {
+   "verdict": "FAILS",
+   "bucket": "wind-day",
+   "image": "wind/week_1/day/2.webp"
+  },
+  "002f0c1d5187": {
+   "verdict": "FIXABLE",
+   "anchorY": 61,
+   "bucket": "wind-dusk",
+   "image": "wind/week_1/dusk/1.webp"
+  },
+  "bdc6900c5689": {
+   "verdict": "FIXABLE",
+   "anchorY": 60,
+   "bucket": "wind-dusk",
+   "image": "wind/week_1/dusk/4.webp"
+  },
+  "12cd74b592e8": {
+   "verdict": "FIXABLE",
+   "anchorY": 30,
+   "bucket": "wind-dusk",
+   "image": "wind/week_1/dusk/7.webp"
+  },
+  "dc406722aa1c": {
+   "verdict": "FAILS",
+   "bucket": "wind-dusk",
+   "image": "wind/week_2/dusk/6.webp"
+  },
+  "ec12d1747d09": {
+   "verdict": "FIXABLE",
+   "anchorY": 78,
+   "bucket": "wind-dusk",
+   "image": "wind/week_4/dusk/1.webp"
+  },
+  "b78d6f432fb7": {
+   "verdict": "FIXABLE",
+   "anchorY": 50,
+   "bucket": "wind-dusk",
+   "image": "wind/week_2/dusk/2.webp"
+  },
+  "38635f77f610": {
+   "verdict": "FIXABLE",
+   "anchorY": 52,
+   "bucket": "wind-dusk",
+   "image": "wind/week_1/dusk/3.webp"
+  },
+  "eb7873fd7acb": {
+   "verdict": "FIXABLE",
+   "anchorY": 83,
+   "bucket": "wind-night",
+   "image": "wind/week_2/night/4.webp"
+  },
+  "f6b55aacae0a": {
+   "verdict": "FIXABLE",
+   "anchorY": 56,
+   "bucket": "wind-night",
+   "image": "wind/week_2/night/5.webp"
+  },
+  "2fe37a31b066": {
+   "verdict": "FAILS",
+   "bucket": "wind-night",
+   "image": "wind/week_1/night/3.webp"
+  },
+  "a8a513728db6": {
+   "verdict": "FAILS",
+   "bucket": "wind-night",
+   "image": "wind/week_2/night/3.webp"
+  },
+  "bc0ccca7d1a1": {
+   "verdict": "FAILS",
+   "bucket": "wind-night",
+   "image": "wind/week_2/night/7.webp"
+  },
+  "be8276f7384b": {
+   "verdict": "FIXABLE",
+   "anchorY": 45,
+   "bucket": "wind-night",
+   "image": "wind/week_1/night/2.webp"
+  },
+  "e9c08c34fd96": {
+   "verdict": "FAILS",
+   "bucket": "wind-night",
+   "image": "wind/week_1/night/1.webp"
+  }
+ }
+}

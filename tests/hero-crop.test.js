@@ -143,16 +143,19 @@ describe('the shipped table + the wiring', () => {
     expect(invalidEntries(HERO_CROP_OFFSETS)).toEqual([]);
   });
 
-  it('ships the anchors Al ruled on 2026-08-13, and only those', () => {
-    // This assertion used to read "the table is empty ON PURPOSE" — the gate
-    // that made shipping the offsets a deliberate act rather than something
-    // that leaks in with a regenerate. Al ruled on 2026-08-13 (167 images, one
-    // at a time, in review/crop-anchor-tool.html), so the gate has been passed
-    // and now guards the other direction: the table must match the ruling file
-    // exactly, and every entry must trace to a hash Al actually judged.
+  it('ships the anchors Al ruled, and only those', () => {
+    // Lineage of this assertion, because it has flipped twice and each flip was
+    // the point. It began as "the table is empty ON PURPOSE" — the gate that
+    // made shipping offsets a deliberate act. Al ruled 167 on 2026-08-13, so it
+    // became "every shipped value is one he set". It then pinned that 167, and
+    // failed the moment he ruled more on 2026-08-14 (249 wired, incl. the 29
+    // replacements) — a magic number pretending to be a contract.
+    // It now tracks the RULING FILE rather than a count: the table may grow or
+    // shrink as he rules, but it may never contain a number he did not set.
     const ruling = JSON.parse(readFileSync(new URL('../review/set-001-crop-offsets.json', import.meta.url), 'utf8'));
     const ruled = Object.values(ruling.offsets).filter((o) => typeof o.anchorY === 'number');
-    expect(ruled.length).toBe(167);
+    expect(ruled.length).toBeGreaterThan(0);
+    expect(ruled.length).toBe(ruling.counts?.wired ?? ruled.length);
     expect(Object.keys(HERO_CROP_OFFSETS).length).toBeGreaterThan(0);
 
     // Every shipped VALUE must be one Al set. A regenerate that invented a
@@ -168,6 +171,39 @@ describe('the shipped table + the wiring', () => {
     const keys = Object.keys(HERO_CROP_OFFSETS);
     expect(keys.some((k) => k.startsWith('bg/'))).toBe(true);
     expect(keys.some((k) => k.startsWith('bg-canonical/'))).toBe(true);
+  });
+
+  it('only ever omits an anchor because it equals the CSS default', () => {
+    // build-hero-crop-offsets.mjs refuses an entry equal to the default, so the
+    // default has exactly one home. The cost is that 44 of Al's rulings are not
+    // wired — invisible today because they ARE the default, but if the default
+    // is ever retuned those 44 photographs would silently follow it while every
+    // other ruled image held its number. This ties the two together: an omitted
+    // ruling must equal the default, or the wiring has to be regenerated.
+    const css = readFileSync(new URL('../assets/app.css', import.meta.url), 'utf8');
+    const cssDefault = Number(/var\(--hero-crop,\s*([\d.]+)%\)/.exec(css)[1]);
+    const ruling = JSON.parse(readFileSync(new URL('../review/set-001-crop-anchors.json', import.meta.url), 'utf8')).anchors;
+    const wired = JSON.parse(readFileSync(new URL('../review/set-001-crop-offsets.json', import.meta.url), 'utf8')).offsets;
+    const omitted = Object.entries(ruling)
+      .filter(([hash, e]) => e.verdict !== 'FAILS' && !wired[hash]);
+    expect(omitted.length).toBeGreaterThan(0);
+    for (const [hash, e] of omitted) {
+      expect(e.anchorY, `${hash} (${e.image}) was ruled ${e.anchorY}% but is not wired, and that is only safe at the ${cssDefault}% default`)
+        .toBe(cssDefault);
+    }
+  });
+
+  it('wires every 2026-08-14 replacement to 55% on every slot path it occupies', () => {
+    // The replacements were composed for a 55%-centred square, and 22 of the 51
+    // paths are shared twins — a replacement wired on one path and not its twin
+    // would crop correctly in week 1 and wrongly in week 3.
+    const report = JSON.parse(readFileSync(new URL('../review/ingest-2026-08-14-report.json', import.meta.url), 'utf8'));
+    expect(report.length).toBeGreaterThan(0);
+    for (const r of report) {
+      for (const slot of r.slots) {
+        expect(HERO_CROP_OFFSETS[`bg/${slot}`], `${slot} is not wired to 55%`).toBe(55);
+      }
+    }
   });
 
   it('the CSS default is 78% and is stated exactly once', () => {

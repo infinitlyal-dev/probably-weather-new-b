@@ -1,0 +1,401 @@
+[
+ {
+  "bucket": "clear-dawn",
+  "winner": "clear-dawn-1-A.png",
+  "slots": [
+   "clear/week_2/dawn/2.webp",
+   "clear/week_4/dawn/2.webp"
+  ],
+  "oldHash": "fcd87ed0e995",
+  "newHash": "089f865e3f14",
+  "canonical": "64a6c1aa77c9…",
+  "bytes": 300342,
+  "quality": 80,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "cold-clear-dusk",
+  "winner": "cold-clear-dusk-1-B.png",
+  "slots": [
+   "cold-clear/week_1/dusk/7.webp",
+   "cold-clear/week_3/dusk/7.webp"
+  ],
+  "oldHash": "596049a5b397",
+  "newHash": "948736af4859",
+  "canonical": "5d58c6044925…",
+  "bytes": 298006,
+  "quality": 90,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "cold-dusk",
+  "winner": "cold-dusk-1-A.png",
+  "slots": [
+   "cold/week_2/dusk/1.webp"
+  ],
+  "oldHash": "f10b22cc14ac",
+  "newHash": "163ee2f2d1fe",
+  "canonical": "2948e9edde57…",
+  "bytes": 172542,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "fog-night",
+  "winner": "fog-night-1-B.png",
+  "slots": [
+   "fog/week_1/night/3.webp",
+   "fog/week_3/night/3.webp"
+  ],
+  "oldHash": "90691a4a7825",
+  "newHash": "b7cdf515c96b",
+  "canonical": "9a85d13f82d1…",
+  "bytes": 105714,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "heat-dusk",
+  "winner": "heat-dusk-1-A.png",
+  "slots": [
+   "heat/week_2/dusk/6.webp",
+   "heat/week_4/dusk/6.webp"
+  ],
+  "oldHash": "e120e45b0b33",
+  "newHash": "248b04dcf98d",
+  "canonical": "7b2ce5e4f66e…",
+  "bytes": 168672,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "heat-dusk",
+  "winner": "heat-dusk-2-B.png",
+  "slots": [
+   "heat/week_2/dusk/3.webp",
+   "heat/week_4/dusk/3.webp"
+  ],
+  "oldHash": "b5a0db54507e",
+  "newHash": "555f76c5594f",
+  "canonical": "d5f43207994b…",
+  "bytes": 244344,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "heat-night",
+  "winner": "heat-night-1-A.png",
+  "slots": [
+   "heat/week_1/night/3.webp",
+   "heat/week_3/night/3.webp"
+  ],
+  "oldHash": "98cbbbd04a22",
+  "newHash": "706cd1220e10",
+  "canonical": "12dc08356d88…",
+  "bytes": 203422,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "heat-night",
+  "winner": "heat-night-2-A.png",
+  "slots": [
+   "heat/week_1/night/1.webp",
+   "heat/week_3/night/1.webp"
+  ],
+  "oldHash": "b1ba614f5ef5",
+  "newHash": "ea333aeefd0d",
+  "canonical": "fb15a66aa4b1…",
+  "bytes": 221418,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "rain-dawn",
+  "winner": "rain-dawn-1-A.png",
+  "slots": [
+   "rain/week_2/dawn/5.webp",
+   "rain/week_4/dawn/5.webp"
+  ],
+  "oldHash": "8071fe3f0719",
+  "newHash": "80770bf13004",
+  "canonical": "ebd82e69c2ef…",
+  "bytes": 304292,
+  "quality": 90,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "rain-dawn",
+  "winner": "rain-dawn-2-A.png",
+  "slots": [
+   "rain/week_2/dawn/6.webp",
+   "rain/week_4/dawn/6.webp"
+  ],
+  "oldHash": "69be9df302cf",
+  "newHash": "5526989179bd",
+  "canonical": "d8d6e0e7fcf4…",
+  "bytes": 276658,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "rain-dusk",
+  "winner": "rain-dusk-1-B.png",
+  "slots": [
+   "rain/week_2/dusk/2.webp",
+   "rain/week_4/dusk/2.webp"
+  ],
+  "oldHash": "8412ccb17305",
+  "newHash": "f7f51acb22c9",
+  "canonical": "45d3aa3a916a…",
+  "bytes": 275098,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "rain-night",
+  "winner": "rain-night-1-A.png",
+  "slots": [
+   "rain/week_1/night/2.webp",
+   "rain/week_3/night/2.webp"
+  ],
+  "oldHash": "26212db14903",
+  "newHash": "8fcc55577480",
+  "canonical": "81e2b059d102…",
+  "bytes": 271934,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "rain-night",
+  "winner": "rain-night-2-B.png",
+  "slots": [
+   "rain/week_1/night/4.webp",
+   "rain/week_3/night/4.webp"
+  ],
+  "oldHash": "8757a8b3e62b",
+  "newHash": "96c08c51c831",
+  "canonical": "497299f48b19…",
+  "bytes": 295546,
+  "quality": 88,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "rain-night",
+  "winner": "rain-night-3-B.png",
+  "slots": [
+   "rain/week_1/night/6.webp",
+   "rain/week_3/night/6.webp"
+  ],
+  "oldHash": "45578d2dd000",
+  "newHash": "a1e2fed78146",
+  "canonical": "51ffc9cf374e…",
+  "bytes": 294534,
+  "quality": 85,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "storm-day",
+  "winner": "storm-day-1-A.png",
+  "slots": [
+   "storm/week_4/day/1.webp"
+  ],
+  "oldHash": "5528e24282b5",
+  "newHash": "ea95b93c8930",
+  "canonical": "77077da42999…",
+  "bytes": 291912,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "storm-night",
+  "winner": "storm-night-1-B.png",
+  "slots": [
+   "storm/week_1/night/5.webp",
+   "storm/week_3/night/5.webp"
+  ],
+  "oldHash": "1a34b1283d67",
+  "newHash": "3fd1fe3984da",
+  "canonical": "e26b455f1c5e…",
+  "bytes": 266272,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "storm-night",
+  "winner": "storm-night-2-A.png",
+  "slots": [
+   "storm/week_1/night/4.webp",
+   "storm/week_3/night/4.webp"
+  ],
+  "oldHash": "fa184bd3c2dd",
+  "newHash": "13aab856406e",
+  "canonical": "452d87046107…",
+  "bytes": 212122,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "storm-night",
+  "winner": "storm-night-3-A.png",
+  "slots": [
+   "storm/week_2/night/4.webp",
+   "storm/week_4/night/4.webp"
+  ],
+  "oldHash": "047249fa6b9a",
+  "newHash": "3c128943e6b1",
+  "canonical": "9fb278adce39…",
+  "bytes": 253040,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "storm-night",
+  "winner": "storm-night-4-B.png",
+  "slots": [
+   "storm/week_2/night/3.webp",
+   "storm/week_4/night/3.webp"
+  ],
+  "oldHash": "afd4890b6ce6",
+  "newHash": "9e72a2108ca7",
+  "canonical": "2f0db4a3c7bd…",
+  "bytes": 173132,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-day",
+  "winner": "wind-day-1-B.png",
+  "slots": [
+   "wind/week_1/day/4.webp"
+  ],
+  "oldHash": "0a51c4d3a320",
+  "newHash": "f32e33e76e01",
+  "canonical": "df3033afec4a…",
+  "bytes": 284058,
+  "quality": 87,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-day",
+  "winner": "wind-day-2-B.png",
+  "slots": [
+   "wind/week_4/day/7.webp"
+  ],
+  "oldHash": "71a91034be58",
+  "newHash": "87ab845e2e43",
+  "canonical": "5151055fb35f…",
+  "bytes": 154188,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-day",
+  "winner": "wind-day-3-B.png",
+  "slots": [
+   "wind/week_4/day/6.webp"
+  ],
+  "oldHash": "190f5942c930",
+  "newHash": "58ca4d8de525",
+  "canonical": "c2d00a2f429a…",
+  "bytes": 303214,
+  "quality": 88,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-day",
+  "winner": "wind-day-4-B.png",
+  "slots": [
+   "wind/week_4/day/2.webp"
+  ],
+  "oldHash": "946282c83968",
+  "newHash": "d39680c2e0f9",
+  "canonical": "e7d50a4f52e5…",
+  "bytes": 297934,
+  "quality": 91,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-day",
+  "winner": "wind-day-5-A.png",
+  "slots": [
+   "wind/week_1/day/2.webp"
+  ],
+  "oldHash": "2df0ce79294a",
+  "newHash": "a4559a3e95d2",
+  "canonical": "bfb77489557b…",
+  "bytes": 275706,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-dusk",
+  "winner": "wind-dusk-1-B.png",
+  "slots": [
+   "wind/week_2/dusk/6.webp",
+   "wind/week_4/dusk/6.webp"
+  ],
+  "oldHash": "dc406722aa1c",
+  "newHash": "da1a09d9496c",
+  "canonical": "0d7d99b736e0…",
+  "bytes": 216018,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-night",
+  "winner": "wind-night-1-B.png",
+  "slots": [
+   "wind/week_1/night/3.webp",
+   "wind/week_3/night/3.webp"
+  ],
+  "oldHash": "2fe37a31b066",
+  "newHash": "096e2eada01f",
+  "canonical": "8c0c57a736db…",
+  "bytes": 126052,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-night",
+  "winner": "wind-night-2-B.png",
+  "slots": [
+   "wind/week_2/night/3.webp",
+   "wind/week_4/night/3.webp"
+  ],
+  "oldHash": "a8a513728db6",
+  "newHash": "d8523f4a125a",
+  "canonical": "0eea00b1effe…",
+  "bytes": 305140,
+  "quality": 88,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-night",
+  "winner": "wind-night-3-B.png",
+  "slots": [
+   "wind/week_2/night/7.webp",
+   "wind/week_4/night/7.webp"
+  ],
+  "oldHash": "bc0ccca7d1a1",
+  "newHash": "838b207a37d1",
+  "canonical": "1c0db023a1bb…",
+  "bytes": 252288,
+  "quality": 92,
+  "dims": "1008x1792"
+ },
+ {
+  "bucket": "wind-night",
+  "winner": "wind-night-4-A.png",
+  "slots": [
+   "wind/week_1/night/1.webp",
+   "wind/week_3/night/1.webp"
+  ],
+  "oldHash": "e9c08c34fd96",
+  "newHash": "30f278c614c6",
+  "canonical": "930aad3bf989…",
+  "bytes": 159962,
+  "quality": 92,
+  "dims": "1008x1792"
+ }
+]
