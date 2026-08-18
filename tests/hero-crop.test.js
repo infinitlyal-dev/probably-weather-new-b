@@ -193,16 +193,23 @@ describe('the shipped table + the wiring', () => {
     }
   });
 
-  it('wires every 2026-08-14 replacement to 55% on every slot path it occupies', () => {
-    // The replacements were composed for a 55%-centred square, and 22 of the 51
-    // paths are shared twins — a replacement wired on one path and not its twin
-    // would crop correctly in week 1 and wrongly in week 3.
+  it('wires every replacement identically on every slot path it occupies', () => {
+    // RETITLED 2026-08-18. This asserted that every 2026-08-14 replacement ships
+    // at 55%, the anchor that batch was composed for. Al's curation pass against
+    // the meme hero re-ruled several of them by hand, so the constant is no
+    // longer true and should not be — a per-image ruling outranks a batch
+    // default. What must still hold is the TWIN RULE, which is the actual bug
+    // this test was written to catch: 22 of those 51 paths are shared twins, and
+    // a replacement wired on one path but not its twin crops correctly in week 1
+    // and wrongly in week 3.
     const report = JSON.parse(readFileSync(new URL('../review/ingest-2026-08-14-report.json', import.meta.url), 'utf8'));
     expect(report.length).toBeGreaterThan(0);
     for (const r of report) {
-      for (const slot of r.slots) {
-        expect(HERO_CROP_OFFSETS[`bg/${slot}`], `${slot} is not wired to 55%`).toBe(55);
-      }
+      const wired = r.slots.map((slot) => HERO_CROP_OFFSETS[`bg/${slot}`]);
+      // undefined is legitimate — it means the ruling equals the CSS default and
+      // the entry was dropped — but it has to be undefined on ALL of the twins.
+      const distinct = new Set(wired);
+      expect(distinct.size, `${r.slots.join(' + ')} disagree: ${wired.join(' vs ')}`).toBe(1);
     }
   });
 

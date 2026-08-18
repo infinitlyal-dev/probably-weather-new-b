@@ -1,0 +1,157 @@
+{
+ "generated": "2026-08-18",
+ "ruledBy": "Al, reshoot pick tool",
+ "picks": [
+  {
+   "slot": "storm/week_1/night/4",
+   "bucket": "storm-night",
+   "place": "Johannesburg northern suburbs",
+   "paths": [
+    "storm/week_1/night/4"
+   ],
+   "candidate": "B",
+   "file": "/output/reshoot-2026-08-18/02.png"
+  },
+  {
+   "slot": "storm/week_1/night/5",
+   "bucket": "storm-night",
+   "place": "Pretoria east",
+   "paths": [
+    "storm/week_1/night/5"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/03.png"
+  },
+  {
+   "slot": "storm/week_2/night/3",
+   "bucket": "storm-night",
+   "place": "Durban",
+   "paths": [
+    "storm/week_2/night/3"
+   ],
+   "candidate": "B",
+   "file": "/output/reshoot-2026-08-18/06.png"
+  },
+  {
+   "slot": "storm/week_2/night/4",
+   "bucket": "storm-night",
+   "place": "Bloemfontein",
+   "paths": [
+    "storm/week_2/night/4"
+   ],
+   "candidate": "B",
+   "file": "/output/reshoot-2026-08-18/08.png"
+  },
+  {
+   "slot": "wind/week_1/night/1",
+   "bucket": "wind-night",
+   "place": "Gqeberha",
+   "paths": [
+    "wind/week_1/night/1"
+   ],
+   "candidate": "B",
+   "file": "/output/reshoot-2026-08-18/10.png"
+  },
+  {
+   "slot": "wind/week_1/night/3",
+   "bucket": "wind-night",
+   "place": "Table View",
+   "paths": [
+    "wind/week_1/night/3"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/11.png"
+  },
+  {
+   "slot": "wind/week_2/night/3",
+   "bucket": "wind-night",
+   "place": "Kimberley",
+   "paths": [
+    "wind/week_2/night/3"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/13.png"
+  },
+  {
+   "slot": "wind/week_2/night/7",
+   "bucket": "wind-night",
+   "place": "Durban beachfront",
+   "paths": [
+    "wind/week_2/night/7"
+   ],
+   "candidate": "B",
+   "file": "/output/reshoot-2026-08-18/16.png"
+  },
+  {
+   "slot": "rain/week_1/night/2",
+   "bucket": "rain-night",
+   "place": "Durban",
+   "paths": [
+    "rain/week_1/night/2"
+   ],
+   "candidate": "B",
+   "file": "/output/reshoot-2026-08-18/18.png"
+  },
+  {
+   "slot": "rain/week_1/night/4",
+   "bucket": "rain-night",
+   "place": "Johannesburg",
+   "paths": [
+    "rain/week_1/night/4"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/19.png"
+  },
+  {
+   "slot": "wind/week_1/day/2",
+   "bucket": "wind-day",
+   "place": "Somerset West",
+   "paths": [
+    "wind/week_1/day/2"
+   ],
+   "candidate": "B",
+   "file": "/output/reshoot-2026-08-18/22.png"
+  },
+  {
+   "slot": "wind/week_4/day/7.webp",
+   "bucket": "wind-day",
+   "place": "Gqeberha",
+   "paths": [
+    "wind/week_2/day/6"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/23.png"
+  },
+  {
+   "slot": "wind/week_4/day/2",
+   "bucket": "wind-day",
+   "place": "Johannesburg",
+   "paths": [
+    "wind/week_4/day/2"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/25.png"
+  },
+  {
+   "slot": "wind/week_4/day/6",
+   "bucket": "wind-day",
+   "place": "Durban",
+   "paths": [
+    "wind/week_4/day/6"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/27.png"
+  },
+  {
+   "slot": "wind/week_2/dusk/6",
+   "bucket": "wind-dusk",
+   "place": "Langebaan",
+   "paths": [
+    "wind/week_2/dusk/6"
+   ],
+   "candidate": "A",
+   "file": "/output/reshoot-2026-08-18/29.png"
+  }
+ ],
+ "redo": []
+}

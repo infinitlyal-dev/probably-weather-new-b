@@ -1,0 +1,199 @@
+{
+ "generated": "2026-08-18",
+ "ruledBy": "Al, curation tool (meme hero)",
+ "count": 15,
+ "slotsLost": 26,
+ "cut": [
+  {
+   "hash": "8fcc55577480",
+   "bucket": "rain-night",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "image": "rain/week_1/night/2.webp",
+   "paths": [
+    "rain/week_1/night/2.webp",
+    "rain/week_3/night/2.webp"
+   ]
+  },
+  {
+   "hash": "96c08c51c831",
+   "bucket": "rain-night",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "image": "rain/week_1/night/4.webp",
+   "paths": [
+    "rain/week_1/night/4.webp",
+    "rain/week_3/night/4.webp"
+   ]
+  },
+  {
+   "hash": "3fd1fe3984da",
+   "bucket": "storm-night",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "image": "storm/week_1/night/5.webp",
+   "paths": [
+    "storm/week_1/night/5.webp",
+    "storm/week_3/night/5.webp"
+   ]
+  },
+  {
+   "hash": "13aab856406e",
+   "bucket": "storm-night",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "image": "storm/week_1/night/4.webp",
+   "paths": [
+    "storm/week_1/night/4.webp",
+    "storm/week_3/night/4.webp"
+   ]
+  },
+  {
+   "hash": "3c128943e6b1",
+   "bucket": "storm-night",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "image": "storm/week_2/night/4.webp",
+   "paths": [
+    "storm/week_2/night/4.webp",
+    "storm/week_4/night/4.webp"
+   ]
+  },
+  {
+   "hash": "9e72a2108ca7",
+   "bucket": "storm-night",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "image": "storm/week_2/night/3.webp",
+   "paths": [
+    "storm/week_2/night/3.webp",
+    "storm/week_4/night/3.webp"
+   ]
+  },
+  {
+   "hash": "87ab845e2e43",
+   "bucket": "wind-day",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "image": "wind/week_4/day/7.webp",
+   "paths": [
+    "wind/week_4/day/7.webp"
+   ]
+  },
+  {
+   "hash": "58ca4d8de525",
+   "bucket": "wind-day",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "image": "wind/week_4/day/6.webp",
+   "paths": [
+    "wind/week_4/day/6.webp"
+   ]
+  },
+  {
+   "hash": "d39680c2e0f9",
+   "bucket": "wind-day",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "image": "wind/week_4/day/2.webp",
+   "paths": [
+    "wind/week_4/day/2.webp"
+   ]
+  },
+  {
+   "hash": "a4559a3e95d2",
+   "bucket": "wind-day",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "image": "wind/week_1/day/2.webp",
+   "paths": [
+    "wind/week_1/day/2.webp"
+   ]
+  },
+  {
+   "hash": "da1a09d9496c",
+   "bucket": "wind-dusk",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "image": "wind/week_2/dusk/6.webp",
+   "paths": [
+    "wind/week_2/dusk/6.webp",
+    "wind/week_4/dusk/6.webp"
+   ]
+  },
+  {
+   "hash": "096e2eada01f",
+   "bucket": "wind-night",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "image": "wind/week_1/night/3.webp",
+   "paths": [
+    "wind/week_1/night/3.webp",
+    "wind/week_3/night/3.webp"
+   ]
+  },
+  {
+   "hash": "d8523f4a125a",
+   "bucket": "wind-night",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "image": "wind/week_2/night/3.webp",
+   "paths": [
+    "wind/week_2/night/3.webp",
+    "wind/week_4/night/3.webp"
+   ]
+  },
+  {
+   "hash": "838b207a37d1",
+   "bucket": "wind-night",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "image": "wind/week_2/night/7.webp",
+   "paths": [
+    "wind/week_2/night/7.webp",
+    "wind/week_4/night/7.webp"
+   ]
+  },
+  {
+   "hash": "30f278c614c6",
+   "bucket": "wind-night",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "image": "wind/week_1/night/1.webp",
+   "paths": [
+    "wind/week_1/night/1.webp",
+    "wind/week_3/night/1.webp"
+   ]
+  }
+ ]
+}

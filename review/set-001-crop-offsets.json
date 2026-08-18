@@ -1,10 +1,12 @@
 {
- "note": "M7 anchors + the 2026-08-14 replacement ingest. Ruled by Al in review/crop-anchor-tool.html (export 2026-08-14 07:03, canonical at review/set-001-crop-anchors.json). REPLACED entries carry the 55% default the replacements were composed for; entries sitting exactly on the CSS default (78%) are deliberately omitted — the stylesheet already provides that number and a second home for it is how it drifts.",
- "ruledBy": "Al, 2026-08-14",
- "generated": "2026-08-14",
+ "note": "M7 anchors + the 2026-08-14 replacement ingest. Ruled by Al in review/crop-anchor-tool.html (export 2026-08-14 07:03, canonical at review/set-001-crop-anchors.json). REPLACED entries carry the 55% default the replacements were composed for; entries sitting exactly on the CSS default (78%) are deliberately omitted \u2014 the stylesheet already provides that number and a second home for it is how it drifts.",
+ "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
+ "generated": "2026-08-18",
  "counts": {
-  "wired": 250,
-  "omittedAtDefault": 44
+  "offsets": 272,
+  "replaced": 15,
+  "reAnchored": 134,
+  "wired": 272
  },
  "offsets": {
   "dd736311b619": {
@@ -19,21 +21,24 @@
    "bucket": "clear-dawn",
    "slot": "A/tue",
    "image": "clear/week_2/dawn/6.webp",
-   "anchorY": 68
+   "anchorY": 80,
+   "ink": "white"
   },
   "7a76c59603c9": {
    "verdict": "FIXABLE",
    "bucket": "clear-dawn",
    "slot": "A/thu",
    "image": "clear/week_1/dawn/5.webp",
-   "anchorY": 66
+   "anchorY": 74,
+   "ink": "white"
   },
   "66d5e6cb3570": {
    "verdict": "FIXABLE",
    "bucket": "clear-dawn",
    "slot": "A/fri",
    "image": "clear/week_1/dawn/3.webp",
-   "anchorY": 71
+   "anchorY": 91,
+   "ink": "white"
   },
   "d529968dcb50": {
    "verdict": "ACCEPTED",
@@ -47,7 +52,8 @@
    "bucket": "clear-day",
    "slot": "A/mon",
    "image": "clear/week_3/day/4.webp",
-   "anchorY": 46
+   "anchorY": 68,
+   "ink": "white"
   },
   "77cfc93827e3": {
    "verdict": "FIXABLE",
@@ -61,21 +67,24 @@
    "bucket": "clear-day",
    "slot": "A/thu",
    "image": "clear/week_3/day/1.webp",
-   "anchorY": 43
+   "anchorY": 61,
+   "ink": "white"
   },
   "ca6d821f7c9b": {
    "verdict": "FIXABLE",
    "bucket": "clear-day",
    "slot": "A/fri",
    "image": "clear/week_2/day/5.webp",
-   "anchorY": 71
+   "anchorY": 99,
+   "ink": "white"
   },
   "e9616cb7c61c": {
    "verdict": "FIXABLE",
    "bucket": "clear-day",
    "slot": "A/sat",
    "image": "clear/week_2/day/4.webp",
-   "anchorY": 34
+   "anchorY": 44,
+   "ink": "white"
   },
   "45d964f74171": {
    "verdict": "FIXABLE",
@@ -96,14 +105,16 @@
    "bucket": "clear-day",
    "slot": "B/wed",
    "image": "clear/week_4/day/2.webp",
-   "anchorY": 34
+   "anchorY": 51,
+   "ink": "white"
   },
   "6e598ae56c12": {
    "verdict": "FIXABLE",
    "bucket": "clear-day",
    "slot": "B/sat",
    "image": "clear/week_4/day/5.webp",
-   "anchorY": 56
+   "anchorY": 55,
+   "ink": "white"
   },
   "1bd6b90924a1": {
    "verdict": "FIXABLE",
@@ -131,14 +142,16 @@
    "bucket": "clear-dusk",
    "slot": "A/fri",
    "image": "clear/week_2/dusk/2.webp",
-   "anchorY": 82
+   "anchorY": 98,
+   "ink": "white"
   },
   "d097525bf5cf": {
    "verdict": "FIXABLE",
    "bucket": "clear-dusk",
    "slot": "A/sat",
    "image": "clear/week_1/dusk/3.webp",
-   "anchorY": 84
+   "anchorY": 87,
+   "ink": "white"
   },
   "525b2eea2ebc": {
    "verdict": "FIXABLE",
@@ -166,7 +179,8 @@
    "bucket": "clear-night",
    "slot": "A/thu",
    "image": "clear/week_2/night/5.webp",
-   "anchorY": 70
+   "anchorY": 58,
+   "ink": "white"
   },
   "4138025d3128": {
    "verdict": "FIXABLE",
@@ -194,21 +208,24 @@
    "bucket": "cloudy-dawn",
    "slot": "A/wed",
    "image": "cloudy/week_2/dawn/6.webp",
-   "anchorY": 71
+   "anchorY": 100,
+   "ink": "white"
   },
   "3bfd9b9470d6": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-dawn",
    "slot": "A/fri",
    "image": "cloudy/week_2/dawn/4.webp",
-   "anchorY": 43
+   "anchorY": 62,
+   "ink": "white"
   },
   "b5793c36b69d": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-dawn",
    "slot": "A/sat",
    "image": "cloudy/week_1/dawn/3.webp",
-   "anchorY": 66
+   "anchorY": 90,
+   "ink": "white"
   },
   "e0e2d1182253": {
    "verdict": "FIXABLE",
@@ -229,21 +246,24 @@
    "bucket": "cloudy-day",
    "slot": "A/thu",
    "image": "cloudy/week_4/day/6.webp",
-   "anchorY": 41
+   "anchorY": 63,
+   "ink": "white"
   },
   "c16f8303d56e": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-day",
    "slot": "A/sat",
    "image": "cloudy/week_3/day/1.webp",
-   "anchorY": 33
+   "anchorY": 51,
+   "ink": "white"
   },
   "47550fce6c98": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-day",
    "slot": "B/tue",
    "image": "cloudy/week_3/day/4.webp",
-   "anchorY": 32
+   "anchorY": 51,
+   "ink": "white"
   },
   "5668c9f2edcb": {
    "verdict": "FIXABLE",
@@ -257,28 +277,32 @@
    "bucket": "cloudy-day",
    "slot": "B/sat",
    "image": "cloudy/week_2/day/1.webp",
-   "anchorY": 50
+   "anchorY": 61,
+   "ink": "white"
   },
   "04bdf14c306b": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-day",
    "slot": "B/sun",
    "image": "cloudy/week_3/day/3.webp",
-   "anchorY": 71
+   "anchorY": 88,
+   "ink": "white"
   },
   "20e80f881707": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-dusk",
    "slot": "A/mon",
    "image": "cloudy/week_1/dusk/2.webp",
-   "anchorY": 51
+   "anchorY": 77,
+   "ink": "white"
   },
   "3ba329d5cea3": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-dusk",
    "slot": "A/sat",
    "image": "cloudy/week_1/dusk/4.webp",
-   "anchorY": 49
+   "anchorY": 60,
+   "ink": "white"
   },
   "7b4c0256fd8d": {
    "verdict": "FIXABLE",
@@ -292,7 +316,8 @@
    "bucket": "cloudy-night",
    "slot": "A/tue",
    "image": "cloudy/week_1/night/7.webp",
-   "anchorY": 34
+   "anchorY": 53,
+   "ink": "white"
   },
   "76070c299a0b": {
    "verdict": "FIXABLE",
@@ -313,49 +338,56 @@
    "bucket": "cloudy-night",
    "slot": "A/sat",
    "image": "cloudy/week_2/night/5.webp",
-   "anchorY": 61
+   "anchorY": 89,
+   "ink": "white"
   },
   "c6d4061cbef2": {
    "verdict": "FIXABLE",
    "bucket": "cloudy-night",
    "slot": "A/sun",
    "image": "cloudy/week_2/night/4.webp",
-   "anchorY": 64
+   "anchorY": 76,
+   "ink": "white"
   },
   "898c05f233a6": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-dawn",
    "slot": "A/tue",
    "image": "cold-clear/week_1/dawn/7.webp",
-   "anchorY": 55
+   "anchorY": 66,
+   "ink": "white"
   },
   "5a6dd26eb7db": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-dawn",
    "slot": "A/wed",
    "image": "cold-clear/week_2/dawn/6.webp",
-   "anchorY": 61
+   "anchorY": 87,
+   "ink": "white"
   },
   "28129477b706": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-dawn",
    "slot": "A/sat",
    "image": "cold-clear/week_2/dawn/2.webp",
-   "anchorY": 33
+   "anchorY": 52,
+   "ink": "white"
   },
   "6ca4d027da38": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-dawn",
    "slot": "A/sun",
    "image": "cold-clear/week_2/dawn/4.webp",
-   "anchorY": 49
+   "anchorY": 73,
+   "ink": "white"
   },
   "21c809043132": {
    "verdict": "FIXABLE",
    "bucket": "cold-clear-day",
    "slot": "A/tue",
    "image": "cold-clear/week_1/day/1.webp",
-   "anchorY": 39
+   "anchorY": 54,
+   "ink": "white"
   },
   "042ba0a95388": {
    "verdict": "FIXABLE",
@@ -376,7 +408,8 @@
    "bucket": "cold-clear-day",
    "slot": "A/fri",
    "image": "cold-clear/week_3/day/1.webp",
-   "anchorY": 63
+   "anchorY": 74,
+   "ink": "white"
   },
   "bbad2500c852": {
    "verdict": "FIXABLE",
@@ -397,14 +430,8 @@
    "bucket": "cold-clear-dusk",
    "slot": "A/mon",
    "image": "cold-clear/week_1/dusk/4.webp",
-   "anchorY": 46
-  },
-  "510b7a0d60c0": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-clear-dusk",
-   "slot": "A/tue",
-   "image": "cold-clear/week_1/dusk/2.webp",
-   "anchorY": 76
+   "anchorY": 58,
+   "ink": "white"
   },
   "0b4330abc214": {
    "verdict": "FIXABLE",
@@ -474,7 +501,8 @@
    "bucket": "cold-dawn",
    "slot": "A/mon",
    "image": "cold/week_1/dawn/1.webp",
-   "anchorY": 57
+   "anchorY": 84,
+   "ink": "white"
   },
   "1c5f757ee79a": {
    "verdict": "FIXABLE",
@@ -488,7 +516,8 @@
    "bucket": "cold-dawn",
    "slot": "A/thu",
    "image": "cold/week_1/dawn/4.webp",
-   "anchorY": 43
+   "anchorY": 61,
+   "ink": "white"
   },
   "484f2079f5aa": {
    "verdict": "FIXABLE",
@@ -502,7 +531,8 @@
    "bucket": "cold-dawn",
    "slot": "A/sat",
    "image": "cold/week_4/dawn/1.webp",
-   "anchorY": 85
+   "anchorY": 100,
+   "ink": "white"
   },
   "4210c1f4a1ad": {
    "verdict": "FIXABLE",
@@ -516,7 +546,8 @@
    "bucket": "cold-day",
    "slot": "A/mon",
    "image": "cold/week_4/day/4.webp",
-   "anchorY": 63
+   "anchorY": 66,
+   "ink": "white"
   },
   "77dad643efa6": {
    "verdict": "FIXABLE",
@@ -539,13 +570,6 @@
    "image": "cold/week_1/day/6.webp",
    "anchorY": 61
   },
-  "e938ce2769cd": {
-   "verdict": "FIXABLE",
-   "bucket": "cold-day",
-   "slot": "A/fri",
-   "image": "cold/week_2/day/2.webp",
-   "anchorY": 61
-  },
   "bf942a9f6d66": {
    "verdict": "FIXABLE",
    "bucket": "cold-day",
@@ -558,42 +582,48 @@
    "bucket": "cold-day",
    "slot": "A/sun",
    "image": "cold/week_2/day/4.webp",
-   "anchorY": 70
+   "anchorY": 55,
+   "ink": "white"
   },
   "999e68c47bfc": {
    "verdict": "FIXABLE",
    "bucket": "cold-day",
    "slot": "B/mon",
    "image": "cold/week_2/day/3.webp",
-   "anchorY": 84
+   "anchorY": 86,
+   "ink": "white"
   },
   "d970e657c4d2": {
    "verdict": "FIXABLE",
    "bucket": "cold-day",
    "slot": "B/tue",
    "image": "cold/week_4/day/5.webp",
-   "anchorY": 71
+   "anchorY": 98,
+   "ink": "white"
   },
   "59f61259d350": {
    "verdict": "FIXABLE",
    "bucket": "cold-day",
    "slot": "B/thu",
    "image": "cold/week_1/day/7.webp",
-   "anchorY": 44
+   "anchorY": 58,
+   "ink": "white"
   },
   "a373f1d83e2f": {
    "verdict": "FIXABLE",
    "bucket": "cold-day",
    "slot": "B/fri",
    "image": "cold/week_4/day/1.webp",
-   "anchorY": 22
+   "anchorY": 30,
+   "ink": "white"
   },
   "3fd7aa0aae2e": {
    "verdict": "FIXABLE",
    "bucket": "cold-day",
    "slot": "B/sun",
    "image": "cold/week_4/day/2.webp",
-   "anchorY": 46
+   "anchorY": 59,
+   "ink": "white"
   },
   "420d1bd07555": {
    "verdict": "FIXABLE",
@@ -607,35 +637,40 @@
    "bucket": "cold-dusk",
    "slot": "A/tue",
    "image": "cold/week_1/dusk/3.webp",
-   "anchorY": 68
+   "anchorY": 75,
+   "ink": "white"
   },
   "50eb6a4aa792": {
    "verdict": "FIXABLE",
    "bucket": "cold-dusk",
    "slot": "A/wed",
    "image": "cold/week_2/dusk/3.webp",
-   "anchorY": 33
+   "anchorY": 67,
+   "ink": "white"
   },
   "917c4c0a6fac": {
    "verdict": "FIXABLE",
    "bucket": "cold-dusk",
    "slot": "A/fri",
    "image": "cold/week_2/dusk/5.webp",
-   "anchorY": 77
+   "anchorY": 85,
+   "ink": "white"
   },
   "39e28d40ecf1": {
    "verdict": "FIXABLE",
    "bucket": "cold-dusk",
    "slot": "A/sat",
    "image": "cold/week_4/dusk/2.webp",
-   "anchorY": 63
+   "anchorY": 96,
+   "ink": "white"
   },
   "6ab73d31bad6": {
    "verdict": "FIXABLE",
    "bucket": "cold-dusk",
    "slot": "A/sun",
    "image": "cold/week_1/dusk/2.webp",
-   "anchorY": 72
+   "anchorY": 85,
+   "ink": "white"
   },
   "a77b4dca45ae": {
    "verdict": "FIXABLE",
@@ -670,7 +705,8 @@
    "bucket": "cold-night",
    "slot": "A/sat",
    "image": "cold/week_4/night/1.webp",
-   "anchorY": 74
+   "anchorY": 100,
+   "ink": "white"
   },
   "b850a52403e3": {
    "verdict": "FIXABLE",
@@ -684,7 +720,8 @@
    "bucket": "fog-dawn",
    "slot": "A/mon",
    "image": "fog/week_1/dawn/5.webp",
-   "anchorY": 50
+   "anchorY": 67,
+   "ink": "white"
   },
   "591629dceb51": {
    "verdict": "FIXABLE",
@@ -712,7 +749,8 @@
    "bucket": "fog-dawn",
    "slot": "A/sat",
    "image": "fog/week_1/dawn/7.webp",
-   "anchorY": 89
+   "anchorY": 100,
+   "ink": "white"
   },
   "8ea1dc6bec6a": {
    "verdict": "FIXABLE",
@@ -733,7 +771,8 @@
    "bucket": "fog-day",
    "slot": "A/tue",
    "image": "fog/week_3/day/2.webp",
-   "anchorY": 51
+   "anchorY": 61,
+   "ink": "white"
   },
   "541778f8c617": {
    "verdict": "FIXABLE",
@@ -754,7 +793,8 @@
    "bucket": "fog-day",
    "slot": "A/fri",
    "image": "fog/week_3/day/7.webp",
-   "anchorY": 58
+   "anchorY": 61,
+   "ink": "white"
   },
   "36972a49b9e6": {
    "verdict": "FIXABLE",
@@ -768,7 +808,8 @@
    "bucket": "fog-day",
    "slot": "A/sun",
    "image": "fog/week_1/day/1.webp",
-   "anchorY": 42
+   "anchorY": 64,
+   "ink": "white"
   },
   "4003b55c6c42": {
    "verdict": "FIXABLE",
@@ -782,7 +823,8 @@
    "bucket": "fog-dusk",
    "slot": "A/tue",
    "image": "fog/week_1/dusk/5.webp",
-   "anchorY": 44
+   "anchorY": 71,
+   "ink": "white"
   },
   "5cd228859e14": {
    "verdict": "FIXABLE",
@@ -845,7 +887,8 @@
    "bucket": "fog-night",
    "slot": "A/fri",
    "image": "fog/week_2/night/4.webp",
-   "anchorY": 81
+   "anchorY": 100,
+   "ink": "white"
   },
   "39c515606f74": {
    "verdict": "FIXABLE",
@@ -873,7 +916,8 @@
    "bucket": "heat-dawn",
    "slot": "A/tue",
    "image": "heat/week_1/dawn/4.webp",
-   "anchorY": 66
+   "anchorY": 69,
+   "ink": "white"
   },
   "c6d266d04418": {
    "verdict": "FIXABLE",
@@ -887,7 +931,8 @@
    "bucket": "heat-dawn",
    "slot": "A/thu",
    "image": "heat/week_1/dawn/7.webp",
-   "anchorY": 88
+   "anchorY": 100,
+   "ink": "white"
   },
   "818c078a2bda": {
    "verdict": "FIXABLE",
@@ -908,7 +953,8 @@
    "bucket": "heat-day",
    "slot": "A/mon",
    "image": "heat/week_1/day/4.webp",
-   "anchorY": 49
+   "anchorY": 68,
+   "ink": "white"
   },
   "d6593f52fb76": {
    "verdict": "FIXABLE",
@@ -922,63 +968,72 @@
    "bucket": "heat-day",
    "slot": "A/wed",
    "image": "heat/week_3/day/1.webp",
-   "anchorY": 66
+   "anchorY": 53,
+   "ink": "white"
   },
   "afd3c9db83bd": {
    "verdict": "FIXABLE",
    "bucket": "heat-day",
    "slot": "A/thu",
    "image": "heat/week_2/day/7.webp",
-   "anchorY": 59
+   "anchorY": 76,
+   "ink": "white"
   },
   "6ce02da2ab7a": {
    "verdict": "FIXABLE",
    "bucket": "heat-day",
    "slot": "A/fri",
    "image": "heat/week_3/day/5.webp",
-   "anchorY": 44
+   "anchorY": 66,
+   "ink": "white"
   },
   "36881ce76889": {
    "verdict": "FIXABLE",
    "bucket": "heat-day",
    "slot": "A/sat",
    "image": "heat/week_2/day/5.webp",
-   "anchorY": 50
+   "anchorY": 56,
+   "ink": "white"
   },
   "0cc1648cbc13": {
    "verdict": "FIXABLE",
    "bucket": "heat-day",
    "slot": "A/sun",
    "image": "heat/week_4/day/7.webp",
-   "anchorY": 52
+   "anchorY": 70,
+   "ink": "white"
   },
   "5ed7621f5dd9": {
    "verdict": "FIXABLE",
    "bucket": "heat-dusk",
    "slot": "A/mon",
    "image": "heat/week_1/dusk/3.webp",
-   "anchorY": 54
+   "anchorY": 63,
+   "ink": "white"
   },
   "3e88aef1fb06": {
    "verdict": "FIXABLE",
    "bucket": "heat-dusk",
    "slot": "A/thu",
    "image": "heat/week_2/dusk/7.webp",
-   "anchorY": 60
+   "anchorY": 81,
+   "ink": "white"
   },
   "93f4a43551af": {
    "verdict": "FIXABLE",
    "bucket": "heat-dusk",
    "slot": "A/fri",
    "image": "heat/week_2/dusk/1.webp",
-   "anchorY": 58
+   "anchorY": 89,
+   "ink": "white"
   },
   "9728bed72ec6": {
    "verdict": "FIXABLE",
    "bucket": "heat-dusk",
    "slot": "A/sun",
    "image": "heat/week_1/dusk/6.webp",
-   "anchorY": 68
+   "anchorY": 87,
+   "ink": "white"
   },
   "f2e76528eca3": {
    "verdict": "FIXABLE",
@@ -999,7 +1054,8 @@
    "bucket": "heat-night",
    "slot": "A/wed",
    "image": "heat/week_2/night/6.webp",
-   "anchorY": 61
+   "anchorY": 77,
+   "ink": "white"
   },
   "87546db18e01": {
    "verdict": "FIXABLE",
@@ -1034,7 +1090,8 @@
    "bucket": "rain-dawn",
    "slot": "A/sun",
    "image": "rain/week_1/dawn/7.webp",
-   "anchorY": 69
+   "anchorY": 83,
+   "ink": "white"
   },
   "2b750515575e": {
    "verdict": "FIXABLE",
@@ -1069,7 +1126,8 @@
    "bucket": "rain-day",
    "slot": "A/fri",
    "image": "rain/week_3/day/3.webp",
-   "anchorY": 39
+   "anchorY": 57,
+   "ink": "white"
   },
   "fe838c8901f7": {
    "verdict": "FIXABLE",
@@ -1132,7 +1190,8 @@
    "bucket": "rain-dusk",
    "slot": "A/wed",
    "image": "rain/week_1/dusk/5.webp",
-   "anchorY": 61
+   "anchorY": 72,
+   "ink": "white"
   },
   "abf80e59bae9": {
    "verdict": "FIXABLE",
@@ -1223,14 +1282,16 @@
    "bucket": "storm-dawn",
    "slot": "A/sun",
    "image": "storm/week_2/dawn/3.webp",
-   "anchorY": 40
+   "anchorY": 63,
+   "ink": "white"
   },
   "99d0821cdd98": {
    "verdict": "FIXABLE",
    "bucket": "storm-day",
    "slot": "A/mon",
    "image": "storm/week_1/day/5.webp",
-   "anchorY": 54
+   "anchorY": 71,
+   "ink": "white"
   },
   "41e6c19016c1": {
    "verdict": "FIXABLE",
@@ -1391,14 +1452,16 @@
    "bucket": "wind-dawn",
    "slot": "A/mon",
    "image": "wind/week_1/dawn/2.webp",
-   "anchorY": 42
+   "anchorY": 60,
+   "ink": "white"
   },
   "3556004712b7": {
    "verdict": "FIXABLE",
    "bucket": "wind-dawn",
    "slot": "A/tue",
    "image": "wind/week_2/dawn/5.webp",
-   "anchorY": 48
+   "anchorY": 55,
+   "ink": "white"
   },
   "c66c7fd4f50e": {
    "verdict": "FIXABLE",
@@ -1426,14 +1489,16 @@
    "bucket": "wind-dawn",
    "slot": "A/sat",
    "image": "wind/week_1/dawn/7.webp",
-   "anchorY": 74
+   "anchorY": 96,
+   "ink": "white"
   },
   "337d1a2fe2c2": {
    "verdict": "FIXABLE",
    "bucket": "wind-dawn",
    "slot": "A/sun",
    "image": "wind/week_1/dawn/5.webp",
-   "anchorY": 77
+   "anchorY": 87,
+   "ink": "white"
   },
   "232bde6ed095": {
    "verdict": "FIXABLE",
@@ -1461,14 +1526,16 @@
    "bucket": "wind-day",
    "slot": "A/thu",
    "image": "wind/week_2/day/3.webp",
-   "anchorY": 46
+   "anchorY": 43,
+   "ink": "white"
   },
   "19801ea908d0": {
    "verdict": "FIXABLE",
    "bucket": "wind-day",
    "slot": "A/fri",
    "image": "wind/week_3/day/1.webp",
-   "anchorY": 66
+   "anchorY": 82,
+   "ink": "white"
   },
   "92ef82c2d34a": {
    "verdict": "FIXABLE",
@@ -1496,21 +1563,24 @@
    "bucket": "wind-day",
    "slot": "B/wed",
    "image": "wind/week_1/day/3.webp",
-   "anchorY": 68
+   "anchorY": 90,
+   "ink": "white"
   },
   "002f0c1d5187": {
    "verdict": "FIXABLE",
    "bucket": "wind-dusk",
    "slot": "A/mon",
    "image": "wind/week_1/dusk/1.webp",
-   "anchorY": 61
+   "anchorY": 75,
+   "ink": "white"
   },
   "bdc6900c5689": {
    "verdict": "FIXABLE",
    "bucket": "wind-dusk",
    "slot": "A/tue",
    "image": "wind/week_1/dusk/4.webp",
-   "anchorY": 60
+   "anchorY": 91,
+   "ink": "white"
   },
   "12cd74b592e8": {
    "verdict": "FIXABLE",
@@ -1552,7 +1622,8 @@
    "bucket": "wind-night",
    "slot": "A/sat",
    "image": "wind/week_1/night/2.webp",
-   "anchorY": 45
+   "anchorY": 64,
+   "ink": "white"
   },
   "089f865e3f14": {
    "verdict": "REPLACED",
@@ -1562,18 +1633,20 @@
    "anchorY": 55
   },
   "948736af4859": {
-   "verdict": "REPLACED",
+   "verdict": "FIXABLE",
    "bucket": "cold-clear-dusk",
    "slot": "A/sat",
    "image": "cold-clear/week_1/dusk/7.webp",
-   "anchorY": 55
+   "anchorY": 93,
+   "ink": "white"
   },
   "163ee2f2d1fe": {
-   "verdict": "REPLACED",
+   "verdict": "FIXABLE",
    "bucket": "cold-dusk",
    "slot": "A/thu",
    "image": "cold/week_2/dusk/1.webp",
-   "anchorY": 55
+   "anchorY": 94,
+   "ink": "white"
   },
   "b7cdf515c96b": {
    "verdict": "REPLACED",
@@ -1583,11 +1656,12 @@
    "anchorY": 55
   },
   "248b04dcf98d": {
-   "verdict": "REPLACED",
+   "verdict": "FIXABLE",
    "bucket": "heat-dusk",
    "slot": "A/wed",
    "image": "heat/week_2/dusk/6.webp",
-   "anchorY": 55
+   "anchorY": 69,
+   "ink": "white"
   },
   "555f76c5594f": {
    "verdict": "REPLACED",
@@ -1597,18 +1671,20 @@
    "anchorY": 55
   },
   "706cd1220e10": {
-   "verdict": "REPLACED",
+   "verdict": "FIXABLE",
    "bucket": "heat-night",
    "slot": "A/thu",
    "image": "heat/week_1/night/3.webp",
-   "anchorY": 55
+   "anchorY": 74,
+   "ink": "white"
   },
   "ea333aeefd0d": {
-   "verdict": "REPLACED",
+   "verdict": "FIXABLE",
    "bucket": "heat-night",
    "slot": "A/sun",
    "image": "heat/week_1/night/1.webp",
-   "anchorY": 55
+   "anchorY": 43,
+   "ink": "white"
   },
   "80770bf13004": {
    "verdict": "REPLACED",
@@ -1631,20 +1707,6 @@
    "image": "rain/week_2/dusk/2.webp",
    "anchorY": 55
   },
-  "8fcc55577480": {
-   "verdict": "REPLACED",
-   "bucket": "rain-night",
-   "slot": "A/mon",
-   "image": "rain/week_1/night/2.webp",
-   "anchorY": 55
-  },
-  "96c08c51c831": {
-   "verdict": "REPLACED",
-   "bucket": "rain-night",
-   "slot": "A/wed",
-   "image": "rain/week_1/night/4.webp",
-   "anchorY": 55
-  },
   "a1e2fed78146": {
    "verdict": "REPLACED",
    "bucket": "rain-night",
@@ -1659,34 +1721,6 @@
    "image": "storm/week_4/day/1.webp",
    "anchorY": 55
   },
-  "3fd1fe3984da": {
-   "verdict": "REPLACED",
-   "bucket": "storm-night",
-   "slot": "A/mon",
-   "image": "storm/week_1/night/5.webp",
-   "anchorY": 55
-  },
-  "13aab856406e": {
-   "verdict": "REPLACED",
-   "bucket": "storm-night",
-   "slot": "A/tue",
-   "image": "storm/week_1/night/4.webp",
-   "anchorY": 55
-  },
-  "3c128943e6b1": {
-   "verdict": "REPLACED",
-   "bucket": "storm-night",
-   "slot": "A/thu",
-   "image": "storm/week_2/night/4.webp",
-   "anchorY": 55
-  },
-  "9e72a2108ca7": {
-   "verdict": "REPLACED",
-   "bucket": "storm-night",
-   "slot": "A/fri",
-   "image": "storm/week_2/night/3.webp",
-   "anchorY": 55
-  },
   "f32e33e76e01": {
    "verdict": "REPLACED",
    "bucket": "wind-day",
@@ -1694,68 +1728,338 @@
    "image": "wind/week_1/day/4.webp",
    "anchorY": 55
   },
-  "87ab845e2e43": {
+  "2fede244e0d0": {
    "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/thu",
-   "image": "wind/week_4/day/7.webp",
-   "anchorY": 55
+   "bucket": "storm-night",
+   "slot": "A/tue",
+   "image": "storm/week_1/night/4.webp",
+   "anchorY": 50,
+   "replacedHash": "13aab856406e",
+   "place": "Johannesburg northern suburbs",
+   "source": "/output/reshoot-2026-08-18/02.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
   },
-  "58ca4d8de525": {
+  "9851963ee129": {
    "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/fri",
-   "image": "wind/week_4/day/6.webp",
-   "anchorY": 55
+   "bucket": "storm-night",
+   "slot": "A/mon",
+   "image": "storm/week_1/night/5.webp",
+   "anchorY": 50,
+   "replacedHash": "3fd1fe3984da",
+   "place": "Pretoria east",
+   "source": "/output/reshoot-2026-08-18/03.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
   },
-  "d39680c2e0f9": {
+  "cd855e5f60e9": {
    "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/sat",
-   "image": "wind/week_4/day/2.webp",
-   "anchorY": 55
-  },
-  "a4559a3e95d2": {
-   "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/sun",
-   "image": "wind/week_1/day/2.webp",
-   "anchorY": 55
-  },
-  "da1a09d9496c": {
-   "verdict": "REPLACED",
-   "bucket": "wind-dusk",
-   "slot": "A/thu",
-   "image": "wind/week_2/dusk/6.webp",
-   "anchorY": 55
-  },
-  "096e2eada01f": {
-   "verdict": "REPLACED",
-   "bucket": "wind-night",
-   "slot": "A/wed",
-   "image": "wind/week_1/night/3.webp",
-   "anchorY": 55
-  },
-  "d8523f4a125a": {
-   "verdict": "REPLACED",
-   "bucket": "wind-night",
-   "slot": "A/thu",
-   "image": "wind/week_2/night/3.webp",
-   "anchorY": 55
-  },
-  "838b207a37d1": {
-   "verdict": "REPLACED",
-   "bucket": "wind-night",
+   "bucket": "storm-night",
    "slot": "A/fri",
-   "image": "wind/week_2/night/7.webp",
-   "anchorY": 55
+   "image": "storm/week_2/night/3.webp",
+   "anchorY": 50,
+   "replacedHash": "9e72a2108ca7",
+   "place": "Durban",
+   "source": "/output/reshoot-2026-08-18/06.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
   },
-  "30f278c614c6": {
+  "ae79261d2852": {
+   "verdict": "REPLACED",
+   "bucket": "storm-night",
+   "slot": "A/thu",
+   "image": "storm/week_2/night/4.webp",
+   "anchorY": 50,
+   "replacedHash": "3c128943e6b1",
+   "place": "Bloemfontein",
+   "source": "/output/reshoot-2026-08-18/08.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "6fa740fc3795": {
    "verdict": "REPLACED",
    "bucket": "wind-night",
    "slot": "A/sun",
    "image": "wind/week_1/night/1.webp",
-   "anchorY": 55
+   "anchorY": 50,
+   "replacedHash": "30f278c614c6",
+   "place": "Gqeberha",
+   "source": "/output/reshoot-2026-08-18/10.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "0e5c84f6ab31": {
+   "verdict": "REPLACED",
+   "bucket": "wind-night",
+   "slot": "A/wed",
+   "image": "wind/week_1/night/3.webp",
+   "anchorY": 50,
+   "replacedHash": "096e2eada01f",
+   "place": "Table View",
+   "source": "/output/reshoot-2026-08-18/11.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "bfc08af75267": {
+   "verdict": "REPLACED",
+   "bucket": "wind-night",
+   "slot": "A/thu",
+   "image": "wind/week_2/night/3.webp",
+   "anchorY": 50,
+   "replacedHash": "d8523f4a125a",
+   "place": "Kimberley",
+   "source": "/output/reshoot-2026-08-18/13.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "9ae18d55d0c1": {
+   "verdict": "REPLACED",
+   "bucket": "wind-night",
+   "slot": "A/fri",
+   "image": "wind/week_2/night/7.webp",
+   "anchorY": 50,
+   "replacedHash": "838b207a37d1",
+   "place": "Durban beachfront",
+   "source": "/output/reshoot-2026-08-18/16.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "86be0fc65b9e": {
+   "verdict": "REPLACED",
+   "bucket": "rain-night",
+   "slot": "A/mon",
+   "image": "rain/week_1/night/2.webp",
+   "anchorY": 50,
+   "replacedHash": "8fcc55577480",
+   "place": "Durban",
+   "source": "/output/reshoot-2026-08-18/18.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "f8781ec0eb86": {
+   "verdict": "REPLACED",
+   "bucket": "rain-night",
+   "slot": "A/wed",
+   "image": "rain/week_1/night/4.webp",
+   "anchorY": 50,
+   "replacedHash": "96c08c51c831",
+   "place": "Johannesburg",
+   "source": "/output/reshoot-2026-08-18/19.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "35c91a0ddfec": {
+   "verdict": "REPLACED",
+   "bucket": "wind-day",
+   "slot": "B/sun",
+   "image": "wind/week_1/day/2.webp",
+   "anchorY": 50,
+   "replacedHash": "a4559a3e95d2",
+   "place": "Somerset West",
+   "source": "/output/reshoot-2026-08-18/22.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "55504e5b8143": {
+   "verdict": "REPLACED",
+   "bucket": "wind-day",
+   "slot": "B/thu",
+   "image": "wind/week_4/day/7.webp",
+   "anchorY": 50,
+   "replacedHash": "87ab845e2e43",
+   "place": "Gqeberha",
+   "source": "/output/reshoot-2026-08-18/23.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "5df9d64aa037": {
+   "verdict": "REPLACED",
+   "bucket": "wind-day",
+   "slot": "B/sat",
+   "image": "wind/week_4/day/2.webp",
+   "anchorY": 50,
+   "replacedHash": "d39680c2e0f9",
+   "place": "Johannesburg",
+   "source": "/output/reshoot-2026-08-18/25.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "ab2cbee2d73d": {
+   "verdict": "REPLACED",
+   "bucket": "wind-day",
+   "slot": "B/fri",
+   "image": "wind/week_4/day/6.webp",
+   "anchorY": 50,
+   "replacedHash": "58ca4d8de525",
+   "place": "Durban",
+   "source": "/output/reshoot-2026-08-18/27.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "17c00a47cba2": {
+   "verdict": "REPLACED",
+   "bucket": "wind-dusk",
+   "slot": "A/thu",
+   "image": "wind/week_2/dusk/6.webp",
+   "anchorY": 50,
+   "replacedHash": "da1a09d9496c",
+   "place": "Langebaan",
+   "source": "/output/reshoot-2026-08-18/29.png",
+   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
+  },
+  "b698a0ccc12d": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-dawn",
+   "image": "clear/week_1/dawn/7.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "5799efcdfd70": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/6.webp",
+   "anchorY": 86,
+   "ink": "white"
+  },
+  "0009c55ad6a5": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "image": "clear/week_3/day/3.webp",
+   "anchorY": 88,
+   "ink": "white"
+  },
+  "3d001539dcb5": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "image": "clear/week_4/day/6.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "ed953578deec": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-day",
+   "image": "clear/week_2/day/7.webp",
+   "anchorY": 94,
+   "ink": "white"
+  },
+  "14f98c4f78fa": {
+   "verdict": "FIXABLE",
+   "bucket": "clear-night",
+   "image": "clear/week_1/night/1.webp",
+   "anchorY": 82,
+   "ink": "white"
+  },
+  "4727610ce8f9": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_4/day/4.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "119e4a52f8a4": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-day",
+   "image": "cloudy/week_1/day/1.webp",
+   "anchorY": 94,
+   "ink": "white"
+  },
+  "018a0573e433": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/3.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "0ebee4d85540": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/6.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "211c0291a514": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/7.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "6b5271665e34": {
+   "verdict": "FIXABLE",
+   "bucket": "cloudy-dusk",
+   "image": "cloudy/week_2/dusk/2.webp",
+   "anchorY": 93,
+   "ink": "white"
+  },
+  "3e60dabd7ef7": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_2/dawn/3.webp",
+   "anchorY": 64,
+   "ink": "white"
+  },
+  "caaa1c42d70a": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_1/dawn/2.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "4040cfcfc732": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-clear-dawn",
+   "image": "cold-clear/week_2/dawn/7.webp",
+   "anchorY": 84,
+   "ink": "white"
+  },
+  "45b1ac83db20": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-clear-day",
+   "image": "cold-clear/week_2/day/1.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "d003110fec9f": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-day",
+   "image": "cold/week_3/day/7.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "6baabb00f226": {
+   "verdict": "FIXABLE",
+   "bucket": "cold-night",
+   "image": "cold/week_1/night/2.webp",
+   "anchorY": 93,
+   "ink": "white"
+  },
+  "437fd1add3cd": {
+   "verdict": "FIXABLE",
+   "bucket": "heat-dawn",
+   "image": "heat/week_1/dawn/6.webp",
+   "anchorY": 83,
+   "ink": "white"
+  },
+  "68661ff2b0dc": {
+   "verdict": "FIXABLE",
+   "bucket": "heat-dusk",
+   "image": "heat/week_1/dusk/4.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "73567b0c612e": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-dawn",
+   "image": "rain/week_1/dawn/6.webp",
+   "anchorY": 100,
+   "ink": "white"
+  },
+  "057e8c9e5039": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-day",
+   "image": "rain/week_4/day/2.webp",
+   "anchorY": 87,
+   "ink": "white"
+  },
+  "19ddc2f8afd3": {
+   "verdict": "FIXABLE",
+   "bucket": "rain-night",
+   "image": "rain/week_2/night/6.webp",
+   "anchorY": 90,
+   "ink": "white"
+  },
+  "ec12d1747d09": {
+   "verdict": "FIXABLE",
+   "bucket": "wind-dusk",
+   "image": "wind/week_4/dusk/1.webp",
+   "anchorY": 82,
+   "ink": "white"
   }
  }
 }
