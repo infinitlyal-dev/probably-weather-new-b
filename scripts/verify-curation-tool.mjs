@@ -1,13 +1,21 @@
-// Does the curation tool actually work? Drives review/crop-anchor-tool.html over
-// file:// the way Al will open it, and asserts the things that would silently be
-// wrong: the photograph loading, the preview being the REAL composition, the ink
-// toggle flipping the scrim with the ink, verdicts persisting, and the export
-// producing both files with the right shape.
+// Does the curation tool actually work? Drives review/crop-anchor-tool.html the
+// way Al opens it, and asserts the things that would silently be wrong: the
+// photograph loading, the preview being the REAL composition, the ink toggle
+// flipping the scrim with the ink, verdicts persisting, and both exports coming
+// out with the right shape.
+//
+//   node scripts/verify-curation-tool.mjs                     (file://, a double-click)
+//   node scripts/verify-curation-tool.mjs http://127.0.0.1:8788/review/crop-anchor-tool.html
+//
+// Check BOTH when the tool changes. localStorage is the one thing that differs
+// between the two origins, and every curation verdict is autosaved there.
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
-const root = 'C:/Users/27741/OneDrive/Desktop/Probably weather new/probably-weather-new-c';
-const url = 'file:///' + path.join(root, 'review', 'crop-anchor-tool.html').replace(/\\/g, '/');
+const root = fileURLToPath(new URL('..', import.meta.url));
+const FILE_URL = 'file:///' + path.join(root, 'review', 'crop-anchor-tool.html').split(path.sep).join('/');
+const url = process.argv[2] || FILE_URL;
 const fails = [];
 const ok = [];
 const check = (name, cond, detail) => (cond ? ok : fails).push(`${name}${detail ? ' — ' + detail : ''}`);
