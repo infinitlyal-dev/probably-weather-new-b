@@ -275,10 +275,12 @@ Images I flagged as weak/mismatched scored **32/60 = 53%** vs 853/1410 = 60% cle
 
 ## 8. Method note
 
-Built from `review/pairing-proposals.json` joined to Al's tick export. **The export is currently sitting at `C:\Users\27741\Downloads\set-001-humour-approved.json` — it was never moved into the repo**, so this analysis is not yet reproducible from a clean checkout. To fix:
+Built from `review/pairing-proposals.json` joined to Al's tick export.
 
-```bash
-cp "/c/Users/27741/Downloads/set-001-humour-approved.json" "review/set-001-humour-approved.json"
-```
+**Fixed 2026-08-18:** the export is now `review/set-001-humour-approved.json`,
+so every rate here is reproducible from a clean checkout. Recomputing the join
+returns the published numbers exactly - wind 48%, heat 52%, storm 54%, rain
+58%, cloudy 63%, cold-clear 64%, clear 65%, cold 67%, fog 70%, overall
+885/1470 = 60%.
 
 Caveats worth holding: this is one reviewer, one pass, one set. Rates on families with n<10 (flavour-slang subsets, several per-bin lines) are directional only. The rank correlation was strong and monotonic — rank 1 approved 79%, rank 5 approved 47% — so pass-1 ranking was broadly aligned with Al's taste; this profile is a map of the 40% it got wrong, not a rebuild from zero.
