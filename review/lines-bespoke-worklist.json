@@ -1,0 +1,622 @@
+{
+ "generated": "2026-08-18",
+ "count": 42,
+ "images": [
+  {
+   "image": "storm/week_1/night/4.webp",
+   "hash": "2fede244e0d0",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/night/4.webp",
+    "storm/week_3/night/4.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Johannesburg northern suburbs",
+   "pass1": null
+  },
+  {
+   "image": "storm/week_1/night/5.webp",
+   "hash": "9851963ee129",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/night/5.webp",
+    "storm/week_3/night/5.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Pretoria east",
+   "pass1": null
+  },
+  {
+   "image": "storm/week_2/night/3.webp",
+   "hash": "cd855e5f60e9",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/night/3.webp",
+    "storm/week_4/night/3.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Durban",
+   "pass1": null
+  },
+  {
+   "image": "storm/week_2/night/4.webp",
+   "hash": "ae79261d2852",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_2/night/4.webp",
+    "storm/week_4/night/4.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Bloemfontein",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_1/night/1.webp",
+   "hash": "6fa740fc3795",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/night/1.webp",
+    "wind/week_3/night/1.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Gqeberha",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_1/night/3.webp",
+   "hash": "0e5c84f6ab31",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/night/3.webp",
+    "wind/week_3/night/3.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Table View",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_2/night/3.webp",
+   "hash": "bfc08af75267",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_2/night/3.webp",
+    "wind/week_4/night/3.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Kimberley",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_2/night/7.webp",
+   "hash": "9ae18d55d0c1",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_2/night/7.webp",
+    "wind/week_4/night/7.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Durban beachfront",
+   "pass1": null
+  },
+  {
+   "image": "rain/week_1/night/2.webp",
+   "hash": "86be0fc65b9e",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/night/2.webp",
+    "rain/week_3/night/2.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Durban",
+   "pass1": null
+  },
+  {
+   "image": "rain/week_1/night/4.webp",
+   "hash": "f8781ec0eb86",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_1/night/4.webp",
+    "rain/week_3/night/4.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Johannesburg",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_1/day/2.webp",
+   "hash": "35c91a0ddfec",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/day/2.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Somerset West",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_4/day/7.webp",
+   "hash": "55504e5b8143",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "wind/week_4/day/7.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Gqeberha",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_4/day/2.webp",
+   "hash": "5df9d64aa037",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "wind/week_4/day/2.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Johannesburg",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_4/day/6.webp",
+   "hash": "ab2cbee2d73d",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/day/6.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Durban",
+   "pass1": null
+  },
+  {
+   "image": "wind/week_2/dusk/6.webp",
+   "hash": "17c00a47cba2",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_2/dusk/6.webp",
+    "wind/week_4/dusk/6.webp"
+   ],
+   "why": "new photograph (2026-08-18)",
+   "place": "Langebaan",
+   "pass1": null
+  },
+  {
+   "image": "clear/week_2/dawn/2.webp",
+   "hash": "089f865e3f14",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "why": "pass-1 majority rejected",
+   "place": null,
+   "pass1": "0/5"
+  },
+  {
+   "image": "heat/week_2/day/5.webp",
+   "hash": "36881ce76889",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/day/5.webp"
+   ],
+   "why": "pass-1 majority rejected",
+   "place": null,
+   "pass1": "1/5"
+  },
+  {
+   "image": "heat/week_4/day/7.webp",
+   "hash": "0cc1648cbc13",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_4/day/7.webp"
+   ],
+   "why": "pass-1 majority rejected",
+   "place": null,
+   "pass1": "1/5"
+  },
+  {
+   "image": "heat/week_1/night/2.webp",
+   "hash": "73f8b2781c4c",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_1/night/2.webp",
+    "heat/week_3/night/2.webp"
+   ],
+   "why": "pass-1 majority rejected",
+   "place": null,
+   "pass1": "1/5"
+  },
+  {
+   "image": "heat/week_2/night/2.webp",
+   "hash": "87546db18e01",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/night/2.webp",
+    "heat/week_4/night/2.webp"
+   ],
+   "why": "pass-1 majority rejected",
+   "place": null,
+   "pass1": "1/5"
+  },
+  {
+   "image": "rain/week_1/night/5.webp",
+   "hash": "504e55301184",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/night/5.webp",
+    "rain/week_3/night/5.webp"
+   ],
+   "why": "pass-1 majority rejected",
+   "place": null,
+   "pass1": "1/5"
+  },
+  {
+   "image": "rain/week_1/night/6.webp",
+   "hash": "a1e2fed78146",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_1/night/6.webp",
+    "rain/week_3/night/6.webp"
+   ],
+   "why": "pass-1 majority rejected",
+   "place": null,
+   "pass1": "1/5"
+  },
+  {
+   "image": "heat/week_2/dusk/1.webp",
+   "hash": "93f4a43551af",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_2/dusk/1.webp",
+    "heat/week_4/dusk/1.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "heat/week_1/dusk/6.webp",
+   "hash": "9728bed72ec6",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/dusk/6.webp",
+    "heat/week_3/dusk/6.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "heat/week_1/night/4.webp",
+   "hash": "f2e76528eca3",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/night/4.webp",
+    "heat/week_3/night/4.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "heat/week_2/night/6.webp",
+   "hash": "e62c00a72fb4",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/night/6.webp",
+    "heat/week_4/night/6.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "heat/week_1/night/3.webp",
+   "hash": "706cd1220e10",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/night/3.webp",
+    "heat/week_3/night/3.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "heat/week_1/night/1.webp",
+   "hash": "ea333aeefd0d",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/night/1.webp",
+    "heat/week_3/night/1.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_1/day/7.webp",
+   "hash": "eb217457f58d",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/7.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_2/day/3.webp",
+   "hash": "e3f0d69977ca",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_2/day/3.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_3/day/1.webp",
+   "hash": "19801ea908d0",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_3/day/1.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_3/day/3.webp",
+   "hash": "92ef82c2d34a",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_3/day/3.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_2/day/4.webp",
+   "hash": "05cea2b8788d",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "wind/week_2/day/4.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_2/day/6.webp",
+   "hash": "330bfae094d5",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/day/6.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_1/day/3.webp",
+   "hash": "9bada961b0a7",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/3.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_1/dusk/1.webp",
+   "hash": "002f0c1d5187",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/dusk/1.webp",
+    "wind/week_3/dusk/1.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_1/dusk/4.webp",
+   "hash": "bdc6900c5689",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_3/dusk/4.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_1/dusk/7.webp",
+   "hash": "12cd74b592e8",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_3/dusk/7.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_4/dusk/1.webp",
+   "hash": "ec12d1747d09",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/dusk/1.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_2/dusk/2.webp",
+   "hash": "b78d6f432fb7",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_2/dusk/2.webp",
+    "wind/week_4/dusk/2.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_2/night/5.webp",
+   "hash": "f6b55aacae0a",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  },
+  {
+   "image": "wind/week_1/night/2.webp",
+   "hash": "be8276f7384b",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/night/2.webp",
+    "wind/week_3/night/2.webp"
+   ],
+   "why": "2/5 in a weakest-rate condition",
+   "place": null,
+   "pass1": "2/5"
+  }
+ ]
+}

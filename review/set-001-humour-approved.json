@@ -1,0 +1,1477 @@
+{
+ "version": 1,
+ "set": "set-001",
+ "exported": "2026-08-06T14:18:31.152Z",
+ "slotsApproved": 292,
+ "approved": {
+  "clear|dawn|A|mon": [
+   "witty:clear#5",
+   "witty:clear#52",
+   "witty:clear#43",
+   "witty:clear#55"
+  ],
+  "clear|dawn|A|tue": [
+   "witty:clear#10",
+   "witty:clear#53",
+   "witty:clear#49",
+   "witty:clear#16"
+  ],
+  "clear|dawn|A|wed": [
+   "witty:clear#55",
+   "witty:clear#57",
+   "witty:clear#6",
+   "witty:clear#53"
+  ],
+  "clear|dawn|A|thu": [
+   "witty:clear#23",
+   "witty:clear#46",
+   "witty:clear#26",
+   "witty:clear#35"
+  ],
+  "clear|dawn|A|fri": [
+   "witty:clear#46",
+   "witty:clear#41",
+   "witty:clear#40",
+   "witty:clear#28"
+  ],
+  "clear|dawn|A|sat": [
+   "witty:weekend#3",
+   "witty:weekend#8",
+   "witty:weekend#11",
+   "witty:weekend#5"
+  ],
+  "clear|day|A|mon": [
+   "witty:clear#62",
+   "witty:clear#64",
+   "witty:clear#66"
+  ],
+  "clear|day|A|tue": [
+   "witty:clear#5",
+   "witty:clear#19",
+   "witty:clear#3",
+   "witty:clear#32"
+  ],
+  "clear|day|A|wed": [
+   "witty:clear#22",
+   "witty:clear#66",
+   "witty:clear#64",
+   "witty:clear#6"
+  ],
+  "clear|day|A|thu": [
+   "witty:clear#30",
+   "witty:clear#68",
+   "witty:clear#24"
+  ],
+  "clear|day|A|fri": [
+   "witty:clear#4",
+   "witty:clear#6",
+   "witty:clear#62"
+  ],
+  "clear|day|A|sat": [
+   "witty:weekend#6",
+   "witty:weekend#5",
+   "witty:weekend#16"
+  ],
+  "clear|day|A|sun": [
+   "witty:weekend#9",
+   "witty:weekend#13",
+   "witty:weekend#8"
+  ],
+  "clear|day|B|mon": [
+   "witty:clear#5",
+   "witty:clear#34",
+   "witty:clear#32"
+  ],
+  "clear|day|B|tue": [
+   "witty:clear#16",
+   "witty:clear#66",
+   "witty:clear#3"
+  ],
+  "clear|day|B|wed": [
+   "witty:clear#10",
+   "witty:clear#18",
+   "witty:clear#4"
+  ],
+  "clear|day|B|thu": [
+   "witty:clear#25",
+   "witty:clear#19",
+   "witty:clear#6"
+  ],
+  "clear|day|B|fri": [
+   "witty:clear#62",
+   "witty:clear#37",
+   "witty:clear#64"
+  ],
+  "clear|day|B|sat": [
+   "witty:weekend#15",
+   "witty:weekend#7",
+   "witty:weekend#24"
+  ],
+  "clear|day|B|sun": [
+   "witty:weekend#3",
+   "witty:weekend#17",
+   "witty:weekend#8"
+  ],
+  "clear|dusk|A|mon": [
+   "witty:clear#83",
+   "witty:clear#74",
+   "witty:clear#87",
+   "witty:clear#34"
+  ],
+  "clear|dusk|A|tue": [
+   "witty:clear#89",
+   "witty:clear#75",
+   "witty:clear#16"
+  ],
+  "clear|dusk|A|wed": [
+   "witty:clear#80",
+   "witty:clear#83",
+   "witty:clear#4"
+  ],
+  "clear|dusk|A|thu": [
+   "witty:clear#78",
+   "witty:clear#76",
+   "witty:clear#79"
+  ],
+  "clear|dusk|A|fri": [
+   "witty:weekend#11",
+   "witty:weekend#9",
+   "witty:weekend#8"
+  ],
+  "clear|dusk|A|sat": [
+   "witty:weekend#10",
+   "witty:weekend#24",
+   "witty:weekend#18",
+   "witty:weekend#19"
+  ],
+  "clear|dusk|A|sun": [
+   "witty:weekend#11",
+   "witty:weekend#8",
+   "witty:weekend#16"
+  ],
+  "clear|night|A|mon": [
+   "witty:night#18",
+   "witty:night#0",
+   "witty:night#12",
+   "witty:night#8",
+   "witty:night#2"
+  ],
+  "clear|night|A|tue": [
+   "witty:night#7",
+   "witty:night#16",
+   "witty:night#2"
+  ],
+  "clear|night|A|wed": [
+   "witty:night#0",
+   "witty:night#6",
+   "witty:night#4",
+   "witty:night#19"
+  ],
+  "clear|night|A|thu": [
+   "witty:night#11",
+   "witty:night#7",
+   "witty:night#2"
+  ],
+  "clear|night|A|fri": [
+   "witty:night#16",
+   "witty:night#12"
+  ],
+  "clear|night|A|sat": [
+   "witty:night#1",
+   "witty:night#13",
+   "witty:night#19"
+  ],
+  "clear|night|A|sun": [
+   "witty:night#1",
+   "witty:night#13",
+   "witty:night#19"
+  ],
+  "cloudy|dawn|A|mon": [
+   "witty:cloudy#38",
+   "witty:cloudy#9",
+   "witty:cloudy#40",
+   "witty:cloudy#24"
+  ],
+  "cloudy|dawn|A|tue": [
+   "witty:cloudy#42",
+   "witty:cloudy#0",
+   "witty:cloudy#35",
+   "witty:cloudy#28"
+  ],
+  "cloudy|dawn|A|wed": [
+   "witty:cloudy#14",
+   "witty:cloudy#37",
+   "witty:cloudy#7"
+  ],
+  "cloudy|dawn|A|thu": [
+   "witty:cloudy#41",
+   "witty:cloudy#19",
+   "witty:cloudy#12"
+  ],
+  "cloudy|dawn|A|fri": [
+   "witty:cloudy#22",
+   "witty:cloudy#40",
+   "witty:cloudy#24"
+  ],
+  "cloudy|dawn|A|sat": [
+   "witty:cloudy#21",
+   "witty:cloudy#20",
+   "witty:cloudy#2"
+  ],
+  "cloudy|dawn|A|sun": [
+   "witty:cloudy#28",
+   "witty:cloudy#26",
+   "witty:cloudy#0",
+   "witty:cloudy#6"
+  ],
+  "cloudy|day|A|mon": [
+   "witty:cloudy#49",
+   "witty:cloudy#58",
+   "witty:cloudy#60"
+  ],
+  "cloudy|day|A|tue": [
+   "witty:cloudy#26",
+   "witty:cloudy#51",
+   "witty:cloudy#8",
+   "witty:cloudy#11"
+  ],
+  "cloudy|day|A|wed": [
+   "witty:cloudy#50",
+   "witty:cloudy#24",
+   "witty:cloudy#55"
+  ],
+  "cloudy|day|A|thu": [
+   "witty:cloudy#48",
+   "witty:cloudy#44",
+   "witty:cloudy#52",
+   "witty:cloudy#49"
+  ],
+  "cloudy|day|A|fri": [
+   "witty:cloudy#46",
+   "witty:cloudy#59",
+   "witty:cloudy#29"
+  ],
+  "cloudy|day|A|sat": [
+   "witty:cloudy#56",
+   "witty:cloudy#48",
+   "witty:cloudy#45"
+  ],
+  "cloudy|day|A|sun": [
+   "witty:cloudy#54",
+   "witty:cloudy#50",
+   "witty:cloudy#49"
+  ],
+  "cloudy|day|B|mon": [
+   "witty:cloudy#43",
+   "witty:cloudy#49",
+   "witty:cloudy#52"
+  ],
+  "cloudy|day|B|tue": [
+   "witty:cloudy#10",
+   "witty:cloudy#22",
+   "witty:cloudy#3"
+  ],
+  "cloudy|day|B|wed": [
+   "witty:cloudy#12",
+   "witty:cloudy#58",
+   "witty:cloudy#59"
+  ],
+  "cloudy|day|B|thu": [
+   "witty:cloudy#43",
+   "witty:cloudy#24",
+   "witty:cloudy#44"
+  ],
+  "cloudy|day|B|fri": [
+   "witty:cloudy#26",
+   "witty:cloudy#6",
+   "witty:cloudy#11"
+  ],
+  "cloudy|day|B|sat": [
+   "witty:cloudy#2",
+   "witty:cloudy#3",
+   "witty:cloudy#16"
+  ],
+  "cloudy|day|B|sun": [
+   "witty:cloudy#20",
+   "witty:cloudy#50",
+   "witty:cloudy#59"
+  ],
+  "cloudy|dusk|A|mon": [
+   "witty:cloudy#67",
+   "witty:cloudy#63",
+   "witty:cloudy#66",
+   "witty:cloudy#21"
+  ],
+  "cloudy|dusk|A|tue": [
+   "witty:cloudy#70",
+   "witty:cloudy#73",
+   "witty:cloudy#69"
+  ],
+  "cloudy|dusk|A|wed": [
+   "witty:cloudy#62",
+   "witty:cloudy#4",
+   "witty:cloudy#15"
+  ],
+  "cloudy|dusk|A|thu": [
+   "witty:cloudy#72",
+   "witty:cloudy#67",
+   "witty:cloudy#69"
+  ],
+  "cloudy|dusk|A|fri": [
+   "witty:cloudy#24",
+   "witty:cloudy#66",
+   "witty:cloudy#69"
+  ],
+  "cloudy|dusk|A|sat": [
+   "witty:cloudy#21",
+   "witty:cloudy#15",
+   "witty:cloudy#63"
+  ],
+  "cloudy|dusk|A|sun": [
+   "witty:cloudy#1",
+   "witty:cloudy#5",
+   "witty:cloudy#15"
+  ],
+  "cloudy|night|A|mon": [
+   "witty:cloudy#80",
+   "witty:cloudy#86",
+   "witty:cloudy#79"
+  ],
+  "cloudy|night|A|tue": [
+   "witty:cloudy#75",
+   "witty:cloudy#85",
+   "witty:cloudy#78"
+  ],
+  "cloudy|night|A|wed": [
+   "witty:cloudy#87",
+   "witty:cloudy#74",
+   "witty:cloudy#86"
+  ],
+  "cloudy|night|A|thu": [
+   "witty:cloudy#76",
+   "witty:cloudy#77",
+   "witty:cloudy#79"
+  ],
+  "cloudy|night|A|fri": [
+   "witty:cloudy#28",
+   "witty:cloudy#75",
+   "witty:cloudy#86"
+  ],
+  "cloudy|night|A|sat": [
+   "witty:cloudy#82",
+   "witty:cloudy#84",
+   "witty:cloudy#87"
+  ],
+  "cloudy|night|A|sun": [
+   "witty:cloudy#77",
+   "witty:cloudy#81",
+   "witty:cloudy#75"
+  ],
+  "cold|dawn|A|mon": [
+   "witty:cold#0",
+   "witty:cold#22",
+   "witty:cold#5",
+   "witty:cold#36"
+  ],
+  "cold|dawn|A|tue": [
+   "witty:cold#42",
+   "witty:cold#15",
+   "witty:cold#29",
+   "witty:cold#38"
+  ],
+  "cold|dawn|A|wed": [
+   "witty:cold#4",
+   "witty:cold#1",
+   "witty:cold#43"
+  ],
+  "cold|dawn|A|thu": [
+   "witty:cold#13",
+   "witty:cold#8",
+   "witty:cold#43"
+  ],
+  "cold|dawn|A|fri": [
+   "witty:cold#21",
+   "witty:cold#20",
+   "witty:cold#11"
+  ],
+  "cold|dawn|A|sat": [
+   "witty:cold#23",
+   "witty:cold#42",
+   "witty:cold#6"
+  ],
+  "cold|dawn|A|sun": [
+   "witty:cold#38",
+   "witty:cold#29",
+   "witty:cold#42"
+  ],
+  "cold|day|A|mon": [
+   "witty:cold#71",
+   "witty:cold#50",
+   "witty:cold#61"
+  ],
+  "cold|day|A|tue": [
+   "witty:cold#18",
+   "witty:cold#74",
+   "witty:cold#7",
+   "witty:cold#19"
+  ],
+  "cold|day|A|wed": [
+   "witty:cold#25",
+   "witty:cold#15",
+   "witty:cold#23"
+  ],
+  "cold|day|A|thu": [
+   "witty:cold#68",
+   "witty:cold#9",
+   "witty:cold#17",
+   "witty:cold#26"
+  ],
+  "cold|day|A|fri": [
+   "witty:cold#9",
+   "witty:cold#70",
+   "witty:cold#30"
+  ],
+  "cold|day|A|sat": [
+   "witty:cold#10",
+   "witty:cold#71",
+   "witty:cold#27",
+   "witty:cold#24"
+  ],
+  "cold|day|A|sun": [
+   "witty:cold#68",
+   "witty:cold#70",
+   "witty:cold#37"
+  ],
+  "cold|day|B|mon": [
+   "witty:cold#22",
+   "witty:cold#13",
+   "witty:cold#74",
+   "witty:cold#12"
+  ],
+  "cold|day|B|tue": [
+   "witty:cold#12",
+   "witty:cold#27",
+   "witty:cold#36"
+  ],
+  "cold|day|B|wed": [
+   "witty:cold#6",
+   "witty:cold#34",
+   "witty:cold#14"
+  ],
+  "cold|day|B|thu": [
+   "witty:cold#3",
+   "witty:cold#22",
+   "witty:cold#16"
+  ],
+  "cold|day|B|fri": [
+   "witty:cold#0",
+   "witty:cold#74",
+   "witty:cold#27"
+  ],
+  "cold|day|B|sat": [
+   "witty:cold#60",
+   "witty:cold#51",
+   "witty:cold#65",
+   "witty:cold#59"
+  ],
+  "cold|day|B|sun": [
+   "witty:cold#6",
+   "witty:cold#70",
+   "witty:cold#26"
+  ],
+  "cold|dusk|A|mon": [
+   "witty:cold#6",
+   "witty:cold#77",
+   "witty:cold#78"
+  ],
+  "cold|dusk|A|tue": [
+   "witty:cold#81",
+   "witty:cold#80",
+   "witty:cold#89"
+  ],
+  "cold|dusk|A|wed": [
+   "witty:cold#78",
+   "witty:cold#10",
+   "witty:cold#87"
+  ],
+  "cold|dusk|A|thu": [
+   "witty:cold#77",
+   "witty:cold#12",
+   "witty:cold#27"
+  ],
+  "cold|dusk|A|fri": [
+   "witty:cold#3",
+   "witty:cold#86",
+   "witty:cold#87",
+   "witty:cold#83",
+   "witty:cold#88"
+  ],
+  "cold|dusk|A|sat": [
+   "witty:cold#87",
+   "witty:cold#19",
+   "witty:cold#77"
+  ],
+  "cold|dusk|A|sun": [
+   "witty:cold#91",
+   "witty:cold#78",
+   "witty:cold#82",
+   "witty:cold#89"
+  ],
+  "cold|night|A|mon": [
+   "witty:cold#106",
+   "witty:cold#104",
+   "witty:cold#105",
+   "witty:cold#98",
+   "witty:cold#102"
+  ],
+  "cold|night|A|tue": [
+   "witty:cold#95",
+   "witty:cold#97",
+   "witty:cold#96"
+  ],
+  "cold|night|A|wed": [
+   "witty:cold#8",
+   "witty:cold#93",
+   "witty:cold#92"
+  ],
+  "cold|night|A|thu": [
+   "witty:cold#28",
+   "witty:cold#100",
+   "witty:cold#9"
+  ],
+  "cold|night|A|fri": [
+   "witty:cold#92",
+   "witty:cold#97",
+   "witty:cold#93"
+  ],
+  "cold|night|A|sat": [
+   "witty:cold#22",
+   "witty:cold#19",
+   "witty:cold#102",
+   "witty:cold#97"
+  ],
+  "cold|night|A|sun": [
+   "witty:cold#4",
+   "witty:cold#22",
+   "witty:cold#0"
+  ],
+  "cold-clear|dawn|A|mon": [
+   "witty:cold-clear#36",
+   "witty:cold-clear#25",
+   "witty:cold-clear#9"
+  ],
+  "cold-clear|dawn|A|tue": [
+   "witty:cold-clear#32",
+   "witty:cold-clear#30",
+   "witty:cold-clear#10",
+   "witty:cold-clear#23"
+  ],
+  "cold-clear|dawn|A|wed": [
+   "witty:cold-clear#17",
+   "witty:cold-clear#43",
+   "witty:cold-clear#30"
+  ],
+  "cold-clear|dawn|A|thu": [
+   "witty:cold-clear#12",
+   "witty:cold-clear#44",
+   "witty:cold-clear#22"
+  ],
+  "cold-clear|dawn|A|fri": [
+   "witty:cold-clear#32",
+   "witty:cold-clear#10",
+   "witty:cold-clear#36"
+  ],
+  "cold-clear|dawn|A|sat": [
+   "witty:cold-clear#33",
+   "witty:cold-clear#16",
+   "witty:cold-clear#20"
+  ],
+  "cold-clear|dawn|A|sun": [
+   "witty:cold-clear#10",
+   "witty:cold-clear#22",
+   "witty:cold-clear#19",
+   "witty:cold-clear#33"
+  ],
+  "cold-clear|day|A|mon": [
+   "witty:cold-clear#69",
+   "witty:cold-clear#46",
+   "witty:cold-clear#77"
+  ],
+  "cold-clear|day|A|tue": [
+   "witty:cold-clear#46",
+   "witty:cold-clear#71",
+   "witty:cold-clear#73",
+   "witty:cold-clear#56",
+   "witty:cold-clear#77"
+  ],
+  "cold-clear|day|A|wed": [
+   "witty:cold-clear#7",
+   "witty:cold-clear#47",
+   "witty:cold-clear#17",
+   "witty:cold-clear#19"
+  ],
+  "cold-clear|day|A|thu": [
+   "witty:cold-clear#76",
+   "witty:cold-clear#52",
+   "witty:cold-clear#54"
+  ],
+  "cold-clear|day|A|fri": [
+   "witty:cold-clear#77",
+   "witty:cold-clear#3",
+   "witty:cold-clear#47"
+  ],
+  "cold-clear|day|A|sat": [
+   "witty:cold-clear#62",
+   "witty:cold-clear#61",
+   "witty:cold-clear#11"
+  ],
+  "cold-clear|day|A|sun": [
+   "witty:cold-clear#63",
+   "witty:cold-clear#69",
+   "witty:cold-clear#46"
+  ],
+  "cold-clear|dusk|A|mon": [
+   "witty:cold-clear#79",
+   "witty:cold-clear#86",
+   "witty:cold-clear#83"
+  ],
+  "cold-clear|dusk|A|tue": [
+   "witty:cold-clear#4",
+   "witty:cold-clear#87",
+   "witty:cold-clear#83",
+   "witty:cold-clear#79"
+  ],
+  "cold-clear|dusk|A|wed": [
+   "witty:cold-clear#80",
+   "witty:cold-clear#86",
+   "witty:cold-clear#79"
+  ],
+  "cold-clear|dusk|A|thu": [
+   "witty:cold-clear#22",
+   "witty:cold-clear#80",
+   "witty:cold-clear#83"
+  ],
+  "cold-clear|dusk|A|fri": [
+   "witty:cold-clear#84",
+   "witty:cold-clear#85",
+   "witty:cold-clear#27"
+  ],
+  "cold-clear|dusk|A|sat": [
+   "witty:cold-clear#4",
+   "witty:cold-clear#79",
+   "witty:cold-clear#83"
+  ],
+  "cold-clear|dusk|A|sun": [
+   "witty:cold-clear#90",
+   "witty:cold-clear#80",
+   "witty:cold-clear#79"
+  ],
+  "cold-clear|night|A|mon": [
+   "witty:cold-clear#105",
+   "witty:cold-clear#104",
+   "witty:cold-clear#106"
+  ],
+  "cold-clear|night|A|tue": [
+   "witty:cold-clear#100",
+   "witty:cold-clear#95",
+   "witty:cold-clear#92"
+  ],
+  "cold-clear|night|A|wed": [
+   "witty:cold-clear#96",
+   "witty:cold-clear#91",
+   "witty:cold-clear#111"
+  ],
+  "cold-clear|night|A|thu": [
+   "witty:cold-clear#92",
+   "witty:cold-clear#109",
+   "witty:cold-clear#106"
+  ],
+  "cold-clear|night|A|fri": [
+   "witty:cold-clear#93",
+   "witty:cold-clear#91",
+   "witty:cold-clear#92"
+  ],
+  "cold-clear|night|A|sat": [
+   "witty:cold-clear#101",
+   "witty:cold-clear#103",
+   "witty:cold-clear#102"
+  ],
+  "cold-clear|night|A|sun": [
+   "witty:cold-clear#96",
+   "witty:cold-clear#94",
+   "witty:cold-clear#93"
+  ],
+  "fog|dawn|A|mon": [
+   "witty:fog#51",
+   "witty:fog#14",
+   "witty:fog#32"
+  ],
+  "fog|dawn|A|tue": [
+   "witty:fog#44",
+   "witty:fog#42",
+   "witty:fog#100"
+  ],
+  "fog|dawn|A|wed": [
+   "witty:fog#37",
+   "witty:fog#31",
+   "witty:fog#22",
+   "witty:fog#20",
+   "witty:fog#5"
+  ],
+  "fog|dawn|A|thu": [
+   "witty:fog#39",
+   "witty:fog#12",
+   "witty:fog#15"
+  ],
+  "fog|dawn|A|fri": [
+   "witty:fog#14",
+   "witty:fog#52",
+   "witty:fog#10",
+   "witty:fog#20"
+  ],
+  "fog|dawn|A|sat": [
+   "witty:fog#15",
+   "witty:fog#6",
+   "witty:fog#54",
+   "witty:fog#2",
+   "witty:fog#17"
+  ],
+  "fog|dawn|A|sun": [
+   "witty:fog#44",
+   "witty:fog#100",
+   "witty:fog#12"
+  ],
+  "fog|day|A|mon": [
+   "witty:fog#20",
+   "witty:fog#17",
+   "witty:fog#6",
+   "witty:fog#2"
+  ],
+  "fog|day|A|tue": [
+   "witty:fog#13",
+   "witty:fog#7",
+   "witty:fog#10",
+   "witty:fog#35"
+  ],
+  "fog|day|A|wed": [
+   "witty:fog#10",
+   "witty:fog#20",
+   "witty:fog#36"
+  ],
+  "fog|day|A|thu": [
+   "witty:fog#4",
+   "witty:fog#24",
+   "witty:fog#1",
+   "witty:fog#3",
+   "witty:fog#32"
+  ],
+  "fog|day|A|fri": [
+   "witty:fog#34",
+   "witty:fog#22",
+   "witty:fog#31"
+  ],
+  "fog|day|A|sat": [
+   "witty:fog#19",
+   "witty:fog#0",
+   "witty:fog#28",
+   "witty:fog#21"
+  ],
+  "fog|day|A|sun": [
+   "witty:fog#0",
+   "witty:fog#19",
+   "witty:fog#3"
+  ],
+  "fog|dusk|A|mon": [
+   "witty:fog#32",
+   "witty:fog#71",
+   "witty:fog#1",
+   "witty:fog#15"
+  ],
+  "fog|dusk|A|tue": [
+   "witty:fog#66",
+   "witty:fog#58",
+   "witty:fog#65",
+   "witty:fog#13"
+  ],
+  "fog|dusk|A|wed": [
+   "witty:fog#66",
+   "witty:fog#59",
+   "witty:fog#64"
+  ],
+  "fog|dusk|A|thu": [
+   "witty:fog#17",
+   "witty:fog#74",
+   "witty:fog#62"
+  ],
+  "fog|dusk|A|fri": [
+   "witty:fog#59",
+   "witty:fog#30",
+   "witty:fog#60"
+  ],
+  "fog|dusk|A|sat": [
+   "witty:fog#76",
+   "witty:fog#60",
+   "witty:fog#58"
+  ],
+  "fog|dusk|A|sun": [
+   "witty:fog#23",
+   "witty:fog#69",
+   "witty:fog#16",
+   "witty:fog#71"
+  ],
+  "fog|night|A|mon": [
+   "witty:fog#31",
+   "witty:fog#17",
+   "witty:fog#98"
+  ],
+  "fog|night|A|tue": [
+   "witty:fog#26",
+   "witty:fog#89",
+   "witty:fog#98"
+  ],
+  "fog|night|A|wed": [
+   "witty:fog#79",
+   "witty:fog#81",
+   "witty:fog#80",
+   "witty:fog#84"
+  ],
+  "fog|night|A|thu": [
+   "witty:fog#89",
+   "witty:fog#14",
+   "witty:fog#2"
+  ],
+  "fog|night|A|fri": [
+   "witty:fog#88",
+   "witty:fog#89",
+   "witty:fog#14"
+  ],
+  "fog|night|A|sat": [
+   "witty:fog#20",
+   "witty:fog#5",
+   "witty:fog#86"
+  ],
+  "fog|night|A|sun": [
+   "witty:fog#84",
+   "witty:fog#79",
+   "witty:fog#80"
+  ],
+  "heat|dawn|A|mon": [
+   "witty:heat#1",
+   "witty:heat#37",
+   "witty:heat#36"
+  ],
+  "heat|dawn|A|tue": [
+   "witty:heat#4",
+   "witty:heat#51",
+   "witty:heat#50"
+  ],
+  "heat|dawn|A|wed": [
+   "witty:heat#48",
+   "witty:heat#47",
+   "witty:heat#49"
+  ],
+  "heat|dawn|A|thu": [
+   "witty:heat#54",
+   "witty:heat#55",
+   "witty:heat#53"
+  ],
+  "heat|dawn|A|fri": [
+   "witty:heat#23",
+   "witty:heat#49",
+   "witty:heat#37"
+  ],
+  "heat|dawn|A|sat": [
+   "witty:weekend#6",
+   "witty:weekend#8",
+   "witty:weekend#5"
+  ],
+  "heat|dawn|A|sun": [
+   "witty:weekend#6",
+   "witty:weekend#9",
+   "witty:weekend#12"
+  ],
+  "heat|day|A|mon": [
+   "witty:heat#1",
+   "witty:heat#7",
+   "witty:heat#35"
+  ],
+  "heat|day|A|tue": [
+   "witty:heat#21",
+   "witty:heat#12",
+   "witty:heat#29"
+  ],
+  "heat|day|A|wed": [
+   "witty:heat#59",
+   "witty:heat#61",
+   "witty:heat#4"
+  ],
+  "heat|day|A|thu": [
+   "witty:heat#11",
+   "witty:heat#28",
+   "witty:heat#6"
+  ],
+  "heat|day|A|fri": [
+   "witty:heat#57",
+   "witty:heat#32",
+   "witty:heat#58"
+  ],
+  "heat|day|A|sat": [
+   "witty:weekend#7"
+  ],
+  "heat|day|A|sun": [
+   "witty:weekend#8"
+  ],
+  "heat|dusk|A|mon": [
+   "witty:heat#76",
+   "witty:heat#74",
+   "witty:heat#75",
+   "witty:heat#68",
+   "witty:heat#80"
+  ],
+  "heat|dusk|A|tue": [
+   "witty:heat#71",
+   "witty:heat#72",
+   "witty:heat#68"
+  ],
+  "heat|dusk|A|wed": [
+   "witty:heat#32",
+   "witty:heat#8",
+   "witty:heat#70"
+  ],
+  "heat|dusk|A|thu": [
+   "witty:heat#82",
+   "witty:heat#83",
+   "witty:heat#84"
+  ],
+  "heat|dusk|A|fri": [
+   "witty:weekend#8",
+   "witty:weekend#3"
+  ],
+  "heat|dusk|A|sat": [
+   "witty:weekend#14",
+   "witty:weekend#1",
+   "witty:weekend#10",
+   "witty:weekend#24"
+  ],
+  "heat|dusk|A|sun": [
+   "witty:weekend#6",
+   "witty:weekend#8"
+  ],
+  "heat|night|A|mon": [
+   "witty:heat#23",
+   "witty:heat#8"
+  ],
+  "heat|night|A|tue": [
+   "witty:heat#15",
+   "witty:heat#25",
+   "witty:heat#17"
+  ],
+  "heat|night|A|wed": [
+   "witty:heat#31",
+   "witty:heat#8"
+  ],
+  "heat|night|A|thu": [
+   "witty:heat#16",
+   "witty:heat#10"
+  ],
+  "heat|night|A|fri": [
+   "witty:weekend#8"
+  ],
+  "heat|night|A|sat": [
+   "witty:weekend#8"
+  ],
+  "heat|night|A|sun": [
+   "witty:weekend#11",
+   "witty:weekend#6"
+  ],
+  "rain|dawn|A|mon": [
+   "witty:rain#13",
+   "witty:rain#32",
+   "witty:rain#29"
+  ],
+  "rain|dawn|A|tue": [
+   "witty:rain#19",
+   "witty:rain#37",
+   "witty:rain#35",
+   "witty:rain#25",
+   "witty:rain#14"
+  ],
+  "rain|dawn|A|wed": [
+   "witty:rain#43",
+   "witty:rain#42",
+   "witty:rain#6",
+   "witty:rain#2",
+   "witty:rain#9"
+  ],
+  "rain|dawn|A|thu": [
+   "witty:rain#44",
+   "witty:rain#45",
+   "witty:rain#37",
+   "witty:rain#32",
+   "witty:rain#0"
+  ],
+  "rain|dawn|A|fri": [
+   "witty:rain#39",
+   "witty:rain#49",
+   "witty:rain#50",
+   "witty:rain#7",
+   "witty:rain#41"
+  ],
+  "rain|dawn|A|sat": [
+   "witty:rain#51",
+   "witty:rain#52",
+   "witty:rain#18"
+  ],
+  "rain|dawn|A|sun": [
+   "witty:rain#6",
+   "witty:rain#2",
+   "witty:rain#42"
+  ],
+  "rain|day|A|mon": [
+   "witty:rain#66",
+   "witty:rain#8",
+   "witty:rain#11",
+   "witty:rain#55"
+  ],
+  "rain|day|A|tue": [
+   "witty:rain#66",
+   "witty:rain#68",
+   "witty:rain#3",
+   "witty:rain#23"
+  ],
+  "rain|day|A|wed": [
+   "witty:rain#19",
+   "witty:rain#57",
+   "witty:rain#25",
+   "witty:rain#35"
+  ],
+  "rain|day|A|thu": [
+   "witty:rain#17",
+   "witty:rain#33"
+  ],
+  "rain|day|A|fri": [
+   "witty:rain#12",
+   "witty:rain#58",
+   "witty:rain#1"
+  ],
+  "rain|day|A|sat": [
+   "witty:rain#68",
+   "witty:rain#12",
+   "witty:rain#16",
+   "witty:rain#30"
+  ],
+  "rain|day|A|sun": [
+   "witty:rain#58",
+   "witty:rain#28",
+   "witty:rain#0"
+  ],
+  "rain|day|B|mon": [
+   "witty:rain#11",
+   "witty:rain#30",
+   "witty:rain#17",
+   "witty:rain#16"
+  ],
+  "rain|day|B|tue": [
+   "witty:rain#15",
+   "witty:rain#67",
+   "witty:rain#22"
+  ],
+  "rain|day|B|wed": [
+   "witty:rain#57",
+   "witty:rain#11",
+   "witty:rain#32"
+  ],
+  "rain|day|B|thu": [
+   "witty:rain#66",
+   "witty:rain#67",
+   "witty:rain#68"
+  ],
+  "rain|day|B|fri": [
+   "witty:rain#31",
+   "witty:rain#12",
+   "witty:rain#29"
+  ],
+  "rain|day|B|sat": [
+   "witty:rain#2",
+   "witty:rain#11"
+  ],
+  "rain|day|B|sun": [
+   "witty:rain#2",
+   "witty:rain#7",
+   "witty:rain#18"
+  ],
+  "rain|dusk|A|mon": [
+   "witty:rain#31",
+   "witty:rain#33"
+  ],
+  "rain|dusk|A|tue": [
+   "witty:rain#25",
+   "witty:rain#72",
+   "witty:rain#71"
+  ],
+  "rain|dusk|A|wed": [
+   "witty:rain#69",
+   "witty:rain#70"
+  ],
+  "rain|dusk|A|thu": [
+   "witty:rain#71",
+   "witty:rain#26"
+  ],
+  "rain|dusk|A|fri": [
+   "witty:rain#17",
+   "witty:rain#16"
+  ],
+  "rain|dusk|A|sat": [
+   "witty:rain#9",
+   "witty:rain#6",
+   "witty:rain#17"
+  ],
+  "rain|dusk|A|sun": [
+   "witty:rain#71",
+   "witty:rain#72",
+   "witty:rain#0"
+  ],
+  "rain|night|A|mon": [
+   "witty:rain#34"
+  ],
+  "rain|night|A|tue": [
+   "witty:rain#11"
+  ],
+  "rain|night|A|wed": [
+   "witty:rain#78",
+   "witty:rain#77"
+  ],
+  "rain|night|A|thu": [
+   "witty:rain#19",
+   "witty:rain#25"
+  ],
+  "rain|night|A|fri": [
+   "witty:rain#22",
+   "witty:rain#15"
+  ],
+  "rain|night|A|sat": [
+   "witty:rain#17"
+  ],
+  "rain|night|A|sun": [
+   "witty:rain#81",
+   "witty:rain#6"
+  ],
+  "storm|dawn|A|mon": [
+   "witty:storm#46",
+   "witty:storm#13",
+   "witty:storm#33",
+   "witty:storm#24"
+  ],
+  "storm|dawn|A|tue": [
+   "witty:storm#16",
+   "witty:storm#25",
+   "witty:storm#29",
+   "witty:storm#12"
+  ],
+  "storm|dawn|A|wed": [
+   "witty:storm#38",
+   "witty:storm#41",
+   "witty:storm#49",
+   "witty:storm#44",
+   "witty:storm#39"
+  ],
+  "storm|dawn|A|thu": [
+   "witty:storm#2",
+   "witty:storm#37",
+   "witty:storm#18"
+  ],
+  "storm|dawn|A|fri": [
+   "witty:storm#43",
+   "witty:storm#47",
+   "witty:storm#50"
+  ],
+  "storm|dawn|A|sat": [
+   "witty:storm#41",
+   "witty:storm#42",
+   "witty:storm#34"
+  ],
+  "storm|dawn|A|sun": [
+   "witty:storm#36",
+   "witty:storm#35",
+   "witty:storm#31"
+  ],
+  "storm|day|A|mon": [
+   "witty:storm#18",
+   "witty:storm#4",
+   "witty:storm#0",
+   "witty:storm#6"
+  ],
+  "storm|day|A|tue": [
+   "witty:storm#28",
+   "witty:storm#24",
+   "witty:storm#26"
+  ],
+  "storm|day|A|wed": [
+   "witty:storm#18",
+   "witty:storm#6",
+   "witty:storm#26"
+  ],
+  "storm|day|A|thu": [
+   "witty:storm#19",
+   "witty:storm#27"
+  ],
+  "storm|day|A|fri": [
+   "witty:storm#25",
+   "witty:storm#17"
+  ],
+  "storm|day|A|sat": [
+   "witty:storm#23",
+   "witty:storm#6"
+  ],
+  "storm|day|A|sun": [
+   "witty:storm#22",
+   "witty:storm#24"
+  ],
+  "storm|day|B|mon": [
+   "witty:storm#3",
+   "witty:storm#4"
+  ],
+  "storm|day|B|tue": [
+   "witty:storm#20",
+   "witty:storm#10",
+   "witty:storm#9"
+  ],
+  "storm|day|B|wed": [
+   "witty:storm#0",
+   "witty:storm#18"
+  ],
+  "storm|day|B|thu": [
+   "witty:storm#27",
+   "witty:storm#17"
+  ],
+  "storm|day|B|fri": [
+   "witty:storm#24",
+   "witty:storm#27"
+  ],
+  "storm|day|B|sat": [
+   "witty:storm#26",
+   "witty:storm#8"
+  ],
+  "storm|day|B|sun": [
+   "witty:storm#26",
+   "witty:storm#27"
+  ],
+  "storm|dusk|A|mon": [
+   "witty:storm#53",
+   "witty:storm#30",
+   "witty:storm#14"
+  ],
+  "storm|dusk|A|tue": [
+   "witty:storm#53",
+   "witty:storm#22",
+   "witty:storm#52"
+  ],
+  "storm|dusk|A|wed": [
+   "witty:storm#24",
+   "witty:storm#52",
+   "witty:storm#4"
+  ],
+  "storm|dusk|A|thu": [
+   "witty:storm#19",
+   "witty:storm#27",
+   "witty:storm#31"
+  ],
+  "storm|dusk|A|fri": [
+   "witty:storm#8",
+   "witty:storm#20"
+  ],
+  "storm|dusk|A|sat": [
+   "witty:storm#24",
+   "witty:storm#10"
+  ],
+  "storm|dusk|A|sun": [
+   "witty:storm#21",
+   "witty:storm#15"
+  ],
+  "storm|night|A|mon": [
+   "witty:storm#54",
+   "witty:storm#58",
+   "witty:storm#55",
+   "witty:storm#56"
+  ],
+  "storm|night|A|tue": [
+   "witty:storm#54",
+   "witty:storm#12"
+  ],
+  "storm|night|A|wed": [
+   "witty:storm#55",
+   "witty:storm#58",
+   "witty:storm#54"
+  ],
+  "storm|night|A|thu": [
+   "witty:storm#5",
+   "witty:storm#13",
+   "witty:storm#54"
+  ],
+  "storm|night|A|fri": [
+   "witty:storm#58",
+   "witty:storm#28"
+  ],
+  "storm|night|A|sat": [
+   "witty:storm#10",
+   "witty:storm#8"
+  ],
+  "storm|night|A|sun": [
+   "witty:storm#58",
+   "witty:storm#55",
+   "witty:storm#54"
+  ],
+  "wind|dawn|A|mon": [
+   "witty:wind#6",
+   "witty:wind#20",
+   "witty:wind#3",
+   "witty:wind#1"
+  ],
+  "wind|dawn|A|tue": [
+   "witty:wind#9",
+   "witty:wind#12",
+   "witty:wind#32"
+  ],
+  "wind|dawn|A|wed": [
+   "witty:wind#18",
+   "witty:wind#8",
+   "witty:wind#15"
+  ],
+  "wind|dawn|A|thu": [
+   "witty:wind#24",
+   "witty:wind#13",
+   "witty:wind#4"
+  ],
+  "wind|dawn|A|fri": [
+   "witty:wind#11",
+   "witty:wind#52",
+   "witty:wind#50"
+  ],
+  "wind|dawn|A|sat": [
+   "witty:wind#32",
+   "witty:wind#16",
+   "witty:wind#24"
+  ],
+  "wind|dawn|A|sun": [
+   "witty:wind#6",
+   "witty:wind#54",
+   "witty:wind#25"
+  ],
+  "wind|day|A|mon": [
+   "witty:wind#31",
+   "witty:wind#0",
+   "witty:wind#4"
+  ],
+  "wind|day|A|tue": [
+   "witty:wind#4",
+   "witty:wind#2",
+   "witty:wind#19"
+  ],
+  "wind|day|A|wed": [
+   "witty:wind#17",
+   "witty:wind#0"
+  ],
+  "wind|day|A|thu": [
+   "witty:wind#13",
+   "witty:wind#8"
+  ],
+  "wind|day|A|fri": [
+   "witty:wind#22",
+   "witty:wind#12"
+  ],
+  "wind|day|A|sat": [
+   "witty:wind#14",
+   "witty:wind#39",
+   "witty:wind#7",
+   "witty:wind#18"
+  ],
+  "wind|day|A|sun": [
+   "witty:wind#16",
+   "witty:wind#19"
+  ],
+  "wind|day|B|mon": [
+   "witty:wind#7",
+   "witty:wind#38"
+  ],
+  "wind|day|B|tue": [
+   "witty:wind#8",
+   "witty:wind#16"
+  ],
+  "wind|day|B|wed": [
+   "witty:wind#10",
+   "witty:wind#51"
+  ],
+  "wind|day|B|fri": [
+   "witty:wind#51"
+  ],
+  "wind|day|B|sat": [
+   "witty:wind#14",
+   "witty:wind#12",
+   "witty:wind#8"
+  ],
+  "wind|day|B|sun": [
+   "witty:wind#5",
+   "witty:wind#2",
+   "witty:wind#29"
+  ],
+  "wind|dusk|A|mon": [
+   "witty:wind#34",
+   "witty:wind#4"
+  ],
+  "wind|dusk|A|tue": [
+   "witty:wind#44",
+   "witty:wind#34"
+  ],
+  "wind|dusk|A|wed": [
+   "witty:wind#11",
+   "witty:wind#50"
+  ],
+  "wind|dusk|A|thu": [
+   "witty:wind#14",
+   "witty:wind#15",
+   "witty:wind#37"
+  ],
+  "wind|dusk|A|fri": [
+   "witty:wind#46",
+   "witty:wind#42"
+  ],
+  "wind|dusk|A|sat": [
+   "witty:wind#4",
+   "witty:wind#22"
+  ],
+  "wind|dusk|A|sun": [
+   "witty:wind#12",
+   "witty:wind#2",
+   "witty:wind#16"
+  ],
+  "wind|night|A|mon": [
+   "witty:wind#45",
+   "witty:wind#40",
+   "witty:wind#46"
+  ],
+  "wind|night|A|tue": [
+   "witty:wind#42",
+   "witty:wind#46"
+  ],
+  "wind|night|A|wed": [
+   "witty:wind#37",
+   "witty:wind#51"
+  ],
+  "wind|night|A|thu": [
+   "witty:wind#39",
+   "witty:wind#42"
+  ],
+  "wind|night|A|fri": [
+   "witty:wind#45",
+   "witty:wind#44"
+  ],
+  "wind|night|A|sat": [
+   "witty:wind#2",
+   "witty:wind#46"
+  ],
+  "wind|night|A|sun": [
+   "witty:wind#15",
+   "witty:wind#14"
+  ]
+ }
+}
