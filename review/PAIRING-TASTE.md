@@ -50,8 +50,8 @@ And what contribution looks like when it lands:
 
 ## 1a. The swap test — Al's ruling, 2026-08-18, and it outranks the hook rules below
 
-From the bespoke pass: 173 of 206 lines kept (84%), against 60% for the pass-1
-bank. Al's reason for all 33 rejections, in one sentence:
+From the bespoke pass: **171 of 196 kept — 87%** — against 60% for the pass-1
+bank. Al's reason for the rejections, in one sentence:
 
 > "The ones I rejected are because they are trying to find something funny in the
 > image and lose sight of the actual weather."
@@ -66,15 +66,15 @@ joke about a person, an object or a household happens to stand in.
 | "That is a two-person job and there is currently nobody in the garden." | Works for any fallen trampoline. |
 | "The school run has an extra step today and she finds it hilarious." | A school-run joke with weather as scenery. |
 | "Somebody is going to have to close that door eventually." | Any open door, any night. |
-| "Half of this street's recycling is now the hedge's problem." | Any spilled bin. |
-| "Everyone down there is doing the same job at the same time." | No weather in it at all. |
+| "The headlights behind him have been gaining for the last kilometre." | A traffic line; the wind causes nothing in it. |
+| "The umbrella came down hours ago and never went back up." | About an umbrella, not about the heat. |
 
 And the same frames' survivors, which cannot be moved:
 
 | Kept | Why it survives |
 |---|---|
 | "The leaves came in. The cat did not go out." | The wind put the leaves inside. |
-| "Every jacaranda on this street is emptying itself onto one man." | The wind is emptying the trees. |
+| "Somebody is going to remember that washing at about two in the morning." | Only the wind puts that thought in your head. |
 | "That hair was a decision made indoors about forty minutes ago." | The wind undid it. |
 | "The sparks are going sideways and the tongs are still going in." | Sideways sparks are the wind. |
 | "Bo-Kaap in the last light, and the wind is doing the housekeeping." | The wind is named as the agent. |
@@ -90,7 +90,14 @@ still be the cause inside that frame. `rain#25` "The traffic is emotional" (4/4)
 works because the rain caused the traffic. "The headlights behind him have been
 gaining" does not, because the wind caused nothing in it.
 
-Where this bites hardest: **wind**. In the bespoke pass wind kept 75% while
+**Corrected 2026-08-18, after the ruling was audited.** The raw export reads
+173/206 = 84%, but two of the 42 images had their briefs transposed — the bin-day
+lines were written for the suit photograph and vice versa — so 8 rejections and
+2 keeps on that pair are evidence about a mix-up, not about this rule. Excluding
+them: 171/196 = 87% overall, wind 80%. Every example in the tables above is from
+an unaffected image; two earlier ones were not, and were replaced.
+
+Where this bites hardest: **wind**. In the bespoke pass wind kept 80% while
 heat kept 91% and storm, rain and clear kept 100%. Wind is the condition where
 a frame offers the most human comedy — chased hats, blown washing, ruined hair —
 and therefore the condition where it is easiest to write the weather out of the

@@ -1,0 +1,364 @@
+{
+ "generated": "2026-08-18",
+ "writtenBy": "Opus 5, round 2 under PAIRING-TASTE rule 1a",
+ "brief": "Round 2. Replacements for the 37 lines Al rejected or left unruled, written under PAIRING-TASTE rule 1a (the swap test): move the line to a calm mild day and if it still works it is out. The weather must be the thing that makes the line true. Every image was opened and looked at before writing.",
+ "note": "wind/week_1/day/3 and wind/week_2/day/6 get FIVE each rather than gap-fills: round 1 had their two descriptions transposed, so the bin lines were written for the suit photograph and the suit lines for the bin photograph. Al ruled them against the pictures he was shown, which means neither set has ever been judged against its own frame. The round-1 lines are re-offered here correctly matched, with the weakest of each set replaced.",
+ "count": 14,
+ "images": [
+  {
+   "index": 1,
+   "image": "heat/week_1/night/3.webp",
+   "hash": "706cd1220e10",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/night/3.webp",
+    "heat/week_3/night/3.webp"
+   ],
+   "why": "round 2: 4 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "Balcony at night. Warm wall light, a white curtain sucked out through the sliding door, a jug of iced water and two glasses on a slatted table, a palm-frond fan on the chair, palms black against a navy sky.",
+   "alreadyKept": [
+    "Thursday night, and the balcony has been promoted to the main room."
+   ],
+   "lines": [
+    "It is cooler out here at midnight than it was inside at six.",
+    "The ice in that jug never stood a chance and everybody knew it.",
+    "That curtain is the only moving air in the entire flat.",
+    "Nobody is going back in there until the walls let go of the day."
+   ]
+  },
+  {
+   "index": 2,
+   "image": "heat/week_1/night/1.webp",
+   "hash": "ea333aeefd0d",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/night/1.webp",
+    "heat/week_3/night/1.webp"
+   ],
+   "why": "round 2: 3 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "Seafront promenade at night. A tall glass of iced water sweating on the sea wall, a furled umbrella, two bicycles against the railing, a family walking in the streetlight further down.",
+   "alreadyKept": [
+    "The ice in that glass has about four minutes left.",
+    "Sunday night, and this promenade is busier than it was all afternoon."
+   ],
+   "lines": [
+    "The whole town waited for the sun to go down and then came outside.",
+    "That water was cold when somebody put it down there.",
+    "Nine at night and the paving is still handing back the afternoon."
+   ]
+  },
+  {
+   "index": 3,
+   "image": "wind/week_1/day/7.webp",
+   "hash": "eb217457f58d",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/7.webp"
+   ],
+   "why": "round 2: 3 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "A man laughing as he braces a car door open against the wind, a small girl leaning out of the back seat laughing at him, dead leaves streaming across a cobbled driveway, a tree thrashing behind a white double-storey.",
+   "alreadyKept": [
+    "Wednesday, and the driveway has become a full contact sport.",
+    "Somebody will be picking leaves out of that back seat for a week."
+   ],
+   "lines": [
+    "That door is going to shut whether he is ready or not.",
+    "The wind opened it faster than he did and he is still laughing.",
+    "Every leaf in the street is queueing to get into that car."
+   ]
+  },
+  {
+   "index": 4,
+   "image": "wind/week_3/day/1.webp",
+   "hash": "19801ea908d0",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_3/day/1.webp"
+   ],
+   "why": "round 2: 1 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "A long-haired tabby sitting on a plastered garden wall, coat blown open down one side, aloes and trees streaming behind, tin roof, hard blue sky.",
+   "alreadyKept": [
+    "Those eyes are not closed because of the sun.",
+    "Friday, and the aloes have not noticed anything unusual at all.",
+    "The trees at the fence are taking this worse than he is.",
+    "He will sit there until something more interesting happens, which it will not."
+   ],
+   "lines": [
+    "That coat is being parted by something other than a brush."
+   ]
+  },
+  {
+   "index": 5,
+   "image": "wind/week_3/day/3.webp",
+   "hash": "92ef82c2d34a",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_3/day/3.webp"
+   ],
+   "why": "round 2: 1 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "A small scruffy terrier being walked along a beachfront promenade, ears and coat blown flat, whitecaps all the way out, Table Mountain hazy behind.",
+   "alreadyKept": [
+    "That walk was somebody else's idea and the dog is registering a complaint.",
+    "Sunday, and this is about as far as either of them is going.",
+    "The lead is doing considerably more work than it was designed for.",
+    "He is going to shake all that sand out on the lounge carpet later."
+   ],
+   "lines": [
+    "The sea has gone white all the way out and he noticed before anyone."
+   ]
+  },
+  {
+   "index": 6,
+   "image": "wind/week_2/day/4.webp",
+   "hash": "05cea2b8788d",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "wind/week_2/day/4.webp"
+   ],
+   "why": "round 2: 1 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "A trampoline flipped up on its side against a face-brick boundary wall, palms bending over the neighbouring roofs, an empty green lawn.",
+   "alreadyKept": [
+    "The trampoline has relocated and taken the neighbour's wall as a partner.",
+    "Somebody is going to be explaining that to somebody else this evening.",
+    "Monday, and the garden has rearranged itself without asking anyone.",
+    "The palms are fine. The trampoline had opinions about staying put."
+   ],
+   "lines": [
+    "It took the wind four seconds to move what took two hours to build."
+   ]
+  },
+  {
+   "index": 7,
+   "image": "wind/week_1/day/3.webp",
+   "hash": "9bada961b0a7",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/3.webp"
+   ],
+   "why": "round 1 briefs were transposed - never judged against this frame",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "CORRECTED. Suburban street on a misty windy bin day. A green wheelie bin over on its side, bags and cardboard blown into the hedge, three neighbours down the road bent into it gathering things up, big oaks thrashing.",
+   "alreadyKept": [],
+   "lines": [
+    "The bin made it to the pavement and then made its own decisions.",
+    "Tuesday is bin day, and the wind has clearly read the schedule too.",
+    "Half of this street's recycling is now the hedge's problem.",
+    "The oaks are fine. The wheelie bins never stood a chance.",
+    "Three houses are out there picking up what the wind redistributed."
+   ]
+  },
+  {
+   "index": 8,
+   "image": "wind/week_2/day/6.webp",
+   "hash": "330bfae094d5",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/day/6.webp"
+   ],
+   "why": "round 1 briefs were transposed - never judged against this frame",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "CORRECTED. A man in a suit and tie bent double into the wind on a jacaranda avenue, one hand shielding his eyes, dust and purple blossom streaming past him down the road.",
+   "alreadyKept": [],
+   "lines": [
+    "Every jacaranda on this street is emptying itself onto one man.",
+    "That tie has been horizontal since he left the car.",
+    "He will be finding purple in that jacket pocket until Friday.",
+    "Wednesday morning, and the walk from the parking is now the hard part.",
+    "He is bent that far over because standing upright stopped working."
+   ]
+  },
+  {
+   "index": 9,
+   "image": "wind/week_1/dusk/4.webp",
+   "hash": "bdc6900c5689",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_3/dusk/4.webp"
+   ],
+   "why": "round 2: 2 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "A man cycling towards camera down a jacaranda avenue at sunset, jacket flying open behind him, blossom coming off the trees, headlights of a car further back.",
+   "alreadyKept": [
+    "That jacket has been trying to leave since he got on the bike.",
+    "The jacarandas are throwing everything they have at one cyclist.",
+    "Tuesday evening, and the ride home has turned into a negotiation."
+   ],
+   "lines": [
+    "He is going downhill and still working for every metre of it.",
+    "The blossom is coming off those trees faster than he is going under them."
+   ]
+  },
+  {
+   "index": 10,
+   "image": "wind/week_1/dusk/7.webp",
+   "hash": "12cd74b592e8",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_3/dusk/7.webp"
+   ],
+   "why": "round 2: 2 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "Sunset. A woman on a lawn reaching up to take laundry back over a boundary wall from the laughing neighbour who caught it, more washing strewn across the grass behind her.",
+   "alreadyKept": [
+    "This is the second time this week and they have a system now.",
+    "The pegs lost, the wall won, and the neighbours are still laughing.",
+    "Nobody is ever going to find that one white sock again."
+   ],
+   "lines": [
+    "The wind did the throwing and the neighbour is doing the returning.",
+    "One gust, one wall, and two households now know each other much better."
+   ]
+  },
+  {
+   "index": 11,
+   "image": "wind/week_4/dusk/1.webp",
+   "hash": "ec12d1747d09",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/dusk/1.webp"
+   ],
+   "why": "round 2: 4 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "Bo-Kaap at dusk. A row of pink, turquoise, yellow and blue houses down a cobbled street, Signal Hill gold behind, one white curtain sucked right out of an upstairs window.",
+   "alreadyKept": [
+    "Bo-Kaap in the last light, and the wind is doing the housekeeping."
+   ],
+   "lines": [
+    "That curtain has been outside the window for about an hour now.",
+    "The south-easter has found the one open window on the whole street.",
+    "Somebody is going to come home to a lounge full of Signal Hill.",
+    "The paint is bright, the hill is gold, and the wind is the loudest thing here."
+   ]
+  },
+  {
+   "index": 12,
+   "image": "wind/week_2/dusk/2.webp",
+   "hash": "b78d6f432fb7",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_2/dusk/2.webp",
+    "wind/week_4/dusk/2.webp"
+   ],
+   "why": "round 2: 3 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "A woman in a blazer walking to her car at sunset, laughing, her hair blown straight up off her head, a palm bending behind the wall, leaves scattered across the paved driveway.",
+   "alreadyKept": [
+    "That hair was a decision made indoors about forty minutes ago.",
+    "Saturday evening, and the walk from the front door defeated the whole look."
+   ],
+   "lines": [
+    "Her hair is going one way, the palm is going the same way, and neither was asked.",
+    "Twelve steps from the front door to the car, and the wind took all twelve.",
+    "That driveway was swept this morning and has already been refilled."
+   ]
+  },
+  {
+   "index": 13,
+   "image": "wind/week_2/night/5.webp",
+   "hash": "f6b55aacae0a",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "why": "round 2: 4 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "A fluffy pale cat sitting in an open sliding doorway at night, leaves blown in across the step and onto the doormat, trees thrashing in the garden beyond, a streetlight past them.",
+   "alreadyKept": [
+    "The leaves came in. The cat did not go out."
+   ],
+   "lines": [
+    "The wind has been delivering leaves to that doormat all evening.",
+    "Every leaf on that mat arrived without being invited.",
+    "The garden is moving and he has decided the doorway is far enough.",
+    "The wind is bringing the outside in and he is letting it come to him."
+   ]
+  },
+  {
+   "index": 14,
+   "image": "wind/week_1/night/2.webp",
+   "hash": "be8276f7384b",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/night/2.webp",
+    "wind/week_3/night/2.webp"
+   ],
+   "why": "round 2: 1 replacement(s) for lines rejected in round 1",
+   "place": null,
+   "pass1": "2/5",
+   "seen": "Two men laughing over a stainless braai at dusk, sparks streaming sideways off the coals, Table Mountain and the city lights behind them.",
+   "alreadyKept": [
+    "The sparks are going sideways and the tongs are still going in.",
+    "Table Mountain, a braai, and a wind with its own strong opinion.",
+    "Saturday, and neither of them will admit the wind is winning.",
+    "The tongs are out, so the argument about who cooks is over."
+   ],
+   "lines": [
+    "Those coals are doing more for the fence than they are for the meat."
+   ]
+  }
+ ]
+}

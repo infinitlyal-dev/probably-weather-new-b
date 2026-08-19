@@ -1,0 +1,227 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PW — bespoke lines, set-001</title>
+<link rel="stylesheet" href="../assets/type-prototype-caption.css">
+<style>
+  :root { --bg:#14110d; --panel:#1f1a14; --ink:#fffaf3; --ink2:#b5ab9d; --gold:#ffd700; --yes:#63c98a; --no:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:rgba(20,17,13,.97); border-bottom:1px solid rgba(246,242,232,.14);
+           padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0 8px 0 0; }
+  button { font:inherit; border:1px solid rgba(246,242,232,.18); background:var(--panel); color:var(--ink);
+           border-radius:8px; padding:6px 11px; cursor:pointer; }
+  button:hover { border-color:var(--gold); }
+  button.primary { background:var(--gold); color:#1a1a2e; border-color:var(--gold); font-weight:700; }
+  .tally { color:var(--ink2); font-variant-numeric:tabular-nums; }
+  main { padding:18px; display:flex; flex-direction:column; gap:30px; }
+  .card { display:grid; grid-template-columns:auto 1fr; gap:22px; border-top:1px solid rgba(246,242,232,.12); padding-top:18px; }
+  .hero { position:relative; overflow:hidden; background-size:cover; background-repeat:no-repeat;
+          border-radius:0 0 20px 20px; box-shadow:0 18px 44px rgba(0,0,0,.55); }
+  .cap { position:absolute; left:0; right:0; bottom:0; margin:0; color:#fff; font-weight:700;
+         font-family:'Caveat Prototype','Segoe Print','Bradley Hand',cursive; text-align:left; line-height:1.08;
+         text-shadow:0 2px 14px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.8); }
+  .meta { color:var(--ink2); font-size:12.5px; margin-bottom:10px; }
+  .meta b { color:var(--ink); }
+  .seen { color:var(--ink2); font-size:12.5px; max-width:80ch; margin:0 0 12px; font-style:italic; }
+  .note { color:#ffb84d; font-size:12.5px; max-width:80ch; margin:0 0 12px; }
+  .line { display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .line input[type=text] { flex:1; min-width:0; font:inherit; background:#181410; color:var(--ink);
+      border:1px solid rgba(246,242,232,.16); border-radius:7px; padding:7px 10px; }
+  .line input[type=text]:focus { outline:none; border-color:var(--gold); }
+  .line .n { width:18px; color:var(--ink2); font-variant-numeric:tabular-nums; padding-top:8px; }
+  .line .wc { width:58px; color:var(--ink2); font-size:11.5px; padding-top:9px; text-align:right; }
+  .y.on { border-color:var(--yes); color:var(--yes); font-weight:700; }
+  .n2.on { border-color:var(--no); color:var(--no); font-weight:700; }
+  .line.mine input[type=text] { border-style:dashed; }
+  .hint { color:var(--ink2); font-size:12px; margin:10px 0 0; max-width:80ch; }
+</style>
+
+<header>
+  <h1>Bespoke lines — 42 photographs, five each</h1>
+  <span class="tally" id="tally"></span>
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export</button>
+</header>
+<main id="main"></main>
+
+<script>
+const DATA = {"box":{"w":327,"h":518},"cap":{"runway":56.84,"font":33.00000000000001,"padBottom":14.616000000000001},"images":[{"index":1,"image":"heat/week_1/night/3.webp","hash":"706cd1220e10","condition":"heat","time":"night","week":"A","day":"thu","paths":["heat/week_1/night/3.webp","heat/week_3/night/3.webp"],"why":"round 2: 4 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"Balcony at night. Warm wall light, a white curtain sucked out through the sliding door, a jug of iced water and two glasses on a slatted table, a palm-frond fan on the chair, palms black against a navy sky.","alreadyKept":["Thursday night, and the balcony has been promoted to the main room."],"lines":["It is cooler out here at midnight than it was inside at six.","The ice in that jug never stood a chance and everybody knew it.","That curtain is the only moving air in the entire flat.","Nobody is going back in there until the walls let go of the day."]},{"index":2,"image":"heat/week_1/night/1.webp","hash":"ea333aeefd0d","condition":"heat","time":"night","week":"A","day":"sun","paths":["heat/week_1/night/1.webp","heat/week_3/night/1.webp"],"why":"round 2: 3 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"Seafront promenade at night. A tall glass of iced water sweating on the sea wall, a furled umbrella, two bicycles against the railing, a family walking in the streetlight further down.","alreadyKept":["The ice in that glass has about four minutes left.","Sunday night, and this promenade is busier than it was all afternoon."],"lines":["The whole town waited for the sun to go down and then came outside.","That water was cold when somebody put it down there.","Nine at night and the paving is still handing back the afternoon."]},{"index":3,"image":"wind/week_1/day/7.webp","hash":"eb217457f58d","condition":"wind","time":"day","week":"A","day":"wed","paths":["wind/week_1/day/7.webp"],"why":"round 2: 3 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"A man laughing as he braces a car door open against the wind, a small girl leaning out of the back seat laughing at him, dead leaves streaming across a cobbled driveway, a tree thrashing behind a white double-storey.","alreadyKept":["Wednesday, and the driveway has become a full contact sport.","Somebody will be picking leaves out of that back seat for a week."],"lines":["That door is going to shut whether he is ready or not.","The wind opened it faster than he did and he is still laughing.","Every leaf in the street is queueing to get into that car."]},{"index":4,"image":"wind/week_3/day/1.webp","hash":"19801ea908d0","condition":"wind","time":"day","week":"A","day":"fri","paths":["wind/week_3/day/1.webp"],"why":"round 2: 1 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"A long-haired tabby sitting on a plastered garden wall, coat blown open down one side, aloes and trees streaming behind, tin roof, hard blue sky.","alreadyKept":["Those eyes are not closed because of the sun.","Friday, and the aloes have not noticed anything unusual at all.","The trees at the fence are taking this worse than he is.","He will sit there until something more interesting happens, which it will not."],"lines":["That coat is being parted by something other than a brush."]},{"index":5,"image":"wind/week_3/day/3.webp","hash":"92ef82c2d34a","condition":"wind","time":"day","week":"A","day":"sun","paths":["wind/week_3/day/3.webp"],"why":"round 2: 1 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"A small scruffy terrier being walked along a beachfront promenade, ears and coat blown flat, whitecaps all the way out, Table Mountain hazy behind.","alreadyKept":["That walk was somebody else's idea and the dog is registering a complaint.","Sunday, and this is about as far as either of them is going.","The lead is doing considerably more work than it was designed for.","He is going to shake all that sand out on the lounge carpet later."],"lines":["The sea has gone white all the way out and he noticed before anyone."]},{"index":6,"image":"wind/week_2/day/4.webp","hash":"05cea2b8788d","condition":"wind","time":"day","week":"B","day":"mon","paths":["wind/week_2/day/4.webp"],"why":"round 2: 1 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"A trampoline flipped up on its side against a face-brick boundary wall, palms bending over the neighbouring roofs, an empty green lawn.","alreadyKept":["The trampoline has relocated and taken the neighbour's wall as a partner.","Somebody is going to be explaining that to somebody else this evening.","Monday, and the garden has rearranged itself without asking anyone.","The palms are fine. The trampoline had opinions about staying put."],"lines":["It took the wind four seconds to move what took two hours to build."]},{"index":7,"image":"wind/week_1/day/3.webp","hash":"9bada961b0a7","condition":"wind","time":"day","week":"B","day":"wed","paths":["wind/week_1/day/3.webp"],"why":"round 1 briefs were transposed - never judged against this frame","place":null,"pass1":"2/5","seen":"CORRECTED. Suburban street on a misty windy bin day. A green wheelie bin over on its side, bags and cardboard blown into the hedge, three neighbours down the road bent into it gathering things up, big oaks thrashing.","alreadyKept":[],"lines":["The bin made it to the pavement and then made its own decisions.","Tuesday is bin day, and the wind has clearly read the schedule too.","Half of this street's recycling is now the hedge's problem.","The oaks are fine. The wheelie bins never stood a chance.","Three houses are out there picking up what the wind redistributed."]},{"index":8,"image":"wind/week_2/day/6.webp","hash":"330bfae094d5","condition":"wind","time":"day","week":"B","day":"tue","paths":["wind/week_2/day/6.webp"],"why":"round 1 briefs were transposed - never judged against this frame","place":null,"pass1":"2/5","seen":"CORRECTED. A man in a suit and tie bent double into the wind on a jacaranda avenue, one hand shielding his eyes, dust and purple blossom streaming past him down the road.","alreadyKept":[],"lines":["Every jacaranda on this street is emptying itself onto one man.","That tie has been horizontal since he left the car.","He will be finding purple in that jacket pocket until Friday.","Wednesday morning, and the walk from the parking is now the hard part.","He is bent that far over because standing upright stopped working."]},{"index":9,"image":"wind/week_1/dusk/4.webp","hash":"bdc6900c5689","condition":"wind","time":"dusk","week":"A","day":"tue","paths":["wind/week_1/dusk/4.webp","wind/week_3/dusk/4.webp"],"why":"round 2: 2 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"A man cycling towards camera down a jacaranda avenue at sunset, jacket flying open behind him, blossom coming off the trees, headlights of a car further back.","alreadyKept":["That jacket has been trying to leave since he got on the bike.","The jacarandas are throwing everything they have at one cyclist.","Tuesday evening, and the ride home has turned into a negotiation."],"lines":["He is going downhill and still working for every metre of it.","The blossom is coming off those trees faster than he is going under them."]},{"index":10,"image":"wind/week_1/dusk/7.webp","hash":"12cd74b592e8","condition":"wind","time":"dusk","week":"A","day":"wed","paths":["wind/week_1/dusk/7.webp","wind/week_3/dusk/7.webp"],"why":"round 2: 2 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"Sunset. A woman on a lawn reaching up to take laundry back over a boundary wall from the laughing neighbour who caught it, more washing strewn across the grass behind her.","alreadyKept":["This is the second time this week and they have a system now.","The pegs lost, the wall won, and the neighbours are still laughing.","Nobody is ever going to find that one white sock again."],"lines":["The wind did the throwing and the neighbour is doing the returning.","One gust, one wall, and two households now know each other much better."]},{"index":11,"image":"wind/week_4/dusk/1.webp","hash":"ec12d1747d09","condition":"wind","time":"dusk","week":"A","day":"fri","paths":["wind/week_4/dusk/1.webp"],"why":"round 2: 4 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"Bo-Kaap at dusk. A row of pink, turquoise, yellow and blue houses down a cobbled street, Signal Hill gold behind, one white curtain sucked right out of an upstairs window.","alreadyKept":["Bo-Kaap in the last light, and the wind is doing the housekeeping."],"lines":["That curtain has been outside the window for about an hour now.","The south-easter has found the one open window on the whole street.","Somebody is going to come home to a lounge full of Signal Hill.","The paint is bright, the hill is gold, and the wind is the loudest thing here."]},{"index":12,"image":"wind/week_2/dusk/2.webp","hash":"b78d6f432fb7","condition":"wind","time":"dusk","week":"A","day":"sat","paths":["wind/week_2/dusk/2.webp","wind/week_4/dusk/2.webp"],"why":"round 2: 3 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"A woman in a blazer walking to her car at sunset, laughing, her hair blown straight up off her head, a palm bending behind the wall, leaves scattered across the paved driveway.","alreadyKept":["That hair was a decision made indoors about forty minutes ago.","Saturday evening, and the walk from the front door defeated the whole look."],"lines":["Her hair is going one way, the palm is going the same way, and neither was asked.","Twelve steps from the front door to the car, and the wind took all twelve.","That driveway was swept this morning and has already been refilled."]},{"index":13,"image":"wind/week_2/night/5.webp","hash":"f6b55aacae0a","condition":"wind","time":"night","week":"A","day":"tue","paths":["wind/week_2/night/5.webp","wind/week_4/night/5.webp"],"why":"round 2: 4 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"A fluffy pale cat sitting in an open sliding doorway at night, leaves blown in across the step and onto the doormat, trees thrashing in the garden beyond, a streetlight past them.","alreadyKept":["The leaves came in. The cat did not go out."],"lines":["The wind has been delivering leaves to that doormat all evening.","Every leaf on that mat arrived without being invited.","The garden is moving and he has decided the doorway is far enough.","The wind is bringing the outside in and he is letting it come to him."]},{"index":14,"image":"wind/week_1/night/2.webp","hash":"be8276f7384b","condition":"wind","time":"night","week":"A","day":"sat","paths":["wind/week_1/night/2.webp","wind/week_3/night/2.webp"],"why":"round 2: 1 replacement(s) for lines rejected in round 1","place":null,"pass1":"2/5","seen":"Two men laughing over a stainless braai at dusk, sparks streaming sideways off the coals, Table Mountain and the city lights behind them.","alreadyKept":["The sparks are going sideways and the tongs are still going in.","Table Mountain, a braai, and a wind with its own strong opinion.","Saturday, and neither of them will admit the wind is winning.","The tongs are out, so the argument about who cooks is over."],"lines":["Those coals are doing more for the fence than they are for the meat."]}]};
+const SRC_NAME = "review/set-001-lines-bespoke-round2.json";
+const LS = 'pw_bespoke_lines_v1';
+const state = JSON.parse(localStorage.getItem(LS) || '{}');
+const $ = (id) => document.getElementById(id);
+const key = (img, i) => img + '#' + i;
+const wc = (s) => (s.trim() ? s.trim().split(/\s+/).length : 0);
+
+function save() { localStorage.setItem(LS, JSON.stringify(state)); tally(); }
+
+function tally() {
+  let yes = 0, no = 0, mine = 0;
+  for (const [k, v] of Object.entries(state)) {
+    if (v.verdict === 'YES') yes += 1;
+    if (v.verdict === 'NO') no += 1;
+    if (k.endsWith('#5') && v.text && v.text.trim()) mine += 1;
+  }
+  const imagesWithAYes = new Set(Object.entries(state).filter(([, v]) => v.verdict === 'YES')
+    .map(([k]) => k.split('#')[0])).size;
+  $('tally').textContent = yes + ' ticked · ' + no + ' rejected · ' + mine + ' of your own · '
+    + imagesWithAYes + '/' + DATA.images.length + ' images have at least one';
+}
+
+function render() {
+  const m = $('main');
+  m.innerHTML = '';
+  for (const img of DATA.images) {
+    const card = document.createElement('section');
+    card.className = 'card';
+
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+    hero.style.width = DATA.box.w + 'px';
+    hero.style.height = DATA.box.h + 'px';
+    hero.style.backgroundImage = 'url("/assets/images/bg/' + img.image + '")';
+    hero.style.backgroundPosition = 'center 50%';
+    const cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.style.padding = DATA.cap.runway.toFixed(1) + 'px 16px ' + DATA.cap.padBottom.toFixed(1) + 'px';
+    cap.style.fontSize = DATA.cap.font.toFixed(1) + 'px';
+    cap.style.background = 'linear-gradient(to top, rgba(0,0,0,.80) 0%, rgba(0,0,0,.62) calc(100% - '
+      + DATA.cap.runway.toFixed(1) + 'px), rgba(0,0,0,0) 100%)';
+    cap.style.borderRadius = '0 0 20px 20px';
+    cap.textContent = img.lines[0];
+    hero.appendChild(cap);
+    card.appendChild(hero);
+
+    const right = document.createElement('div');
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<b>' + img.index + '. ' + img.condition + ' · ' + img.time + '</b> · ' + img.image
+      + ' · ' + img.week + '/' + img.day + ' · ' + img.why + (img.pass1 ? ' · pass-1 ' + img.pass1 : '');
+    right.appendChild(meta);
+
+    const seen = document.createElement('p');
+    seen.className = 'seen';
+    seen.textContent = img.seen;
+    right.appendChild(seen);
+
+    if (img.note) {
+      const n = document.createElement('p');
+      n.className = 'note';
+      n.textContent = img.note;
+      right.appendChild(n);
+    }
+
+    // Lines already kept for this picture, locked and not re-litigated — the
+    // point of round 2 is the gaps, and showing the survivors is what makes a
+    // new line judgeable as part of a SET rather than on its own.
+    if (img.alreadyKept && img.alreadyKept.length) {
+      const box = document.createElement('div');
+      box.className = 'meta';
+      box.style.margin = '2px 0 10px';
+      box.textContent = 'already kept (' + img.alreadyKept.length + '): ';
+      for (const t of img.alreadyKept) {
+        const b = document.createElement('div');
+        b.style.cssText = 'color:#63c98a;font-size:12.5px;margin:2px 0 0 12px';
+        b.textContent = '✓ ' + t;
+        box.appendChild(b);
+      }
+      right.appendChild(box);
+    }
+
+    // The written candidates plus one empty slot for Al's own.
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const k = key(img.image, i);
+      const rec = state[k] || {};
+      const wrap = document.createElement('div');
+      wrap.className = 'line' + (i === N ? ' mine' : '');
+
+      const n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = i === N ? '+' : String(i + 1);
+      wrap.appendChild(n);
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (i === N) inp.placeholder = 'your own line for this picture…';
+      const count = document.createElement('span');
+      count.className = 'wc';
+      const paint = () => {
+        cap.textContent = inp.value || img.lines[0];
+        count.textContent = wc(inp.value) + 'w';
+      };
+      inp.addEventListener('focus', paint);
+      inp.addEventListener('input', () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value });
+        paint(); save();
+      });
+      wrap.appendChild(inp);
+      count.textContent = wc(inp.value) + 'w';
+      wrap.appendChild(count);
+
+      const yes = document.createElement('button');
+      yes.className = 'y' + (rec.verdict === 'YES' ? ' on' : '');
+      yes.textContent = '✓';
+      yes.title = 'keep this line for this picture';
+      yes.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'YES' ? null : 'YES' });
+        save(); render();
+      };
+      const no = document.createElement('button');
+      no.className = 'n2' + (rec.verdict === 'NO' ? ' on' : '');
+      no.textContent = '✕';
+      no.title = 'not for this picture';
+      no.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'NO' ? null : 'NO' });
+        save(); render();
+      };
+      wrap.appendChild(yes);
+      wrap.appendChild(no);
+      right.appendChild(wrap);
+    }
+
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Click into a line to see it on the picture. Edit the text freely — the edit is what exports. '
+      + 'The dashed slot is yours.';
+    right.appendChild(hint);
+    card.appendChild(right);
+    m.appendChild(card);
+  }
+  tally();
+}
+
+$('export').onclick = () => {
+  const out = { generated: '2026-08-18', ruledBy: 'Al, bespoke line review', images: [] };
+  for (const img of DATA.images) {
+    const kept = []; const rejected = [];
+    // Lines already kept in an earlier round ride along in the export, marked as
+    // such: the file is the picture's whole approved set, not just this round's
+    // additions, so nothing downstream has to join two exports to know the truth.
+    for (const t of (img.alreadyKept || [])) kept.push({ text: t, source: 'bespoke', round: 1, edited: false });
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const rec = state[key(img.image, i)] || {};
+      const text = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (!text || !text.trim()) continue;
+      const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
+        round: 2, edited: i < N && text.trim() !== img.lines[i] };
+      if (rec.verdict === 'YES') kept.push(entry);
+      else if (rec.verdict === 'NO') rejected.push(entry);
+    }
+    out.images.push({ image: img.image, hash: img.hash, condition: img.condition, time: img.time,
+      week: img.week, day: img.day, paths: img.paths, kept, rejected });
+  }
+  out.keptCount = out.images.reduce((n, i) => n + i.kept.length, 0);
+  out.imagesWithNone = out.images.filter((i) => !i.kept.length).map((i) => i.image);
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (SRC_NAME.includes('round2') ? 'set-001-lines-bespoke-round2.json' : 'set-001-lines-bespoke.json');
+  a.click();
+};
+
+render();
+</script>

@@ -21,7 +21,11 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const p = (f) => path.join(root, f);
 
-const doc = JSON.parse(readFileSync(p('review/set-001-lines-bespoke.json'), 'utf8'));
+// Round 2 passes its own source and output: `node scripts/build-lines-review-tool.mjs
+// review/set-001-lines-bespoke-round2.json review/lines-review-round2.html`.
+const SRC = process.argv[2] || 'review/set-001-lines-bespoke.json';
+const OUT = process.argv[3] || 'review/lines-review.html';
+const doc = JSON.parse(readFileSync(p(SRC), 'utf8'));
 const fold = JSON.parse(readFileSync(p('output/m8-fold/fold.json'), 'utf8'));
 const row = fold.rows.find((r) => r.viewport === '375x812' && r.caption === 'longest');
 const BOX = { w: row.heroWpx, h: row.heroPx };
@@ -32,6 +36,7 @@ const CAP = {
 };
 
 const DATA = JSON.stringify({ box: BOX, cap: CAP, images: doc.images });
+const SRC_NAME_LITERAL = JSON.stringify(SRC);
 
 const html = `<!doctype html>
 <meta charset="utf-8">
@@ -82,6 +87,7 @@ const html = `<!doctype html>
 
 <script>
 const DATA = ${DATA};
+const SRC_NAME = ${SRC_NAME_LITERAL};
 const LS = 'pw_bespoke_lines_v1';
 const state = JSON.parse(localStorage.getItem(LS) || '{}');
 const $ = (id) => document.getElementById(id);
@@ -146,22 +152,40 @@ function render() {
       right.appendChild(n);
     }
 
-    // Five written lines plus a sixth, empty, for Al's own.
-    for (let i = 0; i < 6; i += 1) {
+    // Lines already kept for this picture, locked and not re-litigated — the
+    // point of round 2 is the gaps, and showing the survivors is what makes a
+    // new line judgeable as part of a SET rather than on its own.
+    if (img.alreadyKept && img.alreadyKept.length) {
+      const box = document.createElement('div');
+      box.className = 'meta';
+      box.style.margin = '2px 0 10px';
+      box.textContent = 'already kept (' + img.alreadyKept.length + '): ';
+      for (const t of img.alreadyKept) {
+        const b = document.createElement('div');
+        b.style.cssText = 'color:#63c98a;font-size:12.5px;margin:2px 0 0 12px';
+        b.textContent = '✓ ' + t;
+        box.appendChild(b);
+      }
+      right.appendChild(box);
+    }
+
+    // The written candidates plus one empty slot for Al's own.
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
       const k = key(img.image, i);
       const rec = state[k] || {};
       const wrap = document.createElement('div');
-      wrap.className = 'line' + (i === 5 ? ' mine' : '');
+      wrap.className = 'line' + (i === N ? ' mine' : '');
 
       const n = document.createElement('span');
       n.className = 'n';
-      n.textContent = i === 5 ? '+' : String(i + 1);
+      n.textContent = i === N ? '+' : String(i + 1);
       wrap.appendChild(n);
 
       const inp = document.createElement('input');
       inp.type = 'text';
-      inp.value = rec.text != null ? rec.text : (i < 5 ? img.lines[i] : '');
-      if (i === 5) inp.placeholder = 'your own line for this picture…';
+      inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (i === N) inp.placeholder = 'your own line for this picture…';
       const count = document.createElement('span');
       count.className = 'wc';
       const paint = () => {
@@ -213,11 +237,17 @@ $('export').onclick = () => {
   const out = { generated: '2026-08-18', ruledBy: 'Al, bespoke line review', images: [] };
   for (const img of DATA.images) {
     const kept = []; const rejected = [];
-    for (let i = 0; i < 6; i += 1) {
+    // Lines already kept in an earlier round ride along in the export, marked as
+    // such: the file is the picture's whole approved set, not just this round's
+    // additions, so nothing downstream has to join two exports to know the truth.
+    for (const t of (img.alreadyKept || [])) kept.push({ text: t, source: 'bespoke', round: 1, edited: false });
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
       const rec = state[key(img.image, i)] || {};
-      const text = rec.text != null ? rec.text : (i < 5 ? img.lines[i] : '');
+      const text = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
       if (!text || !text.trim()) continue;
-      const entry = { text: text.trim(), source: i === 5 ? 'al' : 'bespoke', edited: i < 5 && text.trim() !== img.lines[i] };
+      const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
+        round: 2, edited: i < N && text.trim() !== img.lines[i] };
       if (rec.verdict === 'YES') kept.push(entry);
       else if (rec.verdict === 'NO') rejected.push(entry);
     }
@@ -229,7 +259,7 @@ $('export').onclick = () => {
   const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'set-001-lines-bespoke.json';
+  a.download = (SRC_NAME.includes('round2') ? 'set-001-lines-bespoke-round2.json' : 'set-001-lines-bespoke.json');
   a.click();
 };
 
@@ -237,5 +267,7 @@ render();
 </script>
 `;
 
-writeFileSync(p('review/lines-review.html'), html);
-console.log(`[lines review] review/lines-review.html — ${doc.images.length} photographs, ${doc.images.length * 5} lines, card ${BOX.w}x${BOX.h}`);
+writeFileSync(p(OUT), html);
+const nLines = doc.images.reduce((n, i) => n + i.lines.length, 0);
+const nKept = doc.images.reduce((n, i) => n + (i.alreadyKept ? i.alreadyKept.length : 0), 0);
+console.log(`[lines review] ${OUT} — ${doc.images.length} photographs, ${nLines} candidates${nKept ? `, ${nKept} already kept shown locked` : ''}, card ${BOX.w}x${BOX.h}`);
