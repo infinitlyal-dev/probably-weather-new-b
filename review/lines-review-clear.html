@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PW — bespoke lines, set-001</title>
+<link rel="stylesheet" href="../assets/type-prototype-caption.css">
+<style>
+  :root { --bg:#14110d; --panel:#1f1a14; --ink:#fffaf3; --ink2:#b5ab9d; --gold:#ffd700; --yes:#63c98a; --no:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:rgba(20,17,13,.97); border-bottom:1px solid rgba(246,242,232,.14);
+           padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0 8px 0 0; }
+  button { font:inherit; border:1px solid rgba(246,242,232,.18); background:var(--panel); color:var(--ink);
+           border-radius:8px; padding:6px 11px; cursor:pointer; }
+  button:hover { border-color:var(--gold); }
+  button.primary { background:var(--gold); color:#1a1a2e; border-color:var(--gold); font-weight:700; }
+  .tally { color:var(--ink2); font-variant-numeric:tabular-nums; }
+  main { padding:18px; display:flex; flex-direction:column; gap:30px; }
+  .card { display:grid; grid-template-columns:auto 1fr; gap:22px; border-top:1px solid rgba(246,242,232,.12); padding-top:18px; }
+  .hero { position:relative; overflow:hidden; background-size:cover; background-repeat:no-repeat;
+          border-radius:0 0 20px 20px; box-shadow:0 18px 44px rgba(0,0,0,.55); }
+  .cap { position:absolute; left:0; right:0; bottom:0; margin:0; color:#fff; font-weight:700;
+         font-family:'Caveat Prototype','Segoe Print','Bradley Hand',cursive; text-align:left; line-height:1.08;
+         text-shadow:0 2px 14px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.8); }
+  .meta { color:var(--ink2); font-size:12.5px; margin-bottom:10px; }
+  .meta b { color:var(--ink); }
+  .seen { color:var(--ink2); font-size:12.5px; max-width:80ch; margin:0 0 12px; font-style:italic; }
+  .note { color:#ffb84d; font-size:12.5px; max-width:80ch; margin:0 0 12px; }
+  .line { display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .line input[type=text] { flex:1; min-width:0; font:inherit; background:#181410; color:var(--ink);
+      border:1px solid rgba(246,242,232,.16); border-radius:7px; padding:7px 10px; }
+  .line input[type=text]:focus { outline:none; border-color:var(--gold); }
+  .line .n { width:18px; color:var(--ink2); font-variant-numeric:tabular-nums; padding-top:8px; }
+  .line .wc { width:58px; color:var(--ink2); font-size:11.5px; padding-top:9px; text-align:right; }
+  .y.on { border-color:var(--yes); color:var(--yes); font-weight:700; }
+  .n2.on { border-color:var(--no); color:var(--no); font-weight:700; }
+  .line.mine input[type=text] { border-style:dashed; }
+  .line .resc { flex:none; align-self:flex-start; margin-top:8px; font-size:10.5px; letter-spacing:.06em;
+      text-transform:uppercase; color:#8fb7ff; border:1px solid #8fb7ff55; border-radius:5px; padding:1px 5px; }
+  .hint { color:var(--ink2); font-size:12px; margin:10px 0 0; max-width:80ch; }
+</style>
+
+<header>
+  <h1>Bespoke lines — clear, 34 photographs, five each</h1>
+  <span class="tally" id="tally"></span>
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export</button>
+</header>
+<main id="main"></main>
+
+<script>
+const DATA = {"box":{"w":327,"h":518},"cap":{"runway":56.84,"font":33.00000000000001,"padBottom":14.616000000000001},"bucket":"clear","images":[{"index":1,"image":"clear/week_1/dawn/3.webp","hash":"66d5e6cb3570","condition":"clear","time":"dawn","week":"A","day":"fri","paths":["clear/week_1/dawn/3.webp","clear/week_3/dawn/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"A seafront promenade at sunrise. Three friends jogging side by side towards camera, laughing and talking to each other. Lion's Head clean against a pale pink-gold sky, a flat calm Atlantic on the left, apartment blocks and palms on the right, and the promenade empty behind them.","note":null,"lines":["Not one of them has looked at that mountain and they see it every morning.","The sea is that flat about nine mornings a year and this is one of them.","They are still talking, which means nobody has taken this seriously yet.","Nobody else is on this promenade yet, which is the entire point of six o'clock.","Friday, and this is the last easy thing any of them will do today."],"rescue":[null,null,null,null,null]},{"index":2,"image":"clear/week_1/dawn/5.webp","hash":"7a76c59603c9","condition":"clear","time":"dawn","week":"A","day":"thu","paths":["clear/week_1/dawn/5.webp","clear/week_3/dawn/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Bo-Kaap in golden early light. A woman in a headwrap and blue patterned dress watering red geraniums in a planter box on the balcony of her turquoise house, galvanised watering can in hand. A row of coral, yellow and mint houses drops down the cobbled street, Table Mountain's face lit warm behind, deep clean blue sky.","note":null,"lines":["She is watering at seven because by nine it would be a waste.","Table Mountain is right behind her and the geraniums are the ones getting attention.","Not one cloud, which means those geraniums will need this again tonight.","Bo-Kaap gets about an hour of that light and she is using all of it.","This is the weather we brag about overseas."],"rescue":[null,null,null,null,"witty:clear#35"]},{"index":3,"image":"clear/week_1/dawn/7.webp","hash":"b698a0ccc12d","condition":"clear","time":"dawn","week":"A","day":"wed","paths":["clear/week_1/dawn/7.webp","clear/week_3/dawn/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"A tan dog asleep stretched flat out on a stone-tiled stoep under a tiled overhang, low golden light raking right across the tiles onto him. Beyond, a lush garden of palms and flowering shrubs, lawn, big terracotta pots, and a clean deep blue sky.","note":null,"lines":["He has calculated exactly where that light will be for the next hour.","The sun only came round the corner of that roof about four minutes ago.","There is a whole garden out there and he picked the one warm tile.","He will move twice before lunch and both times by about a metre.","Wednesday, and he has already had a better morning than anybody in that house."],"rescue":[null,null,null,null,null]},{"index":4,"image":"clear/week_1/day/7.webp","hash":"03a31c2b8e88","condition":"clear","time":"day","week":"B","day":"sun","paths":["clear/week_1/day/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A wide empty beach under a clean blue sky with a few wisps of cirrus. Two wooden Adirondack chairs and a small steel cooler box under a striped rainbow beach umbrella, facing a turquoise sea. Nobody sitting in them, no other people in the frame.","note":null,"lines":["Two chairs, one cooler, and whoever set this up is already in the water.","Nobody is sitting in either of those and both of them are taken.","That umbrella is going to be the most argued-about object of the afternoon.","Sunday, and the only shade on this entire beach is about a metre wide.","The cooler is between the chairs, which tells you how the day is organised."],"rescue":[null,null,null,null,null]},{"index":5,"image":"clear/week_1/dusk/3.webp","hash":"d097525bf5cf","condition":"clear","time":"dusk","week":"A","day":"sat","paths":["clear/week_1/dusk/3.webp","clear/week_3/dusk/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"4 bank lines approved on this slot","seen":"A farmhouse at dusk with a corrugated roof and a wide lit stoep. In the foreground a built-in stone fire pit where a man in an olive jumper is poking the fire and sending up a burst of sparks; another man stands beside him with a glass. On the lawn two barefoot boys are playing soccer. A clean gradient sky from orange at the horizon to deep blue with one bright planet out. Rolling hills behind.","note":"Pass-1 pool served instructions to an already-assembled braai (\"The coals aren't going to light themselves\", \"The braai is the social calendar. Show up.\") — the fire is lit and everyone is there. Nothing rescued.","lines":["The first star is out and nobody has called those two in yet.","There is not one cloud, so this light is going to last another forty minutes.","That ball has come close to the fire twice and nobody has said anything.","Saturday, and the sky went from orange to blue without one cloud interrupting.","That fire was lit early because nobody wanted to be the one waiting."],"rescue":[null,null,null,null,null]},{"index":6,"image":"clear/week_1/night/1.webp","hash":"14f98c4f78fa","condition":"clear","time":"night","week":"A","day":"tue","paths":["clear/week_1/night/1.webp","clear/week_3/night/1.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Washing on a line at night under a bright full moon with a halo, in a deep blue star-scattered sky. White sheets and towels hanging dead still and lit by the moon, lavender and garden below, dark hills behind, moon shadows on the lawn.","note":null,"lines":["That washing is out all night because somebody looked at the sky and gambled.","There is enough moon out there to hang washing by, and somebody did.","It will be dry by morning and damp again by six, which is the deal.","Nothing on that line has moved since about four this afternoon.","The moon's doing the most tonight."],"rescue":[null,null,null,null,"witty:night#7"]},{"index":7,"image":"clear/week_1/night/3.webp","hash":"127edee25245","condition":"clear","time":"night","week":"A","day":"sat","paths":["clear/week_1/night/3.webp","clear/week_3/night/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A farmyard at night under a huge Milky Way. Two people lying in the open back of a white bakkie on sleeping bags, both with an arm up, pointing at the sky. A whitewashed farmhouse with one warm-lit window on the right, a kraal fence, a small fire away to the left, low hills.","note":null,"lines":["Both of them are pointing and neither of them is right.","They put the mattress in the bakkie, which means this was planned days ago.","You have to drive two hours from anywhere to get a sky like that.","Saturday night, and the entertainment is free and about four billion years old.","One window is still on in that house and nobody in it is coming out."],"rescue":[null,null,null,null,null]},{"index":8,"image":"clear/week_1/night/6.webp","hash":"998833419718","condition":"clear","time":"night","week":"A","day":"sun","paths":["clear/week_1/night/6.webp","clear/week_3/night/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A pure sky frame: the Milky Way arcing up from behind a single conical koppie silhouetted on a black horizon, with the last thin orange band of twilight along the left. Thousands of stars, deep blue to black. No people, no objects.","note":null,"lines":["That is the centre of the galaxy and it is coming up behind a koppie.","There is no town anywhere near here, and that is exactly why you can see this.","The last of the sun is still on the left and the Milky Way is already up.","Sunday night, and the best thing on tonight is not on a screen.","The sky looks like it's showing off."],"rescue":[null,null,null,null,"witty:night#19"]},{"index":9,"image":"clear/week_1/night/7.webp","hash":"de9514caac5f","condition":"clear","time":"night","week":"A","day":"wed","paths":["clear/week_1/night/7.webp","clear/week_3/night/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"4 bank lines approved on this slot","seen":"A high view over a city at night: deep blue sky with stars and a few small clouds catching moonlight, and below a broad carpet of city lights, office towers with lit signs, and tree-lined suburbs. Apartment rooftops in the foreground.","note":"Pass-1 approved witty:night#0 (\"Stars out, load shedding can't touch this\") on this slot. Not rescued — CLAUDE.md rules out Eskom material on the home screen and load shedding is the same family. Al's call to put it back.","lines":["You can still see stars over a city that big, which is not nothing.","Every one of those lights belongs to somebody who is not looking up.","The suburbs went quiet about an hour ago and the town has not yet.","Wednesday night, and up here it is completely still while all that carries on.","Good night, South Africa."],"rescue":[null,null,null,null,"witty:night#6"]},{"index":10,"image":"clear/week_2/dawn/5.webp","hash":"dd736311b619","condition":"clear","time":"dawn","week":"A","day":"mon","paths":["clear/week_2/dawn/5.webp","clear/week_4/dawn/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"A hadeda standing in silhouette on the ridge of a corrugated iron farm roof against a flaming pink and orange sunrise. Below and beyond, misty hills with flat-topped acacias, a wire fence, dry grass and valley mist.","note":null,"lines":["That is the first hadeda up and the entire valley is about to know.","Monday, and the alarm on this farm has feathers and no snooze button.","The mist is still in the valley and he is already up on the roof.","That sky lasts about six minutes and the bird is the only one watching.","Even the hadedas sound happy."],"rescue":[null,null,null,null,"witty:clear#5"]},{"index":11,"image":"clear/week_2/dawn/6.webp","hash":"73d202837435","condition":"clear","time":"dawn","week":"A","day":"tue","paths":["clear/week_2/dawn/6.webp","clear/week_4/dawn/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"Three schoolchildren in white shirts and grey uniform walking along a paved pavement in low golden morning light, backpacks on, laughing at each other, their shadows stretched right across the paving. Modern white houses with timber slat fences, a young tree, mown lawn, and a flat-topped mountain already catching sun behind. Clean pale blue sky.","note":null,"lines":["Their shadows are longer than they are and none of them has noticed.","Not one of them is carrying a jacket, which is a decision made at seven.","That mountain already has sun on it and this road does not yet.","Tuesday, and the walk to school is currently the best part of the day.","Somewhere an estate agent is saying 'lifestyle'."],"rescue":[null,null,null,null,"witty:clear#10"]},{"index":12,"image":"clear/week_2/dawn/7.webp","hash":"d529968dcb50","condition":"clear","time":"dawn","week":"A","day":"sat","paths":["clear/week_2/dawn/7.webp","clear/week_4/dawn/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"4 bank lines approved on this slot","seen":"A wide wet beach at sunrise, the whole sky filled with soft pink and gold mackerel cloud and mirrored perfectly in the wet sand. A lone surfer in a wetsuit walking towards the water with a board under his arm, small in the middle distance. Headland and sea mist on the left, low sun on the horizon.","note":"Weekend pool is braai-forward and this is a solitary dawn surfer; witty:weekend#8 is a documented NO on a lone figure. Nothing rescued.","lines":["He is the first person on this beach and the sand still shows it.","That water will be flat glass for about another twenty minutes and he knows it.","Saturday, and he got up earlier for this than he ever does for work.","The whole sky is in that sand and he is walking straight through it.","There is nobody out there yet, which is the entire reason he is early."],"rescue":[null,null,null,null,null]},{"index":13,"image":"clear/week_2/day/1.webp","hash":"9ab8b9f07431","condition":"clear","time":"day","week":"B","day":"tue","paths":["clear/week_2/day/1.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A rooftop gathering in a city CBD under a hard deep-blue cloudless sky. Four people stand along the parapet with coffee cups, talking; two women sit on striped beach towels in the foreground, one pouring from a steel flask into a takeaway cup, both in sundresses and sunglasses, barefoot. A paperback, a bluetooth speaker and a tube of sunblock on the towel. Office towers all around.","note":null,"lines":["That is a Tuesday and every one of them is on a towel with bare feet.","The sunblock came out of somebody's handbag, which means this was not planned.","Six people, one flask, and nobody has mentioned going back down yet.","Nobody up here is wearing shoes and there is an office directly underneath them.","Days like this should come with a soundtrack."],"rescue":[null,null,null,null,"witty:clear#16"]},{"index":14,"image":"clear/week_2/day/2.webp","hash":"45d964f74171","condition":"clear","time":"day","week":"A","day":"sun","paths":["clear/week_2/day/2.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A father flat on his back on the lawn laughing with a small boy and a girl piled on top of him, all three laughing. A jacaranda in full purple flower overhead and fallen blossom all over the grass. A sandstone-clad house with a dark roof, white roses, lavender, and a hard clean blue sky.","note":null,"lines":["There is jacaranda in his hair and nobody has told him yet.","That lawn is covered in purple and nobody is sweeping any of it today.","The shade under that tree is the whole reason this is happening here.","Sunday, and the only thing anybody in this house has achieved all day is this.","Today's plans: exist outside."],"rescue":[null,null,null,null,"witty:weekend#8"]},{"index":15,"image":"clear/week_2/day/4.webp","hash":"e9616cb7c61c","condition":"clear","time":"day","week":"A","day":"sat","paths":["clear/week_2/day/4.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A man in a blue shirt and khaki shorts reclining in a wooden deck chair on a paved patio, a beer bottle on the arm and an open magazine on his lap, giving the camera a small smug smile. Behind him a boy pushes an old green manual mower across a dry, patchy sun-bleached lawn. Red-brick double-storey house, jacaranda blossom on the paving, hard sunlight, deep blue sky.","note":null,"lines":["The grass has not grown since November and he is having it cut anyway.","The only shade on this whole lawn is exactly where he is sitting.","He picked the chair, the shade and the magazine in that order.","Saturday, and one of the two people in this photograph chose the deck chair.","If you're working today, we feel sorry for you."],"rescue":[null,null,null,null,"witty:weekend#5"]},{"index":16,"image":"clear/week_2/day/5.webp","hash":"ca6d821f7c9b","condition":"clear","time":"day","week":"A","day":"fri","paths":["clear/week_2/day/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"Five office workers walking out through the revolving glass doors of a modern glass building into hard sunlight; the man in the blue blazer has both arms up in a double victory sign. Backpacks, tote bags, a briefcase. A street clock on the left, trees, pedestrians, and a deep blue cloudless sky reflected in the glass.","note":null,"lines":["Nobody in that building did any real work after about two o'clock today.","The clock says four and the sky has been like that since seven.","Whoever booked the four o'clock meeting is going to be sitting in it alone.","That is a Friday afternoon and a sky with nothing in it, in one photograph.","He has been waiting all week to do that in that exact doorway."],"rescue":[null,null,null,null,null]},{"index":17,"image":"clear/week_2/day/6.webp","hash":"5799efcdfd70","condition":"clear","time":"day","week":"A","day":"tue","paths":["clear/week_2/day/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"4 bank lines approved on this slot","seen":"A hadeda standing on a dry straw-coloured suburban lawn, low angle, looking straight at camera down its long curved beak. Behind it a lawn sprinkler running with an arc of water catching the sun, a face-brick house with a tiled roof, clipped hedges, deep clean blue sky.","note":null,"lines":["The sprinkler is on, the lawn is dead, and he has come for neither.","He knows exactly when that sprinkler comes on and he got here first.","That grass has not seen rain in weeks and the municipality has opinions.","Tuesday, and the only thing green in this garden is coming out of a hose.","There is one wet patch on this whole lawn and he is standing beside it."],"rescue":[null,null,null,null,null]},{"index":18,"image":"clear/week_2/day/7.webp","hash":"ed953578deec","condition":"clear","time":"day","week":"B","day":"fri","paths":["clear/week_2/day/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"Poolside. A weathered wooden table in the foreground with a tall glass of iced tea sweating with condensation, a pair of tortoiseshell sunglasses folded beside it, and a straw hat on the lounger to the right. Beyond, a turquoise pool, sandstone paving, aloes and cycads, a palm, a palisade fence and hills in the distance under a deep clean blue sky. Nobody in the frame.","note":null,"lines":["Somebody put that glass down about four minutes ago and got straight in.","The ice has not gone anywhere yet, which gives you the whole timeline.","The sunglasses came off, which means whoever owns them is under the water.","Friday, and there is not one thing in this photograph that has to be done.","Bottle this one. Open it in winter."],"rescue":[null,null,null,null,"witty:clear#37"]},{"index":19,"image":"clear/week_2/dusk/1.webp","hash":"525b2eea2ebc","condition":"clear","time":"dusk","week":"A","day":"sun","paths":["clear/week_2/dusk/1.webp","clear/week_4/dusk/1.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Two young women in wetsuits sitting on the wall of a tidal pool at sunset, wet hair, bare feet dangling towards the water, towels folded on their laps, laughing at each other. A mountain across the bay in silhouette, glassy sea, peach and gold sky, their reflections perfect in the still pool.","note":null,"lines":["They have been out of the water for ten minutes and neither has moved.","The towels are on their laps and still completely dry, which tells you everything.","Sunday evening, and neither of them has said anything about tomorrow yet.","That mountain will be gone in about eight minutes and both of them know it.","Nobody swims a tidal pool at this hour for the exercise."],"rescue":[null,null,null,null,null]},{"index":20,"image":"clear/week_2/dusk/2.webp","hash":"90a621539543","condition":"clear","time":"dusk","week":"A","day":"fri","paths":["clear/week_2/dusk/2.webp","clear/week_4/dusk/2.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A Karoo dorp street at dusk — Victorian houses with white broekie-lace verandahs, porch lights on, a windpomp silhouetted against a gold-to-purple gradient sky with one bright planet out. Four barefoot boys playing street cricket on the dirt road with a black wheelie bin for wickets. An elderly couple leaning on the garden wall watching them.","note":null,"lines":["That wheelie bin has been the wickets for longer than the batsman has been alive.","There is one planet up and nobody has been called in for supper yet.","Those two on the wall have been watching this exact game for fifty years.","Friday, and the light is going to hold long enough for one more over.","Shoes optional. Attitude mandatory."],"rescue":[null,null,null,null,"witty:weekend#11"]},{"index":21,"image":"clear/week_2/dusk/3.webp","hash":"cc951efb5d19","condition":"clear","time":"dusk","week":"A","day":"thu","paths":["clear/week_2/dusk/3.webp","clear/week_4/dusk/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":null,"seen":"A man mowing a lawn at golden hour with a petrol mower, the low sun blazing through an olive tree on the left and throwing long stripes of shadow and light right across the grass. A flat-roofed concrete-and-timber house with big sliding doors, a laid dining table and pendant light visible inside. Ornamental grasses, clean pale sky.","note":null,"lines":["He waited until six because at two this was never going to happen.","The shadows are longer than the stripes he is cutting and they are gaining.","That table is laid inside and he has about one more strip in him.","The sun is coming through that tree and going straight into his eyes.","Thursday, and this is the part of the day the whole day was for."],"rescue":[null,null,null,null,null]},{"index":22,"image":"clear/week_2/dusk/4.webp","hash":"7d50ec606bfc","condition":"clear","time":"dusk","week":"A","day":"wed","paths":["clear/week_2/dusk/4.webp","clear/week_4/dusk/4.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"A teenage boy riding a mountain bike hard through a bermed dirt corner, leaning into it and grinning, dust kicking up behind him and lit gold by the low sun. Fynbos on both sides, rolling hills and a distant valley behind, sky graduating from gold at the horizon to blue above.","note":null,"lines":["He has about twelve minutes of light left and he is spending all of it.","The fynbos is lit up from behind and he has not looked at it once.","Wednesday, and he came straight here from school without going home first.","That dust is hanging exactly where he left it.","Every corner on this trail looks better at this hour and he knows which ones."],"rescue":[null,null,null,null,null]},{"index":23,"image":"clear/week_2/dusk/5.webp","hash":"9059d175f28c","condition":"clear","time":"dusk","week":"A","day":"mon","paths":["clear/week_2/dusk/5.webp","clear/week_4/dusk/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"Two small birds silhouetted side by side on a telephone wire against an enormous streaked pink and orange bushveld sunset. Below, a dirt road running away between acacias, low hills, dry grass and dust haze.","note":"Pass-1 approved witty:clear#34 (\"Africa showing off again. Quietly devastating.\") here. Not rescued — the second clause tells the reader what to feel, which PAIRING-TASTE rule 7 rules out. Al's call to put it back.","lines":["Two birds on that wire and neither of them is going home yet.","Nobody had to drive anywhere to see that, which is the point of out here.","Monday evening, and the sky has spent the whole day working up to this.","The dust on that road will be hanging there until well after dark.","Those two have the best seats on the whole farm and they were free."],"rescue":[null,null,null,null,null]},{"index":24,"image":"clear/week_2/dusk/6.webp","hash":"1bd6b90924a1","condition":"clear","time":"dusk","week":"A","day":"tue","paths":["clear/week_2/dusk/6.webp","clear/week_4/dusk/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"Three teenage boys walking away from camera down the middle of a quiet suburban street at dusk, arms around each other's shoulders, backpacks on. A street light already on to the left, a clean gradient sky from gold at the horizon to deep blue above, single-storey houses and palms, warm light on the walls.","note":null,"lines":["The street light came on and not one of them has picked up the pace.","Nobody in this photograph is going straight home and everybody's mother knows it.","That sky will be gone in ten minutes and none of them has looked up.","Tuesday evening, and the walk home has taken about forty minutes so far.","Three of them, one road, and about eleven minutes before somebody's phone rings."],"rescue":[null,null,null,null,null]},{"index":25,"image":"clear/week_2/night/5.webp","hash":"05cd0ad39fd6","condition":"clear","time":"night","week":"A","day":"thu","paths":["clear/week_2/night/5.webp","clear/week_4/night/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Night. A tabby cat sitting upright on a moonlit lawn with its head turned up at the moon. To the right, the open sliding door of a modern concrete house with warm light inside, where a mother in pyjamas leans down beside a small boy in pyjamas who is pointing out at the sky. Bright moon top-left in a starry sky, garden uplights, palms, boundary wall.","note":null,"lines":["He is pointing at the cat and she is looking at the moon.","That child was in bed nine minutes ago and this is now everybody's problem.","The cat has been sitting exactly there since the moon cleared the wall.","Nobody is going back to bed until somebody has explained the moon properly.","Quiet out there. Almost suspicious."],"rescue":[null,null,null,null,"witty:night#2"]},{"index":26,"image":"clear/week_2/night/6.webp","hash":"970707aba87c","condition":"clear","time":"night","week":"A","day":"mon","paths":["clear/week_2/night/6.webp","clear/week_4/night/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"5 bank lines approved on this slot","seen":"A brass wall lantern glowing on a plastered wall at night with a big emperor moth settled on the wall beside it and several smaller insects on and around the glass. To the left a dark garden of aloes in a stone-walled bed, a thorny tree, and a deep blue sky full of stars.","note":null,"lines":["Somebody has to walk past that light later and they already know about it.","Nobody has switched that light off because switching it off means going outside.","That moth is the size of a hand and it is not going anywhere.","Every insect in this garden has decided that light is the important one.","Somewhere a cricket is really giving it."],"rescue":[null,null,null,null,"witty:night#8"]},{"index":27,"image":"clear/week_2/night/7.webp","hash":"4138025d3128","condition":"clear","time":"night","week":"A","day":"fri","paths":["clear/week_2/night/7.webp","clear/week_4/night/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A long wooden table in a garden at night under several strings of warm festoon lights, nine people seated along both sides eating and laughing — plates of steak and salad, beer bottles, bowls, and one phone lying face down on the table. Lush garden, trees, a brick retaining wall, deep blue night sky above the lights.","note":null,"lines":["The phone is face down on that table and it has been for two hours.","Nine people outside on a Friday and nobody has mentioned going indoors once.","Not one jacket on a single chair, which is the whole story of tonight.","Those lights are up all year and they only earn their keep on nights like this.","Tomorrow's weather is tomorrow's problem."],"rescue":[null,null,null,null,"witty:night#16"]},{"index":28,"image":"clear/week_3/day/1.webp","hash":"f673af851f9c","condition":"clear","time":"day","week":"A","day":"thu","paths":["clear/week_3/day/1.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A row of nine kids in white soccer shirts, navy shorts and long navy socks with muddy boots, sitting along a kerb in golden late-afternoon light, all eating slap chips out of newspaper cones. Two kit bags on the pavement, a 1960s cream house with a blue fascia behind, hedge, palms, dry lawn.","note":null,"lines":["Nine of them, nine cones of chips, and not one word being said.","Every pair of those socks was white at two o'clock this afternoon.","Somebody's mother is sitting in a car somewhere and she is not rushing them.","Thursday, and the sun is going to hold long enough for a second game.","The type of day that makes people text 'lekker dag hey'."],"rescue":[null,null,null,null,"witty:clear#24"]},{"index":29,"image":"clear/week_3/day/3.webp","hash":"0009c55ad6a5","condition":"clear","time":"day","week":"B","day":"mon","paths":["clear/week_3/day/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A hadeda walking through a bed of dark turned soil, head down, long curved beak probing, right beside tall blue agapanthus in full flower. Green lawn beyond, trees, a white gabled house, deep blue sky.","note":null,"lines":["That flowerbed was weeded on Saturday and he is undoing all of it.","The agapanthus is doing its one week of the year right behind him.","Monday, and somebody is going to come out here and find that hole.","The soil is soft enough to work, which is why he came in the first place.","He is the only thing in this garden not enjoying the flowers."],"rescue":[null,null,null,null,null]},{"index":30,"image":"clear/week_3/day/4.webp","hash":"84beada2e358","condition":"clear","time":"day","week":"A","day":"mon","paths":["clear/week_3/day/4.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":null,"seen":"A man walking up to the glass doors of a corporate office building, seen from behind, in a printed Hawaiian shirt, faded shorts and slip-slops with a messenger bag over his shoulder. Through the glass, people inside in shirts and ties. Deep blue sky and palms reflected in the glass.","note":null,"lines":["There are two men in ties behind that glass and he has not seen them yet.","He got dressed by looking out of the window and not at the calendar.","That is a Monday, those are slip-slops, and the two are about to meet.","He is going to spend the whole day being the only person who was right.","The sky made him a promise this morning that the air conditioning is about to break."],"rescue":[null,null,null,null,null]},{"index":31,"image":"clear/week_3/day/7.webp","hash":"77cfc93827e3","condition":"clear","time":"day","week":"A","day":"wed","paths":["clear/week_3/day/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A Johannesburg rooftop with Ponte and the Hillbrow Tower on the skyline. Two young women sit side by side on a folding bench under a striped beach umbrella, both barefoot with laptops open on their laps, working and smiling. A trestle table with potted plants and a mug, a cooler box on the concrete, beach towels laid out on the roof, hazy warm sky.","note":null,"lines":["Two laptops, one umbrella, and a Wednesday that has quietly stopped being work.","The cooler box came up those stairs, which tells you how long they are staying.","The towels are already out for the part of the day that comes after.","Neither of them is wearing shoes and both of them are technically on a call.","Hillbrow is right there and the office is somewhere down below being ignored."],"rescue":[null,null,null,null,null]},{"index":32,"image":"clear/week_4/day/2.webp","hash":"448b951052cc","condition":"clear","time":"day","week":"B","day":"wed","paths":["clear/week_4/day/2.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Two barefoot children playing catch on a green lawn in front of a white Cape Dutch farmhouse with dark shutters. A boy in a teal shirt is leaping into the air with both hands up for a yellow tennis ball; a girl in a white shirt and denim shorts runs laughing in the foreground. Restio grasses and fynbos beds, hard clean blue sky, short strong shadows.","note":null,"lines":["Nobody in this photograph is wearing shoes and nobody has been asked to.","He is going to catch that and she already knows that he is not.","The shadows are short, which means nobody is coming inside for a while.","That ball has been on the roof twice already this afternoon.","Wednesday, and this has been going on since about four o'clock."],"rescue":[null,null,null,null,null]},{"index":33,"image":"clear/week_4/day/5.webp","hash":"6e598ae56c12","condition":"clear","time":"day","week":"B","day":"sat","paths":["clear/week_4/day/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A braai in a garden at golden hour. Two women at a built-in brick braai — one in a patterned apron holding the tongs, the other reaching over the grid — both laughing, with a coil of boerewors and a row of sausages on the grid and smoke rising. Behind them on the deck a man holds his head laughing and another holds a big bowl of salad. Coral and blue painted walls, aloes and pots, low sun through the trees.","note":"All three pass-1 approvals here are instructions to an already-assembled braai (tongs already in hand, meat already on, everyone present) — the documented weekend#13 failure. Nothing rescued.","lines":["Two women on the tongs and two men holding a salad, which is new.","The wors went on eleven minutes ago and nobody has offered any advice yet.","That sun will be gone before the wors is, and nobody in this garden minds.","Saturday, and that salad has been carried around for a while now.","Everybody outside, nobody inside, and the door has been open since four."],"rescue":[null,null,null,null,null]},{"index":34,"image":"clear/week_4/day/6.webp","hash":"3d001539dcb5","condition":"clear","time":"day","week":"B","day":"thu","paths":["clear/week_4/day/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A golden retriever lying flat out asleep on a sunlit wooden deck in full hard sun. Behind it a built-in stone braai with wood stacked underneath, a bench along a cream wall, a metal patio table and chairs, yuccas and pot plants, a strip of lawn, and an enormous empty deep-blue sky filling the top two thirds of the frame.","note":null,"lines":["There is a whole lawn over there and he chose the hot planks.","He will be in shade in forty minutes and has not planned that far ahead.","That braai has wood stacked and ready and it is only Thursday.","Thursday, and the only thing on this deck with any kind of plan is the dog.","Nobody has come out to that table all day and he has the deck to himself."],"rescue":[null,null,null,null,null]}]};
+const SRC_NAME = "review/set-001-lines-bespoke-clear.json";
+const EXPORT_NAME = "set-001-lines-bespoke-clear-ruled.json";
+// Namespaced per source. Round 1 and round 2 share this page's code, and with
+// one key the round-2 page read round 1's saved text back out of storage and
+// rendered it in every slot - Al opened it and saw the old lines. The stored
+// value is keyed by image+index, and index 1 means a different line in each
+// round, so the namespace is not optional.
+const LS = 'pw_bespoke_lines_' + SRC_NAME.replace(/[^a-z0-9]+/gi, '_');
+const state = JSON.parse(localStorage.getItem(LS) || '{}');
+const $ = (id) => document.getElementById(id);
+const key = (img, i) => img + '#' + i;
+const wc = (s) => (s.trim() ? s.trim().split(/\s+/).length : 0);
+
+function save() { localStorage.setItem(LS, JSON.stringify(state)); tally(); }
+
+function tally() {
+  let yes = 0, no = 0, mine = 0;
+  for (const [k, v] of Object.entries(state)) {
+    if (v.verdict === 'YES') yes += 1;
+    if (v.verdict === 'NO') no += 1;
+    if (k.endsWith('#5') && v.text && v.text.trim()) mine += 1;
+  }
+  const imagesWithAYes = new Set(Object.entries(state).filter(([, v]) => v.verdict === 'YES')
+    .map(([k]) => k.split('#')[0])).size;
+  $('tally').textContent = yes + ' ticked · ' + no + ' rejected · ' + mine + ' of your own · '
+    + imagesWithAYes + '/' + DATA.images.length + ' images have at least one';
+}
+
+function render() {
+  const m = $('main');
+  m.innerHTML = '';
+  for (const img of DATA.images) {
+    const card = document.createElement('section');
+    card.className = 'card';
+
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+    hero.style.width = DATA.box.w + 'px';
+    hero.style.height = DATA.box.h + 'px';
+    hero.style.backgroundImage = 'url("/assets/images/bg/' + img.image + '")';
+    hero.style.backgroundPosition = 'center 50%';
+    const cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.style.padding = DATA.cap.runway.toFixed(1) + 'px 16px ' + DATA.cap.padBottom.toFixed(1) + 'px';
+    cap.style.fontSize = DATA.cap.font.toFixed(1) + 'px';
+    cap.style.background = 'linear-gradient(to top, rgba(0,0,0,.80) 0%, rgba(0,0,0,.62) calc(100% - '
+      + DATA.cap.runway.toFixed(1) + 'px), rgba(0,0,0,0) 100%)';
+    cap.style.borderRadius = '0 0 20px 20px';
+    cap.textContent = img.lines[0];
+    hero.appendChild(cap);
+    card.appendChild(hero);
+
+    const right = document.createElement('div');
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<b>' + img.index + '. ' + img.condition + ' · ' + img.time + '</b> · ' + img.image
+      + ' · ' + img.week + '/' + img.day + ' · ' + img.why + (img.pass1 ? ' · pass-1 ' + img.pass1 : '');
+    right.appendChild(meta);
+
+    const seen = document.createElement('p');
+    seen.className = 'seen';
+    seen.textContent = img.seen;
+    right.appendChild(seen);
+
+    if (img.note) {
+      const n = document.createElement('p');
+      n.className = 'note';
+      n.textContent = img.note;
+      right.appendChild(n);
+    }
+
+    // Lines already kept for this picture, locked and not re-litigated — the
+    // point of round 2 is the gaps, and showing the survivors is what makes a
+    // new line judgeable as part of a SET rather than on its own.
+    if (img.alreadyKept && img.alreadyKept.length) {
+      const box = document.createElement('div');
+      box.className = 'meta';
+      box.style.margin = '2px 0 10px';
+      box.textContent = 'already kept (' + img.alreadyKept.length + '): ';
+      for (const t of img.alreadyKept) {
+        const b = document.createElement('div');
+        b.style.cssText = 'color:#63c98a;font-size:12.5px;margin:2px 0 0 12px';
+        b.textContent = '✓ ' + t;
+        box.appendChild(b);
+      }
+      right.appendChild(box);
+    }
+
+    // The written candidates plus one empty slot for Al's own.
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const k = key(img.image, i);
+      const rec = state[k] || {};
+      const wrap = document.createElement('div');
+      wrap.className = 'line' + (i === N ? ' mine' : '');
+
+      const n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = i === N ? '+' : String(i + 1);
+      wrap.appendChild(n);
+
+      const ref = img.rescue && img.rescue[i];
+      if (ref) {
+        const tag = document.createElement('span');
+        tag.className = 'resc';
+        tag.textContent = 'bank';
+        tag.title = 'Rescued from the existing bank (' + ref + ') rather than newly written';
+        wrap.appendChild(tag);
+      }
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (i === N) inp.placeholder = 'your own line for this picture…';
+      const count = document.createElement('span');
+      count.className = 'wc';
+      const paint = () => {
+        cap.textContent = inp.value || img.lines[0];
+        count.textContent = wc(inp.value) + 'w';
+      };
+      inp.addEventListener('focus', paint);
+      inp.addEventListener('input', () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value });
+        paint(); save();
+      });
+      wrap.appendChild(inp);
+      count.textContent = wc(inp.value) + 'w';
+      wrap.appendChild(count);
+
+      const yes = document.createElement('button');
+      yes.className = 'y' + (rec.verdict === 'YES' ? ' on' : '');
+      yes.textContent = '✓';
+      yes.title = 'keep this line for this picture';
+      yes.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'YES' ? null : 'YES' });
+        save(); render();
+      };
+      const no = document.createElement('button');
+      no.className = 'n2' + (rec.verdict === 'NO' ? ' on' : '');
+      no.textContent = '✕';
+      no.title = 'not for this picture';
+      no.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'NO' ? null : 'NO' });
+        save(); render();
+      };
+      wrap.appendChild(yes);
+      wrap.appendChild(no);
+      right.appendChild(wrap);
+    }
+
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Click into a line to see it on the picture. Edit the text freely — the edit is what exports. '
+      + 'The dashed slot is yours.';
+    right.appendChild(hint);
+    card.appendChild(right);
+    m.appendChild(card);
+  }
+  tally();
+}
+
+$('export').onclick = () => {
+  const out = { generated: '2026-08-19', ruledBy: 'Al, bespoke line review', bucket: DATA.bucket || null, images: [] };
+  for (const img of DATA.images) {
+    const kept = []; const rejected = [];
+    // Lines already kept in an earlier round ride along in the export, marked as
+    // such: the file is the picture's whole approved set, not just this round's
+    // additions, so nothing downstream has to join two exports to know the truth.
+    for (const t of (img.alreadyKept || [])) kept.push({ text: t, source: 'bespoke', round: 1, edited: false });
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const rec = state[key(img.image, i)] || {};
+      const text = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (!text || !text.trim()) continue;
+      const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
+        round: 2, edited: i < N && text.trim() !== img.lines[i] };
+      const ref = img.rescue && img.rescue[i];
+      if (ref && !entry.edited) { entry.source = 'bank'; entry.rescue = ref; }
+      if (rec.verdict === 'YES') kept.push(entry);
+      else if (rec.verdict === 'NO') rejected.push(entry);
+    }
+    out.images.push({ image: img.image, hash: img.hash, condition: img.condition, time: img.time,
+      week: img.week, day: img.day, paths: img.paths, kept, rejected });
+  }
+  out.keptCount = out.images.reduce((n, i) => n + i.kept.length, 0);
+  out.imagesWithNone = out.images.filter((i) => !i.kept.length).map((i) => i.image);
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = EXPORT_NAME;
+  a.click();
+};
+
+render();
+</script>

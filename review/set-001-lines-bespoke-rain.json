@@ -1,0 +1,987 @@
+{
+ "generated": "2026-08-19",
+ "writtenBy": "Opus 5 (Baken), viewing each photograph",
+ "brief": "review/PAIRING-TASTE.md as instruction; five EN lines per image written for that picture. A line marked RESCUE is from the existing bank rather than newly written.",
+ "bucket": "rain",
+ "count": 31,
+ "images": [
+  {
+   "index": 1,
+   "image": "rain/week_1/dawn/2.webp",
+   "hash": "e5b2e8ac2654",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dawn/2.webp",
+    "rain/week_3/dawn/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Two young schoolchildren in bucket hats, raincoats and gumboots with backpacks, standing on a wet pavement sharing one umbrella — beside a completely empty glass bus shelter with a dry bench in it. Wet suburban street, puddles, houses, flat grey sky, rain falling.",
+   "note": null,
+   "lines": [
+    "There is an entire empty bus shelter behind them and they are not in it.",
+    "Both of them are in gumboots, which means somebody at home thought about this.",
+    "The bus is late and the puddle in front of them is getting interesting.",
+    "Monday, and the two of them have been standing there for about eleven minutes.",
+    "The commute just became a team sport."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#13"
+   ]
+  },
+  {
+   "index": 2,
+   "image": "rain/week_1/dawn/3.webp",
+   "hash": "9e75b001c7c5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/dawn/3.webp",
+    "rain/week_3/dawn/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "From inside a car, through a rain-covered windscreen with the wiper mid-sweep: a Cape Town street of Victorian buildings with cast-iron balconies, Table Mountain under heavy cloud behind, stopped traffic with red tail lights and oncoming headlights smeared across wet tar, pedestrians with umbrellas on the pavement. Dashboard in the foreground.",
+   "note": null,
+   "lines": [
+    "Table Mountain is behind all of that and nobody in this queue is looking.",
+    "Nobody in this queue has moved a car length in four minutes.",
+    "Tuesday, and the whole city left twenty minutes early and it made no difference.",
+    "The traffic is emotional.",
+    "The wipers are on max and it's still not enough."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    "witty:rain#25",
+    "witty:rain#19"
+   ]
+  },
+  {
+   "index": 3,
+   "image": "rain/week_1/dawn/6.webp",
+   "hash": "73567b0c612e",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_3/dawn/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A jacaranda-lined suburban street just after rain at sunrise — the road glossy wet and reflecting a low gold sun, steam lifting off the tar, purple blossom fallen along the kerb and floating in the wet. Deep blue sky with gold-lit cloud on the right. One runner in a hi-vis vest going away up the middle of the road.",
+   "note": null,
+   "lines": [
+    "That steam coming off the road is the rain leaving as fast as it arrived.",
+    "The rain stopped about nine minutes ago and he was already dressed.",
+    "Every jacaranda on this street dropped everything it had during the night.",
+    "Saturday, and he is the only one who backed the forecast and won.",
+    "The gutters are full of jacaranda and somebody's drain is going to disagree."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 4,
+   "image": "rain/week_1/dawn/7.webp",
+   "hash": "206f0a768ec9",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dawn/7.webp",
+    "rain/week_3/dawn/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Inside a concrete house. A long floor-to-ceiling glass wall completely covered in running rain with a lawn and hedge blurred green behind it. One stoneware mug of black coffee standing on the wide concrete ledge. Further along, an open corner showing a soaked patio with an outdoor table and chairs, a potted plant, and a pale couch on a rug. Nobody in the frame.",
+   "note": null,
+   "lines": [
+    "The coffee is still full, which means somebody has been standing here a while.",
+    "That mug got carried to the window and never made it any further.",
+    "Those chairs were put out yesterday and nobody is going to bring them in.",
+    "Sunday, and the whole day has just been decided by a window.",
+    "Perfect excuse to cancel plans."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#6"
+   ]
+  },
+  {
+   "index": 5,
+   "image": "rain/week_1/day/1.webp",
+   "hash": "d878b96a3f71",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A street in heavy rain. A woman in a navy raincoat walking towards camera, wincing, holding up an umbrella that has been blown completely inside out and folded backwards. Three schoolchildren in pale blue shirts and grey uniforms around her, all laughing and stomping through the flooded road sending water up. Low houses, wet road, flat white sky.",
+   "note": null,
+   "lines": [
+    "The umbrella is finished and she is the only one who has noticed.",
+    "She is still holding it up, which is either hope or muscle memory.",
+    "Three of them are having the best morning of the term behind her.",
+    "Those uniforms were ironed last night and none of that matters any more.",
+    "The umbrella broke on the first gust. Classic."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#15"
+   ]
+  },
+  {
+   "index": 6,
+   "image": "rain/week_1/day/2.webp",
+   "hash": "2b750515575e",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/day/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A completely flooded suburban street with the street sign Water Stilte on the corner. A man in a yellow raincoat and boardshorts is water-skiing barefoot on two wooden skis down the flooded road behind a tow rope, throwing up a wake. On the pavement behind him six or seven neighbours stand under umbrellas watching and filming. Face-brick houses, bare winter trees, brown floodwater to the walls.",
+   "note": null,
+   "lines": [
+    "That street sign says Water Stilte and today it is not even a joke.",
+    "Seven neighbours came out in the rain to watch and none of them stopped him.",
+    "Whatever is pulling that rope is somewhere down this road and also underwater.",
+    "Monday, and the drain on this corner gave up some time before nine.",
+    "Rain so heavy it should pay rent."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#11"
+   ]
+  },
+  {
+   "index": 7,
+   "image": "rain/week_1/day/3.webp",
+   "hash": "00a672556998",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Six children in bright raincoats and gumboots holding hands in a line, jumping together into a big brown puddle in an estate street, all shouting, water going everywhere. Face-brick and plastered houses with green boundary walls, wet road, heavy grey cloud.",
+   "note": null,
+   "lines": [
+    "Six of them landed at exactly the same time and somebody's mother heard it.",
+    "Nobody is holding an umbrella and every single one of them is holding a hand.",
+    "Every one of those raincoats was bought for a day exactly like this.",
+    "That puddle is going to be gone by four and all of them know it.",
+    "Tuesday afternoon, and this is the entire reason gumboots were ever invented."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 8,
+   "image": "rain/week_1/dusk/1.webp",
+   "hash": "71fdebcd3deb",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dusk/1.webp",
+    "rain/week_3/dusk/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A road cyclist in soaked kit stopped at a red traffic light in pouring rain at dusk, water pouring off his helmet in ropes down his face, expression of comic despair. Beside him a woman leans out of a dry car window howling with laughter, hand on her forehead. Wet tar reflecting red, jacarandas, purple-pink dusk sky.",
+   "note": null,
+   "lines": [
+    "She is dry, he is not, and that light has been red for ages.",
+    "He left the house at five and it was not doing anything like this.",
+    "Somebody in a dry car is going to tell this story for years.",
+    "The light will go green and he still has to pull off looking dignified.",
+    "Forgot your jacket? The universe noticed."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#33"
+   ]
+  },
+  {
+   "index": 9,
+   "image": "rain/week_1/dusk/2.webp",
+   "hash": "5f935cb18f17",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dusk/2.webp",
+    "rain/week_3/dusk/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "Bo-Kaap in the rain at dusk. An older man in a flat cap and dark shirt walking down the wet cobbled street holding a very small black umbrella, looking straight at camera, his shirt already soaked through. Turquoise, pink, yellow and green houses either side with warm-lit windows and porch lamps, Lion's Head silhouetted against a burning gold and black sky, cobbles reflecting the lamps.",
+   "note": null,
+   "lines": [
+    "That umbrella is about the size of his head and it is doing its best.",
+    "His shirt is soaked through and he is still walking at exactly the same speed.",
+    "Sunday evening in Bo-Kaap, and the rain has made every colour twice as loud.",
+    "Every one of those houses has its lights on and he is still out here.",
+    "The cobbles are doing more with that light than the sky is."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 10,
+   "image": "rain/week_1/dusk/5.webp",
+   "hash": "e95e8a2f22f0",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_1/dusk/5.webp",
+    "rain/week_3/dusk/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "Looking out through open sliding doors onto a small flat balcony in the rain, with the Hillbrow Tower and the Johannesburg skyline under heavy cloud and a gold break behind. A big terracotta pot of agapanthus in full purple flower stands in the middle of the balcony, the tiled floor completely under standing water with rain dimpling it. Rain streaming down the glass on the left.",
+   "note": null,
+   "lines": [
+    "There is two centimetres of standing water on that balcony and one blocked drain.",
+    "The agapanthus had not been watered in three weeks and has now been watered.",
+    "Joburg gets a whole summer of this in about forty minutes.",
+    "The door is still open, which means somebody was watching and forgot to close it.",
+    "Wednesday, and somebody is going to be out there with a broom tonight."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 11,
+   "image": "rain/week_1/night/3.webp",
+   "hash": "d28204abf829",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/night/3.webp",
+    "rain/week_3/night/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A Cape Town street at night in heavy rain, neon signs down the right — red DELUXE COFFEE, blue THE GIN BAR, gold CAPE TOWN BOOKS. Wet cobbled road running away between Victorian buildings, street lights, the mountain looming dark behind. The street is completely empty except one car far off, neon streaked long across the wet tar.",
+   "note": null,
+   "lines": [
+    "Three places are open on this whole street and nobody has walked past them.",
+    "Somebody in that coffee place has been wiping the same counter for an hour.",
+    "Sunday night, and the gin bar has exactly the customers you would expect.",
+    "That mountain is right behind all of this and you would never know tonight.",
+    "The neon is doing more work in the road than it is on the wall."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 12,
+   "image": "rain/week_2/dawn/2.webp",
+   "hash": "7bd5758fb7b5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dawn/2.webp",
+    "rain/week_4/dawn/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A Karoo farmstead at sunrise in rain — a low whitewashed cottage with a corrugated roof and a wide stoep with chairs, one warm-lit yellow window, a windpomp turning fast beside it and a green water tank. Rain sheeting across the veld from the left with gold sun breaking underneath, red earth and scrub, and a dirt track in the foreground running with water and reflecting the gold.",
+   "note": "Pass-1 approved witty:rain#7 (\"The dams are doing a happy dance\") here; no dam in frame and the phrase is a verdict rather than a mechanism, so it was not rescued.",
+   "lines": [
+    "That track has been dust since about October and this morning it is a river.",
+    "That tank has been empty long enough for this to count as a proper event.",
+    "There is one light on in that house and everybody in it is already awake.",
+    "Somebody has been standing on that stoep watching this for twenty minutes.",
+    "Friday, and nobody on this farm is going to talk about anything else today."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 13,
+   "image": "rain/week_2/dawn/5.webp",
+   "hash": "80770bf13004",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/dawn/5.webp",
+    "rain/week_4/dawn/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Outside a school gate in the rain at dawn. A mother in a cream jumper with a backpack over her shoulder holds a big black umbrella over her daughter in navy school uniform, the two looking at each other and smiling. A grey car pulled up at the kerb, wet paving reflecting, a green boundary wall and school buildings behind with a porch light on, pink dawn cloud above.",
+   "note": null,
+   "lines": [
+    "That umbrella is over the child and about a third of the mother.",
+    "Nobody walks their child all the way to the gate when it is dry.",
+    "She has carried that bag from the car and is not handing it over yet.",
+    "Wednesday, and the rain has bought them an extra four minutes at the gate.",
+    "The porch light is still on and the bell has not gone yet."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 14,
+   "image": "rain/week_2/dawn/6.webp",
+   "hash": "5526989179bd",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A farm road at sunrise in rain. A steel gate closed across the track, a windpomp on the left, a small yellow-ochre farmhouse with a corrugated roof and stoep, a galvanised shed on the right, dry gold grass either side — and the track in the foreground completely under a sheet of water perfectly reflecting the gate, the windpomp and the gold sky, with rain dimpling it.",
+   "note": null,
+   "lines": [
+    "That gate is shut and the road up to it is now a dam.",
+    "The track has taken more water in an hour than it did all winter.",
+    "Thursday, and somebody inside that house is doing sums that finally come out right.",
+    "Nobody is driving in or out of that gate for a while.",
+    "The whole sky is lying in that road and the road is not complaining."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 15,
+   "image": "rain/week_2/day/1.webp",
+   "hash": "fe838c8901f7",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "rain/week_2/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "A construction worker in a white hard hat, hi-vis vest and soaked overalls leaning on the handle of a shovel, head down, eyes closed, water pouring off the brim of his helmet in a rope. Behind him a half-built concrete tower in scaffolding and sheeting, a yellow crane, rebar columns rising out of a flooded slab, and two glass towers in the mist.",
+   "note": "All four pass-1 approvals here are wet-socks/wet-jeans lines aimed at the reader's discomfort, on a frame of a man doing hard work in the rain. PAIRING-TASTE rule 6 rules that out — nothing rescued, and every line here aims at the weather and the site.",
+   "lines": [
+    "That slab was poured this morning and the rain arrived about an hour early.",
+    "He is not resting, he is waiting for somebody to call it.",
+    "There is a whole day's work under that water and it is still coming down.",
+    "The crane stopped a while ago and he is the one still standing there.",
+    "Monday, and the site has been shut in everybody's head for about ten minutes."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 16,
+   "image": "rain/week_2/day/4.webp",
+   "hash": "e7547cfdee94",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/day/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Low angle on a flooded paved patio. A ginger cat sitting hunched and damp under a metal patio chair, ears back, looking sideways with pure grievance, reflected in the sheet of water covering the paving. Corrugated fence, aloes and succulents, a table edge top right, heavy grey cloud, rain ringing the water.",
+   "note": null,
+   "lines": [
+    "That chair is technically shelter and he is going to keep pretending it is.",
+    "He came out for two minutes and that was about forty minutes ago.",
+    "There is a whole dry house behind this and going back means admitting something.",
+    "The paving is under water and that chair has four legs and no roof.",
+    "Thursday, and the aloes are the only things in this garden enjoying themselves."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 17,
+   "image": "rain/week_2/day/5.webp",
+   "hash": "3bd49d0acf2b",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A flooded suburban street, brown water right across the road up over the kerbs and onto the lawns. A silver station wagon driving through it pushing a bow wave, water over the wheel arches. Big gum trees, red-brick houses with corrugated roofs, another car parked and half submerged on the left, heavy purple-grey cloud.",
+   "note": null,
+   "lines": [
+    "That water is over the sills of the car parked on the left.",
+    "He is going slowly, which is the difference between driving through and swimming home.",
+    "Wednesday, and somebody is going to find out about that parked car this evening.",
+    "The water has reached the front lawns and the front lawns are usually higher.",
+    "Every one of those gums has been drinking for about six hours."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 18,
+   "image": "rain/week_2/day/6.webp",
+   "hash": "8ce35385e048",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "From the back seat of a car over the driver's shoulder: a woman with a bun in a cream jumper, one hand on the wheel, looking ahead through a windscreen almost opaque with rain. Beyond the glass a solid wall of stopped traffic with brake lights smeared red, a crane and palms dissolved by the water on the glass. The wiper is at the top of its arc.",
+   "note": null,
+   "lines": [
+    "The wipers are keeping up and the traffic in front of her is not.",
+    "Everybody in front of her is doing forty and the limit is a hundred.",
+    "Wednesday, and she left at half past four to avoid exactly this.",
+    "Nobody in any of those cars is listening to the radio any more.",
+    "The traffic just remembered rain exists. Again."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#35"
+   ]
+  },
+  {
+   "index": 19,
+   "image": "rain/week_2/dusk/2.webp",
+   "hash": "f7f51acb22c9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_2/dusk/2.webp",
+    "rain/week_4/dusk/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A man in an olive jacket with a backpack standing under the lit porch of a modest suburban house at dusk in heavy rain, a closed navy umbrella at his side, looking off down the road. Warm ceiling light above him, dark security gate, a potted plant, water pouring off the tiled roof, purple dusk sky, wet street reflecting the porch light in a long gold streak, one car going past with headlights on.",
+   "note": null,
+   "lines": [
+    "The umbrella is closed, which means he is not planning to walk anywhere.",
+    "He is not looking at the rain, he is looking for headlights.",
+    "He has been under that light for eleven minutes and three cars have gone past.",
+    "Saturday, and somebody said they were five minutes away at about half past six.",
+    "That porch light is the only thing standing between him and the whole evening."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 20,
+   "image": "rain/week_2/dusk/3.webp",
+   "hash": "09641df1432a",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_2/dusk/3.webp",
+    "rain/week_4/dusk/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "From inside a car in a traffic jam on a Cape Town highway at dusk in the rain, the mountain under low cloud on the left. Two lanes of stopped traffic with brake lights reflected in long red streaks on the wet tar, street lights on, billboards, the city climbing the slopes behind.",
+   "note": null,
+   "lines": [
+    "That mountain has been under cloud since Sunday and nobody here has time to notice.",
+    "Not one of those brake lights has gone off in the last four minutes.",
+    "Everybody in this queue looked at the sky this morning and came anyway.",
+    "The street lights came on early and it made absolutely no difference.",
+    "Tuesday, and the whole city is currently parked between the mountain and the sea."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 21,
+   "image": "rain/week_2/dusk/4.webp",
+   "hash": "b4ee9d16720e",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dusk/4.webp",
+    "rain/week_4/dusk/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "The tiled entrance hall of a suburban house at dusk, front door wide open onto a wet street. A man in a soaked white business shirt and dark trousers, shoulders down, holding out the sodden lining of his suit jacket and looking at the puddle spreading across the tiles at his feet. Staircase with wrought-iron balustrade on the left, console table and vase on the right.",
+   "note": null,
+   "lines": [
+    "He is looking at the floor rather than at the jacket, which tells you everything.",
+    "The car was about eleven metres away and it made no difference at all.",
+    "That puddle is spreading and the door is still open behind him.",
+    "Friday, and that jacket is going to be on a chair until Sunday.",
+    "The lining came out wetter than the outside of the jacket did."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 22,
+   "image": "rain/week_2/dusk/6.webp",
+   "hash": "abf80e59bae9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dusk/6.webp",
+    "rain/week_4/dusk/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "Inside an older car at dusk in rain. A young woman in a black puffer jacket in the driver's seat, elbow on the door and chin on her hand, staring out through the side window with a flat tired expression. Rain running down the windscreen and side glass, wipers parked, brake lights and street lights blurred outside.",
+   "note": null,
+   "lines": [
+    "The wipers are off, which means she has stopped and is not going anywhere.",
+    "She is not waiting for the rain, she is waiting for somebody.",
+    "The engine is off and the windows have started to mist up from inside.",
+    "Nobody is getting out of this car until it eases, and it is not easing.",
+    "Thursday evening, and this is the quietest twenty minutes she gets all week."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 23,
+   "image": "rain/week_2/night/4.webp",
+   "hash": "c8df884e9ec0",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/night/4.webp",
+    "rain/week_4/night/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Inside a car at night in rain. A man in a dark jacket and cap driving with both hands on the wheel, dashboard dials glowing orange, looking hard ahead. Rain streaming down the windscreen with the wiper mid-sweep, street lights and blurred head and brake lights outside on a wet road.",
+   "note": null,
+   "lines": [
+    "Both hands are on the wheel and that is not how he usually drives.",
+    "The wiper clears it and it is gone again before he can use it.",
+    "Nobody on this road is doing the speed limit and nobody is complaining.",
+    "The demister has been on so long the dashboard is the warmest thing in here.",
+    "Thursday night, and he is nine kilometres from home and taking every one slowly."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 24,
+   "image": "rain/week_2/night/6.webp",
+   "hash": "19ddc2f8afd3",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/night/6.webp",
+    "rain/week_4/night/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A wet suburban street at night. Lying in the gutter, half in the running water, a completely destroyed black umbrella — ribs broken and splayed, fabric torn back. Above it a clipped hedge, a mown verge, a white boundary wall lit by a spotlight and a white house with balconies and one lit blue window. Leaves in the water.",
+   "note": null,
+   "lines": [
+    "Somebody walked home from that and did not look back once.",
+    "That umbrella lost, and it lost about forty minutes before anybody drove past.",
+    "Friday night, and the last thing it ever did was get somebody to a door.",
+    "One lit window on this street and nobody in it is coming out for that.",
+    "It is going to lie in that gutter until the municipality or the wind decides."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 25,
+   "image": "rain/week_3/day/1.webp",
+   "hash": "d86d4f5699c2",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "rain/week_3/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "Outside a primary school gate in the rain. A man in a hi-vis vest standing with both arms spread wide holding back seven children in navy raincoats and gumboots at the kerb, all of them leaning forward laughing and pointing at a wide puddle covering the road in front of them. Wet tar, big tree, green gate pillars, school sign on the wall.",
+   "note": null,
+   "lines": [
+    "Seven of them and one pair of arms, and the arms are winning for now.",
+    "He knows exactly how deep that is and not one of them believes him.",
+    "Every one of them is in gumboots and that is the whole problem.",
+    "That puddle is going to win at exactly half past two.",
+    "Thursday, and this puddle has been the main topic since first break."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 26,
+   "image": "rain/week_3/day/3.webp",
+   "hash": "e54bbf2b56b2",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A woman in a navy business suit and heels laughing and half-running across a flooded city street between colonial buildings, holding a folded newspaper over her head as a roof, one heel lifting out of the water mid-stride. Blurred pedestrians with umbrellas on the pavement behind, grey rain sky.",
+   "note": null,
+   "lines": [
+    "That newspaper has about ninety seconds of structural integrity left in it.",
+    "Everybody on that pavement has an umbrella and she has the morning edition.",
+    "She is laughing, which is the only thing left to do in those shoes.",
+    "Friday, and she is going to be in that suit until five whatever happens.",
+    "Your shoes are about to have a bad day."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#12"
+   ]
+  },
+  {
+   "index": 27,
+   "image": "rain/week_3/day/5.webp",
+   "hash": "d8d16083a690",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_3/day/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A small fishing harbour in bad weather. Two people in yellow and red raincoats standing on the harbour wall watching an enormous white wave explode over the breakwater right beside them. Below, a raft of red, blue and white wooden fishing boats moored up. Behind, a hillside of pastel cottages with their lights on under heavy grey cloud with one gold break.",
+   "note": null,
+   "lines": [
+    "Those two are standing exactly as close as they are prepared to admit to.",
+    "Not one of those boats went out this morning and every skipper agreed on it.",
+    "Every light on that hill is on and it is the middle of the day.",
+    "That wave is going to land on the wall about a second after this.",
+    "Sunday, and the harbour is the busiest place in this village with nothing happening."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 28,
+   "image": "rain/week_3/day/7.webp",
+   "hash": "a0ef2720c507",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Two men in business clothes half-running through a wet office car park under one small grey umbrella, both laughing; one in a light blue shirt holding the umbrella, the other in a navy blazer with his shirt untucked and clearly soaked, arm across his colleague's back. Brick office building with a lit entrance behind, parked cars, wet tar, yellow parking lines.",
+   "note": null,
+   "lines": [
+    "One umbrella, two men, and about a third of one of them is under it.",
+    "The one holding it is dry and the one who owns it is not.",
+    "They are forty metres from the door and neither of them is going faster.",
+    "That blazer has taken on more water than the umbrella has kept off.",
+    "Friday, and both of them have a meeting in eight minutes looking like that."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 29,
+   "image": "rain/week_4/day/2.webp",
+   "hash": "057e8c9e5039",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Looking out from just inside an open door onto a wet tiled stoep in the rain. A pair of muddy soccer boots on the coir doormat and a navy soccer jersey dropped in a heap on the wet tiles behind them. Beyond, a soaked garden with palms and a wrought-iron patio set. Inside on the right, a warm lamp-lit lounge.",
+   "note": null,
+   "lines": [
+    "That jersey has been on those tiles since about eleven and nobody has moved it.",
+    "The boots came off outside, which is the one rule that survived this morning.",
+    "Somebody got as far as the doormat and then made a series of decisions.",
+    "Saturday, and the game went ahead anyway, because it always goes ahead anyway.",
+    "There is a lamp on in that lounge and nobody is going back out."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 30,
+   "image": "rain/week_4/day/3.webp",
+   "hash": "c9050c0a05e5",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "rain/week_4/day/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A farm werf in heavy rain — flagstone paving running with a sheet of water, a big terracotta pot of ferns and succulents in the middle overflowing with water pouring out over its rim, more pots along a covered stoep with a wooden bench and table, corrugated roofs both sides and rain sheeting down between them.",
+   "note": null,
+   "lines": [
+    "That pot is overflowing, which means it has been going for a long time.",
+    "The paving stopped absorbing about an hour ago and started transporting instead.",
+    "Every one of those ferns has been waiting for exactly this since about June.",
+    "Sunday, and this is the first proper rain that werf has seen since March.",
+    "The garden's saying dankie at last."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:rain#2"
+   ]
+  },
+  {
+   "index": 31,
+   "image": "rain/week_4/day/4.webp",
+   "hash": "c9c6fd784b69",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Looking down a stone-walled farmhouse verandah with a corrugated lean-to pouring water off its edge. A pair of muddy green gumboots standing on the terracotta tiles beside a wooden stable door, and a trail of muddy bootprints leading across the tiles from the garden to the doormat. Outside, a soaked aloe garden in heavy rain.",
+   "note": null,
+   "lines": [
+    "Those prints go all the way to the mat and then they stop.",
+    "The boots are outside the door, which means somebody knows the rules here.",
+    "Those prints are still wet, so this happened about four minutes ago.",
+    "Whoever wore those was out there before this started and stayed out anyway.",
+    "Saturday, and there is a whole morning's mud on this stoep and none inside."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ ]
+}
