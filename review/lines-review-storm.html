@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PW — bespoke lines, set-001</title>
+<link rel="stylesheet" href="../assets/type-prototype-caption.css">
+<style>
+  :root { --bg:#14110d; --panel:#1f1a14; --ink:#fffaf3; --ink2:#b5ab9d; --gold:#ffd700; --yes:#63c98a; --no:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:rgba(20,17,13,.97); border-bottom:1px solid rgba(246,242,232,.14);
+           padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0 8px 0 0; }
+  button { font:inherit; border:1px solid rgba(246,242,232,.18); background:var(--panel); color:var(--ink);
+           border-radius:8px; padding:6px 11px; cursor:pointer; }
+  button:hover { border-color:var(--gold); }
+  button.primary { background:var(--gold); color:#1a1a2e; border-color:var(--gold); font-weight:700; }
+  .tally { color:var(--ink2); font-variant-numeric:tabular-nums; }
+  main { padding:18px; display:flex; flex-direction:column; gap:30px; }
+  .card { display:grid; grid-template-columns:auto 1fr; gap:22px; border-top:1px solid rgba(246,242,232,.12); padding-top:18px; }
+  .hero { position:relative; overflow:hidden; background-size:cover; background-repeat:no-repeat;
+          border-radius:0 0 20px 20px; box-shadow:0 18px 44px rgba(0,0,0,.55); }
+  .cap { position:absolute; left:0; right:0; bottom:0; margin:0; color:#fff; font-weight:700;
+         font-family:'Caveat Prototype','Segoe Print','Bradley Hand',cursive; text-align:left; line-height:1.08;
+         text-shadow:0 2px 14px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.8); }
+  .meta { color:var(--ink2); font-size:12.5px; margin-bottom:10px; }
+  .meta b { color:var(--ink); }
+  .seen { color:var(--ink2); font-size:12.5px; max-width:80ch; margin:0 0 12px; font-style:italic; }
+  .note { color:#ffb84d; font-size:12.5px; max-width:80ch; margin:0 0 12px; }
+  .line { display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .line input[type=text] { flex:1; min-width:0; font:inherit; background:#181410; color:var(--ink);
+      border:1px solid rgba(246,242,232,.16); border-radius:7px; padding:7px 10px; }
+  .line input[type=text]:focus { outline:none; border-color:var(--gold); }
+  .line .n { width:18px; color:var(--ink2); font-variant-numeric:tabular-nums; padding-top:8px; }
+  .line .wc { width:58px; color:var(--ink2); font-size:11.5px; padding-top:9px; text-align:right; }
+  .y.on { border-color:var(--yes); color:var(--yes); font-weight:700; }
+  .n2.on { border-color:var(--no); color:var(--no); font-weight:700; }
+  .line.mine input[type=text] { border-style:dashed; }
+  .line .resc { flex:none; align-self:flex-start; margin-top:8px; font-size:10.5px; letter-spacing:.06em;
+      text-transform:uppercase; color:#8fb7ff; border:1px solid #8fb7ff55; border-radius:5px; padding:1px 5px; }
+  .hint { color:var(--ink2); font-size:12px; margin:10px 0 0; max-width:80ch; }
+</style>
+
+<header>
+  <h1>Bespoke lines — storm, 31 photographs, five each</h1>
+  <span class="tally" id="tally"></span>
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export</button>
+</header>
+<main id="main"></main>
+
+<script>
+const DATA = {"box":{"w":327,"h":518},"cap":{"runway":56.84,"font":33.00000000000001,"padBottom":14.616000000000001},"bucket":"storm","images":[{"index":1,"image":"storm/week_1/dawn/2.webp","hash":"91f980f76f82","condition":"storm","time":"dawn","week":"A","day":"mon","paths":["storm/week_1/dawn/2.webp","storm/week_3/dawn/2.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A highway at dawn seen from an overpass. Heavy purple storm cloud fills the top half with one fork of lightning in it, and the CBD skyline sits under a curtain of rain lit orange by the sunrise. Below, four lanes of nose-to-tail traffic with brake lights on — a delivery truck, bakkies, hatchbacks — all on wet tar, while the opposite carriageway is nearly empty.","note":"Pass-1 offered witty:storm#13 (\"Lightning's putting Eskom's grid to shame\") — ruled out by CLAUDE.md — and storm#24 (\"Don't even think about driving somewhere\") on a frame where four lanes are already driving. Nothing rescued.","lines":["Every single one of those cars left home before any of that started.","That rain over the city is going to be over this road in nine minutes.","The other side of the highway is empty and nobody on this side cares.","Somebody in that queue is about to find out about their windscreen wipers.","Monday, and not one of these cars is getting anywhere before it catches them."],"rescue":[null,null,null,null,null]},{"index":2,"image":"storm/week_1/dawn/3.webp","hash":"55fac1141abf","condition":"storm","time":"dawn","week":"A","day":"tue","paths":["storm/week_1/dawn/3.webp","storm/week_3/dawn/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"4 bank lines approved on this slot","seen":"A modern estate street in heavy rain with an enormous branching lightning bolt striking down right behind the houses, the strike point just behind a flat-roofed concrete house. Wet road, a silver Polo in a driveway, another car parked, thorn trees whipping, plastered walls, rain falling hard.","note":"All four pass-1 approvals are documented failures or barred: storm#16 (1/13, pure narration of the bolt), storm#29 (instruction, no plug in frame), storm#25 (verdict), storm#12 (Eskom). Nothing rescued.","lines":["That did not land far enough away for anybody in that house to relax.","Every dog in this street has just gone under a bed.","The Polo in that driveway is about to have a long conversation about its alarm.","Tuesday, and that struck about forty metres behind somebody's kitchen.","Nobody in this street is going to sleep through the next twenty minutes."],"rescue":[null,null,null,null,null]},{"index":3,"image":"storm/week_1/dawn/5.webp","hash":"f0b49be17750","condition":"storm","time":"dawn","week":"A","day":"wed","paths":["storm/week_1/dawn/5.webp","storm/week_3/dawn/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":null,"seen":"A field of green sunflowers with the heads still shut, a windpomp silhouetted in the middle distance, under a spectacular mammatus ceiling — pouch-shaped purple and pink cloud filling the whole sky with a burning orange strip along the horizon.","note":null,"lines":["That cloud only forms after something serious has already been through here.","The windpomp is the tallest thing for ten kilometres, which is not ideal tonight.","Every one of those heads is still shut and the sky is doing all that.","Somebody on this farm has been standing at a window for a while now.","Wednesday, and this whole sky will be gone before anybody thinks to look again."],"rescue":[null,null,null,null,null]},{"index":4,"image":"storm/week_1/dawn/7.webp","hash":"a785060d7357","condition":"storm","time":"dawn","week":"A","day":"thu","paths":["storm/week_1/dawn/7.webp","storm/week_3/dawn/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A bedroom. A woman lying flat on her stomach on the floor beside the bed with one arm reaching underneath it, coaxing; a man in a white tee crouched behind her, both smiling. Under the bed a brown dog's head and paws are just visible, refusing to come out. Wooden floor, rug, framed picture, warm lamp light through the door.","note":null,"lines":["There is no thunder in this photograph and it is the only thing in it.","They have been down there eleven minutes and he has not moved once.","Nobody in this room is winning this and all three of them know it.","The dog's under the bed. Smart move, honestly.","Not the time for hero moves, hey."],"rescue":[null,null,null,"witty:storm#2","witty:storm#18"]},{"index":5,"image":"storm/week_1/day/3.webp","hash":"41e6c19016c1","condition":"storm","time":"day","week":"A","day":"tue","paths":["storm/week_1/day/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Under the glass canopy outside a supermarket at dusk in a storm. Six people who clearly do not know each other standing in a row on the paving, all looking out at the rain — a woman in a headscarf, a man in a hi-vis work jacket, three young people. Two abandoned trolleys out on the wet parking lot, parked cars, and a fork of lightning behind the far buildings. Warm shop light spilling from the left.","note":null,"lines":["Six people who do not know each other, all doing exactly the same thing.","Every one of them has a car about forty metres away and nobody has moved.","Nobody here is shopping any more, they are all just waiting for a gap.","Two trolleys out there and not one person is going to go and fetch them.","Tuesday, and the shop has become a bus shelter for the next ten minutes."],"rescue":[null,null,null,null,null]},{"index":6,"image":"storm/week_1/day/4.webp","hash":"676b8843cb92","condition":"storm","time":"day","week":"B","day":"sat","paths":["storm/week_1/day/4.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A surfer in a black wetsuit walking away down an empty beach towards the water with his board under his arm, into an enormous dark storm sky with visible rain shafts falling out over the sea. Grey-green surf, rain falling on him, and his the only footprints going that way.","note":"PAIRING-TASTE names this exact frame as the documented NO for storm#18: never aim the joke at somebody taking a real risk competently. Both pass-1 approvals scold him, so nothing was rescued and every line respects his judgement.","lines":["There is rain falling on the water out there and he has already seen it.","He is not walking fast, which tells you he has done this before.","Everybody else went home and his are the only footprints going that way.","That sky is going to be on top of him in about six minutes.","Saturday, and the whole beach is his because nobody else wanted the deal."],"rescue":[null,null,null,null,null]},{"index":7,"image":"storm/week_1/day/5.webp","hash":"99d0821cdd98","condition":"storm","time":"day","week":"A","day":"mon","paths":["storm/week_1/day/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"4 bank lines approved on this slot","seen":"A suburban street in a storm. A woman in a navy rain jacket bent forward, laughing, holding up an umbrella that has been completely stripped — only the bare metal ribs left, not a scrap of fabric on it. Torn green leaves and broken branches scattered all over the wet road and verges, palms thrashing, power lines, heavy grey cloud.","note":null,"lines":["There is no fabric left on that umbrella and she is still holding it up.","Half the trees on this street are lying on the road behind her.","She is laughing, which is the only thing that skeleton is good for now.","Monday, and that umbrella lasted about the length of one driveway.","Not the time for hero moves, hey."],"rescue":[null,null,null,null,"witty:storm#18"]},{"index":8,"image":"storm/week_1/dusk/2.webp","hash":"a61146a38b06","condition":"storm","time":"dusk","week":"A","day":"thu","paths":["storm/week_1/dusk/2.webp","storm/week_3/dusk/2.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Two farmers in wide-brimmed hats lifting a bale onto the back of a white bakkie already loaded with bales, on a dirt road at the edge of a golden grass field. Behind them a sandstone escarpment with a dark storm cell and a visible rain shaft falling on the left, and burning gold sunset light on the right. More bales stacked in the foreground.","note":"The hay-bale frame PAIRING-TASTE names as the other documented storm#18 NO. All three pass-1 approvals here are verdicts or instructions aimed at people working against a coming storm; nothing rescued.","lines":["That rain is about eleven kilometres away and they have both done the maths.","Every bale on that bakkie is one they will not lose tonight.","Nobody stops to look at a sky like that when there are bales on the ground.","The sun is on one side of them and the rain is on the other.","Thursday, and neither of them is going to be finished before that reaches them."],"rescue":[null,null,null,null,null]},{"index":9,"image":"storm/week_1/dusk/3.webp","hash":"742e1675a5a4","condition":"storm","time":"dusk","week":"A","day":"mon","paths":["storm/week_1/dusk/3.webp","storm/week_3/dusk/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"From a balcony walkway, a woman with big curly hair seen from behind, leaning on the concrete parapet looking out over a wet city street at dusk — a 1960s brown-brick block with lit windows, wet road reflecting street lights and tail lights, one small figure with a pink umbrella far below. Above, a huge purple and orange storm sky with a big fork of lightning to the right.","note":null,"lines":["She came out for two minutes and has been out here for twenty.","There is one umbrella down there and about four hundred windows up here.","That flash lit the whole street and she did not flinch once.","Monday evening, and this is better than anything that is on inside.","The sky just went full Carte Blanche."],"rescue":[null,null,null,null,"witty:storm#14"]},{"index":10,"image":"storm/week_1/dusk/4.webp","hash":"53d4228e24c8","condition":"storm","time":"dusk","week":"A","day":"wed","paths":["storm/week_1/dusk/4.webp","storm/week_3/dusk/4.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"An empty suburban estate street at dusk in a storm — wet road running away, one street light, modern flat-roofed grey houses on the right with two windows glowing warm orange, a palm and a big tree bending, and a wide sheet-and-fork discharge lighting the cloud base above the houses.","note":null,"lines":["Two windows on this whole street are lit and both of them are watching.","Nobody is on this road, which is unusual for six o'clock on a Wednesday.","That flash is going to be followed by something and everybody is counting.","Somebody in that orange window has just put the kettle on out of habit.","Every car on this street is already inside a garage and it is not late."],"rescue":[null,null,null,null,null]},{"index":11,"image":"storm/week_1/dusk/5.webp","hash":"e5b510c8a1e4","condition":"storm","time":"dusk","week":"A","day":"sun","paths":["storm/week_1/dusk/5.webp","storm/week_3/dusk/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A rocky coastline at dusk with heavy purple-black storm cloud filling the sky and three separate lightning bolts striking down into the sea on the horizon, with a burning orange strip of sunset below them. White surf pouring over black rocks in the foreground, rain shafts on the left.","note":null,"lines":["Three strikes on the horizon and every one of them landed in salt water.","That is about twenty kilometres out, which is the only comforting thing here.","Sunday evening, and every boat that was out there came in hours ago.","Nobody on this coast is going to get any of that, and everybody will hear it.","The sky's CV just got updated."],"rescue":[null,null,null,null,"witty:storm#21"]},{"index":12,"image":"storm/week_1/dusk/7.webp","hash":"e0089512238b","condition":"storm","time":"dusk","week":"A","day":"fri","paths":["storm/week_1/dusk/7.webp","storm/week_3/dusk/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A dim house passage lit by one warm wall sconce. A galvanised bucket standing in the middle of the floor with water dripping into it from the ceiling, a drop caught mid-fall, and a folded grey towel on the floor beside it. Beyond, a doorway into a lounge with an armchair, a brass lamp, a rug and a rain-wet window onto a green garden.","note":null,"lines":["The towel came out before the bucket did, which tells you about this ceiling.","That bucket has a spot, and it is the same spot every single year.","Somebody heard that from the lounge and knew exactly what it was.","Friday, and the roof has picked the worst possible weekend to bring this up.","Nobody is fixing that tonight and everybody in this house has accepted it."],"rescue":[null,null,null,null,null]},{"index":13,"image":"storm/week_1/night/7.webp","hash":"14c56f85c353","condition":"storm","time":"night","week":"A","day":"sun","paths":["storm/week_1/night/7.webp","storm/week_3/night/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":null,"seen":"A dark bedroom at night. A man in a navy tee and grey shorts standing at the window grinning, holding up his phone to film an enormous branching lightning bolt lighting the whole sky purple over a suburb of trees, street lights and distant town lights. Framed picture, lamp and a bed with a patterned duvet on the right.","note":null,"lines":["He is filming it and that video is going to be four seconds of purple.","That is the fourth one he has tried to catch and the first he got.","He is going to watch that back tomorrow and it will look like nothing.","Everybody in that suburb is at a window and he is the only one smiling.","Sunday night, and nobody in this house is getting to sleep for a while."],"rescue":[null,null,null,null,null]},{"index":14,"image":"storm/week_2/dawn/2.webp","hash":"56af96f529d2","condition":"storm","time":"dawn","week":"A","day":"sat","paths":["storm/week_2/dawn/2.webp","storm/week_4/dawn/2.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":null,"seen":"A man in black running kit standing in the middle of a suburban estate road, hands on hips, head tipped back looking straight up at a heavy dark grey storm sky. A sandstone-clad house with a wide verandah and warm-lit windows on the right, indigenous garden beds, one break of pale light on the horizon. The road is still dry.","note":null,"lines":["He is doing the arithmetic on how far he can get and still get back.","The road is still dry and that is the only fact in his favour.","There is a warm house four metres behind him with the lights already on.","He is going anyway, and he decided that before he came outside.","Saturday, and he has been standing in that road for a full minute."],"rescue":[null,null,null,null,null]},{"index":15,"image":"storm/week_2/dawn/3.webp","hash":"29a289619727","condition":"storm","time":"dawn","week":"A","day":"sun","paths":["storm/week_2/dawn/3.webp","storm/week_4/dawn/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"A woman in a dark green towelling gown, barefoot, leaning against the brick pillar of her front porch holding a patterned mug in both hands, looking out at a pink and purple storm dawn over a suburban estate with distant mountains and two faint lightning bolts on the left. A lantern lit on the wall beside her, wet driveway, parked car, other houses with their porch lights on.","note":"Pass-1's only approval here is witty:storm#31 (\"Beautiful and terrifying in equal measure\") — the documented 2/11 reviewer's-verdict failure. Nothing rescued.","lines":["She is barefoot on that stoep, which means this was not a planned outing.","Sunday morning, and she came out for coffee and stayed for this.","The lantern is still on because nobody has thought about it since last night.","Every porch light in this street is on and she is the only one out.","That is two flashes over the mountains and about forty kilometres of nothing in between."],"rescue":[null,null,null,null,null]},{"index":16,"image":"storm/week_2/dawn/7.webp","hash":"20ed2fe6b144","condition":"storm","time":"dawn","week":"A","day":"fri","paths":["storm/week_2/dawn/7.webp","storm/week_4/dawn/7.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":null,"seen":"A white bakkie driving away down a red dirt farm road between two walls of green maize, throwing up a plume of red dust lit orange by a low sun. Above, deep blue sky with a band of dark storm cloud along the horizon burning orange underneath.","note":null,"lines":["There is dust behind that bakkie and rain about ten kilometres in front of it.","That road is not going to be doing dust by about seven tonight.","The maize is standing there waiting for something it has waited months for.","He is driving towards it, which on a farm is not the strange choice.","Friday, and somebody on this farm has been watching that cloud since Tuesday."],"rescue":[null,null,null,null,null]},{"index":17,"image":"storm/week_2/day/2.webp","hash":"c152b51ebfa5","condition":"storm","time":"day","week":"A","day":"wed","paths":["storm/week_2/day/2.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"Two golfers seen from behind standing on a fairway with their golf bags beside them, watching an enormous lightning bolt strike down at the far end of the course. Trees whipping either side, wet green grass, heavy dark cloud, rain in the air.","note":null,"lines":["There are fourteen metal rods in each of those bags and nobody has moved.","Neither of them wants to be the one who says it out loud.","The round is over and neither of them has said so yet.","That landed about two holes away and they are both still watching it.","Wednesday, and one of them took a half day off work for this."],"rescue":[null,null,null,null,null]},{"index":18,"image":"storm/week_2/day/3.webp","hash":"a02b40a1cdb7","condition":"storm","time":"day","week":"A","day":"sat","paths":["storm/week_2/day/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"An empty rugby stadium seen from the try line — perfectly striped green field, white lines and posts, empty grandstands all round, floodlights on in daylight, under a huge churning storm cloud with sheet and fork lightning behind the main stand. Puddles standing in the in-goal area.","note":null,"lines":["That is a Saturday, those are floodlights, and there is nobody in the stands.","Kick-off was at three and the floodlights have been on since half past one.","Somewhere in that building a referee is looking at exactly the same sky.","Fifty thousand seats and the only thing in any of them is rain.","The field is perfect and it is going to stay that way all afternoon."],"rescue":[null,null,null,null,null]},{"index":19,"image":"storm/week_2/day/4.webp","hash":"c2c016aabf8f","condition":"storm","time":"day","week":"B","day":"tue","paths":["storm/week_2/day/4.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"3 bank lines approved on this slot","seen":"A bushveld garden after a storm has been through it. Wicker patio chairs on their sides and upside down on the lawn, the glass table shifted, two patterned seat cushions flung onto the grass and paving, a sun lounger tipped over, broken branches and torn leaves everywhere, acacias still bending, wet flagstones. Heavy grey cloud.","note":null,"lines":["Every one of those chairs was standing up about eleven minutes ago.","The cushions went furthest, which is how you know how hard it came through.","Nobody has come out to look at this yet and it is already over.","The table is still standing, which is the only good news in this garden.","Tuesday, and somebody's Saturday has just been booked without anybody asking them."],"rescue":[null,null,null,null,null]},{"index":20,"image":"storm/week_2/day/5.webp","hash":"777b9b465dbe","condition":"storm","time":"day","week":"B","day":"sun","paths":["storm/week_2/day/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"An old farmer in a bush hat, khaki shirt and gumboots standing in the doorway of a rusted corrugated-iron shed, one hand on his hat brim and one on the door frame, looking out at a huge dark storm cloud with a lightning bolt rolling in over a bone-dry dusty field. Dust blowing past his boots, pale dead grass to the horizon.","note":"Both pass-1 approvals are instructions aimed at a farmer watching a drought-breaking storm come in (\"Stay safe\", \"Best to listen\"). Rule 6 — nothing rescued.","lines":["That field has been that colour since about October and he has counted every day.","Nobody has to explain to him what that cloud is worth.","There is dust blowing past his boots and rain about four kilometres out.","He is holding his hat on and he is not going back inside.","Sunday, and this is the first thing worth watching on this farm all season."],"rescue":[null,null,null,null,null]},{"index":21,"image":"storm/week_2/day/6.webp","hash":"30a82fcff9d4","condition":"storm","time":"day","week":"B","day":"mon","paths":["storm/week_2/day/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A quiet dorp street of white flat-roofed houses and a long white boundary wall, oleander in white flower, a palm, a strip of dead brown grass verge with one hadeda standing on it. Above, an enormous dark grey storm cloud filling three quarters of the frame with a pale break on the left horizon. The road is completely empty.","note":null,"lines":["The road is completely empty at three in the afternoon on a Monday.","Every window on this street is shut and it is not remotely cold.","There is a gap on the left and it is closing faster than it opened.","The oleander is the only white thing left in this photograph.","Even the hadedas are quiet."],"rescue":[null,null,null,null,"witty:storm#3"]},{"index":22,"image":"storm/week_2/dusk/4.webp","hash":"f6818069c8bd","condition":"storm","time":"dusk","week":"A","day":"sat","paths":["storm/week_2/dusk/4.webp","storm/week_4/dusk/4.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A suburban street at dusk after a storm — the road under a sheet of standing water reflecting everything, an enormous fallen tree lying with its whole crown across the road and verge on the right, roof debris on the house behind it, branches and leaves scattered, a street light on, and an emergency vehicle with red and blue lights flashing in the middle distance. Gold sunset break under heavy cloud on the left.","note":"Pass-1 offered storm#24 (an imperative) and storm#10 (\"Somewhere a roof is someone's new kite\" — the damage is right here, not somewhere). Nothing rescued, and the lines stay understated: this is a real damage scene with emergency services working in it.","lines":["That tree came down about twenty minutes ago and it took the road with it.","The blue lights got here before the water had finished arriving.","Saturday, and that tree had been standing there longer than the houses have.","The sun came out about four minutes after it was any use to anybody.","Nobody on this street is going anywhere tonight and everybody is already outside."],"rescue":[null,null,null,null,null]},{"index":23,"image":"storm/week_2/dusk/5.webp","hash":"adc69e7b4a17","condition":"storm","time":"dusk","week":"A","day":"tue","paths":["storm/week_2/dusk/5.webp","storm/week_4/dusk/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"1 bank lines approved on this slot","seen":"A man on an apartment balcony at dusk seen from behind, in a black tee, holding up his phone to photograph an enormous pink-purple lightning display over a city skyline. Wet balcony tiles, glass balustrade, warm lounge light through the sliding door on the left, a pot plant, trees and lit streets below.","note":null,"lines":["That balcony is soaked and he went back out onto it anyway.","The lounge is warm and dry about two metres behind him.","He is going to send that to about six people and two will reply.","The best one already happened, and it happened before he found his phone.","Tuesday evening, and the whole city is out on its balconies doing this."],"rescue":[null,null,null,null,null]},{"index":24,"image":"storm/week_2/night/1.webp","hash":"faaf0b2003be","condition":"storm","time":"night","week":"A","day":"wed","paths":["storm/week_2/night/1.webp","storm/week_4/night/1.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":null,"seen":"A boy of about nine wrapped in a thick grey fleece blanket sitting on a window seat at night with his knees up, looking out through the glass at a lightning bolt over a dark suburb of scattered lights and rooftops. A warm lamp and a shelf with a trophy and a framed picture behind him, rain on the glass.","note":null,"lines":["He is not scared, he is counting, and he has got to four.","The blanket came off his bed and he did not ask anybody first.","Somebody told him to go back to bed about half an hour ago.","That window seat is the best seat in this house and tonight it is his.","Wednesday night, and he is going to be very hard to wake tomorrow."],"rescue":[null,null,null,null,null]},{"index":25,"image":"storm/week_2/night/5.webp","hash":"2d2e6dd5d7fd","condition":"storm","time":"night","week":"A","day":"sat","paths":["storm/week_2/night/5.webp","storm/week_4/night/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A bedroom at night with a white pitched ceiling. Water is pouring through the ceiling in a stream straight onto the bed. A man in a grey tee and pyjama bottoms leans over the bed laughing while a woman holds a grey plastic bucket up into the stream, head back, laughing. Bedside lamp lit, wooden shutters, dark night outside.","note":null,"lines":["The bucket arrived about four seconds too late for that duvet.","Both of them are laughing, which is the only sane response at this hour.","Somebody is holding a bucket and nobody has thought to move the bed yet.","That is going to be a serious phone call on Monday morning.","Saturday night, and the bed is now the second best place in this house."],"rescue":[null,null,null,null,null]},{"index":26,"image":"storm/week_3/day/1.webp","hash":"10cac134f9d9","condition":"storm","time":"day","week":"B","day":"fri","paths":["storm/week_3/day/1.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A farmer in a cap and khaki jacket standing on the back of a white bakkie pulling a big blue tarpaulin over a load of hay bales, looking up. Hail is falling — white stones in the air and lying on the bonnet and the ground. Behind him a brick farmhouse with a wide verandah and warm lit windows, dark cloud with a gold break on the left.","note":"This is the frame PAIRING-TASTE names as a storm#18 NO — a man getting a tarp over bales while it is already coming down. Both pass-1 approvals are imperatives aimed at him; nothing rescued.","lines":["That is hail on the bonnet and he is still getting the tarp over.","Hail costs money in a way rain never does, and he knows the number.","He got about four minutes of warning and he has used every one of them.","The house lights are on forty metres away and he has not looked at them.","Friday, and this is the last thing standing between him and a bad month."],"rescue":[null,null,null,null,null]},{"index":27,"image":"storm/week_3/day/3.webp","hash":"20f3d07d3c47","condition":"storm","time":"day","week":"A","day":"fri","paths":["storm/week_3/day/3.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A big German-shepherd cross lying flat under a heavy wooden dining table on tiled floor, looking straight at camera with wide eyes and ears back. Behind, sliding glass doors onto a wet patio with outdoor furniture, and a bright lightning bolt in the blue-grey sky beyond. Two pendant lamps lit above the table.","note":null,"lines":["He is under a table, which he has decided is structurally significant.","He has been under there since the first one and there have been six.","The lights are on at two in the afternoon and nobody thought about it.","Somebody is going to have to eat lunch standing up today.","Friday, and he is not coming out for anything less than a tin opener."],"rescue":[null,null,null,null,null]},{"index":28,"image":"storm/week_3/day/5.webp","hash":"b08495c9d832","condition":"storm","time":"day","week":"A","day":"thu","paths":["storm/week_3/day/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A club cricket ground with a dry cracked pitch, the white covers half dragged over it and lying rumpled, a rope trailing across the grass, kit bags, a pair of batting gloves, a towel and a team jacket abandoned on the outfield. Advertising boards along the boundary, a tilted sightscreen, low houses behind. Above, an enormous black storm cloud fills the top two thirds while hard low sun still lights the green outfield.","note":null,"lines":["The covers are half on, which tells you exactly how fast that arrived.","Somebody's gloves are lying out there and nobody is going back for them.","That pitch has been cracked for weeks and is about to get everything at once.","The sun is still on the outfield and there is nobody standing in it.","Thursday, and this match is going to be decided by an app on somebody's phone."],"rescue":[null,null,null,null,null]},{"index":29,"image":"storm/week_4/day/1.webp","hash":"ea95b93c8930","condition":"storm","time":"day","week":"B","day":"wed","paths":["storm/week_4/day/1.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A wet dirt farm road. In the foreground puddle a white plastic garden chair lies tipped on its side half in the water. Beyond it a small ochre farmhouse with a corrugated roof and verandah, trees, dry gold grass, and a huge dark storm cell with a heavy rain shaft pouring straight down behind the house.","note":null,"lines":["That chair started this afternoon on a stoep about eighty metres away.","Somebody will find that chair tomorrow and put it back without saying anything.","There is nobody out there to fetch it and there is a very good reason.","The rain is still falling behind the house and the road is already done.","Wednesday, and that is the second time this month for that chair."],"rescue":[null,null,null,null,null]},{"index":30,"image":"storm/week_4/day/5.webp","hash":"8c5812bded23","condition":"storm","time":"day","week":"B","day":"thu","paths":["storm/week_4/day/5.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"A man in a white tee and shorts, barefoot, straining to close a big cantilever patio umbrella on a paved terrace with both hands on the pole. Behind him a modern double-storey house with a glass balustrade; ahead an enormous storm cloud with a bright anvil top catching the last sun and a dark shelf beneath. Leaves blowing across the paving, white dining chairs and table on the right.","note":null,"lines":["He is barefoot on that paving, which means he saw it and came straight out.","The leaves are already going past him, so he has about ninety seconds.","Those chairs are next and he already knows he will not get to them.","That umbrella is going to win about forty percent of this.","Thursday, and this is the fastest anybody in this house has moved all week."],"rescue":[null,null,null,null,null]},{"index":31,"image":"storm/week_4/day/6.webp","hash":"f6562060468c","condition":"storm","time":"day","week":"A","day":"sun","paths":["storm/week_4/day/6.webp"],"why":"no bespoke line yet — served the condition bank","place":null,"pass1":"2 bank lines approved on this slot","seen":"Inside a stopped car, a young man in the passenger seat holding his phone up to the windscreen filming an enormous branching lightning bolt over a flooded street, palms and low houses beyond a wall, one street light on, rain on the glass. His screen is showing the bolt back to him.","note":null,"lines":["That road is under water and the phone came out before the wipers did.","He is in the passenger seat, which means somebody else has to keep driving.","The screen is showing him what he can already see through the glass.","They stopped for that, and neither of them has said so out loud.","Sunday, and nobody in this car is getting home at the time they said."],"rescue":[null,null,null,null,null]}]};
+const SRC_NAME = "review/set-001-lines-bespoke-storm.json";
+const EXPORT_NAME = "set-001-lines-bespoke-storm-ruled.json";
+// Namespaced per source. Round 1 and round 2 share this page's code, and with
+// one key the round-2 page read round 1's saved text back out of storage and
+// rendered it in every slot - Al opened it and saw the old lines. The stored
+// value is keyed by image+index, and index 1 means a different line in each
+// round, so the namespace is not optional.
+const LS = 'pw_bespoke_lines_' + SRC_NAME.replace(/[^a-z0-9]+/gi, '_');
+const state = JSON.parse(localStorage.getItem(LS) || '{}');
+const $ = (id) => document.getElementById(id);
+const key = (img, i) => img + '#' + i;
+const wc = (s) => (s.trim() ? s.trim().split(/\s+/).length : 0);
+
+function save() { localStorage.setItem(LS, JSON.stringify(state)); tally(); }
+
+function tally() {
+  let yes = 0, no = 0, mine = 0;
+  for (const [k, v] of Object.entries(state)) {
+    if (v.verdict === 'YES') yes += 1;
+    if (v.verdict === 'NO') no += 1;
+    if (k.endsWith('#5') && v.text && v.text.trim()) mine += 1;
+  }
+  const imagesWithAYes = new Set(Object.entries(state).filter(([, v]) => v.verdict === 'YES')
+    .map(([k]) => k.split('#')[0])).size;
+  $('tally').textContent = yes + ' ticked · ' + no + ' rejected · ' + mine + ' of your own · '
+    + imagesWithAYes + '/' + DATA.images.length + ' images have at least one';
+}
+
+function render() {
+  const m = $('main');
+  m.innerHTML = '';
+  for (const img of DATA.images) {
+    const card = document.createElement('section');
+    card.className = 'card';
+
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+    hero.style.width = DATA.box.w + 'px';
+    hero.style.height = DATA.box.h + 'px';
+    hero.style.backgroundImage = 'url("/assets/images/bg/' + img.image + '")';
+    hero.style.backgroundPosition = 'center 50%';
+    const cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.style.padding = DATA.cap.runway.toFixed(1) + 'px 16px ' + DATA.cap.padBottom.toFixed(1) + 'px';
+    cap.style.fontSize = DATA.cap.font.toFixed(1) + 'px';
+    cap.style.background = 'linear-gradient(to top, rgba(0,0,0,.80) 0%, rgba(0,0,0,.62) calc(100% - '
+      + DATA.cap.runway.toFixed(1) + 'px), rgba(0,0,0,0) 100%)';
+    cap.style.borderRadius = '0 0 20px 20px';
+    cap.textContent = img.lines[0];
+    hero.appendChild(cap);
+    card.appendChild(hero);
+
+    const right = document.createElement('div');
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<b>' + img.index + '. ' + img.condition + ' · ' + img.time + '</b> · ' + img.image
+      + ' · ' + img.week + '/' + img.day + ' · ' + img.why + (img.pass1 ? ' · pass-1 ' + img.pass1 : '');
+    right.appendChild(meta);
+
+    const seen = document.createElement('p');
+    seen.className = 'seen';
+    seen.textContent = img.seen;
+    right.appendChild(seen);
+
+    if (img.note) {
+      const n = document.createElement('p');
+      n.className = 'note';
+      n.textContent = img.note;
+      right.appendChild(n);
+    }
+
+    // Lines already kept for this picture, locked and not re-litigated — the
+    // point of round 2 is the gaps, and showing the survivors is what makes a
+    // new line judgeable as part of a SET rather than on its own.
+    if (img.alreadyKept && img.alreadyKept.length) {
+      const box = document.createElement('div');
+      box.className = 'meta';
+      box.style.margin = '2px 0 10px';
+      box.textContent = 'already kept (' + img.alreadyKept.length + '): ';
+      for (const t of img.alreadyKept) {
+        const b = document.createElement('div');
+        b.style.cssText = 'color:#63c98a;font-size:12.5px;margin:2px 0 0 12px';
+        b.textContent = '✓ ' + t;
+        box.appendChild(b);
+      }
+      right.appendChild(box);
+    }
+
+    // The written candidates plus one empty slot for Al's own.
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const k = key(img.image, i);
+      const rec = state[k] || {};
+      const wrap = document.createElement('div');
+      wrap.className = 'line' + (i === N ? ' mine' : '');
+
+      const n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = i === N ? '+' : String(i + 1);
+      wrap.appendChild(n);
+
+      const ref = img.rescue && img.rescue[i];
+      if (ref) {
+        const tag = document.createElement('span');
+        tag.className = 'resc';
+        tag.textContent = 'bank';
+        tag.title = 'Rescued from the existing bank (' + ref + ') rather than newly written';
+        wrap.appendChild(tag);
+      }
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (i === N) inp.placeholder = 'your own line for this picture…';
+      const count = document.createElement('span');
+      count.className = 'wc';
+      const paint = () => {
+        cap.textContent = inp.value || img.lines[0];
+        count.textContent = wc(inp.value) + 'w';
+      };
+      inp.addEventListener('focus', paint);
+      inp.addEventListener('input', () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value });
+        paint(); save();
+      });
+      wrap.appendChild(inp);
+      count.textContent = wc(inp.value) + 'w';
+      wrap.appendChild(count);
+
+      const yes = document.createElement('button');
+      yes.className = 'y' + (rec.verdict === 'YES' ? ' on' : '');
+      yes.textContent = '✓';
+      yes.title = 'keep this line for this picture';
+      yes.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'YES' ? null : 'YES' });
+        save(); render();
+      };
+      const no = document.createElement('button');
+      no.className = 'n2' + (rec.verdict === 'NO' ? ' on' : '');
+      no.textContent = '✕';
+      no.title = 'not for this picture';
+      no.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'NO' ? null : 'NO' });
+        save(); render();
+      };
+      wrap.appendChild(yes);
+      wrap.appendChild(no);
+      right.appendChild(wrap);
+    }
+
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Click into a line to see it on the picture. Edit the text freely — the edit is what exports. '
+      + 'The dashed slot is yours.';
+    right.appendChild(hint);
+    card.appendChild(right);
+    m.appendChild(card);
+  }
+  tally();
+}
+
+$('export').onclick = () => {
+  const out = { generated: '2026-08-19', ruledBy: 'Al, bespoke line review', bucket: DATA.bucket || null, images: [] };
+  for (const img of DATA.images) {
+    const kept = []; const rejected = [];
+    // Lines already kept in an earlier round ride along in the export, marked as
+    // such: the file is the picture's whole approved set, not just this round's
+    // additions, so nothing downstream has to join two exports to know the truth.
+    for (const t of (img.alreadyKept || [])) kept.push({ text: t, source: 'bespoke', round: 1, edited: false });
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const rec = state[key(img.image, i)] || {};
+      const text = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (!text || !text.trim()) continue;
+      const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
+        round: 2, edited: i < N && text.trim() !== img.lines[i] };
+      const ref = img.rescue && img.rescue[i];
+      if (ref && !entry.edited) { entry.source = 'bank'; entry.rescue = ref; }
+      if (rec.verdict === 'YES') kept.push(entry);
+      else if (rec.verdict === 'NO') rejected.push(entry);
+    }
+    out.images.push({ image: img.image, hash: img.hash, condition: img.condition, time: img.time,
+      week: img.week, day: img.day, paths: img.paths, kept, rejected });
+  }
+  out.keptCount = out.images.reduce((n, i) => n + i.kept.length, 0);
+  out.imagesWithNone = out.images.filter((i) => !i.kept.length).map((i) => i.image);
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = EXPORT_NAME;
+  a.click();
+};
+
+render();
+</script>
