@@ -1,0 +1,1789 @@
+{
+ "generated": "2026-08-19",
+ "test": "PAIRING-TASTE rule 1a, hard form: could this exact sentence be written about this exact photograph on a calm, mild, overcast day? If yes it FAILS.",
+ "calibration": "Run over all 60 wind lines it returns PASS on every one, which matches Al keeping 60/60 on the wind page.",
+ "verdicts": {
+  "wind": {
+   "wind/week_1/dawn/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_1/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_1/dawn/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_1/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_1/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_1/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_2/dawn/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_2/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_2/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_2/night/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "wind/week_4/dawn/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  },
+  "cloudy": {
+   "cloudy/week_1/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:flat light does not empty a hill"
+   ],
+   "cloudy/week_1/dawn/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:cold-coffee joke with sky tacked on",
+    "PASS"
+   ],
+   "cloudy/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:handprint joke, cloud is only a time marker",
+    "PASS"
+   ],
+   "cloudy/week_1/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/dusk/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/night/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/night/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/night/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_1/night/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dawn/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dawn/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "WEAK:restraint joke, works at any sunset",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dusk/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/dusk/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/night/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/night/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_2/night/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:dog-walk joke, works any night",
+    "PASS"
+   ],
+   "cloudy/week_3/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:beer-reward joke, works any mowing day",
+    "PASS"
+   ],
+   "cloudy/week_3/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_3/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_4/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_4/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cloudy/week_4/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  },
+  "cold": {
+   "cold/week_1/dawn/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/dawn/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/day/6.webp": [
+    "PASS",
+    "FAIL:seat-stealing joke, works any day",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/dusk/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/night/2.webp": [
+    "PASS",
+    "PASS",
+    "FAIL:seat-stealing joke again",
+    "PASS",
+    "FAIL:same seat joke a third time"
+   ],
+   "cold/week_1/night/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_1/night/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/dawn/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/day/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:works for any blanket fort",
+    "PASS"
+   ],
+   "cold/week_2/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/dusk/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/night/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/night/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_2/night/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:camping joke, works any night",
+    "PASS"
+   ],
+   "cold/week_3/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_3/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_3/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_3/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_4/dawn/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_4/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_4/day/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_4/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_4/day/5.webp": [
+    "PASS",
+    "FAIL:dog-leverage comedy, works any day",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_4/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold/week_4/night/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  },
+  "clear": {
+   "clear/week_1/dawn/3.webp": [
+    "FAIL:habituation joke",
+    "PASS",
+    "FAIL:running joke",
+    "FAIL:early-riser joke",
+    "FAIL:work-week joke"
+   ],
+   "clear/week_1/dawn/5.webp": [
+    "PASS",
+    "FAIL:priority joke",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:dog-life joke"
+   ],
+   "clear/week_1/day/7.webp": [
+    "WEAK",
+    "FAIL:towel-law joke",
+    "PASS",
+    "PASS",
+    "FAIL:works any day"
+   ],
+   "clear/week_1/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "FAIL:kid comedy",
+    "PASS",
+    "FAIL:braai joke"
+   ],
+   "clear/week_1/night/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_1/night/3.webp": [
+    "FAIL:amateur-astronomer joke",
+    "FAIL:works any night",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "clear/week_1/night/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_1/night/7.webp": [
+    "PASS",
+    "WEAK",
+    "FAIL:city-rhythm joke",
+    "WEAK",
+    "PASS"
+   ],
+   "clear/week_2/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_2/dawn/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:school joke",
+    "PASS"
+   ],
+   "clear/week_2/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "FAIL:work joke",
+    "PASS",
+    "FAIL:crowd-avoidance joke"
+   ],
+   "clear/week_2/day/1.webp": [
+    "PASS",
+    "PASS",
+    "WEAK",
+    "WEAK",
+    "PASS"
+   ],
+   "clear/week_2/day/2.webp": [
+    "FAIL:jacaranda-in-hair sight gag",
+    "FAIL:chore joke",
+    "PASS",
+    "FAIL:lazy-Sunday joke",
+    "PASS"
+   ],
+   "clear/week_2/day/4.webp": [
+    "PASS",
+    "PASS",
+    "FAIL:lazy-dad joke",
+    "FAIL:lazy-dad joke",
+    "PASS"
+   ],
+   "clear/week_2/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:Friday joke, not weather"
+   ],
+   "clear/week_2/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_2/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS"
+   ],
+   "clear/week_2/dusk/1.webp": [
+    "PASS",
+    "PASS",
+    "FAIL:Sunday-dread joke",
+    "PASS",
+    "FAIL:works any day"
+   ],
+   "clear/week_2/dusk/2.webp": [
+    "FAIL:works any evening",
+    "PASS",
+    "FAIL:works any evening",
+    "PASS",
+    "WEAK"
+   ],
+   "clear/week_2/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS",
+    "WEAK"
+   ],
+   "clear/week_2/dusk/4.webp": [
+    "PASS",
+    "PASS",
+    "FAIL:school joke",
+    "WEAK",
+    "WEAK"
+   ],
+   "clear/week_2/dusk/5.webp": [
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:best-seats joke"
+   ],
+   "clear/week_2/dusk/6.webp": [
+    "WEAK",
+    "FAIL:teen joke",
+    "PASS",
+    "FAIL:works any day",
+    "FAIL:works any day"
+   ],
+   "clear/week_2/night/5.webp": [
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_2/night/6.webp": [
+    "WEAK",
+    "WEAK",
+    "FAIL:moth-size sight gag",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_2/night/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_3/day/1.webp": [
+    "FAIL:kid comedy",
+    "FAIL:soccer joke",
+    "FAIL:works any day",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_3/day/3.webp": [
+    "FAIL:garden joke",
+    "WEAK:season not weather",
+    "FAIL:works any day",
+    "PASS",
+    "FAIL:works any day"
+   ],
+   "clear/week_3/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "clear/week_3/day/7.webp": [
+    "PASS",
+    "WEAK",
+    "WEAK",
+    "PASS",
+    "WEAK"
+   ],
+   "clear/week_4/day/2.webp": [
+    "WEAK",
+    "FAIL:sibling comedy",
+    "PASS",
+    "FAIL:works any day",
+    "FAIL:works any day"
+   ],
+   "clear/week_4/day/5.webp": [
+    "FAIL:gender-role joke",
+    "FAIL:braai-culture joke",
+    "PASS",
+    "FAIL:works any day",
+    "PASS"
+   ],
+   "clear/week_4/day/6.webp": [
+    "PASS",
+    "PASS",
+    "WEAK",
+    "WEAK",
+    "WEAK"
+   ]
+  },
+  "rain": {
+   "rain/week_1/dawn/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS"
+   ],
+   "rain/week_1/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/dawn/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/day/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/day/3.webp": [
+    "WEAK:mother joke",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/dusk/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_1/night/3.webp": [
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/dawn/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS",
+    "WEAK"
+   ],
+   "rain/week_2/dawn/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS"
+   ],
+   "rain/week_2/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:lift-lateness joke",
+    "PASS"
+   ],
+   "rain/week_2/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/dusk/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/dusk/6.webp": [
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/night/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_2/night/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS"
+   ],
+   "rain/week_3/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "rain/week_3/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_3/day/5.webp": [
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "rain/week_3/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_4/day/2.webp": [
+    "PASS",
+    "PASS",
+    "WEAK",
+    "WEAK",
+    "PASS"
+   ],
+   "rain/week_4/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "rain/week_4/day/4.webp": [
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  },
+  "storm": {
+   "storm/week_1/dawn/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dawn/7.webp": [
+    "PASS",
+    "FAIL:works for any dog under any bed",
+    "WEAK",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dusk/3.webp": [
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dusk/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/dusk/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_1/night/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/dawn/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/day/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:half-day joke"
+   ],
+   "storm/week_2/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "storm/week_2/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/dusk/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "WEAK:phone-share joke",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_2/night/1.webp": [
+    "PASS",
+    "WEAK",
+    "WEAK",
+    "WEAK",
+    "PASS"
+   ],
+   "storm/week_2/night/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS"
+   ],
+   "storm/week_3/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_3/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "WEAK:tin-opener joke"
+   ],
+   "storm/week_3/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_4/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_4/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "storm/week_4/day/6.webp": [
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  },
+  "cold-clear": {
+   "cold-clear/week_1/dawn/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/day/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/dusk/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS"
+   ],
+   "cold-clear/week_1/dusk/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/dusk/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/night/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "cold-clear/week_1/night/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_1/night/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/dawn/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/dawn/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/dawn/6.webp": [
+    "PASS",
+    "FAIL:family joke, works any day",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:guinea-fowl comedy, works any day"
+   ],
+   "cold-clear/week_2/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/day/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "cold-clear/week_2/dusk/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/night/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/night/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/night/4.webp": [
+    "PASS",
+    "FAIL:family joke, works any day",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_2/night/6.webp": [
+    "PASS",
+    "WEAK",
+    "WEAK",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_3/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_3/day/5.webp": [
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS"
+   ],
+   "cold-clear/week_4/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  },
+  "fog": {
+   "fog/week_1/dawn/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/dawn/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/day/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/dusk/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/dusk/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/dusk/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:sea smell, not fog",
+    "PASS"
+   ],
+   "fog/week_1/dusk/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/night/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/night/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/night/4.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_1/night/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK",
+    "PASS"
+   ],
+   "fog/week_1/night/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_2/dawn/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_2/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_2/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_2/day/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_2/dusk/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_2/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "fog/week_2/dusk/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_2/night/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK"
+   ],
+   "fog/week_2/night/4.webp": [
+    "PASS",
+    "WEAK",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_3/day/2.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_3/day/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "fog/week_4/day/1.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  },
+  "heat": {
+   "heat/week_1/dawn/3.webp": [
+    "PASS",
+    "WEAK:national-character joke, not heat",
+    "PASS",
+    "WEAK:mess joke",
+    "PASS"
+   ],
+   "heat/week_1/dawn/4.webp": [
+    "FAIL:small-dog size joke, works any day",
+    "FAIL:dog comedy, works any day",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "heat/week_1/dawn/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "WEAK:obscure",
+    "FAIL:chore-deferral joke, works any day"
+   ],
+   "heat/week_1/dawn/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "heat/week_1/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "FAIL:wind fact in a heat frame - wrong bucket"
+   ],
+   "heat/week_1/day/4.webp": [
+    "FAIL:joke is the kids' faces",
+    "FAIL:joke is his incompetence",
+    "WEAK:mess joke",
+    "PASS",
+    "FAIL:suburban-boredom joke, works any day"
+   ],
+   "heat/week_1/dusk/3.webp": [
+    "PASS",
+    "PASS",
+    "FAIL:neglect joke, works on any unwatered plant",
+    "PASS",
+    "PASS"
+   ],
+   "heat/week_1/dusk/4.webp": [
+    "FAIL:pure life-jacket sight gag, works any day",
+    "PASS",
+    "PASS",
+    "FAIL:works any day",
+    "PASS"
+   ],
+   "heat/week_2/dawn/3.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "heat/week_2/dawn/7.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "heat/week_2/day/2.webp": [
+    "WEAK:office-culture joke",
+    "PASS",
+    "PASS",
+    "WEAK:fans not heat",
+    "PASS"
+   ],
+   "heat/week_2/day/7.webp": [
+    "PASS",
+    "PASS",
+    "WEAK:narrates",
+    "FAIL:vague mess joke",
+    "WEAK:mess joke"
+   ],
+   "heat/week_2/dusk/3.webp": [
+    "FAIL:shopping joke, works any day",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "heat/week_2/dusk/6.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ],
+   "heat/week_2/dusk/7.webp": [
+    "PASS",
+    "FAIL:spontaneity joke, works any day",
+    "PASS",
+    "FAIL:works any day",
+    "PASS"
+   ],
+   "heat/week_2/night/7.webp": [
+    "PASS",
+    "PASS",
+    "WEAK:implied not stated",
+    "FAIL:household joke, works any day",
+    "PASS"
+   ],
+   "heat/week_3/day/1.webp": [
+    "FAIL:dog-vs-kids comedy",
+    "FAIL:pure sight gag",
+    "FAIL:sibling comedy",
+    "FAIL:works any day",
+    "WEAK"
+   ],
+   "heat/week_3/day/5.webp": [
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS",
+    "PASS"
+   ]
+  }
+ }
+}

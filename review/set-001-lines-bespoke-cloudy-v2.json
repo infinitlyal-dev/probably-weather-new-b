@@ -1,0 +1,1116 @@
+{
+ "generated": "2026-08-19",
+ "writtenBy": "Opus 5 (Baken), viewing each photograph",
+ "brief": "review/PAIRING-TASTE.md as instruction; five EN lines per image written for that picture. A line marked RESCUE is from the existing bank rather than newly written. v2: every line re-tested against PAIRING-TASTE rule 1a — move it to a calm, mild day and if it still works it is out.",
+ "bucket": "cloudy",
+ "count": 35,
+ "images": [
+  {
+   "index": 1,
+   "image": "cloudy/week_1/dawn/3.webp",
+   "hash": "b5793c36b69d",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dawn/3.webp",
+    "cloudy/week_3/dawn/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Bo-Kaap at first light. A cobbled street dropping away towards the Cape Town CBD, pastel green, pink and yellow houses on the right, a mountain shoulder on the left horizon. Flat grey overcast with one thin warm band low down. A woman in black running kit stretches a quad against a green wall, foot in hand, looking down the hill. The street is empty.",
+   "note": null,
+   "lines": [
+    "Bo-Kaap in flat light, and the houses are doing all the colour themselves.",
+    "Nobody has had to squint on this street yet and nobody is going to.",
+    "That is not sunrise, that is just the sky getting slightly less grey.",
+    "Grey is the best thing that can happen to you eight kilometres in.",
+    "Saturday, and the light out here will be exactly this at four o'clock."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 2,
+   "image": "cloudy/week_1/dawn/4.webp",
+   "hash": "de1df07bf268",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_3/dawn/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A house painter up a wooden ladder in Bo-Kaap, brush at the white parapet of a turquoise wall, paint-spattered jacket, beanie and trousers. An open tin of turquoise and a mug of coffee stand on the wall below him. Flat white overcast, cobbled street falling away past pastel houses and a church tower.",
+   "note": null,
+   "lines": [
+    "Flat light is the one thing a painter actually wants, and he has it.",
+    "The whole street is painted for a sky that is not showing up today.",
+    "That turquoise is going to look completely different the minute the sun comes back.",
+    "Paint goes on slower in this and dries slower, which suits him fine.",
+    "No sun on that wall means no rush, and he is in no rush."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 3,
+   "image": "cloudy/week_1/dawn/7.webp",
+   "hash": "e0e2d1182253",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_1/dawn/7.webp",
+    "cloudy/week_3/dawn/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "Inside a concrete apartment with a table lamp still burning. A barefoot small boy in a grey tracksuit stands at a floor-to-ceiling window with both palms flat on the glass, his reflection beside him, looking out over a hazy grey city and low cloud. Sofa and rug behind him.",
+   "note": null,
+   "lines": [
+    "He has been standing there twenty minutes waiting for it to change its mind.",
+    "The lamp is still on at nine in the morning and nobody has mentioned it.",
+    "Nobody has told him yet that it is going to look like that all day.",
+    "That glass is not going to warm up today and he has both hands on it.",
+    "Sunday, and the entire plan is on the other side of that glass."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 4,
+   "image": "cloudy/week_1/day/1.webp",
+   "hash": "119e4a52f8a4",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "Open Karoo veld under heavy grey cloud with one dramatic shaft of sunlight breaking through and landing on empty plain. A tight flock of merinos bunched head-down in the foreground, a lone tree in the middle distance, a farmer in a wide hat with a black dog standing far off, low blue hills on the horizon.",
+   "note": null,
+   "lines": [
+    "The Karoo gets one spotlight and points it at an empty piece of veld.",
+    "The sheep have not looked up once and they are the ones who would know.",
+    "That gap will have closed before he has walked as far as the tree.",
+    "He is not walking towards the light, which tells you how long it lasts.",
+    "One beam, ten kilometres out, landing on absolutely nobody who needed it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 5,
+   "image": "cloudy/week_1/day/3.webp",
+   "hash": "d16ca804a592",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/day/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "Open golden veld under a sky split down the middle: clear blue on the left, one solid grey cloud bank on the right with a razor-straight vertical edge running from top to bottom of the frame. Low hills on the horizon, stones and dry grass in the foreground. No people, no buildings.",
+   "note": null,
+   "lines": [
+    "The sky drew a straight line down the middle and the veld got the wrong half.",
+    "That edge will be directly overhead in about forty minutes and then it is grey.",
+    "There is blue right there and not one bit of it is coming this way.",
+    "Somewhere under that edge is a farm getting fifteen more minutes of sun than this.",
+    "Half of this sky has made up its mind and the other half is next."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 6,
+   "image": "cloudy/week_1/day/6.webp",
+   "hash": "31b58730d005",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_1/day/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A suburban back garden under thick lumpy grey overcast filling most of the frame. White sheets pegged out on a wooden line pole, hanging completely limp with no movement in them. Green lawn, hedge, strelitzias, a dark-grey house with sliding doors on the right.",
+   "note": null,
+   "lines": [
+    "That washing has been out since eight and it is exactly as wet.",
+    "Somebody is going to check that line four more times before it gets dark.",
+    "Nothing on that line has moved in an hour, which is its own problem.",
+    "Whoever hung that out was making a statement rather than reading a forecast.",
+    "At least it's not raining. That's the bar."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#24"
+   ]
+  },
+  {
+   "index": 7,
+   "image": "cloudy/week_1/day/7.webp",
+   "hash": "5668c9f2edcb",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/day/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Inside a house with wooden floorboards and a Persian rug. Two long-haired dachshunds at a sliding glass door — one standing with its nose almost on the glass looking out, the other sitting back on the rug looking away. Droplets on the glass, a soaked deck, grey garden, white sky.",
+   "note": null,
+   "lines": [
+    "One of them still believes it will clear up. The other one has moved on.",
+    "Four short legs and a soaked lawn is a negotiation nobody is winning today.",
+    "Nobody in this house is going for a walk and every one of them knows it.",
+    "That deck has been wet since yesterday and neither of them will accept it.",
+    "Perfect weather for existing without enthusiasm."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#26"
+   ]
+  },
+  {
+   "index": 8,
+   "image": "cloudy/week_1/dusk/2.webp",
+   "hash": "20e80f881707",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A road cyclist standing over his bike in the middle of a mountain pass road at dusk, head tipped back looking up at the sky. Heavy layered grey cloud with bands of gold breaking through, a rock face on the right, vineyards and farmland running away to a valley on the left, the road switching back below him.",
+   "note": null,
+   "lines": [
+    "He has stopped to work out whether that gold means twenty minutes or five.",
+    "He did not stop for the view, he stopped to check how long he has.",
+    "That is the last of the light and there is still a pass to come.",
+    "Monday, and the sky has left it until the last ten minutes to be beautiful.",
+    "The vineyards get one good gap in the cloud, and it opens at closing time."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 9,
+   "image": "cloudy/week_1/dusk/4.webp",
+   "hash": "3ba329d5cea3",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A wedding at a Cape Dutch wine estate at dusk. Bride in white holding a protea bouquet with her groom in a three-piece suit, standing in a vineyard row; a photographer crouched behind them shooting; a woman in a green dress and wide-brimmed hat standing to the right with hands on hips, looking straight up at the sky. Layered grey and pink cloud, gabled white werf building with its lights on, mountains behind.",
+   "note": null,
+   "lines": [
+    "One person at this wedding is watching the sky and it is not the bride.",
+    "The photographer is delighted and the mother of the bride is not convinced.",
+    "That cloud is doing more for these photographs than any amount of sun would.",
+    "Somebody checked six forecasts this week and the sky has gone with its own.",
+    "Not Instagram weather. Not the end of the world."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#21"
+   ]
+  },
+  {
+   "index": 10,
+   "image": "cloudy/week_1/night/1.webp",
+   "hash": "7b4c0256fd8d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/night/1.webp",
+    "cloudy/week_3/night/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A thick lid of cloud right across the night sky with one small ragged gap in it, the moon showing through with a halo. Below, an almost black horizon with a low flat-topped koppie in silhouette and a faint band of dull veld in the foreground.",
+   "note": null,
+   "lines": [
+    "The moon found one gap in all of that and is making the most of it.",
+    "One hole in the whole sky, and the moon happens to be right behind it.",
+    "That gap will be closed in ten minutes and the koppie goes back to black.",
+    "Everything you can see out here is lit through that one small opening.",
+    "The veld is out there somewhere and the moon is being stingy about it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 11,
+   "image": "cloudy/week_1/night/2.webp",
+   "hash": "76070c299a0b",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/night/2.webp",
+    "cloudy/week_3/night/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A living room at night lit by one warm table lamp. A tabby cat curled asleep on a chunky cream knitted blanket on the sofa with somebody's navy Fair Isle beanie left over its back. Behind it a sliding door onto a balcony, a solid dark cloudy sky with no stars, and scattered town lights far below. A framed picture and a pot plant beside the lamp.",
+   "note": null,
+   "lines": [
+    "There is no moon and no stars out there, so the lamp is the whole evening.",
+    "Nobody is going out on that balcony tonight and the cat worked it out first.",
+    "Whoever owns that beanie went out to look once and came straight back in.",
+    "Wednesday night, the sky gave up early, and so did everybody in this room.",
+    "The sky is completely shut and that blanket is now the best place in the flat."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 12,
+   "image": "cloudy/week_1/night/6.webp",
+   "hash": "e991afd863ba",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_3/night/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A white double-cab bakkie on a narrow tar road across empty country at night, headlights throwing two cones down the road. A bare thorn tree and low scrub on the verge picked out by the light. The sky is completely black — no moon, no stars, solid cloud. The driver is visible in a cap.",
+   "note": null,
+   "lines": [
+    "No moon, no stars, and the bakkie's headlights are doing all the work.",
+    "The cloud has taken the whole sky and left him two cones of light.",
+    "That thorn tree is the only thing his lights have found in forty kilometres.",
+    "Friday night, and the cloud has taken every landmark he normally drives by.",
+    "There is a whole country out there tonight and he can see nine metres of it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 13,
+   "image": "cloudy/week_1/night/7.webp",
+   "hash": "68317318c85d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_3/night/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "Veld at night. A farmer in a wide-brimmed hat walks away from camera towards a windpomp, a torch in his hand throwing a cone of light onto stony ground. A mackerel sheet of cloud across the whole sky with the moon glowing diffusely behind it, a concrete reservoir beside the windpomp, low scrub and distant hills.",
+   "note": null,
+   "lines": [
+    "The moon is behind all of that and he still had to bring the torch.",
+    "The cloud took the stars and left him one torch and a long walk.",
+    "He knows where that windpomp is without looking, which is just as well tonight.",
+    "Ten kilometres of veld out there and the torch is showing him two metres.",
+    "Tuesday night, and the sky is thick enough that the moon is only a rumour."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 14,
+   "image": "cloudy/week_2/dawn/3.webp",
+   "hash": "08134a1e356e",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Two fishermen in yellow oilskin bibs and headlamps pushing a small white dinghy on its trailer down a wet slipway into flat grey water at first light. Their breath shows in the cold. Heavy featureless overcast, mountains across the bay, a rocky point with birds on it.",
+   "note": null,
+   "lines": [
+    "Their breath is showing and the sun has not committed to anything yet.",
+    "There is no sunrise coming, just the grey getting slowly lighter, and they went anyway.",
+    "Flat light and flat water, and only one of those is any use to them.",
+    "That sky will look exactly like this at eleven o'clock and they already know it.",
+    "Grey vibes. The sky matched my Monday."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#9"
+   ]
+  },
+  {
+   "index": 15,
+   "image": "cloudy/week_2/dawn/4.webp",
+   "hash": "3bfd9b9470d6",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_4/dawn/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A Johannesburg street at dawn under thick pink-grey overcast. A newspaper vendor in a flat cap walks between lanes of stopped traffic with a stack of papers under his arm, pointing towards a driver whose window is down. Red traffic lights, a modernist tower behind, an enamel mug of coffee steaming on the kerb, every car with its lights on.",
+   "note": null,
+   "lines": [
+    "That mug on the kerb is the only thing in this picture giving off heat.",
+    "The sun came up twenty minutes ago and nobody in this street has noticed.",
+    "Every one of those cars still has its lights on and it is nearly seven.",
+    "Friday, and the sky over Joburg has decided to match the traffic exactly.",
+    "The sun sent an out-of-office reply."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#22"
+   ]
+  },
+  {
+   "index": 16,
+   "image": "cloudy/week_2/dawn/6.webp",
+   "hash": "03ff71985022",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A woman running up a stone-edged coastal path on a headland, dark jacket and shorts, face set, looking straight at camera. Heavy layered grey cloud fills two thirds of the frame with one dull pale gap low over the sea. Cold grey water breaking white on the rocks below, fynbos on the slope.",
+   "note": null,
+   "lines": [
+    "That pale patch has been the whole sunrise and it is already behind her.",
+    "Nobody comes up this path for the view on a day that looks like this.",
+    "There is no shade to look for and no sun to hide from.",
+    "The sea has been that colour since Monday and she has stopped checking.",
+    "The sun is technically present. Spiritually elsewhere."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#37"
+   ]
+  },
+  {
+   "index": 17,
+   "image": "cloudy/week_2/dawn/7.webp",
+   "hash": "4845b881f911",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_4/dawn/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A smooth tar path curving away towards the sea at dawn through coastal fynbos, a stone-clad house with a chimney on the left, one white car parked at the roadside in the distance. A heavy grey cloud lid across the whole sky with a thin dull orange band of sunrise squeezed underneath it. Nobody on the path.",
+   "note": null,
+   "lines": [
+    "That is the whole sunrise, squeezed into the last two centimetres of sky.",
+    "There is one car parked down there and whoever owns it came for this.",
+    "Nobody has walked this path yet and the light is not going to improve.",
+    "The cloud came all the way down to the sea and left one gap for the light.",
+    "Thursday, and the day has already used up its best trick before seven."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 18,
+   "image": "cloudy/week_2/day/1.webp",
+   "hash": "e9f6b3850ce2",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A woman lying on a striped towel on a lawn in a swimsuit, a tube of sunblock in her hand, shading her eyes and squinting up at the sky with open dismay. A big dark cloud bank is rolling over from the left with the last strip of blue still showing behind it. White house with brown shutters, plumbago hedge in blue flower.",
+   "note": null,
+   "lines": [
+    "She has the sunblock open and about ninety seconds left to use it.",
+    "That cloud has been coming for twenty minutes and she has been ignoring it.",
+    "Saturday, and the last of the blue is on the wrong side of the house.",
+    "The towel is committed, and the sky has other plans for this afternoon.",
+    "Good day for a walk, bad day for a tan."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#2"
+   ]
+  },
+  {
+   "index": 19,
+   "image": "cloudy/week_2/day/5.webp",
+   "hash": "5aea3d2e9887",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/day/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "An empty school rugby field, immaculate green grass, two sets of white poles, a low stone boundary wall, red-brick school buildings with corrugated roofs on the right and dry golden hills behind. Flat pale grey overcast fills the top half of the frame. Not one person on the field.",
+   "note": null,
+   "lines": [
+    "There is not one shadow on this whole field and kick-off is at three.",
+    "Those poles are white against a white sky, which nobody has thought about yet.",
+    "No sun in anybody's eyes at four o'clock, which is the one thing grey is good for.",
+    "Wednesday, and by this afternoon it will be the best playing weather all week.",
+    "The grey means the water bottles will still be full at half time."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 20,
+   "image": "cloudy/week_2/day/6.webp",
+   "hash": "dc71e7a692da",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/day/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A chameleon walking along a bare branch above a green hedge, mottled green, one foot lifted mid-step, eye swivelled to camera. Behind it a terracotta tiled roof and a heavy lumpy grey cloud lid filling the top two thirds of the frame.",
+   "note": null,
+   "lines": [
+    "He can turn any colour he likes and today there is no point at all.",
+    "Nothing is warming up on that branch today and he is taking it personally.",
+    "He has been on that branch since the sun was still a possibility.",
+    "He is moving at the speed of the available sunlight, which is none.",
+    "Friday, and there is not one colour out here worth turning into."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 21,
+   "image": "cloudy/week_2/day/7.webp",
+   "hash": "094ec6ba034c",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/day/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A backyard braai going ahead under a heavy dark grey lid. A big built-in brick braai with the grid loaded — chops, a coil of wors, chicken, potatoes. Beside it a steel fire box on a trolley where a hand with a gas lighter is lighting kindling on newspaper. A bag of charcoal and an open box of firelighters, soaked paving, a wet patio table and chairs, corrugated fence.",
+   "note": null,
+   "lines": [
+    "The paving is already wet, which is why the firelighters are out of the box.",
+    "It is going to rain on that fire and it will not stop him.",
+    "The wors is already on and the sky has been that dark for an hour.",
+    "Sunday, and nobody in this house is being told the braai is cancelled.",
+    "The table and chairs are soaked and the meat is going on anyway."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 22,
+   "image": "cloudy/week_2/dusk/2.webp",
+   "hash": "6b5271665e34",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A fire-red mackerel sunset over Table Bay, with Table Mountain and Lion's Head in full silhouette across the water. One figure in dark clothes stands on a vegetated dune in the foreground, looking towards the mountain. Empty white beach curving away, faint city lights along the far shore.",
+   "note": "Pass-1 pool contradicted this frame: all three approved bank lines here read the sky as dull (\"Overcast but we'll survive\", \"Not bad, not great\", \"Could be worse\"). Nothing rescued.",
+   "lines": [
+    "All that grey today was just the sky setting this up.",
+    "Sunday evening, and the sky has picked exactly the wrong moment to be this good.",
+    "That is the only colour this sky has produced since about seven this morning.",
+    "Four minutes is the entire show, and he made it with about one to spare.",
+    "Table Mountain is a silhouette, and everything worth seeing is happening behind it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 23,
+   "image": "cloudy/week_2/dusk/3.webp",
+   "hash": "018a0573e433",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_4/dusk/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A stoep at dusk. An old tan dog with a grey muzzle curled asleep on a cushion wearing a knitted jersey. A face-brick pillar with its wall light already on, sliding doors reflecting the lamp inside. Beyond, rolling farmland and a mountain under a flat grey-blue cloudy sky.",
+   "note": null,
+   "lines": [
+    "That wall light came on early tonight and it is only just after five.",
+    "The jersey went on at four o'clock and he has not moved since.",
+    "Nobody is eating outside tonight and he has already claimed the good cushion.",
+    "He is old enough to know exactly when the stoep stops being worth it.",
+    "Tuesday, and the light went out of the day about an hour early."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 24,
+   "image": "cloudy/week_2/dusk/5.webp",
+   "hash": "444490756b06",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dusk/5.webp",
+    "cloudy/week_4/dusk/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Looking down over a suburb of terracotta roofs at dusk, mist lying between the trees, mountains in silhouette. A very heavy dark grey cloud lid across the whole top of the frame with a band of burning orange-red sunset squeezed underneath it along the horizon. Streetlights just coming on.",
+   "note": null,
+   "lines": [
+    "Every one of those houses is facing the wrong way for this.",
+    "Somebody down there has just walked into the kitchen and missed the entire thing.",
+    "That gap is about eleven minutes wide and then the whole valley goes grey.",
+    "The mist between those trees came up the minute the light started going.",
+    "Wednesday, and the best thing all day happened after everybody had stopped looking."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 25,
+   "image": "cloudy/week_2/dusk/6.webp",
+   "hash": "0ebee4d85540",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "Looking across a line of suburban tiled roofs at dusk, TV aerials and satellite dishes in silhouette against heavy grey-purple cloud with a band of dusty pink low down. Two or three windows glowing warm yellow behind curtains. Nobody in the frame.",
+   "note": null,
+   "lines": [
+    "Three windows on this whole street are lit and it is not properly dark yet.",
+    "The pink lasted about six minutes and the grey has already taken it back.",
+    "Nobody on this street is sitting outside tonight and every one of them knows it.",
+    "Somebody put a light on at half past five entirely because of that sky.",
+    "Thursday evening, and the sky went straight from grey to a darker grey."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 26,
+   "image": "cloudy/week_2/dusk/7.webp",
+   "hash": "211c0291a514",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A bare cracked patch of ground on the edge of a Highveld town at dusk. An empty steel braai stand on the left, a wooden picnic table and benches on the right with a bag of briquettes standing on the table. Town lights strung along the horizon under an enormous grey cloud lid with one band of orange squeezed low underneath. Nobody there.",
+   "note": null,
+   "lines": [
+    "The charcoal is out, the grid is clean, and everybody is watching that sky.",
+    "That grid is empty because nobody wants to be the one who lights it first.",
+    "Friday, the fire is not lit, and that sky is the only reason why.",
+    "Everything out here is ready except the sky, and the sky is what decides.",
+    "There is one strip of light left down there and all of that is on top of it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 27,
+   "image": "cloudy/week_2/night/4.webp",
+   "hash": "c6d4061cbef2",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/night/4.webp",
+    "cloudy/week_4/night/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A rooftop terrace at night. A man in a black puffer jacket reclining in a wooden deck chair with headphones on, eyes shut, feet up on the planter ledge. Lit apartment blocks behind him and city lights on the horizon. The sky is a solid orange-brown glow from horizon to top of frame — total cloud, not one star.",
+   "note": null,
+   "lines": [
+    "The whole sky is orange because there is nothing up there letting the dark through.",
+    "Not one star tonight, so he has closed his eyes and gone with the music.",
+    "He came up here for the sky and has stayed for something else entirely.",
+    "Sunday night, jacket on, headphones on, and the sky doing nothing at all above him.",
+    "The cloud is holding the city's own light down on top of the city."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 28,
+   "image": "cloudy/week_2/night/5.webp",
+   "hash": "f3255e596b2c",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/night/5.webp",
+    "cloudy/week_4/night/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "Three friends on a stone-walled terrace at night, wrapped in thick blankets in wicker chairs, laughing. A hurricane lantern burning on a round wooden table with two glasses of red wine, a mug and a board of snacks. Behind them a completely black overcast sky with no stars at all, dark land below.",
+   "note": null,
+   "lines": [
+    "No stars, no moon, and not one of them has looked up all evening.",
+    "That lantern is the whole sky tonight and it is doing a decent job.",
+    "There is nothing to see up there, which is why the conversation is this good.",
+    "The blankets came out at seven and nobody has suggested going inside.",
+    "Saturday night, and the sky is so shut that nobody has bothered to check it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 29,
+   "image": "cloudy/week_2/night/6.webp",
+   "hash": "bdc2741f86fb",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A seafront promenade at night. A man in a black coat, beanie and grey scarf walking a small terrier on a lead along wet paving lit by ornate street lamps. Sea on the left, a mountain with cloud sitting on its peak and hillside lights behind. The sky above is completely dark and closed.",
+   "note": null,
+   "lines": [
+    "The mountain has cloud sitting on it and neither of them has looked up.",
+    "That cloud has been on the mountain since lunchtime and it is not moving.",
+    "The paving is still wet from something that happened before either of them came out.",
+    "Thursday night, and the cloud has taken the mountain, the stars and the moon.",
+    "No stars at all, so the street lamps are handling the whole evening."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 30,
+   "image": "cloudy/week_3/day/1.webp",
+   "hash": "c16f8303d56e",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_3/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A suburban back garden with a mountain behind it. A man stands behind a green petrol lawnmower halfway across the lawn, head tipped right back, looking straight up at a heavy grey cloud lid. One half of the grass is long, the other half is freshly cut with a clean stripe between them. Beige house, patio table with a beer bottle on it.",
+   "note": null,
+   "lines": [
+    "He is exactly halfway through and the sky has started asking him questions.",
+    "Saturday, and the only question left is whether the mower is faster than that.",
+    "Half a lawn is worse than no lawn and he has already worked that out.",
+    "The grass is damp under that cloud and the mower is feeling every metre.",
+    "One more strip and then he can pretend he never saw it coming."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 31,
+   "image": "cloudy/week_3/day/3.webp",
+   "hash": "04bdf14c306b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_3/day/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "The Umhlanga promenade under a flat pale grey sky. A woman running towards camera in a grey crop top and dark leggings, ponytail swinging, earbuds in. The Whalebone Pier's white curved ribs behind her, calm green sea, coastal vegetation on the right, not a shadow anywhere on the concrete.",
+   "note": null,
+   "lines": [
+    "This is the one kind of sky you can run ten kilometres under.",
+    "There is no shadow on this whole promenade and it is the middle of the day.",
+    "Sunday morning, and the sea is flat, the sky is flat, and she is not.",
+    "Grey like this is why she is on her second lap and not her first.",
+    "The sky's on mute. Nobody's complaining."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#20"
+   ]
+  },
+  {
+   "index": 32,
+   "image": "cloudy/week_3/day/4.webp",
+   "hash": "47550fce6c98",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_3/day/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A man in a grey hoodie standing on a tiled roof between two arrays of solar panels, hands on hips, head tipped back squinting up at a thick grey cloud lid with a resigned expression. Suburban street, houses and trees below him.",
+   "note": "Pass-1 approved witty:cloudy#10 (\"Eskom-friendly weather. No solar today.\") on this slot, but CLAUDE.md rules out Eskom jokes on the home screen, so it was not rescued. The solar mechanism is used without naming Eskom.",
+   "lines": [
+    "A whole roof of panels up there and the sky has switched every one off.",
+    "Those panels have made enough today to charge one phone, slowly.",
+    "He is not checking the panels, he is checking the thing that feeds them.",
+    "The invoice for those was very specific about days like this not happening.",
+    "Tuesday, and the battery is going to have to do the whole afternoon alone."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 33,
+   "image": "cloudy/week_4/day/4.webp",
+   "hash": "4727610ce8f9",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_4/day/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Looking out from under a stoep roof. A big scruffy wire-haired dog lying flat on a rumpled old kilim rug on the concrete, chin down, eyes half open, thoroughly bored. Beyond him a lush garden of aloes, a big tree and strelitzias in orange flower, all under a lumpy grey overcast sky.",
+   "note": null,
+   "lines": [
+    "There is a whole garden out there and no reason at all to go into it.",
+    "Nothing has happened on this stoep since half past nine and nothing is going to.",
+    "He is not asleep, he is waiting, and it is not looking promising.",
+    "Tuesday, and he has been waiting since breakfast for the light to change.",
+    "Even the weather can't be bothered today."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:cloudy#8"
+   ]
+  },
+  {
+   "index": 34,
+   "image": "cloudy/week_4/day/6.webp",
+   "hash": "5a72972b399b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_4/day/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A man photographed from behind, standing in the middle of a wet suburban road in a brown jacket and jeans, a closed black umbrella in one hand and a pair of sunglasses in the other, looking up at a broken grey and white sky with brightness starting to come through on the right. Wet tar, single-storey houses, palms, lawns.",
+   "note": null,
+   "lines": [
+    "Whichever one he leaves in the car is the one he is going to need.",
+    "The road is already wet, so one of those two has been wrong today.",
+    "He is not looking at the cloud, he is looking for a commitment.",
+    "Thursday, and the whole day is going to be spent carrying both of them.",
+    "That bright patch on the right has been about to arrive for four minutes."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 35,
+   "image": "cloudy/week_4/day/7.webp",
+   "hash": "313ca13b51a5",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_4/day/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A quiet suburban estate street in late afternoon — face-brick walls, terracotta roofs, mown verges, young trees. The sky is split: deep clear blue on the left, and a huge grey cloud sheet advancing from the right with its edge running diagonally down. Warm sun still lighting the near lawns and road while the far end is already in shadow.",
+   "note": null,
+   "lines": [
+    "That shadow is moving up the street at about walking pace.",
+    "Somebody down there has about six minutes to finish whatever they are doing outside.",
+    "This end of the road is still lit and the far end has already gone grey.",
+    "Monday, and the good half of the sky is the half that is leaving.",
+    "The blue is losing this street one house at a time."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ ],
+ "revision": "v2 — swap-test repair"
+}

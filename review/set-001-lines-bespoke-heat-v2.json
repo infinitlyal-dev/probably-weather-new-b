@@ -1,0 +1,581 @@
+{
+ "generated": "2026-08-19",
+ "writtenBy": "Opus 5 (Baken), viewing each photograph",
+ "brief": "review/PAIRING-TASTE.md as instruction; five EN lines per image written for that picture. A line marked RESCUE is from the existing bank rather than newly written. v2: every line re-tested against PAIRING-TASTE rule 1a — move it to a calm, mild day and if it still works it is out.",
+ "bucket": "heat",
+ "count": 18,
+ "images": [
+  {
+   "index": 1,
+   "image": "heat/week_1/dawn/3.webp",
+   "hash": "4d63213b19b9",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_3/dawn/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A fried egg actually cooking, steam coming off it, on the sun-bleached bonnet of an old car in a dusty Karoo dorp at sunrise. Corrugated-roof cottages, dirt streets, telephone poles, low hills and a blazing orange-red sky behind.",
+   "note": "Pass-1 approved witty:heat#1 (\"You could fry an egg on the N1\") here. Not rescued: the N1 is not in this frame — it is a dorp street and a car bonnet — and the egg is already fried, so \"you could\" narrates what the photograph has done.",
+   "lines": [
+    "The sun has just come up, which is the part nobody is going to believe.",
+    "That bonnet did not cool down overnight, which is the part that should worry you.",
+    "That egg has been on there about four minutes and it is nearly done.",
+    "Nobody in this dorp has needed a stove since about the second week of December.",
+    "Monday, and breakfast in this dorp has been sorted by a car bonnet."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 2,
+   "image": "heat/week_1/dawn/4.webp",
+   "hash": "0828ca00553f",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_1/dawn/4.webp",
+    "heat/week_3/dawn/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A backyard deck with festoon lights strung overhead and a low orange sun. A blue inflatable paddling pool on the decking with a chihuahua standing in the shallow water on a small inflatable ring, looking at camera. Potted palms and succulents, timber fence, neighbouring roofs.",
+   "note": null,
+   "lines": [
+    "That water went in cold at five and it has not been cold since.",
+    "He got in before the sun cleared the fence and he has not come out.",
+    "He got in at six and he is not planning to get out.",
+    "That water was cold about forty minutes ago and nobody has topped it up.",
+    "The pool is not optional."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:heat#4"
+   ]
+  },
+  {
+   "index": 3,
+   "image": "heat/week_1/dawn/5.webp",
+   "hash": "b81a91a1f851",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_3/dawn/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A young man in swim shorts sitting on the edge of a long lap pool at sunrise with a white towel over his shoulders and his feet in the water, looking out at the light. Steam rising off the pool surface. A modern white farmhouse with a pergola and warm lit interior behind, olive trees, a mountain, a pool net leaning against the wall.",
+   "note": null,
+   "lines": [
+    "There is steam coming off that pool, which is not a good sign at six.",
+    "The water did not cool down last night and he has already checked.",
+    "Saturday, and he is in before seven because by ten it is unusable.",
+    "The paving round that pool is already too hot for bare feet at six.",
+    "That pool is warmer than he is and it is going to stay that way."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 4,
+   "image": "heat/week_1/dawn/6.webp",
+   "hash": "437fd1add3cd",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/dawn/6.webp",
+    "heat/week_3/dawn/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Looking out through a big sliding window: a tabby-and-white cat lying stretched full length along a cool grey tiled windowsill, asleep, one paw hanging. Beyond the glass a suburban garden at sunrise — brick boundary wall, shrubs, a potted plant, a face-brick house next door, and a low burning sun.",
+   "note": null,
+   "lines": [
+    "She has found the one tile in this house that has not warmed up yet.",
+    "She is lying on tile rather than anything soft, and that was a decision.",
+    "By nine that windowsill is going to be the worst place in the house.",
+    "The sun is only just up and she has already picked her spot.",
+    "Sunday, and she has about ninety minutes before she has to move again."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 5,
+   "image": "heat/week_1/dawn/7.webp",
+   "hash": "726c6aee069a",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/dawn/7.webp",
+    "heat/week_3/dawn/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A yellow farm dog lying flat on red dust under a thorn tree at sunrise, eyes half shut, one ear flopped over. Behind him a whitewashed Karoo farmhouse with a corrugated roof and a wide stoep with chairs, a windpomp silhouetted against a burning orange sky, aloes and low hills.",
+   "note": null,
+   "lines": [
+    "He has picked the shade under a thorn tree, which is barely shade at all.",
+    "The sun has been up eleven minutes and he has already stopped moving.",
+    "That stoep has chairs on it and none of them will be used before six.",
+    "Thursday, and by nine there will be nothing out here worth walking to.",
+    "There is no shade on this whole werf that lasts past about ten."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 6,
+   "image": "heat/week_1/day/4.webp",
+   "hash": "98d89edda1cd",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/day/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A suburban estate street in hard midday sun. A man in a t-shirt, shorts and slip-slops standing at a silver car frying something in a black pan balanced on the bonnet, spatula in hand, steam rising. Two children on the pavement with their mouths wide open in astonishment, a third to the left. A big stone-clad double-storey house behind, palms, mown lawn, deep blue sky.",
+   "note": "Pass-1 offered heat#1 (the N1, which is not in this frame) and two seat/seatbelt lines with no seat in shot. Nothing rescued.",
+   "lines": [
+    "That bonnet is hotter than most pans ever get on most stoves.",
+    "He tried the roof first and the roof was somehow hotter.",
+    "Nobody has touched that car door and every one of them knows why.",
+    "Nobody here is wondering whether it works. They are watching it work.",
+    "Monday, and it is not even eleven o'clock yet, which is the frightening part."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 7,
+   "image": "heat/week_1/dusk/3.webp",
+   "hash": "5ed7621f5dd9",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/dusk/3.webp",
+    "heat/week_3/dusk/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A stone cottage's wooden stoep at sunset with a big potted sunflower in a terracotta pot in the middle — every leaf visibly wilted and drooping, though the head is still up and facing the setting sun. Aloes and succulents in pots along the edge, a galvanised watering can and old milk churns on the left, a spade leaning, dry veld and low hills, the sun sitting on the horizon.",
+   "note": null,
+   "lines": [
+    "Every leaf on that sunflower has given up and the head is still facing it.",
+    "Nobody out here waters anything until that sun is properly behind the hill.",
+    "It was watered this morning and you would not know it from here.",
+    "That pot has been in full sun since about eleven this morning.",
+    "Monday, and it will do all of that again tomorrow without being asked."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 8,
+   "image": "heat/week_1/dusk/4.webp",
+   "hash": "68661ff2b0dc",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_1/dusk/4.webp",
+    "heat/week_3/dusk/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A backyard at dusk with festoon lights just coming on. A big blue collapsible dog pool full of water on the lawn with a chihuahua sitting in it wearing a life jacket, tongue out, grinning at camera. A timber deck with pot plants, a modern double-storey house with lit windows, big trees against an orange sunset.",
+   "note": null,
+   "lines": [
+    "That water has been topped up twice and it is still the wrong temperature.",
+    "That water has been sitting in the sun all day and it is not cold.",
+    "He got in at eleven this morning and this is the second filling.",
+    "The sun went down an hour ago and the paving is still giving it back.",
+    "Tuesday, and the coolest thing in this entire garden is that dog."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 9,
+   "image": "heat/week_2/dawn/3.webp",
+   "hash": "818c078a2bda",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_2/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A stone farmhouse with a wide timber verandah on a ridge at sunrise, a pop-up sprinkler running on the lawn throwing a bright arc of water lit gold by the low sun. Aloes in red flower and ornamental grasses along the bed, dry veld and low hills stretching away to a hazy horizon, clean pale sky.",
+   "note": null,
+   "lines": [
+    "The sprinkler goes on at five and it is off again by seven.",
+    "Everything green in this photograph is on a timer and everything else is not.",
+    "The aloes have not needed a drop of that and they never will.",
+    "That lawn is the only thing for forty kilometres that gets a say.",
+    "Friday, and by eleven this whole ridge will be one colour again."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 10,
+   "image": "heat/week_2/dawn/7.webp",
+   "hash": "c6d266d04418",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/dawn/7.webp",
+    "heat/week_4/dawn/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "Three runners jogging side by side down the middle of a leafy suburban road at sunrise, laughing and talking, backlit by a huge low golden sun that throws their shadows straight down the road towards camera. Big trees either side, white boundary walls, hedges.",
+   "note": null,
+   "lines": [
+    "They are out at half past five because there is no other window today.",
+    "That sun has been up eleven minutes and it is already doing that.",
+    "Nobody is carrying water, which is a decision they are going to revisit.",
+    "The shade on this road runs out in about two hundred metres.",
+    "Wednesday, and this is the coolest it is going to be all day."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 11,
+   "image": "heat/week_2/day/2.webp",
+   "hash": "d6593f52fb76",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_2/day/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "An office of beige cubicles. Two women at facing desks, one fanning herself with a file, the other with a hand at her neck. Two big white desk fans on the partition between them, papers pinned to the partition blowing sideways in the draught, and a printed sign taped up between the fans reading HEATWAVE SURVIVAL ZONE. Monitors, keyboards, a water bottle, bright windows.",
+   "note": "All three pass-1 approvals are aircon-war lines. There is no aircon in this frame — there are two desk fans and a hand-printed sign, which is the joke. Nothing rescued.",
+   "lines": [
+    "Two fans moving hot air around a room that has been shut since eight.",
+    "The file she is fanning with is the one she is meant to be reading.",
+    "Two fans, four papers flying, and not one document has been read today.",
+    "Nobody in that building can open a window and every one of them has tried.",
+    "Tuesday, and somebody in this building is going to be sent home early."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 12,
+   "image": "heat/week_2/day/7.webp",
+   "hash": "afd3c9db83bd",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/day/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Looking out through a car windscreen from the driver's seat: a chocolate bar in a gold wrapper on the black dashboard, completely melted — the chocolate has slumped out of the wrapper into a glossy brown spread across the dash with a drip running over the edge. Beyond the glass, hard blue sky, a blazing sun with lens flare, a street lamp, palms and white-walled houses. The A/C button is visible on the console.",
+   "note": "Pass-1 offered heat#11 (\"Somewhere a chocolate bar just died\" — it died right here, not somewhere) and heat#6 / heat#28, both documented low scorers. Nothing rescued.",
+   "lines": [
+    "The A/C button is right there and it has clearly not been pressed.",
+    "Whoever left that there thought they would only be twenty minutes.",
+    "That dashboard is hot enough that the wrapper gave up before the chocolate did.",
+    "The steering wheel in there is currently not something you can hold.",
+    "Thursday, and that car is going to be worse at four than it is now."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 13,
+   "image": "heat/week_2/dusk/3.webp",
+   "hash": "555f76c5594f",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/dusk/3.webp",
+    "heat/week_4/dusk/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "A roadside farm stall at sunset. A woman in a cream tee and khaki shorts carrying a big watermelon under one arm to her car. A small green and yellow building with a corrugated lean-to: wooden crates of watermelons, spanspek, tomatoes and apples, and a big glass dispenser of iced water with a tap and glasses on the counter. Empty tar road, dry veld and hills, orange-pink sunset.",
+   "note": "All four pass-1 approvals here are Weber/coals/braai lines and there is no braai, no Weber and no coals anywhere in this frame — it is a roadside farm stall. Clear pool mis-serve; nothing rescued.",
+   "lines": [
+    "Everything on those crates has been sitting in this since the truck came.",
+    "That watermelon has been sitting in the sun all day and it is not cold.",
+    "There is a whole dispenser of iced water there and it is nearly empty.",
+    "Nobody drives past a stall like that on a day like this.",
+    "Saturday, and that is going straight into a fridge for a day and a half."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 14,
+   "image": "heat/week_2/dusk/6.webp",
+   "hash": "248b04dcf98d",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/dusk/6.webp",
+    "heat/week_4/dusk/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A woman sitting at a wooden table on a covered verandah at dusk, eyes closed and face tipped up, hair blowing back from a big white desk fan on the table beside her aimed straight at her. A glass jug of iced water beaded with condensation and a glass in front of her. Palms and lush garden and a purple-pink sunset behind, terracotta tiled floor.",
+   "note": "Pass-1 offered heat#32, which names a ceiling fan — this is a desk fan on the table — and heat#8 (\"too hot to function\") on a frame where she is visibly comfortable. Nothing rescued.",
+   "lines": [
+    "Her eyes are closed and that fan is aimed at exactly one person.",
+    "That jug has been refilled twice and it is not even properly dark yet.",
+    "The sun has gone and the tiles are still giving it back.",
+    "Nobody else in this house is getting near that fan tonight.",
+    "Wednesday, and this is the first comfortable minute she has had since eleven."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 15,
+   "image": "heat/week_2/dusk/7.webp",
+   "hash": "3e88aef1fb06",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A modern white house's back lawn at golden sunset. A man in a grey tee and shorts and a small girl in a purple swimming costume standing in a lawn sprinkler's spray with their arms out, both laughing, drenched, backlit so every droplet glows gold. Agapanthus in purple flower along the border, a timber deck in the foreground, warm-lit interior behind, pines beyond.",
+   "note": null,
+   "lines": [
+    "That sprinkler was put on for the lawn about ten minutes ago.",
+    "He came home, saw the sprinkler was on, and did not go inside first.",
+    "The water coming out of that pipe is warm and it does not matter.",
+    "That grass has been too hot to stand on since about eleven this morning.",
+    "Thursday, and this is the first time all day either of them has been cool."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 16,
+   "image": "heat/week_2/night/7.webp",
+   "hash": "2a3a60226c30",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_2/night/7.webp",
+    "heat/week_4/night/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A dark kitchen at night. A woman in a white vest and sleep shorts standing barefoot in front of an open fridge, head tipped back and eyes closed, face lit blue-white by the fridge light, one hand on the door. Behind her a passage with warm lamp light and a dining area with a lit pendant cluster, tiled floor, brick wall.",
+   "note": null,
+   "lines": [
+    "She is not looking for anything and both of us know it.",
+    "That door has been open about ninety seconds and it is staying open.",
+    "It has not dropped below twenty-five in that house since about Tuesday.",
+    "That is the third time tonight and not one of them is about food.",
+    "The fridge is the coolest room in the house."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:heat#15"
+   ]
+  },
+  {
+   "index": 17,
+   "image": "heat/week_3/day/1.webp",
+   "hash": "6591bd91d1fc",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_3/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A back garden in hard midday sun. A pink and blue plastic clamshell paddling pool on the lawn, completely filled by a golden retriever lying flat out in it with his chin on the rim, eyes shut, tongue out. Behind him a girl in a mint shirt and a boy in a yellow shirt sit cross-legged on the grass with their chins in their hands, watching, visibly excluded. White house with sliding doors, precast wall, blue sky.",
+   "note": null,
+   "lines": [
+    "That is the only cool water in this garden and it has been claimed.",
+    "He has not moved out of it since eleven and he is not going to.",
+    "Both of them are sitting on grass that is too hot to sit on.",
+    "There is a whole garden out there and about a metre of it is bearable.",
+    "Wednesday, and nobody is arguing about it because arguing is too much effort."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 18,
+   "image": "heat/week_3/day/5.webp",
+   "hash": "6ce02da2ab7a",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_3/day/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A Karoo farmhouse stoep under a corrugated roof with a reed shade screen. A big pedestal fan on a stand, plugged in and running, aimed out towards the veld. On the right an African grey parrot sitting on top of its open, empty birdcage, facing the fan with its feathers slightly lifted. Bare concrete floor, stone wall, dry scrub and blue hills beyond.",
+   "note": "Pass-1 offered heat#32, which names a ceiling fan. This is a pedestal fan, and the parrot has clearly decided it is enough. Nothing rescued.",
+   "lines": [
+    "He came out of the cage, and he did not come out for the view.",
+    "The door is open and he has chosen the spot nearest the fan.",
+    "That fan is pointed at the veld and he has intercepted it.",
+    "Nobody on this stoep is going anywhere until about four o'clock.",
+    "Friday, and that is the only moving air for about sixty kilometres."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ ],
+ "revision": "v2 — swap-test repair"
+}
