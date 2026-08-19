@@ -1,0 +1,389 @@
+{
+ "generated": "2026-08-19",
+ "writtenBy": "Opus 5 (Baken), viewing each photograph",
+ "brief": "review/PAIRING-TASTE.md as instruction; five EN lines per image written for that picture. A line marked RESCUE is from the existing bank rather than newly written.",
+ "bucket": "wind",
+ "count": 12,
+ "images": [
+  {
+   "index": 1,
+   "image": "wind/week_1/dawn/2.webp",
+   "hash": "c121631aca0a",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/dawn/2.webp",
+    "wind/week_3/dawn/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "One tall palm alone on a suburban verge at sunrise, trunk permanently leaning, every frond swept to one side and held there. Low sun burning through broken cloud, mountain range on the right, single-storey houses and streetlights along an empty road, haze blowing across the tar.",
+   "note": null,
+   "lines": [
+    "The trees are doing involuntary yoga.",
+    "That trunk grew crooked because this happens here far more than it doesn't.",
+    "The palm has been holding that exact shape since about three this morning.",
+    "The Cape Doctor is making house calls.",
+    "The sun is up, the street is empty, and the wind got here first."
+   ],
+   "rescue": [
+    "witty:wind#6",
+    null,
+    null,
+    "witty:wind#3",
+    null
+   ]
+  },
+  {
+   "index": 2,
+   "image": "wind/week_1/dawn/5.webp",
+   "hash": "337d1a2fe2c2",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/dawn/5.webp",
+    "wind/week_3/dawn/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "Sunrise on a beachfront promenade. A woman running towards camera in a coral top, locs streaming sideways off her head, grinning. A wave has just exploded white against the sea wall behind her, a palm is bent hard over the pier, the promenade behind her is completely empty.",
+   "note": null,
+   "lines": [
+    "That wave landed on the promenade about four seconds before she got there.",
+    "Sunday morning, and the sea is throwing the first half of it at her.",
+    "She will be tasting salt for the rest of the day and she knows it.",
+    "The palm is bent double and she is out here smiling about it.",
+    "The promenade is empty in both directions and there is a reason for that."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 3,
+   "image": "wind/week_1/dawn/6.webp",
+   "hash": "45b7693ad9e4",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_1/dawn/6.webp",
+    "wind/week_3/dawn/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A woman leaning hard forward into the wind on a tarred path at dawn, ponytail streaming out horizontally behind her, dry leaves and grass seed flying across the frame at every height, hedge and trees blurred behind, orange sky.",
+   "note": null,
+   "lines": [
+    "Ponytail holders are doing overtime.",
+    "She is leaning at an angle that a flat path does not normally require.",
+    "She will be picking grass seeds out of that jacket until Saturday.",
+    "Thursday, and she is the only thing on this road not going sideways.",
+    "Half the hedge is in the air in front of her and still arriving."
+   ],
+   "rescue": [
+    "witty:wind#13",
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 4,
+   "image": "wind/week_1/dawn/7.webp",
+   "hash": "d0a60d414066",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/dawn/7.webp",
+    "wind/week_3/dawn/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "Two runners side by side on a wet paved seafront promenade at sunrise, a wave bursting white over the sea wall beside them, beachfront apartment towers catching the first light, railing and concrete bollards, paving soaked and reflecting.",
+   "note": null,
+   "lines": [
+    "The paving is soaked in front of them and it has not rained once.",
+    "Saturday morning, and the sea has already been over that railing twice.",
+    "Neither of them is going to be the one who suggests turning back.",
+    "That sea wall is doing its absolute best and it is still losing.",
+    "They will be getting salt off those shoes for the rest of the weekend."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 5,
+   "image": "wind/week_1/day/4.webp",
+   "hash": "f32e33e76e01",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/day/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A back yard under a hard blue sky. Three shirts on the washing line — yellow, red, blue — all pulled out horizontal by the wind and held by their pegs. A woman stands holding a white plastic laundry basket of folded washing, hair lifted off her head, looking off to one side. Precast wall behind, a black Weber kettle braai standing on the grass, small house with a corrugated awning.",
+   "note": null,
+   "lines": [
+    "That washing will be dry before she has finished carrying the rest of it out.",
+    "She is not looking at the washing, she is looking at where it might land.",
+    "Saturday, and the only thing on that line doing any work is the pegs.",
+    "Nobody is lighting that Weber until this drops, and everyone in the yard knows it.",
+    "The Weber has not been lit once this week and today is not the day."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 6,
+   "image": "wind/week_1/day/5.webp",
+   "hash": "232bde6ed095",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/day/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "The school run. A boy in navy uniform with a duffel over his shoulder leans forward into the wind, grinning; a smaller child hunches under a hood while a woman in a trench coat holds the hood down on their head; dry leaves and debris streaming across the frame at head height; suburban pavement, white building with black window frames, clipped hedge.",
+   "note": null,
+   "lines": [
+    "That hood would be halfway down the road if her hand was not on it.",
+    "Half the pavement is airborne and only one of the three is enjoying it.",
+    "That bag is working as a sail and he has not worked that out yet.",
+    "Every leaf the tree dropped this month is going past them at head height.",
+    "Monday, and the wind is the best thing that has happened to him so far."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 7,
+   "image": "wind/week_1/dusk/3.webp",
+   "hash": "38635f77f610",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/dusk/3.webp",
+    "wind/week_3/dusk/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Table Mountain in silhouette across the bay in low gold light, seen from the beach. Sand streaking across the foreground in sheets. A couple in winter coats clinging to each other, laughing, unable to stand straight, her hair blown across her face and a scarf whipping between them. Surf behind, footprints in the sand.",
+   "note": null,
+   "lines": [
+    "Sand in places sand should never be.",
+    "Table Mountain is right there and neither of them has looked at it once.",
+    "Neither of them can stand up straight and neither of them seems to mind.",
+    "The footprints behind them are already filling in and they only just walked there.",
+    "The beach itself is moving faster than they are, and in the same direction."
+   ],
+   "rescue": [
+    "witty:wind#12",
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 8,
+   "image": "wind/week_2/dawn/4.webp",
+   "hash": "c66c7fd4f50e",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_2/dawn/4.webp",
+    "wind/week_4/dawn/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A white Cape Dutch gabled farmhouse with dark shutters and a vine-covered stoep, lamps still on inside. A man in a dressing gown and shorts lunges barefoot across the lawn after a big black braai cover that is tumbling away from him; one slipper is lying on the grass behind him and a mug is standing on the step. Two white Adirondack chairs, a pine bent right over against a gold sunrise sky.",
+   "note": null,
+   "lines": [
+    "He was going to have coffee. The mug is still standing on the step.",
+    "One slipper is already out of the game and the cover is still winning.",
+    "The braai cover is in the next suburb.",
+    "The pine behind him is bent right over, so this was never a fair contest.",
+    "Perfect conditions for losing your dignity."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:wind#18",
+    null,
+    "witty:wind#8"
+   ]
+  },
+  {
+   "index": 9,
+   "image": "wind/week_2/dawn/5.webp",
+   "hash": "3556004712b7",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/dawn/5.webp",
+    "wind/week_4/dawn/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A long line of gulls on a wide dawn beach, every one of them standing on the sand facing the same way with heads down, sand streaming past them in visible sheets. Surf and spray hazing the shoreline, mountains across the bay, pink sky. Not one bird is in the air.",
+   "note": null,
+   "lines": [
+    "Even the seagulls are walking today.",
+    "Every one of them is pointing the same way and not one of them chose it.",
+    "Not one of them is flying, and that is the whole forecast right there.",
+    "The sand is going past them faster than the tide is coming in.",
+    "They will stand exactly like that until it drops, and it is not dropping."
+   ],
+   "rescue": [
+    "witty:wind#9",
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 10,
+   "image": "wind/week_2/day/1.webp",
+   "hash": "4d3a786acf48",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A woman standing in the middle of a tarred city road with Table Mountain large and clear behind her. Her hair is blown completely across her face, her floral skirt is lifted and she is holding it down with both hands, one flat shoe is coming off her heel, dry leaves are flying through the frame.",
+   "note": null,
+   "lines": [
+    "Both hands are on the skirt, which means the hair is on its own.",
+    "Table Mountain is right behind her and she cannot see a single bit of it.",
+    "That shoe is coming off next and she has run out of hands.",
+    "The leaves going past her were still on a tree two streets ago.",
+    "Tuesday, and the wind has strong opinions about somebody else's outfit."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 11,
+   "image": "wind/week_2/night/4.webp",
+   "hash": "eb7873fd7acb",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_2/night/4.webp",
+    "wind/week_4/night/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A seafront boulevard at night under a full moon in torn cloud. A long row of tall palms with every frond streaming to one side, orange streetlights down the line, an empty wet road reflecting them, sea and distant town lights on the right, spray in the air.",
+   "note": null,
+   "lines": [
+    "The moon is out and the palms have not stopped moving since sunset.",
+    "The moon is holding still and everything else up there is not.",
+    "Whatever is landing on that road is not rain, it is the sea arriving sideways.",
+    "The palms have been making that noise for hours and nobody is awake to mind.",
+    "The road is empty, every light is on, and the wind has the place to itself."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 12,
+   "image": "wind/week_4/dawn/1.webp",
+   "hash": "f1a06c34c049",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/dawn/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A whitewashed West Coast cottage with green window frames at sunrise, sea just beyond a low stone wall. A woman reaches up to peg white sheets on a line; the sheets are blown straight out horizontal and the one on the end is lifting off. A galvanised tub of washing beside her, sandy yard, gulls in the air, sun low on the water.",
+   "note": null,
+   "lines": [
+    "Those sheets will be dry before she has pegged the last one on the line.",
+    "There are more pegs on that line than the washing needs, and she knows why.",
+    "Everything on that line is going to smell like the sea by eight o'clock.",
+    "The one on the end has come loose and she has not spotted it yet.",
+    "Friday, and the wind is doing half of this job for her, free of charge."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ ]
+}

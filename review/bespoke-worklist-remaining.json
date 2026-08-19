@@ -1,0 +1,7657 @@
+{
+ "generated": "2026-08-19",
+ "note": "Remaining set-001 photographs with no Al-approved bespoke line. Written from set-001-draft.json with every hash re-verified against the bytes on disk.",
+ "total": 252,
+ "buckets": [
+  {
+   "condition": "wind",
+   "count": 12
+  },
+  {
+   "condition": "cloudy",
+   "count": 35
+  },
+  {
+   "condition": "cold",
+   "count": 35
+  },
+  {
+   "condition": "clear",
+   "count": 34
+  },
+  {
+   "condition": "rain",
+   "count": 31
+  },
+  {
+   "condition": "storm",
+   "count": 31
+  },
+  {
+   "condition": "cold-clear",
+   "count": 28
+  },
+  {
+   "condition": "fog",
+   "count": 28
+  },
+  {
+   "condition": "heat",
+   "count": 18
+  }
+ ],
+ "images": [
+  {
+   "image": "wind/week_1/dawn/2.webp",
+   "hash": "c121631aca0a",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/dawn/2.webp",
+    "wind/week_3/dawn/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#6",
+     "en": "The trees are doing involuntary yoga.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#3",
+     "en": "The Cape Doctor is making house calls.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#1",
+     "en": "The southeaster's arrived. Uninvited, as usual.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_1/dawn/5.webp",
+   "hash": "337d1a2fe2c2",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/dawn/5.webp",
+    "wind/week_3/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#6",
+     "en": "The trees are doing involuntary yoga.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_1/dawn/6.webp",
+   "hash": "45b7693ad9e4",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_1/dawn/6.webp",
+    "wind/week_3/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#13",
+     "en": "Ponytail holders are doing overtime.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#4",
+     "en": "Your hairstyle? Gone. Accept it.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_1/dawn/7.webp",
+   "hash": "d0a60d414066",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/dawn/7.webp",
+    "wind/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#16",
+     "en": "Walking into it feels like a video game boss fight.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_1/day/4.webp",
+   "hash": "f32e33e76e01",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#14",
+     "en": "The wind has a personal vendetta against umbrellas.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#7",
+     "en": "Someone's trampoline is now two streets away.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#18",
+     "en": "The braai cover is in the next suburb.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_1/day/5.webp",
+   "hash": "232bde6ed095",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#0",
+     "en": "Hold onto your hat! And your kids.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#4",
+     "en": "Your hairstyle? Gone. Accept it.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_1/dusk/3.webp",
+   "hash": "38635f77f610",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/dusk/3.webp",
+    "wind/week_3/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#12",
+     "en": "Sand in places sand should never be.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#2",
+     "en": "Table Mountain's tablecloth is out.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#16",
+     "en": "Walking into it feels like a video game boss fight.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_2/dawn/4.webp",
+   "hash": "c66c7fd4f50e",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_2/dawn/4.webp",
+    "wind/week_4/dawn/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#18",
+     "en": "The braai cover is in the next suburb.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#8",
+     "en": "Perfect conditions for losing your dignity.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#15",
+     "en": "Every loose object in the garden has chosen violence.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_2/dawn/5.webp",
+   "hash": "3556004712b7",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/dawn/5.webp",
+    "wind/week_4/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#9",
+     "en": "Even the seagulls are walking today.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#12",
+     "en": "Sand in places sand should never be.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_2/day/1.webp",
+   "hash": "4d3a786acf48",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#4",
+     "en": "Your hairstyle? Gone. Accept it.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#2",
+     "en": "Table Mountain's tablecloth is out.",
+     "bin": "wind"
+    },
+    {
+     "ref": "witty:wind#19",
+     "en": "Not a hairstyle in sight. Just survivors.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "wind/week_2/night/4.webp",
+   "hash": "eb7873fd7acb",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_2/night/4.webp",
+    "wind/week_4/night/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "night",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "wind/week_4/dawn/1.webp",
+   "hash": "f1a06c34c049",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/dawn/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "wind",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:wind#11",
+     "en": "Your washing just moved to the neighbour's yard.",
+     "bin": "wind"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dawn/3.webp",
+   "hash": "b5793c36b69d",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dawn/3.webp",
+    "cloudy/week_3/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#21",
+     "en": "Not Instagram weather. Not the end of the world.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#20",
+     "en": "The sky's on mute. Nobody's complaining.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#2",
+     "en": "Good day for a walk, bad day for a tan.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dawn/4.webp",
+   "hash": "de1df07bf268",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_3/dawn/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#0",
+     "en": "The sky's giving absolutely nothing.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#35",
+     "en": "The sky is the colour of an old Tupperware lid.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#28",
+     "en": "Nothing to see here. Literally.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dawn/7.webp",
+   "hash": "e0e2d1182253",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_1/dawn/7.webp",
+    "cloudy/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#28",
+     "en": "Nothing to see here. Literally.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#26",
+     "en": "Perfect weather for existing without enthusiasm.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#0",
+     "en": "The sky's giving absolutely nothing.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#6",
+     "en": "Perfect weather for a Woolies run and Netflix.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/day/1.webp",
+   "hash": "119e4a52f8a4",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "B",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#12",
+     "en": "The sun's on a tea break. No ETA.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/day/3.webp",
+   "hash": "d16ca804a592",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_1/day/6.webp",
+   "hash": "31b58730d005",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_1/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "B",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#24",
+     "en": "At least it's not raining. That's the bar.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/day/7.webp",
+   "hash": "5668c9f2edcb",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "B",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#26",
+     "en": "Perfect weather for existing without enthusiasm.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#6",
+     "en": "Perfect weather for a Woolies run and Netflix.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#11",
+     "en": "It is what it is.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dusk/2.webp",
+   "hash": "20e80f881707",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#21",
+     "en": "Not Instagram weather. Not the end of the world.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dusk/4.webp",
+   "hash": "3ba329d5cea3",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#21",
+     "en": "Not Instagram weather. Not the end of the world.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#15",
+     "en": "Could be worse. Could also be better.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/night/1.webp",
+   "hash": "7b4c0256fd8d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/night/1.webp",
+    "cloudy/week_3/night/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "night",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_1/night/2.webp",
+   "hash": "76070c299a0b",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/night/2.webp",
+    "cloudy/week_3/night/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "night",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_1/night/6.webp",
+   "hash": "e991afd863ba",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_3/night/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "night",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#28",
+     "en": "Nothing to see here. Literally.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_1/night/7.webp",
+   "hash": "68317318c85d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_3/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "night",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_2/dawn/3.webp",
+   "hash": "08134a1e356e",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#9",
+     "en": "Grey vibes. The sky matched my Monday.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#24",
+     "en": "At least it's not raining. That's the bar.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dawn/4.webp",
+   "hash": "3bfd9b9470d6",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_4/dawn/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#22",
+     "en": "The sun sent an out-of-office reply.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#24",
+     "en": "At least it's not raining. That's the bar.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dawn/6.webp",
+   "hash": "03ff71985022",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#14",
+     "en": "A hoodie and an attitude. That's today.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#37",
+     "en": "The sun is technically present. Spiritually elsewhere.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#7",
+     "en": "The sky is buffering.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dawn/7.webp",
+   "hash": "4845b881f911",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_4/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#19",
+     "en": "The clouds are here but they're not doing anything.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#12",
+     "en": "The sun's on a tea break. No ETA.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/1.webp",
+   "hash": "e9f6b3850ce2",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "B",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#2",
+     "en": "Good day for a walk, bad day for a tan.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#3",
+     "en": "The sun's bunking today.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#16",
+     "en": "The sky's giving 'I'll try again tomorrow' energy.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/5.webp",
+   "hash": "5aea3d2e9887",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#24",
+     "en": "At least it's not raining. That's the bar.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/6.webp",
+   "hash": "dc71e7a692da",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#29",
+     "en": "The sky picked a vibe and the vibe is shrug.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/7.webp",
+   "hash": "094ec6ba034c",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/2.webp",
+   "hash": "6b5271665e34",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#1",
+     "en": "Overcast but we'll survive.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#5",
+     "en": "Not bad, not great. Like a 6/10 date.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#15",
+     "en": "Could be worse. Could also be better.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dusk/3.webp",
+   "hash": "018a0573e433",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_4/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/5.webp",
+   "hash": "444490756b06",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dusk/5.webp",
+    "cloudy/week_4/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#4",
+     "en": "Moody weather. Same, honestly.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#15",
+     "en": "Could be worse. Could also be better.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dusk/6.webp",
+   "hash": "0ebee4d85540",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/7.webp",
+   "hash": "211c0291a514",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "dusk",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#24",
+     "en": "At least it's not raining. That's the bar.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_2/night/4.webp",
+   "hash": "c6d4061cbef2",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/night/4.webp",
+    "cloudy/week_4/night/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "night",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_2/night/5.webp",
+   "hash": "f3255e596b2c",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/night/5.webp",
+    "cloudy/week_4/night/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "night",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_2/night/6.webp",
+   "hash": "bdc2741f86fb",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "night",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_3/day/1.webp",
+   "hash": "c16f8303d56e",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_3/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_3/day/3.webp",
+   "hash": "04bdf14c306b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_3/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "B",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#20",
+     "en": "The sky's on mute. Nobody's complaining.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_3/day/4.webp",
+   "hash": "47550fce6c98",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_3/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "B",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#10",
+     "en": "Eskom-friendly weather. No solar today.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#22",
+     "en": "The sun sent an out-of-office reply.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#3",
+     "en": "The sun's bunking today.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_4/day/4.webp",
+   "hash": "4727610ce8f9",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_4/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cloudy#26",
+     "en": "Perfect weather for existing without enthusiasm.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#8",
+     "en": "Even the weather can't be bothered today.",
+     "bin": "cloudy"
+    },
+    {
+     "ref": "witty:cloudy#11",
+     "en": "It is what it is.",
+     "bin": "cloudy"
+    }
+   ]
+  },
+  {
+   "image": "cloudy/week_4/day/6.webp",
+   "hash": "5a72972b399b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_4/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cloudy/week_4/day/7.webp",
+   "hash": "313ca13b51a5",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_4/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cloudy",
+     "time": "day",
+     "week": "B",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_1/dawn/1.webp",
+   "hash": "ea6e65a6bc63",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_1/dawn/1.webp",
+    "cold/week_3/dawn/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#0",
+     "en": "Ja, it's jersey weather. Double jersey.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#22",
+     "en": "Your jacket has a jacket. It's that kind of day.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#5",
+     "en": "Two-fleece minimum today.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#36",
+     "en": "Outside has betrayed you and you went anyway.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_1/dawn/3.webp",
+   "hash": "1c5f757ee79a",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_1/dawn/3.webp",
+    "cold/week_3/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#4",
+     "en": "Layer up like you're climbing Sani Pass.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#1",
+     "en": "Time to dig out that ugly beanie.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_1/dawn/4.webp",
+   "hash": "41c9f776e0fb",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_1/dawn/4.webp",
+    "cold/week_3/dawn/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#13",
+     "en": "Your hands are in your pockets and they're not coming out.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#8",
+     "en": "Your breath is doing special effects.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_1/dawn/7.webp",
+   "hash": "91301942dc29",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_1/dawn/7.webp",
+    "cold/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#15",
+     "en": "The car seats are freezing. Everything is freezing.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#29",
+     "en": "Why did past-you make plans? Past-you is the worst.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_1/day/6.webp",
+   "hash": "e8b7a7602012",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_1/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#9",
+     "en": "Blanket burrito mode: activated.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#17",
+     "en": "The dog refused to go outside. Fair.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#26",
+     "en": "The couch has made a compelling case for staying.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_1/day/7.webp",
+   "hash": "59f61259d350",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "cold/week_1/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "B",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#3",
+     "en": "Hot chocolate is not a want. It's a need.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#22",
+     "en": "Your jacket has a jacket. It's that kind of day.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#16",
+     "en": "Rooibos consumption just doubled.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_1/dusk/2.webp",
+   "hash": "6ab73d31bad6",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_1/dusk/2.webp",
+    "cold/week_3/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_1/dusk/3.webp",
+   "hash": "55da2af2c2bd",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_1/dusk/3.webp",
+    "cold/week_3/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_1/dusk/7.webp",
+   "hash": "420d1bd07555",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_1/dusk/7.webp",
+    "cold/week_3/dusk/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#6",
+     "en": "The heater is your best friend. Your only friend.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_1/night/2.webp",
+   "hash": "6baabb00f226",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_1/night/2.webp",
+    "cold/week_3/night/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "night",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_1/night/6.webp",
+   "hash": "a77b4dca45ae",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_1/night/6.webp",
+    "cold/week_3/night/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "night",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_1/night/7.webp",
+   "hash": "b850a52403e3",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "night",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#4",
+     "en": "Layer up like you're climbing Sani Pass.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#22",
+     "en": "Your jacket has a jacket. It's that kind of day.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#0",
+     "en": "Ja, it's jersey weather. Double jersey.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/dawn/5.webp",
+   "hash": "484f2079f5aa",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/dawn/5.webp",
+    "cold/week_4/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#21",
+     "en": "The duvet understood the assignment.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#20",
+     "en": "Getting out of bed was a mistake. A documented one.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#11",
+     "en": "The duvet had the right idea this morning.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/dawn/6.webp",
+   "hash": "4210c1f4a1ad",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_2/dawn/6.webp",
+    "cold/week_4/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#29",
+     "en": "Why did past-you make plans? Past-you is the worst.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/day/2.webp",
+   "hash": "e938ce2769cd",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#9",
+     "en": "Blanket burrito mode: activated.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#30",
+     "en": "The duvet is calling and the duvet is winning.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/day/3.webp",
+   "hash": "999e68c47bfc",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cold/week_2/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "B",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#22",
+     "en": "Your jacket has a jacket. It's that kind of day.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#13",
+     "en": "Your hands are in your pockets and they're not coming out.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#12",
+     "en": "Why did you leave the house? Honestly.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/day/4.webp",
+   "hash": "36ffe52cf7ec",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_2/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#37",
+     "en": "The fridge feels warmer than the lounge today.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/day/5.webp",
+   "hash": "084405b1c79a",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_2/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#25",
+     "en": "Your motivation froze on the way to the door.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#15",
+     "en": "The car seats are freezing. Everything is freezing.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#23",
+     "en": "The kettle is working harder than anyone today.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/dusk/1.webp",
+   "hash": "163ee2f2d1fe",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_2/dusk/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#12",
+     "en": "Why did you leave the house? Honestly.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#27",
+     "en": "Outside is a test of character. You're failing.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/dusk/3.webp",
+   "hash": "50eb6a4aa792",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_2/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#10",
+     "en": "This is not what the tourism brochure promised.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/dusk/5.webp",
+   "hash": "917c4c0a6fac",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dusk",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#3",
+     "en": "Hot chocolate is not a want. It's a need.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/night/2.webp",
+   "hash": "cb132360385f",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_2/night/2.webp",
+    "cold/week_4/night/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "night",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#8",
+     "en": "Your breath is doing special effects.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/night/3.webp",
+   "hash": "54f02eb5aac1",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_2/night/3.webp",
+    "cold/week_4/night/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "night",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#28",
+     "en": "Hot water bottle is the real MVP today.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#9",
+     "en": "Blanket burrito mode: activated.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_2/night/5.webp",
+   "hash": "fbf101482bbd",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/night/5.webp",
+    "cold/week_4/night/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "night",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_3/day/3.webp",
+   "hash": "a37a31d9aa79",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "cold/week_3/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "B",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#6",
+     "en": "The heater is your best friend. Your only friend.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#34",
+     "en": "Your toes have filed a formal complaint.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#14",
+     "en": "Three pairs of socks and still not enough.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_3/day/5.webp",
+   "hash": "77dad643efa6",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_3/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#18",
+     "en": "The cold front is here and it brought friends.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#7",
+     "en": "Even the Capetonians are admitting it's cold.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#19",
+     "en": "You're not cold, you're 'lekker koud'. Big difference.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_3/day/6.webp",
+   "hash": "bf942a9f6d66",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_3/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#10",
+     "en": "This is not what the tourism brochure promised.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#27",
+     "en": "Outside is a test of character. You're failing.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#24",
+     "en": "Nobody signed up for this temperature.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_3/day/7.webp",
+   "hash": "d003110fec9f",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "cold/week_3/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "B",
+     "day": "sat"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_4/dawn/1.webp",
+   "hash": "ba36a2982ee0",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_4/dawn/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#23",
+     "en": "The kettle is working harder than anyone today.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#6",
+     "en": "The heater is your best friend. Your only friend.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_4/day/1.webp",
+   "hash": "a373f1d83e2f",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "cold/week_4/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "B",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#0",
+     "en": "Ja, it's jersey weather. Double jersey.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#27",
+     "en": "Outside is a test of character. You're failing.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_4/day/2.webp",
+   "hash": "3fd7aa0aae2e",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "cold/week_4/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "B",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#6",
+     "en": "The heater is your best friend. Your only friend.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#26",
+     "en": "The couch has made a compelling case for staying.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_4/day/4.webp",
+   "hash": "4b92e51e69f8",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_4/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold/week_4/day/5.webp",
+   "hash": "d970e657c4d2",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "cold/week_4/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "day",
+     "week": "B",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#12",
+     "en": "Why did you leave the house? Honestly.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#27",
+     "en": "Outside is a test of character. You're failing.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#36",
+     "en": "Outside has betrayed you and you went anyway.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_4/dusk/2.webp",
+   "hash": "39e28d40ecf1",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_4/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#19",
+     "en": "You're not cold, you're 'lekker koud'. Big difference.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "cold/week_4/night/1.webp",
+   "hash": "13efc9191981",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_4/night/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold",
+     "time": "night",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold#22",
+     "en": "Your jacket has a jacket. It's that kind of day.",
+     "bin": "cold"
+    },
+    {
+     "ref": "witty:cold#19",
+     "en": "You're not cold, you're 'lekker koud'. Big difference.",
+     "bin": "cold"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/dawn/3.webp",
+   "hash": "66d5e6cb3570",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_1/dawn/3.webp",
+    "clear/week_3/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#28",
+     "en": "Your excuse to stay inside just expired.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/dawn/5.webp",
+   "hash": "7a76c59603c9",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_3/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#23",
+     "en": "No filter needed. Just look outside.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#26",
+     "en": "Everything looks 4K today. The sky's in ultra mode.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#35",
+     "en": "This is the weather we brag about overseas.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/dawn/7.webp",
+   "hash": "b698a0ccc12d",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#6",
+     "en": "If you're inside, you're doing it wrong.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/day/7.webp",
+   "hash": "03a31c2b8e88",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "clear/week_1/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "B",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#3",
+     "en": "Beach or braai? Yes.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#17",
+     "en": "This is the weather the weekend was invented for.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#8",
+     "en": "Today's plans: exist outside.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/dusk/3.webp",
+   "hash": "d097525bf5cf",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_1/dusk/3.webp",
+    "clear/week_3/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#10",
+     "en": "The coals aren't going to light themselves.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#24",
+     "en": "The braai is the social calendar. Show up.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#18",
+     "en": "Your only responsibility is choosing charcoal or wood.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#19",
+     "en": "Saturday energy: maximum. Responsibilities: minimum.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/1.webp",
+   "hash": "14f98c4f78fa",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_1/night/1.webp",
+    "clear/week_3/night/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "night",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:night#7",
+     "en": "The moon's doing the most tonight.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#16",
+     "en": "Tomorrow's weather is tomorrow's problem.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#2",
+     "en": "Quiet out there. Almost suspicious.",
+     "bin": "night"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/3.webp",
+   "hash": "127edee25245",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_1/night/3.webp",
+    "clear/week_3/night/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "night",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:night#1",
+     "en": "Perfect night to actually see the Milky Way.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#13",
+     "en": "Not a cloud. Just you and the Southern Cross.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#19",
+     "en": "The sky looks like it's showing off.",
+     "bin": "night"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/6.webp",
+   "hash": "998833419718",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_1/night/6.webp",
+    "clear/week_3/night/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "night",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:night#1",
+     "en": "Perfect night to actually see the Milky Way.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#13",
+     "en": "Not a cloud. Just you and the Southern Cross.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#19",
+     "en": "The sky looks like it's showing off.",
+     "bin": "night"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/7.webp",
+   "hash": "de9514caac5f",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_1/night/7.webp",
+    "clear/week_3/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "night",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:night#0",
+     "en": "Stars out, load shedding can't touch this.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#6",
+     "en": "Good night, South Africa.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#4",
+     "en": "Night shift weather: approved.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#19",
+     "en": "The sky looks like it's showing off.",
+     "bin": "night"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dawn/5.webp",
+   "hash": "dd736311b619",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#5",
+     "en": "Even the hadedas sound happy.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dawn/6.webp",
+   "hash": "73d202837435",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/dawn/6.webp",
+    "clear/week_4/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#10",
+     "en": "Somewhere an estate agent is saying 'lifestyle'.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#16",
+     "en": "Days like this should come with a soundtrack.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dawn/7.webp",
+   "hash": "d529968dcb50",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_2/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#3",
+     "en": "Beach or braai? Yes.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#8",
+     "en": "Today's plans: exist outside.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#11",
+     "en": "Shoes optional. Attitude mandatory.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#5",
+     "en": "If you're working today, we feel sorry for you.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/1.webp",
+   "hash": "9ab8b9f07431",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "B",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#16",
+     "en": "Days like this should come with a soundtrack.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#3",
+     "en": "Not a cloud in sight. Not one.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/2.webp",
+   "hash": "45d964f74171",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#9",
+     "en": "The weekend doesn't get better than this.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#13",
+     "en": "Kuier weather. Get the people together.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#8",
+     "en": "Today's plans: exist outside.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/4.webp",
+   "hash": "e9616cb7c61c",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_2/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#6",
+     "en": "Perfect for doing absolutely nothing.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#5",
+     "en": "If you're working today, we feel sorry for you.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#16",
+     "en": "No alarm. No agenda. Just vibes.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/5.webp",
+   "hash": "ca6d821f7c9b",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#4",
+     "en": "Main character weather right here.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#6",
+     "en": "If you're inside, you're doing it wrong.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/6.webp",
+   "hash": "5799efcdfd70",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#5",
+     "en": "Even the hadedas sound happy.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#19",
+     "en": "Blue sky, warm breeze. The simple stuff.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#3",
+     "en": "Not a cloud in sight. Not one.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#32",
+     "en": "The kind of sky that makes you grateful for free things.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/7.webp",
+   "hash": "ed953578deec",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "B",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#37",
+     "en": "Bottle this one. Open it in winter.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/1.webp",
+   "hash": "525b2eea2ebc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/dusk/1.webp",
+    "clear/week_4/dusk/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#11",
+     "en": "Shoes optional. Attitude mandatory.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#8",
+     "en": "Today's plans: exist outside.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#16",
+     "en": "No alarm. No agenda. Just vibes.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/2.webp",
+   "hash": "90a621539543",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#11",
+     "en": "Shoes optional. Attitude mandatory.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#9",
+     "en": "The weekend doesn't get better than this.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#8",
+     "en": "Today's plans: exist outside.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/3.webp",
+   "hash": "cc951efb5d19",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_2/dusk/3.webp",
+    "clear/week_4/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "clear/week_2/dusk/4.webp",
+   "hash": "7d50ec606bfc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_2/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#4",
+     "en": "Main character weather right here.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/5.webp",
+   "hash": "9059d175f28c",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/dusk/5.webp",
+    "clear/week_4/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#34",
+     "en": "Africa showing off again. Quietly devastating.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/6.webp",
+   "hash": "1bd6b90924a1",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/dusk/6.webp",
+    "clear/week_4/dusk/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#16",
+     "en": "Days like this should come with a soundtrack.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/night/5.webp",
+   "hash": "05cd0ad39fd6",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_2/night/5.webp",
+    "clear/week_4/night/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "night",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:night#11",
+     "en": "The neighbourhood cats have taken over.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#7",
+     "en": "The moon's doing the most tonight.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#2",
+     "en": "Quiet out there. Almost suspicious.",
+     "bin": "night"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/night/6.webp",
+   "hash": "970707aba87c",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/night/6.webp",
+    "clear/week_4/night/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "night",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:night#18",
+     "en": "Warm enough to leave the window open. Brave enough?",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#0",
+     "en": "Stars out, load shedding can't touch this.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#12",
+     "en": "Perfect weather for pretending you'll go to bed early.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#8",
+     "en": "Somewhere a cricket is really giving it.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#2",
+     "en": "Quiet out there. Almost suspicious.",
+     "bin": "night"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/night/7.webp",
+   "hash": "4138025d3128",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/night/7.webp",
+    "clear/week_4/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "night",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:night#16",
+     "en": "Tomorrow's weather is tomorrow's problem.",
+     "bin": "night"
+    },
+    {
+     "ref": "witty:night#12",
+     "en": "Perfect weather for pretending you'll go to bed early.",
+     "bin": "night"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_3/day/1.webp",
+   "hash": "f673af851f9c",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_3/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#30",
+     "en": "This is the stuff. Right here.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#24",
+     "en": "The type of day that makes people text 'lekker dag hey'.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_3/day/3.webp",
+   "hash": "0009c55ad6a5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "B",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#5",
+     "en": "Even the hadedas sound happy.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#34",
+     "en": "Africa showing off again. Quietly devastating.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#32",
+     "en": "The kind of sky that makes you grateful for free things.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_3/day/4.webp",
+   "hash": "84beada2e358",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "clear/week_3/day/7.webp",
+   "hash": "77cfc93827e3",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_3/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#22",
+     "en": "Even the parking lot looks pretty today.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#6",
+     "en": "If you're inside, you're doing it wrong.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_4/day/2.webp",
+   "hash": "448b951052cc",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "clear/week_4/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "B",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#10",
+     "en": "Somewhere an estate agent is saying 'lifestyle'.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#18",
+     "en": "The fynbos is loving it. You should too.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#4",
+     "en": "Main character weather right here.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_4/day/5.webp",
+   "hash": "6e598ae56c12",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "clear/week_4/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "B",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#15",
+     "en": "The tongs are calling. Answer them.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#7",
+     "en": "Call the mates. Get the meat. Let's go.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#24",
+     "en": "The braai is the social calendar. Show up.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "clear/week_4/day/6.webp",
+   "hash": "3d001539dcb5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "clear/week_4/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "clear",
+     "time": "day",
+     "week": "B",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:clear#25",
+     "en": "Take your coffee outside. You deserve it.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#19",
+     "en": "Blue sky, warm breeze. The simple stuff.",
+     "bin": "clear"
+    },
+    {
+     "ref": "witty:clear#6",
+     "en": "If you're inside, you're doing it wrong.",
+     "bin": "clear"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/2.webp",
+   "hash": "e5b2e8ac2654",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dawn/2.webp",
+    "rain/week_3/dawn/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#13",
+     "en": "The commute just became a team sport.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#32",
+     "en": "The pavement is a river and the river has plans.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#29",
+     "en": "The umbrella tax is now in effect.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/3.webp",
+   "hash": "9e75b001c7c5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/dawn/3.webp",
+    "rain/week_3/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#19",
+     "en": "The wipers are on max and it's still not enough.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#35",
+     "en": "The traffic just remembered rain exists. Again.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#25",
+     "en": "The traffic is emotional.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#14",
+     "en": "Everyone's forgotten how to drive. Again.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/6.webp",
+   "hash": "73567b0c612e",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_3/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#18",
+     "en": "At least the garden's happy. Someone has to be.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/7.webp",
+   "hash": "206f0a768ec9",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dawn/7.webp",
+    "rain/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#6",
+     "en": "Perfect excuse to cancel plans.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#2",
+     "en": "The garden's saying dankie at last.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/day/1.webp",
+   "hash": "d878b96a3f71",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "B",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#15",
+     "en": "The umbrella broke on the first gust. Classic.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#22",
+     "en": "Somewhere an umbrella just turned inside out. Moment of silence.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/day/2.webp",
+   "hash": "2b750515575e",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#8",
+     "en": "The N1 is now a waterpark.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#11",
+     "en": "Rain so heavy it should pay rent.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/day/3.webp",
+   "hash": "00a672556998",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#3",
+     "en": "The potholes are becoming swimming pools.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#23",
+     "en": "The puddle was deeper than it looked. It's always deeper.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/1.webp",
+   "hash": "71fdebcd3deb",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dusk/1.webp",
+    "rain/week_3/dusk/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#31",
+     "en": "Solidarity to everyone with one wet shoe right now.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#33",
+     "en": "Forgot your jacket? The universe noticed.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/2.webp",
+   "hash": "5f935cb18f17",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dusk/2.webp",
+    "rain/week_3/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#0",
+     "en": "The clouds are having a moment.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/5.webp",
+   "hash": "e95e8a2f22f0",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_1/dusk/5.webp",
+    "rain/week_3/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "rain/week_1/night/3.webp",
+   "hash": "d28204abf829",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/night/3.webp",
+    "rain/week_3/night/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "night",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#6",
+     "en": "Perfect excuse to cancel plans.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/2.webp",
+   "hash": "7bd5758fb7b5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dawn/2.webp",
+    "rain/week_4/dawn/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#7",
+     "en": "The dams are doing a happy dance.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/5.webp",
+   "hash": "80770bf13004",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/dawn/5.webp",
+    "rain/week_4/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#6",
+     "en": "Perfect excuse to cancel plans.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#2",
+     "en": "The garden's saying dankie at last.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#9",
+     "en": "Good soup weather, not gonna lie.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/6.webp",
+   "hash": "5526989179bd",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#32",
+     "en": "The pavement is a river and the river has plans.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#0",
+     "en": "The clouds are having a moment.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/1.webp",
+   "hash": "fe838c8901f7",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "rain/week_2/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "B",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#11",
+     "en": "Rain so heavy it should pay rent.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#30",
+     "en": "Wet jeans for the rest of the day. The classic punishment.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#17",
+     "en": "You'll dry. Eventually. Probably.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#16",
+     "en": "Wet socks. The ultimate betrayal.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/4.webp",
+   "hash": "e7547cfdee94",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#17",
+     "en": "You'll dry. Eventually. Probably.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#33",
+     "en": "Forgot your jacket? The universe noticed.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/5.webp",
+   "hash": "3bd49d0acf2b",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "B",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#11",
+     "en": "Rain so heavy it should pay rent.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#32",
+     "en": "The pavement is a river and the river has plans.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/6.webp",
+   "hash": "8ce35385e048",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#19",
+     "en": "The wipers are on max and it's still not enough.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#25",
+     "en": "The traffic is emotional.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#35",
+     "en": "The traffic just remembered rain exists. Again.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/2.webp",
+   "hash": "f7f51acb22c9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_2/dusk/2.webp",
+    "rain/week_4/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#9",
+     "en": "Good soup weather, not gonna lie.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#6",
+     "en": "Perfect excuse to cancel plans.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#17",
+     "en": "You'll dry. Eventually. Probably.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/3.webp",
+   "hash": "09641df1432a",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_2/dusk/3.webp",
+    "rain/week_4/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#25",
+     "en": "The traffic is emotional.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/4.webp",
+   "hash": "b4ee9d16720e",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dusk/4.webp",
+    "rain/week_4/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dusk",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#17",
+     "en": "You'll dry. Eventually. Probably.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#16",
+     "en": "Wet socks. The ultimate betrayal.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/6.webp",
+   "hash": "abf80e59bae9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dusk/6.webp",
+    "rain/week_4/dusk/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#26",
+     "en": "Nobody told the forecast. It just arrived.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/night/4.webp",
+   "hash": "c8df884e9ec0",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/night/4.webp",
+    "rain/week_4/night/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "night",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#19",
+     "en": "The wipers are on max and it's still not enough.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#25",
+     "en": "The traffic is emotional.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/night/6.webp",
+   "hash": "19ddc2f8afd3",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/night/6.webp",
+    "rain/week_4/night/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "night",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#22",
+     "en": "Somewhere an umbrella just turned inside out. Moment of silence.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#15",
+     "en": "The umbrella broke on the first gust. Classic.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_3/day/1.webp",
+   "hash": "d86d4f5699c2",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "rain/week_3/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "B",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "rain/week_3/day/3.webp",
+   "hash": "e54bbf2b56b2",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#12",
+     "en": "Your shoes are about to have a bad day.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#1",
+     "en": "Grab your brolly, boet.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_3/day/5.webp",
+   "hash": "d8d16083a690",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_3/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#28",
+     "en": "Yes, it's raining sideways. South Africa speciality.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#0",
+     "en": "The clouds are having a moment.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_3/day/7.webp",
+   "hash": "a0ef2720c507",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "B",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#31",
+     "en": "Solidarity to everyone with one wet shoe right now.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#12",
+     "en": "Your shoes are about to have a bad day.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#29",
+     "en": "The umbrella tax is now in effect.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_4/day/2.webp",
+   "hash": "057e8c9e5039",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#12",
+     "en": "Your shoes are about to have a bad day.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#16",
+     "en": "Wet socks. The ultimate betrayal.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#30",
+     "en": "Wet jeans for the rest of the day. The classic punishment.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_4/day/3.webp",
+   "hash": "c9050c0a05e5",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "rain/week_4/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "B",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#2",
+     "en": "The garden's saying dankie at last.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#7",
+     "en": "The dams are doing a happy dance.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#18",
+     "en": "At least the garden's happy. Someone has to be.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_4/day/4.webp",
+   "hash": "c9c6fd784b69",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "rain",
+     "time": "day",
+     "week": "B",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:rain#2",
+     "en": "The garden's saying dankie at last.",
+     "bin": "rain"
+    },
+    {
+     "ref": "witty:rain#11",
+     "en": "Rain so heavy it should pay rent.",
+     "bin": "rain"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/2.webp",
+   "hash": "91f980f76f82",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dawn/2.webp",
+    "storm/week_3/dawn/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#13",
+     "en": "Lightning's putting Eskom's grid to shame.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#24",
+     "en": "Don't even think about driving somewhere.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/3.webp",
+   "hash": "55fac1141abf",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/dawn/3.webp",
+    "storm/week_3/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#16",
+     "en": "The lightning is putting on a proper show.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#25",
+     "en": "Thunder so close the walls shook. Respect.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#29",
+     "en": "Unplug the things. The sky has plans.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#12",
+     "en": "Eskom wishes it had this power.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/5.webp",
+   "hash": "f0b49be17750",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dawn/5.webp",
+    "storm/week_3/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "storm/week_1/dawn/7.webp",
+   "hash": "a785060d7357",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#2",
+     "en": "The dog's under the bed. Smart move, honestly.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#18",
+     "en": "Not the time for hero moves, hey.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/day/3.webp",
+   "hash": "41e6c19016c1",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#28",
+     "en": "Big sky energy. Small human response.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#24",
+     "en": "Don't even think about driving somewhere.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#26",
+     "en": "Stay safe. The sky is making a point.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/day/4.webp",
+   "hash": "676b8843cb92",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "storm/week_1/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "B",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#26",
+     "en": "Stay safe. The sky is making a point.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#8",
+     "en": "This is why Noah built a boat.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/day/5.webp",
+   "hash": "99d0821cdd98",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#18",
+     "en": "Not the time for hero moves, hey.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#4",
+     "en": "The sky's having a full-on tantrum.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#0",
+     "en": "Jislaaik, stay inside!",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#6",
+     "en": "Cancel everything. Even your excuses.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/2.webp",
+   "hash": "a61146a38b06",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dusk/2.webp",
+    "storm/week_3/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#19",
+     "en": "The sky's reminding us who's boss.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#27",
+     "en": "Nature's having a word. Best to listen.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#31",
+     "en": "Beautiful and terrifying in equal measure.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/3.webp",
+   "hash": "742e1675a5a4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dusk/3.webp",
+    "storm/week_3/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#30",
+     "en": "Wait it out indoors. The mountains aren't going anywhere.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#14",
+     "en": "The sky just went full Carte Blanche.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/4.webp",
+   "hash": "53d4228e24c8",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dusk/4.webp",
+    "storm/week_3/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#24",
+     "en": "Don't even think about driving somewhere.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#4",
+     "en": "The sky's having a full-on tantrum.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/5.webp",
+   "hash": "e5b510c8a1e4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/dusk/5.webp",
+    "storm/week_3/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#21",
+     "en": "The sky's CV just got updated.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#15",
+     "en": "Respect the thunder. It's earned it.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/7.webp",
+   "hash": "e0089512238b",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_1/dusk/7.webp",
+    "storm/week_3/dusk/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dusk",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#8",
+     "en": "This is why Noah built a boat.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#20",
+     "en": "Nature just reminded us of the pecking order.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/night/7.webp",
+   "hash": "14c56f85c353",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/night/7.webp",
+    "storm/week_3/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "night",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "storm/week_2/dawn/2.webp",
+   "hash": "56af96f529d2",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dawn/2.webp",
+    "storm/week_4/dawn/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "storm/week_2/dawn/3.webp",
+   "hash": "29a289619727",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#31",
+     "en": "Beautiful and terrifying in equal measure.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dawn/7.webp",
+   "hash": "20ed2fe6b144",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "storm/week_2/day/2.webp",
+   "hash": "c152b51ebfa5",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#18",
+     "en": "Not the time for hero moves, hey.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#6",
+     "en": "Cancel everything. Even your excuses.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#26",
+     "en": "Stay safe. The sky is making a point.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/3.webp",
+   "hash": "a02b40a1cdb7",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#23",
+     "en": "This is the sky's performance review. It passed.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#6",
+     "en": "Cancel everything. Even your excuses.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/4.webp",
+   "hash": "c2c016aabf8f",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "B",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#20",
+     "en": "Nature just reminded us of the pecking order.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#10",
+     "en": "Somewhere a roof is someone's new kite.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#9",
+     "en": "The braai is cancelled. Yes, really.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/5.webp",
+   "hash": "777b9b465dbe",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "B",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#26",
+     "en": "Stay safe. The sky is making a point.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#27",
+     "en": "Nature's having a word. Best to listen.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/6.webp",
+   "hash": "30a82fcff9d4",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "storm/week_2/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "B",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#3",
+     "en": "Even the hadedas are quiet.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#4",
+     "en": "The sky's having a full-on tantrum.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dusk/4.webp",
+   "hash": "f6818069c8bd",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dusk/4.webp",
+    "storm/week_4/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#24",
+     "en": "Don't even think about driving somewhere.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#10",
+     "en": "Somewhere a roof is someone's new kite.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dusk/5.webp",
+   "hash": "adc69e7b4a17",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/dusk/5.webp",
+    "storm/week_4/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#22",
+     "en": "Somewhere a weather reporter is living their best life.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/night/1.webp",
+   "hash": "faaf0b2003be",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/night/1.webp",
+    "storm/week_4/night/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "night",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "storm/week_2/night/5.webp",
+   "hash": "2d2e6dd5d7fd",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/night/5.webp",
+    "storm/week_4/night/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "night",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#10",
+     "en": "Somewhere a roof is someone's new kite.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#8",
+     "en": "This is why Noah built a boat.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_3/day/1.webp",
+   "hash": "10cac134f9d9",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "B",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#24",
+     "en": "Don't even think about driving somewhere.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#27",
+     "en": "Nature's having a word. Best to listen.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_3/day/3.webp",
+   "hash": "20f3d07d3c47",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#25",
+     "en": "Thunder so close the walls shook. Respect.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#17",
+     "en": "Windows closed, kettle on, and wait.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_3/day/5.webp",
+   "hash": "b08495c9d832",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_3/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#19",
+     "en": "The sky's reminding us who's boss.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#27",
+     "en": "Nature's having a word. Best to listen.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_4/day/1.webp",
+   "hash": "ea95b93c8930",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "storm/week_4/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "B",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#0",
+     "en": "Jislaaik, stay inside!",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#18",
+     "en": "Not the time for hero moves, hey.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_4/day/5.webp",
+   "hash": "8c5812bded23",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "storm/week_4/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "B",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#27",
+     "en": "Nature's having a word. Best to listen.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#17",
+     "en": "Windows closed, kettle on, and wait.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_4/day/6.webp",
+   "hash": "f6562060468c",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_4/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "storm",
+     "time": "day",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:storm#22",
+     "en": "Somewhere a weather reporter is living their best life.",
+     "bin": "storm"
+    },
+    {
+     "ref": "witty:storm#24",
+     "en": "Don't even think about driving somewhere.",
+     "bin": "storm"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dawn/2.webp",
+   "hash": "caaa1c42d70a",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/dawn/2.webp",
+    "cold-clear/week_3/dawn/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#12",
+     "en": "Pretoria-bare-jacaranda energy. Beautiful and bleak.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#22",
+     "en": "Sun on your back, freezer on your face.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dawn/7.webp",
+   "hash": "898c05f233a6",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dawn/7.webp",
+    "cold-clear/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#10",
+     "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#23",
+     "en": "Three hadedas, two crows, one shivering human at the bird feeder.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/day/1.webp",
+   "hash": "21c809043132",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_1/day/4.webp",
+   "hash": "042ba0a95388",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_1/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#7",
+     "en": "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#17",
+     "en": "The car's heater is the most important relationship in your life right now.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#19",
+     "en": "Layers off by 11. Layers on by 4. Highveld classic.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/2.webp",
+   "hash": "510b7a0d60c0",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dusk/2.webp",
+    "cold-clear/week_3/dusk/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#4",
+     "en": "The dog is still keen. The dog is always keen. Respect.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/4.webp",
+   "hash": "fbdf528f41c8",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_1/dusk/4.webp",
+    "cold-clear/week_3/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_1/dusk/5.webp",
+   "hash": "827554552d76",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#27",
+     "en": "The braai is happening. The braai always happens. We just pull the chairs closer.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/7.webp",
+   "hash": "948736af4859",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/dusk/7.webp",
+    "cold-clear/week_3/dusk/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#4",
+     "en": "The dog is still keen. The dog is always keen. Respect.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/3.webp",
+   "hash": "05aeb3b79581",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_3/night/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "night",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_1/night/4.webp",
+   "hash": "da60a92cafd2",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_1/night/4.webp",
+    "cold-clear/week_3/night/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "night",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_1/night/7.webp",
+   "hash": "8fd1944f303b",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/night/7.webp",
+    "cold-clear/week_3/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "night",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/dawn/2.webp",
+   "hash": "28129477b706",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_2/dawn/2.webp",
+    "cold-clear/week_4/dawn/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#16",
+     "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#20",
+     "en": "The koppies look like a postcard. Your feet feel like ice blocks.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/3.webp",
+   "hash": "3e60dabd7ef7",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/dawn/3.webp",
+    "cold-clear/week_4/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#25",
+     "en": "Cold enough that the milk-bottle-on-the-stoep is now a cooler box.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#9",
+     "en": "Sun's out. Don't be fooled. Nature is lying.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/4.webp",
+   "hash": "6ca4d027da38",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_4/dawn/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#10",
+     "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#22",
+     "en": "Sun on your back, freezer on your face.",
+     "bin": "cold-clear"
+    },
+    {
+     "ref": "witty:cold-clear#19",
+     "en": "Layers off by 11. Layers on by 4. Highveld classic.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/6.webp",
+   "hash": "5a6dd26eb7db",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_4/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#17",
+     "en": "The car's heater is the most important relationship in your life right now.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/7.webp",
+   "hash": "4040cfcfc732",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/dawn/7.webp",
+    "cold-clear/week_4/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#10",
+     "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/day/1.webp",
+   "hash": "45b1ac83db20",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/day/2.webp",
+   "hash": "32dec9fbdcaa",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "day",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/dusk/3.webp",
+   "hash": "0b4330abc214",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dusk/3.webp",
+    "cold-clear/week_4/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/dusk/5.webp",
+   "hash": "1f74ef9146fb",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/dusk/6.webp",
+   "hash": "ff19d8654ec3",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_2/dusk/6.webp",
+    "cold-clear/week_4/dusk/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#22",
+     "en": "Sun on your back, freezer on your face.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/2.webp",
+   "hash": "da90853b2ccb",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_2/night/2.webp",
+    "cold-clear/week_4/night/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "night",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/night/3.webp",
+   "hash": "112364f9e477",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_4/night/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "night",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/night/4.webp",
+   "hash": "d298c8c1f224",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/night/4.webp",
+    "cold-clear/week_4/night/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "night",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_2/night/6.webp",
+   "hash": "f453a678f470",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_4/night/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "night",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_3/day/1.webp",
+   "hash": "decff597fe6c",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_3/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#3",
+     "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_3/day/5.webp",
+   "hash": "bbb3d8348b00",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_3/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "cold-clear/week_4/day/3.webp",
+   "hash": "bbad2500c852",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_4/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "cold-clear",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:cold-clear#11",
+     "en": "Lekker koud, but the rugby fields are about to look perfect.",
+     "bin": "cold-clear"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/1.webp",
+   "hash": "591629dceb51",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dawn/1.webp",
+    "fog/week_3/dawn/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "fog/week_1/dawn/3.webp",
+   "hash": "d903941f0dd8",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_1/dawn/3.webp",
+    "fog/week_3/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#14",
+     "en": "The streetlights are trying their best.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#10",
+     "en": "The fog ate the neighbourhood.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#20",
+     "en": "The neighbours exist. Apparently. Can't confirm.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/4.webp",
+   "hash": "deaadb7968fe",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/dawn/4.webp",
+    "fog/week_3/dawn/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#37",
+     "en": "The morning forgot to render.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#31",
+     "en": "The world ends two metres past the gate.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#22",
+     "en": "Your front gate is now the edge of the known world.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#20",
+     "en": "The neighbours exist. Apparently. Can't confirm.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#5",
+     "en": "The world just... disappeared.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/5.webp",
+   "hash": "23b1b4b2af6d",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dawn/5.webp",
+    "fog/week_3/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#14",
+     "en": "The streetlights are trying their best.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#32",
+     "en": "Your headlights are doing a 'thoughts and prayers'.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/7.webp",
+   "hash": "48e51baff8be",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/dawn/7.webp",
+    "fog/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#15",
+     "en": "Somewhere out there is the road. We think.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#6",
+     "en": "Perfect weather for a horror movie.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#2",
+     "en": "Silent Hill vibes. Without the monsters. Hopefully.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#17",
+     "en": "Everything looks like a film scene. A creepy one.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/day/1.webp",
+   "hash": "f1d8b3873dff",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "day",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#0",
+     "en": "Can't see a thing. Not a thing.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#19",
+     "en": "The fog doesn't care about your schedule.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#3",
+     "en": "Visibility: basically zero.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/day/3.webp",
+   "hash": "2d71f451d0df",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/day/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#20",
+     "en": "The neighbours exist. Apparently. Can't confirm.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#17",
+     "en": "Everything looks like a film scene. A creepy one.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#6",
+     "en": "Perfect weather for a horror movie.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#2",
+     "en": "Silent Hill vibes. Without the monsters. Hopefully.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/1.webp",
+   "hash": "4003b55c6c42",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dusk/1.webp",
+    "fog/week_3/dusk/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#32",
+     "en": "Your headlights are doing a 'thoughts and prayers'.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#1",
+     "en": "Driving slow is not a suggestion.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#15",
+     "en": "Somewhere out there is the road. We think.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/4.webp",
+   "hash": "a0b24a9ae618",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/dusk/4.webp",
+    "fog/week_3/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#17",
+     "en": "Everything looks like a film scene. A creepy one.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/5.webp",
+   "hash": "2ac9aa1f42fc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dusk/5.webp",
+    "fog/week_3/dusk/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#13",
+     "en": "Walking the dog has become a trust exercise.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/6.webp",
+   "hash": "b64f87c2b2bc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/dusk/6.webp",
+    "fog/week_3/dusk/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dusk",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#23",
+     "en": "The street signs gave up.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#16",
+     "en": "The mountains are on holiday today.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/night/1.webp",
+   "hash": "5a72ad3aac4b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/night/1.webp",
+    "fog/week_3/night/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "night",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "fog/week_1/night/3.webp",
+   "hash": "b7cdf515c96b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/night/3.webp",
+    "fog/week_3/night/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "night",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#31",
+     "en": "The world ends two metres past the gate.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#17",
+     "en": "Everything looks like a film scene. A creepy one.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/night/4.webp",
+   "hash": "39c515606f74",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/night/4.webp",
+    "fog/week_3/night/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "night",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#20",
+     "en": "The neighbours exist. Apparently. Can't confirm.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#5",
+     "en": "The world just... disappeared.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/night/5.webp",
+   "hash": "05b3727f7c16",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/night/5.webp",
+    "fog/week_3/night/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "night",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#26",
+     "en": "The traffic lights are vibing in the mist.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_1/night/7.webp",
+   "hash": "c2a03f49e81e",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/night/7.webp",
+    "fog/week_3/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "night",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#14",
+     "en": "The streetlights are trying their best.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#2",
+     "en": "Silent Hill vibes. Without the monsters. Hopefully.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_2/dawn/1.webp",
+   "hash": "13fa1ba0ce60",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/dawn/1.webp",
+    "fog/week_4/dawn/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#12",
+     "en": "The world got a soft filter this morning.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#15",
+     "en": "Somewhere out there is the road. We think.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_2/dawn/3.webp",
+   "hash": "8ea1dc6bec6a",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/dawn/3.webp",
+    "fog/week_4/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#12",
+     "en": "The world got a soft filter this morning.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_2/day/1.webp",
+   "hash": "36972a49b9e6",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "day",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#19",
+     "en": "The fog doesn't care about your schedule.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#0",
+     "en": "Can't see a thing. Not a thing.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#28",
+     "en": "The fog arrived unannounced. Classic fog.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#21",
+     "en": "Visibility sponsored by nobody.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_2/day/6.webp",
+   "hash": "62480343c313",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/day/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#4",
+     "en": "Even your GPS is confused.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#24",
+     "en": "Even Google Maps is being vague today.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#1",
+     "en": "Driving slow is not a suggestion.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#3",
+     "en": "Visibility: basically zero.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#32",
+     "en": "Your headlights are doing a 'thoughts and prayers'.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_2/dusk/1.webp",
+   "hash": "b5837596744c",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/dusk/1.webp",
+    "fog/week_4/dusk/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dusk",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#30",
+     "en": "Cape Town just got a dimmer switch.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_2/dusk/3.webp",
+   "hash": "5cd228859e14",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_2/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "fog/week_2/dusk/7.webp",
+   "hash": "838bd4824615",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "fog/week_2/night/2.webp",
+   "hash": "0467a4574c0b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/night/2.webp",
+    "fog/week_4/night/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "night",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "fog/week_2/night/4.webp",
+   "hash": "7acec82c9b6f",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/night/4.webp",
+    "fog/week_4/night/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "night",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#14",
+     "en": "The streetlights are trying their best.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_3/day/2.webp",
+   "hash": "84811d2b9372",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_3/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#13",
+     "en": "Walking the dog has become a trust exercise.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#7",
+     "en": "Ghost town. But it's just Tuesday.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#10",
+     "en": "The fog ate the neighbourhood.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#35",
+     "en": "Visibility: vibes only.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_3/day/7.webp",
+   "hash": "dd6b06e34d3e",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_3/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#34",
+     "en": "Walking to the bin is now an expedition.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#22",
+     "en": "Your front gate is now the edge of the known world.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#31",
+     "en": "The world ends two metres past the gate.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "fog/week_4/day/1.webp",
+   "hash": "541778f8c617",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_4/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "fog",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:fog#10",
+     "en": "The fog ate the neighbourhood.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#20",
+     "en": "The neighbours exist. Apparently. Can't confirm.",
+     "bin": "fog"
+    },
+    {
+     "ref": "witty:fog#36",
+     "en": "The garden is somewhere out there. We trust the process.",
+     "bin": "fog"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/dawn/3.webp",
+   "hash": "4d63213b19b9",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_3/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dawn",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#1",
+     "en": "You could fry an egg on the N1.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/dawn/4.webp",
+   "hash": "0828ca00553f",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_1/dawn/4.webp",
+    "heat/week_3/dawn/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dawn",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#4",
+     "en": "The pool is not optional.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/dawn/5.webp",
+   "hash": "b81a91a1f851",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_3/dawn/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dawn",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#6",
+     "en": "Perfect for doing absolutely nothing.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#8",
+     "en": "Today's plans: exist outside.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#5",
+     "en": "If you're working today, we feel sorry for you.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/dawn/6.webp",
+   "hash": "437fd1add3cd",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/dawn/6.webp",
+    "heat/week_3/dawn/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dawn",
+     "week": "A",
+     "day": "sun"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#6",
+     "en": "Perfect for doing absolutely nothing.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#9",
+     "en": "The weekend doesn't get better than this.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#12",
+     "en": "Your out-of-office is doing the heavy lifting.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/dawn/7.webp",
+   "hash": "726c6aee069a",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/dawn/7.webp",
+    "heat/week_3/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dawn",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "heat/week_1/day/4.webp",
+   "hash": "98d89edda1cd",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/day/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "day",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#1",
+     "en": "You could fry an egg on the N1.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#7",
+     "en": "Your car seat is a weapon right now.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#35",
+     "en": "Don't touch the seatbelt buckle. Trust us.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/dusk/3.webp",
+   "hash": "5ed7621f5dd9",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/dusk/3.webp",
+    "heat/week_3/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dusk",
+     "week": "A",
+     "day": "mon"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "heat/week_1/dusk/4.webp",
+   "hash": "68661ff2b0dc",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_1/dusk/4.webp",
+    "heat/week_3/dusk/4.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dusk",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "heat/week_2/dawn/3.webp",
+   "hash": "818c078a2bda",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_2/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dawn",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#23",
+     "en": "Water consumption: yes. All of it.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/dawn/7.webp",
+   "hash": "c6d266d04418",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/dawn/7.webp",
+    "heat/week_4/dawn/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dawn",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "heat/week_2/day/2.webp",
+   "hash": "d6593f52fb76",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_2/day/2.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "day",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#21",
+     "en": "The office aircon debate just went to level 5.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#12",
+     "en": "The office aircon war has begun.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#29",
+     "en": "The aircon remote is now public property. Negotiate.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/day/7.webp",
+   "hash": "afd3c9db83bd",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/day/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "day",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#11",
+     "en": "Somewhere a chocolate bar just died.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#28",
+     "en": "Slowly becoming a puddle in the corner.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#6",
+     "en": "The AC is begging for mercy.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/dusk/3.webp",
+   "hash": "555f76c5594f",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/dusk/3.webp",
+    "heat/week_4/dusk/3.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dusk",
+     "week": "A",
+     "day": "sat"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:weekend#14",
+     "en": "The Weber's been waiting all week for this.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#1",
+     "en": "Fire up the Weber. It's the law.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#10",
+     "en": "The coals aren't going to light themselves.",
+     "bin": "weekend"
+    },
+    {
+     "ref": "witty:weekend#24",
+     "en": "The braai is the social calendar. Show up.",
+     "bin": "weekend"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/dusk/6.webp",
+   "hash": "248b04dcf98d",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/dusk/6.webp",
+    "heat/week_4/dusk/6.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dusk",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#32",
+     "en": "The ceiling fan is doing its best, but its best is not enough.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#8",
+     "en": "Too hot to argue. Too hot to function.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/dusk/7.webp",
+   "hash": "3e88aef1fb06",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "dusk",
+     "week": "A",
+     "day": "thu"
+    }
+   ],
+   "pass1": []
+  },
+  {
+   "image": "heat/week_2/night/7.webp",
+   "hash": "2a3a60226c30",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_2/night/7.webp",
+    "heat/week_4/night/7.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "night",
+     "week": "A",
+     "day": "tue"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#15",
+     "en": "The fridge is the coolest room in the house.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#25",
+     "en": "The fridge door is getting a workout today.",
+     "bin": "heat"
+    },
+    {
+     "ref": "witty:heat#17",
+     "en": "Shorts weather? This is underwear weather.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_3/day/1.webp",
+   "hash": "6591bd91d1fc",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_3/day/1.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "day",
+     "week": "A",
+     "day": "wed"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#4",
+     "en": "The pool is not optional.",
+     "bin": "heat"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_3/day/5.webp",
+   "hash": "6ce02da2ab7a",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_3/day/5.webp"
+   ],
+   "slots": [
+    {
+     "condition": "heat",
+     "time": "day",
+     "week": "A",
+     "day": "fri"
+    }
+   ],
+   "pass1": [
+    {
+     "ref": "witty:heat#32",
+     "en": "The ceiling fan is doing its best, but its best is not enough.",
+     "bin": "heat"
+    }
+   ]
+  }
+ ]
+}

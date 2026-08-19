@@ -35,8 +35,16 @@ const CAP = {
   padBottom: Math.max(10, Math.min(20, 1.8 * 812 / 100)),
 };
 
-const DATA = JSON.stringify({ box: BOX, cap: CAP, images: doc.images });
+const DATA = JSON.stringify({ box: BOX, cap: CAP, bucket: doc.bucket || null, images: doc.images });
 const SRC_NAME_LITERAL = JSON.stringify(SRC);
+// The pass is now run one condition bucket at a time, so the page has to say
+// which bucket it is and the export has to land in its own file. Round 1 and
+// round 2 shared a page and a storage key once already, and Al opened the
+// round-2 page to round-1's lines.
+const TITLE = doc.bucket
+  ? `Bespoke lines — ${doc.bucket}, ${doc.images.length} photographs, five each`
+  : `Bespoke lines — ${doc.images.length} photographs, five each`;
+const EXPORT_NAME = JSON.stringify(`${path.basename(SRC, '.json')}-ruled.json`);
 
 const html = `<!doctype html>
 <meta charset="utf-8">
@@ -74,11 +82,13 @@ const html = `<!doctype html>
   .y.on { border-color:var(--yes); color:var(--yes); font-weight:700; }
   .n2.on { border-color:var(--no); color:var(--no); font-weight:700; }
   .line.mine input[type=text] { border-style:dashed; }
+  .line .resc { flex:none; align-self:flex-start; margin-top:8px; font-size:10.5px; letter-spacing:.06em;
+      text-transform:uppercase; color:#8fb7ff; border:1px solid #8fb7ff55; border-radius:5px; padding:1px 5px; }
   .hint { color:var(--ink2); font-size:12px; margin:10px 0 0; max-width:80ch; }
 </style>
 
 <header>
-  <h1>Bespoke lines — 42 photographs, five each</h1>
+  <h1>${TITLE}</h1>
   <span class="tally" id="tally"></span>
   <span style="flex:1"></span>
   <button id="export" class="primary">Export</button>
@@ -88,6 +98,7 @@ const html = `<!doctype html>
 <script>
 const DATA = ${DATA};
 const SRC_NAME = ${SRC_NAME_LITERAL};
+const EXPORT_NAME = ${EXPORT_NAME};
 // Namespaced per source. Round 1 and round 2 share this page's code, and with
 // one key the round-2 page read round 1's saved text back out of storage and
 // rendered it in every slot - Al opened it and saw the old lines. The stored
@@ -187,6 +198,15 @@ function render() {
       n.textContent = i === N ? '+' : String(i + 1);
       wrap.appendChild(n);
 
+      const ref = img.rescue && img.rescue[i];
+      if (ref) {
+        const tag = document.createElement('span');
+        tag.className = 'resc';
+        tag.textContent = 'bank';
+        tag.title = 'Rescued from the existing bank (' + ref + ') rather than newly written';
+        wrap.appendChild(tag);
+      }
+
       const inp = document.createElement('input');
       inp.type = 'text';
       inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
@@ -239,7 +259,7 @@ function render() {
 }
 
 $('export').onclick = () => {
-  const out = { generated: '2026-08-18', ruledBy: 'Al, bespoke line review', images: [] };
+  const out = { generated: '2026-08-19', ruledBy: 'Al, bespoke line review', bucket: DATA.bucket || null, images: [] };
   for (const img of DATA.images) {
     const kept = []; const rejected = [];
     // Lines already kept in an earlier round ride along in the export, marked as
@@ -253,6 +273,8 @@ $('export').onclick = () => {
       if (!text || !text.trim()) continue;
       const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
         round: 2, edited: i < N && text.trim() !== img.lines[i] };
+      const ref = img.rescue && img.rescue[i];
+      if (ref && !entry.edited) { entry.source = 'bank'; entry.rescue = ref; }
       if (rec.verdict === 'YES') kept.push(entry);
       else if (rec.verdict === 'NO') rejected.push(entry);
     }
@@ -264,7 +286,7 @@ $('export').onclick = () => {
   const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = (SRC_NAME.includes('round2') ? 'set-001-lines-bespoke-round2.json' : 'set-001-lines-bespoke.json');
+  a.download = EXPORT_NAME;
   a.click();
 };
 
