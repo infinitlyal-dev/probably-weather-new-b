@@ -1,0 +1,898 @@
+{
+ "generated": "2026-08-19",
+ "writtenBy": "Opus 5 (Baken), viewing each photograph",
+ "brief": "review/PAIRING-TASTE.md as instruction; five EN lines per image written for that picture. A line marked RESCUE is from the existing bank rather than newly written.",
+ "bucket": "fog",
+ "count": 28,
+ "images": [
+  {
+   "index": 1,
+   "image": "fog/week_1/dawn/1.webp",
+   "hash": "591629dceb51",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dawn/1.webp",
+    "fog/week_3/dawn/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "An Nguni cow standing facing camera in a soaked green pasture in thick morning fog, with three or four more cattle dissolving into the white behind her and two ghost trees on either horizon. Heavy dew silvering the grass.",
+   "note": null,
+   "lines": [
+    "She has walked towards the camera because there is nothing else to walk towards.",
+    "Everything past those two trees is a rumour until about nine o'clock.",
+    "Nguni markings and no horizon at all, which is a very specific morning.",
+    "The grass is soaked and not one of them has moved more than a metre.",
+    "Tuesday, and whoever is fetching these cows is going to be a while."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 2,
+   "image": "fog/week_1/dawn/3.webp",
+   "hash": "d903941f0dd8",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_1/dawn/3.webp",
+    "fog/week_3/dawn/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A suburban street at first light in thick fog — a row of ornate street lamps glowing warm orange and receding down the road into white, thorn trees and a palm in silhouette, low houses with palisade fences on the left, wet tar and brick pavement, deep blue-grey air.",
+   "note": null,
+   "lines": [
+    "You can count four of those lamps and there are eleven on this street.",
+    "That palm is about forty metres away and it is nearly gone already.",
+    "The road is wet and it has not rained, which is what fog does.",
+    "Friday, and every car on this road is going to be doing thirty.",
+    "The streetlights are trying their best."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#14"
+   ]
+  },
+  {
+   "index": 3,
+   "image": "fog/week_1/dawn/4.webp",
+   "hash": "deaadb7968fe",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/dawn/4.webp",
+    "fog/week_3/dawn/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "5 bank lines approved on this slot",
+   "seen": "A modern timber-and-concrete house on a hillside in dense fog with one upstairs window blazing warm yellow and throwing a solid visible beam of light out into the fog like a searchlight. Everything else — the hillside, the fynbos below, the rest of the house — is dissolved in grey.",
+   "note": "All five pass-1 approvals here are the \"the world disappeared / can't see a thing\" family, which PAIRING-TASTE rule 1 names as the fog bucket's classic zero-contribution failure, and two of them name a front gate that is not in frame. Nothing rescued.",
+   "lines": [
+    "Somebody left a lamp on upstairs and accidentally built a lighthouse.",
+    "Whoever is behind that window has no idea what it looks like from out here.",
+    "That light is doing something it never does when the air is clear.",
+    "There is a whole hillside under that and none of it is showing.",
+    "Wednesday, and one window is doing the work of an entire sunrise."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 4,
+   "image": "fog/week_1/dawn/5.webp",
+   "hash": "23b1b4b2af6d",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dawn/5.webp",
+    "fog/week_3/dawn/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A schoolboy in a hi-vis yellow vest over his uniform with a navy backpack, standing at the kerb at a corner looking down a road that vanishes completely into thick fog. One street lamp glowing above him, one faint car light far off in the white, a storm drain at his feet, wet tar, trees dissolving.",
+   "note": null,
+   "lines": [
+    "Somebody put that vest on him this morning and they were absolutely right.",
+    "He is the brightest thing for about two hundred metres in any direction.",
+    "That is a car coming and he heard it long before he saw it.",
+    "He is not crossing yet and nobody had to tell him that.",
+    "Monday, and the bus is somewhere in that and it is running late."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 5,
+   "image": "fog/week_1/dawn/7.webp",
+   "hash": "48e51baff8be",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/dawn/7.webp",
+    "fog/week_3/dawn/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "A woman in a grey vest and navy shorts running away from camera up a wet tarred forest road into a wall of fog. Tall gums and indigenous trees either side, ferns and undergrowth on the left, wet leaf litter, the road curving away into white.",
+   "note": null,
+   "lines": [
+    "She can see about thirty metres of that road and she is going anyway.",
+    "Everything she can hear out there is closer than everything she can see.",
+    "The road gives her another twenty metres every time she takes twenty.",
+    "Saturday, and she has this entire forest to herself and cannot prove it.",
+    "There is no sun to run into and no shade to run out of."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 6,
+   "image": "fog/week_1/day/1.webp",
+   "hash": "f1d8b3873dff",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A golf ball sitting in wet fairway grass in the foreground, sharply in focus, with a golfer in a dark jacket and cap walking towards camera out of thick fog in the middle distance carrying a bag and a club. Trees dissolving on both sides, everything else white.",
+   "note": "Pass-1's three approvals here are the fog#0 / fog#3 \"can't see a thing / visibility zero\" family that PAIRING-TASTE rule 1 names as zero-contribution. Nothing rescued.",
+   "lines": [
+    "He is walking towards that ball and he does not know it yet.",
+    "He found it, which on a morning like this is the whole achievement.",
+    "Nobody out here has seen where anything landed since about seven o'clock.",
+    "That ball is nine metres away from him and it has taken four minutes.",
+    "Sunday, and the only way to play this is by sound and hope."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 7,
+   "image": "fog/week_1/day/3.webp",
+   "hash": "2d71f451d0df",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/day/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "A tabby cat sitting on a lichened sandstone wall, sharply in focus, looking off to the left. Behind it, dissolving into thick white fog, a gabled house with a verandah and three human figures standing in the mist as vague silhouettes. Green garden plants and white flowers along the wall.",
+   "note": null,
+   "lines": [
+    "She is the only thing in this photograph you could pick out of a line-up.",
+    "Those three are about twelve metres away and none of them can see her.",
+    "She heard whatever that is long before it turned into a shape.",
+    "The neighbours exist. Apparently. Can't confirm.",
+    "Silent Hill vibes. Without the monsters. Hopefully."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    "witty:fog#20",
+    "witty:fog#2"
+   ]
+  },
+  {
+   "index": 8,
+   "image": "fog/week_1/dusk/1.webp",
+   "hash": "4003b55c6c42",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dusk/1.webp",
+    "fog/week_3/dusk/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A minibus taxi coming towards camera down a wet curving country road in thick fog at dusk, headlights throwing two cones of gold onto the wet tar. Flat-topped acacias dissolving on both sides, hills behind, grass verges, painted road lines.",
+   "note": null,
+   "lines": [
+    "Those headlights are lighting up the fog and nothing at all behind it.",
+    "The lines on the road are the only thing anybody out here is trusting.",
+    "He knows this road well enough to be doing that speed in this.",
+    "Monday evening, and everybody in that taxi is getting home later than they said.",
+    "Every one of those trees is going to arrive with no warning at all."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 9,
+   "image": "fog/week_1/dusk/4.webp",
+   "hash": "a0b24a9ae618",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/dusk/4.webp",
+    "fog/week_3/dusk/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A dark suburban estate street at dusk in thick fog. One car's red tail lights glowing in the middle of the road ahead, already half swallowed. One street lamp on the left, houses with tiled roofs and boundary walls on the right, a thorn tree, a hedge, wet black tar filling the bottom half.",
+   "note": "This is the frame PAIRING-TASTE quotes when it rejects fog#0 (\"the only readable objects in this entire photograph are two red tail lights and one streetlight\"). Its pass-1 approval, fog#17, tells the reader what to feel. Nothing rescued.",
+   "lines": [
+    "Those tail lights are about sixty metres away and that is the whole street.",
+    "Whoever is in that car has just decided to put the fog lights on.",
+    "One street lamp is on and it is lighting up about four metres of anything.",
+    "Thursday evening, and somebody is going to drive straight past their own driveway.",
+    "The house on the right is thirty metres away and mostly a guess."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 10,
+   "image": "fog/week_1/dusk/5.webp",
+   "hash": "2ac9aa1f42fc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dusk/5.webp",
+    "fog/week_3/dusk/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A woman in a pale hooded top walking away from camera on a wet brick promenade in thick fog at dusk, a scruffy blond dog on a long lead beside her. A receding row of street lamps glowing orange down the left, dissolving one after another. Sea and rocks vaguely to the right.",
+   "note": null,
+   "lines": [
+    "That lead is the only thing here that knows where anything actually is.",
+    "Six lamps down that promenade and you can only really believe two of them.",
+    "The sea is about ten metres to her right and you would never know.",
+    "Tuesday, and they are both going to come home smelling of the whole ocean.",
+    "Walking the dog has become a trust exercise."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#13"
+   ]
+  },
+  {
+   "index": 11,
+   "image": "fog/week_1/dusk/6.webp",
+   "hash": "b64f87c2b2bc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/dusk/6.webp",
+    "fog/week_3/dusk/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "Two young women in black jackets standing at the roadside in fog, one holding up a phone for a selfie, both laughing. Behind them a big road sign that reads completely blank — not a word visible on it — on a wooden post. A tar road curving away into fog, gravel verge, tussock grass, a faint pale sunset glow in the murk.",
+   "note": null,
+   "lines": [
+    "That photo is going to be two faces and a wall of nothing.",
+    "Neither of them knows what that sign says and neither of them minds.",
+    "They stopped for the photograph rather than the view, which is just as well.",
+    "Sunday, and neither of them is completely sure which road this is.",
+    "The street signs gave up."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#23"
+   ]
+  },
+  {
+   "index": 12,
+   "image": "fog/week_1/night/1.webp",
+   "hash": "5a72ad3aac4b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/night/1.webp",
+    "fog/week_3/night/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "An aerial night view over Cape Town — Table Mountain and Devil's Peak in silhouette across the top, the whole CBD spread below in orange street light, and a thick tongue of fog pouring across the middle of the city, half swallowing the skyscrapers so only their tops stick out of it. The harbour bottom left.",
+   "note": null,
+   "lines": [
+    "The tops of those buildings are above it and the streets underneath are not.",
+    "Everybody down in that has no idea what it looks like from up here.",
+    "That fog came in off the sea about forty minutes ago and is still coming.",
+    "Wednesday night, and half this city is driving through something the other half cannot see.",
+    "Table Mountain is up there watching the whole thing happen underneath it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 13,
+   "image": "fog/week_1/night/3.webp",
+   "hash": "b7cdf515c96b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/night/3.webp",
+    "fog/week_3/night/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A covered taxi rank at night in fog. Two white minibus taxis parked under a long concrete canopy with a receding row of ceiling lights dissolving into the mist. Two people walking away in the middle distance. Wet reflective tar fills the bottom half of the frame.",
+   "note": null,
+   "lines": [
+    "Those two are the only passengers here and there are two taxis waiting.",
+    "You can count six of those lights before the seventh stops existing.",
+    "Nothing leaves until it is full and nothing is filling up tonight.",
+    "The roof stops the rain and it is doing nothing at all about this.",
+    "Monday night, and the fog has taken the whole timetable with it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 14,
+   "image": "fog/week_1/night/4.webp",
+   "hash": "39c515606f74",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/night/4.webp",
+    "fog/week_3/night/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A man in a cream jacket walking up a brick garden path at night through thick fog, lit from behind by a warm lit window whose light spills out in a huge visible cone through the mist. A brick house with a wide eave, a yucca and shrubs, wet lawn, dark trees dissolving to the right.",
+   "note": null,
+   "lines": [
+    "Somebody left that light on for him and tonight it is doing more than usual.",
+    "That light is reaching about nine metres and he is at eight.",
+    "The path is the only thing he needs and it is the only thing showing.",
+    "He can see the house and he still cannot see the gate behind him.",
+    "Saturday night, and he is walking home rather than driving, for obvious reasons."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 15,
+   "image": "fog/week_1/night/5.webp",
+   "hash": "05b3727f7c16",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/night/5.webp",
+    "fog/week_3/night/5.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A traffic light at night in thick fog with all three lamps lit at once — red, amber and green — each throwing a huge coloured halo into the mist, and all three colours smeared in long reflections down the wet road below. A street lamp and a street-name sign far off on the left, kerb, tussock grass, empty road.",
+   "note": "Pass-1's only approval here is fog#26 (\"The traffic lights are vibing in the mist\") — vibes as the payload, which PAIRING-TASTE rule 3 rules out except as irony. Not rescued.",
+   "lines": [
+    "All three are lit at once, which is not something a traffic light should do.",
+    "Whoever arrives at this intersection tonight is going to have to make a decision.",
+    "The fog is showing you the light instead of what the light is for.",
+    "There is more colour on this corner than in the whole rest of town.",
+    "Tuesday night, and nobody has come past to be confused by it yet."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 16,
+   "image": "fog/week_1/night/7.webp",
+   "hash": "c2a03f49e81e",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/night/7.webp",
+    "fog/week_3/night/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A man in a long dark overcoat walking down the middle of an empty wet suburban road at night in fog, lit from behind by one street lamp blooming hugely in the mist and throwing his long shadow towards camera. White boundary walls and gate pillars either side, a small lit garden lamp, a tree dissolving.",
+   "note": null,
+   "lines": [
+    "That is one street lamp doing the work of about six of them.",
+    "His shadow is longer than the part of the road he can actually see.",
+    "He is walking down the middle of the road because tonight he can.",
+    "Thursday night, and there is not a car on this road to worry about.",
+    "Every gate on this street is shut and none of them is more than a shape."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 17,
+   "image": "fog/week_2/dawn/1.webp",
+   "hash": "13fa1ba0ce60",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/dawn/1.webp",
+    "fog/week_4/dawn/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "2 bank lines approved on this slot",
+   "seen": "A red dirt farm road running away into fog at sunrise with a long avenue of white-trunked gums leaning over it on the right, back-lit gold. Dewy grass verge on the left, a wire fence, and a white gabled farmhouse just visible in the mist. Everything down the road dissolves into pale gold and white.",
+   "note": null,
+   "lines": [
+    "You can count eight of those gums and there are about forty of them.",
+    "That house is about two hundred metres away and it is nearly a rumour.",
+    "The sun is behind all of that and it is going to win by eight.",
+    "There are no tracks on that road yet and that will not last long.",
+    "Thursday, and whoever drives out of that farm first gets to find the road."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 18,
+   "image": "fog/week_2/dawn/3.webp",
+   "hash": "8ea1dc6bec6a",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/dawn/3.webp",
+    "fog/week_4/dawn/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "Three big-horned Nguni cows standing in a low bank of fog on a dewy green hillside at sunrise, looking straight at camera, their bodies half swallowed by the mist. A post-and-rail fence running down the right, rolling green hills and a whole valley full of fog behind them, gold sunrise light.",
+   "note": null,
+   "lines": [
+    "The fog is exactly chest height on all three of them.",
+    "Those horns are the only thing keeping them above it.",
+    "The valley behind them is completely full and they are standing at the edge.",
+    "Everything below that line is a guess and everything above it is gold.",
+    "Sunday, and the three of them have been standing there since it got light."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 19,
+   "image": "fog/week_2/day/1.webp",
+   "hash": "36972a49b9e6",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "An empty club rugby field in fog. Two sets of white posts, the near one clear and the far one a ghost. Mown green pitch, houses and trees dissolving along the far boundary, a pale patch where the sun is trying. Nobody on it.",
+   "note": null,
+   "lines": [
+    "The far posts are there and you would not swear to it in court.",
+    "That is a hundred metres of grass and about forty of it is visible.",
+    "Nobody kicking at those posts today is going to see where it lands.",
+    "Saturday, and the referee is out there somewhere deciding whether this happens at all.",
+    "The fog doesn't care about your schedule."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#19"
+   ]
+  },
+  {
+   "index": 20,
+   "image": "fog/week_2/day/6.webp",
+   "hash": "62480343c313",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/day/6.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "5 bank lines approved on this slot",
+   "seen": "Inside a car. A man in a black puffer leaning forward in the driver's seat peering hard through the windscreen, mouth slightly open in concentration. A phone in a dashboard mount showing a blue route line on white. Beyond the glass, a wall of grey-white fog with a faint verge just visible. Rear-view mirror, steering wheel.",
+   "note": null,
+   "lines": [
+    "He is leaning forward, which has never once helped anybody see further.",
+    "The phone knows exactly where he is and that is the only thing that does.",
+    "That blue line is the only road he can actually be sure about.",
+    "Thursday, and he has been doing forty for about eleven kilometres now.",
+    "Even your GPS is confused."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#4"
+   ]
+  },
+  {
+   "index": 21,
+   "image": "fog/week_2/dusk/1.webp",
+   "hash": "b5837596744c",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/dusk/1.webp",
+    "fog/week_4/dusk/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "Bo-Kaap at dusk in fog. An older man in a beanie and patterned jumper on his yellow house's front step, watering potted plants on the wall with a blue watering can. Wet cobbles glowing gold from the lamps, coral and turquoise houses down the hill each with a lit wall lantern, and the whole city below dissolved into purple-pink fog with scattered lights.",
+   "note": null,
+   "lines": [
+    "He is watering plants in fog, which is either optimism or pure routine.",
+    "Everything below that wall is a city and tonight it is about forty lights.",
+    "Every lamp on this street is on and it is not properly dark yet.",
+    "Friday evening, and Bo-Kaap has kept its colour and given away its view.",
+    "Cape Town just got a dimmer switch."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#30"
+   ]
+  },
+  {
+   "index": 22,
+   "image": "fog/week_2/dusk/3.webp",
+   "hash": "5cd228859e14",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_2/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A couple walking their bicycles side by side down a wet leaf-strewn brick avenue in fog at dusk, laughing at each other. A receding row of ornate street lamps glowing gold down the left under big oaks, soaked autumn leaves everywhere on the paving, and a white Cape Dutch gabled building with lit windows on the right.",
+   "note": null,
+   "lines": [
+    "Neither of them is riding, which was not the plan when they left.",
+    "Those leaves are soaked and neither of them is going to risk that.",
+    "They can see about four lamps ahead and that is exactly enough.",
+    "The oaks have dropped everything and the fog has taken the rest.",
+    "Wednesday, and the walk home has taken twice as long and neither minds."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 23,
+   "image": "fog/week_2/dusk/7.webp",
+   "hash": "838bd4824615",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A wooden jetty running out into a flat misty harbour at dusk, small solar bollard lights glowing along it. Half a dozen yachts at anchor dissolving into the fog with their mast lights faint. On the right a lit waterfront restaurant deck with tables and a potted shrub, warm light spilling onto the water. An oystercatcher walking on the wet sand in the foreground.",
+   "note": null,
+   "lines": [
+    "Those boats are about eighty metres out and they are barely committed to it.",
+    "The restaurant is full and the view everybody booked is not happening.",
+    "That oystercatcher is the only thing out here that came for the sand.",
+    "Every one of those little lights is doing about a metre and a half.",
+    "Saturday evening, and nobody on that deck is going to see the sunset."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 24,
+   "image": "fog/week_2/night/2.webp",
+   "hash": "0467a4574c0b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/night/2.webp",
+    "fog/week_4/night/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman wrapped in a thick grey blanket standing on an apartment balcony at night, leaning on the glass balustrade holding a steaming mug in both hands, headphones round her neck, smiling faintly. Beyond her, dense fog with two street lamps glowing as soft orbs far below. Behind her through the sliding door, a warm lamp-lit lounge.",
+   "note": null,
+   "lines": [
+    "The headphones are round her neck rather than on, which is the whole point.",
+    "Two street lamps and a blanket, and she has decided that is enough.",
+    "There is a whole city under that and she is not looking for it.",
+    "Sunday night, and the fog has made that balcony a very small room.",
+    "The lamp behind her is doing more for this balcony than anything outside."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  {
+   "index": 25,
+   "image": "fog/week_2/night/4.webp",
+   "hash": "7acec82c9b6f",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/night/4.webp",
+    "fog/week_4/night/4.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "1 bank lines approved on this slot",
+   "seen": "A young couple walking a golden retriever down the middle of a wet suburban road at night in fog, everything bathed in warm sodium-orange from a street lamp behind them so the fog itself glows amber. On the left a cream Art Deco block with curved balconies, porthole windows and warm-lit flats. Bare trees on the right, a second lamp further off.",
+   "note": null,
+   "lines": [
+    "The whole street has gone orange and neither of them has commented on it.",
+    "Every window in that building is a small square of somebody else's evening.",
+    "They are walking in the middle of the road because the fog has closed it.",
+    "Friday night, and the dog is the only one who knows where they are going.",
+    "The streetlights are trying their best."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#14"
+   ]
+  },
+  {
+   "index": 26,
+   "image": "fog/week_3/day/2.webp",
+   "hash": "84811d2b9372",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_3/day/2.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "4 bank lines approved on this slot",
+   "seen": "A woman in a patterned sherpa fleece standing in the middle of a suburban road in fog, turned back and smiling down at a taut dog lead going off to the right — the dog itself completely invisible, swallowed by the white. Bare trees, houses, a street lamp and power pole, wet road.",
+   "note": null,
+   "lines": [
+    "There is a dog on the end of that lead and you cannot see it.",
+    "The lead is tight, so whatever is on the other end is still there.",
+    "She can see it and that is genuinely the only evidence available.",
+    "She is standing in the middle of the road and nothing at all is coming.",
+    "Ghost town. But it's just Tuesday."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#7"
+   ]
+  },
+  {
+   "index": 27,
+   "image": "fog/week_3/day/7.webp",
+   "hash": "dd6b06e34d3e",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_3/day/7.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "A middle-aged man in a grey towelling gown and slippers, seen from behind, wheeling a black bin down a wet brick driveway into thick fog. A red-brick house with a tiled roof on the left, clipped topiary balls along a brick wall, a white palisade gate, and the street beyond completely gone into white.",
+   "note": null,
+   "lines": [
+    "He is in a gown and slippers and the road out there is a rumour.",
+    "He is going to have to find his own gate again on the way back.",
+    "The topiary is the last thing on this driveway with a definite shape.",
+    "Friday, and he has about eleven metres of certainty in front of him.",
+    "Walking to the bin is now an expedition."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    "witty:fog#34"
+   ]
+  },
+  {
+   "index": 28,
+   "image": "fog/week_4/day/1.webp",
+   "hash": "541778f8c617",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_4/day/1.webp"
+   ],
+   "why": "no bespoke line yet — served the condition bank",
+   "place": null,
+   "pass1": "3 bank lines approved on this slot",
+   "seen": "Looking down over a suburb of tiled and corrugated roofs with fog lying between the trees and houses in golden morning light, the far half of the suburb dissolved into glowing white. A jacaranda in purple flower bottom left, a white palisade gate and boundary wall in the foreground, a blue-grey roof and garage door.",
+   "note": null,
+   "lines": [
+    "The fog is between the houses rather than above them, which is the good kind.",
+    "You can see six roofs and there are about sixty in this suburb.",
+    "That jacaranda is going to be the only colour anybody sees before nine.",
+    "All of this will be gone by half past eight and nobody will mention it.",
+    "Wednesday, and every single person down there is running exactly the same amount late."
+   ],
+   "rescue": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ ]
+}
