@@ -72,7 +72,10 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
     // startup-location.js — covered by the dynamicModules precache check below.)
     // The deploy stamp (BUILD_ID) is kept INLINE in app.js — deliberately not a
     // separate imported module — so it never adds a hard offline-boot dependency.
-    expect(importedModules.length).toBe(17);
+    // 2026-08-19 adds hero-lines.js: Al's bespoke witty lines, keyed to the
+    // photograph rather than the condition. It is a hard boot dependency because
+    // app.js resolves the caption through it on the paint path.
+    expect(importedModules.length).toBe(18);
     for (const mod of [
       '/assets/language-preferences.js',
       '/assets/copy-loader.js',

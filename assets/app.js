@@ -12,6 +12,7 @@ import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-pick
 import { pickConditionIconForTime, pickHourlyIcon, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { weatherIconSvg, ICON_CONDITION } from './weather-icons.js';
 import { heroCropFor, applyHeroCrop } from './hero-crop.js';
+import { heroLinesFor } from './hero-lines.js';
 import { buildShareLink, sanitizeTelemetryUrl } from './share-url.js';
 import {
   FRESHNESS_MS,
@@ -1606,6 +1607,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // Capped at 16 entries; oldest evicted on overflow (Map preserves insertion order).
   const __pickerMemo = new Map();
   const PICKER_MEMO_CAP = 16;
+  // ---- the bespoke line ----------------------------------------------------
+  // The condition bank picks a line before anything is known about the picture,
+  // which is why the same joke could land on a photograph it had nothing to do
+  // with. Al's bespoke lines are written FOR one photograph, so they can only be
+  // resolved once the photograph is known — here, not in renderHome.
+  //
+  // ENGLISH ONLY, by Al's ruling: he writes the Afrikaans himself and zu/xh/st
+  // go to native review. Every other language keeps the condition bank, so this
+  // returns false and the line renderHome already set simply stands.
+  const __lineMemo = new Map();
+  const LINE_MEMO_CAP = 64;
+  function applyBespokeLine(src) {
+    if (!headlineEl || settings.lang !== 'en') return false;
+    const lines = heroLinesFor(src);
+    if (!lines) return false;
+    let line = __lineMemo.get(src);
+    if (!line) {
+      // Stable while the picture is. The picker memoizes the IMAGE by
+      // (folder, time-of-day, week), so re-rolling the line on every re-paint
+      // would keep changing the pairing under a photograph that has not moved —
+      // and the pairing is the whole point of writing these per picture.
+      line = lines[Math.floor(Math.random() * lines.length)];
+      __lineMemo.set(src, line);
+      if (__lineMemo.size > LINE_MEMO_CAP) __lineMemo.delete(__lineMemo.keys().next().value);
+    }
+    safeText(headlineEl, line);
+    debugLog(`[Witty bespoke] ${src} → ${line}`);
+    return true;
+  }
+
   function setBackgroundFor(condition) {
     if (!bgImg) return;
     // 4-week date-based rotation (see assets/image-picker.js + docs/picker-rotation-logic.md).
@@ -1638,6 +1669,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const chain = buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r);
 
     debugLog(`[Image picker] condition=${condition} folder=${folder} week=${week} time=${timeOfDay} pick=${r}/7 → ${chain[0]}`);
+
+    // Applied against the INTENDED image, synchronously, in the same tick that
+    // renderHome set the condition line — so the caption is written once and
+    // there is no visible swap. If the fallback chain walks past chain[0] the
+    // onload below corrects it against whatever actually landed.
+    applyBespokeLine(chain[0]);
 
     // Race-guarded fallback walk. Each call captures a token; any error/load
     // event from a stale call (cancelled by a later src reassignment) is
@@ -1679,6 +1716,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // CLEARS the property, so the CSS default is the single source of that
       // number and a previous image's offset can never leak onto the next one.
       try { applyHeroCrop(document.documentElement, heroCropFor(bgImg.getAttribute('src') || '')); } catch (_) {}
+      // The corrective pass. chain[0] is right almost always, but a fallback
+      // step means the picture on screen is not the one the line was chosen for
+      // — and a line written about another photograph is the exact defect this
+      // whole mechanism exists to remove.
+      try { applyBespokeLine(bgImg.getAttribute('src') || ''); } catch (_) {}
       // Detach so a later cache eviction / network blip can't replay the chain.
       bgImg.onerror = null;
       bgImg.onload = null;

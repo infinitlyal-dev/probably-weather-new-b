@@ -13,6 +13,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import { HERO_CROP_OFFSETS } from '../assets/hero-crop.js';
+import { HERO_LINES } from '../assets/hero-lines.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
@@ -119,6 +120,21 @@ for (const c of CONDITIONS) {
           : `html { --hero-url: url("${u}") !important; --hero-crop: ${a}% !important; }`;
         document.body.appendChild(s);
       }, { u: heroUrl, a: anchor ?? null });
+      // THE CAPTION HAS TO FOLLOW THE PINNED PHOTOGRAPH. This harness fakes the
+      // hero by overriding --hero-url, which decouples what is SHOWN from what
+      // #bgImg actually landed on — and since 2026-08-19 the witty line is
+      // resolved from #bgImg. Left alone, a frame shows one photograph wearing
+      // another photograph's joke, which is precisely the defect the bespoke
+      // lines exist to remove and precisely the sort of lie a gate frame must
+      // not tell. Same rule as the anchor above: the frame shows what the app
+      // would show for THIS picture.
+      const own = HERO_LINES[`bg/${slot}`];
+      if (own) {
+        await page.evaluate((lines) => {
+          const h = document.getElementById('headline');
+          if (h) h.textContent = lines[Math.floor(Math.random() * lines.length)];
+        }, own);
+      }
       await page.waitForTimeout(1500);
       const file = `${c.key}-${night ? 'night' : 'day'}-${vp.n}.png`;
       await page.screenshot({ path: path.join(out, file) });
