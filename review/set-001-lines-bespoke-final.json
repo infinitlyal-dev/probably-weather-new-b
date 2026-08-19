@@ -1,0 +1,794 @@
+{
+ "generated": "2026-08-19",
+ "ruledBy": "Al, bespoke line review rounds 1 and 2",
+ "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog.",
+ "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
+ "images": 42,
+ "lineCount": 210,
+ "set": [
+  {
+   "image": "clear/week_2/dawn/2.webp",
+   "hash": "089f865e3f14",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "lines": [
+    "The Weber has been watching him water that lawn for twenty minutes now.",
+    "Coffee in one hand, hose in the other, and the whole day still ahead.",
+    "This is the only twenty minutes of the day that belong to him.",
+    "The jacaranda is dropping purple on a lawn he has just finished watering.",
+    "Nobody inside that house is awake yet and that is entirely the plan."
+   ]
+  },
+  {
+   "image": "heat/week_2/day/5.webp",
+   "hash": "36881ce76889",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/day/5.webp"
+   ],
+   "lines": [
+    "That number has not moved in eighty kilometres and neither has the scenery.",
+    "The aircon is losing and everyone in this car has stopped talking about it.",
+    "Saturday, and the only shade for the next hour is inside this car.",
+    "Somebody said the padkos would be fine in the boot. Somebody was wrong.",
+    "The road ahead has been the same road for a very long time."
+   ]
+  },
+  {
+   "image": "heat/week_4/day/7.webp",
+   "hash": "0cc1648cbc13",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_4/day/7.webp"
+   ],
+   "lines": [
+    "That sprinkler has been the best-value thing in this garden all summer.",
+    "Those two on the stoep have made their choice and they are sticking with it.",
+    "Nobody is going to remember the temperature, only the sprinkler.",
+    "Sunday, and the water bill has already quietly accepted its fate.",
+    "The lawn is taking a beating that has nothing to do with the sun."
+   ]
+  },
+  {
+   "image": "heat/week_1/dusk/6.webp",
+   "hash": "9728bed72ec6",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/dusk/6.webp",
+    "heat/week_3/dusk/6.webp"
+   ],
+   "lines": [
+    "The windpomp has stopped turning, which is how you know the day is over.",
+    "That glass has been full for an hour and she is in no hurry.",
+    "Sunday, and the Karoo is doing the one thing it does better than anywhere.",
+    "The stoep step is still warm and will be for another hour yet.",
+    "Nobody has switched a light on inside yet and nobody intends to."
+   ]
+  },
+  {
+   "image": "heat/week_2/dusk/1.webp",
+   "hash": "93f4a43551af",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_2/dusk/1.webp",
+    "heat/week_4/dusk/1.webp"
+   ],
+   "lines": [
+    "The ice cream is losing and all three of them know it.",
+    "Friday, and this promenade is doing the work of six different bars.",
+    "Everybody came out at exactly the same time and nobody planned it.",
+    "The light will be gone in nine minutes and nobody is hurrying.",
+    "That dog has walked this stretch more times than any of them."
+   ]
+  },
+  {
+   "image": "heat/week_1/night/1.webp",
+   "hash": "ea333aeefd0d",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/night/1.webp",
+    "heat/week_3/night/1.webp"
+   ],
+   "lines": [
+    "The ice in that glass has about four minutes left.",
+    "Sunday night, and this promenade is busier than it was all afternoon.",
+    "The whole town waited for the sun to go down and then came outside.",
+    "That water was cold when somebody put it down there.",
+    "Nine at night and the paving is still handing back the afternoon."
+   ]
+  },
+  {
+   "image": "heat/week_1/night/2.webp",
+   "hash": "73f8b2781c4c",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_1/night/2.webp",
+    "heat/week_3/night/2.webp"
+   ],
+   "lines": [
+    "Too warm to sleep inside, so the whole family moved under the Milky Way.",
+    "Somebody left the light on inside and nobody is going back for it.",
+    "The youngest is still awake and has decided the sky is worth it.",
+    "Five mattresses on a stoep, and not one of them is a compromise.",
+    "Friday night, and the ceiling has been upgraded considerably."
+   ]
+  },
+  {
+   "image": "heat/week_1/night/3.webp",
+   "hash": "706cd1220e10",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/night/3.webp",
+    "heat/week_3/night/3.webp"
+   ],
+   "lines": [
+    "Thursday night, and the balcony has been promoted to the main room.",
+    "It is cooler out here at midnight than it was inside at six.",
+    "The ice in that jug never stood a chance and everybody knew it.",
+    "That curtain is the only moving air in the entire flat.",
+    "Nobody is going back in there until the walls let go of the day."
+   ]
+  },
+  {
+   "image": "heat/week_1/night/4.webp",
+   "hash": "f2e76528eca3",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/night/4.webp",
+    "heat/week_3/night/4.webp"
+   ],
+   "lines": [
+    "Two in the morning, and that fan has been the loudest thing in the house.",
+    "The glass of water was a very good idea about four hours ago.",
+    "The net is handling mosquitoes. The fan is handling everything else.",
+    "Monday starts in five hours and that fan is not going off.",
+    "Somebody has already turned the pillow over twice tonight."
+   ]
+  },
+  {
+   "image": "heat/week_2/night/2.webp",
+   "hash": "87546db18e01",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/night/2.webp",
+    "heat/week_4/night/2.webp"
+   ],
+   "lines": [
+    "Nobody has been inside that house since about four this afternoon.",
+    "The pool has been the only sensible room in the place all day.",
+    "Those beers on the edge are on their third owner tonight.",
+    "Saturday, and the water is still warmer than the air above it.",
+    "The lights went on two hours ago and nobody has suggested moving."
+   ]
+  },
+  {
+   "image": "heat/week_2/night/6.webp",
+   "hash": "e62c00a72fb4",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/night/6.webp",
+    "heat/week_4/night/6.webp"
+   ],
+   "lines": [
+    "The dog has worked out where the coldest tiles in the house are.",
+    "That is the bathroom floor and it is now his bedroom.",
+    "Nobody in this house is getting into that bath tonight.",
+    "He has been lying there since about eight and has no further plans.",
+    "Wednesday, and the dog has made the only sensible decision so far."
+   ]
+  },
+  {
+   "image": "rain/week_1/night/2.webp",
+   "hash": "86be0fc65b9e",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/night/2.webp",
+    "rain/week_3/night/2.webp"
+   ],
+   "lines": [
+    "The frangipani is dropping flowers all over the paving and taking no responsibility.",
+    "Monday night, one lit window, and the rain doing all the talking.",
+    "That wall has a damp line on it older than tonight's storm.",
+    "The burglar bars are the only straight lines left in the whole street.",
+    "Somebody inside has already decided they are not going anywhere tonight."
+   ]
+  },
+  {
+   "image": "rain/week_1/night/4.webp",
+   "hash": "f8781ec0eb86",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_1/night/4.webp",
+    "rain/week_3/night/4.webp"
+   ],
+   "lines": [
+    "The gutter is carrying this street's problems straight down to the next one.",
+    "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
+    "The electric fence is fine. The pavement has completely given up.",
+    "Wednesday, and the drive home is going to be a story by tomorrow.",
+    "Every drain on this road is now working on somebody else's behalf."
+   ]
+  },
+  {
+   "image": "rain/week_1/night/5.webp",
+   "hash": "504e55301184",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/night/5.webp",
+    "rain/week_3/night/5.webp"
+   ],
+   "lines": [
+    "The pool is measurably fuller than it was at supper time.",
+    "Nobody is going to have to top that up for a month.",
+    "The pool light is the only thing in this garden still doing its job.",
+    "Tuesday night, and the pool is having a far better time than anyone.",
+    "The paving has stopped absorbing anything and is just passing it along."
+   ]
+  },
+  {
+   "image": "rain/week_1/night/6.webp",
+   "hash": "a1e2fed78146",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_1/night/6.webp",
+    "rain/week_3/night/6.webp"
+   ],
+   "lines": [
+    "That umbrella has been closed since the moment it arrived.",
+    "Every one of those parking bays was somebody's plan for tonight.",
+    "Saturday night at the sea, and the sea has taken the whole promenade.",
+    "The painted lines are the only thing out there still holding a shape.",
+    "Somebody drove all the way down here to look at this and left."
+   ]
+  },
+  {
+   "image": "storm/week_1/night/4.webp",
+   "hash": "2fede244e0d0",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/night/4.webp",
+    "storm/week_3/night/4.webp"
+   ],
+   "lines": [
+    "The tree has seen worse Tuesdays and it will see worse again.",
+    "Every gate in this street is shut and every dog has an opinion.",
+    "Somewhere behind those walls a whole street is pretending to sleep.",
+    "The streetlight is doing overtime that nobody is going to pay for.",
+    "Tomorrow morning this road will be covered in somebody else's tree."
+   ]
+  },
+  {
+   "image": "storm/week_1/night/5.webp",
+   "hash": "9851963ee129",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/night/5.webp",
+    "storm/week_3/night/5.webp"
+   ],
+   "lines": [
+    "The gutter is telling you exactly how long you left it.",
+    "The hose reel is going to feel very unnecessary for a while.",
+    "Jacaranda season and a Monday, and the paving is taking both badly.",
+    "Whoever parked in the street tonight is regretting it right now.",
+    "That security light is doing the best work it has done all year."
+   ]
+  },
+  {
+   "image": "storm/week_2/night/3.webp",
+   "hash": "cd855e5f60e9",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/night/3.webp",
+    "storm/week_4/night/3.webp"
+   ],
+   "lines": [
+    "Friday night, and the stoep has quietly become the whole evening.",
+    "That one bulb is holding this entire building together.",
+    "The polish on that floor was not designed with this much water in mind.",
+    "Everything green out there is having the best night of its life.",
+    "You can hear the roof better than you can hear the television."
+   ]
+  },
+  {
+   "image": "storm/week_2/night/4.webp",
+   "hash": "ae79261d2852",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_2/night/4.webp",
+    "storm/week_4/night/4.webp"
+   ],
+   "lines": [
+    "That car made it under the carport with about four minutes to spare.",
+    "The road is still dry, which is the last thing it will be tonight.",
+    "A Free State storm gives you exactly as much warning as it feels like.",
+    "Everyone on this street is now standing at a window they never use.",
+    "The dust and the rain are about to have a very short argument."
+   ]
+  },
+  {
+   "image": "wind/week_1/day/2.webp",
+   "hash": "35c91a0ddfec",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/day/2.webp"
+   ],
+   "lines": [
+    "The sheets are dry already and the wind is not finished with them.",
+    "The Helderberg is clear, the washing is horizontal, and that is Sunday sorted.",
+    "That little olive tree is going to grow up with a permanent lean.",
+    "Nobody in this house is paying to dry anything today.",
+    "Those pegs are all that stands between you and a fence full of sheets."
+   ]
+  },
+  {
+   "image": "wind/week_1/day/3.webp",
+   "hash": "9bada961b0a7",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/3.webp"
+   ],
+   "lines": [
+    "The bin made it to the pavement and then made its own decisions.",
+    "Tuesday is bin day, and the wind has clearly read the schedule too.",
+    "Half of this street's recycling is now the hedge's problem.",
+    "The oaks are fine. The wheelie bins never stood a chance.",
+    "Three houses are out there picking up what the wind redistributed."
+   ]
+  },
+  {
+   "image": "wind/week_1/day/7.webp",
+   "hash": "eb217457f58d",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/7.webp"
+   ],
+   "lines": [
+    "Wednesday, and the driveway has become a full contact sport.",
+    "Somebody will be picking leaves out of that back seat for a week.",
+    "That door is going to shut whether he is ready or not.",
+    "The wind opened it faster than he did and he is still laughing.",
+    "Every leaf in the street is queueing to get into that car."
+   ]
+  },
+  {
+   "image": "wind/week_2/day/3.webp",
+   "hash": "e3f0d69977ca",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_2/day/3.webp"
+   ],
+   "lines": [
+    "The braids have made the decision and she is going along with it.",
+    "That photo is going to look completely different to how it feels.",
+    "Thursday, and somebody has decided to enjoy this instead of complaining.",
+    "The phone is the only thing out here being held still.",
+    "Everyone else on this promenade went home about twenty minutes ago."
+   ]
+  },
+  {
+   "image": "wind/week_2/day/4.webp",
+   "hash": "05cea2b8788d",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "wind/week_2/day/4.webp"
+   ],
+   "lines": [
+    "The trampoline has relocated and taken the neighbour's wall as a partner.",
+    "Somebody is going to be explaining that to somebody else this evening.",
+    "Monday, and the garden has rearranged itself without asking anyone.",
+    "The palms are fine. The trampoline had opinions about staying put.",
+    "It took the wind four seconds to move what took two hours to build."
+   ]
+  },
+  {
+   "image": "wind/week_2/day/6.webp",
+   "hash": "330bfae094d5",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/day/6.webp"
+   ],
+   "lines": [
+    "Every jacaranda on this street is emptying itself onto one man.",
+    "That tie has been horizontal since he left the car.",
+    "He will be finding purple in that jacket pocket until Friday.",
+    "Wednesday morning, and the walk from the parking is now the hard part.",
+    "He is bent that far over because standing upright stopped working."
+   ]
+  },
+  {
+   "image": "wind/week_3/day/1.webp",
+   "hash": "19801ea908d0",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_3/day/1.webp"
+   ],
+   "lines": [
+    "Those eyes are not closed because of the sun.",
+    "Friday, and the aloes have not noticed anything unusual at all.",
+    "The trees at the fence are taking this worse than he is.",
+    "He will sit there until something more interesting happens, which it will not.",
+    "That coat is being parted by something other than a brush."
+   ]
+  },
+  {
+   "image": "wind/week_3/day/3.webp",
+   "hash": "92ef82c2d34a",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_3/day/3.webp"
+   ],
+   "lines": [
+    "That walk was somebody else's idea and the dog is registering a complaint.",
+    "Sunday, and this is about as far as either of them is going.",
+    "The lead is doing considerably more work than it was designed for.",
+    "He is going to shake all that sand out on the lounge carpet later.",
+    "The sea has gone white all the way out and he noticed before anyone."
+   ]
+  },
+  {
+   "image": "wind/week_4/day/2.webp",
+   "hash": "5df9d64aa037",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "wind/week_4/day/2.webp"
+   ],
+   "lines": [
+    "The jacaranda is redecorating the whole road whether you like it or not.",
+    "Saturday, and the wind has strong opinions about your plans for the garden.",
+    "That grass on the verge has been lying flat since Thursday.",
+    "Somebody is going to sweep all that purple up and somebody is not.",
+    "The sky has gone the colour that makes Joburg check the group chat."
+   ]
+  },
+  {
+   "image": "wind/week_4/day/6.webp",
+   "hash": "ab2cbee2d73d",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/day/6.webp"
+   ],
+   "lines": [
+    "The banana leaves are being redesigned in real time and taking it well.",
+    "That shade cloth has been drumming since breakfast and nobody can hear the television.",
+    "The sea looks calm from up here, which is a complete lie.",
+    "Friday, and the humidity has teamed up with the wind against everybody.",
+    "Every leaf on that palm is now a slightly different length."
+   ]
+  },
+  {
+   "image": "wind/week_4/day/7.webp",
+   "hash": "55504e5b8143",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "wind/week_4/day/7.webp"
+   ],
+   "lines": [
+    "The flag is doing its patriotic duty at about sixty kilometres an hour.",
+    "That shade sail is one good gust away from becoming a spinnaker.",
+    "The palm has given up on symmetry and committed to one direction.",
+    "Nobody on this side of Gqeberha is hanging washing out today.",
+    "The aloe is unbothered, which is the entire point of an aloe."
+   ]
+  },
+  {
+   "image": "wind/week_1/dusk/1.webp",
+   "hash": "002f0c1d5187",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/dusk/1.webp",
+    "wind/week_3/dusk/1.webp"
+   ],
+   "lines": [
+    "The mountain looks like that about six evenings a year and this is one.",
+    "They came out for the sunset and are staying for it despite everything.",
+    "Monday, and the wind has completely failed to ruin this.",
+    "Nobody's hair is going to survive, and nobody is leaving yet.",
+    "Lion's Head is doing the scenery and the wind is doing the comedy."
+   ]
+  },
+  {
+   "image": "wind/week_1/dusk/4.webp",
+   "hash": "bdc6900c5689",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_3/dusk/4.webp"
+   ],
+   "lines": [
+    "That jacket has been trying to leave since he got on the bike.",
+    "The jacarandas are throwing everything they have at one cyclist.",
+    "Tuesday evening, and the ride home has turned into a negotiation.",
+    "He is going downhill and still working for every metre of it.",
+    "The blossom is coming off those trees faster than he is going under them."
+   ]
+  },
+  {
+   "image": "wind/week_1/dusk/7.webp",
+   "hash": "12cd74b592e8",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_3/dusk/7.webp"
+   ],
+   "lines": [
+    "This is the second time this week and they have a system now.",
+    "The pegs lost, the wall won, and the neighbours are still laughing.",
+    "Nobody is ever going to find that one white sock again.",
+    "The wind did the throwing and the neighbour is doing the returning.",
+    "One gust, one wall, and two households now know each other much better."
+   ]
+  },
+  {
+   "image": "wind/week_2/dusk/2.webp",
+   "hash": "b78d6f432fb7",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_2/dusk/2.webp",
+    "wind/week_4/dusk/2.webp"
+   ],
+   "lines": [
+    "That hair was a decision made indoors about forty minutes ago.",
+    "Saturday evening, and the walk from the front door defeated the whole look.",
+    "Her hair is going one way, the palm is going the same way, and neither was asked.",
+    "Twelve steps from the front door to the car, and the wind took all twelve.",
+    "That driveway was swept this morning and has already been refilled."
+   ]
+  },
+  {
+   "image": "wind/week_2/dusk/6.webp",
+   "hash": "17c00a47cba2",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_2/dusk/6.webp",
+    "wind/week_4/dusk/6.webp"
+   ],
+   "lines": [
+    "That tree has been shaped by one wind for about forty years.",
+    "The washing goes out at this hour because wind is cheaper than electricity.",
+    "The lagoon has gone flat and silver, which fools nobody who lives here.",
+    "Everything on this street leans the same way, including the people.",
+    "Thursday evening, and the only thing still moving out here is the line."
+   ]
+  },
+  {
+   "image": "wind/week_4/dusk/1.webp",
+   "hash": "ec12d1747d09",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/dusk/1.webp"
+   ],
+   "lines": [
+    "Bo-Kaap in the last light, and the wind is doing the housekeeping.",
+    "That curtain has been outside the window for about an hour now.",
+    "The south-easter has found the one open window on the whole street.",
+    "Somebody is going to come home to a lounge full of Signal Hill.",
+    "The paint is bright, the hill is gold, and the wind is the loudest thing here."
+   ]
+  },
+  {
+   "image": "wind/week_1/night/1.webp",
+   "hash": "6fa740fc3795",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/night/1.webp",
+    "wind/week_3/night/1.webp"
+   ],
+   "lines": [
+    "Somebody is going to remember that washing at about two in the morning.",
+    "That hedge has been leaning like that since Thursday and it is not straightening.",
+    "The security light is picking up things you would rather not watch moving.",
+    "Sunday night, and even the washing is refusing to accept it.",
+    "Whatever is not pegged down out there is already somebody else's problem."
+   ]
+  },
+  {
+   "image": "wind/week_1/night/2.webp",
+   "hash": "be8276f7384b",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/night/2.webp",
+    "wind/week_3/night/2.webp"
+   ],
+   "lines": [
+    "The sparks are going sideways and the tongs are still going in.",
+    "Table Mountain, a braai, and a wind with its own strong opinion.",
+    "Saturday, and neither of them will admit the wind is winning.",
+    "The tongs are out, so the argument about who cooks is over.",
+    "Those coals are doing more for the fence than they are for the meat."
+   ]
+  },
+  {
+   "image": "wind/week_1/night/3.webp",
+   "hash": "0e5c84f6ab31",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/night/3.webp",
+    "wind/week_3/night/3.webp"
+   ],
+   "lines": [
+    "The mountain has its cloth on and the palm is holding the pose.",
+    "Wednesday, and the Cape Doctor is doing its rounds a little early.",
+    "Nobody walks this road at this hour, and tonight nobody wants to.",
+    "That palm has been bent that way so long it thinks it is upright.",
+    "The whole street is inside pretending the roof noise is normal."
+   ]
+  },
+  {
+   "image": "wind/week_2/night/3.webp",
+   "hash": "bfc08af75267",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_2/night/3.webp",
+    "wind/week_4/night/3.webp"
+   ],
+   "lines": [
+    "The aloe is not moving and has no intention of starting now.",
+    "That thorn tree has been leaning since before anyone on this street arrived.",
+    "The dust is going somewhere and it is not asking permission.",
+    "Northern Cape wind does not howl. It leans on things until they give.",
+    "Everything out here is either properly rooted or already gone."
+   ]
+  },
+  {
+   "image": "wind/week_2/night/5.webp",
+   "hash": "f6b55aacae0a",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "lines": [
+    "The leaves came in. The cat did not go out.",
+    "The wind has been delivering leaves to that doormat all evening.",
+    "Every leaf on that mat arrived without being invited.",
+    "The garden is moving and he has decided the doorway is far enough.",
+    "The wind is bringing the outside in and he is letting it come to him."
+   ]
+  },
+  {
+   "image": "wind/week_2/night/7.webp",
+   "hash": "9ae18d55d0c1",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_2/night/7.webp",
+    "wind/week_4/night/7.webp"
+   ],
+   "lines": [
+    "The banner is holding on better than the palms and it knows it.",
+    "Friday night on the promenade and the sea has cleared everyone's diary.",
+    "Every palm on this strip is pointing at the same thing tonight.",
+    "The city across the water is having a completely different evening.",
+    "Nobody is walking that promenade tonight and the lights know it."
+   ]
+  }
+ ]
+}

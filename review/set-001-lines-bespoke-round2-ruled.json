@@ -1,0 +1,631 @@
+{
+ "generated": "2026-08-18",
+ "ruledBy": "Al, bespoke line review",
+ "images": [
+  {
+   "image": "heat/week_1/night/3.webp",
+   "hash": "706cd1220e10",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/night/3.webp",
+    "heat/week_3/night/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Thursday night, and the balcony has been promoted to the main room.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "It is cooler out here at midnight than it was inside at six.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The ice in that jug never stood a chance and everybody knew it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That curtain is the only moving air in the entire flat.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody is going back in there until the walls let go of the day.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/night/1.webp",
+   "hash": "ea333aeefd0d",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/night/1.webp",
+    "heat/week_3/night/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "The ice in that glass has about four minutes left.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Sunday night, and this promenade is busier than it was all afternoon.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The whole town waited for the sun to go down and then came outside.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That water was cold when somebody put it down there.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nine at night and the paving is still handing back the afternoon.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/day/7.webp",
+   "hash": "eb217457f58d",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "Wednesday, and the driveway has become a full contact sport.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Somebody will be picking leaves out of that back seat for a week.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "That door is going to shut whether he is ready or not.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The wind opened it faster than he did and he is still laughing.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Every leaf in the street is queueing to get into that car.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_3/day/1.webp",
+   "hash": "19801ea908d0",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_3/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Those eyes are not closed because of the sun.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Friday, and the aloes have not noticed anything unusual at all.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The trees at the fence are taking this worse than he is.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "He will sit there until something more interesting happens, which it will not.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "That coat is being parted by something other than a brush.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_3/day/3.webp",
+   "hash": "92ef82c2d34a",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_3/day/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "That walk was somebody else's idea and the dog is registering a complaint.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Sunday, and this is about as far as either of them is going.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The lead is doing considerably more work than it was designed for.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "He is going to shake all that sand out on the lounge carpet later.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The sea has gone white all the way out and he noticed before anyone.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/day/4.webp",
+   "hash": "05cea2b8788d",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "wind/week_2/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "The trampoline has relocated and taken the neighbour's wall as a partner.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Somebody is going to be explaining that to somebody else this evening.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Monday, and the garden has rearranged itself without asking anyone.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The palms are fine. The trampoline had opinions about staying put.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "It took the wind four seconds to move what took two hours to build.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/day/3.webp",
+   "hash": "9bada961b0a7",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/day/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "The bin made it to the pavement and then made its own decisions.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Tuesday is bin day, and the wind has clearly read the schedule too.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Half of this street's recycling is now the hedge's problem.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The oaks are fine. The wheelie bins never stood a chance.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Three houses are out there picking up what the wind redistributed.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/day/6.webp",
+   "hash": "330bfae094d5",
+   "condition": "wind",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/day/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "Every jacaranda on this street is emptying itself onto one man.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That tie has been horizontal since he left the car.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He will be finding purple in that jacket pocket until Friday.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Wednesday morning, and the walk from the parking is now the hard part.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He is bent that far over because standing upright stopped working.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/dusk/4.webp",
+   "hash": "bdc6900c5689",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_3/dusk/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "That jacket has been trying to leave since he got on the bike.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The jacarandas are throwing everything they have at one cyclist.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Tuesday evening, and the ride home has turned into a negotiation.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "He is going downhill and still working for every metre of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The blossom is coming off those trees faster than he is going under them.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/dusk/7.webp",
+   "hash": "12cd74b592e8",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_3/dusk/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "This is the second time this week and they have a system now.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The pegs lost, the wall won, and the neighbours are still laughing.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Nobody is ever going to find that one white sock again.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The wind did the throwing and the neighbour is doing the returning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "One gust, one wall, and two households now know each other much better.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_4/dusk/1.webp",
+   "hash": "ec12d1747d09",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/dusk/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Bo-Kaap in the last light, and the wind is doing the housekeeping.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "That curtain has been outside the window for about an hour now.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The south-easter has found the one open window on the whole street.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Somebody is going to come home to a lounge full of Signal Hill.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The paint is bright, the hill is gold, and the wind is the loudest thing here.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/dusk/2.webp",
+   "hash": "b78d6f432fb7",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_2/dusk/2.webp",
+    "wind/week_4/dusk/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "That hair was a decision made indoors about forty minutes ago.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Saturday evening, and the walk from the front door defeated the whole look.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Her hair is going one way, the palm is going the same way, and neither was asked.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Twelve steps from the front door to the car, and the wind took all twelve.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That driveway was swept this morning and has already been refilled.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/night/5.webp",
+   "hash": "f6b55aacae0a",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "The leaves came in. The cat did not go out.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The wind has been delivering leaves to that doormat all evening.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Every leaf on that mat arrived without being invited.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The garden is moving and he has decided the doorway is far enough.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The wind is bringing the outside in and he is letting it come to him.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/night/2.webp",
+   "hash": "be8276f7384b",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/night/2.webp",
+    "wind/week_3/night/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sparks are going sideways and the tongs are still going in.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Table Mountain, a braai, and a wind with its own strong opinion.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Saturday, and neither of them will admit the wind is winning.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The tongs are out, so the argument about who cooks is over.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Those coals are doing more for the fence than they are for the meat.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  }
+ ],
+ "keptCount": 70,
+ "imagesWithNone": []
+}
