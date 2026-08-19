@@ -88,7 +88,12 @@ const html = `<!doctype html>
 <script>
 const DATA = ${DATA};
 const SRC_NAME = ${SRC_NAME_LITERAL};
-const LS = 'pw_bespoke_lines_v1';
+// Namespaced per source. Round 1 and round 2 share this page's code, and with
+// one key the round-2 page read round 1's saved text back out of storage and
+// rendered it in every slot - Al opened it and saw the old lines. The stored
+// value is keyed by image+index, and index 1 means a different line in each
+// round, so the namespace is not optional.
+const LS = 'pw_bespoke_lines_' + SRC_NAME.replace(/[^a-z0-9]+/gi, '_');
 const state = JSON.parse(localStorage.getItem(LS) || '{}');
 const $ = (id) => document.getElementById(id);
 const key = (img, i) => img + '#' + i;
