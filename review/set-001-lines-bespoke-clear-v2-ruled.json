@@ -1,0 +1,1104 @@
+{
+ "generated": "2026-08-19",
+ "ruledBy": "Al, bespoke line review",
+ "bucket": "clear",
+ "images": [
+  {
+   "image": "clear/week_1/dawn/3.webp",
+   "hash": "66d5e6cb3570",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_1/dawn/3.webp",
+    "clear/week_3/dawn/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Not one metre of shade on this promenade, which is why they are out at six.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sea is that flat about nine mornings a year and this is one of them.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That mountain is that sharp because there is nothing at all in the air today.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky is completely empty, which means this is as cool as today gets.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Friday, and by noon that paving is going to be too hot to stand on.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_1/dawn/5.webp",
+   "hash": "7a76c59603c9",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_3/dawn/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "She is watering at seven because by nine it would be a waste.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not one cloud, which means those geraniums will need this again tonight.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "This is the weather we brag about overseas.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:clear#35"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Those pots dry out twice as fast as anything growing in the ground.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Bo-Kaap gets about an hour of that light and she is using all of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/dawn/7.webp",
+   "hash": "b698a0ccc12d",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_3/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "He will move twice before lunch and both times by about a metre.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "He has calculated exactly where that light will be for the next hour.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun only came round the corner of that roof about four minutes ago.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is a whole garden out there and he picked the one warm tile.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Wednesday, and that patch of light is going to cross the whole stoep by noon.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/day/7.webp",
+   "hash": "03a31c2b8e88",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "clear/week_1/day/7.webp"
+   ],
+   "kept": [],
+   "rejected": [
+    {
+     "text": "That sand has been in full sun since eight and nobody is crossing it barefoot.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Two chairs, and that umbrella covers about one and a half of them.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That umbrella is going to be the most argued-about object of the afternoon.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunday, and the only shade on this entire beach is about a metre wide.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is nothing at all in that sky, so the umbrella is the entire plan.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/dusk/3.webp",
+   "hash": "d097525bf5cf",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_1/dusk/3.webp",
+    "clear/week_3/dusk/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "That fire was lit before anybody needed it, which is what a clear evening does.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Saturday, and the sky went from orange to blue without one cloud interrupting.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "The first star is out and nobody has called those two in yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is not one cloud, so this light is going to last another forty minutes.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nothing is going to come over and stop this, and they have all settled in.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/1.webp",
+   "hash": "14f98c4f78fa",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_1/night/1.webp",
+    "clear/week_3/night/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "There is enough moon out there to hang washing by, and somebody did.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "It will be dry by morning and damp again by six, which is the deal.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The moon's doing the most tonight.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:night#7"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "That washing is out all night because somebody looked at the sky and gambled.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nothing on that line has moved since about four this afternoon.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/3.webp",
+   "hash": "127edee25245",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_1/night/3.webp",
+    "clear/week_3/night/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "You have to drive two hours from anywhere to get a sky like that.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Saturday night, and the entertainment is free and about four billion years old.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Not one cloud up there, which is the only reason they are lying outside.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "No cloud to hold the heat in, which is why the sleeping bags came out.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That window is the only thing between them and going properly cold later.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/6.webp",
+   "hash": "998833419718",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_1/night/6.webp",
+    "clear/week_3/night/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "That is the centre of the galaxy and it is coming up behind a koppie.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunday night, and the best thing on tonight is not on a screen.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky looks like it's showing off.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:night#19"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "There is no town anywhere near here, and that is exactly why you can see this.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The last of the sun is still on the left and the Milky Way is already up.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_1/night/7.webp",
+   "hash": "de9514caac5f",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_1/night/7.webp",
+    "clear/week_3/night/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "Good night, South Africa.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:night#6"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "You can still see stars over a city that big, which is not nothing.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Four clouds in that entire sky and every one of them is off to the side.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Every roof down there is going to be losing heat all night under that.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Wednesday night, and nothing up there is going to change before morning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dawn/5.webp",
+   "hash": "dd736311b619",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "That is the first hadeda up and the entire valley is about to know.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Monday, and the alarm on this farm has feathers and no snooze button.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That sky lasts about six minutes and the bird is the only one watching.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Even the hadedas sound happy.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:clear#5"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "The mist is still in the valley and he is already up on the roof.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dawn/6.webp",
+   "hash": "73d202837435",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/dawn/6.webp",
+    "clear/week_4/dawn/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "Somewhere an estate agent is saying 'lifestyle'.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:clear#10"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Their shadows are longer than they are and none of them has noticed.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not one of them is carrying a jacket, which is a decision made at seven.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That mountain already has sun on it and this road does not yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Tuesday, and there will be no shade at all on this road at two.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dawn/7.webp",
+   "hash": "d529968dcb50",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_2/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "kept": [],
+   "rejected": [
+    {
+     "text": "He is the first person on this beach and the sand still shows it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That water will be flat glass for about another twenty minutes and he knows it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nothing in that sky is moving, which is exactly why he came out this early.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The whole sky is in that sand and he is walking straight through it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That sand is holding the whole sky because there is not a breath out there.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/1.webp",
+   "hash": "9ab8b9f07431",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Days like this should come with a soundtrack.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:clear#16"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "That is a Tuesday and every one of them is on a towel with bare feet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sunblock came out of somebody's handbag, which means this was not planned.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is not one piece of shade on this entire roof and nobody has left.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That concrete has been cooking since ten and all of them are barefoot on it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/2.webp",
+   "hash": "45d964f74171",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/day/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "Today's plans: exist outside.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:weekend#8"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Out from under that tree the grass is too hot to lie on.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The lawn past the shade has gone yellow and this bit has not.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The shade under that tree is the whole reason this is happening here.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunday, and that shade moves about a metre an hour and they will move with it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/4.webp",
+   "hash": "e9616cb7c61c",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_2/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "If you're working today, we feel sorry for you.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:weekend#5"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "The grass has not grown since November and he is having it cut anyway.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The only shade on this whole lawn is exactly where he is sitting.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Half that lawn is dust and the mower is just moving it around.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Saturday, and the sprinkler is not allowed on, which is why it looks like that.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/5.webp",
+   "hash": "ca6d821f7c9b",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/day/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "Whoever booked the four o'clock meeting is going to be sitting in it alone.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Nobody in that building did any real work after about two o'clock today.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The clock says four and the sky has been like that since seven.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That is a Friday afternoon and a sky with nothing in it, in one photograph.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is not one cloud out there and every one of them checked before leaving.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/6.webp",
+   "hash": "5799efcdfd70",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/day/6.webp"
+   ],
+   "kept": [],
+   "rejected": [
+    {
+     "text": "The sprinkler is on, the lawn is dead, and he has come for neither.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He knows exactly when that sprinkler comes on and he got here first.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That grass has not seen rain in weeks and the municipality has opinions.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Tuesday, and the only thing green in this garden is coming out of a hose.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is one wet patch on this whole lawn and he is standing beside it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/day/7.webp",
+   "hash": "ed953578deec",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "Bottle this one. Open it in winter.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:clear#37"
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Somebody put that glass down about four minutes ago and got straight in.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The ice has not gone anywhere yet, which gives you the whole timeline.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sunglasses came off, which means whoever owns them is under the water.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Friday, and that ice is the only thing in this garden with a deadline.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/1.webp",
+   "hash": "525b2eea2ebc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/dusk/1.webp",
+    "clear/week_4/dusk/1.webp"
+   ],
+   "kept": [],
+   "rejected": [
+    {
+     "text": "They have been out of the water for ten minutes and neither has moved.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The towels are on their laps and still completely dry, which tells you everything.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That water is warmer than the air already and it is only going one way.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That mountain will be gone in about eight minutes and both of them know it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunday, and there is no cloud to hold any of that once it drops.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/2.webp",
+   "hash": "90a621539543",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/3.webp",
+   "hash": "cc951efb5d19",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_2/dusk/3.webp",
+    "clear/week_4/dusk/3.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/4.webp",
+   "hash": "7d50ec606bfc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_2/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/5.webp",
+   "hash": "9059d175f28c",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/dusk/5.webp",
+    "clear/week_4/dusk/5.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/6.webp",
+   "hash": "1bd6b90924a1",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/dusk/6.webp",
+    "clear/week_4/dusk/6.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/night/5.webp",
+   "hash": "05cd0ad39fd6",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_2/night/5.webp",
+    "clear/week_4/night/5.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/night/6.webp",
+   "hash": "970707aba87c",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/night/6.webp",
+    "clear/week_4/night/6.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/night/7.webp",
+   "hash": "4138025d3128",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/night/7.webp",
+    "clear/week_4/night/7.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/1.webp",
+   "hash": "f673af851f9c",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_3/day/1.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/3.webp",
+   "hash": "0009c55ad6a5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/3.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/4.webp",
+   "hash": "84beada2e358",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/4.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/7.webp",
+   "hash": "77cfc93827e3",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_3/day/7.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_4/day/2.webp",
+   "hash": "448b951052cc",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "clear/week_4/day/2.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_4/day/5.webp",
+   "hash": "6e598ae56c12",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "clear/week_4/day/5.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_4/day/6.webp",
+   "hash": "3d001539dcb5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "clear/week_4/day/6.webp"
+   ],
+   "kept": [],
+   "rejected": []
+  }
+ ],
+ "keptCount": 30,
+ "imagesWithNone": [
+  "clear/week_1/day/7.webp",
+  "clear/week_2/dawn/7.webp",
+  "clear/week_2/day/6.webp",
+  "clear/week_2/dusk/1.webp",
+  "clear/week_2/dusk/2.webp",
+  "clear/week_2/dusk/3.webp",
+  "clear/week_2/dusk/4.webp",
+  "clear/week_2/dusk/5.webp",
+  "clear/week_2/dusk/6.webp",
+  "clear/week_2/night/5.webp",
+  "clear/week_2/night/6.webp",
+  "clear/week_2/night/7.webp",
+  "clear/week_3/day/1.webp",
+  "clear/week_3/day/3.webp",
+  "clear/week_3/day/4.webp",
+  "clear/week_3/day/7.webp",
+  "clear/week_4/day/2.webp",
+  "clear/week_4/day/5.webp",
+  "clear/week_4/day/6.webp"
+ ]
+}

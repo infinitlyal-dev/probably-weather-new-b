@@ -1,0 +1,820 @@
+{
+ "generated": "2026-08-19",
+ "ruledBy": "Al, bespoke line review",
+ "bucket": "heat",
+ "images": [
+  {
+   "image": "heat/week_1/dawn/3.webp",
+   "hash": "4d63213b19b9",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_3/dawn/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sun has just come up, which is the part nobody is going to believe.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That bonnet did not cool down overnight, which is the part that should worry you.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That egg has been on there about four minutes and it is nearly done.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody in this dorp has needed a stove since about the second week of December.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Monday, and breakfast in this dorp has been sorted by a car bonnet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/dawn/4.webp",
+   "hash": "0828ca00553f",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_1/dawn/4.webp",
+    "heat/week_3/dawn/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "That water went in cold at five and it has not been cold since.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He got in before the sun cleared the fence and he has not come out.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He got in at six and he is not planning to get out.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That water was cold about forty minutes ago and nobody has topped it up.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The pool is not optional.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:heat#4"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/dawn/5.webp",
+   "hash": "b81a91a1f851",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_3/dawn/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "There is steam coming off that pool, which is not a good sign at six.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The water did not cool down last night and he has already checked.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Saturday, and he is in before seven because by ten it is unusable.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The paving round that pool is already too hot for bare feet at six.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That pool is warmer than he is and it is going to stay that way.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/dawn/6.webp",
+   "hash": "437fd1add3cd",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/dawn/6.webp",
+    "heat/week_3/dawn/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "She has found the one tile in this house that has not warmed up yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "She is lying on tile rather than anything soft, and that was a decision.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "By nine that windowsill is going to be the worst place in the house.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun is only just up and she has already picked her spot.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunday, and she has about ninety minutes before she has to move again.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/dawn/7.webp",
+   "hash": "726c6aee069a",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/dawn/7.webp",
+    "heat/week_3/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "He has picked the shade under a thorn tree, which is barely shade at all.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun has been up eleven minutes and he has already stopped moving.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That stoep has chairs on it and none of them will be used before six.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Thursday, and by nine there will be nothing out here worth walking to.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is no shade on this whole werf that lasts past about ten.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/day/4.webp",
+   "hash": "98d89edda1cd",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "That bonnet is hotter than most pans ever get on most stoves.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He tried the roof first and the roof was somehow hotter.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody has touched that car door and every one of them knows why.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody here is wondering whether it works. They are watching it work.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Monday, and it is not even eleven o'clock yet, which is the frightening part.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/dusk/3.webp",
+   "hash": "5ed7621f5dd9",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/dusk/3.webp",
+    "heat/week_3/dusk/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Every leaf on that sunflower has given up and the head is still facing it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody out here waters anything until that sun is properly behind the hill.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "It was watered this morning and you would not know it from here.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That pot has been in full sun since about eleven this morning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Monday, and it will do all of that again tomorrow without being asked.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_1/dusk/4.webp",
+   "hash": "68661ff2b0dc",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_1/dusk/4.webp",
+    "heat/week_3/dusk/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "That water has been topped up twice and it is still the wrong temperature.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That water has been sitting in the sun all day and it is not cold.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He got in at eleven this morning and this is the second filling.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun went down an hour ago and the paving is still giving it back.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Tuesday, and the coolest thing in this entire garden is that dog.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_2/dawn/3.webp",
+   "hash": "818c078a2bda",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_2/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sprinkler goes on at five and it is off again by seven.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Everything green in this photograph is on a timer and everything else is not.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The aloes have not needed a drop of that and they never will.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That lawn is the only thing for forty kilometres that gets a say.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Friday, and by eleven this whole ridge will be one colour again.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_2/dawn/7.webp",
+   "hash": "c6d266d04418",
+   "condition": "heat",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/dawn/7.webp",
+    "heat/week_4/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "They are out at half past five because there is no other window today.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That sun has been up eleven minutes and it is already doing that.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody is carrying water, which is a decision they are going to revisit.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The shade on this road runs out in about two hundred metres.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Wednesday, and this is the coolest it is going to be all day.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_2/day/2.webp",
+   "hash": "d6593f52fb76",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_2/day/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "Two fans moving hot air around a room that has been shut since eight.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The file she is fanning with is the one she is meant to be reading.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Two fans, four papers flying, and not one document has been read today.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody in that building can open a window and every one of them has tried.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Tuesday, and somebody in this building is going to be sent home early.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_2/day/7.webp",
+   "hash": "afd3c9db83bd",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The A/C button is right there and it has clearly not been pressed.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Whoever left that there thought they would only be twenty minutes.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That dashboard is hot enough that the wrapper gave up before the chocolate did.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The steering wheel in there is currently not something you can hold.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Thursday, and that car is going to be worse at four than it is now.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_2/dusk/3.webp",
+   "hash": "555f76c5594f",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/dusk/3.webp",
+    "heat/week_4/dusk/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Nobody drives past a stall like that on a day like this.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Everything on those crates has been sitting in this since the truck came.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That watermelon has been sitting in the sun all day and it is not cold.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is a whole dispenser of iced water there and it is nearly empty.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Saturday, and that is going straight into a fridge for a day and a half.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/dusk/6.webp",
+   "hash": "248b04dcf98d",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/dusk/6.webp",
+    "heat/week_4/dusk/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "Her eyes are closed and that fan is aimed at exactly one person.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That jug has been refilled twice and it is not even properly dark yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun has gone and the tiles are still giving it back.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody else in this house is getting near that fan tonight.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Wednesday, and this is the first comfortable minute she has had since eleven.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_2/dusk/7.webp",
+   "hash": "3e88aef1fb06",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "That grass has been too hot to stand on since about eleven this morning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Thursday, and this is the first time all day either of them has been cool.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "That sprinkler was put on for the lawn about ten minutes ago.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He came home, saw the sprinkler was on, and did not go inside first.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The water coming out of that pipe is warm and it does not matter.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/night/7.webp",
+   "hash": "2a3a60226c30",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "heat/week_2/night/7.webp",
+    "heat/week_4/night/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "She is not looking for anything and both of us know it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That door has been open about ninety seconds and it is staying open.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "It has not dropped below twenty-five in that house since about Tuesday.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That is the third time tonight and not one of them is about food.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The fridge is the coolest room in the house.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:heat#15"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "heat/week_3/day/1.webp",
+   "hash": "6591bd91d1fc",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_3/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "That is the only cool water in this garden and it has been claimed.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "He has not moved out of it since eleven and he is not going to.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There is a whole garden out there and about a metre of it is bearable.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "Both of them are sitting on grass that is too hot to sit on.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Wednesday, and nobody is arguing about it because arguing is too much effort.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  },
+  {
+   "image": "heat/week_3/day/5.webp",
+   "hash": "6ce02da2ab7a",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_3/day/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "He came out of the cage, and he did not come out for the view.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody on this stoep is going anywhere until about four o'clock.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Friday, and that is the only moving air for about sixty kilometres.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": [
+    {
+     "text": "The door is open and he has chosen the spot nearest the fan.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That fan is pointed at the veld and he has intercepted it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ]
+  }
+ ],
+ "keptCount": 79,
+ "imagesWithNone": []
+}

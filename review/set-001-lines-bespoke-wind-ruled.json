@@ -1,0 +1,552 @@
+{
+ "generated": "2026-08-19",
+ "ruledBy": "Al, bespoke line review",
+ "bucket": "wind",
+ "images": [
+  {
+   "image": "wind/week_1/dawn/2.webp",
+   "hash": "c121631aca0a",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/dawn/2.webp",
+    "wind/week_3/dawn/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "The trees are doing involuntary yoga.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:wind#6"
+    },
+    {
+     "text": "That trunk grew crooked because this happens here far more than it doesn't.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The palm has been holding that exact shape since about three this morning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The Cape Doctor is making house calls.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:wind#3"
+    },
+    {
+     "text": "The sun is up, the street is empty, and the wind got here first.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/dawn/5.webp",
+   "hash": "337d1a2fe2c2",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/dawn/5.webp",
+    "wind/week_3/dawn/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "That wave landed on the promenade about four seconds before she got there.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunday morning, and the sea is throwing the first half of it at her.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "She will be tasting salt for the rest of the day and she knows it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The palm is bent double and she is out here smiling about it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The promenade is empty in both directions and there is a reason for that.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/dawn/6.webp",
+   "hash": "45b7693ad9e4",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "wind/week_1/dawn/6.webp",
+    "wind/week_3/dawn/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "Ponytail holders are doing overtime.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:wind#13"
+    },
+    {
+     "text": "She is leaning at an angle that a flat path does not normally require.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "She will be picking grass seeds out of that jacket until Saturday.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Thursday, and she is the only thing on this road not going sideways.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Half the hedge is in the air in front of her and still arriving.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/dawn/7.webp",
+   "hash": "d0a60d414066",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/dawn/7.webp",
+    "wind/week_3/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The paving is soaked in front of them and it has not rained once.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Saturday morning, and the sea has already been over that railing twice.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Neither of them is going to be the one who suggests turning back.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That sea wall is doing its absolute best and it is still losing.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "They will be getting salt off those shoes for the rest of the weekend.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/day/4.webp",
+   "hash": "f32e33e76e01",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "That washing will be dry before she has finished carrying the rest of it out.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "She is not looking at the washing, she is looking at where it might land.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Saturday, and the only thing on that line doing any work is the pegs.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nobody is lighting that Weber until this drops, and everyone in the yard knows it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The Weber has not been lit once this week and today is not the day.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/day/5.webp",
+   "hash": "232bde6ed095",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_1/day/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "That hood would be halfway down the road if her hand was not on it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Half the pavement is airborne and only one of the three is enjoying it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That bag is working as a sail and he has not worked that out yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Every leaf the tree dropped this month is going past them at head height.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Monday, and the wind is the best thing that has happened to him so far.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_1/dusk/3.webp",
+   "hash": "38635f77f610",
+   "condition": "wind",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "wind/week_1/dusk/3.webp",
+    "wind/week_3/dusk/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Sand in places sand should never be.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:wind#12"
+    },
+    {
+     "text": "Table Mountain is right there and neither of them has looked at it once.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Neither of them can stand up straight and neither of them seems to mind.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The footprints behind them are already filling in and they only just walked there.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The beach itself is moving faster than they are, and in the same direction.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/dawn/4.webp",
+   "hash": "c66c7fd4f50e",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_2/dawn/4.webp",
+    "wind/week_4/dawn/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "He was going to have coffee. The mug is still standing on the step.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "One slipper is already out of the game and the cover is still winning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The braai cover is in the next suburb.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:wind#18"
+    },
+    {
+     "text": "The pine behind him is bent right over, so this was never a fair contest.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Perfect conditions for losing your dignity.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:wind#8"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/dawn/5.webp",
+   "hash": "3556004712b7",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/dawn/5.webp",
+    "wind/week_4/dawn/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "Even the seagulls are walking today.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:wind#9"
+    },
+    {
+     "text": "Every one of them is pointing the same way and not one of them chose it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not one of them is flying, and that is the whole forecast right there.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sand is going past them faster than the tide is coming in.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "They will stand exactly like that until it drops, and it is not dropping.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/day/1.webp",
+   "hash": "4d3a786acf48",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "wind/week_2/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Both hands are on the skirt, which means the hair is on its own.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Table Mountain is right behind her and she cannot see a single bit of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That shoe is coming off next and she has run out of hands.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The leaves going past her were still on a tree two streets ago.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Tuesday, and the wind has strong opinions about somebody else's outfit.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_2/night/4.webp",
+   "hash": "eb7873fd7acb",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "wind/week_2/night/4.webp",
+    "wind/week_4/night/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "The moon is out and the palms have not stopped moving since sunset.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The moon is holding still and everything else up there is not.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Whatever is landing on that road is not rain, it is the sea arriving sideways.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The palms have been making that noise for hours and nobody is awake to mind.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The road is empty, every light is on, and the wind has the place to itself.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "wind/week_4/dawn/1.webp",
+   "hash": "f1a06c34c049",
+   "condition": "wind",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "wind/week_4/dawn/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Those sheets will be dry before she has pegged the last one on the line.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "There are more pegs on that line than the washing needs, and she knows why.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Everything on that line is going to smell like the sea by eight o'clock.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The one on the end has come loose and she has not spotted it yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Friday, and the wind is doing half of this job for her, free of charge.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  }
+ ],
+ "keptCount": 60,
+ "imagesWithNone": []
+}
