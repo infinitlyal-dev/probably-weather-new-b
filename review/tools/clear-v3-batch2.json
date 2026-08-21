@@ -1,0 +1,44 @@
+{
+ "bucket": "clear",
+ "batch": 2,
+ "images": [
+  {
+   "image": "clear/week_2/dawn/6.webp",
+   "seen": "Three school kids with backpacks walking down a suburban pavement in low golden dawn light, long shadows, a sunlit koppie behind, clean pale sky. Tuesday.",
+   "lines": [
+    "Not a breath of haze this morning; even the mountain got up early.",
+    "This light lasts about twenty minutes and the walk to school gets all of it."
+   ],
+   "rescue": [null, null]
+  },
+  {
+   "image": "clear/week_2/dawn/7.webp",
+   "seen": "A surfer at the water's edge at sunrise, mirror-wet sand reflecting a pastel sky, mist on the far headlands, sea completely calm. Saturday.",
+   "lines": [
+    "Not enough wind this morning to put one wrinkle on that water.",
+    "The beach is doubling as a mirror, which takes one morning of absolutely no wind.",
+    "One sunrise, used twice — once in the sky and once off the wet sand."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_2/dawn/2.webp",
+   "seen": "An older man watering his lawn at dawn under a jacaranda in full bloom, coffee mug in hand, Weber on the stoep, one dry patch on the grass, pale clear sky. Sunday.",
+   "lines": [
+    "That dry patch is what a week of cloudless skies does to a lawn.",
+    "A sky this clear hands you one cool hour, and this is it.",
+    "The Weber's been waiting all week for this."
+   ],
+   "rescue": [null, null, "witty:weekend#14"]
+  },
+  {
+   "image": "clear/week_2/day/1.webp",
+   "seen": "Friends on a city rooftop on towels with a thermos and sunscreen, Joburg skyline with the Absa building behind them, deep blue cloudless sky, hard sun. Tuesday.",
+   "lines": [
+    "Joburg does about three hundred of these a year. Nobody is complaining.",
+    "The sky has gone that deep blue you only get this high above sea level."
+   ],
+   "rescue": [null, null]
+  }
+ ]
+}

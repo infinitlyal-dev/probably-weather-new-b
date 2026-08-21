@@ -1,0 +1,46 @@
+{
+ "bucket": "cold-clear",
+ "batch": 4,
+ "images": [
+  {
+   "image": "cold-clear/week_2/dawn/3.webp",
+   "seen": "Frosted wheelie bins in a row at the curb at golden dawn, Cape Winelands District Municipality branding, frost on the verge, clear sky. Monday.",
+   "lines": [
+    "Bin day, and the frost got to them before the truck did.",
+    "Even the bins iced over, which is the Winelands telling you to dress properly.",
+    "The municipality collects at seven; the frost delivered at four."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/4.webp",
+   "seen": "A runner in a beanie pausing on a stone-walled lookout over the Joburg skyline at golden dawn, Hillbrow Tower in view, breath visible, bare winter trees below. Sunday.",
+   "lines": [
+    "Joburg winter dawn: the view is free; the air charges admission.",
+    "His breath is the only cloud between here and the Hillbrow Tower.",
+    "The city looks its best exactly when the air hurts most, which is unfair."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/6.webp",
+   "seen": "A mother scraping frost off the windscreen at deep blue dawn while two boys in beanies wait with their school bags, breath clouds, frosted grasses, modern house. Wednesday.",
+   "lines": [
+    "The windscreen kept a record of last night and she is deleting it by hand.",
+    "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
+    "The car spent the night outside under a clear sky and it shows, everywhere."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/7.webp",
+   "seen": "Five guinea fowl crossing a frosty suburban street in single file at sunrise, frosted lawns and a brick house behind. Friday.",
+   "lines": [
+    "Five guinea fowl crossing in single file: the frost has everyone walking carefully.",
+    "First traffic of the morning, and it walks and complains at the same time.",
+    "Frost on every lawn and the only ones out are wearing feathers."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

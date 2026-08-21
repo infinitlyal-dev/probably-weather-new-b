@@ -1,0 +1,443 @@
+[
+ {
+  "image": "cold-clear/week_1/dawn/2.webp",
+  "hash": "caaa1c42d70a",
+  "condition": "cold-clear",
+  "time": "dawn",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold-clear/week_1/dawn/2.webp",
+   "cold-clear/week_3/dawn/2.webp"
+  ],
+  "place": null,
+  "seen": "A jacaranda-lined suburban street at sunrise in winter, the trees bare with just the first purple buds. A cyclist in a white windbreaker, helmet and a buff pulled up over his mouth and nose riding towards camera down the empty road, his shadow stretched right down the tar from the low sun bursting through the trees. Clean deep blue sky, one street light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/dawn/7.webp",
+  "hash": "898c05f233a6",
+  "condition": "cold-clear",
+  "time": "dawn",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold-clear/week_1/dawn/7.webp",
+   "cold-clear/week_3/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "A hadeda landing on a completely white frosted lawn at dawn, wings spread wide, beak open. Behind it a face-brick double-storey house with one warm yellow lit window, a bare tree on the left, pale pink dawn sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/day/1.webp",
+  "hash": "21c809043132",
+  "condition": "cold-clear",
+  "time": "day",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold-clear/week_1/day/1.webp"
+  ],
+  "place": null,
+  "seen": "An older farmer in a battered wide-brimmed hat and faded blue work shirt with the sleeves rolled up, leaning on a whitewashed stone wall looking out over flat Karoo veld to the horizon. His breath shows as a white plume in the air. Hard deep blue cloudless sky, whitewashed cottage and old lantern on the left, dry scrub plain behind.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/day/4.webp",
+  "hash": "042ba0a95388",
+  "condition": "cold-clear",
+  "time": "day",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold-clear/week_1/day/4.webp"
+  ],
+  "place": null,
+  "seen": "A frosted suburban front garden in early morning. A man in a beanie and puffer jacket stands with one arm on the open door of a white Hilux; a small boy in full navy school uniform steps down out of the cab breathing out a big plume of steam, looking up at him. White frosted lawn, bare trees, face-brick double-storey house, deep blue sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/dusk/2.webp",
+  "hash": "510b7a0d60c0",
+  "condition": "cold-clear",
+  "time": "dusk",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold-clear/week_1/dusk/2.webp",
+   "cold-clear/week_3/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "A tan dog sitting outside a closed steel driveway gate at number 42, seen from behind, his breath showing as a small white puff. Beyond the gate a frosted lawn, a dark-brick house with a big warm-lit window showing a lamp and a lounge, bare trees, a gold sunset strip on the horizon under deep blue. Frost on the grass he is sitting on.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/dusk/4.webp",
+  "hash": "fbdf528f41c8",
+  "condition": "cold-clear",
+  "time": "dusk",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold-clear/week_1/dusk/4.webp",
+   "cold-clear/week_3/dusk/4.webp"
+  ],
+  "place": null,
+  "seen": "A washing line strung across a frosted lawn at sunset, hung with grey towels and one navy garment, all of them visibly stiff and crusted with frost. Behind, a tile-roofed farmhouse with lit windows, bare poplars, aloes, mountains, and a burning orange sunset strip on the horizon under a purple-grey sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/dusk/5.webp",
+  "hash": "827554552d76",
+  "condition": "cold-clear",
+  "time": "dusk",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold-clear/week_1/dusk/5.webp",
+   "cold-clear/week_3/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "Five friends sitting close around a round concrete fire pit on a frosted lawn at dusk, all in puffer jackets, beanies and scarves, each holding a steaming mug, blankets over their laps, laughing. Behind them a modern white double-storey house with a lit balcony and warm windows, a bare tree, and a gold sunset strip low under deep blue.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/dusk/7.webp",
+  "hash": "948736af4859",
+  "condition": "cold-clear",
+  "time": "dusk",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold-clear/week_1/dusk/7.webp",
+   "cold-clear/week_3/dusk/7.webp"
+  ],
+  "place": null,
+  "seen": "A club sports ground in heavy frost. A metal bench in the foreground with two folded brown blankets on it and a scuffed white soccer ball on the frosted grass beside it. Beyond, a white touchline on a frosted pitch, two floodlights already on, a cream clubhouse with a corrugated roof and terrace steps, bare trees, a gold horizon strip under deep blue.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/night/3.webp",
+  "hash": "05aeb3b79581",
+  "condition": "cold-clear",
+  "time": "night",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold-clear/week_1/night/3.webp",
+   "cold-clear/week_3/night/3.webp"
+  ],
+  "place": null,
+  "seen": "A suburban house at night under an intensely starry sky with the Southern Cross and its pointers clearly visible. Tiled roof, one warm-lit window, a bare tree on the right, a boundary wall, and pale frosted grass in the foreground catching the light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/night/4.webp",
+  "hash": "da60a92cafd2",
+  "condition": "cold-clear",
+  "time": "night",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold-clear/week_1/night/4.webp",
+   "cold-clear/week_3/night/4.webp"
+  ],
+  "place": null,
+  "seen": "A man in a wooden rocking chair on a farmhouse stoep at night, wrapped in a heavy fringed wool blanket, holding a steaming mug in both hands, head tipped back looking up at a sky full of stars. A warm bulb glowing on the wall beside him. Beyond the stoep a frosted field white on the ground, dark trees and low hills.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_1/night/7.webp",
+  "hash": "8fd1944f303b",
+  "condition": "cold-clear",
+  "time": "night",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold-clear/week_1/night/7.webp",
+   "cold-clear/week_3/night/7.webp"
+  ],
+  "place": null,
+  "seen": "Three men in beanies and puffer jackets on low stools around a Weber kettle braai on a paved patio at night, one turning meat on the grid with tongs, all three leaning in towards the fire. Frost white on the lawn and garden bed to the left. Behind them, town lights strung along a dark valley, hills, one lit window of the house, and an enormous starry sky filling the top two thirds.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dawn/2.webp",
+  "hash": "28129477b706",
+  "condition": "cold-clear",
+  "time": "dawn",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold-clear/week_2/dawn/2.webp",
+   "cold-clear/week_4/dawn/2.webp"
+  ],
+  "place": null,
+  "seen": "A windpomp standing in Karoo veld at sunrise, blades catching the first gold light, with a concrete reservoir beside it. Frost white on the karoo bossies and red earth in the foreground, a wire fence with wooden droppers along the left, low pink-lit hills on the horizon, clean blue-to-peach sky. Nobody in the frame.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dawn/3.webp",
+  "hash": "3e60dabd7ef7",
+  "condition": "cold-clear",
+  "time": "dawn",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold-clear/week_2/dawn/3.webp",
+   "cold-clear/week_4/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "A row of four wheelie bins standing on a frosted verge at sunrise, the nearest one with a thick crust of white frost across its lid and CAPE WINELANDS DISTRICT MUNICIPALITY embossed on its front. Behind, a white flat-roofed house with a chimney, bare trees, frosted brown grass, and a gold-to-blue sunrise over distant mountains. The road is empty.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dawn/4.webp",
+  "hash": "6ca4d027da38",
+  "condition": "cold-clear",
+  "time": "dawn",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold-clear/week_2/dawn/4.webp",
+   "cold-clear/week_4/dawn/4.webp"
+  ],
+  "place": null,
+  "seen": "A runner in a black thermal top, shorts over tights and a beanie standing on a brick-paved lookout with hands on hips, his breath showing as a plume, looking out over the Johannesburg skyline at sunrise — the Hillbrow Tower and the CBD towers lit gold, a low stone wall, dry winter grass and bare trees on the ridge below, clean blue-to-gold sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dawn/6.webp",
+  "hash": "5a6dd26eb7db",
+  "condition": "cold-clear",
+  "time": "dawn",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold-clear/week_2/dawn/6.webp",
+   "cold-clear/week_4/dawn/6.webp"
+  ],
+  "place": null,
+  "seen": "A woman in a navy puffer and scarf, breath showing, scraping thick frost off a car windscreen in a driveway at dawn with a plastic scraper. Two small boys in beanies and puffers, one with a backpack, are getting into the back door on the other side. Frost thick on the whole windscreen, roof and bonnet. A modern concrete-and-timber house with warm lit windows behind, ornamental grasses, a pink-orange sunrise strip under deep blue.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dawn/7.webp",
+  "hash": "4040cfcfc732",
+  "condition": "cold-clear",
+  "time": "dawn",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold-clear/week_2/dawn/7.webp",
+   "cold-clear/week_4/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "Five guinea fowl walking in a neat line across a frosted suburban tar road at sunrise, both verges white with frost. Behind them a red-brick house with a green fascia and tiled roof, a frosted clipped ball shrub, bare trees, and a peach and blue sunrise sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/day/1.webp",
+  "hash": "45b1ac83db20",
+  "condition": "cold-clear",
+  "time": "day",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold-clear/week_2/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A big boerboel lying in a strip of sunlight against a plastered wall on a concrete patio, eyes half shut, his breath showing as a small white plume. A steel water bowl beside him. Behind, a slatted wooden fence, a face-brick double-storey house with a mountain reflected in the window, dead brown winter lawn, a bare tree, hard deep blue sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/day/2.webp",
+  "hash": "32dec9fbdcaa",
+  "condition": "cold-clear",
+  "time": "day",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold-clear/week_2/day/2.webp"
+  ],
+  "place": null,
+  "seen": "A parkrun finish on a frosted brown field at sunrise. Runners in beanies, gloves and coloured jackets crossing a taped line strung between two wooden posts, every one of them breathing plumes of steam. Two marshals in hi-vis vests standing either side, a kid in a red hoodie walking, a boy in a blue beanie bent over. Brick clubhouse behind, bare trees, clean blue sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dusk/3.webp",
+  "hash": "0b4330abc214",
+  "condition": "cold-clear",
+  "time": "dusk",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold-clear/week_2/dusk/3.webp",
+   "cold-clear/week_4/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "A chestnut and a grey horse standing shoulder to shoulder in a frosted paddock in low gold light, both in headcollars, looking straight at camera, their breath steaming in the backlight. Frosted rough grass, a wire fence, bare trees, a burning gold horizon under deep blue.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dusk/5.webp",
+  "hash": "1f74ef9146fb",
+  "condition": "cold-clear",
+  "time": "dusk",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold-clear/week_2/dusk/5.webp",
+   "cold-clear/week_4/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "Inside a warm lounge at dusk. A tabby cat sitting up on the windowsill seen from behind, looking out through a many-paned sash window at a pink and purple sunset over a frosted garden, bare tree, frosted hedge and mountains. Frost visible on the outside of the panes. A table lamp glowing on the left, framed pictures, a ginger jar and a pot plant on the sill.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/dusk/6.webp",
+  "hash": "ff19d8654ec3",
+  "condition": "cold-clear",
+  "time": "dusk",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold-clear/week_2/dusk/6.webp",
+   "cold-clear/week_4/dusk/6.webp"
+  ],
+  "place": null,
+  "seen": "A girl in a black puffer jacket, beanie, basketball shorts and white sneakers mid-jump shooting at a hoop on a concrete driveway court at dusk, her breath showing as a big white plume. Behind her a white flat-roofed house with two lit wall lanterns, bare trees, frosted grass, low hills and a gold-to-blue sunset.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/night/2.webp",
+  "hash": "da90853b2ccb",
+  "condition": "cold-clear",
+  "time": "night",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold-clear/week_2/night/2.webp",
+   "cold-clear/week_4/night/2.webp"
+  ],
+  "place": null,
+  "seen": "A man in a beanie and navy puffer wheeling a black bin down the driveway to the kerb at night, head down, his breath a white cloud in front of him. An ochre house behind with a warm porch light on above the door, a potted shrub, frosted brown lawn, a bare tree, and a sky absolutely full of stars.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/night/3.webp",
+  "hash": "112364f9e477",
+  "condition": "cold-clear",
+  "time": "night",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold-clear/week_2/night/3.webp",
+   "cold-clear/week_4/night/3.webp"
+  ],
+  "place": null,
+  "seen": "A quiet tree-lined suburban street at night, ornate street lamps glowing warm gold down the pavement, a row of parked cars along the right with the nearest one's rear window and boot completely furred with frost sparkling in the light. Clipped hedges, plastered gate pillars, a starry deep blue sky above the trees.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/night/4.webp",
+  "hash": "d298c8c1f224",
+  "condition": "cold-clear",
+  "time": "night",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold-clear/week_2/night/4.webp",
+   "cold-clear/week_4/night/4.webp"
+  ],
+  "place": null,
+  "seen": "A lounge at night. A father and two children on a couch under thick cream and plaid fleece blankets, the two children each holding a mug, all three lit by the television. Behind them a big window onto a frost-white garden — every branch and shrub furred white — under a starry sky. Face-brick wall, framed picture, a pot plant.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_2/night/6.webp",
+  "hash": "f453a678f470",
+  "condition": "cold-clear",
+  "time": "night",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold-clear/week_2/night/6.webp",
+   "cold-clear/week_4/night/6.webp"
+  ],
+  "place": null,
+  "seen": "Two children lying on their backs in the open load bed of a white bakkie parked on a dirt farm track at night, wrapped in duvets and pillows, both pointing up at an enormous Milky Way. A steel vacuum flask and two enamel mugs standing on the open tailgate. Dry veld and fence posts either side, dark hills on the horizon.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_3/day/1.webp",
+  "hash": "decff597fe6c",
+  "condition": "cold-clear",
+  "time": "day",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold-clear/week_3/day/1.webp"
+  ],
+  "place": null,
+  "seen": "Two colleagues talking on a paved plaza between glass office towers under a hard deep-blue cloudless sky — a woman in a grey wool coat and cream scarf, a man in a black puffer and grey scarf, both holding takeaway coffee cups, both laughing. Sun flaring off a glass tower, young trees, long shadows on the paving.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_3/day/5.webp",
+  "hash": "bbb3d8348b00",
+  "condition": "cold-clear",
+  "time": "day",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold-clear/week_3/day/5.webp"
+  ],
+  "place": null,
+  "seen": "A farmhouse kitchen table in hard morning sun. A mother in a cream jumper leaning across to zip a purple puffer onto a scowling toddler who has both arms folded over it. A bowl of steaming porridge with a spoon in it on the table, a pot plant, a woven basket. Through the big window: frosted grass, bare trees, mountains, deep blue sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold-clear/week_4/day/3.webp",
+  "hash": "bbad2500c852",
+  "condition": "cold-clear",
+  "time": "day",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold-clear/week_4/day/3.webp"
+  ],
+  "place": null,
+  "seen": "A club rugby field in hard low winter sun — the grass frost-burnt gold and yellow with crisp white lines, a set of white posts, and the far end of the field still white with frost in shadow. A small concrete grandstand on the left, gums along the boundary, a low clubhouse, deep saturated blue cloudless sky. Nobody in the frame.",
+  "alreadyKept": [],
+  "need": 3
+ }
+]

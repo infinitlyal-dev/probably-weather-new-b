@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 3,
+ "images": [
+  {
+   "image": "cold/week_1/dusk/7.webp",
+   "seen": "A fat tabby cat draped asleep over the top of a glowing bar heater at dusk, lamp lit, cloudy mountain view through the window. Monday.",
+   "lines": [
+    "The heater went on at four and the cat clocked in at one minute past.",
+    "It is heater season, and the best seat in the house has fur on it.",
+    "The heater is your best friend. Your only friend."
+   ],
+   "rescue": [null, null, "witty:cold#6"]
+  },
+  {
+   "image": "cold/week_1/night/2.webp",
+   "seen": "A thatched lounge at night with a stone fireplace burning, a Jack Russell asleep on the wingback chair, steaming mug on the armrest, the door open to a deep blue night. Tuesday.",
+   "lines": [
+    "That door is open to a properly cold night, and nobody in here minds.",
+    "Outside is for the stars tonight; everything with fur voted fireplace.",
+    "The mug is steaming, the logs are in, and winter can do its worst."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_1/night/6.webp",
+   "seen": "An empty wet Victorian main street at night, streetlamps in a row, one warm-lit cafe where a waiter is stacking chairs. Monday.",
+   "lines": [
+    "The cold cleared the whole street an hour before closing time.",
+    "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.",
+    "One warm window holding out against a street that has given up."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_1/night/7.webp",
+   "seen": "A child in a beanie, snood and puffer jacket reading The Gruffalo's Child by torchlight inside a wooden playhouse, sheepskin rug and boots. Sunday.",
+   "lines": [
+    "Beanie, snood, torch, book: winter nights build the best reading rooms.",
+    "Only the eyes are getting any cold tonight, and they are busy.",
+    "A night this cold turns a wooden hok into a library."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

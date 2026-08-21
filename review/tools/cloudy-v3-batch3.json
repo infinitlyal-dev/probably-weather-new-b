@@ -1,0 +1,46 @@
+{
+ "bucket": "cloudy",
+ "batch": 3,
+ "images": [
+  {
+   "image": "cloudy/week_1/dusk/4.webp",
+   "seen": "A vineyard wedding at dusk — couple posing, photographer kneeling, mother-of-the-bride in a hat looking up at a pink-grey broken sky, Cape Dutch manor behind. Saturday.",
+   "lines": [
+    "One person at this wedding is checking the sky, and she has been right before.",
+    "The clouds came dressed in pink for the occasion and are behaving so far.",
+    "That sky will hold for the photographs — after that, no promises."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_1/night/1.webp",
+   "seen": "A crescent moon fighting through heavy broken cloud over a dark Karoo plain, one low koppie on the horizon. Monday.",
+   "lines": [
+    "The moon is down to one small window and it is using all of it.",
+    "The clouds are winning tonight, about nine rounds to one.",
+    "A sky like that keeps the heat in — the frost can stand down tonight."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_1/night/2.webp",
+   "seen": "A Bengal cat curled asleep on a couch against a knitted blanket, lamp lit, heavy dark cloud over distant city lights through the window. Wednesday.",
+   "lines": [
+    "Cloud right down to the rooftops, and every sensible mammal is indoors under a lamp.",
+    "Nothing is falling and nothing is shining; it is that kind of night.",
+    "A sky with no stars is the sky's way of saying go to bed."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_1/night/6.webp",
+   "seen": "A white bakkie with headlights blazing on a dead-straight Karoo road at night, one bare thorn tree beside it, a completely starless overcast sky. Friday.",
+   "lines": [
+    "No moon, no stars, no streetlights: tonight the headlights are the whole sky.",
+    "The sky has switched itself off for the night; the bakkie disagrees.",
+    "Overcast this thick turns the Karoo into a corridor, and he is halfway down it."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

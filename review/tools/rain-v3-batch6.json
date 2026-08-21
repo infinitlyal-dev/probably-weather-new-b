@@ -1,0 +1,46 @@
+{
+ "bucket": "rain",
+ "batch": 6,
+ "images": [
+  {
+   "image": "rain/week_2/dusk/3.webp",
+   "seen": "Rainy rush-hour gridlock at dusk — lanes of red tail lights doubled on the wet tar, the mountain under heavy cloud behind. Tuesday.",
+   "lines": [
+    "The rain added an hour to the drive home and everyone saw it coming.",
+    "Ten thousand brake lights and one mountain refusing to watch.",
+    "The commute just became a team sport."
+   ],
+   "rescue": [null, null, "witty:rain#13"]
+  },
+  {
+   "image": "rain/week_2/dusk/4.webp",
+   "seen": "A businessman just inside his front door at dusk, peeling off a soaked jacket, water pooling on the tiles, the wet street visible through the open door. Friday.",
+   "lines": [
+    "The jacket gave up somewhere between the car and the gate.",
+    "He made it home; the dry parts of him did not.",
+    "The hallway is getting its own weather report, drip by drip."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_2/dusk/6.webp",
+   "seen": "A woman parked with the engine off, chin on her hand, watching rain streak the windows in the blue of dusk. Thursday.",
+   "lines": [
+    "The rain gets five more minutes, and honestly, it can have them.",
+    "There is no rush that survives weather like this, and she knows it.",
+    "Watching the rain from the driver's seat: free, dry, and weirdly good."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_2/night/4.webp",
+   "seen": "A man driving through night rain, the city's lights blurred to smears on the wet windscreen, both hands on the wheel. Thursday.",
+   "lines": [
+    "Every light in town has gone soft at the edges tonight.",
+    "Night rain maths: half the visibility, double the concentration, triple the respect.",
+    "Wet tar doubles every streetlight, and he is not fooled by any of them."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

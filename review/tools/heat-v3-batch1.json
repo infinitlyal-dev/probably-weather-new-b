@@ -1,0 +1,43 @@
+{
+ "bucket": "heat",
+ "batch": 1,
+ "images": [
+  {
+   "image": "heat/week_2/dusk/3.webp",
+   "seen": "A roadside farm stall at sunset — watermelons and fruit in crates, a glass water dispenser on the counter, a woman carrying a melon to her car. Saturday.",
+   "lines": [
+    "The day was a scorcher and the stall is selling the antidote by the kilo.",
+    "Watermelon weather: the whole province agreed on it by about ten this morning."
+   ],
+   "rescue": [null, null]
+  },
+  {
+   "image": "heat/week_2/dusk/7.webp",
+   "seen": "A father and daughter playing in the sprinkler's spray on the lawn at golden sunset, agapanthus in the foreground. Thursday.",
+   "lines": [
+    "The sprinkler went on for the lawn and got hijacked within the minute."
+   ],
+   "rescue": [null]
+  },
+  {
+   "image": "heat/week_2/day/5.webp",
+   "seen": "A dusty dashboard thermometer reading 38°C on a dead-straight empty Karoo road, white glare sky through the windscreen. Saturday.",
+   "lines": [
+    "The car says 38 and the road ahead agrees in shimmer.",
+    "That sky is not white, it is just too hot to be blue.",
+    "Every kilometre of that road is being served with a heat shimmer today."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "heat/week_4/day/7.webp",
+   "seen": "Five kids charging through an oscillating sprinkler on a green lawn in hard sun, parents watching from the shaded patio. Sunday.",
+   "lines": [
+    "The sprinkler is doing lawn duty and lifeguard duty at the same time.",
+    "On days like this the garden hose outranks every toy in the house.",
+    "Lawn watered, kids cooled, parents left in peace: the heat sorted everything."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

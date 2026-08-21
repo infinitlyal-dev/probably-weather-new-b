@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 2,
+ "images": [
+  {
+   "image": "cold/week_1/day/6.webp",
+   "seen": "A terrier wrapped in a wool blanket on a leather couch, steaming mug on the coffee table, frost-pale garden through the window. Thursday.",
+   "lines": [
+    "One look at that white lawn and the blanket vote was unanimous.",
+    "Cold that reaches through a window gets met with wool and a full kettle.",
+    "The dog refused to go outside. Fair."
+   ],
+   "rescue": [null, null, "witty:cold#17"]
+  },
+  {
+   "image": "cold/week_1/day/7.webp",
+   "seen": "A woman in a beanie and long puffer jacket on a park bench, sipping takeaway coffee with gloved hands, bare trees and a grey winter sky. Thursday.",
+   "lines": [
+    "Coffee outside in this is a commitment, and she has made it.",
+    "Gloves-around-the-cup weather: the coffee is doing two jobs at once.",
+    "Your jacket has a jacket. It's that kind of day."
+   ],
+   "rescue": [null, null, "witty:cold#22"]
+  },
+  {
+   "image": "cold/week_1/dusk/2.webp",
+   "seen": "A farm gate on a dirt road at sunset, thick mist filling the valley below, gum trees silhouetted against a purple-orange sky. Sunday.",
+   "lines": [
+    "The mist has moved into the valley for the night and locked the gate behind it.",
+    "The valley pulled its blanket up early; the hills stay out a bit later.",
+    "That mist is tomorrow morning's frost out doing a site inspection."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_1/dusk/3.webp",
+   "seen": "A mountain pass winding through snow-dusted slopes at dusk, one car with its headlights on, pink cloud over the ridgelines. Tuesday.",
+   "lines": [
+    "Snow on the high ground, headlights on early: the pass has gone winter.",
+    "The sun is leaving the mountains one shelf at a time.",
+    "Berg air gets in through the vents no matter what the heater says."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

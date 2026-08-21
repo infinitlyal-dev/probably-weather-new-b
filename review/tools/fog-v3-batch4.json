@@ -1,0 +1,46 @@
+{
+ "bucket": "fog",
+ "batch": 4,
+ "images": [
+  {
+   "image": "fog/week_1/night/3.webp",
+   "seen": "A minibus-taxi rank at night in fog — two white taxis under the depot lights, wet tar reflecting, two figures walking into the mist. Monday.",
+   "lines": [
+    "Last taxis of the night, and the fog has the whole rank to itself soon.",
+    "The rank lights are punching holes in the fog, one bay at a time.",
+    "Wet tar, white air: the last leg home is the slow one tonight."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/night/4.webp",
+   "seen": "A man walking up his garden path at night in thick fog, the kitchen window throwing one gold beam across the mist. Saturday.",
+   "lines": [
+    "The kitchen light found him halfway up the path, which is what it is for.",
+    "The fog followed him right up to the gate and stopped at the window's beam.",
+    "That one window is doing lighthouse duty tonight, and it is enough."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/night/5.webp",
+   "seen": "A traffic light in dense night fog, all three colours glowing as haloes at once over a wet empty intersection. Tuesday.",
+   "lines": [
+    "The fog is so thick even the robot is hedging its bets.",
+    "Nobody is coming through that white, but the robot keeps performing anyway.",
+    "The intersection is running on trust and thirty metres of visibility."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/night/7.webp",
+   "seen": "A man in a coat walking down the middle of a misty suburban street at night, one big haloed streetlight overhead. Thursday.",
+   "lines": [
+    "The street is his alone tonight; the fog bought out every other pedestrian.",
+    "One streetlight is doing moon duty for the whole block.",
+    "Everything looks like a film scene. A creepy one."
+   ],
+   "rescue": [null, null, "witty:fog#17"]
+  }
+ ]
+}

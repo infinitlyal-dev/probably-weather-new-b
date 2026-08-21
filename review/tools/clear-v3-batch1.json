@@ -1,0 +1,50 @@
+{
+ "bucket": "clear",
+ "batch": 1,
+ "images": [
+  {
+   "image": "clear/week_1/dawn/7.webp",
+   "seen": "A dog asleep on warm patio tiles in the first low gold of a clear dawn, long shadows, lush garden behind, pale blue sky.",
+   "lines": [
+    "The sun cleared the roof about ten minutes ago and the tiles are already warm.",
+    "Nothing in the sky to slow the sun down, so the stoep warmed up before seven."
+   ],
+   "rescue": [null, null]
+  },
+  {
+   "image": "clear/week_1/day/7.webp",
+   "seen": "A wide empty beach, two wooden chairs and a cooler box under one striped umbrella, flat teal sea, huge blue sky with two thin wisps. Sunday.",
+   "lines": [
+    "The sea has gone the colour it only goes when the sky is this empty.",
+    "Sunday, and the sky has cleared its whole diary for this.",
+    "Beach or braai? Yes."
+   ],
+   "rescue": [null, null, "witty:weekend#3"]
+  },
+  {
+   "image": "clear/week_1/dusk/3.webp",
+   "seen": "Farm dusk, orange-to-blue gradient with the first star out, fire pit lit, two kids playing soccer on the lawn. Saturday.",
+   "lines": [
+    "The first star is out before the last of the sunset has even left."
+   ],
+   "rescue": [null]
+  },
+  {
+   "image": "clear/week_1/night/3.webp",
+   "seen": "Karoo farmyard at night, people lying on a bakkie bed pointing up at a huge Milky Way over white farm buildings.",
+   "lines": [
+    "Perfect night to actually see the Milky Way."
+   ],
+   "rescue": ["witty:night#1"]
+  },
+  {
+   "image": "clear/week_1/night/7.webp",
+   "seen": "A city skyline at night from a rooftop, thousands of lights below, stars and a few small clouds above. Wednesday.",
+   "lines": [
+    "Ten thousand streetlights down there and the sky is still winning tonight.",
+    "Tomorrow's weather is tomorrow's problem."
+   ],
+   "rescue": [null, "witty:night#16"]
+  }
+ ]
+}

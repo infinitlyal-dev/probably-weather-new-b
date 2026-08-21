@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 7,
+ "images": [
+  {
+   "image": "storm/week_3/day/1.webp",
+   "seen": "A farmer hauling a blue tarp over hay bales on a bakkie while hail comes down, storm-dark sky and a lit farmhouse behind him. Friday.",
+   "lines": [
+    "Hail on the way down and a tarp halfway on: this one is going to be close.",
+    "The sky is throwing ice and he is answering with a tarp.",
+    "Hail gives you about ninety seconds of warning, and he is using all of them."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_3/day/3.webp",
+   "seen": "A big dog with wide eyes lying flat under the dining table, lightning forking outside the patio doors behind the chairs. Friday.",
+   "lines": [
+    "The spot under the table was chosen scientifically: furthest from the sky.",
+    "Thunder counts double when you have ears like that.",
+    "One flash outside and the seating plan changed itself."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_3/day/5.webp",
+   "seen": "An abandoned club cricket pitch under a black-green storm sky — covers half-dragged on, kit and jerseys dumped on the grass, the sightscreen blown askew. Thursday.",
+   "lines": [
+    "Bad light stopped play, then the light got a lot worse.",
+    "The covers made it on; the kit did not make it off.",
+    "A sky that colour clears a cricket field faster than any umpire."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_4/day/1.webp",
+   "seen": "A white plastic chair overturned in a roadside puddle, a yellow farmhouse behind, columns of rain falling from the dark cloud on the horizon. Wednesday.",
+   "lines": [
+    "The first casualty is a plastic chair, and the storm is not even here yet.",
+    "That rain on the horizon is about ten minutes from this puddle.",
+    "The wind came through first and signed its work with one white chair."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

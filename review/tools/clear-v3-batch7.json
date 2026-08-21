@@ -1,0 +1,46 @@
+{
+ "bucket": "clear",
+ "batch": 7,
+ "images": [
+  {
+   "image": "clear/week_3/day/4.webp",
+   "seen": "A man in a Hawaiian shirt, boardshorts and slops walking into a corporate glass office lobby with a laptop bag, suits visible inside, deep blue sky reflected in the facade. Monday.",
+   "lines": [
+    "The sky made the dress-code decision this morning and he just obeyed it.",
+    "A sky like that overrules HR, and everybody at reception knows it.",
+    "Summer filed its arrival notice this morning; the shirt is the paperwork."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_3/day/7.webp",
+   "seen": "Two women working on laptops under a striped beach umbrella on a Joburg rooftop, Ponte and the Hillbrow Tower on the skyline, towels and a cooler box on the concrete. Wednesday.",
+   "lines": [
+    "The weather moved the office to the roof and productivity can argue later.",
+    "Wednesday this warm turns every roof in Joburg into a second office.",
+    "The sun took the direct route today: straight down, no traffic."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_4/day/2.webp",
+   "seen": "Two kids leaping for a tennis ball on the lawn of a white Cape Dutch farmhouse, hard bright sun, pale clear sky. Wednesday.",
+   "lines": [
+    "The kind of sun that turns one tennis ball into a whole afternoon.",
+    "That farmhouse has seen a few centuries of days like this and still gets them free.",
+    "Full sun, soft lawn, and homework has officially lost its audience."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_4/day/5.webp",
+   "seen": "Two women turning boerewors on a built brick braai with tongs, two men with a salad bowl behind, smoke rising into golden late sun, garden deck. Saturday.",
+   "lines": [
+    "Wors on, sun low, wind nowhere: Saturday is doing everything right.",
+    "The smoke is going straight up, which is the sky's way of approving a braai.",
+    "The braai is the social calendar. Show up."
+   ],
+   "rescue": [null, null, "witty:weekend#24"]
+  }
+ ]
+}

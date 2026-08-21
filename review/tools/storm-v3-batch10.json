@@ -1,0 +1,16 @@
+{
+ "bucket": "storm",
+ "batch": 10,
+ "images": [
+  {
+   "image": "storm/week_2/night/5.webp",
+   "seen": "A couple laughing as they position a bucket to catch a ceiling leak directly over their bed, duvet already wet, storm-dark window behind. Saturday.",
+   "lines": [
+    "The storm found the ceiling's weak spot; the bucket arrived three drops later.",
+    "The rain is now technically a house guest, and it chose the main bedroom.",
+    "Leak over the bed, laughter over the leak: married storm protocol."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

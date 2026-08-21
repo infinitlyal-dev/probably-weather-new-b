@@ -1,0 +1,46 @@
+{
+ "bucket": "rain",
+ "batch": 5,
+ "images": [
+  {
+   "image": "rain/week_2/day/4.webp",
+   "seen": "A grumpy wet ginger cat sitting under a metal patio chair in the rain, puddle rings spreading on the paving, aloes and a corrugated fence behind. Thursday.",
+   "lines": [
+    "The cat has taken the rain personally, as the cat takes most things.",
+    "Dry spot found; dignity pending; the rain shows no sign of apologising.",
+    "One dry square metre in the whole yard, and it is occupied."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_2/day/5.webp",
+   "seen": "A silver station wagon pushing a bow wave down a flooded suburban street, red-brick houses and big gum trees under a heavy sky. Wednesday.",
+   "lines": [
+    "That is not driving anymore; that is low-altitude boating.",
+    "One cloudburst and the whole street joined the storm-water system.",
+    "Every driveway on this street is a jetty until the drains catch up."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_2/day/6.webp",
+   "seen": "A woman gripping the wheel in blinding rain, the windscreen a blur of water and smeared brake lights, wipers mid-swipe. Wednesday.",
+   "lines": [
+    "Everyone on this road just became a very careful person.",
+    "Brake lights first, road second, everything else on trust.",
+    "The wipers are on max and it's still not enough."
+   ],
+   "rescue": [null, null, "witty:rain#19"]
+  },
+  {
+   "image": "rain/week_2/dusk/2.webp",
+   "seen": "A man pausing under his lit porch at dusk with a furled umbrella, heavy rain hammering the street, a car passing with headlights on. Saturday.",
+   "lines": [
+    "He has checked the sky twice and the sky has not changed its answer.",
+    "The gap between the stoep and the gate has never looked wider.",
+    "The umbrella is about to earn its whole year's keep in eight metres."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

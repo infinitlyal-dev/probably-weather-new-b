@@ -1,0 +1,46 @@
+{
+ "bucket": "cloudy",
+ "batch": 5,
+ "images": [
+  {
+   "image": "cloudy/week_2/dawn/7.webp",
+   "seen": "A paved walkway through a stone-walled coastal village at grey dawn, heavy cloud with one weak sun break over a rough sea. Thursday.",
+   "lines": [
+    "The sun is trying its luck at the horizon and the cloud is unmoved.",
+    "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
+    "A grey start on the coast usually burns off by ten. Usually."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/day/1.webp",
+   "seen": "A woman in a navy swimsuit on a striped towel on a lawn, sunscreen in hand, squinting up at a dark grey cloud bank with blue sky still visible behind it, plumbago hedge and white gable house. Saturday.",
+   "lines": [
+    "The cloud arrived about four minutes after the towel went down, which is policy.",
+    "Sunscreen out, sun gone: the sky has a sense of humour today.",
+    "The blue sky is still back there somewhere, but the grey has the floor."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/day/5.webp",
+   "seen": "An empty school rugby field with white posts under a flat grey sky, dry koppies and a red-brick school building behind. Wednesday.",
+   "lines": [
+    "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
+    "The sky has gone the colour of the staff-room ceiling and settled in.",
+    "A perfectly average sky doing perfectly average things."
+   ],
+   "rescue": [null, null, "witty:cloudy#32"]
+  },
+  {
+   "image": "cloudy/week_2/day/6.webp",
+   "seen": "A chameleon halfway along a bare branch, heavy grey cloud filling the sky, garden leaves and a terracotta roof below. Friday.",
+   "lines": [
+    "The one animal that can match the sky's mood is having no trouble today.",
+    "Every leaf is holding still; the whole garden is waiting to see what the sky decides.",
+    "The clouds are here but they're not doing anything."
+   ],
+   "rescue": [null, null, "witty:cloudy#19"]
+  }
+ ]
+}

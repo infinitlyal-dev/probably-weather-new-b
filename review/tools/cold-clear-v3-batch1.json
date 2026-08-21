@@ -1,0 +1,46 @@
+{
+ "bucket": "cold-clear",
+ "batch": 1,
+ "images": [
+  {
+   "image": "cold-clear/week_1/dawn/2.webp",
+   "seen": "A cyclist with a buff over his face riding down a bare-tree suburban avenue at golden dawn, deep blue cloudless sky, long shadows across the road. Thursday.",
+   "lines": [
+    "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+    "Blue overhead, ice in the air: he is dressed for the truth, not the view.",
+    "Sun's out. Don't be fooled. Nature is lying."
+   ],
+   "rescue": [null, null, "witty:cold-clear#9"]
+  },
+  {
+   "image": "cold-clear/week_1/dawn/7.webp",
+   "seen": "A hadeda landing on a frosted lawn at pink dawn, breath-mist at its beak, brick double-storey with one lit kitchen window behind. Tuesday.",
+   "lines": [
+    "The hadeda has landed on frost and is already drafting a complaint.",
+    "Frost on the lawn and the morning alarm has just landed, feathers and all.",
+    "The first bird down this morning found the grass crunchy and said so."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_1/day/1.webp",
+   "seen": "A Karoo farmer in a leather hat leaning on a whitewashed wall in full sun, breath visible against a deep blue sky, dry veld to the horizon. Tuesday.",
+   "lines": [
+    "Full sun, visible breath: the Karoo running both seasons before lunch.",
+    "That wall holds the morning's heat by ten and he knows exactly where to lean.",
+    "Sun on your back, freezer on your face."
+   ],
+   "rescue": [null, null, "witty:cold-clear#22"]
+  },
+  {
+   "image": "cold-clear/week_1/day/4.webp",
+   "seen": "A father and son in school uniform getting into a white Hilux on a frosty morning, frosted windows, breath clouds, frost-grey lawn and bare trees, clear blue sky. Wednesday.",
+   "lines": [
+    "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+    "The bakkie iced over under a completely clear sky, which is exactly how it works.",
+    "The sun is up and doing its best; the frost is unconvinced so far."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

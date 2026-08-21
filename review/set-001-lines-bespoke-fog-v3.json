@@ -1,0 +1,815 @@
+{
+ "generated": "2026-08-21",
+ "writtenBy": "Fable 5 (Valk), viewing each photograph",
+ "brief": "Doctrine rewrite of 2026-08-21: every line is about the weather; the picture is the evidence. Three lines per photograph (Al’s ruled keeps locked and counted). Bank rescues marked. PAIRING-TASTE + the swap test still bind.",
+ "bucket": "fog",
+ "linesLabel": "three per image incl. locked keeps",
+ "count": 28,
+ "images": [
+  {
+   "index": 1,
+   "image": "fog/week_1/dawn/1.webp",
+   "hash": "591629dceb51",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dawn/1.webp",
+    "fog/week_3/dawn/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A Nguni cow facing the camera on dew-heavy pasture, the rest of the herd and the trees fading into thick white fog. Tuesday.",
+   "note": null,
+   "lines": [
+    "The herd is all here; the fog is just rationing them one at a time.",
+    "Visibility is down to one cow.",
+    "The farm goes on past that white wall; the cows are taking that on faith."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 2,
+   "image": "fog/week_1/dawn/3.webp",
+   "hash": "d903941f0dd8",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_1/dawn/3.webp",
+    "fog/week_3/dawn/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A suburban street at blue pre-dawn with fog thickening down the road, three amber streetlamps fading into it, wet tar. Friday.",
+   "note": null,
+   "lines": [
+    "Three streetlights in and the street gives up; the fog holds the rest.",
+    "The fog rolled in at three and started deleting the neighbourhood from the far end.",
+    "The streetlights are trying their best."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:fog#14"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 3,
+   "image": "fog/week_1/dawn/4.webp",
+   "hash": "deaadb7968fe",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/dawn/4.webp",
+    "fog/week_3/dawn/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A modern house at dawn with one warm-lit window cutting a long beam through dense fog, dark garden below. Wednesday.",
+   "note": null,
+   "lines": [
+    "One lit window is taking on the whole fog, and losing beautifully.",
+    "The fog is thick enough to hold a beam of kitchen light like a solid object.",
+    "The morning forgot to render."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:fog#37"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 4,
+   "image": "fog/week_1/dawn/5.webp",
+   "hash": "23b1b4b2af6d",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dawn/5.webp",
+    "fog/week_3/dawn/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A schoolboy in a hi-vis vest and backpack waiting at the curb, the street swallowed by fog, one faint pair of headlights deep in the mist. Monday.",
+   "note": null,
+   "lines": [
+    "The hi-vis is doing exactly what it was bought for this morning.",
+    "Those headlights have been 'almost here' for two full minutes of fog.",
+    "Fog like this turns every school run into an act of faith and reflective tape."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 5,
+   "image": "fog/week_1/dawn/7.webp",
+   "hash": "48e51baff8be",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/dawn/7.webp",
+    "fog/week_3/dawn/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A runner on a wet forest road, the tall gum trees rising and disappearing into fog overhead. Saturday.",
+   "note": null,
+   "lines": [
+    "The trees go up about thirty metres and then just stop existing.",
+    "The forest is keeping its top half private this morning.",
+    "The road is the only thing committing to a direction this morning."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 6,
+   "image": "fog/week_1/day/1.webp",
+   "hash": "f1d8b3873dff",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A golf ball sitting in wet rough in close-up, a golfer with his bag fading into heavy fog behind it. Sunday.",
+   "note": null,
+   "lines": [
+    "Found: one ball. The other three hundred metres of golf course are still missing.",
+    "The fairway is out there somewhere, taking the morning off from being visible.",
+    "Fog gives every golfer the same handicap, and today it is generous."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 7,
+   "image": "fog/week_1/day/3.webp",
+   "hash": "2d71f451d0df",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/day/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A tabby cat sitting on a brick garden wall, two ghostly human figures deep in the fog behind it, a Victorian house barely visible. Monday.",
+   "note": null,
+   "lines": [
+    "The cat can see exactly what is in that fog and is choosing not to say.",
+    "The neighbours are out there somewhere, at about ten percent opacity.",
+    "Silent Hill vibes. Without the monsters. Hopefully."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:fog#2"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 8,
+   "image": "fog/week_1/dusk/1.webp",
+   "hash": "4003b55c6c42",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dusk/1.webp",
+    "fog/week_3/dusk/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A Land Rover with headlights blazing on a misty lowveld road at dusk, acacia trees in layered fog, wet tar. Monday.",
+   "note": null,
+   "lines": [
+    "The bushveld has gone soft-focus and the Landy is taking it slowly.",
+    "Headlights do about twenty metres out here; the rest is memory and respect.",
+    "Mist off the veld at dusk: the road home just doubled in length."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 9,
+   "image": "fog/week_1/dusk/4.webp",
+   "hash": "a0b24a9ae618",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/dusk/4.webp",
+    "fog/week_3/dusk/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An estate street at dusk swallowed by fog, one pair of red tail lights glowing deep in the mist, a single streetlight overhead. Thursday.",
+   "note": null,
+   "lines": [
+    "Those brake lights are the only warm colour left in the neighbourhood.",
+    "The fog swallowed the whole street and left the tail lights as a receipt.",
+    "Home is two hundred metres away and completely theoretical right now."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 10,
+   "image": "fog/week_1/dusk/5.webp",
+   "hash": "2ac9aa1f42fc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dusk/5.webp",
+    "fog/week_3/dusk/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman walking a labradoodle along a foggy seafront promenade at dusk, a curve of haloed streetlamps fading into the mist. Tuesday.",
+   "note": null,
+   "lines": [
+    "Every streetlamp gets its own halo tonight; the fog is generous like that.",
+    "The sea is somewhere just off to the right; you'll have to take it on hearsay.",
+    "The dog knows this route with its nose, which tonight is the better instrument."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 11,
+   "image": "fog/week_1/dusk/6.webp",
+   "hash": "b64f87c2b2bc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/dusk/6.webp",
+    "fog/week_3/dusk/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two friends taking a smiling selfie at a lookout whose view is a wall of white fog, the sign beside them blanked out by mist. Sunday.",
+   "note": null,
+   "lines": [
+    "The viewpoint is performing at zero percent and the selfie is happening anyway.",
+    "Somewhere behind all that white is a famous view. Allegedly.",
+    "The fog got to the lookout first and took the whole view for itself."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 12,
+   "image": "fog/week_1/night/1.webp",
+   "hash": "5a72ad3aac4b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/night/1.webp",
+    "fog/week_3/night/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An aerial view of Cape Town at night with fog rolling through the CBD, the city lights glowing amber through the mist, Table Mountain black above it all. Wednesday.",
+   "note": null,
+   "lines": [
+    "Cape Town is still on under there; the fog is just running interference.",
+    "The sea mist came in for the night and the whole city went soft.",
+    "Table Mountain kept its head out; the city took the blanket."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 13,
+   "image": "fog/week_1/night/3.webp",
+   "hash": "b7cdf515c96b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/night/3.webp",
+    "fog/week_3/night/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A minibus-taxi rank at night in fog — two white taxis under the depot lights, wet tar reflecting, two figures walking into the mist. Monday.",
+   "note": null,
+   "lines": [
+    "Last taxis of the night, and the fog has the whole rank to itself soon.",
+    "The rank lights are punching holes in the fog, one bay at a time.",
+    "Wet tar, white air: the last leg home is the slow one tonight."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 14,
+   "image": "fog/week_1/night/4.webp",
+   "hash": "39c515606f74",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/night/4.webp",
+    "fog/week_3/night/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man walking up his garden path at night in thick fog, the kitchen window throwing one gold beam across the mist. Saturday.",
+   "note": null,
+   "lines": [
+    "The kitchen light found him halfway up the path, which is what it is for.",
+    "The fog followed him right up to the gate and stopped at the window's beam.",
+    "That one window is doing lighthouse duty tonight, and it is enough."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 15,
+   "image": "fog/week_1/night/5.webp",
+   "hash": "05b3727f7c16",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/night/5.webp",
+    "fog/week_3/night/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A traffic light in dense night fog, all three colours glowing as haloes at once over a wet empty intersection. Tuesday.",
+   "note": null,
+   "lines": [
+    "The fog is so thick even the robot is hedging its bets.",
+    "Nobody is coming through that white, but the robot keeps performing anyway.",
+    "The intersection is running on trust and thirty metres of visibility."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 16,
+   "image": "fog/week_1/night/7.webp",
+   "hash": "c2a03f49e81e",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/night/7.webp",
+    "fog/week_3/night/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man in a coat walking down the middle of a misty suburban street at night, one big haloed streetlight overhead. Thursday.",
+   "note": null,
+   "lines": [
+    "The street is his alone tonight; the fog bought out every other pedestrian.",
+    "One streetlight is doing moon duty for the whole block.",
+    "Everything looks like a film scene. A creepy one."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:fog#17"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 17,
+   "image": "fog/week_2/dawn/1.webp",
+   "hash": "13fa1ba0ce60",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/dawn/1.webp",
+    "fog/week_4/dawn/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A farm dirt road lined with gum trees at golden foggy sunrise, frost on the verges, the farmhouse faint in the mist. Thursday.",
+   "note": null,
+   "lines": [
+    "The sun is coming through the fog at half strength and full gold.",
+    "The mist gets the farm; the frost gets the verges; the road splits the difference.",
+    "This gold lasts exactly as long as the fog does, which is the deal."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 18,
+   "image": "fog/week_2/dawn/3.webp",
+   "hash": "8ea1dc6bec6a",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/dawn/3.webp",
+    "fog/week_4/dawn/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Three Nguni cattle standing at a wooden fence above a valley banked with fog, golden hills beyond, dew-heavy grass. Sunday.",
+   "note": null,
+   "lines": [
+    "The fog filled the valley overnight; the Ngunis are standing on its shoreline.",
+    "Fog settles in the low ground, which is why the herd sleeps on the hill.",
+    "Three Ngunis watching the fog like it owes them a field."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 19,
+   "image": "fog/week_2/day/1.webp",
+   "hash": "36972a49b9e6",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An empty rugby field in fog at first light, the near posts sharp and the far posts almost gone, houses ghosted behind. Saturday.",
+   "note": null,
+   "lines": [
+    "Kickoff is ten and the far posts have not arrived yet.",
+    "The field is regulation size; you just have to take that on faith today.",
+    "Saturday rugby waits for the fog, and the fog is in no hurry."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 20,
+   "image": "fog/week_2/day/6.webp",
+   "hash": "62480343c313",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/day/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man driving slowly through white-out fog, phone GPS mounted on the dash showing the route, mirror and glass hazed. Thursday.",
+   "note": null,
+   "lines": [
+    "The GPS says the road is there, and today that is the whole case for it.",
+    "Twenty in a sixty and completely correct about it.",
+    "The phone knows the route; the fog is testing how much he trusts it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 21,
+   "image": "fog/week_2/dusk/1.webp",
+   "hash": "b5837596744c",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/dusk/1.webp",
+    "fog/week_4/dusk/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "The Bo-Kaap at foggy dusk — pink, teal and yellow houses glowing under wall lamps, wet cobbles, a man watering his pot plants, the city fading into mist below. Friday.",
+   "note": null,
+   "lines": [
+    "The fog took the city but it is not getting the Bo-Kaap's colours.",
+    "The whole city has gone grey below; this street refused, on principle.",
+    "The mist gets thicker downhill, and the houses get louder to compensate."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 22,
+   "image": "fog/week_2/dusk/3.webp",
+   "hash": "5cd228859e14",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_2/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A couple walking their bicycles down a foggy oak-lined lane at dusk, lamplight in the mist, wet leaves underfoot, white Cape Dutch gables behind. Wednesday.",
+   "note": null,
+   "lines": [
+    "Too misty to ride, which neither of them minds in the slightest.",
+    "The fog turned the ride home into a walk, and the walk is better.",
+    "Mist in the oaks, gables in the mist: the Boland doing its winter thing."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 23,
+   "image": "fog/week_2/dusk/7.webp",
+   "hash": "838bd4824615",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A foggy harbour jetty at dusk — moored yachts ghosted in the mist, jetty lamps glowing, a warm-lit restaurant at the end, an oystercatcher on the wet sand. Saturday.",
+   "note": null,
+   "lines": [
+    "Every boat is staying exactly where it is, and the fog approves.",
+    "The masts have gone to silhouettes and the restaurant has gone to gold.",
+    "Nothing sails in this; even the oystercatcher is walking."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 24,
+   "image": "fog/week_2/night/2.webp",
+   "hash": "0467a4574c0b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/night/2.webp",
+    "fog/week_4/night/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman wrapped in a blanket with a steaming mug on her apartment balcony at night, the fog below glowing with soft streetlights. Sunday.",
+   "note": null,
+   "lines": [
+    "The city noise is off tonight; fog is the best soundproofing there is.",
+    "The streetlights have gone soft and the whole suburb has gone quiet.",
+    "Fog outside, blanket outside too: some weather is for watching from one metre away."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 25,
+   "image": "fog/week_2/night/4.webp",
+   "hash": "7acec82c9b6f",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/night/4.webp",
+    "fog/week_4/night/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A couple walking a golden retriever at night through amber sodium fog, haloed streetlights, an art-deco apartment block glowing behind. Friday.",
+   "note": null,
+   "lines": [
+    "The whole street has gone amber tonight; the fog is holding the light like syrup.",
+    "Friday night fog: the block gets quieter, the streetlights get bigger.",
+    "The fog moved in an hour ago and the streetlights have doubled in size since."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 26,
+   "image": "fog/week_3/day/2.webp",
+   "hash": "84811d2b9372",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_3/day/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman in a fleece walking her dog into thick ground fog — the taut leash disappears into the white and the dog is completely invisible. Tuesday.",
+   "note": null,
+   "lines": [
+    "The dog is definitely still on the end of that leash. Almost definitely.",
+    "The leash goes into the fog and only faith comes back out of it.",
+    "Current visibility: one whole dog short of complete."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 27,
+   "image": "fog/week_3/day/7.webp",
+   "hash": "dd6b06e34d3e",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_3/day/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man in a gown and slippers wheeling his bin down the driveway into heavy fog, garden topiary fading behind him. Friday.",
+   "note": null,
+   "lines": [
+    "Gown, slippers, thirty metres of visibility: bin day waits for no weather.",
+    "The bin run is being flown on instruments this morning.",
+    "Walking to the bin is now an expedition."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:fog#34"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 28,
+   "image": "fog/week_4/day/1.webp",
+   "hash": "541778f8c617",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_4/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A view over suburban rooftops with fog lying between the houses at golden sunrise, a jacaranda in bloom below, sun breaking through the layer. Wednesday.",
+   "note": null,
+   "lines": [
+    "The fog is lying in the streets like it pays rates here.",
+    "Sun from above, fog from below: the suburb is the middle of the sandwich.",
+    "The fog got in among the houses overnight and the sun is evicting it street by street."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  }
+ ]
+}

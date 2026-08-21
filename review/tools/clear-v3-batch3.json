@@ -1,0 +1,43 @@
+{
+ "bucket": "clear",
+ "batch": 3,
+ "images": [
+  {
+   "image": "clear/week_2/day/2.webp",
+   "seen": "A dad flat on his back on the lawn with two kids piled on him laughing, jacaranda in full bloom overhead, purple flowers scattered on the grass, deep blue cloudless sky. Sunday.",
+   "lines": [
+    "Jacarandas only do this three weeks a year, and the sky decided to match.",
+    "Grass warm, sky empty — the kind of Sunday that resets a whole family."
+   ],
+   "rescue": [null, null]
+  },
+  {
+   "image": "clear/week_2/day/4.webp",
+   "seen": "A dad smirking in a deckchair with a beer and a magazine while his son pushes a reel mower over a half-brown lawn, jacaranda petals on the paving, hard midday sun, red-brick house. Saturday.",
+   "lines": [
+    "That lawn stopped asking the sky for rain somewhere around the start of November.",
+    "The sun has done more to that lawn this month than any mower ever will."
+   ],
+   "rescue": [null, null]
+  },
+  {
+   "image": "clear/week_2/day/5.webp",
+   "seen": "Office workers pushing out through a glass tower's revolving door at four on a Friday, one with both arms up, the whole facade reflecting a deep blue sky, street clock reading just past four.",
+   "lines": [
+    "Forty floors of glass and every one of them is showing the same blue.",
+    "The afternoon held exactly like the morning promised, which almost never happens."
+   ],
+   "rescue": [null, null]
+  },
+  {
+   "image": "clear/week_2/day/6.webp",
+   "seen": "A hadeda standing on a browned lawn next to an oscillating sprinkler mid-spray, brick house behind, deep clean blue sky. Tuesday.",
+   "lines": [
+    "The only rain this garden has seen all month comes out of a pipe.",
+    "Weeks of nothing but blue, and even the hadeda has to queue at the sprinkler.",
+    "The sun has had this lawn to itself for a month and it is winning."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "bucket": "heat",
+ "batch": 3,
+ "images": [
+  {
+   "image": "heat/week_1/night/3.webp",
+   "seen": "A warm-night balcony — sweating jug of ice water and two glasses on the table, woven hand fan on the chair, sheer curtain billowing, palms beyond the rail. Thursday.",
+   "lines": [
+    "The curtain is moving, which is the first good news since this morning.",
+    "Ice in the jug, fan on the chair: the night shift of a forty-degree day.",
+    "The first breeze in twelve hours just walked in without knocking."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "heat/week_1/night/4.webp",
+   "seen": "A pedestal fan running beside the bed at 2:00 AM, someone asleep under a mosquito net, glass of water on the nightstand. Monday.",
+   "lines": [
+    "Two in the morning and the fan is the hardest worker in the house.",
+    "The fan is on its third shift and the night is still not cooling.",
+    "The glass on the nightstand went warm an hour ago; the fan carries on alone."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "heat/week_2/night/2.webp",
+   "seen": "Friends in the pool at night with drinks under string lights, one more watching from the deck, the house glowing warm behind. Saturday.",
+   "lines": [
+    "Still thirty degrees after dark, so the party moved into the water.",
+    "Night swimming is not a plan; it is what this weather leaves you.",
+    "The day never cooled, so the drinks came to the shallow end."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "heat/week_2/night/6.webp",
+   "seen": "A labrador lying flat on the cool bathroom tiles at night, freestanding bath behind, warm passage light falling across the floor. Wednesday.",
+   "lines": [
+    "The lab did a full survey and the bathroom tiles won by two degrees.",
+    "Tile is the coldest surface in the house tonight, and it is taken.",
+    "The dog knows where the house keeps its last cool square metres."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

@@ -1,0 +1,443 @@
+[
+ {
+  "image": "fog/week_1/dawn/1.webp",
+  "hash": "591629dceb51",
+  "condition": "fog",
+  "time": "dawn",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "fog/week_1/dawn/1.webp",
+   "fog/week_3/dawn/1.webp"
+  ],
+  "place": null,
+  "seen": "An Nguni cow standing facing camera in a soaked green pasture in thick morning fog, with three or four more cattle dissolving into the white behind her and two ghost trees on either horizon. Heavy dew silvering the grass.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dawn/3.webp",
+  "hash": "d903941f0dd8",
+  "condition": "fog",
+  "time": "dawn",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "fog/week_1/dawn/3.webp",
+   "fog/week_3/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "A suburban street at first light in thick fog — a row of ornate street lamps glowing warm orange and receding down the road into white, thorn trees and a palm in silhouette, low houses with palisade fences on the left, wet tar and brick pavement, deep blue-grey air.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dawn/4.webp",
+  "hash": "deaadb7968fe",
+  "condition": "fog",
+  "time": "dawn",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "fog/week_1/dawn/4.webp",
+   "fog/week_3/dawn/4.webp"
+  ],
+  "place": null,
+  "seen": "A modern timber-and-concrete house on a hillside in dense fog with one upstairs window blazing warm yellow and throwing a solid visible beam of light out into the fog like a searchlight. Everything else — the hillside, the fynbos below, the rest of the house — is dissolved in grey.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dawn/5.webp",
+  "hash": "23b1b4b2af6d",
+  "condition": "fog",
+  "time": "dawn",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "fog/week_1/dawn/5.webp",
+   "fog/week_3/dawn/5.webp"
+  ],
+  "place": null,
+  "seen": "A schoolboy in a hi-vis yellow vest over his uniform with a navy backpack, standing at the kerb at a corner looking down a road that vanishes completely into thick fog. One street lamp glowing above him, one faint car light far off in the white, a storm drain at his feet, wet tar, trees dissolving.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dawn/7.webp",
+  "hash": "48e51baff8be",
+  "condition": "fog",
+  "time": "dawn",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "fog/week_1/dawn/7.webp",
+   "fog/week_3/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "A woman in a grey vest and navy shorts running away from camera up a wet tarred forest road into a wall of fog. Tall gums and indigenous trees either side, ferns and undergrowth on the left, wet leaf litter, the road curving away into white.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/day/1.webp",
+  "hash": "f1d8b3873dff",
+  "condition": "fog",
+  "time": "day",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "fog/week_1/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A golf ball sitting in wet fairway grass in the foreground, sharply in focus, with a golfer in a dark jacket and cap walking towards camera out of thick fog in the middle distance carrying a bag and a club. Trees dissolving on both sides, everything else white.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/day/3.webp",
+  "hash": "2d71f451d0df",
+  "condition": "fog",
+  "time": "day",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "fog/week_1/day/3.webp"
+  ],
+  "place": null,
+  "seen": "A tabby cat sitting on a lichened sandstone wall, sharply in focus, looking off to the left. Behind it, dissolving into thick white fog, a gabled house with a verandah and three human figures standing in the mist as vague silhouettes. Green garden plants and white flowers along the wall.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dusk/1.webp",
+  "hash": "4003b55c6c42",
+  "condition": "fog",
+  "time": "dusk",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "fog/week_1/dusk/1.webp",
+   "fog/week_3/dusk/1.webp"
+  ],
+  "place": null,
+  "seen": "A minibus taxi coming towards camera down a wet curving country road in thick fog at dusk, headlights throwing two cones of gold onto the wet tar. Flat-topped acacias dissolving on both sides, hills behind, grass verges, painted road lines.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dusk/4.webp",
+  "hash": "a0b24a9ae618",
+  "condition": "fog",
+  "time": "dusk",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "fog/week_1/dusk/4.webp",
+   "fog/week_3/dusk/4.webp"
+  ],
+  "place": null,
+  "seen": "A dark suburban estate street at dusk in thick fog. One car's red tail lights glowing in the middle of the road ahead, already half swallowed. One street lamp on the left, houses with tiled roofs and boundary walls on the right, a thorn tree, a hedge, wet black tar filling the bottom half.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dusk/5.webp",
+  "hash": "2ac9aa1f42fc",
+  "condition": "fog",
+  "time": "dusk",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "fog/week_1/dusk/5.webp",
+   "fog/week_3/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "A woman in a pale hooded top walking away from camera on a wet brick promenade in thick fog at dusk, a scruffy blond dog on a long lead beside her. A receding row of street lamps glowing orange down the left, dissolving one after another. Sea and rocks vaguely to the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/dusk/6.webp",
+  "hash": "b64f87c2b2bc",
+  "condition": "fog",
+  "time": "dusk",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "fog/week_1/dusk/6.webp",
+   "fog/week_3/dusk/6.webp"
+  ],
+  "place": null,
+  "seen": "Two young women in black jackets standing at the roadside in fog, one holding up a phone for a selfie, both laughing. Behind them a big road sign that reads completely blank — not a word visible on it — on a wooden post. A tar road curving away into fog, gravel verge, tussock grass, a faint pale sunset glow in the murk.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/night/1.webp",
+  "hash": "5a72ad3aac4b",
+  "condition": "fog",
+  "time": "night",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "fog/week_1/night/1.webp",
+   "fog/week_3/night/1.webp"
+  ],
+  "place": null,
+  "seen": "An aerial night view over Cape Town — Table Mountain and Devil's Peak in silhouette across the top, the whole CBD spread below in orange street light, and a thick tongue of fog pouring across the middle of the city, half swallowing the skyscrapers so only their tops stick out of it. The harbour bottom left.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/night/3.webp",
+  "hash": "b7cdf515c96b",
+  "condition": "fog",
+  "time": "night",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "fog/week_1/night/3.webp",
+   "fog/week_3/night/3.webp"
+  ],
+  "place": null,
+  "seen": "A covered taxi rank at night in fog. Two white minibus taxis parked under a long concrete canopy with a receding row of ceiling lights dissolving into the mist. Two people walking away in the middle distance. Wet reflective tar fills the bottom half of the frame.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/night/4.webp",
+  "hash": "39c515606f74",
+  "condition": "fog",
+  "time": "night",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "fog/week_1/night/4.webp",
+   "fog/week_3/night/4.webp"
+  ],
+  "place": null,
+  "seen": "A man in a cream jacket walking up a brick garden path at night through thick fog, lit from behind by a warm lit window whose light spills out in a huge visible cone through the mist. A brick house with a wide eave, a yucca and shrubs, wet lawn, dark trees dissolving to the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/night/5.webp",
+  "hash": "05b3727f7c16",
+  "condition": "fog",
+  "time": "night",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "fog/week_1/night/5.webp",
+   "fog/week_3/night/5.webp"
+  ],
+  "place": null,
+  "seen": "A traffic light at night in thick fog with all three lamps lit at once — red, amber and green — each throwing a huge coloured halo into the mist, and all three colours smeared in long reflections down the wet road below. A street lamp and a street-name sign far off on the left, kerb, tussock grass, empty road.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_1/night/7.webp",
+  "hash": "c2a03f49e81e",
+  "condition": "fog",
+  "time": "night",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "fog/week_1/night/7.webp",
+   "fog/week_3/night/7.webp"
+  ],
+  "place": null,
+  "seen": "A man in a long dark overcoat walking down the middle of an empty wet suburban road at night in fog, lit from behind by one street lamp blooming hugely in the mist and throwing his long shadow towards camera. White boundary walls and gate pillars either side, a small lit garden lamp, a tree dissolving.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/dawn/1.webp",
+  "hash": "13fa1ba0ce60",
+  "condition": "fog",
+  "time": "dawn",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "fog/week_2/dawn/1.webp",
+   "fog/week_4/dawn/1.webp"
+  ],
+  "place": null,
+  "seen": "A red dirt farm road running away into fog at sunrise with a long avenue of white-trunked gums leaning over it on the right, back-lit gold. Dewy grass verge on the left, a wire fence, and a white gabled farmhouse just visible in the mist. Everything down the road dissolves into pale gold and white.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/dawn/3.webp",
+  "hash": "8ea1dc6bec6a",
+  "condition": "fog",
+  "time": "dawn",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "fog/week_2/dawn/3.webp",
+   "fog/week_4/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "Three big-horned Nguni cows standing in a low bank of fog on a dewy green hillside at sunrise, looking straight at camera, their bodies half swallowed by the mist. A post-and-rail fence running down the right, rolling green hills and a whole valley full of fog behind them, gold sunrise light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/day/1.webp",
+  "hash": "36972a49b9e6",
+  "condition": "fog",
+  "time": "day",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "fog/week_2/day/1.webp"
+  ],
+  "place": null,
+  "seen": "An empty club rugby field in fog. Two sets of white posts, the near one clear and the far one a ghost. Mown green pitch, houses and trees dissolving along the far boundary, a pale patch where the sun is trying. Nobody on it.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/day/6.webp",
+  "hash": "62480343c313",
+  "condition": "fog",
+  "time": "day",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "fog/week_2/day/6.webp"
+  ],
+  "place": null,
+  "seen": "Inside a car. A man in a black puffer leaning forward in the driver's seat peering hard through the windscreen, mouth slightly open in concentration. A phone in a dashboard mount showing a blue route line on white. Beyond the glass, a wall of grey-white fog with a faint verge just visible. Rear-view mirror, steering wheel.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/dusk/1.webp",
+  "hash": "b5837596744c",
+  "condition": "fog",
+  "time": "dusk",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "fog/week_2/dusk/1.webp",
+   "fog/week_4/dusk/1.webp"
+  ],
+  "place": null,
+  "seen": "Bo-Kaap at dusk in fog. An older man in a beanie and patterned jumper on his yellow house's front step, watering potted plants on the wall with a blue watering can. Wet cobbles glowing gold from the lamps, coral and turquoise houses down the hill each with a lit wall lantern, and the whole city below dissolved into purple-pink fog with scattered lights.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/dusk/3.webp",
+  "hash": "5cd228859e14",
+  "condition": "fog",
+  "time": "dusk",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "fog/week_2/dusk/3.webp",
+   "fog/week_4/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "A couple walking their bicycles side by side down a wet leaf-strewn brick avenue in fog at dusk, laughing at each other. A receding row of ornate street lamps glowing gold down the left under big oaks, soaked autumn leaves everywhere on the paving, and a white Cape Dutch gabled building with lit windows on the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/dusk/7.webp",
+  "hash": "838bd4824615",
+  "condition": "fog",
+  "time": "dusk",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "fog/week_2/dusk/7.webp",
+   "fog/week_4/dusk/7.webp"
+  ],
+  "place": null,
+  "seen": "A wooden jetty running out into a flat misty harbour at dusk, small solar bollard lights glowing along it. Half a dozen yachts at anchor dissolving into the fog with their mast lights faint. On the right a lit waterfront restaurant deck with tables and a potted shrub, warm light spilling onto the water. An oystercatcher walking on the wet sand in the foreground.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/night/2.webp",
+  "hash": "0467a4574c0b",
+  "condition": "fog",
+  "time": "night",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "fog/week_2/night/2.webp",
+   "fog/week_4/night/2.webp"
+  ],
+  "place": null,
+  "seen": "A woman wrapped in a thick grey blanket standing on an apartment balcony at night, leaning on the glass balustrade holding a steaming mug in both hands, headphones round her neck, smiling faintly. Beyond her, dense fog with two street lamps glowing as soft orbs far below. Behind her through the sliding door, a warm lamp-lit lounge.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_2/night/4.webp",
+  "hash": "7acec82c9b6f",
+  "condition": "fog",
+  "time": "night",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "fog/week_2/night/4.webp",
+   "fog/week_4/night/4.webp"
+  ],
+  "place": null,
+  "seen": "A young couple walking a golden retriever down the middle of a wet suburban road at night in fog, everything bathed in warm sodium-orange from a street lamp behind them so the fog itself glows amber. On the left a cream Art Deco block with curved balconies, porthole windows and warm-lit flats. Bare trees on the right, a second lamp further off.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_3/day/2.webp",
+  "hash": "84811d2b9372",
+  "condition": "fog",
+  "time": "day",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "fog/week_3/day/2.webp"
+  ],
+  "place": null,
+  "seen": "A woman in a patterned sherpa fleece standing in the middle of a suburban road in fog, turned back and smiling down at a taut dog lead going off to the right — the dog itself completely invisible, swallowed by the white. Bare trees, houses, a street lamp and power pole, wet road.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_3/day/7.webp",
+  "hash": "dd6b06e34d3e",
+  "condition": "fog",
+  "time": "day",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "fog/week_3/day/7.webp"
+  ],
+  "place": null,
+  "seen": "A middle-aged man in a grey towelling gown and slippers, seen from behind, wheeling a black bin down a wet brick driveway into thick fog. A red-brick house with a tiled roof on the left, clipped topiary balls along a brick wall, a white palisade gate, and the street beyond completely gone into white.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "fog/week_4/day/1.webp",
+  "hash": "541778f8c617",
+  "condition": "fog",
+  "time": "day",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "fog/week_4/day/1.webp"
+  ],
+  "place": null,
+  "seen": "Looking down over a suburb of tiled and corrugated roofs with fog lying between the trees and houses in golden morning light, the far half of the suburb dissolved into glowing white. A jacaranda in purple flower bottom left, a white palisade gate and boundary wall in the foreground, a blue-grey roof and garage door.",
+  "alreadyKept": [],
+  "need": 3
+ }
+]

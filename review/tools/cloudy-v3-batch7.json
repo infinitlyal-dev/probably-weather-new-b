@@ -1,0 +1,46 @@
+{
+ "bucket": "cloudy",
+ "batch": 7,
+ "images": [
+  {
+   "image": "cloudy/week_2/dusk/6.webp",
+   "seen": "Suburban rooftops bristling with old TV aerials at dusk, grey cloud with soft pink underlight, a few windows glowing warm. Thursday.",
+   "lines": [
+    "The clouds took the sunset and left the suburb the pink change.",
+    "The aerials have the best view of a sky doing its quiet closing number.",
+    "A grey dusk brings the evening forward, and the windows have already agreed."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/dusk/7.webp",
+   "seen": "A lone braai stand and wooden picnic table on cracked dry veld outside town, charcoal bag on the table, huge dark cloud deck with one orange band at the horizon. Friday.",
+   "lines": [
+    "The charcoal is out, the sky is undecided, and neither is backing down.",
+    "That cloud has been rehearsing all afternoon and still hasn't said its line.",
+    "The horizon kept one strip of orange as proof the sun was here."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/night/4.webp",
+   "seen": "A man in a puffer jacket and headphones reclining on a rooftop deckchair at night, the overcast sky glowing orange with the city's light. Sunday.",
+   "lines": [
+    "The cloud is holding the city's glow like a lampshade tonight.",
+    "Overcast at night keeps the warmth in, and somebody is out here using it.",
+    "No stars on offer tonight, so the city is providing its own."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/night/5.webp",
+   "seen": "Three friends wrapped in blankets around a lantern on a stone patio at night, wine and snacks on the table, pitch-dark heavy cloud over the valley. Saturday.",
+   "lines": [
+    "The sky brought nothing tonight, so the lantern is carrying the whole evening.",
+    "Blankets outside in the dark: the evening is cold, the company is not.",
+    "Not one star made it through that lid, and nobody has noticed yet."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

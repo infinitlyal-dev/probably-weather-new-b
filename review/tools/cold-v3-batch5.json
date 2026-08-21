@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 5,
+ "images": [
+  {
+   "image": "cold/week_2/day/4.webp",
+   "seen": "A family of four squashed on the couch under one big brown blanket, arms folded, while the dog lies stretched out in the single patch of sunlight on the tiles. Sunday.",
+   "lines": [
+    "One patch of sun came into this lounge and the dog got there first.",
+    "Four people share the blanket; the dog negotiated a private sunbeam.",
+    "Winter maths: one blanket, four opinions, and a dog holding the only warm square."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_2/day/5.webp",
+   "seen": "A man in a beanie pouring kettle water over his Polo's frozen windscreen, steam billowing, misty grey morning over the estate wall. Wednesday.",
+   "lines": [
+    "The morning's second kettle has nothing to do with tea.",
+    "Frost thick enough that the Polo gets a hot drink before he does.",
+    "Steam over the windscreen at seven means the night dipped properly below freezing."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_2/dusk/1.webp",
+   "seen": "A covered stoep at dusk under heavy cold cloud — lantern lit, wet paving, steaming mug on a stool, blanket over the chair, shoes off at the door. Thursday.",
+   "lines": [
+    "The mug is out, the shoes are off, and the cold is being watched from cover.",
+    "That sky has been threatening since lunch and the stoep called its bluff.",
+    "Steam off the coffee, cold on the air — the stoep is exactly between them."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_2/dusk/3.webp",
+   "seen": "A misty grey beach at dusk, the mountain lost in low cloud, flat cold sea and empty wet sand. Wednesday.",
+   "lines": [
+    "The mountain is in there somewhere, wrapped up for the winter.",
+    "The beach has gone to one colour, and it is the cold one.",
+    "Nobody's footprints on that sand today; the cold is keeping its beach to itself."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

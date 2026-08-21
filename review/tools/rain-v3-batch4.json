@@ -1,0 +1,46 @@
+{
+ "bucket": "rain",
+ "batch": 4,
+ "images": [
+  {
+   "image": "rain/week_2/dawn/2.webp",
+   "seen": "A Karoo farmhouse in falling rain at golden sunrise, the windpomp spinning, water running down the two-track road, stoep chairs facing the weather. Friday.",
+   "lines": [
+    "Rain out here is an event; the whole veld will smell of it by seven.",
+    "The road is running like a river and nobody here is complaining.",
+    "This is the rain the stoep chairs have been facing all year."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_2/dawn/5.webp",
+   "seen": "A mother and daughter in school uniform sharing a big navy umbrella at the school gate in steady rain, wet paving reflecting them. Wednesday.",
+   "lines": [
+    "The umbrella is doing its first shift of the day at the school gate.",
+    "The last two metres to the gate are the wettest of the whole trip.",
+    "Rain on a school morning slows everything down except the bell."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_2/dawn/6.webp",
+   "seen": "A flooded farm two-track at a locked gate, windpomp and yellow farmhouse beyond, storm clearing into sunrise, raindrop rings on the puddle. Thursday.",
+   "lines": [
+    "The puddle has rings on it, which means this is not finished.",
+    "The road to the house is currently a mirror with a gate across it.",
+    "One night of proper rain and the driveway has joined the water table."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_2/day/1.webp",
+   "seen": "A construction worker leaning on his spade in pouring rain, water streaming off his hard hat, rebar and city towers grey behind him. Monday.",
+   "lines": [
+    "The site turned to mud an hour ago and the shift goes on anyway.",
+    "Rain on a building site: everything gets heavier and nobody gets softer.",
+    "The hard hat has become a gutter and the work has not stopped once."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

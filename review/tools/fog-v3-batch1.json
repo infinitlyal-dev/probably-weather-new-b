@@ -1,0 +1,46 @@
+{
+ "bucket": "fog",
+ "batch": 1,
+ "images": [
+  {
+   "image": "fog/week_1/dawn/1.webp",
+   "seen": "A Nguni cow facing the camera on dew-heavy pasture, the rest of the herd and the trees fading into thick white fog. Tuesday.",
+   "lines": [
+    "The herd is all here; the fog is just rationing them one at a time.",
+    "Visibility is down to one cow.",
+    "The farm goes on past that white wall; the cows are taking that on faith."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/dawn/3.webp",
+   "seen": "A suburban street at blue pre-dawn with fog thickening down the road, three amber streetlamps fading into it, wet tar. Friday.",
+   "lines": [
+    "Three streetlights in and the street gives up; the fog holds the rest.",
+    "The fog rolled in at three and started deleting the neighbourhood from the far end.",
+    "The streetlights are trying their best."
+   ],
+   "rescue": [null, null, "witty:fog#14"]
+  },
+  {
+   "image": "fog/week_1/dawn/4.webp",
+   "seen": "A modern house at dawn with one warm-lit window cutting a long beam through dense fog, dark garden below. Wednesday.",
+   "lines": [
+    "One lit window is taking on the whole fog, and losing beautifully.",
+    "The fog is thick enough to hold a beam of kitchen light like a solid object.",
+    "The morning forgot to render."
+   ],
+   "rescue": [null, null, "witty:fog#37"]
+  },
+  {
+   "image": "fog/week_1/dawn/5.webp",
+   "seen": "A schoolboy in a hi-vis vest and backpack waiting at the curb, the street swallowed by fog, one faint pair of headlights deep in the mist. Monday.",
+   "lines": [
+    "The hi-vis is doing exactly what it was bought for this morning.",
+    "Those headlights have been 'almost here' for two full minutes of fog.",
+    "Fog like this turns every school run into an act of faith and reflective tape."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

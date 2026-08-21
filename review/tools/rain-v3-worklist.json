@@ -1,0 +1,552 @@
+[
+ {
+  "image": "rain/week_1/dawn/2.webp",
+  "hash": "e5b2e8ac2654",
+  "condition": "rain",
+  "time": "dawn",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "rain/week_1/dawn/2.webp",
+   "rain/week_3/dawn/2.webp"
+  ],
+  "place": null,
+  "seen": "Two young schoolchildren in bucket hats, raincoats and gumboots with backpacks, standing on a wet pavement sharing one umbrella — beside a completely empty glass bus shelter with a dry bench in it. Wet suburban street, puddles, houses, flat grey sky, rain falling.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/dawn/3.webp",
+  "hash": "9e75b001c7c5",
+  "condition": "rain",
+  "time": "dawn",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "rain/week_1/dawn/3.webp",
+   "rain/week_3/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "From inside a car, through a rain-covered windscreen with the wiper mid-sweep: a Cape Town street of Victorian buildings with cast-iron balconies, Table Mountain under heavy cloud behind, stopped traffic with red tail lights and oncoming headlights smeared across wet tar, pedestrians with umbrellas on the pavement. Dashboard in the foreground.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/dawn/6.webp",
+  "hash": "73567b0c612e",
+  "condition": "rain",
+  "time": "dawn",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "rain/week_1/dawn/6.webp",
+   "rain/week_3/dawn/6.webp"
+  ],
+  "place": null,
+  "seen": "A jacaranda-lined suburban street just after rain at sunrise — the road glossy wet and reflecting a low gold sun, steam lifting off the tar, purple blossom fallen along the kerb and floating in the wet. Deep blue sky with gold-lit cloud on the right. One runner in a hi-vis vest going away up the middle of the road.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/dawn/7.webp",
+  "hash": "206f0a768ec9",
+  "condition": "rain",
+  "time": "dawn",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "rain/week_1/dawn/7.webp",
+   "rain/week_3/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "Inside a concrete house. A long floor-to-ceiling glass wall completely covered in running rain with a lawn and hedge blurred green behind it. One stoneware mug of black coffee standing on the wide concrete ledge. Further along, an open corner showing a soaked patio with an outdoor table and chairs, a potted plant, and a pale couch on a rug. Nobody in the frame.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/day/1.webp",
+  "hash": "d878b96a3f71",
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "tue",
+  "paths": [
+   "rain/week_1/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A street in heavy rain. A woman in a navy raincoat walking towards camera, wincing, holding up an umbrella that has been blown completely inside out and folded backwards. Three schoolchildren in pale blue shirts and grey uniforms around her, all laughing and stomping through the flooded road sending water up. Low houses, wet road, flat white sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/day/2.webp",
+  "hash": "2b750515575e",
+  "condition": "rain",
+  "time": "day",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "rain/week_1/day/2.webp"
+  ],
+  "place": null,
+  "seen": "A completely flooded suburban street with the street sign Water Stilte on the corner. A man in a yellow raincoat and boardshorts is water-skiing barefoot on two wooden skis down the flooded road behind a tow rope, throwing up a wake. On the pavement behind him six or seven neighbours stand under umbrellas watching and filming. Face-brick houses, bare winter trees, brown floodwater to the walls.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/day/3.webp",
+  "hash": "00a672556998",
+  "condition": "rain",
+  "time": "day",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "rain/week_1/day/3.webp"
+  ],
+  "place": null,
+  "seen": "Six children in bright raincoats and gumboots holding hands in a line, jumping together into a big brown puddle in an estate street, all shouting, water going everywhere. Face-brick and plastered houses with green boundary walls, wet road, heavy grey cloud.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/dusk/1.webp",
+  "hash": "71fdebcd3deb",
+  "condition": "rain",
+  "time": "dusk",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "rain/week_1/dusk/1.webp",
+   "rain/week_3/dusk/1.webp"
+  ],
+  "place": null,
+  "seen": "A road cyclist in soaked kit stopped at a red traffic light in pouring rain at dusk, water pouring off his helmet in ropes down his face, expression of comic despair. Beside him a woman leans out of a dry car window howling with laughter, hand on her forehead. Wet tar reflecting red, jacarandas, purple-pink dusk sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/dusk/2.webp",
+  "hash": "5f935cb18f17",
+  "condition": "rain",
+  "time": "dusk",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "rain/week_1/dusk/2.webp",
+   "rain/week_3/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "Bo-Kaap in the rain at dusk. An older man in a flat cap and dark shirt walking down the wet cobbled street holding a very small black umbrella, looking straight at camera, his shirt already soaked through. Turquoise, pink, yellow and green houses either side with warm-lit windows and porch lamps, Lion's Head silhouetted against a burning gold and black sky, cobbles reflecting the lamps.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/dusk/5.webp",
+  "hash": "e95e8a2f22f0",
+  "condition": "rain",
+  "time": "dusk",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "rain/week_1/dusk/5.webp",
+   "rain/week_3/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "Looking out through open sliding doors onto a small flat balcony in the rain, with the Hillbrow Tower and the Johannesburg skyline under heavy cloud and a gold break behind. A big terracotta pot of agapanthus in full purple flower stands in the middle of the balcony, the tiled floor completely under standing water with rain dimpling it. Rain streaming down the glass on the left.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/night/3.webp",
+  "hash": "d28204abf829",
+  "condition": "rain",
+  "time": "night",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "rain/week_1/night/3.webp",
+   "rain/week_3/night/3.webp"
+  ],
+  "place": null,
+  "seen": "A Cape Town street at night in heavy rain, neon signs down the right — red DELUXE COFFEE, blue THE GIN BAR, gold CAPE TOWN BOOKS. Wet cobbled road running away between Victorian buildings, street lights, the mountain looming dark behind. The street is completely empty except one car far off, neon streaked long across the wet tar.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/dawn/2.webp",
+  "hash": "7bd5758fb7b5",
+  "condition": "rain",
+  "time": "dawn",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "rain/week_2/dawn/2.webp",
+   "rain/week_4/dawn/2.webp"
+  ],
+  "place": null,
+  "seen": "A Karoo farmstead at sunrise in rain — a low whitewashed cottage with a corrugated roof and a wide stoep with chairs, one warm-lit yellow window, a windpomp turning fast beside it and a green water tank. Rain sheeting across the veld from the left with gold sun breaking underneath, red earth and scrub, and a dirt track in the foreground running with water and reflecting the gold.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/dawn/5.webp",
+  "hash": "80770bf13004",
+  "condition": "rain",
+  "time": "dawn",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "rain/week_2/dawn/5.webp",
+   "rain/week_4/dawn/5.webp"
+  ],
+  "place": null,
+  "seen": "Outside a school gate in the rain at dawn. A mother in a cream jumper with a backpack over her shoulder holds a big black umbrella over her daughter in navy school uniform, the two looking at each other and smiling. A grey car pulled up at the kerb, wet paving reflecting, a green boundary wall and school buildings behind with a porch light on, pink dawn cloud above.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/dawn/6.webp",
+  "hash": "5526989179bd",
+  "condition": "rain",
+  "time": "dawn",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "rain/week_2/dawn/6.webp",
+   "rain/week_4/dawn/6.webp"
+  ],
+  "place": null,
+  "seen": "A farm road at sunrise in rain. A steel gate closed across the track, a windpomp on the left, a small yellow-ochre farmhouse with a corrugated roof and stoep, a galvanised shed on the right, dry gold grass either side — and the track in the foreground completely under a sheet of water perfectly reflecting the gate, the windpomp and the gold sky, with rain dimpling it.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/day/1.webp",
+  "hash": "fe838c8901f7",
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "mon",
+  "paths": [
+   "rain/week_2/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A construction worker in a white hard hat, hi-vis vest and soaked overalls leaning on the handle of a shovel, head down, eyes closed, water pouring off the brim of his helmet in a rope. Behind him a half-built concrete tower in scaffolding and sheeting, a yellow crane, rebar columns rising out of a flooded slab, and two glass towers in the mist.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/day/4.webp",
+  "hash": "e7547cfdee94",
+  "condition": "rain",
+  "time": "day",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "rain/week_2/day/4.webp"
+  ],
+  "place": null,
+  "seen": "Low angle on a flooded paved patio. A ginger cat sitting hunched and damp under a metal patio chair, ears back, looking sideways with pure grievance, reflected in the sheet of water covering the paving. Corrugated fence, aloes and succulents, a table edge top right, heavy grey cloud, rain ringing the water.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/day/5.webp",
+  "hash": "3bd49d0acf2b",
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "wed",
+  "paths": [
+   "rain/week_2/day/5.webp"
+  ],
+  "place": null,
+  "seen": "A flooded suburban street, brown water right across the road up over the kerbs and onto the lawns. A silver station wagon driving through it pushing a bow wave, water over the wheel arches. Big gum trees, red-brick houses with corrugated roofs, another car parked and half submerged on the left, heavy purple-grey cloud.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/day/6.webp",
+  "hash": "8ce35385e048",
+  "condition": "rain",
+  "time": "day",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "rain/week_2/day/6.webp"
+  ],
+  "place": null,
+  "seen": "From the back seat of a car over the driver's shoulder: a woman with a bun in a cream jumper, one hand on the wheel, looking ahead through a windscreen almost opaque with rain. Beyond the glass a solid wall of stopped traffic with brake lights smeared red, a crane and palms dissolved by the water on the glass. The wiper is at the top of its arc.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/dusk/2.webp",
+  "hash": "f7f51acb22c9",
+  "condition": "rain",
+  "time": "dusk",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "rain/week_2/dusk/2.webp",
+   "rain/week_4/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "A man in an olive jacket with a backpack standing under the lit porch of a modest suburban house at dusk in heavy rain, a closed navy umbrella at his side, looking off down the road. Warm ceiling light above him, dark security gate, a potted plant, water pouring off the tiled roof, purple dusk sky, wet street reflecting the porch light in a long gold streak, one car going past with headlights on.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/dusk/3.webp",
+  "hash": "09641df1432a",
+  "condition": "rain",
+  "time": "dusk",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "rain/week_2/dusk/3.webp",
+   "rain/week_4/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "From inside a car in a traffic jam on a Cape Town highway at dusk in the rain, the mountain under low cloud on the left. Two lanes of stopped traffic with brake lights reflected in long red streaks on the wet tar, street lights on, billboards, the city climbing the slopes behind.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/dusk/4.webp",
+  "hash": "b4ee9d16720e",
+  "condition": "rain",
+  "time": "dusk",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "rain/week_2/dusk/4.webp",
+   "rain/week_4/dusk/4.webp"
+  ],
+  "place": null,
+  "seen": "The tiled entrance hall of a suburban house at dusk, front door wide open onto a wet street. A man in a soaked white business shirt and dark trousers, shoulders down, holding out the sodden lining of his suit jacket and looking at the puddle spreading across the tiles at his feet. Staircase with wrought-iron balustrade on the left, console table and vase on the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/dusk/6.webp",
+  "hash": "abf80e59bae9",
+  "condition": "rain",
+  "time": "dusk",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "rain/week_2/dusk/6.webp",
+   "rain/week_4/dusk/6.webp"
+  ],
+  "place": null,
+  "seen": "Inside an older car at dusk in rain. A young woman in a black puffer jacket in the driver's seat, elbow on the door and chin on her hand, staring out through the side window with a flat tired expression. Rain running down the windscreen and side glass, wipers parked, brake lights and street lights blurred outside.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/night/4.webp",
+  "hash": "c8df884e9ec0",
+  "condition": "rain",
+  "time": "night",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "rain/week_2/night/4.webp",
+   "rain/week_4/night/4.webp"
+  ],
+  "place": null,
+  "seen": "Inside a car at night in rain. A man in a dark jacket and cap driving with both hands on the wheel, dashboard dials glowing orange, looking hard ahead. Rain streaming down the windscreen with the wiper mid-sweep, street lights and blurred head and brake lights outside on a wet road.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_2/night/6.webp",
+  "hash": "19ddc2f8afd3",
+  "condition": "rain",
+  "time": "night",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "rain/week_2/night/6.webp",
+   "rain/week_4/night/6.webp"
+  ],
+  "place": null,
+  "seen": "A wet suburban street at night. Lying in the gutter, half in the running water, a completely destroyed black umbrella — ribs broken and splayed, fabric torn back. Above it a clipped hedge, a mown verge, a white boundary wall lit by a spotlight and a white house with balconies and one lit blue window. Leaves in the water.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_3/day/1.webp",
+  "hash": "d86d4f5699c2",
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "thu",
+  "paths": [
+   "rain/week_3/day/1.webp"
+  ],
+  "place": null,
+  "seen": "Outside a primary school gate in the rain. A man in a hi-vis vest standing with both arms spread wide holding back seven children in navy raincoats and gumboots at the kerb, all of them leaning forward laughing and pointing at a wide puddle covering the road in front of them. Wet tar, big tree, green gate pillars, school sign on the wall.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_3/day/3.webp",
+  "hash": "e54bbf2b56b2",
+  "condition": "rain",
+  "time": "day",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "rain/week_3/day/3.webp"
+  ],
+  "place": null,
+  "seen": "A woman in a navy business suit and heels laughing and half-running across a flooded city street between colonial buildings, holding a folded newspaper over her head as a roof, one heel lifting out of the water mid-stride. Blurred pedestrians with umbrellas on the pavement behind, grey rain sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_3/day/5.webp",
+  "hash": "d8d16083a690",
+  "condition": "rain",
+  "time": "day",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "rain/week_3/day/5.webp"
+  ],
+  "place": null,
+  "seen": "A small fishing harbour in bad weather. Two people in yellow and red raincoats standing on the harbour wall watching an enormous white wave explode over the breakwater right beside them. Below, a raft of red, blue and white wooden fishing boats moored up. Behind, a hillside of pastel cottages with their lights on under heavy grey cloud with one gold break.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_3/day/7.webp",
+  "hash": "a0ef2720c507",
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "fri",
+  "paths": [
+   "rain/week_3/day/7.webp"
+  ],
+  "place": null,
+  "seen": "Two men in business clothes half-running through a wet office car park under one small grey umbrella, both laughing; one in a light blue shirt holding the umbrella, the other in a navy blazer with his shirt untucked and clearly soaked, arm across his colleague's back. Brick office building with a lit entrance behind, parked cars, wet tar, yellow parking lines.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_4/day/2.webp",
+  "hash": "057e8c9e5039",
+  "condition": "rain",
+  "time": "day",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "rain/week_4/day/2.webp"
+  ],
+  "place": null,
+  "seen": "Looking out from just inside an open door onto a wet tiled stoep in the rain. A pair of muddy soccer boots on the coir doormat and a navy soccer jersey dropped in a heap on the wet tiles behind them. Beyond, a soaked garden with palms and a wrought-iron patio set. Inside on the right, a warm lamp-lit lounge.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_4/day/3.webp",
+  "hash": "c9050c0a05e5",
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "sun",
+  "paths": [
+   "rain/week_4/day/3.webp"
+  ],
+  "place": null,
+  "seen": "A farm werf in heavy rain — flagstone paving running with a sheet of water, a big terracotta pot of ferns and succulents in the middle overflowing with water pouring out over its rim, more pots along a covered stoep with a wooden bench and table, corrugated roofs both sides and rain sheeting down between them.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_4/day/4.webp",
+  "hash": "c9c6fd784b69",
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "sat",
+  "paths": [
+   "rain/week_4/day/4.webp"
+  ],
+  "place": null,
+  "seen": "Looking down a stone-walled farmhouse verandah with a corrugated lean-to pouring water off its edge. A pair of muddy green gumboots standing on the terracotta tiles beside a wooden stable door, and a trail of muddy bootprints leading across the tiles from the garden to the doormat. Outside, a soaked aloe garden in heavy rain.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "rain/week_1/night/2.webp",
+  "hash": "86be0fc65b9e",
+  "condition": "rain",
+  "time": "night",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "rain/week_1/night/2.webp",
+   "rain/week_3/night/2.webp"
+  ],
+  "place": "Durban",
+  "seen": "Durban suburb at night. Streetlight with rain streaking through it, a big frangipani in white flower leaning over a low plastered wall, one lit window behind burglar bars, wet red stoep steps, wet paving.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "rain/week_1/night/4.webp",
+  "hash": "f8781ec0eb86",
+  "condition": "rain",
+  "time": "night",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "rain/week_1/night/4.webp",
+   "rain/week_3/night/4.webp"
+  ],
+  "place": "Johannesburg",
+  "seen": "Joburg street at night in steady rain. Stormwater running full along the gutter, orange streetlight, a jacaranda in purple bloom dripping overhead, face-brick wall with electric fence, wet tarmac.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "rain/week_1/night/5.webp",
+  "hash": "504e55301184",
+  "condition": "rain",
+  "time": "night",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "rain/week_1/night/5.webp",
+   "rain/week_3/night/5.webp"
+  ],
+  "place": null,
+  "seen": "A swimming pool at night in heavy rain, lit turquoise from inside, the whole surface dimpled and boiling with drops. Palm silhouette, precast wall, wet paving all round.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "rain/week_1/night/6.webp",
+  "hash": "a1e2fed78146",
+  "condition": "rain",
+  "time": "night",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "rain/week_1/night/6.webp",
+   "rain/week_3/night/6.webp"
+  ],
+  "place": null,
+  "seen": "Seafront car park at night in hard rain. Empty marked parking bays shining wet, one streetlight, a furled umbrella standing against the railing, waves exploding over the sea wall behind.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ }
+]

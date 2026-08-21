@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 6,
+ "images": [
+  {
+   "image": "storm/week_2/day/6.webp",
+   "seen": "A hadeda walking the dry verge of an empty Karoo-dorp street, white flat-roofed houses under an ominous dark storm sky. Monday.",
+   "lines": [
+    "The street cleared out early; only the hadeda is finishing its rounds.",
+    "The sky is stacking up over the dorp and even the palm has gone still.",
+    "Even the hadedas are quiet."
+   ],
+   "rescue": [null, null, "witty:storm#3"]
+  },
+  {
+   "image": "storm/week_2/dusk/4.webp",
+   "seen": "An emergency vehicle with its lights on in a wet estate street strewn with downed branches, storm clearing into sunset behind. Saturday.",
+   "lines": [
+    "The storm made one pass and left the street a week of gardening.",
+    "Branches down, lights on, storm gone: the after-party is all admin.",
+    "The sunset is back like nothing happened; the trees know otherwise."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/dusk/5.webp",
+   "seen": "A young man on a high balcony at dusk filming a double lightning strike over the city, rain beading on the glass railing. Tuesday.",
+   "lines": [
+    "Two strikes in one frame: the sky is doing his content for him.",
+    "Rain on the railing, lightning on the horizon, phone doing its best.",
+    "That strike will look half this size on the phone, and he knows it."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/night/1.webp",
+   "seen": "A boy wrapped in a fleece blanket at the bedroom window, watching a lightning bolt come down over the suburb at night. Wednesday.",
+   "lines": [
+    "First storm he has stayed up for, and the sky is making it count.",
+    "Thunder is scary from bed and magnificent from a window; he moved.",
+    "The best television in the house is currently the weather."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

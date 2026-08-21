@@ -1,0 +1,46 @@
+{
+ "bucket": "heat",
+ "batch": 2,
+ "images": [
+  {
+   "image": "heat/week_1/dusk/6.webp",
+   "seen": "A woman with a glass of white wine on the stone stoep steps of a Karoo farmhouse at a blazing orange sunset, windpomp silhouetted on the plain. Sunday.",
+   "lines": [
+    "The day finally dropped below thirty and the stoep is collecting the reward.",
+    "A sky like that is what forty degrees looks like on its way out.",
+    "First sittable hour since breakfast, and it brought colours."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "heat/week_2/dusk/1.webp",
+   "seen": "Three friends walking the palm-lined beachfront promenade at sunset, soft-serve cones already melting over their hands. Friday.",
+   "lines": [
+    "The soft-serve is losing a race it was never going to win.",
+    "The promenade fills up the minute the temperature becomes friendly again.",
+    "Still warm enough at sunset that the ice cream is doing the sweating."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "heat/week_1/night/1.webp",
+   "seen": "A sweating glass of ice water standing on the promenade wall at night, bicycles leaning on the rail, a family strolling under the streetlights. Sunday.",
+   "lines": [
+    "The glass is sweating at nine at night, which tells you about today.",
+    "The whole promenade came out after dark, when the town becomes walkable again.",
+    "Night has not cooled anything yet; even the water is perspiring."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "heat/week_1/night/2.webp",
+   "seen": "A family asleep on mattresses laid out on the stoep under a huge Milky Way, one boy still awake watching a bat cross the stars. Friday.",
+   "lines": [
+    "Too hot for walls tonight: the whole family moved the bedroom outside.",
+    "The house held the day's heat, so the beds came out to the stars.",
+    "One member of the sleep-out is doing exactly none of the sleeping."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

@@ -1,0 +1,207 @@
+[
+ {
+  "image": "heat/week_2/dusk/3.webp",
+  "hash": "555f76c5594f",
+  "condition": "heat",
+  "time": "dusk",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "heat/week_2/dusk/3.webp",
+   "heat/week_4/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "A roadside farm stall at sunset. A woman in a cream tee and khaki shorts carrying a big watermelon under one arm to her car. A small green and yellow building with a corrugated lean-to: wooden crates of watermelons, spanspek, tomatoes and apples, and a big glass dispenser of iced water with a tap and glasses on the counter. Empty tar road, dry veld and hills, orange-pink sunset.",
+  "alreadyKept": [
+   "Nobody drives past a stall like that on a day like this."
+  ],
+  "need": 2
+ },
+ {
+  "image": "heat/week_2/dusk/7.webp",
+  "hash": "3e88aef1fb06",
+  "condition": "heat",
+  "time": "dusk",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "heat/week_2/dusk/7.webp",
+   "heat/week_4/dusk/7.webp"
+  ],
+  "place": null,
+  "seen": "A modern white house's back lawn at golden sunset. A man in a grey tee and shorts and a small girl in a purple swimming costume standing in a lawn sprinkler's spray with their arms out, both laughing, drenched, backlit so every droplet glows gold. Agapanthus in purple flower along the border, a timber deck in the foreground, warm-lit interior behind, pines beyond.",
+  "alreadyKept": [
+   "That grass has been too hot to stand on since about eleven this morning.",
+   "Thursday, and this is the first time all day either of them has been cool."
+  ],
+  "need": 1
+ },
+ {
+  "image": "heat/week_2/day/5.webp",
+  "hash": "36881ce76889",
+  "condition": "heat",
+  "time": "day",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "heat/week_2/day/5.webp"
+  ],
+  "place": null,
+  "seen": "Driver's view down a dead-straight road through dry scrub. The dashboard reads 38 degrees in orange digits, dusty dash, a worn cloth steering-wheel cover, white bleached sky.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_4/day/7.webp",
+  "hash": "0cc1648cbc13",
+  "condition": "heat",
+  "time": "day",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "heat/week_4/day/7.webp"
+  ],
+  "place": null,
+  "seen": "Five children running through a lawn sprinkler in a bright garden, two adults watching from the shade of the stoep, modern white house behind.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_1/dusk/6.webp",
+  "hash": "9728bed72ec6",
+  "condition": "heat",
+  "time": "dusk",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "heat/week_1/dusk/6.webp",
+   "heat/week_3/dusk/6.webp"
+  ],
+  "place": null,
+  "seen": "Karoo farmhouse stoep at sunset. A woman sitting on the steps with a glass of white wine, a windpomp out on the left, flat-topped koppies on the horizon, a huge orange and purple sky.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_2/dusk/1.webp",
+  "hash": "93f4a43551af",
+  "condition": "heat",
+  "time": "dusk",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "heat/week_2/dusk/1.webp",
+   "heat/week_4/dusk/1.webp"
+  ],
+  "place": null,
+  "seen": "Seafront promenade at sunset. Three friends walking towards camera with soft-serve cones, palms and apartment blocks along the strip, joggers and a dog walker behind, long gold light, sun on the horizon.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_1/night/1.webp",
+  "hash": "ea333aeefd0d",
+  "condition": "heat",
+  "time": "night",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "heat/week_1/night/1.webp",
+   "heat/week_3/night/1.webp"
+  ],
+  "place": null,
+  "seen": "Seafront promenade at night. A tall glass of iced water standing on the sea wall in the foreground, two bicycles leaning on the railing, a furled umbrella, streetlights receding, a family walking, flat sea.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_1/night/2.webp",
+  "hash": "73f8b2781c4c",
+  "condition": "heat",
+  "time": "night",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "heat/week_1/night/2.webp",
+   "heat/week_3/night/2.webp"
+  ],
+  "place": null,
+  "seen": "A family asleep on mattresses laid out on a farmhouse stoep under an enormous Milky Way. Lit doorway behind them, one child still awake looking up, a bat crossing the sky.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_1/night/3.webp",
+  "hash": "706cd1220e10",
+  "condition": "heat",
+  "time": "night",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "heat/week_1/night/3.webp",
+   "heat/week_3/night/3.webp"
+  ],
+  "place": null,
+  "seen": "A balcony at night. Warm wall light, a white curtain billowing out of the open sliding door, a folding table with a jug of water and two glasses, a straw fan on the chair, palm fronds in the dark.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_1/night/4.webp",
+  "hash": "f2e76528eca3",
+  "condition": "heat",
+  "time": "night",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "heat/week_1/night/4.webp",
+   "heat/week_3/night/4.webp"
+  ],
+  "place": null,
+  "seen": "Bedroom at night. A pedestal fan front and centre, mosquito net over the bed, someone asleep, a bedside clock reading 2:00, a glass of water on the nightstand, warm light at the window.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_2/night/2.webp",
+  "hash": "87546db18e01",
+  "condition": "heat",
+  "time": "night",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "heat/week_2/night/2.webp",
+   "heat/week_4/night/2.webp"
+  ],
+  "place": null,
+  "seen": "Night pool party. Six adults in and around a lit swimming pool, festoon lights strung overhead, beers standing on the coping, a lit modern house and monstera behind.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "heat/week_2/night/6.webp",
+  "hash": "e62c00a72fb4",
+  "condition": "heat",
+  "time": "night",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "heat/week_2/night/6.webp",
+   "heat/week_4/night/6.webp"
+  ],
+  "place": null,
+  "seen": "A labrador lying flat out on cool bathroom tiles at night. Freestanding bath, towel on a rail, door ajar with warm light spilling through.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ }
+]

@@ -1,0 +1,36 @@
+{
+ "bucket": "cold",
+ "batch": 9,
+ "images": [
+  {
+   "image": "cold/week_4/day/5.webp",
+   "seen": "A huge boerboel sitting firmly on the doormat at the open sliding door, wet grey backyard and drizzle-speckled glass beyond. Tuesday.",
+   "lines": [
+    "The yard is wet, the air is cold, and security has suspended patrols.",
+    "Even the boerboel checked the weather and sat back down.",
+    "That is not a dog refusing a walk; that is a dog reading a forecast."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_4/dusk/2.webp",
+   "seen": "The Sea Point promenade after rain at a blazing pink sunset — wet brick reflecting the sky, walkers and joggers in beanies, a big white dog on a lead. Saturday.",
+   "lines": [
+    "The cold front left an hour ago and took the excuses with it.",
+    "Wet bricks doubling the sunset: the storm's apology, accepted by everybody out here.",
+    "Beanies plus sunset means the rain has moved on and the cold stayed."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_4/night/1.webp",
+   "seen": "Two men in beanies and puffer jackets braaiing at night on frost-dusted grass, Cape Dutch farmhouse and string lights behind, wine in hand. Saturday.",
+   "lines": [
+    "Frost on the lawn and wors on the grid: a Cape winter compromise.",
+    "Beanies on, fire lit, wine poured: the cold is now someone else's problem.",
+    "The braai is happening. The braai always happens. We just pull the chairs closer."
+   ],
+   "rescue": [null, null, "witty:cold-clear#27"]
+  }
+ ]
+}

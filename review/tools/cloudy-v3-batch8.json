@@ -1,0 +1,46 @@
+{
+ "bucket": "cloudy",
+ "batch": 8,
+ "images": [
+  {
+   "image": "cloudy/week_2/night/6.webp",
+   "seen": "A man in a beanie and scarf walking a small terrier along the Sea Point promenade at night, lampposts glowing, cloud pouring over Lion's Head, dark calm sea. Thursday.",
+   "lines": [
+    "The cloud is coming over the mountain like it pays rent here.",
+    "That cloud will be down on the streetlights before the walk is done.",
+    "Low cloud at night keeps the cold off the promenade, and the regulars know it."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_3/day/1.webp",
+   "seen": "A man in slops standing beside his mower on a half-mowed lawn, looking up at a heavy grey sky over the mountain, beer waiting on the patio table. Saturday.",
+   "lines": [
+    "Half a lawn mowed, and now the negotiation with the sky begins.",
+    "The sky is deciding whether the second half of that lawn happens today.",
+    "That look is a man asking the clouds for forty-five more minutes."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_3/day/3.webp",
+   "seen": "A woman jogging along the Umhlanga promenade past the whalebone pier arches, pearly overcast sky over a warm grey sea, her ponytail lifting in the breeze. Sunday.",
+   "lines": [
+    "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+    "The cloud is doing sunscreen duty this morning and the runners are cashing in.",
+    "A pearl-grey sky and a warm sea breeze: the coast's version of mild."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_3/day/4.webp",
+   "seen": "A man standing on his tiled roof beside new solar panels, hands on hips, giving a fully grey sky a skeptical look. Tuesday.",
+   "lines": [
+    "Panels installed, sun absent: the sky owes this roof an apology.",
+    "Grey from gutter to gutter, and every kilowatt up here is on standby.",
+    "The forecast said partly sunny; the sky went with fully committed grey."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

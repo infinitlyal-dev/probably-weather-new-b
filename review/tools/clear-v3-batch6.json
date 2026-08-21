@@ -1,0 +1,46 @@
+{
+ "bucket": "clear",
+ "batch": 6,
+ "images": [
+  {
+   "image": "clear/week_2/night/6.webp",
+   "seen": "A brass wall lantern glowing on a stucco wall at night, a big emperor moth and a cloud of insects at the light, aloes and palms in the dark garden, stars above. Monday.",
+   "lines": [
+    "Warm, still and clear: every insect in the province is at this one lamp.",
+    "Windows-open weather has arrived, and word has reached the moths.",
+    "Not a breath of wind, or that lantern would be having a quieter evening."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_2/night/7.webp",
+   "seen": "A backyard dinner party under strings of fairy lights, eight friends around a long wooden table, clear navy sky above the trees. Friday.",
+   "lines": [
+    "A Friday night warm enough that the table walked itself outside.",
+    "Nothing up there but stars, which is how supper ends up under them.",
+    "The evening is holding at exactly the temperature nobody talks about."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_3/day/1.webp",
+   "seen": "A kids' soccer team in white shirts sitting on a curb eating slap chips out of newspaper cones, low golden sun, long shadows, clear sky. Thursday.",
+   "lines": [
+    "The sun stayed out for the whole match and is hanging around for the chips.",
+    "Match played, chips out, and the sky never once threatened the fixture.",
+    "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_3/day/3.webp",
+   "seen": "A hadeda probing a flowerbed beside agapanthus in full bloom, deep blue summer sky, lawn and trees behind. Monday.",
+   "lines": [
+    "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
+    "The agapanthus open for exactly this kind of sky, and they got it.",
+    "Not a cloud to slow the sun, and the whole garden is making the most of it."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 6,
+ "images": [
+  {
+   "image": "cold/week_2/dusk/5.webp",
+   "seen": "A gloved hand holding a hot chocolate with marshmallows on a balcony at sunset, snow on Table Mountain and the Twelve Apostles across the bay, blanket on the lap. Friday.",
+   "lines": [
+    "Hot chocolate has been promoted to equipment tonight, and the view earned it.",
+    "Cape Town got Alps for one evening and the whole city is out on balconies.",
+    "The mountain wears white maybe twice a winter, and tonight is one of them."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_2/night/2.webp",
+   "seen": "A man on his wet doorstep at night under a starry sky, mug in hand, breath steaming in the porch light. Wednesday.",
+   "lines": [
+    "His breath is making better clouds than the sky managed all day.",
+    "Clear night, wet steps, visible breath: the frost is filling in its paperwork.",
+    "One last look at a sky that is about to get seriously cold."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_2/night/3.webp",
+   "seen": "A woman working late at her desk wrapped in a blanket, fingerless gloves on the keyboard, a hot water bottle in a knitted cover hanging on the chair, black night in the window. Thursday.",
+   "lines": [
+    "Fingerless gloves at a laptop: winter has entered the home office.",
+    "The house has one warm room after dark, and it is wherever the blanket is.",
+    "Hot water bottle is the real MVP today."
+   ],
+   "rescue": [null, null, "witty:cold#28"]
+  },
+  {
+   "image": "cold/week_2/night/5.webp",
+   "seen": "A couple wrapped in one blanket on a log beside a campfire, tent and camp chairs around them, the Milky Way huge over the Karoo. Friday.",
+   "lines": [
+    "A Karoo night trades warmth for stars, and they took the deal.",
+    "The fire handles the front; the blanket handles the back; the sky handles everything else.",
+    "Cold enough to share one blanket, clear enough to make it worth it."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

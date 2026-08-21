@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 1,
+ "images": [
+  {
+   "image": "storm/week_1/dawn/2.webp",
+   "seen": "Joburg highway gridlock under a massive purple storm, one lightning bolt over the skyline, wet lanes shining with brake lights. Monday.",
+   "lines": [
+    "Lightning over the skyline and brake lights all the way in: Joburg is up early.",
+    "The slow lane, the fast lane, and the sky lane — only one is moving.",
+    "Somewhere a weather reporter is living their best life."
+   ],
+   "rescue": [null, null, "witty:storm#22"]
+  },
+  {
+   "image": "storm/week_1/dawn/3.webp",
+   "seen": "A huge branched lightning strike over a modern estate street in rain, parked cars lit by the flash. Tuesday.",
+   "lines": [
+    "That one landed close enough to count the seconds on one hand.",
+    "The whole street went daylight for a quarter of a second.",
+    "Every dog in the suburb filed a report at the same instant."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/dawn/5.webp",
+   "seen": "Mammatus clouds glowing purple and pink over a windpomp and a sunflower field, orange horizon burning below. Wednesday.",
+   "lines": [
+    "Those bubble clouds are the storm's signature, written on the way out.",
+    "That is the back page of a storm, and it reads better than the front.",
+    "The windpomp has seen a thousand of these and still stopped to look."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/dawn/7.webp",
+   "seen": "A couple lying on the bedroom floor in soft morning light, coaxing a wide-eyed dachshund out from under the bed after the storm. Thursday.",
+   "lines": [
+    "The storm passed an hour ago; the news has not reached under the bed yet.",
+    "The sky has moved on. The dachshund is requesting written confirmation.",
+    "The dog's under the bed. Smart move, honestly."
+   ],
+   "rescue": [null, null, "witty:storm#2"]
+  }
+ ]
+}

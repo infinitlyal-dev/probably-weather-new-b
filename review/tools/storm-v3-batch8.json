@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 8,
+ "images": [
+  {
+   "image": "storm/week_4/day/5.webp",
+   "seen": "A man wrestling the patio umbrella closed as a black storm front swallows the last of the sunshine, leaves flying across the tiles. Thursday.",
+   "lines": [
+    "The umbrella is coming down in the storm's final two minutes of notice.",
+    "Half the sky is still summer; the other half is why he is hurrying.",
+    "Leaves already sideways: the storm sent its calling card ahead."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_4/day/6.webp",
+   "seen": "A young man in a parked car filming a lightning bolt through the rain-beaded windscreen, wet suburban street beyond. Sunday.",
+   "lines": [
+    "The car is the best hide this country makes for lightning season.",
+    "Rain on the glass, bolt in the frame, and not one drop on the photographer.",
+    "Front-row seats, full cover, wipers off: storm-watching done properly."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/night/4.webp",
+   "seen": "A night storm over a suburban street — rain slanting through the streetlight, lightning glowing behind the clouds, one big bare tree over the walls. Tuesday.",
+   "lines": [
+    "The rain is coming through the streetlight at forty-five degrees, which means wind joined in.",
+    "Lightning behind the cloud: the storm is working with the lights off.",
+    "That old tree has stood through a hundred of these and is counting this one too."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/night/5.webp",
+   "seen": "Lightning splitting a purple night sky over a double garage, the gutter overflowing in a stream past the hosepipe, jacaranda petals on the wet paving. Monday.",
+   "lines": [
+    "The gutter gave up on the downpipe and started its own waterfall.",
+    "Purple sky, purple petals: the storm colour-matched the driveway tonight.",
+    "The overflow says the roof got a month of rain in one evening."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

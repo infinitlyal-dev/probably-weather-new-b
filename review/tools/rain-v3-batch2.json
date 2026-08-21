@@ -1,0 +1,46 @@
+{
+ "bucket": "rain",
+ "batch": 2,
+ "images": [
+  {
+   "image": "rain/week_1/day/1.webp",
+   "seen": "A mother fighting an inside-out umbrella in the rain while three school kids splash laughing through the puddles behind her, township street. Tuesday.",
+   "lines": [
+    "The umbrella lost, the kids won, and the rain takes full credit for both.",
+    "Same rain, four verdicts: one against, three strongly in favour.",
+    "Somewhere an umbrella just turned inside out. Moment of silence."
+   ],
+   "rescue": [null, null, "witty:rain#22"]
+  },
+  {
+   "image": "rain/week_1/day/2.webp",
+   "seen": "A man in a yellow raincoat waterskiing down a flooded suburban street past a 'Water Stilte' sign, rope out of frame, neighbours under umbrellas watching. Monday.",
+   "lines": [
+    "The street is called Water Stilte and today it is taking the name literally.",
+    "That is not a river; that is Monday's road, repurposed.",
+    "Enough rain and somebody in this country will always find the ski rope."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/day/3.webp",
+   "seen": "Six kids in red, yellow and navy raincoats and gumboots jumping together into a huge puddle on an estate street, grey sky. Tuesday.",
+   "lines": [
+    "One good storm and the street gets a public swimming pool.",
+    "The rain made the puddle; the puddle made the afternoon.",
+    "Six raincoats, one puddle, zero regrets: the rain knows its audience."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/dusk/1.webp",
+   "seen": "A cyclist grimacing in torrential rain at a red robot, water streaming off his helmet, while a driver laughs out of her car window beside him, jacaranda sunset behind. Monday.",
+   "lines": [
+    "The rain found the one person at this robot without a roof.",
+    "There is dry, there is wet, and there is cycling-at-a-red-robot wet.",
+    "The helmet has a gutter now. It did not come with one."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

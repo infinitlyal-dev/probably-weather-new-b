@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 5,
+ "images": [
+  {
+   "image": "storm/week_2/day/2.webp",
+   "seen": "Two golfers with their bags on the fairway, watching a lightning strike come down the course, trees whipping in the wind. Wednesday.",
+   "lines": [
+    "The eighteenth can wait; the sky is playing through.",
+    "That is the course's way of saying the round is over.",
+    "Two club selections left: the clubhouse or the car."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/day/3.webp",
+   "seen": "An empty rugby stadium under an enormous black storm cloud, lightning behind the stands, floodlights on, pitch shining wet. Saturday.",
+   "lines": [
+    "Kickoff is under review by the only official that outranks the referee.",
+    "The floodlights are on; the sky brought its own anyway.",
+    "The pitch is ready, the lines are marked, and the weather has the whistle."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/day/4.webp",
+   "seen": "Storm aftermath on a bushveld lawn — wicker chairs flipped, cushions scattered, a lounger on its side, branches down, trees still bending under a dark sky. Tuesday.",
+   "lines": [
+    "The storm rearranged the stoep furniture and did not ask anybody first.",
+    "The chairs are down, the branches are down, and the sky is not done.",
+    "Every loose object in the garden has chosen violence."
+   ],
+   "rescue": [null, null, "witty:wind#15"]
+  },
+  {
+   "image": "storm/week_2/day/5.webp",
+   "seen": "An old farmer at the door of his rusted corrugated shed, hand on his hat, watching a massive black storm and dust wall roll across the dry veld. Sunday.",
+   "lines": [
+    "He has seen fifty of these arrive, and he still comes out to watch.",
+    "Dust first, rain second: the order of business is written on the horizon.",
+    "The drought and the storm are about to have a word, and he wants to hear it."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

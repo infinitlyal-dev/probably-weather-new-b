@@ -1,0 +1,1011 @@
+{
+ "generated": "2026-08-21",
+ "writtenBy": "Fable 5 (Valk), viewing each photograph",
+ "brief": "Doctrine rewrite of 2026-08-21: every line is about the weather; the picture is the evidence. Three lines per photograph (Al’s ruled keeps locked and counted). Bank rescues marked. PAIRING-TASTE + the swap test still bind.",
+ "bucket": "cloudy",
+ "linesLabel": "three per image incl. locked keeps",
+ "count": 35,
+ "images": [
+  {
+   "index": 1,
+   "image": "cloudy/week_1/dawn/3.webp",
+   "hash": "b5793c36b69d",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dawn/3.webp",
+    "cloudy/week_3/dawn/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A runner stretching against a green wall on a cobbled Bo-Kaap street at dawn, painted houses running down to the city, pearly overcast sky. Saturday.",
+   "note": null,
+   "lines": [
+    "The sun is up there somewhere behind three layers of Saturday-morning grey.",
+    "The Bo-Kaap does the colour this morning because the sky refuses to.",
+    "Cool, grey and windless — honestly the best running weather this city sells."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 2,
+   "image": "cloudy/week_1/dawn/4.webp",
+   "hash": "de1df07bf268",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_3/dawn/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A painter up a ladder painting a Bo-Kaap house turquoise under a flat overcast sky, coffee mug and paint tin on the windowsill. Tuesday.",
+   "note": null,
+   "lines": [
+    "Flat grey light, no glare, no wind: perfect painting weather, and he knows it.",
+    "An overcast sky is a painter's softbox — not one hard shadow on that wall.",
+    "The cloud came in overnight and parked; nothing under it is in a hurry."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 3,
+   "image": "cloudy/week_1/dawn/7.webp",
+   "hash": "e0e2d1182253",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_1/dawn/7.webp",
+    "cloudy/week_3/dawn/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A toddler in grey pyjamas at a floor-to-ceiling window, hands on the glass, looking out over a grey misty city, warm lamp inside. Sunday.",
+   "note": null,
+   "lines": [
+    "The whole city is under one grey blanket and somebody just noticed.",
+    "A lid like that takes until about eleven to lift, if it lifts at all.",
+    "The sky is buffering."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:cloudy#7"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 4,
+   "image": "cloudy/week_1/day/1.webp",
+   "hash": "119e4a52f8a4",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Merino sheep bunched tight on dry Karoo veld, shepherd and dog in the distance, heavy grey cloud deck with one shaft of sun breaking through. Wednesday.",
+   "note": null,
+   "lines": [
+    "The sun is down to one beam and the whole veld is watching where it lands.",
+    "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
+    "That grey is thinking about rain and the whole district is thinking with it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 5,
+   "image": "cloudy/week_1/day/3.webp",
+   "hash": "d16ca804a592",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/day/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A vertical wall of grey cloud splitting the sky over empty Karoo grassland — clear blue on the left, heavy grey with rain veils on the right. Monday.",
+   "note": null,
+   "lines": [
+    "Half the sky has an opinion and the other half is about to hear it.",
+    "The week's weather is changing hands right there, in one straight line.",
+    "Blue on the left, business on the right, and the line is moving your way."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 6,
+   "image": "cloudy/week_1/day/6.webp",
+   "hash": "31b58730d005",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_1/day/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "White sheets pegged on a T-pole washing line, hanging dead still under a heavy grey sky, green lawn and strelitzias below. Thursday.",
+   "note": null,
+   "lines": [
+    "That washing is a straight bet against that sky, and the sky looks confident.",
+    "Not a breath moving those sheets, and nothing helpful coming from above either.",
+    "Grey like that can hold all day without dropping a thing — probably."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 7,
+   "image": "cloudy/week_1/day/7.webp",
+   "hash": "5668c9f2edcb",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/day/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two long-haired dachshunds at a sliding door, looking out at a grey garden through glass still dotted with drizzle. Friday.",
+   "note": null,
+   "lines": [
+    "The walk has been postponed by the committee upstairs, and the committee looks settled.",
+    "The sky is doing nothing in particular and being very thorough about it.",
+    "The sun sent an out-of-office reply."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:cloudy#22"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 8,
+   "image": "cloudy/week_1/dusk/2.webp",
+   "hash": "20e80f881707",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A road cyclist paused at the top of a mountain-pass switchback at dusk, broken grey cloud with gold-lit patches over a valley of farms. Monday.",
+   "note": null,
+   "lines": [
+    "The sky saved its best ten minutes for the top of the climb.",
+    "Cloud all afternoon, and now this — the sky apologising in gold.",
+    "That gap in the cloud is worth more than the whole clear day it replaced."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 9,
+   "image": "cloudy/week_1/dusk/4.webp",
+   "hash": "3ba329d5cea3",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A vineyard wedding at dusk — couple posing, photographer kneeling, mother-of-the-bride in a hat looking up at a pink-grey broken sky, Cape Dutch manor behind. Saturday.",
+   "note": null,
+   "lines": [
+    "One person at this wedding is checking the sky, and she has been right before.",
+    "The clouds came dressed in pink for the occasion and are behaving so far.",
+    "That sky will hold for the photographs — after that, no promises."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 10,
+   "image": "cloudy/week_1/night/1.webp",
+   "hash": "7b4c0256fd8d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/night/1.webp",
+    "cloudy/week_3/night/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A crescent moon fighting through heavy broken cloud over a dark Karoo plain, one low koppie on the horizon. Monday.",
+   "note": null,
+   "lines": [
+    "The moon is down to one small window and it is using all of it.",
+    "The clouds are winning tonight, about nine rounds to one.",
+    "A sky like that keeps the heat in — the frost can stand down tonight."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 11,
+   "image": "cloudy/week_1/night/2.webp",
+   "hash": "76070c299a0b",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/night/2.webp",
+    "cloudy/week_3/night/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A Bengal cat curled asleep on a couch against a knitted blanket, lamp lit, heavy dark cloud over distant city lights through the window. Wednesday.",
+   "note": null,
+   "lines": [
+    "Cloud right down to the rooftops, and every sensible mammal is indoors under a lamp.",
+    "Nothing is falling and nothing is shining; it is that kind of night.",
+    "A sky with no stars is the sky's way of saying go to bed."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 12,
+   "image": "cloudy/week_1/night/6.webp",
+   "hash": "e991afd863ba",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_3/night/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A white bakkie with headlights blazing on a dead-straight Karoo road at night, one bare thorn tree beside it, a completely starless overcast sky. Friday.",
+   "note": null,
+   "lines": [
+    "No moon, no stars, no streetlights: tonight the headlights are the whole sky.",
+    "The sky has switched itself off for the night; the bakkie disagrees.",
+    "Overcast this thick turns the Karoo into a corridor, and he is halfway down it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 13,
+   "image": "cloudy/week_1/night/7.webp",
+   "hash": "68317318c85d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_3/night/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A farmer with a torch walking towards a windpomp at night, full moon glowing through a mackerel sky of broken cloud, Karoo scrub. Tuesday.",
+   "note": null,
+   "lines": [
+    "The moon has enough cloud to fight through that the torch got the job.",
+    "Cloud like fish scales means the weather is thinking about changing its mind.",
+    "That cloud is just thick enough to make the moon count for nothing on the ground."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 14,
+   "image": "cloudy/week_2/dawn/3.webp",
+   "hash": "08134a1e356e",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two fishermen in yellow oilskins and headlamps pushing a boat on its trailer down a slipway at grey dawn, breath visible, flat pewter sea, heavy overcast on the mountains. Monday.",
+   "note": null,
+   "lines": [
+    "Grey sky, flat sea, visible breath: the exact morning the fish expect them.",
+    "The cloud is sitting right on the mountains and the sea has gone pewter.",
+    "No wind on the water this morning, which is worth more than sunshine out there."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 15,
+   "image": "cloudy/week_2/dawn/4.webp",
+   "hash": "3bfd9b9470d6",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_4/dawn/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A newspaper seller working a Joburg intersection at dawn under a pink-grey overcast winter sky, steaming enamel mug on the curb, red robots behind. Friday.",
+   "note": null,
+   "lines": [
+    "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+    "The cloud kept the frost off the windscreens, which is the one favour it does.",
+    "Pink-grey sky over the robots: winter is on the morning shift too."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 16,
+   "image": "cloudy/week_2/dawn/6.webp",
+   "hash": "03ff71985022",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A trail runner on a stone coastal path above a churning grey sea, a huge brooding cloud bank overhead with one thin light break at the horizon. Wednesday.",
+   "note": null,
+   "lines": [
+    "The sky brought its full weight this morning and the sea rose to meet it.",
+    "One thin line of light at the horizon, and the whole sky leaning on it.",
+    "Running weather, honestly: cool, grey, and the sea doing the soundtrack."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 17,
+   "image": "cloudy/week_2/dawn/7.webp",
+   "hash": "4845b881f911",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_4/dawn/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A paved walkway through a stone-walled coastal village at grey dawn, heavy cloud with one weak sun break over a rough sea. Thursday.",
+   "note": null,
+   "lines": [
+    "The sun is trying its luck at the horizon and the cloud is unmoved.",
+    "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
+    "A grey start on the coast usually burns off by ten. Usually."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 18,
+   "image": "cloudy/week_2/day/1.webp",
+   "hash": "e9f6b3850ce2",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman in a navy swimsuit on a striped towel on a lawn, sunscreen in hand, squinting up at a dark grey cloud bank with blue sky still visible behind it, plumbago hedge and white gable house. Saturday.",
+   "note": null,
+   "lines": [
+    "The cloud arrived about four minutes after the towel went down, which is policy.",
+    "Sunscreen out, sun gone: the sky has a sense of humour today.",
+    "The blue sky is still back there somewhere, but the grey has the floor."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 19,
+   "image": "cloudy/week_2/day/5.webp",
+   "hash": "5aea3d2e9887",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/day/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An empty school rugby field with white posts under a flat grey sky, dry koppies and a red-brick school building behind. Wednesday.",
+   "note": null,
+   "lines": [
+    "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
+    "The sky has gone the colour of the staff-room ceiling and settled in.",
+    "A perfectly average sky doing perfectly average things."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:cloudy#32"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 20,
+   "image": "cloudy/week_2/day/6.webp",
+   "hash": "dc71e7a692da",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/day/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A chameleon halfway along a bare branch, heavy grey cloud filling the sky, garden leaves and a terracotta roof below. Friday.",
+   "note": null,
+   "lines": [
+    "The one animal that can match the sky's mood is having no trouble today.",
+    "Every leaf is holding still; the whole garden is waiting to see what the sky decides.",
+    "The clouds are here but they're not doing anything."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:cloudy#19"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 21,
+   "image": "cloudy/week_2/day/7.webp",
+   "hash": "094ec6ba034c",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/day/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man lighting wood chips with a gas lighter on a brick braai under a heavy dark grey sky, meat already on the grid, wet paving, charcoal bag and firelighters at hand. Sunday.",
+   "note": null,
+   "lines": [
+    "That sky can do what it wants; the wors is already on.",
+    "The sky is threatening, the firelighters are answering: a very South African standoff.",
+    "Paving wet, clouds low, fire going anyway — this braai has been through worse."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 22,
+   "image": "cloudy/week_2/dusk/2.webp",
+   "hash": "6b5271665e34",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A blazing red-pink cloud sunset over the Table Mountain silhouette, seen from the dunes at Blouberg, one person standing in the dune grass. Sunday.",
+   "note": null,
+   "lines": [
+    "Cloud is what a sunset needs, and tonight the sky brought exactly enough.",
+    "Table Mountain gets the silhouette; the clouds get the whole colour budget.",
+    "Red sky at night, shepherd's delight — tomorrow just got a good reference."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 23,
+   "image": "cloudy/week_2/dusk/3.webp",
+   "hash": "018a0573e433",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_4/dusk/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A dog in a grey knitted jersey curled up on an outdoor cushion at dusk, heavy grey cloud over the mountains behind the patio. Tuesday.",
+   "note": null,
+   "lines": [
+    "The dog is wearing a jersey, which is all the forecast anybody here needs.",
+    "Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.",
+    "The day never warmed up, and one resident has stopped waiting for it to."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 24,
+   "image": "cloudy/week_2/dusk/5.webp",
+   "hash": "444490756b06",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dusk/5.webp",
+    "cloudy/week_4/dusk/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A burning orange sunset squeezed into a thin gap under a huge dark cloud bank, suburban rooftops and misty trees below, mountain silhouette on the horizon. Wednesday.",
+   "note": null,
+   "lines": [
+    "The sky left a two-finger gap for the sunset and the sunset took it.",
+    "All that cloud, and the sun still found the letterbox at the bottom.",
+    "The suburb is going to bed under a lid, with one orange nightlight left on."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 25,
+   "image": "cloudy/week_2/dusk/6.webp",
+   "hash": "0ebee4d85540",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Suburban rooftops bristling with old TV aerials at dusk, grey cloud with soft pink underlight, a few windows glowing warm. Thursday.",
+   "note": null,
+   "lines": [
+    "The clouds took the sunset and left the suburb the pink change.",
+    "The aerials have the best view of a sky doing its quiet closing number.",
+    "A grey dusk brings the evening forward, and the windows have already agreed."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 26,
+   "image": "cloudy/week_2/dusk/7.webp",
+   "hash": "211c0291a514",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A lone braai stand and wooden picnic table on cracked dry veld outside town, charcoal bag on the table, huge dark cloud deck with one orange band at the horizon. Friday.",
+   "note": null,
+   "lines": [
+    "The charcoal is out, the sky is undecided, and neither is backing down.",
+    "That cloud has been rehearsing all afternoon and still hasn't said its line.",
+    "The horizon kept one strip of orange as proof the sun was here."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 27,
+   "image": "cloudy/week_2/night/4.webp",
+   "hash": "c6d4061cbef2",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/night/4.webp",
+    "cloudy/week_4/night/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man in a puffer jacket and headphones reclining on a rooftop deckchair at night, the overcast sky glowing orange with the city's light. Sunday.",
+   "note": null,
+   "lines": [
+    "The cloud is holding the city's glow like a lampshade tonight.",
+    "Overcast at night keeps the warmth in, and somebody is out here using it.",
+    "No stars on offer tonight, so the city is providing its own."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 28,
+   "image": "cloudy/week_2/night/5.webp",
+   "hash": "f3255e596b2c",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/night/5.webp",
+    "cloudy/week_4/night/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Three friends wrapped in blankets around a lantern on a stone patio at night, wine and snacks on the table, pitch-dark heavy cloud over the valley. Saturday.",
+   "note": null,
+   "lines": [
+    "The sky brought nothing tonight, so the lantern is carrying the whole evening.",
+    "Blankets outside in the dark: the evening is cold, the company is not.",
+    "Not one star made it through that lid, and nobody has noticed yet."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 29,
+   "image": "cloudy/week_2/night/6.webp",
+   "hash": "bdc2741f86fb",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man in a beanie and scarf walking a small terrier along the Sea Point promenade at night, lampposts glowing, cloud pouring over Lion's Head, dark calm sea. Thursday.",
+   "note": null,
+   "lines": [
+    "The cloud is coming over the mountain like it pays rent here.",
+    "That cloud will be down on the streetlights before the walk is done.",
+    "Low cloud at night keeps the cold off the promenade, and the regulars know it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 30,
+   "image": "cloudy/week_3/day/1.webp",
+   "hash": "c16f8303d56e",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_3/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man in slops standing beside his mower on a half-mowed lawn, looking up at a heavy grey sky over the mountain, beer waiting on the patio table. Saturday.",
+   "note": null,
+   "lines": [
+    "Half a lawn mowed, and now the negotiation with the sky begins.",
+    "The sky is deciding whether the second half of that lawn happens today.",
+    "That look is a man asking the clouds for forty-five more minutes."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 31,
+   "image": "cloudy/week_3/day/3.webp",
+   "hash": "04bdf14c306b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_3/day/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman jogging along the Umhlanga promenade past the whalebone pier arches, pearly overcast sky over a warm grey sea, her ponytail lifting in the breeze. Sunday.",
+   "note": null,
+   "lines": [
+    "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+    "The cloud is doing sunscreen duty this morning and the runners are cashing in.",
+    "A pearl-grey sky and a warm sea breeze: the coast's version of mild."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 32,
+   "image": "cloudy/week_3/day/4.webp",
+   "hash": "47550fce6c98",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_3/day/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man standing on his tiled roof beside new solar panels, hands on hips, giving a fully grey sky a skeptical look. Tuesday.",
+   "note": null,
+   "lines": [
+    "Panels installed, sun absent: the sky owes this roof an apology.",
+    "Grey from gutter to gutter, and every kilowatt up here is on standby.",
+    "The forecast said partly sunny; the sky went with fully committed grey."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 33,
+   "image": "cloudy/week_4/day/4.webp",
+   "hash": "4727610ce8f9",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_4/day/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A scruffy dog lying on a blanket on a stoep beside strelitzias, damp concrete, heavy grey sky over a lush garden. Tuesday.",
+   "note": null,
+   "lines": [
+    "A grey day reads the same in any language: blanket, stoep, minimal ambition.",
+    "The concrete is still damp and the sky looks like it isn't finished.",
+    "Under a sky like this the whole garden runs at half-speed, dog included."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 34,
+   "image": "cloudy/week_4/day/6.webp",
+   "hash": "5a72972b399b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_4/day/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man at the end of his wet driveway, back to camera, umbrella in one hand and sunglasses in the other, under a broken grey sky with bright patches. Thursday.",
+   "note": null,
+   "lines": [
+    "Umbrella in one hand, sunglasses in the other — he has met this sky before.",
+    "That sky refuses to commit, so he came prepared for both of its moods.",
+    "Bring a jacket. Or sunscreen. Or both."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:rain-possible#10"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 35,
+   "image": "cloudy/week_4/day/7.webp",
+   "hash": "313ca13b51a5",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_4/day/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An estate street split down the middle — deep blue sky and sunlit lawns on one side, a dark advancing wall of cloud on the other. Monday.",
+   "note": null,
+   "lines": [
+    "Half this street is in summer and the other half is about to be somewhere else.",
+    "That cloud line is moving in with the confidence of a Monday.",
+    "The blue half of the sky is on borrowed time and the lawns know it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  }
+ ]
+}

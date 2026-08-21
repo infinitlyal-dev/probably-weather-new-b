@@ -1,0 +1,46 @@
+{
+ "bucket": "rain",
+ "batch": 3,
+ "images": [
+  {
+   "image": "rain/week_1/dusk/2.webp",
+   "seen": "A dignified older man in a flat cap under a black umbrella walking through the rainy Bo-Kaap at dusk, Lion's Head under storm cloud with a sunset break behind. Sunday.",
+   "lines": [
+    "Rain in front, sunset behind: the Cape doing both of its moods at once.",
+    "The umbrella is old, the routine is older, and the rain changes neither.",
+    "Lion's Head is catching the last light and the Bo-Kaap is catching the rain."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/dusk/5.webp",
+   "seen": "Rain falling on a Joburg balcony at dusk — agapanthus in a terracotta pot, water pooling on the tiles, the Hillbrow Tower skyline behind. Wednesday.",
+   "lines": [
+    "The pot plant is getting the good stuff straight from the source tonight.",
+    "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+    "The balcony is doing its own rain gauge, and it reads: plenty."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/night/3.webp",
+   "seen": "A rainy, empty Cape Town street at night — neon signs for Deluxe Coffee, the Gin Bar and Cape Town Books doubling on the wet tar, the mountain dark behind. Sunday.",
+   "lines": [
+    "Every neon sign in the street is being doubled on the wet tar tonight.",
+    "The coffee is deluxe, the books are shut, and the rain owns the street.",
+    "The mountain has disappeared into the weather and left the signs in charge."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/night/2.webp",
+   "seen": "Night rain on a suburban corner — a frangipani in full bloom over a white wall, rain streaking through the streetlight, one warm barred window lit. Monday.",
+   "lines": [
+    "The streetlight is showing every drop and the frangipani is drinking every one.",
+    "The frangipani gets watered at midnight and the whole street smells of it by one.",
+    "One warm window, one wet street: everybody is exactly where they should be."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

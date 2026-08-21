@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PW — bespoke lines, set-001</title>
+<link rel="stylesheet" href="../assets/type-prototype-caption.css">
+<style>
+  :root { --bg:#14110d; --panel:#1f1a14; --ink:#fffaf3; --ink2:#b5ab9d; --gold:#ffd700; --yes:#63c98a; --no:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:rgba(20,17,13,.97); border-bottom:1px solid rgba(246,242,232,.14);
+           padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0 8px 0 0; }
+  button { font:inherit; border:1px solid rgba(246,242,232,.18); background:var(--panel); color:var(--ink);
+           border-radius:8px; padding:6px 11px; cursor:pointer; }
+  button:hover { border-color:var(--gold); }
+  button.primary { background:var(--gold); color:#1a1a2e; border-color:var(--gold); font-weight:700; }
+  .tally { color:var(--ink2); font-variant-numeric:tabular-nums; }
+  main { padding:18px; display:flex; flex-direction:column; gap:30px; }
+  .card { display:grid; grid-template-columns:auto 1fr; gap:22px; border-top:1px solid rgba(246,242,232,.12); padding-top:18px; }
+  .hero { position:relative; overflow:hidden; background-size:cover; background-repeat:no-repeat;
+          border-radius:0 0 20px 20px; box-shadow:0 18px 44px rgba(0,0,0,.55); }
+  .cap { position:absolute; left:0; right:0; bottom:0; margin:0; color:#fff; font-weight:700;
+         font-family:'Caveat Prototype','Segoe Print','Bradley Hand',cursive; text-align:left; line-height:1.08;
+         text-shadow:0 2px 14px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.8); }
+  .meta { color:var(--ink2); font-size:12.5px; margin-bottom:10px; }
+  .meta b { color:var(--ink); }
+  .seen { color:var(--ink2); font-size:12.5px; max-width:80ch; margin:0 0 12px; font-style:italic; }
+  .note { color:#ffb84d; font-size:12.5px; max-width:80ch; margin:0 0 12px; }
+  .line { display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .line input[type=text] { flex:1; min-width:0; font:inherit; background:#181410; color:var(--ink);
+      border:1px solid rgba(246,242,232,.16); border-radius:7px; padding:7px 10px; }
+  .line input[type=text]:focus { outline:none; border-color:var(--gold); }
+  .line .n { width:18px; color:var(--ink2); font-variant-numeric:tabular-nums; padding-top:8px; }
+  .line .wc { width:58px; color:var(--ink2); font-size:11.5px; padding-top:9px; text-align:right; }
+  .y.on { border-color:var(--yes); color:var(--yes); font-weight:700; }
+  .n2.on { border-color:var(--no); color:var(--no); font-weight:700; }
+  .line.mine input[type=text] { border-style:dashed; }
+  .line .resc { flex:none; align-self:flex-start; margin-top:8px; font-size:10.5px; letter-spacing:.06em;
+      text-transform:uppercase; color:#8fb7ff; border:1px solid #8fb7ff55; border-radius:5px; padding:1px 5px; }
+  .hint { color:var(--ink2); font-size:12px; margin:10px 0 0; max-width:80ch; }
+</style>
+
+<header>
+  <h1>Bespoke lines — rain, 35 photographs, three per image incl. locked keeps</h1>
+  <span class="tally" id="tally"></span>
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export</button>
+</header>
+<main id="main"></main>
+
+<script>
+const DATA = {"box":{"w":327,"h":518},"cap":{"runway":56.84,"font":33.00000000000001,"padBottom":14.616000000000001},"bucket":"rain","images":[{"index":1,"image":"rain/week_1/dawn/2.webp","hash":"e5b2e8ac2654","condition":"rain","time":"dawn","week":"A","day":"mon","paths":["rain/week_1/dawn/2.webp","rain/week_3/dawn/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Two school kids in raincoats and gumboots sharing one umbrella at a glass bus shelter in steady rain, wet pavement reflecting them. Monday.","note":null,"lines":["The rain started before the alarm did, and the gumboots were ready.","Two under one umbrella: the first maths problem of the school day, solved.","The puddles are claiming the pavement one slab at a time."],"rescue":[null,null,null],"alreadyKept":[]},{"index":2,"image":"rain/week_1/dawn/3.webp","hash":"9e75b001c7c5","condition":"rain","time":"dawn","week":"A","day":"tue","paths":["rain/week_1/dawn/3.webp","rain/week_3/dawn/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A through-the-windscreen view of rainy Cape Town traffic, wiper mid-swipe, tail lights smeared red down the wet street, Table Mountain under cloud ahead. Tuesday.","note":null,"lines":["The mountain has its head in the weather and the traffic has its lights on.","The wiper is on its ten-thousandth swipe and the rain has not blinked.","The traffic is emotional."],"rescue":[null,null,"witty:rain#25"],"alreadyKept":[]},{"index":3,"image":"rain/week_1/dawn/6.webp","hash":"73567b0c612e","condition":"rain","time":"dawn","week":"A","day":"sat","paths":["rain/week_1/dawn/6.webp","rain/week_3/dawn/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A jacaranda-lined street just after overnight rain, the wet road blazing gold in the sunrise, one runner heading into the light. Saturday.","note":null,"lines":["The rain finished at five and left the whole street polished for the sunrise.","Wet tar plus sunrise equals a street made of gold, briefly.","Somebody ordered rain for the night and sun for the morning, and it was delivered."],"rescue":[null,null,null],"alreadyKept":[]},{"index":4,"image":"rain/week_1/dawn/7.webp","hash":"206f0a768ec9","condition":"rain","time":"dawn","week":"A","day":"sun","paths":["rain/week_1/dawn/7.webp","rain/week_3/dawn/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A floor-to-ceiling window streaming with rain, a full coffee mug on the concrete sill, grey garden and patio beyond. Sunday.","note":null,"lines":["The rain is on the glass and the coffee is on the sill: Sunday is sorted.","That window has the best programme on this morning and it is just rain.","Steady, straight-down, all-morning rain: the kind the garden actually drinks."],"rescue":[null,null,null],"alreadyKept":[]},{"index":5,"image":"rain/week_1/day/1.webp","hash":"d878b96a3f71","condition":"rain","time":"day","week":"B","day":"tue","paths":["rain/week_1/day/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A mother fighting an inside-out umbrella in the rain while three school kids splash laughing through the puddles behind her, township street. Tuesday.","note":null,"lines":["The umbrella lost, the kids won, and the rain takes full credit for both.","Same rain, four verdicts: one against, three strongly in favour.","Somewhere an umbrella just turned inside out. Moment of silence."],"rescue":[null,null,"witty:rain#22"],"alreadyKept":[]},{"index":6,"image":"rain/week_1/day/2.webp","hash":"2b750515575e","condition":"rain","time":"day","week":"A","day":"mon","paths":["rain/week_1/day/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A man in a yellow raincoat waterskiing down a flooded suburban street past a 'Water Stilte' sign, rope out of frame, neighbours under umbrellas watching. Monday.","note":null,"lines":["The street is called Water Stilte and today it is taking the name literally.","That is not a river; that is Monday's road, repurposed.","Enough rain and somebody in this country will always find the ski rope."],"rescue":[null,null,null],"alreadyKept":[]},{"index":7,"image":"rain/week_1/day/3.webp","hash":"00a672556998","condition":"rain","time":"day","week":"A","day":"tue","paths":["rain/week_1/day/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Six kids in red, yellow and navy raincoats and gumboots jumping together into a huge puddle on an estate street, grey sky. Tuesday.","note":null,"lines":["One good storm and the street gets a public swimming pool.","The rain made the puddle; the puddle made the afternoon.","Six raincoats, one puddle, zero regrets: the rain knows its audience."],"rescue":[null,null,null],"alreadyKept":[]},{"index":8,"image":"rain/week_1/dusk/1.webp","hash":"71fdebcd3deb","condition":"rain","time":"dusk","week":"A","day":"mon","paths":["rain/week_1/dusk/1.webp","rain/week_3/dusk/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A cyclist grimacing in torrential rain at a red robot, water streaming off his helmet, while a driver laughs out of her car window beside him, jacaranda sunset behind. Monday.","note":null,"lines":["The rain found the one person at this robot without a roof.","There is dry, there is wet, and there is cycling-at-a-red-robot wet.","The helmet has a gutter now. It did not come with one."],"rescue":[null,null,null],"alreadyKept":[]},{"index":9,"image":"rain/week_1/dusk/2.webp","hash":"5f935cb18f17","condition":"rain","time":"dusk","week":"A","day":"sun","paths":["rain/week_1/dusk/2.webp","rain/week_3/dusk/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A dignified older man in a flat cap under a black umbrella walking through the rainy Bo-Kaap at dusk, Lion's Head under storm cloud with a sunset break behind. Sunday.","note":null,"lines":["Rain in front, sunset behind: the Cape doing both of its moods at once.","The umbrella is old, the routine is older, and the rain changes neither.","Lion's Head is catching the last light and the Bo-Kaap is catching the rain."],"rescue":[null,null,null],"alreadyKept":[]},{"index":10,"image":"rain/week_1/dusk/5.webp","hash":"e95e8a2f22f0","condition":"rain","time":"dusk","week":"A","day":"wed","paths":["rain/week_1/dusk/5.webp","rain/week_3/dusk/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Rain falling on a Joburg balcony at dusk — agapanthus in a terracotta pot, water pooling on the tiles, the Hillbrow Tower skyline behind. Wednesday.","note":null,"lines":["The pot plant is getting the good stuff straight from the source tonight.","Joburg summer rain: arrives at five, soaks everything, gone by supper.","The balcony is doing its own rain gauge, and it reads: plenty."],"rescue":[null,null,null],"alreadyKept":[]},{"index":11,"image":"rain/week_1/night/3.webp","hash":"d28204abf829","condition":"rain","time":"night","week":"A","day":"sun","paths":["rain/week_1/night/3.webp","rain/week_3/night/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A rainy, empty Cape Town street at night — neon signs for Deluxe Coffee, the Gin Bar and Cape Town Books doubling on the wet tar, the mountain dark behind. Sunday.","note":null,"lines":["Every neon sign in the street is being doubled on the wet tar tonight.","The coffee is deluxe, the books are shut, and the rain owns the street.","The mountain has disappeared into the weather and left the signs in charge."],"rescue":[null,null,null],"alreadyKept":[]},{"index":12,"image":"rain/week_2/dawn/2.webp","hash":"7bd5758fb7b5","condition":"rain","time":"dawn","week":"A","day":"fri","paths":["rain/week_2/dawn/2.webp","rain/week_4/dawn/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A Karoo farmhouse in falling rain at golden sunrise, the windpomp spinning, water running down the two-track road, stoep chairs facing the weather. Friday.","note":null,"lines":["Rain out here is an event; the whole veld will smell of it by seven.","The road is running like a river and nobody here is complaining.","This is the rain the stoep chairs have been facing all year."],"rescue":[null,null,null],"alreadyKept":[]},{"index":13,"image":"rain/week_2/dawn/5.webp","hash":"80770bf13004","condition":"rain","time":"dawn","week":"A","day":"wed","paths":["rain/week_2/dawn/5.webp","rain/week_4/dawn/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A mother and daughter in school uniform sharing a big navy umbrella at the school gate in steady rain, wet paving reflecting them. Wednesday.","note":null,"lines":["The umbrella is doing its first shift of the day at the school gate.","The last two metres to the gate are the wettest of the whole trip.","Rain on a school morning slows everything down except the bell."],"rescue":[null,null,null],"alreadyKept":[]},{"index":14,"image":"rain/week_2/dawn/6.webp","hash":"5526989179bd","condition":"rain","time":"dawn","week":"A","day":"thu","paths":["rain/week_2/dawn/6.webp","rain/week_4/dawn/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A flooded farm two-track at a locked gate, windpomp and yellow farmhouse beyond, storm clearing into sunrise, raindrop rings on the puddle. Thursday.","note":null,"lines":["The puddle has rings on it, which means this is not finished.","The road to the house is currently a mirror with a gate across it.","One night of proper rain and the driveway has joined the water table."],"rescue":[null,null,null],"alreadyKept":[]},{"index":15,"image":"rain/week_2/day/1.webp","hash":"fe838c8901f7","condition":"rain","time":"day","week":"B","day":"mon","paths":["rain/week_2/day/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A construction worker leaning on his spade in pouring rain, water streaming off his hard hat, rebar and city towers grey behind him. Monday.","note":null,"lines":["The site turned to mud an hour ago and the shift goes on anyway.","Rain on a building site: everything gets heavier and nobody gets softer.","The hard hat has become a gutter and the work has not stopped once."],"rescue":[null,null,null],"alreadyKept":[]},{"index":16,"image":"rain/week_2/day/4.webp","hash":"e7547cfdee94","condition":"rain","time":"day","week":"A","day":"thu","paths":["rain/week_2/day/4.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A grumpy wet ginger cat sitting under a metal patio chair in the rain, puddle rings spreading on the paving, aloes and a corrugated fence behind. Thursday.","note":null,"lines":["The cat has taken the rain personally, as the cat takes most things.","Dry spot found; dignity pending; the rain shows no sign of apologising.","One dry square metre in the whole yard, and it is occupied."],"rescue":[null,null,null],"alreadyKept":[]},{"index":17,"image":"rain/week_2/day/5.webp","hash":"3bd49d0acf2b","condition":"rain","time":"day","week":"B","day":"wed","paths":["rain/week_2/day/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A silver station wagon pushing a bow wave down a flooded suburban street, red-brick houses and big gum trees under a heavy sky. Wednesday.","note":null,"lines":["That is not driving anymore; that is low-altitude boating.","One cloudburst and the whole street joined the storm-water system.","Every driveway on this street is a jetty until the drains catch up."],"rescue":[null,null,null],"alreadyKept":[]},{"index":18,"image":"rain/week_2/day/6.webp","hash":"8ce35385e048","condition":"rain","time":"day","week":"A","day":"wed","paths":["rain/week_2/day/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A woman gripping the wheel in blinding rain, the windscreen a blur of water and smeared brake lights, wipers mid-swipe. Wednesday.","note":null,"lines":["Everyone on this road just became a very careful person.","Brake lights first, road second, everything else on trust.","The wipers are on max and it's still not enough."],"rescue":[null,null,"witty:rain#19"],"alreadyKept":[]},{"index":19,"image":"rain/week_2/dusk/2.webp","hash":"f7f51acb22c9","condition":"rain","time":"dusk","week":"A","day":"sat","paths":["rain/week_2/dusk/2.webp","rain/week_4/dusk/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A man pausing under his lit porch at dusk with a furled umbrella, heavy rain hammering the street, a car passing with headlights on. Saturday.","note":null,"lines":["He has checked the sky twice and the sky has not changed its answer.","The gap between the stoep and the gate has never looked wider.","The umbrella is about to earn its whole year's keep in eight metres."],"rescue":[null,null,null],"alreadyKept":[]},{"index":20,"image":"rain/week_2/dusk/3.webp","hash":"09641df1432a","condition":"rain","time":"dusk","week":"A","day":"tue","paths":["rain/week_2/dusk/3.webp","rain/week_4/dusk/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Rainy rush-hour gridlock at dusk — lanes of red tail lights doubled on the wet tar, the mountain under heavy cloud behind. Tuesday.","note":null,"lines":["The rain added an hour to the drive home and everyone saw it coming.","Ten thousand brake lights and one mountain refusing to watch.","The commute just became a team sport."],"rescue":[null,null,"witty:rain#13"],"alreadyKept":[]},{"index":21,"image":"rain/week_2/dusk/4.webp","hash":"b4ee9d16720e","condition":"rain","time":"dusk","week":"A","day":"fri","paths":["rain/week_2/dusk/4.webp","rain/week_4/dusk/4.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A businessman just inside his front door at dusk, peeling off a soaked jacket, water pooling on the tiles, the wet street visible through the open door. Friday.","note":null,"lines":["The jacket gave up somewhere between the car and the gate.","He made it home; the dry parts of him did not.","The hallway is getting its own weather report, drip by drip."],"rescue":[null,null,null],"alreadyKept":[]},{"index":22,"image":"rain/week_2/dusk/6.webp","hash":"abf80e59bae9","condition":"rain","time":"dusk","week":"A","day":"thu","paths":["rain/week_2/dusk/6.webp","rain/week_4/dusk/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A woman parked with the engine off, chin on her hand, watching rain streak the windows in the blue of dusk. Thursday.","note":null,"lines":["The rain gets five more minutes, and honestly, it can have them.","There is no rush that survives weather like this, and she knows it.","Watching the rain from the driver's seat: free, dry, and weirdly good."],"rescue":[null,null,null],"alreadyKept":[]},{"index":23,"image":"rain/week_2/night/4.webp","hash":"c8df884e9ec0","condition":"rain","time":"night","week":"A","day":"thu","paths":["rain/week_2/night/4.webp","rain/week_4/night/4.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A man driving through night rain, the city's lights blurred to smears on the wet windscreen, both hands on the wheel. Thursday.","note":null,"lines":["Every light in town has gone soft at the edges tonight.","Night rain maths: half the visibility, double the concentration, triple the respect.","Wet tar doubles every streetlight, and he is not fooled by any of them."],"rescue":[null,null,null],"alreadyKept":[]},{"index":24,"image":"rain/week_2/night/6.webp","hash":"19ddc2f8afd3","condition":"rain","time":"night","week":"A","day":"fri","paths":["rain/week_2/night/6.webp","rain/week_4/night/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A dead black umbrella abandoned in a flooded gutter at night, storm water streaming past the curb, floodlit garden wall behind. Friday.","note":null,"lines":["The gutter is running like a river and it has already claimed a casualty.","That umbrella fought the good fight until about half past nine.","The storm water is heading for the sea and taking prisoners."],"rescue":[null,null,null],"alreadyKept":[]},{"index":25,"image":"rain/week_3/day/1.webp","hash":"d86d4f5699c2","condition":"rain","time":"day","week":"B","day":"thu","paths":["rain/week_3/day/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A school crossing marshal in hi-vis spreading his arms over six laughing kids at the edge of a giant puddle outside Oakview Primary School, raindrop rings everywhere. Thursday.","note":null,"lines":["The puddle outside the gate is now part of the curriculum.","Biggest attraction at the school gate this morning: forty square metres of weather.","The bell can wait; the puddle has everyone's full attention, marshal included."],"rescue":[null,null,null],"alreadyKept":[]},{"index":26,"image":"rain/week_3/day/3.webp","hash":"e54bbf2b56b2","condition":"rain","time":"day","week":"A","day":"fri","paths":["rain/week_3/day/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A businesswoman laughing as she runs across a rainy Joburg CBD street in heels, a newspaper held over her head, umbrellas on the far pavement. Friday.","note":null,"lines":["The newspaper got a promotion: today it is a roof.","Fifty metres, two heels, one newspaper: the rain picked the wrong athlete.","Hair plans: cancelled."],"rescue":[null,null,"witty:rain#24"],"alreadyKept":[]},{"index":27,"image":"rain/week_3/day/5.webp","hash":"d8d16083a690","condition":"rain","time":"day","week":"A","day":"sun","paths":["rain/week_3/day/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Two figures in yellow and red raincoats on a harbour wall as a massive wave explodes over it, fishing boats sheltering inside, village lights on the hillside. Sunday.","note":null,"lines":["The sea is delivering the storm in person today, one wall at a time.","High tide, big swell, and the front row is exactly as wet as it looks.","The boats knew. That is why they are all inside the wall."],"rescue":[null,null,null],"alreadyKept":[]},{"index":28,"image":"rain/week_3/day/7.webp","hash":"a0ef2720c507","condition":"rain","time":"day","week":"B","day":"fri","paths":["rain/week_3/day/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Two colleagues laughing as they squeeze under one umbrella crossing an office car park in the rain, suits already half-soaked. Friday.","note":null,"lines":["Two colleagues, one umbrella: the org chart means nothing out here.","Half a suit dry each: the fairest deal this office has struck all year.","Friday's last meeting is thirty metres of open car park, chaired by the rain."],"rescue":[null,null,null],"alreadyKept":[]},{"index":29,"image":"rain/week_4/day/2.webp","hash":"057e8c9e5039","condition":"rain","time":"day","week":"A","day":"sat","paths":["rain/week_4/day/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Muddy rugby boots and a soaked navy jersey dumped at the open patio door on the mat, rain still falling on the garden beyond, warm lounge inside. Saturday.","note":null,"lines":["Match played, rain won, boots benched at the door.","That kit tells the whole story: rain, mud, and a game that went ahead anyway.","Saturday sport in the rain: the washing machine is about to meet its opponent."],"rescue":[null,null,null],"alreadyKept":[]},{"index":30,"image":"rain/week_4/day/3.webp","hash":"c9050c0a05e5","condition":"rain","time":"day","week":"B","day":"sun","paths":["rain/week_4/day/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Rain sheeting off a farmhouse stoep roof straight into a big potted fern, wet flagstones, tin roofs across the courtyard. Sunday.","note":null,"lines":["The roof is watering the ferns directly, no middleman, no charge.","Rain on a tin roof: the loudest quiet sound in the country.","The fern has waited all season for exactly this delivery."],"rescue":[null,null,null],"alreadyKept":[]},{"index":31,"image":"rain/week_4/day/4.webp","hash":"c9c6fd784b69","condition":"rain","time":"day","week":"B","day":"sat","paths":["rain/week_4/day/4.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Muddy wellington boots kicked off beside the doormat on a covered stone-cottage stoep, wet boot prints on the terracotta tiles, rain hammering the aloe garden beyond. Saturday.","note":null,"lines":["The boots came off exactly one metre too late, and the prints agree.","The garden is drinking; the stoep is dripping; the boots are done for the day.","Boot prints on the tiles: evidence of one quick dash into the weather."],"rescue":[null,null,null],"alreadyKept":[]},{"index":32,"image":"rain/week_1/night/2.webp","hash":"86be0fc65b9e","condition":"rain","time":"night","week":"A","day":"mon","paths":["rain/week_1/night/2.webp","rain/week_3/night/2.webp"],"why":"round-1 lines retired by the doctrine redo","place":"Durban","pass1":null,"seen":"Night rain on a suburban corner — a frangipani in full bloom over a white wall, rain streaking through the streetlight, one warm barred window lit. Monday.","note":null,"lines":["The streetlight is showing every drop and the frangipani is drinking every one.","The frangipani gets watered at midnight and the whole street smells of it by one.","One warm window, one wet street: everybody is exactly where they should be."],"rescue":[null,null,null],"alreadyKept":[]},{"index":33,"image":"rain/week_1/night/4.webp","hash":"f8781ec0eb86","condition":"rain","time":"night","week":"A","day":"wed","paths":["rain/week_1/night/4.webp","rain/week_3/night/4.webp"],"why":"round-1 lines retired by the doctrine redo","place":"Johannesburg","pass1":null,"seen":"Heavy night rain slanting through a streetlight, a jacaranda in bloom over a suburban wall with electric fencing, the gutter running strong along the curb. Wednesday.","note":null,"lines":["The gutter found its river voice at about eight and has not stopped since.","Rain through a streetlight looks like static, and tonight the whole street is tuned to it.","The jacaranda is getting a night wash and the street is getting the runoff."],"rescue":[null,null,null],"alreadyKept":[]},{"index":34,"image":"rain/week_1/night/5.webp","hash":"504e55301184","condition":"rain","time":"night","week":"A","day":"tue","paths":["rain/week_1/night/5.webp","rain/week_3/night/5.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A glowing turquoise pool in night rain, raindrop rings across the whole surface, palm and storm sky black above. Tuesday.","note":null,"lines":["The pool is being topped up by head office tonight, free of charge.","Rain on a lit pool: ten thousand rings and not one swimmer.","The only thing swimming tonight is the water itself."],"rescue":[null,null,null],"alreadyKept":[]},{"index":35,"image":"rain/week_1/night/6.webp","hash":"a1e2fed78146","condition":"rain","time":"night","week":"A","day":"sat","paths":["rain/week_1/night/6.webp","rain/week_3/night/6.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"An empty beachfront parking lot in driving night rain, a furled beach umbrella leaning at the rail, sea spray exploding over the promenade wall. Saturday.","note":null,"lines":["The sea is coming over the rail and the rain is coming down to meet it.","The last umbrella on the beachfront is closed, which is the correct call.","Salt spray from the front, rain from above: the promenade is fully surrounded."],"rescue":[null,null,null],"alreadyKept":[]}]};
+const SRC_NAME = "review/set-001-lines-bespoke-rain-v3.json";
+const EXPORT_NAME = "set-001-lines-bespoke-rain-v3-ruled.json";
+// Namespaced per source. Round 1 and round 2 share this page's code, and with
+// one key the round-2 page read round 1's saved text back out of storage and
+// rendered it in every slot - Al opened it and saw the old lines. The stored
+// value is keyed by image+index, and index 1 means a different line in each
+// round, so the namespace is not optional.
+const LS = 'pw_bespoke_lines_' + SRC_NAME.replace(/[^a-z0-9]+/gi, '_');
+const state = JSON.parse(localStorage.getItem(LS) || '{}');
+const $ = (id) => document.getElementById(id);
+const key = (img, i) => img + '#' + i;
+const wc = (s) => (s.trim() ? s.trim().split(/\s+/).length : 0);
+
+function save() { localStorage.setItem(LS, JSON.stringify(state)); tally(); }
+
+function tally() {
+  let yes = 0, no = 0, mine = 0;
+  for (const [k, v] of Object.entries(state)) {
+    if (v.verdict === 'YES') yes += 1;
+    if (v.verdict === 'NO') no += 1;
+    if (k.endsWith('#5') && v.text && v.text.trim()) mine += 1;
+  }
+  const imagesWithAYes = new Set(Object.entries(state).filter(([, v]) => v.verdict === 'YES')
+    .map(([k]) => k.split('#')[0])).size;
+  $('tally').textContent = yes + ' ticked · ' + no + ' rejected · ' + mine + ' of your own · '
+    + imagesWithAYes + '/' + DATA.images.length + ' images have at least one';
+}
+
+function render() {
+  const m = $('main');
+  m.innerHTML = '';
+  for (const img of DATA.images) {
+    const card = document.createElement('section');
+    card.className = 'card';
+
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+    hero.style.width = DATA.box.w + 'px';
+    hero.style.height = DATA.box.h + 'px';
+    hero.style.backgroundImage = 'url("/assets/images/bg/' + img.image + '")';
+    hero.style.backgroundPosition = 'center 50%';
+    const cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.style.padding = DATA.cap.runway.toFixed(1) + 'px 16px ' + DATA.cap.padBottom.toFixed(1) + 'px';
+    cap.style.fontSize = DATA.cap.font.toFixed(1) + 'px';
+    cap.style.background = 'linear-gradient(to top, rgba(0,0,0,.80) 0%, rgba(0,0,0,.62) calc(100% - '
+      + DATA.cap.runway.toFixed(1) + 'px), rgba(0,0,0,0) 100%)';
+    cap.style.borderRadius = '0 0 20px 20px';
+    cap.textContent = img.lines[0];
+    hero.appendChild(cap);
+    card.appendChild(hero);
+
+    const right = document.createElement('div');
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<b>' + img.index + '. ' + img.condition + ' · ' + img.time + '</b> · ' + img.image
+      + ' · ' + img.week + '/' + img.day + ' · ' + img.why + (img.pass1 ? ' · pass-1 ' + img.pass1 : '');
+    right.appendChild(meta);
+
+    const seen = document.createElement('p');
+    seen.className = 'seen';
+    seen.textContent = img.seen;
+    right.appendChild(seen);
+
+    if (img.note) {
+      const n = document.createElement('p');
+      n.className = 'note';
+      n.textContent = img.note;
+      right.appendChild(n);
+    }
+
+    // Lines already kept for this picture, locked and not re-litigated — the
+    // point of round 2 is the gaps, and showing the survivors is what makes a
+    // new line judgeable as part of a SET rather than on its own.
+    if (img.alreadyKept && img.alreadyKept.length) {
+      const box = document.createElement('div');
+      box.className = 'meta';
+      box.style.margin = '2px 0 10px';
+      box.textContent = 'already kept (' + img.alreadyKept.length + '): ';
+      for (const t of img.alreadyKept) {
+        const b = document.createElement('div');
+        b.style.cssText = 'color:#63c98a;font-size:12.5px;margin:2px 0 0 12px';
+        b.textContent = '✓ ' + t;
+        box.appendChild(b);
+      }
+      right.appendChild(box);
+    }
+
+    // The written candidates plus one empty slot for Al's own.
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const k = key(img.image, i);
+      const rec = state[k] || {};
+      const wrap = document.createElement('div');
+      wrap.className = 'line' + (i === N ? ' mine' : '');
+
+      const n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = i === N ? '+' : String(i + 1);
+      wrap.appendChild(n);
+
+      const ref = img.rescue && img.rescue[i];
+      if (ref) {
+        const tag = document.createElement('span');
+        tag.className = 'resc';
+        tag.textContent = 'bank';
+        tag.title = 'Rescued from the existing bank (' + ref + ') rather than newly written';
+        wrap.appendChild(tag);
+      }
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (i === N) inp.placeholder = 'your own line for this picture…';
+      const count = document.createElement('span');
+      count.className = 'wc';
+      const paint = () => {
+        cap.textContent = inp.value || img.lines[0];
+        count.textContent = wc(inp.value) + 'w';
+      };
+      inp.addEventListener('focus', paint);
+      inp.addEventListener('input', () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value });
+        paint(); save();
+      });
+      wrap.appendChild(inp);
+      count.textContent = wc(inp.value) + 'w';
+      wrap.appendChild(count);
+
+      const yes = document.createElement('button');
+      yes.className = 'y' + (rec.verdict === 'YES' ? ' on' : '');
+      yes.textContent = '✓';
+      yes.title = 'keep this line for this picture';
+      yes.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'YES' ? null : 'YES' });
+        save(); render();
+      };
+      const no = document.createElement('button');
+      no.className = 'n2' + (rec.verdict === 'NO' ? ' on' : '');
+      no.textContent = '✕';
+      no.title = 'not for this picture';
+      no.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'NO' ? null : 'NO' });
+        save(); render();
+      };
+      wrap.appendChild(yes);
+      wrap.appendChild(no);
+      right.appendChild(wrap);
+    }
+
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Click into a line to see it on the picture. Edit the text freely — the edit is what exports. '
+      + 'The dashed slot is yours.';
+    right.appendChild(hint);
+    card.appendChild(right);
+    m.appendChild(card);
+  }
+  tally();
+}
+
+$('export').onclick = () => {
+  const out = { generated: '2026-08-19', ruledBy: 'Al, bespoke line review', bucket: DATA.bucket || null, images: [] };
+  for (const img of DATA.images) {
+    const kept = []; const rejected = [];
+    // Lines already kept in an earlier round ride along in the export, marked as
+    // such: the file is the picture's whole approved set, not just this round's
+    // additions, so nothing downstream has to join two exports to know the truth.
+    for (const t of (img.alreadyKept || [])) kept.push({ text: t, source: 'bespoke', round: 1, edited: false });
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const rec = state[key(img.image, i)] || {};
+      const text = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (!text || !text.trim()) continue;
+      const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
+        round: 2, edited: i < N && text.trim() !== img.lines[i] };
+      const ref = img.rescue && img.rescue[i];
+      if (ref && !entry.edited) { entry.source = 'bank'; entry.rescue = ref; }
+      if (rec.verdict === 'YES') kept.push(entry);
+      else if (rec.verdict === 'NO') rejected.push(entry);
+    }
+    out.images.push({ image: img.image, hash: img.hash, condition: img.condition, time: img.time,
+      week: img.week, day: img.day, paths: img.paths, kept, rejected });
+  }
+  out.keptCount = out.images.reduce((n, i) => n + i.kept.length, 0);
+  out.imagesWithNone = out.images.filter((i) => !i.kept.length).map((i) => i.image);
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = EXPORT_NAME;
+  a.click();
+};
+
+render();
+</script>

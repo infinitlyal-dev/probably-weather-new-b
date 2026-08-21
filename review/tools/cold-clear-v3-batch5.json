@@ -1,0 +1,46 @@
+{
+ "bucket": "cold-clear",
+ "batch": 5,
+ "images": [
+  {
+   "image": "cold-clear/week_2/day/1.webp",
+   "seen": "A boerboel basking eyes-closed against a sunny wall, faint breath vapour, water bowl beside him, dead-brown winter lawn and hard blue sky. Monday.",
+   "lines": [
+    "Full sun, brown grass, visible breath: the boerboel has found the warm wall.",
+    "The sunny side of the wall is prime property, and it is taken.",
+    "The lawn went beige weeks ago; the sky never got the memo."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/day/2.webp",
+   "seen": "A parkrun start on frosty grass — runners in beanies and gloves, breath clouds everywhere, marshals in hi-vis, brick clubhouse behind, clear pale sky. Sunday.",
+   "lines": [
+    "Half the field is steam before anyone has run a step.",
+    "Frost on the grass, steam off the field: winter running weather at its most honest.",
+    "Cold enough to see every breath, clear enough that nobody minds."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/3.webp",
+   "seen": "Two horses standing together in a frosty paddock at golden dusk, their breath steaming and backlit, bare trees behind. Wednesday.",
+   "lines": [
+    "The horses are doing their own weather report, one breath at a time.",
+    "The frost is back on the grass before the sun is even gone.",
+    "Golden light, silver breath: a winter dusk doing both its tricks at once."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/5.webp",
+   "seen": "A cat on the windowsill watching a pink-red winter sunset through a window frosting at its edges, frosty garden and mountains beyond. Sunday.",
+   "lines": [
+    "The window is frosting at the edges and the cat has the best seat for it.",
+    "That sunset is happening at two degrees, which is why it is watched from inside.",
+    "Pink sky through cold glass: winter does its best work at a distance."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

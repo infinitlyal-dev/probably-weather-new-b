@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 2,
+ "images": [
+  {
+   "image": "storm/week_1/day/3.webp",
+   "seen": "Five shoppers sheltering under a mall's glass canopy at dusk, watching lightning strike beyond the wet parking lot, trolleys abandoned mid-row. Tuesday.",
+   "lines": [
+    "The gap between flashes is being counted by everyone under this roof.",
+    "The trolleys are staying exactly where the storm interrupted them.",
+    "Five strangers, one roof, one unspoken agreement: not yet."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/day/4.webp",
+   "seen": "A surfer in a wetsuit walking towards heavy storm surf under an enormous dark sky, board under his arm, rain already falling out at sea. Saturday.",
+   "lines": [
+    "That sky would send most people home; it is sending him in.",
+    "The storm is doing the wave-making and he is doing the arithmetic.",
+    "Big sky, bigger sea, one board: the argument for staying home lost."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/day/5.webp",
+   "seen": "A woman grimacing over a completely skeletonised umbrella in a wind-blasted street, leaves flying, palms bending, dark storm sky. Monday.",
+   "lines": [
+    "The umbrella is now a diagram of an umbrella.",
+    "Leaves in the street, spokes in the air: the storm is winning on all fronts.",
+    "The wind has a personal vendetta against umbrellas."
+   ],
+   "rescue": [null, null, "witty:wind#14"]
+  },
+  {
+   "image": "storm/week_1/dusk/2.webp",
+   "seen": "Two farmers in hats loading hay bales onto a bakkie in golden light, a dark storm wall already dumping rain on the mountains behind them. Thursday.",
+   "lines": [
+    "That storm is twenty minutes out and both of them know the maths.",
+    "The sky set the deadline; the bakkie gets loaded to it.",
+    "The mountains are already getting theirs; this hay has about twenty minutes."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

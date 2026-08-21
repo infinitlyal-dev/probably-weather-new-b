@@ -1,0 +1,46 @@
+{
+ "bucket": "fog",
+ "batch": 6,
+ "images": [
+  {
+   "image": "fog/week_2/dusk/1.webp",
+   "seen": "The Bo-Kaap at foggy dusk — pink, teal and yellow houses glowing under wall lamps, wet cobbles, a man watering his pot plants, the city fading into mist below. Friday.",
+   "lines": [
+    "The fog took the city but it is not getting the Bo-Kaap's colours.",
+    "The whole city has gone grey below; this street refused, on principle.",
+    "The mist gets thicker downhill, and the houses get louder to compensate."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_2/dusk/3.webp",
+   "seen": "A couple walking their bicycles down a foggy oak-lined lane at dusk, lamplight in the mist, wet leaves underfoot, white Cape Dutch gables behind. Wednesday.",
+   "lines": [
+    "Too misty to ride, which neither of them minds in the slightest.",
+    "The fog turned the ride home into a walk, and the walk is better.",
+    "Mist in the oaks, gables in the mist: the Boland doing its winter thing."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_2/dusk/7.webp",
+   "seen": "A foggy harbour jetty at dusk — moored yachts ghosted in the mist, jetty lamps glowing, a warm-lit restaurant at the end, an oystercatcher on the wet sand. Saturday.",
+   "lines": [
+    "Every boat is staying exactly where it is, and the fog approves.",
+    "The masts have gone to silhouettes and the restaurant has gone to gold.",
+    "Nothing sails in this; even the oystercatcher is walking."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_2/night/2.webp",
+   "seen": "A woman wrapped in a blanket with a steaming mug on her apartment balcony at night, the fog below glowing with soft streetlights. Sunday.",
+   "lines": [
+    "The city noise is off tonight; fog is the best soundproofing there is.",
+    "The streetlights have gone soft and the whole suburb has gone quiet.",
+    "Fog outside, blanket outside too: some weather is for watching from one metre away."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

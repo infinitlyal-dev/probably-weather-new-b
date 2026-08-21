@@ -1,0 +1,46 @@
+{
+ "bucket": "fog",
+ "batch": 5,
+ "images": [
+  {
+   "image": "fog/week_2/dawn/1.webp",
+   "seen": "A farm dirt road lined with gum trees at golden foggy sunrise, frost on the verges, the farmhouse faint in the mist. Thursday.",
+   "lines": [
+    "The sun is coming through the fog at half strength and full gold.",
+    "The mist gets the farm; the frost gets the verges; the road splits the difference.",
+    "This gold lasts exactly as long as the fog does, which is the deal."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_2/dawn/3.webp",
+   "seen": "Three Nguni cattle standing at a wooden fence above a valley banked with fog, golden hills beyond, dew-heavy grass. Sunday.",
+   "lines": [
+    "The fog filled the valley overnight; the Ngunis are standing on its shoreline.",
+    "Fog settles in the low ground, which is why the herd sleeps on the hill.",
+    "Three Ngunis watching the fog like it owes them a field."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_2/day/1.webp",
+   "seen": "An empty rugby field in fog at first light, the near posts sharp and the far posts almost gone, houses ghosted behind. Saturday.",
+   "lines": [
+    "Kickoff is ten and the far posts have not arrived yet.",
+    "The field is regulation size; you just have to take that on faith today.",
+    "Saturday rugby waits for the fog, and the fog is in no hurry."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_2/day/6.webp",
+   "seen": "A man driving slowly through white-out fog, phone GPS mounted on the dash showing the route, mirror and glass hazed. Thursday.",
+   "lines": [
+    "The GPS says the road is there, and today that is the whole case for it.",
+    "Twenty in a sixty and completely correct about it.",
+    "The phone knows the route; the fog is testing how much he trusts it."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

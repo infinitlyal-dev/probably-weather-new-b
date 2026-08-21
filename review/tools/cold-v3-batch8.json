@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 8,
+ "images": [
+  {
+   "image": "cold/week_4/dawn/1.webp",
+   "seen": "A Karoo stone cottage at frosty golden dawn, chimney smoke rising dead straight, two steaming enamel mugs standing on the frosted stone wall. Saturday.",
+   "lines": [
+    "Smoke going straight up means cold, still and not one breath of wind.",
+    "Frost on the wall, steam on the mugs: the morning is minus-something and perfect.",
+    "The chimney got lit before the kettle did, and both were the right call."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_4/day/1.webp",
+   "seen": "A man walking to work with his roll-neck jersey pulled up over his nose, satchel on his shoulder, wet paving and a bare tree under a grey sky. Friday.",
+   "lines": [
+    "The jersey got promoted to balaclava somewhere between the door and the gate.",
+    "The air found the one gap in the outfit and he is closing it by hand.",
+    "Ja, it's jersey weather. Double jersey."
+   ],
+   "rescue": [null, null, "witty:cold#0"]
+  },
+  {
+   "image": "cold/week_4/day/2.webp",
+   "seen": "An elderly man under a knitted blanket in an armchair pulled up to a glowing bar heater, tea on the side table, bare branches and grey through the window. Sunday.",
+   "lines": [
+    "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly.",
+    "Every bar of that heater is on, which is all the weather report you need.",
+    "Cold enough that the armchair migrated toward the plug points."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_4/day/4.webp",
+   "seen": "A garden tap furred completely white with frost, one drop hanging from the spout, frosted herbs and a brick house behind, pale clear sky. Monday.",
+   "lines": [
+    "The garden tap grew a white beard overnight; the night was that serious.",
+    "That drop has been thinking about letting go since about four this morning.",
+    "Frost right down to the washers — last night went properly below zero."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

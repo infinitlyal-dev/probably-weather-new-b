@@ -1,0 +1,46 @@
+{
+ "bucket": "clear",
+ "batch": 5,
+ "images": [
+  {
+   "image": "clear/week_2/dusk/4.webp",
+   "seen": "A teenager railing a mountain-bike berm on a dirt trail at sunset, golden dust hanging in the air behind him, hills to the horizon, clear gradient sky. Wednesday.",
+   "lines": [
+    "That dust is hanging in the air because there is no wind to take it anywhere.",
+    "You can see three ridgelines from here, which is what no-haze evenings are for.",
+    "The sun is at the exact height where the whole veld goes gold."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_2/dusk/5.webp",
+   "seen": "Two birds silhouetted on a wire against a spectacular pink-and-orange cirrus sunset, bushveld dirt road and thorn trees below. Monday.",
+   "lines": [
+    "Cirrus this pink means the sky is completely dry all the way up.",
+    "A sunset like this pulls an audience, and tonight it is two birds on a wire.",
+    "Monday got the best sky of the week and is wasting it on a farm road."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_2/dusk/6.webp",
+   "seen": "Three schoolboys walking home at dusk with arms over each other's shoulders, clean orange-to-navy gradient sky, streetlights just on. Tuesday.",
+   "lines": [
+    "A gradient that clean means not one cloud between here and tomorrow.",
+    "Orange to navy with nothing in between — the walk home slowed down for it.",
+    "The day used up every hour of light and still had this left over."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_2/night/5.webp",
+   "seen": "A mother and toddler at an open glass door pointing at the moon, the family cat sitting on the lawn under a moonlit, starry sky. Thursday.",
+   "lines": [
+    "The moon is out and somebody small is hearing about it for the first time.",
+    "Not a cloud. Just you and the Southern Cross.",
+    "Clear enough that even the cat is checking the sky."
+   ],
+   "rescue": [null, "witty:night#13", null]
+  }
+ ]
+}

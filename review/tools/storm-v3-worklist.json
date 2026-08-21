@@ -1,0 +1,552 @@
+[
+ {
+  "image": "storm/week_1/dawn/2.webp",
+  "hash": "91f980f76f82",
+  "condition": "storm",
+  "time": "dawn",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "storm/week_1/dawn/2.webp",
+   "storm/week_3/dawn/2.webp"
+  ],
+  "place": null,
+  "seen": "A highway at dawn seen from an overpass. Heavy purple storm cloud fills the top half with one fork of lightning in it, and the CBD skyline sits under a curtain of rain lit orange by the sunrise. Below, four lanes of nose-to-tail traffic with brake lights on — a delivery truck, bakkies, hatchbacks — all on wet tar, while the opposite carriageway is nearly empty.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dawn/3.webp",
+  "hash": "55fac1141abf",
+  "condition": "storm",
+  "time": "dawn",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "storm/week_1/dawn/3.webp",
+   "storm/week_3/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "A modern estate street in heavy rain with an enormous branching lightning bolt striking down right behind the houses, the strike point just behind a flat-roofed concrete house. Wet road, a silver Polo in a driveway, another car parked, thorn trees whipping, plastered walls, rain falling hard.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dawn/5.webp",
+  "hash": "f0b49be17750",
+  "condition": "storm",
+  "time": "dawn",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "storm/week_1/dawn/5.webp",
+   "storm/week_3/dawn/5.webp"
+  ],
+  "place": null,
+  "seen": "A field of green sunflowers with the heads still shut, a windpomp silhouetted in the middle distance, under a spectacular mammatus ceiling — pouch-shaped purple and pink cloud filling the whole sky with a burning orange strip along the horizon.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dawn/7.webp",
+  "hash": "a785060d7357",
+  "condition": "storm",
+  "time": "dawn",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "storm/week_1/dawn/7.webp",
+   "storm/week_3/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "A bedroom. A woman lying flat on her stomach on the floor beside the bed with one arm reaching underneath it, coaxing; a man in a white tee crouched behind her, both smiling. Under the bed a brown dog's head and paws are just visible, refusing to come out. Wooden floor, rug, framed picture, warm lamp light through the door.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/day/3.webp",
+  "hash": "41e6c19016c1",
+  "condition": "storm",
+  "time": "day",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "storm/week_1/day/3.webp"
+  ],
+  "place": null,
+  "seen": "Under the glass canopy outside a supermarket at dusk in a storm. Six people who clearly do not know each other standing in a row on the paving, all looking out at the rain — a woman in a headscarf, a man in a hi-vis work jacket, three young people. Two abandoned trolleys out on the wet parking lot, parked cars, and a fork of lightning behind the far buildings. Warm shop light spilling from the left.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/day/4.webp",
+  "hash": "676b8843cb92",
+  "condition": "storm",
+  "time": "day",
+  "week": "B",
+  "day": "sat",
+  "paths": [
+   "storm/week_1/day/4.webp"
+  ],
+  "place": null,
+  "seen": "A surfer in a black wetsuit walking away down an empty beach towards the water with his board under his arm, into an enormous dark storm sky with visible rain shafts falling out over the sea. Grey-green surf, rain falling on him, and his the only footprints going that way.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/day/5.webp",
+  "hash": "99d0821cdd98",
+  "condition": "storm",
+  "time": "day",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "storm/week_1/day/5.webp"
+  ],
+  "place": null,
+  "seen": "A suburban street in a storm. A woman in a navy rain jacket bent forward, laughing, holding up an umbrella that has been completely stripped — only the bare metal ribs left, not a scrap of fabric on it. Torn green leaves and broken branches scattered all over the wet road and verges, palms thrashing, power lines, heavy grey cloud.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dusk/2.webp",
+  "hash": "a61146a38b06",
+  "condition": "storm",
+  "time": "dusk",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "storm/week_1/dusk/2.webp",
+   "storm/week_3/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "Two farmers in wide-brimmed hats lifting a bale onto the back of a white bakkie already loaded with bales, on a dirt road at the edge of a golden grass field. Behind them a sandstone escarpment with a dark storm cell and a visible rain shaft falling on the left, and burning gold sunset light on the right. More bales stacked in the foreground.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dusk/3.webp",
+  "hash": "742e1675a5a4",
+  "condition": "storm",
+  "time": "dusk",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "storm/week_1/dusk/3.webp",
+   "storm/week_3/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "From a balcony walkway, a woman with big curly hair seen from behind, leaning on the concrete parapet looking out over a wet city street at dusk — a 1960s brown-brick block with lit windows, wet road reflecting street lights and tail lights, one small figure with a pink umbrella far below. Above, a huge purple and orange storm sky with a big fork of lightning to the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dusk/4.webp",
+  "hash": "53d4228e24c8",
+  "condition": "storm",
+  "time": "dusk",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "storm/week_1/dusk/4.webp",
+   "storm/week_3/dusk/4.webp"
+  ],
+  "place": null,
+  "seen": "An empty suburban estate street at dusk in a storm — wet road running away, one street light, modern flat-roofed grey houses on the right with two windows glowing warm orange, a palm and a big tree bending, and a wide sheet-and-fork discharge lighting the cloud base above the houses.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dusk/5.webp",
+  "hash": "e5b510c8a1e4",
+  "condition": "storm",
+  "time": "dusk",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "storm/week_1/dusk/5.webp",
+   "storm/week_3/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "A rocky coastline at dusk with heavy purple-black storm cloud filling the sky and three separate lightning bolts striking down into the sea on the horizon, with a burning orange strip of sunset below them. White surf pouring over black rocks in the foreground, rain shafts on the left.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/dusk/7.webp",
+  "hash": "e0089512238b",
+  "condition": "storm",
+  "time": "dusk",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "storm/week_1/dusk/7.webp",
+   "storm/week_3/dusk/7.webp"
+  ],
+  "place": null,
+  "seen": "A dim house passage lit by one warm wall sconce. A galvanised bucket standing in the middle of the floor with water dripping into it from the ceiling, a drop caught mid-fall, and a folded grey towel on the floor beside it. Beyond, a doorway into a lounge with an armchair, a brass lamp, a rug and a rain-wet window onto a green garden.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/night/7.webp",
+  "hash": "14c56f85c353",
+  "condition": "storm",
+  "time": "night",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "storm/week_1/night/7.webp",
+   "storm/week_3/night/7.webp"
+  ],
+  "place": null,
+  "seen": "A dark bedroom at night. A man in a navy tee and grey shorts standing at the window grinning, holding up his phone to film an enormous branching lightning bolt lighting the whole sky purple over a suburb of trees, street lights and distant town lights. Framed picture, lamp and a bed with a patterned duvet on the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/dawn/2.webp",
+  "hash": "56af96f529d2",
+  "condition": "storm",
+  "time": "dawn",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "storm/week_2/dawn/2.webp",
+   "storm/week_4/dawn/2.webp"
+  ],
+  "place": null,
+  "seen": "A man in black running kit standing in the middle of a suburban estate road, hands on hips, head tipped back looking straight up at a heavy dark grey storm sky. A sandstone-clad house with a wide verandah and warm-lit windows on the right, indigenous garden beds, one break of pale light on the horizon. The road is still dry.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/dawn/3.webp",
+  "hash": "29a289619727",
+  "condition": "storm",
+  "time": "dawn",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "storm/week_2/dawn/3.webp",
+   "storm/week_4/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "A woman in a dark green towelling gown, barefoot, leaning against the brick pillar of her front porch holding a patterned mug in both hands, looking out at a pink and purple storm dawn over a suburban estate with distant mountains and two faint lightning bolts on the left. A lantern lit on the wall beside her, wet driveway, parked car, other houses with their porch lights on.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/dawn/7.webp",
+  "hash": "20ed2fe6b144",
+  "condition": "storm",
+  "time": "dawn",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "storm/week_2/dawn/7.webp",
+   "storm/week_4/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "A white bakkie driving away down a red dirt farm road between two walls of green maize, throwing up a plume of red dust lit orange by a low sun. Above, deep blue sky with a band of dark storm cloud along the horizon burning orange underneath.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/day/2.webp",
+  "hash": "c152b51ebfa5",
+  "condition": "storm",
+  "time": "day",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "storm/week_2/day/2.webp"
+  ],
+  "place": null,
+  "seen": "Two golfers seen from behind standing on a fairway with their golf bags beside them, watching an enormous lightning bolt strike down at the far end of the course. Trees whipping either side, wet green grass, heavy dark cloud, rain in the air.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/day/3.webp",
+  "hash": "a02b40a1cdb7",
+  "condition": "storm",
+  "time": "day",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "storm/week_2/day/3.webp"
+  ],
+  "place": null,
+  "seen": "An empty rugby stadium seen from the try line — perfectly striped green field, white lines and posts, empty grandstands all round, floodlights on in daylight, under a huge churning storm cloud with sheet and fork lightning behind the main stand. Puddles standing in the in-goal area.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/day/4.webp",
+  "hash": "c2c016aabf8f",
+  "condition": "storm",
+  "time": "day",
+  "week": "B",
+  "day": "tue",
+  "paths": [
+   "storm/week_2/day/4.webp"
+  ],
+  "place": null,
+  "seen": "A bushveld garden after a storm has been through it. Wicker patio chairs on their sides and upside down on the lawn, the glass table shifted, two patterned seat cushions flung onto the grass and paving, a sun lounger tipped over, broken branches and torn leaves everywhere, acacias still bending, wet flagstones. Heavy grey cloud.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/day/5.webp",
+  "hash": "777b9b465dbe",
+  "condition": "storm",
+  "time": "day",
+  "week": "B",
+  "day": "sun",
+  "paths": [
+   "storm/week_2/day/5.webp"
+  ],
+  "place": null,
+  "seen": "An old farmer in a bush hat, khaki shirt and gumboots standing in the doorway of a rusted corrugated-iron shed, one hand on his hat brim and one on the door frame, looking out at a huge dark storm cloud with a lightning bolt rolling in over a bone-dry dusty field. Dust blowing past his boots, pale dead grass to the horizon.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/day/6.webp",
+  "hash": "30a82fcff9d4",
+  "condition": "storm",
+  "time": "day",
+  "week": "B",
+  "day": "mon",
+  "paths": [
+   "storm/week_2/day/6.webp"
+  ],
+  "place": null,
+  "seen": "A quiet dorp street of white flat-roofed houses and a long white boundary wall, oleander in white flower, a palm, a strip of dead brown grass verge with one hadeda standing on it. Above, an enormous dark grey storm cloud filling three quarters of the frame with a pale break on the left horizon. The road is completely empty.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/dusk/4.webp",
+  "hash": "f6818069c8bd",
+  "condition": "storm",
+  "time": "dusk",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "storm/week_2/dusk/4.webp",
+   "storm/week_4/dusk/4.webp"
+  ],
+  "place": null,
+  "seen": "A suburban street at dusk after a storm — the road under a sheet of standing water reflecting everything, an enormous fallen tree lying with its whole crown across the road and verge on the right, roof debris on the house behind it, branches and leaves scattered, a street light on, and an emergency vehicle with red and blue lights flashing in the middle distance. Gold sunset break under heavy cloud on the left.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/dusk/5.webp",
+  "hash": "adc69e7b4a17",
+  "condition": "storm",
+  "time": "dusk",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "storm/week_2/dusk/5.webp",
+   "storm/week_4/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "A man on an apartment balcony at dusk seen from behind, in a black tee, holding up his phone to photograph an enormous pink-purple lightning display over a city skyline. Wet balcony tiles, glass balustrade, warm lounge light through the sliding door on the left, a pot plant, trees and lit streets below.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/night/1.webp",
+  "hash": "faaf0b2003be",
+  "condition": "storm",
+  "time": "night",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "storm/week_2/night/1.webp",
+   "storm/week_4/night/1.webp"
+  ],
+  "place": null,
+  "seen": "A boy of about nine wrapped in a thick grey fleece blanket sitting on a window seat at night with his knees up, looking out through the glass at a lightning bolt over a dark suburb of scattered lights and rooftops. A warm lamp and a shelf with a trophy and a framed picture behind him, rain on the glass.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_2/night/5.webp",
+  "hash": "2d2e6dd5d7fd",
+  "condition": "storm",
+  "time": "night",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "storm/week_2/night/5.webp",
+   "storm/week_4/night/5.webp"
+  ],
+  "place": null,
+  "seen": "A bedroom at night with a white pitched ceiling. Water is pouring through the ceiling in a stream straight onto the bed. A man in a grey tee and pyjama bottoms leans over the bed laughing while a woman holds a grey plastic bucket up into the stream, head back, laughing. Bedside lamp lit, wooden shutters, dark night outside.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_3/day/1.webp",
+  "hash": "10cac134f9d9",
+  "condition": "storm",
+  "time": "day",
+  "week": "B",
+  "day": "fri",
+  "paths": [
+   "storm/week_3/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A farmer in a cap and khaki jacket standing on the back of a white bakkie pulling a big blue tarpaulin over a load of hay bales, looking up. Hail is falling — white stones in the air and lying on the bonnet and the ground. Behind him a brick farmhouse with a wide verandah and warm lit windows, dark cloud with a gold break on the left.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_3/day/3.webp",
+  "hash": "20f3d07d3c47",
+  "condition": "storm",
+  "time": "day",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "storm/week_3/day/3.webp"
+  ],
+  "place": null,
+  "seen": "A big German-shepherd cross lying flat under a heavy wooden dining table on tiled floor, looking straight at camera with wide eyes and ears back. Behind, sliding glass doors onto a wet patio with outdoor furniture, and a bright lightning bolt in the blue-grey sky beyond. Two pendant lamps lit above the table.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_3/day/5.webp",
+  "hash": "b08495c9d832",
+  "condition": "storm",
+  "time": "day",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "storm/week_3/day/5.webp"
+  ],
+  "place": null,
+  "seen": "A club cricket ground with a dry cracked pitch, the white covers half dragged over it and lying rumpled, a rope trailing across the grass, kit bags, a pair of batting gloves, a towel and a team jacket abandoned on the outfield. Advertising boards along the boundary, a tilted sightscreen, low houses behind. Above, an enormous black storm cloud fills the top two thirds while hard low sun still lights the green outfield.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_4/day/1.webp",
+  "hash": "ea95b93c8930",
+  "condition": "storm",
+  "time": "day",
+  "week": "B",
+  "day": "wed",
+  "paths": [
+   "storm/week_4/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A wet dirt farm road. In the foreground puddle a white plastic garden chair lies tipped on its side half in the water. Beyond it a small ochre farmhouse with a corrugated roof and verandah, trees, dry gold grass, and a huge dark storm cell with a heavy rain shaft pouring straight down behind the house.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_4/day/5.webp",
+  "hash": "8c5812bded23",
+  "condition": "storm",
+  "time": "day",
+  "week": "B",
+  "day": "thu",
+  "paths": [
+   "storm/week_4/day/5.webp"
+  ],
+  "place": null,
+  "seen": "A man in a white tee and shorts, barefoot, straining to close a big cantilever patio umbrella on a paved terrace with both hands on the pole. Behind him a modern double-storey house with a glass balustrade; ahead an enormous storm cloud with a bright anvil top catching the last sun and a dark shelf beneath. Leaves blowing across the paving, white dining chairs and table on the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_4/day/6.webp",
+  "hash": "f6562060468c",
+  "condition": "storm",
+  "time": "day",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "storm/week_4/day/6.webp"
+  ],
+  "place": null,
+  "seen": "Inside a stopped car, a young man in the passenger seat holding his phone up to the windscreen filming an enormous branching lightning bolt over a flooded street, palms and low houses beyond a wall, one street light on, rain on the glass. His screen is showing the bolt back to him.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "storm/week_1/night/4.webp",
+  "hash": "2fede244e0d0",
+  "condition": "storm",
+  "time": "night",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "storm/week_1/night/4.webp",
+   "storm/week_3/night/4.webp"
+  ],
+  "place": "Johannesburg northern suburbs",
+  "seen": "Joburg suburban street at night. Streetlight cone with rain streaking through it, a big bare tree, brick wall topped with electric fence, palisade gate, wet road, lightning glow behind the canopy.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "storm/week_1/night/5.webp",
+  "hash": "9851963ee129",
+  "condition": "storm",
+  "time": "night",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "storm/week_1/night/5.webp",
+   "storm/week_3/night/5.webp"
+  ],
+  "place": "Pretoria east",
+  "seen": "Pretoria face-brick double garage, roller doors, security light on. A downpipe gushing in a rope, hose reel coiled on the wall, wheelie bin standing, wet paving covered in jacaranda blossom, lightning in a purple sky.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "storm/week_2/night/3.webp",
+  "hash": "cd855e5f60e9",
+  "condition": "storm",
+  "time": "night",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "storm/week_2/night/3.webp",
+   "storm/week_4/night/3.webp"
+  ],
+  "place": "Durban",
+  "seen": "Durban covered stoep at night, one bare bulb, red polished floor shining wet, water sheeting off the roof edge, banana and strelitzia thrashing in the dark, a lit window.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ },
+ {
+  "image": "storm/week_2/night/4.webp",
+  "hash": "ae79261d2852",
+  "condition": "storm",
+  "time": "night",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "storm/week_2/night/4.webp",
+   "storm/week_4/night/4.webp"
+  ],
+  "place": "Bloemfontein",
+  "seen": "Bloemfontein street, low houses and plastered walls, one streetlight, a white car parked under a carport, dry dusty road, a huge cloud lit from inside by lightning.",
+  "alreadyKept": [],
+  "need": 3,
+  "note": "round-1 lines retired by the doctrine redo"
+ }
+]

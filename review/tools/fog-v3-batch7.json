@@ -1,0 +1,46 @@
+{
+ "bucket": "fog",
+ "batch": 7,
+ "images": [
+  {
+   "image": "fog/week_2/night/4.webp",
+   "seen": "A couple walking a golden retriever at night through amber sodium fog, haloed streetlights, an art-deco apartment block glowing behind. Friday.",
+   "lines": [
+    "The whole street has gone amber tonight; the fog is holding the light like syrup.",
+    "Friday night fog: the block gets quieter, the streetlights get bigger.",
+    "The fog moved in an hour ago and the streetlights have doubled in size since."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_3/day/2.webp",
+   "seen": "A woman in a fleece walking her dog into thick ground fog — the taut leash disappears into the white and the dog is completely invisible. Tuesday.",
+   "lines": [
+    "The dog is definitely still on the end of that leash. Almost definitely.",
+    "The leash goes into the fog and only faith comes back out of it.",
+    "Current visibility: one whole dog short of complete."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_3/day/7.webp",
+   "seen": "A man in a gown and slippers wheeling his bin down the driveway into heavy fog, garden topiary fading behind him. Friday.",
+   "lines": [
+    "Gown, slippers, thirty metres of visibility: bin day waits for no weather.",
+    "The bin run is being flown on instruments this morning.",
+    "Walking to the bin is now an expedition."
+   ],
+   "rescue": [null, null, "witty:fog#34"]
+  },
+  {
+   "image": "fog/week_4/day/1.webp",
+   "seen": "A view over suburban rooftops with fog lying between the houses at golden sunrise, a jacaranda in bloom below, sun breaking through the layer. Wednesday.",
+   "lines": [
+    "The fog is lying in the streets like it pays rates here.",
+    "Sun from above, fog from below: the suburb is the middle of the sandwich.",
+    "The fog got in among the houses overnight and the sun is evicting it street by street."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

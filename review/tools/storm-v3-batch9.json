@@ -1,0 +1,26 @@
+{
+ "bucket": "storm",
+ "batch": 9,
+ "images": [
+  {
+   "image": "storm/week_2/night/3.webp",
+   "seen": "An enclosed stoep at night with rain sheeting off the roof edge in a solid curtain past a strelitzia, one bulb burning, wet red-polished floor, security gate to the garden. Friday.",
+   "lines": [
+    "The roof has no gutter on that side and tonight it is a waterfall.",
+    "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight.",
+    "Everything past the gate is weather; everything inside it is fine."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/night/4.webp",
+   "seen": "Lightning glowing behind heavy cloud over a small-town street at night, one streetlight on, a white car safe under its carport behind the gate. Thursday.",
+   "lines": [
+    "The whole sky went mauve for a second and the street pretended not to notice.",
+    "One streetlight versus the entire electrical budget of that cloud.",
+    "That flash reached town before its thunder; the gap is closing though."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

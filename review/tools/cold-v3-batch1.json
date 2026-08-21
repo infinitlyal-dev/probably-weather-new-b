@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 1,
+ "images": [
+  {
+   "image": "cold/week_1/dawn/1.webp",
+   "seen": "A small scruffy dog in a grey knitted jersey standing on dew-soaked grass at blue dawn, misty garden behind. Monday.",
+   "lines": [
+    "The grass is wet, the air is cold, and the jersey was not optional.",
+    "Dew this heavy means the night got properly cold and stayed there.",
+    "Small dog, thick jersey, short patrol: winter mornings run on reduced hours."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_1/dawn/3.webp",
+   "seen": "A mother kneeling at the front door zipping her son's puffer jacket over his school uniform and beanie, cold blue dawn and wet street outside. Wednesday.",
+   "lines": [
+    "The zip goes all the way up today; the walk to the gate has teeth.",
+    "That jacket call was made by one look through the kitchen window.",
+    "Beanie plus puffer plus school tie: the cold front has reached the uniform."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_1/dawn/4.webp",
+   "seen": "A Karoo farmer standing among his sheep at a whitewashed kraal wall at dawn, breath visible, pastel cold sky over the plain. Thursday.",
+   "lines": [
+    "You can see his breath, and the sheep are wearing the only good answer.",
+    "The Karoo does its coldest hour right before its prettiest one.",
+    "The sheep bunched before he opened the gate; they read the cold first."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_1/dawn/7.webp",
+   "seen": "An old sedan frosted white in a driveway at dawn, iced windscreen, bare trees and a pink band on the horizon. Tuesday.",
+   "lines": [
+    "The sky is clear and the car is white, and those two facts are related.",
+    "That windscreen is a ten-minute job and the kettle knows its part.",
+    "The car coughed twice before it agreed to start."
+   ],
+   "rescue": [null, null, "witty:cold-clear#2"]
+  }
+ ]
+}

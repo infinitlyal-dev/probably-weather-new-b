@@ -1,0 +1,46 @@
+{
+ "bucket": "cold-clear",
+ "batch": 2,
+ "images": [
+  {
+   "image": "cold-clear/week_1/dusk/2.webp",
+   "seen": "A ridgeback sitting at the driveway gate at frosty dusk, breath visible, orange-to-navy clear gradient over the trees, frost on the lawn, warm window lit behind. Tuesday.",
+   "lines": [
+    "Frost already forming and the sun barely down: tonight means business.",
+    "Even the guard dog's breath is showing, and the stars are not even out yet.",
+    "A clear dusk on the Highveld is just the frost clearing its throat."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/4.webp",
+   "seen": "Towels frosted stiff on the washing line at orange dusk, frosted lawn and aloes, terracotta-roofed house behind. Monday.",
+   "lines": [
+    "The towels went out damp and are coming in as boards.",
+    "Sunset is doing the colours; the frost is already doing the towels.",
+    "That washing is not dry; it is preserved. Winter dusk works fast out here."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/5.webp",
+   "seen": "Five friends in beanies and blankets around a modern concrete fire bowl at clear dusk, mugs steaming, modern double-storey house behind. Friday.",
+   "lines": [
+    "Clear sky, sharp air, one fire bowl doing the work of a whole summer.",
+    "The temperature dropped with the sun and the circle got tighter by exactly that much.",
+    "The evening turned cold the minute it turned beautiful, which is the usual trade."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/7.webp",
+   "seen": "A frosted sports field at dusk with floodlights on, folded blankets on the bench, a ball on the white grass, clubhouse and orange horizon behind. Saturday.",
+   "lines": [
+    "A sky that clean means the field freezes before the floodlights even warm up.",
+    "Frost on the pitch an hour after sundown — whoever trains tonight earns it.",
+    "The blankets on the bench are not decoration; the touchline is minus something."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

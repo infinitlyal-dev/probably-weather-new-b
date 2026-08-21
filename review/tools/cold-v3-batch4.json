@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 4,
+ "images": [
+  {
+   "image": "cold/week_2/dawn/5.webp",
+   "seen": "An empty bed with the duvet thrown back into a body-shaped tunnel, grey misty winter morning and bare branches through the window. Friday.",
+   "lines": [
+    "The warmest place in the province was abandoned here at about six-fifteen.",
+    "The window says mist and bare branches; the bed rests its case.",
+    "The duvet understood the assignment."
+   ],
+   "rescue": [null, null, "witty:cold#21"]
+  },
+  {
+   "image": "cold/week_2/dawn/6.webp",
+   "seen": "An SUV with its windscreen completely frosted over in fern patterns, lit gold by the rising sun, frosty brown lawn and a modern double-storey house. Sunday.",
+   "lines": [
+    "Minus something this morning: the windscreen has grown its own art collection.",
+    "The first ten minutes of this Sunday belong to a credit card and the demister.",
+    "Frost on the grass, ferns on the glass — the night went well below zero here."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_2/day/2.webp",
+   "seen": "A toddler peeking out of a duvet cave built on the lounge floor, lamp glowing, a gloomy grey winter day through the window. Friday.",
+   "lines": [
+    "Construction finished at nine: one duvet cave, single occupant, no visitors till spring.",
+    "The day outside never got light properly, so the day inside went underground.",
+    "Blanket burrito mode: activated."
+   ],
+   "rescue": [null, null, "witty:cold#9"]
+  },
+  {
+   "image": "cold/week_2/day/3.webp",
+   "seen": "A man in a beanie and jacket walking a small dog in a knitted jersey along a wet road in drizzle, grey estate street. Monday.",
+   "lines": [
+    "Both of them are dressed for this, and neither is pretending to enjoy it.",
+    "Wet road, grey sky, dog in a jersey: winter is fully operational.",
+    "Cold like this turns the morning walk into an errand."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

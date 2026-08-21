@@ -1,53 +1,4 @@
-// Build review/lines-review.html — tick the bespoke lines.
-//
-// Phase 3, Al's ruling of 2026-08-18 (option 2): a bespoke pass over the 15 new
-// photographs plus the buckets with the weakest pass-1 approval rates. Five
-// original EN lines per image, written for that specific picture against
-// review/PAIRING-TASTE.md, plus a sixth free slot for Al's own.
-//
-// THE LINE IS SHOWN ON THE PICTURE, not beside it. The taste doc's finding 0 is
-// that Al judges the PAIR, not the line: of 214 lines proposed three or more
-// times, 174 got different verdicts on different images. A list of lines next to
-// a thumbnail invites judging the writing. The card here is the real hero at its
-// measured size with the shipped scrim and the caption font, and clicking a line
-// puts it where it will actually live.
-//
-//   node scripts/build-lines-review-tool.mjs
-// Serve it: node scripts/serve-review.mjs  ->  /review/lines-review.html
-import { readFileSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const root = fileURLToPath(new URL('..', import.meta.url));
-const p = (f) => path.join(root, f);
-
-// Round 2 passes its own source and output: `node scripts/build-lines-review-tool.mjs
-// review/set-001-lines-bespoke-round2.json review/lines-review-round2.html`.
-const SRC = process.argv[2] || 'review/set-001-lines-bespoke.json';
-const OUT = process.argv[3] || 'review/lines-review.html';
-const doc = JSON.parse(readFileSync(p(SRC), 'utf8'));
-const fold = JSON.parse(readFileSync(p('output/m8-fold/fold.json'), 'utf8'));
-const row = fold.rows.find((r) => r.viewport === '375x812' && r.caption === 'longest');
-const BOX = { w: row.heroWpx, h: row.heroPx };
-const CAP = {
-  runway: Math.max(38, Math.min(76, 7 * 812 / 100)),
-  font: Math.min(4.2 * 812 / 100, 8.8 * 375 / 100),
-  padBottom: Math.max(10, Math.min(20, 1.8 * 812 / 100)),
-};
-
-const DATA = JSON.stringify({ box: BOX, cap: CAP, bucket: doc.bucket || null, images: doc.images });
-const SRC_NAME_LITERAL = JSON.stringify(SRC);
-// The pass is now run one condition bucket at a time, so the page has to say
-// which bucket it is and the export has to land in its own file. Round 1 and
-// round 2 shared a page and a storage key once already, and Al opened the
-// round-2 page to round-1's lines.
-const PER = doc.linesLabel || 'five each';
-const TITLE = doc.bucket
-  ? `Bespoke lines — ${doc.bucket}, ${doc.images.length} photographs, ${PER}`
-  : `Bespoke lines — ${doc.images.length} photographs, ${PER}`;
-const EXPORT_NAME = JSON.stringify(`${path.basename(SRC, '.json')}-ruled.json`);
-
-const html = `<!doctype html>
+<!doctype html>
 <meta charset="utf-8">
 <title>PW — bespoke lines, set-001</title>
 <link rel="stylesheet" href="../assets/type-prototype-caption.css">
@@ -89,7 +40,7 @@ const html = `<!doctype html>
 </style>
 
 <header>
-  <h1>${TITLE}</h1>
+  <h1>Bespoke lines — heat, 12 photographs, three per image incl. locked keeps</h1>
   <span class="tally" id="tally"></span>
   <span style="flex:1"></span>
   <button id="export" class="primary">Export</button>
@@ -97,9 +48,9 @@ const html = `<!doctype html>
 <main id="main"></main>
 
 <script>
-const DATA = ${DATA};
-const SRC_NAME = ${SRC_NAME_LITERAL};
-const EXPORT_NAME = ${EXPORT_NAME};
+const DATA = {"box":{"w":327,"h":518},"cap":{"runway":56.84,"font":33.00000000000001,"padBottom":14.616000000000001},"bucket":"heat","images":[{"index":1,"image":"heat/week_2/dusk/3.webp","hash":"555f76c5594f","condition":"heat","time":"dusk","week":"A","day":"sat","paths":["heat/week_2/dusk/3.webp","heat/week_4/dusk/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A roadside farm stall at sunset — watermelons and fruit in crates, a glass water dispenser on the counter, a woman carrying a melon to her car. Saturday.","note":"1 line(s) already kept by Al, locked below","lines":["The day was a scorcher and the stall is selling the antidote by the kilo.","Watermelon weather: the whole province agreed on it by about ten this morning."],"rescue":[null,null],"alreadyKept":["Nobody drives past a stall like that on a day like this."]},{"index":2,"image":"heat/week_2/dusk/7.webp","hash":"3e88aef1fb06","condition":"heat","time":"dusk","week":"A","day":"thu","paths":["heat/week_2/dusk/7.webp","heat/week_4/dusk/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A father and daughter playing in the sprinkler's spray on the lawn at golden sunset, agapanthus in the foreground. Thursday.","note":"2 line(s) already kept by Al, locked below","lines":["The sprinkler went on for the lawn and got hijacked within the minute."],"rescue":[null],"alreadyKept":["That grass has been too hot to stand on since about eleven this morning.","Thursday, and this is the first time all day either of them has been cool."]},{"index":3,"image":"heat/week_2/day/5.webp","hash":"36881ce76889","condition":"heat","time":"day","week":"A","day":"sat","paths":["heat/week_2/day/5.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A dusty dashboard thermometer reading 38°C on a dead-straight empty Karoo road, white glare sky through the windscreen. Saturday.","note":null,"lines":["The car says 38 and the road ahead agrees in shimmer.","That sky is not white, it is just too hot to be blue.","Every kilometre of that road is being served with a heat shimmer today."],"rescue":[null,null,null],"alreadyKept":[]},{"index":4,"image":"heat/week_4/day/7.webp","hash":"0cc1648cbc13","condition":"heat","time":"day","week":"A","day":"sun","paths":["heat/week_4/day/7.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"Five kids charging through an oscillating sprinkler on a green lawn in hard sun, parents watching from the shaded patio. Sunday.","note":null,"lines":["The sprinkler is doing lawn duty and lifeguard duty at the same time.","On days like this the garden hose outranks every toy in the house.","Lawn watered, kids cooled, parents left in peace: the heat sorted everything."],"rescue":[null,null,null],"alreadyKept":[]},{"index":5,"image":"heat/week_1/dusk/6.webp","hash":"9728bed72ec6","condition":"heat","time":"dusk","week":"A","day":"sun","paths":["heat/week_1/dusk/6.webp","heat/week_3/dusk/6.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A woman with a glass of white wine on the stone stoep steps of a Karoo farmhouse at a blazing orange sunset, windpomp silhouetted on the plain. Sunday.","note":null,"lines":["The day finally dropped below thirty and the stoep is collecting the reward.","A sky like that is what forty degrees looks like on its way out.","First sittable hour since breakfast, and it brought colours."],"rescue":[null,null,null],"alreadyKept":[]},{"index":6,"image":"heat/week_2/dusk/1.webp","hash":"93f4a43551af","condition":"heat","time":"dusk","week":"A","day":"fri","paths":["heat/week_2/dusk/1.webp","heat/week_4/dusk/1.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"Three friends walking the palm-lined beachfront promenade at sunset, soft-serve cones already melting over their hands. Friday.","note":null,"lines":["The soft-serve is losing a race it was never going to win.","The promenade fills up the minute the temperature becomes friendly again.","Still warm enough at sunset that the ice cream is doing the sweating."],"rescue":[null,null,null],"alreadyKept":[]},{"index":7,"image":"heat/week_1/night/1.webp","hash":"ea333aeefd0d","condition":"heat","time":"night","week":"A","day":"sun","paths":["heat/week_1/night/1.webp","heat/week_3/night/1.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A sweating glass of ice water standing on the promenade wall at night, bicycles leaning on the rail, a family strolling under the streetlights. Sunday.","note":null,"lines":["The glass is sweating at nine at night, which tells you about today.","The whole promenade came out after dark, when the town becomes walkable again.","Night has not cooled anything yet; even the water is perspiring."],"rescue":[null,null,null],"alreadyKept":[]},{"index":8,"image":"heat/week_1/night/2.webp","hash":"73f8b2781c4c","condition":"heat","time":"night","week":"A","day":"fri","paths":["heat/week_1/night/2.webp","heat/week_3/night/2.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A family asleep on mattresses laid out on the stoep under a huge Milky Way, one boy still awake watching a bat cross the stars. Friday.","note":null,"lines":["Too hot for walls tonight: the whole family moved the bedroom outside.","The house held the day's heat, so the beds came out to the stars.","One member of the sleep-out is doing exactly none of the sleeping."],"rescue":[null,null,null],"alreadyKept":[]},{"index":9,"image":"heat/week_1/night/3.webp","hash":"706cd1220e10","condition":"heat","time":"night","week":"A","day":"thu","paths":["heat/week_1/night/3.webp","heat/week_3/night/3.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A warm-night balcony — sweating jug of ice water and two glasses on the table, woven hand fan on the chair, sheer curtain billowing, palms beyond the rail. Thursday.","note":null,"lines":["The curtain is moving, which is the first good news since this morning.","Ice in the jug, fan on the chair: the night shift of a forty-degree day.","The first breeze in twelve hours just walked in without knocking."],"rescue":[null,null,null],"alreadyKept":[]},{"index":10,"image":"heat/week_1/night/4.webp","hash":"f2e76528eca3","condition":"heat","time":"night","week":"A","day":"mon","paths":["heat/week_1/night/4.webp","heat/week_3/night/4.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A pedestal fan running beside the bed at 2:00 AM, someone asleep under a mosquito net, glass of water on the nightstand. Monday.","note":null,"lines":["Two in the morning and the fan is the hardest worker in the house.","The fan is on its third shift and the night is still not cooling.","The glass on the nightstand went warm an hour ago; the fan carries on alone."],"rescue":[null,null,null],"alreadyKept":[]},{"index":11,"image":"heat/week_2/night/2.webp","hash":"87546db18e01","condition":"heat","time":"night","week":"A","day":"sat","paths":["heat/week_2/night/2.webp","heat/week_4/night/2.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"Friends in the pool at night with drinks under string lights, one more watching from the deck, the house glowing warm behind. Saturday.","note":null,"lines":["Still thirty degrees after dark, so the party moved into the water.","Night swimming is not a plan; it is what this weather leaves you.","The day never cooled, so the drinks came to the shallow end."],"rescue":[null,null,null],"alreadyKept":[]},{"index":12,"image":"heat/week_2/night/6.webp","hash":"e62c00a72fb4","condition":"heat","time":"night","week":"A","day":"wed","paths":["heat/week_2/night/6.webp","heat/week_4/night/6.webp"],"why":"round-1 lines retired by the doctrine redo","place":null,"pass1":null,"seen":"A labrador lying flat on the cool bathroom tiles at night, freestanding bath behind, warm passage light falling across the floor. Wednesday.","note":null,"lines":["The lab did a full survey and the bathroom tiles won by two degrees.","Tile is the coldest surface in the house tonight, and it is taken.","The dog knows where the house keeps its last cool square metres."],"rescue":[null,null,null],"alreadyKept":[]}]};
+const SRC_NAME = "review/set-001-lines-bespoke-heat-v3.json";
+const EXPORT_NAME = "set-001-lines-bespoke-heat-v3-ruled.json";
 // Namespaced per source. Round 1 and round 2 share this page's code, and with
 // one key the round-2 page read round 1's saved text back out of storage and
 // rendered it in every slot - Al opened it and saw the old lines. The stored
@@ -109,7 +60,7 @@ const LS = 'pw_bespoke_lines_' + SRC_NAME.replace(/[^a-z0-9]+/gi, '_');
 const state = JSON.parse(localStorage.getItem(LS) || '{}');
 const $ = (id) => document.getElementById(id);
 const key = (img, i) => img + '#' + i;
-const wc = (s) => (s.trim() ? s.trim().split(/\\s+/).length : 0);
+const wc = (s) => (s.trim() ? s.trim().split(/\s+/).length : 0);
 
 function save() { localStorage.setItem(LS, JSON.stringify(state)); tally(); }
 
@@ -293,9 +244,3 @@ $('export').onclick = () => {
 
 render();
 </script>
-`;
-
-writeFileSync(p(OUT), html);
-const nLines = doc.images.reduce((n, i) => n + i.lines.length, 0);
-const nKept = doc.images.reduce((n, i) => n + (i.alreadyKept ? i.alreadyKept.length : 0), 0);
-console.log(`[lines review] ${OUT} — ${doc.images.length} photographs, ${nLines} candidates${nKept ? `, ${nKept} already kept shown locked` : ''}, card ${BOX.w}x${BOX.h}`);

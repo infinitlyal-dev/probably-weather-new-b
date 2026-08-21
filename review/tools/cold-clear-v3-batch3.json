@@ -1,0 +1,46 @@
+{
+ "bucket": "cold-clear",
+ "batch": 3,
+ "images": [
+  {
+   "image": "cold-clear/week_1/night/3.webp",
+   "seen": "The Southern Cross bright in a star-packed sky over a dark house, frost-silvered long grass and a bare tree. Thursday.",
+   "lines": [
+    "The Southern Cross is out and the lawn has gone silver under it.",
+    "A sky this clean at night is beautiful, and it charges in degrees.",
+    "Stars that sharp come standard with air this cold — it is a package deal."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_1/night/4.webp",
+   "seen": "A man wrapped in a blanket on a rocking chair on the stoep at night, steaming mug in hand, stars over the frosty veld. Sunday.",
+   "lines": [
+    "The blanket came outside because the sky was worth it, and it is.",
+    "The cold is charging admission tonight and the sky is worth every degree.",
+    "Steam off the mug, frost on the veld, stars on duty: Sunday closed properly."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_1/night/7.webp",
+   "seen": "Three men in beanies and puffers around a kettle braai on a frosty patio at night, steam and smoke rising, town lights and stars beyond. Saturday.",
+   "lines": [
+    "Braaiing in beanies under a hard clear sky: winter never cancelled anything here.",
+    "The stars came out for the wors, and the frost came with them.",
+    "The fire is the only thing out here allowed to take its jacket off."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/2.webp",
+   "seen": "A windpomp standing dead still over frosted Karoo scrub at pink-and-blue dawn, stone dam at its base, koppies on the horizon. Saturday.",
+   "lines": [
+    "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
+    "Not enough wind to turn one blade, which is why the frost got everything.",
+    "Pink sky, white veld: the desert runs both extremes before breakfast."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

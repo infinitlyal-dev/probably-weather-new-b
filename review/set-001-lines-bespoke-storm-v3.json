@@ -1,0 +1,1011 @@
+{
+ "generated": "2026-08-21",
+ "writtenBy": "Fable 5 (Valk), viewing each photograph",
+ "brief": "Doctrine rewrite of 2026-08-21: every line is about the weather; the picture is the evidence. Three lines per photograph (Al’s ruled keeps locked and counted). Bank rescues marked. PAIRING-TASTE + the swap test still bind.",
+ "bucket": "storm",
+ "linesLabel": "three per image incl. locked keeps",
+ "count": 35,
+ "images": [
+  {
+   "index": 1,
+   "image": "storm/week_1/dawn/2.webp",
+   "hash": "91f980f76f82",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dawn/2.webp",
+    "storm/week_3/dawn/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Joburg highway gridlock under a massive purple storm, one lightning bolt over the skyline, wet lanes shining with brake lights. Monday.",
+   "note": null,
+   "lines": [
+    "Lightning over the skyline and brake lights all the way in: Joburg is up early.",
+    "The slow lane, the fast lane, and the sky lane — only one is moving.",
+    "Somewhere a weather reporter is living their best life."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:storm#22"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 2,
+   "image": "storm/week_1/dawn/3.webp",
+   "hash": "55fac1141abf",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/dawn/3.webp",
+    "storm/week_3/dawn/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A huge branched lightning strike over a modern estate street in rain, parked cars lit by the flash. Tuesday.",
+   "note": null,
+   "lines": [
+    "That one landed close enough to count the seconds on one hand.",
+    "The whole street went daylight for a quarter of a second.",
+    "Every dog in the suburb filed a report at the same instant."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 3,
+   "image": "storm/week_1/dawn/5.webp",
+   "hash": "f0b49be17750",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dawn/5.webp",
+    "storm/week_3/dawn/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Mammatus clouds glowing purple and pink over a windpomp and a sunflower field, orange horizon burning below. Wednesday.",
+   "note": null,
+   "lines": [
+    "Those bubble clouds are the storm's signature, written on the way out.",
+    "That is the back page of a storm, and it reads better than the front.",
+    "The windpomp has seen a thousand of these and still stopped to look."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 4,
+   "image": "storm/week_1/dawn/7.webp",
+   "hash": "a785060d7357",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_3/dawn/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A couple lying on the bedroom floor in soft morning light, coaxing a wide-eyed dachshund out from under the bed after the storm. Thursday.",
+   "note": null,
+   "lines": [
+    "The storm passed an hour ago; the news has not reached under the bed yet.",
+    "The sky has moved on. The dachshund is requesting written confirmation.",
+    "The dog's under the bed. Smart move, honestly."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:storm#2"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 5,
+   "image": "storm/week_1/day/3.webp",
+   "hash": "41e6c19016c1",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/day/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Five shoppers sheltering under a mall's glass canopy at dusk, watching lightning strike beyond the wet parking lot, trolleys abandoned mid-row. Tuesday.",
+   "note": null,
+   "lines": [
+    "The gap between flashes is being counted by everyone under this roof.",
+    "The trolleys are staying exactly where the storm interrupted them.",
+    "Five strangers, one roof, one unspoken agreement: not yet."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 6,
+   "image": "storm/week_1/day/4.webp",
+   "hash": "676b8843cb92",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "storm/week_1/day/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A surfer in a wetsuit walking towards heavy storm surf under an enormous dark sky, board under his arm, rain already falling out at sea. Saturday.",
+   "note": null,
+   "lines": [
+    "That sky would send most people home; it is sending him in.",
+    "The storm is doing the wave-making and he is doing the arithmetic.",
+    "Big sky, bigger sea, one board: the argument for staying home lost."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 7,
+   "image": "storm/week_1/day/5.webp",
+   "hash": "99d0821cdd98",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/day/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman grimacing over a completely skeletonised umbrella in a wind-blasted street, leaves flying, palms bending, dark storm sky. Monday.",
+   "note": null,
+   "lines": [
+    "The umbrella is now a diagram of an umbrella.",
+    "Leaves in the street, spokes in the air: the storm is winning on all fronts.",
+    "The wind has a personal vendetta against umbrellas."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:wind#14"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 8,
+   "image": "storm/week_1/dusk/2.webp",
+   "hash": "a61146a38b06",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dusk/2.webp",
+    "storm/week_3/dusk/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two farmers in hats loading hay bales onto a bakkie in golden light, a dark storm wall already dumping rain on the mountains behind them. Thursday.",
+   "note": null,
+   "lines": [
+    "That storm is twenty minutes out and both of them know the maths.",
+    "The sky set the deadline; the bakkie gets loaded to it.",
+    "The mountains are already getting theirs; this hay has about twenty minutes."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 9,
+   "image": "storm/week_1/dusk/3.webp",
+   "hash": "742e1675a5a4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dusk/3.webp",
+    "storm/week_3/dusk/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman on a high apartment balcony watching lightning fork over the suburbs at a burning sunset, wet street and small umbrellas far below. Monday.",
+   "note": null,
+   "lines": [
+    "The balcony beats the couch when the sky is doing this.",
+    "Sunset on one side, artillery on the other, and she has the balcony.",
+    "The storm is doing the rounds of the suburbs and saving town for last."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 10,
+   "image": "storm/week_1/dusk/4.webp",
+   "hash": "53d4228e24c8",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dusk/4.webp",
+    "storm/week_3/dusk/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A dark estate street at dusk, lightning glowing inside the cloud, palms bending in the wind, windows lit by candles. Wednesday.",
+   "note": null,
+   "lines": [
+    "Candles in the windows: the storm has already had a word with the power.",
+    "The palms are pointing the way the storm is going, which is this way.",
+    "Lightning inside the cloud: the storm is still deciding where to put it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 11,
+   "image": "storm/week_1/dusk/5.webp",
+   "hash": "e5b510c8a1e4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/dusk/5.webp",
+    "storm/week_3/dusk/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two lightning bolts striking the sea beyond storm surf on a rocky coast, orange sunset squeezed under the purple cloud. Sunday.",
+   "note": null,
+   "lines": [
+    "The sea is taking the strikes tonight so the land doesn't have to.",
+    "Sunset tried to happen; the storm had other bookings for that sky.",
+    "The waves were the show until the sky decided otherwise."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 12,
+   "image": "storm/week_1/dusk/7.webp",
+   "hash": "e0089512238b",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_1/dusk/7.webp",
+    "storm/week_3/dusk/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A zinc bucket in the hallway catching a slow ceiling drip, folded towel beside it, the rainy garden visible through the open door. Friday.",
+   "note": null,
+   "lines": [
+    "The roof has an opinion tonight and the bucket is taking minutes.",
+    "One drip, one bucket, one towel: the storm has made it indoors, barely.",
+    "Somewhere up there the rain found a way in, and it is being managed."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 13,
+   "image": "storm/week_1/night/7.webp",
+   "hash": "14c56f85c353",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/night/7.webp",
+    "storm/week_3/night/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A grinning man filming a giant lightning strike on his phone from the bedroom window, the suburb lit below. Sunday.",
+   "note": null,
+   "lines": [
+    "Every South African storm gets filmed vertical, and this one earned it.",
+    "The strike lasted half a second; the video will last the whole group chat.",
+    "The sky does one take and expects you to be ready."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 14,
+   "image": "storm/week_2/dawn/2.webp",
+   "hash": "56af96f529d2",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dawn/2.webp",
+    "storm/week_4/dawn/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A runner in black kit standing in the road with hands on hips, glaring up at a heavy grey storm sky before his run, stone house behind. Saturday.",
+   "note": null,
+   "lines": [
+    "Warm-up done; now he is waiting on a ruling from upstairs.",
+    "The sky is loading something and the question is whether it lands mid-run.",
+    "Hands on hips: the international sign for arguing with weather."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 15,
+   "image": "storm/week_2/dawn/3.webp",
+   "hash": "29a289619727",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A woman in a gown with her coffee on the porch at dawn, watching twin pink lightning strikes over the mountains, wet street below. Sunday.",
+   "note": null,
+   "lines": [
+    "The storm is keeping to the mountains, and the stoep is keeping the view.",
+    "First coffee of the day, best show of the week, same ten minutes.",
+    "The rain has been and gone; the electricity is still saying goodbye."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 16,
+   "image": "storm/week_2/dawn/7.webp",
+   "hash": "20ed2fe6b144",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A bakkie driving away down a red dirt road between mealie fields, dust glowing in the last light under an orange storm-lit horizon. Friday.",
+   "note": null,
+   "lines": [
+    "That horizon is half sunset, half warning, and the bakkie knows the difference.",
+    "Dust now, mud by dark — that cloud bank is not decoration.",
+    "The mealies have been waiting for that cloud longer than anyone in the bakkie."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 17,
+   "image": "storm/week_2/day/2.webp",
+   "hash": "c152b51ebfa5",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/day/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two golfers with their bags on the fairway, watching a lightning strike come down the course, trees whipping in the wind. Wednesday.",
+   "note": null,
+   "lines": [
+    "The eighteenth can wait; the sky is playing through.",
+    "That is the course's way of saying the round is over.",
+    "Two club selections left: the clubhouse or the car."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 18,
+   "image": "storm/week_2/day/3.webp",
+   "hash": "a02b40a1cdb7",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/day/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An empty rugby stadium under an enormous black storm cloud, lightning behind the stands, floodlights on, pitch shining wet. Saturday.",
+   "note": null,
+   "lines": [
+    "Kickoff is under review by the only official that outranks the referee.",
+    "The floodlights are on; the sky brought its own anyway.",
+    "The pitch is ready, the lines are marked, and the weather has the whistle."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 19,
+   "image": "storm/week_2/day/4.webp",
+   "hash": "c2c016aabf8f",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/day/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Storm aftermath on a bushveld lawn — wicker chairs flipped, cushions scattered, a lounger on its side, branches down, trees still bending under a dark sky. Tuesday.",
+   "note": null,
+   "lines": [
+    "The storm rearranged the stoep furniture and did not ask anybody first.",
+    "The chairs are down, the branches are down, and the sky is not done.",
+    "Every loose object in the garden has chosen violence."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:wind#15"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 20,
+   "image": "storm/week_2/day/5.webp",
+   "hash": "777b9b465dbe",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/day/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An old farmer at the door of his rusted corrugated shed, hand on his hat, watching a massive black storm and dust wall roll across the dry veld. Sunday.",
+   "note": null,
+   "lines": [
+    "He has seen fifty of these arrive, and he still comes out to watch.",
+    "Dust first, rain second: the order of business is written on the horizon.",
+    "The drought and the storm are about to have a word, and he wants to hear it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 21,
+   "image": "storm/week_2/day/6.webp",
+   "hash": "30a82fcff9d4",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "storm/week_2/day/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A hadeda walking the dry verge of an empty Karoo-dorp street, white flat-roofed houses under an ominous dark storm sky. Monday.",
+   "note": null,
+   "lines": [
+    "The street cleared out early; only the hadeda is finishing its rounds.",
+    "The sky is stacking up over the dorp and even the palm has gone still.",
+    "Even the hadedas are quiet."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:storm#3"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 22,
+   "image": "storm/week_2/dusk/4.webp",
+   "hash": "f6818069c8bd",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dusk/4.webp",
+    "storm/week_4/dusk/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An emergency vehicle with its lights on in a wet estate street strewn with downed branches, storm clearing into sunset behind. Saturday.",
+   "note": null,
+   "lines": [
+    "The storm made one pass and left the street a week of gardening.",
+    "Branches down, lights on, storm gone: the after-party is all admin.",
+    "The sunset is back like nothing happened; the trees know otherwise."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 23,
+   "image": "storm/week_2/dusk/5.webp",
+   "hash": "adc69e7b4a17",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/dusk/5.webp",
+    "storm/week_4/dusk/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A young man on a high balcony at dusk filming a double lightning strike over the city, rain beading on the glass railing. Tuesday.",
+   "note": null,
+   "lines": [
+    "Two strikes in one frame: the sky is doing his content for him.",
+    "Rain on the railing, lightning on the horizon, phone doing its best.",
+    "That strike will look half this size on the phone, and he knows it."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 24,
+   "image": "storm/week_2/night/1.webp",
+   "hash": "faaf0b2003be",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/night/1.webp",
+    "storm/week_4/night/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A boy wrapped in a fleece blanket at the bedroom window, watching a lightning bolt come down over the suburb at night. Wednesday.",
+   "note": null,
+   "lines": [
+    "First storm he has stayed up for, and the sky is making it count.",
+    "Thunder is scary from bed and magnificent from a window; he moved.",
+    "The best television in the house is currently the weather."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 25,
+   "image": "storm/week_2/night/5.webp",
+   "hash": "2d2e6dd5d7fd",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/night/5.webp",
+    "storm/week_4/night/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A couple laughing as they position a bucket to catch a ceiling leak directly over their bed, duvet already wet, storm-dark window behind. Saturday.",
+   "note": null,
+   "lines": [
+    "The storm found the ceiling's weak spot; the bucket arrived three drops later.",
+    "The rain is now technically a house guest, and it chose the main bedroom.",
+    "Leak over the bed, laughter over the leak: married storm protocol."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 26,
+   "image": "storm/week_3/day/1.webp",
+   "hash": "10cac134f9d9",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A farmer hauling a blue tarp over hay bales on a bakkie while hail comes down, storm-dark sky and a lit farmhouse behind him. Friday.",
+   "note": null,
+   "lines": [
+    "Hail on the way down and a tarp halfway on: this one is going to be close.",
+    "The sky is throwing ice and he is answering with a tarp.",
+    "Hail gives you about ninety seconds of warning, and he is using all of them."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 27,
+   "image": "storm/week_3/day/3.webp",
+   "hash": "20f3d07d3c47",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A big dog with wide eyes lying flat under the dining table, lightning forking outside the patio doors behind the chairs. Friday.",
+   "note": null,
+   "lines": [
+    "The spot under the table was chosen scientifically: furthest from the sky.",
+    "Thunder counts double when you have ears like that.",
+    "One flash outside and the seating plan changed itself."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 28,
+   "image": "storm/week_3/day/5.webp",
+   "hash": "b08495c9d832",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_3/day/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An abandoned club cricket pitch under a black-green storm sky — covers half-dragged on, kit and jerseys dumped on the grass, the sightscreen blown askew. Thursday.",
+   "note": null,
+   "lines": [
+    "Bad light stopped play, then the light got a lot worse.",
+    "The covers made it on; the kit did not make it off.",
+    "A sky that colour clears a cricket field faster than any umpire."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 29,
+   "image": "storm/week_4/day/1.webp",
+   "hash": "ea95b93c8930",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "storm/week_4/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A white plastic chair overturned in a roadside puddle, a yellow farmhouse behind, columns of rain falling from the dark cloud on the horizon. Wednesday.",
+   "note": null,
+   "lines": [
+    "The first casualty is a plastic chair, and the storm is not even here yet.",
+    "That rain on the horizon is about ten minutes from this puddle.",
+    "The wind came through first and signed its work with one white chair."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 30,
+   "image": "storm/week_4/day/5.webp",
+   "hash": "8c5812bded23",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "storm/week_4/day/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man wrestling the patio umbrella closed as a black storm front swallows the last of the sunshine, leaves flying across the tiles. Thursday.",
+   "note": null,
+   "lines": [
+    "The umbrella is coming down in the storm's final two minutes of notice.",
+    "Half the sky is still summer; the other half is why he is hurrying.",
+    "Leaves already sideways: the storm sent its calling card ahead."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 31,
+   "image": "storm/week_4/day/6.webp",
+   "hash": "f6562060468c",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_4/day/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A young man in a parked car filming a lightning bolt through the rain-beaded windscreen, wet suburban street beyond. Sunday.",
+   "note": null,
+   "lines": [
+    "The car is the best hide this country makes for lightning season.",
+    "Rain on the glass, bolt in the frame, and not one drop on the photographer.",
+    "Front-row seats, full cover, wipers off: storm-watching done properly."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 32,
+   "image": "storm/week_1/night/4.webp",
+   "hash": "2fede244e0d0",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/night/4.webp",
+    "storm/week_3/night/4.webp"
+   ],
+   "why": "round-1 lines retired by the doctrine redo",
+   "place": "Johannesburg northern suburbs",
+   "pass1": null,
+   "seen": "A night storm over a suburban street — rain slanting through the streetlight, lightning glowing behind the clouds, one big bare tree over the walls. Tuesday.",
+   "note": null,
+   "lines": [
+    "The rain is coming through the streetlight at forty-five degrees, which means wind joined in.",
+    "Lightning behind the cloud: the storm is working with the lights off.",
+    "That old tree has stood through a hundred of these and is counting this one too."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 33,
+   "image": "storm/week_1/night/5.webp",
+   "hash": "9851963ee129",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/night/5.webp",
+    "storm/week_3/night/5.webp"
+   ],
+   "why": "round-1 lines retired by the doctrine redo",
+   "place": "Pretoria east",
+   "pass1": null,
+   "seen": "Lightning splitting a purple night sky over a double garage, the gutter overflowing in a stream past the hosepipe, jacaranda petals on the wet paving. Monday.",
+   "note": null,
+   "lines": [
+    "The gutter gave up on the downpipe and started its own waterfall.",
+    "Purple sky, purple petals: the storm colour-matched the driveway tonight.",
+    "The overflow says the roof got a month of rain in one evening."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 34,
+   "image": "storm/week_2/night/3.webp",
+   "hash": "cd855e5f60e9",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/night/3.webp",
+    "storm/week_4/night/3.webp"
+   ],
+   "why": "round-1 lines retired by the doctrine redo",
+   "place": "Durban",
+   "pass1": null,
+   "seen": "An enclosed stoep at night with rain sheeting off the roof edge in a solid curtain past a strelitzia, one bulb burning, wet red-polished floor, security gate to the garden. Friday.",
+   "note": null,
+   "lines": [
+    "The roof has no gutter on that side and tonight it is a waterfall.",
+    "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight.",
+    "Everything past the gate is weather; everything inside it is fine."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 35,
+   "image": "storm/week_2/night/4.webp",
+   "hash": "ae79261d2852",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_2/night/4.webp",
+    "storm/week_4/night/4.webp"
+   ],
+   "why": "round-1 lines retired by the doctrine redo",
+   "place": "Bloemfontein",
+   "pass1": null,
+   "seen": "Lightning glowing behind heavy cloud over a small-town street at night, one streetlight on, a white car safe under its carport behind the gate. Thursday.",
+   "note": null,
+   "lines": [
+    "The whole sky went mauve for a second and the street pretended not to notice.",
+    "One streetlight versus the entire electrical budget of that cloud.",
+    "That flash reached town before its thunder; the gap is closing though."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  }
+ ]
+}

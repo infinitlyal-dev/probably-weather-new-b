@@ -1,0 +1,815 @@
+{
+ "generated": "2026-08-21",
+ "writtenBy": "Fable 5 (Valk), viewing each photograph",
+ "brief": "Doctrine rewrite of 2026-08-21: every line is about the weather; the picture is the evidence. Three lines per photograph (Al’s ruled keeps locked and counted). Bank rescues marked. PAIRING-TASTE + the swap test still bind.",
+ "bucket": "cold-clear",
+ "linesLabel": "three per image incl. locked keeps",
+ "count": 28,
+ "images": [
+  {
+   "index": 1,
+   "image": "cold-clear/week_1/dawn/2.webp",
+   "hash": "caaa1c42d70a",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/dawn/2.webp",
+    "cold-clear/week_3/dawn/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A cyclist with a buff over his face riding down a bare-tree suburban avenue at golden dawn, deep blue cloudless sky, long shadows across the road. Thursday.",
+   "note": null,
+   "lines": [
+    "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+    "Blue overhead, ice in the air: he is dressed for the truth, not the view.",
+    "Sun's out. Don't be fooled. Nature is lying."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:cold-clear#9"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 2,
+   "image": "cold-clear/week_1/dawn/7.webp",
+   "hash": "898c05f233a6",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dawn/7.webp",
+    "cold-clear/week_3/dawn/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A hadeda landing on a frosted lawn at pink dawn, breath-mist at its beak, brick double-storey with one lit kitchen window behind. Tuesday.",
+   "note": null,
+   "lines": [
+    "The hadeda has landed on frost and is already drafting a complaint.",
+    "Frost on the lawn and the morning alarm has just landed, feathers and all.",
+    "The first bird down this morning found the grass crunchy and said so."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 3,
+   "image": "cold-clear/week_1/day/1.webp",
+   "hash": "21c809043132",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A Karoo farmer in a leather hat leaning on a whitewashed wall in full sun, breath visible against a deep blue sky, dry veld to the horizon. Tuesday.",
+   "note": null,
+   "lines": [
+    "Full sun, visible breath: the Karoo running both seasons before lunch.",
+    "That wall holds the morning's heat by ten and he knows exactly where to lean.",
+    "Sun on your back, freezer on your face."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:cold-clear#22"
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 4,
+   "image": "cold-clear/week_1/day/4.webp",
+   "hash": "042ba0a95388",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_1/day/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A father and son in school uniform getting into a white Hilux on a frosty morning, frosted windows, breath clouds, frost-grey lawn and bare trees, clear blue sky. Wednesday.",
+   "note": null,
+   "lines": [
+    "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+    "The bakkie iced over under a completely clear sky, which is exactly how it works.",
+    "The sun is up and doing its best; the frost is unconvinced so far."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 5,
+   "image": "cold-clear/week_1/dusk/2.webp",
+   "hash": "510b7a0d60c0",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dusk/2.webp",
+    "cold-clear/week_3/dusk/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A ridgeback sitting at the driveway gate at frosty dusk, breath visible, orange-to-navy clear gradient over the trees, frost on the lawn, warm window lit behind. Tuesday.",
+   "note": null,
+   "lines": [
+    "Frost already forming and the sun barely down: tonight means business.",
+    "Even the guard dog's breath is showing, and the stars are not even out yet.",
+    "A clear dusk on the Highveld is just the frost clearing its throat."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 6,
+   "image": "cold-clear/week_1/dusk/4.webp",
+   "hash": "fbdf528f41c8",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_1/dusk/4.webp",
+    "cold-clear/week_3/dusk/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Towels frosted stiff on the washing line at orange dusk, frosted lawn and aloes, terracotta-roofed house behind. Monday.",
+   "note": null,
+   "lines": [
+    "The towels went out damp and are coming in as boards.",
+    "Sunset is doing the colours; the frost is already doing the towels.",
+    "That washing is not dry; it is preserved. Winter dusk works fast out here."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 7,
+   "image": "cold-clear/week_1/dusk/5.webp",
+   "hash": "827554552d76",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Five friends in beanies and blankets around a modern concrete fire bowl at clear dusk, mugs steaming, modern double-storey house behind. Friday.",
+   "note": null,
+   "lines": [
+    "Clear sky, sharp air, one fire bowl doing the work of a whole summer.",
+    "The temperature dropped with the sun and the circle got tighter by exactly that much.",
+    "The evening turned cold the minute it turned beautiful, which is the usual trade."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 8,
+   "image": "cold-clear/week_1/dusk/7.webp",
+   "hash": "948736af4859",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/dusk/7.webp",
+    "cold-clear/week_3/dusk/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A frosted sports field at dusk with floodlights on, folded blankets on the bench, a ball on the white grass, clubhouse and orange horizon behind. Saturday.",
+   "note": null,
+   "lines": [
+    "A sky that clean means the field freezes before the floodlights even warm up.",
+    "Frost on the pitch an hour after sundown — whoever trains tonight earns it.",
+    "The blankets on the bench are not decoration; the touchline is minus something."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 9,
+   "image": "cold-clear/week_1/night/3.webp",
+   "hash": "05aeb3b79581",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_3/night/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "The Southern Cross bright in a star-packed sky over a dark house, frost-silvered long grass and a bare tree. Thursday.",
+   "note": null,
+   "lines": [
+    "The Southern Cross is out and the lawn has gone silver under it.",
+    "A sky this clean at night is beautiful, and it charges in degrees.",
+    "Stars that sharp come standard with air this cold — it is a package deal."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 10,
+   "image": "cold-clear/week_1/night/4.webp",
+   "hash": "da60a92cafd2",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_1/night/4.webp",
+    "cold-clear/week_3/night/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man wrapped in a blanket on a rocking chair on the stoep at night, steaming mug in hand, stars over the frosty veld. Sunday.",
+   "note": null,
+   "lines": [
+    "The blanket came outside because the sky was worth it, and it is.",
+    "The cold is charging admission tonight and the sky is worth every degree.",
+    "Steam off the mug, frost on the veld, stars on duty: Sunday closed properly."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 11,
+   "image": "cold-clear/week_1/night/7.webp",
+   "hash": "8fd1944f303b",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/night/7.webp",
+    "cold-clear/week_3/night/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Three men in beanies and puffers around a kettle braai on a frosty patio at night, steam and smoke rising, town lights and stars beyond. Saturday.",
+   "note": null,
+   "lines": [
+    "Braaiing in beanies under a hard clear sky: winter never cancelled anything here.",
+    "The stars came out for the wors, and the frost came with them.",
+    "The fire is the only thing out here allowed to take its jacket off."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 12,
+   "image": "cold-clear/week_2/dawn/2.webp",
+   "hash": "28129477b706",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_2/dawn/2.webp",
+    "cold-clear/week_4/dawn/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A windpomp standing dead still over frosted Karoo scrub at pink-and-blue dawn, stone dam at its base, koppies on the horizon. Saturday.",
+   "note": null,
+   "lines": [
+    "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
+    "Not enough wind to turn one blade, which is why the frost got everything.",
+    "Pink sky, white veld: the desert runs both extremes before breakfast."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 13,
+   "image": "cold-clear/week_2/dawn/3.webp",
+   "hash": "3e60dabd7ef7",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/dawn/3.webp",
+    "cold-clear/week_4/dawn/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Frosted wheelie bins in a row at the curb at golden dawn, Cape Winelands District Municipality branding, frost on the verge, clear sky. Monday.",
+   "note": null,
+   "lines": [
+    "Bin day, and the frost got to them before the truck did.",
+    "Even the bins iced over, which is the Winelands telling you to dress properly.",
+    "The municipality collects at seven; the frost delivered at four."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 14,
+   "image": "cold-clear/week_2/dawn/4.webp",
+   "hash": "6ca4d027da38",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_4/dawn/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A runner in a beanie pausing on a stone-walled lookout over the Joburg skyline at golden dawn, Hillbrow Tower in view, breath visible, bare winter trees below. Sunday.",
+   "note": null,
+   "lines": [
+    "Joburg winter dawn: the view is free; the air charges admission.",
+    "His breath is the only cloud between here and the Hillbrow Tower.",
+    "The city looks its best exactly when the air hurts most, which is unfair."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 15,
+   "image": "cold-clear/week_2/dawn/6.webp",
+   "hash": "5a6dd26eb7db",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_4/dawn/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A mother scraping frost off the windscreen at deep blue dawn while two boys in beanies wait with their school bags, breath clouds, frosted grasses, modern house. Wednesday.",
+   "note": null,
+   "lines": [
+    "The windscreen kept a record of last night and she is deleting it by hand.",
+    "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
+    "The car spent the night outside under a clear sky and it shows, everywhere."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 16,
+   "image": "cold-clear/week_2/dawn/7.webp",
+   "hash": "4040cfcfc732",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/dawn/7.webp",
+    "cold-clear/week_4/dawn/7.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Five guinea fowl crossing a frosty suburban street in single file at sunrise, frosted lawns and a brick house behind. Friday.",
+   "note": null,
+   "lines": [
+    "Five guinea fowl crossing in single file: the frost has everyone walking carefully.",
+    "First traffic of the morning, and it walks and complains at the same time.",
+    "Frost on every lawn and the only ones out are wearing feathers."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 17,
+   "image": "cold-clear/week_2/day/1.webp",
+   "hash": "45b1ac83db20",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A boerboel basking eyes-closed against a sunny wall, faint breath vapour, water bowl beside him, dead-brown winter lawn and hard blue sky. Monday.",
+   "note": null,
+   "lines": [
+    "Full sun, brown grass, visible breath: the boerboel has found the warm wall.",
+    "The sunny side of the wall is prime property, and it is taken.",
+    "The lawn went beige weeks ago; the sky never got the memo."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 18,
+   "image": "cold-clear/week_2/day/2.webp",
+   "hash": "32dec9fbdcaa",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/day/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A parkrun start on frosty grass — runners in beanies and gloves, breath clouds everywhere, marshals in hi-vis, brick clubhouse behind, clear pale sky. Sunday.",
+   "note": null,
+   "lines": [
+    "Half the field is steam before anyone has run a step.",
+    "Frost on the grass, steam off the field: winter running weather at its most honest.",
+    "Cold enough to see every breath, clear enough that nobody minds."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 19,
+   "image": "cold-clear/week_2/dusk/3.webp",
+   "hash": "0b4330abc214",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dusk/3.webp",
+    "cold-clear/week_4/dusk/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two horses standing together in a frosty paddock at golden dusk, their breath steaming and backlit, bare trees behind. Wednesday.",
+   "note": null,
+   "lines": [
+    "The horses are doing their own weather report, one breath at a time.",
+    "The frost is back on the grass before the sun is even gone.",
+    "Golden light, silver breath: a winter dusk doing both its tricks at once."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 20,
+   "image": "cold-clear/week_2/dusk/5.webp",
+   "hash": "1f74ef9146fb",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A cat on the windowsill watching a pink-red winter sunset through a window frosting at its edges, frosty garden and mountains beyond. Sunday.",
+   "note": null,
+   "lines": [
+    "The window is frosting at the edges and the cat has the best seat for it.",
+    "That sunset is happening at two degrees, which is why it is watched from inside.",
+    "Pink sky through cold glass: winter does its best work at a distance."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 21,
+   "image": "cold-clear/week_2/dusk/6.webp",
+   "hash": "ff19d8654ec3",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_2/dusk/6.webp",
+    "cold-clear/week_4/dusk/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A girl in a puffer jacket, beanie and basketball shorts mid-jumpshot at dusk, breath visible, frost creeping across the lawn edges, orange horizon behind a white farmhouse. Thursday.",
+   "note": null,
+   "lines": [
+    "Shorts and a beanie: half of her believes the sky, half believes the air.",
+    "Free throws until the light or the temperature gives out, whichever is first.",
+    "Every shot comes with its own little cloud of breath tonight."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 22,
+   "image": "cold-clear/week_2/night/2.webp",
+   "hash": "da90853b2ccb",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_2/night/2.webp",
+    "cold-clear/week_4/night/2.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A man in a puffer and beanie wheeling the bin down the driveway at night, breath clouding under the porch light, frosty lawn, stars overhead. Tuesday.",
+   "note": null,
+   "lines": [
+    "Taking the bin out counts as an expedition once the frost settles in.",
+    "The bin run is being done at speed tonight, and the sky knows why.",
+    "Clear night, hard frost coming: even the bin trip earns a beanie."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 23,
+   "image": "cold-clear/week_2/night/3.webp",
+   "hash": "112364f9e477",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_4/night/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Frost-crusted cars parked down a lamplit, tree-lined street at night, stars in a clear navy sky. Monday.",
+   "note": null,
+   "lines": [
+    "Every windscreen on this street is white already, and it is not even late.",
+    "The streetlights are warm-toned; nothing else out here is.",
+    "The frost is doing the rounds tonight and skipping nobody."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 24,
+   "image": "cold-clear/week_2/night/4.webp",
+   "hash": "d298c8c1f224",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/night/4.webp",
+    "cold-clear/week_4/night/4.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A father and two kids under fleece blankets with mugs on the couch at night, the frosted garden glittering through the window under stars. Wednesday.",
+   "note": null,
+   "lines": [
+    "Outside is glitter and minus three; inside is fleece and the remote.",
+    "The frost got the garden; the family got the couch. Fair trade.",
+    "Movie night moved up an hour the moment the frost showed up on the hedge."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 25,
+   "image": "cold-clear/week_2/night/6.webp",
+   "hash": "f453a678f470",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_4/night/6.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A couple lying under duvets in a bakkie bed, pointing up at a massive Milky Way over dark veld, flask and enamel mugs on the tailgate. Friday.",
+   "note": null,
+   "lines": [
+    "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight.",
+    "Winter skies are the sharp ones — the cold is the price of that many stars.",
+    "The heater is at home; the Milky Way is here; the duvet split the difference."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 26,
+   "image": "cold-clear/week_3/day/1.webp",
+   "hash": "decff597fe6c",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_3/day/1.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "Two colleagues in coats and scarves chatting over takeaway coffees in a sunlit city plaza, brilliant blue sky between the glass towers. Friday.",
+   "note": null,
+   "lines": [
+    "Coats and coffees in full sun: winter in this city photographs like summer.",
+    "The sky says lunch outside; the scarves say make it a quick one.",
+    "Not a cloud between the towers, and still nobody unbuttoned anything."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 27,
+   "image": "cold-clear/week_3/day/5.webp",
+   "hash": "bbb3d8348b00",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_3/day/5.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "A mother zipping a grumpy toddler into a puffer jacket at the kitchen table, porridge steaming, frosty veld and blue sky through the window. Thursday.",
+   "note": null,
+   "lines": [
+    "The jacket is going on because the window already said so.",
+    "Porridge steaming, veld frosted: breakfast comes with a dress code today.",
+    "The face says no; the frost outside says absolutely yes."
+   ],
+   "rescue": [
+    null,
+    null,
+    null
+   ],
+   "alreadyKept": []
+  },
+  {
+   "index": 28,
+   "image": "cold-clear/week_4/day/3.webp",
+   "hash": "bbad2500c852",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_4/day/3.webp"
+   ],
+   "why": "doctrine redo — weather-first rewrite",
+   "place": null,
+   "pass1": null,
+   "seen": "An empty rugby field in the morning — frost surviving in the grandstand's shadow, sunlit golden grass, tall poles against a brilliant blue sky. Saturday.",
+   "note": null,
+   "lines": [
+    "The frost only survives in the stand's shadow, and you can see the exact line.",
+    "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+    "Lekker koud, but the rugby fields are about to look perfect."
+   ],
+   "rescue": [
+    null,
+    null,
+    "witty:cold-clear#11"
+   ],
+   "alreadyKept": []
+  }
+ ]
+}

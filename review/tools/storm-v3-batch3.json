@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 3,
+ "images": [
+  {
+   "image": "storm/week_1/dusk/3.webp",
+   "seen": "A woman on a high apartment balcony watching lightning fork over the suburbs at a burning sunset, wet street and small umbrellas far below. Monday.",
+   "lines": [
+    "The balcony beats the couch when the sky is doing this.",
+    "Sunset on one side, artillery on the other, and she has the balcony.",
+    "The storm is doing the rounds of the suburbs and saving town for last."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/dusk/4.webp",
+   "seen": "A dark estate street at dusk, lightning glowing inside the cloud, palms bending in the wind, windows lit by candles. Wednesday.",
+   "lines": [
+    "Candles in the windows: the storm has already had a word with the power.",
+    "The palms are pointing the way the storm is going, which is this way.",
+    "Lightning inside the cloud: the storm is still deciding where to put it."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/dusk/5.webp",
+   "seen": "Two lightning bolts striking the sea beyond storm surf on a rocky coast, orange sunset squeezed under the purple cloud. Sunday.",
+   "lines": [
+    "The sea is taking the strikes tonight so the land doesn't have to.",
+    "Sunset tried to happen; the storm had other bookings for that sky.",
+    "The waves were the show until the sky decided otherwise."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_1/dusk/7.webp",
+   "seen": "A zinc bucket in the hallway catching a slow ceiling drip, folded towel beside it, the rainy garden visible through the open door. Friday.",
+   "lines": [
+    "The roof has an opinion tonight and the bucket is taking minutes.",
+    "One drip, one bucket, one towel: the storm has made it indoors, barely.",
+    "Somewhere up there the rain found a way in, and it is being managed."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

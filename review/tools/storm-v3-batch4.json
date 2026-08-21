@@ -1,0 +1,46 @@
+{
+ "bucket": "storm",
+ "batch": 4,
+ "images": [
+  {
+   "image": "storm/week_1/night/7.webp",
+   "seen": "A grinning man filming a giant lightning strike on his phone from the bedroom window, the suburb lit below. Sunday.",
+   "lines": [
+    "Every South African storm gets filmed vertical, and this one earned it.",
+    "The strike lasted half a second; the video will last the whole group chat.",
+    "The sky does one take and expects you to be ready."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/dawn/2.webp",
+   "seen": "A runner in black kit standing in the road with hands on hips, glaring up at a heavy grey storm sky before his run, stone house behind. Saturday.",
+   "lines": [
+    "Warm-up done; now he is waiting on a ruling from upstairs.",
+    "The sky is loading something and the question is whether it lands mid-run.",
+    "Hands on hips: the international sign for arguing with weather."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/dawn/3.webp",
+   "seen": "A woman in a gown with her coffee on the porch at dawn, watching twin pink lightning strikes over the mountains, wet street below. Sunday.",
+   "lines": [
+    "The storm is keeping to the mountains, and the stoep is keeping the view.",
+    "First coffee of the day, best show of the week, same ten minutes.",
+    "The rain has been and gone; the electricity is still saying goodbye."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "storm/week_2/dawn/7.webp",
+   "seen": "A bakkie driving away down a red dirt road between mealie fields, dust glowing in the last light under an orange storm-lit horizon. Friday.",
+   "lines": [
+    "That horizon is half sunset, half warning, and the bakkie knows the difference.",
+    "Dust now, mud by dark — that cloud bank is not decoration.",
+    "The mealies have been waiting for that cloud longer than anyone in the bakkie."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

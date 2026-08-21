@@ -1,0 +1,45 @@
+{
+ "bucket": "clear",
+ "batch": 4,
+ "images": [
+  {
+   "image": "clear/week_2/day/7.webp",
+   "seen": "Poolside table with an iced tea, sunglasses and a straw hat on the lounger, turquoise pool, aloes along the wall, deep blue gradient sky. Friday.",
+   "lines": [
+    "The sky checked in at seven, went nowhere all day, and is staying for the weekend.",
+    "The pool is that blue because the sky is doing all of it."
+   ],
+   "rescue": [null, null]
+  },
+  {
+   "image": "clear/week_2/dusk/1.webp",
+   "seen": "Two swimmers in wetsuits with towels sitting on a tidal-pool wall at sunset, flat sea, mountain silhouette behind, apricot sky with a few small clouds. Sunday.",
+   "lines": [
+    "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
+    "The wind that usually owns this coast has taken the evening off.",
+    "That sky is doing its whole show over a sea too flat to interrupt it."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_2/dusk/2.webp",
+   "seen": "Street cricket in a Karoo dorp at dusk, bin for a wicket, windpomp silhouetted against an orange-to-purple gradient, one planet out, grandparents watching from a fence. Friday.",
+   "lines": [
+    "Cricket till the light goes, and light like this takes its time going.",
+    "One planet up, no clouds coming, and the whole dorp still outside.",
+    "The Karoo cools fast under a clear sky, but nobody has noticed yet."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "clear/week_2/dusk/3.webp",
+   "seen": "A man mowing his lawn in the last golden light at a modern concrete house, sun starring through a small tree, long shadows, clear pale sky. Thursday.",
+   "lines": [
+    "This is the first hour since breakfast that lawn work has been survivable.",
+    "A clear evening pays out about forty minutes of gold, and it has just started.",
+    "Not a leaf moving — the day is closing as calm as it opened."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

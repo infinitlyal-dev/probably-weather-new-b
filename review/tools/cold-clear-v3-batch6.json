@@ -1,0 +1,46 @@
+{
+ "bucket": "cold-clear",
+ "batch": 6,
+ "images": [
+  {
+   "image": "cold-clear/week_2/dusk/6.webp",
+   "seen": "A girl in a puffer jacket, beanie and basketball shorts mid-jumpshot at dusk, breath visible, frost creeping across the lawn edges, orange horizon behind a white farmhouse. Thursday.",
+   "lines": [
+    "Shorts and a beanie: half of her believes the sky, half believes the air.",
+    "Free throws until the light or the temperature gives out, whichever is first.",
+    "Every shot comes with its own little cloud of breath tonight."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/night/2.webp",
+   "seen": "A man in a puffer and beanie wheeling the bin down the driveway at night, breath clouding under the porch light, frosty lawn, stars overhead. Tuesday.",
+   "lines": [
+    "Taking the bin out counts as an expedition once the frost settles in.",
+    "The bin run is being done at speed tonight, and the sky knows why.",
+    "Clear night, hard frost coming: even the bin trip earns a beanie."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/night/3.webp",
+   "seen": "Frost-crusted cars parked down a lamplit, tree-lined street at night, stars in a clear navy sky. Monday.",
+   "lines": [
+    "Every windscreen on this street is white already, and it is not even late.",
+    "The streetlights are warm-toned; nothing else out here is.",
+    "The frost is doing the rounds tonight and skipping nobody."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_2/night/4.webp",
+   "seen": "A father and two kids under fleece blankets with mugs on the couch at night, the frosted garden glittering through the window under stars. Wednesday.",
+   "lines": [
+    "Outside is glitter and minus three; inside is fleece and the remote.",
+    "The frost got the garden; the family got the couch. Fair trade.",
+    "Movie night moved up an hour the moment the frost showed up on the hedge."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

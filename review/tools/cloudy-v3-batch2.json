@@ -1,0 +1,46 @@
+{
+ "bucket": "cloudy",
+ "batch": 2,
+ "images": [
+  {
+   "image": "cloudy/week_1/day/3.webp",
+   "seen": "A vertical wall of grey cloud splitting the sky over empty Karoo grassland — clear blue on the left, heavy grey with rain veils on the right. Monday.",
+   "lines": [
+    "Half the sky has an opinion and the other half is about to hear it.",
+    "The week's weather is changing hands right there, in one straight line.",
+    "Blue on the left, business on the right, and the line is moving your way."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_1/day/6.webp",
+   "seen": "White sheets pegged on a T-pole washing line, hanging dead still under a heavy grey sky, green lawn and strelitzias below. Thursday.",
+   "lines": [
+    "That washing is a straight bet against that sky, and the sky looks confident.",
+    "Not a breath moving those sheets, and nothing helpful coming from above either.",
+    "Grey like that can hold all day without dropping a thing — probably."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_1/day/7.webp",
+   "seen": "Two long-haired dachshunds at a sliding door, looking out at a grey garden through glass still dotted with drizzle. Friday.",
+   "lines": [
+    "The walk has been postponed by the committee upstairs, and the committee looks settled.",
+    "The sky is doing nothing in particular and being very thorough about it.",
+    "The sun sent an out-of-office reply."
+   ],
+   "rescue": [null, null, "witty:cloudy#22"]
+  },
+  {
+   "image": "cloudy/week_1/dusk/2.webp",
+   "seen": "A road cyclist paused at the top of a mountain-pass switchback at dusk, broken grey cloud with gold-lit patches over a valley of farms. Monday.",
+   "lines": [
+    "The sky saved its best ten minutes for the top of the climb.",
+    "Cloud all afternoon, and now this — the sky apologising in gold.",
+    "That gap in the cloud is worth more than the whole clear day it replaced."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

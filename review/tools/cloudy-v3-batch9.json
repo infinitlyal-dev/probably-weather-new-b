@@ -1,0 +1,36 @@
+{
+ "bucket": "cloudy",
+ "batch": 9,
+ "images": [
+  {
+   "image": "cloudy/week_4/day/4.webp",
+   "seen": "A scruffy dog lying on a blanket on a stoep beside strelitzias, damp concrete, heavy grey sky over a lush garden. Tuesday.",
+   "lines": [
+    "A grey day reads the same in any language: blanket, stoep, minimal ambition.",
+    "The concrete is still damp and the sky looks like it isn't finished.",
+    "Under a sky like this the whole garden runs at half-speed, dog included."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_4/day/6.webp",
+   "seen": "A man at the end of his wet driveway, back to camera, umbrella in one hand and sunglasses in the other, under a broken grey sky with bright patches. Thursday.",
+   "lines": [
+    "Umbrella in one hand, sunglasses in the other — he has met this sky before.",
+    "That sky refuses to commit, so he came prepared for both of its moods.",
+    "Bring a jacket. Or sunscreen. Or both."
+   ],
+   "rescue": [null, null, "witty:rain-possible#10"]
+  },
+  {
+   "image": "cloudy/week_4/day/7.webp",
+   "seen": "An estate street split down the middle — deep blue sky and sunlit lawns on one side, a dark advancing wall of cloud on the other. Monday.",
+   "lines": [
+    "Half this street is in summer and the other half is about to be somewhere else.",
+    "That cloud line is moving in with the confidence of a Monday.",
+    "The blue half of the sky is on borrowed time and the lawns know it."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

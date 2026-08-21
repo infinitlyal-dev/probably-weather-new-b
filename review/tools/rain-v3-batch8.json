@@ -1,0 +1,46 @@
+{
+ "bucket": "rain",
+ "batch": 8,
+ "images": [
+  {
+   "image": "rain/week_3/day/7.webp",
+   "seen": "Two colleagues laughing as they squeeze under one umbrella crossing an office car park in the rain, suits already half-soaked. Friday.",
+   "lines": [
+    "Two colleagues, one umbrella: the org chart means nothing out here.",
+    "Half a suit dry each: the fairest deal this office has struck all year.",
+    "Friday's last meeting is thirty metres of open car park, chaired by the rain."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_4/day/2.webp",
+   "seen": "Muddy rugby boots and a soaked navy jersey dumped at the open patio door on the mat, rain still falling on the garden beyond, warm lounge inside. Saturday.",
+   "lines": [
+    "Match played, rain won, boots benched at the door.",
+    "That kit tells the whole story: rain, mud, and a game that went ahead anyway.",
+    "Saturday sport in the rain: the washing machine is about to meet its opponent."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_4/day/3.webp",
+   "seen": "Rain sheeting off a farmhouse stoep roof straight into a big potted fern, wet flagstones, tin roofs across the courtyard. Sunday.",
+   "lines": [
+    "The roof is watering the ferns directly, no middleman, no charge.",
+    "Rain on a tin roof: the loudest quiet sound in the country.",
+    "The fern has waited all season for exactly this delivery."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_4/day/4.webp",
+   "seen": "Muddy wellington boots kicked off beside the doormat on a covered stone-cottage stoep, wet boot prints on the terracotta tiles, rain hammering the aloe garden beyond. Saturday.",
+   "lines": [
+    "The boots came off exactly one metre too late, and the prints agree.",
+    "The garden is drinking; the stoep is dripping; the boots are done for the day.",
+    "Boot prints on the tiles: evidence of one quick dash into the weather."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

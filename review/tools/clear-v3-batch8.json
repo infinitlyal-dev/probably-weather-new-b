@@ -1,0 +1,16 @@
+{
+ "bucket": "clear",
+ "batch": 8,
+ "images": [
+  {
+   "image": "clear/week_4/day/6.webp",
+   "seen": "A golden retriever flat asleep on a sunlit wooden deck, built stone braai and benches behind, pot plants, deep blue cloudless sky. Thursday.",
+   "lines": [
+    "The deck reached golden-retriever temperature about an hour ago.",
+    "The sun has been on those boards since morning and the dog is doing the audit.",
+    "Thursday's forecast, as read by the dog: warm boards until further notice."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "bucket": "cloudy",
+ "batch": 1,
+ "images": [
+  {
+   "image": "cloudy/week_1/dawn/3.webp",
+   "seen": "A runner stretching against a green wall on a cobbled Bo-Kaap street at dawn, painted houses running down to the city, pearly overcast sky. Saturday.",
+   "lines": [
+    "The sun is up there somewhere behind three layers of Saturday-morning grey.",
+    "The Bo-Kaap does the colour this morning because the sky refuses to.",
+    "Cool, grey and windless — honestly the best running weather this city sells."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_1/dawn/4.webp",
+   "seen": "A painter up a ladder painting a Bo-Kaap house turquoise under a flat overcast sky, coffee mug and paint tin on the windowsill. Tuesday.",
+   "lines": [
+    "Flat grey light, no glare, no wind: perfect painting weather, and he knows it.",
+    "An overcast sky is a painter's softbox — not one hard shadow on that wall.",
+    "The cloud came in overnight and parked; nothing under it is in a hurry."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_1/dawn/7.webp",
+   "seen": "A toddler in grey pyjamas at a floor-to-ceiling window, hands on the glass, looking out over a grey misty city, warm lamp inside. Sunday.",
+   "lines": [
+    "The whole city is under one grey blanket and somebody just noticed.",
+    "A lid like that takes until about eleven to lift, if it lifts at all.",
+    "The sky is buffering."
+   ],
+   "rescue": [null, null, "witty:cloudy#7"]
+  },
+  {
+   "image": "cloudy/week_1/day/1.webp",
+   "seen": "Merino sheep bunched tight on dry Karoo veld, shepherd and dog in the distance, heavy grey cloud deck with one shaft of sun breaking through. Wednesday.",
+   "lines": [
+    "The sun is down to one beam and the whole veld is watching where it lands.",
+    "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
+    "That grey is thinking about rain and the whole district is thinking with it."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

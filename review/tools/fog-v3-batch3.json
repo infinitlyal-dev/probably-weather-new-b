@@ -1,0 +1,46 @@
+{
+ "bucket": "fog",
+ "batch": 3,
+ "images": [
+  {
+   "image": "fog/week_1/dusk/4.webp",
+   "seen": "An estate street at dusk swallowed by fog, one pair of red tail lights glowing deep in the mist, a single streetlight overhead. Thursday.",
+   "lines": [
+    "Those brake lights are the only warm colour left in the neighbourhood.",
+    "The fog swallowed the whole street and left the tail lights as a receipt.",
+    "Home is two hundred metres away and completely theoretical right now."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/dusk/5.webp",
+   "seen": "A woman walking a labradoodle along a foggy seafront promenade at dusk, a curve of haloed streetlamps fading into the mist. Tuesday.",
+   "lines": [
+    "Every streetlamp gets its own halo tonight; the fog is generous like that.",
+    "The sea is somewhere just off to the right; you'll have to take it on hearsay.",
+    "The dog knows this route with its nose, which tonight is the better instrument."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/dusk/6.webp",
+   "seen": "Two friends taking a smiling selfie at a lookout whose view is a wall of white fog, the sign beside them blanked out by mist. Sunday.",
+   "lines": [
+    "The viewpoint is performing at zero percent and the selfie is happening anyway.",
+    "Somewhere behind all that white is a famous view. Allegedly.",
+    "The fog got to the lookout first and took the whole view for itself."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/night/1.webp",
+   "seen": "An aerial view of Cape Town at night with fog rolling through the CBD, the city lights glowing amber through the mist, Table Mountain black above it all. Wednesday.",
+   "lines": [
+    "Cape Town is still on under there; the fog is just running interference.",
+    "The sea mist came in for the night and the whole city went soft.",
+    "Table Mountain kept its head out; the city took the blanket."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

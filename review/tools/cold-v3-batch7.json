@@ -1,0 +1,46 @@
+{
+ "bucket": "cold",
+ "batch": 7,
+ "images": [
+  {
+   "image": "cold/week_3/day/3.webp",
+   "seen": "Thick wool socks draped over the open door of a glowing panel heater, pale winter light in the window, mug and plant on the side table. Wednesday.",
+   "lines": [
+    "Socks go on the heater first; feet join later — the winter system works.",
+    "The heater has one job this morning and it is these socks.",
+    "Outside is white at the edges; inside, wool is being pre-heated."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_3/day/5.webp",
+   "seen": "Two women laughing under one yellow umbrella in drizzle, beanies and puffer jackets on, a ROAD CLOSED DUE TO RAIN sign on the wet street behind them. Tuesday.",
+   "lines": [
+    "The road gave up before they did, which is the whole story of a Cape winter.",
+    "The sign says the rain won; the faces say it didn't.",
+    "Beanie-and-brolly weather: the cold and the wet are double-teaming today."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_3/day/6.webp",
+   "seen": "A pair of sunglasses forgotten on a frost-covered wrought-iron patio table, heavy grey sky over a misty bleak veld beyond the balustrade. Saturday.",
+   "lines": [
+    "Somebody's optimism is still on the table, under a millimetre of frost.",
+    "Those were left out when this was still a sunglasses kind of place.",
+    "Grey sky, white table: the patio has switched seasons without asking anyone."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold/week_3/day/7.webp",
+   "seen": "A washing line of jerseys, towels and socks against snow-capped mountains under a brilliant blue sky, a dachshund in a knitted jersey on the lawn. Saturday.",
+   "lines": [
+    "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.",
+    "Even the washing is all jerseys today, and the mountains explain why.",
+    "The sun is doing the drying and the snow is doing the reminding."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

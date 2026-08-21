@@ -1,0 +1,46 @@
+{
+ "bucket": "cloudy",
+ "batch": 4,
+ "images": [
+  {
+   "image": "cloudy/week_1/night/7.webp",
+   "seen": "A farmer with a torch walking towards a windpomp at night, full moon glowing through a mackerel sky of broken cloud, Karoo scrub. Tuesday.",
+   "lines": [
+    "The moon has enough cloud to fight through that the torch got the job.",
+    "Cloud like fish scales means the weather is thinking about changing its mind.",
+    "That cloud is just thick enough to make the moon count for nothing on the ground."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/dawn/3.webp",
+   "seen": "Two fishermen in yellow oilskins and headlamps pushing a boat on its trailer down a slipway at grey dawn, breath visible, flat pewter sea, heavy overcast on the mountains. Monday.",
+   "lines": [
+    "Grey sky, flat sea, visible breath: the exact morning the fish expect them.",
+    "The cloud is sitting right on the mountains and the sea has gone pewter.",
+    "No wind on the water this morning, which is worth more than sunshine out there."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/dawn/4.webp",
+   "seen": "A newspaper seller working a Joburg intersection at dawn under a pink-grey overcast winter sky, steaming enamel mug on the curb, red robots behind. Friday.",
+   "lines": [
+    "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+    "The cloud kept the frost off the windscreens, which is the one favour it does.",
+    "Pink-grey sky over the robots: winter is on the morning shift too."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cloudy/week_2/dawn/6.webp",
+   "seen": "A trail runner on a stone coastal path above a churning grey sea, a huge brooding cloud bank overhead with one thin light break at the horizon. Wednesday.",
+   "lines": [
+    "The sky brought its full weight this morning and the sea rose to meet it.",
+    "One thin line of light at the horizon, and the whole sky leaning on it.",
+    "Running weather, honestly: cool, grey, and the sea doing the soundtrack."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

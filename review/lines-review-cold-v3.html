@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PW — bespoke lines, set-001</title>
+<link rel="stylesheet" href="../assets/type-prototype-caption.css">
+<style>
+  :root { --bg:#14110d; --panel:#1f1a14; --ink:#fffaf3; --ink2:#b5ab9d; --gold:#ffd700; --yes:#63c98a; --no:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:rgba(20,17,13,.97); border-bottom:1px solid rgba(246,242,232,.14);
+           padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0 8px 0 0; }
+  button { font:inherit; border:1px solid rgba(246,242,232,.18); background:var(--panel); color:var(--ink);
+           border-radius:8px; padding:6px 11px; cursor:pointer; }
+  button:hover { border-color:var(--gold); }
+  button.primary { background:var(--gold); color:#1a1a2e; border-color:var(--gold); font-weight:700; }
+  .tally { color:var(--ink2); font-variant-numeric:tabular-nums; }
+  main { padding:18px; display:flex; flex-direction:column; gap:30px; }
+  .card { display:grid; grid-template-columns:auto 1fr; gap:22px; border-top:1px solid rgba(246,242,232,.12); padding-top:18px; }
+  .hero { position:relative; overflow:hidden; background-size:cover; background-repeat:no-repeat;
+          border-radius:0 0 20px 20px; box-shadow:0 18px 44px rgba(0,0,0,.55); }
+  .cap { position:absolute; left:0; right:0; bottom:0; margin:0; color:#fff; font-weight:700;
+         font-family:'Caveat Prototype','Segoe Print','Bradley Hand',cursive; text-align:left; line-height:1.08;
+         text-shadow:0 2px 14px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.8); }
+  .meta { color:var(--ink2); font-size:12.5px; margin-bottom:10px; }
+  .meta b { color:var(--ink); }
+  .seen { color:var(--ink2); font-size:12.5px; max-width:80ch; margin:0 0 12px; font-style:italic; }
+  .note { color:#ffb84d; font-size:12.5px; max-width:80ch; margin:0 0 12px; }
+  .line { display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .line input[type=text] { flex:1; min-width:0; font:inherit; background:#181410; color:var(--ink);
+      border:1px solid rgba(246,242,232,.16); border-radius:7px; padding:7px 10px; }
+  .line input[type=text]:focus { outline:none; border-color:var(--gold); }
+  .line .n { width:18px; color:var(--ink2); font-variant-numeric:tabular-nums; padding-top:8px; }
+  .line .wc { width:58px; color:var(--ink2); font-size:11.5px; padding-top:9px; text-align:right; }
+  .y.on { border-color:var(--yes); color:var(--yes); font-weight:700; }
+  .n2.on { border-color:var(--no); color:var(--no); font-weight:700; }
+  .line.mine input[type=text] { border-style:dashed; }
+  .line .resc { flex:none; align-self:flex-start; margin-top:8px; font-size:10.5px; letter-spacing:.06em;
+      text-transform:uppercase; color:#8fb7ff; border:1px solid #8fb7ff55; border-radius:5px; padding:1px 5px; }
+  .hint { color:var(--ink2); font-size:12px; margin:10px 0 0; max-width:80ch; }
+</style>
+
+<header>
+  <h1>Bespoke lines — cold, 35 photographs, three per image incl. locked keeps</h1>
+  <span class="tally" id="tally"></span>
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export</button>
+</header>
+<main id="main"></main>
+
+<script>
+const DATA = {"box":{"w":327,"h":518},"cap":{"runway":56.84,"font":33.00000000000001,"padBottom":14.616000000000001},"bucket":"cold","images":[{"index":1,"image":"cold/week_1/dawn/1.webp","hash":"ea6e65a6bc63","condition":"cold","time":"dawn","week":"A","day":"mon","paths":["cold/week_1/dawn/1.webp","cold/week_3/dawn/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A small scruffy dog in a grey knitted jersey standing on dew-soaked grass at blue dawn, misty garden behind. Monday.","note":null,"lines":["The grass is wet, the air is cold, and the jersey was not optional.","Dew this heavy means the night got properly cold and stayed there.","Small dog, thick jersey, short patrol: winter mornings run on reduced hours."],"rescue":[null,null,null],"alreadyKept":[]},{"index":2,"image":"cold/week_1/dawn/3.webp","hash":"1c5f757ee79a","condition":"cold","time":"dawn","week":"A","day":"wed","paths":["cold/week_1/dawn/3.webp","cold/week_3/dawn/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A mother kneeling at the front door zipping her son's puffer jacket over his school uniform and beanie, cold blue dawn and wet street outside. Wednesday.","note":null,"lines":["The zip goes all the way up today; the walk to the gate has teeth.","That jacket call was made by one look through the kitchen window.","Beanie plus puffer plus school tie: the cold front has reached the uniform."],"rescue":[null,null,null],"alreadyKept":[]},{"index":3,"image":"cold/week_1/dawn/4.webp","hash":"41c9f776e0fb","condition":"cold","time":"dawn","week":"A","day":"thu","paths":["cold/week_1/dawn/4.webp","cold/week_3/dawn/4.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A Karoo farmer standing among his sheep at a whitewashed kraal wall at dawn, breath visible, pastel cold sky over the plain. Thursday.","note":null,"lines":["You can see his breath, and the sheep are wearing the only good answer.","The Karoo does its coldest hour right before its prettiest one.","The sheep bunched before he opened the gate; they read the cold first."],"rescue":[null,null,null],"alreadyKept":[]},{"index":4,"image":"cold/week_1/dawn/7.webp","hash":"91301942dc29","condition":"cold","time":"dawn","week":"A","day":"tue","paths":["cold/week_1/dawn/7.webp","cold/week_3/dawn/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"An old sedan frosted white in a driveway at dawn, iced windscreen, bare trees and a pink band on the horizon. Tuesday.","note":null,"lines":["The sky is clear and the car is white, and those two facts are related.","That windscreen is a ten-minute job and the kettle knows its part.","The car coughed twice before it agreed to start."],"rescue":[null,null,"witty:cold-clear#2"],"alreadyKept":[]},{"index":5,"image":"cold/week_1/day/6.webp","hash":"e8b7a7602012","condition":"cold","time":"day","week":"A","day":"thu","paths":["cold/week_1/day/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A terrier wrapped in a wool blanket on a leather couch, steaming mug on the coffee table, frost-pale garden through the window. Thursday.","note":null,"lines":["One look at that white lawn and the blanket vote was unanimous.","Cold that reaches through a window gets met with wool and a full kettle.","The dog refused to go outside. Fair."],"rescue":[null,null,"witty:cold#17"],"alreadyKept":[]},{"index":6,"image":"cold/week_1/day/7.webp","hash":"59f61259d350","condition":"cold","time":"day","week":"B","day":"thu","paths":["cold/week_1/day/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A woman in a beanie and long puffer jacket on a park bench, sipping takeaway coffee with gloved hands, bare trees and a grey winter sky. Thursday.","note":null,"lines":["Coffee outside in this is a commitment, and she has made it.","Gloves-around-the-cup weather: the coffee is doing two jobs at once.","Your jacket has a jacket. It's that kind of day."],"rescue":[null,null,"witty:cold#22"],"alreadyKept":[]},{"index":7,"image":"cold/week_1/dusk/2.webp","hash":"6ab73d31bad6","condition":"cold","time":"dusk","week":"A","day":"sun","paths":["cold/week_1/dusk/2.webp","cold/week_3/dusk/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A farm gate on a dirt road at sunset, thick mist filling the valley below, gum trees silhouetted against a purple-orange sky. Sunday.","note":null,"lines":["The mist has moved into the valley for the night and locked the gate behind it.","The valley pulled its blanket up early; the hills stay out a bit later.","That mist is tomorrow morning's frost out doing a site inspection."],"rescue":[null,null,null],"alreadyKept":[]},{"index":8,"image":"cold/week_1/dusk/3.webp","hash":"55da2af2c2bd","condition":"cold","time":"dusk","week":"A","day":"tue","paths":["cold/week_1/dusk/3.webp","cold/week_3/dusk/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A mountain pass winding through snow-dusted slopes at dusk, one car with its headlights on, pink cloud over the ridgelines. Tuesday.","note":null,"lines":["Snow on the high ground, headlights on early: the pass has gone winter.","The sun is leaving the mountains one shelf at a time.","Berg air gets in through the vents no matter what the heater says."],"rescue":[null,null,null],"alreadyKept":[]},{"index":9,"image":"cold/week_1/dusk/7.webp","hash":"420d1bd07555","condition":"cold","time":"dusk","week":"A","day":"mon","paths":["cold/week_1/dusk/7.webp","cold/week_3/dusk/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A fat tabby cat draped asleep over the top of a glowing bar heater at dusk, lamp lit, cloudy mountain view through the window. Monday.","note":null,"lines":["The heater went on at four and the cat clocked in at one minute past.","It is heater season, and the best seat in the house has fur on it.","The heater is your best friend. Your only friend."],"rescue":[null,null,"witty:cold#6"],"alreadyKept":[]},{"index":10,"image":"cold/week_1/night/2.webp","hash":"6baabb00f226","condition":"cold","time":"night","week":"A","day":"tue","paths":["cold/week_1/night/2.webp","cold/week_3/night/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A thatched lounge at night with a stone fireplace burning, a Jack Russell asleep on the wingback chair, steaming mug on the armrest, the door open to a deep blue night. Tuesday.","note":null,"lines":["That door is open to a properly cold night, and nobody in here minds.","Outside is for the stars tonight; everything with fur voted fireplace.","The mug is steaming, the logs are in, and winter can do its worst."],"rescue":[null,null,null],"alreadyKept":[]},{"index":11,"image":"cold/week_1/night/6.webp","hash":"a77b4dca45ae","condition":"cold","time":"night","week":"A","day":"mon","paths":["cold/week_1/night/6.webp","cold/week_3/night/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"An empty wet Victorian main street at night, streetlamps in a row, one warm-lit cafe where a waiter is stacking chairs. Monday.","note":null,"lines":["The cold cleared the whole street an hour before closing time.","Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.","One warm window holding out against a street that has given up."],"rescue":[null,null,null],"alreadyKept":[]},{"index":12,"image":"cold/week_1/night/7.webp","hash":"b850a52403e3","condition":"cold","time":"night","week":"A","day":"sun","paths":["cold/week_1/night/7.webp","cold/week_3/night/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A child in a beanie, snood and puffer jacket reading The Gruffalo's Child by torchlight inside a wooden playhouse, sheepskin rug and boots. Sunday.","note":null,"lines":["Beanie, snood, torch, book: winter nights build the best reading rooms.","Only the eyes are getting any cold tonight, and they are busy.","A night this cold turns a wooden hok into a library."],"rescue":[null,null,null],"alreadyKept":[]},{"index":13,"image":"cold/week_2/dawn/5.webp","hash":"484f2079f5aa","condition":"cold","time":"dawn","week":"A","day":"fri","paths":["cold/week_2/dawn/5.webp","cold/week_4/dawn/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"An empty bed with the duvet thrown back into a body-shaped tunnel, grey misty winter morning and bare branches through the window. Friday.","note":null,"lines":["The warmest place in the province was abandoned here at about six-fifteen.","The window says mist and bare branches; the bed rests its case.","The duvet understood the assignment."],"rescue":[null,null,"witty:cold#21"],"alreadyKept":[]},{"index":14,"image":"cold/week_2/dawn/6.webp","hash":"4210c1f4a1ad","condition":"cold","time":"dawn","week":"A","day":"sun","paths":["cold/week_2/dawn/6.webp","cold/week_4/dawn/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"An SUV with its windscreen completely frosted over in fern patterns, lit gold by the rising sun, frosty brown lawn and a modern double-storey house. Sunday.","note":null,"lines":["Minus something this morning: the windscreen has grown its own art collection.","The first ten minutes of this Sunday belong to a credit card and the demister.","Frost on the grass, ferns on the glass — the night went well below zero here."],"rescue":[null,null,null],"alreadyKept":[]},{"index":15,"image":"cold/week_2/day/2.webp","hash":"e938ce2769cd","condition":"cold","time":"day","week":"A","day":"fri","paths":["cold/week_2/day/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A toddler peeking out of a duvet cave built on the lounge floor, lamp glowing, a gloomy grey winter day through the window. Friday.","note":null,"lines":["Construction finished at nine: one duvet cave, single occupant, no visitors till spring.","The day outside never got light properly, so the day inside went underground.","Blanket burrito mode: activated."],"rescue":[null,null,"witty:cold#9"],"alreadyKept":[]},{"index":16,"image":"cold/week_2/day/3.webp","hash":"999e68c47bfc","condition":"cold","time":"day","week":"B","day":"mon","paths":["cold/week_2/day/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A man in a beanie and jacket walking a small dog in a knitted jersey along a wet road in drizzle, grey estate street. Monday.","note":null,"lines":["Both of them are dressed for this, and neither is pretending to enjoy it.","Wet road, grey sky, dog in a jersey: winter is fully operational.","Cold like this turns the morning walk into an errand."],"rescue":[null,null,null],"alreadyKept":[]},{"index":17,"image":"cold/week_2/day/4.webp","hash":"36ffe52cf7ec","condition":"cold","time":"day","week":"A","day":"sun","paths":["cold/week_2/day/4.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A family of four squashed on the couch under one big brown blanket, arms folded, while the dog lies stretched out in the single patch of sunlight on the tiles. Sunday.","note":null,"lines":["One patch of sun came into this lounge and the dog got there first.","Four people share the blanket; the dog negotiated a private sunbeam.","Winter maths: one blanket, four opinions, and a dog holding the only warm square."],"rescue":[null,null,null],"alreadyKept":[]},{"index":18,"image":"cold/week_2/day/5.webp","hash":"084405b1c79a","condition":"cold","time":"day","week":"A","day":"wed","paths":["cold/week_2/day/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A man in a beanie pouring kettle water over his Polo's frozen windscreen, steam billowing, misty grey morning over the estate wall. Wednesday.","note":null,"lines":["The morning's second kettle has nothing to do with tea.","Frost thick enough that the Polo gets a hot drink before he does.","Steam over the windscreen at seven means the night dipped properly below freezing."],"rescue":[null,null,null],"alreadyKept":[]},{"index":19,"image":"cold/week_2/dusk/1.webp","hash":"163ee2f2d1fe","condition":"cold","time":"dusk","week":"A","day":"thu","paths":["cold/week_2/dusk/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A covered stoep at dusk under heavy cold cloud — lantern lit, wet paving, steaming mug on a stool, blanket over the chair, shoes off at the door. Thursday.","note":null,"lines":["The mug is out, the shoes are off, and the cold is being watched from cover.","That sky has been threatening since lunch and the stoep called its bluff.","Steam off the coffee, cold on the air — the stoep is exactly between them."],"rescue":[null,null,null],"alreadyKept":[]},{"index":20,"image":"cold/week_2/dusk/3.webp","hash":"50eb6a4aa792","condition":"cold","time":"dusk","week":"A","day":"wed","paths":["cold/week_2/dusk/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A misty grey beach at dusk, the mountain lost in low cloud, flat cold sea and empty wet sand. Wednesday.","note":null,"lines":["The mountain is in there somewhere, wrapped up for the winter.","The beach has gone to one colour, and it is the cold one.","Nobody's footprints on that sand today; the cold is keeping its beach to itself."],"rescue":[null,null,null],"alreadyKept":[]},{"index":21,"image":"cold/week_2/dusk/5.webp","hash":"917c4c0a6fac","condition":"cold","time":"dusk","week":"A","day":"fri","paths":["cold/week_2/dusk/5.webp","cold/week_4/dusk/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A gloved hand holding a hot chocolate with marshmallows on a balcony at sunset, snow on Table Mountain and the Twelve Apostles across the bay, blanket on the lap. Friday.","note":null,"lines":["Hot chocolate has been promoted to equipment tonight, and the view earned it.","Cape Town got Alps for one evening and the whole city is out on balconies.","The mountain wears white maybe twice a winter, and tonight is one of them."],"rescue":[null,null,null],"alreadyKept":[]},{"index":22,"image":"cold/week_2/night/2.webp","hash":"cb132360385f","condition":"cold","time":"night","week":"A","day":"wed","paths":["cold/week_2/night/2.webp","cold/week_4/night/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A man on his wet doorstep at night under a starry sky, mug in hand, breath steaming in the porch light. Wednesday.","note":null,"lines":["His breath is making better clouds than the sky managed all day.","Clear night, wet steps, visible breath: the frost is filling in its paperwork.","One last look at a sky that is about to get seriously cold."],"rescue":[null,null,null],"alreadyKept":[]},{"index":23,"image":"cold/week_2/night/3.webp","hash":"54f02eb5aac1","condition":"cold","time":"night","week":"A","day":"thu","paths":["cold/week_2/night/3.webp","cold/week_4/night/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A woman working late at her desk wrapped in a blanket, fingerless gloves on the keyboard, a hot water bottle in a knitted cover hanging on the chair, black night in the window. Thursday.","note":null,"lines":["Fingerless gloves at a laptop: winter has entered the home office.","The house has one warm room after dark, and it is wherever the blanket is.","Hot water bottle is the real MVP today."],"rescue":[null,null,"witty:cold#28"],"alreadyKept":[]},{"index":24,"image":"cold/week_2/night/5.webp","hash":"fbf101482bbd","condition":"cold","time":"night","week":"A","day":"fri","paths":["cold/week_2/night/5.webp","cold/week_4/night/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A couple wrapped in one blanket on a log beside a campfire, tent and camp chairs around them, the Milky Way huge over the Karoo. Friday.","note":null,"lines":["A Karoo night trades warmth for stars, and they took the deal.","The fire handles the front; the blanket handles the back; the sky handles everything else.","Cold enough to share one blanket, clear enough to make it worth it."],"rescue":[null,null,null],"alreadyKept":[]},{"index":25,"image":"cold/week_3/day/3.webp","hash":"a37a31d9aa79","condition":"cold","time":"day","week":"B","day":"wed","paths":["cold/week_3/day/3.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Thick wool socks draped over the open door of a glowing panel heater, pale winter light in the window, mug and plant on the side table. Wednesday.","note":null,"lines":["Socks go on the heater first; feet join later — the winter system works.","The heater has one job this morning and it is these socks.","Outside is white at the edges; inside, wool is being pre-heated."],"rescue":[null,null,null],"alreadyKept":[]},{"index":26,"image":"cold/week_3/day/5.webp","hash":"77dad643efa6","condition":"cold","time":"day","week":"A","day":"tue","paths":["cold/week_3/day/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Two women laughing under one yellow umbrella in drizzle, beanies and puffer jackets on, a ROAD CLOSED DUE TO RAIN sign on the wet street behind them. Tuesday.","note":null,"lines":["The road gave up before they did, which is the whole story of a Cape winter.","The sign says the rain won; the faces say it didn't.","Beanie-and-brolly weather: the cold and the wet are double-teaming today."],"rescue":[null,null,null],"alreadyKept":[]},{"index":27,"image":"cold/week_3/day/6.webp","hash":"bf942a9f6d66","condition":"cold","time":"day","week":"A","day":"sat","paths":["cold/week_3/day/6.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A pair of sunglasses forgotten on a frost-covered wrought-iron patio table, heavy grey sky over a misty bleak veld beyond the balustrade. Saturday.","note":null,"lines":["Somebody's optimism is still on the table, under a millimetre of frost.","Those were left out when this was still a sunglasses kind of place.","Grey sky, white table: the patio has switched seasons without asking anyone."],"rescue":[null,null,null],"alreadyKept":[]},{"index":28,"image":"cold/week_3/day/7.webp","hash":"d003110fec9f","condition":"cold","time":"day","week":"B","day":"sat","paths":["cold/week_3/day/7.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A washing line of jerseys, towels and socks against snow-capped mountains under a brilliant blue sky, a dachshund in a knitted jersey on the lawn. Saturday.","note":null,"lines":["Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.","Even the washing is all jerseys today, and the mountains explain why.","The sun is doing the drying and the snow is doing the reminding."],"rescue":[null,null,null],"alreadyKept":[]},{"index":29,"image":"cold/week_4/dawn/1.webp","hash":"ba36a2982ee0","condition":"cold","time":"dawn","week":"A","day":"sat","paths":["cold/week_4/dawn/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A Karoo stone cottage at frosty golden dawn, chimney smoke rising dead straight, two steaming enamel mugs standing on the frosted stone wall. Saturday.","note":null,"lines":["Smoke going straight up means cold, still and not one breath of wind.","Frost on the wall, steam on the mugs: the morning is minus-something and perfect.","The chimney got lit before the kettle did, and both were the right call."],"rescue":[null,null,null],"alreadyKept":[]},{"index":30,"image":"cold/week_4/day/1.webp","hash":"a373f1d83e2f","condition":"cold","time":"day","week":"B","day":"fri","paths":["cold/week_4/day/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A man walking to work with his roll-neck jersey pulled up over his nose, satchel on his shoulder, wet paving and a bare tree under a grey sky. Friday.","note":null,"lines":["The jersey got promoted to balaclava somewhere between the door and the gate.","The air found the one gap in the outfit and he is closing it by hand.","Ja, it's jersey weather. Double jersey."],"rescue":[null,null,"witty:cold#0"],"alreadyKept":[]},{"index":31,"image":"cold/week_4/day/2.webp","hash":"3fd7aa0aae2e","condition":"cold","time":"day","week":"B","day":"sun","paths":["cold/week_4/day/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"An elderly man under a knitted blanket in an armchair pulled up to a glowing bar heater, tea on the side table, bare branches and grey through the window. Sunday.","note":null,"lines":["Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly.","Every bar of that heater is on, which is all the weather report you need.","Cold enough that the armchair migrated toward the plug points."],"rescue":[null,null,null],"alreadyKept":[]},{"index":32,"image":"cold/week_4/day/4.webp","hash":"4b92e51e69f8","condition":"cold","time":"day","week":"A","day":"mon","paths":["cold/week_4/day/4.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A garden tap furred completely white with frost, one drop hanging from the spout, frosted herbs and a brick house behind, pale clear sky. Monday.","note":null,"lines":["The garden tap grew a white beard overnight; the night was that serious.","That drop has been thinking about letting go since about four this morning.","Frost right down to the washers — last night went properly below zero."],"rescue":[null,null,null],"alreadyKept":[]},{"index":33,"image":"cold/week_4/day/5.webp","hash":"d970e657c4d2","condition":"cold","time":"day","week":"B","day":"tue","paths":["cold/week_4/day/5.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"A huge boerboel sitting firmly on the doormat at the open sliding door, wet grey backyard and drizzle-speckled glass beyond. Tuesday.","note":null,"lines":["The yard is wet, the air is cold, and security has suspended patrols.","Even the boerboel checked the weather and sat back down.","That is not a dog refusing a walk; that is a dog reading a forecast."],"rescue":[null,null,null],"alreadyKept":[]},{"index":34,"image":"cold/week_4/dusk/2.webp","hash":"39e28d40ecf1","condition":"cold","time":"dusk","week":"A","day":"sat","paths":["cold/week_4/dusk/2.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"The Sea Point promenade after rain at a blazing pink sunset — wet brick reflecting the sky, walkers and joggers in beanies, a big white dog on a lead. Saturday.","note":null,"lines":["The cold front left an hour ago and took the excuses with it.","Wet bricks doubling the sunset: the storm's apology, accepted by everybody out here.","Beanies plus sunset means the rain has moved on and the cold stayed."],"rescue":[null,null,null],"alreadyKept":[]},{"index":35,"image":"cold/week_4/night/1.webp","hash":"13efc9191981","condition":"cold","time":"night","week":"A","day":"sat","paths":["cold/week_4/night/1.webp"],"why":"doctrine redo — weather-first rewrite","place":null,"pass1":null,"seen":"Two men in beanies and puffer jackets braaiing at night on frost-dusted grass, Cape Dutch farmhouse and string lights behind, wine in hand. Saturday.","note":null,"lines":["Frost on the lawn and wors on the grid: a Cape winter compromise.","Beanies on, fire lit, wine poured: the cold is now someone else's problem.","The braai is happening. The braai always happens. We just pull the chairs closer."],"rescue":[null,null,"witty:cold-clear#27"],"alreadyKept":[]}]};
+const SRC_NAME = "review/set-001-lines-bespoke-cold-v3.json";
+const EXPORT_NAME = "set-001-lines-bespoke-cold-v3-ruled.json";
+// Namespaced per source. Round 1 and round 2 share this page's code, and with
+// one key the round-2 page read round 1's saved text back out of storage and
+// rendered it in every slot - Al opened it and saw the old lines. The stored
+// value is keyed by image+index, and index 1 means a different line in each
+// round, so the namespace is not optional.
+const LS = 'pw_bespoke_lines_' + SRC_NAME.replace(/[^a-z0-9]+/gi, '_');
+const state = JSON.parse(localStorage.getItem(LS) || '{}');
+const $ = (id) => document.getElementById(id);
+const key = (img, i) => img + '#' + i;
+const wc = (s) => (s.trim() ? s.trim().split(/\s+/).length : 0);
+
+function save() { localStorage.setItem(LS, JSON.stringify(state)); tally(); }
+
+function tally() {
+  let yes = 0, no = 0, mine = 0;
+  for (const [k, v] of Object.entries(state)) {
+    if (v.verdict === 'YES') yes += 1;
+    if (v.verdict === 'NO') no += 1;
+    if (k.endsWith('#5') && v.text && v.text.trim()) mine += 1;
+  }
+  const imagesWithAYes = new Set(Object.entries(state).filter(([, v]) => v.verdict === 'YES')
+    .map(([k]) => k.split('#')[0])).size;
+  $('tally').textContent = yes + ' ticked · ' + no + ' rejected · ' + mine + ' of your own · '
+    + imagesWithAYes + '/' + DATA.images.length + ' images have at least one';
+}
+
+function render() {
+  const m = $('main');
+  m.innerHTML = '';
+  for (const img of DATA.images) {
+    const card = document.createElement('section');
+    card.className = 'card';
+
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+    hero.style.width = DATA.box.w + 'px';
+    hero.style.height = DATA.box.h + 'px';
+    hero.style.backgroundImage = 'url("/assets/images/bg/' + img.image + '")';
+    hero.style.backgroundPosition = 'center 50%';
+    const cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.style.padding = DATA.cap.runway.toFixed(1) + 'px 16px ' + DATA.cap.padBottom.toFixed(1) + 'px';
+    cap.style.fontSize = DATA.cap.font.toFixed(1) + 'px';
+    cap.style.background = 'linear-gradient(to top, rgba(0,0,0,.80) 0%, rgba(0,0,0,.62) calc(100% - '
+      + DATA.cap.runway.toFixed(1) + 'px), rgba(0,0,0,0) 100%)';
+    cap.style.borderRadius = '0 0 20px 20px';
+    cap.textContent = img.lines[0];
+    hero.appendChild(cap);
+    card.appendChild(hero);
+
+    const right = document.createElement('div');
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<b>' + img.index + '. ' + img.condition + ' · ' + img.time + '</b> · ' + img.image
+      + ' · ' + img.week + '/' + img.day + ' · ' + img.why + (img.pass1 ? ' · pass-1 ' + img.pass1 : '');
+    right.appendChild(meta);
+
+    const seen = document.createElement('p');
+    seen.className = 'seen';
+    seen.textContent = img.seen;
+    right.appendChild(seen);
+
+    if (img.note) {
+      const n = document.createElement('p');
+      n.className = 'note';
+      n.textContent = img.note;
+      right.appendChild(n);
+    }
+
+    // Lines already kept for this picture, locked and not re-litigated — the
+    // point of round 2 is the gaps, and showing the survivors is what makes a
+    // new line judgeable as part of a SET rather than on its own.
+    if (img.alreadyKept && img.alreadyKept.length) {
+      const box = document.createElement('div');
+      box.className = 'meta';
+      box.style.margin = '2px 0 10px';
+      box.textContent = 'already kept (' + img.alreadyKept.length + '): ';
+      for (const t of img.alreadyKept) {
+        const b = document.createElement('div');
+        b.style.cssText = 'color:#63c98a;font-size:12.5px;margin:2px 0 0 12px';
+        b.textContent = '✓ ' + t;
+        box.appendChild(b);
+      }
+      right.appendChild(box);
+    }
+
+    // The written candidates plus one empty slot for Al's own.
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const k = key(img.image, i);
+      const rec = state[k] || {};
+      const wrap = document.createElement('div');
+      wrap.className = 'line' + (i === N ? ' mine' : '');
+
+      const n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = i === N ? '+' : String(i + 1);
+      wrap.appendChild(n);
+
+      const ref = img.rescue && img.rescue[i];
+      if (ref) {
+        const tag = document.createElement('span');
+        tag.className = 'resc';
+        tag.textContent = 'bank';
+        tag.title = 'Rescued from the existing bank (' + ref + ') rather than newly written';
+        wrap.appendChild(tag);
+      }
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (i === N) inp.placeholder = 'your own line for this picture…';
+      const count = document.createElement('span');
+      count.className = 'wc';
+      const paint = () => {
+        cap.textContent = inp.value || img.lines[0];
+        count.textContent = wc(inp.value) + 'w';
+      };
+      inp.addEventListener('focus', paint);
+      inp.addEventListener('input', () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value });
+        paint(); save();
+      });
+      wrap.appendChild(inp);
+      count.textContent = wc(inp.value) + 'w';
+      wrap.appendChild(count);
+
+      const yes = document.createElement('button');
+      yes.className = 'y' + (rec.verdict === 'YES' ? ' on' : '');
+      yes.textContent = '✓';
+      yes.title = 'keep this line for this picture';
+      yes.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'YES' ? null : 'YES' });
+        save(); render();
+      };
+      const no = document.createElement('button');
+      no.className = 'n2' + (rec.verdict === 'NO' ? ' on' : '');
+      no.textContent = '✕';
+      no.title = 'not for this picture';
+      no.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'NO' ? null : 'NO' });
+        save(); render();
+      };
+      wrap.appendChild(yes);
+      wrap.appendChild(no);
+      right.appendChild(wrap);
+    }
+
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Click into a line to see it on the picture. Edit the text freely — the edit is what exports. '
+      + 'The dashed slot is yours.';
+    right.appendChild(hint);
+    card.appendChild(right);
+    m.appendChild(card);
+  }
+  tally();
+}
+
+$('export').onclick = () => {
+  const out = { generated: '2026-08-19', ruledBy: 'Al, bespoke line review', bucket: DATA.bucket || null, images: [] };
+  for (const img of DATA.images) {
+    const kept = []; const rejected = [];
+    // Lines already kept in an earlier round ride along in the export, marked as
+    // such: the file is the picture's whole approved set, not just this round's
+    // additions, so nothing downstream has to join two exports to know the truth.
+    for (const t of (img.alreadyKept || [])) kept.push({ text: t, source: 'bespoke', round: 1, edited: false });
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const rec = state[key(img.image, i)] || {};
+      const text = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (!text || !text.trim()) continue;
+      const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
+        round: 2, edited: i < N && text.trim() !== img.lines[i] };
+      const ref = img.rescue && img.rescue[i];
+      if (ref && !entry.edited) { entry.source = 'bank'; entry.rescue = ref; }
+      if (rec.verdict === 'YES') kept.push(entry);
+      else if (rec.verdict === 'NO') rejected.push(entry);
+    }
+    out.images.push({ image: img.image, hash: img.hash, condition: img.condition, time: img.time,
+      week: img.week, day: img.day, paths: img.paths, kept, rejected });
+  }
+  out.keptCount = out.images.reduce((n, i) => n + i.kept.length, 0);
+  out.imagesWithNone = out.images.filter((i) => !i.kept.length).map((i) => i.image);
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = EXPORT_NAME;
+  a.click();
+};
+
+render();
+</script>

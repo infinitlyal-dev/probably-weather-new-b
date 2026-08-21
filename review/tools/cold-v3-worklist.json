@@ -1,0 +1,543 @@
+[
+ {
+  "image": "cold/week_1/dawn/1.webp",
+  "hash": "ea6e65a6bc63",
+  "condition": "cold",
+  "time": "dawn",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold/week_1/dawn/1.webp",
+   "cold/week_3/dawn/1.webp"
+  ],
+  "place": null,
+  "seen": "A small scruffy terrier-cross in a hand-knitted grey cable jersey standing on a frosted lawn at first light, looking straight at camera, thoroughly unimpressed. The grass blades are white with frost, restio grasses and clivias behind, a modern concrete house with one lit window in the distance, cold blue-grey light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/dawn/3.webp",
+  "hash": "1c5f757ee79a",
+  "condition": "cold",
+  "time": "dawn",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold/week_1/dawn/3.webp",
+   "cold/week_3/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "A front doorway at dawn, the door open onto a dark blue street with the streetlights still on and bare trees. A woman kneeling in a fleece dressing gown zips up a boy's navy puffer over his school uniform; he has a beanie on and both arms out. School backpack on the floor beside them, warm kitchen light and a fruit bowl inside.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/dawn/4.webp",
+  "hash": "41c9f776e0fb",
+  "condition": "cold",
+  "time": "dawn",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold/week_1/dawn/4.webp",
+   "cold/week_3/dawn/4.webp"
+  ],
+  "place": null,
+  "seen": "Karoo at dawn. An older farmer in a beanie and worn brown jacket, hands deep in his pockets, standing at a whitewashed stone kraal wall with a tight flock of merinos pressed up against it. Steam is coming off the sheep's backs. A small whitewashed farmhouse in the middle distance with smoke from the chimney, flat plain, blue mountains, pink dawn sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/dawn/7.webp",
+  "hash": "91301942dc29",
+  "condition": "cold",
+  "time": "dawn",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold/week_1/dawn/7.webp",
+   "cold/week_3/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "A pale sedan on a brick driveway at dawn with its roof, bonnet and windscreen under a solid layer of white frost. Bare winter trees, a brick boundary wall, a neighbouring tiled roof, and a thin red-orange band of sunrise low on a deep blue sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/day/6.webp",
+  "hash": "e8b7a7602012",
+  "condition": "cold",
+  "time": "day",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold/week_1/day/6.webp"
+  ],
+  "place": null,
+  "seen": "A dim lounge. A small grizzled terrier wrapped to the neck in a heavy wool blanket on a brown leather couch, only its head out, looking straight at camera. A steaming mug and a hardback book on the wooden coffee table. Through the window a frosted white lawn, a wall, bare branches and a flat white winter sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/day/7.webp",
+  "hash": "59f61259d350",
+  "condition": "cold",
+  "time": "day",
+  "week": "B",
+  "day": "thu",
+  "paths": [
+   "cold/week_1/day/7.webp"
+  ],
+  "place": null,
+  "seen": "A woman on a weathered wooden park bench under bare winter trees, in a long black puffer coat, ribbed beanie and grey gloves, both gloved hands cupped round a takeaway coffee cup at her mouth, cheeks pink with cold. Wet path behind with other people walking, flat white sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/dusk/2.webp",
+  "hash": "6ab73d31bad6",
+  "condition": "cold",
+  "time": "dusk",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold/week_1/dusk/2.webp",
+   "cold/week_3/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "A dirt farm track running up to a closed steel gate on a ridge, tall dry grass either side, a line of gums in silhouette against an intense orange-to-purple sunset. Below and behind, a thick blanket of white mist lies in the valley like a lake. Barbed wire fence.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/dusk/3.webp",
+  "hash": "55da2af2c2bd",
+  "condition": "cold",
+  "time": "dusk",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold/week_1/dusk/3.webp",
+   "cold/week_3/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "A mountain pass at dusk seen from above — tar road snaking down through a rocky gorge with one car partway down, headlights on. Patches of snow lying on the rocks and slopes. The last orange sun on the top ridge only, purple-pink cirrus above, deep shadow in the valley.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/dusk/7.webp",
+  "hash": "420d1bd07555",
+  "condition": "cold",
+  "time": "dusk",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold/week_1/dusk/7.webp",
+   "cold/week_3/dusk/7.webp"
+  ],
+  "place": null,
+  "seen": "A lounge at dusk. A big tabby cat sprawled flat along the top of an old cream bar heater with its elements glowing orange, one paw hanging over the front. A table lamp, a framed painting, an armchair with a floral cushion, and an open window showing a mountain and town lights under grey cloud at last light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/night/2.webp",
+  "hash": "6baabb00f226",
+  "condition": "cold",
+  "time": "night",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold/week_1/night/2.webp",
+   "cold/week_3/night/2.webp"
+  ],
+  "place": null,
+  "seen": "The inside of a thatched stone cottage at night. A real fire burning in a stone fireplace, a wingback armchair with a knitted throw over the back, a steaming enamel mug balanced on the arm and a small Jack Russell curled asleep on the seat. An open door on the left showing deep blue night, a hill and stars. Wall lamp, framed picture, pots on the mantel.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/night/6.webp",
+  "hash": "a77b4dca45ae",
+  "condition": "cold",
+  "time": "night",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold/week_1/night/6.webp",
+   "cold/week_3/night/6.webp"
+  ],
+  "place": null,
+  "seen": "The wet main street of a small Victorian country town at night — ornate cast-iron verandah posts, a lit café interior on the right where a man in shirtsleeves is stacking chairs onto tables. Empty black road reflecting a receding row of street lamps, bare trees, cold haze down the street.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_1/night/7.webp",
+  "hash": "b850a52403e3",
+  "condition": "cold",
+  "time": "night",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold/week_1/night/7.webp",
+   "cold/week_3/night/7.webp"
+  ],
+  "place": null,
+  "seen": "Inside a wooden playhouse at night. A small child sits cross-legged in a thick cream puffer jacket and matching puffer trousers and sheepskin boots, a navy beanie pulled down to the eyes and a snood pulled up over the nose so only the eyes show, reading a picture book by torchlight. A camping torch on the bench beside them, soft toys and a toy bus on the shelf.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/dawn/5.webp",
+  "hash": "484f2079f5aa",
+  "condition": "cold",
+  "time": "dawn",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold/week_2/dawn/5.webp",
+   "cold/week_4/dawn/5.webp"
+  ],
+  "place": null,
+  "seen": "A bedroom in cold blue-grey dawn light. The bed is empty, the duvet thrown back in a big folded wave, sheets crumpled, one pillow left. Sheer curtains over a window with bare branches and a white frosted outside. A framed seascape, a bedside table with books and a glass.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/dawn/6.webp",
+  "hash": "4210c1f4a1ad",
+  "condition": "cold",
+  "time": "dawn",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold/week_2/dawn/6.webp",
+   "cold/week_4/dawn/6.webp"
+  ],
+  "place": null,
+  "seen": "A grey Fortuner parked on a paved driveway in front of a modern concrete-and-timber house at dawn. The windscreen is covered in feathery ice crystals catching the low gold sun and there is frost on the roof. The lawn beside the driveway is frost-burnt brown-white. Long shadows, hard cold light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/day/2.webp",
+  "hash": "e938ce2769cd",
+  "condition": "cold",
+  "time": "day",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold/week_2/day/2.webp"
+  ],
+  "place": null,
+  "seen": "A living room in a stone-walled house. A big white duvet has been dragged off the bed onto the rug and built into a tunnel, with a small child's face peeping out of the opening at camera. A table lamp is lit, a grey couch behind, a window showing bare branches and flat cold white light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/day/3.webp",
+  "hash": "999e68c47bfc",
+  "condition": "cold",
+  "time": "day",
+  "week": "B",
+  "day": "mon",
+  "paths": [
+   "cold/week_2/day/3.webp"
+  ],
+  "place": null,
+  "seen": "A man in a black hooded jacket and grey beanie, hands deep in his pockets and head down, walking a small fluffy dog in a grey knitted jumper along a soaked road in front of modern concrete houses. Fine rain in the air, wet tar reflecting, a palm and a bare young tree, flat white sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/day/4.webp",
+  "hash": "36ffe52cf7ec",
+  "condition": "cold",
+  "time": "day",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cold/week_2/day/4.webp"
+  ],
+  "place": null,
+  "seen": "A family of four squashed together on a couch under one big brown blanket pulled across all four laps, all looking thoroughly cold. Tiled floor, family photographs on the grey wall — and a big tan dog stretched flat out on the tiles in the one patch of sunlight coming through the window.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/day/5.webp",
+  "hash": "084405b1c79a",
+  "condition": "cold",
+  "time": "day",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold/week_2/day/5.webp"
+  ],
+  "place": null,
+  "seen": "A man in a hooded puffer jacket and beanie standing on a brick driveway pouring a stainless steel kettle of boiling water over the frosted windscreen of a grey VW Polo, in a huge cloud of steam. Aloes and succulents in the garden, a white gable house behind, bare trees, flat white cold sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/dusk/1.webp",
+  "hash": "163ee2f2d1fe",
+  "condition": "cold",
+  "time": "dusk",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold/week_2/dusk/1.webp"
+  ],
+  "place": null,
+  "seen": "A small stoep at dusk under a corrugated lean-to. The wall lantern is lit, the green front door has warm light behind it, the window blinds glow. A wooden chair with a heavy grey fringed blanket thrown over it, a little black table with a steaming enamel mug on it, and a pair of leather shoes placed neatly on the step. Wet paving, heavy blue-grey cloud above. Nobody there.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/dusk/3.webp",
+  "hash": "50eb6a4aa792",
+  "condition": "cold",
+  "time": "dusk",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold/week_2/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "A cold empty beach at last light — wet flat sand reflecting a leaden sky, thin lines of foam, three dark rocks. A steep headland on the left half swallowed by low grey cloud rolling down its face. Almost monochrome blue-grey. No footprints, nobody.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/dusk/5.webp",
+  "hash": "917c4c0a6fac",
+  "condition": "cold",
+  "time": "dusk",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold/week_2/dusk/5.webp",
+   "cold/week_4/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "From a balcony above Camps Bay: the Twelve Apostles and the back table of Table Mountain in warm pink light, town lights, sea, an orange-pink sunset. In the foreground a gloved hand holding a big steaming mug of hot chocolate topped with marshmallows on a weathered round table, with a plaid blanket over the lap.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/night/2.webp",
+  "hash": "cb132360385f",
+  "condition": "cold",
+  "time": "night",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cold/week_2/night/2.webp",
+   "cold/week_4/night/2.webp"
+  ],
+  "place": null,
+  "seen": "A man in a dark hoodie standing on his back steps at night holding a mug, head tipped back, breathing out a big visible plume of steam into a sky absolutely full of stars. Warm light spilling from an open door and a wall light, garden uplights in the trees, wet paving.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/night/3.webp",
+  "hash": "54f02eb5aac1",
+  "condition": "cold",
+  "time": "night",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cold/week_2/night/3.webp",
+   "cold/week_4/night/3.webp"
+  ],
+  "place": null,
+  "seen": "A woman working late at a desk at night, a thick cream sherpa blanket over her shoulders and fingerless gloves on, typing on a laptop under an anglepoise lamp. A mug, papers and books on the desk, a plant, a framed print — and a knitted-cover hot water bottle tucked against her back in the chair. Black window with a few distant lights.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_2/night/5.webp",
+  "hash": "fbf101482bbd",
+  "condition": "cold",
+  "time": "night",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cold/week_2/night/5.webp",
+   "cold/week_4/night/5.webp"
+  ],
+  "place": null,
+  "seen": "A campsite under an enormous Milky Way. Two people in puffer jackets and beanies sitting close together on a log with one thick striped blanket across both laps, facing a small fire. Four empty camping chairs around them, a green dome tent, cracked dry ground, low scrub, dark hills.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_3/day/3.webp",
+  "hash": "a37a31d9aa79",
+  "condition": "cold",
+  "time": "day",
+  "week": "B",
+  "day": "wed",
+  "paths": [
+   "cold/week_3/day/3.webp"
+  ],
+  "place": null,
+  "seen": "A pair of thick knitted wool socks draped over the open door of a black bar heater with the elements glowing orange. A wooden side table with a plant in a stoneware vase, a basket of books underneath, a knitted throw on a chair, a jute rug, and a window with flat white winter light and bare branches.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_3/day/5.webp",
+  "hash": "77dad643efa6",
+  "condition": "cold",
+  "time": "day",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cold/week_3/day/5.webp"
+  ],
+  "place": null,
+  "seen": "Two women in black puffer jackets, beanies and jeans standing shoulder to shoulder under one big yellow umbrella on a wet brick pavement, both laughing hard, both hands on the same handle. Rain falling, puddles on the road, and a ROAD CLOSED DUE TO RAIN sign standing on the verge behind them.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_3/day/6.webp",
+  "hash": "bf942a9f6d66",
+  "condition": "cold",
+  "time": "day",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold/week_3/day/6.webp"
+  ],
+  "place": null,
+  "seen": "A pair of black sunglasses lying on a cast-iron garden table, both the table and the sunglasses completely furred with white frost. Two weathered wooden garden chairs, a balustrade, and beyond it a flat field vanishing into freezing fog under a heavy grey sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_3/day/7.webp",
+  "hash": "d003110fec9f",
+  "condition": "cold",
+  "time": "day",
+  "week": "B",
+  "day": "sat",
+  "paths": [
+   "cold/week_3/day/7.webp"
+  ],
+  "place": null,
+  "seen": "A washing line hung with grey and cream knitted jumpers, a fringed throw, towels and black socks. A small dachshund in a grey knitted jumper sits on the sunlit lawn beneath the line looking at camera. Behind, a white-flowering hedge and a big snow-capped mountain range under a hard deep blue sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_4/dawn/1.webp",
+  "hash": "ba36a2982ee0",
+  "condition": "cold",
+  "time": "dawn",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold/week_4/dawn/1.webp"
+  ],
+  "place": null,
+  "seen": "A stone farmhouse with a corrugated roof and white stoep posts at sunrise, a straight column of white woodsmoke rising from the chimney into still cold air. Two white enamel mugs steaming on a frosted stone wall in the foreground. Frosted grass, a flat-topped koppie on the horizon, low gold light.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_4/day/1.webp",
+  "hash": "a373f1d83e2f",
+  "condition": "cold",
+  "time": "day",
+  "week": "B",
+  "day": "fri",
+  "paths": [
+   "cold/week_4/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A man in an olive polo-neck jumper with a leather satchel over his shoulder, walking on a wet suburban pavement, pulling the polo-neck up over his mouth and nose with both fists, eyes screwed up. Bare young tree, clipped hedges, white double-storey houses, wet road, flat white sky, autumn leaves on the paving.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_4/day/2.webp",
+  "hash": "3fd7aa0aae2e",
+  "condition": "cold",
+  "time": "day",
+  "week": "B",
+  "day": "sun",
+  "paths": [
+   "cold/week_4/day/2.webp"
+  ],
+  "place": null,
+  "seen": "An elderly man in a grey cardigan sitting in an armchair beside a big window with a heavy cable-knit blanket across his lap, looking out at bare trees and a neighbour's roof. A floor lamp lit, a mug and books on the side table, framed pictures, and a black bar heater with two glowing elements to his right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_4/day/4.webp",
+  "hash": "4b92e51e69f8",
+  "condition": "cold",
+  "time": "day",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cold/week_4/day/4.webp"
+  ],
+  "place": null,
+  "seen": "A close-up of a galvanised garden standpipe tap completely furred with white frost, a small icicle and one perfect clear drop frozen hanging from the outlet. Behind, out of focus, a face-brick house with its stoep light still on, a frosted lawn and frost-killed brown garden plants under a pale blue sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_4/day/5.webp",
+  "hash": "d970e657c4d2",
+  "condition": "cold",
+  "time": "day",
+  "week": "B",
+  "day": "tue",
+  "paths": [
+   "cold/week_4/day/5.webp"
+  ],
+  "place": null,
+  "seen": "Looking out through an open sliding door from inside a house. A big boerboel sits on the doormat right in the doorway, half in and half out, looking down glumly. Beyond him a soaked terracotta patio, wet garden, bare shrubs, a precast wall and neighbouring roofs under heavy grey cloud. Droplets on the glass.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_4/dusk/2.webp",
+  "hash": "39e28d40ecf1",
+  "condition": "cold",
+  "time": "dusk",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold/week_4/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "A seafront promenade at sunset, seen from behind: a man in a beanie and dark jacket walking a big cream dog on wet brick paving, two runners further ahead, street lights already on down the line, apartment blocks along the front, and a blazing orange-red mackerel sunset over a rough sea breaking on the rocks.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cold/week_4/night/1.webp",
+  "hash": "13efc9191981",
+  "condition": "cold",
+  "time": "night",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cold/week_4/night/1.webp"
+  ],
+  "place": null,
+  "seen": "A winter braai at night at a white Cape Dutch gabled farmhouse. Two men in puffer jackets and beanies at a steel braai on legs, one turning meat with tongs, both holding wine glasses, laughing. Firewood stacked on the shelf underneath, flames coming up through the grid, festoon lights strung across the werf, warm lit windows, a big tree, frosty pale ground.",
+  "alreadyKept": [],
+  "need": 3
+ }
+]

@@ -1,0 +1,46 @@
+{
+ "bucket": "fog",
+ "batch": 2,
+ "images": [
+  {
+   "image": "fog/week_1/dawn/7.webp",
+   "seen": "A runner on a wet forest road, the tall gum trees rising and disappearing into fog overhead. Saturday.",
+   "lines": [
+    "The trees go up about thirty metres and then just stop existing.",
+    "The forest is keeping its top half private this morning.",
+    "The road is the only thing committing to a direction this morning."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/day/1.webp",
+   "seen": "A golf ball sitting in wet rough in close-up, a golfer with his bag fading into heavy fog behind it. Sunday.",
+   "lines": [
+    "Found: one ball. The other three hundred metres of golf course are still missing.",
+    "The fairway is out there somewhere, taking the morning off from being visible.",
+    "Fog gives every golfer the same handicap, and today it is generous."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "fog/week_1/day/3.webp",
+   "seen": "A tabby cat sitting on a brick garden wall, two ghostly human figures deep in the fog behind it, a Victorian house barely visible. Monday.",
+   "lines": [
+    "The cat can see exactly what is in that fog and is choosing not to say.",
+    "The neighbours are out there somewhere, at about ten percent opacity.",
+    "Silent Hill vibes. Without the monsters. Hopefully."
+   ],
+   "rescue": [null, null, "witty:fog#2"]
+  },
+  {
+   "image": "fog/week_1/dusk/1.webp",
+   "seen": "A Land Rover with headlights blazing on a misty lowveld road at dusk, acacia trees in layered fog, wet tar. Monday.",
+   "lines": [
+    "The bushveld has gone soft-focus and the Landy is taking it slowly.",
+    "Headlights do about twenty metres out here; the rest is memory and respect.",
+    "Mist off the veld at dusk: the road home just doubled in length."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

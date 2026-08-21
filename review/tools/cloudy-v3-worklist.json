@@ -1,0 +1,548 @@
+[
+ {
+  "image": "cloudy/week_1/dawn/3.webp",
+  "hash": "b5793c36b69d",
+  "condition": "cloudy",
+  "time": "dawn",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cloudy/week_1/dawn/3.webp",
+   "cloudy/week_3/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "Bo-Kaap at first light. A cobbled street dropping away towards the Cape Town CBD, pastel green, pink and yellow houses on the right, a mountain shoulder on the left horizon. Flat grey overcast with one thin warm band low down. A woman in black running kit stretches a quad against a green wall, foot in hand, looking down the hill. The street is empty.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/dawn/4.webp",
+  "hash": "de1df07bf268",
+  "condition": "cloudy",
+  "time": "dawn",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cloudy/week_1/dawn/4.webp",
+   "cloudy/week_3/dawn/4.webp"
+  ],
+  "place": null,
+  "seen": "A house painter up a wooden ladder in Bo-Kaap, brush at the white parapet of a turquoise wall, paint-spattered jacket, beanie and trousers. An open tin of turquoise and a mug of coffee stand on the wall below him. Flat white overcast, cobbled street falling away past pastel houses and a church tower.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/dawn/7.webp",
+  "hash": "e0e2d1182253",
+  "condition": "cloudy",
+  "time": "dawn",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cloudy/week_1/dawn/7.webp",
+   "cloudy/week_3/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "Inside a concrete apartment with a table lamp still burning. A barefoot small boy in a grey tracksuit stands at a floor-to-ceiling window with both palms flat on the glass, his reflection beside him, looking out over a hazy grey city and low cloud. Sofa and rug behind him.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/day/1.webp",
+  "hash": "119e4a52f8a4",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "B",
+  "day": "wed",
+  "paths": [
+   "cloudy/week_1/day/1.webp"
+  ],
+  "place": null,
+  "seen": "Open Karoo veld under heavy grey cloud with one dramatic shaft of sunlight breaking through and landing on empty plain. A tight flock of merinos bunched head-down in the foreground, a lone tree in the middle distance, a farmer in a wide hat with a black dog standing far off, low blue hills on the horizon.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/day/3.webp",
+  "hash": "d16ca804a592",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cloudy/week_1/day/3.webp"
+  ],
+  "place": null,
+  "seen": "Open golden veld under a sky split down the middle: clear blue on the left, one solid grey cloud bank on the right with a razor-straight vertical edge running from top to bottom of the frame. Low hills on the horizon, stones and dry grass in the foreground. No people, no buildings.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/day/6.webp",
+  "hash": "31b58730d005",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "B",
+  "day": "thu",
+  "paths": [
+   "cloudy/week_1/day/6.webp"
+  ],
+  "place": null,
+  "seen": "A suburban back garden under thick lumpy grey overcast filling most of the frame. White sheets pegged out on a wooden line pole, hanging completely limp with no movement in them. Green lawn, hedge, strelitzias, a dark-grey house with sliding doors on the right.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/day/7.webp",
+  "hash": "5668c9f2edcb",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "B",
+  "day": "fri",
+  "paths": [
+   "cloudy/week_1/day/7.webp"
+  ],
+  "place": null,
+  "seen": "Inside a house with wooden floorboards and a Persian rug. Two long-haired dachshunds at a sliding glass door — one standing with its nose almost on the glass looking out, the other sitting back on the rug looking away. Droplets on the glass, a soaked deck, grey garden, white sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/dusk/2.webp",
+  "hash": "20e80f881707",
+  "condition": "cloudy",
+  "time": "dusk",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cloudy/week_1/dusk/2.webp",
+   "cloudy/week_3/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "A road cyclist standing over his bike in the middle of a mountain pass road at dusk, head tipped back looking up at the sky. Heavy layered grey cloud with bands of gold breaking through, a rock face on the right, vineyards and farmland running away to a valley on the left, the road switching back below him.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/dusk/4.webp",
+  "hash": "3ba329d5cea3",
+  "condition": "cloudy",
+  "time": "dusk",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cloudy/week_1/dusk/4.webp",
+   "cloudy/week_3/dusk/4.webp"
+  ],
+  "place": null,
+  "seen": "A wedding at a Cape Dutch wine estate at dusk. Bride in white holding a protea bouquet with her groom in a three-piece suit, standing in a vineyard row; a photographer crouched behind them shooting; a woman in a green dress and wide-brimmed hat standing to the right with hands on hips, looking straight up at the sky. Layered grey and pink cloud, gabled white werf building with its lights on, mountains behind.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/night/1.webp",
+  "hash": "7b4c0256fd8d",
+  "condition": "cloudy",
+  "time": "night",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cloudy/week_1/night/1.webp",
+   "cloudy/week_3/night/1.webp"
+  ],
+  "place": null,
+  "seen": "A thick lid of cloud right across the night sky with one small ragged gap in it, the moon showing through with a halo. Below, an almost black horizon with a low flat-topped koppie in silhouette and a faint band of dull veld in the foreground.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/night/2.webp",
+  "hash": "76070c299a0b",
+  "condition": "cloudy",
+  "time": "night",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cloudy/week_1/night/2.webp",
+   "cloudy/week_3/night/2.webp"
+  ],
+  "place": null,
+  "seen": "A living room at night lit by one warm table lamp. A tabby cat curled asleep on a chunky cream knitted blanket on the sofa with somebody's navy Fair Isle beanie left over its back. Behind it a sliding door onto a balcony, a solid dark cloudy sky with no stars, and scattered town lights far below. A framed picture and a pot plant beside the lamp.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/night/6.webp",
+  "hash": "e991afd863ba",
+  "condition": "cloudy",
+  "time": "night",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cloudy/week_1/night/6.webp",
+   "cloudy/week_3/night/6.webp"
+  ],
+  "place": null,
+  "seen": "A white double-cab bakkie on a narrow tar road across empty country at night, headlights throwing two cones down the road. A bare thorn tree and low scrub on the verge picked out by the light. The sky is completely black — no moon, no stars, solid cloud. The driver is visible in a cap.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_1/night/7.webp",
+  "hash": "68317318c85d",
+  "condition": "cloudy",
+  "time": "night",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cloudy/week_1/night/7.webp",
+   "cloudy/week_3/night/7.webp"
+  ],
+  "place": null,
+  "seen": "Veld at night. A farmer in a wide-brimmed hat walks away from camera towards a windpomp, a torch in his hand throwing a cone of light onto stony ground. A mackerel sheet of cloud across the whole sky with the moon glowing diffusely behind it, a concrete reservoir beside the windpomp, low scrub and distant hills.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dawn/3.webp",
+  "hash": "08134a1e356e",
+  "condition": "cloudy",
+  "time": "dawn",
+  "week": "A",
+  "day": "mon",
+  "paths": [
+   "cloudy/week_2/dawn/3.webp",
+   "cloudy/week_4/dawn/3.webp"
+  ],
+  "place": null,
+  "seen": "Two fishermen in yellow oilskin bibs and headlamps pushing a small white dinghy on its trailer down a wet slipway into flat grey water at first light. Their breath shows in the cold. Heavy featureless overcast, mountains across the bay, a rocky point with birds on it.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dawn/4.webp",
+  "hash": "3bfd9b9470d6",
+  "condition": "cloudy",
+  "time": "dawn",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cloudy/week_2/dawn/4.webp",
+   "cloudy/week_4/dawn/4.webp"
+  ],
+  "place": null,
+  "seen": "A Johannesburg street at dawn under thick pink-grey overcast. A newspaper vendor in a flat cap walks between lanes of stopped traffic with a stack of papers under his arm, pointing towards a driver whose window is down. Red traffic lights, a modernist tower behind, an enamel mug of coffee steaming on the kerb, every car with its lights on.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dawn/6.webp",
+  "hash": "03ff71985022",
+  "condition": "cloudy",
+  "time": "dawn",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cloudy/week_2/dawn/6.webp",
+   "cloudy/week_4/dawn/6.webp"
+  ],
+  "place": null,
+  "seen": "A woman running up a stone-edged coastal path on a headland, dark jacket and shorts, face set, looking straight at camera. Heavy layered grey cloud fills two thirds of the frame with one dull pale gap low over the sea. Cold grey water breaking white on the rocks below, fynbos on the slope.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dawn/7.webp",
+  "hash": "4845b881f911",
+  "condition": "cloudy",
+  "time": "dawn",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cloudy/week_2/dawn/7.webp",
+   "cloudy/week_4/dawn/7.webp"
+  ],
+  "place": null,
+  "seen": "A smooth tar path curving away towards the sea at dawn through coastal fynbos, a stone-clad house with a chimney on the left, one white car parked at the roadside in the distance. A heavy grey cloud lid across the whole sky with a thin dull orange band of sunrise squeezed underneath it. Nobody on the path.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/day/1.webp",
+  "hash": "e9f6b3850ce2",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "B",
+  "day": "sat",
+  "paths": [
+   "cloudy/week_2/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A woman lying on a striped towel on a lawn in a swimsuit, a tube of sunblock in her hand, shading her eyes and squinting up at the sky with open dismay. A big dark cloud bank is rolling over from the left with the last strip of blue still showing behind it. White house with brown shutters, plumbago hedge in blue flower.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/day/5.webp",
+  "hash": "5aea3d2e9887",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cloudy/week_2/day/5.webp"
+  ],
+  "place": null,
+  "seen": "An empty school rugby field, immaculate green grass, two sets of white poles, a low stone boundary wall, red-brick school buildings with corrugated roofs on the right and dry golden hills behind. Flat pale grey overcast fills the top half of the frame. Not one person on the field.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/day/6.webp",
+  "hash": "dc71e7a692da",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cloudy/week_2/day/6.webp"
+  ],
+  "place": null,
+  "seen": "A chameleon walking along a bare branch above a green hedge, mottled green, one foot lifted mid-step, eye swivelled to camera. Behind it a terracotta tiled roof and a heavy lumpy grey cloud lid filling the top two thirds of the frame.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/day/7.webp",
+  "hash": "094ec6ba034c",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cloudy/week_2/day/7.webp"
+  ],
+  "place": null,
+  "seen": "A backyard braai going ahead under a heavy dark grey lid. A big built-in brick braai with the grid loaded — chops, a coil of wors, chicken, potatoes. Beside it a steel fire box on a trolley where a hand with a gas lighter is lighting kindling on newspaper. A bag of charcoal and an open box of firelighters, soaked paving, a wet patio table and chairs, corrugated fence.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dusk/2.webp",
+  "hash": "6b5271665e34",
+  "condition": "cloudy",
+  "time": "dusk",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cloudy/week_2/dusk/2.webp",
+   "cloudy/week_4/dusk/2.webp"
+  ],
+  "place": null,
+  "seen": "A fire-red mackerel sunset over Table Bay, with Table Mountain and Lion's Head in full silhouette across the water. One figure in dark clothes stands on a vegetated dune in the foreground, looking towards the mountain. Empty white beach curving away, faint city lights along the far shore.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dusk/3.webp",
+  "hash": "018a0573e433",
+  "condition": "cloudy",
+  "time": "dusk",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cloudy/week_2/dusk/3.webp",
+   "cloudy/week_4/dusk/3.webp"
+  ],
+  "place": null,
+  "seen": "A stoep at dusk. An old tan dog with a grey muzzle curled asleep on a cushion wearing a knitted jersey. A face-brick pillar with its wall light already on, sliding doors reflecting the lamp inside. Beyond, rolling farmland and a mountain under a flat grey-blue cloudy sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dusk/5.webp",
+  "hash": "444490756b06",
+  "condition": "cloudy",
+  "time": "dusk",
+  "week": "A",
+  "day": "wed",
+  "paths": [
+   "cloudy/week_2/dusk/5.webp",
+   "cloudy/week_4/dusk/5.webp"
+  ],
+  "place": null,
+  "seen": "Looking down over a suburb of terracotta roofs at dusk, mist lying between the trees, mountains in silhouette. A very heavy dark grey cloud lid across the whole top of the frame with a band of burning orange-red sunset squeezed underneath it along the horizon. Streetlights just coming on.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dusk/6.webp",
+  "hash": "0ebee4d85540",
+  "condition": "cloudy",
+  "time": "dusk",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cloudy/week_2/dusk/6.webp",
+   "cloudy/week_4/dusk/6.webp"
+  ],
+  "place": null,
+  "seen": "Looking across a line of suburban tiled roofs at dusk, TV aerials and satellite dishes in silhouette against heavy grey-purple cloud with a band of dusty pink low down. Two or three windows glowing warm yellow behind curtains. Nobody in the frame.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/dusk/7.webp",
+  "hash": "211c0291a514",
+  "condition": "cloudy",
+  "time": "dusk",
+  "week": "A",
+  "day": "fri",
+  "paths": [
+   "cloudy/week_2/dusk/7.webp",
+   "cloudy/week_4/dusk/7.webp"
+  ],
+  "place": null,
+  "seen": "A bare cracked patch of ground on the edge of a Highveld town at dusk. An empty steel braai stand on the left, a wooden picnic table and benches on the right with a bag of briquettes standing on the table. Town lights strung along the horizon under an enormous grey cloud lid with one band of orange squeezed low underneath. Nobody there.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/night/4.webp",
+  "hash": "c6d4061cbef2",
+  "condition": "cloudy",
+  "time": "night",
+  "week": "A",
+  "day": "sun",
+  "paths": [
+   "cloudy/week_2/night/4.webp",
+   "cloudy/week_4/night/4.webp"
+  ],
+  "place": null,
+  "seen": "A rooftop terrace at night. A man in a black puffer jacket reclining in a wooden deck chair with headphones on, eyes shut, feet up on the planter ledge. Lit apartment blocks behind him and city lights on the horizon. The sky is a solid orange-brown glow from horizon to top of frame — total cloud, not one star.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/night/5.webp",
+  "hash": "f3255e596b2c",
+  "condition": "cloudy",
+  "time": "night",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cloudy/week_2/night/5.webp",
+   "cloudy/week_4/night/5.webp"
+  ],
+  "place": null,
+  "seen": "Three friends on a stone-walled terrace at night, wrapped in thick blankets in wicker chairs, laughing. A hurricane lantern burning on a round wooden table with two glasses of red wine, a mug and a board of snacks. Behind them a completely black overcast sky with no stars at all, dark land below.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_2/night/6.webp",
+  "hash": "bdc2741f86fb",
+  "condition": "cloudy",
+  "time": "night",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cloudy/week_2/night/6.webp",
+   "cloudy/week_4/night/6.webp"
+  ],
+  "place": null,
+  "seen": "A seafront promenade at night. A man in a black coat, beanie and grey scarf walking a small terrier on a lead along wet paving lit by ornate street lamps. Sea on the left, a mountain with cloud sitting on its peak and hillside lights behind. The sky above is completely dark and closed.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_3/day/1.webp",
+  "hash": "c16f8303d56e",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "A",
+  "day": "sat",
+  "paths": [
+   "cloudy/week_3/day/1.webp"
+  ],
+  "place": null,
+  "seen": "A suburban back garden with a mountain behind it. A man stands behind a green petrol lawnmower halfway across the lawn, head tipped right back, looking straight up at a heavy grey cloud lid. One half of the grass is long, the other half is freshly cut with a clean stripe between them. Beige house, patio table with a beer bottle on it.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_3/day/3.webp",
+  "hash": "04bdf14c306b",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "B",
+  "day": "sun",
+  "paths": [
+   "cloudy/week_3/day/3.webp"
+  ],
+  "place": null,
+  "seen": "The Umhlanga promenade under a flat pale grey sky. A woman running towards camera in a grey crop top and dark leggings, ponytail swinging, earbuds in. The Whalebone Pier's white curved ribs behind her, calm green sea, coastal vegetation on the right, not a shadow anywhere on the concrete.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_3/day/4.webp",
+  "hash": "47550fce6c98",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "B",
+  "day": "tue",
+  "paths": [
+   "cloudy/week_3/day/4.webp"
+  ],
+  "place": null,
+  "seen": "A man in a grey hoodie standing on a tiled roof between two arrays of solar panels, hands on hips, head tipped back squinting up at a thick grey cloud lid with a resigned expression. Suburban street, houses and trees below him.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_4/day/4.webp",
+  "hash": "4727610ce8f9",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "A",
+  "day": "tue",
+  "paths": [
+   "cloudy/week_4/day/4.webp"
+  ],
+  "place": null,
+  "seen": "Looking out from under a stoep roof. A big scruffy wire-haired dog lying flat on a rumpled old kilim rug on the concrete, chin down, eyes half open, thoroughly bored. Beyond him a lush garden of aloes, a big tree and strelitzias in orange flower, all under a lumpy grey overcast sky.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_4/day/6.webp",
+  "hash": "5a72972b399b",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "A",
+  "day": "thu",
+  "paths": [
+   "cloudy/week_4/day/6.webp"
+  ],
+  "place": null,
+  "seen": "A man photographed from behind, standing in the middle of a wet suburban road in a brown jacket and jeans, a closed black umbrella in one hand and a pair of sunglasses in the other, looking up at a broken grey and white sky with brightness starting to come through on the right. Wet tar, single-storey houses, palms, lawns.",
+  "alreadyKept": [],
+  "need": 3
+ },
+ {
+  "image": "cloudy/week_4/day/7.webp",
+  "hash": "313ca13b51a5",
+  "condition": "cloudy",
+  "time": "day",
+  "week": "B",
+  "day": "mon",
+  "paths": [
+   "cloudy/week_4/day/7.webp"
+  ],
+  "place": null,
+  "seen": "A quiet suburban estate street in late afternoon — face-brick walls, terracotta roofs, mown verges, young trees. The sky is split: deep clear blue on the left, and a huge grey cloud sheet advancing from the right with its edge running diagonally down. Warm sun still lighting the near lawns and road while the far end is already in shadow.",
+  "alreadyKept": [],
+  "need": 3
+ }
+]

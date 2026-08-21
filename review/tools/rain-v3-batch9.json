@@ -1,0 +1,36 @@
+{
+ "bucket": "rain",
+ "batch": 9,
+ "images": [
+  {
+   "image": "rain/week_1/night/4.webp",
+   "seen": "Heavy night rain slanting through a streetlight, a jacaranda in bloom over a suburban wall with electric fencing, the gutter running strong along the curb. Wednesday.",
+   "lines": [
+    "The gutter found its river voice at about eight and has not stopped since.",
+    "Rain through a streetlight looks like static, and tonight the whole street is tuned to it.",
+    "The jacaranda is getting a night wash and the street is getting the runoff."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/night/5.webp",
+   "seen": "A glowing turquoise pool in night rain, raindrop rings across the whole surface, palm and storm sky black above. Tuesday.",
+   "lines": [
+    "The pool is being topped up by head office tonight, free of charge.",
+    "Rain on a lit pool: ten thousand rings and not one swimmer.",
+    "The only thing swimming tonight is the water itself."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/night/6.webp",
+   "seen": "An empty beachfront parking lot in driving night rain, a furled beach umbrella leaning at the rail, sea spray exploding over the promenade wall. Saturday.",
+   "lines": [
+    "The sea is coming over the rail and the rain is coming down to meet it.",
+    "The last umbrella on the beachfront is closed, which is the correct call.",
+    "Salt spray from the front, rain from above: the promenade is fully surrounded."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

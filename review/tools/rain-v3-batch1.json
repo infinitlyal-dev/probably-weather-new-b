@@ -1,0 +1,46 @@
+{
+ "bucket": "rain",
+ "batch": 1,
+ "images": [
+  {
+   "image": "rain/week_1/dawn/2.webp",
+   "seen": "Two school kids in raincoats and gumboots sharing one umbrella at a glass bus shelter in steady rain, wet pavement reflecting them. Monday.",
+   "lines": [
+    "The rain started before the alarm did, and the gumboots were ready.",
+    "Two under one umbrella: the first maths problem of the school day, solved.",
+    "The puddles are claiming the pavement one slab at a time."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/dawn/3.webp",
+   "seen": "A through-the-windscreen view of rainy Cape Town traffic, wiper mid-swipe, tail lights smeared red down the wet street, Table Mountain under cloud ahead. Tuesday.",
+   "lines": [
+    "The mountain has its head in the weather and the traffic has its lights on.",
+    "The wiper is on its ten-thousandth swipe and the rain has not blinked.",
+    "The traffic is emotional."
+   ],
+   "rescue": [null, null, "witty:rain#25"]
+  },
+  {
+   "image": "rain/week_1/dawn/6.webp",
+   "seen": "A jacaranda-lined street just after overnight rain, the wet road blazing gold in the sunrise, one runner heading into the light. Saturday.",
+   "lines": [
+    "The rain finished at five and left the whole street polished for the sunrise.",
+    "Wet tar plus sunrise equals a street made of gold, briefly.",
+    "Somebody ordered rain for the night and sun for the morning, and it was delivered."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "rain/week_1/dawn/7.webp",
+   "seen": "A floor-to-ceiling window streaming with rain, a full coffee mug on the concrete sill, grey garden and patio beyond. Sunday.",
+   "lines": [
+    "The rain is on the glass and the coffee is on the sill: Sunday is sorted.",
+    "That window has the best programme on this morning and it is just rain.",
+    "Steady, straight-down, all-morning rain: the kind the garden actually drinks."
+   ],
+   "rescue": [null, null, null]
+  }
+ ]
+}

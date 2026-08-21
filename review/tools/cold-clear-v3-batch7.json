@@ -1,0 +1,46 @@
+{
+ "bucket": "cold-clear",
+ "batch": 7,
+ "images": [
+  {
+   "image": "cold-clear/week_2/night/6.webp",
+   "seen": "A couple lying under duvets in a bakkie bed, pointing up at a massive Milky Way over dark veld, flask and enamel mugs on the tailgate. Friday.",
+   "lines": [
+    "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight.",
+    "Winter skies are the sharp ones — the cold is the price of that many stars.",
+    "The heater is at home; the Milky Way is here; the duvet split the difference."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_3/day/1.webp",
+   "seen": "Two colleagues in coats and scarves chatting over takeaway coffees in a sunlit city plaza, brilliant blue sky between the glass towers. Friday.",
+   "lines": [
+    "Coats and coffees in full sun: winter in this city photographs like summer.",
+    "The sky says lunch outside; the scarves say make it a quick one.",
+    "Not a cloud between the towers, and still nobody unbuttoned anything."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_3/day/5.webp",
+   "seen": "A mother zipping a grumpy toddler into a puffer jacket at the kitchen table, porridge steaming, frosty veld and blue sky through the window. Thursday.",
+   "lines": [
+    "The jacket is going on because the window already said so.",
+    "Porridge steaming, veld frosted: breakfast comes with a dress code today.",
+    "The face says no; the frost outside says absolutely yes."
+   ],
+   "rescue": [null, null, null]
+  },
+  {
+   "image": "cold-clear/week_4/day/3.webp",
+   "seen": "An empty rugby field in the morning — frost surviving in the grandstand's shadow, sunlit golden grass, tall poles against a brilliant blue sky. Saturday.",
+   "lines": [
+    "The frost only survives in the stand's shadow, and you can see the exact line.",
+    "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+    "Lekker koud, but the rugby fields are about to look perfect."
+   ],
+   "rescue": [null, null, "witty:cold-clear#11"]
+  }
+ ]
+}
