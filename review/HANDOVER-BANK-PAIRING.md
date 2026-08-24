@@ -16,6 +16,10 @@ wants reused. Assign each kept line to the single photograph it fits best, one
 line to one image, no line used twice. Then report how many line-slots per
 condition are still unfilled.
 
+Before the mechanics, read "Al's ruling on what these lines ARE" below. These
+are not spare parts being fitted into gaps. They are the voice the app is meant
+to have, and the pass fails if you treat them as inventory.
+
 ## Read these before writing anything
 
 - `review/PAIRING-TASTE.md` — the taste profile, 293 lines, all of it. It is the
@@ -112,13 +116,40 @@ old ticks against different lines — that bug has already bitten him twice.
 Then report per condition: images covered, lines placed, slots still open, and
 which keeps you could not find a home for.
 
-## The one thing to confirm with Al before you start
+## Al's ruling on what these lines ARE — read this twice
 
-Five lines per photograph has been the working target. Confirm whether the bank
-keeps **fill** those five — reducing how many new lines still need writing — or
-whether they are **extra variety on top** of five, in which case nothing is
-saved and the shortfall stands at 1,200. The table above assumes the first. It
-changes the whole arithmetic, so ask once, then proceed.
+Ruled 2026-08-23, in his words: the bank keeps **fill** the five slots per
+photograph, "because they are genuinely funny and speak to the conditions and
+are less image observational. They convey SA humour and a feeling... they are
+the feeling we need for the app, the rest we fill in as we go."
+
+That is the whole brief and it outranks the arithmetic. Three consequences:
+
+1. **These lines set the register.** They are not filler taking up space until
+   something better arrives. They are what Probably Weather is supposed to sound
+   like — warm, recognisably South African, working at the level of the
+   condition rather than cataloguing the frame. Treat them as the standard the
+   rest of the copy has to reach.
+
+2. **Placement follows the line's own nature.** Where a line names a concrete
+   thing — a dog, a bakkie, a kettle, a heater — put it on a frame that contains
+   that thing; those are near-automatic. The rest place by feeling and by
+   condition, and they are deliberately flexible. Al kept them *because* they
+   travel. Do not agonise over a perfect frame for a line that works on twenty.
+
+3. **The remaining 872 are a later decision, not an assumption.** Do not plan to
+   fill them with more observational bespoke writing by default. Al: "the rest
+   we fill in as we go."
+
+**And the caveat that matters most.** The 1,200 v2 lines already written for
+these photographs are *observational by construction* — the swap-test repair of
+2026-08-19 optimised for exactly that, lines that could not be moved off their
+frame. It fixed a real defect, but it pushed toward noticing things in
+photographs and away from feeling. When those pages are ruled on, they are being
+judged against the bank's texture, not on how cleverly they read the picture. If
+they read as a caption competition beside Al's 379, that is the signal that the
+872 should be written in the bank's voice rather than in the v2 voice. Surface
+that to Al when you see the answer; do not quietly resolve it yourself.
 
 ## State of play, so you do not trip over it
 
