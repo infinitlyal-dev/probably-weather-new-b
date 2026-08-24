@@ -1,0 +1,3068 @@
+{
+ "generated": "2026-08-23",
+ "ruledBy": "Al, original condition bank review",
+ "note": "Bank lines Al wants kept. Each still needs photographs found for it.",
+ "kept": [
+  {
+   "id": "witty:clear#4",
+   "condition": "clear",
+   "text": "Main character weather right here.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:clear#5",
+   "condition": "clear",
+   "text": "Even the hadedas sound happy.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:clear#16",
+   "condition": "clear",
+   "text": "Days like this should come with a soundtrack.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:clear#19",
+   "condition": "clear",
+   "text": "Blue sky, warm breeze. The simple stuff.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:clear#34",
+   "condition": "clear",
+   "text": "Africa showing off again. Quietly devastating.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:clear#46",
+   "condition": "clear",
+   "text": "Mornings like this are why Capetonians never stop mentioning it.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:clear#24",
+   "condition": "clear",
+   "text": "The type of day that makes people text 'lekker dag hey'.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#35",
+   "condition": "clear",
+   "text": "This is the weather we brag about overseas.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#37",
+   "condition": "clear",
+   "text": "Bottle this one. Open it in winter.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#43",
+   "condition": "clear",
+   "text": "Highveld mornings: freezing, gorgeous, zero apologies.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#52",
+   "condition": "clear",
+   "text": "The sun woke up and chose glorious.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#57",
+   "condition": "clear",
+   "text": "Zero drama in the sky. Highly unusual. Gladly accepted.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#74",
+   "condition": "clear",
+   "text": "The sun is really milking this exit. Honestly, deserved.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#76",
+   "condition": "clear",
+   "text": "When the weather behaves this well, so do we. Roughly.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#32",
+   "condition": "clear",
+   "text": "The kind of sky that makes you grateful for free things.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:clear#53",
+   "condition": "clear",
+   "text": "Morning people might be onto something. Don't tell them.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:clear#10",
+   "condition": "clear",
+   "text": "Somewhere an estate agent is saying 'lifestyle'.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:clear#25",
+   "condition": "clear",
+   "text": "Take your coffee outside. You deserve it.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#26",
+   "condition": "clear",
+   "text": "Everything looks 4K today. The sky's in ultra mode.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#28",
+   "condition": "clear",
+   "text": "Your excuse to stay inside just expired.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:clear#6",
+   "condition": "clear",
+   "text": "If you're inside, you're doing it wrong.",
+   "pass1": {
+    "shown": 9,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:clear#0",
+   "condition": "clear",
+   "text": "Absolutely beautiful out there.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#1",
+   "condition": "clear",
+   "text": "Perfect day. No excuses. Get out.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#7",
+   "condition": "clear",
+   "text": "Nature's flexing and we're here for it.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#8",
+   "condition": "clear",
+   "text": "Postcard weather. You're welcome.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#14",
+   "condition": "clear",
+   "text": "Take a moment. Look up. You're welcome.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#17",
+   "condition": "clear",
+   "text": "Your vitamin D levels are thanking you.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#20",
+   "condition": "clear",
+   "text": "The sky's giving everything today.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#27",
+   "condition": "clear",
+   "text": "This is the day the brochure was talking about.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#39",
+   "condition": "clear",
+   "text": "Air this clear should come with a warning: plans will be made.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#45",
+   "condition": "clear",
+   "text": "Weather this well-behaved is definitely up to something.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#47",
+   "condition": "clear",
+   "text": "The sun took its time this morning. Worth the wait.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#50",
+   "condition": "clear",
+   "text": "Enjoy it. There's a cold front out there doing warm-ups.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#51",
+   "condition": "clear",
+   "text": "One perfect day issued. Non-transferable. Spend it wisely.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#56",
+   "condition": "clear",
+   "text": "Even Monday looks photogenic in this light.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#58",
+   "condition": "clear",
+   "text": "'One hour at the beach.' History's most confident lie.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#60",
+   "condition": "clear",
+   "text": "Weather this perfect is on loan. The southeaster keeps receipts.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#71",
+   "condition": "clear",
+   "text": "Cancel everything. This is THE day winter was hiding.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#73",
+   "condition": "clear",
+   "text": "'Just one sundowner' — famous last words, every single time.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#77",
+   "condition": "clear",
+   "text": "Be honest — you opened this app to confirm Saturday's braai.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#81",
+   "condition": "clear",
+   "text": "The evening showed up in its Sunday best.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#82",
+   "condition": "clear",
+   "text": "Verandah weather. The couch will understand.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#90",
+   "condition": "clear",
+   "text": "Someone turned the stars up to full volume.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#93",
+   "condition": "clear",
+   "text": "Sky this clear means tomorrow's a scorcher. Stay a while.",
+   "pass1": null
+  },
+  {
+   "id": "witty:clear#2",
+   "condition": "clear",
+   "text": "This is why we live in South Africa.",
+   "pass1": {
+    "shown": 1,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:clear#13",
+   "condition": "clear",
+   "text": "Africa's sky just hits different.",
+   "pass1": {
+    "shown": 1,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:clear#38",
+   "condition": "clear",
+   "text": "The sun clocked in before your alarm even tried.",
+   "pass1": {
+    "shown": 1,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:cold-clear#10",
+   "condition": "cold-clear",
+   "text": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold-clear#22",
+   "condition": "cold-clear",
+   "text": "Sun on your back, freezer on your face.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold-clear#92",
+   "condition": "cold-clear",
+   "text": "Free planetarium tonight. Admission: your toes.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold-clear#4",
+   "condition": "cold-clear",
+   "text": "The dog is still keen. The dog is always keen. Respect.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#17",
+   "condition": "cold-clear",
+   "text": "The car's heater is the most important relationship in your life right now.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#32",
+   "condition": "cold-clear",
+   "text": "The lawn caught frost overnight. You're next.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#69",
+   "condition": "cold-clear",
+   "text": "In the sun: bearable. Two steps left: Antarctica.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#3",
+   "condition": "cold-clear",
+   "text": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#9",
+   "condition": "cold-clear",
+   "text": "Sun's out. Don't be fooled. Nature is lying.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#11",
+   "condition": "cold-clear",
+   "text": "Lekker koud, but the rugby fields are about to look perfect.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#16",
+   "condition": "cold-clear",
+   "text": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#27",
+   "condition": "cold-clear",
+   "text": "The braai is happening. The braai always happens. We just pull the chairs closer.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#44",
+   "condition": "cold-clear",
+   "text": "Clear skies, open roads, running nose. The full winter set.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#52",
+   "condition": "cold-clear",
+   "text": "Window sun is the only sun doing its job today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#54",
+   "condition": "cold-clear",
+   "text": "It looks lovely out there. We've chosen to believe it from in here.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#61",
+   "condition": "cold-clear",
+   "text": "Perfect rugby weather. For the spectators with blankets.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#63",
+   "condition": "cold-clear",
+   "text": "Sunny, with a 100% chance of shivering.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#104",
+   "condition": "cold-clear",
+   "text": "Tomorrow's first task: five minutes of windscreen scraping in your work clothes.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#105",
+   "condition": "cold-clear",
+   "text": "The cars have surrendered. They're sleeping under ice tonight.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#79",
+   "condition": "cold-clear",
+   "text": "The sun is heading home now, taking the last three degrees with it.",
+   "pass1": {
+    "shown": 6,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:cold-clear#77",
+   "condition": "cold-clear",
+   "text": "Not a cloud in sight. Not a degree either.",
+   "pass1": {
+    "shown": 4,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold-clear#30",
+   "condition": "cold-clear",
+   "text": "The sun has arrived. It has not yet started working.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#33",
+   "condition": "cold-clear",
+   "text": "Zero wind. Zero clouds. Zero mercy.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#36",
+   "condition": "cold-clear",
+   "text": "Looks like a tourism ad. Feels like the inside of a fridge.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#19",
+   "condition": "cold-clear",
+   "text": "Layers off by 11. Layers on by 4. Highveld classic.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#47",
+   "condition": "cold-clear",
+   "text": "Full sunshine, full jacket. Both are non-negotiable.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#87",
+   "condition": "cold-clear",
+   "text": "First star is out. First ten degrees have also left.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#111",
+   "condition": "cold-clear",
+   "text": "Clear nights are winter's way of apologising.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#86",
+   "condition": "cold-clear",
+   "text": "Clear sky tonight. That means the cold has an all-access pass.",
+   "pass1": {
+    "shown": 6,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold-clear#73",
+   "condition": "cold-clear",
+   "text": "The bluer the sky, the colder the truth.",
+   "pass1": {
+    "shown": 3,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#95",
+   "condition": "cold-clear",
+   "text": "The frost has already started its shift. By dawn the lawn will be glass.",
+   "pass1": {
+    "shown": 4,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#7",
+   "condition": "cold-clear",
+   "text": "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.",
+   "pass1": {
+    "shown": 6,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold-clear#0",
+   "condition": "cold-clear",
+   "text": "Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#1",
+   "condition": "cold-clear",
+   "text": "The Free State just remembered it has a winter setting.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#2",
+   "condition": "cold-clear",
+   "text": "The car coughed twice before it agreed to start.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#5",
+   "condition": "cold-clear",
+   "text": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#13",
+   "condition": "cold-clear",
+   "text": "Tile floors are tonight's villain. Wear something on your feet.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#24",
+   "condition": "cold-clear",
+   "text": "The Toyota started first try. You owe it a wash.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#34",
+   "condition": "cold-clear",
+   "text": "Somebody left the freezer door open overnight.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#37",
+   "condition": "cold-clear",
+   "text": "That first breath of air will wake you better than coffee.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#38",
+   "condition": "cold-clear",
+   "text": "Sunshine: 10/10. Feels-like: don't ask.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#42",
+   "condition": "cold-clear",
+   "text": "Even the dog's breath is showing. That's the reading.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#55",
+   "condition": "cold-clear",
+   "text": "Perfect drying weather. The washing will dry and freeze, in that order.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#59",
+   "condition": "cold-clear",
+   "text": "Cape Town after a front: clean, bright, and honestly freezing.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#60",
+   "condition": "cold-clear",
+   "text": "Sunglasses and a scarf. It's that kind of day.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#81",
+   "condition": "cold-clear",
+   "text": "The sunset is free of charge. So is the head cold.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#82",
+   "condition": "cold-clear",
+   "text": "Golden hour, ice-cold air. Cape Town loves a dramatic contrast.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#89",
+   "condition": "cold-clear",
+   "text": "Joburg sunsets are winter's consolation prize. It's a good prize.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold-clear#45",
+   "condition": "cold-clear",
+   "text": "The 7am sun isn't giving heat yet. Only vibes.",
+   "pass1": {
+    "shown": 2,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:cold-clear#48",
+   "condition": "cold-clear",
+   "text": "It's a beautiful day to stay indoors.",
+   "pass1": {
+    "shown": 1,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:cold#6",
+   "condition": "cold",
+   "text": "The heater is your best friend. Your only friend.",
+   "pass1": {
+    "shown": 4,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:cold#19",
+   "condition": "cold",
+   "text": "You're not cold, you're 'lekker koud'. Big difference.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold#42",
+   "condition": "cold",
+   "text": "Frost on the grass, frost on the bakkie, frost on my will to live.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold#4",
+   "condition": "cold",
+   "text": "Layer up like you're climbing Sani Pass.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#8",
+   "condition": "cold",
+   "text": "Your breath is doing special effects.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#10",
+   "condition": "cold",
+   "text": "This is not what the tourism brochure promised.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#13",
+   "condition": "cold",
+   "text": "Your hands are in your pockets and they're not coming out.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#38",
+   "condition": "cold",
+   "text": "The house is colder inside than outside. Architecture is a beautiful thing.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#7",
+   "condition": "cold",
+   "text": "Even the Capetonians are admitting it's cold.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#17",
+   "condition": "cold",
+   "text": "The dog refused to go outside. Fair.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#18",
+   "condition": "cold",
+   "text": "The cold front is here and it brought friends.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#20",
+   "condition": "cold",
+   "text": "Getting out of bed was a mistake. A documented one.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#28",
+   "condition": "cold",
+   "text": "Hot water bottle is the real MVP today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#30",
+   "condition": "cold",
+   "text": "The duvet is calling and the duvet is winning.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#50",
+   "condition": "cold",
+   "text": "The sun is out. It means nothing. The sun is lying.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#51",
+   "condition": "cold",
+   "text": "Prettiest blue sky in the country, and it feels like a fridge with a view.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#59",
+   "condition": "cold",
+   "text": "The washing is not going to dry. We hang it up for hope.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#60",
+   "condition": "cold",
+   "text": "The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#61",
+   "condition": "cold",
+   "text": "Winter sun: all of the light, none of the heat. Nice try, sun.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#95",
+   "condition": "cold",
+   "text": "The chair is taken. The dog got there first. Rules are rules.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#70",
+   "condition": "cold",
+   "text": "The great debate: do we switch the heater on too, or are we not made of money?",
+   "pass1": {
+    "shown": 4,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold#27",
+   "condition": "cold",
+   "text": "Outside is a test of character. You're failing.",
+   "pass1": {
+    "shown": 6,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:cold#3",
+   "condition": "cold",
+   "text": "Hot chocolate is not a want. It's a need.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#15",
+   "condition": "cold",
+   "text": "The car seats are freezing. Everything is freezing.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#43",
+   "condition": "cold",
+   "text": "Most beautiful time of day. Say the people who stay inside.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cold#22",
+   "condition": "cold",
+   "text": "Your jacket has a jacket. It's that kind of day.",
+   "pass1": {
+    "shown": 8,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:cold#0",
+   "condition": "cold",
+   "text": "Ja, it's jersey weather. Double jersey.",
+   "pass1": {
+    "shown": 6,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold#9",
+   "condition": "cold",
+   "text": "Blanket burrito mode: activated.",
+   "pass1": {
+    "shown": 6,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cold#1",
+   "condition": "cold",
+   "text": "Time to dig out that ugly beanie.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#34",
+   "condition": "cold",
+   "text": "Your toes have filed a formal complaint.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cold#41",
+   "condition": "cold",
+   "text": "The dog looked out the front door, turned around, and went back to bed. Says it all.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold#46",
+   "condition": "cold",
+   "text": "Somewhere out there people are going for a run right now. Strength to them.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold#53",
+   "condition": "cold",
+   "text": "Joburg winter: jacket in the morning, T-shirt by two, jacket again by four.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cold#58",
+   "condition": "cold",
+   "text": "Cold plus beautiful is an honest trade. We'll take it.",
+   "pass1": null
+  },
+  {
+   "id": "witty:fog#14",
+   "condition": "fog",
+   "text": "The streetlights are trying their best.",
+   "pass1": {
+    "shown": 4,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:fog#2",
+   "condition": "fog",
+   "text": "Silent Hill vibes. Without the monsters. Hopefully.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:fog#31",
+   "condition": "fog",
+   "text": "The world ends two metres past the gate.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:fog#3",
+   "condition": "fog",
+   "text": "Visibility: basically zero.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:fog#12",
+   "condition": "fog",
+   "text": "The world got a soft filter this morning.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:fog#13",
+   "condition": "fog",
+   "text": "Walking the dog has become a trust exercise.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:fog#19",
+   "condition": "fog",
+   "text": "The fog doesn't care about your schedule.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:fog#44",
+   "condition": "fog",
+   "text": "The cows know exactly where they are. Which is more than the rest of us can say.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:fog#4",
+   "condition": "fog",
+   "text": "Even your GPS is confused.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#23",
+   "condition": "fog",
+   "text": "The street signs gave up.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#28",
+   "condition": "fog",
+   "text": "The fog arrived unannounced. Classic fog.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#34",
+   "condition": "fog",
+   "text": "Walking to the bin is now an expedition.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#64",
+   "condition": "fog",
+   "text": "Perfect weather to bump into someone you've 'been meaning to call'.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#88",
+   "condition": "fog",
+   "text": "The dog doesn't understand where the world went. Same, boy. Same.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#20",
+   "condition": "fog",
+   "text": "The neighbours exist. Apparently. Can't confirm.",
+   "pass1": {
+    "shown": 6,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:fog#10",
+   "condition": "fog",
+   "text": "The fog ate the neighbourhood.",
+   "pass1": {
+    "shown": 4,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:fog#15",
+   "condition": "fog",
+   "text": "Somewhere out there is the road. We think.",
+   "pass1": {
+    "shown": 4,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:fog#6",
+   "condition": "fog",
+   "text": "Perfect weather for a horror movie.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:fog#30",
+   "condition": "fog",
+   "text": "Cape Town just got a dimmer switch.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#35",
+   "condition": "fog",
+   "text": "Visibility: vibes only.",
+   "pass1": {
+    "shown": 3,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#5",
+   "condition": "fog",
+   "text": "The world just... disappeared.",
+   "pass1": {
+    "shown": 7,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:fog#7",
+   "condition": "fog",
+   "text": "Ghost town. But it's just Tuesday.",
+   "pass1": {
+    "shown": 4,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:fog#11",
+   "condition": "fog",
+   "text": "Your car is out there. Somewhere. Probably.",
+   "pass1": null
+  },
+  {
+   "id": "witty:fog#18",
+   "condition": "fog",
+   "text": "Your high beams are making it worse, boet.",
+   "pass1": null
+  },
+  {
+   "id": "witty:fog#25",
+   "condition": "fog",
+   "text": "Fog so thick it has opinions.",
+   "pass1": null
+  },
+  {
+   "id": "witty:fog#38",
+   "condition": "fog",
+   "text": "Five metres of visibility. Same as your five-year plan.",
+   "pass1": null
+  },
+  {
+   "id": "witty:fog#40",
+   "condition": "fog",
+   "text": "Your GPS says you have arrived. Your GPS is lying.",
+   "pass1": null
+  },
+  {
+   "id": "witty:fog#68",
+   "condition": "fog",
+   "text": "Let's call it atmosphere and go inside.",
+   "pass1": null
+  },
+  {
+   "id": "witty:fog#90",
+   "condition": "fog",
+   "text": "Joburg does fog so rarely it feels like a limited edition.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#11",
+   "condition": "heat",
+   "text": "Somewhere a chocolate bar just died.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#12",
+   "condition": "heat",
+   "text": "The office aircon war has begun.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#17",
+   "condition": "heat",
+   "text": "Shorts weather? This is underwear weather.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#25",
+   "condition": "heat",
+   "text": "The fridge door is getting a workout today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#29",
+   "condition": "heat",
+   "text": "The aircon remote is now public property. Negotiate.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#36",
+   "condition": "heat",
+   "text": "6am and the sun is already done warming up. That wasn't a warm-up, that was a warning.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#50",
+   "condition": "heat",
+   "text": "The pool is already fully booked. By everyone. For the whole day.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#58",
+   "condition": "heat",
+   "text": "Move slowly. Speak slowly. Survive.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#59",
+   "condition": "heat",
+   "text": "Funny how everyone suddenly remembers they love you when you own a pool.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#74",
+   "condition": "heat",
+   "text": "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#8",
+   "condition": "heat",
+   "text": "Too hot to argue. Too hot to function.",
+   "pass1": {
+    "shown": 5,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:heat#4",
+   "condition": "heat",
+   "text": "The pool is not optional.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:heat#32",
+   "condition": "heat",
+   "text": "The ceiling fan is doing its best, but its best is not enough.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:heat#15",
+   "condition": "heat",
+   "text": "The fridge is the coolest room in the house.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#31",
+   "condition": "heat",
+   "text": "Even the shade is sweating.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#7",
+   "condition": "heat",
+   "text": "Your car seat is a weapon right now.",
+   "pass1": {
+    "shown": 3,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:heat#0",
+   "condition": "heat",
+   "text": "Jislaaik, it's properly hot!",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#3",
+   "condition": "heat",
+   "text": "Stay hydrated or become a biltong.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#5",
+   "condition": "heat",
+   "text": "Hotter than a bakkie dashboard at noon.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#9",
+   "condition": "heat",
+   "text": "Even your phone's overheating.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#14",
+   "condition": "heat",
+   "text": "You're not sweating. You're 'glowing'. Sure.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#26",
+   "condition": "heat",
+   "text": "Your makeup has an expiry date of 9am.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#27",
+   "condition": "heat",
+   "text": "The ice cream van is playing everyone's anthem.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#41",
+   "condition": "heat",
+   "text": "6:30 and the tar is already considering melting.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#44",
+   "condition": "heat",
+   "text": "The berg wind turned overnight. Cape Town, today you're basically Upington.",
+   "pass1": null
+  },
+  {
+   "id": "witty:heat#20",
+   "condition": "heat",
+   "text": "The shade is working harder than you today.",
+   "pass1": {
+    "shown": 3,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:heat#24",
+   "condition": "heat",
+   "text": "Your steering wheel is a hot plate.",
+   "pass1": {
+    "shown": 3,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:heat#13",
+   "condition": "heat",
+   "text": "Everyone with a pool just became very popular.",
+   "pass1": {
+    "shown": 2,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:heat#56",
+   "condition": "heat",
+   "text": "35 in the shade. In the sun, nobody's counting anymore.",
+   "pass1": {
+    "shown": 1,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:cloudy#15",
+   "condition": "cloudy",
+   "text": "Could be worse. Could also be better.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cloudy#21",
+   "condition": "cloudy",
+   "text": "Not Instagram weather. Not the end of the world.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cloudy#12",
+   "condition": "cloudy",
+   "text": "The sun's on a tea break. No ETA.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#20",
+   "condition": "cloudy",
+   "text": "The sky's on mute. Nobody's complaining.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#22",
+   "condition": "cloudy",
+   "text": "The sun sent an out-of-office reply.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#44",
+   "condition": "cloudy",
+   "text": "The app says cloudy. Aunty's knee says rain. We trust the knee.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#58",
+   "condition": "cloudy",
+   "text": "Clouds rolling in like family — no phone call first.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#79",
+   "condition": "cloudy",
+   "text": "The sky's curtains are drawn. Privacy, please.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#5",
+   "condition": "cloudy",
+   "text": "Not bad, not great. Like a 6/10 date.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#7",
+   "condition": "cloudy",
+   "text": "The sky is buffering.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#8",
+   "condition": "cloudy",
+   "text": "Even the weather can't be bothered today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#9",
+   "condition": "cloudy",
+   "text": "Grey vibes. The sky matched my Monday.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#10",
+   "condition": "cloudy",
+   "text": "Eskom-friendly weather. No solar today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#16",
+   "condition": "cloudy",
+   "text": "The sky's giving 'I'll try again tomorrow' energy.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#35",
+   "condition": "cloudy",
+   "text": "The sky is the colour of an old Tupperware lid.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#38",
+   "condition": "cloudy",
+   "text": "The sun hit snooze again. Honestly? Same.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#46",
+   "condition": "cloudy",
+   "text": "Grey is also a colour, says my ma. Today I believe her.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#54",
+   "condition": "cloudy",
+   "text": "The chops don't know it's cloudy. The braai proceeds.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#76",
+   "condition": "cloudy",
+   "text": "No stars tonight, but the neighbourhood dogs still have opinions.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#78",
+   "condition": "cloudy",
+   "text": "The moon has hung out a do-not-disturb sign.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#85",
+   "condition": "cloudy",
+   "text": "Night-shift clouds: just keeping the place warm till the sun gets back.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#26",
+   "condition": "cloudy",
+   "text": "Perfect weather for existing without enthusiasm.",
+   "pass1": {
+    "shown": 4,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cloudy#24",
+   "condition": "cloudy",
+   "text": "At least it's not raining. That's the bar.",
+   "pass1": {
+    "shown": 7,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:cloudy#3",
+   "condition": "cloudy",
+   "text": "The sun's bunking today.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#2",
+   "condition": "cloudy",
+   "text": "Good day for a walk, bad day for a tan.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#86",
+   "condition": "cloudy",
+   "text": "The sky put the stars on silent. They're still up there, promise.",
+   "pass1": {
+    "shown": 7,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:cloudy#67",
+   "condition": "cloudy",
+   "text": "Looks like the clouds are staying for supper.",
+   "pass1": {
+    "shown": 6,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:cloudy#37",
+   "condition": "cloudy",
+   "text": "The sun is technically present. Spiritually elsewhere.",
+   "pass1": {
+    "shown": 4,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#19",
+   "condition": "cloudy",
+   "text": "The clouds are here but they're not doing anything.",
+   "pass1": {
+    "shown": 5,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:cloudy#18",
+   "condition": "cloudy",
+   "text": "Nobody's posting this sunset on Instagram.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cloudy#23",
+   "condition": "cloudy",
+   "text": "This weather has 'meh' written all over it.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cloudy#30",
+   "condition": "cloudy",
+   "text": "Cloud cover with a side of who-cares.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cloudy#31",
+   "condition": "cloudy",
+   "text": "The sun's on airplane mode.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cloudy#65",
+   "condition": "cloudy",
+   "text": "The sun clocked out without saying bye. Rude, but relatable.",
+   "pass1": null
+  },
+  {
+   "id": "witty:cloudy#68",
+   "condition": "cloudy",
+   "text": "The day is ending like a voicenote that just cuts off mid-",
+   "pass1": null
+  },
+  {
+   "id": "witty:cloudy#83",
+   "condition": "cloudy",
+   "text": "Night clouds are the sky's way of saying: let's talk tomorrow.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain#25",
+   "condition": "rain",
+   "text": "The traffic is emotional.",
+   "pass1": {
+    "shown": 4,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:rain#19",
+   "condition": "rain",
+   "text": "The wipers are on max and it's still not enough.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:rain#66",
+   "condition": "rain",
+   "text": "Breaking news: the puddles are open for business.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:rain#15",
+   "condition": "rain",
+   "text": "The umbrella broke on the first gust. Classic.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#22",
+   "condition": "rain",
+   "text": "Somewhere an umbrella just turned inside out. Moment of silence.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#31",
+   "condition": "rain",
+   "text": "Solidarity to everyone with one wet shoe right now.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#57",
+   "condition": "rain",
+   "text": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#8",
+   "condition": "rain",
+   "text": "The N1 is now a waterpark.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:rain#49",
+   "condition": "rain",
+   "text": "Rain on a farm isn't weather. It's a salary falling from the sky.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:rain#50",
+   "condition": "rain",
+   "text": "Somewhere a farmer is doing a small private dance nobody's allowed to see.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:rain#69",
+   "condition": "rain",
+   "text": "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:rain#81",
+   "condition": "rain",
+   "text": "Sleep tight, dams. You worked hard today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:rain#7",
+   "condition": "rain",
+   "text": "The dams are doing a happy dance.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#0",
+   "condition": "rain",
+   "text": "The clouds are having a moment.",
+   "pass1": {
+    "shown": 5,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:rain#2",
+   "condition": "rain",
+   "text": "The garden's saying dankie at last.",
+   "pass1": {
+    "shown": 7,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:rain#11",
+   "condition": "rain",
+   "text": "Rain so heavy it should pay rent.",
+   "pass1": {
+    "shown": 9,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:rain#12",
+   "condition": "rain",
+   "text": "Your shoes are about to have a bad day.",
+   "pass1": {
+    "shown": 6,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:rain#16",
+   "condition": "rain",
+   "text": "Wet socks. The ultimate betrayal.",
+   "pass1": {
+    "shown": 6,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:rain#30",
+   "condition": "rain",
+   "text": "Wet jeans for the rest of the day. The classic punishment.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#35",
+   "condition": "rain",
+   "text": "The traffic just remembered rain exists. Again.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#33",
+   "condition": "rain",
+   "text": "Forgot your jacket? The universe noticed.",
+   "pass1": {
+    "shown": 5,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#6",
+   "condition": "rain",
+   "text": "Perfect excuse to cancel plans.",
+   "pass1": {
+    "shown": 12,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:rain#18",
+   "condition": "rain",
+   "text": "At least the garden's happy. Someone has to be.",
+   "pass1": {
+    "shown": 6,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:rain#13",
+   "condition": "rain",
+   "text": "The commute just became a team sport.",
+   "pass1": {
+    "shown": 3,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:rain#28",
+   "condition": "rain",
+   "text": "Yes, it's raining sideways. South Africa speciality.",
+   "pass1": {
+    "shown": 3,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:rain#32",
+   "condition": "rain",
+   "text": "The pavement is a river and the river has plans.",
+   "pass1": {
+    "shown": 13,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:rain#4",
+   "condition": "rain",
+   "text": "Your car wash was a waste of money.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain#10",
+   "condition": "rain",
+   "text": "Someone's braai just got ruined.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain#24",
+   "condition": "rain",
+   "text": "Hair plans: cancelled.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain#36",
+   "condition": "rain",
+   "text": "The dams get their drink before you get your coffee. Know your place.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain#53",
+   "condition": "rain",
+   "text": "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain#56",
+   "condition": "rain",
+   "text": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+   "pass1": null
+  },
+  {
+   "id": "witty:wind#2",
+   "condition": "wind",
+   "text": "Table Mountain's tablecloth is out.",
+   "pass1": {
+    "shown": 4,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:wind#14",
+   "condition": "wind",
+   "text": "The wind has a personal vendetta against umbrellas.",
+   "pass1": {
+    "shown": 4,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:wind#7",
+   "condition": "wind",
+   "text": "Someone's trampoline is now two streets away.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#11",
+   "condition": "wind",
+   "text": "Your washing just moved to the neighbour's yard.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#18",
+   "condition": "wind",
+   "text": "The braai cover is in the next suburb.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#22",
+   "condition": "wind",
+   "text": "Your hairstyle took one look and went back to bed.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#24",
+   "condition": "wind",
+   "text": "Everyone's jogging at a slight angle this morning.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#5",
+   "condition": "wind",
+   "text": "Kite surfers are having the time of their lives.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:wind#9",
+   "condition": "wind",
+   "text": "Even the seagulls are walking today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:wind#0",
+   "condition": "wind",
+   "text": "Hold onto your hat! And your kids.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#45",
+   "condition": "wind",
+   "text": "Every tree on the street is bowing the same way. Peer pressure.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#12",
+   "condition": "wind",
+   "text": "Sand in places sand should never be.",
+   "pass1": {
+    "shown": 7,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:wind#46",
+   "condition": "wind",
+   "text": "Tonight's wind has opinions.",
+   "pass1": {
+    "shown": 7,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:wind#42",
+   "condition": "wind",
+   "text": "Sleep tight. The wind will watch the house. Loudly.",
+   "pass1": {
+    "shown": 6,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:wind#13",
+   "condition": "wind",
+   "text": "Ponytail holders are doing overtime.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#3",
+   "condition": "wind",
+   "text": "The Cape Doctor is making house calls.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:wind#17",
+   "condition": "wind",
+   "text": "Your car door just became a weapon.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:wind#4",
+   "condition": "wind",
+   "text": "Your hairstyle? Gone. Accept it.",
+   "pass1": {
+    "shown": 11,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:wind#8",
+   "condition": "wind",
+   "text": "Perfect conditions for losing your dignity.",
+   "pass1": {
+    "shown": 9,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:wind#19",
+   "condition": "wind",
+   "text": "Not a hairstyle in sight. Just survivors.",
+   "pass1": {
+    "shown": 6,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#31",
+   "condition": "wind",
+   "text": "Hold your hat. Hold your kid. Just hold on.",
+   "pass1": {
+    "shown": 3,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:wind#6",
+   "condition": "wind",
+   "text": "The trees are doing involuntary yoga.",
+   "pass1": {
+    "shown": 11,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:wind#15",
+   "condition": "wind",
+   "text": "Every loose object in the garden has chosen violence.",
+   "pass1": {
+    "shown": 18,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:wind#27",
+   "condition": "wind",
+   "text": "The windpump's doing overtime and not even charging double.",
+   "pass1": null
+  },
+  {
+   "id": "witty:storm#54",
+   "condition": "storm",
+   "text": "Midnight and the sky is showing off.",
+   "pass1": {
+    "shown": 5,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:storm#58",
+   "condition": "storm",
+   "text": "Every flash is a photo nobody takes in time.",
+   "pass1": {
+    "shown": 4,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:storm#8",
+   "condition": "storm",
+   "text": "This is why Noah built a boat.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:storm#10",
+   "condition": "storm",
+   "text": "Somewhere a roof is someone's new kite.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:storm#0",
+   "condition": "storm",
+   "text": "Jislaaik, stay inside!",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:storm#52",
+   "condition": "storm",
+   "text": "Unplug the TV — it's tradition.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:storm#3",
+   "condition": "storm",
+   "text": "Even the hadedas are quiet.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#9",
+   "condition": "storm",
+   "text": "The braai is cancelled. Yes, really.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#15",
+   "condition": "storm",
+   "text": "Respect the thunder. It's earned it.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#21",
+   "condition": "storm",
+   "text": "The sky's CV just got updated.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#35",
+   "condition": "storm",
+   "text": "Rusks first. Panic later.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#36",
+   "condition": "storm",
+   "text": "Free IMAX this morning, boet.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#37",
+   "condition": "storm",
+   "text": "The dog has already booked his spot under the bed.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#38",
+   "condition": "storm",
+   "text": "Sunrise chose drama today.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#56",
+   "condition": "storm",
+   "text": "Thunder at volume ten, the neighbour's dog at eleven.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#22",
+   "condition": "storm",
+   "text": "Somewhere a weather reporter is living their best life.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:storm#53",
+   "condition": "storm",
+   "text": "Free fireworks, no tickets needed.",
+   "pass1": {
+    "shown": 3,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:storm#27",
+   "condition": "storm",
+   "text": "Nature's having a word. Best to listen.",
+   "pass1": {
+    "shown": 8,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:storm#4",
+   "condition": "storm",
+   "text": "The sky's having a full-on tantrum.",
+   "pass1": {
+    "shown": 6,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:storm#12",
+   "condition": "storm",
+   "text": "Eskom wishes it had this power.",
+   "pass1": {
+    "shown": 4,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:storm#2",
+   "condition": "storm",
+   "text": "The dog's under the bed. Smart move, honestly.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#5",
+   "condition": "storm",
+   "text": "Nature's doing its own load shedding.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#14",
+   "condition": "storm",
+   "text": "The sky just went full Carte Blanche.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#18",
+   "condition": "storm",
+   "text": "Not the time for hero moves, hey.",
+   "pass1": {
+    "shown": 9,
+    "kept": 4
+   }
+  },
+  {
+   "id": "witty:storm#6",
+   "condition": "storm",
+   "text": "Cancel everything. Even your excuses.",
+   "pass1": {
+    "shown": 7,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:storm#20",
+   "condition": "storm",
+   "text": "Nature just reminded us of the pecking order.",
+   "pass1": {
+    "shown": 5,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:storm#13",
+   "condition": "storm",
+   "text": "Lightning's putting Eskom's grid to shame.",
+   "pass1": {
+    "shown": 6,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:storm#29",
+   "condition": "storm",
+   "text": "Unplug the things. The sky has plans.",
+   "pass1": {
+    "shown": 8,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#16",
+   "condition": "storm",
+   "text": "The lightning is putting on a proper show.",
+   "pass1": {
+    "shown": 13,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:storm#32",
+   "condition": "storm",
+   "text": "The sky woke up in a mood.",
+   "pass1": null
+  },
+  {
+   "id": "witty:storm#48",
+   "condition": "storm",
+   "text": "Today's forecast: special effects.",
+   "pass1": null
+  },
+  {
+   "id": "witty:weekend#3",
+   "condition": "weekend",
+   "text": "Beach or braai? Yes.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:weekend#24",
+   "condition": "weekend",
+   "text": "The braai is the social calendar. Show up.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:weekend#7",
+   "condition": "weekend",
+   "text": "Call the mates. Get the meat. Let's go.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:weekend#10",
+   "condition": "weekend",
+   "text": "The coals aren't going to light themselves.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:weekend#1",
+   "condition": "weekend",
+   "text": "Fire up the Weber. It's the law.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:weekend#14",
+   "condition": "weekend",
+   "text": "The Weber's been waiting all week for this.",
+   "pass1": {
+    "shown": 1,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:weekend#8",
+   "condition": "weekend",
+   "text": "Today's plans: exist outside.",
+   "pass1": {
+    "shown": 13,
+    "kept": 11
+   }
+  },
+  {
+   "id": "witty:weekend#5",
+   "condition": "weekend",
+   "text": "If you're working today, we feel sorry for you.",
+   "pass1": {
+    "shown": 5,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:weekend#9",
+   "condition": "weekend",
+   "text": "The weekend doesn't get better than this.",
+   "pass1": {
+    "shown": 6,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:weekend#17",
+   "condition": "weekend",
+   "text": "This is the weather the weekend was invented for.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:weekend#18",
+   "condition": "weekend",
+   "text": "Your only responsibility is choosing charcoal or wood.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:weekend#19",
+   "condition": "weekend",
+   "text": "Saturday energy: maximum. Responsibilities: minimum.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:weekend#6",
+   "condition": "weekend",
+   "text": "Perfect for doing absolutely nothing.",
+   "pass1": {
+    "shown": 11,
+    "kept": 5
+   }
+  },
+  {
+   "id": "witty:weekend#16",
+   "condition": "weekend",
+   "text": "No alarm. No agenda. Just vibes.",
+   "pass1": {
+    "shown": 15,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:weekend#13",
+   "condition": "weekend",
+   "text": "Kuier weather. Get the people together.",
+   "pass1": {
+    "shown": 10,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:weekend#2",
+   "condition": "weekend",
+   "text": "The weather gods are showing off.",
+   "pass1": null
+  },
+  {
+   "id": "witty:weekend#4",
+   "condition": "weekend",
+   "text": "Weekend vibes so strong they need their own playlist.",
+   "pass1": {
+    "shown": 2,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:weekend#0",
+   "condition": "weekend",
+   "text": "Braai weather, boet! No excuses.",
+   "pass1": {
+    "shown": 1,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:weekend#21",
+   "condition": "weekend",
+   "text": "The chops are calling. So is the chair.",
+   "pass1": {
+    "shown": 1,
+    "kept": 0
+   }
+  },
+  {
+   "id": "witty:night#19",
+   "condition": "night",
+   "text": "The sky looks like it's showing off.",
+   "pass1": {
+    "shown": 3,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:night#1",
+   "condition": "night",
+   "text": "Perfect night to actually see the Milky Way.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:night#7",
+   "condition": "night",
+   "text": "The moon's doing the most tonight.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:night#16",
+   "condition": "night",
+   "text": "Tomorrow's weather is tomorrow's problem.",
+   "pass1": {
+    "shown": 2,
+    "kept": 2
+   }
+  },
+  {
+   "id": "witty:night#2",
+   "condition": "night",
+   "text": "Quiet out there. Almost suspicious.",
+   "pass1": {
+    "shown": 5,
+    "kept": 3
+   }
+  },
+  {
+   "id": "witty:night#6",
+   "condition": "night",
+   "text": "Good night, South Africa.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:night#8",
+   "condition": "night",
+   "text": "Somewhere a cricket is really giving it.",
+   "pass1": {
+    "shown": 2,
+    "kept": 1
+   }
+  },
+  {
+   "id": "witty:night#3",
+   "condition": "night",
+   "text": "The hadedas are sleeping. Finally.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#0",
+   "condition": "uv",
+   "text": "Sunscreen is not optional, boet.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#1",
+   "condition": "uv",
+   "text": "SPF 50 or regret it by tonight.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#2",
+   "condition": "uv",
+   "text": "The sun's not playing games today.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#3",
+   "condition": "uv",
+   "text": "You will look like a lobster. You've been warned.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#6",
+   "condition": "uv",
+   "text": "Reapply that sunscreen or suffer.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#7",
+   "condition": "uv",
+   "text": "The sun is personally attacking you.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#9",
+   "condition": "uv",
+   "text": "You could braai a steak on the pavement right now.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#10",
+   "condition": "uv",
+   "text": "Your future self will thank you for that sunscreen.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#11",
+   "condition": "uv",
+   "text": "The UV index is higher than your expectations.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#18",
+   "condition": "uv",
+   "text": "Today's forecast: medium rare.",
+   "pass1": null
+  },
+  {
+   "id": "witty:uv#19",
+   "condition": "uv",
+   "text": "Even the shade is warm. Good luck out there.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#0",
+   "condition": "rain-possible",
+   "text": "Maybe rain, maybe not. Classic.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#1",
+   "condition": "rain-possible",
+   "text": "Clouds looking proper suspicious.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#2",
+   "condition": "rain-possible",
+   "text": "Take a brolly just in case, hey.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#3",
+   "condition": "rain-possible",
+   "text": "50/50 on getting wet. Like a coin toss.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#4",
+   "condition": "rain-possible",
+   "text": "Don't trust those clouds. They're plotting.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#5",
+   "condition": "rain-possible",
+   "text": "Weather's being more indecisive than you at Spur.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#6",
+   "condition": "rain-possible",
+   "text": "Pack an umbrella. Or don't. We don't know either.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#7",
+   "condition": "rain-possible",
+   "text": "The sky can't make up its mind. Join the club.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#9",
+   "condition": "rain-possible",
+   "text": "Forecast says maybe. We say probably.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#11",
+   "condition": "rain-possible",
+   "text": "The sky's giving mixed signals again.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#12",
+   "condition": "rain-possible",
+   "text": "Rain? Possibly. Commitment? Never.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#13",
+   "condition": "rain-possible",
+   "text": "This weather needs a life coach.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#14",
+   "condition": "rain-possible",
+   "text": "Schrodinger's rain. It both is and isn't.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#15",
+   "condition": "rain-possible",
+   "text": "The washing's on the line and you're feeling brave.",
+   "pass1": null
+  },
+  {
+   "id": "witty:rain-possible#16",
+   "condition": "rain-possible",
+   "text": "Even the weather apps are arguing about this one.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#0",
+   "condition": "partly-cloudy",
+   "text": "Sun, hide-and-seek champion of the day.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#1",
+   "condition": "partly-cloudy",
+   "text": "Sky can't make up its mind.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#3",
+   "condition": "partly-cloudy",
+   "text": "Sky's doing the most, but only a little.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#5",
+   "condition": "partly-cloudy",
+   "text": "Sun's playing peek-a-boo.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#11",
+   "condition": "partly-cloudy",
+   "text": "Sun on a smoke break.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#13",
+   "condition": "partly-cloudy",
+   "text": "Washing's still safe. Probably.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#16",
+   "condition": "partly-cloudy",
+   "text": "Some clouds. Some sun. South African summer admin.",
+   "pass1": null
+  },
+  {
+   "id": "witty:partly-cloudy#19",
+   "condition": "partly-cloudy",
+   "text": "Cloudy enough to comment, sunny enough to ignore.",
+   "pass1": null
+  },
+  {
+   "id": "witty:thunder#0",
+   "condition": "thunder",
+   "text": "Thunder rolling in. Inside is the move.",
+   "pass1": null
+  },
+  {
+   "id": "witty:thunder#1",
+   "condition": "thunder",
+   "text": "Sky's grumbling. Stay close to a roof.",
+   "pass1": null
+  },
+  {
+   "id": "witty:thunder#2",
+   "condition": "thunder",
+   "text": "Lightning's putting on a show — watch from the window.",
+   "pass1": null
+  },
+  {
+   "id": "witty:hail#0",
+   "condition": "hail",
+   "text": "Sky's throwing rocks. Stay inside.",
+   "pass1": null
+  },
+  {
+   "id": "witty:hail#1",
+   "condition": "hail",
+   "text": "Hail's down — cover the bakkie.",
+   "pass1": null
+  },
+  {
+   "id": "witty:hail#2",
+   "condition": "hail",
+   "text": "Tiny ice bombs falling. Indoors is the only plan.",
+   "pass1": null
+  }
+ ],
+ "keptCount": 379
+}
