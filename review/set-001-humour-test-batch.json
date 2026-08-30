@@ -1,0 +1,206 @@
+{
+ "generated": "2026-08-30",
+ "bucket": "humour test batch",
+ "linesLabel": "three each, written to HUMOUR-DOCTRINE.md",
+ "note": "Phase 1 gate of the humour finishing run: 10 images from the 87-at-zero list, one per condition plus an extra wind, weighted to dusk/night. Al’s verdict calibrates or kills the run.",
+ "images": [
+  {
+   "index": 1,
+   "image": "wind/week_1/day/4.webp",
+   "hash": "f32e33e76e01",
+   "condition": "wind",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "wind/week_1/day/4.webp"
+   ],
+   "seen": "A woman with a full basket on the lawn, three shirts on the line streaming dead horizontal in the wind, the Weber standing by at the wall under a blue Saturday sky.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "Everything on that line was dry ten minutes ago. The wind is just showing off now.",
+    "Two pegs a shirt today. Anything less is a donation to the neighbours.",
+    "This wind will have the washing dry before the coals are even grey."
+   ]
+  },
+  {
+   "index": 2,
+   "image": "wind/week_1/night/3.webp",
+   "hash": "0e5c84f6ab31",
+   "condition": "wind",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "wind/week_1/night/3.webp",
+    "wind/week_3/night/3.webp"
+   ],
+   "seen": "A Cape Town street at night, the palm streaming sideways under the streetlight, Table Mountain dark behind, the moon fighting through torn cloud, not a soul outside.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "The Cape Doctor is on night shift. The whole street has an appointment.",
+    "The palm is the only one still outside, and it regrets everything.",
+    "The southeaster doesn’t knock. You’ll hear it under the door all night."
+   ]
+  },
+  {
+   "index": 3,
+   "image": "cold/week_2/dusk/5.webp",
+   "hash": "917c4c0a6fac",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "seen": "A gloved hand around a hot chocolate with marshmallows on a balcony over Camps Bay at sunset — and snow on Table Mountain and the Apostles behind it.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
+    "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.",
+    "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall."
+   ]
+  },
+  {
+   "index": 4,
+   "image": "rain/week_1/night/5.webp",
+   "hash": "504e55301184",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/night/5.webp",
+    "rain/week_3/night/5.webp"
+   ],
+   "seen": "A lit swimming pool at night in steady rain, rings across the whole surface, the palm and the wall dark behind it.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "The pool is getting topped up for free tonight. Somewhere a water bill relaxes.",
+    "The only one swimming tonight is the rain itself.",
+    "The pool light is on for nobody. The rain appreciates the ambience."
+   ]
+  },
+  {
+   "index": 5,
+   "image": "heat/week_2/dusk/7.webp",
+   "hash": "3e88aef1fb06",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "seen": "A father and his small daughter playing in the sprinkler at golden dusk, agapanthus in the foreground, the house lit warm behind them.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "The sun left an hour ago and took none of the heat with it.",
+    "Supper can wait. At this temperature the sprinkler promotes itself to family pool.",
+    "Officially he’s watering the garden. The garden is third in the queue."
+   ]
+  },
+  {
+   "index": 6,
+   "image": "storm/week_4/day/1.webp",
+   "hash": "ea95b93c8930",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "storm/week_4/day/1.webp"
+   ],
+   "seen": "A farmhouse on open grassland with one grey column of rain coming down behind it, and a white plastic chair lying in the puddle by the road.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "The stoep chair made a run for it. It got as far as the puddle.",
+    "That grey column is someone’s afternoon getting cancelled. Ours is next in line.",
+    "Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time."
+   ]
+  },
+  {
+   "index": 7,
+   "image": "fog/week_1/dawn/5.webp",
+   "hash": "23b1b4b2af6d",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dawn/5.webp",
+    "fog/week_3/dawn/5.webp"
+   ],
+   "seen": "A school kid in a hi-vis vest waiting at the kerb in thick fog on a Monday morning, one faint set of headlights taking its time up the road.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "The fog swallowed the whole street and gave up at the hi-vis.",
+    "Those headlights have been ‘almost here’ for five minutes. Fog time runs slower.",
+    "Everything past the streetlight is a rumour until about nine."
+   ]
+  },
+  {
+   "index": 8,
+   "image": "cloudy/week_1/dusk/2.webp",
+   "hash": "20e80f881707",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp"
+   ],
+   "seen": "A cyclist paused on a winelands pass at dusk, looking up at a broken sky catching the last gold, the valley going dark below.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "Everyone’s an amateur forecaster on a pass like this. The sky isn’t telling.",
+    "The sky can’t decide between golden hour and going home early. Neither can anyone else.",
+    "Those clouds aren’t carrying rain. They’re just here to catch the light."
+   ]
+  },
+  {
+   "index": 9,
+   "image": "clear/week_2/dusk/4.webp",
+   "hash": "7d50ec606bfc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_2/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "seen": "A teenager railing a berm on a dirt track at clear golden dusk, the dust he’s kicking up glowing in the backlight.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "Golden hour turns even the dust into a special effect.",
+    "An evening this clear pays out its last hour in gold. Spend all of it.",
+    "Homework has extended office hours tonight. The sky said so."
+   ]
+  },
+  {
+   "index": 10,
+   "image": "cold-clear/week_1/night/3.webp",
+   "hash": "05aeb3b79581",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_3/night/3.webp"
+   ],
+   "seen": "A hard-frosted lawn under a full field of stars, the house dark except one window, the bare tree black against the sky.",
+   "why": "one of the 87 photographs with zero lines after Al’s bank matching",
+   "lines": [
+    "Every star is out tonight, and the frost is the entry fee.",
+    "The Southern Cross is out, and so is the frost. Package deal.",
+    "By morning that grass will crunch. Beautiful night, expensive morning."
+   ]
+  }
+ ]
+}

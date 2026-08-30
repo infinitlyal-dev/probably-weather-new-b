@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>PW — bespoke lines, set-001</title>
+<link rel="stylesheet" href="../assets/type-prototype-caption.css">
+<style>
+  :root { --bg:#14110d; --panel:#1f1a14; --ink:#fffaf3; --ink2:#b5ab9d; --gold:#ffd700; --yes:#63c98a; --no:#ff6b6b; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:rgba(20,17,13,.97); border-bottom:1px solid rgba(246,242,232,.14);
+           padding:10px 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0 8px 0 0; }
+  button { font:inherit; border:1px solid rgba(246,242,232,.18); background:var(--panel); color:var(--ink);
+           border-radius:8px; padding:6px 11px; cursor:pointer; }
+  button:hover { border-color:var(--gold); }
+  button.primary { background:var(--gold); color:#1a1a2e; border-color:var(--gold); font-weight:700; }
+  .tally { color:var(--ink2); font-variant-numeric:tabular-nums; }
+  main { padding:18px; display:flex; flex-direction:column; gap:30px; }
+  .card { display:grid; grid-template-columns:auto 1fr; gap:22px; border-top:1px solid rgba(246,242,232,.12); padding-top:18px; }
+  .hero { position:relative; overflow:hidden; background-size:cover; background-repeat:no-repeat;
+          border-radius:0 0 20px 20px; box-shadow:0 18px 44px rgba(0,0,0,.55); }
+  .cap { position:absolute; left:0; right:0; bottom:0; margin:0; color:#fff; font-weight:700;
+         font-family:'Caveat Prototype','Segoe Print','Bradley Hand',cursive; text-align:left; line-height:1.08;
+         text-shadow:0 2px 14px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.8); }
+  .meta { color:var(--ink2); font-size:12.5px; margin-bottom:10px; }
+  .meta b { color:var(--ink); }
+  .seen { color:var(--ink2); font-size:12.5px; max-width:80ch; margin:0 0 12px; font-style:italic; }
+  .note { color:#ffb84d; font-size:12.5px; max-width:80ch; margin:0 0 12px; }
+  .line { display:flex; gap:8px; align-items:flex-start; margin-bottom:7px; }
+  .line input[type=text] { flex:1; min-width:0; font:inherit; background:#181410; color:var(--ink);
+      border:1px solid rgba(246,242,232,.16); border-radius:7px; padding:7px 10px; }
+  .line input[type=text]:focus { outline:none; border-color:var(--gold); }
+  .line .n { width:18px; color:var(--ink2); font-variant-numeric:tabular-nums; padding-top:8px; }
+  .line .wc { width:58px; color:var(--ink2); font-size:11.5px; padding-top:9px; text-align:right; }
+  .y.on { border-color:var(--yes); color:var(--yes); font-weight:700; }
+  .n2.on { border-color:var(--no); color:var(--no); font-weight:700; }
+  .line.mine input[type=text] { border-style:dashed; }
+  .line .resc { flex:none; align-self:flex-start; margin-top:8px; font-size:10.5px; letter-spacing:.06em;
+      text-transform:uppercase; color:#8fb7ff; border:1px solid #8fb7ff55; border-radius:5px; padding:1px 5px; }
+  .hint { color:var(--ink2); font-size:12px; margin:10px 0 0; max-width:80ch; }
+</style>
+
+<header>
+  <h1>Bespoke lines — humour test batch, 10 photographs, three each, written to HUMOUR-DOCTRINE.md</h1>
+  <span class="tally" id="tally"></span>
+  <span style="flex:1"></span>
+  <button id="export" class="primary">Export</button>
+</header>
+<main id="main"></main>
+
+<script>
+const DATA = {"box":{"w":327,"h":518},"cap":{"runway":56.84,"font":33.00000000000001,"padBottom":14.616000000000001},"bucket":"humour test batch","images":[{"index":1,"image":"wind/week_1/day/4.webp","hash":"f32e33e76e01","condition":"wind","time":"day","week":"A","day":"sat","paths":["wind/week_1/day/4.webp"],"seen":"A woman with a full basket on the lawn, three shirts on the line streaming dead horizontal in the wind, the Weber standing by at the wall under a blue Saturday sky.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["Everything on that line was dry ten minutes ago. The wind is just showing off now.","Two pegs a shirt today. Anything less is a donation to the neighbours.","This wind will have the washing dry before the coals are even grey."]},{"index":2,"image":"wind/week_1/night/3.webp","hash":"0e5c84f6ab31","condition":"wind","time":"night","week":"A","day":"wed","paths":["wind/week_1/night/3.webp","wind/week_3/night/3.webp"],"seen":"A Cape Town street at night, the palm streaming sideways under the streetlight, Table Mountain dark behind, the moon fighting through torn cloud, not a soul outside.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["The Cape Doctor is on night shift. The whole street has an appointment.","The palm is the only one still outside, and it regrets everything.","The southeaster doesn’t knock. You’ll hear it under the door all night."]},{"index":3,"image":"cold/week_2/dusk/5.webp","hash":"917c4c0a6fac","condition":"cold","time":"dusk","week":"A","day":"fri","paths":["cold/week_2/dusk/5.webp","cold/week_4/dusk/5.webp"],"seen":"A gloved hand around a hot chocolate with marshmallows on a balcony over Camps Bay at sunset — and snow on Table Mountain and the Apostles behind it.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["Friday evening, snow on the Apostles, and the only queue is for the kettle.","Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.","Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall."]},{"index":4,"image":"rain/week_1/night/5.webp","hash":"504e55301184","condition":"rain","time":"night","week":"A","day":"tue","paths":["rain/week_1/night/5.webp","rain/week_3/night/5.webp"],"seen":"A lit swimming pool at night in steady rain, rings across the whole surface, the palm and the wall dark behind it.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["The pool is getting topped up for free tonight. Somewhere a water bill relaxes.","The only one swimming tonight is the rain itself.","The pool light is on for nobody. The rain appreciates the ambience."]},{"index":5,"image":"heat/week_2/dusk/7.webp","hash":"3e88aef1fb06","condition":"heat","time":"dusk","week":"A","day":"thu","paths":["heat/week_2/dusk/7.webp","heat/week_4/dusk/7.webp"],"seen":"A father and his small daughter playing in the sprinkler at golden dusk, agapanthus in the foreground, the house lit warm behind them.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["The sun left an hour ago and took none of the heat with it.","Supper can wait. At this temperature the sprinkler promotes itself to family pool.","Officially he’s watering the garden. The garden is third in the queue."]},{"index":6,"image":"storm/week_4/day/1.webp","hash":"ea95b93c8930","condition":"storm","time":"day","week":"B","day":"wed","paths":["storm/week_4/day/1.webp"],"seen":"A farmhouse on open grassland with one grey column of rain coming down behind it, and a white plastic chair lying in the puddle by the road.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["The stoep chair made a run for it. It got as far as the puddle.","That grey column is someone’s afternoon getting cancelled. Ours is next in line.","Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time."]},{"index":7,"image":"fog/week_1/dawn/5.webp","hash":"23b1b4b2af6d","condition":"fog","time":"dawn","week":"A","day":"mon","paths":["fog/week_1/dawn/5.webp","fog/week_3/dawn/5.webp"],"seen":"A school kid in a hi-vis vest waiting at the kerb in thick fog on a Monday morning, one faint set of headlights taking its time up the road.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["The fog swallowed the whole street and gave up at the hi-vis.","Those headlights have been ‘almost here’ for five minutes. Fog time runs slower.","Everything past the streetlight is a rumour until about nine."]},{"index":8,"image":"cloudy/week_1/dusk/2.webp","hash":"20e80f881707","condition":"cloudy","time":"dusk","week":"A","day":"mon","paths":["cloudy/week_1/dusk/2.webp","cloudy/week_3/dusk/2.webp"],"seen":"A cyclist paused on a winelands pass at dusk, looking up at a broken sky catching the last gold, the valley going dark below.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["Everyone’s an amateur forecaster on a pass like this. The sky isn’t telling.","The sky can’t decide between golden hour and going home early. Neither can anyone else.","Those clouds aren’t carrying rain. They’re just here to catch the light."]},{"index":9,"image":"clear/week_2/dusk/4.webp","hash":"7d50ec606bfc","condition":"clear","time":"dusk","week":"A","day":"wed","paths":["clear/week_2/dusk/4.webp","clear/week_4/dusk/4.webp"],"seen":"A teenager railing a berm on a dirt track at clear golden dusk, the dust he’s kicking up glowing in the backlight.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["Golden hour turns even the dust into a special effect.","An evening this clear pays out its last hour in gold. Spend all of it.","Homework has extended office hours tonight. The sky said so."]},{"index":10,"image":"cold-clear/week_1/night/3.webp","hash":"05aeb3b79581","condition":"cold-clear","time":"night","week":"A","day":"thu","paths":["cold-clear/week_1/night/3.webp","cold-clear/week_3/night/3.webp"],"seen":"A hard-frosted lawn under a full field of stars, the house dark except one window, the bare tree black against the sky.","why":"one of the 87 photographs with zero lines after Al’s bank matching","lines":["Every star is out tonight, and the frost is the entry fee.","The Southern Cross is out, and so is the frost. Package deal.","By morning that grass will crunch. Beautiful night, expensive morning."]}]};
+const SRC_NAME = "review/set-001-humour-test-batch.json";
+const EXPORT_NAME = "set-001-humour-test-batch-ruled.json";
+// Namespaced per source. Round 1 and round 2 share this page's code, and with
+// one key the round-2 page read round 1's saved text back out of storage and
+// rendered it in every slot - Al opened it and saw the old lines. The stored
+// value is keyed by image+index, and index 1 means a different line in each
+// round, so the namespace is not optional.
+const LS = 'pw_bespoke_lines_' + SRC_NAME.replace(/[^a-z0-9]+/gi, '_');
+const state = JSON.parse(localStorage.getItem(LS) || '{}');
+const $ = (id) => document.getElementById(id);
+const key = (img, i) => img + '#' + i;
+const wc = (s) => (s.trim() ? s.trim().split(/\s+/).length : 0);
+
+function save() { localStorage.setItem(LS, JSON.stringify(state)); tally(); }
+
+function tally() {
+  let yes = 0, no = 0, mine = 0;
+  for (const [k, v] of Object.entries(state)) {
+    if (v.verdict === 'YES') yes += 1;
+    if (v.verdict === 'NO') no += 1;
+    if (k.endsWith('#5') && v.text && v.text.trim()) mine += 1;
+  }
+  const imagesWithAYes = new Set(Object.entries(state).filter(([, v]) => v.verdict === 'YES')
+    .map(([k]) => k.split('#')[0])).size;
+  $('tally').textContent = yes + ' ticked · ' + no + ' rejected · ' + mine + ' of your own · '
+    + imagesWithAYes + '/' + DATA.images.length + ' images have at least one';
+}
+
+function render() {
+  const m = $('main');
+  m.innerHTML = '';
+  for (const img of DATA.images) {
+    const card = document.createElement('section');
+    card.className = 'card';
+
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+    hero.style.width = DATA.box.w + 'px';
+    hero.style.height = DATA.box.h + 'px';
+    hero.style.backgroundImage = 'url("/assets/images/bg/' + img.image + '")';
+    hero.style.backgroundPosition = 'center 50%';
+    const cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.style.padding = DATA.cap.runway.toFixed(1) + 'px 16px ' + DATA.cap.padBottom.toFixed(1) + 'px';
+    cap.style.fontSize = DATA.cap.font.toFixed(1) + 'px';
+    cap.style.background = 'linear-gradient(to top, rgba(0,0,0,.80) 0%, rgba(0,0,0,.62) calc(100% - '
+      + DATA.cap.runway.toFixed(1) + 'px), rgba(0,0,0,0) 100%)';
+    cap.style.borderRadius = '0 0 20px 20px';
+    cap.textContent = img.lines[0];
+    hero.appendChild(cap);
+    card.appendChild(hero);
+
+    const right = document.createElement('div');
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.innerHTML = '<b>' + img.index + '. ' + img.condition + ' · ' + img.time + '</b> · ' + img.image
+      + ' · ' + img.week + '/' + img.day + ' · ' + img.why + (img.pass1 ? ' · pass-1 ' + img.pass1 : '');
+    right.appendChild(meta);
+
+    const seen = document.createElement('p');
+    seen.className = 'seen';
+    seen.textContent = img.seen;
+    right.appendChild(seen);
+
+    if (img.note) {
+      const n = document.createElement('p');
+      n.className = 'note';
+      n.textContent = img.note;
+      right.appendChild(n);
+    }
+
+    // Lines already kept for this picture, locked and not re-litigated — the
+    // point of round 2 is the gaps, and showing the survivors is what makes a
+    // new line judgeable as part of a SET rather than on its own.
+    if (img.alreadyKept && img.alreadyKept.length) {
+      const box = document.createElement('div');
+      box.className = 'meta';
+      box.style.margin = '2px 0 10px';
+      box.textContent = 'already kept (' + img.alreadyKept.length + '): ';
+      for (const t of img.alreadyKept) {
+        const b = document.createElement('div');
+        b.style.cssText = 'color:#63c98a;font-size:12.5px;margin:2px 0 0 12px';
+        b.textContent = '✓ ' + t;
+        box.appendChild(b);
+      }
+      right.appendChild(box);
+    }
+
+    // The written candidates plus one empty slot for Al's own.
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const k = key(img.image, i);
+      const rec = state[k] || {};
+      const wrap = document.createElement('div');
+      wrap.className = 'line' + (i === N ? ' mine' : '');
+
+      const n = document.createElement('span');
+      n.className = 'n';
+      n.textContent = i === N ? '+' : String(i + 1);
+      wrap.appendChild(n);
+
+      const ref = img.rescue && img.rescue[i];
+      if (ref) {
+        const tag = document.createElement('span');
+        tag.className = 'resc';
+        tag.textContent = 'bank';
+        tag.title = 'Rescued from the existing bank (' + ref + ') rather than newly written';
+        wrap.appendChild(tag);
+      }
+
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.value = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (i === N) inp.placeholder = 'your own line for this picture…';
+      const count = document.createElement('span');
+      count.className = 'wc';
+      const paint = () => {
+        cap.textContent = inp.value || img.lines[0];
+        count.textContent = wc(inp.value) + 'w';
+      };
+      inp.addEventListener('focus', paint);
+      inp.addEventListener('input', () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value });
+        paint(); save();
+      });
+      wrap.appendChild(inp);
+      count.textContent = wc(inp.value) + 'w';
+      wrap.appendChild(count);
+
+      const yes = document.createElement('button');
+      yes.className = 'y' + (rec.verdict === 'YES' ? ' on' : '');
+      yes.textContent = '✓';
+      yes.title = 'keep this line for this picture';
+      yes.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'YES' ? null : 'YES' });
+        save(); render();
+      };
+      const no = document.createElement('button');
+      no.className = 'n2' + (rec.verdict === 'NO' ? ' on' : '');
+      no.textContent = '✕';
+      no.title = 'not for this picture';
+      no.onclick = () => {
+        state[k] = Object.assign({}, state[k], { text: inp.value, verdict: rec.verdict === 'NO' ? null : 'NO' });
+        save(); render();
+      };
+      wrap.appendChild(yes);
+      wrap.appendChild(no);
+      right.appendChild(wrap);
+    }
+
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'Click into a line to see it on the picture. Edit the text freely — the edit is what exports. '
+      + 'The dashed slot is yours.';
+    right.appendChild(hint);
+    card.appendChild(right);
+    m.appendChild(card);
+  }
+  tally();
+}
+
+$('export').onclick = () => {
+  const out = { generated: '2026-08-19', ruledBy: 'Al, bespoke line review', bucket: DATA.bucket || null, images: [] };
+  for (const img of DATA.images) {
+    const kept = []; const rejected = [];
+    // Lines already kept in an earlier round ride along in the export, marked as
+    // such: the file is the picture's whole approved set, not just this round's
+    // additions, so nothing downstream has to join two exports to know the truth.
+    for (const t of (img.alreadyKept || [])) kept.push({ text: t, source: 'bespoke', round: 1, edited: false });
+    const N = img.lines.length;
+    for (let i = 0; i < N + 1; i += 1) {
+      const rec = state[key(img.image, i)] || {};
+      const text = rec.text != null ? rec.text : (i < N ? img.lines[i] : '');
+      if (!text || !text.trim()) continue;
+      const entry = { text: text.trim(), source: i === N ? 'al' : 'bespoke',
+        round: 2, edited: i < N && text.trim() !== img.lines[i] };
+      const ref = img.rescue && img.rescue[i];
+      if (ref && !entry.edited) { entry.source = 'bank'; entry.rescue = ref; }
+      if (rec.verdict === 'YES') kept.push(entry);
+      else if (rec.verdict === 'NO') rejected.push(entry);
+    }
+    out.images.push({ image: img.image, hash: img.hash, condition: img.condition, time: img.time,
+      week: img.week, day: img.day, paths: img.paths, kept, rejected });
+  }
+  out.keptCount = out.images.reduce((n, i) => n + i.kept.length, 0);
+  out.imagesWithNone = out.images.filter((i) => !i.kept.length).map((i) => i.image);
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = EXPORT_NAME;
+  a.click();
+};
+
+render();
+</script>
