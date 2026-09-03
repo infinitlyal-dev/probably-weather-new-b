@@ -326,7 +326,12 @@
       function setHeroUrl(src) {
         var safe = String(src || '').replace(/["'()\\\s]/g, '');
         if (!safe) return;
-        document.documentElement.style.setProperty('--hero-url', 'url("' + safe + '")');
+        // CSS url() values assigned here are consumed by assets/app.css, so a
+        // relative value resolves from /assets/ and becomes /assets/assets/.
+        // Resolve against the document first; this also repairs stored paths
+        // written by older versions of the app.
+        var absolute = new URL(safe, document.baseURI).href;
+        document.documentElement.style.setProperty('--hero-url', 'url("' + absolute + '")');
       }
       // M7: the stored crop belongs to the stored image and to nothing else.
       // Every path that paints a DIFFERENT image than pw_last_bg — the 404

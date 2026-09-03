@@ -190,9 +190,16 @@ describe('mobile facelift — contained hero (M1)', () => {
     expect(js).toMatch(/locationEl\?\.addEventListener\('click', \(\) => {\s*if \(!window\.matchMedia\('\(max-width: 768px\)'\)\.matches\) return;/);
   });
 
-  it('seeds --hero-url even when storage throws, and escapes it into url()', () => {
+  it('seeds --hero-url even when storage throws, and resolves it from the document root', () => {
     expect(html).toMatch(/function setHeroUrl\(src\)/);
     expect(html).toContain(String.raw`.replace(/["'()\\\s]/g, '')`);
+    expect(html).toMatch(/var absolute = new URL\(safe, document\.baseURI\)\.href/);
+    expect(html).toMatch(/setProperty\('--hero-url', 'url\("' \+ absolute \+ '"\)'\)/);
+    expect(html).not.toMatch(/setProperty\('--hero-url', 'url\("' \+ safe \+ '"\)'\)/);
+    expect(new URL('assets/images/bg/default.jpg', 'https://www.probablyweather.co.za/').pathname)
+      .toBe('/assets/images/bg/default.jpg');
+    expect(new URL('assets/images/bg-canonical/example.webp', 'https://www.probablyweather.co.za/').pathname)
+      .toBe('/assets/images/bg-canonical/example.webp');
     // The catch must still seed the default rather than leave the card black.
     expect(html).toMatch(/} catch \(e\) {\s*try { setHeroUrl\('assets\/images\/bg\/default\.jpg'\); } catch \(_\) {}/);
   });
