@@ -515,3 +515,10 @@ describe('install — vercel rewrite for /install', () => {
     expect(v).toMatch(/\{\s*"source":\s*"\/install"\s*,\s*"destination":\s*"\/install\.html"\s*\}/);
   });
 });
+
+describe('privacy — vercel rewrite for /privacy', () => {
+  it('vercel.json rewrites /privacy to the approved privacy.html', () => {
+    const v = readFileSync(new URL('../vercel.json', import.meta.url), 'utf8');
+    expect(v).toMatch(/\{\s*"source":\s*"\/privacy"\s*,\s*"destination":\s*"\/privacy\.html"\s*\}/);
+  });
+});

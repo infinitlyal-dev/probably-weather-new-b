@@ -27,6 +27,10 @@
     {
       "source": "/install",
       "destination": "/install.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
     }
   ],
   "headers": [
