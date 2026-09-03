@@ -232,9 +232,10 @@ describe('install — shouldShowBanner state machine', () => {
     ).toBe(false);
   });
 
-  it('DOES show after the engagement window elapses with NO interaction required (timer alone)', () => {
+  it('DOES pass the state gate after the engagement window elapses', () => {
     const now = Date.now();
-    // No `interacted` field at all — gate is timer-only now.
+    // First-scroll deferral is a DOM event gate; the pure state machine still
+    // owns elapsed time, platform and stored dismissal/completion state.
     expect(
       shouldShowBanner({
         storage: { firstSeen: String(now - 2_000) },
@@ -463,14 +464,15 @@ describe('install — standalone mode hiding via CSS and JS', () => {
 });
 
 describe('install — engagement gate wiring', () => {
-  it('records first_seen and schedules a banner check on the timer alone (no interaction required)', () => {
+  it('records first_seen and only schedules the banner check after the first scroll', () => {
     const src = installJs();
     expect(src).toMatch(/STORAGE_KEYS\.firstSeen/);
-    // Timer-driven banner check
+    expect(src).toMatch(/function armBannerAfterFirstScroll\(\)\s*\{\s*scheduleBannerCheck\(\);\s*\}/);
+    expect(src).toMatch(/window\.addEventListener\('scroll', armBannerAfterFirstScroll, \{ passive: true, once: true \}\)/);
     expect(src).toMatch(/setTimeout\(maybeShowBanner/);
-    // No interaction-tracking listeners — gate is timer-only.
+    // No persisted interaction state is needed: every fresh document waits for
+    // its own first scroll before the existing elapsed-time gate is armed.
     expect(src).not.toMatch(/STORAGE_KEYS\.interacted/);
-    expect(src).not.toMatch(/['"]pointerdown['"]|['"]touchstart['"]|['"]scroll['"],\s*['"]keydown['"]/);
     expect(src).not.toMatch(/recordInteraction/);
     expect(src).not.toMatch(/interactionRecorded/);
   });

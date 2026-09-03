@@ -11,10 +11,9 @@ export const STORAGE_KEYS = {
 };
 
 export const DISMISS_DAYS = 7;
-// Banner appears on a short timer alone — no interaction gesture required.
-// Users coming from a shared link (WhatsApp etc.) see the install banner
-// ~1.5s after page load. The previous 10s + interaction gate suppressed
-// the banner for users who landed on the page and didn't move within 10s.
+// A fresh document arms the short engagement timer only after its first scroll.
+// This keeps the first forecast view unobstructed while still surfacing install
+// promptly once the visitor starts exploring the page.
 export const ENGAGEMENT_MS = 1500;
 
 /* -------- Translations (full T[install] block, also re-used by install.html) -------- */
@@ -559,7 +558,10 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     clearTimeout(bannerCheckTimer);
     bannerCheckTimer = setTimeout(maybeShowBanner, remaining + 50);
   }
-  scheduleBannerCheck();
+  function armBannerAfterFirstScroll() {
+    scheduleBannerCheck();
+  }
+  window.addEventListener('scroll', armBannerAfterFirstScroll, { passive: true, once: true });
 
   function readStorage() {
     return {
