@@ -523,4 +523,9 @@ describe('privacy — vercel rewrite for /privacy', () => {
     const v = readFileSync(new URL('../vercel.json', import.meta.url), 'utf8');
     expect(v).toMatch(/\{\s*"source":\s*"\/privacy"\s*,\s*"destination":\s*"\/privacy\.html"\s*\}/);
   });
+
+  it('serves the existing PNG when the approved page requests /favicon.ico', () => {
+    const v = readFileSync(new URL('../vercel.json', import.meta.url), 'utf8');
+    expect(v).toMatch(/\{\s*"source":\s*"\/favicon\.ico"\s*,\s*"destination":\s*"\/assets\/favicon-32\.png"\s*\}/);
+  });
 });
