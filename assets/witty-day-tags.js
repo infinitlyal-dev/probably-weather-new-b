@@ -716,15 +716,33 @@ export function eligibleWittyPool({
     }
   }
 
+  // Weekend is ADDITIVE on clear/heat — Al's ruling 2026-09-05, class A of
+  // review/ROUTING-CONFLICTS.md. It used to REPLACE the condition pool, so on Sat/Sun (and
+  // Fri from 16:00) no clear or heat line could fire at all: two days in seven served weekend
+  // lines only. Both registers are now eligible, and the weekend keeps its character through
+  // the photographs rather than through pool exclusivity.
+  //
+  // This governs the CONDITION BANK only. The bespoke hero path (app.js applyBespokeLine)
+  // resolves lines by photograph and never calls this function, so Al's hand-matched pairings
+  // are unaffected either way. What this fixes is the bank, which still serves the four
+  // non-English languages in-app and every share card (api/og.js pickWitty).
   if (isWeekendContext(context) && (safeCondition === 'clear' || safeCondition === 'heat')) {
     const weekendPool = localizedPool(copy?.witty, 'weekend', lang);
     if (hasUsableLine(weekendPool)) {
-      return {
-        namespace: 'witty',
-        bin: 'weekend',
-        raw: weekendPool,
-        pool: dayAwarePool(tags.witty?.weekend, weekendPool, context),
-      };
+      const conditionPool = localizedPool(copy?.witty, safeCondition, lang) || [];
+      const merged = [
+        ...dayAwarePool(tags.witty?.weekend, weekendPool, context),
+        ...dayAwarePool(tags.witty?.[safeCondition], conditionPool, context),
+      ];
+      if (merged.length) {
+        return {
+          namespace: 'witty',
+          bin: 'weekend',
+          mergedBins: ['weekend', safeCondition],
+          raw: [...weekendPool, ...conditionPool],
+          pool: merged,
+        };
+      }
     }
   }
 

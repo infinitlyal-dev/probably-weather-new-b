@@ -168,7 +168,13 @@ describe('OG card uses the same eligible witty pool as the app', () => {
       lang: 'en',
       context,
     }).pool;
-    expect(appEligible).toEqual(dayAwarePool(WITTY_DAY_TAGS.witty.weekend, WEATHER_COPY.witty.weekend.en, context));
+    // Al's ruling 2026-09-05 (ROUTING-CONFLICTS class A): weekend is ADDITIVE on clear/heat,
+    // so a Saturday clear pool is weekend lines PLUS clear lines. This used to assert the
+    // weekend pool alone, which was the pre-empt behaviour he retired.
+    expect(appEligible).toEqual([
+      ...dayAwarePool(WITTY_DAY_TAGS.witty.weekend, WEATHER_COPY.witty.weekend.en, context),
+      ...dayAwarePool(WITTY_DAY_TAGS.witty.clear, WEATHER_COPY.witty.clear.en, context),
+    ]);
 
     const model = buildOgViewModel(payload, { lang: 'en' });
     expect(appEligible).toContain(model.witty);
