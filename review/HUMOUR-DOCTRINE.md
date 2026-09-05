@@ -1,6 +1,16 @@
 # PW — HUMOUR DOCTRINE
 ### Written from Al's 349 hand-placed pairs (`review/set-001-line-matches-ruled.json`), 2026-08-30
 
+> **AL'S RULING — 2026-08-30. Binds all future writing, and outranks anything below it.**
+> **A line is humour about the kind of day. It needs only to *gel* with the image — it does
+> not have to be derived from it.** The image-as-punchline bar is retired: a line no longer
+> has to earn its place by turning the photograph into the joke, and the photograph no
+> longer has to be the evidence that proves the line. Write to the weather; the picture has
+> to sit well with it, nothing more. Everything below is still good craft and still worth
+> writing toward — it is now guidance on how to make a line land, not a gate a line has to
+> pass. This is also why round 2 of the matching lets any line go on any photograph: the
+> pairing is Al's taste call, not a derivation test.
+
 **Method:** 39 of Al's placements viewed as pairs — photograph and line together — spread
 across all nine conditions plus the weekend/night/uv/rain-possible cross-bins, including
 his own authored pair (`rain#custom-1`). Phrased as writing instructions for the finishing
@@ -10,6 +20,10 @@ rules. Where the corpus refined a taste-doc rule, this doc says so.
 ---
 
 ## The spine, verified
+
+*Superseded in part by the 2026-08-30 ruling in the header: the "photograph is the evidence"
+test is no longer a gate. It is still the strongest shape a line can take, so it is kept here
+as the thing to aim at.*
 
 **Every line is a claim about the weather. The photograph is the evidence for the claim.**
 Not decoration, not a scene the line describes — evidence. The strongest placements in the

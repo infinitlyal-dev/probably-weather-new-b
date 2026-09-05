@@ -1,7 +1,7 @@
 {
  "generated": "2026-08-23",
  "ruledBy": "Al, original condition bank review",
- "note": "Bank lines Al wants kept. Each still needs photographs found for it.",
+ "note": "Bank lines Al wants kept. Each still needs photographs found for it. Includes one line written by Al directly (source:\"Al\"), not from the original condition bank.",
  "kept": [
   {
    "id": "witty:clear#4",
@@ -3062,7 +3062,15 @@
    "condition": "hail",
    "text": "Tiny ice bombs falling. Indoors is the only plan.",
    "pass1": null
+  },
+  {
+   "id": "witty:rain#custom-1",
+   "condition": "rain",
+   "text": "Clouds are crying like NZ at the 23 Rugby WC!",
+   "pass1": null,
+   "source": "Al",
+   "added": "2026-08-26"
   }
  ],
- "keptCount": 379
+ "keptCount": 380
 }
