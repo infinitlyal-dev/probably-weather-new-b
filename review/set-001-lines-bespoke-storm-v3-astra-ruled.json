@@ -1,0 +1,1708 @@
+{
+ "generated": "2026-09-05",
+ "ruledBy": "Astra editorial review, adopted as Al's ruling (his instruction, 2026-09-05; veto list: none)",
+ "bucket": "storm",
+ "note": "KEEP and FIX (fixed wording) are kept. KILL is held as `unruled`, NOT rejected — Al ruled that explicitly, so no downstream step may treat a KILL as struck. New-lines CSV rows are kept with source astra-new. astraTime is Astra's own visual reading of the hour and does not override the photograph's rotation slot.",
+ "supersedes": "review/set-001-lines-bespoke-storm-v3.json",
+ "images": [
+  {
+   "image": "storm/week_1/dawn/2.webp",
+   "hash": "91f980f76f82",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dawn/2.webp",
+    "storm/week_3/dawn/2.webp"
+   ],
+   "photoId": "01",
+   "kept": [
+    {
+     "text": "Somebody's weather report just got a lot longer.",
+     "source": "astra-fix",
+     "astraTime": "dawn",
+     "score": 3,
+     "fixedFrom": "Somewhere a weather reporter is living their best life."
+    },
+    {
+     "text": "So much for that expensive alarm clock.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Breakfast first. Checking the roof can wait.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Lightning over the skyline and brake lights all the way in: Joburg is up early.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: location-specific skyline and traffic inventory.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The slow lane, the fast lane, and the sky lane — only one is moving.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 and R7 fail: invented sky lane captions traffic and lightning.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/3.webp",
+   "hash": "55fac1141abf",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/dawn/3.webp",
+    "storm/week_3/dawn/3.webp"
+   ],
+   "photoId": "02",
+   "kept": [
+    {
+     "text": "Every dog in the suburb filed a report at the same instant.",
+     "source": "astra-keep",
+     "astraTime": "neutral",
+     "score": 4
+    },
+    {
+     "text": "The dog has told the whole street about this.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "You heard it. The dog is making absolutely sure.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "That one landed close enough to count the seconds on one hand.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the pictured strike through its apparent distance.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The whole street went daylight for a quarter of a second.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: retells the visible flash.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/5.webp",
+   "hash": "f0b49be17750",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dawn/5.webp",
+    "storm/week_3/dawn/5.webp"
+   ],
+   "photoId": "03",
+   "kept": [
+    {
+     "text": "You can get up now and inspect yesterday's optimism.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Morning jobs. Start by finding the washing line.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Those bubble clouds are the storm's signature, written on the way out.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explains the cloud formation poetically.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "That is the back page of a storm, and it reads better than the front.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: literary storm caption without an ordinary consequence.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The windpomp has seen a thousand of these and still stopped to look.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: gives the pictured windpump an impossible reaction.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/7.webp",
+   "hash": "a785060d7357",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_3/dawn/7.webp"
+   ],
+   "photoId": "04",
+   "kept": [
+    {
+     "text": "Your dog would like breakfast delivered for once.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    },
+    {
+     "text": "You slept well. The dog has a different account.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The storm passed an hour ago; the news has not reached under the bed yet.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: delayed-news joke still describes the hiding dog.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "The sky has moved on. The dachshund is requesting written confirmation.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: amusing bureaucracy still captions this dachshund.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "The dog's under the bed. Smart move, honestly.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: directly describes the dog's visible hiding place.",
+     "astraTime": "morning"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/day/3.webp",
+   "hash": "41e6c19016c1",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/day/3.webp"
+   ],
+   "photoId": "05",
+   "kept": [
+    {
+     "text": "You can wait. Your shopping has nowhere else to be.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "The gap between flashes is being counted by everyone under this roof."
+    },
+    {
+     "text": "You only popped out for milk and now have friends.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Shopping done. Apparently you're staying for tea.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The trolleys are staying exactly where the storm interrupted them.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes the abandoned trolleys.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Five strangers, one roof, one unspoken agreement: not yet.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: headcount and imagined agreement caption the sheltering group.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/day/4.webp",
+   "hash": "676b8843cb92",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "storm/week_1/day/4.webp"
+   ],
+   "photoId": "06",
+   "kept": [
+    {
+     "text": "Mum would like her concerns put in writing.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Plans cancelled. You seem surprisingly relieved.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "That sky would send most people home; it is sending him in.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the surfer's pictured direction.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The storm is doing the wave-making and he is doing the arithmetic.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: condition opener explains the surfer's activity.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Big sky, bigger sea, one board: the argument for staying home lost.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: scenic inventory supplies the entire argument.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/day/5.webp",
+   "hash": "99d0821cdd98",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/day/5.webp"
+   ],
+   "photoId": "07",
+   "kept": [
+    {
+     "text": "Your cheapest umbrella has explained its price.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Walk postponed. The apology can happen by phone.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The umbrella is now a diagram of an umbrella.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: clever visual comparison remains an umbrella caption.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Leaves in the street, spokes in the air: the storm is winning on all fronts.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventories leaves and umbrella spokes.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The wind has a personal vendetta against umbrellas.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: condition opener explains the broken umbrella.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/2.webp",
+   "hash": "a61146a38b06",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dusk/2.webp",
+    "storm/week_3/dusk/2.webp"
+   ],
+   "photoId": "08",
+   "kept": [
+    {
+     "text": "Just one last job before home, you said.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Home soon. You have stopped putting a time on it.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "That storm is twenty minutes out and both of them know the maths.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the loaders and invents a precise deadline.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The sky set the deadline; the bakkie gets loaded to it.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the pictured loading race.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The mountains are already getting theirs; this hay has about twenty minutes.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: landscape caption invents a twenty-minute forecast.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/3.webp",
+   "hash": "742e1675a5a4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dusk/3.webp",
+    "storm/week_3/dusk/3.webp"
+   ],
+   "photoId": "09",
+   "kept": [
+    {
+     "text": "Sorry, what? An excellent evening not to have heard.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Supper inside. Somebody still has to clear a table.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The balcony beats the couch when the sky is doing this.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: merely endorses the pictured viewing position.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Sunset on one side, artillery on the other, and she has the balcony.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: dramatic sunset-and-lightning inventory.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The storm is doing the rounds of the suburbs and saving town for last.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: condition opener invents a local storm route.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/4.webp",
+   "hash": "53d4228e24c8",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dusk/4.webp",
+    "storm/week_3/dusk/4.webp"
+   ],
+   "photoId": "10",
+   "kept": [
+    {
+     "text": "Your candles may finally justify that drawer.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Dinner for two. Torch for one.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Candles in the windows: the storm has already had a word with the power.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: explains the pictured window lights through an assumed outage.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The palms are pointing the way the storm is going, which is this way.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes the palm direction.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Lightning inside the cloud: the storm is still deciding where to put it.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: lightning description adds no human consequence.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/5.webp",
+   "hash": "e5b510c8a1e4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/dusk/5.webp",
+    "storm/week_3/dusk/5.webp"
+   ],
+   "photoId": "11",
+   "kept": [
+    {
+     "text": "Nobody believed you fancied an evening walk anyway.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Going out tonight. As far as the gate, perhaps.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The sea is taking the strikes tonight so the land doesn't have to.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: scenery personification implies unjustified protection for land.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Sunset tried to happen; the storm had other bookings for that sky.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: booking metaphor remains a sky caption.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The waves were the show until the sky decided otherwise.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: merely swaps two visible spectacles.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/7.webp",
+   "hash": "e0089512238b",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_1/dusk/7.webp",
+    "storm/week_3/dusk/7.webp"
+   ],
+   "photoId": "12",
+   "kept": [
+    {
+     "text": "Your landlord is about to hear from you again.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Quiet evening. You should have said it softly.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The roof has an opinion tonight and the bucket is taking minutes.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: meeting metaphor captions the roof leak and bucket.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "One drip, one bucket, one towel: the storm has made it indoors, barely.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: counts the pictured leak-management objects.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Somewhere up there the rain found a way in, and it is being managed.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explains the leak already shown.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/night/7.webp",
+   "hash": "14c56f85c353",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/night/7.webp",
+    "storm/week_3/night/7.webp"
+   ],
+   "photoId": "13",
+   "kept": [
+    {
+     "text": "The strike lasted half a second; the video will last the whole group chat.",
+     "source": "astra-keep",
+     "astraTime": "night",
+     "score": 4
+    },
+    {
+     "text": "You filmed for ten minutes. You missed it.",
+     "source": "astra-fix",
+     "astraTime": "night",
+     "score": 3,
+     "fixedFrom": "The sky does one take and expects you to be ready."
+    },
+    {
+     "text": "Muting the family chat until breakfast seems fair.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Phone charged. Nobody has asked for your video yet.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Every South African storm gets filmed vertical, and this one earned it.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: directly captions the pictured phone recording.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dawn/2.webp",
+   "hash": "56af96f529d2",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dawn/2.webp",
+    "storm/week_4/dawn/2.webp"
+   ],
+   "photoId": "14",
+   "kept": [
+    {
+     "text": "You can skip the run with a clear conscience.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "The sky is loading something and the question is whether it lands mid-run."
+    },
+    {
+     "text": "Your exercise excuse has finally arrived on time.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Shoes on. A remarkable waste of effort.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Warm-up done; now he is waiting on a ruling from upstairs.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: captions the runner's visible wait.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Hands on hips: the international sign for arguing with weather.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: explicitly explains the pictured hands-on-hips pose.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dawn/3.webp",
+   "hash": "29a289619727",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "photoId": "15",
+   "kept": [
+    {
+     "text": "Your first coffee deserves your undivided attention.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Up early. Not quite by choice.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The storm is keeping to the mountains, and the stoep is keeping the view.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: mountain-view commentary, no human consequence.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "First coffee of the day, best show of the week, same ten minutes.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: coffee-and-view caption offers scenic appreciation.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The rain has been and gone; the electricity is still saying goodbye.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: weather recap replaces ordinary life.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dawn/7.webp",
+   "hash": "20ed2fe6b144",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "photoId": "16",
+   "kept": [
+    {
+     "text": "Perhaps start the day with a less confident plan.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Breakfast first. The rest is now negotiable.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "That horizon is half sunset, half warning, and the bakkie knows the difference.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 and R6 fail: horizon caption imposes sunset on dawn.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Dust now, mud by dark — that cloud bank is not decoration.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes dust and clouds, then predicts mud.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The mealies have been waiting for that cloud longer than anyone in the bakkie.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: romanticises the pictured crop and vehicle.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/2.webp",
+   "hash": "c152b51ebfa5",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/day/2.webp"
+   ],
+   "photoId": "17",
+   "kept": [
+    {
+     "text": "The eighteenth can wait; the sky is playing through.",
+     "source": "astra-keep",
+     "astraTime": "neutral",
+     "score": 4
+    },
+    {
+     "text": "Your scorecard can stop getting worse now.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "That is the course's way of saying the round is over."
+    },
+    {
+     "text": "Finally, a respectable excuse for your scorecard.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Clubs packed. Your pride gets to come home intact.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Two club selections left: the clubhouse or the car.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R7 fails: club double meaning carries the whole joke.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/3.webp",
+   "hash": "a02b40a1cdb7",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/day/3.webp"
+   ],
+   "photoId": "18",
+   "kept": [
+    {
+     "text": "Kickoff is under review by the only official that outranks the referee.",
+     "source": "astra-keep",
+     "astraTime": "neutral",
+     "score": 4
+    },
+    {
+     "text": "Your team has found someone else to blame for once.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Match delayed. Everyone is suddenly a forecaster.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The floodlights are on; the sky brought its own anyway.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes floodlights and lightning.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The pitch is ready, the lines are marked, and the weather has the whistle.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: pitch inventory delays a familiar personification.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/4.webp",
+   "hash": "c2c016aabf8f",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/day/4.webp"
+   ],
+   "photoId": "19",
+   "kept": [
+    {
+     "text": "Best greet the neighbour before asking for things back.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Chores postponed. Several new ones are on the way.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The storm rearranged the stoep furniture and did not ask anybody first.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: condition opener describes toppled furniture.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The chairs are down, the branches are down, and the sky is not done.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventories the visible damage.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Every loose object in the garden has chosen violence.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 and R7 fail: borrowed internet phrasing captions scattered objects.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/5.webp",
+   "hash": "777b9b465dbe",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/day/5.webp"
+   ],
+   "photoId": "20",
+   "kept": [
+    {
+     "text": "You can explain your plans to someone who listens.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Jobs listed. Best put a pencil next to them.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "He has seen fifty of these arrive, and he still comes out to watch.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: invents a spectator's history instead of addressing the reader.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Dust first, rain second: the order of business is written on the horizon.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: literal weather sequence in business language.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The drought and the storm are about to have a word, and he wants to hear it.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: landscape drama narrates the spectator's supposed interest.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/day/6.webp",
+   "hash": "30a82fcff9d4",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "storm/week_2/day/6.webp"
+   ],
+   "photoId": "21",
+   "kept": [
+    {
+     "text": "Even the hadedas are quiet.",
+     "source": "astra-keep",
+     "astraTime": "neutral",
+     "score": 4
+    },
+    {
+     "text": "Could we discuss the plan with fewer outdoor bits?",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Everyone inside. The argument fits in here too.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The street cleared out early; only the hadeda is finishing its rounds.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the empty street and pictured bird.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The sky is stacking up over the dorp and even the palm has gone still.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: cloud-and-palm description depends on the scene.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dusk/4.webp",
+   "hash": "f6818069c8bd",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dusk/4.webp",
+    "storm/week_4/dusk/4.webp"
+   ],
+   "photoId": "22",
+   "kept": [
+    {
+     "text": "Your weekend now includes everybody else's branches.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 4,
+     "fixedFrom": "The storm made one pass and left the street a week of gardening."
+    },
+    {
+     "text": "Your quiet evening now includes a call to the roofer.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Home early. You may wish you hadn't been.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Branches down, lights on, storm gone: the after-party is all admin.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: damage inventory buries the useful aftermath.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The sunset is back like nothing happened; the trees know otherwise.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: personified sunset and trees remain a landscape caption.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/dusk/5.webp",
+   "hash": "adc69e7b4a17",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/dusk/5.webp",
+    "storm/week_4/dusk/5.webp"
+   ],
+   "photoId": "23",
+   "kept": [
+    {
+     "text": "Your video won't settle the argument about the size.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 4,
+     "fixedFrom": "That strike will look half this size on the phone, and he knows it."
+    },
+    {
+     "text": "Your family has already seen three videos like yours.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Phone away. You can watch the next one yourself.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Two strikes in one frame: the sky is doing his content for him.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the photographed strikes and recording.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Rain on the railing, lightning on the horizon, phone doing its best.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventory of railing, lightning and phone.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/night/1.webp",
+   "hash": "faaf0b2003be",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/night/1.webp",
+    "storm/week_4/night/1.webp"
+   ],
+   "photoId": "24",
+   "kept": [
+    {
+     "text": "Thirst has been replaced as the bedtime excuse.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Bedtime again. Nobody seems to have heard you.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "First storm he has stayed up for, and the sky is making it count.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: invents the pictured child's first-storm history.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Thunder is scary from bed and magnificent from a window; he moved.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the child's pictured move to the window.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The best television in the house is currently the weather.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R2 and R5 fail: familiar spectacle-as-television stock caption.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/night/5.webp",
+   "hash": "2d2e6dd5d7fd",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/night/5.webp",
+    "storm/week_4/night/5.webp"
+   ],
+   "photoId": "25",
+   "kept": [
+    {
+     "text": "Your home repair list has requested an urgent update.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Romance later. First find something absorbent.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The storm found the ceiling's weak spot; the bucket arrived three drops later.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: gives timing to the pictured leak response.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The rain is now technically a house guest, and it chose the main bedroom.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: house-guest joke still describes the bedroom leak.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Leak over the bed, laughter over the leak: married storm protocol.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: inventories leak and laughter, then labels the marriage.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_3/day/1.webp",
+   "hash": "10cac134f9d9",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/1.webp"
+   ],
+   "photoId": "26",
+   "kept": [
+    {
+     "text": "Your favourite parking spot has lost its appeal.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Car covered. You could do with the same treatment.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Hail on the way down and a tarp halfway on: this one is going to be close.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: condition opener narrates the tarp race.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The sky is throwing ice and he is answering with a tarp.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the man covering his load.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Hail gives you about ninety seconds of warning, and he is using all of them.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: unsupported warning time captions the worker.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_3/day/3.webp",
+   "hash": "20f3d07d3c47",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/3.webp"
+   ],
+   "photoId": "27",
+   "kept": [
+    {
+     "text": "Your lap is now reserved for the entire dog.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "One flash outside and the seating plan changed itself."
+    },
+    {
+     "text": "You can be brave once the dog believes you.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Lap available. Terms now set by the dog.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The spot under the table was chosen scientifically: furthest from the sky.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: invented scientific rationale captions the dog's hiding place.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Thunder counts double when you have ears like that.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: directly points at the pictured dog's ears.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_3/day/5.webp",
+   "hash": "b08495c9d832",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_3/day/5.webp"
+   ],
+   "photoId": "28",
+   "kept": [
+    {
+     "text": "Your batting average survives another day.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "Bad light stopped play, then the light got a lot worse."
+    },
+    {
+     "text": "Try the coach now; your excuse has improved.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Practice cancelled. Try looking less pleased.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The covers made it on; the kit did not make it off.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the visible pitch covers and abandoned kit.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "A sky that colour clears a cricket field faster than any umpire.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: explains the empty cricket field.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_4/day/1.webp",
+   "hash": "ea95b93c8930",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "storm/week_4/day/1.webp"
+   ],
+   "photoId": "29",
+   "kept": [
+    {
+     "text": "Your plastic chairs may visit before you do.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Visitors postponed. The furniture may still go.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The first casualty is a plastic chair, and the storm is not even here yet.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the pictured fallen chair.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "That rain on the horizon is about ten minutes from this puddle.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: scene description invents a precise arrival time.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The wind came through first and signed its work with one white chair.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: signature metaphor describes the fallen white chair.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_4/day/5.webp",
+   "hash": "8c5812bded23",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "storm/week_4/day/5.webp"
+   ],
+   "photoId": "30",
+   "kept": [
+    {
+     "text": "Your evening braai has acquired an indoor committee.",
+     "source": "astra-new",
+     "astraTime": "afternoon"
+    },
+    {
+     "text": "Guests at six. Best revise what you promised them.",
+     "source": "astra-new",
+     "astraTime": "afternoon"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The umbrella is coming down in the storm's final two minutes of notice.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: narrates the umbrella action and invents its deadline.",
+     "astraTime": "afternoon"
+    },
+    {
+     "text": "Half the sky is still summer; the other half is why he is hurrying.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: sky commentary explains the pictured man's hurry.",
+     "astraTime": "afternoon"
+    },
+    {
+     "text": "Leaves already sideways: the storm sent its calling card ahead.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes the blowing leaves.",
+     "astraTime": "afternoon"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_4/day/6.webp",
+   "hash": "f6562060468c",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_4/day/6.webp"
+   ],
+   "photoId": "31",
+   "kept": [
+    {
+     "text": "At last, a break from being asked to stop the car.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Keys ready. No particular hurry to use them.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The car is the best hide this country makes for lightning season.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: car-watching caption makes an unnecessary blanket safety claim.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Rain on the glass, bolt in the frame, and not one drop on the photographer.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventories rain, lightning and photographer.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Front-row seats, full cover, wipers off: storm-watching done properly.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes and endorses the pictured viewing arrangement.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/night/4.webp",
+   "hash": "2fede244e0d0",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/night/4.webp",
+    "storm/week_3/night/4.webp"
+   ],
+   "photoId": "32",
+   "kept": [
+    {
+     "text": "Your dog has cancelled sleeping in its own bed.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Goodnight, then. Apparently that was optimistic.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The rain is coming through the streetlight at forty-five degrees, which means wind joined in.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: condition opener explains the rain's visible angle.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Lightning behind the cloud: the storm is working with the lights off.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes hidden lightning through a work metaphor.",
+     "astraTime": "night"
+    },
+    {
+     "text": "That old tree has stood through a hundred of these and is counting this one too.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: scenic tree biography, no human consequence.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_1/night/5.webp",
+   "hash": "9851963ee129",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/night/5.webp",
+    "storm/week_3/night/5.webp"
+   ],
+   "photoId": "33",
+   "kept": [
+    {
+     "text": "Your roof repair savings have been noticed.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Sleep first. Tomorrow has acquired a few expenses.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The gutter gave up on the downpipe and started its own waterfall.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: waterfall personification explains the overflowing gutter.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Purple sky, purple petals: the storm colour-matched the driveway tonight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes the pictured colour palette.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The overflow says the roof got a month of rain in one evening.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: runoff caption invents a month's rainfall comparison.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/night/3.webp",
+   "hash": "cd855e5f60e9",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/night/3.webp",
+    "storm/week_4/night/3.webp"
+   ],
+   "photoId": "34",
+   "kept": [
+    {
+     "text": "Nobody's leaving; find the good biscuits.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Bedtime soon. The house has some final remarks.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The roof has no gutter on that side and tonight it is a waterfall.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: literal roof-runoff description.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: condition opener leads to a visual simile.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Everything past the gate is weather; everything inside it is fine.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 and R5 fail: cosy stock-photo reassurance, no earned turn.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "storm/week_2/night/4.webp",
+   "hash": "ae79261d2852",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_2/night/4.webp",
+    "storm/week_4/night/4.webp"
+   ],
+   "photoId": "35",
+   "kept": [
+    {
+     "text": "Your neighbours now know what your pyjamas look like.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Everyone awake. Nobody admits they got a fright.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The whole sky went mauve for a second and the street pretended not to notice.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: colour commentary personifies the pictured street.",
+     "astraTime": "night"
+    },
+    {
+     "text": "One streetlight versus the entire electrical budget of that cloud.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: electrical-budget metaphor describes lights in the image.",
+     "astraTime": "night"
+    },
+    {
+     "text": "That flash reached town before its thunder; the gap is closing though.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: lightning timing explanation offers no ordinary-life joke.",
+     "astraTime": "night"
+    }
+   ]
+  }
+ ],
+ "keptCount": 84,
+ "unruledCount": 91,
+ "imagesWithNone": []
+}

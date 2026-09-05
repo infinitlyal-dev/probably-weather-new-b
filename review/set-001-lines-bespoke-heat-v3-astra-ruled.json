@@ -1,0 +1,577 @@
+{
+ "generated": "2026-09-05",
+ "ruledBy": "Astra editorial review, adopted as Al's ruling (his instruction, 2026-09-05; veto list: none)",
+ "bucket": "heat",
+ "note": "KEEP and FIX (fixed wording) are kept. KILL is held as `unruled`, NOT rejected — Al ruled that explicitly, so no downstream step may treat a KILL as struck. New-lines CSV rows are kept with source astra-new. astraTime is Astra's own visual reading of the hour and does not override the photograph's rotation slot.",
+ "supersedes": "review/set-001-lines-bespoke-heat-v3.json",
+ "images": [
+  {
+   "image": "heat/week_2/dusk/3.webp",
+   "hash": "555f76c5594f",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/dusk/3.webp",
+    "heat/week_4/dusk/3.webp"
+   ],
+   "photoId": "01",
+   "kept": [
+    {
+     "text": "Salad for supper has become much easier to sell.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Guests expected. Nobody promised to use the oven.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The day was a scorcher and the stall is selling the antidote by the kilo.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: condition recap describes the watermelon stall.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Watermelon weather: the whole province agreed on it by about ten this morning.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R7 fail: weather label invents province-wide agreement.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/dusk/7.webp",
+   "hash": "3e88aef1fb06",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_2/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "photoId": "02",
+   "kept": [
+    {
+     "text": "Your child would like the bath moved outside too.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Bedtime soon. Apparently nobody heard that.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The sprinkler went on for the lawn and got hijacked within the minute.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: hijacking joke directly captions the pictured sprinkler play.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/day/5.webp",
+   "hash": "36881ce76889",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/day/5.webp"
+   ],
+   "photoId": "03",
+   "kept": [
+    {
+     "text": "Shake hands with the steering wheel very cautiously.",
+     "source": "astra-new",
+     "astraTime": "midday"
+    },
+    {
+     "text": "Car parked. Now to negotiate with the seat belt.",
+     "source": "astra-new",
+     "astraTime": "midday"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The car says 38 and the road ahead agrees in shimmer.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: repeats the visible temperature and road shimmer.",
+     "astraTime": "midday"
+    },
+    {
+     "text": "That sky is not white, it is just too hot to be blue.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: decorative sky description, no reader consequence.",
+     "astraTime": "midday"
+    },
+    {
+     "text": "Every kilometre of that road is being served with a heat shimmer today.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: serving metaphor still describes road shimmer.",
+     "astraTime": "midday"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_4/day/7.webp",
+   "hash": "0cc1648cbc13",
+   "condition": "heat",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_4/day/7.webp"
+   ],
+   "photoId": "04",
+   "kept": [
+    {
+     "text": "You paid for those toys. They want the hose.",
+     "source": "astra-fix",
+     "astraTime": "midday",
+     "score": 4,
+     "fixedFrom": "On days like this the garden hose outranks every toy in the house."
+    },
+    {
+     "text": "Your children have expensive toys to ignore.",
+     "source": "astra-new",
+     "astraTime": "midday"
+    },
+    {
+     "text": "Lunch is ready. Nobody wants the word cooked in it.",
+     "source": "astra-new",
+     "astraTime": "midday"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The sprinkler is doing lawn duty and lifeguard duty at the same time.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: job metaphor explains the sprinkler's visible use.",
+     "astraTime": "midday"
+    },
+    {
+     "text": "Lawn watered, kids cooled, parents left in peace: the heat sorted everything.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: inventories every visible participant and outcome.",
+     "astraTime": "midday"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/dusk/6.webp",
+   "hash": "9728bed72ec6",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/dusk/6.webp",
+    "heat/week_3/dusk/6.webp"
+   ],
+   "photoId": "05",
+   "kept": [
+    {
+     "text": "You can finally sit outside without regretting it.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 3,
+     "fixedFrom": "First sittable hour since breakfast, and it brought colours."
+    },
+    {
+     "text": "Leave the second shower until after supper.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Finally sitting down. Even that took some planning.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The day finally dropped below thirty and the stoep is collecting the reward.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: temperature recap narrates the stoep scene.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "A sky like that is what forty degrees looks like on its way out.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: temperature-and-colour caption, no human consequence.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/dusk/1.webp",
+   "hash": "93f4a43551af",
+   "condition": "heat",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_2/dusk/1.webp",
+    "heat/week_4/dusk/1.webp"
+   ],
+   "photoId": "06",
+   "kept": [
+    {
+     "text": "Remember when going for a walk didn't cost anything?",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Home soon. Unless someone buys another round.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The soft-serve is losing a race it was never going to win.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the pictured melting ice cream.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The promenade fills up the minute the temperature becomes friendly again.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes the visible promenade crowd.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Still warm enough at sunset that the ice cream is doing the sweating.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: condition recap captions the ice cream.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/night/1.webp",
+   "hash": "ea333aeefd0d",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "heat/week_1/night/1.webp",
+    "heat/week_3/night/1.webp"
+   ],
+   "photoId": "07",
+   "kept": [
+    {
+     "text": "Your evening drink has developed a short deadline.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Bed later. The house still feels rather committed.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The glass is sweating at nine at night, which tells you about today.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes condensation and invents a precise time.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The whole promenade came out after dark, when the town becomes walkable again.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explains the visible promenade walkers.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Night has not cooled anything yet; even the water is perspiring.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: condition recap personifies pictured water.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/night/2.webp",
+   "hash": "73f8b2781c4c",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "heat/week_1/night/2.webp",
+    "heat/week_3/night/2.webp"
+   ],
+   "photoId": "08",
+   "kept": [
+    {
+     "text": "Cuddling will need to be discussed in the morning.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Goodnight kiss. Make it brief.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Too hot for walls tonight: the whole family moved the bedroom outside.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: condition opener narrates the outdoor beds.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The house held the day's heat, so the beds came out to the stars.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explains the visible sleeping arrangement.",
+     "astraTime": "night"
+    },
+    {
+     "text": "One member of the sleep-out is doing exactly none of the sleeping.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: repetition works, but directly captions the awake child.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/night/3.webp",
+   "hash": "706cd1220e10",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "heat/week_1/night/3.webp",
+    "heat/week_3/night/3.webp"
+   ],
+   "photoId": "09",
+   "kept": [
+    {
+     "text": "Your guest can have the chair furthest from the fan.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "One more glass. Then another attempt at sleeping.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The curtain is moving, which is the first good news since this morning.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: directly describes the moving curtain.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Ice in the jug, fan on the chair: the night shift of a forty-degree day.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: object inventory adds an invented temperature.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The first breeze in twelve hours just walked in without knocking.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: personification explains the curtain and invents duration.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_1/night/4.webp",
+   "hash": "f2e76528eca3",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "heat/week_1/night/4.webp",
+    "heat/week_3/night/4.webp"
+   ],
+   "photoId": "10",
+   "kept": [
+    {
+     "text": "Your partner has become an unnecessary extra layer.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Pillow turned. Negotiations continue.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Two in the morning and the fan is the hardest worker in the house.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: amusing work comparison captions the clock and fan.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The fan is on its third shift and the night is still not cooling.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: repeated work-shift metaphor describes the fan.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The glass on the nightstand went warm an hour ago; the fan carries on alone.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: invents backstory for the pictured glass and fan.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/night/2.webp",
+   "hash": "87546db18e01",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "heat/week_2/night/2.webp",
+    "heat/week_4/night/2.webp"
+   ],
+   "photoId": "11",
+   "kept": [
+    {
+     "text": "Another swim seems easier than another shower.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Bedtime can wait. Nobody is dressed for it anyway.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Still thirty degrees after dark, so the party moved into the water.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: temperature recap explains the pool party.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Night swimming is not a plan; it is what this weather leaves you.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: justifies the pictured swimming instead of adding consequence.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The day never cooled, so the drinks came to the shallow end.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: condition recap describes drinks in the pool.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "heat/week_2/night/6.webp",
+   "hash": "e62c00a72fb4",
+   "condition": "heat",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "heat/week_2/night/6.webp",
+    "heat/week_4/night/6.webp"
+   ],
+   "photoId": "12",
+   "kept": [
+    {
+     "text": "Your dog has found a room you suddenly quite like.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Teeth brushed. Staying here seems reasonable.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The lab did a full survey and the bathroom tiles won by two degrees.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: survey joke explains the pictured dog's chosen floor.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Tile is the coldest surface in the house tonight, and it is taken.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: directly describes the occupied bathroom tiles.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The dog knows where the house keeps its last cool square metres.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: explains the dog's visible position.",
+     "astraTime": "night"
+    }
+   ]
+  }
+ ],
+ "keptCount": 26,
+ "unruledCount": 31,
+ "imagesWithNone": []
+}

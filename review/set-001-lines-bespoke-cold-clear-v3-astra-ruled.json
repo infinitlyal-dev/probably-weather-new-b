@@ -1,0 +1,1376 @@
+{
+ "generated": "2026-09-05",
+ "ruledBy": "Astra editorial review, adopted as Al's ruling (his instruction, 2026-09-05; veto list: none)",
+ "bucket": "cold-clear",
+ "note": "KEEP and FIX (fixed wording) are kept. KILL is held as `unruled`, NOT rejected — Al ruled that explicitly, so no downstream step may treat a KILL as struck. New-lines CSV rows are kept with source astra-new. astraTime is Astra's own visual reading of the hour and does not override the photograph's rotation slot.",
+ "supersedes": "review/set-001-lines-bespoke-cold-clear-v3.json",
+ "images": [
+  {
+   "image": "cold-clear/week_1/dawn/2.webp",
+   "hash": "caaa1c42d70a",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/dawn/2.webp",
+    "cold-clear/week_3/dawn/2.webp"
+   ],
+   "photoId": "01",
+   "kept": [
+    {
+     "text": "Your jacket knows better than your eyes.",
+     "source": "astra-fix",
+     "astraTime": "dawn",
+     "score": 3,
+     "fixedFrom": "Sun's out. Don't be fooled. Nature is lying."
+    },
+    {
+     "text": "You dressed by looking out the window again.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The bike is ready. Your ears are lodging objections.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R7 fail: condition inventory and regional label.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Blue overhead, ice in the air: he is dressed for the truth, not the view.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: captions sky, ice and clothing.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dawn/7.webp",
+   "hash": "898c05f233a6",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dawn/7.webp",
+    "cold-clear/week_3/dawn/7.webp"
+   ],
+   "photoId": "02",
+   "kept": [
+    {
+     "text": "Your alarm never checks what it's sending you into.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Up you get. The socks won't find themselves.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The hadeda has landed on frost and is already drafting a complaint.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: narrates the bird landing on frost.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Frost on the lawn and the morning alarm has just landed, feathers and all.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: frost-and-bird inventory.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The first bird down this morning found the grass crunchy and said so.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: explains the pictured bird's arrival.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/day/1.webp",
+   "hash": "21c809043132",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/day/1.webp"
+   ],
+   "photoId": "03",
+   "kept": [
+    {
+     "text": "Your face would also like a turn in the sun.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "Sun on your back, freezer on your face."
+    },
+    {
+     "text": "Your jacket was right to insist on coming.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Going out? The glass has given you enough of a look.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Full sun, visible breath: the Karoo running both seasons before lunch.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R5 fail: inventories sunshine and breath.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "That wall holds the morning's heat by ten and he knows exactly where to lean.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: explains why the pictured man leans there.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/day/4.webp",
+   "hash": "042ba0a95388",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_1/day/4.webp"
+   ],
+   "photoId": "04",
+   "kept": [
+    {
+     "text": "The school run starts with negotiating the car doors.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Everyone's ready. Nobody has warm hands.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5/R7 fail: picture inventory and regional shorthand.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "The bakkie iced over under a completely clear sky, which is exactly how it works.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R3/R5 fail: meteorology lesson, no human turn.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "The sun is up and doing its best; the frost is unconvinced so far.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1/R5 fail: weather dialogue merely narrates the frost.",
+     "astraTime": "morning"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/2.webp",
+   "hash": "510b7a0d60c0",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dusk/2.webp",
+    "cold-clear/week_3/dusk/2.webp"
+   ],
+   "photoId": "05",
+   "kept": [
+    {
+     "text": "The dog can hear visitors from in here perfectly well.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Last check of the gate. With all your clothes on.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Frost already forming and the sun barely down: tonight means business.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 fail: repeats the condition and announces seriousness.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Even the guard dog's breath is showing, and the stars are not even out yet.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: narrates breath and the sky.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "A clear dusk on the Highveld is just the frost clearing its throat.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1/R7 fail: regional weather metaphor without a human consequence.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/4.webp",
+   "hash": "fbdf528f41c8",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_1/dusk/4.webp",
+    "cold-clear/week_3/dusk/4.webp"
+   ],
+   "photoId": "06",
+   "kept": [
+    {
+     "text": "You'll need those towels to bend before you fold them.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Bring the washing in. Then thaw your fingers.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The towels went out damp and are coming in as boards.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: captions the stiff towels.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Sunset is doing the colours; the frost is already doing the towels.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: assigns jobs to sunset and visible frost.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "That washing is not dry; it is preserved. Winter dusk works fast out here.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: preservation metaphor still describes the towels.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/5.webp",
+   "hash": "827554552d76",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp"
+   ],
+   "photoId": "07",
+   "kept": [
+    {
+     "text": "Nobody's volunteering to fetch the extra chairs.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Sundowners, apparently. Make yours a mug.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Clear sky, sharp air, one fire bowl doing the work of a whole summer.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: inventories sky, air and fire bowl.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The temperature dropped with the sun and the circle got tighter by exactly that much.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1/R5 fail: narrates cooling and the pictured circle.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The evening turned cold the minute it turned beautiful, which is the usual trade.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 fail: scenic trade-off copy suitable for a lodge advert.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/7.webp",
+   "hash": "948736af4859",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/dusk/7.webp",
+    "cold-clear/week_3/dusk/7.webp"
+   ],
+   "photoId": "08",
+   "kept": [
+    {
+     "text": "Spectating has become the harder sport tonight.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Kick-off soon. Feeling your toes would be useful.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "A sky that clean means the field freezes before the floodlights even warm up.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R5 fail: weather explanation attached to visible field.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Frost on the pitch an hour after sundown — whoever trains tonight earns it.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 fail: condition report precedes a generic toughness compliment.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The blankets on the bench are not decoration; the touchline is minus something.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: explains the visible blankets and touchline.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/3.webp",
+   "hash": "05aeb3b79581",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_3/night/3.webp"
+   ],
+   "photoId": "09",
+   "kept": [
+    {
+     "text": "You forgot something outside and remembered your duvet.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "One look before bed. From this side of the glass.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The Southern Cross is out and the lawn has gone silver under it.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: literal sky-and-lawn caption.",
+     "astraTime": "night"
+    },
+    {
+     "text": "A sky this clean at night is beautiful, and it charges in degrees.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 fail: scenic admiration with a price metaphor.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Stars that sharp come standard with air this cold — it is a package deal.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2/R7 fail: stock stargazing package-deal copy.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/4.webp",
+   "hash": "da60a92cafd2",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_1/night/4.webp",
+    "cold-clear/week_3/night/4.webp"
+   ],
+   "photoId": "10",
+   "kept": [
+    {
+     "text": "Your second cup is mostly a hand-warming arrangement.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Bed can wait. The blanket has come with.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The blanket came outside because the sky was worth it, and it is.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2/R5 fail: describes the blanket and endorses the view.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The cold is charging admission tonight and the sky is worth every degree.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R2 fail: condition opener followed by scenic salesmanship.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Steam off the mug, frost on the veld, stars on duty: Sunday closed properly.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: inventories mug, frost and stars.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/7.webp",
+   "hash": "8fd1944f303b",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/night/7.webp",
+    "cold-clear/week_3/night/7.webp"
+   ],
+   "photoId": "11",
+   "kept": [
+    {
+     "text": "The fire is the only thing out here allowed to take its jacket off.",
+     "source": "astra-keep",
+     "astraTime": "night",
+     "score": 4
+    },
+    {
+     "text": "Nobody's asking how long the meat takes tonight.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Another log. For the cook, apparently.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Braaiing in beanies under a hard clear sky: winter never cancelled anything here.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: beanie-and-braai caption becomes a boast.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The stars came out for the wors, and the frost came with them.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: decorates the pictured stars and braai.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/2.webp",
+   "hash": "28129477b706",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_2/dawn/2.webp",
+    "cold-clear/week_4/dawn/2.webp"
+   ],
+   "photoId": "12",
+   "kept": [
+    {
+     "text": "Your slippers deserve better than this early start.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The chores can wait. Your fingers called first.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R5 fail: frost description and regional filler.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Not enough wind to turn one blade, which is why the frost got everything.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R3/R5 fail: explains a windmill and frost.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Pink sky, white veld: the desert runs both extremes before breakfast.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: colour inventory without a human turn.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/3.webp",
+   "hash": "3e60dabd7ef7",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/dawn/3.webp",
+    "cold-clear/week_4/dawn/3.webp"
+   ],
+   "photoId": "13",
+   "kept": [
+    {
+     "text": "Bin day has added another layer to getting dressed.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The truck is coming. Find both gloves.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Bin day, and the frost got to them before the truck did.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: narrates the frosted bins through arrival order.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Even the bins iced over, which is the Winelands telling you to dress properly.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5/R7 fail: explains pictured bins using a regional label.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The municipality collects at seven; the frost delivered at four.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: delivery metaphor still captions the frosted bins.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/4.webp",
+   "hash": "6ca4d027da38",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_4/dawn/4.webp"
+   ],
+   "photoId": "14",
+   "kept": [
+    {
+     "text": "You promised yourself a run, not enthusiasm.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Early start. An idea you had while still in bed.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Joburg winter dawn: the view is free; the air charges admission.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2/R7 fail: regional tourism line.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "His breath is the only cloud between here and the Hillbrow Tower.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: breath and landmark description.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The city looks its best exactly when the air hurts most, which is unfair.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 fail: scenic praise with a mild complaint attached.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/6.webp",
+   "hash": "5a6dd26eb7db",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_4/dawn/6.webp"
+   ],
+   "photoId": "15",
+   "kept": [
+    {
+     "text": "The alarm went off before the car was ready to wake.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "School bags packed. Hands still defrosting.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The windscreen kept a record of last night and she is deleting it by hand.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: deletion metaphor narrates visible scraping.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: counts clothing and tools, invents a temperature.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The car spent the night outside under a clear sky and it shows, everywhere.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: explicitly explains the car's appearance.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/7.webp",
+   "hash": "4040cfcfc732",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/dawn/7.webp",
+    "cold-clear/week_4/dawn/7.webp"
+   ],
+   "photoId": "16",
+   "kept": [
+    {
+     "text": "You're up early enough to regret it twice.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "One lap of the block. Then we discuss breakfast.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Five guinea fowl crossing in single file: the frost has everyone walking carefully.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: counts and explains the pictured birds.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "First traffic of the morning, and it walks and complains at the same time.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: bird traffic is the complete visual joke.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Frost on every lawn and the only ones out are wearing feathers.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: describes frost and birds.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/day/1.webp",
+   "hash": "45b1ac83db20",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/day/1.webp"
+   ],
+   "photoId": "17",
+   "kept": [
+    {
+     "text": "The best seat is the one you refuse to leave.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Plenty of room outside, if anyone asks why you stayed.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Full sun, brown grass, visible breath: the boerboel has found the warm wall.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: sun, grass, breath and dog inventory.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The sunny side of the wall is prime property, and it is taken.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: property metaphor describes the dog's position.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The lawn went beige weeks ago; the sky never got the memo.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5/R7 fail: colours plus a borrowed memo joke.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/day/2.webp",
+   "hash": "32dec9fbdcaa",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/day/2.webp"
+   ],
+   "photoId": "18",
+   "kept": [
+    {
+     "text": "You signed up for running, not feeling your fingers.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Keep moving. Chatting is an indoor activity.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Half the field is steam before anyone has run a step.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: describes steam on the field.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Frost on the grass, steam off the field: winter running weather at its most honest.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: inventories frost, steam and running.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Cold enough to see every breath, clear enough that nobody minds.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R2 fail: repeats conditions and invents universal approval.",
+     "astraTime": "morning"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/3.webp",
+   "hash": "0b4330abc214",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dusk/3.webp",
+    "cold-clear/week_4/dusk/3.webp"
+   ],
+   "photoId": "19",
+   "kept": [
+    {
+     "text": "Your evening walk has developed a very short route.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Home already? Sensible pace.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The horses are doing their own weather report, one breath at a time.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: narrates the horses' breath.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The frost is back on the grass before the sun is even gone.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R5 fail: describes frost and sunset.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Golden light, silver breath: a winter dusk doing both its tricks at once.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: colour-and-breath caption.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/5.webp",
+   "hash": "1f74ef9146fb",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "photoId": "20",
+   "kept": [
+    {
+     "text": "Admire it from the couch; that's what windows are for.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Another cup. The view isn't going anywhere.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The window is frosting at the edges and the cat has the best seat for it.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: describes the window and the cat.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "That sunset is happening at two degrees, which is why it is watched from inside.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: explains the viewpoint using an invented temperature.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Pink sky through cold glass: winter does its best work at a distance.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2/R5 fail: scenic caption sells distance as comfort.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/6.webp",
+   "hash": "ff19d8654ec3",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_2/dusk/6.webp",
+    "cold-clear/week_4/dusk/6.webp"
+   ],
+   "photoId": "21",
+   "kept": [
+    {
+     "text": "One more shot. Then you can feel your fingers.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 3,
+     "fixedFrom": "Free throws until the light or the temperature gives out, whichever is first."
+    },
+    {
+     "text": "Your fingers would like a turn inside the pockets.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Last shot. You said that before you lost feeling.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Shorts and a beanie: half of her believes the sky, half believes the air.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: explains the pictured clothing contrast.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Every shot comes with its own little cloud of breath tonight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: narrates the pictured breath.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/2.webp",
+   "hash": "da90853b2ccb",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_2/night/2.webp",
+    "cold-clear/week_4/night/2.webp"
+   ],
+   "photoId": "22",
+   "kept": [
+    {
+     "text": "Taking the bin out counts as your evening walk.",
+     "source": "astra-fix",
+     "astraTime": "night",
+     "score": 4,
+     "fixedFrom": "Taking the bin out counts as an expedition once the frost settles in."
+    },
+    {
+     "text": "Taking the bin out should count towards your steps.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Shoes on this time. You've learnt.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The bin run is being done at speed tonight, and the sky knows why.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: narrates the visible bin trip.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Clear night, hard frost coming: even the bin trip earns a beanie.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R5 fail: condition inventory explains the beanie.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/3.webp",
+   "hash": "112364f9e477",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_4/night/3.webp"
+   ],
+   "photoId": "23",
+   "kept": [
+    {
+     "text": "Tomorrow's first appointment is with the windscreen.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Set the alarm earlier. The car won't.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Every windscreen on this street is white already, and it is not even late.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: describes the frosted cars.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The streetlights are warm-toned; nothing else out here is.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: contrasts lamp colour with the condition.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The frost is doing the rounds tonight and skipping nobody.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 fail: weather has agency but nobody gains a consequence.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/4.webp",
+   "hash": "d298c8c1f224",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/night/4.webp",
+    "cold-clear/week_4/night/4.webp"
+   ],
+   "photoId": "24",
+   "kept": [
+    {
+     "text": "Movie night starts early. Getting warm takes time.",
+     "source": "astra-fix",
+     "astraTime": "night",
+     "score": 3,
+     "fixedFrom": "Movie night moved up an hour the moment the frost showed up on the hedge."
+    },
+    {
+     "text": "The remote can wait until your hand is out again.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Movie night. Nobody's voting for a trip to the shops.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Outside is glitter and minus three; inside is fleece and the remote.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: inventories the entire indoor-outdoor contrast.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The frost got the garden; the family got the couch. Fair trade.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: restates the garden-and-couch composition.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/6.webp",
+   "hash": "f453a678f470",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_4/night/6.webp"
+   ],
+   "photoId": "25",
+   "kept": [
+    {
+     "text": "Your duvet has finally been invited on a date.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Stay another minute. Then we'll need another blanket.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2/R5 fail: prop inventory becomes a scenic endorsement.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Winter skies are the sharp ones — the cold is the price of that many stars.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 fail: tourism copy sells stars against discomfort.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The heater is at home; the Milky Way is here; the duvet split the difference.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: inventories the scene through a compromise metaphor.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_3/day/1.webp",
+   "hash": "decff597fe6c",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_3/day/1.webp"
+   ],
+   "photoId": "26",
+   "kept": [
+    {
+     "text": "You can finish that conversation somewhere with walls.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Table outside? Your scarf would like to object.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Coats and coffees in full sun: winter in this city photographs like summer.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: explicitly describes how the photograph looks.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The sky says lunch outside; the scarves say make it a quick one.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: captions sky and scarves as competing instructions.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Not a cloud between the towers, and still nobody unbuttoned anything.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: describes sky and clothing.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_3/day/5.webp",
+   "hash": "bbb3d8348b00",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_3/day/5.webp"
+   ],
+   "photoId": "27",
+   "kept": [
+    {
+     "text": "The jacket argument is holding up breakfast.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Have another spoonful. We're finding the other sleeve.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The jacket is going on because the window already said so.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: explains the visible jacket being put on.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Porridge steaming, veld frosted: breakfast comes with a dress code today.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: breakfast-and-frost inventory with a dress-code label.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "The face says no; the frost outside says absolutely yes.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fail: tells us what the face and frost mean.",
+     "astraTime": "morning"
+    }
+   ]
+  },
+  {
+   "image": "cold-clear/week_4/day/3.webp",
+   "hash": "bbad2500c852",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_4/day/3.webp"
+   ],
+   "photoId": "28",
+   "kept": [
+    {
+     "text": "How many warm-ups were you planning on doing?",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Boots packed. Still negotiating with the legs.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The frost only survives in the stand's shadow, and you can see the exact line.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fail: explicitly describes the visible frost boundary.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5/R7 fail: colour inventory and regional shorthand.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Lekker koud, but the rugby fields are about to look perfect.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1/R2 fail: condition opener and picturesque sports-ground praise.",
+     "astraTime": "neutral"
+    }
+   ]
+  }
+ ],
+ "keptCount": 62,
+ "unruledCount": 78,
+ "imagesWithNone": []
+}

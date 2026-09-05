@@ -1,0 +1,991 @@
+{
+ "generated": "2026-08-19",
+ "ruledBy": "Al, bespoke line review",
+ "bucket": "clear",
+ "images": [
+  {
+   "image": "clear/week_1/dawn/7.webp",
+   "hash": "b698a0ccc12d",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_3/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "He will move twice before lunch and both times by about a metre.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The sun cleared the roof about ten minutes ago and the tiles are already warm.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nothing in the sky to slow the sun down, so the stoep warmed up before seven.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_1/day/7.webp",
+   "hash": "03a31c2b8e88",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "clear/week_1/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sea has gone the colour it only goes when the sky is this empty.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunday, and the sky has cleared its whole diary for this.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Beach or braai? Yes.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:weekend#3"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_1/dusk/3.webp",
+   "hash": "d097525bf5cf",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_1/dusk/3.webp",
+    "clear/week_3/dusk/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "That fire was lit before anybody needed it, which is what a clear evening does.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Saturday, and the sky went from orange to blue without one cloud interrupting.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The first star is out before the last of the sunset has even left.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_1/night/3.webp",
+   "hash": "127edee25245",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_1/night/3.webp",
+    "clear/week_3/night/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "You have to drive two hours from anywhere to get a sky like that.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Saturday night, and the entertainment is free and about four billion years old.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Perfect night to actually see the Milky Way.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:night#1"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_1/night/7.webp",
+   "hash": "de9514caac5f",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_1/night/7.webp",
+    "clear/week_3/night/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "Good night, South Africa.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Ten thousand streetlights down there and the sky is still winning tonight.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Tomorrow's weather is tomorrow's problem.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:night#16"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dawn/6.webp",
+   "hash": "73d202837435",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/dawn/6.webp",
+    "clear/week_4/dawn/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "Somewhere an estate agent is saying 'lifestyle'.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Not a breath of haze this morning; even the mountain got up early.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "This light lasts about twenty minutes and the walk to school gets all of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dawn/7.webp",
+   "hash": "d529968dcb50",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_2/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "Not enough wind this morning to put one wrinkle on that water.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The beach is doubling as a mirror, which takes one morning of absolutely no wind.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "One sunrise, used twice — once in the sky and once off the wet sand.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/day/1.webp",
+   "hash": "9ab8b9f07431",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Days like this should come with a soundtrack.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Joburg does about three hundred of these a year. Nobody is complaining.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky has gone that deep blue you only get this high above sea level.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/day/2.webp",
+   "hash": "45d964f74171",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/day/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "Today's plans: exist outside.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Jacarandas only do this three weeks a year, and the sky decided to match.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Grass warm, sky empty — the kind of Sunday that resets a whole family.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/day/4.webp",
+   "hash": "e9616cb7c61c",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_2/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "If you're working today, we feel sorry for you.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "That lawn stopped asking the sky for rain somewhere around the start of November.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun has done more to that lawn this month than any mower ever will.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/day/5.webp",
+   "hash": "ca6d821f7c9b",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/day/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "Whoever booked the four o'clock meeting is going to be sitting in it alone.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "Forty floors of glass and every one of them is showing the same blue.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The afternoon held exactly like the morning promised, which almost never happens.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/day/6.webp",
+   "hash": "5799efcdfd70",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/day/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "The only rain this garden has seen all month comes out of a pipe.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Weeks of nothing but blue, and even the hadeda has to queue at the sprinkler.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun has had this lawn to itself for a month and it is winning.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/day/7.webp",
+   "hash": "ed953578deec",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "Bottle this one. Open it in winter.",
+     "source": "bespoke",
+     "round": 1,
+     "edited": false
+    },
+    {
+     "text": "The sky checked in at seven, went nowhere all day, and is staying for the weekend.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The pool is that blue because the sky is doing all of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/1.webp",
+   "hash": "525b2eea2ebc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/dusk/1.webp",
+    "clear/week_4/dusk/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The wind that usually owns this coast has taken the evening off.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That sky is doing its whole show over a sea too flat to interrupt it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/2.webp",
+   "hash": "90a621539543",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "Cricket till the light goes, and light like this takes its time going.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "One planet up, no clouds coming, and the whole dorp still outside.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The Karoo cools fast under a clear sky, but nobody has noticed yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/3.webp",
+   "hash": "cc951efb5d19",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_2/dusk/3.webp",
+    "clear/week_4/dusk/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "This is the first hour since breakfast that lawn work has been survivable.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A clear evening pays out about forty minutes of gold, and it has just started.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not a leaf moving — the day is closing as calm as it opened.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/4.webp",
+   "hash": "7d50ec606bfc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_2/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "That dust is hanging in the air because there is no wind to take it anywhere.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "You can see three ridgelines from here, which is what no-haze evenings are for.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun is at the exact height where the whole veld goes gold.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/5.webp",
+   "hash": "9059d175f28c",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/dusk/5.webp",
+    "clear/week_4/dusk/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "Cirrus this pink means the sky is completely dry all the way up.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A sunset like this pulls an audience, and tonight it is two birds on a wire.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Monday got the best sky of the week and is wasting it on a farm road.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dusk/6.webp",
+   "hash": "1bd6b90924a1",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/dusk/6.webp",
+    "clear/week_4/dusk/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "A gradient that clean means not one cloud between here and tomorrow.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Orange to navy with nothing in between — the walk home slowed down for it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The day used up every hour of light and still had this left over.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/night/5.webp",
+   "hash": "05cd0ad39fd6",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_2/night/5.webp",
+    "clear/week_4/night/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "The moon is out and somebody small is hearing about it for the first time.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not a cloud. Just you and the Southern Cross.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:night#13"
+    },
+    {
+     "text": "Clear enough that even the cat is checking the sky.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/night/6.webp",
+   "hash": "970707aba87c",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/night/6.webp",
+    "clear/week_4/night/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "Warm, still and clear: every insect in the province is at this one lamp.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Windows-open weather has arrived, and word has reached the moths.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not a breath of wind, or that lantern would be having a quieter evening.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/night/7.webp",
+   "hash": "4138025d3128",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/night/7.webp",
+    "clear/week_4/night/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "A Friday night warm enough that the table walked itself outside.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nothing up there but stars, which is how supper ends up under them.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The evening is holding at exactly the temperature nobody talks about.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/1.webp",
+   "hash": "f673af851f9c",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_3/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sun stayed out for the whole match and is hanging around for the chips.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Match played, chips out, and the sky never once threatened the fixture.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/3.webp",
+   "hash": "0009c55ad6a5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The agapanthus open for exactly this kind of sky, and they got it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not a cloud to slow the sun, and the whole garden is making the most of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/4.webp",
+   "hash": "84beada2e358",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sky made the dress-code decision this morning and he just obeyed it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A sky like that overrules HR, and everybody at reception knows it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Summer filed its arrival notice this morning; the shirt is the paperwork.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_3/day/7.webp",
+   "hash": "77cfc93827e3",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_3/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The weather moved the office to the roof and productivity can argue later.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Wednesday this warm turns every roof in Joburg into a second office.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun took the direct route today: straight down, no traffic.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_4/day/2.webp",
+   "hash": "448b951052cc",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "clear/week_4/day/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "The kind of sun that turns one tennis ball into a whole afternoon.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That farmhouse has seen a few centuries of days like this and still gets them free.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Full sun, soft lawn, and homework has officially lost its audience.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_4/day/5.webp",
+   "hash": "6e598ae56c12",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "clear/week_4/day/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "Wors on, sun low, wind nowhere: Saturday is doing everything right.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The smoke is going straight up, which is the sky's way of approving a braai.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The braai is the social calendar. Show up.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:weekend#24"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_4/day/6.webp",
+   "hash": "3d001539dcb5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "clear/week_4/day/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "The deck reached golden-retriever temperature about an hour ago.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun has been on those boards since morning and the dog is doing the audit.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Thursday's forecast, as read by the dog: warm boards until further notice.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "clear/week_2/dawn/2.webp",
+   "hash": "089f865e3f14",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "That dry patch is what a week of cloudless skies does to a lawn.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A sky this clear hands you one cool hour, and this is it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The Weber's been waiting all week for this.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:weekend#14"
+    }
+   ],
+   "rejected": []
+  }
+ ],
+ "keptCount": 90,
+ "imagesWithNone": []
+}

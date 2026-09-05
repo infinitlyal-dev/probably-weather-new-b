@@ -1,0 +1,1709 @@
+{
+ "generated": "2026-09-05",
+ "ruledBy": "Astra editorial review, adopted as Al's ruling (his instruction, 2026-09-05; veto list: none)",
+ "bucket": "rain",
+ "note": "KEEP and FIX (fixed wording) are kept. KILL is held as `unruled`, NOT rejected — Al ruled that explicitly, so no downstream step may treat a KILL as struck. New-lines CSV rows are kept with source astra-new. astraTime is Astra's own visual reading of the hour and does not override the photograph's rotation slot.",
+ "supersedes": "review/set-001-lines-bespoke-rain-v3.json",
+ "images": [
+  {
+   "image": "rain/week_1/dawn/2.webp",
+   "hash": "e5b2e8ac2654",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dawn/2.webp",
+    "rain/week_3/dawn/2.webp"
+   ],
+   "photoId": "01",
+   "kept": [
+    {
+     "text": "Your alarm still expects you to get up.",
+     "source": "astra-fix",
+     "astraTime": "morning",
+     "score": 3,
+     "fixedFrom": "The rain started before the alarm did, and the gumboots were ready."
+    },
+    {
+     "text": "Your school shoes will need their own bath.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Uniform on. Spare uniform suddenly makes sense.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Two under one umbrella: the first maths problem of the school day, solved.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: counts the pictured children under their umbrella.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "The puddles are claiming the pavement one slab at a time.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: pavement description with decorative personification.",
+     "astraTime": "morning"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/3.webp",
+   "hash": "9e75b001c7c5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/dawn/3.webp",
+    "rain/week_3/dawn/3.webp"
+   ],
+   "photoId": "02",
+   "kept": [
+    {
+     "text": "You've apologised for being late. Start again.",
+     "source": "astra-fix",
+     "astraTime": "dawn",
+     "score": 3,
+     "fixedFrom": "The traffic is emotional."
+    },
+    {
+     "text": "The first meeting may have to start without you.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "You left early. So did absolutely everyone else.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The mountain has its head in the weather and the traffic has its lights on.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventories mountain, weather and headlights.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The wiper is on its ten-thousandth swipe and the rain has not blinked.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the visible wiper instead of the reader.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/6.webp",
+   "hash": "73567b0c612e",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_3/dawn/6.webp"
+   ],
+   "photoId": "03",
+   "kept": [
+    {
+     "text": "The washing can go out before you change your mind.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Shoes on. You have run out of excuses already.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The rain finished at five and left the whole street polished for the sunrise.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: polished sunrise caption invents a completion time.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Wet tar plus sunrise equals a street made of gold, briefly.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 and R5 fail: postcard arithmetic, no human consequence.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Somebody ordered rain for the night and sun for the morning, and it was delivered.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R5 fail: personified forecast still repeats the conditions.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/7.webp",
+   "hash": "206f0a768ec9",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dawn/7.webp",
+    "rain/week_3/dawn/7.webp"
+   ],
+   "photoId": "04",
+   "kept": [
+    {
+     "text": "Car washing can stay at the bottom of your list.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Another cup, then. The errands can wait.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The rain is on the glass and the coffee is on the sill: Sunday is sorted.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 and R6 fail: mug caption invents Sunday morning.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "That window has the best programme on this morning and it is just rain.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: window caption dressed as television.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Steady, straight-down, all-morning rain: the kind the garden actually drinks.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 fails: forecast description offers gardening commentary, no turn.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/day/1.webp",
+   "hash": "d878b96a3f71",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/1.webp"
+   ],
+   "photoId": "05",
+   "kept": [
+    {
+     "text": "Your umbrella warranty has some explaining to do.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "Somewhere an umbrella just turned inside out. Moment of silence."
+    },
+    {
+     "text": "Your expensive umbrella has chosen a short career.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Hair done. That was money well spent.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The umbrella lost, the kids won, and the rain takes full credit for both.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the exact umbrella-and-children tableau.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Same rain, four verdicts: one against, three strongly in favour.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: witty headcount remains a caption of visible reactions.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/day/2.webp",
+   "hash": "2b750515575e",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/day/2.webp"
+   ],
+   "photoId": "06",
+   "kept": [
+    {
+     "text": "You said wash the car, which leaves room for debate.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Plans made. Several of them now need a lift.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The street is called Water Stilte and today it is taking the name literally.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 and R7 fail: place-name wordplay captions this specific street.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "That is not a river; that is Monday's road, repurposed.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: flooded-road description invents Monday.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Enough rain and somebody in this country will always find the ski rope.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: repeats the photograph's ski-rope gag.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/day/3.webp",
+   "hash": "00a672556998",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/3.webp"
+   ],
+   "photoId": "07",
+   "kept": [
+    {
+     "text": "You can tell who will be doing the washing later.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Spare clothes packed. You forgot your own.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "One good storm and the street gets a public swimming pool.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes the street puddle as a swimming pool.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The rain made the puddle; the puddle made the afternoon.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: picturesque sentiment describes the children's afternoon.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Six raincoats, one puddle, zero regrets: the rain knows its audience.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: raincoat inventory and borrowed zero-regrets slogan.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/1.webp",
+   "hash": "71fdebcd3deb",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dusk/1.webp",
+    "rain/week_3/dusk/1.webp"
+   ],
+   "photoId": "08",
+   "kept": [
+    {
+     "text": "Perhaps skip the scenic route home tonight.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "One last stop. Make it the shop with a roof.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The rain found the one person at this robot without a roof.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the roofless cyclist beside the car.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "There is dry, there is wet, and there is cycling-at-a-red-robot wet.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: categories merely label the cyclist's visible predicament.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The helmet has a gutter now. It did not come with one.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: the helmet joke remains an image caption.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/2.webp",
+   "hash": "5f935cb18f17",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dusk/2.webp",
+    "rain/week_3/dusk/2.webp"
+   ],
+   "photoId": "09",
+   "kept": [
+    {
+     "text": "Your supper plans have moved a little closer home.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Visitors expected. They can knock twice.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Rain in front, sunset behind: the Cape doing both of its moods at once.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 and R7 fail: local landscape postcard.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The umbrella is old, the routine is older, and the rain changes neither.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: romanticises the pictured man's umbrella routine.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Lion's Head is catching the last light and the Bo-Kaap is catching the rain.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 and R7 fail: tourist landmarks replace the reader.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/5.webp",
+   "hash": "e95e8a2f22f0",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_1/dusk/5.webp",
+    "rain/week_3/dusk/5.webp"
+   ],
+   "photoId": "10",
+   "kept": [
+    {
+     "text": "Remember the washing, now that you're eating supper?",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Home at last. Now to negotiate with the dog.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The pot plant is getting the good stuff straight from the source tonight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: narrates the plant receiving rain.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R7 fail: local weather claim replaces a joke.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The balcony is doing its own rain gauge, and it reads: plenty.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: balcony puddle description, no human consequence.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/night/3.webp",
+   "hash": "d28204abf829",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/night/3.webp",
+    "rain/week_3/night/3.webp"
+   ],
+   "photoId": "11",
+   "kept": [
+    {
+     "text": "You can skip the long goodbye at the gate tonight.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Keys first. Being polite can happen inside.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Every neon sign in the street is being doubled on the wet tar tonight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: wet-road reflections are already visible.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The coffee is deluxe, the books are shut, and the rain owns the street.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 and R7 fail: shop-sign wordplay depends on this street.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The mountain has disappeared into the weather and left the signs in charge.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: landscape personification adds no reader consequence.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/2.webp",
+   "hash": "7bd5758fb7b5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dawn/2.webp",
+    "rain/week_4/dawn/2.webp"
+   ],
+   "photoId": "12",
+   "kept": [
+    {
+     "text": "An extra hour in bed would have cost the alarm nothing.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "Time to get up. The roof has been up for hours.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Rain out here is an event; the whole veld will smell of it by seven.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R7 fail: rural rain appreciation depends on location.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The road is running like a river and nobody here is complaining.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: flood caption assigns everybody an unearned opinion.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "This is the rain the stoep chairs have been facing all year.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: romantic stoep-chair caption, no ordinary decision.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/5.webp",
+   "hash": "80770bf13004",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/dawn/5.webp",
+    "rain/week_4/dawn/5.webp"
+   ],
+   "photoId": "13",
+   "kept": [
+    {
+     "text": "The last two metres to the gate are the wettest of the whole trip.",
+     "source": "astra-keep",
+     "astraTime": "morning",
+     "score": 4
+    },
+    {
+     "text": "The school run slows down. The bell doesn't.",
+     "source": "astra-fix",
+     "astraTime": "morning",
+     "score": 4,
+     "fixedFrom": "Rain on a school morning slows everything down except the bell."
+    },
+    {
+     "text": "The school still wants them there, unfortunately.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Lunch packed. Now to waterproof the child.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The umbrella is doing its first shift of the day at the school gate.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the pictured umbrella's school-gate job.",
+     "astraTime": "morning"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/6.webp",
+   "hash": "5526989179bd",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "photoId": "14",
+   "kept": [
+    {
+     "text": "You can start by moving car washing off the list.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "First errand. Already considering a postponement.",
+     "source": "astra-new",
+     "astraTime": "dawn"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The puddle has rings on it, which means this is not finished.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explains visible puddle rings.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "The road to the house is currently a mirror with a gate across it.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: mirror metaphor captions the driveway.",
+     "astraTime": "dawn"
+    },
+    {
+     "text": "One night of proper rain and the driveway has joined the water table.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes driveway flooding through technical phrasing.",
+     "astraTime": "dawn"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/1.webp",
+   "hash": "fe838c8901f7",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "rain/week_2/day/1.webp"
+   ],
+   "photoId": "15",
+   "kept": [
+    {
+     "text": "Tea tastes better when your socks aren't involved.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Tea, then. Make it long enough to feel your toes.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The site turned to mud an hour ago and the shift goes on anyway.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the worker continuing in mud.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Rain on a building site: everything gets heavier and nobody gets softer.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 fails: hardship-as-toughness slogan could advertise workwear.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The hard hat has become a gutter and the work has not stopped once.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: pictured hard-hat predicament remains the whole joke.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/4.webp",
+   "hash": "e7547cfdee94",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/day/4.webp"
+   ],
+   "photoId": "16",
+   "kept": [
+    {
+     "text": "The cat would like to speak to whoever booked this.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Door open. The dog would prefer a second opinion.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The cat has taken the rain personally, as the cat takes most things.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: amused cat description still captions its visible expression.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Dry spot found; dignity pending; the rain shows no sign of apologising.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the cat's shelter and expression.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "One dry square metre in the whole yard, and it is occupied.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: directly describes the occupied dry patch.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/5.webp",
+   "hash": "3bd49d0acf2b",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/5.webp"
+   ],
+   "photoId": "17",
+   "kept": [
+    {
+     "text": "You might be working from home by popular demand.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Shop later. The last biscuit will have to stretch.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "That is not driving anymore; that is low-altitude boating.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: flooded-car caption uses a familiar boating comparison.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "One cloudburst and the whole street joined the storm-water system.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R1 and R5 fail: repeats the condition and flooded street.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Every driveway on this street is a jetty until the drains catch up.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: driveway-as-jetty metaphor describes the visible flood.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/day/6.webp",
+   "hash": "8ce35385e048",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/6.webp"
+   ],
+   "photoId": "18",
+   "kept": [
+    {
+     "text": "Everyone on this road just became a very careful person.",
+     "source": "astra-keep",
+     "astraTime": "neutral",
+     "score": 4
+    },
+    {
+     "text": "Nobody misses the driver you were yesterday.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Radio down. Apparently your eyes need the help.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Brake lights first, road second, everything else on trust.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: visibility inventory offers no earned human turn.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The wipers are on max and it's still not enough.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: literally describes the wipers' visible inadequacy.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/2.webp",
+   "hash": "f7f51acb22c9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_2/dusk/2.webp",
+    "rain/week_4/dusk/2.webp"
+   ],
+   "photoId": "19",
+   "kept": [
+    {
+     "text": "The gap between the stoep and the gate has never looked wider.",
+     "source": "astra-keep",
+     "astraTime": "evening",
+     "score": 4
+    },
+    {
+     "text": "Eight metres to the car. Apparently a journey.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 4,
+     "fixedFrom": "The umbrella is about to earn its whole year's keep in eight metres."
+    },
+    {
+     "text": "All this for bread you weren't sure you needed.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Supper is ready. Getting everyone home is next.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "He has checked the sky twice and the sky has not changed its answer.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the pictured man's sky-checking.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/3.webp",
+   "hash": "09641df1432a",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_2/dusk/3.webp",
+    "rain/week_4/dusk/3.webp"
+   ],
+   "photoId": "20",
+   "kept": [
+    {
+     "text": "Supper can wait. Apparently it has to.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 3,
+     "fixedFrom": "The rain added an hour to the drive home and everyone saw it coming."
+    },
+    {
+     "text": "You could have cooked supper by now. Twice.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 3,
+     "fixedFrom": "The commute just became a team sport."
+    },
+    {
+     "text": "Your family may have to eat without your commentary.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "You said nearly home. That was a while ago.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Ten thousand brake lights and one mountain refusing to watch.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: brake-light and mountain personification remains scenery.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/4.webp",
+   "hash": "b4ee9d16720e",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dusk/4.webp",
+    "rain/week_4/dusk/4.webp"
+   ],
+   "photoId": "21",
+   "kept": [
+    {
+     "text": "Find a towel before anyone starts asking about work.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Shoes off. The whole household agrees on this.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The jacket gave up somewhere between the car and the gate.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the pictured soaked jacket.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "He made it home; the dry parts of him did not.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: neat contrast still captions the drenched arrival.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "The hallway is getting its own weather report, drip by drip.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates the hallway drips already pictured.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/6.webp",
+   "hash": "abf80e59bae9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dusk/6.webp",
+    "rain/week_4/dusk/6.webp"
+   ],
+   "photoId": "22",
+   "kept": [
+    {
+     "text": "Five more minutes in the car seems reasonable.",
+     "source": "astra-fix",
+     "astraTime": "evening",
+     "score": 3,
+     "fixedFrom": "The rain gets five more minutes, and honestly, it can have them."
+    },
+    {
+     "text": "You can call this sitting in the car some me time.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Nearly inside. An excellent place to reconsider.",
+     "source": "astra-new",
+     "astraTime": "evening"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "There is no rush that survives weather like this, and she knows it.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: assigns serenity to the pictured woman.",
+     "astraTime": "evening"
+    },
+    {
+     "text": "Watching the rain from the driver's seat: free, dry, and weirdly good.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: directly labels the driver's visible activity.",
+     "astraTime": "evening"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/night/4.webp",
+   "hash": "c8df884e9ec0",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/night/4.webp",
+    "rain/week_4/night/4.webp"
+   ],
+   "photoId": "23",
+   "kept": [
+    {
+     "text": "You can take your time getting home tonight.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Missed bedtime. The children have not.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Every light in town has gone soft at the edges tonight.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: night-light description gives no human consequence.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Night rain maths: half the visibility, double the concentration, triple the respect.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R1 and R3 fail: condition opener introduces earnest driving advice.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Wet tar doubles every streetlight, and he is not fooled by any of them.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes reflections and invents the driver's thoughts.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_2/night/6.webp",
+   "hash": "19ddc2f8afd3",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/night/6.webp",
+    "rain/week_4/night/6.webp"
+   ],
+   "photoId": "24",
+   "kept": [
+    {
+     "text": "Your spare umbrella is probably visiting someone.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Home, then. You can look for your dignity tomorrow.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The gutter is running like a river and it has already claimed a casualty.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: narrates gutter flow and the broken umbrella.",
+     "astraTime": "night"
+    },
+    {
+     "text": "That umbrella fought the good fight until about half past nine.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: backstory for pictured umbrella remains a caption.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The storm water is heading for the sea and taking prisoners.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: dramatic runoff metaphor replaces everyday human consequence.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_3/day/1.webp",
+   "hash": "d86d4f5699c2",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "rain/week_3/day/1.webp"
+   ],
+   "photoId": "25",
+   "kept": [
+    {
+     "text": "Did you pack a second pair of socks for yourself?",
+     "source": "astra-new",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Bell first. Sock negotiations afterwards.",
+     "source": "astra-new",
+     "astraTime": "morning"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The puddle outside the gate is now part of the curriculum.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: curriculum joke directly labels the school-gate puddle.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "Biggest attraction at the school gate this morning: forty square metres of weather.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventories this school-gate scene.",
+     "astraTime": "morning"
+    },
+    {
+     "text": "The bell can wait; the puddle has everyone's full attention, marshal included.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the visible group admiring the puddle.",
+     "astraTime": "morning"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_3/day/3.webp",
+   "hash": "e54bbf2b56b2",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/3.webp"
+   ],
+   "photoId": "26",
+   "kept": [
+    {
+     "text": "Hair plans: cancelled.",
+     "source": "astra-keep",
+     "astraTime": "neutral",
+     "score": 4
+    },
+    {
+     "text": "Your hair appointment now feels rather optimistic.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Quick dash. You have never timed one correctly.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The newspaper got a promotion: today it is a roof.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: promotion joke directly describes the makeshift newspaper roof.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Fifty metres, two heels, one newspaper: the rain picked the wrong athlete.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: inventory and athletic flattery caption the woman.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_3/day/5.webp",
+   "hash": "d8d16083a690",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_3/day/5.webp"
+   ],
+   "photoId": "27",
+   "kept": [
+    {
+     "text": "The view will keep while you find a towel.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Outing over. Everyone has a different version.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The sea is delivering the storm in person today, one wall at a time.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: dramatic sea description leaves the reader out.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "High tide, big swell, and the front row is exactly as wet as it looks.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explicitly describes what the viewer can see.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The boats knew. That is why they are all inside the wall.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: gives visible boats an invented shared thought.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_3/day/7.webp",
+   "hash": "a0ef2720c507",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/7.webp"
+   ],
+   "photoId": "28",
+   "kept": [
+    {
+     "text": "The boss can hold the umbrella for once.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 4,
+     "fixedFrom": "Two colleagues, one umbrella: the org chart means nothing out here."
+    },
+    {
+     "text": "You wanted a shorter meeting. Now you're trapped.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 3,
+     "fixedFrom": "Friday's last meeting is thirty metres of open car park, chaired by the rain."
+    },
+    {
+     "text": "This is closer than you meant by team building.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Meeting done. Lift negotiations have just begun.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Half a suit dry each: the fairest deal this office has struck all year.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: clever office comparison still describes pictured half-dry suits.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_4/day/2.webp",
+   "hash": "057e8c9e5039",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/2.webp"
+   ],
+   "photoId": "29",
+   "kept": [
+    {
+     "text": "The match is over. Your washing has extra time.",
+     "source": "astra-fix",
+     "astraTime": "neutral",
+     "score": 4,
+     "fixedFrom": "Saturday sport in the rain: the washing machine is about to meet its opponent."
+    },
+    {
+     "text": "Your team owes your washing machine an apology.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Kit off. Nobody is putting that in with the towels.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "Match played, rain won, boots benched at the door.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: sport metaphor narrates the pictured discarded boots.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "That kit tells the whole story: rain, mud, and a game that went ahead anyway.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explicitly explains the kit's visible story.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_4/day/3.webp",
+   "hash": "c9050c0a05e5",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "rain/week_4/day/3.webp"
+   ],
+   "photoId": "30",
+   "kept": [
+    {
+     "text": "Watering can wait; you've done enough standing about.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Call later. The roof would like to finish speaking.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The roof is watering the ferns directly, no middleman, no charge.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: personification explains the visible roof runoff.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Rain on a tin roof: the loudest quiet sound in the country.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R2 and R5 fail: lyrical stock-photo caption, no reader consequence.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The fern has waited all season for exactly this delivery.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: plant-delivery metaphor describes the watering.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_4/day/4.webp",
+   "hash": "c9c6fd784b69",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/4.webp"
+   ],
+   "photoId": "31",
+   "kept": [
+    {
+     "text": "The person who mops would like a word with you.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    },
+    {
+     "text": "Boots off first. This is apparently news again.",
+     "source": "astra-new",
+     "astraTime": "all-day"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The boots came off exactly one metre too late, and the prints agree.",
+     "astraVerdict": "KILL",
+     "score": 3,
+     "reason": "R5 fails: visible boot prints supply the entire punchline.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "The garden is drinking; the stoep is dripping; the boots are done for the day.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventory of garden, stoep and boots.",
+     "astraTime": "neutral"
+    },
+    {
+     "text": "Boot prints on the tiles: evidence of one quick dash into the weather.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: explains exactly what the boot prints show.",
+     "astraTime": "neutral"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/night/2.webp",
+   "hash": "86be0fc65b9e",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/night/2.webp",
+    "rain/week_3/night/2.webp"
+   ],
+   "photoId": "32",
+   "kept": [
+    {
+     "text": "Whose turn is it to let the dog out, exactly?",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Bedtime soon. The dog has one more request.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The streetlight is showing every drop and the frangipani is drinking every one.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: describes the streetlight and flowering tree.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The frangipani gets watered at midnight and the whole street smells of it by one.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: lyrical tree caption invents two precise times.",
+     "astraTime": "night"
+    },
+    {
+     "text": "One warm window, one wet street: everybody is exactly where they should be.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R2 and R5 fail: cosy postcard sentiment, no earned turn.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/night/4.webp",
+   "hash": "f8781ec0eb86",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_1/night/4.webp",
+    "rain/week_3/night/4.webp"
+   ],
+   "photoId": "33",
+   "kept": [
+    {
+     "text": "Your roof has a longer story than you do tonight.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Lights out. Something still has plenty to say.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The gutter found its river voice at about eight and has not stopped since.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: gutter personification describes its visible flow.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Rain through a streetlight looks like static, and tonight the whole street is tuned to it.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: extended visual simile, no human consequence.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The jacaranda is getting a night wash and the street is getting the runoff.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: narrates the tree and runoff.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/night/5.webp",
+   "hash": "504e55301184",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/night/5.webp",
+    "rain/week_3/night/5.webp"
+   ],
+   "photoId": "34",
+   "kept": [
+    {
+     "text": "You can stop promising yourself an evening swim.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Swim postponed. Your excuses finally have evidence.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The pool is being topped up by head office tonight, free of charge.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: pool-top-up caption gives the sky an office.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Rain on a lit pool: ten thousand rings and not one swimmer.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: inventory of illuminated pool and raindrops.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The only thing swimming tonight is the water itself.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: wordplay describes the empty pool.",
+     "astraTime": "night"
+    }
+   ]
+  },
+  {
+   "image": "rain/week_1/night/6.webp",
+   "hash": "a1e2fed78146",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_1/night/6.webp",
+    "rain/week_3/night/6.webp"
+   ],
+   "photoId": "35",
+   "kept": [
+    {
+     "text": "Your evening walk can end at the front door.",
+     "source": "astra-new",
+     "astraTime": "night"
+    },
+    {
+     "text": "Out for fresh air. Back for an entire outfit.",
+     "source": "astra-new",
+     "astraTime": "night"
+    }
+   ],
+   "rejected": [],
+   "unruled": [
+    {
+     "text": "The sea is coming over the rail and the rain is coming down to meet it.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: simply describes converging rain and waves.",
+     "astraTime": "night"
+    },
+    {
+     "text": "The last umbrella on the beachfront is closed, which is the correct call.",
+     "astraVerdict": "KILL",
+     "score": 2,
+     "reason": "R5 fails: describes the visible closed umbrella.",
+     "astraTime": "night"
+    },
+    {
+     "text": "Salt spray from the front, rain from above: the promenade is fully surrounded.",
+     "astraVerdict": "KILL",
+     "score": 1,
+     "reason": "R5 fails: directional weather inventory, no reader consequence.",
+     "astraTime": "night"
+    }
+   ]
+  }
+ ],
+ "keptCount": 85,
+ "unruledCount": 90,
+ "imagesWithNone": []
+}

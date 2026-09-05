@@ -1,0 +1,1155 @@
+{
+ "generated": "2026-08-19",
+ "ruledBy": "Al, bespoke line review",
+ "bucket": "cloudy",
+ "images": [
+  {
+   "image": "cloudy/week_1/dawn/3.webp",
+   "hash": "b5793c36b69d",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dawn/3.webp",
+    "cloudy/week_3/dawn/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sun is up there somewhere behind three layers of Saturday-morning grey.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The Bo-Kaap does the colour this morning because the sky refuses to.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Cool, grey and windless — honestly the best running weather this city sells.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/dawn/4.webp",
+   "hash": "de1df07bf268",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_3/dawn/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "Flat grey light, no glare, no wind: perfect painting weather, and he knows it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "An overcast sky is a painter's softbox — not one hard shadow on that wall.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The cloud came in overnight and parked; nothing under it is in a hurry.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/dawn/7.webp",
+   "hash": "e0e2d1182253",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_1/dawn/7.webp",
+    "cloudy/week_3/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The whole city is under one grey blanket and somebody just noticed.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A lid like that takes until about eleven to lift, if it lifts at all.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky is buffering.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:cloudy#7"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/day/1.webp",
+   "hash": "119e4a52f8a4",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sun is down to one beam and the whole veld is watching where it lands.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That grey is thinking about rain and the whole district is thinking with it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/day/3.webp",
+   "hash": "d16ca804a592",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/day/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Half the sky has an opinion and the other half is about to hear it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The week's weather is changing hands right there, in one straight line.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Blue on the left, business on the right, and the line is moving your way.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/day/6.webp",
+   "hash": "31b58730d005",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_1/day/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "That washing is a straight bet against that sky, and the sky looks confident.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not a breath moving those sheets, and nothing helpful coming from above either.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Grey like that can hold all day without dropping a thing — probably.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/day/7.webp",
+   "hash": "5668c9f2edcb",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The walk has been postponed by the committee upstairs, and the committee looks settled.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky is doing nothing in particular and being very thorough about it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sun sent an out-of-office reply.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:cloudy#22"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/dusk/2.webp",
+   "hash": "20e80f881707",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sky saved its best ten minutes for the top of the climb.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Cloud all afternoon, and now this — the sky apologising in gold.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That gap in the cloud is worth more than the whole clear day it replaced.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/dusk/4.webp",
+   "hash": "3ba329d5cea3",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "One person at this wedding is checking the sky, and she has been right before.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The clouds came dressed in pink for the occasion and are behaving so far.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That sky will hold for the photographs — after that, no promises.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/night/1.webp",
+   "hash": "7b4c0256fd8d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/night/1.webp",
+    "cloudy/week_3/night/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "The moon is down to one small window and it is using all of it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The clouds are winning tonight, about nine rounds to one.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A sky like that keeps the heat in — the frost can stand down tonight.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/night/2.webp",
+   "hash": "76070c299a0b",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/night/2.webp",
+    "cloudy/week_3/night/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "Cloud right down to the rooftops, and every sensible mammal is indoors under a lamp.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Nothing is falling and nothing is shining; it is that kind of night.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A sky with no stars is the sky's way of saying go to bed.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/night/6.webp",
+   "hash": "e991afd863ba",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_3/night/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "No moon, no stars, no streetlights: tonight the headlights are the whole sky.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky has switched itself off for the night; the bakkie disagrees.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Overcast this thick turns the Karoo into a corridor, and he is halfway down it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_1/night/7.webp",
+   "hash": "68317318c85d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_3/night/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The moon has enough cloud to fight through that the torch got the job.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Cloud like fish scales means the weather is thinking about changing its mind.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That cloud is just thick enough to make the moon count for nothing on the ground.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dawn/3.webp",
+   "hash": "08134a1e356e",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Grey sky, flat sea, visible breath: the exact morning the fish expect them.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The cloud is sitting right on the mountains and the sea has gone pewter.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "No wind on the water this morning, which is worth more than sunshine out there.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dawn/4.webp",
+   "hash": "3bfd9b9470d6",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_4/dawn/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The cloud kept the frost off the windscreens, which is the one favour it does.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Pink-grey sky over the robots: winter is on the morning shift too.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dawn/6.webp",
+   "hash": "03ff71985022",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sky brought its full weight this morning and the sea rose to meet it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "One thin line of light at the horizon, and the whole sky leaning on it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Running weather, honestly: cool, grey, and the sea doing the soundtrack.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dawn/7.webp",
+   "hash": "4845b881f911",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_4/dawn/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sun is trying its luck at the horizon and the cloud is unmoved.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A grey start on the coast usually burns off by ten. Usually.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/day/1.webp",
+   "hash": "e9f6b3850ce2",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "The cloud arrived about four minutes after the towel went down, which is policy.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Sunscreen out, sun gone: the sky has a sense of humour today.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The blue sky is still back there somewhere, but the grey has the floor.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/day/5.webp",
+   "hash": "5aea3d2e9887",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/day/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky has gone the colour of the staff-room ceiling and settled in.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A perfectly average sky doing perfectly average things.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:cloudy#32"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/day/6.webp",
+   "hash": "dc71e7a692da",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/day/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "The one animal that can match the sky's mood is having no trouble today.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Every leaf is holding still; the whole garden is waiting to see what the sky decides.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The clouds are here but they're not doing anything.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:cloudy#19"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/day/7.webp",
+   "hash": "094ec6ba034c",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "That sky can do what it wants; the wors is already on.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky is threatening, the firelighters are answering: a very South African standoff.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Paving wet, clouds low, fire going anyway — this braai has been through worse.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/2.webp",
+   "hash": "6b5271665e34",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "kept": [
+    {
+     "text": "Cloud is what a sunset needs, and tonight the sky brought exactly enough.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Table Mountain gets the silhouette; the clouds get the whole colour budget.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Red sky at night, shepherd's delight — tomorrow just got a good reference.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/3.webp",
+   "hash": "018a0573e433",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_4/dusk/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "The dog is wearing a jersey, which is all the forecast anybody here needs.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The day never warmed up, and one resident has stopped waiting for it to.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/5.webp",
+   "hash": "444490756b06",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dusk/5.webp",
+    "cloudy/week_4/dusk/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sky left a two-finger gap for the sunset and the sunset took it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "All that cloud, and the sun still found the letterbox at the bottom.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The suburb is going to bed under a lid, with one orange nightlight left on.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/6.webp",
+   "hash": "0ebee4d85540",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "The clouds took the sunset and left the suburb the pink change.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The aerials have the best view of a sky doing its quiet closing number.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A grey dusk brings the evening forward, and the windows have already agreed.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/dusk/7.webp",
+   "hash": "211c0291a514",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "The charcoal is out, the sky is undecided, and neither is backing down.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That cloud has been rehearsing all afternoon and still hasn't said its line.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The horizon kept one strip of orange as proof the sun was here.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/night/4.webp",
+   "hash": "c6d4061cbef2",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/night/4.webp",
+    "cloudy/week_4/night/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "The cloud is holding the city's glow like a lampshade tonight.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Overcast at night keeps the warmth in, and somebody is out here using it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "No stars on offer tonight, so the city is providing its own.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/night/5.webp",
+   "hash": "f3255e596b2c",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/night/5.webp",
+    "cloudy/week_4/night/5.webp"
+   ],
+   "kept": [
+    {
+     "text": "The sky brought nothing tonight, so the lantern is carrying the whole evening.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Blankets outside in the dark: the evening is cold, the company is not.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Not one star made it through that lid, and nobody has noticed yet.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_2/night/6.webp",
+   "hash": "bdc2741f86fb",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "The cloud is coming over the mountain like it pays rent here.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That cloud will be down on the streetlights before the walk is done.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Low cloud at night keeps the cold off the promenade, and the regulars know it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_3/day/1.webp",
+   "hash": "c16f8303d56e",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_3/day/1.webp"
+   ],
+   "kept": [
+    {
+     "text": "Half a lawn mowed, and now the negotiation with the sky begins.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The sky is deciding whether the second half of that lawn happens today.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That look is a man asking the clouds for forty-five more minutes.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_3/day/3.webp",
+   "hash": "04bdf14c306b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_3/day/3.webp"
+   ],
+   "kept": [
+    {
+     "text": "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The cloud is doing sunscreen duty this morning and the runners are cashing in.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "A pearl-grey sky and a warm sea breeze: the coast's version of mild.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_3/day/4.webp",
+   "hash": "47550fce6c98",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_3/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "Panels installed, sun absent: the sky owes this roof an apology.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Grey from gutter to gutter, and every kilowatt up here is on standby.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The forecast said partly sunny; the sky went with fully committed grey.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_4/day/4.webp",
+   "hash": "4727610ce8f9",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_4/day/4.webp"
+   ],
+   "kept": [
+    {
+     "text": "A grey day reads the same in any language: blanket, stoep, minimal ambition.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The concrete is still damp and the sky looks like it isn't finished.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Under a sky like this the whole garden runs at half-speed, dog included.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_4/day/6.webp",
+   "hash": "5a72972b399b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_4/day/6.webp"
+   ],
+   "kept": [
+    {
+     "text": "Umbrella in one hand, sunglasses in the other — he has met this sky before.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That sky refuses to commit, so he came prepared for both of its moods.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "Bring a jacket. Or sunscreen. Or both.",
+     "source": "bank",
+     "round": 2,
+     "edited": false,
+     "rescue": "witty:rain-possible#10"
+    }
+   ],
+   "rejected": []
+  },
+  {
+   "image": "cloudy/week_4/day/7.webp",
+   "hash": "313ca13b51a5",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_4/day/7.webp"
+   ],
+   "kept": [
+    {
+     "text": "Half this street is in summer and the other half is about to be somewhere else.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "That cloud line is moving in with the confidence of a Monday.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    },
+    {
+     "text": "The blue half of the sky is on borrowed time and the lawns know it.",
+     "source": "bespoke",
+     "round": 2,
+     "edited": false
+    }
+   ],
+   "rejected": []
+  }
+ ],
+ "keptCount": 105,
+ "imagesWithNone": []
+}
