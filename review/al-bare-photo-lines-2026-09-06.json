@@ -1,0 +1,129 @@
+{
+ "generated": "2026-09-06",
+ "ruledBy": "Al, written by hand after rejecting all 30 of Astra's candidates for these photographs",
+ "note": "Al supplied these by description, not by filename. Each photograph was opened and matched to his description before wiring; the mapping is recorded in `matchedOn`. Astra's 30 candidates for these photographs are dropped entirely — not held, not rejected, simply not used.",
+ "images": [
+  {
+   "image": "cold/week_2/dusk/1.webp",
+   "matchedOn": "Cold image 1 — empty stoep: covered patio at dusk, blanket over the chair, steaming mug on the side table, shoes by the door",
+   "lines": [
+    "Outside is closed. Management is inside.",
+    "Pretty evening. Deeply uninhabitable."
+   ]
+  },
+  {
+   "image": "cold/week_2/dusk/5.webp",
+   "matchedOn": "Cold image 2 — hands + hot drink, mountain, last light: gloved hand around a hot chocolate on a balcony, snow on the Apostles behind",
+   "lines": [
+    "Beautiful view. Hostile air.",
+    "This is no longer a beverage. It's a strategy."
+   ]
+  },
+  {
+   "image": "cold/week_4/dusk/2.webp",
+   "matchedOn": "Cold image 3 — wet promenade, sunset, people + dog walking away",
+   "lines": [
+    "Sunset showed up. The cold came with it.",
+    "The sky apologised. The pavement didn't."
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/7.webp",
+   "matchedOn": "Fog image 1 — forest road, figure walking into the white, dawn",
+   "lines": [
+    "Visibility has clocked off. You're on your own.",
+    "Forward is still an option. Sightseeing is not."
+   ]
+  },
+  {
+   "image": "fog/week_2/dusk/7.webp",
+   "matchedOn": "Fog image 2 — harbour jetty, lights on, water and boats swallowed",
+   "lines": [
+    "They turned the lights on. Fog turned everything else off.",
+    "Pretty evening, if you like walls."
+   ]
+  },
+  {
+   "image": "rain/week_4/day/2.webp",
+   "matchedOn": "Rain image 1 — doorway, wet garden, boots and jersey dumped inside",
+   "lines": [
+    "Rain came all the way home.",
+    "It's proper rain. The day's over in stages."
+   ]
+  },
+  {
+   "image": "rain/week_3/day/5.webp",
+   "matchedOn": "Rain image 2 — harbour / wave: fishing harbour, wave breaking over the wall, two in raincoats watching",
+   "lines": [
+    "Still raining. That's the whole update.",
+    "Wet between here and anywhere else."
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/2.webp",
+   "matchedOn": "Rain image 3 — Bo-Kaap: colourful houses, Lion's Head, man with an umbrella on wet cobbles",
+   "lines": [
+    "Rain on an otherwise good-looking evening.",
+    "Wet out. The city can keep the colour."
+   ]
+  },
+  {
+   "image": "storm/week_1/day/3.webp",
+   "matchedOn": "Storm image 1 — people waiting under a shop canopy, lightning over a wet parking lot",
+   "lines": [
+    "The sky is in charge now.",
+    "Not weather you walk through.",
+    "Storm. Plans can wait.",
+    "Outside is closed until further notice."
+   ]
+  },
+  {
+   "image": "storm/week_2/day/3.webp",
+   "matchedOn": "Storm image 2 — lightning over a stadium",
+   "lines": [
+    "When the sky starts talking, everything else stops.",
+    "Serious weather. The rest is postponed."
+   ]
+  },
+  {
+   "image": "storm/week_2/day/6.webp",
+   "matchedOn": "Storm image 3 — quiet suburban street, dark storm sitting on the houses",
+   "lines": [
+    "Get inside weather.",
+    "Stay in. That's the whole forecast."
+   ]
+  },
+  {
+   "image": "storm/week_4/day/1.webp",
+   "matchedOn": "Storm image 4 — open country road, rain shaft in the distance, chair in the road",
+   "lines": [
+    "Storm with wind attached.",
+    "The storm has arrived. Everything else can wait.",
+    "Unsecured objects are now weather."
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/2.webp",
+   "matchedOn": "Storm image 5 — loading a bakkie against a huge storm cell",
+   "lines": [
+    "Storm on the horizon. That's your deadline.",
+    "Finish up. The weather won't.",
+    "Storm's close. Home is closer, hopefully."
+   ]
+  },
+  {
+   "image": "storm/week_2/night/5.webp",
+   "matchedOn": "Storm image 6 — ceiling leak, bucket on the bed",
+   "lines": [
+    "Rain was the warning. This is the follow-through.",
+    "Proper storm. Not the pretty kind."
+   ]
+  }
+ ],
+ "notCovered": [
+  {
+   "image": "rain/week_2/dusk/2.webp",
+   "why": "Al described three rain photographs; the bare rain set is four. This one — a man standing in a lit gateway at dusk, umbrella down, a car passing in the wet street — got no lines."
+  }
+ ]
+}

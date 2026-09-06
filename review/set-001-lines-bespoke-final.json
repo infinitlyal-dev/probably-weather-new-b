@@ -1,10 +1,10 @@
 {
  "generated": "2026-08-19",
  "ruledBy": "Al, bespoke line review rounds 1 and 2",
- "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap.",
+ "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
  "images": 42,
- "lineCount": 843,
+ "lineCount": 875,
  "set": [
   {
    "image": "clear/week_2/dawn/2.webp",
@@ -4552,6 +4552,240 @@
    "lines": [
     "Somewhere up there the rain found a way in, and it is being managed."
    ]
+  },
+  {
+   "image": "cold/week_2/dusk/1.webp",
+   "hash": "163ee2f2d1fe",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_2/dusk/1.webp"
+   ],
+   "lines": [
+    "Outside is closed. Management is inside.",
+    "Pretty evening. Deeply uninhabitable."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "cold/week_2/dusk/5.webp",
+   "hash": "917c4c0a6fac",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "lines": [
+    "Beautiful view. Hostile air.",
+    "This is no longer a beverage. It's a strategy."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "cold/week_4/dusk/2.webp",
+   "hash": "39e28d40ecf1",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_4/dusk/2.webp"
+   ],
+   "lines": [
+    "Sunset showed up. The cold came with it.",
+    "The sky apologised. The pavement didn't."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "fog/week_1/dawn/7.webp",
+   "hash": "48e51baff8be",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/dawn/7.webp",
+    "fog/week_3/dawn/7.webp"
+   ],
+   "lines": [
+    "Visibility has clocked off. You're on your own.",
+    "Forward is still an option. Sightseeing is not."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "fog/week_2/dusk/7.webp",
+   "hash": "838bd4824615",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "lines": [
+    "They turned the lights on. Fog turned everything else off.",
+    "Pretty evening, if you like walls."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "rain/week_4/day/2.webp",
+   "hash": "057e8c9e5039",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/2.webp"
+   ],
+   "lines": [
+    "Rain came all the way home.",
+    "It's proper rain. The day's over in stages."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "rain/week_3/day/5.webp",
+   "hash": "d8d16083a690",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_3/day/5.webp"
+   ],
+   "lines": [
+    "Still raining. That's the whole update.",
+    "Wet between here and anywhere else."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "rain/week_1/dusk/2.webp",
+   "hash": "5f935cb18f17",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dusk/2.webp",
+    "rain/week_3/dusk/2.webp"
+   ],
+   "lines": [
+    "Rain on an otherwise good-looking evening.",
+    "Wet out. The city can keep the colour."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "storm/week_1/day/3.webp",
+   "hash": "41e6c19016c1",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/day/3.webp"
+   ],
+   "lines": [
+    "The sky is in charge now.",
+    "Not weather you walk through.",
+    "Storm. Plans can wait.",
+    "Outside is closed until further notice."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "storm/week_2/day/3.webp",
+   "hash": "a02b40a1cdb7",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/day/3.webp"
+   ],
+   "lines": [
+    "When the sky starts talking, everything else stops.",
+    "Serious weather. The rest is postponed."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "storm/week_2/day/6.webp",
+   "hash": "30a82fcff9d4",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "storm/week_2/day/6.webp"
+   ],
+   "lines": [
+    "Get inside weather.",
+    "Stay in. That's the whole forecast."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "storm/week_4/day/1.webp",
+   "hash": "ea95b93c8930",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "storm/week_4/day/1.webp"
+   ],
+   "lines": [
+    "Storm with wind attached.",
+    "The storm has arrived. Everything else can wait.",
+    "Unsecured objects are now weather."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "storm/week_1/dusk/2.webp",
+   "hash": "a61146a38b06",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dusk/2.webp",
+    "storm/week_3/dusk/2.webp"
+   ],
+   "lines": [
+    "Storm on the horizon. That's your deadline.",
+    "Finish up. The weather won't.",
+    "Storm's close. Home is closer, hopefully."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "storm/week_2/night/5.webp",
+   "hash": "2d2e6dd5d7fd",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/night/5.webp",
+    "storm/week_4/night/5.webp"
+   ],
+   "lines": [
+    "Rain was the warning. This is the follow-through.",
+    "Proper storm. Not the pretty kind."
+   ],
+   "source": "al-2026-09-06"
   }
  ]
 }
