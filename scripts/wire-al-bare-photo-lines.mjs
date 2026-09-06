@@ -15,7 +15,16 @@ import path from 'node:path';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const DRY = process.argv.includes('--dry');
 
-const src = JSON.parse(fs.readFileSync(path.join(ROOT, 'review/al-bare-photo-lines-2026-09-06.json'), 'utf8'));
+const SOURCES = [
+  'review/al-bare-photo-lines-2026-09-06.json',   // supplied by description, matched by eye
+  'review/al-written-lines-2026-09-06.json',      // typed straight onto review/write-lines.html
+];
+const src = { images: [], notCovered: [] };
+for (const file of SOURCES) {
+  const doc = JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
+  src.images.push(...doc.images);
+  src.notCovered.push(...(doc.notCovered || []));
+}
 const finalPath = path.join(ROOT, 'review/set-001-lines-bespoke-final.json');
 const approved = JSON.parse(fs.readFileSync(finalPath, 'utf8'));
 const draft = JSON.parse(fs.readFileSync(path.join(ROOT, 'review/set-001-draft.json'), 'utf8'));

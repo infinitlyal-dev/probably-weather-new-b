@@ -1,0 +1,121 @@
+{
+ "generated": "2026-09-06",
+ "ruledBy": "Al, written directly onto the last seven bare photographs (review/write-lines.html)",
+ "note": "Exported verbatim from the writing page, then unwrapped: every line arrived inside curly quotes and one had only a closing quote. The marks would have rendered on the photograph — no wired line carries wrapping quotes. Wording is untouched; only the outer quote characters were removed. Original strings kept in asTyped.",
+ "images": [
+  {
+   "image": "clear/week_2/dusk/3.webp",
+   "hash": "cc951efb5d19",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "lines": [
+    "Clear evening. The grass has no excuse.",
+    "Good weather. Unfortunately.",
+    "The sky behaved. So must you."
+   ],
+   "asTyped": [
+    "“Clear evening. The grass has no excuse.”",
+    "“Good weather. Unfortunately.”",
+    "“The sky behaved. So must you.”"
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/4.webp",
+   "hash": "7d50ec606bfc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "lines": [
+    "Clear dusk. Use it before it clocks off.",
+    "The weather said yes. That’s on you now."
+   ],
+   "asTyped": [
+    "“Clear dusk. Use it before it clocks off.”",
+    "“The weather said yes. That’s on you now.”"
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dusk/2.webp",
+   "hash": "20e80f881707",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "lines": [
+    "Not rain. Just atmosphere with opinions.",
+    "The sky’s overdressed. The weather’s still fine."
+   ],
+   "asTyped": [
+    "“Not rain. Just atmosphere with opinions.”",
+    "“The sky’s overdressed. The weather’s still fine.”"
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dusk/5.webp",
+   "hash": "444490756b06",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "lines": [
+    "Cloudy dusk. Pretty, not promising.",
+    "The sky did extras. The forecast didn’t."
+   ],
+   "asTyped": [
+    "“Cloudy dusk. Pretty, not promising.”",
+    "“The sky did extras. The forecast didn’t.”"
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dusk/6.webp",
+   "hash": "0ebee4d85540",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "lines": [
+    "Cloud cover. The night shift starts early.",
+    "Cloudy. Stay in if you were looking for a reason."
+   ],
+   "asTyped": [
+    "“Cloud cover. The night shift starts early.”",
+    "“Cloudy. Stay in if you were looking for a reason.”"
+   ]
+  },
+  {
+   "image": "cloudy/week_1/night/2.webp",
+   "hash": "76070c299a0b",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "lines": [
+    "Cloudy night. Nobody’s going out, officially.",
+    "The weather chose indoors. Correctly."
+   ],
+   "asTyped": [
+    "“Cloudy night. Nobody’s going out, officially.”",
+    "The weather chose indoors. Correctly.”"
+   ]
+  },
+  {
+   "image": "cloudy/week_2/night/5.webp",
+   "hash": "f3255e596b2c",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "lines": [
+    "Cloudy night. Bravery in blanket form.",
+    "The sky closed. The evening didn’t."
+   ],
+   "asTyped": [
+    "“Cloudy night. Bravery in blanket form.”",
+    "“The sky closed. The evening didn’t.”"
+   ]
+  }
+ ]
+}
