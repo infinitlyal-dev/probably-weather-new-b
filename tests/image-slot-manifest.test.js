@@ -12,11 +12,15 @@ beforeAll(() => {
 }, 30000);
 
 describe('P9 background slot manifest', () => {
-  it('P9 represents all 1008 picker slots with the 644 unique image bodies exactly once', () => {
+  // 294 unique bodies since 2026-09-06, not 644: Al ruled the app serves set-001 only, so the
+  // 532 slots that held uncurated photographs (and therefore could never carry a bespoke
+  // line) now hold copies of curated ones from the same condition and time-of-day. set-002
+  // raises this again as new curated photographs replace those repeats.
+  it('P9 represents all 1008 picker slots with the 294 unique image bodies exactly once', () => {
     expect(manifest.entries).toHaveLength(1008);
-    expect(manifest.hashes).toHaveLength(644);
+    expect(manifest.hashes).toHaveLength(294);
     expect(manifest.slots).toHaveLength(1008);
-    expect(new Set(manifest.slots).size).toBe(644);
+    expect(new Set(manifest.slots).size).toBe(294);
   });
 
   it('P9 resolves every slot to a byte-equivalent canonical image', () => {

@@ -119,8 +119,15 @@ export function verifyBackgroundImageArtifact({ sourceImageRoot, distRoot, picke
     }
   }
 
-  if (checked !== 1008 || resolved.size !== 644) {
-    throw new Error(`P9 resolution mismatch: ${checked}/1008 slots, ${resolved.size}/644 unique files`);
+  // 294, not the 644 this asserted until 2026-09-06. Al ruled that the app serves set-001
+  // ONLY: the 350 uncurated photographs had no bespoke line written about them, so every slot
+  // they held fell back to a condition-bank joke. Those slots now hold copies of curated
+  // photographs from the same condition and time-of-day, which is why 1008 slots dedupe to
+  // the 294 curated bodies. set-002 raises this number again as new curated photographs
+  // replace the repeats — update it deliberately, and never to whatever the tree happens to
+  // hold, or this stops being a check.
+  if (checked !== 1008 || resolved.size !== 294) {
+    throw new Error(`P9 resolution mismatch: ${checked}/1008 slots, ${resolved.size}/294 unique files`);
   }
   return { checked, uniqueFiles: resolved.size };
 }

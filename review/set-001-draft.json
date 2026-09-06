@@ -5,7 +5,7 @@
  "complete": false,
  "filled": 294,
  "total": 504,
- "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes.",
+ "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs.",
  "assignments": [
   {
    "condition": "clear",
@@ -15,7 +15,9 @@
    "hash": "dd736311b619",
    "image": "clear/week_2/dawn/5.webp",
    "paths": [
+    "clear/week_1/dawn/6.webp",
     "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/6.webp",
     "clear/week_4/dawn/5.webp"
    ]
   },
@@ -27,7 +29,9 @@
    "hash": "73d202837435",
    "image": "clear/week_2/dawn/6.webp",
    "paths": [
+    "clear/week_1/dawn/2.webp",
     "clear/week_2/dawn/6.webp",
+    "clear/week_3/dawn/2.webp",
     "clear/week_4/dawn/6.webp"
    ]
   },
@@ -40,7 +44,9 @@
    "image": "clear/week_1/dawn/7.webp",
    "paths": [
     "clear/week_1/dawn/7.webp",
-    "clear/week_3/dawn/7.webp"
+    "clear/week_2/dawn/4.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/4.webp"
    ]
   },
   {
@@ -52,7 +58,9 @@
    "image": "clear/week_1/dawn/5.webp",
    "paths": [
     "clear/week_1/dawn/5.webp",
-    "clear/week_3/dawn/5.webp"
+    "clear/week_2/dawn/3.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/3.webp"
    ]
   },
   {
@@ -64,7 +72,9 @@
    "image": "clear/week_1/dawn/3.webp",
    "paths": [
     "clear/week_1/dawn/3.webp",
-    "clear/week_3/dawn/3.webp"
+    "clear/week_2/dawn/1.webp",
+    "clear/week_3/dawn/3.webp",
+    "clear/week_4/dawn/1.webp"
    ]
   },
   {
@@ -75,7 +85,9 @@
    "hash": "d529968dcb50",
    "image": "clear/week_2/dawn/7.webp",
    "paths": [
+    "clear/week_1/dawn/4.webp",
     "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/4.webp",
     "clear/week_4/dawn/7.webp"
    ]
   },
@@ -87,7 +99,9 @@
    "hash": "089f865e3f14",
    "image": "clear/week_2/dawn/2.webp",
    "paths": [
+    "clear/week_1/dawn/1.webp",
     "clear/week_2/dawn/2.webp",
+    "clear/week_3/dawn/1.webp",
     "clear/week_4/dawn/2.webp"
    ]
   },
@@ -99,7 +113,8 @@
    "hash": "84beada2e358",
    "image": "clear/week_3/day/4.webp",
    "paths": [
-    "clear/week_3/day/4.webp"
+    "clear/week_3/day/4.webp",
+    "clear/week_4/day/3.webp"
    ]
   },
   {
@@ -110,6 +125,7 @@
    "hash": "5799efcdfd70",
    "image": "clear/week_2/day/6.webp",
    "paths": [
+    "clear/week_1/day/5.webp",
     "clear/week_2/day/6.webp"
    ]
   },
@@ -121,7 +137,8 @@
    "hash": "77cfc93827e3",
    "image": "clear/week_3/day/7.webp",
    "paths": [
-    "clear/week_3/day/7.webp"
+    "clear/week_3/day/7.webp",
+    "clear/week_4/day/1.webp"
    ]
   },
   {
@@ -132,7 +149,8 @@
    "hash": "f673af851f9c",
    "image": "clear/week_3/day/1.webp",
    "paths": [
-    "clear/week_3/day/1.webp"
+    "clear/week_3/day/1.webp",
+    "clear/week_4/day/7.webp"
    ]
   },
   {
@@ -143,7 +161,8 @@
    "hash": "ca6d821f7c9b",
    "image": "clear/week_2/day/5.webp",
    "paths": [
-    "clear/week_2/day/5.webp"
+    "clear/week_2/day/5.webp",
+    "clear/week_3/day/5.webp"
    ]
   },
   {
@@ -154,7 +173,8 @@
    "hash": "e9616cb7c61c",
    "image": "clear/week_2/day/4.webp",
    "paths": [
-    "clear/week_2/day/4.webp"
+    "clear/week_2/day/4.webp",
+    "clear/week_3/day/6.webp"
    ]
   },
   {
@@ -165,6 +185,7 @@
    "hash": "45d964f74171",
    "image": "clear/week_2/day/2.webp",
    "paths": [
+    "clear/week_1/day/4.webp",
     "clear/week_2/day/2.webp"
    ]
   },
@@ -176,6 +197,7 @@
    "hash": "0009c55ad6a5",
    "image": "clear/week_3/day/3.webp",
    "paths": [
+    "clear/week_1/day/1.webp",
     "clear/week_3/day/3.webp"
    ]
   },
@@ -187,7 +209,8 @@
    "hash": "9ab8b9f07431",
    "image": "clear/week_2/day/1.webp",
    "paths": [
-    "clear/week_2/day/1.webp"
+    "clear/week_2/day/1.webp",
+    "clear/week_3/day/2.webp"
    ]
   },
   {
@@ -198,6 +221,7 @@
    "hash": "448b951052cc",
    "image": "clear/week_4/day/2.webp",
    "paths": [
+    "clear/week_1/day/3.webp",
     "clear/week_4/day/2.webp"
    ]
   },
@@ -209,6 +233,7 @@
    "hash": "3d001539dcb5",
    "image": "clear/week_4/day/6.webp",
    "paths": [
+    "clear/week_1/day/2.webp",
     "clear/week_4/day/6.webp"
    ]
   },
@@ -220,7 +245,8 @@
    "hash": "ed953578deec",
    "image": "clear/week_2/day/7.webp",
    "paths": [
-    "clear/week_2/day/7.webp"
+    "clear/week_2/day/7.webp",
+    "clear/week_4/day/4.webp"
    ]
   },
   {
@@ -231,6 +257,7 @@
    "hash": "6e598ae56c12",
    "image": "clear/week_4/day/5.webp",
    "paths": [
+    "clear/week_1/day/6.webp",
     "clear/week_4/day/5.webp"
    ]
   },
@@ -242,7 +269,8 @@
    "hash": "03a31c2b8e88",
    "image": "clear/week_1/day/7.webp",
    "paths": [
-    "clear/week_1/day/7.webp"
+    "clear/week_1/day/7.webp",
+    "clear/week_2/day/3.webp"
    ]
   },
   {
@@ -253,7 +281,9 @@
    "hash": "9059d175f28c",
    "image": "clear/week_2/dusk/5.webp",
    "paths": [
+    "clear/week_1/dusk/5.webp",
     "clear/week_2/dusk/5.webp",
+    "clear/week_3/dusk/5.webp",
     "clear/week_4/dusk/5.webp"
    ]
   },
@@ -265,7 +295,9 @@
    "hash": "1bd6b90924a1",
    "image": "clear/week_2/dusk/6.webp",
    "paths": [
+    "clear/week_1/dusk/1.webp",
     "clear/week_2/dusk/6.webp",
+    "clear/week_3/dusk/1.webp",
     "clear/week_4/dusk/6.webp"
    ]
   },
@@ -277,7 +309,9 @@
    "hash": "7d50ec606bfc",
    "image": "clear/week_2/dusk/4.webp",
    "paths": [
+    "clear/week_1/dusk/4.webp",
     "clear/week_2/dusk/4.webp",
+    "clear/week_3/dusk/4.webp",
     "clear/week_4/dusk/4.webp"
    ]
   },
@@ -289,7 +323,9 @@
    "hash": "cc951efb5d19",
    "image": "clear/week_2/dusk/3.webp",
    "paths": [
+    "clear/week_1/dusk/7.webp",
     "clear/week_2/dusk/3.webp",
+    "clear/week_3/dusk/7.webp",
     "clear/week_4/dusk/3.webp"
    ]
   },
@@ -301,7 +337,9 @@
    "hash": "90a621539543",
    "image": "clear/week_2/dusk/2.webp",
    "paths": [
+    "clear/week_1/dusk/6.webp",
     "clear/week_2/dusk/2.webp",
+    "clear/week_3/dusk/6.webp",
     "clear/week_4/dusk/2.webp"
    ]
   },
@@ -314,7 +352,9 @@
    "image": "clear/week_1/dusk/3.webp",
    "paths": [
     "clear/week_1/dusk/3.webp",
-    "clear/week_3/dusk/3.webp"
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/3.webp",
+    "clear/week_4/dusk/7.webp"
    ]
   },
   {
@@ -325,7 +365,9 @@
    "hash": "525b2eea2ebc",
    "image": "clear/week_2/dusk/1.webp",
    "paths": [
+    "clear/week_1/dusk/2.webp",
     "clear/week_2/dusk/1.webp",
+    "clear/week_3/dusk/2.webp",
     "clear/week_4/dusk/1.webp"
    ]
   },
@@ -337,7 +379,9 @@
    "hash": "970707aba87c",
    "image": "clear/week_2/night/6.webp",
    "paths": [
+    "clear/week_1/night/5.webp",
     "clear/week_2/night/6.webp",
+    "clear/week_3/night/5.webp",
     "clear/week_4/night/6.webp"
    ]
   },
@@ -350,7 +394,9 @@
    "image": "clear/week_1/night/1.webp",
    "paths": [
     "clear/week_1/night/1.webp",
-    "clear/week_3/night/1.webp"
+    "clear/week_2/night/2.webp",
+    "clear/week_3/night/1.webp",
+    "clear/week_4/night/2.webp"
    ]
   },
   {
@@ -362,7 +408,9 @@
    "image": "clear/week_1/night/7.webp",
    "paths": [
     "clear/week_1/night/7.webp",
-    "clear/week_3/night/7.webp"
+    "clear/week_2/night/4.webp",
+    "clear/week_3/night/7.webp",
+    "clear/week_4/night/4.webp"
    ]
   },
   {
@@ -373,7 +421,9 @@
    "hash": "05cd0ad39fd6",
    "image": "clear/week_2/night/5.webp",
    "paths": [
+    "clear/week_1/night/2.webp",
     "clear/week_2/night/5.webp",
+    "clear/week_3/night/2.webp",
     "clear/week_4/night/5.webp"
    ]
   },
@@ -385,7 +435,9 @@
    "hash": "4138025d3128",
    "image": "clear/week_2/night/7.webp",
    "paths": [
+    "clear/week_1/night/4.webp",
     "clear/week_2/night/7.webp",
+    "clear/week_3/night/4.webp",
     "clear/week_4/night/7.webp"
    ]
   },
@@ -398,7 +450,9 @@
    "image": "clear/week_1/night/3.webp",
    "paths": [
     "clear/week_1/night/3.webp",
-    "clear/week_3/night/3.webp"
+    "clear/week_2/night/1.webp",
+    "clear/week_3/night/3.webp",
+    "clear/week_4/night/1.webp"
    ]
   },
   {
@@ -410,7 +464,9 @@
    "image": "clear/week_1/night/6.webp",
    "paths": [
     "clear/week_1/night/6.webp",
-    "clear/week_3/night/6.webp"
+    "clear/week_2/night/3.webp",
+    "clear/week_3/night/6.webp",
+    "clear/week_4/night/3.webp"
    ]
   },
   {
@@ -421,7 +477,9 @@
    "hash": "08134a1e356e",
    "image": "cloudy/week_2/dawn/3.webp",
    "paths": [
+    "cloudy/week_1/dawn/2.webp",
     "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_3/dawn/2.webp",
     "cloudy/week_4/dawn/3.webp"
    ]
   },
@@ -434,7 +492,9 @@
    "image": "cloudy/week_1/dawn/4.webp",
    "paths": [
     "cloudy/week_1/dawn/4.webp",
-    "cloudy/week_3/dawn/4.webp"
+    "cloudy/week_2/dawn/2.webp",
+    "cloudy/week_3/dawn/4.webp",
+    "cloudy/week_4/dawn/2.webp"
    ]
   },
   {
@@ -445,7 +505,9 @@
    "hash": "03ff71985022",
    "image": "cloudy/week_2/dawn/6.webp",
    "paths": [
+    "cloudy/week_1/dawn/1.webp",
     "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_3/dawn/1.webp",
     "cloudy/week_4/dawn/6.webp"
    ]
   },
@@ -457,7 +519,9 @@
    "hash": "4845b881f911",
    "image": "cloudy/week_2/dawn/7.webp",
    "paths": [
+    "cloudy/week_1/dawn/6.webp",
     "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_3/dawn/6.webp",
     "cloudy/week_4/dawn/7.webp"
    ]
   },
@@ -469,7 +533,9 @@
    "hash": "3bfd9b9470d6",
    "image": "cloudy/week_2/dawn/4.webp",
    "paths": [
+    "cloudy/week_1/dawn/5.webp",
     "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_3/dawn/5.webp",
     "cloudy/week_4/dawn/4.webp"
    ]
   },
@@ -482,7 +548,9 @@
    "image": "cloudy/week_1/dawn/3.webp",
    "paths": [
     "cloudy/week_1/dawn/3.webp",
-    "cloudy/week_3/dawn/3.webp"
+    "cloudy/week_2/dawn/1.webp",
+    "cloudy/week_3/dawn/3.webp",
+    "cloudy/week_4/dawn/1.webp"
    ]
   },
   {
@@ -494,7 +562,9 @@
    "image": "cloudy/week_1/dawn/7.webp",
    "paths": [
     "cloudy/week_1/dawn/7.webp",
-    "cloudy/week_3/dawn/7.webp"
+    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_3/dawn/7.webp",
+    "cloudy/week_4/dawn/5.webp"
    ]
   },
   {
@@ -505,7 +575,8 @@
    "hash": "d16ca804a592",
    "image": "cloudy/week_1/day/3.webp",
    "paths": [
-    "cloudy/week_1/day/3.webp"
+    "cloudy/week_1/day/3.webp",
+    "cloudy/week_3/day/7.webp"
    ]
   },
   {
@@ -516,6 +587,7 @@
    "hash": "4727610ce8f9",
    "image": "cloudy/week_4/day/4.webp",
    "paths": [
+    "cloudy/week_2/day/4.webp",
     "cloudy/week_4/day/4.webp"
    ]
   },
@@ -527,7 +599,8 @@
    "hash": "5aea3d2e9887",
    "image": "cloudy/week_2/day/5.webp",
    "paths": [
-    "cloudy/week_2/day/5.webp"
+    "cloudy/week_2/day/5.webp",
+    "cloudy/week_3/day/6.webp"
    ]
   },
   {
@@ -538,6 +611,7 @@
    "hash": "5a72972b399b",
    "image": "cloudy/week_4/day/6.webp",
    "paths": [
+    "cloudy/week_3/day/5.webp",
     "cloudy/week_4/day/6.webp"
    ]
   },
@@ -549,7 +623,8 @@
    "hash": "dc71e7a692da",
    "image": "cloudy/week_2/day/6.webp",
    "paths": [
-    "cloudy/week_2/day/6.webp"
+    "cloudy/week_2/day/6.webp",
+    "cloudy/week_4/day/3.webp"
    ]
   },
   {
@@ -560,7 +635,8 @@
    "hash": "c16f8303d56e",
    "image": "cloudy/week_3/day/1.webp",
    "paths": [
-    "cloudy/week_3/day/1.webp"
+    "cloudy/week_3/day/1.webp",
+    "cloudy/week_4/day/2.webp"
    ]
   },
   {
@@ -571,6 +647,7 @@
    "hash": "094ec6ba034c",
    "image": "cloudy/week_2/day/7.webp",
    "paths": [
+    "cloudy/week_1/day/4.webp",
     "cloudy/week_2/day/7.webp"
    ]
   },
@@ -582,6 +659,7 @@
    "hash": "313ca13b51a5",
    "image": "cloudy/week_4/day/7.webp",
    "paths": [
+    "cloudy/week_1/day/5.webp",
     "cloudy/week_4/day/7.webp"
    ]
   },
@@ -593,7 +671,8 @@
    "hash": "47550fce6c98",
    "image": "cloudy/week_3/day/4.webp",
    "paths": [
-    "cloudy/week_3/day/4.webp"
+    "cloudy/week_3/day/4.webp",
+    "cloudy/week_4/day/1.webp"
    ]
   },
   {
@@ -604,7 +683,8 @@
    "hash": "119e4a52f8a4",
    "image": "cloudy/week_1/day/1.webp",
    "paths": [
-    "cloudy/week_1/day/1.webp"
+    "cloudy/week_1/day/1.webp",
+    "cloudy/week_2/day/2.webp"
    ]
   },
   {
@@ -615,7 +695,8 @@
    "hash": "31b58730d005",
    "image": "cloudy/week_1/day/6.webp",
    "paths": [
-    "cloudy/week_1/day/6.webp"
+    "cloudy/week_1/day/6.webp",
+    "cloudy/week_2/day/3.webp"
    ]
   },
   {
@@ -626,7 +707,8 @@
    "hash": "5668c9f2edcb",
    "image": "cloudy/week_1/day/7.webp",
    "paths": [
-    "cloudy/week_1/day/7.webp"
+    "cloudy/week_1/day/7.webp",
+    "cloudy/week_3/day/2.webp"
    ]
   },
   {
@@ -637,7 +719,8 @@
    "hash": "e9f6b3850ce2",
    "image": "cloudy/week_2/day/1.webp",
    "paths": [
-    "cloudy/week_2/day/1.webp"
+    "cloudy/week_2/day/1.webp",
+    "cloudy/week_4/day/5.webp"
    ]
   },
   {
@@ -648,6 +731,7 @@
    "hash": "04bdf14c306b",
    "image": "cloudy/week_3/day/3.webp",
    "paths": [
+    "cloudy/week_1/day/2.webp",
     "cloudy/week_3/day/3.webp"
    ]
   },
@@ -660,7 +744,9 @@
    "image": "cloudy/week_1/dusk/2.webp",
    "paths": [
     "cloudy/week_1/dusk/2.webp",
-    "cloudy/week_3/dusk/2.webp"
+    "cloudy/week_2/dusk/1.webp",
+    "cloudy/week_3/dusk/2.webp",
+    "cloudy/week_4/dusk/1.webp"
    ]
   },
   {
@@ -671,7 +757,9 @@
    "hash": "018a0573e433",
    "image": "cloudy/week_2/dusk/3.webp",
    "paths": [
+    "cloudy/week_1/dusk/1.webp",
     "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_3/dusk/1.webp",
     "cloudy/week_4/dusk/3.webp"
    ]
   },
@@ -683,7 +771,9 @@
    "hash": "444490756b06",
    "image": "cloudy/week_2/dusk/5.webp",
    "paths": [
+    "cloudy/week_1/dusk/6.webp",
     "cloudy/week_2/dusk/5.webp",
+    "cloudy/week_3/dusk/6.webp",
     "cloudy/week_4/dusk/5.webp"
    ]
   },
@@ -695,7 +785,9 @@
    "hash": "0ebee4d85540",
    "image": "cloudy/week_2/dusk/6.webp",
    "paths": [
+    "cloudy/week_1/dusk/3.webp",
     "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_3/dusk/3.webp",
     "cloudy/week_4/dusk/6.webp"
    ]
   },
@@ -707,7 +799,9 @@
    "hash": "211c0291a514",
    "image": "cloudy/week_2/dusk/7.webp",
    "paths": [
+    "cloudy/week_1/dusk/5.webp",
     "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_3/dusk/5.webp",
     "cloudy/week_4/dusk/7.webp"
    ]
   },
@@ -720,7 +814,9 @@
    "image": "cloudy/week_1/dusk/4.webp",
    "paths": [
     "cloudy/week_1/dusk/4.webp",
-    "cloudy/week_3/dusk/4.webp"
+    "cloudy/week_2/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp",
+    "cloudy/week_4/dusk/4.webp"
    ]
   },
   {
@@ -731,7 +827,9 @@
    "hash": "6b5271665e34",
    "image": "cloudy/week_2/dusk/2.webp",
    "paths": [
+    "cloudy/week_1/dusk/7.webp",
     "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_3/dusk/7.webp",
     "cloudy/week_4/dusk/2.webp"
    ]
   },
@@ -744,7 +842,9 @@
    "image": "cloudy/week_1/night/1.webp",
    "paths": [
     "cloudy/week_1/night/1.webp",
-    "cloudy/week_3/night/1.webp"
+    "cloudy/week_2/night/3.webp",
+    "cloudy/week_3/night/1.webp",
+    "cloudy/week_4/night/3.webp"
    ]
   },
   {
@@ -756,7 +856,9 @@
    "image": "cloudy/week_1/night/7.webp",
    "paths": [
     "cloudy/week_1/night/7.webp",
-    "cloudy/week_3/night/7.webp"
+    "cloudy/week_2/night/1.webp",
+    "cloudy/week_3/night/7.webp",
+    "cloudy/week_4/night/1.webp"
    ]
   },
   {
@@ -768,7 +870,9 @@
    "image": "cloudy/week_1/night/2.webp",
    "paths": [
     "cloudy/week_1/night/2.webp",
-    "cloudy/week_3/night/2.webp"
+    "cloudy/week_2/night/2.webp",
+    "cloudy/week_3/night/2.webp",
+    "cloudy/week_4/night/2.webp"
    ]
   },
   {
@@ -779,7 +883,9 @@
    "hash": "bdc2741f86fb",
    "image": "cloudy/week_2/night/6.webp",
    "paths": [
+    "cloudy/week_1/night/3.webp",
     "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/3.webp",
     "cloudy/week_4/night/6.webp"
    ]
   },
@@ -792,7 +898,9 @@
    "image": "cloudy/week_1/night/6.webp",
    "paths": [
     "cloudy/week_1/night/6.webp",
-    "cloudy/week_3/night/6.webp"
+    "cloudy/week_2/night/7.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/7.webp"
    ]
   },
   {
@@ -803,7 +911,9 @@
    "hash": "f3255e596b2c",
    "image": "cloudy/week_2/night/5.webp",
    "paths": [
+    "cloudy/week_1/night/5.webp",
     "cloudy/week_2/night/5.webp",
+    "cloudy/week_3/night/5.webp",
     "cloudy/week_4/night/5.webp"
    ]
   },
@@ -815,7 +925,9 @@
    "hash": "c6d4061cbef2",
    "image": "cloudy/week_2/night/4.webp",
    "paths": [
+    "cloudy/week_1/night/4.webp",
     "cloudy/week_2/night/4.webp",
+    "cloudy/week_3/night/4.webp",
     "cloudy/week_4/night/4.webp"
    ]
   },
@@ -828,7 +940,9 @@
    "image": "cold/week_1/dawn/1.webp",
    "paths": [
     "cold/week_1/dawn/1.webp",
-    "cold/week_3/dawn/1.webp"
+    "cold/week_2/dawn/7.webp",
+    "cold/week_3/dawn/1.webp",
+    "cold/week_4/dawn/7.webp"
    ]
   },
   {
@@ -840,7 +954,9 @@
    "image": "cold/week_1/dawn/7.webp",
    "paths": [
     "cold/week_1/dawn/7.webp",
-    "cold/week_3/dawn/7.webp"
+    "cold/week_2/dawn/3.webp",
+    "cold/week_3/dawn/7.webp",
+    "cold/week_4/dawn/4.webp"
    ]
   },
   {
@@ -852,7 +968,9 @@
    "image": "cold/week_1/dawn/3.webp",
    "paths": [
     "cold/week_1/dawn/3.webp",
-    "cold/week_3/dawn/3.webp"
+    "cold/week_2/dawn/1.webp",
+    "cold/week_3/dawn/3.webp",
+    "cold/week_4/dawn/2.webp"
    ]
   },
   {
@@ -864,7 +982,9 @@
    "image": "cold/week_1/dawn/4.webp",
    "paths": [
     "cold/week_1/dawn/4.webp",
-    "cold/week_3/dawn/4.webp"
+    "cold/week_2/dawn/2.webp",
+    "cold/week_3/dawn/4.webp",
+    "cold/week_4/dawn/3.webp"
    ]
   },
   {
@@ -875,7 +995,9 @@
    "hash": "484f2079f5aa",
    "image": "cold/week_2/dawn/5.webp",
    "paths": [
+    "cold/week_1/dawn/6.webp",
     "cold/week_2/dawn/5.webp",
+    "cold/week_3/dawn/5.webp",
     "cold/week_4/dawn/5.webp"
    ]
   },
@@ -887,6 +1009,9 @@
    "hash": "ba36a2982ee0",
    "image": "cold/week_4/dawn/1.webp",
    "paths": [
+    "cold/week_1/dawn/2.webp",
+    "cold/week_2/dawn/4.webp",
+    "cold/week_3/dawn/6.webp",
     "cold/week_4/dawn/1.webp"
    ]
   },
@@ -898,7 +1023,9 @@
    "hash": "4210c1f4a1ad",
    "image": "cold/week_2/dawn/6.webp",
    "paths": [
+    "cold/week_1/dawn/5.webp",
     "cold/week_2/dawn/6.webp",
+    "cold/week_3/dawn/2.webp",
     "cold/week_4/dawn/6.webp"
    ]
   },
@@ -910,6 +1037,7 @@
    "hash": "4b92e51e69f8",
    "image": "cold/week_4/day/4.webp",
    "paths": [
+    "cold/week_1/day/4.webp",
     "cold/week_4/day/4.webp"
    ]
   },
@@ -921,6 +1049,7 @@
    "hash": "77dad643efa6",
    "image": "cold/week_3/day/5.webp",
    "paths": [
+    "cold/week_1/day/5.webp",
     "cold/week_3/day/5.webp"
    ]
   },
@@ -932,6 +1061,7 @@
    "hash": "084405b1c79a",
    "image": "cold/week_2/day/5.webp",
    "paths": [
+    "cold/week_1/day/1.webp",
     "cold/week_2/day/5.webp"
    ]
   },
@@ -943,7 +1073,8 @@
    "hash": "e8b7a7602012",
    "image": "cold/week_1/day/6.webp",
    "paths": [
-    "cold/week_1/day/6.webp"
+    "cold/week_1/day/6.webp",
+    "cold/week_3/day/4.webp"
    ]
   },
   {
@@ -954,7 +1085,8 @@
    "hash": "e938ce2769cd",
    "image": "cold/week_2/day/2.webp",
    "paths": [
-    "cold/week_2/day/2.webp"
+    "cold/week_2/day/2.webp",
+    "cold/week_4/day/7.webp"
    ]
   },
   {
@@ -965,7 +1097,8 @@
    "hash": "bf942a9f6d66",
    "image": "cold/week_3/day/6.webp",
    "paths": [
-    "cold/week_3/day/6.webp"
+    "cold/week_3/day/6.webp",
+    "cold/week_4/day/3.webp"
    ]
   },
   {
@@ -976,6 +1109,7 @@
    "hash": "36ffe52cf7ec",
    "image": "cold/week_2/day/4.webp",
    "paths": [
+    "cold/week_1/day/2.webp",
     "cold/week_2/day/4.webp"
    ]
   },
@@ -987,7 +1121,8 @@
    "hash": "999e68c47bfc",
    "image": "cold/week_2/day/3.webp",
    "paths": [
-    "cold/week_2/day/3.webp"
+    "cold/week_2/day/3.webp",
+    "cold/week_3/day/1.webp"
    ]
   },
   {
@@ -998,6 +1133,7 @@
    "hash": "d970e657c4d2",
    "image": "cold/week_4/day/5.webp",
    "paths": [
+    "cold/week_3/day/2.webp",
     "cold/week_4/day/5.webp"
    ]
   },
@@ -1009,6 +1145,7 @@
    "hash": "a37a31d9aa79",
    "image": "cold/week_3/day/3.webp",
    "paths": [
+    "cold/week_2/day/7.webp",
     "cold/week_3/day/3.webp"
    ]
   },
@@ -1020,7 +1157,8 @@
    "hash": "59f61259d350",
    "image": "cold/week_1/day/7.webp",
    "paths": [
-    "cold/week_1/day/7.webp"
+    "cold/week_1/day/7.webp",
+    "cold/week_2/day/1.webp"
    ]
   },
   {
@@ -1031,6 +1169,7 @@
    "hash": "a373f1d83e2f",
    "image": "cold/week_4/day/1.webp",
    "paths": [
+    "cold/week_2/day/6.webp",
     "cold/week_4/day/1.webp"
    ]
   },
@@ -1042,7 +1181,8 @@
    "hash": "d003110fec9f",
    "image": "cold/week_3/day/7.webp",
    "paths": [
-    "cold/week_3/day/7.webp"
+    "cold/week_3/day/7.webp",
+    "cold/week_4/day/6.webp"
    ]
   },
   {
@@ -1053,6 +1193,7 @@
    "hash": "3fd7aa0aae2e",
    "image": "cold/week_4/day/2.webp",
    "paths": [
+    "cold/week_1/day/3.webp",
     "cold/week_4/day/2.webp"
    ]
   },
@@ -1065,7 +1206,9 @@
    "image": "cold/week_1/dusk/7.webp",
    "paths": [
     "cold/week_1/dusk/7.webp",
-    "cold/week_3/dusk/7.webp"
+    "cold/week_2/dusk/4.webp",
+    "cold/week_3/dusk/7.webp",
+    "cold/week_4/dusk/3.webp"
    ]
   },
   {
@@ -1077,7 +1220,9 @@
    "image": "cold/week_1/dusk/3.webp",
    "paths": [
     "cold/week_1/dusk/3.webp",
-    "cold/week_3/dusk/3.webp"
+    "cold/week_2/dusk/6.webp",
+    "cold/week_3/dusk/3.webp",
+    "cold/week_4/dusk/6.webp"
    ]
   },
   {
@@ -1088,7 +1233,10 @@
    "hash": "50eb6a4aa792",
    "image": "cold/week_2/dusk/3.webp",
    "paths": [
-    "cold/week_2/dusk/3.webp"
+    "cold/week_1/dusk/5.webp",
+    "cold/week_2/dusk/3.webp",
+    "cold/week_3/dusk/4.webp",
+    "cold/week_4/dusk/4.webp"
    ]
   },
   {
@@ -1099,7 +1247,10 @@
    "hash": "163ee2f2d1fe",
    "image": "cold/week_2/dusk/1.webp",
    "paths": [
-    "cold/week_2/dusk/1.webp"
+    "cold/week_1/dusk/1.webp",
+    "cold/week_2/dusk/1.webp",
+    "cold/week_3/dusk/1.webp",
+    "cold/week_4/dusk/1.webp"
    ]
   },
   {
@@ -1110,7 +1261,9 @@
    "hash": "917c4c0a6fac",
    "image": "cold/week_2/dusk/5.webp",
    "paths": [
+    "cold/week_1/dusk/6.webp",
     "cold/week_2/dusk/5.webp",
+    "cold/week_3/dusk/6.webp",
     "cold/week_4/dusk/5.webp"
    ]
   },
@@ -1122,6 +1275,9 @@
    "hash": "39e28d40ecf1",
    "image": "cold/week_4/dusk/2.webp",
    "paths": [
+    "cold/week_1/dusk/4.webp",
+    "cold/week_2/dusk/2.webp",
+    "cold/week_3/dusk/5.webp",
     "cold/week_4/dusk/2.webp"
    ]
   },
@@ -1134,7 +1290,9 @@
    "image": "cold/week_1/dusk/2.webp",
    "paths": [
     "cold/week_1/dusk/2.webp",
-    "cold/week_3/dusk/2.webp"
+    "cold/week_2/dusk/7.webp",
+    "cold/week_3/dusk/2.webp",
+    "cold/week_4/dusk/7.webp"
    ]
   },
   {
@@ -1146,7 +1304,9 @@
    "image": "cold/week_1/night/6.webp",
    "paths": [
     "cold/week_1/night/6.webp",
-    "cold/week_3/night/6.webp"
+    "cold/week_2/night/6.webp",
+    "cold/week_3/night/6.webp",
+    "cold/week_4/night/6.webp"
    ]
   },
   {
@@ -1158,7 +1318,9 @@
    "image": "cold/week_1/night/2.webp",
    "paths": [
     "cold/week_1/night/2.webp",
-    "cold/week_3/night/2.webp"
+    "cold/week_2/night/4.webp",
+    "cold/week_3/night/2.webp",
+    "cold/week_4/night/4.webp"
    ]
   },
   {
@@ -1169,7 +1331,9 @@
    "hash": "cb132360385f",
    "image": "cold/week_2/night/2.webp",
    "paths": [
+    "cold/week_1/night/4.webp",
     "cold/week_2/night/2.webp",
+    "cold/week_3/night/4.webp",
     "cold/week_4/night/2.webp"
    ]
   },
@@ -1181,7 +1345,9 @@
    "hash": "54f02eb5aac1",
    "image": "cold/week_2/night/3.webp",
    "paths": [
+    "cold/week_1/night/3.webp",
     "cold/week_2/night/3.webp",
+    "cold/week_3/night/3.webp",
     "cold/week_4/night/3.webp"
    ]
   },
@@ -1193,7 +1359,9 @@
    "hash": "fbf101482bbd",
    "image": "cold/week_2/night/5.webp",
    "paths": [
+    "cold/week_1/night/5.webp",
     "cold/week_2/night/5.webp",
+    "cold/week_3/night/5.webp",
     "cold/week_4/night/5.webp"
    ]
   },
@@ -1205,6 +1373,9 @@
    "hash": "13efc9191981",
    "image": "cold/week_4/night/1.webp",
    "paths": [
+    "cold/week_1/night/1.webp",
+    "cold/week_2/night/1.webp",
+    "cold/week_3/night/1.webp",
     "cold/week_4/night/1.webp"
    ]
   },
@@ -1217,7 +1388,9 @@
    "image": "cold/week_1/night/7.webp",
    "paths": [
     "cold/week_1/night/7.webp",
-    "cold/week_3/night/7.webp"
+    "cold/week_2/night/7.webp",
+    "cold/week_3/night/7.webp",
+    "cold/week_4/night/7.webp"
    ]
   },
   {
@@ -1228,7 +1401,9 @@
    "hash": "3e60dabd7ef7",
    "image": "cold-clear/week_2/dawn/3.webp",
    "paths": [
+    "cold-clear/week_1/dawn/3.webp",
     "cold-clear/week_2/dawn/3.webp",
+    "cold-clear/week_3/dawn/3.webp",
     "cold-clear/week_4/dawn/3.webp"
    ]
   },
@@ -1241,7 +1416,9 @@
    "image": "cold-clear/week_1/dawn/7.webp",
    "paths": [
     "cold-clear/week_1/dawn/7.webp",
-    "cold-clear/week_3/dawn/7.webp"
+    "cold-clear/week_2/dawn/1.webp",
+    "cold-clear/week_3/dawn/7.webp",
+    "cold-clear/week_4/dawn/1.webp"
    ]
   },
   {
@@ -1252,7 +1429,9 @@
    "hash": "5a6dd26eb7db",
    "image": "cold-clear/week_2/dawn/6.webp",
    "paths": [
+    "cold-clear/week_1/dawn/5.webp",
     "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_3/dawn/5.webp",
     "cold-clear/week_4/dawn/6.webp"
    ]
   },
@@ -1265,7 +1444,9 @@
    "image": "cold-clear/week_1/dawn/2.webp",
    "paths": [
     "cold-clear/week_1/dawn/2.webp",
-    "cold-clear/week_3/dawn/2.webp"
+    "cold-clear/week_2/dawn/5.webp",
+    "cold-clear/week_3/dawn/2.webp",
+    "cold-clear/week_4/dawn/5.webp"
    ]
   },
   {
@@ -1276,7 +1457,9 @@
    "hash": "4040cfcfc732",
    "image": "cold-clear/week_2/dawn/7.webp",
    "paths": [
+    "cold-clear/week_1/dawn/4.webp",
     "cold-clear/week_2/dawn/7.webp",
+    "cold-clear/week_3/dawn/4.webp",
     "cold-clear/week_4/dawn/7.webp"
    ]
   },
@@ -1288,7 +1471,9 @@
    "hash": "28129477b706",
    "image": "cold-clear/week_2/dawn/2.webp",
    "paths": [
+    "cold-clear/week_1/dawn/1.webp",
     "cold-clear/week_2/dawn/2.webp",
+    "cold-clear/week_3/dawn/1.webp",
     "cold-clear/week_4/dawn/2.webp"
    ]
   },
@@ -1300,7 +1485,9 @@
    "hash": "6ca4d027da38",
    "image": "cold-clear/week_2/dawn/4.webp",
    "paths": [
+    "cold-clear/week_1/dawn/6.webp",
     "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_3/dawn/6.webp",
     "cold-clear/week_4/dawn/4.webp"
    ]
   },
@@ -1312,7 +1499,10 @@
    "hash": "45b1ac83db20",
    "image": "cold-clear/week_2/day/1.webp",
    "paths": [
-    "cold-clear/week_2/day/1.webp"
+    "cold-clear/week_1/day/3.webp",
+    "cold-clear/week_2/day/1.webp",
+    "cold-clear/week_3/day/6.webp",
+    "cold-clear/week_4/day/5.webp"
    ]
   },
   {
@@ -1323,7 +1513,10 @@
    "hash": "21c809043132",
    "image": "cold-clear/week_1/day/1.webp",
    "paths": [
-    "cold-clear/week_1/day/1.webp"
+    "cold-clear/week_1/day/1.webp",
+    "cold-clear/week_2/day/4.webp",
+    "cold-clear/week_3/day/3.webp",
+    "cold-clear/week_4/day/2.webp"
    ]
   },
   {
@@ -1334,7 +1527,10 @@
    "hash": "042ba0a95388",
    "image": "cold-clear/week_1/day/4.webp",
    "paths": [
-    "cold-clear/week_1/day/4.webp"
+    "cold-clear/week_1/day/4.webp",
+    "cold-clear/week_2/day/3.webp",
+    "cold-clear/week_3/day/2.webp",
+    "cold-clear/week_4/day/1.webp"
    ]
   },
   {
@@ -1345,7 +1541,10 @@
    "hash": "bbb3d8348b00",
    "image": "cold-clear/week_3/day/5.webp",
    "paths": [
-    "cold-clear/week_3/day/5.webp"
+    "cold-clear/week_1/day/6.webp",
+    "cold-clear/week_2/day/6.webp",
+    "cold-clear/week_3/day/5.webp",
+    "cold-clear/week_4/day/6.webp"
    ]
   },
   {
@@ -1356,7 +1555,10 @@
    "hash": "decff597fe6c",
    "image": "cold-clear/week_3/day/1.webp",
    "paths": [
-    "cold-clear/week_3/day/1.webp"
+    "cold-clear/week_1/day/7.webp",
+    "cold-clear/week_2/day/7.webp",
+    "cold-clear/week_3/day/1.webp",
+    "cold-clear/week_4/day/7.webp"
    ]
   },
   {
@@ -1367,6 +1569,9 @@
    "hash": "bbad2500c852",
    "image": "cold-clear/week_4/day/3.webp",
    "paths": [
+    "cold-clear/week_1/day/5.webp",
+    "cold-clear/week_2/day/5.webp",
+    "cold-clear/week_3/day/7.webp",
     "cold-clear/week_4/day/3.webp"
    ]
   },
@@ -1378,7 +1583,10 @@
    "hash": "32dec9fbdcaa",
    "image": "cold-clear/week_2/day/2.webp",
    "paths": [
-    "cold-clear/week_2/day/2.webp"
+    "cold-clear/week_1/day/2.webp",
+    "cold-clear/week_2/day/2.webp",
+    "cold-clear/week_3/day/4.webp",
+    "cold-clear/week_4/day/4.webp"
    ]
   },
   {
@@ -1390,7 +1598,9 @@
    "image": "cold-clear/week_1/dusk/4.webp",
    "paths": [
     "cold-clear/week_1/dusk/4.webp",
-    "cold-clear/week_3/dusk/4.webp"
+    "cold-clear/week_2/dusk/7.webp",
+    "cold-clear/week_3/dusk/4.webp",
+    "cold-clear/week_4/dusk/7.webp"
    ]
   },
   {
@@ -1402,7 +1612,9 @@
    "image": "cold-clear/week_1/dusk/2.webp",
    "paths": [
     "cold-clear/week_1/dusk/2.webp",
-    "cold-clear/week_3/dusk/2.webp"
+    "cold-clear/week_2/dusk/1.webp",
+    "cold-clear/week_3/dusk/2.webp",
+    "cold-clear/week_4/dusk/1.webp"
    ]
   },
   {
@@ -1413,7 +1625,9 @@
    "hash": "0b4330abc214",
    "image": "cold-clear/week_2/dusk/3.webp",
    "paths": [
+    "cold-clear/week_1/dusk/1.webp",
     "cold-clear/week_2/dusk/3.webp",
+    "cold-clear/week_3/dusk/1.webp",
     "cold-clear/week_4/dusk/3.webp"
    ]
   },
@@ -1425,7 +1639,9 @@
    "hash": "ff19d8654ec3",
    "image": "cold-clear/week_2/dusk/6.webp",
    "paths": [
+    "cold-clear/week_1/dusk/6.webp",
     "cold-clear/week_2/dusk/6.webp",
+    "cold-clear/week_3/dusk/6.webp",
     "cold-clear/week_4/dusk/6.webp"
    ]
   },
@@ -1438,7 +1654,9 @@
    "image": "cold-clear/week_1/dusk/5.webp",
    "paths": [
     "cold-clear/week_1/dusk/5.webp",
-    "cold-clear/week_3/dusk/5.webp"
+    "cold-clear/week_2/dusk/2.webp",
+    "cold-clear/week_3/dusk/5.webp",
+    "cold-clear/week_4/dusk/2.webp"
    ]
   },
   {
@@ -1450,7 +1668,9 @@
    "image": "cold-clear/week_1/dusk/7.webp",
    "paths": [
     "cold-clear/week_1/dusk/7.webp",
-    "cold-clear/week_3/dusk/7.webp"
+    "cold-clear/week_2/dusk/4.webp",
+    "cold-clear/week_3/dusk/7.webp",
+    "cold-clear/week_4/dusk/4.webp"
    ]
   },
   {
@@ -1461,7 +1681,9 @@
    "hash": "1f74ef9146fb",
    "image": "cold-clear/week_2/dusk/5.webp",
    "paths": [
+    "cold-clear/week_1/dusk/3.webp",
     "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_3/dusk/3.webp",
     "cold-clear/week_4/dusk/5.webp"
    ]
   },
@@ -1473,7 +1695,9 @@
    "hash": "112364f9e477",
    "image": "cold-clear/week_2/night/3.webp",
    "paths": [
+    "cold-clear/week_1/night/1.webp",
     "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_3/night/1.webp",
     "cold-clear/week_4/night/3.webp"
    ]
   },
@@ -1485,7 +1709,9 @@
    "hash": "da90853b2ccb",
    "image": "cold-clear/week_2/night/2.webp",
    "paths": [
+    "cold-clear/week_1/night/5.webp",
     "cold-clear/week_2/night/2.webp",
+    "cold-clear/week_3/night/5.webp",
     "cold-clear/week_4/night/2.webp"
    ]
   },
@@ -1497,7 +1723,9 @@
    "hash": "d298c8c1f224",
    "image": "cold-clear/week_2/night/4.webp",
    "paths": [
+    "cold-clear/week_1/night/2.webp",
     "cold-clear/week_2/night/4.webp",
+    "cold-clear/week_3/night/2.webp",
     "cold-clear/week_4/night/4.webp"
    ]
   },
@@ -1510,7 +1738,9 @@
    "image": "cold-clear/week_1/night/3.webp",
    "paths": [
     "cold-clear/week_1/night/3.webp",
-    "cold-clear/week_3/night/3.webp"
+    "cold-clear/week_2/night/1.webp",
+    "cold-clear/week_3/night/3.webp",
+    "cold-clear/week_4/night/1.webp"
    ]
   },
   {
@@ -1521,7 +1751,9 @@
    "hash": "f453a678f470",
    "image": "cold-clear/week_2/night/6.webp",
    "paths": [
+    "cold-clear/week_1/night/6.webp",
     "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_3/night/6.webp",
     "cold-clear/week_4/night/6.webp"
    ]
   },
@@ -1534,7 +1766,9 @@
    "image": "cold-clear/week_1/night/7.webp",
    "paths": [
     "cold-clear/week_1/night/7.webp",
-    "cold-clear/week_3/night/7.webp"
+    "cold-clear/week_2/night/5.webp",
+    "cold-clear/week_3/night/7.webp",
+    "cold-clear/week_4/night/5.webp"
    ]
   },
   {
@@ -1546,7 +1780,9 @@
    "image": "cold-clear/week_1/night/4.webp",
    "paths": [
     "cold-clear/week_1/night/4.webp",
-    "cold-clear/week_3/night/4.webp"
+    "cold-clear/week_2/night/7.webp",
+    "cold-clear/week_3/night/4.webp",
+    "cold-clear/week_4/night/7.webp"
    ]
   },
   {
@@ -1558,7 +1794,9 @@
    "image": "fog/week_1/dawn/5.webp",
    "paths": [
     "fog/week_1/dawn/5.webp",
-    "fog/week_3/dawn/5.webp"
+    "fog/week_2/dawn/2.webp",
+    "fog/week_3/dawn/5.webp",
+    "fog/week_4/dawn/2.webp"
    ]
   },
   {
@@ -1570,7 +1808,9 @@
    "image": "fog/week_1/dawn/1.webp",
    "paths": [
     "fog/week_1/dawn/1.webp",
-    "fog/week_3/dawn/1.webp"
+    "fog/week_2/dawn/5.webp",
+    "fog/week_3/dawn/1.webp",
+    "fog/week_4/dawn/5.webp"
    ]
   },
   {
@@ -1582,7 +1822,9 @@
    "image": "fog/week_1/dawn/4.webp",
    "paths": [
     "fog/week_1/dawn/4.webp",
-    "fog/week_3/dawn/4.webp"
+    "fog/week_2/dawn/7.webp",
+    "fog/week_3/dawn/4.webp",
+    "fog/week_4/dawn/7.webp"
    ]
   },
   {
@@ -1593,7 +1835,9 @@
    "hash": "13fa1ba0ce60",
    "image": "fog/week_2/dawn/1.webp",
    "paths": [
+    "fog/week_1/dawn/2.webp",
     "fog/week_2/dawn/1.webp",
+    "fog/week_3/dawn/2.webp",
     "fog/week_4/dawn/1.webp"
    ]
   },
@@ -1606,7 +1850,9 @@
    "image": "fog/week_1/dawn/3.webp",
    "paths": [
     "fog/week_1/dawn/3.webp",
-    "fog/week_3/dawn/3.webp"
+    "fog/week_2/dawn/6.webp",
+    "fog/week_3/dawn/3.webp",
+    "fog/week_4/dawn/6.webp"
    ]
   },
   {
@@ -1618,7 +1864,9 @@
    "image": "fog/week_1/dawn/7.webp",
    "paths": [
     "fog/week_1/dawn/7.webp",
-    "fog/week_3/dawn/7.webp"
+    "fog/week_2/dawn/4.webp",
+    "fog/week_3/dawn/7.webp",
+    "fog/week_4/dawn/4.webp"
    ]
   },
   {
@@ -1629,7 +1877,9 @@
    "hash": "8ea1dc6bec6a",
    "image": "fog/week_2/dawn/3.webp",
    "paths": [
+    "fog/week_1/dawn/6.webp",
     "fog/week_2/dawn/3.webp",
+    "fog/week_3/dawn/6.webp",
     "fog/week_4/dawn/3.webp"
    ]
   },
@@ -1641,7 +1891,10 @@
    "hash": "2d71f451d0df",
    "image": "fog/week_1/day/3.webp",
    "paths": [
-    "fog/week_1/day/3.webp"
+    "fog/week_1/day/3.webp",
+    "fog/week_2/day/2.webp",
+    "fog/week_3/day/1.webp",
+    "fog/week_4/day/2.webp"
    ]
   },
   {
@@ -1652,7 +1905,10 @@
    "hash": "84811d2b9372",
    "image": "fog/week_3/day/2.webp",
    "paths": [
-    "fog/week_3/day/2.webp"
+    "fog/week_1/day/6.webp",
+    "fog/week_2/day/5.webp",
+    "fog/week_3/day/2.webp",
+    "fog/week_4/day/5.webp"
    ]
   },
   {
@@ -1663,6 +1919,9 @@
    "hash": "541778f8c617",
    "image": "fog/week_4/day/1.webp",
    "paths": [
+    "fog/week_1/day/4.webp",
+    "fog/week_2/day/4.webp",
+    "fog/week_3/day/6.webp",
     "fog/week_4/day/1.webp"
    ]
   },
@@ -1674,7 +1933,10 @@
    "hash": "62480343c313",
    "image": "fog/week_2/day/6.webp",
    "paths": [
-    "fog/week_2/day/6.webp"
+    "fog/week_1/day/5.webp",
+    "fog/week_2/day/6.webp",
+    "fog/week_3/day/4.webp",
+    "fog/week_4/day/4.webp"
    ]
   },
   {
@@ -1685,7 +1947,10 @@
    "hash": "dd6b06e34d3e",
    "image": "fog/week_3/day/7.webp",
    "paths": [
-    "fog/week_3/day/7.webp"
+    "fog/week_1/day/7.webp",
+    "fog/week_2/day/7.webp",
+    "fog/week_3/day/7.webp",
+    "fog/week_4/day/6.webp"
    ]
   },
   {
@@ -1696,7 +1961,10 @@
    "hash": "36972a49b9e6",
    "image": "fog/week_2/day/1.webp",
    "paths": [
-    "fog/week_2/day/1.webp"
+    "fog/week_1/day/2.webp",
+    "fog/week_2/day/1.webp",
+    "fog/week_3/day/3.webp",
+    "fog/week_4/day/3.webp"
    ]
   },
   {
@@ -1707,7 +1975,10 @@
    "hash": "f1d8b3873dff",
    "image": "fog/week_1/day/1.webp",
    "paths": [
-    "fog/week_1/day/1.webp"
+    "fog/week_1/day/1.webp",
+    "fog/week_2/day/3.webp",
+    "fog/week_3/day/5.webp",
+    "fog/week_4/day/7.webp"
    ]
   },
   {
@@ -1719,7 +1990,9 @@
    "image": "fog/week_1/dusk/1.webp",
    "paths": [
     "fog/week_1/dusk/1.webp",
-    "fog/week_3/dusk/1.webp"
+    "fog/week_2/dusk/4.webp",
+    "fog/week_3/dusk/1.webp",
+    "fog/week_4/dusk/4.webp"
    ]
   },
   {
@@ -1731,7 +2004,9 @@
    "image": "fog/week_1/dusk/5.webp",
    "paths": [
     "fog/week_1/dusk/5.webp",
-    "fog/week_3/dusk/5.webp"
+    "fog/week_2/dusk/2.webp",
+    "fog/week_3/dusk/5.webp",
+    "fog/week_4/dusk/2.webp"
    ]
   },
   {
@@ -1742,7 +2017,9 @@
    "hash": "5cd228859e14",
    "image": "fog/week_2/dusk/3.webp",
    "paths": [
+    "fog/week_1/dusk/2.webp",
     "fog/week_2/dusk/3.webp",
+    "fog/week_3/dusk/2.webp",
     "fog/week_4/dusk/3.webp"
    ]
   },
@@ -1755,7 +2032,9 @@
    "image": "fog/week_1/dusk/4.webp",
    "paths": [
     "fog/week_1/dusk/4.webp",
-    "fog/week_3/dusk/4.webp"
+    "fog/week_2/dusk/5.webp",
+    "fog/week_3/dusk/4.webp",
+    "fog/week_4/dusk/5.webp"
    ]
   },
   {
@@ -1766,7 +2045,9 @@
    "hash": "b5837596744c",
    "image": "fog/week_2/dusk/1.webp",
    "paths": [
+    "fog/week_1/dusk/7.webp",
     "fog/week_2/dusk/1.webp",
+    "fog/week_3/dusk/7.webp",
     "fog/week_4/dusk/1.webp"
    ]
   },
@@ -1778,7 +2059,9 @@
    "hash": "838bd4824615",
    "image": "fog/week_2/dusk/7.webp",
    "paths": [
+    "fog/week_1/dusk/3.webp",
     "fog/week_2/dusk/7.webp",
+    "fog/week_3/dusk/3.webp",
     "fog/week_4/dusk/7.webp"
    ]
   },
@@ -1791,7 +2074,9 @@
    "image": "fog/week_1/dusk/6.webp",
    "paths": [
     "fog/week_1/dusk/6.webp",
-    "fog/week_3/dusk/6.webp"
+    "fog/week_2/dusk/6.webp",
+    "fog/week_3/dusk/6.webp",
+    "fog/week_4/dusk/6.webp"
    ]
   },
   {
@@ -1803,7 +2088,9 @@
    "image": "fog/week_1/night/3.webp",
    "paths": [
     "fog/week_1/night/3.webp",
-    "fog/week_3/night/3.webp"
+    "fog/week_2/night/6.webp",
+    "fog/week_3/night/3.webp",
+    "fog/week_4/night/6.webp"
    ]
   },
   {
@@ -1815,7 +2102,9 @@
    "image": "fog/week_1/night/5.webp",
    "paths": [
     "fog/week_1/night/5.webp",
-    "fog/week_3/night/5.webp"
+    "fog/week_2/night/1.webp",
+    "fog/week_3/night/5.webp",
+    "fog/week_4/night/1.webp"
    ]
   },
   {
@@ -1827,7 +2116,9 @@
    "image": "fog/week_1/night/1.webp",
    "paths": [
     "fog/week_1/night/1.webp",
-    "fog/week_3/night/1.webp"
+    "fog/week_2/night/5.webp",
+    "fog/week_3/night/1.webp",
+    "fog/week_4/night/5.webp"
    ]
   },
   {
@@ -1839,7 +2130,9 @@
    "image": "fog/week_1/night/7.webp",
    "paths": [
     "fog/week_1/night/7.webp",
-    "fog/week_3/night/7.webp"
+    "fog/week_2/night/7.webp",
+    "fog/week_3/night/7.webp",
+    "fog/week_4/night/7.webp"
    ]
   },
   {
@@ -1850,7 +2143,9 @@
    "hash": "7acec82c9b6f",
    "image": "fog/week_2/night/4.webp",
    "paths": [
+    "fog/week_1/night/6.webp",
     "fog/week_2/night/4.webp",
+    "fog/week_3/night/6.webp",
     "fog/week_4/night/4.webp"
    ]
   },
@@ -1863,7 +2158,9 @@
    "image": "fog/week_1/night/4.webp",
    "paths": [
     "fog/week_1/night/4.webp",
-    "fog/week_3/night/4.webp"
+    "fog/week_2/night/3.webp",
+    "fog/week_3/night/4.webp",
+    "fog/week_4/night/3.webp"
    ]
   },
   {
@@ -1874,7 +2171,9 @@
    "hash": "0467a4574c0b",
    "image": "fog/week_2/night/2.webp",
    "paths": [
+    "fog/week_1/night/2.webp",
     "fog/week_2/night/2.webp",
+    "fog/week_3/night/2.webp",
     "fog/week_4/night/2.webp"
    ]
   },
@@ -1887,7 +2186,9 @@
    "image": "heat/week_1/dawn/3.webp",
    "paths": [
     "heat/week_1/dawn/3.webp",
-    "heat/week_3/dawn/3.webp"
+    "heat/week_2/dawn/4.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/4.webp"
    ]
   },
   {
@@ -1899,7 +2200,9 @@
    "image": "heat/week_1/dawn/4.webp",
    "paths": [
     "heat/week_1/dawn/4.webp",
-    "heat/week_3/dawn/4.webp"
+    "heat/week_2/dawn/1.webp",
+    "heat/week_3/dawn/4.webp",
+    "heat/week_4/dawn/1.webp"
    ]
   },
   {
@@ -1910,7 +2213,9 @@
    "hash": "c6d266d04418",
    "image": "heat/week_2/dawn/7.webp",
    "paths": [
+    "heat/week_1/dawn/2.webp",
     "heat/week_2/dawn/7.webp",
+    "heat/week_3/dawn/2.webp",
     "heat/week_4/dawn/7.webp"
    ]
   },
@@ -1923,7 +2228,9 @@
    "image": "heat/week_1/dawn/7.webp",
    "paths": [
     "heat/week_1/dawn/7.webp",
-    "heat/week_3/dawn/7.webp"
+    "heat/week_2/dawn/5.webp",
+    "heat/week_3/dawn/7.webp",
+    "heat/week_4/dawn/5.webp"
    ]
   },
   {
@@ -1934,7 +2241,9 @@
    "hash": "818c078a2bda",
    "image": "heat/week_2/dawn/3.webp",
    "paths": [
+    "heat/week_1/dawn/1.webp",
     "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/1.webp",
     "heat/week_4/dawn/3.webp"
    ]
   },
@@ -1947,7 +2256,9 @@
    "image": "heat/week_1/dawn/5.webp",
    "paths": [
     "heat/week_1/dawn/5.webp",
-    "heat/week_3/dawn/5.webp"
+    "heat/week_2/dawn/6.webp",
+    "heat/week_3/dawn/5.webp",
+    "heat/week_4/dawn/6.webp"
    ]
   },
   {
@@ -1959,7 +2270,9 @@
    "image": "heat/week_1/dawn/6.webp",
    "paths": [
     "heat/week_1/dawn/6.webp",
-    "heat/week_3/dawn/6.webp"
+    "heat/week_2/dawn/2.webp",
+    "heat/week_3/dawn/6.webp",
+    "heat/week_4/dawn/2.webp"
    ]
   },
   {
@@ -1970,7 +2283,10 @@
    "hash": "98d89edda1cd",
    "image": "heat/week_1/day/4.webp",
    "paths": [
-    "heat/week_1/day/4.webp"
+    "heat/week_1/day/4.webp",
+    "heat/week_2/day/1.webp",
+    "heat/week_3/day/3.webp",
+    "heat/week_4/day/4.webp"
    ]
   },
   {
@@ -1981,7 +2297,10 @@
    "hash": "d6593f52fb76",
    "image": "heat/week_2/day/2.webp",
    "paths": [
-    "heat/week_2/day/2.webp"
+    "heat/week_1/day/7.webp",
+    "heat/week_2/day/2.webp",
+    "heat/week_3/day/6.webp",
+    "heat/week_4/day/6.webp"
    ]
   },
   {
@@ -1992,7 +2311,10 @@
    "hash": "6591bd91d1fc",
    "image": "heat/week_3/day/1.webp",
    "paths": [
-    "heat/week_3/day/1.webp"
+    "heat/week_1/day/3.webp",
+    "heat/week_2/day/4.webp",
+    "heat/week_3/day/1.webp",
+    "heat/week_4/day/2.webp"
    ]
   },
   {
@@ -2003,7 +2325,10 @@
    "hash": "afd3c9db83bd",
    "image": "heat/week_2/day/7.webp",
    "paths": [
-    "heat/week_2/day/7.webp"
+    "heat/week_1/day/6.webp",
+    "heat/week_2/day/7.webp",
+    "heat/week_3/day/4.webp",
+    "heat/week_4/day/5.webp"
    ]
   },
   {
@@ -2014,7 +2339,10 @@
    "hash": "6ce02da2ab7a",
    "image": "heat/week_3/day/5.webp",
    "paths": [
-    "heat/week_3/day/5.webp"
+    "heat/week_1/day/5.webp",
+    "heat/week_2/day/6.webp",
+    "heat/week_3/day/5.webp",
+    "heat/week_4/day/3.webp"
    ]
   },
   {
@@ -2025,7 +2353,10 @@
    "hash": "36881ce76889",
    "image": "heat/week_2/day/5.webp",
    "paths": [
-    "heat/week_2/day/5.webp"
+    "heat/week_1/day/2.webp",
+    "heat/week_2/day/5.webp",
+    "heat/week_3/day/2.webp",
+    "heat/week_4/day/1.webp"
    ]
   },
   {
@@ -2036,6 +2367,9 @@
    "hash": "0cc1648cbc13",
    "image": "heat/week_4/day/7.webp",
    "paths": [
+    "heat/week_1/day/1.webp",
+    "heat/week_2/day/3.webp",
+    "heat/week_3/day/7.webp",
     "heat/week_4/day/7.webp"
    ]
   },
@@ -2048,7 +2382,9 @@
    "image": "heat/week_1/dusk/3.webp",
    "paths": [
     "heat/week_1/dusk/3.webp",
-    "heat/week_3/dusk/3.webp"
+    "heat/week_2/dusk/2.webp",
+    "heat/week_3/dusk/3.webp",
+    "heat/week_4/dusk/2.webp"
    ]
   },
   {
@@ -2060,7 +2396,9 @@
    "image": "heat/week_1/dusk/4.webp",
    "paths": [
     "heat/week_1/dusk/4.webp",
-    "heat/week_3/dusk/4.webp"
+    "heat/week_2/dusk/4.webp",
+    "heat/week_3/dusk/4.webp",
+    "heat/week_4/dusk/4.webp"
    ]
   },
   {
@@ -2071,7 +2409,9 @@
    "hash": "248b04dcf98d",
    "image": "heat/week_2/dusk/6.webp",
    "paths": [
+    "heat/week_1/dusk/1.webp",
     "heat/week_2/dusk/6.webp",
+    "heat/week_3/dusk/1.webp",
     "heat/week_4/dusk/6.webp"
    ]
   },
@@ -2083,7 +2423,9 @@
    "hash": "3e88aef1fb06",
    "image": "heat/week_2/dusk/7.webp",
    "paths": [
+    "heat/week_1/dusk/2.webp",
     "heat/week_2/dusk/7.webp",
+    "heat/week_3/dusk/2.webp",
     "heat/week_4/dusk/7.webp"
    ]
   },
@@ -2095,7 +2437,9 @@
    "hash": "93f4a43551af",
    "image": "heat/week_2/dusk/1.webp",
    "paths": [
+    "heat/week_1/dusk/7.webp",
     "heat/week_2/dusk/1.webp",
+    "heat/week_3/dusk/7.webp",
     "heat/week_4/dusk/1.webp"
    ]
   },
@@ -2107,7 +2451,9 @@
    "hash": "555f76c5594f",
    "image": "heat/week_2/dusk/3.webp",
    "paths": [
+    "heat/week_1/dusk/5.webp",
     "heat/week_2/dusk/3.webp",
+    "heat/week_3/dusk/5.webp",
     "heat/week_4/dusk/3.webp"
    ]
   },
@@ -2120,7 +2466,9 @@
    "image": "heat/week_1/dusk/6.webp",
    "paths": [
     "heat/week_1/dusk/6.webp",
-    "heat/week_3/dusk/6.webp"
+    "heat/week_2/dusk/5.webp",
+    "heat/week_3/dusk/6.webp",
+    "heat/week_4/dusk/5.webp"
    ]
   },
   {
@@ -2132,7 +2480,9 @@
    "image": "heat/week_1/night/4.webp",
    "paths": [
     "heat/week_1/night/4.webp",
-    "heat/week_3/night/4.webp"
+    "heat/week_2/night/5.webp",
+    "heat/week_3/night/4.webp",
+    "heat/week_4/night/5.webp"
    ]
   },
   {
@@ -2143,7 +2493,9 @@
    "hash": "2a3a60226c30",
    "image": "heat/week_2/night/7.webp",
    "paths": [
+    "heat/week_1/night/5.webp",
     "heat/week_2/night/7.webp",
+    "heat/week_3/night/5.webp",
     "heat/week_4/night/7.webp"
    ]
   },
@@ -2155,7 +2507,9 @@
    "hash": "e62c00a72fb4",
    "image": "heat/week_2/night/6.webp",
    "paths": [
+    "heat/week_1/night/7.webp",
     "heat/week_2/night/6.webp",
+    "heat/week_3/night/7.webp",
     "heat/week_4/night/6.webp"
    ]
   },
@@ -2168,7 +2522,9 @@
    "image": "heat/week_1/night/3.webp",
    "paths": [
     "heat/week_1/night/3.webp",
-    "heat/week_3/night/3.webp"
+    "heat/week_2/night/1.webp",
+    "heat/week_3/night/3.webp",
+    "heat/week_4/night/1.webp"
    ]
   },
   {
@@ -2180,7 +2536,9 @@
    "image": "heat/week_1/night/2.webp",
    "paths": [
     "heat/week_1/night/2.webp",
-    "heat/week_3/night/2.webp"
+    "heat/week_2/night/3.webp",
+    "heat/week_3/night/2.webp",
+    "heat/week_4/night/3.webp"
    ]
   },
   {
@@ -2191,7 +2549,9 @@
    "hash": "87546db18e01",
    "image": "heat/week_2/night/2.webp",
    "paths": [
+    "heat/week_1/night/6.webp",
     "heat/week_2/night/2.webp",
+    "heat/week_3/night/6.webp",
     "heat/week_4/night/2.webp"
    ]
   },
@@ -2204,7 +2564,9 @@
    "image": "heat/week_1/night/1.webp",
    "paths": [
     "heat/week_1/night/1.webp",
-    "heat/week_3/night/1.webp"
+    "heat/week_2/night/4.webp",
+    "heat/week_3/night/1.webp",
+    "heat/week_4/night/4.webp"
    ]
   },
   {
@@ -2216,7 +2578,9 @@
    "image": "rain/week_1/dawn/2.webp",
    "paths": [
     "rain/week_1/dawn/2.webp",
-    "rain/week_3/dawn/2.webp"
+    "rain/week_2/dawn/7.webp",
+    "rain/week_3/dawn/2.webp",
+    "rain/week_4/dawn/7.webp"
    ]
   },
   {
@@ -2228,7 +2592,9 @@
    "image": "rain/week_1/dawn/3.webp",
    "paths": [
     "rain/week_1/dawn/3.webp",
-    "rain/week_3/dawn/3.webp"
+    "rain/week_2/dawn/4.webp",
+    "rain/week_3/dawn/3.webp",
+    "rain/week_4/dawn/4.webp"
    ]
   },
   {
@@ -2239,7 +2605,9 @@
    "hash": "80770bf13004",
    "image": "rain/week_2/dawn/5.webp",
    "paths": [
+    "rain/week_1/dawn/5.webp",
     "rain/week_2/dawn/5.webp",
+    "rain/week_3/dawn/5.webp",
     "rain/week_4/dawn/5.webp"
    ]
   },
@@ -2251,7 +2619,9 @@
    "hash": "5526989179bd",
    "image": "rain/week_2/dawn/6.webp",
    "paths": [
+    "rain/week_1/dawn/1.webp",
     "rain/week_2/dawn/6.webp",
+    "rain/week_3/dawn/1.webp",
     "rain/week_4/dawn/6.webp"
    ]
   },
@@ -2263,7 +2633,9 @@
    "hash": "7bd5758fb7b5",
    "image": "rain/week_2/dawn/2.webp",
    "paths": [
+    "rain/week_1/dawn/4.webp",
     "rain/week_2/dawn/2.webp",
+    "rain/week_3/dawn/4.webp",
     "rain/week_4/dawn/2.webp"
    ]
   },
@@ -2276,7 +2648,9 @@
    "image": "rain/week_1/dawn/6.webp",
    "paths": [
     "rain/week_1/dawn/6.webp",
-    "rain/week_3/dawn/6.webp"
+    "rain/week_2/dawn/3.webp",
+    "rain/week_3/dawn/6.webp",
+    "rain/week_4/dawn/3.webp"
    ]
   },
   {
@@ -2288,7 +2662,9 @@
    "image": "rain/week_1/dawn/7.webp",
    "paths": [
     "rain/week_1/dawn/7.webp",
-    "rain/week_3/dawn/7.webp"
+    "rain/week_2/dawn/1.webp",
+    "rain/week_3/dawn/7.webp",
+    "rain/week_4/dawn/1.webp"
    ]
   },
   {
@@ -2299,7 +2675,8 @@
    "hash": "2b750515575e",
    "image": "rain/week_1/day/2.webp",
    "paths": [
-    "rain/week_1/day/2.webp"
+    "rain/week_1/day/2.webp",
+    "rain/week_2/day/3.webp"
    ]
   },
   {
@@ -2310,7 +2687,8 @@
    "hash": "00a672556998",
    "image": "rain/week_1/day/3.webp",
    "paths": [
-    "rain/week_1/day/3.webp"
+    "rain/week_1/day/3.webp",
+    "rain/week_2/day/2.webp"
    ]
   },
   {
@@ -2321,6 +2699,7 @@
    "hash": "8ce35385e048",
    "image": "rain/week_2/day/6.webp",
    "paths": [
+    "rain/week_1/day/6.webp",
     "rain/week_2/day/6.webp"
    ]
   },
@@ -2332,7 +2711,8 @@
    "hash": "e7547cfdee94",
    "image": "rain/week_2/day/4.webp",
    "paths": [
-    "rain/week_2/day/4.webp"
+    "rain/week_2/day/4.webp",
+    "rain/week_3/day/6.webp"
    ]
   },
   {
@@ -2343,7 +2723,8 @@
    "hash": "e54bbf2b56b2",
    "image": "rain/week_3/day/3.webp",
    "paths": [
-    "rain/week_3/day/3.webp"
+    "rain/week_3/day/3.webp",
+    "rain/week_4/day/6.webp"
    ]
   },
   {
@@ -2354,6 +2735,7 @@
    "hash": "057e8c9e5039",
    "image": "rain/week_4/day/2.webp",
    "paths": [
+    "rain/week_1/day/4.webp",
     "rain/week_4/day/2.webp"
    ]
   },
@@ -2365,7 +2747,8 @@
    "hash": "d8d16083a690",
    "image": "rain/week_3/day/5.webp",
    "paths": [
-    "rain/week_3/day/5.webp"
+    "rain/week_3/day/5.webp",
+    "rain/week_4/day/5.webp"
    ]
   },
   {
@@ -2376,7 +2759,8 @@
    "hash": "fe838c8901f7",
    "image": "rain/week_2/day/1.webp",
    "paths": [
-    "rain/week_2/day/1.webp"
+    "rain/week_2/day/1.webp",
+    "rain/week_4/day/7.webp"
    ]
   },
   {
@@ -2387,7 +2771,8 @@
    "hash": "d878b96a3f71",
    "image": "rain/week_1/day/1.webp",
    "paths": [
-    "rain/week_1/day/1.webp"
+    "rain/week_1/day/1.webp",
+    "rain/week_3/day/4.webp"
    ]
   },
   {
@@ -2398,6 +2783,7 @@
    "hash": "3bd49d0acf2b",
    "image": "rain/week_2/day/5.webp",
    "paths": [
+    "rain/week_1/day/5.webp",
     "rain/week_2/day/5.webp"
    ]
   },
@@ -2409,7 +2795,8 @@
    "hash": "d86d4f5699c2",
    "image": "rain/week_3/day/1.webp",
    "paths": [
-    "rain/week_3/day/1.webp"
+    "rain/week_3/day/1.webp",
+    "rain/week_4/day/1.webp"
    ]
   },
   {
@@ -2420,6 +2807,7 @@
    "hash": "a0ef2720c507",
    "image": "rain/week_3/day/7.webp",
    "paths": [
+    "rain/week_1/day/7.webp",
     "rain/week_3/day/7.webp"
    ]
   },
@@ -2431,6 +2819,7 @@
    "hash": "c9c6fd784b69",
    "image": "rain/week_4/day/4.webp",
    "paths": [
+    "rain/week_3/day/2.webp",
     "rain/week_4/day/4.webp"
    ]
   },
@@ -2442,6 +2831,7 @@
    "hash": "c9050c0a05e5",
    "image": "rain/week_4/day/3.webp",
    "paths": [
+    "rain/week_2/day/7.webp",
     "rain/week_4/day/3.webp"
    ]
   },
@@ -2454,7 +2844,9 @@
    "image": "rain/week_1/dusk/1.webp",
    "paths": [
     "rain/week_1/dusk/1.webp",
-    "rain/week_3/dusk/1.webp"
+    "rain/week_2/dusk/5.webp",
+    "rain/week_3/dusk/1.webp",
+    "rain/week_4/dusk/5.webp"
    ]
   },
   {
@@ -2465,7 +2857,9 @@
    "hash": "09641df1432a",
    "image": "rain/week_2/dusk/3.webp",
    "paths": [
+    "rain/week_1/dusk/3.webp",
     "rain/week_2/dusk/3.webp",
+    "rain/week_3/dusk/3.webp",
     "rain/week_4/dusk/3.webp"
    ]
   },
@@ -2478,7 +2872,9 @@
    "image": "rain/week_1/dusk/5.webp",
    "paths": [
     "rain/week_1/dusk/5.webp",
-    "rain/week_3/dusk/5.webp"
+    "rain/week_2/dusk/7.webp",
+    "rain/week_3/dusk/5.webp",
+    "rain/week_4/dusk/7.webp"
    ]
   },
   {
@@ -2489,7 +2885,9 @@
    "hash": "abf80e59bae9",
    "image": "rain/week_2/dusk/6.webp",
    "paths": [
+    "rain/week_1/dusk/4.webp",
     "rain/week_2/dusk/6.webp",
+    "rain/week_3/dusk/4.webp",
     "rain/week_4/dusk/6.webp"
    ]
   },
@@ -2501,7 +2899,9 @@
    "hash": "b4ee9d16720e",
    "image": "rain/week_2/dusk/4.webp",
    "paths": [
+    "rain/week_1/dusk/6.webp",
     "rain/week_2/dusk/4.webp",
+    "rain/week_3/dusk/6.webp",
     "rain/week_4/dusk/4.webp"
    ]
   },
@@ -2513,7 +2913,9 @@
    "hash": "f7f51acb22c9",
    "image": "rain/week_2/dusk/2.webp",
    "paths": [
+    "rain/week_1/dusk/7.webp",
     "rain/week_2/dusk/2.webp",
+    "rain/week_3/dusk/7.webp",
     "rain/week_4/dusk/2.webp"
    ]
   },
@@ -2526,7 +2928,9 @@
    "image": "rain/week_1/dusk/2.webp",
    "paths": [
     "rain/week_1/dusk/2.webp",
-    "rain/week_3/dusk/2.webp"
+    "rain/week_2/dusk/1.webp",
+    "rain/week_3/dusk/2.webp",
+    "rain/week_4/dusk/1.webp"
    ]
   },
   {
@@ -2538,7 +2942,9 @@
    "image": "rain/week_1/night/2.webp",
    "paths": [
     "rain/week_1/night/2.webp",
-    "rain/week_3/night/2.webp"
+    "rain/week_2/night/2.webp",
+    "rain/week_3/night/2.webp",
+    "rain/week_4/night/2.webp"
    ]
   },
   {
@@ -2550,7 +2956,9 @@
    "image": "rain/week_1/night/5.webp",
    "paths": [
     "rain/week_1/night/5.webp",
-    "rain/week_3/night/5.webp"
+    "rain/week_2/night/1.webp",
+    "rain/week_3/night/5.webp",
+    "rain/week_4/night/1.webp"
    ]
   },
   {
@@ -2562,7 +2970,9 @@
    "image": "rain/week_1/night/4.webp",
    "paths": [
     "rain/week_1/night/4.webp",
-    "rain/week_3/night/4.webp"
+    "rain/week_2/night/7.webp",
+    "rain/week_3/night/4.webp",
+    "rain/week_4/night/7.webp"
    ]
   },
   {
@@ -2573,7 +2983,9 @@
    "hash": "c8df884e9ec0",
    "image": "rain/week_2/night/4.webp",
    "paths": [
+    "rain/week_1/night/7.webp",
     "rain/week_2/night/4.webp",
+    "rain/week_3/night/7.webp",
     "rain/week_4/night/4.webp"
    ]
   },
@@ -2585,7 +2997,9 @@
    "hash": "19ddc2f8afd3",
    "image": "rain/week_2/night/6.webp",
    "paths": [
+    "rain/week_1/night/1.webp",
     "rain/week_2/night/6.webp",
+    "rain/week_3/night/1.webp",
     "rain/week_4/night/6.webp"
    ]
   },
@@ -2598,7 +3012,9 @@
    "image": "rain/week_1/night/6.webp",
    "paths": [
     "rain/week_1/night/6.webp",
-    "rain/week_3/night/6.webp"
+    "rain/week_2/night/3.webp",
+    "rain/week_3/night/6.webp",
+    "rain/week_4/night/3.webp"
    ]
   },
   {
@@ -2610,7 +3026,9 @@
    "image": "rain/week_1/night/3.webp",
    "paths": [
     "rain/week_1/night/3.webp",
-    "rain/week_3/night/3.webp"
+    "rain/week_2/night/5.webp",
+    "rain/week_3/night/3.webp",
+    "rain/week_4/night/5.webp"
    ]
   },
   {
@@ -2622,7 +3040,9 @@
    "image": "storm/week_1/dawn/2.webp",
    "paths": [
     "storm/week_1/dawn/2.webp",
-    "storm/week_3/dawn/2.webp"
+    "storm/week_2/dawn/4.webp",
+    "storm/week_3/dawn/2.webp",
+    "storm/week_4/dawn/4.webp"
    ]
   },
   {
@@ -2634,7 +3054,9 @@
    "image": "storm/week_1/dawn/3.webp",
    "paths": [
     "storm/week_1/dawn/3.webp",
-    "storm/week_3/dawn/3.webp"
+    "storm/week_2/dawn/1.webp",
+    "storm/week_3/dawn/3.webp",
+    "storm/week_4/dawn/1.webp"
    ]
   },
   {
@@ -2646,7 +3068,9 @@
    "image": "storm/week_1/dawn/5.webp",
    "paths": [
     "storm/week_1/dawn/5.webp",
-    "storm/week_3/dawn/5.webp"
+    "storm/week_2/dawn/6.webp",
+    "storm/week_3/dawn/5.webp",
+    "storm/week_4/dawn/6.webp"
    ]
   },
   {
@@ -2658,7 +3082,9 @@
    "image": "storm/week_1/dawn/7.webp",
    "paths": [
     "storm/week_1/dawn/7.webp",
-    "storm/week_3/dawn/7.webp"
+    "storm/week_2/dawn/5.webp",
+    "storm/week_3/dawn/7.webp",
+    "storm/week_4/dawn/5.webp"
    ]
   },
   {
@@ -2669,7 +3095,9 @@
    "hash": "20ed2fe6b144",
    "image": "storm/week_2/dawn/7.webp",
    "paths": [
+    "storm/week_1/dawn/1.webp",
     "storm/week_2/dawn/7.webp",
+    "storm/week_3/dawn/1.webp",
     "storm/week_4/dawn/7.webp"
    ]
   },
@@ -2681,7 +3109,9 @@
    "hash": "56af96f529d2",
    "image": "storm/week_2/dawn/2.webp",
    "paths": [
+    "storm/week_1/dawn/6.webp",
     "storm/week_2/dawn/2.webp",
+    "storm/week_3/dawn/6.webp",
     "storm/week_4/dawn/2.webp"
    ]
   },
@@ -2693,7 +3123,9 @@
    "hash": "29a289619727",
    "image": "storm/week_2/dawn/3.webp",
    "paths": [
+    "storm/week_1/dawn/4.webp",
     "storm/week_2/dawn/3.webp",
+    "storm/week_3/dawn/4.webp",
     "storm/week_4/dawn/3.webp"
    ]
   },
@@ -2705,7 +3137,8 @@
    "hash": "99d0821cdd98",
    "image": "storm/week_1/day/5.webp",
    "paths": [
-    "storm/week_1/day/5.webp"
+    "storm/week_1/day/5.webp",
+    "storm/week_3/day/4.webp"
    ]
   },
   {
@@ -2716,7 +3149,8 @@
    "hash": "41e6c19016c1",
    "image": "storm/week_1/day/3.webp",
    "paths": [
-    "storm/week_1/day/3.webp"
+    "storm/week_1/day/3.webp",
+    "storm/week_2/day/1.webp"
    ]
   },
   {
@@ -2727,7 +3161,8 @@
    "hash": "c152b51ebfa5",
    "image": "storm/week_2/day/2.webp",
    "paths": [
-    "storm/week_2/day/2.webp"
+    "storm/week_2/day/2.webp",
+    "storm/week_3/day/7.webp"
    ]
   },
   {
@@ -2738,7 +3173,8 @@
    "hash": "b08495c9d832",
    "image": "storm/week_3/day/5.webp",
    "paths": [
-    "storm/week_3/day/5.webp"
+    "storm/week_3/day/5.webp",
+    "storm/week_4/day/2.webp"
    ]
   },
   {
@@ -2749,7 +3185,9 @@
    "hash": "20f3d07d3c47",
    "image": "storm/week_3/day/3.webp",
    "paths": [
-    "storm/week_3/day/3.webp"
+    "storm/week_1/day/2.webp",
+    "storm/week_3/day/3.webp",
+    "storm/week_4/day/7.webp"
    ]
   },
   {
@@ -2760,7 +3198,8 @@
    "hash": "a02b40a1cdb7",
    "image": "storm/week_2/day/3.webp",
    "paths": [
-    "storm/week_2/day/3.webp"
+    "storm/week_2/day/3.webp",
+    "storm/week_3/day/6.webp"
    ]
   },
   {
@@ -2782,6 +3221,7 @@
    "hash": "30a82fcff9d4",
    "image": "storm/week_2/day/6.webp",
    "paths": [
+    "storm/week_1/day/6.webp",
     "storm/week_2/day/6.webp"
    ]
   },
@@ -2793,7 +3233,8 @@
    "hash": "c2c016aabf8f",
    "image": "storm/week_2/day/4.webp",
    "paths": [
-    "storm/week_2/day/4.webp"
+    "storm/week_2/day/4.webp",
+    "storm/week_4/day/3.webp"
    ]
   },
   {
@@ -2815,6 +3256,7 @@
    "hash": "8c5812bded23",
    "image": "storm/week_4/day/5.webp",
    "paths": [
+    "storm/week_3/day/2.webp",
     "storm/week_4/day/5.webp"
    ]
   },
@@ -2826,7 +3268,9 @@
    "hash": "10cac134f9d9",
    "image": "storm/week_3/day/1.webp",
    "paths": [
-    "storm/week_3/day/1.webp"
+    "storm/week_1/day/1.webp",
+    "storm/week_3/day/1.webp",
+    "storm/week_4/day/4.webp"
    ]
   },
   {
@@ -2837,7 +3281,8 @@
    "hash": "676b8843cb92",
    "image": "storm/week_1/day/4.webp",
    "paths": [
-    "storm/week_1/day/4.webp"
+    "storm/week_1/day/4.webp",
+    "storm/week_2/day/7.webp"
    ]
   },
   {
@@ -2848,6 +3293,7 @@
    "hash": "777b9b465dbe",
    "image": "storm/week_2/day/5.webp",
    "paths": [
+    "storm/week_1/day/7.webp",
     "storm/week_2/day/5.webp"
    ]
   },
@@ -2860,7 +3306,9 @@
    "image": "storm/week_1/dusk/3.webp",
    "paths": [
     "storm/week_1/dusk/3.webp",
-    "storm/week_3/dusk/3.webp"
+    "storm/week_2/dusk/2.webp",
+    "storm/week_3/dusk/3.webp",
+    "storm/week_4/dusk/2.webp"
    ]
   },
   {
@@ -2871,7 +3319,9 @@
    "hash": "adc69e7b4a17",
    "image": "storm/week_2/dusk/5.webp",
    "paths": [
+    "storm/week_1/dusk/1.webp",
     "storm/week_2/dusk/5.webp",
+    "storm/week_3/dusk/1.webp",
     "storm/week_4/dusk/5.webp"
    ]
   },
@@ -2884,7 +3334,9 @@
    "image": "storm/week_1/dusk/4.webp",
    "paths": [
     "storm/week_1/dusk/4.webp",
-    "storm/week_3/dusk/4.webp"
+    "storm/week_2/dusk/1.webp",
+    "storm/week_3/dusk/4.webp",
+    "storm/week_4/dusk/1.webp"
    ]
   },
   {
@@ -2896,7 +3348,9 @@
    "image": "storm/week_1/dusk/2.webp",
    "paths": [
     "storm/week_1/dusk/2.webp",
-    "storm/week_3/dusk/2.webp"
+    "storm/week_2/dusk/3.webp",
+    "storm/week_3/dusk/2.webp",
+    "storm/week_4/dusk/3.webp"
    ]
   },
   {
@@ -2908,7 +3362,9 @@
    "image": "storm/week_1/dusk/7.webp",
    "paths": [
     "storm/week_1/dusk/7.webp",
-    "storm/week_3/dusk/7.webp"
+    "storm/week_2/dusk/6.webp",
+    "storm/week_3/dusk/7.webp",
+    "storm/week_4/dusk/6.webp"
    ]
   },
   {
@@ -2919,7 +3375,9 @@
    "hash": "f6818069c8bd",
    "image": "storm/week_2/dusk/4.webp",
    "paths": [
+    "storm/week_1/dusk/6.webp",
     "storm/week_2/dusk/4.webp",
+    "storm/week_3/dusk/6.webp",
     "storm/week_4/dusk/4.webp"
    ]
   },
@@ -2932,7 +3390,9 @@
    "image": "storm/week_1/dusk/5.webp",
    "paths": [
     "storm/week_1/dusk/5.webp",
-    "storm/week_3/dusk/5.webp"
+    "storm/week_2/dusk/7.webp",
+    "storm/week_3/dusk/5.webp",
+    "storm/week_4/dusk/7.webp"
    ]
   },
   {
@@ -2944,7 +3404,9 @@
    "image": "storm/week_1/night/5.webp",
    "paths": [
     "storm/week_1/night/5.webp",
-    "storm/week_3/night/5.webp"
+    "storm/week_2/night/7.webp",
+    "storm/week_3/night/5.webp",
+    "storm/week_4/night/7.webp"
    ]
   },
   {
@@ -2956,7 +3418,9 @@
    "image": "storm/week_1/night/4.webp",
    "paths": [
     "storm/week_1/night/4.webp",
-    "storm/week_3/night/4.webp"
+    "storm/week_2/night/6.webp",
+    "storm/week_3/night/4.webp",
+    "storm/week_4/night/6.webp"
    ]
   },
   {
@@ -2967,7 +3431,9 @@
    "hash": "faaf0b2003be",
    "image": "storm/week_2/night/1.webp",
    "paths": [
+    "storm/week_1/night/6.webp",
     "storm/week_2/night/1.webp",
+    "storm/week_3/night/6.webp",
     "storm/week_4/night/1.webp"
    ]
   },
@@ -2979,7 +3445,9 @@
    "hash": "ae79261d2852",
    "image": "storm/week_2/night/4.webp",
    "paths": [
+    "storm/week_1/night/2.webp",
     "storm/week_2/night/4.webp",
+    "storm/week_3/night/2.webp",
     "storm/week_4/night/4.webp"
    ]
   },
@@ -2991,7 +3459,9 @@
    "hash": "cd855e5f60e9",
    "image": "storm/week_2/night/3.webp",
    "paths": [
+    "storm/week_1/night/3.webp",
     "storm/week_2/night/3.webp",
+    "storm/week_3/night/3.webp",
     "storm/week_4/night/3.webp"
    ]
   },
@@ -3003,7 +3473,9 @@
    "hash": "2d2e6dd5d7fd",
    "image": "storm/week_2/night/5.webp",
    "paths": [
+    "storm/week_1/night/1.webp",
     "storm/week_2/night/5.webp",
+    "storm/week_3/night/1.webp",
     "storm/week_4/night/5.webp"
    ]
   },
@@ -3016,7 +3488,9 @@
    "image": "storm/week_1/night/7.webp",
    "paths": [
     "storm/week_1/night/7.webp",
-    "storm/week_3/night/7.webp"
+    "storm/week_2/night/2.webp",
+    "storm/week_3/night/7.webp",
+    "storm/week_4/night/2.webp"
    ]
   },
   {
@@ -3028,7 +3502,9 @@
    "image": "wind/week_1/dawn/2.webp",
    "paths": [
     "wind/week_1/dawn/2.webp",
-    "wind/week_3/dawn/2.webp"
+    "wind/week_2/dawn/3.webp",
+    "wind/week_3/dawn/2.webp",
+    "wind/week_4/dawn/6.webp"
    ]
   },
   {
@@ -3039,7 +3515,9 @@
    "hash": "3556004712b7",
    "image": "wind/week_2/dawn/5.webp",
    "paths": [
+    "wind/week_1/dawn/3.webp",
     "wind/week_2/dawn/5.webp",
+    "wind/week_3/dawn/1.webp",
     "wind/week_4/dawn/5.webp"
    ]
   },
@@ -3051,7 +3529,9 @@
    "hash": "c66c7fd4f50e",
    "image": "wind/week_2/dawn/4.webp",
    "paths": [
+    "wind/week_1/dawn/4.webp",
     "wind/week_2/dawn/4.webp",
+    "wind/week_3/dawn/3.webp",
     "wind/week_4/dawn/4.webp"
    ]
   },
@@ -3064,7 +3544,9 @@
    "image": "wind/week_1/dawn/6.webp",
    "paths": [
     "wind/week_1/dawn/6.webp",
-    "wind/week_3/dawn/6.webp"
+    "wind/week_2/dawn/2.webp",
+    "wind/week_3/dawn/6.webp",
+    "wind/week_4/dawn/3.webp"
    ]
   },
   {
@@ -3075,6 +3557,9 @@
    "hash": "f1a06c34c049",
    "image": "wind/week_4/dawn/1.webp",
    "paths": [
+    "wind/week_1/dawn/1.webp",
+    "wind/week_2/dawn/7.webp",
+    "wind/week_3/dawn/4.webp",
     "wind/week_4/dawn/1.webp"
    ]
   },
@@ -3087,7 +3572,9 @@
    "image": "wind/week_1/dawn/7.webp",
    "paths": [
     "wind/week_1/dawn/7.webp",
-    "wind/week_3/dawn/7.webp"
+    "wind/week_2/dawn/6.webp",
+    "wind/week_3/dawn/7.webp",
+    "wind/week_4/dawn/7.webp"
    ]
   },
   {
@@ -3099,7 +3586,9 @@
    "image": "wind/week_1/dawn/5.webp",
    "paths": [
     "wind/week_1/dawn/5.webp",
-    "wind/week_3/dawn/5.webp"
+    "wind/week_2/dawn/1.webp",
+    "wind/week_3/dawn/5.webp",
+    "wind/week_4/dawn/2.webp"
    ]
   },
   {
@@ -3110,7 +3599,8 @@
    "hash": "232bde6ed095",
    "image": "wind/week_1/day/5.webp",
    "paths": [
-    "wind/week_1/day/5.webp"
+    "wind/week_1/day/5.webp",
+    "wind/week_2/day/2.webp"
    ]
   },
   {
@@ -3121,7 +3611,8 @@
    "hash": "4d3a786acf48",
    "image": "wind/week_2/day/1.webp",
    "paths": [
-    "wind/week_2/day/1.webp"
+    "wind/week_2/day/1.webp",
+    "wind/week_3/day/4.webp"
    ]
   },
   {
@@ -3132,7 +3623,8 @@
    "hash": "eb217457f58d",
    "image": "wind/week_1/day/7.webp",
    "paths": [
-    "wind/week_1/day/7.webp"
+    "wind/week_1/day/7.webp",
+    "wind/week_4/day/4.webp"
    ]
   },
   {
@@ -3143,7 +3635,8 @@
    "hash": "e3f0d69977ca",
    "image": "wind/week_2/day/3.webp",
    "paths": [
-    "wind/week_2/day/3.webp"
+    "wind/week_2/day/3.webp",
+    "wind/week_4/day/3.webp"
    ]
   },
   {
@@ -3154,6 +3647,7 @@
    "hash": "19801ea908d0",
    "image": "wind/week_3/day/1.webp",
    "paths": [
+    "wind/week_1/day/6.webp",
     "wind/week_3/day/1.webp"
    ]
   },
@@ -3165,7 +3659,8 @@
    "hash": "f32e33e76e01",
    "image": "wind/week_1/day/4.webp",
    "paths": [
-    "wind/week_1/day/4.webp"
+    "wind/week_1/day/4.webp",
+    "wind/week_4/day/5.webp"
    ]
   },
   {
@@ -3176,7 +3671,8 @@
    "hash": "92ef82c2d34a",
    "image": "wind/week_3/day/3.webp",
    "paths": [
-    "wind/week_3/day/3.webp"
+    "wind/week_3/day/3.webp",
+    "wind/week_4/day/1.webp"
    ]
   },
   {
@@ -3187,6 +3683,7 @@
    "hash": "05cea2b8788d",
    "image": "wind/week_2/day/4.webp",
    "paths": [
+    "wind/week_1/day/1.webp",
     "wind/week_2/day/4.webp"
    ]
   },
@@ -3198,7 +3695,8 @@
    "hash": "330bfae094d5",
    "image": "wind/week_2/day/6.webp",
    "paths": [
-    "wind/week_2/day/6.webp"
+    "wind/week_2/day/6.webp",
+    "wind/week_3/day/2.webp"
    ]
   },
   {
@@ -3209,7 +3707,8 @@
    "hash": "9bada961b0a7",
    "image": "wind/week_1/day/3.webp",
    "paths": [
-    "wind/week_1/day/3.webp"
+    "wind/week_1/day/3.webp",
+    "wind/week_3/day/6.webp"
    ]
   },
   {
@@ -3220,6 +3719,7 @@
    "hash": "55504e5b8143",
    "image": "wind/week_4/day/7.webp",
    "paths": [
+    "wind/week_2/day/7.webp",
     "wind/week_4/day/7.webp"
    ]
   },
@@ -3231,6 +3731,7 @@
    "hash": "ab2cbee2d73d",
    "image": "wind/week_4/day/6.webp",
    "paths": [
+    "wind/week_3/day/7.webp",
     "wind/week_4/day/6.webp"
    ]
   },
@@ -3242,6 +3743,7 @@
    "hash": "5df9d64aa037",
    "image": "wind/week_4/day/2.webp",
    "paths": [
+    "wind/week_3/day/5.webp",
     "wind/week_4/day/2.webp"
    ]
   },
@@ -3253,7 +3755,8 @@
    "hash": "35c91a0ddfec",
    "image": "wind/week_1/day/2.webp",
    "paths": [
-    "wind/week_1/day/2.webp"
+    "wind/week_1/day/2.webp",
+    "wind/week_2/day/5.webp"
    ]
   },
   {
@@ -3265,7 +3768,9 @@
    "image": "wind/week_1/dusk/1.webp",
    "paths": [
     "wind/week_1/dusk/1.webp",
-    "wind/week_3/dusk/1.webp"
+    "wind/week_2/dusk/1.webp",
+    "wind/week_3/dusk/1.webp",
+    "wind/week_4/dusk/3.webp"
    ]
   },
   {
@@ -3277,7 +3782,9 @@
    "image": "wind/week_1/dusk/4.webp",
    "paths": [
     "wind/week_1/dusk/4.webp",
-    "wind/week_3/dusk/4.webp"
+    "wind/week_2/dusk/5.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/7.webp"
    ]
   },
   {
@@ -3289,7 +3796,9 @@
    "image": "wind/week_1/dusk/7.webp",
    "paths": [
     "wind/week_1/dusk/7.webp",
-    "wind/week_3/dusk/7.webp"
+    "wind/week_2/dusk/3.webp",
+    "wind/week_3/dusk/7.webp",
+    "wind/week_4/dusk/4.webp"
    ]
   },
   {
@@ -3300,7 +3809,9 @@
    "hash": "17c00a47cba2",
    "image": "wind/week_2/dusk/6.webp",
    "paths": [
+    "wind/week_1/dusk/5.webp",
     "wind/week_2/dusk/6.webp",
+    "wind/week_3/dusk/2.webp",
     "wind/week_4/dusk/6.webp"
    ]
   },
@@ -3312,6 +3823,9 @@
    "hash": "ec12d1747d09",
    "image": "wind/week_4/dusk/1.webp",
    "paths": [
+    "wind/week_1/dusk/2.webp",
+    "wind/week_2/dusk/7.webp",
+    "wind/week_3/dusk/6.webp",
     "wind/week_4/dusk/1.webp"
    ]
   },
@@ -3323,7 +3837,9 @@
    "hash": "b78d6f432fb7",
    "image": "wind/week_2/dusk/2.webp",
    "paths": [
+    "wind/week_1/dusk/6.webp",
     "wind/week_2/dusk/2.webp",
+    "wind/week_3/dusk/5.webp",
     "wind/week_4/dusk/2.webp"
    ]
   },
@@ -3336,7 +3852,9 @@
    "image": "wind/week_1/dusk/3.webp",
    "paths": [
     "wind/week_1/dusk/3.webp",
-    "wind/week_3/dusk/3.webp"
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/3.webp",
+    "wind/week_4/dusk/5.webp"
    ]
   },
   {
@@ -3347,7 +3865,9 @@
    "hash": "eb7873fd7acb",
    "image": "wind/week_2/night/4.webp",
    "paths": [
+    "wind/week_1/night/6.webp",
     "wind/week_2/night/4.webp",
+    "wind/week_3/night/6.webp",
     "wind/week_4/night/4.webp"
    ]
   },
@@ -3359,7 +3879,9 @@
    "hash": "f6b55aacae0a",
    "image": "wind/week_2/night/5.webp",
    "paths": [
+    "wind/week_1/night/7.webp",
     "wind/week_2/night/5.webp",
+    "wind/week_3/night/7.webp",
     "wind/week_4/night/5.webp"
    ]
   },
@@ -3372,7 +3894,9 @@
    "image": "wind/week_1/night/3.webp",
    "paths": [
     "wind/week_1/night/3.webp",
-    "wind/week_3/night/3.webp"
+    "wind/week_2/night/1.webp",
+    "wind/week_3/night/3.webp",
+    "wind/week_4/night/1.webp"
    ]
   },
   {
@@ -3383,7 +3907,9 @@
    "hash": "bfc08af75267",
    "image": "wind/week_2/night/3.webp",
    "paths": [
+    "wind/week_1/night/5.webp",
     "wind/week_2/night/3.webp",
+    "wind/week_3/night/5.webp",
     "wind/week_4/night/3.webp"
    ]
   },
@@ -3395,7 +3921,9 @@
    "hash": "9ae18d55d0c1",
    "image": "wind/week_2/night/7.webp",
    "paths": [
+    "wind/week_1/night/4.webp",
     "wind/week_2/night/7.webp",
+    "wind/week_3/night/4.webp",
     "wind/week_4/night/7.webp"
    ]
   },
@@ -3408,7 +3936,9 @@
    "image": "wind/week_1/night/2.webp",
    "paths": [
     "wind/week_1/night/2.webp",
-    "wind/week_3/night/2.webp"
+    "wind/week_2/night/6.webp",
+    "wind/week_3/night/2.webp",
+    "wind/week_4/night/6.webp"
    ]
   },
   {
@@ -3420,7 +3950,9 @@
    "image": "wind/week_1/night/1.webp",
    "paths": [
     "wind/week_1/night/1.webp",
-    "wind/week_3/night/1.webp"
+    "wind/week_2/night/2.webp",
+    "wind/week_3/night/1.webp",
+    "wind/week_4/night/2.webp"
    ]
   }
  ]
