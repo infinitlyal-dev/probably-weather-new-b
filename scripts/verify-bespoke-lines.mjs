@@ -33,6 +33,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import { HERO_LINES } from '../assets/hero-lines.js';
+import { WEATHER_COPY } from '../assets/weather-copy.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
@@ -41,8 +42,28 @@ const fails = [];
 const ok = [];
 const check = (name, cond, detail) => (cond ? ok : fails).push(`${name}${detail ? ' — ' + detail : ''}`);
 
-const ALL_BESPOKE = new Set(Object.values(HERO_LINES).flat());
+// The leak test below asks: did a line belonging to ANOTHER photograph land here? That
+// question is only answerable for lines that exist ONLY in the bespoke table.
+//
+// Al's round-1 matching (2026-08-27) hand-placed 349 CONDITION-BANK lines onto photographs,
+// so 350 of the 834 bespoke lines are also live bank lines. A bank line appearing on a
+// photograph with no bespoke set is the bank doing its job, not a leak — the bespoke table
+// pins a line TO a photograph, it does not remove it FROM the bank. Counting those as leaks
+// failed three of seven slots on lines the app was serving correctly.
+//
+// NOTE FOR AL, not for this gate: pinning a bank line is therefore not exclusive. "The sky's
+// having a full-on tantrum." is pinned to one storm photograph and can still appear on any
+// other storm photograph that has no bespoke set. Making it exclusive means removing the
+// line from the bank, which changes all five languages and the share card — his call.
+const BANK_LINES = new Set();
+for (const bin of Object.values(WEATHER_COPY.witty || {})) {
+  for (const arr of Object.values(bin || {})) {
+    if (Array.isArray(arr)) for (const s of arr) if (typeof s === 'string' && s.trim()) BANK_LINES.add(s.trim());
+  }
+}
+const ALL_BESPOKE = new Set(Object.values(HERO_LINES).flat().filter((s) => !BANK_LINES.has(s)));
 if (!Object.keys(HERO_LINES).length) throw new Error('HERO_LINES is empty — run node scripts/build-hero-lines.mjs');
+if (!ALL_BESPOKE.size) throw new Error('every bespoke line is also a bank line — the leak probe would be vacuous');
 
 // Storm at NIGHT: that is the bucket Al's replacements landed in, so it is the
 // only one with bespoke lines to find. The flag is read by the server on each

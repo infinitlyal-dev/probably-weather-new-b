@@ -1,0 +1,171 @@
+<!doctype html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PW — the bare photographs</title>
+<link rel="stylesheet" href="../assets/type-prototype-caption.css">
+<style>
+  :root { --bg:#14110d; --panel:#1f1a14; --ink:#fffaf3; --ink2:#b5ab9d; --gold:#ffd700; --yes:#63c98a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  header { position:sticky; top:0; z-index:10; background:rgba(20,17,13,.97); border-bottom:1px solid rgba(246,242,232,.14);
+           padding:9px 14px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:14px; margin:0; white-space:nowrap; }
+  .tabs { display:flex; gap:4px; flex-wrap:wrap; }
+  .tab { border:1px solid rgba(246,242,232,.18); background:none; color:var(--ink2); border-radius:999px;
+         padding:3px 10px; font:inherit; font-size:11.5px; cursor:pointer; }
+  .tab.on { color:#fff; background:#2b2118; border-color:var(--gold); }
+  button.act { font:inherit; font-size:12px; border:1px solid rgba(246,242,232,.18); background:var(--panel);
+               color:var(--ink); border-radius:7px; padding:5px 10px; cursor:pointer; }
+  button.act:disabled { opacity:.35; cursor:default; }
+  button.pri { background:var(--gold); color:#1a1a2e; border-color:var(--gold); font-weight:700; }
+  .tally { color:var(--ink2); font-size:12px; font-variant-numeric:tabular-nums; }
+  .spacer { flex:1; }
+  main { padding:16px; display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
+  .card { width:218px; }
+  .hero { position:relative; width:218px; height:345px; border-radius:0 0 14px 14px; overflow:hidden;
+          background-size:cover; background-position:center 50%; box-shadow:0 12px 30px rgba(0,0,0,.5);
+          cursor:pointer; border:2px solid transparent; }
+  .card.on .hero { border-color:var(--yes); box-shadow:0 0 0 3px rgba(99,201,138,.25), 0 12px 30px rgba(0,0,0,.5); }
+  .cap { position:absolute; left:0; right:0; bottom:0; margin:0; padding:26px 11px 9px; color:#fff; font-weight:700;
+         font-family:'Caveat Prototype','Segoe Print','Bradley Hand',cursive; font-size:19px; line-height:1.1;
+         text-shadow:0 2px 14px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.8);
+         background:linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.62) 62%, rgba(0,0,0,0) 100%);
+         border-radius:0 0 12px 12px; }
+  .meta { color:var(--ink2); font-size:11px; margin:6px 0 2px; }
+  .kept { color:var(--yes); font-size:11.5px; font-weight:700; }
+  footer { position:sticky; bottom:0; background:rgba(20,17,13,.97); border-top:1px solid rgba(246,242,232,.14);
+           padding:9px 14px; display:flex; gap:10px; align-items:center; }
+  .hint { color:var(--ink2); font-size:12px; padding:0 16px; margin:6px 0 0; }
+  .none { color:#e0a94d; font-size:12px; padding:0 16px; margin:6px 0 0; }
+</style>
+
+<header>
+  <h1>The bare photographs — click a line to keep it</h1>
+  <div class="tabs" id="tabs"></div>
+  <span class="spacer"></span>
+  <span class="tally" id="tally"></span>
+  <button class="act pri" id="export">Export keeps</button>
+</header>
+<p class="hint" id="scope"></p>
+<p class="none" id="none"></p>
+<main id="main"></main>
+<footer>
+  <button class="act" id="prev">&larr; Prev</button>
+  <span class="tally" id="page"></span>
+  <button class="act" id="next">Next &rarr;</button>
+  <span class="spacer"></span>
+  <span class="tally" id="ctx"></span>
+</footer>
+
+<script>
+const DATA = {"cards":[{"image":"cold/week_2/dusk/1.webp","hash":"163ee2f2d1fe","condition":"cold","time":"dusk","week":"A","day":"thu","text":"Salad has been postponed until further notice.","astraTime":"evening"},{"image":"cold/week_2/dusk/1.webp","hash":"163ee2f2d1fe","condition":"cold","time":"dusk","week":"A","day":"thu","text":"Supper's ready. The camera can eat later.","astraTime":"evening"},{"image":"cold/week_2/dusk/5.webp","hash":"917c4c0a6fac","condition":"cold","time":"dusk","week":"A","day":"fri","text":"Make mine something I have to blow on.","astraTime":"evening"},{"image":"cold/week_2/dusk/5.webp","hash":"917c4c0a6fac","condition":"cold","time":"dusk","week":"A","day":"fri","text":"Another round. With handles this time.","astraTime":"evening"},{"image":"cold/week_4/dusk/2.webp","hash":"39e28d40ecf1","condition":"cold","time":"dusk","week":"A","day":"sat","text":"You can keep complaining on the walk home.","astraTime":"evening"},{"image":"cold/week_4/dusk/2.webp","hash":"39e28d40ecf1","condition":"cold","time":"dusk","week":"A","day":"sat","text":"One excuse gone. You still have several.","astraTime":"evening"},{"image":"fog/week_1/dawn/7.webp","hash":"48e51baff8be","condition":"fog","time":"dawn","week":"A","day":"sat","text":"How much of this walk did you actually promise?","astraTime":"all-day"},{"image":"fog/week_1/dawn/7.webp","hash":"48e51baff8be","condition":"fog","time":"dawn","week":"A","day":"sat","text":"Same route. More imagination required.","astraTime":"all-day"},{"image":"fog/week_2/dusk/7.webp","hash":"838bd4824615","condition":"fog","time":"dusk","week":"A","day":"sat","text":"Dinner is looking like the highlight of your holiday.","astraTime":"evening"},{"image":"fog/week_2/dusk/7.webp","hash":"838bd4824615","condition":"fog","time":"dusk","week":"A","day":"sat","text":"The table has a view. Ask for the menu instead.","astraTime":"evening"},{"image":"rain/week_4/day/2.webp","hash":"057e8c9e5039","condition":"rain","time":"day","week":"A","day":"sat","text":"Your team owes your washing machine an apology.","astraTime":"all-day"},{"image":"rain/week_4/day/2.webp","hash":"057e8c9e5039","condition":"rain","time":"day","week":"A","day":"sat","text":"Kit off. Nobody is putting that in with the towels.","astraTime":"all-day"},{"image":"rain/week_3/day/5.webp","hash":"d8d16083a690","condition":"rain","time":"day","week":"A","day":"sun","text":"The view will keep while you find a towel.","astraTime":"all-day"},{"image":"rain/week_3/day/5.webp","hash":"d8d16083a690","condition":"rain","time":"day","week":"A","day":"sun","text":"Outing over. Everyone has a different version.","astraTime":"all-day"},{"image":"rain/week_2/dusk/2.webp","hash":"f7f51acb22c9","condition":"rain","time":"dusk","week":"A","day":"sat","text":"All this for bread you weren't sure you needed.","astraTime":"evening"},{"image":"rain/week_2/dusk/2.webp","hash":"f7f51acb22c9","condition":"rain","time":"dusk","week":"A","day":"sat","text":"Supper is ready. Getting everyone home is next.","astraTime":"evening"},{"image":"rain/week_1/dusk/2.webp","hash":"5f935cb18f17","condition":"rain","time":"dusk","week":"A","day":"sun","text":"Your supper plans have moved a little closer home.","astraTime":"evening"},{"image":"rain/week_1/dusk/2.webp","hash":"5f935cb18f17","condition":"rain","time":"dusk","week":"A","day":"sun","text":"Visitors expected. They can knock twice.","astraTime":"evening"},{"image":"storm/week_1/day/3.webp","hash":"41e6c19016c1","condition":"storm","time":"day","week":"A","day":"tue","text":"You only popped out for milk and now have friends.","astraTime":"all-day"},{"image":"storm/week_1/day/3.webp","hash":"41e6c19016c1","condition":"storm","time":"day","week":"A","day":"tue","text":"Shopping done. Apparently you're staying for tea.","astraTime":"all-day"},{"image":"storm/week_2/day/3.webp","hash":"a02b40a1cdb7","condition":"storm","time":"day","week":"A","day":"sat","text":"Your team has found someone else to blame for once.","astraTime":"all-day"},{"image":"storm/week_2/day/3.webp","hash":"a02b40a1cdb7","condition":"storm","time":"day","week":"A","day":"sat","text":"Match delayed. Everyone is suddenly a forecaster.","astraTime":"all-day"},{"image":"storm/week_2/day/6.webp","hash":"30a82fcff9d4","condition":"storm","time":"day","week":"B","day":"mon","text":"Could we discuss the plan with fewer outdoor bits?","astraTime":"all-day"},{"image":"storm/week_2/day/6.webp","hash":"30a82fcff9d4","condition":"storm","time":"day","week":"B","day":"mon","text":"Everyone inside. The argument fits in here too.","astraTime":"all-day"},{"image":"storm/week_4/day/1.webp","hash":"ea95b93c8930","condition":"storm","time":"day","week":"B","day":"wed","text":"Your plastic chairs may visit before you do.","astraTime":"all-day"},{"image":"storm/week_4/day/1.webp","hash":"ea95b93c8930","condition":"storm","time":"day","week":"B","day":"wed","text":"Visitors postponed. The furniture may still go.","astraTime":"all-day"},{"image":"storm/week_1/dusk/2.webp","hash":"a61146a38b06","condition":"storm","time":"dusk","week":"A","day":"thu","text":"Just one last job before home, you said.","astraTime":"evening"},{"image":"storm/week_1/dusk/2.webp","hash":"a61146a38b06","condition":"storm","time":"dusk","week":"A","day":"thu","text":"Home soon. You have stopped putting a time on it.","astraTime":"evening"},{"image":"storm/week_2/night/5.webp","hash":"2d2e6dd5d7fd","condition":"storm","time":"night","week":"A","day":"sat","text":"Your home repair list has requested an urgent update.","astraTime":"night"},{"image":"storm/week_2/night/5.webp","hash":"2d2e6dd5d7fd","condition":"storm","time":"night","week":"A","day":"sat","text":"Romance later. First find something absorbent.","astraTime":"night"}],"conditions":["cold","fog","rain","storm"],"counts":{"cold":6,"fog":4,"rain":8,"storm":12},"perPage":20,"card":{"w":218,"h":345},"photographs":15,"noCandidates":[{"image":"clear/week_2/dusk/4.webp","condition":"clear","time":"dusk"},{"image":"clear/week_2/dusk/3.webp","condition":"clear","time":"dusk"},{"image":"cloudy/week_1/dusk/2.webp","condition":"cloudy","time":"dusk"},{"image":"cloudy/week_2/dusk/5.webp","condition":"cloudy","time":"dusk"},{"image":"cloudy/week_2/dusk/6.webp","condition":"cloudy","time":"dusk"},{"image":"cloudy/week_1/night/2.webp","condition":"cloudy","time":"night"},{"image":"cloudy/week_2/night/5.webp","condition":"cloudy","time":"night"}]};
+const LS = 'pw_bare_photo_keeps';
+const state = JSON.parse(localStorage.getItem(LS) || '{}');
+const $ = (id) => document.getElementById(id);
+const keyOf = (c) => c.image + '#' + c.text;
+let cond = 'all';
+let page = 0;
+
+const visible = () => cond === 'all' ? DATA.cards : DATA.cards.filter((c) => c.condition === cond);
+const pages = () => Math.max(1, Math.ceil(visible().length / DATA.perPage));
+
+function save() { localStorage.setItem(LS, JSON.stringify(state)); paintTally(); }
+
+function paintTally() {
+  const kept = Object.values(state).filter(Boolean).length;
+  const covered = new Set(DATA.cards.filter((c) => state[keyOf(c)]).map((c) => c.image)).size;
+  $('tally').textContent = kept + ' kept · ' + covered + '/' + DATA.photographs + ' photographs covered';
+}
+
+function renderTabs() {
+  const t = $('tabs');
+  t.innerHTML = '';
+  const mk = (id, label, n) => {
+    const b = document.createElement('button');
+    b.className = 'tab' + (cond === id ? ' on' : '');
+    b.textContent = label + ' ' + n;
+    b.onclick = () => { cond = id; page = 0; render(); };
+    t.appendChild(b);
+  };
+  mk('all', 'all', DATA.cards.length);
+  for (const c of DATA.conditions) mk(c, c, DATA.counts[c]);
+}
+
+function render() {
+  renderTabs();
+  const all = visible();
+  if (page >= pages()) page = pages() - 1;
+  const slice = all.slice(page * DATA.perPage, page * DATA.perPage + DATA.perPage);
+  const m = $('main');
+  m.innerHTML = '';
+  for (const c of slice) {
+    const k = keyOf(c);
+    const card = document.createElement('section');
+    card.className = 'card' + (state[k] ? ' on' : '');
+
+    const hero = document.createElement('div');
+    hero.className = 'hero';
+    hero.style.backgroundImage = 'url("/assets/images/bg/' + c.image + '")';
+    const cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.textContent = c.text;
+    hero.appendChild(cap);
+    hero.onclick = () => { state[k] = !state[k]; save(); render(); };
+    card.appendChild(hero);
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = c.condition + ' · ' + c.time + ' · ' + c.week + '/' + c.day;
+    card.appendChild(meta);
+
+    if (state[k]) {
+      const r = document.createElement('div');
+      r.className = 'kept';
+      r.textContent = '✓ keep';
+      card.appendChild(r);
+    }
+    m.appendChild(card);
+  }
+  $('page').textContent = 'page ' + (page + 1) + ' of ' + pages();
+  $('ctx').textContent = all.length + ' lines in ' + (cond === 'all' ? 'all conditions' : cond);
+  $('prev').disabled = page === 0;
+  $('next').disabled = page >= pages() - 1;
+  $('scope').textContent = DATA.photographs + ' photographs with no bespoke line, ' + DATA.cards.length
+    + ' Astra candidates between them. Anything you do not tick stays unruled.';
+  $('none').textContent = DATA.noCandidates.length
+    ? DATA.noCandidates.length + ' more bare photographs have NO candidates at all (never in Astra\u2019s six buckets): '
+      + DATA.noCandidates.map((n) => n.image).join(', ')
+    : '';
+  paintTally();
+  window.scrollTo(0, 0);
+}
+
+$('prev').onclick = () => { if (page > 0) { page -= 1; render(); } };
+$('next').onclick = () => { if (page < pages() - 1) { page += 1; render(); } };
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') $('prev').click();
+  if (e.key === 'ArrowRight') $('next').click();
+});
+
+$('export').onclick = () => {
+  const kept = DATA.cards.filter((c) => state[keyOf(c)]).map((c) => ({
+    image: c.image, hash: c.hash, condition: c.condition, time: c.time,
+    week: c.week, day: c.day, text: c.text, source: 'astra-new',
+  }));
+  const out = {
+    generated: new Date().toISOString().slice(0, 10),
+    ruledBy: 'Al, bare-photograph gallery',
+    note: 'Kept lines only. Bare photographs left uncovered still have no bespoke line.',
+    photographsOffered: DATA.photographs,
+    photographsCovered: new Set(kept.map((k) => k.image)).size,
+    noCandidates: DATA.noCandidates,
+    keptCount: kept.length,
+    kept,
+  };
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' }));
+  a.download = 'bare-photo-keeps.json';
+  a.click();
+};
+
+render();
+</script>

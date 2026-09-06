@@ -1,10 +1,10 @@
 {
  "generated": "2026-08-19",
  "ruledBy": "Al, bespoke line review rounds 1 and 2",
- "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20).",
+ "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
  "images": 42,
- "lineCount": 379,
+ "lineCount": 843,
  "set": [
   {
    "image": "clear/week_2/dawn/2.webp",
@@ -22,7 +22,9 @@
     "Coffee in one hand, hose in the other, and the whole day still ahead.",
     "This is the only twenty minutes of the day that belong to him.",
     "The jacaranda is dropping purple on a lawn he has just finished watering.",
-    "Nobody inside that house is awake yet and that is entirely the plan."
+    "Nobody inside that house is awake yet and that is entirely the plan.",
+    "This is the weather the weekend was invented for.",
+    "Weather this perfect is on loan. The southeaster keeps receipts."
    ]
   },
   {
@@ -40,7 +42,9 @@
     "The aircon is losing and everyone in this car has stopped talking about it.",
     "Saturday, and the only shade for the next hour is inside this car.",
     "Somebody said the padkos would be fine in the boot. Somebody was wrong.",
-    "The road ahead has been the same road for a very long time."
+    "The road ahead has been the same road for a very long time.",
+    "Your car seat is a weapon right now.",
+    "Your steering wheel is a hot plate."
    ]
   },
   {
@@ -96,7 +100,8 @@
     "Friday, and this promenade is doing the work of six different bars.",
     "Everybody came out at exactly the same time and nobody planned it.",
     "The light will be gone in nine minutes and nobody is hurrying.",
-    "That dog has walked this stretch more times than any of them."
+    "That dog has walked this stretch more times than any of them.",
+    "Still warm enough at sunset that the ice cream is doing the sweating."
    ]
   },
   {
@@ -115,7 +120,8 @@
     "Sunday night, and this promenade is busier than it was all afternoon.",
     "The whole town waited for the sun to go down and then came outside.",
     "That water was cold when somebody put it down there.",
-    "Nine at night and the paving is still handing back the afternoon."
+    "Nine at night and the paving is still handing back the afternoon.",
+    "Night has not cooled anything yet; even the water is perspiring."
    ]
   },
   {
@@ -134,7 +140,8 @@
     "Somebody left the light on inside and nobody is going back for it.",
     "The youngest is still awake and has decided the sky is worth it.",
     "Five mattresses on a stoep, and not one of them is a compromise.",
-    "Friday night, and the ceiling has been upgraded considerably."
+    "Friday night, and the ceiling has been upgraded considerably.",
+    "Too hot for walls tonight: the whole family moved the bedroom outside."
    ]
   },
   {
@@ -153,7 +160,8 @@
     "It is cooler out here at midnight than it was inside at six.",
     "The ice in that jug never stood a chance and everybody knew it.",
     "That curtain is the only moving air in the entire flat.",
-    "Nobody is going back in there until the walls let go of the day."
+    "Nobody is going back in there until the walls let go of the day.",
+    "Ice in the jug, fan on the chair: the night shift of a forty-degree day."
    ]
   },
   {
@@ -172,7 +180,8 @@
     "The glass of water was a very good idea about four hours ago.",
     "The net is handling mosquitoes. The fan is handling everything else.",
     "Monday starts in five hours and that fan is not going off.",
-    "Somebody has already turned the pillow over twice tonight."
+    "Somebody has already turned the pillow over twice tonight.",
+    "The fan is on its third shift and the night is still not cooling."
    ]
   },
   {
@@ -191,7 +200,8 @@
     "The pool has been the only sensible room in the place all day.",
     "Those beers on the edge are on their third owner tonight.",
     "Saturday, and the water is still warmer than the air above it.",
-    "The lights went on two hours ago and nobody has suggested moving."
+    "The lights went on two hours ago and nobody has suggested moving.",
+    "Night swimming is not a plan; it is what this weather leaves you."
    ]
   },
   {
@@ -210,7 +220,9 @@
     "That is the bathroom floor and it is now his bedroom.",
     "Nobody in this house is getting into that bath tonight.",
     "He has been lying there since about eight and has no further plans.",
-    "Wednesday, and the dog has made the only sensible decision so far."
+    "Wednesday, and the dog has made the only sensible decision so far.",
+    "The ceiling fan is doing its best, but its best is not enough.",
+    "Tile is the coldest surface in the house tonight, and it is taken."
    ]
   },
   {
@@ -248,7 +260,10 @@
     "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
     "The electric fence is fine. The pavement has completely given up.",
     "Wednesday, and the drive home is going to be a story by tomorrow.",
-    "Every drain on this road is now working on somebody else's behalf."
+    "Every drain on this road is now working on somebody else's behalf.",
+    "Sleep tight, dams. You worked hard today.",
+    "The pavement is a river and the river has plans.",
+    "Rain through a streetlight looks like static, and tonight the whole street is tuned to it."
    ]
   },
   {
@@ -267,7 +282,9 @@
     "Nobody is going to have to top that up for a month.",
     "The pool light is the only thing in this garden still doing its job.",
     "Tuesday night, and the pool is having a far better time than anyone.",
-    "The paving has stopped absorbing anything and is just passing it along."
+    "The paving has stopped absorbing anything and is just passing it along.",
+    "The pool is being topped up by head office tonight, free of charge.",
+    "The only thing swimming tonight is the water itself."
    ]
   },
   {
@@ -305,7 +322,8 @@
     "Every gate in this street is shut and every dog has an opinion.",
     "Somewhere behind those walls a whole street is pretending to sleep.",
     "The streetlight is doing overtime that nobody is going to pay for.",
-    "Tomorrow morning this road will be covered in somebody else's tree."
+    "Tomorrow morning this road will be covered in somebody else's tree.",
+    "Even the hadedas are quiet."
    ]
   },
   {
@@ -343,7 +361,9 @@
     "That one bulb is holding this entire building together.",
     "The polish on that floor was not designed with this much water in mind.",
     "Everything green out there is having the best night of its life.",
-    "You can hear the roof better than you can hear the television."
+    "You can hear the roof better than you can hear the television.",
+    "Somewhere a roof is someone's new kite.",
+    "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight."
    ]
   },
   {
@@ -362,7 +382,9 @@
     "The road is still dry, which is the last thing it will be tonight.",
     "A Free State storm gives you exactly as much warning as it feels like.",
     "Everyone on this street is now standing at a window they never use.",
-    "The dust and the rain are about to have a very short argument."
+    "The dust and the rain are about to have a very short argument.",
+    "Unplug the TV — it's tradition.",
+    "The lightning is putting on a proper show."
    ]
   },
   {
@@ -416,7 +438,8 @@
     "Somebody will be picking leaves out of that back seat for a week.",
     "That door is going to shut whether he is ready or not.",
     "The wind opened it faster than he did and he is still laughing.",
-    "Every leaf in the street is queueing to get into that car."
+    "Every leaf in the street is queueing to get into that car.",
+    "Your car door just became a weapon."
    ]
   },
   {
@@ -434,7 +457,8 @@
     "That photo is going to look completely different to how it feels.",
     "Thursday, and somebody has decided to enjoy this instead of complaining.",
     "The phone is the only thing out here being held still.",
-    "Everyone else on this promenade went home about twenty minutes ago."
+    "Everyone else on this promenade went home about twenty minutes ago.",
+    "Your hairstyle? Gone. Accept it."
    ]
   },
   {
@@ -452,7 +476,9 @@
     "Somebody is going to be explaining that to somebody else this evening.",
     "Monday, and the garden has rearranged itself without asking anyone.",
     "The palms are fine. The trampoline had opinions about staying put.",
-    "It took the wind four seconds to move what took two hours to build."
+    "It took the wind four seconds to move what took two hours to build.",
+    "Someone's trampoline is now two streets away.",
+    "Every loose object in the garden has chosen violence."
    ]
   },
   {
@@ -524,7 +550,8 @@
     "Saturday, and the wind has strong opinions about your plans for the garden.",
     "That grass on the verge has been lying flat since Thursday.",
     "Somebody is going to sweep all that purple up and somebody is not.",
-    "The sky has gone the colour that makes Joburg check the group chat."
+    "The sky has gone the colour that makes Joburg check the group chat.",
+    "Every tree on the street is bowing the same way. Peer pressure."
    ]
   },
   {
@@ -617,7 +644,8 @@
     "The pegs lost, the wall won, and the neighbours are still laughing.",
     "Nobody is ever going to find that one white sock again.",
     "The wind did the throwing and the neighbour is doing the returning.",
-    "One gust, one wall, and two households now know each other much better."
+    "One gust, one wall, and two households now know each other much better.",
+    "Your washing just moved to the neighbour's yard."
    ]
   },
   {
@@ -749,7 +777,8 @@
     "That thorn tree has been leaning since before anyone on this street arrived.",
     "The dust is going somewhere and it is not asking permission.",
     "Northern Cape wind does not howl. It leans on things until they give.",
-    "Everything out here is either properly rooted or already gone."
+    "Everything out here is either properly rooted or already gone.",
+    "Sleep tight. The wind will watch the house. Loudly."
    ]
   },
   {
@@ -768,7 +797,8 @@
     "The wind has been delivering leaves to that doormat all evening.",
     "Every leaf on that mat arrived without being invited.",
     "The garden is moving and he has decided the doorway is far enough.",
-    "The wind is bringing the outside in and he is letting it come to him."
+    "The wind is bringing the outside in and he is letting it come to him.",
+    "Tonight's wind has opinions."
    ]
   },
   {
@@ -806,7 +836,8 @@
     "That trunk grew crooked because this happens here far more than it doesn't.",
     "The palm has been holding that exact shape since about three this morning.",
     "The Cape Doctor is making house calls.",
-    "The sun is up, the street is empty, and the wind got here first."
+    "The sun is up, the street is empty, and the wind got here first.",
+    "Table Mountain's tablecloth is out."
    ]
   },
   {
@@ -844,7 +875,8 @@
     "She is leaning at an angle that a flat path does not normally require.",
     "She will be picking grass seeds out of that jacket until Saturday.",
     "Thursday, and she is the only thing on this road not going sideways.",
-    "Half the hedge is in the air in front of her and still arriving."
+    "Half the hedge is in the air in front of her and still arriving.",
+    "Your hairstyle took one look and went back to bed."
    ]
   },
   {
@@ -863,7 +895,8 @@
     "Saturday morning, and the sea has already been over that railing twice.",
     "Neither of them is going to be the one who suggests turning back.",
     "That sea wall is doing its absolute best and it is still losing.",
-    "They will be getting salt off those shoes for the rest of the weekend."
+    "They will be getting salt off those shoes for the rest of the weekend.",
+    "Everyone's jogging at a slight angle this morning."
    ]
   },
   {
@@ -899,7 +932,8 @@
     "Half the pavement is airborne and only one of the three is enjoying it.",
     "That bag is working as a sail and he has not worked that out yet.",
     "Every leaf the tree dropped this month is going past them at head height.",
-    "Monday, and the wind is the best thing that has happened to him so far."
+    "Monday, and the wind is the best thing that has happened to him so far.",
+    "Hold onto your hat! And your kids."
    ]
   },
   {
@@ -974,7 +1008,8 @@
     "Table Mountain is right behind her and she cannot see a single bit of it.",
     "That shoe is coming off next and she has run out of hands.",
     "The leaves going past her were still on a tree two streets ago.",
-    "Tuesday, and the wind has strong opinions about somebody else's outfit."
+    "Tuesday, and the wind has strong opinions about somebody else's outfit.",
+    "Not a hairstyle in sight. Just survivors."
    ]
   },
   {
@@ -1030,7 +1065,10 @@
     "The sea is that flat about nine mornings a year and this is one of them.",
     "That mountain is that sharp because there is nothing at all in the air today.",
     "The sky is completely empty, which means this is as cool as today gets.",
-    "Friday, and by noon that paving is going to be too hot to stand on."
+    "Friday, and by noon that paving is going to be too hot to stand on.",
+    "Days like this should come with a soundtrack.",
+    "The type of day that makes people text 'lekker dag hey'.",
+    "Morning people might be onto something. Don't tell them."
    ]
   },
   {
@@ -1047,7 +1085,9 @@
    "lines": [
     "She is watering at seven because by nine it would be a waste.",
     "Not one cloud, which means those geraniums will need this again tonight.",
-    "This is the weather we brag about overseas."
+    "This is the weather we brag about overseas.",
+    "Mornings like this are why Capetonians never stop mentioning it.",
+    "Zero drama in the sky. Highly unusual. Gladly accepted."
    ]
   },
   {
@@ -1062,7 +1102,9 @@
     "clear/week_3/dawn/7.webp"
    ],
    "lines": [
-    "He will move twice before lunch and both times by about a metre."
+    "He will move twice before lunch and both times by about a metre.",
+    "The sun took its time this morning. Worth the wait.",
+    "Enjoy it. There's a cold front out there doing warm-ups."
    ]
   },
   {
@@ -1078,7 +1120,10 @@
    ],
    "lines": [
     "That fire was lit before anybody needed it, which is what a clear evening does.",
-    "Saturday, and the sky went from orange to blue without one cloud interrupting."
+    "Saturday, and the sky went from orange to blue without one cloud interrupting.",
+    "The coals aren't going to light themselves.",
+    "Call the mates. Get the meat. Let's go.",
+    "Fire up the Weber. It's the law."
    ]
   },
   {
@@ -1095,7 +1140,8 @@
    "lines": [
     "There is enough moon out there to hang washing by, and somebody did.",
     "It will be dry by morning and damp again by six, which is the deal.",
-    "The moon's doing the most tonight."
+    "The moon's doing the most tonight.",
+    "Quiet out there. Almost suspicious."
    ]
   },
   {
@@ -1111,7 +1157,9 @@
    ],
    "lines": [
     "You have to drive two hours from anywhere to get a sky like that.",
-    "Saturday night, and the entertainment is free and about four billion years old."
+    "Saturday night, and the entertainment is free and about four billion years old.",
+    "Perfect night to actually see the Milky Way.",
+    "No alarm. No agenda. Just vibes."
    ]
   },
   {
@@ -1128,7 +1176,9 @@
    "lines": [
     "That is the centre of the galaxy and it is coming up behind a koppie.",
     "Sunday night, and the best thing on tonight is not on a screen.",
-    "The sky looks like it's showing off."
+    "The sky looks like it's showing off.",
+    "Tomorrow's weather is tomorrow's problem.",
+    "Someone turned the stars up to full volume."
    ]
   },
   {
@@ -1143,7 +1193,8 @@
     "clear/week_3/night/7.webp"
    ],
    "lines": [
-    "Good night, South Africa."
+    "Good night, South Africa.",
+    "Sky this clear means tomorrow's a scorcher. Stay a while."
    ]
   },
   {
@@ -1161,7 +1212,9 @@
     "That is the first hadeda up and the entire valley is about to know.",
     "Monday, and the alarm on this farm has feathers and no snooze button.",
     "That sky lasts about six minutes and the bird is the only one watching.",
-    "Even the hadedas sound happy."
+    "Even the hadedas sound happy.",
+    "Africa's sky just hits different.",
+    "The sun woke up and chose glorious."
    ]
   },
   {
@@ -1176,7 +1229,9 @@
     "clear/week_4/dawn/6.webp"
    ],
    "lines": [
-    "Somewhere an estate agent is saying 'lifestyle'."
+    "Somewhere an estate agent is saying 'lifestyle'.",
+    "Bottle this one. Open it in winter.",
+    "This is the weather we brag about overseas."
    ]
   },
   {
@@ -1190,7 +1245,10 @@
     "clear/week_2/day/1.webp"
    ],
    "lines": [
-    "Days like this should come with a soundtrack."
+    "Days like this should come with a soundtrack.",
+    "Take your coffee outside. You deserve it.",
+    "This is why we live in South Africa.",
+    "Take a moment. Look up. You're welcome."
    ]
   },
   {
@@ -1204,7 +1262,8 @@
     "clear/week_2/day/2.webp"
    ],
    "lines": [
-    "Today's plans: exist outside."
+    "Today's plans: exist outside.",
+    "Main character weather right here."
    ]
   },
   {
@@ -1218,7 +1277,10 @@
     "clear/week_2/day/4.webp"
    ],
    "lines": [
-    "If you're working today, we feel sorry for you."
+    "If you're working today, we feel sorry for you.",
+    "Saturday energy: maximum. Responsibilities: minimum.",
+    "Perfect for doing absolutely nothing.",
+    "Be honest — you opened this app to confirm Saturday's braai."
    ]
   },
   {
@@ -1232,7 +1294,8 @@
     "clear/week_2/day/5.webp"
    ],
    "lines": [
-    "Whoever booked the four o'clock meeting is going to be sitting in it alone."
+    "Whoever booked the four o'clock meeting is going to be sitting in it alone.",
+    "Absolutely beautiful out there."
    ]
   },
   {
@@ -1246,7 +1309,10 @@
     "clear/week_2/day/7.webp"
    ],
    "lines": [
-    "Bottle this one. Open it in winter."
+    "Bottle this one. Open it in winter.",
+    "Postcard weather. You're welcome.",
+    "Your vitamin D levels are thanking you.",
+    "Air this clear should come with a warning: plans will be made."
    ]
   },
   {
@@ -1265,7 +1331,9 @@
     "That bonnet did not cool down overnight, which is the part that should worry you.",
     "That egg has been on there about four minutes and it is nearly done.",
     "Nobody in this dorp has needed a stove since about the second week of December.",
-    "Monday, and breakfast in this dorp has been sorted by a car bonnet."
+    "Monday, and breakfast in this dorp has been sorted by a car bonnet.",
+    "6am and the sun is already done warming up. That wasn't a warm-up, that was a warning.",
+    "The berg wind turned overnight. Cape Town, today you're basically Upington."
    ]
   },
   {
@@ -1284,7 +1352,8 @@
     "He got in before the sun cleared the fence and he has not come out.",
     "He got in at six and he is not planning to get out.",
     "That water was cold about forty minutes ago and nobody has topped it up.",
-    "The pool is not optional."
+    "The pool is not optional.",
+    "Funny how everyone suddenly remembers they love you when you own a pool."
    ]
   },
   {
@@ -1322,7 +1391,8 @@
     "She is lying on tile rather than anything soft, and that was a decision.",
     "By nine that windowsill is going to be the worst place in the house.",
     "The sun is only just up and she has already picked her spot.",
-    "Sunday, and she has about ninety minutes before she has to move again."
+    "Sunday, and she has about ninety minutes before she has to move again.",
+    "Your makeup has an expiry date of 9am."
    ]
   },
   {
@@ -1341,7 +1411,9 @@
     "The sun has been up eleven minutes and he has already stopped moving.",
     "That stoep has chairs on it and none of them will be used before six.",
     "Thursday, and by nine there will be nothing out here worth walking to.",
-    "There is no shade on this whole werf that lasts past about ten."
+    "There is no shade on this whole werf that lasts past about ten.",
+    "Move slowly. Speak slowly. Survive.",
+    "The shade is working harder than you today."
    ]
   },
   {
@@ -1359,7 +1431,9 @@
     "He tried the roof first and the roof was somehow hotter.",
     "Nobody has touched that car door and every one of them knows why.",
     "Nobody here is wondering whether it works. They are watching it work.",
-    "Monday, and it is not even eleven o'clock yet, which is the frightening part."
+    "Monday, and it is not even eleven o'clock yet, which is the frightening part.",
+    "The ice cream van is playing everyone's anthem.",
+    "35 in the shade. In the sun, nobody's counting anymore."
    ]
   },
   {
@@ -1378,7 +1452,8 @@
     "Nobody out here waters anything until that sun is properly behind the hill.",
     "It was watered this morning and you would not know it from here.",
     "That pot has been in full sun since about eleven this morning.",
-    "Monday, and it will do all of that again tomorrow without being asked."
+    "Monday, and it will do all of that again tomorrow without being asked.",
+    "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements."
    ]
   },
   {
@@ -1397,7 +1472,8 @@
     "That water has been sitting in the sun all day and it is not cold.",
     "He got in at eleven this morning and this is the second filling.",
     "The sun went down an hour ago and the paving is still giving it back.",
-    "Tuesday, and the coolest thing in this entire garden is that dog."
+    "Tuesday, and the coolest thing in this entire garden is that dog.",
+    "The pool is not optional."
    ]
   },
   {
@@ -1435,7 +1511,8 @@
     "That sun has been up eleven minutes and it is already doing that.",
     "Nobody is carrying water, which is a decision they are going to revisit.",
     "The shade on this road runs out in about two hundred metres.",
-    "Wednesday, and this is the coolest it is going to be all day."
+    "Wednesday, and this is the coolest it is going to be all day.",
+    "6:30 and the tar is already considering melting."
    ]
   },
   {
@@ -1453,7 +1530,9 @@
     "The file she is fanning with is the one she is meant to be reading.",
     "Two fans, four papers flying, and not one document has been read today.",
     "Nobody in that building can open a window and every one of them has tried.",
-    "Tuesday, and somebody in this building is going to be sent home early."
+    "Tuesday, and somebody in this building is going to be sent home early.",
+    "The office aircon war has begun.",
+    "The aircon remote is now public property. Negotiate."
    ]
   },
   {
@@ -1471,7 +1550,9 @@
     "Whoever left that there thought they would only be twenty minutes.",
     "That dashboard is hot enough that the wrapper gave up before the chocolate did.",
     "The steering wheel in there is currently not something you can hold.",
-    "Thursday, and that car is going to be worse at four than it is now."
+    "Thursday, and that car is going to be worse at four than it is now.",
+    "Somewhere a chocolate bar just died.",
+    "Hotter than a bakkie dashboard at noon."
    ]
   },
   {
@@ -1486,7 +1567,8 @@
     "heat/week_4/dusk/3.webp"
    ],
    "lines": [
-    "Nobody drives past a stall like that on a day like this."
+    "Nobody drives past a stall like that on a day like this.",
+    "Watermelon weather: the whole province agreed on it by about ten this morning."
    ]
   },
   {
@@ -1505,7 +1587,8 @@
     "That jug has been refilled twice and it is not even properly dark yet.",
     "The sun has gone and the tiles are still giving it back.",
     "Nobody else in this house is getting near that fan tonight.",
-    "Wednesday, and this is the first comfortable minute she has had since eleven."
+    "Wednesday, and this is the first comfortable minute she has had since eleven.",
+    "Stay hydrated or become a biltong."
    ]
   },
   {
@@ -1540,7 +1623,9 @@
     "That door has been open about ninety seconds and it is staying open.",
     "It has not dropped below twenty-five in that house since about Tuesday.",
     "That is the third time tonight and not one of them is about food.",
-    "The fridge is the coolest room in the house."
+    "The fridge is the coolest room in the house.",
+    "The fridge door is getting a workout today.",
+    "Shorts weather? This is underwear weather."
    ]
   },
   {
@@ -1556,7 +1641,10 @@
    "lines": [
     "That is the only cool water in this garden and it has been claimed.",
     "He has not moved out of it since eleven and he is not going to.",
-    "There is a whole garden out there and about a metre of it is bearable."
+    "There is a whole garden out there and about a metre of it is bearable.",
+    "The pool is already fully booked. By everyone. For the whole day.",
+    "Too hot to argue. Too hot to function.",
+    "Everyone with a pool just became very popular."
    ]
   },
   {
@@ -1572,7 +1660,2897 @@
    "lines": [
     "He came out of the cage, and he did not come out for the view.",
     "Nobody on this stoep is going anywhere until about four o'clock.",
-    "Friday, and that is the only moving air for about sixty kilometres."
+    "Friday, and that is the only moving air for about sixty kilometres.",
+    "You're not sweating. You're 'glowing'. Sure.",
+    "Jislaaik, it's properly hot!"
+   ]
+  },
+  {
+   "image": "clear/week_2/dawn/7.webp",
+   "hash": "d529968dcb50",
+   "condition": "clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "clear/week_2/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "lines": [
+    "The weekend doesn't get better than this.",
+    "'One hour at the beach.' History's most confident lie."
+   ]
+  },
+  {
+   "image": "clear/week_3/day/4.webp",
+   "hash": "84beada2e358",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/4.webp"
+   ],
+   "lines": [
+    "When the weather behaves this well, so do we. Roughly.",
+    "Even Monday looks photogenic in this light.",
+    "Perfect day. No excuses. Get out."
+   ]
+  },
+  {
+   "image": "clear/week_2/day/6.webp",
+   "hash": "5799efcdfd70",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/day/6.webp"
+   ],
+   "lines": [
+    "Somewhere an estate agent is saying 'lifestyle'.",
+    "Everything looks 4K today. The sky's in ultra mode.",
+    "Your excuse to stay inside just expired."
+   ]
+  },
+  {
+   "image": "clear/week_3/day/7.webp",
+   "hash": "77cfc93827e3",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "clear/week_3/day/7.webp"
+   ],
+   "lines": [
+    "One perfect day issued. Non-transferable. Spend it wisely.",
+    "If you're working today, we feel sorry for you.",
+    "If you're inside, you're doing it wrong."
+   ]
+  },
+  {
+   "image": "clear/week_3/day/1.webp",
+   "hash": "f673af851f9c",
+   "condition": "clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_3/day/1.webp"
+   ],
+   "lines": [
+    "The sky's giving everything today.",
+    "Weather this well-behaved is definitely up to something."
+   ]
+  },
+  {
+   "image": "clear/week_3/day/3.webp",
+   "hash": "0009c55ad6a5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "clear/week_3/day/3.webp"
+   ],
+   "lines": [
+    "Cancel everything. This is THE day winter was hiding.",
+    "Nature's flexing and we're here for it.",
+    "Africa showing off again. Quietly devastating."
+   ]
+  },
+  {
+   "image": "clear/week_4/day/2.webp",
+   "hash": "448b951052cc",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "clear/week_4/day/2.webp"
+   ],
+   "lines": [
+    "Blue sky, warm breeze. The simple stuff.",
+    "The kind of sky that makes you grateful for free things."
+   ]
+  },
+  {
+   "image": "clear/week_4/day/6.webp",
+   "hash": "3d001539dcb5",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "clear/week_4/day/6.webp"
+   ],
+   "lines": [
+    "Today's forecast: medium rare."
+   ]
+  },
+  {
+   "image": "clear/week_4/day/5.webp",
+   "hash": "6e598ae56c12",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "clear/week_4/day/5.webp"
+   ],
+   "lines": [
+    "The braai is the social calendar. Show up.",
+    "Your only responsibility is choosing charcoal or wood.",
+    "The Weber's been waiting all week for this."
+   ]
+  },
+  {
+   "image": "clear/week_1/day/7.webp",
+   "hash": "03a31c2b8e88",
+   "condition": "clear",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "clear/week_1/day/7.webp"
+   ],
+   "lines": [
+    "Beach or braai? Yes."
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/5.webp",
+   "hash": "9059d175f28c",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/dusk/5.webp",
+    "clear/week_4/dusk/5.webp"
+   ],
+   "lines": [
+    "The sun is really milking this exit. Honestly, deserved."
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/6.webp",
+   "hash": "1bd6b90924a1",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "clear/week_2/dusk/6.webp",
+    "clear/week_4/dusk/6.webp"
+   ],
+   "lines": [
+    "This is the day the brochure was talking about."
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/2.webp",
+   "hash": "90a621539543",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "lines": [
+    "Today's plans: exist outside.",
+    "Kuier weather. Get the people together."
+   ]
+  },
+  {
+   "image": "clear/week_2/dusk/1.webp",
+   "hash": "525b2eea2ebc",
+   "condition": "clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "clear/week_2/dusk/1.webp",
+    "clear/week_4/dusk/1.webp"
+   ],
+   "lines": [
+    "The weather gods are showing off.",
+    "Weekend vibes so strong they need their own playlist.",
+    "The evening showed up in its Sunday best."
+   ]
+  },
+  {
+   "image": "clear/week_2/night/6.webp",
+   "hash": "970707aba87c",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "clear/week_2/night/6.webp",
+    "clear/week_4/night/6.webp"
+   ],
+   "lines": [
+    "The hadedas are sleeping. Finally.",
+    "Somewhere a cricket is really giving it."
+   ]
+  },
+  {
+   "image": "clear/week_2/night/5.webp",
+   "hash": "05cd0ad39fd6",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "clear/week_2/night/5.webp",
+    "clear/week_4/night/5.webp"
+   ],
+   "lines": [
+    "The moon's doing the most tonight.",
+    "Verandah weather. The couch will understand."
+   ]
+  },
+  {
+   "image": "clear/week_2/night/7.webp",
+   "hash": "4138025d3128",
+   "condition": "clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "clear/week_2/night/7.webp",
+    "clear/week_4/night/7.webp"
+   ],
+   "lines": [
+    "Braai weather, boet! No excuses.",
+    "'Just one sundowner' — famous last words, every single time."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dawn/3.webp",
+   "hash": "08134a1e356e",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "lines": [
+    "The sky's on mute. Nobody's complaining.",
+    "Grey vibes. The sky matched my Monday."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dawn/4.webp",
+   "hash": "de1df07bf268",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_3/dawn/4.webp"
+   ],
+   "lines": [
+    "The sun sent an out-of-office reply.",
+    "The sky's curtains are drawn. Privacy, please."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dawn/6.webp",
+   "hash": "03ff71985022",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "lines": [
+    "Not Instagram weather. Not the end of the world.",
+    "Clouds rolling in like family — no phone call first."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dawn/7.webp",
+   "hash": "4845b881f911",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/dawn/7.webp",
+    "cloudy/week_4/dawn/7.webp"
+   ],
+   "lines": [
+    "Could be worse. Could also be better.",
+    "The sun hit snooze again. Honestly? Same."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dawn/4.webp",
+   "hash": "3bfd9b9470d6",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_4/dawn/4.webp"
+   ],
+   "lines": [
+    "The sun's on a tea break. No ETA.",
+    "At least it's not raining. That's the bar."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dawn/3.webp",
+   "hash": "b5793c36b69d",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dawn/3.webp",
+    "cloudy/week_3/dawn/3.webp"
+   ],
+   "lines": [
+    "Not bad, not great. Like a 6/10 date."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dawn/7.webp",
+   "hash": "e0e2d1182253",
+   "condition": "cloudy",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_1/dawn/7.webp",
+    "cloudy/week_3/dawn/7.webp"
+   ],
+   "lines": [
+    "The app says cloudy. Aunty's knee says rain. We trust the knee."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/day/3.webp",
+   "hash": "d16ca804a592",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/day/3.webp"
+   ],
+   "lines": [
+    "The sky is the colour of an old Tupperware lid.",
+    "The sun's on airplane mode.",
+    "Forecast says maybe. We say probably."
+   ]
+  },
+  {
+   "image": "cloudy/week_4/day/4.webp",
+   "hash": "4727610ce8f9",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_4/day/4.webp"
+   ],
+   "lines": [
+    "Even the weather can't be bothered today.",
+    "The sky's giving 'I'll try again tomorrow' energy.",
+    "Perfect weather for existing without enthusiasm."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/5.webp",
+   "hash": "5aea3d2e9887",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_2/day/5.webp"
+   ],
+   "lines": [
+    "The sun's bunking today.",
+    "The clouds are here but they're not doing anything."
+   ]
+  },
+  {
+   "image": "cloudy/week_4/day/6.webp",
+   "hash": "5a72972b399b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_4/day/6.webp"
+   ],
+   "lines": [
+    "Take a brolly just in case, hey.",
+    "50/50 on getting wet. Like a coin toss.",
+    "Pack an umbrella. Or don't. We don't know either."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/6.webp",
+   "hash": "dc71e7a692da",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/day/6.webp"
+   ],
+   "lines": [
+    "Grey is also a colour, says my ma. Today I believe her.",
+    "The sun is technically present. Spiritually elsewhere.",
+    "This weather has 'meh' written all over it."
+   ]
+  },
+  {
+   "image": "cloudy/week_3/day/1.webp",
+   "hash": "c16f8303d56e",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_3/day/1.webp"
+   ],
+   "lines": [
+    "Weather's being more indecisive than you at Spur.",
+    "Some clouds. Some sun. South African summer admin."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/7.webp",
+   "hash": "094ec6ba034c",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/day/7.webp"
+   ],
+   "lines": [
+    "The chops don't know it's cloudy. The braai proceeds.",
+    "Cloudy enough to comment, sunny enough to ignore."
+   ]
+  },
+  {
+   "image": "cloudy/week_4/day/7.webp",
+   "hash": "313ca13b51a5",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_4/day/7.webp"
+   ],
+   "lines": [
+    "The sky is buffering.",
+    "Schrodinger's rain. It both is and isn't.",
+    "Even the weather apps are arguing about this one."
+   ]
+  },
+  {
+   "image": "cloudy/week_3/day/4.webp",
+   "hash": "47550fce6c98",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_3/day/4.webp"
+   ],
+   "lines": [
+    "Eskom-friendly weather. No solar today.",
+    "Sun's playing peek-a-boo.",
+    "Sun on a smoke break."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/day/1.webp",
+   "hash": "119e4a52f8a4",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "cloudy/week_1/day/1.webp"
+   ],
+   "lines": [
+    "Cloud cover with a side of who-cares.",
+    "The sky's giving mixed signals again.",
+    "Sun, hide-and-seek champion of the day."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/day/6.webp",
+   "hash": "31b58730d005",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_1/day/6.webp"
+   ],
+   "lines": [
+    "Clouds looking proper suspicious.",
+    "The washing's on the line and you're feeling brave.",
+    "Washing's still safe. Probably."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/day/7.webp",
+   "hash": "5668c9f2edcb",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/day/7.webp"
+   ],
+   "lines": [
+    "The sky can't make up its mind. Join the club."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/day/1.webp",
+   "hash": "e9f6b3850ce2",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_2/day/1.webp"
+   ],
+   "lines": [
+    "Good day for a walk, bad day for a tan.",
+    "Sky can't make up its mind."
+   ]
+  },
+  {
+   "image": "cloudy/week_3/day/3.webp",
+   "hash": "04bdf14c306b",
+   "condition": "cloudy",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_3/day/3.webp"
+   ],
+   "lines": [
+    "This weather needs a life coach."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dusk/3.webp",
+   "hash": "018a0573e433",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_4/dusk/3.webp"
+   ],
+   "lines": [
+    "The sun clocked out without saying bye. Rude, but relatable."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dusk/7.webp",
+   "hash": "211c0291a514",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "lines": [
+    "Maybe rain, maybe not. Classic.",
+    "Rain? Possibly. Commitment? Never.",
+    "Looks like the clouds are staying for supper."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/dusk/4.webp",
+   "hash": "3ba329d5cea3",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cloudy/week_1/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp"
+   ],
+   "lines": [
+    "Nobody's posting this sunset on Instagram.",
+    "Don't trust those clouds. They're plotting."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/dusk/2.webp",
+   "hash": "6b5271665e34",
+   "condition": "cloudy",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "lines": [
+    "Sky's doing the most, but only a little."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/night/1.webp",
+   "hash": "7b4c0256fd8d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cloudy/week_1/night/1.webp",
+    "cloudy/week_3/night/1.webp"
+   ],
+   "lines": [
+    "The moon has hung out a do-not-disturb sign."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/night/7.webp",
+   "hash": "68317318c85d",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_3/night/7.webp"
+   ],
+   "lines": [
+    "Night-shift clouds: just keeping the place warm till the sun gets back."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/night/6.webp",
+   "hash": "bdc2741f86fb",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "lines": [
+    "No stars tonight, but the neighbourhood dogs still have opinions."
+   ]
+  },
+  {
+   "image": "cloudy/week_1/night/6.webp",
+   "hash": "e991afd863ba",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_3/night/6.webp"
+   ],
+   "lines": [
+    "Night clouds are the sky's way of saying: let's talk tomorrow."
+   ]
+  },
+  {
+   "image": "cloudy/week_2/night/4.webp",
+   "hash": "c6d4061cbef2",
+   "condition": "cloudy",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cloudy/week_2/night/4.webp",
+    "cloudy/week_4/night/4.webp"
+   ],
+   "lines": [
+    "The sky put the stars on silent. They're still up there, promise."
+   ]
+  },
+  {
+   "image": "cold/week_1/dawn/1.webp",
+   "hash": "ea6e65a6bc63",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_1/dawn/1.webp",
+    "cold/week_3/dawn/1.webp"
+   ],
+   "lines": [
+    "Somewhere out there people are going for a run right now. Strength to them.",
+    "Ja, it's jersey weather. Double jersey.",
+    "The grass is wet, the air is cold, and the jersey was not optional."
+   ]
+  },
+  {
+   "image": "cold/week_1/dawn/7.webp",
+   "hash": "91301942dc29",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_1/dawn/7.webp",
+    "cold/week_3/dawn/7.webp"
+   ],
+   "lines": [
+    "Frost on the grass, frost on the bakkie, frost on my will to live.",
+    "The sky is clear and the car is white, and those two facts are related."
+   ]
+  },
+  {
+   "image": "cold/week_1/dawn/3.webp",
+   "hash": "1c5f757ee79a",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_1/dawn/3.webp",
+    "cold/week_3/dawn/3.webp"
+   ],
+   "lines": [
+    "Layer up like you're climbing Sani Pass.",
+    "Your jacket has a jacket. It's that kind of day.",
+    "The zip goes all the way up today; the walk to the gate has teeth."
+   ]
+  },
+  {
+   "image": "cold/week_1/dawn/4.webp",
+   "hash": "41c9f776e0fb",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_1/dawn/4.webp",
+    "cold/week_3/dawn/4.webp"
+   ],
+   "lines": [
+    "Your breath is doing special effects.",
+    "Most beautiful time of day. Say the people who stay inside.",
+    "Your hands are in your pockets and they're not coming out."
+   ]
+  },
+  {
+   "image": "cold/week_2/dawn/5.webp",
+   "hash": "484f2079f5aa",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/dawn/5.webp",
+    "cold/week_4/dawn/5.webp"
+   ],
+   "lines": [
+    "Getting out of bed was a mistake. A documented one.",
+    "The warmest place in the province was abandoned here at about six-fifteen."
+   ]
+  },
+  {
+   "image": "cold/week_2/dawn/6.webp",
+   "hash": "4210c1f4a1ad",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_2/dawn/6.webp",
+    "cold/week_4/dawn/6.webp"
+   ],
+   "lines": [
+    "You're not cold, you're 'lekker koud'. Big difference.",
+    "Minus something this morning: the windscreen has grown its own art collection."
+   ]
+  },
+  {
+   "image": "cold/week_4/day/4.webp",
+   "hash": "4b92e51e69f8",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_4/day/4.webp"
+   ],
+   "lines": [
+    "The cold front is here and it brought friends.",
+    "Winter sun: all of the light, none of the heat. Nice try, sun.",
+    "Outside is a test of character. You're failing."
+   ]
+  },
+  {
+   "image": "cold/week_3/day/5.webp",
+   "hash": "77dad643efa6",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_3/day/5.webp"
+   ],
+   "lines": [
+    "Time to dig out that ugly beanie.",
+    "The sign says the rain won; the faces say it didn't."
+   ]
+  },
+  {
+   "image": "cold/week_2/day/5.webp",
+   "hash": "084405b1c79a",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_2/day/5.webp"
+   ],
+   "lines": [
+    "The car seats are freezing. Everything is freezing.",
+    "The morning's second kettle has nothing to do with tea."
+   ]
+  },
+  {
+   "image": "cold/week_1/day/6.webp",
+   "hash": "e8b7a7602012",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_1/day/6.webp"
+   ],
+   "lines": [
+    "The dog refused to go outside. Fair.",
+    "The dog looked out the front door, turned around, and went back to bed. Says it all.",
+    "One look at that white lawn and the blanket vote was unanimous."
+   ]
+  },
+  {
+   "image": "cold/week_2/day/2.webp",
+   "hash": "e938ce2769cd",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/day/2.webp"
+   ],
+   "lines": [
+    "The duvet is calling and the duvet is winning.",
+    "Blanket burrito mode: activated.",
+    "Construction finished at nine: one duvet cave, single occupant, no visitors till spring."
+   ]
+  },
+  {
+   "image": "cold/week_3/day/6.webp",
+   "hash": "bf942a9f6d66",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_3/day/6.webp"
+   ],
+   "lines": [
+    "This is not what the tourism brochure promised.",
+    "The sun is out. It means nothing. The sun is lying.",
+    "Somebody's optimism is still on the table, under a millimetre of frost."
+   ]
+  },
+  {
+   "image": "cold/week_2/day/4.webp",
+   "hash": "36ffe52cf7ec",
+   "condition": "cold",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_2/day/4.webp"
+   ],
+   "lines": [
+    "The house is colder inside than outside. Architecture is a beautiful thing.",
+    "One patch of sun came into this lounge and the dog got there first."
+   ]
+  },
+  {
+   "image": "cold/week_3/day/3.webp",
+   "hash": "a37a31d9aa79",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "cold/week_3/day/3.webp"
+   ],
+   "lines": [
+    "The heater is your best friend. Your only friend.",
+    "Your toes have filed a formal complaint.",
+    "Socks go on the heater first; feet join later — the winter system works."
+   ]
+  },
+  {
+   "image": "cold/week_1/day/7.webp",
+   "hash": "59f61259d350",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "cold/week_1/day/7.webp"
+   ],
+   "lines": [
+    "Hot chocolate is not a want. It's a need.",
+    "Gloves-around-the-cup weather: the coffee is doing two jobs at once."
+   ]
+  },
+  {
+   "image": "cold/week_4/day/1.webp",
+   "hash": "a373f1d83e2f",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "cold/week_4/day/1.webp"
+   ],
+   "lines": [
+    "Even the Capetonians are admitting it's cold.",
+    "The jersey got promoted to balaclava somewhere between the door and the gate.",
+    "The air found the one gap in the outfit and he is closing it by hand."
+   ]
+  },
+  {
+   "image": "cold/week_3/day/7.webp",
+   "hash": "d003110fec9f",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "cold/week_3/day/7.webp"
+   ],
+   "lines": [
+    "The washing is not going to dry. We hang it up for hope.",
+    "The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.",
+    "Cold plus beautiful is an honest trade. We'll take it."
+   ]
+  },
+  {
+   "image": "cold/week_4/day/2.webp",
+   "hash": "3fd7aa0aae2e",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "cold/week_4/day/2.webp"
+   ],
+   "lines": [
+    "The great debate: do we switch the heater on too, or are we not made of money?",
+    "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly."
+   ]
+  },
+  {
+   "image": "cold/week_1/night/2.webp",
+   "hash": "6baabb00f226",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_1/night/2.webp",
+    "cold/week_3/night/2.webp"
+   ],
+   "lines": [
+    "The chair is taken. The dog got there first. Rules are rules.",
+    "Outside is for the stars tonight; everything with fur voted fireplace."
+   ]
+  },
+  {
+   "image": "cold/week_2/night/3.webp",
+   "hash": "54f02eb5aac1",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold/week_2/night/3.webp",
+    "cold/week_4/night/3.webp"
+   ],
+   "lines": [
+    "Hot water bottle is the real MVP today.",
+    "Fingerless gloves at a laptop: winter has entered the home office."
+   ]
+  },
+  {
+   "image": "cold/week_2/night/5.webp",
+   "hash": "fbf101482bbd",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold/week_2/night/5.webp",
+    "cold/week_4/night/5.webp"
+   ],
+   "lines": [
+    "Prettiest blue sky in the country, and it feels like a fridge with a view.",
+    "Cold enough to share one blanket, clear enough to make it worth it."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/3.webp",
+   "hash": "3e60dabd7ef7",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/dawn/3.webp",
+    "cold-clear/week_4/dawn/3.webp"
+   ],
+   "lines": [
+    "The sun has arrived. It has not yet started working.",
+    "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+    "Bin day, and the frost got to them before the truck did."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dawn/7.webp",
+   "hash": "898c05f233a6",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dawn/7.webp",
+    "cold-clear/week_3/dawn/7.webp"
+   ],
+   "lines": [
+    "The lawn caught frost overnight. You're next.",
+    "Somebody left the freezer door open overnight.",
+    "The hadeda has landed on frost and is already drafting a complaint."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/6.webp",
+   "hash": "5a6dd26eb7db",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_4/dawn/6.webp"
+   ],
+   "lines": [
+    "The car's heater is the most important relationship in your life right now.",
+    "The car coughed twice before it agreed to start.",
+    "The Toyota started first try. You owe it a wash."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dawn/2.webp",
+   "hash": "caaa1c42d70a",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/dawn/2.webp",
+    "cold-clear/week_3/dawn/2.webp"
+   ],
+   "lines": [
+    "Clear skies, open roads, running nose. The full winter set.",
+    "The bluer the sky, the colder the truth.",
+    "Not one cloud, not one degree: a Highveld winter morning doing both at once."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/7.webp",
+   "hash": "4040cfcfc732",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/dawn/7.webp",
+    "cold-clear/week_4/dawn/7.webp"
+   ],
+   "lines": [
+    "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+    "The 7am sun isn't giving heat yet. Only vibes.",
+    "Five guinea fowl crossing in single file: the frost has everyone walking carefully."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/2.webp",
+   "hash": "28129477b706",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_2/dawn/2.webp",
+    "cold-clear/week_4/dawn/2.webp"
+   ],
+   "lines": [
+    "Highveld winter: the only place where you wear two jackets to fetch the post.",
+    "Zero wind. Zero clouds. Zero mercy.",
+    "The Free State just remembered it has a winter setting."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dawn/4.webp",
+   "hash": "6ca4d027da38",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_4/dawn/4.webp"
+   ],
+   "lines": [
+    "Sun on your back, freezer on your face.",
+    "Looks like a tourism ad. Feels like the inside of a fridge.",
+    "That first breath of air will wake you better than coffee."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/day/1.webp",
+   "hash": "45b1ac83db20",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/day/1.webp"
+   ],
+   "lines": [
+    "Sun's out. Don't be fooled. Nature is lying.",
+    "Sunshine: 10/10. Feels-like: don't ask.",
+    "The sunny side of the wall is prime property, and it is taken."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/day/1.webp",
+   "hash": "21c809043132",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/day/1.webp"
+   ],
+   "lines": [
+    "In the sun: bearable. Two steps left: Antarctica.",
+    "Karoo morning. The kind that makes you respect every farmer who chose this.",
+    "Full sun, visible breath: the Karoo running both seasons before lunch."
+   ]
+  },
+  {
+   "image": "cold-clear/week_3/day/5.webp",
+   "hash": "bbb3d8348b00",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_3/day/5.webp"
+   ],
+   "lines": [
+    "Window sun is the only sun doing its job today.",
+    "It looks lovely out there. We've chosen to believe it from in here.",
+    "Full sunshine, full jacket. Both are non-negotiable."
+   ]
+  },
+  {
+   "image": "cold-clear/week_4/day/3.webp",
+   "hash": "bbad2500c852",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_4/day/3.webp"
+   ],
+   "lines": [
+    "Lekker koud, but the rugby fields are about to look perfect.",
+    "Perfect rugby weather. For the spectators with blankets.",
+    "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/day/2.webp",
+   "hash": "32dec9fbdcaa",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/day/2.webp"
+   ],
+   "lines": [
+    "Sunny, with a 100% chance of shivering.",
+    "Frost on the grass, steam off the field: winter running weather at its most honest.",
+    "Cold enough to see every breath, clear enough that nobody minds."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/4.webp",
+   "hash": "fbdf528f41c8",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_1/dusk/4.webp",
+    "cold-clear/week_3/dusk/4.webp"
+   ],
+   "lines": [
+    "Perfect drying weather. The washing will dry and freeze, in that order.",
+    "The towels went out damp and are coming in as boards.",
+    "That washing is not dry; it is preserved. Winter dusk works fast out here."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/2.webp",
+   "hash": "510b7a0d60c0",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_1/dusk/2.webp",
+    "cold-clear/week_3/dusk/2.webp"
+   ],
+   "lines": [
+    "The dog is still keen. The dog is always keen. Respect.",
+    "Even the dog's breath is showing. That's the reading.",
+    "Frost already forming and the sun barely down: tonight means business."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/3.webp",
+   "hash": "0b4330abc214",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/dusk/3.webp",
+    "cold-clear/week_4/dusk/3.webp"
+   ],
+   "lines": [
+    "The sun is heading home now, taking the last three degrees with it.",
+    "The horses are doing their own weather report, one breath at a time."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/6.webp",
+   "hash": "ff19d8654ec3",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_2/dusk/6.webp",
+    "cold-clear/week_4/dusk/6.webp"
+   ],
+   "lines": [
+    "Not a cloud in sight. Not a degree either.",
+    "The sunset is free of charge. So is the head cold."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/5.webp",
+   "hash": "827554552d76",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp"
+   ],
+   "lines": [
+    "The braai is happening. The braai always happens. We just pull the chairs closer.",
+    "The temperature dropped with the sun and the circle got tighter by exactly that much.",
+    "The evening turned cold the minute it turned beautiful, which is the usual trade."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/dusk/5.webp",
+   "hash": "1f74ef9146fb",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "lines": [
+    "Golden hour, ice-cold air. Cape Town loves a dramatic contrast."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/3.webp",
+   "hash": "112364f9e477",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_4/night/3.webp"
+   ],
+   "lines": [
+    "Tomorrow's first task: five minutes of windscreen scraping in your work clothes.",
+    "The cars have surrendered. They're sleeping under ice tonight.",
+    "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/2.webp",
+   "hash": "da90853b2ccb",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold-clear/week_2/night/2.webp",
+    "cold-clear/week_4/night/2.webp"
+   ],
+   "lines": [
+    "Clear sky tonight. That means the cold has an all-access pass.",
+    "The frost has already started its shift. By dawn the lawn will be glass.",
+    "The bin run is being done at speed tonight, and the sky knows why."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/4.webp",
+   "hash": "d298c8c1f224",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_2/night/4.webp",
+    "cold-clear/week_4/night/4.webp"
+   ],
+   "lines": [
+    "Tile floors are tonight's villain. Wear something on your feet."
+   ]
+  },
+  {
+   "image": "cold-clear/week_2/night/6.webp",
+   "hash": "f453a678f470",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_4/night/6.webp"
+   ],
+   "lines": [
+    "Clear nights are winter's way of apologising.",
+    "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/4.webp",
+   "hash": "da60a92cafd2",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold-clear/week_1/night/4.webp",
+    "cold-clear/week_3/night/4.webp"
+   ],
+   "lines": [
+    "Free planetarium tonight. Admission: your toes.",
+    "First star is out. First ten degrees have also left.",
+    "The cold is charging admission tonight and the sky is worth every degree."
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/1.webp",
+   "hash": "591629dceb51",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dawn/1.webp",
+    "fog/week_3/dawn/1.webp"
+   ],
+   "lines": [
+    "The cows know exactly where they are. Which is more than the rest of us can say.",
+    "Visibility is down to one cow."
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/4.webp",
+   "hash": "deaadb7968fe",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/dawn/4.webp",
+    "fog/week_3/dawn/4.webp"
+   ],
+   "lines": [
+    "Silent Hill vibes. Without the monsters. Hopefully.",
+    "One lit window is taking on the whole fog, and losing beautifully.",
+    "The fog is thick enough to hold a beam of kitchen light like a solid object."
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/3.webp",
+   "hash": "d903941f0dd8",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_1/dawn/3.webp",
+    "fog/week_3/dawn/3.webp"
+   ],
+   "lines": [
+    "The streetlights are trying their best.",
+    "The world got a soft filter this morning.",
+    "The fog rolled in at three and started deleting the neighbourhood from the far end."
+   ]
+  },
+  {
+   "image": "fog/week_1/day/3.webp",
+   "hash": "2d71f451d0df",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/day/3.webp"
+   ],
+   "lines": [
+    "The fog arrived unannounced. Classic fog.",
+    "The world just... disappeared.",
+    "The fog ate the neighbourhood."
+   ]
+  },
+  {
+   "image": "fog/week_3/day/2.webp",
+   "hash": "84811d2b9372",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_3/day/2.webp"
+   ],
+   "lines": [
+    "Walking the dog has become a trust exercise.",
+    "The dog is definitely still on the end of that leash. Almost definitely.",
+    "Current visibility: one whole dog short of complete."
+   ]
+  },
+  {
+   "image": "fog/week_4/day/1.webp",
+   "hash": "541778f8c617",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_4/day/1.webp"
+   ],
+   "lines": [
+    "The neighbours exist. Apparently. Can't confirm.",
+    "The fog is lying in the streets like it pays rates here."
+   ]
+  },
+  {
+   "image": "fog/week_2/day/6.webp",
+   "hash": "62480343c313",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/day/6.webp"
+   ],
+   "lines": [
+    "The fog doesn't care about your schedule.",
+    "Even your GPS is confused.",
+    "Your GPS says you have arrived. Your GPS is lying."
+   ]
+  },
+  {
+   "image": "fog/week_3/day/7.webp",
+   "hash": "dd6b06e34d3e",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_3/day/7.webp"
+   ],
+   "lines": [
+    "Walking to the bin is now an expedition.",
+    "The world ends two metres past the gate.",
+    "Gown, slippers, thirty metres of visibility: bin day waits for no weather."
+   ]
+  },
+  {
+   "image": "fog/week_1/day/1.webp",
+   "hash": "f1d8b3873dff",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/day/1.webp"
+   ],
+   "lines": [
+    "Visibility: basically zero.",
+    "Found: one ball. The other three hundred metres of golf course are still missing.",
+    "The fairway is out there somewhere, taking the morning off from being visible."
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/1.webp",
+   "hash": "4003b55c6c42",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dusk/1.webp",
+    "fog/week_3/dusk/1.webp"
+   ],
+   "lines": [
+    "Somewhere out there is the road. We think.",
+    "Your high beams are making it worse, boet.",
+    "Headlights do about twenty metres out here; the rest is memory and respect."
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/5.webp",
+   "hash": "2ac9aa1f42fc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/dusk/5.webp",
+    "fog/week_3/dusk/5.webp"
+   ],
+   "lines": [
+    "The dog doesn't understand where the world went. Same, boy. Same.",
+    "Every streetlamp gets its own halo tonight; the fog is generous like that."
+   ]
+  },
+  {
+   "image": "fog/week_2/dusk/3.webp",
+   "hash": "5cd228859e14",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_2/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "lines": [
+    "Perfect weather to bump into someone you've 'been meaning to call'."
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/4.webp",
+   "hash": "a0b24a9ae618",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/dusk/4.webp",
+    "fog/week_3/dusk/4.webp"
+   ],
+   "lines": [
+    "Five metres of visibility. Same as your five-year plan.",
+    "The fog swallowed the whole street and left the tail lights as a receipt."
+   ]
+  },
+  {
+   "image": "fog/week_1/dusk/6.webp",
+   "hash": "b64f87c2b2bc",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_1/dusk/6.webp",
+    "fog/week_3/dusk/6.webp"
+   ],
+   "lines": [
+    "The street signs gave up.",
+    "The fog got to the lookout first and took the whole view for itself."
+   ]
+  },
+  {
+   "image": "fog/week_1/night/5.webp",
+   "hash": "05b3727f7c16",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "fog/week_1/night/5.webp",
+    "fog/week_3/night/5.webp"
+   ],
+   "lines": [
+    "Your car is out there. Somewhere. Probably.",
+    "Ghost town. But it's just Tuesday.",
+    "Fog so thick it has opinions."
+   ]
+  },
+  {
+   "image": "fog/week_1/night/1.webp",
+   "hash": "5a72ad3aac4b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "fog/week_1/night/1.webp",
+    "fog/week_3/night/1.webp"
+   ],
+   "lines": [
+    "Cape Town just got a dimmer switch.",
+    "Cape Town is still on under there; the fog is just running interference."
+   ]
+  },
+  {
+   "image": "fog/week_1/night/7.webp",
+   "hash": "c2a03f49e81e",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_1/night/7.webp",
+    "fog/week_3/night/7.webp"
+   ],
+   "lines": [
+    "Perfect weather for a horror movie.",
+    "Everything looks like a film scene. A creepy one."
+   ]
+  },
+  {
+   "image": "fog/week_2/night/4.webp",
+   "hash": "7acec82c9b6f",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/night/4.webp",
+    "fog/week_4/night/4.webp"
+   ],
+   "lines": [
+    "Visibility: vibes only.",
+    "The fog moved in an hour ago and the streetlights have doubled in size since."
+   ]
+  },
+  {
+   "image": "fog/week_1/night/4.webp",
+   "hash": "39c515606f74",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_1/night/4.webp",
+    "fog/week_3/night/4.webp"
+   ],
+   "lines": [
+    "Let's call it atmosphere and go inside.",
+    "That one window is doing lighthouse duty tonight, and it is enough."
+   ]
+  },
+  {
+   "image": "fog/week_2/night/2.webp",
+   "hash": "0467a4574c0b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/night/2.webp",
+    "fog/week_4/night/2.webp"
+   ],
+   "lines": [
+    "Joburg does fog so rarely it feels like a limited edition.",
+    "The city noise is off tonight; fog is the best soundproofing there is."
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/3.webp",
+   "hash": "9e75b001c7c5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/dawn/3.webp",
+    "rain/week_3/dawn/3.webp"
+   ],
+   "lines": [
+    "The traffic is emotional.",
+    "The wipers are on max and it's still not enough.",
+    "The wiper is on its ten-thousandth swipe and the rain has not blinked."
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/5.webp",
+   "hash": "80770bf13004",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/dawn/5.webp",
+    "rain/week_4/dawn/5.webp"
+   ],
+   "lines": [
+    "Your shoes are about to have a bad day."
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/6.webp",
+   "hash": "5526989179bd",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "lines": [
+    "Rain on a farm isn't weather. It's a salary falling from the sky.",
+    "The dams are doing a happy dance.",
+    "One night of proper rain and the driveway has joined the water table."
+   ]
+  },
+  {
+   "image": "rain/week_2/dawn/2.webp",
+   "hash": "7bd5758fb7b5",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dawn/2.webp",
+    "rain/week_4/dawn/2.webp"
+   ],
+   "lines": [
+    "Somewhere a farmer is doing a small private dance nobody's allowed to see.",
+    "The dams get their drink before you get your coffee. Know your place.",
+    "Rain out here is an event; the whole veld will smell of it by seven."
+   ]
+  },
+  {
+   "image": "rain/week_1/day/2.webp",
+   "hash": "2b750515575e",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/day/2.webp"
+   ],
+   "lines": [
+    "Clouds are crying like NZ at the 23 Rugby WC!"
+   ]
+  },
+  {
+   "image": "rain/week_1/day/3.webp",
+   "hash": "00a672556998",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/3.webp"
+   ],
+   "lines": [
+    "Breaking news: the puddles are open for business.",
+    "The rain made the puddle; the puddle made the afternoon.",
+    "Six raincoats, one puddle, zero regrets: the rain knows its audience."
+   ]
+  },
+  {
+   "image": "rain/week_2/day/6.webp",
+   "hash": "8ce35385e048",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/6.webp"
+   ],
+   "lines": [
+    "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+   ]
+  },
+  {
+   "image": "rain/week_2/day/4.webp",
+   "hash": "e7547cfdee94",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/day/4.webp"
+   ],
+   "lines": [
+    "The clouds are having a moment.",
+    "Rain so heavy it should pay rent.",
+    "The cat has taken the rain personally, as the cat takes most things."
+   ]
+  },
+  {
+   "image": "rain/week_3/day/3.webp",
+   "hash": "e54bbf2b56b2",
+   "condition": "rain",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/3.webp"
+   ],
+   "lines": [
+    "Yes, it's raining sideways. South Africa speciality."
+   ]
+  },
+  {
+   "image": "rain/week_2/day/1.webp",
+   "hash": "fe838c8901f7",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "rain/week_2/day/1.webp"
+   ],
+   "lines": [
+    "Solidarity to everyone with one wet shoe right now.",
+    "Wet jeans for the rest of the day. The classic punishment."
+   ]
+  },
+  {
+   "image": "rain/week_1/day/1.webp",
+   "hash": "d878b96a3f71",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "rain/week_1/day/1.webp"
+   ],
+   "lines": [
+    "The umbrella broke on the first gust. Classic.",
+    "Somewhere an umbrella just turned inside out. Moment of silence.",
+    "Hair plans: cancelled."
+   ]
+  },
+  {
+   "image": "rain/week_2/day/5.webp",
+   "hash": "3bd49d0acf2b",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "wed",
+   "paths": [
+    "rain/week_2/day/5.webp"
+   ],
+   "lines": [
+    "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies."
+   ]
+  },
+  {
+   "image": "rain/week_3/day/7.webp",
+   "hash": "a0ef2720c507",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "rain/week_3/day/7.webp"
+   ],
+   "lines": [
+    "Forgot your jacket? The universe noticed."
+   ]
+  },
+  {
+   "image": "rain/week_4/day/4.webp",
+   "hash": "c9c6fd784b69",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "rain/week_4/day/4.webp"
+   ],
+   "lines": [
+    "Someone's braai just got ruined."
+   ]
+  },
+  {
+   "image": "rain/week_4/day/3.webp",
+   "hash": "c9050c0a05e5",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "rain/week_4/day/3.webp"
+   ],
+   "lines": [
+    "The garden's saying dankie at last.",
+    "At least the garden's happy. Someone has to be."
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/1.webp",
+   "hash": "71fdebcd3deb",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dusk/1.webp",
+    "rain/week_3/dusk/1.webp"
+   ],
+   "lines": [
+    "Perfect excuse to cancel plans."
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/3.webp",
+   "hash": "09641df1432a",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "rain/week_2/dusk/3.webp",
+    "rain/week_4/dusk/3.webp"
+   ],
+   "lines": [
+    "The N1 is now a waterpark.",
+    "Two drops on a windscreen and the whole N1 forgets everything it ever learned."
+   ]
+  },
+  {
+   "image": "rain/week_1/dusk/5.webp",
+   "hash": "e95e8a2f22f0",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "rain/week_1/dusk/5.webp",
+    "rain/week_3/dusk/5.webp"
+   ],
+   "lines": [
+    "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
+    "Joburg summer rain: arrives at five, soaks everything, gone by supper."
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/6.webp",
+   "hash": "abf80e59bae9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/dusk/6.webp",
+    "rain/week_4/dusk/6.webp"
+   ],
+   "lines": [
+    "The commute just became a team sport."
+   ]
+  },
+  {
+   "image": "rain/week_2/dusk/4.webp",
+   "hash": "b4ee9d16720e",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/dusk/4.webp",
+    "rain/week_4/dusk/4.webp"
+   ],
+   "lines": [
+    "Wet socks. The ultimate betrayal."
+   ]
+  },
+  {
+   "image": "rain/week_2/night/4.webp",
+   "hash": "c8df884e9ec0",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "rain/week_2/night/4.webp",
+    "rain/week_4/night/4.webp"
+   ],
+   "lines": [
+    "The traffic just remembered rain exists. Again.",
+    "Your car wash was a waste of money.",
+    "Night rain maths: half the visibility, double the concentration, triple the respect."
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/2.webp",
+   "hash": "91f980f76f82",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dawn/2.webp",
+    "storm/week_3/dawn/2.webp"
+   ],
+   "lines": [
+    "This is why Noah built a boat."
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/3.webp",
+   "hash": "55fac1141abf",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_1/dawn/3.webp",
+    "storm/week_3/dawn/3.webp"
+   ],
+   "lines": [
+    "Sunrise chose drama today."
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/5.webp",
+   "hash": "f0b49be17750",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dawn/5.webp",
+    "storm/week_3/dawn/5.webp"
+   ],
+   "lines": [
+    "The sky's CV just got updated."
+   ]
+  },
+  {
+   "image": "storm/week_1/dawn/7.webp",
+   "hash": "a785060d7357",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_3/dawn/7.webp"
+   ],
+   "lines": [
+    "The dog has already booked his spot under the bed.",
+    "The dog's under the bed. Smart move, honestly."
+   ]
+  },
+  {
+   "image": "storm/week_2/dawn/7.webp",
+   "hash": "20ed2fe6b144",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_2/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "lines": [
+    "The sky woke up in a mood."
+   ]
+  },
+  {
+   "image": "storm/week_2/dawn/2.webp",
+   "hash": "56af96f529d2",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dawn/2.webp",
+    "storm/week_4/dawn/2.webp"
+   ],
+   "lines": [
+    "Jislaaik, stay inside!",
+    "Free IMAX this morning, boet."
+   ]
+  },
+  {
+   "image": "storm/week_2/dawn/3.webp",
+   "hash": "29a289619727",
+   "condition": "storm",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "lines": [
+    "Rusks first. Panic later."
+   ]
+  },
+  {
+   "image": "storm/week_1/day/5.webp",
+   "hash": "99d0821cdd98",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/day/5.webp"
+   ],
+   "lines": [
+    "Somewhere a weather reporter is living their best life.",
+    "The wind has a personal vendetta against umbrellas."
+   ]
+  },
+  {
+   "image": "storm/week_2/day/2.webp",
+   "hash": "c152b51ebfa5",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/day/2.webp"
+   ],
+   "lines": [
+    "Thunder rolling in. Inside is the move.",
+    "Two club selections left: the clubhouse or the car."
+   ]
+  },
+  {
+   "image": "storm/week_3/day/5.webp",
+   "hash": "b08495c9d832",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "storm/week_3/day/5.webp"
+   ],
+   "lines": [
+    "Respect the thunder. It's earned it."
+   ]
+  },
+  {
+   "image": "storm/week_3/day/3.webp",
+   "hash": "20f3d07d3c47",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/3.webp"
+   ],
+   "lines": [
+    "Lightning's putting on a show — watch from the window.",
+    "Nature just reminded us of the pecking order.",
+    "Thunder counts double when you have ears like that."
+   ]
+  },
+  {
+   "image": "storm/week_4/day/6.webp",
+   "hash": "f6562060468c",
+   "condition": "storm",
+   "time": "day",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_4/day/6.webp"
+   ],
+   "lines": [
+    "Free fireworks, no tickets needed."
+   ]
+  },
+  {
+   "image": "storm/week_2/day/4.webp",
+   "hash": "c2c016aabf8f",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/day/4.webp"
+   ],
+   "lines": [
+    "The sky just went full Carte Blanche.",
+    "Every loose object in the garden has chosen violence."
+   ]
+  },
+  {
+   "image": "storm/week_4/day/5.webp",
+   "hash": "8c5812bded23",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "storm/week_4/day/5.webp"
+   ],
+   "lines": [
+    "Cancel everything. Even your excuses."
+   ]
+  },
+  {
+   "image": "storm/week_3/day/1.webp",
+   "hash": "10cac134f9d9",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "fri",
+   "paths": [
+    "storm/week_3/day/1.webp"
+   ],
+   "lines": [
+    "Not the time for hero moves, hey.",
+    "Hail's down — cover the bakkie."
+   ]
+  },
+  {
+   "image": "storm/week_1/day/4.webp",
+   "hash": "676b8843cb92",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sat",
+   "paths": [
+    "storm/week_1/day/4.webp"
+   ],
+   "lines": [
+    "The sky's having a full-on tantrum."
+   ]
+  },
+  {
+   "image": "storm/week_2/day/5.webp",
+   "hash": "777b9b465dbe",
+   "condition": "storm",
+   "time": "day",
+   "week": "B",
+   "day": "sun",
+   "paths": [
+    "storm/week_2/day/5.webp"
+   ],
+   "lines": [
+    "Nature's having a word. Best to listen."
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/3.webp",
+   "hash": "742e1675a5a4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "storm/week_1/dusk/3.webp",
+    "storm/week_3/dusk/3.webp"
+   ],
+   "lines": [
+    "Unplug the things. The sky has plans.",
+    "The balcony beats the couch when the sky is doing this."
+   ]
+  },
+  {
+   "image": "storm/week_2/dusk/5.webp",
+   "hash": "adc69e7b4a17",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "storm/week_2/dusk/5.webp",
+    "storm/week_4/dusk/5.webp"
+   ],
+   "lines": [
+    "Lightning's putting Eskom's grid to shame."
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/4.webp",
+   "hash": "53d4228e24c8",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_1/dusk/4.webp",
+    "storm/week_3/dusk/4.webp"
+   ],
+   "lines": [
+    "Today's forecast: special effects.",
+    "The palms are pointing the way the storm is going, which is this way."
+   ]
+  },
+  {
+   "image": "storm/week_2/dusk/4.webp",
+   "hash": "f6818069c8bd",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "storm/week_2/dusk/4.webp",
+    "storm/week_4/dusk/4.webp"
+   ],
+   "lines": [
+    "The braai is cancelled. Yes, really."
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/5.webp",
+   "hash": "e5b510c8a1e4",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/dusk/5.webp",
+    "storm/week_3/dusk/5.webp"
+   ],
+   "lines": [
+    "Eskom wishes it had this power.",
+    "Nature's doing its own load shedding."
+   ]
+  },
+  {
+   "image": "storm/week_2/night/1.webp",
+   "hash": "faaf0b2003be",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "storm/week_2/night/1.webp",
+    "storm/week_4/night/1.webp"
+   ],
+   "lines": [
+    "Midnight and the sky is showing off.",
+    "The best television in the house is currently the weather."
+   ]
+  },
+  {
+   "image": "storm/week_1/night/7.webp",
+   "hash": "14c56f85c353",
+   "condition": "storm",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "storm/week_1/night/7.webp",
+    "storm/week_3/night/7.webp"
+   ],
+   "lines": [
+    "Every flash is a photo nobody takes in time."
+   ]
+  },
+  {
+   "image": "cold/week_1/dusk/2.webp",
+   "hash": "6ab73d31bad6",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_1/dusk/2.webp",
+    "cold/week_3/dusk/2.webp"
+   ],
+   "lines": [
+    "The mist has moved into the valley for the night and locked the gate behind it.",
+    "That mist is tomorrow morning's frost out doing a site inspection."
+   ]
+  },
+  {
+   "image": "cold/week_1/dusk/3.webp",
+   "hash": "55da2af2c2bd",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "tue",
+   "paths": [
+    "cold/week_1/dusk/3.webp",
+    "cold/week_3/dusk/3.webp"
+   ],
+   "lines": [
+    "The sun is leaving the mountains one shelf at a time."
+   ]
+  },
+  {
+   "image": "cold/week_1/dusk/7.webp",
+   "hash": "420d1bd07555",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_1/dusk/7.webp",
+    "cold/week_3/dusk/7.webp"
+   ],
+   "lines": [
+    "It is heater season, and the best seat in the house has fur on it."
+   ]
+  },
+  {
+   "image": "cold/week_1/night/6.webp",
+   "hash": "a77b4dca45ae",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_1/night/6.webp",
+    "cold/week_3/night/6.webp"
+   ],
+   "lines": [
+    "The cold cleared the whole street an hour before closing time.",
+    "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early."
+   ]
+  },
+  {
+   "image": "cold/week_1/night/7.webp",
+   "hash": "b850a52403e3",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "lines": [
+    "Beanie, snood, torch, book: winter nights build the best reading rooms."
+   ]
+  },
+  {
+   "image": "cold/week_2/day/3.webp",
+   "hash": "999e68c47bfc",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cold/week_2/day/3.webp"
+   ],
+   "lines": [
+    "Wet road, grey sky, dog in a jersey: winter is fully operational."
+   ]
+  },
+  {
+   "image": "cold/week_2/dusk/3.webp",
+   "hash": "50eb6a4aa792",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_2/dusk/3.webp"
+   ],
+   "lines": [
+    "The mountain is in there somewhere, wrapped up for the winter.",
+    "The beach has gone to one colour, and it is the cold one.",
+    "Nobody's footprints on that sand today; the cold is keeping its beach to itself."
+   ]
+  },
+  {
+   "image": "cold/week_2/night/2.webp",
+   "hash": "cb132360385f",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold/week_2/night/2.webp",
+    "cold/week_4/night/2.webp"
+   ],
+   "lines": [
+    "Clear night, wet steps, visible breath: the frost is filling in its paperwork.",
+    "One last look at a sky that is about to get seriously cold."
+   ]
+  },
+  {
+   "image": "cold/week_4/dawn/1.webp",
+   "hash": "ba36a2982ee0",
+   "condition": "cold",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_4/dawn/1.webp"
+   ],
+   "lines": [
+    "Smoke going straight up means cold, still and not one breath of wind."
+   ]
+  },
+  {
+   "image": "cold/week_4/day/5.webp",
+   "hash": "d970e657c4d2",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "tue",
+   "paths": [
+    "cold/week_4/day/5.webp"
+   ],
+   "lines": [
+    "The yard is wet, the air is cold, and security has suspended patrols.",
+    "That is not a dog refusing a walk; that is a dog reading a forecast."
+   ]
+  },
+  {
+   "image": "cold/week_4/night/1.webp",
+   "hash": "13efc9191981",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_4/night/1.webp"
+   ],
+   "lines": [
+    "Frost on the lawn and wors on the grid: a Cape winter compromise."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/day/4.webp",
+   "hash": "042ba0a95388",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "wed",
+   "paths": [
+    "cold-clear/week_1/day/4.webp"
+   ],
+   "lines": [
+    "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+    "The bakkie iced over under a completely clear sky, which is exactly how it works.",
+    "The sun is up and doing its best; the frost is unconvinced so far."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/dusk/7.webp",
+   "hash": "948736af4859",
+   "condition": "cold-clear",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/dusk/7.webp",
+    "cold-clear/week_3/dusk/7.webp"
+   ],
+   "lines": [
+    "A sky that clean means the field freezes before the floodlights even warm up."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/3.webp",
+   "hash": "05aeb3b79581",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_3/night/3.webp"
+   ],
+   "lines": [
+    "The Southern Cross is out and the lawn has gone silver under it.",
+    "A sky this clean at night is beautiful, and it charges in degrees.",
+    "Stars that sharp come standard with air this cold — it is a package deal."
+   ]
+  },
+  {
+   "image": "cold-clear/week_1/night/7.webp",
+   "hash": "8fd1944f303b",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/night/7.webp",
+    "cold-clear/week_3/night/7.webp"
+   ],
+   "lines": [
+    "Braaiing in beanies under a hard clear sky: winter never cancelled anything here."
+   ]
+  },
+  {
+   "image": "cold-clear/week_3/day/1.webp",
+   "hash": "decff597fe6c",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_3/day/1.webp"
+   ],
+   "lines": [
+    "Coats and coffees in full sun: winter in this city photographs like summer."
+   ]
+  },
+  {
+   "image": "fog/week_1/dawn/5.webp",
+   "hash": "23b1b4b2af6d",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/dawn/5.webp",
+    "fog/week_3/dawn/5.webp"
+   ],
+   "lines": [
+    "The hi-vis is doing exactly what it was bought for this morning."
+   ]
+  },
+  {
+   "image": "fog/week_1/night/3.webp",
+   "hash": "b7cdf515c96b",
+   "condition": "fog",
+   "time": "night",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "fog/week_1/night/3.webp",
+    "fog/week_3/night/3.webp"
+   ],
+   "lines": [
+    "Last taxis of the night, and the fog has the whole rank to itself soon."
+   ]
+  },
+  {
+   "image": "fog/week_2/dawn/1.webp",
+   "hash": "13fa1ba0ce60",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "thu",
+   "paths": [
+    "fog/week_2/dawn/1.webp",
+    "fog/week_4/dawn/1.webp"
+   ],
+   "lines": [
+    "The sun is coming through the fog at half strength and full gold."
+   ]
+  },
+  {
+   "image": "fog/week_2/dawn/3.webp",
+   "hash": "8ea1dc6bec6a",
+   "condition": "fog",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "fog/week_2/dawn/3.webp",
+    "fog/week_4/dawn/3.webp"
+   ],
+   "lines": [
+    "Fog settles in the low ground, which is why the herd sleeps on the hill."
+   ]
+  },
+  {
+   "image": "fog/week_2/day/1.webp",
+   "hash": "36972a49b9e6",
+   "condition": "fog",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "fog/week_2/day/1.webp"
+   ],
+   "lines": [
+    "Kickoff is ten and the far posts have not arrived yet."
+   ]
+  },
+  {
+   "image": "fog/week_2/dusk/1.webp",
+   "hash": "b5837596744c",
+   "condition": "fog",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "fog/week_2/dusk/1.webp",
+    "fog/week_4/dusk/1.webp"
+   ],
+   "lines": [
+    "The fog took the city but it is not getting the Bo-Kaap's colours."
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/2.webp",
+   "hash": "e5b2e8ac2654",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "rain/week_1/dawn/2.webp",
+    "rain/week_3/dawn/2.webp"
+   ],
+   "lines": [
+    "The puddles are claiming the pavement one slab at a time."
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/6.webp",
+   "hash": "73567b0c612e",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_3/dawn/6.webp"
+   ],
+   "lines": [
+    "Wet tar plus sunrise equals a street made of gold, briefly.",
+    "Somebody ordered rain for the night and sun for the morning, and it was delivered."
+   ]
+  },
+  {
+   "image": "rain/week_1/dawn/7.webp",
+   "hash": "206f0a768ec9",
+   "condition": "rain",
+   "time": "dawn",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/dawn/7.webp",
+    "rain/week_3/dawn/7.webp"
+   ],
+   "lines": [
+    "The rain is on the glass and the coffee is on the sill: Sunday is sorted.",
+    "That window has the best programme on this morning and it is just rain.",
+    "Steady, straight-down, all-morning rain: the kind the garden actually drinks."
+   ]
+  },
+  {
+   "image": "rain/week_1/night/3.webp",
+   "hash": "d28204abf829",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "rain/week_1/night/3.webp",
+    "rain/week_3/night/3.webp"
+   ],
+   "lines": [
+    "Every neon sign in the street is being doubled on the wet tar tonight."
+   ]
+  },
+  {
+   "image": "rain/week_2/night/6.webp",
+   "hash": "19ddc2f8afd3",
+   "condition": "rain",
+   "time": "night",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "rain/week_2/night/6.webp",
+    "rain/week_4/night/6.webp"
+   ],
+   "lines": [
+    "The gutter is running like a river and it has already claimed a casualty.",
+    "The storm water is heading for the sea and taking prisoners."
+   ]
+  },
+  {
+   "image": "rain/week_3/day/1.webp",
+   "hash": "d86d4f5699c2",
+   "condition": "rain",
+   "time": "day",
+   "week": "B",
+   "day": "thu",
+   "paths": [
+    "rain/week_3/day/1.webp"
+   ],
+   "lines": [
+    "The puddle outside the gate is now part of the curriculum."
+   ]
+  },
+  {
+   "image": "storm/week_1/dusk/7.webp",
+   "hash": "e0089512238b",
+   "condition": "storm",
+   "time": "dusk",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "storm/week_1/dusk/7.webp",
+    "storm/week_3/dusk/7.webp"
+   ],
+   "lines": [
+    "Somewhere up there the rain found a way in, and it is being managed."
    ]
   }
  ]
