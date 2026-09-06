@@ -118,12 +118,15 @@
     "Rain was the warning. This is the follow-through.",
     "Proper storm. Not the pretty kind."
    ]
-  }
- ],
- "notCovered": [
+  },
   {
    "image": "rain/week_2/dusk/2.webp",
-   "why": "Al described three rain photographs; the bare rain set is four. This one — a man standing in a lit gateway at dusk, umbrella down, a car passing in the wet street — got no lines."
+   "matchedOn": "\"the guy in the doorway\" — man standing in a lit gateway at dusk, umbrella down, a car passing in the wet street. Supplied 2026-09-06 after this photograph was flagged as the one bare rain frame he had not covered.",
+   "lines": [
+    "Still raining. That's the update.",
+    "The rain didn't clock off."
+   ]
   }
- ]
+ ],
+ "notCovered": []
 }

@@ -1,10 +1,10 @@
 {
  "generated": "2026-08-19",
  "ruledBy": "Al, bespoke line review rounds 1 and 2",
- "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them.",
+ "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
  "images": 42,
- "lineCount": 875,
+ "lineCount": 877,
  "set": [
   {
    "image": "clear/week_2/dawn/2.webp",
@@ -4784,6 +4784,23 @@
    "lines": [
     "Rain was the warning. This is the follow-through.",
     "Proper storm. Not the pretty kind."
+   ],
+   "source": "al-2026-09-06"
+  },
+  {
+   "image": "rain/week_2/dusk/2.webp",
+   "hash": "f7f51acb22c9",
+   "condition": "rain",
+   "time": "dusk",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "rain/week_2/dusk/2.webp",
+    "rain/week_4/dusk/2.webp"
+   ],
+   "lines": [
+    "Still raining. That's the update.",
+    "The rain didn't clock off."
    ],
    "source": "al-2026-09-06"
   }

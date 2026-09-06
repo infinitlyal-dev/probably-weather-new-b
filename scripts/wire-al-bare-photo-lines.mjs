@@ -40,8 +40,12 @@ for (const entry of src.images) {
   if (!m) throw new Error(`not a set-001 photograph: ${entry.image}`);
   const existing = bySet.get(m.hash);
   if (existing && existing.lines.length) {
-    // These were supposed to be bare. If one is not, stop rather than quietly append.
-    collisions.push(`${entry.image} already carries ${existing.lines.length} line(s)`);
+    // Re-runnable: a photograph already carrying exactly these lines was wired by an earlier
+    // run of this same file and is simply skipped. Anything else means the photograph was not
+    // bare after all, which is a stop rather than a quiet append.
+    const same = entry.lines.every((l) => existing.lines.includes(l));
+    if (same) continue;
+    collisions.push(`${entry.image} already carries ${existing.lines.length} line(s) that are not this file's`);
     continue;
   }
   const row = existing || { ...m, lines: [] };
