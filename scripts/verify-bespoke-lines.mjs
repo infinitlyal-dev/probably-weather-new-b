@@ -9,8 +9,9 @@
 //      photograph has bespoke lines the caption is one of them, and if it does
 //      not the caption is a condition-bank line. Never a line from another
 //      picture.
-//   2. The same invariant across ALL SEVEN slots of a folder, by pinning
-//      Math.random so pickRandomIndex returns each index in turn. At least one
+//   2. The same invariant across ALL SEVEN slots of a folder, by pinning the
+//      browser clock to each SAST weekday in turn — the slot index IS the
+//      weekday (image-picker.js getRotationDay, Mon=1..Sun=7). At least one
 //      of the seven must land on a photograph that has lines, or the test has
 //      proved nothing about the branch that matters.
 //   3. A photograph with NO bespoke lines keeps a condition-bank line. A bug
@@ -23,7 +24,7 @@
 // the picker's onload handler nulls itself on success ("detach so a later cache
 // eviction can't replay the chain"), so a later src assignment fires nothing and
 // the caption never updates. The real corrective path still works because in a
-// genuine fallback the load has not succeeded yet. Pinning the pick exercises
+// genuine fallback the load has not succeeded yet. Pinning the clock exercises
 // the synchronous chain[0] path the app actually takes.
 //
 //   node scripts/verify-bespoke-lines.mjs
@@ -37,7 +38,9 @@ import { WEATHER_COPY } from '../assets/weather-copy.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
-const DATE = '2026-08-19';
+// Monday 17 Aug 2026 + (day - 1): the clock date whose SAST weekday is `day`.
+const dateForDay = (day) => new Date(Date.UTC(2026, 7, 17 + (day - 1))).toISOString().slice(0, 10);
+let DATE = dateForDay(3);
 const fails = [];
 const ok = [];
 const check = (name, cond, detail) => (cond ? ok : fails).push(`${name}${detail ? ' — ' + detail : ''}`);
@@ -100,12 +103,15 @@ await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const base = `http://127.0.0.1:${server.address().port}`;
 const browser = await chromium.launch();
 
-const open = async (lang, pinnedRandom, night) => {
+const open = async (lang, day, night) => {
   const ctx = await browser.newContext({ viewport: { width: 375, height: 812 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
   const page = await ctx.newPage();
   nightMode = !!night;
+  // The slot is the SAST weekday, so the clock chooses the slot. The payload's
+  // sunrise/sunset ride on the same date so time-of-day stays consistent.
+  DATE = dateForDay(day);
   await page.clock.install({ time: new Date(`${DATE}T${night ? '22' : '13'}:12:00+02:00`) });
-  await page.addInitScript(({ l, rnd }) => {
+  await page.addInitScript(({ l }) => {
     try {
       localStorage.setItem('pw_home', JSON.stringify({ name: 'Somerset West, Western Cape', lat: -34.08, lon: 18.85, mode: 'gps' }));
       localStorage.setItem('pw_install_dismissed_until', String(Date.now() + 864e5));
@@ -117,10 +123,7 @@ const open = async (lang, pinnedRandom, night) => {
       // Afrikaans session: the session was never Afrikaans.
       localStorage.setItem('lang', JSON.stringify(l));
     } catch (_) {}
-    // Pin the picker's slot choice. pickRandomIndex() is the only consumer that
-    // matters here and it is 1 + floor(random * 7).
-    if (typeof rnd === 'number') Math.random = () => rnd;
-  }, { l: lang, rnd: pinnedRandom });
+  }, { l: lang });
   await page.goto(base, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => {
     const s = document.getElementById('pwSplash');
@@ -136,9 +139,8 @@ const open = async (lang, pinnedRandom, night) => {
 let hits = 0;
 let bespokeSlot = 0;
 for (let slot = 1; slot <= 7; slot += 1) {
-  // pickRandomIndex() is 1 + floor(random * 7), so this pins it to `slot`.
-  const rnd = (slot - 1) / 7 + 0.01;
-  const { ctx, page } = await open('en', rnd, true);
+  // The clock's SAST weekday is the slot: Monday 17 Aug 2026 → 1 … Sunday 23 Aug → 7.
+  const { ctx, page } = await open('en', slot, true);
   const seen = await page.evaluate(() => ({
     src: document.getElementById('bgImg').getAttribute('src') || '',
     line: (document.getElementById('headline').textContent || '').trim(),
@@ -160,10 +162,9 @@ check('at least one slot exercised the bespoke branch', hits > 0, `${hits} of 7 
 
 // ---- Afrikaans keeps the condition bank -------------------------------------
 if (bespokeSlot) {
-  // The same pinned pick that landed on a bespoke photograph above, so this is
+  // The same pinned day that landed on a bespoke photograph above, so this is
   // a session that WOULD have received an English line but must not.
-  const rnd = (bespokeSlot - 1) / 7 + 0.01;
-  const { ctx, page } = await open('af', rnd, true);
+  const { ctx, page } = await open('af', bespokeSlot, true);
   const line = await page.evaluate(() => (document.getElementById('headline').textContent || '').trim());
   check('Afrikaans never receives an English bespoke line', !ALL_BESPOKE.has(line), `"${line}"`);
   await ctx.close();

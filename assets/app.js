@@ -8,7 +8,7 @@ import { COPY_BANK, loadCopyBank } from './copy-loader.js';
 import { WITTY_DAY_TAGS, eligibleWittyPool, resolveNightAwareCopyCondition } from './witty-day-tags.js';
 import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
-import { getRotationWeek, buildPickerPaths, pickRandomIndex } from './image-picker.js';
+import { getRotationDay, getRotationWeek, buildPickerPaths } from './image-picker.js';
 import { pickConditionIconForTime, pickHourlyIcon, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { weatherIconSvg, ICON_CONDITION } from './weather-icons.js';
 import { heroCropFor, applyHeroCrop } from './hero-crop.js';
@@ -1498,14 +1498,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.floor((utcHour + offsetHours + 24) % 24);
   }
   function getLocationDayOfWeek() {
-    // Returns 0=Sun,1=Mon...6=Sat for the SEARCHED location, not the device.
-    // Uses utcOffsetSeconds from the API to shift UTC time to location time.
-    const offset = window.__PW_LAST_NORM?.utcOffsetSeconds;
-    if (isNum(offset)) {
-      const locationMs = Date.now() + offset * 1000;
-      return new Date(locationMs).getUTCDay(); // getUTCDay on shifted time = location's day
-    }
-    return new Date().getDay(); // fallback to device time
+    // Returns 0=Sun,1=Mon...6=Sat in SAST — the SAME day the image picker uses
+    // (image-picker.js getRotationDay, Monday=1..Sunday=7), so the weekend /
+    // day-tag routing of the condition bank and the photograph on screen can
+    // never disagree about what day it is. Neither the device clock nor the
+    // searched location's offset: a Sunday-night photograph with a braai line
+    // on it must not sit under a Monday copy rule because the phone thinks
+    // it is already Monday in UTC.
+    return getRotationDay() % 7;
   }
   function getLocationDayOfYear() {
     // Returns 1-366 for the searched location, not the device.
@@ -1599,14 +1599,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return fallback;
   }
-  // Picker state — module-scoped so race-guarding + memoization survive across
-  // rapid setBackgroundFor calls (pull-to-refresh fires this 2-3x in succession).
+  // Picker state — module-scoped so race-guarding survives across rapid
+  // setBackgroundFor calls (pull-to-refresh fires this 2-3x in succession).
   let __pickerToken = 0;
-  // Map keyed by 'folder|time|week'. Map (not single-slot) so condition
-  // oscillation A→B→A reuses A's original pick instead of re-rolling.
-  // Capped at 16 entries; oldest evicted on overflow (Map preserves insertion order).
-  const __pickerMemo = new Map();
-  const PICKER_MEMO_CAP = 16;
   // ---- the bespoke line ----------------------------------------------------
   // The condition bank picks a line before anything is known about the picture,
   // which is why the same joke could land on a photograph it had nothing to do
@@ -1643,32 +1638,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // The picker reads from the new WebP folder structure:
     //   assets/images/bg/<condition>/week_<1..4>/<dawn|day|dusk|night>/<1..7>.webp
     // Time-of-day comes from getTimeOfDay() (solar-aware, unchanged).
-    // Week comes from getRotationWeek() (UTC-anchored to SAST launch Saturday).
+    // Week comes from getRotationWeek() (Monday 00:00 SAST boundaries) and the
+    // slot index is the SAST weekday from getRotationDay() (Mon=1..Sun=7) —
+    // Al's design: the photograph curated for Saturday is served on Saturday.
+    // Deterministic, so there is nothing to memoize: every re-paint of the same
+    // (folder, time, day) resolves to the same photograph, and the bespoke line
+    // written for it stays on it.
     const folder = getWeatherBackgroundFolder(condition);
     const fallbackFolder = getWeatherBackgroundFallbackFolder(condition);
     const timeOfDay = getTimeOfDay();
     const week = getRotationWeek();
-
-    // Memoize the random pick by (folder, time, week). Without this, every
-    // re-render (refresh, sidebar re-paint) would pick a fresh image and the
-    // background would flicker mid-frame. The memo invalidates the moment any
-    // of the three signals changes (condition/time-of-day transition, weekly
-    // rollover), so users still get rotation — just not on every paint.
-    const key = `${folder}|${timeOfDay}|${week}`;
-    let r;
-    if (__pickerMemo.has(key)) {
-      r = __pickerMemo.get(key);
-    } else {
-      r = pickRandomIndex();
-      __pickerMemo.set(key, r);
-      if (__pickerMemo.size > PICKER_MEMO_CAP) {
-        const oldest = __pickerMemo.keys().next().value;
-        __pickerMemo.delete(oldest);
-      }
-    }
+    const r = getRotationDay();
     const chain = buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r);
 
-    debugLog(`[Image picker] condition=${condition} folder=${folder} week=${week} time=${timeOfDay} pick=${r}/7 → ${chain[0]}`);
+    debugLog(`[Image picker] condition=${condition} folder=${folder} week=${week} time=${timeOfDay} day=${r}/7 (SAST weekday, Mon=1) → ${chain[0]}`);
 
     // Applied against the INTENDED image, synchronously, in the same tick that
     // renderHome set the condition line — so the caption is written once and

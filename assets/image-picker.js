@@ -1,20 +1,35 @@
-// Probably Weather — background image picker (date-based 4-week rotation).
+// Probably Weather — background image picker (date-based rotation).
 //
-// Reads from the new weekly batch folder structure:
+// Reads from the weekly batch folder structure:
 //   assets/images/bg/<condition>/week_<1..4>/<dawn|day|dusk|night>/<1..7>.webp
 //
 // Pure functions only — DOM wiring lives in app.js so this module is unit-testable
 // without jsdom.
 //
-// Week rotation is anchored to a fixed UTC instant representing Saturday
-// 30 May 2026 at 00:00 SAST (UTC+2). Date.UTC is explicit and parser-safe.
-// SAST midnight = 22:00 UTC the previous day, hence Date.UTC(2026, 4, 29, 22).
-export const LAUNCH_DATE_MS = Date.UTC(2026, 4, 29, 22, 0, 0, 0);
+// THE DAY IS THE INDEX. Al's design, and the whole of the set-001 curation and
+// humour pairing built on it: slot <n> is the weekday, Monday = 1 … Sunday = 7,
+// so a photograph curated for Saturday (braai in shot, "Saturday, and…" in its
+// lines) is served on Saturday and never on a Tuesday. Weeks run Monday–Sunday.
+// The four week folders are a two-week A/B cycle — week_1 and week_3 hold week A,
+// week_2 and week_4 hold week B — laid out on disk by scripts/layout-set-001-grid.mjs.
+//
+// Both the day and the week are taken in SAST (Africa/Johannesburg, UTC+2, no
+// daylight saving — so plain arithmetic is exact and ICU-independent). Not the
+// device clock and not UTC: a phone at 23:30 on a Sunday in SAST is still
+// Sunday even though UTC has moved on, and a Monday-00:30 SAST open must land
+// on Monday's photograph although UTC still says Sunday.
+export const SAST_OFFSET_MS = 2 * 60 * 60 * 1000;
 export const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+export const DAY_MS = 24 * 60 * 60 * 1000;
+// Week boundaries flip at Monday 00:00 SAST. The anchor is the Monday of launch
+// week — Monday 25 May 2026 00:00 SAST = Sunday 24 May 22:00 UTC — so launch day
+// (Saturday 30 May 2026) stays inside week_1 exactly as it did under the old
+// Saturday-anchored formula, and the week the app is showing today does not jump.
+export const WEEK_ANCHOR_MS = Date.UTC(2026, 4, 24, 22, 0, 0, 0);
 // Backgrounds are CDN-cached immutable for one year. Bump this whenever any
 // rotating WebP bytes change so returning clients request a fresh URL instead
 // of retaining the old body at the stable filesystem path.
-export const BG_IMAGE_URL_VERSION = '20260718-p1';
+export const BG_IMAGE_URL_VERSION = '20260906-grid';
 
 export const BG_IMAGE_SLOT_FOLDERS = [
   'clear', 'cloudy', 'cold', 'cold-clear', 'fog', 'heat', 'rain', 'storm', 'wind',
@@ -64,16 +79,31 @@ export function _resetWarnedFolders() {
 }
 
 /**
+ * Return the slot index (1..7) for a given UTC timestamp: the SAST weekday,
+ * Monday = 1 … Sunday = 7.
+ *
+ * This is THE day function. The picker's slot, the bespoke hero line (which is
+ * looked up by the photograph the slot resolves to) and the condition bank's
+ * weekend / day-tag routing (app.js getLocationDayOfWeek) all derive from it,
+ * so photograph, line and weekend rule cannot disagree about what day it is.
+ * NaN / non-finite inputs return 1 rather than throwing.
+ */
+export function getRotationDay(nowMs = Date.now()) {
+  if (!Number.isFinite(nowMs)) return 1;
+  const sastDay = new Date(nowMs + SAST_OFFSET_MS).getUTCDay(); // 0 = Sun … 6 = Sat
+  return sastDay === 0 ? 7 : sastDay;
+}
+
+/**
  * Return the active rotation week (1..4) for a given UTC timestamp.
  *
- * The week boundary flips at the same UTC instant for everyone, which
- * corresponds to Saturday 00:00 SAST. Dates before launch return 1
- * (graceful default — users testing pre-launch see the first batch).
- * NaN / non-finite inputs also return 1 rather than throwing.
+ * The week flips at Monday 00:00 SAST for everyone at the same instant. Dates
+ * before the anchor return 1 (graceful default — pre-launch testers see the
+ * first batch). NaN / non-finite inputs also return 1 rather than throwing.
  */
 export function getRotationWeek(nowMs = Date.now()) {
-  if (!Number.isFinite(nowMs) || !Number.isFinite(LAUNCH_DATE_MS)) return 1;
-  const elapsed = nowMs - LAUNCH_DATE_MS;
+  if (!Number.isFinite(nowMs) || !Number.isFinite(WEEK_ANCHOR_MS)) return 1;
+  const elapsed = nowMs - WEEK_ANCHOR_MS;
   if (elapsed < 0) return 1;
   return (Math.floor(elapsed / WEEK_MS) % 4) + 1;
 }
@@ -112,13 +142,4 @@ export function buildPickerPaths(folder, fallbackFolder, timeOfDay, week, r, bas
     `${base}/default.jpg`,
   ];
   return Array.from(new Set(raw));
-}
-
-/**
- * Return an integer 1..7 inclusive from Math.random().
- * Extracted for test mockability — tests stub Math.random and assert this maps
- * 0 → 1, 0.5 → 4, 0.99 → 7.
- */
-export function pickRandomIndex() {
-  return 1 + Math.floor(Math.random() * 7);
 }

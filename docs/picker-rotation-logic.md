@@ -35,33 +35,34 @@ Total: **9 conditions × 4 weeks × 4 time-slots × 7 images = 1,008 images.**
 
 ## How the week is chosen
 
-The 4-week cycle is anchored to one fixed moment in time:
+Weeks run **Monday to Sunday in SAST**. The 4-week cycle is anchored to the Monday of launch week:
 
-> **`LAUNCH_DATE = Saturday 30 May 2026, 00:00 SAST (UTC+2)`**
+> **`WEEK_ANCHOR = Monday 25 May 2026, 00:00 SAST (UTC+2)`** — Sunday 24 May 22:00 UTC
 
-Every Saturday at midnight SAST, the picker rolls over to the next week. After week 4, it loops back to week 1.
+Every Monday at midnight SAST, the picker rolls over to the next week folder. After week 4, it loops back to week 1. Launch day (Saturday 30 May 2026) sits inside week_1, exactly as it did under the original Saturday-anchored formula, so the week the app showed did not jump when the boundary moved (changed 2026-09-06).
 
-| Days since launch | Active week |
-|-------------------|-------------|
-| 0–6               | week_1      |
-| 7–13              | week_2      |
-| 14–20             | week_3      |
-| 21–27             | week_4      |
-| 28–34             | week_1 (cycle restarts) |
-| 35–41             | week_2      |
-| …                 | …           |
+| Days since anchor | Active week | Content |
+|-------------------|-------------|---------|
+| 0–6               | week_1      | week A  |
+| 7–13              | week_2      | week B  |
+| 14–20             | week_3      | week A  |
+| 21–27             | week_4      | week B  |
+| 28–34             | week_1 (cycle restarts) | week A |
+| …                 | …           | …       |
+
+The four folders carry a **two-week A/B cycle**: week_1 and week_3 hold week A, week_2 and week_4 hold week B (Al's set-001 curation grid, laid out on disk by `scripts/layout-set-001-grid.mjs`).
 
 The formula in the code:
 
 ```js
-const elapsed = Date.now() - LAUNCH_DATE_MS;
-if (elapsed < 0) return 1;                    // before launch → week 1
+const elapsed = nowMs - WEEK_ANCHOR_MS;
+if (elapsed < 0) return 1;                    // before the anchor → week 1
 return (Math.floor(elapsed / WEEK_MS) % 4) + 1;
 ```
 
-**Why anchored to a fixed UTC moment?** So every user worldwide sees the same week flip at the same instant. SA users see Saturday-midnight SAST, UK users see Friday-22:00 BST — but it's the same global flip.
+**Why SAST and not the device clock?** Every user sees the same flip at the same instant, and that instant is a South African Monday midnight. SAST has no daylight saving, so this is plain arithmetic (UTC + 2h) and needs no timezone database.
 
----
+**Why was it Saturday before?** The original 2026-05-26 picker anchored the cycle to the launch instant itself — Saturday 30 May 2026 00:00 SAST — and chose the image index at random, so the day of the week never mattered to it. The curation and humour pairing that followed were built on Monday-indexed weeks, which is why the anchor moved.
 
 ## How the time-of-day is chosen
 
@@ -80,9 +81,14 @@ This logic was **not changed** in this rewrite — same code path as before.
 
 ## How the specific image is chosen
 
-Within the chosen `<condition>/week_<N>/<time>/` folder, the picker picks a random integer 1..7. Each page render gets a fresh random pick, so refreshing the page swaps the image. The service worker caches each WebP after first load, so re-shows are instant.
+**The day is the index.** Within the chosen `<condition>/week_<N>/<time>/` folder, the picker serves the image whose number is the SAST weekday: **Monday = 1 … Sunday = 7**. Every open on a given day shows the same photograph for that condition and time-of-day, which is what lets a line written for that photograph (assets/hero-lines.js) stay on it, and lets a Saturday photograph carry a braai line without ever appearing on a Tuesday.
 
----
+```js
+const sastDay = new Date(nowMs + 2 * 60 * 60 * 1000).getUTCDay(); // 0 = Sun … 6 = Sat
+return sastDay === 0 ? 7 : sastDay;
+```
+
+The same function (`getRotationDay`) feeds the condition bank's weekend and day-tag routing in app.js (`getLocationDayOfWeek`), so photograph, line and weekend rule can never disagree about what day it is.
 
 ## The fallback chain
 
@@ -128,4 +134,4 @@ This means even a totally broken weather payload won't produce a broken URL — 
 
 1. **OG dynamic-image generation** (`api/og.js` → `getOgBackgroundPath()`) still reads `assets/images/bg/<condition>/day_1.jpg`. After promote, those JPG files will be removed and OG generation will 404. This needs a separate update synchronised with the promote step.
 2. **Spec literal `<condition>/day/1.webp` fallback** — the original spec mentioned this as a "legacy fallback" but no such path exists in either the old or new structure. Interpreted as the sibling-folder fallback (step 3 above), which preserves the legacy chain's semantics.
-3. **Random per-render vs deterministic-per-hour** — the spec asked for `Math.random()` per call. This means every refresh picks a different image, which can miss the SW cache. A deterministic alternative (e.g., index based on `Math.floor(localHour / 4)`) would hit the cache more reliably. Flagging for future consideration.
+3. ~~Random per-render vs deterministic~~ — resolved 2026-09-06: the index is the SAST weekday (see above).
