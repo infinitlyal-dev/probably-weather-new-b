@@ -101,7 +101,7 @@
 {"key":"witty.rain[32]","en":"The pavement is a river and the river has plans.","af":"Die sypaadjie is 'n rivier en die rivier het planne.","st":"Pavimente ke noka mme noka e na le merero.","status":"confirmed-live"}
 {"key":"witty.rain[33]","en":"Forgot your jacket? The universe noticed.","af":"Jou baadjie vergeet? Die heelal het opgemerk.","st":"U lebetse jase ea hao? Bokahohle bo bone.","status":"confirmed-live"}
 {"key":"witty.rain[34]","en":"The dog is staring at the rain like it's a personal insult.","af":"Die hond staar na die reen asof dit n persoonlike belediging is.","st":"Ntja e shebile pula joalo ka thohako ea botho.","status":"confirmed-live"}
-{"key":"witty.rain[35]","en":"The traffic just remembered rain exists. Again.","af":"Die verkeer het pas onthou daar is n ding soos reen bestaan weer.","st":"Sephethephethe se sa tsoa hopola hore pula e teng. Hape.","status":"confirmed-live"}
+{"key":"witty.rain[35]","en":"The traffic just remembered rain exists. Again.","af":"Die verkeer het pas onthou daar is n ding soos reën bestaan weer.","st":"Sephethephethe se sa tsoa hopola hore pula e teng. Hape.","status":"confirmed-live"}
 {"key":"witty.rain-possible[0]","en":"Maybe rain, maybe not. Classic.","af":"Miskien reën, miskien nie. Klassiek.","st":"Mohlomong pula, mohlomong che. Setso.","status":"confirmed-live"}
 {"key":"witty.rain-possible[1]","en":"Clouds looking proper suspicious.","af":"Wolke lyk behoorlik verdag.","st":"Maru a shebahala a belaela ka nnete.","status":"confirmed-live"}
 {"key":"witty.rain-possible[2]","en":"Take a brolly just in case, hey.","af":"Vat n sambreel net vir ingeval, ne.","st":"Nka sekhele ho ba sireletsehile, hey.","status":"confirmed-live"}
@@ -114,7 +114,7 @@
 {"key":"witty.rain-possible[9]","en":"Forecast says maybe. We say probably.","af":"Voorspelling sê miskien. Ons sê waarskynlik.","st":"Ponelopele e re mohlomong. Re re mohlomong.","status":"confirmed-live"}
 {"key":"witty.rain-possible[10]","en":"Bring a jacket. Or sunscreen. Or both.","af":"Bring 'n baadjie. Of sonbrandroom. Of albei.","st":"Tlisa jase. Kapa sethibelo sa letsatsi. Kapa ka bobeli.","status":"confirmed-live"}
 {"key":"witty.rain-possible[11]","en":"The sky's giving mixed signals again.","af":"Die lug gee weer gemengde seine.","st":"Lehodimo le fana le matšoao a tsoakaneng hape.","status":"confirmed-live"}
-{"key":"witty.rain-possible[12]","en":"Rain? Possibly. Commitment? Never.","af":"Reen? Moontlik. Sal ek my lewe daar op wed? Nooit.","st":"Pula? Mohlomong. Boitlamo? Le kgale.","status":"confirmed-live"}
+{"key":"witty.rain-possible[12]","en":"Rain? Possibly. Commitment? Never.","af":"Reën? Moontlik. Sal ek my lewe daar op wed? Nooit.","st":"Pula? Mohlomong. Boitlamo? Le kgale.","status":"confirmed-live"}
 {"key":"witty.rain-possible[13]","en":"This weather needs a life coach.","af":"Hierdie weer het 'n lewensafrigter nodig.","st":"Leholimo lena le hloka mokoetlisi oa bophelo.","status":"confirmed-live"}
 {"key":"witty.rain-possible[14]","en":"Schrodinger's rain. It both is and isn't.","af":"Schrödinger se reën. Dit is én is nie.","st":"Pula ea Schrödinger. E teng le ha e eo.","status":"confirmed-live"}
 {"key":"witty.rain-possible[15]","en":"The washing's on the line and you're feeling brave.","af":"Die wasgoed hang buite en jy voel dapper.","st":"Liaparo li ntse li omisitsoe mme o ikutloa o le sebete.","status":"confirmed-live"}
@@ -143,10 +143,10 @@
 {"key":"witty.cloudy[18]","en":"Nobody's posting this sunset on Instagram.","af":"Niemand gaan hierdie sononder op Instagram sit nie.","st":"Ha ho motho ea tla post-a sunset ena ho Instagram.","status":"confirmed-live"}
 {"key":"witty.cloudy[19]","en":"The clouds are here but they're not doing anything.","af":"Die wolke is hier maar hulle doen niks.","st":"Maru a teng empa ha a etse letho.","status":"confirmed-live"}
 {"key":"witty.cloudy[20]","en":"The sky's on mute. Nobody's complaining.","af":"Die lug is op mute. Niemand kla nie.","st":"Lehodimo le kgutsitse. Ha ho motho ea llang.","status":"confirmed-live"}
-{"key":"witty.cloudy[21]","en":"Not Instagram weather. Not the end of the world.","af":"Nie Troufoto weer nie. Nie die einde van die wereld nie.","st":"Ha se leholimo la Instagram. Ha se qetello ea lefatše.","status":"confirmed-live"}
+{"key":"witty.cloudy[21]","en":"Not Instagram weather. Not the end of the world.","af":"Nie Troufoto weer nie. Nie die einde van die wêreld nie.","st":"Ha se leholimo la Instagram. Ha se qetello ea lefatše.","status":"confirmed-live"}
 {"key":"witty.cloudy[22]","en":"The sun sent an out-of-office reply.","af":"Die son het 'n out-of-office gestuur.","st":"Letsatsi le romeletse out-of-office.","status":"confirmed-live"}
 {"key":"witty.cloudy[23]","en":"This weather has 'meh' written all over it.","af":"Hierdie weer het n 'meh' houding.","st":"Leholimo lena le na le 'meh' karolong e 'ngoe le e 'ngoe.","status":"confirmed-live"}
-{"key":"witty.cloudy[24]","en":"At least it's not raining. That's the bar.","af":"Ten minste reen dit nie. Dis die standaard.","st":"Bonyane ha ho ne pula. Ke standaard.","status":"confirmed-live"}
+{"key":"witty.cloudy[24]","en":"At least it's not raining. That's the bar.","af":"Ten minste reën dit nie. Dis die standaard.","st":"Bonyane ha ho ne pula. Ke standaard.","status":"confirmed-live"}
 {"key":"witty.cloudy[25]","en":"The vibe is beige. Accept it.","af":"Die vibe is beige. Aanvaar dit.","st":"Vibe ke beige. Amohela.","status":"confirmed-live"}
 {"key":"witty.cloudy[26]","en":"Perfect weather for existing without enthusiasm.","af":"Perfekte weer vir bestaan sonder entoesiasme.","st":"Leholimo le loketseng ho phela ntle le mafolofolo.","status":"confirmed-live"}
 {"key":"witty.cloudy[27]","en":"The clouds are committed to being average.","af":"Die wolke is toegewy aan gemiddeld wees.","st":"Maru a itlamile ho ba karolelano.","status":"confirmed-live"}

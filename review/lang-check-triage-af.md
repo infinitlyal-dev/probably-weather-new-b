@@ -1,75 +1,29 @@
 # lang-check triage — Afrikaans — 2026-09-06
 
 Set: review/af-batch-1..4.json — 533 newly transcreated + 350 reused from the native-reviewed bank.
-Checked 883 lines in 4.2 s. **27 need a human** (4 high, 23 lower); 856 passed every corpus check.
+Checked 883 lines in 2.3 s. **23 need a human** (0 high, 23 lower); 860 passed every corpus check.
 
-Doubt types among the triaged lines: morphology 15, lexical 11, contamination 3, semantic 2.
+Doubt types among the triaged lines: lexical 11, morphology 7, contamination 3, semantic 2.
 
 "Passed" means the corpora found nothing to object to. It does not mean the line lands — a transcreated joke can be attested word for word and still miss. The checker cannot see register, humour, or a real word used in a sense the dictionaries also list.
 
 Ranked by confidence that something is wrong. Each entry: the doubt, then the evidence (source counts and an attested sentence). Nothing here has been changed in the banks.
 
-### AF-T1 · 0.80 · HIGH · cloudy/dawn (bank cloudy#21) · bank
-- **EN:** Not Instagram weather. Not the end of the world.
-- **AF:** Nie Troufoto weer nie. Nie die einde van die wereld nie.
-- **high / morphology:** 'wereld' is attested 249× but 'wêreld' 3182× — missing diacritic
-  - evidence: *kaikki #8* — Van die wêreld se beste wyne kom van hierdie streek af.
-- **medium / morphology:** 'wereld' is usually 'wêreld' in this register (af-qc diacritic trap; 'wêreld' attested 3182×)
-  - evidence: *kaikki #8* — Van die wêreld se beste wyne kom van hierdie streek af.
-- notes: 'einde' means 'end; ending; expiry' — nothing in the English source; the source's 'world' would normally be 'wêreld' / 'wêrelde', none present
-- coverage: 3/3 content words attested; source words matched 0/4 (unmatched: instagram, weather, end, world)
-
-### AF-T2 · 0.80 · HIGH · cloudy/dawn (bank cloudy#24) · bank
-- **EN:** At least it's not raining. That's the bar.
-- **AF:** Ten minste reen dit nie. Dis die standaard.
-- **high / morphology:** 'reen' is attested 62× but 'reën' 530× — missing diacritic
-  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
- Die son sal weer skyn, maar dit moet eers reën.
-- **medium / morphology:** 'reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)
-  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
- Die son sal weer skyn, maar dit moet eers reën.
-- notes: 'standaard' means 'standard' — nothing in the English source; the source's 'raining' would normally be 'reën', none present
-- coverage: 4/4 content words attested; source words matched 0/2 (unmatched: raining, bar)
-
-### AF-T3 · 0.80 · HIGH · cloudy/dusk (bank rain-possible#12) · bank
-- **EN:** Rain? Possibly. Commitment? Never.
-- **AF:** Reen? Moontlik. Sal ek my lewe daar op wed? Nooit.
-- **high / morphology:** 'Reen' is attested 62× but 'reën' 530× — missing diacritic
-  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
- Die son sal weer skyn, maar dit moet eers reën.
-- **medium / morphology:** 'Reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)
-  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
- Die son sal weer skyn, maar dit moet eers reën.
-- notes: 'lewe' means 'life; alternative form of leef; living' — nothing in the English source; the source's 'rain' would normally be 'reën', none present
-- coverage: 4/4 content words attested; source words matched 1/3 (unmatched: rain, commitment)
-
-### AF-T4 · 0.80 · HIGH · rain/night (bank rain#35) · bank
-- **EN:** The traffic just remembered rain exists. Again.
-- **AF:** Die verkeer het pas onthou daar is n ding soos reen bestaan weer.
-- **high / morphology:** 'reen' is attested 62× but 'reën' 530× — missing diacritic
-  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
- Die son sal weer skyn, maar dit moet eers reën.
-- **medium / morphology:** 'reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)
-  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
- Die son sal weer skyn, maar dit moet eers reën.
-- notes: 'pas' means 'pace, step; pass (a card or document); fit' — nothing in the English source; the source's 'rain' would normally be 'reën', none present
-- coverage: 7/7 content words attested; source words matched 3/4 (unmatched: rain)
-
-### AF-T5 · 0.35 · lower · heat/day · new
+### AF-T1 · 0.35 · lower · heat/day · new
 - **EN:** Nobody has touched that car door and every one of them knows why.
 - **AF:** Niemand het aan daardie kardeur geraak nie en elkeen van hulle weet hoekom.
 - **medium / morphology:** negation 'Niemand' without the closing 'nie' at the end of the clause
 - notes: 'geraak' means 'to become; to get; to grow' — nothing in the English source; the source's 'touched' would normally be 'aan-aan' / 'tassintuig' / 'tas' / 'aanraking', none present · 'elkeen' means 'everyone; everybody; anyone; every' — nothing in the English source; the source's 'touched' would normally be 'aan-aan' / 'tassintuig' / 'tas' / 'aanraking', none present
 - coverage: 5/5 content words attested; source words matched 3/5 (unmatched: nobody, touched)
 
-### AF-T6 · 0.35 · lower · heat/dusk · new
+### AF-T2 · 0.35 · lower · heat/dusk · new
 - **EN:** That water has been topped up twice and it is still the wrong temperature.
 - **AF:** Daardie water is twee keer bygevul en dit is steeds die verkeerde temperatuur.
 - **medium / lexical:** 'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)
 - notes: 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present
 - coverage: 5/6 content words attested; source words matched 3/5 (unmatched: topped, twice)
 
-### AF-T7 · 0.35 · lower · rain/dusk (bank rain#56) · bank
+### AF-T3 · 0.35 · lower · rain/dusk (bank rain#56) · bank
 - **EN:** Two drops on a windscreen and the whole N1 forgets everything it ever learned.
 - **AF:** Twee druppels op die voorruit en die hele N1 se geheue is skoon gewas.
 - **medium / semantic:** 'geheue' means 'memory; store' — nothing in the English source; it is 2 letters from 'geheel', the usual word for 'whole'
@@ -77,28 +31,28 @@ Ranked by confidence that something is wrong. Each entry: the doubt, then the ev
 - notes: 'skoon' means 'clean; cleansed; straight, undiluted, pure; beautiful, pretty' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'gewas' · 'gewas' means 'crop; wax; past of wees' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'skoon'
 - coverage: 6/6 content words attested; source words matched 1/6 (unmatched: windscreen, whole, forgets, everything, learned)
 
-### AF-T8 · 0.35 · lower · storm/day (bank storm#14) · bank
+### AF-T4 · 0.35 · lower · storm/day (bank storm#14) · bank
 - **EN:** The sky just went full Carte Blanche.
 - **AF:** Die lug het voluit bedonerd gegaan.
 - **medium / lexical:** 'bedonerd' — seen only in this app's own copy, in no external source; closest attested: 'bedonnerd' (4× kaikki/leipzig, distance 1)
 - notes: 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'gegaan' means 'past participle of gaan; to go; Used to express the future tense, often while implying nearness in time or certainty, like English going to.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
 - coverage: 3/4 content words attested; source words matched 0/4 (unmatched: sky, full, carte, blanche)
 
-### AF-T9 · 0.30 · lower · heat/night · new
+### AF-T5 · 0.30 · lower · heat/night · new
 - **EN:** Ice in the jug, fan on the chair: the night shift of a forty-degree day.
 - **AF:** Ys in die beker, waaier op die stoel: die nagskof van 'n veertiggraaddag.
 - **medium / lexical:** 'veertiggraaddag' — not found in any external source
 - notes: 'beker' means 'cup, beaker; cup' — nothing in the English source; the source's 'night' would normally be 'nag', none present
 - coverage: 5/6 content words attested; source words matched 3/8 (unmatched: jug, night, shift, forty-degree, day)
 
-### AF-T10 · 0.30 · lower · rain/night · new
+### AF-T6 · 0.30 · lower · rain/night · new
 - **EN:** The pool is being topped up by head office tonight, free of charge.
 - **AF:** Die swembad word vanaand deur hoofkantoor bygevul, gratis.
 - **medium / lexical:** 'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)
 - notes: 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present
 - coverage: 5/6 content words attested; source words matched 4/7 (unmatched: topped, head, office)
 
-### AF-T11 · 0.30 · lower · wind/dawn · new
+### AF-T7 · 0.30 · lower · wind/dawn · new
 - **EN:** Those sheets will be dry before she has pegged the last one on the line.
 - **AF:** Daardie lakens gaan droog wees voor sy die laaste een opgehang het.
 - **medium / semantic:** 'voor' means 'before; in front of; furrow' — nothing in the English source; it is 1 letter from 'voer', the usual word for 'line'
@@ -106,111 +60,111 @@ Ranked by confidence that something is wrong. Each entry: the doubt, then the ev
 - notes: 'laaste' means 'last; to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present
 - coverage: 5/5 content words attested; source words matched 2/4 (unmatched: pegged, line)
 
-### AF-T12 · 0.30 · lower · heat/dawn · new
+### AF-T8 · 0.30 · lower · heat/dawn · new
 - **EN:** That water was cold about forty minutes ago and nobody has topped it up.
 - **AF:** Daardie water was omtrent veertig minute gelede koud en niemand het dit bygevul nie.
 - **medium / lexical:** 'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)
 - notes: 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present
 - coverage: 6/7 content words attested; source words matched 6/7 (unmatched: topped)
 
-### AF-T13 · 0.30 · lower · heat/dawn · new
+### AF-T9 · 0.30 · lower · heat/dawn · new
 - **EN:** She is lying on tile rather than anything soft, and that was a decision.
 - **AF:** Sy lê op teël eerder as op iets sags, en dit was 'n besluit.
 - **medium / contamination:** 'sags' is an English word with no af attestation and is not in the English source line
 - notes: 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'rather' would normally be 'liewer', none present
 - coverage: 4/5 content words attested; source words matched 1/6 (unmatched: lying, tile, rather, anything, soft)
 
-### AF-T14 · 0.30 · lower · heat/night · new
+### AF-T10 · 0.30 · lower · heat/night · new
 - **EN:** She is not looking for anything and both of us know it.
 - **AF:** Sy soek niks nie en ons weet dit albei.
 - **medium / morphology:** negation 'niks' without the closing 'nie' at the end of the clause
 - notes: 'soek' means 'to search, seek; market, souq, bazaar, street of shops; search' — nothing in the English source; the source's 'looking' would normally be 'lyk' / 'kyk' / 'voorkoms', none present
 - coverage: 3/3 content words attested; source words matched 1/4 (unmatched: looking, anything, both)
 
-### AF-T15 · 0.30 · lower · cold-clear/day · new
+### AF-T11 · 0.30 · lower · cold-clear/day · new
 - **EN:** Frost on the grass, steam off the field: winter running weather at its most honest.
 - **AF:** Ryp op die gras, stoom van die veld af: wintersdrafweer op sy eerlikste.
 - **medium / lexical:** 'wintersdrafweer' — not found in any external source
 - notes: 'Ryp' means 'ripe, mature' — nothing in the English source; the source's 'weather' would normally be 'weer' / 'verweer', none present
 - coverage: 5/6 content words attested; source words matched 4/8 (unmatched: frost, winter, running, weather)
 
-### AF-T16 · 0.30 · lower · rain/dusk · new
+### AF-T12 · 0.30 · lower · rain/dusk · new
 - **EN:** Joburg summer rain: arrives at five, soaks everything, gone by supper.
 - **AF:** Joburgse somerreën: kom vyfuur, deurweek alles, weg teen aandete.
 - **medium / lexical:** 'Joburgse' — not found in any external source; closest attested: 'joburg' (17× leipzig, distance 2)
 - notes: 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'rain' would normally be 'reën', none present
 - coverage: 7/8 content words attested; source words matched 2/9 (unmatched: joburg, summer, rain, arrives, five, soaks, gone)
 
-### AF-T17 · 0.30 · lower · rain/night · new
+### AF-T13 · 0.30 · lower · rain/night · new
 - **EN:** Night rain maths: half the visibility, double the concentration, triple the respect.
 - **AF:** Nagreënwiskunde: helfte die sig, dubbel die konsentrasie, drie keer die respek.
 - **medium / lexical:** 'Nagreënwiskunde' — not found in any external source
 - notes: 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'night' would normally be 'nag', none present
 - coverage: 6/7 content words attested; source words matched 4/9 (unmatched: night, rain, maths, visibility, triple)
 
-### AF-T18 · 0.30 · lower · cloudy/day (bank cloudy#23) · bank
+### AF-T14 · 0.30 · lower · cloudy/day (bank cloudy#23) · bank
 - **EN:** This weather has 'meh' written all over it.
 - **AF:** Hierdie weer het n 'meh' houding.
 - **medium / contamination:** 'meh' is an English word with no af attestation and is not in the English source line
 - notes: 'houding' means 'attitude; pose' — nothing in the English source; the source's 'written' would normally be 'geskrewe', none present
 - coverage: 1/2 content words attested; source words matched 0/3 (unmatched: weather, meh, written)
 
-### AF-T19 · 0.30 · lower · cloudy/night (bank cloudy#78) · bank
+### AF-T15 · 0.30 · lower · cloudy/night (bank cloudy#78) · bank
 - **EN:** The moon has hung out a do-not-disturb sign.
 - **AF:** Die maan het 'n 'moenie steur nie'-bordjie opgehang.
 - **medium / morphology:** negation 'moenie' without the closing 'nie' at the end of the clause
 - notes: 'steur' means 'to be bothered; to bother, to annoy; sturgeon' — nothing in the English source; the source's 'sign' would normally be 'teken' / 'tekens', none present
 - coverage: 5/5 content words attested; source words matched 2/4 (unmatched: hung, sign)
 
-### AF-T20 · 0.25 · lower · heat/night · new
+### AF-T16 · 0.25 · lower · heat/night · new
 - **EN:** The ice in that jug never stood a chance and everybody knew it.
 - **AF:** Die ys in daardie beker het nooit 'n kans gestaan nie en almal het geweet.
 - **medium / morphology:** negation 'nooit' without the closing 'nie' at the end of the clause
 - coverage: 6/6 content words attested; source words matched 3/6 (unmatched: jug, stood, knew)
 
-### AF-T21 · 0.25 · lower · rain/night · new
+### AF-T17 · 0.25 · lower · rain/night · new
 - **EN:** The paving has stopped absorbing anything and is just passing it along.
 - **AF:** Die plaveisel absorbeer niks meer nie en gee dit net aan.
 - **medium / morphology:** negation 'niks' without the closing 'nie' at the end of the clause
 - coverage: 3/3 content words attested; source words matched 0/6 (unmatched: paving, stopped, absorbing, anything, passing, along)
 
-### AF-T22 · 0.25 · lower · wind/night · new
+### AF-T18 · 0.25 · lower · wind/night · new
 - **EN:** Nobody is walking that promenade tonight and the lights know it.
 - **AF:** Niemand stap vanaand daardie promenade nie en die ligte weet dit.
 - **medium / morphology:** negation 'Niemand' without the closing 'nie' at the end of the clause
 - coverage: 5/5 content words attested; source words matched 4/6 (unmatched: nobody, promenade)
 
-### AF-T23 · 0.25 · lower · heat/day · new
+### AF-T19 · 0.25 · lower · heat/day · new
 - **EN:** Nobody in that building can open a window and every one of them has tried.
 - **AF:** Niemand in daardie gebou kan 'n venster oopmaak nie en elkeen van hulle het probeer.
 - **medium / morphology:** negation 'Niemand' without the closing 'nie' at the end of the clause
 - coverage: 5/5 content words attested; source words matched 4/5 (unmatched: tried)
 
-### AF-T24 · 0.25 · lower · wind/dawn (bank wind#9) · bank
+### AF-T20 · 0.25 · lower · wind/dawn (bank wind#9) · bank
 - **EN:** Even the seagulls are walking today.
 - **AF:** Selfs die meeuë loop vandag.
 - **medium / lexical:** 'meeuë' — seen only in this app's own copy, in no external source; closest attested: 'meeue' (4× kaikki/leipzig/hunspell, distance 1)
 - coverage: 2/3 content words attested; source words matched 2/3 (unmatched: seagulls)
 
-### AF-T25 · 0.25 · lower · clear/dusk (bank weekend#1) · bank
+### AF-T21 · 0.25 · lower · clear/dusk (bank weekend#1) · bank
 - **EN:** Fire up the Weber. It's the law.
 - **AF:** Steek die Weber aan. Dit is die wet.
 - **medium / contamination:** 'wet' is core English weather vocabulary left untranslated
 - coverage: 2/3 content words attested; source words matched 0/3 (unmatched: fire, weber, law)
 
-### AF-T26 · 0.25 · lower · heat/day (bank heat#27) · bank
+### AF-T22 · 0.25 · lower · heat/day (bank heat#27) · bank
 - **EN:** The ice cream van is playing everyone's anthem.
 - **AF:** Die roomyswa speel almal se volkslied.
 - **medium / lexical:** 'roomyswa' — seen only in this app's own copy, in no external source; closest attested: 'roomys' (59× kaikki/leipzig/hunspell, distance 2)
 - coverage: 3/4 content words attested; source words matched 3/6 (unmatched: ice, cream, van)
 
-### AF-T27 · 0.25 · lower · cloudy/day (bank rain-possible#14) · bank
+### AF-T23 · 0.25 · lower · cloudy/day (bank rain-possible#14) · bank
 - **EN:** Schrodinger's rain. It both is and isn't.
 - **AF:** Schrödinger se reën. Dit is én is nie.
 - **medium / lexical:** 'Schrödinger' — seen only in this app's own copy, in no external source
 - coverage: 2/3 content words attested; source words matched 1/4 (unmatched: schrodinger's, both, isn't)
 
-## Passed (856)
+## Passed (860)
 
 Listed so the reader can see what was not sent to them. Low-severity notes only.
 
@@ -858,10 +812,12 @@ Listed so the reader can see what was not sent to them. Low-severity notes only.
 - `cloudy/dawn (bank cloudy#9)` Grys vibes. Die lug pas by my Maandag. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
 - `cloudy/dawn (bank cloudy#22)` Die son het 'n out-of-office gestuur. — 'gestuur' means 'steering' — nothing in the English source; the source's 'sent' would normally be 'uitgesend' / 'opgeloopte', none present
 - `cloudy/dawn (bank cloudy#79)` Die hemel se gordyne is toe. Privaatheid, asseblief.
+- `cloudy/dawn (bank cloudy#21)` Nie Troufoto weer nie. Nie die einde van die wêreld nie.
 - `cloudy/dawn (bank cloudy#58)` Wolke rol in soos familie — sonder om eers te bel. — 'eers' means 'first, at first; even; plural of eer' — nothing in the English source; the source's 'phone' would normally be 'foon' / 'telefoon', none present
 - `cloudy/dawn (bank cloudy#15)` Kon erger gewees het. Kon ook beter gewees het.
 - `cloudy/dawn (bank cloudy#38)` Die son het snooze gedruk. Weer. — 'gedruk' means 'to press, print; busy, hectic; pressure' — nothing in the English source; the source's 'hit' would normally be 'slaan' / 'bliksem' / 'treffer' / 'hou', none present
 - `cloudy/dawn (bank cloudy#12)` Die son is op teebreek. Geen ETA nie.
+- `cloudy/dawn (bank cloudy#24)` Ten minste reën dit nie. Dis die standaard. — 'standaard' means 'standard' — nothing in the English source; the source's 'bar' would normally be 'baar' / 'stang' / 'stuitlaag' / 'wreefband', none present
 - `cloudy/dawn (bank cloudy#5)` Nie sleg nie, nie great nie. Soos 'n 6/10 date.
 - `cloudy/dawn (bank cloudy#44)` Die app sê bewolk. Tannie se knie sê reën. Ons vertrou die knie.
 - `cloudy/day (bank cloudy#35)` Die lug is die kleur van 'n ou Tupperware-deksel. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
@@ -898,6 +854,7 @@ Listed so the reader can see what was not sent to them. Low-severity notes only.
 - `cloudy/day (bank rain-possible#13)` Hierdie weer het 'n lewensafrigter nodig.
 - `cloudy/dusk (bank cloudy#65)` Die son het uitgeklok sonder om te groet. Onbeskof, maar relatable. — 'relatable' is carried over from the source line (English word, code-switch or brand) · 'groet' means 'greet; greeting' — nothing in the English source; the source's 'clocked' would normally be 'klok', none present
 - `cloudy/dusk (bank rain-possible#0)` Miskien reën, miskien nie. Klassiek.
+- `cloudy/dusk (bank rain-possible#12)` Reën? Moontlik. Sal ek my lewe daar op wed? Nooit. — 'lewe' means 'life; alternative form of leef; living' — nothing in the English source; the source's 'commitment' would normally be 'gebondenheid' / 'verbintenis' / 'verbintenisse', none present
 - `cloudy/dusk (bank cloudy#67)` Die wolke bly oor vir aandete, lyk dit.
 - `cloudy/dusk (bank cloudy#18)` Niemand gaan hierdie sononder op Instagram sit nie. — 'sit' means 'to sit; to be in a sitting position (usually used with op, binne or in); to sit; to sit down to move into a sitting position; to place, to put' — nothing in the English source; the source's 'posting' would normally be 'paal' / 'styl' / 'spil' / 'pilaar', none present
 - `cloudy/dusk (bank rain-possible#4)` Moenie daai wolke vertrou nie. Hulle beplan.
@@ -1040,6 +997,7 @@ Listed so the reader can see what was not sent to them. Low-severity notes only.
 - `rain/dusk (bank rain#69)` Joburg reën twintig minute en verf dan die lug asof niks gebeur het nie. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
 - `rain/dusk (bank rain#13)` Die rit het 'n spansport geword. — 'rit' means 'drive' — nothing in the English source; the source's 'team' would normally be 'span' / 'spanne', none present
 - `rain/dusk (bank rain#16)` Nat sokkies. Die finale verraad. — 'Nat' means 'nat' — nothing in the English source; the source's 'ultimate' would normally be 'uiterste', none present · 'sokkies' means 'plural of sokkie; diminutive of sok' — nothing in the English source; the source's 'ultimate' would normally be 'uiterste', none present · 'verraad' means 'advice; board; council' — nothing in the English source; the source's 'ultimate' would normally be 'uiterste', none present
+- `rain/night (bank rain#35)` Die verkeer het pas onthou daar is n ding soos reën bestaan weer.
 - `rain/night (bank rain#4)` Jou karwas was geldmors.
 - `storm/dawn (bank storm#8)` Dis hoekom Noag 'n ark gebou het. — 'gebou' means 'building; past participle of bou; to build' — nothing in the English source; the source's 'built' would normally be 'beboude' / 'opgerig', none present
 - `storm/dawn (bank storm#38)` Die sonsopkoms het vanoggend op drama besluit. — 'drama' means 'play' — nothing in the English source; the source's 'sunrise' would normally be 'sonop', none present · 'besluit' means 'to decide; decision; decide' — nothing in the English source; the source's 'sunrise' would normally be 'sonop', none present

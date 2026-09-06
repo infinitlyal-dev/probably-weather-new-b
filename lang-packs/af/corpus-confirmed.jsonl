@@ -128,7 +128,7 @@
 {"key":"witty.rain[32]","en":"The pavement is a river and the river has plans.","af":"Die sypaadjie is 'n rivier en die rivier het planne.","status":"confirmed-live"}
 {"key":"witty.rain[33]","en":"Forgot your jacket? The universe noticed.","af":"Jou baadjie vergeet? Die heelal het opgemerk.","status":"confirmed-live"}
 {"key":"witty.rain[34]","en":"The dog is staring at the rain like it's a personal insult.","af":"Die hond staar na die reen asof dit n persoonlike belediging is.","status":"confirmed-live"}
-{"key":"witty.rain[35]","en":"The traffic just remembered rain exists. Again.","af":"Die verkeer het pas onthou daar is n ding soos reen bestaan weer.","status":"confirmed-live"}
+{"key":"witty.rain[35]","en":"The traffic just remembered rain exists. Again.","af":"Die verkeer het pas onthou daar is n ding soos reën bestaan weer.","status":"confirmed-live"}
 {"key":"witty.rain[36]","en":"The dams get their drink before you get your coffee. Know your place.","af":"Die damme drink eerste. Jy kry jou koffie tweede.","status":"confirmed-live"}
 {"key":"witty.rain[37]","en":"Cape winter: the mountain is getting its water back, with interest.","af":"Kaapse winter: die berg kry sy water terug, met rente.","status":"confirmed-live"}
 {"key":"witty.rain[38]","en":"Every farmer in the Boland is smiling in their sleep right now.","af":"Elke boer in die Boland glimlag nou in sy slaap.","status":"confirmed-live"}
@@ -188,7 +188,7 @@
 {"key":"witty.rain-possible[9]","en":"Forecast says maybe. We say probably.","af":"Voorspelling sê miskien. Ons sê waarskynlik.","status":"confirmed-live"}
 {"key":"witty.rain-possible[10]","en":"Bring a jacket. Or sunscreen. Or both.","af":"Bring 'n baadjie. Of sonbrandroom. Of albei.","status":"confirmed-live"}
 {"key":"witty.rain-possible[11]","en":"The sky's giving mixed signals again.","af":"Die lug gee weer gemengde seine.","status":"confirmed-live"}
-{"key":"witty.rain-possible[12]","en":"Rain? Possibly. Commitment? Never.","af":"Reen? Moontlik. Sal ek my lewe daar op wed? Nooit.","status":"confirmed-live"}
+{"key":"witty.rain-possible[12]","en":"Rain? Possibly. Commitment? Never.","af":"Reën? Moontlik. Sal ek my lewe daar op wed? Nooit.","status":"confirmed-live"}
 {"key":"witty.rain-possible[13]","en":"This weather needs a life coach.","af":"Hierdie weer het 'n lewensafrigter nodig.","status":"confirmed-live"}
 {"key":"witty.rain-possible[14]","en":"Schrodinger's rain. It both is and isn't.","af":"Schrödinger se reën. Dit is én is nie.","status":"confirmed-live"}
 {"key":"witty.rain-possible[15]","en":"The washing's on the line and you're feeling brave.","af":"Die wasgoed hang buite en jy voel dapper.","status":"confirmed-live"}
@@ -217,10 +217,10 @@
 {"key":"witty.cloudy[18]","en":"Nobody's posting this sunset on Instagram.","af":"Niemand gaan hierdie sononder op Instagram sit nie.","status":"confirmed-live"}
 {"key":"witty.cloudy[19]","en":"The clouds are here but they're not doing anything.","af":"Die wolke is hier maar hulle doen niks.","status":"confirmed-live"}
 {"key":"witty.cloudy[20]","en":"The sky's on mute. Nobody's complaining.","af":"Die lug is op mute. Niemand kla nie.","status":"confirmed-live"}
-{"key":"witty.cloudy[21]","en":"Not Instagram weather. Not the end of the world.","af":"Nie Troufoto weer nie. Nie die einde van die wereld nie.","status":"confirmed-live"}
+{"key":"witty.cloudy[21]","en":"Not Instagram weather. Not the end of the world.","af":"Nie Troufoto weer nie. Nie die einde van die wêreld nie.","status":"confirmed-live"}
 {"key":"witty.cloudy[22]","en":"The sun sent an out-of-office reply.","af":"Die son het 'n out-of-office gestuur.","status":"confirmed-live"}
 {"key":"witty.cloudy[23]","en":"This weather has 'meh' written all over it.","af":"Hierdie weer het n 'meh' houding.","status":"confirmed-live"}
-{"key":"witty.cloudy[24]","en":"At least it's not raining. That's the bar.","af":"Ten minste reen dit nie. Dis die standaard.","status":"confirmed-live"}
+{"key":"witty.cloudy[24]","en":"At least it's not raining. That's the bar.","af":"Ten minste reën dit nie. Dis die standaard.","status":"confirmed-live"}
 {"key":"witty.cloudy[25]","en":"The vibe is beige. Accept it.","af":"Die vibe is beige. Aanvaar dit.","status":"confirmed-live"}
 {"key":"witty.cloudy[26]","en":"Perfect weather for existing without enthusiasm.","af":"Perfekte weer vir bestaan sonder entoesiasme.","status":"confirmed-live"}
 {"key":"witty.cloudy[27]","en":"The clouds are committed to being average.","af":"Die wolke is toegewy aan gemiddeld wees.","status":"confirmed-live"}

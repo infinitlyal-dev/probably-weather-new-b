@@ -101,7 +101,7 @@
 {"key":"witty.rain[32]","en":"The pavement is a river and the river has plans.","af":"Die sypaadjie is 'n rivier en die rivier het planne.","xh":"Ipavimente ngumlambo kwaye umlambo unezicwangciso.","status":"confirmed-live"}
 {"key":"witty.rain[33]","en":"Forgot your jacket? The universe noticed.","af":"Jou baadjie vergeet? Die heelal het opgemerk.","xh":"Uyilibele ibhatyi yakho? Indalo iphela ikuqaphele oko.","status":"confirmed-live"}
 {"key":"witty.rain[34]","en":"The dog is staring at the rain like it's a personal insult.","af":"Die hond staar na die reen asof dit n persoonlike belediging is.","xh":"Inja ijonga imvula ngathi iyithuka buqu.","status":"confirmed-live"}
-{"key":"witty.rain[35]","en":"The traffic just remembered rain exists. Again.","af":"Die verkeer het pas onthou daar is n ding soos reen bestaan weer.","xh":"Itrafikhi isanda kukhumbula ukuba imvula ikhona. Kwakhona.","status":"confirmed-live"}
+{"key":"witty.rain[35]","en":"The traffic just remembered rain exists. Again.","af":"Die verkeer het pas onthou daar is n ding soos reën bestaan weer.","xh":"Itrafikhi isanda kukhumbula ukuba imvula ikhona. Kwakhona.","status":"confirmed-live"}
 {"key":"witty.rain-possible[0]","en":"Maybe rain, maybe not. Classic.","af":"Miskien reën, miskien nie. Klassiek.","xh":"Mhlawumbi iza kuna, mhlawumbi hayi. Into eqhelekileyo leyo.","status":"confirmed-live"}
 {"key":"witty.rain-possible[1]","en":"Clouds looking proper suspicious.","af":"Wolke lyk behoorlik verdag.","xh":"Amafu akhangeleka erhaneleka nyhani.","status":"confirmed-live"}
 {"key":"witty.rain-possible[2]","en":"Take a brolly just in case, hey.","af":"Vat n sambreel net vir ingeval, ne.","xh":"Phatha isambreli nje xa kunokwenzeka, hey.","status":"confirmed-live"}
@@ -114,7 +114,7 @@
 {"key":"witty.rain-possible[9]","en":"Forecast says maybe. We say probably.","af":"Voorspelling sê miskien. Ons sê waarskynlik.","xh":"Isibikezelo sithi mhlawumbi. Thina sithi kusenokwenzeka","status":"confirmed-live"}
 {"key":"witty.rain-possible[10]","en":"Bring a jacket. Or sunscreen. Or both.","af":"Bring 'n baadjie. Of sonbrandroom. Of albei.","xh":"Yiza nesilamba. Okanye iSunscreen. Okanye zombini.","status":"confirmed-live"}
 {"key":"witty.rain-possible[11]","en":"The sky's giving mixed signals again.","af":"Die lug gee weer gemengde seine.","xh":"Isibhakabhaka siphinda sithumele imiqondiso exubeneyo.","status":"confirmed-live"}
-{"key":"witty.rain-possible[12]","en":"Rain? Possibly. Commitment? Never.","af":"Reen? Moontlik. Sal ek my lewe daar op wed? Nooit.","xh":"Imvula? Kunokwenzeka. Ukuzibophelela? Soze.","status":"confirmed-live"}
+{"key":"witty.rain-possible[12]","en":"Rain? Possibly. Commitment? Never.","af":"Reën? Moontlik. Sal ek my lewe daar op wed? Nooit.","xh":"Imvula? Kunokwenzeka. Ukuzibophelela? Soze.","status":"confirmed-live"}
 {"key":"witty.rain-possible[13]","en":"This weather needs a life coach.","af":"Hierdie weer het 'n lewensafrigter nodig.","xh":"Le mozulu ifuna umqeqeshi wobomi.","status":"confirmed-live"}
 {"key":"witty.rain-possible[14]","en":"Schrodinger's rain. It both is and isn't.","af":"Schrödinger se reën. Dit is én is nie.","xh":"Imvula kaSchrödinger — ikhona kodwa kwangaxeshanye ayikho","status":"confirmed-live"}
 {"key":"witty.rain-possible[15]","en":"The washing's on the line and you're feeling brave.","af":"Die wasgoed hang buite en jy voel dapper.","xh":"Impahla yonekwe ecingweni yaye uziva unesbindi.","status":"confirmed-live"}
@@ -143,10 +143,10 @@
 {"key":"witty.cloudy[18]","en":"Nobody's posting this sunset on Instagram.","af":"Niemand gaan hierdie sononder op Instagram sit nie.","xh":"Akukho mntu uza kuposta le sunset kwi-Instagram.","status":"confirmed-live"}
 {"key":"witty.cloudy[19]","en":"The clouds are here but they're not doing anything.","af":"Die wolke is hier maar hulle doen niks.","xh":"Amafu akhona, kodwa akukho nto ayenzayo.","status":"confirmed-live"}
 {"key":"witty.cloudy[20]","en":"The sky's on mute. Nobody's complaining.","af":"Die lug is op mute. Niemand kla nie.","xh":"Isibhakabhaka sithule. Akukho mntu ukhalazayo.","status":"confirmed-live"}
-{"key":"witty.cloudy[21]","en":"Not Instagram weather. Not the end of the world.","af":"Nie Troufoto weer nie. Nie die einde van die wereld nie.","xh":"Ayiyomozulu ye-Instagram. Ayisosiphelo sehlabathi.","status":"confirmed-live"}
+{"key":"witty.cloudy[21]","en":"Not Instagram weather. Not the end of the world.","af":"Nie Troufoto weer nie. Nie die einde van die wêreld nie.","xh":"Ayiyomozulu ye-Instagram. Ayisosiphelo sehlabathi.","status":"confirmed-live"}
 {"key":"witty.cloudy[22]","en":"The sun sent an out-of-office reply.","af":"Die son het 'n out-of-office gestuur.","xh":"Ilanga lithumele impendulo ka out-of-office","status":"confirmed-live"}
 {"key":"witty.cloudy[23]","en":"This weather has 'meh' written all over it.","af":"Hierdie weer het n 'meh' houding.","xh":"Le mozulu ibhalwe 'meh' kuyo yonke indawo.","status":"confirmed-live"}
-{"key":"witty.cloudy[24]","en":"At least it's not raining. That's the bar.","af":"Ten minste reen dit nie. Dis die standaard.","xh":"Noko akunethi. Yilonto qha.","status":"confirmed-live"}
+{"key":"witty.cloudy[24]","en":"At least it's not raining. That's the bar.","af":"Ten minste reën dit nie. Dis die standaard.","xh":"Noko akunethi. Yilonto qha.","status":"confirmed-live"}
 {"key":"witty.cloudy[25]","en":"The vibe is beige. Accept it.","af":"Die vibe is beige. Aanvaar dit.","xh":"I-vibe yi-beige. Yamkela.","status":"confirmed-live"}
 {"key":"witty.cloudy[26]","en":"Perfect weather for existing without enthusiasm.","af":"Perfekte weer vir bestaan sonder entoesiasme.","xh":"Imozulu efanele ukuphila ngaphandle komdla.","status":"confirmed-live"}
 {"key":"witty.cloudy[27]","en":"The clouds are committed to being average.","af":"Die wolke is toegewy aan gemiddeld wees.","xh":"Amafu azimisele ngokuba phakathi nendawo nje.","status":"confirmed-live"}
