@@ -1,0 +1,23 @@
+{
+ "generated": "2026-09-06",
+ "checkedBy": "af-qc heuristics (NOT dictionary-backed — see the skill header)",
+ "total": 883,
+ "flaggedCount": 1,
+ "byFlag": {
+  "unexplained-capital": 1,
+  "missing-diacritic": 1
+ },
+ "flagged": [
+  {
+   "en": "Not Instagram weather. Not the end of the world.",
+   "af": "Nie Troufoto weer nie. Nie die einde van die wereld nie.",
+   "condition": "cloudy",
+   "time": "dawn",
+   "source": "bank",
+   "flags": [
+    "unexplained-capital:Troufoto",
+    "missing-diacritic:wêreld"
+   ]
+  }
+ ]
+}
