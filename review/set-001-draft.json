@@ -5,7 +5,7 @@
  "complete": false,
  "filled": 294,
  "total": 504,
- "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path.",
+ "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-06 (pm): wind pair 9bada961b0a7 -> tue and 330bfae094d5 -> wed (Al's swap ruling). | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path.",
  "assignments": [
   {
    "condition": "clear",
@@ -3948,12 +3948,12 @@
    "condition": "wind",
    "time": "day",
    "week": "B",
-   "day": "tue",
+   "day": "wed",
    "hash": "330bfae094d5",
-   "image": "wind/week_2/day/2.webp",
+   "image": "wind/week_2/day/3.webp",
    "paths": [
-    "wind/week_2/day/2.webp",
-    "wind/week_4/day/2.webp"
+    "wind/week_2/day/3.webp",
+    "wind/week_4/day/3.webp"
    ],
    "previousImage": "wind/week_2/day/6.webp"
   },
@@ -3961,12 +3961,12 @@
    "condition": "wind",
    "time": "day",
    "week": "B",
-   "day": "wed",
+   "day": "tue",
    "hash": "9bada961b0a7",
-   "image": "wind/week_2/day/3.webp",
+   "image": "wind/week_2/day/2.webp",
    "paths": [
-    "wind/week_2/day/3.webp",
-    "wind/week_4/day/3.webp"
+    "wind/week_2/day/2.webp",
+    "wind/week_4/day/2.webp"
    ],
    "previousImage": "wind/week_1/day/3.webp"
   },

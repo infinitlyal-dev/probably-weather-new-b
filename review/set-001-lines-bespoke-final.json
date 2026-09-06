@@ -1,10 +1,10 @@
 {
  "generated": "2026-08-19",
  "ruledBy": "Al, bespoke line review rounds 1 and 2",
- "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them.",
+ "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06 (pm): Al's rulings — no 3-line cap: the 30 rescues the cap dropped are restored; every ruled keep from clear-v3, cloudy-v3, the six Astra buckets and the test batch wired onto its own photograph by hash; the transposed wind pair swapped grid days (tue/wed) so each day-named line lands on its day.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
  "images": 42,
- "lineCount": 892,
+ "lineCount": 1540,
  "set": [
   {
    "image": "clear/week_2/dawn/2.webp",
@@ -24,7 +24,10 @@
     "The jacaranda is dropping purple on a lawn he has just finished watering.",
     "Nobody inside that house is awake yet and that is entirely the plan.",
     "This is the weather the weekend was invented for.",
-    "Weather this perfect is on loan. The southeaster keeps receipts."
+    "Weather this perfect is on loan. The southeaster keeps receipts.",
+    "That dry patch is what a week of cloudless skies does to a lawn.",
+    "A sky this clear hands you one cool hour, and this is it.",
+    "The Weber's been waiting all week for this."
    ]
   },
   {
@@ -44,7 +47,9 @@
     "Somebody said the padkos would be fine in the boot. Somebody was wrong.",
     "The road ahead has been the same road for a very long time.",
     "Your car seat is a weapon right now.",
-    "Your steering wheel is a hot plate."
+    "Your steering wheel is a hot plate.",
+    "Shake hands with the steering wheel very cautiously.",
+    "Car parked. Now to negotiate with the seat belt."
    ]
   },
   {
@@ -62,7 +67,10 @@
     "Those two on the stoep have made their choice and they are sticking with it.",
     "Nobody is going to remember the temperature, only the sprinkler.",
     "Sunday, and the water bill has already quietly accepted its fate.",
-    "The lawn is taking a beating that has nothing to do with the sun."
+    "The lawn is taking a beating that has nothing to do with the sun.",
+    "You paid for those toys. They want the hose.",
+    "Your children have expensive toys to ignore.",
+    "Lunch is ready. Nobody wants the word cooked in it."
    ]
   },
   {
@@ -81,7 +89,10 @@
     "That glass has been full for an hour and she is in no hurry.",
     "Sunday, and the Karoo is doing the one thing it does better than anywhere.",
     "The stoep step is still warm and will be for another hour yet.",
-    "Nobody has switched a light on inside yet and nobody intends to."
+    "Nobody has switched a light on inside yet and nobody intends to.",
+    "You can finally sit outside without regretting it.",
+    "Leave the second shower until after supper.",
+    "Finally sitting down. Even that took some planning."
    ]
   },
   {
@@ -101,7 +112,9 @@
     "Everybody came out at exactly the same time and nobody planned it.",
     "The light will be gone in nine minutes and nobody is hurrying.",
     "That dog has walked this stretch more times than any of them.",
-    "Still warm enough at sunset that the ice cream is doing the sweating."
+    "Still warm enough at sunset that the ice cream is doing the sweating.",
+    "Remember when going for a walk didn't cost anything?",
+    "Home soon. Unless someone buys another round."
    ]
   },
   {
@@ -121,7 +134,9 @@
     "The whole town waited for the sun to go down and then came outside.",
     "That water was cold when somebody put it down there.",
     "Nine at night and the paving is still handing back the afternoon.",
-    "Night has not cooled anything yet; even the water is perspiring."
+    "Night has not cooled anything yet; even the water is perspiring.",
+    "Your evening drink has developed a short deadline.",
+    "Bed later. The house still feels rather committed."
    ]
   },
   {
@@ -141,7 +156,9 @@
     "The youngest is still awake and has decided the sky is worth it.",
     "Five mattresses on a stoep, and not one of them is a compromise.",
     "Friday night, and the ceiling has been upgraded considerably.",
-    "Too hot for walls tonight: the whole family moved the bedroom outside."
+    "Too hot for walls tonight: the whole family moved the bedroom outside.",
+    "Cuddling will need to be discussed in the morning.",
+    "Goodnight kiss. Make it brief."
    ]
   },
   {
@@ -161,7 +178,9 @@
     "The ice in that jug never stood a chance and everybody knew it.",
     "That curtain is the only moving air in the entire flat.",
     "Nobody is going back in there until the walls let go of the day.",
-    "Ice in the jug, fan on the chair: the night shift of a forty-degree day."
+    "Ice in the jug, fan on the chair: the night shift of a forty-degree day.",
+    "Your guest can have the chair furthest from the fan.",
+    "One more glass. Then another attempt at sleeping."
    ]
   },
   {
@@ -181,7 +200,9 @@
     "The net is handling mosquitoes. The fan is handling everything else.",
     "Monday starts in five hours and that fan is not going off.",
     "Somebody has already turned the pillow over twice tonight.",
-    "The fan is on its third shift and the night is still not cooling."
+    "The fan is on its third shift and the night is still not cooling.",
+    "Your partner has become an unnecessary extra layer.",
+    "Pillow turned. Negotiations continue."
    ]
   },
   {
@@ -201,7 +222,9 @@
     "Those beers on the edge are on their third owner tonight.",
     "Saturday, and the water is still warmer than the air above it.",
     "The lights went on two hours ago and nobody has suggested moving.",
-    "Night swimming is not a plan; it is what this weather leaves you."
+    "Night swimming is not a plan; it is what this weather leaves you.",
+    "Another swim seems easier than another shower.",
+    "Bedtime can wait. Nobody is dressed for it anyway."
    ]
   },
   {
@@ -222,7 +245,9 @@
     "He has been lying there since about eight and has no further plans.",
     "Wednesday, and the dog has made the only sensible decision so far.",
     "The ceiling fan is doing its best, but its best is not enough.",
-    "Tile is the coldest surface in the house tonight, and it is taken."
+    "Tile is the coldest surface in the house tonight, and it is taken.",
+    "Your dog has found a room you suddenly quite like.",
+    "Teeth brushed. Staying here seems reasonable."
    ]
   },
   {
@@ -241,7 +266,9 @@
     "Monday night, one lit window, and the rain doing all the talking.",
     "That wall has a damp line on it older than tonight's storm.",
     "The burglar bars are the only straight lines left in the whole street.",
-    "Somebody inside has already decided they are not going anywhere tonight."
+    "Somebody inside has already decided they are not going anywhere tonight.",
+    "Whose turn is it to let the dog out, exactly?",
+    "Bedtime soon. The dog has one more request."
    ]
   },
   {
@@ -263,7 +290,9 @@
     "Every drain on this road is now working on somebody else's behalf.",
     "Sleep tight, dams. You worked hard today.",
     "The pavement is a river and the river has plans.",
-    "Rain through a streetlight looks like static, and tonight the whole street is tuned to it."
+    "Rain through a streetlight looks like static, and tonight the whole street is tuned to it.",
+    "Your roof has a longer story than you do tonight.",
+    "Lights out. Something still has plenty to say."
    ]
   },
   {
@@ -284,7 +313,12 @@
     "Tuesday night, and the pool is having a far better time than anyone.",
     "The paving has stopped absorbing anything and is just passing it along.",
     "The pool is being topped up by head office tonight, free of charge.",
-    "The only thing swimming tonight is the water itself."
+    "The only thing swimming tonight is the water itself.",
+    "You can stop promising yourself an evening swim.",
+    "Swim postponed. Your excuses finally have evidence.",
+    "The pool is getting topped up for free tonight. Somewhere a water bill relaxes.",
+    "The only one swimming tonight is the rain itself.",
+    "The pool light is on for nobody. The rain appreciates the ambience."
    ]
   },
   {
@@ -303,7 +337,9 @@
     "Every one of those parking bays was somebody's plan for tonight.",
     "Saturday night at the sea, and the sea has taken the whole promenade.",
     "The painted lines are the only thing out there still holding a shape.",
-    "Somebody drove all the way down here to look at this and left."
+    "Somebody drove all the way down here to look at this and left.",
+    "Your evening walk can end at the front door.",
+    "Out for fresh air. Back for an entire outfit."
    ]
   },
   {
@@ -323,7 +359,9 @@
     "Somewhere behind those walls a whole street is pretending to sleep.",
     "The streetlight is doing overtime that nobody is going to pay for.",
     "Tomorrow morning this road will be covered in somebody else's tree.",
-    "Even the hadedas are quiet."
+    "Even the hadedas are quiet.",
+    "Your dog has cancelled sleeping in its own bed.",
+    "Goodnight, then. Apparently that was optimistic."
    ]
   },
   {
@@ -342,7 +380,9 @@
     "The hose reel is going to feel very unnecessary for a while.",
     "Jacaranda season and a Monday, and the paving is taking both badly.",
     "Whoever parked in the street tonight is regretting it right now.",
-    "That security light is doing the best work it has done all year."
+    "That security light is doing the best work it has done all year.",
+    "Your roof repair savings have been noticed.",
+    "Sleep first. Tomorrow has acquired a few expenses."
    ]
   },
   {
@@ -363,7 +403,9 @@
     "Everything green out there is having the best night of its life.",
     "You can hear the roof better than you can hear the television.",
     "Somewhere a roof is someone's new kite.",
-    "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight."
+    "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight.",
+    "Nobody's leaving; find the good biscuits.",
+    "Bedtime soon. The house has some final remarks."
    ]
   },
   {
@@ -384,7 +426,9 @@
     "Everyone on this street is now standing at a window they never use.",
     "The dust and the rain are about to have a very short argument.",
     "Unplug the TV — it's tradition.",
-    "The lightning is putting on a proper show."
+    "The lightning is putting on a proper show.",
+    "Your neighbours now know what your pyjamas look like.",
+    "Everyone awake. Nobody admits they got a fright."
    ]
   },
   {
@@ -411,7 +455,7 @@
    "condition": "wind",
    "time": "day",
    "week": "B",
-   "day": "wed",
+   "day": "tue",
    "paths": [
     "wind/week_1/day/3.webp"
    ],
@@ -487,7 +531,7 @@
    "condition": "wind",
    "time": "day",
    "week": "B",
-   "day": "tue",
+   "day": "wed",
    "paths": [
     "wind/week_2/day/6.webp"
    ],
@@ -758,7 +802,10 @@
     "Wednesday, and the Cape Doctor is doing its rounds a little early.",
     "Nobody walks this road at this hour, and tonight nobody wants to.",
     "That palm has been bent that way so long it thinks it is upright.",
-    "The whole street is inside pretending the roof noise is normal."
+    "The whole street is inside pretending the roof noise is normal.",
+    "The Cape Doctor is on night shift. The whole street has an appointment.",
+    "The palm is the only one still outside, and it regrets everything.",
+    "The southeaster doesn’t knock. You’ll hear it under the door all night."
    ]
   },
   {
@@ -914,7 +961,9 @@
     "She is not looking at the washing, she is looking at where it might land.",
     "Saturday, and the only thing on that line doing any work is the pegs.",
     "Nobody is lighting that Weber until this drops, and everyone in the yard knows it.",
-    "The Weber has not been lit once this week and today is not the day."
+    "The Weber has not been lit once this week and today is not the day.",
+    "Everything on that line was dry ten minutes ago. The wind is just showing off now.",
+    "Two pegs a shirt today. Anything less is a donation to the neighbours."
    ]
   },
   {
@@ -1104,7 +1153,9 @@
    "lines": [
     "He will move twice before lunch and both times by about a metre.",
     "The sun took its time this morning. Worth the wait.",
-    "Enjoy it. There's a cold front out there doing warm-ups."
+    "Enjoy it. There's a cold front out there doing warm-ups.",
+    "The sun cleared the roof about ten minutes ago and the tiles are already warm.",
+    "Nothing in the sky to slow the sun down, so the stoep warmed up before seven."
    ]
   },
   {
@@ -1123,7 +1174,8 @@
     "Saturday, and the sky went from orange to blue without one cloud interrupting.",
     "The coals aren't going to light themselves.",
     "Call the mates. Get the meat. Let's go.",
-    "Fire up the Weber. It's the law."
+    "Fire up the Weber. It's the law.",
+    "The first star is out before the last of the sunset has even left."
    ]
   },
   {
@@ -1194,7 +1246,9 @@
    ],
    "lines": [
     "Good night, South Africa.",
-    "Sky this clear means tomorrow's a scorcher. Stay a while."
+    "Sky this clear means tomorrow's a scorcher. Stay a while.",
+    "Ten thousand streetlights down there and the sky is still winning tonight.",
+    "Tomorrow's weather is tomorrow's problem."
    ]
   },
   {
@@ -1231,7 +1285,9 @@
    "lines": [
     "Somewhere an estate agent is saying 'lifestyle'.",
     "Bottle this one. Open it in winter.",
-    "This is the weather we brag about overseas."
+    "This is the weather we brag about overseas.",
+    "Not a breath of haze this morning; even the mountain got up early.",
+    "This light lasts about twenty minutes and the walk to school gets all of it."
    ]
   },
   {
@@ -1248,7 +1304,9 @@
     "Days like this should come with a soundtrack.",
     "Take your coffee outside. You deserve it.",
     "This is why we live in South Africa.",
-    "Take a moment. Look up. You're welcome."
+    "Take a moment. Look up. You're welcome.",
+    "Joburg does about three hundred of these a year. Nobody is complaining.",
+    "The sky has gone that deep blue you only get this high above sea level."
    ]
   },
   {
@@ -1263,7 +1321,9 @@
    ],
    "lines": [
     "Today's plans: exist outside.",
-    "Main character weather right here."
+    "Main character weather right here.",
+    "Jacarandas only do this three weeks a year, and the sky decided to match.",
+    "Grass warm, sky empty — the kind of Sunday that resets a whole family."
    ]
   },
   {
@@ -1280,7 +1340,9 @@
     "If you're working today, we feel sorry for you.",
     "Saturday energy: maximum. Responsibilities: minimum.",
     "Perfect for doing absolutely nothing.",
-    "Be honest — you opened this app to confirm Saturday's braai."
+    "Be honest — you opened this app to confirm Saturday's braai.",
+    "That lawn stopped asking the sky for rain somewhere around the start of November.",
+    "The sun has done more to that lawn this month than any mower ever will."
    ]
   },
   {
@@ -1295,7 +1357,9 @@
    ],
    "lines": [
     "Whoever booked the four o'clock meeting is going to be sitting in it alone.",
-    "Absolutely beautiful out there."
+    "Absolutely beautiful out there.",
+    "Forty floors of glass and every one of them is showing the same blue.",
+    "The afternoon held exactly like the morning promised, which almost never happens."
    ]
   },
   {
@@ -1312,7 +1376,9 @@
     "Bottle this one. Open it in winter.",
     "Postcard weather. You're welcome.",
     "Your vitamin D levels are thanking you.",
-    "Air this clear should come with a warning: plans will be made."
+    "Air this clear should come with a warning: plans will be made.",
+    "The sky checked in at seven, went nowhere all day, and is staying for the weekend.",
+    "The pool is that blue because the sky is doing all of it."
    ]
   },
   {
@@ -1568,7 +1634,9 @@
    ],
    "lines": [
     "Nobody drives past a stall like that on a day like this.",
-    "Watermelon weather: the whole province agreed on it by about ten this morning."
+    "Watermelon weather: the whole province agreed on it by about ten this morning.",
+    "Salad for supper has become much easier to sell.",
+    "Guests expected. Nobody promised to use the oven."
    ]
   },
   {
@@ -1604,7 +1672,12 @@
    ],
    "lines": [
     "That grass has been too hot to stand on since about eleven this morning.",
-    "Thursday, and this is the first time all day either of them has been cool."
+    "Thursday, and this is the first time all day either of them has been cool.",
+    "Your child would like the bath moved outside too.",
+    "Bedtime soon. Apparently nobody heard that.",
+    "The sun left an hour ago and took none of the heat with it.",
+    "Supper can wait. At this temperature the sprinkler promotes itself to family pool.",
+    "Officially he’s watering the garden. The garden is third in the queue."
    ]
   },
   {
@@ -1678,7 +1751,10 @@
    ],
    "lines": [
     "The weekend doesn't get better than this.",
-    "'One hour at the beach.' History's most confident lie."
+    "'One hour at the beach.' History's most confident lie.",
+    "Not enough wind this morning to put one wrinkle on that water.",
+    "The beach is doubling as a mirror, which takes one morning of absolutely no wind.",
+    "One sunrise, used twice — once in the sky and once off the wet sand."
    ]
   },
   {
@@ -1694,7 +1770,10 @@
    "lines": [
     "When the weather behaves this well, so do we. Roughly.",
     "Even Monday looks photogenic in this light.",
-    "Perfect day. No excuses. Get out."
+    "Perfect day. No excuses. Get out.",
+    "The sky made the dress-code decision this morning and he just obeyed it.",
+    "A sky like that overrules HR, and everybody at reception knows it.",
+    "Summer filed its arrival notice this morning; the shirt is the paperwork."
    ]
   },
   {
@@ -1710,7 +1789,10 @@
    "lines": [
     "Somewhere an estate agent is saying 'lifestyle'.",
     "Everything looks 4K today. The sky's in ultra mode.",
-    "Your excuse to stay inside just expired."
+    "Your excuse to stay inside just expired.",
+    "The only rain this garden has seen all month comes out of a pipe.",
+    "Weeks of nothing but blue, and even the hadeda has to queue at the sprinkler.",
+    "The sun has had this lawn to itself for a month and it is winning."
    ]
   },
   {
@@ -1726,7 +1808,10 @@
    "lines": [
     "One perfect day issued. Non-transferable. Spend it wisely.",
     "If you're working today, we feel sorry for you.",
-    "If you're inside, you're doing it wrong."
+    "If you're inside, you're doing it wrong.",
+    "The weather moved the office to the roof and productivity can argue later.",
+    "Wednesday this warm turns every roof in Joburg into a second office.",
+    "The sun took the direct route today: straight down, no traffic."
    ]
   },
   {
@@ -1741,7 +1826,10 @@
    ],
    "lines": [
     "The sky's giving everything today.",
-    "Weather this well-behaved is definitely up to something."
+    "Weather this well-behaved is definitely up to something.",
+    "The sun stayed out for the whole match and is hanging around for the chips.",
+    "Match played, chips out, and the sky never once threatened the fixture.",
+    "The sort of afternoon that keeps a whole soccer team sitting on a curb."
    ]
   },
   {
@@ -1757,7 +1845,10 @@
    "lines": [
     "Cancel everything. This is THE day winter was hiding.",
     "Nature's flexing and we're here for it.",
-    "Africa showing off again. Quietly devastating."
+    "Africa showing off again. Quietly devastating.",
+    "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
+    "The agapanthus open for exactly this kind of sky, and they got it.",
+    "Not a cloud to slow the sun, and the whole garden is making the most of it."
    ]
   },
   {
@@ -1772,7 +1863,10 @@
    ],
    "lines": [
     "Blue sky, warm breeze. The simple stuff.",
-    "The kind of sky that makes you grateful for free things."
+    "The kind of sky that makes you grateful for free things.",
+    "The kind of sun that turns one tennis ball into a whole afternoon.",
+    "That farmhouse has seen a few centuries of days like this and still gets them free.",
+    "Full sun, soft lawn, and homework has officially lost its audience."
    ]
   },
   {
@@ -1786,7 +1880,10 @@
     "clear/week_4/day/6.webp"
    ],
    "lines": [
-    "Today's forecast: medium rare."
+    "Today's forecast: medium rare.",
+    "The deck reached golden-retriever temperature about an hour ago.",
+    "The sun has been on those boards since morning and the dog is doing the audit.",
+    "Thursday's forecast, as read by the dog: warm boards until further notice."
    ]
   },
   {
@@ -1802,7 +1899,9 @@
    "lines": [
     "The braai is the social calendar. Show up.",
     "Your only responsibility is choosing charcoal or wood.",
-    "The Weber's been waiting all week for this."
+    "The Weber's been waiting all week for this.",
+    "Wors on, sun low, wind nowhere: Saturday is doing everything right.",
+    "The smoke is going straight up, which is the sky's way of approving a braai."
    ]
   },
   {
@@ -1816,7 +1915,9 @@
     "clear/week_1/day/7.webp"
    ],
    "lines": [
-    "Beach or braai? Yes."
+    "Beach or braai? Yes.",
+    "The sea has gone the colour it only goes when the sky is this empty.",
+    "Sunday, and the sky has cleared its whole diary for this."
    ]
   },
   {
@@ -1831,7 +1932,10 @@
     "clear/week_4/dusk/5.webp"
    ],
    "lines": [
-    "The sun is really milking this exit. Honestly, deserved."
+    "The sun is really milking this exit. Honestly, deserved.",
+    "Cirrus this pink means the sky is completely dry all the way up.",
+    "A sunset like this pulls an audience, and tonight it is two birds on a wire.",
+    "Monday got the best sky of the week and is wasting it on a farm road."
    ]
   },
   {
@@ -1846,7 +1950,10 @@
     "clear/week_4/dusk/6.webp"
    ],
    "lines": [
-    "This is the day the brochure was talking about."
+    "This is the day the brochure was talking about.",
+    "A gradient that clean means not one cloud between here and tomorrow.",
+    "Orange to navy with nothing in between — the walk home slowed down for it.",
+    "The day used up every hour of light and still had this left over."
    ]
   },
   {
@@ -1862,7 +1969,10 @@
    ],
    "lines": [
     "Today's plans: exist outside.",
-    "Kuier weather. Get the people together."
+    "Kuier weather. Get the people together.",
+    "Cricket till the light goes, and light like this takes its time going.",
+    "One planet up, no clouds coming, and the whole dorp still outside.",
+    "The Karoo cools fast under a clear sky, but nobody has noticed yet."
    ]
   },
   {
@@ -1879,7 +1989,10 @@
    "lines": [
     "The weather gods are showing off.",
     "Weekend vibes so strong they need their own playlist.",
-    "The evening showed up in its Sunday best."
+    "The evening showed up in its Sunday best.",
+    "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
+    "The wind that usually owns this coast has taken the evening off.",
+    "That sky is doing its whole show over a sea too flat to interrupt it."
    ]
   },
   {
@@ -1895,7 +2008,10 @@
    ],
    "lines": [
     "The hadedas are sleeping. Finally.",
-    "Somewhere a cricket is really giving it."
+    "Somewhere a cricket is really giving it.",
+    "Warm, still and clear: every insect in the province is at this one lamp.",
+    "Windows-open weather has arrived, and word has reached the moths.",
+    "Not a breath of wind, or that lantern would be having a quieter evening."
    ]
   },
   {
@@ -1911,7 +2027,10 @@
    ],
    "lines": [
     "The moon's doing the most tonight.",
-    "Verandah weather. The couch will understand."
+    "Verandah weather. The couch will understand.",
+    "The moon is out and somebody small is hearing about it for the first time.",
+    "Not a cloud. Just you and the Southern Cross.",
+    "Clear enough that even the cat is checking the sky."
    ]
   },
   {
@@ -1927,7 +2046,10 @@
    ],
    "lines": [
     "Braai weather, boet! No excuses.",
-    "'Just one sundowner' — famous last words, every single time."
+    "'Just one sundowner' — famous last words, every single time.",
+    "A Friday night warm enough that the table walked itself outside.",
+    "Nothing up there but stars, which is how supper ends up under them.",
+    "The evening is holding at exactly the temperature nobody talks about."
    ]
   },
   {
@@ -1943,7 +2065,10 @@
    ],
    "lines": [
     "The sky's on mute. Nobody's complaining.",
-    "Grey vibes. The sky matched my Monday."
+    "Grey vibes. The sky matched my Monday.",
+    "Grey sky, flat sea, visible breath: the exact morning the fish expect them.",
+    "The cloud is sitting right on the mountains and the sea has gone pewter.",
+    "No wind on the water this morning, which is worth more than sunshine out there."
    ]
   },
   {
@@ -1959,7 +2084,10 @@
    ],
    "lines": [
     "The sun sent an out-of-office reply.",
-    "The sky's curtains are drawn. Privacy, please."
+    "The sky's curtains are drawn. Privacy, please.",
+    "Flat grey light, no glare, no wind: perfect painting weather, and he knows it.",
+    "An overcast sky is a painter's softbox — not one hard shadow on that wall.",
+    "The cloud came in overnight and parked; nothing under it is in a hurry."
    ]
   },
   {
@@ -1975,7 +2103,10 @@
    ],
    "lines": [
     "Not Instagram weather. Not the end of the world.",
-    "Clouds rolling in like family — no phone call first."
+    "Clouds rolling in like family — no phone call first.",
+    "The sky brought its full weight this morning and the sea rose to meet it.",
+    "One thin line of light at the horizon, and the whole sky leaning on it.",
+    "Running weather, honestly: cool, grey, and the sea doing the soundtrack."
    ]
   },
   {
@@ -1991,7 +2122,10 @@
    ],
    "lines": [
     "Could be worse. Could also be better.",
-    "The sun hit snooze again. Honestly? Same."
+    "The sun hit snooze again. Honestly? Same.",
+    "The sun is trying its luck at the horizon and the cloud is unmoved.",
+    "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
+    "A grey start on the coast usually burns off by ten. Usually."
    ]
   },
   {
@@ -2007,7 +2141,10 @@
    ],
    "lines": [
     "The sun's on a tea break. No ETA.",
-    "At least it's not raining. That's the bar."
+    "At least it's not raining. That's the bar.",
+    "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+    "The cloud kept the frost off the windscreens, which is the one favour it does.",
+    "Pink-grey sky over the robots: winter is on the morning shift too."
    ]
   },
   {
@@ -2022,7 +2159,10 @@
     "cloudy/week_3/dawn/3.webp"
    ],
    "lines": [
-    "Not bad, not great. Like a 6/10 date."
+    "Not bad, not great. Like a 6/10 date.",
+    "The sun is up there somewhere behind three layers of Saturday-morning grey.",
+    "The Bo-Kaap does the colour this morning because the sky refuses to.",
+    "Cool, grey and windless — honestly the best running weather this city sells."
    ]
   },
   {
@@ -2037,7 +2177,10 @@
     "cloudy/week_3/dawn/7.webp"
    ],
    "lines": [
-    "The app says cloudy. Aunty's knee says rain. We trust the knee."
+    "The app says cloudy. Aunty's knee says rain. We trust the knee.",
+    "The whole city is under one grey blanket and somebody just noticed.",
+    "A lid like that takes until about eleven to lift, if it lifts at all.",
+    "The sky is buffering."
    ]
   },
   {
@@ -2053,7 +2196,10 @@
    "lines": [
     "The sky is the colour of an old Tupperware lid.",
     "The sun's on airplane mode.",
-    "Forecast says maybe. We say probably."
+    "Forecast says maybe. We say probably.",
+    "Half the sky has an opinion and the other half is about to hear it.",
+    "The week's weather is changing hands right there, in one straight line.",
+    "Blue on the left, business on the right, and the line is moving your way."
    ]
   },
   {
@@ -2069,7 +2215,10 @@
    "lines": [
     "Even the weather can't be bothered today.",
     "The sky's giving 'I'll try again tomorrow' energy.",
-    "Perfect weather for existing without enthusiasm."
+    "Perfect weather for existing without enthusiasm.",
+    "A grey day reads the same in any language: blanket, stoep, minimal ambition.",
+    "The concrete is still damp and the sky looks like it isn't finished.",
+    "Under a sky like this the whole garden runs at half-speed, dog included."
    ]
   },
   {
@@ -2084,7 +2233,10 @@
    ],
    "lines": [
     "The sun's bunking today.",
-    "The clouds are here but they're not doing anything."
+    "The clouds are here but they're not doing anything.",
+    "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
+    "The sky has gone the colour of the staff-room ceiling and settled in.",
+    "A perfectly average sky doing perfectly average things."
    ]
   },
   {
@@ -2100,7 +2252,10 @@
    "lines": [
     "Take a brolly just in case, hey.",
     "50/50 on getting wet. Like a coin toss.",
-    "Pack an umbrella. Or don't. We don't know either."
+    "Pack an umbrella. Or don't. We don't know either.",
+    "Umbrella in one hand, sunglasses in the other — he has met this sky before.",
+    "That sky refuses to commit, so he came prepared for both of its moods.",
+    "Bring a jacket. Or sunscreen. Or both."
    ]
   },
   {
@@ -2116,7 +2271,10 @@
    "lines": [
     "Grey is also a colour, says my ma. Today I believe her.",
     "The sun is technically present. Spiritually elsewhere.",
-    "This weather has 'meh' written all over it."
+    "This weather has 'meh' written all over it.",
+    "The one animal that can match the sky's mood is having no trouble today.",
+    "Every leaf is holding still; the whole garden is waiting to see what the sky decides.",
+    "The clouds are here but they're not doing anything."
    ]
   },
   {
@@ -2131,7 +2289,10 @@
    ],
    "lines": [
     "Weather's being more indecisive than you at Spur.",
-    "Some clouds. Some sun. South African summer admin."
+    "Some clouds. Some sun. South African summer admin.",
+    "Half a lawn mowed, and now the negotiation with the sky begins.",
+    "The sky is deciding whether the second half of that lawn happens today.",
+    "That look is a man asking the clouds for forty-five more minutes."
    ]
   },
   {
@@ -2146,7 +2307,10 @@
    ],
    "lines": [
     "The chops don't know it's cloudy. The braai proceeds.",
-    "Cloudy enough to comment, sunny enough to ignore."
+    "Cloudy enough to comment, sunny enough to ignore.",
+    "That sky can do what it wants; the wors is already on.",
+    "The sky is threatening, the firelighters are answering: a very South African standoff.",
+    "Paving wet, clouds low, fire going anyway — this braai has been through worse."
    ]
   },
   {
@@ -2162,7 +2326,10 @@
    "lines": [
     "The sky is buffering.",
     "Schrodinger's rain. It both is and isn't.",
-    "Even the weather apps are arguing about this one."
+    "Even the weather apps are arguing about this one.",
+    "Half this street is in summer and the other half is about to be somewhere else.",
+    "That cloud line is moving in with the confidence of a Monday.",
+    "The blue half of the sky is on borrowed time and the lawns know it."
    ]
   },
   {
@@ -2178,7 +2345,10 @@
    "lines": [
     "Eskom-friendly weather. No solar today.",
     "Sun's playing peek-a-boo.",
-    "Sun on a smoke break."
+    "Sun on a smoke break.",
+    "Panels installed, sun absent: the sky owes this roof an apology.",
+    "Grey from gutter to gutter, and every kilowatt up here is on standby.",
+    "The forecast said partly sunny; the sky went with fully committed grey."
    ]
   },
   {
@@ -2194,7 +2364,10 @@
    "lines": [
     "Cloud cover with a side of who-cares.",
     "The sky's giving mixed signals again.",
-    "Sun, hide-and-seek champion of the day."
+    "Sun, hide-and-seek champion of the day.",
+    "The sun is down to one beam and the whole veld is watching where it lands.",
+    "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
+    "That grey is thinking about rain and the whole district is thinking with it."
    ]
   },
   {
@@ -2210,7 +2383,10 @@
    "lines": [
     "Clouds looking proper suspicious.",
     "The washing's on the line and you're feeling brave.",
-    "Washing's still safe. Probably."
+    "Washing's still safe. Probably.",
+    "That washing is a straight bet against that sky, and the sky looks confident.",
+    "Not a breath moving those sheets, and nothing helpful coming from above either.",
+    "Grey like that can hold all day without dropping a thing — probably."
    ]
   },
   {
@@ -2224,7 +2400,10 @@
     "cloudy/week_1/day/7.webp"
    ],
    "lines": [
-    "The sky can't make up its mind. Join the club."
+    "The sky can't make up its mind. Join the club.",
+    "The walk has been postponed by the committee upstairs, and the committee looks settled.",
+    "The sky is doing nothing in particular and being very thorough about it.",
+    "The sun sent an out-of-office reply."
    ]
   },
   {
@@ -2239,7 +2418,10 @@
    ],
    "lines": [
     "Good day for a walk, bad day for a tan.",
-    "Sky can't make up its mind."
+    "Sky can't make up its mind.",
+    "The cloud arrived about four minutes after the towel went down, which is policy.",
+    "Sunscreen out, sun gone: the sky has a sense of humour today.",
+    "The blue sky is still back there somewhere, but the grey has the floor."
    ]
   },
   {
@@ -2253,7 +2435,10 @@
     "cloudy/week_3/day/3.webp"
    ],
    "lines": [
-    "This weather needs a life coach."
+    "This weather needs a life coach.",
+    "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+    "The cloud is doing sunscreen duty this morning and the runners are cashing in.",
+    "A pearl-grey sky and a warm sea breeze: the coast's version of mild."
    ]
   },
   {
@@ -2268,7 +2453,10 @@
     "cloudy/week_4/dusk/3.webp"
    ],
    "lines": [
-    "The sun clocked out without saying bye. Rude, but relatable."
+    "The sun clocked out without saying bye. Rude, but relatable.",
+    "The dog is wearing a jersey, which is all the forecast anybody here needs.",
+    "Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.",
+    "The day never warmed up, and one resident has stopped waiting for it to."
    ]
   },
   {
@@ -2285,7 +2473,10 @@
    "lines": [
     "Maybe rain, maybe not. Classic.",
     "Rain? Possibly. Commitment? Never.",
-    "Looks like the clouds are staying for supper."
+    "Looks like the clouds are staying for supper.",
+    "The charcoal is out, the sky is undecided, and neither is backing down.",
+    "That cloud has been rehearsing all afternoon and still hasn't said its line.",
+    "The horizon kept one strip of orange as proof the sun was here."
    ]
   },
   {
@@ -2301,7 +2492,10 @@
    ],
    "lines": [
     "Nobody's posting this sunset on Instagram.",
-    "Don't trust those clouds. They're plotting."
+    "Don't trust those clouds. They're plotting.",
+    "One person at this wedding is checking the sky, and she has been right before.",
+    "The clouds came dressed in pink for the occasion and are behaving so far.",
+    "That sky will hold for the photographs — after that, no promises."
    ]
   },
   {
@@ -2316,7 +2510,10 @@
     "cloudy/week_4/dusk/2.webp"
    ],
    "lines": [
-    "Sky's doing the most, but only a little."
+    "Sky's doing the most, but only a little.",
+    "Cloud is what a sunset needs, and tonight the sky brought exactly enough.",
+    "Table Mountain gets the silhouette; the clouds get the whole colour budget.",
+    "Red sky at night, shepherd's delight — tomorrow just got a good reference."
    ]
   },
   {
@@ -2331,7 +2528,10 @@
     "cloudy/week_3/night/1.webp"
    ],
    "lines": [
-    "The moon has hung out a do-not-disturb sign."
+    "The moon has hung out a do-not-disturb sign.",
+    "The moon is down to one small window and it is using all of it.",
+    "The clouds are winning tonight, about nine rounds to one.",
+    "A sky like that keeps the heat in — the frost can stand down tonight."
    ]
   },
   {
@@ -2346,7 +2546,10 @@
     "cloudy/week_3/night/7.webp"
    ],
    "lines": [
-    "Night-shift clouds: just keeping the place warm till the sun gets back."
+    "Night-shift clouds: just keeping the place warm till the sun gets back.",
+    "The moon has enough cloud to fight through that the torch got the job.",
+    "Cloud like fish scales means the weather is thinking about changing its mind.",
+    "That cloud is just thick enough to make the moon count for nothing on the ground."
    ]
   },
   {
@@ -2361,7 +2564,10 @@
     "cloudy/week_4/night/6.webp"
    ],
    "lines": [
-    "No stars tonight, but the neighbourhood dogs still have opinions."
+    "No stars tonight, but the neighbourhood dogs still have opinions.",
+    "The cloud is coming over the mountain like it pays rent here.",
+    "That cloud will be down on the streetlights before the walk is done.",
+    "Low cloud at night keeps the cold off the promenade, and the regulars know it."
    ]
   },
   {
@@ -2376,7 +2582,10 @@
     "cloudy/week_3/night/6.webp"
    ],
    "lines": [
-    "Night clouds are the sky's way of saying: let's talk tomorrow."
+    "Night clouds are the sky's way of saying: let's talk tomorrow.",
+    "No moon, no stars, no streetlights: tonight the headlights are the whole sky.",
+    "The sky has switched itself off for the night; the bakkie disagrees.",
+    "Overcast this thick turns the Karoo into a corridor, and he is halfway down it."
    ]
   },
   {
@@ -2391,7 +2600,10 @@
     "cloudy/week_4/night/4.webp"
    ],
    "lines": [
-    "The sky put the stars on silent. They're still up there, promise."
+    "The sky put the stars on silent. They're still up there, promise.",
+    "The cloud is holding the city's glow like a lampshade tonight.",
+    "Overcast at night keeps the warmth in, and somebody is out here using it.",
+    "No stars on offer tonight, so the city is providing its own."
    ]
   },
   {
@@ -2408,7 +2620,11 @@
    "lines": [
     "Somewhere out there people are going for a run right now. Strength to them.",
     "Ja, it's jersey weather. Double jersey.",
-    "The grass is wet, the air is cold, and the jersey was not optional."
+    "The grass is wet, the air is cold, and the jersey was not optional.",
+    "Dew this heavy means the night got properly cold and stayed there.",
+    "Small dog, thick jersey, short patrol: winter mornings run on reduced hours.",
+    "Your alarm has no idea what it's asking.",
+    "The slippers are on. The rest is negotiable."
    ]
   },
   {
@@ -2424,7 +2640,11 @@
    ],
    "lines": [
     "Frost on the grass, frost on the bakkie, frost on my will to live.",
-    "The sky is clear and the car is white, and those two facts are related."
+    "The sky is clear and the car is white, and those two facts are related.",
+    "Frost first. Your plans can wait ten minutes.",
+    "The car coughed twice before it agreed to start.",
+    "The car would also like another five minutes.",
+    "You left early. The windscreen disagreed."
    ]
   },
   {
@@ -2441,7 +2661,11 @@
    "lines": [
     "Layer up like you're climbing Sani Pass.",
     "Your jacket has a jacket. It's that kind of day.",
-    "The zip goes all the way up today; the walk to the gate has teeth."
+    "The zip goes all the way up today; the walk to the gate has teeth.",
+    "Beanie plus puffer plus school tie: the cold front has reached the uniform.",
+    "Cold enough to end the jacket argument.",
+    "That jacket argument is over before breakfast.",
+    "School starts soon. Your fingers haven't."
    ]
   },
   {
@@ -2458,7 +2682,12 @@
    "lines": [
     "Your breath is doing special effects.",
     "Most beautiful time of day. Say the people who stay inside.",
-    "Your hands are in your pockets and they're not coming out."
+    "Your hands are in your pockets and they're not coming out.",
+    "You can see his breath, and the sheep are wearing the only good answer.",
+    "The Karoo does its coldest hour right before its prettiest one.",
+    "The sheep bunched before he opened the gate; they read the cold first.",
+    "Work didn't get the message about staying in.",
+    "Up before the sun. Still not impressed."
    ]
   },
   {
@@ -2474,7 +2703,9 @@
    ],
    "lines": [
     "Getting out of bed was a mistake. A documented one.",
-    "The warmest place in the province was abandoned here at about six-fifteen."
+    "The warmest place in the province was abandoned here at about six-fifteen.",
+    "Getting dressed feels like taking a layer off.",
+    "You miss your bed. You're still in the house."
    ]
   },
   {
@@ -2490,7 +2721,10 @@
    ],
    "lines": [
     "You're not cold, you're 'lekker koud'. Big difference.",
-    "Minus something this morning: the windscreen has grown its own art collection."
+    "Minus something this morning: the windscreen has grown its own art collection.",
+    "The first ten minutes of this Sunday belong to a credit card and the demister.",
+    "Your car has asked to work from home.",
+    "Ten minutes early. Spent all ten on the windscreen."
    ]
   },
   {
@@ -2506,7 +2740,11 @@
    "lines": [
     "The cold front is here and it brought friends.",
     "Winter sun: all of the light, none of the heat. Nice try, sun.",
-    "Outside is a test of character. You're failing."
+    "Outside is a test of character. You're failing.",
+    "The garden tap grew a white beard overnight; the night was that serious.",
+    "That drop has been thinking about letting go since about four this morning.",
+    "The weeds can enjoy another day of freedom.",
+    "Gardening can stay a plan. A very good plan."
    ]
   },
   {
@@ -2521,7 +2759,10 @@
    ],
    "lines": [
     "Time to dig out that ugly beanie.",
-    "The sign says the rain won; the faces say it didn't."
+    "The sign says the rain won; the faces say it didn't.",
+    "Cold and wet. One complaint wasn't enough.",
+    "Complaining is allowed from under the blanket.",
+    "Our demands are modest. Dry socks and feeling toes."
    ]
   },
   {
@@ -2536,7 +2777,9 @@
    ],
    "lines": [
     "The car seats are freezing. Everything is freezing.",
-    "The morning's second kettle has nothing to do with tea."
+    "The morning's second kettle has nothing to do with tea.",
+    "Your fingers have declined the early start.",
+    "Ready to leave. Your car would like a word."
    ]
   },
   {
@@ -2552,7 +2795,10 @@
    "lines": [
     "The dog refused to go outside. Fair.",
     "The dog looked out the front door, turned around, and went back to bed. Says it all.",
-    "One look at that white lawn and the blanket vote was unanimous."
+    "One look at that white lawn and the blanket vote was unanimous.",
+    "Cold indoors too. Keep your jacket on.",
+    "Do we actually need milk, or just want it?",
+    "The spare blanket is now the main blanket."
    ]
   },
   {
@@ -2568,7 +2814,9 @@
    "lines": [
     "The duvet is calling and the duvet is winning.",
     "Blanket burrito mode: activated.",
-    "Construction finished at nine: one duvet cave, single occupant, no visitors till spring."
+    "Construction finished at nine: one duvet cave, single occupant, no visitors till spring.",
+    "The duvet's coming too. It has earned the outing.",
+    "A jersey over pyjamas counts as getting dressed."
    ]
   },
   {
@@ -2584,7 +2832,10 @@
    "lines": [
     "This is not what the tourism brochure promised.",
     "The sun is out. It means nothing. The sun is lying.",
-    "Somebody's optimism is still on the table, under a millimetre of frost."
+    "Somebody's optimism is still on the table, under a millimetre of frost.",
+    "Grey sky, white table: the patio has switched seasons without asking anyone.",
+    "Your summer clothes can stop volunteering.",
+    "You dressed for yesterday. Yesterday apologises."
    ]
   },
   {
@@ -2599,7 +2850,9 @@
    ],
    "lines": [
     "The house is colder inside than outside. Architecture is a beautiful thing.",
-    "One patch of sun came into this lounge and the dog got there first."
+    "One patch of sun came into this lounge and the dog got there first.",
+    "We can disagree under the same blanket.",
+    "Move closer. Nobody's asking you to forgive anyone."
    ]
   },
   {
@@ -2615,7 +2868,9 @@
    "lines": [
     "The heater is your best friend. Your only friend.",
     "Your toes have filed a formal complaint.",
-    "Socks go on the heater first; feet join later — the winter system works."
+    "Socks go on the heater first; feet join later — the winter system works.",
+    "Matching socks have slipped down the list.",
+    "Two pairs on. Suddenly the shoes are the problem."
    ]
   },
   {
@@ -2630,7 +2885,10 @@
    ],
    "lines": [
     "Hot chocolate is not a want. It's a need.",
-    "Gloves-around-the-cup weather: the coffee is doing two jobs at once."
+    "Gloves-around-the-cup weather: the coffee is doing two jobs at once.",
+    "Your jacket has a jacket. It's that kind of day.",
+    "You've bought that coffee mostly for your hands.",
+    "Have a sip. Your fingers can take a turn."
    ]
   },
   {
@@ -2646,7 +2904,10 @@
    "lines": [
     "Even the Capetonians are admitting it's cold.",
     "The jersey got promoted to balaclava somewhere between the door and the gate.",
-    "The air found the one gap in the outfit and he is closing it by hand."
+    "The air found the one gap in the outfit and he is closing it by hand.",
+    "It's jersey weather. Under your jersey.",
+    "A nod will do; your hands are staying in your pockets.",
+    "Back for the scarf. You were nearly brave."
    ]
   },
   {
@@ -2662,7 +2923,10 @@
    "lines": [
     "The washing is not going to dry. We hang it up for hope.",
     "The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.",
-    "Cold plus beautiful is an honest trade. We'll take it."
+    "Cold plus beautiful is an honest trade. We'll take it.",
+    "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.",
+    "You need that jersey more than it needs washing.",
+    "The second layer stays. Yes, even in the sun."
    ]
   },
   {
@@ -2677,7 +2941,9 @@
    ],
    "lines": [
     "The great debate: do we switch the heater on too, or are we not made of money?",
-    "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly."
+    "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly.",
+    "You're making tea? Suddenly everyone needs some.",
+    "The blanket comes too. It's only the kitchen."
    ]
   },
   {
@@ -2693,7 +2959,9 @@
    ],
    "lines": [
     "The chair is taken. The dog got there first. Rules are rules.",
-    "Outside is for the stars tonight; everything with fur voted fireplace."
+    "Outside is for the stars tonight; everything with fur voted fireplace.",
+    "The dishes can soak a little longer.",
+    "One more log. That was the last one three logs ago."
    ]
   },
   {
@@ -2709,7 +2977,11 @@
    ],
    "lines": [
     "Hot water bottle is the real MVP today.",
-    "Fingerless gloves at a laptop: winter has entered the home office."
+    "Fingerless gloves at a laptop: winter has entered the home office.",
+    "The house has one warm room after dark, and it is wherever the blanket is.",
+    "My hot water bottle is staying over.",
+    "Even the kettle is putting in overtime.",
+    "Deadline tonight. Fingers still negotiating."
    ]
   },
   {
@@ -2725,7 +2997,9 @@
    ],
    "lines": [
     "Prettiest blue sky in the country, and it feels like a fridge with a view.",
-    "Cold enough to share one blanket, clear enough to make it worth it."
+    "Cold enough to share one blanket, clear enough to make it worth it.",
+    "Romance is remembering the spare warm socks.",
+    "One blanket for two? Let's stay married."
    ]
   },
   {
@@ -2742,7 +3016,10 @@
    "lines": [
     "The sun has arrived. It has not yet started working.",
     "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
-    "Bin day, and the frost got to them before the truck did."
+    "Bin day, and the frost got to them before the truck did.",
+    "The municipality collects at seven; the frost delivered at four.",
+    "Bin day has added another layer to getting dressed.",
+    "The truck is coming. Find both gloves."
    ]
   },
   {
@@ -2759,7 +3036,10 @@
    "lines": [
     "The lawn caught frost overnight. You're next.",
     "Somebody left the freezer door open overnight.",
-    "The hadeda has landed on frost and is already drafting a complaint."
+    "The hadeda has landed on frost and is already drafting a complaint.",
+    "Frost on the lawn and the morning alarm has just landed, feathers and all.",
+    "Your alarm never checks what it's sending you into.",
+    "Up you get. The socks won't find themselves."
    ]
   },
   {
@@ -2776,7 +3056,11 @@
    "lines": [
     "The car's heater is the most important relationship in your life right now.",
     "The car coughed twice before it agreed to start.",
-    "The Toyota started first try. You owe it a wash."
+    "The Toyota started first try. You owe it a wash.",
+    "The windscreen kept a record of last night and she is deleting it by hand.",
+    "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
+    "The alarm went off before the car was ready to wake.",
+    "School bags packed. Hands still defrosting."
    ]
   },
   {
@@ -2793,7 +3077,10 @@
    "lines": [
     "Clear skies, open roads, running nose. The full winter set.",
     "The bluer the sky, the colder the truth.",
-    "Not one cloud, not one degree: a Highveld winter morning doing both at once."
+    "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+    "Your jacket knows better than your eyes.",
+    "You dressed by looking out the window again.",
+    "The bike is ready. Your ears are lodging objections."
    ]
   },
   {
@@ -2810,7 +3097,10 @@
    "lines": [
     "The kind of day Joburg pretends it doesn't have until you're standing in it.",
     "The 7am sun isn't giving heat yet. Only vibes.",
-    "Five guinea fowl crossing in single file: the frost has everyone walking carefully."
+    "Five guinea fowl crossing in single file: the frost has everyone walking carefully.",
+    "First traffic of the morning, and it walks and complains at the same time.",
+    "You're up early enough to regret it twice.",
+    "One lap of the block. Then we discuss breakfast."
    ]
   },
   {
@@ -2827,7 +3117,12 @@
    "lines": [
     "Highveld winter: the only place where you wear two jackets to fetch the post.",
     "Zero wind. Zero clouds. Zero mercy.",
-    "The Free State just remembered it has a winter setting."
+    "The Free State just remembered it has a winter setting.",
+    "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
+    "Not enough wind to turn one blade, which is why the frost got everything.",
+    "Pink sky, white veld: the desert runs both extremes before breakfast.",
+    "Your slippers deserve better than this early start.",
+    "The chores can wait. Your fingers called first."
    ]
   },
   {
@@ -2844,7 +3139,11 @@
    "lines": [
     "Sun on your back, freezer on your face.",
     "Looks like a tourism ad. Feels like the inside of a fridge.",
-    "That first breath of air will wake you better than coffee."
+    "That first breath of air will wake you better than coffee.",
+    "Joburg winter dawn: the view is free; the air charges admission.",
+    "The city looks its best exactly when the air hurts most, which is unfair.",
+    "You promised yourself a run, not enthusiasm.",
+    "Early start. An idea you had while still in bed."
    ]
   },
   {
@@ -2860,7 +3159,9 @@
    "lines": [
     "Sun's out. Don't be fooled. Nature is lying.",
     "Sunshine: 10/10. Feels-like: don't ask.",
-    "The sunny side of the wall is prime property, and it is taken."
+    "The sunny side of the wall is prime property, and it is taken.",
+    "The best seat is the one you refuse to leave.",
+    "Plenty of room outside, if anyone asks why you stayed."
    ]
   },
   {
@@ -2876,7 +3177,10 @@
    "lines": [
     "In the sun: bearable. Two steps left: Antarctica.",
     "Karoo morning. The kind that makes you respect every farmer who chose this.",
-    "Full sun, visible breath: the Karoo running both seasons before lunch."
+    "Full sun, visible breath: the Karoo running both seasons before lunch.",
+    "Your face would also like a turn in the sun.",
+    "Your jacket was right to insist on coming.",
+    "Going out? The glass has given you enough of a look."
    ]
   },
   {
@@ -2892,7 +3196,10 @@
    "lines": [
     "Window sun is the only sun doing its job today.",
     "It looks lovely out there. We've chosen to believe it from in here.",
-    "Full sunshine, full jacket. Both are non-negotiable."
+    "Full sunshine, full jacket. Both are non-negotiable.",
+    "The jacket is going on because the window already said so.",
+    "The jacket argument is holding up breakfast.",
+    "Have another spoonful. We're finding the other sleeve."
    ]
   },
   {
@@ -2908,7 +3215,9 @@
    "lines": [
     "Lekker koud, but the rugby fields are about to look perfect.",
     "Perfect rugby weather. For the spectators with blankets.",
-    "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit."
+    "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+    "How many warm-ups were you planning on doing?",
+    "Boots packed. Still negotiating with the legs."
    ]
   },
   {
@@ -2924,7 +3233,9 @@
    "lines": [
     "Sunny, with a 100% chance of shivering.",
     "Frost on the grass, steam off the field: winter running weather at its most honest.",
-    "Cold enough to see every breath, clear enough that nobody minds."
+    "Cold enough to see every breath, clear enough that nobody minds.",
+    "You signed up for running, not feeling your fingers.",
+    "Keep moving. Chatting is an indoor activity."
    ]
   },
   {
@@ -2941,7 +3252,9 @@
    "lines": [
     "Perfect drying weather. The washing will dry and freeze, in that order.",
     "The towels went out damp and are coming in as boards.",
-    "That washing is not dry; it is preserved. Winter dusk works fast out here."
+    "That washing is not dry; it is preserved. Winter dusk works fast out here.",
+    "You'll need those towels to bend before you fold them.",
+    "Bring the washing in. Then thaw your fingers."
    ]
   },
   {
@@ -2958,7 +3271,10 @@
    "lines": [
     "The dog is still keen. The dog is always keen. Respect.",
     "Even the dog's breath is showing. That's the reading.",
-    "Frost already forming and the sun barely down: tonight means business."
+    "Frost already forming and the sun barely down: tonight means business.",
+    "A clear dusk on the Highveld is just the frost clearing its throat.",
+    "The dog can hear visitors from in here perfectly well.",
+    "Last check of the gate. With all your clothes on."
    ]
   },
   {
@@ -2974,7 +3290,9 @@
    ],
    "lines": [
     "The sun is heading home now, taking the last three degrees with it.",
-    "The horses are doing their own weather report, one breath at a time."
+    "The horses are doing their own weather report, one breath at a time.",
+    "Your evening walk has developed a very short route.",
+    "Home already? Sensible pace."
    ]
   },
   {
@@ -2990,7 +3308,10 @@
    ],
    "lines": [
     "Not a cloud in sight. Not a degree either.",
-    "The sunset is free of charge. So is the head cold."
+    "The sunset is free of charge. So is the head cold.",
+    "One more shot. Then you can feel your fingers.",
+    "Your fingers would like a turn inside the pockets.",
+    "Last shot. You said that before you lost feeling."
    ]
   },
   {
@@ -3007,7 +3328,9 @@
    "lines": [
     "The braai is happening. The braai always happens. We just pull the chairs closer.",
     "The temperature dropped with the sun and the circle got tighter by exactly that much.",
-    "The evening turned cold the minute it turned beautiful, which is the usual trade."
+    "The evening turned cold the minute it turned beautiful, which is the usual trade.",
+    "Nobody's volunteering to fetch the extra chairs.",
+    "Sundowners, apparently. Make yours a mug."
    ]
   },
   {
@@ -3022,7 +3345,9 @@
     "cold-clear/week_4/dusk/5.webp"
    ],
    "lines": [
-    "Golden hour, ice-cold air. Cape Town loves a dramatic contrast."
+    "Golden hour, ice-cold air. Cape Town loves a dramatic contrast.",
+    "Admire it from the couch; that's what windows are for.",
+    "Another cup. The view isn't going anywhere."
    ]
   },
   {
@@ -3039,7 +3364,10 @@
    "lines": [
     "Tomorrow's first task: five minutes of windscreen scraping in your work clothes.",
     "The cars have surrendered. They're sleeping under ice tonight.",
-    "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl."
+    "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.",
+    "The frost is doing the rounds tonight and skipping nobody.",
+    "Tomorrow's first appointment is with the windscreen.",
+    "Set the alarm earlier. The car won't."
    ]
   },
   {
@@ -3056,7 +3384,10 @@
    "lines": [
     "Clear sky tonight. That means the cold has an all-access pass.",
     "The frost has already started its shift. By dawn the lawn will be glass.",
-    "The bin run is being done at speed tonight, and the sky knows why."
+    "The bin run is being done at speed tonight, and the sky knows why.",
+    "Taking the bin out counts as your evening walk.",
+    "Taking the bin out should count towards your steps.",
+    "Shoes on this time. You've learnt."
    ]
   },
   {
@@ -3071,7 +3402,10 @@
     "cold-clear/week_4/night/4.webp"
    ],
    "lines": [
-    "Tile floors are tonight's villain. Wear something on your feet."
+    "Tile floors are tonight's villain. Wear something on your feet.",
+    "Movie night starts early. Getting warm takes time.",
+    "The remote can wait until your hand is out again.",
+    "Movie night. Nobody's voting for a trip to the shops."
    ]
   },
   {
@@ -3087,7 +3421,9 @@
    ],
    "lines": [
     "Clear nights are winter's way of apologising.",
-    "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight."
+    "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight.",
+    "Your duvet has finally been invited on a date.",
+    "Stay another minute. Then we'll need another blanket."
    ]
   },
   {
@@ -3104,7 +3440,9 @@
    "lines": [
     "Free planetarium tonight. Admission: your toes.",
     "First star is out. First ten degrees have also left.",
-    "The cold is charging admission tonight and the sky is worth every degree."
+    "The cold is charging admission tonight and the sky is worth every degree.",
+    "Your second cup is mostly a hand-warming arrangement.",
+    "Bed can wait. The blanket has come with."
    ]
   },
   {
@@ -3120,7 +3458,9 @@
    ],
    "lines": [
     "The cows know exactly where they are. Which is more than the rest of us can say.",
-    "Visibility is down to one cow."
+    "Visibility is down to one cow.",
+    "Keep the plans vague; the neighbours won't notice.",
+    "One thing at a time. Convenient, really."
    ]
   },
   {
@@ -3137,7 +3477,9 @@
    "lines": [
     "Silent Hill vibes. Without the monsters. Hopefully.",
     "One lit window is taking on the whole fog, and losing beautifully.",
-    "The fog is thick enough to hold a beam of kitchen light like a solid object."
+    "The fog is thick enough to hold a beam of kitchen light like a solid object.",
+    "Don't feel obliged to join the day before coffee.",
+    "Coffee first. Then we can discuss going anywhere."
    ]
   },
   {
@@ -3154,7 +3496,9 @@
    "lines": [
     "The streetlights are trying their best.",
     "The world got a soft filter this morning.",
-    "The fog rolled in at three and started deleting the neighbourhood from the far end."
+    "The fog rolled in at three and started deleting the neighbourhood from the far end.",
+    "Finding your own gate now counts as the first errand.",
+    "Leave early. Familiar roads need introductions too."
    ]
   },
   {
@@ -3170,7 +3514,11 @@
    "lines": [
     "The fog arrived unannounced. Classic fog.",
     "The world just... disappeared.",
-    "The fog ate the neighbourhood."
+    "The fog ate the neighbourhood.",
+    "The cat can see exactly what is in that fog and is choosing not to say.",
+    "Silent Hill vibes. Without the monsters. Hopefully.",
+    "The neighbours can't judge your slippers from there.",
+    "Wave anyway. One of them may owe you money."
    ]
   },
   {
@@ -3186,7 +3534,9 @@
    "lines": [
     "Walking the dog has become a trust exercise.",
     "The dog is definitely still on the end of that leash. Almost definitely.",
-    "Current visibility: one whole dog short of complete."
+    "Current visibility: one whole dog short of complete.",
+    "Best let the dog pretend it knows where you are.",
+    "You're both on a walk. Only one seems briefed."
    ]
   },
   {
@@ -3201,7 +3551,9 @@
    ],
    "lines": [
     "The neighbours exist. Apparently. Can't confirm.",
-    "The fog is lying in the streets like it pays rates here."
+    "The fog is lying in the streets like it pays rates here.",
+    "You can postpone the neighbourly wave until later.",
+    "You're awake. The suburb hasn't introduced itself."
    ]
   },
   {
@@ -3217,7 +3569,12 @@
    "lines": [
     "The fog doesn't care about your schedule.",
     "Even your GPS is confused.",
-    "Your GPS says you have arrived. Your GPS is lying."
+    "Your GPS says you have arrived. Your GPS is lying.",
+    "The phone knows the route; the fog is testing how much he trusts it.",
+    "The GPS says the road is there, and today that is the whole case for it.",
+    "Take your time. The queue behind you can too.",
+    "You know this road until someone asks which turning.",
+    "No rush. You're entitled to recognise the turn."
    ]
   },
   {
@@ -3233,7 +3590,10 @@
    "lines": [
     "Walking to the bin is now an expedition.",
     "The world ends two metres past the gate.",
-    "Gown, slippers, thirty metres of visibility: bin day waits for no weather."
+    "Gown, slippers, thirty metres of visibility: bin day waits for no weather.",
+    "The bin run now requires more planning than breakfast.",
+    "Your first errand has become a test of commitment.",
+    "Five steps out. Already considering provisions."
    ]
   },
   {
@@ -3249,7 +3609,10 @@
    "lines": [
     "Visibility: basically zero.",
     "Found: one ball. The other three hundred metres of golf course are still missing.",
-    "The fairway is out there somewhere, taking the morning off from being visible."
+    "The fairway is out there somewhere, taking the morning off from being visible.",
+    "Nobody saw your last shot. This could help your score.",
+    "Your best shot has conveniently gone unwitnessed.",
+    "On the green. That's your story, anyway."
    ]
   },
   {
@@ -3266,7 +3629,10 @@
    "lines": [
     "Somewhere out there is the road. We think.",
     "Your high beams are making it worse, boet.",
-    "Headlights do about twenty metres out here; the rest is memory and respect."
+    "Headlights do about twenty metres out here; the rest is memory and respect.",
+    "The road home takes longer than your hunger allows.",
+    "Dinner will understand why you're taking your time.",
+    "The shortcut can wait. So can the person behind you."
    ]
   },
   {
@@ -3282,7 +3648,10 @@
    ],
    "lines": [
     "The dog doesn't understand where the world went. Same, boy. Same.",
-    "Every streetlamp gets its own halo tonight; the fog is generous like that."
+    "Every streetlamp gets its own halo tonight; the fog is generous like that.",
+    "The dog knows this route with its nose, which tonight is the better instrument.",
+    "The evening walk now comes with frequent roll calls.",
+    "Stay close. The dog wasn't asking you."
    ]
   },
   {
@@ -3297,7 +3666,10 @@
     "fog/week_4/dusk/3.webp"
    ],
    "lines": [
-    "Perfect weather to bump into someone you've 'been meaning to call'."
+    "Perfect weather to bump into someone you've 'been meaning to call'.",
+    "Your bicycle can enjoy being taken for a walk.",
+    "The ride home has been renamed quality time.",
+    "Nice walk. The bike is also getting some exercise."
    ]
   },
   {
@@ -3313,7 +3685,10 @@
    ],
    "lines": [
     "Five metres of visibility. Same as your five-year plan.",
-    "The fog swallowed the whole street and left the tail lights as a receipt."
+    "The fog swallowed the whole street and left the tail lights as a receipt.",
+    "Home is two hundred metres away and completely theoretical right now.",
+    "Nearly home, you said, with impressive confidence.",
+    "Same street. Suddenly you want the house number."
    ]
   },
   {
@@ -3329,7 +3704,9 @@
    ],
    "lines": [
     "The street signs gave up.",
-    "The fog got to the lookout first and took the whole view for itself."
+    "The fog got to the lookout first and took the whole view for itself.",
+    "Your holiday photos could have been taken at home.",
+    "Lovely view. We'll take your word for it."
    ]
   },
   {
@@ -3346,7 +3723,10 @@
    "lines": [
     "Your car is out there. Somewhere. Probably.",
     "Ghost town. But it's just Tuesday.",
-    "Fog so thick it has opinions."
+    "Fog so thick it has opinions.",
+    "The fog is so thick even the robot is hedging its bets.",
+    "Let the driver behind you discover patience.",
+    "No rush. Your turn-off isn't going anywhere."
    ]
   },
   {
@@ -3362,7 +3742,9 @@
    ],
    "lines": [
     "Cape Town just got a dimmer switch.",
-    "Cape Town is still on under there; the fog is just running interference."
+    "Cape Town is still on under there; the fog is just running interference.",
+    "The late-night milk run has become a bigger request.",
+    "Milk can wait. Tea without it builds character."
    ]
   },
   {
@@ -3378,7 +3760,9 @@
    ],
    "lines": [
     "Perfect weather for a horror movie.",
-    "Everything looks like a film scene. A creepy one."
+    "Everything looks like a film scene. A creepy one.",
+    "You can explain being late without inventing traffic.",
+    "The long way home? Hard to tell tonight."
    ]
   },
   {
@@ -3394,7 +3778,9 @@
    ],
    "lines": [
     "Visibility: vibes only.",
-    "The fog moved in an hour ago and the streetlights have doubled in size since."
+    "The fog moved in an hour ago and the streetlights have doubled in size since.",
+    "Your evening plans are within calling distance.",
+    "Still coming over? Describe your gate again."
    ]
   },
   {
@@ -3410,7 +3796,9 @@
    ],
    "lines": [
     "Let's call it atmosphere and go inside.",
-    "That one window is doing lighthouse duty tonight, and it is enough."
+    "That one window is doing lighthouse duty tonight, and it is enough.",
+    "You've never been so pleased to recognise your gate.",
+    "Home at last. Your slippers have been expecting you."
    ]
   },
   {
@@ -3426,7 +3814,9 @@
    ],
    "lines": [
     "Joburg does fog so rarely it feels like a limited edition.",
-    "The city noise is off tonight; fog is the best soundproofing there is."
+    "The city noise is off tonight; fog is the best soundproofing there is.",
+    "Nobody can tell how long you've been in your gown.",
+    "One look outside. That settles going out."
    ]
   },
   {
@@ -3443,7 +3833,10 @@
    "lines": [
     "The traffic is emotional.",
     "The wipers are on max and it's still not enough.",
-    "The wiper is on its ten-thousandth swipe and the rain has not blinked."
+    "The wiper is on its ten-thousandth swipe and the rain has not blinked.",
+    "You've apologised for being late. Start again.",
+    "The first meeting may have to start without you.",
+    "You left early. So did absolutely everyone else."
    ]
   },
   {
@@ -3458,7 +3851,11 @@
     "rain/week_4/dawn/5.webp"
    ],
    "lines": [
-    "Your shoes are about to have a bad day."
+    "Your shoes are about to have a bad day.",
+    "The last two metres to the gate are the wettest of the whole trip.",
+    "The school run slows down. The bell doesn't.",
+    "The school still wants them there, unfortunately.",
+    "Lunch packed. Now to waterproof the child."
    ]
   },
   {
@@ -3475,7 +3872,9 @@
    "lines": [
     "Rain on a farm isn't weather. It's a salary falling from the sky.",
     "The dams are doing a happy dance.",
-    "One night of proper rain and the driveway has joined the water table."
+    "One night of proper rain and the driveway has joined the water table.",
+    "You can start by moving car washing off the list.",
+    "First errand. Already considering a postponement."
    ]
   },
   {
@@ -3492,7 +3891,9 @@
    "lines": [
     "Somewhere a farmer is doing a small private dance nobody's allowed to see.",
     "The dams get their drink before you get your coffee. Know your place.",
-    "Rain out here is an event; the whole veld will smell of it by seven."
+    "Rain out here is an event; the whole veld will smell of it by seven.",
+    "An extra hour in bed would have cost the alarm nothing.",
+    "Time to get up. The roof has been up for hours."
    ]
   },
   {
@@ -3506,7 +3907,9 @@
     "rain/week_1/day/2.webp"
    ],
    "lines": [
-    "Clouds are crying like NZ at the 23 Rugby WC!"
+    "Clouds are crying like NZ at the 23 Rugby WC!",
+    "You said wash the car, which leaves room for debate.",
+    "Plans made. Several of them now need a lift."
    ]
   },
   {
@@ -3522,7 +3925,9 @@
    "lines": [
     "Breaking news: the puddles are open for business.",
     "The rain made the puddle; the puddle made the afternoon.",
-    "Six raincoats, one puddle, zero regrets: the rain knows its audience."
+    "Six raincoats, one puddle, zero regrets: the rain knows its audience.",
+    "You can tell who will be doing the washing later.",
+    "Spare clothes packed. You forgot your own."
    ]
   },
   {
@@ -3536,7 +3941,10 @@
     "rain/week_2/day/6.webp"
    ],
    "lines": [
-    "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+    "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+    "Everyone on this road just became a very careful person.",
+    "Nobody misses the driver you were yesterday.",
+    "Radio down. Apparently your eyes need the help."
    ]
   },
   {
@@ -3552,7 +3960,10 @@
    "lines": [
     "The clouds are having a moment.",
     "Rain so heavy it should pay rent.",
-    "The cat has taken the rain personally, as the cat takes most things."
+    "The cat has taken the rain personally, as the cat takes most things.",
+    "Dry spot found; dignity pending; the rain shows no sign of apologising.",
+    "The cat would like to speak to whoever booked this.",
+    "Door open. The dog would prefer a second opinion."
    ]
   },
   {
@@ -3566,7 +3977,10 @@
     "rain/week_3/day/3.webp"
    ],
    "lines": [
-    "Yes, it's raining sideways. South Africa speciality."
+    "Yes, it's raining sideways. South Africa speciality.",
+    "Hair plans: cancelled.",
+    "Your hair appointment now feels rather optimistic.",
+    "Quick dash. You have never timed one correctly."
    ]
   },
   {
@@ -3581,7 +3995,9 @@
    ],
    "lines": [
     "Solidarity to everyone with one wet shoe right now.",
-    "Wet jeans for the rest of the day. The classic punishment."
+    "Wet jeans for the rest of the day. The classic punishment.",
+    "Tea tastes better when your socks aren't involved.",
+    "Tea, then. Make it long enough to feel your toes."
    ]
   },
   {
@@ -3597,7 +4013,10 @@
    "lines": [
     "The umbrella broke on the first gust. Classic.",
     "Somewhere an umbrella just turned inside out. Moment of silence.",
-    "Hair plans: cancelled."
+    "Hair plans: cancelled.",
+    "Your umbrella warranty has some explaining to do.",
+    "Your expensive umbrella has chosen a short career.",
+    "Hair done. That was money well spent."
    ]
   },
   {
@@ -3611,7 +4030,9 @@
     "rain/week_2/day/5.webp"
    ],
    "lines": [
-    "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies."
+    "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies.",
+    "You might be working from home by popular demand.",
+    "Shop later. The last biscuit will have to stretch."
    ]
   },
   {
@@ -3625,7 +4046,11 @@
     "rain/week_3/day/7.webp"
    ],
    "lines": [
-    "Forgot your jacket? The universe noticed."
+    "Forgot your jacket? The universe noticed.",
+    "The boss can hold the umbrella for once.",
+    "You wanted a shorter meeting. Now you're trapped.",
+    "This is closer than you meant by team building.",
+    "Meeting done. Lift negotiations have just begun."
    ]
   },
   {
@@ -3639,7 +4064,9 @@
     "rain/week_4/day/4.webp"
    ],
    "lines": [
-    "Someone's braai just got ruined."
+    "Someone's braai just got ruined.",
+    "The person who mops would like a word with you.",
+    "Boots off first. This is apparently news again."
    ]
   },
   {
@@ -3654,7 +4081,9 @@
    ],
    "lines": [
     "The garden's saying dankie at last.",
-    "At least the garden's happy. Someone has to be."
+    "At least the garden's happy. Someone has to be.",
+    "Watering can wait; you've done enough standing about.",
+    "Call later. The roof would like to finish speaking."
    ]
   },
   {
@@ -3669,7 +4098,9 @@
     "rain/week_3/dusk/1.webp"
    ],
    "lines": [
-    "Perfect excuse to cancel plans."
+    "Perfect excuse to cancel plans.",
+    "Perhaps skip the scenic route home tonight.",
+    "One last stop. Make it the shop with a roof."
    ]
   },
   {
@@ -3685,7 +4116,11 @@
    ],
    "lines": [
     "The N1 is now a waterpark.",
-    "Two drops on a windscreen and the whole N1 forgets everything it ever learned."
+    "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+    "Supper can wait. Apparently it has to.",
+    "You could have cooked supper by now. Twice.",
+    "Your family may have to eat without your commentary.",
+    "You said nearly home. That was a while ago."
    ]
   },
   {
@@ -3701,7 +4136,9 @@
    ],
    "lines": [
     "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
-    "Joburg summer rain: arrives at five, soaks everything, gone by supper."
+    "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+    "Remember the washing, now that you're eating supper?",
+    "Home at last. Now to negotiate with the dog."
    ]
   },
   {
@@ -3716,7 +4153,10 @@
     "rain/week_4/dusk/6.webp"
    ],
    "lines": [
-    "The commute just became a team sport."
+    "The commute just became a team sport.",
+    "Five more minutes in the car seems reasonable.",
+    "You can call this sitting in the car some me time.",
+    "Nearly inside. An excellent place to reconsider."
    ]
   },
   {
@@ -3731,7 +4171,9 @@
     "rain/week_4/dusk/4.webp"
    ],
    "lines": [
-    "Wet socks. The ultimate betrayal."
+    "Wet socks. The ultimate betrayal.",
+    "Find a towel before anyone starts asking about work.",
+    "Shoes off. The whole household agrees on this."
    ]
   },
   {
@@ -3748,7 +4190,9 @@
    "lines": [
     "The traffic just remembered rain exists. Again.",
     "Your car wash was a waste of money.",
-    "Night rain maths: half the visibility, double the concentration, triple the respect."
+    "Night rain maths: half the visibility, double the concentration, triple the respect.",
+    "You can take your time getting home tonight.",
+    "Missed bedtime. The children have not."
    ]
   },
   {
@@ -3763,7 +4207,10 @@
     "storm/week_3/dawn/2.webp"
    ],
    "lines": [
-    "This is why Noah built a boat."
+    "This is why Noah built a boat.",
+    "Somebody's weather report just got a lot longer.",
+    "So much for that expensive alarm clock.",
+    "Breakfast first. Checking the roof can wait."
    ]
   },
   {
@@ -3778,7 +4225,10 @@
     "storm/week_3/dawn/3.webp"
    ],
    "lines": [
-    "Sunrise chose drama today."
+    "Sunrise chose drama today.",
+    "Every dog in the suburb filed a report at the same instant.",
+    "The dog has told the whole street about this.",
+    "You heard it. The dog is making absolutely sure."
    ]
   },
   {
@@ -3793,7 +4243,9 @@
     "storm/week_3/dawn/5.webp"
    ],
    "lines": [
-    "The sky's CV just got updated."
+    "The sky's CV just got updated.",
+    "You can get up now and inspect yesterday's optimism.",
+    "Morning jobs. Start by finding the washing line."
    ]
   },
   {
@@ -3809,7 +4261,9 @@
    ],
    "lines": [
     "The dog has already booked his spot under the bed.",
-    "The dog's under the bed. Smart move, honestly."
+    "The dog's under the bed. Smart move, honestly.",
+    "Your dog would like breakfast delivered for once.",
+    "You slept well. The dog has a different account."
    ]
   },
   {
@@ -3824,7 +4278,9 @@
     "storm/week_4/dawn/7.webp"
    ],
    "lines": [
-    "The sky woke up in a mood."
+    "The sky woke up in a mood.",
+    "Perhaps start the day with a less confident plan.",
+    "Breakfast first. The rest is now negotiable."
    ]
   },
   {
@@ -3840,7 +4296,10 @@
    ],
    "lines": [
     "Jislaaik, stay inside!",
-    "Free IMAX this morning, boet."
+    "Free IMAX this morning, boet.",
+    "You can skip the run with a clear conscience.",
+    "Your exercise excuse has finally arrived on time.",
+    "Shoes on. A remarkable waste of effort."
    ]
   },
   {
@@ -3855,7 +4314,9 @@
     "storm/week_4/dawn/3.webp"
    ],
    "lines": [
-    "Rusks first. Panic later."
+    "Rusks first. Panic later.",
+    "Your first coffee deserves your undivided attention.",
+    "Up early. Not quite by choice."
    ]
   },
   {
@@ -3870,7 +4331,9 @@
    ],
    "lines": [
     "Somewhere a weather reporter is living their best life.",
-    "The wind has a personal vendetta against umbrellas."
+    "The wind has a personal vendetta against umbrellas.",
+    "Your cheapest umbrella has explained its price.",
+    "Walk postponed. The apology can happen by phone."
    ]
   },
   {
@@ -3885,7 +4348,11 @@
    ],
    "lines": [
     "Thunder rolling in. Inside is the move.",
-    "Two club selections left: the clubhouse or the car."
+    "Two club selections left: the clubhouse or the car.",
+    "The eighteenth can wait; the sky is playing through.",
+    "Your scorecard can stop getting worse now.",
+    "Finally, a respectable excuse for your scorecard.",
+    "Clubs packed. Your pride gets to come home intact."
    ]
   },
   {
@@ -3899,7 +4366,10 @@
     "storm/week_3/day/5.webp"
    ],
    "lines": [
-    "Respect the thunder. It's earned it."
+    "Respect the thunder. It's earned it.",
+    "Your batting average survives another day.",
+    "Try the coach now; your excuse has improved.",
+    "Practice cancelled. Try looking less pleased."
    ]
   },
   {
@@ -3915,7 +4385,10 @@
    "lines": [
     "Lightning's putting on a show — watch from the window.",
     "Nature just reminded us of the pecking order.",
-    "Thunder counts double when you have ears like that."
+    "Thunder counts double when you have ears like that.",
+    "Your lap is now reserved for the entire dog.",
+    "You can be brave once the dog believes you.",
+    "Lap available. Terms now set by the dog."
    ]
   },
   {
@@ -3929,7 +4402,9 @@
     "storm/week_4/day/6.webp"
    ],
    "lines": [
-    "Free fireworks, no tickets needed."
+    "Free fireworks, no tickets needed.",
+    "At last, a break from being asked to stop the car.",
+    "Keys ready. No particular hurry to use them."
    ]
   },
   {
@@ -3944,7 +4419,9 @@
    ],
    "lines": [
     "The sky just went full Carte Blanche.",
-    "Every loose object in the garden has chosen violence."
+    "Every loose object in the garden has chosen violence.",
+    "Best greet the neighbour before asking for things back.",
+    "Chores postponed. Several new ones are on the way."
    ]
   },
   {
@@ -3958,7 +4435,9 @@
     "storm/week_4/day/5.webp"
    ],
    "lines": [
-    "Cancel everything. Even your excuses."
+    "Cancel everything. Even your excuses.",
+    "Your evening braai has acquired an indoor committee.",
+    "Guests at six. Best revise what you promised them."
    ]
   },
   {
@@ -3973,7 +4452,9 @@
    ],
    "lines": [
     "Not the time for hero moves, hey.",
-    "Hail's down — cover the bakkie."
+    "Hail's down — cover the bakkie.",
+    "Your favourite parking spot has lost its appeal.",
+    "Car covered. You could do with the same treatment."
    ]
   },
   {
@@ -3987,7 +4468,9 @@
     "storm/week_1/day/4.webp"
    ],
    "lines": [
-    "The sky's having a full-on tantrum."
+    "The sky's having a full-on tantrum.",
+    "Mum would like her concerns put in writing.",
+    "Plans cancelled. You seem surprisingly relieved."
    ]
   },
   {
@@ -4001,7 +4484,9 @@
     "storm/week_2/day/5.webp"
    ],
    "lines": [
-    "Nature's having a word. Best to listen."
+    "Nature's having a word. Best to listen.",
+    "You can explain your plans to someone who listens.",
+    "Jobs listed. Best put a pencil next to them."
    ]
   },
   {
@@ -4017,7 +4502,9 @@
    ],
    "lines": [
     "Unplug the things. The sky has plans.",
-    "The balcony beats the couch when the sky is doing this."
+    "The balcony beats the couch when the sky is doing this.",
+    "Sorry, what? An excellent evening not to have heard.",
+    "Supper inside. Somebody still has to clear a table."
    ]
   },
   {
@@ -4032,7 +4519,10 @@
     "storm/week_4/dusk/5.webp"
    ],
    "lines": [
-    "Lightning's putting Eskom's grid to shame."
+    "Lightning's putting Eskom's grid to shame.",
+    "Your video won't settle the argument about the size.",
+    "Your family has already seen three videos like yours.",
+    "Phone away. You can watch the next one yourself."
    ]
   },
   {
@@ -4048,7 +4538,9 @@
    ],
    "lines": [
     "Today's forecast: special effects.",
-    "The palms are pointing the way the storm is going, which is this way."
+    "The palms are pointing the way the storm is going, which is this way.",
+    "Your candles may finally justify that drawer.",
+    "Dinner for two. Torch for one."
    ]
   },
   {
@@ -4063,7 +4555,10 @@
     "storm/week_4/dusk/4.webp"
    ],
    "lines": [
-    "The braai is cancelled. Yes, really."
+    "The braai is cancelled. Yes, really.",
+    "Your weekend now includes everybody else's branches.",
+    "Your quiet evening now includes a call to the roofer.",
+    "Home early. You may wish you hadn't been."
    ]
   },
   {
@@ -4079,7 +4574,9 @@
    ],
    "lines": [
     "Eskom wishes it had this power.",
-    "Nature's doing its own load shedding."
+    "Nature's doing its own load shedding.",
+    "Nobody believed you fancied an evening walk anyway.",
+    "Going out tonight. As far as the gate, perhaps."
    ]
   },
   {
@@ -4095,7 +4592,9 @@
    ],
    "lines": [
     "Midnight and the sky is showing off.",
-    "The best television in the house is currently the weather."
+    "The best television in the house is currently the weather.",
+    "Thirst has been replaced as the bedtime excuse.",
+    "Bedtime again. Nobody seems to have heard you."
    ]
   },
   {
@@ -4110,7 +4609,11 @@
     "storm/week_3/night/7.webp"
    ],
    "lines": [
-    "Every flash is a photo nobody takes in time."
+    "Every flash is a photo nobody takes in time.",
+    "The strike lasted half a second; the video will last the whole group chat.",
+    "You filmed for ten minutes. You missed it.",
+    "Muting the family chat until breakfast seems fair.",
+    "Phone charged. Nobody has asked for your video yet."
    ]
   },
   {
@@ -4126,7 +4629,9 @@
    ],
    "lines": [
     "The mist has moved into the valley for the night and locked the gate behind it.",
-    "That mist is tomorrow morning's frost out doing a site inspection."
+    "That mist is tomorrow morning's frost out doing a site inspection.",
+    "Tonight's plans fit under one duvet.",
+    "Supper had better be hot. This is not a request."
    ]
   },
   {
@@ -4141,7 +4646,10 @@
     "cold/week_3/dusk/3.webp"
    ],
    "lines": [
-    "The sun is leaving the mountains one shelf at a time."
+    "The sun is leaving the mountains one shelf at a time.",
+    "Cold again. The car heater means well.",
+    "Your toes get the car heater before your face.",
+    "Dinner can wait. Feeling your feet comes first."
    ]
   },
   {
@@ -4156,7 +4664,11 @@
     "cold/week_3/dusk/7.webp"
    ],
    "lines": [
-    "It is heater season, and the best seat in the house has fur on it."
+    "It is heater season, and the best seat in the house has fur on it.",
+    "The heater went on at four and the cat clocked in at one minute past.",
+    "The heater is your best friend. Your only friend.",
+    "Choose your seat before the cat gets ideas.",
+    "You're getting up? Bring tea while you're brave."
    ]
   },
   {
@@ -4172,7 +4684,9 @@
    ],
    "lines": [
     "The cold cleared the whole street an hour before closing time.",
-    "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early."
+    "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.",
+    "Home has suddenly become your favourite venue.",
+    "A table outside? We'll take the bill."
    ]
   },
   {
@@ -4187,7 +4701,9 @@
     "cold/week_3/night/7.webp"
    ],
    "lines": [
-    "Beanie, snood, torch, book: winter nights build the best reading rooms."
+    "Beanie, snood, torch, book: winter nights build the best reading rooms.",
+    "Bedtime finally has somebody on its side.",
+    "One more chapter. Nobody said get out of bed."
    ]
   },
   {
@@ -4201,7 +4717,10 @@
     "cold/week_2/day/3.webp"
    ],
    "lines": [
-    "Wet road, grey sky, dog in a jersey: winter is fully operational."
+    "Wet road, grey sky, dog in a jersey: winter is fully operational.",
+    "Cold like this makes a walk feel like work.",
+    "Even the short way home feels ambitious.",
+    "Dry socks first. We can talk while you find them."
    ]
   },
   {
@@ -4217,7 +4736,9 @@
    "lines": [
     "The mountain is in there somewhere, wrapped up for the winter.",
     "The beach has gone to one colour, and it is the cold one.",
-    "Nobody's footprints on that sand today; the cold is keeping its beach to itself."
+    "Nobody's footprints on that sand today; the cold is keeping its beach to itself.",
+    "The scenic route can manage without you.",
+    "You've had fresh air. Nobody said how much."
    ]
   },
   {
@@ -4233,7 +4754,9 @@
    ],
    "lines": [
     "Clear night, wet steps, visible breath: the frost is filling in its paperwork.",
-    "One last look at a sky that is about to get seriously cold."
+    "One last look at a sky that is about to get seriously cold.",
+    "The bins will still be there in the morning.",
+    "You wore pyjamas out. An ambitious little outfit."
    ]
   },
   {
@@ -4247,7 +4770,10 @@
     "cold/week_4/dawn/1.webp"
    ],
    "lines": [
-    "Smoke going straight up means cold, still and not one breath of wind."
+    "Smoke going straight up means cold, still and not one breath of wind.",
+    "Fire first. Then we can discuss breakfast.",
+    "Anyone still insisting on iced coffee?",
+    "Breakfast can wait. Feeling your hands can't."
    ]
   },
   {
@@ -4262,7 +4788,10 @@
    ],
    "lines": [
     "The yard is wet, the air is cold, and security has suspended patrols.",
-    "That is not a dog refusing a walk; that is a dog reading a forecast."
+    "That is not a dog refusing a walk; that is a dog reading a forecast.",
+    "Even the boerboel checked the weather and sat back down.",
+    "The walk is still being discussed by both parties.",
+    "You said outside. The dog heard something else."
    ]
   },
   {
@@ -4276,7 +4805,10 @@
     "cold/week_4/night/1.webp"
    ],
    "lines": [
-    "Frost on the lawn and wors on the grid: a Cape winter compromise."
+    "Frost on the lawn and wors on the grid: a Cape winter compromise.",
+    "The braai is happening. The braai always happens. We just pull the chairs closer.",
+    "Everyone suddenly wants a turn at the braai.",
+    "The meat is done. Nobody's putting the fire out."
    ]
   },
   {
@@ -4292,7 +4824,9 @@
    "lines": [
     "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
     "The bakkie iced over under a completely clear sky, which is exactly how it works.",
-    "The sun is up and doing its best; the frost is unconvinced so far."
+    "The sun is up and doing its best; the frost is unconvinced so far.",
+    "The school run starts with negotiating the car doors.",
+    "Everyone's ready. Nobody has warm hands."
    ]
   },
   {
@@ -4307,7 +4841,9 @@
     "cold-clear/week_3/dusk/7.webp"
    ],
    "lines": [
-    "A sky that clean means the field freezes before the floodlights even warm up."
+    "A sky that clean means the field freezes before the floodlights even warm up.",
+    "Spectating has become the harder sport tonight.",
+    "Kick-off soon. Feeling your toes would be useful."
    ]
   },
   {
@@ -4324,7 +4860,11 @@
    "lines": [
     "The Southern Cross is out and the lawn has gone silver under it.",
     "A sky this clean at night is beautiful, and it charges in degrees.",
-    "Stars that sharp come standard with air this cold — it is a package deal."
+    "Stars that sharp come standard with air this cold — it is a package deal.",
+    "You forgot something outside and remembered your duvet.",
+    "One look before bed. From this side of the glass.",
+    "Every star is out tonight, and the frost is the entry fee.",
+    "The Southern Cross is out, and so is the frost. Package deal."
    ]
   },
   {
@@ -4339,7 +4879,10 @@
     "cold-clear/week_3/night/7.webp"
    ],
    "lines": [
-    "Braaiing in beanies under a hard clear sky: winter never cancelled anything here."
+    "Braaiing in beanies under a hard clear sky: winter never cancelled anything here.",
+    "The fire is the only thing out here allowed to take its jacket off.",
+    "Nobody's asking how long the meat takes tonight.",
+    "Another log. For the cook, apparently."
    ]
   },
   {
@@ -4353,7 +4896,9 @@
     "cold-clear/week_3/day/1.webp"
    ],
    "lines": [
-    "Coats and coffees in full sun: winter in this city photographs like summer."
+    "Coats and coffees in full sun: winter in this city photographs like summer.",
+    "You can finish that conversation somewhere with walls.",
+    "Table outside? Your scarf would like to object."
    ]
   },
   {
@@ -4368,7 +4913,14 @@
     "fog/week_3/dawn/5.webp"
    ],
    "lines": [
-    "The hi-vis is doing exactly what it was bought for this morning."
+    "The hi-vis is doing exactly what it was bought for this morning.",
+    "Those headlights have been 'almost here' for two full minutes of fog.",
+    "The school run now involves finding the school.",
+    "Your lift has been nearly here for quite a while.",
+    "Bags ready. The bus is keeping its location vague.",
+    "The fog swallowed the whole street and gave up at the hi-vis.",
+    "Those headlights have been ‘almost here’ for five minutes. Fog time runs slower.",
+    "Everything past the streetlight is a rumour until about nine."
    ]
   },
   {
@@ -4383,7 +4935,10 @@
     "fog/week_3/night/3.webp"
    ],
    "lines": [
-    "Last taxis of the night, and the fog has the whole rank to itself soon."
+    "Last taxis of the night, and the fog has the whole rank to itself soon.",
+    "Supper will need another minute in the oven.",
+    "Your lift is taking its time, which is reassuring.",
+    "Still on the way. Supper can have another minute."
    ]
   },
   {
@@ -4398,7 +4953,9 @@
     "fog/week_4/dawn/1.webp"
    ],
    "lines": [
-    "The sun is coming through the fog at half strength and full gold."
+    "The sun is coming through the fog at half strength and full gold.",
+    "Your morning walk starts by finding the morning.",
+    "Coffee first. The view can introduce itself later."
    ]
   },
   {
@@ -4413,7 +4970,9 @@
     "fog/week_4/dawn/3.webp"
    ],
    "lines": [
-    "Fog settles in the low ground, which is why the herd sleeps on the hill."
+    "Fog settles in the low ground, which is why the herd sleeps on the hill.",
+    "The early start has yet to produce a clear advantage.",
+    "All dressed up. Still waiting for the day to appear."
    ]
   },
   {
@@ -4427,7 +4986,11 @@
     "fog/week_2/day/1.webp"
    ],
    "lines": [
-    "Kickoff is ten and the far posts have not arrived yet."
+    "Kickoff is ten and the far posts have not arrived yet.",
+    "You packed boots. Bring some patience as well.",
+    "Kick-off can wait. The tea won't keep itself warm.",
+    "Did the whole team arrive, or just the captain?",
+    "Kick-off soon. Finding the other end comes first."
    ]
   },
   {
@@ -4442,7 +5005,9 @@
     "fog/week_4/dusk/1.webp"
    ],
    "lines": [
-    "The fog took the city but it is not getting the Bo-Kaap's colours."
+    "The fog took the city but it is not getting the Bo-Kaap's colours.",
+    "Tonight's visitors may need collecting at the gate.",
+    "You sent the address. Now send encouragement."
    ]
   },
   {
@@ -4457,7 +5022,10 @@
     "rain/week_3/dawn/2.webp"
    ],
    "lines": [
-    "The puddles are claiming the pavement one slab at a time."
+    "The puddles are claiming the pavement one slab at a time.",
+    "Your alarm still expects you to get up.",
+    "Your school shoes will need their own bath.",
+    "Uniform on. Spare uniform suddenly makes sense."
    ]
   },
   {
@@ -4473,7 +5041,9 @@
    ],
    "lines": [
     "Wet tar plus sunrise equals a street made of gold, briefly.",
-    "Somebody ordered rain for the night and sun for the morning, and it was delivered."
+    "Somebody ordered rain for the night and sun for the morning, and it was delivered.",
+    "The washing can go out before you change your mind.",
+    "Shoes on. You have run out of excuses already."
    ]
   },
   {
@@ -4490,7 +5060,9 @@
    "lines": [
     "The rain is on the glass and the coffee is on the sill: Sunday is sorted.",
     "That window has the best programme on this morning and it is just rain.",
-    "Steady, straight-down, all-morning rain: the kind the garden actually drinks."
+    "Steady, straight-down, all-morning rain: the kind the garden actually drinks.",
+    "Car washing can stay at the bottom of your list.",
+    "Another cup, then. The errands can wait."
    ]
   },
   {
@@ -4505,7 +5077,9 @@
     "rain/week_3/night/3.webp"
    ],
    "lines": [
-    "Every neon sign in the street is being doubled on the wet tar tonight."
+    "Every neon sign in the street is being doubled on the wet tar tonight.",
+    "You can skip the long goodbye at the gate tonight.",
+    "Keys first. Being polite can happen inside."
    ]
   },
   {
@@ -4521,7 +5095,9 @@
    ],
    "lines": [
     "The gutter is running like a river and it has already claimed a casualty.",
-    "The storm water is heading for the sea and taking prisoners."
+    "The storm water is heading for the sea and taking prisoners.",
+    "Your spare umbrella is probably visiting someone.",
+    "Home, then. You can look for your dignity tomorrow."
    ]
   },
   {
@@ -4535,7 +5111,9 @@
     "rain/week_3/day/1.webp"
    ],
    "lines": [
-    "The puddle outside the gate is now part of the curriculum."
+    "The puddle outside the gate is now part of the curriculum.",
+    "Did you pack a second pair of socks for yourself?",
+    "Bell first. Sock negotiations afterwards."
    ]
   },
   {
@@ -4550,7 +5128,9 @@
     "storm/week_3/dusk/7.webp"
    ],
    "lines": [
-    "Somewhere up there the rain found a way in, and it is being managed."
+    "Somewhere up there the rain found a way in, and it is being managed.",
+    "Your landlord is about to hear from you again.",
+    "Quiet evening. You should have said it softly."
    ]
   },
   {
@@ -4565,7 +5145,10 @@
    ],
    "lines": [
     "Outside is closed. Management is inside.",
-    "Pretty evening. Deeply uninhabitable."
+    "Pretty evening. Deeply uninhabitable.",
+    "Cold evening. Even the rain is hesitating.",
+    "Salad has been postponed until further notice.",
+    "Supper's ready. The camera can eat later."
    ],
    "source": "al-2026-09-06"
   },
@@ -4582,7 +5165,13 @@
    ],
    "lines": [
     "Beautiful view. Hostile air.",
-    "This is no longer a beverage. It's a strategy."
+    "This is no longer a beverage. It's a strategy.",
+    "Cold tonight. Hot chocolate counts as kit.",
+    "Make mine something I have to blow on.",
+    "Another round. With handles this time.",
+    "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
+    "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.",
+    "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall."
    ],
    "source": "al-2026-09-06"
   },
@@ -4598,7 +5187,10 @@
    ],
    "lines": [
     "Sunset showed up. The cold came with it.",
-    "The sky apologised. The pavement didn't."
+    "The sky apologised. The pavement didn't.",
+    "Rain's stopped. There goes one excuse.",
+    "You can keep complaining on the walk home.",
+    "One excuse gone. You still have several."
    ],
    "source": "al-2026-09-06"
   },
@@ -4615,7 +5207,9 @@
    ],
    "lines": [
     "Visibility has clocked off. You're on your own.",
-    "Forward is still an option. Sightseeing is not."
+    "Forward is still an option. Sightseeing is not.",
+    "How much of this walk did you actually promise?",
+    "Same route. More imagination required."
    ],
    "source": "al-2026-09-06"
   },
@@ -4632,7 +5226,9 @@
    ],
    "lines": [
     "They turned the lights on. Fog turned everything else off.",
-    "Pretty evening, if you like walls."
+    "Pretty evening, if you like walls.",
+    "Dinner is looking like the highlight of your holiday.",
+    "The table has a view. Ask for the menu instead."
    ],
    "source": "al-2026-09-06"
   },
@@ -4648,7 +5244,10 @@
    ],
    "lines": [
     "Rain came all the way home.",
-    "It's proper rain. The day's over in stages."
+    "It's proper rain. The day's over in stages.",
+    "The match is over. Your washing has extra time.",
+    "Your team owes your washing machine an apology.",
+    "Kit off. Nobody is putting that in with the towels."
    ],
    "source": "al-2026-09-06"
   },
@@ -4664,7 +5263,9 @@
    ],
    "lines": [
     "Still raining. That's the whole update.",
-    "Wet between here and anywhere else."
+    "Wet between here and anywhere else.",
+    "The view will keep while you find a towel.",
+    "Outing over. Everyone has a different version."
    ],
    "source": "al-2026-09-06"
   },
@@ -4681,7 +5282,9 @@
    ],
    "lines": [
     "Rain on an otherwise good-looking evening.",
-    "Wet out. The city can keep the colour."
+    "Wet out. The city can keep the colour.",
+    "Your supper plans have moved a little closer home.",
+    "Visitors expected. They can knock twice."
    ],
    "source": "al-2026-09-06"
   },
@@ -4699,7 +5302,10 @@
     "The sky is in charge now.",
     "Not weather you walk through.",
     "Storm. Plans can wait.",
-    "Outside is closed until further notice."
+    "Outside is closed until further notice.",
+    "You can wait. Your shopping has nowhere else to be.",
+    "You only popped out for milk and now have friends.",
+    "Shopping done. Apparently you're staying for tea."
    ],
    "source": "al-2026-09-06"
   },
@@ -4715,7 +5321,10 @@
    ],
    "lines": [
     "When the sky starts talking, everything else stops.",
-    "Serious weather. The rest is postponed."
+    "Serious weather. The rest is postponed.",
+    "Kickoff is under review by the only official that outranks the referee.",
+    "Your team has found someone else to blame for once.",
+    "Match delayed. Everyone is suddenly a forecaster."
    ],
    "source": "al-2026-09-06"
   },
@@ -4731,7 +5340,10 @@
    ],
    "lines": [
     "Get inside weather.",
-    "Stay in. That's the whole forecast."
+    "Stay in. That's the whole forecast.",
+    "Even the hadedas are quiet.",
+    "Could we discuss the plan with fewer outdoor bits?",
+    "Everyone inside. The argument fits in here too."
    ],
    "source": "al-2026-09-06"
   },
@@ -4748,7 +5360,11 @@
    "lines": [
     "Storm with wind attached.",
     "The storm has arrived. Everything else can wait.",
-    "Unsecured objects are now weather."
+    "Unsecured objects are now weather.",
+    "Your plastic chairs may visit before you do.",
+    "Visitors postponed. The furniture may still go.",
+    "That grey column is someone’s afternoon getting cancelled. Ours is next in line.",
+    "Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time."
    ],
    "source": "al-2026-09-06"
   },
@@ -4766,7 +5382,9 @@
    "lines": [
     "Storm on the horizon. That's your deadline.",
     "Finish up. The weather won't.",
-    "Storm's close. Home is closer, hopefully."
+    "Storm's close. Home is closer, hopefully.",
+    "Just one last job before home, you said.",
+    "Home soon. You have stopped putting a time on it."
    ],
    "source": "al-2026-09-06"
   },
@@ -4783,7 +5401,9 @@
    ],
    "lines": [
     "Rain was the warning. This is the follow-through.",
-    "Proper storm. Not the pretty kind."
+    "Proper storm. Not the pretty kind.",
+    "Your home repair list has requested an urgent update.",
+    "Romance later. First find something absorbent."
    ],
    "source": "al-2026-09-06"
   },
@@ -4800,7 +5420,11 @@
    ],
    "lines": [
     "Still raining. That's the update.",
-    "The rain didn't clock off."
+    "The rain didn't clock off.",
+    "The gap between the stoep and the gate has never looked wider.",
+    "Eight metres to the car. Apparently a journey.",
+    "All this for bread you weren't sure you needed.",
+    "Supper is ready. Getting everyone home is next."
    ],
    "source": "al-2026-09-06"
   },
@@ -4818,7 +5442,10 @@
    "lines": [
     "Clear evening. The grass has no excuse.",
     "Good weather. Unfortunately.",
-    "The sky behaved. So must you."
+    "The sky behaved. So must you.",
+    "This is the first hour since breakfast that lawn work has been survivable.",
+    "A clear evening pays out about forty minutes of gold, and it has just started.",
+    "Not a leaf moving — the day is closing as calm as it opened."
    ],
    "source": "al-2026-09-06"
   },
@@ -4835,7 +5462,12 @@
    ],
    "lines": [
     "Clear dusk. Use it before it clocks off.",
-    "The weather said yes. That’s on you now."
+    "The weather said yes. That’s on you now.",
+    "That dust is hanging in the air because there is no wind to take it anywhere.",
+    "You can see three ridgelines from here, which is what no-haze evenings are for.",
+    "The sun is at the exact height where the whole veld goes gold.",
+    "Golden hour turns even the dust into a special effect.",
+    "An evening this clear pays out its last hour in gold. Spend all of it."
    ],
    "source": "al-2026-09-06"
   },
@@ -4852,7 +5484,11 @@
    ],
    "lines": [
     "Not rain. Just atmosphere with opinions.",
-    "The sky’s overdressed. The weather’s still fine."
+    "The sky’s overdressed. The weather’s still fine.",
+    "The sky saved its best ten minutes for the top of the climb.",
+    "Cloud all afternoon, and now this — the sky apologising in gold.",
+    "That gap in the cloud is worth more than the whole clear day it replaced.",
+    "The sky can’t decide between golden hour and going home early. Neither can anyone else."
    ],
    "source": "al-2026-09-06"
   },
@@ -4869,7 +5505,10 @@
    ],
    "lines": [
     "Cloudy dusk. Pretty, not promising.",
-    "The sky did extras. The forecast didn’t."
+    "The sky did extras. The forecast didn’t.",
+    "The sky left a two-finger gap for the sunset and the sunset took it.",
+    "All that cloud, and the sun still found the letterbox at the bottom.",
+    "The suburb is going to bed under a lid, with one orange nightlight left on."
    ],
    "source": "al-2026-09-06"
   },
@@ -4886,7 +5525,10 @@
    ],
    "lines": [
     "Cloud cover. The night shift starts early.",
-    "Cloudy. Stay in if you were looking for a reason."
+    "Cloudy. Stay in if you were looking for a reason.",
+    "The clouds took the sunset and left the suburb the pink change.",
+    "The aerials have the best view of a sky doing its quiet closing number.",
+    "A grey dusk brings the evening forward, and the windows have already agreed."
    ],
    "source": "al-2026-09-06"
   },
@@ -4903,7 +5545,10 @@
    ],
    "lines": [
     "Cloudy night. Nobody’s going out, officially.",
-    "The weather chose indoors. Correctly."
+    "The weather chose indoors. Correctly.",
+    "Cloud right down to the rooftops, and every sensible mammal is indoors under a lamp.",
+    "Nothing is falling and nothing is shining; it is that kind of night.",
+    "A sky with no stars is the sky's way of saying go to bed."
    ],
    "source": "al-2026-09-06"
   },
@@ -4920,7 +5565,10 @@
    ],
    "lines": [
     "Cloudy night. Bravery in blanket form.",
-    "The sky closed. The evening didn’t."
+    "The sky closed. The evening didn’t.",
+    "The sky brought nothing tonight, so the lantern is carrying the whole evening.",
+    "Blankets outside in the dark: the evening is cold, the company is not.",
+    "Not one star made it through that lid, and nobody has noticed yet."
    ],
    "source": "al-2026-09-06"
   }
