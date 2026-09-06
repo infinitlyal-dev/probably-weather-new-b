@@ -1,0 +1,542 @@
+[
+ {
+  "id": "T0R1",
+  "en": "Severe weather",
+  "before": "Leholimo le lebe",
+  "after": "Boemo ba leholimo bo matla"
+ },
+ {
+  "id": "T0R2",
+  "en": "Thunder",
+  "before": "Modumo wa leholimo",
+  "after": "Modumo wa seaduma"
+ },
+ {
+  "id": "T0R4",
+  "en": "Wet conditions",
+  "before": "Maemo a metsi",
+  "after": "Maemo a mongobo"
+ },
+ {
+  "id": "T0R7",
+  "en": "Chilly",
+  "before": "Ho bata",
+  "after": "ho phodile"
+ },
+ {
+  "id": "T0R11",
+  "en": "Low visibility",
+  "before": "Pono e tlase",
+  "after": "Ponahalo e tlase"
+ },
+ {
+  "id": "T0R12",
+  "en": "Overcast",
+  "before": "Maru",
+  "after": "Ho aparetse ka maru"
+ },
+ {
+  "id": "T0R13",
+  "en": "Partly cloudy",
+  "before": "Ho na le maru a manyane",
+  "after": "Ho na le maru hanyane"
+ },
+ {
+  "id": "T1R1",
+  "en": "Storms rolling in.",
+  "before": "Ledimo le a tla.",
+  "after": "sefefo se atla"
+ },
+ {
+  "id": "T1R2",
+  "en": "Thunder rolling in.",
+  "before": "Modumo o a tla.",
+  "after": "Modumo wa seaduma o a tla"
+ },
+ {
+  "id": "T1R4",
+  "en": "Rain's here.",
+  "before": "Pula e a na.",
+  "after": "Pula e fihlile"
+ },
+ {
+  "id": "T1R5",
+  "en": "Might rain.",
+  "before": "Mohlomong pula.",
+  "after": "pula e ka na"
+ },
+ {
+  "id": "T1R6",
+  "en": "Cloudy vibes.",
+  "before": "Maru a teng.",
+  "after": "ho nale maru"
+ },
+ {
+  "id": "T1R7",
+  "en": "Partly cloudy.",
+  "before": "Ho na le maru a manyane.",
+  "after": "ho nale maru hanyane"
+ },
+ {
+  "id": "T1R11",
+  "en": "It's hot.",
+  "before": "Ho tjhesa.",
+  "after": "ho  a tjhesa"
+ },
+ {
+  "id": "T1R12",
+  "en": "UV's hectic.",
+  "before": "UV e hodimo.",
+  "after": "uv. e hodimu  haholo"
+ },
+ {
+  "id": "T1R13",
+  "en": "Foggy out there.",
+  "before": "Ho na le mohodi.",
+  "after": "The correct Sesotho spelling is moholi (fog/mist), not mohodi."
+ },
+ {
+  "id": "T2R6",
+  "en": "High UV",
+  "before": "UV e Phahameng",
+  "after": "rather use Boemo ba UV bo phahameng"
+ },
+ {
+  "id": "T2R7",
+  "en": "Hot",
+  "before": "Ho tjhesa",
+  "after": "Ho chesa\" is the standard spelling for \"It's hot\" (rather than Ho tjhesa)."
+ },
+ {
+  "id": "T4R8",
+  "en": "gusts",
+  "before": "moea o otlang ka sefutho",
+  "after": "Meea e fokang ka sefutho"
+ },
+ {
+  "id": "T4R18",
+  "en": "Temp",
+  "before": "Temp",
+  "after": "Mocheso"
+ },
+ {
+  "id": "T4R20",
+  "en": "Sunrise",
+  "before": "Mafube",
+  "after": "Ho chaba ha letsatsi"
+ },
+ {
+  "id": "T4R21",
+  "en": "Sunset",
+  "before": "Letsatsi le likela",
+  "after": "Ho likela ha letsatsi"
+ },
+ {
+  "id": "T5R1",
+  "en": "Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.",
+  "before": "Bloemfontein ka 6 hoseng: jersey, gown, scarf, takkies, le brave face.",
+  "after": "Bloemfontein ka 6 hoseng: jersey, gown, scarf, takkies, le pelo e tiileng."
+ },
+ {
+  "id": "T5R2",
+  "en": "The Free State just remembered it has a winter setting.",
+  "before": "Free State e sa tswa hopola hore e na le winter setting.",
+  "after": "Free State e sa tsoa hopola hore e na le mokgwa wa mariha  can still use  winter setting  at the end of the sentence to make it sound less stiff"
+ },
+ {
+  "id": "T5R4",
+  "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+  "before": "Highveld winter: ke moo o aparang jackets tse pedi ho lata post.",
+  "after": "jackets → dijakete"
+ },
+ {
+  "id": "T5R5",
+  "en": "The dog is still keen. The dog is always keen. Respect.",
+  "before": "Ntja e ntse e le keen. Ntja e dula e le keen. Respect.",
+  "after": "Ntja e ntse e le mafolofolo. Ntja e dula e le mafolofolo. Respect."
+ },
+ {
+  "id": "T5R6",
+  "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+  "before": "Welkom-cold kajeno. Serame se fetang ka di-jersey tse tharo jwalo ka ha di se teng.",
+  "after": "Welkom-cold kajeno. Serame se phunyeletsang di-jersey tse tharo eka ha di yo."
+ },
+ {
+  "id": "T5R7",
+  "en": "The geyser tripped overnight. Of course it did.",
+  "before": "Geyser e tripile bosiu. Of course e entse jwalo.",
+  "after": "Geyser e tripile bosiu. Ehlile e entse jwalo."
+ },
+ {
+  "id": "T5R8",
+  "en": "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl.",
+  "before": "Frost lawneng. Frost ho bakkie. Frost ho pet bowl.",
+  "after": "Serame mohloeng. Serame ho bakkie. Serame ka sekotlolong sa phoofolo ea lapeng."
+ },
+ {
+  "id": "T5R9",
+  "en": "The lapa cushions are crispy.",
+  "before": "Di-cushion tsa lapa di crispy.",
+  "after": "mesamo ya lapa e thatafetse ke serame"
+ },
+ {
+  "id": "T5R12",
+  "en": "Lekker koud, but the rugby fields are about to look perfect.",
+  "before": "Lekker koud, empa di-rugby fields di se di tlo shebahala perfect.",
+  "after": "Ho bata hantle, empa mabala a rugby a tlo shebahala a le perfect"
+ },
+ {
+  "id": "T5R13",
+  "en": "Pretoria-bare-jacaranda energy. Beautiful and bleak.",
+  "before": "Pretoria-bare-jacaranda energy. E ntle, empa e bleak.",
+  "after": "Pretoria-bare-jacaranda energy. E ntle, empa e lerootho."
+ },
+ {
+  "id": "T5R14",
+  "en": "Tile floors are tonight's villain. Wear something on your feet.",
+  "before": "Tile floors ke villain ya bosiu bona. Apara ntho maotong.",
+  "after": "Dithaele tsa fatše bosiung ba  kajeno ke balotsana ,bona hore o apara ntho maotong"
+ },
+ {
+  "id": "T5R15",
+  "en": "(kids-in-shorts line)",
+  "before": "Bana ba ntse ba ya school ka shorts. Ba tseba dintho tseo rona re sa di tsebeng.",
+  "after": "Bana ba ntse ba ya sekolong ka shorts. Ba tseba dintho tseo rona re sa di tsebeng."
+ },
+ {
+  "id": "T5R16",
+  "en": "Boiling-the-kettle-twice weather: once for the coffee, once for the hands.",
+  "before": "Boiling-the-kettle-twice weather: hang bakeng sa coffee, hang bakeng sa matsoho.",
+  "after": "o belisa ketlele habeli — hang bakeng sa kofi, hang ho futhumatsa matsoho."
+ },
+ {
+  "id": "T5R17",
+  "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+  "before": "Karoo morning. Mofuta o etsang hore o hlomphe farmer e mong le e mong ya kgethileng bophelo bona.",
+  "after": "Karoo morning. Mofuta o etsang hore o hlomphe molemi e mong le e mong ya kgethileng bophelo bona."
+ },
+ {
+  "id": "T5R18",
+  "en": "The car's heater is the most important relationship in your life right now.",
+  "before": "Heater ya koloi ke relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale.",
+  "after": "Heater ya koloi ke yona relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale."
+ },
+ {
+  "id": "T5R24",
+  "en": "Three hadedas, two crows, one shivering human at the bird feeder.",
+  "before": "Hadedas tse tharo, crows tse pedi, human a le mong ya thothomelang ho bird feeder.",
+  "after": "Hadedas tse tharo, makhoaba a mabeli, le motho a le mong ea thothomelang haufi le sebaka sa linonyana."
+ },
+ {
+  "id": "T5R25",
+  "en": "The Toyota started first try. You owe it a wash.",
+  "before": "Toyota e startile first try. O e kolota wash.",
+  "after": "Toyota e qalile ka lekhetlo la pele. U e kolota ho e hlatsoa"
+ },
+ {
+  "id": "T5R27",
+  "en": "Even the cattle on the N1 are huddled like they paid for it.",
+  "before": "Esita le dikgomo tse pela N1 di huddled jwalo ka ha di patetse sebaka.",
+  "after": "Esita le dikgomo tse pela N1 di petetsane jwaloka eka di lefile ho ba te"
+ },
+ {
+  "id": "T6R12",
+  "en": "Even the bakkies on the N2 pulled over.",
+  "before": "Esita le li-bakkie tsa N2 li emile ka thoko.",
+  "after": "esita le li-bakkie tsa N2 li eme ka thoko ho tsela"
+ },
+ {
+  "id": "T6R16",
+  "en": "Respect the thunder. It's earned it.",
+  "before": "Hlonepha modumo. O e tšoanetse.",
+  "after": "Hlompha modumo .o e tsoanetse"
+ },
+ {
+  "id": "T6R18",
+  "en": "Windows closed, kettle on, and wait.",
+  "before": "Lifensetere li koetsoe, ketlele e butsoe, ema.",
+  "after": "Lifensetere li koetsoe, ketlele e tuka, ema"
+ },
+ {
+  "id": "T6R25",
+  "en": "Don't even think about driving somewhere.",
+  "before": "Se ke oa nahana ho otlela kae kapa kae.",
+  "after": "Se ke oa nahana le ho khanna ho ea kae kapa kae"
+ },
+ {
+  "id": "T6R31",
+  "en": "",
+  "before": "Ema ka hare. Lithaba ha li ee kae.",
+  "after": "Lula ka ntlong. Lithaba li ntse li le teng moo li leng teng."
+ },
+ {
+  "id": "T9R6",
+  "en": "Joburg drivers are panicking already.",
+  "before": "Baotleli ba Joburg ba se ba tšohile.",
+  "after": "Bakhanni ba joburg ba se ba tsohile"
+ },
+ {
+  "id": "T9R10",
+  "en": "Good soup weather, not gonna lie.",
+  "before": "Leholimo le letle la soupa.",
+  "after": "Leholimo le letle la  sopho"
+ },
+ {
+  "id": "T11R3",
+  "en": "Good day for a walk, bad day for a tan.",
+  "before": "Letsatsi le letle la ho tsamaea, le lebe la ho tjhesa.",
+  "after": "Letsatsi le monate la ho tsamaea, empa le lebe ho leka ho chesa letlalo.”"
+ },
+ {
+  "id": "T11R19",
+  "en": "Nobody's posting this sunset on Instagram.",
+  "before": "Ha ho motho ea tla posta sena ho Instagram.",
+  "after": "Ha ho motho ea tla post-a sunset ena ho Instagram."
+ },
+ {
+  "id": "T12R6",
+  "en": "Sun's playing peek-a-boo.",
+  "before": "Hoo ke letsatsi la braai.",
+  "after": "letsatsi le bapala peek-a-boo"
+ },
+ {
+  "id": "T12R7",
+  "en": "Clouds today, vibes optional.",
+  "before": "Liaparo li bolokehile. Mohlomong.",
+  "after": "Maru kajeno, vibes ke optional."
+ },
+ {
+  "id": "T12R8",
+  "en": "Sky's drafting, not committing.",
+  "before": "Tšoara hempe le hoodie - ka bobeli.",
+  "after": "Leholimo ha le e-s’o etse qeto"
+ },
+ {
+  "id": "T12R9",
+  "en": "Patchy ambitions.",
+  "before": "Lehodimo le ithata kajeno.",
+  "after": "Maikemisetso a sa tsitsang"
+ },
+ {
+  "id": "T12R10",
+  "en": "Halfway to a Highveld thunderstorm. Or not.",
+  "before": "Maru a manyane, letsatsi le leholo.",
+  "after": "Re se re le tseleng ea sefefo sa Highveld… kapa mohlomong che"
+ },
+ {
+  "id": "T12R11",
+  "en": "Clouds, but make it casual.",
+  "before": "Ha ho monate, ha ho mobe - mahareng.",
+  "after": "Ho na le maru, empa ha se taba e kholo."
+ },
+ {
+  "id": "T12R13",
+  "en": "Almost a braai day.",
+  "before": "Maru a tla tla a tsamaee.",
+  "after": "E batla e le letsatsi la braai."
+ },
+ {
+  "id": "T12R14",
+  "en": "Washing's still safe. Probably.",
+  "before": "Letsatsi la mohlomong.",
+  "after": "Ho fanyeha liaparo ho ntse ho bolokehile. Mohlomong"
+ },
+ {
+  "id": "T12R15",
+  "en": "Sunscreen, but keep a hoodie close.",
+  "before": "Maru, empa ha ho na bothata.",
+  "after": "Tlotsa sunscreen, empa boloka hoodie e le haufi."
+ },
+ {
+  "id": "T13R1",
+  "en": "Sunscreen is not optional, boet.",
+  "before": "Setofo sa letsatsi ha se kgetho, boet.",
+  "after": "setlolo sa letsatsi hase kgetho  boet"
+ },
+ {
+  "id": "T13R6",
+  "en": "The ozone layer called. It's on leave.",
+  "before": "Ozone layer e llelitse. E leaveng.",
+  "after": "Ozone layer e llelitse. E matsatsing a phomolo"
+ },
+ {
+  "id": "T13R7",
+  "en": "Reapply that sunscreen or suffer.",
+  "before": "Tšoaea hape kapa o hloke.",
+  "after": "Tlotsa hape sunscreen, kapa letsatsi le tla u bontša mosebetsi oa lona."
+ },
+ {
+  "id": "T13R9",
+  "en": "Hat, sunnies, sunscreen. Non-negotiable.",
+  "before": "Katiba, liborele, setofo. Ha ho buisanoe.",
+  "after": "katiba ,liborele,setlolo sa letsatsi ha ho buisanoe"
+ },
+ {
+  "id": "T13R10",
+  "en": "You could braai a steak on the pavement right now.",
+  "before": "O ka chesa steak ho pavement joale.",
+  "after": "O ka besa steak holim'a pavement hona joale."
+ },
+ {
+  "id": "T13R11",
+  "en": "Your future self will thank you for that sunscreen.",
+  "before": "Uena oa hosane o tla leboha ka setofo sa letsatsi.",
+  "after": "setlolo sa letsatsi"
+ },
+ {
+  "id": "T13R18",
+  "en": "Sunscreen budget: higher than your data bill.",
+  "before": "Bajete ea setofo sa letsatsi: e phahameng ho feta akhaonto ea data.",
+  "after": "Bajete ea Setlolo sa letsatsi  e phahame ho feta akhaonto ea  data"
+ },
+ {
+  "id": "T14R3",
+  "en": "Table Mountain's tablecloth is out.",
+  "before": "Lesela la Table Mountain le tšoeu.",
+  "after": "Lesela la Table mountain le aparetse thaba."
+ },
+ {
+  "id": "T14R5",
+  "en": "Your hairstyle? Gone. Accept it.",
+  "before": "Moriri oa hao? O ile. Amohela.",
+  "after": "hairstyle ya hao ile ?  amohela"
+ },
+ {
+  "id": "T15R2",
+  "en": "Time to dig out that ugly beanie.",
+  "before": "Nako ea ho qhala beanie e mpe eo.",
+  "after": "ke nako ya ho ntsha katiba yane empe"
+ },
+ {
+  "id": "T15R3",
+  "en": "Cold enough for soup. And a second soup.",
+  "before": "Ho bata ho lekana le soupa. Le soupa ea bobeli.",
+  "after": "Ho bata ho lekana le sopho. Le sopho ea bobeli"
+ },
+ {
+  "id": "T15R20",
+  "en": "You're not cold, you're 'lekker koud'. Big difference.",
+  "before": "Ha o bate, o 'lekker koud'. Phapang e kholo.",
+  "after": "ha wa hatsela fela ,o hatsetse haholo phapang e kgolo"
+ },
+ {
+  "id": "T16R4",
+  "en": "Stay hydrated or become a biltong.",
+  "before": ".Dula o na le metsi kapa o fetohe biltong",
+  "after": "Dula o na le metsi kapa o   fetohe sehwapa"
+ },
+ {
+  "id": "T17R17",
+  "en": "The mountains are on holiday today.",
+  "before": "Lithaba li holideining kajeno.",
+  "after": "lithaba li matsatsi a phomolo"
+ },
+ {
+  "id": "T17R38",
+  "en": "The morning forgot to render.",
+  "before": "Hoseng ho lebetse ho rendera.",
+  "after": "hoseng ho lebetse ho fetolela"
+ },
+ {
+  "id": "T18R1",
+  "en": "Absolutely beautiful out there.",
+  "before": "Ho motle haholo kantle.",
+  "after": "ho hotle kantle"
+ },
+ {
+  "id": "T19R2",
+  "en": "Perfect night to actually see the Milky Way.",
+  "before": "Bosiu bo motle ba ho bona Tsela ea Lebese.",
+  "after": "ke bosiu bobotle ho bona Molalatladi"
+ },
+ {
+  "id": "T19R9",
+  "en": "Somewhere a cricket is really giving it.",
+  "before": "Kae-kae tšie e binela ka matla.",
+  "after": "Kae-kae tswiritswiri e binela ka matla."
+ },
+ {
+  "id": "T19R10",
+  "en": "Even Table Mountain's called it a day.",
+  "before": "Esita le Thaba ea Table e ithobaletse.",
+  "after": "Esita le Table Mountain e se e phomotse."
+ },
+ {
+  "id": "T19R15",
+  "en": "The owls are judging your screen time.",
+  "before": "Dikgogo di ahlola nako ea hao ea skrini.",
+  "after": "Merubisi e ahlola nako ea hao ea skrini."
+ },
+ {
+  "id": "T20R6",
+  "en": "If you're working today, we feel sorry for you.",
+  "before": "Haeba o sebetsa kajeno, re oa utsoarela.",
+  "after": "Haeba u sebetsa kajeno, re u utloela bohloko.”"
+ },
+ {
+  "id": "T20R18",
+  "en": "This is the weather the weekend was invented for.",
+  "before": "Lena ke leholimo phomolo e entsoeng bakeng sa lona.",
+  "after": "Lena ke boemo ba leholimo boo mafelo-beke a etselitsoeng bona"
+ },
+ {
+  "id": "T23R2",
+  "en": "Cloudy-ish. Don't bet the braai on it.",
+  "before": "Ho na le maru-ish. U se ke ua beha braai holim'a sona.",
+  "after": "Ho na le maru. Braai ha e na tiisetso kajeno"
+ },
+ {
+  "id": "T24R3",
+  "en": "Mist building, maybe. Headlights wouldn't hurt.",
+  "before": "Mohodi oa eketseha, mohlomong. Tlhabisa mabone.",
+  "after": "mohodi oa eketseha  tlosa mabone  a koloi"
+ },
+ {
+  "id": "T25R1",
+  "en": "Probably rain. Take the umbrella, settle the argument.",
+  "before": "Mohlomong pula. Nka ambrela.",
+  "after": "Mohlomong pula. Nka sekhele, re felise khang."
+ },
+ {
+  "id": "T29R3",
+  "en": "Hot-ish, likely. Keep the water close.",
+  "before": "Ho chesa mohlomong. Boloka metsi haufi.",
+  "after": "Ho ka chesa. Boloka metsi haufi."
+ },
+ {
+  "id": "T30R1",
+  "en": "Could turn stormy. Keep one eye on the sky.",
+  "before": "Ho ka ba sefefo. Sheba leholimo.",
+  "after": "Ho kana ha fetoha sefefo. Lula u shebile leholimo ka hloko."
+ },
+ {
+  "id": "T31R5",
+  "en": "Clear-ish night. Don't hold us to the stars.",
+  "before": "Bosiu bo hlakileng-ish. U se ke ua re tšoara linaleling.",
+  "after": "Bosiu bo hlakile hanyane. U se ke ua re tshepisa ka linaleli."
+ },
+ {
+  "id": "T37R5",
+  "en": "Cleared",
+  "before": "E hlakiloe",
+  "after": "E hlakotsoe"
+ },
+ {
+  "id": "T37R6",
+  "en": "No saved places",
+  "before": "Ha ho libaka",
+  "after": "Ha ho libaka tse bolokiloeng"
+ },
+ {
+  "id": "T40R2",
+  "en": "Ag no, the tablecloth is out 💨",
+  "before": "Eish, lesela la tafoleng le teng 💨",
+  "after": "Ag no, lesela la tafoleng le foka moea"
+ },
+ {
+  "id": "T40R4",
+  "en": "Hold onto your hat, the Southeaster means business",
+  "before": "Tšoara katiba ea hao, Southeaster e bolela ka nnete",
+  "after": "Tšoara katiba ea hao — Southeaster e tla ka matla, ha e bapale."
+ }
+]

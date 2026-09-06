@@ -1,0 +1,4486 @@
+{
+ "generated": "2026-09-06T14:43:41.604Z",
+ "set": "review/af-batch-1..4.json — 533 newly transcreated + 350 reused from the native-reviewed bank",
+ "checked": 883,
+ "triage": 27,
+ "high": 4,
+ "byCheck": {
+  "morphology": 15,
+  "lexical": 11,
+  "semantic": 2,
+  "contamination": 3
+ },
+ "items": [
+  {
+   "lang": "af",
+   "en": "Not Instagram weather. Not the end of the world.",
+   "text": "Nie Troufoto weer nie. Nie die einde van die wereld nie.",
+   "key": "cloudy/dawn (bank cloudy#21)",
+   "source": "bank",
+   "confidence": 0.8,
+   "action": "triage-high",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "high",
+     "token": "wereld",
+     "message": "'wereld' is attested 249× but 'wêreld' 3182× — missing diacritic",
+     "evidence": {
+      "suggestion": "wêreld",
+      "cite": {
+       "word": "wêreld",
+       "freq": 3182,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #8",
+        "text": "Van die wêreld se beste wyne kom van hierdie streek af."
+       }
+      }
+     }
+    },
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "wereld",
+     "message": "'wereld' is usually 'wêreld' in this register (af-qc diacritic trap; 'wêreld' attested 3182×)",
+     "evidence": {
+      "suggestion": "wêreld",
+      "cite": {
+       "word": "wêreld",
+       "freq": 3182,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #8",
+        "text": "Van die wêreld se beste wyne kom van hierdie streek af."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "einde",
+     "message": "'einde' means 'end; ending; expiry' — nothing in the English source; the source's 'world' would normally be 'wêreld' / 'wêrelde', none present",
+     "evidence": {
+      "glosses": [
+       "end",
+       "ending",
+       "expiry",
+       "outcome",
+       "outgoing",
+       "time"
+      ],
+      "via": "einde",
+      "expected": [
+       {
+        "en": "world",
+        "candidates": [
+         "wêreld",
+         "wêrelde"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "einde",
+       "freq": 1938,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #533",
+        "text": "Dis einde van die maand, so ek het fokkol geld"
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 3,
+    "attested": 3,
+    "unknown": 0,
+    "enContent": 4,
+    "enMatched": [],
+    "enUnmatched": [
+     "instagram",
+     "weather",
+     "end",
+     "world"
+    ],
+    "expectations": [
+     {
+      "en": "weather",
+      "candidates": [
+       "weer",
+       "verweer"
+      ],
+      "present": [
+       "weer"
+      ]
+     },
+     {
+      "en": "end",
+      "candidates": [
+       "einde",
+       "punt",
+       "eindig",
+       "draad",
+       "ent",
+       "skeringdraad",
+       "kant",
+       "sye"
+      ],
+      "present": [
+       "einde"
+      ]
+     },
+     {
+      "en": "world",
+      "candidates": [
+       "wêreld",
+       "wêrelde"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "Troufoto",
+     "form": "troufoto",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "einde",
+     "form": "einde",
+     "via": "einde",
+     "glosses": [
+      "end",
+      "ending",
+      "expiry",
+      "outcome",
+      "outgoing",
+      "time"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "wereld",
+     "form": "wereld",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "At least it's not raining. That's the bar.",
+   "text": "Ten minste reen dit nie. Dis die standaard.",
+   "key": "cloudy/dawn (bank cloudy#24)",
+   "source": "bank",
+   "confidence": 0.8,
+   "action": "triage-high",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "high",
+     "token": "reen",
+     "message": "'reen' is attested 62× but 'reën' 530× — missing diacritic",
+     "evidence": {
+      "suggestion": "reën",
+      "cite": {
+       "word": "reën",
+       "freq": 530,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #320",
+        "text": "My ou tante Koba het soms gemeen:\n Die son sal weer skyn, maar dit moet eers reën."
+       }
+      }
+     }
+    },
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "reen",
+     "message": "'reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)",
+     "evidence": {
+      "suggestion": "reën",
+      "cite": {
+       "word": "reën",
+       "freq": 530,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #320",
+        "text": "My ou tante Koba het soms gemeen:\n Die son sal weer skyn, maar dit moet eers reën."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "standaard",
+     "message": "'standaard' means 'standard' — nothing in the English source; the source's 'raining' would normally be 'reën', none present",
+     "evidence": {
+      "glosses": [
+       "standard"
+      ],
+      "via": "standaard",
+      "expected": [
+       {
+        "en": "raining",
+        "candidates": [
+         "reën"
+        ],
+        "present": []
+       },
+       {
+        "en": "bar",
+        "candidates": [
+         "baar",
+         "stang",
+         "stuitlaag",
+         "wreefband",
+         "staaf",
+         "skag",
+         "sper",
+         "sandbank"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "standaard",
+       "freq": 241,
+       "sources": [
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #66203",
+        "text": "Die rede hiervoor is dat daar op 2 m te veel weerkaatsings plaasvind wat vir die nuweling probleme veroorsaak in ‘n multisenderkompetisie, wat die standaard van die IARU is. Riftingpeiling op 2 m sal later bygevoeg word."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 4,
+    "attested": 4,
+    "unknown": 0,
+    "enContent": 2,
+    "enMatched": [],
+    "enUnmatched": [
+     "raining",
+     "bar"
+    ],
+    "expectations": [
+     {
+      "en": "raining",
+      "candidates": [
+       "reën"
+      ],
+      "present": []
+     },
+     {
+      "en": "bar",
+      "candidates": [
+       "baar",
+       "stang",
+       "stuitlaag",
+       "wreefband",
+       "staaf",
+       "skag",
+       "sper",
+       "sandbank"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "Ten",
+     "form": "ten",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "minste",
+     "form": "minste",
+     "via": "minste",
+     "glosses": [
+      "least"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "reen",
+     "form": "reen",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "standaard",
+     "form": "standaard",
+     "via": "standaard",
+     "glosses": [
+      "standard"
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Rain? Possibly. Commitment? Never.",
+   "text": "Reen? Moontlik. Sal ek my lewe daar op wed? Nooit.",
+   "key": "cloudy/dusk (bank rain-possible#12)",
+   "source": "bank",
+   "confidence": 0.8,
+   "action": "triage-high",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "high",
+     "token": "Reen",
+     "message": "'Reen' is attested 62× but 'reën' 530× — missing diacritic",
+     "evidence": {
+      "suggestion": "reën",
+      "cite": {
+       "word": "reën",
+       "freq": 530,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #320",
+        "text": "My ou tante Koba het soms gemeen:\n Die son sal weer skyn, maar dit moet eers reën."
+       }
+      }
+     }
+    },
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "Reen",
+     "message": "'Reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)",
+     "evidence": {
+      "suggestion": "reën",
+      "cite": {
+       "word": "reën",
+       "freq": 530,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #320",
+        "text": "My ou tante Koba het soms gemeen:\n Die son sal weer skyn, maar dit moet eers reën."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "lewe",
+     "message": "'lewe' means 'life; alternative form of leef; living' — nothing in the English source; the source's 'rain' would normally be 'reën', none present",
+     "evidence": {
+      "glosses": [
+       "life",
+       "alternative form of leef",
+       "living",
+       "to live",
+       "live"
+      ],
+      "via": "lewe",
+      "expected": [
+       {
+        "en": "rain",
+        "candidates": [
+         "reën"
+        ],
+        "present": []
+       },
+       {
+        "en": "commitment",
+        "candidates": [
+         "gebondenheid",
+         "verbintenis",
+         "verbintenisse"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "lewe",
+       "freq": 6411,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #560",
+        "text": "Mense in die bediening moet mense in elke stadium van hul lewe — van bloedjonk tot beenoud — lei, onderrig oplei, bemoedig en troos."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 4,
+    "attested": 4,
+    "unknown": 0,
+    "enContent": 3,
+    "enMatched": [
+     "possibly"
+    ],
+    "enUnmatched": [
+     "rain",
+     "commitment"
+    ],
+    "expectations": [
+     {
+      "en": "rain",
+      "candidates": [
+       "reën"
+      ],
+      "present": []
+     },
+     {
+      "en": "commitment",
+      "candidates": [
+       "gebondenheid",
+       "verbintenis",
+       "verbintenisse"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "Reen",
+     "form": "reen",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "Moontlik",
+     "form": "moontlik",
+     "via": "moontlik",
+     "glosses": [
+      "possible",
+      "possibly"
+     ],
+     "matchesSource": [
+      "possible",
+      "possib"
+     ]
+    },
+    {
+     "token": "lewe",
+     "form": "lewe",
+     "via": "lewe",
+     "glosses": [
+      "life",
+      "alternative form of leef",
+      "living",
+      "to live",
+      "live"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "wed",
+     "form": "wed",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "The traffic just remembered rain exists. Again.",
+   "text": "Die verkeer het pas onthou daar is n ding soos reen bestaan weer.",
+   "key": "rain/night (bank rain#35)",
+   "source": "bank",
+   "confidence": 0.8,
+   "action": "triage-high",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "high",
+     "token": "reen",
+     "message": "'reen' is attested 62× but 'reën' 530× — missing diacritic",
+     "evidence": {
+      "suggestion": "reën",
+      "cite": {
+       "word": "reën",
+       "freq": 530,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #320",
+        "text": "My ou tante Koba het soms gemeen:\n Die son sal weer skyn, maar dit moet eers reën."
+       }
+      }
+     }
+    },
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "reen",
+     "message": "'reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)",
+     "evidence": {
+      "suggestion": "reën",
+      "cite": {
+       "word": "reën",
+       "freq": 530,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #320",
+        "text": "My ou tante Koba het soms gemeen:\n Die son sal weer skyn, maar dit moet eers reën."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "pas",
+     "message": "'pas' means 'pace, step; pass (a card or document); fit' — nothing in the English source; the source's 'rain' would normally be 'reën', none present",
+     "evidence": {
+      "glosses": [
+       "pace, step",
+       "pass (a card or document)",
+       "fit",
+       "match",
+       "newly",
+       "pace"
+      ],
+      "via": "pas",
+      "expected": [
+       {
+        "en": "rain",
+        "candidates": [
+         "reën"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "pas",
+       "freq": 1234,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #295",
+        "text": "Pas jouself op, jy is my enigste."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 7,
+    "attested": 7,
+    "unknown": 0,
+    "enContent": 4,
+    "enMatched": [
+     "traffic",
+     "remembered",
+     "exists"
+    ],
+    "enUnmatched": [
+     "rain"
+    ],
+    "expectations": [
+     {
+      "en": "rain",
+      "candidates": [
+       "reën"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "verkeer",
+     "form": "verkeer",
+     "via": "verkeer",
+     "glosses": [
+      "traffic",
+      "dealing"
+     ],
+     "matchesSource": [
+      "traffic"
+     ]
+    },
+    {
+     "token": "pas",
+     "form": "pas",
+     "via": "pas",
+     "glosses": [
+      "pace, step",
+      "pass (a card or document)",
+      "fit",
+      "match",
+      "newly",
+      "pace"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "onthou",
+     "form": "onthou",
+     "via": "onthou",
+     "glosses": [
+      "to remember, to keep in mind",
+      "remember"
+     ],
+     "matchesSource": [
+      "remember"
+     ]
+    },
+    {
+     "token": "ding",
+     "form": "ding",
+     "via": "ding",
+     "glosses": [
+      "thing"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "soos",
+     "form": "soos",
+     "via": "soos",
+     "glosses": [
+      "like; such as",
+      "just as",
+      "as"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "reen",
+     "form": "reen",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "bestaan",
+     "form": "bestaan",
+     "via": "bestaan",
+     "glosses": [
+      "to exist",
+      "existence",
+      "consist",
+      "consisting",
+      "consists",
+      "exist"
+     ],
+     "matchesSource": [
+      "exist",
+      "existence"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Nobody has touched that car door and every one of them knows why.",
+   "text": "Niemand het aan daardie kardeur geraak nie en elkeen van hulle weet hoekom.",
+   "key": "heat/day",
+   "source": "new",
+   "confidence": 0.35,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "Niemand",
+     "message": "negation 'Niemand' without the closing 'nie' at the end of the clause",
+     "evidence": {
+      "sentence": "Niemand het aan daardie kardeur geraak nie en elkeen van hulle weet hoekom."
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "geraak",
+     "message": "'geraak' means 'to become; to get; to grow' — nothing in the English source; the source's 'touched' would normally be 'aan-aan' / 'tassintuig' / 'tas' / 'aanraking', none present",
+     "evidence": {
+      "glosses": [
+       "to become",
+       "to get",
+       "to grow",
+       "affect",
+       "affecting",
+       "affects"
+      ],
+      "via": "geraak",
+      "expected": [
+       {
+        "en": "touched",
+        "candidates": [
+         "aan-aan",
+         "tassintuig",
+         "tas",
+         "aanraking",
+         "aanslag",
+         "tikkie",
+         "grensgebied",
+         "afronding"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "geraak",
+       "freq": 642,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #149",
+        "text": "[…] ek het gedag dat met my man se dood dit sal nou tot niet geraak het."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "elkeen",
+     "message": "'elkeen' means 'everyone; everybody; anyone; every' — nothing in the English source; the source's 'touched' would normally be 'aan-aan' / 'tassintuig' / 'tas' / 'aanraking', none present",
+     "evidence": {
+      "glosses": [
+       "everyone; everybody",
+       "anyone",
+       "every",
+       "everybody",
+       "everyone"
+      ],
+      "via": "elkeen",
+      "expected": [
+       {
+        "en": "touched",
+        "candidates": [
+         "aan-aan",
+         "tassintuig",
+         "tas",
+         "aanraking",
+         "aanslag",
+         "tikkie",
+         "grensgebied",
+         "afronding"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "elkeen",
+       "freq": 1276,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #107547",
+        "text": "“Ek is mal oor my vol lewe – my werk en my vriende en so, so dankbaar vir elkeen van my RSG-luisteraars."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 5,
+    "attested": 5,
+    "unknown": 0,
+    "enContent": 5,
+    "enMatched": [
+     "car",
+     "door",
+     "knows"
+    ],
+    "enUnmatched": [
+     "nobody",
+     "touched"
+    ],
+    "expectations": [
+     {
+      "en": "nobody",
+      "candidates": [
+       "niemand"
+      ],
+      "present": [
+       "niemand"
+      ]
+     },
+     {
+      "en": "touched",
+      "candidates": [
+       "aan-aan",
+       "tassintuig",
+       "tas",
+       "aanraking",
+       "aanslag",
+       "tikkie",
+       "grensgebied",
+       "afronding"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "kardeur",
+     "form": "kar+deur",
+     "via": "kar",
+     "glosses": [
+      "cart",
+      "car, automobile",
+      "car",
+      "door",
+      "through",
+      "by (indicating an agent)"
+     ],
+     "matchesSource": [
+      "cart",
+      "car",
+      "door"
+     ]
+    },
+    {
+     "token": "geraak",
+     "form": "geraak",
+     "via": "geraak",
+     "glosses": [
+      "to become",
+      "to get",
+      "to grow",
+      "affect",
+      "affecting",
+      "affects"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "elkeen",
+     "form": "elkeen",
+     "via": "elkeen",
+     "glosses": [
+      "everyone; everybody",
+      "anyone",
+      "every",
+      "everybody",
+      "everyone"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "weet",
+     "form": "weet",
+     "via": "weet",
+     "glosses": [
+      "to know",
+      "to be aware of",
+      "know",
+      "knowing",
+      "knowingly",
+      "knows"
+     ],
+     "matchesSource": [
+      "know",
+      "knowing"
+     ]
+    },
+    {
+     "token": "hoekom",
+     "form": "hoekom",
+     "via": "hoekom",
+     "glosses": [
+      "why, how come",
+      "why"
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "That water has been topped up twice and it is still the wrong temperature.",
+   "text": "Daardie water is twee keer bygevul en dit is steeds die verkeerde temperatuur.",
+   "key": "heat/dusk",
+   "source": "new",
+   "confidence": 0.35,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "bygevul",
+     "message": "'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)",
+     "evidence": {
+      "closest": {
+       "word": "bygeval",
+       "d": 1,
+       "freq": 1,
+       "sources": [
+        "leipzig",
+        "hunspell"
+       ]
+      },
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "keer",
+     "message": "'keer' means 'check; defend; steady' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present",
+     "evidence": {
+      "glosses": [
+       "check",
+       "defend",
+       "steady",
+       "stop"
+      ],
+      "via": "keer",
+      "expected": [
+       {
+        "en": "topped",
+        "candidates": [
+         "boonste",
+         "bolaag",
+         "bedek",
+         "blad",
+         "tol",
+         "kap",
+         "broeksband",
+         "kruin"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "keer",
+       "freq": 3425,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #571",
+        "text": "Toe sy die horingou man groet en haar kleinneef se hooghartige vrou, weet Maria Josefina dat sy geen behoefte het om ooit na die familiehuis van haar ouma terug te keer of ooit weer die praalgraf te besoek nie."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "steeds",
+     "message": "'steeds' means 'always; constantly' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present",
+     "evidence": {
+      "glosses": [
+       "always",
+       "constantly"
+      ],
+      "via": "steeds",
+      "expected": [
+       {
+        "en": "topped",
+        "candidates": [
+         "boonste",
+         "bolaag",
+         "bedek",
+         "blad",
+         "tol",
+         "kap",
+         "broeksband",
+         "kruin"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "steeds",
+       "freq": 2526,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #182",
+        "text": "Dit gaan maar [steeds] sleg."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 6,
+    "attested": 5,
+    "unknown": 1,
+    "enContent": 5,
+    "enMatched": [
+     "water",
+     "wrong",
+     "temperature"
+    ],
+    "enUnmatched": [
+     "topped",
+     "twice"
+    ],
+    "expectations": [
+     {
+      "en": "topped",
+      "candidates": [
+       "boonste",
+       "bolaag",
+       "bedek",
+       "blad",
+       "tol",
+       "kap",
+       "broeksband",
+       "kruin"
+      ],
+      "present": []
+     },
+     {
+      "en": "twice",
+      "candidates": [
+       "twee keer"
+      ],
+      "present": [
+       "twee keer"
+      ]
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "water",
+     "form": "water",
+     "via": "water",
+     "glosses": [
+      "water",
+      "any artificial fluid similar to water",
+      "urine",
+      "any body of water, such as a river or a lake",
+      "a disease where water is accumulated; hydrops",
+      "a large quantity of water; inundation"
+     ],
+     "matchesSource": [
+      "water"
+     ]
+    },
+    {
+     "token": "keer",
+     "form": "keer",
+     "via": "keer",
+     "glosses": [
+      "check",
+      "defend",
+      "steady",
+      "stop"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "steeds",
+     "form": "steeds",
+     "via": "steeds",
+     "glosses": [
+      "always",
+      "constantly"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "verkeerde",
+     "form": "verkeerde",
+     "via": "verkeerd",
+     "glosses": [
+      "incorrect",
+      "wrong"
+     ],
+     "matchesSource": [
+      "wrong"
+     ]
+    },
+    {
+     "token": "temperatuur",
+     "form": "temperatuur",
+     "via": "temperatuur",
+     "glosses": [
+      "temperature"
+     ],
+     "matchesSource": [
+      "temperature"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+   "text": "Twee druppels op die voorruit en die hele N1 se geheue is skoon gewas.",
+   "key": "rain/dusk (bank rain#56)",
+   "source": "bank",
+   "confidence": 0.35,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "semantic",
+     "severity": "medium",
+     "token": "geheue",
+     "message": "'geheue' means 'memory; store' — nothing in the English source; it is 2 letters from 'geheel', the usual word for 'whole'",
+     "evidence": {
+      "glosses": [
+       "memory",
+       "store"
+      ],
+      "via": "geheue",
+      "expected": [
+       {
+        "en": "whole",
+        "candidates": [
+         "gaaf",
+         "geheel",
+         "heel"
+        ],
+        "present": []
+       },
+       {
+        "en": "forgets",
+        "candidates": [
+         "vergeet"
+        ],
+        "present": []
+       },
+       {
+        "en": "everything",
+        "candidates": [
+         "alles",
+         "als"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": {
+       "en": "whole",
+       "expected": "geheel",
+       "d": 2
+      },
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "geheue",
+       "freq": 90,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #127002",
+        "text": "Geheue, herinnering en onthou is sleutelterme wat soos ‘n refrein deur Marais se bundel klink – dit gaan dus ook om temporele grense en die geheue as ruimte."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "skoon",
+     "message": "'skoon' means 'clean; cleansed; straight, undiluted, pure; beautiful, pretty' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'gewas'",
+     "evidence": {
+      "glosses": [
+       "clean; cleansed",
+       "straight, undiluted, pure",
+       "beautiful, pretty",
+       "beautiful",
+       "clean",
+       "clear"
+      ],
+      "via": "skoon",
+      "expected": [
+       {
+        "en": "whole",
+        "candidates": [
+         "gaaf",
+         "geheel",
+         "heel"
+        ],
+        "present": []
+       },
+       {
+        "en": "forgets",
+        "candidates": [
+         "vergeet"
+        ],
+        "present": []
+       },
+       {
+        "en": "everything",
+        "candidates": [
+         "alles",
+         "als"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [
+       [
+        "gewas",
+        75.1
+       ]
+      ],
+      "cite": {
+       "word": "skoon",
+       "freq": 706,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #144366",
+        "text": "Hoofartikel: 12 June 2015 By Hoofartikel Die nuus dat slegs 40 munisipaliteite en 18 munisipale entiteite uit die 268 munisipaliteite en 57 munisipale entiteite landwyd skoon oudits vir die 2013/2014-boekjaar ontvang het, verbaas Suid-Afrikaners glad nie."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "gewas",
+     "message": "'gewas' means 'crop; wax; past of wees' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'skoon'",
+     "evidence": {
+      "glosses": [
+       "crop",
+       "wax",
+       "past of wees",
+       "to wash",
+       "be",
+       "been"
+      ],
+      "via": "gewas",
+      "expected": [
+       {
+        "en": "whole",
+        "candidates": [
+         "gaaf",
+         "geheel",
+         "heel"
+        ],
+        "present": []
+       },
+       {
+        "en": "forgets",
+        "candidates": [
+         "vergeet"
+        ],
+        "present": []
+       },
+       {
+        "en": "everything",
+        "candidates": [
+         "alles",
+         "als"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [
+       [
+        "skoon",
+        75.1
+       ]
+      ],
+      "cite": {
+       "word": "gewas",
+       "freq": 109,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #275018",
+        "text": "Tyd van toediening is van kritieke belang, maar dikwels is die gewas nog nie klaar geoes wanneer spp. se groeistadium ideaal is om te spuit nie."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 6,
+    "attested": 6,
+    "unknown": 0,
+    "enContent": 6,
+    "enMatched": [
+     "drops"
+    ],
+    "enUnmatched": [
+     "windscreen",
+     "whole",
+     "forgets",
+     "everything",
+     "learned"
+    ],
+    "expectations": [
+     {
+      "en": "whole",
+      "candidates": [
+       "gaaf",
+       "geheel",
+       "heel"
+      ],
+      "present": []
+     },
+     {
+      "en": "forgets",
+      "candidates": [
+       "vergeet"
+      ],
+      "present": []
+     },
+     {
+      "en": "everything",
+      "candidates": [
+       "alles",
+       "als"
+      ],
+      "present": []
+     },
+     {
+      "en": "learned",
+      "candidates": [
+       "hooggeagte",
+       "geleerde",
+       "leer"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "druppels",
+     "form": "druppels",
+     "via": "druppel",
+     "glosses": [
+      "drop"
+     ],
+     "matchesSource": [
+      "drop"
+     ]
+    },
+    {
+     "token": "voorruit",
+     "form": "voorruit",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "hele",
+     "form": "hele",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "geheue",
+     "form": "geheue",
+     "via": "geheue",
+     "glosses": [
+      "memory",
+      "store"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "skoon",
+     "form": "skoon",
+     "via": "skoon",
+     "glosses": [
+      "clean; cleansed",
+      "straight, undiluted, pure",
+      "beautiful, pretty",
+      "beautiful",
+      "clean",
+      "clear"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "gewas",
+     "form": "gewas",
+     "via": "gewas",
+     "glosses": [
+      "crop",
+      "wax",
+      "past of wees",
+      "to wash",
+      "be",
+      "been"
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "The sky just went full Carte Blanche.",
+   "text": "Die lug het voluit bedonerd gegaan.",
+   "key": "storm/day (bank storm#14)",
+   "source": "bank",
+   "confidence": 0.35,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "bedonerd",
+     "message": "'bedonerd' — seen only in this app's own copy, in no external source; closest attested: 'bedonnerd' (4× kaikki/leipzig, distance 1)",
+     "evidence": {
+      "closest": {
+       "word": "bedonnerd",
+       "d": 1,
+       "freq": 4,
+       "sources": [
+        "kaikki",
+        "leipzig"
+       ]
+      },
+      "inhouseOnly": true
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "lug",
+     "message": "'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present",
+     "evidence": {
+      "glosses": [
+       "air"
+      ],
+      "via": "lug",
+      "expected": [
+       {
+        "en": "sky",
+        "candidates": [
+         "hemel"
+        ],
+        "present": []
+       },
+       {
+        "en": "full",
+        "candidates": [
+         "vol",
+         "strandrug",
+         "aanruim",
+         "vol inruim"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "lug",
+       "freq": 631,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #142749",
+        "text": "Hoe meer dikwels hierdie lug vervang kan word, hoe meer suurstof is vir die wortels beskikbaar."
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "gegaan",
+     "message": "'gegaan' means 'past participle of gaan; to go; Used to express the future tense, often while implying nearness in time or certainty, like English going to.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present",
+     "evidence": {
+      "glosses": [
+       "past participle of gaan",
+       "to go",
+       "Used to express the future tense, often while implying nearness in time or certainty, like English going to."
+      ],
+      "via": "gegaan",
+      "expected": [
+       {
+        "en": "sky",
+        "candidates": [
+         "hemel"
+        ],
+        "present": []
+       },
+       {
+        "en": "full",
+        "candidates": [
+         "vol",
+         "strandrug",
+         "aanruim",
+         "vol inruim"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "gegaan",
+       "freq": 668,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #13",
+        "text": "Laasweek het ons see toe gegaan."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 4,
+    "attested": 3,
+    "unknown": 1,
+    "enContent": 4,
+    "enMatched": [],
+    "enUnmatched": [
+     "sky",
+     "full",
+     "carte",
+     "blanche"
+    ],
+    "expectations": [
+     {
+      "en": "sky",
+      "candidates": [
+       "hemel"
+      ],
+      "present": []
+     },
+     {
+      "en": "full",
+      "candidates": [
+       "vol",
+       "strandrug",
+       "aanruim",
+       "vol inruim"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "lug",
+     "form": "lug",
+     "via": "lug",
+     "glosses": [
+      "air"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "voluit",
+     "form": "voluit",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "gegaan",
+     "form": "gegaan",
+     "via": "gegaan",
+     "glosses": [
+      "past participle of gaan",
+      "to go",
+      "Used to express the future tense, often while implying nearness in time or certainty, like English going to."
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Ice in the jug, fan on the chair: the night shift of a forty-degree day.",
+   "text": "Ys in die beker, waaier op die stoel: die nagskof van 'n veertiggraaddag.",
+   "key": "heat/night",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "veertiggraaddag",
+     "message": "'veertiggraaddag' — not found in any external source",
+     "evidence": {
+      "closest": null,
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "beker",
+     "message": "'beker' means 'cup, beaker; cup' — nothing in the English source; the source's 'night' would normally be 'nag', none present",
+     "evidence": {
+      "glosses": [
+       "cup, beaker",
+       "cup"
+      ],
+      "via": "beker",
+      "expected": [
+       {
+        "en": "night",
+        "candidates": [
+         "nag"
+        ],
+        "present": []
+       },
+       {
+        "en": "shift",
+        "candidates": [
+         "verskuiwing",
+         "wissel",
+         "verskuif",
+         "onderhemp",
+         "verplasing",
+         "regaf hemprok",
+         "wisseling",
+         "skuif"
+        ],
+        "present": []
+       },
+       {
+        "en": "day",
+        "candidates": [
+         "dag",
+         "dae"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "beker",
+       "freq": 122,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #202076",
+        "text": "Miskien moet die Virseker beker vroeer begin in 2019 met meer spanne miskien so 10 skole per groep."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 6,
+    "attested": 5,
+    "unknown": 1,
+    "enContent": 8,
+    "enMatched": [
+     "ice",
+     "fan",
+     "chair"
+    ],
+    "enUnmatched": [
+     "jug",
+     "night",
+     "shift",
+     "forty-degree",
+     "day"
+    ],
+    "expectations": [
+     {
+      "en": "night",
+      "candidates": [
+       "nag"
+      ],
+      "present": []
+     },
+     {
+      "en": "shift",
+      "candidates": [
+       "verskuiwing",
+       "wissel",
+       "verskuif",
+       "onderhemp",
+       "verplasing",
+       "regaf hemprok",
+       "wisseling",
+       "skuif"
+      ],
+      "present": []
+     },
+     {
+      "en": "day",
+      "candidates": [
+       "dag",
+       "dae"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "Ys",
+     "form": "ys",
+     "via": "ys",
+     "glosses": [
+      "ice, frozen water",
+      "ice, methamphetamine"
+     ],
+     "matchesSource": [
+      "ice"
+     ]
+    },
+    {
+     "token": "beker",
+     "form": "beker",
+     "via": "beker",
+     "glosses": [
+      "cup, beaker",
+      "cup"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "waaier",
+     "form": "waaier",
+     "via": "waaier",
+     "glosses": [
+      "fan"
+     ],
+     "matchesSource": [
+      "fan"
+     ]
+    },
+    {
+     "token": "stoel",
+     "form": "stoel",
+     "via": "stoel",
+     "glosses": [
+      "chair",
+      "stool",
+      "frame"
+     ],
+     "matchesSource": [
+      "chair"
+     ]
+    },
+    {
+     "token": "nagskof",
+     "form": "nagskof",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "The pool is being topped up by head office tonight, free of charge.",
+   "text": "Die swembad word vanaand deur hoofkantoor bygevul, gratis.",
+   "key": "rain/night",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "bygevul",
+     "message": "'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)",
+     "evidence": {
+      "closest": {
+       "word": "bygeval",
+       "d": 1,
+       "freq": 1,
+       "sources": [
+        "leipzig",
+        "hunspell"
+       ]
+      },
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "deur",
+     "message": "'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present",
+     "evidence": {
+      "glosses": [
+       "door",
+       "through",
+       "by (indicating an agent)",
+       "along",
+       "entrance",
+       "via"
+      ],
+      "via": "deur",
+      "expected": [
+       {
+        "en": "topped",
+        "candidates": [
+         "boonste",
+         "bolaag",
+         "bedek",
+         "blad",
+         "tol",
+         "kap",
+         "broeksband",
+         "kruin"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "deur",
+       "freq": 20643,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #18",
+        "text": "Die deur is toe."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 6,
+    "attested": 5,
+    "unknown": 1,
+    "enContent": 7,
+    "enMatched": [
+     "pool",
+     "tonight",
+     "free",
+     "charge"
+    ],
+    "enUnmatched": [
+     "topped",
+     "head",
+     "office"
+    ],
+    "expectations": [
+     {
+      "en": "topped",
+      "candidates": [
+       "boonste",
+       "bolaag",
+       "bedek",
+       "blad",
+       "tol",
+       "kap",
+       "broeksband",
+       "kruin"
+      ],
+      "present": []
+     },
+     {
+      "en": "head",
+      "candidates": [
+       "hoof",
+       "kop",
+       "kopstuk",
+       "bopunt",
+       "hoogte",
+       "bos",
+       "totale hefhoogte",
+       "pomp van vloeibare vrag"
+      ],
+      "present": [
+       "met die kop stamp"
+      ]
+     },
+     {
+      "en": "office",
+      "candidates": [
+       "kantoor",
+       "buro",
+       "amp",
+       "ampte",
+       "kantore"
+      ],
+      "present": [
+       "kantoor"
+      ]
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "swembad",
+     "form": "swembad",
+     "via": "swembad",
+     "glosses": [
+      "A swimming pool.",
+      "pool"
+     ],
+     "matchesSource": [
+      "pool"
+     ]
+    },
+    {
+     "token": "vanaand",
+     "form": "vanaand",
+     "via": "vanaand",
+     "glosses": [
+      "tonight, this evening (in the evening of the current day)",
+      "tonight"
+     ],
+     "matchesSource": [
+      "tonight"
+     ]
+    },
+    {
+     "token": "deur",
+     "form": "deur",
+     "via": "deur",
+     "glosses": [
+      "door",
+      "through",
+      "by (indicating an agent)",
+      "along",
+      "entrance",
+      "via"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "hoofkantoor",
+     "form": "hoofkantoor",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "gratis",
+     "form": "gratis",
+     "via": "gratis",
+     "glosses": [
+      "free, without charge",
+      "free of charge"
+     ],
+     "matchesSource": [
+      "free",
+      "charge"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Those sheets will be dry before she has pegged the last one on the line.",
+   "text": "Daardie lakens gaan droog wees voor sy die laaste een opgehang het.",
+   "key": "wind/dawn",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "semantic",
+     "severity": "medium",
+     "token": "voor",
+     "message": "'voor' means 'before; in front of; furrow' — nothing in the English source; it is 1 letter from 'voer', the usual word for 'line'",
+     "evidence": {
+      "glosses": [
+       "before",
+       "in front of",
+       "furrow",
+       "ahead",
+       "for",
+       "front"
+      ],
+      "via": "voor",
+      "expected": [
+       {
+        "en": "line",
+        "candidates": [
+         "uitvoer",
+         "reeks",
+         "lyn",
+         "leiding",
+         "reël",
+         "voer",
+         "in lyn bring",
+         "dek"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": {
+       "en": "line",
+       "expected": "voer",
+       "d": 1
+      },
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "voor",
+       "freq": 6087,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #59",
+        "text": "die maatskappy wat ek voor gewerk het"
+       }
+      }
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "laaste",
+     "message": "'laaste' means 'last; to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present",
+     "evidence": {
+      "glosses": [
+       "last",
+       "to cause to, to make; forms a causative phrase.",
+       "to let; forms a cohortative phrase.",
+       "to may, to let; forms an optative phrase.",
+       "to leave, to cause to remain in the same position or state",
+       "to let, to allow to"
+      ],
+      "via": "laaste",
+      "expected": [
+       {
+        "en": "line",
+        "candidates": [
+         "uitvoer",
+         "reeks",
+         "lyn",
+         "leiding",
+         "reël",
+         "voer",
+         "in lyn bring",
+         "dek"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "laaste",
+       "freq": 1732,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #94",
+        "text": "Na aanleiding van die vorderinge wat Afrikaans die laaste jare gemaak het, het een uit die ou taalgarde hom onlangs op die volgende wijse uitgedruk : dis tog maar waar, die een sal saai en die ander sal maai."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 5,
+    "attested": 5,
+    "unknown": 0,
+    "enContent": 4,
+    "enMatched": [
+     "sheets",
+     "dry"
+    ],
+    "enUnmatched": [
+     "pegged",
+     "line"
+    ],
+    "expectations": [
+     {
+      "en": "line",
+      "candidates": [
+       "uitvoer",
+       "reeks",
+       "lyn",
+       "leiding",
+       "reël",
+       "voer",
+       "in lyn bring",
+       "dek"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "lakens",
+     "form": "lakens",
+     "via": "lakens",
+     "glosses": [
+      "sheets",
+      "sheet, bedsheet",
+      "sheet"
+     ],
+     "matchesSource": [
+      "sheet",
+      "bedsheet"
+     ]
+    },
+    {
+     "token": "droog",
+     "form": "droog",
+     "via": "droog",
+     "glosses": [
+      "dry",
+      "arid",
+      "to dry",
+      "season"
+     ],
+     "matchesSource": [
+      "dry"
+     ]
+    },
+    {
+     "token": "voor",
+     "form": "voor",
+     "via": "voor",
+     "glosses": [
+      "before",
+      "in front of",
+      "furrow",
+      "ahead",
+      "for",
+      "front"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "laaste",
+     "form": "laaste",
+     "via": "laaste",
+     "glosses": [
+      "last",
+      "to cause to, to make; forms a causative phrase.",
+      "to let; forms a cohortative phrase.",
+      "to may, to let; forms an optative phrase.",
+      "to leave, to cause to remain in the same position or state",
+      "to let, to allow to"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "opgehang",
+     "form": "opgehang",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "That water was cold about forty minutes ago and nobody has topped it up.",
+   "text": "Daardie water was omtrent veertig minute gelede koud en niemand het dit bygevul nie.",
+   "key": "heat/dawn",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "bygevul",
+     "message": "'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)",
+     "evidence": {
+      "closest": {
+       "word": "bygeval",
+       "d": 1,
+       "freq": 1,
+       "sources": [
+        "leipzig",
+        "hunspell"
+       ]
+      },
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "omtrent",
+     "message": "'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present",
+     "evidence": {
+      "glosses": [
+       "about",
+       "almost",
+       "perhaps"
+      ],
+      "via": "omtrent",
+      "expected": [
+       {
+        "en": "topped",
+        "candidates": [
+         "boonste",
+         "bolaag",
+         "bedek",
+         "blad",
+         "tol",
+         "kap",
+         "broeksband",
+         "kruin"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "omtrent",
+       "freq": 593,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #266",
+        "text": "Daar is iets ouds, iets rustigs en iets droefs omtrent dié werf."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 7,
+    "attested": 6,
+    "unknown": 1,
+    "enContent": 7,
+    "enMatched": [
+     "water",
+     "cold",
+     "forty",
+     "minutes",
+     "ago",
+     "nobody"
+    ],
+    "enUnmatched": [
+     "topped"
+    ],
+    "expectations": [
+     {
+      "en": "topped",
+      "candidates": [
+       "boonste",
+       "bolaag",
+       "bedek",
+       "blad",
+       "tol",
+       "kap",
+       "broeksband",
+       "kruin"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "water",
+     "form": "water",
+     "via": "water",
+     "glosses": [
+      "water",
+      "any artificial fluid similar to water",
+      "urine",
+      "any body of water, such as a river or a lake",
+      "a disease where water is accumulated; hydrops",
+      "a large quantity of water; inundation"
+     ],
+     "matchesSource": [
+      "water",
+      "body"
+     ]
+    },
+    {
+     "token": "omtrent",
+     "form": "omtrent",
+     "via": "omtrent",
+     "glosses": [
+      "about",
+      "almost",
+      "perhaps"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "veertig",
+     "form": "veertig",
+     "via": "veertig",
+     "glosses": [
+      "forty"
+     ],
+     "matchesSource": [
+      "forty"
+     ]
+    },
+    {
+     "token": "minute",
+     "form": "minute",
+     "via": "minute",
+     "glosses": [
+      "plural of minuut",
+      "minute (unit of time)"
+     ],
+     "matchesSource": [
+      "minute"
+     ]
+    },
+    {
+     "token": "gelede",
+     "form": "gelede",
+     "via": "gelede",
+     "glosses": [
+      "ago",
+      "since"
+     ],
+     "matchesSource": [
+      "ago"
+     ]
+    },
+    {
+     "token": "koud",
+     "form": "koud",
+     "via": "koud",
+     "glosses": [
+      "cold (of low temperature)",
+      "cold"
+     ],
+     "matchesSource": [
+      "cold"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "She is lying on tile rather than anything soft, and that was a decision.",
+   "text": "Sy lê op teël eerder as op iets sags, en dit was 'n besluit.",
+   "key": "heat/dawn",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "contamination",
+     "severity": "medium",
+     "token": "sags",
+     "message": "'sags' is an English word with no af attestation and is not in the English source line",
+     "evidence": {
+      "english": true,
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "lê",
+     "message": "'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'rather' would normally be 'liewer', none present",
+     "evidence": {
+      "glosses": [
+       "to lie (to be in a horizontal position)",
+       "to lay (to put into a horizontal position)",
+       "bed",
+       "beds",
+       "insert",
+       "inserts"
+      ],
+      "via": "lê",
+      "expected": [
+       {
+        "en": "rather",
+        "candidates": [
+         "liewer"
+        ],
+        "present": []
+       },
+       {
+        "en": "soft",
+        "candidates": [
+         "sag"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "lê",
+       "freq": 1809,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #162",
+        "text": "Hy sê: Moenie laf wees nie, dit was sommer kanonskote vir koningin Victoria se verjaardag, dis Engeland se skip wat in die hawe lê."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 5,
+    "attested": 4,
+    "unknown": 1,
+    "enContent": 6,
+    "enMatched": [
+     "decision"
+    ],
+    "enUnmatched": [
+     "lying",
+     "tile",
+     "rather",
+     "anything",
+     "soft"
+    ],
+    "expectations": [
+     {
+      "en": "rather",
+      "candidates": [
+       "liewer"
+      ],
+      "present": []
+     },
+     {
+      "en": "anything",
+      "candidates": [
+       "iets",
+       "enige iets",
+       "enigiets"
+      ],
+      "present": [
+       "iets",
+       "enige iets"
+      ]
+     },
+     {
+      "en": "soft",
+      "candidates": [
+       "sag"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "lê",
+     "form": "lê",
+     "via": "lê",
+     "glosses": [
+      "to lie (to be in a horizontal position)",
+      "to lay (to put into a horizontal position)",
+      "bed",
+      "beds",
+      "insert",
+      "inserts"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "teël",
+     "form": "teël",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "eerder",
+     "form": "eerder",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "besluit",
+     "form": "besluit",
+     "via": "besluit",
+     "glosses": [
+      "to decide",
+      "decision",
+      "decide",
+      "decides",
+      "deciding",
+      "resolution"
+     ],
+     "matchesSource": [
+      "decision"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "She is not looking for anything and both of us know it.",
+   "text": "Sy soek niks nie en ons weet dit albei.",
+   "key": "heat/night",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "niks",
+     "message": "negation 'niks' without the closing 'nie' at the end of the clause",
+     "evidence": {
+      "sentence": "Sy soek niks nie en ons weet dit albei."
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "soek",
+     "message": "'soek' means 'to search, seek; market, souq, bazaar, street of shops; search' — nothing in the English source; the source's 'looking' would normally be 'lyk' / 'kyk' / 'voorkoms', none present",
+     "evidence": {
+      "glosses": [
+       "to search, seek",
+       "market, souq, bazaar, street of shops",
+       "search",
+       "seek",
+       "seeks"
+      ],
+      "via": "soek",
+      "expected": [
+       {
+        "en": "looking",
+        "candidates": [
+         "lyk",
+         "kyk",
+         "voorkoms"
+        ],
+        "present": []
+       },
+       {
+        "en": "anything",
+        "candidates": [
+         "iets",
+         "enige iets",
+         "enigiets"
+        ],
+        "present": []
+       },
+       {
+        "en": "both",
+        "candidates": [
+         "beide"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "soek",
+       "freq": 1865,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #214",
+        "text": "2014, Elsa Drotsky, 'n Vrou vir Emile, LAPA Uitgewers.\nSy verloor gou belanstelling in die wriemelende goggas en kom orent, haar oë sommer vanself al weer op soek na Emile."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 3,
+    "attested": 3,
+    "unknown": 0,
+    "enContent": 4,
+    "enMatched": [
+     "know"
+    ],
+    "enUnmatched": [
+     "looking",
+     "anything",
+     "both"
+    ],
+    "expectations": [
+     {
+      "en": "looking",
+      "candidates": [
+       "lyk",
+       "kyk",
+       "voorkoms"
+      ],
+      "present": []
+     },
+     {
+      "en": "anything",
+      "candidates": [
+       "iets",
+       "enige iets",
+       "enigiets"
+      ],
+      "present": []
+     },
+     {
+      "en": "both",
+      "candidates": [
+       "beide"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "soek",
+     "form": "soek",
+     "via": "soek",
+     "glosses": [
+      "to search, seek",
+      "market, souq, bazaar, street of shops",
+      "search",
+      "seek",
+      "seeks"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "weet",
+     "form": "weet",
+     "via": "weet",
+     "glosses": [
+      "to know",
+      "to be aware of",
+      "know",
+      "knowing",
+      "knowingly",
+      "knows"
+     ],
+     "matchesSource": [
+      "know",
+      "knowing"
+     ]
+    },
+    {
+     "token": "albei",
+     "form": "albei",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Frost on the grass, steam off the field: winter running weather at its most honest.",
+   "text": "Ryp op die gras, stoom van die veld af: wintersdrafweer op sy eerlikste.",
+   "key": "cold-clear/day",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "wintersdrafweer",
+     "message": "'wintersdrafweer' — not found in any external source",
+     "evidence": {
+      "closest": null,
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "Ryp",
+     "message": "'Ryp' means 'ripe, mature' — nothing in the English source; the source's 'weather' would normally be 'weer' / 'verweer', none present",
+     "evidence": {
+      "glosses": [
+       "ripe, mature"
+      ],
+      "via": "ryp",
+      "expected": [
+       {
+        "en": "weather",
+        "candidates": [
+         "weer",
+         "verweer"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "ryp",
+       "freq": 116,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #299191",
+        "text": "Word Senatla nie te vroeg ryp gedruk nie?"
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 6,
+    "attested": 5,
+    "unknown": 1,
+    "enContent": 8,
+    "enMatched": [
+     "grass",
+     "steam",
+     "field",
+     "honest"
+    ],
+    "enUnmatched": [
+     "frost",
+     "winter",
+     "running",
+     "weather"
+    ],
+    "expectations": [
+     {
+      "en": "winter",
+      "candidates": [
+       "winter",
+       "oorwinter"
+      ],
+      "present": [
+       "winter"
+      ]
+     },
+     {
+      "en": "running",
+      "candidates": [
+       "voorsteekwerk",
+       "masjienrygsel",
+       "masjienryging",
+       "bestuur van huis",
+       "hardloop",
+       "masjienryg",
+       "vloei",
+       "vaar"
+      ],
+      "present": [
+       "bestuur van huis"
+      ]
+     },
+     {
+      "en": "weather",
+      "candidates": [
+       "weer",
+       "verweer"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "Ryp",
+     "form": "ryp",
+     "via": "ryp",
+     "glosses": [
+      "ripe, mature"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "gras",
+     "form": "gras",
+     "via": "gras",
+     "glosses": [
+      "grass"
+     ],
+     "matchesSource": [
+      "grass"
+     ]
+    },
+    {
+     "token": "stoom",
+     "form": "stoom",
+     "via": "stoom",
+     "glosses": [
+      "steam"
+     ],
+     "matchesSource": [
+      "steam"
+     ]
+    },
+    {
+     "token": "veld",
+     "form": "veld",
+     "via": "veld",
+     "glosses": [
+      "A field, open country",
+      "A patch or grass and/or other small plants",
+      "The veld, the open grassland of South Africa and neighboring countries",
+      "A sports field.",
+      "field",
+      "land"
+     ],
+     "matchesSource": [
+      "field",
+      "grass",
+      "grassland"
+     ]
+    },
+    {
+     "token": "eerlikste",
+     "form": "eerlikste",
+     "via": "eerlikste",
+     "glosses": [
+      "honest",
+      "fair",
+      "sincere"
+     ],
+     "matchesSource": [
+      "honest"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+   "text": "Joburgse somerreën: kom vyfuur, deurweek alles, weg teen aandete.",
+   "key": "rain/dusk",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "Joburgse",
+     "message": "'Joburgse' — not found in any external source; closest attested: 'joburg' (17× leipzig, distance 2)",
+     "evidence": {
+      "closest": {
+       "word": "joburg",
+       "d": 2,
+       "freq": 17,
+       "sources": [
+        "leipzig"
+       ]
+      },
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "weg",
+     "message": "'weg' means 'way; path; away; path' — nothing in the English source; the source's 'rain' would normally be 'reën', none present",
+     "evidence": {
+      "glosses": [
+       "way; path",
+       "away",
+       "path",
+       "road",
+       "via"
+      ],
+      "via": "weg",
+      "expected": [
+       {
+        "en": "rain",
+        "candidates": [
+         "reën"
+        ],
+        "present": []
+       },
+       {
+        "en": "five",
+        "candidates": [
+         "vyf"
+        ],
+        "present": []
+       },
+       {
+        "en": "gone",
+        "candidates": [
+         "goed vaar"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "weg",
+       "freq": 1924,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #246",
+        "text": "Die vriendinne swem vaak in die dam, maar vandag vlug hulle weg, omdat iemand klippe daarin gooi."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 8,
+    "attested": 7,
+    "unknown": 1,
+    "enContent": 9,
+    "enMatched": [
+     "everything",
+     "supper"
+    ],
+    "enUnmatched": [
+     "joburg",
+     "summer",
+     "rain",
+     "arrives",
+     "five",
+     "soaks",
+     "gone"
+    ],
+    "expectations": [
+     {
+      "en": "summer",
+      "candidates": [
+       "somer"
+      ],
+      "present": [
+       "somer"
+      ]
+     },
+     {
+      "en": "rain",
+      "candidates": [
+       "reën"
+      ],
+      "present": []
+     },
+     {
+      "en": "arrives",
+      "candidates": [
+       "aankom",
+       "arriveer",
+       "opdaag",
+       "tref",
+       "aanland",
+       "bereik",
+       "gebeur",
+       "kom"
+      ],
+      "present": [
+       "kom"
+      ]
+     },
+     {
+      "en": "five",
+      "candidates": [
+       "vyf"
+      ],
+      "present": []
+     },
+     {
+      "en": "gone",
+      "candidates": [
+       "goed vaar"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "somerreën",
+     "form": "somerreën",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "vyfuur",
+     "form": "vyfuur",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "deurweek",
+     "form": "deurweek",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "alles",
+     "form": "alles",
+     "via": "alles",
+     "glosses": [
+      "everything",
+      "all"
+     ],
+     "matchesSource": [
+      "everyth"
+     ]
+    },
+    {
+     "token": "weg",
+     "form": "weg",
+     "via": "weg",
+     "glosses": [
+      "way; path",
+      "away",
+      "path",
+      "road",
+      "via"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "teen",
+     "form": "teen",
+     "via": "teen",
+     "glosses": [
+      "against",
+      "at",
+      "toward",
+      "towards"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "aandete",
+     "form": "aandete",
+     "via": "aandete",
+     "glosses": [
+      "supper, dinner, evening meal",
+      "dinner"
+     ],
+     "matchesSource": [
+      "supper"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Night rain maths: half the visibility, double the concentration, triple the respect.",
+   "text": "Nagreënwiskunde: helfte die sig, dubbel die konsentrasie, drie keer die respek.",
+   "key": "rain/night",
+   "source": "new",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "Nagreënwiskunde",
+     "message": "'Nagreënwiskunde' — not found in any external source",
+     "evidence": {
+      "closest": null,
+      "inhouseOnly": false
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "keer",
+     "message": "'keer' means 'check; defend; steady' — nothing in the English source; the source's 'night' would normally be 'nag', none present",
+     "evidence": {
+      "glosses": [
+       "check",
+       "defend",
+       "steady",
+       "stop"
+      ],
+      "via": "keer",
+      "expected": [
+       {
+        "en": "night",
+        "candidates": [
+         "nag"
+        ],
+        "present": []
+       },
+       {
+        "en": "rain",
+        "candidates": [
+         "reën"
+        ],
+        "present": []
+       },
+       {
+        "en": "triple",
+        "candidates": [
+         "drievoudig"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "keer",
+       "freq": 3425,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "nchlt",
+        "constitution",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #571",
+        "text": "Toe sy die horingou man groet en haar kleinneef se hooghartige vrou, weet Maria Josefina dat sy geen behoefte het om ooit na die familiehuis van haar ouma terug te keer of ooit weer die praalgraf te besoek nie."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 7,
+    "attested": 6,
+    "unknown": 1,
+    "enContent": 9,
+    "enMatched": [
+     "half",
+     "double",
+     "concentration",
+     "respect"
+    ],
+    "enUnmatched": [
+     "night",
+     "rain",
+     "maths",
+     "visibility",
+     "triple"
+    ],
+    "expectations": [
+     {
+      "en": "night",
+      "candidates": [
+       "nag"
+      ],
+      "present": []
+     },
+     {
+      "en": "rain",
+      "candidates": [
+       "reën"
+      ],
+      "present": []
+     },
+     {
+      "en": "triple",
+      "candidates": [
+       "drievoudig"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "helfte",
+     "form": "helfte",
+     "via": "helfte",
+     "glosses": [
+      "half"
+     ],
+     "matchesSource": [
+      "half"
+     ]
+    },
+    {
+     "token": "sig",
+     "form": "sig",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "dubbel",
+     "form": "dubbel",
+     "via": "dubbel",
+     "glosses": [
+      "double"
+     ],
+     "matchesSource": [
+      "double"
+     ]
+    },
+    {
+     "token": "konsentrasie",
+     "form": "konsentrasie",
+     "via": "konsentrasie",
+     "glosses": [
+      "concentration",
+      "consistency"
+     ],
+     "matchesSource": [
+      "concentration"
+     ]
+    },
+    {
+     "token": "keer",
+     "form": "keer",
+     "via": "keer",
+     "glosses": [
+      "check",
+      "defend",
+      "steady",
+      "stop"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "respek",
+     "form": "respek",
+     "via": "respek",
+     "glosses": [
+      "respect",
+      "regard",
+      "respects"
+     ],
+     "matchesSource": [
+      "respect"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "This weather has 'meh' written all over it.",
+   "text": "Hierdie weer het n 'meh' houding.",
+   "key": "cloudy/day (bank cloudy#23)",
+   "source": "bank",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "contamination",
+     "severity": "medium",
+     "token": "meh",
+     "message": "'meh' is an English word with no af attestation and is not in the English source line",
+     "evidence": {
+      "english": true,
+      "inhouseOnly": true
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "houding",
+     "message": "'houding' means 'attitude; pose' — nothing in the English source; the source's 'written' would normally be 'geskrewe', none present",
+     "evidence": {
+      "glosses": [
+       "attitude",
+       "pose"
+      ],
+      "via": "houding",
+      "expected": [
+       {
+        "en": "written",
+        "candidates": [
+         "geskrewe"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "houding",
+       "freq": 213,
+       "sources": [
+        "leipzig",
+        "nchlt",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "Leipzig afr_mixed_2019_300K #154025",
+        "text": "Hy is ook vriendelik en goedhartig, maar soms steek hy sy sagter kant weg agter ’n “macho” houding."
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 2,
+    "attested": 1,
+    "unknown": 1,
+    "enContent": 3,
+    "enMatched": [],
+    "enUnmatched": [
+     "weather",
+     "meh",
+     "written"
+    ],
+    "expectations": [
+     {
+      "en": "weather",
+      "candidates": [
+       "weer",
+       "verweer"
+      ],
+      "present": [
+       "weer"
+      ]
+     },
+     {
+      "en": "written",
+      "candidates": [
+       "geskrewe"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "houding",
+     "form": "houding",
+     "via": "houding",
+     "glosses": [
+      "attitude",
+      "pose"
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "The moon has hung out a do-not-disturb sign.",
+   "text": "Die maan het 'n 'moenie steur nie'-bordjie opgehang.",
+   "key": "cloudy/night (bank cloudy#78)",
+   "source": "bank",
+   "confidence": 0.3,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "moenie",
+     "message": "negation 'moenie' without the closing 'nie' at the end of the clause",
+     "evidence": {
+      "sentence": "Die maan het 'n 'moenie steur nie'-bordjie opgehang."
+     }
+    },
+    {
+     "check": "semantic",
+     "severity": "low",
+     "token": "steur",
+     "message": "'steur' means 'to be bothered; to bother, to annoy; sturgeon' — nothing in the English source; the source's 'sign' would normally be 'teken' / 'tekens', none present",
+     "evidence": {
+      "glosses": [
+       "to be bothered",
+       "to bother, to annoy",
+       "sturgeon",
+       "interfere"
+      ],
+      "via": "steur",
+      "expected": [
+       {
+        "en": "sign",
+        "candidates": [
+         "teken",
+         "tekens"
+        ],
+        "present": []
+       }
+      ],
+      "nearMiss": null,
+      "timeClash": false,
+      "collocations": [],
+      "cite": {
+       "word": "steur",
+       "freq": 89,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "dictionary",
+        "hunspell"
+       ],
+       "example": {
+        "source": "kaikki #531",
+        "text": "Ek steur my fokkol aan jou"
+       }
+      }
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 5,
+    "attested": 5,
+    "unknown": 0,
+    "enContent": 4,
+    "enMatched": [
+     "moon",
+     "do-not-disturb"
+    ],
+    "enUnmatched": [
+     "hung",
+     "sign"
+    ],
+    "expectations": [
+     {
+      "en": "sign",
+      "candidates": [
+       "teken",
+       "tekens"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "maan",
+     "form": "maan",
+     "via": "maan",
+     "glosses": [
+      "moon"
+     ],
+     "matchesSource": [
+      "moon"
+     ]
+    },
+    {
+     "token": "moenie",
+     "form": "moenie",
+     "via": "moenie",
+     "glosses": [
+      "contraction of moet + nie, literally “mustn’t; shouldn’t”",
+      "do not, don’t; used with the infinitive of any verb to form the negative imperative"
+     ],
+     "matchesSource": [
+      "don"
+     ]
+    },
+    {
+     "token": "steur",
+     "form": "steur",
+     "via": "steur",
+     "glosses": [
+      "to be bothered",
+      "to bother, to annoy",
+      "sturgeon",
+      "interfere"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "nie'-bordjie",
+     "form": "bordjie",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "opgehang",
+     "form": "opgehang",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "The ice in that jug never stood a chance and everybody knew it.",
+   "text": "Die ys in daardie beker het nooit 'n kans gestaan nie en almal het geweet.",
+   "key": "heat/night",
+   "source": "new",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "nooit",
+     "message": "negation 'nooit' without the closing 'nie' at the end of the clause",
+     "evidence": {
+      "sentence": "Die ys in daardie beker het nooit 'n kans gestaan nie en almal het geweet."
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 6,
+    "attested": 6,
+    "unknown": 0,
+    "enContent": 6,
+    "enMatched": [
+     "ice",
+     "chance",
+     "everybody"
+    ],
+    "enUnmatched": [
+     "jug",
+     "stood",
+     "knew"
+    ],
+    "expectations": [
+     {
+      "en": "knew",
+      "candidates": [
+       "geken",
+       "het geweet"
+      ],
+      "present": [
+       "het geweet"
+      ]
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "ys",
+     "form": "ys",
+     "via": "ys",
+     "glosses": [
+      "ice, frozen water",
+      "ice, methamphetamine"
+     ],
+     "matchesSource": [
+      "ice"
+     ]
+    },
+    {
+     "token": "beker",
+     "form": "beker",
+     "via": "beker",
+     "glosses": [
+      "cup, beaker",
+      "cup"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "kans",
+     "form": "kans",
+     "via": "kans",
+     "glosses": [
+      "chance",
+      "opportunity",
+      "probability"
+     ],
+     "matchesSource": [
+      "chance"
+     ]
+    },
+    {
+     "token": "gestaan",
+     "form": "gestaan",
+     "via": "gestaan",
+     "glosses": [
+      "to stand"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "almal",
+     "form": "almal",
+     "via": "almal",
+     "glosses": [
+      "all; everyone",
+      "all",
+      "everybody",
+      "everyone"
+     ],
+     "matchesSource": [
+      "everybody"
+     ]
+    },
+    {
+     "token": "geweet",
+     "form": "geweet",
+     "via": "geweet",
+     "glosses": [
+      "past participle of weet",
+      "to know",
+      "to be aware of",
+      "know",
+      "knowing",
+      "knowingly"
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "The paving has stopped absorbing anything and is just passing it along.",
+   "text": "Die plaveisel absorbeer niks meer nie en gee dit net aan.",
+   "key": "rain/night",
+   "source": "new",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "niks",
+     "message": "negation 'niks' without the closing 'nie' at the end of the clause",
+     "evidence": {
+      "sentence": "Die plaveisel absorbeer niks meer nie en gee dit net aan."
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 3,
+    "attested": 3,
+    "unknown": 0,
+    "enContent": 6,
+    "enMatched": [],
+    "enUnmatched": [
+     "paving",
+     "stopped",
+     "absorbing",
+     "anything",
+     "passing",
+     "along"
+    ],
+    "expectations": [
+     {
+      "en": "stopped",
+      "candidates": [
+       "halte",
+       "stuit",
+       "stuiting",
+       "stilhouplek",
+       "afsluit",
+       "staak",
+       "stop",
+       "diafragma"
+      ],
+      "present": []
+     },
+     {
+      "en": "anything",
+      "candidates": [
+       "iets",
+       "enige iets",
+       "enigiets"
+      ],
+      "present": []
+     },
+     {
+      "en": "passing",
+      "candidates": [
+       "passeerdraad"
+      ],
+      "present": []
+     },
+     {
+      "en": "along",
+      "candidates": [
+       "langs",
+       "met",
+       "al langs",
+       "in",
+       "saam",
+       "vooruit",
+       "aan",
+       "deur"
+      ],
+      "present": [
+       "aan",
+       "die hele tyd"
+      ]
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "plaveisel",
+     "form": "plaveisel",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "absorbeer",
+     "form": "absorbeer",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "gee",
+     "form": "gee",
+     "via": "gee",
+     "glosses": [
+      "to give",
+      "make",
+      "makes"
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Nobody is walking that promenade tonight and the lights know it.",
+   "text": "Niemand stap vanaand daardie promenade nie en die ligte weet dit.",
+   "key": "wind/night",
+   "source": "new",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "Niemand",
+     "message": "negation 'Niemand' without the closing 'nie' at the end of the clause",
+     "evidence": {
+      "sentence": "Niemand stap vanaand daardie promenade nie en die ligte weet dit."
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 5,
+    "attested": 5,
+    "unknown": 0,
+    "enContent": 6,
+    "enMatched": [
+     "walking",
+     "tonight",
+     "lights",
+     "know"
+    ],
+    "enUnmatched": [
+     "nobody",
+     "promenade"
+    ],
+    "expectations": [
+     {
+      "en": "nobody",
+      "candidates": [
+       "niemand"
+      ],
+      "present": [
+       "niemand"
+      ]
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "stap",
+     "form": "stap",
+     "via": "stap",
+     "glosses": [
+      "step",
+      "steps",
+      "walk",
+      "walks"
+     ],
+     "matchesSource": [
+      "walk"
+     ]
+    },
+    {
+     "token": "vanaand",
+     "form": "vanaand",
+     "via": "vanaand",
+     "glosses": [
+      "tonight, this evening (in the evening of the current day)",
+      "tonight"
+     ],
+     "matchesSource": [
+      "tonight"
+     ]
+    },
+    {
+     "token": "promenade",
+     "form": "promenade",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    },
+    {
+     "token": "ligte",
+     "form": "ligte",
+     "via": "ligte",
+     "glosses": [
+      "attributive form of lig",
+      "plural of lig",
+      "light; not heavy",
+      "slight; mild",
+      "to lift, to raise",
+      "to weigh (the anchor)"
+     ],
+     "matchesSource": [
+      "lig",
+      "light",
+      "slight",
+      "dark"
+     ]
+    },
+    {
+     "token": "weet",
+     "form": "weet",
+     "via": "weet",
+     "glosses": [
+      "to know",
+      "to be aware of",
+      "know",
+      "knowing",
+      "knowingly",
+      "knows"
+     ],
+     "matchesSource": [
+      "know",
+      "knowing"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Nobody in that building can open a window and every one of them has tried.",
+   "text": "Niemand in daardie gebou kan 'n venster oopmaak nie en elkeen van hulle het probeer.",
+   "key": "heat/day",
+   "source": "new",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "morphology",
+     "severity": "medium",
+     "token": "Niemand",
+     "message": "negation 'Niemand' without the closing 'nie' at the end of the clause",
+     "evidence": {
+      "sentence": "Niemand in daardie gebou kan 'n venster oopmaak nie en elkeen van hulle het probeer."
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 5,
+    "attested": 5,
+    "unknown": 0,
+    "enContent": 5,
+    "enMatched": [
+     "nobody",
+     "building",
+     "open",
+     "window"
+    ],
+    "enUnmatched": [
+     "tried"
+    ],
+    "expectations": [
+     {
+      "en": "tried",
+      "candidates": [
+       "het probeer",
+       "bewese"
+      ],
+      "present": [
+       "het probeer"
+      ]
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "gebou",
+     "form": "gebou",
+     "via": "gebou",
+     "glosses": [
+      "building",
+      "past participle of bou",
+      "to build",
+      "building, construction (activity of building)",
+      "structure",
+      "body"
+     ],
+     "matchesSource": [
+      "build",
+      "body"
+     ]
+    },
+    {
+     "token": "venster",
+     "form": "venster",
+     "via": "venster",
+     "glosses": [
+      "window"
+     ],
+     "matchesSource": [
+      "window"
+     ]
+    },
+    {
+     "token": "oopmaak",
+     "form": "oopmaak",
+     "via": "oopmaak",
+     "glosses": [
+      "clear",
+      "open",
+      "opens"
+     ],
+     "matchesSource": [
+      "open"
+     ]
+    },
+    {
+     "token": "elkeen",
+     "form": "elkeen",
+     "via": "elkeen",
+     "glosses": [
+      "everyone; everybody",
+      "anyone",
+      "every",
+      "everybody",
+      "everyone"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "probeer",
+     "form": "probeer",
+     "via": "probeer",
+     "glosses": [
+      "to try",
+      "attempt",
+      "trying"
+     ],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Even the seagulls are walking today.",
+   "text": "Selfs die meeuë loop vandag.",
+   "key": "wind/dawn (bank wind#9)",
+   "source": "bank",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "meeuë",
+     "message": "'meeuë' — seen only in this app's own copy, in no external source; closest attested: 'meeue' (4× kaikki/leipzig/hunspell, distance 1)",
+     "evidence": {
+      "closest": {
+       "word": "meeue",
+       "d": 1,
+       "freq": 4,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "hunspell"
+       ]
+      },
+      "inhouseOnly": true
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 3,
+    "attested": 2,
+    "unknown": 1,
+    "enContent": 3,
+    "enMatched": [
+     "walking",
+     "today"
+    ],
+    "enUnmatched": [
+     "seagulls"
+    ],
+    "expectations": []
+   },
+   "back": [
+    {
+     "token": "loop",
+     "form": "loop",
+     "via": "loop",
+     "glosses": [
+      "to walk",
+      "walking, gait",
+      "course",
+      "barrel",
+      "business end (of a rifle, etc.)",
+      "run: a rapid passage in music, especially along a scale"
+     ],
+     "matchesSource": [
+      "walk"
+     ]
+    },
+    {
+     "token": "vandag",
+     "form": "vandag",
+     "via": "vandag",
+     "glosses": [
+      "today"
+     ],
+     "matchesSource": [
+      "today"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Fire up the Weber. It's the law.",
+   "text": "Steek die Weber aan. Dit is die wet.",
+   "key": "clear/dusk (bank weekend#1)",
+   "source": "bank",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "contamination",
+     "severity": "medium",
+     "token": "wet",
+     "message": "'wet' is core English weather vocabulary left untranslated",
+     "evidence": {
+      "english": true,
+      "core": true
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 3,
+    "attested": 2,
+    "unknown": 0,
+    "enContent": 3,
+    "enMatched": [],
+    "enUnmatched": [
+     "fire",
+     "weber",
+     "law"
+    ],
+    "expectations": [
+     {
+      "en": "fire",
+      "candidates": [
+       "vuur",
+       "ontsteek",
+       "bak",
+       "stook",
+       "skiet",
+       "vonk",
+       "brand",
+       "vat"
+      ],
+      "present": [
+       "ontsteek",
+       "aansteek"
+      ]
+     },
+     {
+      "en": "law",
+      "candidates": [
+       "wet",
+       "reël",
+       "reg",
+       "regte",
+       "wette",
+       "reëls"
+      ],
+      "present": [
+       "wet"
+      ]
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "Steek",
+     "form": "steek",
+     "via": "steek",
+     "glosses": [
+      "lead",
+      "pass"
+     ],
+     "matchesSource": []
+    },
+    {
+     "token": "Weber",
+     "form": "weber",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "The ice cream van is playing everyone's anthem.",
+   "text": "Die roomyswa speel almal se volkslied.",
+   "key": "heat/day (bank heat#27)",
+   "source": "bank",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "roomyswa",
+     "message": "'roomyswa' — seen only in this app's own copy, in no external source; closest attested: 'roomys' (59× kaikki/leipzig/hunspell, distance 2)",
+     "evidence": {
+      "closest": {
+       "word": "roomys",
+       "d": 2,
+       "freq": 59,
+       "sources": [
+        "kaikki",
+        "leipzig",
+        "hunspell"
+       ]
+      },
+      "inhouseOnly": true
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 4,
+    "attested": 3,
+    "unknown": 1,
+    "enContent": 6,
+    "enMatched": [
+     "playing",
+     "everyone's",
+     "anthem"
+    ],
+    "enUnmatched": [
+     "ice",
+     "cream",
+     "van"
+    ],
+    "expectations": [
+     {
+      "en": "ice",
+      "candidates": [
+       "ys"
+      ],
+      "present": []
+     },
+     {
+      "en": "cream",
+      "candidates": [
+       "room"
+      ],
+      "present": []
+     },
+     {
+      "en": "van",
+      "candidates": [
+       "vervoerwa",
+       "toe wa",
+       "toewa"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "speel",
+     "form": "speel",
+     "via": "speel",
+     "glosses": [
+      "to play",
+      "play",
+      "playing",
+      "portray"
+     ],
+     "matchesSource": [
+      "play"
+     ]
+    },
+    {
+     "token": "almal",
+     "form": "almal",
+     "via": "almal",
+     "glosses": [
+      "all; everyone",
+      "all",
+      "everybody",
+      "everyone"
+     ],
+     "matchesSource": [
+      "everyone"
+     ]
+    },
+    {
+     "token": "volkslied",
+     "form": "volkslied",
+     "via": "volkslied",
+     "glosses": [
+      "national anthem"
+     ],
+     "matchesSource": [
+      "anthem"
+     ]
+    }
+   ]
+  },
+  {
+   "lang": "af",
+   "en": "Schrodinger's rain. It both is and isn't.",
+   "text": "Schrödinger se reën. Dit is én is nie.",
+   "key": "cloudy/day (bank rain-possible#14)",
+   "source": "bank",
+   "confidence": 0.25,
+   "action": "triage",
+   "findings": [
+    {
+     "check": "lexical",
+     "severity": "medium",
+     "token": "Schrödinger",
+     "message": "'Schrödinger' — seen only in this app's own copy, in no external source",
+     "evidence": {
+      "closest": null,
+      "inhouseOnly": true
+     }
+    }
+   ],
+   "coverage": {
+    "contentTokens": 3,
+    "attested": 2,
+    "unknown": 1,
+    "enContent": 4,
+    "enMatched": [
+     "rain"
+    ],
+    "enUnmatched": [
+     "schrodinger's",
+     "both",
+     "isn't"
+    ],
+    "expectations": [
+     {
+      "en": "both",
+      "candidates": [
+       "beide"
+      ],
+      "present": []
+     }
+    ]
+   },
+   "back": [
+    {
+     "token": "reën",
+     "form": "reën",
+     "via": "reën",
+     "glosses": [
+      "rain",
+      "to rain"
+     ],
+     "matchesSource": [
+      "rain"
+     ]
+    },
+    {
+     "token": "én",
+     "form": "én",
+     "via": null,
+     "glosses": [],
+     "matchesSource": []
+    }
+   ]
+  }
+ ]
+}

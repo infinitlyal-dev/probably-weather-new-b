@@ -2,8 +2,24 @@
   "note": "isiXhosa's main risk is UNATTESTED tokens and fused word boundaries, not a fixed banned list. hard is empty; the checker screens for attestation. soft lists forms the reviewer flagged as unattested/awkward.",
   "hard": [],
   "soft": [
-    { "token": "lwengqeleolukwenza", "issue": "fused word boundary — should be 'lwengqele olukwenza'" },
-    { "token": "ii-crows", "issue": "code-switch where 'amahlungulu' is the natural attested word" }
+    {
+      "token": "lwengqeleolukwenza",
+      "issue": "fused word boundary — should be 'lwengqele olukwenza'"
+    },
+    {
+      "token": "ii-crows",
+      "issue": "code-switch where 'amahlungulu' is the natural attested word"
+    },
+    {
+      "token": "iimphuphuma",
+      "means": "outbursts / overflows",
+      "misused_for": "wind gusts (LANGUAGE_AUDIT_PHASE3_REPORT.md MED-XH-M2)"
+    },
+    {
+      "token": "kufukufuku",
+      "means": "lukewarm / mild warmth",
+      "misused_for": "partly cloudy (LANGUAGE_AUDIT_PHASE3_REPORT.md MED-XH-M3)"
+    }
   ],
   "attestation_rule": "Flag any content word absent from corpus-confirmed.jsonl and not a standard attested isiXhosa word. Prefer plain attested forms over ornate unconfirmed ones."
 }

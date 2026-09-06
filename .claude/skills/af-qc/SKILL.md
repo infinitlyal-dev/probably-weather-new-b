@@ -1,84 +1,121 @@
 ---
 name: af-qc
-description: Afrikaans (af) translation quality checker for Probably Weather. Use whenever working on the `af` column of the `T` object in `assets/app.js`, the `INSTALL_T` object in `assets/install.js`, the `PTR_COPY` object, or the `WEATHER_COPY` (`heroLabels`, `headlines`, `witty`). Triggers on: Afrikaans, AF translation, Afrikaanse, AF QC, af column, Maandag, Sondag, braai, donder, Suidooster, AWS spelling, Pharos. Conservative-by-default: never auto-apply low-confidence corrections — defer to native-speaker review.
+description: Afrikaans (af) translation quality checker for Probably Weather, backed by corpora. Use whenever working on the `af` column of the `T` object in `assets/app.js`, `INSTALL_T` in `assets/install.js`, `PTR_COPY`, `WEATHER_COPY` (`heroLabels`, `headlines`, `witty`), or the bespoke af transcreations in `review/af-batch-*.json`. Triggers on: Afrikaans, AF translation, Afrikaanse, AF QC, af column, Maandag, Sondag, braai, donder, Suidooster, AWS spelling, Pharos, lang-check. Conservative-by-default: the tool ranks doubts for a native reader and never applies a fix.
 ---
 
 # af-qc — Afrikaans QC for Probably Weather
 
-> **Status: heuristic checklist, NOT dictionary-backed.**
->
-> This skill performs pattern-based checks (cross-language exact-match comparison, AWS 2017 spelling heuristics, length / English-loanword sniff, capitalisation conventions) using only the source `T` object and Claude's in-context Afrikaans knowledge. It does **NOT** call Pharos Aanlyn, the AWS digital lookup, or any other dictionary API. The "consult Pharos / AWS 2017" references in the procedure below are documentation breadcrumbs for manual native-speaker review, not automated lookups.
->
-> Use this skill as a structured checklist when triaging Afrikaans strings, and as a contract specification for what a future dictionary-backed tool would look like. Do **not** treat its "confidence" outputs as dictionary-validated. Confidence here is heuristic confidence (how strong the structural signal is), not lexicographic confidence (whether Pharos actually agrees).
->
-> Semantic mismatches — a real Afrikaans word used in the wrong sense, e.g. `weather.gusts` translated to a literal but contextually wrong noun — are **not catchable by this skill**. They require native review or a bilingual gloss lookup that this skill does not perform.
->
-> See `LANGUAGE_AUDIT_PHASE3_REPORT.md` for the full Phase 3 audit and the investigation behind this disclaimer.
+> **Status: corpus-backed (2026-09-06).** The check is `node scripts/lang-check.mjs --lang af`.
+> It replaced the heuristic checklist that shipped in May 2026 after a validation exam against a
+> gold set of native rulings (`scripts/lang-check/exam-result.md`): wrong-sense recall 6% → 50%,
+> wrong-language (Dutch) recall 11% → 100%, precision 37% → 64% on 990 native-good and 75 known-bad
+> Afrikaans lines. Confidence is evidence-backed — every finding cites the corpus hit.
 
-## When to use
+## What backs it
 
-- Any edit touching the `af:` value of an i18n leaf in `T`, `INSTALL_T`, `PTR_COPY`, or `WEATHER_COPY`.
-- Reviewing a batch of Afrikaans strings for a release.
-- Investigating a cross-language duplicate flagged in `I18N_CROSS_LANGUAGE_AUDIT.md`.
+Compiled by `node scripts/lang-check.mjs --build-index af` from `.lang-check-cache/` (fetched by
+`node scripts/lang-check/fetch-corpora.mjs`; licences listed in `scripts/lang-check/lib/build-index.mjs`):
 
-## References (consult before flagging)
+- **Hunspell af_ZA** (LibreOffice, LGPL) — 148 819 expanded forms, 3 351 with a diacritic. The
+  authority for `wêreld`, `reën`, `môre`, `sê`, `lê`, `hê`, `oë`.
+- **Leipzig `afr_mixed_2019_300K`** — 300 000 sentences, 263 698 word forms with frequency, plus
+  neighbour co-occurrence (collocation evidence) and an example sentence per word.
+- **kaikki.org Afrikaans** (English Wiktionary extract) — 9 909 lemmas with English glosses, the
+  source of the back-translation.
+- **Autshumato EN↔AF word/phrase lists** (CTexT, CC BY 2.5 ZA) — 6 238 words, 1 059 phrases: the
+  "expected translation" side of the semantic check.
+- **NCHLT Afrikaans annotated corpus** (CC BY 2.5 ZA) — 61 319 tokens with lemma and POS.
+- **Constitution (Afrikaans text)** — attested formal register and an EN-aligned parallel text.
+- **Hunspell nl_NL** — Dutch forms, used only to catch Dutch contamination (`niet`, `zijn`, `regen`).
+- **The app's own native bank** (`lang-packs/af/corpus-confirmed.jsonl`) — listed in evidence but
+  never counted as external attestation, because the bank is what is being checked.
 
-- **Pharos** (pharosaanlyn.co.za) — authoritative AF↔EN dictionary, free online.
-- **AWS 2017** (Afrikaanse Woordelys en Spelreëls, 11de uitgawe) — official spelling rules.
-- Native AF use locally: existing PW corpus in `assets/weather-copy.js` and `assets/app.js` (already tested in `tests/af-day-abbreviations.test.js`).
+Pharos Aanlyn, the WAT (woordeboek.co.za) and VivA's Woordeboekportaal are reachable but behind
+logins with no API; they are not used. Nothing here is an AWS 2017 lookup; the diacritic authority
+is Hunspell af_ZA plus corpus frequency.
+
+## How to run it
+
+```bash
+# one line
+node scripts/lang-check.mjs --lang af --en "Rain tonight" --text "Reen vanaand"
+
+# a set (JSON array of {lang, en, text, key}); --verbose shows low notes and the back-translation
+node scripts/lang-check.mjs --file lines.json --verbose
+
+# the bespoke set awaiting Al's review → review/lang-check-triage-af.md
+node scripts/lang-check/triage.mjs --lang af
+```
+
+Verdict per line: `{ confidence, action: pass | triage | triage-high, findings[], coverage, back }`.
+`findings[].evidence` carries the source, the frequency and an attested sentence.
+
+## What it checks (a–d in `scripts/lang-check/lib/checker.mjs`)
+
+1. **Lexical.** Every content word is looked up (exact form, then as a solid compound of two
+   attested words — Afrikaans writes `wintersdrafweer` solid). Unknown words get the closest
+   attested form. A word whose diacritic variant is far more frequent (`wereld` 249× vs `wêreld`
+   3182×) is a HIGH finding; the af-qc diacritic traps from the May checklist (`more`→`môre`,
+   `se`→`sê` at clause end, `reen`→`reën`) survive as MEDIUM findings.
+2. **Morphological.** The double negative: a clause with `nie/geen/nooit/niemand/niks/moenie` must
+   close with `nie` (or end on the negator itself). Weekday abbreviations must be the AWS forms
+   (`Ma Di Wo Do Vr Sa So`, or `Dins/Don/Vry/Sat/Son`). Mid-sentence capitals on common nouns are
+   noted at LOW. Word order beyond this is not checked.
+3. **Semantic.** The Afrikaans words are back-translated through their glosses and compared with
+   the English source through a weather-domain synonym table (koud/cold counts for chilly). The
+   source's own content words are checked for a dictionary-expected Afrikaans counterpart. A real
+   word one letter from the expected word (`wond` for `wind`, `rein` for `reën`, `mes` for `mis`)
+   is a near-miss finding. Collocation evidence from Leipzig is quoted when the doubtful word does
+   co-occur with the line's other words.
+4. **Contamination.** Dutch forms attested in nl_NL but not in Afrikaans (`niet`, `ik`, `wij`,
+   `vandaag`, `regen`, `lucht`) are HIGH. English core weather words left untranslated (`rain`,
+   `cloud`, `tonight`) are MEDIUM; `wind`, `storm`, `warm` are Afrikaans too and are exempt.
+   Brand names and Al's deliberate code-switches (`braai`, `Weber`, `boet`) are recognised from the
+   English line and the SA register list and are never flagged above LOW.
+
+## What it still cannot see
+
+- **Whether the joke lands.** A transcreation can be attested word for word and still miss. The
+  side-by-side sheet (`review/af-side-by-side.html`) is the instrument for that; the tool is not.
+- **A real word in a sense the dictionary also lists.** `Verwyder onlangs` (adverb for noun) is a
+  calque the tool does not catch: both words are correct Afrikaans and the glosses overlap the source.
+- **Diacritic homographs in ambiguous positions.** `se` (possessive) vs `sê` (says) mid-sentence,
+  `le`/`lê`, `he`/`hê` are only caught at clause end or when the bare form is otherwise unattested.
+- **Register and stiffness.** `Reën oggend` vs `Oggendreën` is invisible to it.
+- **Al's own voice.** Al is the native author; a line he wrote is final even when the corpus
+  prefers another spelling. The tool did flag four of his bank lines for `reen`/`wereld`
+  (`review/lang-check-triage-af.md` AF-T1–T4) — those go to him as questions, not edits.
 
 ## Conservative protocol
 
 > **Low confidence = defer to human. Never auto-apply.**
 
-For every candidate fix:
+- `triage-high` (≥ 0.5) and `triage` (≥ 0.25) go to `TRIAGE_NATIVE_REVIEW.md` under the Afrikaans
+  section with the tool's evidence quoted. `pass` means the corpora found nothing to object to.
+- The tool never edits `assets/`. A fix reaches the bank only through Al's ruling on the sheet.
+- Known legitimate duplicates with English (`Wind`, `Week`, `Sat`, `Son`, `Temp`, `UV`, `Later`,
+  `in`) are not flagged.
 
-1. Compare against the Pharos reference for that exact word/phrase.
-2. Check the AWS 2017 spelling — common traps: `y` vs `i`, `ie` vs `ee`, double consonants, capitalisation of compound nouns.
-3. If the string is identical to the English value AND English is not the canonical AF form (Pharos confirms a distinct AF word exists), this is a flag.
-4. If unclear → write to `TRIAGE_NATIVE_REVIEW.md`, do **not** mutate `assets/app.js`.
+## Examples (from the exam and the triage run)
 
-## `check(string, key, context)` procedure
-
-```
-check(value, key, context) → { confidence: 0–1, flags: [], suggestions: [] }
-```
-
-Steps (mental model):
-
-1. **Length sanity** — single English word like "Edit" / "Done" in the AF slot is suspicious unless AWS-listed as loan (e.g. "OK").
-2. **English-loanword detection** — if value is verbatim English AND a Pharos AF equivalent exists, flag with confidence 0.6 max.
-3. **Conjugation basics** — verb-form match (infinitive vs imperative): UI buttons in AF take imperative form for second-person commands ("Stel in" not "Stel"), but short labels often use infinitive ("Stoor"). Mild flag if mismatch is obvious.
-4. **Capitalisation** — AF capitalises proper nouns and start-of-sentence only. Title-cased mid-sentence words are flagged (confidence 0.5).
-5. **Known legitimate duplicates** — `Wind`, `Week`, `Sat`, `Son`, `Temp`, `UV`, `Later` shared with English are **expected** in AF (per `I18N_CROSS_LANGUAGE_AUDIT.md`). Suppress flag.
-
-## High-confidence fix criteria (auto-apply allowed)
-
-All three must hold:
-
-- A canonical AF form exists in Pharos AND in the existing PW corpus.
-- The current value is verbatim from another language (most often English) AND that language is not a known shared form.
-- Edit distance from current to suggested ≤ 5 characters OR the words are entirely different lexemes.
-
-## Examples (from this codebase)
-
-- ✅ HIGH: `days.mon.af` was `"Maa"`, fixed to `"Ma"` in commit `0519c3f`. Pharos + AWS confirm. Auto-applied via test (`tests/af-day-abbreviations.test.js`).
-- ⚠️ DEFER: `weather.probably.af = weather.likely.af = "Waarskynlik"` — same word for both senses, semantically merged. Not a bug.
-- ⚠️ DEFER: `screens.week.af = "Week"` — Afrikaans actually uses "week", coincides with English. Pharos confirms.
+- ✅ CAUGHT: `Nie die einde van die wereld nie` → HIGH morphology, `wêreld` 3182× vs `wereld` 249×,
+  example from kaikki: "Van die wêreld se beste wyne kom van hierdie streek af."
+- ✅ CAUGHT: `Dit regen niet vandaag.` → HIGH contamination (`regen`, `vandaag` Dutch markers; `niet`).
+- ✅ CAUGHT: `Maa` for Mon → HIGH morphology, not an AWS abbreviation (expected `Ma`).
+- ⚠️ MISSED: `Verwyder onlangs` (calque) and `Die tuin se uiteindelik dankie` (`sê` mid-sentence).
+- ✅ CLEAN: `Die hond is onder die bed. Slim skuif, eerlikwaar.` passes with every word attested.
 
 ## Output format
 
-When invoked, return:
-
-```
+```json
 {
-  "key": "settings.somekey",
-  "current": "<af value>",
-  "confidence": 0.85,
-  "flags": ["english-loanword", "pharos-mismatch"],
-  "suggestion": "Stoor",
-  "rationale": "Pharos lists 'stoor' for 'save'; current value 'Save' is verbatim English."
+  "lang": "af", "en": "Not the end of the world.", "text": "Nie die einde van die wereld nie.",
+  "confidence": 0.8, "action": "triage-high",
+  "findings": [{ "check": "morphology", "severity": "high", "token": "wereld",
+    "message": "'wereld' is attested 249× but 'wêreld' 3182× — missing diacritic",
+    "evidence": { "suggestion": "wêreld", "cite": { "freq": 3182, "sources": ["kaikki","leipzig","hunspell"], "example": { "source": "kaikki #8", "text": "Van die wêreld se beste wyne kom van hierdie streek af." } } } }],
+  "coverage": { "contentTokens": 3, "attested": 3, "unknown": 0, "enMatched": ["end"], "enUnmatched": ["world"] }
 }
 ```
 
-If `confidence < 0.7`, write to `TRIAGE_NATIVE_REVIEW.md` instead of editing.
+If `action` is not `pass`, write the entry to `TRIAGE_NATIVE_REVIEW.md`; do not mutate `assets/`.

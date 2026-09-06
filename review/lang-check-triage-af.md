@@ -1,0 +1,1072 @@
+# lang-check triage — Afrikaans — 2026-09-06
+
+Set: review/af-batch-1..4.json — 533 newly transcreated + 350 reused from the native-reviewed bank.
+Checked 883 lines in 4.2 s. **27 need a human** (4 high, 23 lower); 856 passed every corpus check.
+
+Doubt types among the triaged lines: morphology 15, lexical 11, contamination 3, semantic 2.
+
+"Passed" means the corpora found nothing to object to. It does not mean the line lands — a transcreated joke can be attested word for word and still miss. The checker cannot see register, humour, or a real word used in a sense the dictionaries also list.
+
+Ranked by confidence that something is wrong. Each entry: the doubt, then the evidence (source counts and an attested sentence). Nothing here has been changed in the banks.
+
+### AF-T1 · 0.80 · HIGH · cloudy/dawn (bank cloudy#21) · bank
+- **EN:** Not Instagram weather. Not the end of the world.
+- **AF:** Nie Troufoto weer nie. Nie die einde van die wereld nie.
+- **high / morphology:** 'wereld' is attested 249× but 'wêreld' 3182× — missing diacritic
+  - evidence: *kaikki #8* — Van die wêreld se beste wyne kom van hierdie streek af.
+- **medium / morphology:** 'wereld' is usually 'wêreld' in this register (af-qc diacritic trap; 'wêreld' attested 3182×)
+  - evidence: *kaikki #8* — Van die wêreld se beste wyne kom van hierdie streek af.
+- notes: 'einde' means 'end; ending; expiry' — nothing in the English source; the source's 'world' would normally be 'wêreld' / 'wêrelde', none present
+- coverage: 3/3 content words attested; source words matched 0/4 (unmatched: instagram, weather, end, world)
+
+### AF-T2 · 0.80 · HIGH · cloudy/dawn (bank cloudy#24) · bank
+- **EN:** At least it's not raining. That's the bar.
+- **AF:** Ten minste reen dit nie. Dis die standaard.
+- **high / morphology:** 'reen' is attested 62× but 'reën' 530× — missing diacritic
+  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
+ Die son sal weer skyn, maar dit moet eers reën.
+- **medium / morphology:** 'reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)
+  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
+ Die son sal weer skyn, maar dit moet eers reën.
+- notes: 'standaard' means 'standard' — nothing in the English source; the source's 'raining' would normally be 'reën', none present
+- coverage: 4/4 content words attested; source words matched 0/2 (unmatched: raining, bar)
+
+### AF-T3 · 0.80 · HIGH · cloudy/dusk (bank rain-possible#12) · bank
+- **EN:** Rain? Possibly. Commitment? Never.
+- **AF:** Reen? Moontlik. Sal ek my lewe daar op wed? Nooit.
+- **high / morphology:** 'Reen' is attested 62× but 'reën' 530× — missing diacritic
+  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
+ Die son sal weer skyn, maar dit moet eers reën.
+- **medium / morphology:** 'Reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)
+  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
+ Die son sal weer skyn, maar dit moet eers reën.
+- notes: 'lewe' means 'life; alternative form of leef; living' — nothing in the English source; the source's 'rain' would normally be 'reën', none present
+- coverage: 4/4 content words attested; source words matched 1/3 (unmatched: rain, commitment)
+
+### AF-T4 · 0.80 · HIGH · rain/night (bank rain#35) · bank
+- **EN:** The traffic just remembered rain exists. Again.
+- **AF:** Die verkeer het pas onthou daar is n ding soos reen bestaan weer.
+- **high / morphology:** 'reen' is attested 62× but 'reën' 530× — missing diacritic
+  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
+ Die son sal weer skyn, maar dit moet eers reën.
+- **medium / morphology:** 'reen' is usually 'reën' in this register (af-qc diacritic trap; 'reën' attested 530×)
+  - evidence: *kaikki #320* — My ou tante Koba het soms gemeen:
+ Die son sal weer skyn, maar dit moet eers reën.
+- notes: 'pas' means 'pace, step; pass (a card or document); fit' — nothing in the English source; the source's 'rain' would normally be 'reën', none present
+- coverage: 7/7 content words attested; source words matched 3/4 (unmatched: rain)
+
+### AF-T5 · 0.35 · lower · heat/day · new
+- **EN:** Nobody has touched that car door and every one of them knows why.
+- **AF:** Niemand het aan daardie kardeur geraak nie en elkeen van hulle weet hoekom.
+- **medium / morphology:** negation 'Niemand' without the closing 'nie' at the end of the clause
+- notes: 'geraak' means 'to become; to get; to grow' — nothing in the English source; the source's 'touched' would normally be 'aan-aan' / 'tassintuig' / 'tas' / 'aanraking', none present · 'elkeen' means 'everyone; everybody; anyone; every' — nothing in the English source; the source's 'touched' would normally be 'aan-aan' / 'tassintuig' / 'tas' / 'aanraking', none present
+- coverage: 5/5 content words attested; source words matched 3/5 (unmatched: nobody, touched)
+
+### AF-T6 · 0.35 · lower · heat/dusk · new
+- **EN:** That water has been topped up twice and it is still the wrong temperature.
+- **AF:** Daardie water is twee keer bygevul en dit is steeds die verkeerde temperatuur.
+- **medium / lexical:** 'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)
+- notes: 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present
+- coverage: 5/6 content words attested; source words matched 3/5 (unmatched: topped, twice)
+
+### AF-T7 · 0.35 · lower · rain/dusk (bank rain#56) · bank
+- **EN:** Two drops on a windscreen and the whole N1 forgets everything it ever learned.
+- **AF:** Twee druppels op die voorruit en die hele N1 se geheue is skoon gewas.
+- **medium / semantic:** 'geheue' means 'memory; store' — nothing in the English source; it is 2 letters from 'geheel', the usual word for 'whole'
+  - evidence: *Leipzig afr_mixed_2019_300K #127002* — Geheue, herinnering en onthou is sleutelterme wat soos ‘n refrein deur Marais se bundel klink – dit gaan dus ook om temporele grense en die geheue as ruimte.
+- notes: 'skoon' means 'clean; cleansed; straight, undiluted, pure; beautiful, pretty' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'gewas' · 'gewas' means 'crop; wax; past of wees' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'skoon'
+- coverage: 6/6 content words attested; source words matched 1/6 (unmatched: windscreen, whole, forgets, everything, learned)
+
+### AF-T8 · 0.35 · lower · storm/day (bank storm#14) · bank
+- **EN:** The sky just went full Carte Blanche.
+- **AF:** Die lug het voluit bedonerd gegaan.
+- **medium / lexical:** 'bedonerd' — seen only in this app's own copy, in no external source; closest attested: 'bedonnerd' (4× kaikki/leipzig, distance 1)
+- notes: 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'gegaan' means 'past participle of gaan; to go; Used to express the future tense, often while implying nearness in time or certainty, like English going to.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- coverage: 3/4 content words attested; source words matched 0/4 (unmatched: sky, full, carte, blanche)
+
+### AF-T9 · 0.30 · lower · heat/night · new
+- **EN:** Ice in the jug, fan on the chair: the night shift of a forty-degree day.
+- **AF:** Ys in die beker, waaier op die stoel: die nagskof van 'n veertiggraaddag.
+- **medium / lexical:** 'veertiggraaddag' — not found in any external source
+- notes: 'beker' means 'cup, beaker; cup' — nothing in the English source; the source's 'night' would normally be 'nag', none present
+- coverage: 5/6 content words attested; source words matched 3/8 (unmatched: jug, night, shift, forty-degree, day)
+
+### AF-T10 · 0.30 · lower · rain/night · new
+- **EN:** The pool is being topped up by head office tonight, free of charge.
+- **AF:** Die swembad word vanaand deur hoofkantoor bygevul, gratis.
+- **medium / lexical:** 'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)
+- notes: 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present
+- coverage: 5/6 content words attested; source words matched 4/7 (unmatched: topped, head, office)
+
+### AF-T11 · 0.30 · lower · wind/dawn · new
+- **EN:** Those sheets will be dry before she has pegged the last one on the line.
+- **AF:** Daardie lakens gaan droog wees voor sy die laaste een opgehang het.
+- **medium / semantic:** 'voor' means 'before; in front of; furrow' — nothing in the English source; it is 1 letter from 'voer', the usual word for 'line'
+  - evidence: *kaikki #59* — die maatskappy wat ek voor gewerk het
+- notes: 'laaste' means 'last; to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present
+- coverage: 5/5 content words attested; source words matched 2/4 (unmatched: pegged, line)
+
+### AF-T12 · 0.30 · lower · heat/dawn · new
+- **EN:** That water was cold about forty minutes ago and nobody has topped it up.
+- **AF:** Daardie water was omtrent veertig minute gelede koud en niemand het dit bygevul nie.
+- **medium / lexical:** 'bygevul' — not found in any external source; closest attested: 'bygeval' (1× leipzig/hunspell, distance 1)
+- notes: 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'topped' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present
+- coverage: 6/7 content words attested; source words matched 6/7 (unmatched: topped)
+
+### AF-T13 · 0.30 · lower · heat/dawn · new
+- **EN:** She is lying on tile rather than anything soft, and that was a decision.
+- **AF:** Sy lê op teël eerder as op iets sags, en dit was 'n besluit.
+- **medium / contamination:** 'sags' is an English word with no af attestation and is not in the English source line
+- notes: 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'rather' would normally be 'liewer', none present
+- coverage: 4/5 content words attested; source words matched 1/6 (unmatched: lying, tile, rather, anything, soft)
+
+### AF-T14 · 0.30 · lower · heat/night · new
+- **EN:** She is not looking for anything and both of us know it.
+- **AF:** Sy soek niks nie en ons weet dit albei.
+- **medium / morphology:** negation 'niks' without the closing 'nie' at the end of the clause
+- notes: 'soek' means 'to search, seek; market, souq, bazaar, street of shops; search' — nothing in the English source; the source's 'looking' would normally be 'lyk' / 'kyk' / 'voorkoms', none present
+- coverage: 3/3 content words attested; source words matched 1/4 (unmatched: looking, anything, both)
+
+### AF-T15 · 0.30 · lower · cold-clear/day · new
+- **EN:** Frost on the grass, steam off the field: winter running weather at its most honest.
+- **AF:** Ryp op die gras, stoom van die veld af: wintersdrafweer op sy eerlikste.
+- **medium / lexical:** 'wintersdrafweer' — not found in any external source
+- notes: 'Ryp' means 'ripe, mature' — nothing in the English source; the source's 'weather' would normally be 'weer' / 'verweer', none present
+- coverage: 5/6 content words attested; source words matched 4/8 (unmatched: frost, winter, running, weather)
+
+### AF-T16 · 0.30 · lower · rain/dusk · new
+- **EN:** Joburg summer rain: arrives at five, soaks everything, gone by supper.
+- **AF:** Joburgse somerreën: kom vyfuur, deurweek alles, weg teen aandete.
+- **medium / lexical:** 'Joburgse' — not found in any external source; closest attested: 'joburg' (17× leipzig, distance 2)
+- notes: 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'rain' would normally be 'reën', none present
+- coverage: 7/8 content words attested; source words matched 2/9 (unmatched: joburg, summer, rain, arrives, five, soaks, gone)
+
+### AF-T17 · 0.30 · lower · rain/night · new
+- **EN:** Night rain maths: half the visibility, double the concentration, triple the respect.
+- **AF:** Nagreënwiskunde: helfte die sig, dubbel die konsentrasie, drie keer die respek.
+- **medium / lexical:** 'Nagreënwiskunde' — not found in any external source
+- notes: 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'night' would normally be 'nag', none present
+- coverage: 6/7 content words attested; source words matched 4/9 (unmatched: night, rain, maths, visibility, triple)
+
+### AF-T18 · 0.30 · lower · cloudy/day (bank cloudy#23) · bank
+- **EN:** This weather has 'meh' written all over it.
+- **AF:** Hierdie weer het n 'meh' houding.
+- **medium / contamination:** 'meh' is an English word with no af attestation and is not in the English source line
+- notes: 'houding' means 'attitude; pose' — nothing in the English source; the source's 'written' would normally be 'geskrewe', none present
+- coverage: 1/2 content words attested; source words matched 0/3 (unmatched: weather, meh, written)
+
+### AF-T19 · 0.30 · lower · cloudy/night (bank cloudy#78) · bank
+- **EN:** The moon has hung out a do-not-disturb sign.
+- **AF:** Die maan het 'n 'moenie steur nie'-bordjie opgehang.
+- **medium / morphology:** negation 'moenie' without the closing 'nie' at the end of the clause
+- notes: 'steur' means 'to be bothered; to bother, to annoy; sturgeon' — nothing in the English source; the source's 'sign' would normally be 'teken' / 'tekens', none present
+- coverage: 5/5 content words attested; source words matched 2/4 (unmatched: hung, sign)
+
+### AF-T20 · 0.25 · lower · heat/night · new
+- **EN:** The ice in that jug never stood a chance and everybody knew it.
+- **AF:** Die ys in daardie beker het nooit 'n kans gestaan nie en almal het geweet.
+- **medium / morphology:** negation 'nooit' without the closing 'nie' at the end of the clause
+- coverage: 6/6 content words attested; source words matched 3/6 (unmatched: jug, stood, knew)
+
+### AF-T21 · 0.25 · lower · rain/night · new
+- **EN:** The paving has stopped absorbing anything and is just passing it along.
+- **AF:** Die plaveisel absorbeer niks meer nie en gee dit net aan.
+- **medium / morphology:** negation 'niks' without the closing 'nie' at the end of the clause
+- coverage: 3/3 content words attested; source words matched 0/6 (unmatched: paving, stopped, absorbing, anything, passing, along)
+
+### AF-T22 · 0.25 · lower · wind/night · new
+- **EN:** Nobody is walking that promenade tonight and the lights know it.
+- **AF:** Niemand stap vanaand daardie promenade nie en die ligte weet dit.
+- **medium / morphology:** negation 'Niemand' without the closing 'nie' at the end of the clause
+- coverage: 5/5 content words attested; source words matched 4/6 (unmatched: nobody, promenade)
+
+### AF-T23 · 0.25 · lower · heat/day · new
+- **EN:** Nobody in that building can open a window and every one of them has tried.
+- **AF:** Niemand in daardie gebou kan 'n venster oopmaak nie en elkeen van hulle het probeer.
+- **medium / morphology:** negation 'Niemand' without the closing 'nie' at the end of the clause
+- coverage: 5/5 content words attested; source words matched 4/5 (unmatched: tried)
+
+### AF-T24 · 0.25 · lower · wind/dawn (bank wind#9) · bank
+- **EN:** Even the seagulls are walking today.
+- **AF:** Selfs die meeuë loop vandag.
+- **medium / lexical:** 'meeuë' — seen only in this app's own copy, in no external source; closest attested: 'meeue' (4× kaikki/leipzig/hunspell, distance 1)
+- coverage: 2/3 content words attested; source words matched 2/3 (unmatched: seagulls)
+
+### AF-T25 · 0.25 · lower · clear/dusk (bank weekend#1) · bank
+- **EN:** Fire up the Weber. It's the law.
+- **AF:** Steek die Weber aan. Dit is die wet.
+- **medium / contamination:** 'wet' is core English weather vocabulary left untranslated
+- coverage: 2/3 content words attested; source words matched 0/3 (unmatched: fire, weber, law)
+
+### AF-T26 · 0.25 · lower · heat/day (bank heat#27) · bank
+- **EN:** The ice cream van is playing everyone's anthem.
+- **AF:** Die roomyswa speel almal se volkslied.
+- **medium / lexical:** 'roomyswa' — seen only in this app's own copy, in no external source; closest attested: 'roomys' (59× kaikki/leipzig/hunspell, distance 2)
+- coverage: 3/4 content words attested; source words matched 3/6 (unmatched: ice, cream, van)
+
+### AF-T27 · 0.25 · lower · cloudy/day (bank rain-possible#14) · bank
+- **EN:** Schrodinger's rain. It both is and isn't.
+- **AF:** Schrödinger se reën. Dit is én is nie.
+- **medium / lexical:** 'Schrödinger' — seen only in this app's own copy, in no external source
+- coverage: 2/3 content words attested; source words matched 1/4 (unmatched: schrodinger's, both, isn't)
+
+## Passed (856)
+
+Listed so the reader can see what was not sent to them. Low-severity notes only.
+
+- `clear/dawn` Die Weber kyk nou al twintig minute hoe hy daardie grasperk natmaak.
+- `clear/dawn` Koffie in die een hand, tuinslang in die ander, en die hele dag nog voor. — 'ander' means 'other; different; second' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `clear/dawn` Dit is die enigste twintig minute van die dag wat aan hom behoort.
+- `clear/dawn` Die jakaranda laat pers val op 'n grasperk wat hy pas natgemaak het. — 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'finished' would normally be 'klaar', none present — but it does co-occur in corpus with 'val' · 'pas' means 'pace, step; pass (a card or document); fit' — nothing in the English source; the source's 'finished' would normally be 'klaar', none present
+- `clear/dawn` Niemand in daardie huis is al wakker nie, en dit is presies die plan. — 'wakker' means 'alert' — nothing in the English source; the source's 'yet' would normally be 'nog' / 'tog' / 'maar' / 'al', none present · 'presies' means 'exact, precise; accurate, careful; exactly, just, right' — nothing in the English source; the source's 'yet' would normally be 'nog' / 'tog' / 'maar' / 'al', none present
+- `heat/day` Daardie syfer het in tagtig kilometer nie geroer nie, en die uitsig ook nie. — 'syfer' means 'digit, numeral; statistic, figure; to seep, to filter (to slowly pass through an opening or medium)' — nothing in the English source; the source's 'number' would normally be 'nommer' / 'nommertjie' / 'tal' / 'aantal', none present · 'uitsig' means 'view; prospect; outlook' — nothing in the English source; the source's 'number' would normally be 'nommer' / 'nommertjie' / 'tal' / 'aantal', none present
+- `heat/day` Die lugreëling verloor en almal in hierdie kar het ophou praat daaroor. — 'ophou' means 'cease; ceases' — nothing in the English source; the source's 'stopped' would normally be 'halte' / 'stuit' / 'stuiting' / 'stilhouplek', none present — but it does co-occur in corpus with 'praat'
+- `heat/day` Saterdag, en die enigste skaduwee vir die volgende uur is binne hierdie kar.
+- `heat/day` Iemand het gesê die padkos sal reg wees in die bagasiebak. Iemand was verkeerd. — 'gesê' means 'past participle of sê; to say' — nothing in the English source; the source's 'boot' would normally be 'bak' / 'stewel', none present · 'reg' means 'right; correct; real; true; actual; justice' — nothing in the English source; the source's 'boot' would normally be 'bak' / 'stewel', none present
+- `heat/day` Die pad vorentoe is al 'n baie lang tyd dieselfde pad. — 'dieselfde' means 'same; similarly' — nothing in the English source; the source's 'ahead' would normally be 'voor' / 'vooruit', none present — but it does co-occur in corpus with 'tyd'
+- `heat/day` Daardie sproeier is die hele somer die beste waarde in hierdie tuin.
+- `heat/day` Daardie twee op die stoep het hul keuse gemaak en hulle bly daarby. — 'gemaak' means 'past participle of maak; to make; construct' — nothing in the English source; the source's 'sticking' would normally be 'stok' / 'kleef', none present — but it does co-occur in corpus with 'keuse' · 'bly' means 'to live (somewhere); to stay; to remain; happy' — nothing in the English source; the source's 'sticking' would normally be 'stok' / 'kleef', none present · 'daarby' means 'thereto' — nothing in the English source; the source's 'sticking' would normally be 'stok' / 'kleef', none present
+- `heat/day` Niemand gaan die temperatuur onthou nie, net die sproeier.
+- `heat/day` Sondag, en die waterrekening het sy lot reeds stilweg aanvaar.
+- `heat/day` Die grasperk kry pak wat niks met die son te doen het nie.
+- `heat/dusk` Die windpomp het ophou draai, en so weet jy die dag is verby. — 'ophou' means 'cease; ceases' — nothing in the English source; the source's 'stopped' would normally be 'halte' / 'stuit' / 'stuiting' / 'stilhouplek', none present · 'verby' means 'over, past, gone by; past' — nothing in the English source; the source's 'stopped' would normally be 'halte' / 'stuit' / 'stuiting' / 'stilhouplek', none present
+- `heat/dusk` Daardie glas is al 'n uur vol en sy is glad nie haastig nie.
+- `heat/dusk` Sondag, en die Karoo doen die een ding wat hy beter as enige plek doen. — 'Karoo' means 'The vast plain in South Africa that borders the Kalahari Desert.' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present · 'plek' means 'a spot; a place; location' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present — but it does co-occur in corpus with 'beter', 'enige'
+- `heat/dusk` Die stoeptrap is nog warm en gaan nog 'n uur so bly. — 'bly' means 'to live (somewhere); to stay; to remain; happy' — nothing in the English source; the source's 'step' would normally be 'tree' / 'graad' / 'danspassie' / 'trap', none present
+- `heat/dusk` Niemand het nog 'n lig binne aangesit nie en niemand is van plan om nie. — 'aangesit' means 'started' — nothing in the English source; the source's 'intends' would normally be 'bestemde' / 'beoogde' / 'beoog' / 'bestem', none present · 'plan' means 'plan; plans; project' — nothing in the English source; the source's 'intends' would normally be 'bestemde' / 'beoogde' / 'beoog' / 'bestem', none present
+- `heat/dusk` Die roomys verloor en al drie van hulle weet dit.
+- `heat/dusk` Vrydag, en hierdie promenade doen die werk van ses verskillende kroeë.
+- `heat/dusk` Almal het presies dieselfde tyd uitgekom en niemand het dit beplan nie.
+- `heat/dusk` Die lig is oor nege minute weg en niemand haas hom nie. — 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present — but it does co-occur in corpus with 'minute' · 'haas' means 'hare, rabbit; meat of the hare or rabbit; almost' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present
+- `heat/dusk` Daardie hond het hierdie stuk meer kere geloop as enigeen van hulle. — 'stuk' means 'A piece, part.; part; piece' — nothing in the English source; the source's 'stretch' would normally be 'strek', none present · 'enigeen' means 'anyone' — nothing in the English source; the source's 'stretch' would normally be 'strek', none present
+- `heat/dusk` Nog warm genoeg met sonsak dat die roomys die sweet doen.
+- `heat/night` Die ys in daardie glas het omtrent vier minute oor. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'left' would normally be 'links', none present — but it does co-occur in corpus with 'vier'
+- `heat/night` Sondagaand, en hierdie promenade is besiger as wat dit die hele middag was. — 'besiger' means 'busy' — nothing in the English source; the source's 'night' would normally be 'nag', none present
+- `heat/night` Die hele dorp het gewag dat die son sak en toe eers uitgekom. — 'sak' means 'bag; case; drop' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'son' · 'eers' means 'first, at first; even; plural of eer' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `heat/night` Daardie water was koud toe iemand dit daar neergesit het.
+- `heat/night` Nege-uur die aand en die plaveisel gee die middag nog terug. — 'terug' means 'ago' — nothing in the English source; the source's 'nine' would normally be 'nege', none present
+- `heat/night` Die nag het nog niks afgekoel nie; selfs die water sweet. — 'sweet' means 'sweat; to sweat' — nothing in the English source; the source's 'cooled' would normally be 'gaaf' / 'kief', none present
+- `heat/night` Te warm om binne te slaap, so die hele gesin het onder die Melkweg ingetrek. — 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'ingetrek' means 'settled' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `heat/night` Iemand het die lig binne aangelos en niemand gaan terug daarvoor nie. — 'terug' means 'ago' — nothing in the English source; the source's 'left' would normally be 'links', none present
+- `heat/night` Die kleinste is nog wakker en het besluit die lug is dit werd. — 'kleinste' means 'least; small, little; little' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'wakker' means 'alert' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'werd' means 'obsolete form of word' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `heat/night` Vyf matrasse op 'n stoep, en nie een van hulle is 'n kompromie nie.
+- `heat/night` Vrydagaand, en die plafon is aansienlik opgegradeer.
+- `heat/night` Te warm vir mure vanaand: die hele gesin het die slaapkamer buitentoe geskuif.
+- `heat/night` Donderdagaand, en die balkon is tot hoofkamer bevorder.
+- `heat/night` Dit is hier buite om middernag koeler as wat dit sesuur binne was. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'six' would normally be 'ses', none present
+- `heat/night` Daardie gordyn is die enigste bewegende lug in die hele woonstel. — 'woonstel' means 'An apartment.' — nothing in the English source; the source's 'entire' would normally be 'gaaf' / 'geheelstuk' / 'heel' / 'koevert met inhoud', none present
+- `heat/night` Niemand gaan daar terug in voor die mure die dag laat gaan nie. — 'terug' means 'ago' — nothing in the English source; the source's 'back' would normally be 'rug' / 'agtertong' / 'boekrug maak' / 'agterspeler', none present · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'back' would normally be 'rug' / 'agtertong' / 'boekrug maak' / 'agterspeler', none present · 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'back' would normally be 'rug' / 'agtertong' / 'boekrug maak' / 'agterspeler', none present
+- `heat/night` Tweeuur die oggend, en daardie waaier was die hardste ding in die huis.
+- `heat/night` Die glas water was omtrent vier uur gelede 'n baie goeie idee.
+- `heat/night` Die net hanteer muskiete. Die waaier hanteer al die res. — 'res' means 'balance; remainder; rest' — nothing in the English source; the source's 'everything' would normally be 'alles' / 'als', none present
+- `heat/night` Maandag begin oor vyf uur en daardie waaier gaan nie af nie.
+- `heat/night` Iemand het die kussing vanaand al twee keer omgedraai. — 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present
+- `heat/night` Die waaier is op sy derde skof en die nag koel steeds nie af nie. — 'steeds' means 'always; constantly' — nothing in the English source; the source's 'cooling' would normally be 'gaaf' / 'kief', none present
+- `heat/night` Niemand was sedert omtrent vieruur vanmiddag binne daardie huis nie. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'four' would normally be 'vier', none present
+- `heat/night` Die swembad is die hele dag die enigste sinvolle vertrek op die plek.
+- `heat/night` Daardie biere op die rand is vanaand op hul derde eienaar.
+- `heat/night` Saterdag, en die water is steeds warmer as die lug daarbo. — 'steeds' means 'always; constantly' — nothing in the English source; the source's 'above' would normally be 'bo' / 'bokant' / 'hierbo', none present
+- `heat/night` Die ligte het twee uur gelede aangegaan en niemand het voorgestel om te trek nie. — 'aangegaan' means 'to concern; to be a concern to; to be someone’s business; to start; to turn on; to continue; to go on' — nothing in the English source; the source's 'suggested' would normally be 'gesuggereerde' / 'suggereer', none present
+- `heat/night` Nagswem is nie 'n plan nie; dit is wat hierdie weer jou laat.
+- `heat/night` Die hond het uitgewerk waar die koudste teëls in die huis is.
+- `heat/night` Dit is die badkamervloer en dit is nou sy slaapkamer.
+- `heat/night` Niemand in hierdie huis klim vanaand in daardie bad nie.
+- `heat/night` Hy lê daar sedert omtrent agtuur en het geen verdere planne nie. — 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'eight' would normally be 'ag' / 'agt', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'eight' would normally be 'ag' / 'agt', none present · 'planne' means 'projects' — nothing in the English source; the source's 'eight' would normally be 'ag' / 'agt', none present
+- `heat/night` Woensdag, en die hond het tot dusver die enigste sinvolle besluit geneem. — 'geneem' means 'cash; take; takes' — nothing in the English source; the source's 'far' would normally be 'ver', none present — but it does co-occur in corpus with 'besluit'
+- `heat/night` Teël is vanaand die koudste oppervlak in die huis, en dit is gevat.
+- `rain/night` Die frangipani laat blomme oor die hele plaveisel val en vat geen verantwoordelikheid nie.
+- `rain/night` Maandagaand, een verligte venster, en die reën doen al die praat.
+- `rain/night` Daardie muur het 'n voglyn ouer as vanaand se storm.
+- `rain/night` Die diefwering is die enigste reguit lyne wat in die hele straat oor is.
+- `rain/night` Iemand binne het reeds besluit hulle gaan vanaand nêrens heen nie.
+- `rain/night` Die geut dra hierdie straat se probleme reguit af na die volgende een.
+- `rain/night` Jakarandablomme en stormwater, Joburg se mins gunsteling kombinasie.
+- `rain/night` Die elektriese heining is oukei. Die sypaadjie het heeltemal moed opgegee. — 'oukei' means 'okay (satisfactory, alright, in acceptable order); okay, alright' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present · 'moed' means 'courage' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present — but it does co-occur in corpus with 'opgegee'
+- `rain/night` Woensdag, en die rit huis toe gaan teen môre 'n storie wees.
+- `rain/night` Elke afvoer in hierdie pad werk nou namens iemand anders.
+- `rain/night` Reën deur 'n straatlig lyk soos ruis, en vanaand is die hele straat daarop ingestel. — 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'soos' · 'daarop' means 'thereon; thereupon' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'ingestel' means 'adjusted' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `rain/night` Die swembad is meetbaar voller as wat dit met aandete was.
+- `rain/night` Niemand gaan dit vir 'n maand hoef by te vul nie. — 'vul' means 'charge; fill' — nothing in the English source; the source's 'top' would normally be 'boonste' / 'bolaag' / 'bedek' / 'blad', none present
+- `rain/night` Die swembadlig is die enigste ding in hierdie tuin wat nog sy werk doen.
+- `rain/night` Dinsdagaand, en die swembad het dit heelwat beter as enigiemand. — 'heelwat' means 'considerable; considerably; many' — nothing in the English source; the source's 'night' would normally be 'nag', none present — but it does co-occur in corpus with 'beter'
+- `rain/night` Die enigste ding wat vanaand swem is die water self.
+- `rain/night` Daardie sambreel is toe van die oomblik af dat dit opgedaag het.
+- `rain/night` Elkeen van daardie parkeerplekke was iemand se plan vir vanaand. — 'Elkeen' means 'everyone; everybody; anyone; every' — nothing in the English source; the source's 'bays' would normally be 'baai' / 'vak' / 'inham' / 'afdeling', none present
+- `rain/night` Saterdagaand by die see, en die see het die hele promenade gevat. — 'gevat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'night' would normally be 'nag', none present
+- `rain/night` Die geverfde lyne is die enigste ding daar buite wat nog 'n vorm hou. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'painted' would normally be 'verf', none present
+- `rain/night` Iemand het die hele pad hierheen gery om hierna te kyk, en toe weer gery. — 'gery' means 'row; to ride; to drive' — nothing in the English source; the source's 'left' would normally be 'links', none present · 'hierna' means 'hereinafter' — nothing in the English source; the source's 'left' would normally be 'links', none present — but it does co-occur in corpus with 'kyk' · 'gery' means 'row; to ride; to drive' — nothing in the English source; the source's 'left' would normally be 'links', none present
+- `storm/night` Die boom het erger Dinsdae gesien en gaan weer erger sien.
+- `storm/night` Elke hek in hierdie straat is toe en elke hond het 'n mening.
+- `storm/night` Êrens agter daardie mure maak 'n hele straat asof dit slaap. — 'agter' means 'behind; back' — nothing in the English source; the source's 'somewhere' would normally be 'iewers', none present · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'somewhere' would normally be 'iewers', none present
+- `storm/night` Die straatlig werk oortyd waarvoor niemand gaan betaal nie.
+- `storm/night` Môreoggend gaan hierdie pad onder iemand anders se boom lê. — 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; the source's 'tomorrow' would normally be 'môre', none present · 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'tomorrow' would normally be 'môre', none present
+- `storm/night` Die geut vertel jou presies hoe lank jy dit gelos het. — 'geut' means 'channel; launder' — nothing in the English source; the source's 'left' would normally be 'links', none present · 'gelos' means 'to leave, abandon; loose; discharge' — nothing in the English source; the source's 'left' would normally be 'links', none present
+- `storm/night` Die tuinslanghaspel gaan vir 'n ruk baie onnodig voel.
+- `storm/night` Jakarandaseisoen en 'n Maandag, en die plaveisel vat albei sleg. — 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'both' would normally be 'beide', none present
+- `storm/night` Wie ook al vanaand in die straat geparkeer het, is nou spyt.
+- `storm/night` Daardie sekuriteitslig doen die beste werk wat dit die hele jaar gedoen het. — 'gedoen' means 'past participle of doen; to do; does' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present — but it does co-occur in corpus with 'werk'
+- `storm/night` Vrydagaand, en die stoep het stilweg die hele aand geword.
+- `storm/night` Daardie een gloeilamp hou hierdie hele gebou aanmekaar.
+- `storm/night` Die politoer op daardie vloer is nie met soveel water in gedagte ontwerp nie. — 'gedagte' means 'thought, idea; opinion; thought' — nothing in the English source; the source's 'polish' would normally be 'pools', none present
+- `storm/night` Alles wat groen is daar buite het die beste nag van sy lewe.
+- `storm/night` Jy kan die dak beter hoor as die televisie.
+- `storm/night` Reën wat in een solied laken van die dak afkom: die stoep het vanaand 'n gordyn.
+- `storm/night` Daardie kar het dit met omtrent vier minute te spaar onder die afdak gemaak.
+- `storm/night` Die pad is nog droog, wat die laaste ding is wat dit vanaand gaan wees.
+- `storm/night` 'n Vrystaatse storm gee jou presies soveel waarskuwing soos wat hy lus het. — 'lus' means 'loop; tab' — nothing in the English source; the source's 'state' would normally be 'staat' / 'proefafdruk' / 'gesteldheid' / 'toestand', none present
+- `storm/night` Almal in hierdie straat staan nou by 'n venster wat hulle nooit gebruik nie.
+- `storm/night` Die stof en die reën gaan nou 'n baie kort argument hê.
+- `wind/day` Die lakens is klaar droog en die wind is nog nie klaar met hulle nie.
+- `wind/day` Die Helderberg is skoon, die wasgoed is horisontaal, en so is Sondag afgehandel. — 'afgehandel' means 'settled' — nothing in the English source; the source's 'washing' would normally be 'was', none present
+- `wind/day` Daardie klein olyfboompie gaan met 'n permanente skuinste grootword. — 'klein' means 'small, little; little; minor' — nothing in the English source; the source's 'olive' would normally be 'olyf', none present
+- `wind/day` Niemand in hierdie huis betaal vandag om iets droog te maak nie.
+- `wind/day` Daardie wasgoedpennetjies is al wat tussen jou en 'n heining vol lakens staan.
+- `wind/day` Die vullisblik het dit tot op die sypaadjie gemaak en toe sy eie besluite geneem.
+- `wind/day` Dinsdag is vullisdag, en die wind het duidelik ook die rooster gelees. — 'rooster' means 'register; screen' — nothing in the English source; the source's 'schedule' would normally be 'skedule' / 'vraelys' / 'lys' / 'bylae', none present
+- `wind/day` Die helfte van hierdie straat se herwinning is nou die heining se probleem. — 'herwinning' means 'recall; recovery; retrieval' — nothing in the English source; the source's 'recycling' would normally be 'herbenutting' / 'hersiklering', none present
+- `wind/day` Die eike is oukei. Die vullisdromme het nooit 'n kans gestaan nie.
+- `wind/day` Drie huise is daar buite besig om op te tel wat die wind herverdeel het. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'picking' would normally be 'pluk', none present · 'besig' means 'busy' — nothing in the English source; the source's 'picking' would normally be 'pluk', none present · 'tel' means 'to count; count; tell' — nothing in the English source; the source's 'picking' would normally be 'pluk', none present
+- `wind/day` Woensdag, en die oprit het 'n volkontaksport geword.
+- `wind/day` Iemand gaan vir 'n week blare uit daardie agtersitplek uithaal. — 'blare' means 'plural of blaar; leaf (of a plant)' — nothing in the English source; the source's 'picking' would normally be 'pluk', none present · 'uithaal' means 'extract; remove; removing' — nothing in the English source; the source's 'picking' would normally be 'pluk', none present
+- `wind/day` Daardie deur gaan toeslaan of hy gereed is of nie.
+- `wind/day` Die wind het dit vinniger as hy oopgemaak en hy lag nog steeds.
+- `wind/day` Elke blaar in die straat staan tou om in daardie kar te kom.
+- `wind/day` Die vlegsels het die besluit geneem en sy gaan maar saam. — 'geneem' means 'cash; take; takes' — nothing in the English source; the source's 'braids' would normally be 'vleg', none present — but it does co-occur in corpus with 'besluit' · 'saam' means 'with, together; Used to form adjectives of the base word's quality; compare English -able, English -some.; along' — nothing in the English source; the source's 'braids' would normally be 'vleg', none present
+- `wind/day` Daardie foto gaan heeltemal anders lyk as wat dit voel.
+- `wind/day` Donderdag, en iemand het besluit om dit te geniet eerder as om te kla.
+- `wind/day` Die foon is die enigste ding hier buite wat stil gehou word.
+- `wind/day` Almal anders op hierdie promenade is omtrent twintig minute gelede huis toe.
+- `wind/day` Die trampolien het verhuis en die buurman se muur as maat gevat.
+- `wind/day` Iemand gaan dit vanaand aan iemand anders moet verduidelik.
+- `wind/day` Maandag, en die tuin het homself herrangskik sonder om iemand te vra.
+- `wind/day` Die palms is oukei. Die trampolien het menings gehad oor bly staan. — 'oukei' means 'okay (satisfactory, alright, in acceptable order); okay, alright' — nothing in the English source; the source's 'put' would normally be 'sit', none present · 'gehad' means 'past participle of hê; had; to have' — nothing in the English source; the source's 'put' would normally be 'sit', none present · 'staan' means 'to stand' — nothing in the English source; the source's 'put' would normally be 'sit', none present — but it does co-occur in corpus with 'bly'
+- `wind/day` Dit het die wind vier sekondes gevat om te skuif wat twee uur gevat het om te bou.
+- `wind/day` Elke jakaranda in hierdie straat maak homself op een man leeg.
+- `wind/day` Daardie das is horisontaal vandat hy die kar verlaat het. — 'verlaat' means 'desert; leave; leaves' — nothing in the English source; the source's 'left' would normally be 'links', none present
+- `wind/day` Hy gaan tot Vrydag pers in daardie baadjiesak kry. — 'kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'finding' would normally be 'bevinding' / 'vind' / 'vonds' / 'benodigdhede', none present
+- `wind/day` Woensdagoggend, en die stap van die parkering af is nou die moeilike deel. — 'moeilike' means 'trying' — nothing in the English source; the source's 'hard' would normally be 'harde strand', none present
+- `wind/day` Hy buk so ver oor omdat regop staan opgehou werk het. — 'buk' means 'to crouch, to duck' — nothing in the English source; the source's 'stopped' would normally be 'halte' / 'stuit' / 'stuiting' / 'stilhouplek', none present
+- `wind/day` Daardie oë is nie toe oor die son nie.
+- `wind/day` Vrydag, en die aalwyne het glad niks ongewoons opgemerk nie. — 'glad' means 'even; fairly; quite' — nothing in the English source; the source's 'anything' would normally be 'iets' / 'enige iets' / 'enigiets', none present
+- `wind/day` Die bome by die heining vat dit erger as hy.
+- `wind/day` Hy gaan daar sit tot iets interessanters gebeur, wat nie gaan nie.
+- `wind/day` Daardie pels word deur iets anders as 'n borsel gestreep. — 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'brush' would normally be 'kwas', none present · 'gestreep' means 'band; bar; colours' — nothing in the English source; the source's 'brush' would normally be 'kwas', none present
+- `wind/day` Daardie stap was iemand anders se idee en die hond lê 'n klag in. — 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'registering' would normally be 'aanwys' / 'uitdruk' / 'passing' / 'ooreenslag', none present
+- `wind/day` Sondag, en dit is omtrent so ver as wat een van hulle gaan. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'either' would normally be 'of', none present
+- `wind/day` Die leiband doen heelwat meer werk as waarvoor dit ontwerp is.
+- `wind/day` Hy gaan al daardie sand later op die sitkamermat uitskud.
+- `wind/day` Die see het heeltemal wit geword tot ver uit, en hy het dit voor almal opgemerk. — 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present · 'ver' means 'far, distant; obsolete spelling of vir; distant' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present · 'almal' means 'all; everyone; all; everybody' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present
+- `wind/day` Die jakaranda herversier die hele pad of jy daarvan hou of nie. — 'daarvan' means 'thereof' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'hou' · 'hou' means 'to hold; to keep; hit' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present — but it does co-occur in corpus with 'daarvan'
+- `wind/day` Saterdag, en die wind het sterk menings oor jou planne vir die tuin. — 'planne' means 'projects' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present
+- `wind/day` Daardie gras op die randjie lê plat sedert Donderdag. — 'randjie' means 'hill' — nothing in the English source; the source's 'flat' would normally be 'vlak', none present · 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'flat' would normally be 'vlak', none present — but it does co-occur in corpus with 'plat'
+- `wind/day` Iemand gaan al daardie pers opvee en iemand gaan nie.
+- `wind/day` Die lug het die kleur geword wat Joburg na die groepgesels laat kyk. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'laat' · 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'lug' · 'kyk' means 'to look; to watch; to browse' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `wind/day` Die piesangblare word intyds herontwerp en vat dit goed. — 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present · 'goed' means 'good; bona; fairly' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present
+- `wind/day` Daardie skadunet trom sedert ontbyt en niemand kan die televisie hoor nie.
+- `wind/day` Die see lyk kalm van hier bo af, wat 'n volslae leuen is. — 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'complete' would normally be 'vol' / 'volledig' / 'voltooi' / 'invul', none present
+- `wind/day` Vrydag, en die humiditeit het met die wind saamgespan teen almal.
+- `wind/day` Elke blaar aan daardie palm is nou 'n bietjie anders lank. — 'lank' means 'long; tall' — nothing in the English source; the source's 'length' would normally be 'lengte' / 'duur van les' / 'lengte van kledingstof', none present
+- `wind/day` Die vlag doen sy vaderlandse plig teen omtrent sestig kilometer per uur.
+- `wind/day` Daardie skaduseil is een goeie windvlaag daarvandaan om 'n seil te word. — 'skaduseil' means 'alternative form of skaduwee (“shadow”); shadow' — nothing in the English source; the source's 'sail' would normally be 'vaar', none present · 'daarvandaan' means 'hence' — nothing in the English source; the source's 'sail' would normally be 'vaar', none present
+- `wind/day` Die palm het simmetrie laat vaar en tot een rigting verbind. — 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present — but it does co-occur in corpus with 'vaar' · 'vaar' means 'to sail; to navigate; to fare' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present — but it does co-occur in corpus with 'laat'
+- `wind/day` Niemand aan hierdie kant van Gqeberha hang vandag wasgoed op nie. — 'Gqeberha' is carried over from the source line (place or brand name)
+- `wind/day` Die aalwyn is onaangeraak, wat die hele punt van 'n aalwyn is.
+- `wind/dusk` Die berg lyk omtrent ses aande 'n jaar so, en dit is een van hulle.
+- `wind/dusk` Hulle het vir die sonsondergang gekom en bly daarvoor ten spyte van alles.
+- `wind/dusk` Maandag, en die wind het heeltemal misluk om dit te bederf.
+- `wind/dusk` Niemand se hare gaan dit oorleef nie, en niemand loop nog nie. — 'loop' means 'to walk; walking, gait; course' — nothing in the English source; the source's 'leaving' would normally be 'verlaat', none present
+- `wind/dusk` Leeukop doen die toneel en die wind doen die komedie.
+- `wind/dusk` Daardie baadjie probeer wegkom vandat hy op die fiets geklim het. — 'geklim' means 'to climb; step' — nothing in the English source; the source's 'leave' would normally be 'los' / 'laat' / 'vertrek' / 'verlof', none present
+- `wind/dusk` Die jakarandas gooi alles wat hulle het na een fietsryer.
+- `wind/dusk` Dinsdagaand, en die rit huis toe het 'n onderhandeling geword. — 'rit' means 'drive' — nothing in the English source; the source's 'ride' would normally be 'ry', none present · 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'ride' would normally be 'ry', none present
+- `wind/dusk` Hy ry afdraand en werk steeds vir elke meter daarvan.
+- `wind/dusk` Die blomme kom vinniger van daardie bome af as wat hy onderdeur ry.
+- `wind/dusk` Dit is die tweede keer hierdie week en hulle het nou 'n stelsel.
+- `wind/dusk` Die wasgoedpennetjies het verloor, die muur het gewen, en die bure lag nog. — 'verloor' means 'to lose; drop; lose' — nothing in the English source; the source's 'won' would normally be 'oorwinning' / 'oorwonne', none present · 'gewen' means 'past participle of wen; to win; take' — nothing in the English source; the source's 'won' would normally be 'oorwinning' / 'oorwonne', none present · 'bure' means 'plural of buur; neighbor' — nothing in the English source; the source's 'won' would normally be 'oorwinning' / 'oorwonne', none present
+- `wind/dusk` Niemand gaan ooit daardie een wit sokkie weer kry nie. — 'kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'find' would normally be 'vind' / 'vonds' / 'vondste', none present
+- `wind/dusk` Die wind het gegooi en die buurvrou doen die teruggee.
+- `wind/dusk` Een windvlaag, een muur, en twee huishoudings ken mekaar nou heelwat beter.
+- `wind/dusk` Daardie hare was 'n besluit wat omtrent veertig minute gelede binne geneem is.
+- `wind/dusk` Saterdagaand, en die stap van die voordeur af het die hele voorkoms verslaan. — 'voorkoms' means 'appearance; incidence; look' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `wind/dusk` Haar hare gaan een kant toe, die palm gaan dieselfde kant toe, en nie een is gevra nie. — 'kant' means 'edge; end; margin' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'dieselfde' means 'same; similarly' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'kant' means 'edge; end; margin' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present
+- `wind/dusk` Twaalf treë van die voordeur tot by die kar, en die wind het al twaalf gevat.
+- `wind/dusk` Daardie oprit is vanoggend gevee en is reeds weer volgemaak.
+- `wind/dusk` Daardie boom is omtrent veertig jaar lank deur een wind gevorm.
+- `wind/dusk` Die wasgoed gaan hierdie tyd uit omdat wind goedkoper as elektrisiteit is. — 'tyd' means 'time; tense' — nothing in the English source; the source's 'washing' would normally be 'was', none present
+- `wind/dusk` Die strandmeer het plat en silwer geword, wat niemand wat hier woon flous nie. — 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present · 'woon' means 'reside; resides; residing' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present · 'flous' means 'weak' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present
+- `wind/dusk` Alles in hierdie straat leun dieselfde kant toe, die mense inkluis. — 'dieselfde' means 'same; similarly' — nothing in the English source; the source's 'leans' would normally be 'maer', none present · 'kant' means 'edge; end; margin' — nothing in the English source; the source's 'leans' would normally be 'maer', none present
+- `wind/dusk` Donderdagaand, en die enigste ding wat hier buite nog beweeg is die wasgoeddraad. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present
+- `wind/dusk` Bo-Kaap in die laaste lig, en die wind doen die huishouding.
+- `wind/dusk` Daardie gordyn hang nou al omtrent 'n uur buite die venster.
+- `wind/dusk` Die suidooster het die een oop venster in die hele straat gekry. — 'gekry' means 'past participle of kry; got; to get, receive, obtain' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present
+- `wind/dusk` Iemand gaan by 'n sitkamer vol Seinheuwel tuiskom.
+- `wind/dusk` Die verf is helder, die heuwel is goud, en die wind is die hardste ding hier.
+- `wind/night` Iemand gaan omtrent tweeuur die oggend aan daardie wasgoed dink. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'remember' would normally be 'herinner' / 'onthou', none present · 'dink' means 'to think; believe; believes' — nothing in the English source; the source's 'remember' would normally be 'herinner' / 'onthou', none present
+- `wind/night` Daardie heining leun so sedert Donderdag en dit gaan nie regop kom nie.
+- `wind/night` Die sekuriteitslig vang goed op wat jy liewer nie wil sien beweeg nie. — 'vang' means 'capture; captures; catch' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present · 'goed' means 'good; bona; fairly' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present · 'sien' means 'to see; see; seeing' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present
+- `wind/night` Sondagaand, en selfs die wasgoed weier om dit te aanvaar.
+- `wind/night` Wat ook al nie daar buite vasgemaak is nie, is reeds iemand anders se probleem.
+- `wind/night` Die vonke gaan sywaarts en die tang gaan steeds in.
+- `wind/night` Tafelberg, 'n braai, en 'n wind met sy eie sterk mening.
+- `wind/night` Saterdag, en nie een van hulle wil erken die wind wen nie.
+- `wind/night` Die tang is uit, so die argument oor wie kook is verby.
+- `wind/night` Daardie kole doen meer vir die heining as vir die vleis.
+- `wind/night` Die berg het sy tafeldoek op en die palm hou die houding.
+- `wind/night` Woensdag, en die Kaapse Dokter doen sy rondtes 'n bietjie vroeg.
+- `wind/night` Niemand loop hierdie pad op hierdie uur nie, en vanaand wil niemand ook nie.
+- `wind/night` Daardie palm is al so lank so gebuig dat hy dink hy staan regop. — 'gebuig' means 'to bow; to bend' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'staan' means 'to stand' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present — but it does co-occur in corpus with 'regop'
+- `wind/night` Die hele straat is binne en maak asof die dakgeraas normaal is. — 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `wind/night` Die aalwyn beweeg nie en is glad nie van plan om nou te begin nie. — 'glad' means 'even; fairly; quite' — nothing in the English source; the source's 'intention' would normally be 'bedoeling' / 'intensie', none present · 'plan' means 'plan; plans; project' — nothing in the English source; the source's 'intention' would normally be 'bedoeling' / 'intensie', none present
+- `wind/night` Daardie doringboom leun al van voor enigiemand in hierdie straat aangekom het. — 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'leaning' would normally be 'maer', none present — but it does co-occur in corpus with 'straat'
+- `wind/night` Die stof gaan êrens heen en dit vra nie verlof nie. — 'verlof' means 'leave' — nothing in the English source; the source's 'somewhere' would normally be 'iewers', none present
+- `wind/night` Noord-Kaapse wind huil nie. Dit leun op goed tot hulle gee. — 'huil' means 'to cry; to weep; to wail; to whine' — nothing in the English source; the source's 'leans' would normally be 'maer', none present · 'goed' means 'good; bona; fairly' — nothing in the English source; the source's 'leans' would normally be 'maer', none present
+- `wind/night` Alles hier buite is óf behoorlik gewortel óf reeds weg. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'either' would normally be 'of', none present · 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'either' would normally be 'of', none present
+- `wind/night` Die blare het ingekom. Die kat het nie uitgegaan nie. — 'blare' means 'plural of blaar; leaf (of a plant)' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present · 'uitgegaan' means 'past participle of uitgaan; go out; exit; outgoing' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present
+- `wind/night` Die wind lewer die hele aand blare by daardie deurmat af. — 'blare' means 'plural of blaar; leaf (of a plant)' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present
+- `wind/night` Elke blaar op daardie mat het opgedaag sonder 'n uitnodiging.
+- `wind/night` Die tuin beweeg en hy het besluit die deur is ver genoeg.
+- `wind/night` Die wind bring die buitekant in en hy laat dit na hom toe kom.
+- `wind/night` Die banier hou beter vas as die palms en dit weet dit.
+- `wind/night` Vrydagaand op die promenade en die see het almal se dagboek skoongemaak.
+- `wind/night` Elke palm op hierdie strook wys vanaand na dieselfde ding.
+- `wind/night` Die stad oorkant die water het 'n heeltemal ander aand.
+- `wind/dawn` Daardie stam het skeef gegroei omdat dit hier baie meer gebeur as nie. — 'stam' means 'tribe; bus; foot' — nothing in the English source; the source's 'trunk' would normally be 'slurp', none present · 'gegroei' means 'growth; to grow; grow' — nothing in the English source; the source's 'trunk' would normally be 'slurp', none present
+- `wind/dawn` Die palm hou daardie presiese vorm sedert omtrent drieuur vanoggend.
+- `wind/dawn` Die son is op, die straat is leeg, en die wind was eerste hier.
+- `wind/dawn` Daardie golf het omtrent vier sekondes voor sy daar was op die promenade geland. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'wave' would normally be 'waai', none present — but it does co-occur in corpus with 'vier' · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'wave' would normally be 'waai', none present — but it does co-occur in corpus with 'sekondes'
+- `wind/dawn` Sondagoggend, en die see gooi die eerste helfte daarvan na haar.
+- `wind/dawn` Sy gaan die res van die dag sout proe en sy weet dit.
+- `wind/dawn` Die palm is dubbel gebuig en sy staan hier buite en glimlag daaroor.
+- `wind/dawn` Die promenade is leeg in albei rigtings en daar is 'n rede daarvoor.
+- `wind/dawn` Sy leun teen 'n hoek wat 'n plat paadjie nie normaalweg verg nie.
+- `wind/dawn` Sy gaan tot Saterdag grassade uit daardie baadjie uithaal. — 'uithaal' means 'extract; remove; removing' — nothing in the English source; the source's 'picking' would normally be 'pluk', none present
+- `wind/dawn` Donderdag, en sy is die enigste ding in hierdie pad wat nie sywaarts gaan nie.
+- `wind/dawn` Die helfte van die heining is in die lug voor haar en kom nog steeds aan. — 'steeds' means 'always; constantly' — nothing in the English source; the source's 'hedge' would normally be 'laning', none present
+- `wind/dawn` Die plaveisel voor hulle is deurweek en dit het nie een keer gereën nie.
+- `wind/dawn` Saterdagoggend, en die see was al twee keer oor daardie reling. — 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present
+- `wind/dawn` Nie een van hulle gaan die een wees wat voorstel om om te draai nie. — 'voorstel' means 'display; displaying; introduce' — nothing in the English source; the source's 'suggests' would normally be 'suggereer', none present
+- `wind/dawn` Daardie seemuur doen sy uiterste bes en verloor steeds. — 'uiterste' means 'extreme; supreme; ultimate' — nothing in the English source; the source's 'sea' would normally be 'see', none present — but it does co-occur in corpus with 'bes' · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'sea' would normally be 'see', none present
+- `wind/dawn` Hulle gaan die res van die naweek sout van daardie skoene afkry.
+- `wind/day` Daardie wasgoed gaan droog wees voor sy klaar is om die res uit te dra. — 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'washing' would normally be 'was', none present
+- `wind/day` Sy kyk nie na die wasgoed nie, sy kyk waar dit dalk gaan land. — 'dalk' means 'perchance, perhaps, possibly; maybe; perhaps' — nothing in the English source; the source's 'washing' would normally be 'was', none present
+- `wind/day` Saterdag, en die enigste ding op daardie draad wat werk doen is die pennetjies. — 'draad' means 'wire; end' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present
+- `wind/day` Niemand steek daardie Weber aan voor dit gaan lê nie, en almal op die werf weet dit. — 'steek' means 'lead; pass' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present · 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present
+- `wind/day` Die Weber is hierdie week nie een keer aangesteek nie en vandag is nie die dag nie.
+- `wind/day` Daardie kap sou halfpad in die pad wees as haar hand nie daarop was nie. — 'kap' means 'cap; counter; cut' — nothing in the English source; the source's 'hood' would normally be 'enjinkap', none present · 'sou' means 'preterite of sal; would, should; would; shall, will' — nothing in the English source; the source's 'hood' would normally be 'enjinkap', none present · 'daarop' means 'thereon; thereupon' — nothing in the English source; the source's 'hood' would normally be 'enjinkap', none present
+- `wind/day` Die helfte van die sypaadjie is in die lug en net een van die drie geniet dit.
+- `wind/day` Daardie sak werk soos 'n seil en hy het dit nog nie agtergekom nie.
+- `wind/day` Elke blaar wat die boom hierdie maand laat val het, gaan op kophoogte by hulle verby.
+- `wind/day` Maandag, en die wind is die beste ding wat tot dusver met hom gebeur het.
+- `wind/dusk` Tafelberg is reg daar en nie een van hulle het een keer daarna gekyk nie.
+- `wind/dusk` Nie een van hulle kan regop staan nie en nie een lyk of hulle omgee nie.
+- `wind/dusk` Die spore agter hulle vul reeds toe en hulle het nou net daar geloop.
+- `wind/dusk` Die strand self beweeg vinniger as hulle, en in dieselfde rigting. — 'dieselfde' means 'same; similarly' — nothing in the English source; the source's 'itself' would normally be 'homself', none present
+- `wind/dawn` Hy wou koffie drink. Die beker staan nog op die trap.
+- `wind/dawn` Een pantoffel is klaar uit die spel en die oortreksel wen steeds.
+- `wind/dawn` Die den agter hom is heeltemal oorgebuig, so dit was nooit 'n regverdige wedstryd nie. — 'agter' means 'behind; back' — nothing in the English source; the source's 'right' would normally be 'reg' / 'regterkant' / 'regs' / 'regte', none present · 'wedstryd' means 'competition; game; match' — nothing in the English source; the source's 'right' would normally be 'reg' / 'regterkant' / 'regs' / 'regte', none present
+- `wind/dawn` Elkeen van hulle wys dieselfde kant toe en nie een het dit gekies nie. — 'Elkeen' means 'everyone; everybody; anyone; every' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'dieselfde' means 'same; similarly' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'kant' means 'edge; end; margin' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'gekies' means 'cheek; choose; select' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present
+- `wind/dawn` Nie een van hulle vlieg nie, en dit is die hele voorspelling daar.
+- `wind/dawn` Die sand gaan vinniger by hulle verby as wat die gety inkom.
+- `wind/dawn` Hulle gaan presies so staan tot dit gaan lê, en dit gaan nie lê nie. — 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present · 'lê' means 'to lie (to be in a horizontal position); to lay (to put into a horizontal position); bed' — nothing in the English source; the source's 'drops' would normally be 'ontbind' / 'drup' / 'sak' / 'uitlaat', none present
+- `wind/day` Albei hande is op die romp, wat beteken die hare is op sy eie. — 'eie' means 'own (belonging to oneself); own; respective' — nothing in the English source; the source's 'both' would normally be 'beide', none present — but it does co-occur in corpus with 'hande'
+- `wind/day` Tafelberg is reg agter haar en sy kan nie 'n enkele stukkie daarvan sien nie.
+- `wind/day` Daardie skoen kom volgende af en sy het uit hande geraak. — 'geraak' means 'to become; to get; to grow' — nothing in the English source; the source's 'run' would normally be 'hardloop' / 'masjienryg' / 'vloei' / 'vaar', none present
+- `wind/day` Die blare wat by haar verbygaan was twee strate gelede nog aan 'n boom. — 'blare' means 'plural of blaar; leaf (of a plant)' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present · 'verbygaan' means 'to pass, to go by' — nothing in the English source; the source's 'leaves' would normally be 'verlaat' / 'los' / 'laat' / 'vertrek', none present
+- `wind/day` Dinsdag, en die wind het sterk menings oor iemand anders se uitrusting.
+- `wind/night` Die maan is uit en die palms het sedert sonsak nie opgehou beweeg nie.
+- `wind/night` Die maan hou stil en al die res daarbo nie. — 'stil' means 'satisfies; satisfy' — nothing in the English source; the source's 'everything' would normally be 'alles' / 'als', none present · 'res' means 'balance; remainder; rest' — nothing in the English source; the source's 'everything' would normally be 'alles' / 'als', none present
+- `wind/night` Wat ook al op daardie pad land is nie reën nie, dit is die see wat sywaarts aankom.
+- `wind/night` Die palms maak al ure daardie geraas en niemand is wakker om om te gee nie. — 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'mind' would normally be 'gees' / 'verstand' / 'verstande' / 'geeste', none present — but it does co-occur in corpus with 'wakker' · 'wakker' means 'alert' — nothing in the English source; the source's 'mind' would normally be 'gees' / 'verstand' / 'verstande' / 'geeste', none present — but it does co-occur in corpus with 'maak'
+- `wind/night` Die pad is leeg, elke lig is aan, en die wind het die plek vir homself.
+- `wind/dawn` Daar is meer pennetjies op daardie draad as wat die wasgoed nodig het, en sy weet hoekom. — 'draad' means 'wire; end' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present · 'nodig' means 'necessary; requisite' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present
+- `wind/dawn` Alles op daardie draad gaan teen agtuur na die see ruik. — 'draad' means 'wire; end' — nothing in the English source; the source's 'line' would normally be 'uitvoer' / 'reeks' / 'lyn' / 'leiding', none present
+- `wind/dawn` Die een op die punt het losgekom en sy het dit nog nie gesien nie. — 'punt' means 'end; grade; item' — nothing in the English source; the source's 'loose' would normally be 'los', none present · 'gesien' means 'past participle of sien; seen; to see' — nothing in the English source; the source's 'loose' would normally be 'los', none present
+- `wind/dawn` Vrydag, en die wind doen die helfte van hierdie werk vir haar, gratis.
+- `clear/dawn` Nie een meter skaduwee op hierdie promenade nie — dis hoekom hulle sesuur al uit is. — 'skaduwee' means 'shadow' — nothing in the English source; the source's 'six' would normally be 'ses', none present
+- `clear/dawn` Die see is omtrent nege oggende 'n jaar so plat, en dit is een van hulle. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'flat' would normally be 'vlak', none present
+- `clear/dawn` Daardie berg is so skerp omdat daar vandag absoluut niks in die lug is nie.
+- `clear/dawn` Die lug is heeltemal leeg, wat beteken dit is so koel soos vandag gaan kry. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/dawn` Vrydag, en teen twaalfuur gaan daardie plaveisel te warm wees om op te staan.
+- `clear/dawn` Sy maak sewe-uur nat, want teen nege sou dit gemors wees. — 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'watering' would normally be 'water' / 'water gee' / 'natgooi' / 'benat', none present — but it does co-occur in corpus with 'nat' · 'nat' means 'nat' — nothing in the English source; the source's 'watering' would normally be 'water' / 'water gee' / 'natgooi' / 'benat', none present — but it does co-occur in corpus with 'maak' · 'sou' means 'preterite of sal; would, should; would; shall, will' — nothing in the English source; the source's 'watering' would normally be 'water' / 'water gee' / 'natgooi' / 'benat', none present · 'gemors' means 'to grumble, complain' — nothing in the English source; the source's 'watering' would normally be 'water' / 'water gee' / 'natgooi' / 'benat', none present
+- `clear/dawn` Nie een wolk nie, wat beteken daardie malvas gaan dit vanaand weer nodig hê.
+- `clear/dawn` Hy gaan twee keer skuif voor middagete, en altwee keer omtrent 'n meter. — 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'both' would normally be 'beide', none present · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'both' would normally be 'beide', none present · 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'both' would normally be 'beide', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'both' would normally be 'beide', none present
+- `clear/dusk` Daardie vuur is aangesteek voor iemand dit nodig gehad het — dis wat 'n skoon aand doen.
+- `clear/dusk` Saterdag, en die lug het van oranje na blou gegaan sonder een wolk wat onderbreek. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'blou' · 'gegaan' means 'past participle of gaan; to go; Used to express the future tense, often while implying nearness in time or certainty, like English going to.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'sonder' · 'onderbreek' means 'break' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/night` Daar is genoeg maan om wasgoed by op te hang, en iemand het.
+- `clear/night` Dit sal teen die oggend droog wees en teen sesuur weer klam — dis maar die ooreenkoms. — 'ooreenkoms' means 'accord; agreement; compromise' — nothing in the English source; the source's 'six' would normally be 'ses', none present
+- `clear/night` Jy moet twee uur van enige plek af ry om so 'n lug te kry. — 'plek' means 'a spot; a place; location' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present — but it does co-occur in corpus with 'enige' · 'lug' means 'air' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present · 'kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present
+- `clear/night` Saterdagaand, en die vermaak is verniet en omtrent vier miljard jaar oud. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'night' would normally be 'nag', none present — but it does co-occur in corpus with 'vier'
+- `clear/night` Dit is die middel van die sterrestelsel, en dit kom op agter 'n koppie.
+- `clear/night` Sondagaand, en die beste ding vanaand is nie op 'n skerm nie.
+- `clear/dawn` Dit is die eerste hadeda op, en die hele vallei gaan nou weet. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'entire' would normally be 'gaaf' / 'geheelstuk' / 'heel' / 'koevert met inhoud', none present
+- `clear/dawn` Maandag, en die wekker op hierdie plaas het vere en geen sluimerknoppie nie.
+- `clear/dawn` Daardie lug hou omtrent ses minute, en die voël is die enigste een wat kyk. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'hou' means 'to hold; to keep; hit' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/day` Wie ook al die vieruur-vergadering bespreek het, gaan alleen daarin sit. — 'daarin' means 'therein' — nothing in the English source; the source's 'four' would normally be 'vier', none present
+- `heat/dawn` Die son het pas opgekom, wat die deel is wat niemand gaan glo nie.
+- `heat/dawn` Daardie enjinkap het nie oornag afgekoel nie, en dít is die deel wat jou moet bekommer.
+- `heat/dawn` Daardie eier is omtrent vier minute daarop en dit is amper gaar.
+- `heat/dawn` Niemand in hierdie dorp het sedert omtrent die tweede week van Desember 'n stoof nodig gehad nie.
+- `heat/dawn` Maandag, en ontbyt in hierdie dorp is deur 'n enjinkap afgehandel. — 'dorp' means 'town; village; township' — nothing in the English source; the source's 'sorted' would normally be 'soort' / 'sorteer' / 'karakter', none present · 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'sorted' would normally be 'soort' / 'sorteer' / 'karakter', none present · 'afgehandel' means 'settled' — nothing in the English source; the source's 'sorted' would normally be 'soort' / 'sorteer' / 'karakter', none present
+- `heat/dawn` Daardie water het vyfuur koud ingegaan en was sedertdien nie weer koud nie. — 'ingegaan' means 'entered; go in; enter; enter' — nothing in the English source; the source's 'five' would normally be 'vyf', none present · 'sedertdien' means 'since then; thereafter' — nothing in the English source; the source's 'five' would normally be 'vyf', none present
+- `heat/dawn` Hy het ingeklim voor die son die heining verby was en het nie weer uitgekom nie.
+- `heat/dawn` Hy het sesuur ingeklim en is nie van plan om uit te klim nie. — 'klim' means 'to climb; step' — nothing in the English source; the source's 'six' would normally be 'ses', none present
+- `heat/dawn` Daar kom stoom van daardie swembad af, wat nie 'n goeie teken is om sesuur nie.
+- `heat/dawn` Die water het nie gisteraand afgekoel nie en hy het al gaan kyk. — 'kyk' means 'to look; to watch; to browse' — nothing in the English source; the source's 'cool' would normally be 'gaaf' / 'kief', none present
+- `heat/dawn` Saterdag, en hy is voor sewe in, want teen tien is dit onbruikbaar.
+- `heat/dawn` Die plaveisel om daardie swembad is sesuur al te warm vir kaal voete. — 'kaal' means 'naked; bald' — nothing in the English source; the source's 'round' would normally be 'rond' / 'sport' / 'rondte' / 'ronde', none present · 'voete' means 'plural of voet; foot; base' — nothing in the English source; the source's 'round' would normally be 'rond' / 'sport' / 'rondte' / 'ronde', none present
+- `heat/dawn` Daardie swembad is warmer as hy en dit gaan so bly.
+- `heat/dawn` Sy het die een teël in hierdie huis gekry wat nog nie warm geword het nie. — 'gekry' means 'past participle of kry; got; to get, receive, obtain' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present · 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present
+- `heat/dawn` Teen nege gaan daardie vensterbank die ergste plek in die huis wees.
+- `heat/dawn` Die son is skaars op en sy het haar plek reeds gekies. — 'skaars' means 'scarce, rare.; barely, hardly.; rare' — nothing in the English source; the source's 'picked' would normally be 'pluk', none present · 'gekies' means 'cheek; choose; select' — nothing in the English source; the source's 'picked' would normally be 'pluk', none present
+- `heat/dawn` Sondag, en sy het omtrent negentig minute voor sy weer moet skuif.
+- `heat/dawn` Hy het die skaduwee onder 'n doringboom gekies, wat skaars skaduwee is. — 'skaduwee' means 'shadow' — nothing in the English source; the source's 'picked' would normally be 'pluk', none present · 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; the source's 'picked' would normally be 'pluk', none present · 'gekies' means 'cheek; choose; select' — nothing in the English source; the source's 'picked' would normally be 'pluk', none present · 'skaduwee' means 'shadow' — nothing in the English source; the source's 'picked' would normally be 'pluk', none present
+- `heat/dawn` Die son is elf minute op en hy het reeds opgehou beweeg.
+- `heat/dawn` Daardie stoep het stoele op en nie een gaan voor sesuur gebruik word nie. — 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'none' would normally be 'niemand' / 'niks' / 'geeneen', none present · 'gebruik' means 'use; usage; custom; mores; to use' — nothing in the English source; the source's 'none' would normally be 'niemand' / 'niks' / 'geeneen', none present
+- `heat/dawn` Donderdag, en teen nege gaan daar niks hier buite wees wat 'n stap werd is nie. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'worth' would normally be 'menswaardigheid', none present · 'werd' means 'obsolete form of word' — nothing in the English source; the source's 'worth' would normally be 'menswaardigheid', none present
+- `heat/dawn` Daar is nie skaduwee op hierdie hele werf wat verby omtrent tien hou nie. — 'skaduwee' means 'shadow' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'hou' means 'to hold; to keep; hit' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `heat/day` Daardie enjinkap is warmer as wat die meeste panne ooit op die meeste stowe word. — 'warmer' means 'warm' — nothing in the English source; the source's 'stoves' would normally be 'stoof', none present · 'meeste' means 'greatest' — nothing in the English source; the source's 'stoves' would normally be 'stoof', none present · 'meeste' means 'greatest' — nothing in the English source; the source's 'stoves' would normally be 'stoof', none present · 'stowe' means 'ranges' — nothing in the English source; the source's 'stoves' would normally be 'stoof', none present
+- `heat/day` Hy het eers die dak probeer en die dak was op een of ander manier warmer.
+- `heat/day` Niemand hier wonder of dit werk nie. Hulle kyk hoe dit werk.
+- `heat/day` Maandag, en dit is nie eers elfuur nie, wat die skrikwekkende deel is.
+- `heat/dusk` Elke blaar aan daardie sonneblom het moed opgegee en die kop kyk dit steeds in die oë. — 'moed' means 'courage' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present — but it does co-occur in corpus with 'opgegee' · 'kyk' means 'to look; to watch; to browse' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present — but it does co-occur in corpus with 'oë' · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present · 'oë' means 'plural of oog; eye; loop' — nothing in the English source; the source's 'given' would normally be 'gegewe', none present — but it does co-occur in corpus with 'kyk'
+- `heat/dusk` Niemand hier buite maak iets nat voor daardie son behoorlik agter die bult is nie. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'waters' would normally be 'water gee' / 'natgooi' / 'water' / 'benat', none present · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'waters' would normally be 'water gee' / 'natgooi' / 'water' / 'benat', none present — but it does co-occur in corpus with 'nat' · 'nat' means 'nat' — nothing in the English source; the source's 'waters' would normally be 'water gee' / 'natgooi' / 'water' / 'benat', none present — but it does co-occur in corpus with 'maak' · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'waters' would normally be 'water gee' / 'natgooi' / 'water' / 'benat', none present · 'agter' means 'behind; back' — nothing in the English source; the source's 'waters' would normally be 'water gee' / 'natgooi' / 'water' / 'benat', none present · 'bult' means 'rise' — nothing in the English source; the source's 'waters' would normally be 'water gee' / 'natgooi' / 'water' / 'benat', none present
+- `heat/dusk` Dit is vanoggend natgemaak en van hier af sou jy dit nie sê nie. — 'sou' means 'preterite of sal; would, should; would; shall, will' — nothing in the English source; the source's 'watered' would normally be 'water' / 'water gee' / 'natgooi' / 'benat', none present
+- `heat/dusk` Daardie pot staan sedert omtrent elfuur vanoggend in vol son. — 'staan' means 'to stand' — nothing in the English source; the source's 'eleven' would normally be 'elf' / 'elftal', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'eleven' would normally be 'elf' / 'elftal', none present
+- `heat/dusk` Maandag, en dit gaan môre alles weer doen sonder dat iemand vra.
+- `heat/dusk` Daardie water staan die hele dag in die son en dit is nie koud nie. — 'staan' means 'to stand' — nothing in the English source; the source's 'sitting' would normally be 'sit', none present
+- `heat/dusk` Hy het elfuur vanoggend ingeklim en dit is die tweede vulsel.
+- `heat/dusk` Die son is 'n uur gelede weg en die plaveisel gee dit steeds terug. — 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'giving' would normally be 'meegee', none present · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'giving' would normally be 'meegee', none present
+- `heat/dusk` Dinsdag, en die koelste ding in hierdie hele tuin is daardie hond.
+- `heat/dawn` Die sproeier gaan vyfuur aan en is teen sewe weer af.
+- `heat/dawn` Alles wat groen is in hierdie foto is op 'n tydhouer en al die res nie. — 'res' means 'balance; remainder; rest' — nothing in the English source; the source's 'else' would normally be 'of anders' / 'anders', none present
+- `heat/dawn` Die aalwyne het nie 'n druppel daarvan nodig gehad nie en sal ook nooit nie.
+- `heat/dawn` Daardie grasperk is die enigste ding vir veertig kilometer wat 'n sê het.
+- `heat/dawn` Vrydag, en teen elf gaan hierdie hele rant weer een kleur wees. — 'rant' means 'border; edge' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `heat/dawn` Hulle is halfses uit omdat daar vandag geen ander venster is nie. — 'ander' means 'other; different; second' — nothing in the English source; the source's 'half' would normally be 'halwe' / 'skakel' / 'helfte' / 'half', none present
+- `heat/dawn` Daardie son is elf minute op en doen dit reeds.
+- `heat/dawn` Niemand dra water nie, en dit is 'n besluit wat hulle weer gaan oorweeg.
+- `heat/dawn` Die skaduwee in hierdie pad raak oor omtrent tweehonderd meter op. — 'skaduwee' means 'shadow' — nothing in the English source; the source's 'runs' would normally be 'lopies' / 'hardloop' / 'masjienryg' / 'vloei', none present · 'raak' means 'to become; to get; to grow' — nothing in the English source; the source's 'runs' would normally be 'lopies' / 'hardloop' / 'masjienryg' / 'vloei', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'runs' would normally be 'lopies' / 'hardloop' / 'masjienryg' / 'vloei', none present
+- `heat/dawn` Woensdag, en dit is so koel soos wat dit die hele dag gaan wees.
+- `heat/day` Twee waaiers wat warm lug rondskuif in 'n kamer wat sedert agt toe is.
+- `heat/day` Die lêer waarmee sy koelte waai is die een wat sy veronderstel is om te lees. — 'waai' means 'to wave; to blow' — nothing in the English source; the source's 'fanning' would normally be 'waaier' / 'waaiervormig boor' / 'bewonderaar' / 'oopwaai', none present · 'veronderstel' means 'believe; believes; presume' — nothing in the English source; the source's 'fanning' would normally be 'waaier' / 'waaiervormig boor' / 'bewonderaar' / 'oopwaai', none present
+- `heat/day` Twee waaiers, vier papiere wat vlieg, en nie een dokument is vandag gelees nie.
+- `heat/day` Dinsdag, en iemand in hierdie gebou gaan vroeg huis toe gestuur word. — 'gestuur' means 'steering' — nothing in the English source; the source's 'sent' would normally be 'uitgesend' / 'opgeloopte', none present
+- `heat/day` Die lugreëlingsknoppie is reg daar en dit is duidelik nie gedruk nie.
+- `heat/day` Wie ook al dit daar gelos het, het gedink hulle sal net twintig minute wees. — 'gelos' means 'to leave, abandon; loose; discharge' — nothing in the English source; the source's 'left' would normally be 'links', none present · 'gedink' means 'past participle of dink; believed; to think' — nothing in the English source; the source's 'left' would normally be 'links', none present
+- `heat/day` Daardie paneelbord is warm genoeg dat die papiertjie voor die sjokolade moed opgegee het.
+- `heat/day` Die stuurwiel daarin is op die oomblik nie iets wat jy kan vashou nie. — 'daarin' means 'therein' — nothing in the English source; the source's 'wheel' would normally be 'wiel', none present · 'oomblik' means 'moment, blink of an eye (instant of time); moment' — nothing in the English source; the source's 'wheel' would normally be 'wiel', none present
+- `heat/day` Donderdag, en daardie kar gaan vieruur erger wees as nou.
+- `heat/dusk` Niemand ry op 'n dag soos vandag by so 'n stalletjie verby nie.
+- `heat/dusk` Waatlemoenweer: die hele provinsie het teen omtrent tienuur vanoggend saamgestem. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `heat/dusk` Haar oë is toe en daardie waaier is op presies een persoon gerig.
+- `heat/dusk` Daardie beker is al twee keer hervul en dit is nie eers behoorlik donker nie. — 'beker' means 'cup, beaker; cup' — nothing in the English source; the source's 'yet' would normally be 'nog' / 'tog' / 'maar' / 'al', none present · 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'yet' would normally be 'nog' / 'tog' / 'maar' / 'al', none present · 'eers' means 'first, at first; even; plural of eer' — nothing in the English source; the source's 'yet' would normally be 'nog' / 'tog' / 'maar' / 'al', none present
+- `heat/dusk` Die son is weg en die teëls gee dit steeds terug. — 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present · 'terug' means 'ago' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present
+- `heat/dusk` Niemand anders in hierdie huis kom vanaand naby daardie waaier nie.
+- `heat/dusk` Woensdag, en dit is die eerste gemaklike minuut wat sy sedert elfuur gehad het. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'eleven' would normally be 'elf' / 'elftal', none present · 'gemaklike' means 'easily' — nothing in the English source; the source's 'eleven' would normally be 'elf' / 'elftal', none present · 'gehad' means 'past participle of hê; had; to have' — nothing in the English source; the source's 'eleven' would normally be 'elf' / 'elftal', none present
+- `heat/dusk` Daardie gras is sedert omtrent elfuur vanoggend te warm om op te staan. — 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'eleven' would normally be 'elf' / 'elftal', none present
+- `heat/dusk` Donderdag, en dit is die eerste keer die hele dag dat een van hulle koel is. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'either' would normally be 'of', none present — but it does co-occur in corpus with 'keer', 'dag' · 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'either' would normally be 'of', none present — but it does co-occur in corpus with 'eerste'
+- `heat/night` Daardie deur is omtrent negentig sekondes oop en dit bly oop.
+- `heat/night` Dit het sedert omtrent Dinsdag nie onder vyf-en-twintig in daardie huis gesak nie.
+- `heat/night` Dit is die derde keer vanaand en nie een van hulle gaan oor kos nie.
+- `heat/day` Dit is die enigste koel water in hierdie tuin en dit is opgeëis.
+- `heat/day` Hy het sedert elfuur nie daaruit beweeg nie en gaan ook nie.
+- `heat/day` Daar is 'n hele tuin daar buite en omtrent 'n meter daarvan is draaglik. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'daarvan' means 'thereof' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `heat/day` Hy het uit die hok gekom, en hy het nie vir die uitsig uitgekom nie.
+- `heat/day` Niemand op hierdie stoep gaan enige plek heen voor omtrent vieruur nie. — 'plek' means 'a spot; a place; location' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present — but it does co-occur in corpus with 'enige' · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present · 'omtrent' means 'about; almost; perhaps' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present
+- `heat/day` Vrydag, en dit is die enigste bewegende lug vir omtrent sestig kilometer.
+- `cold/dawn` Die gras is nat, die lug is koud, en die trui was nie opsioneel nie.
+- `cold/dawn` Die lug is skoon en die kar is wit, en daardie twee feite hou verband. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'hou' means 'to hold; to keep; hit' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'verband'
+- `cold/dawn` Die rits gaan vandag heeltemal op; die stap hek toe het tande. — 'rits' means 'score' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'tande' means 'plural of tand; tooth' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present
+- `cold/dawn` Die warmste plek in die provinsie is hier omtrent kwart oor ses verlaat.
+- `cold/dawn` Minus iets vanoggend: die voorruit het sy eie kunsversameling gekweek.
+- `cold/day` Die bord sê die reën het gewen; die gesigte sê nee. — 'bord' means 'board; plate' — nothing in the English source; the source's 'sign' would normally be 'teken' / 'tekens', none present · 'gewen' means 'past participle of wen; to win; take' — nothing in the English source; the source's 'sign' would normally be 'teken' / 'tekens', none present
+- `cold/day` Die oggend se tweede ketel het niks met tee te doen nie.
+- `cold/day` Een kyk na daardie wit grasperk en die kombersstemming was eenparig.
+- `cold/day` Bouwerk klaar om nege: een duvetgrot, een bewoner, geen besoekers tot die lente nie. — 'Bouwerk' means 'building; structure' — nothing in the English source; the source's 'construction' would normally be 'konstruksie' / 'bou' / 'opbou' / 'aanleg', none present
+- `cold/day` Iemand se optimisme lê nog op die tafel, onder 'n millimeter ryp.
+- `cold/day` Een kol son het in hierdie sitkamer ingekom en die hond was eerste daar.
+- `cold/day` Sokkies gaan eerste op die verwarmer; voete kom later — die winterstelsel werk. — 'Sokkies' means 'plural of sokkie; diminutive of sok' — nothing in the English source; the source's 'join' would normally be 'aansluit' / 'saamafwerk' / 'las' / 'aanmekaarwerk', none present · 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'join' would normally be 'aansluit' / 'saamafwerk' / 'las' / 'aanmekaarwerk', none present · 'verwarmer' means 'warm' — nothing in the English source; the source's 'join' would normally be 'aansluit' / 'saamafwerk' / 'las' / 'aanmekaarwerk', none present · 'voete' means 'plural of voet; foot; base' — nothing in the English source; the source's 'join' would normally be 'aansluit' / 'saamafwerk' / 'las' / 'aanmekaarwerk', none present
+- `cold/day` Handskoene-om-die-beker-weer: die koffie doen twee werke tegelyk.
+- `cold/day` Die trui is êrens tussen die deur en die hek tot bivakmus bevorder. — 'tussen' means 'between; among, amidst; among' — nothing in the English source; the source's 'somewhere' would normally be 'iewers', none present — but it does co-occur in corpus with 'êrens'
+- `cold/day` Die lug het die een gaping in die uitrusting gekry en hy maak dit met die hand toe. — 'uitrusting' means 'equipment; gear; plant' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present · 'gekry' means 'past participle of kry; got; to get, receive, obtain' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present
+- `cold/day` Stoel na die verwarmer gedraai, kombers op, tee naby: wintersondag, korrek uitgevoer.
+- `cold/night` Buite is vanaand vir die sterre; alles met pels het vir die kaggel gestem. — 'Buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'fireplace' would normally be 'es', none present
+- `cold/night` Vingerlose handskoene by 'n skootrekenaar: winter het die tuiskantoor betree. — 'betree' means 'step (single act of placing the foot when walking); yard (unit of length); pace' — nothing in the English source; the source's 'home' would normally be 'tuis' / 'tuiste' / 'tehuis' / 'huis', none present
+- `cold/night` Koud genoeg om een kombers te deel, helder genoeg om dit die moeite werd te maak. — 'deel' means 'area; book; deal' — nothing in the English source; the source's 'worth' would normally be 'menswaardigheid', none present · 'werd' means 'obsolete form of word' — nothing in the English source; the source's 'worth' would normally be 'menswaardigheid', none present — but it does co-occur in corpus with 'moeite', 'maak' · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'worth' would normally be 'menswaardigheid', none present — but it does co-occur in corpus with 'werd'
+- `cold-clear/dawn` Vullisdag, en die ryp was voor die trok daar.
+- `cold-clear/dawn` Die hadeda het op ryp geland en stel reeds 'n klag op. — 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'drafting' would normally be 'hewelryging' / 'ontwerp' / 'klad' / 'diagram', none present · 'stel' means 'bay; place; places' — nothing in the English source; the source's 'drafting' would normally be 'hewelryging' / 'ontwerp' / 'klad' / 'diagram', none present
+- `cold-clear/dawn` Nie een wolk nie, nie een graad nie: 'n Hoëveldse wintermôre doen albei gelyk. — 'gelyk' means 'commensurate; equal; even' — nothing in the English source; the source's 'both' would normally be 'beide', none present
+- `cold-clear/dawn` Vyf tarentale stap in 'n ry oor: die ryp laat almal versigtig trap. — 'ry' means 'row; to ride; to drive' — nothing in the English source; the source's 'single' would normally be 'enkel' / 'enkelvoudig' / 'enkele', none present · 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'single' would normally be 'enkel' / 'enkelvoudig' / 'enkele', none present · 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'single' would normally be 'enkel' / 'enkelvoudig' / 'enkele', none present · 'trap' means 'stairs, staircase; stage; step' — nothing in the English source; the source's 'single' would normally be 'enkel' / 'enkelvoudig' / 'enkele', none present
+- `cold-clear/day` Die sonkant van die muur is premium eiendom, en dit is reeds gevat. — 'gevat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'sunny' would normally be 'sonnig', none present
+- `cold-clear/day` Vol son, sigbare asem: die Karoo speel albei seisoene af voor middagete. — 'Karoo' means 'The vast plain in South Africa that borders the Kalahari Desert.' — nothing in the English source; the source's 'both' would normally be 'beide', none present · 'speel' means 'to play; play; playing' — nothing in the English source; the source's 'both' would normally be 'beide', none present · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'both' would normally be 'beide', none present
+- `cold-clear/day` Blou lug, goue gras, wit rande: 'n Hoëveldse rugbyoggend in volle drag. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'blou' · 'drag' means 'uniform' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold-clear/day` Koud genoeg om elke asem te sien, helder genoeg dat niemand omgee nie.
+- `cold-clear/dusk` Die handdoeke is klam uitgehang en kom as planke terug.
+- `cold-clear/dusk` Daardie wasgoed is nie droog nie; dit is gepreserveer. Winterskemer werk vinnig hier.
+- `cold-clear/dusk` Die ryp trek al en die son is skaars weg: vanaand is ernstig. — 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present · 'trek' means 'to haul; to move (moving house); to pull' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present — but it does co-occur in corpus with 'weg' · 'weg' means 'way; path; away; path' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present — but it does co-occur in corpus with 'trek' · 'ernstig' means 'serious; seriously; severe' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present
+- `cold-clear/dusk` Die perde doen hul eie weerberig, een asem op 'n slag.
+- `cold-clear/dusk` Die temperatuur het saam met die son geval en die kring het presies soveel nader getrek. — 'saam' means 'with, together; Used to form adjectives of the base word's quality; compare English -able, English -some.; along' — nothing in the English source; the source's 'circle' would normally be 'sirkel', none present · 'nader' means 'comparative degree of naby: nearer, closer; to approach, to come near; approach' — nothing in the English source; the source's 'circle' would normally be 'sirkel', none present — but it does co-occur in corpus with 'getrek' · 'getrek' means 'drawn; to haul; to move (moving house)' — nothing in the English source; the source's 'circle' would normally be 'sirkel', none present — but it does co-occur in corpus with 'nader'
+- `cold-clear/dusk` Die aand het koud geword die oomblik toe dit mooi word — dis maar die gewone ruil. — 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'minute' would normally be 'minuut' / 'notule', none present · 'oomblik' means 'moment, blink of an eye (instant of time); moment' — nothing in the English source; the source's 'minute' would normally be 'minuut' / 'notule', none present · 'gewone' means 'customary; ordinary; regular' — nothing in the English source; the source's 'minute' would normally be 'minuut' / 'notule', none present · 'ruil' means 'exchange; exchanges' — nothing in the English source; the source's 'minute' would normally be 'minuut' / 'notule', none present
+- `cold-clear/night` Die vullisblik word vanaand teen spoed uitgevat, en die lug weet hoekom. — 'lug' means 'air' — nothing in the English source; the source's 'run' would normally be 'hardloop' / 'masjienryg' / 'vloei' / 'vaar', none present
+- `cold-clear/night` Duvets in die bakkie, fles op die agterklap: die lug is vanaand die koue werd. — 'fles' means 'cup' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'koue' · 'koue' means 'cold (state of having a low temperature); attributive form of koud; cold' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'lug' · 'werd' means 'obsolete form of word' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold-clear/night` Die koue vra vanaand toegang en die lug is elke graad werd. — 'vra' means 'ask; asks' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'koue' · 'werd' means 'obsolete form of word' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `fog/dawn` Sigbaarheid is af tot een koei.
+- `fog/dawn` Een verligte venster vat die hele mis aan, en verloor pragtig. — 'verligte' means 'attributive form of lig; plural of lig; light; not heavy' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `fog/dawn` Die mis is dik genoeg om 'n straal kombuislig soos 'n vaste ding vas te hou. — 'kombuislig' means 'come; bowl; arrive' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present
+- `fog/dawn` Die mis het drieuur ingerol en die buurt van die verste kant af begin uitvee. — 'buurt' means 'precinct' — nothing in the English source; the source's 'rolled' would normally be 'uitgerolde' / 'gerolde', none present · 'kant' means 'edge; end; margin' — nothing in the English source; the source's 'rolled' would normally be 'uitgerolde' / 'gerolde', none present
+- `fog/day` Die hond is definitief nog aan die punt van daardie leiband. Amper definitief.
+- `fog/day` Huidige sigbaarheid: een hele hond kort van volledig. — 'Huidige' means 'presently' — nothing in the English source; the source's 'current' would normally be 'heersende' / 'stroom' / 'jongste' / 'lopend', none present
+- `fog/day` Die mis lê in die strate asof dit hier belasting betaal.
+- `fog/day` Kamerjas, pantoffels, dertig meter sig: vullisdag wag vir geen weer nie.
+- `fog/day` Gevind: een bal. Die ander driehonderd meter gholfbaan is steeds vermis. — 'Gevind' means 'past participle of vind; to find; ascertain' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present · 'ander' means 'other; different; second' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'found' would normally be 'vestig' / 'fondeer', none present
+- `fog/day` Die setperk is daar êrens, en vat die oggend af van sigbaar wees. — 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'somewhere' would normally be 'iewers', none present
+- `fog/dusk` Ligte haal omtrent twintig meter hier; die res is geheue en respek.
+- `fog/dusk` Elke straatlig kry vanaand sy eie stralekrans; die mis is so vrygewig.
+- `fog/dusk` Die mis het die hele straat gesluk en die agterligte as kwitansie gelos. — 'gesluk' means 'draw' — nothing in the English source; the source's 'swallowed' would normally be 'swael', none present · 'gelos' means 'to leave, abandon; loose; discharge' — nothing in the English source; the source's 'swallowed' would normally be 'swael', none present
+- `fog/dusk` Die mis was eerste by die uitkykpunt en het die hele uitsig vir homself gevat. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'gevat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `fog/night` Kaapstad is nog aan daaronder; die mis staan net in die pad. — 'staan' means 'to stand' — nothing in the English source; the source's 'running' would normally be 'voorsteekwerk' / 'masjienrygsel' / 'masjienryging' / 'bestuur van huis', none present · 'pad' means 'path; way; street; path; road' — nothing in the English source; the source's 'running' would normally be 'voorsteekwerk' / 'masjienrygsel' / 'masjienryging' / 'bestuur van huis', none present
+- `fog/night` Die mis het 'n uur gelede ingetrek en die straatligte het sedertdien verdubbel. — 'ingetrek' means 'settled' — nothing in the English source; the source's 'moved' would normally be 'verskuifde' / 'aansoek gedoen' / 'geroerde' / 'beweegde', none present · 'sedertdien' means 'since then; thereafter' — nothing in the English source; the source's 'moved' would normally be 'verskuifde' / 'aansoek gedoen' / 'geroerde' / 'beweegde', none present
+- `fog/night` Daardie een venster staan vanaand vuurtoringdiens, en dit is genoeg.
+- `fog/night` Die stadsgeraas is vanaand af; mis is die beste klankdemping wat daar is.
+- `rain/dawn` Die ruitveër is op sy tienduisendste veeg en die reën het nie eers geknip nie.
+- `rain/dawn` Een nag se ordentlike reën en die oprit het by die watertafel aangesluit.
+- `rain/dawn` Reën hier buite is 'n gebeurtenis; die hele veld gaan teen sewe daarna ruik. — 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present · 'daarna' means 'thereafter, after that; since; thereafter' — nothing in the English source; the source's 'whole' would normally be 'gaaf' / 'geheel' / 'heel', none present
+- `rain/day` Die wolke huil soos NZ by die 23 Rugby-WB!
+- `rain/day` Die reën het die plas gemaak; die plas het die middag gemaak.
+- `rain/day` Ses reënjasse, een plas, nul spyt: die reën ken sy gehoor.
+- `rain/day` Die kat vat die reën persoonlik op, soos die kat die meeste dinge opvat.
+- `storm/day` Twee stokkeuses oor: die klubhuis of die kar. — 'stokkeuses' means 'stick, whether natural (made of wood) or artificial; stock; choices' — nothing in the English source; the source's 'club' would normally be 'klub' / 'knop' / 'knoets' / 'klub?', none present
+- `storm/day` Donderweer tel dubbel as jy sulke ore het.
+- `storm/dusk` Die balkon klop die bank as die lug dít doen. — 'klop' means 'check; tap; whip' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `storm/dusk` Die palms wys die rigting waarheen die storm gaan, en dit is hierheen. — 'rigting' means 'direction; alignment; bearing' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'waarheen' means 'whither, where to' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present
+- `storm/night` Die beste televisie in die huis is op die oomblik die weer.
+- `cold/dusk` Die mis het vir die nag in die vallei ingetrek en die hek agter hom gesluit. — 'ingetrek' means 'settled' — nothing in the English source; the source's 'moved' would normally be 'verskuifde' / 'aansoek gedoen' / 'geroerde' / 'beweegde', none present · 'agter' means 'behind; back' — nothing in the English source; the source's 'moved' would normally be 'verskuifde' / 'aansoek gedoen' / 'geroerde' / 'beweegde', none present · 'gesluit' means 'closed; to close; close' — nothing in the English source; the source's 'moved' would normally be 'verskuifde' / 'aansoek gedoen' / 'geroerde' / 'beweegde', none present
+- `cold/dusk` Daardie mis is môreoggend se ryp wat 'n terreininspeksie doen. — 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'tomorrow' would normally be 'môre', none present
+- `cold/dusk` Die son verlaat die berge een rak op 'n slag.
+- `cold/dusk` Dis verwarmerseisoen, en die beste sitplek in die huis het pels op.
+- `cold/night` Die koue het die hele straat 'n uur voor sluitingstyd skoongevee. — 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'cleared' would normally be 'helder' / 'ooptrek' / 'uitwis' / 'herstel', none present — but it does co-occur in corpus with 'straat' · 'sluitingstyd' means 'deadline' — nothing in the English source; the source's 'cleared' would normally be 'helder' / 'ooptrek' / 'uitwis' / 'herstel', none present
+- `cold/night` Elke straatlig in die pad lig niemand nie; winternagte maak 'n dorp vroeg leeg.
+- `cold/night` Mus, nekwarmer, fakkel, boek: winternagte bou die beste leeskamers. — 'Mus' means 'soft brimless hat, tuque; cap' — nothing in the English source; the source's 'nights' would normally be 'nag', none present · 'nekwarmer' means 'neck; warm' — nothing in the English source; the source's 'nights' would normally be 'nag', none present
+- `cold/day` Nat pad, grys lug, hond in 'n trui: winter is ten volle in werking. — 'Nat' means 'nat' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold/dusk` Die berg is daar êrens, toegedraai vir die winter.
+- `cold/dusk` Die strand het na een kleur toe gegaan, en dit is die koue een. — 'gegaan' means 'past participle of gaan; to go; Used to express the future tense, often while implying nearness in time or certainty, like English going to.' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present
+- `cold/dusk` Niemand se spore op daardie sand vandag nie; die koue hou sy strand vir homself.
+- `cold/night` Skoon nag, nat trappe, sigbare asem: die ryp voltooi sy papierwerk. — 'nat' means 'nat' — nothing in the English source; the source's 'filling' would normally be 'vulsel' / 'stopsel' / 'vulstof' / 'vullend', none present · 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'filling' would normally be 'vulsel' / 'stopsel' / 'vulstof' / 'vullend', none present · 'voltooi' means 'complete' — nothing in the English source; the source's 'filling' would normally be 'vulsel' / 'stopsel' / 'vulstof' / 'vullend', none present
+- `cold/night` Een laaste kyk na 'n lug wat op die punt staan om ernstig koud te word. — 'laaste' means 'last; to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'punt' means 'end; grade; item' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'staan' means 'to stand' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold/dawn` Rook wat reguit opgaan beteken koud, stil en nie een asem wind nie.
+- `cold/day` Die werf is nat, die lug is koud, en sekuriteit het patrollies opgeskort. — 'nat' means 'nat' — nothing in the English source; the source's 'yard' would normally be 'tree', none present
+- `cold/day` Dit is nie 'n hond wat 'n stap weier nie; dit is 'n hond wat 'n voorspelling lees.
+- `cold/night` Ryp op die grasperk en wors op die rooster: 'n Kaapse winterkompromie.
+- `cold-clear/day` Asem soos rook, ryp op die glas, son reeds op: Hoëveldse skoolrit. — 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'run' would normally be 'hardloop' / 'masjienryg' / 'vloei' / 'vaar', none present
+- `cold-clear/day` Die bakkie het onder 'n heeltemal skoon lug toegevries — presies hoe dit werk. — 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold-clear/day` Die son is op en doen sy bes; die ryp is tot dusver nie oortuig nie. — 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'best' would normally be 'beste', none present · 'oortuig' means 'to persuade; to convince' — nothing in the English source; the source's 'best' would normally be 'beste', none present
+- `cold-clear/dusk` So 'n skoon lug beteken die veld vries voor die ligte eers warm word. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'warm' · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'eers' means 'first, at first; even; plural of eer' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold-clear/night` Die Suiderkruis is uit en die grasperk het silwer geword daaronder. — 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present
+- `cold-clear/night` So 'n skoon naglug is pragtig, en dit vra in grade betaal. — 'vra' means 'ask; asks' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'betaal' means 'pay; paid; paying' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold-clear/night` Sterre so skerp kom standaard met lug so koud — dis 'n pakket.
+- `cold-clear/night` Braai met musse aan onder 'n hard skoon lug: winter kanselleer niks hier nie. — 'musse' means 'caps; soft brimless hat, tuque; cap' — nothing in the English source; the source's 'hard' would normally be 'harde strand', none present · 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; the source's 'hard' would normally be 'harde strand', none present · 'lug' means 'air' — nothing in the English source; the source's 'hard' would normally be 'harde strand', none present
+- `cold-clear/day` Jasse en koffies in vol son: winter in hierdie stad lyk op foto's soos somer.
+- `fog/dawn` Die reflekterende baadjie doen vanoggend presies waarvoor dit gekoop is. — 'baadjie' means 'jacket; coat' — nothing in the English source; the source's 'bought' would normally be 'aangekoopte', none present · 'gekoop' means 'past participle of koop; To buy.; buy' — nothing in the English source; the source's 'bought' would normally be 'aangekoopte', none present
+- `fog/night` Laaste taxi's van die aand, en die mis het binnekort die hele staanplek vir homself. — 'staanplek' means 'location; stand' — nothing in the English source; the source's 'taxis' would normally be 'huurmotor' / 'taxi', none present
+- `fog/dawn` Die son kom deur die mis teen halwe krag en vol goud.
+- `fog/dawn` Mis sak in die laagtes, en dis hoekom die trop op die bult slaap. — 'sak' means 'bag; case; drop' — nothing in the English source; the source's 'settles' would normally be 'afsak' / 'laat afsak' / 'tot rus kom' / 'bedaar', none present · 'laagtes' means 'valley' — nothing in the English source; the source's 'settles' would normally be 'afsak' / 'laat afsak' / 'tot rus kom' / 'bedaar', none present · 'bult' means 'rise' — nothing in the English source; the source's 'settles' would normally be 'afsak' / 'laat afsak' / 'tot rus kom' / 'bedaar', none present
+- `fog/day` Afskop is tien en die verste pale het nog nie opgedaag nie.
+- `fog/dusk` Die mis het die stad gevat, maar die Bo-Kaap se kleure kry hy nie.
+- `rain/dawn` Die plasse eis die sypaadjie op, een blok op 'n slag.
+- `rain/dawn` Nat teer plus sonop is gelyk aan 'n straat van goud, kortliks.
+- `rain/dawn` Iemand het reën vir die nag en son vir die oggend bestel, en dit is afgelewer.
+- `rain/dawn` Die reën is op die glas en die koffie op die vensterbank: Sondag is afgehandel. — 'afgehandel' means 'settled' — nothing in the English source; the source's 'sorted' would normally be 'soort' / 'sorteer' / 'karakter', none present
+- `rain/dawn` Daardie venster het vanoggend die beste program, en dit is net reën.
+- `rain/dawn` Egalige, reguit-af, heeloggend-reën: die soort wat die tuin werklik drink. — 'Egalige' means 'attributive form of egalig; even, smooth, level; consistent, homogeneous, constant' — nothing in the English source; the source's 'steady' would normally be 'stil hou' / 'stut' / 'gestadig' / 'drablok', none present
+- `rain/night` Elke neonbord in die straat word vanaand op die nat teer verdubbel. — 'nat' means 'nat' — nothing in the English source; the source's 'sign' would normally be 'teken' / 'tekens', none present
+- `rain/night` Die geut loop soos 'n rivier en het reeds 'n slagoffer geëis.
+- `rain/night` Die stormwater is see toe op pad en vat gevangenes.
+- `rain/day` Die plas buite die hek is nou deel van die kurrikulum.
+- `storm/dusk` Êrens daarbo het die reën 'n pad ingekry, en dit word hanteer. — 'hanteer' means 'cope; handle; handled' — nothing in the English source; the source's 'somewhere' would normally be 'iewers', none present
+- `cold/dusk` Buite is gesluit. Bestuur is binne.
+- `cold/dusk` Mooi aand. Diep onbewoonbaar.
+- `cold/dusk` Pragtige uitsig. Vyandige lug.
+- `cold/dusk` Dit is nie meer 'n drankie nie. Dit is 'n strategie.
+- `cold/dusk` Die sonsondergang het opgedaag. Die koue het saamgekom.
+- `cold/dusk` Die lug het om verskoning gevra. Die sypaadjie nie. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'verskoning' means 'a pardon; forgiveness' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'gevra' · 'gevra' means 'past participle of vra; ask; asks' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'verskoning'
+- `fog/dawn` Sigbaarheid het uitgeklok. Jy is op jou eie. — 'eie' means 'own (belonging to oneself); own; respective' — nothing in the English source; the source's 'clocked' would normally be 'klok', none present
+- `fog/dawn` Vorentoe is nog 'n opsie. Rondkyk nie.
+- `fog/dusk` Hulle het die ligte aangesit. Die mis het al die res afgesit. — 'aangesit' means 'started' — nothing in the English source; the source's 'turned' would normally be 'omgedraaide' / 'omgeslane' / 'omgekeerde' / 'omgewerkte', none present · 'res' means 'balance; remainder; rest' — nothing in the English source; the source's 'turned' would normally be 'omgedraaide' / 'omgeslane' / 'omgekeerde' / 'omgewerkte', none present
+- `fog/dusk` Mooi aand, as jy van mure hou.
+- `rain/day` Die reën het die hele pad saam huis toe gekom.
+- `rain/day` Dis ordentlike reën. Die dag is klaar, in fases.
+- `rain/day` Dit reën nog. Dis die hele opdatering.
+- `rain/day` Nat tussen hier en enige ander plek. — 'Nat' means 'nat' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present · 'tussen' means 'between; among, amidst; among' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present · 'plek' means 'a spot; a place; location' — nothing in the English source; the source's 'anywhere' would normally be 'nêrens', none present — but it does co-occur in corpus with 'enige'
+- `rain/dusk` Reën op 'n andersins mooi aand.
+- `rain/dusk` Nat daar buite. Die stad kan die kleur hou.
+- `storm/day` Die lug is nou in beheer. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'beheer' means 'control; holdings; manage' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `storm/day` Nie weer waardeur jy loop nie.
+- `storm/day` Storm. Planne kan wag. — 'Planne' means 'projects' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present
+- `storm/day` Buite is gesluit tot verdere kennisgewing.
+- `storm/day` Wanneer die lug begin praat, hou al die res op. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'hou' means 'to hold; to keep; hit' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'res' means 'balance; remainder; rest' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `storm/day` Ernstige weer. Die res is uitgestel.
+- `storm/day` Kom-binne-toe-weer.
+- `storm/day` Bly binne. Dis die hele voorspelling.
+- `storm/day` Storm met wind aangeheg.
+- `storm/day` Die storm het aangekom. Al die res kan wag. — 'res' means 'balance; remainder; rest' — nothing in the English source; the source's 'everything' would normally be 'alles' / 'als', none present
+- `storm/day` Los goed is nou weer. — 'Los' means 'to leave, abandon; loose; discharge' — nothing in the English source; the source's 'objects' would normally be 'doelstellings' / 'objek' / 'voorwerp' / 'beswaar maak', none present · 'goed' means 'good; bona; fairly' — nothing in the English source; the source's 'objects' would normally be 'doelstellings' / 'objek' / 'voorwerp' / 'beswaar maak', none present
+- `storm/dusk` Storm op die horison. Dis jou sperdatum.
+- `storm/dusk` Maak klaar. Die weer gaan nie.
+- `storm/dusk` Die storm is naby. Die huis is nader, hopelik.
+- `storm/night` Die reën was die waarskuwing. Dit is die opvolg.
+- `storm/night` Ordentlike storm. Nie die mooi soort nie.
+- `rain/dusk` Dit reën nog. Dis die opdatering.
+- `rain/dusk` Die reën het nie uitgeklok nie.
+- `clear/dusk` Skoon aand. Die gras het geen verskoning nie.
+- `clear/dusk` Goeie weer. Ongelukkig.
+- `clear/dusk` Die lug het mooi gedra. Jy ook. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'mooi' means 'beautiful, pretty; beautiful; fair' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'gedra' means 'past participle of dra; carried; conduct' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/dusk` Skoon skemer. Gebruik dit voor dit uitklok. — 'skemer' means 'twilight' — nothing in the English source; the source's 'dusk' would normally be 'sonsondergang', none present · 'Gebruik' means 'use; usage; custom; mores; to use' — nothing in the English source; the source's 'dusk' would normally be 'sonsondergang', none present · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'dusk' would normally be 'sonsondergang', none present
+- `clear/dusk` Die weer het ja gesê. Dis nou op jou.
+- `cloudy/dusk` Nie reën nie. Net atmosfeer met menings.
+- `cloudy/dusk` Die lug het te veel aangetrek. Die weer is nog heeltemal reg. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present · 'reg' means 'right; correct; real; true; actual; justice' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `cloudy/dusk` Bewolkte skemer. Mooi, maar belowe niks. — 'skemer' means 'twilight' — nothing in the English source; the source's 'dusk' would normally be 'sonsondergang', none present
+- `cloudy/dusk` Die lug het ekstra gedoen. Die voorspelling nie. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'gedoen' means 'past participle of doen; to do; does' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cloudy/dusk` Wolkdek. Die nagskof begin vroeg.
+- `cloudy/dusk` Bewolk. Bly binne as jy 'n rede gesoek het. — 'gesoek' means 'sought; to search, seek; market, souq, bazaar, street of shops' — nothing in the English source; the source's 'looking' would normally be 'lyk' / 'kyk' / 'voorkoms', none present
+- `cloudy/night` Bewolkte nag. Niemand gaan uit nie, amptelik.
+- `cloudy/night` Die weer het binne gekies. Heeltemal reg ook.
+- `cloudy/night` Bewolkte nag. Dapperheid in kombersvorm.
+- `cloudy/night` Die lug het toegemaak. Die aand nie. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/dawn (bank weekend#17)` Dit is die weer waarvoor naweke geskep is.
+- `clear/dawn (bank clear#60)` Weer só mooi is nie gratis nie. Iewers wag 'n suidooster. — 'mooi' means 'beautiful, pretty; beautiful; fair' — nothing in the English source; the source's 'perfect' would normally be 'perfek', none present · 'gratis' means 'free, without charge; free of charge' — nothing in the English source; the source's 'perfect' would normally be 'perfek', none present · 'Iewers' means 'somewhere' — nothing in the English source; the source's 'perfect' would normally be 'perfek', none present · 'wag' means 'guard; to wait; awaiting' — nothing in the English source; the source's 'perfect' would normally be 'perfek', none present
+- `heat/day (bank heat#7)` Jou karsitplek is 'n wapen nou.
+- `heat/day (bank heat#24)` Jou stuurwiel is 'n warmplaat.
+- `heat/night (bank heat#32)` Die plafonventilator probeer sy bes, maar sy bes is nie genoeg nie. — 'probeer' means 'to try; attempt; trying' — nothing in the English source; the source's 'fan' would normally be 'waaier' / 'waaiervormig boor' / 'bewonderaar' / 'oopwaai', none present — but it does co-occur in corpus with 'bes', 'bes'
+- `rain/night (bank rain#81)` Slaap lekker, damme. Julle het vandag hard gewerk.
+- `rain/night (bank rain#32)` Die sypaadjie is 'n rivier en die rivier het planne. — 'planne' means 'projects' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present
+- `storm/night (bank storm#3)` Selfs die hadedas is stil.
+- `storm/night (bank storm#10)` Iewers is 'n dak iemand se nuwe vlieër.
+- `storm/night (bank storm#52)` Onthou om die TV se prop uit te trek — dis tradisie.
+- `storm/night (bank storm#16)` Die weerlig sit 'n ordentlike show op. — 'sit' means 'to sit; to be in a sitting position (usually used with op, binne or in); to sit; to sit down to move into a sitting position; to place, to put' — nothing in the English source; the source's 'show' would normally be 'toon' / 'betoon' / 'wys' / 'tentoonstelling', none present
+- `wind/day (bank wind#17)` Jou kardeur het net 'n wapen geword.
+- `wind/day (bank wind#4)` Jou haarstyl? Weg. Aanvaar dit. — 'Weg' means 'way; path; away; path' — nothing in the English source; the source's 'gone' would normally be 'goed vaar', none present
+- `wind/day (bank wind#7)` Iemand se trampoline is nou twee strate weg.
+- `wind/day (bank wind#15)` Elke los voorwerp in die tuin het geweld gekies. — 'gekies' means 'cheek; choose; select' — nothing in the English source; the source's 'chosen' would normally be 'uitverkore', none present
+- `wind/day (bank wind#45)` Elke boom in die straat buig dieselfde kant toe. Groepsdruk. — 'dieselfde' means 'same; similarly' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present · 'kant' means 'edge; end; margin' — nothing in the English source; the source's 'way' would normally be 'weg' / 'glybaan' / 'vaart' / 'middele', none present
+- `wind/dusk (bank wind#11)` Jou wasgoed het na die buurman se erf getrek.
+- `wind/night (bank wind#42)` Slaap lekker. Die wind sal die huis oppas. Hard. — 'lekker' means 'having a nice taste, tasty, good, delicious; good, fun, nice in a more generic sense; foxy, sexy' — nothing in the English source; the source's 'watch' would normally be 'kyk' / 'horlosie' / 'polshorlosie' / 'oorlosie', none present · 'oppas' means 'care' — nothing in the English source; the source's 'watch' would normally be 'kyk' / 'horlosie' / 'polshorlosie' / 'oorlosie', none present
+- `wind/night (bank wind#46)` Vanaand se wind het opinies.
+- `wind/dawn (bank wind#6)` Die bome doen onvrywillige yoga.
+- `wind/dawn (bank wind#3)` Die Kaapse Dokter maak huisbesoeke. — 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'house' would normally be 'huisves' / 'saal' / 'opkoms' / 'dekhuis', none present
+- `wind/dawn (bank wind#2)` Tafelberg se tafeldoek is uit.
+- `wind/dawn (bank wind#13)` Poniestert-rekkies doen oortyd. — no dictionary gloss for 'Poniestert-rekkies', 'oortyd'; the source's 'holders' would normally be 'houers' / 'vatlappe' / 'vatlap' / 'houer', none present — sense unverified
+- `wind/dawn (bank wind#22)` Jou haarstyl het een kyk gevat en teruggegaan bed toe. — 'gevat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'back' would normally be 'rug' / 'agtertong' / 'boekrug maak' / 'agterspeler', none present
+- `wind/dawn (bank wind#24)` Almal draf vanoggend teen 'n effense hoek.
+- `wind/day (bank wind#0)` Hou jou hoed vas! En jou kinders.
+- `wind/dusk (bank wind#12)` Sand in plekke waar sand nooit moet wees nie.
+- `wind/dawn (bank wind#18)` Die braai-deksel is in die volgende voorstad.
+- `wind/dawn (bank wind#8)` Perfekte toestande om jou waardigheid te verloor.
+- `wind/day (bank wind#19)` Nie 'n haarstyl in sig nie. Net oorlewendes.
+- `clear/dawn (bank clear#16)` Dae soos hierdie behoort 'n klankbaan te hê.
+- `clear/dawn (bank clear#24)` Die soort dag wat mense laat 'lekker dag ne' stuur. — 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'text' would normally be 'teksletter' / 'inhoud' / 'teks', none present · 'lekker' means 'having a nice taste, tasty, good, delicious; good, fun, nice in a more generic sense; foxy, sexy' — nothing in the English source; the source's 'text' would normally be 'teksletter' / 'inhoud' / 'teks', none present · 'stuur' means 'steering' — nothing in the English source; the source's 'text' would normally be 'teksletter' / 'inhoud' / 'teks', none present
+- `clear/dawn (bank clear#53)` Oggendmense is dalk oor iets reg. Sê dit net vir niemand nie. — 'dalk' means 'perchance, perhaps, possibly; maybe; perhaps' — nothing in the English source; the source's 'tell' would normally be 'vertel' / 'tel', none present · 'reg' means 'right; correct; real; true; actual; justice' — nothing in the English source; the source's 'tell' would normally be 'vertel' / 'tel', none present
+- `clear/dawn (bank clear#35)` Dit is die weer waaroor ons oorsee spog.
+- `clear/dawn (bank clear#46)` Oggende soos dié is hoekom Kapenaars nooit ophou spog nie. — 'ophou' means 'cease; ceases' — nothing in the English source; the source's 'stop' would normally be 'halte' / 'stuit' / 'stuiting' / 'stilhouplek', none present · 'spog' means 'to brag, to boast; to show off; boasts' — nothing in the English source; the source's 'stop' would normally be 'halte' / 'stuit' / 'stuiting' / 'stilhouplek', none present
+- `clear/dawn (bank clear#57)` Die dag begin sonder drama. Verdag, maar ons vat dit. — 'dag' means 'a day; hello!; bye-bye!' — nothing in the English source; the source's 'zero' would normally be 'nul' / 'op nul stel' / 'nulpunt' / 'zero', none present · 'begin' means 'advent; beginning; begins' — nothing in the English source; the source's 'zero' would normally be 'nul' / 'op nul stel' / 'nulpunt' / 'zero', none present · 'drama' means 'play' — nothing in the English source; the source's 'zero' would normally be 'nul' / 'op nul stel' / 'nulpunt' / 'zero', none present · 'Verdag' means 'suspect' — nothing in the English source; the source's 'zero' would normally be 'nul' / 'op nul stel' / 'nulpunt' / 'zero', none present · 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'zero' would normally be 'nul' / 'op nul stel' / 'nulpunt' / 'zero', none present
+- `clear/dawn (bank clear#47)` Die son vat sy tyd vanoggend, en dit wys. — 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'worth' would normally be 'menswaardigheid', none present · 'wys' means 'to show; point; show' — nothing in the English source; the source's 'worth' would normally be 'menswaardigheid', none present
+- `clear/dawn (bank clear#50)` Geniet dit. Die koue front het klaar sy tasse gepak.
+- `clear/dusk (bank weekend#10)` Die kole gaan nie hulself aansteek nie.
+- `clear/dusk (bank weekend#7)` Bel die tjommies. Kry die vleis. Kom ons gaan. — 'tjommies' means 'plural of tjommie; chum, friend, chommie.' — nothing in the English source; the source's 'call' would normally be 'roep' / 'noem' / 'aanslag' / 'opvorder', none present · 'Kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'call' would normally be 'roep' / 'noem' / 'aanslag' / 'opvorder', none present
+- `clear/night (bank night#7)` Die maan doen sy bes vanaand.
+- `clear/night (bank night#2)` Stil daarbuite. Byna verdag. — 'Stil' means 'satisfies; satisfy' — nothing in the English source; the source's 'suspicious' would normally be 'wantrouig', none present · 'verdag' means 'suspect' — nothing in the English source; the source's 'suspicious' would normally be 'wantrouig', none present
+- `clear/night (bank night#1)` Perfekte nag om die Melkweg te sien.
+- `clear/night (bank weekend#16)` Geen alarm. Geen agenda. Net vibes.
+- `clear/night (bank night#19)` Die lug lyk of dit pronk. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/night (bank night#16)` Môre se weer is môre se probleem.
+- `clear/night (bank clear#90)` Iemand het die sterre se volume opgedraai.
+- `clear/night (bank night#6)` Goeienag, Suid-Afrika.
+- `clear/night (bank clear#93)` Lug só helder beteken môre skroei. Sit gerus nog 'n rukkie. — 'Lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'Sit' means 'to sit; to be in a sitting position (usually used with op, binne or in); to sit; to sit down to move into a sitting position; to place, to put' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'gerus' means 'really; to rest; Russian (person from Russia or of Russian descent)' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/dawn (bank clear#5)` Selfs die hadedas klink gelukkig.
+- `clear/dawn (bank clear#13)` Afrika se lug tref net anders. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'tref' means 'arrive; connect; strike' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/dawn (bank clear#52)` Vandag se son het opgedaag met attitude.
+- `clear/dawn (bank clear#10)` Iewers sê 'n eiendomsagent 'lifestyle'.
+- `clear/dawn (bank clear#37)` Bottel hierdie een. Maak hom oop in die winter.
+- `clear/day (bank clear#25)` Vat jou koffie buitentoe. Jy verdien dit.
+- `clear/day (bank clear#2)` Dis hoekom ons in Suid-Afrika bly.
+- `clear/day (bank clear#14)` Neem 'n oomblik. Kyk op. Plesier. — 'Neem' means 'cash; take; takes' — nothing in the English source; the source's 'welcome' would normally be 'welkom' / 'welkom heet' / 'verwelkom', none present · 'Plesier' means 'pleasure' — nothing in the English source; the source's 'welcome' would normally be 'welkom' / 'welkom heet' / 'verwelkom', none present
+- `clear/day (bank weekend#8)` Vandag se planne: bestaan buitentoe. — 'planne' means 'projects' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present
+- `clear/day (bank clear#4)` Hoofkarakter weer reg hier.
+- `clear/day (bank weekend#5)` As jy vandag werk, jammer vir jou.
+- `clear/day (bank weekend#19)` Saterdagenergie: maksimum. Verantwoordelikhede: minimum.
+- `clear/day (bank weekend#6)` Perfek om absoluut niks te doen nie.
+- `clear/day (bank clear#77)` Check jy die weer, of check jy of Saterdag se braai aan is? Presies. — 'Presies' means 'exact, precise; accurate, careful; exactly, just, right' — nothing in the English source; the source's 'honest' would normally be 'eerlik', none present
+- `clear/day (bank clear#0)` Absoluut pragtig daar buite.
+- `clear/day (bank clear#8)` Poskaart weer. Plesier. — 'Plesier' means 'pleasure' — nothing in the English source; the source's 'welcome' would normally be 'welkom' / 'welkom heet' / 'verwelkom', none present · no dictionary gloss for 'Poskaart'; the source's 'welcome' would normally be 'welkom' / 'welkom heet' / 'verwelkom', none present — sense unverified
+- `clear/day (bank clear#17)` Jou vitamien D-vlakke bedank jou.
+- `clear/day (bank clear#39)` Lug so skoon, jy kan amper tot môre toe sien. — 'môre' means 'tomorrow; morning' — nothing in the English source; the source's 'warning' would normally be 'waarskuwing', none present · 'sien' means 'to see; see; seeing' — nothing in the English source; the source's 'warning' would normally be 'waarskuwing', none present
+- `heat/dawn (bank heat#36)` 06:00 en die son is klaar klaar met opwarm. Dit was nie 'n opwarming nie, dit was 'n waarskuwing.
+- `heat/dawn (bank heat#44)` Die bergwind het in die nag gedraai. Kaapstad, vandag is jy Upington.
+- `heat/dawn (bank heat#4)` Die swembad is nie opsioneel nie.
+- `heat/dawn (bank heat#59)` Snaaks hoe almal skielik onthou hulle is lief vir jou wanneer jy 'n swembad het.
+- `heat/dawn (bank heat#26)` Jou grimering se vervaldatum is 9vm.
+- `heat/dawn (bank heat#58)` Beweeg stadig. Praat stadig. Oorleef.
+- `heat/dawn (bank heat#20)` Die skaduwee werk harder as jy vandag.
+- `heat/day (bank heat#56)` 35 in die skadu. In die son tel niemand meer nie.
+- `heat/dusk (bank heat#74)` 19:00 en steeds 30 grade. Die Karoo maak nie foute nie, net stellings. — 'steeds' means 'always; constantly' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present · 'Karoo' means 'The vast plain in South Africa that borders the Kalahari Desert.' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present — but it does co-occur in corpus with 'foute', 'stellings' · 'foute' means 'errors; failures' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present — but it does co-occur in corpus with 'maak' · 'stellings' means 'adjustments; stands' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present — but it does co-occur in corpus with 'maak'
+- `heat/dawn (bank heat#41)` 06:30 en die teer dink al aan smelt. — 'dink' means 'to think; believe; believes' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present · 'smelt' means 'render; rendering' — nothing in the English source; the source's 'already' would normally be 'al' / 'alreeds' / 'nou al' / 'reeds', none present
+- `heat/day (bank heat#12)` Die kantoor-aircon oorlog het begin. — 'begin' means 'advent; beginning; begins' — nothing in the English source; the source's 'begun' would normally be 'begonne', none present
+- `heat/day (bank heat#29)` Die aircon-afstandsbeheer is nou openbare eiendom. Onderhandel.
+- `heat/day (bank heat#11)` Iewers het 'n sjokolade net gesterf.
+- `heat/day (bank heat#5)` Warmer as 'n bakkie se dashboard teen middag.
+- `heat/dusk (bank heat#3)` Bly gehidreer of word biltong.
+- `heat/night (bank heat#15)` Die yskas is die koelste kamer in die huis.
+- `heat/night (bank heat#25)` Die yskasdeur kry baie oefening vandag. — 'kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'door' would normally be 'deur' / 'deure', none present · 'oefening' means 'exercise; practice; training' — nothing in the English source; the source's 'door' would normally be 'deur' / 'deure', none present
+- `heat/night (bank heat#17)` Kortbroekie weer? Dis onderbroekie weer.
+- `heat/day (bank heat#50)` Die swembad is reeds bespreek. Deur almal. Vir die hele dag. — 'Deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'fully' would normally be 'ten volle', none present
+- `heat/day (bank heat#8)` Te warm om te stry. Te warm om te funksioneer.
+- `heat/day (bank heat#13)` Almal met 'n swembad het skielik baie populêr geword. — 'skielik' means 'suddenly' — nothing in the English source; the source's 'popular' would normally be 'gewild', none present
+- `heat/day (bank heat#14)` Jy sweet nie. Jy 'glow'. Ja, reg. — 'reg' means 'right; correct; real; true; actual; justice' — nothing in the English source; the source's 'sure' would normally be 'seker', none present
+- `heat/day (bank heat#0)` Jinne, dis ordentlik warm!
+- `clear/dawn (bank weekend#9)` Die naweek word nie beter as dit nie.
+- `clear/dawn (bank clear#58)` 'Net 'n uurtjie strand toe.' Vier uur later... — 'Vier' means 'four; celebrate; celebrates' — nothing in the English source; the source's 'history's' would normally be 'geskiedenis', none present · 'later' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'history's' would normally be 'geskiedenis', none present — but it does co-occur in corpus with 'uur'
+- `clear/day (bank clear#76)` As die weer só gedra, gedra ons ook. Min of meer. — 'gedra' means 'past participle of dra; carried; conduct' — nothing in the English source; the source's 'well' would normally be 'en' / 'put' / 'koker' / 'buik', none present · 'gedra' means 'past participle of dra; carried; conduct' — nothing in the English source; the source's 'well' would normally be 'en' / 'put' / 'koker' / 'buik', none present
+- `clear/day (bank clear#56)` Oggendson wat só lyk maak selfs Maandag draaglik. — 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present — but it does co-occur in corpus with 'só' · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'light' would normally be 'lig' / 'verlig' / 'vuurtoring' / 'opsteek', none present
+- `clear/day (bank clear#1)` Perfekte dag. Geen verskonings nie. Gaan uit.
+- `clear/day (bank clear#26)` Alles lyk 4K vandag. Die lug is in ultra modus. — 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present · 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `clear/day (bank clear#28)` Jou verskoning om binne te bly het pas verval.
+- `clear/day (bank clear#51)` Een perfekte dag uitgereik. Moet hom nie op admin mors nie.
+- `clear/day (bank clear#6)` As jy binne is, doen jy dit verkeerd.
+- `clear/day (bank clear#20)` Die lug gee alles vandag. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `clear/day (bank clear#45)` Als dié blou, dié vroeg? Iets broei. — 'Als' means 'all; everything' — nothing in the English source; the source's 'weather' would normally be 'weer' / 'verweer', none present · 'blou' means 'blue' — nothing in the English source; the source's 'weather' would normally be 'weer' / 'verweer', none present · 'vroeg' means 'early' — nothing in the English source; the source's 'weather' would normally be 'weer' / 'verweer', none present
+- `clear/day (bank clear#71)` Kanselleer alles. Dis DIÉ dag.
+- `clear/day (bank clear#7)` Natuur pronk en ons is hier daarvoor.
+- `clear/day (bank clear#34)` Afrika pronk weer. Dit mag maar.
+- `clear/day (bank clear#19)` Blou lug, warm briesie. Die eenvoudige goed. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'blou', 'warm' · 'goed' means 'good; bona; fairly' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/day (bank clear#32)` Die soort lug wat jou dankbaar laat voel vir gratis goed. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'laat' · 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'lug', 'voel' · 'voel' means 'feel; handle' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'laat' · 'goed' means 'good; bona; fairly' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `clear/day (bank uv#18)` Vandag se voorspelling: medium gaar.
+- `clear/day (bank weekend#24)` Die braai is die sosiale kalender. Daag op.
+- `clear/day (bank weekend#18)` Jou enigste verantwoordelikheid is kies houtskool of hout.
+- `clear/day (bank weekend#14)` Die Weber het die hele week hiervoor gewag.
+- `clear/day (bank weekend#3)` Strand of braai? Ja.
+- `clear/dusk (bank clear#74)` Die son gaan af soos hy weet ons kyk. — 'weet' means 'to know; to be aware of; know' — nothing in the English source; the source's 'really' would normally be 'inderdaad' / 'trouens' / 'werklik' / 'waaragtig', none present · 'kyk' means 'to look; to watch; to browse' — nothing in the English source; the source's 'really' would normally be 'inderdaad' / 'trouens' / 'werklik' / 'waaragtig', none present
+- `clear/dusk (bank clear#27)` Dit is die dag waaroor die brosjure gepraat het.
+- `clear/dusk (bank weekend#13)` Kuierweer. Kry die mense bymekaar. — 'Kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'together' would normally be 'tesame', none present
+- `clear/dusk (bank weekend#2)` Die weergode pronk vandag. — 'vandag' means 'today' — nothing in the English source; the source's 'showing' would normally be 'vertoning' / 'toon' / 'betoon' / 'wys', none present
+- `clear/dusk (bank weekend#4)` Naweek vibes so sterk hulle het hul eie playlist nodig.
+- `clear/dusk (bank clear#81)` Die aand het opgedaag met sy Sondagklere aan.
+- `clear/night (bank night#3)` Die hadedas slaap. Uiteindelik.
+- `clear/night (bank night#8)` Iewers is 'n kriek besig om sy hart uit te sing. — 'besig' means 'busy' — nothing in the English source; the source's 'really' would normally be 'inderdaad' / 'trouens' / 'werklik' / 'waaragtig', none present · 'hart' means 'heart' — nothing in the English source; the source's 'really' would normally be 'inderdaad' / 'trouens' / 'werklik' / 'waaragtig', none present · 'sing' means 'to sing' — nothing in the English source; the source's 'really' would normally be 'inderdaad' / 'trouens' / 'werklik' / 'waaragtig', none present
+- `clear/night (bank clear#82)` Stoepsit-weer. Die TV kan maar wag. — 'wag' means 'guard; to wait; awaiting' — nothing in the English source; the source's 'understand' would normally be 'verstaan', none present
+- `clear/night (bank weekend#0)` Braaiweer, boet! Geen verskonings nie.
+- `clear/night (bank clear#73)` 'Een sundowner,' sê die mense wat die sterre gaan sien uitkom. — 'mense' means 'plural of mens: people; humans; men' — nothing in the English source; the source's 'sundowner' would normally be 'skemerkelk', none present · 'sterre' means 'plural of ster; stars; star' — nothing in the English source; the source's 'sundowner' would normally be 'skemerkelk', none present · 'sien' means 'to see; see; seeing' — nothing in the English source; the source's 'sundowner' would normally be 'skemerkelk', none present · 'uitkom' means 'emerge' — nothing in the English source; the source's 'sundowner' would normally be 'skemerkelk', none present
+- `cloudy/dawn (bank cloudy#20)` Die lug is op mute. Niemand kla nie. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `cloudy/dawn (bank cloudy#9)` Grys vibes. Die lug pas by my Maandag. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cloudy/dawn (bank cloudy#22)` Die son het 'n out-of-office gestuur. — 'gestuur' means 'steering' — nothing in the English source; the source's 'sent' would normally be 'uitgesend' / 'opgeloopte', none present
+- `cloudy/dawn (bank cloudy#79)` Die hemel se gordyne is toe. Privaatheid, asseblief.
+- `cloudy/dawn (bank cloudy#58)` Wolke rol in soos familie — sonder om eers te bel. — 'eers' means 'first, at first; even; plural of eer' — nothing in the English source; the source's 'phone' would normally be 'foon' / 'telefoon', none present
+- `cloudy/dawn (bank cloudy#15)` Kon erger gewees het. Kon ook beter gewees het.
+- `cloudy/dawn (bank cloudy#38)` Die son het snooze gedruk. Weer. — 'gedruk' means 'to press, print; busy, hectic; pressure' — nothing in the English source; the source's 'hit' would normally be 'slaan' / 'bliksem' / 'treffer' / 'hou', none present
+- `cloudy/dawn (bank cloudy#12)` Die son is op teebreek. Geen ETA nie.
+- `cloudy/dawn (bank cloudy#5)` Nie sleg nie, nie great nie. Soos 'n 6/10 date.
+- `cloudy/dawn (bank cloudy#44)` Die app sê bewolk. Tannie se knie sê reën. Ons vertrou die knie.
+- `cloudy/day (bank cloudy#35)` Die lug is die kleur van 'n ou Tupperware-deksel. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cloudy/day (bank cloudy#31)` Die son is op airplane mode.
+- `cloudy/day (bank rain-possible#9)` Voorspelling sê miskien. Ons sê waarskynlik.
+- `cloudy/day (bank cloudy#8)` Selfs die weer kan nie gepla wees vandag nie. — 'gepla' means 'to tease' — nothing in the English source; the source's 'bothered' would normally be 'steur', none present
+- `cloudy/day (bank cloudy#16)` Die lug gee 'ek probeer weer môre' energie. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `cloudy/day (bank cloudy#26)` Perfekte weer vir bestaan sonder entoesiasme.
+- `cloudy/day (bank cloudy#3)` Die son speel siek vandag.
+- `cloudy/day (bank cloudy#19)` Die wolke is hier maar hulle doen niks.
+- `cloudy/day (bank rain-possible#2)` Vat n sambreel net vir ingeval, ne.
+- `cloudy/day (bank rain-possible#3)` 50/50 kans om nat te word. Better odds as om die Lotto te wen... — 'kans' means 'chance; opportunity; probability' — nothing in the English source; the source's 'coin' would normally be 'munt' / 'muntstuk', none present · 'nat' means 'nat' — nothing in the English source; the source's 'coin' would normally be 'munt' / 'muntstuk', none present · 'wen' means 'to win; take; takes' — nothing in the English source; the source's 'coin' would normally be 'munt' / 'muntstuk', none present
+- `cloudy/day (bank rain-possible#6)` Pak 'n sambreel. Of moenie. Ons weet ook nie.
+- `cloudy/day (bank cloudy#46)` Grys is ook 'n kleur, sê my ma. Vandag glo ek haar.
+- `cloudy/day (bank cloudy#37)` Die son is tegnies hier. Geestelik elders.
+- `cloudy/day (bank rain-possible#5)` Die weer is meer besluiteloos as jy by Spur.
+- `cloudy/day (bank partly-cloudy#16)` Sonnig met n spatsel wolke. SA somer in een prentjie. — 'prentjie' means 'image; picture; graphic; film; movie; picture' — nothing in the English source; the source's 'south' would normally be 'suid' / 'suide', none present
+- `cloudy/day (bank cloudy#54)` Die tjops weet nie dis bewolk nie. Die braai gaan voort.
+- `cloudy/day (bank partly-cloudy#19)` Bewolk genoeg om te kla, sonnig genoeg om jou te maak hoop. — 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'comment' would normally be 'kommentaar' / 'kommentarieer' / 'aanmerk' / 'aanmerking', none present · 'hoop' means 'heap; hope; to hope' — nothing in the English source; the source's 'comment' would normally be 'kommentaar' / 'kommentarieer' / 'aanmerk' / 'aanmerking', none present
+- `cloudy/day (bank cloudy#7)` Die lug hakkel. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · no dictionary gloss for 'hakkel'; the source's 'sky' would normally be 'hemel', none present — sense unverified
+- `cloudy/day (bank rain-possible#16)` Selfs die weer-apps baklei oor hierdie een.
+- `cloudy/day (bank cloudy#10)` Eskom-vriendelike weer. Geen solar vandag nie.
+- `cloudy/day (bank partly-cloudy#5)` Son speel wegkruipertjie.
+- `cloudy/day (bank partly-cloudy#11)` Son is op tjailatyd.
+- `cloudy/day (bank cloudy#30)` Bewolk met n spatsel van wie-gee-om lug.
+- `cloudy/day (bank rain-possible#11)` Die lug gee weer gemengde seine. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `cloudy/day (bank partly-cloudy#0)` Die lug speel kat en muis. — 'lug' means 'air' — nothing in the English source; the source's 'sun' would normally be 'son', none present · 'speel' means 'to play; play; playing' — nothing in the English source; the source's 'sun' would normally be 'son', none present · 'kat' means 'cat' — nothing in the English source; the source's 'sun' would normally be 'son', none present · 'muis' means 'A mouse (rodent).; A mouse (input device to operate a computer).' — nothing in the English source; the source's 'sun' would normally be 'son', none present
+- `cloudy/day (bank rain-possible#1)` Wolke lyk behoorlik verdag. — 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'suspicious' would normally be 'wantrouig', none present · 'verdag' means 'suspect' — nothing in the English source; the source's 'suspicious' would normally be 'wantrouig', none present
+- `cloudy/day (bank rain-possible#15)` Die wasgoed hang buite en jy voel dapper. — 'hang' means 'to hang; slope; fly' — nothing in the English source; the source's 'washing's' would normally be 'was', none present · 'buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'washing's' would normally be 'was', none present
+- `cloudy/day (bank partly-cloudy#13)` Wasgoed is veilig. Hopelik. — 'Hopelik' means 'hopefully' — nothing in the English source; the source's 'washing's' would normally be 'was', none present
+- `cloudy/day (bank rain-possible#7)` Die lug kan nie besluit nie. Tipies. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'besluit' means 'to decide; decision; decide' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'Tipies' means 'typically' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cloudy/day (bank cloudy#2)` Goeie dag vir n stap, slegste dag vir n tan.
+- `cloudy/day (bank partly-cloudy#1)` Lug kan nie besluit wat dit wil wees nie. — 'Lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'besluit' means 'to decide; decision; decide' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cloudy/day (bank rain-possible#13)` Hierdie weer het 'n lewensafrigter nodig.
+- `cloudy/dusk (bank cloudy#65)` Die son het uitgeklok sonder om te groet. Onbeskof, maar relatable. — 'relatable' is carried over from the source line (English word, code-switch or brand) · 'groet' means 'greet; greeting' — nothing in the English source; the source's 'clocked' would normally be 'klok', none present
+- `cloudy/dusk (bank rain-possible#0)` Miskien reën, miskien nie. Klassiek.
+- `cloudy/dusk (bank cloudy#67)` Die wolke bly oor vir aandete, lyk dit.
+- `cloudy/dusk (bank cloudy#18)` Niemand gaan hierdie sononder op Instagram sit nie. — 'sit' means 'to sit; to be in a sitting position (usually used with op, binne or in); to sit; to sit down to move into a sitting position; to place, to put' — nothing in the English source; the source's 'posting' would normally be 'paal' / 'styl' / 'spil' / 'pilaar', none present
+- `cloudy/dusk (bank rain-possible#4)` Moenie daai wolke vertrou nie. Hulle beplan.
+- `cloudy/dusk (bank partly-cloudy#3)` Die lug wen, maar dis nie veel van n kompetisie nie. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present · 'wen' means 'to win; take; takes' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present · 'kompetisie' means 'competition' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `cloudy/night (bank cloudy#85)` Nagskof-wolke: hulle hou net die plek warm tot die son terug is. — 'terug' means 'ago' — nothing in the English source; the source's 'till' would normally be 'bewerk' / 'geldlaai' / 'kasregister', none present
+- `cloudy/night (bank cloudy#76)` Geen sterre nie, maar die buurt se honde het steeds opinies. — 'buurt' means 'precinct' — nothing in the English source; the source's 'tonight' would normally be 'vanaand' / 'vannag', none present · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'tonight' would normally be 'vanaand' / 'vannag', none present
+- `cloudy/night (bank cloudy#83)` Nagwolke is die hemel se manier van sê: ons praat môre weer.
+- `cloudy/night (bank cloudy#86)` Die hemel het die sterre op stil gesit. Hulle is nog daar, belowe. — 'stil' means 'satisfies; satisfy' — nothing in the English source; the source's 'put' would normally be 'sit', none present · 'gesit' means 'past participle of sit; to sit; to be in a sitting position (usually used with op, binne or in); to sit; to sit down to move into a sitting position' — nothing in the English source; the source's 'put' would normally be 'sit', none present
+- `cold/dawn (bank cold#46)` Iewers is daar mense wat nou gaan draf. Sterkte vir hulle.
+- `cold/dawn (bank cold#0)` Ja, dis truiweer. Dubbel trui.
+- `cold/dawn (bank cold#42)` Ryp op die gras, ryp op die bakkie, ryp op my moed. — 'Ryp' means 'ripe, mature' — nothing in the English source; the source's 'live' would normally be 'bly' / 'leef' / 'spanning' / 'onder spanning', none present · 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'live' would normally be 'bly' / 'leef' / 'spanning' / 'onder spanning', none present · 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'live' would normally be 'bly' / 'leef' / 'spanning' / 'onder spanning', none present · 'moed' means 'courage' — nothing in the English source; the source's 'live' would normally be 'bly' / 'leef' / 'spanning' / 'onder spanning', none present
+- `cold/dawn (bank cold#4)` Trek lae aan asof jy Sani Pass klim.
+- `cold/dawn (bank cold#22)` Jou baadjie het 'n baadjie. Dis daai soort dag.
+- `cold/dawn (bank cold#8)` Jou asem doen spesiale effekte.
+- `cold/dawn (bank cold#43)` Mooiste tyd van die dag. Sê die mense wat binne bly.
+- `cold/dawn (bank cold#13)` Jou hande is in jou sakke en hulle kom nie uit nie.
+- `cold/dawn (bank cold#20)` Om op te staan was 'n fout. 'n Gedokumenteerde een. — mid-sentence capital on common noun 'Gedokumenteerde' (attested lowercase 5×) · 'staan' means 'to stand' — nothing in the English source; the source's 'bed' would normally be 'bed' / 'kooi' / 'lê' / 'fondament', none present · 'fout' means 'error; failure; fault' — nothing in the English source; the source's 'bed' would normally be 'bed' / 'kooi' / 'lê' / 'fondament', none present
+- `cold/dawn (bank cold#19)` Jy is nie koud nie, jy is 'lekker koud'. Groot verskil.
+- `cold/day (bank cold#18)` Die kouefront is hier en hy het maats gebring. — 'maats' means 'plural of maat; partners; mate, buddy' — nothing in the English source; the source's 'cold' would normally be 'koud' / 'kil' / 'koue' / 'verkoue', none present
+- `cold/day (bank cold#61)` Winterson: al die lig, nul van die hitte. Mooi probeer, son. — 'nul' means 'zero; null; void' — nothing in the English source; the source's 'none' would normally be 'niemand' / 'niks' / 'geeneen', none present
+- `cold/day (bank cold#27)` Buite is 'n karaktertoets. Jy druip.
+- `cold/day (bank cold#1)` Tyd om daai lelike beanie te soek. — 'beanie' means 'not; non' — nothing in the English source; the source's 'dig' would normally be 'grawe' / 'grou', none present · 'soek' means 'to search, seek; market, souq, bazaar, street of shops; search' — nothing in the English source; the source's 'dig' would normally be 'grawe' / 'grou', none present
+- `cold/day (bank cold#15)` Die karsitplekke vries. Alles vries.
+- `cold/day (bank cold#17)` Die hond het geweier om buite te gaan. Billik.
+- `cold/day (bank cold#41)` Die hond het by die voordeur gekyk, omgedraai, en teruggegaan bed toe. Wys jou. — 'Wys' means 'to show; point; show' — nothing in the English source; the source's 'back' would normally be 'rug' / 'agtertong' / 'boekrug maak' / 'agterspeler', none present
+- `cold/day (bank cold#30)` Die duvet roep en die duvet wen.
+- `cold/day (bank cold#9)` Kombers burrito modus: geaktiveer. — 'burrito' is carried over from the source line (English word, code-switch or brand)
+- `cold/day (bank cold#10)` Dit is nie wat die toerisme brosjure beloof het nie.
+- `cold/day (bank cold#50)` Die son is uit. Dit beteken niks. Die son jok.
+- `cold/day (bank cold#38)` Die huis is kouer binne as buite. Argitektuur is 'n mooi ding.
+- `cold/day (bank cold#6)` Die heater is jou beste vriend. Jou enigste vriend.
+- `cold/day (bank cold#34)` Jou tone het 'n formele klagte ingedien.
+- `cold/day (bank cold#3)` Warm sjokolade is nie 'n wens nie. Dis 'n behoefte.
+- `cold/day (bank cold#7)` Selfs die Kapenaars erken dit is koud.
+- `cold/day (bank cold#59)` Die wasgoed gaan nie droog word nie. Ons hang dit op vir die hoop.
+- `cold/day (bank cold#60)` Die worshond het 'n trui. Hy het dit nie gevra nie, maar hy dra dit met waardigheid. — 'worshond' means 'dachshund' — nothing in the English source; the source's 'sausage' would normally be 'wors', none present
+- `cold/day (bank cold#58)` Koue plus mooi is 'n eerlike transaksie. Ons vat dit. — 'transaksie' means 'dealing; transaction' — nothing in the English source; the source's 'trade' would normally be 'vragvaart' / 'bedryf' / 'ambag' / 'verhandel', none present · 'vat' means 'to take; to grasp; barrel' — nothing in the English source; the source's 'trade' would normally be 'vragvaart' / 'bedryf' / 'ambag' / 'verhandel', none present
+- `cold/day (bank cold#70)` Die groot debat: sit die verwarmer óók aan, of is ons nie gemaak van geld nie?
+- `cold/night (bank cold#95)` Die stoel is gevat. Die hond het eerste gekom. Die reëls is die reëls.
+- `cold/night (bank cold#28)` Warmwaterbottel is die werklike held vandag. — 'werklike' means 'actual' — nothing in the English source; the source's 'real' would normally be 'eg' / 'reg' / 'reëel', none present · 'held' means 'hero' — nothing in the English source; the source's 'real' would normally be 'eg' / 'reg' / 'reëel', none present
+- `cold/night (bank cold#51)` Mooiste blou lug in die land, en dit voel soos 'n yskas met uitsig. — 'Mooiste' means 'beautiful, pretty; beautiful; fair' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'uitsig' · 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'blou' · 'yskas' means 'refrigerator' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold-clear/dawn (bank cold-clear#30)` Die son is op, maar hy werk nog nie.
+- `cold-clear/dawn (bank cold-clear#5)` Welkom-koud vandag. Die soort wat deur drie truie gaan asof hulle nie daar is nie.
+- `cold-clear/dawn (bank cold-clear#32)` Die gras het ryp gevang. Jy is volgende.
+- `cold-clear/dawn (bank cold-clear#34)` Die Karoo het die verkoeler oopgelos. — 'Karoo' means 'The vast plain in South Africa that borders the Kalahari Desert.' — nothing in the English source; the source's 'left' would normally be 'links', none present
+- `cold-clear/dawn (bank cold-clear#17)` Die kar se verwarmer is die belangrikste verhouding in jou lewe op die oomblik. — 'verwarmer' means 'warm' — nothing in the English source; the source's 'right' would normally be 'reg' / 'regterkant' / 'regs' / 'regte', none present · 'oomblik' means 'moment, blink of an eye (instant of time); moment' — nothing in the English source; the source's 'right' would normally be 'reg' / 'regterkant' / 'regs' / 'regte', none present
+- `cold-clear/dawn (bank cold-clear#2)` Die kar het twee keer gehoes voor hy besluit het om te vat. — 'keer' means 'check; defend; steady' — nothing in the English source; the source's 'agreed' would normally be 'onbestrede' / 'ooreengekome' / 'afgesproke' / 'volgens afspraak', none present · 'voor' means 'before; in front of; furrow' — nothing in the English source; the source's 'agreed' would normally be 'onbestrede' / 'ooreengekome' / 'afgesproke' / 'volgens afspraak', none present · 'besluit' means 'to decide; decision; decide' — nothing in the English source; the source's 'agreed' would normally be 'onbestrede' / 'ooreengekome' / 'afgesproke' / 'volgens afspraak', none present
+- `cold-clear/dawn (bank cold-clear#24)` Die Toyota het met die eerste try gevat. Jy skuld hom 'n was. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'try' would normally be 'drie' / 'probeer' / 'verhoor' / 'poog', none present
+- `cold-clear/dawn (bank cold-clear#44)` Die lug is oop, die pad is oop, jou neus loop. — 'lug' means 'air' — nothing in the English source; the source's 'clear' would normally be 'helder' / 'ooptrek' / 'uitwis' / 'herstel', none present
+- `cold-clear/dawn (bank cold-clear#73)` Hoe blouer die lug, hoe kouer die waarheid. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `cold-clear/dawn (bank cold-clear#10)` Die soort dag wat Joburg voorgee hy nie het nie totdat jy daarin staan.
+- `cold-clear/dawn (bank cold-clear#45)` Sewe-uur se son deel nog nie hitte uit nie, net vibes. — 'deel' means 'area; book; deal' — nothing in the English source; the source's 'am' would normally be 'is', none present
+- `cold-clear/dawn (bank cold-clear#3)` Hoëveld-winter: die enigste plek waar jy twee jasse aantrek om die pos te gaan haal. — 'jasse' means 'plural of jas; coat; crazy, mad' — nothing in the English source; the source's 'wear' would normally be 'dra' / 'aanhê', none present · 'aantrek' means 'attract; don' — nothing in the English source; the source's 'wear' would normally be 'dra' / 'aanhê', none present
+- `cold-clear/dawn (bank cold-clear#33)` Nul wind, nul wolke, nul genade.
+- `cold-clear/dawn (bank cold-clear#1)` Die Vrystaat het pas onthou hy het 'n winter-setting.
+- `cold-clear/dawn (bank cold-clear#22)` Son op jou rug, vrieskas op jou gesig.
+- `cold-clear/dawn (bank cold-clear#36)` Joburg lyk soos 'n advertensie en voel soos 'n yskas. — 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'tourism' would normally be 'toerisme', none present — but it does co-occur in corpus with 'soos', 'soos' · 'advertensie' means 'advertisement' — nothing in the English source; the source's 'tourism' would normally be 'toerisme', none present · 'yskas' means 'refrigerator' — nothing in the English source; the source's 'tourism' would normally be 'toerisme', none present
+- `cold-clear/dawn (bank cold-clear#37)` Daai eerste asemteug gaan jou wakker maak. Belowe. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'breath' would normally be 'asem', none present · 'wakker' means 'alert' — nothing in the English source; the source's 'breath' would normally be 'asem', none present — but it does co-occur in corpus with 'maak' · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'breath' would normally be 'asem', none present — but it does co-occur in corpus with 'wakker' · 'Belowe' means 'to promise' — nothing in the English source; the source's 'breath' would normally be 'asem', none present
+- `cold-clear/day (bank cold-clear#9)` Son is uit. Moenie geflous word nie. Die natuur lieg.
+- `cold-clear/day (bank cold-clear#38)` Sonskyn: 10/10. Gevoel: vra liewer nie.
+- `cold-clear/day (bank cold-clear#69)` In die son: draaglik. Twee treë links: Antarktika.
+- `cold-clear/day (bank cold-clear#16)` Karoo-oggend. Die soort wat jou laat respek hê vir elke boer wat dit gekies het.
+- `cold-clear/day (bank cold-clear#52)` Vensterson is die enigste son wat vandag werk.
+- `cold-clear/day (bank cold-clear#54)` Buite lyk dit heerlik. Ons het besluit om dit te glo van hier af. — 'Buite' means 'outside; outside, out of; beyond' — nothing in the English source; the source's 'lovely' would normally be 'liefde' / 'liefhê', none present · 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'lovely' would normally be 'liefde' / 'liefhê', none present · 'heerlik' means 'wonderful' — nothing in the English source; the source's 'lovely' would normally be 'liefde' / 'liefhê', none present · 'besluit' means 'to decide; decision; decide' — nothing in the English source; the source's 'lovely' would normally be 'liefde' / 'liefhê', none present
+- `cold-clear/day (bank cold-clear#47)` Volle sonskyn, volle baadjie. Altwee is nodig. — 'nodig' means 'necessary; requisite' — nothing in the English source; the source's 'both' would normally be 'beide', none present
+- `cold-clear/day (bank cold-clear#11)` Lekker koud, maar die rugbyvelde gaan nou-nou perfek lyk.
+- `cold-clear/day (bank cold-clear#61)` Perfekte rugbyweer. Vir die toeskouers met komberse.
+- `cold-clear/day (bank cold-clear#63)` Sonnig met 'n honderd persent kans van bibber.
+- `cold-clear/dusk (bank cold-clear#55)` Perfekte wasgoedweer. Die wasgoed gaan droog word én bevries.
+- `cold-clear/dusk (bank cold-clear#4)` Die hond is nog steeds keen. Die hond is altyd keen. Respek. — 'steeds' means 'always; constantly' — nothing in the English source; the source's 'keen' would normally be 'bok' / 'dol' / 'gretig', none present
+- `cold-clear/dusk (bank cold-clear#42)` Die hond se asem wys ook. Dis hoe koud dit is. — 'koud' means 'cold (of low temperature); cold' — nothing in the English source; the source's 'reading' would normally be 'voorlesing' / 'lesing' / 'vertolking' / 'aflesing', none present
+- `cold-clear/dusk (bank cold-clear#79)` Die son gaan nou huis toe. Vat sy laaste drie grade saam.
+- `cold-clear/dusk (bank cold-clear#77)` Nie 'n wolk in sig nie. Ook nie 'n graad nie.
+- `cold-clear/dusk (bank cold-clear#81)` Die sonsondergang is verniet. Die verkoue ook.
+- `cold-clear/dusk (bank cold-clear#27)` Die braai gaan aan. Die braai gaan altyd aan. Ons trek net die stoele nader.
+- `cold-clear/dusk (bank cold-clear#82)` Golden hour, yskoue lug. Kaapstad hou van drama. — 'hou' means 'to hold; to keep; hit' — nothing in the English source; the source's 'golden' would normally be 'goud' / 'goue' / 'goudkleurig', none present · 'drama' means 'play' — nothing in the English source; the source's 'golden' would normally be 'goud' / 'goue' / 'goudkleurig', none present
+- `cold-clear/night (bank cold-clear#104)` Môreoggend se eerste taak: vyf minute ys krap in jou kerkklere. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'tomorrow's' would normally be 'môre', none present · 'ys' means 'ice, frozen water; ice, methamphetamine' — nothing in the English source; the source's 'tomorrow's' would normally be 'môre', none present
+- `cold-clear/night (bank cold-clear#105)` Die karre het klaar opgegee. Hulle slaap onder ys. — 'klaar' means 'ready, prepared; finished, done; clarify' — nothing in the English source; the source's 'surrendered' would normally be 'oorgawe' / 'oorgee' / 'afkoop', none present · 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; the source's 'surrendered' would normally be 'oorgawe' / 'oorgee' / 'afkoop', none present
+- `cold-clear/night (bank cold-clear#7)` Ryp op die grasperk. Ryp op die bakkie. Ryp in die troeteldierbak.
+- `cold-clear/night (bank cold-clear#86)` Skoon lug vanaand. Dit beteken die koue het vrye toegang. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'koue'
+- `cold-clear/night (bank cold-clear#95)` Die ryp is klaar besig. Teen dagbreek is die grasperk 'n spieël. — 'ryp' means 'ripe, mature' — nothing in the English source; the source's 'shift' would normally be 'verskuiwing' / 'wissel' / 'verskuif' / 'onderhemp', none present · 'besig' means 'busy' — nothing in the English source; the source's 'shift' would normally be 'verskuiwing' / 'wissel' / 'verskuif' / 'onderhemp', none present · 'spieël' means 'mirror; reflect' — nothing in the English source; the source's 'shift' would normally be 'verskuiwing' / 'wissel' / 'verskuif' / 'onderhemp', none present
+- `cold-clear/night (bank cold-clear#13)` Teëlvloere is vanaand se skurk. Sit iets aan jou voete. — 'Sit' means 'to sit; to be in a sitting position (usually used with op, binne or in); to sit; to sit down to move into a sitting position; to place, to put' — nothing in the English source; the source's 'wear' would normally be 'dra' / 'aanhê', none present · 'voete' means 'plural of voet; foot; base' — nothing in the English source; the source's 'wear' would normally be 'dra' / 'aanhê', none present
+- `cold-clear/night (bank cold-clear#111)` Helder nagte is die winter se jammer-sê.
+- `cold-clear/night (bank cold-clear#92)` Gratis planetarium vanaand. Toegangsprys: jou tone.
+- `cold-clear/night (bank cold-clear#87)` Eerste ster is uit. Eerste tien grade is ook uit. — 'Eerste' means 'first; forefront; front' — nothing in the English source; the source's 'left' would normally be 'links', none present · 'Eerste' means 'first; forefront; front' — nothing in the English source; the source's 'left' would normally be 'links', none present
+- `fog/dawn (bank fog#44)` Die koeie weet presies waar hulle is. Meer as wat ons kan sê.
+- `fog/dawn (bank fog#2)` Silent Hill vibes. Sonder die monsters. Hopelik. — 'monsters' means 'samples; specimens' — nothing in the English source; the source's 'hill' would normally be 'rug' / 'randjie' / 'heuwel' / 'heuwels', none present
+- `fog/dawn (bank fog#14)` Die straatligte probeer hul bes.
+- `fog/dawn (bank fog#12)` Die wêreld het 'n sagte filter gekry vanoggend.
+- `fog/day (bank fog#28)` Die mis het onverwags opgedaag. Klassieke mis.
+- `fog/day (bank fog#5)` Die wêreld het net... verdwyn.
+- `fog/day (bank fog#10)` Die mis het die buurt opgeëet.
+- `fog/day (bank fog#13)` Om die hond te stap het 'n vertroue-oefening geword.
+- `fog/day (bank fog#20)` Die bure bestaan. Glo so. Kan nie bevestig nie. — 'bure' means 'plural of buur; neighbor' — nothing in the English source; the source's 'neighbours' would normally be 'buurman' / 'buurvrou', none present
+- `fog/day (bank fog#19)` Die mis gee nie om oor jou skedule nie.
+- `fog/day (bank fog#4)` Selfs jou GPS is verward.
+- `fog/day (bank fog#40)` Die GPS sê jy het opgedaag. Die GPS jok.
+- `fog/day (bank fog#34)` Stap na die asblik is nou 'n ekspedisie.
+- `fog/day (bank fog#31)` Die wêreld eindig twee meter verby die hek.
+- `fog/day (bank fog#3)` Sigbaarheid: basies nul.
+- `fog/dusk (bank fog#15)` Iewers daarbuite is die pad. Ons dink.
+- `fog/dusk (bank fog#18)` Jou brights maak dit erger, boet. — 'brights' means 'HTS; abbreviation of hoër tegniese skool' — nothing in the English source; the source's 'high' would normally be 'hoog' / 'hoogtepunt' / 'hoogdrukgebied' / 'hoë v-hals', none present · 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'high' would normally be 'hoog' / 'hoogtepunt' / 'hoogdrukgebied' / 'hoë v-hals', none present — but it does co-occur in corpus with 'erger'
+- `fog/dusk (bank fog#88)` Die hond verstaan nie waar die wêreld heen is nie. Ons ook nie, boytjie. Ons ook nie.
+- `fog/dusk (bank fog#64)` Perfekte weer om iemand raak te loop wat jy 'nog wou bel'. — 'raak' means 'to become; to get; to grow' — nothing in the English source; the source's 'meaning' would normally be 'sin' / 'bedoeling' / 'betekenis' / 'middelbaar', none present · 'loop' means 'to walk; walking, gait; course' — nothing in the English source; the source's 'meaning' would normally be 'sin' / 'bedoeling' / 'betekenis' / 'middelbaar', none present · 'wou' means 'preterite of wil; wanted to; to want; will' — nothing in the English source; the source's 'meaning' would normally be 'sin' / 'bedoeling' / 'betekenis' / 'middelbaar', none present
+- `fog/dusk (bank fog#38)` Vyf meter sig. Nes jou vyfjaarplan. — 'Nes' means 'like; just like; as soon as; just as something is about to do something; nest, structure made out of twigs, mud, grass, etc.' — nothing in the English source; the source's 'plan' would normally be 'plan' / 'beplan' / 'plan beraam', none present
+- `fog/dusk (bank fog#23)` Die straatborde het tou opgegooi. — 'opgegooi' means 'to vomit' — nothing in the English source; the source's 'signs' would normally be 'tekens' / 'teken', none present — but it does co-occur in corpus with 'tou'
+- `fog/night (bank fog#11)` Jou kar is daarbuite. Iewers. Waarskynlik.
+- `fog/night (bank fog#7)` Spookdorp. Maar dis net Dinsdag.
+- `fog/night (bank fog#25)` Mis so dik dit het menings.
+- `fog/night (bank fog#30)` Kaapstad het 'n dimmer skakelaar gekry.
+- `fog/night (bank fog#6)` Perfekte weer vir n horror movie.
+- `fog/night (bank fog#17)` Alles lyk soos 'n filmtoneel. 'n Grillerige een. — mid-sentence capital on common noun 'Grillerige' (attested lowercase 13×) · 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'film' would normally be 'film' / 'prent' / 'rolprent' / 'vlies', none present — but it does co-occur in corpus with 'soos'
+- `fog/night (bank fog#35)` Sigbaarheid: net vibes.
+- `fog/night (bank fog#68)` Kom ons noem dit atmosfeer en gaan in.
+- `fog/night (bank fog#90)` Joburg doen mis so selde dat dit soos 'n spesiale uitgawe voel. — 'spesiale' means 'attributive form of spesiaal; special; specially' — nothing in the English source; the source's 'limited' would normally be 'begrens' / 'beperk' / 'beperkte' / 'grens', none present
+- `rain/dawn (bank rain#25)` Die verkeer is emosioneel.
+- `rain/dawn (bank rain#19)` Die wipers is op max en dit is steeds nie genoeg nie. — 'wipers' means 'whip; plural of er; forms the plural of three nouns, all of which denote young creatures' — nothing in the English source; the source's 'max' would normally be 'maksimum' / 'maks.', none present · 'steeds' means 'always; constantly' — nothing in the English source; the source's 'max' would normally be 'maksimum' / 'maks.', none present
+- `rain/dawn (bank rain#12)` Jou skoene gaan 'n slegte dag hê.
+- `rain/dawn (bank rain#49)` Reën op 'n plaas is nie weer nie. Dis 'n salaris wat val.
+- `rain/dawn (bank rain#7)` Die damme doen 'n bly dansie.
+- `rain/dawn (bank rain#50)` Iewers doen 'n boer nou 'n klein dansie wat niemand mag sien nie. — 'klein' means 'small, little; little; minor' — nothing in the English source; the source's 'private' would normally be 'privaat', none present
+- `rain/dawn (bank rain#36)` Die damme drink eerste. Jy kry jou koffie tweede. — 'eerste' means 'first; forefront; front' — nothing in the English source; the source's 'know' would normally be 'ken' / 'weet', none present · 'kry' means 'to get, receive, obtain; get; gets' — nothing in the English source; the source's 'know' would normally be 'ken' / 'weet', none present · 'tweede' means 'second' — nothing in the English source; the source's 'know' would normally be 'ken' / 'weet', none present
+- `rain/day (bank rain#66)` Groot nuus: die plasse is oop vir besigheid.
+- `rain/day (bank rain#57)` Reën verander elke Suid-Afrikaanse bestuurder terug in 'n leerling. — 'verander' means 'alter; change; changed' — nothing in the English source; the source's 'turns' would normally be 'draai' / 'beurt' / 'rondte' / 'omdraai', none present · 'terug' means 'ago' — nothing in the English source; the source's 'turns' would normally be 'draai' / 'beurt' / 'rondte' / 'omdraai', none present
+- `rain/day (bank rain#0)` Die wolke het 'n oomblik.
+- `rain/day (bank rain#11)` Reën so swaar dit moet huur betaal.
+- `rain/day (bank rain#28)` Ja, dit reën sywaarts. Suid-Afrikaanse spesialiteit.
+- `rain/day (bank rain#31)` Solidariteit aan almal met een nat skoen nou. — 'nat' means 'nat' — nothing in the English source; the source's 'right' would normally be 'reg' / 'regterkant' / 'regs' / 'regte', none present
+- `rain/day (bank rain#30)` Nat jeans vir die res van die dag. Die klassieke straf.
+- `rain/day (bank rain#15)` Die sambreel het gebreek met die eerste wind. Klassiek.
+- `rain/day (bank rain#22)` Iewers het 'n sambreel net binnestebuite gedraai. Oomblik van stilte.
+- `rain/day (bank rain#24)` Haarplanne: gekanselleer.
+- `rain/day (bank rain#53)` Joburg se reën hou dagboek: 14:00, stiptelik, vol drama. — 'stiptelik' means 'promptly' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present · 'vol' means 'full; complete' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present — but it does co-occur in corpus with 'hou' · 'drama' means 'play' — nothing in the English source; the source's 'pm' would normally be 'nm' / 'namiddag', none present
+- `rain/day (bank rain#33)` Jou baadjie vergeet? Die heelal het opgemerk.
+- `rain/day (bank rain#10)` Iemand se braai is sopnat.
+- `rain/day (bank rain#2)` Die tuin sê uiteindelik dankie.
+- `rain/day (bank rain#18)` Ten minste is die tuin bly. Iemand moet wees.
+- `rain/dusk (bank rain#6)` Perfekte verskoning om planne te kanselleer. — 'verskoning' means 'a pardon; forgiveness' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present · 'planne' means 'projects' — nothing in the English source; the source's 'plans' would normally be 'plan' / 'beplan' / 'plan beraam', none present
+- `rain/dusk (bank rain#8)` Die N1 is nou 'n waterpark.
+- `rain/dusk (bank rain#69)` Joburg reën twintig minute en verf dan die lug asof niks gebeur het nie. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `rain/dusk (bank rain#13)` Die rit het 'n spansport geword. — 'rit' means 'drive' — nothing in the English source; the source's 'team' would normally be 'span' / 'spanne', none present
+- `rain/dusk (bank rain#16)` Nat sokkies. Die finale verraad. — 'Nat' means 'nat' — nothing in the English source; the source's 'ultimate' would normally be 'uiterste', none present · 'sokkies' means 'plural of sokkie; diminutive of sok' — nothing in the English source; the source's 'ultimate' would normally be 'uiterste', none present · 'verraad' means 'advice; board; council' — nothing in the English source; the source's 'ultimate' would normally be 'uiterste', none present
+- `rain/night (bank rain#4)` Jou karwas was geldmors.
+- `storm/dawn (bank storm#8)` Dis hoekom Noag 'n ark gebou het. — 'gebou' means 'building; past participle of bou; to build' — nothing in the English source; the source's 'built' would normally be 'beboude' / 'opgerig', none present
+- `storm/dawn (bank storm#38)` Die sonsopkoms het vanoggend op drama besluit. — 'drama' means 'play' — nothing in the English source; the source's 'sunrise' would normally be 'sonop', none present · 'besluit' means 'to decide; decision; decide' — nothing in the English source; the source's 'sunrise' would normally be 'sonop', none present
+- `storm/dawn (bank storm#21)` Die lug se CV is pas opgedateer. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present · 'pas' means 'pace, step; pass (a card or document); fit' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `storm/dawn (bank storm#37)` Die hond het klaar sy plek onder die bed bespreek.
+- `storm/dawn (bank storm#2)` Die hond is onder die bed. Slim skuif, eerlikwaar.
+- `storm/dawn (bank storm#32)` Die lug het wakker geword met 'n houding. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present · 'wakker' means 'alert' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'geword' · 'geword' means 'past participle of word; to become; to get (to change one’s state); Forms the present passive voice when followed by a past participle' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present — but it does co-occur in corpus with 'wakker' · 'houding' means 'attitude; pose' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `storm/dawn (bank storm#0)` Jinne, bly binne!
+- `storm/dawn (bank storm#36)` Gratis IMAX vanoggend, boet.
+- `storm/dawn (bank storm#35)` Beskuit eerste. Paniek later.
+- `storm/day (bank storm#22)` Iewers leef 'n weerverslaggewer sy beste lewe.
+- `storm/day (bank wind#14)` Die wind het 'n persoonlike vendetta teen sambrele.
+- `storm/day (bank thunder#0)` Donder kom nader. Binne is die plan. — 'Donder' means 'to plummet, tumble' — nothing in the English source; the source's 'move' would normally be 'trek' / 'beweeg' / 'verskuif' / 'voorstel', none present · 'plan' means 'plan; plans; project' — nothing in the English source; the source's 'move' would normally be 'trek' / 'beweeg' / 'verskuif' / 'voorstel', none present
+- `storm/day (bank storm#15)` Respekteer die donder. Hy het dit verdien.
+- `storm/day (bank thunder#2)` Weerlig sit 'n show op — kyk deur die venster. — 'sit' means 'to sit; to be in a sitting position (usually used with op, binne or in); to sit; to sit down to move into a sitting position; to place, to put' — nothing in the English source; the source's 'show' would normally be 'toon' / 'betoon' / 'wys' / 'tentoonstelling', none present · 'deur' means 'door; through; by (indicating an agent)' — nothing in the English source; the source's 'show' would normally be 'toon' / 'betoon' / 'wys' / 'tentoonstelling', none present
+- `storm/day (bank storm#20)` Natuur maak dit duidelik wie regtig in beheer is. — 'maak' means 'to make; construct; create' — nothing in the English source; the source's 'reminded' would normally be 'het herinner' / 'herinner', none present · 'duidelik' means 'apparent; articulate; clear' — nothing in the English source; the source's 'reminded' would normally be 'het herinner' / 'herinner', none present · 'beheer' means 'control; holdings; manage' — nothing in the English source; the source's 'reminded' would normally be 'het herinner' / 'herinner', none present
+- `storm/day (bank storm#53)` Gratis vuurwerke, geen kaartjies nodig nie.
+- `storm/day (bank storm#6)` Kanselleer alles. Selfs jou verskonings.
+- `storm/day (bank storm#18)` Nie tyd vir heldedade nie, ne!
+- `storm/day (bank hail#1)` Hael val — gooi iets oor die bakkie.
+- `storm/day (bank storm#4)` Die lug het n volle vloermoer. — 'lug' means 'air' — nothing in the English source; the source's 'sky's' would normally be 'hemel', none present
+- `storm/day (bank storm#27)` Natuur wil 'n woordjie sê. Beste om te luister.
+- `storm/dusk (bank storm#29)` Skakel jou toestelle af. Die lug het planne. — 'Skakel' means 'half; link; switch' — nothing in the English source; the source's 'things' would normally be 'dinge' / 'ding', none present · 'lug' means 'air' — nothing in the English source; the source's 'things' would normally be 'dinge' / 'ding', none present · 'planne' means 'projects' — nothing in the English source; the source's 'things' would normally be 'dinge' / 'ding', none present
+- `storm/dusk (bank storm#13)` Weerlig laat Eskom se kragnetwerk pateties lyk. — 'laat' means 'to cause to, to make; forms a causative phrase.; to let; forms a cohortative phrase.; to may, to let; forms an optative phrase.' — nothing in the English source; the source's 'putting' would normally be 'sit', none present — but it does co-occur in corpus with 'lyk' · 'pateties' means 'pathetically; pitiably; pathetic; pitiful' — nothing in the English source; the source's 'putting' would normally be 'sit', none present · 'lyk' means 'dead body; corpse; to look, to appear; body' — nothing in the English source; the source's 'putting' would normally be 'sit', none present — but it does co-occur in corpus with 'laat'
+- `storm/dusk (bank storm#48)` Vandag se voorspelling: verhoogeffekte.
+- `storm/dusk (bank storm#9)` Die braai is gekanselleer. Ja, regtig.
+- `storm/dusk (bank storm#12)` Eskom wens hy het hierdie krag.
+- `storm/dusk (bank storm#5)` Natuur doen sy eie beurtkrag.
+- `storm/night (bank storm#54)` Middernag en die lug wys af. — 'lug' means 'air' — nothing in the English source; the source's 'sky' would normally be 'hemel', none present
+- `storm/night (bank storm#58)` Elke weerligstraal is 'n foto wat niemand betyds neem nie.

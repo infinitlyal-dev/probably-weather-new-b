@@ -26,3 +26,6 @@ voiceover-output/
 .fable/
 benchmarks/traces/
 .scratch/
+
+# lang-check corpus cache (downloaded by scripts/lang-check.mjs --fetch; never committed)
+.lang-check-cache/

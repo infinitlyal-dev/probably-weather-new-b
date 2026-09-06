@@ -1,81 +1,122 @@
 ---
 name: zu-qc
-description: isiZulu (zu) translation quality checker for Probably Weather. Use whenever working on the `zu` column of `T` in `assets/app.js`, `INSTALL_T` in `assets/install.js`, `PTR_COPY`, or `WEATHER_COPY`. Triggers on: Zulu, isiZulu, ZU translation, ZU QC, zu column, iSonto, uMsombuluko, Nguni, SADiLaR, CTexT, Zulu word list. Conservative-by-default: most cross-language duplicates with Xhosa are legitimate Nguni cognates — never auto-apply unless the source language is clearly non-Nguni (e.g. Afrikaans).
+description: isiZulu (zu) translation quality checker for Probably Weather, backed by corpora. Use whenever working on the `zu` column of `T` in `assets/app.js`, `INSTALL_T` in `assets/install.js`, `PTR_COPY`, `WEATHER_COPY`, the provisional fills in `lang-packs/zu/`, or new zu transcreations. Triggers on: Zulu, isiZulu, ZU translation, ZU QC, zu column, iSonto, uMsombuluko, Nguni, SADiLaR, CTexT, Zulu word list, lang-check. Conservative-by-default: shared Nguni vocabulary with isiXhosa is weak evidence and is never flagged above medium on its own; nothing is auto-applied.
 ---
 
 # zu-qc — isiZulu QC for Probably Weather
 
-> **Status: heuristic checklist, NOT dictionary-backed.**
->
-> This skill performs pattern-based checks (cross-language exact-match comparison, Nguni class-prefix presence, orthography sanity, English-loanword detection) using only the source `T` object and Claude's in-context isiZulu knowledge. It does **NOT** call SADiLaR, NWU CTexT, isiZulu.net, or any external dictionary or word-list API. The "consult SADiLaR / CTexT" references in the procedure below are documentation breadcrumbs for manual native-speaker review, not automated lookups.
->
-> Use this skill as a structured checklist when triaging isiZulu strings, and as a contract specification for what a future dictionary-backed tool would look like. Do **not** treat its "confidence" outputs as dictionary-validated. Confidence here is heuristic confidence (how strong the structural signal is), not lexicographic confidence (whether a SADiLaR lemma list actually contains the surface form).
->
-> Semantic mismatches — a real isiZulu word used in the wrong sense (e.g. `weather.gusts.zu = "amafindo"`, which is the plural of `ifindo` meaning "knot/node" rather than wind gust) — are **not catchable by this skill**. Wordlist or lemma-list backing would not catch them either, since both source and intended-target forms are real isiZulu words. Catching this class of bug requires native review or a bilingual EN↔ZU gloss round-trip.
->
-> See `LANGUAGE_AUDIT_PHASE3_REPORT.md` for the full Phase 3 audit and the investigation behind this disclaimer.
+> **Status: corpus-backed (2026-09-06).** The check is `node scripts/lang-check.mjs --lang zu`.
+> It replaced the heuristic checklist from May 2026 after a validation exam against native rulings
+> (`scripts/lang-check/exam-result.md`): wrong-sense recall 0% → 43%, wrong-language (Xhosa forms)
+> recall 5% → 84%, untranslated 0% → 71%, fused boundaries 0% → 79%, precision 50% → 56% on 503
+> native-good and 94 known-bad isiZulu lines. Every finding cites the corpus hit.
 
-## When to use
+## What backs it
 
-- Any edit touching the `zu:` value of an i18n leaf.
-- Reviewing a batch of isiZulu strings flagged in `I18N_CROSS_LANGUAGE_AUDIT.md`.
-- The audit lists 34 cross-language duplicates for zu, but **most are legitimate Nguni cognates** shared with Xhosa.
+Compiled by `node scripts/lang-check.mjs --build-index zu` from `.lang-check-cache/`
+(`node scripts/lang-check/fetch-corpora.mjs`; licences in `scripts/lang-check/lib/build-index.mjs`):
 
-## References (consult before flagging)
+- **Leipzig `zul_community_2017`, `zul_mixed_2014_100K`, `zul-za_web_2018_30K`** — 272 577
+  sentences, 688 380 word forms with frequency, neighbour co-occurrence (collocations) and an
+  example sentence per word. The largest attestation source; also the noisiest (English and
+  Xhosa strays occur, which is why sibling attestation is weighed against own frequency).
+- **kaikki.org Zulu** (English Wiktionary extract, CC BY-SA) — 3 330 lemmas with English glosses,
+  noun classes, and 502 058 inflected forms (full concord and tense tables per verb and noun).
+- **NCHLT isiZulu annotated corpus** (CTexT, CC BY 2.5 ZA) — 46 059 tokens with lemma and POS.
+- **SADiLaR-II morphological annotations** (CC BY 4.0) — 45 933 tokens segmented into morphemes:
+  the source of the noun-class and subject-concord tables.
+- **zu.wiktionary** (full page cache, 1 369 pages) and **African Wordnet isiZulu** (CC BY 4.0,
+  6 518 lemmas).
+- **Autshumato EN↔ZU word/phrase lists** (CC BY 2.5 ZA) — 6 241 words, 1 029 phrases.
+- **zu.wikipedia** article text (12 606 articles) and the **Constitution (isiZulu)**.
+- **The app's own native bank** (`lang-packs/zu/corpus-confirmed.jsonl`) and the pack's
+  `banned-words.json` — bank attestation is reported but never counts as external evidence.
 
-- **SADiLaR** (repo.sadilar.org) — South African Digital Language Resources, isiZulu corpora and word lists.
-- **NWU CTexT** — Centre for Text Technology word lists / spelling resources.
-- **isiZulu.net** — community dictionary, useful for sanity checks.
-- Existing PW corpus — many zu strings have been native-reviewed; treat them as ground truth unless evidence says otherwise.
+Not reachable from here: NWU CTexT's ZulMorph (ctext.nwu.ac.za timed out), isiZulu.net (gone, 410),
+any Oxford API. No Bible text is on eBible for zul.
+
+## How to run it
+
+```bash
+node scripts/lang-check.mjs --lang zu --en "Rain tonight" --text "Imvula namhlanje"
+node scripts/lang-check.mjs --file lines.json --verbose        # [{lang,en,text,key}]
+node scripts/lang-check/triage.mjs --lang zu                    # provisional fills → review/lang-check-triage-zu.md
+node scripts/lang-check/triage.mjs --lang zu --file new-set.json
+```
+
+## What it checks (a–d in `scripts/lang-check/lib/checker.mjs`)
+
+1. **Lexical.** Every content word is resolved: exact form; hyphenated loans (`i-Toyota`,
+   `ama-hadedas`); a locative or copulative prefix stripped (`emvuleni` → `imvula`, `ngumkhumbi` →
+   `umkhumbi`); an inflected stem attested under another concord (`obucwebile` ~ `licwebile`).
+   Loans with fused class prefixes (`namabakkie`) are recognised through the Afrikaans and English
+   indexes and the source line. What remains unknown gets the closest attested form and a note of
+   whether the word appears only in this app's own copy. The pack's `banned-words.json` is applied:
+   hard entries are HIGH, soft entries (umkhumbi=ship, iqanda=egg, izinkonjane=swallows, isijele=jail,
+   amafindo=knots, hlanzekile=clean) are MEDIUM "verify the sense".
+2. **Morphological.** Noun class from the corpora, checked against the subject concord of the next
+   word — only for the unambiguous concords `ba- li- si- zi- lu- bu-`, only when the noun carries
+   its bare class prefix, and only when the expected form is itself attested (the evidence quoted).
+   Fused word boundaries: an unattested word that splits into two attested words. Diacritics in a
+   Nguni line are HIGH.
+3. **Semantic.** Back-translation through the glosses (walking plural→singular and concord
+   prefixes), compared with the English source through a weather synonym table. A time-of-day
+   clash (`namhlanje` = today against "tonight") is the documented badge bug and is MEDIUM. A real
+   word one to three letters from the expected word with a different meaning (`inkuku` for
+   `inkungu`, `isijele` for `ijezi`) is a near-miss finding. Single-word labels whose gloss matches
+   nothing in the source, while the source word has a known translation that is absent, are MEDIUM.
+4. **Contamination.** Xhosa function-word markers (`ndiya`, `ngoku`, `apho`, `ewe`, `hayi`, `xa`,
+   `kuba`, `imozulu`, `kushushu`) are HIGH when the form is unattested in isiZulu, MEDIUM when the
+   Xhosa frequency dwarfs the Zulu one. A word attested only in the Xhosa index is LOW–MEDIUM
+   because shared Nguni vocabulary is common. English words not present in the source line are
+   MEDIUM; core weather words left in English (`rain`, `night`) are MEDIUM even when the source
+   has them.
+
+## What it still cannot see
+
+- **Wrong sense where the dictionary has no gloss for the word.** `amafindo` (knots) for gusts is
+  only caught because it is now in `banned-words.json`; the corpora attest it but do not gloss it.
+- **Sense shifts inside one domain.** `Kunamafu` (partly cloudy) for "Overcast" passes: the gloss
+  is "cloud".
+- **Register.** `Kubanda` vs `Makhaza`, `Kupholile` vs `Kuyabanda kancane` are the native reviewer's
+  calls; the tool sees two attested words.
+- **Number and agreement that is attested either way.** `Isiphepho siyeza` (singular) where the
+  native wanted `Iziphepho ziyeza`.
+- **Attested-but-wrong.** `Kunenkungu.` (fused) is attested in the corpora, so it passes.
+- **The imbatata question.** `Imbatata emgwaqeni…` is in the live bank (native review commit
+  d51b173) while `lang-packs/zu/lexicon-protected.md` calls `imbatata` an invented word; the
+  corpora attest `imbadada` (sandals) once and `imbatata` only in this app. The tool reports it
+  as "seen only in this app's own copy" — a native has to rule.
 
 ## Conservative protocol
 
 > **Low confidence = defer to human. Never auto-apply.**
 
-For Zulu specifically, the dominant cross-language pattern is **shared Nguni vocabulary with Xhosa**. Words like `umoya` (wind), `imvula` (rain), `usuku` (day), `ikhaya` (home), `phezulu` (high) are genuinely identical in both languages. Do **not** flag these as bugs.
+- `triage-high` / `triage` entries go to `TRIAGE_NATIVE_REVIEW.md` under isiZulu with the evidence.
+  `pass` means the corpora found nothing to object to.
+- A zu string that equals the xh string is a cognate until a native says otherwise. The only
+  cross-language duplicates flagged HIGH are with Afrikaans, Sesotho or English.
+- The tool never edits `assets/`. Fixes land through the native batch (`scripts/generate-review-batch.mjs`).
 
-The only **canonical** confirmed bug pattern is **Afrikaans-Zulu duplicates** (`days.sun.zu = "Son"` matches `days.sun.af = "Son"`). Afrikaans and Zulu share no genealogy — any identical string between these two is suspicious unless it's a brand/acronym (UV, Temp, etc.).
+## Examples
 
-## `check(string, key, context)` procedure
-
-```
-check(value, key, context) → { confidence: 0–1, flags: [], suggestions: [] }
-```
-
-Steps:
-
-1. **Cross-language source check** — if value matches `af`, `en`, or `st` exactly AND is not a known acronym, flag with confidence 0.8.
-2. **Cross-language source check (Nguni)** — if value matches `xh` exactly, downgrade to "likely cognate" (confidence 0.3 max for being a bug — i.e. low confidence it's wrong).
-3. **Class prefix check** — Zulu nouns carry class prefixes (`u-`, `um-`, `i-`, `isi-`, `aba-`, `ama-`). A noun-meaning string in the zu slot that lacks a prefix is suspicious (e.g. "Home" → should be "Ikhaya" not "Khaya"). Mild flag, confidence 0.5.
-4. **Verb form** — Zulu UI labels typically use noun-of-action (`Ukuhlela` for "to edit") or imperative (`Hlela!`). Either is fine; the verb root present is the key check.
-5. **Orthography** — Zulu uses standard Latin alphabet, no diacritics. Strings with `é`, `ë`, `ï` are flagged (likely from another language).
-
-## High-confidence fix criteria (auto-apply allowed)
-
-All three must hold:
-
-- Value is verbatim from a non-Nguni language (af, st, or en — excluding shared acronyms).
-- A canonical Zulu equivalent is available in SADiLaR / existing PW corpus.
-- The key is a short UI label (≤ 4 words), not a paragraph (paragraphs need full native review).
-
-## Examples (from this codebase)
-
-- ⚠️ HIGH-SUSPICION but defer: `days.sun.zu = "Son"` — matches `af.sun`. Almost certainly a copy-paste from Afrikaans. Zulu Sunday is **iSonto**; the 3-letter abbreviation pattern used elsewhere (`Mso`, `Bil`, `Tha`, `Sin`, `Hla`, `Mgq`) would suggest something like `Snt` or `Sont`. **However**, the exact form is a UX/style decision (matches AF pattern? matches XH "Caw"?) — **defer to native speaker**, do not auto-apply.
-- ✅ LEGITIMATE: `weather.wind.zu = "Umoya"` = `xh.wind` — shared Nguni word. Keep.
-- ✅ LEGITIMATE: `weather.rain.zu = "Imvula"` = `xh.rain` — shared Nguni word. Keep.
+- ✅ CAUGHT: `Imvula namhlanje` for "Rain tonight" → MEDIUM semantic, `namhlanje` = today,
+  time-of-day clash; expected `ebusuku namuhla`. Evidence: Leipzig zul_community_2017.
+- ✅ CAUGHT: `Ho bata bosigo bona` style contamination in reverse: `Isibhakabhaka sinenkani ngoku.`
+  → `ngoku` is a Xhosa marker (xh 1711× vs zu 48×).
+- ✅ CAUGHT: `Kwenye indawo uphahla lungumkhumbi omusha womuntu.` → `umkhumbi` = ship (pack soft
+  ban + gloss 'ship; vessel' against "kite").
+- ⚠️ MISSED: `Ubusuku obuhlanzekile` (clean for clear) unless `hlanzekile` is read from the pack.
+- ✅ CLEAN: `Imvula isifikile.` passes; `Umoya onamandla` passes.
 
 ## Output format
 
-```
-{
-  "key": "days.sun",
-  "current": "Son",
-  "confidence_is_bug": 0.85,
-  "confidence_in_fix": 0.4,
-  "flags": ["matches-af", "copy-paste-suspect"],
-  "suggestion": "Snt or Sont (uncertain — defer)",
-  "rationale": "Matches af.sun exactly. Zulu Sunday is 'iSonto'. Exact 3-letter form requires native confirmation."
-}
+```json
+{ "lang": "zu", "en": "Rain tonight", "text": "Imvula namhlanje", "confidence": 0.25, "action": "triage",
+  "findings": [{ "check": "semantic", "severity": "medium", "token": "namhlanje",
+    "message": "'namhlanje' means 'today' — nothing in the English source (time-of-day clash with 'tonight'); the source's 'tonight' would normally be 'namuhla kusihlwa' / 'ebusuku namuhla', none present",
+    "evidence": { "glosses": ["today"], "timeClash": true, "cite": { "freq": 947, "sources": ["kaikki","leipzig","nchlt","morph","wikt","wiki"], "example": { "source": "Leipzig zul_community_2017 #…", "text": "…" } } } }],
+  "coverage": { "contentTokens": 2, "attested": 2, "unknown": 0, "enMatched": ["rain"], "enUnmatched": ["tonight"] } }
 ```
 
-If `confidence_in_fix < 0.85`, write to `TRIAGE_NATIVE_REVIEW.md`.
+If `action` is not `pass`, write the entry to `TRIAGE_NATIVE_REVIEW.md`; do not mutate `assets/`.

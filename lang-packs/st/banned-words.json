@@ -1,20 +1,82 @@
 {
   "note": "Machine-readable subset of errors-observed.md. hard=always wrong (misspelling/wrong-dialect); soft=context-risky.",
   "hard": [
-    { "token": "mohodi", "fix": "moholi", "why": "misspelling of fog" },
-    { "token": "tjhesa", "fix": "chesa", "why": "misspelling of hot" },
-    { "token": "hlonepha", "fix": "hlompha", "why": "Zulu/Xhosa form of respect in Sesotho copy" },
-    { "token": "jwalo", "fix": "joalo", "why": "Lesotho spelling; app uses SA-Sesotho" },
-    { "token": "jwale", "fix": "joale", "why": "Lesotho spelling; app uses SA-Sesotho" },
-    { "token": "lifofane", "fix": "meea e fokang ka sefutho", "why": "means airplanes, not wind gusts" },
-    { "token": "setofo", "fix": "setlolo sa letsatsi", "why": "reads as stove, not sunscreen" },
-    { "token": "Tsela ea Lebese", "fix": "Molalatladi", "why": "calque of Milky Way" }
+    {
+      "token": "mohodi",
+      "fix": "moholi",
+      "why": "misspelling of fog"
+    },
+    {
+      "token": "tjhesa",
+      "fix": "chesa",
+      "why": "misspelling of hot"
+    },
+    {
+      "token": "hlonepha",
+      "fix": "hlompha",
+      "why": "Zulu/Xhosa form of respect in Sesotho copy"
+    },
+    {
+      "token": "jwalo",
+      "fix": "joalo",
+      "why": "Lesotho spelling; app uses SA-Sesotho"
+    },
+    {
+      "token": "jwale",
+      "fix": "joale",
+      "why": "Lesotho spelling; app uses SA-Sesotho"
+    },
+    {
+      "token": "lifofane",
+      "fix": "meea e fokang ka sefutho",
+      "why": "means airplanes, not wind gusts"
+    },
+    {
+      "token": "setofo",
+      "fix": "setlolo sa letsatsi",
+      "why": "reads as stove, not sunscreen"
+    },
+    {
+      "token": "Tsela ea Lebese",
+      "fix": "Molalatladi",
+      "why": "calque of Milky Way"
+    },
+    {
+      "token": "Leholimo le lebe",
+      "fix": "Boemo ba leholimo bo matla",
+      "why": "calque of 'bad sky' for severe weather (native review, errors-observed.md)"
+    },
+    {
+      "token": "Modumo wa leholimo",
+      "fix": "Modumo wa seaduma",
+      "why": "calque 'noise of sky' for thunder (native review, errors-observed.md)"
+    }
   ],
   "soft": [
-    { "token": "tsie", "means": "grasshopper", "misused_for": "cricket (tswiritswiri)" },
-    { "token": "dikgogo", "means": "chickens", "misused_for": "owls (merubisi)" },
-    { "token": "motle", "means": "beautiful (person)", "misused_for": "beautiful weather (hotle)" },
-    { "token": "soupa", "means": "soup (loan)", "misused_for": "soup (should be sopho)" },
-    { "token": "utsoarela", "means": "forgive", "misused_for": "feel sorry for (utloela bohloko)" }
+    {
+      "token": "tsie",
+      "means": "grasshopper",
+      "misused_for": "cricket (tswiritswiri)"
+    },
+    {
+      "token": "dikgogo",
+      "means": "chickens",
+      "misused_for": "owls (merubisi)"
+    },
+    {
+      "token": "motle",
+      "means": "beautiful (person)",
+      "misused_for": "beautiful weather (hotle)"
+    },
+    {
+      "token": "soupa",
+      "means": "soup (loan)",
+      "misused_for": "soup (should be sopho)"
+    },
+    {
+      "token": "utsoarela",
+      "means": "forgive",
+      "misused_for": "feel sorry for (utloela bohloko)"
+    }
   ]
 }

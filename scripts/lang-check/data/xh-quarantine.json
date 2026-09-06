@@ -1,0 +1,142 @@
+[
+ {
+  "english": "Sun, hide-and-seek champion of the day.",
+  "fill_final": "Ilanga lidlala undize, lizenza iintshatsheli zosuku.",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "default active speaker"
+ },
+ {
+  "english": "Sky can't make up its mind.",
+  "fill_final": "Isibhakabhaka asikwazi ukwenza isigqibo",
+  "source": "A",
+  "confidence": "MED",
+  "rationale": "only A"
+ },
+ {
+  "english": "Half-committed clouds.",
+  "fill_final": "Amafu azimisele kancinci kuphela",
+  "source": "A",
+  "confidence": "MED",
+  "rationale": "B unattested ['angaqinisekanga']"
+ },
+ {
+  "english": "Sky's doing the most, but only a little.",
+  "fill_final": "Ilanga limane liphuma kancinci",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "default active speaker"
+ },
+ {
+  "english": "Cloud cover, low effort.",
+  "fill_final": "Amafu akhona, kodwa awazami kakhulu.",
+  "source": "A",
+  "confidence": "LOW",
+  "rationale": "only A"
+ },
+ {
+  "english": "Sun's playing peek-a-boo.",
+  "fill_final": "Ilanga lidlala umcacamezelo.",
+  "source": "A",
+  "confidence": "LOW",
+  "rationale": "only A"
+ },
+ {
+  "english": "Clouds today, vibes optional.",
+  "fill_final": "Amafu namhlanje, mhlawumbi neentshukumo.",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "default active speaker"
+ },
+ {
+  "english": "Sky's drafting, not committing.",
+  "fill_final": "Isibhakabhaka siyayila, asizibopheleli.",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "default active speaker"
+ },
+ {
+  "english": "Patchy ambitions.",
+  "fill_final": "Amabhongo angacacanga",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "only B"
+ },
+ {
+  "english": "Halfway to a Highveld thunderstorm. Or not.",
+  "fill_final": "Indlela eya kwii ndudumo. Mhlawumbi ayikho",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "only B"
+ },
+ {
+  "english": "Clouds, but make it casual.",
+  "fill_final": "Amafu, kodwa akaqinisekanga",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "only B"
+ },
+ {
+  "english": "Sun on a smoke break.",
+  "fill_final": "Ilanga lisayotshaya",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "only B"
+ },
+ {
+  "english": "Almost a braai day.",
+  "fill_final": "Iphantse yalusuku lwe braai",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "default active speaker"
+ },
+ {
+  "english": "Washing's still safe. Probably.",
+  "fill_final": "Ukuhlamba impahla kusakhuselekile. Mhlawumbi",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "default active speaker"
+ },
+ {
+  "english": "Sunscreen, but keep a hoodie close.",
+  "fill_final": "Faka i-sunscreen, kodwa gcina ihoodie kufutshane.",
+  "source": "A",
+  "confidence": "LOW",
+  "rationale": "voice: keeps ['sunscreen', 'hoodie']"
+ },
+ {
+  "english": "Indecisive sky energy.",
+  "fill_final": "Isibhakabhaka esingaqinisekanga",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "default active speaker"
+ },
+ {
+  "english": "Some clouds. Some sun. South African summer admin.",
+  "fill_final": "Amafu amancinci. Ilanga elincinci. iAdmin yehlobo lwaseMzantsi Africa",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "voice: keeps ['admin']"
+ },
+ {
+  "english": "The sky's doing freelance today.",
+  "fill_final": "Isibhakabhaka siyadlala namhlanje.",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "only B"
+ },
+ {
+  "english": "Cloud cover with main-character syndrome.",
+  "fill_final": "Kuthe gqabagqaba ngamafu.",
+  "source": "B",
+  "confidence": "LOW",
+  "rationale": "only B"
+ },
+ {
+  "english": "Some cloud, some sun. The ratio's anyone's guess.",
+  "fill_final": "Kukho amafu nelanga. Umlinganiselo awuqinisekanga",
+  "source": "A",
+  "confidence": "LOW",
+  "rationale": "only A"
+ }
+]
