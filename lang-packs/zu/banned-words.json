@@ -1,16 +1,11 @@
 {
-  "note": "Machine-readable subset of errors-observed.md for the mechanical pre-screen (audit-drafts.mjs) and the Codex checker. hard=always wrong in this app; soft=historically misused, verify in context.",
+  "note": "Machine-readable subset of errors-observed.md for the mechanical pre-screen (audit-drafts.mjs) and the Codex checker. hard=always wrong in this app; soft=historically misused, verify in context. allow=tokens a native or Al has ruled correct; the checker treats them as attested.",
   "hard": [],
   "soft": [
     {
       "token": "umkhumbi",
       "means": "ship",
       "misused_for": "kite"
-    },
-    {
-      "token": "iqanda",
-      "means": "egg",
-      "misused_for": "zero"
     },
     {
       "token": "amapulazi",
@@ -41,6 +36,12 @@
       "token": "hlanzekile",
       "means": "clean, hygienic",
       "misused_for": "clear sky (native review d51b173: obuhlanzekile → obucacile / obucwebile)"
+    }
+  ],
+  "allow": [
+    {
+      "token": "imbatata",
+      "why": "Al's ruling 2026-09-06: the native reviewer's own word (commit d51b173, 'Imbatata emgwaqeni…'); attested only in this app, imbadada (sandals) once in Leipzig — keep"
     }
   ]
 }

@@ -60,7 +60,6 @@ const sib = (row) => row ? { en: row.en, af: row.af, zu: row.zu, xh: row.xh, st:
 const BAD_TOKENS = {
   zu: [
     ['umkhumbi', 'wrong-sense', 'ship, used for kite', 'review/zu-addendum.md storm[10]'],
-    ['iqanda', 'wrong-sense', 'egg, used for zero', 'review/zu-addendum.md fog[3]'],
     ['amapulazi', 'wrong-sense', 'farms, used for pools', 'review/zu-addendum.md rain[3]'],
     ['izinkonjane', 'wrong-sense', 'swallows, used for seagulls', 'review/zu-addendum.md wind[9]'],
     ['izindlela', 'wrong-sense', 'roads, used for expectations', 'review/zu-addendum.md cloudy[36]'],
@@ -73,8 +72,7 @@ const BAD_TOKENS = {
   st: [
     ['Boko', 'wrong-sense', 'brain, used for betrayal', 'review/xh-st-addendum.md rain[16]'],
     ['tlosa mabone', 'wrong-sense', 'remove lights, used for switch on', 'review/xh-st-addendum.md lc-fog[2]'],
-    ['mohodi', 'spelling', 'moholi', 'lang-packs/st/banned-words.json'],
-    ['tjhesa', 'spelling', 'chesa (house standard per native reviewer)', 'lang-packs/st/banned-words.json'],
+    // (mohodi / tjhesa are not bad: they are the South African orthography, the house standard since Al's ruling of 2026-09-06)
     ['hlonepha', 'wrong-language', 'Nguni form; Sesotho hlompha', 'lang-packs/st/banned-words.json'],
     ['lifofane', 'wrong-sense', 'airplanes, used for gusts', 'LANGUAGE_AUDIT_PHASE3_REPORT.md HIGH-ST-1'],
     ['setofo', 'wrong-sense', 'stove, used for sunscreen', 'lang-packs/st/banned-words.json'],
@@ -93,7 +91,7 @@ for (const lang of LANGS) {
     const text = (r[lang] || '').trim();
     if (!text) continue;
     if (BAD_TOKENS[lang]?.length && re.test(text) && !(lang === 'xh' && /kushushu/i.test(text) && !/\b(cold|chilly|freezing|frost|cool)\b/i.test(r.en))) continue; // handled as BAD below
-    if (lang === 'zu' && /imbatata/i.test(text)) continue; // disputed — reported separately, not scored
+    // (imbatata: Al ruled 2026-09-06 that the native reviewer's line stays — it is good)
     const row = rowsByEn.get(r.en);
     add({ lang, en: r.en, text, label: 'good', cls: 'native-bank', source: `lang-packs/${lang}/corpus-confirmed.jsonl ${r.key}`, siblings: sib(row) });
   }
@@ -126,8 +124,6 @@ doc('st', 'Milky Way', 'Tsela ea Lebese', 'calque', 'Molalatladi', 'lang-packs/s
 doc('st', 'sunscreen', 'setofo', 'wrong-sense', 'setlolo sa letsatsi', 'lang-packs/st/errors-observed.md');
 doc('st', 'soup', 'soupa', 'untranslated', 'sopho', 'lang-packs/st/errors-observed.md');
 doc('st', 'respect', 'Hlonepha', 'wrong-language', 'Hlompha', 'lang-packs/st/errors-observed.md');
-doc('st', 'fog', 'mohodi', 'spelling', 'moholi', 'lang-packs/st/errors-observed.md');
-doc('st', "It's hot", 'Ho tjhesa', 'spelling', 'Ho chesa', 'lang-packs/st/errors-observed.md');
 doc('st', 'Sunrise', 'Mafube', 'register', 'Ho chaba ha letsatsi', 'lang-packs/st/errors-observed.md', { weak: true });
 doc('st', 'Sunset', 'Letsatsi le likela', 'register', 'Ho likela ha letsatsi', 'lang-packs/st/errors-observed.md', { weak: true });
 doc('st', 'beautiful (weather)', 'motle', 'wrong-sense', 'hotle', 'lang-packs/st/errors-observed.md');
@@ -168,7 +164,8 @@ const ST_CLASSES = [
   [/^Tlanya|Tlanya\b/, 'wrong-sense', 'tlanya (click) reverted to tobetsa (press) by native'],
   [/di-app|diponelopele/, 'wrong-dialect', 'orthography reverted by native'],
   [/leholimo le lebe|wa leholimo|Tsela ea Lebese/i, 'calque', ''],
-  [/mohodi|tjhesa|hlonepha/i, 'spelling', ''],
+  [/hlonepha/i, 'spelling', ''],
+  [/mohodi|tjhesa|jwale|jwalo|\bdi-|lehodimo/i, 'orthography-sa', 'South African spelling the Lesotho-orthography reviewer changed — not bad since Al\'s ruling of 2026-09-06; excluded from scoring'],
   [/\bmotle\b|Mafube|le likela/, 'register', ''],
 ];
 function classify(lang, before, after, en) {
@@ -279,6 +276,11 @@ for (const lang of LANGS) {
     }
   }
 }
+
+// Sesotho lines written in Lesotho orthography (the reviewer's) are neither good nor bad since
+// Al's ruling of 2026-09-06 that the house standard is the South African orthography: weak.
+const LESOTHO = /\b(joale|joalo|moholi|chesa|chaba|lipula|lintho|litaba|likhoho|lifofane|li-\p{L}|tšepahalang|tšoanetse)\b/iu;
+for (const it of items) if (it.lang === 'st' && it.label === 'good' && LESOTHO.test(it.text)) { it.weak = true; it.note = 'Lesotho orthography — not scored after the 2026-09-06 ruling'; }
 
 // ---------- write ----------
 const out = { builtAt: new Date().toISOString(), counts: {}, items };

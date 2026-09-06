@@ -1,7 +1,7 @@
 # lang-check triage — isiXhosa — 2026-09-06
 
 Set: lang-packs/xh/provisional-manifest.jsonl — 404 provisional fills pending native confirm.
-Checked 404 lines in 8.1 s. **105 need a human** (22 high, 83 lower); 299 passed every corpus check.
+Checked 404 lines in 6.3 s. **105 need a human** (22 high, 83 lower); 299 passed every corpus check.
 
 Doubt types among the triaged lines: lexical 87, semantic 28, morphology 5, contamination 1.
 

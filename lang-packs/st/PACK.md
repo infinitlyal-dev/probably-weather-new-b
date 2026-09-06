@@ -11,7 +11,7 @@
 - **Code-switching is native, not lazy.** Real SA-Sesotho speakers drop English/Afrikaans words
   mid-sentence: jersey, takkies, braai, "lekker koud", brand names, place names. KEEP them.
   Forcing every loan into textbook Sesotho reads as stiff and foreign — the opposite of the voice.
-- **SA-Sesotho conventions:** `joalo`, `joale` (not Lesotho `jwalo`, `jwale`).
+- **South African orthography (Al's ruling 2026-09-06):** `jwalo`, `jwale`, `dipula`, `tjhesa`, `mohodi`, `wa`/`ya` — not the Lesotho `joalo`, `joale`, `lipula`, `chesa`, `moholi`, `oa`/`ea`. The 2026-06 native review was written in Lesotho orthography; those rulings stand for wording, not spelling. Run `node scripts/lang-check/build-sheet.mjs --lang st` for the corpus-backed orthography re-check.
 - **Second person:** `o`/`u` (SA-Sesotho uses both; the confirmed corpus leans `u` in newer
   reviewer edits — `U e kolota`, `Lula u shebile` — follow the corpus where it exists).
 

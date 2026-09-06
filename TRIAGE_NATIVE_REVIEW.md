@@ -33,6 +33,7 @@ known traps, terminator, balanced quotes, double spaces. Report: `review/af-qc-r
   new check surfaced. Nothing in the 533 new Afrikaans lines was flagged.
 - **Ask the reader:** confirm `wêreld`, and rule on whether `Troufoto` should be lowercase or
   replaced.
+- **Ruling 2026-09-06 (Al):** `wêreld` fixed in the bank. `Troufoto` still open.
 
 ### Standing question for the AF reader, not machine-checkable
 The 533 new lines were written as transcreations, not translations — the joke was carried
@@ -55,12 +56,27 @@ Full ranked list with evidence: `review/lang-check-triage-af.md`.
 - `cloudy#24` "Ten minste **reen** dit nie." · `rain-possible#12` "**Reen**? Moontlik." ·
   `rain#35` "…'n ding soos **reen** bestaan weer." · and AF-1's `wereld`.
 - Evidence: `reën` 530× vs `reen` 62× across Leipzig/kaikki/Hunspell; `wêreld` 3182× vs `wereld` 249×.
-- These are Al's own lines, so they are questions, not edits: confirm `reën` / `wêreld`.
+- **Ruling 2026-09-06 (Al): fixed** — all four carry `reën` / `wêreld` in the bank now. (A fifth bank
+  line, "Die hond staar na die **reen**…", has the same defect and is not in the 883 set — open.)
 
 ### AF-3 · 23 lower-confidence doubts in the new lines (see the triage file)
 Mostly: a clause with `Niemand/Geen/niks` whose closing `nie` the tool could not find, four
 unattested compounds (`bygevul`, `veertiggraaddag`, `ysbomme`, `bedonerd`), and one English word
 left in (`sags`). None changes a joke; each is a thirty-second read.
+
+## Rulings 2026-09-06 (Al) on the corpus-backed findings
+
+- **imbatata stays.** The pack's story (an AI-invented word) was wrong; the word is the native reviewer's
+  own (d51b173). `lang-packs/zu/lexicon-protected.md` row #1 now tells it straight; the checker treats
+  the word as ruled correct.
+- **The `iqanda` = egg-for-zero flag is dropped.** Autshumato lists `iqanda`/`unothi` for *zero*.
+- **Sesotho is written in South African orthography** (`jwale`, `dipula`, `tjhesa`, `mohodi`, `wa/ya`).
+  The pack labels were inverted and are fixed; the reviewer's wording rulings stand, the spellings
+  follow the SA standard. The st bank was re-checked against the SA corpora.
+- **Corrections are proposed only where corpus evidence is strong**, one accept/reject sheet per
+  language: `review/lang-check-sheet-zu.html`, `-xh.html`, `-st.html` (`lang-check-proposals-<l>.json`).
+- **Every future zu/xh/st transcreation runs through lang-check before wiring** (CLAUDE.md rule 9;
+  `scripts/apply-provisional-drafts.mjs` holds triage-high lines by itself).
 
 ## isiZulu — not yet started
 

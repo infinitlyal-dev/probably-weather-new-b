@@ -22,16 +22,16 @@ Work through all three languages: `zu`, `xh`, `st`. For each language `L`:
 
 ### 1. Read the reference material (in full)
 - `lang-packs/L/lexicon-protected.md` — confirmed-correct words. Row #1 (in zu, cross-referenced
-  in xh/st) is the **imbatata rule**: a word a model invented that is not real. The core defect
+  in xh/st) is the **imbatata rule** (the outsider is wrong until a native says otherwise — the word itself was the native reviewer's, see the row). The core defect
   class you are hunting is **invented or unattested words presented with false confidence.**
 - `lang-packs/L/errors-observed.md` — the catalogue of real past defects: **calque** (word-for-word
   from English), **wrong-word** (real word, wrong meaning — e.g. isiZulu `umkhumbi`=ship used for
-  kite, `iqanda`=egg for zero; Sesotho `lifofane`=airplanes for gusts, `tsie`=grasshopper for
+  kite; Sesotho `lifofane`=airplanes for gusts, `tsie`=grasshopper for
   cricket), **wrong-dialect** (Zulu/Xhosa form in Sesotho, or Lesotho spelling in SA-Sesotho),
   **wrong-register**, **unattested token** (isiXhosa's main risk — plausible-looking non-words),
   **fused word boundary**.
 - `lang-packs/L/banned-words.json` — machine-readable defect tokens: `hard` (always wrong —
-  misspellings/wrong-dialect, e.g. Sesotho `mohodi`→`moholi`, `hlonepha`→`hlompha`) and `soft`
+  misspellings/wrong-dialect, e.g. Sesotho `joale`→`jwale`, `hlonepha`→`hlompha`) and `soft`
   (historically misused — verify in context). A `hard` token present in a draft is an automatic FLAG.
 - `lang-packs/L/PACK.md` and `lang-packs/L/harvest-notes.md` — the target register (urban,
   colloquial, code-switched; NOT textbook). Code-switched loans (braai, brand/place names) are
@@ -45,7 +45,7 @@ For each draft, test it against these failure checks:
   highest-severity defect (imbatata class).
 - **Banned wrong-word / calque** — does it reproduce or resemble any entry in errors-observed.md?
 - **Protected-lexicon violation** — does it use a banned form where lexicon-protected.md fixes it
-  (e.g. `mohodi`→`moholi`, `hlonepha`→`hlompha`, `lifofane`→gusts term)?
+  (e.g. `joale`→`jwale`, `hlonepha`→`hlompha`, `lifofane`→gusts term)?
 - **Wrong dialect** — Zulu/Xhosa form in Sesotho, or Lesotho spelling where SA-Sesotho is required.
 - **Fused word boundary / morphology error** (esp. isiXhosa).
 - **Meaning drift** — does the draft actually convey the English intent, or did the joke break?

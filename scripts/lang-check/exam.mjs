@@ -20,6 +20,7 @@ const verbose = args.includes('--verbose');
 const gold = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'gold-set.json'), 'utf8'));
 const LANGS = ['zu', 'xh', 'st', 'af'];
 const SCORED_CLASSES = ['wrong-sense', 'wrong-language', 'untranslated', 'diacritic', 'spelling', 'boundary', 'calque', 'morphology', 'unattested', 'register', 'capitalisation', 'wrong-dialect'];
+// 'orthography-sa' (a South African spelling the Lesotho-orthography reviewer changed) is neither bad nor scored since Al's ruling of 2026-09-06
 const HEADLINE = ['wrong-sense', 'wrong-language'];
 
 // filter adversarial substitutes that the corpus does not attest

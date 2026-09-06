@@ -1,17 +1,17 @@
 # lang-check validation exam — 2026-09-06
 
-Gold set: 3625 scored items (6 adversarial wrong-sense items excluded because the substitute is not corpus-attested). Threshold for the new checker: confidence ≥ 0.25. Baseline = the four SKILL.md check() procedures as code (scripts/lang-check/baseline.mjs).
+Gold set: 3622 scored items (6 adversarial wrong-sense items excluded because the substitute is not corpus-attested). Threshold for the new checker: confidence ≥ 0.25. Baseline = the four SKILL.md check() procedures as code (scripts/lang-check/baseline.mjs).
 
-## zu — 503 good, 94 bad (scored classes)
+## zu — 505 good, 92 bad (scored classes)
 
 | | precision | recall | TP | FP | FN | TN |
 |---|---|---|---|---|---|---|
-| baseline (old skill) | 50% | 1% | 1 | 1 | 93 | 502 |
-| rebuilt (corpus-backed) | 55% | 63% | 59 | 48 | 35 | 455 |
+| baseline (old skill) | 50% | 1% | 1 | 1 | 91 | 504 |
+| rebuilt (corpus-backed) | 54% | 62% | 57 | 48 | 35 | 457 |
 
 | class | n | baseline recall | rebuilt recall | rebuilt ≥0.5 |
 |---|---|---|---|---|
-| wrong-sense | 28 | 0% | 43% | 0% |
+| wrong-sense | 26 | 0% | 38% | 0% |
 | wrong-language | 19 | 5% | 84% | 42% |
 | untranslated | 24 | 0% | 67% | 0% |
 | boundary | 19 | 0% | 79% | 11% |
@@ -21,7 +21,7 @@ Gold set: 3625 scored items (6 adversarial wrong-sense items excluded because th
 
 Baseline cannot see: wrong-sense, untranslated, boundary, morphology, register. Weak-good rows (future_review / UI labels) flagged: baseline 30/90, rebuilt 11/90.
 
-Pass rule for zu: wrong-sense recall 0% → 43%, wrong-language recall 5% → 84%, precision 50% → 55% ⇒ **PASS**
+Pass rule for zu: wrong-sense recall 0% → 38%, wrong-language recall 5% → 84%, precision 50% → 54% ⇒ **PASS**
 
 <details><summary>misses and false positives</summary>
 
@@ -266,27 +266,27 @@ Pass rule for xh: wrong-sense recall 0% → 62%, wrong-language recall 0% → 10
 
 </details>
 
-## st — 520 good, 89 bad (scored classes)
+## st — 486 good, 72 bad (scored classes)
 
 | | precision | recall | TP | FP | FN | TN |
 |---|---|---|---|---|---|---|
-| baseline (old skill) | 12% | 8% | 7 | 52 | 82 | 468 |
-| rebuilt (corpus-backed) | 39% | 85% | 76 | 117 | 13 | 403 |
+| baseline (old skill) | 14% | 10% | 7 | 43 | 65 | 443 |
+| rebuilt (corpus-backed) | 38% | 82% | 59 | 98 | 13 | 388 |
 
 | class | n | baseline recall | rebuilt recall | rebuilt ≥0.5 |
 |---|---|---|---|---|
 | wrong-sense | 26 | 8% | 54% | 15% |
-| wrong-language | 19 | 0% | 95% | 79% |
+| wrong-language | 19 | 0% | 95% | 84% |
 | untranslated | 18 | 28% | 100% | 11% |
-| spelling | 20 | 0% | 100% | 95% |
+| spelling | 3 | 0% | 100% | 67% |
 | calque | 4 | 0% | 100% | 100% |
 | register | 1 | 0% | 100% | 0% |
 | wrong-dialect | 1 | 0% | 100% | 100% |
-| rewritten | 81 | 10% | 35% | 15% |
+| rewritten | 74 | 7% | 34% | 12% |
 
-Baseline cannot see: wrong-language, spelling, calque, register, wrong-dialect. Weak-good rows (future_review / UI labels) flagged: baseline 19/89, rebuilt 21/89.
+Baseline cannot see: wrong-language, spelling, calque, register, wrong-dialect. Weak-good rows (future_review / UI labels) flagged: baseline 28/133, rebuilt 55/133.
 
-Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95%, precision 12% → 39% ⇒ **PASS**
+Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95%, precision 14% → 38% ⇒ **PASS**
 
 <details><summary>misses and false positives</summary>
 
@@ -304,9 +304,7 @@ Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95
 - FP "Lehodimo le fana le matšoao a tsoakaneng hape." conf=0.25: medium:semantic:fana
 - FP "Maru a teng feela. Ha ho litšepiso." conf=0.25: medium:lexical:litšepiso
 - FP "Lehodimo ha le fane letho." conf=0.25: medium:semantic:fane
-- FP "Letsatsi le monate la ho tsamaea, empa le lebe ho leka ho chesa letlalo." conf=0.55: medium:semantic:monate | medium:semantic:letlalo
 - FP "Leholimo le matšoenyehong. Le nna, ka nnete." conf=0.3: medium:lexical:matšoenyehong
-- FP "Ha ho mpe, ha ho motle. Joalo ka dethi ea 6/10." conf=0.5: medium:semantic:motle | medium:lexical:dethi
 - FP "Lehodimo le a buffera." conf=0.25: medium:lexical:buffera
 - FP "Esita le leholimo ha le khathalehe kajeno." conf=0.25: medium:lexical:khathalehe
 - FP "Lehodimo le fana le 'ke tla leka hosane' matla." conf=0.25: medium:semantic:fana
@@ -315,9 +313,7 @@ Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95
 - FP "Maru a itlamile ho ba karolelano." conf=0.5: high:contamination:itlamile
 - FP "Lehodimo le na le 'mala oa sekoahelo sa Tupperware sa khale." conf=0.35: medium:semantic:mala
 - FP "SPF 50 kapa o tla itshola ka bosiu." conf=0.25: medium:contamination:itshola
-- FP "O tla shebahala joalo ka lobster. O lemoselitsoe." conf=0.25: medium:lexical:lemoselitsoe
 - FP "katiba ,liborele,setlolo sa letsatsi ha ho buisanoe" conf=0.25: medium:lexical:liborele
-- FP "O ka besa steak holim'a pavement hona joale." conf=0.4: medium:semantic:hona
 - FP "Letsatsi ha le khathalele merero ea hao." conf=0.25: medium:lexical:khathalele
 - FP "Baraleli ba kite ba na le nako e ntle." conf=0.35: medium:lexical:Baraleli
 - FP "Esita le dikoekoe di tsamaea kajeno." conf=0.25: medium:lexical:dikoekoe
@@ -329,17 +325,15 @@ Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95
 - FP "Ha ho motho ea ingolisitseng bakeng sa mocheso ona." conf=0.35: medium:lexical:ingolisitseng
 - FP "Sofa e entsoe nyeoe e matla ea ho dula." conf=0.3: medium:contamination:Sofa
 - FP "O hopola bethe ea hao mme o tsoile metsotso e leshome le metso e 'meli." conf=0.45: medium:lexical:tsoile
-- FP "Shaoara e ne e le ntho e ntle ka ho fetisisa. Tsohle li theohela tlase joale." conf=0.4: medium:lexical:Shaoara
 - FP "Koloi e kgohletse habeli pele e dumela ho starta." conf=0.4: medium:lexical:starta
 - FP "Highveld winter: ke moo o aparang dijakete tse pedi ho lata post." conf=0.25: medium:lexical:dijakete
 - FP "Welkom-cold kajeno. Serame se phunyeletsang di-jersey tse tharo eka ha di yo." conf=0.3: medium:contamination:Welkom-cold
-- FP "Geyser e tripile bosiu. Ehlile e entse jwalo." conf=0.85: high:lexical:jwalo | medium:lexical:tripile
+- FP "Geyser e tripile bosiu. Ehlile e entse jwalo." conf=0.35: medium:lexical:tripile
 - FP "Serame mohloeng. Serame ho bakkie. Serame ka sekotlolong sa phoofolo ea lapeng." conf=0.4: medium:lexical:mohloeng
 - FP "Letsatsi le tjhabile. O se ke wa thetswa. Nature e bua leshano." conf=0.35: medium:semantic:tjhabile
 - FP "Dithaele tsa fatše bosiung ba  kajeno ke balotsana ,bona hore o apara ntho maotong" conf=0.35: medium:semantic:kajeno
 - FP "Karoo morning. Mofuta o etsang hore o hlomphe molemi e mong le e mong ya kgethileng bophelo bona." conf=0.5: medium:contamination:morning
-- FP "Heater ya koloi ke yona relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale." conf=1: high:lexical:jwale | medium:semantic:yona | medium:semantic:hona
-- FP "Di-koppies di shebahala jwalo ka postcard. Maoto a hao a ikutlwa eka ke ice blocks." conf=0.7: high:lexical:jwalo
+- FP "Heater ya koloi ke yona relationship ya bohlokwa ka ho fetisisa bophelong ba hao hona jwale." conf=0.6: medium:semantic:yona | medium:semantic:hona
 - FP "Cold ya mofuta o etsang hore o Google 'underfloor heating Bloemfontein'." conf=0.45: medium:contamination:Cold
 - FP "Hadedas tse tharo, makhoaba a mabeli, le motho a le mong ea thothomelang haufi le sebaka sa linonyana." conf=0.55: medium:lexical:makhoaba | medium:lexical:thothomelang
 - FP "Maluti-frost morning. Lesotho e a e exporta mahala." conf=0.75: medium:contamination:Maluti-frost | medium:contamination:morning | medium:lexical:exporta
@@ -359,13 +353,7 @@ Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95
 - FP "Silent Hill vibes. Ntle le dimanka. Re tšepa." conf=0.35: medium:lexical:dimanka
 - FP "Ho boneha: hanyenyane nul." conf=0.7: medium:lexical:boneha | medium:lexical:nul
 - FP "Lefatše le fumane filitha e bonolo hoseng." conf=0.3: medium:lexical:filitha
-- FP "Moholi ha o khathalele lenaneo la hao." conf=0.3: medium:lexical:khathalele
 - FP "Ho boneha ho sponsoritsoe ke motho. Motho." conf=0.65: medium:lexical:boneha | medium:lexical:sponsoritsoe
-- FP "Moholi o mokoto haholo o na le maikutlo." conf=0.3: medium:semantic:mokoto
-- FP "Tsela ea hao ea ho kena ke novele ea sephiri joale." conf=0.4: medium:semantic:Tsela
-- FP "Moholi o fihlile a sa memioa. Moholi oa setso." conf=0.3: medium:lexical:memioa
-- FP "Moholi o noele thaba." conf=0.25: medium:lexical:noele
-- FP "Ho tsamaea ho ea bining joale ke leeto." conf=0.3: medium:lexical:bining
 - FP "Ho boneha: vibes feela." conf=0.3: medium:lexical:boneha
 - FP "Leholimo la molingoa oa mantlha mona." conf=0.25: medium:lexical:molingoa
 - FP "Boloka letsatsi lena mohopolong." conf=0.35: medium:semantic:Boloka
@@ -375,7 +363,6 @@ Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95
 - FP "Ha ho hlokahale filitha. Sheba kantle feela." conf=0.5: medium:lexical:filitha | medium:semantic:Sheba
 - FP "Lebaka la hao la ho dula ka hare le sa tsoa fela." conf=0.4: medium:contamination:fela
 - FP "Ke sona sena. Mona feela." conf=0.25: medium:semantic:sona
-- FP "Mofuta oa lehodimo o etsang hore o leboge lintho tsa mahala." conf=0.6: high:contamination:leboge
 - FP "Tšolla kofi kantle. Re tšepe." conf=0.25: medium:lexical:Tšolla
 - FP "Afrika e iponahatsa hape. Ka khotso ka ho qhibilihisang." conf=0.55: medium:lexical:qhibilihisang | medium:semantic:khotso
 - FP "ke bosiu bobotle ho bona Molalatladi" conf=0.25: medium:lexical:bobotle
@@ -395,22 +382,16 @@ Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95
 - FP "Ho bonahala ho bata. Thermomethara e re etsa hore re hakanye." conf=0.35: medium:lexical:Thermomethara
 - FP "Mohlomong ho na le ntho e phehoang. Lula u le haufi le marulelo." conf=0.35: medium:lexical:phehoang
 - MISS [wrong-sense] "Dikausu tse metsi. Boko bo boholo." (review/xh-st-addendum.md rain[16]) conf=0.15
-- FP "Probably Weather e kopanya dikakanyo tsa boemo ba leholimo tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway le Pirate Weather ho u fa ponelopele e tšepahalang." conf=1: medium:contamination:Probably | medium:contamination:Weather | medium:contamination:Weather | medium:contamination:fa
+- MISS [wrong-sense] "mohodi oa eketseha  tlosa mabone  a koloi" (review/xh-st-addendum.md lc-fog[2]) conf=0.1
 - MISS [wrong-sense] "ho fihla ho" (git a38c32d (native review) gusts) conf=0.05
 - FP "Tobetsa konopo ya `Share` ya Safari ka tlase ho skirini sa hao" conf=0.25: medium:lexical:skirini
 - MISS [wrong-sense] "Tlanya `×` ka holimo ho koala litaelo tsena" (git a38c32d (native review) tlanya (click) reverted to tobetsa (press) by native) conf=0
 - FP "Probably Weather e tla hlaha skrineng sa hao sa lehae — tobetsa letshwao ho bula app." conf=0.5: medium:contamination:Probably | medium:contamination:Weather
 - FP "Ha o bone `Add to Home Screen`? Tobetsa `Edit Actions` ka tlase ho menyu ya Share, ebe u e nolofatsa." conf=0.3: medium:contamination:bone
-- MISS [wrong-sense] "Chrome ho iPhone e ke ke ea kenya di-app. Tlanya ka tlase ho bula sebaka sena ho Safari, joale latela mehato." (git a38c32d (native review) tlanya (click) reverted to tobetsa (press) by native) conf=0.05
 - FP "Tobetsa menyu ea sebatli, ebe Kenya app — kapa leka hape ka motsotsoana." conf=0.25: medium:lexical:sebatli
 - MISS [wrong-sense] "moea o otlang ka sefutho" (git ecdfe11 (native review) gusts) conf=0
-- FP "ho  a tjhesa" conf=0.55: high:lexical:tjhesa
-- FP "mohodi oa eketseha  tlosa mabone  a koloi" conf=0.6: high:lexical:mohodi
-- FP "The correct Sesotho spelling is moholi (fog/mist), not mohodi." conf=1: high:lexical:mohodi | medium:contamination:spelling | medium:contamination:fog | medium:contamination:mist
-- FP "Ho chesa\" is the standard spelling for \"It's hot\" (rather than Ho tjhesa)." conf=1: high:lexical:tjhesa | medium:contamination:spelling | medium:contamination:hot
 - FP "Free State e sa tsoa hopola hore e na le mokgwa wa mariha  can still use  winter setting  at the end of the sentence to make it sound less stiff" conf=0.4: medium:contamination:stiff
 - FP "jackets → dijakete" conf=0.55: high:lexical:dijakete
-- FP "Letsatsi le monate la ho tsamaea, empa le lebe ho leka ho chesa letlalo.”" conf=0.55: medium:semantic:monate | medium:semantic:letlalo
 - FP "Haeba u sebetsa kajeno, re u utloela bohloko.”" conf=0.35: medium:lexical:utloela
 - MISS [wrong-sense] "Lieta tsa hao li tla ba le lesedi le lebe." (adversarial wrong-sense: letsatsi → lesedi (light)) conf=0.05
 - MISS [wrong-sense] "Sekhele se robehile ka mosi oa pele. Setso." (adversarial wrong-sense: moea → mosi (smoke)) conf=0.2
@@ -419,43 +400,39 @@ Pass rule for st: wrong-sense recall 8% → 54%, wrong-language recall 0% → 95
 - MISS [wrong-sense] "Ho na le mohlolo." (adversarial wrong-sense: moholi → mohlolo (miracle)) conf=0
 - MISS [wrong-sense] "Boemo ba lefatshe bo matla" (adversarial wrong-sense: leholimo → lefatshe (earth)) conf=0.05
 - MISS [wrong-sense] "Hoa bata, lefatshe le hlakile" (adversarial wrong-sense: leholimo → lefatshe (earth)) conf=0
-- MISS [wrong-language] "Pula e boima thata e lokela ho lefa rente." (adversarial wrong-language: haholo → thata) conf=0.05
+- MISS [wrong-language] "Ho tjhesa thata" (adversarial wrong-language: haholo → thata) conf=0.1
 
 </details>
 
-## af — 990 good, 75 bad (scored classes)
+## af — 990 good, 74 bad (scored classes)
 
 | | precision | recall | TP | FP | FN | TN |
 |---|---|---|---|---|---|---|
-| baseline (old skill) | 37% | 21% | 16 | 27 | 59 | 963 |
-| rebuilt (corpus-backed) | 64% | 77% | 58 | 32 | 17 | 958 |
+| baseline (old skill) | 36% | 20% | 15 | 27 | 59 | 963 |
+| rebuilt (corpus-backed) | 67% | 77% | 57 | 28 | 17 | 962 |
 
 | class | n | baseline recall | rebuilt recall | rebuilt ≥0.5 |
 |---|---|---|---|---|
 | wrong-sense | 18 | 6% | 50% | 0% |
-| wrong-language | 18 | 11% | 100% | 39% |
+| wrong-language | 18 | 11% | 100% | 33% |
 | untranslated | 17 | 12% | 94% | 6% |
-| diacritic | 18 | 61% | 67% | 50% |
+| diacritic | 17 | 59% | 65% | 47% |
 | spelling | 3 | 0% | 100% | 100% |
 | calque | 1 | 0% | 0% | 0% |
 | rewritten | 10 | 0% | 0% | 0% |
 
 Baseline cannot see: spelling, calque. Weak-good rows (future_review / UI labels) flagged: baseline 10/90, rebuilt 7/90.
 
-Pass rule for af: wrong-sense recall 6% → 50%, wrong-language recall 11% → 100%, precision 37% → 64% ⇒ **PASS**
+Pass rule for af: wrong-sense recall 6% → 50%, wrong-language recall 11% → 100%, precision 36% → 67% ⇒ **PASS**
 
 <details><summary>misses and false positives</summary>
 
 - FP "Die lug het voluit bedonerd gegaan." conf=0.35: medium:lexical:bedonerd
 - FP "Klein ysbomme val. Binne is die enigste plan." conf=0.3: medium:lexical:ysbomme
 - FP "Die hond staar na die reen asof dit n persoonlike belediging is." conf=0.8: high:morphology:reen | medium:morphology:reen
-- FP "Die verkeer het pas onthou daar is n ding soos reen bestaan weer." conf=0.8: high:morphology:reen | medium:morphology:reen
 - FP "Twee druppels op die voorruit en die hele N1 se geheue is skoon gewas." conf=0.35: medium:semantic:geheue
-- FP "Reen? Moontlik. Sal ek my lewe daar op wed? Nooit." conf=0.8: high:morphology:Reen | medium:morphology:Reen
 - FP "Schrödinger se reën. Dit is én is nie." conf=0.25: medium:lexical:Schrödinger
-- FP "Nie Troufoto weer nie. Nie die einde van die wereld nie." conf=0.8: high:morphology:wereld | medium:morphology:wereld
 - FP "Hierdie weer het n 'meh' houding." conf=0.3: medium:contamination:meh
-- FP "Ten minste reen dit nie. Dis die standaard." conf=0.8: high:morphology:reen | medium:morphology:reen
 - FP "Die wolke het 'miskien' geRSVP en in elk geval opgedaag." conf=0.25: medium:lexical:geRSVP
 - FP "Daai wolke beteken swaai-boulwerk. Vra enige oom by die hek." conf=0.25: medium:semantic:oom
 - FP "Die maan het 'n 'moenie steur nie'-bordjie opgehang." conf=0.3: medium:morphology:moenie
@@ -498,6 +475,6 @@ Pass rule for af: wrong-sense recall 6% → 50%, wrong-language recall 11% → 1
 
 </details>
 
-## Verdict: PASS — zu:pass xh:pass st:pass af:pass (10.2 s for 3625 items)
+## Verdict: PASS — zu:pass xh:pass st:pass af:pass (5.1 s for 3622 items)
 
 Excluded adversarial wrong-sense substitutes (not attested, so they would be caught as unknown words rather than wrong sense): zu:inkuku, st:pudi, st:mabu

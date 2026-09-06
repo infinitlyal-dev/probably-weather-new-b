@@ -1,7 +1,7 @@
 # lang-check triage — isiZulu — 2026-09-06
 
 Set: lang-packs/zu/provisional-manifest.jsonl — 443 provisional fills pending native confirm.
-Checked 443 lines in 8.9 s. **56 need a human** (3 high, 53 lower); 387 passed every corpus check.
+Checked 443 lines in 7.0 s. **56 need a human** (3 high, 53 lower); 387 passed every corpus check.
 
 Doubt types among the triaged lines: semantic 30, lexical 24, contamination 3, morphology 1.
 

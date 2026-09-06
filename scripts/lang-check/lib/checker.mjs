@@ -52,6 +52,8 @@ export class LangIndex {
     }
     const bannedFile = path.join(ROOT, 'lang-packs', lang, 'banned-words.json');
     this.banned = fs.existsSync(bannedFile) ? JSON.parse(fs.readFileSync(bannedFile, 'utf8')) : { hard: [], soft: [] };
+    // words a native or Al has ruled correct count as attested (with the ruling cited)
+    this.allow = new Map((this.banned.allow || []).map((a) => [a.token.toLowerCase(), a.why || 'ruled correct']));
   }
   static load(lang) {
     if (!indexCache.has(lang)) indexCache.set(lang, new LangIndex(lang));
@@ -365,6 +367,11 @@ export function check({ lang, en = '', text = '', siblings = null, key = null })
       continue;
     }
     if (isStop) continue;
+    if (idx.allow.has(key)) {
+      content.push({ surface: tok.surface, key, index: tok.index, resolved: { form: key, how: 'ruled' }, loan: true });
+      add({ check: 'lexical', severity: 'low', token: tok.surface, message: `'${tok.surface}' is ruled correct in the ${lang} pack (${idx.allow.get(key)})`, evidence: { ruled: true } });
+      continue;
+    }
     const resolved = resolve(idx, tok, lang);
     const record = { surface: tok.surface, key, index: tok.index, resolved, proper: properCandidate, loan: false };
     content.push(record);

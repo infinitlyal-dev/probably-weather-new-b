@@ -1,30 +1,10 @@
 {
-  "note": "Machine-readable subset of errors-observed.md. hard=always wrong (misspelling/wrong-dialect); soft=context-risky.",
+  "note": "Machine-readable subset of errors-observed.md. hard=always wrong (misspelling/wrong-dialect); soft=context-risky. Orthography: the house standard is SOUTH AFRICAN Sesotho (jwale, dipula, tjhesa, mohodi, wa/ya) per Al's ruling 2026-09-06 — the earlier entries banning tjhesa/mohodi/jwale were the native reviewer's Lesotho forms and were reversed; the orthography re-check lives in scripts/lang-check/build-sheet.mjs.",
   "hard": [
-    {
-      "token": "mohodi",
-      "fix": "moholi",
-      "why": "misspelling of fog"
-    },
-    {
-      "token": "tjhesa",
-      "fix": "chesa",
-      "why": "misspelling of hot"
-    },
     {
       "token": "hlonepha",
       "fix": "hlompha",
       "why": "Zulu/Xhosa form of respect in Sesotho copy"
-    },
-    {
-      "token": "jwalo",
-      "fix": "joalo",
-      "why": "Lesotho spelling; app uses SA-Sesotho"
-    },
-    {
-      "token": "jwale",
-      "fix": "joale",
-      "why": "Lesotho spelling; app uses SA-Sesotho"
     },
     {
       "token": "lifofane",
@@ -50,6 +30,16 @@
       "token": "Modumo wa leholimo",
       "fix": "Modumo wa seaduma",
       "why": "calque 'noise of sky' for thunder (native review, errors-observed.md)"
+    },
+    {
+      "token": "joalo",
+      "fix": "jwalo",
+      "why": "Lesotho orthography; house standard is South African Sesotho (Al 2026-09-06; jwalo 2040× vs joalo 249× in the SA corpora)"
+    },
+    {
+      "token": "joale",
+      "fix": "jwale",
+      "why": "Lesotho orthography; house standard is South African Sesotho (Al 2026-09-06; jwale 907× vs joale 85×)"
     }
   ],
   "soft": [

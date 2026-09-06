@@ -8,14 +8,14 @@ Real corrections to AI-drafted isiZulu in this app. Source: `review/zu-addendum.
 | Wrong | Actually means | Intended | Where |
 |---|---|---|---|
 | umkhumbi | ship | kite | storm[10] |
-| iqanda | egg | zero | fog[3] |
 | amapulazi | farms | pools (of water) | rain[3] |
 | izinkonjane | swallows (bird) | seagulls | wind[9] |
 | izindlela | roads | expectations | cloudy[36] |
 | isijele | jail | jersey (ijezi) | partly-cloudy[7] |
 
 Pattern: the model reached for a phonetically/semantically *near* word and shipped it with
-false confidence. This is exactly the imbatata failure mode one step short of full invention.
+false confidence. (The `iqanda` = egg-for-zero row was dropped 2026-09-06: Autshumato lists
+`iqanda` and `unothi` as isiZulu for *zero*, and Al ruled the flag off.)
 Every content noun must be checked, not trusted.
 
 ## invented-word — the cardinal error

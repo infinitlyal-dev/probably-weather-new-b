@@ -16,7 +16,7 @@
 ## Hard rules (from errors-observed.md + lexicon-protected.md)
 1. **Never invent a word (imbatata).** Unconfirmed noun → plain attested word or descriptive
    phrase + LOW tag. Never coin.
-2. Never ship a near-miss content word (umkhumbi=ship for kite; iqanda=egg for zero). Check
+2. Never ship a near-miss content word (umkhumbi=ship for kite). Check
    every content noun's actual meaning.
 3. Keep naturally code-switched loans; translate only true content words.
 4. hlonipha is correct isiZulu for respect (note: Sesotho differs — hlompha).

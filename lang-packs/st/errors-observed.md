@@ -26,7 +26,7 @@ confirmed replacements), `review/NATIVE_REVIEW_ST.md`. **Never reproduce a FROM 
 | Wrong | Right | Note |
 |---|---|---|
 | Hlonepha (respect) | Hlompha | Hlonepha is the Zulu/Xhosa form; SA-Sesotho is Hlompha |
-| jwalo / jwale | joalo / joale | app uses SA-Sesotho conventions, not Lesotho spelling |
+| joalo / joale | jwalo / jwale | house standard is South African orthography (Al 2026-09-06). The reviewer wrote Lesotho spellings (`joale`, `li-`, `oa/ea`, `ch`, `moholi`); the pack had the labels the wrong way round until the corpus check (jwale 907× vs joale 85×) |
 
 ## wrong-register — real word, wrong tone for weather copy
 | Wrong | Right | Note |
@@ -50,5 +50,5 @@ Do not "correct" these into textbook Sesotho. The error is inventing/mistranslat
 word, never leaving a naturally code-switched loan alone.
 
 ## spelling — global fixes already folded into the confirmed corpus
-mohodi → moholi (fog/mist) · tjhesa → chesa (hot) · setofo → setlolo sa letsatsi (sunscreen) ·
+setofo → setlolo sa letsatsi (sunscreen) · (mohodi→moholi and tjhesa→chesa were reversed 2026-09-06: `mohodi`, `tjhesa` are the SA forms and the house standard) ·
 Hlonepha → Hlompha (respect)
