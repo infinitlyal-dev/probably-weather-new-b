@@ -5,7 +5,7 @@
  "complete": false,
  "filled": 294,
  "total": 504,
- "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs.",
+ "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path.",
  "assignments": [
   {
    "condition": "clear",
@@ -13,13 +13,14 @@
    "week": "A",
    "day": "mon",
    "hash": "dd736311b619",
-   "image": "clear/week_2/dawn/5.webp",
+   "image": "clear/week_1/dawn/1.webp",
    "paths": [
-    "clear/week_1/dawn/6.webp",
-    "clear/week_2/dawn/5.webp",
-    "clear/week_3/dawn/6.webp",
-    "clear/week_4/dawn/5.webp"
-   ]
+    "clear/week_1/dawn/1.webp",
+    "clear/week_2/dawn/1.webp",
+    "clear/week_3/dawn/1.webp",
+    "clear/week_4/dawn/1.webp"
+   ],
+   "previousImage": "clear/week_2/dawn/5.webp"
   },
   {
    "condition": "clear",
@@ -27,13 +28,14 @@
    "week": "A",
    "day": "tue",
    "hash": "73d202837435",
-   "image": "clear/week_2/dawn/6.webp",
+   "image": "clear/week_1/dawn/2.webp",
    "paths": [
     "clear/week_1/dawn/2.webp",
-    "clear/week_2/dawn/6.webp",
+    "clear/week_2/dawn/2.webp",
     "clear/week_3/dawn/2.webp",
-    "clear/week_4/dawn/6.webp"
-   ]
+    "clear/week_4/dawn/2.webp"
+   ],
+   "previousImage": "clear/week_2/dawn/6.webp"
   },
   {
    "condition": "clear",
@@ -41,13 +43,14 @@
    "week": "A",
    "day": "wed",
    "hash": "b698a0ccc12d",
-   "image": "clear/week_1/dawn/7.webp",
+   "image": "clear/week_1/dawn/3.webp",
    "paths": [
-    "clear/week_1/dawn/7.webp",
-    "clear/week_2/dawn/4.webp",
-    "clear/week_3/dawn/7.webp",
-    "clear/week_4/dawn/4.webp"
-   ]
+    "clear/week_1/dawn/3.webp",
+    "clear/week_2/dawn/3.webp",
+    "clear/week_3/dawn/3.webp",
+    "clear/week_4/dawn/3.webp"
+   ],
+   "previousImage": "clear/week_1/dawn/7.webp"
   },
   {
    "condition": "clear",
@@ -55,13 +58,14 @@
    "week": "A",
    "day": "thu",
    "hash": "7a76c59603c9",
-   "image": "clear/week_1/dawn/5.webp",
+   "image": "clear/week_1/dawn/4.webp",
    "paths": [
-    "clear/week_1/dawn/5.webp",
-    "clear/week_2/dawn/3.webp",
-    "clear/week_3/dawn/5.webp",
-    "clear/week_4/dawn/3.webp"
-   ]
+    "clear/week_1/dawn/4.webp",
+    "clear/week_2/dawn/4.webp",
+    "clear/week_3/dawn/4.webp",
+    "clear/week_4/dawn/4.webp"
+   ],
+   "previousImage": "clear/week_1/dawn/5.webp"
   },
   {
    "condition": "clear",
@@ -69,13 +73,14 @@
    "week": "A",
    "day": "fri",
    "hash": "66d5e6cb3570",
-   "image": "clear/week_1/dawn/3.webp",
+   "image": "clear/week_1/dawn/5.webp",
    "paths": [
-    "clear/week_1/dawn/3.webp",
-    "clear/week_2/dawn/1.webp",
-    "clear/week_3/dawn/3.webp",
-    "clear/week_4/dawn/1.webp"
-   ]
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "previousImage": "clear/week_1/dawn/3.webp"
   },
   {
    "condition": "clear",
@@ -83,13 +88,14 @@
    "week": "A",
    "day": "sat",
    "hash": "d529968dcb50",
-   "image": "clear/week_2/dawn/7.webp",
+   "image": "clear/week_1/dawn/6.webp",
    "paths": [
-    "clear/week_1/dawn/4.webp",
-    "clear/week_2/dawn/7.webp",
-    "clear/week_3/dawn/4.webp",
-    "clear/week_4/dawn/7.webp"
-   ]
+    "clear/week_1/dawn/6.webp",
+    "clear/week_2/dawn/6.webp",
+    "clear/week_3/dawn/6.webp",
+    "clear/week_4/dawn/6.webp"
+   ],
+   "previousImage": "clear/week_2/dawn/7.webp"
   },
   {
    "condition": "clear",
@@ -97,13 +103,14 @@
    "week": "A",
    "day": "sun",
    "hash": "089f865e3f14",
-   "image": "clear/week_2/dawn/2.webp",
+   "image": "clear/week_1/dawn/7.webp",
    "paths": [
-    "clear/week_1/dawn/1.webp",
-    "clear/week_2/dawn/2.webp",
-    "clear/week_3/dawn/1.webp",
-    "clear/week_4/dawn/2.webp"
-   ]
+    "clear/week_1/dawn/7.webp",
+    "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "previousImage": "clear/week_2/dawn/2.webp"
   },
   {
    "condition": "clear",
@@ -111,11 +118,12 @@
    "week": "A",
    "day": "mon",
    "hash": "84beada2e358",
-   "image": "clear/week_3/day/4.webp",
+   "image": "clear/week_1/day/1.webp",
    "paths": [
-    "clear/week_3/day/4.webp",
-    "clear/week_4/day/3.webp"
-   ]
+    "clear/week_1/day/1.webp",
+    "clear/week_3/day/1.webp"
+   ],
+   "previousImage": "clear/week_3/day/4.webp"
   },
   {
    "condition": "clear",
@@ -123,11 +131,12 @@
    "week": "A",
    "day": "tue",
    "hash": "5799efcdfd70",
-   "image": "clear/week_2/day/6.webp",
+   "image": "clear/week_1/day/2.webp",
    "paths": [
-    "clear/week_1/day/5.webp",
-    "clear/week_2/day/6.webp"
-   ]
+    "clear/week_1/day/2.webp",
+    "clear/week_3/day/2.webp"
+   ],
+   "previousImage": "clear/week_2/day/6.webp"
   },
   {
    "condition": "clear",
@@ -135,11 +144,12 @@
    "week": "A",
    "day": "wed",
    "hash": "77cfc93827e3",
-   "image": "clear/week_3/day/7.webp",
+   "image": "clear/week_1/day/3.webp",
    "paths": [
-    "clear/week_3/day/7.webp",
-    "clear/week_4/day/1.webp"
-   ]
+    "clear/week_1/day/3.webp",
+    "clear/week_3/day/3.webp"
+   ],
+   "previousImage": "clear/week_3/day/7.webp"
   },
   {
    "condition": "clear",
@@ -147,11 +157,12 @@
    "week": "A",
    "day": "thu",
    "hash": "f673af851f9c",
-   "image": "clear/week_3/day/1.webp",
+   "image": "clear/week_1/day/4.webp",
    "paths": [
-    "clear/week_3/day/1.webp",
-    "clear/week_4/day/7.webp"
-   ]
+    "clear/week_1/day/4.webp",
+    "clear/week_3/day/4.webp"
+   ],
+   "previousImage": "clear/week_3/day/1.webp"
   },
   {
    "condition": "clear",
@@ -159,11 +170,12 @@
    "week": "A",
    "day": "fri",
    "hash": "ca6d821f7c9b",
-   "image": "clear/week_2/day/5.webp",
+   "image": "clear/week_1/day/5.webp",
    "paths": [
-    "clear/week_2/day/5.webp",
+    "clear/week_1/day/5.webp",
     "clear/week_3/day/5.webp"
-   ]
+   ],
+   "previousImage": "clear/week_2/day/5.webp"
   },
   {
    "condition": "clear",
@@ -171,11 +183,12 @@
    "week": "A",
    "day": "sat",
    "hash": "e9616cb7c61c",
-   "image": "clear/week_2/day/4.webp",
+   "image": "clear/week_1/day/6.webp",
    "paths": [
-    "clear/week_2/day/4.webp",
+    "clear/week_1/day/6.webp",
     "clear/week_3/day/6.webp"
-   ]
+   ],
+   "previousImage": "clear/week_2/day/4.webp"
   },
   {
    "condition": "clear",
@@ -183,11 +196,12 @@
    "week": "A",
    "day": "sun",
    "hash": "45d964f74171",
-   "image": "clear/week_2/day/2.webp",
+   "image": "clear/week_1/day/7.webp",
    "paths": [
-    "clear/week_1/day/4.webp",
-    "clear/week_2/day/2.webp"
-   ]
+    "clear/week_1/day/7.webp",
+    "clear/week_3/day/7.webp"
+   ],
+   "previousImage": "clear/week_2/day/2.webp"
   },
   {
    "condition": "clear",
@@ -195,11 +209,12 @@
    "week": "B",
    "day": "mon",
    "hash": "0009c55ad6a5",
-   "image": "clear/week_3/day/3.webp",
+   "image": "clear/week_2/day/1.webp",
    "paths": [
-    "clear/week_1/day/1.webp",
-    "clear/week_3/day/3.webp"
-   ]
+    "clear/week_2/day/1.webp",
+    "clear/week_4/day/1.webp"
+   ],
+   "previousImage": "clear/week_3/day/3.webp"
   },
   {
    "condition": "clear",
@@ -207,11 +222,12 @@
    "week": "B",
    "day": "tue",
    "hash": "9ab8b9f07431",
-   "image": "clear/week_2/day/1.webp",
+   "image": "clear/week_2/day/2.webp",
    "paths": [
-    "clear/week_2/day/1.webp",
-    "clear/week_3/day/2.webp"
-   ]
+    "clear/week_2/day/2.webp",
+    "clear/week_4/day/2.webp"
+   ],
+   "previousImage": "clear/week_2/day/1.webp"
   },
   {
    "condition": "clear",
@@ -219,11 +235,12 @@
    "week": "B",
    "day": "wed",
    "hash": "448b951052cc",
-   "image": "clear/week_4/day/2.webp",
+   "image": "clear/week_2/day/3.webp",
    "paths": [
-    "clear/week_1/day/3.webp",
-    "clear/week_4/day/2.webp"
-   ]
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "previousImage": "clear/week_4/day/2.webp"
   },
   {
    "condition": "clear",
@@ -231,11 +248,12 @@
    "week": "B",
    "day": "thu",
    "hash": "3d001539dcb5",
-   "image": "clear/week_4/day/6.webp",
+   "image": "clear/week_2/day/4.webp",
    "paths": [
-    "clear/week_1/day/2.webp",
-    "clear/week_4/day/6.webp"
-   ]
+    "clear/week_2/day/4.webp",
+    "clear/week_4/day/4.webp"
+   ],
+   "previousImage": "clear/week_4/day/6.webp"
   },
   {
    "condition": "clear",
@@ -243,11 +261,12 @@
    "week": "B",
    "day": "fri",
    "hash": "ed953578deec",
-   "image": "clear/week_2/day/7.webp",
+   "image": "clear/week_2/day/5.webp",
    "paths": [
-    "clear/week_2/day/7.webp",
-    "clear/week_4/day/4.webp"
-   ]
+    "clear/week_2/day/5.webp",
+    "clear/week_4/day/5.webp"
+   ],
+   "previousImage": "clear/week_2/day/7.webp"
   },
   {
    "condition": "clear",
@@ -255,11 +274,12 @@
    "week": "B",
    "day": "sat",
    "hash": "6e598ae56c12",
-   "image": "clear/week_4/day/5.webp",
+   "image": "clear/week_2/day/6.webp",
    "paths": [
-    "clear/week_1/day/6.webp",
-    "clear/week_4/day/5.webp"
-   ]
+    "clear/week_2/day/6.webp",
+    "clear/week_4/day/6.webp"
+   ],
+   "previousImage": "clear/week_4/day/5.webp"
   },
   {
    "condition": "clear",
@@ -267,11 +287,12 @@
    "week": "B",
    "day": "sun",
    "hash": "03a31c2b8e88",
-   "image": "clear/week_1/day/7.webp",
+   "image": "clear/week_2/day/7.webp",
    "paths": [
-    "clear/week_1/day/7.webp",
-    "clear/week_2/day/3.webp"
-   ]
+    "clear/week_2/day/7.webp",
+    "clear/week_4/day/7.webp"
+   ],
+   "previousImage": "clear/week_1/day/7.webp"
   },
   {
    "condition": "clear",
@@ -279,13 +300,14 @@
    "week": "A",
    "day": "mon",
    "hash": "9059d175f28c",
-   "image": "clear/week_2/dusk/5.webp",
+   "image": "clear/week_1/dusk/1.webp",
    "paths": [
-    "clear/week_1/dusk/5.webp",
-    "clear/week_2/dusk/5.webp",
-    "clear/week_3/dusk/5.webp",
-    "clear/week_4/dusk/5.webp"
-   ]
+    "clear/week_1/dusk/1.webp",
+    "clear/week_2/dusk/1.webp",
+    "clear/week_3/dusk/1.webp",
+    "clear/week_4/dusk/1.webp"
+   ],
+   "previousImage": "clear/week_2/dusk/5.webp"
   },
   {
    "condition": "clear",
@@ -293,13 +315,14 @@
    "week": "A",
    "day": "tue",
    "hash": "1bd6b90924a1",
-   "image": "clear/week_2/dusk/6.webp",
+   "image": "clear/week_1/dusk/2.webp",
    "paths": [
-    "clear/week_1/dusk/1.webp",
-    "clear/week_2/dusk/6.webp",
-    "clear/week_3/dusk/1.webp",
-    "clear/week_4/dusk/6.webp"
-   ]
+    "clear/week_1/dusk/2.webp",
+    "clear/week_2/dusk/2.webp",
+    "clear/week_3/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "previousImage": "clear/week_2/dusk/6.webp"
   },
   {
    "condition": "clear",
@@ -307,13 +330,14 @@
    "week": "A",
    "day": "wed",
    "hash": "7d50ec606bfc",
-   "image": "clear/week_2/dusk/4.webp",
+   "image": "clear/week_1/dusk/3.webp",
    "paths": [
-    "clear/week_1/dusk/4.webp",
-    "clear/week_2/dusk/4.webp",
-    "clear/week_3/dusk/4.webp",
-    "clear/week_4/dusk/4.webp"
-   ]
+    "clear/week_1/dusk/3.webp",
+    "clear/week_2/dusk/3.webp",
+    "clear/week_3/dusk/3.webp",
+    "clear/week_4/dusk/3.webp"
+   ],
+   "previousImage": "clear/week_2/dusk/4.webp"
   },
   {
    "condition": "clear",
@@ -321,13 +345,14 @@
    "week": "A",
    "day": "thu",
    "hash": "cc951efb5d19",
-   "image": "clear/week_2/dusk/3.webp",
+   "image": "clear/week_1/dusk/4.webp",
    "paths": [
-    "clear/week_1/dusk/7.webp",
-    "clear/week_2/dusk/3.webp",
-    "clear/week_3/dusk/7.webp",
-    "clear/week_4/dusk/3.webp"
-   ]
+    "clear/week_1/dusk/4.webp",
+    "clear/week_2/dusk/4.webp",
+    "clear/week_3/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "previousImage": "clear/week_2/dusk/3.webp"
   },
   {
    "condition": "clear",
@@ -335,13 +360,14 @@
    "week": "A",
    "day": "fri",
    "hash": "90a621539543",
-   "image": "clear/week_2/dusk/2.webp",
+   "image": "clear/week_1/dusk/5.webp",
    "paths": [
-    "clear/week_1/dusk/6.webp",
-    "clear/week_2/dusk/2.webp",
-    "clear/week_3/dusk/6.webp",
-    "clear/week_4/dusk/2.webp"
-   ]
+    "clear/week_1/dusk/5.webp",
+    "clear/week_2/dusk/5.webp",
+    "clear/week_3/dusk/5.webp",
+    "clear/week_4/dusk/5.webp"
+   ],
+   "previousImage": "clear/week_2/dusk/2.webp"
   },
   {
    "condition": "clear",
@@ -349,13 +375,14 @@
    "week": "A",
    "day": "sat",
    "hash": "d097525bf5cf",
-   "image": "clear/week_1/dusk/3.webp",
+   "image": "clear/week_1/dusk/6.webp",
    "paths": [
-    "clear/week_1/dusk/3.webp",
-    "clear/week_2/dusk/7.webp",
-    "clear/week_3/dusk/3.webp",
-    "clear/week_4/dusk/7.webp"
-   ]
+    "clear/week_1/dusk/6.webp",
+    "clear/week_2/dusk/6.webp",
+    "clear/week_3/dusk/6.webp",
+    "clear/week_4/dusk/6.webp"
+   ],
+   "previousImage": "clear/week_1/dusk/3.webp"
   },
   {
    "condition": "clear",
@@ -363,13 +390,14 @@
    "week": "A",
    "day": "sun",
    "hash": "525b2eea2ebc",
-   "image": "clear/week_2/dusk/1.webp",
+   "image": "clear/week_1/dusk/7.webp",
    "paths": [
-    "clear/week_1/dusk/2.webp",
-    "clear/week_2/dusk/1.webp",
-    "clear/week_3/dusk/2.webp",
-    "clear/week_4/dusk/1.webp"
-   ]
+    "clear/week_1/dusk/7.webp",
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/7.webp",
+    "clear/week_4/dusk/7.webp"
+   ],
+   "previousImage": "clear/week_2/dusk/1.webp"
   },
   {
    "condition": "clear",
@@ -377,13 +405,14 @@
    "week": "A",
    "day": "mon",
    "hash": "970707aba87c",
-   "image": "clear/week_2/night/6.webp",
+   "image": "clear/week_1/night/1.webp",
    "paths": [
-    "clear/week_1/night/5.webp",
-    "clear/week_2/night/6.webp",
-    "clear/week_3/night/5.webp",
-    "clear/week_4/night/6.webp"
-   ]
+    "clear/week_1/night/1.webp",
+    "clear/week_2/night/1.webp",
+    "clear/week_3/night/1.webp",
+    "clear/week_4/night/1.webp"
+   ],
+   "previousImage": "clear/week_2/night/6.webp"
   },
   {
    "condition": "clear",
@@ -391,13 +420,14 @@
    "week": "A",
    "day": "tue",
    "hash": "14f98c4f78fa",
-   "image": "clear/week_1/night/1.webp",
+   "image": "clear/week_1/night/2.webp",
    "paths": [
-    "clear/week_1/night/1.webp",
+    "clear/week_1/night/2.webp",
     "clear/week_2/night/2.webp",
-    "clear/week_3/night/1.webp",
+    "clear/week_3/night/2.webp",
     "clear/week_4/night/2.webp"
-   ]
+   ],
+   "previousImage": "clear/week_1/night/1.webp"
   },
   {
    "condition": "clear",
@@ -405,13 +435,14 @@
    "week": "A",
    "day": "wed",
    "hash": "de9514caac5f",
-   "image": "clear/week_1/night/7.webp",
+   "image": "clear/week_1/night/3.webp",
    "paths": [
-    "clear/week_1/night/7.webp",
-    "clear/week_2/night/4.webp",
-    "clear/week_3/night/7.webp",
-    "clear/week_4/night/4.webp"
-   ]
+    "clear/week_1/night/3.webp",
+    "clear/week_2/night/3.webp",
+    "clear/week_3/night/3.webp",
+    "clear/week_4/night/3.webp"
+   ],
+   "previousImage": "clear/week_1/night/7.webp"
   },
   {
    "condition": "clear",
@@ -419,13 +450,14 @@
    "week": "A",
    "day": "thu",
    "hash": "05cd0ad39fd6",
-   "image": "clear/week_2/night/5.webp",
+   "image": "clear/week_1/night/4.webp",
    "paths": [
-    "clear/week_1/night/2.webp",
-    "clear/week_2/night/5.webp",
-    "clear/week_3/night/2.webp",
-    "clear/week_4/night/5.webp"
-   ]
+    "clear/week_1/night/4.webp",
+    "clear/week_2/night/4.webp",
+    "clear/week_3/night/4.webp",
+    "clear/week_4/night/4.webp"
+   ],
+   "previousImage": "clear/week_2/night/5.webp"
   },
   {
    "condition": "clear",
@@ -433,13 +465,14 @@
    "week": "A",
    "day": "fri",
    "hash": "4138025d3128",
-   "image": "clear/week_2/night/7.webp",
+   "image": "clear/week_1/night/5.webp",
    "paths": [
-    "clear/week_1/night/4.webp",
-    "clear/week_2/night/7.webp",
-    "clear/week_3/night/4.webp",
-    "clear/week_4/night/7.webp"
-   ]
+    "clear/week_1/night/5.webp",
+    "clear/week_2/night/5.webp",
+    "clear/week_3/night/5.webp",
+    "clear/week_4/night/5.webp"
+   ],
+   "previousImage": "clear/week_2/night/7.webp"
   },
   {
    "condition": "clear",
@@ -447,13 +480,14 @@
    "week": "A",
    "day": "sat",
    "hash": "127edee25245",
-   "image": "clear/week_1/night/3.webp",
+   "image": "clear/week_1/night/6.webp",
    "paths": [
-    "clear/week_1/night/3.webp",
-    "clear/week_2/night/1.webp",
-    "clear/week_3/night/3.webp",
-    "clear/week_4/night/1.webp"
-   ]
+    "clear/week_1/night/6.webp",
+    "clear/week_2/night/6.webp",
+    "clear/week_3/night/6.webp",
+    "clear/week_4/night/6.webp"
+   ],
+   "previousImage": "clear/week_1/night/3.webp"
   },
   {
    "condition": "clear",
@@ -461,13 +495,14 @@
    "week": "A",
    "day": "sun",
    "hash": "998833419718",
-   "image": "clear/week_1/night/6.webp",
+   "image": "clear/week_1/night/7.webp",
    "paths": [
-    "clear/week_1/night/6.webp",
-    "clear/week_2/night/3.webp",
-    "clear/week_3/night/6.webp",
-    "clear/week_4/night/3.webp"
-   ]
+    "clear/week_1/night/7.webp",
+    "clear/week_2/night/7.webp",
+    "clear/week_3/night/7.webp",
+    "clear/week_4/night/7.webp"
+   ],
+   "previousImage": "clear/week_1/night/6.webp"
   },
   {
    "condition": "cloudy",
@@ -475,13 +510,14 @@
    "week": "A",
    "day": "mon",
    "hash": "08134a1e356e",
-   "image": "cloudy/week_2/dawn/3.webp",
+   "image": "cloudy/week_1/dawn/1.webp",
    "paths": [
-    "cloudy/week_1/dawn/2.webp",
-    "cloudy/week_2/dawn/3.webp",
-    "cloudy/week_3/dawn/2.webp",
-    "cloudy/week_4/dawn/3.webp"
-   ]
+    "cloudy/week_1/dawn/1.webp",
+    "cloudy/week_2/dawn/1.webp",
+    "cloudy/week_3/dawn/1.webp",
+    "cloudy/week_4/dawn/1.webp"
+   ],
+   "previousImage": "cloudy/week_2/dawn/3.webp"
   },
   {
    "condition": "cloudy",
@@ -489,13 +525,14 @@
    "week": "A",
    "day": "tue",
    "hash": "de1df07bf268",
-   "image": "cloudy/week_1/dawn/4.webp",
+   "image": "cloudy/week_1/dawn/2.webp",
    "paths": [
-    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_1/dawn/2.webp",
     "cloudy/week_2/dawn/2.webp",
-    "cloudy/week_3/dawn/4.webp",
+    "cloudy/week_3/dawn/2.webp",
     "cloudy/week_4/dawn/2.webp"
-   ]
+   ],
+   "previousImage": "cloudy/week_1/dawn/4.webp"
   },
   {
    "condition": "cloudy",
@@ -503,13 +540,14 @@
    "week": "A",
    "day": "wed",
    "hash": "03ff71985022",
-   "image": "cloudy/week_2/dawn/6.webp",
+   "image": "cloudy/week_1/dawn/3.webp",
    "paths": [
-    "cloudy/week_1/dawn/1.webp",
-    "cloudy/week_2/dawn/6.webp",
-    "cloudy/week_3/dawn/1.webp",
-    "cloudy/week_4/dawn/6.webp"
-   ]
+    "cloudy/week_1/dawn/3.webp",
+    "cloudy/week_2/dawn/3.webp",
+    "cloudy/week_3/dawn/3.webp",
+    "cloudy/week_4/dawn/3.webp"
+   ],
+   "previousImage": "cloudy/week_2/dawn/6.webp"
   },
   {
    "condition": "cloudy",
@@ -517,13 +555,14 @@
    "week": "A",
    "day": "thu",
    "hash": "4845b881f911",
-   "image": "cloudy/week_2/dawn/7.webp",
+   "image": "cloudy/week_1/dawn/4.webp",
    "paths": [
-    "cloudy/week_1/dawn/6.webp",
-    "cloudy/week_2/dawn/7.webp",
-    "cloudy/week_3/dawn/6.webp",
-    "cloudy/week_4/dawn/7.webp"
-   ]
+    "cloudy/week_1/dawn/4.webp",
+    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_3/dawn/4.webp",
+    "cloudy/week_4/dawn/4.webp"
+   ],
+   "previousImage": "cloudy/week_2/dawn/7.webp"
   },
   {
    "condition": "cloudy",
@@ -531,13 +570,14 @@
    "week": "A",
    "day": "fri",
    "hash": "3bfd9b9470d6",
-   "image": "cloudy/week_2/dawn/4.webp",
+   "image": "cloudy/week_1/dawn/5.webp",
    "paths": [
     "cloudy/week_1/dawn/5.webp",
-    "cloudy/week_2/dawn/4.webp",
+    "cloudy/week_2/dawn/5.webp",
     "cloudy/week_3/dawn/5.webp",
-    "cloudy/week_4/dawn/4.webp"
-   ]
+    "cloudy/week_4/dawn/5.webp"
+   ],
+   "previousImage": "cloudy/week_2/dawn/4.webp"
   },
   {
    "condition": "cloudy",
@@ -545,13 +585,14 @@
    "week": "A",
    "day": "sat",
    "hash": "b5793c36b69d",
-   "image": "cloudy/week_1/dawn/3.webp",
+   "image": "cloudy/week_1/dawn/6.webp",
    "paths": [
-    "cloudy/week_1/dawn/3.webp",
-    "cloudy/week_2/dawn/1.webp",
-    "cloudy/week_3/dawn/3.webp",
-    "cloudy/week_4/dawn/1.webp"
-   ]
+    "cloudy/week_1/dawn/6.webp",
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_3/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "previousImage": "cloudy/week_1/dawn/3.webp"
   },
   {
    "condition": "cloudy",
@@ -562,9 +603,9 @@
    "image": "cloudy/week_1/dawn/7.webp",
    "paths": [
     "cloudy/week_1/dawn/7.webp",
-    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_2/dawn/7.webp",
     "cloudy/week_3/dawn/7.webp",
-    "cloudy/week_4/dawn/5.webp"
+    "cloudy/week_4/dawn/7.webp"
    ]
   },
   {
@@ -573,11 +614,12 @@
    "week": "A",
    "day": "mon",
    "hash": "d16ca804a592",
-   "image": "cloudy/week_1/day/3.webp",
+   "image": "cloudy/week_1/day/1.webp",
    "paths": [
-    "cloudy/week_1/day/3.webp",
-    "cloudy/week_3/day/7.webp"
-   ]
+    "cloudy/week_1/day/1.webp",
+    "cloudy/week_3/day/1.webp"
+   ],
+   "previousImage": "cloudy/week_1/day/3.webp"
   },
   {
    "condition": "cloudy",
@@ -585,11 +627,12 @@
    "week": "A",
    "day": "tue",
    "hash": "4727610ce8f9",
-   "image": "cloudy/week_4/day/4.webp",
+   "image": "cloudy/week_1/day/2.webp",
    "paths": [
-    "cloudy/week_2/day/4.webp",
-    "cloudy/week_4/day/4.webp"
-   ]
+    "cloudy/week_1/day/2.webp",
+    "cloudy/week_3/day/2.webp"
+   ],
+   "previousImage": "cloudy/week_4/day/4.webp"
   },
   {
    "condition": "cloudy",
@@ -597,11 +640,12 @@
    "week": "A",
    "day": "wed",
    "hash": "5aea3d2e9887",
-   "image": "cloudy/week_2/day/5.webp",
+   "image": "cloudy/week_1/day/3.webp",
    "paths": [
-    "cloudy/week_2/day/5.webp",
-    "cloudy/week_3/day/6.webp"
-   ]
+    "cloudy/week_1/day/3.webp",
+    "cloudy/week_3/day/3.webp"
+   ],
+   "previousImage": "cloudy/week_2/day/5.webp"
   },
   {
    "condition": "cloudy",
@@ -609,11 +653,12 @@
    "week": "A",
    "day": "thu",
    "hash": "5a72972b399b",
-   "image": "cloudy/week_4/day/6.webp",
+   "image": "cloudy/week_1/day/4.webp",
    "paths": [
-    "cloudy/week_3/day/5.webp",
-    "cloudy/week_4/day/6.webp"
-   ]
+    "cloudy/week_1/day/4.webp",
+    "cloudy/week_3/day/4.webp"
+   ],
+   "previousImage": "cloudy/week_4/day/6.webp"
   },
   {
    "condition": "cloudy",
@@ -621,11 +666,12 @@
    "week": "A",
    "day": "fri",
    "hash": "dc71e7a692da",
-   "image": "cloudy/week_2/day/6.webp",
+   "image": "cloudy/week_1/day/5.webp",
    "paths": [
-    "cloudy/week_2/day/6.webp",
-    "cloudy/week_4/day/3.webp"
-   ]
+    "cloudy/week_1/day/5.webp",
+    "cloudy/week_3/day/5.webp"
+   ],
+   "previousImage": "cloudy/week_2/day/6.webp"
   },
   {
    "condition": "cloudy",
@@ -633,11 +679,12 @@
    "week": "A",
    "day": "sat",
    "hash": "c16f8303d56e",
-   "image": "cloudy/week_3/day/1.webp",
+   "image": "cloudy/week_1/day/6.webp",
    "paths": [
-    "cloudy/week_3/day/1.webp",
-    "cloudy/week_4/day/2.webp"
-   ]
+    "cloudy/week_1/day/6.webp",
+    "cloudy/week_3/day/6.webp"
+   ],
+   "previousImage": "cloudy/week_3/day/1.webp"
   },
   {
    "condition": "cloudy",
@@ -645,11 +692,12 @@
    "week": "A",
    "day": "sun",
    "hash": "094ec6ba034c",
-   "image": "cloudy/week_2/day/7.webp",
+   "image": "cloudy/week_1/day/7.webp",
    "paths": [
-    "cloudy/week_1/day/4.webp",
-    "cloudy/week_2/day/7.webp"
-   ]
+    "cloudy/week_1/day/7.webp",
+    "cloudy/week_3/day/7.webp"
+   ],
+   "previousImage": "cloudy/week_2/day/7.webp"
   },
   {
    "condition": "cloudy",
@@ -657,11 +705,12 @@
    "week": "B",
    "day": "mon",
    "hash": "313ca13b51a5",
-   "image": "cloudy/week_4/day/7.webp",
+   "image": "cloudy/week_2/day/1.webp",
    "paths": [
-    "cloudy/week_1/day/5.webp",
-    "cloudy/week_4/day/7.webp"
-   ]
+    "cloudy/week_2/day/1.webp",
+    "cloudy/week_4/day/1.webp"
+   ],
+   "previousImage": "cloudy/week_4/day/7.webp"
   },
   {
    "condition": "cloudy",
@@ -669,11 +718,12 @@
    "week": "B",
    "day": "tue",
    "hash": "47550fce6c98",
-   "image": "cloudy/week_3/day/4.webp",
+   "image": "cloudy/week_2/day/2.webp",
    "paths": [
-    "cloudy/week_3/day/4.webp",
-    "cloudy/week_4/day/1.webp"
-   ]
+    "cloudy/week_2/day/2.webp",
+    "cloudy/week_4/day/2.webp"
+   ],
+   "previousImage": "cloudy/week_3/day/4.webp"
   },
   {
    "condition": "cloudy",
@@ -681,11 +731,12 @@
    "week": "B",
    "day": "wed",
    "hash": "119e4a52f8a4",
-   "image": "cloudy/week_1/day/1.webp",
+   "image": "cloudy/week_2/day/3.webp",
    "paths": [
-    "cloudy/week_1/day/1.webp",
-    "cloudy/week_2/day/2.webp"
-   ]
+    "cloudy/week_2/day/3.webp",
+    "cloudy/week_4/day/3.webp"
+   ],
+   "previousImage": "cloudy/week_1/day/1.webp"
   },
   {
    "condition": "cloudy",
@@ -693,11 +744,12 @@
    "week": "B",
    "day": "thu",
    "hash": "31b58730d005",
-   "image": "cloudy/week_1/day/6.webp",
+   "image": "cloudy/week_2/day/4.webp",
    "paths": [
-    "cloudy/week_1/day/6.webp",
-    "cloudy/week_2/day/3.webp"
-   ]
+    "cloudy/week_2/day/4.webp",
+    "cloudy/week_4/day/4.webp"
+   ],
+   "previousImage": "cloudy/week_1/day/6.webp"
   },
   {
    "condition": "cloudy",
@@ -705,11 +757,12 @@
    "week": "B",
    "day": "fri",
    "hash": "5668c9f2edcb",
-   "image": "cloudy/week_1/day/7.webp",
+   "image": "cloudy/week_2/day/5.webp",
    "paths": [
-    "cloudy/week_1/day/7.webp",
-    "cloudy/week_3/day/2.webp"
-   ]
+    "cloudy/week_2/day/5.webp",
+    "cloudy/week_4/day/5.webp"
+   ],
+   "previousImage": "cloudy/week_1/day/7.webp"
   },
   {
    "condition": "cloudy",
@@ -717,11 +770,12 @@
    "week": "B",
    "day": "sat",
    "hash": "e9f6b3850ce2",
-   "image": "cloudy/week_2/day/1.webp",
+   "image": "cloudy/week_2/day/6.webp",
    "paths": [
-    "cloudy/week_2/day/1.webp",
-    "cloudy/week_4/day/5.webp"
-   ]
+    "cloudy/week_2/day/6.webp",
+    "cloudy/week_4/day/6.webp"
+   ],
+   "previousImage": "cloudy/week_2/day/1.webp"
   },
   {
    "condition": "cloudy",
@@ -729,11 +783,12 @@
    "week": "B",
    "day": "sun",
    "hash": "04bdf14c306b",
-   "image": "cloudy/week_3/day/3.webp",
+   "image": "cloudy/week_2/day/7.webp",
    "paths": [
-    "cloudy/week_1/day/2.webp",
-    "cloudy/week_3/day/3.webp"
-   ]
+    "cloudy/week_2/day/7.webp",
+    "cloudy/week_4/day/7.webp"
+   ],
+   "previousImage": "cloudy/week_3/day/3.webp"
   },
   {
    "condition": "cloudy",
@@ -741,13 +796,14 @@
    "week": "A",
    "day": "mon",
    "hash": "20e80f881707",
-   "image": "cloudy/week_1/dusk/2.webp",
+   "image": "cloudy/week_1/dusk/1.webp",
    "paths": [
-    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_1/dusk/1.webp",
     "cloudy/week_2/dusk/1.webp",
-    "cloudy/week_3/dusk/2.webp",
+    "cloudy/week_3/dusk/1.webp",
     "cloudy/week_4/dusk/1.webp"
-   ]
+   ],
+   "previousImage": "cloudy/week_1/dusk/2.webp"
   },
   {
    "condition": "cloudy",
@@ -755,13 +811,14 @@
    "week": "A",
    "day": "tue",
    "hash": "018a0573e433",
-   "image": "cloudy/week_2/dusk/3.webp",
+   "image": "cloudy/week_1/dusk/2.webp",
    "paths": [
-    "cloudy/week_1/dusk/1.webp",
-    "cloudy/week_2/dusk/3.webp",
-    "cloudy/week_3/dusk/1.webp",
-    "cloudy/week_4/dusk/3.webp"
-   ]
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "previousImage": "cloudy/week_2/dusk/3.webp"
   },
   {
    "condition": "cloudy",
@@ -769,13 +826,14 @@
    "week": "A",
    "day": "wed",
    "hash": "444490756b06",
-   "image": "cloudy/week_2/dusk/5.webp",
+   "image": "cloudy/week_1/dusk/3.webp",
    "paths": [
-    "cloudy/week_1/dusk/6.webp",
-    "cloudy/week_2/dusk/5.webp",
-    "cloudy/week_3/dusk/6.webp",
-    "cloudy/week_4/dusk/5.webp"
-   ]
+    "cloudy/week_1/dusk/3.webp",
+    "cloudy/week_2/dusk/3.webp",
+    "cloudy/week_3/dusk/3.webp",
+    "cloudy/week_4/dusk/3.webp"
+   ],
+   "previousImage": "cloudy/week_2/dusk/5.webp"
   },
   {
    "condition": "cloudy",
@@ -783,13 +841,14 @@
    "week": "A",
    "day": "thu",
    "hash": "0ebee4d85540",
-   "image": "cloudy/week_2/dusk/6.webp",
+   "image": "cloudy/week_1/dusk/4.webp",
    "paths": [
-    "cloudy/week_1/dusk/3.webp",
-    "cloudy/week_2/dusk/6.webp",
-    "cloudy/week_3/dusk/3.webp",
-    "cloudy/week_4/dusk/6.webp"
-   ]
+    "cloudy/week_1/dusk/4.webp",
+    "cloudy/week_2/dusk/4.webp",
+    "cloudy/week_3/dusk/4.webp",
+    "cloudy/week_4/dusk/4.webp"
+   ],
+   "previousImage": "cloudy/week_2/dusk/6.webp"
   },
   {
    "condition": "cloudy",
@@ -797,13 +856,14 @@
    "week": "A",
    "day": "fri",
    "hash": "211c0291a514",
-   "image": "cloudy/week_2/dusk/7.webp",
+   "image": "cloudy/week_1/dusk/5.webp",
    "paths": [
     "cloudy/week_1/dusk/5.webp",
-    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_2/dusk/5.webp",
     "cloudy/week_3/dusk/5.webp",
-    "cloudy/week_4/dusk/7.webp"
-   ]
+    "cloudy/week_4/dusk/5.webp"
+   ],
+   "previousImage": "cloudy/week_2/dusk/7.webp"
   },
   {
    "condition": "cloudy",
@@ -811,13 +871,14 @@
    "week": "A",
    "day": "sat",
    "hash": "3ba329d5cea3",
-   "image": "cloudy/week_1/dusk/4.webp",
+   "image": "cloudy/week_1/dusk/6.webp",
    "paths": [
-    "cloudy/week_1/dusk/4.webp",
-    "cloudy/week_2/dusk/4.webp",
-    "cloudy/week_3/dusk/4.webp",
-    "cloudy/week_4/dusk/4.webp"
-   ]
+    "cloudy/week_1/dusk/6.webp",
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_3/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "previousImage": "cloudy/week_1/dusk/4.webp"
   },
   {
    "condition": "cloudy",
@@ -825,13 +886,14 @@
    "week": "A",
    "day": "sun",
    "hash": "6b5271665e34",
-   "image": "cloudy/week_2/dusk/2.webp",
+   "image": "cloudy/week_1/dusk/7.webp",
    "paths": [
     "cloudy/week_1/dusk/7.webp",
-    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_2/dusk/7.webp",
     "cloudy/week_3/dusk/7.webp",
-    "cloudy/week_4/dusk/2.webp"
-   ]
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "previousImage": "cloudy/week_2/dusk/2.webp"
   },
   {
    "condition": "cloudy",
@@ -842,9 +904,9 @@
    "image": "cloudy/week_1/night/1.webp",
    "paths": [
     "cloudy/week_1/night/1.webp",
-    "cloudy/week_2/night/3.webp",
+    "cloudy/week_2/night/1.webp",
     "cloudy/week_3/night/1.webp",
-    "cloudy/week_4/night/3.webp"
+    "cloudy/week_4/night/1.webp"
    ]
   },
   {
@@ -853,13 +915,14 @@
    "week": "A",
    "day": "tue",
    "hash": "68317318c85d",
-   "image": "cloudy/week_1/night/7.webp",
+   "image": "cloudy/week_1/night/2.webp",
    "paths": [
-    "cloudy/week_1/night/7.webp",
-    "cloudy/week_2/night/1.webp",
-    "cloudy/week_3/night/7.webp",
-    "cloudy/week_4/night/1.webp"
-   ]
+    "cloudy/week_1/night/2.webp",
+    "cloudy/week_2/night/2.webp",
+    "cloudy/week_3/night/2.webp",
+    "cloudy/week_4/night/2.webp"
+   ],
+   "previousImage": "cloudy/week_1/night/7.webp"
   },
   {
    "condition": "cloudy",
@@ -867,13 +930,14 @@
    "week": "A",
    "day": "wed",
    "hash": "76070c299a0b",
-   "image": "cloudy/week_1/night/2.webp",
+   "image": "cloudy/week_1/night/3.webp",
    "paths": [
-    "cloudy/week_1/night/2.webp",
-    "cloudy/week_2/night/2.webp",
-    "cloudy/week_3/night/2.webp",
-    "cloudy/week_4/night/2.webp"
-   ]
+    "cloudy/week_1/night/3.webp",
+    "cloudy/week_2/night/3.webp",
+    "cloudy/week_3/night/3.webp",
+    "cloudy/week_4/night/3.webp"
+   ],
+   "previousImage": "cloudy/week_1/night/2.webp"
   },
   {
    "condition": "cloudy",
@@ -881,13 +945,14 @@
    "week": "A",
    "day": "thu",
    "hash": "bdc2741f86fb",
-   "image": "cloudy/week_2/night/6.webp",
+   "image": "cloudy/week_1/night/4.webp",
    "paths": [
-    "cloudy/week_1/night/3.webp",
-    "cloudy/week_2/night/6.webp",
-    "cloudy/week_3/night/3.webp",
-    "cloudy/week_4/night/6.webp"
-   ]
+    "cloudy/week_1/night/4.webp",
+    "cloudy/week_2/night/4.webp",
+    "cloudy/week_3/night/4.webp",
+    "cloudy/week_4/night/4.webp"
+   ],
+   "previousImage": "cloudy/week_2/night/6.webp"
   },
   {
    "condition": "cloudy",
@@ -895,13 +960,14 @@
    "week": "A",
    "day": "fri",
    "hash": "e991afd863ba",
-   "image": "cloudy/week_1/night/6.webp",
+   "image": "cloudy/week_1/night/5.webp",
    "paths": [
-    "cloudy/week_1/night/6.webp",
-    "cloudy/week_2/night/7.webp",
-    "cloudy/week_3/night/6.webp",
-    "cloudy/week_4/night/7.webp"
-   ]
+    "cloudy/week_1/night/5.webp",
+    "cloudy/week_2/night/5.webp",
+    "cloudy/week_3/night/5.webp",
+    "cloudy/week_4/night/5.webp"
+   ],
+   "previousImage": "cloudy/week_1/night/6.webp"
   },
   {
    "condition": "cloudy",
@@ -909,13 +975,14 @@
    "week": "A",
    "day": "sat",
    "hash": "f3255e596b2c",
-   "image": "cloudy/week_2/night/5.webp",
+   "image": "cloudy/week_1/night/6.webp",
    "paths": [
-    "cloudy/week_1/night/5.webp",
-    "cloudy/week_2/night/5.webp",
-    "cloudy/week_3/night/5.webp",
-    "cloudy/week_4/night/5.webp"
-   ]
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "previousImage": "cloudy/week_2/night/5.webp"
   },
   {
    "condition": "cloudy",
@@ -923,13 +990,14 @@
    "week": "A",
    "day": "sun",
    "hash": "c6d4061cbef2",
-   "image": "cloudy/week_2/night/4.webp",
+   "image": "cloudy/week_1/night/7.webp",
    "paths": [
-    "cloudy/week_1/night/4.webp",
-    "cloudy/week_2/night/4.webp",
-    "cloudy/week_3/night/4.webp",
-    "cloudy/week_4/night/4.webp"
-   ]
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_2/night/7.webp",
+    "cloudy/week_3/night/7.webp",
+    "cloudy/week_4/night/7.webp"
+   ],
+   "previousImage": "cloudy/week_2/night/4.webp"
   },
   {
    "condition": "cold",
@@ -940,9 +1008,9 @@
    "image": "cold/week_1/dawn/1.webp",
    "paths": [
     "cold/week_1/dawn/1.webp",
-    "cold/week_2/dawn/7.webp",
+    "cold/week_2/dawn/1.webp",
     "cold/week_3/dawn/1.webp",
-    "cold/week_4/dawn/7.webp"
+    "cold/week_4/dawn/1.webp"
    ]
   },
   {
@@ -951,13 +1019,14 @@
    "week": "A",
    "day": "tue",
    "hash": "91301942dc29",
-   "image": "cold/week_1/dawn/7.webp",
+   "image": "cold/week_1/dawn/2.webp",
    "paths": [
-    "cold/week_1/dawn/7.webp",
-    "cold/week_2/dawn/3.webp",
-    "cold/week_3/dawn/7.webp",
-    "cold/week_4/dawn/4.webp"
-   ]
+    "cold/week_1/dawn/2.webp",
+    "cold/week_2/dawn/2.webp",
+    "cold/week_3/dawn/2.webp",
+    "cold/week_4/dawn/2.webp"
+   ],
+   "previousImage": "cold/week_1/dawn/7.webp"
   },
   {
    "condition": "cold",
@@ -968,9 +1037,9 @@
    "image": "cold/week_1/dawn/3.webp",
    "paths": [
     "cold/week_1/dawn/3.webp",
-    "cold/week_2/dawn/1.webp",
+    "cold/week_2/dawn/3.webp",
     "cold/week_3/dawn/3.webp",
-    "cold/week_4/dawn/2.webp"
+    "cold/week_4/dawn/3.webp"
    ]
   },
   {
@@ -982,9 +1051,9 @@
    "image": "cold/week_1/dawn/4.webp",
    "paths": [
     "cold/week_1/dawn/4.webp",
-    "cold/week_2/dawn/2.webp",
+    "cold/week_2/dawn/4.webp",
     "cold/week_3/dawn/4.webp",
-    "cold/week_4/dawn/3.webp"
+    "cold/week_4/dawn/4.webp"
    ]
   },
   {
@@ -993,13 +1062,14 @@
    "week": "A",
    "day": "fri",
    "hash": "484f2079f5aa",
-   "image": "cold/week_2/dawn/5.webp",
+   "image": "cold/week_1/dawn/5.webp",
    "paths": [
-    "cold/week_1/dawn/6.webp",
+    "cold/week_1/dawn/5.webp",
     "cold/week_2/dawn/5.webp",
     "cold/week_3/dawn/5.webp",
     "cold/week_4/dawn/5.webp"
-   ]
+   ],
+   "previousImage": "cold/week_2/dawn/5.webp"
   },
   {
    "condition": "cold",
@@ -1007,13 +1077,14 @@
    "week": "A",
    "day": "sat",
    "hash": "ba36a2982ee0",
-   "image": "cold/week_4/dawn/1.webp",
+   "image": "cold/week_1/dawn/6.webp",
    "paths": [
-    "cold/week_1/dawn/2.webp",
-    "cold/week_2/dawn/4.webp",
+    "cold/week_1/dawn/6.webp",
+    "cold/week_2/dawn/6.webp",
     "cold/week_3/dawn/6.webp",
-    "cold/week_4/dawn/1.webp"
-   ]
+    "cold/week_4/dawn/6.webp"
+   ],
+   "previousImage": "cold/week_4/dawn/1.webp"
   },
   {
    "condition": "cold",
@@ -1021,13 +1092,14 @@
    "week": "A",
    "day": "sun",
    "hash": "4210c1f4a1ad",
-   "image": "cold/week_2/dawn/6.webp",
+   "image": "cold/week_1/dawn/7.webp",
    "paths": [
-    "cold/week_1/dawn/5.webp",
-    "cold/week_2/dawn/6.webp",
-    "cold/week_3/dawn/2.webp",
-    "cold/week_4/dawn/6.webp"
-   ]
+    "cold/week_1/dawn/7.webp",
+    "cold/week_2/dawn/7.webp",
+    "cold/week_3/dawn/7.webp",
+    "cold/week_4/dawn/7.webp"
+   ],
+   "previousImage": "cold/week_2/dawn/6.webp"
   },
   {
    "condition": "cold",
@@ -1035,11 +1107,12 @@
    "week": "A",
    "day": "mon",
    "hash": "4b92e51e69f8",
-   "image": "cold/week_4/day/4.webp",
+   "image": "cold/week_1/day/1.webp",
    "paths": [
-    "cold/week_1/day/4.webp",
-    "cold/week_4/day/4.webp"
-   ]
+    "cold/week_1/day/1.webp",
+    "cold/week_3/day/1.webp"
+   ],
+   "previousImage": "cold/week_4/day/4.webp"
   },
   {
    "condition": "cold",
@@ -1047,11 +1120,12 @@
    "week": "A",
    "day": "tue",
    "hash": "77dad643efa6",
-   "image": "cold/week_3/day/5.webp",
+   "image": "cold/week_1/day/2.webp",
    "paths": [
-    "cold/week_1/day/5.webp",
-    "cold/week_3/day/5.webp"
-   ]
+    "cold/week_1/day/2.webp",
+    "cold/week_3/day/2.webp"
+   ],
+   "previousImage": "cold/week_3/day/5.webp"
   },
   {
    "condition": "cold",
@@ -1059,11 +1133,12 @@
    "week": "A",
    "day": "wed",
    "hash": "084405b1c79a",
-   "image": "cold/week_2/day/5.webp",
+   "image": "cold/week_1/day/3.webp",
    "paths": [
-    "cold/week_1/day/1.webp",
-    "cold/week_2/day/5.webp"
-   ]
+    "cold/week_1/day/3.webp",
+    "cold/week_3/day/3.webp"
+   ],
+   "previousImage": "cold/week_2/day/5.webp"
   },
   {
    "condition": "cold",
@@ -1071,11 +1146,12 @@
    "week": "A",
    "day": "thu",
    "hash": "e8b7a7602012",
-   "image": "cold/week_1/day/6.webp",
+   "image": "cold/week_1/day/4.webp",
    "paths": [
-    "cold/week_1/day/6.webp",
+    "cold/week_1/day/4.webp",
     "cold/week_3/day/4.webp"
-   ]
+   ],
+   "previousImage": "cold/week_1/day/6.webp"
   },
   {
    "condition": "cold",
@@ -1083,11 +1159,12 @@
    "week": "A",
    "day": "fri",
    "hash": "e938ce2769cd",
-   "image": "cold/week_2/day/2.webp",
+   "image": "cold/week_1/day/5.webp",
    "paths": [
-    "cold/week_2/day/2.webp",
-    "cold/week_4/day/7.webp"
-   ]
+    "cold/week_1/day/5.webp",
+    "cold/week_3/day/5.webp"
+   ],
+   "previousImage": "cold/week_2/day/2.webp"
   },
   {
    "condition": "cold",
@@ -1095,11 +1172,12 @@
    "week": "A",
    "day": "sat",
    "hash": "bf942a9f6d66",
-   "image": "cold/week_3/day/6.webp",
+   "image": "cold/week_1/day/6.webp",
    "paths": [
-    "cold/week_3/day/6.webp",
-    "cold/week_4/day/3.webp"
-   ]
+    "cold/week_1/day/6.webp",
+    "cold/week_3/day/6.webp"
+   ],
+   "previousImage": "cold/week_3/day/6.webp"
   },
   {
    "condition": "cold",
@@ -1107,11 +1185,12 @@
    "week": "A",
    "day": "sun",
    "hash": "36ffe52cf7ec",
-   "image": "cold/week_2/day/4.webp",
+   "image": "cold/week_1/day/7.webp",
    "paths": [
-    "cold/week_1/day/2.webp",
-    "cold/week_2/day/4.webp"
-   ]
+    "cold/week_1/day/7.webp",
+    "cold/week_3/day/7.webp"
+   ],
+   "previousImage": "cold/week_2/day/4.webp"
   },
   {
    "condition": "cold",
@@ -1119,11 +1198,12 @@
    "week": "B",
    "day": "mon",
    "hash": "999e68c47bfc",
-   "image": "cold/week_2/day/3.webp",
+   "image": "cold/week_2/day/1.webp",
    "paths": [
-    "cold/week_2/day/3.webp",
-    "cold/week_3/day/1.webp"
-   ]
+    "cold/week_2/day/1.webp",
+    "cold/week_4/day/1.webp"
+   ],
+   "previousImage": "cold/week_2/day/3.webp"
   },
   {
    "condition": "cold",
@@ -1131,11 +1211,12 @@
    "week": "B",
    "day": "tue",
    "hash": "d970e657c4d2",
-   "image": "cold/week_4/day/5.webp",
+   "image": "cold/week_2/day/2.webp",
    "paths": [
-    "cold/week_3/day/2.webp",
-    "cold/week_4/day/5.webp"
-   ]
+    "cold/week_2/day/2.webp",
+    "cold/week_4/day/2.webp"
+   ],
+   "previousImage": "cold/week_4/day/5.webp"
   },
   {
    "condition": "cold",
@@ -1143,11 +1224,12 @@
    "week": "B",
    "day": "wed",
    "hash": "a37a31d9aa79",
-   "image": "cold/week_3/day/3.webp",
+   "image": "cold/week_2/day/3.webp",
    "paths": [
-    "cold/week_2/day/7.webp",
-    "cold/week_3/day/3.webp"
-   ]
+    "cold/week_2/day/3.webp",
+    "cold/week_4/day/3.webp"
+   ],
+   "previousImage": "cold/week_3/day/3.webp"
   },
   {
    "condition": "cold",
@@ -1155,11 +1237,12 @@
    "week": "B",
    "day": "thu",
    "hash": "59f61259d350",
-   "image": "cold/week_1/day/7.webp",
+   "image": "cold/week_2/day/4.webp",
    "paths": [
-    "cold/week_1/day/7.webp",
-    "cold/week_2/day/1.webp"
-   ]
+    "cold/week_2/day/4.webp",
+    "cold/week_4/day/4.webp"
+   ],
+   "previousImage": "cold/week_1/day/7.webp"
   },
   {
    "condition": "cold",
@@ -1167,11 +1250,12 @@
    "week": "B",
    "day": "fri",
    "hash": "a373f1d83e2f",
-   "image": "cold/week_4/day/1.webp",
+   "image": "cold/week_2/day/5.webp",
    "paths": [
-    "cold/week_2/day/6.webp",
-    "cold/week_4/day/1.webp"
-   ]
+    "cold/week_2/day/5.webp",
+    "cold/week_4/day/5.webp"
+   ],
+   "previousImage": "cold/week_4/day/1.webp"
   },
   {
    "condition": "cold",
@@ -1179,11 +1263,12 @@
    "week": "B",
    "day": "sat",
    "hash": "d003110fec9f",
-   "image": "cold/week_3/day/7.webp",
+   "image": "cold/week_2/day/6.webp",
    "paths": [
-    "cold/week_3/day/7.webp",
+    "cold/week_2/day/6.webp",
     "cold/week_4/day/6.webp"
-   ]
+   ],
+   "previousImage": "cold/week_3/day/7.webp"
   },
   {
    "condition": "cold",
@@ -1191,11 +1276,12 @@
    "week": "B",
    "day": "sun",
    "hash": "3fd7aa0aae2e",
-   "image": "cold/week_4/day/2.webp",
+   "image": "cold/week_2/day/7.webp",
    "paths": [
-    "cold/week_1/day/3.webp",
-    "cold/week_4/day/2.webp"
-   ]
+    "cold/week_2/day/7.webp",
+    "cold/week_4/day/7.webp"
+   ],
+   "previousImage": "cold/week_4/day/2.webp"
   },
   {
    "condition": "cold",
@@ -1203,13 +1289,14 @@
    "week": "A",
    "day": "mon",
    "hash": "420d1bd07555",
-   "image": "cold/week_1/dusk/7.webp",
+   "image": "cold/week_1/dusk/1.webp",
    "paths": [
-    "cold/week_1/dusk/7.webp",
-    "cold/week_2/dusk/4.webp",
-    "cold/week_3/dusk/7.webp",
-    "cold/week_4/dusk/3.webp"
-   ]
+    "cold/week_1/dusk/1.webp",
+    "cold/week_2/dusk/1.webp",
+    "cold/week_3/dusk/1.webp",
+    "cold/week_4/dusk/1.webp"
+   ],
+   "previousImage": "cold/week_1/dusk/7.webp"
   },
   {
    "condition": "cold",
@@ -1217,13 +1304,14 @@
    "week": "A",
    "day": "tue",
    "hash": "55da2af2c2bd",
-   "image": "cold/week_1/dusk/3.webp",
+   "image": "cold/week_1/dusk/2.webp",
    "paths": [
-    "cold/week_1/dusk/3.webp",
-    "cold/week_2/dusk/6.webp",
-    "cold/week_3/dusk/3.webp",
-    "cold/week_4/dusk/6.webp"
-   ]
+    "cold/week_1/dusk/2.webp",
+    "cold/week_2/dusk/2.webp",
+    "cold/week_3/dusk/2.webp",
+    "cold/week_4/dusk/2.webp"
+   ],
+   "previousImage": "cold/week_1/dusk/3.webp"
   },
   {
    "condition": "cold",
@@ -1231,13 +1319,14 @@
    "week": "A",
    "day": "wed",
    "hash": "50eb6a4aa792",
-   "image": "cold/week_2/dusk/3.webp",
+   "image": "cold/week_1/dusk/3.webp",
    "paths": [
-    "cold/week_1/dusk/5.webp",
+    "cold/week_1/dusk/3.webp",
     "cold/week_2/dusk/3.webp",
-    "cold/week_3/dusk/4.webp",
-    "cold/week_4/dusk/4.webp"
-   ]
+    "cold/week_3/dusk/3.webp",
+    "cold/week_4/dusk/3.webp"
+   ],
+   "previousImage": "cold/week_2/dusk/3.webp"
   },
   {
    "condition": "cold",
@@ -1245,13 +1334,14 @@
    "week": "A",
    "day": "thu",
    "hash": "163ee2f2d1fe",
-   "image": "cold/week_2/dusk/1.webp",
+   "image": "cold/week_1/dusk/4.webp",
    "paths": [
-    "cold/week_1/dusk/1.webp",
-    "cold/week_2/dusk/1.webp",
-    "cold/week_3/dusk/1.webp",
-    "cold/week_4/dusk/1.webp"
-   ]
+    "cold/week_1/dusk/4.webp",
+    "cold/week_2/dusk/4.webp",
+    "cold/week_3/dusk/4.webp",
+    "cold/week_4/dusk/4.webp"
+   ],
+   "previousImage": "cold/week_2/dusk/1.webp"
   },
   {
    "condition": "cold",
@@ -1259,13 +1349,14 @@
    "week": "A",
    "day": "fri",
    "hash": "917c4c0a6fac",
-   "image": "cold/week_2/dusk/5.webp",
+   "image": "cold/week_1/dusk/5.webp",
    "paths": [
-    "cold/week_1/dusk/6.webp",
+    "cold/week_1/dusk/5.webp",
     "cold/week_2/dusk/5.webp",
-    "cold/week_3/dusk/6.webp",
+    "cold/week_3/dusk/5.webp",
     "cold/week_4/dusk/5.webp"
-   ]
+   ],
+   "previousImage": "cold/week_2/dusk/5.webp"
   },
   {
    "condition": "cold",
@@ -1273,13 +1364,14 @@
    "week": "A",
    "day": "sat",
    "hash": "39e28d40ecf1",
-   "image": "cold/week_4/dusk/2.webp",
+   "image": "cold/week_1/dusk/6.webp",
    "paths": [
-    "cold/week_1/dusk/4.webp",
-    "cold/week_2/dusk/2.webp",
-    "cold/week_3/dusk/5.webp",
-    "cold/week_4/dusk/2.webp"
-   ]
+    "cold/week_1/dusk/6.webp",
+    "cold/week_2/dusk/6.webp",
+    "cold/week_3/dusk/6.webp",
+    "cold/week_4/dusk/6.webp"
+   ],
+   "previousImage": "cold/week_4/dusk/2.webp"
   },
   {
    "condition": "cold",
@@ -1287,13 +1379,14 @@
    "week": "A",
    "day": "sun",
    "hash": "6ab73d31bad6",
-   "image": "cold/week_1/dusk/2.webp",
+   "image": "cold/week_1/dusk/7.webp",
    "paths": [
-    "cold/week_1/dusk/2.webp",
+    "cold/week_1/dusk/7.webp",
     "cold/week_2/dusk/7.webp",
-    "cold/week_3/dusk/2.webp",
+    "cold/week_3/dusk/7.webp",
     "cold/week_4/dusk/7.webp"
-   ]
+   ],
+   "previousImage": "cold/week_1/dusk/2.webp"
   },
   {
    "condition": "cold",
@@ -1301,13 +1394,14 @@
    "week": "A",
    "day": "mon",
    "hash": "a77b4dca45ae",
-   "image": "cold/week_1/night/6.webp",
+   "image": "cold/week_1/night/1.webp",
    "paths": [
-    "cold/week_1/night/6.webp",
-    "cold/week_2/night/6.webp",
-    "cold/week_3/night/6.webp",
-    "cold/week_4/night/6.webp"
-   ]
+    "cold/week_1/night/1.webp",
+    "cold/week_2/night/1.webp",
+    "cold/week_3/night/1.webp",
+    "cold/week_4/night/1.webp"
+   ],
+   "previousImage": "cold/week_1/night/6.webp"
   },
   {
    "condition": "cold",
@@ -1318,9 +1412,9 @@
    "image": "cold/week_1/night/2.webp",
    "paths": [
     "cold/week_1/night/2.webp",
-    "cold/week_2/night/4.webp",
+    "cold/week_2/night/2.webp",
     "cold/week_3/night/2.webp",
-    "cold/week_4/night/4.webp"
+    "cold/week_4/night/2.webp"
    ]
   },
   {
@@ -1329,13 +1423,14 @@
    "week": "A",
    "day": "wed",
    "hash": "cb132360385f",
-   "image": "cold/week_2/night/2.webp",
+   "image": "cold/week_1/night/3.webp",
    "paths": [
-    "cold/week_1/night/4.webp",
-    "cold/week_2/night/2.webp",
-    "cold/week_3/night/4.webp",
-    "cold/week_4/night/2.webp"
-   ]
+    "cold/week_1/night/3.webp",
+    "cold/week_2/night/3.webp",
+    "cold/week_3/night/3.webp",
+    "cold/week_4/night/3.webp"
+   ],
+   "previousImage": "cold/week_2/night/2.webp"
   },
   {
    "condition": "cold",
@@ -1343,13 +1438,14 @@
    "week": "A",
    "day": "thu",
    "hash": "54f02eb5aac1",
-   "image": "cold/week_2/night/3.webp",
+   "image": "cold/week_1/night/4.webp",
    "paths": [
-    "cold/week_1/night/3.webp",
-    "cold/week_2/night/3.webp",
-    "cold/week_3/night/3.webp",
-    "cold/week_4/night/3.webp"
-   ]
+    "cold/week_1/night/4.webp",
+    "cold/week_2/night/4.webp",
+    "cold/week_3/night/4.webp",
+    "cold/week_4/night/4.webp"
+   ],
+   "previousImage": "cold/week_2/night/3.webp"
   },
   {
    "condition": "cold",
@@ -1357,13 +1453,14 @@
    "week": "A",
    "day": "fri",
    "hash": "fbf101482bbd",
-   "image": "cold/week_2/night/5.webp",
+   "image": "cold/week_1/night/5.webp",
    "paths": [
     "cold/week_1/night/5.webp",
     "cold/week_2/night/5.webp",
     "cold/week_3/night/5.webp",
     "cold/week_4/night/5.webp"
-   ]
+   ],
+   "previousImage": "cold/week_2/night/5.webp"
   },
   {
    "condition": "cold",
@@ -1371,13 +1468,14 @@
    "week": "A",
    "day": "sat",
    "hash": "13efc9191981",
-   "image": "cold/week_4/night/1.webp",
+   "image": "cold/week_1/night/6.webp",
    "paths": [
-    "cold/week_1/night/1.webp",
-    "cold/week_2/night/1.webp",
-    "cold/week_3/night/1.webp",
-    "cold/week_4/night/1.webp"
-   ]
+    "cold/week_1/night/6.webp",
+    "cold/week_2/night/6.webp",
+    "cold/week_3/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "previousImage": "cold/week_4/night/1.webp"
   },
   {
    "condition": "cold",
@@ -1399,13 +1497,14 @@
    "week": "A",
    "day": "mon",
    "hash": "3e60dabd7ef7",
-   "image": "cold-clear/week_2/dawn/3.webp",
+   "image": "cold-clear/week_1/dawn/1.webp",
    "paths": [
-    "cold-clear/week_1/dawn/3.webp",
-    "cold-clear/week_2/dawn/3.webp",
-    "cold-clear/week_3/dawn/3.webp",
-    "cold-clear/week_4/dawn/3.webp"
-   ]
+    "cold-clear/week_1/dawn/1.webp",
+    "cold-clear/week_2/dawn/1.webp",
+    "cold-clear/week_3/dawn/1.webp",
+    "cold-clear/week_4/dawn/1.webp"
+   ],
+   "previousImage": "cold-clear/week_2/dawn/3.webp"
   },
   {
    "condition": "cold-clear",
@@ -1413,13 +1512,14 @@
    "week": "A",
    "day": "tue",
    "hash": "898c05f233a6",
-   "image": "cold-clear/week_1/dawn/7.webp",
+   "image": "cold-clear/week_1/dawn/2.webp",
    "paths": [
-    "cold-clear/week_1/dawn/7.webp",
-    "cold-clear/week_2/dawn/1.webp",
-    "cold-clear/week_3/dawn/7.webp",
-    "cold-clear/week_4/dawn/1.webp"
-   ]
+    "cold-clear/week_1/dawn/2.webp",
+    "cold-clear/week_2/dawn/2.webp",
+    "cold-clear/week_3/dawn/2.webp",
+    "cold-clear/week_4/dawn/2.webp"
+   ],
+   "previousImage": "cold-clear/week_1/dawn/7.webp"
   },
   {
    "condition": "cold-clear",
@@ -1427,13 +1527,14 @@
    "week": "A",
    "day": "wed",
    "hash": "5a6dd26eb7db",
-   "image": "cold-clear/week_2/dawn/6.webp",
+   "image": "cold-clear/week_1/dawn/3.webp",
    "paths": [
-    "cold-clear/week_1/dawn/5.webp",
-    "cold-clear/week_2/dawn/6.webp",
-    "cold-clear/week_3/dawn/5.webp",
-    "cold-clear/week_4/dawn/6.webp"
-   ]
+    "cold-clear/week_1/dawn/3.webp",
+    "cold-clear/week_2/dawn/3.webp",
+    "cold-clear/week_3/dawn/3.webp",
+    "cold-clear/week_4/dawn/3.webp"
+   ],
+   "previousImage": "cold-clear/week_2/dawn/6.webp"
   },
   {
    "condition": "cold-clear",
@@ -1441,13 +1542,14 @@
    "week": "A",
    "day": "thu",
    "hash": "caaa1c42d70a",
-   "image": "cold-clear/week_1/dawn/2.webp",
+   "image": "cold-clear/week_1/dawn/4.webp",
    "paths": [
-    "cold-clear/week_1/dawn/2.webp",
-    "cold-clear/week_2/dawn/5.webp",
-    "cold-clear/week_3/dawn/2.webp",
-    "cold-clear/week_4/dawn/5.webp"
-   ]
+    "cold-clear/week_1/dawn/4.webp",
+    "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_3/dawn/4.webp",
+    "cold-clear/week_4/dawn/4.webp"
+   ],
+   "previousImage": "cold-clear/week_1/dawn/2.webp"
   },
   {
    "condition": "cold-clear",
@@ -1455,13 +1557,14 @@
    "week": "A",
    "day": "fri",
    "hash": "4040cfcfc732",
-   "image": "cold-clear/week_2/dawn/7.webp",
+   "image": "cold-clear/week_1/dawn/5.webp",
    "paths": [
-    "cold-clear/week_1/dawn/4.webp",
-    "cold-clear/week_2/dawn/7.webp",
-    "cold-clear/week_3/dawn/4.webp",
-    "cold-clear/week_4/dawn/7.webp"
-   ]
+    "cold-clear/week_1/dawn/5.webp",
+    "cold-clear/week_2/dawn/5.webp",
+    "cold-clear/week_3/dawn/5.webp",
+    "cold-clear/week_4/dawn/5.webp"
+   ],
+   "previousImage": "cold-clear/week_2/dawn/7.webp"
   },
   {
    "condition": "cold-clear",
@@ -1469,13 +1572,14 @@
    "week": "A",
    "day": "sat",
    "hash": "28129477b706",
-   "image": "cold-clear/week_2/dawn/2.webp",
+   "image": "cold-clear/week_1/dawn/6.webp",
    "paths": [
-    "cold-clear/week_1/dawn/1.webp",
-    "cold-clear/week_2/dawn/2.webp",
-    "cold-clear/week_3/dawn/1.webp",
-    "cold-clear/week_4/dawn/2.webp"
-   ]
+    "cold-clear/week_1/dawn/6.webp",
+    "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_3/dawn/6.webp",
+    "cold-clear/week_4/dawn/6.webp"
+   ],
+   "previousImage": "cold-clear/week_2/dawn/2.webp"
   },
   {
    "condition": "cold-clear",
@@ -1483,13 +1587,14 @@
    "week": "A",
    "day": "sun",
    "hash": "6ca4d027da38",
-   "image": "cold-clear/week_2/dawn/4.webp",
+   "image": "cold-clear/week_1/dawn/7.webp",
    "paths": [
-    "cold-clear/week_1/dawn/6.webp",
-    "cold-clear/week_2/dawn/4.webp",
-    "cold-clear/week_3/dawn/6.webp",
-    "cold-clear/week_4/dawn/4.webp"
-   ]
+    "cold-clear/week_1/dawn/7.webp",
+    "cold-clear/week_2/dawn/7.webp",
+    "cold-clear/week_3/dawn/7.webp",
+    "cold-clear/week_4/dawn/7.webp"
+   ],
+   "previousImage": "cold-clear/week_2/dawn/4.webp"
   },
   {
    "condition": "cold-clear",
@@ -1497,13 +1602,14 @@
    "week": "A",
    "day": "mon",
    "hash": "45b1ac83db20",
-   "image": "cold-clear/week_2/day/1.webp",
+   "image": "cold-clear/week_1/day/1.webp",
    "paths": [
-    "cold-clear/week_1/day/3.webp",
+    "cold-clear/week_1/day/1.webp",
     "cold-clear/week_2/day/1.webp",
-    "cold-clear/week_3/day/6.webp",
-    "cold-clear/week_4/day/5.webp"
-   ]
+    "cold-clear/week_3/day/1.webp",
+    "cold-clear/week_4/day/1.webp"
+   ],
+   "previousImage": "cold-clear/week_2/day/1.webp"
   },
   {
    "condition": "cold-clear",
@@ -1511,13 +1617,14 @@
    "week": "A",
    "day": "tue",
    "hash": "21c809043132",
-   "image": "cold-clear/week_1/day/1.webp",
+   "image": "cold-clear/week_1/day/2.webp",
    "paths": [
-    "cold-clear/week_1/day/1.webp",
-    "cold-clear/week_2/day/4.webp",
-    "cold-clear/week_3/day/3.webp",
+    "cold-clear/week_1/day/2.webp",
+    "cold-clear/week_2/day/2.webp",
+    "cold-clear/week_3/day/2.webp",
     "cold-clear/week_4/day/2.webp"
-   ]
+   ],
+   "previousImage": "cold-clear/week_1/day/1.webp"
   },
   {
    "condition": "cold-clear",
@@ -1525,13 +1632,14 @@
    "week": "A",
    "day": "wed",
    "hash": "042ba0a95388",
-   "image": "cold-clear/week_1/day/4.webp",
+   "image": "cold-clear/week_1/day/3.webp",
    "paths": [
-    "cold-clear/week_1/day/4.webp",
+    "cold-clear/week_1/day/3.webp",
     "cold-clear/week_2/day/3.webp",
-    "cold-clear/week_3/day/2.webp",
-    "cold-clear/week_4/day/1.webp"
-   ]
+    "cold-clear/week_3/day/3.webp",
+    "cold-clear/week_4/day/3.webp"
+   ],
+   "previousImage": "cold-clear/week_1/day/4.webp"
   },
   {
    "condition": "cold-clear",
@@ -1539,13 +1647,14 @@
    "week": "A",
    "day": "thu",
    "hash": "bbb3d8348b00",
-   "image": "cold-clear/week_3/day/5.webp",
+   "image": "cold-clear/week_1/day/4.webp",
    "paths": [
-    "cold-clear/week_1/day/6.webp",
-    "cold-clear/week_2/day/6.webp",
-    "cold-clear/week_3/day/5.webp",
-    "cold-clear/week_4/day/6.webp"
-   ]
+    "cold-clear/week_1/day/4.webp",
+    "cold-clear/week_2/day/4.webp",
+    "cold-clear/week_3/day/4.webp",
+    "cold-clear/week_4/day/4.webp"
+   ],
+   "previousImage": "cold-clear/week_3/day/5.webp"
   },
   {
    "condition": "cold-clear",
@@ -1553,13 +1662,14 @@
    "week": "A",
    "day": "fri",
    "hash": "decff597fe6c",
-   "image": "cold-clear/week_3/day/1.webp",
+   "image": "cold-clear/week_1/day/5.webp",
    "paths": [
-    "cold-clear/week_1/day/7.webp",
-    "cold-clear/week_2/day/7.webp",
-    "cold-clear/week_3/day/1.webp",
-    "cold-clear/week_4/day/7.webp"
-   ]
+    "cold-clear/week_1/day/5.webp",
+    "cold-clear/week_2/day/5.webp",
+    "cold-clear/week_3/day/5.webp",
+    "cold-clear/week_4/day/5.webp"
+   ],
+   "previousImage": "cold-clear/week_3/day/1.webp"
   },
   {
    "condition": "cold-clear",
@@ -1567,13 +1677,14 @@
    "week": "A",
    "day": "sat",
    "hash": "bbad2500c852",
-   "image": "cold-clear/week_4/day/3.webp",
+   "image": "cold-clear/week_1/day/6.webp",
    "paths": [
-    "cold-clear/week_1/day/5.webp",
-    "cold-clear/week_2/day/5.webp",
-    "cold-clear/week_3/day/7.webp",
-    "cold-clear/week_4/day/3.webp"
-   ]
+    "cold-clear/week_1/day/6.webp",
+    "cold-clear/week_2/day/6.webp",
+    "cold-clear/week_3/day/6.webp",
+    "cold-clear/week_4/day/6.webp"
+   ],
+   "previousImage": "cold-clear/week_4/day/3.webp"
   },
   {
    "condition": "cold-clear",
@@ -1581,13 +1692,14 @@
    "week": "A",
    "day": "sun",
    "hash": "32dec9fbdcaa",
-   "image": "cold-clear/week_2/day/2.webp",
+   "image": "cold-clear/week_1/day/7.webp",
    "paths": [
-    "cold-clear/week_1/day/2.webp",
-    "cold-clear/week_2/day/2.webp",
-    "cold-clear/week_3/day/4.webp",
-    "cold-clear/week_4/day/4.webp"
-   ]
+    "cold-clear/week_1/day/7.webp",
+    "cold-clear/week_2/day/7.webp",
+    "cold-clear/week_3/day/7.webp",
+    "cold-clear/week_4/day/7.webp"
+   ],
+   "previousImage": "cold-clear/week_2/day/2.webp"
   },
   {
    "condition": "cold-clear",
@@ -1595,13 +1707,14 @@
    "week": "A",
    "day": "mon",
    "hash": "fbdf528f41c8",
-   "image": "cold-clear/week_1/dusk/4.webp",
+   "image": "cold-clear/week_1/dusk/1.webp",
    "paths": [
-    "cold-clear/week_1/dusk/4.webp",
-    "cold-clear/week_2/dusk/7.webp",
-    "cold-clear/week_3/dusk/4.webp",
-    "cold-clear/week_4/dusk/7.webp"
-   ]
+    "cold-clear/week_1/dusk/1.webp",
+    "cold-clear/week_2/dusk/1.webp",
+    "cold-clear/week_3/dusk/1.webp",
+    "cold-clear/week_4/dusk/1.webp"
+   ],
+   "previousImage": "cold-clear/week_1/dusk/4.webp"
   },
   {
    "condition": "cold-clear",
@@ -1612,9 +1725,9 @@
    "image": "cold-clear/week_1/dusk/2.webp",
    "paths": [
     "cold-clear/week_1/dusk/2.webp",
-    "cold-clear/week_2/dusk/1.webp",
+    "cold-clear/week_2/dusk/2.webp",
     "cold-clear/week_3/dusk/2.webp",
-    "cold-clear/week_4/dusk/1.webp"
+    "cold-clear/week_4/dusk/2.webp"
    ]
   },
   {
@@ -1623,13 +1736,14 @@
    "week": "A",
    "day": "wed",
    "hash": "0b4330abc214",
-   "image": "cold-clear/week_2/dusk/3.webp",
+   "image": "cold-clear/week_1/dusk/3.webp",
    "paths": [
-    "cold-clear/week_1/dusk/1.webp",
+    "cold-clear/week_1/dusk/3.webp",
     "cold-clear/week_2/dusk/3.webp",
-    "cold-clear/week_3/dusk/1.webp",
+    "cold-clear/week_3/dusk/3.webp",
     "cold-clear/week_4/dusk/3.webp"
-   ]
+   ],
+   "previousImage": "cold-clear/week_2/dusk/3.webp"
   },
   {
    "condition": "cold-clear",
@@ -1637,13 +1751,14 @@
    "week": "A",
    "day": "thu",
    "hash": "ff19d8654ec3",
-   "image": "cold-clear/week_2/dusk/6.webp",
+   "image": "cold-clear/week_1/dusk/4.webp",
    "paths": [
-    "cold-clear/week_1/dusk/6.webp",
-    "cold-clear/week_2/dusk/6.webp",
-    "cold-clear/week_3/dusk/6.webp",
-    "cold-clear/week_4/dusk/6.webp"
-   ]
+    "cold-clear/week_1/dusk/4.webp",
+    "cold-clear/week_2/dusk/4.webp",
+    "cold-clear/week_3/dusk/4.webp",
+    "cold-clear/week_4/dusk/4.webp"
+   ],
+   "previousImage": "cold-clear/week_2/dusk/6.webp"
   },
   {
    "condition": "cold-clear",
@@ -1654,9 +1769,9 @@
    "image": "cold-clear/week_1/dusk/5.webp",
    "paths": [
     "cold-clear/week_1/dusk/5.webp",
-    "cold-clear/week_2/dusk/2.webp",
+    "cold-clear/week_2/dusk/5.webp",
     "cold-clear/week_3/dusk/5.webp",
-    "cold-clear/week_4/dusk/2.webp"
+    "cold-clear/week_4/dusk/5.webp"
    ]
   },
   {
@@ -1665,13 +1780,14 @@
    "week": "A",
    "day": "sat",
    "hash": "948736af4859",
-   "image": "cold-clear/week_1/dusk/7.webp",
+   "image": "cold-clear/week_1/dusk/6.webp",
    "paths": [
-    "cold-clear/week_1/dusk/7.webp",
-    "cold-clear/week_2/dusk/4.webp",
-    "cold-clear/week_3/dusk/7.webp",
-    "cold-clear/week_4/dusk/4.webp"
-   ]
+    "cold-clear/week_1/dusk/6.webp",
+    "cold-clear/week_2/dusk/6.webp",
+    "cold-clear/week_3/dusk/6.webp",
+    "cold-clear/week_4/dusk/6.webp"
+   ],
+   "previousImage": "cold-clear/week_1/dusk/7.webp"
   },
   {
    "condition": "cold-clear",
@@ -1679,13 +1795,14 @@
    "week": "A",
    "day": "sun",
    "hash": "1f74ef9146fb",
-   "image": "cold-clear/week_2/dusk/5.webp",
+   "image": "cold-clear/week_1/dusk/7.webp",
    "paths": [
-    "cold-clear/week_1/dusk/3.webp",
-    "cold-clear/week_2/dusk/5.webp",
-    "cold-clear/week_3/dusk/3.webp",
-    "cold-clear/week_4/dusk/5.webp"
-   ]
+    "cold-clear/week_1/dusk/7.webp",
+    "cold-clear/week_2/dusk/7.webp",
+    "cold-clear/week_3/dusk/7.webp",
+    "cold-clear/week_4/dusk/7.webp"
+   ],
+   "previousImage": "cold-clear/week_2/dusk/5.webp"
   },
   {
    "condition": "cold-clear",
@@ -1693,13 +1810,14 @@
    "week": "A",
    "day": "mon",
    "hash": "112364f9e477",
-   "image": "cold-clear/week_2/night/3.webp",
+   "image": "cold-clear/week_1/night/1.webp",
    "paths": [
     "cold-clear/week_1/night/1.webp",
-    "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_2/night/1.webp",
     "cold-clear/week_3/night/1.webp",
-    "cold-clear/week_4/night/3.webp"
-   ]
+    "cold-clear/week_4/night/1.webp"
+   ],
+   "previousImage": "cold-clear/week_2/night/3.webp"
   },
   {
    "condition": "cold-clear",
@@ -1707,13 +1825,14 @@
    "week": "A",
    "day": "tue",
    "hash": "da90853b2ccb",
-   "image": "cold-clear/week_2/night/2.webp",
+   "image": "cold-clear/week_1/night/2.webp",
    "paths": [
-    "cold-clear/week_1/night/5.webp",
+    "cold-clear/week_1/night/2.webp",
     "cold-clear/week_2/night/2.webp",
-    "cold-clear/week_3/night/5.webp",
+    "cold-clear/week_3/night/2.webp",
     "cold-clear/week_4/night/2.webp"
-   ]
+   ],
+   "previousImage": "cold-clear/week_2/night/2.webp"
   },
   {
    "condition": "cold-clear",
@@ -1721,13 +1840,14 @@
    "week": "A",
    "day": "wed",
    "hash": "d298c8c1f224",
-   "image": "cold-clear/week_2/night/4.webp",
+   "image": "cold-clear/week_1/night/3.webp",
    "paths": [
-    "cold-clear/week_1/night/2.webp",
-    "cold-clear/week_2/night/4.webp",
-    "cold-clear/week_3/night/2.webp",
-    "cold-clear/week_4/night/4.webp"
-   ]
+    "cold-clear/week_1/night/3.webp",
+    "cold-clear/week_2/night/3.webp",
+    "cold-clear/week_3/night/3.webp",
+    "cold-clear/week_4/night/3.webp"
+   ],
+   "previousImage": "cold-clear/week_2/night/4.webp"
   },
   {
    "condition": "cold-clear",
@@ -1735,13 +1855,14 @@
    "week": "A",
    "day": "thu",
    "hash": "05aeb3b79581",
-   "image": "cold-clear/week_1/night/3.webp",
+   "image": "cold-clear/week_1/night/4.webp",
    "paths": [
-    "cold-clear/week_1/night/3.webp",
-    "cold-clear/week_2/night/1.webp",
-    "cold-clear/week_3/night/3.webp",
-    "cold-clear/week_4/night/1.webp"
-   ]
+    "cold-clear/week_1/night/4.webp",
+    "cold-clear/week_2/night/4.webp",
+    "cold-clear/week_3/night/4.webp",
+    "cold-clear/week_4/night/4.webp"
+   ],
+   "previousImage": "cold-clear/week_1/night/3.webp"
   },
   {
    "condition": "cold-clear",
@@ -1749,13 +1870,14 @@
    "week": "A",
    "day": "fri",
    "hash": "f453a678f470",
-   "image": "cold-clear/week_2/night/6.webp",
+   "image": "cold-clear/week_1/night/5.webp",
    "paths": [
-    "cold-clear/week_1/night/6.webp",
-    "cold-clear/week_2/night/6.webp",
-    "cold-clear/week_3/night/6.webp",
-    "cold-clear/week_4/night/6.webp"
-   ]
+    "cold-clear/week_1/night/5.webp",
+    "cold-clear/week_2/night/5.webp",
+    "cold-clear/week_3/night/5.webp",
+    "cold-clear/week_4/night/5.webp"
+   ],
+   "previousImage": "cold-clear/week_2/night/6.webp"
   },
   {
    "condition": "cold-clear",
@@ -1763,13 +1885,14 @@
    "week": "A",
    "day": "sat",
    "hash": "8fd1944f303b",
-   "image": "cold-clear/week_1/night/7.webp",
+   "image": "cold-clear/week_1/night/6.webp",
    "paths": [
-    "cold-clear/week_1/night/7.webp",
-    "cold-clear/week_2/night/5.webp",
-    "cold-clear/week_3/night/7.webp",
-    "cold-clear/week_4/night/5.webp"
-   ]
+    "cold-clear/week_1/night/6.webp",
+    "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_3/night/6.webp",
+    "cold-clear/week_4/night/6.webp"
+   ],
+   "previousImage": "cold-clear/week_1/night/7.webp"
   },
   {
    "condition": "cold-clear",
@@ -1777,13 +1900,14 @@
    "week": "A",
    "day": "sun",
    "hash": "da60a92cafd2",
-   "image": "cold-clear/week_1/night/4.webp",
+   "image": "cold-clear/week_1/night/7.webp",
    "paths": [
-    "cold-clear/week_1/night/4.webp",
+    "cold-clear/week_1/night/7.webp",
     "cold-clear/week_2/night/7.webp",
-    "cold-clear/week_3/night/4.webp",
+    "cold-clear/week_3/night/7.webp",
     "cold-clear/week_4/night/7.webp"
-   ]
+   ],
+   "previousImage": "cold-clear/week_1/night/4.webp"
   },
   {
    "condition": "fog",
@@ -1791,13 +1915,14 @@
    "week": "A",
    "day": "mon",
    "hash": "23b1b4b2af6d",
-   "image": "fog/week_1/dawn/5.webp",
+   "image": "fog/week_1/dawn/1.webp",
    "paths": [
-    "fog/week_1/dawn/5.webp",
-    "fog/week_2/dawn/2.webp",
-    "fog/week_3/dawn/5.webp",
-    "fog/week_4/dawn/2.webp"
-   ]
+    "fog/week_1/dawn/1.webp",
+    "fog/week_2/dawn/1.webp",
+    "fog/week_3/dawn/1.webp",
+    "fog/week_4/dawn/1.webp"
+   ],
+   "previousImage": "fog/week_1/dawn/5.webp"
   },
   {
    "condition": "fog",
@@ -1805,13 +1930,14 @@
    "week": "A",
    "day": "tue",
    "hash": "591629dceb51",
-   "image": "fog/week_1/dawn/1.webp",
+   "image": "fog/week_1/dawn/2.webp",
    "paths": [
-    "fog/week_1/dawn/1.webp",
-    "fog/week_2/dawn/5.webp",
-    "fog/week_3/dawn/1.webp",
-    "fog/week_4/dawn/5.webp"
-   ]
+    "fog/week_1/dawn/2.webp",
+    "fog/week_2/dawn/2.webp",
+    "fog/week_3/dawn/2.webp",
+    "fog/week_4/dawn/2.webp"
+   ],
+   "previousImage": "fog/week_1/dawn/1.webp"
   },
   {
    "condition": "fog",
@@ -1819,13 +1945,14 @@
    "week": "A",
    "day": "wed",
    "hash": "deaadb7968fe",
-   "image": "fog/week_1/dawn/4.webp",
+   "image": "fog/week_1/dawn/3.webp",
    "paths": [
-    "fog/week_1/dawn/4.webp",
-    "fog/week_2/dawn/7.webp",
-    "fog/week_3/dawn/4.webp",
-    "fog/week_4/dawn/7.webp"
-   ]
+    "fog/week_1/dawn/3.webp",
+    "fog/week_2/dawn/3.webp",
+    "fog/week_3/dawn/3.webp",
+    "fog/week_4/dawn/3.webp"
+   ],
+   "previousImage": "fog/week_1/dawn/4.webp"
   },
   {
    "condition": "fog",
@@ -1833,13 +1960,14 @@
    "week": "A",
    "day": "thu",
    "hash": "13fa1ba0ce60",
-   "image": "fog/week_2/dawn/1.webp",
+   "image": "fog/week_1/dawn/4.webp",
    "paths": [
-    "fog/week_1/dawn/2.webp",
-    "fog/week_2/dawn/1.webp",
-    "fog/week_3/dawn/2.webp",
-    "fog/week_4/dawn/1.webp"
-   ]
+    "fog/week_1/dawn/4.webp",
+    "fog/week_2/dawn/4.webp",
+    "fog/week_3/dawn/4.webp",
+    "fog/week_4/dawn/4.webp"
+   ],
+   "previousImage": "fog/week_2/dawn/1.webp"
   },
   {
    "condition": "fog",
@@ -1847,13 +1975,14 @@
    "week": "A",
    "day": "fri",
    "hash": "d903941f0dd8",
-   "image": "fog/week_1/dawn/3.webp",
+   "image": "fog/week_1/dawn/5.webp",
    "paths": [
-    "fog/week_1/dawn/3.webp",
-    "fog/week_2/dawn/6.webp",
-    "fog/week_3/dawn/3.webp",
-    "fog/week_4/dawn/6.webp"
-   ]
+    "fog/week_1/dawn/5.webp",
+    "fog/week_2/dawn/5.webp",
+    "fog/week_3/dawn/5.webp",
+    "fog/week_4/dawn/5.webp"
+   ],
+   "previousImage": "fog/week_1/dawn/3.webp"
   },
   {
    "condition": "fog",
@@ -1861,13 +1990,14 @@
    "week": "A",
    "day": "sat",
    "hash": "48e51baff8be",
-   "image": "fog/week_1/dawn/7.webp",
+   "image": "fog/week_1/dawn/6.webp",
    "paths": [
-    "fog/week_1/dawn/7.webp",
-    "fog/week_2/dawn/4.webp",
-    "fog/week_3/dawn/7.webp",
-    "fog/week_4/dawn/4.webp"
-   ]
+    "fog/week_1/dawn/6.webp",
+    "fog/week_2/dawn/6.webp",
+    "fog/week_3/dawn/6.webp",
+    "fog/week_4/dawn/6.webp"
+   ],
+   "previousImage": "fog/week_1/dawn/7.webp"
   },
   {
    "condition": "fog",
@@ -1875,13 +2005,14 @@
    "week": "A",
    "day": "sun",
    "hash": "8ea1dc6bec6a",
-   "image": "fog/week_2/dawn/3.webp",
+   "image": "fog/week_1/dawn/7.webp",
    "paths": [
-    "fog/week_1/dawn/6.webp",
-    "fog/week_2/dawn/3.webp",
-    "fog/week_3/dawn/6.webp",
-    "fog/week_4/dawn/3.webp"
-   ]
+    "fog/week_1/dawn/7.webp",
+    "fog/week_2/dawn/7.webp",
+    "fog/week_3/dawn/7.webp",
+    "fog/week_4/dawn/7.webp"
+   ],
+   "previousImage": "fog/week_2/dawn/3.webp"
   },
   {
    "condition": "fog",
@@ -1889,13 +2020,14 @@
    "week": "A",
    "day": "mon",
    "hash": "2d71f451d0df",
-   "image": "fog/week_1/day/3.webp",
+   "image": "fog/week_1/day/1.webp",
    "paths": [
-    "fog/week_1/day/3.webp",
-    "fog/week_2/day/2.webp",
+    "fog/week_1/day/1.webp",
+    "fog/week_2/day/1.webp",
     "fog/week_3/day/1.webp",
-    "fog/week_4/day/2.webp"
-   ]
+    "fog/week_4/day/1.webp"
+   ],
+   "previousImage": "fog/week_1/day/3.webp"
   },
   {
    "condition": "fog",
@@ -1903,13 +2035,14 @@
    "week": "A",
    "day": "tue",
    "hash": "84811d2b9372",
-   "image": "fog/week_3/day/2.webp",
+   "image": "fog/week_1/day/2.webp",
    "paths": [
-    "fog/week_1/day/6.webp",
-    "fog/week_2/day/5.webp",
+    "fog/week_1/day/2.webp",
+    "fog/week_2/day/2.webp",
     "fog/week_3/day/2.webp",
-    "fog/week_4/day/5.webp"
-   ]
+    "fog/week_4/day/2.webp"
+   ],
+   "previousImage": "fog/week_3/day/2.webp"
   },
   {
    "condition": "fog",
@@ -1917,13 +2050,14 @@
    "week": "A",
    "day": "wed",
    "hash": "541778f8c617",
-   "image": "fog/week_4/day/1.webp",
+   "image": "fog/week_1/day/3.webp",
    "paths": [
-    "fog/week_1/day/4.webp",
-    "fog/week_2/day/4.webp",
-    "fog/week_3/day/6.webp",
-    "fog/week_4/day/1.webp"
-   ]
+    "fog/week_1/day/3.webp",
+    "fog/week_2/day/3.webp",
+    "fog/week_3/day/3.webp",
+    "fog/week_4/day/3.webp"
+   ],
+   "previousImage": "fog/week_4/day/1.webp"
   },
   {
    "condition": "fog",
@@ -1931,13 +2065,14 @@
    "week": "A",
    "day": "thu",
    "hash": "62480343c313",
-   "image": "fog/week_2/day/6.webp",
+   "image": "fog/week_1/day/4.webp",
    "paths": [
-    "fog/week_1/day/5.webp",
-    "fog/week_2/day/6.webp",
+    "fog/week_1/day/4.webp",
+    "fog/week_2/day/4.webp",
     "fog/week_3/day/4.webp",
     "fog/week_4/day/4.webp"
-   ]
+   ],
+   "previousImage": "fog/week_2/day/6.webp"
   },
   {
    "condition": "fog",
@@ -1945,13 +2080,14 @@
    "week": "A",
    "day": "fri",
    "hash": "dd6b06e34d3e",
-   "image": "fog/week_3/day/7.webp",
+   "image": "fog/week_1/day/5.webp",
    "paths": [
-    "fog/week_1/day/7.webp",
-    "fog/week_2/day/7.webp",
-    "fog/week_3/day/7.webp",
-    "fog/week_4/day/6.webp"
-   ]
+    "fog/week_1/day/5.webp",
+    "fog/week_2/day/5.webp",
+    "fog/week_3/day/5.webp",
+    "fog/week_4/day/5.webp"
+   ],
+   "previousImage": "fog/week_3/day/7.webp"
   },
   {
    "condition": "fog",
@@ -1959,13 +2095,14 @@
    "week": "A",
    "day": "sat",
    "hash": "36972a49b9e6",
-   "image": "fog/week_2/day/1.webp",
+   "image": "fog/week_1/day/6.webp",
    "paths": [
-    "fog/week_1/day/2.webp",
-    "fog/week_2/day/1.webp",
-    "fog/week_3/day/3.webp",
-    "fog/week_4/day/3.webp"
-   ]
+    "fog/week_1/day/6.webp",
+    "fog/week_2/day/6.webp",
+    "fog/week_3/day/6.webp",
+    "fog/week_4/day/6.webp"
+   ],
+   "previousImage": "fog/week_2/day/1.webp"
   },
   {
    "condition": "fog",
@@ -1973,13 +2110,14 @@
    "week": "A",
    "day": "sun",
    "hash": "f1d8b3873dff",
-   "image": "fog/week_1/day/1.webp",
+   "image": "fog/week_1/day/7.webp",
    "paths": [
-    "fog/week_1/day/1.webp",
-    "fog/week_2/day/3.webp",
-    "fog/week_3/day/5.webp",
+    "fog/week_1/day/7.webp",
+    "fog/week_2/day/7.webp",
+    "fog/week_3/day/7.webp",
     "fog/week_4/day/7.webp"
-   ]
+   ],
+   "previousImage": "fog/week_1/day/1.webp"
   },
   {
    "condition": "fog",
@@ -1990,9 +2128,9 @@
    "image": "fog/week_1/dusk/1.webp",
    "paths": [
     "fog/week_1/dusk/1.webp",
-    "fog/week_2/dusk/4.webp",
+    "fog/week_2/dusk/1.webp",
     "fog/week_3/dusk/1.webp",
-    "fog/week_4/dusk/4.webp"
+    "fog/week_4/dusk/1.webp"
    ]
   },
   {
@@ -2001,13 +2139,14 @@
    "week": "A",
    "day": "tue",
    "hash": "2ac9aa1f42fc",
-   "image": "fog/week_1/dusk/5.webp",
+   "image": "fog/week_1/dusk/2.webp",
    "paths": [
-    "fog/week_1/dusk/5.webp",
+    "fog/week_1/dusk/2.webp",
     "fog/week_2/dusk/2.webp",
-    "fog/week_3/dusk/5.webp",
+    "fog/week_3/dusk/2.webp",
     "fog/week_4/dusk/2.webp"
-   ]
+   ],
+   "previousImage": "fog/week_1/dusk/5.webp"
   },
   {
    "condition": "fog",
@@ -2015,13 +2154,14 @@
    "week": "A",
    "day": "wed",
    "hash": "5cd228859e14",
-   "image": "fog/week_2/dusk/3.webp",
+   "image": "fog/week_1/dusk/3.webp",
    "paths": [
-    "fog/week_1/dusk/2.webp",
+    "fog/week_1/dusk/3.webp",
     "fog/week_2/dusk/3.webp",
-    "fog/week_3/dusk/2.webp",
+    "fog/week_3/dusk/3.webp",
     "fog/week_4/dusk/3.webp"
-   ]
+   ],
+   "previousImage": "fog/week_2/dusk/3.webp"
   },
   {
    "condition": "fog",
@@ -2032,9 +2172,9 @@
    "image": "fog/week_1/dusk/4.webp",
    "paths": [
     "fog/week_1/dusk/4.webp",
-    "fog/week_2/dusk/5.webp",
+    "fog/week_2/dusk/4.webp",
     "fog/week_3/dusk/4.webp",
-    "fog/week_4/dusk/5.webp"
+    "fog/week_4/dusk/4.webp"
    ]
   },
   {
@@ -2043,13 +2183,14 @@
    "week": "A",
    "day": "fri",
    "hash": "b5837596744c",
-   "image": "fog/week_2/dusk/1.webp",
+   "image": "fog/week_1/dusk/5.webp",
    "paths": [
-    "fog/week_1/dusk/7.webp",
-    "fog/week_2/dusk/1.webp",
-    "fog/week_3/dusk/7.webp",
-    "fog/week_4/dusk/1.webp"
-   ]
+    "fog/week_1/dusk/5.webp",
+    "fog/week_2/dusk/5.webp",
+    "fog/week_3/dusk/5.webp",
+    "fog/week_4/dusk/5.webp"
+   ],
+   "previousImage": "fog/week_2/dusk/1.webp"
   },
   {
    "condition": "fog",
@@ -2057,13 +2198,14 @@
    "week": "A",
    "day": "sat",
    "hash": "838bd4824615",
-   "image": "fog/week_2/dusk/7.webp",
+   "image": "fog/week_1/dusk/6.webp",
    "paths": [
-    "fog/week_1/dusk/3.webp",
-    "fog/week_2/dusk/7.webp",
-    "fog/week_3/dusk/3.webp",
-    "fog/week_4/dusk/7.webp"
-   ]
+    "fog/week_1/dusk/6.webp",
+    "fog/week_2/dusk/6.webp",
+    "fog/week_3/dusk/6.webp",
+    "fog/week_4/dusk/6.webp"
+   ],
+   "previousImage": "fog/week_2/dusk/7.webp"
   },
   {
    "condition": "fog",
@@ -2071,13 +2213,14 @@
    "week": "A",
    "day": "sun",
    "hash": "b64f87c2b2bc",
-   "image": "fog/week_1/dusk/6.webp",
+   "image": "fog/week_1/dusk/7.webp",
    "paths": [
-    "fog/week_1/dusk/6.webp",
-    "fog/week_2/dusk/6.webp",
-    "fog/week_3/dusk/6.webp",
-    "fog/week_4/dusk/6.webp"
-   ]
+    "fog/week_1/dusk/7.webp",
+    "fog/week_2/dusk/7.webp",
+    "fog/week_3/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "previousImage": "fog/week_1/dusk/6.webp"
   },
   {
    "condition": "fog",
@@ -2085,13 +2228,14 @@
    "week": "A",
    "day": "mon",
    "hash": "b7cdf515c96b",
-   "image": "fog/week_1/night/3.webp",
+   "image": "fog/week_1/night/1.webp",
    "paths": [
-    "fog/week_1/night/3.webp",
-    "fog/week_2/night/6.webp",
-    "fog/week_3/night/3.webp",
-    "fog/week_4/night/6.webp"
-   ]
+    "fog/week_1/night/1.webp",
+    "fog/week_2/night/1.webp",
+    "fog/week_3/night/1.webp",
+    "fog/week_4/night/1.webp"
+   ],
+   "previousImage": "fog/week_1/night/3.webp"
   },
   {
    "condition": "fog",
@@ -2099,13 +2243,14 @@
    "week": "A",
    "day": "tue",
    "hash": "05b3727f7c16",
-   "image": "fog/week_1/night/5.webp",
+   "image": "fog/week_1/night/2.webp",
    "paths": [
-    "fog/week_1/night/5.webp",
-    "fog/week_2/night/1.webp",
-    "fog/week_3/night/5.webp",
-    "fog/week_4/night/1.webp"
-   ]
+    "fog/week_1/night/2.webp",
+    "fog/week_2/night/2.webp",
+    "fog/week_3/night/2.webp",
+    "fog/week_4/night/2.webp"
+   ],
+   "previousImage": "fog/week_1/night/5.webp"
   },
   {
    "condition": "fog",
@@ -2113,13 +2258,14 @@
    "week": "A",
    "day": "wed",
    "hash": "5a72ad3aac4b",
-   "image": "fog/week_1/night/1.webp",
+   "image": "fog/week_1/night/3.webp",
    "paths": [
-    "fog/week_1/night/1.webp",
-    "fog/week_2/night/5.webp",
-    "fog/week_3/night/1.webp",
-    "fog/week_4/night/5.webp"
-   ]
+    "fog/week_1/night/3.webp",
+    "fog/week_2/night/3.webp",
+    "fog/week_3/night/3.webp",
+    "fog/week_4/night/3.webp"
+   ],
+   "previousImage": "fog/week_1/night/1.webp"
   },
   {
    "condition": "fog",
@@ -2127,13 +2273,14 @@
    "week": "A",
    "day": "thu",
    "hash": "c2a03f49e81e",
-   "image": "fog/week_1/night/7.webp",
+   "image": "fog/week_1/night/4.webp",
    "paths": [
-    "fog/week_1/night/7.webp",
-    "fog/week_2/night/7.webp",
-    "fog/week_3/night/7.webp",
-    "fog/week_4/night/7.webp"
-   ]
+    "fog/week_1/night/4.webp",
+    "fog/week_2/night/4.webp",
+    "fog/week_3/night/4.webp",
+    "fog/week_4/night/4.webp"
+   ],
+   "previousImage": "fog/week_1/night/7.webp"
   },
   {
    "condition": "fog",
@@ -2141,13 +2288,14 @@
    "week": "A",
    "day": "fri",
    "hash": "7acec82c9b6f",
-   "image": "fog/week_2/night/4.webp",
+   "image": "fog/week_1/night/5.webp",
    "paths": [
-    "fog/week_1/night/6.webp",
-    "fog/week_2/night/4.webp",
-    "fog/week_3/night/6.webp",
-    "fog/week_4/night/4.webp"
-   ]
+    "fog/week_1/night/5.webp",
+    "fog/week_2/night/5.webp",
+    "fog/week_3/night/5.webp",
+    "fog/week_4/night/5.webp"
+   ],
+   "previousImage": "fog/week_2/night/4.webp"
   },
   {
    "condition": "fog",
@@ -2155,13 +2303,14 @@
    "week": "A",
    "day": "sat",
    "hash": "39c515606f74",
-   "image": "fog/week_1/night/4.webp",
+   "image": "fog/week_1/night/6.webp",
    "paths": [
-    "fog/week_1/night/4.webp",
-    "fog/week_2/night/3.webp",
-    "fog/week_3/night/4.webp",
-    "fog/week_4/night/3.webp"
-   ]
+    "fog/week_1/night/6.webp",
+    "fog/week_2/night/6.webp",
+    "fog/week_3/night/6.webp",
+    "fog/week_4/night/6.webp"
+   ],
+   "previousImage": "fog/week_1/night/4.webp"
   },
   {
    "condition": "fog",
@@ -2169,13 +2318,14 @@
    "week": "A",
    "day": "sun",
    "hash": "0467a4574c0b",
-   "image": "fog/week_2/night/2.webp",
+   "image": "fog/week_1/night/7.webp",
    "paths": [
-    "fog/week_1/night/2.webp",
-    "fog/week_2/night/2.webp",
-    "fog/week_3/night/2.webp",
-    "fog/week_4/night/2.webp"
-   ]
+    "fog/week_1/night/7.webp",
+    "fog/week_2/night/7.webp",
+    "fog/week_3/night/7.webp",
+    "fog/week_4/night/7.webp"
+   ],
+   "previousImage": "fog/week_2/night/2.webp"
   },
   {
    "condition": "heat",
@@ -2183,13 +2333,14 @@
    "week": "A",
    "day": "mon",
    "hash": "4d63213b19b9",
-   "image": "heat/week_1/dawn/3.webp",
+   "image": "heat/week_1/dawn/1.webp",
    "paths": [
-    "heat/week_1/dawn/3.webp",
-    "heat/week_2/dawn/4.webp",
-    "heat/week_3/dawn/3.webp",
-    "heat/week_4/dawn/4.webp"
-   ]
+    "heat/week_1/dawn/1.webp",
+    "heat/week_2/dawn/1.webp",
+    "heat/week_3/dawn/1.webp",
+    "heat/week_4/dawn/1.webp"
+   ],
+   "previousImage": "heat/week_1/dawn/3.webp"
   },
   {
    "condition": "heat",
@@ -2197,13 +2348,14 @@
    "week": "A",
    "day": "tue",
    "hash": "0828ca00553f",
-   "image": "heat/week_1/dawn/4.webp",
+   "image": "heat/week_1/dawn/2.webp",
    "paths": [
-    "heat/week_1/dawn/4.webp",
-    "heat/week_2/dawn/1.webp",
-    "heat/week_3/dawn/4.webp",
-    "heat/week_4/dawn/1.webp"
-   ]
+    "heat/week_1/dawn/2.webp",
+    "heat/week_2/dawn/2.webp",
+    "heat/week_3/dawn/2.webp",
+    "heat/week_4/dawn/2.webp"
+   ],
+   "previousImage": "heat/week_1/dawn/4.webp"
   },
   {
    "condition": "heat",
@@ -2211,13 +2363,14 @@
    "week": "A",
    "day": "wed",
    "hash": "c6d266d04418",
-   "image": "heat/week_2/dawn/7.webp",
+   "image": "heat/week_1/dawn/3.webp",
    "paths": [
-    "heat/week_1/dawn/2.webp",
-    "heat/week_2/dawn/7.webp",
-    "heat/week_3/dawn/2.webp",
-    "heat/week_4/dawn/7.webp"
-   ]
+    "heat/week_1/dawn/3.webp",
+    "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "previousImage": "heat/week_2/dawn/7.webp"
   },
   {
    "condition": "heat",
@@ -2225,13 +2378,14 @@
    "week": "A",
    "day": "thu",
    "hash": "726c6aee069a",
-   "image": "heat/week_1/dawn/7.webp",
+   "image": "heat/week_1/dawn/4.webp",
    "paths": [
-    "heat/week_1/dawn/7.webp",
-    "heat/week_2/dawn/5.webp",
-    "heat/week_3/dawn/7.webp",
-    "heat/week_4/dawn/5.webp"
-   ]
+    "heat/week_1/dawn/4.webp",
+    "heat/week_2/dawn/4.webp",
+    "heat/week_3/dawn/4.webp",
+    "heat/week_4/dawn/4.webp"
+   ],
+   "previousImage": "heat/week_1/dawn/7.webp"
   },
   {
    "condition": "heat",
@@ -2239,13 +2393,14 @@
    "week": "A",
    "day": "fri",
    "hash": "818c078a2bda",
-   "image": "heat/week_2/dawn/3.webp",
+   "image": "heat/week_1/dawn/5.webp",
    "paths": [
-    "heat/week_1/dawn/1.webp",
-    "heat/week_2/dawn/3.webp",
-    "heat/week_3/dawn/1.webp",
-    "heat/week_4/dawn/3.webp"
-   ]
+    "heat/week_1/dawn/5.webp",
+    "heat/week_2/dawn/5.webp",
+    "heat/week_3/dawn/5.webp",
+    "heat/week_4/dawn/5.webp"
+   ],
+   "previousImage": "heat/week_2/dawn/3.webp"
   },
   {
    "condition": "heat",
@@ -2253,13 +2408,14 @@
    "week": "A",
    "day": "sat",
    "hash": "b81a91a1f851",
-   "image": "heat/week_1/dawn/5.webp",
+   "image": "heat/week_1/dawn/6.webp",
    "paths": [
-    "heat/week_1/dawn/5.webp",
+    "heat/week_1/dawn/6.webp",
     "heat/week_2/dawn/6.webp",
-    "heat/week_3/dawn/5.webp",
+    "heat/week_3/dawn/6.webp",
     "heat/week_4/dawn/6.webp"
-   ]
+   ],
+   "previousImage": "heat/week_1/dawn/5.webp"
   },
   {
    "condition": "heat",
@@ -2267,13 +2423,14 @@
    "week": "A",
    "day": "sun",
    "hash": "437fd1add3cd",
-   "image": "heat/week_1/dawn/6.webp",
+   "image": "heat/week_1/dawn/7.webp",
    "paths": [
-    "heat/week_1/dawn/6.webp",
-    "heat/week_2/dawn/2.webp",
-    "heat/week_3/dawn/6.webp",
-    "heat/week_4/dawn/2.webp"
-   ]
+    "heat/week_1/dawn/7.webp",
+    "heat/week_2/dawn/7.webp",
+    "heat/week_3/dawn/7.webp",
+    "heat/week_4/dawn/7.webp"
+   ],
+   "previousImage": "heat/week_1/dawn/6.webp"
   },
   {
    "condition": "heat",
@@ -2281,13 +2438,14 @@
    "week": "A",
    "day": "mon",
    "hash": "98d89edda1cd",
-   "image": "heat/week_1/day/4.webp",
+   "image": "heat/week_1/day/1.webp",
    "paths": [
-    "heat/week_1/day/4.webp",
+    "heat/week_1/day/1.webp",
     "heat/week_2/day/1.webp",
-    "heat/week_3/day/3.webp",
-    "heat/week_4/day/4.webp"
-   ]
+    "heat/week_3/day/1.webp",
+    "heat/week_4/day/1.webp"
+   ],
+   "previousImage": "heat/week_1/day/4.webp"
   },
   {
    "condition": "heat",
@@ -2295,13 +2453,14 @@
    "week": "A",
    "day": "tue",
    "hash": "d6593f52fb76",
-   "image": "heat/week_2/day/2.webp",
+   "image": "heat/week_1/day/2.webp",
    "paths": [
-    "heat/week_1/day/7.webp",
+    "heat/week_1/day/2.webp",
     "heat/week_2/day/2.webp",
-    "heat/week_3/day/6.webp",
-    "heat/week_4/day/6.webp"
-   ]
+    "heat/week_3/day/2.webp",
+    "heat/week_4/day/2.webp"
+   ],
+   "previousImage": "heat/week_2/day/2.webp"
   },
   {
    "condition": "heat",
@@ -2309,13 +2468,14 @@
    "week": "A",
    "day": "wed",
    "hash": "6591bd91d1fc",
-   "image": "heat/week_3/day/1.webp",
+   "image": "heat/week_1/day/3.webp",
    "paths": [
     "heat/week_1/day/3.webp",
-    "heat/week_2/day/4.webp",
-    "heat/week_3/day/1.webp",
-    "heat/week_4/day/2.webp"
-   ]
+    "heat/week_2/day/3.webp",
+    "heat/week_3/day/3.webp",
+    "heat/week_4/day/3.webp"
+   ],
+   "previousImage": "heat/week_3/day/1.webp"
   },
   {
    "condition": "heat",
@@ -2323,13 +2483,14 @@
    "week": "A",
    "day": "thu",
    "hash": "afd3c9db83bd",
-   "image": "heat/week_2/day/7.webp",
+   "image": "heat/week_1/day/4.webp",
    "paths": [
-    "heat/week_1/day/6.webp",
-    "heat/week_2/day/7.webp",
+    "heat/week_1/day/4.webp",
+    "heat/week_2/day/4.webp",
     "heat/week_3/day/4.webp",
-    "heat/week_4/day/5.webp"
-   ]
+    "heat/week_4/day/4.webp"
+   ],
+   "previousImage": "heat/week_2/day/7.webp"
   },
   {
    "condition": "heat",
@@ -2337,13 +2498,14 @@
    "week": "A",
    "day": "fri",
    "hash": "6ce02da2ab7a",
-   "image": "heat/week_3/day/5.webp",
+   "image": "heat/week_1/day/5.webp",
    "paths": [
     "heat/week_1/day/5.webp",
-    "heat/week_2/day/6.webp",
+    "heat/week_2/day/5.webp",
     "heat/week_3/day/5.webp",
-    "heat/week_4/day/3.webp"
-   ]
+    "heat/week_4/day/5.webp"
+   ],
+   "previousImage": "heat/week_3/day/5.webp"
   },
   {
    "condition": "heat",
@@ -2351,13 +2513,14 @@
    "week": "A",
    "day": "sat",
    "hash": "36881ce76889",
-   "image": "heat/week_2/day/5.webp",
+   "image": "heat/week_1/day/6.webp",
    "paths": [
-    "heat/week_1/day/2.webp",
-    "heat/week_2/day/5.webp",
-    "heat/week_3/day/2.webp",
-    "heat/week_4/day/1.webp"
-   ]
+    "heat/week_1/day/6.webp",
+    "heat/week_2/day/6.webp",
+    "heat/week_3/day/6.webp",
+    "heat/week_4/day/6.webp"
+   ],
+   "previousImage": "heat/week_2/day/5.webp"
   },
   {
    "condition": "heat",
@@ -2365,13 +2528,14 @@
    "week": "A",
    "day": "sun",
    "hash": "0cc1648cbc13",
-   "image": "heat/week_4/day/7.webp",
+   "image": "heat/week_1/day/7.webp",
    "paths": [
-    "heat/week_1/day/1.webp",
-    "heat/week_2/day/3.webp",
+    "heat/week_1/day/7.webp",
+    "heat/week_2/day/7.webp",
     "heat/week_3/day/7.webp",
     "heat/week_4/day/7.webp"
-   ]
+   ],
+   "previousImage": "heat/week_4/day/7.webp"
   },
   {
    "condition": "heat",
@@ -2379,13 +2543,14 @@
    "week": "A",
    "day": "mon",
    "hash": "5ed7621f5dd9",
-   "image": "heat/week_1/dusk/3.webp",
+   "image": "heat/week_1/dusk/1.webp",
    "paths": [
-    "heat/week_1/dusk/3.webp",
-    "heat/week_2/dusk/2.webp",
-    "heat/week_3/dusk/3.webp",
-    "heat/week_4/dusk/2.webp"
-   ]
+    "heat/week_1/dusk/1.webp",
+    "heat/week_2/dusk/1.webp",
+    "heat/week_3/dusk/1.webp",
+    "heat/week_4/dusk/1.webp"
+   ],
+   "previousImage": "heat/week_1/dusk/3.webp"
   },
   {
    "condition": "heat",
@@ -2393,13 +2558,14 @@
    "week": "A",
    "day": "tue",
    "hash": "68661ff2b0dc",
-   "image": "heat/week_1/dusk/4.webp",
+   "image": "heat/week_1/dusk/2.webp",
    "paths": [
-    "heat/week_1/dusk/4.webp",
-    "heat/week_2/dusk/4.webp",
-    "heat/week_3/dusk/4.webp",
-    "heat/week_4/dusk/4.webp"
-   ]
+    "heat/week_1/dusk/2.webp",
+    "heat/week_2/dusk/2.webp",
+    "heat/week_3/dusk/2.webp",
+    "heat/week_4/dusk/2.webp"
+   ],
+   "previousImage": "heat/week_1/dusk/4.webp"
   },
   {
    "condition": "heat",
@@ -2407,13 +2573,14 @@
    "week": "A",
    "day": "wed",
    "hash": "248b04dcf98d",
-   "image": "heat/week_2/dusk/6.webp",
+   "image": "heat/week_1/dusk/3.webp",
    "paths": [
-    "heat/week_1/dusk/1.webp",
-    "heat/week_2/dusk/6.webp",
-    "heat/week_3/dusk/1.webp",
-    "heat/week_4/dusk/6.webp"
-   ]
+    "heat/week_1/dusk/3.webp",
+    "heat/week_2/dusk/3.webp",
+    "heat/week_3/dusk/3.webp",
+    "heat/week_4/dusk/3.webp"
+   ],
+   "previousImage": "heat/week_2/dusk/6.webp"
   },
   {
    "condition": "heat",
@@ -2421,13 +2588,14 @@
    "week": "A",
    "day": "thu",
    "hash": "3e88aef1fb06",
-   "image": "heat/week_2/dusk/7.webp",
+   "image": "heat/week_1/dusk/4.webp",
    "paths": [
-    "heat/week_1/dusk/2.webp",
-    "heat/week_2/dusk/7.webp",
-    "heat/week_3/dusk/2.webp",
-    "heat/week_4/dusk/7.webp"
-   ]
+    "heat/week_1/dusk/4.webp",
+    "heat/week_2/dusk/4.webp",
+    "heat/week_3/dusk/4.webp",
+    "heat/week_4/dusk/4.webp"
+   ],
+   "previousImage": "heat/week_2/dusk/7.webp"
   },
   {
    "condition": "heat",
@@ -2435,13 +2603,14 @@
    "week": "A",
    "day": "fri",
    "hash": "93f4a43551af",
-   "image": "heat/week_2/dusk/1.webp",
+   "image": "heat/week_1/dusk/5.webp",
    "paths": [
-    "heat/week_1/dusk/7.webp",
-    "heat/week_2/dusk/1.webp",
-    "heat/week_3/dusk/7.webp",
-    "heat/week_4/dusk/1.webp"
-   ]
+    "heat/week_1/dusk/5.webp",
+    "heat/week_2/dusk/5.webp",
+    "heat/week_3/dusk/5.webp",
+    "heat/week_4/dusk/5.webp"
+   ],
+   "previousImage": "heat/week_2/dusk/1.webp"
   },
   {
    "condition": "heat",
@@ -2449,13 +2618,14 @@
    "week": "A",
    "day": "sat",
    "hash": "555f76c5594f",
-   "image": "heat/week_2/dusk/3.webp",
+   "image": "heat/week_1/dusk/6.webp",
    "paths": [
-    "heat/week_1/dusk/5.webp",
-    "heat/week_2/dusk/3.webp",
-    "heat/week_3/dusk/5.webp",
-    "heat/week_4/dusk/3.webp"
-   ]
+    "heat/week_1/dusk/6.webp",
+    "heat/week_2/dusk/6.webp",
+    "heat/week_3/dusk/6.webp",
+    "heat/week_4/dusk/6.webp"
+   ],
+   "previousImage": "heat/week_2/dusk/3.webp"
   },
   {
    "condition": "heat",
@@ -2463,13 +2633,14 @@
    "week": "A",
    "day": "sun",
    "hash": "9728bed72ec6",
-   "image": "heat/week_1/dusk/6.webp",
+   "image": "heat/week_1/dusk/7.webp",
    "paths": [
-    "heat/week_1/dusk/6.webp",
-    "heat/week_2/dusk/5.webp",
-    "heat/week_3/dusk/6.webp",
-    "heat/week_4/dusk/5.webp"
-   ]
+    "heat/week_1/dusk/7.webp",
+    "heat/week_2/dusk/7.webp",
+    "heat/week_3/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "previousImage": "heat/week_1/dusk/6.webp"
   },
   {
    "condition": "heat",
@@ -2477,13 +2648,14 @@
    "week": "A",
    "day": "mon",
    "hash": "f2e76528eca3",
-   "image": "heat/week_1/night/4.webp",
+   "image": "heat/week_1/night/1.webp",
    "paths": [
-    "heat/week_1/night/4.webp",
-    "heat/week_2/night/5.webp",
-    "heat/week_3/night/4.webp",
-    "heat/week_4/night/5.webp"
-   ]
+    "heat/week_1/night/1.webp",
+    "heat/week_2/night/1.webp",
+    "heat/week_3/night/1.webp",
+    "heat/week_4/night/1.webp"
+   ],
+   "previousImage": "heat/week_1/night/4.webp"
   },
   {
    "condition": "heat",
@@ -2491,13 +2663,14 @@
    "week": "A",
    "day": "tue",
    "hash": "2a3a60226c30",
-   "image": "heat/week_2/night/7.webp",
+   "image": "heat/week_1/night/2.webp",
    "paths": [
-    "heat/week_1/night/5.webp",
-    "heat/week_2/night/7.webp",
-    "heat/week_3/night/5.webp",
-    "heat/week_4/night/7.webp"
-   ]
+    "heat/week_1/night/2.webp",
+    "heat/week_2/night/2.webp",
+    "heat/week_3/night/2.webp",
+    "heat/week_4/night/2.webp"
+   ],
+   "previousImage": "heat/week_2/night/7.webp"
   },
   {
    "condition": "heat",
@@ -2505,13 +2678,14 @@
    "week": "A",
    "day": "wed",
    "hash": "e62c00a72fb4",
-   "image": "heat/week_2/night/6.webp",
+   "image": "heat/week_1/night/3.webp",
    "paths": [
-    "heat/week_1/night/7.webp",
-    "heat/week_2/night/6.webp",
-    "heat/week_3/night/7.webp",
-    "heat/week_4/night/6.webp"
-   ]
+    "heat/week_1/night/3.webp",
+    "heat/week_2/night/3.webp",
+    "heat/week_3/night/3.webp",
+    "heat/week_4/night/3.webp"
+   ],
+   "previousImage": "heat/week_2/night/6.webp"
   },
   {
    "condition": "heat",
@@ -2519,13 +2693,14 @@
    "week": "A",
    "day": "thu",
    "hash": "706cd1220e10",
-   "image": "heat/week_1/night/3.webp",
+   "image": "heat/week_1/night/4.webp",
    "paths": [
-    "heat/week_1/night/3.webp",
-    "heat/week_2/night/1.webp",
-    "heat/week_3/night/3.webp",
-    "heat/week_4/night/1.webp"
-   ]
+    "heat/week_1/night/4.webp",
+    "heat/week_2/night/4.webp",
+    "heat/week_3/night/4.webp",
+    "heat/week_4/night/4.webp"
+   ],
+   "previousImage": "heat/week_1/night/3.webp"
   },
   {
    "condition": "heat",
@@ -2533,13 +2708,14 @@
    "week": "A",
    "day": "fri",
    "hash": "73f8b2781c4c",
-   "image": "heat/week_1/night/2.webp",
+   "image": "heat/week_1/night/5.webp",
    "paths": [
-    "heat/week_1/night/2.webp",
-    "heat/week_2/night/3.webp",
-    "heat/week_3/night/2.webp",
-    "heat/week_4/night/3.webp"
-   ]
+    "heat/week_1/night/5.webp",
+    "heat/week_2/night/5.webp",
+    "heat/week_3/night/5.webp",
+    "heat/week_4/night/5.webp"
+   ],
+   "previousImage": "heat/week_1/night/2.webp"
   },
   {
    "condition": "heat",
@@ -2547,13 +2723,14 @@
    "week": "A",
    "day": "sat",
    "hash": "87546db18e01",
-   "image": "heat/week_2/night/2.webp",
+   "image": "heat/week_1/night/6.webp",
    "paths": [
     "heat/week_1/night/6.webp",
-    "heat/week_2/night/2.webp",
+    "heat/week_2/night/6.webp",
     "heat/week_3/night/6.webp",
-    "heat/week_4/night/2.webp"
-   ]
+    "heat/week_4/night/6.webp"
+   ],
+   "previousImage": "heat/week_2/night/2.webp"
   },
   {
    "condition": "heat",
@@ -2561,13 +2738,14 @@
    "week": "A",
    "day": "sun",
    "hash": "ea333aeefd0d",
-   "image": "heat/week_1/night/1.webp",
+   "image": "heat/week_1/night/7.webp",
    "paths": [
-    "heat/week_1/night/1.webp",
-    "heat/week_2/night/4.webp",
-    "heat/week_3/night/1.webp",
-    "heat/week_4/night/4.webp"
-   ]
+    "heat/week_1/night/7.webp",
+    "heat/week_2/night/7.webp",
+    "heat/week_3/night/7.webp",
+    "heat/week_4/night/7.webp"
+   ],
+   "previousImage": "heat/week_1/night/1.webp"
   },
   {
    "condition": "rain",
@@ -2575,13 +2753,14 @@
    "week": "A",
    "day": "mon",
    "hash": "e5b2e8ac2654",
-   "image": "rain/week_1/dawn/2.webp",
+   "image": "rain/week_1/dawn/1.webp",
    "paths": [
-    "rain/week_1/dawn/2.webp",
-    "rain/week_2/dawn/7.webp",
-    "rain/week_3/dawn/2.webp",
-    "rain/week_4/dawn/7.webp"
-   ]
+    "rain/week_1/dawn/1.webp",
+    "rain/week_2/dawn/1.webp",
+    "rain/week_3/dawn/1.webp",
+    "rain/week_4/dawn/1.webp"
+   ],
+   "previousImage": "rain/week_1/dawn/2.webp"
   },
   {
    "condition": "rain",
@@ -2589,13 +2768,14 @@
    "week": "A",
    "day": "tue",
    "hash": "9e75b001c7c5",
-   "image": "rain/week_1/dawn/3.webp",
+   "image": "rain/week_1/dawn/2.webp",
    "paths": [
-    "rain/week_1/dawn/3.webp",
-    "rain/week_2/dawn/4.webp",
-    "rain/week_3/dawn/3.webp",
-    "rain/week_4/dawn/4.webp"
-   ]
+    "rain/week_1/dawn/2.webp",
+    "rain/week_2/dawn/2.webp",
+    "rain/week_3/dawn/2.webp",
+    "rain/week_4/dawn/2.webp"
+   ],
+   "previousImage": "rain/week_1/dawn/3.webp"
   },
   {
    "condition": "rain",
@@ -2603,13 +2783,14 @@
    "week": "A",
    "day": "wed",
    "hash": "80770bf13004",
-   "image": "rain/week_2/dawn/5.webp",
+   "image": "rain/week_1/dawn/3.webp",
    "paths": [
-    "rain/week_1/dawn/5.webp",
-    "rain/week_2/dawn/5.webp",
-    "rain/week_3/dawn/5.webp",
-    "rain/week_4/dawn/5.webp"
-   ]
+    "rain/week_1/dawn/3.webp",
+    "rain/week_2/dawn/3.webp",
+    "rain/week_3/dawn/3.webp",
+    "rain/week_4/dawn/3.webp"
+   ],
+   "previousImage": "rain/week_2/dawn/5.webp"
   },
   {
    "condition": "rain",
@@ -2617,13 +2798,14 @@
    "week": "A",
    "day": "thu",
    "hash": "5526989179bd",
-   "image": "rain/week_2/dawn/6.webp",
+   "image": "rain/week_1/dawn/4.webp",
    "paths": [
-    "rain/week_1/dawn/1.webp",
-    "rain/week_2/dawn/6.webp",
-    "rain/week_3/dawn/1.webp",
-    "rain/week_4/dawn/6.webp"
-   ]
+    "rain/week_1/dawn/4.webp",
+    "rain/week_2/dawn/4.webp",
+    "rain/week_3/dawn/4.webp",
+    "rain/week_4/dawn/4.webp"
+   ],
+   "previousImage": "rain/week_2/dawn/6.webp"
   },
   {
    "condition": "rain",
@@ -2631,13 +2813,14 @@
    "week": "A",
    "day": "fri",
    "hash": "7bd5758fb7b5",
-   "image": "rain/week_2/dawn/2.webp",
+   "image": "rain/week_1/dawn/5.webp",
    "paths": [
-    "rain/week_1/dawn/4.webp",
-    "rain/week_2/dawn/2.webp",
-    "rain/week_3/dawn/4.webp",
-    "rain/week_4/dawn/2.webp"
-   ]
+    "rain/week_1/dawn/5.webp",
+    "rain/week_2/dawn/5.webp",
+    "rain/week_3/dawn/5.webp",
+    "rain/week_4/dawn/5.webp"
+   ],
+   "previousImage": "rain/week_2/dawn/2.webp"
   },
   {
    "condition": "rain",
@@ -2648,9 +2831,9 @@
    "image": "rain/week_1/dawn/6.webp",
    "paths": [
     "rain/week_1/dawn/6.webp",
-    "rain/week_2/dawn/3.webp",
+    "rain/week_2/dawn/6.webp",
     "rain/week_3/dawn/6.webp",
-    "rain/week_4/dawn/3.webp"
+    "rain/week_4/dawn/6.webp"
    ]
   },
   {
@@ -2662,9 +2845,9 @@
    "image": "rain/week_1/dawn/7.webp",
    "paths": [
     "rain/week_1/dawn/7.webp",
-    "rain/week_2/dawn/1.webp",
+    "rain/week_2/dawn/7.webp",
     "rain/week_3/dawn/7.webp",
-    "rain/week_4/dawn/1.webp"
+    "rain/week_4/dawn/7.webp"
    ]
   },
   {
@@ -2673,11 +2856,12 @@
    "week": "A",
    "day": "mon",
    "hash": "2b750515575e",
-   "image": "rain/week_1/day/2.webp",
+   "image": "rain/week_1/day/1.webp",
    "paths": [
-    "rain/week_1/day/2.webp",
-    "rain/week_2/day/3.webp"
-   ]
+    "rain/week_1/day/1.webp",
+    "rain/week_3/day/1.webp"
+   ],
+   "previousImage": "rain/week_1/day/2.webp"
   },
   {
    "condition": "rain",
@@ -2685,11 +2869,12 @@
    "week": "A",
    "day": "tue",
    "hash": "00a672556998",
-   "image": "rain/week_1/day/3.webp",
+   "image": "rain/week_1/day/2.webp",
    "paths": [
-    "rain/week_1/day/3.webp",
-    "rain/week_2/day/2.webp"
-   ]
+    "rain/week_1/day/2.webp",
+    "rain/week_3/day/2.webp"
+   ],
+   "previousImage": "rain/week_1/day/3.webp"
   },
   {
    "condition": "rain",
@@ -2697,11 +2882,12 @@
    "week": "A",
    "day": "wed",
    "hash": "8ce35385e048",
-   "image": "rain/week_2/day/6.webp",
+   "image": "rain/week_1/day/3.webp",
    "paths": [
-    "rain/week_1/day/6.webp",
-    "rain/week_2/day/6.webp"
-   ]
+    "rain/week_1/day/3.webp",
+    "rain/week_3/day/3.webp"
+   ],
+   "previousImage": "rain/week_2/day/6.webp"
   },
   {
    "condition": "rain",
@@ -2709,11 +2895,12 @@
    "week": "A",
    "day": "thu",
    "hash": "e7547cfdee94",
-   "image": "rain/week_2/day/4.webp",
+   "image": "rain/week_1/day/4.webp",
    "paths": [
-    "rain/week_2/day/4.webp",
-    "rain/week_3/day/6.webp"
-   ]
+    "rain/week_1/day/4.webp",
+    "rain/week_3/day/4.webp"
+   ],
+   "previousImage": "rain/week_2/day/4.webp"
   },
   {
    "condition": "rain",
@@ -2721,11 +2908,12 @@
    "week": "A",
    "day": "fri",
    "hash": "e54bbf2b56b2",
-   "image": "rain/week_3/day/3.webp",
+   "image": "rain/week_1/day/5.webp",
    "paths": [
-    "rain/week_3/day/3.webp",
-    "rain/week_4/day/6.webp"
-   ]
+    "rain/week_1/day/5.webp",
+    "rain/week_3/day/5.webp"
+   ],
+   "previousImage": "rain/week_3/day/3.webp"
   },
   {
    "condition": "rain",
@@ -2733,11 +2921,12 @@
    "week": "A",
    "day": "sat",
    "hash": "057e8c9e5039",
-   "image": "rain/week_4/day/2.webp",
+   "image": "rain/week_1/day/6.webp",
    "paths": [
-    "rain/week_1/day/4.webp",
-    "rain/week_4/day/2.webp"
-   ]
+    "rain/week_1/day/6.webp",
+    "rain/week_3/day/6.webp"
+   ],
+   "previousImage": "rain/week_4/day/2.webp"
   },
   {
    "condition": "rain",
@@ -2745,11 +2934,12 @@
    "week": "A",
    "day": "sun",
    "hash": "d8d16083a690",
-   "image": "rain/week_3/day/5.webp",
+   "image": "rain/week_1/day/7.webp",
    "paths": [
-    "rain/week_3/day/5.webp",
-    "rain/week_4/day/5.webp"
-   ]
+    "rain/week_1/day/7.webp",
+    "rain/week_3/day/7.webp"
+   ],
+   "previousImage": "rain/week_3/day/5.webp"
   },
   {
    "condition": "rain",
@@ -2760,7 +2950,7 @@
    "image": "rain/week_2/day/1.webp",
    "paths": [
     "rain/week_2/day/1.webp",
-    "rain/week_4/day/7.webp"
+    "rain/week_4/day/1.webp"
    ]
   },
   {
@@ -2769,11 +2959,12 @@
    "week": "B",
    "day": "tue",
    "hash": "d878b96a3f71",
-   "image": "rain/week_1/day/1.webp",
+   "image": "rain/week_2/day/2.webp",
    "paths": [
-    "rain/week_1/day/1.webp",
-    "rain/week_3/day/4.webp"
-   ]
+    "rain/week_2/day/2.webp",
+    "rain/week_4/day/2.webp"
+   ],
+   "previousImage": "rain/week_1/day/1.webp"
   },
   {
    "condition": "rain",
@@ -2781,11 +2972,12 @@
    "week": "B",
    "day": "wed",
    "hash": "3bd49d0acf2b",
-   "image": "rain/week_2/day/5.webp",
+   "image": "rain/week_2/day/3.webp",
    "paths": [
-    "rain/week_1/day/5.webp",
-    "rain/week_2/day/5.webp"
-   ]
+    "rain/week_2/day/3.webp",
+    "rain/week_4/day/3.webp"
+   ],
+   "previousImage": "rain/week_2/day/5.webp"
   },
   {
    "condition": "rain",
@@ -2793,11 +2985,12 @@
    "week": "B",
    "day": "thu",
    "hash": "d86d4f5699c2",
-   "image": "rain/week_3/day/1.webp",
+   "image": "rain/week_2/day/4.webp",
    "paths": [
-    "rain/week_3/day/1.webp",
-    "rain/week_4/day/1.webp"
-   ]
+    "rain/week_2/day/4.webp",
+    "rain/week_4/day/4.webp"
+   ],
+   "previousImage": "rain/week_3/day/1.webp"
   },
   {
    "condition": "rain",
@@ -2805,11 +2998,12 @@
    "week": "B",
    "day": "fri",
    "hash": "a0ef2720c507",
-   "image": "rain/week_3/day/7.webp",
+   "image": "rain/week_2/day/5.webp",
    "paths": [
-    "rain/week_1/day/7.webp",
-    "rain/week_3/day/7.webp"
-   ]
+    "rain/week_2/day/5.webp",
+    "rain/week_4/day/5.webp"
+   ],
+   "previousImage": "rain/week_3/day/7.webp"
   },
   {
    "condition": "rain",
@@ -2817,11 +3011,12 @@
    "week": "B",
    "day": "sat",
    "hash": "c9c6fd784b69",
-   "image": "rain/week_4/day/4.webp",
+   "image": "rain/week_2/day/6.webp",
    "paths": [
-    "rain/week_3/day/2.webp",
-    "rain/week_4/day/4.webp"
-   ]
+    "rain/week_2/day/6.webp",
+    "rain/week_4/day/6.webp"
+   ],
+   "previousImage": "rain/week_4/day/4.webp"
   },
   {
    "condition": "rain",
@@ -2829,11 +3024,12 @@
    "week": "B",
    "day": "sun",
    "hash": "c9050c0a05e5",
-   "image": "rain/week_4/day/3.webp",
+   "image": "rain/week_2/day/7.webp",
    "paths": [
     "rain/week_2/day/7.webp",
-    "rain/week_4/day/3.webp"
-   ]
+    "rain/week_4/day/7.webp"
+   ],
+   "previousImage": "rain/week_4/day/3.webp"
   },
   {
    "condition": "rain",
@@ -2844,9 +3040,9 @@
    "image": "rain/week_1/dusk/1.webp",
    "paths": [
     "rain/week_1/dusk/1.webp",
-    "rain/week_2/dusk/5.webp",
+    "rain/week_2/dusk/1.webp",
     "rain/week_3/dusk/1.webp",
-    "rain/week_4/dusk/5.webp"
+    "rain/week_4/dusk/1.webp"
    ]
   },
   {
@@ -2855,13 +3051,14 @@
    "week": "A",
    "day": "tue",
    "hash": "09641df1432a",
-   "image": "rain/week_2/dusk/3.webp",
+   "image": "rain/week_1/dusk/2.webp",
    "paths": [
-    "rain/week_1/dusk/3.webp",
-    "rain/week_2/dusk/3.webp",
-    "rain/week_3/dusk/3.webp",
-    "rain/week_4/dusk/3.webp"
-   ]
+    "rain/week_1/dusk/2.webp",
+    "rain/week_2/dusk/2.webp",
+    "rain/week_3/dusk/2.webp",
+    "rain/week_4/dusk/2.webp"
+   ],
+   "previousImage": "rain/week_2/dusk/3.webp"
   },
   {
    "condition": "rain",
@@ -2869,13 +3066,14 @@
    "week": "A",
    "day": "wed",
    "hash": "e95e8a2f22f0",
-   "image": "rain/week_1/dusk/5.webp",
+   "image": "rain/week_1/dusk/3.webp",
    "paths": [
-    "rain/week_1/dusk/5.webp",
-    "rain/week_2/dusk/7.webp",
-    "rain/week_3/dusk/5.webp",
-    "rain/week_4/dusk/7.webp"
-   ]
+    "rain/week_1/dusk/3.webp",
+    "rain/week_2/dusk/3.webp",
+    "rain/week_3/dusk/3.webp",
+    "rain/week_4/dusk/3.webp"
+   ],
+   "previousImage": "rain/week_1/dusk/5.webp"
   },
   {
    "condition": "rain",
@@ -2883,13 +3081,14 @@
    "week": "A",
    "day": "thu",
    "hash": "abf80e59bae9",
-   "image": "rain/week_2/dusk/6.webp",
+   "image": "rain/week_1/dusk/4.webp",
    "paths": [
     "rain/week_1/dusk/4.webp",
-    "rain/week_2/dusk/6.webp",
+    "rain/week_2/dusk/4.webp",
     "rain/week_3/dusk/4.webp",
-    "rain/week_4/dusk/6.webp"
-   ]
+    "rain/week_4/dusk/4.webp"
+   ],
+   "previousImage": "rain/week_2/dusk/6.webp"
   },
   {
    "condition": "rain",
@@ -2897,13 +3096,14 @@
    "week": "A",
    "day": "fri",
    "hash": "b4ee9d16720e",
-   "image": "rain/week_2/dusk/4.webp",
+   "image": "rain/week_1/dusk/5.webp",
    "paths": [
-    "rain/week_1/dusk/6.webp",
-    "rain/week_2/dusk/4.webp",
-    "rain/week_3/dusk/6.webp",
-    "rain/week_4/dusk/4.webp"
-   ]
+    "rain/week_1/dusk/5.webp",
+    "rain/week_2/dusk/5.webp",
+    "rain/week_3/dusk/5.webp",
+    "rain/week_4/dusk/5.webp"
+   ],
+   "previousImage": "rain/week_2/dusk/4.webp"
   },
   {
    "condition": "rain",
@@ -2911,13 +3111,14 @@
    "week": "A",
    "day": "sat",
    "hash": "f7f51acb22c9",
-   "image": "rain/week_2/dusk/2.webp",
+   "image": "rain/week_1/dusk/6.webp",
    "paths": [
-    "rain/week_1/dusk/7.webp",
-    "rain/week_2/dusk/2.webp",
-    "rain/week_3/dusk/7.webp",
-    "rain/week_4/dusk/2.webp"
-   ]
+    "rain/week_1/dusk/6.webp",
+    "rain/week_2/dusk/6.webp",
+    "rain/week_3/dusk/6.webp",
+    "rain/week_4/dusk/6.webp"
+   ],
+   "previousImage": "rain/week_2/dusk/2.webp"
   },
   {
    "condition": "rain",
@@ -2925,13 +3126,14 @@
    "week": "A",
    "day": "sun",
    "hash": "5f935cb18f17",
-   "image": "rain/week_1/dusk/2.webp",
+   "image": "rain/week_1/dusk/7.webp",
    "paths": [
-    "rain/week_1/dusk/2.webp",
-    "rain/week_2/dusk/1.webp",
-    "rain/week_3/dusk/2.webp",
-    "rain/week_4/dusk/1.webp"
-   ]
+    "rain/week_1/dusk/7.webp",
+    "rain/week_2/dusk/7.webp",
+    "rain/week_3/dusk/7.webp",
+    "rain/week_4/dusk/7.webp"
+   ],
+   "previousImage": "rain/week_1/dusk/2.webp"
   },
   {
    "condition": "rain",
@@ -2939,13 +3141,14 @@
    "week": "A",
    "day": "mon",
    "hash": "86be0fc65b9e",
-   "image": "rain/week_1/night/2.webp",
+   "image": "rain/week_1/night/1.webp",
    "paths": [
-    "rain/week_1/night/2.webp",
-    "rain/week_2/night/2.webp",
-    "rain/week_3/night/2.webp",
-    "rain/week_4/night/2.webp"
-   ]
+    "rain/week_1/night/1.webp",
+    "rain/week_2/night/1.webp",
+    "rain/week_3/night/1.webp",
+    "rain/week_4/night/1.webp"
+   ],
+   "previousImage": "rain/week_1/night/2.webp"
   },
   {
    "condition": "rain",
@@ -2953,13 +3156,14 @@
    "week": "A",
    "day": "tue",
    "hash": "504e55301184",
-   "image": "rain/week_1/night/5.webp",
+   "image": "rain/week_1/night/2.webp",
    "paths": [
-    "rain/week_1/night/5.webp",
-    "rain/week_2/night/1.webp",
-    "rain/week_3/night/5.webp",
-    "rain/week_4/night/1.webp"
-   ]
+    "rain/week_1/night/2.webp",
+    "rain/week_2/night/2.webp",
+    "rain/week_3/night/2.webp",
+    "rain/week_4/night/2.webp"
+   ],
+   "previousImage": "rain/week_1/night/5.webp"
   },
   {
    "condition": "rain",
@@ -2967,13 +3171,14 @@
    "week": "A",
    "day": "wed",
    "hash": "f8781ec0eb86",
-   "image": "rain/week_1/night/4.webp",
+   "image": "rain/week_1/night/3.webp",
    "paths": [
-    "rain/week_1/night/4.webp",
-    "rain/week_2/night/7.webp",
-    "rain/week_3/night/4.webp",
-    "rain/week_4/night/7.webp"
-   ]
+    "rain/week_1/night/3.webp",
+    "rain/week_2/night/3.webp",
+    "rain/week_3/night/3.webp",
+    "rain/week_4/night/3.webp"
+   ],
+   "previousImage": "rain/week_1/night/4.webp"
   },
   {
    "condition": "rain",
@@ -2981,13 +3186,14 @@
    "week": "A",
    "day": "thu",
    "hash": "c8df884e9ec0",
-   "image": "rain/week_2/night/4.webp",
+   "image": "rain/week_1/night/4.webp",
    "paths": [
-    "rain/week_1/night/7.webp",
+    "rain/week_1/night/4.webp",
     "rain/week_2/night/4.webp",
-    "rain/week_3/night/7.webp",
+    "rain/week_3/night/4.webp",
     "rain/week_4/night/4.webp"
-   ]
+   ],
+   "previousImage": "rain/week_2/night/4.webp"
   },
   {
    "condition": "rain",
@@ -2995,13 +3201,14 @@
    "week": "A",
    "day": "fri",
    "hash": "19ddc2f8afd3",
-   "image": "rain/week_2/night/6.webp",
+   "image": "rain/week_1/night/5.webp",
    "paths": [
-    "rain/week_1/night/1.webp",
-    "rain/week_2/night/6.webp",
-    "rain/week_3/night/1.webp",
-    "rain/week_4/night/6.webp"
-   ]
+    "rain/week_1/night/5.webp",
+    "rain/week_2/night/5.webp",
+    "rain/week_3/night/5.webp",
+    "rain/week_4/night/5.webp"
+   ],
+   "previousImage": "rain/week_2/night/6.webp"
   },
   {
    "condition": "rain",
@@ -3012,9 +3219,9 @@
    "image": "rain/week_1/night/6.webp",
    "paths": [
     "rain/week_1/night/6.webp",
-    "rain/week_2/night/3.webp",
+    "rain/week_2/night/6.webp",
     "rain/week_3/night/6.webp",
-    "rain/week_4/night/3.webp"
+    "rain/week_4/night/6.webp"
    ]
   },
   {
@@ -3023,13 +3230,14 @@
    "week": "A",
    "day": "sun",
    "hash": "d28204abf829",
-   "image": "rain/week_1/night/3.webp",
+   "image": "rain/week_1/night/7.webp",
    "paths": [
-    "rain/week_1/night/3.webp",
-    "rain/week_2/night/5.webp",
-    "rain/week_3/night/3.webp",
-    "rain/week_4/night/5.webp"
-   ]
+    "rain/week_1/night/7.webp",
+    "rain/week_2/night/7.webp",
+    "rain/week_3/night/7.webp",
+    "rain/week_4/night/7.webp"
+   ],
+   "previousImage": "rain/week_1/night/3.webp"
   },
   {
    "condition": "storm",
@@ -3037,13 +3245,14 @@
    "week": "A",
    "day": "mon",
    "hash": "91f980f76f82",
-   "image": "storm/week_1/dawn/2.webp",
+   "image": "storm/week_1/dawn/1.webp",
    "paths": [
-    "storm/week_1/dawn/2.webp",
-    "storm/week_2/dawn/4.webp",
-    "storm/week_3/dawn/2.webp",
-    "storm/week_4/dawn/4.webp"
-   ]
+    "storm/week_1/dawn/1.webp",
+    "storm/week_2/dawn/1.webp",
+    "storm/week_3/dawn/1.webp",
+    "storm/week_4/dawn/1.webp"
+   ],
+   "previousImage": "storm/week_1/dawn/2.webp"
   },
   {
    "condition": "storm",
@@ -3051,13 +3260,14 @@
    "week": "A",
    "day": "tue",
    "hash": "55fac1141abf",
-   "image": "storm/week_1/dawn/3.webp",
+   "image": "storm/week_1/dawn/2.webp",
    "paths": [
-    "storm/week_1/dawn/3.webp",
-    "storm/week_2/dawn/1.webp",
-    "storm/week_3/dawn/3.webp",
-    "storm/week_4/dawn/1.webp"
-   ]
+    "storm/week_1/dawn/2.webp",
+    "storm/week_2/dawn/2.webp",
+    "storm/week_3/dawn/2.webp",
+    "storm/week_4/dawn/2.webp"
+   ],
+   "previousImage": "storm/week_1/dawn/3.webp"
   },
   {
    "condition": "storm",
@@ -3065,13 +3275,14 @@
    "week": "A",
    "day": "wed",
    "hash": "f0b49be17750",
-   "image": "storm/week_1/dawn/5.webp",
+   "image": "storm/week_1/dawn/3.webp",
    "paths": [
-    "storm/week_1/dawn/5.webp",
-    "storm/week_2/dawn/6.webp",
-    "storm/week_3/dawn/5.webp",
-    "storm/week_4/dawn/6.webp"
-   ]
+    "storm/week_1/dawn/3.webp",
+    "storm/week_2/dawn/3.webp",
+    "storm/week_3/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "previousImage": "storm/week_1/dawn/5.webp"
   },
   {
    "condition": "storm",
@@ -3079,13 +3290,14 @@
    "week": "A",
    "day": "thu",
    "hash": "a785060d7357",
-   "image": "storm/week_1/dawn/7.webp",
+   "image": "storm/week_1/dawn/4.webp",
    "paths": [
-    "storm/week_1/dawn/7.webp",
-    "storm/week_2/dawn/5.webp",
-    "storm/week_3/dawn/7.webp",
-    "storm/week_4/dawn/5.webp"
-   ]
+    "storm/week_1/dawn/4.webp",
+    "storm/week_2/dawn/4.webp",
+    "storm/week_3/dawn/4.webp",
+    "storm/week_4/dawn/4.webp"
+   ],
+   "previousImage": "storm/week_1/dawn/7.webp"
   },
   {
    "condition": "storm",
@@ -3093,13 +3305,14 @@
    "week": "A",
    "day": "fri",
    "hash": "20ed2fe6b144",
-   "image": "storm/week_2/dawn/7.webp",
+   "image": "storm/week_1/dawn/5.webp",
    "paths": [
-    "storm/week_1/dawn/1.webp",
-    "storm/week_2/dawn/7.webp",
-    "storm/week_3/dawn/1.webp",
-    "storm/week_4/dawn/7.webp"
-   ]
+    "storm/week_1/dawn/5.webp",
+    "storm/week_2/dawn/5.webp",
+    "storm/week_3/dawn/5.webp",
+    "storm/week_4/dawn/5.webp"
+   ],
+   "previousImage": "storm/week_2/dawn/7.webp"
   },
   {
    "condition": "storm",
@@ -3107,13 +3320,14 @@
    "week": "A",
    "day": "sat",
    "hash": "56af96f529d2",
-   "image": "storm/week_2/dawn/2.webp",
+   "image": "storm/week_1/dawn/6.webp",
    "paths": [
     "storm/week_1/dawn/6.webp",
-    "storm/week_2/dawn/2.webp",
+    "storm/week_2/dawn/6.webp",
     "storm/week_3/dawn/6.webp",
-    "storm/week_4/dawn/2.webp"
-   ]
+    "storm/week_4/dawn/6.webp"
+   ],
+   "previousImage": "storm/week_2/dawn/2.webp"
   },
   {
    "condition": "storm",
@@ -3121,13 +3335,14 @@
    "week": "A",
    "day": "sun",
    "hash": "29a289619727",
-   "image": "storm/week_2/dawn/3.webp",
+   "image": "storm/week_1/dawn/7.webp",
    "paths": [
-    "storm/week_1/dawn/4.webp",
-    "storm/week_2/dawn/3.webp",
-    "storm/week_3/dawn/4.webp",
-    "storm/week_4/dawn/3.webp"
-   ]
+    "storm/week_1/dawn/7.webp",
+    "storm/week_2/dawn/7.webp",
+    "storm/week_3/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "previousImage": "storm/week_2/dawn/3.webp"
   },
   {
    "condition": "storm",
@@ -3135,11 +3350,12 @@
    "week": "A",
    "day": "mon",
    "hash": "99d0821cdd98",
-   "image": "storm/week_1/day/5.webp",
+   "image": "storm/week_1/day/1.webp",
    "paths": [
-    "storm/week_1/day/5.webp",
-    "storm/week_3/day/4.webp"
-   ]
+    "storm/week_1/day/1.webp",
+    "storm/week_3/day/1.webp"
+   ],
+   "previousImage": "storm/week_1/day/5.webp"
   },
   {
    "condition": "storm",
@@ -3147,11 +3363,12 @@
    "week": "A",
    "day": "tue",
    "hash": "41e6c19016c1",
-   "image": "storm/week_1/day/3.webp",
+   "image": "storm/week_1/day/2.webp",
    "paths": [
-    "storm/week_1/day/3.webp",
-    "storm/week_2/day/1.webp"
-   ]
+    "storm/week_1/day/2.webp",
+    "storm/week_3/day/2.webp"
+   ],
+   "previousImage": "storm/week_1/day/3.webp"
   },
   {
    "condition": "storm",
@@ -3159,11 +3376,12 @@
    "week": "A",
    "day": "wed",
    "hash": "c152b51ebfa5",
-   "image": "storm/week_2/day/2.webp",
+   "image": "storm/week_1/day/3.webp",
    "paths": [
-    "storm/week_2/day/2.webp",
-    "storm/week_3/day/7.webp"
-   ]
+    "storm/week_1/day/3.webp",
+    "storm/week_3/day/3.webp"
+   ],
+   "previousImage": "storm/week_2/day/2.webp"
   },
   {
    "condition": "storm",
@@ -3171,11 +3389,12 @@
    "week": "A",
    "day": "thu",
    "hash": "b08495c9d832",
-   "image": "storm/week_3/day/5.webp",
+   "image": "storm/week_1/day/4.webp",
    "paths": [
-    "storm/week_3/day/5.webp",
-    "storm/week_4/day/2.webp"
-   ]
+    "storm/week_1/day/4.webp",
+    "storm/week_3/day/4.webp"
+   ],
+   "previousImage": "storm/week_3/day/5.webp"
   },
   {
    "condition": "storm",
@@ -3183,12 +3402,12 @@
    "week": "A",
    "day": "fri",
    "hash": "20f3d07d3c47",
-   "image": "storm/week_3/day/3.webp",
+   "image": "storm/week_1/day/5.webp",
    "paths": [
-    "storm/week_1/day/2.webp",
-    "storm/week_3/day/3.webp",
-    "storm/week_4/day/7.webp"
-   ]
+    "storm/week_1/day/5.webp",
+    "storm/week_3/day/5.webp"
+   ],
+   "previousImage": "storm/week_3/day/3.webp"
   },
   {
    "condition": "storm",
@@ -3196,11 +3415,12 @@
    "week": "A",
    "day": "sat",
    "hash": "a02b40a1cdb7",
-   "image": "storm/week_2/day/3.webp",
+   "image": "storm/week_1/day/6.webp",
    "paths": [
-    "storm/week_2/day/3.webp",
+    "storm/week_1/day/6.webp",
     "storm/week_3/day/6.webp"
-   ]
+   ],
+   "previousImage": "storm/week_2/day/3.webp"
   },
   {
    "condition": "storm",
@@ -3208,10 +3428,12 @@
    "week": "A",
    "day": "sun",
    "hash": "f6562060468c",
-   "image": "storm/week_4/day/6.webp",
+   "image": "storm/week_1/day/7.webp",
    "paths": [
-    "storm/week_4/day/6.webp"
-   ]
+    "storm/week_1/day/7.webp",
+    "storm/week_3/day/7.webp"
+   ],
+   "previousImage": "storm/week_4/day/6.webp"
   },
   {
    "condition": "storm",
@@ -3219,11 +3441,12 @@
    "week": "B",
    "day": "mon",
    "hash": "30a82fcff9d4",
-   "image": "storm/week_2/day/6.webp",
+   "image": "storm/week_2/day/1.webp",
    "paths": [
-    "storm/week_1/day/6.webp",
-    "storm/week_2/day/6.webp"
-   ]
+    "storm/week_2/day/1.webp",
+    "storm/week_4/day/1.webp"
+   ],
+   "previousImage": "storm/week_2/day/6.webp"
   },
   {
    "condition": "storm",
@@ -3231,11 +3454,12 @@
    "week": "B",
    "day": "tue",
    "hash": "c2c016aabf8f",
-   "image": "storm/week_2/day/4.webp",
+   "image": "storm/week_2/day/2.webp",
    "paths": [
-    "storm/week_2/day/4.webp",
-    "storm/week_4/day/3.webp"
-   ]
+    "storm/week_2/day/2.webp",
+    "storm/week_4/day/2.webp"
+   ],
+   "previousImage": "storm/week_2/day/4.webp"
   },
   {
    "condition": "storm",
@@ -3243,10 +3467,12 @@
    "week": "B",
    "day": "wed",
    "hash": "ea95b93c8930",
-   "image": "storm/week_4/day/1.webp",
+   "image": "storm/week_2/day/3.webp",
    "paths": [
-    "storm/week_4/day/1.webp"
-   ]
+    "storm/week_2/day/3.webp",
+    "storm/week_4/day/3.webp"
+   ],
+   "previousImage": "storm/week_4/day/1.webp"
   },
   {
    "condition": "storm",
@@ -3254,11 +3480,12 @@
    "week": "B",
    "day": "thu",
    "hash": "8c5812bded23",
-   "image": "storm/week_4/day/5.webp",
+   "image": "storm/week_2/day/4.webp",
    "paths": [
-    "storm/week_3/day/2.webp",
-    "storm/week_4/day/5.webp"
-   ]
+    "storm/week_2/day/4.webp",
+    "storm/week_4/day/4.webp"
+   ],
+   "previousImage": "storm/week_4/day/5.webp"
   },
   {
    "condition": "storm",
@@ -3266,12 +3493,12 @@
    "week": "B",
    "day": "fri",
    "hash": "10cac134f9d9",
-   "image": "storm/week_3/day/1.webp",
+   "image": "storm/week_2/day/5.webp",
    "paths": [
-    "storm/week_1/day/1.webp",
-    "storm/week_3/day/1.webp",
-    "storm/week_4/day/4.webp"
-   ]
+    "storm/week_2/day/5.webp",
+    "storm/week_4/day/5.webp"
+   ],
+   "previousImage": "storm/week_3/day/1.webp"
   },
   {
    "condition": "storm",
@@ -3279,11 +3506,12 @@
    "week": "B",
    "day": "sat",
    "hash": "676b8843cb92",
-   "image": "storm/week_1/day/4.webp",
+   "image": "storm/week_2/day/6.webp",
    "paths": [
-    "storm/week_1/day/4.webp",
-    "storm/week_2/day/7.webp"
-   ]
+    "storm/week_2/day/6.webp",
+    "storm/week_4/day/6.webp"
+   ],
+   "previousImage": "storm/week_1/day/4.webp"
   },
   {
    "condition": "storm",
@@ -3291,11 +3519,12 @@
    "week": "B",
    "day": "sun",
    "hash": "777b9b465dbe",
-   "image": "storm/week_2/day/5.webp",
+   "image": "storm/week_2/day/7.webp",
    "paths": [
-    "storm/week_1/day/7.webp",
-    "storm/week_2/day/5.webp"
-   ]
+    "storm/week_2/day/7.webp",
+    "storm/week_4/day/7.webp"
+   ],
+   "previousImage": "storm/week_2/day/5.webp"
   },
   {
    "condition": "storm",
@@ -3303,13 +3532,14 @@
    "week": "A",
    "day": "mon",
    "hash": "742e1675a5a4",
-   "image": "storm/week_1/dusk/3.webp",
+   "image": "storm/week_1/dusk/1.webp",
    "paths": [
-    "storm/week_1/dusk/3.webp",
-    "storm/week_2/dusk/2.webp",
-    "storm/week_3/dusk/3.webp",
-    "storm/week_4/dusk/2.webp"
-   ]
+    "storm/week_1/dusk/1.webp",
+    "storm/week_2/dusk/1.webp",
+    "storm/week_3/dusk/1.webp",
+    "storm/week_4/dusk/1.webp"
+   ],
+   "previousImage": "storm/week_1/dusk/3.webp"
   },
   {
    "condition": "storm",
@@ -3317,13 +3547,14 @@
    "week": "A",
    "day": "tue",
    "hash": "adc69e7b4a17",
-   "image": "storm/week_2/dusk/5.webp",
+   "image": "storm/week_1/dusk/2.webp",
    "paths": [
-    "storm/week_1/dusk/1.webp",
-    "storm/week_2/dusk/5.webp",
-    "storm/week_3/dusk/1.webp",
-    "storm/week_4/dusk/5.webp"
-   ]
+    "storm/week_1/dusk/2.webp",
+    "storm/week_2/dusk/2.webp",
+    "storm/week_3/dusk/2.webp",
+    "storm/week_4/dusk/2.webp"
+   ],
+   "previousImage": "storm/week_2/dusk/5.webp"
   },
   {
    "condition": "storm",
@@ -3331,13 +3562,14 @@
    "week": "A",
    "day": "wed",
    "hash": "53d4228e24c8",
-   "image": "storm/week_1/dusk/4.webp",
+   "image": "storm/week_1/dusk/3.webp",
    "paths": [
-    "storm/week_1/dusk/4.webp",
-    "storm/week_2/dusk/1.webp",
-    "storm/week_3/dusk/4.webp",
-    "storm/week_4/dusk/1.webp"
-   ]
+    "storm/week_1/dusk/3.webp",
+    "storm/week_2/dusk/3.webp",
+    "storm/week_3/dusk/3.webp",
+    "storm/week_4/dusk/3.webp"
+   ],
+   "previousImage": "storm/week_1/dusk/4.webp"
   },
   {
    "condition": "storm",
@@ -3345,13 +3577,14 @@
    "week": "A",
    "day": "thu",
    "hash": "a61146a38b06",
-   "image": "storm/week_1/dusk/2.webp",
+   "image": "storm/week_1/dusk/4.webp",
    "paths": [
-    "storm/week_1/dusk/2.webp",
-    "storm/week_2/dusk/3.webp",
-    "storm/week_3/dusk/2.webp",
-    "storm/week_4/dusk/3.webp"
-   ]
+    "storm/week_1/dusk/4.webp",
+    "storm/week_2/dusk/4.webp",
+    "storm/week_3/dusk/4.webp",
+    "storm/week_4/dusk/4.webp"
+   ],
+   "previousImage": "storm/week_1/dusk/2.webp"
   },
   {
    "condition": "storm",
@@ -3359,13 +3592,14 @@
    "week": "A",
    "day": "fri",
    "hash": "e0089512238b",
-   "image": "storm/week_1/dusk/7.webp",
+   "image": "storm/week_1/dusk/5.webp",
    "paths": [
-    "storm/week_1/dusk/7.webp",
-    "storm/week_2/dusk/6.webp",
-    "storm/week_3/dusk/7.webp",
-    "storm/week_4/dusk/6.webp"
-   ]
+    "storm/week_1/dusk/5.webp",
+    "storm/week_2/dusk/5.webp",
+    "storm/week_3/dusk/5.webp",
+    "storm/week_4/dusk/5.webp"
+   ],
+   "previousImage": "storm/week_1/dusk/7.webp"
   },
   {
    "condition": "storm",
@@ -3373,13 +3607,14 @@
    "week": "A",
    "day": "sat",
    "hash": "f6818069c8bd",
-   "image": "storm/week_2/dusk/4.webp",
+   "image": "storm/week_1/dusk/6.webp",
    "paths": [
     "storm/week_1/dusk/6.webp",
-    "storm/week_2/dusk/4.webp",
+    "storm/week_2/dusk/6.webp",
     "storm/week_3/dusk/6.webp",
-    "storm/week_4/dusk/4.webp"
-   ]
+    "storm/week_4/dusk/6.webp"
+   ],
+   "previousImage": "storm/week_2/dusk/4.webp"
   },
   {
    "condition": "storm",
@@ -3387,13 +3622,14 @@
    "week": "A",
    "day": "sun",
    "hash": "e5b510c8a1e4",
-   "image": "storm/week_1/dusk/5.webp",
+   "image": "storm/week_1/dusk/7.webp",
    "paths": [
-    "storm/week_1/dusk/5.webp",
+    "storm/week_1/dusk/7.webp",
     "storm/week_2/dusk/7.webp",
-    "storm/week_3/dusk/5.webp",
+    "storm/week_3/dusk/7.webp",
     "storm/week_4/dusk/7.webp"
-   ]
+   ],
+   "previousImage": "storm/week_1/dusk/5.webp"
   },
   {
    "condition": "storm",
@@ -3401,13 +3637,14 @@
    "week": "A",
    "day": "mon",
    "hash": "9851963ee129",
-   "image": "storm/week_1/night/5.webp",
+   "image": "storm/week_1/night/1.webp",
    "paths": [
-    "storm/week_1/night/5.webp",
-    "storm/week_2/night/7.webp",
-    "storm/week_3/night/5.webp",
-    "storm/week_4/night/7.webp"
-   ]
+    "storm/week_1/night/1.webp",
+    "storm/week_2/night/1.webp",
+    "storm/week_3/night/1.webp",
+    "storm/week_4/night/1.webp"
+   ],
+   "previousImage": "storm/week_1/night/5.webp"
   },
   {
    "condition": "storm",
@@ -3415,13 +3652,14 @@
    "week": "A",
    "day": "tue",
    "hash": "2fede244e0d0",
-   "image": "storm/week_1/night/4.webp",
+   "image": "storm/week_1/night/2.webp",
    "paths": [
-    "storm/week_1/night/4.webp",
-    "storm/week_2/night/6.webp",
-    "storm/week_3/night/4.webp",
-    "storm/week_4/night/6.webp"
-   ]
+    "storm/week_1/night/2.webp",
+    "storm/week_2/night/2.webp",
+    "storm/week_3/night/2.webp",
+    "storm/week_4/night/2.webp"
+   ],
+   "previousImage": "storm/week_1/night/4.webp"
   },
   {
    "condition": "storm",
@@ -3429,13 +3667,14 @@
    "week": "A",
    "day": "wed",
    "hash": "faaf0b2003be",
-   "image": "storm/week_2/night/1.webp",
+   "image": "storm/week_1/night/3.webp",
    "paths": [
-    "storm/week_1/night/6.webp",
-    "storm/week_2/night/1.webp",
-    "storm/week_3/night/6.webp",
-    "storm/week_4/night/1.webp"
-   ]
+    "storm/week_1/night/3.webp",
+    "storm/week_2/night/3.webp",
+    "storm/week_3/night/3.webp",
+    "storm/week_4/night/3.webp"
+   ],
+   "previousImage": "storm/week_2/night/1.webp"
   },
   {
    "condition": "storm",
@@ -3443,13 +3682,14 @@
    "week": "A",
    "day": "thu",
    "hash": "ae79261d2852",
-   "image": "storm/week_2/night/4.webp",
+   "image": "storm/week_1/night/4.webp",
    "paths": [
-    "storm/week_1/night/2.webp",
+    "storm/week_1/night/4.webp",
     "storm/week_2/night/4.webp",
-    "storm/week_3/night/2.webp",
+    "storm/week_3/night/4.webp",
     "storm/week_4/night/4.webp"
-   ]
+   ],
+   "previousImage": "storm/week_2/night/4.webp"
   },
   {
    "condition": "storm",
@@ -3457,13 +3697,14 @@
    "week": "A",
    "day": "fri",
    "hash": "cd855e5f60e9",
-   "image": "storm/week_2/night/3.webp",
+   "image": "storm/week_1/night/5.webp",
    "paths": [
-    "storm/week_1/night/3.webp",
-    "storm/week_2/night/3.webp",
-    "storm/week_3/night/3.webp",
-    "storm/week_4/night/3.webp"
-   ]
+    "storm/week_1/night/5.webp",
+    "storm/week_2/night/5.webp",
+    "storm/week_3/night/5.webp",
+    "storm/week_4/night/5.webp"
+   ],
+   "previousImage": "storm/week_2/night/3.webp"
   },
   {
    "condition": "storm",
@@ -3471,13 +3712,14 @@
    "week": "A",
    "day": "sat",
    "hash": "2d2e6dd5d7fd",
-   "image": "storm/week_2/night/5.webp",
+   "image": "storm/week_1/night/6.webp",
    "paths": [
-    "storm/week_1/night/1.webp",
-    "storm/week_2/night/5.webp",
-    "storm/week_3/night/1.webp",
-    "storm/week_4/night/5.webp"
-   ]
+    "storm/week_1/night/6.webp",
+    "storm/week_2/night/6.webp",
+    "storm/week_3/night/6.webp",
+    "storm/week_4/night/6.webp"
+   ],
+   "previousImage": "storm/week_2/night/5.webp"
   },
   {
    "condition": "storm",
@@ -3488,9 +3730,9 @@
    "image": "storm/week_1/night/7.webp",
    "paths": [
     "storm/week_1/night/7.webp",
-    "storm/week_2/night/2.webp",
+    "storm/week_2/night/7.webp",
     "storm/week_3/night/7.webp",
-    "storm/week_4/night/2.webp"
+    "storm/week_4/night/7.webp"
    ]
   },
   {
@@ -3499,13 +3741,14 @@
    "week": "A",
    "day": "mon",
    "hash": "c121631aca0a",
-   "image": "wind/week_1/dawn/2.webp",
+   "image": "wind/week_1/dawn/1.webp",
    "paths": [
-    "wind/week_1/dawn/2.webp",
-    "wind/week_2/dawn/3.webp",
-    "wind/week_3/dawn/2.webp",
-    "wind/week_4/dawn/6.webp"
-   ]
+    "wind/week_1/dawn/1.webp",
+    "wind/week_2/dawn/1.webp",
+    "wind/week_3/dawn/1.webp",
+    "wind/week_4/dawn/1.webp"
+   ],
+   "previousImage": "wind/week_1/dawn/2.webp"
   },
   {
    "condition": "wind",
@@ -3513,13 +3756,14 @@
    "week": "A",
    "day": "tue",
    "hash": "3556004712b7",
-   "image": "wind/week_2/dawn/5.webp",
+   "image": "wind/week_1/dawn/2.webp",
    "paths": [
-    "wind/week_1/dawn/3.webp",
-    "wind/week_2/dawn/5.webp",
-    "wind/week_3/dawn/1.webp",
-    "wind/week_4/dawn/5.webp"
-   ]
+    "wind/week_1/dawn/2.webp",
+    "wind/week_2/dawn/2.webp",
+    "wind/week_3/dawn/2.webp",
+    "wind/week_4/dawn/2.webp"
+   ],
+   "previousImage": "wind/week_2/dawn/5.webp"
   },
   {
    "condition": "wind",
@@ -3527,13 +3771,14 @@
    "week": "A",
    "day": "wed",
    "hash": "c66c7fd4f50e",
-   "image": "wind/week_2/dawn/4.webp",
+   "image": "wind/week_1/dawn/3.webp",
    "paths": [
-    "wind/week_1/dawn/4.webp",
-    "wind/week_2/dawn/4.webp",
+    "wind/week_1/dawn/3.webp",
+    "wind/week_2/dawn/3.webp",
     "wind/week_3/dawn/3.webp",
-    "wind/week_4/dawn/4.webp"
-   ]
+    "wind/week_4/dawn/3.webp"
+   ],
+   "previousImage": "wind/week_2/dawn/4.webp"
   },
   {
    "condition": "wind",
@@ -3541,13 +3786,14 @@
    "week": "A",
    "day": "thu",
    "hash": "45b7693ad9e4",
-   "image": "wind/week_1/dawn/6.webp",
+   "image": "wind/week_1/dawn/4.webp",
    "paths": [
-    "wind/week_1/dawn/6.webp",
-    "wind/week_2/dawn/2.webp",
-    "wind/week_3/dawn/6.webp",
-    "wind/week_4/dawn/3.webp"
-   ]
+    "wind/week_1/dawn/4.webp",
+    "wind/week_2/dawn/4.webp",
+    "wind/week_3/dawn/4.webp",
+    "wind/week_4/dawn/4.webp"
+   ],
+   "previousImage": "wind/week_1/dawn/6.webp"
   },
   {
    "condition": "wind",
@@ -3555,13 +3801,14 @@
    "week": "A",
    "day": "fri",
    "hash": "f1a06c34c049",
-   "image": "wind/week_4/dawn/1.webp",
+   "image": "wind/week_1/dawn/5.webp",
    "paths": [
-    "wind/week_1/dawn/1.webp",
-    "wind/week_2/dawn/7.webp",
-    "wind/week_3/dawn/4.webp",
-    "wind/week_4/dawn/1.webp"
-   ]
+    "wind/week_1/dawn/5.webp",
+    "wind/week_2/dawn/5.webp",
+    "wind/week_3/dawn/5.webp",
+    "wind/week_4/dawn/5.webp"
+   ],
+   "previousImage": "wind/week_4/dawn/1.webp"
   },
   {
    "condition": "wind",
@@ -3569,13 +3816,14 @@
    "week": "A",
    "day": "sat",
    "hash": "d0a60d414066",
-   "image": "wind/week_1/dawn/7.webp",
+   "image": "wind/week_1/dawn/6.webp",
    "paths": [
-    "wind/week_1/dawn/7.webp",
+    "wind/week_1/dawn/6.webp",
     "wind/week_2/dawn/6.webp",
-    "wind/week_3/dawn/7.webp",
-    "wind/week_4/dawn/7.webp"
-   ]
+    "wind/week_3/dawn/6.webp",
+    "wind/week_4/dawn/6.webp"
+   ],
+   "previousImage": "wind/week_1/dawn/7.webp"
   },
   {
    "condition": "wind",
@@ -3583,13 +3831,14 @@
    "week": "A",
    "day": "sun",
    "hash": "337d1a2fe2c2",
-   "image": "wind/week_1/dawn/5.webp",
+   "image": "wind/week_1/dawn/7.webp",
    "paths": [
-    "wind/week_1/dawn/5.webp",
-    "wind/week_2/dawn/1.webp",
-    "wind/week_3/dawn/5.webp",
-    "wind/week_4/dawn/2.webp"
-   ]
+    "wind/week_1/dawn/7.webp",
+    "wind/week_2/dawn/7.webp",
+    "wind/week_3/dawn/7.webp",
+    "wind/week_4/dawn/7.webp"
+   ],
+   "previousImage": "wind/week_1/dawn/5.webp"
   },
   {
    "condition": "wind",
@@ -3597,11 +3846,12 @@
    "week": "A",
    "day": "mon",
    "hash": "232bde6ed095",
-   "image": "wind/week_1/day/5.webp",
+   "image": "wind/week_1/day/1.webp",
    "paths": [
-    "wind/week_1/day/5.webp",
-    "wind/week_2/day/2.webp"
-   ]
+    "wind/week_1/day/1.webp",
+    "wind/week_3/day/1.webp"
+   ],
+   "previousImage": "wind/week_1/day/5.webp"
   },
   {
    "condition": "wind",
@@ -3609,11 +3859,12 @@
    "week": "A",
    "day": "tue",
    "hash": "4d3a786acf48",
-   "image": "wind/week_2/day/1.webp",
+   "image": "wind/week_1/day/2.webp",
    "paths": [
-    "wind/week_2/day/1.webp",
-    "wind/week_3/day/4.webp"
-   ]
+    "wind/week_1/day/2.webp",
+    "wind/week_3/day/2.webp"
+   ],
+   "previousImage": "wind/week_2/day/1.webp"
   },
   {
    "condition": "wind",
@@ -3621,11 +3872,12 @@
    "week": "A",
    "day": "wed",
    "hash": "eb217457f58d",
-   "image": "wind/week_1/day/7.webp",
+   "image": "wind/week_1/day/3.webp",
    "paths": [
-    "wind/week_1/day/7.webp",
-    "wind/week_4/day/4.webp"
-   ]
+    "wind/week_1/day/3.webp",
+    "wind/week_3/day/3.webp"
+   ],
+   "previousImage": "wind/week_1/day/7.webp"
   },
   {
    "condition": "wind",
@@ -3633,11 +3885,12 @@
    "week": "A",
    "day": "thu",
    "hash": "e3f0d69977ca",
-   "image": "wind/week_2/day/3.webp",
+   "image": "wind/week_1/day/4.webp",
    "paths": [
-    "wind/week_2/day/3.webp",
-    "wind/week_4/day/3.webp"
-   ]
+    "wind/week_1/day/4.webp",
+    "wind/week_3/day/4.webp"
+   ],
+   "previousImage": "wind/week_2/day/3.webp"
   },
   {
    "condition": "wind",
@@ -3645,11 +3898,12 @@
    "week": "A",
    "day": "fri",
    "hash": "19801ea908d0",
-   "image": "wind/week_3/day/1.webp",
+   "image": "wind/week_1/day/5.webp",
    "paths": [
-    "wind/week_1/day/6.webp",
-    "wind/week_3/day/1.webp"
-   ]
+    "wind/week_1/day/5.webp",
+    "wind/week_3/day/5.webp"
+   ],
+   "previousImage": "wind/week_3/day/1.webp"
   },
   {
    "condition": "wind",
@@ -3657,11 +3911,12 @@
    "week": "A",
    "day": "sat",
    "hash": "f32e33e76e01",
-   "image": "wind/week_1/day/4.webp",
+   "image": "wind/week_1/day/6.webp",
    "paths": [
-    "wind/week_1/day/4.webp",
-    "wind/week_4/day/5.webp"
-   ]
+    "wind/week_1/day/6.webp",
+    "wind/week_3/day/6.webp"
+   ],
+   "previousImage": "wind/week_1/day/4.webp"
   },
   {
    "condition": "wind",
@@ -3669,11 +3924,12 @@
    "week": "A",
    "day": "sun",
    "hash": "92ef82c2d34a",
-   "image": "wind/week_3/day/3.webp",
+   "image": "wind/week_1/day/7.webp",
    "paths": [
-    "wind/week_3/day/3.webp",
-    "wind/week_4/day/1.webp"
-   ]
+    "wind/week_1/day/7.webp",
+    "wind/week_3/day/7.webp"
+   ],
+   "previousImage": "wind/week_3/day/3.webp"
   },
   {
    "condition": "wind",
@@ -3681,11 +3937,12 @@
    "week": "B",
    "day": "mon",
    "hash": "05cea2b8788d",
-   "image": "wind/week_2/day/4.webp",
+   "image": "wind/week_2/day/1.webp",
    "paths": [
-    "wind/week_1/day/1.webp",
-    "wind/week_2/day/4.webp"
-   ]
+    "wind/week_2/day/1.webp",
+    "wind/week_4/day/1.webp"
+   ],
+   "previousImage": "wind/week_2/day/4.webp"
   },
   {
    "condition": "wind",
@@ -3693,11 +3950,12 @@
    "week": "B",
    "day": "tue",
    "hash": "330bfae094d5",
-   "image": "wind/week_2/day/6.webp",
+   "image": "wind/week_2/day/2.webp",
    "paths": [
-    "wind/week_2/day/6.webp",
-    "wind/week_3/day/2.webp"
-   ]
+    "wind/week_2/day/2.webp",
+    "wind/week_4/day/2.webp"
+   ],
+   "previousImage": "wind/week_2/day/6.webp"
   },
   {
    "condition": "wind",
@@ -3705,11 +3963,12 @@
    "week": "B",
    "day": "wed",
    "hash": "9bada961b0a7",
-   "image": "wind/week_1/day/3.webp",
+   "image": "wind/week_2/day/3.webp",
    "paths": [
-    "wind/week_1/day/3.webp",
-    "wind/week_3/day/6.webp"
-   ]
+    "wind/week_2/day/3.webp",
+    "wind/week_4/day/3.webp"
+   ],
+   "previousImage": "wind/week_1/day/3.webp"
   },
   {
    "condition": "wind",
@@ -3717,11 +3976,12 @@
    "week": "B",
    "day": "thu",
    "hash": "55504e5b8143",
-   "image": "wind/week_4/day/7.webp",
+   "image": "wind/week_2/day/4.webp",
    "paths": [
-    "wind/week_2/day/7.webp",
-    "wind/week_4/day/7.webp"
-   ]
+    "wind/week_2/day/4.webp",
+    "wind/week_4/day/4.webp"
+   ],
+   "previousImage": "wind/week_4/day/7.webp"
   },
   {
    "condition": "wind",
@@ -3729,11 +3989,12 @@
    "week": "B",
    "day": "fri",
    "hash": "ab2cbee2d73d",
-   "image": "wind/week_4/day/6.webp",
+   "image": "wind/week_2/day/5.webp",
    "paths": [
-    "wind/week_3/day/7.webp",
-    "wind/week_4/day/6.webp"
-   ]
+    "wind/week_2/day/5.webp",
+    "wind/week_4/day/5.webp"
+   ],
+   "previousImage": "wind/week_4/day/6.webp"
   },
   {
    "condition": "wind",
@@ -3741,11 +4002,12 @@
    "week": "B",
    "day": "sat",
    "hash": "5df9d64aa037",
-   "image": "wind/week_4/day/2.webp",
+   "image": "wind/week_2/day/6.webp",
    "paths": [
-    "wind/week_3/day/5.webp",
-    "wind/week_4/day/2.webp"
-   ]
+    "wind/week_2/day/6.webp",
+    "wind/week_4/day/6.webp"
+   ],
+   "previousImage": "wind/week_4/day/2.webp"
   },
   {
    "condition": "wind",
@@ -3753,11 +4015,12 @@
    "week": "B",
    "day": "sun",
    "hash": "35c91a0ddfec",
-   "image": "wind/week_1/day/2.webp",
+   "image": "wind/week_2/day/7.webp",
    "paths": [
-    "wind/week_1/day/2.webp",
-    "wind/week_2/day/5.webp"
-   ]
+    "wind/week_2/day/7.webp",
+    "wind/week_4/day/7.webp"
+   ],
+   "previousImage": "wind/week_1/day/2.webp"
   },
   {
    "condition": "wind",
@@ -3770,7 +4033,7 @@
     "wind/week_1/dusk/1.webp",
     "wind/week_2/dusk/1.webp",
     "wind/week_3/dusk/1.webp",
-    "wind/week_4/dusk/3.webp"
+    "wind/week_4/dusk/1.webp"
    ]
   },
   {
@@ -3779,13 +4042,14 @@
    "week": "A",
    "day": "tue",
    "hash": "bdc6900c5689",
-   "image": "wind/week_1/dusk/4.webp",
+   "image": "wind/week_1/dusk/2.webp",
    "paths": [
-    "wind/week_1/dusk/4.webp",
-    "wind/week_2/dusk/5.webp",
-    "wind/week_3/dusk/4.webp",
-    "wind/week_4/dusk/7.webp"
-   ]
+    "wind/week_1/dusk/2.webp",
+    "wind/week_2/dusk/2.webp",
+    "wind/week_3/dusk/2.webp",
+    "wind/week_4/dusk/2.webp"
+   ],
+   "previousImage": "wind/week_1/dusk/4.webp"
   },
   {
    "condition": "wind",
@@ -3793,13 +4057,14 @@
    "week": "A",
    "day": "wed",
    "hash": "12cd74b592e8",
-   "image": "wind/week_1/dusk/7.webp",
+   "image": "wind/week_1/dusk/3.webp",
    "paths": [
-    "wind/week_1/dusk/7.webp",
+    "wind/week_1/dusk/3.webp",
     "wind/week_2/dusk/3.webp",
-    "wind/week_3/dusk/7.webp",
-    "wind/week_4/dusk/4.webp"
-   ]
+    "wind/week_3/dusk/3.webp",
+    "wind/week_4/dusk/3.webp"
+   ],
+   "previousImage": "wind/week_1/dusk/7.webp"
   },
   {
    "condition": "wind",
@@ -3807,13 +4072,14 @@
    "week": "A",
    "day": "thu",
    "hash": "17c00a47cba2",
-   "image": "wind/week_2/dusk/6.webp",
+   "image": "wind/week_1/dusk/4.webp",
    "paths": [
-    "wind/week_1/dusk/5.webp",
-    "wind/week_2/dusk/6.webp",
-    "wind/week_3/dusk/2.webp",
-    "wind/week_4/dusk/6.webp"
-   ]
+    "wind/week_1/dusk/4.webp",
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/4.webp"
+   ],
+   "previousImage": "wind/week_2/dusk/6.webp"
   },
   {
    "condition": "wind",
@@ -3821,13 +4087,14 @@
    "week": "A",
    "day": "fri",
    "hash": "ec12d1747d09",
-   "image": "wind/week_4/dusk/1.webp",
+   "image": "wind/week_1/dusk/5.webp",
    "paths": [
-    "wind/week_1/dusk/2.webp",
-    "wind/week_2/dusk/7.webp",
-    "wind/week_3/dusk/6.webp",
-    "wind/week_4/dusk/1.webp"
-   ]
+    "wind/week_1/dusk/5.webp",
+    "wind/week_2/dusk/5.webp",
+    "wind/week_3/dusk/5.webp",
+    "wind/week_4/dusk/5.webp"
+   ],
+   "previousImage": "wind/week_4/dusk/1.webp"
   },
   {
    "condition": "wind",
@@ -3835,13 +4102,14 @@
    "week": "A",
    "day": "sat",
    "hash": "b78d6f432fb7",
-   "image": "wind/week_2/dusk/2.webp",
+   "image": "wind/week_1/dusk/6.webp",
    "paths": [
     "wind/week_1/dusk/6.webp",
-    "wind/week_2/dusk/2.webp",
-    "wind/week_3/dusk/5.webp",
-    "wind/week_4/dusk/2.webp"
-   ]
+    "wind/week_2/dusk/6.webp",
+    "wind/week_3/dusk/6.webp",
+    "wind/week_4/dusk/6.webp"
+   ],
+   "previousImage": "wind/week_2/dusk/2.webp"
   },
   {
    "condition": "wind",
@@ -3849,13 +4117,14 @@
    "week": "A",
    "day": "sun",
    "hash": "38635f77f610",
-   "image": "wind/week_1/dusk/3.webp",
+   "image": "wind/week_1/dusk/7.webp",
    "paths": [
-    "wind/week_1/dusk/3.webp",
-    "wind/week_2/dusk/4.webp",
-    "wind/week_3/dusk/3.webp",
-    "wind/week_4/dusk/5.webp"
-   ]
+    "wind/week_1/dusk/7.webp",
+    "wind/week_2/dusk/7.webp",
+    "wind/week_3/dusk/7.webp",
+    "wind/week_4/dusk/7.webp"
+   ],
+   "previousImage": "wind/week_1/dusk/3.webp"
   },
   {
    "condition": "wind",
@@ -3863,13 +4132,14 @@
    "week": "A",
    "day": "mon",
    "hash": "eb7873fd7acb",
-   "image": "wind/week_2/night/4.webp",
+   "image": "wind/week_1/night/1.webp",
    "paths": [
-    "wind/week_1/night/6.webp",
-    "wind/week_2/night/4.webp",
-    "wind/week_3/night/6.webp",
-    "wind/week_4/night/4.webp"
-   ]
+    "wind/week_1/night/1.webp",
+    "wind/week_2/night/1.webp",
+    "wind/week_3/night/1.webp",
+    "wind/week_4/night/1.webp"
+   ],
+   "previousImage": "wind/week_2/night/4.webp"
   },
   {
    "condition": "wind",
@@ -3877,13 +4147,14 @@
    "week": "A",
    "day": "tue",
    "hash": "f6b55aacae0a",
-   "image": "wind/week_2/night/5.webp",
+   "image": "wind/week_1/night/2.webp",
    "paths": [
-    "wind/week_1/night/7.webp",
-    "wind/week_2/night/5.webp",
-    "wind/week_3/night/7.webp",
-    "wind/week_4/night/5.webp"
-   ]
+    "wind/week_1/night/2.webp",
+    "wind/week_2/night/2.webp",
+    "wind/week_3/night/2.webp",
+    "wind/week_4/night/2.webp"
+   ],
+   "previousImage": "wind/week_2/night/5.webp"
   },
   {
    "condition": "wind",
@@ -3894,9 +4165,9 @@
    "image": "wind/week_1/night/3.webp",
    "paths": [
     "wind/week_1/night/3.webp",
-    "wind/week_2/night/1.webp",
+    "wind/week_2/night/3.webp",
     "wind/week_3/night/3.webp",
-    "wind/week_4/night/1.webp"
+    "wind/week_4/night/3.webp"
    ]
   },
   {
@@ -3905,13 +4176,14 @@
    "week": "A",
    "day": "thu",
    "hash": "bfc08af75267",
-   "image": "wind/week_2/night/3.webp",
+   "image": "wind/week_1/night/4.webp",
    "paths": [
-    "wind/week_1/night/5.webp",
-    "wind/week_2/night/3.webp",
-    "wind/week_3/night/5.webp",
-    "wind/week_4/night/3.webp"
-   ]
+    "wind/week_1/night/4.webp",
+    "wind/week_2/night/4.webp",
+    "wind/week_3/night/4.webp",
+    "wind/week_4/night/4.webp"
+   ],
+   "previousImage": "wind/week_2/night/3.webp"
   },
   {
    "condition": "wind",
@@ -3919,13 +4191,14 @@
    "week": "A",
    "day": "fri",
    "hash": "9ae18d55d0c1",
-   "image": "wind/week_2/night/7.webp",
+   "image": "wind/week_1/night/5.webp",
    "paths": [
-    "wind/week_1/night/4.webp",
-    "wind/week_2/night/7.webp",
-    "wind/week_3/night/4.webp",
-    "wind/week_4/night/7.webp"
-   ]
+    "wind/week_1/night/5.webp",
+    "wind/week_2/night/5.webp",
+    "wind/week_3/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "previousImage": "wind/week_2/night/7.webp"
   },
   {
    "condition": "wind",
@@ -3933,13 +4206,14 @@
    "week": "A",
    "day": "sat",
    "hash": "be8276f7384b",
-   "image": "wind/week_1/night/2.webp",
+   "image": "wind/week_1/night/6.webp",
    "paths": [
-    "wind/week_1/night/2.webp",
+    "wind/week_1/night/6.webp",
     "wind/week_2/night/6.webp",
-    "wind/week_3/night/2.webp",
+    "wind/week_3/night/6.webp",
     "wind/week_4/night/6.webp"
-   ]
+   ],
+   "previousImage": "wind/week_1/night/2.webp"
   },
   {
    "condition": "wind",
@@ -3947,13 +4221,14 @@
    "week": "A",
    "day": "sun",
    "hash": "6fa740fc3795",
-   "image": "wind/week_1/night/1.webp",
+   "image": "wind/week_1/night/7.webp",
    "paths": [
-    "wind/week_1/night/1.webp",
-    "wind/week_2/night/2.webp",
-    "wind/week_3/night/1.webp",
-    "wind/week_4/night/2.webp"
-   ]
+    "wind/week_1/night/7.webp",
+    "wind/week_2/night/7.webp",
+    "wind/week_3/night/7.webp",
+    "wind/week_4/night/7.webp"
+   ],
+   "previousImage": "wind/week_1/night/1.webp"
   }
  ]
 }
