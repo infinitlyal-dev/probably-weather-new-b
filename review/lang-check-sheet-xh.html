@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>PW lang-check sheet — isiXhosa — 0 proposals</title><style>
+body{background:#14161a;color:#eee;font-family:Segoe UI,sans-serif;margin:0;padding:16px;line-height:1.4}
+h1{font-size:18px;margin:0}.bar{position:sticky;top:0;background:#14161a;padding:10px 0;z-index:5;display:flex;gap:16px;align-items:center;border-bottom:1px solid #333;flex-wrap:wrap}
+#count{font-weight:800;color:#ffd700}button{background:#ffd700;color:#111;border:none;border-radius:999px;padding:10px 22px;font-weight:800;font-size:14px;cursor:pointer}
+.intro{color:#bbb;font-size:13px;max-width:900px;margin:10px 0}
+.row{background:#1e2126;border-radius:10px;padding:12px 14px;margin:12px 0;border:2px solid transparent}.row.accept{border-color:#3cb371}.row.reject{border-color:#d9534f}.row.later{border-color:#888}
+.head{font-size:12px;color:#aaa}code{color:#9cf}.en{color:#bbb;margin-top:4px}.cur,.prop{margin-top:4px;font-size:15px}.prop{color:#fff}
+mark{padding:0 3px;border-radius:3px}mark.from{background:#6b2b2b;color:#fff}mark.to{background:#2b6b3a;color:#fff}
+.why{font-size:12px;color:#ccc;margin:6px 0 0 18px;padding:0}.why li{margin:2px 0}
+.dec{margin-top:8px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}label{cursor:pointer;user-select:none;font-weight:700}input[type=radio]{transform:scale(1.3);margin-right:4px}
+.note{flex:1;min-width:220px;background:#111;color:#eee;border:1px solid #444;border-radius:6px;padding:6px 8px}
+</style></head><body>
+<div class="bar"><h1>lang-check corrections — isiXhosa</h1><span id="count">0 decided</span><button onclick="exportDecisions()">Export lang-check-decisions-xh.json</button></div>
+<div class="intro">0 proposed corrections. Only lines with strong corpus evidence are here; the other 105 triaged lines stay in <code>review/lang-check-triage-xh.md</code> for a native reader. Red = current token, green = proposed. Nothing changes in the banks until the export is applied. Decisions persist in this browser.</div>
+
+<script>
+const KEY='lang-check-sheet-xh';
+const state=JSON.parse(localStorage.getItem(KEY)||'{}');
+const rows=[...document.querySelectorAll('.row')];
+function paint(){let n=0;for(const r of rows){const s=state[r.dataset.id]||{};r.classList.remove('accept','reject','later');if(s.decision){r.classList.add(s.decision);n++;const rb=r.querySelector('input[value="'+s.decision+'"]');if(rb)rb.checked=true;}const note=r.querySelector('.note');if(note&&s.note!=null)note.value=s.note;}document.getElementById('count').textContent=n+' / '+rows.length+' decided';}
+document.addEventListener('change',e=>{if(e.target.type==='radio'){const id=e.target.name.slice(2);state[id]={...(state[id]||{}),decision:e.target.value};localStorage.setItem(KEY,JSON.stringify(state));paint();}});
+document.addEventListener('input',e=>{if(e.target.classList.contains('note')){const id=e.target.dataset.id;state[id]={...(state[id]||{}),note:e.target.value};localStorage.setItem(KEY,JSON.stringify(state));}});
+const proposals=[];
+function exportDecisions(){const out={generated:new Date().toISOString(),lang:'xh',decisions:proposals.map(p=>({...p,...(state[p.id]||{})}))};const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lang-check-decisions-xh.json';a.click();}
+paint();
+</script></body></html>

@@ -102,6 +102,7 @@ Language strings live in `assets/app.js` in the `translations` object.
 6. When replacing a file, replace the ENTIRE file, not sections
 7. Add console.log debug lines for weather logic decisions (condition voting, source weights) — helps Al debug via browser console
 8. Keep prompts focused — do one thing well per session
+9. **Every isiZulu, isiXhosa and Sesotho transcreation runs through lang-check before it is wired** (Al's ruling 2026-09-06): `node scripts/lang-check/triage.mjs --lang <zu|xh|st> --file <set.json>` on the set, and `scripts/apply-provisional-drafts.mjs` holds triage-high lines by itself. A line the checker rates triage-high is not wired until a native rules. Sesotho follows the South African orthography (`jwale`, `dipula`, `tjhesa`).
 
 ## CURRENT OUTSTANDING TASKS
 See `.claude/tasks/BACKLOG.md` for the full task list.

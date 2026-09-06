@@ -18,7 +18,25 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 
 const APPLY = process.argv.includes('--apply');
+const SKIP_LANG_CHECK = process.argv.includes('--skip-lang-check');
 const LANGS = ['zu', 'xh', 'st'];
+
+// lang-check gate (Al's ruling 2026-09-06): every zu/xh/st line runs through the corpus-backed
+// checker before it is wired. A draft the checker rates triage-high is HELD for a native, not
+// applied; lower doubts are applied but listed. Refuses to run without the corpus cache unless
+// --skip-lang-check is passed explicitly (and says so).
+async function langCheckGate(lang, pending, draftByKey) {
+  if (SKIP_LANG_CHECK) { console.warn(`${lang}: lang-check gate SKIPPED by flag — every applied line is unchecked`); return { held: [], notes: [] }; }
+  if (!pending.length) return { held: [], notes: [] };
+  let gateLines, writeGateReport;
+  try { ({ gateLines, writeGateReport } = await import('./lang-check/lib/gate.mjs')); }
+  catch (e) { console.error(`${lang}: lang-check unavailable (${e.message}). Build the cache (node scripts/lang-check/fetch-corpora.mjs && node scripts/lang-check.mjs --build-index) or pass --skip-lang-check to apply unchecked.`); process.exit(1); }
+  let result;
+  try { result = gateLines(lang, pending.map((p) => ({ ...p, en: draftByKey.get(p.key)?.en || '', text: p.value }))); }
+  catch (e) { console.error(`${lang}: lang-check failed (${e.message}). Build the cache or pass --skip-lang-check.`); process.exit(1); }
+  writeGateReport(lang, result, `review/lang-check-gate-${lang}.md`);
+  return { held: result.held, notes: result.noted };
+}
 const readJsonl = (p) => (existsSync(p) ? readFileSync(p, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : null);
 
 // key "witty.<bin>[<idx>]" -> { group, bin, idx }
@@ -88,6 +106,14 @@ for (const lang of LANGS) {
     pending.push({ key: v.key, group: pk.group, bin: pk.bin, idx: pk.idx, value: val, confidence: d.confidence ?? null });
   }
 
+  // lang-check gate: hold triage-high drafts (revert their in-memory fill), keep the rest.
+  const gate = await langCheckGate(lang, pending, draftByKey);
+  const heldKeys = new Map(gate.held.map((hld) => [hld.key, hld]));
+  for (const hld of gate.held) { WEATHER_COPY[hld.group][hld.bin][lang][hld.idx] = ''; }
+  const pendingAfterGate = pending.filter((p) => !heldKeys.has(p.key));
+  pending.length = 0; pending.push(...pendingAfterGate);
+  if (gate.held.length) console.log(`${lang}: lang-check HELD ${gate.held.length} draft(s) for a native — see review/lang-check-gate-${lang}.md`);
+
   let appliedKeys = new Set();
   if (APPLY) {
     // Phase 2: rewrite each touched bin line; only bins whose rewrite SUCCEEDS count (#4).
@@ -112,13 +138,15 @@ for (const lang of LANGS) {
     const fullLedger = readJsonl(`lang-packs/${lang}/debt-ledger.jsonl`) || [];
     const stillDebt = fullLedger.filter((e) => !appliedKeys.has(e.key)).map((e) => {
       const v = vByKey.get(e.key);
+      const hld = heldKeys.get(e.key);
+      if (hld) return { ...e, status: 'held-lang-check', flag_reason: `lang-check ${hld.confidence.toFixed(2)}: ${hld.doubts.join(' | ')}` };
       return { ...e, status: v && v.verdict === 'FLAG' ? 'debt-flagged' : e.status, ...(v && v.verdict === 'FLAG' ? { flag_reason: v.reason ?? '' } : {}) };
     });
     writeFileSync(`lang-packs/${lang}/debt-ledger.jsonl`, stillDebt.map((r) => JSON.stringify(r)).join('\n') + (stillDebt.length ? '\n' : ''));
   } else {
     appliedKeys = new Set(pending.map((p) => p.key)); // dry-run: report what WOULD apply
   }
-  summary[lang] = { drafts: drafts.length, pass, flag, rejected_malformed_or_filled: rejected, would_apply: pending.length, applied: APPLY ? appliedKeys.size : 0 };
+  summary[lang] = { drafts: drafts.length, pass, flag, rejected_malformed_or_filled: rejected, held_by_lang_check: gate.held.length, applied_with_doubt: gate.notes.length, would_apply: pending.length, applied: APPLY ? appliedKeys.size : 0 };
 }
 
 if (missingChecker.length) {

@@ -1,0 +1,30 @@
+{
+ "generated": "2026-09-06T16:35:58.783Z",
+ "lang": "zu",
+ "triaged": 56,
+ "proposals": 1,
+ "noProposal": 55,
+ "bankScanned": 0,
+ "byRule": {
+  "typo": 1
+ },
+ "items": [
+  {
+   "id": "ZU-P1",
+   "key": "witty.fog[41]",
+   "en": "Snoek weather, say the uncles. The uncles have never once been wrong.",
+   "current": "Isimo sezulu se-snoek, kusho o-malume. O-malume abakaze baphambe nakanye.",
+   "proposed": "Isimo sezulu se-snoek, kusho o-malume. O-malume abakaze bahambe nakanye.",
+   "changes": [
+    {
+     "from": "baphambe",
+     "to": "bahambe",
+     "rule": "typo",
+     "evidence": "'baphambe' unattested; bahambe: 207× kaikki/leipzig/nchlt/morph/wiki — “Yindlala futhi bakwethu ephoqa odadewethu ukuhti bahambe bedayisa ngimizimba yabo njengoba besingike ngasho ngenhla, nge” (Leipzig zul_community_2017 #140628)"
+    }
+   ],
+   "confidence": 0.35,
+   "source": "triage"
+  }
+ ]
+}

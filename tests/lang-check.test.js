@@ -36,6 +36,22 @@ describe.skipIf(!have)('lang-check corpus-backed checker', { timeout: 120000 }, 
     expect(check({ lang: 'af', en: 'The dog is under the bed. Smart move, honestly.', text: 'Die hond is onder die bed. Slim skuif, eerlikwaar.' }).ok).toBe(true);
   });
 
+  it('honours a pack allow ruling (imbatata stays)', () => {
+    const v = check({ lang: 'zu', en: 'Flip-flops on tar was a mistake.', text: 'Imbatata emgwaqeni beyiwumqondo omubi.' });
+    expect(v.findings.some((f) => f.token === 'Imbatata' && f.severity !== 'low')).toBe(false);
+  });
+
+  it('the wiring gate holds a triage-high line and passes a clean one', async () => {
+    const { gateLines } = await import('../scripts/lang-check/lib/gate.mjs');
+    const r = gateLines('st', [
+      { key: 'a', en: "It's cold tonight.", text: 'Ho bata bosigo bona.' },      // Setswana bosigo → held
+      { key: 'b', en: 'Wind\'s up.', text: 'Moea o a foka.' },                    // clean
+    ]);
+    expect(r.held.map((x) => x.key)).toEqual(['a']);
+    expect(r.passed.map((x) => x.key)).toEqual(['b']);
+    expect(r.held[0].doubts.length).toBeGreaterThan(0);
+  });
+
   it('cites corpus evidence and never proposes auto-apply', () => {
     const v = check({ lang: 'st', en: "It's cold tonight.", text: 'Ho bata bosigo bona.' });
     const f = v.findings.find((x) => x.check === 'contamination');

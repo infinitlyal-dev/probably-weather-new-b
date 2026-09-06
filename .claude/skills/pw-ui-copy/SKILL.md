@@ -133,3 +133,4 @@ Keep it short — WhatsApp previews truncate long messages.
 4. **Braai = weekends only** — check the day before adding braai references
 5. **Always provide full replacement files**, never snippets
 6. **Understated > loud** — the best jokes don't try too hard
+7. **Every zu/xh/st transcreation runs through lang-check before wiring** (Al, 2026-09-06): `node scripts/lang-check/triage.mjs --lang <l> --file <set.json>`; triage-high lines wait for a native. Sesotho is written in South African orthography (`jwale`, `dipula`, `tjhesa`, `mohodi`), not Lesotho (`joale`, `lipula`, `chesa`, `moholi`).
