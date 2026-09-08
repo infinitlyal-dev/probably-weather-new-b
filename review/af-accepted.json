@@ -1,0 +1,3380 @@
+{
+ "generated": "2026-09-08T20:34:30.959Z",
+ "rows": [
+  {
+   "id": "B001",
+   "english": "The Weber has been watching him water that lawn for twenty minutes now.",
+   "afrikaans": "Die Weber kyk nou al twintig minute hoe hy daardie grasperk natmaak.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B005",
+   "english": "Nobody inside that house is awake yet and that is entirely the plan.",
+   "afrikaans": "Niemand in daardie huis is al wakker nie, en dit is presies die plan.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B006",
+   "english": "That number has not moved in eighty kilometres and neither has the scenery.",
+   "afrikaans": "Daardie syfer het in tagtig kilometer nie geroer nie, en die uitsig ook nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B007",
+   "english": "The aircon is losing and everyone in this car has stopped talking about it.",
+   "afrikaans": "Die aircon verloor en almal in hierdie kar het opgehou daaroor praat.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B008",
+   "english": "Saturday, and the only shade for the next hour is inside this car.",
+   "afrikaans": "Saterdag, en die enigste skaduwee vir die volgende uur is binne hierdie kar.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B009",
+   "english": "Somebody said the padkos would be fine in the boot. Somebody was wrong.",
+   "afrikaans": "Iemand het gesê die padkos sal reg wees in die bagasiebak. Iemand was verkeerd.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B012",
+   "english": "Those two on the stoep have made their choice and they are sticking with it.",
+   "afrikaans": "Daardie twee op die stoep het hul keuse gemaak en hulle bly daarby.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B013",
+   "english": "Nobody is going to remember the temperature, only the sprinkler.",
+   "afrikaans": "Niemand gaan die temperatuur onthou nie, net die sproeier.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B014",
+   "english": "Sunday, and the water bill has already quietly accepted its fate.",
+   "afrikaans": "Sondag, en die waterrekening het sy lot reeds stilweg aanvaar.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B016",
+   "english": "The windpomp has stopped turning, which is how you know the day is over.",
+   "afrikaans": "Die windpomp het ophou draai, en so weet jy die dag is verby.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B017",
+   "english": "That glass has been full for an hour and she is in no hurry.",
+   "afrikaans": "Daardie glas is al 'n uur vol en sy is glad nie haastig nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B019",
+   "english": "The stoep step is still warm and will be for another hour yet.",
+   "afrikaans": "Die stoeptrap is nog warm en gaan nog 'n uur so bly.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B020",
+   "english": "Nobody has switched a light on inside yet and nobody intends to.",
+   "afrikaans": "Niemand het nog 'n lig binne aangesit nie, en niemand gaan ook nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B021",
+   "english": "The ice cream is losing and all three of them know it.",
+   "afrikaans": "Die roomys verloor en al drie van hulle weet dit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B022",
+   "english": "Friday, and this promenade is doing the work of six different bars.",
+   "afrikaans": "Vrydag, en hierdie promenade doen die werk van ses verskillende kroeë.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B023",
+   "english": "Everybody came out at exactly the same time and nobody planned it.",
+   "afrikaans": "Almal het presies dieselfde tyd uitgekom en niemand het dit beplan nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B024",
+   "english": "The light will be gone in nine minutes and nobody is hurrying.",
+   "afrikaans": "Die lig is oor nege minute weg en niemand haas hom nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B025",
+   "english": "That dog has walked this stretch more times than any of them.",
+   "afrikaans": "Daardie hond het hierdie stuk meer kere geloop as enigeen van hulle.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B027",
+   "english": "The ice in that glass has about four minutes left.",
+   "afrikaans": "Die ys in daardie glas het omtrent vier minute oor.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B028",
+   "english": "Sunday night, and this promenade is busier than it was all afternoon.",
+   "afrikaans": "Sondagaand, en hierdie promenade is besiger as wat dit die hele middag was.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B029",
+   "english": "The whole town waited for the sun to go down and then came outside.",
+   "afrikaans": "Die hele dorp het gewag dat die son sak en toe eers uitgekom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B030",
+   "english": "That water was cold when somebody put it down there.",
+   "afrikaans": "Daardie water was koud toe iemand dit daar neergesit het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B032",
+   "english": "Night has not cooled anything yet; even the water is perspiring.",
+   "afrikaans": "Die nag het nog niks afgekoel nie; selfs die water sweet.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B033",
+   "english": "Too warm to sleep inside, so the whole family moved under the Milky Way.",
+   "afrikaans": "Te warm om binne te slaap, so die hele gesin het onder die Melkweg ingetrek.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B035",
+   "english": "The youngest is still awake and has decided the sky is worth it.",
+   "afrikaans": "Die kleinste is nog wakker en het besluit die lug is dit werd.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B037",
+   "english": "Friday night, and the ceiling has been upgraded considerably.",
+   "afrikaans": "Vrydagaand, en die plafon is aansienlik opgegradeer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B038",
+   "english": "Too hot for walls tonight: the whole family moved the bedroom outside.",
+   "afrikaans": "Te warm vir mure vanaand: die hele gesin het die slaapkamer buitentoe geskuif.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B044",
+   "english": "Ice in the jug, fan on the chair: the night shift of a forty-degree day.",
+   "afrikaans": "Ys in die beker, waaier op die stoel: die nagskof van 'n veertiggraaddag.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B046",
+   "english": "The glass of water was a very good idea about four hours ago.",
+   "afrikaans": "Die glas water was omtrent vier uur gelede 'n baie goeie idee.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B047",
+   "english": "The net is handling mosquitoes. The fan is handling everything else.",
+   "afrikaans": "Die net hanteer muskiete. Die waaier hanteer al die res.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B048",
+   "english": "Monday starts in five hours and that fan is not going off.",
+   "afrikaans": "Maandag begin oor vyf uur en daardie waaier gaan nie af nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B049",
+   "english": "Somebody has already turned the pillow over twice tonight.",
+   "afrikaans": "Iemand het die kussing vanaand al twee keer omgedraai.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B050",
+   "english": "The fan is on its third shift and the night is still not cooling.",
+   "afrikaans": "Die waaier is op sy derde skof en die nag koel steeds nie af nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B051",
+   "english": "Nobody has been inside that house since about four this afternoon.",
+   "afrikaans": "Niemand was sedert omtrent vieruur vanmiddag binne daardie huis nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B052",
+   "english": "The pool has been the only sensible room in the place all day.",
+   "afrikaans": "Die swembad is die hele dag die enigste kamer op die plek wat sin maak.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B054",
+   "english": "Saturday, and the water is still warmer than the air above it.",
+   "afrikaans": "Saterdag, en die water is steeds warmer as die lug daarbo.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B055",
+   "english": "The lights went on two hours ago and nobody has suggested moving.",
+   "afrikaans": "Die ligte het twee uur gelede aangegaan en niemand het nog voorgestel ons skuif nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B056",
+   "english": "Night swimming is not a plan; it is what this weather leaves you.",
+   "afrikaans": "Nagswem is nie 'n plan nie; dis al wat hierdie weer jou oorlaat.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B057",
+   "english": "The dog has worked out where the coldest tiles in the house are.",
+   "afrikaans": "Die hond het uitgewerk waar die koudste teëls in die huis is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B058",
+   "english": "That is the bathroom floor and it is now his bedroom.",
+   "afrikaans": "Dit is die badkamervloer en dit is nou sy slaapkamer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B059",
+   "english": "Nobody in this house is getting into that bath tonight.",
+   "afrikaans": "Niemand in hierdie huis klim vanaand in daardie bad nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B060",
+   "english": "He has been lying there since about eight and has no further plans.",
+   "afrikaans": "Hy lê daar sedert omtrent agtuur en het geen verdere planne nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B061",
+   "english": "Wednesday, and the dog has made the only sensible decision so far.",
+   "afrikaans": "Woensdag, en die hond het tot dusver die enigste sinvolle besluit geneem.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B064",
+   "english": "Monday night, one lit window, and the rain doing all the talking.",
+   "afrikaans": "Maandagaand, een verligte venster, en die reën doen al die praat.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B066",
+   "english": "The burglar bars are the only straight lines left in the whole street.",
+   "afrikaans": "Die diefwering is die enigste reguit lyne wat in die hele straat oor is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B067",
+   "english": "Somebody inside has already decided they are not going anywhere tonight.",
+   "afrikaans": "Iemand binne het reeds besluit hulle gaan vanaand nêrens heen nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B069",
+   "english": "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
+   "afrikaans": "Jakarandablomme en stormwater — die kombinasie waarvan Joburg die minste hou.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B070",
+   "english": "The electric fence is fine. The pavement has completely given up.",
+   "afrikaans": "Die elektriese heining is oukei. Die sypaadjie het heeltemal moed opgegee.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B071",
+   "english": "Wednesday, and the drive home is going to be a story by tomorrow.",
+   "afrikaans": "Woensdag, en die rit huis toe gaan teen môre 'n storie wees.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B075",
+   "english": "Nobody is going to have to top that up for a month.",
+   "afrikaans": "Niemand gaan dit vir 'n maand hoef by te vul nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B076",
+   "english": "The pool light is the only thing in this garden still doing its job.",
+   "afrikaans": "Die swembadlig is die enigste ding in hierdie tuin wat nog sy werk doen.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B077",
+   "english": "Tuesday night, and the pool is having a far better time than anyone.",
+   "afrikaans": "Dinsdagaand. Die swembad geniet hierdie aand baie meer as enigeen van ons.",
+   "outcome": "accepted-rewrite",
+   "chosen": "astra",
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B078",
+   "english": "The paving has stopped absorbing anything and is just passing it along.",
+   "afrikaans": "Die plaveisel absorbeer niks meer nie en gee dit net aan.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B079",
+   "english": "The pool is being topped up by head office tonight, free of charge.",
+   "afrikaans": "Die swembad word vanaand deur hoofkantoor bygevul, gratis.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B080",
+   "english": "The only thing swimming tonight is the water itself.",
+   "afrikaans": "Die enigste ding wat vanaand swem is die water self.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B082",
+   "english": "Every one of those parking bays was somebody's plan for tonight.",
+   "afrikaans": "Elkeen van daardie parkeerplekke was iemand se plan vir vanaand.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B083",
+   "english": "Saturday night at the sea, and the sea has taken the whole promenade.",
+   "afrikaans": "Saterdagaand by die see, en die see het die hele promenade gevat.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B085",
+   "english": "Somebody drove all the way down here to look at this and left.",
+   "afrikaans": "Iemand het die hele pad hierheen gery om hierna te kyk, en toe weer gery.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B086",
+   "english": "The tree has seen worse Tuesdays and it will see worse again.",
+   "afrikaans": "Die boom het erger Dinsdae gesien en gaan weer erger sien.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B087",
+   "english": "Every gate in this street is shut and every dog has an opinion.",
+   "afrikaans": "Elke hek in hierdie straat is toe en elke hond het 'n mening.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B089",
+   "english": "The streetlight is doing overtime that nobody is going to pay for.",
+   "afrikaans": "Die straatlig werk oortyd waarvoor niemand gaan betaal nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B090",
+   "english": "Tomorrow morning this road will be covered in somebody else's tree.",
+   "afrikaans": "Môreoggend gaan hierdie pad onder iemand anders se boom lê.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B091",
+   "english": "The gutter is telling you exactly how long you left it.",
+   "afrikaans": "Die geut vertel jou presies hoe lank jy dit gelos het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B094",
+   "english": "Whoever parked in the street tonight is regretting it right now.",
+   "afrikaans": "Wie ook al vanaand in die straat geparkeer het, is nou spyt.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B095",
+   "english": "That security light is doing the best work it has done all year.",
+   "afrikaans": "Daardie sekuriteitslig doen die beste werk wat dit die hele jaar gedoen het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B097",
+   "english": "That one bulb is holding this entire building together.",
+   "afrikaans": "Daardie een gloeilamp hou hierdie hele gebou aanmekaar.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B098",
+   "english": "The polish on that floor was not designed with this much water in mind.",
+   "afrikaans": "Daardie vloer se politoer was nooit vir soveel water bedoel nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B099",
+   "english": "Everything green out there is having the best night of its life.",
+   "afrikaans": "Alles wat groen is daar buite het die beste nag van sy lewe.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B100",
+   "english": "You can hear the roof better than you can hear the television.",
+   "afrikaans": "Jy kan die dak beter hoor as die televisie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B101",
+   "english": "Rain coming off the roof in one solid sheet: the stoep has a curtain tonight.",
+   "afrikaans": "Reën wat in een soliede laken van die dak afkom: die stoep het vanaand 'n gordyn.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B105",
+   "english": "Everyone on this street is now standing at a window they never use.",
+   "afrikaans": "Almal in hierdie straat staan nou by 'n venster wat hulle nooit gebruik nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B107",
+   "english": "The sheets are dry already and the wind is not finished with them.",
+   "afrikaans": "Die lakens is klaar droog en die wind is nog nie klaar met hulle nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B110",
+   "english": "Nobody in this house is paying to dry anything today.",
+   "afrikaans": "Niemand in hierdie huis betaal vandag om iets droog te maak nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B111",
+   "english": "Those pegs are all that stands between you and a fence full of sheets.",
+   "afrikaans": "Daardie wasgoedpennetjies is al wat tussen jou en 'n heining vol lakens staan.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B112",
+   "english": "The bin made it to the pavement and then made its own decisions.",
+   "afrikaans": "Die vullisblik het tot op die sypaadjie gekom en toe sy eie besluite geneem.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B113",
+   "english": "Tuesday is bin day, and the wind has clearly read the schedule too.",
+   "afrikaans": "Dinsdag is vullisdag, en die wind het duidelik ook die rooster gelees.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B115",
+   "english": "The oaks are fine. The wheelie bins never stood a chance.",
+   "afrikaans": "Die eike is oukei. Die vullisdromme het nooit 'n kans gestaan nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B117",
+   "english": "Wednesday, and the driveway has become a full contact sport.",
+   "afrikaans": "Woensdag, en die oprit het 'n volkontaksport geword.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B118",
+   "english": "Somebody will be picking leaves out of that back seat for a week.",
+   "afrikaans": "Iemand gaan vir 'n week blare uit daardie agtersitplek uithaal.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B119",
+   "english": "That door is going to shut whether he is ready or not.",
+   "afrikaans": "Daardie deur gaan toeslaan of hy gereed is of nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B120",
+   "english": "The wind opened it faster than he did and he is still laughing.",
+   "afrikaans": "Die wind het dit vinniger as hy oopgemaak en hy lag nog steeds.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B121",
+   "english": "Every leaf in the street is queueing to get into that car.",
+   "afrikaans": "Elke blaar in die straat staan tou om in daardie kar te kom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B122",
+   "english": "The braids have made the decision and she is going along with it.",
+   "afrikaans": "Die vlegsels het die besluit geneem en sy gaan maar saam.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B123",
+   "english": "That photo is going to look completely different to how it feels.",
+   "afrikaans": "Daardie foto gaan heeltemal anders lyk as wat dit voel.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B124",
+   "english": "Thursday, and somebody has decided to enjoy this instead of complaining.",
+   "afrikaans": "Donderdag, en iemand het besluit om dit te geniet eerder as om te kla.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B125",
+   "english": "The phone is the only thing out here being held still.",
+   "afrikaans": "Die foon is die enigste ding hier buite wat stil gehou word.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B126",
+   "english": "Everyone else on this promenade went home about twenty minutes ago.",
+   "afrikaans": "Almal anders op hierdie promenade is omtrent twintig minute gelede huis toe.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B128",
+   "english": "Somebody is going to be explaining that to somebody else this evening.",
+   "afrikaans": "Iemand gaan dit vanaand aan iemand anders moet verduidelik.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B129",
+   "english": "Monday, and the garden has rearranged itself without asking anyone.",
+   "afrikaans": "Maandag, en die tuin het homself herrangskik sonder om iemand te vra.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B131",
+   "english": "It took the wind four seconds to move what took two hours to build.",
+   "afrikaans": "Dit het die wind vier sekondes gevat om te skuif wat twee uur gevat het om te bou.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B135",
+   "english": "Wednesday morning, and the walk from the parking is now the hard part.",
+   "afrikaans": "Woensdagoggend, en die stap van die parkering af is nou die moeilike deel.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B137",
+   "english": "Those eyes are not closed because of the sun.",
+   "afrikaans": "Daardie oë is nie toe oor die son nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B138",
+   "english": "Friday, and the aloes have not noticed anything unusual at all.",
+   "afrikaans": "Vrydag, en die aalwyne het glad niks ongewoons opgemerk nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B141",
+   "english": "That coat is being parted by something other than a brush.",
+   "afrikaans": "Daardie pels word gekam deur iets anders as 'n borsel.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B142",
+   "english": "That walk was somebody else's idea and the dog is registering a complaint.",
+   "afrikaans": "Daardie stap was iemand anders se idee en die hond lê 'n klag in.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B144",
+   "english": "The lead is doing considerably more work than it was designed for.",
+   "afrikaans": "Die leiband doen heelwat meer werk as waarvoor dit ontwerp is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B145",
+   "english": "He is going to shake all that sand out on the lounge carpet later.",
+   "afrikaans": "Hy gaan al daardie sand later op die sitkamermat uitskud.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B148",
+   "english": "Saturday, and the wind has strong opinions about your plans for the garden.",
+   "afrikaans": "Saterdag, en die wind het sterk menings oor jou planne vir die tuin.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B151",
+   "english": "The sky has gone the colour that makes Joburg check the group chat.",
+   "afrikaans": "Die lug het die kleur geword wat Joburg na die group chat laat kyk.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B152",
+   "english": "The banana leaves are being redesigned in real time and taking it well.",
+   "afrikaans": "Die piesangblare word voor jou oë herontwerp en vat dit goed.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B153",
+   "english": "That shade cloth has been drumming since breakfast and nobody can hear the television.",
+   "afrikaans": "Daardie skadunet trom sedert ontbyt en niemand kan die televisie hoor nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B154",
+   "english": "The sea looks calm from up here, which is a complete lie.",
+   "afrikaans": "Die see lyk kalm van hier bo af, wat 'n volslae leuen is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B155",
+   "english": "Friday, and the humidity has teamed up with the wind against everybody.",
+   "afrikaans": "Vrydag, en die humiditeit het met die wind saamgespan teen almal.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B159",
+   "english": "The palm has given up on symmetry and committed to one direction.",
+   "afrikaans": "Die palm het simmetrie laat vaar en op een rigting besluit.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B160",
+   "english": "Nobody on this side of Gqeberha is hanging washing out today.",
+   "afrikaans": "Niemand aan hierdie kant van Gqeberha hang vandag wasgoed op nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B161",
+   "english": "The aloe is unbothered, which is the entire point of an aloe.",
+   "afrikaans": "Die aalwyn steur hom aan niks, wat die hele punt van 'n aalwyn is.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B162",
+   "english": "The mountain looks like that about six evenings a year and this is one.",
+   "afrikaans": "Die berg lyk omtrent ses aande 'n jaar so, en dit is een van hulle.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B164",
+   "english": "Monday, and the wind has completely failed to ruin this.",
+   "afrikaans": "Maandag, en die wind kon dit net nie bederf nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B165",
+   "english": "Nobody's hair is going to survive, and nobody is leaving yet.",
+   "afrikaans": "Niemand se hare gaan dit oorleef nie, en niemand loop nog nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B166",
+   "english": "Lion's Head is doing the scenery and the wind is doing the comedy.",
+   "afrikaans": "Leeukop sorg vir die uitsig en die wind vir die komedie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B167",
+   "english": "That jacket has been trying to leave since he got on the bike.",
+   "afrikaans": "Daardie baadjie probeer wegkom vandat hy op die fiets geklim het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B168",
+   "english": "The jacarandas are throwing everything they have at one cyclist.",
+   "afrikaans": "Die jakarandas gooi alles wat hulle het na een fietsryer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B169",
+   "english": "Tuesday evening, and the ride home has turned into a negotiation.",
+   "afrikaans": "Dinsdagaand, en die rit huis toe het 'n onderhandeling geword.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B170",
+   "english": "He is going downhill and still working for every metre of it.",
+   "afrikaans": "Hy ry afdraand en werk steeds vir elke meter daarvan.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B171",
+   "english": "The blossom is coming off those trees faster than he is going under them.",
+   "afrikaans": "Die blomme kom vinniger van daardie bome af as wat hy onderdeur ry.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B173",
+   "english": "The pegs lost, the wall won, and the neighbours are still laughing.",
+   "afrikaans": "Die wasgoedpennetjies het verloor, die muur het gewen, en die bure lag nog.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B174",
+   "english": "Nobody is ever going to find that one white sock again.",
+   "afrikaans": "Niemand gaan ooit daardie een wit sokkie weer kry nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B176",
+   "english": "One gust, one wall, and two households now know each other much better.",
+   "afrikaans": "Een windvlaag, een muur, en twee huishoudings ken mekaar nou heelwat beter.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B178",
+   "english": "Saturday evening, and the walk from the front door defeated the whole look.",
+   "afrikaans": "Saterdagaand, en die stap van die voordeur af het die hele look verwoes.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B179",
+   "english": "Her hair is going one way, the palm is going the same way, and neither was asked.",
+   "afrikaans": "Haar hare gaan een kant toe, die palm gaan dieselfde kant toe, en nie een is gevra nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B181",
+   "english": "That driveway was swept this morning and has already been refilled.",
+   "afrikaans": "Daardie oprit is vanoggend gevee en is reeds weer volgemaak.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B182",
+   "english": "That tree has been shaped by one wind for about forty years.",
+   "afrikaans": "Daardie boom is omtrent veertig jaar lank deur een wind gevorm.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B183",
+   "english": "The washing goes out at this hour because wind is cheaper than electricity.",
+   "afrikaans": "Die wasgoed gaan hierdie tyd uit omdat wind goedkoper as elektrisiteit is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B184",
+   "english": "The lagoon has gone flat and silver, which fools nobody who lives here.",
+   "afrikaans": "Die strandmeer het plat en silwer geword, wat niemand wat hier woon flous nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B185",
+   "english": "Everything on this street leans the same way, including the people.",
+   "afrikaans": "Alles in hierdie straat leun dieselfde kant toe, die mense inkluis.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B186",
+   "english": "Thursday evening, and the only thing still moving out here is the line.",
+   "afrikaans": "Donderdagaand, en die enigste ding wat hier buite nog beweeg is die wasgoeddraad.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B188",
+   "english": "That curtain has been outside the window for about an hour now.",
+   "afrikaans": "Daardie gordyn hang nou al omtrent 'n uur buite die venster.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B189",
+   "english": "The south-easter has found the one open window on the whole street.",
+   "afrikaans": "Die suidooster het die een oop venster in die hele straat gekry.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B190",
+   "english": "Somebody is going to come home to a lounge full of Signal Hill.",
+   "afrikaans": "Iemand gaan by 'n sitkamer vol Seinheuwel tuiskom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B193",
+   "english": "That hedge has been leaning like that since Thursday and it is not straightening.",
+   "afrikaans": "Daardie heining leun so sedert Donderdag en dit gaan nie regop kom nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B194",
+   "english": "The security light is picking up things you would rather not watch moving.",
+   "afrikaans": "Die sekuriteitslig vang goed op wat jy liewer nie wil sien beweeg nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B195",
+   "english": "Sunday night, and even the washing is refusing to accept it.",
+   "afrikaans": "Sondagaand, en selfs die wasgoed weier om dit te aanvaar.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B196",
+   "english": "Whatever is not pegged down out there is already somebody else's problem.",
+   "afrikaans": "Wat ook al nie daar buite vasgemaak is nie, is reeds iemand anders se probleem.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B198",
+   "english": "Table Mountain, a braai, and a wind with its own strong opinion.",
+   "afrikaans": "Tafelberg, 'n braai, en 'n wind met sy eie sterk mening.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B199",
+   "english": "Saturday, and neither of them will admit the wind is winning.",
+   "afrikaans": "Saterdag, en nie een van hulle wil erken die wind wen nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B201",
+   "english": "Those coals are doing more for the fence than they are for the meat.",
+   "afrikaans": "Daardie kole doen meer vir die heining as vir die vleis.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B203",
+   "english": "Wednesday, and the Cape Doctor is doing its rounds a little early.",
+   "afrikaans": "Woensdag, en die Kaapse Dokter doen sy rondtes 'n bietjie vroeg.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B205",
+   "english": "That palm has been bent that way so long it thinks it is upright.",
+   "afrikaans": "Daardie palm is al so lank so gebuig dat hy dink hy staan regop.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B206",
+   "english": "The whole street is inside pretending the roof noise is normal.",
+   "afrikaans": "Die hele straat is binne en maak asof die dakgeraas normaal is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B207",
+   "english": "The aloe is not moving and has no intention of starting now.",
+   "afrikaans": "Die aalwyn beweeg nie en is glad nie van plan om nou te begin nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B208",
+   "english": "That thorn tree has been leaning since before anyone on this street arrived.",
+   "afrikaans": "Daardie doringboom leun al van voor enigiemand in hierdie straat aangekom het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B210",
+   "english": "Northern Cape wind does not howl. It leans on things until they give.",
+   "afrikaans": "Noord-Kaapse wind huil nie. Hy leun op goed tot hulle meegee.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B211",
+   "english": "Everything out here is either properly rooted or already gone.",
+   "afrikaans": "Alles hier buite is óf behoorlik gewortel óf reeds weg.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B212",
+   "english": "The leaves came in. The cat did not go out.",
+   "afrikaans": "Die blare het ingekom. Die kat het nie uitgegaan nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B213",
+   "english": "The wind has been delivering leaves to that doormat all evening.",
+   "afrikaans": "Die wind lewer die hele aand blare by daardie deurmat af.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B214",
+   "english": "Every leaf on that mat arrived without being invited.",
+   "afrikaans": "Elke blaar op daardie mat het opgedaag sonder 'n uitnodiging.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B215",
+   "english": "The garden is moving and he has decided the doorway is far enough.",
+   "afrikaans": "Die tuin beweeg en hy het besluit die deur is ver genoeg.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B217",
+   "english": "The banner is holding on better than the palms and it knows it.",
+   "afrikaans": "Die banier hou beter vas as die palms en dit weet dit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B219",
+   "english": "Every palm on this strip is pointing at the same thing tonight.",
+   "afrikaans": "Elke palm op hierdie strook wys vanaand na dieselfde ding.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B224",
+   "english": "The sun is up, the street is empty, and the wind got here first.",
+   "afrikaans": "Die son is op, die straat is leeg, en die wind was eerste hier.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B225",
+   "english": "That wave landed on the promenade about four seconds before she got there.",
+   "afrikaans": "Daardie golf het omtrent vier sekondes voor sy daar was op die promenade geland.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B227",
+   "english": "She will be tasting salt for the rest of the day and she knows it.",
+   "afrikaans": "Sy gaan die res van die dag sout proe en sy weet dit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B228",
+   "english": "The palm is bent double and she is out here smiling about it.",
+   "afrikaans": "Die palm is dubbel gebuig en sy staan hier buite en glimlag daaroor.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B229",
+   "english": "The promenade is empty in both directions and there is a reason for that.",
+   "afrikaans": "Die promenade is leeg in albei rigtings en daar is 'n rede daarvoor.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B231",
+   "english": "She will be picking grass seeds out of that jacket until Saturday.",
+   "afrikaans": "Sy gaan tot Saterdag grassade uit daardie baadjie uithaal.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B232",
+   "english": "Thursday, and she is the only thing on this road not going sideways.",
+   "afrikaans": "Donderdag, en sy is die enigste ding in hierdie pad wat nie sywaarts gaan nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B234",
+   "english": "The paving is soaked in front of them and it has not rained once.",
+   "afrikaans": "Die plaveisel voor hulle is deurweek en dit het nie een keer gereën nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B235",
+   "english": "Saturday morning, and the sea has already been over that railing twice.",
+   "afrikaans": "Saterdagoggend, en die see was al twee keer oor daardie reling.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B237",
+   "english": "That sea wall is doing its absolute best and it is still losing.",
+   "afrikaans": "Daardie seemuur doen sy uiterste bes en verloor steeds.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B240",
+   "english": "She is not looking at the washing, she is looking at where it might land.",
+   "afrikaans": "Sy kyk nie na die wasgoed nie, sy kyk waar dit dalk gaan land.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B241",
+   "english": "Saturday, and the only thing on that line doing any work is the pegs.",
+   "afrikaans": "Saterdag, en die enigste ding op daardie draad wat werk doen is die pennetjies.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B242",
+   "english": "Nobody is lighting that Weber until this drops, and everyone in the yard knows it.",
+   "afrikaans": "Niemand steek daardie Weber aan voor dit gaan lê nie, en almal op die werf weet dit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B243",
+   "english": "The Weber has not been lit once this week and today is not the day.",
+   "afrikaans": "Die Weber is hierdie week nie een keer aangesteek nie en vandag is nie die dag nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B245",
+   "english": "Half the pavement is airborne and only one of the three is enjoying it.",
+   "afrikaans": "Die helfte van die sypaadjie is in die lug en net een van die drie geniet dit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B246",
+   "english": "That bag is working as a sail and he has not worked that out yet.",
+   "afrikaans": "Daardie sak werk soos 'n seil en hy het dit nog nie agtergekom nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B247",
+   "english": "Every leaf the tree dropped this month is going past them at head height.",
+   "afrikaans": "Elke blaar wat die boom hierdie maand laat val het, gaan op kophoogte by hulle verby.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B248",
+   "english": "Monday, and the wind is the best thing that has happened to him so far.",
+   "afrikaans": "Maandag, en die wind is die beste ding wat tot dusver met hom gebeur het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B249",
+   "english": "Table Mountain is right there and neither of them has looked at it once.",
+   "afrikaans": "Tafelberg is reg daar en nie een van hulle het een keer daarna gekyk nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B252",
+   "english": "The beach itself is moving faster than they are, and in the same direction.",
+   "afrikaans": "Die strand self beweeg vinniger as hulle, en in dieselfde rigting.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dusk"
+  },
+  {
+   "id": "B253",
+   "english": "He was going to have coffee. The mug is still standing on the step.",
+   "afrikaans": "Hy wou koffie drink. Die beker staan nog op die trap.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B254",
+   "english": "One slipper is already out of the game and the cover is still winning.",
+   "afrikaans": "Een pantoffel is klaar uit die spel en die oortreksel wen steeds.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B256",
+   "english": "Every one of them is pointing the same way and not one of them chose it.",
+   "afrikaans": "Elkeen van hulle wys dieselfde kant toe en nie een het dit gekies nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B258",
+   "english": "The sand is going past them faster than the tide is coming in.",
+   "afrikaans": "Die sand gaan vinniger by hulle verby as wat die gety inkom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B259",
+   "english": "They will stand exactly like that until it drops, and it is not dropping.",
+   "afrikaans": "Hulle gaan presies so staan tot dit gaan lê, en dit gaan nie lê nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B261",
+   "english": "Table Mountain is right behind her and she cannot see a single bit of it.",
+   "afrikaans": "Tafelberg is reg agter haar en sy kan nie 'n enkele stukkie daarvan sien nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B262",
+   "english": "That shoe is coming off next and she has run out of hands.",
+   "afrikaans": "Daardie skoen is volgende af, en sy het nie nog hande nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B263",
+   "english": "The leaves going past her were still on a tree two streets ago.",
+   "afrikaans": "Die blare wat by haar verbygaan was twee strate gelede nog aan 'n boom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B264",
+   "english": "Tuesday, and the wind has strong opinions about somebody else's outfit.",
+   "afrikaans": "Dinsdag, en die wind het sterk menings oor iemand anders se uitrusting.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "day"
+  },
+  {
+   "id": "B265",
+   "english": "The moon is out and the palms have not stopped moving since sunset.",
+   "afrikaans": "Die maan is uit en die palms het sedert sonsak nie opgehou beweeg nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B267",
+   "english": "Whatever is landing on that road is not rain, it is the sea arriving sideways.",
+   "afrikaans": "Wat ook al op daardie pad land is nie reën nie, dit is die see wat sywaarts aankom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B269",
+   "english": "The road is empty, every light is on, and the wind has the place to itself.",
+   "afrikaans": "Die pad is leeg, elke lig is aan, en die wind het die plek vir homself.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "night"
+  },
+  {
+   "id": "B270",
+   "english": "Those sheets will be dry before she has pegged the last one on the line.",
+   "afrikaans": "Daardie lakens gaan droog wees voor sy die laaste een opgehang het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B271",
+   "english": "There are more pegs on that line than the washing needs, and she knows why.",
+   "afrikaans": "Daar is meer pennetjies op daardie draad as wat die wasgoed nodig het, en sy weet hoekom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B272",
+   "english": "Everything on that line is going to smell like the sea by eight o'clock.",
+   "afrikaans": "Alles op daardie draad gaan teen agtuur na die see ruik.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B273",
+   "english": "The one on the end has come loose and she has not spotted it yet.",
+   "afrikaans": "Die een op die punt het losgekom en sy het dit nog nie gesien nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B274",
+   "english": "Friday, and the wind is doing half of this job for her, free of charge.",
+   "afrikaans": "Vrydag, en die wind doen die helfte van hierdie werk vir haar, gratis.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "wind",
+   "time": "dawn"
+  },
+  {
+   "id": "B275",
+   "english": "Not one metre of shade on this promenade, which is why they are out at six.",
+   "afrikaans": "Nie een meter skaduwee op hierdie promenade nie — dis hoekom hulle sesuur al uit is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B276",
+   "english": "The sea is that flat about nine mornings a year and this is one of them.",
+   "afrikaans": "Die see is omtrent nege oggende 'n jaar so plat, en dit is een van hulle.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B277",
+   "english": "That mountain is that sharp because there is nothing at all in the air today.",
+   "afrikaans": "Daardie berg is so skerp omdat daar vandag absoluut niks in die lug is nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B278",
+   "english": "The sky is completely empty, which means this is as cool as today gets.",
+   "afrikaans": "Die lug is heeltemal leeg, wat beteken koeler as nou word dit nie vandag nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B279",
+   "english": "Friday, and by noon that paving is going to be too hot to stand on.",
+   "afrikaans": "Vrydag, en teen twaalfuur gaan daardie plaveisel te warm wees om op te staan.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B281",
+   "english": "Not one cloud, which means those geraniums will need this again tonight.",
+   "afrikaans": "Nie een wolk nie, wat beteken daardie malvas gaan dit vanaand weer nodig hê.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B282",
+   "english": "He will move twice before lunch and both times by about a metre.",
+   "afrikaans": "Hy gaan twee keer skuif voor middagete, en altwee keer omtrent 'n meter.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B286",
+   "english": "It will be dry by morning and damp again by six, which is the deal.",
+   "afrikaans": "Dit sal teen die oggend droog wees en teen sesuur weer klam — dis maar die ooreenkoms.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "night"
+  },
+  {
+   "id": "B287",
+   "english": "You have to drive two hours from anywhere to get a sky like that.",
+   "afrikaans": "Jy moet twee uur van enige plek af ry om so 'n lug te kry.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "night"
+  },
+  {
+   "id": "B288",
+   "english": "Saturday night, and the entertainment is free and about four billion years old.",
+   "afrikaans": "Saterdagaand, en die vermaak is verniet en omtrent vier miljard jaar oud.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "night"
+  },
+  {
+   "id": "B290",
+   "english": "Sunday night, and the best thing on tonight is not on a screen.",
+   "afrikaans": "Sondagaand, en die beste ding vanaand is nie op 'n skerm nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "night"
+  },
+  {
+   "id": "B292",
+   "english": "Monday, and the alarm on this farm has feathers and no snooze button.",
+   "afrikaans": "Maandag, en die wekker op hierdie plaas het vere en geen snooze nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B295",
+   "english": "The sun has just come up, which is the part nobody is going to believe.",
+   "afrikaans": "Die son het nou eers opgekom. Dís die deel wat niemand gaan glo nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "astra",
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B296",
+   "english": "That bonnet did not cool down overnight, which is the part that should worry you.",
+   "afrikaans": "Daardie enjinkap het nie oornag afgekoel nie, en dít is die deel wat jou moet bekommer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B297",
+   "english": "That egg has been on there about four minutes and it is nearly done.",
+   "afrikaans": "Daardie eier is omtrent vier minute daarop en dit is amper gaar.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B298",
+   "english": "Nobody in this dorp has needed a stove since about the second week of December.",
+   "afrikaans": "Niemand in hierdie dorp het sedert omtrent die tweede week van Desember 'n stoof nodig gehad nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B300",
+   "english": "That water went in cold at five and it has not been cold since.",
+   "afrikaans": "Daardie water het vyfuur koud ingegaan en was sedertdien nie weer koud nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B302",
+   "english": "He got in at six and he is not planning to get out.",
+   "afrikaans": "Hy het sesuur ingeklim en is nie van plan om uit te klim nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B303",
+   "english": "That water was cold about forty minutes ago and nobody has topped it up.",
+   "afrikaans": "Daardie water was omtrent veertig minute gelede koud en niemand het dit bygevul nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B304",
+   "english": "There is steam coming off that pool, which is not a good sign at six.",
+   "afrikaans": "Daar kom stoom van daardie swembad af, wat nie 'n goeie teken is om sesuur nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B305",
+   "english": "The water did not cool down last night and he has already checked.",
+   "afrikaans": "Die water het nie gisteraand afgekoel nie en hy het al gaan kyk.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B307",
+   "english": "The paving round that pool is already too hot for bare feet at six.",
+   "afrikaans": "Die plaveisel om daardie swembad is sesuur al te warm vir kaal voete.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B308",
+   "english": "That pool is warmer than he is and it is going to stay that way.",
+   "afrikaans": "Daardie swembad is warmer as hy en dit gaan so bly.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B309",
+   "english": "She has found the one tile in this house that has not warmed up yet.",
+   "afrikaans": "Sy het die een teël in hierdie huis gekry wat nog nie warm geword het nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B311",
+   "english": "By nine that windowsill is going to be the worst place in the house.",
+   "afrikaans": "Teen nege gaan daardie vensterbank die ergste plek in die huis wees.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B312",
+   "english": "The sun is only just up and she has already picked her spot.",
+   "afrikaans": "Die son is skaars op en sy het haar plek reeds gekies.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B313",
+   "english": "Sunday, and she has about ninety minutes before she has to move again.",
+   "afrikaans": "Sondag, en sy het omtrent negentig minute voor sy weer moet skuif.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B314",
+   "english": "He has picked the shade under a thorn tree, which is barely shade at all.",
+   "afrikaans": "Hy het die skaduwee onder 'n doringboom gekies, wat skaars skaduwee is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B315",
+   "english": "The sun has been up eleven minutes and he has already stopped moving.",
+   "afrikaans": "Die son is elf minute op en hy het reeds opgehou beweeg.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B316",
+   "english": "That stoep has chairs on it and none of them will be used before six.",
+   "afrikaans": "Daardie stoep het stoele op en nie een gaan voor sesuur gebruik word nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B317",
+   "english": "Thursday, and by nine there will be nothing out here worth walking to.",
+   "afrikaans": "Donderdag, en teen nege gaan daar niks hier buite wees wat 'n stap werd is nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B319",
+   "english": "That bonnet is hotter than most pans ever get on most stoves.",
+   "afrikaans": "Daardie enjinkap is warmer as wat die meeste panne ooit op die meeste stowe word.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B321",
+   "english": "Nobody has touched that car door and every one of them knows why.",
+   "afrikaans": "Niemand het aan daardie kardeur geraak nie en elkeen van hulle weet hoekom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B322",
+   "english": "Nobody here is wondering whether it works. They are watching it work.",
+   "afrikaans": "Niemand hier wonder of dit werk nie. Hulle kyk hoe dit werk.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B323",
+   "english": "Monday, and it is not even eleven o'clock yet, which is the frightening part.",
+   "afrikaans": "Maandag, en dis nie eers elfuur nie, en dít is die skrikwekkende deel.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B325",
+   "english": "Nobody out here waters anything until that sun is properly behind the hill.",
+   "afrikaans": "Niemand hier buite maak iets nat voor daardie son behoorlik agter die bult is nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B326",
+   "english": "It was watered this morning and you would not know it from here.",
+   "afrikaans": "Dit is vanoggend natgemaak en van hier af sou jy dit nie sê nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B327",
+   "english": "That pot has been in full sun since about eleven this morning.",
+   "afrikaans": "Daardie pot staan sedert omtrent elfuur vanoggend in vol son.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B328",
+   "english": "Monday, and it will do all of that again tomorrow without being asked.",
+   "afrikaans": "Maandag, en dit gaan môre alles weer doen sonder dat iemand vra.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B329",
+   "english": "That water has been topped up twice and it is still the wrong temperature.",
+   "afrikaans": "Daardie water is twee keer bygevul en dit is steeds die verkeerde temperatuur.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B330",
+   "english": "That water has been sitting in the sun all day and it is not cold.",
+   "afrikaans": "Daardie water staan die hele dag in die son en dit is nie koud nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B331",
+   "english": "He got in at eleven this morning and this is the second filling.",
+   "afrikaans": "Hy het elfuur vanoggend ingeklim en dis al die tweede keer dat dit volgemaak is.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B333",
+   "english": "Tuesday, and the coolest thing in this entire garden is that dog.",
+   "afrikaans": "Dinsdag, en die koelste ding in hierdie hele tuin is daardie hond.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B334",
+   "english": "The sprinkler goes on at five and it is off again by seven.",
+   "afrikaans": "Die sproeier gaan vyfuur aan en is teen sewe weer af.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B335",
+   "english": "Everything green in this photograph is on a timer and everything else is not.",
+   "afrikaans": "Alles wat groen is in hierdie foto is op 'n timer en al die res nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B336",
+   "english": "The aloes have not needed a drop of that and they never will.",
+   "afrikaans": "Die aalwyne het nie 'n druppel daarvan nodig gehad nie en sal ook nooit nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B337",
+   "english": "That lawn is the only thing for forty kilometres that gets a say.",
+   "afrikaans": "Daardie grasperk is die enigste ding vir veertig kilometer wat 'n sê het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B338",
+   "english": "Friday, and by eleven this whole ridge will be one colour again.",
+   "afrikaans": "Vrydag, en teen elf gaan hierdie hele rant weer een kleur wees.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B340",
+   "english": "That sun has been up eleven minutes and it is already doing that.",
+   "afrikaans": "Daardie son is elf minute op en doen dit reeds.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B341",
+   "english": "Nobody is carrying water, which is a decision they are going to revisit.",
+   "afrikaans": "Niemand dra water nie, en dit is 'n besluit wat hulle weer gaan oorweeg.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B342",
+   "english": "The shade on this road runs out in about two hundred metres.",
+   "afrikaans": "Die skaduwee in hierdie pad raak oor omtrent tweehonderd meter op.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dawn"
+  },
+  {
+   "id": "B344",
+   "english": "Two fans moving hot air around a room that has been shut since eight.",
+   "afrikaans": "Twee waaiers wat warm lug rondskuif in 'n kamer wat sedert agt toe is.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B345",
+   "english": "The file she is fanning with is the one she is meant to be reading.",
+   "afrikaans": "Die lêer waarmee sy koelte waai is die een wat sy veronderstel is om te lees.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B346",
+   "english": "Two fans, four papers flying, and not one document has been read today.",
+   "afrikaans": "Twee waaiers, vier papiere wat vlieg, en nie een dokument is vandag gelees nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B347",
+   "english": "Nobody in that building can open a window and every one of them has tried.",
+   "afrikaans": "Niemand in daardie gebou kan 'n venster oopmaak nie en elkeen van hulle het probeer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B348",
+   "english": "Tuesday, and somebody in this building is going to be sent home early.",
+   "afrikaans": "Dinsdag, en iemand in hierdie gebou gaan vroeg huis toe gestuur word.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B349",
+   "english": "The A/C button is right there and it has clearly not been pressed.",
+   "afrikaans": "Die aircon-knoppie is reg daar en dit is duidelik nog nie gedruk nie.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B351",
+   "english": "That dashboard is hot enough that the wrapper gave up before the chocolate did.",
+   "afrikaans": "Daardie dashboard is so warm dat die papiertjie voor die sjokolade moed opgegee het.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B352",
+   "english": "The steering wheel in there is currently not something you can hold.",
+   "afrikaans": "Die stuurwiel daarin is op die oomblik nie iets wat jy kan vashou nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B353",
+   "english": "Thursday, and that car is going to be worse at four than it is now.",
+   "afrikaans": "Donderdag, en daardie kar gaan vieruur erger wees as nou.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B354",
+   "english": "Nobody drives past a stall like that on a day like this.",
+   "afrikaans": "Niemand ry op 'n dag soos vandag by so 'n stalletjie verby nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B355",
+   "english": "Watermelon weather: the whole province agreed on it by about ten this morning.",
+   "afrikaans": "Waatlemoenweer: die hele provinsie het teen omtrent tienuur vanoggend saamgestem.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B356",
+   "english": "Her eyes are closed and that fan is aimed at exactly one person.",
+   "afrikaans": "Haar oë is toe en daardie waaier is op presies een persoon gerig.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B359",
+   "english": "Nobody else in this house is getting near that fan tonight.",
+   "afrikaans": "Niemand anders in hierdie huis kom vanaand naby daardie waaier nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B361",
+   "english": "That grass has been too hot to stand on since about eleven this morning.",
+   "afrikaans": "Daardie gras is sedert omtrent elfuur vanoggend te warm om op te staan.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "dusk"
+  },
+  {
+   "id": "B363",
+   "english": "She is not looking for anything and both of us know it.",
+   "afrikaans": "Sy soek niks nie en ons weet dit albei.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B364",
+   "english": "That door has been open about ninety seconds and it is staying open.",
+   "afrikaans": "Daardie deur is omtrent negentig sekondes oop en dit bly oop.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B365",
+   "english": "It has not dropped below twenty-five in that house since about Tuesday.",
+   "afrikaans": "Dit het sedert omtrent Dinsdag nie onder vyf-en-twintig in daardie huis gesak nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "night"
+  },
+  {
+   "id": "B367",
+   "english": "That is the only cool water in this garden and it has been claimed.",
+   "afrikaans": "Dit is die enigste koel water in hierdie tuin en dit is opgeëis.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B369",
+   "english": "There is a whole garden out there and about a metre of it is bearable.",
+   "afrikaans": "Daar is 'n hele tuin daar buite en omtrent 'n meter daarvan is draaglik.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B370",
+   "english": "He came out of the cage, and he did not come out for the view.",
+   "afrikaans": "Hy het uit die hok gekom, en hy het nie vir die uitsig uitgekom nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B371",
+   "english": "Nobody on this stoep is going anywhere until about four o'clock.",
+   "afrikaans": "Niemand op hierdie stoep gaan enige plek heen voor omtrent vieruur nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B372",
+   "english": "Friday, and that is the only moving air for about sixty kilometres.",
+   "afrikaans": "Vrydag, en dit is die enigste bewegende lug vir omtrent sestig kilometer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "heat",
+   "time": "day"
+  },
+  {
+   "id": "B373",
+   "english": "The grass is wet, the air is cold, and the jersey was not optional.",
+   "afrikaans": "Die gras is nat, die lug is koud, en die trui was nie opsioneel nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dawn"
+  },
+  {
+   "id": "B374",
+   "english": "The sky is clear and the car is white, and those two facts are related.",
+   "afrikaans": "Die lug is skoon en die kar is wit, en daardie twee feite hou verband.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dawn"
+  },
+  {
+   "id": "B375",
+   "english": "The zip goes all the way up today; the walk to the gate has teeth.",
+   "afrikaans": "Die rits gaan vandag heeltemal op; die stap hek toe het tande.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dawn"
+  },
+  {
+   "id": "B376",
+   "english": "The warmest place in the province was abandoned here at about six-fifteen.",
+   "afrikaans": "Die warmste plek in die provinsie is hier omtrent kwart oor ses verlaat.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dawn"
+  },
+  {
+   "id": "B378",
+   "english": "The sign says the rain won; the faces say it didn't.",
+   "afrikaans": "Die bord sê die reën het gewen; die gesigte sê nee.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B379",
+   "english": "The morning's second kettle has nothing to do with tea.",
+   "afrikaans": "Die oggend se tweede ketel het niks met tee te doen nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B381",
+   "english": "Construction finished at nine: one duvet cave, single occupant, no visitors till spring.",
+   "afrikaans": "Bouwerk klaar om nege: een duvetgrot, een bewoner, geen besoekers tot die lente nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B382",
+   "english": "Somebody's optimism is still on the table, under a millimetre of frost.",
+   "afrikaans": "Iemand se optimisme lê nog op die tafel, onder 'n millimeter ryp.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B383",
+   "english": "One patch of sun came into this lounge and the dog got there first.",
+   "afrikaans": "Een kol son het in hierdie sitkamer ingekom en die hond was eerste daar.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B386",
+   "english": "The jersey got promoted to balaclava somewhere between the door and the gate.",
+   "afrikaans": "Die trui is êrens tussen die deur en die hek tot balaclava bevorder.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B387",
+   "english": "The air found the one gap in the outfit and he is closing it by hand.",
+   "afrikaans": "Die lug het die een gaping in die uitrusting gekry en hy maak dit met die hand toe.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B389",
+   "english": "Outside is for the stars tonight; everything with fur voted fireplace.",
+   "afrikaans": "Buite is vanaand vir die sterre; alles met pels het vir die kaggel gestem.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "night"
+  },
+  {
+   "id": "B390",
+   "english": "Fingerless gloves at a laptop: winter has entered the home office.",
+   "afrikaans": "Vingerlose handskoene by 'n laptop: winter het die tuiskantoor betree.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "cold",
+   "time": "night"
+  },
+  {
+   "id": "B391",
+   "english": "Cold enough to share one blanket, clear enough to make it worth it.",
+   "afrikaans": "Koud genoeg om een kombers te deel, helder genoeg om dit die moeite werd te maak.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "night"
+  },
+  {
+   "id": "B392",
+   "english": "Bin day, and the frost got to them before the truck did.",
+   "afrikaans": "Vullisdag, en die ryp was voor die trok daar.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B393",
+   "english": "The hadeda has landed on frost and is already drafting a complaint.",
+   "afrikaans": "Die hadeda het op ryp geland en stel reeds 'n klag op.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B394",
+   "english": "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+   "afrikaans": "Nie een wolk nie, nie een graad nie: 'n Hoëveldse wintermôre doen albei gelyk.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B395",
+   "english": "Five guinea fowl crossing in single file: the frost has everyone walking carefully.",
+   "afrikaans": "Vyf tarentale stap in 'n ry oor: die ryp laat almal versigtig trap.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "dawn"
+  },
+  {
+   "id": "B398",
+   "english": "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+   "afrikaans": "Blou lug, goue gras, wit rande: 'n Hoëveldse rugbyoggend in volle drag.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "day"
+  },
+  {
+   "id": "B399",
+   "english": "Frost on the grass, steam off the field: winter running weather at its most honest.",
+   "afrikaans": "Ryp op die gras, stoom van die veld af: wintersdrafweer op sy eerlikste.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "day"
+  },
+  {
+   "id": "B400",
+   "english": "Cold enough to see every breath, clear enough that nobody minds.",
+   "afrikaans": "Koud genoeg om elke asem te sien, helder genoeg dat niemand omgee nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "day"
+  },
+  {
+   "id": "B401",
+   "english": "The towels went out damp and are coming in as boards.",
+   "afrikaans": "Die handdoeke is klam uitgehang en kom as planke terug.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "dusk"
+  },
+  {
+   "id": "B402",
+   "english": "That washing is not dry; it is preserved. Winter dusk works fast out here.",
+   "afrikaans": "Daardie wasgoed is nie droog nie; dit is ingelê. Winterskemer werk vinnig hier.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "cold-clear",
+   "time": "dusk"
+  },
+  {
+   "id": "B404",
+   "english": "The horses are doing their own weather report, one breath at a time.",
+   "afrikaans": "Die perde doen hul eie weerberig, een asem op 'n slag.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "dusk"
+  },
+  {
+   "id": "B408",
+   "english": "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight.",
+   "afrikaans": "Duvets in die bakkie, fles op die agterklap: die lug is vanaand die koue werd.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "night"
+  },
+  {
+   "id": "B410",
+   "english": "Visibility is down to one cow.",
+   "afrikaans": "Sigbaarheid is af tot een koei.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dawn"
+  },
+  {
+   "id": "B411",
+   "english": "One lit window is taking on the whole fog, and losing beautifully.",
+   "afrikaans": "Een verligte venster vat die hele mis aan, en verloor pragtig.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dawn"
+  },
+  {
+   "id": "B412",
+   "english": "The fog is thick enough to hold a beam of kitchen light like a solid object.",
+   "afrikaans": "Die mis is dik genoeg om 'n straal kombuislig soos 'n vaste ding vas te hou.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dawn"
+  },
+  {
+   "id": "B413",
+   "english": "The fog rolled in at three and started deleting the neighbourhood from the far end.",
+   "afrikaans": "Die mis het drieuur ingerol en die buurt van die verste kant af begin uitvee.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dawn"
+  },
+  {
+   "id": "B414",
+   "english": "The dog is definitely still on the end of that leash. Almost definitely.",
+   "afrikaans": "Die hond is definitief nog aan die punt van daardie leiband. Amper definitief.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "day"
+  },
+  {
+   "id": "B416",
+   "english": "The fog is lying in the streets like it pays rates here.",
+   "afrikaans": "Die mis lê in die strate asof dit hier belasting betaal.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "day"
+  },
+  {
+   "id": "B417",
+   "english": "Gown, slippers, thirty metres of visibility: bin day waits for no weather.",
+   "afrikaans": "Kamerjas, pantoffels, dertig meter sig: vullisdag wag vir geen weer nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "day"
+  },
+  {
+   "id": "B418",
+   "english": "Found: one ball. The other three hundred metres of golf course are still missing.",
+   "afrikaans": "Gevind: een bal. Die ander driehonderd meter gholfbaan is steeds vermis.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "day"
+  },
+  {
+   "id": "B419",
+   "english": "The fairway is out there somewhere, taking the morning off from being visible.",
+   "afrikaans": "Die skoonveld is daar êrens, en vat die oggend af van sigbaar wees.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "fog",
+   "time": "day"
+  },
+  {
+   "id": "B420",
+   "english": "Headlights do about twenty metres out here; the rest is memory and respect.",
+   "afrikaans": "Ligte haal omtrent twintig meter hier; die res is geheue en respek.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dusk"
+  },
+  {
+   "id": "B421",
+   "english": "Every streetlamp gets its own halo tonight; the fog is generous like that.",
+   "afrikaans": "Elke straatlig kry vanaand sy eie stralekrans; die mis is so vrygewig.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dusk"
+  },
+  {
+   "id": "B422",
+   "english": "The fog swallowed the whole street and left the tail lights as a receipt.",
+   "afrikaans": "Die mis het die hele straat gesluk en die agterligte as kwitansie gelos.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dusk"
+  },
+  {
+   "id": "B423",
+   "english": "The fog got to the lookout first and took the whole view for itself.",
+   "afrikaans": "Die mis was eerste by die uitkykpunt en het die hele uitsig vir homself gevat.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dusk"
+  },
+  {
+   "id": "B424",
+   "english": "Cape Town is still on under there; the fog is just running interference.",
+   "afrikaans": "Kaapstad is nog aan daaronder; die mis staan net in die pad.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "night"
+  },
+  {
+   "id": "B429",
+   "english": "One night of proper rain and the driveway has joined the water table.",
+   "afrikaans": "Een nag se ordentlike reën en die oprit het by die watertafel aangesluit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dawn"
+  },
+  {
+   "id": "B430",
+   "english": "Rain out here is an event; the whole veld will smell of it by seven.",
+   "afrikaans": "Reën hier buite is 'n gebeurtenis; die hele veld gaan teen sewe daarna ruik.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dawn"
+  },
+  {
+   "id": "B433",
+   "english": "Six raincoats, one puddle, zero regrets: the rain knows its audience.",
+   "afrikaans": "Ses reënjasse, een plas, nul spyt: die reën ken sy gehoor.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "day"
+  },
+  {
+   "id": "B434",
+   "english": "The cat has taken the rain personally, as the cat takes most things.",
+   "afrikaans": "Die kat vat die reën persoonlik op, soos die kat die meeste dinge opvat.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "day"
+  },
+  {
+   "id": "B435",
+   "english": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+   "afrikaans": "Joburgse somerreën: kom vyfuur, deurweek alles, weg teen aandete.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dusk"
+  },
+  {
+   "id": "B438",
+   "english": "Thunder counts double when you have ears like that.",
+   "afrikaans": "Donderweer tel dubbel as jy sulke ore het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B439",
+   "english": "The balcony beats the couch when the sky is doing this.",
+   "afrikaans": "Die balkon klop die bank as die lug dít doen.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "dusk"
+  },
+  {
+   "id": "B440",
+   "english": "The palms are pointing the way the storm is going, which is this way.",
+   "afrikaans": "Die palms wys die rigting waarheen die storm gaan, en dit is hierheen.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "dusk"
+  },
+  {
+   "id": "B442",
+   "english": "The mist has moved into the valley for the night and locked the gate behind it.",
+   "afrikaans": "Die mis het vir die nag in die vallei ingetrek en die hek agter hom gesluit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B443",
+   "english": "That mist is tomorrow morning's frost out doing a site inspection.",
+   "afrikaans": "Daardie mis is môreoggend se ryp wat 'n terreininspeksie doen.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B445",
+   "english": "It is heater season, and the best seat in the house has fur on it.",
+   "afrikaans": "Dis verwarmerseisoen, en die beste sitplek in die huis het pels op.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B446",
+   "english": "The cold cleared the whole street an hour before closing time.",
+   "afrikaans": "Die koue het die hele straat 'n uur voor sluitingstyd skoongevee.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "night"
+  },
+  {
+   "id": "B448",
+   "english": "Beanie, snood, torch, book: winter nights build the best reading rooms.",
+   "afrikaans": "Mus, nekwarmer, flits, boek: winternagte bou die beste leeskamers.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "cold",
+   "time": "night"
+  },
+  {
+   "id": "B449",
+   "english": "Wet road, grey sky, dog in a jersey: winter is fully operational.",
+   "afrikaans": "Nat pad, grys lug, hond in 'n trui: winter is ten volle in werking.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B450",
+   "english": "The mountain is in there somewhere, wrapped up for the winter.",
+   "afrikaans": "Die berg is daar êrens, toegedraai vir die winter.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B452",
+   "english": "Nobody's footprints on that sand today; the cold is keeping its beach to itself.",
+   "afrikaans": "Niemand se spore op daardie sand vandag nie; die koue hou sy strand vir homself.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B456",
+   "english": "The yard is wet, the air is cold, and security has suspended patrols.",
+   "afrikaans": "Die werf is nat, die lug is koud, en sekuriteit het patrollies opgeskort.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "day"
+  },
+  {
+   "id": "B458",
+   "english": "Frost on the lawn and wors on the grid: a Cape winter compromise.",
+   "afrikaans": "Ryp op die grasperk en wors op die rooster: 'n Kaapse winterkompromie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "night"
+  },
+  {
+   "id": "B459",
+   "english": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+   "afrikaans": "Asem soos rook, ryp op die glas, son reeds op: Hoëveldse skoolrit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "day"
+  },
+  {
+   "id": "B460",
+   "english": "The bakkie iced over under a completely clear sky, which is exactly how it works.",
+   "afrikaans": "Die bakkie het onder 'n heeltemal skoon lug toegevries — presies hoe dit werk.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "day"
+  },
+  {
+   "id": "B461",
+   "english": "The sun is up and doing its best; the frost is unconvinced so far.",
+   "afrikaans": "Die son is op en doen sy bes; die ryp is tot dusver nie oortuig nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "day"
+  },
+  {
+   "id": "B462",
+   "english": "A sky that clean means the field freezes before the floodlights even warm up.",
+   "afrikaans": "So 'n skoon lug beteken die veld vries voor die ligte eers warm word.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "dusk"
+  },
+  {
+   "id": "B463",
+   "english": "The Southern Cross is out and the lawn has gone silver under it.",
+   "afrikaans": "Die Suiderkruis is uit en die grasperk het silwer geword daaronder.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "night"
+  },
+  {
+   "id": "B464",
+   "english": "A sky this clean at night is beautiful, and it charges in degrees.",
+   "afrikaans": "So 'n skoon naglug is pragtig, en jy betaal daarvoor in grade.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "cold-clear",
+   "time": "night"
+  },
+  {
+   "id": "B465",
+   "english": "Stars that sharp come standard with air this cold — it is a package deal.",
+   "afrikaans": "Sterre so skerp kom standaard met lug so koud — dis 'n pakket.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "night"
+  },
+  {
+   "id": "B467",
+   "english": "Coats and coffees in full sun: winter in this city photographs like summer.",
+   "afrikaans": "Jasse en koffies in vol son: winter in hierdie stad lyk op foto's soos somer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold-clear",
+   "time": "day"
+  },
+  {
+   "id": "B469",
+   "english": "Last taxis of the night, and the fog has the whole rank to itself soon.",
+   "afrikaans": "Laaste taxi's van die aand, en die mis het binnekort die hele staanplek vir homself.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "night"
+  },
+  {
+   "id": "B471",
+   "english": "Fog settles in the low ground, which is why the herd sleeps on the hill.",
+   "afrikaans": "Mis sak in die laagtes, en dis hoekom die trop op die bult slaap.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dawn"
+  },
+  {
+   "id": "B472",
+   "english": "Kickoff is ten and the far posts have not arrived yet.",
+   "afrikaans": "Afskop is tien en die verste pale het nog nie opgedaag nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "day"
+  },
+  {
+   "id": "B473",
+   "english": "The fog took the city but it is not getting the Bo-Kaap's colours.",
+   "afrikaans": "Die mis het die stad gevat, maar die Bo-Kaap se kleure kry hy nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dusk"
+  },
+  {
+   "id": "B474",
+   "english": "The puddles are claiming the pavement one slab at a time.",
+   "afrikaans": "Die plasse eis die sypaadjie op, een blok op 'n slag.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dawn"
+  },
+  {
+   "id": "B476",
+   "english": "Somebody ordered rain for the night and sun for the morning, and it was delivered.",
+   "afrikaans": "Iemand het reën vir die nag en son vir die oggend bestel, en dit is afgelewer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dawn"
+  },
+  {
+   "id": "B478",
+   "english": "That window has the best programme on this morning and it is just rain.",
+   "afrikaans": "Daardie venster het vanoggend die beste program, en dit is net reën.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dawn"
+  },
+  {
+   "id": "B480",
+   "english": "Every neon sign in the street is being doubled on the wet tar tonight.",
+   "afrikaans": "Elke neonbord in die straat word vanaand op die nat teer verdubbel.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B481",
+   "english": "The gutter is running like a river and it has already claimed a casualty.",
+   "afrikaans": "Die geut loop soos 'n rivier en het reeds 'n slagoffer geëis.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B482",
+   "english": "The storm water is heading for the sea and taking prisoners.",
+   "afrikaans": "Die stormwater is see toe op pad en vat gevangenes.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "night"
+  },
+  {
+   "id": "B483",
+   "english": "The puddle outside the gate is now part of the curriculum.",
+   "afrikaans": "Die plas buite die hek is nou deel van die kurrikulum.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "day"
+  },
+  {
+   "id": "B485",
+   "english": "Outside is closed. Management is inside.",
+   "afrikaans": "Buite is gesluit. Bestuur is binne.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B487",
+   "english": "Beautiful view. Hostile air.",
+   "afrikaans": "Pragtige uitsig. Vyandige lug.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B488",
+   "english": "This is no longer a beverage. It's a strategy.",
+   "afrikaans": "Dit is nie meer 'n drankie nie. Dit is 'n strategie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B489",
+   "english": "Sunset showed up. The cold came with it.",
+   "afrikaans": "Die sonsondergang het opgedaag. Die koue het saamgekom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B490",
+   "english": "The sky apologised. The pavement didn't.",
+   "afrikaans": "Die lug het om verskoning gevra. Die sypaadjie nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cold",
+   "time": "dusk"
+  },
+  {
+   "id": "B491",
+   "english": "Visibility has clocked off. You're on your own.",
+   "afrikaans": "Sigbaarheid het uitgeklok. Jy is op jou eie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dawn"
+  },
+  {
+   "id": "B492",
+   "english": "Forward is still an option. Sightseeing is not.",
+   "afrikaans": "Vorentoe is nog 'n opsie. Rondkyk nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dawn"
+  },
+  {
+   "id": "B493",
+   "english": "They turned the lights on. Fog turned everything else off.",
+   "afrikaans": "Hulle het die ligte aangesit. Die mis het al die res afgesit.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dusk"
+  },
+  {
+   "id": "B494",
+   "english": "Pretty evening, if you like walls.",
+   "afrikaans": "Mooi aand, as jy van mure hou.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "fog",
+   "time": "dusk"
+  },
+  {
+   "id": "B495",
+   "english": "Rain came all the way home.",
+   "afrikaans": "Die reën het die hele pad saam huis toe gekom.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "day"
+  },
+  {
+   "id": "B497",
+   "english": "Still raining. That's the whole update.",
+   "afrikaans": "Dit reën nog. Dis die hele opdatering.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "day"
+  },
+  {
+   "id": "B498",
+   "english": "Wet between here and anywhere else.",
+   "afrikaans": "Nat tussen hier en enige ander plek.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "day"
+  },
+  {
+   "id": "B500",
+   "english": "Wet out. The city can keep the colour.",
+   "afrikaans": "Nat daar buite. Die stad kan die kleur hou.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dusk"
+  },
+  {
+   "id": "B501",
+   "english": "The sky is in charge now.",
+   "afrikaans": "Die lug is nou in beheer.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B502",
+   "english": "Not weather you walk through.",
+   "afrikaans": "Nie weer waardeur jy loop nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B503",
+   "english": "Storm. Plans can wait.",
+   "afrikaans": "Storm. Planne kan wag.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B504",
+   "english": "Outside is closed until further notice.",
+   "afrikaans": "Buite is gesluit tot verdere kennisgewing.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B505",
+   "english": "When the sky starts talking, everything else stops.",
+   "afrikaans": "Wanneer die lug begin praat, hou al die res op.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B506",
+   "english": "Serious weather. The rest is postponed.",
+   "afrikaans": "Ernstige weer. Die res is uitgestel.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B507",
+   "english": "Get inside weather.",
+   "afrikaans": "Gaan-binne-weer.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B508",
+   "english": "Stay in. That's the whole forecast.",
+   "afrikaans": "Bly binne. Dis die hele voorspelling.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B509",
+   "english": "Storm with wind attached.",
+   "afrikaans": "Storm. Wind ingesluit.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B510",
+   "english": "The storm has arrived. Everything else can wait.",
+   "afrikaans": "Die storm het aangekom. Al die res kan wag.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "day"
+  },
+  {
+   "id": "B512",
+   "english": "Storm on the horizon. That's your deadline.",
+   "afrikaans": "Storm op die horison. Dis jou sperdatum.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "dusk"
+  },
+  {
+   "id": "B513",
+   "english": "Finish up. The weather won't.",
+   "afrikaans": "Maak klaar. Die weer gaan nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "dusk"
+  },
+  {
+   "id": "B514",
+   "english": "Storm's close. Home is closer, hopefully.",
+   "afrikaans": "Die storm is naby. Die huis is nader, hopelik.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "dusk"
+  },
+  {
+   "id": "B516",
+   "english": "Proper storm. Not the pretty kind.",
+   "afrikaans": "Ordentlike storm. Nie die mooi soort nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "storm",
+   "time": "night"
+  },
+  {
+   "id": "B517",
+   "english": "Still raining. That's the update.",
+   "afrikaans": "Dit reën nog. Dis die opdatering.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dusk"
+  },
+  {
+   "id": "B518",
+   "english": "The rain didn't clock off.",
+   "afrikaans": "Die reën het nie uitgeklok nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "rain",
+   "time": "dusk"
+  },
+  {
+   "id": "B520",
+   "english": "Good weather. Unfortunately.",
+   "afrikaans": "Goeie weer. Ongelukkig.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "clear",
+   "time": "dusk"
+  },
+  {
+   "id": "B521",
+   "english": "The sky behaved. So must you.",
+   "afrikaans": "Die lug het hom gedra. Nou jy.",
+   "outcome": "accepted-rewrite",
+   "chosen": "fable",
+   "condition": "clear",
+   "time": "dusk"
+  },
+  {
+   "id": "B524",
+   "english": "Not rain. Just atmosphere with opinions.",
+   "afrikaans": "Nie reën nie. Net atmosfeer met menings.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "dusk"
+  },
+  {
+   "id": "B525",
+   "english": "The sky’s overdressed. The weather’s still fine.",
+   "afrikaans": "Die lug het te veel aangetrek. Die weer is nog heeltemal reg.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "dusk"
+  },
+  {
+   "id": "B526",
+   "english": "Cloudy dusk. Pretty, not promising.",
+   "afrikaans": "Bewolkte skemer. Mooi, maar belowe niks.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "dusk"
+  },
+  {
+   "id": "B528",
+   "english": "Cloud cover. The night shift starts early.",
+   "afrikaans": "Wolkdek. Die nagskof begin vroeg.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "dusk"
+  },
+  {
+   "id": "B529",
+   "english": "Cloudy. Stay in if you were looking for a reason.",
+   "afrikaans": "Bewolk. Bly binne as jy 'n rede gesoek het.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "dusk"
+  },
+  {
+   "id": "B530",
+   "english": "Cloudy night. Nobody’s going out, officially.",
+   "afrikaans": "Bewolkte nag. Niemand gaan uit nie, amptelik.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "night"
+  },
+  {
+   "id": "B531",
+   "english": "The weather chose indoors. Correctly.",
+   "afrikaans": "Die weer het binne gekies. Heeltemal reg ook.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "night"
+  },
+  {
+   "id": "B532",
+   "english": "Cloudy night. Bravery in blanket form.",
+   "afrikaans": "Bewolkte nag. Dapperheid in kombersvorm.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "night"
+  },
+  {
+   "id": "B533",
+   "english": "The sky closed. The evening didn’t.",
+   "afrikaans": "Die lug het toegemaak. Die aand nie.",
+   "outcome": "accepted",
+   "chosen": null,
+   "condition": "cloudy",
+   "time": "night"
+  }
+ ]
+}

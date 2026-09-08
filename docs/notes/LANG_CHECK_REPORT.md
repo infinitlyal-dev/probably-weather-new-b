@@ -164,3 +164,37 @@ Pack files changed this session: `lang-packs/st/banned-words.json` (+ `Leholimo 
 | **Every future zu/xh/st transcreation through lang-check before wiring** | `scripts/apply-provisional-drafts.mjs` now runs the gate itself (`scripts/lang-check/lib/gate.mjs`): a triage-high draft is held for a native and recorded in the debt ledger as `held-lang-check`; the run refuses without the corpus cache unless `--skip-lang-check` is passed explicitly. Rule 9 in `CLAUDE.md`, step 4b in `lang-packs/README.md`, rule 7 in the pw-ui-copy skill. `tests/lang-check.test.js` proves the gate holds a Setswana line and passes a clean one. |
 
 Exam after the rulings (the Lesotho-spelling lines are no longer scored either way): precision 54 / 36 / 38 / 67 %, recall 62 / 82 / 82 / 77 %, wrong-sense 38 / 62 / 54 / 50 %, wrong-language 84 / 100 / 95 / 100 % — still a pass in all four. The 883 Afrikaans lines re-run: 23 to triage, 0 high.
+
+---
+
+## 2026-09-08 — the sheets applied, the bank re-spelled
+
+| Ruling | Done |
+|---|---|
+| **Fifth `reen` line, `Troufoto` → `troufoto`** | "Die hond staar na die reën…" and "Nie troufoto weer nie…" fixed in the bank and mirrors; af-qc-check now flags nothing in the 883-line set. |
+| **Accept all 515 Sesotho proposals and the one zu proposal** | `scripts/lang-check/apply-sheet.mjs` applies a sheet's decisions through the gate (each accepted line re-checked; held only when the change itself raises it to triage-high). 506 written, 9 held on doubts unrelated to the spelling and applied on the "accept all" ruling with `--force-held` (`review/lang-check-apply-st-held.md`). The sheet builder was then widened to every st string in `app.js` (arrays and duplicate keys), which found four more Lesotho spellings; the bank and UI strings now carry none. Mirrors (manifest, drafts, corpus-confirmed) kept in step; `verify-lines` PASS; one test pin moved to `lehodimo`. zu: `baphambe → bahambe`. Commit `f436774`. |
+
+## 2026-09-08 — Afrikaans humour judge, two judges, one run
+
+Brief: `review/af-judge-brief.md` (identical for both). Rows: `review/af-judge-rows.json` (350 canon, 533 blue). Judge one = Fable (`review/af-judge-fable.json`), judge two = Astra, GPT through the Codex adversary route, no sight of judge one (`review/af-judge-astra.json`, 12½ min). Both ran `lang-check` on every proposal.
+
+| | KEEP | FIX | KILL | proposals | proposals clean on lang-check |
+|---|---|---|---|---|---|
+| Fable | 489 | 43 | 1 | 44 | 44 |
+| Astra | 345 | 89 | 99 | 188 | 184 |
+
+The two voices (phase 1) agree on the substance — spoken beats, loans kept, nature with bad manners, SA props, dry understatement — and name the same recurring failures: dictionary words where the loan is the spoken word (`lugreëling`, `sluimerknoppie`, `skootrekenaar`, `bivakmus`), English frames carried literally (`het dit beter`, `made it`, `in gedagte ontwerp`), and clauses left hanging (`van plan om nie`). They differ on severity: Astra kills a caption that is natural Afrikaans but shaped like its English sentence; Fable keeps it when it reads as spoken Afrikaans and the joke survives.
+
+**Merge** (`scripts/lang-check/merge-judges.mjs`): both KEEP → accepted; both FIX/KILL → the proposal that passes lang-check, lower doubt wins, tie to judge one; any disagreement or no passing proposal → Al.
+
+| outcome | rows | note |
+|---|---|---|
+| accepted | 338 | both KEEP |
+| accepted-rewrite | 37 | 9 FIX/FIX, 27 FIX/KILL, 1 KILL/FIX; 35 of the chosen lines are Fable's, 2 Astra's (both judges' proposals passed; the tie rule went to judge one) |
+| al | 158 | 79 Fable KEEP / Astra FIX, 72 Fable KEEP / Astra KILL, 7 Fable FIX / Astra KEEP — `review/af-judge-al.html`, both proposals and both reasons per row, pick either or type your own |
+
+**Applied** (`scripts/lang-check/apply-af-accepted.mjs`): the 375 accepted rows plus the 350 bank rows went through the lang-check gate into **`assets/hero-lines-af.js`** — the Afrikaans bank for the bespoke lines, English line → Afrikaans, 725 rows, 0 held (3 written with a low doubt, listed in `review/af-accepted-apply.md`). The bespoke path in the app stays English-only by the ruling in `hero-lines.js`; wiring this table into the picker is a separate step and was not done here. The 158 al rows are absent from the table until Al's export (`node scripts/lang-check/apply-af-accepted.mjs --decisions review/af-judge-al-decisions.json`).
+
+Exam after everything: still a pass in all four languages (precision 54 / 36 / 38 / 67 %, wrong-sense 38 / 62 / 54 / 50 %, wrong-language 84 / 100 / 95 / 100 %).
+
+The al sheet is not small. That is the honest result of an adversarial second judge who killed 99 lines where the first killed one; the sheet shows both cases per row so the call takes a glance each.
