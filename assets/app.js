@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // "Weekly" / adverbial forms match the hourly pattern (Ngeviki / Ngeveki / Ka beke parallel Ngamahora / Ngeyure / Ka hora).
       week: { en: "Weekly", af: "Weekliks", zu: "Ngeviki", xh: "Ngeveki", st: "Ka beke" },
       search: { en: "Search", af: "Soek", zu: "Sesha", xh: "Khangela", st: "Batla" },
-      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" },
+      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Ditlhophiso" },
       sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
     },
     // Screen titles
@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hourly: { en: "Hourly", af: "Uurliks", zu: "Ngamahora", xh: "Ngeyure", st: "Ka hora" },
       week: { en: "7-Day", af: "7-Dae", zu: "Izinsuku-7", xh: "Intsuku-7", st: "Matsatsi-7" },
       search: { en: "Search", af: "Soek", zu: "Sesha", xh: "Khangela", st: "Batla" },
-      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Litlhophiso" },
+      settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Ditlhophiso" },
       sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
     },
     // Sources page — full destination, AD-FREE. Explainer + attribution.
@@ -256,14 +256,14 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Probably Weather kyk na vyf weersbronne elke keer wat jy die app oopmaak. Ons stel hulle gemiddelde saam sodat jy 'n meer eerlike voorspelling kry — geen enkele bron wat verkeerd raai oor of dit gaan reën nie.",
         zu: "I-Probably Weather ihlola imithombo emihlanu yesimo sezulu ngaso sonke isikhathi uvula uhlelo lokusebenza. Sihlanganisa amalinganiso ukuze uthole isibikezelo esiqotho — akukho mthombo owodwa oqagela kabi ngokuthi imvula iyona noma cha.",
         xh: "I-Probably Weather ijonga imithombo emihlanu yemozulu ngalo lonke ixesha uvula i-app. Sidibanisa imilinganiselo ukuze ufumane isiprofeto esinyanisekileyo — akukho mthombo omnye oqikelela ngokungafanelekanga ngokuba kuza kuna na okanye hayi.",
-        st: "Probably Weather e sheba mehlodi e mehlano ea boemo ba leholimo nako e nngwe le e nngwe ha u bula app. Re kopanya likarolelano hore u fumane ponelopele e tšepahalang — ha ho mohlodi o le mong o akhang hampe ka hore ho tla na pula kapa che."
+        st: "Probably Weather e sheba mehlodi e mehlano ea boemo ba lehodimo nako e nngwe le e nngwe ha u bula app. Re kopanya likarolelano hore u fumane ponelopele e tšepahalang — ha ho mohlodi o le mong o akgang hampe ka hore ho tla na pula kapa tjhe."
       },
       attribution: {
         en: "Data from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather, and Tomorrow.io. Used with permission and gratitude.",
         af: "Data van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather en Tomorrow.io. Gebruik met toestemming en dank.",
         zu: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, i-Pirate Weather ne-Tomorrow.io. Isetshenziswa ngemvume nokubonga.",
         xh: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, i-Pirate Weather ne-Tomorrow.io. Isetyenziswa ngemvume nokubulela.",
-        st: "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io. E sebelisoa ka tumello le ka teboho."
+        st: "Data e tswa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io. E sebediswa ka tumello le ka teboho."
       },
       // Per-source descriptions for the Sources page. The render code doesn't
       // consume these yet — landing them here so they're available when the
@@ -286,20 +286,20 @@ document.addEventListener("DOMContentLoaded", () => {
     search: {
       placeholder: { en: "Search for a place", af: "Soek 'n plek", zu: "Sesha indawo", xh: "Khangela indawo", st: "Batla sebaka" },
       cancel: { en: "Cancel", af: "Kanselleer", zu: "Khansela", xh: "Rhoxisa", st: "Hlakola" },
-      savedPlaces: { en: "Saved Places", af: "Gestoorde Plekke", zu: "Izindawo Ezigciniwe", xh: "Iindawo Ezigciniweyo", st: "Libaka tse Bolokiloeng" },
+      savedPlaces: { en: "Saved Places", af: "Gestoorde Plekke", zu: "Izindawo Ezigciniwe", xh: "Iindawo Ezigciniweyo", st: "Dibaka tse Bolokilweng" },
       recent: { en: "Recent", af: "Onlangs", zu: "Okwakamuva", xh: "Okutsha", st: "Tsa morao tjena" },
-      noSaved: { en: "No saved places yet.", af: "Nog geen gestoorde plekke nie.", zu: "Azikho izindawo ezigciniwe.", xh: "Akukho ndawo igciniweyo okwangoku.", st: "Ha ho libaka tse bolokiloeng." },
+      noSaved: { en: "No saved places yet.", af: "Nog geen gestoorde plekke nie.", zu: "Azikho izindawo ezigciniwe.", xh: "Akukho ndawo igciniweyo okwangoku.", st: "Ha ho dibaka tse bolokilweng." },
       noRecent: { en: "No recent searches yet.", af: "Nog geen onlangse soektogte nie.", zu: "Azikho ukusesha kwakamuva.", xh: "Akukho kukhangela kwakutsha.", st: "Ha ho ho batla ha morao tjena." },
       clearRecents: { en: "Clear recents", af: "Verwyder onlangse soektogte", zu: "Susa okamuva", xh: "Susa okukhangelwe kutshanje", st: "Hlakola tsa morao" },
       edit: { en: "Edit", af: "Wysig", zu: "Hlela", xh: "Hlela", st: "Fetola" },
       manage: { en: "Manage", af: "Bestuur", zu: "Phatha", xh: "Lawula", st: "Tsamaisa" },
-      done: { en: "Done", af: "Klaar", zu: "Kwenziwe", xh: "Kugqityiwe.", st: "Ho phethiloe" }
+      done: { en: "Done", af: "Klaar", zu: "Kwenziwe", xh: "Kugqityiwe.", st: "Ho phethilwe" }
     },
     // Settings screen
     settings: {
       units: { en: "Units", af: "Eenhede", zu: "Iziyunithi", xh: "Iiyunithi", st: "Diyuniti" },
       temperature: { en: "Temperature", af: "Temperatuur", zu: "Izinga lokushisa", xh: "Ubushushu", st: "Mocheso" },
-      windSpeed: { en: "Wind speed", af: "Windspoed", zu: "Isivinini somoya", xh: "Isantya somoya", st: "Lebelo la moea" },
+      windSpeed: { en: "Wind speed", af: "Windspoed", zu: "Isivinini somoya", xh: "Isantya somoya", st: "Lebelo la moya" },
       precipitation: { en: "Precipitation", af: "Reënval", zu: "Imvula", xh: "Imvula", st: "Pula" },
       display: { en: "Display", af: "Vertoon", zu: "Ukubonisa", xh: "Ukubonisa", st: "Bonts'a" },
       timeFormat: { en: "Time format", af: "Tydformaat", zu: "Ifomethi yesikhathi", xh: "Ifomathi yexesha", st: "Sebopeho sa nako" },
@@ -310,22 +310,22 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io om jou 'n meer betroubare voorspelling te gee.",
         zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukukunikeza isibikezelo esithembekile.",
         xh: "I-Probably Weather idibanisa uqikelelo lwemozulu oluvela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukuze ikunike uqikelelo oluthembeke ngakumbi.",
-        st: "Probably Weather e kopanya dikakanyo tsa boemo ba leholimo tse tsoang ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io ho u fa ponelopele e tšepahalang."
+        st: "Probably Weather e kopanya dikakanyo tsa boemo ba lehodimo tse tswang ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io ho u fa ponelopele e tšepahalang."
       }
     },
     // Weather byline terms
     weather: {
       probably: { en: "Probably", af: "Waarskynlik", zu: "Mhlawumbe", xh: "Mhlawumbi", st: "Mohlomong" },
-      wind: { en: "Wind", af: "Wind", zu: "Umoya", xh: "Umoya", st: "Moea" },
+      wind: { en: "Wind", af: "Wind", zu: "Umoya", xh: "Umoya", st: "Moya" },
       rain: { en: "Rain", af: "Reën", zu: "Imvula", xh: "Imvula", st: "Pula" },
       uv: { en: "UV", af: "UV", zu: "UV", xh: "UV", st: "UV" },
-      feelsLike: { en: "Feels like", af: "Voel soos", zu: "Kuzwakala sengathi", xh: "Ingathi", st: "Ho utlwahala joalo ka" },
+      feelsLike: { en: "Feels like", af: "Voel soos", zu: "Kuzwakala sengathi", xh: "Ingathi", st: "Ho utlwahala jwalo ka" },
       // M5: the trailing alarm-clock emoji was a platform glyph inside a translated
       // string — it cannot become an inline icon without putting markup in the copy
       // bank, and the word already carries the meaning.
       later: { en: "Later", af: "Later", zu: "Kamuva", xh: "Kamva", st: "Hamorao" },
       none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
-      gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "ukuqhwithela komoya / izivuthuvuthu zomoya", st: "Meea e fokang ka sefutho" },
+      gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "ukuqhwithela komoya / izivuthuvuthu zomoya", st: "Meya e fokang ka sefutho" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakulindeleka", xh: "Akunakulindeleka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
       likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
@@ -338,25 +338,25 @@ document.addEventListener("DOMContentLoaded", () => {
       time: { en: "Time", af: "Tyd", zu: "Isikhathi", xh: "Ixesha", st: "Nako" },
       temp: { en: "Temp", af: "Temp", zu: "Izinga lokushisa", xh: "Temp", st: "Mocheso" },
       day: { en: "Day", af: "Dag", zu: "Usuku", xh: "Usuku", st: "Letsatsi" },
-      sunrise: { en: "Sunrise", af: "Sonop", zu: "Ukuphuma kwelanga", xh: "Ukuphuma kwelanga", st: "Ho chaba ha letsatsi" },
-      sunset:  { en: "Sunset",  af: "Sononder", zu: "Ukushona kwelanga", xh: "Ukutshona kwelanga", st: "Ho likela ha letsatsi" },
+      sunrise: { en: "Sunrise", af: "Sonop", zu: "Ukuphuma kwelanga", xh: "Ukuphuma kwelanga", st: "Ho tjhaba ha letsatsi" },
+      sunset:  { en: "Sunset",  af: "Sononder", zu: "Ukushona kwelanga", xh: "Ukutshona kwelanga", st: "Ho dikela ha letsatsi" },
       hourlySoon: {
         en: "Hourly forecast appears 48 hours before this day.",
         af: "Uurlikse voorspelling verskyn 48 uur voor hierdie dag.",
         zu: "Isibikezelo samahora siphuma amahora angu-48 ngaphambi kwalolu suku.",
         xh: "Isibikezelo seeyure sivela kwiiyure ezingama-48 phambi kwalo mhla.",
-        st: "Ponelopele ea hora e hlahella lihora tse 48 pele ho letsatsi lena."
+        st: "Ponelopele ea hora e hlahella dihora tse 48 pele ho letsatsi lena."
       }
     },
     // Day hero badges
     badges: {
       rainy: { en: "Rainy", af: "Reënerig", zu: "Linemvula", xh: "Linemvula", st: "Pula" },
-      showers: { en: "Showers", af: "Buie", zu: "Izihlambi zemvula", xh: "Iimvula", st: "Lipula" },
+      showers: { en: "Showers", af: "Buie", zu: "Izihlambi zemvula", xh: "Iimvula", st: "Dipula" },
       rainLater: { en: "Rain later", af: "Reën later", zu: "Imvula kamuva", xh: "Imvula kamva", st: "Pula hamorao" },
       rainTonight: { en: "Rain tonight", af: "Reën vanaand", zu: "Imvula ebusuku", xh: "Imvula ngokuhlwa", st: "Pula bosiu" },
       rainMorning: { en: "Rain AM", af: "Reën oggend", zu: "Imvula ekuseni", xh: "Imvula kusasa", st: "Pula hoseng" },
       highUV: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e Phahameng" },
-      hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho chesa" },
+      hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
       cold: { en: "Cold", af: "Koud", zu: "Makhaza", xh: "Kuyabanda", st: "Ho bata" },
       uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
     },
@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "WINDWAARSKUWING",
         zu: "ISEXWAYISO SOMOYA",
         xh: "ISILUMKISO SOMOYA",
-        st: "TLHOKOMELISO YA MOEA"
+        st: "Tlhokomediso YA Moya"
       },
       // M5: the trailing wind-gust emoji came off the first line in en/af/zu/xh —
       // same reason as `later` above. The banner carries a drawn warning icon now.
@@ -400,38 +400,38 @@ document.addEventListener("DOMContentLoaded", () => {
         af: ["Ag nee, die tafeldoek is uit", "Die Kaapse Dokter maak vandag huisbesoeke", "Hou jou hoed vas, die Suidooster bedoel sake", "Die Suidooster het ongenooid opgedaag — soos altyd", "Die wind is hectic — selfs die meeuë loop"],
         zu: ["Yoh, ilaphu letafel liphumile", "UDokotela waseKapa uyashayela namuhla", "Bamba isigqoko sakho, iSoutheaster iyasebenza", "Umoya waseNingizimu ufikile ungamenyiwe — njengenjwayelo", "Umoya unamandla — ngisho nezinkonjane ziyahamba"],
         xh: ["Yhuu, ilaphu letafile liphumile", "UGqirha waseKapa uyajikeleza namhlanje", "Bamba umnqwazi wakho, umoya waseMzantsi-Mpuma uzimisele namhlanje", "Umoya waseMzantsi-Mpuma ufike ungamenywanga njengesiqhelo", "Umoya unamandla — neengabangaba zihamba ngeenyawo"],
-        st: ["Ag no, lesela la tafoleng le foka moea", "Ngaka ea Cape e etsa litšeliso kajeno", "Tšoara katiba ea hao — Southeaster e tla ka matla, ha e bapale.", "Moea oa boroa o fihlile o sa mengoa — joalo ka kamehla", "Moea o matla — esita le dikoekoe di tsamaea"]
+        st: ["Ag no, lesela la tafoleng le foka moya", "Ngaka ea Cape e etsa litšeliso kajeno", "Tšoara katiba ea hao — Southeaster e tla ka matla, ha e bapale.", "Moya oa borwa o fihlile o sa mengwa — jwalo ka kamehla", "Moya o matla — esita le dikoekoe di tsamaya"]
       }
     },
     // Toasts
     toasts: {
-      saved: { en: "Saved!", af: "Gestoor!", zu: "Kugciniwe!", xh: "Igciniwe!", st: "E bolokiloe!" },
-      removed: { en: "Removed", af: "Verwyder", zu: "Isusiwe", xh: "Isusiwe", st: "E tlositsoe" },
-      maxPlaces: { en: "Max 5 places. Remove one first.", af: "Maks 5 plekke. Verwyder een eers.", zu: "Izindawo ezi-5 kuphela. Susa eyodwa kuqala.", xh: "Iindawo ezi-5 kuphela. Susa enye kuqala.", st: "Libaka tse 5 feela. Tlosa e le 'ngoe pele." },
-      alreadySaved: { en: "Already saved!", af: "Reeds gestoor!", zu: "Seyigciniwe!", xh: "Sele igciniwe!", st: "E se e bolokiloe!" },
-      cleared: { en: "Cleared", af: "Skoongemaak", zu: "Kususiwe", xh: "Kucociwe", st: "E hlakotsoe" },
-      noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "akukho ndawo zigciniweyo", st: "Ha ho libaka tse bolokiloeng" },
+      saved: { en: "Saved!", af: "Gestoor!", zu: "Kugciniwe!", xh: "Igciniwe!", st: "E bolokilwe!" },
+      removed: { en: "Removed", af: "Verwyder", zu: "Isusiwe", xh: "Isusiwe", st: "E tlositswe" },
+      maxPlaces: { en: "Max 5 places. Remove one first.", af: "Maks 5 plekke. Verwyder een eers.", zu: "Izindawo ezi-5 kuphela. Susa eyodwa kuqala.", xh: "Iindawo ezi-5 kuphela. Susa enye kuqala.", st: "Dibaka tse 5 feela. Tlosa e le 'ngoe pele." },
+      alreadySaved: { en: "Already saved!", af: "Reeds gestoor!", zu: "Seyigciniwe!", xh: "Sele igciniwe!", st: "E se e bolokilwe!" },
+      cleared: { en: "Cleared", af: "Skoongemaak", zu: "Kususiwe", xh: "Kucociwe", st: "E hlakotswe" },
+      noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "akukho ndawo zigciniweyo", st: "Ha ho dibaka tse bolokilweng" },
       permissionDeniedBrowser: { en: "Location permission needed. Tap the location icon in your browser's address bar to enable it.", af: "Liggingtoestemming nodig. Tik die ligging-ikoon in jou blaaier se adresbalk om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Thepha isithonjana sendawo kubha yekheli lesiphequluli ukuze uyivule.", xh: "Kufuneka imvume yendawo. Cofa i-ayikhoni yendawo kwibar yedilesi yebhrawuza ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Tlanya letshwao la sebaka bareng ea aterese ea sebatli ho e bulela." },
       permissionDeniedStandalone: { en: "Location permission needed. Open device Settings → Apps → Probably Weather → Permissions → Location to enable.", af: "Liggingtoestemming nodig. Maak toestel-instellings → Apps → Probably Weather → Toestemmings → Ligging oop om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Vula Izilungiselelo zedivayisi → Apps → Probably Weather → Permissions → Location ukuze uyivule.", xh: "Kufuneka imvume yendawo. Vula iiSetingi zesixhobo → Apps → Probably Weather → Permissions → Location ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Bula Settings ea sesebediswa → Apps → Probably Weather → Permissions → Location ho e bulela." },
-      locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditsoe" },
-      locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo okuyo", st: "Ha e khone ho fumana sebaka" },
-      usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Kusetyenziswa indawo egciniweyo", st: "E sebedisa sebaka se bolokiloeng" },
-      weatherTimeout: { en: "Weather lookup taking too long. Try again.", af: "Weervoorspelling neem te lank. Probeer weer.", zu: "Ukubuka isimo sezulu kuthatha isikhathi eside. Zama futhi.", xh: "Ukukhangela isimo sezulu kuthatha ixesha elide. Zama kwakhona", st: "Ho sheba boemo ba leholimo ho nka nako e telele. Leka hape." },
+      locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditswe" },
+      locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo okuyo", st: "Ha e kgone ho fumana sebaka" },
+      usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Kusetyenziswa indawo egciniweyo", st: "E sebedisa sebaka se bolokilweng" },
+      weatherTimeout: { en: "Weather lookup taking too long. Try again.", af: "Weervoorspelling neem te lank. Probeer weer.", zu: "Ukubuka isimo sezulu kuthatha isikhathi eside. Zama futhi.", xh: "Ukukhangela isimo sezulu kuthatha ixesha elide. Zama kwakhona", st: "Ho sheba boemo ba lehodimo ho nka nako e telele. Leka hape." },
       // Brief acknowledgment shown for 1.5s after the page auto-reloads to
       // pick up a new service-worker version. No version string in the user-
       // facing copy — keeps it terse. Debug overlay still surfaces the
       // version for Al / testers who need it.
-      updatedToLatest: { en: "Updated ✓", af: "Bygewerk ✓", zu: "Kubuyekeziwe ✓", xh: "Kuhlaziyiwe ✓", st: "Ho ntjhafalitsoe ✓" },
+      updatedToLatest: { en: "Updated ✓", af: "Bygewerk ✓", zu: "Kubuyekeziwe ✓", xh: "Kuhlaziyiwe ✓", st: "Ho ntjhafaditswe ✓" },
       // Banner shown when /api/version reports a newer deploy than the one
       // the user booted with. Short copy — full banner = label + CTA + ✕.
-      updateAvailable: { en: "New version", af: "Nuwe weergawe", zu: "Inguqulo entsha", xh: "Inguqulelo entsha", st: "Phetolelo e ncha" },
+      updateAvailable: { en: "New version", af: "Nuwe weergawe", zu: "Inguqulo entsha", xh: "Inguqulelo entsha", st: "Phetolelo e ntjha" },
       tapToRefresh: { en: "Tap to refresh", af: "Tik om te verfris", zu: "Thepha ukuze uvuselele", xh: "Cofa ukuze uhlaziye", st: "Tobetsa ho ntlafatsa" }
     },
     // Misc
     misc: {
       loading: { en: "Loading…", af: "Laai…", zu: "Iyalayisha…", xh: "Iyalayisha…", st: "E a jarolla…" },
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
-      couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana ulwazi lwemozulu ngoku.", st: "Ha e khone ho fumana boemo ba leholimo." },
+      couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana ulwazi lwemozulu ngoku.", st: "Ha e kgone ho fumana boemo ba lehodimo." },
       save: { en: "Save", af: "Stoor", zu: "Londoloza", xh: "Gcina", st: "Boloka" },
       saved: { en: "Saved", af: "Gestoor", zu: "Kugciniwe", xh: "Igciniwe", st: "Bolokile" },
       savePlace: { en: "Save this place", af: "Stoor hierdie plek", zu: "Londoloza le ndawo", xh: "Gcina le ndawo", st: "Boloka sebaka sena" },
@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Kyk na die weer in {city} — Suid-Afrikaanse weer in jou taal.",
         zu: "Bheka isimo sezulu e-{city} — isimo sezulu saseNingizimu Afrika ngolimi lwakho.",
         xh: "Jonga imozulu e-{city} — imozulu yaseMzantsi Afrika ngolwimi lwakho.",
-        st: "Sheba boemo ba leholimo {city} — boemo ba leholimo ba Afrika Borwa ka puo ya hao."
+        st: "Sheba boemo ba lehodimo {city} — boemo ba lehodimo ba Afrika Borwa ka puo ya hao."
       },
       // Source-agreement line (Al's ruling 2026-08-07). {n} and {total} are the
       // ensemble's own agreement count. EN and AF are both owner-approved
@@ -523,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Data van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io",
         zu: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io",
         xh: "Idatha ivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io",
-        st: "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io"
+        st: "Data e tswa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io"
       }
     }
   };

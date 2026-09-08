@@ -1,0 +1,69 @@
+{
+ "generated": "2026-09-08",
+ "lang": "st",
+ "decisions": [
+  {
+   "id": "ST-P18",
+   "key": "witty.cold[103]",
+   "current": "Ho hotle ho lekana ho tsoa ka kobong bakeng sa foto. Hoo e batlang e le.",
+   "proposed": "Ho hotle ho lekana ho tswa ka kobong bakeng sa foto. Hoo e batlang e le.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P55",
+   "key": "witty.rain[52]",
+   "current": "Moea oa Highveld kamora sefefo o lokela ho kenngoa botlolong o rekisoe lichabeng.",
+   "proposed": "Moya oa Highveld kamora sefefo o lokela ho kenngwa botlolong o rekisoe ditjhabeng.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P56",
+   "key": "witty.cold[53]",
+   "current": "Mariha a Joburg: jase hoseng, T-shirt ka hora ea bobeli, jase hape ka hora ea bone.",
+   "proposed": "Mariha a Joburg: jase hoseng, T-shirt ka hora ea bobedi, jase hape ka hora ea bone.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P162",
+   "key": "witty.cloudy[2]",
+   "current": "Letsatsi le monate la ho tsamaea, empa le lebe ho leka ho chesa letlalo.",
+   "proposed": "Letsatsi le monate la ho tsamaya, empa le lebe ho leka ho tjhesa letlalo.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P285",
+   "key": "witty.cold-clear[23]",
+   "current": "Hadedas tse tharo, makhoaba a mabeli, le motho a le mong ea thothomelang haufi le sebaka sa linonyana.",
+   "proposed": "Hadedas tse tharo, makhoaba a mabedi, le motho a le mong ea thothomelang haufi le sebaka sa dinonyana.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P405",
+   "key": "witty.clear[32]",
+   "current": "Mofuta oa lehodimo o etsang hore o leboge lintho tsa mahala.",
+   "proposed": "Mofuta oa lehodimo o etsang hore o leboge dintho tsa mahala.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P483",
+   "key": "witty_low_confidence.night[5]",
+   "current": "Bosiu bo bonahala bo khutsitse. Haeba limodele li lumela.",
+   "proposed": "Bosiu bo bonahala bo kgutsitse. Haeba limodele li dumela.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P486",
+   "key": "T.attribution",
+   "current": "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io. E sebelisoa ka tumello le ka teboho.",
+   "proposed": "Data e tswa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io. E sebediswa ka tumello le ka teboho.",
+   "decision": "accept"
+  },
+  {
+   "id": "ST-P515",
+   "key": "T.dataFrom",
+   "current": "Data e tsoa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io",
+   "proposed": "Data e tswa ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io",
+   "decision": "accept"
+  }
+ ]
+}

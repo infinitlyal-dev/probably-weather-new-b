@@ -22,7 +22,7 @@ describe('tier 2 pre-resubmission fixes', () => {
     expect(fetchBlock).toMatch(/fetch\(url,\s*\{ signal/);
     expect(fetchBlock).toMatch(/clearTimeout\(timeoutId\)/);
     expect(fetchBlock).toMatch(/showToast\(t\('toasts',\s*'weatherTimeout'\)/);
-    expect(source).toMatch(/weatherTimeout:\s*\{[\s\S]*en:\s*"Weather lookup taking too long\. Try again\."[\s\S]*st:\s*"Ho sheba boemo ba leholimo ho nka nako e telele\. Leka hape\."/);
+    expect(source).toMatch(/weatherTimeout:\s*\{[\s\S]*en:\s*"Weather lookup taking too long\. Try again\."[\s\S]*st:\s*"Ho sheba boemo ba lehodimo ho nka nako e telele\. Leka hape\."/);
   });
 
   it('guards weather rendering against stale rapid location selections', () => {

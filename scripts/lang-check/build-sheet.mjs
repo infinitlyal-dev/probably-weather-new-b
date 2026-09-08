@@ -137,8 +137,17 @@ if (lang === 'st') {
   const rows = [];
   for (const group of ['heroLabels', 'headlines']) for (const [k, row] of Object.entries(WEATHER_COPY[group])) rows.push({ key: `${group}.${k}`, en: row.en, text: row.st });
   for (const group of ['witty', 'witty_low_confidence']) for (const [cond, bank] of Object.entries(WEATHER_COPY[group] || {})) for (let i = 0; i < (bank.st || []).length; i++) rows.push({ key: `${group}.${cond}[${i}]`, en: bank.en[i], text: bank.st[i] });
+  // every st string literal in app.js — single leaves ({ en, af, zu, xh, st }) and st: [ ... ] arrays
   const appJs = fs.readFileSync(path.join(ROOT, 'assets', 'app.js'), 'utf8');
-  for (const m of appJs.matchAll(/^\s*([A-Za-z0-9_'-]+):\s*\{\s*en:\s*"((?:[^"\\]|\\.)*)"\s*,\s*af:\s*"(?:[^"\\]|\\.)*"\s*,\s*zu:\s*"(?:[^"\\]|\\.)*"\s*,\s*xh:\s*"(?:[^"\\]|\\.)*"\s*,\s*st:\s*"((?:[^"\\]|\\.)*)"\s*\}/gm)) rows.push({ key: `T.${m[1]}`, en: m[2], text: m[3] });
+  const appLines = appJs.split('\n');
+  for (let i = 0; i < appLines.length; i++) {
+    const line = appLines[i];
+    const at = line.search(/\bst:\s*(\[|")/);
+    if (at < 0) continue;
+    const enM = /\ben:\s*"((?:[^"\\]|\\.)*)"/.exec(line);
+    const lits = [...line.slice(at).matchAll(/"((?:[^"\\]|\\.)*)"/g)].map((m) => JSON.parse(`"${m[1]}"`));
+    lits.forEach((text, k) => rows.push({ key: `app.js:L${i + 1}#${k}`, en: enM ? JSON.parse(`"${enM[1]}"`) : '', text }));
+  }
   for (const r of rows) {
     if (!r.text || seen.has(r.text)) continue;
     bankScanned++;
