@@ -3314,6 +3314,24 @@ body.standalone-mode .install-footer-link {
   line-height: 1.25;
   min-width: 0;
 }
+.install-banner-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.install-banner-steps {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+/* Monospace pills are too wide for a one-line banner step on a 384px phone:
+   "Home screen" wrapped under the banner text. Body font, tighter padding. */
+.install-banner-steps .install-os-label {
+  font-family: inherit;
+  padding: 0 5px;
+}
 .install-banner-actions {
   flex: 0 0 auto;
   display: flex;

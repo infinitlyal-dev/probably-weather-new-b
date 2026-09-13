@@ -11,10 +11,14 @@ export const STORAGE_KEYS = {
 };
 
 export const DISMISS_DAYS = 7;
-// A fresh document arms the short engagement timer only after its first scroll.
-// This keeps the first forecast view unobstructed while still surfacing install
-// promptly once the visitor starts exploring the page.
+// A fresh document arms the short engagement timer only after its first real
+// interaction (tap, key, wheel or any scroll — including inside a panel). This
+// keeps the first forecast view unobstructed while still surfacing install
+// promptly once the visitor starts using the page. A window-scroll-only gate
+// never fired on phones: the home screen is exactly one viewport tall, so the
+// window itself never scrolls (Samsung A36 report, 2026-09-13).
 export const ENGAGEMENT_MS = 1500;
+export const BANNER_ARM_EVENTS = ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'];
 
 /* -------- Translations (full T[install] block, also re-used by install.html) -------- */
 export const INSTALL_T = {
@@ -291,6 +295,24 @@ export const INSTALL_T = {
     xh: "Ukuba akukho nto yenzekayo, cofa imenyu ye-⋮ ngentla ukhethe 'Install app' okanye 'Add to Home Screen'.",
     st: "Haeba ho se na letho le etsahalang, tobetsa menyu ea ⋮ ka holimo u khethe 'Install app' kapa 'Add to Home Screen'.",
   },
+  // Android banner instructions, shown whenever the browser has NOT handed us a
+  // beforeinstallprompt event (so there is no one-tap Install). Browser menu
+  // labels stay English in pills, as the iOS steps do — that's what the user
+  // pattern-matches on screen. lang-check triage 2026-09-13: af/zu/xh/st pass.
+  androidChromeSteps: {
+    en: 'Menu `⋮` → `Add to Home screen` / `Install app`',
+    af: 'Kieslys `⋮` → `Add to Home screen` / `Install app`',
+    zu: 'Imenyu `⋮` → `Add to Home screen` / `Install app`',
+    xh: 'Imenyu `⋮` → `Add to Home screen` / `Install app`',
+    st: 'Menyu `⋮` → `Add to Home screen` / `Install app`',
+  },
+  samsungInternetSteps: {
+    en: 'Menu `≡` → `Add page to` → `Home screen`',
+    af: 'Kieslys `≡` → `Add page to` → `Home screen`',
+    zu: 'Imenyu `≡` → `Add page to` → `Home screen`',
+    xh: 'Imenyu `≡` → `Add page to` → `Home screen`',
+    st: 'Menyu `≡` → `Add page to` → `Home screen`',
+  },
 };
 
 /* -------- Pure functions (testable without DOM) -------- */
@@ -390,6 +412,18 @@ export function isSamsungAndroid(uaString = '') {
   const ua = String(uaString || '');
   if (!/Android/.test(ua)) return false;
   return /SamsungBrowser\//.test(ua) || /\bSM-[A-Z]\d/.test(ua) || /\bSAMSUNG\b/.test(ua);
+}
+
+/**
+ * Which manual install instructions an Android visitor needs, as an INSTALL_T
+ * key. Samsung Internet (a Samsung phone's default browser) keeps it under its
+ * ≡ menu; Chrome under ⋮. Samsung Internet's UA carries a Chrome/ token, so it
+ * classifies as android-chrome — the SamsungBrowser/ token is what separates
+ * them. Returns null off Android.
+ */
+export function androidStepsKey(uaString = '') {
+  if (detectPlatform(uaString) !== 'android-chrome') return null;
+  return /SamsungBrowser\//.test(String(uaString)) ? 'samsungInternetSteps' : 'androidChromeSteps';
 }
 
 /**
@@ -498,6 +532,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   const installBtn = document.getElementById('installBannerInstall');
   const dismissBtn = document.getElementById('installBannerDismiss');
   const titleEl = document.getElementById('installBannerTitle');
+  const stepsEl = document.getElementById('installBannerSteps');
   const iosModal = document.getElementById('iosInstallModal');
   const iosModalClose = document.getElementById('iosInstallClose');
   const iosChromeModal = document.getElementById('iosChromeModal');
@@ -510,6 +545,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   const iosStandalone = window.navigator && window.navigator.standalone === true;
   const isStandalone = !!(standaloneMatch || iosStandalone);
   const platform = detectPlatform(ua, { standalone: isStandalone });
+  const stepsKey = androidStepsKey(ua);
 
   if (isStandalone) {
     document.body.classList.add('standalone-mode');
@@ -533,6 +569,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   window.addEventListener('beforeinstallprompt', (ev) => {
     ev.preventDefault();
     deferredPrompt = ev;
+    refreshBannerMode();
   });
   window.addEventListener('appinstalled', () => {
     try { localStorage.setItem(STORAGE_KEYS.completed, 'true'); } catch {}
@@ -558,10 +595,18 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     clearTimeout(bannerCheckTimer);
     bannerCheckTimer = setTimeout(maybeShowBanner, remaining + 50);
   }
-  function armBannerAfterFirstScroll() {
+  // Capture phase so a scroll inside a panel (which doesn't bubble) still
+  // counts. userActivation covers a tap that landed before this module
+  // finished its idle-time load.
+  let bannerArmed = false;
+  function armBanner() {
+    if (bannerArmed) return;
+    bannerArmed = true;
+    BANNER_ARM_EVENTS.forEach((type) => window.removeEventListener(type, armBanner, true));
     scheduleBannerCheck();
   }
-  window.addEventListener('scroll', armBannerAfterFirstScroll, { passive: true, once: true });
+  BANNER_ARM_EVENTS.forEach((type) => window.addEventListener(type, armBanner, { capture: true, passive: true }));
+  if (navigator.userActivation?.hasBeenActive) armBanner();
 
   function readStorage() {
     return {
@@ -578,6 +623,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     if (titleEl) setI18nText(titleEl, tInstall('bannerTitle', lang));
     if (installBtn) setI18nText(installBtn, tInstall('bannerInstall', lang));
     if (dismissBtn) setI18nText(dismissBtn, tInstall('bannerDismiss', lang));
+    if (stepsEl && stepsKey) setI18nText(stepsEl, tInstall(stepsKey, lang));
     document.querySelectorAll('[data-install-i18n]').forEach((node) => {
       const key = node.getAttribute('data-install-i18n');
       setI18nText(node, tInstall(key, lang));
@@ -585,9 +631,19 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     if (footerLink) setI18nText(footerLink, tInstall('footerInstallLink', lang));
   }
 
+  // Android: one-tap Install only when the browser handed us a
+  // beforeinstallprompt event; otherwise the menu instructions. Other
+  // platforms keep the Install button (iOS opens its modal from it).
+  function refreshBannerMode() {
+    if (!stepsKey) return;
+    if (stepsEl) stepsEl.hidden = !!deferredPrompt;
+    if (installBtn) installBtn.hidden = !deferredPrompt;
+  }
+
   function showBanner() {
     if (!banner) return;
     applyTranslations();
+    refreshBannerMode();
     banner.classList.remove('hidden');
     requestAnimationFrame(() => banner.classList.add('visible'));
   }

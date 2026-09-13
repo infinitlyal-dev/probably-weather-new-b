@@ -1,11 +1,14 @@
 import { readFileSync } from 'node:fs';
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
   INSTALL_T,
   STORAGE_KEYS,
   DISMISS_DAYS,
   ENGAGEMENT_MS,
+  BANNER_ARM_EVENTS,
+  androidStepsKey,
+  initInstallExperience,
   detectPlatform,
   detectInAppBrowser,
   buildAndroidIntentUrl,
@@ -464,14 +467,18 @@ describe('install — standalone mode hiding via CSS and JS', () => {
 });
 
 describe('install — engagement gate wiring', () => {
-  it('records first_seen and only schedules the banner check after the first scroll', () => {
+  it('records first_seen and arms the banner check on the first tap/key/wheel/scroll, not window scroll alone', () => {
     const src = installJs();
     expect(src).toMatch(/STORAGE_KEYS\.firstSeen/);
-    expect(src).toMatch(/function armBannerAfterFirstScroll\(\)\s*\{\s*scheduleBannerCheck\(\);\s*\}/);
-    expect(src).toMatch(/window\.addEventListener\('scroll', armBannerAfterFirstScroll, \{ passive: true, once: true \}\)/);
+    // The home screen is exactly one viewport tall, so a window-scroll-only
+    // gate never fired on phones (Samsung A36, 2026-09-13).
+    expect(BANNER_ARM_EVENTS).toEqual(expect.arrayContaining(['pointerdown', 'touchstart', 'keydown', 'scroll']));
+    expect(src).not.toMatch(/window\.addEventListener\('scroll', armBannerAfterFirstScroll/);
+    expect(src).toMatch(/window\.addEventListener\(type, armBanner, \{ capture: true, passive: true \}\)/);
+    expect(src).toMatch(/navigator\.userActivation\?\.hasBeenActive/);
     expect(src).toMatch(/setTimeout\(maybeShowBanner/);
     // No persisted interaction state is needed: every fresh document waits for
-    // its own first scroll before the existing elapsed-time gate is armed.
+    // its own first interaction before the existing elapsed-time gate is armed.
     expect(src).not.toMatch(/STORAGE_KEYS\.interacted/);
     expect(src).not.toMatch(/recordInteraction/);
     expect(src).not.toMatch(/interactionRecorded/);
@@ -481,6 +488,139 @@ describe('install — engagement gate wiring', () => {
   });
   it('STORAGE_KEYS.interacted is removed (no longer needed)', () => {
     expect(STORAGE_KEYS.interacted).toBeUndefined();
+  });
+});
+
+describe('install — Android banner never depends on beforeinstallprompt (Samsung A36, 2026-09-13)', () => {
+  const A36 = {
+    samsungInternet: 'Mozilla/5.0 (Linux; Android 15; SAMSUNG SM-A366B) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/28.0 Chrome/130.0.0.0 Mobile Safari/537.36',
+    chrome: 'Mozilla/5.0 (Linux; Android 15; SM-A366B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Mobile Safari/537.36',
+  };
+
+  it('picks browser-specific instructions: Samsung Internet ≡, Chrome ⋮, nothing off Android', () => {
+    expect(androidStepsKey(A36.samsungInternet)).toBe('samsungInternetSteps');
+    expect(androidStepsKey(A36.chrome)).toBe('androidChromeSteps');
+    expect(androidStepsKey(UA.iosSafari)).toBeNull();
+    expect(androidStepsKey(UA.desktopChrome)).toBeNull();
+    for (const lang of SUPPORTED_LANGS) {
+      expect(INSTALL_T.samsungInternetSteps[lang]).toMatch(/`≡` → `Add page to` → `Home screen`/);
+      expect(INSTALL_T.androidChromeSteps[lang]).toMatch(/`⋮` → `Add to Home screen` \/ `Install app`/);
+    }
+  });
+
+  it('index.html carries the hidden instructions line inside the banner', () => {
+    expect(html()).toMatch(/id="installBanner"[\s\S]*?id="installBannerSteps"[^>]*hidden[\s\S]*?id="installBannerInstall"/);
+  });
+
+  // Minimal DOM double: enough surface for initInstallExperience.
+  function fakeEl() {
+    const cls = new Set();
+    const node = {
+      hidden: false,
+      children: [],
+      listeners: {},
+      className: '',
+      classList: { add: (c) => cls.add(c), remove: (c) => cls.delete(c), contains: (c) => cls.has(c) },
+      get firstChild() { return node.children[0] || null; },
+      removeChild(c) { node.children.splice(node.children.indexOf(c), 1); },
+      appendChild(c) { node.children.push(c); return c; },
+      get text() { return node.children.map((c) => c.textContent).join(''); },
+      addEventListener(t, fn) { (node.listeners[t] ||= []).push(fn); },
+      click() { (node.listeners.click || []).forEach((fn) => fn({ target: node })); },
+      focus() {},
+    };
+    return node;
+  }
+
+  let win;
+  let els;
+  let store;
+  function boot(ua, lang = 'en') {
+    els = Object.fromEntries(['installBanner', 'installBannerInstall', 'installBannerDismiss', 'installBannerTitle', 'installBannerSteps']
+      .map((id) => [id, fakeEl()]));
+    els.installBanner.classList.add('hidden');
+    els.installBannerSteps.hidden = true;
+    win = new EventTarget();
+    win.matchMedia = () => ({ matches: false });
+    win.navigator = { userAgent: ua };
+    store = new Map();
+    vi.stubGlobal('window', win);
+    vi.stubGlobal('navigator', win.navigator);
+    vi.stubGlobal('requestAnimationFrame', (cb) => cb());
+    vi.stubGlobal('localStorage', {
+      getItem: (k) => (store.has(k) ? store.get(k) : null),
+      setItem: (k, v) => store.set(k, String(v)),
+      removeItem: (k) => store.delete(k),
+    });
+    vi.stubGlobal('document', {
+      getElementById: (id) => els[id] || null,
+      querySelectorAll: () => [],
+      createElement: () => ({ className: '', textContent: '' }),
+      createTextNode: (t) => ({ textContent: t }),
+      addEventListener() {},
+      body: fakeEl(),
+    });
+    return initInstallExperience({ getLanguage: () => lang });
+  }
+  const bannerShown = () => !els.installBanner.classList.contains('hidden');
+
+  beforeEach(() => { vi.useFakeTimers(); });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it('Samsung Internet: no page scroll ever happens, one tap shows ≡ instructions with no Install button', () => {
+    boot(A36.samsungInternet);
+    vi.advanceTimersByTime(10_000);
+    expect(bannerShown(), 'first forecast view stays unobstructed until an interaction').toBe(false);
+
+    win.dispatchEvent(new Event('pointerdown'));
+    vi.advanceTimersByTime(ENGAGEMENT_MS + 100);
+    expect(bannerShown()).toBe(true);
+    expect(els.installBannerSteps.hidden).toBe(false);
+    expect(els.installBannerSteps.text).toBe('Menu ≡ → Add page to → Home screen');
+    expect(els.installBannerInstall.hidden).toBe(true);
+  });
+
+  it('a captured beforeinstallprompt swaps the instructions for the one-tap Install button', () => {
+    boot(A36.samsungInternet);
+    win.dispatchEvent(new Event('touchstart'));
+    vi.advanceTimersByTime(ENGAGEMENT_MS + 100);
+    const bip = new Event('beforeinstallprompt', { cancelable: true });
+    bip.prompt = vi.fn();
+    bip.userChoice = Promise.resolve({ outcome: 'accepted' });
+    win.dispatchEvent(bip);
+    expect(els.installBannerInstall.hidden).toBe(false);
+    expect(els.installBannerSteps.hidden).toBe(true);
+    els.installBannerInstall.click();
+    expect(bip.prompt).toHaveBeenCalledOnce();
+  });
+
+  it('Chrome Android shows the ⋮ instructions in the chosen language', () => {
+    boot(A36.chrome, 'af');
+    win.dispatchEvent(new Event('keydown'));
+    vi.advanceTimersByTime(ENGAGEMENT_MS + 100);
+    expect(bannerShown()).toBe(true);
+    expect(els.installBannerSteps.text).toBe('Kieslys ⋮ → Add to Home screen / Install app');
+  });
+
+  it('"Not now" suppresses the banner for 7 days, then it comes back', () => {
+    boot(A36.samsungInternet);
+    win.dispatchEvent(new Event('pointerdown'));
+    vi.advanceTimersByTime(ENGAGEMENT_MS + 100);
+    els.installBannerDismiss.click();
+    const until = Number(store.get(STORAGE_KEYS.dismissedUntil));
+    expect(until - Date.now()).toBe(DISMISS_DAYS * 24 * 60 * 60 * 1000);
+    const storage = { firstSeen: store.get(STORAGE_KEYS.firstSeen), dismissedUntil: String(until) };
+    expect(shouldShowBanner({ storage, now: until - 1, platform: 'android-chrome' })).toBe(false);
+    expect(shouldShowBanner({ storage, now: until + 1, platform: 'android-chrome' })).toBe(true);
+  });
+
+  it('iOS Safari keeps its Install button (modal path unchanged), no Android instructions', () => {
+    boot(UA.iosSafari);
+    win.dispatchEvent(new Event('pointerdown'));
+    vi.advanceTimersByTime(ENGAGEMENT_MS + 100);
+    expect(bannerShown()).toBe(true);
+    expect(els.installBannerInstall.hidden).toBe(false);
+    expect(els.installBannerSteps.hidden).toBe(true);
   });
 });
 
