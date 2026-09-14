@@ -794,6 +794,9 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
     (typeof window !== 'undefined' && window.navigator?.standalone === true);
   const platform = detectPlatform(uaString, { standalone });
   const inApp = detectInAppBrowser(uaString);
+  // Same helper the banner uses (see initInstallExperience) — one source of
+  // truth for which browser's manual-install menu we point at. Null off Android.
+  const stepsKey = androidStepsKey(uaString);
   const tx = (k) => tInstall(k, lang);
   const interp = (s, vars) => String(s).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? '');
 
@@ -956,12 +959,15 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
       if (!window.__pwLandingDeferred) {
         const hint = host.querySelector('#landingInstallHint');
         if (hint) {
-          // The Install button only renders on android-chrome / desktop-chrome,
-          // so the chromium ⋮-menu hint is always the right copy here. Previously
-          // shipped iosChromeFallback ("paste into Safari") which is wrong on
-          // both platforms — Safari doesn't exist on Android, and a desktop
-          // Chrome user has no Safari either. Confirmed live on Samsung A24.
-          hint.textContent = INSTALL_T.installFallbackChromium[lang] || INSTALL_T.installFallbackChromium.en;
+          // The Install button only renders on android-chrome / desktop-chrome.
+          // Previously this always shipped the generic chromium ⋮-menu sentence,
+          // which is wrong in Samsung Internet: its UA carries a Chrome/ token so
+          // it lands on android-chrome, but its manual install lives under ≡ →
+          // Add page to → Home screen. Reuse the banner's per-browser steps via
+          // androidStepsKey; desktop-chrome has no Samsung case, so it keeps the
+          // generic sentence. setI18nText renders the backticked menu labels as
+          // the same gold pills the banner shows.
+          setI18nText(hint, tx(stepsKey || 'installFallbackChromium'));
           hint.hidden = false;
         }
         return;
@@ -1021,23 +1027,28 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
 
   // 3-second fallback hint: on BIP-dependent paths (android-chrome, desktop-chrome)
   // outside an in-app browser, if beforeinstallprompt hasn't fired after 3s the
-  // user is stuck looking at an Install button that won't do anything. Surface a
-  // soft "Open in Chrome / Safari" reminder. The CTA button itself remains —
-  // this is purely a safety net for the unknown-UA / weird-browser case Al
-  // called out as Part 3.
+  // user is stuck looking at an Install button that won't do anything. The CTA
+  // button itself remains — this is purely a safety net for the unknown-UA /
+  // weird-browser case Al called out as Part 3.
   if (!inApp && (platform === 'android-chrome' || platform === 'desktop-chrome')) {
     const fallbackHint = el('p', {
       id: 'landingFallbackHint',
       class: 'install-cta-hint',
       hidden: true,
-      text: tx('inAppFallbackHint'),
     });
+    // Same per-browser selection as the tap fallback above. On Android, point at
+    // the browser the visitor is already holding (Samsung Internet ≡, Chrome ⋮)
+    // instead of the generic "open this in Chrome" nudge — telling a Samsung
+    // Internet user to go and find Chrome is the Part-3 safety net misfiring.
+    // Off Android there are no menu steps, so the generic hint still stands.
+    setI18nText(fallbackHint, tx(stepsKey || 'inAppFallbackHint'));
     ctaCard.appendChild(fallbackHint);
     // Reuse the shared beforeinstallprompt capture above — no extra window
     // listener here. Show the fallback hint only if the prompt never armed AND
-    // the user didn't click within 3s.
+    // the user didn't click within 3s. A tap supersedes it: the click handler
+    // renders the same steps, so leaving this one up would duplicate them.
     let clicked = false;
-    installNowBtn?.addEventListener('click', () => { clicked = true; });
+    installNowBtn?.addEventListener('click', () => { clicked = true; fallbackHint.hidden = true; });
     setTimeout(() => {
       if (!window.__pwLandingDeferred && !clicked) fallbackHint.hidden = false;
     }, 3000);
