@@ -51,7 +51,7 @@ describe('service worker cache routing', () => {
     const context = loadServiceWorkerContext();
     const request = new Request('https://probablyweather.co.za/api/weather?lat=-34.1&lon=18.8');
     const cachedAt = Date.now() - 30_000;
-    const cached = new Response(JSON.stringify({ ok: true, source: 'cache' }), {
+    const cached = new Response(JSON.stringify({ ok: true, source: 'cache', meta: { schema: 5 }, now: { tempC: 18 } }), {
       status: 200,
       headers: { 'Content-Type': 'application/json', 'sw-cached-at': String(cachedAt) },
     });
@@ -67,7 +67,55 @@ describe('service worker cache routing', () => {
     expect(response.status).toBe(200);
     expect(response.headers.get('sw-offline')).toBe('true');
     expect(Number(response.headers.get('sw-cache-age-ms'))).toBeGreaterThanOrEqual(30_000);
-    await expect(response.json()).resolves.toEqual({ ok: true, source: 'cache' });
+    await expect(response.json()).resolves.toEqual({ ok: true, source: 'cache', meta: { schema: 5 }, now: { tempC: 18 } });
+  });
+
+
+  // Item 5 (Astra P1-2, round 3): the worker used to replace a live degraded
+  // 503 with an old malformed 200 (ok:true, now.tempC:null) from its cache.
+  const malformedCases = [
+    ['a pre-validation 200 with a null current temperature', { ok: true, now: { tempC: null }, meta: { schema: 5 } }],
+    ['a 200 written before the payload contract (no meta.schema)', { ok: true, now: { tempC: 18 }, meta: {} }],
+    ['a 200 written under the previous contract (schema 4)', { ok: true, now: { tempC: 18 }, meta: { schema: 4 }, daily: [{ rainChance: 0, conditionKey: 'uv' }] }],
+    ['a body that is not JSON', 'not json'],
+  ];
+  for (const [label, body] of malformedCases) {
+    it(`item 5: ${label} is deleted and the live 503 stands`, async () => {
+      const context = loadServiceWorkerContext();
+      const request = new Request('https://probablyweather.co.za/api/weather?lat=-34.1&lon=18.8');
+      const cached = new Response(typeof body === 'string' ? body : JSON.stringify(body), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json', 'sw-cached-at': String(Date.now() - 60_000) },
+      });
+      const deleteEntry = vi.fn(async () => true);
+      context.fetch = async () => new Response(JSON.stringify({ ok: false, degraded: true }), { status: 503 });
+      context.caches.open = async () => ({ match: async () => cached, put: async () => {}, delete: deleteEntry });
+
+      const { responsePromise } = dispatchFetch(context, request);
+      const response = await responsePromise;
+
+      expect(response.status).toBe(503);
+      expect(response.headers.get('sw-offline')).toBeNull();
+      await expect(response.json()).resolves.toEqual({ ok: false, degraded: true });
+      expect(deleteEntry).toHaveBeenCalledWith(request);
+    });
+  }
+
+  it('item 5: with the network down, a malformed cached forecast yields the offline 503, not the malformed body', async () => {
+    const context = loadServiceWorkerContext();
+    const request = new Request('https://probablyweather.co.za/api/weather?lat=-34.1&lon=18.8');
+    const cached = new Response(JSON.stringify({ ok: true, now: { tempC: null }, meta: { schema: 5 } }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', 'sw-cached-at': String(Date.now() - 60_000) },
+    });
+    context.fetch = async () => { throw new Error('offline'); };
+    context.caches.open = async () => ({ match: async () => cached, delete: async () => true });
+
+    const { responsePromise } = dispatchFetch(context, request);
+    const response = await responsePromise;
+
+    expect(response.status).toBe(503);
+    await expect(response.json()).resolves.toEqual({ ok: false, error: 'offline' });
   });
 
   it('P7 deletes an expired forecast entry before returning the offline error', async () => {

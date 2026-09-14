@@ -425,6 +425,7 @@ export default async function handler(req, res) {
         completeLocalMiss(filledPayload);
         return respondWithCachedPayload(filledPayload, 'coalesced-redis');
       }
+      return respondBudgetSpent('redis-wait');
     }
 
     // Resolve location name — cascading strategy for small-town accuracy
@@ -493,6 +494,16 @@ export default async function handler(req, res) {
     // so they sum to 1.0:  0.30 + 0.22 + 0.20 + 0.15 = 0.87  → divide each by 0.87.
     let HOURLY_SOURCE_WEIGHTS = [0.345, 0.253, 0.230, 0.172]; // OM, WA, MET, Tomorrow.io
     const failures = [];
+    // Item 5 round 2: a provider block that throws AFTER assigning norms[i]
+    // (e.g. a valid current temperature but malformed hourly arrays) used to
+    // leave a half-published source in the blend while also listing it as
+    // failed. Slots are published atomically: any failure clears all three.
+    const dropSource = (i) => {
+      norms[i] = null;
+      dailies[i] = null;
+      const h = HOURLY_SLOT_FOR_NORM[i];
+      if (h !== undefined) hourlies[h] = null;
+    };
     const norms    = [null, null, null, null, null]; // current conditions
     const hourlies = [null, null, null, null];       // hourly: Open-Meteo, WeatherAPI, MET Norway, Tomorrow.io
     const dailies  = [null, null, null, null, null]; // 7-day daily arrays
@@ -693,8 +704,10 @@ export default async function handler(req, res) {
     try {
       const om = getSettledValue(openMeteoResult);
 
-      // Capture UTC offset so we can determine the correct local hour later
-      if (isNum(om.utc_offset_seconds)) {
+      // Capture UTC offset so we can determine the correct local hour later.
+      // Bounded (item 5 round 3): an impossible offset stays on the coord
+      // estimate rather than breaking every other provider's alignment.
+      if (validUtcOffset(om.utc_offset_seconds)) {
         utcOffsetSeconds = om.utc_offset_seconds;
         utcOffsetSource = 'open-meteo';
       }
@@ -707,7 +720,10 @@ export default async function handler(req, res) {
         todayLow:  om.daily?.temperature_2m_min?.[0]            ?? null,
         todayRain: om.daily?.precipitation_probability_max?.[0] ?? null,
         todayUv:   om.daily?.uv_index_max?.[0]                  ?? null,
-        desc:      openMeteoCodeMap[om.current?.weather_code]   ?? 'Unknown',
+        // Item 5 round 5: only a RECOGNISED code is a condition. An unknown or
+        // absent code is null and fails validation — never a placeholder that
+        // reads as "clear" downstream.
+        desc:      mapCode(openMeteoCodeMap, om.current?.weather_code),
         windKph:   om.current?.wind_speed_10m                    ?? null,
         gustKph:   om.current?.wind_gusts_10m                    ?? null,
         // Wind DIRECTION is taken from Open-Meteo alone, never aggregated.
@@ -719,8 +735,11 @@ export default async function handler(req, res) {
         // same precedent applies here.
         windDir:   om.current?.wind_direction_10m                ?? null,
         humidity:  om.current?.relative_humidity_2m              ?? null,
-        sunrise:   om.daily?.sunrise?.[0]                        ?? null,
-        sunset:    om.daily?.sunset?.[0]                         ?? null,
+        // Solar strings are validated as local ISO timestamps for today's
+        // local date ±1 day (item 5 round 7): "0" and "9999" parse as dates
+        // and used to make 23:30 daytime.
+        sunrise:   solarPair(om.daily?.sunrise?.[0], om.daily?.sunset?.[0], utcOffsetSeconds).sunrise,
+        sunset:    solarPair(om.daily?.sunrise?.[0], om.daily?.sunset?.[0], utcOffsetSeconds).sunset,
       };
 
       hourlies[0] = {
@@ -753,7 +772,7 @@ export default async function handler(req, res) {
         dewPoints:  om.hourly?.dew_point_2m?.slice(0, 48)              ?? [],
         // Phase B-1 Item 3: per-hour description so the hourly aggregator can
         // surface storm/rain/cloud per hour, not just temp/precip numbers.
-        descs:      om.hourly?.weather_code?.slice(0, 48).map(c => openMeteoCodeMap[c] ?? null) ?? [],
+        descs:      om.hourly?.weather_code?.slice(0, 48).map(c => mapCode(openMeteoCodeMap, c)) ?? [],
       };
 
       dailies[0] = {
@@ -766,11 +785,12 @@ export default async function handler(req, res) {
         // 48-slot hourly array) still have a real wind signal. OM daily has no
         // cloud mean, so clouds stays empty here (Pirate covers daily cloud).
         winds:    om.daily?.wind_speed_10m_max                          ?? [],
-        descs:    om.daily?.weather_code?.map(c => openMeteoCodeMap[c] ?? 'Unknown') ?? [],
-        sunrises: om.daily?.sunrise                                     ?? [],
-        sunsets:  om.daily?.sunset                                      ?? [],
+        descs:    om.daily?.weather_code?.map(c => mapCode(openMeteoCodeMap, c)) ?? [],
+        sunrises: om.daily?.sunrise?.map((s, i) => solarPair(s, om.daily?.sunset?.[i], utcOffsetSeconds, i).sunrise) ?? [],
+        sunsets:  om.daily?.sunset?.map((s, i) => solarPair(om.daily?.sunrise?.[i], s, utcOffsetSeconds, i).sunset)  ?? [],
       };
     } catch (err) {
+      dropSource(0); // a throw mid-block must not leave norms[0] published
       logSourceFailure('Open-Meteo', err);
       failures.push('Open-Meteo');
     }
@@ -788,7 +808,7 @@ export default async function handler(req, res) {
         // ("Africa/Johannesburg" → "GMT+02:00" → +7200s) at request-handling time.
         if (utcOffsetSource === 'default-utc' && wa.location?.tz_id) {
           const waOffset = computeTimezoneOffsetFromTzId(wa.location.tz_id);
-          if (isNum(waOffset)) {
+          if (validUtcOffset(waOffset)) {
             utcOffsetSeconds = waOffset;
             utcOffsetSource = 'weatherapi';
             debugLog(`[Timezone fallback] WeatherAPI tz_id="${wa.location.tz_id}" → ${waOffset}s`);
@@ -804,14 +824,23 @@ export default async function handler(req, res) {
         // of precip — the frontend has a dedicated partly-cloudy state. Same for any
         // textual partly/mostly-sunny variant the API might return.
         const waCondCode = wa.current?.condition?.code;
-        const waDayPrecip = d0.totalprecip_mm ?? 0;
-        const waCondText = wa.current?.condition?.text ?? 'Unknown';
+        // Item 5 round 5: a missing or invalid amount is NOT dry weather. The
+        // clear/sunny clamp below applies only to a validated, explicit 0 mm;
+        // `?? 0` used to turn a null amount into "0% rain" before validation.
+        const waMm = (v) => (inBounds(v, RAW_MM) ? v : null);
+        const waDayPrecip = waMm(d0.totalprecip_mm);
+        // A condition is one of WeatherAPI's ENUMERATED codes (round 6: a
+        // numeric range is not a code list — 1001 is not a code). The
+        // description comes from the code's published meaning, never from
+        // the provider's free text.
+        const waCondition = (cond) => mapCode(weatherApiCodeMap, cond?.code);
+        const waCondText = waCondition(wa.current?.condition);
         let waDesc = waCondText;
-        const isPartlyByText = /partly\s*(cloudy|sunny)|mostly\s*sunny/i.test(waCondText);
-        if (waCondCode === 1003 || isPartlyByText) {
+        const isPartlyByText = /partly\s*(cloudy|sunny)|mostly\s*sunny/i.test(waCondText ?? '');
+        if (waCondText !== null && (waCondCode === 1003 || isPartlyByText)) {
           debugLog(`[FIX-partly] WeatherAPI code ${waCondCode} ("${waCondText}") preserved as "Partly cloudy"`);
           waDesc = 'Partly cloudy';
-        } else if (waCondCode === 1000 && waDayPrecip === 0) {
+        } else if (waCondText !== null && waCondCode === 1000 && waDayPrecip === 0) {
           debugLog(`[FIX-001] WeatherAPI code ${waCondCode} ("${waCondText}") with 0mm precip → "Clear sky"`);
           waDesc = 'Clear sky';
         }
@@ -830,8 +859,8 @@ export default async function handler(req, res) {
           desc:      waDesc,
           windKph:   wa.current?.wind_kph        ?? null,
           humidity:  wa.current?.humidity        ?? null,
-          sunrise:   astro.sunrise               ?? null,
-          sunset:    astro.sunset                ?? null,
+          sunrise:   clockString(astro.sunrise), // "06:45 AM" — display only, never daylight (item 5 round 7)
+          sunset:    clockString(astro.sunset),
         };
 
         const waHours = [...(wa.forecast.forecastday[0]?.hour || []), ...(wa.forecast.forecastday[1]?.hour || [])].slice(0, 48);
@@ -842,7 +871,7 @@ export default async function handler(req, res) {
           // FIX-001: Clamp rain chance to 0 for clear condition codes with no precipitation
           rains:      waHours.map(h => {
             const code = h.condition?.code;
-            if ((code === 1000 || code === 1003) && (h.precip_mm ?? 0) === 0) return 0;
+            if ((code === 1000 || code === 1003) && waMm(h.precip_mm) === 0) return 0;
             return h.chance_of_rain;
           }),
           // Phase B-3: per-hour mm. WeatherAPI provides precip_mm directly.
@@ -858,9 +887,10 @@ export default async function handler(req, res) {
           // a confusing rain-flavoured desc into the hourly chart.
           descs:      waHours.map(h => {
             const code = h.condition?.code;
-            const text = h.condition?.text ?? null;
+            const text = waCondition(h.condition);
+            if (text === null) return null;
             if (code === 1003) return 'Partly cloudy';
-            if (code === 1000 && (h.precip_mm ?? 0) === 0) return 'Clear sky';
+            if (code === 1000 && waMm(h.precip_mm) === 0) return 'Clear sky';
             return text;
           }),
         };
@@ -875,7 +905,7 @@ export default async function handler(req, res) {
           // BUG-1 fix: only clamp when daily precip is also 0mm — a day can start sunny then rain
           rains:    wa.forecast.forecastday.map(fd => {
             const code = fd.day.condition?.code;
-            if ((code === 1000 || code === 1003) && (fd.day.totalprecip_mm ?? 0) === 0) return 0;
+            if ((code === 1000 || code === 1003) && waMm(fd.day.totalprecip_mm) === 0) return 0;
             return fd.day.daily_chance_of_rain;
           }),
           uvs:      wa.forecast.forecastday.map(fd => fd.day.uv),
@@ -885,16 +915,18 @@ export default async function handler(req, res) {
           // precip. The frontend has a dedicated partly-cloudy display state.
           descs:    wa.forecast.forecastday.map(fd => {
             const code = fd.day.condition?.code;
-            const text = fd.day.condition?.text ?? '';
+            const text = waCondition(fd.day.condition);
+            if (text === null) return null;
             const isPartlyByText = /partly\s*(cloudy|sunny)|mostly\s*sunny/i.test(text);
             if (code === 1003 || isPartlyByText) return 'Partly cloudy';
-            if (code === 1000 && (fd.day.totalprecip_mm ?? 0) === 0) return 'Clear sky';
+            if (code === 1000 && waMm(fd.day.totalprecip_mm) === 0) return 'Clear sky';
             return text;
           }),
-          sunrises: wa.forecast.forecastday.map(fd => fd.astro?.sunrise ?? null),
-          sunsets:  wa.forecast.forecastday.map(fd => fd.astro?.sunset  ?? null),
+          sunrises: wa.forecast.forecastday.map(fd => clockString(fd.astro?.sunrise)),
+          sunsets:  wa.forecast.forecastday.map(fd => clockString(fd.astro?.sunset)),
         };
       } catch (err) {
+        dropSource(1);
         logSourceFailure('WeatherAPI', err);
         failures.push('WeatherAPI');
       }
@@ -916,7 +948,9 @@ export default async function handler(req, res) {
         // Phase B-2 Item 1: timezone fallback — if neither Open-Meteo nor
         // WeatherAPI supplied an offset, try Pirate Weather's `offset` field
         // (hours, e.g. 2.0 for SA in winter, -7.0 for LA in PDT).
-        if (utcOffsetSource === 'default-utc' && isNum(pw.offset)) {
+        // Type before arithmetic (item 5 round 4): `null * 3600` is 0, a
+        // "valid" offset that moved Strand to UTC.
+        if (utcOffsetSource === 'coord-estimate' && isNum(pw.offset) && validUtcOffset(pw.offset * 3600)) {
           utcOffsetSeconds = Math.round(pw.offset * 3600);
           utcOffsetSource = 'pirate-weather';
           debugLog(`[Timezone fallback] Pirate Weather offset=${pw.offset}h → ${utcOffsetSeconds}s`);
@@ -925,14 +959,22 @@ export default async function handler(req, res) {
         const cur = pw.currently || {};
         const dly = pw.daily?.data || [];
 
-        const toKph = v => isNum(v) ? Math.round(v * 3.6 * 10) / 10 : null; // m/s -> km/h
-        const toPct = v => isNum(v) ? Math.round(v * 100) : null;            // 0-1 -> %
+        // Raw m/s bounded BEFORE conversion and rounding (item 5 round 8):
+        // -0.001 m/s used to round to 0 km/h and pull a valid 30 km/h down.
+        const toKph = v => inBounds(v, RAW_WIND_MS) ? Math.round(v * 3.6 * 10) / 10 : null; // m/s -> km/h
+        // Bounds on the RAW fraction, before rounding (item 5 round 7): a
+        // -0.001 probability used to round to 0% and dilute a valid 60%.
+        const toPct = v => inBounds(v, [0, 1]) ? Math.round(v * 100) : null;  // 0-1 -> %
 
-        const pwDesc = icon => pirateIconMap[icon] ?? icon ?? 'Unknown';
+        // Item 5 round 5: recognised icons only. Pirate's `"none"` (and any
+        // unmapped marker) used to pass through as a "condition" and read as
+        // clear downstream; now it is null and the source fails validation.
+        const pwDesc = icon => mapKey(pirateIconMap, icon);
 
-        const curTemp    = isNum(cur.temperature) ? cur.temperature : null;
-        const curWindKph = toKph(cur.windSpeed);
-        const curHumPct  = toPct(cur.humidity);
+        // Item 5 round 2: raw inputs bounded before feels-like derives from them.
+        const curTemp    = inBounds(cur.temperature, TEMP_BOUNDS) ? cur.temperature : null;
+        const curWindKph = inBounds(cur.windSpeed, RAW_WIND_MS) ? toKph(cur.windSpeed) : null;
+        const curHumPct  = inBounds(cur.humidity, [0, 1]) ? toPct(cur.humidity) : null;
 
         norms[2] = {
           source:    'Pirate Weather',
@@ -946,8 +988,8 @@ export default async function handler(req, res) {
           windKph:   curWindKph,
           gustKph:   toKph(cur.windGust),   // PW provides windGust in m/s (si units)
           humidity:  curHumPct,
-          sunrise:   unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds),
-          sunset:    unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds),
+          sunrise:   solarPair(unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds), unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds), utcOffsetSeconds).sunrise,
+          sunset:    solarPair(unixToLocalIso(dly[0]?.sunriseTime, utcOffsetSeconds), unixToLocalIso(dly[0]?.sunsetTime, utcOffsetSeconds), utcOffsetSeconds).sunset,
         };
 
         dailies[2] = {
@@ -962,10 +1004,11 @@ export default async function handler(req, res) {
           winds:    dly.slice(0, 7).map(d => isNum(d.windSpeed)  ? toKph(d.windSpeed)  : null),
           clouds:   dly.slice(0, 7).map(d => isNum(d.cloudCover) ? toPct(d.cloudCover) : null),
           descs:    dly.slice(0, 7).map(d => pwDesc(d.icon)),
-          sunrises: dly.slice(0, 7).map(d => unixToLocalIso(d.sunriseTime, utcOffsetSeconds)),
-          sunsets:  dly.slice(0, 7).map(d => unixToLocalIso(d.sunsetTime, utcOffsetSeconds)),
+          sunrises: dly.slice(0, 7).map((d, i) => solarPair(unixToLocalIso(d.sunriseTime, utcOffsetSeconds), unixToLocalIso(d.sunsetTime, utcOffsetSeconds), utcOffsetSeconds, i).sunrise),
+          sunsets:  dly.slice(0, 7).map((d, i) => solarPair(unixToLocalIso(d.sunriseTime, utcOffsetSeconds), unixToLocalIso(d.sunsetTime, utcOffsetSeconds), utcOffsetSeconds, i).sunset),
         };
       } catch (err) {
+        dropSource(2);
         logSourceFailure('Pirate Weather', err);
         failures.push('Pirate Weather');
       }
@@ -1042,6 +1085,10 @@ export default async function handler(req, res) {
         'heavysnowandthunder': 'Heavy snow and thunder',
         // Snow showers + thunder
         'lightsnowshowersandthunder': 'Light snow showers and thunder',
+        // The published set spells this one with the same double-s as the
+        // sleet variant (item 5 round 6 — Astra: a cold, wet fixture became
+        // 503/desc=null once unknown symbols stopped passing through).
+        'lightssnowshowersandthunder': 'Light snow showers and thunder',
         'snowshowersandthunder': 'Snow showers and thunder',
         'heavysnowshowersandthunder': 'Heavy snow showers and thunder',
       };
@@ -1051,26 +1098,40 @@ export default async function handler(req, res) {
       const details  = nowEntry.data?.instant?.details || {};
       const alignedMetSeries = alignSeriesToLocalMidnight(series, utcOffsetSeconds, Date.now());
 
-      const metWindKph  = isNum(details.wind_speed) ? Math.round(details.wind_speed * 3.6 * 10) / 10 : null;
-      const metHumidity = isNum(details.relative_humidity) ? details.relative_humidity : null;
-      const metTemp     = isNum(details.air_temperature) ? details.air_temperature : null;
+      // Item 5 round 2: raw inputs are bounded BEFORE anything is derived from
+      // them (feels-like, the rain proxy, per-hour rain %). A -9999 mm sentinel
+      // used to become "20% rain"; a 500% humidity used to shape feels-like.
+      const metWindKph  = inBounds(details.wind_speed, RAW_WIND_MS) ? Math.round(details.wind_speed * 3.6 * 10) / 10 : null;
+      const metHumidity = inBounds(details.relative_humidity, RAW_PCT) ? details.relative_humidity : null;
+      const metTemp     = inBounds(details.air_temperature, TEMP_BOUNDS) ? details.air_temperature : null;
+      const metMm       = (p, key) => {
+        const v = p?.data?.[key]?.details?.precipitation_amount;
+        return inBounds(v, RAW_MM) ? v : null;
+      };
 
       // Rain proxy: max precip over TODAY's local-midnight-aligned slice. The old
       // series.slice(0, 48) leaked tomorrow's rain into today's proxy (same class
       // as the Rec-3 temp fix below); alignedMetSeries.slice(0, 24) is today only.
-      const precipAmounts = alignedMetSeries.slice(0, 24).filter(Boolean).map(p =>
-        p.data?.next_1_hours?.details?.precipitation_amount ??
-        p.data?.next_6_hours?.details?.precipitation_amount ?? 0
-      );
-      const maxPrecip = Math.max(...precipAmounts, 0);
-      const rainProxy = maxPrecip === 0 ? 0 :
+      // Round 3 (Astra): only VALID readings count. An hour whose amount is
+      // absent or invalid is no signal — it used to count as 0 mm, so a
+      // series of -9999 sentinels became "0% rain" and diluted Open-Meteo's
+      // valid 60% to a cacheable 36%. No valid reading at all → null (skipped
+      // by the blend); only a real 0 mm establishes dry weather.
+      const precipAmounts = alignedMetSeries.slice(0, 24).filter(Boolean)
+        .map(p => metMm(p, 'next_1_hours') ?? metMm(p, 'next_6_hours'))
+        .filter(isNum);
+      const maxPrecip = precipAmounts.length ? Math.max(...precipAmounts) : null;
+      const rainProxy = maxPrecip === null ? null :
+                        maxPrecip === 0 ? 0 :
                         maxPrecip < 0.5 ? 20 :
                         maxPrecip < 1   ? 40 :
                         maxPrecip < 2   ? 60 :
                         maxPrecip < 5   ? 80 : 95;
 
       const symbolCode = (nowEntry.data?.next_1_hours?.summary?.symbol_code ?? '').replace(/_(day|night|polartwilight)$/, '');
-      const metDesc    = metSymbolMap[symbolCode] ?? symbolCode ?? 'Unknown';
+      // Item 5 round 5: recognised symbols only (the map covers MET's full
+      // published set); an unknown symbol is no condition.
+      const metDesc    = metSymbolMap[symbolCode] ?? null;
 
       // Rec 3: Filter MET Norway timeseries to today's local date only (midnight to midnight)
       // The old code used series.slice(0, 48) which leaked tomorrow's peak temps into today's high.
@@ -1080,7 +1141,9 @@ export default async function handler(req, res) {
       const todaySeries = alignedMetSeries.slice(0, 24).filter(Boolean);
       debugLog(`[MET Norway] Filtered ${series.length} entries → ${todaySeries.length} for local date ${localDateStr}`);
 
-      const todayTemps = todaySeries.map(p => p.data?.instant?.details?.air_temperature).filter(isNum);
+      // Item 5 round 9: each reading bounded BEFORE it can reach max/min —
+      // a single 9999 used to become the day's high and void the whole day.
+      const todayTemps = todaySeries.map(p => p.data?.instant?.details?.air_temperature).filter(t => inBounds(t, TEMP_BOUNDS));
       const hasEnoughTodayTemps = todayTemps.length >= 12;
       // Display-only fallback for the Sources page. todayHigh/todayLow stay
       // STRICT (null when MET has <12 hours of "today" data) so the consensus
@@ -1092,7 +1155,7 @@ export default async function handler(req, res) {
       // gives an honest min/max for display purposes only.
       const fallbackTemps = series.slice(0, 24)
         .map(p => p?.data?.instant?.details?.air_temperature)
-        .filter(isNum);
+        .filter(t => inBounds(t, TEMP_BOUNDS));
       const displayHigh = hasEnoughTodayTemps
         ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity)
         : (fallbackTemps.length >= 6 ? fallbackTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null);
@@ -1130,27 +1193,28 @@ export default async function handler(req, res) {
         // is mm for the upcoming hour. next_6_hours is a fallback for hours that
         // haven't yet been resolved at 1-hour granularity (later in the series).
         precipMm:   alignedMetSeries.map(p => {
-          const oneHr = p?.data?.next_1_hours?.details?.precipitation_amount;
-          if (isNum(oneHr)) return oneHr;
-          const sixHr = p?.data?.next_6_hours?.details?.precipitation_amount;
+          const oneHr = metMm(p, 'next_1_hours');
+          if (oneHr !== null) return oneHr;
+          const sixHr = metMm(p, 'next_6_hours');
           // Spread the 6-hour total evenly so it doesn't dominate the average.
-          if (isNum(sixHr)) return sixHr / 6;
+          if (sixHr !== null) return sixHr / 6;
           return null;
         }),
         feelsLikes: alignedMetSeries.map(p => {
-          const t = p?.data?.instant?.details?.air_temperature;
-          const w = p?.data?.instant?.details?.wind_speed ? p.data.instant.details.wind_speed * 3.6 : null;
-          const h = p?.data?.instant?.details?.relative_humidity;
+          const d = p?.data?.instant?.details;
+          const t = inBounds(d?.air_temperature, TEMP_BOUNDS) ? d.air_temperature : null;
+          const w = inBounds(d?.wind_speed, RAW_WIND_MS) ? d.wind_speed * 3.6 : null;
+          const h = inBounds(d?.relative_humidity, RAW_PCT) ? d.relative_humidity : null;
           return calcFeelsLike(t, w, h);
         }),
         rains:  alignedMetSeries.map(p => {
-          const mm = p?.data?.next_1_hours?.details?.precipitation_amount ?? null;
-          if (!isNum(mm)) return null;
+          const mm = metMm(p, 'next_1_hours');
+          if (mm === null) return null;
           return mm === 0 ? 0 : mm < 0.5 ? 20 : mm < 1 ? 40 : mm < 2 ? 60 : 80;
         }),
         winds:  alignedMetSeries.map(p => {
           const w = p?.data?.instant?.details?.wind_speed;
-          return isNum(w) ? Math.round(w * 3.6 * 10) / 10 : null;
+          return inBounds(w, RAW_WIND_MS) ? Math.round(w * 3.6 * 10) / 10 : null;
         }),
         gusts:  alignedMetSeries.map(() => null), // not in compact
         clouds: alignedMetSeries.map(p => p?.data?.instant?.details?.cloud_area_fraction ?? null),
@@ -1162,7 +1226,7 @@ export default async function handler(req, res) {
           const raw = p?.data?.next_1_hours?.summary?.symbol_code ?? null;
           if (!raw) return null;
           const stripped = raw.replace(/_(day|night|polartwilight)$/, '');
-          return metSymbolMap[stripped] ?? stripped;
+          return metSymbolMap[stripped] ?? null;
         }),
       };
 
@@ -1177,6 +1241,7 @@ export default async function handler(req, res) {
         sunsets:  [],
       };
     } catch (err) {
+      dropSource(3);
       logSourceFailure('MET Norway', err);
       failures.push('MET Norway');
     }
@@ -1219,22 +1284,26 @@ export default async function handler(req, res) {
         const nextInterval    = intervals[1] ?? null;
         const tiVals          = currentInterval?.values ?? {};
 
-        const tiTemp     = isNum(tiVals.temperature) ? tiVals.temperature : null;
-        const tiWindMs   = isNum(tiVals.windSpeed) ? tiVals.windSpeed : null;
+        // Item 5 round 2: raw inputs bounded before feels-like / overrides derive from them.
+        const tiTemp     = inBounds(tiVals.temperature, TEMP_BOUNDS) ? tiVals.temperature : null;
+        const tiWindMs   = inBounds(tiVals.windSpeed, RAW_WIND_MS) ? tiVals.windSpeed : null;
         const tiWindKph  = isNum(tiWindMs) ? Math.round(tiWindMs * 3.6 * 10) / 10 : null;
-        const tiHumidity = isNum(tiVals.humidity) ? tiVals.humidity : null;
-        const tiCloud    = isNum(tiVals.cloudCover) ? tiVals.cloudCover : null;
+        const tiHumidity = inBounds(tiVals.humidity, RAW_PCT) ? tiVals.humidity : null;
+        const tiCloud    = inBounds(tiVals.cloudCover, RAW_PCT) ? tiVals.cloudCover : null;
+        const tiIntensity = (v) => (inBounds(v, RAW_MM) ? v : null);
+        const tiProb      = (v) => (inBounds(v, RAW_PCT) ? v : null);
         const tiCode     = tiVals.weatherCode;
-        const tiDesc     = tomorrowIoCodeMap[tiCode] ?? 'Unknown';
+        const tiDesc     = mapCode(tomorrowIoCodeMap, tiCode); // recognised integer codes only (item 5 round 5/6)
 
         // Day zero must use the location's calendar day, not the next 24 hours
         // from now (which crosses midnight and leaks tomorrow into today).
         // Earlier hours are null because Tomorrow.io starts at the current hour.
         const todayIntervals = aligned.slice(0, 24).filter(Boolean);
-        const todayTemps = todayIntervals.map(iv => iv?.values?.temperature).filter(isNum);
+        // Item 5 round 9: bounded per reading before max/min (see MET above).
+        const todayTemps = todayIntervals.map(iv => iv?.values?.temperature).filter(t => inBounds(t, TEMP_BOUNDS));
         const tiTodayHigh = todayTemps.length ? todayTemps.reduce((a, b) => Math.max(a, b), -Infinity) : null;
         const tiTodayLow  = todayTemps.length ? todayTemps.reduce((a, b) => Math.min(a, b), Infinity)  : null;
-        const tiTodayRainArr = todayIntervals.map(iv => iv?.values?.precipitationProbability).filter(isNum);
+        const tiTodayRainArr = todayIntervals.map(iv => iv?.values?.precipitationProbability).filter(p => inBounds(p, RAW_PCT));
         const tiTodayRain = tiTodayRainArr.length ? Math.max(...tiTodayRainArr) : null;
 
         norms[4] = {
@@ -1253,13 +1322,13 @@ export default async function handler(req, res) {
           sunset:    null,
           // Read by the precipitation override block in the now-path.
           tomorrowIoCurrentHour: {
-            precipitationIntensity:   isNum(tiVals.precipitationIntensity) ? tiVals.precipitationIntensity : null,
-            precipitationProbability: isNum(tiVals.precipitationProbability) ? tiVals.precipitationProbability : null,
+            precipitationIntensity:   tiIntensity(tiVals.precipitationIntensity),
+            precipitationProbability: tiProb(tiVals.precipitationProbability),
             weatherCode:              tiCode,
           },
           tomorrowIoNextHour: nextInterval ? {
-            precipitationIntensity:   isNum(nextInterval.values?.precipitationIntensity)   ? nextInterval.values.precipitationIntensity   : null,
-            precipitationProbability: isNum(nextInterval.values?.precipitationProbability) ? nextInterval.values.precipitationProbability : null,
+            precipitationIntensity:   tiIntensity(nextInterval.values?.precipitationIntensity),
+            precipitationProbability: tiProb(nextInterval.values?.precipitationProbability),
             weatherCode:              nextInterval.values?.weatherCode,
           } : null,
           cloudPct: tiCloud, // Sources-page visibility only, not consumed by aggregator
@@ -1269,16 +1338,17 @@ export default async function handler(req, res) {
           source:     'Tomorrow.io',
           temps:      aligned.map(iv => iv?.values?.temperature ?? null),
           feelsLikes: aligned.map(iv => {
-            const t = iv?.values?.temperature;
-            const w = iv?.values?.windSpeed;
-            const h = iv?.values?.humidity;
-            return calcFeelsLike(t, isNum(w) ? w * 3.6 : null, h);
+            const v = iv?.values;
+            const t = inBounds(v?.temperature, TEMP_BOUNDS) ? v.temperature : null;
+            const w = inBounds(v?.windSpeed, RAW_WIND_MS) ? v.windSpeed * 3.6 : null;
+            const h = inBounds(v?.humidity, RAW_PCT) ? v.humidity : null;
+            return calcFeelsLike(t, w, h);
           }),
           rains:      aligned.map(iv => iv?.values?.precipitationProbability ?? null),
           precipMm:   aligned.map(iv => iv?.values?.precipitationIntensity ?? null),
           winds:      aligned.map(iv => {
             const w = iv?.values?.windSpeed;
-            return isNum(w) ? Math.round(w * 3.6 * 10) / 10 : null;
+            return inBounds(w, RAW_WIND_MS) ? Math.round(w * 3.6 * 10) / 10 : null;
           }),
           clouds:     aligned.map(iv => iv?.values?.cloudCover ?? null),
           humidity:   aligned.map(iv => iv?.values?.humidity ?? null),
@@ -1290,7 +1360,7 @@ export default async function handler(req, res) {
           visibilityKm: aligned.map(iv => (isNum(iv?.values?.visibility) ? iv.values.visibility : null)),
           descs:      aligned.map(iv => {
             const code = iv?.values?.weatherCode;
-            return isNum(code) ? (tomorrowIoCodeMap[code] ?? null) : null;
+            return mapCode(tomorrowIoCodeMap, code);
           }),
         };
 
@@ -1305,11 +1375,26 @@ export default async function handler(req, res) {
           sunsets:  [],
         };
       } catch (err) {
+        dropSource(4);
         logSourceFailure('Tomorrow.io', err);
         failures.push('Tomorrow.io');
       }
     } else {
       failures.push('Tomorrow.io');
+    }
+
+    // =========================================================================
+    // PROVIDER DATA VALIDATION (prelaunch item 5, Astra P1-2)
+    // An HTTP 200 with `{}` used to become norms[0] = { nowTemp: null, ... }
+    // and count as a live source; a -9999 visibility sentinel used to force
+    // the fog detector on. Nothing enters the blend or the cache until its
+    // required fields exist and every numeric field is physically possible.
+    // A source failing validation is treated exactly like a failed fetch.
+    // =========================================================================
+    const invalidSources = sanitizeSources(norms, hourlies, dailies);
+    for (const { source, reason } of invalidSources) {
+      console.error(`[pw-source-invalid] ${source} rejected: ${reason}`);
+      failures.push(source);
     }
 
     // =========================================================================
@@ -1661,12 +1746,20 @@ export default async function handler(req, res) {
     // =========================================================================
     const activeNorms = norms.filter(Boolean);
 
-    // Bug 5 guard: if all sources failed, return a clear error
+    // Bug 5 guard: if all sources failed (fetch OR validation), return a clear
+    // degraded error. This path returns BEFORE weatherCacheSetDeferred, so a
+    // degraded response is never cached; the local-miss waiters get null from
+    // the finally block and fetch for themselves.
     if (activeNorms.length === 0) {
+      res.setHeader('Cache-Control', 'no-store');
       return res.status(503).json({
         ok: false,
+        degraded: true,
         error: 'All weather sources failed. Please try again shortly.',
-        meta: { sources: failures.map(f => ({ name: f, ok: false })) },
+        meta: {
+          sources: failures.map(f => ({ name: f, ok: false })),
+          invalidSources: invalidSources.map(s => ({ name: s.source, reason: s.reason })),
+        },
       });
     }
 
@@ -1731,31 +1824,38 @@ export default async function handler(req, res) {
     const mostDesc       = pickWeightedMostCommon(nowDescEntries) || 'Weather today';
     const finalFeelsLike = isNum(medFeelsLike) ? medFeelsLike : calcFeelsLike(medNowTemp, medWindKph, medHumidity);
 
-    // Sunrise/sunset for the response — first available source.
-    // Declared before isDay so no ReferenceError.
-    const sunrise = activeNorms.find(n => n.sunrise)?.sunrise ?? null;
-    const sunset  = activeNorms.find(n => n.sunset)?.sunset   ?? null;
+    // Sunrise/sunset for the response, and the ONE daylight rule (item 5
+    // round 7): the first source carrying a validated local-ISO pair —
+    // Open-Meteo, then Pirate Weather (both local-labelled, no zone) — is
+    // both what the response ships as now.sunrise/now.sunset AND what
+    // decides isDay here; the cache-hit path re-derives from those same two
+    // strings, so fresh and cached daylight can never disagree. WeatherAPI's
+    // "06:45 AM" clock strings are display-only: they are shipped only when
+    // no ISO pair exists, and then BOTH paths use the local-hour rule.
+    const solar = [norms[0], norms[2]].find(n => n && n.sunrise && n.sunset) ?? null;
+    // Round 8: the shipped pair comes from ONE source — the ISO pair above,
+    // else the first source with a complete (display) pair — never a sunrise
+    // from one provider beside a sunset from another.
+    const shippedSolar = solar ?? activeNorms.find(n => n.sunrise && n.sunset) ?? null;
+    const sunrise = shippedSolar?.sunrise ?? null;
+    const sunset  = shippedSolar?.sunset  ?? null;
 
-    // isDay — use ONLY Open-Meteo's sunrise/sunset which are ISO strings (parseable).
-    // WeatherAPI returns "06:45 AM" with no date — new Date() gives Invalid Date.
-    // If Open-Meteo failed, fall back to utcOffsetSeconds + a hardcoded 06:00–19:00
+    // If no ISO pair exists, fall back to utcOffsetSeconds + a hardcoded 06:00–19:00
     // window, which is wrong but at least won't cause UV to fire all night.
     const nowMs = Date.now();
     let isDay = true;
-    const omSunrise = norms[0]?.sunrise ?? null;
-    const omSunset  = norms[0]?.sunset  ?? null;
-    if (omSunrise && omSunset) {
-      // Open-Meteo returns sunrise/sunset as local-time ISO strings WITHOUT a timezone
-      // indicator (e.g. "2026-02-22T06:12"). The Vercel server runs UTC, so JS parses
-      // these as UTC — creating a 2-hour error for SAST (UTC+2). We correct by
-      // subtracting utcOffsetSeconds to convert the local-labelled timestamps to true UTC ms.
-      const srMs = new Date(omSunrise).getTime() - (utcOffsetSeconds * 1000);
-      const ssMs = new Date(omSunset).getTime()  - (utcOffsetSeconds * 1000);
-      if (!isNaN(srMs) && !isNaN(ssMs)) {
-        isDay = nowMs >= srMs && nowMs <= ssMs;
-      }
+    // Solar ISO strings are local-time WITHOUT a timezone indicator (e.g.
+    // "2026-02-22T06:12"). The Vercel server runs UTC, so JS parses them as
+    // UTC — a 2-hour error for SAST (UTC+2). Subtract utcOffsetSeconds to
+    // convert the local-labelled timestamps to true UTC ms.
+    const srMs = solar ? new Date(solar.sunrise).getTime() - (utcOffsetSeconds * 1000) : NaN;
+    const ssMs = solar ? new Date(solar.sunset).getTime()  - (utcOffsetSeconds * 1000) : NaN;
+    if (!isNaN(srMs) && !isNaN(ssMs)) {
+      isDay = nowMs >= srMs && nowMs <= ssMs;
     } else {
-      // Open-Meteo unavailable — estimate from local hour (UTC offset known from earlier)
+      // Open-Meteo unavailable, or its solar strings do not parse (item 5
+      // round 5: "bad" used to leave isDay at its `true` default at 23:30) —
+      // estimate from local hour, the same rule the cache-hit path applies.
       // Assume daylight 06:00–19:00 local. Better than defaulting to true.
       isDay = localHour >= 6 && localHour < 19;
     }
@@ -2180,6 +2280,218 @@ export default async function handler(req, res) {
 
 function isNum(v) {
   return typeof v === 'number' && Number.isFinite(v);
+}
+
+// -----------------------------------------------------------------------------
+// Provider data validation (prelaunch item 5, 2026-09-14).
+//
+// Physical bounds per field. A value outside them is not weather — it is a
+// provider sentinel (-999, -9999), a unit slip, or a bug — and must not enter
+// the blend. Bounds are deliberately generous (world records + margin) so a
+// real SA extreme is never rejected: Vioolsdrif 2019 hit 50°C+, Sutherland
+// -20°C, Cape Doctor gusts 150 km/h.
+//   REQUIRED  — a source without a valid current temperature is not a live
+//               source: it is rejected outright (treated like a failed fetch).
+//   OPTIONAL  — an out-of-bounds optional field is nulled (wAvg skips nulls),
+//               the rest of the source stays in the blend.
+// -----------------------------------------------------------------------------
+const TEMP_BOUNDS = [-90, 60];
+const NORM_FIELD_BOUNDS = {
+  nowTemp: TEMP_BOUNDS, feelsLike: [-90, 70], todayHigh: TEMP_BOUNDS, todayLow: TEMP_BOUNDS,
+  displayHigh: TEMP_BOUNDS, displayLow: TEMP_BOUNDS,
+  todayRain: [0, 100], todayUv: [0, 25], windKph: [0, 400], gustKph: [0, 500],
+  humidity: [0, 100], windDir: [0, 360], cloudPct: [0, 100],
+};
+const NORM_REQUIRED_FIELDS = ['nowTemp'];
+// Round 3 (Astra): a current temperature alone is not a forecast. Open-Meteo
+// `{current:{temperature_2m:18}}` used to become a 200 with empty hourly and
+// daily arrays, "clear", 0 km/h wind — and a cache write. Each source must
+// also carry the forecast STRUCTURE it is blended for: hourly sources ≥12
+// numeric hourly temperatures (of 48 slots); Open-Meteo/WeatherAPI, whose
+// daily comes from the provider, ≥1 numeric daily high AND low; Pirate
+// Weather (daily only) the same. MET/Tomorrow.io derive their day-0 from the
+// hours, so hours are what they must have.
+const MIN_HOURLY_TEMPS = 12;
+const SOURCE_STRUCTURE = {
+  0: { hourlyTemps: true, dailyRange: true },   // Open-Meteo
+  1: { hourlyTemps: true, dailyRange: true },   // WeatherAPI
+  2: { dailyRange: true },                      // Pirate Weather
+  3: { hourlyTemps: true },                     // MET Norway
+  4: { hourlyTemps: true },                     // Tomorrow.io
+};
+// Provider UTC offsets are metadata every alignment step trusts: an
+// impossible one (Astra: 1e300) reached `new Date(...)` in a HEALTHY provider's
+// block, threw, and took the request down. Real offsets lie within ±14 h.
+const UTC_OFFSET_BOUNDS = [-14 * 3600, 14 * 3600];
+const HOURLY_ARRAY_BOUNDS = {
+  temps: TEMP_BOUNDS, feelsLikes: [-90, 70], rains: [0, 100], precipMm: [0, 500],
+  winds: [0, 400], gusts: [0, 500], windDirs: [0, 360], clouds: [0, 100], humidity: [0, 100],
+  uvs: [0, 25], visibility: [0, 1e6] /* metres */, visibilityKm: [0, 1000], dewPoints: TEMP_BOUNDS,
+};
+const DAILY_ARRAY_BOUNDS = {
+  highs: TEMP_BOUNDS, lows: TEMP_BOUNDS, rains: [0, 100], uvs: [0, 25], winds: [0, 400], clouds: [0, 100],
+};
+// norms index → hourlies index (Pirate Weather has no hourly slot).
+const HOURLY_SLOT_FOR_NORM = { 0: 0, 1: 1, 3: 2, 4: 3 };
+
+const inBounds = (v, [lo, hi]) => isNum(v) && v >= lo && v <= hi;
+const validUtcOffset = (v) => inBounds(v, UTC_OFFSET_BOUNDS);
+// Condition lookups validate the SCALAR TYPE before touching the map (item 5
+// round 6): `[0]` used to coerce to the key "0" and read as clear sky.
+const mapCode = (map, code) => (Number.isInteger(code) ? (map[code] ?? null) : null);
+const mapKey = (map, key) => (typeof key === 'string' ? (map[key] ?? null) : null);
+// A provider solar timestamp (item 5 round 7): a local-labelled ISO string
+// "YYYY-MM-DDTHH:MM[:SS]" whose date is the location's local date `dayIndex`
+// days from today, ±1 day of slack for zone edges. Anything else — "0",
+// "9999", a bare time, a date from another week — is no solar value. Any
+// Date-parseable string used to qualify, and "0"/"9999" made 23:30 daytime.
+const SOLAR_ISO_RE = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])T([01]\d|2[0-3]):[0-5]\d(?::[0-5]\d)?$/;
+const solarMs = (value) => Date.parse(`${value.length === 16 ? value + ':00' : value}.000Z`);
+function localSolarIso(value, utcOffsetSeconds, dayIndex = 0, nowMs = Date.now()) {
+  if (typeof value !== 'string' || !SOLAR_ISO_RE.test(value)) return null;
+  const ms = solarMs(value);
+  if (!Number.isFinite(ms) || new Date(ms).toISOString().slice(0, 10) !== value.slice(0, 10)) return null; // no Feb 30
+  const offset = validUtcOffset(utcOffsetSeconds) ? utcOffsetSeconds : 0;
+  const localToday = new Date(nowMs + offset * 1000).toISOString().slice(0, 10);
+  const expectedDay = new Date(Date.parse(`${localToday}T00:00:00.000Z`) + dayIndex * 86400000).toISOString().slice(0, 10);
+  // Round 8: the date must BE the forecast day — not merely near it.
+  return value.slice(0, 10) === expectedDay ? value : null;
+}
+// A solar PAIR (round 8): both strings valid for the same forecast day and in
+// order, sunrise before sunset by 4–20 h. One bad half voids both, so a
+// source never ships half a pair and no path can combine halves from two
+// sources (Open-Meteo 06:00 + Pirate 18:00 used to make 18:30 daytime fresh
+// and night on the very next cache hit).
+function solarPair(sunrise, sunset, utcOffsetSeconds, dayIndex = 0, nowMs = Date.now()) {
+  const sr = localSolarIso(sunrise, utcOffsetSeconds, dayIndex, nowMs);
+  const ss = localSolarIso(sunset, utcOffsetSeconds, dayIndex, nowMs);
+  if (!sr || !ss) return { sunrise: null, sunset: null };
+  const gapMs = solarMs(ss) - solarMs(sr);
+  if (!(gapMs >= 4 * 3600000 && gapMs <= 20 * 3600000)) return { sunrise: null, sunset: null };
+  return { sunrise: sr, sunset: ss };
+}
+// WeatherAPI's astro strings ("06:45 AM"): display-only, never daylight.
+const CLOCK_RE = /^(0?[1-9]|1[0-2]):[0-5]\d [AP]M$/;
+const clockString = (value) => (typeof value === 'string' && CLOCK_RE.test(value.trim()) ? value.trim() : null);
+// WeatherAPI's enumerated condition codes — ALL 60 published at
+// weatherapi.com/docs/weather_conditions.json (fetched 2026-09-15), with their
+// published day descriptions. A code outside this list is no condition,
+// whatever text came with it. tests/provider-data-validation.test.js walks
+// the full list.
+const weatherApiCodeMap = {
+  1000: 'Sunny', 1003: 'Partly cloudy', 1006: 'Cloudy', 1009: 'Overcast', 1012: 'Haze', 1015: 'Dust haze',
+  1018: 'Blowing dust', 1021: 'Dust storm', 1024: 'Sandstorm', 1027: 'Severe sandstorm', 1030: 'Mist',
+  1033: 'Smoke', 1036: 'Smoky haze', 1039: 'Smog', 1042: 'Severe smog', 1045: 'Saharan dust', 1048: 'Dust',
+  1063: 'Patchy rain possible', 1066: 'Patchy snow possible', 1069: 'Patchy sleet possible', 1072: 'Patchy freezing drizzle possible',
+  1087: 'Thundery outbreaks possible', 1114: 'Blowing snow', 1117: 'Blizzard', 1135: 'Fog', 1147: 'Freezing fog',
+  1150: 'Patchy light drizzle', 1153: 'Light drizzle', 1168: 'Freezing drizzle', 1171: 'Heavy freezing drizzle',
+  1180: 'Patchy light rain', 1183: 'Light rain', 1186: 'Moderate rain at times', 1189: 'Moderate rain',
+  1192: 'Heavy rain at times', 1195: 'Heavy rain', 1198: 'Light freezing rain', 1201: 'Moderate or heavy freezing rain',
+  1204: 'Light sleet', 1207: 'Moderate or heavy sleet', 1210: 'Patchy light snow', 1213: 'Light snow',
+  1216: 'Patchy moderate snow', 1219: 'Moderate snow', 1222: 'Patchy heavy snow', 1225: 'Heavy snow',
+  1237: 'Ice pellets', 1240: 'Light rain shower', 1243: 'Moderate or heavy rain shower', 1246: 'Torrential rain shower',
+  1249: 'Light sleet showers', 1252: 'Moderate or heavy sleet showers', 1255: 'Light snow showers',
+  1258: 'Moderate or heavy snow showers', 1261: 'Light showers of ice pellets', 1264: 'Moderate or heavy showers of ice pellets',
+  1273: 'Patchy light rain with thunder', 1276: 'Moderate or heavy rain with thunder', 1279: 'Patchy light snow with thunder',
+  1282: 'Moderate or heavy snow with thunder',
+};
+// Raw-unit bounds applied at ingestion, before any derivation (item 5 round 2).
+const RAW_WIND_MS = [0, 111];   // m/s (≈ 400 km/h)
+const RAW_PCT     = [0, 100];
+const RAW_MM      = [0, 500];   // mm per interval / mm per hour
+// Tomorrow.io's nested override records are consumed by the rain-now path
+// directly, so they are bounded like any other field.
+const TI_OVERRIDE_BOUNDS = { precipitationIntensity: RAW_MM, precipitationProbability: RAW_PCT };
+
+/**
+ * Validate every source in place. Returns the list of rejected sources
+ * ({ source, reason }); the caller nulls nothing itself — rejected sources are
+ * already removed from norms/hourlies/dailies here, and out-of-bounds optional
+ * values are already nulled. Exported for unit tests.
+ */
+function sanitizeSources(norms, hourlies, dailies) {
+  const rejected = [];
+  // Series first: every field of an hourly/daily record is a series, and the
+  // aggregator indexes it. Round 3: a non-array (`{"0": 9999}` — an object
+  // the old scrub skipped, whose [0] the aggregator still read) becomes an
+  // empty series; numeric series are bounded; text series keep strings only.
+  const scrub = (rec, table) => {
+    if (!rec) return;
+    for (const [field, value] of Object.entries(rec)) {
+      if (field === 'source' || value == null) continue;
+      if (!Array.isArray(value)) {
+        debugLog(`[pw-source-invalid] ${rec.source} ${field} is not a series → dropped`);
+        rec[field] = [];
+        continue;
+      }
+      const bounds = table[field];
+      for (let k = 0; k < value.length; k++) {
+        const v = value[k];
+        if (v == null) continue;
+        if (bounds ? !inBounds(v, bounds) : typeof v !== 'string') value[k] = null;
+      }
+    }
+  };
+  hourlies.forEach(h => scrub(h, HOURLY_ARRAY_BOUNDS));
+  dailies.forEach(d => scrub(d, DAILY_ARRAY_BOUNDS));
+
+  const numericCount = (arr) => (Array.isArray(arr) ? arr.filter(isNum).length : 0);
+  const reject = (i, n, reason) => {
+    rejected.push({ source: n.source, reason });
+    norms[i] = null;
+    dailies[i] = null;
+    const h = HOURLY_SLOT_FOR_NORM[i];
+    if (h !== undefined) hourlies[h] = null;
+  };
+  norms.forEach((n, i) => {
+    if (!n) return;
+    for (const field of NORM_REQUIRED_FIELDS) {
+      if (!inBounds(n[field], NORM_FIELD_BOUNDS[field])) {
+        return reject(i, n, `${field}=${JSON.stringify(n[field] ?? null)} (required, bounds ${NORM_FIELD_BOUNDS[field].join('..')})`);
+      }
+    }
+    // Round 3: the forecast structure this source is blended for.
+    const need = SOURCE_STRUCTURE[i] || {};
+    if (need.hourlyTemps) {
+      const count = numericCount(hourlies[HOURLY_SLOT_FOR_NORM[i]]?.temps);
+      if (count < MIN_HOURLY_TEMPS) return reject(i, n, `hourly temps=${count} (required ≥${MIN_HOURLY_TEMPS} numeric)`);
+    }
+    if (need.dailyRange) {
+      const highs = numericCount(dailies[i]?.highs);
+      const lows = numericCount(dailies[i]?.lows);
+      if (highs < 1 || lows < 1) return reject(i, n, `daily highs=${highs} lows=${lows} (required ≥1 numeric each)`);
+    }
+    // Round 4 (Astra): usable weather SIGNALS, not just temperatures. A
+    // source with no condition and no wind used to be admitted and, alone,
+    // became "clear, 0 km/h" — a forecast nobody measured. Precipitation,
+    // humidity and cloud stay optional (null is skipped by the blend; MET's
+    // precipitation is null whenever its readings are invalid).
+    if (typeof n.desc !== 'string' || n.desc.trim() === '' || n.desc === 'Unknown') {
+      return reject(i, n, `desc=${JSON.stringify(n.desc ?? null)} (required: a known condition)`);
+    }
+    if (!inBounds(n.windKph, NORM_FIELD_BOUNDS.windKph)) {
+      return reject(i, n, `windKph=${JSON.stringify(n.windKph ?? null)} (required, bounds ${NORM_FIELD_BOUNDS.windKph.join('..')})`);
+    }
+    for (const [field, bounds] of Object.entries(NORM_FIELD_BOUNDS)) {
+      const v = n[field];
+      if (v != null && !inBounds(v, bounds)) {
+        debugLog(`[pw-source-invalid] ${n.source} ${field}=${v} outside ${bounds.join('..')} → null`);
+        n[field] = null;
+      }
+    }
+    // Text fields the pipeline string-matches: never a number or an object
+    // (desc was already required to be a known string above).
+    for (const field of ['sunrise', 'sunset']) {
+      if (n[field] != null && typeof n[field] !== 'string') n[field] = null;
+    }
+    for (const rec of [n.tomorrowIoCurrentHour, n.tomorrowIoNextHour]) {
+      if (!rec) continue;
+      for (const [field, bounds] of Object.entries(TI_OVERRIDE_BOUNDS)) {
+        if (rec[field] != null && !inBounds(rec[field], bounds)) rec[field] = null;
+      }
+    }
+  });
+  return rejected;
 }
 
 /** Convert a Unix timestamp to the API's location-local, timezone-free ISO contract. */
@@ -2708,13 +3020,16 @@ function detectAdvectionFog(omHourly, currentHourIdx, tioHourly = null) {
   // is physically impossible, so it is rejected as "no signal" rather than
   // clamped. Zero is kept: 0.0 km is a real whiteout reading and matches how the
   // Open-Meteo path already treats it.
-  // NOTE (flagged, not fixed): the Open-Meteo branch has this same negative-value
-  // exposure and has had it since 2026-05-21. Left exactly as-is here because this
-  // change is required to preserve OM-only behaviour byte-for-byte — it needs its
-  // own ruling.
+  // 2026-09-14 (prelaunch item 5, Al's ruling): the Open-Meteo branch now
+  // rejects negative visibility the same way. Astra's fixture — OM visibility
+  // -9999 m, Tomorrow 20 km, RH 95%, dew spread 1°C, no rain — returned
+  // visKm:-10, currentFog:true. Negative visibility is "no signal" for EVERY
+  // provider. (sanitizeSources also nulls it at ingestion; this guard keeps
+  // the exported detector safe when called directly.)
   const tioVisKmRaw = at(tioVis, currentHourIdx);
   const tioVisM     = (tioVisKmRaw === null || tioVisKmRaw < 0) ? null : tioVisKmRaw * 1000;
-  const omVisM      = at(vis, currentHourIdx);
+  const omVisMRaw   = at(vis, currentHourIdx);
+  const omVisM      = (omVisMRaw === null || omVisMRaw < 0) ? null : omVisMRaw;
 
   // Minimum of whatever is available. Both null ⇒ null (no signal at all).
   const candidates = [omVisM, tioVisM].filter(v => v !== null);
@@ -2773,7 +3088,8 @@ function detectAdvectionFog(omHourly, currentHourIdx, tioHourly = null) {
   // Open-Meteo while the current hour used the minimum would be inconsistent.
   for (let k = 1; k <= 3; k++) {
     const i = currentHourIdx + k;
-    const omV  = at(vis, i);
+    const omVRaw = at(vis, i);
+    const omV  = (omVRaw === null || omVRaw < 0) ? null : omVRaw; // same sentinel guard as the current hour (item 5 round 2)
     const tioKm = at(tioVis, i);
     const tioV  = (tioKm === null || tioKm < 0) ? null : tioKm * 1000; // same sentinel guard as above
     const cands = [omV, tioV].filter(x => x !== null);
@@ -2863,4 +3179,4 @@ function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph 
 
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc };
+export { deriveCondition, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc, sanitizeSources };

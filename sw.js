@@ -129,6 +129,21 @@ const MAX_IMG_CACHE = 120;
 const MAX_API_CACHE = 60;
 const MAX_OG_CACHE = 32;
 const API_CACHE_MAX_AGE = 3 * 60 * 60 * 1000; // 3 hours
+// Item 5 (2026-09-14): an offline copy is served only if it is a forecast the
+// app would render — ok:true, the current payload contract (meta.schema ≥ 5:
+// validated inputs) and a real current temperature; the same test the client
+// applies (isRenderablePayload). A 200 written before validation shipped
+// (ok:true, now.tempC:null) is discarded, not served over a live 503.
+const WEATHER_PAYLOAD_SCHEMA_MIN = 5;
+async function isRenderableWeatherBody(response) {
+  try {
+    const p = await response.clone().json();
+    return !!p && p.ok === true && Number(p.meta && p.meta.schema) >= WEATHER_PAYLOAD_SCHEMA_MIN
+      && Number.isFinite(p.now && p.now.tempC);
+  } catch {
+    return false;
+  }
+}
 
 // How long install waits before precaching. Covers the page's paint-critical
 // window (HTML + CSS + JS over a slow mobile link) so the ~25-asset addAll
@@ -274,7 +289,9 @@ self.addEventListener('fetch', (event) => {
         // especially for SA testers driving between regions on the N2.
         const cachedAt = Number.parseInt(cached.headers.get('sw-cached-at') || '0', 10);
         const age = Number.isFinite(cachedAt) && cachedAt > 0 ? Date.now() - cachedAt : Infinity;
-        if (age <= API_CACHE_MAX_AGE) {
+        // Item 5: age AND content — a malformed or pre-contract body is
+        // deleted below exactly like an over-age one.
+        if (age <= API_CACHE_MAX_AGE && await isRenderableWeatherBody(cached)) {
           const headers = new Headers(cached.headers);
           headers.set('sw-offline', 'true');
           headers.set('sw-cache-age-ms', String(age));
@@ -285,8 +302,9 @@ self.addEventListener('fetch', (event) => {
           });
         }
         await cache.delete(req).catch(() => {});
-        // Cached payload too old — fall through to the network error or the
-        // 503 below so the page never renders over-age weather as current.
+        // Cached payload too old or not renderable — fall through to the
+        // network error or the 503 below so the page never renders over-age
+        // or malformed weather as current.
       }
       if (fresh) return fresh;
       return new Response(JSON.stringify({ ok: false, error: 'offline' }), {

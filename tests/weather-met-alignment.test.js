@@ -49,7 +49,7 @@ const makeMetPayload = () => {
         data: {
           instant: {
             details: {
-              air_temperature: i === 0 ? 99 : 20,
+              air_temperature: i === 0 ? 55 : 20, // 55 not 99: item 5 rejects physically impossible temperatures (bounds -90..60)
               wind_speed: 1,
               relative_humidity: 50,
               cloud_area_fraction: 0,
@@ -114,7 +114,9 @@ describe('MET Norway hourly alignment', () => {
     expect(body.meta.localHour).toBe(14);
     expect(body.hourly[0].tempC).toBe(10);
     expect(body.hourly[13].tempC).toBe(10);
-    expect(body.hourly[14].tempC).toBeGreaterThan(40);
+    // The MET spike is 55 (was 99 before item 5's physical bounds); blended
+    // with Open-Meteo's 10 it lands near 28 — clearly above the 10°C baseline.
+    expect(body.hourly[14].tempC).toBeGreaterThan(20);
   });
 
   it('keeps MET Norway out of daily consensus when today data is sparse, but still shows a forward-24h range on Sources page', async () => {
@@ -128,11 +130,11 @@ describe('MET Norway hourly alignment', () => {
     expect(body.daily[0].lowC).toBe(8);
     // Sources page DISPLAY range now falls back to MET's forward-24h window so
     // the user sees a real range instead of "--". The fixture series is
-    // 24×20°C with a 99°C spike at index 0, so the forward-24h min=20 max=99.
+    // 24×20°C with a 55°C spike at index 0, so the forward-24h min=20 max=55.
     expect(body.meta.sourceRanges).toContainEqual({
       name: 'MET Norway',
       minTemp: 20,
-      maxTemp: 99,
+      maxTemp: 55,
     });
   });
 });
