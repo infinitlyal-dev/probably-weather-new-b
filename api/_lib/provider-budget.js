@@ -27,6 +27,41 @@
 // variation; perMin 20 additionally caps any single-minute spike.
 import { getRedis } from './limiters.js';
 
+// Item 7 round 3: `promise`, or a rejection after `ms` so the caller's catch
+// takes the same conservative fallback as a Redis error. ms ≤ 0 → unbounded.
+function withTimeout(promise, ms) {
+  if (!(ms > 0)) return promise;
+  let timeoutId;
+  return Promise.race([
+    promise,
+    new Promise((_, reject) => { timeoutId = setTimeout(() => reject(new Error('budget check timed out')), ms); }),
+  ]).finally(() => clearTimeout(timeoutId));
+}
+
+// --- Open-Meteo: free tier vs commercial (API Standard) --------------------
+// Al subscribed to Open-Meteo API Standard (2026-09): 1,000,000 calls/month,
+// reserved servers, and NO published per-minute/per-hour/per-day ceiling. The
+// budget is therefore a FUNCTION OF THE ENV, not a constant: the free-tier
+// minute/day caps apply only when OPEN_METEO_API_KEY is absent and the handler
+// is on the free endpoint. Under the commercial plan the monthly counter below
+// (advisory, never blocking) is the control instead — the plan has no hard cap,
+// so blocking would only manufacture an outage Open-Meteo would not have caused.
+const OPEN_METEO_FREE_BUDGET = { perMin: 600, perDay: 10000 }; // Open-Meteo free: 600/min, 10k/day
+const OPEN_METEO_COMMERCIAL_BUDGET = {};                       // API Standard: no minute/hour/day ceiling
+
+/** True when the commercial Open-Meteo key is configured for this instance. */
+export function hasOpenMeteoKey() {
+  return Boolean(process.env.OPEN_METEO_API_KEY);
+}
+
+/** Open-Meteo's active budget for the CURRENT env (recomputed per access). */
+export function openMeteoBudget() {
+  return hasOpenMeteoKey() ? OPEN_METEO_COMMERCIAL_BUDGET : OPEN_METEO_FREE_BUDGET;
+}
+
+// 'open-meteo' is a getter so the env is read at use time, not at import time —
+// a module-load constant would freeze whichever env the first import happened
+// to see (and would make the key's presence untestable).
 export const PROVIDER_BUDGETS = {
   'open-meteo': { perMin: 600, perDay: 10000 }, // Open-Meteo free: 600/min, 10k/day
   'weatherapi': { perMin: 200, perDay: 30000 }, // WeatherAPI free: ~1M/month
@@ -119,14 +154,16 @@ function providerWindows(provider, cfg, nowMs) {
  * @param {object|null} [redis]  injectable Upstash client (defaults to shared)
  * @param {number} [nowMs]       injectable clock for tests
  */
-export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = Date.now()) {
+export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = Date.now(), { timeoutMs = 0 } = {}) {
   const result = {};
   if (redis === _UNSET) {
     // Default (handler) path. Under vitest the upstream calls are mocked, so
     // the budget is meaningless and would otherwise trip the conservative
     // instance fallback across a test file's many handler invocations. Skip it.
     // The guard's own logic is unit-tested directly with an injected client.
-    if (typeof process !== 'undefined' && process.env?.VITEST) {
+    // PW_TEST_REAL_BUDGET=1 opts a targeted handler test back into the real
+    // path (with its own injected Redis via limiters.getRedis).
+    if (typeof process !== 'undefined' && process.env?.VITEST && !process.env.PW_TEST_REAL_BUDGET) {
       for (const p of providers) result[p] = true;
       return result;
     }
@@ -143,7 +180,11 @@ export async function consumeProviderBudgets(providers, redis = _UNSET, nowMs = 
       const windows = providerWindows(p, cfg, nowMs);
       const keys = windows.map(([key]) => key);
       const args = windows.flatMap(([, ceiling, ttl, revert]) => [String(ceiling), String(ttl), String(revert)]);
-      const allowed = await redis.eval(CONSUME_WINDOWS_SCRIPT, keys, args);
+      // Item 7 round 3: bounded PER PROVIDER (timeoutMs > 0). A check that
+      // completes keeps its decision — an explicit denial stays a denial —
+      // and only a check that runs out of time takes the conservative
+      // per-instance fallback, the same path as a Redis error.
+      const allowed = await withTimeout(redis.eval(CONSUME_WINDOWS_SCRIPT, keys, args), timeoutMs);
       result[p] = allowed === 1 || allowed === '1' || allowed === true;
     } catch {
       // Redis hiccup for this provider — conservative per-instance fallback.

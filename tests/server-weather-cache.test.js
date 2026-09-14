@@ -23,7 +23,7 @@ import {
   weatherCacheSet,
   weatherCacheSetDeferred,
 } from '../api/_lib/weather-cache.js';
-import { LOCAL_MISS_WAIT_MS, WEATHER_UPSTREAM_TIMEOUT_MS } from '../api/weather.js';
+import { LOCAL_MISS_WAIT_MS, NAME_RESOLUTION_TIMEOUT_MS, WEATHER_UPSTREAM_TIMEOUT_MS } from '../api/weather.js';
 
 const fakeRedis = (store = new Map()) => ({
   store,
@@ -166,10 +166,15 @@ describe('P5 deferred final cache write', () => {
 });
 
 describe('P3 distributed miss lock', () => {
-  it('P3 coalescing windows cover sequential location and provider timeouts', () => {
-    const slowSuccessfulLeaderMs = WEATHER_UPSTREAM_TIMEOUT_MS * 2;
+  it('P3 coalescing windows outlast a slow successful leader and end before the client aborts', () => {
+    // Item 7 (2026-09-14): name resolution runs in PARALLEL with the provider
+    // fan-out, so a slow-but-successful leader takes max(provider cap, name
+    // cap) plus overhead — no longer the sum of two serial timeouts.
+    const slowSuccessfulLeaderMs = Math.max(WEATHER_UPSTREAM_TIMEOUT_MS, NAME_RESOLUTION_TIMEOUT_MS) + 1000;
     expect(LOCAL_MISS_WAIT_MS).toBeGreaterThan(slowSuccessfulLeaderMs);
     expect(WEATHER_LOCK_WAIT_MS).toBeGreaterThan(slowSuccessfulLeaderMs);
+    expect(LOCAL_MISS_WAIT_MS).toBeLessThan(10000); // assets/app.js fetchProbable aborts at 10 s
+    expect(WEATHER_LOCK_WAIT_MS).toBeLessThan(10000);
     expect(WEATHER_LOCK_TTL_SECONDS * 1000).toBeGreaterThan(WEATHER_LOCK_WAIT_MS);
   });
 

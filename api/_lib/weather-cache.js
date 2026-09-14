@@ -19,8 +19,25 @@ import { getRedis } from './limiters.js';
 export const WEATHER_CACHE_TTL_SECONDS = 300; // mirrors the edge s-maxage
 export const WEATHER_STALE_TTL_SECONDS = 900;
 export const WEATHER_LOCK_TTL_SECONDS = 30;
-export const WEATHER_LOCK_WAIT_MS = 22000;
+// Item 7 (2026-09-14): a waiter must give up before the client's 10 s abort,
+// and after a slow-but-successful leader (6 s provider cap ∥ 3 s name lookup).
+export const WEATHER_LOCK_WAIT_MS = 8500;
+// Item 7 round 3: one Redis round trip never waits longer than this. The
+// handler applies it to every read before the fan-out; waitForWeatherCache
+// applies it to each of its polling reads (Astra measured 11.0 s when the
+// reads inside the poll, and one more after its deadline, were unbounded).
+export const WEATHER_REDIS_OP_TIMEOUT_MS = 1500;
 export const SNAP_DEGREES = 0.02;             // ~2.2 km latitude
+
+/** `promise`, or `fallback` after `ms` (or on rejection) — whichever first. */
+function withTimeout(promise, ms, fallback) {
+  if (!(ms > 0)) return Promise.resolve(fallback);
+  let timeoutId;
+  return Promise.race([
+    Promise.resolve(promise).then((v) => v, () => fallback),
+    new Promise((resolve) => { timeoutId = setTimeout(() => resolve(fallback), ms); }),
+  ]).finally(() => clearTimeout(timeoutId));
+}
 
 const weatherCacheStaleKey = (key) => `${key}:stale`;
 const weatherCacheLockKey = (key) => `${key}:lock`;
@@ -89,10 +106,11 @@ export function weatherCacheKey(lat, lon) {
  * `redis` is injectable for tests; defaults to the shared Upstash client
  * (null when env is missing → permanent miss, fail-open).
  */
-export async function weatherCacheGet(key, redis = getRedis()) {
+export async function weatherCacheGet(key, redis = getRedis(), { timeoutMs = 0 } = {}) {
   if (!key || !redis) return null;
   try {
-    const value = await redis.get(key);
+    // timeoutMs > 0 (item 7 round 3): a read slower than that is a miss.
+    const value = timeoutMs > 0 ? await withTimeout(redis.get(key), timeoutMs, null) : await redis.get(key);
     if (!value) return null;
     // @upstash/redis deserialises JSON automatically; tolerate a string from
     // an injected test double or an older client.
@@ -185,12 +203,13 @@ export async function waitForWeatherCache(
   // happens AT it. The caller passes its remaining request budget as
   // maxWaitMs, so this poll can never outlive the request.
   const deadline = Date.now() + Math.max(0, maxWaitMs);
-  do {
-    const cached = await weatherCacheGet(key, redis);
-    if (cached) return cached;
+  for (;;) {
     const remaining = deadline - Date.now();
-    if (remaining <= 0) break;
-    await new Promise((resolve) => setTimeout(resolve, Math.min(Math.max(1, pollMs), remaining)));
-  } while (Date.now() < deadline);
-  return weatherCacheGet(key, redis);
+    if (remaining <= 0) return null; // round 4: no read is ever STARTED after the deadline
+    const cached = await weatherCacheGet(key, redis, { timeoutMs: Math.min(WEATHER_REDIS_OP_TIMEOUT_MS, remaining) });
+    if (cached && accept(cached)) return cached;
+    const left = deadline - Date.now();
+    if (left <= 0) return null;
+    await new Promise((resolve) => setTimeout(resolve, Math.min(Math.max(1, pollMs), left)));
+  }
 }

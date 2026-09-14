@@ -16,6 +16,7 @@
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { weatherDailyLimiter, weatherLimiter } from './_lib/limiters.js';
 import {
+  WEATHER_REDIS_OP_TIMEOUT_MS,
   weatherCacheAcquireLock,
   weatherCacheGet,
   weatherCacheGetStale,
@@ -73,16 +74,22 @@ export const NAME_RESOLUTION_TIMEOUT_MS = 3000;
 // never a fresh window of its own.
 export const LOCAL_MISS_WAIT_MS = REQUEST_BUDGET_MS;
 
-async function waitForLocalWeatherMiss(record) {
+/**
+ * Resolve `promise` or, after `ms`, `fallback` — whichever comes first. A
+ * rejection also yields `fallback`: every wrapped call is a fail-open helper
+ * whose failure already means "no cache / no lock information".
+ */
+function withDeadline(promise, ms, fallback) {
+  if (!(ms > 0)) return Promise.resolve(fallback);
   let timeoutId;
-  try {
-    return await Promise.race([
-      record.promise,
-      new Promise((resolve) => { timeoutId = setTimeout(() => resolve(null), LOCAL_MISS_WAIT_MS); }),
-    ]);
-  } finally {
-    clearTimeout(timeoutId);
-  }
+  return Promise.race([
+    Promise.resolve(promise).then((v) => v, () => fallback),
+    new Promise((resolve) => { timeoutId = setTimeout(() => resolve(fallback), ms); }),
+  ]).finally(() => clearTimeout(timeoutId));
+}
+
+async function waitForLocalWeatherMiss(record, maxWaitMs = LOCAL_MISS_WAIT_MS) {
+  return withDeadline(record.promise, maxWaitMs, null);
 }
 
 // Strict coordinate parser — single implementation in assets/coord-parse.js
@@ -95,15 +102,25 @@ export { parseCoord };
 export default async function handler(req, res) {
   let finishLocalMiss = null;
   let distributedMissLock = null;
+  // Item 7 round 2: the request's one terminal budget, started before the
+  // first await. Every wait below is sized from what is left of it.
+  const requestStartedAt = Date.now();
+  const timeLeft = () => Math.max(0, REQUEST_BUDGET_MS - (Date.now() - requestStartedAt));
+  // A single Redis round trip: bounded by the op cap AND the budget; on
+  // timeout or error the fail-open `fallback` stands in (a miss, no lock info).
+  const redisOp = (promise, fallback) => withDeadline(promise, Math.min(REDIS_OP_TIMEOUT_MS, timeLeft()), fallback);
   try {
     // Per-IP rate limit — first thing, before any upstream work. Fails open if
     // Upstash is unreachable (checkRateLimit) so a limiter outage never blocks.
-    const rl = await checkRateLimit(req, weatherLimiter());
+    // Item 7 round 3 (Astra): the Upstash limiter's own timeout is 5 s per
+    // call; both gates are bounded like every other Redis round trip and
+    // fail open on timeout, exactly as checkRateLimit does on an error.
+    const rl = await redisOp(checkRateLimit(req, weatherLimiter()), { allowed: true, skipped: 'timeout' });
     if (!rl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests' });
     // Consume the longer window only after the minute gate passes. Otherwise a
     // minute-rate flood could spend the whole daily allowance without doing
     // any real weather work and lock a shared carrier IP out for a day.
-    const dailyRl = await checkRateLimit(req, weatherDailyLimiter());
+    const dailyRl = await redisOp(checkRateLimit(req, weatherDailyLimiter()), { allowed: true, skipped: 'timeout' });
     if (!dailyRl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests' });
     // parseCoord (not parseFloat) — strict whole-string parse so '90abc',
     // '0x10', and array-valued ?lat=1&lat=2 are rejected, not partial-parsed.
@@ -164,9 +181,13 @@ export default async function handler(req, res) {
 
     const timeoutMs = WEATHER_UPSTREAM_TIMEOUT_MS;
 
-    async function fetchJson(url, options = {}) {
+    // ms: per-call cap. Providers use the 6 s default; LocationIQ name lookups
+    // pass NAME_RESOLUTION_TIMEOUT_MS (item 7). Round 2: the cap never exceeds
+    // the budget left — Redis time spent before the fan-out comes off the
+    // providers' allowance, so the answer still lands inside the client's 10 s.
+    async function fetchJson(url, options = {}, ms = timeoutMs) {
       const controller = new AbortController();
-      const t = setTimeout(() => controller.abort(), timeoutMs);
+      const t = setTimeout(() => controller.abort(), Math.max(1, Math.min(ms, timeLeft())));
       try {
         const r = await fetch(url, { ...options, signal: controller.signal });
         if (!r.ok) {
@@ -222,7 +243,8 @@ export default async function handler(req, res) {
         // zoom=16 catches hamlets/suburbs
         const rev = await fetchJson(
           `https://us1.locationiq.com/v1/reverse?key=${encodeURIComponent(LOCATIONIQ_TOKEN)}&lat=${lat}&lon=${lon}&format=json&zoom=16&addressdetails=1&normalizecity=1&accept-language=en`,
-          { headers: { 'User-Agent': NOMINATIM_UA } }
+          { headers: { 'User-Agent': NOMINATIM_UA } },
+          NAME_RESOLUTION_TIMEOUT_MS
         );
         const addr = rev?.address || {};
         const pick = (...vals) => vals.find(v => !isBadLabel(v)) || null;
@@ -379,6 +401,15 @@ export default async function handler(req, res) {
       if (sent) return sent; // else: refused (UV rung crossed) → fall through to a fresh fan-out
     }
 
+    // Hand the leader's result to local waiters exactly once. A no-op while
+    // this request is itself a waiter (finishLocalMiss is null).
+    const completeLocalMiss = (payload) => {
+      if (!finishLocalMiss) return;
+      const finish = finishLocalMiss;
+      finishLocalMiss = null;
+      finish(payload);
+    };
+
     // First layer: same warm instance. The leader publishes the safe cache
     // payload directly, so coalescing still works when Redis is unavailable.
     while (!finishLocalMiss) {
@@ -411,7 +442,9 @@ export default async function handler(req, res) {
     // Second layer: cross-instance Redis lock. A waiter serves the last good
     // stale value immediately when available; otherwise it polls for a bounded
     // period and then proceeds itself, so a dead lock holder can never hang it.
-    distributedMissLock = await weatherCacheAcquireLock(serverCacheKey);
+    // A slow Redis (op cap hit) yields no lock information: proceed as the
+    // leader without a token, exactly as when Redis is absent (fail-open).
+    distributedMissLock = await redisOp(weatherCacheAcquireLock(serverCacheKey), { acquired: true, release: async () => {} });
     if (!distributedMissLock.acquired) {
       const stalePayload = await redisOp(weatherCacheGetStale(serverCacheKey), null);
       // Publish to local waiters only AFTER acceptance: a refused entry handed
@@ -420,7 +453,10 @@ export default async function handler(req, res) {
         completeLocalMiss(stalePayload);
         return respondWithCachedPayload(stalePayload, 'stale-lock-wait', 's-maxage=30, stale-while-revalidate=60');
       }
-      const filledPayload = await waitForWeatherCache(serverCacheKey);
+      // Item 7 round 2: the poll gets the budget LEFT, not a fresh 8.5 s, and
+      // its expiry is terminal — Astra measured 14.6 s when an expired waiter
+      // went on to fan out for itself.
+      const filledPayload = await waitForWeatherCache(serverCacheKey, undefined, { accept: acceptableCache, maxWaitMs: timeLeft() });
       if (filledPayload) {
         completeLocalMiss(filledPayload);
         return respondWithCachedPayload(filledPayload, 'coalesced-redis');
@@ -437,11 +473,16 @@ export default async function handler(req, res) {
     // let one caller's arbitrary string (or a custom favourite name) appear as,
     // and get persisted as, a stranger's location label.
     let serverResolvedName = null;
-    if (!resolvedName && LOCATIONIQ_TOKEN) {
+    // Item 7: the lookup does not gate the forecast, so it runs CONCURRENTLY
+    // with the provider fan-out below (started here, awaited right after
+    // Promise.allSettled) under its own 3 s cap — it used to run first and
+    // serially, adding up to a full provider timeout to the response time.
+    const nameResolution = (!resolvedName && LOCATIONIQ_TOKEN) ? (async () => {
       try {
         const rev = await fetchJson(
           `https://us1.locationiq.com/v1/reverse?key=${encodeURIComponent(LOCATIONIQ_TOKEN)}&lat=${lat}&lon=${lon}&format=json&zoom=16&addressdetails=1&normalizecity=1&accept-language=en`,
-          { headers: { 'User-Agent': NOMINATIM_UA } }
+          { headers: { 'User-Agent': NOMINATIM_UA } },
+          NAME_RESOLUTION_TIMEOUT_MS
         );
         const addr = rev?.address || {};
         const pick = (...vals) => vals.find(v => !isBadLabel(v));
@@ -475,7 +516,7 @@ export default async function handler(req, res) {
         }
         if (parts.length) { resolvedName = parts.join(', '); serverResolvedName = resolvedName; }
       } catch { /* Keep fallback name if reverse geocode fails */ }
-    }
+    })() : Promise.resolve();
 
     // Source arrays: index 0=Open-Meteo, 1=WeatherAPI, 2=Pirate Weather, 3=MET Norway, 4=Tomorrow.io
     // null in a slot means that source failed or was not configured.
@@ -622,7 +663,20 @@ export default async function handler(req, res) {
       'met',
       ...(TOMORROWIO_API_KEY ? ['tomorrow'] : []),
     ];
-    const budget = await consumeProviderBudgets(enabledProviders);
+    // Item 7 round 3: the budget is checked BEFORE the fan-out starts. A
+    // leader that has none left (slow limiters, slow Redis) answers now —
+    // a fan-out started here would finish after the client's abort.
+    if (timeLeft() === 0) return respondBudgetSpent('pre-fanout');
+    // Bounded like every other Redis round trip (item 7 round 2/3): the cap
+    // is applied PER PROVIDER inside consumeProviderBudgets, so a provider
+    // whose check completed keeps its decision (an explicit denial stays a
+    // denial) and only a timed-out check falls back to the conservative
+    // per-instance ceiling — never a blanket "everything allowed".
+    const budget = await consumeProviderBudgets(enabledProviders, undefined, Date.now(), { timeoutMs: Math.min(REDIS_OP_TIMEOUT_MS, timeLeft()) });
+    // Item 7 round 4 (Astra): the check itself can spend the last of the
+    // budget. Providers started with nothing left only fail; the last good
+    // value (or a bounded 503) is the better answer.
+    if (timeLeft() === 0) return respondBudgetSpent('post-budget-check');
     const budgetAllows = (p) => budget[p] !== false; // undefined ⇒ allowed (safety)
     for (const p of enabledProviders) {
       if (!budgetAllows(p)) console.warn(`[pw-budget] ${p} over ceiling — skipped this request`);
@@ -657,13 +711,14 @@ export default async function handler(req, res) {
           `?units=si&icon=pirate`
         )
       : Promise.resolve(null);
-    const metNorwayRequest = budgetAllows('met') ? fetch(
+    // Item 7 round 2: MET used to carry its own AbortSignal.timeout(6 s) —
+    // a fixed cap outside the request budget, so with Redis time already
+    // spent it could answer after the budget. It goes through fetchJson like
+    // every other provider now (same HTTP-status and JSON handling).
+    const metNorwayRequest = budgetAllows('met') ? fetchJson(
       `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}`,
-      { headers: { 'User-Agent': NOMINATIM_UA }, signal: AbortSignal.timeout(timeoutMs) }
-    ).then(async met => {
-      if (!met.ok) throw new Error(`HTTP ${met.status}`);
-      return await met.json();
-    }) : Promise.resolve(null);
+      { headers: { 'User-Agent': NOMINATIM_UA } }
+    ) : Promise.resolve(null);
     // Tomorrow.io Timelines API — 48h hourly window with radar-derived precipitation
     // intensity. Use units=metric (temperature °C, precipitationIntensity mm/h,
     // windSpeed m/s, humidity %, cloudCover %, visibility KM). startTime=now rounds
@@ -695,6 +750,8 @@ export default async function handler(req, res) {
       metNorwayRequest,
       tomorrowIoRequest,
     ]);
+    // Item 7: the name lookup ran alongside the fan-out; it never rejects.
+    await nameResolution;
 
     function getSettledValue(result) {
       if (result.status === 'fulfilled') {
