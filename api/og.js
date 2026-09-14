@@ -41,11 +41,13 @@ const BACKGROUND_DATA_URL_CACHE = new Map();
 const FONT_DATA_PROMISE = readFile(new URL('../og/Geist-Regular.ttf', import.meta.url));
 
 const STAT_LABELS = {
-  en: { wind: 'Wind', rain: 'Rain', uv: 'UV' },
-  af: { wind: 'Wind', rain: 'Reën', uv: 'UV' },
-  zu: { wind: 'Umoya', rain: 'Imvula', uv: 'UV' },
-  xh: { wind: 'Umoya', rain: 'Imvula', uv: 'UV' },
-  st: { wind: 'Moya', rain: 'Pula', uv: 'UV' },
+  // uvMax (item 3, 2026-09-14): the day's peak, only ever shown under this
+  // label — same words as T.weather.uvMax in app.js (lang-check: 0 flagged).
+  en: { wind: 'Wind', rain: 'Rain', uv: 'UV', uvMax: 'max' },
+  af: { wind: 'Wind', rain: 'Reën', uv: 'UV', uvMax: 'maks' },
+  zu: { wind: 'Umoya', rain: 'Imvula', uv: 'UV', uvMax: 'okuphezulu' },
+  xh: { wind: 'Umoya', rain: 'Imvula', uv: 'UV', uvMax: 'ephezulu' },
+  st: { wind: 'Moya', rain: 'Pula', uv: 'UV', uvMax: 'phahameng' },
 };
 
 const h = (type, props = {}, ...children) => ({
@@ -214,11 +216,23 @@ export function buildOgViewModel(payload, options = {}) {
   // (e.g. UV after sunset) is dropped from the card, not rendered as "--".
   const wind = isNum(now.windKph ?? now.wind_kph ?? payload?.wind_kph) ? `${round(now.windKph ?? now.wind_kph ?? payload.wind_kph)} km/h` : null;
   const rain = isNum(now.rainChance ?? today.rainChance) ? `${round(now.rainChance ?? today.rainChance)}%` : null;
-  const uv = isNum(now.uv ?? today.uv) ? String(round(now.uv ?? today.uv)) : null;
+  // Item 3 (P1-1): now.uv is the CURRENT hour. The old `now.uv ?? today.uv`
+  // fallback put the day's peak on the card as if it were now whenever the
+  // current value was null (night, or no hourly UV source). Now: the current
+  // value when there is one; otherwise the daytime peak under its own label;
+  // otherwise nothing (Task 4: dropped, never dashed).
+  // Strict numbers here: the module-level isNum coerces null → 0, and the API
+  // emits now.uv: null at night / when no hourly source has UV — that must
+  // never print "UV 0". Both values only during daylight.
+  const strictNum = (v) => typeof v === 'number' && Number.isFinite(v);
+  const daylight = now.isDay !== false;
+  const uvNow = daylight && strictNum(now.uv) ? String(round(now.uv)) : null;
+  const uvMax = daylight && strictNum(today.uvMax) ? String(round(today.uvMax)) : null;
+  const uv = uvNow != null ? `${labels.uv} ${uvNow}` : (uvMax != null ? `${labels.uv} ${labels.uvMax} ${uvMax}` : null);
   const statParts = [
     wind != null ? `${labels.wind} ${wind}` : null,
     rain != null ? `${labels.rain} ${rain}` : null,
-    uv != null ? `${labels.uv} ${uv}` : null,
+    uv,
   ].filter(Boolean);
   const seed = `${location}|${condition}|${lang}|${new Date().toISOString().slice(0, 10)}`;
   // Local day/hour at the shared location, so the card's witty line obeys the

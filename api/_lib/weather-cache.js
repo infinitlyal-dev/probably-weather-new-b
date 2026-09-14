@@ -172,9 +172,18 @@ export async function weatherCacheAcquireLock(key, redis = getRedis(), token = r
 export async function waitForWeatherCache(
   key,
   redis = getRedis(),
-  { maxWaitMs = WEATHER_LOCK_WAIT_MS, pollMs = 200 } = {},
+  { maxWaitMs = WEATHER_LOCK_WAIT_MS, pollMs = 200, accept = () => true } = {},
 ) {
   if (!key || !redis) return null;
+  // `accept` (item 3): the caller may refuse an entry it would not serve — a
+  // pre-contract entry, or one whose headline no longer holds at this hour.
+  // Without it a lock loser polling after such a refusal got the SAME entry
+  // straight back and fetched for itself; with it, the poll waits for the
+  // lock holder's replacement.
+  // Item 7 round 3: every read is bounded by the op cap AND by what is left
+  // of the deadline, and nothing is read after the deadline — the last read
+  // happens AT it. The caller passes its remaining request budget as
+  // maxWaitMs, so this poll can never outlive the request.
   const deadline = Date.now() + Math.max(0, maxWaitMs);
   do {
     const cached = await weatherCacheGet(key, redis);

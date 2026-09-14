@@ -387,11 +387,14 @@ describe('4-source consensus regression check', () => {
     // 4-source consensus is what produced the conditionKey, not the radar override.
     const tiOverrides = body.now.conditionSignals.overrides.filter(o => o.rule?.startsWith('tomorrow-io'));
     expect(tiOverrides.length).toBe(0);
-    // 4-source consensus from these fixtures (OM/WA/PW all sunny + uvIndex=6,
-    // local hour 10:30 SAST → moderate UV rung fires in deriveCondition).
-    // The point: this output is identical to pre-Tomorrow.io behaviour because
-    // Tomorrow.io contributed nothing to the consensus on this path.
-    expect(body.now.conditionKey).toBe('uv');
+    // 4-source consensus from these fixtures (OM/WA/PW all sunny). Since item 3
+    // (2026-09-14) the now-condition's UV rung reads the CURRENT hour's blended
+    // UV (fixture hourly uv_index = 4, moderate) rather than the day's peak (6),
+    // so the moderate-UV rung (>= 6) no longer fires at 10:30 and the honest
+    // answer is clear. The point stands: this output is identical to the
+    // 4-source path because Tomorrow.io contributed nothing to the consensus.
+    expect(body.now.conditionKey).toBe('clear');
+    expect(body.now.conditionSignals.numeric.uvIndex).toBe(4);
   });
 });
 

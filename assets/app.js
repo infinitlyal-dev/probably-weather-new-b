@@ -182,6 +182,19 @@ document.addEventListener("DOMContentLoaded", () => {
     return place?.shared ? 'shared' : (place?.mode === PLACE_MODE_PINNED ? 'pinned' : 'gps');
   }
   function cacheKey(place) { return `${parseFloat(place.lat).toFixed(3)},${parseFloat(place.lon).toFixed(3)}|${cacheSource(place)}`; }
+  // Items 3/5/6 (2026-09-14): a payload is renderable only when it carries the
+  // current server contract (meta.schema >= 3) and a real current temperature.
+  // Pre-deploy copies — the service worker keeps weather up to 3 h, IndexedDB
+  // paints the last payload instantly — had now.uv = the day's peak, hourly
+  // rows aligned against UTC when the offset providers were down, and could be
+  // a 200 with no valid source at all. Those are not weather; they are dropped
+  // (a fresh fetch replaces them, or the offline toast shows), never rendered.
+  const PAYLOAD_SCHEMA_MIN = 5; // 5 = provider validation as shipped (item 5); 3 = offset-first hourly alignment (item 6)
+  function isRenderablePayload(p) {
+    return !!p && p.ok !== false
+      && Number.isFinite(p.meta?.schema) && p.meta.schema >= PAYLOAD_SCHEMA_MIN
+      && typeof p.now?.tempC === 'number' && Number.isFinite(p.now.tempC);
+  }
   async function getCachedWeather(place) {
     try {
       const db = await openCacheDB();
@@ -190,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const req = tx.objectStore(CACHE_STORE).get(cacheKey(place));
         req.onsuccess = () => {
           const entry = req.result;
-          if (entry && (Date.now() - entry.timestamp) < CACHE_MAX_AGE) resolve(entry);
+          if (entry && (Date.now() - entry.timestamp) < CACHE_MAX_AGE && isRenderablePayload(entry.payload)) resolve(entry);
           else resolve(null);
         };
         req.onerror = () => resolve(null);
@@ -334,6 +347,9 @@ document.addEventListener("DOMContentLoaded", () => {
       moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
       high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
       veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" },
+      // Item 3 (2026-09-14): label for today's peak UV next to the current-hour
+      // value. lang-check triage af/zu/xh/st: 0 flagged.
+      uvMax: { en: "Max", af: "Maks", zu: "Okuphezulu", xh: "Ephezulu", st: "Phahameng" },
       // Table headers
       time: { en: "Time", af: "Tyd", zu: "Isikhathi", xh: "Ixesha", st: "Nako" },
       temp: { en: "Temp", af: "Temp", zu: "Izinga lokushisa", xh: "Temp", st: "Mocheso" },
@@ -1760,7 +1776,11 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const resp = await fetch(url, { signal });
       if (!resp.ok) throw new Error('API error');
-      return await resp.json();
+      const data = await resp.json();
+      // A service-worker offline copy from before the contract change, or a
+      // degraded body, is refused here the same way a bad status is.
+      if (!isRenderablePayload(data)) { debugLog('[fetchProbable] payload not renderable (schema/tempC)', data?.meta?.schema, data?.now?.tempC); throw new Error('API error'); }
+      return data;
     } catch (err) {
       if (didTimeout && err?.name === 'AbortError') {
         err.weatherTimeout = true;
@@ -1784,12 +1804,31 @@ document.addEventListener("DOMContentLoaded", () => {
     debugLog(`[Imminent slice] localHour=${localHour} → next 4 hours rain max: ${imminentRainMax}%`);
     const displayRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
     const dailyRainPct = today.rainChance ?? now.rainChance ?? null;
-    const rainLater = isNum(imminentRainMax) && imminentRainMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
-    return { 
+    // rainLater ("Later" wording) means dry now, wet later. Radar says it is
+    // raining NOW, so the override suppresses it (Astra: "Rain 70% — Later").
+    const rainLater = !rainNowOverride && isNum(imminentRainMax) && imminentRainMax < 30 && isNum(dailyRainPct) && dailyRainPct >= 50;
+    // Item 3 (P1-1): meta.schema >= 2 payloads carry now.uv = the CURRENT hour
+    // and daily[0].uvMax = the day's peak. A payload written before that deploy
+    // (service-worker cache keeps weather up to 3 h) carried the PEAK in now.uv
+    // — never render that as "now": it is the peak, and the current hour is
+    // simply unknown until a fresh payload arrives.
+    const legacyUv = !(meta.schema >= PAYLOAD_SCHEMA_MIN);
+    const uvNow = legacyUv ? null : (isNum(now.uv) ? now.uv : null);
+    const uvMax = legacyUv
+      ? (isNum(now.uv) ? now.uv : (isNum(today.uv) ? today.uv : null))
+      : (isNum(today.uvMax) ? today.uvMax : null);
+    if (legacyUv && isNum(now.uv)) debugLog(`[UV] legacy payload (no meta.schema): now.uv=${now.uv} is the day's peak → uvMax, current unknown`);
+    // A legacy payload's 'uv' headline was derived from the PEAK too — it is
+    // not evidence about this hour. Demote it to clear; the hero (daily) keeps
+    // its own uvDaily rung, and the next fresh payload decides the real one.
+    const legacyNowKey = now.conditionKey === 'uv' && legacyUv ? 'clear' : now.conditionKey;
+    return {
       nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, 
       rainPct: displayRainPct, dailyRainPct: dailyRainPct, rainLater: rainLater,
-      uv: now.uv ?? null,        // now.uv is null at night (API nulls it after sunset)
-      uvDaily: today.uv ?? null, // today's peak UV, for daytime byline reference only
+      rainNowOverride: rainNowOverride, // item 4: server radar override — computeHomeDisplayCondition honours it
+      uv: uvNow,        // CURRENT-HOUR blended UV (item 3); null at night, null on a legacy payload
+      uvMax: uvMax,     // today's peak UV, labelled separately in the stats row / byline
+      uvDaily: uvMax ?? (isNum(today.uv) ? today.uv : null), // today's peak UV, for the hero's daytime UV rung
       isDay: now.isDay !== false, // false only when API explicitly says night
       sunrise: now.sunrise ?? null, // ISO string from Open-Meteo, local-labelled (no tz)
       sunset:  now.sunset  ?? null, // used for real solar-time dawn/dusk/night bucketing
@@ -1799,7 +1838,7 @@ document.addEventListener("DOMContentLoaded", () => {
       maxWindKph: isNum(payload.maxWindKph) ? payload.maxWindKph : null,
       gustKph: isNum(payload.gustKph) ? payload.gustKph : null,
       cloudPct: isNum(now.cloudPct) ? now.cloudPct : (Array.isArray(payload.hourly) && payload.hourly[0] ? payload.hourly[0].cloudPct ?? null : null),
-      conditionKey: now.conditionKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
+      conditionKey: legacyNowKey || today.conditionKey || null, conditionLabel: now.conditionLabel || today.conditionLabel || '', 
       confidenceKey: payload.consensus?.confidenceKey || 'mixed', 
       used: sources.filter(s => s.ok).map(s => s.name), failed: sources.filter(s => !s.ok).map(s => s.name),
       hourly: hourly, daily: payload.daily || [], locationName: payload.location?.name, sourceRanges: meta.sourceRanges || [],
@@ -2205,7 +2244,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (isNum(uv)) {
       const word = uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh');
-      cells.push({ k: t('weather', 'uv') || 'UV', v: String(round0(uv)), sub: word });
+      // Item 3: the value is the CURRENT hour; the day's peak is labelled, never
+      // passed off as now (08:48 used to read "UV 5" when the hour was 0.3).
+      const uvMax = norm.uvMax;
+      const sub = isNum(uvMax) ? `${word} · ${t('weather', 'uvMax') || 'Max'} ${round0(uvMax)}` : word;
+      cells.push({ k: t('weather', 'uv') || 'UV', v: String(round0(uv)), sub });
+    } else if (isNum(norm.uvMax) && norm.isDay) {
+      // Current hour unknown (legacy payload, or no hourly UV source) — the
+      // peak still shows, but only ever under its own label.
+      cells.push({ k: t('weather', 'uv') || 'UV', v: String(round0(norm.uvMax)), sub: t('weather', 'uvMax') || 'Max' });
     }
     // ONE pill now (Al's ruling 2026-08-07), the three metrics divided inside it
     // rather than sitting in three separate cards. The freed third column of the
@@ -2302,8 +2349,10 @@ document.addEventListener("DOMContentLoaded", () => {
         rs = t('weather', 'possibleLater') || 'Possible later';
       }
       if (norm.rainLater) { rs = t('weather', 'later') || 'Later'; }
-      // uv is null at night (API nulls now.uv after sunset)
-      let us = null; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; }
+      // uv is null at night (API nulls now.uv after sunset). Item 3: uv is the
+      // current hour; today's peak follows as a labelled "Max N".
+      let us = null; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; if (isNum(norm.uvMax)) us += ` · ${t('weather', 'uvMax') || 'Max'} ${round0(norm.uvMax)}`; }
+      else if (isNum(norm.uvMax) && norm.isDay) { us = `${t('weather', 'uvMax') || 'Max'} ${round0(norm.uvMax)}`; }
       const feels = norm.feelsLike;
       const showFeels = isNum(feels) && isNum(currentTemp) && Math.abs(feels - currentTemp) >= 3;
       const feelsStr = showFeels ? `${t('weather', 'feelsLike')} ${formatTemp(feels)}` : null;

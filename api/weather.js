@@ -36,8 +36,42 @@ const debugLog = (...args) => {
 };
 
 const WEATHER_MISS_IN_FLIGHT = new Map();
-export const WEATHER_UPSTREAM_TIMEOUT_MS = 9000;
-export const LOCAL_MISS_WAIT_MS = 22000;
+// Payload contract version, shipped as meta.schema.
+// 5 (2026-09-15, item 5 as shipped): every provider input validated as it is
+//   today — recognised conditions only, raw bounds before any derivation AND
+//   before any max/min aggregate, coherent same-source solar pairs, bounded
+//   offsets. Entries written under 3 or 4 (intermediate contracts of the same
+//   deploy train) are refused too.
+// 3 (2026-09-14, item 6): hourly series aligned with the offset resolved BEFORE
+//   any provider block. A 2 was written by the same deploy train but before
+//   that commit; it is refused too.
+// 2 (2026-09-14, item 3):
+// now.uv is the current hour's UV and daily[0].uvMax is the day's peak.
+// Absent/1: now.uv was the peak. The client and the cache-hit path use it to
+// tell a pre-deploy payload (Redis ≤15 min, service worker ≤3 h) from a new one.
+export const PAYLOAD_SCHEMA = 5;
+// Latency budget (prelaunch item 7, Astra P1-5). The client aborts at 10 s
+// (assets/app.js fetchProbable). Astra recorded a Johannesburg GET that
+// answered after 10,472 ms with Open-Meteo unavailable; the browser's timeout
+// toast could not be tied to that exact request. The inferred mechanism —
+// the old 9 s provider cap plus SERIAL LocationIQ name resolution plus
+// overhead — is what the numbers here are sized against. Now:
+//   · ONE request budget of 8.5 s covers everything the handler waits on:
+//     Redis reads, the lock wait, and the provider fan-out (round 2). A wait
+//     that spends the budget answers from cache or with a bounded 503; it
+//     never starts a fan-out the client will not be there to receive.
+//   · each Redis round trip before the fan-out is capped at 1.5 s and fails
+//     open (miss / no lock info) — a slow Redis must not eat the budget
+//   · each provider fetch is capped at 6 s, or at whatever budget is left
+//   · LocationIQ name resolution is capped at 3 s and runs IN PARALLEL with
+//     the provider fan-out, so the leader's worst case is max(6, 3) s + Redis
+export const REQUEST_BUDGET_MS = 8500;
+export const REDIS_OP_TIMEOUT_MS = WEATHER_REDIS_OP_TIMEOUT_MS;
+export const WEATHER_UPSTREAM_TIMEOUT_MS = 6000;
+export const NAME_RESOLUTION_TIMEOUT_MS = 3000;
+// A coalescing waiter (same instance or via Redis) gets the remaining budget,
+// never a fresh window of its own.
+export const LOCAL_MISS_WAIT_MS = REQUEST_BUDGET_MS;
 
 async function waitForLocalWeatherMiss(record) {
   let timeoutId;
@@ -213,31 +247,136 @@ export default async function handler(req, res) {
     // (one /api/weather per search result) rides this automatically.
     // -------------------------------------------------------------------------
     const serverCacheKey = weatherCacheKey(lat, lon);
-    const respondWithCachedPayload = (payload, serverCache = 'hit', cacheControl = 's-maxage=300, stale-while-revalidate=60') => {
-      const cachedOffset = payload.meta?.utcOffsetSeconds;
+    // refreshCachedPayload: the re-check every cache-serving path runs. Returns
+    // { now, freshLocalHour } when the entry may be served at this instant, or
+    // null when it must be refused (see the detector below). Also used as the
+    // lock-wait acceptance predicate, so a lock loser never takes a refused
+    // entry straight back from Redis and fetches for itself.
+    const refreshCachedPayload = (payload) => {
+      // Bounded like a provider offset (item 5 round 3): an impossible one
+      // must not reach `new Date(...)` and turn a cache hit into a 500.
+      const cachedOffset = validUtcOffset(payload.meta?.utcOffsetSeconds) ? payload.meta.utcOffsetSeconds : null;
       const freshLocalHour = Number.isFinite(cachedOffset)
         ? Math.floor(((Date.now() / 1000) + cachedOffset) / 3600) % 24
         : payload.meta?.localHour ?? null;
+      // Item 3 (prelaunch P1-1): now.uv is the CURRENT hour's UV, so a cached
+      // entry (up to 15 min old, straddling an hour boundary) re-reads it
+      // from its own hourly array at the fresh hour — the same array the
+      // client slices — and re-derives isDay from the cached sunrise/sunset
+      // for the fresh instant (a sunset inside the TTL must null the UV, a
+      // sunrise must not keep it null). Day rollover inside the TTL →
+      // tomorrow's slot. Pre-deploy entries never reach here: isServableCache
+      // treats them as a miss, because their now.uv AND their conditionKey
+      // were derived from the peak.
+      let now = payload.now;
+      if (now && Number.isInteger(freshLocalHour) && Array.isArray(payload.hourly)) {
+        const offset = Number.isFinite(cachedOffset) ? cachedOffset : 0;
+        const nowMs = Date.now();
+        const writtenMs = Date.parse(payload.meta?.updatedAtLabel ?? '');
+        const localDate = (ms) => new Date(ms + offset * 1000).toISOString().slice(0, 10);
+        const rolled = Number.isFinite(writtenMs) && localDate(nowMs) !== localDate(writtenMs);
+        const hourUv = payload.hourly[freshLocalHour + (rolled ? 24 : 0)]?.uv;
+        // Daylight for the fresh instant: the miss path's own two rules. Solar
+        // ISO strings (Open-Meteo, local-labelled, parsed as UTC on Vercel and
+        // shifted by the offset) when they parse; otherwise the 06:00–19:00
+        // local-hour fallback — a degraded-provider entry carries WeatherAPI's
+        // "06:00 AM" strings, which must not freeze isDay at write time.
+        const srMs = new Date(now.sunrise ?? '').getTime() - offset * 1000;
+        const ssMs = new Date(now.sunset ?? '').getTime() - offset * 1000;
+        const isDay = (!isNaN(srMs) && !isNaN(ssMs))
+          ? (nowMs >= srMs && nowMs <= ssMs)
+          : (freshLocalHour >= 6 && freshLocalHour < 19);
+        const uv = isDay && isNum(hourUv) ? hourUv : null;
+        now = { ...now, isDay, uv };
+        // The headline was selected with the hour's UV and daylight as inputs,
+        // and then went through the rest of the pipeline (consensus flips, the
+        // radar and thunder overrides, the fog detector, confidence). That
+        // pipeline cannot be re-run from a cached payload, so a cache hit does
+        // NOT re-decide anything. It runs the selector once, with the refreshed
+        // pair and the SAME inputs the selector saw at write time (stored as
+        // conditionSignals.selector — the final numeric block is not a valid
+        // stand-in: the radar override rewrites rainChance after selection),
+        // purely as a DETECTOR: if the base result (key AND reason) would now
+        // differ, the entry is refused and the request fans out fresh — one
+        // extra fan-out per cell at a rung crossing, never a stale or
+        // half-refreshed headline.
+        const signals = now.conditionSignals || {};
+        const numeric = signals.numeric || {};
+        const selector = signals.selector;
+        if (!selector?.inputs || !selector?.base) return null; // not re-checkable → fresh
+        const rederived = deriveCondition({ ...selector.inputs, uvIndex: uv, isDay });
+        if (rederived.key !== selector.base.key || rederived.reason !== selector.base.reason) {
+          debugLog(`[cache-refresh] refusing cached entry: base ${selector.base.key}/${selector.base.reason} → ${rederived.key}/${rederived.reason} at local hour ${freshLocalHour} (uv=${uv} isDay=${isDay}) — fetching fresh`);
+          return null;
+        }
+        // Decision unchanged: the audit trail, confidence and agreement still
+        // describe it; only the hour's UV and daylight are refreshed.
+        now = { ...now, conditionSignals: { ...signals, numeric: { ...numeric, uvIndex: uv, isDay } } };
+      }
+      return { now, freshLocalHour };
+    };
+    const respondWithCachedPayload = (payload, serverCache = 'hit', cacheControl = 's-maxage=300, stale-while-revalidate=60') => {
+      const refreshed = refreshCachedPayload(payload);
+      if (!refreshed) return false;
+      const { now, freshLocalHour } = refreshed;
       res.setHeader('Cache-Control', cacheControl);
       return res.status(200).json({
         ...payload,
+        now,
         location: {
           ...(payload.location || {}),
           name: responseLocationName({ isPlaceholder, callerName: name, cachedName: payload.location?.name }),
           lat, lon,
         },
-        meta: { ...(payload.meta || {}), localHour: freshLocalHour, serverCache },
+        meta: { ...(payload.meta || {}), localHour: freshLocalHour, serverCache, schema: PAYLOAD_SCHEMA },
       });
     };
-    const cachedPayload = await weatherCacheGet(serverCacheKey);
-    if (cachedPayload) {
+    // A cached entry is servable only when it was written by code that carries
+    // the current payload contract (item 3: now.uv semantics + conditionKey;
+    // item 5: validated inputs) and has a real current temperature. Anything
+    // else — a pre-deploy entry, or a malformed one — is a MISS, never served.
+    // Entries expire in ≤15 min, so this costs one fan-out per cell after a
+    // deploy and nothing after that.
+    // Item 5 round 4: the entry's own offset must be a real one — it is
+    // returned to the client as-is and drives its date arithmetic.
+    const isServableCache = (p) => !!p && p.ok === true && p.meta?.schema >= PAYLOAD_SCHEMA && isNum(p.now?.tempC)
+      && validUtcOffset(p.meta?.utcOffsetSeconds);
+    // What a lock loser may accept from Redis: only an entry this request would
+    // serve right now. Anything else — including the very entry it just
+    // refused — is skipped and the poll continues for the leader's replacement.
+    const acceptableCache = (p) => isServableCache(p) && refreshCachedPayload(p) !== null;
+    // Item 7 round 2: a waiter whose budget ran out while another request
+    // led the fan-out. The leader's answer (if any) was not acceptable, and a
+    // fan-out of our own would land after the client's 10 s abort — so answer
+    // now, from the last good value if it is servable, else with a bounded
+    // 503 that is never cached and never handed to local waiters as a result.
+    const respondBudgetSpent = async (stage) => {
+      // The budget is gone; one short grace read for the last good value.
+      const stalePayload = await withDeadline(weatherCacheGetStale(serverCacheKey), 300, null);
+      if (acceptableCache(stalePayload)) {
+        completeLocalMiss(stalePayload);
+        return respondWithCachedPayload(stalePayload, 'stale-deadline', 's-maxage=30, stale-while-revalidate=60');
+      }
+      console.warn(`[pw-budget] request budget spent waiting (${stage}) — answering 503 without a fan-out`);
+      res.setHeader('Cache-Control', 'no-store');
+      return res.status(503).json({
+        ok: false,
+        degraded: true,
+        error: 'Weather is taking too long. Please try again shortly.',
+        meta: { reason: 'coalesce-timeout', stage, sources: [] },
+      });
+    };
+
+    const cachedPayload = await redisOp(weatherCacheGet(serverCacheKey), null);
+    if (isServableCache(cachedPayload)) {
       // Per-request fields the shared entry must not leak across callers:
       //   · location.name — a caller-supplied real name wins; placeholder
       //     callers get the populator's resolved name (≤2.2 km off, the same
       //     tolerance the IP-locate path already accepts).
       //   · meta.localHour — recomputed so an hour boundary inside the TTL
       //     doesn't skew the client's hourly slicing.
-      return respondWithCachedPayload(cachedPayload);
+      const sent = respondWithCachedPayload(cachedPayload);
+      if (sent) return sent; // else: refused (UV rung crossed) → fall through to a fresh fan-out
     }
 
     // First layer: same warm instance. The leader publishes the safe cache
@@ -245,8 +384,13 @@ export default async function handler(req, res) {
     while (!finishLocalMiss) {
       const existing = WEATHER_MISS_IN_FLIGHT.get(serverCacheKey);
       if (existing) {
-        const sharedPayload = await waitForLocalWeatherMiss(existing);
-        if (sharedPayload) return respondWithCachedPayload(sharedPayload, 'coalesced-local');
+        const sharedPayload = await waitForLocalWeatherMiss(existing, timeLeft());
+        if (sharedPayload) {
+          const sent = respondWithCachedPayload(sharedPayload, 'coalesced-local');
+          if (sent) return sent;
+        }
+        // Budget spent waiting on the local leader: answer, do not lead.
+        if (timeLeft() === 0) return respondBudgetSpent('local-wait');
         if (WEATHER_MISS_IN_FLIGHT.get(serverCacheKey) === existing) {
           WEATHER_MISS_IN_FLIGHT.delete(serverCacheKey);
         }
@@ -264,20 +408,15 @@ export default async function handler(req, res) {
       };
     }
 
-    const completeLocalMiss = (payload) => {
-      if (!finishLocalMiss) return;
-      const finish = finishLocalMiss;
-      finishLocalMiss = null;
-      finish(payload);
-    };
-
     // Second layer: cross-instance Redis lock. A waiter serves the last good
     // stale value immediately when available; otherwise it polls for a bounded
     // period and then proceeds itself, so a dead lock holder can never hang it.
     distributedMissLock = await weatherCacheAcquireLock(serverCacheKey);
     if (!distributedMissLock.acquired) {
-      const stalePayload = await weatherCacheGetStale(serverCacheKey);
-      if (stalePayload) {
+      const stalePayload = await redisOp(weatherCacheGetStale(serverCacheKey), null);
+      // Publish to local waiters only AFTER acceptance: a refused entry handed
+      // to them would make each of them poll Redis for itself.
+      if (acceptableCache(stalePayload)) {
         completeLocalMiss(stalePayload);
         return respondWithCachedPayload(stalePayload, 'stale-lock-wait', 's-maxage=30, stale-while-revalidate=60');
       }
@@ -711,6 +850,9 @@ export default async function handler(req, res) {
           winds:      waHours.map(h => h.wind_kph),
           clouds:     waHours.map(h => h.cloud),
           humidity:   waHours.map(h => h.humidity),
+          // Item 3 (prelaunch, 2026-09-14): per-hour UV so the current-hour UV
+          // is a blend, not Open-Meteo alone. WeatherAPI's hour objects carry `uv`.
+          uvs:        waHours.map(h => isNum(h.uv) ? h.uv : null),
           // Phase B-1 Item 3: per-hour condition.text, with the same code-1003/1000
           // clamping applied so a "Sunny" code with 0mm precip doesn't propagate
           // a confusing rain-flavoured desc into the hourly chart.
@@ -1293,8 +1435,10 @@ export default async function handler(req, res) {
       // Gusts are tracked separately and shown as "(gusts X km/h)" in the UI.
       const effectiveHourlyWind = avgWind;
 
-      // UV: only Open-Meteo provides hourly UV; use directly if available
-      const uvVal = hourlies[0]?.uvs?.[i] ?? null;
+      // UV: blended across the hourly sources that publish it (Open-Meteo
+      // uv_index, WeatherAPI hour.uv; MET compact and Tomorrow.io carry none).
+      // wAvg skips the sources without a value, so OM-only degrades honestly.
+      const uvVal = wAvg(hourlies, hourlyW, h => h.uvs?.[i]);
 
       // Rec 5: Modal cloud cover — use most frequent cloud category for condition logic.
       // Cloud cover is bimodal (clear or overcast), so averaging 10% and 90% gives 50%
@@ -1616,12 +1760,22 @@ export default async function handler(req, res) {
       isDay = localHour >= 6 && localHour < 19;
     }
 
-    // medUv is the daily MAXIMUM (recorded at noon). Using it at 18:55 falsely
-    // reports "High UV" near sunset. Only use UV to drive condition between 10:00-16:00.
-    const uvForCondition = (localHour >= 10 && localHour < 16) ? medUv : null;
+    // Item 3 (prelaunch P1-1): the current-hour blended UV ships as now.uv and
+    // is the ONLY UV that drives the now-condition's UV rungs; the day's peak
+    // (medUv) ships as daily[0].uvMax and never selects the current headline.
+    // No hourly UV this hour → no UV rung (the old 10–16 h peak gate is gone:
+    // a "High UV" headline with now.uv null was the same lie in another field).
+    const nowHourUv = aggregatedHourly[localHour]?.uv ?? null;
+    const uvForCondition = isNum(nowHourUv) ? nowHourUv : null;
+    debugLog(`[UV] now-hour ${localHour}:00 uv=${nowHourUv} (blended hourly) | today max=${medUv} (daily[0].uvMax) | condition input=${uvForCondition}`);
 
     const nowSourceDescs = activeNorms.map(n => n.desc).filter(Boolean);
-    let { key: nowConditionKey, reason: nowConditionReason } = deriveCondition({
+    // The selector's exact inputs are kept (nowSelector) so a cache hit can
+    // re-run the SAME call with only uv/isDay refreshed and compare against
+    // the SAME base result — the overrides below rewrite currentHourRainChance
+    // and nowConditionKey afterwards, so neither the final numeric block nor
+    // the final key is a valid stand-in for what the selector saw (item 3).
+    const nowSelectorInputs = {
       desc:       mostDesc,
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
@@ -1637,7 +1791,9 @@ export default async function handler(req, res) {
       dailyLowC:  aggregatedDaily?.[0]?.lowC ?? null,
       // Per-source raw descriptions feed the hail/thunder consensus rungs.
       sourceDescs: nowSourceDescs,
-    });
+    };
+    let { key: nowConditionKey, reason: nowConditionReason } = deriveCondition(nowSelectorInputs);
+    const nowSelector = { inputs: nowSelectorInputs, base: { key: nowConditionKey, reason: nowConditionReason } };
     const nowOverrides = [];
 
     // FIX-001: Per-source condition votes for debugging and majority check
@@ -1876,6 +2032,9 @@ export default async function handler(req, res) {
       },
       sourceVotes: sourceConditionVotes,
       overrides: nowOverrides,
+      // The selector call as it happened (inputs + base result), for the
+      // cache-hit re-check — see respondWithCachedPayload.
+      selector: nowSelector,
     };
 
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
@@ -1894,7 +2053,11 @@ export default async function handler(req, res) {
         windKph:          effectiveDisplayWind,
         humidity:         medHumidity,
         rainChance:       currentHourRainChance,  // current hour rain chance
-        uv:               isDay ? medUv : null,  // UV is irrelevant after sunset
+        // Item 3 (prelaunch P1-1): now.uv is the CURRENT-HOUR blended UV, not the
+        // day's peak. The peak used to ship here and read 4.8 at 08:48 when the
+        // hour's real value was 0.3. The peak now lives on daily[0].uvMax. Null
+        // after sunset and null when no hourly source supplied UV this hour.
+        uv:               isDay ? nowHourUv : null,
         cloudPct:         currentCloudPct,
         conditionKey:     nowConditionKey,
         conditionLabel:   mostDesc,
@@ -1912,7 +2075,8 @@ export default async function handler(req, res) {
         confidenceKey,
         pirateWeatherAlert, // null | 'gfs_ecmwf_divergence'
       },
-      daily:  aggregatedDaily,
+      // daily[0].uvMax = today's blended peak UV (the value now.uv used to carry).
+      daily:  aggregatedDaily.map((d, i) => (i === 0 ? { ...d, uvMax: medUv } : d)),
       hourly: aggregatedHourly,
       meta: {
         sources: [
@@ -1938,6 +2102,7 @@ export default async function handler(req, res) {
         },
         sourceConditions: sourceConditionVotes,
         localHour,
+        schema: PAYLOAD_SCHEMA,
         utcOffsetSeconds,
         // Phase B-2 Item 1: audit field — which source supplied the offset.
         // 'open-meteo' (primary), 'pirate-weather' (fall-through), 'weatherapi'
