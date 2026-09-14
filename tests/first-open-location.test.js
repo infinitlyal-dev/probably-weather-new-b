@@ -215,7 +215,10 @@ describe('app.js wiring — first-open coordinator', () => {
   });
 
   it('still shows the "Locating…" loader on cold open', () => {
-    expect(appSrc).toMatch(/renderLoading\("Locating…"\)/);
+    // The heading is now a catalogue key rather than a hardcoded English
+    // string (it was English in all five languages), but cold open must still
+    // put the Locating loader up — that is what this test is here to hold.
+    expect(appSrc).toMatch(/renderLoading\(null, 'locating'\)/);
   });
 
   it('leaves the returning-user (homePlace) fast path unchanged', () => {

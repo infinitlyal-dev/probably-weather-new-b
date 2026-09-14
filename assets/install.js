@@ -43,6 +43,22 @@ export const INSTALL_T = {
     xh: 'Hayi ngoku',
     st: 'Eseng hona joale',
   },
+  // Accessible name for the iOS modal's × button. applyTranslations() used to
+  // update this banner's TEXT but none of its attributes, so it stayed English
+  // in all five languages.
+  //
+  // The banner REGION has no entry of its own: its accessible name is
+  // bannerTitle, the heading the banner already displays. An accessible name
+  // may equal the visible heading, and reusing it means the region is named in
+  // every language by a line that has already been through review — no second
+  // Sesotho sentence to write, and no English residue anywhere.
+  close: {
+    en: 'Close',
+    af: 'Maak toe',
+    zu: 'Vala',
+    xh: 'Vala',
+    st: 'Koala',
+  },
   iosTitle: {
     en: 'Install in 3 steps',
     af: 'Installeer in 3 stappe',
@@ -629,6 +645,10 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
       setI18nText(node, tInstall(key, lang));
     });
     if (footerLink) setI18nText(footerLink, tInstall('footerInstallLink', lang));
+    // Accessible names follow the language too — they are re-applied here, so a
+    // language switch relabels the banner that is already on screen.
+    banner.setAttribute('aria-label', tInstall('bannerTitle', lang));
+    if (iosModalClose) iosModalClose.setAttribute('aria-label', tInstall('close', lang));
   }
 
   // Android: one-tap Install only when the browser handed us a

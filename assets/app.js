@@ -4,7 +4,7 @@ import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './lan
 // COPY_BANK is a live object the per-language file merges into (T below holds
 // references to its nested objects); the weekend filter moved to its own
 // micro-module so importing it doesn't drag the bank along.
-import { COPY_BANK, loadCopyBank } from './copy-loader.js';
+import { COPY_BANK, loadCopyBank, isCopyBankLoaded } from './copy-loader.js';
 import { WITTY_DAY_TAGS, eligibleWittyPool, resolveNightAwareCopyCondition } from './witty-day-tags.js';
 import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
@@ -232,10 +232,16 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch { /* silent fail */ }
   }
   const offlineEl = document.getElementById('offlineIndicator');
+  // Remembered so a language switch can re-render the same age in the new
+  // language rather than leaving the old one's sentence on screen.
+  let lastCacheTimestamp = null;
   function showCacheAge(timestamp) {
     if (!offlineEl) return;
+    lastCacheTimestamp = timestamp;
     const mins = Math.round((Date.now() - timestamp) / 60000);
-    offlineEl.textContent = mins < 1 ? 'Using cached data (just now)' : `Last updated ${mins} min ago`;
+    offlineEl.textContent = mins < 1
+      ? t('misc', 'cachedJustNow')
+      : t('misc', 'lastUpdated').replace('{mins}', String(mins));
     offlineEl.classList.add('visible');
   }
   function hideCacheAge() { if (offlineEl) offlineEl.classList.remove('visible'); }
@@ -250,7 +256,12 @@ document.addEventListener("DOMContentLoaded", () => {
       week: { en: "Weekly", af: "Weekliks", zu: "Ngeviki", xh: "Ngeveki", st: "Ka beke" },
       search: { en: "Search", af: "Soek", zu: "Sesha", xh: "Khangela", st: "Batla" },
       settings: { en: "Settings", af: "Instellings", zu: "Izilungiselelo", xh: "Iisetingi", st: "Ditlhophiso" },
-      sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" }
+      sources: { en: "Sources", af: "Bronne", zu: "Imithombo", xh: "Imithombo", st: "Mehlodi" },
+      // Accessible name of the bottom nav landmark itself (<nav aria-label>).
+      // Cleared lang-check in all five (st took the corpus's own suggestion,
+      // 'ya sehlooho' — principal — over the first draft 'ya motheo', which the
+      // checker showed means foundational/baseline, not primary).
+      primary: { en: "Primary", af: "Primêr", zu: "Okuyinhloko", xh: "Eyintloko", st: "Ya sehlooho" }
     },
     // Screen titles
     screens: {
@@ -306,7 +317,21 @@ document.addEventListener("DOMContentLoaded", () => {
       clearRecents: { en: "Clear recents", af: "Verwyder onlangse soektogte", zu: "Susa okamuva", xh: "Susa okukhangelwe kutshanje", st: "Hlakola tsa morao" },
       edit: { en: "Edit", af: "Wysig", zu: "Hlela", xh: "Hlela", st: "Fetola" },
       manage: { en: "Manage", af: "Bestuur", zu: "Phatha", xh: "Lawula", st: "Tsamaisa" },
-      done: { en: "Done", af: "Klaar", zu: "Kwenziwe", xh: "Kugqityiwe.", st: "Ho phethilwe" }
+      // Shown under the saved list once five places are stored. Cleared lang-check.
+      favLimit: {
+        en: "You've saved 5 places. Remove one to add a new favourite.",
+        af: "Jy het 5 plekke gestoor. Verwyder een om 'n nuwe gunsteling by te voeg.",
+        zu: "Ugcine izindawo ezi-5. Susa eyodwa ukuze ungeze entsha.",
+        xh: "Ugcine iindawo ezi-5. Susa enye ukuze wongeze entsha.",
+        st: "O bolokile dibaka tse 5. Tlosa e nngwe ho eketsa e ntjha."
+      },
+      done: { en: "Done", af: "Klaar", zu: "Kwenziwe", xh: "Kugqityiwe.", st: "Ho phethilwe" },
+      // Accessible names for the × controls the edit mode adds to each saved /
+      // recent row. They are built in renderFavorites / renderRecents, which
+      // applySettings re-runs on a language change, so they pick the new
+      // language up with the rest of the list. Both cleared lang-check.
+      removeRecent: { en: "Remove recent", af: "Verwyder onlangse", zu: "Susa okwakamuva", xh: "Susa okwakutsha", st: "Tlosa tsa morao" },
+      removeFavourite: { en: "Remove favourite", af: "Verwyder gunsteling", zu: "Susa othandekayo", xh: "Susa oyintandokazi", st: "Tlosa e ratwang" }
     },
     // Settings screen
     settings: {
@@ -316,8 +341,31 @@ document.addEventListener("DOMContentLoaded", () => {
       precipitation: { en: "Precipitation", af: "Reënval", zu: "Imvula", xh: "Imvula", st: "Pula" },
       display: { en: "Display", af: "Vertoon", zu: "Ukubonisa", xh: "Ukubonisa", st: "Bonts'a" },
       timeFormat: { en: "Time format", af: "Tydformaat", zu: "Ifomethi yesikhathi", xh: "Ifomathi yexesha", st: "Sebopeho sa nako" },
+      // The native <select> option text. The mobile segmented control keeps the
+      // symbol form ("24h"/"12h", see SEG_LABELS) — these are the prose labels
+      // the >=769px frame shows, and they were the last English left in Settings.
+      // All five languages cleared lang-check (0 triage-high).
+      time24: { en: "24-hour", af: "24-uur", zu: "Amahora angu-24", xh: "Iiyure ezingama-24", st: "Dihora tse 24" },
+      time12: { en: "12-hour", af: "12-uur", zu: "Amahora angu-12", xh: "Iiyure ezili-12", st: "Dihora tse 12" },
       language: { en: "Language", af: "Taal", zu: "Ulimi", xh: "Ulwimi", st: "Puo" },
       about: { en: "About", af: "Aangaande", zu: "Mayelana", xh: "Malunga", st: "Mabapi" },
+      // zu/xh flagged 'lower' by lang-check (morphology check reads the object
+      // concord si- "…us" as a class-7 subject concord); no triage-high, all
+      // content words attested. Native confirm still welcome.
+      feedbackPrompt: {
+        en: "Got feedback or an issue? Drop us a mail:",
+        af: "Het jy terugvoer of 'n probleem? Stuur vir ons 'n e-pos:",
+        zu: "Unemibono noma inkinga? Sithumele i-imeyili:",
+        xh: "Unempendulo okanye ingxaki? Sithumele i-imeyile:",
+        st: "O na le maikutlo kapa bothata? Re romelle imeile:"
+      },
+      privacyPolicy: {
+        en: "Privacy Policy",
+        af: "Privaatheidsbeleid",
+        zu: "Inqubomgomo Yobumfihlo",
+        xh: "Umgaqo-nkqubo Wabucala",
+        st: "Leano la Lekunutu"
+      },
       aboutText: {
         en: "Probably Weather combines forecasts from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io to give you a more reliable prediction.",
         af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io om jou 'n meer betroubare voorspelling te gee.",
@@ -375,6 +423,22 @@ document.addEventListener("DOMContentLoaded", () => {
       hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
       cold: { en: "Cold", af: "Koud", zu: "Makhaza", xh: "Kuyabanda", st: "Ho bata" },
       uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
+    },
+    // Winter precipitation. api/weather.js collapses every snow / sleet / ice /
+    // freezing description into conditionKey 'cold' (deriveCondition step 3,
+    // reason 'desc-winter-precip'), so the heroLabel for a snowy day is
+    // "Chilly" — true, but it loses the snow, in English as much as in Sesotho.
+    // dayConditionLabel re-reads the provider's description for these three and
+    // names the precipitation instead. All five languages cleared lang-check
+    // (0 triage, 0 triage-high).
+    conditions: {
+      snow: { en: "Snow", af: "Sneeu", zu: "Iqhwa", xh: "Ikhephu", st: "Lehlwa" },
+      sleet: { en: "Sleet", af: "Natsneeu", zu: "Imvula yeqhwa", xh: "Imvula yekhephu", st: "Pula ya lehlwa" },
+      freezingRain: { en: "Freezing rain", af: "Ysreën", zu: "Imvula ebandayo", xh: "Imvula ebandayo", st: "Pula e batang" },
+      // Last resort when a day carries no usable conditionKey (offline seed, an
+      // unmapped provider code). A plain localized noun beats the provider's
+      // English, which is what used to show here. Cleared lang-check in all five.
+      unknown: { en: "Weather", af: "Weer", zu: "Isimo sezulu", xh: "Imozulu", st: "Boemo ba lehodimo" }
     },
     // Hero labels — live reference into COPY_BANK; loadCopyBank merges the
     // active language's strings into these exact objects.
@@ -441,7 +505,26 @@ document.addEventListener("DOMContentLoaded", () => {
       // Banner shown when /api/version reports a newer deploy than the one
       // the user booted with. Short copy — full banner = label + CTA + ✕.
       updateAvailable: { en: "New version", af: "Nuwe weergawe", zu: "Inguqulo entsha", xh: "Inguqulelo entsha", st: "Phetolelo e ntjha" },
-      tapToRefresh: { en: "Tap to refresh", af: "Tik om te verfris", zu: "Thepha ukuze uvuselele", xh: "Cofa ukuze uhlaziye", st: "Tobetsa ho ntlafatsa" }
+      tapToRefresh: { en: "Tap to refresh", af: "Tik om te verfris", zu: "Thepha ukuze uvuselele", xh: "Cofa ukuze uhlaziye", st: "Tobetsa ho ntlafatsa" },
+      // Geolocation fallback: shown when GPS is unavailable (code 2) or times
+      // out (code 3) and the app drops back to the IP estimate. These were
+      // hardcoded English in getGeolocationErrorMessage — the one toast a
+      // non-English user was guaranteed to meet on first open. All five
+      // languages cleared lang-check (0 triage-high).
+      locationApprox: {
+        en: "Couldn't get location. Using approximate location instead.",
+        af: "Kon nie ligging kry nie. Gebruik geskatte ligging.",
+        zu: "Ayikwazanga ukuthola indawo. Isebenzisa indawo eseduze.",
+        xh: "Ayikwazanga ukufumana indawo. Kusetyenziswa indawo ekufuphi.",
+        st: "Ha e kgone ho fumana sebaka. E sebedisa sebaka se ka bang sona."
+      },
+      locationTimeoutApprox: {
+        en: "Location lookup took too long. Using approximate location instead.",
+        af: "Liggingsoektog het te lank geneem. Gebruik geskatte ligging.",
+        zu: "Ukuthola indawo kuthathe isikhathi eside. Isebenzisa indawo eseduze.",
+        xh: "Ukukhangela indawo kuthathe ixesha elide. Kusetyenziswa indawo ekufuphi.",
+        st: "Ho batla sebaka ho nkile nako e telele. E sebedisa sebaka se ka bang sona."
+      }
     },
     // Misc
     misc: {
@@ -452,10 +535,18 @@ document.addEventListener("DOMContentLoaded", () => {
       saved: { en: "Saved", af: "Gestoor", zu: "Kugciniwe", xh: "Igciniwe", st: "Bolokile" },
       savePlace: { en: "Save this place", af: "Stoor hierdie plek", zu: "Londoloza le ndawo", xh: "Gcina le ndawo", st: "Boloka sebaka sena" },
       share: { en: "Share", af: "Deel", zu: "Yabelana", xh: "Yabelana", st: "Arolelana" },
+      // The × on the Cape Doctor wind banner and on the new-version banner.
+      // Both are "close this", not "reject this" — hence Vala / Koala / Maak
+      // toe rather than a discard verb. Cleared lang-check.
+      dismiss: { en: "Dismiss", af: "Maak toe", zu: "Vala", xh: "Vala", st: "Koala" },
       shareIn: { en: "in", af: "in", zu: "e-", xh: "e-", st: "ho" },
       // Home "My Location" button label — one tap back to the user's own weather.
       // zu/xh/st PROVISIONAL pending native review (mirror indawo/sebaka vocab).
       myLocation: { en: "My Location", af: "My Ligging", zu: "Indawo yami", xh: "Indawo yam", st: "Sebaka sa ka" },
+      // Search screen's GPS button. Same indawo/sebaka vocabulary as myLocation
+      // above — it is the verb form of the same idea, not a second one. All five
+      // languages cleared lang-check (0 triage-high).
+      useMyLocation: { en: "Use my location", af: "Gebruik my ligging", zu: "Sebenzisa indawo yami", xh: "Sebenzisa indawo yam", st: "Sebedisa sebaka sa ka" },
       // Branded share message body — a SHORT caption. {city} is replaced with
       // the location name (or "your area" when missing). The share link now
       // rides navigator.share's dedicated `url` field (NOT interpolated here),
@@ -473,12 +564,17 @@ document.addEventListener("DOMContentLoaded", () => {
       // ensemble's own agreement count. EN and AF are both owner-approved
       // (AF signed off 2026-08-08). zu/xh/st are PLACEHOLDER copies of the EN
       // shape and are flagged for the native-review backlog.
+      // renderAgreeLine puts this UNDER THE HERO, so the English placeholders
+      // were visible English on the home screen in three languages. The
+      // {n}/{total} token is preserved — renderAgreeLine substitutes both and
+      // falls back if the token is missing. zu/xh/st cleared lang-check with
+      // the placeholders filled in (checked as "4/5"), 0 triage, 0 high.
       sourcesAgree: {
         en: "{n}/{total} sources agree",
         af: "{n} van {total} bronne stem saam",       // APPROVED by Al 2026-08-08
-        zu: "{n}/{total} sources agree",              // PLACEHOLDER - requires_native_review
-        xh: "{n}/{total} sources agree",              // PLACEHOLDER - requires_native_review
-        st: "{n}/{total} sources agree"               // PLACEHOLDER - requires_native_review
+        zu: "Imithombo engu-{n}/{total} iyavumelana",
+        xh: "Imithombo engu-{n}/{total} iyavumelana",
+        st: "Mehlodi e {n}/{total} e a dumellana"
       },
       // Compass points. EN and AF approved by Al 2026-08-07 (AF: noord, noordoos,
       // oos, suidoos, suid, suidwes, wes, noordwes). zu/xh/st are PLACEHOLDER
@@ -494,26 +590,94 @@ document.addEventListener("DOMContentLoaded", () => {
       // Everything else on the new screens reuses an already-approved key.
       // AF approved by Al on 2026-08-08, before this shipped.
       // zu/xh/st follow the house convention — EN copy, greppable comment.
+      // zu/xh/st were English PLACEHOLDERs on two VISIBLE surfaces — the day
+      // name for index 0 and the Search screen's subtitle. Both cleared
+      // lang-check (0 triage, 0 high).
       todayLabel: {
         en: "Today",
         af: "Vandag",                                 // APPROVED by Al 2026-08-08
-        zu: "Today",                                  // PLACEHOLDER - requires_native_review
-        xh: "Today",                                  // PLACEHOLDER - requires_native_review
-        st: "Today"                                   // PLACEHOLDER - requires_native_review
+        zu: "Namuhla",
+        xh: "Namhlanje",
+        st: "Kajeno"
       },
       placesSubtitle: {
         en: "Search, save, switch",
         af: "Soek, stoor, wissel",                    // APPROVED by Al 2026-08-08
-        zu: "Search, save, switch",                   // PLACEHOLDER - requires_native_review
-        xh: "Search, save, switch",                   // PLACEHOLDER - requires_native_review
-        st: "Search, save, switch"                    // PLACEHOLDER - requires_native_review
+        zu: "Sesha, londoloza, shintsha",
+        xh: "Khangela, gcina, tshintsha",
+        st: "Batla, boloka, fetola"
+      },
+      // The full-screen loader, the cache-age line under the hero, and the two
+      // share fallbacks (clipboard toast + the window.prompt title when neither
+      // navigator.share nor the clipboard exists). All were hardcoded English.
+      // {mins} is substituted by showCacheAge. All cleared lang-check.
+      fetching: {
+        en: "Fetching probable weather…",
+        af: "Haal waarskynlike weer…",
+        zu: "Ilanda isimo sezulu esinokwenzeka…",
+        xh: "Ilanda imozulu enokubakho…",
+        st: "E lata boemo ba lehodimo bo ka bang teng…"
+      },
+      cachedJustNow: {
+        en: "Using cached data (just now)",
+        af: "Gebruik gestoorde data (nou net)",
+        zu: "Isebenzisa idatha egciniwe (khona manje)",
+        xh: "Isebenzisa idatha egciniweyo (ngoku nje)",
+        st: "E sebedisa data e bolokilweng (hona jwale)"
+      },
+      lastUpdated: {
+        en: "Last updated {mins} min ago",
+        af: "Laas opgedateer {mins} min gelede",
+        zu: "Kugcine ukubuyekezwa emizuzwini engu-{mins} edlule",
+        xh: "Kugqityelwe ukuhlaziywa kwimizuzu engu-{mins} edlulileyo",
+        st: "Ho ntjhafaditswe metsotso e {mins} e fetileng"
+      },
+      shareLinkCopied: {
+        en: "Share link copied",
+        af: "Deelskakel gekopieer",
+        // First draft 'sikopishiwe' was triage-high (that passive is attested
+        // nowhere); 'sikopishwe' passes and matches the 'kopisha' stem already
+        // shipped in INSTALL_T.iosChromeFallback.
+        zu: "Isixhumanisi sokwabelana sikopishwe",
+        xh: "Ikhonkco lokwabelana likhutshelwe",
+        st: "Sehokelo sa ho arolelana se kopitsitswe"
+      },
+      // Pre-content hero headings while a location resolves. Both were
+      // hardcoded English in the only two places that show them. Cleared
+      // lang-check in all five.
+      gettingLocation: {
+        en: "Getting location…",
+        af: "Kry jou ligging…",
+        zu: "Ithola indawo yakho…",
+        xh: "Ifumana indawo yakho…",
+        st: "E fumana sebaka sa hao…"
+      },
+      // Shown when a place has no resolved name yet. Cleared lang-check.
+      unknownPlace: { en: "Unknown", af: "Onbekend", zu: "Ayaziwa", xh: "Ayaziwa", st: "Ha ho tsejwe" },
+      locating: {
+        en: "Locating…",
+        af: "Soek ligging…",
+        zu: "Iyasesha indawo…",
+        xh: "Iyakhangela indawo…",
+        st: "E batla sebaka…"
+      },
+      copyShareLink: {
+        en: "Copy this share link",
+        af: "Kopieer hierdie deelskakel",
+        zu: "Kopisha lesi sixhumanisi sokwabelana",
+        xh: "Khuphela eli khonkco lokwabelana",
+        st: "Kopitsa sehokelo sena sa ho arolelana"
       },
       settingsSubtitle: {
         en: "Units, display and language",
         af: "Eenhede, vertoning en taal",             // APPROVED by Al 2026-08-08
-        zu: "Units, display and language",            // PLACEHOLDER - requires_native_review
-        xh: "Units, display and language",            // PLACEHOLDER - requires_native_review
-        st: "Units, display and language"             // PLACEHOLDER - requires_native_review
+        // zu/xh/st were English PLACEHOLDERs and shipped as visible English on
+        // the Settings screen. Now real transcreations built from the section
+        // headings already in this catalogue (settings.units / display /
+        // language) — all three cleared lang-check (0 triage, 0 triage-high).
+        zu: "Iziyunithi, ukubonisa nolimi",
+        xh: "Iiyunithi, ukubonisa nolwimi",
+        st: "Diyuniti, ponahalo le puo"
       },
       shareYourArea: {
         en: "your area",
@@ -593,7 +757,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ========== STATE ==========
-  let activePlace = null, homePlace = null, lastPayload = null, searchEditMode = false;
+  let activePlace = null, homePlace = null, searchEditMode = false;
   // Captured by setupServiceWorkerUpdates() so the consolidated
   // visibilitychange handler at module bottom can call registration.update()
   // without needing two listeners (Phase 2 Codex S3 deferred-bundle item).
@@ -675,6 +839,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const samePlace = (a, b) => a && b && Number(a.lat).toFixed(4) === Number(b.lat).toFixed(4) && Number(a.lon).toFixed(4) === Number(b.lon).toFixed(4);
   const favoriteKey = (p) => `${Number(p.lat).toFixed(4)},${Number(p.lon).toFixed(4)}`;
   const isPlaceholderName = (name) => { const v = String(name || '').trim(); return !v || /^unknown\b/i.test(v) || /^my location\b/i.test(v); };
+  // A PLACEHOLDER name is app copy wearing a place name's clothes — "My
+  // Location" is a label we wrote, not something a gazetteer returned — so it
+  // must be translated wherever it is DISPLAYED. It reaches the heading from
+  // two directions: first-open passes the literal, and a favourite stored
+  // before its reverse-geocode landed carries it too. A REAL place name is
+  // never touched: Strand is Strand in all five languages.
+  function displayPlaceName(name) {
+    const v = String(name || '').trim();
+    if (!v) return t('misc', 'unknownPlace');
+    if (/^my location\b/i.test(v)) return t('misc', 'myLocation');
+    if (/^unknown\b/i.test(v)) return t('misc', 'unknownPlace');
+    return name;
+  }
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   // Routed through pickConditionIconForTime so search/mini cards also respect
   // day/night. Callers that don't pass an isDay flag get the day icon; the
@@ -1059,7 +1236,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const dismiss = document.createElement('button');
       dismiss.className = 'version-update-dismiss';
       dismiss.type = 'button';
-      dismiss.setAttribute('aria-label', 'Dismiss');
+      dismiss.setAttribute('aria-label', t('misc', 'dismiss'));
       dismiss.textContent = '×';
       dismiss.addEventListener('click', () => { banner.remove(); });
 
@@ -1100,6 +1277,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navWeek) navWeek.textContent = t('nav', 'week');
     if (navSearch) navSearch.textContent = t('nav', 'search');
     if (navSettings) navSettings.textContent = t('nav', 'settings');
+    // The nav buttons carried HAND-AUTHORED English accessible names
+    // ("Weekly forecast", "Search and favourites") that overrode the translated
+    // visible text — a screen reader in Afrikaans still heard English. The
+    // destination name IS the accessible name, so they take the same key the
+    // label does and no new strings are needed.
+    if (navHome) navHome.setAttribute('aria-label', t('nav', 'home'));
+    if (navWeek) navWeek.setAttribute('aria-label', t('nav', 'week'));
+    if (navSearch) navSearch.setAttribute('aria-label', t('nav', 'search'));
+    if (navSettings) navSettings.setAttribute('aria-label', t('nav', 'settings'));
     // Same approved keys as the nav button it replaces — no new strings.
     const settingsSourcesHeading = $('#settingsSourcesHeading');
     const settingsSourcesLabel = $('#settingsSourcesLabel');
@@ -1123,7 +1309,45 @@ document.addEventListener("DOMContentLoaded", () => {
       if (backLabel) backLabel.textContent = ` ${t('nav', key)}`;
     }
     const dayDetailBackBtn = $('#dayDetailBack');
-    if (dayDetailBackBtn) dayDetailBackBtn.textContent = `← ${t('nav', 'week')}`;
+    if (dayDetailBackBtn) {
+      dayDetailBackBtn.textContent = `← ${t('nav', 'week')}`;
+      // Its markup carried aria-label="Back to week", which OUTRANKS the
+      // translated text above it — the destination is the name, same as the
+      // five back controls in the loop.
+      dayDetailBackBtn.setAttribute('aria-label', t('nav', 'week'));
+    }
+    // Landmark name for the bottom nav itself, and the language picker's button
+    // and listbox. The picker's visible label is the fixed word "Language" by
+    // design (see tests/language-picker.test.js), so naming both controls with
+    // the catalogue's own Language string keeps them consistent and adds no new
+    // strings.
+    const navLandmark = document.querySelector('nav.nav');
+    if (navLandmark) navLandmark.setAttribute('aria-label', t('nav', 'primary'));
+    if (languageBtn) languageBtn.setAttribute('aria-label', t('settings', 'language'));
+    if (languageMenu) languageMenu.setAttribute('aria-label', t('settings', 'language'));
+    const capeWindDismissBtn = $('#capeWindDismiss');
+    if (capeWindDismissBtn) capeWindDismissBtn.setAttribute('aria-label', t('misc', 'dismiss'));
+    // Already-rendered content that outlives a language switch. The search
+    // results list and the update banner are built once and then just sit
+    // there, so without this they keep the language they were born in.
+    for (const star of document.querySelectorAll('.fav-star')) {
+      const isFav = star.getAttribute('aria-pressed') === 'true';
+      const label = isFav ? t('misc', 'saved') : t('misc', 'savePlace');
+      star.setAttribute('aria-label', label);
+      star.title = label;
+    }
+    // Search results already on screen are re-rendered so a placeholder name
+    // ("Unknown") follows the language like every other displayed name.
+    if (searchResults.length) renderSearchResults(searchResults);
+    const versionBanner = document.getElementById('versionUpdateBanner');
+    if (versionBanner) {
+      const bannerText = versionBanner.querySelector('.version-update-text');
+      if (bannerText) bannerText.textContent = t('toasts', 'updateAvailable');
+      const bannerAction = versionBanner.querySelector('.version-update-action');
+      if (bannerAction) bannerAction.textContent = t('toasts', 'tapToRefresh');
+      const bannerDismiss = versionBanner.querySelector('.version-update-dismiss');
+      if (bannerDismiss) bannerDismiss.setAttribute('aria-label', t('misc', 'dismiss'));
+    }
     // Sources page populated text — explainer + attribution. The dynamic
     // source-list rows are rendered separately in renderSidebar (data-driven).
     const sourcesExplainerEl = $('#sourcesExplainer');
@@ -1144,6 +1368,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (metricToggle) metricToggle.setAttribute('aria-label', `${t('weather', 'temp')} / ${t('weather', 'rain')} / ${t('weather', 'wind')}`);
     updateHourlySubtitle();
     const placesSub = $('#searchSubtitle'); if (placesSub) placesSub.textContent = t('misc', 'placesSubtitle');
+    // Static markup that nothing rewrote: the full-screen loader and the
+    // five-favourites sentence under the saved list.
+    const loaderEl = $('#loader'); if (loaderEl) loaderEl.textContent = t('misc', 'fetching');
+    // A cache-age line already ON SCREEN is re-rendered from the same timestamp.
+    // Guarded on the visible class as well as the timestamp, or this would
+    // resurrect a line that hideCacheAge had since dismissed.
+    if (lastCacheTimestamp !== null && offlineEl?.classList.contains('visible')) {
+      showCacheAge(lastCacheTimestamp);
+    }
+    const favLimitEl = $('#favLimit'); if (favLimitEl) favLimitEl.textContent = t('search', 'favLimit');
     const settingsSub = $('#settingsSubtitle'); if (settingsSub) settingsSub.textContent = t('misc', 'settingsSubtitle');
     // Weekly's quiet one-liner. Unlike the other three subtitles this is VOICE,
     // not a description, so it is present only where the wording is approved —
@@ -1160,7 +1394,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const weekTitle = screenWeek?.querySelector('.screen-title'); if (weekTitle) weekTitle.textContent = t('screens', 'week');
     const searchTitle = screenSearch?.querySelector('.screen-title'); if (searchTitle) searchTitle.textContent = t('screens', 'search');
     const settingsTitle = screenSettings?.querySelector('.screen-title'); if (settingsTitle) settingsTitle.textContent = t('screens', 'settings');
-    if (searchInput) searchInput.placeholder = t('search', 'placeholder');
+    if (searchInput) {
+      searchInput.placeholder = t('search', 'placeholder');
+      // The input's accessible name and its sr-only <label> were both a
+      // hardcoded English "Search location". The placeholder already names the
+      // control in the user's language, so it serves as the accessible name too
+      // — one approved key, no new translation debt.
+      searchInput.setAttribute('aria-label', t('search', 'placeholder'));
+      const searchInputLabel = document.querySelector('label[for="searchInput"]');
+      if (searchInputLabel) searchInputLabel.textContent = t('search', 'placeholder');
+    }
     if (searchCancel) searchCancel.textContent = t('search', 'cancel');
     if (clearRecentsBtn) clearRecentsBtn.textContent = t('search', 'clearRecents');
     if (searchEditToggle) searchEditToggle.textContent = searchEditMode ? t('search', 'done') : t('search', 'edit');
@@ -1178,28 +1421,58 @@ document.addEventListener("DOMContentLoaded", () => {
     const precipLabel = unitsPrecipSelect?.closest('.settings-option')?.querySelector('label'); if (precipLabel) precipLabel.textContent = t('settings', 'precipitation');
     const displayH = $('#settingsDisplayHeading'); if (displayH) displayH.textContent = t('settings', 'display');
     const timeLabel = timeFormatSelect?.closest('.settings-option')?.querySelector('label'); if (timeLabel) timeLabel.textContent = t('settings', 'timeFormat');
+    // Option PROSE, not the mobile seg control's "24h"/"12h" symbols. The
+    // >=769px frame renders this native select, so its two options were English
+    // in every language.
+    if (timeFormatSelect) {
+      const opt24 = timeFormatSelect.querySelector('option[value="24"]');
+      const opt12 = timeFormatSelect.querySelector('option[value="12"]');
+      if (opt24) opt24.textContent = t('settings', 'time24');
+      if (opt12) opt12.textContent = t('settings', 'time12');
+    }
     // Deliberately blank: the row's own label already says Language.
     const langH = $('#settingsLanguageHeading'); if (langH) langH.textContent = '';
     const langLabel = languageSelect?.closest('.settings-option')?.querySelector('label'); if (langLabel) langLabel.textContent = t('settings', 'language');
     const aboutH = $('#settingsAboutHeading'); if (aboutH) aboutH.textContent = t('settings', 'about');
     const aboutP = $('#aboutText'); if (aboutP) aboutP.textContent = T.settings.aboutText[settings.lang] || T.settings.aboutText.en;
+    // The last two English sentences on the Settings screen. The mail address
+    // itself is not copy and stays as authored.
+    const feedbackPromptEl = $('#feedbackPrompt'); if (feedbackPromptEl) feedbackPromptEl.textContent = t('settings', 'feedbackPrompt');
+    const privacyLinkEl = $('#privacyLink'); if (privacyLinkEl) privacyLinkEl.textContent = t('settings', 'privacyPolicy');
     // AFTER the row labels above — this reads them for the group's accessible
     // name, so running it earlier pinned the aria-label to the old language.
     syncSettingsSegs();
-    if (shareBtn) shareBtn.textContent = `↗ ${t('misc', 'share')}`;
+    if (shareBtn) { shareBtn.textContent = `↗ ${t('misc', 'share')}`; shareBtn.setAttribute('aria-label', t('misc', 'share')); }
     // Controls whose label is not authored in the markup take their text from
     // the same approved keys as whatever they replaced — otherwise they stay
     // English under af/zu/xh/st.
     if (navShare) navShare.textContent = t('misc', 'share');
+    if (navShare) navShare.setAttribute('aria-label', t('misc', 'share'));
     if (homeHourlyLabel) homeHourlyLabel.textContent = t('nav', 'hourly');
+    // Icon-and-word pills whose aria-label was authored English and therefore
+    // outranked the translated words beside it.
+    if (navHourlyHome) navHourlyHome.setAttribute('aria-label', t('nav', 'hourly'));
     renderAgreeLine(window.__PW_LAST_NORM);
-    if (myLocationHome) myLocationHome.innerHTML = `${weatherIconSvg('pin', { size: 18 })} <span>${escapeHtml(t('misc', 'myLocation'))}</span>`;
+    if (myLocationHome) {
+      myLocationHome.innerHTML = `${weatherIconSvg('pin', { size: 18 })} <span>${escapeHtml(t('misc', 'myLocation'))}</span>`;
+      myLocationHome.setAttribute('aria-label', t('misc', 'myLocation'));
+    }
+    // The search screen's GPS button was translated nowhere at all — label and
+    // accessible name both stayed English in every language.
+    if (useMyLocationBtn) {
+      useMyLocationBtn.innerHTML = `${weatherIconSvg('pin', { size: 18 })} <span>${escapeHtml(t('misc', 'useMyLocation'))}</span>`;
+      useMyLocationBtn.setAttribute('aria-label', t('misc', 'useMyLocation'));
+    }
     // L3/L4/L6: footer attribution + shared-location indicator + version are
     // language-managed too.
     const footerAttribution = document.getElementById('footerAttribution');
     if (footerAttribution) footerAttribution.textContent = t('misc', 'dataFrom');
     const versionEl = document.getElementById('appVersion');
-    if (versionEl) versionEl.textContent = `Version ${APP_VERSION} · Build ${BUILD_SHORT}`;
+    // Language-NEUTRAL rather than translated: "Version"/"Build" were the last
+    // two English words on the Settings screen, and a version stamp reads the
+    // same in all five languages as "v1.5 · 6f00b01". Adding two catalogue keys
+    // to say what a "v" already says would be translation debt for nothing.
+    if (versionEl) versionEl.textContent = `v${APP_VERSION} · ${BUILD_SHORT}`;
     const sharedIndicator = document.getElementById('sharedLocationIndicator');
     if (sharedIndicator) sharedIndicator.textContent = t('misc', 'viewingShared');
     refreshSaveButtonState();
@@ -1434,6 +1707,81 @@ document.addEventListener("DOMContentLoaded", () => {
       || T.heroLabels[condition]?.en
       || (fb && T.heroLabels[fb]?.en)
       || "Pleasant";
+  }
+  // The condition in WORDS for the day-detail screen (header meta + summary
+  // card). day.conditionLabel is the PROVIDER's label and it is English in every
+  // language — "Slight rain showers" was still showing under Afrikaans. The
+  // consensus conditionKey is the same carrier the day's icon already uses, so
+  // routing it through the native-reviewed heroLabels bank keeps the words and
+  // the icon telling one story. The provider label is the last resort, kept only
+  // for a day that arrives with no conditionKey at all.
+  // Winter precipitation the conditionKey cannot carry. The ensemble's
+  // conditionKey is COARSE — api/weather.js sends snow, sleet and freezing rain
+  // to 'cold' (deriveCondition step 3), but the same descriptions also reach us
+  // under 'rain', 'cloudy' or 'storm' depending on which providers answered, so
+  // the key is NOT a reliable gate. We match on the description itself, whatever
+  // the key, and name the precipitation rather than the temperature.
+  //
+  // The alternatives below are the union of the provider vocabularies in
+  // api/weather.js — openMeteoCodeMap ("Slight/Moderate/Heavy snow fall",
+  // "Snow grains", "Slight/Heavy snow showers", "Light/Dense freezing drizzle",
+  // "Light/Heavy freezing rain"), pirateIconMap ("Snow", "Sleet", "Possible
+  // snow", "Possible sleet", "Snow showers" via 'flurries', "Sleet" via
+  // 'mixed'), tomorrowIoCodeMap ("Snow", "Flurries", "Light/Heavy snow",
+  // "Freezing drizzle", "Freezing rain", "Light/Heavy freezing rain", "Ice
+  // pellets", "Light/Heavy ice pellets") and metSymbolMap (every light/heavy
+  // snow and sleet variant, with and without showers and thunder).
+  //
+  // Order matters: a label naming two forms should read as the heavier fact.
+  // Hail leads — it is the dangerous one, and a Pirate-only forecast arrives as
+  // {conditionKey:'cold', conditionLabel:'Hail'}, which rendered as "Chilly"
+  // until hail was listed here. "Snow and sleet showers" is sleet; "Light
+  // freezing rain" must not be caught by a bare /rain/.
+  const WINTER_PRECIP = [
+    [/hail/i, 'hail'],
+    // Ice pellets IS sleet in the US taxonomy Tomorrow.io follows.
+    [/sleet|ice pellets|wintry mix/i, 'sleet'],
+    [/freezing (rain|drizzle)/i, 'freezingRain'],
+    // "flurries" is Tomorrow.io 5001; snow grains / snow fall / snow showers
+    // all contain "snow".
+    [/snow|flurries|blizzard/i, 'snow'],
+  ];
+  function winterPrecipKey(conditionLabel) {
+    if (typeof conditionLabel !== 'string') return null;
+    for (const [re, key] of WINTER_PRECIP) if (re.test(conditionLabel)) return key;
+    return null;
+  }
+  // Hail already has a native-reviewed heroLabel; snow/sleet/freezing rain do
+  // not, so they come from the T.conditions bank added for exactly this.
+  function precipLabelFor(key) {
+    return key === 'hail' ? getHeroLabel('hail') : t('conditions', key);
+  }
+  // Keys that describe DANGER, not a temperature. When the ensemble has called
+  // a day severe, the severity is the headline and must not be replaced by the
+  // precipitation word — "Heavy sleet showers and thunder" is a thunderstorm
+  // that happens to be throwing sleet, so it may not render as a bare "Sleet".
+  const SEVERE_KEYS = new Set(['storm', 'thunder', 'hail']);
+  function dayConditionLabel(day) {
+    const ck = day?.conditionKey;
+    const winter = winterPrecipKey(day?.conditionLabel);
+    if (winter) {
+      const precip = precipLabelFor(winter);
+      // Severe day: lead with the severity, then name the precipitation after a
+      // neutral separator so BOTH facts survive. Composed of two already
+      // approved strings — the separator is punctuation, not copy. When the two
+      // would say the same word (conditionKey 'hail' + a "Hail" description),
+      // say it once.
+      if (SEVERE_KEYS.has(ck)) {
+        const severe = getHeroLabel(ck);
+        return severe === precip ? severe : `${severe} · ${precip}`;
+      }
+      return precip;
+    }
+    if (ck && T.heroLabels[ck]) return getHeroLabel(ck);
+    // No usable key: a generic localized noun, NEVER the provider's English.
+    // This is the offline/unknown-code path, and it is exactly where the old
+    // code leaked "Slight rain showers" into an Afrikaans screen.
+    return t('conditions', 'unknown');
   }
   // Witty pools may hold intentional empty slots (partly-cloudy / low-confidence
   // realignment) and day-tagged lines (weekday / weekend / day-named — see
@@ -1961,9 +2309,9 @@ document.addEventListener("DOMContentLoaded", () => {
           await navigator.share({ title: 'Probably Weather', text, url: shareLink });
         } else if (navigator.clipboard?.writeText) {
           await navigator.clipboard.writeText(`${text} ${shareLink}`);
-          showToast('Share link copied');
+          showToast(t('misc', 'shareLinkCopied'));
         } else {
-          window.prompt('Copy this share link', `${text} ${shareLink}`);
+          window.prompt(t('misc', 'copyShareLink'), `${text} ${shareLink}`);
         }
       } catch {}
     });
@@ -1982,8 +2330,63 @@ document.addEventListener("DOMContentLoaded", () => {
     splash.classList.add('splash-done');
     setTimeout(() => splash.remove(), 450);
   }
-  function renderLoading(name) { showLoader(true); safeText(locationEl, name); safeText(headlineEl, t('misc', 'loading')); safeText(tempEl, '--°'); safeText(descriptionEl, '—'); }
-  function renderError(msg) { hideSplash(); showLoader(false); safeText(headlineEl, t('misc', 'error')); safeText(descriptionEl, msg || t('misc', 'couldntFetch')); }
+  // THE record of what the hero is currently showing — one state, not two
+  // competing ones. It was a payload flag plus a separate "last non-payload
+  // state", and lastPayload outranked the other on a language switch: after
+  // Cape Town loaded and a switch to Johannesburg FAILED, changing language
+  // replayed Cape Town's forecast over Johannesburg's error, because the stale
+  // payload was still truthy. One record, replayed verbatim, cannot do that.
+  //   { kind: 'payload' | 'loading' | 'error', place, payload?, name?, nameKey?, msg?, msgKey? }
+  // The KEY is stored rather than the resolved string, so a replay renders in
+  // whatever language is current.
+  let displayState = null;
+  // nameKey/msgKey name a catalogue entry; the plain argument is literal text
+  // (a place name), which is not translatable.
+  function renderLoading(name, nameKey) {
+    // Loading is symmetric with error, and the distinction is WHICH place.
+    //
+    // A request for a DIFFERENT place: the forecast on screen belongs to the
+    // place we are leaving, and showing Cape Town's week under a Johannesburg
+    // heading is a lie — clear it, exactly as an error does.
+    //
+    // A REFRESH of the same place: the forecast is still true, so it stays.
+    // The payload rides along on the record so a language switch during the
+    // pending request can re-render those surfaces in the new language rather
+    // than leaving them in the old one.
+    const prev = displayState;
+    const refreshingSamePlace = !!prev && !!prev.place && !!activePlace
+      && samePlace(prev.place, activePlace);
+    const carriedPayload = refreshingSamePlace ? (prev.payload || null) : null;
+    displayState = { kind: 'loading', place: activePlace, name, nameKey, payload: carriedPayload };
+    // Gated on the PAYLOAD, not on the place: with nothing true to show the
+    // surfaces carry the unavailable note, and re-clearing re-renders that note
+    // in the current language when a replay runs through here again.
+    if (!carriedPayload) clearForecastSurfaces();
+    showLoader(true);
+    safeText(locationEl, nameKey ? t('misc', nameKey) : displayPlaceName(name));
+    safeText(headlineEl, t('misc', 'loading'));
+    safeText(tempEl, '--°');
+    safeText(descriptionEl, '—');
+  }
+  function renderError(msg, msgKey) {
+    // An error REPLACES whatever was showing. The payload that produced the
+    // previous screen belongs to a different place and must not be replayed.
+    //
+    // The HEADING is carried forward and redrawn: an error used to discard the
+    // loading state's name, so a GPS fetch failure left the untranslated
+    // literal "My Location" sitting above a translated error message. Carrying
+    // name/nameKey means a replay in a new language redraws it too.
+    const prev = displayState;
+    const name = prev && 'name' in prev ? prev.name : (activePlace?.name ?? null);
+    const nameKey = prev && 'nameKey' in prev ? prev.nameKey : null;
+    displayState = { kind: 'error', place: activePlace, name, nameKey, msg, msgKey };
+    hideSplash();
+    showLoader(false);
+    safeText(locationEl, nameKey ? t('misc', nameKey) : displayPlaceName(name));
+    clearForecastSurfaces();
+    safeText(headlineEl, t('misc', 'error'));
+    safeText(descriptionEl, msgKey ? t('misc', msgKey) : (msg || t('misc', 'couldntFetch')));
+  }
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
     // Source-list rendering moved to the dedicated /Sources nav page. The old
@@ -2299,7 +2702,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const cssVariant = CSS_VARIANT_ALIAS[displayCondition] || displayCondition;
     document.body.classList.remove('weather-cold', 'weather-heat', 'weather-storm', 'weather-rain', 'weather-wind', 'weather-fog', 'weather-clear', 'weather-cloudy');
     document.body.classList.add(`weather-${cssVariant}`);
-    let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, locationName);
+    let locationName = norm.locationName || activePlace?.name || 'South Africa'; safeText(locationEl, displayPlaceName(locationName));
     setSharedLocationIndicator(!!activePlace?.shared);
     // GPS-home name persistence (fix: returning-user open showed raw coords).
     // The weather endpoint's location.name is display-only; the stored
@@ -2352,8 +2755,19 @@ document.addEventListener("DOMContentLoaded", () => {
       fallbackCondition: displayCondition,
     });
     debugLog('[Hero copy] timeOfDay:', timeOfDay, 'copyHour:', copyHour, 'displayCondition:', displayCondition, 'forCopy:', displayConditionForCopy);
-    safeText(headlineEl, getWittyLine(displayConditionForCopy));
-    safeText(descriptionEl, getHeadline(displayConditionForCopy));
+    // Failed language chunk: the seed carries every CONDITION in five languages
+    // but only ONE English headline/witty pair (clear skies). Rendering those
+    // put "Absolutely beautiful out there." over an Afrikaans thunderstorm —
+    // English humour AND the wrong weather. So when the bank is missing, the
+    // hero states the localized condition and says nothing funny at all.
+    if (!isCopyBankLoaded(settings.lang)) {
+      safeText(headlineEl, '');
+      safeText(descriptionEl, getHeroLabel(displayConditionForCopy));
+      debugLog('[Hero copy] bank unavailable for', settings.lang, '— condition label, no witty line');
+    } else {
+      safeText(headlineEl, getWittyLine(displayConditionForCopy));
+      safeText(descriptionEl, getHeadline(displayConditionForCopy));
+    }
     debugLog('[Layout] description:', descriptionEl?.textContent, 'headline:', headlineEl?.textContent);
     const bylineEl = $('#weatherByline');
     if (bylineEl) {
@@ -2383,6 +2797,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const row2 = [us != null ? `${uvLabel} ${us}` : null, feelsStr].filter(Boolean);
       const rows = [row1, row2].filter((r) => r.length).map((r) => `<div class="byline-row">${r.join(' • ')}</div>`);
       bylineEl.innerHTML = rows.join('');
+      // Visibility is set from the CONTENT, the same way renderStatsRow,
+      // renderRangeLine and renderFeelsLine do it. clearForecastSurfaces hides
+      // this line on an error; without restoring it here the next successful
+      // forecast wrote rows into a still-hidden element and the desktop byline
+      // stayed blank until a reload. Clear and restore must live together or
+      // they drift apart.
+      bylineEl.hidden = rows.length === 0;
     }
     // EVERY key computeHomeDisplayCondition can return, not just the nine with
     // CSS today. It returns thunder, hail, cold-clear and rain-possible too, and
@@ -2439,6 +2860,66 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   function windUnitLabel() {
     return settings.wind === 'mph' ? 'mph' : 'km/h';
+  }
+  // A failed location change must not leave ANY of the previous place's
+  // forecast on screen. Home showed a translated error while the stats row,
+  // byline, range line, agree line, hourly chart, weekly and hourly tables all
+  // still described Cape Town — in the old language, since nothing re-rendered
+  // them. Every forecast-DERIVED surface is cleared here, in one place, called
+  // from renderError and therefore also from the language-switch replay.
+  //
+  // The two tables get the same localized note Home is showing. Everything else
+  // empties: a half-translated number is worse than no number. Reuses
+  // misc.couldntFetch — no new copy for a state that already has words.
+  //
+  // Deliberately NOT cleared: the background photograph and its condition body
+  // class (the app is never blank-white; the photo carries no words and no
+  // stale reading), and the location heading (renderError redraws it for the
+  // place the user actually asked for).
+  function clearForecastSurfaces() {
+    const msg = t('misc', 'couldntFetch');
+    for (const host of [hourlyTimeline, dailyCards]) {
+      if (!host) continue;
+      host.innerHTML = '';
+      const note = document.createElement('div');
+      // The app's existing empty-state class, so this needs no new CSS.
+      note.className = 'list-empty forecast-unavailable';
+      note.textContent = msg;
+      host.appendChild(note);
+    }
+    // Hero numbers and copy derived from the payload.
+    safeText(tempEl, '--°');
+    if (statsRowEl) { statsRowEl.innerHTML = ''; statsRowEl.hidden = true; }
+    const bylineEl = $('#weatherByline');
+    if (bylineEl) { bylineEl.innerHTML = ''; bylineEl.hidden = true; }
+    if (rangeLineEl) { rangeLineEl.innerHTML = ''; rangeLineEl.hidden = true; }
+    // "Feels like 10°" is as stale as the temperature above it.
+    if (feelsLineEl) { feelsLineEl.textContent = ''; feelsLineEl.hidden = true; }
+    // renderAgreeLine hides the line when there is no agreement figure.
+    renderAgreeLine(null);
+    // The wind warning belongs to the previous place's wind reading.
+    if (capeWindBanner) { capeWindBanner.classList.add('hidden'); syncCapeWindOffset(); }
+    // The hourly chart: stored data AND rendered content AND the subtitle that
+    // names the place the chart was captured for. renderHourlyChart() hides
+    // itself once the hours are gone.
+    hourlyChartHours = null;
+    hourlyChartStart = 0;
+    hourlyChartPlace = '';
+    hourlyChartLon = null;
+    renderHourlyChart();
+    // Emptied outright rather than via updateHourlySubtitle(), which would
+    // leave a bare time-of-day label ("Today") over a table that says the
+    // forecast could not be fetched.
+    safeText($('#hourlySubtitle'), '');
+    // A day-detail panel opened from the old week describes a day that is no
+    // longer on screen.
+    openDayDetailIndex = null;
+    const dayDetailContent = $('#day-detail-content');
+    if (dayDetailContent) dayDetailContent.innerHTML = '';
+    safeText($('#dayDetailDayName'), '');
+    safeText($('#dayDetailMeta'), '');
+    // The cache-age line refers to the previous place's cached fetch.
+    hideCacheAge();
   }
   function renderHourly(hourly) {
     if (!hourlyTimeline) return; hourlyTimeline.innerHTML = '';
@@ -2553,7 +3034,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // The name captured WITH the rows, not live activePlace: a failed switch
     // reassigns activePlace before the fetch, which would relabel place A's
     // chart with place B's name on the next re-render.
-    const place = (hourlyChartPlace || '').trim();
+    // Translated only when there IS a name — an empty one still means "no
+    // place captured yet", which shows the bare tail rather than "Unknown".
+    const raw = (hourlyChartPlace || '').trim();
+    const place = raw ? displayPlaceName(raw) : '';
     // The time-aware voice line where the active language has an approved one;
     // the plain day label everywhere else. Hour comes from the LOCATION, not the
     // device, so a shared Durban link at 22:00 there does not say "afternoon".
@@ -2757,10 +3241,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (i === 2) dailyCards.appendChild(buildAdSlot('weekly'));
     });
   }
+  // Which day the detail panel is currently showing, so a language change can
+  // re-render the SAME day rather than leaving a panel full of the old
+  // language's words behind the Settings screen.
+  let openDayDetailIndex = null;
   function renderDayDetail(norm, dayIndex) {
     if (!norm) return;
     const day = norm.daily?.[dayIndex];
     if (!day) return;
+    openDayDetailIndex = dayIndex;
 
     // Header: day name + date + condition + high/low.
     const offsetMs = (norm.utcOffsetSeconds ?? 0) * 1000;
@@ -2769,7 +3258,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dateStr = `${String(date.getUTCDate()).padStart(2, '0')}/${String(date.getUTCMonth() + 1).padStart(2, '0')}`;
     const hi = isNum(day.highC) ? formatTemp(day.highC) : '--°';
     const lo = isNum(day.lowC)  ? formatTemp(day.lowC)  : '--°';
-    const cond = day.conditionLabel || '—';
+    const cond = dayConditionLabel(day);
     const headerName = $('#dayDetailDayName');
     const headerMeta = $('#dayDetailMeta');
     if (headerName) headerName.textContent = `${dayName} ${dateStr}`;
@@ -2835,7 +3324,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Daily icon uses the full consensus conditionKey (see renderWeek). No
     // label: .ds-condition beside it already names the condition in words.
     const icon = conditionIcon(day.conditionKey, true, { size: 26 });
-    const cond = day.conditionLabel || '—';
+    const cond = dayConditionLabel(day);
     const hi = isNum(day.highC) ? formatTemp(day.highC) : '--°';
     const lo = isNum(day.lowC)  ? formatTemp(day.lowC)  : '--°';
     const hiClass = getTempColorClass(day.highC);
@@ -2897,7 +3386,33 @@ document.addEventListener("DOMContentLoaded", () => {
     updateUILanguage();
     updateLanguageOptions();
     document.documentElement.lang = settings.lang;
-    if (lastPayload) { const norm = normalizePayload(lastPayload); window.__PW_LAST_NORM = norm; renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly); }
+    // Replay the ONE record of what is on screen — never a payload that a
+    // later failure has superseded.
+    if (displayState?.kind === 'payload' && displayState.payload) {
+      const norm = normalizePayload(displayState.payload); window.__PW_LAST_NORM = norm;
+      renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
+      // An OPEN day-detail panel is rendered content like any other screen: it
+      // kept "Wet conditions" after a switch to Afrikaans because nothing
+      // re-ran it. Same day, new language.
+      if (openDayDetailIndex !== null) renderDayDetail(norm, openDayDetailIndex);
+    } else if (displayState?.kind === 'error') {
+      renderError(displayState.msg, displayState.msgKey);
+    } else if (displayState?.kind === 'loading') {
+      // A pending REFRESH still has the previous forecast on screen, and it is
+      // still true — so it is re-rendered in the new language rather than left
+      // in the old one. A pending request for a DIFFERENT place carries no
+      // payload (renderLoading cleared the surfaces), so only the heading and
+      // the loading copy are redrawn.
+      const pending = displayState.payload;
+      renderLoading(displayState.name, displayState.nameKey);
+      if (pending) {
+        const norm = normalizePayload(pending); window.__PW_LAST_NORM = norm;
+        renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
+        if (openDayDetailIndex !== null) renderDayDetail(norm, openDayDetailIndex);
+        // renderHome overwrites the hero copy, so the loading state is restated.
+        safeText(headlineEl, t('misc', 'loading'));
+      }
+    }
     renderFavorites(); renderRecents();
   }
   let lastFetchTime = null;
@@ -2906,7 +3421,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activeWeatherController?.abort();
     const requestController = new AbortController();
     activeWeatherController = requestController;
-    activePlace = place; renderLoading(place.name || 'My Location');
+    activePlace = place; renderLoading(place.name, place.name ? null : 'myLocation');
     refreshSaveButtonState();
     // Kick the network fetch FIRST and let it run while IndexedDB opens —
     // the old `await getCachedWeather()` before fetch serialized a cold IDB
@@ -2919,13 +3434,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // awaited before the cached/fresh render. Resolves instantly once loaded, so
     // it adds no paint delay beyond the splash floor in the common case.
     const bankReady = loadCopyBank(settings.lang).catch(() => {});
+    // EVERY await below is a point where the user can change place or language,
+    // so the staleness guard runs after EACH of them — never once, early. The
+    // bankReady await used to be unguarded (the guard sat before it): a slow
+    // English copy bank for Cape Town would resolve after the user had moved to
+    // Johannesburg and that request had failed, and the stale continuation then
+    // re-assigned displayState and re-rendered Cape Town's forecast over
+    // Johannesburg's error. A stale request must neither render nor touch the
+    // display record.
     // 1. Try showing cached data instantly (now in parallel with the fetch)
     const cached = await getCachedWeather(place);
     if (thisSeq !== activeLocationSeq) return false;
     await bankReady;
+    if (thisSeq !== activeLocationSeq) return false;
     if (cached) {
       try {
-        lastPayload = cached.payload;
+        displayState = { kind: 'payload', place, payload: cached.payload };
         const norm = normalizePayload(cached.payload);
         window.__PW_LAST_NORM = norm;
         renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
@@ -2936,7 +3460,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const payload = await fetchPromise;
       if (thisSeq !== activeLocationSeq) return false;
-      lastPayload = payload;
+      displayState = { kind: 'payload', place, payload };
       const norm = normalizePayload(payload);
       window.__PW_LAST_NORM = norm;
       renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
@@ -2947,7 +3471,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (e) {
       if (thisSeq !== activeLocationSeq || (e?.name === 'AbortError' && !e.weatherTimeout)) return false;
       console.error("Load failed:", e);
-      if (!cached) renderError(t('misc', 'couldntFetch'));
+      if (!cached) renderError(null, 'couldntFetch');
       // If cached data was shown, user still sees stale but usable data
       return false;
     } finally {
@@ -2990,8 +3514,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // the warmth pass paints them as a note on the polaroid's stock, and an
     // inline style cannot be themed.
     recentList.innerHTML = list.map(p => {
-      const rb = searchEditMode ? `<button class="remove-recent" aria-label="Remove recent" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
-      return `<li class="recent-item" role="button" tabindex="0" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(p.name)}</span>${rb}</li>`;
+      const rb = searchEditMode ? `<button class="remove-recent" aria-label="${escapeHtml(t('search', 'removeRecent'))}" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
+      return `<li class="recent-item" role="button" tabindex="0" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}">${logoMini}<span class="recent-name">${escapeHtml(displayPlaceName(p.name))}</span>${rb}</li>`;
     }).join('') || `<li class="list-empty">${t('search', 'noRecent')}</li>`;
     recentList.querySelectorAll('li[data-lat]').forEach(li => {
       const activate = (ev) => { if (ev?.target?.closest('.remove-recent')) return; showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }); };
@@ -3013,8 +3537,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const fl = document.getElementById('favLimit'); if (fl) fl.style.display = list.length >= 5 ? 'block' : 'none';
     favoritesList.innerHTML = list.map(p => {
       const temp = isNum(p.tempC) ? formatTemp(p.tempC) : '--°';
-      const rb = searchEditMode ? `<button class="remove-fav" aria-label="Remove favourite" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
-      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><span class="fav-name" role="button" tabindex="0">${escapeHtml(p.name)}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
+      const rb = searchEditMode ? `<button class="remove-fav" aria-label="${escapeHtml(t('search', 'removeFavourite'))}" data-lat="${p.lat}" data-lon="${p.lon}">×</button>` : '';
+      return `<li class="favorite-item" data-lat="${p.lat}" data-lon="${p.lon}" data-name="${escapeHtml(p.name)}"><span class="fav-name" role="button" tabindex="0">${escapeHtml(displayPlaceName(p.name))}</span><span class="fav-temp">${temp}</span>${rb}</li>`;
     }).join('') || `<li class="list-empty">${t('search', 'noSaved')}</li>`;
     favoritesList.querySelectorAll('li[data-lat] .fav-name').forEach(span => {
       const activate = () => { const li = span.closest('li'); showScreen(screenHome); loadAndRender({ name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }); };
@@ -3049,7 +3573,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // AND sits within ~1km of it — the "Bryn Mawr triplication" bug, where three
       // OSM objects sharing one container collapsed into three identical rows.
       searchResults = mapped.filter((r, i) => !mapped.slice(0, i).some(prev =>
-        formatSearchResult(prev) === formatSearchResult(r) &&
+        searchResultName(prev) === searchResultName(r) &&
         haversineKm(prev, r) <= 1
       ));
       renderSearchResults(searchResults);
@@ -3057,7 +3581,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Lead with the feature's OWN name (r.name = the actual searched place) so
   // "Bryn Mawr" shows as itself, not its container "Lower Merion Township".
-  function formatSearchResult(r) { const a = r.address || {}; const city = r.name || a.town || a.village || a.city || 'Unknown'; return a.country ? `${city}, ${a.country}` : city; }
+  // The RAW composed name — what gets stored and what dedupe compares, so
+  // neither depends on the display language.
+  function searchResultName(r) { const a = r.address || {}; const city = r.name || a.town || a.village || a.city || 'Unknown'; return a.country ? `${city}, ${a.country}` : city; }
+  // The DISPLAY name. r.name itself can be the literal 'Unknown' placeholder the
+  // server emits (cacheableLocationName in api/_lib/weather-cache.js), so the
+  // city part goes through the same translator as every other place name — and
+  // only the city part, or "Unknown, South Africa" would lose its country.
+  function formatSearchResult(r) { const a = r.address || {}; const city = displayPlaceName(r.name || a.town || a.village || a.city || ''); return a.country ? `${city}, ${a.country}` : city; }
   function miniFetchTemp(lat, lon) {
     return loadSearchMini(lat, lon, async () => {
       const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' }));
@@ -3068,7 +3599,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rl = document.getElementById('searchResults') || (() => { const ul = document.createElement('ul'); ul.id = 'searchResults'; ul.className = 'search-results'; document.querySelector('.search-body')?.prepend(ul); return ul; })();
     if (!results.length) { rl.innerHTML = ''; return; }
     const favs = loadFavorites();
-    rl.innerHTML = results.map((r, index) => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); const hasMini = index < SEARCH_MINI_VISIBLE_LIMIT; const icon = `<span class="result-icon" aria-hidden="true">${hasMini ? weatherIconSvg('cloud-sun', { size: 18 }) : ''}</span>`; const temp = hasMini ? '<span class="result-temp">--°</span>' : ''; return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${fn}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="${escapeHtml(isFav ? t('misc', 'saved') : t('misc', 'savePlace'))}" aria-pressed="${isFav}" data-lat="${r.lat}" data-lon="${r.lon}">${weatherIconSvg('star', { size: 18, filled: isFav })}</button>${icon}<span class="result-name">${fn}</span>${temp}</li>`; }).join('');
+    rl.innerHTML = results.map((r, index) => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); const hasMini = index < SEARCH_MINI_VISIBLE_LIMIT; const icon = `<span class="result-icon" aria-hidden="true">${hasMini ? weatherIconSvg('cloud-sun', { size: 18 }) : ''}</span>`; const temp = hasMini ? '<span class="result-temp">--°</span>' : ''; return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${escapeHtml(searchResultName(r))}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="${escapeHtml(isFav ? t('misc', 'saved') : t('misc', 'savePlace'))}" aria-pressed="${isFav}" data-lat="${r.lat}" data-lon="${r.lon}">${weatherIconSvg('star', { size: 18, filled: isFav })}</button>${icon}<span class="result-name">${fn}</span>${temp}</li>`; }).join('');
     rl.querySelectorAll('li[data-lat]').forEach(li => {
       const activate = async (e) => { if (e && e.target && e.target.closest('.fav-star')) return; const place = { name: li.dataset.name, lat: parseFloat(li.dataset.lat), lon: parseFloat(li.dataset.lon), mode: PLACE_MODE_PINNED }; showScreen(screenHome); loadAndRender(place); if (searchInput) searchInput.value = ''; rl.innerHTML = ''; addRecentIfNew(place).catch(() => {}); };
       li.addEventListener('click', activate);
@@ -3184,9 +3715,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getGeolocationErrorMessage(err) {
     if (err?.code === 1) return isStandaloneMode() ? t('toasts', 'permissionDeniedStandalone') : t('toasts', 'permissionDeniedBrowser');
-    if (err?.code === 2) return "Couldn't get location. Using approximate location instead.";
-    if (err?.code === 3) return "Location lookup took too long. Using approximate location instead.";
-    return "Couldn't get location. Using approximate location instead.";
+    if (err?.code === 3) return t('toasts', 'locationTimeoutApprox');
+    return t('toasts', 'locationApprox');
   }
 
   function showGeolocationErrorToast(err) {
@@ -3209,7 +3739,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen(screenHome);
     const savedGpsLoc = loadJSON(STORAGE.location, null);
     if ("geolocation" in navigator) {
-      renderLoading("Getting location…");
+      renderLoading(null, 'gettingLocation');
       navigator.geolocation.getCurrentPosition(async (pos) => {
         const lat = Math.round(pos.coords.latitude * 10000) / 10000, lon = Math.round(pos.coords.longitude * 10000) / 10000;
         // Bug 3: record the manual "Use my location" tap. The position watch
@@ -3266,7 +3796,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadAndRender(homePlace);
         showToast(t('toasts', 'usingSaved') || 'Using saved location', 3000, null, 'pin');
       } else {
-        showToast("Couldn't get location. Using approximate location instead.", 5000);
+        showToast(t('toasts', 'locationApprox'), 5000);
         loadApproximateLocation();
       }
     }
@@ -3380,7 +3910,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sn = savedLoc.city && savedLoc.admin1 ? `${savedLoc.city}, ${savedLoc.admin1}` : (savedLoc.city || savedLoc.admin1 || 'South Africa');
     homePlace = { name: sn, lat: savedLoc.lat, lon: savedLoc.lon, mode: PLACE_MODE_GPS }; saveJSON(STORAGE.home, homePlace); showScreen(screenHome); loadAndRender(homePlace);
   }
-  else { showScreen(screenHome); renderLoading("Locating…");
+  else { showScreen(screenHome); renderLoading(null, 'locating');
     if ("geolocation" in navigator) {
       // First-open with no saved location. Previously this waited up to 8s on
       // getCurrentPosition before any IP fallback ran — a fresh install showed a
@@ -3409,7 +3939,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       // No geolocation support - use IP geolocation
-      showToast("Couldn't get location. Using approximate location instead.", 5000);
+      showToast(t('toasts', 'locationApprox'), 5000);
       loadApproximateLocation();
     }
   }

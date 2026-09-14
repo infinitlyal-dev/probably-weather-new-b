@@ -30,7 +30,11 @@ describe('home language picker', () => {
     expect(app()).toMatch(/settings\.lang\s*=\s*lang/);
     expect(app()).toMatch(/saveSettings\(\)/);
     expect(app()).toMatch(/applySettings\(\)/);
-    expect(app()).toMatch(/lastPayload[\s\S]*renderHome/);
+    // The stored payload is now one field of the single displayState record
+    // (it used to be a separate lastPayload that outranked the error state on a
+    // language switch). The intent is unchanged: selecting a language re-renders
+    // the current UI from what is on screen.
+    expect(app()).toMatch(/displayState[\s\S]*renderHome/);
   });
 
   it('first launch detects Afrikaans from navigator.language', () => {

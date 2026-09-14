@@ -82,7 +82,10 @@ describe('app.js consumes BUILD_ID (inline, not a separate imported module)', ()
   });
 
   it('shows the running build SHA in Settings (#appVersion)', () => {
-    expect(appSrc).toMatch(/Version \$\{APP_VERSION\} · Build \$\{BUILD_SHORT\}/);
+    // Language-neutral stamp: the words "Version"/"Build" were English in all
+    // five languages, so the line is now `v1.5 · 6f00b01`. Both halves must
+    // still be present — this test exists to prove the SHA reaches Settings.
+    expect(appSrc).toMatch(/`v\$\{APP_VERSION\} · \$\{BUILD_SHORT\}`/);
   });
 
   it('the update banner compares the running BUILD_ID against the live /api/version', () => {

@@ -24,8 +24,33 @@ const COPY_LOADERS = {
 // like `|| T.witty.clear.en`) can never throw before the real bank lands.
 // Strings match the real en bank's register; they show only in the rare
 // window where weather data beats the ~30 KB same-origin copy fetch.
+//
+// heroLabels is the ONE exception to "minimal": it carries all fifteen
+// condition keys in all five languages (~1.5 KB), because it is the only part
+// of the bank that NAMES THE WEATHER. Seeded with en alone, a failed or slow
+// chunk left a non-English user reading "Pleasant" for a clear day and the
+// provider's raw English ("Slight rain showers") for everything else — the
+// exact leak this bank exists to prevent, surfacing precisely when the network
+// is worst. These are the same native-reviewed strings as assets/weather-copy.js
+// and tests/language-leaks.test.js fails if the two ever drift apart.
 export const COPY_BANK = {
-  heroLabels: { clear: { en: 'Pleasant' } },
+  heroLabels: {
+    storm: { en: "Severe weather", af: "Erge weer", zu: "Isimo sezulu esibi kakhulu", xh: "Imozulu embi kakhulu", st: "Boemo ba lehodimo bo matla" },
+    thunder: { en: "Thunder", af: "Donderweer", zu: "Ukuduma kwezulu", xh: "Iindudumo", st: "Modumo wa seaduma" },
+    hail: { en: "Hail", af: "Hael", zu: "Isichotho", xh: "Isichotho", st: "Sefako" },
+    rain: { en: "Wet conditions", af: "Nat toestande", zu: "Izimo ezimanzi", xh: "Iimeko ezimanzi", st: "Maemo a mongobo" },
+    'rain-possible': { en: "Possible showers", af: "Moontlike buie", zu: "Imvula engase ine", xh: "Imvula enokubakho", st: "Dipula tse ka bang teng" },
+    wind: { en: "Gusty winds", af: "Sterk wind", zu: "Umoya onamandla", xh: "Imimoya enamandla", st: "Meya e matla" },
+    cold: { en: "Chilly", af: "Koud", zu: "Kuyabanda kancane", xh: "Kupholile", st: "ho phodile" },
+    'cold-clear': { en: "Cold but clear", af: "Koud maar helder", zu: "Kubanda, izulu licwebile", xh: "Kubanda, kodwa kucacile", st: "Hwa bata, lehodimo le hlakile" },
+    heat: { en: "Very hot", af: "Baie warm", zu: "Kushisa kakhulu", xh: "Kushushu kakhulu", st: "Ho tjhesa haholo" },
+    uv: { en: "High UV", af: "Hoë UV", zu: "Izinga le-UV liphezulu", xh: "I-UV ephezulu", st: "Boemo ba UV bo phahameng" },
+    fog: { en: "Low visibility", af: "Lae sigbaarheid", zu: "Ukubonakala okuphansi", xh: "Ukungabonakali kakuhle", st: "Ponahalo e tlase" },
+    cloudy: { en: "Overcast", af: "Bewolk", zu: "Amafu avalile", xh: "Linamafu ngokupheleleyo", st: "Ho aparetse ka maru" },
+    'partly-cloudy': { en: "Partly cloudy", af: "Effens bewolk", zu: "Kunamafu kancane", xh: "Linamafu kancinci", st: "Ho na le maru hanyane" },
+    clear: { en: "Pleasant", af: "Aangenaam", zu: "Isimo sezulu esimnandi", xh: "Kumnandi", st: "Ho monate" },
+    night: { en: "Clear night", af: "Helder nag", zu: "Ubusuku obucacile", xh: "Ubusuku obucacileyo", st: "Bosiu bo hlakileng" },
+  },
   headlines: { clear: { en: 'Clear skies.' } },
   witty: {
     clear: { en: ['Absolutely beautiful out there.'] },
@@ -47,6 +72,19 @@ function mergeInPlace(target, source) {
 
 const loadedLangs = new Set();
 const inFlight = new Map(); // lang -> Promise, so concurrent callers share one import
+
+/**
+ * Has the real bank for `lang` actually landed?
+ *
+ * The seed names every CONDITION in five languages, but the headlines and
+ * witty lines it carries are a single English clear-sky pair. Callers use this
+ * to tell "I have the language" from "I have the seed", so a failed chunk can
+ * degrade to the localized condition name instead of announcing "Absolutely
+ * beautiful out there." over an Afrikaans thunderstorm.
+ */
+export function isCopyBankLoaded(lang) {
+  return loadedLangs.has(SUPPORTED.includes(lang) ? lang : 'en');
+}
 
 /**
  * Ensure the bank for `lang` is merged into COPY_BANK.

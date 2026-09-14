@@ -515,11 +515,17 @@ describe('install — Android banner never depends on beforeinstallprompt (Samsu
   // Minimal DOM double: enough surface for initInstallExperience.
   function fakeEl() {
     const cls = new Set();
+    const attrs = {};
     const node = {
       hidden: false,
       children: [],
       listeners: {},
       className: '',
+      // applyTranslations now also sets the banner's aria-label and the iOS
+      // modal close button's, so the double needs attributes like a real node.
+      attrs,
+      setAttribute(k, v) { attrs[k] = v; },
+      getAttribute(k) { return k in attrs ? attrs[k] : null; },
       classList: { add: (c) => cls.add(c), remove: (c) => cls.delete(c), contains: (c) => cls.has(c) },
       get firstChild() { return node.children[0] || null; },
       removeChild(c) { node.children.splice(node.children.indexOf(c), 1); },
