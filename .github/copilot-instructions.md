@@ -42,6 +42,15 @@
 - **Graceful degradation**: API should work even if some data sources fail
 - **Median aggregation**: Use median values to combine multiple sources
 - **Environment variables**: 
+  - `OPEN_METEO_API_KEY` - Open-Meteo API Standard commercial key (1M call units/month). Set in Vercel for **Production + Preview**, server-side only — never expose it to the client. Present: the API uses `https://customer-api.open-meteo.com/v1/forecast` with `&apikey=`; absent: it falls back to the free endpoint under non-commercial terms and logs a warning.
+    - `meta.openMeteoEndpoint` (`customer` | `free`) reports which host was **configured** for that request — **not** that it answered. A 401 from a bad key still reports `customer`.
+    - `meta.openMeteoStatus` (`ok` | `failed` | `skipped`) reports whether that host actually answered: `ok` = fetched and passed provider-data validation, `failed` = HTTP error/timeout/rejected by validation, `skipped` = never called (budget guard).
+    - **Production check** — run it on a FRESH request, because a cache hit replays the values the writing request stored (and an entry written before these fields existed has neither):
+      ```
+      curl -s 'https://www.probablyweather.co.za/api/weather?lat=-34.1163&lon=18.8362' \
+        | jq '{e:.meta.openMeteoEndpoint, s:.meta.openMeteoStatus, c:.meta.serverCache}'
+      ```
+      Healthy commercial traffic is `{"e":"customer","s":"ok","c":"miss"}`. If `c` is `"hit"`, the endpoint/status came from the cached writer — vary the coordinates slightly or wait out the 5-minute TTL and retry.
   - `WEATHERAPI_KEY` - Required for WeatherAPI.com access
   - `MET_USER_AGENT` - User-Agent string for MET Norway API (required by their terms)
 - **Response format**: Always return JSON with `ok` boolean and appropriate status codes
@@ -103,6 +112,7 @@
 
 ### Required Environment Variables
 ```
+OPEN_METEO_API_KEY=your_open_meteo_commercial_key_here
 WEATHERAPI_KEY=your_api_key_here
 MET_USER_AGENT=ProbablyWeather/1.0 (contact: your@email.com)
 ```

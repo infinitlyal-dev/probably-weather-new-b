@@ -26,7 +26,7 @@ import {
   cacheableLocationName,
   responseLocationName,
 } from './_lib/weather-cache.js';
-import { consumeProviderBudgets } from './_lib/provider-budget.js';
+import { consumeProviderBudgets, recordOpenMeteoCallDeferred } from './_lib/provider-budget.js';
 // M4: heat thresholds shared with the client (assets/app.js) — one constant
 // family, no more 32-vs-35 badge/condition drift.
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../assets/weather-thresholds.js';
@@ -171,6 +171,10 @@ export default async function handler(req, res) {
       COORDS_NAME_RE.test(rawName);
     const name = rawName || null;
 
+    // Open-Meteo API Standard (commercial licence, 1M calls/month, reserved
+    // servers). Server-side only — this key is never shipped to the browser.
+    // Absent ⇒ the free endpoint under non-commercial terms (see below).
+    const OPEN_METEO_API_KEY = process.env.OPEN_METEO_API_KEY || null;
     const WEATHERAPI_KEY     = process.env.WEATHERAPI_KEY     || null;
     const PIRATE_WEATHER_KEY = process.env.PIRATE_WEATHER_KEY || null;
     const TOMORROWIO_API_KEY = process.env.TOMORROWIO_API_KEY || null;
@@ -682,8 +686,27 @@ export default async function handler(req, res) {
       if (!budgetAllows(p)) console.warn(`[pw-budget] ${p} over ceiling — skipped this request`);
     }
 
+    // Open-Meteo endpoint selection. With the commercial key we must use the
+    // `customer-` prefixed host — that is what routes us onto the reserved
+    // servers the API Standard subscription pays for; the same key on the
+    // public host is ignored. Without a key we stay on the free host, which is
+    // non-commercial-terms only, so say so loudly once per request.
+    // meta.openMeteoEndpoint (below) reports which host actually served, so
+    // production can be confirmed from the live API after deploy.
+    const openMeteoEndpoint = OPEN_METEO_API_KEY ? 'customer' : 'free';
+    if (!OPEN_METEO_API_KEY) {
+      console.warn('[pw-open-meteo] OPEN_METEO_API_KEY absent — using the free endpoint (non-commercial terms)');
+    }
+    const openMeteoHost = OPEN_METEO_API_KEY
+      ? 'https://customer-api.open-meteo.com/v1/forecast'
+      : 'https://api.open-meteo.com/v1/forecast';
+    // The key is interpolated ONLY here. Nothing logs this URL: fetchJson
+    // throws `HTTP <status>` with no URL, and logSourceFailure prints only the
+    // source name and that message. Keep it that way — any future debug line
+    // that echoes a provider URL must redact `apikey=`.
+    const openMeteoKeyParam = OPEN_METEO_API_KEY ? `&apikey=${OPEN_METEO_API_KEY}` : '';
     const openMeteoRequest = budgetAllows('open-meteo') ? fetchJson(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+      `${openMeteoHost}?latitude=${lat}&longitude=${lon}` +
       `&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,wind_direction_10m,relative_humidity_2m,cloud_cover` +
       // Phase B-1 Item 3: hourly weather_code added so per-hour condition can be preserved
       // through aggregation (previously only the daily weather_code was fetched).
@@ -692,8 +715,16 @@ export default async function handler(req, res) {
       // model-based condition vote ignores. Both fields are free on this endpoint.
       `&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,wind_speed_10m,wind_gusts_10m,wind_direction_10m,cloud_cover,relative_humidity_2m,uv_index,weather_code,visibility,dew_point_2m` +
       `&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weather_code,wind_speed_10m_max,sunrise,sunset` +
-      `&timezone=auto&forecast_days=7`
+      `&timezone=auto&forecast_days=7${openMeteoKeyParam}`
     ) : Promise.resolve(null);
+    // Advisory monthly usage counter (API Standard has no hard cap — the 80%
+    // alert is the control). Counted ONLY when the CUSTOMER endpoint was
+    // actually called: a free-endpoint request spends no commercial allowance,
+    // so counting it would overstate the month and fire the alert early.
+    // NEVER awaited — recordOpenMeteoCallDeferred hands the work to waitUntil
+    // (bounded by its own timeout), so a stalled Redis cannot stall a forecast
+    // whose providers have all answered.
+    if (OPEN_METEO_API_KEY && budgetAllows('open-meteo')) recordOpenMeteoCallDeferred();
     const weatherApiRequest = (WEATHERAPI_KEY && budgetAllows('weatherapi'))
       ? fetchJson(
           `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}` +
@@ -2265,6 +2296,29 @@ export default async function handler(req, res) {
           'Tomorrow.io':    norms[4] ? Math.round(normW[4] * 100) : null,
         },
         sourceConditions: sourceConditionVotes,
+        // Item 2 audit fields. openMeteoEndpoint says which host was
+        // CONFIGURED: 'customer' = the commercial reserved-server host
+        // (OPEN_METEO_API_KEY present), 'free' = the public free host. The
+        // label only — never the key itself.
+        //
+        // openMeteoStatus says whether that host actually ANSWERED:
+        //   'ok'      — fetched and passed provider-data validation
+        //   'failed'  — HTTP error, timeout, or rejected by validation
+        //   'skipped' — never called (budget guard blocked it this request)
+        // A configured endpoint proves nothing on its own: a 401 from a bad key
+        // still reports 'customer'. Confirm the live subscription with BOTH,
+        // on a request that actually went upstream (serverCache 'miss'):
+        //   curl '.../api/weather?lat=-34.1163&lon=18.8362' \
+        //     | jq '{e:.meta.openMeteoEndpoint, s:.meta.openMeteoStatus, c:.meta.serverCache}'
+        //   → expect {"e":"customer","s":"ok","c":"miss"}
+        //
+        // WHY THE MISS MATTERS: the cache-hit path spreads the STORED meta and
+        // overrides only localHour/serverCache/schema, so a hit replays whatever
+        // the writing request recorded — and an entry written before these
+        // fields existed carries neither, so both read `undefined` rather than
+        // being invented at read time. Never confirm the subscription off a hit.
+        openMeteoEndpoint,
+        openMeteoStatus: !budgetAllows('open-meteo') ? 'skipped' : (norms[0] ? 'ok' : 'failed'),
         localHour,
         schema: PAYLOAD_SCHEMA,
         utcOffsetSeconds,
