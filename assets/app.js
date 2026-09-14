@@ -1368,6 +1368,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // cold-clear preserved here too — same rationale as computeTodaysHero.
     if (apiCondition === 'cold-clear') return 'cold-clear';
     if (apiCondition === 'heat') return 'heat';
+    // Item 4 (P1-3): the server's radar-verified rain-now override is not a
+    // model vote and must survive the majority-vote / 4-hour re-ranking below.
+    // Four models saying "clear" while radar shows rain falling is exactly the
+    // case the override exists for (Strand, 2026-05-19 08:05 SAST).
+    if (apiCondition === 'rain' && norm.rainNowOverride) {
+      debugLog('[Rain-now override] API=rain by tomorrow-io-radar-override → returning rain regardless of votes');
+      return 'rain';
+    }
     // FIX: trust the API's rain verdict when 2+ sources voted rain/storm. The API
     // already aggregated source agreement; without this, a unanimous-rain payload
     // gets demoted to 'rain-possible' whenever norm.rainPct happens to land below 50.
@@ -1802,7 +1810,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const imminentHours = localHour != null ? hourly.slice(localHour, localHour + 4) : [];
     const imminentRainMax = imminentHours.length > 0 ? Math.max(...imminentHours.map(h => h.rainChance ?? 0)) : null;
     debugLog(`[Imminent slice] localHour=${localHour} → next 4 hours rain max: ${imminentRainMax}%`);
-    const displayRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
+    // Item 4 (prelaunch P1-3): the server's Tomorrow.io radar override is
+    // nowcast truth (precipitationIntensity > 0.5 mm/h RIGHT NOW). It set
+    // now.rainChance to >= 70 and now.conditionKey to 'rain'; the 4-hour model
+    // slice below must not replace that with the models' own 10%. Detected by
+    // conditionReason, or by the override trail when thunder overrode it after.
+    const overrides = Array.isArray(now.conditionSignals?.overrides) ? now.conditionSignals.overrides : [];
+    const rainNowOverride = now.conditionReason === 'tomorrow-io-radar-override'
+      || overrides.some(o => o && o.rule === 'tomorrow-io-radar-override');
+    if (rainNowOverride) debugLog(`[Rain-now override] server radar override → rain now ${now.rainChance}% keeps precedence over the 4h slice (${imminentRainMax}%)`);
+    const modelRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
+    const displayRainPct = rainNowOverride && isNum(now.rainChance)
+      ? Math.max(now.rainChance, isNum(modelRainPct) ? modelRainPct : 0)
+      : modelRainPct;
     const dailyRainPct = today.rainChance ?? now.rainChance ?? null;
     // rainLater ("Later" wording) means dry now, wet later. Radar says it is
     // raining NOW, so the override suppresses it (Astra: "Rain 70% — Later").
