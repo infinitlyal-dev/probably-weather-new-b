@@ -513,12 +513,22 @@ export default async function handler(req, res) {
     //   1. Open-Meteo `utc_offset_seconds` (existing primary; timezone=auto)
     //   2. Pirate Weather `offset` (hours → multiply by 3600)
     //   3. WeatherAPI `location.tz_id` → resolve via Intl.DateTimeFormat (DST-aware)
-    //   4. Default 0 (UTC) — last resort; logged so it's not silent
+    //   4. Coordinate estimate — exact for the SA bounding box, longitude-
+    //      derived elsewhere; logged so it's not silent
     // Without this chain, an Open-Meteo outage broke MET hourly alignment +
     // isDay for non-UTC users (e.g. SA shifted by 2 hours, breaking local-hour
     // mapping). utcOffsetSource is surfaced in response meta for audit.
-    let utcOffsetSeconds = 0;
-    let utcOffsetSource = 'default-utc';
+    //
+    // Item 6 (prelaunch P1-4, 2026-09-14): the estimate is the STARTING value,
+    // resolved here before any provider block runs, not a last resort applied
+    // after them. MET Norway and Tomorrow.io align their series inside their
+    // own blocks; when Open-Meteo, WeatherAPI and Pirate all failed, they used
+    // to align against 0 (UTC) and the coordinate estimate only landed
+    // afterwards — a 10:15Z clock put the 12:00Z entry at local index 12
+    // instead of the 10:00Z one. Providers that supply a real offset still
+    // override the estimate, in the chain order above.
+    let utcOffsetSeconds = estimateUtcOffsetSeconds(lat, lon);
+    let utcOffsetSource = 'coord-estimate';
 
     // Description maps
     const openMeteoCodeMap = {
@@ -806,7 +816,7 @@ export default async function handler(req, res) {
         // an offset (failed or returned no field), try WeatherAPI's location.tz_id.
         // Intl.DateTimeFormat resolves the IANA name to a DST-aware offset
         // ("Africa/Johannesburg" → "GMT+02:00" → +7200s) at request-handling time.
-        if (utcOffsetSource === 'default-utc' && wa.location?.tz_id) {
+        if (utcOffsetSource === 'coord-estimate' && wa.location?.tz_id) {
           const waOffset = computeTimezoneOffsetFromTzId(wa.location.tz_id);
           if (validUtcOffset(waOffset)) {
             utcOffsetSeconds = waOffset;
@@ -1792,17 +1802,14 @@ export default async function handler(req, res) {
     // separately for UI display as "(gusts X km/h)" — not inflated into the main number.
     const effectiveDisplayWind = medWindKph ?? 0;
 
-    // Last-resort offset: when Open-Meteo, Pirate AND WeatherAPI all failed to
-    // supply one, the old behaviour silently kept 0 (UTC). For SA (UTC+2) that
-    // shifted every downstream local-time decision by 2 hours — localHour
+    // When Open-Meteo, Pirate AND WeatherAPI all failed to supply an offset the
+    // coordinate estimate seeded above is what every provider block aligned
+    // against (item 6). Before 2026-06 the default here was 0 (UTC), which for
+    // SA (UTC+2) shifted every local-time decision by 2 hours — localHour
     // slicing, isDay, and the client's day-of-week (the "Saturday energy on a
-    // Sunday morning" residual: SAST Sun 00:00-01:59 computed as Saturday).
-    // A coordinate-based estimate is strictly better than 0: exact for the SA
-    // bounding box, longitude-derived elsewhere.
-    if (utcOffsetSource === 'default-utc') {
-      utcOffsetSeconds = estimateUtcOffsetSeconds(lat, lon);
-      utcOffsetSource = 'coord-estimate';
-      console.warn(`[pw-tz] all sources failed to provide a UTC offset — using coord estimate ${utcOffsetSeconds}s for lat=${lat} lon=${lon}`);
+    // Sunday morning" residual). Logged so an outage is never silent.
+    if (utcOffsetSource === 'coord-estimate') {
+      console.warn(`[pw-tz] no provider supplied a UTC offset — using coord estimate ${utcOffsetSeconds}s for lat=${lat} lon=${lon}`);
     }
 
     // Correct local hour using UTC offset from Open-Meteo.
@@ -2206,8 +2213,9 @@ export default async function handler(req, res) {
         utcOffsetSeconds,
         // Phase B-2 Item 1: audit field — which source supplied the offset.
         // 'open-meteo' (primary), 'pirate-weather' (fall-through), 'weatherapi'
-        // (via tz_id Intl resolution), or 'default-utc' (all three failed —
-        // localHour/MET-alignment/isDay treat the location as UTC).
+        // (via tz_id Intl resolution), or 'coord-estimate' (all three failed —
+        // the coordinate estimate seeded before the provider blocks was used
+        // for localHour / MET + Tomorrow.io alignment / isDay; item 6).
         utcOffsetSource,
         updatedAtLabel: new Date().toISOString(),
         // Layer A/B (2026-05-21, Bug 1): fog-detector verdict + confidence
