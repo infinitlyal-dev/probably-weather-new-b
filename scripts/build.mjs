@@ -22,7 +22,7 @@ import { gzipSync } from 'node:zlib';
 
 import esbuild from 'esbuild';
 
-import { LANGS, buildModuleSource } from './generate-copy-splits.mjs';
+import { findStaleCopyBanks } from './copy-bank-sync.mjs';
 import { emitClientBundle } from './client-bundle.mjs';
 import { emitBackgroundImageArtifact, verifyBackgroundImageArtifact } from './image-slot-manifest.mjs';
 import { importsModule } from './import-scan.mjs';
@@ -50,13 +50,12 @@ const STATIC_ENTRIES = [
 // preview diverged. Now drift is a hard build error with a one-line fix.
 console.log('[build] verifying per-language copy splits are in sync…');
 {
-  const stale = [];
-  for (const lang of LANGS) {
-    const file = path.join(root, 'assets', 'copy', `${lang}.js`);
-    let onDisk = null;
-    try { onDisk = readFileSync(file, 'utf8'); } catch { /* missing → stale */ }
-    if (onDisk !== buildModuleSource(lang)) stale.push(`${lang}.js`);
-  }
+  // The gate itself lives in scripts/copy-bank-sync.mjs so it stays testable
+  // without running the whole build. It is EOL-normalised: the banks are stored
+  // with LF, but a Windows checkout (.gitattributes `* text=auto` +
+  // core.autocrlf=true) writes them to the working tree with CRLF, which used
+  // to fail every Windows build on a clean clone.
+  const stale = findStaleCopyBanks(root);
   if (stale.length) {
     console.error(
       `[build] FATAL: per-language copy banks are stale (${stale.join(', ')}).\n` +

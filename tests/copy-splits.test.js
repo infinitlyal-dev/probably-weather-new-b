@@ -10,13 +10,17 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 import { LANGS, buildModuleSource } from '../scripts/generate-copy-splits.mjs';
+import { normalizeEol } from '../scripts/copy-bank-sync.mjs';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 
 describe('generated copy splits are in sync with weather-copy.js', () => {
   for (const lang of LANGS) {
     it(`assets/copy/${lang}.js matches a fresh regeneration`, () => {
       const onDisk = readFileSync(new URL(`../assets/copy/${lang}.js`, import.meta.url), 'utf8');
-      expect(onDisk).toBe(buildModuleSource(lang));
+      // EOL-normalised on both sides — a Windows checkout writes these
+      // LF-stored files out as CRLF, which is not drift. See
+      // scripts/copy-bank-sync.mjs.
+      expect(normalizeEol(onDisk)).toBe(normalizeEol(buildModuleSource(lang)));
     });
   }
 

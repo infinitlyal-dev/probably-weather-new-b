@@ -27,14 +27,24 @@ describe('M-ii — pw_last_bg upgrade falls back to default on a broken pick', (
 });
 
 describe('M-iii — build fails on stale per-language copy banks', () => {
+  // The comparison itself moved to scripts/copy-bank-sync.mjs so the gate is
+  // testable without running the build (and so it can normalise CRLF/LF). The
+  // guarantee is unchanged: the build regenerates, compares, and hard-fails.
+  const gate = readFileSync(new URL('../scripts/copy-bank-sync.mjs', import.meta.url), 'utf8');
+
   it('build.mjs verifies committed banks against a fresh regeneration and exits 1 on drift', () => {
-    expect(build).toMatch(/buildModuleSource/);
-    expect(build).toMatch(/from '\.\/generate-copy-splits\.mjs'/);
+    expect(build).toMatch(/findStaleCopyBanks\s*\(/);
+    expect(build).toMatch(/from '\.\/copy-bank-sync\.mjs'/);
+    // The regeneration the banks are compared against still comes from the
+    // single source of truth, one module along.
+    expect(gate).toMatch(/buildModuleSource/);
+    expect(gate).toMatch(/from '\.\/generate-copy-splits\.mjs'/);
     // The verify branch must hard-fail (process.exit(1)), not silently
     // regenerate-overwrite the source as before.
     expect(build).toMatch(/stale[\s\S]*process\.exit\(1\)/);
     // And it must NOT shell out to regenerate into the source tree anymore.
     expect(build).not.toMatch(/execFileSync[\s\S]*generate-copy-splits/);
+    expect(gate).not.toMatch(/execFileSync[\s\S]*generate-copy-splits/);
   });
 });
 

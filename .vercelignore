@@ -19,6 +19,14 @@
 *.md
 docs/
 
+# …except the two docs tests/product-spine.test.js reads. Since the release
+# gate (package.json build → vitest run) the suite runs in the build container,
+# so these are BUILD-INPUT. Re-including them is not a disclosure regression:
+# outputDirectory is dist/, and dist/ holds only STATIC_ENTRIES
+# (scripts/build.mjs) — nothing at the repo root is served any more.
+!PRODUCT_SPINE.md
+!DESIGN_DOSSIER_probably-weather_2026-07-14.md
+
 # Lighthouse report artifact.
 lighthouse-report.json
 
@@ -36,9 +44,15 @@ tools/
 .claude/
 .github/
 
-# Test suite + eval harness — were publicly fetchable on prod (verified
-# 2026-06-11: /tests/home-name.test.js returned 200). Same info-disclosure
-# class as the *.md exclusion above: tests document internals, bug history,
-# and rate-limit thresholds. Nothing at runtime imports from tests/ or eval/.
-tests/
+# Eval harness — was publicly fetchable on prod (verified 2026-06-11:
+# /tests/home-name.test.js returned 200). Same info-disclosure class as the
+# *.md exclusion above. Nothing at runtime imports from eval/.
+#
+# NOTE: tests/ is NOT excluded any more, for the same reason scripts/ isn't.
+# The release gate runs the suite INSIDE the build (package.json build →
+# `vitest run && …`), so tests/ is build-input; leaving it out made vitest
+# exit 1 with "No test files found" and would have broken every deploy. The
+# 2026-06-11 disclosure is already closed by a different mechanism: the deploy
+# now serves dist/ (outputDirectory in vercel.json), and scripts/build.mjs
+# copies only STATIC_ENTRIES into it — tests/ is never served regardless.
 eval/
