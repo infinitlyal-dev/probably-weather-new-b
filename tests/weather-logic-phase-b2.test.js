@@ -5,7 +5,7 @@
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import handler, { categorizeDesc } from '../api/weather.js';
+import handler, { categorizeDesc, agreementVoteBucket } from '../api/weather.js';
 
 // ---------------------------------------------------------------------------
 // Mock helpers (mirror tests/weather-logic-phase-b.test.js style)
@@ -830,5 +830,83 @@ describe('Item 3: categorizeDesc routes haze/smoke to fog', () => {
   it("rain wins over haze when both keywords present (priority order preserved)", () => {
     // 'rain' is checked before 'haze' in the keyword cascade
     expect(categorizeDesc('Rain with light haze')).toBe('rain');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Source agreement under an overlay condition (live bug 2026-09-15, Strand):
+// wind 35.7 km/h won over five unanimous rain votes and the API shipped
+// sourceAgreement "0/5" + confidence low — Home read "0/5 sources agree" under
+// "Rain's here." Overlays (wind/heat/uv) now count agreement on the sky family
+// the sources actually voted.
+// ---------------------------------------------------------------------------
+
+describe('agreementVoteBucket — overlays measure agreement on the voted sky family', () => {
+  it('wind over a drizzle/rain vote counts against rain', () => {
+    expect(agreementVoteBucket('wind', 'Light drizzle')).toBe('rain');
+    expect(agreementVoteBucket('wind', 'Patchy rain possible')).toBe('rain');
+  });
+  it('wind / heat / uv over a clear or partly sky still count against clear', () => {
+    expect(agreementVoteBucket('wind', 'Sunny')).toBe('clear');
+    expect(agreementVoteBucket('heat', 'Clear sky')).toBe('clear');
+    expect(agreementVoteBucket('uv', 'Partly cloudy')).toBe('clear');
+  });
+  it('uv over an overcast description counts against cloudy', () => {
+    expect(agreementVoteBucket('uv', 'Overcast')).toBe('cloudy');
+  });
+  it('non-overlay keys keep the conditionKeyToVoteBucket mapping, whatever the desc', () => {
+    expect(agreementVoteBucket('rain', 'Clear sky')).toBe('rain');
+    expect(agreementVoteBucket('cold-clear', 'Sunny')).toBe('cold');
+    expect(agreementVoteBucket('partly-cloudy', 'Partly cloudy')).toBe('clear');
+    expect(agreementVoteBucket('fog', 'Clear sky')).toBe('fog');
+  });
+});
+
+describe('Source agreement: wind beats unanimous rain → agreement counts the rain votes', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // OM "Light drizzle" at 50 km/h, PW "Rain" at 35 km/h, MET "Rain" at 30 km/h.
+      // Every source votes rain; the ensemble wind (≥30) wins the headline.
+      if (href.startsWith('https://api.open-meteo.com/')) {
+        return makeResponse(makeOpenMeteoPayload({
+          current: { temperature_2m: 16, apparent_temperature: 14, weather_code: 51, wind_speed_10m: 50, wind_gusts_10m: 60, relative_humidity_2m: 80, cloud_cover: 90 },
+        }));
+      }
+      if (href.startsWith('https://api.pirateweather.net/')) {
+        return makeResponse(makePirateWeatherPayload({
+          currently: { temperature: 16, apparentTemperature: 14, windSpeed: 9.72, humidity: 0.8, cloudCover: 0.9, uvIndex: 1, icon: 'rain' },
+        }));
+      }
+      if (href.startsWith('https://api.met.no/')) {
+        const startUtc = Date.UTC(2026, 4, 11, 0, 0, 0);
+        return makeResponse({
+          properties: {
+            timeseries: Array.from({ length: 48 }, (_, i) => ({
+              time: new Date(startUtc + i * 60 * 60 * 1000).toISOString(),
+              data: {
+                instant: { details: { air_temperature: 16, wind_speed: 8.33, relative_humidity: 80, cloud_area_fraction: 90 } },
+                next_1_hours: { summary: { symbol_code: 'rain' }, details: { precipitation_amount: 0.4 } },
+              },
+            })),
+          },
+        });
+      }
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it("reports 3/3 agreement and high confidence, not 0/3 and low", async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    expect(body.now.conditionKey).toBe('wind');
+    const votes = body.meta.sourceConditions;
+    expect(votes).toHaveLength(3);
+    expect(votes.every(v => v.vote === 'rain')).toBe(true);
+    expect(body.meta.conditionConfidence.ensembleVote).toBe('wind');
+    expect(body.meta.conditionConfidence.sourceAgreement).toBe('3/3');
+    expect(body.meta.confidence).toBe('high');
   });
 });
