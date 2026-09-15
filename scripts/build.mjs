@@ -143,12 +143,13 @@ const before = walk(dist)
   .reduce((total, file) => total + Buffer.byteLength(readFileSync(file, 'utf8')), 0);
 
 // P6: bundle the initial static dependency graph into app.js. Explicit dynamic
-// imports remain split: install UI plus one chunk for each language bank.
+// imports remain split: install UI, the bespoke line table (hero-lines.js) and
+// one chunk for each language bank.
 const clientBundle = await emitClientBundle(path.join(dist, 'assets'));
 const lazyEntryPoints = Object.values(clientBundle.metafile.outputs)
   .map((output) => output.entryPoint?.replaceAll('\\', '/'))
   .filter(Boolean);
-for (const required of ['install.js', 'copy/en.js', 'copy/af.js', 'copy/zu.js', 'copy/xh.js', 'copy/st.js']) {
+for (const required of ['install.js', 'hero-lines.js', 'copy/en.js', 'copy/af.js', 'copy/zu.js', 'copy/xh.js', 'copy/st.js']) {
   if (!lazyEntryPoints.some((entry) => entry.endsWith(`/${required}`))) {
     console.error(`[build] FATAL: P6 lazy client entry missing: ${required}`);
     process.exit(1);

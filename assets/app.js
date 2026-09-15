@@ -11,8 +11,7 @@ import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from '
 import { getRotationDay, getRotationWeek, buildPickerPaths } from './image-picker.js';
 import { pickConditionIconForTime, pickHourlyIcon, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { weatherIconSvg, ICON_CONDITION } from './weather-icons.js';
-import { heroCropFor, applyHeroCrop } from './hero-crop.js';
-import { heroLinesFor } from './hero-lines.js';
+import { heroCropFor, applyHeroCrop, heroCropKey } from './hero-crop.js';
 import { buildShareLink, sanitizeTelemetryUrl } from './share-url.js';
 import {
   FRESHNESS_MS,
@@ -2037,11 +2036,42 @@ document.addEventListener("DOMContentLoaded", () => {
   // ENGLISH ONLY, by Al's ruling: he writes the Afrikaans himself and zu/xh/st
   // go to native review. Every other language keeps the condition bank, so this
   // returns false and the line renderHome already set simply stands.
+  //
+  // The line table is its own lazy chunk (2026-09-15): at ~455 KB it was most of
+  // the ~640 KB app.js, and app.js has to arrive before the weather request can
+  // start. English sessions start the import at boot, beside the copy bank, so
+  // it is normally in hand before the first forecast paints. If the forecast wins
+  // the race, the condition line stands and the photograph's own line replaces it
+  // when the table lands — unless the photograph or the headline has changed in
+  // the meantime, in which case the newer paint owns the caption.
   const __lineMemo = new Map();
   const LINE_MEMO_CAP = 64;
+  let heroLineTable = null;
+  let heroLineTableLoad = null;
+  let bespokeSrc = '';
+  function loadHeroLineTable() {
+    if (!heroLineTableLoad) {
+      heroLineTableLoad = import('./hero-lines.js')
+        .then((mod) => { heroLineTable = mod; return mod; })
+        .catch((err) => {
+          heroLineTableLoad = null; // the next photograph retries
+          debugLog(`[Witty bespoke] line table did not load: ${err?.message || err}`);
+          return null;
+        });
+    }
+    return heroLineTableLoad;
+  }
   function applyBespokeLine(src) {
     if (!headlineEl || settings.lang !== 'en') return false;
-    const lines = heroLinesFor(src);
+    bespokeSrc = src;
+    if (!heroLineTable) {
+      const standing = headlineEl.textContent;
+      loadHeroLineTable().then((mod) => {
+        if (mod && src === bespokeSrc && headlineEl.textContent === standing) applyBespokeLine(src);
+      });
+      return false;
+    }
+    const lines = heroLineTable.heroLinesForKey(heroCropKey(src));
     if (!lines) return false;
     let line = __lineMemo.get(src);
     if (!line) {
@@ -3944,6 +3974,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCopyBank(settings.lang)
     .then((fresh) => { if (fresh) applySettings(); })
     .catch((e) => console.error('[copy] bank load failed:', e));
+  // The bespoke line table serves English only (applyBespokeLine). Start it now,
+  // in parallel with the copy bank, so it normally lands before the forecast.
+  if (settings.lang === 'en') loadHeroLineTable();
   applySettings(); renderRecents(); renderFavorites();
   // Keep only the tiny beforeinstallprompt capture on the boot path. The full
   // install UI loads at browser idle, or immediately if the one-shot prompt

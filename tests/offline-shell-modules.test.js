@@ -53,6 +53,7 @@ function loadServiceWorkerContext() {
 // still needs every one of them.
 const dynamicModules = [
   '/assets/install.js',
+  '/assets/hero-lines.js',
   '/assets/coord-parse.js',
   '/assets/copy/en.js',
   '/assets/copy/af.js',
@@ -72,10 +73,12 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
     // startup-location.js — covered by the dynamicModules precache check below.)
     // The deploy stamp (BUILD_ID) is kept INLINE in app.js — deliberately not a
     // separate imported module — so it never adds a hard offline-boot dependency.
-    // 2026-08-19 adds hero-lines.js: Al's bespoke witty lines, keyed to the
-    // photograph rather than the condition. It is a hard boot dependency because
-    // app.js resolves the caption through it on the paint path.
-    expect(importedModules.length).toBe(18);
+    // 2026-08-19 added hero-lines.js: Al's bespoke witty lines, keyed to the
+    // photograph rather than the condition. 2026-09-15 moved it out of the static
+    // graph — at ~455 KB it was most of app.js — into a lazy chunk that
+    // applyBespokeLine loads, so it is checked with the dynamic modules below.
+    expect(importedModules.length).toBe(17);
+    expect(importedModules).not.toContain('/assets/hero-lines.js');
     for (const mod of [
       '/assets/language-preferences.js',
       '/assets/copy-loader.js',
@@ -103,6 +106,7 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
 
   it('app.js dynamically imports install.js and the per-language banks', () => {
     expect(appSrc).toMatch(/import\(['"]\.\/install\.js['"]\)/);
+    expect(appSrc).toMatch(/import\(['"]\.\/hero-lines\.js['"]\)/);
     expect(appSrc).toMatch(/loadCopyBank\(/);
   });
 

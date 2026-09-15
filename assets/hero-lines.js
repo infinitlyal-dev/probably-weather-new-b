@@ -22,7 +22,11 @@
 // hero-crop.js ships both: the source tree serves slot paths and production
 // serves content-addressed names.
 
-import { heroCropKey } from './hero-crop.js';
+// A LEAF MODULE, on purpose: app.js loads this table as its own lazy chunk, and
+// a module it shared with app.js's static graph (hero-crop.js) would make the
+// bundler emit a shared chunk that app.js imports statically — a second request
+// before first paint, which the P6 build refuses. The caller derives the key
+// with hero-crop.js's heroCropKey and passes it in.
 
 /** @type {Readonly<Record<string, readonly string[]>>} slot path (no prefix) -> lines */
 export const HERO_LINES = Object.freeze({
@@ -1333,15 +1337,14 @@ export const HERO_LINES = Object.freeze({
 
 /**
  * The lines written for this photograph, or null if it has none yet.
- * Shares hero-crop.js's key derivation deliberately: two lookups that disagree
- * about what identifies an image would be two bugs waiting, and the crop table
- * has already been proven against the live picker.
- * @param {string} src
+ * `key` is hero-crop.js's heroCropKey(src), derived by the caller: two lookups
+ * that disagree about what identifies an image would be two bugs waiting, and
+ * the crop table has already been proven against the live picker.
+ * @param {string} key
  * @param {Record<string, readonly string[]>} [table]
  * @returns {readonly string[] | null}
  */
-export function heroLinesFor(src, table = HERO_LINES) {
-  const key = heroCropKey(src);
+export function heroLinesForKey(key, table = HERO_LINES) {
   if (!key) return null;
   const lines = table[key];
   return Array.isArray(lines) && lines.length ? lines : null;
