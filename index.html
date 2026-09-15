@@ -276,7 +276,10 @@
        data: URIs, so there are ZERO font-file requests and it rides after app.css
        (its rules win). The larger Caveat caption subset (desktop postcard only) is
        JS media-gated below so mobile never downloads its caption bytes. -->
-  <link rel="stylesheet" href="assets/type-prototype.css"/>
+  <!-- media="print" keeps its ~52 KB (data: woff2) off the render-blocking path;
+       app.js switches it to "all" at boot, while the splash still covers the shell.
+       An external module flips it, so the CSP needs no inline handler. -->
+  <link id="pwTypeUi" rel="stylesheet" href="assets/type-prototype.css" media="print"/>
   <script>
     (function () {
       function loadCaption() {

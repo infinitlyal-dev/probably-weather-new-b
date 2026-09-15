@@ -56,12 +56,14 @@ const dynamicModules = [
   '/assets/hero-lines.js',
   '/assets/hero-lines-af.js',
   '/assets/coord-parse.js',
+  // English is the fallback every copy getter ends in, so it stays precached.
   '/assets/copy/en.js',
-  '/assets/copy/af.js',
-  '/assets/copy/zu.js',
-  '/assets/copy/xh.js',
-  '/assets/copy/st.js',
 ];
+
+// 2026-09-15: the other four banks left the install-time precache. They are
+// cached on demand — app.js names the reader's language and sw.js adds that
+// bank to the core cache — so a first visit downloads one bank, not five.
+const onDemandBanks = ['af', 'zu', 'xh', 'st'];
 
 describe('offline shell — every module app.js imports is in the SW cache', () => {
   it('app.js imports the full module graph (incl. the recently-added ones)', () => {
@@ -117,6 +119,19 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
     for (const mod of dynamicModules) {
       expect(coreBlock, `${mod} missing from CORE_ASSETS (precache)`).toContain(`'${mod}'`);
     }
+  });
+
+  it('the four non-English banks are cached on demand, not precached', () => {
+    const coreBlock = swSrc.match(/CORE_ASSETS\s*=\s*\[([\s\S]*?)\]/)[1];
+    const banks = swSrc.match(/const COPY_BANKS = (\{[^}]*\}); \/\/ __COPY_BANKS__/);
+    expect(banks, 'COPY_BANKS marker line (scripts/build.mjs rewrites it)').not.toBeNull();
+    for (const lang of onDemandBanks) {
+      expect(coreBlock, `copy/${lang}.js must not be precached`).not.toContain(`'/assets/copy/${lang}.js'`);
+      expect(banks[1]).toContain(`${lang}: '/assets/copy/${lang}.js'`);
+    }
+    expect(swSrc).toMatch(/event\.data\.type === 'PW_CACHE_COPY'/);
+    expect(swSrc).toMatch(/cache\.add\(url\)/);
+    expect(appSrc).toMatch(/postMessage\(\{ type: 'PW_CACHE_COPY', lang: settings\.lang \|\| 'en' \}\)/);
   });
 
   it('CORE_ASSETS precaches every imported module', () => {

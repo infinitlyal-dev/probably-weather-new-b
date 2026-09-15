@@ -167,11 +167,30 @@ if (!appOutput || appMeta?.imports.some((entry) => entry.kind === 'import-statem
 // previewable. Only dist/sw.js receives the generated, hashed bundle paths.
 const CLIENT_ASSET_BLOCK = /\/\/ __CLIENT_BUNDLE_ASSETS_START__[\s\S]*?\/\/ __CLIENT_BUNDLE_ASSETS_END__/;
 const distSwPath = path.join(dist, 'sw.js');
-const generatedClientAssets = clientBundle.coreAssetUrls.map((url) => `  '${url}',`).join('\n');
-const bundledSwSource = readFileSync(distSwPath, 'utf8').replace(
+// Language banks (2026-09-15): only the English chunk is precached. The other four
+// leave the install-time list; sw.js caches the reader's own bank when app.js names
+// it (COPY_BANKS, rewritten here from the source paths to the hashed chunks).
+const copyBankUrls = {};
+for (const [outPath, meta] of Object.entries(clientBundle.metafile.outputs)) {
+  const lang = meta.entryPoint?.replaceAll('\\', '/').match(/\/copy\/(en|af|zu|xh|st)\.js$/)?.[1];
+  if (lang) copyBankUrls[lang] = `/assets/${outPath.replaceAll('\\', '/').split('/assets/').pop()}`;
+}
+if (Object.keys(copyBankUrls).length !== 5 || !clientBundle.coreAssetUrls.includes(copyBankUrls.en)) {
+  console.error(`[build] FATAL: could not map the five copy-bank chunks: ${JSON.stringify(copyBankUrls)}`);
+  process.exit(1);
+}
+const lazyBankUrls = new Set(Object.entries(copyBankUrls).filter(([lang]) => lang !== 'en').map(([, url]) => url));
+const generatedClientAssets = clientBundle.coreAssetUrls.filter((url) => !lazyBankUrls.has(url)).map((url) => `  '${url}',`).join('\n');
+const COPY_BANKS_LINE = /const COPY_BANKS = \{[^}]*\}; \/\/ __COPY_BANKS__/;
+const swWithBankMap = readFileSync(distSwPath, 'utf8');
+if (!COPY_BANKS_LINE.test(swWithBankMap)) {
+  console.error('[build] FATAL: COPY_BANKS marker not found in dist/sw.js');
+  process.exit(1);
+}
+const bundledSwSource = swWithBankMap.replace(
   CLIENT_ASSET_BLOCK,
   `// __CLIENT_BUNDLE_ASSETS_START__\n${generatedClientAssets}\n  // __CLIENT_BUNDLE_ASSETS_END__`,
-);
+).replace(COPY_BANKS_LINE, `const COPY_BANKS = ${JSON.stringify(copyBankUrls)}; // __COPY_BANKS__`);
 writeFileSync(distSwPath, bundledSwSource, 'utf8');
 
 const builtCoreBlock = bundledSwSource.match(/CORE_ASSETS\s*=\s*\[([\s\S]*?)\]/);
