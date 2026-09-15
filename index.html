@@ -513,17 +513,6 @@
       <button id="myLocationHome" class="my-location-btn" type="button" aria-label="My location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pw-icon" data-icon="pin" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> <span>My Location</span></button>
     </div>
 
-    <!-- ADS-READINESS DRAFT (branch ads-readiness, do not merge): the one Home ad slot.
-         A sibling AFTER .home-layout, so it can never sit over the forecast card; with
-         ads on, Home is at least one screen tall, so the slot always starts below the
-         fold. Inert as shipped: [hidden], no ad script, no request — it only shows under
-         body.ads-on.home-active once the reader has made an ad choice.
-         Spec and measurements: docs/ads-readiness.md. -->
-    <aside id="homeAdSlot" class="home-ad-slot" aria-label="Advertisement" hidden>
-      <p class="home-ad-label">Advertisement</p>
-      <div id="homeAdFrame" class="home-ad-frame"></div>
-    </aside>
-
     <section id="hourly-screen" class="screenPanel hourly-screen hidden">
       <!-- day-detail-header/day-detail-back are the PRE-facelift desktop form and
            stay on the two screens that already had a back control. The M2 page-head
@@ -553,6 +542,13 @@
         <div id="hourlyChart" class="hourly-chart m-only" role="img"></div>
         <div id="hourly-timeline" class="hourly-timeline"></div>
       </div>
+      <!-- ADS-READINESS DRAFT (branch ads-readiness, do not merge): the Hourly slot, after the
+           content, in normal flow. Hidden until app.js enables it from assets/ads-config.js;
+           shown only <=1023px. With no network live it holds the placeholder card. -->
+      <aside class="ad-slot" data-ad-slot="hourly" aria-label="Advertisement" hidden>
+        <p class="ad-slot-label" data-ad-i18n="label">Advertisement</p>
+        <div class="ad-slot-frame"><p class="ad-placeholder" data-ad-i18n="placeholder">Weather apps don't grow on trees. There might be an ad here one day.</p></div>
+      </aside>
     </section>
 
     <section id="week-screen" class="screenPanel week-screen hidden">
@@ -569,6 +565,12 @@
         <p id="weekSubtitle" class="page-sub m-only" hidden></p>
         <div id="daily-cards" class="daily-cards"></div>
       </div>
+      <!-- ADS-READINESS DRAFT (branch ads-readiness, do not merge): the Weekly slot — same
+           contract as the Hourly one (assets/ads-config.js, docs/ads-readiness.md). -->
+      <aside class="ad-slot" data-ad-slot="weekly" aria-label="Advertisement" hidden>
+        <p class="ad-slot-label" data-ad-i18n="label">Advertisement</p>
+        <div class="ad-slot-frame"><p class="ad-placeholder" data-ad-i18n="placeholder">Weather apps don't grow on trees. There might be an ad here one day.</p></div>
+      </aside>
     </section>
 
     <section id="day-detail-screen" class="screenPanel day-detail-screen hidden">
@@ -632,6 +634,12 @@
       <div class="screen-panel-footer search-maintenance">
         <button id="clearRecents" class="clear-recents">Clear recents</button>
       </div>
+      <!-- ADS-READINESS DRAFT (branch ads-readiness, do not merge): the Search slot exists only
+           behind ADS_CONFIG.slots.search, which is false — it stays hidden. -->
+      <aside class="ad-slot" data-ad-slot="search" aria-label="Advertisement" hidden>
+        <p class="ad-slot-label" data-ad-i18n="label">Advertisement</p>
+        <div class="ad-slot-frame"><p class="ad-placeholder" data-ad-i18n="placeholder">Weather apps don't grow on trees. There might be an ad here one day.</p></div>
+      </aside>
     </section>
 
     <!-- Sources page — full destination from the new nav button. Credibility +

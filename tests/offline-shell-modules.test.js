@@ -80,9 +80,11 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
     // photograph rather than the condition. 2026-09-15 moved it out of the static
     // graph — at ~455 KB it was most of app.js — into a lazy chunk that
     // applyBespokeLine loads, so it is checked with the dynamic modules below.
-    expect(importedModules.length).toBe(17);
+    // ads-readiness (branch, do not merge): + assets/ads-config.js, the ad-slot config.
+    expect(importedModules.length).toBe(18);
     expect(importedModules).not.toContain('/assets/hero-lines.js');
     for (const mod of [
+      '/assets/ads-config.js',
       '/assets/language-preferences.js',
       '/assets/copy-loader.js',
       '/assets/witty-day-tags.js',

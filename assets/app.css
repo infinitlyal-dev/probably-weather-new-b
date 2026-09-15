@@ -6121,38 +6121,49 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   body.home-active .agree-line { color: var(--ink); }
 }
 
-/* ---------- ADS-READINESS DRAFT: the one Home ad slot (docs/ads-readiness.md) ----------
-   Branch ads-readiness, do not merge. Inert as shipped: #homeAdSlot is [hidden] and nothing
-   below applies until body.ads-on. PHONES AND TABLETS ONLY (≤768px): with ads on, Home is at
-   least one screen tall, so the slot — a sibling after .home-layout, never inside the forecast
-   card — always starts below the fold; its size is reserved so a late ad cannot move anything;
-   and it keeps clear of the fixed nav and install banner when scrolled into view.
-   Desktop (≥769px) gets no Home slot: that Home is one fixed postcard screen. Measured with the
-   slot on at 1366×768 and 1920×1080, scrolling to it slid it under the polaroid and the action
-   pills and pushed the headline under the nav — there is no below-the-fold on that layout
-   (docs/ads-readiness.md, decision 7). */
-.home-ad-slot { display: none; }
-@media (max-width: 768px) {
-  body.ads-on.home-active .home-layout { min-height: 100dvh; }
-  body.ads-on.home-active .home-ad-slot:not([hidden]) {
+/* ---------- ADS-READINESS DRAFT: the ad slots (docs/ads-readiness.md) ----------
+   Branch ads-readiness, do not merge. Al's ruling 2026-09-15: no Home slot; one slot at the end
+   of Hourly and one at the end of Weekly; a Search slot only behind ADS_CONFIG.slots.search (off).
+   PHONES AND TABLETS ONLY (<=1023px; the >=1024px postcard has none). Each slot is an <aside> in
+   normal flow after its screen's content — never fixed, so it cannot sit over content or the nav.
+   The content above it is held to at least one screen tall, so the slot always starts below the
+   fold; its box is reserved (label + a 300x250 frame) so a late ad cannot move anything; its bottom
+   margin clears the fixed nav when scrolled to the end. With no network live the frame holds the
+   placeholder card, in the app's own surface and caption hand. */
+.ad-slot { display: none; }
+@media (max-width: 1023px) {
+  body.ads-slots .screenPanel:has(> .ad-slot:not([hidden])) > .screen-panel-body { min-height: 100dvh; }
+  body.ads-slots .ad-slot:not([hidden]) {
     display: block;
     box-sizing: border-box;
     width: min(calc(100% - 32px), 336px);
-    min-height: 304px;
-    /* Clears the fixed stack at the bottom of the screen when scrolled to the end: the nav
-       (--nav-h) and the install banner above it (78px gap + 68px tall), plus 16px. */
-    margin: 24px auto calc(var(--nav-h, 72px) + 162px + env(safe-area-inset-bottom, 0px));
+    margin: 24px auto calc(var(--nav-h, 72px) + 24px + env(safe-area-inset-bottom, 0px));
   }
 }
-.home-ad-label {
+.ad-slot-label {
   margin: 0 0 6px;
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-2, rgba(255, 255, 255, 0.72));
 }
-.home-ad-frame {
-  min-height: 280px;
-  border-radius: var(--r-sm);
-  background: rgba(255, 255, 255, 0.04);
+.ad-slot-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 250px;
+  padding: 24px 22px;
+  border-radius: var(--r-lg);
+  background: var(--surface, rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ad-placeholder {
+  margin: 0;
+  font-family: 'Caveat Prototype', 'Segoe Print', 'Bradley Hand', cursive;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--brand-gold, #ffd700);
 }

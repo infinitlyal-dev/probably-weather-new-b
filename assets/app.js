@@ -32,6 +32,7 @@ import { isStoredHomeObject, shouldPersistHomeName } from './home-name.js';
 import { HEAT_EXTREME_C } from './weather-thresholds.js';
 import { SEARCH_MINI_VISIBLE_LIMIT, createSearchMiniPromiseCache } from './search-mini-weather.js';
 import { setupDeferredInstallLoad } from './install-loader.js';
+import { slotEnabled } from './ads-config.js';
 
 // Deploy identity baked into THIS bundle. scripts/build.mjs rewrites the
 // __BUILD_ID__ placeholder to the Vercel commit SHA at build time (the string
@@ -548,6 +549,19 @@ document.addEventListener("DOMContentLoaded", () => {
         zu: "Ukuthola indawo kuthathe isikhathi eside. Isebenzisa indawo eseduze.",
         xh: "Ukukhangela indawo kuthathe ixesha elide. Kusetyenziswa indawo ekufuphi.",
         st: "Ho batla sebaka ho nkile nako e telele. E sebedisa sebaka se ka bang sona."
+      }
+    },
+    // ADS-READINESS (branch ads-readiness, do not merge): the slot label and the placeholder
+    // card shown until a network is live (assets/ads-config.js). Checked with
+    // scripts/lang-check/triage.mjs; zu/xh/st await a native speaker like every new string.
+    ads: {
+      label: { en: "Advertisement", af: "Advertensie", zu: "Isikhangiso", xh: "Intengiso", st: "Papatso" },
+      placeholder: {
+        en: "Weather apps don't grow on trees. There might be an ad here one day.",
+        af: "Weer-apps groei nie op bome nie. Hier kom dalk eendag 'n advertensie.",
+        zu: "Ama-app esimo sezulu awakhuli ezihlahleni. Kungenzeka kube nesikhangiso lapha ngolunye usuku.",
+        xh: "Ii-app zemozulu azikhuli emithini. Kusenokubakho intengiso apha ngenye imini.",
+        st: "Di-app tsa boemo ba lehodimo ha di mele difateng. Mohlomong ho tla ba le papatso mona ka tsatsi le leng."
       }
     },
     // Misc
@@ -1326,6 +1340,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== UPDATE UI LANGUAGE ==========
   function updateUILanguage() {
+    // ADS-READINESS (branch ads-readiness, do not merge): the slots follow assets/ads-config.js
+    // (Hourly and Weekly on, Search off, never Home) and carry the label and the placeholder card
+    // in the current language. body.ads-slots switches the CSS on; it is phones and tablets only.
+    if (typeof document !== 'undefined' && typeof document.querySelectorAll === 'function') {
+      let anySlot = false;
+      document.querySelectorAll('[data-ad-slot]').forEach((slot) => {
+        const on = slotEnabled(slot.dataset.adSlot);
+        slot.hidden = !on;
+        anySlot = anySlot || on;
+        slot.setAttribute('aria-label', t('ads', 'label'));
+        slot.querySelectorAll('[data-ad-i18n]').forEach((node) => { node.textContent = t('ads', node.dataset.adI18n); });
+      });
+      document.body?.classList?.toggle('ads-slots', anySlot);
+    }
     if (navHome) navHome.textContent = t('nav', 'home');
     if (navWeek) navWeek.textContent = t('nav', 'week');
     if (navSearch) navSearch.textContent = t('nav', 'search');

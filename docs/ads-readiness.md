@@ -1,127 +1,95 @@
 # Ads readiness — DRAFT (branch `ads-readiness`, do not merge)
 
-Prepared 2026-09-15 as close-out item J. A draft for Al to rule on, not a launch:
+Close-out item J (2026-09-15), reworked the same day to Al's ruling:
 
-- **Not deployed.** `vercel.json` carries `git.deploymentEnabled["ads-readiness"] = false`, so commits on this branch do not build a Vercel deployment (production or preview). `tests/csp-ads.test.js` pins it.
-- **Inert if merged by accident.** No ad script, no loader, no consent component. The Home slot ships `hidden`; the privacy additions describe behaviour that does not exist yet; the AdSense CSP is only printed, never written to `vercel.json`.
+> No Home slot at all. Slots on Hourly and Weekly, phones and tablets only, below the fold, never over content or the nav; Search slot as an optional flag off by default. Until a network is live, the slot renders a placeholder card in the app's own style, in all five languages, reading roughly "Weather apps don't grow on trees. There might be an ad here one day." Keep the privacy and consent work from the PR.
 
-What is on the branch:
+- **Not deployed.** `vercel.json` carries `git.deploymentEnabled["ads-readiness"] = false`, so commits on this branch build no Vercel deployment. `tests/csp-ads.test.js` pins it.
+- **No network, no ad script.** `assets/ads-config.js` has `network: null`; no loader, no consent component, no request to anyone. The slots show the placeholder card only.
 
 | File | Change |
 |---|---|
-| `privacy.html` | Google AdSense added as a vendor; the required third-party-cookie disclosure; a section on the ad choice; Google's advertising cookies named; opt-outs |
-| `index.html`, `assets/app.css` | the one Home ad slot, hidden, styled only under `body.ads-on` |
-| `scripts/generate-csp.mjs` | `buildAdsCsp()` and `node scripts/generate-csp.mjs --ads` |
-| `tests/csp-ads.test.js` | the ads policy's shape; `vercel.json` still ships the enforced policy; the branch never deploys; the slot ships hidden with no ad script |
-| `docs/ads-readiness-consent.json` | the ad-choice banner and Settings row in five languages, with the lang-check record |
+| `assets/ads-config.js` | the ruling as data: `slots: { hourly: true, weekly: true, search: false }`, `network: null`, phones and tablets only |
+| `index.html` | one `<aside class="ad-slot">` at the end of Hourly, Weekly and Search; the Home slot is gone |
+| `assets/app.css` | the slot and placeholder card (≤1023px only, normal flow, below a one-screen body) |
+| `assets/app.js` | `T.ads` (label + placeholder, five languages); `updateUILanguage` enables slots from the config and relabels them on a language switch |
+| `privacy.html` | Google AdSense as a vendor; the third-party-cookie disclosure; the ad choice; Google's advertising cookies named; opt-outs (unchanged from the first draft) |
+| `docs/ads-readiness-consent.json` | the POPIA ad-choice banner and Settings row in five languages (unchanged) |
+| `scripts/generate-csp.mjs` | `buildAdsCsp()` and `node scripts/generate-csp.mjs --ads` (unchanged) |
+| `tests/csp-ads.test.js` | the ads CSP; the branch never deploys; no Home slot; Hourly/Weekly slots after their content; Search behind a flag that is off; ≤1023px, never fixed; the placeholder in five languages; no ad script |
 | `vercel.json` | `git.deploymentEnabled` for this branch only |
 
-## 1. What this draft runs into
+## 1. The slots
 
-The monetisation plan on record says otherwise. `Son-Memory/projects/probably-weather.md`:
+**Where.** An `<aside class="ad-slot" data-ad-slot="hourly|weekly|search" aria-label="Advertisement" hidden>` as the last child of `#hourly-screen`, `#week-screen` and `#search-screen` — after the screen's content, in normal flow. Nothing on Home, Sources, Settings or the day detail.
 
-> **Monetisation (locked 2026-05-16):** Adsterra-first + Media.net parallel, skip AdSense initially. Home + Sources AD-FREE; ad slots only Hourly/Weekly/DayDetailHourly/DayDetailSummary.
+**Which are on.** `assets/ads-config.js`: Hourly on, Weekly on, Search off. `updateUILanguage` sets each slot's `hidden` from the config and adds `body.ads-slots` when any slot is on.
 
-This draft follows the 2026-09-15 brief instead — AdSense, one slot on Home below the fold. Both points contradict the lock. Nothing here should merge until Al rules on them (section 8).
+**Rules** (`assets/app.css`, `@media (max-width: 1023px)` — phones and tablets; the ≥1024px desktop postcard gets none):
+- The screen body above an enabled slot is at least one screen tall (`min-height: 100dvh`), so the slot always starts below the fold.
+- The slot is never `fixed`, `sticky` or `absolute`: it cannot sit over content or the nav.
+- Its bottom margin clears the fixed nav (`--nav-h` + 24px + safe area) when scrolled to the end.
+- The box is reserved: a label and a 250px-high frame (300×250 fits), so a late ad cannot move anything.
 
-## 2. Vendors
+**The placeholder card.** Until `network` is set, the frame holds one line in the app's caption hand (Caveat, brand gold) on the app's surface colour:
 
-| Vendor | Status | Policy |
-|---|---|---|
-| Google AdSense (Google LLC) | added in this draft | [how Google uses information from sites that use its services](https://policies.google.com/technologies/partner-sites) · [privacy policy](https://policies.google.com/privacy) |
-| Adsterra | already disclosed | [adsterra.com/privacy-policy](https://adsterra.com/privacy-policy/) |
-| Media.net | already disclosed | [media.net/privacy-policy](https://www.media.net/privacy-policy/) |
-
-## 3. Privacy policy additions (`privacy.html`)
-
-- **Required disclosure.** AdSense requires the policy to say that third-party vendors, including Google, use cookies to serve ads based on prior visits, to name the vendors and ad networks, and to link their opt-outs ([Required content](https://support.google.com/adsense/answer/1348695)). All three are in the Advertising section now.
-- **Your ad choice.** Ads picked for you (personalised) or general ads. For the general choice the policy says only what Google's help page says: cookies are still used for frequency capping and aggregated ad reporting ([Personalized and non-personalized ads](https://support.google.com/adsense/answer/9007336)). The choice lives on the device, never on our server; Settings → Ad choices changes it; clearing site data resets it. Opt-outs: [My Ad Center](https://myadcenter.google.com/) and [aboutads.info/choices](https://www.aboutads.info/choices/).
-- **Cookies.** Google's own advertising cookie names and purposes: `__gads`, `IDE`, `DSID`, `id` ([How Google uses cookies](https://policies.google.com/technologies/cookies)), with a link to the full list.
-- **Left out on purpose:** anything about visitors in the EEA, the UK or Switzerland, because that depends on a decision (section 4).
-
-## 4. POPIA ad-choice banner — spec
-
-**When.** Once per device, before the first Google ad request; again only if site data is cleared or Al changes the wording. **Until a choice exists, no AdSense script loads** (a proposal — see decision 4).
-
-**Where and how.** A bottom sheet above the nav, never over the temperature or the headline. `role="dialog"` with `aria-labelledby` on the title, focus on the first button, both buttons equal in size and weight (no nudging towards yes), no close control that records a choice. The privacy link reuses the app's reviewed `T.settings.privacyPolicy`.
-
-**Copy** (all five languages in `docs/ads-readiness-consent.json`):
-
-| Key | English |
+| | |
 |---|---|
-| `adConsentTitle` | Ads keep this app free |
-| `adConsentBody` | Google shows the ads here. Say yes and it may use cookies to pick ads for you. Say no and you still get ads, just not picked for you. Change your mind any time in Settings. |
-| `adConsentPersonalised` | Yes, pick ads for me |
-| `adConsentGeneral` | No, keep them general |
-| `adChoicesRow` | Ad choices |
+| en | Weather apps don't grow on trees. There might be an ad here one day. |
+| af | Weer-apps groei nie op bome nie. Hier kom dalk eendag 'n advertensie. |
+| zu | Ama-app esimo sezulu awakhuli ezihlahleni. Kungenzeka kube nesikhangiso lapha ngolunye usuku. |
+| xh | Ii-app zemozulu azikhuli emithini. Kusenokubakho intengiso apha ngenye imini. |
+| st | Di-app tsa boemo ba lehodimo ha di mele difateng. Mohlomong ho tla ba le papatso mona ka tsatsi le leng. |
 
-**Language check** (`node scripts/lang-check.mjs --file`, 2026-09-15). The first pass flagged all four titles, because the app's name trips "Weather" as untranslated English. It also flagged three bodies: zu `ezingakhethelwe` (unattested), xh `ezingakhethelwanga` (triage-high) and st `seng` / `tsona` (triage-high, off-sense). After one revision all 20 strings pass with no medium or high finding. Under CLAUDE.md rule 9, isiZulu, isiXhosa and Sesotho are still not wired until a native speaker rules, and the Afrikaans goes to Al.
+Label: Advertisement / Advertensie / Isikhangiso / Intengiso / Papatso.
 
-**Storage.** `localStorage` `pw_ad_choice` = `{"choice":"personalised"|"general","at":"YYYY-MM-DD","v":1}`, in a try/catch like the app's other storage. Blocked storage means the banner shows again next session, and no personalised ads meanwhile.
+**Language check** (`scripts/lang-check/lib/checker.mjs`, 2026-09-15). All four labels pass. The placeholders pass in af, xh and st. The first zu draft ("…awamili ezihlahleni…") was triage on one medium finding — `awamili` unattested — and the shipped line uses the attested `awakhuli` (pass, 0.15). Under CLAUDE.md rule 9, isiZulu, isiXhosa and Sesotho still wait for a native speaker before this is ever wired to production; the Afrikaans goes to Al.
 
-**Effect.**
-- `general`: before `adsbygoogle.js` loads, set `(adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1`. The request then carries `npa=1` ([Ads personalization settings in Google's publisher ad tags](https://support.google.com/adsense/answer/7670312)). Account-level non-personalised control in Privacy & messaging is deprecated ([notice](https://support.google.com/adsense/answer/16278928)), so the tag is the control.
-- `personalised`: the default tag.
-- Settings → Ad choices shows the current choice and reopens the sheet. A change applies from the next Home paint.
+## 2. Measured on this branch's build
 
-**POPIA.** Personalised ads rest on consent (s11(1)(a)); general ads on legitimate interest (s11(1)(f)). Cross-border transfer is already covered under s72 in the policy. **To confirm with a lawyer — not verified here.**
+Method: `output/_ads-slots.mjs` in the main repo — a static server over this worktree's `dist/`, the weather API mocked, Chromium; Hourly and Weekly opened from their nav controls, then scrolled to the end. "Overlaps" counts screen header and body children intersecting the slot; "nothing on top" means `elementFromPoint` at the slot's top, middle and bottom returns the slot.
 
-**Visitors in the EEA, the UK and Switzerland.** Google requires a Google-certified consent management platform integrated with the IAB TCF to serve personalised ads there: from 16 January 2024 in the EEA and UK, and from 31 July 2024 in Switzerland ([Google consent management requirements](https://support.google.com/adsense/answer/13554116)). This banner is not a certified CMP. See decision 3.
+| Viewport | Hourly slot | Weekly slot | Top at open vs fold | Overlaps content | End of scroll | Clear of nav | Nothing on top | Home slots | Search slot | Off-origin requests | Console errors |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 360×640 | shown | shown | 726 px vs 640 — below | 0 | 201–472 px | nav at 568 — yes | yes | 0 | hidden | 0 | 0 |
+| 390×844 | shown | shown | 930 vs 844 — below | 0 | 405–676 | nav at 772 — yes | yes | 0 | hidden | 0 | 0 |
+| 412×915 | shown | shown | 1,001 vs 915 — below | 0 | 476–747 | nav at 843 — yes | yes | 0 | hidden | 0 | 0 |
+| 768×1024 | shown | shown | 1,110 vs 1,024 — below | 0 | 585–856 | nav at 952 — yes | yes | 0 | hidden | 0 | 0 |
+| 1366×768 | not shown (desktop) | not shown | — | 0 | — | — | — | 0 | hidden | 0 | 0 |
+| 1920×1080 | not shown (desktop) | not shown | — | 0 | — | — | — | 0 | hidden | 0 | 0 |
 
-## 5. The Home slot
+The same numbers for Hourly and Weekly: in both, the one-screen body is what places the slot. Screenshots: `output/ads-slots/hourly-390-en-end.png` and `weekly-390-<lang>-end.png` for all five languages.
 
-**Markup.** `<aside id="homeAdSlot" class="home-ad-slot" aria-label="Advertisement" hidden>`, a sibling after `.home-layout`, so it can never sit inside the forecast card.
+**Loading, when a network is live.** Request the ad only when the slot approaches (an `IntersectionObserver` with about one screen of `rootMargin`), never on first paint, and only after the reader's ad choice (section 4). Report nothing to our server.
 
-**Phones and tablets only (≤768px).** The desktop Home (≥769px) is one fixed "postcard" screen. With the slot enabled at 1366×768 and 1920×1080, scrolling to it slid it under the polaroid and the Share / Hourly / My Location pills. At 1920×1080 it also pushed the big headline up under the nav. There is no below-the-fold on that layout, so this draft puts no Home slot on desktop (decision 7).
+## 3. Privacy policy additions (`privacy.html`) — kept
 
-**Rules** (`assets/app.css`, all under `body.ads-on.home-active` inside `@media (max-width: 768px)`):
-- With ads on, Home is at least one screen tall (`min-height: 100dvh`), so the slot starts below the fold at every width.
-- It reserves `min-height: 304px` (label + a 336×280 frame), so a late ad cannot move anything.
-- Its bottom margin clears the fixed nav plus the install banner above it.
+- **Required disclosure.** AdSense requires the policy to say that third-party vendors, including Google, use cookies to serve ads based on prior visits, to name the vendors and ad networks, and to link their opt-outs ([Required content](https://support.google.com/adsense/answer/1348695)).
+- **Your ad choice.** Ads picked for you (personalised) or general ads; for the general choice, cookies are still used for frequency capping and aggregated reporting ([Personalized and non-personalized ads](https://support.google.com/adsense/answer/9007336)). The choice lives on the device; Settings → Ad choices changes it; clearing site data resets it. Opt-outs: [My Ad Center](https://myadcenter.google.com/), [aboutads.info/choices](https://www.aboutads.info/choices/).
+- **Cookies.** Google's advertising cookies named (`__gads`, `IDE`, `DSID`, `id`) with a link to the full list ([How Google uses cookies](https://policies.google.com/technologies/cookies)).
+- **Vendors disclosed:** Google AdSense (added), Adsterra and Media.net (already there). Which network goes live first is still open (section 6, decision 1).
 
-**Measured on this branch's build.** Method: `J-slot.mjs` — a static server over `dist/`, the API answered by production, Chromium. Ads were switched on in the page for the measurement only.
+## 4. POPIA ad-choice banner — spec, kept
 
-| Viewport | Slot with ads on | Slot top vs fold | Overlaps forecast card | Card moved | At the end of scroll | Ad requests | Errors |
-|---|---|---|---|---|---|---|---|
-| 360×640 | shown | 664 px — 24 px below | no | no | 102–406 px on screen, 16 px above the install banner, nothing on top | 0 | 0 |
-| 390×844 | shown | 868 px — 24 px below | no | no | 306–610 px, 16 px above the banner | 0 | 0 |
-| 412×915 | shown | 939 px — 24 px below | no | no | 377–681 px, 22 px above the banner | 0 | 0 |
-| 768×1024 | shown | 1,048 px — 24 px below | no | no | 486–790 px, 22 px above the banner | 0 | 0 |
-| 1366×768 | not shown (desktop) | — | no | no | — | 0 | 0 |
-| 1920×1080 | not shown (desktop) | — | no | no | — | 0 | 0 |
+- **When.** Once per device, before the first ad request; again only if site data is cleared or the wording changes. Until a choice exists, no ad script loads.
+- **Where and how.** A bottom sheet above the nav, never over the temperature or the headline; `role="dialog"`, focus on the first button, both buttons equal in size and weight, no close control that records a choice. The privacy link reuses `T.settings.privacyPolicy`.
+- **Copy.** Five languages in `docs/ads-readiness-consent.json` (`adConsentTitle`, `adConsentBody`, `adConsentPersonalised`, `adConsentGeneral`, `adChoicesRow`); all 20 non-English strings passed lang-check after one revision.
+- **Storage.** `localStorage` `pw_ad_choice` = `{"choice":"personalised"|"general","at":"YYYY-MM-DD","v":1}`, try/catch like the app's other storage.
+- **Effect (AdSense).** `general` sets `requestNonPersonalizedAds = 1` before `adsbygoogle.js` loads ([ad tag settings](https://support.google.com/adsense/answer/7670312)); `personalised` is the default tag.
+- **POPIA.** Personalised ads on consent (s11(1)(a)); general ads on legitimate interest (s11(1)(f)). To confirm with a lawyer — not verified here.
+- **EEA, UK and Switzerland.** Google requires a certified CMP integrated with the IAB TCF for personalised ads there ([consent management requirements](https://support.google.com/adsense/answer/13554116)). This banner is not one.
 
-- **As shipped (ads off),** at every width the slot is present, `hidden` and `display: none`.
-- **"Forecast card"** means `#heroCard`, `#weatherStatus`, `#headline`, `.stats-band`, `#feelsLine`, `#rangeLine`, `#agreeLine` and `.sidebar`. "Nothing on top" means `elementFromPoint` at the slot's top, middle and bottom returns the slot.
-- **Home scrolls** inside `body.home-active`, not the document (562 px to the end on every phone).
-- **Two earlier runs failed, and changed the CSS:** the install banner covered the slot's middle and the nav its bottom (the margin is now nav + 162 px), and the desktop slot slid under the postcard (desktop is now excluded).
+## 5. CSP for AdSense — kept
 
-**Loading, when built.** Mobile Home scrolls inside a container, not the document. Request the ad with an `IntersectionObserver` (root `null`, `rootMargin` about one screen) when the slot approaches, never on first paint. Report nothing to our server.
+Google supports only a strict CSP for AdSense ([Integrate the AdSense ad code with a CSP](https://support.google.com/adsense/answer/16283098)). `node scripts/generate-csp.mjs --ads` prints the policy on our inline-script hashes with `'strict-dynamic' 'unsafe-eval' 'unsafe-inline' https: http:`. Before it can be enforced: every parser-inserted `<script src>` must move behind a hashed bootstrap or a nonce, it must run Report-Only for a week, and `'unsafe-eval'` plus `https:` in `img-src`, `connect-src` and `frame-src` widen the policy for everyone.
 
-## 6. CSP for AdSense
+## 6. Decisions still open for Al
 
-Google supports **only a strict CSP** for AdSense: a nonce, `'strict-dynamic'` and `'unsafe-eval'`, with `'unsafe-inline' https: http:` as the fallback older browsers read. The reason is that the hosts its code loads from change ([Integrate the AdSense ad code with a CSP](https://support.google.com/adsense/answer/16283098)). Google also advises testing under `Content-Security-Policy-Report-Only` before enforcing.
+Ruled on 2026-09-15 and closed: no Home slot; Hourly and Weekly only; no desktop slot; Search behind a flag, off; placeholder until a network is live.
 
-`node scripts/generate-csp.mjs --ads` prints (our 19 inline-script hashes elided):
-
-```
-default-src 'self'; script-src <19 hashes> 'strict-dynamic' 'unsafe-eval' 'unsafe-inline' https: http:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https:; frame-src https:; worker-src 'self'; manifest-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; report-uri /api/csp-report
-```
-
-Before it can be enforced:
-1. **Page loading changes.** Under `'strict-dynamic'` a CSP3 browser ignores `'self'` and host allowlists in `script-src`. Every parser-inserted `<script src>` is blocked: `assets/app.js` in `index.html`, the Vercel Insights script, and `install.html`'s modules. Each must be loaded by a hashed inline bootstrap (dynamic `import()` / `createElement('script')`), or carry a per-request nonce.
-2. **Nonce or hash.** Google documents the nonce form. A nonce on a static site needs middleware to rewrite every HTML response, which costs the CDN cache on `index.html`. The hash form is the strict-CSP equivalent for static pages but is untested with AdSense: ship it as Report-Only first and read the `[pw-csp]` lines from `/api/csp-report` for a week.
-3. **What widens for everyone.** `'unsafe-eval'` in `script-src`, and `https:` in `img-src`, `connect-src` and `frame-src`. The current policy allows one external host (`api.qrserver.com`).
-
-## 7. Not deployed — how to check
-
-`vercel.json` → `git.deploymentEnabled["ads-readiness"] = false`. The PR's checks should show no Vercel deployment for this branch.
-
-## 8. Decisions for Al
-
-1. **AdSense now**, against the 2026-05-16 lock (Adsterra first, Media.net in parallel, AdSense later)?
-2. **A Home slot**, against "Home + Sources AD-FREE"? The lock's surfaces are Hourly, Weekly and the two day-detail views. The Home Hourly button was designed as the way into that ad surface (`index.html`: "Hourly is the ad surface").
-3. **EEA, UK and Switzerland visitors:** a Google-certified CMP (Google's Privacy & messaging is one), or non-personalised ads only for those regions?
-4. **Before a choice is made:** no ads (this draft), or general ads?
-5. **Language:** native speakers for the isiZulu, isiXhosa and Sesotho banner strings; Al on the Afrikaans.
-6. **CSP:** nonce middleware or a hash bootstrap; and accepting `'unsafe-eval'` site-wide.
-7. **Desktop Home:** no slot (this draft), or a fixed rail in the empty gutter beside the postcard? A rail is visible on arrival, so it would not be below the fold.
+1. **Which network first** — the 2026-05-16 lock says Adsterra first with Media.net in parallel, AdSense later; this draft's privacy and CSP work is written for AdSense.
+2. **EEA, UK and Switzerland visitors:** a certified CMP, or non-personalised ads only there?
+3. **Before a choice is made:** no ads (this draft), or general ads?
+4. **Language:** native speakers for the isiZulu, isiXhosa and Sesotho banner and placeholder strings; Al on the Afrikaans.
+5. **CSP:** nonce middleware or a hash bootstrap; and accepting `'unsafe-eval'` site-wide.
+6. **Day-detail views:** the lock listed DayDetailHourly and DayDetailSummary as ad surfaces too; the ruling names Hourly and Weekly only, so they carry no slot here.
