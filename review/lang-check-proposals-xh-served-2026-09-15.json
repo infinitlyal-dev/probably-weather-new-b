@@ -1,0 +1,77 @@
+{
+ "generated": "2026-09-15T15:24:38.969Z",
+ "lang": "xh",
+ "note": "Flagged lines the picker can serve, corrected only where corpus evidence and the voice agree (item 5, 2026-09-15). Voice: review/xh-voice.md. Residue: review/xh-residue.md.",
+ "items": [
+  {
+   "id": "xh-witty.cloudy[72]",
+   "key": "witty.cloudy[72]",
+   "en": "No colours in the sky tonight, just shades of calm.",
+   "current": "Akukho mibala esibhakabhakeni namhlanje, ngamathunzi oxolo kuphela.",
+   "proposed": "Akukho mibala esibhakabhakeni ngokuhlwanje, ngamathunzi oxolo kuphela."
+  },
+  {
+   "id": "xh-witty.cloudy[80]",
+   "key": "witty.cloudy[80]",
+   "en": "The moon has signal tonight, just no bars.",
+   "current": "Inyanga inesignali namhlanje, kodwa akukho ma-bar.",
+   "proposed": "Inyanga inesignali ngokuhlwanje, kodwa akukho ma-bar."
+  },
+  {
+   "id": "xh-witty.cloudy[63]",
+   "key": "witty.cloudy[63]",
+   "en": "No sunset pics tonight. The sky's privacy settings are on.",
+   "current": "Akukho zifoto zokutshona kwelanga namhlanje. Ii-privacy settings zesibhakabhaka zivuliwe.",
+   "proposed": "Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe."
+  },
+  {
+   "id": "xh-witty.cloudy[76]",
+   "key": "witty.cloudy[76]",
+   "en": "No stars tonight, but the neighbourhood dogs still have opinions.",
+   "current": "Akukho zinkwenkwezi namhlanje, kodwa izinja zommelwane zisenezimvo.",
+   "proposed": "Akukho zinkwenkwezi ngokuhlwanje, kodwa izinja zommelwane zisenezimvo."
+  },
+  {
+   "id": "xh-witty.cloudy[64]",
+   "key": "witty.cloudy[64]",
+   "en": "Streetlights on early tonight, and not a single complaint.",
+   "current": "Izibane zesitalato zivuke kwangoko namhlanje, akukho namnye ukhalazayo.",
+   "proposed": "Izibane zesitalato zivuke kwangoko ngokuhlwanje, akukho namnye ukhalazayo."
+  },
+  {
+   "id": "xh-witty.cold-clear[89]",
+   "key": "witty.cold-clear[89]",
+   "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
+   "current": "Ukutshona kwelanga eJoburg bubhaso lokuthuthuzela lasebusika. Bubhaso elihle.",
+   "proposed": "Ukutshona kwelanga eJoburg yibhaso lokuthuthuzela lasebusika. Yibhaso elihle."
+  },
+  {
+   "id": "xh-witty.cold-clear[52]",
+   "key": "witty.cold-clear[52]",
+   "en": "Window sun is the only sun doing its job today.",
+   "current": "Ilanga lasefestileni lelona lilodwa lilenza umsebenzi walo namhlanje.",
+   "proposed": "Ilanga lasefestileni lelona lilodwa lenza umsebenzi walo namhlanje."
+  },
+  {
+   "id": "xh-witty.cold-clear[54]",
+   "key": "witty.cold-clear[54]",
+   "en": "It looks lovely out there. We've chosen to believe it from in here.",
+   "current": "Kukhangeleka kumnandi phaya ngaphandle. Sikhethe ukukukholelwa sisapha ngaphakathi.",
+   "proposed": "Kukhangeleka kumnandi phaya ngaphandle. Sikhethe ukukukholelwa silapha ngaphakathi."
+  },
+  {
+   "id": "xh-witty.cold-clear[101]",
+   "key": "witty.cold-clear[101]",
+   "en": "Nobody's standing at the coals for the food. We're here for the heat.",
+   "current": "Akukho mntu umi emalahleni ngenxa yokutya. Sisapha ngenxa yobushushu.",
+   "proposed": "Akukho mntu umi emalahleni ngenxa yokutya. Silapha ngenxa yobushushu."
+  },
+  {
+   "id": "xh-witty.cloudy[70]",
+   "key": "witty.cloudy[70]",
+   "en": "The day is logging off without drama. We'll take that.",
+   "current": "Usuku luyaphuma lingenadrama. Siyayamkela loo nto.",
+   "proposed": "Usuku luyaphuma lungenadrama. Siyayamkela loo nto."
+  }
+ ]
+}

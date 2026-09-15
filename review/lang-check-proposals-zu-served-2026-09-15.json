@@ -1,0 +1,49 @@
+{
+ "generated": "2026-09-15T15:24:38.947Z",
+ "lang": "zu",
+ "note": "Flagged lines the picker can serve, corrected only where corpus evidence and the voice agree (item 5, 2026-09-15). Voice: review/zu-voice.md. Residue: review/zu-residue.md.",
+ "items": [
+  {
+   "id": "zu-witty.cloudy[63]",
+   "key": "witty.cloudy[63]",
+   "en": "No sunset pics tonight. The sky's privacy settings are on.",
+   "current": "Awekho amaphiksha okushona kwelanga namuhla. Ama-privacy settings ezulu avuliwe.",
+   "proposed": "Awekho amaphiksha okushona kwelanga namuhla ebusuku. Ama-privacy settings ezulu avuliwe."
+  },
+  {
+   "id": "zu-witty.cloudy[76]",
+   "key": "witty.cloudy[76]",
+   "en": "No stars tonight, but the neighbourhood dogs still have opinions.",
+   "current": "Azikho izinkanyezi namuhla, kodwa izinja zomphakathi zisenayo imibono.",
+   "proposed": "Azikho izinkanyezi namuhla ebusuku, kodwa izinja zomphakathi zisenayo imibono."
+  },
+  {
+   "id": "zu-witty.cloudy[80]",
+   "key": "witty.cloudy[80]",
+   "en": "The moon has signal tonight, just no bars.",
+   "current": "Inyanga ine-signal namuhla, kodwa awekho ama-bars.",
+   "proposed": "Inyanga ine-signal namuhla ebusuku, kodwa awekho ama-bars."
+  },
+  {
+   "id": "zu-witty.wind[46]",
+   "key": "witty.wind[46]",
+   "en": "Tonight's wind has opinions.",
+   "current": "Umoya wanamuhla unemibono.",
+   "proposed": "Umoya wanamuhla ebusuku unemibono."
+  },
+  {
+   "id": "zu-witty.cold-clear[98]",
+   "key": "witty.cold-clear[98]",
+   "en": "No wind, no clouds, no excuse for that thin jacket.",
+   "current": "Awukho umoya, awekho amafu, asikho isaba salelo jazi elincane.",
+   "proposed": "Awukho umoya, awekho amafu, ayikho izaba yalelo jazi elincane."
+  },
+  {
+   "id": "zu-witty.fog[41]",
+   "key": "witty.fog[41]",
+   "en": "Snoek weather, say the uncles. The uncles have never once been wrong.",
+   "current": "Isimo sezulu se-snoek, kusho o-malume. O-malume abakaze bahambe nakanye.",
+   "proposed": "Isimo sezulu se-snoek, kusho o-malume. O-malume abakaze benze iphutha nakanye."
+  }
+ ]
+}

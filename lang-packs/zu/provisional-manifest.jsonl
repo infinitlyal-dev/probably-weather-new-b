@@ -94,7 +94,7 @@
 {"key":"witty.cloudy[60]","zu":"La mafu asezilolonge isiphepho usuku lonke. Asifiki nhlobo ku-audition.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.cloudy[61]","zu":"Usuku olumpunga usuku lokubhaka. Ikhishi lomuntu selivele linuka kamnandi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[62]","zu":"Ukushona kwelanga kwanamuhla kusemuva kwe-paywall.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[63]","zu":"Awekho amaphiksha okushona kwelanga namuhla. Ama-privacy settings ezulu avuliwe.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[63]","zu":"Awekho amaphiksha okushona kwelanga namuhla ebusuku. Ama-privacy settings ezulu avuliwe.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[64]","zu":"Izibani zomgwaqo zivuke kusenesikhathi namuhla, futhi akukho ngisho isikhalazo esisodwa.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[65]","zu":"Ilanga liphume emsebenzini lingavalelisanga. Yinhlamba, kodwa siyakuzwa.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.cloudy[66]","zu":"Usuku luphela njengekhandlela, hhayi i-firework. Inhlonipho.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
@@ -105,11 +105,11 @@
 {"key":"witty.cloudy[71]","zu":"Ukushona kwelanga kwanamuhla kungumcimbi wangaphakathi kuphela.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[74]","zu":"Izulu lingaphansi kwezingubo. Ezakho zikulindile. Ukuqondana nje? Neze.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.cloudy[75]","zu":"Amafu acime isibani esikhulu. Yiya embhedeni, Mzansi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[76]","zu":"Azikho izinkanyezi namuhla, kodwa izinja zomphakathi zisenayo imibono.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[76]","zu":"Azikho izinkanyezi namuhla ebusuku, kodwa izinja zomphakathi zisenayo imibono.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[77]","zu":"Izulu liku-aeroplane mode. Azikho izaziso kuze kuse.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[78]","zu":"Inyanga ilengise uphawu lokuthi ungaphazamisi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[79]","zu":"Amakhethini ezulu avaliwe. I-privacy, ngiyacela.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[80]","zu":"Inyanga ine-signal namuhla, kodwa awekho ama-bars.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[80]","zu":"Inyanga ine-signal namuhla ebusuku, kodwa awekho ama-bars.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[82]","zu":"Ubusuku buphonse ingubo esindayo phezu kwakho konke.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[83]","zu":"Amafu asebusuku ayindlela yezulu yokuthi: asikhulume kusasa.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[84]","zu":"Ndawana thile i-braai isigcine emalahleni ayo okugcina, azikho izinkanyezi — ingxoxo ithwala ubusuku.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
@@ -142,7 +142,7 @@
 {"key":"witty.wind[43]","zu":"Ama-masts abamba i-concert namuhla ebusuku. Awadingeki amathikithi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.wind[44]","zu":"Amafu asheshisa sengathi ephuzele okuthile.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.wind[45]","zu":"Sonke isihlahla emgwaqweni sikhothama ngendlela efanayo. Ingcindezi yontanga.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.wind[46]","zu":"Umoya wanamuhla unemibono.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.wind[46]","zu":"Umoya wanamuhla ebusuku unemibono.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.wind[47]","zu":"Umoya ushanele amafu ukuze ubone izinkanyezi. Uxolo ngakho konke okunye.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.wind[48]","zu":"Umsindo omhlophe waseKaroo: i-windpump eyodwa, ayikho i-off switch.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.wind[49]","zu":"Namuhla ebusuku awubali izimvu, ubala imimoya.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
@@ -273,7 +273,7 @@
 {"key":"witty.cold-clear[95]","zu":"Isithwathwa sesivele saqala i-shift yaso. Ngovivi utshani buzoba yingilazi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[96]","zu":"I-rooibos esandleni, ingubo kuze kube sezindlebeni. I-kit egcwele.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[97]","zu":"Idolobha libukeka licace kangaka kuphela uma kubuhlungu ngempela ngaphandle.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cold-clear[98]","zu":"Awukho umoya, awekho amafu, asikho isaba salelo jazi elincane.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cold-clear[98]","zu":"Awukho umoya, awekho amafu, ayikho izaba yalelo jazi elincane.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[100]","zu":"Uphefumula njengodrako, umbono onjengephupho.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[101]","zu":"Akekho omile emalahleni ngenxa yokudla. Silapha ngenxa yokushisa.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[102]","zu":"Umthetho wobusuku basebusika: udlawu luyahlukaniselwana. Indawo eseduze nomlilo ayihlukaniselwani.","status":"provisional-pending-native-confirm","confidence":"MED"}
@@ -333,7 +333,7 @@
 {"key":"witty.fog[38]","zu":"Amamitha amahlanu okubona. Kufana nohlelo lwakho lweminyaka emihlanu.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.fog[39]","zu":"Ipulazi lisekhona. Sonke sithembela nje ezwini lomunye nomunye.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.fog[40]","zu":"I-GPS yakho ithi usufikile. I-GPS yakho iqamba amanga.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.fog[41]","zu":"Isimo sezulu se-snoek, kusho o-malume. O-malume abakaze bahambe nakanye.","status":"provisional-pending-native-confirm","confidence":"MED"}
+{"key":"witty.fog[41]","zu":"Isimo sezulu se-snoek, kusho o-malume. O-malume abakaze benze iphutha nakanye.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.fog[42]","zu":"Umncele wezulu uthathe usuku lokuphumula.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.fog[43]","zu":"Inkungu yaselwandle ifike emsebenzini ngaphambi kwabo bonke.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.fog[44]","zu":"Izinkomo zazi kahle ukuthi zikuphi. Okungaphezu kwalokho thina esingakusho.","status":"provisional-pending-native-confirm","confidence":"HIGH"}

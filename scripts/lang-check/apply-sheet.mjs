@@ -22,7 +22,8 @@ const lang = val('--lang');
 const DRY = args.includes('--dry');
 if (!/^(zu|xh|st|af)$/.test(lang || '')) { console.error('usage: --lang zu|xh|st|af (--decisions file.json | --accept-all) [--dry]'); process.exit(2); }
 
-const proposals = JSON.parse(fs.readFileSync(path.join(ROOT, 'review', `lang-check-proposals-${lang}.json`), 'utf8'));
+// --proposals <file>: a sheet other than the standing review/lang-check-proposals-<lang>.json
+const proposals = JSON.parse(fs.readFileSync(val('--proposals') ? path.resolve(val('--proposals')) : path.join(ROOT, 'review', `lang-check-proposals-${lang}.json`), 'utf8'));
 let decisions;
 if (args.includes('--accept-all')) decisions = proposals.items.map((p) => ({ id: p.id, key: p.key, current: p.current, proposed: p.proposed, decision: 'accept' }));
 else if (val('--decisions')) decisions = JSON.parse(fs.readFileSync(val('--decisions'), 'utf8')).decisions;

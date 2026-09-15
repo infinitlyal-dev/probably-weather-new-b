@@ -1,0 +1,301 @@
+{
+ "generated": "2026-09-15T15:24:38.981Z",
+ "lang": "st",
+ "note": "Flagged lines the picker can serve, corrected only where corpus evidence and the voice agree (item 5, 2026-09-15). Voice: review/st-voice.md. Residue: review/st-residue.md.",
+ "items": [
+  {
+   "id": "st-witty.fog[89]",
+   "key": "witty.fog[89]",
+   "en": "Ten pm fog turns every street into a film set.",
+   "current": "Mohodi oa 10pm o fetola seterata se seng le se seng film set.",
+   "proposed": "Mohodi wa 10pm o fetola seterata se seng le se seng film set."
+  },
+  {
+   "id": "st-witty.cloudy[43]",
+   "key": "witty.cloudy[43]",
+   "en": "Washing-line roulette: do you hang, or do you fold?",
+   "current": "Roulette ea ho aneka: o a aneka, kapa oa mena?",
+   "proposed": "Roulette ya ho aneka: o a aneka, kapa wa mena?"
+  },
+  {
+   "id": "st-witty.cloudy[47]",
+   "key": "witty.cloudy[47]",
+   "en": "The sun is buffering. Do not refresh the page.",
+   "current": "Letsatsi le a buffera. Se ke oa refresha leqephe.",
+   "proposed": "Letsatsi le a buffera. Se ke wa refresha leqephe."
+  },
+  {
+   "id": "st-witty.cold-clear[68]",
+   "key": "witty.cold-clear[68]",
+   "en": "Mzansi winter does colour like nobody else. Warmth, though...",
+   "current": "Mariha a Mzansi a etsa 'mala jwalo ka ha ho se motho e mong. Mocheso, leha ho le jwalo...",
+   "proposed": "Mariha a Mzansi a etsa mmala jwalo ka ha ho se motho e mong. Motjheso, leha ho le jwalo..."
+  },
+  {
+   "id": "st-witty.cold[69]",
+   "key": "witty.cold[69]",
+   "en": "Fire lit before noon. We are no longer playing games.",
+   "current": "Mollo o tukile pele ho motšeare. Ha re sa bapala.",
+   "proposed": "Mollo o tukile pele ho motsheare. Ha re sa bapala."
+  },
+  {
+   "id": "st-witty.cold[72]",
+   "key": "witty.cold[72]",
+   "en": "Trout weather. Lovely for the fish. Character-building for the fisherman.",
+   "current": "Boemo ba trout. Bo monate ho tlhapi. Bo aha botho ho motšoasi oa ditlhapi.",
+   "proposed": "Boemo ba trout. Bo monate ho tlhapi. Bo aha botho ho motshwasi wa ditlhapi."
+  },
+  {
+   "id": "st-witty.cold-clear[102]",
+   "key": "witty.cold-clear[102]",
+   "en": "Winter night rule: the tongs get shared. The spot next to the fire doesn't.",
+   "current": "Molao oa bosiu ba mariha: tong e a arolelanwa. Sebaka se pel'a mollo ha se arolelanoe.",
+   "proposed": "Molao wa bosiu ba mariha: tong e a arolelanwa. Sebaka se pel'a mollo ha se arolelanwe."
+  },
+  {
+   "id": "st-witty.rain[52]",
+   "key": "witty.rain[52]",
+   "en": "Post-storm Highveld air should be bottled and sold overseas.",
+   "current": "Moya oa Highveld kamora sefefo o lokela ho kenngwa botlolong o rekisoe ditjhabeng.",
+   "proposed": "Moya wa Highveld kamora sefefo o lokela ho kenngwa botlolong o rekiswe ditjhabeng."
+  },
+  {
+   "id": "st-witty.cold[53]",
+   "key": "witty.cold[53]",
+   "en": "Joburg winter: jacket in the morning, T-shirt by two, jacket again by four.",
+   "current": "Mariha a Joburg: jase hoseng, T-shirt ka hora ea bobedi, jase hape ka hora ea bone.",
+   "proposed": "Mariha a Joburg: jase hoseng, T-shirt ka hora ya bobedi, jase hape ka hora ya bone."
+  },
+  {
+   "id": "st-witty.heat[52]",
+   "key": "witty.heat[52]",
+   "en": "By noon this water is bath temperature. Plan accordingly.",
+   "current": "Ka motšeare metsi ana ke mocheso oa ho hlapa. Rera ka mokgwa oo.",
+   "proposed": "Ka motsheare metsi ana ke motjheso wa ho hlapa. Rera ka mokgwa oo."
+  },
+  {
+   "id": "st-witty.heat[66]",
+   "key": "witty.heat[66]",
+   "en": "Lunch moved outside because inside is hotter than outside. Nobody can explain it.",
+   "current": "Lunch e fallile kantle hobane ka hare ho tjhesa ho feta kantle. Ha ho motho ea ka hlalosang.",
+   "proposed": "Lunch e fallile kantle hobane ka hare ho tjhesa ho feta kantle. Ha ho motho ya ka hlalosang."
+  },
+  {
+   "id": "st-witty.rain[61]",
+   "key": "witty.rain[61]",
+   "en": "All plans are officially moved to 'when it clears up'. Which is never. Shame.",
+   "current": "Merero eohle e fallisetsoe ho 'ha ho se ho hlaka'. E leng le kgale. Shame.",
+   "proposed": "Merero eohle e fallisetswe ho 'ha ho se ho hlaka'. E leng le kgale. Shame."
+  },
+  {
+   "id": "st-witty.cloudy[55]",
+   "key": "witty.cloudy[55]",
+   "en": "The sky is in its interview suit: grey, neat, giving nothing away.",
+   "current": "Lehodimo le apere suit ea interview: le lerootho, le hlwekile, ha le fane ka letho.",
+   "proposed": "Lehodimo le apere suit ya interview: le lerootho, le hlwekile, ha le fane ka letho."
+  },
+  {
+   "id": "st-witty.cloudy[79]",
+   "key": "witty.cloudy[79]",
+   "en": "The sky's curtains are drawn. Privacy, please.",
+   "current": "Likhethene tsa lehodimo di kwetswe. Privacy, ka kopo.",
+   "proposed": "Dikgaratene tsa lehodimo di kwetswe. Privacy, ka kopo."
+  },
+  {
+   "id": "st-witty.cloudy[86]",
+   "key": "witty.cloudy[86]",
+   "en": "The sky put the stars on silent. They're still up there, promise.",
+   "current": "Lehodimo le behile dinaledi ho silent. Di sa ntsane di le teng hodimo, ke a tšepisa.",
+   "proposed": "Lehodimo le behile dinaledi ho silent. Di sa ntsane di le teng hodimo, ke a tshepisa."
+  },
+  {
+   "id": "st-witty.cold[64]",
+   "key": "witty.cold[64]",
+   "en": "Dress like an aloe: layers on layers, and refuse to fall over.",
+   "current": "Apara jwalo ka aloe: diaparo holim'a diaparo, 'me o hane ho oa.",
+   "proposed": "Apara jwalo ka aloe: diaparo holim'a diaparo, 'me o hane ho wa."
+  },
+  {
+   "id": "st-witty.cold-clear[60]",
+   "key": "witty.cold-clear[60]",
+   "en": "Sunglasses and a scarf. It's that kind of day.",
+   "current": "Liborele tsa letsatsi le scarf. Ke letsatsi la mofuta oo.",
+   "proposed": "Diborele tsa letsatsi le scarf. Ke letsatsi la mofuta oo."
+  },
+  {
+   "id": "st-witty.fog[86]",
+   "key": "witty.fog[86]",
+   "en": "Everything you can hear tonight is one owl with strong opinions.",
+   "current": "Sohle seo o ka se utlwang bosiu bona ke serubisi se le seng se nang le maikutlo a matla.",
+   "proposed": "Sohle seo o ka se utlwang bosiu bona ke morubisi o le mong o nang le maikutlo a matla."
+  },
+  {
+   "id": "st-witty.clear[54]",
+   "key": "witty.clear[54]",
+   "en": "Small-town quiet: you can actually hear yourself think. Terrifying.",
+   "current": "Kgutso ea toropo e nyane: o ka utlwa mohopolo oa hao. Hwa tšosa.",
+   "proposed": "Kgutso ya toropo e nyane: o ka utlwa mohopolo wa hao. Hwa tshosa."
+  },
+  {
+   "id": "st-witty.clear[63]",
+   "key": "witty.clear[63]",
+   "en": "Highveld winter flex: laundry dry before the kettle's even done.",
+   "current": "Flex ea mariha ea Highveld: diaparo di omile pele ketlele e qeta.",
+   "proposed": "Flex ya mariha ya Highveld: diaparo di omile pele ketlele e qeta."
+  },
+  {
+   "id": "st-witty.rain[36]",
+   "key": "witty.rain[36]",
+   "en": "The dams get their drink before you get your coffee. Know your place.",
+   "current": "Matamo a nwa pele o fumana kofi ea hao. Tseba sebaka sa hao.",
+   "proposed": "Matamo a nwa pele o fumana kofi ya hao. Tseba sebaka sa hao."
+  },
+  {
+   "id": "st-witty.cold[45]",
+   "key": "witty.cold[45]",
+   "en": "The gown is daywear now. We're calling it winter couture.",
+   "current": "Gown ke seaparo sa motšeare jwale. Re e bitsa winter couture.",
+   "proposed": "Gown ke seaparo sa motsheare jwale. Re e bitsa winter couture."
+  },
+  {
+   "id": "st-witty.cold[91]",
+   "key": "witty.cold[91]",
+   "en": "Free State dusk: the most beautiful ten minutes of the coldest night.",
+   "current": "Ho dikela ha letsatsi Free State: metsotso e leshome e metle ka ho fetisisa ea bosiu bo batang ka ho fetisisa.",
+   "proposed": "Ho dikela ha letsatsi Free State: metsotso e leshome e metle ka ho fetisisa ya bosiu bo batang ka ho fetisisa."
+  },
+  {
+   "id": "st-witty.cold-clear[81]",
+   "key": "witty.cold-clear[81]",
+   "en": "The sunset is free of charge. So is the head cold.",
+   "current": "Ho dikela ha letsatsi ke ha mahala. Le mokhohlane.",
+   "proposed": "Ho dikela ha letsatsi ke ha mahala. Le mokgohlane."
+  },
+  {
+   "id": "st-witty.cold-clear[101]",
+   "key": "witty.cold-clear[101]",
+   "en": "Nobody's standing at the coals for the food. We're here for the heat.",
+   "current": "Ha ho motho ea emeng mashaleng bakeng sa dijo. Re teng bakeng sa mocheso.",
+   "proposed": "Ha ho motho ya emeng mashaleng bakeng sa dijo. Re teng bakeng sa motjheso."
+  },
+  {
+   "id": "st-witty.heat[65]",
+   "key": "witty.heat[65]",
+   "en": "Watermelon isn't dessert. It's first aid.",
+   "current": "Legapu ha se dessert. Ke thuso ea pele.",
+   "proposed": "Lehapu ha se dessert. Ke thuso ya pele."
+  },
+  {
+   "id": "st-witty.fog[79]",
+   "key": "witty.fog[79]",
+   "en": "The city pulled up its duvet. Leave it alone.",
+   "current": "Toropo e hulile duvet ea eona. E tlohele.",
+   "proposed": "Toropo e hulile duvet ya eona. E tlohele."
+  },
+  {
+   "id": "st-witty.storm[50]",
+   "key": "witty.storm[50]",
+   "en": "The smell of rain has already RSVP'd.",
+   "current": "Monko oa pula o se o entse RSVP.",
+   "proposed": "Monko wa pula o se o entse RSVP."
+  },
+  {
+   "id": "st-witty.cloudy[78]",
+   "key": "witty.cloudy[78]",
+   "en": "The moon has hung out a do-not-disturb sign.",
+   "current": "Kgwedi e leketlisitse letswao la 'se ke oa nkhathatsa'.",
+   "proposed": "Kgwedi e leketlisitse letswao la 'se ke wa nkgathatsa'."
+  },
+  {
+   "id": "st-witty.wind[31]",
+   "key": "witty.wind[31]",
+   "en": "Hold your hat. Hold your kid. Just hold on.",
+   "current": "Tšoara katiba ea hao. Tšoara ngwana oa hao. Itšoarelle feela.",
+   "proposed": "Tshwara katiba ya hao. Tshwara ngwana wa hao. Itshwarelle feela."
+  },
+  {
+   "id": "st-witty.cold[96]",
+   "key": "witty.cold[96]",
+   "en": "Outside: 2 degrees. Inside: 9 degrees and a very good fire. SA homes, hey.",
+   "current": "Kantle: li-degree tse 2. Ka hare: li-degree tse 9 le mollo o hotle haholo. Malapa a SA, hey.",
+   "proposed": "Kantle: di-degree tse 2. Ka hare: di-degree tse 9 le mollo o hotle haholo. Malapa a SA, hey."
+  },
+  {
+   "id": "st-witty.cold-clear[99]",
+   "key": "witty.cold-clear[99]",
+   "en": "The moon switched the mountains on. The heat, however, stays off.",
+   "current": "Kgwedi e buletse dithaba. Mocheso, leha ho le jwalo, o sala o timile.",
+   "proposed": "Kgwedi e buletse dithaba. Motjheso, leha ho le jwalo, o sala o timile."
+  },
+  {
+   "id": "st-witty.fog[62]",
+   "key": "witty.fog[62]",
+   "en": "Nobody is driving home in this. That's not laziness, that's science.",
+   "current": "Ha ho ea khannelang hae ho sena. Hoo ha se botswa, ke saense.",
+   "proposed": "Ha ho ya kgannelang hae ho sena. Hoo ha se botswa, ke saense."
+  },
+  {
+   "id": "st-witty.fog[82]",
+   "key": "witty.fog[82]",
+   "en": "The foghorn is Sea Point's free white-noise machine.",
+   "current": "Foghorn ke motjhini oa mahala oa white noise oa Sea Point.",
+   "proposed": "Foghorn ke motjhini wa mahala wa white noise wa Sea Point."
+  },
+  {
+   "id": "st-witty.fog[88]",
+   "key": "witty.fog[88]",
+   "en": "The dog doesn't understand where the world went. Same, boy. Same.",
+   "current": "Ntja ha e utloisise hore lefatše le ile hokae. Le rona, boytjie. Le rona.",
+   "proposed": "Ntja ha e utlwisise hore lefatše le ile hokae. Le rona, boytjie. Le rona."
+  },
+  {
+   "id": "st-witty.fog[93]",
+   "key": "witty.fog[93]",
+   "en": "Four friends, one parcel of chips, zero visibility. Perfect evening.",
+   "current": "Metswalle e mene, pakete e le 'ngoe ea chips, ha ho ho bona. Mantsiboya a phethahetseng.",
+   "proposed": "Metswalle e mene, pakete e le 'ngoe ya chips, ha ho ho bona. Mantsiboya a phethahetseng."
+  },
+  {
+   "id": "st-witty.storm[56]",
+   "key": "witty.storm[56]",
+   "en": "Thunder at volume ten, the neighbour's dog at eleven.",
+   "current": "Modumo wa seaduma o volume ea leshome, ntja ea moahisane e eleven.",
+   "proposed": "Modumo wa seaduma o volume ya leshome, ntja ya moahisane e eleven."
+  },
+  {
+   "id": "st-witty.wind[39]",
+   "key": "witty.wind[39]",
+   "en": "Close it, tie it down, surrender.",
+   "current": "E koale, e tlame, o inehele.",
+   "proposed": "E kwale, e tlame, o inehele."
+  },
+  {
+   "id": "st-witty.cold[46]",
+   "key": "witty.cold[46]",
+   "en": "Somewhere out there people are going for a run right now. Strength to them.",
+   "current": "Kae-kae kantle batho ba ea matha hona jwale. Matla ho bona.",
+   "proposed": "Kae-kae kantle batho ba ya matha hona jwale. Matla ho bona."
+  },
+  {
+   "id": "st-witty.cold-clear[90]",
+   "key": "witty.cold-clear[90]",
+   "en": "Enjoy the colours. The temperature has already gone to the car.",
+   "current": "Natefeloa ke mebala. Mocheso o se o ile koloing.",
+   "proposed": "Natefelwa ke mebala. Motjheso o se o ile koloing."
+  },
+  {
+   "id": "st-witty.clear[58]",
+   "key": "witty.clear[58]",
+   "en": "'One hour at the beach.' History's most confident lie.",
+   "current": "'Hora e le 'ngoe lebopong.' Leshano le nang le boitšepo ka ho fetisisa historing.",
+   "proposed": "'Hora e le 'ngoe lebopong.' Leshano le nang le boitshepo ka ho fetisisa historing."
+  },
+  {
+   "id": "st-witty.clear[62]",
+   "key": "witty.clear[62]",
+   "en": "All meetings moved to the shallow end.",
+   "current": "Dikopano tsohle di fallisetsoe karolong e sa tebang.",
+   "proposed": "Dikopano tsohle di fallisetswe karolong e sa tebang."
+  }
+ ]
+}
