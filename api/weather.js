@@ -1414,6 +1414,12 @@ export default async function handler(req, res) {
         // unmapped marker) used to pass through as a "condition" and read as
         // clear downstream; now it is null and the source fails validation.
         const pwDesc = icon => mapKey(pirateIconMap, icon);
+        // The CALENDAR day's minimum (temperatureMin), not temperatureLow: Pirate's
+        // temperatureLow is the OVERNIGHT low that follows the day —
+        // temperatureLowTime was 05:00 the next morning in all five cities checked
+        // on 2026-09-15 — while Open-Meteo and WeatherAPI report the calendar day.
+        // temperatureLow stays only as the fallback for a payload with no minimum.
+        const pirateDayMin = d => isNum(d?.temperatureMin) ? d.temperatureMin : (isNum(d?.temperatureLow) ? d.temperatureLow : null);
 
         // Item 5 round 2: raw inputs bounded before feels-like derives from them.
         const curTemp    = inBounds(cur.temperature, TEMP_BOUNDS) ? cur.temperature : null;
@@ -1425,7 +1431,7 @@ export default async function handler(req, res) {
           nowTemp:   curTemp,
           feelsLike: calcFeelsLike(curTemp, curWindKph, curHumPct),
           todayHigh: isNum(dly[0]?.temperatureHigh) ? dly[0].temperatureHigh : null,
-          todayLow:  isNum(dly[0]?.temperatureLow)  ? dly[0].temperatureLow  : null,
+          todayLow:  pirateDayMin(dly[0]),
           todayRain: toPct(dly[0]?.precipProbability), // native GEFS ensemble
           todayUv:   isNum(dly[0]?.uvIndex)          ? dly[0].uvIndex         : null,
           desc:      pwDesc(cur.icon),
@@ -1439,7 +1445,7 @@ export default async function handler(req, res) {
         dailies[2] = {
           source:   'Pirate Weather',
           highs:    dly.slice(0, 7).map(d => isNum(d.temperatureHigh) ? d.temperatureHigh : null),
-          lows:     dly.slice(0, 7).map(d => isNum(d.temperatureLow)  ? d.temperatureLow  : null),
+          lows:     dly.slice(0, 7).map(pirateDayMin),
           rains:    dly.slice(0, 7).map(d => toPct(d.precipProbability)),
           uvs:      dly.slice(0, 7).map(d => isNum(d.uvIndex)         ? d.uvIndex          : null),
           // H-2: Pirate (units=si) offers both daily wind (m/s → km/h) and daily
@@ -1932,7 +1938,17 @@ export default async function handler(req, res) {
     //   · MET high-boost (OM 0.30→0.25, MET→0.40) — a daily-HIGHS accuracy
     //     argument; previously its OM reduction leaked in here while MET
     //     stayed pinned at 0.10, skewing the low blend for no reason: NO
-    const LOW_WEIGHTS = [BASE_WEIGHTS[0], BASE_WEIGHTS[1] * waDedupFactor, BASE_WEIGHTS[2], 0.10, BASE_WEIGHTS[4]];
+    //
+    // 2026-09-15 (calibration review): MET Norway and Tomorrow.io carry hours
+    // only from NOW to local midnight — both series start at the current hour —
+    // so their day-0 "low" is the rest of today's low, never the morning minimum
+    // Open-Meteo and WeatherAPI report. At 13:25 SAST that put both at 18.9°C for
+    // Polokwane against Open-Meteo 13.6, WeatherAPI 13.8 and SAWS 13, dragging
+    // the blended low to 15.5. They now carry no weight in the low blend (the
+    // "+3.9°C warm" V2-3 measured for MET was this window). Both only ever
+    // publish a day-0 low, and resolveWeights still falls back to them when no
+    // calendar-day source answered.
+    const LOW_WEIGHTS = [BASE_WEIGHTS[0], BASE_WEIGHTS[1] * waDedupFactor, BASE_WEIGHTS[2], 0, 0];
     const dailyLowW = resolveWeights(dailies, LOW_WEIGHTS);
 
     // Weighted average across source slots (skips nulls).
