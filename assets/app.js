@@ -275,13 +275,38 @@ document.addEventListener("DOMContentLoaded", () => {
     // zu/xh/st are starting drafts pending native-speaker review (logged with
     // the existing badges.rainTonight.zu / weather.gusts.{zu,st} backlog).
     sources: {
+      // REWRITTEN 2026-09-15 (prelaunch P2-1). The old copy said five sources
+      // were checked "every time you open the app" and averaged. What runs: the
+      // blend is WEIGHTED (api/weather.js SOURCE_WEIGHTS plus its dynamic
+      // adjustments); a provider that fails, fails validation or is blocked by
+      // its budget guard is left out; and a forecast made for the same ~2 km
+      // cell in the last five minutes is served from the server cache. It opens
+      // with "We ask", not the brand name: lang-check reads "Weather" inside
+      // "Probably Weather" as untranslated English and rated every shipped
+      // Sources string triage for that alone. explainer / metRain /
+      // inThisForecast / leftOut: af, zu, xh and st all pass lang-check with no
+      // medium or high finding. zu/xh/st PROVISIONAL — requires_native_review.
       explainer: {
-        en: "Probably Weather checks five weather sources every time you open the app. We average them so you get a more honest forecast — no single source guessing wrong about whether it'll rain.",
-        af: "Probably Weather kyk na vyf weersbronne elke keer wat jy die app oopmaak. Ons stel hulle gemiddelde saam sodat jy 'n meer eerlike voorspelling kry — geen enkele bron wat verkeerd raai oor of dit gaan reën nie.",
-        zu: "I-Probably Weather ihlola imithombo emihlanu yesimo sezulu ngaso sonke isikhathi uvula uhlelo lokusebenza. Sihlanganisa amalinganiso ukuze uthole isibikezelo esiqotho — akukho mthombo owodwa oqagela kabi ngokuthi imvula iyona noma cha.",
-        xh: "I-Probably Weather ijonga imithombo emihlanu yemozulu ngalo lonke ixesha uvula i-app. Sidibanisa imilinganiselo ukuze ufumane isiprofeto esinyanisekileyo — akukho mthombo omnye oqikelela ngokungafanelekanga ngokuba kuza kuna na okanye hayi.",
-        st: "Probably Weather e sheba mehlodi e mehlano ea boemo ba lehodimo nako e nngwe le e nngwe ha u bula app. Re kopanya likarolelano hore u fumane ponelopele e tšepahalang — ha ho mohlodi o le mong o akgang hampe ka hore ho tla na pula kapa tjhe."
+        en: "We ask five weather services and weigh their answers — some count for more than others — so no single one gets to guess wrong about the rain on its own. A service that doesn't answer, or has hit its limit, sits that forecast out. And if a forecast was made for your area in the last few minutes, you get that one rather than a fresh one.",
+        af: "Ons vra vyf weerdienste en weeg hul antwoorde — party tel meer as ander — sodat geen enkele een op sy eie verkeerd oor die reën kan raai nie. 'n Diens wat nie antwoord nie, of sy limiet bereik het, word daardie keer uitgelaat. En as 'n voorspelling die afgelope paar minute vir jou omgewing gemaak is, kry jy dié een eerder as 'n nuwe een.",
+        zu: "Sibuza imithombo emihlanu yesimo sezulu, kodwa asizithathi zonke izimpendulo zayo ngokulinganayo — eminye ibaluleke kakhulu kuneminye — ukuze kungabi khona mthombo owodwa owenza iphutha ngemvula. Umthombo ongaphenduli, noma osufike emkhawulweni wawo, awufakwa kuleso sibikezelo. Futhi uma isibikezelo sendawo yakho senziwe emizuzwini embalwa edlule, uthola sona esikhundleni sesisha.",
+        xh: "Sibuza imithombo emihlanu yemozulu, kodwa asizithathi zonke iimpendulo zayo ngokulinganayo — eminye ibaluleke ngaphezu kweminye — ukuze kungabikho mthombo mnye oqikelela kakubi ngemvula. Ukuba umthombo awusebenzi, okanye ufikelele kumda wawo, awubandakanywa kolo qikelelo. Kwaye ukuba uqikelelo lwendawo yakho lwenziwe kwimizuzu embalwa edlulileyo, ufumana olo endaweni yolutsha.",
+        st: "Re botsa mehlodi e mehlano ya boemo ba lehodimo, empa ha re nke dikarabo tsohle tsa yona ka ho lekana — e meng e bohlokwa ho feta e meng — hore ho se be le mohlodi o le mong o fosang ka pula. Mohlodi o sa arabeng, kapa o fihlileng moeding wa wona, ha o sebediswe ponelopeleng eo. Mme haeba ponelopele ya sebaka sa hao e entswe metsotsong e mmalwa e fetileng, o fumana yona ho ena le e ntjha."
       },
+      // MET Norway publishes precipitation amounts, not a probability; its rain %
+      // is derived from the day's largest hourly amount (api/weather.js rainProxy).
+      metRain: {
+        en: "MET Norway doesn't give a chance of rain, so we work one out from how much rain it expects.",
+        af: "MET Norway gee nie 'n reënkans nie, so ons werk een uit volgens hoeveel reën hy verwag.",
+        zu: "I-MET Norway ayiwanikezi amathuba emvula, ngakho siwabala ngokuya ngobuningi bemvula elindelekile.",
+        xh: "I-MET Norway ayiniki mathuba emvula, ngoko sibala amathuba ngokwesixa semvula elindelekileyo.",
+        st: "MET Norway ha e fane ka monyetla wa pula, kahoo re o bala ho ya ka bongata ba pula boo e bo lebeletseng."
+      },
+      // Labels for the per-forecast count line, rendered "<label>: 4/5" and
+      // "<leftOut>: Open-Meteo". Label-colon form so no language needs number
+      // agreement; provider names are brand names and stay as they are.
+      inThisForecast: { en: "Sources in this forecast", af: "Bronne in hierdie voorspelling", zu: "Imithombo kulesi sibikezelo", xh: "Imithombo ekolu qikelelo", st: "Mehlodi ponelopeleng ena" },
+      leftOut: { en: "Sitting this one out", af: "Hierdie keer uitgelaat", zu: "Engekho kulesi sibikezelo", xh: "Engekho kolu qikelelo", st: "E seng ponelopeleng ena" },
       attribution: {
         en: "Data from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather, and Tomorrow.io. Used with permission and gratitude.",
         af: "Data van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather en Tomorrow.io. Gebruik met toestemming en dank.",
@@ -1380,6 +1405,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sourcesExplainerEl) sourcesExplainerEl.textContent = t('sources', 'explainer');
     const sourcesAttributionEl = $('#sourcesAttribution');
     if (sourcesAttributionEl) sourcesAttributionEl.textContent = t('sources', 'attribution');
+    // P2-1: MET Norway's rain % is derived from its precipitation amounts.
+    const sourcesMetNoteEl = $('#sourcesMetNote');
+    if (sourcesMetNoteEl) sourcesMetNoteEl.textContent = t('sources', 'metRain');
     const sourcesScreenTitle = screenSources?.querySelector('.screen-title');
     if (sourcesScreenTitle) sourcesScreenTitle.textContent = t('screens', 'sources');
     const hourlyScreenTitle = screenHourly?.querySelector('.screen-title');
@@ -2419,6 +2447,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // sidebar pill is now the Hourly entry point and doesn't carry data.
     renderSourcesScreen(norm);
   }
+  // P2-1: the count line — how many sources THIS forecast actually has. Five are
+  // asked, but a provider that failed, failed validation, has no key or was
+  // blocked by its budget guard is absent: api/weather.js lists each one on
+  // meta.sources with ok:false. A cache hit replays the stored list, so the
+  // number always describes the forecast on screen.
+  function renderSourcesCount(norm) {
+    const el = $('#sourcesCount');
+    if (!el) return;
+    const used = [...new Set(Array.isArray(norm?.used) ? norm.used : [])];
+    const failed = [...new Set(Array.isArray(norm?.failed) ? norm.failed : [])].filter((name) => !used.includes(name));
+    const total = used.length + failed.length;
+    el.replaceChildren();
+    el.hidden = total === 0;
+    if (total === 0) return;
+    const count = document.createElement('span');
+    count.className = 'sources-count-used';
+    count.textContent = `${t('sources', 'inThisForecast')}: ${used.length}/${total}`;
+    el.appendChild(count);
+    if (failed.length) {
+      const out = document.createElement('span');
+      out.className = 'sources-count-out';
+      out.textContent = `${t('sources', 'leftOut')}: ${failed.join(', ')}`;
+      el.appendChild(out);
+    }
+  }
   // Sources page — rebuild the per-source temperature-range list from norm.
   // Runs whenever fresh weather data lands AND on language switch (via
   // applySettings → renderSidebar → here). No-op when the screen isn't in the DOM.
@@ -2429,8 +2482,9 @@ document.addEventListener("DOMContentLoaded", () => {
     listEl.innerHTML = '';
     // BEFORE the early return: an empty payload has to tear the chart down, or a
     // place change leaves the previous location's ranges on screen with the
-    // replacement list hidden behind them.
+    // replacement list hidden behind them. The count line likewise.
     renderSourcesRangeChart(norm);
+    renderSourcesCount(norm);
     if (sr.length === 0) {
       const li = document.createElement('li');
       li.className = 'sources-list-empty';

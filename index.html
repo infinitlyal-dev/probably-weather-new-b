@@ -633,12 +633,17 @@
       <div class="screen-panel-body">
         <div class="sources-page">
           <p id="sourcesExplainer" class="sources-explainer"></p>
+          <!-- P2-1: how many sources THIS forecast has, and which sat it out.
+               Filled by renderSourcesScreen from meta.sources; stays hidden when a
+               payload carries no source list. -->
+          <p id="sourcesCount" class="sources-count" hidden></p>
           <!-- M4 range chart is mobile-only; the >=769px Sources screen keeps the
                plain list it always had. On mobile the list is hidden ONLY when the
                chart actually rendered (.has-range-chart), so a payload with no
                source ranges still shows something. -->
           <div id="sourcesRangeChart" class="range-chart m-only" role="img"></div>
           <ul id="sourcesList" class="sources-list"></ul>
+          <p id="sourcesMetNote" class="sources-attribution"></p>
           <p id="sourcesAttribution" class="sources-attribution"></p>
         </div>
       </div>

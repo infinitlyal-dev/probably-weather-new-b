@@ -73,7 +73,8 @@ function sourcesPage() {
   };
   const body = [
     sliceConst('isNum'), sliceConst('round0'), sliceConst('convertTemp'),
-    sliceFunction('renderSourcesRangeChart'), sliceFunction('renderSourcesScreen'),
+    sliceFunction('renderSourcesRangeChart'), sliceFunction('renderSourcesCount'),
+    sliceFunction('renderSourcesScreen'),
     'return renderSourcesScreen;',
   ].join('\n');
   const render = new Function('document', '$', 'settings', 't', body)(
