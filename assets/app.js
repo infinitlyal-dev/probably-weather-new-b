@@ -736,7 +736,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // a static copy as the pre-JS fallback; updateUILanguage overwrites it from
   // here. Bumped 1.4 → 1.5 with this release (splash, per-language bundles,
   // server cache, GPS-name fix).
-  const APP_VERSION = '1.5';
+  const APP_VERSION = '1.5.1';
   // Short, human-diffable form of the deploy SHA baked into THIS bundle. 'dev'
   // when unbuilt (placeholder still present or 'local') so Settings never shows a
   // raw token. Al compares this against the live /api/version to confirm on-device
