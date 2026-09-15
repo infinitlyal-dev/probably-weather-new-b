@@ -1,9 +1,10 @@
-import { buildOgImageUrl, SHARE_ORIGIN } from '../assets/share-url.js';
+import { buildOgImageUrl, buildShareLink, cleanShareName, parseShareNameSegment, SHARE_ORIGIN } from '../assets/share-url.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 import { SUPPORTED_LANGS } from '../assets/language-preferences.js';
 import weatherHandler, { parseCoord } from './weather.js';
 import { getClientIp } from './_lib/rate-limit.js';
 import { SHARE_REDIRECT_SCRIPT } from './_lib/share-redirect.js';
+import { reversePlaceName } from './_lib/place-name.js';
 
 const STATIC_DESCRIPTION = 'South African weather, in your language.';
 // L2 dedupe: one language list for the whole app (was three copies). Kept as
@@ -54,6 +55,10 @@ async function callWeatherHandler(lat, lon, clientIp) {
   // Keeping the limiter in the loop (vs bypassing for internal calls) was
   // deliberate: /api/share is itself unauthenticated, so a bypass would
   // reopen the per-IP quota-burn hole through crafted share URLs.
+  //
+  // No `name` is passed even when the link carries one: weather.js caches only
+  // names it resolved itself, so a named call on a cache miss would pin the
+  // cell's cached name to 'Unknown' for every other caller.
   const req = { query: { lat, lon }, headers: clientIp ? { 'x-real-ip': clientIp } : {} };
   const res = {
     status(code) {
@@ -80,11 +85,13 @@ async function callWeatherHandler(lat, lon, clientIp) {
   return body;
 }
 
-export function buildShareDescription(payload, lang = 'en') {
+// placeName wins over the forecast's own name; a placeholder name ('Unknown')
+// never reaches the preview.
+export function buildShareDescription(payload, lang = 'en', placeName = '') {
   const safeLang = clampLang(lang);
   const daily = payload?.daily?.[0] || {};
   const now = payload?.now || {};
-  const location = payload?.location?.name || 'South Africa';
+  const location = cleanShareName(placeName) || cleanShareName(payload?.location?.name) || 'South Africa';
   const low = daily.lowC ?? daily.minC ?? daily.tempLowC ?? now.lowC ?? now.tempC;
   const high = daily.highC ?? daily.maxC ?? daily.tempHighC ?? now.highC ?? now.tempC;
   const conditionKey = now.conditionKey || daily.conditionKey || 'clear';
@@ -99,20 +106,28 @@ export function buildShareDescription(payload, lang = 'en') {
   return `${location}: ${PROBABLY_WORD[safeLang]} ${temp}. ${condition}`;
 }
 
-async function resolveShareDescription({ lat, lon, lang, hasCoords, clientIp }) {
-  if (!hasCoords) return STATIC_DESCRIPTION;
+// The place for the preview: the link's own name, else the forecast's resolved
+// name, else one budgeted LocationIQ reverse lookup (api/_lib/place-name.js).
+async function resolveShare({ lat, lon, lang, hasCoords, clientIp, linkName }) {
+  if (!hasCoords) return { description: STATIC_DESCRIPTION, placeName: '' };
 
+  let payload;
   try {
-    const payload = await callWeatherHandler(lat, lon, clientIp);
-    return buildShareDescription(payload, lang);
+    payload = await callWeatherHandler(lat, lon, clientIp);
   } catch (error) {
     // M8: the static-description fallback is correct UX, but silently eating
     // the error left the operator blind to systematic failures (quota
     // exhaustion, rate-limit saturation, a geographic hole). Greppable
     // prefix matches the [pw-source-fail] convention in api/weather.js.
     console.error(`[pw-share-fail] weather fetch failed lat=${lat} lon=${lon}: ${error?.message || error}`);
-    return STATIC_DESCRIPTION;
+    return { description: STATIC_DESCRIPTION, placeName: linkName };
   }
+  let placeName = linkName || cleanShareName(payload?.location?.name);
+  if (!placeName) {
+    placeName = (await reversePlaceName(lat, lon, clientIp)) || '';
+    console.log(`[pw-share-name] no link or forecast name lat=${lat} lon=${lon} → reverse ${placeName ? 'resolved' : 'empty'}`);
+  }
+  return { description: buildShareDescription(payload, lang, placeName), placeName };
 }
 
 export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
@@ -120,7 +135,8 @@ export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
   const lon = query.lon;
   const lang = clampLang(query.lang || 'en');
   const hasCoords = isValidLat(lat) && isValidLon(lon);
-  const description = await resolveShareDescription({ lat, lon, lang, hasCoords, clientIp });
+  const linkName = parseShareNameSegment(query.name);
+  const { description, placeName } = await resolveShare({ lat, lon, lang, hasCoords, clientIp, linkName });
   const appParams = new URLSearchParams();
   if (hasCoords) {
     appParams.set('lat', String(lat));
@@ -136,9 +152,12 @@ export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
   // condition (?c=) reproduces the sender's on-screen bg family + witty bin on
   // the dynamic card. buildOgImageUrl format-sanitizes it; api/og.js does the
   // semantic allowlist check. Only threaded alongside valid coords (the
-  // fallback card ignores condition anyway).
-  const ogImage = buildOgImageUrl(hasCoords ? { lat, lon, lang, condition: query.c } : { lang });
-  const shareUrl = `${SHARE_ORIGIN}/share?${new URLSearchParams({ ...(hasCoords ? { lat: String(lat), lon: String(lon) } : {}), lang: String(lang) }).toString()}`;
+  // fallback card ignores condition anyway). The place rides along the same way.
+  const ogImage = buildOgImageUrl(hasCoords ? { lat, lon, lang, condition: query.c, name: placeName } : { lang });
+  // og:url is the canonical short link (/s/…) whichever form was opened.
+  const shareUrl = hasCoords
+    ? buildShareLink({ lat: parseCoord(lat), lon: parseCoord(lon), lang, condition: query.c, name: placeName })
+    : buildShareLink({ lang });
 
   // The script is byte-constant (api/_lib/share-redirect.js) so the site CSP can
   // allow it by hash; it reads its destination from the meta refresh above it.

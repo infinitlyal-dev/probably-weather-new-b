@@ -2549,7 +2549,9 @@ export default async function handler(req, res) {
     //   · fewer than 4 active sources agree with the final condition's category.
     // A confirmed CURRENT-hour fog override stays HIGH — the detector's gates
     // (vis<1.5km + humidity>=90 + dew-spread<=2 + no precip) make it near-certain.
-    const finalVoteBucket = conditionKeyToVoteBucket(nowConditionKey);
+    // Overlay keys (wind/heat/uv) count agreement on the sky family voted —
+    // see agreementVoteBucket.
+    const finalVoteBucket = agreementVoteBucket(nowConditionKey, mostDesc);
     const agreeingSources = sourceConditionVotes.filter(v => v.vote === finalVoteBucket).length;
     const detectorVerdict = fogDetector.currentFog ? 'fog'
       : fogDetector.trendFog ? 'fog-trend'
@@ -3457,6 +3459,23 @@ function conditionKeyToVoteBucket(key) {
 }
 
 /**
+ * The vote bucket the "N/M sources agree" count is measured against.
+ * wind / heat / uv are numeric overlays (wind speed, temperature, UV index) —
+ * no source DESCRIPTION ever votes them, so conditionKeyToVoteBucket's 'clear'
+ * fallback is only right when the sky under the overlay is clear. 2026-09-15
+ * Strand: wind 35.7 km/h beat five unanimous rain votes and the line read
+ * "0/5 sources agree" under "Rain's here." For an overlay the sources are
+ * compared on the sky/precip family they actually voted, which is the bucket of
+ * the ensemble's weighted description winner.
+ */
+function agreementVoteBucket(conditionKey, descWinner) {
+  if (conditionKey === 'wind' || conditionKey === 'heat' || conditionKey === 'uv') {
+    return categorizeDesc(descWinner);
+  }
+  return conditionKeyToVoteBucket(conditionKey);
+}
+
+/**
  * Layer A — visibility/humidity advection-fog detector (2026-05-21, Bug 1).
  *
  * The 5-source ensemble votes on model cloud_cover and weather_code, neither of
@@ -3675,4 +3694,4 @@ function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph 
 
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc, sanitizeSources };
+export { deriveCondition, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, agreementVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc, sanitizeSources };

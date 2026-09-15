@@ -83,21 +83,21 @@
 {"key":"witty.cloudy[59]","xh":"Ukukhanya kwe-studio kwasimahla namhlanje. Thatha i-selfie.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[60]","xh":"La mafu azilolonge imini yonke ukuze abe sisaqhwithi esingaze sifike kuvavanyo.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[62]","xh":"Ukutshona kwelanga kwanamhlanje kusemva kwe-paywall.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[63]","xh":"Akukho zifoto zokutshona kwelanga namhlanje. Ii-privacy settings zesibhakabhaka zivuliwe.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[64]","xh":"Izibane zesitalato zivuke kwangoko namhlanje, akukho namnye ukhalazayo.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[63]","xh":"Akukho zifoto zokutshona kwelanga ngokuhlwanje. Ii-privacy settings zesibhakabhaka zivuliwe.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[64]","xh":"Izibane zesitalato zivuke kwangoko ngokuhlwanje, akukho namnye ukhalazayo.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[66]","xh":"Usuku luphela njengekhandlela, hayi i-firework. Intlonipho.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[67]","xh":"Kubonakala ngathi amafu ahlala esidlweni sangokuhlwa.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[68]","xh":"Usuku luphela njenge-voicenote enqunyulwa phakathi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[70]","xh":"Usuku luyaphuma lingenadrama. Siyayamkela loo nto.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[70]","xh":"Usuku luyaphuma lungenadrama. Siyayamkela loo nto.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[71]","xh":"Ukutshona kwelanga kwanamhlanje sisiganeko sangaphakathi kuphela.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[72]","xh":"Akukho mibala esibhakabhakeni namhlanje, ngamathunzi oxolo kuphela.","status":"provisional-pending-native-confirm","confidence":"MED"}
+{"key":"witty.cloudy[72]","xh":"Akukho mibala esibhakabhakeni ngokuhlwanje, ngamathunzi oxolo kuphela.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.cloudy[73]","xh":"Ukuhlwa kungena kancinci ngeekawusi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[75]","xh":"Amafu acime isibane esikhulu. Yiya kulala, Mzansi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cloudy[76]","xh":"Akukho zinkwenkwezi namhlanje, kodwa izinja zommelwane zisenezimvo.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[76]","xh":"Akukho zinkwenkwezi ngokuhlwanje, kodwa izinja zommelwane zisenezimvo.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[77]","xh":"Isibhakabhaka siku-aeroplane mode. Akukho zaziso de kube kusasa.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[78]","xh":"Inyanga ixhome uphawu oluthi 'ungaphazamisi'.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[79]","xh":"Amakhethini esibhakabhaka atsaliwe. Ubumfihlo, nceda.","status":"provisional-pending-native-confirm","confidence":"MED"}
-{"key":"witty.cloudy[80]","xh":"Inyanga inesignali namhlanje, kodwa akukho ma-bar.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cloudy[80]","xh":"Inyanga inesignali ngokuhlwanje, kodwa akukho ma-bar.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[81]","xh":"Ngomso luthethathethwano olutsha nemozulu. Ngokuhlwanje siyaphumla.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[82]","xh":"Ubusuku bugalele ingubo enzima phezu kwento yonke.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cloudy[83]","xh":"Amafu asebusuku yindlela yesibhakabhaka yokuthi: masithethe ngomso.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
@@ -215,9 +215,9 @@
 {"key":"witty.cold-clear[49]","xh":"Amanzi acace kangangokuba phantse ubone ingqele.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[50]","xh":"Ikhephu kwezo ntaba, umkhenkce kulo moya. Kunxibelelene? Kakhulu.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.cold-clear[51]","xh":"Eyona mini imihle yasebusika. Ivakala njengeyona ibanda kakhulu.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cold-clear[52]","xh":"Ilanga lasefestileni lelona lilodwa lilenza umsebenzi walo namhlanje.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cold-clear[52]","xh":"Ilanga lasefestileni lelona lilodwa lenza umsebenzi walo namhlanje.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[53]","xh":"Le tafile ayifumaneki. Sihlala apha de kube nguSeptemba ngoku.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cold-clear[54]","xh":"Kukhangeleka kumnandi phaya ngaphandle. Sikhethe ukukukholelwa sisapha ngaphakathi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cold-clear[54]","xh":"Kukhangeleka kumnandi phaya ngaphandle. Sikhethe ukukukholelwa silapha ngaphakathi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[56]","xh":"Ilanga lenza i-admin apha. Ubushushu bebungeyonxalenye yephakheji.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[57]","xh":"Ezo shiti ziza kususwa emgceni zisemxhomeni njenge-carton.","status":"provisional-pending-native-confirm","confidence":"MED"}
 {"key":"witty.cold-clear[58]","xh":"Ulwandle luyabengezela njengeeholide. Umoya utsho okwahlukileyo.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
@@ -246,7 +246,7 @@
 {"key":"witty.cold-clear[85]","xh":"Hlala kufutshane. Hayi, kufutshane ngakumbi. Ewe, phantse ngaphakathi emlilweni.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[86]","xh":"Isibhakabhaka sicacile ngokuhlwanje. Oko kuthetha ukuba ingqele inelungelo lokungena kuyo yonke indawo.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[87]","xh":"Inkwenkwezi yokuqala iphumile. Namanqanaba alishumi okuqala nawo emkile.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cold-clear[89]","xh":"Ukutshona kwelanga eJoburg bubhaso lokuthuthuzela lasebusika. Bubhaso elihle.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cold-clear[89]","xh":"Ukutshona kwelanga eJoburg yibhaso lokuthuthuzela lasebusika. Yibhaso elihle.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[90]","xh":"Yonwabela imibala. Izinga lobushushu sele lisiye emotweni.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[91]","xh":"Okukhona iinkwenkwezi zikhanya, kokukhona ingubo yakho kufuneka isebenze nzima.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[92]","xh":"I-planetarium yasimahla ngokuhlwanje. Umrhumo wokungena: iinzwane zakho.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
@@ -255,7 +255,7 @@
 {"key":"witty.cold-clear[95]","xh":"Iqabaka sele iqalile itshifti yayo. Ngentseni ingca iza kuba yiglasi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[97]","xh":"Isixeko sibonakala sicacile kanje kuphela xa kubuhlungu ngokwenene phandle.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[99]","xh":"Inyanga ilayite iintaba. Ubushushu, nangona kunjalo, buhlala bucimile.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
-{"key":"witty.cold-clear[101]","xh":"Akukho mntu umi emalahleni ngenxa yokutya. Sisapha ngenxa yobushushu.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
+{"key":"witty.cold-clear[101]","xh":"Akukho mntu umi emalahleni ngenxa yokutya. Silapha ngenxa yobushushu.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[102]","xh":"Umthetho wobusuku basebusika: ii-tongs ziyabelwana. Indawo ecaleni komlilo hayi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[103]","xh":"Iinkwenkwezi phezulu, amalahle ezantsi, abahlobo ngeenxa zonke. Ingqele ingazama ngako konke.","status":"provisional-pending-native-confirm","confidence":"HIGH"}
 {"key":"witty.cold-clear[104]","xh":"Umsebenzi wokuqala wangomso: imizuzu emihlanu yokususa umkhenkce efestileni yemoto unxibe iimpahla zomsebenzi.","status":"provisional-pending-native-confirm","confidence":"HIGH"}

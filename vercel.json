@@ -30,6 +30,14 @@
       "destination": "/api/share"
     },
     {
+      "source": "/s/:lang/:lat/:lon/:c/:name",
+      "destination": "/api/share?lang=:lang&lat=:lat&lon=:lon&c=:c&name=:name"
+    },
+    {
+      "source": "/s/:lang/:lat/:lon/:c",
+      "destination": "/api/share?lang=:lang&lat=:lat&lon=:lon&c=:c"
+    },
+    {
       "source": "/install",
       "destination": "/install.html"
     },

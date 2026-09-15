@@ -284,23 +284,18 @@ describe('OG card gates the witty line by the LOCATION day, not server-UTC (F1)'
 // branded /api/og card (not a /og/*.jpg stock photo), reproduce the sender's
 // on-screen condition, and never ship an impossible combination (night-cap).
 describe('branded share link (M-2/M-3 pipeline)', () => {
-  it('buildShareLink points at /share (branded card), not the ?bg= root, and threads ?c=', () => {
+  it('buildShareLink points at the branded /s/ share page (rewritten to /api/share), not the ?bg= root, and threads the condition', () => {
+    // Short path form since 2026-09-15: /s/<lang>/<lat>/<lon>/<condition>[/<Place>].
     const link = buildShareLink({ lat: -34.1, lon: 18.83, lang: 'af', condition: 'partly-cloudy' });
     const u = new URL(link);
     expect(u.origin).toBe('https://probablyweather.co.za');
-    expect(u.pathname).toBe('/share');          // branded, server-rendered card
+    expect(u.pathname).toBe('/s/af/-34.1/18.83/partly-cloudy');   // branded, server-rendered card
     expect(link).not.toContain('/?bg=');         // NOT the old middleware stock-photo path
-    expect(u.searchParams.get('lat')).toBe('-34.1');
-    expect(u.searchParams.get('lon')).toBe('18.83');
-    expect(u.searchParams.get('lang')).toBe('af');
-    expect(u.searchParams.get('c')).toBe('partly-cloudy');
   });
 
   it('buildShareLink rounds coords to 2 decimals (~1km) to keep the URL short', () => {
     const link = buildShareLink({ lat: 40.7856117, lon: -74.0093129, lang: 'af', condition: 'rain' });
-    const u = new URL(link);
-    expect(u.searchParams.get('lat')).toBe('40.79');
-    expect(u.searchParams.get('lon')).toBe('-74.01');
+    expect(new URL(link).pathname).toBe('/s/af/40.79/-74.01/rain');
     // Full-precision coords must never leak into the share URL.
     expect(link).not.toContain('40.7856117');
   });

@@ -61,7 +61,9 @@ for (const base of doc.rows) {
     } else if (v.action !== 'pass' || doubts.length) {
       reasons.push(`lang-check ${v.action}: ${doubts.map((f) => f.message).join(' | ') || `confidence ${v.confidence}`}`);
     }
-    reasons.push(...contentProblems(row.english, row.afrikaans));
+    // Al is the native author: his rulings clear the day/braai content checks too, as the header
+    // says (B182 "wie braai" was held by them on 2026-09-15 despite passing lang-check).
+    if (row.verdict !== 'AL') reasons.push(...contentProblems(row.english, row.afrikaans));
   }
   const out = { ...row, confidence: v ? v.confidence : null, reasons };
   (reasons.length ? sheet : written).push(out);

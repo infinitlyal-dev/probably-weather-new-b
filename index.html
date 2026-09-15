@@ -754,8 +754,9 @@
 
   <footer class="footer"><span id="footerAttribution">Data from Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather &amp; Tomorrow.io</span> · <button type="button" id="installFooterLink" class="install-footer-link" data-install-i18n="footerInstallLink">Install Probably Weather</button></footer>
 
-  <!-- PWA install banner: hidden until engagement gate fires -->
-  <div id="installBanner" class="install-banner hidden" role="region" aria-label="Install Probably Weather">
+  <!-- PWA install banner: hidden until 2.5 s after the first forecast (or the
+       interaction fallback). install.js places it on the hero photograph. -->
+  <div id="installBanner" class="install-banner on-photo hidden" role="region" aria-label="Install Probably Weather">
     <span class="install-banner-icon" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pw-icon" data-icon="install">
         <path d="M12 3v13"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/>
