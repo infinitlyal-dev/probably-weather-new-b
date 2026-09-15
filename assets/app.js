@@ -2446,8 +2446,11 @@ document.addEventListener("DOMContentLoaded", () => {
       name.textContent = s.name || '—';
       const range = document.createElement('span');
       range.className = 'sources-list-range';
+      // P2-2: in the selected unit, exactly like the chart. This list is the
+      // accessible copy on mobile (the chart is aria-hidden) and the only copy
+      // at >=769px, so raw Celsius here meant °F users read the wrong numbers.
       range.textContent = (isNum(s.minTemp) && isNum(s.maxTemp))
-        ? `${round0(s.minTemp)}° – ${round0(s.maxTemp)}°`
+        ? `${round0(convertTemp(s.minTemp))}° – ${round0(convertTemp(s.maxTemp))}°`
         : '--';
       li.appendChild(name);
       li.appendChild(range);
