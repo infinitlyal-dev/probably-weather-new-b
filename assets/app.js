@@ -1104,6 +1104,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ----- Register + poll for updates -----
     navigator.serviceWorker.register('/sw.js').then((registration) => {
+      // Only the English copy bank is precached (2026-09-15); name the reader's
+      // own so the worker caches it for offline use.
+      cacheActiveCopyBank();
       // Initial update check. The browser can cache /sw.js for up to 24h via
       // HTTP caching headers, which is why Vercel deploys don't always
       // propagate to users on second-launch. Calling update() forces a
@@ -1581,10 +1584,21 @@ document.addEventListener("DOMContentLoaded", () => {
     renderRecents();
   }
 
+  // Only the English copy bank is precached; the worker caches the reader's own
+  // on request (sw.js COPY_BANKS), at registration and on every language switch.
+  function cacheActiveCopyBank() {
+    try {
+      navigator.serviceWorker?.ready
+        .then((registration) => registration.active?.postMessage({ type: 'PW_CACHE_COPY', lang: settings.lang || 'en' }))
+        .catch(() => {});
+    } catch (_) {}
+  }
+
   function applyLanguageSelection(lang) {
     if (!SUPPORTED_LANGS.includes(lang)) return;
     settings.lang = lang;
     saveSettings();
+    cacheActiveCopyBank();
     // Ensure the new language's copy bank is loaded (≈30 KB, SW-precached →
     // instant when offline/repeat). applySettings runs in finally so the UI
     // chrome switches immediately even if the bank fetch fails — the witty/
@@ -3995,6 +4009,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Not awaited: rendering never blocks on copy (the COPY_BANK seed keeps the
   // getters safe), and in practice this ~30 KB same-origin file always beats
   // the weather fetch. When it lands, re-render so any seed strings update.
+  // The UI typeface (assets/type-prototype.css, ~52 KB of data: woff2) is linked
+  // media="print" so it never blocks first render; switch it on now, while the
+  // splash still covers the shell.
+  const typeUiSheet = document.getElementById('pwTypeUi');
+  if (typeUiSheet) typeUiSheet.media = 'all';
   loadCopyBank(settings.lang)
     .then((fresh) => { if (fresh) applySettings(); })
     .catch((e) => console.error('[copy] bank load failed:', e));

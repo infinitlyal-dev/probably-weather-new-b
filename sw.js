@@ -94,17 +94,15 @@ const CORE_ASSETS = [
   '/assets/coord-parse.js',
   '/assets/language-preferences.js',
   // Per-language copy banks (Group 6): app.js dynamically imports ONE per
-  // session via copy-loader.js, but all five are precached (~200 KB once at
-  // install) so offline language switching keeps working. The old monolith
-  // /assets/weather-copy.js is server-side only now — not precached.
+  // session via copy-loader.js. Since 2026-09-15 only English — the fallback
+  // every getter ends in — is precached; the reader's own bank is cached on
+  // demand (COPY_BANKS below), so a first visit no longer downloads four
+  // languages it will not use. The old monolith /assets/weather-copy.js is
+  // server-side only now — not precached.
   '/assets/copy-loader.js',
   '/assets/witty-day-tags.js',
   '/assets/geo-regions.js',
   '/assets/copy/en.js',
-  '/assets/copy/af.js',
-  '/assets/copy/zu.js',
-  '/assets/copy/xh.js',
-  '/assets/copy/st.js',
   '/assets/weather-visuals.js',
   '/assets/image-picker.js',
   '/assets/weather-emoji.js',
@@ -122,6 +120,14 @@ const CORE_ASSETS = [
   // __CLIENT_BUNDLE_ASSETS_END__
   '/manifest.json',
 ];
+
+// Language banks cached on demand (2026-09-15). app.js posts
+// { type: 'PW_CACHE_COPY', lang } once registered and on every language switch;
+// the named bank joins the core cache, so the reader's own language works
+// offline without a first visit precaching all five. Offline, an uncached
+// language falls back to copy-loader.js's seed strings. scripts/build.mjs
+// rewrites this line to the hashed chunk paths — keep it on one line.
+const COPY_BANKS = { en: '/assets/copy/en.js', af: '/assets/copy/af.js', zu: '/assets/copy/zu.js', xh: '/assets/copy/xh.js', st: '/assets/copy/st.js' }; // __COPY_BANKS__
 
 // 1,008-image rotation space (9 conditions × 4 weeks × 4 time-slots × 7 picks).
 // Cap raised from 60 → 120 so a typical user's recently-seen buckets survive
@@ -449,4 +455,13 @@ self.addEventListener('fetch', (event) => {
 
 self.addEventListener('message', (event) => {
   if (event.data === 'SKIP_WAITING') self.skipWaiting();
+  // The reader's language bank joins the core cache (see COPY_BANKS). Only the
+  // five known languages map to a URL; anything else is ignored.
+  const lang = event.data && event.data.type === 'PW_CACHE_COPY' ? event.data.lang : null;
+  const url = lang && Object.prototype.hasOwnProperty.call(COPY_BANKS, lang) ? COPY_BANKS[lang] : null;
+  if (url) {
+    event.waitUntil(caches.open(CORE_CACHE)
+      .then(async (cache) => { if (!(await cache.match(url))) await cache.add(url); })
+      .catch(() => {}));
+  }
 });
