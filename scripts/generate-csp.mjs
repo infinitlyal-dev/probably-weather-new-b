@@ -82,6 +82,38 @@ export function buildCsp(hashes) {
   ].join('; ');
 }
 
+// ADS-READINESS DRAFT (branch ads-readiness; never written to vercel.json): the policy AdSense
+// would need. Google supports only a strict CSP for its ad code — script-src on a nonce with
+// 'strict-dynamic' and 'unsafe-eval', plus 'unsafe-inline' https: http: as the fallback older
+// browsers read — because the hosts the ad code loads from change without notice
+// (support.google.com/adsense/answer/16283098). This site is static HTML, so the trust root here
+// is the hashes of our inline scripts rather than a per-request nonce, which would need middleware
+// rewriting every HTML response; Google documents the nonce form, so the hash form must prove
+// itself under Report-Only first. Under 'strict-dynamic' a CSP3 browser ignores 'self' and host
+// allowlists in script-src: every parser-inserted <script src> (app.js, the Vercel Insights
+// script, install.html's modules) must be loaded by a hashed inline script instead, or it is
+// blocked. Both steps come before any enforcement — docs/ads-readiness.md.
+// Print it: node scripts/generate-csp.mjs --ads
+export function buildAdsCsp(hashes) {
+  const scriptSrc = [...hashes.map((h) => `'${h}'`), "'strict-dynamic'", "'unsafe-eval'", "'unsafe-inline'", 'https:', 'http:'].join(' ');
+  return [
+    "default-src 'self'",
+    `script-src ${scriptSrc}`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https:", // creatives and measurement pixels come from hosts Google does not list
+    "font-src 'self' data:",
+    "connect-src 'self' https:",
+    "frame-src https:", // ad iframes
+    "worker-src 'self'",
+    "manifest-src 'self'",
+    "base-uri 'none'",
+    "object-src 'none'",
+    "frame-ancestors 'none'",
+    "form-action 'self'",
+    `report-uri ${REPORT_URI}`,
+  ].join('; ');
+}
+
 /** The header entries for the catch-all block: enforcing, plus the week-one report-only copy. */
 export function cspHeaders(csp) {
   const headers = [{ key: 'Content-Security-Policy', value: csp }];
@@ -91,7 +123,9 @@ export function cspHeaders(csp) {
 
 // CLI: only runs when executed directly (node scripts/generate-csp.mjs), never on import.
 const isMain = process.argv[1] && resolve(fileURLToPath(import.meta.url)) === resolve(process.argv[1]);
-if (isMain) {
+if (isMain && process.argv.includes('--ads')) {
+  console.log(buildAdsCsp(allScriptHashes()));
+} else if (isMain) {
   const WRITE = process.argv.includes('--write');
   const hashes = allScriptHashes();
   const csp = buildCsp(hashes);

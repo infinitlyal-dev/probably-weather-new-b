@@ -510,6 +510,17 @@
       <button id="myLocationHome" class="my-location-btn" type="button" aria-label="My location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pw-icon" data-icon="pin" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> <span>My Location</span></button>
     </div>
 
+    <!-- ADS-READINESS DRAFT (branch ads-readiness, do not merge): the one Home ad slot.
+         A sibling AFTER .home-layout, so it can never sit over the forecast card; with
+         ads on, Home is at least one screen tall, so the slot always starts below the
+         fold. Inert as shipped: [hidden], no ad script, no request — it only shows under
+         body.ads-on.home-active once the reader has made an ad choice.
+         Spec and measurements: docs/ads-readiness.md. -->
+    <aside id="homeAdSlot" class="home-ad-slot" aria-label="Advertisement" hidden>
+      <p class="home-ad-label">Advertisement</p>
+      <div id="homeAdFrame" class="home-ad-frame"></div>
+    </aside>
+
     <section id="hourly-screen" class="screenPanel hourly-screen hidden">
       <!-- day-detail-header/day-detail-back are the PRE-facelift desktop form and
            stay on the two screens that already had a back control. The M2 page-head

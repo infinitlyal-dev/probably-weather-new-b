@@ -6084,3 +6084,39 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   body.home-active .range-line,
   body.home-active .agree-line { color: var(--ink); }
 }
+
+/* ---------- ADS-READINESS DRAFT: the one Home ad slot (docs/ads-readiness.md) ----------
+   Branch ads-readiness, do not merge. Inert as shipped: #homeAdSlot is [hidden] and nothing
+   below applies until body.ads-on. PHONES AND TABLETS ONLY (≤768px): with ads on, Home is at
+   least one screen tall, so the slot — a sibling after .home-layout, never inside the forecast
+   card — always starts below the fold; its size is reserved so a late ad cannot move anything;
+   and it keeps clear of the fixed nav and install banner when scrolled into view.
+   Desktop (≥769px) gets no Home slot: that Home is one fixed postcard screen. Measured with the
+   slot on at 1366×768 and 1920×1080, scrolling to it slid it under the polaroid and the action
+   pills and pushed the headline under the nav — there is no below-the-fold on that layout
+   (docs/ads-readiness.md, decision 7). */
+.home-ad-slot { display: none; }
+@media (max-width: 768px) {
+  body.ads-on.home-active .home-layout { min-height: 100dvh; }
+  body.ads-on.home-active .home-ad-slot:not([hidden]) {
+    display: block;
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), 336px);
+    min-height: 304px;
+    /* Clears the fixed stack at the bottom of the screen when scrolled to the end: the nav
+       (--nav-h) and the install banner above it (78px gap + 68px tall), plus 16px. */
+    margin: 24px auto calc(var(--nav-h, 72px) + 162px + env(safe-area-inset-bottom, 0px));
+  }
+}
+.home-ad-label {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2, rgba(255, 255, 255, 0.72));
+}
+.home-ad-frame {
+  min-height: 280px;
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.04);
+}

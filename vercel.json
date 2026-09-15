@@ -1,6 +1,11 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "git": {
+    "deploymentEnabled": {
+      "ads-readiness": false
+    }
+  },
   "functions": {
     "api/og.js": {
       "includeFiles": "og/**"
