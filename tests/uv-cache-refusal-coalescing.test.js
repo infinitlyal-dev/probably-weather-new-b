@@ -59,7 +59,13 @@ const metPayload = {
 const fakeRedis = makeFakeRedis();
 vi.mock('../api/_lib/limiters.js', () => ({
   getRedis: () => fakeRedis,
-  weatherLimiter: () => null, weatherDailyLimiter: () => null, geocodeLimiter: () => null, errorsLimiter: () => null, ogLimiter: () => null,
+  // Item 1 split the flat weather limiters into forecast/reverse families;
+  // null limiter → fail-open, so this file exercises coalescing, not limits.
+  weatherMinuteInstallLimiter: () => null, weatherDailyInstallLimiter: () => null,
+  weatherMinuteIpLimiter: () => null, weatherDailyIpLimiter: () => null,
+  reverseMinuteInstallLimiter: () => null, reverseDailyInstallLimiter: () => null,
+  reverseMinuteIpLimiter: () => null, reverseDailyIpLimiter: () => null,
+  geocodeLimiter: () => null, errorsLimiter: () => null, ogLimiter: () => null,
   RATE_LIMITS: {},
 }));
 

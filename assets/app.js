@@ -825,6 +825,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadJSON = (key, fb) => { try { const r = localStorage.getItem(key); return r ? JSON.parse(r) : fb; } catch { return fb; } };
   const loadHomeJSON = (key, fb) => { const value = loadJSON(key, fb); return isStoredHomeObject(value) ? value : fb; };
   const saveJSON = (key, val) => { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} };
+  // Prelaunch item 1 (2026-09-14): a random per-install identifier, sent as the
+  // X-PW-Install header on every /api/weather call so the server can key its
+  // daily allowance on the install instead of the public IP. SA carriers run
+  // carrier-grade NAT — thousands of unrelated users share one address — so a
+  // per-IP daily limit locks out strangers who did nothing.
+  //
+  // It is NOT an identity: a random value minted on this device, tied to no
+  // account and no profile, never displayed, and used for nothing but abuse
+  // protection. If storage is unavailable (private mode, blocked site data)
+  // the generated value simply isn't persisted; that client is then governed
+  // by the per-IP flood ceiling alone, which is the intended graceful path.
+  function installId() {
+    const KEY = 'pw_install';
+    const VALID = /^[A-Za-z0-9-]{8,64}$/; // must agree with readInstallId (api/_lib/rate-limit.js)
+    let id = null;
+    try { id = localStorage.getItem(KEY); } catch {}
+    if (VALID.test(id || '')) return id;
+    id = (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function')
+      ? crypto.randomUUID()
+      : Array.from({ length: 16 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
+    try { localStorage.setItem(KEY, id); } catch {}
+    return id;
+  }
+  function installHeaders() {
+    return { 'X-PW-Install': installId() };
+  }
   function normalizeStoredPlaces(places) {
     if (!Array.isArray(places)) return [];
     return places
@@ -2130,7 +2156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 10000);
     const signal = combineAbortSignals([controller.signal, options.signal]);
     try {
-      const resp = await fetch(url, { signal });
+      const resp = await fetch(url, { signal, headers: installHeaders() });
       if (!resp.ok) throw new Error('API error');
       const data = await resp.json();
       // A service-worker offline copy from before the contract change, or a
@@ -3747,7 +3773,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // the user's explicit choice wins over passive re-detection.
         manualLocationAt = Date.now();
         try {
-          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`);
+          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`, { headers: installHeaders() });
           // H2: a 429 (rate limiter) or 5xx here used to fall through .json()
           // into the catch and seed a coords-shaped name into STORAGE.home —
           // permanently, since coords names never healed. Throw early instead.
@@ -3994,7 +4020,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // rather than ever writing a coords string into STORAGE.home.
         let displayName = placeAtRequestTime.name;
         try {
-          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newLat)}&lon=${encodeURIComponent(newLon)}`);
+          const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newLat)}&lon=${encodeURIComponent(newLon)}`, { headers: installHeaders() });
           if (!rev.ok) throw new Error(`reverse geocode HTTP ${rev.status}`);
           const data = await rev.json();
           displayName = buildLocationName(data) || displayName;
@@ -4090,7 +4116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     saveJSON(STORAGE.lastGps, { lat: newGps.lat, lon: newGps.lon, ts: Date.now() });
     let displayName = previousPlace?.name || 'My Location';
     try {
-      const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newGps.lat)}&lon=${encodeURIComponent(newGps.lon)}`);
+      const rev = await fetch(`/api/weather?reverse=1&lat=${encodeURIComponent(newGps.lat)}&lon=${encodeURIComponent(newGps.lon)}`, { headers: installHeaders() });
       // H2: non-OK responses (rate-limit 429, 5xx) must not crash through
       // .json() into a coords-name seed — keep the previous name instead.
       if (!rev.ok) throw new Error(`reverse geocode HTTP ${rev.status}`);

@@ -13,8 +13,22 @@
 // NOTE: Pirate Weather is excluded from hourly aggregation — its hourly.data starts
 // at the current hour (not midnight), making alignment with other sources impossible.
 
-import { checkRateLimit } from './_lib/rate-limit.js';
-import { weatherDailyLimiter, weatherLimiter } from './_lib/limiters.js';
+import { getClientIp, readInstallId } from './_lib/rate-limit.js';
+// The two independent allowance families. The forecast fan-out and the
+// ?reverse=1 LocationIQ lookup are separate upstream costs on separate
+// triggers, so they get separate counters at the same sizes — see the bucket
+// table in _lib/limiters.js. Both are charged ATOMICALLY (every counter or
+// none) by _lib/admission.js.
+import {
+  admissionKeys,
+  chargeAdmission,
+  keepAlive,
+  newAdmissionToken,
+  peekAdmission,
+  refundAdmission,
+  REVERSE_ADMISSION as REVERSE_BUCKETS,
+  WEATHER_ADMISSION as WEATHER_BUCKETS,
+} from './_lib/admission.js';
 import {
   WEATHER_REDIS_OP_TIMEOUT_MS,
   weatherCacheAcquireLock,
@@ -37,6 +51,13 @@ const debugLog = (...args) => {
 };
 
 const WEATHER_MISS_IN_FLIGHT = new Map();
+// Published to a cell's local waiters when the LEADER was refused at its
+// allowance charge, as opposed to null, which means "the leader failed, try
+// again yourself". The distinction matters: after a refusal the shared
+// allowance is gone right now, so waiters must go straight to their own
+// (cheap, non-consuming) peek instead of queueing up to take leadership one
+// after another — that queue was round 4's 10.45 s finding.
+const MISS_DENIED = Symbol('weather-miss-denied');
 // Payload contract version, shipped as meta.schema.
 // 5 (2026-09-15, item 5 as shipped): every provider input validated as it is
 //   today — recognised conditions only, raw bounds before any derivation AND
@@ -68,6 +89,10 @@ export const PAYLOAD_SCHEMA = 5;
 //     the provider fan-out, so the leader's worst case is max(6, 3) s + Redis
 export const REQUEST_BUDGET_MS = 8500;
 export const REDIS_OP_TIMEOUT_MS = WEATHER_REDIS_OP_TIMEOUT_MS;
+// Best-effort lock cleanup, bounded and never awaited on the response path.
+// The lock's own TTL (weather-cache.js) is the real safety net; this only
+// returns the lock sooner when Redis is healthy.
+export const LOCK_RELEASE_TIMEOUT_MS = 1500;
 export const WEATHER_UPSTREAM_TIMEOUT_MS = 6000;
 export const NAME_RESOLUTION_TIMEOUT_MS = 3000;
 // A coalescing waiter (same instance or via Redis) gets the remaining budget,
@@ -96,6 +121,14 @@ async function waitForLocalWeatherMiss(record, maxWaitMs = LOCAL_MISS_WAIT_MS) {
 // (L2 dedupe, was four byte-identical copies). Imported for local use AND
 // re-exported so api/share.js's existing `import { parseCoord } from
 // './weather.js'` keeps working.
+import { waitUntil } from '@vercel/functions';
+
+// Injection point for the platform's keep-alive. Continuations that outlive the
+// response (an abandoned admission EVAL, and the refund that compensates it)
+// are handed to this, or Vercel may suspend the function before they land.
+// Overridable so tests can assert the registration without a live platform.
+export const KEEP_ALIVE = { schedule: waitUntil };
+
 import { parseCoord } from '../assets/coord-parse.js';
 export { parseCoord };
 
@@ -110,18 +143,12 @@ export default async function handler(req, res) {
   // timeout or error the fail-open `fallback` stands in (a miss, no lock info).
   const redisOp = (promise, fallback) => withDeadline(promise, Math.min(REDIS_OP_TIMEOUT_MS, timeLeft()), fallback);
   try {
-    // Per-IP rate limit — first thing, before any upstream work. Fails open if
-    // Upstash is unreachable (checkRateLimit) so a limiter outage never blocks.
-    // Item 7 round 3 (Astra): the Upstash limiter's own timeout is 5 s per
-    // call; both gates are bounded like every other Redis round trip and
-    // fail open on timeout, exactly as checkRateLimit does on an error.
-    const rl = await redisOp(checkRateLimit(req, weatherLimiter()), { allowed: true, skipped: 'timeout' });
-    if (!rl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests' });
-    // Consume the longer window only after the minute gate passes. Otherwise a
-    // minute-rate flood could spend the whole daily allowance without doing
-    // any real weather work and lock a shared carrier IP out for a day.
-    const dailyRl = await redisOp(checkRateLimit(req, weatherDailyLimiter()), { allowed: true, skipped: 'timeout' });
-    if (!dailyRl.allowed) return res.status(429).json({ ok: false, error: 'Too many requests' });
+    // Rate limiting (prelaunch item 1) is NOT the first thing any more, and
+    // the ordering is the whole point of the item — see admitUncachedWork()
+    // below and the bucket table in _lib/limiters.js. Coordinate validation
+    // runs first (it is pure, needs no Redis, and the cache key depends on it),
+    // then the cache and coalescing layers answer whoever they can for free,
+    // and only a request that is about to do real upstream work is metered.
     // parseCoord (not parseFloat) — strict whole-string parse so '90abc',
     // '0x10', and array-valued ?lat=1&lat=2 are rejected, not partial-parsed.
     const lat = parseCoord(req.query.lat);
@@ -238,8 +265,170 @@ export default async function handler(req, res) {
       return !v || /\bward\b/i.test(v) || /^\d+$/.test(v);
     };
 
+    // -------------------------------------------------------------------------
+    // Admission to UNCACHED UPSTREAM WORK (prelaunch item 1, Astra P0-1).
+    //
+    // Every rate-limit bucket this handler owns is charged HERE and nowhere
+    // else, and this runs only on a path that is about to make a real upstream
+    // call: a ?reverse=1 LocationIQ lookup, or the provider fan-out. Anything
+    // answered from the server cache or from another in-flight request (hit,
+    // coalesced-local, coalesced-redis, stale-lock-wait) returns before this is
+    // ever reached, so a cached answer costs NO allowance of any kind. That was
+    // the bug: both the minute and the daily limits used to sit at the top of
+    // the handler, so 241 installs behind one carrier IP could be rate-limited
+    // while being served entirely from a warm cache.
+    //
+    // Cost of the new order, stated plainly: the cache GET (and, on a miss, the
+    // lock) now happen BEFORE any gate, so an unauthenticated flood buys one
+    // Redis round trip per request that the old order would have refused after
+    // its own Redis round trip. That is a like-for-like trade — the old first
+    // gate was itself an Upstash call — and what it buys back is that real
+    // users behind a shared address stop paying for each other's opens.
+    //
+    // Four buckets, two keys, two windows (numbers and reasoning in
+    // _lib/limiters.js). Checked in order, cheapest blast radius first:
+    //   1. per-install minute   30/min     — the burst gate that governs a user
+    //   2. per-install day     300/day     — the sustained gate that governs a user
+    //   3. per-IP minute     6 000/min     — CGNAT burst ceiling
+    //   4. per-IP day       20 000/day     — CGNAT day ceiling
+    // Checked together in ONE atomic Lua EVAL (api/_lib/admission.js): the
+    // script walks the buckets in this order and stops at the first denial,
+    // rolling back what it incremented, so a denied install's neighbours on
+    // the same carrier gateway keep their shared per-IP allowance unspent —
+    // all-or-nothing, in a single Redis round trip.
+    //
+    // Fail-open throughout: no Redis ⇒ null limiters ⇒ every check allows.
+    // These are abuse dampening; provider quota is provider-budget.js's job.
+    const clientIp = getClientIp(req);
+    // Never logged next to the IP — bookkeeping only, see readInstallId.
+    const installId = readInstallId(req);
+    //
+    // TWO STEPS, because "about to do upstream work" and "actually did it" are
+    // not the same request (Astra round 3, major 1). A single charging gate
+    // placed early billed everyone who then turned out to be answerable for
+    // free: 31 simultaneous same-install requests for one cell made ONE
+    // upstream call but were charged 30 times and produced a 429, and lock
+    // losers served `coalesced-redis` or `stale-lock-wait` were charged for
+    // upstream work somebody else did. So:
+    //   · PRE-CHECK  — peekAllowance(), a non-consuming MGET. Runs before a
+    //     request may claim shared leadership, purely so an exhausted caller is
+    //     turned away while it is still holding nothing. Re-taken every pass.
+    //   · CHARGE     — spendAllowance(), the authoritative spend, ATOMIC across
+    //     all four counters (one Lua EVAL, rolled back on any breach — Astra
+    //     round 5, major 2: sequential per-bucket charges left the earlier
+    //     buckets spent when a later one refused). Runs at the one point where
+    //     this request, and no other, is about to call upstream.
+    // Only the request that actually becomes the upstream caller is charged,
+    // and a refused charge spends nothing at all.
+    //
+    // Both halves are BOUNDED like every other Redis round trip (item 7 round
+    // 3: Astra measured the Upstash limiter's own 5 s timeout pushing a
+    // response to 10.0 s). redisOp caps each at min(REDIS_OP_TIMEOUT_MS,
+    // timeLeft()) and falls open to `true` — a slow admission store may not
+    // decide in time, and when it cannot, admitting is the same fail-open
+    // choice checkRateLimit makes on an error. These are abuse dampening; a
+    // limiter that cannot answer must not become an outage.
+    //
+    // The charge additionally COMPENSATES ITSELF when it lands too late to be
+    // used: redisOp abandons the promise, but Redis still runs the EVAL and
+    // the increments still land. `abandoned` tells chargeAdmission that we
+    // stopped waiting, and it DECRs exactly what it incremented. Without it a
+    // request that answered 503/stale at 8.60 s was still charged at 9.20 s
+    // for upstream work it never did (Astra round 8, major 1).
+    const admissionIdentity = { ip: clientIp, installId };
+    const peekAllowance = (buckets) => redisOp(peekAdmission(buckets, admissionIdentity), true);
+
+    // A charge this request is HOLDING but has not yet earned. It is earned
+    // only when the fan-out actually starts; until then any path that answers
+    // without doing upstream work must give it back (round 9, major 1: an EVAL
+    // that won the race AT the deadline left `abandoned` false, so the request
+    // answered 200 stale-deadline at 8.5 s with all four counters charged and
+    // zero upstream calls).
+    const scheduleKeepAlive = (promise) => KEEP_ALIVE.schedule(promise);
+    // A charge this request is HOLDING but has not yet earned. It is earned
+    // only when the fan-out actually starts; until then any path that answers
+    // without doing upstream work gives it back. Only a BILLED charge (the
+    // token says admitted) is refundable — a fail-open admission bought
+    // nothing, so there is nothing to give back (round 10, major 1).
+    let heldCharge = null; // { token } while billed and unearned
+    const releaseHeldCharge = () => {
+      if (!heldCharge) return;
+      const { token, keys } = heldCharge;
+      heldCharge = null;
+      // Scheduled through waitUntil and NEVER awaited on a response path: a
+      // 2 s refund awaited on the expired path answered at 10.5 s, past the
+      // client's abort (round 10, major 2).
+      refundAdmission(token, undefined, { schedule: scheduleKeepAlive, keys });
+    };
+
+    const spendAllowance = async (buckets) => {
+      let abandoned = false;
+      const chargedAtMs = Date.now();
+      // One token for this attempt: it makes an SDK replay of the charge a
+      // no-op and gives the refund something it can own.
+      const token = newAdmissionToken();
+      const charge = chargeAdmission(buckets, admissionIdentity, undefined, chargedAtMs, {
+        token,
+        abandoned: () => abandoned,
+        schedule: scheduleKeepAlive,
+      });
+      // The EVAL outlives our wait when it times out; keep the function alive
+      // for it, or its self-compensation never runs.
+      keepAlive(charge, scheduleKeepAlive);
+      // null is the timeout sentinel — distinct from a real refusal.
+      const outcome = await redisOp(charge, null);
+      if (outcome === null) {
+        // TIMED OUT waiting for the charge. Cancel the token RIGHT NOW, in
+        // parallel with the still-pending EVAL — never chained to it (round
+        // 14, major 1: hanging the cancellation off the EVAL meant a reply
+        // that never came produced zero refund attempts, and all four
+        // counters were still charged at 69.2 s). The token was minted before
+        // the EVAL was sent, so cancelling needs nothing from the reply.
+        //
+        // Whichever lands first is safe by construction: revert-first leaves
+        // the tombstone, so the late admission bills nothing; admit-first is
+        // undone by the revert. The `abandoned` flag below keeps the
+        // late-reply refund as a duplicate, which the token makes a no-op.
+        abandoned = true;
+        refundAdmission(token, undefined, {
+          schedule: scheduleKeepAlive,
+          keys: admissionKeys(buckets, admissionIdentity, chargedAtMs).map(e => e.key),
+        });
+        return true;      // fail open, unbilled
+      }
+      if (!outcome.allowed) return false;
+      if (outcome.billed) {
+        // ACCEPTED — but the rule is the ABSOLUTE deadline, not who won the
+        // race. If the budget went while the EVAL was in flight, this request
+        // will answer from stale or 503, so it must not keep the spend.
+        if (timeLeft() === 0) {
+          refundAdmission(outcome.token, undefined, { schedule: scheduleKeepAlive, keys: outcome.keys });
+          return true; // admitted-but-unbilled; the post-charge gate answers
+        }
+        heldCharge = { token: outcome.token, keys: outcome.keys };
+      }
+      return true;
+    };
+
     // Reverse geocode endpoint — LocationIQ (Nominatim-compatible), zoom=16 for small-town accuracy
     if (req.query.reverse) {
+      // A reverse lookup is uncached upstream work exactly like a fan-out, and
+      // LocationIQ has NO global provider budget behind it (provider-budget.js
+      // covers the five weather sources only) — so this admission check is the
+      // only thing standing between a scripted caller and the geocoding quota.
+      // It gets its OWN buckets rather than a share of the forecast's: one
+      // LocationIQ call is not a five-provider fan-out, and a gateway burst of
+      // position fixes must not eat the forecast allowance the same users are
+      // about to need (Astra round 2, major 2).
+      //
+      // Nothing coalesces here — a reverse lookup is a single call with no
+      // cache, no leader and no lock — so pre-check and charge sit together.
+      // The pre-check still runs first so an exhausted caller is refused by a
+      // read rather than by a write it did not need.
+      if (!(await peekAllowance(REVERSE_BUCKETS))
+          || !(await spendAllowance(REVERSE_BUCKETS))) {
+        return res.status(429).json({ ok: false, error: 'Too many requests' });
+      }
       if (!LOCATIONIQ_TOKEN) {
         return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
       }
@@ -377,6 +566,10 @@ export default async function handler(req, res) {
     // now, from the last good value if it is servable, else with a bounded
     // 503 that is never cached and never handed to local waiters as a result.
     const respondBudgetSpent = async (stage) => {
+      // Answering without doing the upstream work means any charge this
+      // request is holding was never earned (round 9, major 1). Give it back
+      // before the answer goes out, on every stage that lands here.
+      releaseHeldCharge();
       // The budget is gone; one short grace read for the last good value.
       const stalePayload = await withDeadline(weatherCacheGetStale(serverCacheKey), 300, null);
       if (acceptableCache(stalePayload)) {
@@ -414,23 +607,92 @@ export default async function handler(req, res) {
       finish(payload);
     };
 
-    // First layer: same warm instance. The leader publishes the safe cache
-    // payload directly, so coalescing still works when Redis is unavailable.
+    // Out of allowance is not a reason to withhold an answer we already have.
+    // Before refusing, look for a stale entry: serving it costs no upstream
+    // call and no allowance, and a slightly old forecast beats a 429 for
+    // someone whose carrier gateway hit its ceiling. Only when there is
+    // nothing to serve does the request actually fail.
+    const refuseOverAllowance = async () => {
+      const limitedStale = await redisOp(weatherCacheGetStale(serverCacheKey), null);
+      if (acceptableCache(limitedStale)) {
+        const sent = respondWithCachedPayload(limitedStale, 'stale-rate-limited', 's-maxage=30, stale-while-revalidate=60');
+        if (sent) return sent;
+      }
+      return res.status(429).json({ ok: false, error: 'Too many requests' });
+    };
+
+    // ONE coalescing loop, inside the ONE request budget (timeLeft(), item 7).
+    // Every pass, in this order:
+    //   1. RE-READ THE CACHE. While this request was waiting, the leader may
+    //      have published — serving that is free and is the whole point of
+    //      having waited. Re-reading here is what stops an expired waiter from
+    //      fanning out on top of data that already landed.
+    //   2. if someone leads this cell, WAIT on them — free. A waiter never
+    //      peeks and is never charged. THE RECORD BELONGS TO THE LEADER: a
+    //      waiter never deletes it and never takes leadership while it exists.
+    //   3. TERMINAL EXPIRY. With the budget gone this request answers — from
+    //      the last good value, else a bounded 503 — and does NOT go on to
+    //      peek, charge, claim leadership or fan out (Astra round 7, major 1:
+    //      an expired Redis wait that fell through to the fan-out returned at
+    //      10.48 s, past the client's 10 s abort).
+    //   4. PEEK (non-consuming), fresh every pass, because allowance is shared
+    //      state that other cells are spending while we wait.
+    //   5. claim leadership, with a synchronous get/set pair so two requests in
+    //      one warm instance can never both believe they lead.
+    let firstPass = true;
     while (!finishLocalMiss) {
-      const existing = WEATHER_MISS_IN_FLIGHT.get(serverCacheKey);
-      if (existing) {
-        const sharedPayload = await waitForLocalWeatherMiss(existing, timeLeft());
-        if (sharedPayload) {
-          const sent = respondWithCachedPayload(sharedPayload, 'coalesced-local');
+      // 1. Cache, re-read every pass after the first (the first pass's read is
+      //    the one above, which also owns the plain 'hit' response).
+      if (!firstPass) {
+        const settled = await redisOp(weatherCacheGet(serverCacheKey), null);
+        if (isServableCache(settled)) {
+          const sent = respondWithCachedPayload(settled, 'hit');
           if (sent) return sent;
         }
-        // Budget spent waiting on the local leader: answer, do not lead.
-        if (timeLeft() === 0) return respondBudgetSpent('local-wait');
-        if (WEATHER_MISS_IN_FLIGHT.get(serverCacheKey) === existing) {
-          WEATHER_MISS_IN_FLIGHT.delete(serverCacheKey);
-        }
-        continue;
       }
+      firstPass = false;
+
+      // 2. Wait on an existing leader.
+      const existing = WEATHER_MISS_IN_FLIGHT.get(serverCacheKey);
+      if (existing) {
+        if (timeLeft() === 0) return respondBudgetSpent('local-wait');
+        const sharedPayload = await waitForLocalWeatherMiss(existing, timeLeft());
+        // The leader deletes its own record BEFORE resolving, so the record
+        // still being present is exactly how a timeout is told apart from a
+        // leader that published something. Timed out with the leader still
+        // working: hands off — no eviction, no leadership, no fan-out.
+        if (WEATHER_MISS_IN_FLIGHT.get(serverCacheKey) === existing) {
+          return respondBudgetSpent('local-wait');
+        }
+        // MISS_DENIED: the leader was refused at its charge. Allowance is gone
+        // for this key right now, so do NOT queue up to try leadership — fall
+        // through to our own peek, which will refuse us too (cheaply, holding
+        // nothing) or find that a token has since freed up.
+        if (sharedPayload && sharedPayload !== MISS_DENIED) {
+          const sent = respondWithCachedPayload(sharedPayload, 'coalesced-local');
+          if (sent) return sent;
+          // Refused (UV rung crossed) → this request must fetch fresh.
+        } else if (!sharedPayload) {
+          continue; // leader failed outright; take a fresh pass (cache + peek)
+        }
+      }
+
+      // 3. Terminal expiry, before anything that costs allowance or upstream
+      //    work. Checked here and again at the claim below, so no path out of
+      //    an expired wait can reach the charge or the fan-out.
+      if (timeLeft() === 0) return respondBudgetSpent('local-wait');
+
+      // 4. PRE-CHECK — non-consuming, and the gate on LEADERSHIP, not on the
+      //    answer: a refusal here returns holding no record and no lock.
+      if (!(await peekAllowance(WEATHER_BUCKETS))) return await refuseOverAllowance();
+
+      // 5. Someone may have claimed while we were peeking — go wait on them
+      //    rather than duplicating the fan-out.
+      if (WEATHER_MISS_IN_FLIGHT.get(serverCacheKey)) continue;
+
+      // Leadership is never taken with the budget already gone: the peek costs
+      // a Redis round trip, so re-check after it.
+      if (timeLeft() === 0) return respondBudgetSpent('local-wait');
 
       let resolveMiss;
       const record = { promise: new Promise((resolve) => { resolveMiss = resolve; }) };
@@ -467,6 +729,38 @@ export default async function handler(req, res) {
       }
       return respondBudgetSpent('redis-wait');
     }
+
+    // Terminal check before the CHARGE (main has its own before the fan-out).
+    // Acquiring the lock is itself a Redis round trip, so the budget can run
+    // out between claiming leadership and getting here — and an expired
+    // request must not buy allowance it cannot use.
+    if (timeLeft() === 0) return respondBudgetSpent('pre-charge');
+
+    // CHARGE (step b) — the authoritative spend, and the last gate before any
+    // upstream call. Reaching this line means every free answer has already
+    // had its chance and missed: the cache was cold, no local leader had a
+    // payload, and the Redis lock produced neither a stale nor a filled entry.
+    // THIS request is the one about to hit LocationIQ and the five providers,
+    // so it is the one that pays — and it is the only one that does.
+    //
+    // A refusal here is the pre-check/charge race: allowance was there when we
+    // peeked and gone by the time we spent it. The finally block releases the
+    // distributed lock and hands local waiters null, so they stop waiting on us
+    // and pre-check for themselves rather than inheriting our 429.
+    if (!(await spendAllowance(WEATHER_BUCKETS))) {
+      // Tell our waiters WHY we are standing down. With MISS_DENIED they take
+      // their own peek immediately; with a bare null they would each try to
+      // lead in turn and be refused in turn (round 4, major 1b).
+      completeLocalMiss(MISS_DENIED);
+      return await refuseOverAllowance();
+    }
+
+    // Straight after the charge, and BEFORE anything upstream starts. The
+    // charge is itself a Redis round trip, so the budget can expire inside it
+    // — and the very next statements kick off the LocationIQ name lookup
+    // (measured starting at 8.50 s, before the old check) and then the five
+    // providers. An expired request must start neither.
+    if (timeLeft() === 0) return respondBudgetSpent('post-charge');
 
     // Resolve location name — cascading strategy for small-town accuracy
     // Priority: village/town/suburb BEFORE city so Wilderness beats George
@@ -681,6 +975,9 @@ export default async function handler(req, res) {
     // budget. Providers started with nothing left only fail; the last good
     // value (or a bounded 503) is the better answer.
     if (timeLeft() === 0) return respondBudgetSpent('post-budget-check');
+    // The fan-out starts below: from here the charge is EARNED, so it is no
+    // longer held and must not be refunded by a later budget answer.
+    heldCharge = null;
     const budgetAllows = (p) => budget[p] !== false; // undefined ⇒ allowed (safety)
     for (const p of enabledProviders) {
       if (!budgetAllows(p)) console.warn(`[pw-budget] ${p} over ceiling — skipped this request`);
@@ -2387,8 +2684,23 @@ export default async function handler(req, res) {
     console.error('Weather API error:', e);
     return res.status(500).json({ ok: false, error: 'Server error' });
   } finally {
-    try { await distributedMissLock?.release?.(); } finally {
-      if (finishLocalMiss) finishLocalMiss(null);
+    // NOTHING ON THE RESPONSE PATH WAITS ON REDIS (Astra round 15, major 1).
+    // This used to `await` the lock release. With auto-pipelining that release
+    // can be batched behind an in-flight cancellation, and when that stalled
+    // the handler never resolved at all: /share sat without a response at
+    // 71.2 s, with servable stale data and zero remaining charges. The release
+    // is best-effort cleanup — the lock carries a 30 s TTL, so a slow or
+    // failed release costs one cell one extra fan-out, not a hung request.
+    //
+    // Order matters: free the local waiters FIRST (they must not wait on Redis
+    // either), then hand the release to the lifecycle, bounded, unawaited.
+    if (finishLocalMiss) finishLocalMiss(null);
+    const release = distributedMissLock?.release;
+    if (release) {
+      keepAlive(
+        withDeadline(Promise.resolve().then(() => release()), LOCK_RELEASE_TIMEOUT_MS, undefined),
+        KEEP_ALIVE.schedule,
+      );
     }
   }
 }

@@ -8,16 +8,40 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const blocking = { limit: vi.fn(async () => ({ success: false })) };
 const allowing = { limit: vi.fn(async () => ({ success: true, remaining: 299 })) };
-let weatherMinute = blocking;
-let weatherDaily = blocking;
 vi.mock('../api/_lib/limiters.js', () => ({
-  weatherLimiter: () => weatherMinute,
-  weatherDailyLimiter: () => weatherDaily,
   geocodeLimiter: () => blocking,
   errorsLimiter: () => blocking,
   ogLimiter: () => blocking,
+  // weather-cache.js rides this client; null = no Redis, so the cache and the
+  // distributed lock both fail open and the admission gate below is reachable.
+  getRedis: () => null,
   RATE_LIMITS: {},
 }));
+
+// /api/weather's four (or eight, with ?reverse=1) allowance counters are not
+// @upstash/ratelimit limiters any more — they are one atomic Lua EVAL in
+// _lib/admission.js (item 1, round 5). Wiring is asserted at that seam.
+let weatherPeek = false;
+let weatherCharge = false;
+let reversePeek = false;
+let reverseCharge = false;
+vi.mock('../api/_lib/admission.js', async (importOriginal) => {
+  const mod = await importOriginal();
+  const isReverse = (buckets) => buckets === mod.REVERSE_ADMISSION;
+  return {
+    ...mod,
+    peekAdmission: vi.fn(async (buckets) => (isReverse(buckets) ? reversePeek : weatherPeek)),
+    // PRODUCTION SHAPE. chargeAdmission returns { allowed, billed, token } —
+    // a bare boolean made `false` and `true` both read as refused through
+    // outcome.allowed, so the charge-refusal assertions were vacuous.
+    chargeAdmission: vi.fn(async (buckets) => {
+      const allowed = isReverse(buckets) ? reverseCharge : weatherCharge;
+      return allowed
+        ? { allowed: true, billed: true, token: 'test-token' }
+        : { allowed: false, billed: false, token: null };
+    }),
+  };
+});
 
 const { default: weatherHandler } = await import('../api/weather.js');
 const { default: geocodeHandler } = await import('../api/geocode.js');
@@ -42,8 +66,10 @@ const IP = { 'x-forwarded-for': '41.2.3.4' };
 
 describe('rate-limited endpoints return 429 (matching the existing error shape) when blocked', () => {
   beforeEach(() => {
-    weatherMinute = blocking;
-    weatherDaily = blocking;
+    weatherPeek = false;
+    weatherCharge = false;
+    reversePeek = false;
+    reverseCharge = false;
     vi.clearAllMocks();
   });
 
@@ -54,15 +80,53 @@ describe('rate-limited endpoints return 429 (matching the existing error shape) 
     expect(res.body).toMatchObject({ ok: false, error: 'Too many requests' });
   });
 
-  it('S1 /api/weather daily limiter blocks after the minute limiter allows', async () => {
-    weatherMinute = allowing;
-    weatherDaily = blocking;
+  // Item 1 moved every weather bucket behind the cache and the coalescing
+  // layers, so none of them fires on a request that never reaches the upstream
+  // path. S1 used to be pinned with lat/lon 'bad', which now correctly gets the
+  // 400 the coordinate guard owes it.
+  it('S1 /api/weather is refused by the non-consuming PRE-CHECK, before leadership', async () => {
+    weatherPeek = false;   // no allowance left
+    weatherCharge = true;
     const res = makeRes();
-    await weatherHandler({ headers: IP, query: { lat: 'bad', lon: 'bad' } }, res);
+    await weatherHandler(
+      { headers: { ...IP, 'x-pw-install': 'a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d' }, query: { lat: '-33.92', lon: '18.42' } },
+      res,
+    );
     expect(res.statusCode).toBe(429);
     expect(res.body).toMatchObject({ ok: false, error: 'Too many requests' });
-    expect(allowing.limit).toHaveBeenCalled();
-    expect(blocking.limit).toHaveBeenCalled();
+  });
+
+  it('S1b /api/weather is refused by the atomic CHARGE when the peek passed', async () => {
+    weatherPeek = true;    // allowance at peek time...
+    weatherCharge = false; // ...gone by charge time (the race)
+    const res = makeRes();
+    await weatherHandler({ headers: IP, query: { lat: '-33.92', lon: '18.42' } }, res);
+    expect(res.statusCode).toBe(429);
+    expect(res.body).toMatchObject({ ok: false, error: 'Too many requests' });
+  });
+
+  it('S1c /api/weather ?reverse=1 is gated by its OWN buckets', async () => {
+    // An exhausted FORECAST allowance must not block a position fix, and vice
+    // versa: the two families are independent.
+    weatherPeek = true;
+    weatherCharge = true;
+    reversePeek = false;
+    const res = makeRes();
+    await weatherHandler({ headers: IP, query: { reverse: '1', lat: '-33.92', lon: '18.42' } }, res);
+    expect(res.statusCode).toBe(429);
+    expect(res.body).toMatchObject({ ok: false, error: 'Too many requests' });
+  });
+
+  it('S1d CONTROL: with admission allowed the weather handler reaches its body', async () => {
+    // Without this the refusal assertions above prove nothing — a mock that
+    // refuses everything would satisfy them just as well.
+    weatherPeek = true;
+    weatherCharge = true;
+    reversePeek = true;
+    reverseCharge = true;
+    const res = makeRes();
+    await weatherHandler({ headers: IP, query: { lat: '-33.92', lon: '18.42' } }, res);
+    expect(res.statusCode).not.toBe(429);
   });
 
   it('/api/geocode → 429 { ok:false, error, results:[] } (search-compatible)', async () => {

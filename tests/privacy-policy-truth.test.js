@@ -280,8 +280,16 @@ const handlerRedis = {
 
 vi.mock('../api/_lib/limiters.js', () => ({
   getRedis: () => handlerRedis,
-  weatherLimiter: () => null,      // null limiter → fail-open, no rate limiting
-  weatherDailyLimiter: () => null,
+  // null limiter → fail-open, no rate limiting. Item 1 split the flat weather
+  // limiters into a forecast family and a ?reverse=1 family.
+  weatherMinuteInstallLimiter: () => null,
+  weatherDailyInstallLimiter: () => null,
+  weatherMinuteIpLimiter: () => null,
+  weatherDailyIpLimiter: () => null,
+  reverseMinuteInstallLimiter: () => null,
+  reverseDailyInstallLimiter: () => null,
+  reverseMinuteIpLimiter: () => null,
+  reverseDailyIpLimiter: () => null,
   geocodeLimiter: () => null,
   errorsLimiter: () => null,
   ogLimiter: () => null,
