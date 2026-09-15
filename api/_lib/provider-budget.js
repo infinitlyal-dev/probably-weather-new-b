@@ -71,6 +71,13 @@ export const PROVIDER_BUDGETS = {
   'met':        { perMin: 300 },                // MET Norway: no key; stay courteous
   // Tomorrow.io free (official): 3/second, 25/hour, 500/day.
   'tomorrow':   { perSecond: 3, perHour: 25, perDay: 500 },
+  // LocationIQ free plan (locationiq.com/pricing, read 2026-09-15): 2/second,
+  // 60/minute, 5,000/day. Production logged 14 HTTP 429s from /api/geocode —
+  // a debounced keystroke costs one ZA query plus an unrestricted fallback, so
+  // two quick searches exceed 2/second. Every LocationIQ call (search, reverse,
+  // the weather handler's name lookup) spends from this one budget, so a burst
+  // is refused here instead of by LocationIQ.
+  'locationiq': { perSecond: 2, perMin: 60, perDay: 5000 },
 };
 
 // Conservative per-INSTANCE ceilings, used ONLY when Redis is unreachable.
@@ -83,6 +90,8 @@ const INSTANCE_FALLBACK_LIMITS = {
   'met': [{ max: 120, windowMs: 60000 }],
   // Preserve both published burst protection and a tighter outage-hour cap.
   'tomorrow': [{ max: 3, windowMs: 1000 }, { max: 5, windowMs: 3600000 }],
+  // LocationIQ's own 2/second is per token, so it holds per instance too.
+  'locationiq': [{ max: 2, windowMs: 1000 }, { max: 30, windowMs: 60000 }],
 };
 const INSTANCE_FALLBACK_DEFAULT = [{ max: 30, windowMs: 60000 }];
 

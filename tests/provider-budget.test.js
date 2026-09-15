@@ -78,6 +78,35 @@ describe('PROVIDER_BUDGETS — Tomorrow.io published free-tier windows', () => {
   });
 });
 
+describe('PROVIDER_BUDGETS — LocationIQ published free-plan windows', () => {
+  // Production logged 14 LocationIQ HTTP 429s from /api/geocode (2026-09-15):
+  // a debounced keystroke costs a ZA query plus an unrestricted fallback, and
+  // the free plan allows 2/second, 60/minute, 5,000/day.
+  it('enforces LocationIQ at 2/second, 60/minute and 5,000/day', async () => {
+    expect(PROVIDER_BUDGETS.locationiq).toEqual({ perSecond: 2, perMin: 60, perDay: 5000 });
+
+    const redis = fakeRedis();
+    const sameSecond = [];
+    for (let i = 0; i < 3; i++) sameSecond.push((await consumeProviderBudgets(['locationiq'], redis, NOW)).locationiq);
+    // Two in one second pass; the third is refused before LocationIQ sees it.
+    expect(sameSecond).toEqual([true, true, false]);
+    // A fresh second is a fresh window.
+    expect((await consumeProviderBudgets(['locationiq'], redis, NOW + 1000)).locationiq).toBe(true);
+  });
+
+  it('refuses on the per-minute ceiling even in a fresh second', async () => {
+    const redis = fakeRedis();
+    redis.store.set(`pw-budget:locationiq:m:${Math.floor(NOW / 60000)}`, PROVIDER_BUDGETS.locationiq.perMin);
+    expect((await consumeProviderBudgets(['locationiq'], redis, NOW)).locationiq).toBe(false);
+  });
+
+  it('keeps LocationIQ at 2/second per instance when Redis is unreachable', async () => {
+    const results = [];
+    for (let i = 0; i < 3; i++) results.push((await consumeProviderBudgets(['locationiq'], null, NOW)).locationiq);
+    expect(results).toEqual([true, true, false]);
+  });
+});
+
 describe('consumeProviderBudgets — enforcement before fetch', () => {
   it('P5 consumes every configured window in one atomic Redis round trip per provider', async () => {
     const redis = {

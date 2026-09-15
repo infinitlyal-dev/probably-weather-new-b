@@ -249,6 +249,16 @@ export default async function handler(req, res) {
       return 'network';
     }
     function logSourceFailure(name, err) {
+      // A provider the budget guard skipped did not fail — it was never called,
+      // and [pw-budget] already said why. Logged as [pw-source-fail] at error
+      // level it put 14 "Tomorrow.io network Provider unavailable (no key or
+      // budget-blocked)" groups at the top of the production error table
+      // (2026-09-15), where it reads as an outage or a lost key. It stays
+      // visible, at warn, under its own tag.
+      if (err?.budgetBlocked) {
+        console.warn(`[pw-source-skip] ${name} budget-blocked`);
+        return;
+      }
       const tag = classifyFailure(err);
       // [pw-source-fail] prefix makes the log line greppable in Vercel's
       // function-log viewer. Quota-shaped failures (rate-limited / auth-or-
@@ -433,6 +443,14 @@ export default async function handler(req, res) {
         return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
       }
       try {
+        // One slot of the global LocationIQ budget (2/s, 60/min, 5,000/day),
+        // shared with /api/geocode: a refused slot answers "no name" here
+        // instead of drawing a 429 from LocationIQ.
+        const liq = await consumeProviderBudgets(['locationiq'], undefined, Date.now(), { timeoutMs: WEATHER_REDIS_OP_TIMEOUT_MS });
+        if (liq.locationiq === false) {
+          console.warn('[pw-budget] locationiq over ceiling — reverse lookup skipped');
+          return res.status(200).json({ ok: false, city: null, admin1: null, countryCode: null, nearCity: null });
+        }
         // zoom=16 catches hamlets/suburbs
         const rev = await fetchJson(
           `https://us1.locationiq.com/v1/reverse?key=${encodeURIComponent(LOCATIONIQ_TOKEN)}&lat=${lat}&lon=${lon}&format=json&zoom=16&addressdetails=1&normalizecity=1&accept-language=en`,
@@ -777,6 +795,13 @@ export default async function handler(req, res) {
     // serially, adding up to a full provider timeout to the response time.
     const nameResolution = (!resolvedName && LOCATIONIQ_TOKEN) ? (async () => {
       try {
+        // Same global LocationIQ budget as /api/geocode; a refused slot keeps
+        // the fallback name, exactly like a failed lookup.
+        const liq = await consumeProviderBudgets(['locationiq'], undefined, Date.now(), { timeoutMs: Math.max(1, Math.min(WEATHER_REDIS_OP_TIMEOUT_MS, timeLeft())) });
+        if (liq.locationiq === false) {
+          console.warn('[pw-budget] locationiq over ceiling — name lookup skipped');
+          return;
+        }
         const rev = await fetchJson(
           `https://us1.locationiq.com/v1/reverse?key=${encodeURIComponent(LOCATIONIQ_TOKEN)}&lat=${lat}&lon=${lon}&format=json&zoom=16&addressdetails=1&normalizecity=1&accept-language=en`,
           { headers: { 'User-Agent': NOMINATIM_UA } },
@@ -911,6 +936,28 @@ export default async function handler(req, res) {
       'breezy': 'Windy',
       'drizzle': 'Drizzle',
       'flurries': 'Snow showers',
+      // 2026-09-15: the rest of the documented icon=pirate set
+      // (docs.pirateweather.net/en/latest/API). Since item 5 an unmapped icon
+      // is desc=null and the WHOLE source is rejected — production logged
+      // "[pw-source-invalid] Pirate Weather rejected: desc=null" on 15 Sept —
+      // so an everyday icon like light-rain or mostly-cloudy-day dropped Pirate
+      // from the blend. Each string is one the other providers already emit, so
+      // the description vote groups them and categorizeDesc buckets them alike.
+      'mostly-clear-day': 'Clear sky',
+      'mostly-clear-night': 'Clear sky',
+      'mostly-cloudy-day': 'Cloudy',
+      'mostly-cloudy-night': 'Cloudy',
+      'possible-precipitation-day': 'Possible rain',
+      'possible-precipitation-night': 'Possible rain',
+      'precipitation': 'Rain',
+      'light-rain': 'Light rain',
+      'heavy-rain': 'Heavy rain',
+      'light-snow': 'Light snow',
+      'heavy-snow': 'Heavy snow',
+      'very-light-sleet': 'Light sleet',
+      'light-sleet': 'Light sleet',
+      'heavy-sleet': 'Heavy sleet',
+      'dangerous-wind': 'Windy',
     };
 
     // Tomorrow.io weatherCode taxonomy → PW canonical description.
@@ -1083,11 +1130,13 @@ export default async function handler(req, res) {
 
     function getSettledValue(result) {
       if (result.status === 'fulfilled') {
-        // A null fulfilled value means the provider was unavailable this
-        // request — no key, or budget-blocked by the provider guard. Treat it
-        // as a clean failure so each source block's catch records it in
-        // `failures` instead of NPE-ing on `value.someField`.
-        if (result.value == null) throw new Error('Provider unavailable (no key or budget-blocked)');
+        // A null fulfilled value means the budget guard skipped this provider:
+        // every request above is `budgetAllows(...) ? fetch : null`, and the
+        // keyed providers only reach here inside their own key check (no key
+        // goes straight to `failures` in each block's else branch). Treated as
+        // a clean failure so each block's catch records it in `failures`, and
+        // flagged so logSourceFailure logs a skip rather than an outage.
+        if (result.value == null) throw Object.assign(new Error('Provider skipped by the budget guard'), { budgetBlocked: true });
         return result.value;
       }
       throw result.reason ?? new Error('Provider failed');

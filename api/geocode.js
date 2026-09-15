@@ -15,9 +15,27 @@ const GEOCODE_UA = process.env.MET_USER_AGENT || 'ProbablyWeather/1.0 (contact: 
 
 import { checkRateLimit } from './_lib/rate-limit.js';
 import { geocodeLimiter } from './_lib/limiters.js';
+import { consumeProviderBudgets } from './_lib/provider-budget.js';
 // Strict coordinate parser — single implementation (L2 dedupe), see
 // assets/coord-parse.js for the partial-parse rationale.
 import { parseCoord } from '../assets/coord-parse.js';
+
+// One LocationIQ call's slot from the global 'locationiq' budget (2/second,
+// 60/minute, 5,000/day — api/_lib/provider-budget.js). Production logged 14
+// HTTP 429s from this endpoint (2026-09-15): a debounced keystroke costs a ZA
+// query plus an unrestricted fallback, so two quick searches exceed
+// LocationIQ's 2/second. A refused slot is answered here and never reaches
+// LocationIQ. Bounded so a slow Redis cannot stall a keystroke; a timed-out
+// check takes the budget module's per-instance fallback.
+const BUDGET_TIMEOUT_MS = 1500;
+async function locationIqSlot(context) {
+  const budget = await consumeProviderBudgets(['locationiq'], undefined, Date.now(), { timeoutMs: BUDGET_TIMEOUT_MS });
+  if (budget.locationiq === false) {
+    console.warn(`[pw-budget] locationiq over ceiling — ${context} skipped`);
+    return false;
+  }
+  return true;
+}
 
 // isBadLabel — reject empty labels, "Ward 4"-style admin labels, and bare numbers.
 // Same logic as api/weather.js's name-resolution block.
@@ -179,8 +197,17 @@ export default async function handler(req, res) {
       // The tag filter applies to BOTH queries — streets are noise everywhere.
       // locationIqSearch handles LocationIQ's 404-on-no-matches contract so a
       // genuinely empty ZA query falls through to the unrestricted fallback.
+      // A refused budget slot answers "busy" WITHOUT Cache-Control: an empty
+      // 200 would be cached at the edge as "no such place" for five minutes.
+      if (!(await locationIqSlot('search (ZA)'))) {
+        return res.status(200).json({ ok: false, error: 'Geocoding busy', results: [] });
+      }
       let raw = await locationIqSearch(`${base}&countrycodes=za`, 'search (ZA)');
       if (raw.length === 0) {
+        // The unrestricted retry is a second LocationIQ call and spends its own slot.
+        if (!(await locationIqSlot('search (unrestricted)'))) {
+          return res.status(200).json({ ok: false, error: 'Geocoding busy', results: [] });
+        }
         raw = await locationIqSearch(base, 'search (unrestricted)');
       }
 
@@ -217,6 +244,9 @@ export default async function handler(req, res) {
         return res.status(400).json({ ok: false, error: 'Invalid lat/lon' });
       }
 
+      if (!(await locationIqSlot('reverse'))) {
+        return res.status(200).json({ ok: false, error: 'Geocoding busy', results: [] });
+      }
       const rev = await fetchJson(
         `https://us1.locationiq.com/v1/reverse?key=${encodeURIComponent(TOKEN)}` +
         `&lat=${lat}&lon=${lon}&format=json&zoom=16&addressdetails=1&normalizecity=1&accept-language=en`,

@@ -680,6 +680,41 @@ describe('Item 3: PW expanded icons map correctly', () => {
     expect(pwVote.desc).toBe('Possible thunderstorm');
     expect(pwVote.vote).toBe('storm');
   });
+
+  // 2026-09-15: the rest of the documented icon=pirate set
+  // (docs.pirateweather.net/en/latest/API). Before the map covered them each of
+  // these was desc=null, and item 5's validation rejected the WHOLE source —
+  // production logged "[pw-source-invalid] Pirate Weather rejected: desc=null".
+  for (const [icon, desc, vote] of [
+    ['mostly-clear-day', 'Clear sky', 'clear'],
+    ['mostly-clear-night', 'Clear sky', 'clear'],
+    ['mostly-cloudy-day', 'Cloudy', 'cloudy'],
+    ['mostly-cloudy-night', 'Cloudy', 'cloudy'],
+    ['possible-precipitation-day', 'Possible rain', 'rain'],
+    ['possible-precipitation-night', 'Possible rain', 'rain'],
+    ['precipitation', 'Rain', 'rain'],
+    ['light-rain', 'Light rain', 'rain'],
+    ['heavy-rain', 'Heavy rain', 'rain'],
+    ['light-snow', 'Light snow', 'cold'],
+    ['heavy-snow', 'Heavy snow', 'cold'],
+    ['very-light-sleet', 'Light sleet', 'cold'],
+    ['light-sleet', 'Light sleet', 'cold'],
+    ['heavy-sleet', 'Heavy sleet', 'cold'],
+    ['dangerous-wind', 'Windy', 'clear'],
+  ]) {
+    it(`'${icon}' → '${desc}' → ${vote}, and Pirate Weather stays in the blend`, async () => {
+      const { body } = await runWithPwIcon(icon);
+      expect(body.meta.sources.find(s => s.name === 'Pirate Weather')).toEqual({ name: 'Pirate Weather', ok: true });
+      const pwVote = body.now.conditionSignals.sourceVotes.find(v => v.source === 'Pirate Weather');
+      expect(pwVote.desc).toBe(desc);
+      expect(pwVote.vote).toBe(vote);
+    });
+  }
+
+  it("'none' — Pirate's documented no-data marker — is still rejected, not read as clear", async () => {
+    const { body } = await runWithPwIcon('none');
+    expect(body.meta.sources.find(s => s.name === 'Pirate Weather')).toEqual({ name: 'Pirate Weather', ok: false });
+  });
 });
 
 describe('Item 3: MET Norway full symbol map — sleet/snow/thunder variants', () => {
