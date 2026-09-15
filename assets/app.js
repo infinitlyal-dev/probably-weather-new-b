@@ -2822,6 +2822,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderHome(norm) {
     hideSplash();
+    // First forecast on screen: the install banner times itself from this moment
+    // (install.js FIRST_WEATHER_EVENT — Al's ruling 2026-09-15).
+    if (!window.__PW_WEATHER_AT) {
+      window.__PW_WEATHER_AT = Date.now();
+      window.dispatchEvent?.(new Event('pw:first-weather'));
+    }
     showLoader(false);
     const currentTemp = norm.nowTemp, rain = norm.rainPct, wind = norm.windKph, uv = norm.uv;
     const displayCondition = computeHomeDisplayCondition(norm), hero = computeTodaysHero(norm);

@@ -6,6 +6,10 @@ import {
   STORAGE_KEYS,
   DISMISS_DAYS,
   ENGAGEMENT_MS,
+  FIRST_WEATHER_DELAY_MS,
+  FIRST_WEATHER_EVENT,
+  bannerDueAt,
+  placeBannerOnPhoto,
   BANNER_ARM_EVENTS,
   androidStepsKey,
   initInstallExperience,
@@ -260,6 +264,65 @@ describe('install — shouldShowBanner state machine', () => {
   });
 });
 
+describe('install — first-weather trigger and placement on the photograph (Al, 2026-09-15)', () => {
+  it('bannerDueAt is 2.5 s after the forecast, floored by the engagement window', () => {
+    expect(bannerDueAt({ weatherAt: 10_000, firstSeen: 0 })).toBe(10_000 + FIRST_WEATHER_DELAY_MS);
+    // install.js initialised long after the forecast: the floor decides.
+    expect(bannerDueAt({ weatherAt: 1_000, firstSeen: 9_000 })).toBe(9_000 + ENGAGEMENT_MS);
+  });
+
+  it('app.js stamps the first forecast and fires the event from renderHome', () => {
+    const app = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
+    const body = app.slice(app.indexOf('function renderHome(norm)'), app.indexOf('function renderHome(norm)') + 600);
+    expect(body).toMatch(/window\.__PW_WEATHER_AT = Date\.now\(\)/);
+    expect(body).toMatch(/dispatchEvent\?\.\(new Event\('pw:first-weather'\)\)/);
+    expect(FIRST_WEATHER_EVENT).toBe('pw:first-weather');
+  });
+
+  const overlaps = (a, b) => a.left < b.left + b.width && a.left + a.width > b.left && a.top < b.top + b.height && a.top + a.height > b.top;
+
+  it('phone card: upper-middle of the photo, clear of brand, tagline and caption', () => {
+    const photo = { top: 0, left: 16, width: 358, height: 545 };
+    const brand = { top: 20, left: 28, width: 334, height: 60 };
+    const tagline = { top: 84, left: 28, width: 334, height: 36 };
+    const caption = { top: 464, left: 16, width: 358, height: 81 };
+    const p = placeBannerOnPhoto({ photo, bannerHeight: 110, blockers: [brand], soft: [tagline], ceiling: caption.top });
+    const box = { ...p, height: 110 };
+    expect(p.top).toBe(Math.round(545 * 0.3));
+    for (const r of [brand, tagline, caption]) expect(overlaps(box, r)).toBe(false);
+  });
+
+  // Rects measured live at 820x1180 (the 769-1023px full-photo frame), 2026-09-15.
+  const frame = {
+    photo: { top: 0, left: 150, width: 520, height: 1180 },
+    brand: { top: 32, left: 174, width: 456, height: 166 },
+    tagline: { top: 214, left: 174, width: 456, height: 48 },
+    status: { top: 350, left: 206, width: 300, height: 194 },
+    caption: { top: 544, left: 206, width: 392, height: 90 },
+  };
+
+  it('tablet frame: fits between tagline and temperature when there is room', () => {
+    const { photo, brand, tagline, status, caption } = frame;
+    const p = placeBannerOnPhoto({ photo, bannerHeight: 70, blockers: [brand, status], soft: [tagline], ceiling: caption.top });
+    const box = { ...p, height: 70 };
+    for (const r of [brand, tagline, status, caption]) expect(overlaps(box, r)).toBe(false);
+  });
+
+  it('tablet frame: a taller banner may cover the tagline, never the temperature or brand', () => {
+    const { photo, brand, tagline, status, caption } = frame;
+    const p = placeBannerOnPhoto({ photo, bannerHeight: 100, blockers: [brand, status], soft: [tagline], ceiling: caption.top });
+    const box = { ...p, height: 100 };
+    for (const r of [brand, status, caption]) expect(overlaps(box, r)).toBe(false);
+  });
+
+  it('never lands below the caption, even when the photo has free space there', () => {
+    const photo = { top: 0, left: 0, width: 400, height: 900 };
+    const blocker = { top: 40, left: 0, width: 400, height: 400 };
+    const p = placeBannerOnPhoto({ photo, bannerHeight: 80, blockers: [blocker], ceiling: 500 });
+    expect(p.top + 80).toBeLessThanOrEqual(500);
+  });
+});
+
 describe('install — dismissUntilTimestamp', () => {
   it('returns now + 7 days by default', () => {
     const now = 1_700_000_000_000;
@@ -298,7 +361,7 @@ describe('install — translations cover all 5 languages', () => {
 describe('install — DOM markup wired into index.html', () => {
   it('renders the install banner with required elements', () => {
     const h = html();
-    expect(h).toMatch(/id="installBanner"[^>]*class="install-banner hidden"/);
+    expect(h).toMatch(/id="installBanner"[^>]*class="install-banner on-photo hidden"/);
     expect(h).toMatch(/id="installBannerTitle"/);
     expect(h).toMatch(/id="installBannerInstall"/);
     expect(h).toMatch(/id="installBannerDismiss"/);
@@ -541,7 +604,7 @@ describe('install — Android banner never depends on beforeinstallprompt (Samsu
   let win;
   let els;
   let store;
-  function boot(ua, lang = 'en') {
+  function boot(ua, lang = 'en', extraWindow = {}) {
     els = Object.fromEntries(['installBanner', 'installBannerInstall', 'installBannerDismiss', 'installBannerTitle', 'installBannerSteps']
       .map((id) => [id, fakeEl()]));
     els.installBanner.classList.add('hidden');
@@ -549,6 +612,9 @@ describe('install — Android banner never depends on beforeinstallprompt (Samsu
     win = new EventTarget();
     win.matchMedia = () => ({ matches: false });
     win.navigator = { userAgent: ua };
+    // Default scene: something is already on screen (index.html's G4 flag), as
+    // on the A36 report. Tests that need a bare boot override it.
+    Object.assign(win, { __PW_FIRST_RENDER: true }, extraWindow);
     store = new Map();
     vi.stubGlobal('window', win);
     vi.stubGlobal('navigator', win.navigator);
@@ -573,10 +639,53 @@ describe('install — Android banner never depends on beforeinstallprompt (Samsu
   beforeEach(() => { vi.useFakeTimers(); });
   afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
 
+  it('first open: 2.5 s after the first forecast renders, the banner shows with no interaction (Al, 2026-09-15)', () => {
+    boot(A36.chrome);
+    vi.advanceTimersByTime(5_000);
+    expect(bannerShown(), 'no forecast yet, no interaction: nothing').toBe(false);
+    win.__PW_WEATHER_AT = Date.now();
+    win.dispatchEvent(new Event(FIRST_WEATHER_EVENT));
+    vi.advanceTimersByTime(FIRST_WEATHER_DELAY_MS - 100);
+    expect(bannerShown()).toBe(false);
+    vi.advanceTimersByTime(200);
+    expect(bannerShown()).toBe(true);
+  });
+
+  it('a tap during the splash does not beat the first-weather timer', () => {
+    boot(A36.chrome, 'en', { __PW_FIRST_RENDER: false });
+    win.dispatchEvent(new Event('pointerdown'));
+    vi.advanceTimersByTime(ENGAGEMENT_MS + 500);
+    expect(bannerShown(), 'nothing on screen yet: the fallback waits').toBe(false);
+    win.__PW_FIRST_RENDER = true;
+    win.__PW_WEATHER_AT = Date.now();
+    win.dispatchEvent(new Event(FIRST_WEATHER_EVENT));
+    vi.advanceTimersByTime(FIRST_WEATHER_DELAY_MS - 200);
+    expect(bannerShown()).toBe(false);
+    vi.advanceTimersByTime(400);
+    expect(bannerShown()).toBe(true);
+  });
+
+  it('install.js loading after the forecast is already up still shows it, no interaction', () => {
+    boot(UA.iosSafari, 'en', { __PW_WEATHER_AT: Date.now() - 10_000 });
+    // firstSeen is stamped at init, so the engagement floor is what remains.
+    vi.advanceTimersByTime(ENGAGEMENT_MS + 100);
+    expect(bannerShown()).toBe(true);
+  });
+
+  it('"Not now" still holds for 7 days against the first-weather trigger', () => {
+    const now = Date.now();
+    boot(A36.chrome, 'en', {});
+    store.set(STORAGE_KEYS.dismissedUntil, String(now + DISMISS_DAYS * 864e5));
+    win.__PW_WEATHER_AT = now;
+    win.dispatchEvent(new Event(FIRST_WEATHER_EVENT));
+    vi.advanceTimersByTime(FIRST_WEATHER_DELAY_MS + 500);
+    expect(bannerShown()).toBe(false);
+  });
+
   it('Samsung Internet: no page scroll ever happens, one tap shows ≡ instructions with no Install button', () => {
     boot(A36.samsungInternet);
     vi.advanceTimersByTime(10_000);
-    expect(bannerShown(), 'first forecast view stays unobstructed until an interaction').toBe(false);
+    expect(bannerShown(), 'no forecast rendered and no interaction: the fallback waits for a tap').toBe(false);
 
     win.dispatchEvent(new Event('pointerdown'));
     vi.advanceTimersByTime(ENGAGEMENT_MS + 100);

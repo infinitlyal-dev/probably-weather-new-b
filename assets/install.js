@@ -11,12 +11,18 @@ export const STORAGE_KEYS = {
 };
 
 export const DISMISS_DAYS = 7;
-// A fresh document arms the short engagement timer only after its first real
-// interaction (tap, key, wheel or any scroll — including inside a panel). This
-// keeps the first forecast view unobstructed while still surfacing install
-// promptly once the visitor starts using the page. A window-scroll-only gate
-// never fired on phones: the home screen is exactly one viewport tall, so the
-// window itself never scrolls (Samsung A36 report, 2026-09-13).
+// PRIMARY trigger (Al's ruling 2026-09-15): the banner shows FIRST_WEATHER_DELAY_MS
+// after the first forecast renders, with no interaction needed — it is meant to be
+// the most visible thing on first open. app.js stamps window.__PW_WEATHER_AT and
+// fires FIRST_WEATHER_EVENT from renderHome; this module loads at browser idle, so
+// the forecast is often already up by the time it runs.
+export const FIRST_WEATHER_DELAY_MS = 2500;
+export const FIRST_WEATHER_EVENT = 'pw:first-weather';
+// FALLBACK trigger: a first real interaction (tap, key, wheel or any scroll —
+// including inside a panel) arms the short engagement timer, for a session where
+// no forecast ever renders. A window-scroll-only gate never fired on phones: the
+// home screen is exactly one viewport tall, so the window itself never scrolls
+// (Samsung A36 report, 2026-09-13). ENGAGEMENT_MS also floors both triggers.
 export const ENGAGEMENT_MS = 1500;
 export const BANNER_ARM_EVENTS = ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'];
 
@@ -488,6 +494,65 @@ export function dismissUntilTimestamp(now = Date.now(), days = DISMISS_DAYS) {
   return now + days * 24 * 60 * 60 * 1000;
 }
 
+/**
+ * When the first-weather trigger should check the banner: FIRST_WEATHER_DELAY_MS
+ * after the forecast rendered, but never inside shouldShowBanner's engagement
+ * floor (firstSeen is stamped when this module initialises, which can be after
+ * the forecast). Pure.
+ */
+export function bannerDueAt({ weatherAt, firstSeen } = {}) {
+  return Math.max(Number(weatherAt) + FIRST_WEATHER_DELAY_MS, Number(firstSeen || 0) + ENGAGEMENT_MS);
+}
+
+export const BANNER_MAX_WIDTH = 480;
+// At or above this width the copy and the actions share one row.
+export const BANNER_WIDE_MIN = 440;
+
+export function bannerWidthFor(photo, maxWidth = BANNER_MAX_WIDTH) {
+  return Math.max(0, Math.min(photo.width - 24, maxWidth));
+}
+
+/**
+ * Where the banner sits on the hero photograph. Pure: rects in, {top, left, width} out.
+ *   photo    — the photograph's visible box {top, left, width, height}
+ *   blockers — rects the banner must never cover (temperature block, nav, pills, brand…)
+ *   soft     — rects it avoids only while there is room (the first-visit tagline)
+ *   ceiling  — the caption's top edge: the banner always ends above it
+ * The target is the upper-middle (top at 30% of the photo); the banner takes the
+ * free band nearest that target that can hold it. Only blockers that share the
+ * banner's horizontal span count. Returns the photo's top band as a last resort.
+ */
+export function placeBannerOnPhoto({ photo, bannerHeight, blockers = [], soft = [], ceiling = null, gap = 8, maxWidth = BANNER_MAX_WIDTH, targetRatio = 0.3 }) {
+  const width = bannerWidthFor(photo, maxWidth);
+  const left = photo.left + (photo.width - width) / 2;
+  const target = photo.top + photo.height * targetRatio;
+  const lo = photo.top + gap;
+  let hi = photo.top + photo.height - gap;
+  if (Number.isFinite(ceiling) && ceiling > lo) hi = Math.min(hi, ceiling - gap);
+  const shares = (r) => r && r.width > 0 && r.height > 0 && r.left < left + width && r.left + r.width > left;
+  const fit = (rects) => {
+    const busy = rects.filter(shares).map((r) => [r.top - gap, r.top + r.height + gap]).sort((a, b) => a[0] - b[0]);
+    const free = [];
+    let cursor = lo;
+    for (const [a, b] of busy) {
+      if (a > cursor) free.push([cursor, Math.min(a, hi)]);
+      cursor = Math.max(cursor, b);
+    }
+    if (cursor < hi) free.push([cursor, hi]);
+    let best = null;
+    for (const [a, b] of free) {
+      if (b - a < bannerHeight) continue;
+      const top = Math.min(Math.max(target, a), b - bannerHeight);
+      if (best === null || Math.abs(top - target) < Math.abs(best - target)) best = top;
+    }
+    return best;
+  };
+  let top = fit([...blockers, ...soft]);
+  if (top === null) top = fit(blockers);
+  if (top === null) top = lo;
+  return { top: Math.round(top), left: Math.round(left), width: Math.round(width) };
+}
+
 /* -------- DOM helpers (no innerHTML; build with createElement) -------- */
 
 function el(tag, attrs = {}, ...children) {
@@ -609,7 +674,19 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     const elapsed = Date.now() - firstSeen;
     const remaining = Math.max(0, ENGAGEMENT_MS - elapsed);
     clearTimeout(bannerCheckTimer);
-    bannerCheckTimer = setTimeout(maybeShowBanner, remaining + 50);
+    bannerCheckTimer = setTimeout(fallbackCheck, remaining + 50);
+  }
+  // The interaction path is the FALLBACK: once a forecast has rendered, the
+  // first-weather schedule owns the timing (a tap during the splash must not beat
+  // it), and with nothing on screen yet it re-arms for the next interaction.
+  function fallbackCheck() {
+    if (window.__PW_WEATHER_AT) { scheduleFromWeather(); return; }
+    if (!window.__PW_FIRST_RENDER) {
+      bannerArmed = false;
+      BANNER_ARM_EVENTS.forEach((type) => window.addEventListener(type, armBanner, { capture: true, passive: true }));
+      return;
+    }
+    maybeShowBanner();
   }
   // Capture phase so a scroll inside a panel (which doesn't bubble) still
   // counts. userActivation covers a tap that landed before this module
@@ -623,6 +700,83 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   }
   BANNER_ARM_EVENTS.forEach((type) => window.addEventListener(type, armBanner, { capture: true, passive: true }));
   if (navigator.userActivation?.hasBeenActive) armBanner();
+
+  // Primary trigger: FIRST_WEATHER_DELAY_MS after the first forecast, no
+  // interaction. Its own timer, so the interaction fallback cannot cancel it.
+  let weatherTimer = null;
+  function scheduleFromWeather() {
+    const weatherAt = Number(window.__PW_WEATHER_AT);
+    if (!Number.isFinite(weatherAt) || weatherAt <= 0) return;
+    const due = bannerDueAt({ weatherAt, firstSeen: safeGet(STORAGE_KEYS.firstSeen) });
+    clearTimeout(weatherTimer);
+    weatherTimer = setTimeout(maybeShowBanner, Math.max(0, due - Date.now()) + 50);
+  }
+  if (window.__PW_WEATHER_AT) scheduleFromWeather();
+  else window.addEventListener(FIRST_WEATHER_EVENT, scheduleFromWeather, { once: true });
+
+  // ---- Placement on the hero photograph (see placeBannerOnPhoto) ----
+  const PHOTO_BLOCKERS = ['#weatherStatus', '.nav', '#shareBtn', '#navHourlyHome', '#myLocationHome', '.stats-band', '.brand', '#languageBtn'];
+  const PHOTO_SOFT = ['.tagline'];
+  function visibleRect(selector) {
+    const node = document.querySelector(selector);
+    if (!node) return null;
+    const r = node.getBoundingClientRect();
+    return r.width > 0 && r.height > 0 ? r : null;
+  }
+  // Phone: the contained hero card. >=769px: #bgImg — the full-photo frame, or
+  // the postcard, whose cream border is not photograph.
+  function photoBox() {
+    const hero = visibleRect('#heroPhoto');
+    if (hero) return hero;
+    const img = document.getElementById('bgImg');
+    if (!img || typeof getComputedStyle !== 'function') return null;
+    const r = img.getBoundingClientRect();
+    const cs = getComputedStyle(img);
+    const bt = parseFloat(cs.borderTopWidth) || 0;
+    const bl = parseFloat(cs.borderLeftWidth) || 0;
+    const br = parseFloat(cs.borderRightWidth) || 0;
+    const bb = parseFloat(cs.borderBottomWidth) || 0;
+    // The postcard is rotated, so its bounding box is larger than the print. Take
+    // the UNROTATED size (offset*) about the box centre; the banner's 12px side
+    // inset absorbs the ~10px the -2.4deg tilt moves the corners.
+    const w = img.offsetWidth || r.width;
+    const h = img.offsetHeight || r.height;
+    const x0 = r.left + r.width / 2 - w / 2;
+    const y0 = r.top + r.height / 2 - h / 2;
+    const box = { top: y0 + bt, left: x0 + bl, width: w - bl - br, height: h - bt - bb };
+    return box.width > 0 && box.height > 0 ? box : null;
+  }
+  function placeBanner() {
+    if (typeof document.querySelector !== 'function' || typeof banner.getBoundingClientRect !== 'function') return;
+    if (document.body && !document.body.classList.contains('home-active')) return;
+    const photo = photoBox();
+    if (!photo) return;
+    const width = bannerWidthFor(photo);
+    banner.style.width = `${width}px`;
+    banner.classList.toggle('is-wide', width >= BANNER_WIDE_MIN);
+    const caption = visibleRect('#headline');
+    const place = placeBannerOnPhoto({
+      photo,
+      bannerHeight: banner.offsetHeight,
+      blockers: PHOTO_BLOCKERS.map(visibleRect),
+      soft: PHOTO_SOFT.map(visibleRect),
+      ceiling: caption && caption.top > photo.top ? caption.top : null,
+    });
+    banner.style.top = `${place.top}px`;
+    banner.style.left = `${place.left}px`;
+  }
+  let placeQueued = false;
+  function queuePlace() {
+    if (placeQueued || banner.classList.contains('hidden')) return;
+    placeQueued = true;
+    requestAnimationFrame(() => { placeQueued = false; placeBanner(); });
+  }
+  window.addEventListener('resize', queuePlace, { passive: true });
+  window.addEventListener('scroll', queuePlace, { capture: true, passive: true });
+  // Returning to Home (body.home-active) re-measures: off Home the banner is display:none.
+  if (typeof MutationObserver === 'function' && document.body) {
+    new MutationObserver(queuePlace).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  }
 
   function readStorage() {
     return {
@@ -665,6 +819,8 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     applyTranslations();
     refreshBannerMode();
     banner.classList.remove('hidden');
+    // Measured while laid out but still transparent, so it fades in where it lands.
+    placeBanner();
     requestAnimationFrame(() => banner.classList.add('visible'));
   }
   function hideBanner() {
@@ -801,7 +957,8 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     hide: hideBanner,
     openIosModal,
     openIosChromeModal,
-    refreshLanguage: applyTranslations,
+    // A language switch changes the banner's height, so it is placed again.
+    refreshLanguage: () => { applyTranslations(); queuePlace(); },
   };
 }
 

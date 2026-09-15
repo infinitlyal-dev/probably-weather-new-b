@@ -2168,9 +2168,10 @@ describe('language leaks — install banner accessible names', () => {
     // and already reviewed in all five, so no second sentence to write.
     expect(src).toMatch(/banner\.setAttribute\('aria-label',\s*tInstall\('bannerTitle',\s*lang\)\)/);
     expect(src).toMatch(/iosModalClose\.setAttribute\('aria-label',\s*tInstall\('close',\s*lang\)\)/);
-    // applyTranslations IS the language-switch hook (refreshLanguage), so both
-    // are re-applied when the user changes language.
-    expect(src).toMatch(/refreshLanguage:\s*applyTranslations/);
+    // applyTranslations runs from the language-switch hook (refreshLanguage), so
+    // both are re-applied when the user changes language (then the banner, whose
+    // height changed, is placed again on the photograph).
+    expect(src).toMatch(/refreshLanguage:\s*\(\)\s*=>\s*\{\s*applyTranslations\(\);/);
   });
 
   it('no English residue in the install banner region name, in any language', async () => {
