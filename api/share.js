@@ -3,6 +3,7 @@ import { WEATHER_COPY } from '../assets/weather-copy.js';
 import { SUPPORTED_LANGS } from '../assets/language-preferences.js';
 import weatherHandler, { parseCoord } from './weather.js';
 import { getClientIp } from './_lib/rate-limit.js';
+import { SHARE_REDIRECT_SCRIPT } from './_lib/share-redirect.js';
 
 const STATIC_DESCRIPTION = 'South African weather, in your language.';
 // L2 dedupe: one language list for the whole app (was three copies). Kept as
@@ -21,30 +22,6 @@ const escapeAttr = (value) => String(value || '')
   .replace(/"/g, '&quot;')
   .replace(/</g, '&lt;')
   .replace(/>/g, '&gt;');
-
-// Thrown when the inline-script JSON.stringify fails. Mapped to a controlled
-// 400 in the handler rather than a 500 crash. Phase 2 Codex S2 defensive
-// wrap — JSON.stringify on a plain URL string can't fail under current
-// inputs, but the failure surface widens if appUrl ever holds non-string
-// values, so the catch is here for the future.
-export class ShareSerializationError extends Error {
-  constructor(message, { cause } = {}) {
-    super(message);
-    this.name = 'ShareSerializationError';
-    if (cause) this.cause = cause;
-  }
-}
-
-function safeStringifyForScript(value) {
-  try {
-    return JSON.stringify(value);
-  } catch (err) {
-    throw new ShareSerializationError(
-      `Failed to serialize value for inline script: ${err?.message || err}`,
-      { cause: err }
-    );
-  }
-}
 
 // Strict parseCoord (shared with api/weather.js) rejects hex/partial/empty
 // before the range check — '0x10', '', '90abc' no longer slip through as the
@@ -163,6 +140,8 @@ export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
   const ogImage = buildOgImageUrl(hasCoords ? { lat, lon, lang, condition: query.c } : { lang });
   const shareUrl = `${SHARE_ORIGIN}/share?${new URLSearchParams({ ...(hasCoords ? { lat: String(lat), lon: String(lon) } : {}), lang: String(lang) }).toString()}`;
 
+  // The script is byte-constant (api/_lib/share-redirect.js) so the site CSP can
+  // allow it by hash; it reads its destination from the meta refresh above it.
   return `<!doctype html>
 <html lang="${escapeAttr(String(lang).slice(0, 2) || 'en')}">
 <head>
@@ -183,7 +162,7 @@ export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
   <meta name="twitter:description" content="${escapeAttr(description)}"/>
   <meta name="twitter:image" content="${escapeAttr(ogImage)}"/>
   <meta http-equiv="refresh" content="0; url=${escapeAttr(appUrl)}"/>
-  <script>window.location.replace(${safeStringifyForScript(appUrl)});</script>
+  <script>${SHARE_REDIRECT_SCRIPT}</script>
 </head>
 <body>
   <p><a href="${escapeAttr(appUrl)}">Open Probably Weather</a></p>
@@ -194,17 +173,6 @@ export async function buildShareMetaHtml(query = {}, { clientIp } = {}) {
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=300');
-  try {
-    const html = await buildShareMetaHtml(getQuery(req), { clientIp: getClientIp(req) });
-    res.status(200).end(html);
-  } catch (err) {
-    if (err instanceof ShareSerializationError) {
-      // Controlled 400 — the inputs produced something we can't safely
-      // inline. Plain-text body so a curl probe sees the diagnosis.
-      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-      res.status(400).end(`Share preview unavailable: ${err.message}`);
-      return;
-    }
-    throw err;
-  }
+  const html = await buildShareMetaHtml(getQuery(req), { clientIp: getClientIp(req) });
+  res.status(200).end(html);
 }
