@@ -148,7 +148,10 @@ describe('the Afrikaans table is the gate\'s output', () => {
   });
 
   it('adds no day, no braai and no untranslated "Probably" the English does not have', () => {
-    const problems = rows.map(([english, afrikaans]) => [english, contentProblems(english, afrikaans)]).filter(([, p]) => p.length);
+    // Al's own rulings are exempt, as they are at the gate: he is the native author
+    // (B182 "wie braai", 2026-09-15). Every other row must be clean.
+    const alRuled = new Set(JSON.parse(readFileSync(new URL('../review/af-al-decisions.json', import.meta.url), 'utf8')).decisions.map((d) => d.english));
+    const problems = rows.filter(([english]) => !alRuled.has(english)).map(([english, afrikaans]) => [english, contentProblems(english, afrikaans)]).filter(([, p]) => p.length);
     expect(problems).toEqual([]);
   });
 });
