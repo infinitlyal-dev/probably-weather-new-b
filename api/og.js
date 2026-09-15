@@ -15,6 +15,8 @@ import {
   getTimeOfDaySlot,
 } from '../assets/weather-visuals.js';
 import { WITTY_DAY_TAGS, eligibleWittyPool } from '../assets/witty-day-tags.js';
+import { cleanShareName, parseShareNameSegment, sharePlaceName } from '../assets/share-url.js';
+import { reversePlaceName } from './_lib/place-name.js';
 
 export const config = { runtime: 'nodejs' };
 // s-maxage=3600: Vercel's CDN keys on the full URL (query included), so a
@@ -87,6 +89,9 @@ export function canonicalizeOgRequest(req) {
   const hasValidCoords = Number.isFinite(lat) && Number.isFinite(lon)
     && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
   const conditionOverride = normalizeConditionParam(query.c);
+  // ?name= (the share link's place, 2026-09-15): same cleaning as the link
+  // builder, kept only alongside valid coordinates, part of the canonical key.
+  const locationName = hasValidCoords ? sharePlaceName(parseShareNameSegment(query.name)) : '';
   const params = new URLSearchParams({ lang });
 
   if (hasValidCoords) {
@@ -94,6 +99,7 @@ export function canonicalizeOgRequest(req) {
     params.set('lon', formatShareCoord(lon));
   }
   if (conditionOverride) params.set('c', conditionOverride);
+  if (locationName) params.set('name', locationName);
 
   const canonicalQuery = params.toString();
   return {
@@ -102,6 +108,7 @@ export function canonicalizeOgRequest(req) {
     lon: hasValidCoords ? Number(params.get('lon')) : Number.NaN,
     hasValidCoords,
     conditionOverride,
+    locationName,
     canonicalPath: `/api/og?${canonicalQuery}`,
     // Direct unit callers often provide req.query without an HTTP URL. They
     // still receive normalized values, but only a real request can redirect.
@@ -195,7 +202,9 @@ export function buildOgViewModel(payload, options = {}) {
   const lang = clampLang(options.lang);
   const now = payload?.now || payload?.current || {};
   const today = payload?.daily?.[0] || {};
-  const location = payload?.location?.name || options.locationName || 'South Africa';
+  // The share link's place first; a placeholder the forecast carries ('Unknown'
+  // from a cell cached after a skipped LocationIQ lookup) never reaches the card.
+  const location = cleanShareName(options.locationName) || cleanShareName(payload?.location?.name) || 'South Africa';
   const locationLat = payload?.location?.lat;
   const locationLon = payload?.location?.lon;
   // ?c= reproduces an honest sender's on-screen condition only when it matches
@@ -534,6 +543,7 @@ export default async function handler(req, res) {
     lon,
     hasValidCoords,
     conditionOverride,
+    locationName,
     canonicalPath,
     needsRedirect,
   } = canonicalizeOgRequest(req);
@@ -564,7 +574,13 @@ export default async function handler(req, res) {
         console.error(`[pw-og-fail] weather fetch failed lat=${lat} lon=${lon}: ${weatherErr?.message || weatherErr}`);
       }
     }
-    const model = payload ? buildOgViewModel(payload, { lang, conditionOverride }) : buildFallbackViewModel(lang, conditionOverride);
+    // Old links (?bg= via middleware, /share without a place) reach here with no
+    // name; when the forecast has only a placeholder, one budgeted reverse lookup.
+    let place = locationName;
+    if (payload && !place && !cleanShareName(payload?.location?.name)) {
+      place = sharePlaceName(await reversePlaceName(lat, lon, getClientIp(req)));
+    }
+    const model = payload ? buildOgViewModel(payload, { lang, conditionOverride, locationName: place }) : buildFallbackViewModel(lang, conditionOverride);
     // Valid coords but no weather (limiter/provider failure) → the generic
     // card is a TRANSIENT stand-in for this URL; short cache so the CDN
     // retries soon instead of pinning the wrong card for an hour.

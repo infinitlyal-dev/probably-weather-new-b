@@ -2398,7 +2398,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // served a raw /og/<cond>.jpg stock photo (M-2). The display condition
       // rides along (?c=) so the card reproduces the exact bg + witty bin the
       // sender is looking at; api/og.js re-applies the context gates + night-cap.
-      const shareLink = buildShareLink({ lat, lon, lang, condition: displayCond });
+      // The place rides in the link (/s/…/<Place>) so the preview never says
+      // "Unknown"; buildShareLink drops placeholder and coordinate names.
+      const shareLink = buildShareLink({ lat, lon, lang, condition: displayCond, name: activePlace?.name });
       const cityForCopy = rawCity || t('misc', 'shareYourArea');
       // Short caption — NO raw URL in the text (M-3). The link rides the
       // dedicated navigator.share `url` field, so WhatsApp shows one clean link
