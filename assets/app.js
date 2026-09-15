@@ -2033,58 +2033,74 @@ document.addEventListener("DOMContentLoaded", () => {
   // with. Al's bespoke lines are written FOR one photograph, so they can only be
   // resolved once the photograph is known — here, not in renderHome.
   //
-  // ENGLISH ONLY, by Al's ruling: he writes the Afrikaans himself and zu/xh/st
-  // go to native review. Every other language keeps the condition bank, so this
-  // returns false and the line renderHome already set simply stands.
+  // ENGLISH AND AFRIKAANS (2026-09-15). English is the table Al ruled. Afrikaans
+  // opens through the language gate: assets/hero-lines-af.js maps an English line
+  // to its Afrikaans, and scripts/lang-check/apply-af-accepted.mjs writes a row
+  // only when it cleared lang-check and review/af-voice.md (the rest wait on
+  // review/af-al.html), so a photograph's Afrikaans rotation is the subset of its
+  // lines that has one. zu/xh/st have no table yet and keep the condition bank:
+  // this returns false and the line renderHome already set simply stands.
   //
-  // The line table is its own lazy chunk (2026-09-15): at ~455 KB it was most of
+  // The tables are lazy chunks (2026-09-15): the English one alone was ~455 KB of
   // the ~640 KB app.js, and app.js has to arrive before the weather request can
-  // start. English sessions start the import at boot, beside the copy bank, so
-  // it is normally in hand before the first forecast paints. If the forecast wins
-  // the race, the condition line stands and the photograph's own line replaces it
-  // when the table lands — unless the photograph or the headline has changed in
-  // the meantime, in which case the newer paint owns the caption.
+  // start. English and Afrikaans sessions start the imports at boot, beside the
+  // copy bank, so they are normally in hand before the first forecast paints. If
+  // the forecast wins the race, the condition line stands and the photograph's
+  // own line replaces it when the tables land — unless the photograph, the
+  // language or the headline has changed in the meantime, in which case the
+  // newer paint owns the caption.
   const __lineMemo = new Map();
   const LINE_MEMO_CAP = 64;
-  let heroLineTable = null;
-  let heroLineTableLoad = null;
+  // Per-language tables: `en` maps a photograph to its lines; every other entry
+  // maps an English line to that language, null where it has none.
+  const BESPOKE_TABLES = {
+    en: { load: () => import('./hero-lines.js') },
+    af: { load: () => import('./hero-lines-af.js'), line: (mod, english) => mod.heroLineAf(english) },
+  };
+  const bespokeTables = {};
+  const bespokeTableLoads = {};
   let bespokeSrc = '';
-  function loadHeroLineTable() {
-    if (!heroLineTableLoad) {
-      heroLineTableLoad = import('./hero-lines.js')
-        .then((mod) => { heroLineTable = mod; return mod; })
+  function loadBespokeTable(lang) {
+    if (!BESPOKE_TABLES[lang]) return Promise.resolve(null);
+    if (!bespokeTableLoads[lang]) {
+      bespokeTableLoads[lang] = BESPOKE_TABLES[lang].load()
+        .then((mod) => { bespokeTables[lang] = mod; return mod; })
         .catch((err) => {
-          heroLineTableLoad = null; // the next photograph retries
-          debugLog(`[Witty bespoke] line table did not load: ${err?.message || err}`);
+          bespokeTableLoads[lang] = null; // the next photograph retries
+          debugLog(`[Witty bespoke] ${lang} line table did not load: ${err?.message || err}`);
           return null;
         });
     }
-    return heroLineTableLoad;
+    return bespokeTableLoads[lang];
   }
   function applyBespokeLine(src) {
-    if (!headlineEl || settings.lang !== 'en') return false;
+    const lang = settings.lang;
+    if (!headlineEl || !BESPOKE_TABLES[lang]) return false;
     bespokeSrc = src;
-    if (!heroLineTable) {
+    if (!bespokeTables.en || !bespokeTables[lang]) {
       const standing = headlineEl.textContent;
-      loadHeroLineTable().then((mod) => {
-        if (mod && src === bespokeSrc && headlineEl.textContent === standing) applyBespokeLine(src);
+      Promise.all([loadBespokeTable('en'), loadBespokeTable(lang)]).then(([english, own]) => {
+        if (english && own && src === bespokeSrc && settings.lang === lang && headlineEl.textContent === standing) applyBespokeLine(src);
       });
       return false;
     }
-    const lines = heroLineTable.heroLinesForKey(heroCropKey(src));
-    if (!lines) return false;
-    let line = __lineMemo.get(src);
+    const english = bespokeTables.en.heroLinesForKey(heroCropKey(src));
+    if (!english) return false;
+    const lines = lang === 'en' ? english : english.map((l) => BESPOKE_TABLES[lang].line(bespokeTables[lang], l)).filter(Boolean);
+    if (!lines.length) return false;
+    const memoKey = `${lang}:${src}`;
+    let line = __lineMemo.get(memoKey);
     if (!line) {
       // Stable while the picture is. The picker memoizes the IMAGE by
       // (folder, time-of-day, week), so re-rolling the line on every re-paint
       // would keep changing the pairing under a photograph that has not moved —
       // and the pairing is the whole point of writing these per picture.
       line = lines[Math.floor(Math.random() * lines.length)];
-      __lineMemo.set(src, line);
+      __lineMemo.set(memoKey, line);
       if (__lineMemo.size > LINE_MEMO_CAP) __lineMemo.delete(__lineMemo.keys().next().value);
     }
     safeText(headlineEl, line);
-    debugLog(`[Witty bespoke] ${src} → ${line}`);
+    debugLog(`[Witty bespoke] ${lang} ${src} → ${line}`);
     return true;
   }
 
@@ -3974,9 +3990,9 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCopyBank(settings.lang)
     .then((fresh) => { if (fresh) applySettings(); })
     .catch((e) => console.error('[copy] bank load failed:', e));
-  // The bespoke line table serves English only (applyBespokeLine). Start it now,
-  // in parallel with the copy bank, so it normally lands before the forecast.
-  if (settings.lang === 'en') loadHeroLineTable();
+  // The bespoke line tables (applyBespokeLine) serve English and Afrikaans. Start
+  // them now, in parallel with the copy bank, so they normally land before the forecast.
+  if (BESPOKE_TABLES[settings.lang]) { loadBespokeTable('en'); loadBespokeTable(settings.lang); }
   applySettings(); renderRecents(); renderFavorites();
   // Keep only the tiny beforeinstallprompt capture on the boot path. The full
   // install UI loads at browser idle, or immediately if the one-shot prompt

@@ -1,52 +1,86 @@
-// Writes the accepted Afrikaans bespoke lines to the AF bank through the lang-check gate.
+// Writes the Afrikaans bespoke lines through the lang-check gate.
 //
-// The bespoke lines are keyed to photographs and live in assets/hero-lines.js, which is English
-// only by ruling. The Afrikaans bank for them is assets/hero-lines-af.js: an English → Afrikaans
-// table for every accepted row (the two judges' merge, review/af-accepted.json) plus the 350 bank
-// lines already reused for the set (review/af-worklist.json `reuse`). Serving it in the app is a
-// separate wiring step; this file is the bank.
+// The bespoke lines are keyed to photographs in assets/hero-lines.js. Their Afrikaans is
+// assets/hero-lines-af.js — English line → Afrikaans — which the app's bespoke path serves when
+// the language is Afrikaans (assets/app.js applyBespokeLine). This script is the only writer of
+// that table.
 //
-// Gate: every accepted line is run through lang-check; triage-high lines are held and listed for
-// Al instead of written.
+// Source: review/af-bespoke-decisions.json, one row per wired English line:
+//   canon  Al's native condition-bank line, reused for the photograph
+//   blue   an earlier draft, judged KEEP, FIX or KILL (FIX and KILL carry a scored proposal)
+//   new    a transcreation of a line that had no Afrikaans, scored 1–5
+// The voice the rows were judged against is review/af-voice.md.
 //
-//   node scripts/lang-check/apply-af-accepted.mjs [--decisions review/af-judge-al-decisions.json]
+// A row is written only when all of these hold:
+//   - it is canon or KEEP, or its proposal scored 4 or 5
+//   - lang-check's action is pass, with no medium or high finding
+//   - it names no weekday the English does not, adds no braai the English does not have, and does
+//     not leave "Probably" in English
+//   - it is not on hold, and its English line is still wired in assets/hero-lines.js
+// Every other row goes to review/af-al.html with its proposal and the reason, for Al.
+//
+// Al's own rulings replace a row: export them from review/af-al.html and pass the file. They are
+// written unless lang-check rates them triage-high — Al is the native author.
+//
+//   node scripts/lang-check/apply-af-accepted.mjs [--decisions review/af-al-decisions.json]
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { check } from './lib/checker.mjs';
+import { contentProblems } from './lib/af-content.mjs';
+import { HERO_LINES } from '../../assets/hero-lines.js';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const args = process.argv.slice(2);
 const val = (f) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : undefined; };
-const accepted = JSON.parse(fs.readFileSync(path.join(ROOT, 'review', 'af-accepted.json'), 'utf8')).rows;
-const work = JSON.parse(fs.readFileSync(path.join(ROOT, 'review', 'af-worklist.json'), 'utf8'));
+const today = new Date().toISOString().slice(0, 10);
 
-const lines = [];
-for (const r of work.reuse) lines.push({ id: r.from || 'bank', english: r.text, afrikaans: r.af, outcome: 'bank', condition: r.condition, time: r.time });
-for (const r of accepted) lines.push(r);
-// Al's own rulings on the al sheet, if exported
-if (val('--decisions')) for (const d of JSON.parse(fs.readFileSync(val('--decisions'), 'utf8')).decisions) if (d.afrikaans) lines.push({ id: d.id, english: d.english, afrikaans: d.afrikaans, outcome: 'al-ruled' });
+const doc = JSON.parse(fs.readFileSync(path.join(ROOT, 'review', 'af-bespoke-decisions.json'), 'utf8'));
+const alRuled = new Map();
+if (val('--decisions')) {
+  for (const d of JSON.parse(fs.readFileSync(val('--decisions'), 'utf8')).decisions) if (d.afrikaans) alRuled.set(d.english, d);
+}
+const wiredEnglish = new Set(Object.values(HERO_LINES).flat());
 
-const written = [], held = [];
-for (const l of lines) {
-  if (l.outcome === 'bank') { written.push({ ...l, confidence: null }); continue; } // native-reviewed bank copy, already ruled
-  const v = check({ lang: 'af', en: l.english, text: l.afrikaans });
-  const doubts = v.findings.filter((f) => f.severity !== 'low').map((f) => f.message);
-  if (v.action === 'triage-high') held.push({ ...l, confidence: v.confidence, doubts });
-  else written.push({ ...l, confidence: v.confidence, doubts });
+const written = [];
+const sheet = [];
+for (const base of doc.rows) {
+  const al = alRuled.get(base.english);
+  const row = al ? { ...base, verdict: 'AL', afrikaans: al.afrikaans, score: null, reason: 'Ruled by Al', hold: undefined } : base;
+  const reasons = [];
+  if (!wiredEnglish.has(row.english)) reasons.push('its English line is no longer wired in assets/hero-lines.js');
+  if (!row.afrikaans) reasons.push('there is no Afrikaans proposal');
+  if (row.hold) reasons.push(`on hold: ${row.hold}`);
+  if (!['CANON', 'KEEP', 'AL'].includes(row.verdict) && !(row.score >= 4)) reasons.push(`the proposal scored ${row.score}, below 4`);
+  let v = null;
+  if (row.afrikaans) {
+    v = check({ lang: 'af', en: row.english, text: row.afrikaans });
+    const doubts = v.findings.filter((f) => f.severity !== 'low');
+    if (row.verdict === 'AL') {
+      if (v.action === 'triage-high') reasons.push(`lang-check triage-high: ${doubts.map((f) => f.message).join(' | ')}`);
+    } else if (v.action !== 'pass' || doubts.length) {
+      reasons.push(`lang-check ${v.action}: ${doubts.map((f) => f.message).join(' | ') || `confidence ${v.confidence}`}`);
+    }
+    reasons.push(...contentProblems(row.english, row.afrikaans));
+  }
+  const out = { ...row, confidence: v ? v.confidence : null, reasons };
+  (reasons.length ? sheet : written).push(out);
 }
 
+// ---- assets/hero-lines-af.js ------------------------------------------------------------------
 const table = {};
 for (const w of written) table[w.english] = w.afrikaans;
 const keys = Object.keys(table).sort();
+const count = (list, verdict) => list.filter((r) => r.verdict === verdict).length;
 const src = `// Probably Weather — Afrikaans for the bespoke (per-photograph) lines. GENERATED by
-// scripts/lang-check/apply-af-accepted.mjs on ${new Date().toISOString().slice(0, 10)} — do not edit by hand.
+// scripts/lang-check/apply-af-accepted.mjs on ${today} from review/af-bespoke-decisions.json — do not
+// edit by hand.
 //
-// English line → Afrikaans. ${keys.length} rows: ${written.filter((w) => w.outcome === 'bank').length} reused from the native-reviewed
-// condition bank, ${written.filter((w) => w.outcome === 'accepted').length} drafts both judges kept, ${written.filter((w) => w.outcome === 'accepted-rewrite').length} rewrites both judges
-// agreed on${written.some((w) => w.outcome === 'al-ruled') ? `, ${written.filter((w) => w.outcome === 'al-ruled').length} ruled by Al` : ''}. Every row passed the lang-check gate. The bespoke path in the app is
-// English-only by ruling (assets/hero-lines.js); this table is the Afrikaans bank for it, wired
-// separately.
+// English line → Afrikaans. ${keys.length} rows: ${count(written, 'CANON')} of Al's native bank lines, ${count(written, 'KEEP')} drafts kept as they were,
+// ${count(written, 'FIX') + count(written, 'KILL')} rewrites of drafts that did not carry the joke, ${count(written, 'NEW')} new transcreations${count(written, 'AL') ? `, ${count(written, 'AL')} ruled by Al` : ''}.
+// Every row passed lang-check with no medium or high finding, adds no day or braai the English does
+// not have, and was judged against review/af-voice.md. Rows that did not clear the gate are on
+// review/af-al.html. Served for Afrikaans by applyBespokeLine in assets/app.js, loaded only then.
 export const HERO_LINES_AF = ${JSON.stringify(Object.fromEntries(keys.map((k) => [k, table[k]])), null, 1)};
 
 export function heroLineAf(english) {
@@ -54,9 +88,104 @@ export function heroLineAf(english) {
 }
 `;
 fs.writeFileSync(path.join(ROOT, 'assets', 'hero-lines-af.js'), src);
-const md = [`# af accepted → hero-lines-af.js — ${new Date().toISOString().slice(0, 10)}`, '', `${lines.length} lines in: ${written.length} written (${written.filter((w) => w.outcome === 'bank').length} bank, ${written.filter((w) => w.outcome === 'accepted').length} accepted, ${written.filter((w) => w.outcome === 'accepted-rewrite').length} rewrites${written.some((w) => w.outcome === 'al-ruled') ? `, ${written.filter((w) => w.outcome === 'al-ruled').length} al-ruled` : ''}), ${held.length} held by the gate.`, '', '## Held', ''];
-for (const h of held) md.push(`- ${h.id} EN: ${h.english}`, `  - AF: ${h.afrikaans}`, ...h.doubts.map((d) => `  - ${d}`));
-md.push('', '## Written with a doubt (triage, not high)', '');
-for (const w of written.filter((x) => x.doubts && x.doubts.length)) md.push(`- ${w.id} (${w.confidence}) ${w.afrikaans} — ${w.doubts.join(' | ')}`);
+
+// ---- review/af-al.html ------------------------------------------------------------------------
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function voiceHtml(md) {
+  const out = [];
+  let list = false;
+  for (const line of md.split(/\r?\n/)) {
+    if (/^# /.test(line) || !line.trim()) continue;
+    if (/^## /.test(line)) { if (list) { out.push('</ol>'); list = false; } out.push(`<h3>${esc(line.slice(3))}</h3>`); continue; }
+    const m = /^\d+\.\s+(.*)$/.exec(line);
+    if (m) { if (!list) { out.push('<ol>'); list = true; } out.push(`<li>${esc(m[1])}`); continue; }
+    if (list && /^\s+\S/.test(line)) { out.push(`<div class="ex">${esc(line.trim())}</div>`); continue; }
+    if (!list) out.push(`<p>${esc(line)}</p>`);
+  }
+  if (list) out.push('</ol>');
+  return out.join('\n');
+}
+const voice = fs.readFileSync(path.join(ROOT, 'review', 'af-voice.md'), 'utf8');
+const order = { new: 0, blue: 1, canon: 2 };
+const rowsHtml = [...sheet].sort((a, b) => order[a.group] - order[b.group] || a.id.localeCompare(b.id)).map((r) => `<tr data-id="${esc(r.id)}" data-english="${esc(r.english)}">
+<td class="id">${esc(r.id)}<span>${esc(r.verdict)} · ${esc(r.slot)}</span></td>
+<td class="en">${esc(r.english)}</td>
+<td class="af"><textarea rows="3" aria-label="Afrikaans for ${esc(r.id)}">${esc(r.afrikaans || '')}</textarea>${r.draft ? `<div class="draft">Earlier draft: ${esc(r.draft)}</div>` : ''}</td>
+<td class="why"><ul>${r.reasons.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>${r.reason ? `<div class="note">Judge: ${esc(r.reason)}${r.score ? ` (score ${r.score})` : ''}</div>` : ''}</td>
+<td class="use"><label><input type="checkbox"> Use</label></td>
+</tr>`).join('\n');
+const html = `<title>Afrikaans lines for Al</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root { --bg:#f7f6f2; --fg:#1d1d1b; --muted:#6b6a64; --line:#dddbd2; --card:#fff; --accent:#1f5f8b; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161614; --fg:#ecebe6; --muted:#a3a29b; --line:#34332f; --card:#1f1f1c; --accent:#7fb6dd; } }
+body { margin:0; padding:24px 16px 64px; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui, sans-serif; }
+main { max-width:1200px; margin:0 auto; }
+h1 { font-size:1.5rem; margin:0 0 4px; } h2 { font-size:1.1rem; margin:28px 0 8px; } h3 { font-size:1rem; margin:16px 0 6px; }
+p.lede { color:var(--muted); margin:0 0 16px; max-width:70ch; }
+details { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 14px; }
+details .ex { color:var(--muted); font-size:.9rem; margin:2px 0 8px; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); min-width:880px; }
+th, td { text-align:left; vertical-align:top; padding:10px; border-top:1px solid var(--line); }
+th { font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+td.id { white-space:nowrap; font-weight:600; } td.id span { display:block; font-weight:400; color:var(--muted); font-size:.8rem; }
+td.en { width:24%; } td.af { width:30%; } td.why { width:30%; font-size:.9rem; }
+td.why ul { margin:0; padding-left:18px; } .note, .draft { color:var(--muted); font-size:.85rem; margin-top:6px; }
+textarea { width:100%; box-sizing:border-box; font:inherit; color:inherit; background:transparent; border:1px solid var(--line); border-radius:6px; padding:6px; }
+.bar { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin:16px 0; }
+button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+#out { width:100%; min-height:120px; margin-top:8px; }
+</style>
+<main>
+<h1>Afrikaans lines for Al</h1>
+<p class="lede">${sheet.length} bespoke lines did not clear the gate on ${today}, out of ${doc.rows.length}. The other ${written.length} are wired for Afrikaans. Each row shows the English, the Afrikaans proposal and why it is here. Edit the proposal if needed, tick <b>Use</b>, then export and run <code>node scripts/lang-check/apply-af-accepted.mjs --decisions review/af-al-decisions.json</code>. A line you rule is written unless lang-check rates it triage-high.</p>
+<details><summary>The voice these were judged against (review/af-voice.md)</summary>${voiceHtml(voice)}</details>
+<h2>Gate</h2>
+<p>Wired only when: canon or KEEP, or the proposal scored 4–5 · lang-check pass with no medium or high finding · no weekday or braai the English does not have · not on hold.</p>
+<div class="bar"><button id="export" type="button">Export ticked rows</button><span id="count"></span></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Row</th><th>English</th><th>Afrikaans proposal</th><th>Why it is here</th><th></th></tr></thead>
+<tbody>
+${rowsHtml}
+</tbody></table></div>
+<textarea id="out" readonly placeholder="Exported decisions appear here — save as review/af-al-decisions.json"></textarea>
+</main>
+<script>
+document.getElementById('export').addEventListener('click', function () {
+  var decisions = Array.prototype.slice.call(document.querySelectorAll('tr[data-id]'))
+    .filter(function (tr) { return tr.querySelector('input').checked; })
+    .map(function (tr) { return { id: tr.dataset.id, english: tr.dataset.english, afrikaans: tr.querySelector('textarea').value.trim() }; })
+    .filter(function (d) { return d.afrikaans; });
+  var json = JSON.stringify({ decisions: decisions }, null, 1);
+  document.getElementById('out').value = json;
+  document.getElementById('count').textContent = decisions.length + ' exported';
+  try { var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' })); a.download = 'af-al-decisions.json'; a.click(); } catch (e) {}
+});
+</script>
+`;
+fs.writeFileSync(path.join(ROOT, 'review', 'af-al.html'), html);
+
+// ---- review/af-accepted-apply.md --------------------------------------------------------------
+const byReason = {};
+for (const r of sheet) for (const x of r.reasons) { const k = x.replace(/:.*$/, ''); byReason[k] = (byReason[k] || 0) + 1; }
+const md = [
+  `# Afrikaans bespoke lines through the gate — ${today}`,
+  '',
+  `${doc.rows.length} rows in review/af-bespoke-decisions.json → ${written.length} written to assets/hero-lines-af.js, ${sheet.length} on review/af-al.html.`,
+  '',
+  '| | canon | KEEP | FIX | KILL | new | Al |',
+  '|---|---|---|---|---|---|---|',
+  `| written | ${count(written, 'CANON')} | ${count(written, 'KEEP')} | ${count(written, 'FIX')} | ${count(written, 'KILL')} | ${count(written, 'NEW')} | ${count(written, 'AL')} |`,
+  `| to Al | ${count(sheet, 'CANON')} | ${count(sheet, 'KEEP')} | ${count(sheet, 'FIX')} | ${count(sheet, 'KILL')} | ${count(sheet, 'NEW')} | ${count(sheet, 'AL')} |`,
+  '',
+  '## Why rows went to Al',
+  '',
+  ...Object.entries(byReason).sort((a, b) => b[1] - a[1]).map(([k, n]) => `- ${n} × ${k}`),
+  '',
+  `Wired English lines without a decision row: ${[...wiredEnglish].filter((e) => !doc.rows.some((r) => r.english === e)).length}.`,
+  '',
+];
 fs.writeFileSync(path.join(ROOT, 'review', 'af-accepted-apply.md'), md.join('\n'));
-console.log(`hero-lines-af.js: ${keys.length} rows written (${written.filter((w) => w.outcome === 'bank').length} bank + ${written.filter((w) => w.outcome !== 'bank').length} judged), ${held.length} held → review/af-accepted-apply.md`);
+console.log(`hero-lines-af.js: ${keys.length} rows written; ${sheet.length} to review/af-al.html (${Object.entries(byReason).map(([k, n]) => `${n} ${k}`).join('; ')})`);

@@ -54,6 +54,7 @@ function loadServiceWorkerContext() {
 const dynamicModules = [
   '/assets/install.js',
   '/assets/hero-lines.js',
+  '/assets/hero-lines-af.js',
   '/assets/coord-parse.js',
   '/assets/copy/en.js',
   '/assets/copy/af.js',
@@ -107,6 +108,7 @@ describe('offline shell — every module app.js imports is in the SW cache', () 
   it('app.js dynamically imports install.js and the per-language banks', () => {
     expect(appSrc).toMatch(/import\(['"]\.\/install\.js['"]\)/);
     expect(appSrc).toMatch(/import\(['"]\.\/hero-lines\.js['"]\)/);
+    expect(appSrc).toMatch(/import\(['"]\.\/hero-lines-af\.js['"]\)/);
     expect(appSrc).toMatch(/loadCopyBank\(/);
   });
 

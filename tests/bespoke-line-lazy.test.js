@@ -3,16 +3,19 @@ import { describe, expect, it, vi } from 'vitest';
 
 import { heroCropKey } from '../assets/hero-crop.js';
 import * as heroLines from '../assets/hero-lines.js';
+import * as heroLinesAf from '../assets/hero-lines-af.js';
 
-// Performance pass (2026-09-15): the bespoke line table, assets/hero-lines.js
-// (~455 KB of a ~640 KB app.js), left app.js's static graph and loads as its own
-// chunk. Once it has landed the paint path must caption exactly as before; while
-// it has not, the condition line stands, the photograph's own line replaces it
-// when the table arrives, and an older paint never overwrites a newer one.
+// Performance pass (2026-09-15): the bespoke line tables — assets/hero-lines.js
+// (~455 KB of a ~640 KB app.js) and its Afrikaans, assets/hero-lines-af.js — are
+// not in app.js's static graph; each loads as its own chunk. Once they have
+// landed the paint path must caption exactly as before; while they have not, the
+// condition line stands, the photograph's own line replaces it when the tables
+// arrive, and an older paint never overwrites a newer one.
 //
 // Behavioural: the real bespoke block is lifted out of assets/app.js (from the
-// line memo up to setBackgroundFor) and run with its dynamic import swapped for
-// a promise the test controls.
+// line memo up to setBackgroundFor) and run with its dynamic imports swapped for
+// promises the test controls. The five-language rotation is in
+// tests/bespoke-line-af.test.js.
 
 const src = readFileSync(new URL('../assets/app.js', import.meta.url), 'utf8');
 
@@ -23,14 +26,16 @@ function bespokeBlock() {
   return src.slice(start, end);
 }
 
-function harness({ lang = 'en', importer }) {
+function harness({ lang = 'en', importEn, importAf = async () => heroLinesAf }) {
   const headlineEl = { textContent: 'Condition line' };
   const settings = { lang };
   const safeText = (el, text) => { el.textContent = text; };
-  const body = bespokeBlock().replace("import('./hero-lines.js')", '__importTable()');
-  const make = new Function('headlineEl', 'settings', 'safeText', 'debugLog', 'heroCropKey', '__importTable',
-    `${body}\nreturn { applyBespokeLine, loadHeroLineTable };`);
-  return { ...make(headlineEl, settings, safeText, () => {}, heroCropKey, importer), headlineEl, settings };
+  const body = bespokeBlock()
+    .replace("import('./hero-lines.js')", '__importEn()')
+    .replace("import('./hero-lines-af.js')", '__importAf()');
+  const make = new Function('headlineEl', 'settings', 'safeText', 'debugLog', 'heroCropKey', '__importEn', '__importAf',
+    `${body}\nreturn { applyBespokeLine, loadBespokeTable };`);
+  return { ...make(headlineEl, settings, safeText, () => {}, heroCropKey, importEn, importAf), headlineEl, settings };
 }
 
 // Two photographs with different lines, addressed the way the picker hands them over.
@@ -53,11 +58,12 @@ const deferred = () => {
 };
 const flush = () => new Promise((r) => setTimeout(r, 0));
 
-describe('bespoke line table — lazy chunk', () => {
-  it('app.js loads hero-lines.js dynamically, never statically, and starts it at boot for English', () => {
-    expect(src).not.toMatch(/^import .* from '\.\/hero-lines\.js';/m);
+describe('bespoke line tables — lazy chunks', () => {
+  it('app.js loads both tables dynamically, never statically, and starts them at boot', () => {
+    expect(src).not.toMatch(/^import .* from '\.\/hero-lines(-af)?\.js';/m);
     expect(src).toMatch(/import\('\.\/hero-lines\.js'\)/);
-    expect(src).toMatch(/if \(settings\.lang === 'en'\) loadHeroLineTable\(\);/);
+    expect(src).toMatch(/import\('\.\/hero-lines-af\.js'\)/);
+    expect(src).toMatch(/if \(BESPOKE_TABLES\[settings\.lang\]\) \{ loadBespokeTable\('en'\); loadBespokeTable\(settings\.lang\); \}/);
   });
 
   it('the table resolves the picker path to the photograph written for it', () => {
@@ -68,7 +74,7 @@ describe('bespoke line table — lazy chunk', () => {
 
   it('keeps the condition line until the table lands, then captions the same photograph', async () => {
     const d = deferred();
-    const h = harness({ importer: vi.fn(() => d.promise) });
+    const h = harness({ importEn: vi.fn(() => d.promise) });
     expect(h.applyBespokeLine(srcA)).toBe(false);
     expect(h.headlineEl.textContent).toBe('Condition line');
     d.resolve(heroLines);
@@ -77,8 +83,8 @@ describe('bespoke line table — lazy chunk', () => {
   });
 
   it('once loaded it captions synchronously, and the line stays put across re-paints', async () => {
-    const h = harness({ importer: vi.fn(async () => heroLines) });
-    await h.loadHeroLineTable();
+    const h = harness({ importEn: vi.fn(async () => heroLines) });
+    await h.loadBespokeTable('en');
     expect(h.applyBespokeLine(srcA)).toBe(true);
     const first = h.headlineEl.textContent;
     expect(linesA).toContain(first);
@@ -89,7 +95,7 @@ describe('bespoke line table — lazy chunk', () => {
 
   it('a late table never captions an older photograph over a newer one', async () => {
     const d = deferred();
-    const h = harness({ importer: vi.fn(() => d.promise) });
+    const h = harness({ importEn: vi.fn(() => d.promise) });
     h.applyBespokeLine(srcA); // first paint, table still loading
     h.applyBespokeLine(srcB); // the fallback chain landed on another photograph
     d.resolve(heroLines);
@@ -99,7 +105,7 @@ describe('bespoke line table — lazy chunk', () => {
 
   it('a late table leaves a headline that was rewritten in the meantime alone', async () => {
     const d = deferred();
-    const h = harness({ importer: vi.fn(() => d.promise) });
+    const h = harness({ importEn: vi.fn(() => d.promise) });
     h.applyBespokeLine(srcA);
     h.headlineEl.textContent = 'Loading…'; // a place change repainted the headline
     d.resolve(heroLines);
@@ -108,10 +114,10 @@ describe('bespoke line table — lazy chunk', () => {
   });
 
   it('imports the table once, and retries after a failed load', async () => {
-    const importer = vi.fn()
+    const importEn = vi.fn()
       .mockImplementationOnce(() => Promise.reject(new Error('offline')))
       .mockImplementation(async () => heroLines);
-    const h = harness({ importer });
+    const h = harness({ importEn });
     expect(h.applyBespokeLine(srcA)).toBe(false);
     await flush();
     expect(h.headlineEl.textContent).toBe('Condition line');
@@ -120,16 +126,18 @@ describe('bespoke line table — lazy chunk', () => {
     expect(linesA).toContain(h.headlineEl.textContent);
     h.applyBespokeLine(srcB);
     h.applyBespokeLine(srcA);
-    expect(importer).toHaveBeenCalledTimes(2);
+    expect(importEn).toHaveBeenCalledTimes(2);
   });
 
-  it('languages without bespoke lines neither load the table nor touch the headline', async () => {
+  it('languages without bespoke lines neither load a table nor touch the headline', async () => {
     for (const lang of ['zu', 'xh', 'st']) {
-      const importer = vi.fn(async () => heroLines);
-      const h = harness({ lang, importer });
+      const importEn = vi.fn(async () => heroLines);
+      const importAf = vi.fn(async () => heroLinesAf);
+      const h = harness({ lang, importEn, importAf });
       expect(h.applyBespokeLine(srcA)).toBe(false);
       await flush();
-      expect(importer).not.toHaveBeenCalled();
+      expect(importEn).not.toHaveBeenCalled();
+      expect(importAf).not.toHaveBeenCalled();
       expect(h.headlineEl.textContent).toBe('Condition line');
     }
   });

@@ -111,6 +111,7 @@ const CORE_ASSETS = [
   '/assets/weather-icons.js',
   '/assets/hero-crop.js',
   '/assets/hero-lines.js',
+  '/assets/hero-lines-af.js',
   '/assets/share-url.js',
   '/assets/refresh-behaviour.js',
   '/assets/first-open-location.js',

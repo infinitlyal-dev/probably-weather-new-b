@@ -39,17 +39,19 @@ describe('P6 production client bundle', () => {
     }
   });
 
-  it('keeps the bespoke line table out of the initial app request', async () => {
+  it('keeps the bespoke line tables out of the initial app request', async () => {
     const outdir = await mkdtemp(path.join(tmpdir(), 'pw-p6-'));
     tempDirs.push(outdir);
     const result = await bundleClientAssets({ assetsDir, outdir, write: false });
     const outputs = Object.values(result.metafile.outputs);
     const app = outputs.find((output) => output.entryPoint?.replaceAll('\\', '/').endsWith('/app.js'));
-    const table = outputs.find((output) => output.entryPoint?.replaceAll('\\', '/').endsWith('/hero-lines.js'));
 
-    expect(table).toBeTruthy();
-    expect(table.imports.filter((entry) => entry.kind === 'import-statement')).toEqual([]);
-    expect(Object.keys(app.inputs).some((input) => input.replaceAll('\\', '/').endsWith('/hero-lines.js'))).toBe(false);
+    for (const name of ['hero-lines.js', 'hero-lines-af.js']) {
+      const table = outputs.find((output) => output.entryPoint?.replaceAll('\\', '/').endsWith(`/${name}`));
+      expect(table, `${name} is not its own lazy chunk`).toBeTruthy();
+      expect(table.imports.filter((entry) => entry.kind === 'import-statement')).toEqual([]);
+      expect(Object.keys(app.inputs).some((input) => input.replaceAll('\\', '/').endsWith(`/${name}`))).toBe(false);
+    }
     // Measured 2026-09-15: 638.9 KB with the table inlined; the rest of the app is ~185 KB.
     expect(app.bytes).toBeLessThan(260 * 1024);
   });

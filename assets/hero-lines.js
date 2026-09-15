@@ -12,10 +12,12 @@
 // review/set-001-lines-bespoke-final.json, keyed by image hash — one hash can
 // occupy two rotation slots and the lines belong to the picture, not the slot.
 //
-// ENGLISH ONLY, and that is a ruling rather than a gap. Al writes the Afrikaans
-// himself, and zu/xh/st go to the native-review backlog — a machine-translated
-// joke is not a joke. Every other language keeps the condition bank, which is
-// why the lookup is gated on lang below rather than falling back per string.
+// ENGLISH, with AFRIKAANS alongside since 2026-09-15: assets/hero-lines-af.js
+// maps each English line to Afrikaans, written only for lines that cleared the
+// language gate (scripts/lang-check/apply-af-accepted.mjs). zu/xh/st go to the
+// native-review backlog — a machine-translated joke is not a joke — and keep the
+// condition bank, which is why app.js gates the lookup on lang rather than
+// falling back per string.
 //
 // EXPANDED to slot paths by scripts/build-hero-lines.mjs, because the path is
 // what the picker hands the browser. Both key shapes ship for the same reason
