@@ -61,3 +61,27 @@ Rows for `/api/version` and `/api/weather` within a minute or two mean the drain
 The greppable prefixes are the ones the code already logs: `[pw-source-fail]` and `[pw-budget]` in `api/weather.js` and `api/geocode.js`, `[pw-share-fail]` and `[pw-share-name]` in `api/share.js`, `[pw-og-fail]` in `api/og.js`, `[pw-csp]` from `/api/csp-report`.
 
 For the last few hours without Axiom: Vercel → project → **Logs**.
+
+## 2026-09-16 — retention check attempted, and why it could not be completed
+
+The job was: query the dataset once to confirm events arrive, read the dataset's retention, and
+record the confirmed figure here. **Not done — there is nothing to query yet.** The drain is still
+at step 0 of the install above: it needs Al's Axiom account and his approval of the Vercel
+integration, and neither has happened.
+
+What was checked before saying so:
+
+- No Axiom credential exists anywhere this session can reach — `.env` holds `TOMORROWIO_API_KEY`
+  and nothing else, there is no `AXIOM_*` variable in the environment, and there is no `~/.axiom`
+  config. So there is no dataset and no token to run the verification query with.
+- The Vercel side could not confirm it either: the Vercel CLI token on this machine is expired
+  (the API answers `invalidToken`), and the Vercel MCP exposes deployments and projects but no
+  log-drains endpoint. Whether a drain is listed in Settings → Drains is therefore still Al's to
+  look at.
+
+**So the "30 days" in the table above remains Axiom's published figure for the free Personal plan**
+(axiom.co/pricing, read 2026-09-15) — it is not a number read off a live dataset. Treat it as
+unconfirmed until step 5 of the install is done and the query in "Verify events are arriving"
+returns rows. If the dataset then reads anything other than 30 days, that figure wins over this
+file and the table above needs correcting.
+
