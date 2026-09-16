@@ -25,15 +25,15 @@ export const WEATHER_COPY = {
     hail: { en: "Hail incoming.", af: "Hael op pad.", zu: "Isichotho siyeza.", xh: "Isichotho siyeza.", st: "Sefako se a tla." },
     rain: { en: "Rain's here.", af: "Dit reën.", zu: "Imvula isifikile.", xh: "Imvula ikhona.", st: "Pula e fihlile" },
     'rain-possible': { en: "Might rain.", af: "Dalk reën.", zu: "Kungase line.", xh: "Mhlawumbi iya kuna.", st: "pula e ka na" },
-    cloudy: { en: "Cloudy vibes.", af: "Bewolk vandag.", zu: "Kunamafu.", xh: "Kunamafu", st: "ho nale maru" },
+    cloudy: { en: "Cloudy vibes.", af: "Bewolk vandag.", zu: "Kunamafu.", xh: "Kunamafu.", st: "ho nale maru" },
     'partly-cloudy': { en: "Partly cloudy.", af: "Effens bewolk.", zu: "Kunamafu kancane.", xh: "Kunamafu kancinci.", st: "ho nale maru hanyane" },
-    wind: { en: "Wind's up.", af: "Dit waai.", zu: "Umoya uyavunguza.", xh: "Umoya uphezulu", st: "Moya o a foka." },
+    wind: { en: "Wind's up.", af: "Dit waai.", zu: "Umoya uyavunguza.", xh: "Umoya uphezulu.", st: "Moya o a foka." },
     cold: { en: "It's chilly.", af: "Dis koud.", zu: "Kuyabanda.", xh: "Kuyabanda.", st: "Ho a bata." },
     'cold-clear': { en: "Cold but stunning.", af: "Koud maar pragtig.", zu: "Kuyabanda, kodwa izulu licwebile.", xh: "Kubanda, kodwa mhle umhla.", st: "Hwa bata, empa lehodimo le letle." },
     heat: { en: "It's hot.", af: "Dis bloedig warm.", zu: "Kushisa.", xh: "Kushushu.", st: "ho  a tjhesa" },
     uv: { en: "UV's hectic.", af: "UV is hoog.", zu: "I-UV iphezulu kakhulu.", xh: "I-UV iphezulu kakhulu.", st: "uv. e hodimu  haholo" },
     fog: { en: "Foggy out there.", af: "Dis mistig.", zu: "Kune inkungu.", xh: "Kukho inkungu.", st: "Ho na le mohodi." },
-    clear: { en: "Clear skies.", af: "Helder lug.", zu: "Izulu licwebile.", xh: "Isibhakabhaka sicacile", st: "Lehodimo le hlakileng." },
+    clear: { en: "Clear skies.", af: "Helder lug.", zu: "Izulu licwebile.", xh: "Isibhakabhaka sicacile.", st: "Lehodimo le hlakileng." },
     night: { en: "Clear night.", af: "Helder nag.", zu: "Ubusuku obucwebile.", xh: "Ubusuku obuhle.", st: "Bosiu bo hlakileng." }
   },
   witty: {
