@@ -4,7 +4,9 @@ Written 2026-09-15. Vercel keeps about a day of request logs on this plan; 14-da
 
 ## Status
 
-**Not installed yet.** The drain needs two things only Al can do: create the Axiom account, and approve the Axiom integration on Vercel (an OAuth consent screen). Everything below is ready for that five-minute job.
+**Installed and verified 2026-09-16.** The drain is live on the Vercel project **probably-weather-new-b**, named **"Axiom Log Drain"**, writing to the Axiom dataset **`vercel`**. Dataset retention reads **30 days**, and events are arriving.
+
+Verified by Astra on 2026-09-16, reading the Axiom dataset directly. Recorded here on Al's instruction; this session holds no Axiom credential, so the figures above are Astra's reading, not a second independent one. Anyone re-checking should use the query under "Verify events are arriving".
 
 ## Why Axiom
 
@@ -15,13 +17,13 @@ Written 2026-09-15. Vercel keeps about a day of request logs on this plan; 14-da
 | Card needed | no | — |
 | Vercel | Marketplace integration installs the drain itself | — |
 
-Sources: [axiom.co/pricing](https://axiom.co/pricing), [betterstack.com/pricing](https://betterstack.com/pricing), both read 2026-09-15. Better Stack's free tier does not give 30 days, so it does not fit the brief.
+Sources: [axiom.co/pricing](https://axiom.co/pricing), [betterstack.com/pricing](https://betterstack.com/pricing), both read 2026-09-15. The 30-day figure is no longer just the published plan: the `vercel` dataset itself reads 30 days (2026-09-16). Better Stack's free tier does not give 30 days, so it does not fit the brief.
 
 ## What it costs on the Vercel side
 
 Drains are a Pro feature (this team is on Pro) billed at **$0.50 per GB drained**, measured as uncompressed JSON ([vercel.com/docs/drains](https://vercel.com/docs/drains)). Measured volume today: **9 runtime log lines in the last hour** of production (8 info, 1 error). Request logs add one record per request, roughly 1–2 KB each. At a million requests a month that is 1–2 GB, i.e. about **$0.50–$1 a month**. Check the real figure under Vercel → Usage → Drains after the first week.
 
-## Install (Al, once)
+## Install (Al, once) — done
 
 1. Open [vercel.com/integrations/axiom](https://vercel.com/integrations/axiom) → **Add Integration**.
 2. Sign up to Axiom when asked (the free Personal plan; no card).
@@ -29,7 +31,7 @@ Drains are a Pro feature (this team is on Pro) billed at **$0.50 per GB drained*
 4. Approve. Axiom creates a drain in the Vercel project and a dataset named **`vercel`**.
 5. In Axiom, open the `vercel` dataset → Settings → confirm retention reads **30 days**.
 
-Then tell the next session "drain installed"; it verifies with the checks below and marks this file done.
+Done 2026-09-16 — all five steps, including step 5 (retention reads 30 days). Kept as the record of how the drain was set up.
 
 ## Verify events are arriving
 
@@ -62,26 +64,23 @@ The greppable prefixes are the ones the code already logs: `[pw-source-fail]` an
 
 For the last few hours without Axiom: Vercel → project → **Logs**.
 
-## 2026-09-16 — retention check attempted, and why it could not be completed
+## 2026-09-16 — retention check, confirmed
 
-The job was: query the dataset once to confirm events arrive, read the dataset's retention, and
-record the confirmed figure here. **Not done — there is nothing to query yet.** The drain is still
-at step 0 of the install above: it needs Al's Axiom account and his approval of the Vercel
-integration, and neither has happened.
+The check asked for a confirmed retention figure read off the dataset rather than off a pricing page. It now
+exists:
 
-What was checked before saying so:
+| | Confirmed |
+|---|---|
+| Vercel project | probably-weather-new-b |
+| Drain | "Axiom Log Drain" |
+| Axiom dataset | `vercel` |
+| Retention | **30 days** |
+| Events | arriving |
 
-- No Axiom credential exists anywhere this session can reach — `.env` holds `TOMORROWIO_API_KEY`
-  and nothing else, there is no `AXIOM_*` variable in the environment, and there is no `~/.axiom`
-  config. So there is no dataset and no token to run the verification query with.
-- The Vercel side could not confirm it either: the Vercel CLI token on this machine is expired
-  (the API answers `invalidToken`), and the Vercel MCP exposes deployments and projects but no
-  log-drains endpoint. Whether a drain is listed in Settings → Drains is therefore still Al's to
-  look at.
+Confirmed by Astra, 2026-09-16. Retention is 30 days as planned, so nothing in the plan above needs revisiting.
 
-**So the "30 days" in the table above remains Axiom's published figure for the free Personal plan**
-(axiom.co/pricing, read 2026-09-15) — it is not a number read off a live dataset. Treat it as
-unconfirmed until step 5 of the install is done and the query in "Verify events are arriving"
-returns rows. If the dataset then reads anything other than 30 days, that figure wins over this
-file and the table above needs correcting.
-
+One honest caveat about who checked what: this session could not verify it independently — there is no
+Axiom credential it can reach (`.env` holds `TOMORROWIO_API_KEY` only, no `AXIOM_*`, no `~/.axiom`), and the
+Vercel CLI token on this machine is expired, so the drain is not visible from here either. The figures above are
+recorded from Astra's check on Al's instruction. If a future session needs to re-confirm them, the query under
+"Verify events are arriving" is the way, and it needs an Axiom login.
