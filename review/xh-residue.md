@@ -22,3 +22,28 @@ One line of doubt each; the line itself is live as shown.
 - `witty.cold[96]` "izinga elingu-2" — degrees as "izinga" (level) or "iidigri"?
 - `witty.heat[74]` "izinga elingama-30" — same question.
 - `witty.cold-clear[77]` "Nezinga nalo alikho" — same question ("not a degree either").
+
+## 2026-09-16 — `headlines.wind` "Umoya uphezulu": left as it is
+
+Judged this pass; not replaced. The question was whether `uphezulu` is the right word for
+"Wind's up." The evidence does not support changing it, and it does not fully clear it either:
+
+- **The checker passes it, barely.** "Umoya uphezulu" scores 0.05 against the 0.25 threshold —
+  a pass, but with a LOW semantic note on `uphezulu` rather than a clean one.
+- **The voice notes flag the word as unattested, not as wrong.** `lang-packs/xh/errors-observed.md`
+  lists `uphezulu` among the words the drafter could not confirm in the corpus, under its own
+  caveat: "None are auto-wrong — but each is UNCONFIRMED." It is a plausible copulative
+  ("the wind is up"), and it mirrors the English idiom closely, which is what the headline wants.
+- **The corpus file already accepts it.** `lang-packs/xh/corpus-confirmed.jsonl` carries
+  `headlines.wind` with `"status":"confirmed-live"`.
+
+So: no strong corpus evidence of an error, and the house rule is to propose a fix only on strong
+evidence. The live string stays.
+
+**The open question for a native reader**, which is why this is written down rather than closed:
+the app already ships a second isiXhosa wind phrasing for the same condition — `middleware.js:123`
+sends "Umoya uvuthuza." in the xh share/meta description, and the checker scores that one 0.00
+(cleaner than the headline). Both are live, on the same weather, one screen apart. A native
+reader should settle two things at once: whether `uphezulu` is idiomatic here, and whether the
+headline and the share text should be saying the same thing. If the answer is `uvuthuza`, the
+change is one string in `assets/weather-copy.js` plus a rebuild of the copy split.
