@@ -382,15 +382,19 @@ async function readBackgroundDataUrl(model) {
 }
 
 function ogElement(model, backgroundDataUrl) {
+  // The photograph and its scrim are absolutely positioned, and Satori clips an
+  // absolute child to its containing block — which is the PADDING box. With the
+  // padding on this root, the background was clipped 64px short on the right and
+  // 54px short at the bottom and the card showed a dark strip down two edges
+  // (measured 2026-09-16: flat #111 from x=1140 and y=580). So the root carries
+  // no padding: the background fills the full 1200x630, and the padding moves to
+  // the content layer below it.
   return h('div', {
     style: {
-      width: '100%',
-      height: '100%',
+      width: WIDTH,
+      height: HEIGHT,
       position: 'relative',
       display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      padding: '54px 64px',
       background: '#111',
       color: '#fff',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
@@ -401,8 +405,8 @@ function ogElement(model, backgroundDataUrl) {
       src: backgroundDataUrl,
       style: {
         position: 'absolute',
-        top: -54,
-        left: -64,
+        top: 0,
+        left: 0,
         width: WIDTH,
         height: HEIGHT,
         objectFit: 'cover',
@@ -411,14 +415,25 @@ function ogElement(model, backgroundDataUrl) {
     h('div', {
       style: {
         position: 'absolute',
-        top: -54,
-        left: -64,
+        top: 0,
+        left: 0,
         width: WIDTH,
         height: HEIGHT,
         display: 'flex',
         background: 'linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 52%, rgba(0,0,0,0.34) 100%)',
       },
     }),
+    h('div', {
+      style: {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: '54px 64px',
+      },
+    },
     h('div', {
       style: {
         position: 'relative',
@@ -510,6 +525,7 @@ function ogElement(model, backgroundDataUrl) {
     },
       h('div', { style: { opacity: 0.85 } }, model.stats),
       h('div', { style: { opacity: 0.9, fontWeight: 800 } }, 'probablyweather.co.za'),
+    ),
     ),
   );
 }
