@@ -28,3 +28,25 @@ One line of doubt each; the line itself is live as shown (after this pass's spel
 - `witty.cold[83]` "Kobo mahetleng stoep-ong" — locative on the loan "stoep".
 - `witty.cold-clear[100]` "jwalo ka drakone" — "drakone" (dragon) unattested.
 - `witty.cloudy[54]` "Lichopo ha di tsebe" — Lesotho "li-" plural; "Ditjhopo" is unattested, the dictionary form is "ditjhopose".
+
+## 2026-09-16 — from the headline table, not the witty bank
+
+The pass above scoped the 915 served witty lines. These two came out of `headlines` while fixing
+punctuation and capitals on 2026-09-16, so they were never in that scope.
+
+- `headlines.thunder` "Modumo wa seaduma o a tla." — **left live, for a native to rule.** The
+  checker rates it TRIAGE (0.30) on two counts. "seaduma" is attested only in this app's own copy
+  and in no external source; the nearest form it can find is "seadumo", which has 0 dictionary
+  hits itself, so there is no strong evidence for a replacement — which is exactly why this is a
+  question and not a fix. It also reads "Modumo" as "noise / note" rather than thunder, and finds
+  none of the words it would expect for "rolling" ("sebetsang" / "thetehang" / "tswelang pele").
+  The question for a reader: is "seaduma" a Sesotho word for thunder, and is "Modumo wa seaduma o
+  a tla." how you would say "Thunder rolling in."? The punctuation fix did not change the score —
+  it was 0.30 before and after.
+
+Settled the same day, recorded here so the pair is not read as still open: `headlines.uv` had
+"hodimu", attested nowhere outside this app against "hodimo" at 612× across kaikki, leipzig,
+nchlt, morph, wiktionary, wiki, the constitution and the dictionary, one character apart — and
+"lehodimo" was already spelled that way elsewhere in the same Sesotho bank. Corrected to
+"UV e hodimo haholo." on that evidence (Al's ruling 2026-09-16); the checker goes TRIAGE 0.25 →
+PASS 0.00 and now back-translates hodimo as "above, at the top".
