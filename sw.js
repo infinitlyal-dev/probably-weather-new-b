@@ -117,6 +117,8 @@ const CORE_ASSETS = [
   '/assets/weather-thresholds.js',
   '/assets/search-mini-weather.js',
   '/assets/install-loader.js',
+  // ADS-READINESS (Al's ruling 2026-09-15): the slot config app.js imports.
+  '/assets/ads-config.js',
   // __CLIENT_BUNDLE_ASSETS_END__
   '/manifest.json',
 ];

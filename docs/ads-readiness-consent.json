@@ -1,0 +1,48 @@
+{
+ "note": "ADS-READINESS (Al's ruling 2026-09-15). The POPIA ad-choice banner and its Settings row, in the app's five languages. Not wired: nothing in assets/ reads this file. 'Settings' reuses the app's reviewed T.settings.settings strings; the privacy link reuses T.settings.privacyPolicy, so it is not repeated here.",
+ "checked": "2026-09-15 with node scripts/lang-check.mjs --file (af, zu, xh, st); every string's action is pass with no medium or high finding",
+ "firstPassFlags": [
+  "all four titles named the app ('Probably Weather'); lang-check reads 'Weather' as untranslated English (medium) — the title now says 'this app'",
+  "zu body: 'ezingakhethelwe' not attested (medium) — now 'hhayi ezikhethelwe wena'",
+  "xh body: 'ezingakhethelwanga' not attested (triage-high) — now 'ezingakhethwanga wena' (attested 'ezingakhethwanga')",
+  "st body: 'seng' and 'tsona' read as off-sense (triage-high) — now 'empa di sa kgethelwa wena'"
+ ],
+ "nativeReview": "Per CLAUDE.md rule 9, isiZulu, isiXhosa and Sesotho are not wired until a native speaker rules; Afrikaans goes to Al.",
+ "strings": {
+  "adConsentTitle": {
+   "en": "Ads keep this app free",
+   "af": "Advertensies hou hierdie app gratis",
+   "zu": "Izikhangiso zenza le app ibe mahhala",
+   "xh": "Iintengiso zigcina le app isimahla",
+   "st": "Dipapatso di etsa hore app ena e be mahala"
+  },
+  "adConsentBody": {
+   "en": "Google shows the ads here. Say yes and it may use cookies to pick ads for you. Say no and you still get ads, just not picked for you. Change your mind any time in Settings.",
+   "af": "Google wys die advertensies hier. Sê ja, en dit mag koekies gebruik om advertensies vir jou te kies. Sê nee, en jy kry steeds advertensies, net nie vir jou gekies nie. Jy kan enige tyd in Instellings van plan verander.",
+   "zu": "UGoogle ukhombisa izikhangiso lapha. Uma uthi yebo, angasebenzisa ama-cookie ukukukhethela izikhangiso. Uma uthi cha, usazobona izikhangiso, kodwa hhayi ezikhethelwe wena. Ungashintsha umqondo noma nini ezilungiselelweni.",
+   "xh": "UGoogle ubonisa iintengiso apha. Ukuba uthi ewe, angasebenzisa ii-cookie ukukukhethela iintengiso. Ukuba uthi hayi, usazozifumana iintengiso, kodwa ezingakhethwanga wena. Ungatshintsha ingqondo nanini na kwiiSetingi.",
+   "st": "Google e bontsha dipapatso mona. Ha o re e, e ka sebedisa di-cookie ho o kgethela dipapatso. Ha o re tjhe, o tla ntse o fumana dipapatso, empa di sa kgethelwa wena. O ka fetola maikutlo neng kapa neng ho Ditlhophiso."
+  },
+  "adConsentPersonalised": {
+   "en": "Yes, pick ads for me",
+   "af": "Ja, kies advertensies vir my",
+   "zu": "Yebo, ngikhethele izikhangiso",
+   "xh": "Ewe, ndikhethele iintengiso",
+   "st": "E, nkgethele dipapatso"
+  },
+  "adConsentGeneral": {
+   "en": "No, keep them general",
+   "af": "Nee, hou dit algemeen",
+   "zu": "Cha, zigcine zijwayelekile",
+   "xh": "Hayi, zigcine ziqhelekile",
+   "st": "Tjhe, di tlohele e le tsa kakaretso"
+  },
+  "adChoicesRow": {
+   "en": "Ad choices",
+   "af": "Advertensiekeuses",
+   "zu": "Ukukhetha izikhangiso",
+   "xh": "Ukukhetha iintengiso",
+   "st": "Dikgetho tsa dipapatso"
+  }
+ }
+}

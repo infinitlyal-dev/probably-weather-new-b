@@ -6120,3 +6120,50 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   body.home-active .range-line,
   body.home-active .agree-line { color: var(--ink); }
 }
+
+/* ---------- ADS-READINESS: the ad slots (docs/ads-readiness.md) ----------
+   Al's ruling 2026-09-15: no Home slot; one slot at the end
+   of Hourly and one at the end of Weekly; a Search slot only behind ADS_CONFIG.slots.search (off).
+   PHONES AND TABLETS ONLY (<=1023px; the >=1024px postcard has none). Each slot is an <aside> in
+   normal flow after its screen's content — never fixed, so it cannot sit over content or the nav.
+   The content above it is held to at least one screen tall, so the slot always starts below the
+   fold; its box is reserved (label + a 300x250 frame) so a late ad cannot move anything; its bottom
+   margin clears the fixed nav when scrolled to the end. With no network live the frame holds the
+   placeholder card, in the app's own surface and caption hand. */
+.ad-slot { display: none; }
+@media (max-width: 1023px) {
+  body.ads-slots .screenPanel:has(> .ad-slot:not([hidden])) > .screen-panel-body { min-height: 100dvh; }
+  body.ads-slots .ad-slot:not([hidden]) {
+    display: block;
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), 336px);
+    margin: 24px auto calc(var(--nav-h, 72px) + 24px + env(safe-area-inset-bottom, 0px));
+  }
+}
+.ad-slot-label {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2, rgba(255, 255, 255, 0.72));
+}
+.ad-slot-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 250px;
+  padding: 24px 22px;
+  border-radius: var(--r-lg);
+  background: var(--surface, rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ad-placeholder {
+  margin: 0;
+  font-family: 'Caveat Prototype', 'Segoe Print', 'Bradley Hand', cursive;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--brand-gold, #ffd700);
+}

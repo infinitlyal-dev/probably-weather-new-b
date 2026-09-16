@@ -542,6 +542,13 @@
         <div id="hourlyChart" class="hourly-chart m-only" role="img"></div>
         <div id="hourly-timeline" class="hourly-timeline"></div>
       </div>
+      <!-- ADS-READINESS (Al's ruling 2026-09-15): the Hourly slot, after the
+           content, in normal flow. Hidden until app.js enables it from assets/ads-config.js;
+           shown only <=1023px. With no network live it holds the placeholder card. -->
+      <aside class="ad-slot" data-ad-slot="hourly" aria-label="Advertisement" hidden>
+        <p class="ad-slot-label" data-ad-i18n="label">Advertisement</p>
+        <div class="ad-slot-frame"><p class="ad-placeholder" data-ad-i18n="placeholder">Weather apps don't grow on trees. There might be an ad here one day.</p></div>
+      </aside>
     </section>
 
     <section id="week-screen" class="screenPanel week-screen hidden">
@@ -558,6 +565,12 @@
         <p id="weekSubtitle" class="page-sub m-only" hidden></p>
         <div id="daily-cards" class="daily-cards"></div>
       </div>
+      <!-- ADS-READINESS (Al's ruling 2026-09-15): the Weekly slot — same
+           contract as the Hourly one (assets/ads-config.js, docs/ads-readiness.md). -->
+      <aside class="ad-slot" data-ad-slot="weekly" aria-label="Advertisement" hidden>
+        <p class="ad-slot-label" data-ad-i18n="label">Advertisement</p>
+        <div class="ad-slot-frame"><p class="ad-placeholder" data-ad-i18n="placeholder">Weather apps don't grow on trees. There might be an ad here one day.</p></div>
+      </aside>
     </section>
 
     <section id="day-detail-screen" class="screenPanel day-detail-screen hidden">
@@ -621,6 +634,12 @@
       <div class="screen-panel-footer search-maintenance">
         <button id="clearRecents" class="clear-recents">Clear recents</button>
       </div>
+      <!-- ADS-READINESS (Al's ruling 2026-09-15): the Search slot exists only
+           behind ADS_CONFIG.slots.search, which is false — it stays hidden. -->
+      <aside class="ad-slot" data-ad-slot="search" aria-label="Advertisement" hidden>
+        <p class="ad-slot-label" data-ad-i18n="label">Advertisement</p>
+        <div class="ad-slot-frame"><p class="ad-placeholder" data-ad-i18n="placeholder">Weather apps don't grow on trees. There might be an ad here one day.</p></div>
+      </aside>
     </section>
 
     <!-- Sources page — full destination from the new nav button. Credibility +
