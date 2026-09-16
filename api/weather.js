@@ -3469,7 +3469,15 @@ function conditionKeyToVoteBucket(key) {
  * the ensemble's weighted description winner.
  */
 function agreementVoteBucket(conditionKey, descWinner) {
-  if (conditionKey === 'wind' || conditionKey === 'heat' || conditionKey === 'uv') {
+  // 'cold' joins the overlays (2026-09-16). It is reached BOTH numerically —
+  // tempC <= 0 or feels-like <= -5 beats whatever the sources described, the
+  // same shape as the wind/heat/UV overrides — and from a description
+  // ("Snow showers", "Freezing rain"). One line covers both, because
+  // categorizeDesc returns 'cold' for exactly those winter-precip words: a
+  // freezing-temperature headline over unanimous rain votes now counts the rain
+  // the sources voted, while a genuine snow day still counts 'cold'.
+  // 'cold-clear' is deliberately NOT here: it already names the sky it sits on.
+  if (conditionKey === 'wind' || conditionKey === 'heat' || conditionKey === 'uv' || conditionKey === 'cold') {
     return categorizeDesc(descWinner);
   }
   return conditionKeyToVoteBucket(conditionKey);

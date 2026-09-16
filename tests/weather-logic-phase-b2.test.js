@@ -854,6 +854,15 @@ describe('agreementVoteBucket — overlays measure agreement on the voted sky fa
   it('uv over an overcast description counts against cloudy', () => {
     expect(agreementVoteBucket('uv', 'Overcast')).toBe('cloudy');
   });
+  // 2026-09-16: 'cold' is reached numerically too (tempC <= 0, feels-like <= -5),
+  // so a freezing headline over rain votes had the same 0/N problem as wind.
+  it('cold over a rain vote counts against rain, but a real snow desc still counts cold', () => {
+    expect(agreementVoteBucket('cold', 'Light drizzle')).toBe('rain');
+    expect(agreementVoteBucket('cold', 'Patchy rain possible')).toBe('rain');
+    expect(agreementVoteBucket('cold', 'Snow showers')).toBe('cold');
+    expect(agreementVoteBucket('cold', 'Freezing rain')).toBe('cold');
+    expect(agreementVoteBucket('cold', 'Overcast')).toBe('cloudy');
+  });
   it('non-overlay keys keep the conditionKeyToVoteBucket mapping, whatever the desc', () => {
     expect(agreementVoteBucket('rain', 'Clear sky')).toBe('rain');
     expect(agreementVoteBucket('cold-clear', 'Sunny')).toBe('cold');
@@ -906,6 +915,59 @@ describe('Source agreement: wind beats unanimous rain → agreement counts the r
     expect(votes).toHaveLength(3);
     expect(votes.every(v => v.vote === 'rain')).toBe(true);
     expect(body.meta.conditionConfidence.ensembleVote).toBe('wind');
+    expect(body.meta.conditionConfidence.sourceAgreement).toBe('3/3');
+    expect(body.meta.confidence).toBe('high');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// The same shape as the wind case above, one rung colder: at 0 C the
+// extreme-cold-temp rule takes the headline while every source describes rain.
+// Before 2026-09-16 the count was measured against 'cold', which nobody voted.
+// ---------------------------------------------------------------------------
+
+describe('Source agreement: a freezing headline over unanimous rain counts the rain votes', () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2026-05-11T11:15:00Z'));
+    vi.stubGlobal('fetch', vi.fn(async (url) => {
+      const href = String(url);
+      // 0 C with light rain everywhere, wind well under the 30 km/h overlay.
+      if (href.startsWith('https://api.open-meteo.com/')) {
+        return makeResponse(makeOpenMeteoPayload({
+          current: { temperature_2m: 0, apparent_temperature: -2, weather_code: 51, wind_speed_10m: 10, wind_gusts_10m: 14, relative_humidity_2m: 85, cloud_cover: 95 },
+        }));
+      }
+      if (href.startsWith('https://api.pirateweather.net/')) {
+        return makeResponse(makePirateWeatherPayload({
+          currently: { temperature: 0, apparentTemperature: -2, windSpeed: 2.7, humidity: 0.85, cloudCover: 0.95, uvIndex: 1, icon: 'rain' },
+        }));
+      }
+      if (href.startsWith('https://api.met.no/')) {
+        const startUtc = Date.UTC(2026, 4, 11, 0, 0, 0);
+        return makeResponse({
+          properties: {
+            timeseries: Array.from({ length: 48 }, (_, i) => ({
+              time: new Date(startUtc + i * 60 * 60 * 1000).toISOString(),
+              data: {
+                instant: { details: { air_temperature: 0, wind_speed: 2.7, relative_humidity: 85, cloud_area_fraction: 95 } },
+                next_1_hours: { summary: { symbol_code: 'rain' }, details: { precipitation_amount: 0.4 } },
+              },
+            })),
+          },
+        });
+      }
+      throw new Error(`Unexpected URL: ${href}`);
+    }));
+  });
+  afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it('reports 3/3 agreement and high confidence under a cold headline', async () => {
+    const { body } = await callWeather({ PIRATE_WEATHER_KEY: 'test-key' });
+    expect(body.now.conditionKey).toBe('cold');
+    const votes = body.meta.sourceConditions;
+    expect(votes).toHaveLength(3);
+    expect(votes.every(v => v.vote === 'rain')).toBe(true);
     expect(body.meta.conditionConfidence.sourceAgreement).toBe('3/3');
     expect(body.meta.confidence).toBe('high');
   });
