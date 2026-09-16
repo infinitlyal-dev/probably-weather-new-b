@@ -6133,6 +6133,24 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 .ad-slot { display: none; }
 @media (max-width: 1023px) {
   body.ads-slots .screenPanel:has(> .ad-slot:not([hidden])) > .screen-panel-body { min-height: 100dvh; }
+  /* The one-screen minimum is what keeps the card below the fold, but on a screen
+     whose content is shorter than the viewport it used to show as an empty band
+     above the card (live 390x844: content 710px of 844, so ~72px of nothing).
+     The list absorbs that height instead — it grows to fill the body and spreads
+     the free space between its rows, so the band closes and the card still starts
+     below the fold. With content taller than the screen there is no free space and
+     nothing changes. */
+  body.ads-slots .screenPanel:has(> .ad-slot:not([hidden])) > .screen-panel-body > .daily-cards,
+  body.ads-slots .screenPanel:has(> .ad-slot:not([hidden])) > .screen-panel-body > .hourly-timeline {
+    flex: 1 1 auto;
+  }
+  /* The rows take the slack, not the gaps between them: seven day rows sharing
+     ~72px grow about 10px each, which reads as the list breathing. Spreading it
+     into the gaps instead left the rows visibly floating apart. */
+  body.ads-slots .screenPanel:has(> .ad-slot:not([hidden])) > .screen-panel-body > .daily-cards > *,
+  body.ads-slots .screenPanel:has(> .ad-slot:not([hidden])) > .screen-panel-body > .hourly-timeline > * {
+    flex: 1 1 auto;
+  }
   body.ads-slots .ad-slot:not([hidden]) {
     display: block;
     box-sizing: border-box;
