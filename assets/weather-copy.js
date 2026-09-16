@@ -31,7 +31,7 @@ export const WEATHER_COPY = {
     cold: { en: "It's chilly.", af: "Dis koud.", zu: "Kuyabanda.", xh: "Kuyabanda.", st: "Ho a bata." },
     'cold-clear': { en: "Cold but stunning.", af: "Koud maar pragtig.", zu: "Kuyabanda, kodwa izulu licwebile.", xh: "Kubanda, kodwa mhle umhla.", st: "Hwa bata, empa lehodimo le letle." },
     heat: { en: "It's hot.", af: "Dis bloedig warm.", zu: "Kushisa.", xh: "Kushushu.", st: "Ho a tjhesa." },
-    uv: { en: "UV's hectic.", af: "UV is hoog.", zu: "I-UV iphezulu kakhulu.", xh: "I-UV iphezulu kakhulu.", st: "UV e hodimu haholo." },
+    uv: { en: "UV's hectic.", af: "UV is hoog.", zu: "I-UV iphezulu kakhulu.", xh: "I-UV iphezulu kakhulu.", st: "UV e hodimo haholo." },
     fog: { en: "Foggy out there.", af: "Dis mistig.", zu: "Kune inkungu.", xh: "Kukho inkungu.", st: "Ho na le mohodi." },
     clear: { en: "Clear skies.", af: "Helder lug.", zu: "Izulu licwebile.", xh: "Isibhakabhaka sicacile.", st: "Lehodimo le hlakileng." },
     night: { en: "Clear night.", af: "Helder nag.", zu: "Ubusuku obucwebile.", xh: "Ubusuku obuhle.", st: "Bosiu bo hlakileng." }
