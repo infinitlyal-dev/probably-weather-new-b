@@ -23,7 +23,7 @@ One line of doubt each; the line itself is live as shown.
 - `witty.heat[74]` "izinga elingama-30" — same question.
 - `witty.cold-clear[77]` "Nezinga nalo alikho" — same question ("not a degree either").
 
-## 2026-09-16 — `headlines.wind` "Umoya uphezulu": left as it is
+## 2026-09-16 — `headlines.wind` "Umoya uphezulu.": left as it is
 
 Judged this pass; not replaced. The question was whether `uphezulu` is the right word for
 "Wind's up." The evidence does not support changing it, and it does not fully clear it either:
@@ -39,6 +39,10 @@ Judged this pass; not replaced. The question was whether `uphezulu` is the right
 
 So: no strong corpus evidence of an error, and the house rule is to propose a fix only on strong
 evidence. The live string stays.
+
+(Later the same day the headline gained a full stop — "Umoya uphezulu." — along with
+headlines.cloudy and headlines.clear, which were also missing one. Punctuation only: the
+wording judged above is unchanged, and so is the open question below.)
 
 **The open question for a native reader**, which is why this is written down rather than closed:
 the app already ships a second isiXhosa wind phrasing for the same condition — `middleware.js:123`
