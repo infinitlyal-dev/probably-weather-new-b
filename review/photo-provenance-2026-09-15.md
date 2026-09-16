@@ -2,6 +2,8 @@
 
 The 294 curated photographs in review/set-001-draft.json, traced to where they came from. Read-only: nothing was removed, moved or re-encoded. Per-photograph detail: review/photo-provenance-2026-09-15.json.
 
+> **Edited 2026-09-16.** One photograph was replaced after this sweep: `rain/week_2/day/3.webp` (`3bd49d0acf2b`, the Subaru frame flagged below) is now `fec85aba3f48`, generated on GPT Image 2 via Higgsfield. Al chose it from three candidates (review/reroll-candidates/rain-w2-d3). The counts below include the swap; everything else in this document still describes the 2026-09-15 sweep, which was read-only.
+
 ## How
 
 - **Byte chain.** Every repo WebP matches the draft's sha1-12 (294/294). 178 are byte-identical to a WebP in pw-image-staging/compressed/, which tools/compress_to_webp.cjs made from PWIMAGES_BATCHES/<condition>/<week>/<slot>/ in alphabetical order; the batch file name carries the staging tag (tools/_gather_pwimagesweekly.ps1): LIVE (was live as a JPG), NEW (reviewed/), FRESH (inbox/). Every mapped pair was re-checked perceptually (dHash distance ≤ 10: all 178).
@@ -14,9 +16,9 @@ The 294 curated photographs in review/set-001-draft.json, traced to where they c
 
 | Category | Photographs |
 |---|---|
-| AI — batch record names the generator | 117 |
+| AI — batch record names the generator | 116 |
 | AI — made by us, generator not recorded | 107 |
-| AI — per-image record | 70 |
+| AI — per-image record | 71 |
 | Licensed stock | 0 |
 
 No photograph shows stock evidence: no EXIF block in any original that could be read (0 of 217), no camera maker, no stock-agency or rights string in XMP, no licence record. Four earlier "camera" hits (SONY, DJI) were three- and four-letter byte patterns inside image data; none of those files has an EXIF block.
@@ -32,11 +34,12 @@ No photograph shows stock evidence: no EXIF block in any original that could be 
 | live JPG added by c24e4c4 ("feat: complete 14-day image set for all 8 condition folders") — no generator named | 22 |
 | GPT Image 2 — commit 8617c37 (2026-08-18) "Two candidates per cut slot on GPT Image 2" | 15 |
 | Al generated it (scripts/ingest-replacements.mjs; commit cf5f254); no generator named, no C2PA in the PNG | 14 |
-| Leonardo AI — commit 0ab0268 (2026-03-12) "New Leonardo AI generated backgrounds" | 14 |
+| Leonardo AI — commit 0ab0268 (2026-03-12) "New Leonardo AI generated backgrounds" | 13 |
 | live JPG with no add in git history under that name | 9 |
 | Leonardo AI (Nano Banana 2 / gemini-image-2) — commit 76edf51 (2026-03-10) | 5 |
 | reroll candidate (review/reroll-candidates); the sheet's "Leonardo" mentions are the Sandton tower, not a generator | 5 |
 | Higgsfield job — staging sidecar | 2 |
+| GPT Image 2 via Higgsfield — reroll 2026-09-16 | 1 |
 
 ## Flags
 
@@ -50,12 +53,13 @@ No photograph shows stock evidence: no EXIF block in any original that could be 
 | cold/week_2/day/3.webp | a37a31d9aa79 | brand: GOLDAIR name on the heater |
 | cold-clear/week_1/day/3.webp | 042ba0a95388 | brand: "…LUX" (Hilux) model lettering on the tailgate |
 | heat/week_1/dawn/2.webp | 0828ca00553f | brand (possible): product lettering on the inflatable pool ("…Pool") |
-| rain/week_2/day/3.webp | 3bd49d0acf2b | brand; setting: Subaru badge; number plate and streetscape read Australian rather than South African |
 | rain/week_1/night/4.webp | c8df884e9ec0 | brand: Toyota logo on the steering wheel |
 | rain/week_1/night/7.webp | d28204abf829 | brand: "DELUXE COFFEE" and "THE GIN BAR" neon signs — names of real Cape Town businesses — and "CAPE TOWN BOOKS" |
 | storm/week_1/dawn/6.webp | 56af96f529d2 | brand: Nike swoosh on the T-shirt |
 | storm/week_1/day/2.webp | 41e6c19016c1 | brand (possible): shopfront lettering, partly visible ("Sho…") |
 | storm/week_1/day/4.webp | b08495c9d832 | brand: SPAR and other sponsor boards around the cricket field |
+
+Resolved 2026-09-16: `rain/week_2/day/3.webp` (`3bd49d0acf2b`) carried a Subaru badge and an Australian-looking plate and streetscape. Al ruled it out; it was replaced by `fec85aba3f48` and is no longer in the table above.
 
 Low, not flagged: a Toyota Fortuner identifiable by its shape with no badge in frame (4210c1f4), bakkies and sedans with no badge visible.
 

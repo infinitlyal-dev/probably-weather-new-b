@@ -4021,7 +4021,7 @@
   },
   {
    "image": "rain/week_2/day/5.webp",
-   "hash": "3bd49d0acf2b",
+   "hash": "fec85aba3f48",
    "condition": "rain",
    "time": "day",
    "week": "B",
@@ -4033,7 +4033,8 @@
     "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies.",
     "You might be working from home by popular demand.",
     "Shop later. The last biscuit will have to stretch."
-   ]
+   ],
+   "rerolled": "2026-09-16: bytes replaced (was 3bd49d0acf2b). Al chose candidate 2 of 3 from review/reroll-candidates/rain-w2-d3. The three lines are unchanged — the new photograph was generated to suit them."
   },
   {
    "image": "rain/week_3/day/7.webp",

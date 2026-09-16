@@ -1,0 +1,41 @@
+{
+  "generated": "2026-09-16T07:52:11.905Z",
+  "model": "gpt_image_2",
+  "aspect": "9:16",
+  "slot": "rain/week_2/day/3.webp",
+  "oldHash": "3bd49d0acf2b",
+  "lines": [
+    "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies.",
+    "You might be working from home by popular demand.",
+    "Shop later. The last biscuit will have to stretch."
+  ],
+  "candidates": [
+    {
+      "n": 1,
+      "source": "1520x2688 png",
+      "bytes": 92518,
+      "quality": 92,
+      "hash": "eece9e3c2e6c"
+    },
+    {
+      "n": 2,
+      "source": "1520x2688 png",
+      "bytes": 206550,
+      "quality": 92,
+      "hash": "fec85aba3f48"
+    },
+    {
+      "n": 3,
+      "source": "1520x2688 png",
+      "bytes": 164450,
+      "quality": 92,
+      "hash": "3d790f5a7b34"
+    }
+  ],
+  "chosen": {
+    "n": 2,
+    "hash": "fec85aba3f48",
+    "ruledBy": "Al",
+    "ruledOn": "2026-09-16"
+  }
+}

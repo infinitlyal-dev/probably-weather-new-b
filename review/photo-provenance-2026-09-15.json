@@ -3,8 +3,8 @@
  "set": "review/set-001-draft.json",
  "photographs": 294,
  "byCategory": {
-  "AI — per-image record": 70,
-  "AI — batch record names the generator": 117,
+  "AI — per-image record": 71,
+  "AI — batch record names the generator": 116,
   "AI — made by us, generator not recorded": 107
  },
  "byGenerator": {
@@ -18,8 +18,9 @@
   "live JPG with no add in git history under that name": 9,
   "reviewed stage of the staging pipeline (Higgsfield / Leonardo jobs per its README); no per-image job record": 57,
   "Higgsfield job — staging sidecar": 2,
-  "Leonardo AI — commit 0ab0268 (2026-03-12) \"New Leonardo AI generated backgrounds\"": 14,
-  "GPT Image 2 — commit 8617c37 (2026-08-18) \"Two candidates per cut slot on GPT Image 2\"": 15
+  "Leonardo AI — commit 0ab0268 (2026-03-12) \"New Leonardo AI generated backgrounds\"": 13,
+  "GPT Image 2 — commit 8617c37 (2026-08-18) \"Two candidates per cut slot on GPT Image 2\"": 15,
+  "GPT Image 2 via Higgsfield — reroll 2026-09-16": 1
  },
  "photographs_detail": [
   {
@@ -3259,23 +3260,30 @@
    "exif": false
   },
   {
-   "hash": "3bd49d0acf2b",
+   "hash": "fec85aba3f48",
    "image": "rain/week_2/day/3.webp",
    "condition": "rain",
    "time": "day",
    "week": "B",
    "day": "wed",
-   "route": "compressed",
-   "tag": "LIVE",
-   "source": "rain/week_2/day/2-day-LIVE-day_9.jpg",
-   "liveJpgAddedBy": "0ab0268|2026-03-12|feat: add 25 weather condition background images (heat, rain, storm, wind)",
-   "category": "AI — batch record names the generator",
-   "generator": "Leonardo AI — commit 0ab0268 (2026-03-12) \"New Leonardo AI generated backgrounds\"",
+   "route": "generated",
+   "tag": "REROLL",
+   "source": "review/reroll-candidates/rain-w2-d3/candidate-2.webp",
+   "generatedOn": "2026-09-16",
+   "category": "AI — per-image record",
+   "generator": "GPT Image 2 via Higgsfield — reroll 2026-09-16",
+   "promptBrief": "SA highway in daytime rain seen through a windscreen, wipers mid-sweep, brake lights blooming, minibus taxi nosing in; wry rather than grim, photoreal, no readable brands, no legible plates",
+   "aspect": "9:16",
+   "conversion": "1520x2688 PNG -> 768x1376 WebP q92, 206550 B (budget 307200)",
    "c2pa": false,
    "exif": false,
-   "flag": {
-    "kind": "brand; setting",
-    "what": "Subaru badge; number plate and streetscape read Australian rather than South African"
+   "replaces": {
+    "hash": "3bd49d0acf2b",
+    "flag": {
+     "kind": "brand; setting",
+     "what": "Subaru badge; number plate and streetscape read Australian rather than South African"
+    },
+    "ruling": "Al chose candidate 2 of 3, 2026-09-16 (review/reroll-candidates/rain-w2-d3)"
    }
   },
   {
@@ -4679,5 +4687,6 @@
    "c2pa": null,
    "exif": null
   }
- ]
+ ],
+ "lastEdited": "2026-09-16: rain/week_2/day/3.webp rerolled, 3bd49d0acf2b -> fec85aba3f48. Counts below reflect the swap; \"generated\" is still the date of the original sweep."
 }
