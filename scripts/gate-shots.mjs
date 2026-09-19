@@ -62,7 +62,8 @@ function payload() {
       cloudPct: c.cloud, conditionKey: c.key, conditionLabel: c.label, sunrise: `${DATE}T06:20`, sunset: `${DATE}T19:40` },
     hourly, daily, wind_kph: c.wind, maxWindKph: c.wind + 18, gustKph: c.wind + 18, windDir: 205,
     consensus: { confidenceKey: 'decent' },
-    meta: { localHour: night ? 22 : 13, utcOffsetSeconds: 7200, confidence: 'high', sources: [], sourceConditions: [], sourceRanges: [],
+    // schema: app.js drops a payload below PAYLOAD_SCHEMA_MIN (5, since 2026-09-14) as not weather.
+    meta: { schema: 5, localHour: night ? 22 : 13, utcOffsetSeconds: 7200, confidence: 'high', sources: [], sourceConditions: [], sourceRanges: [],
       conditionConfidence: { level: 'high', finalCondition: c.key, sourceAgreement: '5/5' } },
   };
 }

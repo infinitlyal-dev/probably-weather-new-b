@@ -117,7 +117,8 @@ function payload() {
     wind_kph: 46, maxWindKph: 62, gustKph: 62, windDir: 205,
     consensus: { confidenceKey: 'decent' },
     meta: {
-      localHour: 15, utcOffsetSeconds: 7200, confidence: 'high',
+      // schema: app.js drops a payload below PAYLOAD_SCHEMA_MIN (5, since 2026-09-14) as not weather.
+      schema: 5, localHour: 15, utcOffsetSeconds: 7200, confidence: 'high',
       sources: ['Open-Meteo', 'WeatherAPI', 'MET Norway', 'Pirate Weather', 'Tomorrow.io'].map((name) => ({ name, ok: true })),
       sourceConditions: [], sourceRanges: [],
       conditionConfidence: { level: 'high', finalCondition: 'cloudy', sourceAgreement: '3/5' },

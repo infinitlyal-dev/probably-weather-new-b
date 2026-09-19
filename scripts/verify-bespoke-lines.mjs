@@ -81,7 +81,8 @@ const payload = () => ({
   daily: Array.from({ length: 7 }, () => ({ highC: 17, lowC: 11, rainChance: 92, uv: 1, windKph: 46,
     conditionKey: 'storm', conditionLabel: 'Storms rolling in.', sunrise: `${DATE}T06:20`, sunset: `${DATE}T19:40` })),
   wind_kph: 46, maxWindKph: 64, gustKph: 64, windDir: 205, consensus: { confidenceKey: 'decent' },
-  meta: { localHour: nightMode ? 22 : 13, utcOffsetSeconds: 7200, confidence: 'high', sources: [], sourceConditions: [], sourceRanges: [],
+  // schema: app.js drops a payload below PAYLOAD_SCHEMA_MIN (5, since 2026-09-14) as not weather.
+  meta: { schema: 5, localHour: nightMode ? 22 : 13, utcOffsetSeconds: 7200, confidence: 'high', sources: [], sourceConditions: [], sourceRanges: [],
     conditionConfidence: { level: 'high', finalCondition: 'storm', sourceAgreement: '5/5' } },
 });
 
