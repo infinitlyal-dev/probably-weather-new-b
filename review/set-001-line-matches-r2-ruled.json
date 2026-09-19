@@ -1,0 +1,6707 @@
+{
+ "generated": "2026-09-06",
+ "ruledBy": "Al, drag-match tool round 2 (bespoke-era pool)",
+ "set": "set-001",
+ "round": 2,
+ "note": "Al's matches are the spec. Round-1 placements (review/set-001-line-matches-ruled.json) are carried in as round1 on each image and count toward the 3-per-image ceiling; they were not re-ruled here. A line is humour about the kind of day and need only gel with the photograph, so crossCondition is information, not a fault. routingConflicts only ever concerns bank-original lines: the bespoke path resolves a line from the photograph before witty-day-tags routing runs.",
+ "poolSize": 969,
+ "matches": {},
+ "matchDetail": [],
+ "mergedByHash": {
+  "dd736311b619": [
+   "Even the hadedas sound happy.",
+   "Africa's sky just hits different.",
+   "The sun woke up and chose glorious."
+  ],
+  "73d202837435": [
+   "Bottle this one. Open it in winter.",
+   "This is the weather we brag about overseas."
+  ],
+  "b698a0ccc12d": [
+   "The sun took its time this morning. Worth the wait.",
+   "Enjoy it. There's a cold front out there doing warm-ups."
+  ],
+  "7a76c59603c9": [
+   "Mornings like this are why Capetonians never stop mentioning it.",
+   "Zero drama in the sky. Highly unusual. Gladly accepted."
+  ],
+  "66d5e6cb3570": [
+   "Days like this should come with a soundtrack.",
+   "The type of day that makes people text 'lekker dag hey'.",
+   "Morning people might be onto something. Don't tell them."
+  ],
+  "d529968dcb50": [
+   "The weekend doesn't get better than this.",
+   "'One hour at the beach.' History's most confident lie."
+  ],
+  "089f865e3f14": [
+   "This is the weather the weekend was invented for.",
+   "Weather this perfect is on loan. The southeaster keeps receipts."
+  ],
+  "84beada2e358": [
+   "When the weather behaves this well, so do we. Roughly.",
+   "Even Monday looks photogenic in this light.",
+   "Perfect day. No excuses. Get out."
+  ],
+  "5799efcdfd70": [
+   "Somewhere an estate agent is saying 'lifestyle'.",
+   "Everything looks 4K today. The sky's in ultra mode.",
+   "Your excuse to stay inside just expired."
+  ],
+  "77cfc93827e3": [
+   "One perfect day issued. Non-transferable. Spend it wisely.",
+   "If you're working today, we feel sorry for you.",
+   "If you're inside, you're doing it wrong."
+  ],
+  "f673af851f9c": [
+   "The sky's giving everything today.",
+   "Weather this well-behaved is definitely up to something."
+  ],
+  "ca6d821f7c9b": [
+   "Absolutely beautiful out there."
+  ],
+  "e9616cb7c61c": [
+   "Saturday energy: maximum. Responsibilities: minimum.",
+   "Perfect for doing absolutely nothing.",
+   "Be honest — you opened this app to confirm Saturday's braai."
+  ],
+  "45d964f74171": [
+   "Main character weather right here."
+  ],
+  "0009c55ad6a5": [
+   "Cancel everything. This is THE day winter was hiding.",
+   "Nature's flexing and we're here for it.",
+   "Africa showing off again. Quietly devastating."
+  ],
+  "9ab8b9f07431": [
+   "Take your coffee outside. You deserve it.",
+   "This is why we live in South Africa.",
+   "Take a moment. Look up. You're welcome."
+  ],
+  "448b951052cc": [
+   "Blue sky, warm breeze. The simple stuff.",
+   "The kind of sky that makes you grateful for free things."
+  ],
+  "3d001539dcb5": [
+   "Today's forecast: medium rare."
+  ],
+  "ed953578deec": [
+   "Postcard weather. You're welcome.",
+   "Your vitamin D levels are thanking you.",
+   "Air this clear should come with a warning: plans will be made."
+  ],
+  "6e598ae56c12": [
+   "The braai is the social calendar. Show up.",
+   "Your only responsibility is choosing charcoal or wood.",
+   "The Weber's been waiting all week for this."
+  ],
+  "03a31c2b8e88": [
+   "Beach or braai? Yes."
+  ],
+  "9059d175f28c": [
+   "The sun is really milking this exit. Honestly, deserved."
+  ],
+  "1bd6b90924a1": [
+   "This is the day the brochure was talking about."
+  ],
+  "90a621539543": [
+   "Today's plans: exist outside.",
+   "Kuier weather. Get the people together."
+  ],
+  "d097525bf5cf": [
+   "The coals aren't going to light themselves.",
+   "Call the mates. Get the meat. Let's go.",
+   "Fire up the Weber. It's the law."
+  ],
+  "525b2eea2ebc": [
+   "The weather gods are showing off.",
+   "Weekend vibes so strong they need their own playlist.",
+   "The evening showed up in its Sunday best."
+  ],
+  "970707aba87c": [
+   "The hadedas are sleeping. Finally.",
+   "Somewhere a cricket is really giving it."
+  ],
+  "14f98c4f78fa": [
+   "Quiet out there. Almost suspicious."
+  ],
+  "de9514caac5f": [
+   "Good night, South Africa.",
+   "Sky this clear means tomorrow's a scorcher. Stay a while."
+  ],
+  "05cd0ad39fd6": [
+   "The moon's doing the most tonight.",
+   "Verandah weather. The couch will understand."
+  ],
+  "4138025d3128": [
+   "Braai weather, boet! No excuses.",
+   "'Just one sundowner' — famous last words, every single time."
+  ],
+  "127edee25245": [
+   "Perfect night to actually see the Milky Way.",
+   "No alarm. No agenda. Just vibes."
+  ],
+  "998833419718": [
+   "The sky looks like it's showing off.",
+   "Tomorrow's weather is tomorrow's problem.",
+   "Someone turned the stars up to full volume."
+  ],
+  "08134a1e356e": [
+   "The sky's on mute. Nobody's complaining.",
+   "Grey vibes. The sky matched my Monday."
+  ],
+  "de1df07bf268": [
+   "The sun sent an out-of-office reply.",
+   "The sky's curtains are drawn. Privacy, please."
+  ],
+  "03ff71985022": [
+   "Not Instagram weather. Not the end of the world.",
+   "Clouds rolling in like family — no phone call first."
+  ],
+  "4845b881f911": [
+   "Could be worse. Could also be better.",
+   "The sun hit snooze again. Honestly? Same."
+  ],
+  "3bfd9b9470d6": [
+   "The sun's on a tea break. No ETA.",
+   "At least it's not raining. That's the bar."
+  ],
+  "b5793c36b69d": [
+   "Not bad, not great. Like a 6/10 date."
+  ],
+  "e0e2d1182253": [
+   "The app says cloudy. Aunty's knee says rain. We trust the knee."
+  ],
+  "d16ca804a592": [
+   "The sky is the colour of an old Tupperware lid.",
+   "The sun's on airplane mode.",
+   "Forecast says maybe. We say probably."
+  ],
+  "4727610ce8f9": [
+   "Even the weather can't be bothered today.",
+   "The sky's giving 'I'll try again tomorrow' energy.",
+   "Perfect weather for existing without enthusiasm."
+  ],
+  "5aea3d2e9887": [
+   "The sun's bunking today.",
+   "The clouds are here but they're not doing anything."
+  ],
+  "5a72972b399b": [
+   "Take a brolly just in case, hey.",
+   "50/50 on getting wet. Like a coin toss.",
+   "Pack an umbrella. Or don't. We don't know either."
+  ],
+  "dc71e7a692da": [
+   "Grey is also a colour, says my ma. Today I believe her.",
+   "The sun is technically present. Spiritually elsewhere.",
+   "This weather has 'meh' written all over it."
+  ],
+  "c16f8303d56e": [
+   "Weather's being more indecisive than you at Spur.",
+   "Some clouds. Some sun. South African summer admin."
+  ],
+  "094ec6ba034c": [
+   "The chops don't know it's cloudy. The braai proceeds.",
+   "Cloudy enough to comment, sunny enough to ignore."
+  ],
+  "313ca13b51a5": [
+   "The sky is buffering.",
+   "Schrodinger's rain. It both is and isn't.",
+   "Even the weather apps are arguing about this one."
+  ],
+  "47550fce6c98": [
+   "Eskom-friendly weather. No solar today.",
+   "Sun's playing peek-a-boo.",
+   "Sun on a smoke break."
+  ],
+  "119e4a52f8a4": [
+   "Cloud cover with a side of who-cares.",
+   "The sky's giving mixed signals again.",
+   "Sun, hide-and-seek champion of the day."
+  ],
+  "31b58730d005": [
+   "Clouds looking proper suspicious.",
+   "The washing's on the line and you're feeling brave.",
+   "Washing's still safe. Probably."
+  ],
+  "5668c9f2edcb": [
+   "The sky can't make up its mind. Join the club."
+  ],
+  "e9f6b3850ce2": [
+   "Good day for a walk, bad day for a tan.",
+   "Sky can't make up its mind."
+  ],
+  "04bdf14c306b": [
+   "This weather needs a life coach."
+  ],
+  "018a0573e433": [
+   "The sun clocked out without saying bye. Rude, but relatable."
+  ],
+  "211c0291a514": [
+   "Maybe rain, maybe not. Classic.",
+   "Rain? Possibly. Commitment? Never.",
+   "Looks like the clouds are staying for supper."
+  ],
+  "3ba329d5cea3": [
+   "Nobody's posting this sunset on Instagram.",
+   "Don't trust those clouds. They're plotting."
+  ],
+  "6b5271665e34": [
+   "Sky's doing the most, but only a little."
+  ],
+  "7b4c0256fd8d": [
+   "The moon has hung out a do-not-disturb sign."
+  ],
+  "68317318c85d": [
+   "Night-shift clouds: just keeping the place warm till the sun gets back."
+  ],
+  "bdc2741f86fb": [
+   "No stars tonight, but the neighbourhood dogs still have opinions."
+  ],
+  "e991afd863ba": [
+   "Night clouds are the sky's way of saying: let's talk tomorrow."
+  ],
+  "c6d4061cbef2": [
+   "The sky put the stars on silent. They're still up there, promise."
+  ],
+  "c121631aca0a": [
+   "The trees are doing involuntary yoga.",
+   "The Cape Doctor is making house calls.",
+   "Table Mountain's tablecloth is out."
+  ],
+  "3556004712b7": [
+   "Even the seagulls are walking today."
+  ],
+  "c66c7fd4f50e": [
+   "The braai cover is in the next suburb.",
+   "Perfect conditions for losing your dignity."
+  ],
+  "45b7693ad9e4": [
+   "Ponytail holders are doing overtime.",
+   "Your hairstyle took one look and went back to bed."
+  ],
+  "d0a60d414066": [
+   "Everyone's jogging at a slight angle this morning."
+  ],
+  "232bde6ed095": [
+   "Hold onto your hat! And your kids."
+  ],
+  "4d3a786acf48": [
+   "Not a hairstyle in sight. Just survivors."
+  ],
+  "eb217457f58d": [
+   "Your car door just became a weapon."
+  ],
+  "e3f0d69977ca": [
+   "Your hairstyle? Gone. Accept it."
+  ],
+  "05cea2b8788d": [
+   "Someone's trampoline is now two streets away.",
+   "Every loose object in the garden has chosen violence."
+  ],
+  "5df9d64aa037": [
+   "Every tree on the street is bowing the same way. Peer pressure."
+  ],
+  "12cd74b592e8": [
+   "Your washing just moved to the neighbour's yard."
+  ],
+  "38635f77f610": [
+   "Sand in places sand should never be."
+  ],
+  "f6b55aacae0a": [
+   "Tonight's wind has opinions."
+  ],
+  "bfc08af75267": [
+   "Sleep tight. The wind will watch the house. Loudly."
+  ],
+  "4d63213b19b9": [
+   "6am and the sun is already done warming up. That wasn't a warm-up, that was a warning.",
+   "The berg wind turned overnight. Cape Town, today you're basically Upington."
+  ],
+  "0828ca00553f": [
+   "Funny how everyone suddenly remembers they love you when you own a pool."
+  ],
+  "c6d266d04418": [
+   "6:30 and the tar is already considering melting."
+  ],
+  "726c6aee069a": [
+   "Move slowly. Speak slowly. Survive.",
+   "The shade is working harder than you today."
+  ],
+  "437fd1add3cd": [
+   "Your makeup has an expiry date of 9am."
+  ],
+  "98d89edda1cd": [
+   "The ice cream van is playing everyone's anthem.",
+   "35 in the shade. In the sun, nobody's counting anymore."
+  ],
+  "d6593f52fb76": [
+   "The office aircon war has begun.",
+   "The aircon remote is now public property. Negotiate."
+  ],
+  "6591bd91d1fc": [
+   "The pool is already fully booked. By everyone. For the whole day.",
+   "Too hot to argue. Too hot to function.",
+   "Everyone with a pool just became very popular."
+  ],
+  "afd3c9db83bd": [
+   "Somewhere a chocolate bar just died.",
+   "Hotter than a bakkie dashboard at noon."
+  ],
+  "6ce02da2ab7a": [
+   "You're not sweating. You're 'glowing'. Sure.",
+   "Jislaaik, it's properly hot!"
+  ],
+  "36881ce76889": [
+   "Your car seat is a weapon right now.",
+   "Your steering wheel is a hot plate."
+  ],
+  "5ed7621f5dd9": [
+   "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements."
+  ],
+  "68661ff2b0dc": [
+   "The pool is not optional."
+  ],
+  "248b04dcf98d": [
+   "Stay hydrated or become a biltong."
+  ],
+  "2a3a60226c30": [
+   "The fridge door is getting a workout today.",
+   "Shorts weather? This is underwear weather.",
+   "The fridge is the coolest room in the house."
+  ],
+  "e62c00a72fb4": [
+   "The ceiling fan is doing its best, but its best is not enough."
+  ],
+  "ea6e65a6bc63": [
+   "Somewhere out there people are going for a run right now. Strength to them.",
+   "Ja, it's jersey weather. Double jersey."
+  ],
+  "91301942dc29": [
+   "Frost on the grass, frost on the bakkie, frost on my will to live."
+  ],
+  "1c5f757ee79a": [
+   "Layer up like you're climbing Sani Pass.",
+   "Your jacket has a jacket. It's that kind of day."
+  ],
+  "41c9f776e0fb": [
+   "Your breath is doing special effects.",
+   "Most beautiful time of day. Say the people who stay inside.",
+   "Your hands are in your pockets and they're not coming out."
+  ],
+  "484f2079f5aa": [
+   "Getting out of bed was a mistake. A documented one."
+  ],
+  "4210c1f4a1ad": [
+   "You're not cold, you're 'lekker koud'. Big difference."
+  ],
+  "4b92e51e69f8": [
+   "The cold front is here and it brought friends.",
+   "Winter sun: all of the light, none of the heat. Nice try, sun.",
+   "Outside is a test of character. You're failing."
+  ],
+  "77dad643efa6": [
+   "Time to dig out that ugly beanie."
+  ],
+  "084405b1c79a": [
+   "The car seats are freezing. Everything is freezing."
+  ],
+  "e8b7a7602012": [
+   "The dog refused to go outside. Fair.",
+   "The dog looked out the front door, turned around, and went back to bed. Says it all."
+  ],
+  "e938ce2769cd": [
+   "The duvet is calling and the duvet is winning.",
+   "Blanket burrito mode: activated."
+  ],
+  "bf942a9f6d66": [
+   "This is not what the tourism brochure promised.",
+   "The sun is out. It means nothing. The sun is lying."
+  ],
+  "36ffe52cf7ec": [
+   "The house is colder inside than outside. Architecture is a beautiful thing."
+  ],
+  "a37a31d9aa79": [
+   "The heater is your best friend. Your only friend.",
+   "Your toes have filed a formal complaint."
+  ],
+  "59f61259d350": [
+   "Hot chocolate is not a want. It's a need."
+  ],
+  "a373f1d83e2f": [
+   "Even the Capetonians are admitting it's cold."
+  ],
+  "d003110fec9f": [
+   "The washing is not going to dry. We hang it up for hope.",
+   "The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.",
+   "Cold plus beautiful is an honest trade. We'll take it."
+  ],
+  "3fd7aa0aae2e": [
+   "The great debate: do we switch the heater on too, or are we not made of money?"
+  ],
+  "6baabb00f226": [
+   "The chair is taken. The dog got there first. Rules are rules."
+  ],
+  "54f02eb5aac1": [
+   "Hot water bottle is the real MVP today."
+  ],
+  "fbf101482bbd": [
+   "Prettiest blue sky in the country, and it feels like a fridge with a view."
+  ],
+  "3e60dabd7ef7": [
+   "The sun has arrived. It has not yet started working.",
+   "Welkom-cold today. The kind that goes through three jerseys like they aren't there."
+  ],
+  "898c05f233a6": [
+   "The lawn caught frost overnight. You're next.",
+   "Somebody left the freezer door open overnight."
+  ],
+  "5a6dd26eb7db": [
+   "The car's heater is the most important relationship in your life right now.",
+   "The car coughed twice before it agreed to start.",
+   "The Toyota started first try. You owe it a wash."
+  ],
+  "caaa1c42d70a": [
+   "Clear skies, open roads, running nose. The full winter set.",
+   "The bluer the sky, the colder the truth."
+  ],
+  "4040cfcfc732": [
+   "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+   "The 7am sun isn't giving heat yet. Only vibes."
+  ],
+  "28129477b706": [
+   "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "Zero wind. Zero clouds. Zero mercy.",
+   "The Free State just remembered it has a winter setting."
+  ],
+  "6ca4d027da38": [
+   "Sun on your back, freezer on your face.",
+   "Looks like a tourism ad. Feels like the inside of a fridge.",
+   "That first breath of air will wake you better than coffee."
+  ],
+  "45b1ac83db20": [
+   "Sun's out. Don't be fooled. Nature is lying.",
+   "Sunshine: 10/10. Feels-like: don't ask."
+  ],
+  "21c809043132": [
+   "In the sun: bearable. Two steps left: Antarctica.",
+   "Karoo morning. The kind that makes you respect every farmer who chose this."
+  ],
+  "bbb3d8348b00": [
+   "Window sun is the only sun doing its job today.",
+   "It looks lovely out there. We've chosen to believe it from in here.",
+   "Full sunshine, full jacket. Both are non-negotiable."
+  ],
+  "bbad2500c852": [
+   "Lekker koud, but the rugby fields are about to look perfect.",
+   "Perfect rugby weather. For the spectators with blankets."
+  ],
+  "32dec9fbdcaa": [
+   "Sunny, with a 100% chance of shivering."
+  ],
+  "fbdf528f41c8": [
+   "Perfect drying weather. The washing will dry and freeze, in that order."
+  ],
+  "510b7a0d60c0": [
+   "The dog is still keen. The dog is always keen. Respect.",
+   "Even the dog's breath is showing. That's the reading."
+  ],
+  "0b4330abc214": [
+   "The sun is heading home now, taking the last three degrees with it."
+  ],
+  "ff19d8654ec3": [
+   "Not a cloud in sight. Not a degree either.",
+   "The sunset is free of charge. So is the head cold."
+  ],
+  "827554552d76": [
+   "The braai is happening. The braai always happens. We just pull the chairs closer."
+  ],
+  "1f74ef9146fb": [
+   "Golden hour, ice-cold air. Cape Town loves a dramatic contrast."
+  ],
+  "112364f9e477": [
+   "Tomorrow's first task: five minutes of windscreen scraping in your work clothes.",
+   "The cars have surrendered. They're sleeping under ice tonight.",
+   "Frost on the lawn. Frost on the bakkie. Frost in the pet bowl."
+  ],
+  "da90853b2ccb": [
+   "Clear sky tonight. That means the cold has an all-access pass.",
+   "The frost has already started its shift. By dawn the lawn will be glass."
+  ],
+  "d298c8c1f224": [
+   "Tile floors are tonight's villain. Wear something on your feet."
+  ],
+  "f453a678f470": [
+   "Clear nights are winter's way of apologising."
+  ],
+  "da60a92cafd2": [
+   "Free planetarium tonight. Admission: your toes.",
+   "First star is out. First ten degrees have also left."
+  ],
+  "591629dceb51": [
+   "The cows know exactly where they are. Which is more than the rest of us can say."
+  ],
+  "deaadb7968fe": [
+   "Silent Hill vibes. Without the monsters. Hopefully."
+  ],
+  "d903941f0dd8": [
+   "The streetlights are trying their best.",
+   "The world got a soft filter this morning."
+  ],
+  "2d71f451d0df": [
+   "The fog arrived unannounced. Classic fog.",
+   "The world just... disappeared.",
+   "The fog ate the neighbourhood."
+  ],
+  "84811d2b9372": [
+   "Walking the dog has become a trust exercise."
+  ],
+  "541778f8c617": [
+   "The neighbours exist. Apparently. Can't confirm."
+  ],
+  "62480343c313": [
+   "The fog doesn't care about your schedule.",
+   "Even your GPS is confused.",
+   "Your GPS says you have arrived. Your GPS is lying."
+  ],
+  "dd6b06e34d3e": [
+   "Walking to the bin is now an expedition.",
+   "The world ends two metres past the gate."
+  ],
+  "f1d8b3873dff": [
+   "Visibility: basically zero."
+  ],
+  "4003b55c6c42": [
+   "Somewhere out there is the road. We think.",
+   "Your high beams are making it worse, boet."
+  ],
+  "2ac9aa1f42fc": [
+   "The dog doesn't understand where the world went. Same, boy. Same."
+  ],
+  "5cd228859e14": [
+   "Perfect weather to bump into someone you've 'been meaning to call'."
+  ],
+  "a0b24a9ae618": [
+   "Five metres of visibility. Same as your five-year plan."
+  ],
+  "b64f87c2b2bc": [
+   "The street signs gave up."
+  ],
+  "05b3727f7c16": [
+   "Your car is out there. Somewhere. Probably.",
+   "Ghost town. But it's just Tuesday.",
+   "Fog so thick it has opinions."
+  ],
+  "5a72ad3aac4b": [
+   "Cape Town just got a dimmer switch."
+  ],
+  "c2a03f49e81e": [
+   "Perfect weather for a horror movie."
+  ],
+  "7acec82c9b6f": [
+   "Visibility: vibes only."
+  ],
+  "39c515606f74": [
+   "Let's call it atmosphere and go inside."
+  ],
+  "0467a4574c0b": [
+   "Joburg does fog so rarely it feels like a limited edition."
+  ],
+  "9e75b001c7c5": [
+   "The traffic is emotional.",
+   "The wipers are on max and it's still not enough."
+  ],
+  "80770bf13004": [
+   "Your shoes are about to have a bad day."
+  ],
+  "5526989179bd": [
+   "Rain on a farm isn't weather. It's a salary falling from the sky.",
+   "The dams are doing a happy dance."
+  ],
+  "7bd5758fb7b5": [
+   "Somewhere a farmer is doing a small private dance nobody's allowed to see.",
+   "The dams get their drink before you get your coffee. Know your place."
+  ],
+  "2b750515575e": [
+   "Clouds are crying like NZ at the 23 Rugby WC!"
+  ],
+  "00a672556998": [
+   "Breaking news: the puddles are open for business."
+  ],
+  "8ce35385e048": [
+   "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+  ],
+  "e7547cfdee94": [
+   "The clouds are having a moment.",
+   "Rain so heavy it should pay rent."
+  ],
+  "e54bbf2b56b2": [
+   "Yes, it's raining sideways. South Africa speciality."
+  ],
+  "fe838c8901f7": [
+   "Solidarity to everyone with one wet shoe right now.",
+   "Wet jeans for the rest of the day. The classic punishment."
+  ],
+  "d878b96a3f71": [
+   "The umbrella broke on the first gust. Classic.",
+   "Somewhere an umbrella just turned inside out. Moment of silence.",
+   "Hair plans: cancelled."
+  ],
+  "3bd49d0acf2b": [
+   "Joburg rain keeps a diary: 2pm sharp, maximum drama, no apologies."
+  ],
+  "a0ef2720c507": [
+   "Forgot your jacket? The universe noticed."
+  ],
+  "c9c6fd784b69": [
+   "Someone's braai just got ruined."
+  ],
+  "c9050c0a05e5": [
+   "The garden's saying dankie at last.",
+   "At least the garden's happy. Someone has to be."
+  ],
+  "71fdebcd3deb": [
+   "Perfect excuse to cancel plans."
+  ],
+  "09641df1432a": [
+   "The N1 is now a waterpark.",
+   "Two drops on a windscreen and the whole N1 forgets everything it ever learned."
+  ],
+  "e95e8a2f22f0": [
+   "Joburg rains for twenty minutes, then paints the sky like nothing happened."
+  ],
+  "abf80e59bae9": [
+   "The commute just became a team sport."
+  ],
+  "b4ee9d16720e": [
+   "Wet socks. The ultimate betrayal."
+  ],
+  "f8781ec0eb86": [
+   "Sleep tight, dams. You worked hard today.",
+   "The pavement is a river and the river has plans."
+  ],
+  "c8df884e9ec0": [
+   "The traffic just remembered rain exists. Again.",
+   "Your car wash was a waste of money."
+  ],
+  "91f980f76f82": [
+   "This is why Noah built a boat."
+  ],
+  "55fac1141abf": [
+   "Sunrise chose drama today."
+  ],
+  "f0b49be17750": [
+   "The sky's CV just got updated."
+  ],
+  "a785060d7357": [
+   "The dog has already booked his spot under the bed.",
+   "The dog's under the bed. Smart move, honestly."
+  ],
+  "20ed2fe6b144": [
+   "The sky woke up in a mood."
+  ],
+  "56af96f529d2": [
+   "Jislaaik, stay inside!",
+   "Free IMAX this morning, boet."
+  ],
+  "29a289619727": [
+   "Rusks first. Panic later."
+  ],
+  "99d0821cdd98": [
+   "Somewhere a weather reporter is living their best life."
+  ],
+  "c152b51ebfa5": [
+   "Thunder rolling in. Inside is the move."
+  ],
+  "b08495c9d832": [
+   "Respect the thunder. It's earned it."
+  ],
+  "20f3d07d3c47": [
+   "Lightning's putting on a show — watch from the window.",
+   "Nature just reminded us of the pecking order."
+  ],
+  "f6562060468c": [
+   "Free fireworks, no tickets needed."
+  ],
+  "c2c016aabf8f": [
+   "The sky just went full Carte Blanche."
+  ],
+  "8c5812bded23": [
+   "Cancel everything. Even your excuses."
+  ],
+  "10cac134f9d9": [
+   "Not the time for hero moves, hey.",
+   "Hail's down — cover the bakkie."
+  ],
+  "676b8843cb92": [
+   "The sky's having a full-on tantrum."
+  ],
+  "777b9b465dbe": [
+   "Nature's having a word. Best to listen."
+  ],
+  "742e1675a5a4": [
+   "Unplug the things. The sky has plans."
+  ],
+  "adc69e7b4a17": [
+   "Lightning's putting Eskom's grid to shame."
+  ],
+  "53d4228e24c8": [
+   "Today's forecast: special effects."
+  ],
+  "f6818069c8bd": [
+   "The braai is cancelled. Yes, really."
+  ],
+  "e5b510c8a1e4": [
+   "Eskom wishes it had this power.",
+   "Nature's doing its own load shedding."
+  ],
+  "2fede244e0d0": [
+   "Even the hadedas are quiet."
+  ],
+  "faaf0b2003be": [
+   "Midnight and the sky is showing off."
+  ],
+  "ae79261d2852": [
+   "Unplug the TV — it's tradition.",
+   "The lightning is putting on a proper show."
+  ],
+  "cd855e5f60e9": [
+   "Somewhere a roof is someone's new kite."
+  ],
+  "14c56f85c353": [
+   "Every flash is a photo nobody takes in time."
+  ]
+ },
+ "routingConflicts": [],
+ "cut": [],
+ "unplaced": [
+  {
+   "id": "b2:37f6348d",
+   "text": "A clear evening pays out about forty minutes of gold, and it has just started.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:c75e424e",
+   "text": "A Friday night warm enough that the table walked itself outside.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:d2218be0",
+   "text": "A gradient that clean means not one cloud between here and tomorrow.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:c05ab688",
+   "text": "A sky like that overrules HR, and everybody at reception knows it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:1536f208",
+   "text": "A sky this clear hands you one cool hour, and this is it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:40160118",
+   "text": "A sunset like this pulls an audience, and tonight it is two birds on a wire.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:c515a28f",
+   "text": "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:d58f7866",
+   "text": "An evening this clear pays out its last hour in gold. Spend all of it.",
+   "bin": "clear",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:0dcc7a8e",
+   "text": "Cirrus this pink means the sky is completely dry all the way up.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:f8595ec2",
+   "text": "Clear enough that even the cat is checking the sky.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:d0aef7cc",
+   "text": "Coffee in one hand, hose in the other, and the whole day still ahead.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f33c5694",
+   "text": "Cricket till the light goes, and light like this takes its time going.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:d14d976a",
+   "text": "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:5ec36fbb",
+   "text": "Forty floors of glass and every one of them is showing the same blue.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:fee8f451",
+   "text": "Friday, and by noon that paving is going to be too hot to stand on.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b4002be6",
+   "text": "Full sun, soft lawn, and homework has officially lost its audience.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:6f814013",
+   "text": "Golden hour turns even the dust into a special effect.",
+   "bin": "clear",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:f5d4eac8",
+   "text": "Grass warm, sky empty — the kind of Sunday that resets a whole family.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:9952d133",
+   "text": "He will move twice before lunch and both times by about a metre.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:46ad5a7d",
+   "text": "It will be dry by morning and damp again by six, which is the deal.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:74f506c1",
+   "text": "Jacarandas only do this three weeks a year, and the sky decided to match.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:31bcbf7c",
+   "text": "Joburg does about three hundred of these a year. Nobody is complaining.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:0c1a2547",
+   "text": "Match played, chips out, and the sky never once threatened the fixture.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:2971d2db",
+   "text": "Monday got the best sky of the week and is wasting it on a farm road.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:ad2c4845",
+   "text": "Monday, and the alarm on this farm has feathers and no snooze button.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:bcec0b71",
+   "text": "Nobody inside that house is awake yet and that is entirely the plan.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:00fb24d0",
+   "text": "Not a breath of haze this morning; even the mountain got up early.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:f956de1f",
+   "text": "Not a breath of wind, or that lantern would be having a quieter evening.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:7c555bcb",
+   "text": "Not a cloud to slow the sun, and the whole garden is making the most of it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:d7b64074",
+   "text": "Not a cloud. Just you and the Southern Cross.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:ef114d51",
+   "text": "Not a leaf moving — the day is closing as calm as it opened.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:0e925c49",
+   "text": "Not enough wind this morning to put one wrinkle on that water.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:a64a585f",
+   "text": "Not one cloud, which means those geraniums will need this again tonight.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b077a842",
+   "text": "Not one metre of shade on this promenade, which is why they are out at six.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4bdf5ff5",
+   "text": "Nothing in the sky to slow the sun down, so the stoep warmed up before seven.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:3e6f2150",
+   "text": "Nothing up there but stars, which is how supper ends up under them.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:bd7dce2c",
+   "text": "One planet up, no clouds coming, and the whole dorp still outside.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:48451bc2",
+   "text": "One sunrise, used twice — once in the sky and once off the wet sand.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:c445f909",
+   "text": "Orange to navy with nothing in between — the walk home slowed down for it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:13f114f7",
+   "text": "Saturday night, and the entertainment is free and about four billion years old.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:54480938",
+   "text": "Saturday, and the sky went from orange to blue without one cloud interrupting.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:79a8201b",
+   "text": "She is watering at seven because by nine it would be a waste.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:af7cd52f",
+   "text": "Summer filed its arrival notice this morning; the shirt is the paperwork.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:e069ee4e",
+   "text": "Sunday night, and the best thing on tonight is not on a screen.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a29c21c4",
+   "text": "Sunday, and the sky has cleared its whole diary for this.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:9098bdb2",
+   "text": "Ten thousand streetlights down there and the sky is still winning tonight.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:b046df00",
+   "text": "That dry patch is what a week of cloudless skies does to a lawn.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:6dbef0dc",
+   "text": "That dust is hanging in the air because there is no wind to take it anywhere.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:9ccc0e55",
+   "text": "That farmhouse has seen a few centuries of days like this and still gets them free.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:3397ba19",
+   "text": "That fire was lit before anybody needed it, which is what a clear evening does.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c480ed7e",
+   "text": "That is the centre of the galaxy and it is coming up behind a koppie.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b76e92c1",
+   "text": "That is the first hadeda up and the entire valley is about to know.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a1a35b83",
+   "text": "That lawn stopped asking the sky for rain somewhere around the start of November.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:ab81c174",
+   "text": "That mountain is that sharp because there is nothing at all in the air today.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4e5b08c5",
+   "text": "That sky is doing its whole show over a sea too flat to interrupt it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:582e3f27",
+   "text": "That sky lasts about six minutes and the bird is the only one watching.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:72842874",
+   "text": "The afternoon held exactly like the morning promised, which almost never happens.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:2aec11b9",
+   "text": "The agapanthus open for exactly this kind of sky, and they got it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:53967297",
+   "text": "The beach is doubling as a mirror, which takes one morning of absolutely no wind.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:ce8deedb",
+   "text": "The day used up every hour of light and still had this left over.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:0bf87a55",
+   "text": "The deck reached golden-retriever temperature about an hour ago.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:b895e3a7",
+   "text": "The evening is holding at exactly the temperature nobody talks about.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:30d53be8",
+   "text": "The first star is out before the last of the sunset has even left.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:7fd0face",
+   "text": "The jacaranda is dropping purple on a lawn he has just finished watering.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e056b51f",
+   "text": "The Karoo cools fast under a clear sky, but nobody has noticed yet.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:cde405cd",
+   "text": "The kind of sun that turns one tennis ball into a whole afternoon.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:903d9ffb",
+   "text": "The moon is out and somebody small is hearing about it for the first time.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:5819cecf",
+   "text": "The only rain this garden has seen all month comes out of a pipe.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:06dc927a",
+   "text": "The pool is that blue because the sky is doing all of it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:f44c7364",
+   "text": "The sea has gone the colour it only goes when the sky is this empty.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:faf11b06",
+   "text": "The sea is that flat about nine mornings a year and this is one of them.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9446cc6a",
+   "text": "The sky checked in at seven, went nowhere all day, and is staying for the weekend.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:f19e2aca",
+   "text": "The sky has gone that deep blue you only get this high above sea level.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:d595a254",
+   "text": "The sky is completely empty, which means this is as cool as today gets.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4b22c52e",
+   "text": "The sky made the dress-code decision this morning and he just obeyed it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:bdb314a0",
+   "text": "The smoke is going straight up, which is the sky's way of approving a braai.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:8bc56906",
+   "text": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:fb9599e8",
+   "text": "The sun cleared the roof about ten minutes ago and the tiles are already warm.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:86e4dacb",
+   "text": "The sun has been on those boards since morning and the dog is doing the audit.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:f4a27579",
+   "text": "The sun has done more to that lawn this month than any mower ever will.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:0b7974a3",
+   "text": "The sun has had this lawn to itself for a month and it is winning.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:265bdd08",
+   "text": "The sun is at the exact height where the whole veld goes gold.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:128e1cd0",
+   "text": "The sun stayed out for the whole match and is hanging around for the chips.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:79c32be1",
+   "text": "The sun took the direct route today: straight down, no traffic.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:d7366eaf",
+   "text": "The weather moved the office to the roof and productivity can argue later.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:98ca4e40",
+   "text": "The Weber has been watching him water that lawn for twenty minutes now.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4082a02d",
+   "text": "The wind that usually owns this coast has taken the evening off.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:f9fb77b6",
+   "text": "There is enough moon out there to hang washing by, and somebody did.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:933b9074",
+   "text": "This is the first hour since breakfast that lawn work has been survivable.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:cde6f11a",
+   "text": "This is the only twenty minutes of the day that belong to him.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3c8cc679",
+   "text": "This light lasts about twenty minutes and the walk to school gets all of it.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:25f8c149",
+   "text": "Thursday's forecast, as read by the dog: warm boards until further notice.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:738e1b20",
+   "text": "Warm, still and clear: every insect in the province is at this one lamp.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:3f332c0d",
+   "text": "Wednesday this warm turns every roof in Joburg into a second office.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:1368422b",
+   "text": "Weeks of nothing but blue, and even the hadeda has to queue at the sprinkler.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:841c0af5",
+   "text": "Whoever booked the four o'clock meeting is going to be sitting in it alone.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:300fa636",
+   "text": "Windows-open weather has arrived, and word has reached the moths.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:5a67d6ca",
+   "text": "Wors on, sun low, wind nowhere: Saturday is doing everything right.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:0e2fa65b",
+   "text": "You can see three ridgelines from here, which is what no-haze evenings are for.",
+   "bin": "clear",
+   "source": "clear-v3"
+  },
+  {
+   "id": "b2:2b44c8cd",
+   "text": "You have to drive two hours from anywhere to get a sky like that.",
+   "bin": "clear",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3e848d9a",
+   "text": "A grey day reads the same in any language: blanket, stoep, minimal ambition.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:07936368",
+   "text": "A grey dusk brings the evening forward, and the windows have already agreed.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:5a5cdfc0",
+   "text": "A grey start on the coast usually burns off by ten. Usually.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:772f52f4",
+   "text": "A lid like that takes until about eleven to lift, if it lifts at all.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:5d4497a7",
+   "text": "A pearl-grey sky and a warm sea breeze: the coast's version of mild.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:4d2b2bf6",
+   "text": "A perfectly average sky doing perfectly average things.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:53f5ea70",
+   "text": "A sky like that keeps the heat in — the frost can stand down tonight.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:9747191c",
+   "text": "A sky with no stars is the sky's way of saying go to bed.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:657466c9",
+   "text": "All that cloud, and the sun still found the letterbox at the bottom.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:01492ebd",
+   "text": "An overcast sky is a painter's softbox — not one hard shadow on that wall.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b4311ba9",
+   "text": "Blankets outside in the dark: the evening is cold, the company is not.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:08551122",
+   "text": "Blue on the left, business on the right, and the line is moving your way.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b63841f1",
+   "text": "Bring a jacket. Or sunscreen. Or both.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:113f70bc",
+   "text": "Cloud all afternoon, and now this — the sky apologising in gold.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:a246e132",
+   "text": "Cloud is what a sunset needs, and tonight the sky brought exactly enough.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:bf21805f",
+   "text": "Cloud like fish scales means the weather is thinking about changing its mind.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:f54578f9",
+   "text": "Cloud right down to the rooftops, and every sensible mammal is indoors under a lamp.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:db545ff8",
+   "text": "Cool, grey and windless — honestly the best running weather this city sells.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:255bf240",
+   "text": "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:61e3e4a0",
+   "text": "Every leaf is holding still; the whole garden is waiting to see what the sky decides.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:0470abf6",
+   "text": "Flat grey light, no glare, no wind: perfect painting weather, and he knows it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:9b4f082c",
+   "text": "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:a940ee5a",
+   "text": "Grey from gutter to gutter, and every kilowatt up here is on standby.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:8058cc78",
+   "text": "Grey like that can hold all day without dropping a thing — probably.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b20e1d16",
+   "text": "Grey sky, flat sea, visible breath: the exact morning the fish expect them.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:3cda47ae",
+   "text": "Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:6798309f",
+   "text": "Half a lawn mowed, and now the negotiation with the sky begins.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:20485f8c",
+   "text": "Half the sky has an opinion and the other half is about to hear it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:f17d0206",
+   "text": "Half this street is in summer and the other half is about to be somewhere else.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:8f6517f8",
+   "text": "Low cloud at night keeps the cold off the promenade, and the regulars know it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:9aedf319",
+   "text": "No moon, no stars, no streetlights: tonight the headlights are the whole sky.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:c8057fcf",
+   "text": "No stars on offer tonight, so the city is providing its own.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:42a19975",
+   "text": "No wind on the water this morning, which is worth more than sunshine out there.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:991cc1a5",
+   "text": "Not a breath moving those sheets, and nothing helpful coming from above either.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:ce9c79d8",
+   "text": "Not one star made it through that lid, and nobody has noticed yet.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:fd701396",
+   "text": "Nothing is falling and nothing is shining; it is that kind of night.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:49181172",
+   "text": "One person at this wedding is checking the sky, and she has been right before.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:d3780325",
+   "text": "One thin line of light at the horizon, and the whole sky leaning on it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:6d7a7921",
+   "text": "Overcast at night keeps the warmth in, and somebody is out here using it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:ef827522",
+   "text": "Overcast this thick turns the Karoo into a corridor, and he is halfway down it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:89f92e33",
+   "text": "Panels installed, sun absent: the sky owes this roof an apology.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:2d8c7a5a",
+   "text": "Paving wet, clouds low, fire going anyway — this braai has been through worse.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:6ca37079",
+   "text": "Pink-grey sky over the robots: winter is on the morning shift too.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:89872885",
+   "text": "Red sky at night, shepherd's delight — tomorrow just got a good reference.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:789f900c",
+   "text": "Running weather, honestly: cool, grey, and the sea doing the soundtrack.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:592332d4",
+   "text": "Sunscreen out, sun gone: the sky has a sense of humour today.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b2f1f8a4",
+   "text": "Table Mountain gets the silhouette; the clouds get the whole colour budget.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:f0787b3a",
+   "text": "That cloud has been rehearsing all afternoon and still hasn't said its line.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:c8888cf2",
+   "text": "That cloud is just thick enough to make the moon count for nothing on the ground.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:f13a3bd2",
+   "text": "That cloud line is moving in with the confidence of a Monday.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:a6cab35a",
+   "text": "That cloud will be down on the streetlights before the walk is done.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:3eb19681",
+   "text": "That gap in the cloud is worth more than the whole clear day it replaced.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b6162a89",
+   "text": "That grey is thinking about rain and the whole district is thinking with it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:18e36bf4",
+   "text": "That look is a man asking the clouds for forty-five more minutes.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b95d894f",
+   "text": "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:659c4436",
+   "text": "That sky can do what it wants; the wors is already on.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:51e603e9",
+   "text": "That sky refuses to commit, so he came prepared for both of its moods.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:275d0f42",
+   "text": "That sky will hold for the photographs — after that, no promises.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:c5fe3885",
+   "text": "That washing is a straight bet against that sky, and the sky looks confident.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:dd26e6d1",
+   "text": "The aerials have the best view of a sky doing its quiet closing number.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:e019843b",
+   "text": "The blue half of the sky is on borrowed time and the lawns know it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:d3233ffd",
+   "text": "The blue sky is still back there somewhere, but the grey has the floor.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:ca8d77de",
+   "text": "The Bo-Kaap does the colour this morning because the sky refuses to.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:ae214cd8",
+   "text": "The charcoal is out, the sky is undecided, and neither is backing down.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:5c6ae3c2",
+   "text": "The cloud arrived about four minutes after the towel went down, which is policy.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:39bb58cb",
+   "text": "The cloud came in overnight and parked; nothing under it is in a hurry.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:22469ff6",
+   "text": "The cloud is coming over the mountain like it pays rent here.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:74d895df",
+   "text": "The cloud is doing sunscreen duty this morning and the runners are cashing in.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:04b0456a",
+   "text": "The cloud is holding the city's glow like a lampshade tonight.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:434e6bd9",
+   "text": "The cloud is sitting right on the mountains and the sea has gone pewter.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:4e909881",
+   "text": "The cloud kept the frost off the windscreens, which is the one favour it does.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:6f294052",
+   "text": "The clouds are winning tonight, about nine rounds to one.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:da91105f",
+   "text": "The clouds came dressed in pink for the occasion and are behaving so far.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:ec36ba80",
+   "text": "The clouds took the sunset and left the suburb the pink change.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:80f5f38e",
+   "text": "The concrete is still damp and the sky looks like it isn't finished.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:5cefe9bf",
+   "text": "The day never warmed up, and one resident has stopped waiting for it to.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:ce45ff90",
+   "text": "The dog is wearing a jersey, which is all the forecast anybody here needs.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:75abb05a",
+   "text": "The forecast said partly sunny; the sky went with fully committed grey.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:5f7ec062",
+   "text": "The horizon kept one strip of orange as proof the sun was here.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:9cccc9fb",
+   "text": "The moon has enough cloud to fight through that the torch got the job.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:2b3cc237",
+   "text": "The moon is down to one small window and it is using all of it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b42c8db4",
+   "text": "The one animal that can match the sky's mood is having no trouble today.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:c10208cd",
+   "text": "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:98f5f26f",
+   "text": "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:0674a24a",
+   "text": "The sky brought its full weight this morning and the sea rose to meet it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:bb3edff5",
+   "text": "The sky brought nothing tonight, so the lantern is carrying the whole evening.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:6a1b8e41",
+   "text": "The sky can’t decide between golden hour and going home early. Neither can anyone else.",
+   "bin": "cloudy",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:2926362f",
+   "text": "The sky has gone the colour of the staff-room ceiling and settled in.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:b9cca3c5",
+   "text": "The sky has switched itself off for the night; the bakkie disagrees.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:71eddd64",
+   "text": "The sky is deciding whether the second half of that lawn happens today.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:d6a5d1e5",
+   "text": "The sky is doing nothing in particular and being very thorough about it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:a7586bd5",
+   "text": "The sky is threatening, the firelighters are answering: a very South African standoff.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:a3613541",
+   "text": "The sky left a two-finger gap for the sunset and the sunset took it.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:00a87897",
+   "text": "The sky saved its best ten minutes for the top of the climb.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:5ff3803d",
+   "text": "The suburb is going to bed under a lid, with one orange nightlight left on.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:fd7f4729",
+   "text": "The sun is down to one beam and the whole veld is watching where it lands.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:494c151b",
+   "text": "The sun is trying its luck at the horizon and the cloud is unmoved.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:c25cca98",
+   "text": "The sun is up there somewhere behind three layers of Saturday-morning grey.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:af2f1012",
+   "text": "The walk has been postponed by the committee upstairs, and the committee looks settled.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:392a8d58",
+   "text": "The week's weather is changing hands right there, in one straight line.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:43bc9a3a",
+   "text": "The whole city is under one grey blanket and somebody just noticed.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:4dd92d01",
+   "text": "Umbrella in one hand, sunglasses in the other — he has met this sky before.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:87ceaa82",
+   "text": "Under a sky like this the whole garden runs at half-speed, dog included.",
+   "bin": "cloudy",
+   "source": "cloudy-v3"
+  },
+  {
+   "id": "b2:2a2677af",
+   "text": "Bo-Kaap in the last light, and the wind is doing the housekeeping.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f1c64151",
+   "text": "Both hands are on the skirt, which means the hair is on its own.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:39606e07",
+   "text": "Every jacaranda on this street is emptying itself onto one man.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:da1c6146",
+   "text": "Every leaf in the street is queueing to get into that car.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:723ba7b1",
+   "text": "Every leaf on that mat arrived without being invited.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ec7875b2",
+   "text": "Every leaf on that palm is now a slightly different length.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:99b4a635",
+   "text": "Every leaf the tree dropped this month is going past them at head height.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:0460d100",
+   "text": "Every one of them is pointing the same way and not one of them chose it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1baa3c1a",
+   "text": "Every palm on this strip is pointing at the same thing tonight.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:684cd131",
+   "text": "Everyone else on this promenade went home about twenty minutes ago.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:99c4cc23",
+   "text": "Everything on that line is going to smell like the sea by eight o'clock.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8f5c6cbc",
+   "text": "Everything on that line was dry ten minutes ago. The wind is just showing off now.",
+   "bin": "wind",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:61fd8b84",
+   "text": "Everything on this street leans the same way, including the people.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a2561292",
+   "text": "Everything out here is either properly rooted or already gone.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e9ee478b",
+   "text": "Friday night on the promenade and the sea has cleared everyone's diary.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1c6ca41c",
+   "text": "Friday, and the aloes have not noticed anything unusual at all.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9c7b275e",
+   "text": "Friday, and the humidity has teamed up with the wind against everybody.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b56fb171",
+   "text": "Friday, and the wind is doing half of this job for her, free of charge.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8ef5fe99",
+   "text": "Half of this street's recycling is now the hedge's problem.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:bfd43cdb",
+   "text": "Half the hedge is in the air in front of her and still arriving.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:040461ba",
+   "text": "Half the pavement is airborne and only one of the three is enjoying it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:54e6865c",
+   "text": "He is bent that far over because standing upright stopped working.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2bcf9028",
+   "text": "He is going downhill and still working for every metre of it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a3cc1541",
+   "text": "He is going to shake all that sand out on the lounge carpet later.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1ee4f114",
+   "text": "He was going to have coffee. The mug is still standing on the step.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:461be3d4",
+   "text": "He will be finding purple in that jacket pocket until Friday.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e04e0252",
+   "text": "He will sit there until something more interesting happens, which it will not.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:927724fb",
+   "text": "Her hair is going one way, the palm is going the same way, and neither was asked.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e7ae172b",
+   "text": "It took the wind four seconds to move what took two hours to build.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:93d13f03",
+   "text": "Lion's Head is doing the scenery and the wind is doing the comedy.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5ae5c662",
+   "text": "Monday, and the garden has rearranged itself without asking anyone.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:dc030b76",
+   "text": "Monday, and the wind has completely failed to ruin this.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3ffb3c2c",
+   "text": "Monday, and the wind is the best thing that has happened to him so far.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:07b8cd9c",
+   "text": "Neither of them can stand up straight and neither of them seems to mind.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d70afad2",
+   "text": "Neither of them is going to be the one who suggests turning back.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cb1c702b",
+   "text": "Nobody in this house is paying to dry anything today.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:70d05c96",
+   "text": "Nobody is ever going to find that one white sock again.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c8b249dd",
+   "text": "Nobody is lighting that Weber until this drops, and everyone in the yard knows it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4ebcfa03",
+   "text": "Nobody is walking that promenade tonight and the lights know it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:364a26b3",
+   "text": "Nobody on this side of Gqeberha is hanging washing out today.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4aab954e",
+   "text": "Nobody walks this road at this hour, and tonight nobody wants to.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f7b4fae7",
+   "text": "Nobody's hair is going to survive, and nobody is leaving yet.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c1f78443",
+   "text": "Northern Cape wind does not howl. It leans on things until they give.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c1da86a5",
+   "text": "Not one of them is flying, and that is the whole forecast right there.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:79334dd6",
+   "text": "One gust, one wall, and two households now know each other much better.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ecf335dc",
+   "text": "One slipper is already out of the game and the cover is still winning.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:035b17c1",
+   "text": "Saturday evening, and the walk from the front door defeated the whole look.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:31e7000a",
+   "text": "Saturday morning, and the sea has already been over that railing twice.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:bb4656e8",
+   "text": "Saturday, and neither of them will admit the wind is winning.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:06cb2544",
+   "text": "Saturday, and the only thing on that line doing any work is the pegs.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:408df6f5",
+   "text": "Saturday, and the wind has strong opinions about your plans for the garden.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ab4ab0a3",
+   "text": "She is leaning at an angle that a flat path does not normally require.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:820f000b",
+   "text": "She is not looking at the washing, she is looking at where it might land.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:37d53aaf",
+   "text": "She will be picking grass seeds out of that jacket until Saturday.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4876455c",
+   "text": "She will be tasting salt for the rest of the day and she knows it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:85011e5c",
+   "text": "Somebody is going to be explaining that to somebody else this evening.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b44468f4",
+   "text": "Somebody is going to come home to a lounge full of Signal Hill.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6974e37a",
+   "text": "Somebody is going to remember that washing at about two in the morning.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a0dd23f1",
+   "text": "Somebody is going to sweep all that purple up and somebody is not.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f943d74c",
+   "text": "Somebody will be picking leaves out of that back seat for a week.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:584cfa32",
+   "text": "Sunday morning, and the sea is throwing the first half of it at her.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a70fd0ed",
+   "text": "Sunday night, and even the washing is refusing to accept it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f8486ea8",
+   "text": "Sunday, and this is about as far as either of them is going.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:0d67441c",
+   "text": "Table Mountain is right behind her and she cannot see a single bit of it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2dfba3a6",
+   "text": "Table Mountain is right there and neither of them has looked at it once.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cccd42ee",
+   "text": "Table Mountain, a braai, and a wind with its own strong opinion.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:77e21c51",
+   "text": "That bag is working as a sail and he has not worked that out yet.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c71eb121",
+   "text": "That coat is being parted by something other than a brush.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b410630c",
+   "text": "That curtain has been outside the window for about an hour now.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:857a8d9b",
+   "text": "That door is going to shut whether he is ready or not.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:be9ab1e3",
+   "text": "That driveway was swept this morning and has already been refilled.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4714e522",
+   "text": "That grass on the verge has been lying flat since Thursday.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d04aab9c",
+   "text": "That hair was a decision made indoors about forty minutes ago.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3c87c732",
+   "text": "That hedge has been leaning like that since Thursday and it is not straightening.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4b55e56f",
+   "text": "That hood would be halfway down the road if her hand was not on it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:7a0a1185",
+   "text": "That jacket has been trying to leave since he got on the bike.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b863a91e",
+   "text": "That little olive tree is going to grow up with a permanent lean.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:01f40e9b",
+   "text": "That palm has been bent that way so long it thinks it is upright.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:46675d27",
+   "text": "That photo is going to look completely different to how it feels.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:74a37e46",
+   "text": "That sea wall is doing its absolute best and it is still losing.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:74105707",
+   "text": "That shade cloth has been drumming since breakfast and nobody can hear the television.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4d91ce8e",
+   "text": "That shade sail is one good gust away from becoming a spinnaker.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:115b8091",
+   "text": "That shoe is coming off next and she has run out of hands.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d83821ee",
+   "text": "That thorn tree has been leaning since before anyone on this street arrived.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9850a37f",
+   "text": "That tie has been horizontal since he left the car.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2165c60a",
+   "text": "That tree has been shaped by one wind for about forty years.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cd44d233",
+   "text": "That trunk grew crooked because this happens here far more than it doesn't.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:01deaf9d",
+   "text": "That walk was somebody else's idea and the dog is registering a complaint.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:aeaf6fad",
+   "text": "That washing will be dry before she has finished carrying the rest of it out.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3c5017bf",
+   "text": "That wave landed on the promenade about four seconds before she got there.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:7f3b16d3",
+   "text": "The aloe is not moving and has no intention of starting now.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8db74b72",
+   "text": "The aloe is unbothered, which is the entire point of an aloe.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:88149747",
+   "text": "The banana leaves are being redesigned in real time and taking it well.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:90bfe14c",
+   "text": "The banner is holding on better than the palms and it knows it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:229a6b5e",
+   "text": "The beach itself is moving faster than they are, and in the same direction.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:80c757c5",
+   "text": "The bin made it to the pavement and then made its own decisions.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:79ff72fc",
+   "text": "The blossom is coming off those trees faster than he is going under them.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:21ca0d9e",
+   "text": "The braids have made the decision and she is going along with it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9170104b",
+   "text": "The Cape Doctor is on night shift. The whole street has an appointment.",
+   "bin": "wind",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:a1a7750b",
+   "text": "The city across the water is having a completely different evening.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ec9ba039",
+   "text": "The dust is going somewhere and it is not asking permission.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:69fa5b47",
+   "text": "The flag is doing its patriotic duty at about sixty kilometres an hour.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:020c2cf3",
+   "text": "The footprints behind them are already filling in and they only just walked there.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:16bf0a80",
+   "text": "The garden is moving and he has decided the doorway is far enough.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3ea72274",
+   "text": "The Helderberg is clear, the washing is horizontal, and that is Sunday sorted.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:59bf6416",
+   "text": "The jacaranda is redecorating the whole road whether you like it or not.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:216e24f7",
+   "text": "The jacarandas are throwing everything they have at one cyclist.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a0eb7713",
+   "text": "The lagoon has gone flat and silver, which fools nobody who lives here.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f6579059",
+   "text": "The lead is doing considerably more work than it was designed for.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:486173e3",
+   "text": "The leaves came in. The cat did not go out.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:109bc470",
+   "text": "The leaves going past her were still on a tree two streets ago.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1165a8f7",
+   "text": "The moon is holding still and everything else up there is not.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8814b138",
+   "text": "The moon is out and the palms have not stopped moving since sunset.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:079b7579",
+   "text": "The mountain has its cloth on and the palm is holding the pose.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:696456a8",
+   "text": "The mountain looks like that about six evenings a year and this is one.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1dcfe49b",
+   "text": "The oaks are fine. The wheelie bins never stood a chance.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:efc89c84",
+   "text": "The one on the end has come loose and she has not spotted it yet.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a013ec7c",
+   "text": "The paint is bright, the hill is gold, and the wind is the loudest thing here.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:7f9804fa",
+   "text": "The palm has been holding that exact shape since about three this morning.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:471b6567",
+   "text": "The palm has given up on symmetry and committed to one direction.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b070eb86",
+   "text": "The palm is bent double and she is out here smiling about it.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f2459af9",
+   "text": "The palm is the only one still outside, and it regrets everything.",
+   "bin": "wind",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:133918a0",
+   "text": "The palms are fine. The trampoline had opinions about staying put.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:514e57c5",
+   "text": "The palms have been making that noise for hours and nobody is awake to mind.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4ba5f9a7",
+   "text": "The paving is soaked in front of them and it has not rained once.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:22521422",
+   "text": "The pegs lost, the wall won, and the neighbours are still laughing.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e261a8b9",
+   "text": "The phone is the only thing out here being held still.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f134d7b7",
+   "text": "The pine behind him is bent right over, so this was never a fair contest.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a97b6b69",
+   "text": "The promenade is empty in both directions and there is a reason for that.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6ac5579e",
+   "text": "The road is empty, every light is on, and the wind has the place to itself.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:7dd4a59d",
+   "text": "The sand is going past them faster than the tide is coming in.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ccb00421",
+   "text": "The sea has gone white all the way out and he noticed before anyone.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2e46885b",
+   "text": "The sea looks calm from up here, which is a complete lie.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:07690793",
+   "text": "The security light is picking up things you would rather not watch moving.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:874490c6",
+   "text": "The sheets are dry already and the wind is not finished with them.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5ab05a40",
+   "text": "The sky has gone the colour that makes Joburg check the group chat.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d0b74838",
+   "text": "The south-easter has found the one open window on the whole street.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5e3bca44",
+   "text": "The southeaster doesn’t knock. You’ll hear it under the door all night.",
+   "bin": "wind",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:054cef73",
+   "text": "The sparks are going sideways and the tongs are still going in.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:44036c1b",
+   "text": "The sun is up, the street is empty, and the wind got here first.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9becf507",
+   "text": "The tongs are out, so the argument about who cooks is over.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2eaf3a4f",
+   "text": "The trampoline has relocated and taken the neighbour's wall as a partner.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9c5ff970",
+   "text": "The trees at the fence are taking this worse than he is.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:da10702b",
+   "text": "The washing goes out at this hour because wind is cheaper than electricity.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:467c4dd9",
+   "text": "The Weber has not been lit once this week and today is not the day.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5ff6c9bb",
+   "text": "The whole street is inside pretending the roof noise is normal.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9eee736d",
+   "text": "The wind did the throwing and the neighbour is doing the returning.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a96ee3fe",
+   "text": "The wind has been delivering leaves to that doormat all evening.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:799e84e3",
+   "text": "The wind is bringing the outside in and he is letting it come to him.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:10236e14",
+   "text": "The wind opened it faster than he did and he is still laughing.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4e97cef1",
+   "text": "There are more pegs on that line than the washing needs, and she knows why.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:26912f58",
+   "text": "They came out for the sunset and are staying for it despite everything.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1f50d3e1",
+   "text": "They will be getting salt off those shoes for the rest of the weekend.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a9ee0ac4",
+   "text": "They will stand exactly like that until it drops, and it is not dropping.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5db839b8",
+   "text": "This is the second time this week and they have a system now.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2cb6967b",
+   "text": "Those coals are doing more for the fence than they are for the meat.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:205a2a85",
+   "text": "Those eyes are not closed because of the sun.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b6be8b2f",
+   "text": "Those pegs are all that stands between you and a fence full of sheets.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f967b4c1",
+   "text": "Those sheets will be dry before she has pegged the last one on the line.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3ea4dd66",
+   "text": "Three houses are out there picking up what the wind redistributed.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:eed53b30",
+   "text": "Thursday evening, and the only thing still moving out here is the line.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:61e2aa75",
+   "text": "Thursday, and she is the only thing on this road not going sideways.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:702a2377",
+   "text": "Thursday, and somebody has decided to enjoy this instead of complaining.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2faee6a2",
+   "text": "Tuesday evening, and the ride home has turned into a negotiation.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9accc72a",
+   "text": "Tuesday is bin day, and the wind has clearly read the schedule too.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b22f5101",
+   "text": "Tuesday, and the wind has strong opinions about somebody else's outfit.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c4a581f0",
+   "text": "Twelve steps from the front door to the car, and the wind took all twelve.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6f829bc4",
+   "text": "Two pegs a shirt today. Anything less is a donation to the neighbours.",
+   "bin": "wind",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:21652d88",
+   "text": "Wednesday morning, and the walk from the parking is now the hard part.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cafe4586",
+   "text": "Wednesday, and the Cape Doctor is doing its rounds a little early.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:903ec7e3",
+   "text": "Wednesday, and the driveway has become a full contact sport.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8e203060",
+   "text": "Whatever is landing on that road is not rain, it is the sea arriving sideways.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:0fcaae7d",
+   "text": "Whatever is not pegged down out there is already somebody else's problem.",
+   "bin": "wind",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6565d14c",
+   "text": "Another swim seems easier than another shower.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:1c78eea3",
+   "text": "Bed later. The house still feels rather committed.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:a59b7c63",
+   "text": "Bedtime can wait. Nobody is dressed for it anyway.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:27d7380a",
+   "text": "Bedtime soon. Apparently nobody heard that.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:72eb8ce2",
+   "text": "By nine that windowsill is going to be the worst place in the house.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f8c5eb6e",
+   "text": "Car parked. Now to negotiate with the seat belt.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:811a5958",
+   "text": "Cuddling will need to be discussed in the morning.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:4342d6d0",
+   "text": "Every leaf on that sunflower has given up and the head is still facing it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cfddc58a",
+   "text": "Everybody came out at exactly the same time and nobody planned it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8fc9e2fa",
+   "text": "Everything green in this photograph is on a timer and everything else is not.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8609ea49",
+   "text": "Finally sitting down. Even that took some planning.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:c97f714a",
+   "text": "Five mattresses on a stoep, and not one of them is a compromise.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b6c2e95a",
+   "text": "Friday night, and the ceiling has been upgraded considerably.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2faf7f47",
+   "text": "Friday, and by eleven this whole ridge will be one colour again.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e7142963",
+   "text": "Friday, and that is the only moving air for about sixty kilometres.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:afd76924",
+   "text": "Friday, and this promenade is doing the work of six different bars.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f4055892",
+   "text": "Goodnight kiss. Make it brief.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:ef5a75f7",
+   "text": "Guests expected. Nobody promised to use the oven.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:8bf81980",
+   "text": "He came out of the cage, and he did not come out for the view.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:28355375",
+   "text": "He got in at eleven this morning and this is the second filling.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c4e3be5d",
+   "text": "He got in at six and he is not planning to get out.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d118ef00",
+   "text": "He got in before the sun cleared the fence and he has not come out.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9bcbfd2a",
+   "text": "He has been lying there since about eight and has no further plans.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:53beb192",
+   "text": "He has not moved out of it since eleven and he is not going to.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b6525122",
+   "text": "He has picked the shade under a thorn tree, which is barely shade at all.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ad189c14",
+   "text": "He tried the roof first and the roof was somehow hotter.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:458dd16e",
+   "text": "Her eyes are closed and that fan is aimed at exactly one person.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c1eac8ca",
+   "text": "Home soon. Unless someone buys another round.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:589968b2",
+   "text": "It has not dropped below twenty-five in that house since about Tuesday.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4e964d85",
+   "text": "It is cooler out here at midnight than it was inside at six.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5b638379",
+   "text": "It was watered this morning and you would not know it from here.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d27776ca",
+   "text": "Leave the second shower until after supper.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:9e264f8e",
+   "text": "Lunch is ready. Nobody wants the word cooked in it.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:617ab8d5",
+   "text": "Monday starts in five hours and that fan is not going off.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:23f20cf8",
+   "text": "Monday, and breakfast in this dorp has been sorted by a car bonnet.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c43d5183",
+   "text": "Monday, and it is not even eleven o'clock yet, which is the frightening part.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e7828f46",
+   "text": "Monday, and it will do all of that again tomorrow without being asked.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:642b74b2",
+   "text": "Nine at night and the paving is still handing back the afternoon.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:775dcfe5",
+   "text": "Nobody drives past a stall like that on a day like this.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:480d6b34",
+   "text": "Nobody else in this house is getting near that fan tonight.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:04b1867c",
+   "text": "Nobody has been inside that house since about four this afternoon.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f55450d6",
+   "text": "Nobody has switched a light on inside yet and nobody intends to.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2c3e9659",
+   "text": "Nobody has touched that car door and every one of them knows why.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4fe9474b",
+   "text": "Nobody here is wondering whether it works. They are watching it work.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3dadaa0a",
+   "text": "Nobody in that building can open a window and every one of them has tried.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1f162bb5",
+   "text": "Nobody in this dorp has needed a stove since about the second week of December.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1b26ffde",
+   "text": "Nobody in this house is getting into that bath tonight.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a74bdfde",
+   "text": "Nobody is carrying water, which is a decision they are going to revisit.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:107bedfd",
+   "text": "Nobody is going back in there until the walls let go of the day.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:fb638c16",
+   "text": "Nobody is going to remember the temperature, only the sprinkler.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3f1c9df9",
+   "text": "Nobody on this stoep is going anywhere until about four o'clock.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:002939fb",
+   "text": "Nobody out here waters anything until that sun is properly behind the hill.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ebea3f24",
+   "text": "Officially he’s watering the garden. The garden is third in the queue.",
+   "bin": "heat",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:fc44f490",
+   "text": "One more glass. Then another attempt at sleeping.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:21b5b2b7",
+   "text": "Pillow turned. Negotiations continue.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:f2fd97d8",
+   "text": "Remember when going for a walk didn't cost anything?",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:f798247c",
+   "text": "Salad for supper has become much easier to sell.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:27f8550b",
+   "text": "Saturday, and he is in before seven because by ten it is unusable.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ef905f17",
+   "text": "Saturday, and the only shade for the next hour is inside this car.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:bfb554b1",
+   "text": "Saturday, and the water is still warmer than the air above it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:68315111",
+   "text": "Shake hands with the steering wheel very cautiously.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:a696a683",
+   "text": "She has found the one tile in this house that has not warmed up yet.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:60172c95",
+   "text": "She is lying on tile rather than anything soft, and that was a decision.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9067f884",
+   "text": "She is not looking for anything and both of us know it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4bf390d1",
+   "text": "Somebody has already turned the pillow over twice tonight.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6061d420",
+   "text": "Somebody left the light on inside and nobody is going back for it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:20887b8f",
+   "text": "Somebody said the padkos would be fine in the boot. Somebody was wrong.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:732bf944",
+   "text": "Sunday night, and this promenade is busier than it was all afternoon.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:03afeae1",
+   "text": "Sunday, and she has about ninety minutes before she has to move again.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8a869bbf",
+   "text": "Sunday, and the Karoo is doing the one thing it does better than anywhere.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8da2648e",
+   "text": "Sunday, and the water bill has already quietly accepted its fate.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c0cf1d98",
+   "text": "Supper can wait. At this temperature the sprinkler promotes itself to family pool.",
+   "bin": "heat",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:c8904516",
+   "text": "Teeth brushed. Staying here seems reasonable.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:bc6964e9",
+   "text": "That bonnet did not cool down overnight, which is the part that should worry you.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c85f86db",
+   "text": "That bonnet is hotter than most pans ever get on most stoves.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:745b2847",
+   "text": "That curtain is the only moving air in the entire flat.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:85a382d7",
+   "text": "That dashboard is hot enough that the wrapper gave up before the chocolate did.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:547f88eb",
+   "text": "That dog has walked this stretch more times than any of them.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:7b1ecf9b",
+   "text": "That door has been open about ninety seconds and it is staying open.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8d74b58a",
+   "text": "That egg has been on there about four minutes and it is nearly done.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c4984312",
+   "text": "That glass has been full for an hour and she is in no hurry.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e977c5ac",
+   "text": "That grass has been too hot to stand on since about eleven this morning.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:26234351",
+   "text": "That is the bathroom floor and it is now his bedroom.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c049585f",
+   "text": "That is the only cool water in this garden and it has been claimed.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d001528f",
+   "text": "That is the third time tonight and not one of them is about food.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:bb24b03c",
+   "text": "That jug has been refilled twice and it is not even properly dark yet.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1c11e054",
+   "text": "That lawn is the only thing for forty kilometres that gets a say.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b5137bf3",
+   "text": "That number has not moved in eighty kilometres and neither has the scenery.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9f4911b5",
+   "text": "That pool is warmer than he is and it is going to stay that way.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3cf49110",
+   "text": "That pot has been in full sun since about eleven this morning.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:35edeceb",
+   "text": "That sprinkler has been the best-value thing in this garden all summer.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c30b1728",
+   "text": "That stoep has chairs on it and none of them will be used before six.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:02095385",
+   "text": "That sun has been up eleven minutes and it is already doing that.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e85dcc16",
+   "text": "That water has been sitting in the sun all day and it is not cold.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:129c93e4",
+   "text": "That water has been topped up twice and it is still the wrong temperature.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9c31c6ba",
+   "text": "That water was cold about forty minutes ago and nobody has topped it up.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:707b47ed",
+   "text": "That water was cold when somebody put it down there.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:843b7ef9",
+   "text": "That water went in cold at five and it has not been cold since.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9e34887a",
+   "text": "The A/C button is right there and it has clearly not been pressed.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:64e77fab",
+   "text": "The aircon is losing and everyone in this car has stopped talking about it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:0dac828b",
+   "text": "The aloes have not needed a drop of that and they never will.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:aa29f866",
+   "text": "The dog has worked out where the coldest tiles in the house are.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:abacc55c",
+   "text": "The file she is fanning with is the one she is meant to be reading.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a62b99e6",
+   "text": "The glass of water was a very good idea about four hours ago.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1f0cebc5",
+   "text": "The ice cream is losing and all three of them know it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f057c15c",
+   "text": "The ice in that glass has about four minutes left.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cb3bce16",
+   "text": "The ice in that jug never stood a chance and everybody knew it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6423e855",
+   "text": "The lawn is taking a beating that has nothing to do with the sun.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e918cc76",
+   "text": "The light will be gone in nine minutes and nobody is hurrying.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2456f84b",
+   "text": "The lights went on two hours ago and nobody has suggested moving.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:13fe3b85",
+   "text": "The net is handling mosquitoes. The fan is handling everything else.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5f256508",
+   "text": "The paving round that pool is already too hot for bare feet at six.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ae3e8ec7",
+   "text": "The pool has been the only sensible room in the place all day.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:80ca57dc",
+   "text": "The road ahead has been the same road for a very long time.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a4963d9d",
+   "text": "The shade on this road runs out in about two hundred metres.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3b222d18",
+   "text": "The sprinkler goes on at five and it is off again by seven.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a77a8b5d",
+   "text": "The steering wheel in there is currently not something you can hold.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:023f21f2",
+   "text": "The stoep step is still warm and will be for another hour yet.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:75413fea",
+   "text": "The sun has been up eleven minutes and he has already stopped moving.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:15a1af52",
+   "text": "The sun has gone and the tiles are still giving it back.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:17feebfa",
+   "text": "The sun has just come up, which is the part nobody is going to believe.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:0c207c31",
+   "text": "The sun is only just up and she has already picked her spot.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:7d63624e",
+   "text": "The sun left an hour ago and took none of the heat with it.",
+   "bin": "heat",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:0e2437df",
+   "text": "The sun went down an hour ago and the paving is still giving it back.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6577a378",
+   "text": "The water did not cool down last night and he has already checked.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:af20dc77",
+   "text": "The whole town waited for the sun to go down and then came outside.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ea25bc9f",
+   "text": "The windpomp has stopped turning, which is how you know the day is over.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f636ba84",
+   "text": "The youngest is still awake and has decided the sky is worth it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a33fa17a",
+   "text": "There is a whole garden out there and about a metre of it is bearable.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:46636e1d",
+   "text": "There is no shade on this whole werf that lasts past about ten.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:92b4542d",
+   "text": "There is steam coming off that pool, which is not a good sign at six.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1c2dbead",
+   "text": "They are out at half past five because there is no other window today.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:b4659915",
+   "text": "Those beers on the edge are on their third owner tonight.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c90edf6f",
+   "text": "Those two on the stoep have made their choice and they are sticking with it.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:36ec98d6",
+   "text": "Thursday night, and the balcony has been promoted to the main room.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1dc03bf7",
+   "text": "Thursday, and by nine there will be nothing out here worth walking to.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4c952948",
+   "text": "Thursday, and that car is going to be worse at four than it is now.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:aceacf3b",
+   "text": "Thursday, and this is the first time all day either of them has been cool.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:8da9684d",
+   "text": "Too warm to sleep inside, so the whole family moved under the Milky Way.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2c6e52f9",
+   "text": "Tuesday, and somebody in this building is going to be sent home early.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a98bd625",
+   "text": "Tuesday, and the coolest thing in this entire garden is that dog.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9e600d94",
+   "text": "Two fans moving hot air around a room that has been shut since eight.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:852df129",
+   "text": "Two fans, four papers flying, and not one document has been read today.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a993a647",
+   "text": "Two in the morning, and that fan has been the loudest thing in the house.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:2c0db58a",
+   "text": "Wednesday, and the dog has made the only sensible decision so far.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:598556f9",
+   "text": "Wednesday, and this is the coolest it is going to be all day.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:fb3023ac",
+   "text": "Wednesday, and this is the first comfortable minute she has had since eleven.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:900efa1d",
+   "text": "Whoever left that there thought they would only be twenty minutes.",
+   "bin": "heat",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6dd97e2a",
+   "text": "You can finally sit outside without regretting it.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:0edad3d2",
+   "text": "You paid for those toys. They want the hose.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:a62ecadc",
+   "text": "Your child would like the bath moved outside too.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:77e21fe1",
+   "text": "Your children have expensive toys to ignore.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:77e555fe",
+   "text": "Your dog has found a room you suddenly quite like.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:e7a0ed35",
+   "text": "Your evening drink has developed a short deadline.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:8a651df3",
+   "text": "Your guest can have the chair furthest from the fan.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:5acccf1a",
+   "text": "Your partner has become an unnecessary extra layer.",
+   "bin": "heat",
+   "source": "heat-astra"
+  },
+  {
+   "id": "b2:7cf63123",
+   "text": "A jersey over pyjamas counts as getting dressed.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:efc9a165",
+   "text": "A nod will do; your hands are staying in your pockets.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:44b819d7",
+   "text": "A table outside? We'll take the bill.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:41219360",
+   "text": "Another round. With handles this time.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:0d4b5686",
+   "text": "Anyone still insisting on iced coffee?",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:2ca78ea6",
+   "text": "Back for the scarf. You were nearly brave.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:6ba69a34",
+   "text": "Bedtime finally has somebody on its side.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:8f83c61f",
+   "text": "Breakfast can wait. Feeling your hands can't.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:15fd94f4",
+   "text": "Choose your seat before the cat gets ideas.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:1960361e",
+   "text": "Cold again. The car heater means well.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:598ced1b",
+   "text": "Cold and wet. One complaint wasn't enough.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:07c06bac",
+   "text": "Cold enough to end the jacket argument.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:db180d2c",
+   "text": "Cold evening. Even the rain is hesitating.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:4bdcccda",
+   "text": "Cold indoors too. Keep your jacket on.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c8b9fc5b",
+   "text": "Cold like this makes a walk feel like work.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:d467903c",
+   "text": "Cold tonight. Hot chocolate counts as kit.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:41f51d26",
+   "text": "Complaining is allowed from under the blanket.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:2526fa3c",
+   "text": "Deadline tonight. Fingers still negotiating.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:aa21ccb3",
+   "text": "Dinner can wait. Feeling your feet comes first.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:e9a4c4f0",
+   "text": "Do we actually need milk, or just want it?",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:82b4e7af",
+   "text": "Dry socks first. We can talk while you find them.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:95e33a66",
+   "text": "Even the boerboel checked the weather and sat back down.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:ea346748",
+   "text": "Even the kettle is putting in overtime.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:6d13e408",
+   "text": "Even the short way home feels ambitious.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c50e0373",
+   "text": "Everyone suddenly wants a turn at the braai.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:7274b571",
+   "text": "Fire first. Then we can discuss breakfast.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c1ce1150",
+   "text": "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
+   "bin": "cold",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:e8286ffd",
+   "text": "Frost first. Your plans can wait ten minutes.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:2393081c",
+   "text": "Gardening can stay a plan. A very good plan.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:255408d1",
+   "text": "Getting dressed feels like taking a layer off.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:56323e20",
+   "text": "Have a sip. Your fingers can take a turn.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:9f3285c2",
+   "text": "Home has suddenly become your favourite venue.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:91f900ae",
+   "text": "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.",
+   "bin": "cold",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:651d00a1",
+   "text": "It's jersey weather. Under your jersey.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:bfcccc17",
+   "text": "Make mine something I have to blow on.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:d1c98018",
+   "text": "Matching socks have slipped down the list.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:9edba593",
+   "text": "Move closer. Nobody's asking you to forgive anyone.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:3334bf65",
+   "text": "My hot water bottle is staying over.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:a9cc5f57",
+   "text": "One blanket for two? Let's stay married.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:2ea70850",
+   "text": "One excuse gone. You still have several.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:8e66bed3",
+   "text": "One more chapter. Nobody said get out of bed.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:b22930f7",
+   "text": "One more log. That was the last one three logs ago.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:4144ad2e",
+   "text": "Our demands are modest. Dry socks and feeling toes.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:4fb8f104",
+   "text": "Rain's stopped. There goes one excuse.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:ab7e38a1",
+   "text": "Ready to leave. Your car would like a word.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:2f7325cd",
+   "text": "Romance is remembering the spare warm socks.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:70c673e9",
+   "text": "Salad has been postponed until further notice.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:ddeeade4",
+   "text": "School starts soon. Your fingers haven't.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:b77be225",
+   "text": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
+   "bin": "cold",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:ec03e0a2",
+   "text": "Supper had better be hot. This is not a request.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:66bccb8c",
+   "text": "Supper's ready. The camera can eat later.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:9de3f4ea",
+   "text": "Ten minutes early. Spent all ten on the windscreen.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:085705ac",
+   "text": "That jacket argument is over before breakfast.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:f57ce7e6",
+   "text": "The bins will still be there in the morning.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:bc725b38",
+   "text": "The blanket comes too. It's only the kitchen.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:7bcf29fb",
+   "text": "The car would also like another five minutes.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:eb8769f8",
+   "text": "The dishes can soak a little longer.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:08167805",
+   "text": "The duvet's coming too. It has earned the outing.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:fddf0a6d",
+   "text": "The first ten minutes of this Sunday belong to a credit card and the demister.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:7d842892",
+   "text": "The heater went on at four and the cat clocked in at one minute past.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:e3e7304d",
+   "text": "The house has one warm room after dark, and it is wherever the blanket is.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:61eab391",
+   "text": "The meat is done. Nobody's putting the fire out.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:54450274",
+   "text": "The scenic route can manage without you.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:6371adfb",
+   "text": "The second layer stays. Yes, even in the sun.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:7f4951ad",
+   "text": "The slippers are on. The rest is negotiable.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c1589165",
+   "text": "The spare blanket is now the main blanket.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:576a7b51",
+   "text": "The walk is still being discussed by both parties.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:de56bc42",
+   "text": "The weeds can enjoy another day of freedom.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:0fb021ae",
+   "text": "Tonight's plans fit under one duvet.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:d2bdf85e",
+   "text": "Two pairs on. Suddenly the shoes are the problem.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:e2a20211",
+   "text": "Up before the sun. Still not impressed.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:dd7fa26f",
+   "text": "We can disagree under the same blanket.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:1463e0ed",
+   "text": "Work didn't get the message about staying in.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:1b897c81",
+   "text": "You can keep complaining on the walk home.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:40768831",
+   "text": "You dressed for yesterday. Yesterday apologises.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:4f81e863",
+   "text": "You left early. The windscreen disagreed.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:6b381272",
+   "text": "You miss your bed. You're still in the house.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c7e4ed7b",
+   "text": "You need that jersey more than it needs washing.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c81cb9be",
+   "text": "You said outside. The dog heard something else.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:20b464ea",
+   "text": "You wore pyjamas out. An ambitious little outfit.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:9879bbaa",
+   "text": "You're getting up? Bring tea while you're brave.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:8d828c83",
+   "text": "You're making tea? Suddenly everyone needs some.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:3ec04809",
+   "text": "You've bought that coffee mostly for your hands.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:b8f3be9a",
+   "text": "You've had fresh air. Nobody said how much.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:91f083b1",
+   "text": "Your alarm has no idea what it's asking.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c5e79316",
+   "text": "Your car has asked to work from home.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c407c372",
+   "text": "Your fingers have declined the early start.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:c4a0109c",
+   "text": "Your summer clothes can stop volunteering.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:cbcaf8f3",
+   "text": "Your toes get the car heater before your face.",
+   "bin": "cold",
+   "source": "cold-astra"
+  },
+  {
+   "id": "b2:cdc5b736",
+   "text": "Admire it from the couch; that's what windows are for.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:6cb8ae09",
+   "text": "Another cup. The view isn't going anywhere.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:f626fbe1",
+   "text": "Another log. For the cook, apparently.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:522ffe0f",
+   "text": "Bed can wait. The blanket has come with.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:0b875289",
+   "text": "Bin day has added another layer to getting dressed.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:6360d872",
+   "text": "Boots packed. Still negotiating with the legs.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:0a46c488",
+   "text": "Bring the washing in. Then thaw your fingers.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:7b7e1975",
+   "text": "Early start. An idea you had while still in bed.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:f42acb43",
+   "text": "Every star is out tonight, and the frost is the entry fee.",
+   "bin": "cold-clear",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:b9fd8fab",
+   "text": "Everyone's ready. Nobody has warm hands.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:8e6a7a19",
+   "text": "Going out? The glass has given you enough of a look.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:06b65240",
+   "text": "Have another spoonful. We're finding the other sleeve.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:fb826190",
+   "text": "Home already? Sensible pace.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:4937c5d7",
+   "text": "How many warm-ups were you planning on doing?",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:01ac4654",
+   "text": "Keep moving. Chatting is an indoor activity.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:218009ff",
+   "text": "Kick-off soon. Feeling your toes would be useful.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:26675b76",
+   "text": "Last check of the gate. With all your clothes on.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:11963afa",
+   "text": "Last shot. You said that before you lost feeling.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:9ce261fa",
+   "text": "Movie night starts early. Getting warm takes time.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:5cf92d3a",
+   "text": "Movie night. Nobody's voting for a trip to the shops.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:483d7270",
+   "text": "Nobody's asking how long the meat takes tonight.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:66778e93",
+   "text": "Nobody's volunteering to fetch the extra chairs.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:b8ef6c2f",
+   "text": "One lap of the block. Then we discuss breakfast.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:a694e80f",
+   "text": "One look before bed. From this side of the glass.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:19bacdcd",
+   "text": "One more shot. Then you can feel your fingers.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:109db465",
+   "text": "Plenty of room outside, if anyone asks why you stayed.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:6ea97e88",
+   "text": "School bags packed. Hands still defrosting.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:1cc700cd",
+   "text": "Set the alarm earlier. The car won't.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:da7d6f95",
+   "text": "Shoes on this time. You've learnt.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:c9bdc23a",
+   "text": "Spectating has become the harder sport tonight.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:a6bc9488",
+   "text": "Stay another minute. Then we'll need another blanket.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:18eabdc8",
+   "text": "Sundowners, apparently. Make yours a mug.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:d3e4386b",
+   "text": "Table outside? Your scarf would like to object.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:cdbef8eb",
+   "text": "Taking the bin out counts as your evening walk.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:168c170d",
+   "text": "Taking the bin out should count towards your steps.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:a75c8b53",
+   "text": "The alarm went off before the car was ready to wake.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:91f824ff",
+   "text": "The best seat is the one you refuse to leave.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:4866f5bc",
+   "text": "The bike is ready. Your ears are lodging objections.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:201f016a",
+   "text": "The chores can wait. Your fingers called first.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:876e3f9b",
+   "text": "The dog can hear visitors from in here perfectly well.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:40390038",
+   "text": "The fire is the only thing out here allowed to take its jacket off.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:6ea60ed0",
+   "text": "The jacket argument is holding up breakfast.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:8d59c581",
+   "text": "The remote can wait until your hand is out again.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:f03eb949",
+   "text": "The school run starts with negotiating the car doors.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:a8918f69",
+   "text": "The Southern Cross is out, and so is the frost. Package deal.",
+   "bin": "cold-clear",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:25e0cf9e",
+   "text": "The truck is coming. Find both gloves.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:18d6f127",
+   "text": "Tomorrow's first appointment is with the windscreen.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:685ea117",
+   "text": "Up you get. The socks won't find themselves.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:c2a8178d",
+   "text": "You can finish that conversation somewhere with walls.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:448b1b0f",
+   "text": "You dressed by looking out the window again.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:233717de",
+   "text": "You forgot something outside and remembered your duvet.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:5d9d6567",
+   "text": "You promised yourself a run, not enthusiasm.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:72244480",
+   "text": "You signed up for running, not feeling your fingers.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:0eaaa0da",
+   "text": "You'll need those towels to bend before you fold them.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:e6e617c6",
+   "text": "You're up early enough to regret it twice.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:85cb81e7",
+   "text": "Your alarm never checks what it's sending you into.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:bb2aa94b",
+   "text": "Your duvet has finally been invited on a date.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:863fa96f",
+   "text": "Your evening walk has developed a very short route.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:c9688d2d",
+   "text": "Your face would also like a turn in the sun.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:519e8b89",
+   "text": "Your fingers would like a turn inside the pockets.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:2d6bf86a",
+   "text": "Your jacket knows better than your eyes.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:460fcd1f",
+   "text": "Your jacket was right to insist on coming.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:f9527fd0",
+   "text": "Your second cup is mostly a hand-warming arrangement.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:51f2a3d1",
+   "text": "Your slippers deserve better than this early start.",
+   "bin": "cold-clear",
+   "source": "cold-clear-astra"
+  },
+  {
+   "id": "b2:cc5a2c62",
+   "text": "All dressed up. Still waiting for the day to appear.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:52b6adce",
+   "text": "Bags ready. The bus is keeping its location vague.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:83ae8c1b",
+   "text": "Best let the dog pretend it knows where you are.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:22206300",
+   "text": "Coffee first. The view can introduce itself later.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:bc67f2bb",
+   "text": "Coffee first. Then we can discuss going anywhere.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:907ddd55",
+   "text": "Did the whole team arrive, or just the captain?",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:e74ef144",
+   "text": "Dinner is looking like the highlight of your holiday.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:e844d62d",
+   "text": "Dinner will understand why you're taking your time.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:7afea14c",
+   "text": "Don't feel obliged to join the day before coffee.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:1cade8c0",
+   "text": "Everything past the streetlight is a rumour until about nine.",
+   "bin": "fog",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:4f411913",
+   "text": "Finding your own gate now counts as the first errand.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:33f49206",
+   "text": "Five steps out. Already considering provisions.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:23732376",
+   "text": "Home at last. Your slippers have been expecting you.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:0c87ecbc",
+   "text": "Home is two hundred metres away and completely theoretical right now.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:00ca862b",
+   "text": "How much of this walk did you actually promise?",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:ae7b9364",
+   "text": "Keep the plans vague; the neighbours won't notice.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:48e54f8f",
+   "text": "Kick-off can wait. The tea won't keep itself warm.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:1f0916d1",
+   "text": "Kick-off soon. Finding the other end comes first.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:1ca81b93",
+   "text": "Leave early. Familiar roads need introductions too.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:6f6e5532",
+   "text": "Let the driver behind you discover patience.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:522796c9",
+   "text": "Lovely view. We'll take your word for it.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:5c622e4e",
+   "text": "Milk can wait. Tea without it builds character.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:336d42a3",
+   "text": "Nearly home, you said, with impressive confidence.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:d77ea316",
+   "text": "Nice walk. The bike is also getting some exercise.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:2cadb465",
+   "text": "No rush. You're entitled to recognise the turn.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:af9211c8",
+   "text": "No rush. Your turn-off isn't going anywhere.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:dd18906e",
+   "text": "Nobody can tell how long you've been in your gown.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:e600417f",
+   "text": "Nobody saw your last shot. This could help your score.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:366f796a",
+   "text": "On the green. That's your story, anyway.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:affe6e0e",
+   "text": "One look outside. That settles going out.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:e88d7aa5",
+   "text": "One thing at a time. Convenient, really.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:eef7f26e",
+   "text": "Same route. More imagination required.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:02e30a11",
+   "text": "Same street. Suddenly you want the house number.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:5499d835",
+   "text": "Stay close. The dog wasn't asking you.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:333f389f",
+   "text": "Still coming over? Describe your gate again.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:183f5c8a",
+   "text": "Still on the way. Supper can have another minute.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:7ee8b3e6",
+   "text": "Supper will need another minute in the oven.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:f4425f8b",
+   "text": "Take your time. The queue behind you can too.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:ad9ac0cb",
+   "text": "The bin run now requires more planning than breakfast.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:c96bc135",
+   "text": "The dog knows this route with its nose, which tonight is the better instrument.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:df3de41b",
+   "text": "The early start has yet to produce a clear advantage.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:8c1d46dd",
+   "text": "The evening walk now comes with frequent roll calls.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:a6b5c2e6",
+   "text": "The fog swallowed the whole street and gave up at the hi-vis.",
+   "bin": "fog",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:c534e078",
+   "text": "The GPS says the road is there, and today that is the whole case for it.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:57ca4d74",
+   "text": "The late-night milk run has become a bigger request.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:79844d70",
+   "text": "The long way home? Hard to tell tonight.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:d5a56543",
+   "text": "The neighbours can't judge your slippers from there.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:425bfb62",
+   "text": "The ride home has been renamed quality time.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:83511d86",
+   "text": "The road home takes longer than your hunger allows.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:d7546ad9",
+   "text": "The school run now involves finding the school.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:0b911c42",
+   "text": "The shortcut can wait. So can the person behind you.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:b08c361a",
+   "text": "The table has a view. Ask for the menu instead.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:2d5399a2",
+   "text": "Those headlights have been ‘almost here’ for five minutes. Fog time runs slower.",
+   "bin": "fog",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:b181b8af",
+   "text": "Those headlights have been 'almost here' for two full minutes of fog.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:673b4561",
+   "text": "Tonight's visitors may need collecting at the gate.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:d544ea7b",
+   "text": "Wave anyway. One of them may owe you money.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:b13ba41a",
+   "text": "You can explain being late without inventing traffic.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:6a29771b",
+   "text": "You can postpone the neighbourly wave until later.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:90728d34",
+   "text": "You know this road until someone asks which turning.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:009da9f1",
+   "text": "You packed boots. Bring some patience as well.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:851967eb",
+   "text": "You sent the address. Now send encouragement.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:55480397",
+   "text": "You're awake. The suburb hasn't introduced itself.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:270ee53b",
+   "text": "You're both on a walk. Only one seems briefed.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:e37238ea",
+   "text": "You've never been so pleased to recognise your gate.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:ef98a550",
+   "text": "Your best shot has conveniently gone unwitnessed.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:9c614740",
+   "text": "Your bicycle can enjoy being taken for a walk.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:91c74d66",
+   "text": "Your evening plans are within calling distance.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:fbd5039b",
+   "text": "Your first errand has become a test of commitment.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:00f39cd3",
+   "text": "Your holiday photos could have been taken at home.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:56c5c9c6",
+   "text": "Your lift has been nearly here for quite a while.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:440ef775",
+   "text": "Your lift is taking its time, which is reassuring.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:08bb6ec2",
+   "text": "Your morning walk starts by finding the morning.",
+   "bin": "fog",
+   "source": "fog-astra"
+  },
+  {
+   "id": "b2:b58e7ca3",
+   "text": "All this for bread you weren't sure you needed.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:da3df766",
+   "text": "An extra hour in bed would have cost the alarm nothing.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:ef59687a",
+   "text": "Another cup, then. The errands can wait.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:967a89df",
+   "text": "Bedtime soon. The dog has one more request.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:676c7111",
+   "text": "Bell first. Sock negotiations afterwards.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:f3cc7032",
+   "text": "Boots off first. This is apparently news again.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:e0e142a2",
+   "text": "Call later. The roof would like to finish speaking.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:21f32814",
+   "text": "Car washing can stay at the bottom of your list.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:8c75e2cf",
+   "text": "Did you pack a second pair of socks for yourself?",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:45568a16",
+   "text": "Door open. The dog would prefer a second opinion.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:ecec0aef",
+   "text": "Eight metres to the car. Apparently a journey.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:e2892f9b",
+   "text": "Every drain on this road is now working on somebody else's behalf.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5d4e02a8",
+   "text": "Every one of those parking bays was somebody's plan for tonight.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6a19362d",
+   "text": "Everyone on this road just became a very careful person.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:deababea",
+   "text": "Find a towel before anyone starts asking about work.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:b82c028f",
+   "text": "First errand. Already considering a postponement.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:fa7c05cb",
+   "text": "Five more minutes in the car seems reasonable.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:105411aa",
+   "text": "Hair done. That was money well spent.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:2a21c8fc",
+   "text": "Home at last. Now to negotiate with the dog.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:73a49c4a",
+   "text": "Home, then. You can look for your dignity tomorrow.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:288e4699",
+   "text": "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9eae922c",
+   "text": "Keys first. Being polite can happen inside.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:aba857b0",
+   "text": "Kit off. Nobody is putting that in with the towels.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:a6d5d17c",
+   "text": "Lights out. Something still has plenty to say.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:47c0b05f",
+   "text": "Lunch packed. Now to waterproof the child.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:b532a90e",
+   "text": "Meeting done. Lift negotiations have just begun.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:19f6b593",
+   "text": "Missed bedtime. The children have not.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:e2b936b1",
+   "text": "Monday night, one lit window, and the rain doing all the talking.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:944b6a11",
+   "text": "Nearly inside. An excellent place to reconsider.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:03c39d30",
+   "text": "Nobody is going to have to top that up for a month.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:672924c3",
+   "text": "Nobody misses the driver you were yesterday.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:70d28845",
+   "text": "One last stop. Make it the shop with a roof.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:8fff8332",
+   "text": "Out for fresh air. Back for an entire outfit.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:5db667a3",
+   "text": "Outing over. Everyone has a different version.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:b2a6c18b",
+   "text": "Perhaps skip the scenic route home tonight.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:16a0c238",
+   "text": "Plans made. Several of them now need a lift.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:0db42462",
+   "text": "Quick dash. You have never timed one correctly.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:4f9fcfb2",
+   "text": "Radio down. Apparently your eyes need the help.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:70420081",
+   "text": "Remember the washing, now that you're eating supper?",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:a8a6b1ad",
+   "text": "Saturday night at the sea, and the sea has taken the whole promenade.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:c147fc0d",
+   "text": "Shoes off. The whole household agrees on this.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:f5e10970",
+   "text": "Shoes on. You have run out of excuses already.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:06cfa6fa",
+   "text": "Shop later. The last biscuit will have to stretch.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:43dad022",
+   "text": "Somebody drove all the way down here to look at this and left.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:72f81d0a",
+   "text": "Somebody inside has already decided they are not going anywhere tonight.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d38feb12",
+   "text": "Spare clothes packed. You forgot your own.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:59632509",
+   "text": "Supper can wait. Apparently it has to.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:ea54258a",
+   "text": "Supper is ready. Getting everyone home is next.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:87ca7915",
+   "text": "Swim postponed. Your excuses finally have evidence.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:e4804bc1",
+   "text": "Tea tastes better when your socks aren't involved.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:408fa397",
+   "text": "Tea, then. Make it long enough to feel your toes.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:7e480f64",
+   "text": "That umbrella has been closed since the moment it arrived.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:ea13e951",
+   "text": "That wall has a damp line on it older than tonight's storm.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5baa4efd",
+   "text": "The boss can hold the umbrella for once.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:4385d138",
+   "text": "The burglar bars are the only straight lines left in the whole street.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:67b18ab7",
+   "text": "The cat would like to speak to whoever booked this.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:2c93b28a",
+   "text": "The electric fence is fine. The pavement has completely given up.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:929e3416",
+   "text": "The first meeting may have to start without you.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:8612208a",
+   "text": "The frangipani is dropping flowers all over the paving and taking no responsibility.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:134e72b9",
+   "text": "The gap between the stoep and the gate has never looked wider.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:9e5819b9",
+   "text": "The gutter is carrying this street's problems straight down to the next one.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:bc83c808",
+   "text": "The last two metres to the gate are the wettest of the whole trip.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:6a0b1601",
+   "text": "The match is over. Your washing has extra time.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:e81802af",
+   "text": "The only one swimming tonight is the rain itself.",
+   "bin": "rain",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:c23aa057",
+   "text": "The painted lines are the only thing out there still holding a shape.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:5b444906",
+   "text": "The paving has stopped absorbing anything and is just passing it along.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:720c4430",
+   "text": "The person who mops would like a word with you.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:71396d86",
+   "text": "The pool is getting topped up for free tonight. Somewhere a water bill relaxes.",
+   "bin": "rain",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:23b45db9",
+   "text": "The pool is measurably fuller than it was at supper time.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:d976e629",
+   "text": "The pool light is on for nobody. The rain appreciates the ambience.",
+   "bin": "rain",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:753197bb",
+   "text": "The pool light is the only thing in this garden still doing its job.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:eba3a7c1",
+   "text": "The school run slows down. The bell doesn't.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:27f60e41",
+   "text": "The school still wants them there, unfortunately.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:84902a1e",
+   "text": "The view will keep while you find a towel.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:64082a19",
+   "text": "The washing can go out before you change your mind.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:d9e6b030",
+   "text": "This is closer than you meant by team building.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:7d0a3c6a",
+   "text": "Time to get up. The roof has been up for hours.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:ddd891b4",
+   "text": "Tuesday night, and the pool is having a far better time than anyone.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cc0e810c",
+   "text": "Uniform on. Spare uniform suddenly makes sense.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:7703e931",
+   "text": "Visitors expected. They can knock twice.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:90b2ff09",
+   "text": "Watering can wait; you've done enough standing about.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:385f0870",
+   "text": "Wednesday, and the drive home is going to be a story by tomorrow.",
+   "bin": "rain",
+   "source": "wired"
+  },
+  {
+   "id": "b2:bd97a96c",
+   "text": "Whose turn is it to let the dog out, exactly?",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:fe5a82e2",
+   "text": "You can call this sitting in the car some me time.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:3a07b317",
+   "text": "You can skip the long goodbye at the gate tonight.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:2b6a1484",
+   "text": "You can start by moving car washing off the list.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:b211f993",
+   "text": "You can stop promising yourself an evening swim.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:074a3b04",
+   "text": "You can take your time getting home tonight.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:2ae5c25e",
+   "text": "You can tell who will be doing the washing later.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:b241fab0",
+   "text": "You could have cooked supper by now. Twice.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:74325cdd",
+   "text": "You left early. So did absolutely everyone else.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:685dba59",
+   "text": "You might be working from home by popular demand.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:8eb57e48",
+   "text": "You said nearly home. That was a while ago.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:009d79ad",
+   "text": "You said wash the car, which leaves room for debate.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:3c8ab20e",
+   "text": "You wanted a shorter meeting. Now you're trapped.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:a52c89db",
+   "text": "You've apologised for being late. Start again.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:4b2fda2e",
+   "text": "Your alarm still expects you to get up.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:0ccbe68d",
+   "text": "Your evening walk can end at the front door.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:262ca162",
+   "text": "Your expensive umbrella has chosen a short career.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:f42697ee",
+   "text": "Your family may have to eat without your commentary.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:6baf4a9b",
+   "text": "Your hair appointment now feels rather optimistic.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:4c9b7f97",
+   "text": "Your roof has a longer story than you do tonight.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:fc80bd91",
+   "text": "Your school shoes will need their own bath.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:6031f76a",
+   "text": "Your spare umbrella is probably visiting someone.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:df72a05d",
+   "text": "Your supper plans have moved a little closer home.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:99c4aaa2",
+   "text": "Your team owes your washing machine an apology.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:4ac733a5",
+   "text": "Your umbrella warranty has some explaining to do.",
+   "bin": "rain",
+   "source": "rain-astra"
+  },
+  {
+   "id": "b2:9b1a69a5",
+   "text": "A Free State storm gives you exactly as much warning as it feels like.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:72b79408",
+   "text": "At last, a break from being asked to stop the car.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:f1701320",
+   "text": "Bedtime again. Nobody seems to have heard you.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:8aea96ce",
+   "text": "Bedtime soon. The house has some final remarks.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:34039759",
+   "text": "Best greet the neighbour before asking for things back.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:a031244c",
+   "text": "Breakfast first. Checking the roof can wait.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:4f66286f",
+   "text": "Breakfast first. The rest is now negotiable.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:168d3ac4",
+   "text": "Car covered. You could do with the same treatment.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:77455b5e",
+   "text": "Chores postponed. Several new ones are on the way.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:6b314c72",
+   "text": "Clubs packed. Your pride gets to come home intact.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:b28854b4",
+   "text": "Could we discuss the plan with fewer outdoor bits?",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:c929b428",
+   "text": "Dinner for two. Torch for one.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:c5ab2896",
+   "text": "Every dog in the suburb filed a report at the same instant.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:377dce0b",
+   "text": "Every gate in this street is shut and every dog has an opinion.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:3cc74f2e",
+   "text": "Everyone awake. Nobody admits they got a fright.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:76aca23e",
+   "text": "Everyone inside. The argument fits in here too.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:bb0985fe",
+   "text": "Everyone on this street is now standing at a window they never use.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:6116956d",
+   "text": "Everything green out there is having the best night of its life.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4b952cea",
+   "text": "Finally, a respectable excuse for your scorecard.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:8cf7cea1",
+   "text": "Friday night, and the stoep has quietly become the whole evening.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:16972adf",
+   "text": "Going out tonight. As far as the gate, perhaps.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:217f3194",
+   "text": "Goodnight, then. Apparently that was optimistic.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:56616fec",
+   "text": "Guests at six. Best revise what you promised them.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:6945b879",
+   "text": "Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time.",
+   "bin": "storm",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:1f4ee843",
+   "text": "Home early. You may wish you hadn't been.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:b27aa1c0",
+   "text": "Home soon. You have stopped putting a time on it.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:42412f16",
+   "text": "Jacaranda season and a Monday, and the paving is taking both badly.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4de1b056",
+   "text": "Jobs listed. Best put a pencil next to them.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:81b5f620",
+   "text": "Just one last job before home, you said.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:c73ac08f",
+   "text": "Keys ready. No particular hurry to use them.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:fb878a8f",
+   "text": "Kickoff is under review by the only official that outranks the referee.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:210d3fd6",
+   "text": "Lap available. Terms now set by the dog.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:867f9b72",
+   "text": "Match delayed. Everyone is suddenly a forecaster.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:31fa8c29",
+   "text": "Morning jobs. Start by finding the washing line.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:84b66e0c",
+   "text": "Mum would like her concerns put in writing.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:f6af8859",
+   "text": "Muting the family chat until breakfast seems fair.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:78902c38",
+   "text": "Nobody believed you fancied an evening walk anyway.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:5c9d96ec",
+   "text": "Nobody's leaving; find the good biscuits.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:db4a181e",
+   "text": "Perhaps start the day with a less confident plan.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:bc3c1d61",
+   "text": "Phone away. You can watch the next one yourself.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:373b5301",
+   "text": "Phone charged. Nobody has asked for your video yet.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:7f2af97f",
+   "text": "Plans cancelled. You seem surprisingly relieved.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:8ed55fe2",
+   "text": "Practice cancelled. Try looking less pleased.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:d84f0a2c",
+   "text": "Quiet evening. You should have said it softly.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:c9c47cde",
+   "text": "Romance later. First find something absorbent.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:fc77a134",
+   "text": "Shoes on. A remarkable waste of effort.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:86f65f9a",
+   "text": "Shopping done. Apparently you're staying for tea.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:d26116be",
+   "text": "Sleep first. Tomorrow has acquired a few expenses.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:684e292e",
+   "text": "So much for that expensive alarm clock.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:e34b7aec",
+   "text": "Somebody's weather report just got a lot longer.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:ef9e99fa",
+   "text": "Somewhere behind those walls a whole street is pretending to sleep.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:26187dbc",
+   "text": "Sorry, what? An excellent evening not to have heard.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:1c926754",
+   "text": "Supper inside. Somebody still has to clear a table.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:51c18c87",
+   "text": "That car made it under the carport with about four minutes to spare.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cef675d9",
+   "text": "That grey column is someone’s afternoon getting cancelled. Ours is next in line.",
+   "bin": "storm",
+   "source": "humour-test"
+  },
+  {
+   "id": "b2:b632b26b",
+   "text": "That one bulb is holding this entire building together.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:e39b8070",
+   "text": "That security light is doing the best work it has done all year.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:190e1884",
+   "text": "The dog has told the whole street about this.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:8de0c525",
+   "text": "The dust and the rain are about to have a very short argument.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:4daea89e",
+   "text": "The eighteenth can wait; the sky is playing through.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:6da8a8b8",
+   "text": "The gutter is telling you exactly how long you left it.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:a147b1e1",
+   "text": "The hose reel is going to feel very unnecessary for a while.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:9fb2d857",
+   "text": "The polish on that floor was not designed with this much water in mind.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:1fedb8d4",
+   "text": "The road is still dry, which is the last thing it will be tonight.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:67672cc3",
+   "text": "The streetlight is doing overtime that nobody is going to pay for.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:894eaadc",
+   "text": "The strike lasted half a second; the video will last the whole group chat.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:6beacb40",
+   "text": "The tree has seen worse Tuesdays and it will see worse again.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:0d58e447",
+   "text": "Thirst has been replaced as the bedtime excuse.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:881e0c1a",
+   "text": "Tomorrow morning this road will be covered in somebody else's tree.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:f1184198",
+   "text": "Try the coach now; your excuse has improved.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:1f8ba1ca",
+   "text": "Up early. Not quite by choice.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:91261d16",
+   "text": "Visitors postponed. The furniture may still go.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:a7acc599",
+   "text": "Walk postponed. The apology can happen by phone.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:54fe23bc",
+   "text": "Whoever parked in the street tonight is regretting it right now.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:91b47444",
+   "text": "You can be brave once the dog believes you.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:6a298588",
+   "text": "You can explain your plans to someone who listens.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:ff2338fe",
+   "text": "You can get up now and inspect yesterday's optimism.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:46882025",
+   "text": "You can hear the roof better than you can hear the television.",
+   "bin": "storm",
+   "source": "wired"
+  },
+  {
+   "id": "b2:cf1b39aa",
+   "text": "You can skip the run with a clear conscience.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:fe36ff94",
+   "text": "You can wait. Your shopping has nowhere else to be.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:96dd9834",
+   "text": "You filmed for ten minutes. You missed it.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:c8d4e19d",
+   "text": "You heard it. The dog is making absolutely sure.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:a9f64602",
+   "text": "You only popped out for milk and now have friends.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:fb1fa97d",
+   "text": "You slept well. The dog has a different account.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:4a2c56d8",
+   "text": "Your batting average survives another day.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:f9741e6e",
+   "text": "Your candles may finally justify that drawer.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:6dfc1838",
+   "text": "Your cheapest umbrella has explained its price.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:3762b5ed",
+   "text": "Your dog has cancelled sleeping in its own bed.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:c4d5e88c",
+   "text": "Your dog would like breakfast delivered for once.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:fa025197",
+   "text": "Your evening braai has acquired an indoor committee.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:8194dc25",
+   "text": "Your exercise excuse has finally arrived on time.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:3772907f",
+   "text": "Your family has already seen three videos like yours.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:f118b671",
+   "text": "Your favourite parking spot has lost its appeal.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:349d189a",
+   "text": "Your first coffee deserves your undivided attention.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:a5d1df4d",
+   "text": "Your home repair list has requested an urgent update.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:f761691e",
+   "text": "Your landlord is about to hear from you again.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:5b3e6943",
+   "text": "Your lap is now reserved for the entire dog.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:6f6e5450",
+   "text": "Your neighbours now know what your pyjamas look like.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:fcd1b0af",
+   "text": "Your plastic chairs may visit before you do.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:e0e0eddb",
+   "text": "Your quiet evening now includes a call to the roofer.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:2b19ff3a",
+   "text": "Your roof repair savings have been noticed.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:0bbf0501",
+   "text": "Your scorecard can stop getting worse now.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:e2f776c8",
+   "text": "Your team has found someone else to blame for once.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:e38f6282",
+   "text": "Your video won't settle the argument about the size.",
+   "bin": "storm",
+   "source": "storm-astra"
+  },
+  {
+   "id": "b2:2eae193b",
+   "text": "Your weekend now includes everybody else's branches.",
+   "bin": "storm",
+   "source": "storm-astra"
+  }
+ ],
+ "placedCount": 0,
+ "cutCount": 0,
+ "routingConflictCount": 0,
+ "crossConditionCount": 0,
+ "gapReport": {
+  "countsBothRounds": true,
+  "images": 294,
+  "perBucket": {
+   "clear": {
+    "images": 35,
+    "at0": 2,
+    "at1": 7,
+    "at2": 13,
+    "at3": 13,
+    "round1Lines": 72,
+    "round2Lines": 0,
+    "linesToWrite": 33
+   },
+   "cloudy": {
+    "images": 35,
+    "at0": 5,
+    "at1": 11,
+    "at2": 10,
+    "at3": 9,
+    "round1Lines": 58,
+    "round2Lines": 0,
+    "linesToWrite": 47
+   },
+   "wind": {
+    "images": 35,
+    "at0": 20,
+    "at1": 11,
+    "at2": 3,
+    "at3": 1,
+    "round1Lines": 20,
+    "round2Lines": 0,
+    "linesToWrite": 85
+   },
+   "heat": {
+    "images": 28,
+    "at0": 12,
+    "at1": 7,
+    "at2": 7,
+    "at3": 2,
+    "round1Lines": 27,
+    "round2Lines": 0,
+    "linesToWrite": 57
+   },
+   "cold": {
+    "images": 35,
+    "at0": 14,
+    "at1": 12,
+    "at2": 6,
+    "at3": 3,
+    "round1Lines": 33,
+    "round2Lines": 0,
+    "linesToWrite": 72
+   },
+   "cold-clear": {
+    "images": 28,
+    "at0": 5,
+    "at1": 7,
+    "at2": 11,
+    "at3": 5,
+    "round1Lines": 44,
+    "round2Lines": 0,
+    "linesToWrite": 40
+   },
+   "fog": {
+    "images": 28,
+    "at0": 8,
+    "at1": 14,
+    "at2": 3,
+    "at3": 3,
+    "round1Lines": 29,
+    "round2Lines": 0,
+    "linesToWrite": 55
+   },
+   "rain": {
+    "images": 35,
+    "at0": 13,
+    "at1": 12,
+    "at2": 9,
+    "at3": 1,
+    "round1Lines": 33,
+    "round2Lines": 0,
+    "linesToWrite": 72
+   },
+   "storm": {
+    "images": 35,
+    "at0": 8,
+    "at1": 21,
+    "at2": 6,
+    "at3": 0,
+    "round1Lines": 33,
+    "round2Lines": 0,
+    "linesToWrite": 72
+   }
+  },
+  "totals": {
+   "images": 294,
+   "at0": 87,
+   "at1": 102,
+   "at2": 68,
+   "at3": 37,
+   "round1Lines": 349,
+   "round2Lines": 0,
+   "linesToWrite": 533
+  },
+  "linesToWrite": 533,
+  "imagesAtZero": 87
+ },
+ "imagesAtZero": 87,
+ "emptySlots": 533
+}
