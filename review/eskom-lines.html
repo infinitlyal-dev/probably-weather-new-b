@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eskom lines</title>
+<style>
+:root { --bg:#f7f6f2; --fg:#1d1d1b; --muted:#6b6a64; --line:#dddbd2; --card:#fff; --accent:#1f5f8b; --cut:#a5452b; --keep:#2e7d4f; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161614; --fg:#ecebe6; --muted:#a3a29b; --line:#34332f; --card:#1f1f1c; --accent:#7fb6dd; --cut:#e08a6e; --keep:#7ccf9c; } }
+* { box-sizing:border-box; }
+body { margin:0; padding:18px 16px 40px; background:var(--bg); color:var(--fg); font:15px/1.4 system-ui, sans-serif; }
+main { max-width:1180px; margin:0 auto; }
+h1 { font-size:1.35rem; margin:0 0 4px; }
+.lede { color:var(--muted); margin:0 0 12px; max-width:90ch; font-size:.92rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:10px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; }
+.card.KEEP { border-color:var(--keep); } .card.CUT { border-color:var(--cut); }
+.thumbs { display:flex; gap:6px; }
+.thumbs img { width:84px; height:149px; object-fit:cover; border-radius:6px; }
+.nophoto { font-size:.8rem; color:var(--muted); border:1px dashed var(--line); border-radius:6px; padding:8px; }
+.en { font-weight:600; } .af { color:var(--muted); font-style:italic; font-size:.9rem; }
+.meta { font-size:.78rem; color:var(--muted); }
+.toggle { display:flex; gap:6px; margin-top:auto; }
+.toggle button { flex:1; font:inherit; padding:7px; border-radius:7px; border:1px solid var(--line); background:transparent; color:var(--fg); cursor:pointer; }
+.toggle button.on.KEEP { background:var(--keep); color:#fff; border-color:var(--keep); }
+.toggle button.on.CUT { background:var(--cut); color:#fff; border-color:var(--cut); }
+.bar { display:flex; gap:10px; align-items:center; margin:12px 0 0; flex-wrap:wrap; }
+.bar button { font:inherit; padding:8px 14px; border-radius:7px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+textarea { width:100%; min-height:60px; margin-top:8px; font:12px ui-monospace, monospace; }
+</style>
+</head>
+<body>
+<main>
+<h1>Eskom and load-shedding lines: 7 live</h1>
+<p class="lede">CLAUDE.md bans Eskom jokes on the home screen ("too dated/negative"), but these are live. You named three; the files have 7.
+4 are hand-matched to photos, including the two on the sea-lightning frame; each of those is also a condition-bank line.
+3 are bank-only: they show on share cards, on every isiZulu/isiXhosa/Sesotho screen, and as the English/Afrikaans fallback.
+<b>CUT</b> removes a line everywhere: from its photos (the photo keeps its other lines, count shown) and from the bank in all five languages.
+<b>KEEP</b> records the line as a dated exception in CLAUDE.md. <b>Export</b> saves <code>eskom-ruled.json</code> to Downloads.</p>
+<div class="grid" id="grid"></div>
+<div class="bar"><span id="count"></span><button id="export">Export eskom-ruled.json</button></div>
+<textarea id="out" readonly placeholder="Exported JSON also appears here."></textarea>
+</main>
+<script>
+const ROWS = [{"key":"witty:storm#5","en":"Nature's doing its own load shedding.","af":"Natuur doen sy eie beurtkrag.","zu":"Imvelo yenza ukucisha kwayo.","xh":"Indalo yenza ukucima kwayo.","st":"Tlhaho e etsa load shedding ea eona.","photos":[{"slot":"storm/week_1/dusk/7.webp","others":3}]},{"key":"witty:storm#12","en":"Eskom wishes it had this power.","af":"Eskom wens hy het hierdie krag.","zu":"U-Eskom ufisa ukuba namandla anje.","xh":"U-Eskom unqwenela la mandla.","st":"Eskom e ka rata matla ana.","photos":[{"slot":"storm/week_1/dusk/7.webp","others":3}]},{"key":"witty:storm#13","en":"Lightning's putting Eskom's grid to shame.","af":"Weerlig laat Eskom se kragnetwerk pateties lyk.","zu":"Umbani ubeka i-Eskom ehlazweni.","xh":"Umbane ubeka i-Eskom ehlazweni.","st":"Lehadima le hlabisa Eskom dihlong.","photos":[{"slot":"storm/week_1/dusk/2.webp","others":3}]},{"key":"witty:cloudy#10","en":"Eskom-friendly weather. No solar today.","af":"Eskom-vriendelike weer. Geen solar vandag nie.","zu":"Isimo sezulu esilungele i-Eskom. Akukho solar.","xh":"Imozulu ye-Eskom. Ayikho i-solar namhlanje.","st":"Lehodimo le ratwang ke Eskom. Ha ho solar kajeno.","photos":[{"slot":"cloudy/week_2/day/2.webp","others":5}]},{"key":"witty:clear#9","en":"The kind of day that makes you forget load shedding.","af":"Die soort dag wat jou laat vergeet van beurtkrag.","zu":"Uhlobo losuku olwenza ukhohlwe i-load shedding.","xh":"Luhlobo lwemini olukwenza ulibale nge-load shedding.","st":"Mofuta oa letsatsi o etsang hore o lebale load shedding.","photos":[]},{"key":"witty:clear#29","en":"Days like this is why we put up with the load shedding.","af":"Dae soos hierdie is hoekom ons die beurtkrag verduur.","zu":"Izinsuku ezinje yizona ezenza sikhuthazelele i-load shedding.","xh":"Iimini ezinje zezinto ezisenza sinyamezele i-load shedding.","st":"Matsatsi a tjena ke lebaka leo re mametseng load shedding.","photos":[]},{"key":"witty:night#0","en":"Stars out, load shedding can't touch this.","af":"Sterre uit, beurtkrag kan dit nie raak nie.","zu":"Izinkanyezi zikhona, ukucisha akukwazi lokhu.","xh":"Iinkwenkwezi ziphumile, ukuCimwa akukwazi oku.","st":"Dinaledi di teng, load shedding e ke ke ea ama sena.","photos":[]}];
+const LS = 'pw_eskom_ruling_v1';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { state = {}; }
+const esc = (s) => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function render() {
+  const g = document.getElementById('grid'); g.innerHTML = '';
+  for (const r of ROWS) {
+    const v = state[r.key] || '';
+    const c = document.createElement('section'); c.className = 'card ' + v;
+    c.innerHTML = (r.photos.length
+        ? '<div class="thumbs">' + r.photos.map(p => '<img src="../assets/images/bg/' + p.slot + '" alt="">').join('') + '</div>'
+          + '<div class="meta">' + r.photos.map(p => p.slot.replace(/\.webp$/, '') + ': ' + p.others + ' other lines stay').join(' · ') + '</div>'
+        : '<div class="nophoto">Bank only: share cards, zu/xh/st screens, EN/AF fallback</div>')
+      + '<div class="en">' + esc(r.en) + '</div><div class="af">' + esc(r.af) + '</div>'
+      + '<div class="meta">' + esc(r.key) + '</div>'
+      + '<div class="toggle"><button class="KEEP' + (v === 'KEEP' ? ' on' : '') + '">KEEP</button><button class="CUT' + (v === 'CUT' ? ' on' : '') + '">CUT</button></div>';
+    c.querySelectorAll('.toggle button').forEach(b => b.addEventListener('click', () => { state[r.key] = b.textContent; try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} render(); }));
+    g.appendChild(c);
+  }
+  document.getElementById('count').textContent = ROWS.filter(r => state[r.key]).length + ' of ' + ROWS.length + ' ruled';
+}
+document.getElementById('export').addEventListener('click', () => {
+  const json = JSON.stringify({ generated: new Date().toISOString(), ruledBy: 'Al, Eskom ruling page (review/eskom-lines.html)', rulings: ROWS.map(r => ({ key: r.key, en: r.en, verdict: state[r.key] || null, photos: r.photos.map(p => p.slot) })) }, null, 1);
+  document.getElementById('out').value = json;
+  try { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' })); a.download = 'eskom-ruled.json'; a.click(); } catch (e) {}
+});
+render();
+</script>
+</body>
+</html>
