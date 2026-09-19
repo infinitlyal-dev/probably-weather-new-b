@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { heroCropKey } from '../assets/hero-crop.js';
 import * as heroLines from '../assets/hero-lines.js';
 import * as heroLinesAf from '../assets/hero-lines-af.js';
+import { contextTagAllows } from '../assets/witty-day-tags.js';
 
 // Performance pass (2026-09-15): the bespoke line tables — assets/hero-lines.js
 // (~455 KB of a ~640 KB app.js) and its Afrikaans, assets/hero-lines-af.js — are
@@ -34,8 +35,10 @@ function harness({ lang = 'en', importEn, importAf = async () => heroLinesAf }) 
     .replace("import('./hero-lines.js')", '__importEn()')
     .replace("import('./hero-lines-af.js')", '__importAf()');
   const make = new Function('headlineEl', 'settings', 'safeText', 'debugLog', 'heroCropKey', '__importEn', '__importAf',
+    'contextTagAllows', 'bespokeTagContext',
     `${body}\nreturn { applyBespokeLine, loadBespokeTable };`);
-  return { ...make(headlineEl, settings, safeText, () => {}, heroCropKey, importEn, importAf), headlineEl, settings };
+  // No place and no month: the season/place gate fails open, as it does before a forecast.
+  return { ...make(headlineEl, settings, safeText, () => {}, heroCropKey, importEn, importAf, contextTagAllows, () => ({})), headlineEl, settings };
 }
 
 // Two photographs with different lines, addressed the way the picker hands them over.

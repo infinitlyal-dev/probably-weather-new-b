@@ -5,6 +5,7 @@ import { heroCropKey } from '../assets/hero-crop.js';
 import * as heroLines from '../assets/hero-lines.js';
 import * as heroLinesAf from '../assets/hero-lines-af.js';
 import { contentProblems } from '../scripts/lang-check/lib/af-content.mjs';
+import { contextTagAllows } from '../assets/witty-day-tags.js';
 
 // Afrikaans bespoke lines (2026-09-15, close-out item H). applyBespokeLine opened
 // for Afrikaans through a per-language table: assets/hero-lines-af.js, written
@@ -31,8 +32,11 @@ function harness({ lang, importEn = vi.fn(async () => heroLines), importAf = vi.
     .replace("import('./hero-lines.js')", '__importEn()')
     .replace("import('./hero-lines-af.js')", '__importAf()');
   const make = new Function('headlineEl', 'settings', 'safeText', 'debugLog', 'heroCropKey', '__importEn', '__importAf',
+    'contextTagAllows', 'bespokeTagContext',
     `${body}\nreturn { applyBespokeLine, loadBespokeTable };`);
-  const api = make(headlineEl, settings, (el, text) => { el.textContent = text; }, () => {}, heroCropKey, importEn, importAf);
+  // No place and no month: the season/place gate fails open, as it does before a forecast.
+  const api = make(headlineEl, settings, (el, text) => { el.textContent = text; }, () => {}, heroCropKey, importEn, importAf,
+    contextTagAllows, () => ({}));
   return { ...api, headlineEl, settings, importEn, importAf };
 }
 

@@ -5,7 +5,7 @@ import { LANGUAGE_OPTIONS, SUPPORTED_LANGS, resolveInitialLanguage } from './lan
 // references to its nested objects); the weekend filter moved to its own
 // micro-module so importing it doesn't drag the bank along.
 import { COPY_BANK, loadCopyBank, isCopyBankLoaded } from './copy-loader.js';
-import { WITTY_DAY_TAGS, eligibleWittyPool, resolveNightAwareCopyCondition } from './witty-day-tags.js';
+import { WITTY_DAY_TAGS, contextTagAllows, eligibleWittyPool, resolveNightAwareCopyCondition } from './witty-day-tags.js';
 import { isWesternCape } from './geo-regions.js';
 import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from './weather-visuals.js';
 import { getRotationDay, getRotationWeek, buildPickerPaths } from './image-picker.js';
@@ -1894,6 +1894,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return new Date().getMonth() + 1;
   }
+  // The month and place the bespoke line gate reads — the same month and
+  // coordinates getWittyLine hands the condition bank. No day or hour: a
+  // photograph's slot already fixes its weekday and time of day.
+  function bespokeTagContext() {
+    return { lat: activePlace?.lat, lon: activePlace?.lon, month: getLocationMonth() };
+  }
   function getWittyLine(condition) {
     const day = getLocationDayOfWeek(), hour = getLocationHour(activePlace?.lon);
     const context = { day, hour, lat: activePlace?.lat, lon: activePlace?.lon, month: getLocationMonth() };
@@ -2126,13 +2132,29 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       return false;
     }
-    const english = bespokeTables.en.heroLinesForKey(heroCropKey(src));
-    if (!english) return false;
+    const written = bespokeTables.en.heroLinesForKey(heroCropKey(src));
+    if (!written) return false;
+    // THE SEASON AND PLACE GATE (2026-09-19). A line written for a photograph
+    // still names a month, a season or a place, and the photograph comes round
+    // every fortnight all year: "the start of November" was on screen in
+    // September. Each English line's { months, region } tag (HERO_LINE_TAGS,
+    // generated with the table) goes through contextTagAllows — the function the
+    // condition bank uses — so both paths obey one rule. Afrikaans inherits the
+    // tag of the English line it translates. If nothing on this photograph is in
+    // season here, return false and the condition line renderHome set stands.
+    const tags = bespokeTables.en.HERO_LINE_TAGS || {};
+    const context = bespokeTagContext();
+    const english = written.filter((l) => contextTagAllows(tags[l], context));
+    if (english.length < written.length) {
+      debugLog(`[Witty bespoke] season/place gate: ${english.length} of ${written.length} lines in season (month ${context.month})`);
+    }
+    if (!english.length) return false;
     const lines = lang === 'en' ? english : english.map((l) => BESPOKE_TABLES[lang].line(bespokeTables[lang], l)).filter(Boolean);
     if (!lines.length) return false;
     const memoKey = `${lang}:${src}`;
     let line = __lineMemo.get(memoKey);
-    if (!line) {
+    // The memo outlives a change of place or month; a line out of season there is re-picked.
+    if (!line || !lines.includes(line)) {
       // Stable while the picture is. The picker memoizes the IMAGE by
       // (folder, time-of-day, week), so re-rolling the line on every re-paint
       // would keep changing the pairing under a photograph that has not moved —
