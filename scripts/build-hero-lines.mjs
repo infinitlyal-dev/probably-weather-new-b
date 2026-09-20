@@ -23,7 +23,7 @@
 //
 //   node scripts/build-hero-lines.mjs [--check]
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
@@ -71,6 +71,95 @@ for (const entry of approved.set || []) {
     rows.push([`bg/${p}`, lines]);
     rows.push([`bg-canonical/${createHash('sha256').update(bytes).digest('hex')}.webp`, lines]);
   }
+}
+
+// ---- RULING DRIFT GUARD ------------------------------------------------------
+// The guard above catches a SLOT whose bytes moved under its lines. It cannot
+// catch a RULING whose photograph moved under it, and that is the one that cost
+// a wrong verdict on 2026-09-20: Al's drag export named
+// `rain/week_2/day/5.webp` + `3bd49d0acf2b`, the reroll put a different
+// photograph in that slot, and nothing said so — the provenance split read the
+// stale pairing as "no record" and three of Al's own lines went onto a cull page
+// labelled unruled.
+//
+// THE TEST IS THE HASH, NOT THE SLOT. `99f7b2a` re-laid the whole grid on
+// 2026-09-06, so almost every export names a slot the photograph has since left
+// — and that is harmless, because the lines are attached by hash and the hash is
+// still a photograph in the set. What is NOT harmless is a ruling whose
+// PHOTOGRAPH is gone: a reroll replaced it, the lines were carried onto the
+// replacement, and the ruling now describes a picture nobody can see. So:
+//
+//   fail when a ruling's photograph hash is absent from the live set while lines
+//   from that ruling are still live — naming the slot, the ruled hash, and the
+//   hash that is in that slot now.
+//
+// A ruling none of whose lines survive is history, not a defect.
+const liveLines = new Set((approved.set || []).flatMap((e) => e.lines));
+const livePhotographs = new Set((approved.set || []).map((e) => e.hash));
+const hashOfSlot = new Map();
+const slotHash = (p) => {
+  if (!hashOfSlot.has(p)) {
+    try { hashOfSlot.set(p, createHash('sha1').update(readFileSync(path.join(root, 'assets', 'images', 'bg', ...p.split('/')))).digest('hex').slice(0, 12)); }
+    catch { hashOfSlot.set(p, null); }
+  }
+  return hashOfSlot.get(p);
+};
+// (file, slot, hash, lines) out of every shape a ruled export uses.
+function* rulings() {
+  const dir = path.join(root, 'review');
+  for (const f of readdirSync(dir)) {
+    if (!f.endsWith('.json')) continue;
+    let j;
+    try { j = JSON.parse(readFileSync(path.join(dir, f), 'utf8')); } catch { continue; }
+    if (!j || typeof j !== 'object' || Array.isArray(j)) continue;
+    // Array.isArray on every one of these: `images` is a COUNT in the authoring
+    // file and an array of photographs in a ruled export.
+    if (Array.isArray(j.images)) for (const im of j.images) {
+      if (im?.image && im?.hash) yield [f, im.image, im.hash, (Array.isArray(im.kept) ? im.kept : []).map((l) => l.text)];
+    }
+    if (Array.isArray(j.matchDetail)) for (const m of j.matchDetail) {
+      if (m?.image && m?.hash) yield [f, m.image, m.hash, (Array.isArray(m.lines) ? m.lines : []).map((l) => l.text)];
+    }
+    if (Array.isArray(j.rescued)) for (const r of j.rescued) {
+      if (r?.image && r?.hash) yield [f, r.image, r.hash, [r.text]];
+    }
+  }
+  for (const d of readdirSync(path.join(dir, 'reroll-candidates'), { withFileTypes: true })) {
+    if (!d.isDirectory()) continue;
+    let j;
+    try { j = JSON.parse(readFileSync(path.join(dir, 'reroll-candidates', d.name, 'candidates.json'), 'utf8')); } catch { continue; }
+    if (j?.slot && j?.chosen?.hash) yield [`reroll-candidates/${d.name}/candidates.json`, j.slot, j.chosen.hash, j.lines || []];
+  }
+}
+const drifted = new Map();   // ruledHash -> {slot, ruled, actual, files, lines}
+for (const [file, slot, hash, lines] of rulings()) {
+  if (livePhotographs.has(hash)) continue;
+  const live = lines.filter((t) => liveLines.has(t));
+  if (!live.length) continue;
+  if (!drifted.has(hash)) drifted.set(hash, { slot, ruled: hash, actual: slotHash(slot), files: new Set(), lines: new Set() });
+  const d = drifted.get(hash);
+  d.files.add(file);
+  for (const t of live) d.lines.add(t);
+}
+for (const d of drifted.values()) {
+  problems.push(`RULING DRIFT — ${d.slot} was ruled on photograph ${d.ruled}, which is no longer in the set;`
+    + ` that slot now holds ${d.actual || '(nothing on disk)'}.`
+    + ` ${d.lines.size} live line(s) still rest on that ruling (${[...d.files].join(', ')}):`
+    + ` ${[...d.lines].slice(0, 3).map((t) => JSON.stringify(t)).join(', ')}${d.lines.size > 3 ? ', …' : ''}.`
+    + ' Re-rule them against the photograph that replaced it, or cut them.');
+}
+
+// The authoring entry's own image/paths are annotation, not the slot map: the
+// generated table paths by hash through set-001-draft.json. They must still
+// agree, because a downstream tool that trusts them reads the wrong picture —
+// which is exactly what happened on 2026-09-20.
+for (const entry of approved.set || []) {
+  const cur = pathsByHash.get(entry.hash);
+  if (!cur) continue;
+  const own = [...new Set([entry.image, ...(entry.paths || [])])];
+  if (own.length === cur.length && own.every((p) => cur.includes(p))) continue;
+  problems.push(`SLOT FIELD DRIFT — ${entry.hash} is annotated ${JSON.stringify(own)} but set-001-draft.json puts it at ${JSON.stringify(cur)}.`
+    + ' Run scripts/sync-authoring-slots.mjs; the draft is the slot map.');
 }
 
 if (problems.length) {

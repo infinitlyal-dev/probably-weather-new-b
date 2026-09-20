@@ -2,6 +2,12 @@
 
 Baken (Opus 5). Al's ruling: the app ships lines HE chose; machine-adopted lines come out. Nothing here is tagged, fixed, rewritten or wired — this is the split and the page he rules on. Production stays on `26c1a0b`.
 
+> **CORRECTION, added when the cull was applied.** Bucket D below is wrong, and so is the slot it names. The three "no record" lines sit on photograph `fec85aba3f48`, which lives at `rain/week_2/day/3.webp` + `rain/week_4/day/3.webp` — not `rain/week_2/day/5.webp`. They have a ruling: `review/reroll-candidates/rain-w2-d3/candidates.json`, 2026-09-16, `chosen.ruledBy: "Al"`, and it names those three lines — Al chose candidate 2 of 3 as the photograph to carry them. That is a placement, bucket **A**.
+>
+> Cause: the split enumerated only the named `*-ruled.json` exports and never `review/reroll-candidates/*/candidates.json`, and it read the slot from the authoring entry's `image` field, which a reroll leaves pointing at the old slot. Corrected pre-cull split: **A 400, B 726, C 414, D 0** — and no photograph would have been left at zero.
+>
+> The cull page carried the wrong label on those three cards and Al cut them with the rest. They are on `review/slot-fill-rain-w2-d3.html` with their real record, to restore or replace. Everything else in this file stands: the other 414 cuts are all bucket C, correctly labelled. The guard against a recurrence is in `build-hero-lines.mjs`, proved by `scripts/verify-ruling-drift-guard.mjs`.
+
 **The unit is the (photograph, line) PAIR, not the sentence.** The same line can be Al's pick on one picture and a machine's guess on another, and the pair is what renders. A line ticked for photograph X and now sitting on photograph Y has no ruling behind it.
 
 **Live** = `review/set-001-lines-bespoke-final.json`, 1,540 pairs on 294 photographs, verified in sync with `assets/hero-lines.js` (`node scripts/build-hero-lines.mjs --check` → *in sync — 1302 keys, 6856 line slots, from 294 photographs*).

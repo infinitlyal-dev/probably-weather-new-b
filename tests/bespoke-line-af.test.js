@@ -45,29 +45,52 @@ const srcFor = (key) => {
   throw new Error(`no src resolves to ${key}`);
 };
 const afFor = (lines) => lines.map((line) => heroLinesAf.heroLineAf(line)).filter(Boolean);
-// A photograph only some of whose lines cleared the gate, so the Afrikaans rotation has to filter.
 const slotKeys = Object.keys(heroLines.HERO_LINES).filter((k) => k.startsWith('bg/'));
-const partKey = slotKeys.find((k) => {
+// Any photograph with a rotation to test. Full Afrikaans coverage is now the norm.
+const subjectKey = slotKeys.find((k) => {
+  const lines = heroLines.HERO_LINES[k];
+  return lines.length >= 3 && afFor(lines).length === lines.length;
+});
+if (!subjectKey) throw new Error('no photograph with three lines and full Afrikaans — the tables are not in a testable state');
+
+// A photograph only some of whose lines cleared the gate, so the Afrikaans rotation
+// has to filter. This USED to be found in the shipped table — until the provenance
+// cull (2026-09-20) took out the lines that carried the gaps and left every
+// surviving photograph fully translated. The behaviour under test is
+// applyBespokeLine's per-language pool, not the completeness of the AF table, so
+// when the table has no gap the gap is made: one line withheld from a stub.
+const realPartial = slotKeys.find((k) => {
   const n = afFor(heroLines.HERO_LINES[k]).length;
   return n >= 2 && n < heroLines.HERO_LINES[k].length;
 });
+const partial = realPartial
+  ? { key: realPartial, importAf: undefined, af: afFor(heroLines.HERO_LINES[realPartial]) }
+  : (() => {
+    const lines = heroLines.HERO_LINES[subjectKey];
+    const withheld = lines[lines.length - 1];
+    const af = lines.filter((l) => l !== withheld).map((l) => heroLinesAf.heroLineAf(l));
+    return {
+      key: subjectKey,
+      importAf: () => vi.fn(async () => ({ heroLineAf: (en) => (en === withheld ? null : heroLinesAf.heroLineAf(en)) })),
+      af,
+    };
+  })();
 const flush = () => new Promise((r) => setTimeout(r, 0));
 
 afterEach(() => vi.restoreAllMocks());
 
 describe('bespoke lines — five languages', () => {
   it('each language rotates through exactly the lines it has for the photograph', async () => {
-    expect(partKey, 'no photograph with partial Afrikaans coverage').toBeTruthy();
-    const photo = srcFor(partKey);
-    const english = heroLines.HERO_LINES[partKey];
-    const pools = { en: english, af: afFor(english), zu: [], xh: [], st: [] };
+    const photo = srcFor(partial.key);
+    const english = heroLines.HERO_LINES[partial.key];
+    const pools = { en: english, af: partial.af, zu: [], xh: [], st: [] };
 
     for (const [lang, pool] of Object.entries(pools)) {
       const shown = new Set();
       const picks = Math.max(pool.length, 1);
       for (let i = 0; i < picks; i++) {
         vi.spyOn(Math, 'random').mockReturnValue((i + 0.5) / picks);
-        const h = harness({ lang });
+        const h = harness({ lang, ...(partial.importAf ? { importAf: partial.importAf() } : {}) });
         if (pool.length) {
           await h.loadBespokeTable('en');
           await h.loadBespokeTable(lang);
@@ -94,7 +117,7 @@ describe('bespoke lines — five languages', () => {
     let resolveAf;
     const importAf = vi.fn(() => new Promise((r) => { resolveAf = r; }));
     const h = harness({ lang: 'af', importAf });
-    const photo = srcFor(partKey);
+    const photo = srcFor(subjectKey);
     expect(h.applyBespokeLine(photo)).toBe(false);
     expect(h.importEn).toHaveBeenCalledTimes(1);
     expect(importAf).toHaveBeenCalledTimes(1);
@@ -102,13 +125,13 @@ describe('bespoke lines — five languages', () => {
     expect(h.headlineEl.textContent).toBe('Condition line');
     resolveAf(heroLinesAf);
     await flush();
-    expect(afFor(heroLines.HERO_LINES[partKey])).toContain(h.headlineEl.textContent);
+    expect(afFor(heroLines.HERO_LINES[subjectKey])).toContain(h.headlineEl.textContent);
   });
 
   it('a language switch before the tables land leaves the new language\'s headline alone', async () => {
     let resolveAf;
     const h = harness({ lang: 'af', importAf: vi.fn(() => new Promise((r) => { resolveAf = r; })) });
-    h.applyBespokeLine(srcFor(partKey));
+    h.applyBespokeLine(srcFor(subjectKey));
     h.settings.lang = 'zu';
     resolveAf(heroLinesAf);
     await flush();
@@ -119,19 +142,19 @@ describe('bespoke lines — five languages', () => {
     const h = harness({ lang: 'en' });
     await h.loadBespokeTable('en');
     await h.loadBespokeTable('af');
-    const photo = srcFor(partKey);
+    const photo = srcFor(subjectKey);
     h.applyBespokeLine(photo);
-    expect(heroLines.HERO_LINES[partKey]).toContain(h.headlineEl.textContent);
+    expect(heroLines.HERO_LINES[subjectKey]).toContain(h.headlineEl.textContent);
     h.settings.lang = 'af';
     h.applyBespokeLine(photo);
-    expect(afFor(heroLines.HERO_LINES[partKey])).toContain(h.headlineEl.textContent);
+    expect(afFor(heroLines.HERO_LINES[subjectKey])).toContain(h.headlineEl.textContent);
   });
 
   it('a photograph with no Afrikaans for any of its lines keeps the condition line', async () => {
     const h = harness({ lang: 'af', importAf: vi.fn(async () => ({ heroLineAf: () => null })) });
     await h.loadBespokeTable('en');
     await h.loadBespokeTable('af');
-    expect(h.applyBespokeLine(srcFor(partKey))).toBe(false);
+    expect(h.applyBespokeLine(srcFor(subjectKey))).toBe(false);
     expect(h.headlineEl.textContent).toBe('Condition line');
   });
 });

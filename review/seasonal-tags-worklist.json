@@ -1,6 +1,76 @@
 {
- "generated": "2026-09-19",
- "source": "review/LINE-AUDIT-2026-09-19.md §3",
+ "generated": "2026-09-20",
+ "source": "review/LINE-AUDIT-2026-09-19.md §3, less what the provenance cull removed on 2026-09-20",
+ "audited": 73,
+ "culledCount": 11,
+ "culled": [
+  {
+   "key": "N172",
+   "grade": "C",
+   "names": "summer clothes",
+   "en": "Your summer clothes can stop volunteering."
+  },
+  {
+   "key": "N194",
+   "grade": "D",
+   "names": "school bags",
+   "en": "School bags packed. Hands still defrosting."
+  },
+  {
+   "key": "N167",
+   "grade": "D",
+   "names": "the school run",
+   "en": "The school run starts with negotiating the car doors."
+  },
+  {
+   "key": "N473",
+   "grade": "D",
+   "names": "school starts",
+   "en": "School starts soon. Your fingers haven't."
+  },
+  {
+   "key": "N291",
+   "grade": "D",
+   "names": "the school run",
+   "en": "The school run now involves finding the school."
+  },
+  {
+   "key": "N432",
+   "grade": "D",
+   "names": "school shoes",
+   "en": "Your school shoes will need their own bath."
+  },
+  {
+   "key": "N433",
+   "grade": "D",
+   "names": "school uniform",
+   "en": "Uniform on. Spare uniform suddenly makes sense."
+  },
+  {
+   "key": "N577",
+   "grade": "D",
+   "names": "the school run",
+   "en": "The school run slows down. The bell doesn't."
+  },
+  {
+   "key": "N578",
+   "grade": "D",
+   "names": "school",
+   "en": "The school still wants them there, unfortunately."
+  },
+  {
+   "key": "N574",
+   "grade": "D",
+   "names": "your holiday",
+   "en": "Dinner is looking like the highlight of your holiday."
+  },
+  {
+   "key": "N400",
+   "grade": "D",
+   "names": "holiday photos",
+   "en": "Your holiday photos could have been taken at home."
+  }
+ ],
  "rows": [
   {
    "key": "N299",
@@ -812,31 +882,6 @@
    "preset": null
   },
   {
-   "key": "N172",
-   "kind": "bespoke",
-   "grade": "C",
-   "names": "summer clothes",
-   "en": "Your summer clothes can stop volunteering.",
-   "af": "Jou somerklere kan ophou om hulle aan te bied.",
-   "image": "cold/week_1/day/6.webp",
-   "slots": 2,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "SEASON",
-    "season": "winter",
-    "months": [
-     5,
-     6,
-     7,
-     8,
-     9
-    ]
-   },
-   "preset": null
-  },
-  {
    "key": "B367",
    "kind": "bespoke",
    "grade": "C",
@@ -1142,70 +1187,12 @@
    "preset": null
   },
   {
-   "key": "N194",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "school bags",
-   "en": "School bags packed. Hands still defrosting.",
-   "af": "Skooltasse gepak. Hande ontdooi nog.",
-   "image": "cold-clear/week_1/dawn/3.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
    "key": "B395",
    "kind": "bespoke",
    "grade": "D",
    "names": "the school run",
    "en": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
    "af": "Asem soos rook, ryp op die glas, son reeds op: Hoëveldse skoolrit.",
-   "image": "cold-clear/week_1/day/3.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N167",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "the school run",
-   "en": "The school run starts with negotiating the car doors.",
-   "af": "Die skoolrit begin met onderhandelinge met die kardeure.",
    "image": "cold-clear/week_1/day/3.webp",
    "slots": 4,
    "photographs": 1,
@@ -1254,214 +1241,6 @@
      10,
      11
     ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N473",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "school starts",
-   "en": "School starts soon. Your fingers haven't.",
-   "af": "Skool begin nou-nou. Jou vingers nog nie.",
-   "image": "cold/week_1/dawn/3.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N291",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "the school run",
-   "en": "The school run now involves finding the school.",
-   "af": "Die skoolrit behels nou om die skool te vind.",
-   "image": "fog/week_1/dawn/1.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N432",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "school shoes",
-   "en": "Your school shoes will need their own bath.",
-   "af": "Jou skoolskoene gaan hul eie bad nodig hê.",
-   "image": "rain/week_1/dawn/1.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N433",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "school uniform",
-   "en": "Uniform on. Spare uniform suddenly makes sense.",
-   "af": "Skooldrag aan. Ekstra skooldrag maak skielik sin.",
-   "image": "rain/week_1/dawn/1.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N577",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "the school run",
-   "en": "The school run slows down. The bell doesn't.",
-   "af": "Die skoolrit gaan stadiger. Die klok nie.",
-   "image": "rain/week_1/dawn/3.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N578",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "school",
-   "en": "The school still wants them there, unfortunately.",
-   "af": "Die skool wil hulle steeds daar hê, ongelukkig.",
-   "image": "rain/week_1/dawn/3.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "MONTHS",
-    "months": [
-     2,
-     3,
-     4,
-     5,
-     6,
-     7,
-     8,
-     9,
-     10,
-     11
-    ]
-   },
-   "preset": null
-  },
-  {
-   "key": "N574",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "your holiday",
-   "en": "Dinner is looking like the highlight of your holiday.",
-   "af": "Aandete lyk na die hoogtepunt van jou vakansie.",
-   "image": "fog/week_1/dusk/6.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "ALWAYS"
-   },
-   "preset": null
-  },
-  {
-   "key": "N400",
-   "kind": "bespoke",
-   "grade": "D",
-   "names": "holiday photos",
-   "en": "Your holiday photos could have been taken at home.",
-   "af": "Jou vakansiefoto's kon by die huis geneem gewees het.",
-   "image": "fog/week_1/dusk/7.webp",
-   "slots": 4,
-   "photographs": 1,
-   "alsoBank": null,
-   "current": null,
-   "suggest": {
-    "ruling": "ALWAYS"
    },
    "preset": null
   },

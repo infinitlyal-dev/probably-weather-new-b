@@ -1,14 +1,15 @@
-# Afrikaans bespoke lines through the gate — 2026-09-16
+# Afrikaans bespoke lines through the gate — 2026-09-20
 
-1519 rows in review/af-bespoke-decisions.json → 1518 written to assets/hero-lines-af.js, 1 on review/af-al.html.
+1519 rows in review/af-bespoke-decisions.json → 1108 written to assets/hero-lines-af.js, 411 on review/af-al.html.
 
 | | canon | KEEP | FIX | KILL | new | Al |
 |---|---|---|---|---|---|---|
-| written | 342 | 434 | 83 | 3 | 619 | 37 |
-| to Al | 0 | 0 | 0 | 0 | 1 | 0 |
+| written | 341 | 434 | 83 | 3 | 217 | 30 |
+| to Al | 1 | 0 | 0 | 0 | 403 | 7 |
 
 ## Why rows went to Al
 
+- 411 × its English line is no longer wired in assets/hero-lines.js
 - 1 × on hold
 
 Wired English lines without a decision row: 0.

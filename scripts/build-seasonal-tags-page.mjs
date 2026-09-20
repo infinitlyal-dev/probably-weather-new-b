@@ -68,10 +68,16 @@ const withMonths = (s) => (s && s.ruling === 'SEASON' ? { ...s, months: seasonMo
 const bankRowOf = new Map();
 for (const ns of ['witty', 'witty_low_confidence']) for (const [bin, v] of Object.entries(WEATHER_COPY[ns])) (v.en || []).forEach((t, i) => { if (!bankRowOf.has(t)) bankRowOf.set(t, `${ns}:${bin}#${i}`); });
 
+// A line the provenance cull removed (2026-09-20) is not on a photograph any
+// more, so there is nothing to tag and Al is not asked about it. It is recorded
+// in the worklist as `culled` rather than dropped silently — the audit counted
+// 68 and the page must be able to say where the rest went.
 const rows = [];
+const culled = [];
 for (const [id, grade, names, suggest] of BESPOKE) {
   const en = idToEn.get(id);
-  if (!en || !slotsOf.has(en)) throw new Error(`${id}: not a live photograph line`);
+  if (!en) throw new Error(`${id}: no such line id in review/af-bespoke-decisions.json`);
+  if (!slotsOf.has(en)) { culled.push({ key: id, grade, names, en }); continue; }
   const slots = slotsOf.get(en);
   rows.push({
     key: id, kind: 'bespoke', grade, names, en, af: HERO_LINES_AF[en] || null,
@@ -95,7 +101,21 @@ for (const [ns, bin, i, grade, names, suggest] of BANK) {
   });
 }
 
-writeFileSync(path.join(root, 'review', 'seasonal-tags-worklist.json'), JSON.stringify({ generated: '2026-09-19', source: 'review/LINE-AUDIT-2026-09-19.md §3', rows }, null, 1));
+writeFileSync(path.join(root, 'review', 'seasonal-tags-worklist.json'), JSON.stringify({
+  generated: '2026-09-20',
+  source: 'review/LINE-AUDIT-2026-09-19.md §3, less what the provenance cull removed on 2026-09-20',
+  audited: BESPOKE.length + BANK.length,
+  culledCount: culled.length,
+  culled,
+  rows,
+}, null, 1));
+console.log(`[season] ${BESPOKE.length} bespoke seasonal lines audited; ${culled.length} cut by the provenance cull; ${BESPOKE.length - culled.length} still on a photograph`);
+console.log(`[season] page rebuilt from ${rows.length} rows (${rows.filter((r) => r.kind === 'bespoke').length} bespoke + ${rows.filter((r) => r.kind === 'bank').length} bank)`);
+if (culled.length) {
+  const byGrade = culled.reduce((m, c) => (m[c.grade] = (m[c.grade] || 0) + 1, m), {});
+  console.log(`[season] cut by grade: ${Object.entries(byGrade).sort().map(([g, n]) => `${g} ${n}`).join('  ')}`);
+  for (const c of culled) console.log(`   ${c.key.padEnd(6)} ${c.grade}  ${c.names.padEnd(34)} ${c.en}`);
+}
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const html = `<!doctype html>

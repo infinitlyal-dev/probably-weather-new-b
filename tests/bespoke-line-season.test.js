@@ -150,7 +150,10 @@ describe('HERO_LINE_TAGS carries every bank line\'s months and region', () => {
         checked += 1;
       });
     }
-    expect(checked).toBeGreaterThanOrEqual(77);
+    // 77 before the provenance cull (2026-09-20), 76 after: one tagged bank line
+    // came off its photograph with the 417. The floor guards against tags being
+    // dropped in bulk, so it tracks the real count rather than being loosened.
+    expect(checked).toBeGreaterThanOrEqual(76);
   });
 
   it('every tag is keyed by a live English line and carries only months and region', () => {

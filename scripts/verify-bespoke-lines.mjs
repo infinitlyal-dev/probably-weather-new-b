@@ -33,14 +33,18 @@ import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
-import { HERO_LINES } from '../assets/hero-lines.js';
+import { HERO_LINES, HERO_LINE_TAGS } from '../assets/hero-lines.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
+import { contextTagAllows } from '../assets/witty-day-tags.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = path.join(root, 'dist');
 // Monday 17 Aug 2026 + (day - 1): the clock date whose SAST weekday is `day`.
 const dateForDay = (day) => new Date(Date.UTC(2026, 7, 17 + (day - 1))).toISOString().slice(0, 10);
 let DATE = dateForDay(3);
+// The same shape app.js's bespokeTagContext() builds, for the clock and place this
+// harness pins: August 2026, Somerset West (-34.08, 18.85).
+const TAG_CONTEXT = { lat: -34.08, lon: 18.85, month: 8 };
 const fails = [];
 const ok = [];
 const check = (name, cond, detail) => (cond ? ok : fails).push(`${name}${detail ? ' — ' + detail : ''}`);
@@ -148,11 +152,24 @@ for (let slot = 1; slot <= 7; slot += 1) {
   }));
   const key = seen.src.replace(/^.*assets\/images\//, '').split('?')[0];
   const own = HERO_LINES[key];
-  if (own) {
+  // THE SEASON AND PLACE GATE (app.js applyBespokeLine, 2026-09-19) sits between
+  // the photograph's lines and the screen: a line tagged for other months or
+  // another region is filtered out, and when nothing is left the condition line
+  // renderHome already set stands. So the invariant is not "the caption is one of
+  // this photograph's lines" — it is "one of the lines IN SEASON HERE". Asserting
+  // the older form failed a slot the app was serving correctly once the
+  // provenance cull (2026-09-20) reduced a photograph to a single summer-tagged
+  // line: correct fallback, wrong assertion.
+  const eligible = own ? own.filter((l) => contextTagAllows(HERO_LINE_TAGS[l], TAG_CONTEXT)) : null;
+  if (own && eligible.length) {
     hits += 1;
     bespokeSlot = bespokeSlot || slot;
-    check(`slot ${slot}: caption is one of THIS photograph's own five`, own.includes(seen.line),
+    check(`slot ${slot}: caption is one of THIS photograph's own lines, in season here`, eligible.includes(seen.line),
       `${key.slice(0, 26)}… → "${seen.line}"`);
+  } else if (own) {
+    check(`slot ${slot}: nothing on this photograph is in season, so the condition line stands`,
+      !ALL_BESPOKE.has(seen.line) && seen.line.length > 0,
+      `${key.slice(0, 26)}… → "${seen.line}" (${own.length} line(s), 0 in season for month ${TAG_CONTEXT.month})`);
   } else {
     check(`slot ${slot}: no bespoke set, so no other picture's line leaks in`,
       !ALL_BESPOKE.has(seen.line) && seen.line.length > 0, `"${seen.line}"`);

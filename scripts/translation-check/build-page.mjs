@@ -25,8 +25,26 @@ import { WEATHER_COPY } from '../../assets/weather-copy.js';
 const root = fileURLToPath(new URL('../..', import.meta.url));
 const dir = path.join(root, 'output', 'translation-check');
 const rd = (p) => JSON.parse(readFileSync(p, 'utf8'));
-const { pairs, batches } = rd(path.join(dir, 'pairs.json'));
+const { pairs: allPairs, batches } = rd(path.join(dir, 'pairs.json'));
 const lc = new Map(rd(path.join(dir, 'lc-all.json')).map((r) => [r.key, r]));
+
+// LIVE ONLY. The provenance cull (2026-09-20) took 417 lines off their
+// photographs, and a pair whose only reference was one of those photographs is
+// no longer anything Al can be shown — the app cannot put it on screen. The
+// back-translations are kept on disk and are not re-run: this drops the dead
+// pairs from the count so the number on the page is the real remaining work.
+// A pair with a bank reference stays: the condition bank is untouched.
+// The test is the LINE, not the slot: the cull took single lines off photographs
+// that kept their others, so the slot is still live while the line is gone.
+const liveEnglish = new Set(Object.values(HERO_LINES).flat());
+const stillWired = (p) => p.refs.some((r) => (r.kind === 'bespoke' ? liveEnglish.has(p.en) : true));
+const pairs = allPairs.filter(stillWired);
+const dropped = allPairs.filter((p) => !stillWired(p));
+if (dropped.length) {
+  const byLang = dropped.reduce((m, p) => (m[p.lang] = (m[p.lang] || 0) + 1, m), {});
+  console.log(`[translation-check] ${dropped.length} pair(s) dropped — their English line is no longer on a photograph: `
+    + Object.entries(byLang).map(([l, n]) => `${l} ${n}`).join(', '));
+}
 
 const bt = new Map(), cmp = new Map(), missing = [];
 for (const b of batches) {
