@@ -4,7 +4,7 @@
  "voice": "review/af-voice.md",
  "gate": "scripts/lang-check/apply-af-accepted.mjs",
  "counts": {
-  "canon": 350,
+  "canon": 353,
   "keep": 446,
   "fix": 84,
   "kill": 3,
@@ -15313,6 +15313,36 @@
    "afrikaans": "Die lug het daardie diep blou geword wat jy net so hoog bo seespieël kry.",
    "score": 5,
    "reason": ""
+  },
+  {
+   "id": "C351",
+   "group": "canon",
+   "verdict": "CANON",
+   "slot": "rain/day",
+   "english": "Every taxi on the road has decided to freestyle.",
+   "afrikaans": "Elke taxi op die pad het besluit om te freestyle.",
+   "score": null,
+   "reason": "Al's native condition-bank line, placed on this photograph by Al (review/slot-fill-rain-w2-d3-ruled.json, 2026-09-22)"
+  },
+  {
+   "id": "C352",
+   "group": "canon",
+   "verdict": "CANON",
+   "slot": "rain/day",
+   "english": "Everyone's forgotten how to drive. Again.",
+   "afrikaans": "Almal het vergeet hoe om te bestuur. Weer.",
+   "score": null,
+   "reason": "Al's native condition-bank line, placed on this photograph by Al (review/slot-fill-rain-w2-d3-ruled.json, 2026-09-22)"
+  },
+  {
+   "id": "C353",
+   "group": "canon",
+   "verdict": "CANON",
+   "slot": "rain/day",
+   "english": "Joburg drivers are panicking already.",
+   "afrikaans": "Joburg-bestuurders paniek al klaar.",
+   "score": null,
+   "reason": "Al's native condition-bank line, placed on this photograph by Al (review/slot-fill-rain-w2-d3-ruled.json, 2026-09-22)"
   }
  ]
 }

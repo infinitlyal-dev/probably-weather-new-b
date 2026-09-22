@@ -12,10 +12,13 @@
 //   pairing as "no record" — three of Al's own lines went onto a cull page
 //   labelled unruled.
 //
-// The authoring file is copied aside, the pre-cull entry is put back, the build
-// is run, and the file is restored in a finally block whatever happens. Asserts
-// three things: it refuses, it names the vanished photograph, and it names the
-// live lines resting on it. Then asserts the real tree still passes.
+// The reconstruction does not depend on where the tree is now: whether
+// fec85aba3f48 is waiting for lines or already carries Al's replacements, the
+// proof puts the three old lines back on it — the state that existed before the
+// cull. The authoring file is copied aside and restored in a finally block
+// whatever happens. Asserts the refusal names the vanished photograph, the slot,
+// the photograph now in that slot, the export and the live line; then asserts
+// the real tree still passes.
 //
 //   node scripts/verify-ruling-drift-guard.mjs
 import { execFileSync } from 'node:child_process';
@@ -38,7 +41,7 @@ const LINES = [
 
 const run = () => {
   try {
-    return { code: 0, out: execFileSync(process.execPath, [BUILD, '--check'], { encoding: 'utf8', stderr: 'pipe' }) };
+    return { code: 0, out: execFileSync(process.execPath, [BUILD, '--check'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }) };
   } catch (e) {
     return { code: e.status ?? 1, out: `${e.stdout || ''}${e.stderr || ''}` };
   }
@@ -49,16 +52,15 @@ const fail = (why) => { console.error(`[guard proof] FAILED — ${why}`); proces
 copyFileSync(FINAL, BACKUP);
 let fired;
 try {
-  // Put the three lines back on the replacement photograph, exactly as they sat
-  // before the cull. The ruling in review/ still points at the vanished one.
   const doc = JSON.parse(readFileSync(FINAL, 'utf8'));
-  const awaiting = (doc.awaitingLines || []).find((a) => a.hash === REPLACEMENT);
-  if (!awaiting) { fail(`${REPLACEMENT} is not in awaitingLines — the tree is not in the post-cull state this proof reconstructs from`); process.exit(); }
-  const { cutLines, reason, ...rest } = awaiting;
+  const inSet = doc.set.find((e) => e.hash === REPLACEMENT);
+  const waiting = (doc.awaitingLines || []).find((a) => a.hash === REPLACEMENT);
+  if (!inSet && !waiting) throw new Error(`${REPLACEMENT} is neither in the set nor waiting — the case cannot be reconstructed`);
+  const { cutLines, reason, ...base } = waiting || inSet;
   writeFileSync(FINAL, JSON.stringify({
     ...doc,
-    set: [...doc.set, { ...rest, lines: LINES }],
-    awaitingLines: (doc.awaitingLines || []).filter((a) => a.hash !== REPLACEMENT),
+    set: [...doc.set.filter((e) => e.hash !== REPLACEMENT), { ...base, lines: LINES }],
+    ...(doc.awaitingLines ? { awaitingLines: doc.awaitingLines.filter((a) => a.hash !== REPLACEMENT) } : {}),
   }, null, 1));
   fired = run();
 } finally {

@@ -123,6 +123,8 @@ function* rulings() {
     if (Array.isArray(j.rescued)) for (const r of j.rescued) {
       if (r?.image && r?.hash) yield [f, r.image, r.hash, [r.text]];
     }
+    // slot-fill rulings (review/slot-fill-<slot>-ruled.json): one photograph, the lines Al chose for it.
+    if (j.slot?.hash && j.slot?.image && Array.isArray(j.chosen)) yield [f, j.slot.image, j.slot.hash, j.chosen.map((c) => c.text)];
   }
   for (const d of readdirSync(path.join(dir, 'reroll-candidates'), { withFileTypes: true })) {
     if (!d.isDirectory()) continue;

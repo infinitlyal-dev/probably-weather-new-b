@@ -79,7 +79,7 @@ Language strings live in `assets/app.js` in the `translations` object.
 - Braai references only on weekends (Saturday/Sunday images and copy)
 - Hadeda, fynbos, Cape Dutch, Helderberg references are welcome
 - Western Cape / Cape Town is primary context but app works nationally
-- No Eskom jokes on home screen (removed — too dated/negative)
+- Eskom and load shedding (Al, 22 Sept 2026, `review/eskom-ruled.json`): exactly five lines are approved — "Nature's doing its own load shedding." (witty:storm), "Eskom wishes it had this power." (witty:storm), "Lightning's putting Eskom's grid to shame." (witty:storm), "Eskom-friendly weather. No solar today." (witty:cloudy), "Stars out, load shedding can't touch this." (witty:night). No new Eskom or load-shedding material, in any language, without Al's ruling. Enforced by `tests/eskom-rule.test.js`; to approve a line, Al rules it and its English goes into that test's APPROVED list. (Replaces the old blanket "No Eskom jokes on home screen" ban.)
 - Humour is warm and self-aware, never mean or gritty
 - Images: beautiful, authentic SA, positive vibes only. No poverty, graffiti, litter, horror aesthetic.
 

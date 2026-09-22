@@ -1,0 +1,38 @@
+{
+ "generated": "2026-09-22",
+ "ruledBy": "Al, slot fill after the provenance cull",
+ "slot": {
+  "hash": "fec85aba3f48",
+  "image": "rain/week_2/day/3.webp",
+  "paths": [
+   "rain/week_2/day/3.webp",
+   "rain/week_4/day/3.webp"
+  ],
+  "condition": "rain",
+  "time": "day",
+  "week": "B",
+  "day": "wed"
+ },
+ "note": "Lines Al wants on this photograph. An empty list means leave it on the condition bank.",
+ "chosenCount": 3,
+ "chosen": [
+  {
+   "text": "Every taxi on the road has decided to freestyle.",
+   "group": "fill",
+   "id": "witty:rain:27",
+   "af": "Elke taxi op die pad het besluit om te freestyle."
+  },
+  {
+   "text": "Everyone's forgotten how to drive. Again.",
+   "group": "fill",
+   "id": "witty:rain:14",
+   "af": "Almal het vergeet hoe om te bestuur. Weer."
+  },
+  {
+   "text": "Joburg drivers are panicking already.",
+   "group": "fill",
+   "id": "witty:rain:5",
+   "af": "Joburg-bestuurders paniek al klaar."
+  }
+ ]
+}

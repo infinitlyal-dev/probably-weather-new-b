@@ -77,10 +77,14 @@ const server = createServer((req, res) => {
     return res.writeHead(200, { 'Content-Type': 'application/json' }).end(JSON.stringify(body));
   }
   if (pn.startsWith('/_vercel/')) return res.writeHead(204).end();
-  try {
-    const f = path.resolve(dist, pn === '/' ? 'index.html' : pn.slice(1));
-    return res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream' }).end(readFileSync(f));
-  } catch { return res.writeHead(404).end(); }
+  // Read BEFORE writing the head. The old one-liner wrote the 200 head first and
+  // then read the file, so a missing path threw after the headers were sent, the
+  // catch tried to send a 404 on top, and the whole harness died with
+  // ERR_HTTP_HEADERS_SENT (2026-09-22) instead of serving one 404.
+  const f = path.resolve(dist, pn === '/' ? 'index.html' : pn.slice(1));
+  let buf;
+  try { buf = readFileSync(f); } catch { return res.writeHead(404).end(); }
+  return res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream' }).end(buf);
 });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const base = `http://127.0.0.1:${server.address().port}`;

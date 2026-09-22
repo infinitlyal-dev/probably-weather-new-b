@@ -1,0 +1,56 @@
+{
+ "generated": "2026-09-22T13:50:03.261Z",
+ "ruledBy": "Al, Eskom ruling page (review/eskom-lines.html)",
+ "rulings": [
+  {
+   "key": "witty:storm#5",
+   "en": "Nature's doing its own load shedding.",
+   "verdict": "KEEP",
+   "photos": [
+    "storm/week_1/dusk/7.webp"
+   ]
+  },
+  {
+   "key": "witty:storm#12",
+   "en": "Eskom wishes it had this power.",
+   "verdict": "KEEP",
+   "photos": [
+    "storm/week_1/dusk/7.webp"
+   ]
+  },
+  {
+   "key": "witty:storm#13",
+   "en": "Lightning's putting Eskom's grid to shame.",
+   "verdict": "KEEP",
+   "photos": [
+    "storm/week_1/dusk/2.webp"
+   ]
+  },
+  {
+   "key": "witty:cloudy#10",
+   "en": "Eskom-friendly weather. No solar today.",
+   "verdict": "KEEP",
+   "photos": [
+    "cloudy/week_2/day/2.webp"
+   ]
+  },
+  {
+   "key": "witty:clear#9",
+   "en": "The kind of day that makes you forget load shedding.",
+   "verdict": "CUT",
+   "photos": []
+  },
+  {
+   "key": "witty:clear#29",
+   "en": "Days like this is why we put up with the load shedding.",
+   "verdict": "CUT",
+   "photos": []
+  },
+  {
+   "key": "witty:night#0",
+   "en": "Stars out, load shedding can't touch this.",
+   "verdict": "KEEP",
+   "photos": []
+  }
+ ]
+}
