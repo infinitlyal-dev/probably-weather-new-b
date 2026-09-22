@@ -95,7 +95,11 @@ for (const entry of approved.set || []) {
 //
 // A ruling none of whose lines survive is history, not a defect.
 const liveLines = new Set((approved.set || []).flatMap((e) => e.lines));
-const livePhotographs = new Set((approved.set || []).map((e) => e.hash));
+// "Gone" means gone from the LIBRARY (set-001-draft.json), not merely carrying no
+// lines. A photograph a ruling left bare is still in its slot; its old rulings are
+// history, and treating it as vanished fired on the first season ruling that
+// emptied a photograph whose sentences also live on another one (2026-09-22).
+const livePhotographs = new Set(pathsByHash.keys());
 const hashOfSlot = new Map();
 const slotHash = (p) => {
   if (!hashOfSlot.has(p)) {

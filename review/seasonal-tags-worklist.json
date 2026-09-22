@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-20",
+ "generated": "2026-09-22",
  "source": "review/LINE-AUDIT-2026-09-19.md §3, less what the provenance cull removed on 2026-09-20",
  "audited": 73,
  "culledCount": 11,
@@ -80,8 +80,9 @@
    "en": "That lawn stopped asking the sky for rain somewhere around the start of November.",
    "af": "Daardie grasperk het êrens teen die begin van November opgehou om die lug vir reën te vra.",
    "image": "clear/week_1/day/6.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "e9616cb7c61c"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -104,8 +105,9 @@
    "en": "Nobody in this dorp has needed a stove since about the second week of December.",
    "af": "Niemand in hierdie dorp het sedert omtrent die tweede week van Desember 'n stoof nodig gehad nie.",
    "image": "heat/week_1/dawn/1.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "4d63213b19b9"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -126,14 +128,18 @@
    "en": "Clouds are crying like NZ at the 23 Rugby WC!",
    "af": "Die wolke huil soos die All Blacks ná die 2023-Wêreldbeker!",
    "image": "rain/week_1/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "2b750515575e"
+   ],
    "alsoBank": null,
    "current": null,
-   "suggest": null,
+   "suggest": {
+    "ruling": "ALWAYS"
+   },
    "preset": {
+    "verdict": "KEEP",
     "ruling": "ALWAYS",
-    "by": "Al, in the 2026-09-19 brief: past event, plays on any hard-rain day"
+    "by": "Al, in the 2026-09-19 brief: a past event, it plays on any hard-rain day"
    }
   },
   {
@@ -144,8 +150,9 @@
    "en": "Summer filed its arrival notice this morning; the shirt is the paperwork.",
    "af": "Die somer het vanoggend sy aankomskennisgewing ingedien; die hemp is die papierwerk.",
    "image": "clear/week_1/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "84beada2e358"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -165,8 +172,9 @@
    "en": "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
    "af": "Agapante oop, hadeda besig, lug leeg: hoogsomer loop volgens skedule.",
    "image": "clear/week_2/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "0009c55ad6a5"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -187,9 +195,10 @@
    "en": "Cancel everything. This is THE day winter was hiding.",
    "af": "Kanselleer alles. Dis DIÉ dag.",
    "image": "clear/week_2/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
-   "alsoBank": "witty:clear#71",
+   "photos": [
+    "0009c55ad6a5"
+   ],
+   "alsoBank": "witty:clear#69",
    "current": {
     "region": "western-cape"
    },
@@ -214,8 +223,9 @@
    "en": "Half this street is in summer and the other half is about to be somewhere else.",
    "af": "Die helfte van hierdie straat is in die somer, en die ander helfte gaan nou-nou êrens anders wees.",
    "image": "cloudy/week_2/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "313ca13b51a5"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -240,8 +250,9 @@
    "en": "Some clouds. Some sun. South African summer admin.",
    "af": "Sonnig met n spatsel wolke. SA somer in een prentjie.",
    "image": "cloudy/week_1/day/6.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "c16f8303d56e"
+   ],
    "alsoBank": "witty:partly-cloudy#16",
    "current": {
     "months": [
@@ -275,8 +286,9 @@
    "en": "Pink-grey sky over the robots: winter is on the morning shift too.",
    "af": "Pienkgrys lug oor die robotte: die winter werk ook die oggendskof.",
    "image": "cloudy/week_1/dawn/5.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "3bfd9b9470d6"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -300,8 +312,9 @@
    "en": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
    "af": "Joburg somerreën: kom vyfuur, deurweek alles, weg teen aandete.",
    "image": "rain/week_1/dusk/3.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "e95e8a2f22f0"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -326,8 +339,9 @@
    "en": "Jacaranda season and a Monday, and the paving is taking both badly.",
    "af": "Jakarandaseisoen en 'n Maandag, en die plaveisel vat albei sleg.",
    "image": "storm/week_1/night/1.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "9851963ee129"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -347,8 +361,9 @@
    "en": "The jacaranda is dropping purple on a lawn he has just finished watering.",
    "af": "Die jakaranda laat pers val op 'n grasperk wat hy pas natgemaak het.",
    "image": "clear/week_1/dawn/7.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "089f865e3f14"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -368,8 +383,9 @@
    "en": "Every jacaranda on this street is emptying itself onto one man.",
    "af": "Elke jakaranda in hierdie straat maak homself op een man leeg.",
    "image": "wind/week_2/day/3.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "330bfae094d5"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -389,8 +405,9 @@
    "en": "The jacaranda is redecorating the whole road whether you like it or not.",
    "af": "Die jakaranda herversier die hele pad of jy daarvan hou of nie.",
    "image": "wind/week_2/day/6.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "5df9d64aa037"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -410,8 +427,9 @@
    "en": "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
    "af": "Jakarandablomme en stormwater — die kombinasie waarvan Joburg die minste hou.",
    "image": "rain/week_1/night/3.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "f8781ec0eb86"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -431,8 +449,9 @@
    "en": "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
    "af": "Vrydagaand, sneeu op die Apostels, en die enigste tou is vir die ketel.",
    "image": "cold/week_1/dusk/5.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "917c4c0a6fac"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -453,8 +472,9 @@
    "en": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
    "af": "Sneeu op die berg. Die soort koue wat Kaapstad raam en teen die muur hang.",
    "image": "cold/week_1/dusk/5.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "917c4c0a6fac"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -475,8 +495,9 @@
    "en": "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.",
    "af": "Sneeu op die berg, wasgoed op die draad: koud genoeg om te vries, droog genoeg om te probeer.",
    "image": "cold/week_2/day/6.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "d003110fec9f"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -497,8 +518,9 @@
    "en": "Clear skies, open roads, running nose. The full winter set.",
    "af": "Die lug is oop, die pad is oop, jou neus loop.",
    "image": "cold-clear/week_1/dawn/4.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "caaa1c42d70a"
+   ],
    "alsoBank": "witty:cold-clear#44",
    "current": {
     "months": [
@@ -530,8 +552,9 @@
    "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
    "af": "Hoëveld-winter: die enigste plek waar jy twee jasse aantrek om die pos te gaan haal.",
    "image": "cold-clear/week_1/dawn/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "28129477b706"
+   ],
    "alsoBank": "witty:cold-clear#3",
    "current": {
     "months": [
@@ -564,8 +587,9 @@
    "en": "The Free State just remembered it has a winter setting.",
    "af": "Die Vrystaat het pas onthou hy het 'n winter-setting.",
    "image": "cold-clear/week_1/dawn/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "28129477b706"
+   ],
    "alsoBank": "witty:cold-clear#1",
    "current": {
     "months": [
@@ -598,8 +622,9 @@
    "en": "Clear nights are winter's way of apologising.",
    "af": "Helder nagte is die winter se jammer-sê.",
    "image": "cold-clear/week_1/night/5.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "f453a678f470"
+   ],
    "alsoBank": "witty:cold-clear#111",
    "current": {
     "months": [
@@ -631,8 +656,9 @@
    "en": "Winter sun: all of the light, none of the heat. Nice try, sun.",
    "af": "Winterson: al die lig, nul van die hitte. Mooi probeer, son.",
    "image": "cold/week_1/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "4b92e51e69f8"
+   ],
    "alsoBank": "witty:cold#61",
    "current": {
     "months": [
@@ -664,8 +690,9 @@
    "en": "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
    "af": "Nie een wolk nie, nie een graad nie: 'n Hoëveldse wintermôre doen albei gelyk.",
    "image": "cold-clear/week_1/dawn/4.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "caaa1c42d70a"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -689,8 +716,9 @@
    "en": "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
    "af": "Ryp tot teen die damwal: die Karoo het oornag sy winterding gedoen.",
    "image": "cold-clear/week_1/dawn/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "28129477b706"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -714,8 +742,9 @@
    "en": "Joburg winter dawn: the view is free; the air charges admission.",
    "af": "Joburg winterdagbreek: die uitsig is verniet; die lug vra toegangsgeld.",
    "image": "cold-clear/week_1/dawn/7.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "6ca4d027da38"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -739,8 +768,9 @@
    "en": "Coats and coffees in full sun: winter in this city photographs like summer.",
    "af": "Jasse en koffies in vol son: winter in hierdie stad lyk op foto's soos somer.",
    "image": "cold-clear/week_1/day/5.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "decff597fe6c"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -764,8 +794,9 @@
    "en": "Frost on the grass, steam off the field: winter running weather at its most honest.",
    "af": "Ryp op die gras, stoom van die veld af: wintersdrafweer op sy eerlikste.",
    "image": "cold-clear/week_1/day/7.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "32dec9fbdcaa"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -789,8 +820,9 @@
    "en": "That washing is not dry; it is preserved. Winter dusk works fast out here.",
    "af": "Daardie wasgoed is nie droog nie; dit is ingelê. Winterskemer werk vinnig hier.",
    "image": "cold-clear/week_1/dusk/1.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "fbdf528f41c8"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -814,8 +846,9 @@
    "en": "Braaiing in beanies under a hard clear sky: winter never cancelled anything here.",
    "af": "Braai met musse op onder 'n kristalhelder lug: die winter kanselleer niks hier nie.",
    "image": "cold-clear/week_1/night/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "8fd1944f303b"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -839,8 +872,9 @@
    "en": "Small dog, thick jersey, short patrol: winter mornings run on reduced hours.",
    "af": "Klein hond, dik trui, kort patrollie: winteroggende werk verkorte ure.",
    "image": "cold/week_1/dawn/1.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "ea6e65a6bc63"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -864,8 +898,9 @@
    "en": "Construction finished at nine: one duvet cave, single occupant, no visitors till spring.",
    "af": "Bouwerk klaar om nege: een duvetgrot, een bewoner, geen besoekers tot die lente nie.",
    "image": "cold/week_1/day/5.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "e938ce2769cd"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -889,8 +924,9 @@
    "en": "It is heater season, and the best seat in the house has fur on it.",
    "af": "Dis verwarmerseisoen, en die beste sitplek in die huis het pels op.",
    "image": "cold/week_1/dusk/1.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "420d1bd07555"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -914,8 +950,9 @@
    "en": "The mountain is in there somewhere, wrapped up for the winter.",
    "af": "Die berg is daar êrens, toegedraai vir die winter.",
    "image": "cold/week_1/dusk/3.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "50eb6a4aa792"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -939,8 +976,9 @@
    "en": "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.",
    "af": "Elke straatlig langs die pad skyn vir niemand nie; winternagte maak 'n dorp vroeg leeg.",
    "image": "cold/week_1/night/1.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "a77b4dca45ae"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -964,8 +1002,9 @@
    "en": "Fingerless gloves at a laptop: winter has entered the home office.",
    "af": "Vingerlose handskoene by 'n laptop: winter het die tuiskantoor betree.",
    "image": "cold/week_1/night/4.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "54f02eb5aac1"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -989,8 +1028,9 @@
    "en": "Frost on the lawn and wors on the grid: a Cape winter compromise.",
    "af": "Ryp op die grasperk en wors op die rooster: 'n Kaapse winterkompromie.",
    "image": "cold/week_1/night/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "13efc9191981"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1014,8 +1054,9 @@
    "en": "Beanie, snood, torch, book: winter nights build the best reading rooms.",
    "af": "Mus, nekwarmer, flits, boek: winternagte bou die beste leeskamers.",
    "image": "cold/week_1/night/7.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "b850a52403e3"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1039,8 +1080,9 @@
    "en": "Wet road, grey sky, dog in a jersey: winter is fully operational.",
    "af": "Nat pad, grys lug, hond in 'n trui: winter is ten volle in werking.",
    "image": "cold/week_2/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "999e68c47bfc"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1064,8 +1106,9 @@
    "en": "Socks go on the heater first; feet join later — the winter system works.",
    "af": "Sokkies gaan eerste op die verwarmer; voete kom later — die winterstelsel werk.",
    "image": "cold/week_2/day/3.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "a37a31d9aa79"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1089,8 +1132,9 @@
    "en": "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly.",
    "af": "Stoel na die verwarmer gedraai, kombers op, tee naby: wintersondag, korrek uitgevoer.",
    "image": "cold/week_2/day/7.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "3fd7aa0aae2e"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1114,8 +1158,9 @@
    "en": "That sprinkler has been the best-value thing in this garden all summer.",
    "af": "Daardie sproeier is die hele somer die beste waarde in hierdie tuin.",
    "image": "heat/week_1/day/7.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "0cc1648cbc13"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1136,8 +1181,9 @@
    "en": "This light lasts about twenty minutes and the walk to school gets all of it.",
    "af": "Hierdie lig hou omtrent twintig minute, en die stap skool toe kry alles.",
    "image": "clear/week_1/dawn/2.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "73d202837435"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1165,8 +1211,9 @@
    "en": "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
    "af": "Twee musse, een skraper, minus drie: die skoolrit begin voor die kar instem.",
    "image": "cold-clear/week_1/dawn/3.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "5a6dd26eb7db"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1194,8 +1241,9 @@
    "en": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
    "af": "Asem soos rook, ryp op die glas, son reeds op: Hoëveldse skoolrit.",
    "image": "cold-clear/week_1/day/3.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "042ba0a95388"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1223,8 +1271,9 @@
    "en": "Beanie plus puffer plus school tie: the cold front has reached the uniform.",
    "af": "Mus plus poffer plus skooldas: die kouefront het die skooldrag bereik.",
    "image": "cold/week_1/dawn/3.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "1c5f757ee79a"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1252,8 +1301,9 @@
    "en": "The sun has done more to that lawn this month than any mower ever will.",
    "af": "Die son het hierdie maand meer aan daardie grasperk gedoen as wat enige grassnyer ooit sal.",
    "image": "clear/week_1/day/6.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "e9616cb7c61c"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1269,8 +1319,9 @@
    "en": "Every leaf the tree dropped this month is going past them at head height.",
    "af": "Elke blaar wat die boom hierdie maand laat val het, gaan op kophoogte by hulle verby.",
    "image": "wind/week_1/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "232bde6ed095"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1286,9 +1337,11 @@
    "en": "Bottle this one. Open it in winter.",
    "af": "Bottel hierdie een. Maak hom oop in die winter.",
    "image": "clear/week_1/dawn/2.webp",
-   "slots": 6,
-   "photographs": 2,
-   "alsoBank": "witty:clear#37",
+   "photos": [
+    "73d202837435",
+    "ed953578deec"
+   ],
+   "alsoBank": "witty:clear#35",
    "current": null,
    "suggest": {
     "ruling": "MONTHS",
@@ -1312,8 +1365,9 @@
    "en": "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
    "af": "Die see hou sy winterkleur onder so 'n lug, wat die kalender ook al sê.",
    "image": "cloudy/week_1/dawn/4.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "4845b881f911"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1329,8 +1383,9 @@
    "en": "The agapanthus open for exactly this kind of sky, and they got it.",
    "af": "Die agapante gaan oop vir presies hierdie soort lug, en hulle het dit gekry.",
    "image": "clear/week_2/day/1.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "0009c55ad6a5"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1352,8 +1407,9 @@
    "en": "Cricket till the light goes, and light like this takes its time going.",
    "af": "Krieket tot die lig weg is, en lig soos dié vat sy tyd om te gaan.",
    "image": "clear/week_1/dusk/5.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "90a621539543"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1378,8 +1434,9 @@
    "en": "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
    "af": "Plat grys oor die rugbyveld: perfekte skopweer, geen wind om te blameer nie.",
    "image": "cloudy/week_1/day/3.webp",
-   "slots": 2,
-   "photographs": 1,
+   "photos": [
+    "5aea3d2e9887"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1395,8 +1452,9 @@
    "en": "Lekker koud, but the rugby fields are about to look perfect.",
    "af": "Lekker koud, maar die rugbyvelde gaan nou-nou perfek lyk.",
    "image": "cold-clear/week_1/day/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "bbad2500c852"
+   ],
    "alsoBank": "witty:cold-clear#11",
    "current": null,
    "suggest": {
@@ -1412,8 +1470,9 @@
    "en": "Perfect rugby weather. For the spectators with blankets.",
    "af": "Perfekte rugbyweer. Vir die toeskouers met komberse.",
    "image": "cold-clear/week_1/day/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "bbad2500c852"
+   ],
    "alsoBank": "witty:cold-clear#61",
    "current": {
     "months": [
@@ -1445,8 +1504,9 @@
    "en": "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
    "af": "Blou lug, goue gras, wit rande: 'n Hoëveldse rugbyoggend in volle drag.",
    "image": "cold-clear/week_1/day/6.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "bbad2500c852"
+   ],
    "alsoBank": null,
    "current": null,
    "suggest": {
@@ -1458,12 +1518,13 @@
    "key": "C344",
    "kind": "bespoke",
    "grade": "E",
-   "names": "load shedding (see the Eskom page)",
+   "names": "load shedding (approved in the Eskom ruling, 2026-09-22)",
    "en": "Nature's doing its own load shedding.",
    "af": "Natuur doen sy eie beurtkrag.",
    "image": "storm/week_1/dusk/7.webp",
-   "slots": 4,
-   "photographs": 1,
+   "photos": [
+    "e5b510c8a1e4"
+   ],
    "alsoBank": "witty:storm#5",
    "current": null,
    "suggest": {
@@ -1472,13 +1533,14 @@
    "preset": null
   },
   {
-   "key": "witty:clear#21",
+   "key": "witty:clear#20",
    "kind": "bank",
    "grade": "A",
    "names": "December",
    "en": "This is the weather you'll miss in December traffic.",
    "af": "Dit is die weer wat jy sal mis in Desember-verkeer.",
    "image": "clear/week_1/day/1.webp",
+   "photos": [],
    "onPhoto": null,
    "current": null,
    "suggest": {
@@ -1500,13 +1562,14 @@
    "preset": null
   },
   {
-   "key": "witty:clear#71",
+   "key": "witty:clear#69",
    "kind": "bank",
    "grade": "B",
    "names": "winter",
    "en": "Cancel everything. This is THE day winter was hiding.",
    "af": "Kanselleer alles. Dis DIÉ dag.",
    "image": "clear/week_2/day/1.webp",
+   "photos": [],
    "onPhoto": "clear/week_2/day/1.webp",
    "current": {
     "time": [
@@ -1528,13 +1591,14 @@
    "preset": null
   },
   {
-   "key": "witty:clear#63",
+   "key": "witty:clear#61",
    "kind": "bank",
    "grade": "B",
    "names": "Highveld winter",
    "en": "Highveld winter flex: laundry dry before the kettle's even done.",
    "af": "Hoëveld-winter: die wasgoed is droog voor die ketel kook.",
    "image": "clear/week_1/day/1.webp",
+   "photos": [],
    "onPhoto": null,
    "current": {
     "time": [
@@ -1556,13 +1620,14 @@
    "preset": null
   },
   {
-   "key": "witty:clear#72",
+   "key": "witty:clear#70",
    "kind": "bank",
    "grade": "B",
    "names": "off-season beach",
    "en": "Off-season beach: same ocean, zero fight for parking.",
    "af": "Strand in die winter: dieselfde see, nul geveg oor parkering.",
    "image": "clear/week_1/day/1.webp",
+   "photos": [],
    "onPhoto": null,
    "current": {
     "time": [
@@ -1590,7 +1655,8 @@
    "names": "\"already winter\"",
    "en": "Every glow down there is someone else who also can't believe it's already winter.",
    "af": "Elke liggie daar onder is iemand wat ook nie kan glo dis al winter nie.",
-   "image": "fog/week_1/day/1.webp",
+   "image": "fog/week_1/night/1.webp",
+   "photos": [],
    "onPhoto": null,
    "current": {
     "time": [
