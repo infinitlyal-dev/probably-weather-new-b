@@ -1654,7 +1654,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (condKey === 'hail') return 'hail';
     if (condKey === 'storm' || condKey.includes('thunder')) return 'storm';
     if (condKey === 'fog' || condKey.includes('mist') || condKey.includes('haze')) return 'fog';
-    if (isNum(rain) && rain >= 50) return 'rain'; if (isNum(rain) && rain >= 30) return 'rain-possible';
+    // 2026-09-22: a probability is "might rain" at most — 'rain' comes only from
+    // the server's evidenced verdict (computeHomeDisplayCondition, above).
+    if (isNum(rain) && rain >= 30) return 'rain-possible';
     if (isNum(cloudPct) && cloudPct >= 60) return 'cloudy';
     if (isNum(cloudPct) && cloudPct >= 30) return 'partly-cloudy';
     // If we don't have cloudPct, fall back to condKey
@@ -1741,17 +1743,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Four models saying "clear" while radar shows rain falling is exactly the
     // case the override exists for (Strand, 2026-05-19 08:05 SAST).
     if (apiCondition === 'rain' && norm.rainNowOverride) {
-      debugLog('[Rain-now override] API=rain by tomorrow-io-radar-override → returning rain regardless of votes');
+      debugLog('[Rain now] API=rain with evidence (rain-now rung or radar override) → returning rain regardless of votes');
       return 'rain';
     }
-    // FIX: trust the API's rain verdict when 2+ sources voted rain/storm. The API
-    // already aggregated source agreement; without this, a unanimous-rain payload
-    // gets demoted to 'rain-possible' whenever norm.rainPct happens to land below 50.
-    if (apiCondition === 'rain' && votes.length && hasMajorityRain) {
-      debugLog(`[Rain consensus] API=rain with ${rainVotes} source votes → returning rain`);
-      return 'rain';
-    }
-    if (isNum(imminentRain) && imminentRain >= 50) return 'rain';
+    // 2026-09-22 (review/condition-incident-20260922): "Rain's here." is only ever
+    // the server's evidenced verdict above. A server 'rain' WITHOUT that evidence
+    // is a payload written before the rain-now rung shipped (moderate-/heavy-
+    // rain-prob — a probability), and a probability is "might rain" at most. The
+    // old numeric rung here (four-hour max ≥ 50% → 'rain') is gone for the same
+    // reason: on 22 Sept it put a rain photograph over a dry Strand afternoon
+    // while four of five sources said "Partly cloudy".
+    if (apiCondition === 'rain' && isNum(imminentRain) && imminentRain >= 30) return 'rain-possible';
+    // Wind wins over might-rain and cloud (Al's ruling, 2026-09-22). The server's
+    // wind key is gust-aware; the numeric rung is the fallback for a payload
+    // without one.
+    if (apiCondition === 'wind') return 'wind';
+    if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     // FIX-001: rain-possible requires either strong rain signal (≥30%) OR majority source agreement
     if (isNum(imminentRain) && imminentRain >= 30) {
       if (hasMajorityRain || hasMajorityCloudy || !votes.length) return 'rain-possible';
@@ -1763,8 +1770,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return 'rain-possible';
     }
     if (isDay && apiCondition === 'uv' && !(isTrulyOvercast || isMostlyCloudy || isSignificantCloud) && !uvBlockedByCold) return 'uv';
-    if (apiCondition === 'wind') return 'wind';
-    if (isNum(effectiveWind) && effectiveWind >= 30) return 'wind';
     if (apiCondition === 'fog') return 'fog';
     // FIX-001: cloudy requires majority source agreement
     if (apiCondition === 'cloudy') {
@@ -2328,7 +2333,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // slice below must not replace that with the models' own 10%. Detected by
     // conditionReason, or by the override trail when thunder overrode it after.
     const overrides = Array.isArray(now.conditionSignals?.overrides) ? now.conditionSignals.overrides : [];
+    // 2026-09-22: the server's rain-now rung (two sources describing rain, ≥ 60%
+    // and ≥ 0.3 mm for THIS hour) is the second evidenced route to 'rain' and is
+    // honoured exactly like the radar override.
     const rainNowOverride = now.conditionReason === 'tomorrow-io-radar-override'
+      || now.conditionReason === 'rain-now'
       || overrides.some(o => o && o.rule === 'tomorrow-io-radar-override');
     if (rainNowOverride) debugLog(`[Rain-now override] server radar override → rain now ${now.rainChance}% keeps precedence over the 4h slice (${imminentRainMax}%)`);
     const modelRainPct = isNum(imminentRainMax) ? imminentRainMax : (today.rainChance ?? now.rainChance ?? null);
@@ -2830,6 +2839,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // One aligned row: Wind / Rain / UV. Wind DIRECTION is absent from the payload
   // entirely — adding it is a data-layer change the facelift brief's own scope
   // guard forbids, so the slot is left out pending the owner's ruling.
+  // The rain stat's WORD, shared by the stats pill and the desktop byline so the
+  // two surfaces can never disagree with each other or with the hero above them
+  // (2026-09-22). Returns the copy key under T.weather; same ladder both carried.
+  function rainStatWord(rain, todayKey, rainLater) {
+    let word = rain < 10 ? 'none' : rain < 30 ? 'unlikely' : rain < 55 ? 'possible' : 'likely';
+    // Don't say "Unlikely" / "None" when today's daily ensemble says rain — that contradicts the day's outlook
+    if ((todayKey === 'rain' || todayKey === 'rain-possible') && rain < 30) word = 'possibleLater';
+    if (rainLater) word = 'later';
+    return word;
+  }
+
   function renderStatsRow(norm) {
     if (!statsRowEl) return;
     const wind = norm.windKph, gust = norm.gustKph, rain = norm.rainPct, uv = norm.uv;
@@ -2854,10 +2874,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isNum(rain)) {
       // Same wording ladder and the same two overrides as the old byline — the
       // stats row is a restyle of that data, not a re-derivation of it.
-      let word = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely');
       const todayKey = (norm.daily?.[0]?.conditionKey || '').toLowerCase();
-      if ((todayKey === 'rain' || todayKey === 'rain-possible') && rain < 30) word = t('weather', 'possibleLater') || word;
-      if (norm.rainLater) word = t('weather', 'later') || word;
+      const word = t('weather', rainStatWord(rain, todayKey, norm.rainLater));
       cells.push({ k: t('weather', 'rain') || 'Rain', v: `${round0(rain)}%`, sub: word });
     }
     if (isNum(uv)) {
@@ -2976,14 +2994,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const showGust = isNum(gust) && isNum(wind) && gust > wind * 1.3;
       const ws = isNum(wind) ? (showGust ? `${formatWind(wind)} (${t('weather','gusts')||'gusts'} ${formatWind(gust)})` : formatWind(wind)) : null;
       const rainLabel = t('weather', 'rain'), windLabel = t('weather', 'wind'), uvLabel = t('weather', 'uv');
-      let rs = null;
-      if (isNum(rain)) { rs = rain < 10 ? t('weather', 'none') : rain < 30 ? t('weather', 'unlikely') : rain < 55 ? t('weather', 'possible') : t('weather', 'likely'); }
-      // Don't say "Unlikely" / "None" when today's daily ensemble says rain — that contradicts the day's outlook
+      // Same word as the stats pill — one ladder (rainStatWord), two surfaces.
       const todayKey = (norm.daily?.[0]?.conditionKey || '').toLowerCase();
-      if ((todayKey === 'rain' || todayKey === 'rain-possible') && isNum(rain) && rain < 30) {
-        rs = t('weather', 'possibleLater') || 'Possible later';
-      }
-      if (norm.rainLater) { rs = t('weather', 'later') || 'Later'; }
+      const rs = isNum(rain) ? t('weather', rainStatWord(rain, todayKey, norm.rainLater)) : null;
       // uv is null at night (API nulls now.uv after sunset). Item 3: uv is the
       // current hour; today's peak follows as a labelled "Max N".
       let us = null; if (isNum(uv)) { us = (uv < 3 ? t('weather', 'low') : uv < 6 ? t('weather', 'moderate') : uv < 8 ? t('weather', 'high') : t('weather', 'veryHigh')) + ` (${round0(uv)})`; if (isNum(norm.uvMax)) us += ` · ${t('weather', 'uvMax') || 'Max'} ${round0(norm.uvMax)}`; }

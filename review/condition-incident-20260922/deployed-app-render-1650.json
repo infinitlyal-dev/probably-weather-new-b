@@ -1,0 +1,20 @@
+{
+  "readAt": "2026-09-22T14:50Z (16:50 SAST)",
+  "url": "https://www.probablyweather.co.za/?lat=-34.1163&lon=18.8362&city=Strand",
+  "viewport": "1024px desktop, then 375x812 phone (screenshots in the session transcript)",
+  "server": { "conditionKey": "rain", "conditionReason": "moderate-rain-prob", "rainChance": 31.2, "localHour": 16 },
+  "frontend": {
+    "displayCondition (computeHomeDisplayCondition)": "rain-possible",
+    "hero (computeTodaysHero, desktop sidebar)": "rain",
+    "condition line (#description)": "Might rain.",
+    "witty line (#headline)": "Eskom-friendly weather. No solar today.",
+    "phone witty line": "Sun's playing peek-a-boo.",
+    "stats row": "Wind 11 km/h S | Rain 32% Possible | UV 3 Low · Max 7",
+    "desktop byline": "Wind 11 km/h • Rain Possible / UV Low (3) · Max 7",
+    "range line": "Low 19° · High 30°",
+    "agree line": "1/5 sources agree",
+    "body class": "weather-rain-possible",
+    "norm": { "conditionKey": "rain", "rainPct(4h max)": 32, "dailyRainPct": 49.3, "rainLater": false, "windKph": 10.8, "cloudPct": 61.72 }
+  },
+  "note": "At 16:50 the phone shows 'Might rain.' (rain-possible) because the 4-hour probability max is 32%. The 16:11 'Rain's here.' Al saw is the same chain one hour earlier: the 15:00 payload's 4-hour window covered the 55-57% hours (see deployed-api.json hourly[14..15]) and computeHomeDisplayCondition turns any 4-hour max >= 50% into 'rain'."
+}

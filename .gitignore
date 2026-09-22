@@ -29,3 +29,6 @@ benchmarks/traces/
 
 # lang-check corpus cache (downloaded by scripts/lang-check.mjs --fetch; never committed)
 .lang-check-cache/
+
+# Accuracy-harness per-hour dumps (review/accuracy/run-eval.mjs regenerates them in ~45 s)
+review/accuracy/results/*-hours.csv

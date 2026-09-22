@@ -256,13 +256,15 @@ const normalizePayload = new Function('isNum', 'debugLog', 'PAYLOAD_SCHEMA_MIN',
 const T_EN = {
   weather: { wind: 'Wind', rain: 'Rain', uv: 'UV', uvMax: 'Max', gusts: 'gusts', none: 'None', unlikely: 'Unlikely', possible: 'Possible', likely: 'Likely', possibleLater: 'Possible later', later: 'Later', low: 'Low', moderate: 'Moderate', high: 'High', veryHigh: 'Very High' },
 };
+// The rain word comes from the shared ladder since 2026-09-22 (rainStatWord).
+const rainStatWord = new Function(`${sliceFn('rainStatWord')}; return rainStatWord;`)();
 const makeStatsRow = () => {
   const el = { innerHTML: '' };
   const round0 = (n) => (isNum(n) ? Math.round(n) : null);
   const render = new Function(
-    'statsRowEl', 'isNum', 't', 'round0', 'formatWind', 'windCompass', 'settings', 'debugLog',
+    'statsRowEl', 'isNum', 't', 'round0', 'formatWind', 'windCompass', 'settings', 'debugLog', 'rainStatWord',
     `${sliceFn('renderStatsRow')}; return renderStatsRow;`,
-  )(el, isNum, (c, k) => T_EN[c]?.[k], round0, (kph) => `${round0(kph)} km/h`, () => '', { wind: 'kph' }, noop);
+  )(el, isNum, (c, k) => T_EN[c]?.[k], round0, (kph) => `${round0(kph)} km/h`, () => '', { wind: 'kph' }, noop, rainStatWord);
   return { el, render };
 };
 
@@ -353,10 +355,10 @@ const makeByline = () => {
   expect(start, 'byline block missing').toBeGreaterThan(-1);
   const src = js.slice(start, end) + ' }'; // close the enclosing if (bylineEl) { … }
   const round0 = (n) => (isNum(n) ? Math.round(n) : null);
-  const render = new Function('$', 'norm', 'wind', 'rain', 'uv', 'currentTemp', 't', 'isNum', 'formatWind', 'formatTemp', 'round0', src);
+  const render = new Function('$', 'norm', 'wind', 'rain', 'uv', 'currentTemp', 't', 'isNum', 'formatWind', 'formatTemp', 'round0', 'rainStatWord', src);
   return {
     el,
-    render: (norm) => render(() => el, norm, norm.windKph, norm.rainPct, norm.uv, norm.nowTemp, (c, k) => T_EN[c]?.[k], isNum, (kph) => `${round0(kph)} km/h`, (c) => `${round0(c)}°`, round0),
+    render: (norm) => render(() => el, norm, norm.windKph, norm.rainPct, norm.uv, norm.nowTemp, (c, k) => T_EN[c]?.[k], isNum, (kph) => `${round0(kph)} km/h`, (c) => `${round0(c)}°`, round0, rainStatWord),
   };
 };
 

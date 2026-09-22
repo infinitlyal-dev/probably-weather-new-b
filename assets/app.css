@@ -4129,7 +4129,10 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 
   .feels-line { margin-top: 4px; font-size: 0.9rem; color: var(--ink-2); }
   .range-line { margin-top: 2px; font-size: 0.9rem; color: var(--ink-2); }
-  .range-line .range-v { color: var(--ink); font-weight: 700; }
+  /* Al, 2026-09-22: the low/high NUMBERS read as hidden on a phone. Sized from
+     the line (em), so they still follow the fold rhythm below; the words stay
+     small and the figures carry the weight. */
+  .range-line .range-v { color: var(--ink); font-weight: 800; font-size: 1.4em; letter-spacing: -0.01em; }
   .range-line .range-sep { opacity: 0.5; margin: 0 7px; }
 
   /* Condition-colour glows were built to survive photography. On solid black

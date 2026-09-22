@@ -72,6 +72,26 @@ const MISS_DENIED = Symbol('weather-miss-denied');
 // Absent/1: now.uv was the peak. The client and the cache-hit path use it to
 // tell a pre-deploy payload (Redis ≤15 min, service worker ≤3 h) from a new one.
 export const PAYLOAD_SCHEMA = 5;
+
+// NOW-ladder thresholds (condition-incident-20260922). Every number below was
+// chosen on 12,740 SA station-hours against METAR present weather and wind —
+// review/accuracy/results/before.md — not guessed. Exported for the tests and
+// for review/accuracy/lib/replay.mjs.
+//   "Rain's here" needs ALL THREE: sources describing rain for this hour, the
+//   blended probability for this hour, and the blended amount for this hour.
+//   Probability alone was a dry hour 55% of the time; the three together 29%
+//   same-hour and 14% allowing the hour either side, with no extra dry misses.
+export const RAIN_NOW_MIN_VOTES = 2;      // sources whose current description is rain (not "possible")
+export const RAIN_NOW_MIN_PROB  = 60;     // % blended probability for the current hour
+export const RAIN_NOW_MIN_MM    = 0.3;    // mm blended precipitation for the current hour
+export const RAIN_POSSIBLE_NOW_MIN_PROB = 30; // % — the same line the stats row words "Possible"
+//   Wind: the models' MEAN wind reads ~40% under the airport anemometer at Cape
+//   Town and Johannesburg; their GUST does not. A forecast gust ≥ 55 km/h had the
+//   station at Beaufort 5 or more in half the hours and calm in 9%; mean ≥ 25 or
+//   gust ≥ 55 scored precision 59% / recall 64% against observed fresh-breeze
+//   hours, versus 63% / 39% for the mean-only rule it replaces.
+export const WIND_NOW_MEAN_KPH = 25;
+export const WIND_NOW_GUST_KPH = 55;
 // Latency budget (prelaunch item 7, Astra P1-5). The client aborts at 10 s
 // (assets/app.js fetchProbable). Astra recorded a Johannesburg GET that
 // answered after 10,472 ms with Open-Meteo unavailable; the browser's timeout
@@ -1302,6 +1322,9 @@ export default async function handler(req, res) {
           todayUv:   d0.uv                       ?? null,
           desc:      waDesc,
           windKph:   wa.current?.wind_kph        ?? null,
+          // 2026-09-22: WeatherAPI's current gust joins Open-Meteo's and Pirate's
+          // in the now-ladder's wind rung (gustKph = the largest of the three).
+          gustKph:   isNum(wa.current?.gust_kph) ? wa.current.gust_kph : null,
           humidity:  wa.current?.humidity        ?? null,
           sunrise:   clockString(astro.sunrise), // "06:45 AM" — display only, never daylight (item 5 round 7)
           sunset:    clockString(astro.sunset),
@@ -2327,12 +2350,30 @@ export default async function handler(req, res) {
     debugLog(`[UV] now-hour ${localHour}:00 uv=${nowHourUv} (blended hourly) | today max=${medUv} (daily[0].uvMax) | condition input=${uvForCondition}`);
 
     const nowSourceDescs = activeNorms.map(n => n.desc).filter(Boolean);
+    // FIX-001: Per-source condition votes for debugging and majority check.
+    // Computed BEFORE the selector since 2026-09-22: the now-ladder's rain rung
+    // counts them.
+    const sourceConditionVotes = activeNorms.map(n => ({
+      source: n.source,
+      desc: n.desc,
+      vote: categorizeDesc(n.desc),
+    }));
+    // A source's CURRENT description saying rain — "Patchy rain possible" and
+    // "Possible rain" are a maybe, not a report, and do not count.
+    const nowRainVotes = sourceConditionVotes.filter(v => v.vote === 'rain' && !/possible/i.test(v.desc || '')).length;
     // The selector's exact inputs are kept (nowSelector) so a cache hit can
     // re-run the SAME call with only uv/isDay refreshed and compare against
     // the SAME base result — the overrides below rewrite currentHourRainChance
     // and nowConditionKey afterwards, so neither the final numeric block nor
     // the final key is a valid stand-in for what the selector saw (item 3).
     const nowSelectorInputs = {
+      // 2026-09-22: the NOW ladder (see deriveCondition). Rain needs evidence for
+      // this hour — the vote count, the hour's blended amount — and wind reads
+      // the largest gust any source reports, not the blended mean alone.
+      now:        true,
+      precipMm:   aggregatedHourly[localHour]?.precipMm ?? null,
+      rainVotes:  nowRainVotes,
+      gustKph:    maxGust,
       desc:       mostDesc,
       rainChance: currentHourRainChance,
       tempC:      medNowTemp,
@@ -2353,74 +2394,17 @@ export default async function handler(req, res) {
     const nowSelector = { inputs: nowSelectorInputs, base: { key: nowConditionKey, reason: nowConditionReason } };
     const nowOverrides = [];
 
-    // FIX-001: Per-source condition votes for debugging and majority check
-    const sourceConditionVotes = activeNorms.map(n => ({
-      source: n.source,
-      desc: n.desc,
-      vote: categorizeDesc(n.desc),
-    }));
     debugLog('[Condition voting]', JSON.stringify(sourceConditionVotes));
     debugLog(`[Condition derived] ${nowConditionKey} reason=${nowConditionReason} (desc="${mostDesc}", rain=${currentHourRainChance}%, cloud=${currentCloudPct}%)`);
 
-    // FIX-001: Majority check — single source claiming rain/cloudy must not override clear consensus
-    // Requires ≥2 sources to agree on rain/cloudy before the app declares it
-    // BUG-1 fix: EXCEPTION — if Open-Meteo or MET Norway (most reliable for SA) votes rain, trust it
-    if ((nowConditionKey === 'rain-possible' || nowConditionKey === 'cloudy') && activeNorms.length >= 3) {
-      // CHANGE 1 (fog bug): countsAsWeatherVote includes 'fog', so explicit fog
-      // votes count as real weather and can never be discarded by a clear-flip.
-      const weatherVotes = sourceConditionVotes.filter(v => countsAsWeatherVote(v.vote));
-      const trustedRainVote = weatherVotes.some(v =>
-        (v.source === 'Open-Meteo' || v.source === 'MET Norway') && v.vote === 'rain'
-      );
-      if (weatherVotes.length < 2 && !trustedRainVote) {
-        debugLog(`[FIX-001 majority override] ${nowConditionKey} → clear (only ${weatherVotes.length}/${activeNorms.length} sources vote rain/cloudy/storm/fog, no trusted rain vote)`);
-        nowOverrides.push({ rule: 'majority-override-clear', from: nowConditionKey, to: 'clear', reasonDetail: `${weatherVotes.length}/${activeNorms.length} sources voted rain/cloudy/storm/fog, no trusted-source rain` });
-        nowConditionKey = 'clear';
-        nowConditionReason = 'majority-override-clear';
-      } else if (weatherVotes.length < 2 && trustedRainVote) {
-        debugLog(`[BUG-1] Keeping ${nowConditionKey} — trusted source (OM/MET) votes rain despite minority`);
-      }
-    }
-
-    // FIX-002: Fog majority check — single source claiming fog must not override clear consensus
-    // Requires ≥2 sources to agree on fog before declaring it
-    if (nowConditionKey === 'fog' && activeNorms.length >= 3) {
-      const fogVotes = sourceConditionVotes.filter(v => v.vote === 'fog');
-      if (fogVotes.length < 2) {
-        debugLog(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
-        nowOverrides.push({ rule: 'fog-blocked-single-source', from: 'fog', to: 'clear', reasonDetail: `only ${fogVotes.length} source(s) voted fog` });
-        nowConditionKey = 'clear';
-        nowConditionReason = 'fog-blocked-single-source';
-      }
-    }
-
-    // Phase B-2 Item 2: broader multi-source consensus.
-    // Extends the fog-style consensus rule uniformly to storm/wind/heat/cold.
-    // For each, if ≥3 sources are active but <2 individually support the
-    // condition, demote to clear with an audit-trail entry. Predicates use
-    // LOWER thresholds than deriveCondition's trigger so sources slightly
-    // below the trigger still count as "supporting" the headline — a 24 km/h
-    // wind reading supports a 30 km/h trigger.
-    const consensusPredicates = {
-      storm: (n) => categorizeDesc(n.desc) === 'storm',
-      wind:  (n) => isNum(n.windKph) && n.windKph >= 25,
-      heat:  (n) => (isNum(n.nowTemp) && n.nowTemp >= HEAT_WARM_C) || (isNum(n.feelsLike) && n.feelsLike >= HEAT_EXTREME_C),
-      cold:  (n) => (isNum(n.nowTemp) && n.nowTemp <= 10) || (isNum(n.feelsLike) && n.feelsLike <= -5),
-    };
-    if (consensusPredicates[nowConditionKey] && activeNorms.length >= 3) {
-      const originalKey = nowConditionKey;
-      const supporting = activeNorms.filter(consensusPredicates[originalKey]).length;
-      if (supporting < 2) {
-        debugLog(`[B-2 consensus] ${originalKey} → clear (only ${supporting}/${activeNorms.length} sources individually support ${originalKey})`);
-        nowOverrides.push({
-          rule: `${originalKey}-consensus-failed`,
-          from: originalKey,
-          to: 'clear',
-          reasonDetail: `only ${supporting}/${activeNorms.length} source(s) individually meet the ${originalKey} threshold`,
-        });
-        nowConditionKey = 'clear';
-        nowConditionReason = `${originalKey}-consensus-failed`;
-      }
+    // FIX-001 / FIX-002 / Phase B-2 vote consensus — one exported pure function
+    // (applyVoteConsensus, below deriveCondition) so the accuracy harness in
+    // review/accuracy/ replays exactly the code production runs.
+    {
+      const consensus = applyVoteConsensus({ key: nowConditionKey, reason: nowConditionReason, activeNorms, sourceVotes: sourceConditionVotes });
+      nowConditionKey = consensus.key;
+      nowConditionReason = consensus.reason;
+      nowOverrides.push(...consensus.overrides);
     }
 
     // =========================================================================
@@ -2588,6 +2572,11 @@ export default async function handler(req, res) {
         cloudPct: currentCloudPct,
         dailyHighC: aggregatedDaily?.[0]?.highC ?? null,
         isDay,
+        // 2026-09-22: the now-ladder's evidence inputs, so a wrong hero can be
+        // read off the payload alone (rain: votes + probability + mm; wind: gust).
+        precipMm: aggregatedHourly[localHour]?.precipMm ?? null,
+        rainVotes: nowRainVotes,
+        gustKph: maxGust,
       },
       sourceVotes: sourceConditionVotes,
       overrides: nowOverrides,
@@ -3199,6 +3188,17 @@ function calcFeelsLike(tempC, windKph, humidity) {
 /**
  * Derive the weather condition key for UI display.
  *
+ * TWO LADDERS since 2026-09-22 (condition-incident-20260922):
+ *   now: true  — the hero. Rungs 5–12 below are replaced by
+ *                5n rain NOW (rainVotes ≥ 2 AND rainChance ≥ 60 AND precipMm ≥ 0.3)
+ *                6n wind (mean ≥ 25 OR gust ≥ 55)   7n high UV
+ *                8n rain by description → rain-possible
+ *                9n rain-possible (rainChance ≥ 30)   10n overcast.
+ *                A probability is never "Rain's here."; it is "Might rain."
+ *   now: false — the daily ladder, unchanged, listed below. A day's blended
+ *                chance is calibrated (30–50% days rained 67–70% of the time),
+ *                so "rain" as a DAY outlook keeps its probability rungs.
+ *
  * Priority order (highest wins):
  *  1. Storm / thunder / tornado
  *  2. Extreme cold (feels like <= -5C, or temp <= 0C)
@@ -3234,9 +3234,13 @@ function calcFeelsLike(tempC, windKph, humidity) {
  * @param {number}  [params.dailyHighC] - Today's forecast high (optional). If
  *   provided, gates the chilly rung so a cool morning on a warm day is not
  *   labelled cold for the whole day.
+ * @param {boolean} [params.now]        - true = the NOW ladder (hero); default the daily ladder.
+ * @param {number}  [params.precipMm]   - now: blended precipitation for the current hour (mm)
+ * @param {number}  [params.rainVotes]  - now: sources whose current description is rain
+ * @param {number}  [params.gustKph]    - now: largest current gust any source reports
  * @returns {string} condition key
  */
-function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs }) {
+function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex, cloudPct, maxWindKph, isDay = true, dailyHighC, dailyLowC, sourceDescs, now = false, precipMm, rainVotes, gustKph }) {
   const d = String(desc || '').toLowerCase();
 
   // Use mean wind speed for condition thresholds. Gusts are displayed separately in the UI.
@@ -3358,29 +3362,62 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
   if (isNum(tempC) && tempC >= HEAT_EXTREME_C) return { key: 'heat', reason: 'extreme-heat-temp' };
   if (isNum(feelsLikeC) && feelsLikeC >= 38) return { key: 'heat', reason: 'extreme-heat-feels-like' };
 
-  // 5. Heavy rain
-  if (isNum(rainChance) && rainChance >= 60)  return { key: 'rain', reason: 'heavy-rain-prob' };
+  const descSaysRain = d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip');
+  const highUv = isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc) && !uvBlockedByCold;
 
-  // 6. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
-  if (isDay && isNum(uvIndex) && uvIndex >= 8 && !(isTrulyOvercast || isMostlyCloudy || overcastByDesc) && !uvBlockedByCold) return { key: 'uv', reason: 'high-uv-with-temp-gate' };
+  if (now) {
+    // ---- NOW ladder: the hero. Measured on 12,740 SA station-hours against METAR
+    // present weather (review/accuracy/results/before.md → after.md).
+    // 5n. Rain NOW needs evidence for THIS hour — sources describing rain, the
+    //     hour's blended probability AND the hour's blended amount. Probability
+    //     alone was a dry hour 55% of the time (Strand, 22 Sept 2026: 31% →
+    //     "Rain's here." over a dry, partly cloudy afternoon). The radar override
+    //     in the handler is the other route to 'rain'.
+    if (isNum(rainVotes) && rainVotes >= RAIN_NOW_MIN_VOTES
+        && isNum(rainChance) && rainChance >= RAIN_NOW_MIN_PROB
+        && isNum(precipMm) && precipMm >= RAIN_NOW_MIN_MM) return { key: 'rain', reason: 'rain-now' };
+    // 6n. Wind — above UV, might-rain and cloud: a fresh breeze IS the weather.
+    //     Gusts count (Al, 2026-09-22): the models' mean wind reads ~40% under the
+    //     anemometer at Cape Town and Johannesburg; the gust does not.
+    if (isNum(effectiveWind) && effectiveWind >= WIND_NOW_MEAN_KPH) return { key: 'wind', reason: 'sustained-wind' };
+    if (isNum(gustKph) && gustKph >= WIND_NOW_GUST_KPH)             return { key: 'wind', reason: 'gust-wind' };
+    // 7n. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
+    if (highUv) return { key: 'uv', reason: 'high-uv-with-temp-gate' };
+    // 8n. Rain by description without the evidence above is "might rain".
+    if (descSaysRain)                           return { key: 'rain-possible', reason: 'desc-rain-unconfirmed' };
+    // 9n. Might rain — the same 30% line the stats row words "Possible". Above
+    //     overcast, as the probability rung it replaces was: under a grey sky a
+    //     45% hour is "Might rain.", not "Cloudy" (30–60% hours were wet within
+    //     the hour either side 40–57% of the time).
+    if (isNum(rainChance) && rainChance >= RAIN_POSSIBLE_NOW_MIN_PROB) return { key: 'rain-possible', reason: 'rain-possible-prob' };
+    // 10n. Overcast
+    if (isTrulyOvercast || overcastByDesc)      return { key: 'cloudy', reason: 'overcast' };
+  } else {
+    // ---- DAILY ladder (week strip, day cards, day-0 outlook) — unchanged.
+    // 5. Heavy rain
+    if (isNum(rainChance) && rainChance >= 60)  return { key: 'rain', reason: 'heavy-rain-prob' };
 
-  // 7. Strong wind
-  if (isNum(effectiveWind) && effectiveWind >= 30) return { key: 'wind', reason: 'strong-wind' };
+    // 6. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
+    if (highUv) return { key: 'uv', reason: 'high-uv-with-temp-gate' };
 
-  // 8. Moderate rain
-  if (isNum(rainChance) && rainChance >= 30)  return { key: 'rain', reason: 'moderate-rain-prob' };
+    // 7. Strong wind
+    if (isNum(effectiveWind) && effectiveWind >= 30) return { key: 'wind', reason: 'strong-wind' };
 
-  // 9. Rain by description
-  if (d.includes('rain') || d.includes('drizzle') || d.includes('shower') || d.includes('precip')) return { key: 'rain', reason: 'desc-rain-keyword' };
+    // 8. Moderate rain
+    if (isNum(rainChance) && rainChance >= 30)  return { key: 'rain', reason: 'moderate-rain-prob' };
 
-  // 10. Moderate wind
-  if (isNum(effectiveWind) && effectiveWind >= 25) return { key: 'wind', reason: 'moderate-wind' };
+    // 9. Rain by description
+    if (descSaysRain) return { key: 'rain', reason: 'desc-rain-keyword' };
 
-  // 11. Overcast
-  if (isTrulyOvercast || overcastByDesc)      return { key: 'cloudy', reason: 'overcast' };
+    // 10. Moderate wind
+    if (isNum(effectiveWind) && effectiveWind >= 25) return { key: 'wind', reason: 'moderate-wind' };
 
-  // 12. Possible rain (20%+ but not yet "rain")
-  if (isNum(rainChance) && rainChance >= 20)  return { key: 'rain-possible', reason: 'rain-possible-prob' };
+    // 11. Overcast
+    if (isTrulyOvercast || overcastByDesc)      return { key: 'cloudy', reason: 'overcast' };
+
+    // 12. Possible rain (20%+ but not yet "rain")
+    if (isNum(rainChance) && rainChance >= 20)  return { key: 'rain-possible', reason: 'rain-possible-prob' };
+  }
 
   // 13. Fog / mist / haze
   if (d.includes('fog') || d.includes('mist') || d.includes('haze')) return { key: 'fog', reason: 'desc-fog-keyword' };
@@ -3413,6 +3450,77 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
 
   // 20. Fallback
   return { key: 'clear', reason: 'fallback-clear' };
+}
+
+/**
+ * Post-selector vote consensus for the NOW path, in production order:
+ *   FIX-001  rain-possible / cloudy need ≥2 weather votes (rain/cloudy/storm/fog)
+ *            unless Open-Meteo or MET Norway (most reliable for SA) voted rain.
+ *   FIX-002  fog needs ≥2 fog votes.
+ *   B-2      storm / wind / heat / cold need ≥2 sources individually near the
+ *            trigger. Predicates sit BELOW deriveCondition's trigger so a source
+ *            slightly under it still counts as support.
+ * All three run only with ≥3 active sources. Pure: returns the new key/reason and
+ * the audit-trail entries; the caller appends them to nowOverrides. Exported so
+ * review/accuracy/lib/replay.mjs runs this exact function.
+ */
+function applyVoteConsensus({ key, reason, activeNorms, sourceVotes }) {
+  const overrides = [];
+  // 2026-09-22: a might-rain from the hour's blended probability (rain-possible-prob,
+  // ≥ 30% across the sources) is already a multi-source verdict, not one source's
+  // description, and 30–60% hours were wet within the hour either side 40–57% of
+  // the time (before.md). It stands. The guard is for single-source descriptions.
+  if ((key === 'rain-possible' || key === 'cloudy') && reason !== 'rain-possible-prob' && activeNorms.length >= 3) {
+    // CHANGE 1 (fog bug): countsAsWeatherVote includes 'fog', so explicit fog
+    // votes count as real weather and can never be discarded by a clear-flip.
+    const weatherVotes = sourceVotes.filter(v => countsAsWeatherVote(v.vote));
+    const trustedRainVote = weatherVotes.some(v =>
+      (v.source === 'Open-Meteo' || v.source === 'MET Norway') && v.vote === 'rain'
+    );
+    if (weatherVotes.length < 2 && !trustedRainVote) {
+      debugLog(`[FIX-001 majority override] ${key} → clear (only ${weatherVotes.length}/${activeNorms.length} sources vote rain/cloudy/storm/fog, no trusted rain vote)`);
+      overrides.push({ rule: 'majority-override-clear', from: key, to: 'clear', reasonDetail: `${weatherVotes.length}/${activeNorms.length} sources voted rain/cloudy/storm/fog, no trusted-source rain` });
+      key = 'clear';
+      reason = 'majority-override-clear';
+    } else if (weatherVotes.length < 2 && trustedRainVote) {
+      debugLog(`[BUG-1] Keeping ${key} — trusted source (OM/MET) votes rain despite minority`);
+    }
+  }
+
+  if (key === 'fog' && activeNorms.length >= 3) {
+    const fogVotes = sourceVotes.filter(v => v.vote === 'fog');
+    if (fogVotes.length < 2) {
+      debugLog(`[ProbablyWeather] Fog blocked — single source only: ${fogVotes.map(v => v.source).join(', ')}`);
+      overrides.push({ rule: 'fog-blocked-single-source', from: 'fog', to: 'clear', reasonDetail: `only ${fogVotes.length} source(s) voted fog` });
+      key = 'clear';
+      reason = 'fog-blocked-single-source';
+    }
+  }
+
+  const consensusPredicates = {
+    storm: (n) => categorizeDesc(n.desc) === 'storm',
+    // 2026-09-22: a source supports 'wind' at 80% of either trigger (20 km/h mean
+    // or 44 km/h gust) — the same under-the-trigger margin B-2 always used.
+    wind:  (n) => (isNum(n.windKph) && n.windKph >= WIND_NOW_MEAN_KPH * 0.8) || (isNum(n.gustKph) && n.gustKph >= WIND_NOW_GUST_KPH * 0.8),
+    heat:  (n) => (isNum(n.nowTemp) && n.nowTemp >= HEAT_WARM_C) || (isNum(n.feelsLike) && n.feelsLike >= HEAT_EXTREME_C),
+    cold:  (n) => (isNum(n.nowTemp) && n.nowTemp <= 10) || (isNum(n.feelsLike) && n.feelsLike <= -5),
+  };
+  if (consensusPredicates[key] && activeNorms.length >= 3) {
+    const originalKey = key;
+    const supporting = activeNorms.filter(consensusPredicates[originalKey]).length;
+    if (supporting < 2) {
+      debugLog(`[B-2 consensus] ${originalKey} → clear (only ${supporting}/${activeNorms.length} sources individually support ${originalKey})`);
+      overrides.push({
+        rule: `${originalKey}-consensus-failed`,
+        from: originalKey,
+        to: 'clear',
+        reasonDetail: `only ${supporting}/${activeNorms.length} source(s) individually meet the ${originalKey} threshold`,
+      });
+      key = 'clear';
+      reason = `${originalKey}-consensus-failed`;
+    }
+  }
+  return { key, reason, overrides };
 }
 
 /**
@@ -3702,4 +3810,4 @@ function corroboratedFogUpgrade({ conditionKey, fogVoteCount, humidity, windKph 
 
 // Named exports for focused unit tests. The Vercel API runtime uses the default
 // export (the handler); these are test-only surface area.
-export { deriveCondition, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, agreementVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc, sanitizeSources };
+export { deriveCondition, applyVoteConsensus, categorizeDesc, pickWeightedMostCommon, pickModalCloud, detectAdvectionFog, conditionKeyToVoteBucket, agreementVoteBucket, countsAsWeatherVote, corroboratedFogUpgrade, isTrueFogDesc, sanitizeSources };
