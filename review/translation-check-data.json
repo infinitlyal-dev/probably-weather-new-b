@@ -3,32 +3,32 @@
  "method": "blind back-translation by fresh-context language agents (one per batch, English opened only after the back-translation was written), verdict MATCH/DRIFT/MISMATCH against the keyed English; wrong-source probe by word overlap against sibling lines; lang-check.mjs findings as corpus support",
  "counts": {
   "af": {
-   "pairs": 1760,
-   "MATCH": 1675,
+   "pairs": 1758,
+   "MATCH": 1673,
    "DRIFT": 76,
    "MISMATCH": 9,
    "wrongSource": 5,
    "flagged": 85
   },
   "zu": {
-   "pairs": 951,
-   "MATCH": 880,
+   "pairs": 949,
+   "MATCH": 878,
    "DRIFT": 56,
    "MISMATCH": 15,
    "wrongSource": 4,
    "flagged": 72
   },
   "xh": {
-   "pairs": 917,
-   "MATCH": 840,
+   "pairs": 915,
+   "MATCH": 838,
    "DRIFT": 69,
    "MISMATCH": 8,
    "wrongSource": 1,
    "flagged": 78
   },
   "st": {
-   "pairs": 945,
-   "MATCH": 875,
+   "pairs": 943,
+   "MATCH": 873,
    "DRIFT": 58,
    "MISMATCH": 12,
    "wrongSource": 6,
@@ -37,36 +37,36 @@
  },
  "flagged": 306,
  "sample": [
-  "zu-0778",
-  "zu-0183",
+  "zu-0776",
+  "zu-0179",
   "af-0451",
-  "xh-0756",
+  "xh-0754",
   "af-0132",
-  "af-1679",
-  "af-1633",
-  "xh-0546",
+  "af-1675",
+  "af-1630",
+  "xh-0539",
   "af-0020",
-  "st-0271",
-  "st-0793",
-  "zu-0212",
-  "af-1397",
-  "af-1947",
-  "zu-0630",
+  "st-0267",
+  "st-0794",
+  "zu-0208",
+  "af-1396",
+  "af-1941",
+  "af-2004",
   "zu-0845",
-  "af-1653",
-  "xh-0360",
-  "xh-0241",
-  "st-0382",
-  "af-1507",
-  "st-0335",
-  "st-0879",
-  "st-0618",
-  "xh-0650",
-  "af-0170",
-  "zu-0750",
-  "af-0341",
-  "zu-0411",
-  "zu-0602"
+  "af-1650",
+  "xh-0356",
+  "zu-0262",
+  "st-0377",
+  "af-1505",
+  "xh-0427",
+  "af-2104",
+  "xh-0687",
+  "xh-0644",
+  "af-0169",
+  "zu-0746",
+  "af-0340",
+  "zu-0406",
+  "zu-0596"
  ],
  "rows": [
   {
@@ -4629,7 +4629,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0170",
@@ -4655,8 +4656,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0171",
@@ -9230,7 +9230,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0341",
@@ -9258,8 +9259,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0342",
@@ -26540,7 +26540,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1397",
@@ -26566,8 +26567,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1398",
@@ -29385,7 +29385,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1506",
@@ -29437,8 +29438,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1508",
@@ -46107,7 +46107,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1631",
@@ -46188,8 +46189,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1634",
@@ -46652,7 +46652,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1651",
@@ -46733,8 +46734,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1654",
@@ -47340,7 +47340,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0180",
@@ -47448,8 +47449,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0184",
@@ -48141,7 +48141,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0209",
@@ -48251,8 +48252,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0213",
@@ -54533,7 +54533,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0263",
@@ -54797,8 +54798,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0242",
@@ -55902,7 +55902,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1676",
@@ -56010,8 +56011,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1680",
@@ -57538,7 +57538,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0268",
@@ -57650,8 +57651,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0272",
@@ -66919,7 +66919,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0407",
@@ -67054,8 +67055,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0412",
@@ -68564,7 +68564,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0357",
@@ -68674,8 +68675,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0361",
@@ -70523,7 +70523,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0428",
@@ -70631,8 +70632,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0336",
@@ -71794,7 +71794,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0378",
@@ -71929,8 +71930,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0383",
@@ -86757,7 +86757,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0597",
@@ -86919,8 +86920,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0603",
@@ -87821,7 +87821,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0540",
@@ -88020,8 +88021,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0547",
@@ -92095,7 +92095,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1942",
@@ -92257,8 +92258,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1948",
@@ -93807,7 +93807,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-2005",
@@ -93998,8 +93999,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0631",
@@ -97516,7 +97516,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0645",
@@ -97686,8 +97687,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0651",
@@ -98711,7 +98711,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0688",
@@ -98904,8 +98905,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0619",
@@ -101589,33 +101589,6 @@
    "reasons": []
   },
   {
-   "k": "af-2007",
-   "lang": "af",
-   "en": "The kind of day that makes you forget load shedding.",
-   "text": "Die soort dag wat jou laat vergeet van beurtkrag.",
-   "back": "The kind of day that makes you forget about load-shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#9"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-2008",
    "lang": "af",
    "en": "Save this one in the memory bank.",
@@ -101795,33 +101768,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#23"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-2015",
-   "lang": "af",
-   "en": "Days like this is why we put up with the load shedding.",
-   "text": "Dae soos hierdie is hoekom ons die beurtkrag verduur.",
-   "back": "Days like this are why we put up with load-shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#29"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -103206,33 +103152,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0729",
-   "lang": "zu",
-   "en": "The kind of day that makes you forget load shedding.",
-   "text": "Uhlobo losuku olwenza ukhohlwe i-load shedding.",
-   "back": "The kind of day that makes you forget about load shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#9"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0730",
    "lang": "zu",
    "en": "Somewhere an estate agent is saying 'lifestyle'.",
@@ -103693,7 +103612,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0747",
@@ -103752,36 +103672,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0749",
-   "lang": "zu",
-   "en": "Days like this is why we put up with the load shedding.",
-   "text": "Izinsuku ezinje yizona ezenza sikhuthazelele i-load shedding.",
-   "back": "Days like this are what make us put up with load shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage-high",
-    "findings": [
-     "MEDIUM lexical: 'sikhuthazelele' — seen only in this app's own copy, in no external source; closest attested: 'sikhuthazekile' (4× leipzig/nchlt/morph, distance 2)",
-     "MEDIUM semantic: 'ezenza' means 'to do; to perform, to carry out; to make' — nothing in the English source; it is 3 letters from 'ebuza', the usual word for 'shedding'"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#29"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0750",
    "lang": "zu",
    "en": "This is the stuff. Right here.",
@@ -103806,8 +103696,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0751",
@@ -104521,7 +104410,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0777",
@@ -104575,8 +104465,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0779",
@@ -105702,33 +105591,6 @@
    ]
   },
   {
-   "k": "xh-0703",
-   "lang": "xh",
-   "en": "The kind of day that makes you forget load shedding.",
-   "text": "Luhlobo lwemini olukwenza ulibale nge-load shedding.",
-   "back": "It's the kind of day that makes you forget about load shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#9"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0704",
    "lang": "xh",
    "en": "Somewhere an estate agent is saying 'lifestyle'.",
@@ -106238,33 +106100,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#28"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0723",
-   "lang": "xh",
-   "en": "Days like this is why we put up with the load shedding.",
-   "text": "Iimini ezinje zezinto ezisenza sinyamezele i-load shedding.",
-   "back": "Days like this are what make us put up with load shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#29"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -107119,7 +106954,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0755",
@@ -107177,8 +107013,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0757",
@@ -107988,33 +107823,6 @@
    ]
   },
   {
-   "k": "st-0724",
-   "lang": "st",
-   "en": "The kind of day that makes you forget load shedding.",
-   "text": "Mofuta oa letsatsi o etsang hore o lebale load shedding.",
-   "back": "The kind of day that makes you forget load shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#9"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0725",
    "lang": "st",
    "en": "Somewhere an estate agent is saying 'lifestyle'.",
@@ -108536,33 +108344,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#28"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0744",
-   "lang": "st",
-   "en": "Days like this is why we put up with the load shedding.",
-   "text": "Matsatsi a tjena ke lebaka leo re mametseng load shedding.",
-   "back": "Days like this are the reason we put up with load shedding.",
-   "note": "'mametseng' could be read from mamela (listen) or mamella (endure)",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#29"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -109922,8 +109703,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0794",
@@ -109950,7 +109730,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0795",
@@ -116995,10 +116776,11 @@
    "imageIsExample": true,
    "alRuledAf": null,
    "flagged": true,
-   "severity": 0,
+   "severity": -1,
    "reasons": [
     "MISMATCH: 'tlosa mabone a koloi' = 'take off/remove the car lights' - the opposite of 'headlights wouldn't hurt'; the 'maybe' hedge is also dropped."
-   ]
+   ],
+   "safety": "SAFETY REVERSAL — the Sesotho tells drivers to switch their headlights OFF in fog; the English says headlights would help. Shown in every Sesotho session with low-confidence fog."
   },
   {
    "k": "st-0871",
@@ -117749,8 +117531,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-2104",
@@ -117777,7 +117558,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-2105",

@@ -33,16 +33,25 @@ const lc = new Map(rd(path.join(dir, 'lc-all.json')).map((r) => [r.key, r]));
 // no longer anything Al can be shown — the app cannot put it on screen. The
 // back-translations are kept on disk and are not re-run: this drops the dead
 // pairs from the count so the number on the page is the real remaining work.
-// A pair with a bank reference stays: the condition bank is untouched.
 // The test is the LINE, not the slot: the cull took single lines off photographs
 // that kept their others, so the slot is still live while the line is gone.
 const liveEnglish = new Set(Object.values(HERO_LINES).flat());
-const stillWired = (p) => p.refs.some((r) => (r.kind === 'bespoke' ? liveEnglish.has(p.en) : true));
+// A BANK ref is live while its English is still in that bin. Since 2026-09-22 bank
+// lines can be cut too (the Eskom ruling, the season ruling), and the ref's index
+// is only a hint — a cut moves every later index — so the bin is searched by text.
+const bankHas = (id, en) => {
+  const [nsBin] = id.split('#');
+  const [ns, bin] = nsBin.split(':');
+  const v = WEATHER_COPY[ns]?.[bin];
+  if (!v) return false;
+  return Array.isArray(v.en) ? v.en.includes(en) : v.en === en;
+};
+const stillWired = (p) => p.refs.some((r) => (r.kind === 'bespoke' ? liveEnglish.has(p.en) : bankHas(r.id, p.en)));
 const pairs = allPairs.filter(stillWired);
 const dropped = allPairs.filter((p) => !stillWired(p));
 if (dropped.length) {
   const byLang = dropped.reduce((m, p) => (m[p.lang] = (m[p.lang] || 0) + 1, m), {});
-  console.log(`[translation-check] ${dropped.length} pair(s) dropped — their English line is no longer on a photograph: `
+  console.log(`[translation-check] ${dropped.length} pair(s) dropped — their English line is no longer live (off every photograph, or cut from the bank): `
     + Object.entries(byLang).map(([l, n]) => `${l} ${n}`).join(', '));
 }
 
@@ -136,6 +145,15 @@ const pool = clean.slice();
 while (sample.length < 30 && pool.length) sample.push(pool.splice(Math.floor(rand() * pool.length), 1)[0]);
 for (const s of sample) s.sample = true;
 
+// SAFETY REVERSALS go first, above everything, on their own. A translation that
+// tells a driver the opposite of the English is not a style question. st-0870
+// (witty_low_confidence fog, Sesotho): "tlosa mabone a koloi" = take the car's
+// lights OFF, keyed to "Mist building, maybe. Headlights wouldn't hurt."
+const SAFETY = {
+  'st-0870': 'SAFETY REVERSAL — the Sesotho tells drivers to switch their headlights OFF in fog; the English says headlights would help. Shown in every Sesotho session with low-confidence fog.',
+};
+for (const r of rows) if (SAFETY[r.k]) { r.safety = SAFETY[r.k]; r.severity = -1; }
+for (const k of Object.keys(SAFETY)) if (!rows.some((r) => r.k === k && r.flagged)) throw new Error(`${k}: pinned as a safety reversal but not a live flagged pair — re-check before rebuilding`);
 const flagged = rows.filter((r) => r.flagged).sort((a, b) => a.severity - b.severity || a.lang.localeCompare(b.lang) || a.k.localeCompare(b.k));
 const counts = {};
 for (const r of rows) { const c = (counts[r.lang] ||= { pairs: 0, MATCH: 0, DRIFT: 0, MISMATCH: 0, wrongSource: 0, flagged: 0 }); c.pairs += 1; c[r.verdict] = (c[r.verdict] || 0) + 1; if (r.wrongSource) c.wrongSource += 1; if (r.flagged) c.flagged += 1; }
@@ -145,7 +163,7 @@ writeFileSync(path.join(root, 'review', 'translation-check-data.json'), JSON.str
 }, null, 1));
 
 const LANG = { af: 'Afrikaans', zu: 'isiZulu', xh: 'isiXhosa', st: 'Sesotho' };
-const view = (r) => ({ k: r.k, lang: r.lang, en: r.en, text: r.text, back: r.back, note: r.note, reasons: r.reasons, verdict: r.verdict, reason: r.reason, lc: r.lc, where: r.where, image: r.image, ex: r.imageIsExample, al: r.alRuledAf, sample: !!r.sample, severity: r.severity });
+const view = (r) => ({ k: r.k, lang: r.lang, en: r.en, text: r.text, back: r.back, note: r.note, reasons: r.reasons, verdict: r.verdict, reason: r.reason, lc: r.lc, where: r.where, image: r.image, ex: r.imageIsExample, al: r.alRuledAf, sample: !!r.sample, severity: r.severity, safety: r.safety || '' });
 const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -180,6 +198,9 @@ h1 { font-size:1.4rem; margin:0 0 4px; } h2 { font-size:1.1rem; margin:26px 0 8p
 .act button.on.CUT { background:var(--cut); color:#fff; border-color:var(--cut); }
 textarea.fixnote { flex:1 1 260px; min-height:34px; font:inherit; font-size:.88rem; border:1px solid var(--line); border-radius:6px; padding:5px; background:transparent; color:inherit; }
 #out { width:100%; min-height:80px; margin-top:10px; font:12px ui-monospace, monospace; }
+.row.safety { border:2px solid var(--cut); }
+.safe-banner { background:var(--cut); color:#fff; font-weight:700; font-size:.88rem; border-radius:6px; padding:6px 9px; margin:0 0 6px; }
+h2.safety { color:var(--cut); margin-top:6px; }
 @media (max-width:560px) { .row { grid-template-columns:70px 1fr; } .row img { width:70px; height:124px; } .bar { position:static; } }
 </style>
 </head>
@@ -198,6 +219,9 @@ Choices save in this browser. <b>Export</b> saves <code>translation-check-ruled.
 <select id="sev"><option value="">all flags</option><option value="0">mismatch</option><option value="1">wrong source?</option><option value="2">drift</option></select>
 <label><input type="checkbox" id="open"> unruled only</label>
 <button id="export">Export translation-check-ruled.json</button><button id="copy">Copy JSON</button></div>
+<h2 class="safety" id="safetyHead">Safety reversal — rule this first</h2>
+<div id="safety"></div>
+<h2 id="restHead">Everything else that was flagged</h2>
 <div id="list"></div>
 <h2>Control sample: 30 lines the checker passed</h2>
 <div id="sample"></div>
@@ -215,11 +239,11 @@ const esc = (s) => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g
 function rowEl(r) {
   const st = state[r.k] || {};
   const el = document.createElement('section');
-  el.className = 'row ' + (st.v || '');
+  el.className = 'row ' + (st.v || '') + (r.safety ? ' safety' : '');
   const where = r.where.kind === 'photo' ? 'photo line · ' + r.where.slots + ' slots' + (r.where.bank.length ? ' · also bank ' + r.where.bank.join(', ') : '') : 'bank ' + r.where.bank.join(', ');
   const prov = r.lang === 'af' ? (r.al ? ' · you ruled this Afrikaans before' : ' · Afrikaans never ruled by you') : '';
   el.innerHTML = '<div>' + (r.image ? '<img loading="lazy" src="../assets/images/bg/' + r.image + '" alt="">' + (r.ex ? '<div class="ex">bank line: example photo</div>' : '') : '') + '</div>'
-    + '<div><div class="l">English source</div><div class="en">' + esc(r.en) + '</div>'
+    + '<div>' + (r.safety ? '<div class="safe-banner">' + esc(r.safety) + '</div>' : '') + '<div class="l">English source</div><div class="en">' + esc(r.en) + '</div>'
     + '<div class="l">' + LANG[r.lang] + '</div><div class="tx">' + esc(r.text) + '</div>'
     + '<div class="l">Back-translation (blind)</div><div class="bk">' + esc(r.back) + (r.note ? ' <span class="meta">(' + esc(r.note) + ')</span>' : '') + '</div>'
     + (r.sample ? '<ul class="why"><li>Checker: ' + esc(r.verdict) + (r.reason ? ', ' + esc(r.reason) : '') + '</li></ul>'
@@ -228,7 +252,7 @@ function rowEl(r) {
     + '<div class="meta">' + esc(r.k) + ' · ' + esc(where) + prov + '</div>'
     + '<div class="act">' + ['KEEP','FIX','CUT'].map(v => '<button class="' + v + (st.v === v ? ' on' : '') + '">' + v + '</button>').join('')
     + '<textarea class="fixnote" placeholder="note (what it should say / why)">' + esc(st.note || '') + '</textarea></div></div>';
-  el.querySelectorAll('.act button').forEach(b => b.addEventListener('click', () => { state[r.k] = { ...(state[r.k] || {}), v: b.textContent }; save(); el.className = 'row ' + b.textContent; el.querySelectorAll('.act button').forEach(x => x.classList.toggle('on', x === b)); count(); }));
+  el.querySelectorAll('.act button').forEach(b => b.addEventListener('click', () => { state[r.k] = { ...(state[r.k] || {}), v: b.textContent }; save(); el.className = 'row ' + b.textContent + (r.safety ? ' safety' : ''); el.querySelectorAll('.act button').forEach(x => x.classList.toggle('on', x === b)); count(); }));
   el.querySelector('textarea').addEventListener('input', (e) => { state[r.k] = { ...(state[r.k] || {}), note: e.target.value }; save(); });
   return el;
 }
@@ -240,7 +264,10 @@ function render() {
   const lang = document.getElementById('lang').value, sev = document.getElementById('sev').value, open = document.getElementById('open').checked;
   const keep = (r) => (!lang || r.lang === lang) && (!open || !(state[r.k] && state[r.k].v));
   const list = document.getElementById('list'); list.innerHTML = '';
-  for (const r of FLAGGED) if (keep(r) && (sev === '' || String(r.severity) === sev)) list.appendChild(rowEl(r));
+  const safe = document.getElementById('safety'); safe.innerHTML = '';
+  for (const r of FLAGGED) if (r.safety && keep(r)) safe.appendChild(rowEl(r));
+  document.getElementById('safetyHead').style.display = safe.children.length ? '' : 'none';
+  for (const r of FLAGGED) if (!r.safety && keep(r) && (sev === '' || String(r.severity) === sev)) list.appendChild(rowEl(r));
   const sm = document.getElementById('sample'); sm.innerHTML = '';
   for (const r of SAMPLE) if (keep(r)) sm.appendChild(rowEl(r));
   count();

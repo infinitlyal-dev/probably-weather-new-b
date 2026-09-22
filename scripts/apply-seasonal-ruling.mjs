@@ -172,6 +172,9 @@ if (bankKeep.length) {
 process.stdout.write(node('scripts/generate-copy-splits.mjs').split('\n').filter((l) => /wrote|error/i.test(l)).map((l) => `  ${l}`).join('\n') + '\n');
 process.stdout.write(node('scripts/build-hero-lines.mjs'));
 process.stdout.write(node('scripts/lang-check/apply-af-accepted.mjs', '--decisions', 'review/af-al-decisions.json'));
+// The translation check shows only pairs whose line still exists, so it is rebuilt
+// with every cut — otherwise Al rules rows for lines that are already gone.
+process.stdout.write(node('scripts/translation-check/build-page.mjs'));
 
 // ---- 7. never a blank caption --------------------------------------------------
 const W = (await fresh('assets/weather-copy.js')).WEATHER_COPY;
