@@ -1,0 +1,2029 @@
+{
+ "generated": "2026-09-23",
+ "source": "Every live bespoke line (review/set-001-lines-bespoke-final.json) whose English or Afrikaans names a place or region, plus the two untagged lines naming the southeaster. Tags from assets/hero-lines.js HERO_LINE_TAGS; Afrikaans from assets/hero-lines-af.js; boxes from assets/geo-regions.js.",
+ "trigger": "Strand, 23 Sept 2026: \"Joburg drivers are panicking already.\" captioned a rain photograph (rain/week_2/day/3.webp).",
+ "counts": {
+  "rows": 62,
+  "placeLines": 60,
+  "placeUntagged": 47,
+  "placeTagged": 13,
+  "afrikaansOnly": 2,
+  "windLines": 2,
+  "alsoBankLines": 21,
+  "leanTag": 21,
+  "leanKeep": 28
+ },
+ "excluded": {
+  "note": "Named but not a region question: the whole app is South African, or the name is not a place a viewer can stand in.",
+  "lines": [
+   "Good night, South Africa.",
+   "This is why we live in South Africa.",
+   "Some clouds. Some sun. South African summer admin.",
+   "The sky is threatening, the firelighters are answering: a very South African standoff.",
+   "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+   "Yes, it's raining sideways. South Africa speciality.",
+   "In the sun: bearable. Two steps left: Antarctica.",
+   "Clouds are crying like NZ at the 23 Rugby WC!",
+   "Silent Hill vibes. Without the monsters. Hopefully.",
+   "Not a cloud. Just you and the Southern Cross.",
+   "The Southern Cross is out and the lawn has gone silver under it.",
+   "The Southern Cross is out, and so is the frost. Package deal."
+  ]
+ },
+ "verdicts": {
+  "KEEP": "untagged: the line shows anywhere its photograph does (on an already-tagged row this lifts the tag)",
+  "TAG": "the proposed region becomes the line’s tag; a line that is also a condition-bank line takes the tag in the bank too (all five languages share the bank row’s tag), and the bespoke copy inherits it",
+  "CUT": "the line comes off every photograph (English and Afrikaans); a line that is also a condition-bank line leaves the bank in all five languages"
+ },
+ "rows": [
+  {
+   "key": "P01",
+   "group": "place",
+   "en": "Joburg drivers are panicking already.",
+   "af": "Joburg-bestuurders paniek al klaar.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "On screen at Strand, 23 Sept 2026. Photo: rain on a windscreen, traffic, hills behind; nothing in it says Joburg.",
+   "alsoBank": [
+    {
+     "key": "witty:rain#5",
+     "tag": null
+    }
+   ],
+   "photos": [
+    {
+     "image": "rain/week_2/day/3.webp",
+     "hash": "fec85aba3f48",
+     "slots": [
+      "rain/week_2/day/3.webp",
+      "rain/week_4/day/3.webp"
+     ],
+     "label": "rain · day · Wed",
+     "others": 2
+    }
+   ]
+  },
+  {
+   "key": "P02",
+   "group": "place",
+   "en": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+   "af": "Joburg somerreën: kom vyfuur, deurweek alles, weg teen aandete.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "Photo: the Joburg skyline in rain from a balcony, so it is a caption; \"Joburg rains for twenty minutes…\" on the same photograph is tagged gauteng, and TAG keeps them consistent. It also says summer; season is not this page's question.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "rain/week_1/dusk/3.webp",
+     "hash": "e95e8a2f22f0",
+     "slots": [
+      "rain/week_1/dusk/3.webp",
+      "rain/week_2/dusk/3.webp",
+      "rain/week_3/dusk/3.webp",
+      "rain/week_4/dusk/3.webp"
+     ],
+     "label": "rain · dusk · Wed",
+     "others": 1
+    }
+   ]
+  },
+  {
+   "key": "P03",
+   "group": "place",
+   "en": "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
+   "af": "Jakarandablomme en stormwater — die kombinasie waarvan Joburg die minste hou.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "Photo: a rainy suburban street at night; nothing in it says Joburg.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "rain/week_1/night/3.webp",
+     "hash": "f8781ec0eb86",
+     "slots": [
+      "rain/week_1/night/3.webp",
+      "rain/week_2/night/3.webp",
+      "rain/week_3/night/3.webp",
+      "rain/week_4/night/3.webp"
+     ],
+     "label": "rain · night · Wed",
+     "others": 7
+    }
+   ]
+  },
+  {
+   "key": "P04",
+   "group": "place",
+   "en": "The sky has gone the colour that makes Joburg check the group chat.",
+   "af": "Die lug het die kleur geword wat Joburg na die group chat laat kyk.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "Photo: a windy suburban street under grey sky; nothing in it says Joburg.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_2/day/6.webp",
+     "hash": "5df9d64aa037",
+     "slots": [
+      "wind/week_2/day/6.webp",
+      "wind/week_4/day/6.webp"
+     ],
+     "label": "wind · day · Sat",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P05",
+   "group": "place",
+   "en": "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+   "af": "Nie een wolk nie, nie een graad nie: 'n Hoëveldse wintermôre doen albei gelyk.",
+   "names": "the Highveld",
+   "current": null,
+   "tag": null,
+   "proposed": "highveld",
+   "lean": "TAG",
+   "note": "Photo: a cyclist on a frosty tree-lined road; nothing in it says Highveld.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/4.webp",
+     "hash": "caaa1c42d70a",
+     "slots": [
+      "cold-clear/week_1/dawn/4.webp",
+      "cold-clear/week_2/dawn/4.webp",
+      "cold-clear/week_3/dawn/4.webp",
+      "cold-clear/week_4/dawn/4.webp"
+     ],
+     "label": "cold-clear · dawn · Thu",
+     "others": 2
+    }
+   ]
+  },
+  {
+   "key": "P06",
+   "group": "place",
+   "en": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+   "af": "Asem soos rook, ryp op die glas, son reeds op: Hoëveldse skoolrit.",
+   "names": "the Highveld",
+   "current": null,
+   "tag": null,
+   "proposed": "highveld",
+   "lean": "TAG",
+   "note": "Photo: a dad and son at a bakkie on a frosty morning; nothing in it says Highveld.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/day/3.webp",
+     "hash": "042ba0a95388",
+     "slots": [
+      "cold-clear/week_1/day/3.webp",
+      "cold-clear/week_2/day/3.webp",
+      "cold-clear/week_3/day/3.webp",
+      "cold-clear/week_4/day/3.webp"
+     ],
+     "label": "cold-clear · day · Wed",
+     "others": 2
+    }
+   ]
+  },
+  {
+   "key": "P07",
+   "group": "place",
+   "en": "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+   "af": "Blou lug, goue gras, wit rande: 'n Hoëveldse rugbyoggend in volle drag.",
+   "names": "the Highveld",
+   "current": null,
+   "tag": null,
+   "proposed": "highveld",
+   "lean": "TAG",
+   "note": "Photo: rugby posts on a frosty field; nothing in it says Highveld.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/day/6.webp",
+     "hash": "bbad2500c852",
+     "slots": [
+      "cold-clear/week_1/day/6.webp",
+      "cold-clear/week_2/day/6.webp",
+      "cold-clear/week_3/day/6.webp",
+      "cold-clear/week_4/day/6.webp"
+     ],
+     "label": "cold-clear · day · Sat",
+     "others": 2
+    }
+   ]
+  },
+  {
+   "key": "P08",
+   "group": "place",
+   "en": "A clear dusk on the Highveld is just the frost clearing its throat.",
+   "af": "'n Helder skemer op die Hoëveld is net die ryp wat sy keel skoonmaak.",
+   "names": "the Highveld",
+   "current": null,
+   "tag": null,
+   "proposed": "highveld",
+   "lean": "TAG",
+   "note": "Photo: a dog at a gate at frosty dusk; nothing in it says Highveld.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dusk/2.webp",
+     "hash": "510b7a0d60c0",
+     "slots": [
+      "cold-clear/week_1/dusk/2.webp",
+      "cold-clear/week_2/dusk/2.webp",
+      "cold-clear/week_3/dusk/2.webp",
+      "cold-clear/week_4/dusk/2.webp"
+     ],
+     "label": "cold-clear · dusk · Tue",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P09",
+   "group": "place",
+   "en": "Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time.",
+   "af": "Hoëveldse reën kom nie aan nie. Dit word afgelewer — alles tegelyk, een plaas op 'n slag.",
+   "names": "the Highveld",
+   "current": null,
+   "tag": null,
+   "proposed": "highveld",
+   "lean": "TAG",
+   "note": "Photo: a rain shaft over a farmhouse on flat farmland; nothing in it says Highveld.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "storm/week_2/day/3.webp",
+     "hash": "ea95b93c8930",
+     "slots": [
+      "storm/week_2/day/3.webp",
+      "storm/week_4/day/3.webp"
+     ],
+     "label": "storm · day · Wed",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P10",
+   "group": "place",
+   "en": "A Free State storm gives you exactly as much warning as it feels like.",
+   "af": "'n Vrystaatse storm gee jou presies soveel waarskuwing soos wat hy lus het.",
+   "names": "the Free State",
+   "current": null,
+   "tag": null,
+   "proposed": "free-state",
+   "lean": "TAG",
+   "note": "Photo: lightning over a suburban street; nothing in it says Free State.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "storm/week_1/night/4.webp",
+     "hash": "ae79261d2852",
+     "slots": [
+      "storm/week_1/night/4.webp",
+      "storm/week_2/night/4.webp",
+      "storm/week_3/night/4.webp",
+      "storm/week_4/night/4.webp"
+     ],
+     "label": "storm · night · Thu",
+     "others": 6
+    }
+   ]
+  },
+  {
+   "key": "P11",
+   "group": "place",
+   "en": "Overcast this thick turns the Karoo into a corridor, and he is halfway down it.",
+   "af": "Wolke só dik maak van die Karoo 'n gang, en hy is halfpad daarin af.",
+   "names": "the Karoo",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "TAG",
+   "note": "Photo: a bakkie's headlights on a dark road; nothing in it says Karoo.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cloudy/week_1/night/5.webp",
+     "hash": "e991afd863ba",
+     "slots": [
+      "cloudy/week_1/night/5.webp",
+      "cloudy/week_2/night/5.webp",
+      "cloudy/week_3/night/5.webp",
+      "cloudy/week_4/night/5.webp"
+     ],
+     "label": "cloudy · night · Fri",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P12",
+   "group": "place",
+   "en": "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
+   "af": "Ryp tot teen die damwal: die Karoo het oornag sy winterding gedoen.",
+   "names": "the Karoo",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "TAG",
+   "note": "Photo: a windpump on frosty veld. The same photograph carries a Highveld line (gauteng) and a Free State line (free-state), so it reads as any platteland.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/6.webp",
+     "hash": "28129477b706",
+     "slots": [
+      "cold-clear/week_1/dawn/6.webp",
+      "cold-clear/week_2/dawn/6.webp",
+      "cold-clear/week_3/dawn/6.webp",
+      "cold-clear/week_4/dawn/6.webp"
+     ],
+     "label": "cold-clear · dawn · Sat",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P13",
+   "group": "place",
+   "en": "Full sun, visible breath: the Karoo running both seasons before lunch.",
+   "af": "Vol son, sigbare asem: die Karoo speel albei seisoene af voor middagete.",
+   "names": "the Karoo",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "TAG",
+   "note": "Photo: an old farmer on a white wall over flat veld. \"Karoo morning…\" on the same photograph is already tagged karoo; TAG keeps the pair consistent, KEEP treats it as a caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/day/2.webp",
+     "hash": "21c809043132",
+     "slots": [
+      "cold-clear/week_1/day/2.webp",
+      "cold-clear/week_2/day/2.webp",
+      "cold-clear/week_3/day/2.webp",
+      "cold-clear/week_4/day/2.webp"
+     ],
+     "label": "cold-clear · day · Tue",
+     "others": 2
+    }
+   ]
+  },
+  {
+   "key": "P14",
+   "group": "place",
+   "en": "Northern Cape wind does not howl. It leans on things until they give.",
+   "af": "Noord-Kaapse wind huil nie. Hy leun op goed tot hulle meegee.",
+   "names": "the Northern Cape",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "TAG",
+   "note": "Photo: an aloe and a thorn tree in blowing dust. geo-regions.js has no Northern Cape box; karoo is the nearest and covers the southern Northern Cape, not Upington or the Kalahari. A region with no box fails open and shows everywhere.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/night/4.webp",
+     "hash": "bfc08af75267",
+     "slots": [
+      "wind/week_1/night/4.webp",
+      "wind/week_2/night/4.webp",
+      "wind/week_3/night/4.webp",
+      "wind/week_4/night/4.webp"
+     ],
+     "label": "wind · night · Thu",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P15",
+   "group": "place",
+   "en": "Even the Capetonians are admitting it's cold.",
+   "af": "Selfs die Kapenaars erken dit is koud.",
+   "names": "Capetonians",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Photo: a man bracing against the cold on a wet suburban street; nothing in it says Cape Town.",
+   "alsoBank": [
+    {
+     "key": "witty:cold#7",
+     "tag": null
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold/week_2/day/5.webp",
+     "hash": "a373f1d83e2f",
+     "slots": [
+      "cold/week_2/day/5.webp",
+      "cold/week_4/day/5.webp"
+     ],
+     "label": "cold · day · Fri",
+     "others": 2
+    }
+   ]
+  },
+  {
+   "key": "P16",
+   "group": "place",
+   "en": "Cape Town is still on under there; the fog is just running interference.",
+   "af": "Kaapstad is nog aan daaronder; die mis staan net in die pad.",
+   "names": "Cape Town",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Photo: Cape Town from above at night under fog, so it is a caption; but \"Cape Town just got a dimmer switch.\" on the same photograph is tagged, and TAG keeps the pair consistent.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "fog/week_1/night/3.webp",
+     "hash": "5a72ad3aac4b",
+     "slots": [
+      "fog/week_1/night/3.webp",
+      "fog/week_2/night/3.webp",
+      "fog/week_3/night/3.webp",
+      "fog/week_4/night/3.webp"
+     ],
+     "label": "fog · night · Wed",
+     "others": 1
+    }
+   ]
+  },
+  {
+   "key": "P17",
+   "group": "place",
+   "en": "Wednesday, and the Cape Doctor is doing its rounds a little early.",
+   "af": "Woensdag, en die Kaapse Dokter doen sy rondtes 'n bietjie vroeg.",
+   "names": "the Cape (Cape Doctor)",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Names the wind blowing where you are. The western-cape box started life as app.js's Cape Doctor box, and \"The Cape Doctor is making house calls.\" is already tagged.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/night/3.webp",
+     "hash": "0e5c84f6ab31",
+     "slots": [
+      "wind/week_1/night/3.webp",
+      "wind/week_2/night/3.webp",
+      "wind/week_3/night/3.webp",
+      "wind/week_4/night/3.webp"
+     ],
+     "label": "wind · night · Wed",
+     "others": 7
+    }
+   ]
+  },
+  {
+   "key": "P18",
+   "group": "place",
+   "en": "The Cape Doctor is on night shift. The whole street has an appointment.",
+   "af": "Die Kaapse Dokter werk nagskof. Die hele straat het 'n afspraak.",
+   "names": "the Cape (Cape Doctor)",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Names the wind blowing where you are. The other Cape Doctor line is already tagged western-cape.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/night/3.webp",
+     "hash": "0e5c84f6ab31",
+     "slots": [
+      "wind/week_1/night/3.webp",
+      "wind/week_2/night/3.webp",
+      "wind/week_3/night/3.webp",
+      "wind/week_4/night/3.webp"
+     ],
+     "label": "wind · night · Wed",
+     "others": 7
+    }
+   ]
+  },
+  {
+   "key": "P19",
+   "group": "place",
+   "en": "Nobody on this side of Gqeberha is hanging washing out today.",
+   "af": "Niemand aan hierdie kant van Gqeberha hang vandag wasgoed op nie.",
+   "names": "Gqeberha",
+   "current": null,
+   "tag": null,
+   "proposed": "eastern-cape",
+   "lean": "TAG",
+   "note": "Photo: a windy coastal street with a flag; nothing in it says Gqeberha.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_2/day/4.webp",
+     "hash": "55504e5b8143",
+     "slots": [
+      "wind/week_2/day/4.webp",
+      "wind/week_4/day/4.webp"
+     ],
+     "label": "wind · day · Thu",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P20",
+   "group": "place",
+   "en": "Wednesday this warm turns every roof in Joburg into a second office.",
+   "af": "'n Woensdag só warm maak van elke dak in Joburg 'n tweede kantoor.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "KEEP",
+   "note": "Photo: two women working on a Joburg rooftop, Hillbrow Tower behind. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "clear/week_1/day/3.webp",
+     "hash": "77cfc93827e3",
+     "slots": [
+      "clear/week_1/day/3.webp",
+      "clear/week_3/day/3.webp"
+     ],
+     "label": "clear · day · Wed",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P21",
+   "group": "place",
+   "en": "Joburg does about three hundred of these a year. Nobody is complaining.",
+   "af": "Joburg kry omtrent driehonderd van hierdie 'n jaar. Niemand kla nie.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "KEEP",
+   "note": "Photo: a rooftop party in front of the Joburg skyline. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "clear/week_2/day/2.webp",
+     "hash": "9ab8b9f07431",
+     "slots": [
+      "clear/week_2/day/2.webp",
+      "clear/week_4/day/2.webp"
+     ],
+     "label": "clear · day · Tue",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P22",
+   "group": "place",
+   "en": "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+   "af": "Daardie beker stoom, want in Joburg begin bewolkte oggende by omtrent vier grade.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "KEEP",
+   "note": "Photo: a Joburg street at dawn, Hillbrow Tower behind. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cloudy/week_1/dawn/5.webp",
+     "hash": "3bfd9b9470d6",
+     "slots": [
+      "cloudy/week_1/dawn/5.webp",
+      "cloudy/week_2/dawn/5.webp",
+      "cloudy/week_3/dawn/5.webp",
+      "cloudy/week_4/dawn/5.webp"
+     ],
+     "label": "cloudy · dawn · Fri",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P23",
+   "group": "place",
+   "en": "Looks like a tourism ad. Feels like the inside of a fridge.",
+   "af": "Joburg lyk soos 'n advertensie en voel soos 'n yskas.",
+   "names": "Joburg (Afrikaans only)",
+   "current": null,
+   "tag": {
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9
+    ]
+   },
+   "proposed": "gauteng",
+   "lean": "KEEP",
+   "note": "Only the Afrikaans names Joburg, and the photograph is the Joburg skyline, so the Afrikaans captions the picture.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#36",
+     "tag": {
+      "time": [
+       "morning"
+      ],
+      "months": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/7.webp",
+     "hash": "6ca4d027da38",
+     "slots": [
+      "cold-clear/week_1/dawn/7.webp",
+      "cold-clear/week_2/dawn/7.webp",
+      "cold-clear/week_3/dawn/7.webp",
+      "cold-clear/week_4/dawn/7.webp"
+     ],
+     "label": "cold-clear · dawn · Sun",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P24",
+   "group": "place",
+   "en": "Joburg winter dawn: the view is free; the air charges admission.",
+   "af": "Joburg winterdagbreek: die uitsig is verniet; die lug vra toegangsgeld.",
+   "names": "Joburg",
+   "current": null,
+   "tag": null,
+   "proposed": "gauteng",
+   "lean": "KEEP",
+   "note": "Photo: a runner looking over the Joburg skyline at dawn. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/7.webp",
+     "hash": "6ca4d027da38",
+     "slots": [
+      "cold-clear/week_1/dawn/7.webp",
+      "cold-clear/week_2/dawn/7.webp",
+      "cold-clear/week_3/dawn/7.webp",
+      "cold-clear/week_4/dawn/7.webp"
+     ],
+     "label": "cold-clear · dawn · Sun",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P25",
+   "group": "place",
+   "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "af": "Welkom-koud vandag. Die soort wat deur drie truie gaan asof hulle nie daar is nie.",
+   "names": "Welkom",
+   "current": null,
+   "tag": null,
+   "proposed": "free-state",
+   "lean": "KEEP",
+   "note": "A comparison (as cold as Welkom) and a pun on welkom. Photo: frosted wheelie bins at sunrise.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#5",
+     "tag": null
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/1.webp",
+     "hash": "3e60dabd7ef7",
+     "slots": [
+      "cold-clear/week_1/dawn/1.webp",
+      "cold-clear/week_2/dawn/1.webp",
+      "cold-clear/week_3/dawn/1.webp",
+      "cold-clear/week_4/dawn/1.webp"
+     ],
+     "label": "cold-clear · dawn · Mon",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P26",
+   "group": "place",
+   "en": "The Karoo cools fast under a clear sky, but nobody has noticed yet.",
+   "af": "Die Karoo koel vinnig af onder 'n skoon lug, maar niemand het dit nog agtergekom nie.",
+   "names": "the Karoo",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "KEEP",
+   "note": "Photo: kids playing cricket in a dorp street with a windpump. Reads as the Karoo.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "clear/week_1/dusk/5.webp",
+     "hash": "90a621539543",
+     "slots": [
+      "clear/week_1/dusk/5.webp",
+      "clear/week_2/dusk/5.webp",
+      "clear/week_3/dusk/5.webp",
+      "clear/week_4/dusk/5.webp"
+     ],
+     "label": "clear · dusk · Fri",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P27",
+   "group": "place",
+   "en": "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
+   "af": "Die skape het 'n uur gelede saamgebondel, en dis die Karoo se eie voorspelling.",
+   "names": "the Karoo",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "KEEP",
+   "note": "Photo: sheep bunched on Karoo veld. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cloudy/week_2/day/3.webp",
+     "hash": "119e4a52f8a4",
+     "slots": [
+      "cloudy/week_2/day/3.webp",
+      "cloudy/week_4/day/3.webp"
+     ],
+     "label": "cloudy · day · Wed",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P28",
+   "group": "place",
+   "en": "Somebody left the freezer door open overnight.",
+   "af": "Die Karoo het die verkoeler oopgelos.",
+   "names": "the Karoo (Afrikaans only)",
+   "current": null,
+   "tag": {
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9
+    ]
+   },
+   "proposed": "karoo",
+   "lean": "KEEP",
+   "note": "Only the Afrikaans names a place. Photo: a hadeda on a frosty suburban lawn, not the Karoo. The tag keys on the English, so TAG also hides the English outside the Karoo. The clean fix is a new Afrikaans line, which is an Afrikaans ruling, not this page.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#34",
+     "tag": {
+      "time": [
+       "morning"
+      ],
+      "months": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/2.webp",
+     "hash": "898c05f233a6",
+     "slots": [
+      "cold-clear/week_1/dawn/2.webp",
+      "cold-clear/week_2/dawn/2.webp",
+      "cold-clear/week_3/dawn/2.webp",
+      "cold-clear/week_4/dawn/2.webp"
+     ],
+     "label": "cold-clear · dawn · Tue",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P29",
+   "group": "place",
+   "en": "The Karoo does its coldest hour right before its prettiest one.",
+   "af": "Die Karoo se koudste uur kom net voor sy mooiste een.",
+   "names": "the Karoo",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "KEEP",
+   "note": "Photo: a farmer and his sheep at a frosty Karoo dawn. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold/week_1/dawn/4.webp",
+     "hash": "41c9f776e0fb",
+     "slots": [
+      "cold/week_1/dawn/4.webp",
+      "cold/week_2/dawn/4.webp",
+      "cold/week_3/dawn/4.webp",
+      "cold/week_4/dawn/4.webp"
+     ],
+     "label": "cold · dawn · Thu",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P30",
+   "group": "place",
+   "en": "Sunday, and the Karoo is doing the one thing it does better than anywhere.",
+   "af": "Sondag, en die Karoo doen die een ding wat hy beter as enige plek doen.",
+   "names": "the Karoo",
+   "current": null,
+   "tag": null,
+   "proposed": "karoo",
+   "lean": "KEEP",
+   "note": "Photo: a stoep facing a Karoo sunset, windpump and koppie. The line captions the picture.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "heat/week_1/dusk/7.webp",
+     "hash": "9728bed72ec6",
+     "slots": [
+      "heat/week_1/dusk/7.webp",
+      "heat/week_2/dusk/7.webp",
+      "heat/week_3/dusk/7.webp",
+      "heat/week_4/dusk/7.webp"
+     ],
+     "label": "heat · dusk · Sun",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P31",
+   "group": "place",
+   "en": "The Bo-Kaap does the colour this morning because the sky refuses to.",
+   "af": "Die Bo-Kaap sorg vanoggend vir die kleur, want die lug weier.",
+   "names": "the Bo-Kaap",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: the Bo-Kaap under cloud. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cloudy/week_1/dawn/6.webp",
+     "hash": "b5793c36b69d",
+     "slots": [
+      "cloudy/week_1/dawn/6.webp",
+      "cloudy/week_2/dawn/6.webp",
+      "cloudy/week_3/dawn/6.webp",
+      "cloudy/week_4/dawn/6.webp"
+     ],
+     "label": "cloudy · dawn · Sat",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P32",
+   "group": "place",
+   "en": "Table Mountain gets the silhouette; the clouds get the whole colour budget.",
+   "af": "Tafelberg kry die silhoeët; die wolke kry die hele kleurbegroting.",
+   "names": "Table Mountain",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: Table Mountain in silhouette across the bay. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cloudy/week_1/dusk/7.webp",
+     "hash": "6b5271665e34",
+     "slots": [
+      "cloudy/week_1/dusk/7.webp",
+      "cloudy/week_2/dusk/7.webp",
+      "cloudy/week_3/dusk/7.webp",
+      "cloudy/week_4/dusk/7.webp"
+     ],
+     "label": "cloudy · dusk · Sun",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P33",
+   "group": "place",
+   "en": "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
+   "af": "Vrydagaand, sneeu op die Apostels, en die enigste tou is vir die ketel.",
+   "names": "the (Twelve) Apostles",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: hot chocolate on a balcony facing snow on the mountains above the Atlantic seaboard. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold/week_1/dusk/5.webp",
+     "hash": "917c4c0a6fac",
+     "slots": [
+      "cold/week_1/dusk/5.webp",
+      "cold/week_2/dusk/5.webp",
+      "cold/week_3/dusk/5.webp",
+      "cold/week_4/dusk/5.webp"
+     ],
+     "label": "cold · dusk · Fri",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P34",
+   "group": "place",
+   "en": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
+   "af": "Sneeu op die berg. Die soort koue wat Kaapstad raam en teen die muur hang.",
+   "names": "Cape Town",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Same balcony photograph, snow on the mountain above the sea. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold/week_1/dusk/5.webp",
+     "hash": "917c4c0a6fac",
+     "slots": [
+      "cold/week_1/dusk/5.webp",
+      "cold/week_2/dusk/5.webp",
+      "cold/week_3/dusk/5.webp",
+      "cold/week_4/dusk/5.webp"
+     ],
+     "label": "cold · dusk · Fri",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P35",
+   "group": "place",
+   "en": "Frost on the lawn and wors on the grid: a Cape winter compromise.",
+   "af": "Ryp op die grasperk en wors op die rooster: 'n Kaapse winterkompromie.",
+   "names": "the Cape",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: a frosty-night braai in front of a Cape Dutch gable. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cold/week_1/night/6.webp",
+     "hash": "13efc9191981",
+     "slots": [
+      "cold/week_1/night/6.webp",
+      "cold/week_2/night/6.webp",
+      "cold/week_3/night/6.webp",
+      "cold/week_4/night/6.webp"
+     ],
+     "label": "cold · night · Sat",
+     "others": 0
+    }
+   ]
+  },
+  {
+   "key": "P36",
+   "group": "place",
+   "en": "The fog took the city but it is not getting the Bo-Kaap's colours.",
+   "af": "Die mis het die stad gevat, maar die Bo-Kaap se kleure kry hy nie.",
+   "names": "the Bo-Kaap",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: the Bo-Kaap in fog. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "fog/week_1/dusk/5.webp",
+     "hash": "b5837596744c",
+     "slots": [
+      "fog/week_1/dusk/5.webp",
+      "fog/week_2/dusk/5.webp",
+      "fog/week_3/dusk/5.webp",
+      "fog/week_4/dusk/5.webp"
+     ],
+     "label": "fog · dusk · Fri",
+     "others": 0
+    }
+   ]
+  },
+  {
+   "key": "P37",
+   "group": "place",
+   "en": "Table Mountain is right behind her and she cannot see a single bit of it.",
+   "af": "Tafelberg is reg agter haar en sy kan nie 'n enkele stukkie daarvan sien nie.",
+   "names": "Table Mountain",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: a woman in the wind, Table Mountain behind her. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/day/2.webp",
+     "hash": "4d3a786acf48",
+     "slots": [
+      "wind/week_1/day/2.webp",
+      "wind/week_3/day/2.webp"
+     ],
+     "label": "wind · day · Tue",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P38",
+   "group": "place",
+   "en": "Lion's Head is doing the scenery and the wind is doing the comedy.",
+   "af": "Leeukop sorg vir die uitsig en die wind vir die komedie.",
+   "names": "Lion's Head",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: two women on a windy promenade, Lion's Head behind them. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/dusk/1.webp",
+     "hash": "002f0c1d5187",
+     "slots": [
+      "wind/week_1/dusk/1.webp",
+      "wind/week_2/dusk/1.webp",
+      "wind/week_3/dusk/1.webp",
+      "wind/week_4/dusk/1.webp"
+     ],
+     "label": "wind · dusk · Mon",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P39",
+   "group": "place",
+   "en": "Bo-Kaap in the last light, and the wind is doing the housekeeping.",
+   "af": "Bo-Kaap in die laaste lig, en die wind doen die huishouding.",
+   "names": "the Bo-Kaap",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: the Bo-Kaap at dusk, Signal Hill behind. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/dusk/5.webp",
+     "hash": "ec12d1747d09",
+     "slots": [
+      "wind/week_1/dusk/5.webp",
+      "wind/week_2/dusk/5.webp",
+      "wind/week_3/dusk/5.webp",
+      "wind/week_4/dusk/5.webp"
+     ],
+     "label": "wind · dusk · Fri",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P40",
+   "group": "place",
+   "en": "Somebody is going to come home to a lounge full of Signal Hill.",
+   "af": "Iemand gaan by 'n sitkamer vol Seinheuwel tuiskom.",
+   "names": "Signal Hill",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Same Bo-Kaap photograph; Signal Hill is in it.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/dusk/5.webp",
+     "hash": "ec12d1747d09",
+     "slots": [
+      "wind/week_1/dusk/5.webp",
+      "wind/week_2/dusk/5.webp",
+      "wind/week_3/dusk/5.webp",
+      "wind/week_4/dusk/5.webp"
+     ],
+     "label": "wind · dusk · Fri",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P41",
+   "group": "place",
+   "en": "Table Mountain is right there and neither of them has looked at it once.",
+   "af": "Tafelberg is reg daar en nie een van hulle het een keer daarna gekyk nie.",
+   "names": "Table Mountain",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: a couple on the beach, Table Mountain across the bay. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/dusk/7.webp",
+     "hash": "38635f77f610",
+     "slots": [
+      "wind/week_1/dusk/7.webp",
+      "wind/week_2/dusk/7.webp",
+      "wind/week_3/dusk/7.webp",
+      "wind/week_4/dusk/7.webp"
+     ],
+     "label": "wind · dusk · Sun",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P42",
+   "group": "place",
+   "en": "Table Mountain, a braai, and a wind with its own strong opinion.",
+   "af": "Tafelberg, 'n braai, en 'n wind met sy eie sterk mening.",
+   "names": "Table Mountain",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: a braai with Table Mountain behind. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/night/6.webp",
+     "hash": "be8276f7384b",
+     "slots": [
+      "wind/week_1/night/6.webp",
+      "wind/week_2/night/6.webp",
+      "wind/week_3/night/6.webp",
+      "wind/week_4/night/6.webp"
+     ],
+     "label": "wind · night · Sat",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P43",
+   "group": "place",
+   "en": "The Helderberg is clear, the washing is horizontal, and that is Sunday sorted.",
+   "af": "Die Helderberg is helder, die wasgoed hang horisontaal, en Sondag is gereël.",
+   "names": "the Helderberg",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "KEEP",
+   "note": "Photo: washing on a white wall under a mountain range, the mountain the line names.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_2/day/7.webp",
+     "hash": "35c91a0ddfec",
+     "slots": [
+      "wind/week_2/day/7.webp",
+      "wind/week_4/day/7.webp"
+     ],
+     "label": "wind · day · Sun",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P44",
+   "group": "place",
+   "en": "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+   "af": "Durban se grys is steeds vier-en-twintig grade, en dis hoekom die promenade nooit leeg raak nie.",
+   "names": "Durban",
+   "current": null,
+   "tag": null,
+   "proposed": "kzn",
+   "lean": "KEEP",
+   "note": "Photo: a runner on a beachfront promenade by a whalebone-arch pier. A caption.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "cloudy/week_2/day/7.webp",
+     "hash": "04bdf14c306b",
+     "slots": [
+      "cloudy/week_2/day/7.webp",
+      "cloudy/week_4/day/7.webp"
+     ],
+     "label": "cloudy · day · Sun",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P45",
+   "group": "place",
+   "en": "Layer up like you're climbing Sani Pass.",
+   "af": "Trek lae aan asof jy Sani Pass klim.",
+   "names": "Sani Pass",
+   "current": null,
+   "tag": null,
+   "proposed": "kzn",
+   "lean": "KEEP",
+   "note": "A comparison, not a location; it works anywhere. Photo: a mother zipping a child into a jacket.",
+   "alsoBank": [
+    {
+     "key": "witty:cold#4",
+     "tag": null
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold/week_1/dawn/3.webp",
+     "hash": "1c5f757ee79a",
+     "slots": [
+      "cold/week_1/dawn/3.webp",
+      "cold/week_2/dawn/3.webp",
+      "cold/week_3/dawn/3.webp",
+      "cold/week_4/dawn/3.webp"
+     ],
+     "label": "cold · dawn · Wed",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P46",
+   "group": "place",
+   "en": "The N1 is now a waterpark.",
+   "af": "Die N1 is nou 'n waterpark.",
+   "names": "the N1",
+   "current": null,
+   "tag": null,
+   "proposed": [
+    "western-cape",
+    "karoo",
+    "free-state",
+    "gauteng"
+   ],
+   "lean": "KEEP",
+   "note": "Photo: a rain-soaked highway jam into Cape Town, mountain behind. The N1 is a national road. If tagged, the N1 runs through western-cape, karoo, free-state and gauteng (Limpopo has no box).",
+   "alsoBank": [
+    {
+     "key": "witty:rain#8",
+     "tag": null
+    }
+   ],
+   "photos": [
+    {
+     "image": "rain/week_1/dusk/2.webp",
+     "hash": "09641df1432a",
+     "slots": [
+      "rain/week_1/dusk/2.webp",
+      "rain/week_2/dusk/2.webp",
+      "rain/week_3/dusk/2.webp",
+      "rain/week_4/dusk/2.webp"
+     ],
+     "label": "rain · dusk · Tue",
+     "others": 1
+    }
+   ]
+  },
+  {
+   "key": "P47",
+   "group": "place",
+   "en": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+   "af": "Twee druppels op die voorruit en die hele N1 vergeet hoe om te bestuur.",
+   "names": "the N1",
+   "current": null,
+   "tag": {
+    "months": [
+     1,
+     2,
+     3,
+     10,
+     11,
+     12
+    ]
+   },
+   "proposed": [
+    "western-cape",
+    "karoo",
+    "free-state",
+    "gauteng"
+   ],
+   "lean": "KEEP",
+   "note": "Same highway photograph. The N1 is a national road. If tagged, the N1 runs through western-cape, karoo, free-state and gauteng.",
+   "alsoBank": [
+    {
+     "key": "witty:rain#56",
+     "tag": {
+      "time": [
+       "day"
+      ],
+      "months": [
+       10,
+       11,
+       12,
+       1,
+       2,
+       3
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "rain/week_1/dusk/2.webp",
+     "hash": "09641df1432a",
+     "slots": [
+      "rain/week_1/dusk/2.webp",
+      "rain/week_2/dusk/2.webp",
+      "rain/week_3/dusk/2.webp",
+      "rain/week_4/dusk/2.webp"
+     ],
+     "label": "rain · dusk · Tue",
+     "others": 1
+    }
+   ]
+  },
+  {
+   "key": "P48",
+   "group": "wind",
+   "en": "The south-easter has found the one open window on the whole street.",
+   "af": "Die suidooster het die een oop venster in die hele straat gekry.",
+   "names": "the southeaster (a wind)",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Names a wind, not a place: the wind blowing where you are. Photo: the Bo-Kaap. The third southeaster line (\"Weather this perfect is on loan…\") is already tagged western-cape.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/dusk/5.webp",
+     "hash": "ec12d1747d09",
+     "slots": [
+      "wind/week_1/dusk/5.webp",
+      "wind/week_2/dusk/5.webp",
+      "wind/week_3/dusk/5.webp",
+      "wind/week_4/dusk/5.webp"
+     ],
+     "label": "wind · dusk · Fri",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P49",
+   "group": "wind",
+   "en": "The southeaster doesn’t knock. You’ll hear it under the door all night.",
+   "af": "Die suidooster klop nie. Jy gaan hom die hele nag onder die deur hoor.",
+   "names": "the southeaster (a wind)",
+   "current": null,
+   "tag": null,
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Names a wind, not a place: the wind blowing where you are. Photo: a Cape Town street at night. The third southeaster line is already tagged western-cape.",
+   "alsoBank": [],
+   "photos": [
+    {
+     "image": "wind/week_1/night/3.webp",
+     "hash": "0e5c84f6ab31",
+     "slots": [
+      "wind/week_1/night/3.webp",
+      "wind/week_2/night/3.webp",
+      "wind/week_3/night/3.webp",
+      "wind/week_4/night/3.webp"
+     ],
+     "label": "wind · night · Wed",
+     "others": 7
+    }
+   ]
+  },
+  {
+   "key": "P50",
+   "group": "place",
+   "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+   "af": "Die soort dag wat Joburg voorgee hy nie het nie totdat jy daarin staan.",
+   "names": "Joburg",
+   "current": "gauteng",
+   "tag": {
+    "region": "gauteng"
+   },
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#10",
+     "tag": {
+      "region": "gauteng"
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/5.webp",
+     "hash": "4040cfcfc732",
+     "slots": [
+      "cold-clear/week_1/dawn/5.webp",
+      "cold-clear/week_2/dawn/5.webp",
+      "cold-clear/week_3/dawn/5.webp",
+      "cold-clear/week_4/dawn/5.webp"
+     ],
+     "label": "cold-clear · dawn · Fri",
+     "others": 3
+    }
+   ]
+  },
+  {
+   "key": "P51",
+   "group": "place",
+   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "af": "Hoëveld-winter: die enigste plek waar jy twee jasse aantrek om die pos te gaan haal.",
+   "names": "the Highveld",
+   "current": "gauteng",
+   "tag": {
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "region": "gauteng"
+   },
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag. The gauteng and highveld boxes are the same rectangle.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#3",
+     "tag": {
+      "region": "gauteng",
+      "months": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/6.webp",
+     "hash": "28129477b706",
+     "slots": [
+      "cold-clear/week_1/dawn/6.webp",
+      "cold-clear/week_2/dawn/6.webp",
+      "cold-clear/week_3/dawn/6.webp",
+      "cold-clear/week_4/dawn/6.webp"
+     ],
+     "label": "cold-clear · dawn · Sat",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P52",
+   "group": "place",
+   "en": "Joburg does fog so rarely it feels like a limited edition.",
+   "af": "Joburg doen mis so selde dat dit soos 'n spesiale uitgawe voel.",
+   "names": "Joburg",
+   "current": "gauteng",
+   "tag": {
+    "region": "gauteng"
+   },
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:fog#90",
+     "tag": {
+      "time": [
+       "night"
+      ],
+      "region": "gauteng"
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "fog/week_1/night/7.webp",
+     "hash": "0467a4574c0b",
+     "slots": [
+      "fog/week_1/night/7.webp",
+      "fog/week_2/night/7.webp",
+      "fog/week_3/night/7.webp",
+      "fog/week_4/night/7.webp"
+     ],
+     "label": "fog · night · Sun",
+     "others": 1
+    }
+   ]
+  },
+  {
+   "key": "P53",
+   "group": "place",
+   "en": "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
+   "af": "Joburg reën twintig minute en verf dan die lug asof niks gebeur het nie.",
+   "names": "Joburg",
+   "current": "gauteng",
+   "tag": {
+    "months": [
+     1,
+     2,
+     3,
+     10,
+     11,
+     12
+    ],
+    "region": "gauteng"
+   },
+   "proposed": "gauteng",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:rain#69",
+     "tag": {
+      "time": [
+       "evening"
+      ],
+      "region": "gauteng",
+      "months": [
+       10,
+       11,
+       12,
+       1,
+       2,
+       3
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "rain/week_1/dusk/3.webp",
+     "hash": "e95e8a2f22f0",
+     "slots": [
+      "rain/week_1/dusk/3.webp",
+      "rain/week_2/dusk/3.webp",
+      "rain/week_3/dusk/3.webp",
+      "rain/week_4/dusk/3.webp"
+     ],
+     "label": "rain · dusk · Wed",
+     "others": 1
+    }
+   ]
+  },
+  {
+   "key": "P54",
+   "group": "place",
+   "en": "The Free State just remembered it has a winter setting.",
+   "af": "Die Vrystaat het pas onthou hy het 'n winter-setting.",
+   "names": "the Free State",
+   "current": "free-state",
+   "tag": {
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "region": "free-state"
+   },
+   "proposed": "free-state",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#1",
+     "tag": {
+      "region": "free-state",
+      "months": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dawn/6.webp",
+     "hash": "28129477b706",
+     "slots": [
+      "cold-clear/week_1/dawn/6.webp",
+      "cold-clear/week_2/dawn/6.webp",
+      "cold-clear/week_3/dawn/6.webp",
+      "cold-clear/week_4/dawn/6.webp"
+     ],
+     "label": "cold-clear · dawn · Sat",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P55",
+   "group": "place",
+   "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+   "af": "Karoo-oggend. Die soort wat jou laat respek hê vir elke boer wat dit gekies het.",
+   "names": "the Karoo",
+   "current": "karoo",
+   "tag": {
+    "region": "karoo"
+   },
+   "proposed": "karoo",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#16",
+     "tag": {
+      "region": "karoo",
+      "time": [
+       "morning"
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/day/2.webp",
+     "hash": "21c809043132",
+     "slots": [
+      "cold-clear/week_1/day/2.webp",
+      "cold-clear/week_2/day/2.webp",
+      "cold-clear/week_3/day/2.webp",
+      "cold-clear/week_4/day/2.webp"
+     ],
+     "label": "cold-clear · day · Tue",
+     "others": 2
+    }
+   ]
+  },
+  {
+   "key": "P56",
+   "group": "place",
+   "en": "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements.",
+   "af": "19:00 en steeds 30 grade. Die Karoo maak nie foute nie, net stellings.",
+   "names": "the Karoo",
+   "current": "karoo",
+   "tag": {
+    "months": [
+     1,
+     2,
+     3,
+     10,
+     11,
+     12
+    ],
+    "region": "karoo"
+   },
+   "proposed": "karoo",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:heat#74",
+     "tag": {
+      "time": [
+       "evening"
+      ],
+      "region": "karoo",
+      "months": [
+       10,
+       11,
+       12,
+       1,
+       2,
+       3
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "heat/week_1/dusk/1.webp",
+     "hash": "5ed7621f5dd9",
+     "slots": [
+      "heat/week_1/dusk/1.webp",
+      "heat/week_2/dusk/1.webp",
+      "heat/week_3/dusk/1.webp",
+      "heat/week_4/dusk/1.webp"
+     ],
+     "label": "heat · dusk · Mon",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P57",
+   "group": "place",
+   "en": "Mornings like this are why Capetonians never stop mentioning it.",
+   "af": "Oggende soos dié is hoekom Kapenaars nooit ophou spog nie.",
+   "names": "Capetonians",
+   "current": "western-cape",
+   "tag": {
+    "region": "western-cape"
+   },
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag. Photo: the Bo-Kaap at dawn.",
+   "alsoBank": [
+    {
+     "key": "witty:clear#44",
+     "tag": {
+      "time": [
+       "morning"
+      ],
+      "region": "western-cape"
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "clear/week_1/dawn/4.webp",
+     "hash": "7a76c59603c9",
+     "slots": [
+      "clear/week_1/dawn/4.webp",
+      "clear/week_2/dawn/4.webp",
+      "clear/week_3/dawn/4.webp",
+      "clear/week_4/dawn/4.webp"
+     ],
+     "label": "clear · dawn · Thu",
+     "others": 4
+    }
+   ]
+  },
+  {
+   "key": "P58",
+   "group": "place",
+   "en": "Golden hour, ice-cold air. Cape Town loves a dramatic contrast.",
+   "af": "Golden hour, yskoue lug. Kaapstad hou van drama.",
+   "names": "Cape Town",
+   "current": "western-cape",
+   "tag": {
+    "months": [
+     5,
+     6,
+     7,
+     8,
+     9
+    ],
+    "region": "western-cape"
+   },
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag. Photo: a cat at a frosted window; nothing Cape Town in it.",
+   "alsoBank": [
+    {
+     "key": "witty:cold-clear#82",
+     "tag": {
+      "time": [
+       "evening"
+      ],
+      "region": "western-cape",
+      "months": [
+       5,
+       6,
+       7,
+       8,
+       9
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "cold-clear/week_1/dusk/7.webp",
+     "hash": "1f74ef9146fb",
+     "slots": [
+      "cold-clear/week_1/dusk/7.webp",
+      "cold-clear/week_2/dusk/7.webp",
+      "cold-clear/week_3/dusk/7.webp",
+      "cold-clear/week_4/dusk/7.webp"
+     ],
+     "label": "cold-clear · dusk · Sun",
+     "others": 0
+    }
+   ]
+  },
+  {
+   "key": "P59",
+   "group": "place",
+   "en": "Cape Town just got a dimmer switch.",
+   "af": "Kaapstad het 'n dimmer skakelaar gekry.",
+   "names": "Cape Town",
+   "current": "western-cape",
+   "tag": {
+    "region": "western-cape"
+   },
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:fog#30",
+     "tag": {
+      "region": "western-cape"
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "fog/week_1/night/3.webp",
+     "hash": "5a72ad3aac4b",
+     "slots": [
+      "fog/week_1/night/3.webp",
+      "fog/week_2/night/3.webp",
+      "fog/week_3/night/3.webp",
+      "fog/week_4/night/3.webp"
+     ],
+     "label": "fog · night · Wed",
+     "others": 1
+    }
+   ]
+  },
+  {
+   "key": "P60",
+   "group": "place",
+   "en": "The berg wind turned overnight. Cape Town, today you're basically Upington.",
+   "af": "Die bergwind het in die nag gedraai. Kaapstad, vandag is jy Upington.",
+   "names": "Cape Town, Upington",
+   "current": "western-cape",
+   "tag": {
+    "months": [
+     1,
+     2,
+     3,
+     10,
+     11,
+     12
+    ],
+    "region": "western-cape"
+   },
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag. It speaks to Cape Town directly.",
+   "alsoBank": [
+    {
+     "key": "witty:heat#44",
+     "tag": {
+      "time": [
+       "morning"
+      ],
+      "region": "western-cape",
+      "months": [
+       10,
+       11,
+       12,
+       1,
+       2,
+       3
+      ]
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "heat/week_1/dawn/1.webp",
+     "hash": "4d63213b19b9",
+     "slots": [
+      "heat/week_1/dawn/1.webp",
+      "heat/week_2/dawn/1.webp",
+      "heat/week_3/dawn/1.webp",
+      "heat/week_4/dawn/1.webp"
+     ],
+     "label": "heat · dawn · Mon",
+     "others": 6
+    }
+   ]
+  },
+  {
+   "key": "P61",
+   "group": "place",
+   "en": "The Cape Doctor is making house calls.",
+   "af": "Die Kaapse Dokter maak huisbesoeke.",
+   "names": "the Cape (Cape Doctor)",
+   "current": "western-cape",
+   "tag": {
+    "region": "western-cape"
+   },
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag.",
+   "alsoBank": [
+    {
+     "key": "witty:wind#3",
+     "tag": {
+      "region": "western-cape"
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "wind/week_1/dawn/1.webp",
+     "hash": "c121631aca0a",
+     "slots": [
+      "wind/week_1/dawn/1.webp",
+      "wind/week_2/dawn/1.webp",
+      "wind/week_3/dawn/1.webp",
+      "wind/week_4/dawn/1.webp"
+     ],
+     "label": "wind · dawn · Mon",
+     "others": 5
+    }
+   ]
+  },
+  {
+   "key": "P62",
+   "group": "place",
+   "en": "Table Mountain's tablecloth is out.",
+   "af": "Tafelberg se tafeldoek is uit.",
+   "names": "Table Mountain",
+   "current": "western-cape",
+   "tag": {
+    "region": "western-cape"
+   },
+   "proposed": "western-cape",
+   "lean": "TAG",
+   "note": "Already tagged: TAG changes nothing, KEEP lifts the tag. Photo: a palm and a mountain at sunrise; no tablecloth in frame.",
+   "alsoBank": [
+    {
+     "key": "witty:wind#2",
+     "tag": {
+      "region": "western-cape"
+     }
+    }
+   ],
+   "photos": [
+    {
+     "image": "wind/week_1/dawn/1.webp",
+     "hash": "c121631aca0a",
+     "slots": [
+      "wind/week_1/dawn/1.webp",
+      "wind/week_2/dawn/1.webp",
+      "wind/week_3/dawn/1.webp",
+      "wind/week_4/dawn/1.webp"
+     ],
+     "label": "wind · dawn · Mon",
+     "others": 5
+    }
+   ]
+  }
+ ]
+}
