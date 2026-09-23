@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Probably Weather kombineer voorspellings van Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather & Tomorrow.io om jou 'n meer betroubare voorspelling te gee.",
         zu: "I-Probably Weather ihlanganisa izibikezelo ezivela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukukunikeza isibikezelo esithembekile.",
         xh: "I-Probably Weather idibanisa uqikelelo lwemozulu oluvela ku-Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather ne-Tomorrow.io ukuze ikunike uqikelelo oluthembeke ngakumbi.",
-        st: "Probably Weather e kopanya dikakanyo tsa boemo ba lehodimo tse tswang ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io ho u fa ponelopele e tšepahalang."
+        st: "Probably Weather e kopanya dikakanyo tsa boemo ba lehodimo tse tswang ho Open-Meteo, WeatherAPI.com, MET Norway, Pirate Weather le Tomorrow.io ho o fa ponelopele e tshepahalang."
       }
     },
     // Weather byline terms
@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
         af: "Uurlikse voorspelling verskyn 48 uur voor hierdie dag.",
         zu: "Isibikezelo samahora siphuma amahora angu-48 ngaphambi kwalolu suku.",
         xh: "Isibikezelo seeyure sivela kwiiyure ezingama-48 phambi kwalo mhla.",
-        st: "Ponelopele ea hora e hlahella dihora tse 48 pele ho letsatsi lena."
+        st: "Ponelopele ya hora e hlahella dihora tse 48 pele ho letsatsi lena."
       }
     },
     // Day hero badges
@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
       highUV: { en: "High UV", af: "Hoë UV", zu: "I-UV ephezulu", xh: "I-UV ephezulu", st: "UV e Phahameng" },
       hot: { en: "Hot", af: "Warm", zu: "Kushisa", xh: "Kushushu", st: "Ho tjhesa" },
       cold: { en: "Cold", af: "Koud", zu: "Makhaza", xh: "Kuyabanda", st: "Ho bata" },
-      uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ea UV" }
+      uvAlert: { en: "UV Alert", af: "UV Waarskuwing", zu: "Isexwayiso se-UV", xh: "Isilumkiso se-UV", st: "Temoso ya UV" }
     },
     // Winter precipitation. api/weather.js collapses every snow / sleet / ice /
     // freezing description into conditionKey 'cold' (deriveCondition step 3,
@@ -505,19 +505,19 @@ document.addEventListener("DOMContentLoaded", () => {
         af: ["Ag nee, die tafeldoek is uit", "Die Kaapse Dokter maak vandag huisbesoeke", "Hou jou hoed vas, die Suidooster bedoel sake", "Die Suidooster het ongenooid opgedaag — soos altyd", "Die wind is hectic — selfs die meeuë loop"],
         zu: ["Yoh, ilaphu letafel liphumile", "UDokotela waseKapa uyashayela namuhla", "Bamba isigqoko sakho, iSoutheaster iyasebenza", "Umoya waseNingizimu ufikile ungamenyiwe — njengenjwayelo", "Umoya unamandla — ngisho nezinkonjane ziyahamba"],
         xh: ["Yhuu, ilaphu letafile liphumile", "UGqirha waseKapa uyajikeleza namhlanje", "Bamba umnqwazi wakho, umoya waseMzantsi-Mpuma uzimisele namhlanje", "Umoya waseMzantsi-Mpuma ufike ungamenywanga njengesiqhelo", "Umoya unamandla — neengabangaba zihamba ngeenyawo"],
-        st: ["Ag no, lesela la tafoleng le foka moya", "Ngaka ea Cape e etsa litšeliso kajeno", "Tšoara katiba ea hao — Southeaster e tla ka matla, ha e bapale.", "Moya oa borwa o fihlile o sa mengwa — jwalo ka kamehla", "Moya o matla — esita le dikoekoe di tsamaya"]
+        st: ["Ag no, lesela la tafoleng le foka moya", "Ngaka ya Cape e etsa ditsheliso kajeno", "Tshwara katiba ya hao — Southeaster e tla ka matla, ha e bapale.", "Moya wa borwa o fihlile o sa mengwa — jwalo ka kamehla", "Moya o matla — esita le dikoekoe di tsamaya"]
       }
     },
     // Toasts
     toasts: {
       saved: { en: "Saved!", af: "Gestoor!", zu: "Kugciniwe!", xh: "Igciniwe!", st: "E bolokilwe!" },
       removed: { en: "Removed", af: "Verwyder", zu: "Isusiwe", xh: "Isusiwe", st: "E tlositswe" },
-      maxPlaces: { en: "Max 5 places. Remove one first.", af: "Maks 5 plekke. Verwyder een eers.", zu: "Izindawo ezi-5 kuphela. Susa eyodwa kuqala.", xh: "Iindawo ezi-5 kuphela. Susa enye kuqala.", st: "Dibaka tse 5 feela. Tlosa e le 'ngoe pele." },
+      maxPlaces: { en: "Max 5 places. Remove one first.", af: "Maks 5 plekke. Verwyder een eers.", zu: "Izindawo ezi-5 kuphela. Susa eyodwa kuqala.", xh: "Iindawo ezi-5 kuphela. Susa enye kuqala.", st: "Dibaka tse 5 feela. Tlosa e le nngwe pele." },
       alreadySaved: { en: "Already saved!", af: "Reeds gestoor!", zu: "Seyigciniwe!", xh: "Sele igciniwe!", st: "E se e bolokilwe!" },
       cleared: { en: "Cleared", af: "Skoongemaak", zu: "Kususiwe", xh: "Kucociwe", st: "E hlakotswe" },
       noPlaces: { en: "No saved places", af: "Geen gestoorde plekke", zu: "Azikho izindawo", xh: "akukho ndawo zigciniweyo", st: "Ha ho dibaka tse bolokilweng" },
-      permissionDeniedBrowser: { en: "Location permission needed. Tap the location icon in your browser's address bar to enable it.", af: "Liggingtoestemming nodig. Tik die ligging-ikoon in jou blaaier se adresbalk om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Thepha isithonjana sendawo kubha yekheli lesiphequluli ukuze uyivule.", xh: "Kufuneka imvume yendawo. Cofa i-ayikhoni yendawo kwibar yedilesi yebhrawuza ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Tlanya letshwao la sebaka bareng ea aterese ea sebatli ho e bulela." },
-      permissionDeniedStandalone: { en: "Location permission needed. Open device Settings → Apps → Probably Weather → Permissions → Location to enable.", af: "Liggingtoestemming nodig. Maak toestel-instellings → Apps → Probably Weather → Toestemmings → Ligging oop om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Vula Izilungiselelo zedivayisi → Apps → Probably Weather → Permissions → Location ukuze uyivule.", xh: "Kufuneka imvume yendawo. Vula iiSetingi zesixhobo → Apps → Probably Weather → Permissions → Location ukuze uyivule.", st: "Tumello ea sebaka ea hlokahala. Bula Settings ea sesebediswa → Apps → Probably Weather → Permissions → Location ho e bulela." },
+      permissionDeniedBrowser: { en: "Location permission needed. Tap the location icon in your browser's address bar to enable it.", af: "Liggingtoestemming nodig. Tik die ligging-ikoon in jou blaaier se adresbalk om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Thepha isithonjana sendawo kubha yekheli lesiphequluli ukuze uyivule.", xh: "Kufuneka imvume yendawo. Cofa i-ayikhoni yendawo kwibar yedilesi yebhrawuza ukuze uyivule.", st: "Tumello ya sebaka ya hlokahala. Tlanya letshwao la sebaka bareng ya aterese ya sebatli ho e bulela." },
+      permissionDeniedStandalone: { en: "Location permission needed. Open device Settings → Apps → Probably Weather → Permissions → Location to enable.", af: "Liggingtoestemming nodig. Maak toestel-instellings → Apps → Probably Weather → Toestemmings → Ligging oop om dit aan te skakel.", zu: "Kudingeka imvume yendawo. Vula Izilungiselelo zedivayisi → Apps → Probably Weather → Permissions → Location ukuze uyivule.", xh: "Kufuneka imvume yendawo. Vula iiSetingi zesixhobo → Apps → Probably Weather → Permissions → Location ukuze uyivule.", st: "Tumello ya sebaka ya hlokahala. Bula Settings ya sesebediswa → Apps → Probably Weather → Permissions → Location ho e bulela." },
       locationUpdated: { en: "Location updated", af: "Ligging opgedateer", zu: "Indawo ibuyekeziwe", xh: "Indawo ihlaziyiwe", st: "Sebaka se ntjhafaditswe" },
       locationError: { en: "Could not get location", af: "Kon nie ligging kry nie", zu: "Ayikwazanga ukuthola indawo", xh: "Ayikwazanga ukufumana indawo okuyo", st: "Ha e kgone ho fumana sebaka" },
       usingSaved: { en: "Using saved location", af: "Gebruik gestoorde ligging", zu: "Isebenzisa indawo egciniwe", xh: "Kusetyenziswa indawo egciniweyo", st: "E sebedisa sebaka se bolokilweng" },
