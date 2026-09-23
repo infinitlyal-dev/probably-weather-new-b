@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", () => {
       uvMax: { en: "Max", af: "Maks", zu: "Okuphezulu", xh: "Ephezulu", st: "Phahameng" },
       // Table headers
       time: { en: "Time", af: "Tyd", zu: "Isikhathi", xh: "Ixesha", st: "Nako" },
-      temp: { en: "Temp", af: "Temp", zu: "Izinga lokushisa", xh: "Temp", st: "Mocheso" },
+      temp: { en: "Temp", af: "Temp", zu: "Izinga lokushisa", xh: "Amaqondo", st: "Mocheso" },
       day: { en: "Day", af: "Dag", zu: "Usuku", xh: "Usuku", st: "Letsatsi" },
       sunrise: { en: "Sunrise", af: "Sonop", zu: "Ukuphuma kwelanga", xh: "Ukuphuma kwelanga", st: "Ho tjhaba ha letsatsi" },
       sunset:  { en: "Sunset",  af: "Sononder", zu: "Ukushona kwelanga", xh: "Ukutshona kwelanga", st: "Ho dikela ha letsatsi" },
