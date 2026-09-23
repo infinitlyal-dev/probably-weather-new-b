@@ -1,0 +1,188 @@
+{
+ "generated": "2026-09-23T20:18:38.856Z",
+ "ruledBy": "Al, Afrikaans proposals page (review/af-proposals.html)",
+ "ruled": 4,
+ "total": 18,
+ "rulings": [
+  {
+   "id": "af-L2047",
+   "key": "af-1681",
+   "kind": "proposal",
+   "en": "Reapply that sunscreen or suffer.",
+   "live": "Smeer weer aan of ly.",
+   "proposal": "Smeer daai sonbrandroom weer aan, anders gaan jy ly.",
+   "verdict": "USE",
+   "text": ""
+  },
+  {
+   "id": "af-L3357",
+   "key": "af-1971",
+   "kind": "proposal",
+   "en": "Nobody is driving home in this. That's not laziness, that's science.",
+   "live": "Niemand ry nou nog huis toe nie. Dis nie luiheid nie, dis wetenskap.",
+   "proposal": "Niemand ry in dié weer huis toe nie. Dis nie luiheid nie, dis wetenskap.",
+   "verdict": "USE",
+   "text": ""
+  },
+  {
+   "id": "af-L3687",
+   "key": "af-2025",
+   "kind": "proposal",
+   "en": "Inbox: 47. Sky: flawless. Priorities: sorted.",
+   "live": "Eerste koffie buite. Die e-posse kan wag.",
+   "proposal": "Inkassie: 47. Lug: vlekkeloos. Prioriteite: uitgesorteer.",
+   "verdict": "USE",
+   "text": ""
+  },
+  {
+   "id": "af-L4116",
+   "key": "af-2083",
+   "kind": "proposal",
+   "en": "Mixed bag out there. We're hedging.",
+   "live": "Gemengde sak daar buite. Ons hou voor.",
+   "proposal": "'n Bietjie van alles daar buite. Ons hou ons opsies oop.",
+   "verdict": "USE",
+   "text": ""
+  },
+  {
+   "id": "af-1561",
+   "key": "af-1561",
+   "kind": "wired",
+   "en": "Nobody told the forecast. It just arrived.",
+   "live": "Niemand het die voorspelling genooi nie. Dit het net opgedaag.",
+   "proposal": "Niemand het die voorspelling gesê nie. Dit het net opgedaag.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-2023",
+   "key": "af-2023",
+   "kind": "wired",
+   "en": "Zero mistakes from today so far. Sky included.",
+   "live": "Die dag het nog niks verkeerd gedoen nie. En wil ook nie.",
+   "proposal": "Die dag het nog niks verkeerd gedoen nie. Gee hom kans.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0327",
+   "key": "af-0327",
+   "kind": "wired",
+   "en": "Sun, hide-and-seek champion of the day.",
+   "live": "Die son en die wolke speel kat en muis vandag.",
+   "proposal": "Die lug speel kat en muis.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0013",
+   "key": "af-0013",
+   "kind": "wired",
+   "en": "The sun took its time this morning. Worth the wait.",
+   "live": "Die son vat sy tyd vanoggend, en dit is 100% dit werd.",
+   "proposal": "Die son vat sy tyd vanoggend, en dit wys.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0014",
+   "key": "af-0014",
+   "kind": "wired",
+   "en": "Enjoy it. There's a cold front out there doing warm-ups.",
+   "live": "Geniet dit. Erens daarbuite is 'n kouefront besig om planne te maak.",
+   "proposal": "Geniet dit. Die koue front het klaar sy tasse gepak.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0194",
+   "key": "af-0194",
+   "kind": "wired",
+   "en": "The sun hit snooze again. Honestly? Same.",
+   "live": "Die son het snooze gedruk.",
+   "proposal": "Die son het snooze gedruk. Weer.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0356",
+   "key": "af-0356",
+   "kind": "wired",
+   "en": "Somebody left the freezer door open overnight.",
+   "live": "Die Karoo het die yskas oornag oopgelos.",
+   "proposal": "Die Karoo het die verkoeler oopgelos.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-1041",
+   "key": "af-1041",
+   "kind": "wired",
+   "en": "The clouds are having a moment.",
+   "live": "Die wolke tjank, iemand kry 'n tissue asb.",
+   "proposal": "Die wolke het 'n oomblik.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-1567",
+   "key": "af-1567",
+   "kind": "wired",
+   "en": "In the Karoo this isn't rain. It's a celebrity appearance.",
+   "live": "In die Karoo is dit nie reën nie. Dis vroeë Kersfees.",
+   "proposal": "In die Karoo is dit nie reën nie. Dis 'n verskyning.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0188",
+   "key": "af-0188",
+   "kind": "wired",
+   "en": "Not Instagram weather. Not the end of the world.",
+   "live": "Nie Instagram weer nie. Nie die einde van die wêreld nie.",
+   "proposal": "Nie troufoto weer nie. Nie die einde van die wêreld nie.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0032",
+   "key": "af-0032",
+   "kind": "wired",
+   "en": "The beach is doubling as a mirror, which takes one morning of absolutely no wind.",
+   "live": "Die strand is soos 'n spieël, en dit vat een oggend van absoluut geen wind nie.",
+   "proposal": "Die strand is ook 'n spieël, en dit vat een oggend van absoluut geen wind nie.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-1119",
+   "key": "af-1119",
+   "kind": "wired",
+   "en": "The traffic just remembered rain exists. Again.",
+   "live": "Die verkeer het pas onthou dat reën bestaan, steeds.",
+   "proposal": "Die verkeer het pas onthou daar is n ding soos reën bestaan weer.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0967",
+   "key": "af-0967",
+   "kind": "wired",
+   "en": "Nobody is going back in there until the walls let go of the day.",
+   "live": "Niemand gaan weer in todat die mure die dag laat gaan het nie.",
+   "proposal": "Niemand gaan daar terug in voor die mure die dag laat gaan nie.",
+   "verdict": null,
+   "text": ""
+  },
+  {
+   "id": "af-0949",
+   "key": "af-0949",
+   "kind": "wired",
+   "en": "It has not dropped below twenty-five in that house since about Tuesday.",
+   "live": "Dit het sedert Dinsdag nog nie onder vyf-en-twintig in daardie huis gesak nie.",
+   "proposal": "Dit het sedert omtrent Dinsdag nie onder vyf-en-twintig in daardie huis gesak nie.",
+   "verdict": null,
+   "text": ""
+  }
+ ]
+}
