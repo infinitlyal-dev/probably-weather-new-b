@@ -1,7 +1,7 @@
 # Probably Weather — launch eval, fixes and the Home proposal (Vonk / Opus 5.5, 23–24 Sept 2026)
 
 Production stays on `ec7ae52` (verified `/api/version`, 23 Sept 21:19 UTC). Everything below is **local**:
-`main` is 18 commits ahead (`ec7ae52..758cb5f`), nothing pushed. The Home proposal is on branch
+`main` is 19 commits ahead (`ec7ae52..f656b35`), nothing pushed: 17 change the app, 2 are records (the accuracy harness, this eval) that never ship — Vercel deploys `dist/` only (assets, index/install/privacy, manifest, og, sw.js). The Home proposal is on branch
 `design/home-options` (`b6d17fb`, `5b1f6ba`), not merged.
 
 Evidence lives next to this file (`review/eval/…`, git-ignored folder, the files are force-added where
@@ -9,7 +9,7 @@ they are small; screenshots stay on disk) and in `review/accuracy/`. Every findi
 
 ---
 
-## 0. What a push would ship (main, 18 commits)
+## 0. What a push would ship (main, 19 commits; the last two are records, not app code)
 
 | commit | what |
 |---|---|
@@ -31,6 +31,7 @@ they are small; screenshots stay on disk) and in `review/accuracy/`. Every findi
 | `797de9e` | Search race + "OS 17" UA (Sol's review) |
 | `60c72c8` | Offline: a service-worker copy of the forecast shows its age |
 | `758cb5f` | review/accuracy: blend-vs-sources harness + live sample (report only; not app code) |
+| `f656b35` | this eval: EVAL.md, the scripts, Al's page (review/ — not deployed) |
 
 Gates on the final code (main at `797de9e`, then the suite again at `60c72c8`): serial vitest **129 files /
 21,159 tests**, `npm run build` (vitest + image budget + copy-split drift), bespoke 9 checks, drift guard,
