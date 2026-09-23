@@ -1,0 +1,29 @@
+{
+ "generated": "2026-09-23",
+ "note": "Safety lines the advice classifier (rule-checks.mjs safetyTopics: an instruction plus a word-list topic) does not catch, added by reading every bank line that mentions a storm, lightning, hail, wind, fog, driving, sun, heat, water or staying inside. A safety line is one that tells the reader to do or not do something protective. Al's brief: safety lines must pass both back-translations (and SSA-COMET for isiZulu) or show in English. Jokes that only mention the weather, and clothing advice, are not on the list.",
+ "lines": [
+  { "en": "Don't even think about driving somewhere.", "topic": "storm-driving" },
+  { "en": "Stay safe. The sky is making a point.", "topic": "storm" },
+  { "en": "Unplug the things. The sky has plans.", "topic": "lightning" },
+  { "en": "Wait it out indoors. The mountains aren't going anywhere.", "topic": "inside" },
+  { "en": "Unplug the TV — it's tradition.", "topic": "lightning" },
+  { "en": "Thunder rolling in. Inside is the move.", "topic": "inside" },
+  { "en": "Lightning's putting on a show — watch from the window.", "topic": "inside" },
+  { "en": "Tiny ice bombs falling. Indoors is the only plan.", "topic": "hail" },
+  { "en": "Windows closed, kettle on, and wait.", "topic": "storm" },
+  { "en": "Sky's grumbling. Stay close to a roof.", "topic": "inside" },
+  { "en": "Let's call it atmosphere and go inside.", "topic": "inside" },
+  { "en": "Nobody is driving home in this. That's not laziness, that's science.", "topic": "storm-driving" },
+  { "en": "Driving slow is not a suggestion.", "topic": "fog-driving" },
+  { "en": "SPF 50 or regret it by tonight.", "topic": "sunscreen" },
+  { "en": "Your future self will thank you for that sunscreen.", "topic": "sunscreen" },
+  { "en": "You will look like a lobster. You've been warned.", "topic": "sunburn" },
+  { "en": "Wind's on the cards. Peg the washing down.", "topic": "wind" },
+  { "en": "Hold onto your hat! And your kids.", "topic": "wind" },
+  { "en": "Hold your hat. Hold your kid. Just hold on.", "topic": "wind" },
+  { "en": "Close it, tie it down, surrender.", "topic": "wind" },
+  { "en": "Water consumption: yes. All of it.", "topic": "water" },
+  { "en": "Move slowly. Speak slowly. Survive.", "topic": "heat" },
+  { "en": "The water looks like glass. It feels like ice. Do not run the experiment.", "topic": "cold-water" }
+ ]
+}

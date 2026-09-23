@@ -71,4 +71,39 @@ sealing (st-fb-0402: the June Sesotho reviewer's own `tlosa mabone`, the origin 
 | Either | Sesotho: dropped from SSA-COMET training for low annotator agreement; Afrikaans: not trained | — | not used for st or af |
 
 Both need torch + unbabel-comet and a ~2.3 GB checkpoint each; this machine has no CUDA, so they run
-on CPU. Nothing is downloaded until Al says yes.
+on CPU. Al said yes on 2026-09-23: installed in `C:\Users\27741\pw-comet` (outside the repo and
+OneDrive), every file checked against Hugging Face's published hash (`comet/verified.json`), proof and
+limits in `comet/PROOF.json` (AfriCOMET is reference-based only: it scores the test sets but cannot gate
+a live isiXhosa line). Run through `comet-run.mjs`.
+
+## 5. Calibration (2026-09-23, `calibrate.mjs` → `THRESHOLDS.json`)
+
+Al's marks: 35 GOOD, 0 WRONG, 5 unmarked with a corrected line (counted as "needs change"). A
+back-translation fails a line on **MISMATCH only**: failing on DRIFT would have failed 11 (Claude) and
+15 (Sol) of the lines he called GOOD. 4 of his 5 corrections are wording or spelling no
+back-translation can see. Safety lines: both back-translations MATCH, rules clean, and for isiZulu
+SSA-COMET ≥ 0.33.
+
+## 6. Sharpening (`build-skill-guidance.mjs`) and the scores
+
+The four skills gained a generated "Translating a line" section (dev examples only; leak check after
+every round). Dev rounds (90 held-out lines, clean = both MATCH, Claude back-translation): af 99/99/100,
+zu 89/93/94, xh 87/94/96, st 89/88/94 (r0 old skills / r1 / r2). Final score on the sealed test sets,
+run once, both back-translations (`score-test.mjs --label final` vs `--label baseline`):
+
+| | pass (calibrated) | clean (both MATCH) | COMET |
+|---|---|---|---|
+| af | 171/171 → 170/171 | 91% → 98% | — |
+| zu | 144/148 → 146/148 | 77% → 94% | SSA-COMET 0.501 → 0.521 (ref), 0.453 → 0.460 (QE) |
+| xh | 150/155 → 149/155 | 75% → 91% | AfriCOMET 0.607 → 0.616 |
+| st | 146/148 → 145/148 | 72% → 90% | — |
+
+## 7. The live lines (`live-scan.mjs` → `live-decide.mjs` → `apply-live.mjs`)
+
+Every live line in four languages re-scanned; failing isiZulu, isiXhosa and Sesotho lines redone by the
+sharpened skills (`make-live-task.mjs`), checked by both blind back-translations (`make-live-judge.mjs`),
+the rules and SSA-COMET, and wired only when they pass. `st-respell.mjs` re-spells Lesotho forms by the
+corpus-backed rules; the meaning of every re-spelled line is checked the same way. Safety lines
+(`rules/safety-lines.json` adds the advice the classifier misses) show checked text or the English.
+`LIVE-RECORD.json` is the outcome; `tests/translation-live-record.test.js` holds the bank to it.
+Afrikaans never auto-wires: `build-af-proposals-page.mjs` → `review/af-proposals.html`.

@@ -95,7 +95,10 @@ export function ruleCheck({ lang, en, text }) {
   if (wl?.safety && ADVICE.test(en)) {
     for (const s of wl.safety) {
       if (!new RegExp(s.en, 'i').test(en)) continue;
-      const ok = s.terms.some((t) => String(text).toLowerCase().includes(t.toLowerCase()));
+      // isiZulu and isiXhosa drop a noun's first vowel after a demonstrative or "na-" (leso sivikelo,
+      // kube nomoya), so the term also counts without it
+      const low = String(text).toLowerCase();
+      const ok = s.terms.some((t) => low.includes(t.toLowerCase()) || ((lang === 'zu' || lang === 'xh') && /^[iua]\S{3,}/.test(t) && low.includes(t.toLowerCase().slice(1))));
       if (!ok) findings.push({ rule: `safety:${s.id}`, severity: 'high', message: `the English is advice about ${s.id}; none of ${s.terms.slice(0, 4).join(' / ')} is in the translation` });
     }
   }
