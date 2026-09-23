@@ -308,32 +308,36 @@ export const INSTALL_T = {
   // Shown when the user taps "Install now" on android-chrome or desktop-chrome
   // and beforeinstallprompt never fired. Points at Chrome's ⋮ menu — the same
   // icon and labels work on both Android Chrome and desktop Chrome.
-  // 'Install app' / 'Add to Home Screen' stay English because that's what
-  // Chrome actually renders on screen (cf. iOS step strings at the top).
+  // en/af name Chrome's own menu items. zu/xh/st name them in the reader's
+  // language (2026-09-24: "Install app" in English on an isiZulu screen was the
+  // leak the launch eval was asked to close; Chrome for Android itself ships an
+  // isiZulu translation). lang-check: zu triage on 'thepha' only (the natively
+  // reviewed loan the live iOS steps already use), xh/st pass.
   installFallbackChromium: {
     en: "If nothing happens, tap the ⋮ menu above and choose 'Install app' or 'Add to Home Screen'.",
     af: "As niks gebeur nie, tik die ⋮ kieslys hierbo en kies 'Installeer app' of 'Voeg by Tuisskerm'.",
-    zu: "Uma kungenzeki lutho, thepha imenyu ye-⋮ ngenhla bese ukhetha 'Install app' noma 'Add to Home Screen'.",
-    xh: "Ukuba akukho nto yenzekayo, cofa imenyu ye-⋮ ngentla ukhethe 'Install app' okanye 'Add to Home Screen'.",
-    st: "Haeba ho se na letho le etsahalang, tobetsa menyu ya ⋮ ka hodimo o khethe 'Install app' kapa 'Add to Home Screen'.",
+    zu: "Uma kungenzeki lutho, thepha imenyu ye-⋮ ngenhla bese ukhetha 'Faka i-app' noma 'Engeza kusikrini sasekhaya'.",
+    xh: "Ukuba akukho nto yenzekayo, cofa imenyu ye-⋮ ngentla ukhethe 'Faka i-app' okanye 'Yongeza kwiscreen sasekhaya'.",
+    st: "Haeba ho se na letho le etsahalang, tobetsa menyu ya ⋮ ka hodimo o khethe 'Kenya app' kapa 'Eketsa skrineng sa lehae'.",
   },
   // Android banner instructions, shown whenever the browser has NOT handed us a
-  // beforeinstallprompt event (so there is no one-tap Install). Browser menu
-  // labels stay English in pills, as the iOS steps do — that's what the user
-  // pattern-matches on screen. lang-check triage 2026-09-13: af/zu/xh/st pass.
+  // beforeinstallprompt event (so there is no one-tap Install). en/af keep the
+  // browser's own menu labels in pills; zu/xh/st give the same steps in their
+  // own words, with the ⋮ / ≡ glyphs the user matches on screen (2026-09-24,
+  // lang-check: all six strings pass).
   androidChromeSteps: {
     en: 'Menu `⋮` → `Add to Home screen` / `Install app`',
     af: 'Kieslys `⋮` → `Add to Home screen` / `Install app`',
-    zu: 'Imenyu `⋮` → `Add to Home screen` / `Install app`',
-    xh: 'Imenyu `⋮` → `Add to Home screen` / `Install app`',
-    st: 'Menyu `⋮` → `Add to Home screen` / `Install app`',
+    zu: 'Imenyu `⋮` → `Engeza kusikrini sasekhaya` / `Faka i-app`',
+    xh: 'Imenyu `⋮` → `Yongeza kwiscreen sasekhaya` / `Faka i-app`',
+    st: 'Menyu `⋮` → `Eketsa skrineng sa lehae` / `Kenya app`',
   },
   samsungInternetSteps: {
     en: 'Menu `≡` → `Add page to` → `Home screen`',
     af: 'Kieslys `≡` → `Add page to` → `Home screen`',
-    zu: 'Imenyu `≡` → `Add page to` → `Home screen`',
-    xh: 'Imenyu `≡` → `Add page to` → `Home screen`',
-    st: 'Menyu `≡` → `Add page to` → `Home screen`',
+    zu: 'Imenyu `≡` → `Engeza ikhasi ku` → `Isikrini sasekhaya`',
+    xh: 'Imenyu `≡` → `Yongeza iphepha ku` → `Iscreen sasekhaya`',
+    st: 'Menyu `≡` → `Eketsa leqephe ho` → `Skrine sa lehae`',
   },
 };
 

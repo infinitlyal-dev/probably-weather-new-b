@@ -565,10 +565,20 @@ describe('install — Android banner never depends on beforeinstallprompt (Samsu
     expect(androidStepsKey(A36.chrome)).toBe('androidChromeSteps');
     expect(androidStepsKey(UA.iosSafari)).toBeNull();
     expect(androidStepsKey(UA.desktopChrome)).toBeNull();
-    for (const lang of SUPPORTED_LANGS) {
+    // en/af name the browser's own menu items; zu/xh/st give the steps in their
+    // own words (2026-09-24) — and no English menu label is left in them.
+    for (const lang of ['en', 'af']) {
       expect(INSTALL_T.samsungInternetSteps[lang]).toMatch(/`≡` → `Add page to` → `Home screen`/);
       expect(INSTALL_T.androidChromeSteps[lang]).toMatch(/`⋮` → `Add to Home screen` \/ `Install app`/);
     }
+    for (const lang of ['zu', 'xh', 'st']) {
+      expect(INSTALL_T.samsungInternetSteps[lang]).toMatch(/^\S+ `≡` → `[^`]+` → `[^`]+`$/);
+      expect(INSTALL_T.androidChromeSteps[lang]).toMatch(/^\S+ `⋮` → `[^`]+` \/ `[^`]+`$/);
+      for (const key of ['samsungInternetSteps', 'androidChromeSteps', 'installFallbackChromium']) {
+        expect(INSTALL_T[key][lang], `${key}.${lang}`).not.toMatch(/Install app|Add to Home|Add page to|Home screen/i);
+      }
+    }
+    expect(SUPPORTED_LANGS).toEqual(['en', 'af', 'zu', 'xh', 'st']);
   });
 
   it('index.html carries the hidden instructions line inside the banner', () => {
