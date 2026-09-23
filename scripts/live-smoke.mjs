@@ -1,6 +1,7 @@
 // Live smoke of https://www.probablyweather.co.za (first written for the 2b0e73e push, 2026-09-23).
-//   node scripts/live-smoke.mjs output/live-smoke/<label>
-// Phone 375x812 (mobile UA, touch) and desktop 1440x900, English and Afrikaans,
+//   node scripts/live-smoke.mjs output/live-smoke/<label> [--langs en,af,zu,xh,st]
+// Phone 375x812 (mobile UA, touch) and desktop 1440x900, every language asked for (default all five;
+// the zu/xh/st legs added 2026-09-23 for the translation-skills push),
 // geolocated at Strand. Screens: home, hourly, weekly, search, settings, share
 // (navigator.share intercepted), share landing page + OG card.
 import { chromium } from 'playwright';
@@ -8,6 +9,8 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const OUT = process.argv[2];
+const li = process.argv.indexOf('--langs');
+const LANGS = li > 0 ? process.argv[li + 1].split(',') : ['en', 'af', 'zu', 'xh', 'st'];
 mkdirSync(OUT, { recursive: true });
 const SITE = 'https://www.probablyweather.co.za/';
 const STRAND = { latitude: -34.1163, longitude: 18.8362 };
@@ -19,12 +22,12 @@ const cases = [
   { name: 'desktop', viewport: { width: 1440, height: 900 }, isMobile: false, hasTouch: false, deviceScaleFactor: 1 },
 ];
 
-for (const c of cases) for (const lang of ['en', 'af']) {
+for (const c of cases) for (const lang of LANGS) {
   const tag = `${c.name}-${lang}`;
   const row = { tag, checks: {}, errors: [], badResponses: [] };
   const ctx = await browser.newContext({
     viewport: c.viewport, isMobile: c.isMobile, hasTouch: c.hasTouch, deviceScaleFactor: c.deviceScaleFactor,
-    geolocation: STRAND, permissions: ['geolocation'], locale: lang === 'af' ? 'af-ZA' : 'en-ZA', timezoneId: 'Africa/Johannesburg',
+    geolocation: STRAND, permissions: ['geolocation'], locale: `${lang}-ZA`, timezoneId: 'Africa/Johannesburg',
     userAgent: c.isMobile ? 'Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Mobile Safari/537.36 pw-smoke' : undefined,
   });
   await ctx.addInitScript((l) => {
