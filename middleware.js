@@ -131,7 +131,7 @@ const DESCRIPTIONS = {
     heat:            'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao. Ho tjhesa.',
     rain:            'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao. Pula e a na.',
     'rain-possible': 'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao. Mohlomong pula.',
-    storm:           'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao. Ledimo le a tla.',
+    storm:           'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao. Sefefo se a tla.',
     uv:              'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao. UV e hodimo.',
     wind:            'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao. Moya o a foka.',
     default:         'Boemo ba lehodimo ba Afrika Borwa ka puo ya hao.',
