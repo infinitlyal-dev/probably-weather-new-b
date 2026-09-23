@@ -14,6 +14,10 @@
 //
 // To approve a new line: Al rules it, and its English goes into APPROVED below
 // with the date of his ruling. Nothing else.
+//
+// 2026-09-23: Al's season ruling (review/seasonal-ruled.json, row C344) CUT
+// "Nature's doing its own load shedding." A CUT means the line does not work and
+// leaves every language, so it moved from APPROVED to CUT: four approved lines live.
 import { describe, expect, it } from 'vitest';
 
 import { WEATHER_COPY } from '../assets/weather-copy.js';
@@ -22,16 +26,17 @@ import { HERO_LINES_AF } from '../assets/hero-lines-af.js';
 
 // review/eskom-ruled.json, 2026-09-22 — the English of every line Al kept.
 const APPROVED = new Set([
-  "Nature's doing its own load shedding.",          // witty:storm#5
   'Eskom wishes it had this power.',                 // witty:storm#12
   "Lightning's putting Eskom's grid to shame.",      // witty:storm#13
   'Eskom-friendly weather. No solar today.',         // witty:cloudy#10
   "Stars out, load shedding can't touch this.",      // witty:night#0
 ]);
-// Cut on the same ruling. They must not come back by any route.
+// Cut on the same ruling, and one on the season ruling of 2026-09-23. They must
+// not come back by any route.
 const CUT = new Set([
   'The kind of day that makes you forget load shedding.',
   'Days like this is why we put up with the load shedding.',
+  "Nature's doing its own load shedding.",          // was witty:storm#5; season ruling C344
 ]);
 
 // "load shedding" survives as a loanword in isiZulu, isiXhosa and Sesotho
@@ -70,7 +75,7 @@ describe('Eskom and load-shedding lines — only what Al approved (2026-09-22)',
     expect([...strayEn, ...strayAf]).toEqual([]);
   });
 
-  it('the two lines Al cut are gone from the bank and from every photograph', () => {
+  it('the lines Al cut are gone from the bank and from every photograph', () => {
     const everywhere = new Set([
       ...bankRows().map((r) => r.text),
       ...Object.values(HERO_LINES).flat(),
@@ -79,7 +84,7 @@ describe('Eskom and load-shedding lines — only what Al approved (2026-09-22)',
     expect([...CUT].filter((t) => everywhere.has(t))).toEqual([]);
   });
 
-  it('the five approved lines are still live in the bank, with all five languages', () => {
+  it('the approved lines are still live in the bank, with all five languages', () => {
     const rows = bankRows();
     for (const en of APPROVED) {
       const langs = new Set(rows.filter((r) => r.en === en && r.text && r.text.trim()).map((r) => r.lang));

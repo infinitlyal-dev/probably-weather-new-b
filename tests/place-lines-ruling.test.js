@@ -153,13 +153,32 @@ describe('the N1 lines through every path that serves them', () => {
 describe('Al\'s place ruling is what is wired', () => {
   const live = new Set(Object.values(heroLines.HERO_LINES).flat());
 
+  // Al's season ruling (review/seasonal-ruled.json, 2026-09-23) came after this one and
+  // CUT eleven of the tagged lines. A CUT leaves every language, so for those the region
+  // is history: the line must be off every photograph, out of the Afrikaans table and
+  // out of the bank. Every other TAG row still carries its region everywhere.
+  const SEASON_CUT = new Set(read('../review/seasonal-ruled.json').rulings.filter((r) => r.verdict === 'CUT').map((r) => r.en));
+
   it('every TAG row carries its region on its photograph and on every bank copy', () => {
     const tagged = RULED.filter((r) => r.verdict === 'TAG');
     expect(tagged.length).toBe(56);
-    for (const r of tagged) {
+    const stillTagged = tagged.filter((r) => !SEASON_CUT.has(r.en));
+    expect(stillTagged.length).toBe(45);
+    for (const r of stillTagged) {
       expect(live.has(r.en), r.key).toBe(true);
       expect(heroLines.HERO_LINE_TAGS[r.en]?.region, r.key).toEqual(r.region);
       for (const b of PAGE.get(r.key).alsoBank || []) expect(bankRow(b.key, r.en).tag?.region, `${r.key} ${b.key}`).toEqual(r.region);
+    }
+  });
+
+  it('a TAG row whose line the season ruling cut is gone from photographs, the Afrikaans table and the bank', () => {
+    const cut = RULED.filter((r) => r.verdict === 'TAG' && SEASON_CUT.has(r.en));
+    expect(cut.map((r) => r.key)).toEqual(['P02', 'P03', 'P05', 'P06', 'P07', 'P12', 'P24', 'P33', 'P34', 'P51', 'P54']);
+    for (const r of cut) {
+      expect(live.has(r.en), r.key).toBe(false);
+      expect(heroLines.HERO_LINE_TAGS[r.en], r.key).toBeUndefined();
+      expect(heroLinesAf.heroLineAf(r.en), r.key).toBeFalsy();
+      for (const b of PAGE.get(r.key).alsoBank || []) expect(bankRow(b.key, r.en).i, `${r.key} ${b.key}`).toBe(-1);
     }
   });
 

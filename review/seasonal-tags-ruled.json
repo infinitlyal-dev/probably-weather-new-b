@@ -1,0 +1,36 @@
+{
+ "generated": "2026-09-23",
+ "ruledBy": "Al, season lines keep/cut page (review/seasonal-tags.html)",
+ "source": "review/seasonal-ruled.json",
+ "rulings": [
+  {
+   "kind": "bespoke",
+   "key": "N299",
+   "en": "That lawn stopped asking the sky for rain somewhere around the start of November.",
+   "ruling": "MONTHS",
+   "months": [
+    1,
+    2,
+    3,
+    12
+   ]
+  },
+  {
+   "kind": "bespoke",
+   "key": "B212",
+   "en": "Nobody in this dorp has needed a stove since about the second week of December.",
+   "ruling": "MONTHS",
+   "months": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "kind": "bespoke",
+   "key": "B450",
+   "en": "Clouds are crying like NZ at the 23 Rugby WC!",
+   "ruling": "ALWAYS"
+  }
+ ]
+}

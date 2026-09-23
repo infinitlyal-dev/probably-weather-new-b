@@ -3,70 +3,70 @@
  "method": "blind back-translation by fresh-context language agents (one per batch, English opened only after the back-translation was written), verdict MATCH/DRIFT/MISMATCH against the keyed English; wrong-source probe by word overlap against sibling lines; lang-check.mjs findings as corpus support",
  "counts": {
   "af": {
-   "pairs": 1754,
-   "MATCH": 1669,
-   "DRIFT": 76,
-   "MISMATCH": 9,
+   "pairs": 1671,
+   "MATCH": 1614,
+   "DRIFT": 49,
+   "MISMATCH": 8,
    "wrongSource": 5,
-   "flagged": 85
+   "flagged": 57
   },
   "zu": {
-   "pairs": 949,
-   "MATCH": 878,
-   "DRIFT": 56,
-   "MISMATCH": 15,
-   "wrongSource": 4,
-   "flagged": 72
+   "pairs": 914,
+   "MATCH": 847,
+   "DRIFT": 53,
+   "MISMATCH": 14,
+   "wrongSource": 2,
+   "flagged": 68
   },
   "xh": {
-   "pairs": 915,
-   "MATCH": 838,
-   "DRIFT": 69,
+   "pairs": 878,
+   "MATCH": 805,
+   "DRIFT": 65,
    "MISMATCH": 8,
    "wrongSource": 1,
-   "flagged": 78
+   "flagged": 74
   },
   "st": {
-   "pairs": 943,
-   "MATCH": 873,
-   "DRIFT": 58,
-   "MISMATCH": 12,
-   "wrongSource": 6,
-   "flagged": 71
+   "pairs": 906,
+   "MATCH": 839,
+   "DRIFT": 56,
+   "MISMATCH": 11,
+   "wrongSource": 5,
+   "flagged": 68
   }
  },
- "flagged": 306,
+ "flagged": 267,
  "sample": [
-  "zu-0776",
-  "zu-0182",
-  "af-0452",
+  "zu-0755",
+  "zu-0178",
+  "af-0479",
   "xh-0756",
-  "af-0132",
-  "af-1677",
-  "af-1632",
-  "xh-0540",
-  "af-0020",
-  "st-0270",
-  "st-0794",
-  "zu-0211",
-  "af-1398",
-  "af-1942",
-  "af-2005",
-  "zu-0846",
-  "af-1653",
-  "xh-0358",
-  "xh-0240",
-  "st-0379",
-  "af-1508",
-  "st-0333",
-  "af-2104",
-  "xh-0688",
-  "xh-0644",
-  "af-0170",
-  "zu-0747",
+  "af-0133",
+  "st-0258",
+  "af-1630",
+  "xh-0534",
+  "af-0022",
+  "xh-0271",
+  "af-2057",
+  "zu-0207",
+  "af-1413",
+  "st-0615",
+  "af-1993",
+  "zu-0855",
+  "af-1650",
+  "xh-0338",
+  "zu-0252",
+  "st-0351",
+  "af-1523",
+  "xh-0407",
+  "zu-0887",
+  "xh-0670",
+  "xh-0625",
+  "af-0173",
+  "zu-0726",
   "af-0342",
-  "zu-0408",
-  "zu-0597"
+  "zu-0389",
+  "zu-0593"
  ],
  "rows": [
   {
@@ -266,34 +266,6 @@
    "reasons": []
   },
   {
-   "k": "af-0008",
-   "lang": "af",
-   "en": "Bottle this one. Open it in winter.",
-   "text": "Bottel hierdie een. Maak hom oop in die winter.",
-   "back": "Bottle this one. Open it in winter.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 6,
-    "bank": [
-     "witty:clear#37"
-    ]
-   },
-   "image": "clear/week_1/dawn/2.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0009",
    "lang": "af",
    "en": "This is the weather we brag about overseas.",
@@ -327,32 +299,6 @@
    "en": "Not a breath of haze this morning; even the mountain got up early.",
    "text": "Nie 'n sweempie wasigheid vanoggend nie; selfs die berg het vroeg opgestaan.",
    "back": "Not a hint of haze this morning; even the mountain got up early.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "clear/week_1/dawn/2.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0011",
-   "lang": "af",
-   "en": "This light lasts about twenty minutes and the walk to school gets all of it.",
-   "text": "Hierdie lig hou omtrent twintig minute, en die stap skool toe kry alles.",
-   "back": "This light lasts about twenty minutes, and the walk to school gets all of it.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -617,8 +563,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0021",
@@ -670,7 +615,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0023",
@@ -1047,32 +993,6 @@
    "reasons": []
   },
   {
-   "k": "af-0037",
-   "lang": "af",
-   "en": "The jacaranda is dropping purple on a lawn he has just finished watering.",
-   "text": "Die jakaranda laat pers val op 'n grasperk wat hy pas natgemaak het.",
-   "back": "The jacaranda is dropping purple onto a lawn he's just watered.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "clear/week_1/dawn/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0038",
    "lang": "af",
    "en": "Nobody inside that house is awake yet and that is entirely the plan.",
@@ -1353,32 +1273,6 @@
    "text": "'n Lug soos daardie oorheers HR, en almal by ontvangs weet dit.",
    "back": "A sky like that overrules HR, and everyone at reception knows it.",
    "note": "unsure: 'oorheers' - dominates/overrules; the HR/reception joke is unclear to me",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0049",
-   "lang": "af",
-   "en": "Summer filed its arrival notice this morning; the shirt is the paperwork.",
-   "text": "Die somer het vanoggend sy aankomskennisgewing ingedien; die hemp is die papierwerk.",
-   "back": "Summer filed its notice of arrival this morning; the shirt is the paperwork.",
-   "note": "",
    "verdict": "MATCH",
    "reason": "",
    "wrongSource": null,
@@ -2024,32 +1918,6 @@
    "en": "That lawn stopped asking the sky for rain somewhere around the start of November.",
    "text": "Daardie grasperk het êrens teen die begin van November opgehou om die lug vir reën te vra.",
    "back": "That lawn stopped asking the sky for rain somewhere around the start of November.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "clear/week_1/day/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0074",
-   "lang": "af",
-   "en": "The sun has done more to that lawn this month than any mower ever will.",
-   "text": "Die son het hierdie maand meer aan daardie grasperk gedoen as wat enige grassnyer ooit sal.",
-   "back": "The sun has done more to that lawn this month than any lawnmower ever will.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -2752,32 +2620,6 @@
    "image": "clear/week_1/dusk/5.webp",
    "imageIsExample": false,
    "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0101",
-   "lang": "af",
-   "en": "Cricket till the light goes, and light like this takes its time going.",
-   "text": "Krieket tot die lig weg is, en lig soos dié vat sy tyd om te gaan.",
-   "back": "Cricket till the light's gone, and light like this takes its time leaving.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "clear/week_1/dusk/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
    "flagged": false,
    "severity": 3,
    "reasons": []
@@ -3624,8 +3466,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0133",
@@ -3653,7 +3494,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0134",
@@ -3978,36 +3820,6 @@
    "reasons": []
   },
   {
-   "k": "af-0146",
-   "lang": "af",
-   "en": "Cancel everything. This is THE day winter was hiding.",
-   "text": "Kanselleer alles. Dis DIÉ dag.",
-   "back": "Cancel everything. It's THE day.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "EN 'THE day winter was hiding' - the winter/season hook is dropped; AF is just 'Dis DIÉ dag'.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": [
-     "witty:clear#71"
-    ]
-   },
-   "image": "clear/week_2/day/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: EN 'THE day winter was hiding' - the winter/season hook is dropped; AF is just 'Dis DIÉ dag'."
-   ]
-  },
-  {
    "k": "af-0147",
    "lang": "af",
    "en": "Nature's flexing and we're here for it.",
@@ -4064,58 +3876,6 @@
    "reasons": [
     "DRIFT: EN punchline 'Quietly devastating' replaced by 'Dit mag maar' (it's allowed) - different, flatter payoff."
    ]
-  },
-  {
-   "k": "af-0149",
-   "lang": "af",
-   "en": "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
-   "text": "Agapante oop, hadeda besig, lug leeg: hoogsomer loop volgens skedule.",
-   "back": "Agapanthus open, hadeda busy, sky empty: midsummer is running on schedule.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "clear/week_2/day/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0150",
-   "lang": "af",
-   "en": "The agapanthus open for exactly this kind of sky, and they got it.",
-   "text": "Die agapante gaan oop vir presies hierdie soort lug, en hulle het dit gekry.",
-   "back": "The agapanthus opens for exactly this kind of sky, and they got it.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "clear/week_2/day/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
   },
   {
    "k": "af-0151",
@@ -4629,8 +4389,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0171",
@@ -4712,7 +4471,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0174",
@@ -5311,32 +5071,6 @@
    "reasons": []
   },
   {
-   "k": "af-0196",
-   "lang": "af",
-   "en": "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
-   "text": "Die see hou sy winterkleur onder so 'n lug, wat die kalender ook al sê.",
-   "back": "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cloudy/week_1/dawn/4.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0197",
    "lang": "af",
    "en": "A grey start on the coast usually burns off by ten. Usually.",
@@ -5450,32 +5184,6 @@
    "en": "The cloud kept the frost off the windscreens, which is the one favour it does.",
    "text": "Die wolke het die ryp van die voorruite afgehou, en dis die een guns wat hulle doen.",
    "back": "The clouds kept the frost off the windscreens, and that's the one favour they do.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cloudy/week_1/dawn/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0202",
-   "lang": "af",
-   "en": "Pink-grey sky over the robots: winter is on the morning shift too.",
-   "text": "Pienkgrys lug oor die robotte: die winter werk ook die oggendskof.",
-   "back": "Pinkish-grey sky over the robots: winter works the morning shift too.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -6091,32 +5799,6 @@
    "reasons": []
   },
   {
-   "k": "af-0225",
-   "lang": "af",
-   "en": "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
-   "text": "Plat grys oor die rugbyveld: perfekte skopweer, geen wind om te blameer nie.",
-   "back": "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "cloudy/week_1/day/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0226",
    "lang": "af",
    "en": "The sky has gone the colour of the staff-room ceiling and settled in.",
@@ -6495,36 +6177,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-0240",
-   "lang": "af",
-   "en": "Some clouds. Some sun. South African summer admin.",
-   "text": "Sonnig met n spatsel wolke. SA somer in een prentjie.",
-   "back": "Sunny with a sprinkle of clouds. SA summer in one picture.",
-   "note": "'n' written without apostrophe",
-   "verdict": "DRIFT",
-   "reason": "EN 'South African summer admin' punchline lost; AF 'SA somer in een prentjie' (SA summer in one picture) is a different, flatter close; also 'n typo.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": [
-     "witty:partly-cloudy#16"
-    ]
-   },
-   "image": "cloudy/week_1/day/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: EN 'South African summer admin' punchline lost; AF 'SA somer in een prentjie' (SA summer in one picture) is a different, flatter close; also 'n typo."
-   ]
   },
   {
    "k": "af-0241",
@@ -8495,32 +8147,6 @@
    "reasons": []
   },
   {
-   "k": "af-0316",
-   "lang": "af",
-   "en": "Half this street is in summer and the other half is about to be somewhere else.",
-   "text": "Die helfte van hierdie straat is in die somer, en die ander helfte gaan nou-nou êrens anders wees.",
-   "back": "Half this street is in summer, and the other half is about to be somewhere else.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "cloudy/week_2/day/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0317",
    "lang": "af",
    "en": "That cloud line is moving in with the confidence of a Monday.",
@@ -9722,60 +9348,6 @@
    "reasons": []
   },
   {
-   "k": "af-0365",
-   "lang": "af",
-   "en": "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
-   "text": "Twee musse, een skraper, minus drie: die skoolrit begin voor die kar instem.",
-   "back": "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
-   "note": "'instem' = agree/consent (start)",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/dawn/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0368",
-   "lang": "af",
-   "en": "Clear skies, open roads, running nose. The full winter set.",
-   "text": "Die lug is oop, die pad is oop, jou neus loop.",
-   "back": "The sky is open, the road is open, your nose is running.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "\"The full winter set\" is cut, but the oop/oop/loop rhyme rebuilds the punch.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": [
-     "witty:cold-clear#44"
-    ]
-   },
-   "image": "cold-clear/week_1/dawn/4.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0369",
    "lang": "af",
    "en": "The bluer the sky, the colder the truth.",
@@ -9799,32 +9371,6 @@
    "image": "cold-clear/week_1/dawn/4.webp",
    "imageIsExample": false,
    "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0370",
-   "lang": "af",
-   "en": "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
-   "text": "Nie een wolk nie, nie een graad nie: 'n Hoëveldse wintermôre doen albei gelyk.",
-   "back": "Not one cloud, not one degree: a Highveld winter morning does both at once.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/dawn/4.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
    "flagged": false,
    "severity": 3,
    "reasons": []
@@ -9938,34 +9484,6 @@
    "reasons": []
   },
   {
-   "k": "af-0380",
-   "lang": "af",
-   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
-   "text": "Hoëveld-winter: die enigste plek waar jy twee jasse aantrek om die pos te gaan haal.",
-   "back": "Highveld winter: the only place where you put on two coats to go fetch the post.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": [
-     "witty:cold-clear#3"
-    ]
-   },
-   "image": "cold-clear/week_1/dawn/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0381",
    "lang": "af",
    "en": "Zero wind. Zero clouds. Zero mercy.",
@@ -9989,60 +9507,6 @@
    "image": "cold-clear/week_1/dawn/6.webp",
    "imageIsExample": false,
    "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0382",
-   "lang": "af",
-   "en": "The Free State just remembered it has a winter setting.",
-   "text": "Die Vrystaat het pas onthou hy het 'n winter-setting.",
-   "back": "The Free State has just remembered he has a winter setting.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": [
-     "witty:cold-clear#1"
-    ]
-   },
-   "image": "cold-clear/week_1/dawn/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0383",
-   "lang": "af",
-   "en": "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
-   "text": "Ryp tot teen die damwal: die Karoo het oornag sy winterding gedoen.",
-   "back": "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/dawn/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
    "flagged": false,
    "severity": 3,
    "reasons": []
@@ -10186,34 +9650,6 @@
    "reasons": [
     "DRIFT: Punchline lost: \"will wake you better than coffee\" became \"gaan jou wakker maak. Belowe.\" (will wake you up. Promise.), so the coffee comparison is gone."
    ]
-  },
-  {
-   "k": "af-0391",
-   "lang": "af",
-   "en": "Joburg winter dawn: the view is free; the air charges admission.",
-   "text": "Joburg winterdagbreek: die uitsig is verniet; die lug vra toegangsgeld.",
-   "back": "Joburg winter daybreak: the view is free; the air charges an entrance fee.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM semantic: 'vra' means 'ask; asks' — nothing in the English source; it is 1 letter from 'vry', the usual word for 'free'"
-    ]
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/dawn/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
   },
   {
    "k": "af-0392",
@@ -10406,32 +9842,6 @@
    "reasons": []
   },
   {
-   "k": "af-0406",
-   "lang": "af",
-   "en": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
-   "text": "Asem soos rook, ryp op die glas, son reeds op: Hoëveldse skoolrit.",
-   "back": "Breath like smoke, frost on the glass, sun already up: Highveld school run.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/day/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0407",
    "lang": "af",
    "en": "The bakkie iced over under a completely clear sky, which is exactly how it works.",
@@ -10594,114 +10004,6 @@
    "reasons": []
   },
   {
-   "k": "af-0417",
-   "lang": "af",
-   "en": "Coats and coffees in full sun: winter in this city photographs like summer.",
-   "text": "Jasse en koffies in vol son: winter in hierdie stad lyk op foto's soos somer.",
-   "back": "Coats and coffees in full sun: winter in this city looks like summer in photos.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/day/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0420",
-   "lang": "af",
-   "en": "Lekker koud, but the rugby fields are about to look perfect.",
-   "text": "Lekker koud, maar die rugbyvelde gaan nou-nou perfek lyk.",
-   "back": "Nicely cold, but the rugby fields are going to look perfect in a moment.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": [
-     "witty:cold-clear#11"
-    ]
-   },
-   "image": "cold-clear/week_1/day/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0421",
-   "lang": "af",
-   "en": "Perfect rugby weather. For the spectators with blankets.",
-   "text": "Perfekte rugbyweer. Vir die toeskouers met komberse.",
-   "back": "Perfect rugby weather. For the spectators with blankets.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": [
-     "witty:cold-clear#61"
-    ]
-   },
-   "image": "cold-clear/week_1/day/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0422",
-   "lang": "af",
-   "en": "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
-   "text": "Blou lug, goue gras, wit rande: 'n Hoëveldse rugbyoggend in volle drag.",
-   "back": "Blue sky, golden grass, white edges: a Highveld rugby morning in full kit.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/day/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0425",
    "lang": "af",
    "en": "Sunny, with a 100% chance of shivering.",
@@ -10721,34 +10023,6 @@
     "bank": [
      "witty:cold-clear#63"
     ]
-   },
-   "image": "cold-clear/week_1/day/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0426",
-   "lang": "af",
-   "en": "Frost on the grass, steam off the field: winter running weather at its most honest.",
-   "text": "Ryp op die gras, stoom van die veld af: wintersdrafweer op sy eerlikste.",
-   "back": "Frost on the grass, steam coming off the field: winter running weather at its most honest.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'wintersdrafweer' — not found in any external source"
-    ]
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
    },
    "image": "cold-clear/week_1/day/7.webp",
    "imageIsExample": false,
@@ -10818,32 +10092,6 @@
    "text": "Die handdoeke is klam uitgehang en kom as planke terug.",
    "back": "The towels went out damp and are coming back as planks.",
    "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/dusk/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0432",
-   "lang": "af",
-   "en": "That washing is not dry; it is preserved. Winter dusk works fast out here.",
-   "text": "Daardie wasgoed is nie droog nie; dit is ingelê. Winterskemer werk vinnig hier.",
-   "back": "That washing isn't dry; it's been preserved. Winter dusk works fast here.",
-   "note": "unsure: 'ingelê' - preserved/pickled (inlê), or 'laid in'",
    "verdict": "MATCH",
    "reason": "",
    "wrongSource": null,
@@ -11161,8 +10409,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0455",
@@ -11516,7 +10763,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0482",
@@ -11571,34 +10819,6 @@
    "reasons": []
   },
   {
-   "k": "af-0484",
-   "lang": "af",
-   "en": "Clear nights are winter's way of apologising.",
-   "text": "Helder nagte is die winter se jammer-sê.",
-   "back": "Clear nights are winter's way of saying sorry.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": [
-     "witty:cold-clear#111"
-    ]
-   },
-   "image": "cold-clear/week_1/night/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0485",
    "lang": "af",
    "en": "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight.",
@@ -11618,32 +10838,6 @@
     "bank": []
    },
    "image": "cold-clear/week_1/night/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0488",
-   "lang": "af",
-   "en": "Braaiing in beanies under a hard clear sky: winter never cancelled anything here.",
-   "text": "Braai met musse op onder 'n kristalhelder lug: die winter kanselleer niks hier nie.",
-   "back": "Braaiing with beanies on under a crystal-clear sky: winter cancels nothing here.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold-clear/week_1/night/6.webp",
    "imageIsExample": false,
    "alRuledAf": false,
    "flagged": false,
@@ -11841,32 +11035,6 @@
    "reasons": []
   },
   {
-   "k": "af-0501",
-   "lang": "af",
-   "en": "Small dog, thick jersey, short patrol: winter mornings run on reduced hours.",
-   "text": "Klein hond, dik trui, kort patrollie: winteroggende werk verkorte ure.",
-   "back": "Small dog, thick jersey, short patrol: winter mornings work reduced hours.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/dawn/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0504",
    "lang": "af",
    "en": "Frost on the grass, frost on the bakkie, frost on my will to live.",
@@ -11982,32 +11150,6 @@
    "en": "The zip goes all the way up today; the walk to the gate has teeth.",
    "text": "Die rits gaan vandag heeltemal op; die stap hek toe het tande.",
    "back": "The zip goes all the way up today; the walk to the gate has teeth.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/dawn/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0512",
-   "lang": "af",
-   "en": "Beanie plus puffer plus school tie: the cold front has reached the uniform.",
-   "text": "Mus plus poffer plus skooldas: die kouefront het die skooldrag bereik.",
-   "back": "Beanie plus puffer plus school tie: the cold front has reached the school uniform.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -12353,34 +11495,6 @@
    "reasons": []
   },
   {
-   "k": "af-0538",
-   "lang": "af",
-   "en": "Winter sun: all of the light, none of the heat. Nice try, sun.",
-   "text": "Winterson: al die lig, nul van die hitte. Mooi probeer, son.",
-   "back": "Winter sun: all the light, none of the heat. Nice try, sun.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": [
-     "witty:cold#61"
-    ]
-   },
-   "image": "cold/week_1/day/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0539",
    "lang": "af",
    "en": "Outside is a test of character. You're failing.",
@@ -12707,32 +11821,6 @@
    "reasons": []
   },
   {
-   "k": "af-0561",
-   "lang": "af",
-   "en": "Construction finished at nine: one duvet cave, single occupant, no visitors till spring.",
-   "text": "Bouwerk klaar om nege: een duvetgrot, een bewoner, geen besoekers tot die lente nie.",
-   "back": "Construction done by nine: one duvet cave, one occupant, no visitors until spring.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "cold/week_1/day/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0564",
    "lang": "af",
    "en": "This is not what the tourism brochure promised.",
@@ -12895,32 +11983,6 @@
    "reasons": []
   },
   {
-   "k": "af-0574",
-   "lang": "af",
-   "en": "It is heater season, and the best seat in the house has fur on it.",
-   "text": "Dis verwarmerseisoen, en die beste sitplek in die huis het pels op.",
-   "back": "It's heater season, and the best seat in the house has fur on it.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/dusk/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0576",
    "lang": "af",
    "en": "The heater is your best friend. Your only friend.",
@@ -12968,32 +12030,6 @@
     "bank": []
    },
    "image": "cold/week_1/dusk/2.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0583",
-   "lang": "af",
-   "en": "The mountain is in there somewhere, wrapped up for the winter.",
-   "text": "Die berg is daar êrens, toegedraai vir die winter.",
-   "back": "The mountain is there somewhere, wrapped up for winter.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/dusk/3.webp",
    "imageIsExample": false,
    "alRuledAf": false,
    "flagged": false,
@@ -13157,63 +12193,11 @@
    "reasons": []
   },
   {
-   "k": "af-0598",
-   "lang": "af",
-   "en": "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
-   "text": "Vrydagaand, sneeu op die Apostels, en die enigste tou is vir die ketel.",
-   "back": "Friday night, snow on the Apostles, and the only queue is for the kettle.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/dusk/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0599",
    "lang": "af",
    "en": "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.",
    "text": "Warmsjokolade-weer diagnoseer homself. Die malvalekkers is die tweede mening.",
    "back": "Hot-chocolate weather diagnoses itself. The marshmallows are the second opinion.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/dusk/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0600",
-   "lang": "af",
-   "en": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
-   "text": "Sneeu op die berg. Die soort koue wat Kaapstad raam en teen die muur hang.",
-   "back": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -13344,32 +12328,6 @@
    "en": "The cold cleared the whole street an hour before closing time.",
    "text": "Die koue het die hele straat 'n uur voor sluitingstyd skoongevee.",
    "back": "The cold swept the whole street clean an hour before closing time.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/night/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0611",
-   "lang": "af",
-   "en": "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.",
-   "text": "Elke straatlig langs die pad skyn vir niemand nie; winternagte maak 'n dorp vroeg leeg.",
-   "back": "Every streetlight along the road is shining for nobody; winter nights empty a town early.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -13525,32 +12483,6 @@
    "reasons": []
   },
   {
-   "k": "af-0623",
-   "lang": "af",
-   "en": "Fingerless gloves at a laptop: winter has entered the home office.",
-   "text": "Vingerlose handskoene by 'n laptop: winter het die tuiskantoor betree.",
-   "back": "Fingerless gloves at a laptop: winter has entered the home office.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/night/4.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0628",
    "lang": "af",
    "en": "Prettiest blue sky in the country, and it feels like a fridge with a view.",
@@ -13598,58 +12530,6 @@
     "bank": []
    },
    "image": "cold/week_1/night/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0635",
-   "lang": "af",
-   "en": "Beanie, snood, torch, book: winter nights build the best reading rooms.",
-   "text": "Mus, nekwarmer, flits, boek: winternagte bou die beste leeskamers.",
-   "back": "Beanie, neck warmer, torch, book: winter nights build the best reading rooms.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/night/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0638",
-   "lang": "af",
-   "en": "Wet road, grey sky, dog in a jersey: winter is fully operational.",
-   "text": "Nat pad, grys lug, hond in 'n trui: winter is ten volle in werking.",
-   "back": "Wet road, grey sky, dog in a jersey: winter is fully operational.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "cold/week_2/day/1.webp",
    "imageIsExample": false,
    "alRuledAf": false,
    "flagged": false,
@@ -13732,32 +12612,6 @@
    "image": "cold/week_2/day/3.webp",
    "imageIsExample": false,
    "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0648",
-   "lang": "af",
-   "en": "Socks go on the heater first; feet join later — the winter system works.",
-   "text": "Sokkies gaan eerste op die verwarmer; voete kom later — die winterstelsel werk.",
-   "back": "Socks go on the heater first; feet come later - the winter system works.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "cold/week_2/day/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
    "flagged": false,
    "severity": 3,
    "reasons": []
@@ -13981,32 +12835,6 @@
    "reasons": []
   },
   {
-   "k": "af-0664",
-   "lang": "af",
-   "en": "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.",
-   "text": "Sneeu op die berg, wasgoed op die draad: koud genoeg om te vries, droog genoeg om te probeer.",
-   "back": "Snow on the mountain, washing on the line: cold enough to freeze, dry enough to try.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "cold/week_2/day/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0667",
    "lang": "af",
    "en": "The great debate: do we switch the heater on too, or are we not made of money?",
@@ -14030,32 +12858,6 @@
    "image": "cold/week_2/day/7.webp",
    "imageIsExample": false,
    "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0668",
-   "lang": "af",
-   "en": "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly.",
-   "text": "Stoel na die verwarmer gedraai, kombers op, tee naby: wintersondag, korrek uitgevoer.",
-   "back": "Chair turned to the heater, blanket on, tea close by: winter Sunday, correctly executed.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "cold/week_2/day/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
    "flagged": false,
    "severity": 3,
    "reasons": []
@@ -17947,32 +16749,6 @@
    "reasons": []
   },
   {
-   "k": "af-0887",
-   "lang": "af",
-   "en": "That sprinkler has been the best-value thing in this garden all summer.",
-   "text": "Daardie sproeier is die hele somer die beste waarde in hierdie tuin.",
-   "back": "That sprinkler is the best value in this garden all summer.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "heat/week_1/day/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0888",
    "lang": "af",
    "en": "Those two on the stoep have made their choice and they are sticking with it.",
@@ -21091,32 +19867,6 @@
    "reasons": []
   },
   {
-   "k": "af-1070",
-   "lang": "af",
-   "en": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
-   "text": "Joburg somerreën: kom vyfuur, deurweek alles, weg teen aandete.",
-   "back": "Joburg summer rain: arrives at five, soaks everything, gone by dinner.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "rain/week_1/dusk/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-1073",
    "lang": "af",
    "en": "The commute just became a team sport.",
@@ -21678,32 +20428,6 @@
    "en": "The gutter is carrying this street's problems straight down to the next one.",
    "text": "Die geut dra hierdie straat se probleme reguit af na die volgende een.",
    "back": "The gutter carries this street's problems straight down to the next one.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "rain/week_1/night/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-1110",
-   "lang": "af",
-   "en": "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
-   "text": "Jakarandablomme en stormwater — die kombinasie waarvan Joburg die minste hou.",
-   "back": "Jacaranda blossoms and stormwater — the combination Joburg likes least.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -23413,34 +22137,6 @@
    "reasons": []
   },
   {
-   "k": "af-1251",
-   "lang": "af",
-   "en": "Nature's doing its own load shedding.",
-   "text": "Natuur doen sy eie beurtkrag.",
-   "back": "Nature is doing its own load-shedding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": [
-     "witty:storm#5"
-    ]
-   },
-   "image": "storm/week_1/dusk/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-1254",
    "lang": "af",
    "en": "The gutter is telling you exactly how long you left it.",
@@ -23472,32 +22168,6 @@
    "en": "The hose reel is going to feel very unnecessary for a while.",
    "text": "Die tuinslanghaspel gaan vir 'n ruk baie onnodig voel.",
    "back": "The hose reel is going to feel very unnecessary for a while.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "storm/week_1/night/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-1256",
-   "lang": "af",
-   "en": "Jacaranda season and a Monday, and the paving is taking both badly.",
-   "text": "Jakarandaseisoen en 'n Maandag, en die plaveisel vat albei sleg.",
-   "back": "Jacaranda season and a Monday, and the paving is taking both badly.",
    "note": "",
    "verdict": "MATCH",
    "reason": "",
@@ -25703,32 +24373,6 @@
    "reasons": []
   },
   {
-   "k": "af-1368",
-   "lang": "af",
-   "en": "Every leaf the tree dropped this month is going past them at head height.",
-   "text": "Elke blaar wat die boom hierdie maand laat val het, gaan op kophoogte by hulle verby.",
-   "back": "Every leaf that tree has dropped this month is going past them at head height.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "wind/week_1/day/1.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-1369",
    "lang": "af",
    "en": "Monday, and the wind is the best thing that has happened to him so far.",
@@ -26514,8 +25158,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1399",
@@ -26905,7 +25548,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1414",
@@ -28946,32 +27590,6 @@
    "reasons": []
   },
   {
-   "k": "af-1493",
-   "lang": "af",
-   "en": "Every jacaranda on this street is emptying itself onto one man.",
-   "text": "Elke jakaranda in hierdie straat maak homself op een man leeg.",
-   "back": "Every jacaranda in this street is emptying itself onto one man.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "wind/week_2/day/3.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-1494",
    "lang": "af",
    "en": "That tie has been horizontal since he left the car.",
@@ -29334,33 +27952,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-1508",
-   "lang": "af",
-   "en": "The jacaranda is redecorating the whole road whether you like it or not.",
-   "text": "Die jakaranda herversier die hele pad of jy daarvan hou of nie.",
-   "back": "The jacaranda is redecorating the whole road whether you like it or not.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "wind/week_2/day/6.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": [],
-   "sample": true
   },
   {
    "k": "af-1509",
@@ -29763,7 +28354,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1524",
@@ -30574,35 +29166,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "zu-0006",
-   "lang": "zu",
-   "en": "Nature's doing its own load shedding.",
-   "text": "Imvelo yenza ukucisha kwayo.",
-   "back": "Nature is doing its own switch-off.",
-   "note": "unsure: 'ukucisha kwayo' = its switching-off / putting out (lights) — possibly a load-shedding allusion, not explicit",
-   "verdict": "DRIFT",
-   "reason": "The 'load shedding' punchline becomes a generic 'ukucisha kwayo' (its switching-off), so the Eskom reference is only implied.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:storm#5"
-    ]
-   },
-   "image": "storm/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The 'load shedding' punchline becomes a generic 'ukucisha kwayo' (its switching-off), so the Eskom reference is only implied."
-   ]
   },
   {
    "k": "zu-0007",
@@ -32189,35 +30752,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "xh-0006",
-   "lang": "xh",
-   "en": "Nature's doing its own load shedding.",
-   "text": "Indalo yenza ukucima kwayo.",
-   "back": "Nature is doing its own switching-off.",
-   "note": "'ukucima' = switching off / extinguishing; reads as a load-shedding nod but the sense is vague",
-   "verdict": "DRIFT",
-   "reason": "'load shedding' is rendered as a bare 'ukucima' (switching off), so the Eskom reference is only hinted at.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:storm#5"
-    ]
-   },
-   "image": "storm/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'load shedding' is rendered as a bare 'ukucima' (switching off), so the Eskom reference is only hinted at."
-   ]
   },
   {
    "k": "xh-0007",
@@ -33808,33 +32342,6 @@
     "kind": "bank",
     "bank": [
      "witty:storm#4"
-    ]
-   },
-   "image": "storm/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0006",
-   "lang": "st",
-   "en": "Nature's doing its own load shedding.",
-   "text": "Tlhaho e etsa load shedding ea eona.",
-   "back": "Nature is doing its own load shedding.",
-   "note": "Lesotho spelling 'ea eona' (SA: ya yona).",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:storm#5"
     ]
    },
    "image": "storm/week_1/day/1.webp",
@@ -36515,35 +35022,6 @@
    "reasons": []
   },
   {
-   "k": "af-1578",
-   "lang": "af",
-   "en": "Post-storm Highveld air should be bottled and sold overseas.",
-   "text": "Die Hooglandlug ná reën behoort in 'n botteltjie verkoop te word.",
-   "back": "The highland air after rain should be sold in a little bottle.",
-   "note": "unsure: 'Hooglandlug' — highlands generally, or the Highveld (normally 'Hoëveld')",
-   "verdict": "DRIFT",
-   "reason": "EN 'Highveld' became 'Hoogland' (reads as generic highlands, not Hoëveld), and 'sold overseas' lost 'overseas', flattening the export boast",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:rain#52"
-    ]
-   },
-   "image": "rain/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: EN 'Highveld' became 'Hoogland' (reads as generic highlands, not Hoëveld), and 'sold overseas' lost 'overseas', flattening the export boast"
-   ]
-  },
-  {
    "k": "af-1579",
    "lang": "af",
    "en": "Twenty minutes of opera, then the sun acts like nothing happened.",
@@ -36652,35 +35130,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-1583",
-   "lang": "af",
-   "en": "One drought in living memory and now every downpour is a lottery win.",
-   "text": "Drie jaar se droogte-geheue en skielik is elke bui 'n lotto-wen.",
-   "back": "Three years of drought memory and suddenly every shower is a lotto win.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "adds a number: EN 'One drought in living memory' became 'Drie jaar se droogte-geheue' (three years of drought memory)",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:rain#59"
-    ]
-   },
-   "image": "rain/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: adds a number: EN 'One drought in living memory' became 'Drie jaar se droogte-geheue' (three years of drought memory)"
-   ]
   },
   {
    "k": "af-1584",
@@ -38805,33 +37254,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0124",
-   "lang": "zu",
-   "en": "One drought in living memory and now every downpour is a lottery win.",
-   "text": "Isomiso esisodwa esisakhunjulwa manje wonke umvula omkhulu uwukuwina i-lottery.",
-   "back": "One drought still remembered and now every big rain is a lottery win.",
-   "note": "'umvula' nonstandard — isiZulu is 'imvula' ('yonke imvula enkulu'); clause linking loose",
-   "verdict": "MATCH",
-   "reason": "The meaning carries; 'umvula' should be 'imvula'.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:rain#59"
-    ]
-   },
-   "image": "rain/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0125",
    "lang": "zu",
    "en": "Rain is just weather's way of saying stay where the coffee is.",
@@ -40780,33 +39202,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0115",
-   "lang": "xh",
-   "en": "Post-storm Highveld air should be bottled and sold overseas.",
-   "text": "Umoya waseHighveld emva kwemvula ufanele ufakwe ebhotileni uthengiswe phesheya.",
-   "back": "Highveld air after rain should be bottled and sold overseas.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:rain#52"
-    ]
-   },
-   "image": "rain/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0116",
    "lang": "xh",
    "en": "Twenty minutes of opera, then the sun acts like nothing happened.",
@@ -40934,33 +39329,6 @@
     "kind": "bank",
     "bank": [
      "witty:rain#58"
-    ]
-   },
-   "image": "rain/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0121",
-   "lang": "xh",
-   "en": "One drought in living memory and now every downpour is a lottery win.",
-   "text": "Imbalela enye esasikhumbula yenza yonke imvula ibe yimpumelelo ye-lotto.",
-   "back": "The one drought we still remember makes every rain a lotto win.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:rain#59"
     ]
    },
    "image": "rain/week_1/day/1.webp",
@@ -42858,33 +41226,6 @@
     "kind": "bank",
     "bank": [
      "witty:rain#51"
-    ]
-   },
-   "image": "rain/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0115",
-   "lang": "st",
-   "en": "Post-storm Highveld air should be bottled and sold overseas.",
-   "text": "Moya wa Highveld kamora sefefo o lokela ho kenngwa botlolong o rekiswe ditjhabeng.",
-   "back": "Highveld air after a storm should be bottled and sold overseas.",
-   "note": "'ditjhabeng' = to the nations (abroad).",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:rain#52"
     ]
    },
    "image": "rain/week_1/day/1.webp",
@@ -45732,35 +44073,6 @@
    "reasons": []
   },
   {
-   "k": "af-1621",
-   "lang": "af",
-   "en": "The sky picked a vibe and the vibe is shrug.",
-   "text": "Die lug het n vibe gekies en die vibe is slapgat.",
-   "back": "The sky picked a vibe and the vibe is slapgat — lazy and useless.",
-   "note": "'slapgat' = slack/lazy, crude-ish slang; 'n' written without apostrophe",
-   "verdict": "DRIFT",
-   "reason": "EN 'the vibe is shrug' (mild indifference) became 'slapgat' (slack-arsed, lazy), which is cruder and more insulting; 'n' is also missing its apostrophe",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#29"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: EN 'the vibe is shrug' (mild indifference) became 'slapgat' (slack-arsed, lazy), which is cruder and more insulting; 'n' is also missing its apostrophe"
-   ]
-  },
-  {
    "k": "af-1622",
    "lang": "af",
    "en": "A perfectly average sky doing perfectly average things.",
@@ -46003,7 +44315,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1631",
@@ -46057,8 +44370,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1633",
@@ -46495,35 +44807,6 @@
    "reasons": []
   },
   {
-   "k": "af-1649",
-   "lang": "af",
-   "en": "The day is ending like a voicenote that just cuts off mid-",
-   "text": "Die dag eindig soos 'n voicenote wat net skielik ophou.",
-   "back": "The day ends like a voice note that just suddenly stops.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "in EN the line itself cuts off ('cuts off mid-'); AF 'wat net skielik ophou' only describes the cut-off, so the visual gag is gone",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#68"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: in EN the line itself cuts off ('cuts off mid-'); AF 'wat net skielik ophou' only describes the cut-off, so the visual gag is gone"
-   ]
-  },
-  {
    "k": "af-1650",
    "lang": "af",
    "en": "Dusk is on mute tonight. The evening showed up anyway.",
@@ -46548,7 +44831,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1651",
@@ -46629,8 +44913,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1654",
@@ -47209,7 +45492,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0179",
@@ -47317,8 +45601,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0183",
@@ -47681,33 +45964,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0196",
-   "lang": "zu",
-   "en": "The sky picked a vibe and the vibe is shrug.",
-   "text": "Isibhakabhaka sikhethe i-vibe futhi i-vibe iwukunyusa amahlombe.",
-   "back": "The sky chose a vibe and the vibe is a shrug.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#29"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0197",
    "lang": "zu",
    "en": "Cloud cover with a side of who-cares.",
@@ -48010,7 +46266,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0208",
@@ -48120,8 +46377,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0212",
@@ -48717,33 +46973,6 @@
     "kind": "bank",
     "bank": [
      "witty:cloudy#67"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0234",
-   "lang": "zu",
-   "en": "The day is ending like a voicenote that just cuts off mid-",
-   "text": "Usuku luphela njenge-voicenote enqamuka phakathi ne-",
-   "back": "The day ends like a voice note that cuts off in the middle of-",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#68"
     ]
    },
    "image": "cloudy/week_1/day/1.webp",
@@ -50001,33 +48230,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0189",
-   "lang": "xh",
-   "en": "The sky picked a vibe and the vibe is shrug.",
-   "text": "Isibhakabhaka sikhethe i-vibe, kwaye loo vibe kukuziphakamisa amagxa nje",
-   "back": "The sky chose a vibe, and that vibe is just a shrug.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#29"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0190",
    "lang": "xh",
    "en": "Cloud cover with a side of who-cares.",
@@ -50907,35 +49109,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "xh-0222",
-   "lang": "xh",
-   "en": "The day is ending like a voicenote that just cuts off mid-",
-   "text": "Usuku luphela njenge-voicenote enqunyulwa phakathi.",
-   "back": "The day ends like a voicenote cut off halfway.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The English line itself cuts off at 'mid-'; the XH explains it ('enqunyulwa phakathi', cut off in the middle), which loses the visual punchline.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#68"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The English line itself cuts off at 'mid-'; the XH explains it ('enqunyulwa phakathi', cut off in the middle), which loses the visual punchline."
-   ]
   },
   {
    "k": "xh-0223",
@@ -52219,33 +50392,6 @@
    "reasons": []
   },
   {
-   "k": "st-0191",
-   "lang": "st",
-   "en": "The sky picked a vibe and the vibe is shrug.",
-   "text": "Lehodimo le kgethile vibe mme vibe ke ho phahamisa mahetla.",
-   "back": "The sky picked a vibe and the vibe is a shrug.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#29"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0192",
    "lang": "st",
    "en": "Cloud cover with a side of who-cares.",
@@ -53241,35 +51387,6 @@
    "reasons": []
   },
   {
-   "k": "st-0228",
-   "lang": "st",
-   "en": "The day is ending like a voicenote that just cuts off mid-",
-   "text": "Letsatsi le fela jwalo ka voicenote e kgaolwang har'a—",
-   "back": "The day ends like a voice note cut off in the middle of-",
-   "note": "'Letsatsi le fela' = the day ends.",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM contamination: 'fela' is a tn function-word marker (tn 2556× vs st 232×)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cloudy#68"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0229",
    "lang": "st",
    "en": "Dusk is on mute tonight. The evening showed up anyway.",
@@ -54147,7 +52264,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0253",
@@ -54326,10 +52444,7 @@
    "note": "",
    "verdict": "MISMATCH",
    "reason": "'Halfway to a Highveld thunderstorm. Or not.' becomes 'Amafu amancane, ilanga elikhulu' (small clouds, big sun): no Highveld, no storm, and it looks keyed to another line.",
-   "wrongSource": {
-    "en": "Some clouds. Some sun. South African summer admin.",
-    "score": 0.5
-   },
+   "wrongSource": null,
    "lc": {
     "action": "pass",
     "findings": []
@@ -54346,8 +52461,7 @@
    "flagged": true,
    "severity": 0,
    "reasons": [
-    "MISMATCH: 'Halfway to a Highveld thunderstorm. Or not.' becomes 'Amafu amancane, ilanga elikhulu' (small clouds, big sun): no Highveld, no storm, and it looks keyed to another line.",
-    "WRONG SOURCE? The back-translation is closer to another line of the same bin: \"Some clouds. Some sun. South African summer admin.\""
+    "MISMATCH: 'Halfway to a Highveld thunderstorm. Or not.' becomes 'Amafu amancane, ilanga elikhulu' (small clouds, big sun): no Highveld, no storm, and it looks keyed to another line."
    ]
   },
   {
@@ -54519,35 +52633,6 @@
    ]
   },
   {
-   "k": "zu-0266",
-   "lang": "zu",
-   "en": "Some clouds. Some sun. South African summer admin.",
-   "text": "Cishe ihlobo lase-South Africa.",
-   "back": "Probably a South African summer.",
-   "note": "'Cishe' = probably / almost — could read 'almost a South African summer'",
-   "verdict": "MISMATCH",
-   "reason": "'Some clouds. Some sun. South African summer admin.' becomes 'Cishe ihlobo lase-South Africa' (almost/probably an SA summer): no clouds, sun or admin joke, and it looks keyed to another line.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:partly-cloudy#16"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 0,
-   "reasons": [
-    "MISMATCH: 'Some clouds. Some sun. South African summer admin.' becomes 'Cishe ihlobo lase-South Africa' (almost/probably an SA summer): no clouds, sun or admin joke, and it looks keyed to another line."
-   ]
-  },
-  {
    "k": "zu-0267",
    "lang": "zu",
    "en": "The sky's doing freelance today.",
@@ -54617,10 +52702,7 @@
    "note": "",
    "verdict": "MISMATCH",
    "reason": "'Cloudy enough to comment, sunny enough to ignore' becomes 'Amafu axubene nelanga - kuhle kakhulu' (clouds mixed with sun, very nice), which drops the joke and adds 'very nice'.",
-   "wrongSource": {
-    "en": "Some clouds. Some sun. South African summer admin.",
-    "score": 0.5
-   },
+   "wrongSource": null,
    "lc": {
     "action": "pass",
     "findings": []
@@ -54637,8 +52719,7 @@
    "flagged": true,
    "severity": 0,
    "reasons": [
-    "MISMATCH: 'Cloudy enough to comment, sunny enough to ignore' becomes 'Amafu axubene nelanga - kuhle kakhulu' (clouds mixed with sun, very nice), which drops the joke and adds 'very nice'.",
-    "WRONG SOURCE? The back-translation is closer to another line of the same bin: \"Some clouds. Some sun. South African summer admin.\""
+    "MISMATCH: 'Cloudy enough to comment, sunny enough to ignore' becomes 'Amafu axubene nelanga - kuhle kakhulu' (clouds mixed with sun, very nice), which drops the joke and adds 'very nice'."
    ]
   },
   {
@@ -54666,8 +52747,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0241",
@@ -55082,33 +53162,6 @@
     "kind": "bank",
     "bank": [
      "witty:partly-cloudy#15"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0256",
-   "lang": "xh",
-   "en": "Some clouds. Some sun. South African summer admin.",
-   "text": "Amafu amancinci. Ilanga elincinci. iAdmin yehlobo lwaseMzantsi Africa",
-   "back": "A little cloud. A little sun. South African summer admin.",
-   "note": "'Africa' English spelling (Afrika)",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:partly-cloudy#16"
     ]
    },
    "image": "cloudy/week_1/day/1.webp",
@@ -55535,7 +53588,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0259",
@@ -55646,35 +53700,6 @@
    "reasons": []
   },
   {
-   "k": "st-0263",
-   "lang": "st",
-   "en": "Some clouds. Some sun. South African summer admin.",
-   "text": "Maru le letsatsi - bobedi mona.",
-   "back": "Clouds and sun - both here.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'Maru le letsatsi - bobedi mona' drops the 'South African summer admin' punchline and the summer reference.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:partly-cloudy#16"
-    ]
-   },
-   "image": "cloudy/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Maru le letsatsi - bobedi mona' drops the 'South African summer admin' punchline and the summer reference."
-   ]
-  },
-  {
    "k": "st-0264",
    "lang": "st",
    "en": "The sky's doing freelance today.",
@@ -55749,10 +53774,7 @@
    "note": "",
    "verdict": "DRIFT",
    "reason": "'Maru a kopantswe le letsatsi' (clouds mixed with sun) keeps the sun-and-cloud mix but loses 'cloudy enough to comment, sunny enough to ignore'.",
-   "wrongSource": {
-    "en": "Some clouds. Some sun. South African summer admin.",
-    "score": 0.67
-   },
+   "wrongSource": null,
    "lc": {
     "action": "pass",
     "findings": []
@@ -55767,10 +53789,9 @@
    "imageIsExample": true,
    "alRuledAf": null,
    "flagged": true,
-   "severity": 1,
+   "severity": 2,
    "reasons": [
-    "DRIFT: 'Maru a kopantswe le letsatsi' (clouds mixed with sun) keeps the sun-and-cloud mix but loses 'cloudy enough to comment, sunny enough to ignore'.",
-    "WRONG SOURCE? The back-translation is closer to another line of the same bin: \"Some clouds. Some sun. South African summer admin.\""
+    "DRIFT: 'Maru a kopantswe le letsatsi' (clouds mixed with sun) keeps the sun-and-cloud mix but loses 'cloudy enough to comment, sunny enough to ignore'."
    ]
   },
   {
@@ -55852,8 +53873,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1678",
@@ -57180,7 +55200,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0272",
@@ -57519,8 +55540,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0271",
@@ -58694,35 +56714,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-1721",
-   "lang": "af",
-   "en": "Karoo white noise: one windpump, no off switch.",
-   "text": "Plattelandse wit-geraas: een windpomp, geen af-knoppie.",
-   "back": "Platteland white noise: one windpump, no off button.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The place is generalised: 'Karoo white noise' becomes 'Plattelandse wit-geraas' (countryside).",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:wind#48"
-    ]
-   },
-   "image": "wind/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The place is generalised: 'Karoo white noise' becomes 'Plattelandse wit-geraas' (countryside)."
-   ]
   },
   {
    "k": "af-1722",
@@ -60178,33 +58169,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0335",
-   "lang": "zu",
-   "en": "Karoo white noise: one windpump, no off switch.",
-   "text": "Umsindo omhlophe waseKaroo: i-windpump eyodwa, ayikho i-off switch.",
-   "back": "Karoo white noise: one windpump, no off switch.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:wind#48"
-    ]
-   },
-   "image": "wind/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0336",
    "lang": "zu",
    "en": "Tonight you're not counting sheep, you're counting gusts.",
@@ -61589,35 +59553,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0326",
-   "lang": "xh",
-   "en": "Karoo white noise: one windpump, no off switch.",
-   "text": "Ingxolo emhlophe yaseKaroo: i-windpomp enye, akukho swithi yokucima.",
-   "back": "Karoo white noise: one windpump, no off switch.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'swithi' — not found in any external source; closest attested: 'sithi' (238× leipzig/nchlt/morph/wiki, distance 1)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:wind#48"
-    ]
-   },
-   "image": "wind/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0327",
    "lang": "xh",
    "en": "Tonight you're not counting sheep, you're counting gusts.",
@@ -62842,33 +60777,6 @@
     "kind": "bank",
     "bank": [
      "witty:wind#47"
-    ]
-   },
-   "image": "wind/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0328",
-   "lang": "st",
-   "en": "Karoo white noise: one windpump, no off switch.",
-   "text": "White noise ea Karoo: windpomp e le 'ngoe, ha ho konopo ea ho tima.",
-   "back": "Karoo white noise: one windpump, no off switch.",
-   "note": "Lesotho 'ea'.",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:wind#48"
     ]
    },
    "image": "wind/week_1/day/1.webp",
@@ -66352,7 +64260,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0390",
@@ -66869,8 +64778,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0409",
@@ -67966,7 +65874,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0339",
@@ -68516,8 +66425,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0359",
@@ -69375,33 +67283,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0390",
-   "lang": "xh",
-   "en": "Winter sun: all of the light, none of the heat. Nice try, sun.",
-   "text": "Ilanga lasebusika: konke ukukhanya, akukho bushushu. Uzame kakuhle, langa.",
-   "back": "Winter sun: all light, no heat. Nice try, sun.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold#61"
-    ]
-   },
-   "image": "cold/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0391",
    "lang": "xh",
    "en": "The aloes are blooming. They're the only ones enjoying winter.",
@@ -69871,7 +67752,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0408",
@@ -70473,8 +68355,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0334",
@@ -70966,7 +68847,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0352",
@@ -71744,8 +69626,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0380",
@@ -73636,64 +71517,6 @@
    "reasons": []
   },
   {
-   "k": "af-1821",
-   "lang": "af",
-   "en": "The front left. The cold just moved in permanently.",
-   "text": "Die front is weg. Die koue het net getrek, nie geloop nie.",
-   "back": "The front is gone. The cold only moved house, it didn't leave.",
-   "note": "unsure: 'getrek ... nie geloop nie' — 'moved (relocated), didn't walk off'",
-   "verdict": "DRIFT",
-   "reason": "'Die koue het net getrek, nie geloop nie' is ambiguous (moved house vs moved off) and loses the clear 'moved in permanently'.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#39"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Die koue het net getrek, nie geloop nie' is ambiguous (moved house vs moved off) and loses the clear 'moved in permanently'."
-   ]
-  },
-  {
-   "k": "af-1822",
-   "lang": "af",
-   "en": "Snow on the mountains means socks in bed. That's the law.",
-   "text": "Sneeu op die berge beteken sokkies in die bed.",
-   "back": "Snow on the mountains means socks in bed.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The kicker 'That's the law.' is dropped, leaving a flat statement.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#40"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The kicker 'That's the law.' is dropped, leaving a flat statement."
-   ]
-  },
-  {
    "k": "af-1823",
    "lang": "af",
    "en": "Today's sky: freshly washed, ice-pressed.",
@@ -73829,35 +71652,6 @@
    "reasons": []
   },
   {
-   "k": "af-1828",
-   "lang": "af",
-   "en": "Snow on those mountains, ice in this breeze. Connected? Very.",
-   "text": "Sneeu op daai berge, ys in hierdie briesie.",
-   "back": "Snow on those mountains, ice in this breeze.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The punchline 'Connected? Very.' is dropped, so the line stops before its joke.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#50"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The punchline 'Connected? Very.' is dropped, so the line stops before its joke."
-   ]
-  },
-  {
    "k": "af-1829",
    "lang": "af",
    "en": "Prettiest day of winter. Feels like the coldest one.",
@@ -73964,35 +71758,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-1833",
-   "lang": "af",
-   "en": "The sea is sparkling like holidays. The air says otherwise.",
-   "text": "Die see blink soos vakansie. Die wind chill sê andersins.",
-   "back": "The sea sparkles like a holiday. The wind chill says otherwise.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'Die wind chill' adds wind where the English says 'the air' (a cold-clear line, not a wind one).",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#58"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Die wind chill' adds wind where the English says 'the air' (a cold-clear line, not a wind one)."
-   ]
   },
   {
    "k": "af-1834",
@@ -74184,35 +71949,6 @@
    "reasons": []
   },
   {
-   "k": "af-1841",
-   "lang": "af",
-   "en": "Mzansi winter does colour like nobody else. Warmth, though...",
-   "text": "Winter in Mzansi doen kleur soos niemand anders nie.",
-   "back": "Winter in Mzansi does colour like nobody else.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The turn 'Warmth, though...' is dropped, so a backhanded joke becomes a plain compliment.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#68"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The turn 'Warmth, though...' is dropped, so a backhanded joke becomes a plain compliment."
-   ]
-  },
-  {
    "k": "af-1842",
    "lang": "af",
    "en": "Padstal coffee is functioning as central heating today.",
@@ -74265,35 +72001,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-1844",
-   "lang": "af",
-   "en": "The view is free. So is the feeling in your ears — gone.",
-   "text": "Die uitsig is gratis. Die gevoel in jou ore ook weg.",
-   "back": "The view is free. The feeling in your ears also gone.",
-   "note": "grammar broken: second sentence has no verb ('ook weg'); reads half-built",
-   "verdict": "DRIFT",
-   "reason": "The 'free' pun is lost and the second sentence has no verb ('Die gevoel in jou ore ook weg'), so 'ook' points at nothing. It reads half-built.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#72"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The 'free' pun is lost and the second sentence has no verb ('Die gevoel in jou ore ook weg'), so 'ook' points at nothing. It reads half-built."
-   ]
   },
   {
    "k": "af-1845",
@@ -74539,35 +72246,6 @@
    "reasons": []
   },
   {
-   "k": "af-1854",
-   "lang": "af",
-   "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
-   "text": "Joburg se sonsondergange is winter se troosprys.",
-   "back": "Joburg's sunsets are winter's consolation prize.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The warm tag 'It's a good prize.' is dropped, which leaves the backhanded half only.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#89"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The warm tag 'It's a good prize.' is dropped, which leaves the backhanded half only."
-   ]
-  },
-  {
    "k": "af-1855",
    "lang": "af",
    "en": "Enjoy the colours. The temperature has already gone to the car.",
@@ -74701,35 +72379,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-1860",
-   "lang": "af",
-   "en": "The city only looks this sharp when it genuinely hurts outside.",
-   "text": "So helder sien jy Kaapstad net wanneer dit regtig seer is buite.",
-   "back": "You only see Cape Town this clearly when it's really bitter outside.",
-   "note": "'seer' = sore/painful",
-   "verdict": "DRIFT",
-   "reason": "Adds a place: English 'The city' becomes 'Kaapstad'.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#97"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: Adds a place: English 'The city' becomes 'Kaapstad'."
-   ]
   },
   {
    "k": "af-1861",
@@ -75056,33 +72705,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0442",
-   "lang": "zu",
-   "en": "The Free State just remembered it has a winter setting.",
-   "text": "I-Free State isanda kukhumbula ukuthi ine-setting yasebusika.",
-   "back": "The Free State just remembered it has a winter setting.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#1"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0443",
    "lang": "zu",
    "en": "The car coughed twice before it agreed to start.",
@@ -75102,33 +72724,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#2"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0444",
-   "lang": "zu",
-   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
-   "text": "I-Highveld winter: indawo lapho ugqoka ama-jacket amabili uyolanda iposi.",
-   "back": "Highveld winter: where you put on two jackets to go fetch the post.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#3"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -75330,35 +72925,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "zu-0452",
-   "lang": "zu",
-   "en": "Lekker koud, but the rugby fields are about to look perfect.",
-   "text": "Kubanda kamnandi, kodwa ama-rugby field azobukeka e-perfect.",
-   "back": "It's pleasantly cold, but the rugby fields will look perfect.",
-   "note": "'Kubanda kamnandi' = nicely/pleasantly cold, so the 'but' contrast doesn't land",
-   "verdict": "DRIFT",
-   "reason": "'Lekker koud' (bitterly cold) is calqued as 'Kubanda kamnandi' (pleasantly cold), so the 'but' contrast no longer makes sense.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#11"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Lekker koud' (bitterly cold) is calqued as 'Kubanda kamnandi' (pleasantly cold), so the 'but' contrast no longer makes sense."
-   ]
   },
   {
    "k": "zu-0453",
@@ -76104,33 +73670,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0480",
-   "lang": "zu",
-   "en": "Snow on the mountains means socks in bed. That's the law.",
-   "text": "Iqhwa ezintabeni lisho amasokisi embhedeni. Wumthetho lowo.",
-   "back": "Snow on the mountains means socks in bed. That's the rule.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#40"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0481",
    "lang": "zu",
    "en": "Today's sky: freshly washed, ice-pressed.",
@@ -76202,33 +73741,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#43"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0484",
-   "lang": "zu",
-   "en": "Clear skies, open roads, running nose. The full winter set.",
-   "text": "Izulu elicwebile, imigwaqo evulekile, ikhala eligobhozayo. Isethi ephelele yasebusika.",
-   "back": "Clear sky, open roads, runny nose. The complete winter set.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#44"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -76337,33 +73849,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#49"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0489",
-   "lang": "zu",
-   "en": "Snow on those mountains, ice in this breeze. Connected? Very.",
-   "text": "Iqhwa kulezo zintaba, iqhwa kulo moya. Kuxhumene? Kakhulu.",
-   "back": "Snow on those mountains, ice in this wind. Connected? Very.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#50"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -76538,33 +74023,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0496",
-   "lang": "zu",
-   "en": "The sea is sparkling like holidays. The air says otherwise.",
-   "text": "Ulwandle lucwazimula njengamaholide. Umoya usho okunye.",
-   "back": "The sea sparkles like a holiday. The wind says otherwise.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#58"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0497",
    "lang": "zu",
    "en": "Sunglasses and a scarf. It's that kind of day.",
@@ -76582,33 +74040,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#60"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0498",
-   "lang": "zu",
-   "en": "Perfect rugby weather. For the spectators with blankets.",
-   "text": "Isimo sezulu esiphelele se-rugby. Kubabukeli abanezingubo.",
-   "back": "Perfect rugby weather. For spectators with blankets.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#61"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -76856,33 +74287,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#71"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0508",
-   "lang": "zu",
-   "en": "The view is free. So is the feeling in your ears — gone.",
-   "text": "Umbono umahhala. Nomuzwa ezindlebeni zakho — usuhambile.",
-   "back": "The view is free. And the feeling in your ears — it's gone.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#72"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -77275,33 +74679,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0523",
-   "lang": "zu",
-   "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
-   "text": "Ukushona kwelanga eJoburg kuwumklomelo wenduduzo wasebusika. Umklomelo omuhle.",
-   "back": "A Joburg sunset is winter's consolation prize. A good prize.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#89"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0524",
    "lang": "zu",
    "en": "Enjoy the colours. The temperature has already gone to the car.",
@@ -77485,33 +74862,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#96"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0531",
-   "lang": "zu",
-   "en": "The city only looks this sharp when it genuinely hurts outside.",
-   "text": "Idolobha libukeka licace kangaka kuphela uma kubuhlungu ngempela ngaphandle.",
-   "back": "The town only looks this clear when it's truly painful outside.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#97"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -77853,33 +75203,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0544",
-   "lang": "zu",
-   "en": "Clear nights are winter's way of apologising.",
-   "text": "Ubusuku obucwebile buyindlela yobusika yokuxolisa.",
-   "back": "A clear night is winter's way of apologising.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#111"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0429",
    "lang": "xh",
    "en": "Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.",
@@ -77909,35 +75232,6 @@
    ]
   },
   {
-   "k": "xh-0430",
-   "lang": "xh",
-   "en": "The Free State just remembered it has a winter setting.",
-   "text": "IFree State isand’ ukukhumbula ukuba nayo inemowudi yasebusika",
-   "back": "The Free State just remembered it also has a winter mode.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'inemowudi' — seen only in this app's own copy, in no external source; closest attested: 'inekhowudi' (2× leipzig/wiki, distance 2)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#1"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0431",
    "lang": "xh",
    "en": "The car coughed twice before it agreed to start.",
@@ -77958,33 +75252,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#2"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0432",
-   "lang": "xh",
-   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
-   "text": "Ubusika baseHighveld: indawo ekuphela kwayo apho unxiba ii-jackets ezimbini nje uyokuthatha iposi.",
-   "back": "Highveld winter: the only place where you wear two jackets just to go fetch the post.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#3"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -78176,35 +75443,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#10"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0440",
-   "lang": "xh",
-   "en": "Lekker koud, but the rugby fields are about to look perfect.",
-   "text": "Kubanda kamnandi, kodwa amabala ombhoxo sele ezakubamahle.",
-   "back": "It's nicely cold, but the rugby fields are already going to be beautiful.",
-   "note": "'ezakubamahle' fused (ezakuba mahle); meaning of the second clause unclear",
-   "verdict": "MATCH",
-   "reason": "Same claim; 'ezakubamahle' is a fused boundary.",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM morphology: 'ezakubamahle' is unattested but splits into attested 'ezakuba' + 'mahle' — fused word boundary? (seen only in this app's own copy)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#11"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -78968,33 +76206,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0468",
-   "lang": "xh",
-   "en": "Snow on the mountains means socks in bed. That's the law.",
-   "text": "Ikhephu ezintabeni lithetha iikawusi ebhedini. Ngumthetho lowo.",
-   "back": "Snow on the mountains means socks in bed. That's the rule.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#40"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0469",
    "lang": "xh",
    "en": "Even the dog's breath is showing. That's the reading.",
@@ -79041,33 +76252,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#43"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0471",
-   "lang": "xh",
-   "en": "Clear skies, open roads, running nose. The full winter set.",
-   "text": "Isibhakabhaka sivuliwe, indlela ivuliwe, impumlo iyabaleka. Iseti epheleleyo yasebusika.",
-   "back": "Sky open, road open, nose running. The full winter set.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#44"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -79176,35 +76360,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#49"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0476",
-   "lang": "xh",
-   "en": "Snow on those mountains, ice in this breeze. Connected? Very.",
-   "text": "Ikhephu kwezo ntaba, umkhenkce kulo moya. Kunxibelelene? Kakhulu.",
-   "back": "Snow on those mountains, ice in this wind. Connected? Very.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'Kunxibelelene' — not found in any external source; closest attested: 'kunxibelelana' (5× leipzig, distance 2)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#50"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -79380,35 +76535,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0483",
-   "lang": "xh",
-   "en": "The sea is sparkling like holidays. The air says otherwise.",
-   "text": "Ulwandle luyabengezela njengeeholide. Umoya utsho okwahlukileyo.",
-   "back": "The sea sparkles like the holidays. The wind says otherwise.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'luyabengezela' — not found in any external source"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#58"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0484",
    "lang": "xh",
    "en": "Cape Town after a front: clean, bright, and honestly freezing.",
@@ -79453,33 +76579,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#60"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0486",
-   "lang": "xh",
-   "en": "Perfect rugby weather. For the spectators with blankets.",
-   "text": "Imozulu egqibeleleyo yombhoxo. Kubabukeli abaneengubo.",
-   "back": "Perfect rugby weather. For the spectators with blankets.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#61"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -79627,36 +76726,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0492",
-   "lang": "xh",
-   "en": "Mzansi winter does colour like nobody else. Warmth, though...",
-   "text": "Ubusika baseMzansi bwenza umbala njengokungenamntu. Ubushushu, phofu...",
-   "back": "Mzansi winter does colour like nobody else. Warmth, however...",
-   "note": "'bwenza' looks isiZulu (isiXhosa 'benza')",
-   "verdict": "MATCH",
-   "reason": "Same claim; the glide in 'bwenza' is the isiZulu pattern (isiXhosa 'benza').",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage-high",
-    "findings": [
-     "MEDIUM lexical: 'bwenza' — not found in any external source; closest attested: 'benza' (120× leipzig/nchlt/morph/wiki, distance 1)",
-     "MEDIUM lexical: 'njengokungenamntu' — not found in any external source"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#68"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0493",
    "lang": "xh",
    "en": "In the sun: bearable. Two steps left: Antarctica.",
@@ -79705,33 +76774,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#71"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0495",
-   "lang": "xh",
-   "en": "The view is free. So is the feeling in your ears — gone.",
-   "text": "Umbono usimahla. Nomvakalelo ezindlebeni zakho nawo — umkile.",
-   "back": "The view is free. And the feeling in your ears - also gone.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#72"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -80099,33 +77141,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0509",
-   "lang": "xh",
-   "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
-   "text": "Ukutshona kwelanga eJoburg yibhaso lokuthuthuzela lasebusika. Yibhaso elihle.",
-   "back": "The Joburg sunset is winter's consolation prize. A nice prize.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#89"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0510",
    "lang": "xh",
    "en": "Enjoy the colours. The temperature has already gone to the car.",
@@ -80282,33 +77297,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#95"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0516",
-   "lang": "xh",
-   "en": "The city only looks this sharp when it genuinely hurts outside.",
-   "text": "Isixeko sibonakala sicacile kanje kuphela xa kubuhlungu ngokwenene phandle.",
-   "back": "The city only looks this clear when it's really painful outside.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#97"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -80618,33 +77606,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0528",
-   "lang": "xh",
-   "en": "Clear nights are winter's way of apologising.",
-   "text": "Ubusuku obucacileyo yindlela yobusika yokucela uxolo.",
-   "back": "A clear night is winter's way of saying sorry.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#111"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0432",
    "lang": "st",
    "en": "Bloemfontein at 6am: jersey, gown, scarf, takkies, and a brave face.",
@@ -80662,35 +77623,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#0"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0433",
-   "lang": "st",
-   "en": "The Free State just remembered it has a winter setting.",
-   "text": "Free State e sa tswa hopola hore e na le winter setting.",
-   "back": "The Free State just remembered it has a winter setting.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM semantic: 'tswa' means 'to emerge; come from (v.); exit (v.)' — nothing in the English source; it is 2 letters from 'teka', the usual word for 'setting'"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#1"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -80720,35 +77652,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#2"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0435",
-   "lang": "st",
-   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
-   "text": "Highveld winter: ke moo o aparang dijakete tse pedi ho lata post.",
-   "back": "Highveld winter: when you wear two jackets to fetch the post.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'dijakete' — seen only in this app's own copy, in no external source; closest attested: 'dijarete' (2× leipzig/dictionary, distance 1)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#3"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -80946,33 +77849,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#10"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0443",
-   "lang": "st",
-   "en": "Lekker koud, but the rugby fields are about to look perfect.",
-   "text": "Ho bata hantle, empa mabala a rugby a tlo shebahala a le perfect",
-   "back": "Properly cold, but the rugby fields are going to look perfect.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#11"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -81732,62 +78608,6 @@
    "reasons": []
   },
   {
-   "k": "st-0471",
-   "lang": "st",
-   "en": "The front left. The cold just moved in permanently.",
-   "text": "Cold front e tsamaile. Serame se itse ho dula ka ho sa feleng.",
-   "back": "The cold front has left. The cold said it's staying forever.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM contamination: 'Cold' is core English weather vocabulary left untranslated"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#39"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0472",
-   "lang": "st",
-   "en": "Snow on the mountains means socks in bed. That's the law.",
-   "text": "Lehlwa dithabeng le bolela dikausu bethe. Ke molao.",
-   "back": "Snow on the mountains means socks in bed. It's the law.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#40"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0473",
    "lang": "st",
    "en": "Even the dog's breath is showing. That's the reading.",
@@ -81832,33 +78652,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#43"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0475",
-   "lang": "st",
-   "en": "Clear skies, open roads, running nose. The full winter set.",
-   "text": "Lehodimo le hlakileng, ditsela tse bulehileng, nko e tsamayang. Set eohle ea mariha.",
-   "back": "Clear sky, open roads, a runny nose. The full winter set.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#44"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -81996,33 +78789,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#49"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0481",
-   "lang": "st",
-   "en": "Snow on those mountains, ice in this breeze. Connected? Very.",
-   "text": "Lehlwa dithabeng tseo, leqhwa moeeng ona. Ho amana? Haholo.",
-   "back": "Snow on those mountains, ice in this air. Related? Very.",
-   "note": "'moeeng' Lesotho spelling of moya",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#50"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -82195,33 +78961,6 @@
    "reasons": []
   },
   {
-   "k": "st-0488",
-   "lang": "st",
-   "en": "The sea is sparkling like holidays. The air says otherwise.",
-   "text": "Lewatle le benya jwalo ka matsatsi a phomolo. Moya o bua ka tsela e nngwe.",
-   "back": "The sea sparkles like holidays. The wind says otherwise.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#58"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0489",
    "lang": "st",
    "en": "Cape Town after a front: clean, bright, and honestly freezing.",
@@ -82266,33 +79005,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#60"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0491",
-   "lang": "st",
-   "en": "Perfect rugby weather. For the spectators with blankets.",
-   "text": "Boemo bo phethahetseng ba rugby. Bakeng sa bashebelli ba nang le dikobo.",
-   "back": "Perfect rugby weather. For spectators with blankets.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#61"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -82438,35 +79150,6 @@
    "reasons": []
   },
   {
-   "k": "st-0497",
-   "lang": "st",
-   "en": "Mzansi winter does colour like nobody else. Warmth, though...",
-   "text": "Mariha a Mzansi a etsa mmala jwalo ka ha ho se motho e mong. Motjheso, leha ho le jwalo...",
-   "back": "Mzansi winter does colour like nobody else. The warmth, however...",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM semantic: 'motho' means 'person; human being; man' — nothing in the English source; it is 3 letters from 'mofuthu', the usual word for 'warmth'"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#68"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0498",
    "lang": "st",
    "en": "In the sun: bearable. Two steps left: Antarctica.",
@@ -82538,33 +79221,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#71"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0501",
-   "lang": "st",
-   "en": "The view is free. So is the feeling in your ears — gone.",
-   "text": "Pono ke ea mahala. Le ho utlwa tsebeng tsa hao — ho fedile.",
-   "back": "The view is free. And the feeling in your ears — gone.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#72"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -82955,33 +79611,6 @@
    "reasons": []
   },
   {
-   "k": "st-0516",
-   "lang": "st",
-   "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
-   "text": "Ho dikela ha letsatsi ha Joburg ke moputso oa matšeliso oa mariha. Ke moputso o hotle.",
-   "back": "The Joburg sunset is winter's consolation prize. It's a good prize.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#89"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0517",
    "lang": "st",
    "en": "Enjoy the colours. The temperature has already gone to the car.",
@@ -83134,33 +79763,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#96"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0523",
-   "lang": "st",
-   "en": "The city only looks this sharp when it genuinely hurts outside.",
-   "text": "Toropo e shebahala e le bohale hakana feela ha ho utloisa bohloko ka nnete kantle.",
-   "back": "The town only looks this sharp when it really hurts outside.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#97"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -83494,33 +80096,6 @@
     "kind": "bank",
     "bank": [
      "witty:cold-clear#110"
-    ]
-   },
-   "image": "cold-clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0536",
-   "lang": "st",
-   "en": "Clear nights are winter's way of apologising.",
-   "text": "Masiu a hlakileng ke tsela ya mariha ea ho kopa tšoarelo.",
-   "back": "Clear nights are winter's way of saying sorry.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:cold-clear#111"
     ]
    },
    "image": "cold-clear/week_1/day/1.webp",
@@ -86572,7 +83147,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0594",
@@ -86680,8 +83256,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0598",
@@ -87580,7 +84155,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0535",
@@ -87747,8 +84323,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0541",
@@ -91746,7 +88321,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0616",
@@ -92018,8 +88594,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1943",
@@ -93214,33 +89789,6 @@
    "reasons": []
   },
   {
-   "k": "af-1987",
-   "lang": "af",
-   "en": "Every glow down there is someone else who also can't believe it's already winter.",
-   "text": "Elke liggie daar onder is iemand wat ook nie kan glo dis al winter nie.",
-   "back": "Every little light down there is someone who also can't believe it's winter already.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:fog#80"
-    ]
-   },
-   "image": "fog/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-1988",
    "lang": "af",
    "en": "From up here everyone's problems look out of focus. Works for me.",
@@ -93402,7 +89950,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1994",
@@ -93730,8 +90279,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0625",
@@ -96879,7 +93427,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0626",
@@ -97412,8 +93961,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0645",
@@ -98135,7 +94683,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0671",
@@ -98265,35 +94814,6 @@
     "kind": "bank",
     "bank": [
      "witty:fog#79"
-    ]
-   },
-   "image": "fog/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0676",
-   "lang": "xh",
-   "en": "Every glow down there is someone else who also can't believe it's already winter.",
-   "text": "Ukukhanya ngakunye phaya ezantsi ngomnye umntu ongakholelwayo ukuba sele kusebusika.",
-   "back": "Every light down there is someone who doesn't believe it's already winter.",
-   "note": "'ongakholelwayo' could also read 'who is not believed'",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage-high",
-    "findings": [
-     "MEDIUM lexical: 'ongakholelwayo' — not found in any external source; closest attested: 'owakholelwayo' (1× leipzig, distance 2)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:fog#80"
     ]
    },
    "image": "fog/week_1/day/1.webp",
@@ -98636,8 +95156,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0689",
@@ -100931,33 +97450,6 @@
    "reasons": []
   },
   {
-   "k": "st-0696",
-   "lang": "st",
-   "en": "Every glow down there is someone else who also can't believe it's already winter.",
-   "text": "Lesedi le leng le le leng tlase mono ke motho e mong ea sitwang ho dumela hore ke mariha.",
-   "back": "Every light down there is someone who can't believe it's winter.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:fog#80"
-    ]
-   },
-   "image": "fog/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0697",
    "lang": "st",
    "en": "From up here everyone's problems look out of focus. Works for me.",
@@ -101593,33 +98085,6 @@
    "reasons": []
   },
   {
-   "k": "af-2012",
-   "lang": "af",
-   "en": "This is the weather you'll miss in December traffic.",
-   "text": "Dit is die weer wat jy sal mis in Desember-verkeer.",
-   "back": "This is the weather you'll miss in December traffic.",
-   "note": "ambiguous: 'mis' = long for it later, or miss out on it while stuck in traffic",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#21"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-2013",
    "lang": "af",
    "en": "Even the parking lot looks pretty today.",
@@ -101845,35 +98310,6 @@
    ]
   },
   {
-   "k": "af-2022",
-   "lang": "af",
-   "en": "'Quick dip before work.' Nobody in history has been quick.",
-   "text": "Nog 'n 'vinnige swem voor werk' — die Kaap se oudste leuen.",
-   "back": "Another 'quick swim before work' - the Cape's oldest lie.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The joke is rebuilt from 'Nobody in history has been quick' into 'die Kaap se oudste leuen', which adds a Cape place anchor the English does not have.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#41"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The joke is rebuilt from 'Nobody in history has been quick' into 'die Kaap se oudste leuen', which adds a Cape place anchor the English does not have."
-   ]
-  },
-  {
    "k": "af-2023",
    "lang": "af",
    "en": "Zero mistakes from today so far. Sky included.",
@@ -101907,35 +98343,6 @@
    ]
   },
   {
-   "k": "af-2024",
-   "lang": "af",
-   "en": "Highveld mornings: freezing, gorgeous, zero apologies.",
-   "text": "Hoëveld-oggend: koud genoeg vir 'n jas, mooi genoeg dat jy nie omgee nie.",
-   "back": "Highveld morning: cold enough for a coat, pretty enough that you don't mind.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The 'zero apologies' punchline becomes 'mooi genoeg dat jy nie omgee nie', 'freezing' softens to 'koud genoeg vir 'n jas', and the line is longer than the English.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#43"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The 'zero apologies' punchline becomes 'mooi genoeg dat jy nie omgee nie', 'freezing' softens to 'koud genoeg vir 'n jas', and the line is longer than the English."
-   ]
-  },
-  {
    "k": "af-2025",
    "lang": "af",
    "en": "Inbox: 47. Sky: flawless. Priorities: sorted.",
@@ -101966,35 +98373,6 @@
    "reasons": [
     "DRIFT: The 'Inbox: 47. Sky: flawless. Priorities: sorted.' list gag becomes 'Eerste koffie buite. Die e-posse kan wag.', which adds coffee and drops the 47 and the sky.",
     "WRONG SOURCE? The back-translation is closer to another line of the same bin: \"Take your coffee outside. You deserve it.\""
-   ]
-  },
-  {
-   "k": "af-2026",
-   "lang": "af",
-   "en": "Signal: weak. Views: unfair. Deadlines: whose?",
-   "text": "Berg-oggende laat jou vergeet wat 'n deadline is.",
-   "back": "Mountain mornings make you forget what a deadline is.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'Signal: weak. Views: unfair.' is dropped and the line is rebuilt around 'Berg-oggende', adding a morning; only the deadline idea survives.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#48"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Signal: weak. Views: unfair.' is dropped and the line is rebuilt around 'Berg-oggende', adding a morning; only the deadline idea survives."
    ]
   },
   {
@@ -102079,35 +98457,6 @@
    "reasons": []
   },
   {
-   "k": "af-2030",
-   "lang": "af",
-   "en": "Atlantic rule: the water is freezing and everyone lies about it.",
-   "text": "Die water is yskoud en almal maak of dit lekker is. Tradisie.",
-   "back": "The water is ice-cold and everyone pretends it's lekker. Tradition.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'Atlantic rule' is dropped, so the place is lost. 'maak of dit lekker is' for 'lies about it' is fine.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#59"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Atlantic rule' is dropped, so the place is lost. 'maak of dit lekker is' for 'lies about it' is fine."
-   ]
-  },
-  {
    "k": "af-2031",
    "lang": "af",
    "en": "Tidal pool water: instant regret, then instant youth.",
@@ -102152,33 +98501,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#62"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-2033",
-   "lang": "af",
-   "en": "Highveld winter flex: laundry dry before the kettle's even done.",
-   "text": "Hoëveld-winter: die wasgoed is droog voor die ketel kook.",
-   "back": "Highveld winter: the washing is dry before the kettle boils.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#63"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -102249,95 +98571,6 @@
    "reasons": []
   },
   {
-   "k": "af-2036",
-   "lang": "af",
-   "en": "You don't waste a sky like this on being sensible.",
-   "text": "Sonskyn soos dié los jy nie vir Maandag nie.",
-   "back": "Sunshine like this you don't save for Monday.",
-   "note": "'los ... vir Maandag' = leave it for Monday; implies a weekend or pre-Monday day",
-   "verdict": "DRIFT",
-   "reason": "Adds a weekday, 'los jy nie vir Maandag nie' (you don't leave it for Monday), where the English has none, and drops the 'being sensible' joke. It reads wrong on a Monday photograph.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#66"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: Adds a weekday, 'los jy nie vir Maandag nie' (you don't leave it for Monday), where the English has none, and drops the 'being sensible' joke. It reads wrong on a Monday photograph."
-   ]
-  },
-  {
-   "k": "af-2037",
-   "lang": "af",
-   "en": "Karoo sky: same flawless blue for the next 400 km. Guaranteed.",
-   "text": "Karoo-blou: presies dieselfde perfekte kleur van hier tot môre.",
-   "back": "Karoo blue: exactly the same perfect colour from here to tomorrow.",
-   "note": "'van hier tot môre' - reads as endless / on and on, space-and-time",
-   "verdict": "DRIFT",
-   "reason": "'for the next 400 km' becomes 'van hier tot môre', turning distance into time, and 'Guaranteed' is dropped.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#67"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'for the next 400 km' becomes 'van hier tot môre', turning distance into time, and 'Guaranteed' is dropped."
-   ]
-  },
-  {
-   "k": "af-2038",
-   "lang": "af",
-   "en": "Padkos hits different under infinite sky. That's just science.",
-   "text": "Padkos smaak beter onder 'n lug sonder einde.",
-   "back": "Padkos tastes better under a sky without end.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "The kicker 'That's just science' is dropped, leaving a plain statement.",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM semantic: 'onder' means 'under; under, below, beneath, underneath; among' — nothing in the English source; it is 1 letter from 'ander', the usual word for 'different'"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#68"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The kicker 'That's just science' is dropped, leaving a plain statement."
-   ]
-  },
-  {
    "k": "af-2039",
    "lang": "af",
    "en": "The mountain skipped the tablecloth today. Full outfit reveal.",
@@ -102392,33 +98625,6 @@
    "reasons": []
   },
   {
-   "k": "af-2041",
-   "lang": "af",
-   "en": "Off-season beach: same ocean, zero fight for parking.",
-   "text": "Strand in die winter: dieselfde see, nul geveg oor parkering.",
-   "back": "Beach in winter: same sea, zero fighting over parking.",
-   "note": "'Strand' could also be the town Strand",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#72"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-2042",
    "lang": "af",
    "en": "Nobody's leaving early under a sky like this.",
@@ -102446,35 +98652,6 @@
    "reasons": []
   },
   {
-   "k": "af-2043",
-   "lang": "af",
-   "en": "A day so good even rush hour felt optional.",
-   "text": "Die dag was so mooi, selfs die verkeer het saamgespeel.",
-   "back": "The day was so lovely even the traffic played along.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'even rush hour felt optional' becomes 'selfs die verkeer het saamgespeel' (even the traffic cooperated), a different claim.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#78"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'even rush hour felt optional' becomes 'selfs die verkeer het saamgespeel' (even the traffic cooperated), a different claim."
-   ]
-  },
-  {
    "k": "af-2044",
    "lang": "af",
    "en": "Highveld golden hour: costs nothing, upstages everything.",
@@ -102500,35 +98677,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "af-2045",
-   "lang": "af",
-   "en": "Golden hour runs daily. Attendance still somehow optional.",
-   "text": "Goue uur: elke dag gratis, en ons is elke dag weer verbaas.",
-   "back": "Golden hour: free every day, and every day we're amazed all over again.",
-   "note": "",
-   "verdict": "MISMATCH",
-   "reason": "The English dig 'Attendance still somehow optional' (people skip it) becomes 'ons is elke dag weer verbaas' (we're amazed every day), close to the opposite point.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#80"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 0,
-   "reasons": [
-    "MISMATCH: The English dig 'Attendance still somehow optional' (people skip it) becomes 'ons is elke dag weer verbaas' (we're amazed every day), close to the opposite point."
-   ]
   },
   {
    "k": "af-2046",
@@ -102747,64 +98895,6 @@
    "reasons": []
   },
   {
-   "k": "af-2054",
-   "lang": "af",
-   "en": "City folk pay good money for this ceiling.",
-   "text": "Stadsmense betaal groot geld hiervoor. Hier's dit sommer verniet.",
-   "back": "City people pay big money for this. Here it's just free.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'this ceiling' (the sky as a ceiling) flattens to 'hiervoor', and an explanatory 'Hier's dit sommer verniet' is added.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#92"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'this ceiling' (the sky as a ceiling) flattens to 'hiervoor', and an explanatory 'Hier's dit sommer verniet' is added."
-   ]
-  },
-  {
-   "k": "af-2055",
-   "lang": "af",
-   "en": "Nobody's called it a night. The night agrees.",
-   "text": "Niemand het 'huis toe' gesê nie. Niemand gaan ook nie.",
-   "back": "Nobody's said 'home time'. Nobody's going either.",
-   "note": "'Niemand gaan ook nie' - nobody is going home either, or nobody is going to say it",
-   "verdict": "DRIFT",
-   "reason": "The punchline 'The night agrees' is replaced by 'Niemand gaan ook nie' (nobody's going either).",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#94"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: The punchline 'The night agrees' is replaced by 'Niemand gaan ook nie' (nobody's going either)."
-   ]
-  },
-  {
    "k": "zu-0720",
    "lang": "zu",
    "en": "Absolutely beautiful out there.",
@@ -102991,7 +99081,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0727",
@@ -103345,35 +99436,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0741",
-   "lang": "zu",
-   "en": "This is the weather you'll miss in December traffic.",
-   "text": "Lesi yisimo sezulu ozosithanda ethrafikhini kaDisemba.",
-   "back": "This is the weather you'll love in December traffic.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'ozosithanda' = 'you'll love' where the English says 'you'll miss', so the longing-in-traffic punchline is lost",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#21"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'ozosithanda' = 'you'll love' where the English says 'you'll miss', so the longing-in-traffic punchline is lost"
-   ]
-  },
-  {
    "k": "zu-0742",
    "lang": "zu",
    "en": "Even the parking lot looks pretty today.",
@@ -103535,8 +99597,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0748",
@@ -103731,7 +99792,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0756",
@@ -103761,33 +99823,6 @@
    "reasons": [
     "DRIFT: 'lisesimweni esihle' = 'in good condition', which drops the 'on its best behaviour' personification"
    ]
-  },
-  {
-   "k": "zu-0757",
-   "lang": "zu",
-   "en": "Bottle this one. Open it in winter.",
-   "text": "Yifake ebhodleleni le. Yivule ebusika.",
-   "back": "Put it in this bottle. Open it in winter.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#37"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
   },
   {
    "k": "zu-0758",
@@ -103871,33 +99906,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0761",
-   "lang": "zu",
-   "en": "'Quick dip before work.' Nobody in history has been quick.",
-   "text": "'Ukucwila okusheshayo ngaphambi komsebenzi.' Akekho emlandweni oke washeshisa.",
-   "back": "'A quick dip before work.' Nobody in history has ever been quick.",
-   "note": "'ukucwila' = to sink/dive in, used for 'dip'",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#41"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0762",
    "lang": "zu",
    "en": "Zero mistakes from today so far. Sky included.",
@@ -103915,33 +99923,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#42"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0763",
-   "lang": "zu",
-   "en": "Highveld mornings: freezing, gorgeous, zero apologies.",
-   "text": "Amakuseni e-Highveld: ayaqanda, mahle, awukho uxolo.",
-   "back": "Highveld mornings: freezing, beautiful, no apologies.",
-   "note": "'uxolo' = sorry or peace, so 'no apology' or 'no peace'; 'awukho' concord doubtful for 'uxolo'",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#43"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -104023,33 +100004,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#46"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0767",
-   "lang": "zu",
-   "en": "Signal: weak. Views: unfair. Deadlines: whose?",
-   "text": "I-signal: ibuthaka. Imibono: ayinabulungiswa. Ama-deadline: kabani?",
-   "back": "Signal: weak. Views: unfair. Deadlines: whose?",
-   "note": "'ayinabulungiswa' = 'without justice' (unfair); 'imibono' can also mean 'opinions'",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#48"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -104306,8 +100260,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0777",
@@ -104327,33 +100280,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#58"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0778",
-   "lang": "zu",
-   "en": "Atlantic rule: the water is freezing and everyone lies about it.",
-   "text": "Umthetho we-Atlantic: amanzi ayaqanda futhi wonke umuntu uqamba amanga ngawo.",
-   "back": "Atlantic rule: the water is freezing and everyone lies about it.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#59"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -104445,33 +100371,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0782",
-   "lang": "zu",
-   "en": "Highveld winter flex: laundry dry before the kettle's even done.",
-   "text": "I-flex yasebusika ye-Highveld: iwashing yoma ngaphambi kokuba iketela liphele.",
-   "back": "Highveld winter flex: the washing dries before the kettle is done.",
-   "note": "'iwashing' is an English loan (laundry)",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#63"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0783",
    "lang": "zu",
    "en": "Clear sky, clear diary. One of those is a lie.",
@@ -104526,87 +100425,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0785",
-   "lang": "zu",
-   "en": "You don't waste a sky like this on being sensible.",
-   "text": "Awuchithi izulu elinjena ngokwenza izinto ezihlakaniphile.",
-   "back": "You don't waste weather like this doing sensible things.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#66"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0786",
-   "lang": "zu",
-   "en": "Karoo sky: same flawless blue for the next 400 km. Guaranteed.",
-   "text": "Izulu laseKaroo: uhlaza olufanayo olungenasici amakhilomitha angu-400 alandelayo. Kuqinisekisiwe.",
-   "back": "Karoo sky: the same flawless blue for the next 400 km. Guaranteed.",
-   "note": "'uhlaza' covers blue/green",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#67"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0787",
-   "lang": "zu",
-   "en": "Padkos hits different under infinite sky. That's just science.",
-   "text": "I-padkos inambitheka ngokwehlukile ngaphansi kwezulu elingapheli. Kuyisayensi nje.",
-   "back": "Padkos tastes different under an endless sky. It's just science.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#68"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0788",
    "lang": "zu",
    "en": "The mountain skipped the tablecloth today. Full outfit reveal.",
@@ -104636,62 +100454,6 @@
    "reasons": [
     "DRIFT: 'indwangu' (cloth) drops 'table', which weakens the Table Mountain tablecloth reference, and 'Ukuveza kokugqoka okuphelele' is stiff for 'Full outfit reveal'"
    ]
-  },
-  {
-   "k": "zu-0789",
-   "lang": "zu",
-   "en": "Cancel everything. This is THE day winter was hiding.",
-   "text": "Khansela konke. YILOLU usuku ubusika obebulufihlile.",
-   "back": "Cancel everything. THIS is the day winter was hiding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'obebulufihlile' — not found in any external source"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#71"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0790",
-   "lang": "zu",
-   "en": "Off-season beach: same ocean, zero fight for parking.",
-   "text": "Ibhishi elingekho esizinini: ulwandle olufanayo, akukho ukulwa ngendawo yokupaka.",
-   "back": "Off-season beach: same sea, no fighting over parking.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#72"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
   },
   {
    "k": "zu-0791",
@@ -104792,33 +100554,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#77"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0795",
-   "lang": "zu",
-   "en": "A day so good even rush hour felt optional.",
-   "text": "Usuku oluhle kangangokuthi ngisho ne-rush hour ibizwakala njengokukhetha.",
-   "back": "A day so good even rush hour felt like a choice.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#78"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -105155,33 +100890,6 @@
    "reasons": []
   },
   {
-   "k": "zu-0808",
-   "lang": "zu",
-   "en": "City folk pay good money for this ceiling.",
-   "text": "Abantu basedolobheni bakhokha imali enkulu ngalolu phahla.",
-   "back": "City people pay big money for this roof.",
-   "note": "'uphahla' = roof; presumably the sky as a ceiling/rooftop view",
-   "verdict": "MATCH",
-   "reason": "'uphahla' (roof) for 'ceiling' is an equivalent image",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#92"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "zu-0809",
    "lang": "zu",
    "en": "Sky this clear means tomorrow's a scorcher. Stay a while.",
@@ -105201,33 +100909,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#93"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0810",
-   "lang": "zu",
-   "en": "Nobody's called it a night. The night agrees.",
-   "text": "Akekho othe sekuphelile. Ubusuku buyavuma.",
-   "back": "Nobody said it's over. The night agrees.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#94"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -105786,35 +101467,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0715",
-   "lang": "xh",
-   "en": "This is the weather you'll miss in December traffic.",
-   "text": "Le yimozulu oya kuyikhumbula kwitrafi kaDisemba.",
-   "back": "This is the weather you'll remember in the December traffic.",
-   "note": "'uyikhumbula' = remember or long for/miss",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'kwitrafi' — seen only in this app's own copy, in no external source; closest attested: 'kwidrafti' (5× leipzig, distance 2)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#21"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0716",
    "lang": "xh",
    "en": "Even the parking lot looks pretty today.",
@@ -106197,33 +101849,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0731",
-   "lang": "xh",
-   "en": "Bottle this one. Open it in winter.",
-   "text": "Yifake ebhotileni le. Yivule ebusika.",
-   "back": "Put this in a bottle. Open it in winter.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#37"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0732",
    "lang": "xh",
    "en": "Air this clear should come with a warning: plans will be made.",
@@ -106268,33 +101893,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#40"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0734",
-   "lang": "xh",
-   "en": "'Quick dip before work.' Nobody in history has been quick.",
-   "text": "'Ukudada ngokukhawuleza phambi komsebenzi.' Akukho mntu embalini owakhe wakhawuleza.",
-   "back": "'A quick swim before work.' Nobody in history has ever been quick.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#41"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -106376,33 +101974,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#47"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0738",
-   "lang": "xh",
-   "en": "Signal: weak. Views: unfair. Deadlines: whose?",
-   "text": "Isignali: buthathaka. Imibono: ayinabulungisa. Ii-deadline: zikabani?",
-   "back": "Signal: weak. Views: unfair. Deadlines: whose?",
-   "note": "'ayinabulungisa' = have no fairness / unjust",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#48"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -106656,35 +102227,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0748",
-   "lang": "xh",
-   "en": "Atlantic rule: the water is freezing and everyone lies about it.",
-   "text": "Umthetho we-Atlantic: amanzi ayabanda kwaye wonke umntu uxoka ngawo.",
-   "back": "Atlantic rule: the water is cold and everyone lies about it.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'uxoka' — not found in any external source; closest attested: 'uxola' (3× leipzig, distance 1)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#59"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0749",
    "lang": "xh",
    "en": "Tidal pool water: instant regret, then instant youth.",
@@ -106743,33 +102285,6 @@
    ]
   },
   {
-   "k": "xh-0751",
-   "lang": "xh",
-   "en": "Highveld winter flex: laundry dry before the kettle's even done.",
-   "text": "Ukuqhayisa kobusika baseHighveld: impahla yoma phambi kokuba iketile igqibe.",
-   "back": "Highveld winter bragging: the washing dries before the kettle finishes.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#63"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0752",
    "lang": "xh",
    "en": "Clear sky, clear diary. One of those is a lie.",
@@ -106787,62 +102302,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#64"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0753",
-   "lang": "xh",
-   "en": "You don't waste a sky like this on being sensible.",
-   "text": "Awuyichithi imozulu enje ngokuba nengqiqo.",
-   "back": "You don't waste weather like this by being sensible.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'Awuyichithi' — not found in any external source; closest attested: 'awayichitha' (2× leipzig/wiki, distance 2)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#66"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0754",
-   "lang": "xh",
-   "en": "Padkos hits different under infinite sky. That's just science.",
-   "text": "Ipadkos ivakala yahlukile phantsi kwesibhakabhaka esingapheliyo. Yinzululwazi nje leyo.",
-   "back": "Padkos feels different under an endless sky. That's just science.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#68"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -106910,64 +102369,6 @@
    "severity": 3,
    "reasons": [],
    "sample": true
-  },
-  {
-   "k": "xh-0757",
-   "lang": "xh",
-   "en": "Cancel everything. This is THE day winter was hiding.",
-   "text": "Rhoxisa yonke into. Le YIYO imini ebusika bebuyifihlile.",
-   "back": "Cancel everything. THIS is the day winter was hiding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'bebuyifihlile' — not found in any external source"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#71"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0758",
-   "lang": "xh",
-   "en": "Off-season beach: same ocean, zero fight for parking.",
-   "text": "Unxweme lwasebusika: lolona lwandle lunye, akukho kulwa ngeparking.",
-   "back": "Winter coast: the very same sea, no fighting over parking.",
-   "note": "",
-   "verdict": "DRIFT",
-   "reason": "'Unxweme lwasebusika' says 'winter coast' where the English says 'Off-season beach', adding a season.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#72"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Unxweme lwasebusika' says 'winter coast' where the English says 'Off-season beach', adding a season."
-   ]
   },
   {
    "k": "xh-0759",
@@ -107041,33 +102442,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#79"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "xh-0762",
-   "lang": "xh",
-   "en": "Golden hour runs daily. Attendance still somehow optional.",
-   "text": "Iyure yegolide isebenza yonke imihla. Ukuza kuyo kusengathi kusekukhethweni.",
-   "back": "Golden hour works every day. Showing up for it seems to be optional.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#80"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -107377,35 +102751,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0774",
-   "lang": "xh",
-   "en": "City folk pay good money for this ceiling.",
-   "text": "Abantu basezixekweni bahlawula imali eninzi ngesi silingi.",
-   "back": "City people pay a lot of money for this ceiling.",
-   "note": "'isilingi' = ceiling (loan); also the word for 'shilling'",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'basezixekweni' — not found in any external source"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#92"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0775",
    "lang": "xh",
    "en": "Sky this clear means tomorrow's a scorcher. Stay a while.",
@@ -107431,35 +102776,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "xh-0776",
-   "lang": "xh",
-   "en": "Nobody's called it a night. The night agrees.",
-   "text": "Akukho mntu uthe malihambe. Ubusuku buyavuma.",
-   "back": "Nobody has said it should go. The night agrees.",
-   "note": "'malihambe' = 'let it (cl. 5) go' — referent unclear; 'let's go' would be 'masihambe'",
-   "verdict": "DRIFT",
-   "reason": "'Akukho mntu uthe malihambe' ('nobody said let it go', unclear referent) only loosely carries 'Nobody's called it a night'.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#94"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Akukho mntu uthe malihambe' ('nobody said let it go', unclear referent) only loosely carries 'Nobody's called it a night'."
-   ]
   },
   {
    "k": "st-0715",
@@ -108022,37 +103338,6 @@
    "reasons": []
   },
   {
-   "k": "st-0736",
-   "lang": "st",
-   "en": "This is the weather you'll miss in December traffic.",
-   "text": "Lena ke lehodimo leo o tla le thella sephetphetheng sa Tšitoe.",
-   "back": "This is the sky you'll slide on in December traffic.",
-   "note": "unsure: 'thella' = slip/slide, sense unclear; 'sephetphetheng' misspelt (sephethephetheng); 'Tšitoe' Lesotho spelling (SA Tshitwe)",
-   "verdict": "MISMATCH",
-   "reason": "'o tla le thella' = 'you'll slide/slip on it', not 'you'll miss'; the December-traffic joke is lost ('sephetphetheng' also misspelt).",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM lexical: 'sephetphetheng' — seen only in this app's own copy, in no external source; closest attested: 'sephethephetheng' (0× dictionary, distance 2)"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#21"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 0,
-   "reasons": [
-    "MISMATCH: 'o tla le thella' = 'you'll slide/slip on it', not 'you'll miss'; the December-traffic joke is lost ('sephetphetheng' also misspelt)."
-   ]
-  },
-  {
    "k": "st-0737",
    "lang": "st",
    "en": "Even the parking lot looks pretty today.",
@@ -108452,33 +103737,6 @@
    "reasons": []
   },
   {
-   "k": "st-0752",
-   "lang": "st",
-   "en": "Bottle this one. Open it in winter.",
-   "text": "Beha lena ka botlolong. Bula nakong ea mariha.",
-   "back": "Put this in a bottle. Open in winter.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#37"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0753",
    "lang": "st",
    "en": "The sun clocked in before your alarm even tried.",
@@ -108560,33 +103818,6 @@
    "reasons": []
   },
   {
-   "k": "st-0756",
-   "lang": "st",
-   "en": "'Quick dip before work.' Nobody in history has been quick.",
-   "text": "'Ho ina kapele pele ho mosebetsi.' Ha ho motho historing ea kileng a potlaka.",
-   "back": "'A quick dip before work.' Nobody in history has ever hurried.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#41"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0757",
    "lang": "st",
    "en": "Zero mistakes from today so far. Sky included.",
@@ -108604,33 +103835,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#42"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0758",
-   "lang": "st",
-   "en": "Highveld mornings: freezing, gorgeous, zero apologies.",
-   "text": "Meso ea Highveld: e hatselang, e metle, ha ho boitšoarelo.",
-   "back": "Highveld mornings: freezing, beautiful, no apologies.",
-   "note": "Lesotho 'ea', 'boitšoarelo'",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#43"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -108747,35 +103951,6 @@
    "flagged": false,
    "severity": 3,
    "reasons": []
-  },
-  {
-   "k": "st-0763",
-   "lang": "st",
-   "en": "Signal: weak. Views: unfair. Deadlines: whose?",
-   "text": "Signal: e fokolang. Dipono: ha di lokang. Di-deadline: tsa mang?",
-   "back": "Signal: weak. Views: not okay. Deadlines: whose?",
-   "note": "unsure: 'ha di lokang' reads as 'not right/not okay' - grammar doubtful",
-   "verdict": "DRIFT",
-   "reason": "'Dipono: ha di lokang' reads 'views: not okay/not right' - the literal 'unfair' loses the 'unfairly good' compliment.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#48"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'Dipono: ha di lokang' reads 'views: not okay/not right' - the literal 'unfair' loses the 'unfairly good' compliment."
-   ]
   },
   {
    "k": "st-0764",
@@ -108998,33 +104173,6 @@
    "reasons": []
   },
   {
-   "k": "st-0772",
-   "lang": "st",
-   "en": "Atlantic rule: the water is freezing and everyone lies about it.",
-   "text": "Molao oa Atlantic: metsi a hatsela 'me bohle ba bua leshano ka hona.",
-   "back": "Atlantic rule: the water is freezing and everyone lies about it.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#59"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0773",
    "lang": "st",
    "en": "Weather this perfect is on loan. The southeaster keeps receipts.",
@@ -109106,35 +104254,6 @@
    "reasons": []
   },
   {
-   "k": "st-0776",
-   "lang": "st",
-   "en": "Highveld winter flex: laundry dry before the kettle's even done.",
-   "text": "Flex ya mariha ya Highveld: diaparo di omile pele ketlele e qeta.",
-   "back": "Highveld winter flex: the washing is dry before the kettle finishes.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM contamination: 'omile' is attested in zu (36× kaikki/leipzig/wiki/dictionary) but in no external st source"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#63"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0777",
    "lang": "st",
    "en": "Clear sky, clear diary. One of those is a lie.",
@@ -109191,60 +104310,6 @@
    "reasons": []
   },
   {
-   "k": "st-0779",
-   "lang": "st",
-   "en": "You don't waste a sky like this on being sensible.",
-   "text": "Ha o senye lehodimo le tjena ka ho ba le kelello.",
-   "back": "You don't waste a sky like this by being sensible.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#66"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0780",
-   "lang": "st",
-   "en": "Padkos hits different under infinite sky. That's just science.",
-   "text": "Padkos e latsweha ka tsela e fapaneng tlas'a lehodimo le sa feleng. Ke saense feela.",
-   "back": "Padkos tastes different under an endless sky. It's just science.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#68"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0781",
    "lang": "st",
    "en": "The mountain skipped the tablecloth today. Full outfit reveal.",
@@ -109289,60 +104354,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#70"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0783",
-   "lang": "st",
-   "en": "Cancel everything. This is THE day winter was hiding.",
-   "text": "Hlakola tsohle. Lena ke LONA letsatsi leo mariha a neng a le patile.",
-   "back": "Cancel everything. This is THE day winter was hiding.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#71"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0784",
-   "lang": "st",
-   "en": "Off-season beach: same ocean, zero fight for parking.",
-   "text": "Lebopo ka ntle ho sehla: lewatle le tšoanang, ha ho ntwa ea parking.",
-   "back": "The beach out of season: same sea, no parking war.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#72"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -109465,33 +104476,6 @@
    "reasons": []
   },
   {
-   "k": "st-0789",
-   "lang": "st",
-   "en": "A day so good even rush hour felt optional.",
-   "text": "Letsatsi le letle hoo esita le sephethephethe se neng se utlwahala e le boikgethelo.",
-   "back": "A day so beautiful that even the traffic felt optional.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#78"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0790",
    "lang": "st",
    "en": "Highveld golden hour: costs nothing, upstages everything.",
@@ -109509,33 +104493,6 @@
     "kind": "bank",
     "bank": [
      "witty:clear#79"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0791",
-   "lang": "st",
-   "en": "Golden hour runs daily. Attendance still somehow optional.",
-   "text": "Golden hour e etsahala letsatsi le leng le le leng. Ho ba teng ho sa ntse ho le boikgethelo.",
-   "back": "Golden hour happens every single day. Being there is still optional.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#80"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -109626,8 +104583,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0795",
@@ -109846,35 +104802,6 @@
    "reasons": []
   },
   {
-   "k": "st-0803",
-   "lang": "st",
-   "en": "City folk pay good money for this ceiling.",
-   "text": "Batho ba toropong ba lefa tjhelete e ngata bakeng sa siling ena.",
-   "back": "City people pay a lot of money for this ceiling.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "triage",
-    "findings": [
-     "MEDIUM semantic: 'Batho' means 'people; human beings; humans' — nothing in the English source; it is 2 letters from 'batle', the usual word for 'good'"
-    ]
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty:clear#92"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0804",
    "lang": "st",
    "en": "Sky this clear means tomorrow's a scorcher. Stay a while.",
@@ -109953,7 +104880,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-2058",
@@ -112483,8 +107411,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0847",
@@ -112729,7 +107656,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0797",
@@ -114258,35 +109186,6 @@
    "reasons": []
   },
   {
-   "k": "af-2079",
-   "lang": "af",
-   "en": "Models say lovely. Reality reserves the right to differ.",
-   "text": "Modelle sê pragtig. Die werklikheid hou voor om te verskil.",
-   "back": "Models say gorgeous. Reality reserves the right to differ.",
-   "note": "unsure: 'hou voor om te verskil' - not idiomatic; reads as a calque of 'reserves the right to differ'",
-   "verdict": "DRIFT",
-   "reason": "'hou voor om te verskil' is a broken calque of 'reserves the right to differ' (it needs 'behou die reg voor'). The meaning only comes through from context.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:clear#5"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'hou voor om te verskil' is a broken calque of 'reserves the right to differ' (it needs 'behou die reg voor'). The meaning only comes through from context."
-   ]
-  },
-  {
    "k": "zu-0856",
    "lang": "zu",
    "en": "Probably clear. Your window's the final say.",
@@ -114412,33 +109311,6 @@
     "kind": "bank",
     "bank": [
      "witty_low_confidence:clear#4"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0861",
-   "lang": "zu",
-   "en": "Models say lovely. Reality reserves the right to differ.",
-   "text": "Amamodeli athi kuhle. Iqiniso lingahluka.",
-   "back": "The models say it's fine. Reality may differ.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:clear#5"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -114584,33 +109456,6 @@
    "reasons": []
   },
   {
-   "k": "xh-0827",
-   "lang": "xh",
-   "en": "Models say lovely. Reality reserves the right to differ.",
-   "text": "Iimodeli zithi kuhle. Inyaniso inelungelo lokwahluka",
-   "back": "The models say it's nice. Reality has the right to differ",
-   "note": "no full stop",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:clear#5"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "st-0850",
    "lang": "st",
    "en": "Probably clear. Your window's the final say.",
@@ -114736,33 +109581,6 @@
     "kind": "bank",
     "bank": [
      "witty_low_confidence:clear#4"
-    ]
-   },
-   "image": "clear/week_1/day/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0855",
-   "lang": "st",
-   "en": "Models say lovely. Reality reserves the right to differ.",
-   "text": "Limodele li re ho hotle. 'Nete e na le tokelo ea ho fapana.",
-   "back": "The models say it's nice. Reality has the right to differ.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:clear#5"
     ]
    },
    "image": "clear/week_1/day/1.webp",
@@ -117454,8 +112272,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-2105",
@@ -117648,7 +112465,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0888",
@@ -120747,35 +115565,6 @@
    "reasons": []
   },
   {
-   "k": "af-2135",
-   "lang": "af",
-   "en": "Calm night, most likely. The sky reserves the right to change.",
-   "text": "Kalm nag, heel waarskynlik. Die lug hou voor om te verander.",
-   "back": "Calm night, most likely. The sky reserves the right to change.",
-   "note": "unsure: 'hou voor om te verander' - not idiomatic; reads as a calque of 'reserves the right to change'",
-   "verdict": "DRIFT",
-   "reason": "'hou voor om te verander' is a broken calque of 'reserves the right to change'. The meaning only comes through from context.",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:night#1"
-    ]
-   },
-   "image": "clear/week_1/night/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": true,
-   "flagged": true,
-   "severity": 2,
-   "reasons": [
-    "DRIFT: 'hou voor om te verander' is a broken calque of 'reserves the right to change'. The meaning only comes through from context."
-   ]
-  },
-  {
    "k": "af-2136",
    "lang": "af",
    "en": "Looks settled out there. Roughly.",
@@ -120903,33 +115692,6 @@
     "kind": "bank",
     "bank": [
      "witty_low_confidence:night#0"
-    ]
-   },
-   "image": "clear/week_1/night/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "zu-0917",
-   "lang": "zu",
-   "en": "Calm night, most likely. The sky reserves the right to change.",
-   "text": "Ubusuku obuzolile. Isibhakabhaka singashintsha.",
-   "back": "A calm night. The sky could change.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:night#1"
     ]
    },
    "image": "clear/week_1/night/1.webp",
@@ -121079,33 +115841,6 @@
    ]
   },
   {
-   "k": "xh-0883",
-   "lang": "xh",
-   "en": "Calm night, most likely. The sky reserves the right to change.",
-   "text": "Ubusuku obuzolileyo, mhlawumbi. Isibhakabhaka singatshintsha.",
-   "back": "Calm night, probably. The sky might change.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:night#1"
-    ]
-   },
-   "image": "clear/week_1/night/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "xh-0884",
    "lang": "xh",
    "en": "Looks settled out there. Roughly.",
@@ -121231,33 +115966,6 @@
     "kind": "bank",
     "bank": [
      "witty_low_confidence:night#0"
-    ]
-   },
-   "image": "clear/week_1/night/1.webp",
-   "imageIsExample": true,
-   "alRuledAf": null,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "st-0911",
-   "lang": "st",
-   "en": "Calm night, most likely. The sky reserves the right to change.",
-   "text": "Bosiu bo kgutsitseng, mohlomong. Lehodimo le ka fetoha.",
-   "back": "A calm night, probably. The sky could change.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "bank",
-    "bank": [
-     "witty_low_confidence:night#1"
     ]
    },
    "image": "clear/week_1/night/1.webp",

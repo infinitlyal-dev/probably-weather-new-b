@@ -1,0 +1,425 @@
+{
+ "generated": "2026-09-23T20:20:28.437Z",
+ "ruledBy": "Al, season lines keep/cut page (review/seasonal-tags.html)",
+ "total": 62,
+ "kept": 3,
+ "cut": 59,
+ "photographsLeftWithNoLine": [
+  {
+   "hash": "decff597fe6c",
+   "image": "cold-clear/week_1/day/5.webp"
+  },
+  {
+   "hash": "8fd1944f303b",
+   "image": "cold-clear/week_1/night/6.webp"
+  },
+  {
+   "hash": "420d1bd07555",
+   "image": "cold/week_1/dusk/1.webp"
+  },
+  {
+   "hash": "13efc9191981",
+   "image": "cold/week_1/night/6.webp"
+  },
+  {
+   "hash": "b850a52403e3",
+   "image": "cold/week_1/night/7.webp"
+  },
+  {
+   "hash": "999e68c47bfc",
+   "image": "cold/week_2/day/1.webp"
+  },
+  {
+   "hash": "bbad2500c852",
+   "image": "cold-clear/week_1/day/6.webp"
+  }
+ ],
+ "rulings": [
+  {
+   "key": "N299",
+   "kind": "bespoke",
+   "en": "That lawn stopped asking the sky for rain somewhere around the start of November.",
+   "verdict": "KEEP",
+   "ruling": "MONTHS",
+   "months": [
+    1,
+    2,
+    3,
+    12
+   ]
+  },
+  {
+   "key": "B212",
+   "kind": "bespoke",
+   "en": "Nobody in this dorp has needed a stove since about the second week of December.",
+   "verdict": "KEEP",
+   "ruling": "MONTHS",
+   "months": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "key": "B450",
+   "kind": "bespoke",
+   "en": "Clouds are crying like NZ at the 23 Rugby WC!",
+   "verdict": "KEEP",
+   "ruling": "ALWAYS"
+  },
+  {
+   "key": "N277",
+   "kind": "bespoke",
+   "en": "Summer filed its arrival notice this morning; the shirt is the paperwork.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N428",
+   "kind": "bespoke",
+   "en": "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C040",
+   "kind": "bespoke",
+   "en": "Cancel everything. This is THE day winter was hiding.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N220",
+   "kind": "bespoke",
+   "en": "Half this street is in summer and the other half is about to be somewhere else.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C100",
+   "kind": "bespoke",
+   "en": "Some clouds. Some sun. South African summer admin.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N068",
+   "kind": "bespoke",
+   "en": "Pink-grey sky over the robots: winter is on the morning shift too.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B459",
+   "kind": "bespoke",
+   "en": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B517",
+   "kind": "bespoke",
+   "en": "Jacaranda season and a Monday, and the paving is taking both badly.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B004",
+   "kind": "bespoke",
+   "en": "The jacaranda is dropping purple on a lawn he has just finished watering.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B095",
+   "kind": "bespoke",
+   "en": "Every jacaranda on this street is emptying itself onto one man.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B110",
+   "kind": "bespoke",
+   "en": "The jacaranda is redecorating the whole road whether you like it or not.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B470",
+   "kind": "bespoke",
+   "en": "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N419",
+   "kind": "bespoke",
+   "en": "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N421",
+   "kind": "bespoke",
+   "en": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N425",
+   "kind": "bespoke",
+   "en": "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C218",
+   "kind": "bespoke",
+   "en": "Clear skies, open roads, running nose. The full winter set.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C222",
+   "kind": "bespoke",
+   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C224",
+   "kind": "bespoke",
+   "en": "The Free State just remembered it has a winter setting.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C252",
+   "kind": "bespoke",
+   "en": "Clear nights are winter's way of apologising.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C189",
+   "kind": "bespoke",
+   "en": "Winter sun: all of the light, none of the heat. Nice try, sun.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B388",
+   "kind": "bespoke",
+   "en": "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N036",
+   "kind": "bespoke",
+   "en": "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N367",
+   "kind": "bespoke",
+   "en": "Joburg winter dawn: the view is free; the air charges admission.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B398",
+   "kind": "bespoke",
+   "en": "Coats and coffees in full sun: winter in this city photographs like summer.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B393",
+   "kind": "bespoke",
+   "en": "Frost on the grass, steam off the field: winter running weather at its most honest.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B400",
+   "kind": "bespoke",
+   "en": "That washing is not dry; it is preserved. Winter dusk works fast out here.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B412",
+   "kind": "bespoke",
+   "en": "Braaiing in beanies under a hard clear sky: winter never cancelled anything here.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N046",
+   "kind": "bespoke",
+   "en": "Small dog, thick jersey, short patrol: winter mornings run on reduced hours.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B353",
+   "kind": "bespoke",
+   "en": "Construction finished at nine: one duvet cave, single occupant, no visitors till spring.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B367",
+   "kind": "bespoke",
+   "en": "It is heater season, and the best seat in the house has fur on it.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B368",
+   "kind": "bespoke",
+   "en": "The mountain is in there somewhere, wrapped up for the winter.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B381",
+   "kind": "bespoke",
+   "en": "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B378",
+   "kind": "bespoke",
+   "en": "Fingerless gloves at a laptop: winter has entered the home office.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B385",
+   "kind": "bespoke",
+   "en": "Frost on the lawn and wors on the grid: a Cape winter compromise.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B382",
+   "kind": "bespoke",
+   "en": "Beanie, snood, torch, book: winter nights build the best reading rooms.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B361",
+   "kind": "bespoke",
+   "en": "Wet road, grey sky, dog in a jersey: winter is fully operational.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B356",
+   "kind": "bespoke",
+   "en": "Socks go on the heater first; feet join later — the winter system works.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B360",
+   "kind": "bespoke",
+   "en": "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B248",
+   "kind": "bespoke",
+   "en": "That sprinkler has been the best-value thing in this garden all summer.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N170",
+   "kind": "bespoke",
+   "en": "This light lasts about twenty minutes and the walk to school gets all of it.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N192",
+   "kind": "bespoke",
+   "en": "Two beanies, one scraper, minus three: the school run starts before the car agrees.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B395",
+   "kind": "bespoke",
+   "en": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N470",
+   "kind": "bespoke",
+   "en": "Beanie plus puffer plus school tie: the cold front has reached the uniform.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N300",
+   "kind": "bespoke",
+   "en": "The sun has done more to that lawn this month than any mower ever will.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B133",
+   "kind": "bespoke",
+   "en": "Every leaf the tree dropped this month is going past them at head height.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C015",
+   "kind": "bespoke",
+   "en": "Bottle this one. Open it in winter.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N519",
+   "kind": "bespoke",
+   "en": "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N429",
+   "kind": "bespoke",
+   "en": "The agapanthus open for exactly this kind of sky, and they got it.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N199",
+   "kind": "bespoke",
+   "en": "Cricket till the light goes, and light like this takes its time going.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "N076",
+   "kind": "bespoke",
+   "en": "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C235",
+   "kind": "bespoke",
+   "en": "Lekker koud, but the rugby fields are about to look perfect.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C236",
+   "kind": "bespoke",
+   "en": "Perfect rugby weather. For the spectators with blankets.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "B392",
+   "kind": "bespoke",
+   "en": "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "C344",
+   "kind": "bespoke",
+   "en": "Nature's doing its own load shedding.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "witty:clear#20",
+   "kind": "bank",
+   "en": "This is the weather you'll miss in December traffic.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "witty:clear#69",
+   "kind": "bank",
+   "en": "Cancel everything. This is THE day winter was hiding.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "witty:clear#61",
+   "kind": "bank",
+   "en": "Highveld winter flex: laundry dry before the kettle's even done.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "witty:clear#70",
+   "kind": "bank",
+   "en": "Off-season beach: same ocean, zero fight for parking.",
+   "verdict": "CUT"
+  },
+  {
+   "key": "witty:fog#80",
+   "kind": "bank",
+   "en": "Every glow down there is someone else who also can't believe it's already winter.",
+   "verdict": "CUT"
+  }
+ ]
+}
