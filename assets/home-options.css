@@ -1,0 +1,138 @@
+/* DESIGN BRANCH ONLY — the proposed Home directions (launch eval step 4, 2026-09-24).
+   Loaded by assets/home-options.js only with ?home=a|b|c; every rule is scoped to
+   body.home-option, so today's Home is untouched without the parameter. Phones only
+   (<=768px): the desktop postcard is not part of this proposal.
+
+   What every direction fixes (measured on the built app at 414x715, Al's iPhone 11
+   in Chrome):
+     - the frame that should have come off with the meme: the photograph was inset
+       24 px with rounded corners and a shadow — a thumbnail in a dark room;
+     - fine print: the stats labels were 7.9 px, their sub-lines 8.9 px (and cut
+       off: "NE · gusts 35" became "NE · gus…" in Afrikaans and isiZulu), the
+       Low·High and source lines 10.7 px, the Hourly label 11 px. The fold-fit
+       shrinks type by viewport height, so under Chrome's bars the whole lower
+       third turns into fine print. Floors: 11 px labels, 13 px lines, 15 px values;
+       the photograph (the column's only flexible child) gives up the height;
+     - long jokes: they step down in size (home-options.js) instead of climbing the
+       photograph.
+   What every direction keeps: the joke on the photo in white over the measured
+   scrim, the number stepped back, the header on the photo, the source line, the one
+   stats pill and the yellow Hourly button, no six-hour strip, no ad. */
+
+@media (max-width: 768px) {
+  /* ---------- common: the frame comes off for real ---------- */
+  body.home-option { --meme-inset: -8px; }        /* the container's 8 px padding, cancelled */
+  body.home-option.home-active .hero-card { border-radius: 0; box-shadow: none; }
+  body.home-option main#home-screen.main > #headline.hero-caption {
+    border-radius: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* ---------- common: a legibility floor under the photograph ---------- */
+  body.home-option .stats-row .stat-k { font-size: 11px; letter-spacing: 0.04em; }
+  body.home-option .stats-row .stat-v { font-size: 16px; }
+  body.home-option .stats-row .stat-sub {
+    font-size: 11.5px;
+    white-space: normal;            /* wraps instead of cutting the gust number */
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.2;
+    overflow-wrap: anywhere;      /* isiZulu "Akunakulindeleka" otherwise runs into the next cell */
+  }
+  body.home-option .hourly-cta { font-size: 13px; }
+  body.home-option.home-active .range-line,
+  body.home-option.home-active .agree-line { font-size: 13px; }
+  body.home-option main#home-screen.main { padding-left: 24px; padding-right: 24px; }
+}
+
+/* ═════════════ A — TIDY: today's layout, the things that make it feel off fixed ═════════════
+   One line fewer and three type sizes instead of six: "Probably 24°" on one line,
+   the condition under it, then Low·High and the source line side by side. */
+@media (max-width: 768px) {
+  body.home-a .temp .hero-probably {
+    display: inline;
+    font-size: 0.56em;
+    margin-right: 0.3em;
+    vertical-align: 0.22em;
+  }
+  body.home-a .temp { font-size: 32px; line-height: 1.05; }
+  body.home-a #home-screen #description { font-size: 21px; margin-top: 2px; }
+  body.home-a main#home-screen.main { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 16px; }
+  body.home-a main#home-screen.main > * { flex: 0 0 100%; }
+  body.home-a main#home-screen.main > #rangeLine,
+  body.home-a main#home-screen.main > #agreeLine { flex: 0 0 auto; margin-top: 6px; }
+  body.home-a .stats-band { margin-top: 12px; }
+}
+
+/* ═════════════ B — MORE MEME: the photograph takes the screen ═════════════
+   The joke is bigger; the data folds into two rows — "Probably 24° · Clear skies."
+   with Low·High and the source line on one line under it, then the pill and Hourly —
+   and the photograph gets every pixel that saves. */
+@media (max-width: 768px) {
+  body.home-b { --meme-cap-fs: clamp(1.1rem, min(4.9vh, 9.6vw), 2.6rem); }
+  body.home-b #weatherStatus { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; }
+  body.home-b .temp .hero-probably {
+    display: inline;
+    font-size: 0.55em;
+    margin-right: 0.3em;
+    vertical-align: 0.22em;
+  }
+  body.home-b .temp { font-size: 30px; line-height: 1.05; margin: 0; }
+  body.home-b #home-screen #description { font-size: 20px; margin: 0; }
+  body.home-b main#home-screen.main { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 14px; padding-top: 10px; }
+  body.home-b main#home-screen.main > * { flex: 0 0 100%; }
+  body.home-b main#home-screen.main > #rangeLine,
+  body.home-b main#home-screen.main > #agreeLine { flex: 0 0 auto; margin-top: 2px; }
+  body.home-b .stats-band { margin-top: 8px; }
+}
+
+/* ═════════════ C — PAPER: the joke on the photograph, the data on a printed card ═════════════
+   Al, 17 Aug: "the homescreen still feels a bit dark. To moody almost." The facelift's
+   surviving pieces are the cream accents and the data-on-solid discipline; here the
+   data sits on warm paper that rises over the foot of the photograph — dark ink, the
+   gold word in a deep ochre that reads on cream, the yellow Hourly button unchanged.
+   After dark the paper turns to a warm dark card, so it never glares at night. */
+@media (max-width: 768px) {
+  body.home-c { --paper: #f4ede0; --paper-ink: #211a12; --paper-ink-2: #5a4c3d; --paper-well: #e8dece; --paper-gold: #8a5a00; }
+  body.home-c.tod-night { --paper: #2b241d; --paper-ink: #f6eee0; --paper-ink-2: #cbbba6; --paper-well: #3a3128; --paper-gold: #ffd35a; }
+  body.home-c.home-active main#home-screen.main {
+    background: var(--paper);
+    color: var(--paper-ink);
+    border-radius: 22px 22px 0 0;
+    margin: -22px -8px 0;
+    padding-top: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    z-index: 2;
+    box-shadow: 0 -10px 26px rgba(0, 0, 0, 0.28);
+  }
+  body.home-c.home-active #temp,
+  body.home-c.home-active #temp .hero-now,
+  body.home-c #home-screen #description { color: var(--paper-ink); text-shadow: none; }   /* two ids: #home-screen #description is (2,0,0) */
+  body.home-c .temp .hero-probably {
+    display: inline;
+    font-size: 0.56em;
+    margin-right: 0.3em;
+    vertical-align: 0.22em;
+    color: var(--paper-gold);
+  }
+  body.home-c .temp { font-size: 32px; line-height: 1.05; }
+  body.home-c #home-screen #description { font-size: 21px; margin-top: 2px; }
+  body.home-c.home-active .range-line,
+  body.home-c.home-active .agree-line { color: var(--paper-ink-2); text-shadow: none; }
+  body.home-c.home-active .range-line .range-v { color: var(--paper-ink); }
+  body.home-c .agree-line::after { color: var(--paper-gold); }
+  body.home-c main#home-screen.main { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 16px; }
+  body.home-c main#home-screen.main > * { flex: 0 0 100%; }
+  body.home-c main#home-screen.main > #rangeLine,
+  body.home-c main#home-screen.main > #agreeLine { flex: 0 0 auto; margin-top: 6px; }
+  body.home-c .stats-band { margin-top: 12px; }
+  body.home-c #statsRow { background: var(--paper-well); box-shadow: none; border: 0; }
+  body.home-c #statsRow .stat-k,
+  body.home-c #statsRow .stat-sub { color: var(--paper-ink-2); }
+  body.home-c #statsRow .stat-v { color: var(--paper-ink); }
+  body.home-c #statsRow .stat + .stat { border-color: rgba(0, 0, 0, 0.12); }
+  body.home-c.tod-night #statsRow .stat + .stat { border-color: rgba(255, 255, 255, 0.12); }
+  body.home-c .hourly-cta { box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.10); }
+}

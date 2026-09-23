@@ -44,6 +44,13 @@ import { slotEnabled } from './ads-config.js';
 const BUILD_ID = '__BUILD_ID__';
 
 document.addEventListener("DOMContentLoaded", () => {
+  // DESIGN BRANCH ONLY (design/home-options, 2026-09-24): ?home=a|b|c turns on one of the
+  // proposed Home directions for side-by-side comparison. Without the parameter nothing loads
+  // and Home is today's, byte for byte in CSS.
+  try {
+    const homeOption = new URLSearchParams(location.search).get('home');
+    if (/^[abc]$/.test(homeOption || '')) import('./home-options.js').then((m) => m.initHomeOption(homeOption)).catch(() => {});
+  } catch { /* no URLSearchParams — no options */ }
   // G4: signal to the index.html boot-failure guard that app.js loaded and
   // started executing. If app.js 404s / fails to parse, this stays unset and
   // the guard shows an honest error state instead of a silent "Loading…" shell.
