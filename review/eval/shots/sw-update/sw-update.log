@@ -1,0 +1,9 @@
+0.1s page load
+10.1s after first visit: {"controller":true,"active":"activated","waiting":false,"installing":false}
+10.2s page load
+13.2s after reload: {"controller":true,"active":"activated","waiting":false,"installing":false}
+13.2s --- deploy build-B ---
+17.8s page load
+18.3s toast: Updated ✓
+34.2s end: {"controller":true,"active":"activated","waiting":false,"installing":false}
+34.2s server now stamps sw.js with build-B

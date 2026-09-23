@@ -1,0 +1,32 @@
+[
+ {
+  "case": "android",
+  "lang": "en",
+  "banner": "Add Probably Weather to your home screen Menu ⋮ → Add to Home screen / Install app Not now",
+  "modal": null
+ },
+ {
+  "case": "android",
+  "lang": "zu",
+  "banner": "Engeza i-Probably Weather kusikrini sakho sasekhaya Imenyu ⋮ → Engeza kusikrini sasekhaya / Faka i-app Hhayi manje",
+  "modal": null
+ },
+ {
+  "case": "iphone-chrome",
+  "lang": "en",
+  "banner": "Add Probably Weather to your home screen Not now Install",
+  "modal": {
+   "id": "iosInstallModal",
+   "text": "Install in 3 steps × 1 Tap Chrome's Share button, next to the address bar 2 Scroll, tap Add to Home Screen 3 Tap × above to close these instructions Probably Weather will appear on your home screen — tap the icon to open the app. Don't see Add to Home Screen? Tap Edit Actions at the bottom of the Share menu and turn it on."
+  }
+ },
+ {
+  "case": "iphone-chrome",
+  "lang": "zu",
+  "banner": "Engeza i-Probably Weather kusikrini sakho sasekhaya Hhayi manje Faka",
+  "modal": {
+   "id": "iosInstallModal",
+   "text": "Faka ngezinyathelo ezi-3 × 1 Thepha inkinobho Share ye-Chrome, eduze kwebha yekheli 2 Skrolela, thepha Add to Home Screen 3 Thepha × ngenhla ukuvala lezi ziyalezo I-Probably Weather izovela kusikrini sakho sasekhaya — thepha i-icon ukuze uvule uhlelo lokusebenza. Awuyiboni i-Add to Home Screen? Thepha u-Edit Actions ezansi kwemenyu ye-Share, bese uyivumela."
+  }
+ }
+]

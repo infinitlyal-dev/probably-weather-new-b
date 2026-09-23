@@ -1,0 +1,145 @@
+{
+ "site": "https://www.probablyweather.co.za",
+ "at": "2026-09-23T21:49:41.162Z",
+ "share": [
+  {
+   "lang": "en",
+   "url": "https://www.probablyweather.co.za/s/en/-34.12/18.84/rain/Strand",
+   "status": 200,
+   "title": "Probably Weather",
+   "description": "Strand: Probably 16°/20°. Cloudy vibes.",
+   "image": "https://probablyweather.co.za/api/og?lang=en&lat=-34.12&lon=18.84&c=rain&name=Strand",
+   "imageW": "1200",
+   "imageH": "630",
+   "htmlLang": "en",
+   "imageStatus": 200,
+   "imageType": "image/jpeg",
+   "imageBytes": 34053,
+   "file": "share-card-en.jpg"
+  },
+  {
+   "lang": "af",
+   "url": "https://www.probablyweather.co.za/s/af/-34.12/18.84/rain/Strand",
+   "status": 200,
+   "title": "Probably Weather",
+   "description": "Strand: Waarskynlik 16°/20°. Bewolk vandag.",
+   "image": "https://probablyweather.co.za/api/og?lang=af&lat=-34.12&lon=18.84&c=rain&name=Strand",
+   "imageW": "1200",
+   "imageH": "630",
+   "htmlLang": "af",
+   "imageStatus": 200,
+   "imageType": "image/jpeg",
+   "imageBytes": 36307,
+   "file": "share-card-af.jpg"
+  },
+  {
+   "lang": "zu",
+   "url": "https://www.probablyweather.co.za/s/zu/-34.12/18.84/rain/Strand",
+   "status": 200,
+   "title": "Probably Weather",
+   "description": "Strand: Cishe 16°/20°. Kunamafu.",
+   "image": "https://probablyweather.co.za/api/og?lang=zu&lat=-34.12&lon=18.84&c=rain&name=Strand",
+   "imageW": "1200",
+   "imageH": "630",
+   "htmlLang": "zu",
+   "imageStatus": 200,
+   "imageType": "image/jpeg",
+   "imageBytes": 35288,
+   "file": "share-card-zu.jpg"
+  },
+  {
+   "lang": "xh",
+   "url": "https://www.probablyweather.co.za/s/xh/-34.12/18.84/rain/Strand",
+   "status": 200,
+   "title": "Probably Weather",
+   "description": "Strand: Cishe 16°/20°. Kunamafu.",
+   "image": "https://probablyweather.co.za/api/og?lang=xh&lat=-34.12&lon=18.84&c=rain&name=Strand",
+   "imageW": "1200",
+   "imageH": "630",
+   "htmlLang": "xh",
+   "imageStatus": 200,
+   "imageType": "image/jpeg",
+   "imageBytes": 38585,
+   "file": "share-card-xh.jpg"
+  },
+  {
+   "lang": "st",
+   "url": "https://www.probablyweather.co.za/s/st/-34.12/18.84/rain/Strand",
+   "status": 200,
+   "title": "Probably Weather",
+   "description": "Strand: Mohlomong 16°/20°. Ho nale maru.",
+   "image": "https://probablyweather.co.za/api/og?lang=st&lat=-34.12&lon=18.84&c=rain&name=Strand",
+   "imageW": "1200",
+   "imageH": "630",
+   "htmlLang": "st",
+   "imageStatus": 200,
+   "imageType": "image/jpeg",
+   "imageBytes": 36031,
+   "file": "share-card-st.jpg"
+  }
+ ],
+ "pwa": {
+  "name": "Probably Weather",
+  "short_name": "ProbablyWeather",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1a1a2e",
+  "background_color": "#1a1a2e",
+  "lang": "en",
+  "icons": [
+   {
+    "src": "/assets/icon-192.png",
+    "sizes": "192x192",
+    "purpose": "any",
+    "type": "image/png"
+   },
+   {
+    "src": "/assets/icon-512.png",
+    "sizes": "512x512",
+    "purpose": "any",
+    "type": "image/png"
+   },
+   {
+    "src": "/assets/icon-maskable-192.png",
+    "sizes": "192x192",
+    "purpose": "maskable",
+    "type": "image/png"
+   },
+   {
+    "src": "/assets/icon-maskable-512.png",
+    "sizes": "512x512",
+    "purpose": "maskable",
+    "type": "image/png"
+   }
+  ],
+  "iconStatus": [
+   {
+    "src": "/assets/icon-192.png",
+    "status": 200,
+    "type": "image/png"
+   },
+   {
+    "src": "/assets/icon-512.png",
+    "status": 200,
+    "type": "image/png"
+   },
+   {
+    "src": "/assets/icon-maskable-192.png",
+    "status": 200,
+    "type": "image/png"
+   },
+   {
+    "src": "/assets/icon-maskable-512.png",
+    "status": 200,
+    "type": "image/png"
+   }
+  ],
+  "has512": true,
+  "hasMaskable": true,
+  "screenshots": 0,
+  "shortcuts": 1,
+  "swBuildId": "ec7ae525739669ec0ce2bd58444f22525983f6a2"
+ }
+}

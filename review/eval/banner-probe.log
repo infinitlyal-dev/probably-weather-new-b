@@ -1,0 +1,3 @@
+run 1: weather at 2868 ms, firstSeen stamped 3381 ms, banner shown at 5439 ms (last state shown+visible)
+run 2: weather at 695 ms, firstSeen stamped 3246 ms, banner shown at 5292 ms (last state shown+visible)
+run 3: weather at 747 ms, firstSeen stamped 3307 ms, banner shown at 4852 ms (last state shown+visible)

@@ -1,0 +1,56 @@
+{
+ "at": "2026-09-23T23:10:32.252Z",
+ "rows": [
+  {
+   "name": "baseline",
+   "stub": {},
+   "errors": [],
+   "toasts": [],
+   "shots": [
+    "baseline-home.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "Low cloud at night keeps the cold off the promenade, and the regulars know it.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": []
+   }
+  },
+  {
+   "name": "offline-after-first-visit",
+   "stub": {
+    "down": true
+   },
+   "errors": [
+    "console: Failed to load resource: the server responded with a status of 504 ()",
+    "console: Failed to load resource: the server responded with a status of 504 ()",
+    "console: Failed to load resource: the server responded with a status of 504 ()",
+    "console: Failed to load resource: net::ERR_EMPTY_RESPONSE",
+    "console: Failed to load resource: the server responded with a status of 504 ()"
+   ],
+   "toasts": [],
+   "shots": [
+    "offline-after-first-visit-home.png",
+    "offline-after-first-visit-week.png"
+   ],
+   "result": {
+    "swActive": {
+     "active": true,
+     "scope": "http://127.0.0.1:60646/"
+    },
+    "home": {
+     "place": "Strand",
+     "headline": "Low cloud at night keeps the cold off the promenade, and the regulars know it.",
+     "description": "Cloudy vibes.",
+     "temp": "Probably 17° / 21° 19°",
+     "agree": "3/5 sources agree",
+     "offline": "Using cached data (just now)",
+     "retry": []
+    }
+   }
+  }
+ ]
+}
