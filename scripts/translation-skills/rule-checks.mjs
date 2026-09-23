@@ -17,6 +17,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { check as langCheck } from '../lang-check/lib/checker.mjs';
 import { reversedLightAdvice } from './safety-reversal.mjs';
+import { lesothoForms } from './st-respell.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const ST = JSON.parse(readFileSync(path.join(here, 'rules', 'st-orthography.json'), 'utf8'));
@@ -27,7 +28,6 @@ const wordlist = (lang) => {
   const f = path.join(here, 'wordlists', `${lang}.json`);
   return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null;
 };
-const tokens = (s) => String(s).toLowerCase().replace(/’/g, "'").match(/[\p{L}'-]+/gu) || [];
 
 // Numbers written out, 1–60, per language (the ones the app's lines use).
 const NUMBER_WORDS = {
@@ -38,6 +38,13 @@ function numbersOf(s) { return (String(s).match(/\d+(?:[.,:]\d+)?/g) || []).map(
 function figureSurvives(lang, n, text, en) {
   const t = String(text);
   if (numbersOf(t).includes(n)) return true;
+  // the same figure written the local way: a leading zero on a clock time ("6am" → 06:00, "5:30" →
+  // 05:30, "6" → 06h00), or a two-digit year written out ("the 23 Rugby WC" → 2023)
+  const strip = (x) => x.replace(/^0+(\d)/, '$1');
+  const parts = (x) => x.split(/[:.,h]/).map(strip);
+  const nParts = parts(n);
+  if ((t.match(/\d+(?:[:.,h]\d+)?/g) || []).some((m) => { const p = parts(m); return p.join(':') === nParts.join(':') || (nParts.length === 1 && p[0] === nParts[0] && p.length === 2 && /^0+$/.test(p[1] || '')); })) return true;
+  if (/^\d{2}$/.test(n) && new RegExp(`\\b20${n}\\b`).test(t)) return true;
   // 7pm -> 19:00 / 19h00
   const pm = new RegExp(`\\b${n}\\s*pm\\b`, 'i');
   if (pm.test(en) && Number(n) < 12 && new RegExp(`\\b${Number(n) + 12}[:h]?`).test(t)) return true;
@@ -48,11 +55,22 @@ function figureSurvives(lang, n, text, en) {
 const ADVICE = /\b(turn|switch|use|wear|put on|apply|slap on|stay|don'?t|do not|avoid|keep|bring|cover|hold on|tie|secure|drink|slow|watch out|careful|wouldn'?t hurt|take|unplug|go inside|get inside|get indoors|pack|grab|reapply|protect|not optional|non-negotiable|must|need to|you'?ll want)\b/i;
 const UNITS = [[/°c?|\bdegrees?\b/i, /°|grade|degrees?|degree|amadigri|iidigri|di-degree|digri|dikgerata|ama-degree/i, 'degrees'], [/%|\bper ?cent\b/i, /%|persent|iphesenti|ipesenti|phesente/i, 'percent'], [/km\/h/i, /km\/h|km\/u/i, 'km/h'], [/\bmm\b/i, /\bmm\b|millimeter|amamilimitha|iimilimitha|dimilimitara/i, 'mm'], [/\bspf\b/i, /\bspf\b/i, 'SPF'], [/\buv\b/i, /\buv\b/i, 'UV']];
 
+// A safety line: the English gives advice (an instruction or a recommendation) about one of the safety
+// topics in the word lists (lightning, hail, wind, headlights, sunscreen, staying inside, flooding,
+// water). Returns the topic ids, or [] for a line that is not safety advice.
+export function safetyTopics(en) {
+  if (!ADVICE.test(String(en))) return [];
+  const wl = wordlist('st');
+  return (wl?.safety || []).filter((s) => new RegExp(s.en, 'i').test(String(en))).map((s) => s.id);
+}
+
 export function ruleCheck({ lang, en, text }) {
   const findings = [];
   // 1. Sesotho orthography
+  // (a word the English line also uses, or a capitalised name inside a sentence, is not Sesotho
+  // spelling — the same guards st-respell.mjs applies; one definition for both)
   if (lang === 'st') {
-    for (const tok of tokens(text)) {
+    for (const tok of lesothoForms(text, en)) {
       for (const r of [...ST_RULES, ...ST_RULED]) if (r.re.test(tok)) findings.push({ rule: `spelling:${r.id}`, severity: 'high', message: `"${tok}" is the Lesotho orthography — ${r.what}` });
     }
   }

@@ -52,6 +52,12 @@ const CANDIDATES = [
   ['chesa→tjhesa', /^(chesa|chese|chesang)$/, /^(tjhesa|tjhese|tjhesang)$/, '"chesa" (hot) is written "tjhesa"', 'ho a tjhesa'],
   ['uena→wena', /^uena$/, /^wena$/, '"uena" (you) is written "wena"', 'wena'],
   ['u→o (you)', /^u$/, /^o$/, 'the 2nd-person concord "u" is written "o"', 'o a tseba'],
+  // Added 2026-09-23: the re-spelling of the live bank left hybrids like "Difensetere li kwetswe"
+  // (the class 8/10 prefix re-spelled, its concord not). The corpora decide these the same way.
+  ['li→di (concord)', /^li$/, /^di$/, 'the class 8/10 concord "li" is written "di"', 'di a tla'],
+  ['eona→yona', /^eona$/, /^yona$/, '"eona" (it, class 9) is written "yona"', 'ka yona'],
+  ['eena→yena', /^eena$/, /^yena$/, '"eena" (he, she) is written "yena"', 'yena'],
+  ['oona→wona', /^oona$/, /^wona$/, '"oona" (it, class 3/6) is written "wona"', 'wona'],
   ['-ile→-ile (no change)', /^$/, /^$/, 'control: must be dropped', ''],
 ];
 const perMillion = (arr, re) => { let n = 0; for (const t of arr) if (re.test(t)) n += 1; return +(n * 1e6 / arr.length).toFixed(1); };

@@ -24,6 +24,7 @@ const root = fileURLToPath(new URL('../..', import.meta.url));
 const args = process.argv.slice(2);
 const val = (f, d) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : d; };
 const LABEL = val('--label', 'baseline');
+const SPLIT = val('--split', 'test');   // dev: a sharpening round (no seal; dev ids only)
 const here = path.join(root, 'scripts', 'translation-skills');
 const dir = path.join(root, 'output', 'translation-skills', LABEL);
 const rd = (p) => JSON.parse(readFileSync(p, 'utf8'));
@@ -39,19 +40,23 @@ const types = new Map(existsSync(path.join(root, 'output', 'translation-skills',
   ? rd(path.join(root, 'output', 'translation-skills', 'taxonomy', 'all.json')).filter((r) => r.population === 'correction').map((r) => [r.id, r.primary]) : []);
 const items = [];
 for (const lang of ['af', 'zu', 'xh', 'st']) {
-  const body = readFileSync(path.join(here, 'gold', `${lang}-test.json`), 'utf8');
-  if (createHash('sha256').update(body).digest('hex') !== lock.files[`${lang}-test.json`]) { console.error(`[score] ${lang}-test.json breaks its seal`); process.exit(1); }
+  const body = readFileSync(path.join(here, 'gold', `${lang}-${SPLIT}.json`), 'utf8');
+  if (SPLIT === 'test' && createHash('sha256').update(body).digest('hex') !== lock.files[`${lang}-test.json`]) { console.error(`[score] ${lang}-test.json breaks its seal`); process.exit(1); }
   for (const g of JSON.parse(body).items) if (!excluded.has(g.feedbackId)) items.push(g);
 }
 const judgeC = new Map(rd(path.join(dir, 'judge-claude.json')).map((j) => [j.k, j.verdict]));
-const judgeS = new Map(rd(path.join(dir, 'judge-sol.json')).map((j) => [j.k, j.verdict]));
+// Dev rounds run without Sol (its budget is kept for the final test score and the live lines): the
+// Sol side then counts as MATCH and the report says so.
+const SOL = existsSync(path.join(dir, 'judge-sol.json'));
+const judgeS = new Map(SOL ? rd(path.join(dir, 'judge-sol.json')).map((j) => [j.k, j.verdict]) : []);
 const rules = new Map(rd(path.join(dir, 'rules.json')).map((r) => [r.id, r.pass]));
 const comet = new Map();
 if (existsSync(path.join(dir, 'comet.json'))) for (const c of rd(path.join(dir, 'comet.json'))) comet.set(`${c.id}|${c.mode}`, c.score);
 const table = {};
 let missing = 0;
 for (const g of items) {
-  const c = judgeC.get(g.id), s = judgeS.get(g.id), r = rules.get(g.id);
+  const c = judgeC.get(g.id), s = SOL ? judgeS.get(g.id) : 'MATCH', r = rules.get(g.id);
+  if (!rules.has(g.id) && SPLIT === 'dev') continue;   // a dev round scores its own subset
   if (!c || !s || r === undefined) { missing += 1; continue; }
   const pass = !failClaude(c) && !failSol(s) && r;
   const clean = c === 'MATCH' && s === 'MATCH' && r;
@@ -69,7 +74,7 @@ for (const g of items) {
 }
 for (const t of Object.values(table)) for (const m of Object.values(t.comet)) m.mean = Number((m.sum / m.n).toFixed(4));
 writeFileSync(path.join(dir, 'score.json'), JSON.stringify({ label: LABEL, thresholds: th, missing, table }, null, 1));
-console.log(`[score] ${LABEL}: pass = no MISMATCH on either blind back-translation (calibrated: Claude ${th.claudeBT}; Sol ${th.solBT}) and no high rule finding; clean = both MATCH and no high rule finding${missing ? `; ${missing} items missing a checker` : ''}`);
+console.log(`[score] ${LABEL} (${SPLIT}${SOL ? '' : ', Claude back-translation only'}): pass = no MISMATCH on either blind back-translation (calibrated: Claude ${th.claudeBT}; Sol ${th.solBT}) and no high rule finding; clean = both MATCH and no high rule finding${missing ? `; ${missing} items missing a checker` : ''}`);
 const pct = (a, n) => `${a}/${n} (${Math.round((100 * a) / n)}%)`;
 for (const lang of ['af', 'zu', 'xh', 'st']) {
   const rows = Object.entries(table).filter(([k]) => k.startsWith(`${lang}|`)).sort(([a], [b]) => (a.endsWith('ALL') ? -1 : b.endsWith('ALL') ? 1 : a.localeCompare(b)));

@@ -11,6 +11,7 @@
 //
 //   node scripts/translation-skills/make-translation-task.mjs --split test --label baseline
 //   node scripts/translation-skills/make-translation-task.mjs --split test --label final --skills <dir of sharpened SKILL.md>
+//   node scripts/translation-skills/make-translation-task.mjs --split dev --label dev-r1 --ids output/translation-skills/dev-eval-ids.json
 import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import os from 'node:os';
@@ -23,6 +24,8 @@ const val = (f, d) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] :
 const SPLIT = val('--split', 'test');
 const LABEL = val('--label', 'baseline');
 const SKILLS = val('--skills', path.join(root, '.claude', 'skills'));
+// --ids file.json: { lang: [id, ...] } — translate only these (a dev subset that leaves out the ids the skill shows as examples)
+const IDS = val('--ids') ? JSON.parse(readFileSync(path.resolve(val('--ids')), 'utf8')) : null;
 const gold = path.join(root, 'scripts', 'translation-skills', 'gold');
 const lock = JSON.parse(readFileSync(path.join(gold, 'LOCK.json'), 'utf8'));
 const exclusions = new Set(JSON.parse(readFileSync(path.join(gold, 'EXCLUSIONS.json'), 'utf8')).items.map((x) => x.feedbackId));
@@ -36,7 +39,7 @@ for (const lang of Object.keys(NAME)) {
   if (SPLIT === 'test' && createHash('sha256').update(body).digest('hex') !== lock.files[`${lang}-test.json`]) {
     console.error(`[task] ${lang}-test.json does not match its seal in LOCK.json — refusing`); process.exit(1);
   }
-  const items = JSON.parse(body).items.filter((g) => !exclusions.has(g.feedbackId)).map((g) => ({ id: g.id, en: g.en }));
+  const items = JSON.parse(body).items.filter((g) => !exclusions.has(g.feedbackId) && (!IDS || (IDS[lang] || []).includes(g.id))).map((g) => ({ id: g.id, en: g.en }));
   const dir = path.join(base, lang);
   mkdirSync(dir, { recursive: true });
   writeFileSync(path.join(dir, 'input.json'), JSON.stringify(items, null, 1));

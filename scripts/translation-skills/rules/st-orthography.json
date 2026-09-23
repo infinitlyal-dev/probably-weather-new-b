@@ -338,6 +338,81 @@
      "sa": 19396.2
     }
    }
+  },
+  {
+   "id": "li→di (concord)",
+   "lesotho": "^li$",
+   "sa": "^di$",
+   "what": "the class 8/10 concord \"li\" is written \"di\"",
+   "example": "di a tla",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 8700
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 4564.7
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 113.3,
+     "sa": 11789
+    },
+    "st.wikipedia": {
+     "lesotho": 1379.1,
+     "sa": 3027.6
+    }
+   }
+  },
+  {
+   "id": "eona→yona",
+   "lesotho": "^eona$",
+   "sa": "^yona$",
+   "what": "\"eona\" (it, class 9) is written \"yona\"",
+   "example": "ka yona",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 1145.6
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 2406.5
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 23.6,
+     "sa": 2685.3
+    },
+    "st.wikipedia": {
+     "lesotho": 381,
+     "sa": 655.3
+    }
+   }
+  },
+  {
+   "id": "eena→yena",
+   "lesotho": "^eena$",
+   "sa": "^yena$",
+   "what": "\"eena\" (he, she) is written \"yena\"",
+   "example": "yena",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 216.7
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 76.4
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 37.8,
+     "sa": 1330.9
+    },
+    "st.wikipedia": {
+     "lesotho": 133.9,
+     "sa": 326.8
+    }
+   }
   }
  ],
  "dropped": [
@@ -346,6 +421,7 @@
   "ch-→tjh-",
   "moholi→mohodi",
   "lu→du",
+  "oona→wona",
   "-ile→-ile (no change)"
  ]
 }
