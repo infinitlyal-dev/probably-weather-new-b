@@ -12,8 +12,15 @@
 // Plus a seeded random sample of 30 unflagged pairs, shown in their own section, so Al can test
 // the checker itself.
 //
-// Writes review/translation-check-data.json (the merged record) and review/translation-check.html
-// (file://, localStorage, export -> translation-check-ruled.json in Downloads).
+// Writes review/translation-check-data.json (the merged record, all four languages) and
+// review/translation-check.html (file://, localStorage, export -> translation-check-ruled.json in
+// Downloads).
+//
+// THE PAGE IS AFRIKAANS ONLY (Al, 2026-09-23): "The isiZulu, isiXhosa and Sesotho rows go to
+// Part 2 — Al does not read those languages and must never be asked to rule on them." Their
+// rows stay in the data record, where the translation skills' work picks them up. A flagged
+// Afrikaans line that is on the blind calibration page (review/af-calibration-keys.json, when
+// it exists) is left off this page, so the calibration stays blind and no line is ruled twice.
 //
 //   node scripts/translation-check/build-page.mjs
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
@@ -162,14 +169,18 @@ writeFileSync(path.join(root, 'review', 'translation-check-data.json'), JSON.str
   counts, flagged: flagged.length, sample: sample.map((s) => s.k), rows,
 }, null, 1));
 
-const LANG = { af: 'Afrikaans', zu: 'isiZulu', xh: 'isiXhosa', st: 'Sesotho' };
+const LANG = { af: 'Afrikaans' };
+const calibrationFile = path.join(root, 'review', 'af-calibration-keys.json');
+const onCalibration = new Set(existsSync(calibrationFile) ? rd(calibrationFile).keys : []);
+const pageRows = flagged.filter((r) => r.lang === 'af' && !onCalibration.has(r.k));
+const afFlagged = flagged.filter((r) => r.lang === 'af').length;
 const view = (r) => ({ k: r.k, lang: r.lang, en: r.en, text: r.text, back: r.back, note: r.note, reasons: r.reasons, verdict: r.verdict, reason: r.reason, lc: r.lc, where: r.where, image: r.image, ex: r.imageIsExample, al: r.alRuledAf, sample: !!r.sample, severity: r.severity, safety: r.safety || '' });
 const html = `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Translation check</title>
+<title>Afrikaans translation check</title>
 <style>
 :root { --bg:#f7f6f2; --fg:#1d1d1b; --muted:#6b6a64; --line:#dddbd2; --card:#fff; --accent:#1f5f8b; --keep:#2e7d4f; --fix:#b7791f; --cut:#a5452b; --pick:#e8f0f6; }
 @media (prefers-color-scheme: dark) { :root { --bg:#161614; --fg:#ecebe6; --muted:#a3a29b; --line:#34332f; --card:#1f1f1c; --accent:#7fb6dd; --keep:#7ccf9c; --fix:#e0b35c; --cut:#e08a6e; --pick:#1d2a33; } }
@@ -206,30 +217,26 @@ h2.safety { color:var(--cut); margin-top:6px; }
 </head>
 <body>
 <main>
-<h1>Translation check: ${flagged.length} flagged of ${rows.length}</h1>
-<p class="lede">I checked every live Afrikaans, isiZulu, isiXhosa and Sesotho line against the English it is keyed to.
+<h1>Afrikaans translation check: ${pageRows.length} lines to rule</h1>
+<p class="lede">These are the live Afrikaans lines the check flagged against the English they are keyed to.
 A fresh language agent translated each line back to English <b>without seeing the English</b>, then compared its back-translation with the English and judged MATCH, DRIFT (something a reader would notice changed) or MISMATCH (says something else).
 A second check flags a line whose back-translation reads closer to <i>another</i> line on the same photo or in the same bin, i.e. a line that may be keyed to the wrong English. Corpus notes from lang-check are shown where they exist.
-Rule each row <b>KEEP</b> (fine as is), <b>FIX</b> (re-translate; add a note if you know what it should say) or <b>CUT</b> (remove it; the photo keeps its other lines and a bank slot falls back).
-At the bottom, <b>30 lines the checker passed</b> are yours to test the checker with: rule them too.
+Rule each row <b>KEEP</b> (fine as is), <b>FIX</b> (re-translate; write what it should say if you know) or <b>CUT</b> (remove it; the photo keeps its other lines and a bank slot falls back).
+${onCalibration.size ? `${afFlagged - pageRows.length} more flagged lines are on the calibration page instead, unlabelled, so that page stays blind: your rating there is your ruling for them.` : ''}
 Choices save in this browser. <b>Export</b> saves <code>translation-check-ruled.json</code> to Downloads.</p>
-<p class="stats">${Object.entries(counts).map(([l, c]) => `${LANG[l]}: ${c.pairs} pairs · ${c.MISMATCH || 0} mismatch · ${c.DRIFT || 0} drift · ${c.wrongSource} wrong-source? · ${c.flagged} flagged`).join('<br>')}</p>
+<p class="stats">Afrikaans: ${counts.af.pairs} live lines checked · ${counts.af.MISMATCH || 0} mismatch · ${counts.af.DRIFT || 0} drift · ${counts.af.wrongSource} wrong-source? · ${afFlagged} flagged</p>
 <div class="bar"><span class="count" id="count"></span>
-<select id="lang"><option value="">all languages</option>${Object.entries(LANG).map(([k, v]) => `<option value="${k}">${v}</option>`).join('')}</select>
 <select id="sev"><option value="">all flags</option><option value="0">mismatch</option><option value="1">wrong source?</option><option value="2">drift</option></select>
 <label><input type="checkbox" id="open"> unruled only</label>
 <button id="export">Export translation-check-ruled.json</button><button id="copy">Copy JSON</button></div>
-<h2 class="safety" id="safetyHead">Safety reversal — rule this first</h2>
-<div id="safety"></div>
-<h2 id="restHead">Everything else that was flagged</h2>
+<div id="safety"></div><h2 id="safetyHead" hidden></h2>
 <div id="list"></div>
-<h2>Control sample: 30 lines the checker passed</h2>
 <div id="sample"></div>
 <textarea id="out" readonly placeholder="Exported JSON also appears here."></textarea>
 </main>
 <script>
-const FLAGGED = ${JSON.stringify(flagged.map(view))};
-const SAMPLE = ${JSON.stringify(sample.map(view))};
+const FLAGGED = ${JSON.stringify(pageRows.map(view))};
+const SAMPLE = [];
 const LANG = ${JSON.stringify(LANG)};
 const LS = 'pw_translation_check_v1';
 let state = {};
@@ -261,7 +268,7 @@ function count() {
   document.getElementById('count').textContent = all.filter(r => state[r.k] && state[r.k].v).length + ' of ' + all.length + ' ruled';
 }
 function render() {
-  const lang = document.getElementById('lang').value, sev = document.getElementById('sev').value, open = document.getElementById('open').checked;
+  const lang = '', sev = document.getElementById('sev').value, open = document.getElementById('open').checked;
   const keep = (r) => (!lang || r.lang === lang) && (!open || !(state[r.k] && state[r.k].v));
   const list = document.getElementById('list'); list.innerHTML = '';
   const safe = document.getElementById('safety'); safe.innerHTML = '';
@@ -277,7 +284,7 @@ function exportJson() {
   const rulings = FLAGGED.map(r => pick(r, 'flagged')).concat(SAMPLE.map(r => pick(r, 'sample')));
   return JSON.stringify({ generated: new Date().toISOString(), ruledBy: 'Al, translation check page (review/translation-check.html)', ruled: rulings.filter(r => r.verdict).length, total: rulings.length, rulings }, null, 1);
 }
-['lang','sev','open'].forEach(id => document.getElementById(id).addEventListener('change', render));
+['sev','open'].forEach(id => document.getElementById(id).addEventListener('change', render));
 document.getElementById('export').addEventListener('click', () => { const j = exportJson(); document.getElementById('out').value = j; try { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([j], { type: 'application/json' })); a.download = 'translation-check-ruled.json'; a.click(); } catch (e) {} });
 document.getElementById('copy').addEventListener('click', () => { const j = exportJson(); document.getElementById('out').value = j; try { navigator.clipboard.writeText(j).catch(() => {}); } catch (e) {} });
 render();
@@ -286,5 +293,5 @@ render();
 </html>
 `;
 writeFileSync(path.join(root, 'review', 'translation-check.html'), html);
-console.log(`[translation-check] ${rows.length} pairs, ${flagged.length} flagged, ${sample.length} in the control sample`);
+console.log(`[translation-check] ${rows.length} pairs, ${flagged.length} flagged (all four languages, in the data record); the page shows ${pageRows.length} Afrikaans rows${onCalibration.size ? ` (${afFlagged - pageRows.length} more are on the calibration page)` : ''}`);
 for (const [l, c] of Object.entries(counts)) console.log(`  ${l}: ${JSON.stringify(c)}`);

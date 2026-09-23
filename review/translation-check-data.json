@@ -3,8 +3,8 @@
  "method": "blind back-translation by fresh-context language agents (one per batch, English opened only after the back-translation was written), verdict MATCH/DRIFT/MISMATCH against the keyed English; wrong-source probe by word overlap against sibling lines; lang-check.mjs findings as corpus support",
  "counts": {
   "af": {
-   "pairs": 1758,
-   "MATCH": 1673,
+   "pairs": 1754,
+   "MATCH": 1669,
    "DRIFT": 76,
    "MISMATCH": 9,
    "wrongSource": 5,
@@ -38,35 +38,35 @@
  "flagged": 306,
  "sample": [
   "zu-0776",
-  "zu-0179",
-  "af-0451",
-  "xh-0754",
+  "zu-0182",
+  "af-0452",
+  "xh-0756",
   "af-0132",
-  "af-1675",
-  "af-1630",
-  "xh-0539",
+  "af-1677",
+  "af-1632",
+  "xh-0540",
   "af-0020",
-  "st-0267",
+  "st-0270",
   "st-0794",
-  "zu-0208",
-  "af-1396",
-  "af-1941",
-  "af-2004",
-  "zu-0845",
-  "af-1650",
-  "xh-0356",
-  "zu-0262",
-  "st-0377",
-  "af-1505",
-  "xh-0427",
+  "zu-0211",
+  "af-1398",
+  "af-1942",
+  "af-2005",
+  "zu-0846",
+  "af-1653",
+  "xh-0358",
+  "xh-0240",
+  "st-0379",
+  "af-1508",
+  "st-0333",
   "af-2104",
-  "xh-0687",
+  "xh-0688",
   "xh-0644",
-  "af-0169",
-  "zu-0746",
-  "af-0340",
-  "zu-0406",
-  "zu-0596"
+  "af-0170",
+  "zu-0747",
+  "af-0342",
+  "zu-0408",
+  "zu-0597"
  ],
  "rows": [
   {
@@ -4228,32 +4228,6 @@
    "reasons": []
   },
   {
-   "k": "af-0155",
-   "lang": "af",
-   "en": "Joburg does about three hundred of these a year. Nobody is complaining.",
-   "text": "Joburg kry omtrent driehonderd van hierdie 'n jaar. Niemand kla nie.",
-   "back": "Joburg gets about three hundred of these a year. Nobody complains.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 2,
-    "bank": []
-   },
-   "image": "clear/week_2/day/2.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0156",
    "lang": "af",
    "en": "The sky has gone that deep blue you only get this high above sea level.",
@@ -4629,8 +4603,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0170",
@@ -4656,7 +4629,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0171",
@@ -8437,32 +8411,6 @@
    "reasons": []
   },
   {
-   "k": "af-0312",
-   "lang": "af",
-   "en": "Overcast at night keeps the warmth in, and somebody is out here using it.",
-   "text": "Bewolkte nagte hou die warmte in, en iemand is hier buite en gebruik dit.",
-   "back": "Cloudy nights keep the warmth in, and someone is out here using it.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cloudy/week_1/night/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
    "k": "af-0313",
    "lang": "af",
    "en": "No stars on offer tonight, so the city is providing its own.",
@@ -9230,8 +9178,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0341",
@@ -9285,7 +9232,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0343",
@@ -11187,8 +11135,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-0452",
@@ -11214,7 +11161,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-0455",
@@ -13650,32 +13598,6 @@
     "bank": []
    },
    "image": "cold/week_1/night/5.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-0632",
-   "lang": "af",
-   "en": "Frost on the lawn and wors on the grid: a Cape winter compromise.",
-   "text": "Ryp op die grasperk en wors op die rooster: 'n Kaapse winterkompromie.",
-   "back": "Frost on the lawn and boerewors on the grid: a Cape winter compromise.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "cold/week_1/night/6.webp",
    "imageIsExample": false,
    "alRuledAf": false,
    "flagged": false,
@@ -26540,8 +26462,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1397",
@@ -26593,7 +26514,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1399",
@@ -27609,32 +27531,6 @@
    "image": "wind/week_1/dusk/7.webp",
    "imageIsExample": false,
    "alRuledAf": true,
-   "flagged": false,
-   "severity": 3,
-   "reasons": []
-  },
-  {
-   "k": "af-1438",
-   "lang": "af",
-   "en": "Table Mountain is right there and neither of them has looked at it once.",
-   "text": "Tafelberg is reg daar en nie een van hulle het een keer daarna gekyk nie.",
-   "back": "Table Mountain is right there and not one of them has looked at it once.",
-   "note": "",
-   "verdict": "MATCH",
-   "reason": "",
-   "wrongSource": null,
-   "lc": {
-    "action": "pass",
-    "findings": []
-   },
-   "where": {
-    "kind": "photo",
-    "slots": 4,
-    "bank": []
-   },
-   "image": "wind/week_1/dusk/7.webp",
-   "imageIsExample": false,
-   "alRuledAf": false,
    "flagged": false,
    "severity": 3,
    "reasons": []
@@ -29385,8 +29281,7 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1506",
@@ -29464,7 +29359,8 @@
    "alRuledAf": false,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1509",
@@ -46107,8 +46003,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1631",
@@ -46162,7 +46057,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1633",
@@ -46652,8 +46548,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1651",
@@ -46734,7 +46629,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1654",
@@ -47340,8 +47236,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0180",
@@ -47422,7 +47317,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0183",
@@ -48141,8 +48037,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0209",
@@ -48225,7 +48120,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0212",
@@ -54533,8 +54429,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0263",
@@ -54771,7 +54666,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0241",
@@ -55902,8 +55798,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1676",
@@ -55957,7 +55852,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1678",
@@ -57538,8 +57434,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0268",
@@ -57624,7 +57519,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0271",
@@ -66919,8 +66815,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0407",
@@ -66974,7 +66869,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0409",
@@ -68564,8 +68460,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0357",
@@ -68621,7 +68516,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0359",
@@ -70523,8 +70419,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0428",
@@ -70578,7 +70473,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0334",
@@ -71794,8 +71690,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "st-0378",
@@ -71849,7 +71744,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "st-0380",
@@ -86757,8 +86653,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0597",
@@ -86785,7 +86680,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0598",
@@ -87821,8 +87717,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0540",
@@ -87852,7 +87747,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0541",
@@ -92095,8 +91991,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-1942",
@@ -92123,7 +92018,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "af-1943",
@@ -93807,8 +93703,7 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "af-2005",
@@ -93835,7 +93730,8 @@
    "alRuledAf": true,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0625",
@@ -98711,8 +98607,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0688",
@@ -98741,7 +98636,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0689",
@@ -103612,8 +103508,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0747",
@@ -103640,7 +103535,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0748",
@@ -106954,8 +106850,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "xh-0755",
@@ -107013,7 +106908,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "xh-0757",
@@ -112560,8 +112456,7 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": [],
-   "sample": true
+   "reasons": []
   },
   {
    "k": "zu-0846",
@@ -112588,7 +112483,8 @@
    "alRuledAf": null,
    "flagged": false,
    "severity": 3,
-   "reasons": []
+   "reasons": [],
+   "sample": true
   },
   {
    "k": "zu-0847",
