@@ -26,8 +26,9 @@ const UA = {
 };
 
 describe('iosChromeCanAddToHomeScreen', () => {
-  it('is true for Chrome on iOS 16.4 and later, iPhone and iPad', () => {
-    for (const ua of [UA.chrome164, UA.chrome17, UA.chrome18, UA.ipadChrome17]) expect(iosChromeCanAddToHomeScreen(ua), ua).toBe(true);
+  it('is true for Chrome on iOS 16.4 and later, iPhone and iPad, with or without a minor version', () => {
+    for (const ua of [UA.chrome164, UA.chrome17, UA.chrome18, UA.ipadChrome17, ios('17'), ios('26_0')]) expect(iosChromeCanAddToHomeScreen(ua), ua).toBe(true);
+    expect(iosChromeCanAddToHomeScreen(ios('16'))).toBe(false);
   });
   it('is false before iOS 16.4, for Firefox/Edge on iOS, and off iOS', () => {
     for (const ua of [UA.chrome163, UA.chrome15, UA.firefox17, UA.edge17, UA.safari17, UA.android, '', 'garbage']) {

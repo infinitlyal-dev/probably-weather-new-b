@@ -467,9 +467,9 @@ export function isSamsungAndroid(uaString = '') {
 export function iosChromeCanAddToHomeScreen(uaString = '') {
   const ua = String(uaString || '');
   if (detectPlatform(ua) !== 'ios-chrome' || !/CriOS\//.test(ua)) return false;
-  const m = ua.match(/OS (\d+)[_.](\d+)/);
+  const m = ua.match(/OS (\d+)(?:[_.](\d+))?/);
   if (!m) return false;
-  const major = Number(m[1]), minor = Number(m[2]);
+  const major = Number(m[1]), minor = Number(m[2] || 0);
   return major > 16 || (major === 16 && minor >= 4);
 }
 

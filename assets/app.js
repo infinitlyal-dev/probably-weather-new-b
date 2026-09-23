@@ -3786,7 +3786,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchTimeout = null, searchResults = [], activeSearchController = null, searchSeq = 0;
   const loadSearchMini = createSearchMiniPromiseCache();
   async function runSearch(query) {
-    if (!query || query.length < 2) { renderSearchResults([]); return; }
+    // Clearing the box also cancels a search still in flight, so its answer (results or a
+    // message) cannot land under an empty box (Sol's review, 2026-09-24).
+    if (!query || query.length < 2) { ++searchSeq; activeSearchController?.abort(); renderSearchResults([]); return; }
     const thisSeq = ++searchSeq; if (activeSearchController) activeSearchController.abort(); activeSearchController = new AbortController();
     // Old results must not come back over the message (a language switch re-renders searchResults).
     const searchFailed = () => { searchResults = []; renderSearchResults([], 'searchFailed'); };
@@ -3797,6 +3799,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // 429 / 5xx, or the geocoder's own "busy" / "failed" (200 with ok:false): say so, don't go blank.
       if (!resp.ok) { searchFailed(); return; }
       const data = await resp.json();
+      if (thisSeq !== searchSeq) return;
       if (data?.ok === false) { searchFailed(); return; }
       const mapped = (Array.isArray(data?.results) ? data.results : [])
         .map(r => ({
