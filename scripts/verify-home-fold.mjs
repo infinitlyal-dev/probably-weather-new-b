@@ -59,6 +59,12 @@ const VIEWPORTS = [
   // screen he does not own. Installed/standalone first, then with the Safari bars.
   { w: 375, h: 812, name: "Al's iPhone X" },
   { w: 375, h: 702, name: "Al's iPhone X + chrome" },
+  // AL'S PHONE NOW (launch brief, 2026-09-24): iPhone 11 in Chrome, 414 wide — a width
+  // this matrix did not have. 896 is the screen (installed / standalone); 715 is an
+  // estimate of what Chrome leaves with its address bar and toolbar showing, not a
+  // measurement taken on his phone.
+  { w: 414, h: 896, name: "Al's iPhone 11" },
+  { w: 414, h: 715, name: "Al's iPhone 11 + Chrome" },
   { w: 390, h: 844, name: 'iPhone 14' },
   { w: 390, h: 734, name: 'iPhone 14 + chrome' },
   { w: 412, h: 915, name: 'Pixel 7' },
