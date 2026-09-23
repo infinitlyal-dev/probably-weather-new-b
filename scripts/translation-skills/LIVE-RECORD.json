@@ -1,0 +1,1305 @@
+{
+ "generated": "2026-09-23",
+ "rule": "Safety line: BOTH blind back-translations (Claude, Sol) MATCH, rule checks clean (a word lang-check finds only in this app is a question, not a failure), and for isiZulu SSA-COMET >= 0.33 — else it shows in English. Ordinary line: neither back-translation MISMATCH and the rule checks clean.",
+ "safety": [
+  {
+   "lang": "zu",
+   "en": "Jislaaik, stay inside!",
+   "text": "Yoh, hlala ngaphakathi!",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5890122652053833,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Windows closed, kettle on, and wait.",
+   "text": "Amafasitela avalwe, iketile ivuliwe, ulinde.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5365175008773804,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Don't even think about driving somewhere.",
+   "text": "Ungacabangi ngisho ngokushayela ndawo.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.48991554975509644,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Stay safe. The sky is making a point.",
+   "text": "Hlala uphephile. Isibhakabhaka senza iphuzu.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.4228312075138092,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Unplug the things. The sky has plans.",
+   "text": "Khipha izinto ogesini. Izulu linezinhlelo zalo.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.49004191160202026,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Wait it out indoors. The mountains aren't going anywhere.",
+   "text": "Lindela phakathi. Izintaba aziyi ndawo.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.3613470792770386,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Unplug the TV — it's tradition.",
+   "text": "Khipha i-TV ogesini — yisiko.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.3858320116996765,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Jislaaik, stay inside!",
+   "text": "Yhuu, hlala ngaphakathi!",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Windows closed, kettle on, and wait.",
+   "text": "Iifestile zivalwe, iketile ivulwe, ulinde.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Don't even think about driving somewhere.",
+   "text": "Musa nokucinga ngokuqhuba uye naphi na.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Stay safe. The sky is making a point.",
+   "text": "Hlala ukhuselekile. Isibhakabhaka sinento esifuna uyive.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Unplug the things. The sky has plans.",
+   "text": "Khupha izinto kumbane. Isibhakabhaka sinezicwangciso.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Wait it out indoors. The mountains aren't going anywhere.",
+   "text": "Yilinde ngaphakathi le meko. Iintaba azisayi ndawo",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Unplug the TV — it's tradition.",
+   "text": "Khupha iplagi ka-TV — lisiko.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Jislaaik, stay inside!",
+   "text": "Eish, dula ka hare!",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Windows closed, kettle on, and wait.",
+   "text": "Difensetere di kwetswe, ketlele e tuka, ema",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Don't even think about driving somewhere.",
+   "text": "Se ke wa nahana le ho kganna ho ya kae kapa kae",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Stay safe. The sky is making a point.",
+   "text": "Dula o bolokehile. Lehodimo le etsa ntlha.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Unplug the things. The sky has plans.",
+   "text": "Tlosa dintho ho motlakase. Lehodimo le na le merero.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Wait it out indoors. The mountains aren't going anywhere.",
+   "text": "Dula ka ntlong. Dithaba di ntse di le teng moo di leng teng.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Unplug the TV — it's tradition.",
+   "text": "Tlosa TV ho motlakase — ke setso.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Thunder rolling in. Inside is the move.",
+   "text": "Ukuduma kwezulu kuyeza. Icebo elihle: ngena ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.3505418598651886,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Sky's grumbling. Stay close to a roof.",
+   "text": "Isibhakabhaka siyaduma. Hlala eduze nophahla.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.4897075891494751,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Lightning's putting on a show — watch from the window.",
+   "text": "Umbani uveza umboniso — bukela ngewindi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.46367353200912476,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Thunder rolling in. Inside is the move.",
+   "text": "Iindudumo ziyeza. Hlala ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Sky's grumbling. Stay close to a roof.",
+   "text": "Isibhakabhaka siyagquma. Hlala kufutshane nophahla.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Lightning's putting on a show — watch from the window.",
+   "text": "Umbane ubonisa umboniso — jonga ngefestile.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Thunder rolling in. Inside is the move.",
+   "text": "Seaduma se a duma, se a atamela. Ho kena ka tlung ke qeto e bohlale.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Sky's grumbling. Stay close to a roof.",
+   "text": "Lehodimo le a duma. Dula haufi le marulelo.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Lightning's putting on a show — watch from the window.",
+   "text": "Lehadima le bontsha pontsho — sheba ka fensetere.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Sky's throwing rocks. Stay inside.",
+   "text": "Isibhakabhaka silahla amatshe. Hlala phakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5282034873962402,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Hail's down — cover the bakkie.",
+   "text": "Isichotho siyana — mboza i-bakkie.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.39127111434936523,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Tiny ice bombs falling. Indoors is the only plan.",
+   "text": "Amabhomu amancane eqhwa ayawa. Icebo linye kuphela: hlala ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.528806209564209,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Sky's throwing rocks. Stay inside.",
+   "text": "Isibhakabhaka siphosa amatye. Hlala ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Hail's down — cover the bakkie.",
+   "text": "Isichotho siyawa — gquma ibhaki.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Tiny ice bombs falling. Indoors is the only plan.",
+   "text": "iiBhombu ezincinci zomkhenkce ziyawa. Hlala ngaphakathi qha.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Sky's throwing rocks. Stay inside.",
+   "text": "Lehodimo le lahla majwe. Sala ka hare.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Hail's down — cover the bakkie.",
+   "text": "Sefako se a wa — kwahela bakkie.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Tiny ice bombs falling. Indoors is the only plan.",
+   "text": "Dibomo tse nyenyane tsa leqhwa di a wa. Ka hare ke moralo o le mong feela.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Bring a jacket. Or sunscreen. Or both.",
+   "text": "Letha ijazi. Noma isivikelo selanga. Noma kokubili.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.694162130355835,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Bring a jacket. Or sunscreen. Or both.",
+   "text": "Phatha ibhatyi. Okanye i-sunscreen. Okanye zombini.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Bring a jacket. Or sunscreen. Or both.",
+   "text": "Tlisa jase. Kapa sethibelo sa letsatsi. Kapa ka bobedi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Sunscreen, but keep a hoodie close.",
+   "text": "Isivikelo selanga, kodwa gcina ijezi elinesigqoko eduze.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5024093389511108,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Sunscreen, but keep a hoodie close.",
+   "text": "Faka i-sunscreen, kodwa gcina ihoodie kufutshane.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Sunscreen, but keep a hoodie close.",
+   "text": "Tlotsa sunscreen, empa boloka hoodie e le haufi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Sunscreen is not optional, boet.",
+   "text": "Isivikelo selanga akusiyo into yokuzikhethela, boet.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5121483206748962,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "SPF 50 or regret it by tonight.",
+   "text": "I-SPF 50, kungenjalo uzozisola ebusuku namuhla.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.4704163074493408,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "You will look like a lobster. You've been warned.",
+   "text": "Uzobukeka njengelobster. Uxwayisiwe.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5161613821983337,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Reapply that sunscreen or suffer.",
+   "text": "Phinda ugcobe leso sivikelo selanga, kungenjalo uzohlupheka.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.525658130645752,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Hat, sunnies, sunscreen. Non-negotiable.",
+   "text": "Isigqoko, izibuko zelanga, isivikelo selanga. Akukho kuxoxisana.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.4875744879245758,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Your future self will thank you for that sunscreen.",
+   "text": "Wena wakusasa uzokubonga ngesivikelo selanga.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5652413964271545,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Sunscreen is not optional, boet.",
+   "text": "Ikhrimu yelanga ayisosikhetho, boet.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "SPF 50 or regret it by tonight.",
+   "text": "I-SPF 50 okanye uya kuzisola ngokuhlwa.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "You will look like a lobster. You've been warned.",
+   "text": "Uza kubomvu njenge-lobster. Ulumkisiwe.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Reapply that sunscreen or suffer.",
+   "text": "Phinda uthambise lo sunscreen, okanye uza kubandezeleka.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Hat, sunnies, sunscreen. Non-negotiable.",
+   "text": "IHat, iiglasi zelanga, i-sunscreen. Kunyanzelekile.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Your future self will thank you for that sunscreen.",
+   "text": "Ingomso lakho lakho lizakubulela ngalo sunscreen",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Sunscreen is not optional, boet.",
+   "text": "setlolo sa letsatsi hase kgetho  boet",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "SPF 50 or regret it by tonight.",
+   "text": "SPF 50 kapa o tla itshola ka bosiu.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "You will look like a lobster. You've been warned.",
+   "text": "O tla shebahala jwalo ka lobster. O lemoselitsoe.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Reapply that sunscreen or suffer.",
+   "text": "Tlotsa hape sunscreen, kapa letsatsi le tla o bontsha mosebetsi wa lona.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Hat, sunnies, sunscreen. Non-negotiable.",
+   "text": "katiba ,diborele,setlolo sa letsatsi ha ho buisanwe",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Your future self will thank you for that sunscreen.",
+   "text": "Wena wa hosane o tla leboha ka setlolo sa letsatsi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Hold onto your hat! And your kids.",
+   "text": "Bamba isigqoko sakho! Nabantwana bakho.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.40676119923591614,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Hold your hat. Hold your kid. Just hold on.",
+   "text": "Bamba isigqoko sakho. Bamba ingane yakho. Vele ubambelele.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.37795668840408325,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Close it, tie it down, surrender.",
+   "text": "Close it, tie it down, surrender.",
+   "outcome": "english",
+   "checks": null
+  },
+  {
+   "lang": "xh",
+   "en": "Hold onto your hat! And your kids.",
+   "text": "Bamba umnqwazi wakho! Nabantwana bakho.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Hold your hat. Hold your kid. Just hold on.",
+   "text": "Bamba umnqwazi wakho. Bamba umntwana wakho. Bamba nje.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Close it, tie it down, surrender.",
+   "text": "Vala, ubophelele, unikezele.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Hold onto your hat! And your kids.",
+   "text": "Tshoara katiba ya hao! Le bana ba hao.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Hold your hat. Hold your kid. Just hold on.",
+   "text": "Tshwara katiba ya hao. Tshwara ngwana wa hao. Itshwarelle feela.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Close it, tie it down, surrender.",
+   "text": "E kwale, e tlame, o inehele.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Most beautiful time of day. Say the people who stay inside.",
+   "text": "Isikhathi esihle kunazo zonke zosuku. Kusho abantu abahlala ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5289890766143799,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "The water looks like glass. It feels like ice. Do not run the experiment.",
+   "text": "Amanzi abukeka njengengilazi. Azwakala njengeqhwa. Ungawenzi lo mzamo.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.6086313724517822,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Most beautiful time of day. Say the people who stay inside.",
+   "text": "Elona xesha lihle losuku. Batsho abantu abahlala ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "The water looks like glass. It feels like ice. Do not run the experiment.",
+   "text": "Amanzi akhangeleka njengeglasi. Avakala njengomkhenkce. Sukwenza uvavanyo.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Most beautiful time of day. Say the people who stay inside.",
+   "text": "Nako e ntle ka ho fetisisa ya letsatsi. Ho rialo batho ba dulang ka tlung.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "The water looks like glass. It feels like ice. Do not run the experiment.",
+   "text": "Metsi a shebahala jwalo ka kgalase. A utlwahala jwalo ka leqhwa. Se ke wa etsa teko.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "It's a beautiful day to stay indoors.",
+   "text": "Usuku oluhle lokuhlala ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5205544829368591,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "It's a beautiful day to stay indoors.",
+   "text": "Ke letsatsi le letle la ho dula ka hare.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Stay hydrated or become a biltong.",
+   "text": "Hlala unamanzi noma ube yi-biltong.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5119356513023376,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Water consumption: yes. All of it.",
+   "text": "Ukuphuza amanzi: yebo. Konke.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.6560876369476318,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Move slowly. Speak slowly. Survive.",
+   "text": "Nyakaza kancane. Khuluma kancane. Uphile.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.516699492931366,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Stay hydrated or become a biltong.",
+   "text": "Hlala unamanzi okanye ube yi-biltong.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Water consumption: yes. All of it.",
+   "text": "Ukusela amanzi: ewe. Onke.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Move slowly. Speak slowly. Survive.",
+   "text": "Shukuma ngokucothayo. Thetha ngokucothayo. Sinda.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Stay hydrated or become a biltong.",
+   "text": "Dula o na le metsi kapa o   fetohe sehwapa",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Water consumption: yes. All of it.",
+   "text": "Ho nwa metsi: e. Kaofela.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Move slowly. Speak slowly. Survive.",
+   "text": "Tsamaya butle. Bua butle. Phela.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Driving slow is not a suggestion.",
+   "text": "Ukushayela kancane akusona isiphakamiso.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5968946814537048,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Nobody is driving home in this. That's not laziness, that's science.",
+   "text": "Akekho oshayela eya ekhaya kulokhu. Akulona ubuvila, kuyisayensi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.6027179956436157,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Let's call it atmosphere and go inside.",
+   "text": "Asiyibize nge-atmosphere bese singena ngaphakathi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.43240886926651,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Driving slow is not a suggestion.",
+   "text": "Ukuqhuba ngokucothayo asilocebiso.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Nobody is driving home in this. That's not laziness, that's science.",
+   "text": "Akukho mntu uqhuba esiya ekhaya kule. Ayibobuvila obo, yinzululwazi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Driving slow is not a suggestion.",
+   "text": "Ho kganna butle hase tlhahiso.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Nobody is driving home in this. That's not laziness, that's science.",
+   "text": "Ha ho ya kgannelang hae ho sena. Hoo ha se botswa, ke saense.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Let's call it atmosphere and go inside.",
+   "text": "Let's call it atmosphere and go inside.",
+   "outcome": "english",
+   "checks": null
+  },
+  {
+   "lang": "zu",
+   "en": "Your excuse to stay inside just expired.",
+   "text": "Isizathu sakho sokuhlala ngaphakathi sisanda kuphelelwa.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.6465452313423157,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Your excuse to stay inside just expired.",
+   "text": "Isizathu sakho sokuhlala ngaphakathi sisanda kuphelelwa.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Your excuse to stay inside just expired.",
+   "text": "Lebaka la hao la ho dula ka hare le sa tswa fela.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Mist building, maybe. Headlights wouldn't hurt.",
+   "text": "Mhlawumbe inkungu iyaqina. Akukubi ukukhanyisa izibani zemoto.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.35910534858703613,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Mist building, maybe. Headlights wouldn't hurt.",
+   "text": "Inkungu iyanda, mhlawumbi. Akukho ngozi ukulayita izibane zemoto.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Mist building, maybe. Headlights wouldn't hurt.",
+   "text": "Mohodi o ntse o eketseha, mohlomong. Ho bulela mabone a koloi ho ke ke ha senya letho.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Wind's likely. Hold onto the braai cover.",
+   "text": "Kungenzeka kube nomoya. Bambelela esembozweni se-braai.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.5129208564758301,
+    "rules": true
+   }
+  },
+  {
+   "lang": "zu",
+   "en": "Wind's on the cards. Peg the washing down.",
+   "text": "Umoya usemathubeni. Bopha izingubo zokuwasha.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": 0.36901235580444336,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Wind's likely. Hold onto the braai cover.",
+   "text": "Umoya unokwenzeka. Bambelela kwisigqubuthelo sokosa inyama",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "xh",
+   "en": "Wind's on the cards. Peg the washing down.",
+   "text": "Umoya ulindelekile. Bopha impahla yokuhlamba ngeziqhoboshi.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Wind's likely. Hold onto the braai cover.",
+   "text": "Moya mohlomong o teng. Tshoara sekwahelo sa braai.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  },
+  {
+   "lang": "st",
+   "en": "Wind's on the cards. Peg the washing down.",
+   "text": "Moya o a lebellwa. Tiisa diaparo tse hlatswitsweng ka diphini.",
+   "outcome": "checked",
+   "checks": {
+    "claude": "MATCH",
+    "sol": "MATCH",
+    "comet": null,
+    "rules": true
+   }
+  }
+ ],
+ "stays": []
+}

@@ -33,10 +33,15 @@ describe('light advice is never reversed', () => {
     expect(reversed).toEqual([]);
   });
 
-  it('st-0870 shows in English until the sharpened Sesotho replaces it', () => {
+  // 2026-09-23 (step 10): the sharpened Sesotho skill wrote it again — "Ho bulela mabone a koloi"
+  // (switching the car's lights ON) — and it passed both blind back-translations as MATCH; the
+  // English stopgap is gone on purpose. LIVE-RECORD.json holds the checks.
+  it('st-0870 tells drivers to switch their lights ON, in the Sesotho that passed both back-translations', () => {
     const fog = WEATHER_COPY.witty_low_confidence.fog;
     const i = fog.en.indexOf("Mist building, maybe. Headlights wouldn't hurt.");
     expect(i).toBeGreaterThanOrEqual(0);
-    expect(fog.st[i]).toBe(fog.en[i]);
+    expect(fog.st[i]).not.toBe(fog.en[i]);
+    expect(fog.st[i]).toMatch(/\bbulela mabone\b/);
+    expect(reversedLightAdvice('st', fog.en[i], fog.st[i])).toBeNull();
   });
 });
