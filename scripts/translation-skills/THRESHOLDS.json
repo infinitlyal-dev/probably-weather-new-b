@@ -1,0 +1,131 @@
+{
+ "generated": "2026-09-23",
+ "ruling": "review/af-calibration-ruled.json",
+ "alMarked": 40,
+ "alVerdicts": {
+  "CORRECTED": 5,
+  "GOOD": 35
+ },
+ "results": {
+  "(a) Claude BT, own verdict — fail MISMATCH only": {
+   "n": 40,
+   "caught": "1/5",
+   "letThrough": "35/35",
+   "sensitivity": 0.2,
+   "specificity": 1,
+   "agreement": 0.9,
+   "kappa": 0.3043478260869564,
+   "balanced": 0.6
+  },
+  "(a) Claude BT, own verdict — fail DRIFT or MISMATCH": {
+   "n": 40,
+   "caught": "2/5",
+   "letThrough": "29/35",
+   "sensitivity": 0.4,
+   "specificity": 0.8285714285714286,
+   "agreement": 0.775,
+   "kappa": 0.18181818181818163,
+   "balanced": 0.6142857142857143
+  },
+  "(a') Claude BT, shared judge — fail MISMATCH only": {
+   "n": 40,
+   "caught": "0/5",
+   "letThrough": "35/35",
+   "sensitivity": 0,
+   "specificity": 1,
+   "agreement": 0.875,
+   "kappa": 0,
+   "balanced": 0.5
+  },
+  "(a') Claude BT, shared judge — fail DRIFT or MISMATCH": {
+   "n": 40,
+   "caught": "1/5",
+   "letThrough": "24/35",
+   "sensitivity": 0.2,
+   "specificity": 0.6857142857142857,
+   "agreement": 0.625,
+   "kappa": -0.07142857142857116,
+   "balanced": 0.44285714285714284
+  },
+  "(b) Sol BT, shared judge — fail MISMATCH only": {
+   "n": 40,
+   "caught": "0/5",
+   "letThrough": "34/35",
+   "sensitivity": 0,
+   "specificity": 0.9714285714285714,
+   "agreement": 0.85,
+   "kappa": -0.043478260869565855,
+   "balanced": 0.4857142857142857
+  },
+  "(b) Sol BT, shared judge — fail DRIFT or MISMATCH": {
+   "n": 40,
+   "caught": "1/5",
+   "letThrough": "20/35",
+   "sensitivity": 0.2,
+   "specificity": 0.5714285714285714,
+   "agreement": 0.525,
+   "kappa": -0.11764705882352954,
+   "balanced": 0.3857142857142857
+  },
+  "(d) rule checks": {
+   "n": 40,
+   "caught": "0/5",
+   "letThrough": "35/35",
+   "sensitivity": 0,
+   "specificity": 1,
+   "agreement": 0.875,
+   "kappa": 0,
+   "balanced": 0.5
+  },
+  "combined: (a') OR (b) OR (d) fails": {
+   "n": 40,
+   "caught": "0/5",
+   "letThrough": "34/35",
+   "sensitivity": 0,
+   "specificity": 0.9714285714285714,
+   "agreement": 0.85,
+   "kappa": -0.043478260869565855,
+   "balanced": 0.4857142857142857
+  },
+  "combined: (a') AND (b) both DRIFT-or-worse": {
+   "n": 40,
+   "caught": "1/5",
+   "letThrough": "29/35",
+   "sensitivity": 0.2,
+   "specificity": 0.8285714285714286,
+   "agreement": 0.75,
+   "kappa": 0.024390243902439362,
+   "balanced": 0.5142857142857143
+  }
+ },
+ "chosen": {
+  "claudeBT": "fail MISMATCH only",
+  "solBT": "fail MISMATCH only",
+  "passRule": "A line passes when the shared judge's verdict on BOTH blind back-translations is inside its calibrated rule (Claude: fail MISMATCH only; Sol: fail MISMATCH only) and the rule checks raise no high finding.",
+  "safetyRule": "A safety line (advice or a warning) passes only when BOTH back-translations are MATCH, the rule checks are clean, and the automatic scorer (isiZulu SSA-COMET, isiXhosa AfriCOMET) is at or above its threshold where the language is covered; otherwise it shows in English.",
+  "why": "Al passed every one of his 35 GOOD lines; failing on DRIFT would have failed 11 of them on Claude's back-translation and 15 on Sol's. 4 of his 5 corrections are wording or spelling a back-translation cannot see (both back-translations MATCH): that is the language agent's and the rule checks' job, not the back-translator's."
+ },
+ "freeTestOfOldChecker": {
+  "note": "Afrikaans lines Al wrote or kept (his own verdict: acceptable) that the 2026-09-19 check flagged anyway — false flags from his point of view.",
+  "count": 77,
+  "byVerdict": {
+   "DRIFT": 69,
+   "MISMATCH": 8
+  }
+ },
+ "pageTestOfOldChecker": {
+  "note": "Old check (a) verdict on the flagged Afrikaans lines vs Al's ruling: KEEP = the flag was wrong; FIX / CUT / a correction in the note = he changed the line.",
+  "byOldVerdict": {
+   "MISMATCH": {
+    "lines": 8,
+    "kept": 5,
+    "changed": 3
+   },
+   "DRIFT": {
+    "lines": 69,
+    "kept": 35,
+    "changed": 34
+   }
+  }
+ }
+}

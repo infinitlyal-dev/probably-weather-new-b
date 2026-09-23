@@ -1,0 +1,288 @@
+{
+ "generated": "2026-09-23T15:57:05.370Z",
+ "ruledBy": "Al, Afrikaans calibration page (review/af-calibration.html)",
+ "marked": 35,
+ "total": 40,
+ "rulings": [
+  {
+   "k": "af-0188",
+   "en": "Not Instagram weather. Not the end of the world.",
+   "af": "Nie troufoto weer nie. Nie die einde van die wêreld nie.",
+   "verdict": null,
+   "note": "You can say Nie Instagram weer nie. Because Afrikaans people use Instagram."
+  },
+  {
+   "k": "af-0032",
+   "en": "The beach is doubling as a mirror, which takes one morning of absolutely no wind.",
+   "af": "Die strand is ook 'n spieël, en dit vat een oggend van absoluut geen wind nie.",
+   "verdict": null,
+   "note": "You can say Die strand is soos n spieel. "
+  },
+  {
+   "k": "af-0887",
+   "en": "That sprinkler has been the best-value thing in this garden all summer.",
+   "af": "Daardie sproeier is die hele somer die beste waarde in hierdie tuin.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0868",
+   "en": "That dashboard is hot enough that the wrapper gave up before the chocolate did.",
+   "af": "Daardie dashboard is so warm dat die papiertjie voor die sjokolade moed opgegee het.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0611",
+   "en": "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.",
+   "af": "Elke straatlig langs die pad skyn vir niemand nie; winternagte maak 'n dorp vroeg leeg.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0130",
+   "en": "The moon is out and somebody small is hearing about it for the first time.",
+   "af": "Die maan is uit, en iemand kleintjies hoor vir die eerste keer daarvan.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0920",
+   "en": "Friday, and this promenade is doing the work of six different bars.",
+   "af": "Vrydag, en hierdie promenade doen die werk van ses verskillende kroeë.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0058",
+   "en": "The weather moved the office to the roof and productivity can argue later.",
+   "af": "Die weer het die kantoor dak toe geskuif, en produktiwiteit kan later stry.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1419",
+   "en": "The wind did the throwing and the neighbour is doing the returning.",
+   "af": "Die wind het gegooi en die buurvrou gooi terug.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1119",
+   "en": "The traffic just remembered rain exists. Again.",
+   "af": "Die verkeer het pas onthou daar is n ding soos reën bestaan weer.",
+   "verdict": null,
+   "note": "Die verkeer het pas onthou dat reen bestaan, steeds. "
+  },
+  {
+   "k": "af-2150",
+   "en": "It's hot.",
+   "af": "Dis bloedig warm.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1356",
+   "en": "Neither of them is going to be the one who suggests turning back.",
+   "af": "Nie een van hulle gaan die een wees wat voorstel om om te draai nie.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0745",
+   "en": "Headlights do about twenty metres out here; the rest is memory and respect.",
+   "af": "Ligte haal omtrent twintig meter hier; die res is geheue en respek.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1371",
+   "en": "Both hands are on the skirt, which means the hair is on its own.",
+   "af": "Albei hande is op die romp, wat beteken die hare is op sy eie.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0774",
+   "en": "Last taxis of the night, and the fog has the whole rank to itself soon.",
+   "af": "Laaste taxi's van die aand, en die mis het binnekort die hele staanplek vir homself.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0137",
+   "en": "The evening is holding at exactly the temperature nobody talks about.",
+   "af": "Die aand bly presies op die temperatuur waaroor niemand praat nie.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1430",
+   "en": "Somebody is going to come home to a lounge full of Signal Hill.",
+   "af": "Iemand gaan by 'n sitkamer vol Seinheuwel tuiskom.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0270",
+   "en": "Rain? Possibly. Commitment? Never.",
+   "af": "Reën? Moontlik. Sal ek my lewe daar op wed? Nooit.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0896",
+   "en": "Nobody out here waters anything until that sun is properly behind the hill.",
+   "af": "Niemand hier buite maak iets nat voor daardie son behoorlik agter die bult is nie.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0846",
+   "en": "That bonnet is hotter than most pans ever get on most stoves.",
+   "af": "Daardie enjinkap is warmer as wat die meeste panne ooit op die meeste stowe word.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0257",
+   "en": "Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.",
+   "af": "Grys lug, grys trui: die hele stoep pas by die weer.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0967",
+   "en": "Nobody is going back in there until the walls let go of the day.",
+   "af": "Niemand gaan daar terug in voor die mure die dag laat gaan nie.",
+   "verdict": null,
+   "note": "Niemand gaan weer in todat die mure die dag laat gaan het nie. "
+  },
+  {
+   "k": "af-1282",
+   "en": "Friday night, and the stoep has quietly become the whole evening.",
+   "af": "Vrydagaand, en die stoep het stilweg die hele aand geword.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0330",
+   "en": "That grey is thinking about rain and the whole district is thinking with it.",
+   "af": "Daardie grys dink aan reën, en die hele distrik dink saam.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0664",
+   "en": "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.",
+   "af": "Sneeu op die berg, wasgoed op die draad: koud genoeg om te vries, droog genoeg om te probeer.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-2156",
+   "en": "Thunder",
+   "af": "Donderweer",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0931",
+   "en": "The windpomp has stopped turning, which is how you know the day is over.",
+   "af": "Die windpomp het opgehou draai, en so weet jy die dag is verby.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1501",
+   "en": "Nobody on this side of Gqeberha is hanging washing out today.",
+   "af": "Niemand aan hierdie kant van Gqeberha hang vandag wasgoed op nie.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1129",
+   "en": "Every one of those parking bays was somebody's plan for tonight.",
+   "af": "Elkeen van daardie parkeerplekke was iemand se plan vir vanaand.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0095",
+   "en": "Good weather. Unfortunately.",
+   "af": "Goeie weer. Ongelukkig.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0949",
+   "en": "It has not dropped below twenty-five in that house since about Tuesday.",
+   "af": "Dit het sedert omtrent Dinsdag nie onder vyf-en-twintig in daardie huis gesak nie.",
+   "verdict": null,
+   "note": "Dit het sedert Dinsdag nog nie onder vyf-en-twintig in daadie huis gesak nie.  "
+  },
+  {
+   "k": "af-1265",
+   "en": "Tomorrow morning this road will be covered in somebody else's tree.",
+   "af": "Môreoggend gaan hierdie pad onder iemand anders se boom lê.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0964",
+   "en": "It is cooler out here at midnight than it was inside at six.",
+   "af": "Dit is hier buite om middernag koeler as wat dit sesuur binne was.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1391",
+   "en": "The trees at the fence are taking this worse than he is.",
+   "af": "Die bome by die heining vat dit erger as hy.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0292",
+   "en": "Cloudy night. Nobody’s going out, officially.",
+   "af": "Bewolkte nag. Niemand gaan uit nie, amptelik.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1235",
+   "en": "The palms are pointing the way the storm is going, which is this way.",
+   "af": "Die palms wys die rigting waarheen die storm gaan, en dit is hierheen.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-1361",
+   "en": "Sunday morning, and the sea is throwing the first half of it at her.",
+   "af": "Sondagoggend, en die see gooi alles wat hy het na haar toe.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0715",
+   "en": "The fog is lying in the streets like it pays rates here.",
+   "af": "Die mis lê in die strate asof hy hier erfbelasting betaal.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0905",
+   "en": "Tuesday, and the coolest thing in this entire garden is that dog.",
+   "af": "Dinsdag, en die koelste ding in hierdie hele tuin is daardie hond.",
+   "verdict": "GOOD",
+   "note": ""
+  },
+  {
+   "k": "af-0793",
+   "en": "The fog moved in an hour ago and the streetlights have doubled in size since.",
+   "af": "Die mis het 'n uur gelede ingetrek en die straatligte het sedertdien verdubbel.",
+   "verdict": "GOOD",
+   "note": ""
+  }
+ ]
+}
