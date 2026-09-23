@@ -4,7 +4,10 @@
 //   CUT, photograph row — the line comes off every photograph it is on. English
 //     leaves the authoring file; its Afrikaans leaves hero-lines-af.js because
 //     lang-check/apply-af-accepted.mjs writes only rows whose English is wired.
-//     A sentence that is also a condition-bank line stays in the bank.
+//     A sentence that is also a condition-bank line leaves the bank too, in all
+//     five languages (Al, 2026-09-23: "A CUT means the line does not work — it
+//     leaves every language"). The page's older legend said it stayed; his
+//     standing ruling replaces it.
 //   CUT, bank row — the line leaves the condition bank in all five languages,
 //     through scripts/cut-bank-lines.mjs (which re-keys the index-aligned tags).
 //   KEEP — the chosen window becomes the line's tag, so the month gate governs it:
@@ -15,9 +18,12 @@
 // A photograph left with no lines moves to `awaitingLines` (an empty line list is
 // refused by build-hero-lines) and serves a condition-bank line. That fallback is
 // checked here for every such photograph, in every context it can be shown in —
-// each slot's weekday and time of day, all twelve months, Strand and Johannesburg,
-// English and Afrikaans — because app.js's pickRandom returns '' for an empty
-// pool: a blank caption is possible, and this makes it a refusal instead.
+// each slot's weekday and several hours of its time of day, all twelve months, a
+// place in every region box and one in none, all five languages, low-confidence
+// forecasts too — because app.js's pickRandom returns '' for an empty pool: a
+// blank caption is possible, and this makes it a refusal instead. The same sweep
+// then runs for every condition the picker can show, because this ruling also
+// takes lines out of the bank.
 //
 // Refuses a ruling that does not match the page it came from (the worklist): a
 // stale export applied to a moved list cuts the wrong lines.
@@ -73,6 +79,22 @@ const bespokeKeep = rows.filter((r) => r.kind === 'bespoke' && r.verdict === 'KE
 const bankKeep = rows.filter((r) => r.kind === 'bank' && r.verdict === 'KEEP');
 console.log(`[season] ${RULING_FILE}: ${rows.length} rows — KEEP ${bespokeKeep.length + bankKeep.length} (${bespokeKeep.length} photograph, ${bankKeep.length} bank), CUT ${bespokeCut.size + bankCut.length} (${bespokeCut.size} photograph, ${bankCut.length} bank)`);
 
+// Every bank bin that holds a cut sentence, whichever kind of row cut it: a cut
+// photograph line that is also a bank line leaves the bank too. One entry per
+// (namespace, bin, sentence) — cut-bank-lines.mjs re-keys the tags by counting the
+// cuts below each index, so a sentence listed twice would shift every later tag.
+const W0 = (await fresh('assets/weather-copy.js')).WEATHER_COPY;
+const bankCuts = new Map();
+const addBankCut = (ns, bin, en, why) => { const k = `${ns}|${bin}|${en}`; if (!bankCuts.has(k)) bankCuts.set(k, { ns, bin, en, why }); };
+for (const r of bankCut) { const [ns, rest] = r.key.split(':'); addBankCut(ns, rest.split('#')[0], r.en, `bank row ${r.key}`); }
+for (const en of bespokeCut) {
+  for (const ns of Object.keys(W0)) for (const bin of Object.keys(W0[ns] || {})) {
+    if (Array.isArray(W0[ns][bin]?.en) && W0[ns][bin].en.includes(en)) addBankCut(ns, bin, en, `photograph row ${rows.find((r) => r.en === en).key}, also a bank line`);
+  }
+}
+const fromPhotoRows = [...bankCuts.values()].filter((c) => c.why.startsWith('photograph')).length;
+console.log(`[season] bank: ${bankCuts.size} line(s) leave the bank in all five languages — ${bankCut.length} bank row(s), ${fromPhotoRows} cut photograph line(s) that are also bank lines`);
+
 // ---- 2. photograph cuts ------------------------------------------------------
 const authoring = JSON.parse(readFileSync(R('set-001-lines-bespoke-final.json'), 'utf8'));
 const set = [];
@@ -108,7 +130,7 @@ if (DRY) {
   console.log('[season] --dry: nothing written');
   for (const r of bespokeKeep) console.log(`    KEEP photo  ${r.key.padEnd(18)} ${r.ruling}${r.months ? ' ' + r.months.join(',') : ''}  ${r.en}`);
   for (const r of bankKeep) console.log(`    KEEP bank   ${r.key.padEnd(18)} ${r.ruling}${r.months ? ' ' + r.months.join(',') : ''}  ${r.en}`);
-  for (const r of bankCut) console.log(`    CUT  bank   ${r.key.padEnd(18)} ${r.en}`);
+  for (const c of bankCuts.values()) console.log(`    CUT  bank   ${`${c.ns}.${c.bin}`.padEnd(18)} ${c.en}   (${c.why})`);
   for (const b of newlyBare) console.log(`    bare        ${b.image}  (${b.cutLines.length} line(s) cut)`);
   process.exit(0);
 }
@@ -118,8 +140,8 @@ writeFileSync(R('seasonal-tags-ruled.json'), JSON.stringify(seasonalTagsRuled, n
 console.log('[season] wrote set-001-lines-bespoke-final.json and seasonal-tags-ruled.json');
 
 // ---- 4. bank cuts: five languages, through the index-safe cutter ------------
-if (bankCut.length) {
-  const cuts = bankCut.map((r) => { const [ns, rest] = r.key.split(':'); return { ns, bin: rest.split('#')[0], en: r.en }; });
+if (bankCuts.size) {
+  const cuts = [...bankCuts.values()].map(({ ns, bin, en }) => ({ ns, bin, en }));
   process.stdout.write(node('scripts/cut-bank-lines.mjs', '--cuts', JSON.stringify(cuts)));
 }
 
@@ -183,33 +205,63 @@ const HL = (await fresh('assets/hero-lines.js')).HERO_LINES;
 const ALIASES = (await fresh('assets/weather-visuals.js')).WEATHER_BACKGROUND_ALIASES;
 const draft = JSON.parse(readFileSync(R('set-001-draft.json'), 'utf8'));
 const slotsByHash = new Map(draft.assignments.map((a) => [a.hash, [...new Set([a.image, ...(a.paths || [])])]]));
-const PLACES = { Strand: [-34.1163, 18.8362], Johannesburg: [-26.2041, 28.0473] };
-const HOURS = { dawn: [5, 7], day: [9, 13, 16], dusk: [17, 19], night: [21, 23, 2] };
+// One place inside every region box geo-regions.js knows, and one inside none: a
+// region-tagged line is out everywhere else, so a pool can empty in one region only.
+const PLACES = {
+  Strand: [-34.1163, 18.8362], Johannesburg: [-26.2041, 28.0473], Durban: [-29.8587, 31.0218],
+  Bloemfontein: [-29.0852, 26.1596], Gqeberha: [-33.9608, 25.6022], 'Beaufort West': [-32.3567, 22.583],
+  Mbombela: [-25.4658, 30.9853], Polokwane: [-23.9045, 29.4689],
+};
+// Hours inside each photograph time slot, crossing every boundary a time tag can
+// have (morning 5-11, day 12-16, evening 17-20, night 21-4) and the Friday-16:00 weekend.
+const HOURS = { dawn: [5, 6, 7], day: [8, 11, 12, 16], dusk: [17, 19], night: [20, 21, 23, 2, 4] };
+const LANGS = ['en', 'af', 'zu', 'xh', 'st'];
+const emptyAt = (folder, time, jsDay) => {
+  const out = [];
+  const conditions = [folder, ...Object.entries(ALIASES).filter(([, f]) => f === folder).map(([c]) => c)];
+  for (const cond of conditions) for (const hour of HOURS[time]) for (let month = 1; month <= 12; month++) {
+    for (const [place, [lat, lon]] of Object.entries(PLACES)) for (const lang of LANGS) for (const lowConfidence of [false, true]) {
+      const copyCondition = Tm.resolveNightAwareCopyCondition({ displayCondition: cond, timeOfDay: time, hour });
+      const res = Tm.eligibleWittyPool({ copy: W, tags: Tm.WITTY_DAY_TAGS, condition: copyCondition, lang, context: { day: jsDay, hour, lat, lon, month }, lowConfidence });
+      if (!res.pool.length) out.push(`${folder}/${time} day ${jsDay} ${cond}→${copyCondition} ${lang} ${place} month ${month} hour ${hour}${lowConfidence ? ' low-confidence' : ''}: EMPTY condition pool`);
+    }
+  }
+  return out;
+};
 const bare = JSON.parse(readFileSync(R('set-001-lines-bespoke-final.json'), 'utf8')).awaitingLines || [];
 const blanks = [];
+let contexts = 0;
+// The export names the photographs it expects to be left bare; each must be bare
+// now (so it is swept below), or it would still carry a line and never be blank.
+for (const p of ruling.photographsLeftWithNoLine || []) {
+  if (!bare.some((b) => b.hash === p.hash)) blanks.push(`${p.image} (${p.hash}): the export lists it as left with no line, but it is not in awaitingLines`);
+}
 for (const b of bare) {
   const slots = slotsByHash.get(b.hash) || [b.image];
   for (const slot of slots) {
     if (HL[`bg/${slot}`]) blanks.push(`${slot}: still has bespoke lines in the table`);
     const [folder, , time, file] = slot.split('/');
     const weekday = Number(file.replace('.webp', ''));        // slot index = SAST weekday, Mon=1..Sun=7
-    const jsDay = weekday % 7;                                  // Sun=0 as getLocationDayOfWeek
-    const conditions = [folder, ...Object.entries(ALIASES).filter(([, f]) => f === folder).map(([c]) => c)];
-    for (const cond of conditions) for (const hour of HOURS[time]) for (let month = 1; month <= 12; month++) {
-      for (const [place, [lat, lon]] of Object.entries(PLACES)) for (const lang of ['en', 'af']) {
-        const copyCondition = Tm.resolveNightAwareCopyCondition({ displayCondition: cond, timeOfDay: time, hour });
-        const res = Tm.eligibleWittyPool({ copy: W, tags: Tm.WITTY_DAY_TAGS, condition: copyCondition, lang, context: { day: jsDay, hour, lat, lon, month } });
-        if (!res.pool.length) blanks.push(`${slot} ${cond}→${copyCondition} ${lang} ${place} month ${month} hour ${hour}: EMPTY condition pool`);
-      }
-    }
+    const found = emptyAt(folder, time, weekday % 7);           // Sun=0 as getLocationDayOfWeek
+    blanks.push(...found.map((x) => `${slot}: ${x}`));
   }
+  const n = (slotsByHash.get(b.hash) || [b.image]).length;
+  console.log(`[season] bare ${b.image} (${b.hash}): ${n} slot(s) — condition-bank line in every context`);
+}
+// Every condition the picker can show, every weekday, every time slot: the same sweep.
+const FOLDERS = [...new Set(draft.assignments.map((a) => a.image.split('/')[0]))];
+for (const folder of FOLDERS) for (const time of Object.keys(HOURS)) for (let jsDay = 0; jsDay < 7; jsDay++) {
+  const found = emptyAt(folder, time, jsDay);
+  blanks.push(...found);
+  contexts += 1;
 }
 if (blanks.length) {
   console.error(`[season] ${blanks.length} context(s) would show a BLANK caption:`);
   for (const x of blanks.slice(0, 20)) console.error(`  - ${x}`);
   process.exit(1);
 }
-console.log(`[season] fallback checked: ${bare.length} photograph(s) with no line — every context they can show in has a condition-bank line (12 months × Strand/Johannesburg × EN/AF × each slot's weekday and time)`);
+console.log(`[season] fallback checked: ${bare.length} photograph(s) with no line — every context they can show in has a condition-bank line (12 months × ${Object.keys(PLACES).length} places × ${LANGS.length} languages × low-confidence on/off × each slot's weekday and hours)`);
+console.log(`[season] and every folder × time slot × weekday (${contexts} combinations, ${FOLDERS.length} folders with their aliased conditions) has a non-empty pool in the same contexts`);
 
 // ---- 8. what is left, per condition -------------------------------------------
 const final = JSON.parse(readFileSync(R('set-001-lines-bespoke-final.json'), 'utf8'));

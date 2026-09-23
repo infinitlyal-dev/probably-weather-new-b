@@ -257,15 +257,23 @@ if (existsSync(RULED)) {
 //    which serves isiZulu, isiXhosa, Sesotho and the share cards; if the two ever
 //    disagree the build refuses rather than let the languages drift apart.
 //    A line held back when its photograph moved (final.json heldBack) is not served,
-//    so there is nothing to tag.
+//    so there is nothing to tag. Nor is a line Al's later season ruling CUT
+//    (review/seasonal-ruled.json, 2026-09-23): the place TAG is history once the
+//    line has gone. Any other TAG on a line that is not live still refuses.
 const PLACE_RULED = path.join(root, 'review', 'place-lines-ruled.json');
+const SEASON_EXPORT = path.join(root, 'review', 'seasonal-ruled.json');
 let fromPlace = 0;
+let placeOnSeasonCut = 0;
 if (existsSync(PLACE_RULED)) {
   const held = new Set((approved.heldBack || []).map((h) => h.line));
+  const seasonCut = new Set(existsSync(SEASON_EXPORT)
+    ? (JSON.parse(readFileSync(SEASON_EXPORT, 'utf8')).rulings || []).filter((r) => r.verdict === 'CUT').map((r) => r.en)
+    : []);
   for (const r of JSON.parse(readFileSync(PLACE_RULED, 'utf8')).rulings || []) {
     if (r.verdict !== 'TAG') continue;
     if (!approvedLines.has(r.en)) {
-      if (!held.has(r.en)) tagProblems.push(`place ruling ${r.key}: "${r.en}" is not an approved bespoke line`);
+      if (seasonCut.has(r.en)) placeOnSeasonCut += 1;
+      else if (!held.has(r.en)) tagProblems.push(`place ruling ${r.key}: "${r.en}" is not an approved bespoke line`);
       continue;
     }
     const regions = Array.isArray(r.region) ? r.region : [r.region];
@@ -302,7 +310,7 @@ const next = src
   .replace(TAG_BLOCK, (_, open, close) => `${open}${tagBody ? `${tagBody}\n` : ''}${close}`);
 
 const nLines = [...seen.values()].reduce((n, l) => n + l.length, 0);
-const tagSummary = `${tagRows.length} season/place tags (${fromBank} from the bank, ${fromAl} season-ruled and ${fromPlace} place-ruled by Al)`;
+const tagSummary = `${tagRows.length} season/place tags (${fromBank} from the bank, ${fromAl} season-ruled and ${fromPlace} place-ruled by Al${placeOnSeasonCut ? `; ${placeOnSeasonCut} place TAG(s) on lines the season ruling cut, not carried` : ''})`;
 if (CHECK) {
   if (next !== src) {
     console.error('[hero-lines] assets/hero-lines.js is out of sync with its sources (final.json, the bank tags, seasonal-tags-ruled.json, place-lines-ruled.json)');

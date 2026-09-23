@@ -151,9 +151,11 @@ describe('HERO_LINE_TAGS carries every bank line\'s months and region', () => {
       });
     }
     // 77 before the provenance cull (2026-09-20), 76 after: one tagged bank line
-    // came off its photograph with the 417. The floor guards against tags being
-    // dropped in bulk, so it tracks the real count rather than being loosened.
-    expect(checked).toBeGreaterThanOrEqual(76);
+    // came off its photograph with the 417. 70 after Al's season ruling
+    // (review/seasonal-ruled.json, 2026-09-23): eight tagged lines were CUT, all of
+    // them season rows. The floor guards against tags being dropped in bulk, so it
+    // tracks the real count rather than being loosened.
+    expect(checked).toBeGreaterThanOrEqual(70);
   });
 
   it('every tag is keyed by a live English line and carries only months and region', () => {

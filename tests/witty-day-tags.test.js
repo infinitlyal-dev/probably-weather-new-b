@@ -311,9 +311,11 @@ describe('context tags exclude their ruled lines outside their context', () => {
     }
   }
 
-  it('Karoo-morning cold-clear[16] never fires in Joburg nor at 19:23 anywhere', () => {
+  it('Karoo-morning cold-clear line never fires in Joburg nor at 19:23 anywhere', () => {
     const tags = WITTY_DAY_TAGS.witty['cold-clear'];
-    const line = WEATHER_COPY.witty['cold-clear'].en[16];
+    // By text, not index: bank cuts re-key every later line (season ruling, 2026-09-23).
+    const line = 'Karoo morning. The kind that makes you respect every farmer who chose this.';
+    expect(WEATHER_COPY.witty['cold-clear'].en).toContain(line);
     expect(dayAwarePool(tags, WEATHER_COPY.witty['cold-clear'].en, {
       day: 1,
       hour: 6,
@@ -346,20 +348,15 @@ describe('context tags exclude their ruled lines outside their context', () => {
     }
   });
 
-  it('summer-admin partly-cloudy[16] never fires in July', () => {
-    const tags = WITTY_DAY_TAGS.witty['partly-cloudy'];
-    const line = WEATHER_COPY.witty['partly-cloudy'].en[16];
-    for (const place of PROBE_LOCATIONS) {
-      for (const day of DAYS) {
-        for (const hour of HOURS) {
-          expect(dayAwarePool(tags, WEATHER_COPY.witty['partly-cloudy'].en, {
-            day,
-            hour,
-            month: 7,
-            lat: place.lat,
-            lon: place.lon,
-          }), `${place.name} day=${day} hour=${hour}`).not.toContain(line);
-        }
+  // The summer-admin line this guarded ("Some clouds. Some sun. South African summer
+  // admin.", partly-cloudy, summer months) was CUT by Al's season ruling
+  // (review/seasonal-ruled.json, C100, 2026-09-23). A CUT leaves every language, so the
+  // guard is now that it stays out of every bin.
+  it('summer-admin line, cut by the season ruling, is in no bin', () => {
+    const line = 'Some clouds. Some sun. South African summer admin.';
+    for (const [ns, bins] of Object.entries(WEATHER_COPY)) {
+      for (const [bin, v] of Object.entries(bins || {})) {
+        if (Array.isArray(v?.en)) expect(v.en, `${ns}.${bin}`).not.toContain(line);
       }
     }
   });

@@ -3,8 +3,8 @@
  "ruledBy": "Al, bespoke line review rounds 1 and 2",
  "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06 (pm): Al's rulings — no 3-line cap: the 30 rescues the cap dropped are restored; every ruled keep from clear-v3, cloudy-v3, the six Astra buckets and the test batch wired onto its own photograph by hash; the transposed wind pair swapped grid days (tue/wed) so each day-named line lands on its day. CULLED 2026-09-20 on review/provenance-cull-ruled.json: every line that reached its photograph on a bulk adoption or on no record at all is out. What remains is what Al placed or ticked himself.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
- "images": 293,
- "lineCount": 1121,
+ "images": 287,
+ "lineCount": 1067,
  "set": [
   {
    "image": "clear/week_1/dawn/7.webp",
@@ -23,7 +23,6 @@
     "The Weber has been watching him water that lawn for twenty minutes now.",
     "Coffee in one hand, hose in the other, and the whole day still ahead.",
     "This is the only twenty minutes of the day that belong to him.",
-    "The jacaranda is dropping purple on a lawn he has just finished watering.",
     "Nobody inside that house is awake yet and that is entirely the plan.",
     "This is the weather the weekend was invented for.",
     "Weather this perfect is on loan. The southeaster keeps receipts.",
@@ -76,7 +75,6 @@
     "heat/week_4/day/7.webp"
    ],
    "lines": [
-    "That sprinkler has been the best-value thing in this garden all summer.",
     "Those two on the stoep have made their choice and they are sticking with it.",
     "Nobody is going to remember the temperature, only the sprinkler.",
     "Sunday, and the water bill has already quietly accepted its fate.",
@@ -334,7 +332,6 @@
    ],
    "lines": [
     "The gutter is carrying this street's problems straight down to the next one.",
-    "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
     "The electric fence is fine. The pavement has completely given up.",
     "Wednesday, and the drive home is going to be a story by tomorrow.",
     "Every drain on this road is now working on somebody else's behalf.",
@@ -444,7 +441,6 @@
    "lines": [
     "The gutter is telling you exactly how long you left it.",
     "The hose reel is going to feel very unnecessary for a while.",
-    "Jacaranda season and a Monday, and the paving is taking both badly.",
     "Whoever parked in the street tonight is regretting it right now.",
     "That security light is doing the best work it has done all year."
    ],
@@ -633,7 +629,6 @@
     "wind/week_4/day/3.webp"
    ],
    "lines": [
-    "Every jacaranda on this street is emptying itself onto one man.",
     "That tie has been horizontal since he left the car.",
     "He will be finding purple in that jacket pocket until Friday.",
     "Wednesday morning, and the walk from the parking is now the hard part.",
@@ -699,7 +694,6 @@
     "wind/week_4/day/6.webp"
    ],
    "lines": [
-    "The jacaranda is redecorating the whole road whether you like it or not.",
     "Saturday, and the wind has strong opinions about your plans for the garden.",
     "That grass on the verge has been lying flat since Thursday.",
     "Somebody is going to sweep all that purple up and somebody is not.",
@@ -1201,7 +1195,6 @@
     "That hood would be halfway down the road if her hand was not on it.",
     "Half the pavement is airborne and only one of the three is enjoying it.",
     "That bag is working as a sail and he has not worked that out yet.",
-    "Every leaf the tree dropped this month is going past them at head height.",
     "Monday, and the wind is the best thing that has happened to him so far.",
     "Hold onto your hat! And your kids."
    ],
@@ -1597,10 +1590,8 @@
    ],
    "lines": [
     "Somewhere an estate agent is saying 'lifestyle'.",
-    "Bottle this one. Open it in winter.",
     "This is the weather we brag about overseas.",
-    "Not a breath of haze this morning; even the mountain got up early.",
-    "This light lasts about twenty minutes and the walk to school gets all of it."
+    "Not a breath of haze this morning; even the mountain got up early."
    ],
    "authoredFor": [
     "clear/week_2/dawn/6.webp",
@@ -1666,8 +1657,7 @@
     "Saturday energy: maximum. Responsibilities: minimum.",
     "Perfect for doing absolutely nothing.",
     "Be honest — you opened this app to confirm Saturday's braai.",
-    "That lawn stopped asking the sky for rain somewhere around the start of November.",
-    "The sun has done more to that lawn this month than any mower ever will."
+    "That lawn stopped asking the sky for rain somewhere around the start of November."
    ],
    "authoredFor": [
     "clear/week_2/day/4.webp"
@@ -1706,7 +1696,6 @@
     "clear/week_4/day/5.webp"
    ],
    "lines": [
-    "Bottle this one. Open it in winter.",
     "Postcard weather. You're welcome.",
     "Your vitamin D levels are thanking you.",
     "Air this clear should come with a warning: plans will be made.",
@@ -2219,8 +2208,7 @@
     "Even Monday looks photogenic in this light.",
     "Perfect day. No excuses. Get out.",
     "The sky made the dress-code decision this morning and he just obeyed it.",
-    "A sky like that overrules HR, and everybody at reception knows it.",
-    "Summer filed its arrival notice this morning; the shirt is the paperwork."
+    "A sky like that overrules HR, and everybody at reception knows it."
    ],
    "authoredFor": [
     "clear/week_3/day/4.webp"
@@ -2306,11 +2294,8 @@
     "clear/week_4/day/1.webp"
    ],
    "lines": [
-    "Cancel everything. This is THE day winter was hiding.",
     "Nature's flexing and we're here for it.",
     "Africa showing off again. Quietly devastating.",
-    "Agapanthus out, hadeda busy, sky empty: high summer is running on schedule.",
-    "The agapanthus open for exactly this kind of sky, and they got it.",
     "Not a cloud to slow the sun, and the whole garden is making the most of it."
    ],
    "authoredFor": [
@@ -2466,7 +2451,6 @@
    "lines": [
     "Today's plans: exist outside.",
     "Kuier weather. Get the people together.",
-    "Cricket till the light goes, and light like this takes its time going.",
     "One planet up, no clouds coming, and the whole dorp still outside.",
     "The Karoo cools fast under a clear sky, but nobody has noticed yet."
    ],
@@ -2668,7 +2652,6 @@
     "Could be worse. Could also be better.",
     "The sun hit snooze again. Honestly? Same.",
     "The sun is trying its luck at the horizon and the cloud is unmoved.",
-    "The sea keeps its winter colour under a sky like this, whatever the calendar says.",
     "A grey start on the coast usually burns off by ten. Usually."
    ],
    "authoredFor": [
@@ -2691,8 +2674,7 @@
     "The sun's on a tea break. No ETA.",
     "At least it's not raining. That's the bar.",
     "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
-    "The cloud kept the frost off the windscreens, which is the one favour it does.",
-    "Pink-grey sky over the robots: winter is on the morning shift too."
+    "The cloud kept the frost off the windscreens, which is the one favour it does."
    ],
    "authoredFor": [
     "cloudy/week_2/dawn/4.webp",
@@ -2807,7 +2789,6 @@
    "lines": [
     "The sun's bunking today.",
     "The clouds are here but they're not doing anything.",
-    "Flat grey over the rugby field: perfect kicking weather, no wind to blame.",
     "The sky has gone the colour of the staff-room ceiling and settled in.",
     "A perfectly average sky doing perfectly average things."
    ],
@@ -2874,7 +2855,6 @@
    ],
    "lines": [
     "Weather's being more indecisive than you at Spur.",
-    "Some clouds. Some sun. South African summer admin.",
     "Half a lawn mowed, and now the negotiation with the sky begins.",
     "The sky is deciding whether the second half of that lawn happens today.",
     "That look is a man asking the clouds for forty-five more minutes."
@@ -2920,7 +2900,6 @@
     "The sky is buffering.",
     "Schrodinger's rain. It both is and isn't.",
     "Even the weather apps are arguing about this one.",
-    "Half this street is in summer and the other half is about to be somewhere else.",
     "That cloud line is moving in with the confidence of a Monday.",
     "The blue half of the sky is on borrowed time and the lawns know it."
    ],
@@ -3292,8 +3271,7 @@
     "Somewhere out there people are going for a run right now. Strength to them.",
     "Ja, it's jersey weather. Double jersey.",
     "The grass is wet, the air is cold, and the jersey was not optional.",
-    "Dew this heavy means the night got properly cold and stayed there.",
-    "Small dog, thick jersey, short patrol: winter mornings run on reduced hours."
+    "Dew this heavy means the night got properly cold and stayed there."
    ],
    "authoredFor": [
     "cold/week_1/dawn/1.webp",
@@ -3338,8 +3316,7 @@
    "lines": [
     "Layer up like you're climbing Sani Pass.",
     "Your jacket has a jacket. It's that kind of day.",
-    "The zip goes all the way up today; the walk to the gate has teeth.",
-    "Beanie plus puffer plus school tie: the cold front has reached the uniform."
+    "The zip goes all the way up today; the walk to the gate has teeth."
    ],
    "authoredFor": [
     "cold/week_1/dawn/3.webp",
@@ -3427,7 +3404,6 @@
    ],
    "lines": [
     "The cold front is here and it brought friends.",
-    "Winter sun: all of the light, none of the heat. Nice try, sun.",
     "Outside is a test of character. You're failing.",
     "The garden tap grew a white beard overnight; the night was that serious.",
     "That drop has been thinking about letting go since about four this morning."
@@ -3507,8 +3483,7 @@
    ],
    "lines": [
     "The duvet is calling and the duvet is winning.",
-    "Blanket burrito mode: activated.",
-    "Construction finished at nine: one duvet cave, single occupant, no visitors till spring."
+    "Blanket burrito mode: activated."
    ],
    "authoredFor": [
     "cold/week_2/day/2.webp"
@@ -3567,8 +3542,7 @@
    ],
    "lines": [
     "The heater is your best friend. Your only friend.",
-    "Your toes have filed a formal complaint.",
-    "Socks go on the heater first; feet join later — the winter system works."
+    "Your toes have filed a formal complaint."
    ],
    "authoredFor": [
     "cold/week_3/day/3.webp"
@@ -3626,8 +3600,7 @@
    ],
    "lines": [
     "The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.",
-    "Cold plus beautiful is an honest trade. We'll take it.",
-    "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try."
+    "Cold plus beautiful is an honest trade. We'll take it."
    ],
    "authoredFor": [
     "cold/week_3/day/7.webp"
@@ -3645,8 +3618,7 @@
     "cold/week_4/day/7.webp"
    ],
    "lines": [
-    "The great debate: do we switch the heater on too, or are we not made of money?",
-    "Chair turned to the heater, blanket up, tea close: winter Sunday, executed correctly."
+    "The great debate: do we switch the heater on too, or are we not made of money?"
    ],
    "authoredFor": [
     "cold/week_4/day/2.webp"
@@ -3688,8 +3660,7 @@
     "cold/week_4/night/4.webp"
    ],
    "lines": [
-    "Hot water bottle is the real MVP today.",
-    "Fingerless gloves at a laptop: winter has entered the home office."
+    "Hot water bottle is the real MVP today."
    ],
    "authoredFor": [
     "cold/week_2/night/3.webp",
@@ -3783,8 +3754,7 @@
     "The car's heater is the most important relationship in your life right now.",
     "The car coughed twice before it agreed to start.",
     "The Toyota started first try. You owe it a wash.",
-    "The windscreen kept a record of last night and she is deleting it by hand.",
-    "Two beanies, one scraper, minus three: the school run starts before the car agrees."
+    "The windscreen kept a record of last night and she is deleting it by hand."
    ],
    "authoredFor": [
     "cold-clear/week_2/dawn/6.webp",
@@ -3805,9 +3775,7 @@
     "cold-clear/week_4/dawn/4.webp"
    ],
    "lines": [
-    "Clear skies, open roads, running nose. The full winter set.",
-    "The bluer the sky, the colder the truth.",
-    "Not one cloud, not one degree: a Highveld winter morning doing both at once."
+    "The bluer the sky, the colder the truth."
    ],
    "authoredFor": [
     "cold-clear/week_1/dawn/2.webp",
@@ -3852,10 +3820,7 @@
     "cold-clear/week_4/dawn/6.webp"
    ],
    "lines": [
-    "Highveld winter: the only place where you wear two jackets to fetch the post.",
     "Zero wind. Zero clouds. Zero mercy.",
-    "The Free State just remembered it has a winter setting.",
-    "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
     "Not enough wind to turn one blade, which is why the frost got everything.",
     "Pink sky, white veld: the desert runs both extremes before breakfast."
    ],
@@ -3881,7 +3846,6 @@
     "Sun on your back, freezer on your face.",
     "Looks like a tourism ad. Feels like the inside of a fridge.",
     "That first breath of air will wake you better than coffee.",
-    "Joburg winter dawn: the view is free; the air charges admission.",
     "The city looks its best exactly when the air hurts most, which is unfair."
    ],
    "authoredFor": [
@@ -3957,26 +3921,6 @@
    ]
   },
   {
-   "image": "cold-clear/week_1/day/6.webp",
-   "hash": "bbad2500c852",
-   "condition": "cold-clear",
-   "time": "day",
-   "week": "A",
-   "day": "sat",
-   "paths": [
-    "cold-clear/week_1/day/6.webp",
-    "cold-clear/week_3/day/6.webp"
-   ],
-   "lines": [
-    "Lekker koud, but the rugby fields are about to look perfect.",
-    "Perfect rugby weather. For the spectators with blankets.",
-    "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit."
-   ],
-   "authoredFor": [
-    "cold-clear/week_4/day/3.webp"
-   ]
-  },
-  {
    "image": "cold-clear/week_1/day/7.webp",
    "hash": "32dec9fbdcaa",
    "condition": "cold-clear",
@@ -3991,7 +3935,6 @@
    ],
    "lines": [
     "Sunny, with a 100% chance of shivering.",
-    "Frost on the grass, steam off the field: winter running weather at its most honest.",
     "Cold enough to see every breath, clear enough that nobody minds."
    ],
    "authoredFor": [
@@ -4013,8 +3956,7 @@
    ],
    "lines": [
     "Perfect drying weather. The washing will dry and freeze, in that order.",
-    "The towels went out damp and are coming in as boards.",
-    "That washing is not dry; it is preserved. Winter dusk works fast out here."
+    "The towels went out damp and are coming in as boards."
    ],
    "authoredFor": [
     "cold-clear/week_1/dusk/4.webp",
@@ -4215,7 +4157,6 @@
     "cold-clear/week_4/night/5.webp"
    ],
    "lines": [
-    "Clear nights are winter's way of apologising.",
     "Duvets in the bakkie, flask on the tailgate: the sky is worth the freeze tonight."
    ],
    "authoredFor": [
@@ -5028,8 +4969,7 @@
     "rain/week_4/dusk/3.webp"
    ],
    "lines": [
-    "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
-    "Joburg summer rain: arrives at five, soaks everything, gone by supper."
+    "Joburg rains for twenty minutes, then paints the sky like nothing happened."
    ],
    "authoredFor": [
     "rain/week_1/dusk/5.webp",
@@ -5536,8 +5476,7 @@
     "storm/week_4/dusk/7.webp"
    ],
    "lines": [
-    "Eskom wishes it had this power.",
-    "Nature's doing its own load shedding."
+    "Eskom wishes it had this power."
    ],
    "authoredFor": [
     "storm/week_1/dusk/5.webp",
@@ -5629,27 +5568,6 @@
    ]
   },
   {
-   "image": "cold/week_1/dusk/1.webp",
-   "hash": "420d1bd07555",
-   "condition": "cold",
-   "time": "dusk",
-   "week": "A",
-   "day": "mon",
-   "paths": [
-    "cold/week_1/dusk/1.webp",
-    "cold/week_2/dusk/1.webp",
-    "cold/week_3/dusk/1.webp",
-    "cold/week_4/dusk/1.webp"
-   ],
-   "lines": [
-    "It is heater season, and the best seat in the house has fur on it."
-   ],
-   "authoredFor": [
-    "cold/week_1/dusk/7.webp",
-    "cold/week_3/dusk/7.webp"
-   ]
-  },
-  {
    "image": "cold/week_1/night/1.webp",
    "hash": "a77b4dca45ae",
    "condition": "cold",
@@ -5663,49 +5581,11 @@
     "cold/week_4/night/1.webp"
    ],
    "lines": [
-    "The cold cleared the whole street an hour before closing time.",
-    "Every streetlamp down the road is lighting nobody; winter nights empty a dorp early."
+    "The cold cleared the whole street an hour before closing time."
    ],
    "authoredFor": [
     "cold/week_1/night/6.webp",
     "cold/week_3/night/6.webp"
-   ]
-  },
-  {
-   "image": "cold/week_1/night/7.webp",
-   "hash": "b850a52403e3",
-   "condition": "cold",
-   "time": "night",
-   "week": "A",
-   "day": "sun",
-   "paths": [
-    "cold/week_1/night/7.webp",
-    "cold/week_3/night/7.webp"
-   ],
-   "lines": [
-    "Beanie, snood, torch, book: winter nights build the best reading rooms."
-   ],
-   "authoredFor": [
-    "cold/week_1/night/7.webp",
-    "cold/week_3/night/7.webp"
-   ]
-  },
-  {
-   "image": "cold/week_2/day/1.webp",
-   "hash": "999e68c47bfc",
-   "condition": "cold",
-   "time": "day",
-   "week": "B",
-   "day": "mon",
-   "paths": [
-    "cold/week_2/day/1.webp",
-    "cold/week_4/day/1.webp"
-   ],
-   "lines": [
-    "Wet road, grey sky, dog in a jersey: winter is fully operational."
-   ],
-   "authoredFor": [
-    "cold/week_2/day/3.webp"
    ]
   },
   {
@@ -5722,7 +5602,6 @@
     "cold/week_4/dusk/3.webp"
    ],
    "lines": [
-    "The mountain is in there somewhere, wrapped up for the winter.",
     "The beach has gone to one colour, and it is the cold one.",
     "Nobody's footprints on that sand today; the cold is keeping its beach to itself."
    ],
@@ -5803,7 +5682,6 @@
     "cold-clear/week_4/day/3.webp"
    ],
    "lines": [
-    "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
     "The bakkie iced over under a completely clear sky, which is exactly how it works.",
     "The sun is up and doing its best; the frost is unconvinced so far."
    ],
@@ -5855,47 +5733,6 @@
    "authoredFor": [
     "cold-clear/week_1/night/3.webp",
     "cold-clear/week_3/night/3.webp"
-   ]
-  },
-  {
-   "image": "cold-clear/week_1/night/6.webp",
-   "hash": "8fd1944f303b",
-   "condition": "cold-clear",
-   "time": "night",
-   "week": "A",
-   "day": "sat",
-   "paths": [
-    "cold-clear/week_1/night/6.webp",
-    "cold-clear/week_2/night/6.webp",
-    "cold-clear/week_3/night/6.webp",
-    "cold-clear/week_4/night/6.webp"
-   ],
-   "lines": [
-    "Braaiing in beanies under a hard clear sky: winter never cancelled anything here."
-   ],
-   "authoredFor": [
-    "cold-clear/week_1/night/7.webp",
-    "cold-clear/week_3/night/7.webp"
-   ]
-  },
-  {
-   "image": "cold-clear/week_1/day/5.webp",
-   "hash": "decff597fe6c",
-   "condition": "cold-clear",
-   "time": "day",
-   "week": "A",
-   "day": "fri",
-   "paths": [
-    "cold-clear/week_1/day/5.webp",
-    "cold-clear/week_2/day/5.webp",
-    "cold-clear/week_3/day/5.webp",
-    "cold-clear/week_4/day/5.webp"
-   ],
-   "lines": [
-    "Coats and coffees in full sun: winter in this city photographs like summer."
-   ],
-   "authoredFor": [
-    "cold-clear/week_3/day/1.webp"
    ]
   },
   {
@@ -6212,9 +6049,7 @@
    "lines": [
     "Beautiful view. Hostile air.",
     "This is no longer a beverage. It's a strategy.",
-    "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
-    "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion.",
-    "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall."
+    "Hot chocolate weather is self-diagnosing. The marshmallows are the second opinion."
    ],
    "source": "al-2026-09-06",
    "authoredFor": [
@@ -6744,6 +6579,131 @@
     "Frost on the lawn and wors on the grid: a Cape winter compromise."
    ],
    "reason": "every line on this photograph was cut by the place ruling (review/place-lines-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
+  },
+  {
+   "image": "cold-clear/week_1/day/6.webp",
+   "hash": "bbad2500c852",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/day/6.webp",
+    "cold-clear/week_3/day/6.webp"
+   ],
+   "authoredFor": [
+    "cold-clear/week_4/day/3.webp"
+   ],
+   "cutLines": [
+    "Lekker koud, but the rugby fields are about to look perfect.",
+    "Perfect rugby weather. For the spectators with blankets.",
+    "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit."
+   ],
+   "reason": "every line on this photograph was cut by the season ruling (review/seasonal-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
+  },
+  {
+   "image": "cold/week_1/dusk/1.webp",
+   "hash": "420d1bd07555",
+   "condition": "cold",
+   "time": "dusk",
+   "week": "A",
+   "day": "mon",
+   "paths": [
+    "cold/week_1/dusk/1.webp",
+    "cold/week_2/dusk/1.webp",
+    "cold/week_3/dusk/1.webp",
+    "cold/week_4/dusk/1.webp"
+   ],
+   "authoredFor": [
+    "cold/week_1/dusk/7.webp",
+    "cold/week_3/dusk/7.webp"
+   ],
+   "cutLines": [
+    "It is heater season, and the best seat in the house has fur on it."
+   ],
+   "reason": "every line on this photograph was cut by the season ruling (review/seasonal-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
+  },
+  {
+   "image": "cold/week_1/night/7.webp",
+   "hash": "b850a52403e3",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "sun",
+   "paths": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "authoredFor": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "cutLines": [
+    "Beanie, snood, torch, book: winter nights build the best reading rooms."
+   ],
+   "reason": "every line on this photograph was cut by the season ruling (review/seasonal-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
+  },
+  {
+   "image": "cold/week_2/day/1.webp",
+   "hash": "999e68c47bfc",
+   "condition": "cold",
+   "time": "day",
+   "week": "B",
+   "day": "mon",
+   "paths": [
+    "cold/week_2/day/1.webp",
+    "cold/week_4/day/1.webp"
+   ],
+   "authoredFor": [
+    "cold/week_2/day/3.webp"
+   ],
+   "cutLines": [
+    "Wet road, grey sky, dog in a jersey: winter is fully operational."
+   ],
+   "reason": "every line on this photograph was cut by the season ruling (review/seasonal-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
+  },
+  {
+   "image": "cold-clear/week_1/night/6.webp",
+   "hash": "8fd1944f303b",
+   "condition": "cold-clear",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold-clear/week_1/night/6.webp",
+    "cold-clear/week_2/night/6.webp",
+    "cold-clear/week_3/night/6.webp",
+    "cold-clear/week_4/night/6.webp"
+   ],
+   "authoredFor": [
+    "cold-clear/week_1/night/7.webp",
+    "cold-clear/week_3/night/7.webp"
+   ],
+   "cutLines": [
+    "Braaiing in beanies under a hard clear sky: winter never cancelled anything here."
+   ],
+   "reason": "every line on this photograph was cut by the season ruling (review/seasonal-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
+  },
+  {
+   "image": "cold-clear/week_1/day/5.webp",
+   "hash": "decff597fe6c",
+   "condition": "cold-clear",
+   "time": "day",
+   "week": "A",
+   "day": "fri",
+   "paths": [
+    "cold-clear/week_1/day/5.webp",
+    "cold-clear/week_2/day/5.webp",
+    "cold-clear/week_3/day/5.webp",
+    "cold-clear/week_4/day/5.webp"
+   ],
+   "authoredFor": [
+    "cold-clear/week_3/day/1.webp"
+   ],
+   "cutLines": [
+    "Coats and coffees in full sun: winter in this city photographs like summer."
+   ],
+   "reason": "every line on this photograph was cut by the season ruling (review/seasonal-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
   }
  ],
  "placeRuling": {
@@ -6801,5 +6761,11 @@
    "77dad643efa6"
   ],
   "heldBack": 2
+ },
+ "seasonRuling": {
+  "on": "review/seasonal-ruled.json",
+  "date": "2026-09-23",
+  "pairsRemoved": 54,
+  "photographsLeftWithNoLines": 6
  }
 }
