@@ -29,8 +29,9 @@ export function initHomeOption(v) {
   const fit = () => {
     const cap = document.getElementById('headline');
     const photo = document.getElementById('heroPhoto');
-    if (!cap || !photo || !matchMedia('(max-width: 768px)').matches) return;
-    cap.style.fontSize = '';
+    if (!cap) return;
+    cap.style.fontSize = '';          // cleared first, so a wide window never keeps a phone size
+    if (!photo || !matchMedia('(max-width: 768px)').matches) return;
     const limit = photo.getBoundingClientRect().height * CAP[v];
     const textH = () => cap.getBoundingClientRect().height - parseFloat(getComputedStyle(cap).paddingTop || '0');
     let px = parseFloat(getComputedStyle(cap).fontSize);
