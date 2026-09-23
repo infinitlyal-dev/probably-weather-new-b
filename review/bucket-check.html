@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bucket check</title>
+<style>
+:root { --bg:#f7f6f2; --fg:#1d1d1b; --muted:#6b6a64; --line:#dddbd2; --card:#fff; --accent:#1f5f8b; --cut:#a5452b; --keep:#2e7d4f; --warn:#b07a12; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161614; --fg:#ecebe6; --muted:#a3a29b; --line:#34332f; --card:#1f1f1c; --accent:#7fb6dd; --cut:#e08a6e; --keep:#7ccf9c; --warn:#e3b34f; } }
+* { box-sizing: border-box; }
+body { margin:0; padding:16px 16px 40px; background:var(--bg); color:var(--fg); font:15px/1.4 system-ui, sans-serif; }
+h1 { font-size:20px; margin:0 0 4px; }
+.sub { color:var(--muted); margin:0 0 14px; max-width:1000px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:12px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:7px; }
+.card img { width:100%; height:420px; object-fit:contain; background:#000; border-radius:6px; }
+.meta { display:flex; justify-content:space-between; gap:8px; font-size:13px; color:var(--muted); }
+.lvl { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+.lvl.likely { color:var(--cut); } .lvl.possible { color:var(--warn); }
+.bucket { font-weight:700; }
+.note { font-size:13px; color:var(--accent); }
+details { font-size:13px; color:var(--muted); } details ul { margin:4px 0 0; padding-left:18px; }
+.toggle { display:flex; gap:6px; }
+.toggle button { flex:1; font:inherit; padding:8px; border-radius:7px; border:1px solid var(--line); background:transparent; color:var(--fg); cursor:pointer; }
+.toggle button.on.KEEP { background:var(--keep); color:#fff; border-color:var(--keep); }
+.toggle button.on.MOVE { background:var(--cut); color:#fff; border-color:var(--cut); }
+.to { display:flex; gap:6px; align-items:center; font-size:14px; }
+.to select, .card input { font:inherit; padding:6px; border-radius:7px; border:1px solid var(--line); background:var(--card); color:var(--fg); }
+.card input { width:100%; }
+.bar { position:sticky; bottom:0; margin-top:16px; padding:10px 0; background:var(--bg); display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.bar button { font:inherit; padding:9px 16px; border-radius:7px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+.bar span { color:var(--muted); }
+</style>
+</head>
+<body>
+<h1>Bucket check — 10 of 294 photographs flagged</h1>
+<p class="sub">Every photograph in the rotation was looked at against the bucket it is filed in. These 10 contradict it: 6 clearly, 4 possibly. Nothing moves from this page. MOVE says “re-file it”; the bucket box is where. A moved photograph takes its lines with it, so they are listed. Save the export as <code>review\bucket-check-ruled.json</code>.</p>
+<div class="grid" id="grid"></div>
+<div class="bar"><button id="export" type="button">Export bucket-check-ruled.json</button><span id="count"></span></div>
+<script>
+const ROWS = [{"n":58,"level":"likely","suggest":"cold","wrong":"Dog in a grey jumper on a stoep, mountains at dusk. Served 22 Sept under \"Partly cloudy.\" on a 30° day.","note":"You ruled this cold on 22 Sept. It is benched already; its move has its own page, review/cold-move-dog.html.","sha1":"018a0573e433","sha256":"f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3","bucket":"cloudy","time":"dusk","image":"cloudy/week_1/dusk/2.webp","slots":["cloudy/week_1/dusk/2.webp","cloudy/week_2/dusk/2.webp","cloudy/week_3/dusk/2.webp","cloudy/week_4/dusk/2.webp"],"lines":["The sun clocked out without saying bye. Rude, but relatable.","The dog is wearing a jersey, which is all the forecast anybody here needs.","Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.","The day never warmed up, and one resident has stopped waiting for it to."]},{"n":66,"level":"likely","suggest":"cold","wrong":"A cat asleep in a knitted jumper under a blanket by a lamp: the same winter cue as the dog, in a bucket that also serves warm cloudy nights.","sha1":"76070c299a0b","sha256":"5df9bca2b53222d5d6d358aafccfea90f3c76f34332c940ff03a0553e8b38740","bucket":"cloudy","time":"night","image":"cloudy/week_1/night/3.webp","slots":["cloudy/week_1/night/3.webp","cloudy/week_2/night/3.webp","cloudy/week_3/night/3.webp","cloudy/week_4/night/3.webp"],"lines":["Cloudy night. Nobody’s going out, officially.","The weather chose indoors. Correctly.","Cloud right down to the rooftops, and every sensible mammal is indoors under a lamp.","Nothing is falling and nothing is shining; it is that kind of night.","A sky with no stars is the sky's way of saying go to bed."]},{"n":90,"level":"likely","suggest":"cold-clear","wrong":"Bright blue sky over snow-capped peaks, washing drying in the sun. Cold is served on grey or wet cold days; blue-sky cold is cold-clear.","sha1":"d003110fec9f","sha256":"add32aa85b80ea31df34d84ac6613e9cebc4e9aae309b134e3e584e31fd80e2d","bucket":"cold","time":"day","image":"cold/week_2/day/6.webp","slots":["cold/week_2/day/6.webp","cold/week_4/day/6.webp"],"lines":["The washing is not going to dry. We hang it up for hope.","The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.","Cold plus beautiful is an honest trade. We'll take it.","Snow on the berg, washing on the line: cold enough to freeze, dry enough to try."]},{"n":79,"level":"likely","suggest":"rain","wrong":"Rain falling, an umbrella up, a \"road closed due to rain\" sign. In cold it can show rain on a dry cold day.","sha1":"77dad643efa6","sha256":"0f384484ae14dbaa3dcfe766b8dfbbc8f9f1aeb68dcd6978c6be48571f92d52a","bucket":"cold","time":"day","image":"cold/week_1/day/2.webp","slots":["cold/week_1/day/2.webp","cold/week_3/day/2.webp"],"lines":["Time to dig out that ugly beanie.","The sign says the rain won; the faces say it didn't."]},{"n":195,"level":"likely","suggest":"clear","wrong":"Blue sky and a golden sunrise; only the street is wet. In rain it sits under \"Rain's here.\" with the sun out.","sha1":"73567b0c612e","sha256":"6464ed68f19d5cf88ded513d5f7d4ba919815d72ac959c53dc50f4517e9a3045","bucket":"rain","time":"dawn","image":"rain/week_1/dawn/6.webp","slots":["rain/week_1/dawn/6.webp","rain/week_2/dawn/6.webp","rain/week_3/dawn/6.webp","rain/week_4/dawn/6.webp"],"lines":["Wet tar plus sunrise equals a street made of gold, briefly.","Somebody ordered rain for the night and sun for the morning, and it was delivered."]},{"n":229,"level":"likely","suggest":"cloudy","wrong":"A clear sunset sky over a dusty farm road; the storm is only a distant cloud bank. No lightning, no rain.","sha1":"20ed2fe6b144","sha256":"d26fb6bbee9db6057706181e2a6bfa1623a7d2a0a17e62645ab58b6fbdefbe56","bucket":"storm","time":"dawn","image":"storm/week_1/dawn/5.webp","slots":["storm/week_1/dawn/5.webp","storm/week_2/dawn/5.webp","storm/week_3/dawn/5.webp","storm/week_4/dawn/5.webp"],"lines":["The sky woke up in a mood."]},{"n":40,"level":"possible","suggest":"cold","wrong":"Jacket, flat cap and a steaming mug; its own line says Joburg mornings under cloud start at about four degrees.","sha1":"3bfd9b9470d6","sha256":"1a7797cabfa960b9a4b8a8582acdac96884751e7b9f73b35ab6f3be5cc1b4153","bucket":"cloudy","time":"dawn","image":"cloudy/week_1/dawn/5.webp","slots":["cloudy/week_1/dawn/5.webp","cloudy/week_2/dawn/5.webp","cloudy/week_3/dawn/5.webp","cloudy/week_4/dawn/5.webp"],"lines":["The sun's on a tea break. No ETA.","At least it's not raining. That's the bar.","That mug is steaming because Joburg mornings under cloud start at about four degrees.","The cloud kept the frost off the windscreens, which is the one favour it does.","Pink-grey sky over the robots: winter is on the morning shift too."]},{"n":69,"level":"possible","suggest":"cold","wrong":"Friends in blankets and knitted jumpers around a lantern; one of its lines says the evening is cold.","sha1":"f3255e596b2c","sha256":"544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e","bucket":"cloudy","time":"night","image":"cloudy/week_1/night/6.webp","slots":["cloudy/week_1/night/6.webp","cloudy/week_2/night/6.webp","cloudy/week_3/night/6.webp","cloudy/week_4/night/6.webp"],"lines":["Cloudy night. Bravery in blanket form.","The sky closed. The evening didn’t.","The sky brought nothing tonight, so the lantern is carrying the whole evening.","Blankets outside in the dark: the evening is cold, the company is not.","Not one star made it through that lid, and nobody has noticed yet."]},{"n":70,"level":"possible","suggest":"cold","wrong":"A man in a puffer jacket on a rooftop at night. Cloudy also serves warm summer nights.","sha1":"c6d4061cbef2","sha256":"6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024","bucket":"cloudy","time":"night","image":"cloudy/week_1/night/7.webp","slots":["cloudy/week_1/night/7.webp","cloudy/week_2/night/7.webp","cloudy/week_3/night/7.webp","cloudy/week_4/night/7.webp"],"lines":["The sky put the stars on silent. They're still up there, promise.","The cloud is holding the city's glow like a lampshade tonight.","Overcast at night keeps the warmth in, and somebody is out here using it.","No stars on offer tonight, so the city is providing its own."]},{"n":203,"level":"possible","suggest":"wind","wrong":"A wave breaking over the harbour wall, raincoats, no rain visibly falling. Reads as wind; its lines say it is raining.","sha1":"d8d16083a690","sha256":"5a08fa13f99d2d2733aaaf4977ef131595df457eb0eacbfe396d8f8280543462","bucket":"rain","time":"day","image":"rain/week_1/day/7.webp","slots":["rain/week_1/day/7.webp","rain/week_3/day/7.webp"],"lines":["Still raining. That's the whole update.","Wet between here and anywhere else."]}];
+const BUCKETS = ["clear","cloudy","cold","cold-clear","fog","heat","rain","storm","wind"];
+const LS = 'pw-bucket-check-20260923';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { state = {}; }
+const save = () => { try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} };
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function render() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  for (const r of ROWS) {
+    const s = state[r.sha1] || {};
+    const to = s.moveTo || r.suggest;
+    const c = document.createElement('div');
+    c.className = 'card';
+    c.innerHTML =
+      '<div class="meta"><span>#' + r.n + ' · ' + r.sha1 + ' · ' + r.slots.length + ' slots</span><span class="lvl ' + r.level + '">' + r.level + '</span></div>' +
+      '<img loading="lazy" src="../assets/images/bg/' + r.image + '" alt="">' +
+      '<div>Filed in <span class="bucket">' + r.bucket + '</span> · ' + r.time + '</div>' +
+      '<div>' + esc(r.wrong) + '</div>' +
+      (r.note ? '<div class="note">' + esc(r.note) + '</div>' : '') +
+      '<details><summary>' + r.lines.length + ' line(s) go with it</summary><ul>' + r.lines.map((l) => '<li>' + esc(l) + '</li>').join('') + '</ul></details>' +
+      '<div class="toggle"><button class="KEEP' + (s.verdict === 'KEEP' ? ' on' : '') + '">KEEP</button><button class="MOVE' + (s.verdict === 'MOVE' ? ' on' : '') + '">MOVE</button></div>' +
+      '<label class="to">Move to <select>' + BUCKETS.filter((b) => b !== r.bucket).map((b) => '<option' + (b === to ? ' selected' : '') + '>' + b + '</option>').join('') + '</select> <span style="color:var(--muted)">(suggested: ' + r.suggest + ')</span></label>' +
+      '<input type="text" placeholder="Comment (optional)" value="' + esc(s.comment || '') + '">';
+    c.querySelectorAll('.toggle button').forEach((b) => b.addEventListener('click', () => { state[r.sha1] = { ...(state[r.sha1] || {}), verdict: b.textContent }; save(); render(); }));
+    c.querySelector('select').addEventListener('change', (e) => { state[r.sha1] = { ...(state[r.sha1] || {}), moveTo: e.target.value }; save(); });
+    c.querySelector('input').addEventListener('input', (e) => { state[r.sha1] = { ...(state[r.sha1] || {}), comment: e.target.value }; save(); });
+    grid.appendChild(c);
+  }
+  const done = ROWS.filter((r) => state[r.sha1]?.verdict).length;
+  document.getElementById('count').textContent = done + ' of ' + ROWS.length + ' ruled';
+}
+document.getElementById('export').addEventListener('click', () => {
+  const out = {
+    ruledOn: new Date().toISOString(),
+    viewed: 294,
+    rows: ROWS.map((r) => ({ n: r.n, sha1: r.sha1, sha256: r.sha256, bucket: r.bucket, time: r.time, slots: r.slots, level: r.level, wrong: r.wrong, suggested: r.suggest, verdict: state[r.sha1]?.verdict || null, moveTo: state[r.sha1]?.verdict === 'MOVE' ? (state[r.sha1]?.moveTo || r.suggest) : null, comment: state[r.sha1]?.comment || '' })),
+  };
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' }));
+  a.download = 'bucket-check-ruled.json';
+  a.click();
+});
+render();
+</script>
+</body>
+</html>
