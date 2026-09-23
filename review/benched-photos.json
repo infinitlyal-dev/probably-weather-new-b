@@ -1,0 +1,13 @@
+{
+ "note": "Photographs taken out of rotation without moving a file. scripts/image-slot-manifest.mjs points every slot that holds a benched photograph at the picker's own week-collapse fallback (same folder, same time of day, week_1 slot 1 — step 2 of buildPickerPaths), so production serves that photograph instead and the benched bytes are not shipped. Only the built site is affected; an unbuilt local preview still reads the files. To un-bench, delete the entry. To move a photograph to another bucket, Al rules it on the page named in `ruling`.",
+ "benched": [
+  {
+   "sha1": "018a0573e433",
+   "sha256": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
+   "slots": ["cloudy/week_1/dusk/2.webp", "cloudy/week_2/dusk/2.webp", "cloudy/week_3/dusk/2.webp", "cloudy/week_4/dusk/2.webp"],
+   "reason": "Dog in a grey jumper on a stoep at dusk: a cold photograph filed in cloudy. Served on Strand 22 Sept 2026 18:34 under 'Partly cloudy.' on a 30° day with 'The day never warmed up…' (Al's ruling: it belongs in the cold set).",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/cold-move-dog.html"
+  }
+ ]
+}

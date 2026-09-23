@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Move the dog to cold</title>
+<style>
+:root { --bg:#f7f6f2; --fg:#1d1d1b; --muted:#6b6a64; --line:#dddbd2; --card:#fff; --accent:#1f5f8b; --cut:#a5452b; --keep:#2e7d4f; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161614; --fg:#ecebe6; --muted:#a3a29b; --line:#34332f; --card:#1f1f1c; --accent:#7fb6dd; --cut:#e08a6e; --keep:#7ccf9c; } }
+* { box-sizing: border-box; }
+body { margin:0; padding:14px 16px 20px; background:var(--bg); color:var(--fg); font:14px/1.35 system-ui, sans-serif; }
+h1 { font-size:20px; margin:0 0 4px; }
+.sub { color:var(--muted); margin:0 0 14px; max-width:980px; }
+.row { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:12px; max-width:1100px; }
+@media (max-width: 760px) { .row { grid-template-columns: 1fr; } }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; }
+.card img { width:100%; height:32vh; min-height:220px; object-fit: contain; border-radius:6px; background:#000; }
+.k { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.v { font-weight:600; }
+ul { margin:4px 0 0; padding-left:18px; }
+li { margin:1px 0; font-size:13px; }
+.af { color:var(--muted); font-size:12px; line-height:1.25; }
+.decide { max-width:1100px; margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.decide button { font:inherit; padding:10px 22px; border-radius:8px; border:1px solid var(--line); background:transparent; color:var(--fg); cursor:pointer; }
+.decide button.on.YES { background:var(--keep); border-color:var(--keep); color:#fff; }
+.decide button.on.NO { background:var(--cut); border-color:var(--cut); color:#fff; }
+.decide input { flex:1; min-width:220px; font:inherit; padding:9px; border-radius:8px; border:1px solid var(--line); background:var(--card); color:var(--fg); }
+.decide .export { background:var(--accent); border-color:var(--accent); color:#fff; }
+.note { color:var(--muted); font-size:13px; max-width:1100px; margin-top:8px; }
+</style>
+</head>
+<body>
+<h1>Move the dog in the grey jumper to cold?</h1>
+<p class="sub">Strand, Tuesday 22 Sept, 18:34: this photograph ran under “Partly cloudy.” on a 30° day, captioned “The day never warmed up…”. It is filed in <b>cloudy</b>, which also serves partly-cloudy and might-rain. Since 23 Sept it is <b>benched</b>: it no longer appears anywhere, and cloudy Tuesday dusk shows the cyclist instead. Nothing moves until you say yes.</p>
+
+<div class="row">
+  <div class="card">
+    <div class="k">The photograph (sha1 018a0573e433)</div>
+    <img src="../assets/images/bg/cloudy/week_2/dusk/2.webp" alt="Dog in a grey jumper asleep on a cushion on a stoep at dusk">
+    <div><span class="k">Filed now</span><br><span class="v">cloudy · dusk · Tuesday · all four weeks</span></div>
+    <div class="k">Its four lines go with it</div>
+    <ul>
+      <li>The sun clocked out without saying bye. Rude, but relatable.<div class="af">Die son het uitgeklok sonder om te groet. Onbeskof, maar relatable.</div></li>
+      <li>The dog is wearing a jersey, which is all the forecast anybody here needs.<div class="af">Die hond dra 'n trui, en dis al die voorspelling wat enigiemand hier nodig het.</div></li>
+      <li>Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.<div class="af">Grys lug, grys trui: die hele stoep pas by die weer.</div></li>
+      <li>The day never warmed up, and one resident has stopped waiting for it to.<div class="af">Die dag het nooit warm geword nie, en een inwoner het opgehou wag.</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="k">Proposed cold slot</div>
+    <img src="../assets/images/bg/cold/week_2/dusk/2.webp" alt="Frosted mountain pass at dusk, currently in the proposed slot">
+    <div><span class="v">cold · dusk · Tuesday · weeks 2 and 4</span><br>The same day and time it held in cloudy, and the same A-weeks it was ruled for (cloudy v3 placed it at weeks 2 and 4).</div>
+    <div class="k">What it displaces</div>
+    <div>This frosted pass (sha256 6c75084d23db) comes out of weeks 2 and 4 and <b>keeps weeks 1 and 3</b>. Nothing leaves the library. Its one line goes with it: “The sun is leaving the mountains one shelf at a time.”</div>
+  </div>
+
+  <div class="card">
+    <div class="k">Cloudy Tuesday dusk, meanwhile</div>
+    <img src="../assets/images/bg/cloudy/week_1/dusk/1.webp" alt="Cyclist under a clouded dusk sky">
+    <div>Benched slots fall back to the picker's own week-collapse photo: this cyclist, already Monday's cloudy dusk. On a yes, the four cloudy Tuesday-dusk slots keep showing him until a new cloudy dusk photograph is placed there; on a no, the dog comes back to cloudy.</div>
+  </div>
+</div>
+
+<div class="decide">
+  <button class="YES" type="button">YES — move it to cold</button>
+  <button class="NO" type="button">NO — put it back in cloudy</button>
+  <input id="comment" type="text" placeholder="Optional: a different cold slot, or anything else">
+  <button class="export" type="button">Export</button>
+</div>
+<p class="note">Export saves <code>cold-move-ruled.json</code> to Downloads. Put it in <code>review\</code>; the move is applied from that file only.</p>
+
+<script>
+const LS = 'pw-cold-move-dog';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { state = {}; }
+const yes = document.querySelector('.decide .YES'), no = document.querySelector('.decide .NO'), comment = document.getElementById('comment');
+function render() {
+  yes.classList.toggle('on', state.verdict === 'YES');
+  no.classList.toggle('on', state.verdict === 'NO');
+  comment.value = state.comment || '';
+}
+function save() { try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} render(); }
+yes.addEventListener('click', () => { state.verdict = 'YES'; save(); });
+no.addEventListener('click', () => { state.verdict = 'NO'; save(); });
+comment.addEventListener('input', () => { state.comment = comment.value; try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} });
+document.querySelector('.decide .export').addEventListener('click', () => {
+  const out = {
+    ruledOn: new Date().toISOString(),
+    photo: { sha1: '018a0573e433', sha256: 'f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3', from: ['cloudy/week_1/dusk/2.webp', 'cloudy/week_2/dusk/2.webp', 'cloudy/week_3/dusk/2.webp', 'cloudy/week_4/dusk/2.webp'] },
+    proposedTo: ['cold/week_2/dusk/2.webp', 'cold/week_4/dusk/2.webp'],
+    displaces: { sha256: '6c75084d23db', keeps: ['cold/week_1/dusk/2.webp', 'cold/week_3/dusk/2.webp'] },
+    verdict: state.verdict || null,
+    comment: state.comment || '',
+  };
+  const json = JSON.stringify(out, null, 1);
+  try { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' })); a.download = 'cold-move-ruled.json'; a.click(); } catch (e) {}
+});
+render();
+</script>
+</body>
+</html>

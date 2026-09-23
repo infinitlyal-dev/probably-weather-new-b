@@ -19,14 +19,40 @@ function filesystemPath(value) {
   return value instanceof URL ? fileURLToPath(value) : path.resolve(value);
 }
 
-/** Scan the fixed 9 × 4 × 4 × 7 rotation and assign equal bytes one ID. */
-export function scanBackgroundSlots(imageRoot) {
+/** 294 curated photographs since 2026-09-06 (see verifyBackgroundImageArtifact). */
+export const CURATED_BODIES = 294;
+
+/**
+ * Photographs benched by ruling (review/benched-photos.json): out of rotation
+ * without moving a file. Returns a Set of sha256 hashes.
+ */
+export function loadBenchedHashes(file = new URL('../review/benched-photos.json', import.meta.url)) {
+  const doc = JSON.parse(readFileSync(filesystemPath(file), 'utf8'));
+  return new Set((doc.benched || []).map((b) => b.sha256));
+}
+
+/**
+ * Scan the fixed 9 × 4 × 4 × 7 rotation and assign equal bytes one ID.
+ *
+ * A slot holding a benched photograph is served the picker's own week-collapse
+ * fallback instead (same folder and time of day, week_1 slot 1 — step 2 of
+ * buildPickerPaths), or the first unbenched slot of that folder and time after
+ * it. `entry.servedPath` is the file the slot resolves to; it equals
+ * `entry.sourcePath` everywhere except a benched slot.
+ */
+export function scanBackgroundSlots(imageRoot, { benched = loadBenchedHashes() } = {}) {
   const root = filesystemPath(imageRoot);
   const entries = [];
   const hashes = [];
   const slots = [];
   const hashIds = new Map();
   const canonicalSources = [];
+  const hashOfFile = new Map();
+  const fileHash = (p) => {
+    if (!hashOfFile.has(p)) hashOfFile.set(p, createHash('sha256').update(readFileSync(p)).digest('hex'));
+    return hashOfFile.get(p);
+  };
+  const slotFile = (folder, week, time, index) => path.join(root, folder, `week_${week}`, time, `${index}.webp`);
 
   for (const folder of BG_IMAGE_SLOT_FOLDERS) {
     for (let week = 1; week <= 4; week++) {
@@ -35,22 +61,34 @@ export function scanBackgroundSlots(imageRoot) {
           const relativePath = `${folder}/week_${week}/${time}/${index}.webp`;
           const sourcePath = path.join(root, ...relativePath.split('/'));
           const bytes = readFileSync(sourcePath);
-          const hash = createHash('sha256').update(bytes).digest('hex');
+          const sourceHash = fileHash(sourcePath);
+          let servedPath = sourcePath;
+          if (benched.has(sourceHash)) {
+            servedPath = null;
+            for (let w = 1; w <= 4 && !servedPath; w++) {
+              for (let i = 1; i <= 7 && !servedPath; i++) {
+                const candidate = slotFile(folder, w, time, i);
+                if (!benched.has(fileHash(candidate))) servedPath = candidate;
+              }
+            }
+            if (!servedPath) throw new Error(`P9 every ${folder}/${time} photograph is benched — nothing left to serve ${relativePath}`);
+          }
+          const hash = fileHash(servedPath);
           let hashId = hashIds.get(hash);
           if (hashId === undefined) {
             hashId = hashes.length;
             hashIds.set(hash, hashId);
             hashes.push(hash);
-            canonicalSources.push(sourcePath);
+            canonicalSources.push(servedPath);
           }
           slots.push(hashId);
-          entries.push({ relativePath, sourcePath, bytes: bytes.length, hash });
+          entries.push({ relativePath, sourcePath, servedPath, benched: servedPath !== sourcePath, bytes: bytes.length, hash });
         }
       }
     }
   }
 
-  return { entries, hashes, slots, canonicalSources };
+  return { entries, hashes, slots, canonicalSources, benched };
 }
 
 /** Emit one content-addressed WebP per unique body and embed the slot manifest. */
@@ -94,6 +132,11 @@ export function verifyBackgroundImageArtifact({ sourceImageRoot, distRoot, picke
   const output = filesystemPath(distRoot);
   const resolved = new Set();
   let checked = 0;
+  // What each slot SHOULD serve: its own file, or — for a benched photograph —
+  // the fallback scanBackgroundSlots chose. Benched bytes must not resolve anywhere.
+  const scan = scanBackgroundSlots(sourceImageRoot);
+  const servedByRelative = new Map(scan.entries.map((e) => [e.relativePath, e.servedPath]));
+  const benchedInTree = new Set(scan.entries.filter((e) => e.benched).map((e) => createHash('sha256').update(readFileSync(e.sourcePath)).digest('hex')));
 
   for (const folder of BG_IMAGE_SLOT_FOLDERS) {
     for (let week = 1; week <= 4; week++) {
@@ -107,11 +150,14 @@ export function verifyBackgroundImageArtifact({ sourceImageRoot, distRoot, picke
           if (!canonicalPath.startsWith('assets/images/bg-canonical/')) {
             throw new Error(`P9 slot did not resolve canonically: ${canonicalPath}`);
           }
-          const sourcePath = path.join(root, folder, `week_${week}`, time, `${index}.webp`);
+          const relativePath = `${folder}/week_${week}/${time}/${index}.webp`;
+          const sourcePath = servedByRelative.get(relativePath) ?? path.join(root, folder, `week_${week}`, time, `${index}.webp`);
           const builtPath = path.join(output, ...canonicalPath.split('/'));
           if (!readFileSync(sourcePath).equals(readFileSync(builtPath))) {
-            throw new Error(`P9 byte mismatch for ${folder}/week_${week}/${time}/${index}.webp`);
+            throw new Error(`P9 byte mismatch for ${relativePath}`);
           }
+          const builtHash = path.basename(canonicalPath, '.webp');
+          if (benchedInTree.has(builtHash)) throw new Error(`P9 benched photograph still served at ${relativePath}`);
           resolved.add(canonicalPath);
           checked++;
         }
@@ -126,8 +172,10 @@ export function verifyBackgroundImageArtifact({ sourceImageRoot, distRoot, picke
   // the 294 curated bodies. set-002 raises this number again as new curated photographs
   // replace the repeats — update it deliberately, and never to whatever the tree happens to
   // hold, or this stops being a check.
-  if (checked !== 1008 || resolved.size !== 294) {
-    throw new Error(`P9 resolution mismatch: ${checked}/1008 slots, ${resolved.size}/294 unique files`);
+  // Minus one for each photograph benched by ruling (review/benched-photos.json).
+  const expectedUnique = CURATED_BODIES - benchedInTree.size;
+  if (checked !== 1008 || resolved.size !== expectedUnique) {
+    throw new Error(`P9 resolution mismatch: ${checked}/1008 slots, ${resolved.size}/${expectedUnique} unique files (${CURATED_BODIES} curated − ${benchedInTree.size} benched)`);
   }
   return { checked, uniqueFiles: resolved.size };
 }

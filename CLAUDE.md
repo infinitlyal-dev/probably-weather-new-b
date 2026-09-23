@@ -70,6 +70,8 @@ Day image naming (14-day cycle — UPDATE IN PROGRESS):
 
 **Current code uses 7-day cycle. Will be updated to 14-day once all images are complete.**
 
+**Benching a photograph** (2026-09-23): `review/benched-photos.json` takes a photograph out of rotation without moving a file — the build's slot manifest (`scripts/image-slot-manifest.mjs`) serves the picker's own week-collapse fallback (same folder and time, week_1 slot 1) in its slots, and the benched bytes are not shipped. Moving a photograph to another bucket needs Al's ruling on its page (`review/cold-move-dog.html`, `review/bucket-check.html`).
+
 ## LANGUAGES
 The app supports 5 languages: English, Afrikaans, Zulu, Xhosa, Sotho.
 All new user-facing strings must include translations for all 5 languages.
