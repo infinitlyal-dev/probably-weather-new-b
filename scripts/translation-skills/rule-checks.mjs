@@ -16,6 +16,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { check as langCheck } from '../lang-check/lib/checker.mjs';
+import { reversedLightAdvice } from './safety-reversal.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const ST = JSON.parse(readFileSync(path.join(here, 'rules', 'st-orthography.json'), 'utf8'));
@@ -45,15 +46,6 @@ function figureSurvives(lang, n, text, en) {
   return false;
 }
 const ADVICE = /\b(turn|switch|use|wear|put on|apply|slap on|stay|don'?t|do not|avoid|keep|bring|cover|hold on|tie|secure|drink|slow|watch out|careful|wouldn'?t hurt|take|unplug|go inside|get inside|get indoors|pack|grab|reapply|protect|not optional|non-negotiable|must|need to|you'?ll want)\b/i;
-// REVERSAL: advice to switch lights ON must not carry a verb that switches them OFF or removes
-// them — the st-0870 failure ("tlosa mabone" = take the lights off, for "Headlights wouldn't hurt").
-const LIGHTS_ON = /headlight|lights? on|switch on the lights|turn on the lights/i;
-const LIGHTS_OFF = {
-  af: /\b(ligte|lampe|koplampe)\s+(af|uit)\b|\bafskakel|\bafsit\b|\bdoodmaak/i,
-  zu: /\b(cisha|cima|khipha|susa)\w*/i,
-  xh: /\b(cima|cisha|khupha|susa)\w*/i,
-  st: /\b(tima|tlosa|timetsa|ntsha)\w*/i,
-};
 const UNITS = [[/°c?|\bdegrees?\b/i, /°|grade|degrees?|degree|amadigri|iidigri|di-degree|digri|dikgerata|ama-degree/i, 'degrees'], [/%|\bper ?cent\b/i, /%|persent|iphesenti|ipesenti|phesente/i, 'percent'], [/km\/h/i, /km\/h|km\/u/i, 'km/h'], [/\bmm\b/i, /\bmm\b|millimeter|amamilimitha|iimilimitha|dimilimitara/i, 'mm'], [/\bspf\b/i, /\bspf\b/i, 'SPF'], [/\buv\b/i, /\buv\b/i, 'UV']];
 
 export function ruleCheck({ lang, en, text }) {
@@ -76,10 +68,9 @@ export function ruleCheck({ lang, en, text }) {
   try { lc = langCheck({ lang, en, text }); } catch (e) { lc = { action: 'error', findings: [{ severity: 'low', message: e.message }] }; }
   if (lc?.action === 'triage-high') for (const f of lc.findings.filter((x) => x.severity === 'high')) findings.push({ rule: `lang-check:${f.check}`, severity: 'high', message: f.message });
   else if (lc?.action === 'triage') for (const f of lc.findings.filter((x) => x.severity === 'medium')) findings.push({ rule: `lang-check:${f.check}`, severity: 'medium', message: f.message });
-  // 4a. reversed light advice
-  if (LIGHTS_ON.test(en) && LIGHTS_OFF[lang]?.test(text)) {
-    findings.push({ rule: 'safety:reversal', severity: 'high', message: `the English tells drivers to use their lights; "${String(text).match(LIGHTS_OFF[lang])[0]}" switches them off or removes them` });
-  }
+  // 4a. reversed light advice (safety-reversal.mjs)
+  const off = reversedLightAdvice(lang, en, text);
+  if (off) findings.push({ rule: 'safety:reversal', severity: 'high', message: `the English tells drivers to use their lights; "${off}" switches them off or removes them` });
   // 4b. safety words — only when the English actually gives advice (an instruction or a
   // recommendation), not whenever it mentions the wind.
   const wl = wordlist(lang);
