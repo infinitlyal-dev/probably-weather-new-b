@@ -1,0 +1,1091 @@
+{
+ "generated": "2026-09-23T16:18:16.669Z",
+ "ruledBy": "Al, translation check page (review/translation-check.html)",
+ "ruled": 70,
+ "total": 77,
+ "rulings": [
+  {
+   "k": "af-0168",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Air this clear should come with a warning: plans will be made.",
+   "text": "Lug so skoon, jy kan amper tot môre toe sien.",
+   "back": "Sky so clear you can almost see all the way to tomorrow.",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: EN joke is 'should come with a warning: plans will be made'; AF says 'you can almost see all the way to tomorrow' - a different joke, looks keyed to another line."
+   ],
+   "verdict": "KEEP",
+   "note": "It is purposefully different because the humor reads differently in Afrikaans. "
+  },
+  {
+   "k": "af-0280",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Sky's doing the most, but only a little.",
+   "text": "Die lug wen, maar dis nie veel van n kompetisie nie.",
+   "back": "The sky wins, but it's not much of a competition.",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: EN 'Sky's doing the most, but only a little' (extra, but barely); AF 'Die lug wen, maar dis nie veel van n kompetisie nie' (the sky wins, not much of a competition) is a different joke - looks keyed to another line; also 'n typo."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1522",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sky just went full Carte Blanche.",
+   "text": "Die lug het voluit bedonerd gegaan.",
+   "back": "The sky has gone full-on grumpy.",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: EN 'went full Carte Blanche' (TV-exposé drama) became 'voluit bedonerd gegaan' (gone full-on grumpy) — a different joke with the Carte Blanche reference gone; 'bedonerd' is also misspelt (bedonnerd)"
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1561",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Nobody told the forecast. It just arrived.",
+   "text": "Niemand het die voorspelling gesê nie. Dit het net opgedaag.",
+   "back": "Nobody said the forecast. It just showed up.",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: EN 'Nobody told the forecast' needs 'vir die voorspelling gesê'; 'Niemand het die voorspelling gesê nie' reads as the garbled 'nobody said the forecast', so the forecast-wasn't-informed joke is gone"
+   ],
+   "verdict": "FIX",
+   "note": "Cahnge it to Niemand het die voorspelling genooi nie. Dit het net opgedaag."
+  },
+  {
+   "k": "af-1665",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Clouds today, vibes optional.",
+   "text": "Windgat wolke vandag.",
+   "back": "Show-off clouds today.",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: 'Windgat wolke' (show-off, cocky clouds) is a different joke, the opposite of the laid-back 'vibes optional', and the 'wind' in 'windgat' suggests the wrong condition."
+   ],
+   "verdict": "KEEP",
+   "note": "You are taking the wind in windgat to literal. "
+  },
+  {
+   "k": "af-2034",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Clear sky, clear diary. One of those is a lie.",
+   "text": "Nul wolke. Nul verskonings. Nul kans dat ek binne bly.",
+   "back": "Zero clouds. Zero excuses. Zero chance I'm staying inside.",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: A different joke: the English 'Clear sky, clear diary. One of those is a lie.' says the diary isn't clear, while 'Nul wolke. Nul verskonings. Nul kans dat ek binne bly.' is a no-excuses, going-outside line. It looks keyed to another line.",
+    "WRONG SOURCE? The back-translation is closer to another line of the same bin: \"Not a cloud in sight. Not one.\""
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2045",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Golden hour runs daily. Attendance still somehow optional.",
+   "text": "Goue uur: elke dag gratis, en ons is elke dag weer verbaas.",
+   "back": "Golden hour: free every day, and every day we're amazed all over again.",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: The English dig 'Attendance still somehow optional' (people skip it) becomes 'ons is elke dag weer verbaas' (we're amazed every day), close to the opposite point."
+   ],
+   "verdict": "CUT",
+   "note": "Golden hour is a dawn or dusk thing. Not for day."
+  },
+  {
+   "k": "af-2083",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Mixed bag out there. We're hedging.",
+   "text": "Gemengde sak daar buite. Ons hou voor.",
+   "back": "Mixed bag out there. We're holding back / reserving...",
+   "checker": "MISMATCH",
+   "flags": [
+    "MISMATCH: 'Ons hou voor' is garbled Afrikaans. It does not say 'We're hedging', or anything clear, so the punchline is lost."
+   ],
+   "verdict": "FIX",
+   "note": "This is very hard to translate. Might need a new Afrikaans line. "
+  },
+  {
+   "k": "af-0006",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sun woke up and chose glorious.",
+   "text": "Vandag se son het opgedaag met attitude.",
+   "back": "Today's sun showed up with attitude.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN meme punchline 'woke up and chose glorious' is gone; 'opgedaag met attitude' (showed up with attitude) reads sassy rather than glorious.",
+    "WRONG SOURCE? The back-translation is closer to another line of the same photograph: \"The Helderberg is showing off today.\""
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0327",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Sun, hide-and-seek champion of the day.",
+   "text": "Die lug speel kat en muis.",
+   "back": "The sky is playing cat and mouse.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'Sun, hide-and-seek champion of the day'; AF 'Die lug speel kat en muis' switches subject to the sky, swaps the game and drops 'champion'.",
+    "WRONG SOURCE? The back-translation is closer to another line of the same photograph: \"Sky's doing the most, but only a little.\""
+   ],
+   "verdict": null,
+   "note": "Try Die son en die wolke speel kat en muis vandag. "
+  },
+  {
+   "k": "af-2023",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Zero mistakes from today so far. Sky included.",
+   "text": "Die dag het nog niks verkeerd gedoen nie. Gee hom kans.",
+   "back": "The day hasn't done anything wrong yet. Give it a chance.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Sky included' is dropped, and 'Gee hom kans' (give it a chance) puts a new, faintly wary kicker on what the English makes pure praise.",
+    "WRONG SOURCE? The back-translation is closer to another line of the same bin: \"If you're inside, you're doing it wrong.\""
+   ],
+   "verdict": "FIX",
+   "note": "Just try Die dag het nog niks verkeerd gedoen nie. En wil ook nie. "
+  },
+  {
+   "k": "af-2025",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Inbox: 47. Sky: flawless. Priorities: sorted.",
+   "text": "Eerste koffie buite. Die e-posse kan wag.",
+   "back": "First coffee outside. The emails can wait.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The 'Inbox: 47. Sky: flawless. Priorities: sorted.' list gag becomes 'Eerste koffie buite. Die e-posse kan wag.', which adds coffee and drops the 47 and the sky.",
+    "WRONG SOURCE? The back-translation is closer to another line of the same bin: \"Take your coffee outside. You deserve it.\""
+   ],
+   "verdict": "FIX",
+   "note": ""
+  },
+  {
+   "k": "af-0013",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sun took its time this morning. Worth the wait.",
+   "text": "Die son vat sy tyd vanoggend, en dit wys.",
+   "back": "The sun's taking its time this morning, and it shows.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN payoff 'Worth the wait' is lost; 'en dit wys' (and it shows) makes the slow sun sound sluggish, flipping the positive note."
+   ],
+   "verdict": null,
+   "note": "Die son vat sy tyd vanoggend, en dit is 100% dit werd."
+  },
+  {
+   "k": "af-0014",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Enjoy it. There's a cold front out there doing warm-ups.",
+   "text": "Geniet dit. Die koue front het klaar sy tasse gepak.",
+   "back": "Enjoy it. The cold front has already packed its bags.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'a cold front out there doing warm-ups' (coming); 'het klaar sy tasse gepak' can easily read as the front having already left, the opposite claim."
+   ],
+   "verdict": null,
+   "note": "Geniet dit. Erens daarbuite is n kouefront besig om planne te maak. "
+  },
+  {
+   "k": "af-0045",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Even Monday looks photogenic in this light.",
+   "text": "Oggendson wat só lyk maak selfs Maandag draaglik.",
+   "back": "Morning sun that looks like this makes even Monday bearable.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN says Monday 'looks photogenic in this light'; AF says morning sun makes Monday 'draaglik' (bearable) - different claim, photo joke lost."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0123",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The moon's doing the most tonight.",
+   "text": "Die maan doen sy bes vanaand.",
+   "back": "The moon is doing its best tonight.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN slang 'doing the most' (showing off, extra) became 'doen sy bes' (doing its best), which reads as effort/trying, not excess."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0146",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Cancel everything. This is THE day winter was hiding.",
+   "text": "Kanselleer alles. Dis DIÉ dag.",
+   "back": "Cancel everything. It's THE day.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'THE day winter was hiding' - the winter/season hook is dropped; AF is just 'Dis DIÉ dag'."
+   ],
+   "verdict": "KEEP",
+   "note": "Kanselleer alles. Winter gee jou n blaaskans vandag. "
+  },
+  {
+   "k": "af-0148",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Africa showing off again. Quietly devastating.",
+   "text": "Afrika pronk weer. Dit mag maar.",
+   "back": "Africa's showing off again. It's allowed.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN punchline 'Quietly devastating' replaced by 'Dit mag maar' (it's allowed) - different, flatter payoff."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0194",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sun hit snooze again. Honestly? Same.",
+   "text": "Die son het snooze gedruk. Weer.",
+   "back": "The sun hit snooze. Again.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN relatable punchline 'Honestly? Same.' is dropped; AF stops at 'Weer.' (Again)."
+   ],
+   "verdict": null,
+   "note": "Die son het snooze gedruk. "
+  },
+  {
+   "k": "af-0229",
+   "group": "flagged",
+   "lang": "af",
+   "en": "50/50 on getting wet. Like a coin toss.",
+   "text": "50/50 kans om nat te word. Better odds as om die Lotto te wen...",
+   "back": "50/50 chance of getting wet. Better odds than winning the Lotto...",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN punchline 'Like a coin toss' replaced by 'Better odds as om die Lotto te wen' - different gag (reads like another variant) with a half-English phrase."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0240",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Some clouds. Some sun. South African summer admin.",
+   "text": "Sonnig met n spatsel wolke. SA somer in een prentjie.",
+   "back": "Sunny with a sprinkle of clouds. SA summer in one picture.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'South African summer admin' punchline lost; AF 'SA somer in een prentjie' (SA summer in one picture) is a different, flatter close; also 'n typo."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0245",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Cloudy enough to comment, sunny enough to ignore.",
+   "text": "Bewolk genoeg om te kla, sonnig genoeg om jou te maak hoop.",
+   "back": "Cloudy enough to complain, sunny enough to make you hope.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'sunny enough to ignore' became 'sonnig genoeg om jou te maak hoop' (sunny enough to make you hope) - second half of the claim changed."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0333",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Washing's still safe. Probably.",
+   "text": "Wasgoed is veilig. Hopelik.",
+   "back": "Washing is safe. Hopefully.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The brand hedge \"Probably\" became \"Hopelik\" (hopefully), and \"still\" is dropped; the canon uses \"waarskynlik\" for this hedge."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0337",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sky can't make up its mind. Join the club.",
+   "text": "Die lug kan nie besluit nie. Tipies.",
+   "back": "The sky can't decide. Typical.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: Punchline changed: the self-deprecating \"Join the club\" became \"Tipies\" (typical), which is exasperation instead of fellow feeling."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0356",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Somebody left the freezer door open overnight.",
+   "text": "Die Karoo het die verkoeler oopgelos.",
+   "back": "The Karoo left the cooler open.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: A place is added and the subject changes: \"Somebody left the freezer door open overnight\" became \"Die Karoo het die verkoeler oopgelos\". \"verkoeler\" can also read as a car radiator, and \"overnight\" is dropped."
+   ],
+   "verdict": null,
+   "note": "Die Karoo het die yskas oornag oopgelos."
+  },
+  {
+   "k": "af-0389",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Looks like a tourism ad. Feels like the inside of a fridge.",
+   "text": "Joburg lyk soos 'n advertensie en voel soos 'n yskas.",
+   "back": "Joburg looks like an advert and feels like a fridge.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: A place is added: the English has no city, but the Afrikaans opens with \"Joburg\". \"tourism ad\" is flattened to \"advertensie\" and \"the inside of\" is dropped."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0390",
+   "group": "flagged",
+   "lang": "af",
+   "en": "That first breath of air will wake you better than coffee.",
+   "text": "Daai eerste asemteug gaan jou wakker maak. Belowe.",
+   "back": "That first breath is going to wake you up. Promise.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: Punchline lost: \"will wake you better than coffee\" became \"gaan jou wakker maak. Belowe.\" (will wake you up. Promise.), so the coffee comparison is gone."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0436",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Even the dog's breath is showing. That's the reading.",
+   "text": "Die hond se asem wys ook. Dis hoe koud dit is.",
+   "back": "The dog's breath shows too. That's how cold it is.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: Punchline flattened: \"That is the reading\" (the dog as thermometer) became the plain \"Dis hoe koud dit is\" (that is how cold it is)."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0461",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Tomorrow's first task: five minutes of windscreen scraping in your work clothes.",
+   "text": "Môreoggend se eerste taak: vyf minute ys krap in jou kerkklere.",
+   "back": "Tomorrow morning's first job: five minutes of scraping ice in your church clothes.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: \"in your work clothes\" became \"in jou kerkklere\" (church clothes), which makes tomorrow a Sunday instead of a workday. That changes the day."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-0953",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Shorts weather? This is underwear weather.",
+   "text": "Kortbroekie weer? Dis onderbroekie weer.",
+   "back": "Shorts weather? It's undies weather.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: Split compounds 'Kortbroekie weer? ... onderbroekie weer' let 'weer' read as 'again' ('Shorts again? It's undies again'); solid 'kortbroekieweer / onderbroekieweer' keeps the weather joke."
+   ],
+   "verdict": "KEEP",
+   "note": "Change it to Kortbroek weer, kortbroekie also sounds like underwear."
+  },
+  {
+   "k": "af-1041",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The clouds are having a moment.",
+   "text": "Die wolke het 'n oomblik.",
+   "back": "The clouds are having a moment.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Die wolke het 'n oomblik' is a word-for-word calque of 'having a moment'; the idiom does not exist in Afrikaans (af-voice anti-pattern 1 names this exact line)."
+   ],
+   "verdict": null,
+   "note": "Change it to Die wolke tjank, iemand kry n tissue asb. "
+  },
+  {
+   "k": "af-1121",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Night rain maths: half the visibility, double the concentration, triple the respect.",
+   "text": "Nagreënwiskunde: helfte die sig, dubbel die konsentrasie, drie keer die respek.",
+   "back": "Night-rain maths: half the visibility, double the concentration, three times the respect.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'helfte die sig' is an English calque of 'half the visibility' (Afrikaans: 'half die sig'); reads machine-made in an otherwise chatty line."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1226",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Unplug the things. The sky has plans.",
+   "text": "Skakel jou toestelle af. Die lug het planne.",
+   "back": "Switch off your devices. The sky has plans.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN says unplug ('Unplug the things'); 'Skakel jou toestelle af' says switch off, which drops the lightning-safety point."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1304",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sky just went full Carte Blanche.",
+   "text": "Die lug het voluit bedonnerd gegaan.",
+   "back": "The sky has gone full-on bedonnerd.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The SA anchor 'full Carte Blanche' (TV show / free-rein pun) is replaced by a thunder pun ('bedonnerd'); claim still 'sky went all-out' but the reference is gone."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1340",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The braai cover is in the next suburb.",
+   "text": "Die braai-deksel is in die volgende voorstad.",
+   "back": "The braai lid is in the next suburb.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'braai cover' (fabric cover) became 'braai-deksel' (braai lid) — a different object, may not match the photo; 1339 used 'oortreksel' for cover"
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1519",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Thunder's grumbling, hey.",
+   "text": "Die donder dreun.",
+   "back": "The thunder rumbles.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: chatty EN 'Thunder's grumbling, hey.' became the flat, formal 'Die donder dreun.' — spoken 'hey' dropped, reads like a textbook sentence"
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1567",
+   "group": "flagged",
+   "lang": "af",
+   "en": "In the Karoo this isn't rain. It's a celebrity appearance.",
+   "text": "In die Karoo is dit nie reën nie. Dis 'n verskyning.",
+   "back": "In the Karoo it isn't rain. It's an apparition.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'a celebrity appearance' shrank to 'n verskyning' (an appearance/apparition) — the celebrity punchline is lost"
+   ],
+   "verdict": null,
+   "note": "Change last line to Dis vroee Kersfees,"
+  },
+  {
+   "k": "af-1576",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Theewaterskloof is about to trend in the group chat.",
+   "text": "Theewaterskloof gaan vanoggend viraal in die groepsgesprek.",
+   "back": "Theewaterskloof is going viral in the group chat this morning.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: adds a time of day: 'vanoggend' (this morning) is not in EN 'is about to trend in the group chat'"
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1578",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Post-storm Highveld air should be bottled and sold overseas.",
+   "text": "Die Hooglandlug ná reën behoort in 'n botteltjie verkoop te word.",
+   "back": "The highland air after rain should be sold in a little bottle.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'Highveld' became 'Hoogland' (reads as generic highlands, not Hoëveld), and 'sold overseas' lost 'overseas', flattening the export boast"
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1583",
+   "group": "flagged",
+   "lang": "af",
+   "en": "One drought in living memory and now every downpour is a lottery win.",
+   "text": "Drie jaar se droogte-geheue en skielik is elke bui 'n lotto-wen.",
+   "back": "Three years of drought memory and suddenly every shower is a lotto win.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: adds a number: EN 'One drought in living memory' became 'Drie jaar se droogte-geheue' (three years of drought memory)"
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1585",
+   "group": "flagged",
+   "lang": "af",
+   "en": "All plans are officially moved to 'when it clears up'. Which is never. Shame.",
+   "text": "Alle afsprake is amptelik verskuif na 'wanneer dit opklaar'.",
+   "back": "All appointments are officially moved to 'when it clears up'.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: the kicker 'Which is never. Shame.' is dropped, so the line ends on the setup; 'plans' also became 'afsprake' (appointments)"
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1603",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The Boland is getting watered in its sleep and will absolutely brag about it tomorrow.",
+   "text": "Die Boland word in sy slaap natgelê en môre spog hy daaroor.",
+   "back": "The Boland is getting soaked in its sleep and tomorrow it'll brag about it.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'getting watered in its sleep' became 'word in sy slaap natgelê' — 'natlê' means bed-wetting, so the Boland now wets the bed and brags about it, a cruder image than being watered"
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1614",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Not depressing. Just... underwhelming.",
+   "text": "Nie depressief nie. Net...grys.",
+   "back": "Not depressed. Just... grey.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: punchline 'underwhelming' became a literal 'grys', and 'depressief' means depressed rather than EN 'depressing'"
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1621",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sky picked a vibe and the vibe is shrug.",
+   "text": "Die lug het n vibe gekies en die vibe is slapgat.",
+   "back": "The sky picked a vibe and the vibe is slapgat — lazy and useless.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: EN 'the vibe is shrug' (mild indifference) became 'slapgat' (slack-arsed, lazy), which is cruder and more insulting; 'n' is also missing its apostrophe"
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1649",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The day is ending like a voicenote that just cuts off mid-",
+   "text": "Die dag eindig soos 'n voicenote wat net skielik ophou.",
+   "back": "The day ends like a voice note that just suddenly stops.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: in EN the line itself cuts off ('cuts off mid-'); AF 'wat net skielik ophou' only describes the cut-off, so the visual gag is gone"
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1666",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Sky's drafting, not committing.",
+   "text": "Die lug will will, maar wil ook nie.",
+   "back": "The sky sort-of wants to, but also doesn't want to.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The claim (sky can't commit) survives, but 'will will' is English spelling (typo for 'wil-wil') and reads broken; the 'drafting' image is gone."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1669",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Clouds, but make it casual.",
+   "text": "Net n halwe koppie wolke vir vandag se resep.",
+   "back": "Just half a cup of clouds for today's recipe.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The joke is rebuilt as a recipe ('halwe koppie wolke ... resep') in place of 'but make it casual'. The claim of light cloud survives. 'n' is missing its apostrophe."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1673",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sky's doing freelance today.",
+   "text": "Lug doen afskeep werk.",
+   "back": "Sky's doing a slapdash job.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'afskeep werk' (slapdash, shoddy job) swaps the part-time 'freelance' joke for a poor-quality judgement."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-1721",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Karoo white noise: one windpump, no off switch.",
+   "text": "Plattelandse wit-geraas: een windpomp, geen af-knoppie.",
+   "back": "Platteland white noise: one windpump, no off button.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The place is generalised: 'Karoo white noise' becomes 'Plattelandse wit-geraas' (countryside)."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1821",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The front left. The cold just moved in permanently.",
+   "text": "Die front is weg. Die koue het net getrek, nie geloop nie.",
+   "back": "The front is gone. The cold only moved house, it didn't leave.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Die koue het net getrek, nie geloop nie' is ambiguous (moved house vs moved off) and loses the clear 'moved in permanently'."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1822",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Snow on the mountains means socks in bed. That's the law.",
+   "text": "Sneeu op die berge beteken sokkies in die bed.",
+   "back": "Snow on the mountains means socks in bed.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The kicker 'That's the law.' is dropped, leaving a flat statement."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1828",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Snow on those mountains, ice in this breeze. Connected? Very.",
+   "text": "Sneeu op daai berge, ys in hierdie briesie.",
+   "back": "Snow on those mountains, ice in this breeze.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The punchline 'Connected? Very.' is dropped, so the line stops before its joke."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1833",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The sea is sparkling like holidays. The air says otherwise.",
+   "text": "Die see blink soos vakansie. Die wind chill sê andersins.",
+   "back": "The sea sparkles like a holiday. The wind chill says otherwise.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Die wind chill' adds wind where the English says 'the air' (a cold-clear line, not a wind one)."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1841",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Mzansi winter does colour like nobody else. Warmth, though...",
+   "text": "Winter in Mzansi doen kleur soos niemand anders nie.",
+   "back": "Winter in Mzansi does colour like nobody else.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The turn 'Warmth, though...' is dropped, so a backhanded joke becomes a plain compliment."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1844",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The view is free. So is the feeling in your ears — gone.",
+   "text": "Die uitsig is gratis. Die gevoel in jou ore ook weg.",
+   "back": "The view is free. The feeling in your ears also gone.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The 'free' pun is lost and the second sentence has no verb ('Die gevoel in jou ore ook weg'), so 'ook' points at nothing. It reads half-built."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1854",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Joburg sunsets are winter's consolation prize. It's a good prize.",
+   "text": "Joburg se sonsondergange is winter se troosprys.",
+   "back": "Joburg's sunsets are winter's consolation prize.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The warm tag 'It's a good prize.' is dropped, which leaves the backhanded half only."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-1860",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The city only looks this sharp when it genuinely hurts outside.",
+   "text": "So helder sien jy Kaapstad net wanneer dit regtig seer is buite.",
+   "back": "You only see Cape Town this clearly when it's really bitter outside.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: Adds a place: English 'The city' becomes 'Kaapstad'."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2000",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Karoo night fog: rare enough that it'll get mentioned in church on Sunday.",
+   "text": "Karoo-nagmis: so skaars dat die dominee dit môre gaan noem.",
+   "back": "Karoo night mist: so rare the dominee is going to mention it tomorrow.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'môre' (tomorrow) replaces 'on Sunday'. The day changes, and the line only holds on a Saturday night."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2016",
+   "group": "flagged",
+   "lang": "af",
+   "en": "This is the stuff. Right here.",
+   "text": "Hierdie is die weer wat ons wil he. Net soos dit is.",
+   "back": "This is the weather we want. Just as it is.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The chatty 'This is the stuff. Right here.' is flattened to a literal 'Hierdie is die weer wat ons wil he. Net soos dit is.', and 'he' needs its diacritic ('hê')."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2019",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Feels like the country is on its best behaviour.",
+   "text": "Voel of die weer op sy beste gedrag is.",
+   "back": "Feels like the weather is on its best behaviour.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'die weer' replaces 'the country', which loses the joke that the country itself is behaving."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2021",
+   "group": "flagged",
+   "lang": "af",
+   "en": "This is leave-form weather and HR knows it.",
+   "text": "Weer soos dié vra mooi vir 'n verlofvorm.",
+   "back": "Weather like this is practically begging for a leave form.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The kicker 'and HR knows it' is dropped. 'vra mooi vir 'n verlofvorm' keeps only the leave-form idea."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2022",
+   "group": "flagged",
+   "lang": "af",
+   "en": "'Quick dip before work.' Nobody in history has been quick.",
+   "text": "Nog 'n 'vinnige swem voor werk' — die Kaap se oudste leuen.",
+   "back": "Another 'quick swim before work' - the Cape's oldest lie.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The joke is rebuilt from 'Nobody in history has been quick' into 'die Kaap se oudste leuen', which adds a Cape place anchor the English does not have."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2024",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Highveld mornings: freezing, gorgeous, zero apologies.",
+   "text": "Hoëveld-oggend: koud genoeg vir 'n jas, mooi genoeg dat jy nie omgee nie.",
+   "back": "Highveld morning: cold enough for a coat, pretty enough that you don't mind.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The 'zero apologies' punchline becomes 'mooi genoeg dat jy nie omgee nie', 'freezing' softens to 'koud genoeg vir 'n jas', and the line is longer than the English."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2026",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Signal: weak. Views: unfair. Deadlines: whose?",
+   "text": "Berg-oggende laat jou vergeet wat 'n deadline is.",
+   "back": "Mountain mornings make you forget what a deadline is.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Signal: weak. Views: unfair.' is dropped and the line is rebuilt around 'Berg-oggende', adding a morning; only the deadline idea survives."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2030",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Atlantic rule: the water is freezing and everyone lies about it.",
+   "text": "Die water is yskoud en almal maak of dit lekker is. Tradisie.",
+   "back": "The water is ice-cold and everyone pretends it's lekker. Tradition.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Atlantic rule' is dropped, so the place is lost. 'maak of dit lekker is' for 'lies about it' is fine."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2036",
+   "group": "flagged",
+   "lang": "af",
+   "en": "You don't waste a sky like this on being sensible.",
+   "text": "Sonskyn soos dié los jy nie vir Maandag nie.",
+   "back": "Sunshine like this you don't save for Monday.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: Adds a weekday, 'los jy nie vir Maandag nie' (you don't leave it for Monday), where the English has none, and drops the 'being sensible' joke. It reads wrong on a Monday photograph."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2037",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Karoo sky: same flawless blue for the next 400 km. Guaranteed.",
+   "text": "Karoo-blou: presies dieselfde perfekte kleur van hier tot môre.",
+   "back": "Karoo blue: exactly the same perfect colour from here to tomorrow.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'for the next 400 km' becomes 'van hier tot môre', turning distance into time, and 'Guaranteed' is dropped."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2038",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Padkos hits different under infinite sky. That's just science.",
+   "text": "Padkos smaak beter onder 'n lug sonder einde.",
+   "back": "Padkos tastes better under a sky without end.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The kicker 'That's just science' is dropped, leaving a plain statement."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2043",
+   "group": "flagged",
+   "lang": "af",
+   "en": "A day so good even rush hour felt optional.",
+   "text": "Die dag was so mooi, selfs die verkeer het saamgespeel.",
+   "back": "The day was so lovely even the traffic played along.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'even rush hour felt optional' becomes 'selfs die verkeer het saamgespeel' (even the traffic cooperated), a different claim."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2054",
+   "group": "flagged",
+   "lang": "af",
+   "en": "City folk pay good money for this ceiling.",
+   "text": "Stadsmense betaal groot geld hiervoor. Hier's dit sommer verniet.",
+   "back": "City people pay big money for this. Here it's just free.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'this ceiling' (the sky as a ceiling) flattens to 'hiervoor', and an explanatory 'Hier's dit sommer verniet' is added."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2055",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Nobody's called it a night. The night agrees.",
+   "text": "Niemand het 'huis toe' gesê nie. Niemand gaan ook nie.",
+   "back": "Nobody's said 'home time'. Nobody's going either.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The punchline 'The night agrees' is replaced by 'Niemand gaan ook nie' (nobody's going either)."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2065",
+   "group": "flagged",
+   "lang": "af",
+   "en": "The frogs have entered the chat.",
+   "text": "Die paddas het die gesprek betree.",
+   "back": "The frogs have entered the chat.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'die gesprek betree' is a stiff, word-for-word calque of 'entered the chat', and the meme register does not carry over."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2079",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Models say lovely. Reality reserves the right to differ.",
+   "text": "Modelle sê pragtig. Die werklikheid hou voor om te verskil.",
+   "back": "Models say gorgeous. Reality reserves the right to differ.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'hou voor om te verskil' is a broken calque of 'reserves the right to differ' (it needs 'behou die reg voor'). The meaning only comes through from context."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  },
+  {
+   "k": "af-2090",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Cloud's the call. With an asterisk.",
+   "text": "Wolk is die roep. Met 'n sterretjie.",
+   "back": "Cloud is the call. With an asterisk.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Wolk is die roep' calques 'the call' in the sense of a decision, but Afrikaans 'roep' reads as a cry or summons."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2108",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Might spit a bit. Might not bother.",
+   "text": "Mag n bietjie spoeg. Mag dalk nie moeite doen daarmee nie.",
+   "back": "Might spit a bit. Might not bother with it.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: The English-shaped 'Mag ... Mag dalk nie moeite doen daarmee nie' (mag = may, be allowed to) is stiff and longer than 'Might not bother', and 'n' is missing its apostrophe."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2117",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Chilly, most likely. Layer up to be safe.",
+   "text": "Koel, heel waarskynlik. Trek aan om veilig te wees.",
+   "back": "Cool, most likely. Dress up to be safe.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'Trek aan om veilig te wees' means 'get dressed to be safe', not 'layer up', and reads as a stiff calque; 'Koel' is also milder than 'Chilly'."
+   ],
+   "verdict": "KEEP",
+   "note": ""
+  },
+  {
+   "k": "af-2135",
+   "group": "flagged",
+   "lang": "af",
+   "en": "Calm night, most likely. The sky reserves the right to change.",
+   "text": "Kalm nag, heel waarskynlik. Die lug hou voor om te verander.",
+   "back": "Calm night, most likely. The sky reserves the right to change.",
+   "checker": "DRIFT",
+   "flags": [
+    "DRIFT: 'hou voor om te verander' is a broken calque of 'reserves the right to change'. The meaning only comes through from context."
+   ],
+   "verdict": "CUT",
+   "note": ""
+  }
+ ]
+}
