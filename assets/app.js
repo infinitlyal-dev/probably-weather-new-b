@@ -566,6 +566,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     // Misc
     misc: {
+      // The keyboard / screen-reader skip link at the top of index.html (2026-09-24: it was English in
+      // every language). zu/xh/st through the skills + lang-check: all pass.
+      skipToContent: { en: "Skip to main content", af: "Slaan oor na die hoofinhoud", zu: "Yeqela kokuqukethwe okuyinhloko", xh: "Tsiba uye kumxholo ophambili", st: "Tlolela dikahareng tsa sehlooho" },
       loading: { en: "Loading…", af: "Laai…", zu: "Iyalayisha…", xh: "Iyalayisha…", st: "E a jarolla…" },
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
       couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana ulwazi lwemozulu ngoku.", st: "Ha e kgone ho fumana boemo ba lehodimo." },
@@ -1406,6 +1409,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navLandmark) navLandmark.setAttribute('aria-label', t('nav', 'primary'));
     if (languageBtn) languageBtn.setAttribute('aria-label', t('settings', 'language'));
     if (languageMenu) languageMenu.setAttribute('aria-label', t('settings', 'language'));
+    const skipLink = document.querySelector('.skip-link');
+    if (skipLink) skipLink.textContent = t('misc', 'skipToContent');
     const capeWindDismissBtn = $('#capeWindDismiss');
     if (capeWindDismissBtn) capeWindDismissBtn.setAttribute('aria-label', t('misc', 'dismiss'));
     // Already-rendered content that outlives a language switch. The search
