@@ -85,6 +85,18 @@ export const INSTALL_T = {
     xh: 'Cofa iqhosha `Share` le-Safari ezantsi kwiscreen yakho',
     st: 'Tobetsa konopo ya `Share` ya Safari ka tlase ho skirini sa hao',
   },
+  // Chrome on iPhone (iOS 16.4+) adds a web app from its own Share button — Google's Chrome Help:
+  // "On the right of the address bar, tap Share … tap Add to Home Screen". Steps 2 and 3 are the
+  // same iOS share sheet as Safari's. "next to" because Chrome lets people move the bar to the
+  // bottom. zu/xh/st through the skills + lang-check (2026-09-24): xh/st pass, zu triage on
+  // 'thepha' only, as its iosStep1 above.
+  iosChromeStep1: {
+    en: "Tap Chrome's `Share` button, next to the address bar",
+    af: 'Tik op Chrome se `Share`-knoppie, langs die adresbalk',
+    zu: 'Thepha inkinobho `Share` ye-Chrome, eduze kwebha yekheli',
+    xh: 'Cofa iqhosha `Share` le-Chrome, ecaleni kwebar yedilesi',
+    st: 'Tobetsa konopo ya `Share` ya Chrome, pela bara ya aterese',
+  },
   iosStep2: {
     en: 'Scroll, tap `Add to Home Screen`',
     af: 'Scroll, tik op `Add to Home Screen`',
@@ -447,6 +459,20 @@ export function isSamsungAndroid(uaString = '') {
  * classifies as android-chrome — the SamsungBrowser/ token is what separates
  * them. Returns null off Android.
  */
+/**
+ * Chrome on an iPhone or iPad running iOS 16.4 or later can add a web app to the Home Screen
+ * itself (its Share button → Add to Home Screen; Apple opened this to other browsers in 16.4).
+ * Older iOS, and Firefox/Edge on iOS, keep the open-in-Safari handoff.
+ */
+export function iosChromeCanAddToHomeScreen(uaString = '') {
+  const ua = String(uaString || '');
+  if (detectPlatform(ua) !== 'ios-chrome' || !/CriOS\//.test(ua)) return false;
+  const m = ua.match(/OS (\d+)[_.](\d+)/);
+  if (!m) return false;
+  const major = Number(m[1]), minor = Number(m[2]);
+  return major > 16 || (major === 16 && minor >= 4);
+}
+
 export function androidStepsKey(uaString = '') {
   if (detectPlatform(uaString) !== 'android-chrome') return null;
   return /SamsungBrowser\//.test(String(uaString)) ? 'samsungInternetSteps' : 'androidChromeSteps';
@@ -631,6 +657,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
   const isStandalone = !!(standaloneMatch || iosStandalone);
   const platform = detectPlatform(ua, { standalone: isStandalone });
   const stepsKey = androidStepsKey(ua);
+  const chromeCanAdd = iosChromeCanAddToHomeScreen(ua);
 
   if (isStandalone) {
     document.body.classList.add('standalone-mode');
@@ -846,6 +873,10 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
 
   function openIosModal() {
     if (!iosModal) return;
+    // Step 1 names the browser whose Share button the user taps; steps 2 and 3
+    // are the same iOS share sheet in Safari and in Chrome.
+    const step1 = iosModal.querySelector('[data-install-i18n="iosStep1"], [data-install-i18n="iosChromeStep1"]');
+    if (step1) step1.setAttribute('data-install-i18n', platform === 'ios-chrome' ? 'iosChromeStep1' : 'iosStep1');
     applyTranslations();
     iosModal.classList.remove('hidden');
     requestAnimationFrame(() => iosModal.classList.add('visible'));
@@ -905,7 +936,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
       return;
     }
     if (platform === 'ios-safari') { openIosModal(); return; }
-    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
+    if (platform === 'ios-chrome') { if (chromeCanAdd) openIosModal(); else openIosChromeModal(); return; }
   });
 
   dismissBtn?.addEventListener('click', () => {
@@ -946,7 +977,7 @@ export function initInstallExperience({ getLanguage = () => 'en', showToast = nu
     ev.preventDefault();
     try { localStorage.removeItem(STORAGE_KEYS.dismissedUntil); } catch {}
     if (platform === 'ios-safari') { openIosModal(); return; }
-    if (platform === 'ios-chrome') { openIosChromeModal(); return; }
+    if (platform === 'ios-chrome') { if (chromeCanAdd) openIosModal(); else openIosChromeModal(); return; }
     showBanner();
   });
 
@@ -1057,7 +1088,7 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
     }
     cardChildren.push(btn, hint);
     ctaCard = el('div', { class: 'install-card' }, ...cardChildren);
-  } else if (platform === 'ios-safari') {
+  } else if (platform === 'ios-safari' || (platform === 'ios-chrome' && iosChromeCanAddToHomeScreen(uaString))) {
     const list = el('ol', { class: 'install-step-list' });
     const stepRow = (n, iconMarkup, text) => {
       const li = el('li');
@@ -1070,7 +1101,7 @@ export function renderLandingPage(host, { lang = 'en', uaString = (typeof naviga
       li.appendChild(textSpan);
       return li;
     };
-    list.appendChild(stepRow(1, iosShareIcon(), tx('iosStep1')));
+    list.appendChild(stepRow(1, iosShareIcon(), tx(platform === 'ios-chrome' ? 'iosChromeStep1' : 'iosStep1')));
     list.appendChild(stepRow(2, addToHomeIcon(), tx('iosStep2')));
     list.appendChild(stepRow(3, plusIcon(), tx('iosStep3')));
     ctaCard = el('div', { class: 'install-card install-steps' },
