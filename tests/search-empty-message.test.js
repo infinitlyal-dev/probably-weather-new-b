@@ -28,8 +28,10 @@ describe('place search: nothing found / not answering', () => {
     expect(runSearch).toMatch(/const searchFailed = \(\) => \{ searchResults = \[\]; renderSearchResults\(\[\], 'searchFailed'\); \}/);
   });
 
-  it('a cleared or too-short query still just empties the list', () => {
-    expect(runSearch).toMatch(/if \(!query \|\| query\.length < 2\) \{ renderSearchResults\(\[\]\); return; \}/);
+  it('a cleared or too-short query empties the list and cancels any search still in flight', () => {
+    // bumping the sequence makes a late answer fail the thisSeq check; the abort stops the fetch
+    expect(runSearch).toMatch(/if \(!query \|\| query\.length < 2\) \{ \+\+searchSeq; activeSearchController\?\.abort\(\); renderSearchResults\(\[\]\); return; \}/);
+    expect(runSearch).toMatch(/if \(thisSeq !== searchSeq\) return;/);
     expect(render).toMatch(/emptyKey \? `<li class="list-empty" role="status"/);
     expect(render).toMatch(/: '';/);
   });
