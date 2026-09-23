@@ -32,7 +32,10 @@ const releaseBaselineCss = transformSync(
 ).code;
 const conditions = {
   clear: { tempC: 27, rainChance: 0, cloudPct: 8, conditionKey: 'clear', conditionLabel: 'Clear', sunrise: '2026-07-11T00:00', sunset: '2026-07-11T23:59' },
-  rain: { tempC: 17, rainChance: 88, cloudPct: 96, conditionKey: 'rain', conditionLabel: 'Rain', sunrise: '2026-07-11T00:00', sunset: '2026-07-11T23:59' },
+  // conditionReason 'rain-now': since 2026-09-22 the hero trusts a server 'rain' only with its
+  // evidence reason (rain-now or the radar override) — a bare 'rain' is a pre-fix payload and
+  // paints "Might rain." This fixture is a raining hour, so it carries what the server sends for one.
+  rain: { tempC: 17, rainChance: 88, cloudPct: 96, conditionKey: 'rain', conditionReason: 'rain-now', conditionLabel: 'Rain', sunrise: '2026-07-11T00:00', sunset: '2026-07-11T23:59' },
   fog: { tempC: 10, rainChance: 8, cloudPct: 100, conditionKey: 'fog', conditionLabel: 'Fog', sunrise: '2026-07-11T08:00', sunset: '2026-07-11T17:00' },
 };
 const desktopViewports = [{ width: 1440, height: 900 }, { width: 1920, height: 1080 }];
@@ -49,7 +52,10 @@ function weatherPayload(kind) {
     now: { ...c, feelsLikeC: c.tempC, uv: 3, isDay: kind !== 'fog', windKph: 15 },
     hourly, daily, wind_kph: 15, maxWindKph: 20, gustKph: 24,
     consensus: { confidenceKey: 'high' },
-    meta: { localHour: kind === 'fog' ? 2 : 14, utcOffsetSeconds: 7200, confidence: 'high', sources: [{ name: 'Open-Meteo', ok: true }], sourceConditions: [{ source: 'Open-Meteo', vote: c.conditionKey, desc: c.conditionLabel }], sourceRanges: [], conditionConfidence: { level: 'high', finalCondition: c.conditionKey, sourceAgreement: '5/5' } },
+    // schema: app.js drops a payload below PAYLOAD_SCHEMA_MIN (5, since 2026-09-14) as not
+    // weather — this gate painted "Couldn't fetch weather" and timed out from then until
+    // 2026-09-23, when it was found missing from e229b36's harness fix.
+    meta: { schema: 5, localHour: kind === 'fog' ? 2 : 14, utcOffsetSeconds: 7200, confidence: 'high', sources: [{ name: 'Open-Meteo', ok: true }], sourceConditions: [{ source: 'Open-Meteo', vote: c.conditionKey, desc: c.conditionLabel }], sourceRanges: [], conditionConfidence: { level: 'high', finalCondition: c.conditionKey, sourceAgreement: '5/5' } },
   };
 }
 
