@@ -4958,7 +4958,13 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   .feels-line { margin-top: calc(var(--fold-rhythm) * 0.35); }
   .range-line { margin-top: calc(var(--fold-rhythm) * 0.2); }
   .agree-line {
-    margin-top: calc(var(--fold-rhythm) * 0.7);
+    /* The 13 px line of text was the whole tap target (launch eval, 2026-09-24).
+       6 px of padding above and below makes it 25 px (WCAG 2.5.8 asks 24), and the
+       equal negative margins keep every pixel of the layout where it was; 6, not
+       more, because the gap to the stats band below is 7.9 px at 414x715. */
+    margin-top: calc(var(--fold-rhythm) * 0.7 - 6px);
+    margin-bottom: -6px;
+    padding-block: 6px;
     font-size: clamp(0.66rem, min(1.5vh, 3.4vw), 0.88rem);
   }
 
