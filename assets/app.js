@@ -339,6 +339,11 @@ document.addEventListener("DOMContentLoaded", () => {
       recent: { en: "Recent", af: "Onlangs", zu: "Okwakamuva", xh: "Okutsha", st: "Tsa morao tjena" },
       noSaved: { en: "No saved places yet.", af: "Nog geen gestoorde plekke nie.", zu: "Azikho izindawo ezigciniwe.", xh: "Akukho ndawo igciniweyo okwangoku.", st: "Ha ho dibaka tse bolokilweng." },
       noRecent: { en: "No recent searches yet.", af: "Nog geen onlangse soektogte nie.", zu: "Azikho ukusesha kwakamuva.", xh: "Akukho kukhangela kwakutsha.", st: "Ha ho ho batla ha morao tjena." },
+      // A finished search that found nothing, and one the geocoder did not answer (429 / 5xx / network).
+      // Both used to leave the list silently empty (launch eval, 2026-09-24). zu/xh/st through the
+      // skills + lang-check: all pass.
+      noResults: { en: "No places found. Check the spelling, or try a nearby town.", af: "Geen plek gevind nie. Kyk na die spelling, of probeer 'n dorp naby.", zu: "Ayikho indawo etholakele. Hlola ukupela, noma uzame idolobha eliseduze.", xh: "Akukho ndawo ifunyenweyo. Jonga upelo, okanye uzame idolophu ekufutshane.", st: "Ha ho dibaka tse fumanweng. Hlahloba mopeleto, kapa o leke toropo e haufi." },
+      searchFailed: { en: "Search isn't answering right now. Try again in a moment.", af: "Die soektog antwoord nie nou nie. Probeer weer oor 'n oomblik.", zu: "Ukusesha akuphenduli okwamanje. Zama futhi ngomzuzwana.", xh: "Ukukhangela akuphenduli ngoku. Zama kwakhona ngomzuzwana.", st: "Ho batla ha ho arabe jwale. Leka hape ka motsotsoana." },
       clearRecents: { en: "Clear recents", af: "Verwyder onlangse soektogte", zu: "Susa okamuva", xh: "Susa okukhangelwe kutshanje", st: "Hlakola tsa morao" },
       edit: { en: "Edit", af: "Wysig", zu: "Hlela", xh: "Hlela", st: "Fetola" },
       manage: { en: "Manage", af: "Bestuur", zu: "Phatha", xh: "Lawula", st: "Tsamaisa" },
@@ -1425,6 +1430,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Search results already on screen are re-rendered so a placeholder name
     // ("Unknown") follows the language like every other displayed name.
     if (searchResults.length) renderSearchResults(searchResults);
+    // …and a "nothing found" / "not answering" line left on screen follows it too.
+    for (const li of document.querySelectorAll('#searchResults .list-empty[data-msg]')) li.textContent = t('search', li.dataset.msg);
     const versionBanner = document.getElementById('versionUpdateBanner');
     if (versionBanner) {
       const bannerText = versionBanner.querySelector('.version-update-text');
@@ -3781,11 +3788,16 @@ document.addEventListener("DOMContentLoaded", () => {
   async function runSearch(query) {
     if (!query || query.length < 2) { renderSearchResults([]); return; }
     const thisSeq = ++searchSeq; if (activeSearchController) activeSearchController.abort(); activeSearchController = new AbortController();
+    // Old results must not come back over the message (a language switch re-renders searchResults).
+    const searchFailed = () => { searchResults = []; renderSearchResults([], 'searchFailed'); };
     try {
       // Server-side LocationIQ proxy — token stays off the client, results are ZA-biased.
       const resp = await fetch(`/api/geocode?type=search&q=${encodeURIComponent(query)}`, { signal: activeSearchController.signal });
-      if (thisSeq !== searchSeq || !resp.ok) return;
+      if (thisSeq !== searchSeq) return;
+      // 429 / 5xx, or the geocoder's own "busy" / "failed" (200 with ok:false): say so, don't go blank.
+      if (!resp.ok) { searchFailed(); return; }
       const data = await resp.json();
+      if (data?.ok === false) { searchFailed(); return; }
       const mapped = (Array.isArray(data?.results) ? data.results : [])
         .map(r => ({
           name: r.name || r.display_name?.split(',')[0] || 'Unknown',
@@ -3802,8 +3814,12 @@ document.addEventListener("DOMContentLoaded", () => {
         searchResultName(prev) === searchResultName(r) &&
         haversineKm(prev, r) <= 1
       ));
-      renderSearchResults(searchResults);
-    } catch (e) { if (e.name !== 'AbortError') console.error('Search error:', e); }
+      renderSearchResults(searchResults, 'noResults');
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+      console.error('Search error:', e);
+      if (thisSeq === searchSeq) searchFailed();
+    }
   }
   // Lead with the feature's OWN name (r.name = the actual searched place) so
   // "Bryn Mawr" shows as itself, not its container "Lower Merion Township".
@@ -3821,9 +3837,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return { temp: formatTemp(norm.nowTemp), icon: conditionIcon(norm.conditionKey, true, { size: 18 }) };
     }).catch(() => ({ temp: '--°', icon: weatherIconSvg('cloud-sun', { size: 18 }) }));
   }
-  function renderSearchResults(results) {
+  // emptyKey: the T.search message a FINISHED search shows when it has nothing to list
+  // ('noResults' / 'searchFailed'); without one (a cleared or too-short query) the list just empties.
+  function renderSearchResults(results, emptyKey) {
     const rl = document.getElementById('searchResults') || (() => { const ul = document.createElement('ul'); ul.id = 'searchResults'; ul.className = 'search-results'; document.querySelector('.search-body')?.prepend(ul); return ul; })();
-    if (!results.length) { rl.innerHTML = ''; return; }
+    if (!results.length) {
+      rl.innerHTML = emptyKey ? `<li class="list-empty" role="status" data-msg="${escapeHtml(emptyKey)}">${escapeHtml(t('search', emptyKey))}</li>` : '';
+      return;
+    }
     const favs = loadFavorites();
     rl.innerHTML = results.map((r, index) => { const fn = escapeHtml(formatSearchResult(r)), isFav = favs.some(p => samePlace(p, { lat: parseFloat(r.lat), lon: parseFloat(r.lon) })); const hasMini = index < SEARCH_MINI_VISIBLE_LIMIT; const icon = `<span class="result-icon" aria-hidden="true">${hasMini ? weatherIconSvg('cloud-sun', { size: 18 }) : ''}</span>`; const temp = hasMini ? '<span class="result-temp">--°</span>' : ''; return `<li class="search-result-item" role="button" tabindex="0" data-lat="${r.lat}" data-lon="${r.lon}" data-name="${escapeHtml(searchResultName(r))}"><button class="fav-star${isFav ? ' is-fav' : ''}" aria-label="${escapeHtml(isFav ? t('misc', 'saved') : t('misc', 'savePlace'))}" aria-pressed="${isFav}" data-lat="${r.lat}" data-lon="${r.lon}">${weatherIconSvg('star', { size: 18, filled: isFav })}</button>${icon}<span class="result-name">${fn}</span>${temp}</li>`; }).join('');
     rl.querySelectorAll('li[data-lat]').forEach(li => {
