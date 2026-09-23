@@ -5,7 +5,7 @@
  "complete": false,
  "filled": 294,
  "total": 504,
- "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-06 (pm): wind pair 9bada961b0a7 -> tue and 330bfae094d5 -> wed (Al's swap ruling). | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-16: rain/week_2/day/3.webp rerolled — 3bd49d0acf2b (Subaru badge, Australian-looking plate and streetscape) replaced by fec85aba3f48, GPT Image 2 via Higgsfield, Al chose candidate 2 of 3. Both slot copies (week_2 and week_4) rewritten; the bespoke lines were re-keyed to the new hash.",
+ "note": "Curation artifact only — not app-consumed. hash = sha1-12 of image bytes; image = canonical path under assets/images/bg/; paths = every duplicate file with those bytes. | 2026-09-06: 532 uncurated slots overwritten with copies of curated photographs from the same condition and time-of-day, so the app serves set-001 only. `paths` now includes those copies. set-002 replaces them with new curated photographs. | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-06 (pm): wind pair 9bada961b0a7 -> tue and 330bfae094d5 -> wed (Al's swap ruling). | 2026-09-06: grid laid out on disk by scripts/layout-set-001-grid.mjs — week A = week_1+week_3, week B = week_2+week_4, day = slot index (Mon=1..Sun=7); an empty grid position takes the same-day photograph from the other week. `image` and `paths` name the slots holding each photograph; `previousImage` is the pre-layout canonical path. | 2026-09-16: rain/week_2/day/3.webp rerolled — 3bd49d0acf2b (Subaru badge, Australian-looking plate and streetscape) replaced by fec85aba3f48, GPT Image 2 via Higgsfield, Al chose candidate 2 of 3. Both slot copies (week_2 and week_4) rewritten; the bespoke lines were re-keyed to the new hash. | 2026-09-23: 6 photographs moved by Al's rulings (review/cold-move-ruled.json, review/bucket-check-ruled.json) — each takes weeks 2+4 of its own weekday in the new bucket, the photograph there keeps weeks 1+3; `movedFrom` names the slots it left, which are benched (review/benched-photos.json) and still hold its bytes on disk.",
  "assignments": [
   {
    "condition": "clear",
@@ -565,19 +565,25 @@
    "previousImage": "cloudy/week_2/dawn/7.webp"
   },
   {
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "dawn",
-   "week": "A",
+   "week": "B",
    "day": "fri",
    "hash": "3bfd9b9470d6",
-   "image": "cloudy/week_1/dawn/5.webp",
+   "image": "cold/week_2/dawn/5.webp",
    "paths": [
+    "cold/week_2/dawn/5.webp",
+    "cold/week_4/dawn/5.webp"
+   ],
+   "previousImage": "cloudy/week_1/dawn/5.webp",
+   "movedFrom": [
     "cloudy/week_1/dawn/5.webp",
     "cloudy/week_2/dawn/5.webp",
     "cloudy/week_3/dawn/5.webp",
     "cloudy/week_4/dawn/5.webp"
    ],
-   "previousImage": "cloudy/week_2/dawn/4.webp"
+   "movedOn": "2026-09-23",
+   "movedBy": "review/bucket-check-ruled.json"
   },
   {
    "condition": "cloudy",
@@ -806,19 +812,25 @@
    "previousImage": "cloudy/week_1/dusk/2.webp"
   },
   {
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "dusk",
-   "week": "A",
+   "week": "B",
    "day": "tue",
    "hash": "018a0573e433",
-   "image": "cloudy/week_1/dusk/2.webp",
+   "image": "cold/week_2/dusk/2.webp",
    "paths": [
+    "cold/week_2/dusk/2.webp",
+    "cold/week_4/dusk/2.webp"
+   ],
+   "previousImage": "cloudy/week_1/dusk/2.webp",
+   "movedFrom": [
     "cloudy/week_1/dusk/2.webp",
     "cloudy/week_2/dusk/2.webp",
     "cloudy/week_3/dusk/2.webp",
     "cloudy/week_4/dusk/2.webp"
    ],
-   "previousImage": "cloudy/week_2/dusk/3.webp"
+   "movedOn": "2026-09-23",
+   "movedBy": "review/cold-move-ruled.json"
   },
   {
    "condition": "cloudy",
@@ -925,19 +937,25 @@
    "previousImage": "cloudy/week_1/night/7.webp"
   },
   {
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "night",
-   "week": "A",
+   "week": "B",
    "day": "wed",
    "hash": "76070c299a0b",
-   "image": "cloudy/week_1/night/3.webp",
+   "image": "cold/week_2/night/3.webp",
    "paths": [
+    "cold/week_2/night/3.webp",
+    "cold/week_4/night/3.webp"
+   ],
+   "previousImage": "cloudy/week_1/night/3.webp",
+   "movedFrom": [
     "cloudy/week_1/night/3.webp",
     "cloudy/week_2/night/3.webp",
     "cloudy/week_3/night/3.webp",
     "cloudy/week_4/night/3.webp"
    ],
-   "previousImage": "cloudy/week_1/night/2.webp"
+   "movedOn": "2026-09-23",
+   "movedBy": "review/bucket-check-ruled.json"
   },
   {
    "condition": "cloudy",
@@ -970,34 +988,46 @@
    "previousImage": "cloudy/week_1/night/6.webp"
   },
   {
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "night",
-   "week": "A",
+   "week": "B",
    "day": "sat",
    "hash": "f3255e596b2c",
-   "image": "cloudy/week_1/night/6.webp",
+   "image": "cold/week_2/night/6.webp",
    "paths": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "previousImage": "cloudy/week_1/night/6.webp",
+   "movedFrom": [
     "cloudy/week_1/night/6.webp",
     "cloudy/week_2/night/6.webp",
     "cloudy/week_3/night/6.webp",
     "cloudy/week_4/night/6.webp"
    ],
-   "previousImage": "cloudy/week_2/night/5.webp"
+   "movedOn": "2026-09-23",
+   "movedBy": "review/bucket-check-ruled.json"
   },
   {
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "night",
-   "week": "A",
+   "week": "B",
    "day": "sun",
    "hash": "c6d4061cbef2",
-   "image": "cloudy/week_1/night/7.webp",
+   "image": "cold/week_2/night/7.webp",
    "paths": [
+    "cold/week_2/night/7.webp",
+    "cold/week_4/night/7.webp"
+   ],
+   "previousImage": "cloudy/week_1/night/7.webp",
+   "movedFrom": [
     "cloudy/week_1/night/7.webp",
     "cloudy/week_2/night/7.webp",
     "cloudy/week_3/night/7.webp",
     "cloudy/week_4/night/7.webp"
    ],
-   "previousImage": "cloudy/week_2/night/4.webp"
+   "movedOn": "2026-09-23",
+   "movedBy": "review/bucket-check-ruled.json"
   },
   {
    "condition": "cold",
@@ -1065,9 +1095,7 @@
    "image": "cold/week_1/dawn/5.webp",
    "paths": [
     "cold/week_1/dawn/5.webp",
-    "cold/week_2/dawn/5.webp",
-    "cold/week_3/dawn/5.webp",
-    "cold/week_4/dawn/5.webp"
+    "cold/week_3/dawn/5.webp"
    ],
    "previousImage": "cold/week_2/dawn/5.webp"
   },
@@ -1258,17 +1286,23 @@
    "previousImage": "cold/week_4/day/1.webp"
   },
   {
-   "condition": "cold",
+   "condition": "cold-clear",
    "time": "day",
    "week": "B",
    "day": "sat",
    "hash": "d003110fec9f",
-   "image": "cold/week_2/day/6.webp",
+   "image": "cold-clear/week_2/day/6.webp",
    "paths": [
+    "cold-clear/week_2/day/6.webp",
+    "cold-clear/week_4/day/6.webp"
+   ],
+   "previousImage": "cold/week_2/day/6.webp",
+   "movedFrom": [
     "cold/week_2/day/6.webp",
     "cold/week_4/day/6.webp"
    ],
-   "previousImage": "cold/week_3/day/7.webp"
+   "movedOn": "2026-09-23",
+   "movedBy": "review/bucket-check-ruled.json"
   },
   {
    "condition": "cold",
@@ -1307,9 +1341,7 @@
    "image": "cold/week_1/dusk/2.webp",
    "paths": [
     "cold/week_1/dusk/2.webp",
-    "cold/week_2/dusk/2.webp",
-    "cold/week_3/dusk/2.webp",
-    "cold/week_4/dusk/2.webp"
+    "cold/week_3/dusk/2.webp"
    ],
    "previousImage": "cold/week_1/dusk/3.webp"
   },
@@ -1426,9 +1458,7 @@
    "image": "cold/week_1/night/3.webp",
    "paths": [
     "cold/week_1/night/3.webp",
-    "cold/week_2/night/3.webp",
-    "cold/week_3/night/3.webp",
-    "cold/week_4/night/3.webp"
+    "cold/week_3/night/3.webp"
    ],
    "previousImage": "cold/week_2/night/2.webp"
   },
@@ -1471,9 +1501,7 @@
    "image": "cold/week_1/night/6.webp",
    "paths": [
     "cold/week_1/night/6.webp",
-    "cold/week_2/night/6.webp",
-    "cold/week_3/night/6.webp",
-    "cold/week_4/night/6.webp"
+    "cold/week_3/night/6.webp"
    ],
    "previousImage": "cold/week_4/night/1.webp"
   },
@@ -1486,9 +1514,7 @@
    "image": "cold/week_1/night/7.webp",
    "paths": [
     "cold/week_1/night/7.webp",
-    "cold/week_2/night/7.webp",
-    "cold/week_3/night/7.webp",
-    "cold/week_4/night/7.webp"
+    "cold/week_3/night/7.webp"
    ]
   },
   {
@@ -1680,9 +1706,7 @@
    "image": "cold-clear/week_1/day/6.webp",
    "paths": [
     "cold-clear/week_1/day/6.webp",
-    "cold-clear/week_2/day/6.webp",
-    "cold-clear/week_3/day/6.webp",
-    "cold-clear/week_4/day/6.webp"
+    "cold-clear/week_3/day/6.webp"
    ],
    "previousImage": "cold-clear/week_4/day/3.webp"
   },

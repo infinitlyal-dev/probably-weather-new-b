@@ -2,8 +2,8 @@
 // scripts/lang-check/apply-af-accepted.mjs on 2026-09-23 from review/af-bespoke-decisions.json — do not
 // edit by hand.
 //
-// English line → Afrikaans. 1108 rows: 344 of Al's native bank lines, 432 drafts kept as they were,
-// 86 rewrites of drafts that did not carry the joke, 216 new transcreations, 30 ruled by Al.
+// English line → Afrikaans. 1106 rows: 343 of Al's native bank lines, 432 drafts kept as they were,
+// 86 rewrites of drafts that did not carry the joke, 215 new transcreations, 30 ruled by Al.
 // Every row passed lang-check with no medium or high finding, adds no day or braai the English does
 // not have, and was judged against review/af-voice.md. Rows that did not clear the gate are on
 // review/af-al.html. Served for Afrikaans by applyBespokeLine in assets/app.js, loaded only then.
@@ -386,7 +386,6 @@ export const HERO_LINES_AF = {
  "Outside is closed until further notice.": "Buite is gesluit tot verdere kennisgewing.",
  "Outside is closed. Management is inside.": "Buite is gesluit. Bestuur is binne.",
  "Outside is for the stars tonight; everything with fur voted fireplace.": "Buite is vanaand vir die sterre; alles met pels het vir die kaggel gestem.",
- "Overcast at night keeps the warmth in, and somebody is out here using it.": "Bewolkte nagte hou die warmte in, en iemand is hier buite en gebruik dit.",
  "Overcast this thick turns the Karoo into a corridor, and he is halfway down it.": "Wolke só dik maak van die Karoo 'n gang, en hy is halfpad daarin af.",
  "Pack an umbrella. Or don't. We don't know either.": "Pak 'n sambreel. Of moenie. Ons weet ook nie.",
  "Panels installed, sun absent: the sky owes this roof an apology.": "Panele geïnstalleer, son afwesig: die lug skuld hierdie dak 'n verskoning.",
@@ -946,7 +945,6 @@ export const HERO_LINES_AF = {
  "The walk has been postponed by the committee upstairs, and the committee looks settled.": "Die stap is deur die komitee daarbo uitgestel, en die komitee lyk tevrede.",
  "The warmest place in the province was abandoned here at about six-fifteen.": "Die warmste plek in die provinsie is hier omtrent kwart oor ses verlaat.",
  "The washing goes out at this hour because wind is cheaper than electricity.": "Die wasgoed gaan hierdie tyd uit omdat wind goedkoper as elektrisiteit is.",
- "The washing is not going to dry. We hang it up for hope.": "Die wasgoed gaan nie droog word nie. Ons hang dit op vir die hoop.",
  "The washing's on the line and you're feeling brave.": "Die wasgoed hang buite en jy voel dapper.",
  "The water did not cool down last night and he has already checked.": "Die water het nie gisteraand afgekoel nie en hy het al gaan kyk.",
  "The weather chose indoors. Correctly.": "Die weer het binne gekies. Heeltemal reg ook.",

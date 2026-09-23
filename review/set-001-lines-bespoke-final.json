@@ -4,7 +4,7 @@
  "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06 (pm): Al's rulings — no 3-line cap: the 30 rescues the cap dropped are restored; every ruled keep from clear-v3, cloudy-v3, the six Astra buckets and the test batch wired onto its own photograph by hash; the transposed wind pair swapped grid days (tue/wed) so each day-named line lands on its day. CULLED 2026-09-20 on review/provenance-cull-ruled.json: every line that reached its photograph on a bulk adoption or on no record at all is out. What remains is what Al placed or ticked himself.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
  "images": 293,
- "lineCount": 1123,
+ "lineCount": 1121,
  "set": [
   {
    "image": "clear/week_1/dawn/7.webp",
@@ -2677,17 +2677,15 @@
    ]
   },
   {
-   "image": "cloudy/week_1/dawn/5.webp",
+   "image": "cold/week_2/dawn/5.webp",
    "hash": "3bfd9b9470d6",
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "dawn",
    "week": "A",
    "day": "fri",
    "paths": [
-    "cloudy/week_1/dawn/5.webp",
-    "cloudy/week_2/dawn/5.webp",
-    "cloudy/week_3/dawn/5.webp",
-    "cloudy/week_4/dawn/5.webp"
+    "cold/week_2/dawn/5.webp",
+    "cold/week_4/dawn/5.webp"
    ],
    "lines": [
     "The sun's on a tea break. No ETA.",
@@ -3064,17 +3062,15 @@
    ]
   },
   {
-   "image": "cloudy/week_1/dusk/2.webp",
+   "image": "cold/week_2/dusk/2.webp",
    "hash": "018a0573e433",
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "dusk",
    "week": "A",
    "day": "tue",
    "paths": [
-    "cloudy/week_1/dusk/2.webp",
-    "cloudy/week_2/dusk/2.webp",
-    "cloudy/week_3/dusk/2.webp",
-    "cloudy/week_4/dusk/2.webp"
+    "cold/week_2/dusk/2.webp",
+    "cold/week_4/dusk/2.webp"
    ],
    "lines": [
     "The sun clocked out without saying bye. Rude, but relatable.",
@@ -3259,22 +3255,19 @@
    ]
   },
   {
-   "image": "cloudy/week_1/night/7.webp",
+   "image": "cold/week_2/night/7.webp",
    "hash": "c6d4061cbef2",
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "night",
    "week": "A",
    "day": "sun",
    "paths": [
-    "cloudy/week_1/night/7.webp",
-    "cloudy/week_2/night/7.webp",
-    "cloudy/week_3/night/7.webp",
-    "cloudy/week_4/night/7.webp"
+    "cold/week_2/night/7.webp",
+    "cold/week_4/night/7.webp"
    ],
    "lines": [
     "The sky put the stars on silent. They're still up there, promise.",
     "The cloud is holding the city's glow like a lampshade tonight.",
-    "Overcast at night keeps the warmth in, and somebody is out here using it.",
     "No stars on offer tonight, so the city is providing its own."
    ],
    "authoredFor": [
@@ -3388,9 +3381,7 @@
    "day": "fri",
    "paths": [
     "cold/week_1/dawn/5.webp",
-    "cold/week_2/dawn/5.webp",
-    "cold/week_3/dawn/5.webp",
-    "cold/week_4/dawn/5.webp"
+    "cold/week_3/dawn/5.webp"
    ],
    "lines": [
     "Getting out of bed was a mistake. A documented one.",
@@ -3623,18 +3614,17 @@
    ]
   },
   {
-   "image": "cold/week_2/day/6.webp",
+   "image": "cold-clear/week_2/day/6.webp",
    "hash": "d003110fec9f",
-   "condition": "cold",
+   "condition": "cold-clear",
    "time": "day",
    "week": "B",
    "day": "sat",
    "paths": [
-    "cold/week_2/day/6.webp",
-    "cold/week_4/day/6.webp"
+    "cold-clear/week_2/day/6.webp",
+    "cold-clear/week_4/day/6.webp"
    ],
    "lines": [
-    "The washing is not going to dry. We hang it up for hope.",
     "The sausage dog has a jersey. He didn't ask for it, but he wears it with dignity.",
     "Cold plus beautiful is an honest trade. We'll take it.",
     "Snow on the berg, washing on the line: cold enough to freeze, dry enough to try."
@@ -3975,9 +3965,7 @@
    "day": "sat",
    "paths": [
     "cold-clear/week_1/day/6.webp",
-    "cold-clear/week_2/day/6.webp",
-    "cold-clear/week_3/day/6.webp",
-    "cold-clear/week_4/day/6.webp"
+    "cold-clear/week_3/day/6.webp"
    ],
    "lines": [
     "Lekker koud, but the rugby fields are about to look perfect.",
@@ -5630,9 +5618,7 @@
    "day": "tue",
    "paths": [
     "cold/week_1/dusk/2.webp",
-    "cold/week_2/dusk/2.webp",
-    "cold/week_3/dusk/2.webp",
-    "cold/week_4/dusk/2.webp"
+    "cold/week_3/dusk/2.webp"
    ],
    "lines": [
     "The sun is leaving the mountains one shelf at a time."
@@ -5694,9 +5680,7 @@
    "day": "sun",
    "paths": [
     "cold/week_1/night/7.webp",
-    "cold/week_2/night/7.webp",
-    "cold/week_3/night/7.webp",
-    "cold/week_4/night/7.webp"
+    "cold/week_3/night/7.webp"
    ],
    "lines": [
     "Beanie, snood, torch, book: winter nights build the best reading rooms."
@@ -5755,9 +5739,7 @@
    "day": "wed",
    "paths": [
     "cold/week_1/night/3.webp",
-    "cold/week_2/night/3.webp",
-    "cold/week_3/night/3.webp",
-    "cold/week_4/night/3.webp"
+    "cold/week_3/night/3.webp"
    ],
    "lines": [
     "Clear night, wet steps, visible breath: the frost is filling in its paperwork.",
@@ -6661,17 +6643,15 @@
    ]
   },
   {
-   "image": "cloudy/week_1/night/3.webp",
+   "image": "cold/week_2/night/3.webp",
    "hash": "76070c299a0b",
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "night",
    "week": "A",
    "day": "wed",
    "paths": [
-    "cloudy/week_1/night/3.webp",
-    "cloudy/week_2/night/3.webp",
-    "cloudy/week_3/night/3.webp",
-    "cloudy/week_4/night/3.webp"
+    "cold/week_2/night/3.webp",
+    "cold/week_4/night/3.webp"
    ],
    "lines": [
     "Cloudy night. Nobody’s going out, officially.",
@@ -6687,17 +6667,15 @@
    ]
   },
   {
-   "image": "cloudy/week_1/night/6.webp",
+   "image": "cold/week_2/night/6.webp",
    "hash": "f3255e596b2c",
-   "condition": "cloudy",
+   "condition": "cold",
    "time": "night",
    "week": "A",
    "day": "sat",
    "paths": [
-    "cloudy/week_1/night/6.webp",
-    "cloudy/week_2/night/6.webp",
-    "cloudy/week_3/night/6.webp",
-    "cloudy/week_4/night/6.webp"
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
    ],
    "lines": [
     "Cloudy night. Bravery in blanket form.",
@@ -6757,9 +6735,7 @@
    "day": "sat",
    "paths": [
     "cold/week_1/night/6.webp",
-    "cold/week_2/night/6.webp",
-    "cold/week_3/night/6.webp",
-    "cold/week_4/night/6.webp"
+    "cold/week_3/night/6.webp"
    ],
    "authoredFor": [
     "cold/week_4/night/1.webp"
@@ -6786,5 +6762,44 @@
   ],
   "pairsRemoved": 3,
   "photographsLeftWithNoLines": 1
+ },
+ "heldBack": [
+  {
+   "hash": "d003110fec9f",
+   "line": "The washing is not going to dry. We hang it up for hope.",
+   "af": "Die wasgoed gaan nie droog word nie. Ons hang dit op vir die hoop.",
+   "from": "cold",
+   "to": "cold-clear",
+   "reason": "cold-clear is a dry, clear-sky day (cloud under 30%, rain chance under 20%): the washing dries",
+   "on": "2026-09-23"
+  },
+  {
+   "hash": "c6d4061cbef2",
+   "line": "Overcast at night keeps the warmth in, and somebody is out here using it.",
+   "af": "Bewolkte nagte hou die warmte in, en iemand is hier buite en gebruik dit.",
+   "from": "cloudy",
+   "to": "cold",
+   "reason": "cold: the hero says it is cold; the line says the night is warm enough to sit out in",
+   "on": "2026-09-23"
+  }
+ ],
+ "photoMoves": {
+  "on": "2026-09-23",
+  "rulings": [
+   "review/cold-move-ruled.json",
+   "review/bucket-check-ruled.json"
+  ],
+  "moved": [
+   "018a0573e433",
+   "76070c299a0b",
+   "d003110fec9f",
+   "3bfd9b9470d6",
+   "f3255e596b2c",
+   "c6d4061cbef2"
+  ],
+  "notPlaced": [
+   "77dad643efa6"
+  ],
+  "heldBack": 2
  }
 }

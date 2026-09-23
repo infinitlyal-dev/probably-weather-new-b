@@ -1,0 +1,26 @@
+{
+ "ruledOn": "2026-09-23T11:57:57.282Z",
+ "photo": {
+  "sha1": "018a0573e433",
+  "sha256": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
+  "from": [
+   "cloudy/week_1/dusk/2.webp",
+   "cloudy/week_2/dusk/2.webp",
+   "cloudy/week_3/dusk/2.webp",
+   "cloudy/week_4/dusk/2.webp"
+  ]
+ },
+ "proposedTo": [
+  "cold/week_2/dusk/2.webp",
+  "cold/week_4/dusk/2.webp"
+ ],
+ "displaces": {
+  "sha256": "6c75084d23db",
+  "keeps": [
+   "cold/week_1/dusk/2.webp",
+   "cold/week_3/dusk/2.webp"
+  ]
+ },
+ "verdict": "YES",
+ "comment": ""
+}

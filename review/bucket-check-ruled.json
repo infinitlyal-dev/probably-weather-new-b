@@ -1,0 +1,190 @@
+{
+ "ruledOn": "2026-09-23T12:00:42.873Z",
+ "viewed": 294,
+ "rows": [
+  {
+   "n": 58,
+   "sha1": "018a0573e433",
+   "sha256": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
+   "bucket": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "level": "likely",
+   "wrong": "Dog in a grey jumper on a stoep, mountains at dusk. Served 22 Sept under \"Partly cloudy.\" on a 30° day.",
+   "suggested": "cold",
+   "verdict": "MOVE",
+   "moveTo": "cold",
+   "comment": ""
+  },
+  {
+   "n": 66,
+   "sha1": "76070c299a0b",
+   "sha256": "5df9bca2b53222d5d6d358aafccfea90f3c76f34332c940ff03a0553e8b38740",
+   "bucket": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/3.webp",
+    "cloudy/week_2/night/3.webp",
+    "cloudy/week_3/night/3.webp",
+    "cloudy/week_4/night/3.webp"
+   ],
+   "level": "likely",
+   "wrong": "A cat asleep in a knitted jumper under a blanket by a lamp: the same winter cue as the dog, in a bucket that also serves warm cloudy nights.",
+   "suggested": "cold",
+   "verdict": "MOVE",
+   "moveTo": "cold",
+   "comment": ""
+  },
+  {
+   "n": 90,
+   "sha1": "d003110fec9f",
+   "sha256": "add32aa85b80ea31df34d84ac6613e9cebc4e9aae309b134e3e584e31fd80e2d",
+   "bucket": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_2/day/6.webp",
+    "cold/week_4/day/6.webp"
+   ],
+   "level": "likely",
+   "wrong": "Bright blue sky over snow-capped peaks, washing drying in the sun. Cold is served on grey or wet cold days; blue-sky cold is cold-clear.",
+   "suggested": "cold-clear",
+   "verdict": "MOVE",
+   "moveTo": "cold-clear",
+   "comment": ""
+  },
+  {
+   "n": 79,
+   "sha1": "77dad643efa6",
+   "sha256": "0f384484ae14dbaa3dcfe766b8dfbbc8f9f1aeb68dcd6978c6be48571f92d52a",
+   "bucket": "cold",
+   "time": "day",
+   "slots": [
+    "cold/week_1/day/2.webp",
+    "cold/week_3/day/2.webp"
+   ],
+   "level": "likely",
+   "wrong": "Rain falling, an umbrella up, a \"road closed due to rain\" sign. In cold it can show rain on a dry cold day.",
+   "suggested": "rain",
+   "verdict": "MOVE",
+   "moveTo": "rain",
+   "comment": ""
+  },
+  {
+   "n": 195,
+   "sha1": "73567b0c612e",
+   "sha256": "6464ed68f19d5cf88ded513d5f7d4ba919815d72ac959c53dc50f4517e9a3045",
+   "bucket": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_2/dawn/6.webp",
+    "rain/week_3/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "level": "likely",
+   "wrong": "Blue sky and a golden sunrise; only the street is wet. In rain it sits under \"Rain's here.\" with the sun out.",
+   "suggested": "clear",
+   "verdict": "KEEP",
+   "moveTo": null,
+   "comment": ""
+  },
+  {
+   "n": 229,
+   "sha1": "20ed2fe6b144",
+   "sha256": "d26fb6bbee9db6057706181e2a6bfa1623a7d2a0a17e62645ab58b6fbdefbe56",
+   "bucket": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/5.webp",
+    "storm/week_2/dawn/5.webp",
+    "storm/week_3/dawn/5.webp",
+    "storm/week_4/dawn/5.webp"
+   ],
+   "level": "likely",
+   "wrong": "A clear sunset sky over a dusty farm road; the storm is only a distant cloud bank. No lightning, no rain.",
+   "suggested": "cloudy",
+   "verdict": "KEEP",
+   "moveTo": null,
+   "comment": ""
+  },
+  {
+   "n": 40,
+   "sha1": "3bfd9b9470d6",
+   "sha256": "1a7797cabfa960b9a4b8a8582acdac96884751e7b9f73b35ab6f3be5cc1b4153",
+   "bucket": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/5.webp",
+    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_3/dawn/5.webp",
+    "cloudy/week_4/dawn/5.webp"
+   ],
+   "level": "possible",
+   "wrong": "Jacket, flat cap and a steaming mug; its own line says Joburg mornings under cloud start at about four degrees.",
+   "suggested": "cold",
+   "verdict": "MOVE",
+   "moveTo": "cold",
+   "comment": ""
+  },
+  {
+   "n": 69,
+   "sha1": "f3255e596b2c",
+   "sha256": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+   "bucket": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "level": "possible",
+   "wrong": "Friends in blankets and knitted jumpers around a lantern; one of its lines says the evening is cold.",
+   "suggested": "cold",
+   "verdict": "MOVE",
+   "moveTo": "cold",
+   "comment": ""
+  },
+  {
+   "n": 70,
+   "sha1": "c6d4061cbef2",
+   "sha256": "6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024",
+   "bucket": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_2/night/7.webp",
+    "cloudy/week_3/night/7.webp",
+    "cloudy/week_4/night/7.webp"
+   ],
+   "level": "possible",
+   "wrong": "A man in a puffer jacket on a rooftop at night. Cloudy also serves warm summer nights.",
+   "suggested": "cold",
+   "verdict": "MOVE",
+   "moveTo": "cold",
+   "comment": ""
+  },
+  {
+   "n": 203,
+   "sha1": "d8d16083a690",
+   "sha256": "5a08fa13f99d2d2733aaaf4977ef131595df457eb0eacbfe396d8f8280543462",
+   "bucket": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/7.webp",
+    "rain/week_3/day/7.webp"
+   ],
+   "level": "possible",
+   "wrong": "A wave breaking over the harbour wall, raincoats, no rain visibly falling. Reads as wind; its lines say it is raining.",
+   "suggested": "wind",
+   "verdict": "KEEP",
+   "moveTo": null,
+   "comment": ""
+  }
+ ]
+}

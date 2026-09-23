@@ -1,13 +1,128 @@
 {
- "note": "Photographs taken out of rotation without moving a file. scripts/image-slot-manifest.mjs points every slot that holds a benched photograph at the picker's own week-collapse fallback (same folder, same time of day, week_1 slot 1 — step 2 of buildPickerPaths), so production serves that photograph instead and the benched bytes are not shipped. Only the built site is affected; an unbuilt local preview still reads the files. To un-bench, delete the entry. To move a photograph to another bucket, Al rules it on the page named in `ruling`.",
+ "note": "Photographs taken out of slots without deleting a file. An entry with `slots` is benched from those slots only — a moved photograph is benched from its old bucket and served in its new one (`movedTo`). scripts/image-slot-manifest.mjs serves each benched slot its `fallback`: the week-collapse slot (week_1 slot 1 of the same folder and time) unless a line on that photograph names a weekday, then the next slot in the same order with none (`fallbackSkipped`). An entry without `slots` is benched everywhere its bytes are. Only the built site is affected; an unbuilt local preview still reads the files. To un-bench, delete the entry.",
  "benched": [
   {
    "sha1": "018a0573e433",
    "sha256": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
-   "slots": ["cloudy/week_1/dusk/2.webp", "cloudy/week_2/dusk/2.webp", "cloudy/week_3/dusk/2.webp", "cloudy/week_4/dusk/2.webp"],
-   "reason": "Dog in a grey jumper on a stoep at dusk: a cold photograph filed in cloudy. Served on Strand 22 Sept 2026 18:34 under 'Partly cloudy.' on a 30° day with 'The day never warmed up…' (Al's ruling: it belongs in the cold set).",
+   "slots": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "fallback": "cloudy/week_1/dusk/1.webp",
+   "movedTo": [
+    "cold/week_2/dusk/2.webp",
+    "cold/week_4/dusk/2.webp"
+   ],
+   "reason": "Dog in a grey jumper on a stoep, mountains at dusk. Served 22 Sept under \"Partly cloudy.\" on a 30° day.",
    "benchedOn": "2026-09-23",
-   "ruling": "review/cold-move-dog.html"
+   "ruling": "review/cold-move-ruled.json"
+  },
+  {
+   "sha1": "76070c299a0b",
+   "sha256": "5df9bca2b53222d5d6d358aafccfea90f3c76f34332c940ff03a0553e8b38740",
+   "slots": [
+    "cloudy/week_1/night/3.webp",
+    "cloudy/week_2/night/3.webp",
+    "cloudy/week_3/night/3.webp",
+    "cloudy/week_4/night/3.webp"
+   ],
+   "fallback": "cloudy/week_1/night/1.webp",
+   "movedTo": [
+    "cold/week_2/night/3.webp",
+    "cold/week_4/night/3.webp"
+   ],
+   "reason": "A cat asleep in a knitted jumper under a blanket by a lamp: the same winter cue as the dog, in a bucket that also serves warm cloudy nights.",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/bucket-check-ruled.json"
+  },
+  {
+   "sha1": "d003110fec9f",
+   "sha256": "add32aa85b80ea31df34d84ac6613e9cebc4e9aae309b134e3e584e31fd80e2d",
+   "slots": [
+    "cold/week_2/day/6.webp",
+    "cold/week_4/day/6.webp"
+   ],
+   "fallback": "cold/week_1/day/1.webp",
+   "movedTo": [
+    "cold-clear/week_2/day/6.webp",
+    "cold-clear/week_4/day/6.webp"
+   ],
+   "reason": "Bright blue sky over snow-capped peaks, washing drying in the sun. Cold is served on grey or wet cold days; blue-sky cold is cold-clear.",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/bucket-check-ruled.json"
+  },
+  {
+   "sha1": "77dad643efa6",
+   "sha256": "0f384484ae14dbaa3dcfe766b8dfbbc8f9f1aeb68dcd6978c6be48571f92d52a",
+   "slots": [
+    "cold/week_1/day/2.webp",
+    "cold/week_3/day/2.webp"
+   ],
+   "fallback": "cold/week_1/day/1.webp",
+   "movedTo": null,
+   "pending": "weeks 2 and 4 of every rain day slot hold a photograph found nowhere else, so any slot would push one out of rotation — Al names the slot (output/photo-moves/79-rain-slot-choice.png)",
+   "reason": "Rain falling, an umbrella up, a \"road closed due to rain\" sign. In cold it can show rain on a dry cold day.",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/bucket-check-ruled.json"
+  },
+  {
+   "sha1": "3bfd9b9470d6",
+   "sha256": "1a7797cabfa960b9a4b8a8582acdac96884751e7b9f73b35ab6f3be5cc1b4153",
+   "slots": [
+    "cloudy/week_1/dawn/5.webp",
+    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_3/dawn/5.webp",
+    "cloudy/week_4/dawn/5.webp"
+   ],
+   "fallback": "cloudy/week_1/dawn/2.webp",
+   "fallbackSkipped": [
+    "cloudy/week_1/dawn/1.webp: \"Grey vibes. The sky matched my Monday.\" names a weekday"
+   ],
+   "movedTo": [
+    "cold/week_2/dawn/5.webp",
+    "cold/week_4/dawn/5.webp"
+   ],
+   "reason": "Jacket, flat cap and a steaming mug; its own line says Joburg mornings under cloud start at about four degrees.",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/bucket-check-ruled.json"
+  },
+  {
+   "sha1": "f3255e596b2c",
+   "sha256": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+   "slots": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "fallback": "cloudy/week_1/night/1.webp",
+   "movedTo": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "reason": "Friends in blankets and knitted jumpers around a lantern; one of its lines says the evening is cold.",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/bucket-check-ruled.json"
+  },
+  {
+   "sha1": "c6d4061cbef2",
+   "sha256": "6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024",
+   "slots": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_2/night/7.webp",
+    "cloudy/week_3/night/7.webp",
+    "cloudy/week_4/night/7.webp"
+   ],
+   "fallback": "cloudy/week_1/night/1.webp",
+   "movedTo": [
+    "cold/week_2/night/7.webp",
+    "cold/week_4/night/7.webp"
+   ],
+   "reason": "A man in a puffer jacket on a rooftop at night. Cloudy also serves warm summer nights.",
+   "benchedOn": "2026-09-23",
+   "ruling": "review/bucket-check-ruled.json"
   }
  ]
 }

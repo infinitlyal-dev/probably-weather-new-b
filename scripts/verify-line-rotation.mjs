@@ -17,10 +17,18 @@
 //   production             ->  bg-canonical/<sha256 of the bytes>.webp
 //
 //   node scripts/verify-line-rotation.mjs
+// TWO STATES A RULING CAN PUT A SLOT IN (2026-09-23), checked for what they are:
+//   - BENCHED (review/benched-photos.json): production serves the slot's fallback
+//     photograph, not the file on disk, so the check is that the SERVED photograph
+//     resolves to lines by its canonical name.
+//   - BARE BY RULING (final.json `awaitingLines`): every line on the photograph was cut,
+//     so it serves a condition-bank line until Al rules new ones. The applier that cut
+//     them proved the bank pool non-empty in every context; here it is listed, not failed.
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { HERO_LINES } from '../assets/hero-lines.js';
+import { scanBackgroundSlots } from './image-slot-manifest.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const BG = path.join(ROOT, 'assets/images/bg');
@@ -37,6 +45,12 @@ let slots = 0;
 let onDisk = 0;
 const linesPerSlot = [];
 const bytesByCanonical = new Map();
+const scan = scanBackgroundSlots(BG);
+const slotState = new Map(scan.entries.map((e) => [e.relativePath, e]));
+const final = JSON.parse(fs.readFileSync(path.join(ROOT, 'review', 'set-001-lines-bespoke-final.json'), 'utf8'));
+const bareByRuling = new Set((final.awaitingLines || []).map((a) => a.hash));
+const benchedSlots = [];
+const bareSlots = [];
 
 for (const condition of CONDITIONS) {
   for (const week of WEEKS) {
@@ -47,6 +61,16 @@ for (const condition of CONDITIONS) {
         let bytes;
         try { bytes = fs.readFileSync(path.join(BG, rel)); } catch { continue; }
         onDisk += 1;
+
+        const state = slotState.get(rel);
+        if (state?.benched) {
+          const served = `bg-canonical/${state.hash}.webp`;
+          benchedSlots.push(rel);
+          if (!HERO_LINES[served]) missingCanonical.push(`${rel} (benched — serves ${path.relative(BG, state.servedPath).replace(/\\/g, '/')}, which has no lines)`);
+          else linesPerSlot.push(HERO_LINES[served].length);
+          continue;
+        }
+        if (bareByRuling.has(createHash('sha1').update(bytes).digest('hex').slice(0, 12))) { bareSlots.push(rel); continue; }
 
         const slotKey = `bg/${rel}`;
         const canonicalKey = `bg-canonical/${createHash('sha256').update(bytes).digest('hex')}.webp`;
@@ -81,6 +105,8 @@ const say = (label, list) => {
 };
 
 console.log(`rotation: ${slots} slot positions, ${onDisk} present on disk, ${bytesByCanonical.size} unique photographs`);
+console.log(`  · ${benchedSlots.length} benched slot(s) checked through the photograph production serves in their place`);
+console.log(`  · ${bareSlots.length} slot(s) hold a photograph left bare by a ruling — condition-bank line${bareSlots.length ? `: ${bareSlots.join(', ')}` : ''}`);
 say('every slot on disk resolves to lines by its source-tree path', missingSlot);
 say('every slot on disk resolves to lines by its production canonical name', missingCanonical);
 say('both key shapes return the same lines for a slot', mismatched);
