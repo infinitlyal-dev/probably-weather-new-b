@@ -11,7 +11,7 @@ import { getWeatherBackgroundFallbackFolder, getWeatherBackgroundFolder } from '
 import { getRotationDay, getRotationWeek, buildPickerPaths } from './image-picker.js';
 import { pickConditionIconForTime, pickHourlyIcon, parseLocalIsoMinutes, isHourDaylight } from './weather-emoji.js';
 import { weatherIconSvg, ICON_CONDITION } from './weather-icons.js';
-import { heroCropFor, applyHeroCrop, heroCropKey } from './hero-crop.js';
+import { heroCropFor, applyHeroCrop, heroCropKey, heroCropDesktopFor, applyHeroCropDesktop } from './hero-crop.js';
 import { buildShareLink, sanitizeTelemetryUrl } from './share-url.js';
 import {
   FRESHNESS_MS,
@@ -2230,6 +2230,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const landed = bgImg.getAttribute('src') || '';
         const crop = heroCropFor(landed);
         localStorage.setItem('pw_last_crop', crop == null ? '' : String(crop));
+        // The desktop polaroid's crop for the same photograph (2026-09-23), seeded by
+        // the shell at cold open exactly like pw_last_crop.
+        const cropDesktop = heroCropDesktopFor(landed);
+        localStorage.setItem('pw_last_crop_desktop', cropDesktop == null ? '' : String(cropDesktop));
         localStorage.setItem('pw_last_bg', landed);
       } catch (_) {}
       // Expose the landed hero URL to CSS so the desktop (>768px) contained-frame
@@ -2240,6 +2244,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // CLEARS the property, so the CSS default is the single source of that
       // number and a previous image's offset can never leak onto the next one.
       try { applyHeroCrop(document.documentElement, heroCropFor(bgImg.getAttribute('src') || '')); } catch (_) {}
+      // The desktop polaroid (>= 769px) reads Al's per-photograph anchor too, not one
+      // fixed 25% for every picture (2026-09-23). Null clears it to the CSS default.
+      try { applyHeroCropDesktop(document.documentElement, heroCropDesktopFor(bgImg.getAttribute('src') || '')); } catch (_) {}
       // The corrective pass. chain[0] is right almost always, but a fallback
       // step means the picture on screen is not the one the line was chosen for
       // — and a line written about another photograph is the exact defect this

@@ -307,7 +307,9 @@ describe('mobile facelift — contained hero (M1)', () => {
     // The postcard block owns >=1024px. If the facelift ever reaches in here,
     // these are the rules that would go first.
     expect(css).toMatch(/@media \(min-width: 1024px\)/);
-    expect(css).toMatch(/#bgImg\s*{[^}]*object-position:\s*center 25%/s);
+    // Per-photograph anchor since 2026-09-23 (Al: the desktop uses his ruled crops), with the
+    // postcard's 25% still the default for a photograph that has none.
+    expect(css).toMatch(/#bgImg\s*{[^}]*object-position:\s*center var\(--hero-crop-desktop, 25%\)/s);
     expect(css).toMatch(/#bgImg\s*{[^}]*transform:\s*rotate\(-2\.4deg\)/s);
     expect(css).toMatch(/--postcard-photo-w:\s*clamp\(340px, 28vw, 410px\)/);
     // The facelift block must come AFTER the postcard block in source order but

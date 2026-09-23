@@ -343,6 +343,7 @@
       // cold-open window (and for the session if the chain never lands).
       function clearHeroCrop() {
         document.documentElement.style.removeProperty('--hero-crop');
+        document.documentElement.style.removeProperty('--hero-crop-desktop');
       }
       try {
         var last = localStorage.getItem('pw_last_bg');
@@ -382,7 +383,15 @@
           if (isFinite(cropNum) && cropNum >= 0 && cropNum <= 100) {
             document.documentElement.style.setProperty('--hero-crop', cropNum + '%');
           } else {
-            clearHeroCrop();
+            document.documentElement.style.removeProperty('--hero-crop');
+          }
+          // The desktop polaroid's crop for the same photograph (2026-09-23).
+          var lastCropDesktop = last ? localStorage.getItem('pw_last_crop_desktop') : null;
+          var cropDesktopNum = (typeof lastCropDesktop === 'string' && /^\d+(\.\d+)?$/.test(lastCropDesktop)) ? parseFloat(lastCropDesktop) : NaN;
+          if (isFinite(cropDesktopNum) && cropDesktopNum >= 0 && cropDesktopNum <= 100) {
+            document.documentElement.style.setProperty('--hero-crop-desktop', cropDesktopNum + '%');
+          } else {
+            document.documentElement.style.removeProperty('--hero-crop-desktop');
           }
         } catch (e) { clearHeroCrop(); }
       } catch (e) {

@@ -2627,9 +2627,11 @@ main#home-screen.main #confidence {
     box-sizing: content-box;
     object-fit: cover;
     /* Sources are 9:16 portraits cropped into a ~0.8 frame — cover trims ~16% off
-       top+bottom. Bias the window UP (crop ~8% top / more bottom) so subjects'
-       heads keep headroom instead of clipping at the top edge (Al's ruling). */
-    object-position: center 25%;
+       top+bottom. Each photograph now takes the anchor Al ruled for it
+       (--hero-crop-desktop, set by setBackgroundFor from review/set-001-crop-anchors.json,
+       2026-09-23); 25% — the window biased UP so heads keep headroom (Al's ruling) —
+       stays the default for a photograph with no anchor. */
+    object-position: center var(--hero-crop-desktop, 25%);
     border: 16px solid #f6f2e8;
     border-bottom-width: 110px;
     /* A print has square corners. 0 is exempt from the two-radius discipline;
