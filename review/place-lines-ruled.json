@@ -1,0 +1,741 @@
+{
+ "generated": "2026-09-23T12:11:03.163Z",
+ "ruledBy": "Al, place lines ruling page (review/place-lines.html)",
+ "worklist": "review/place-lines-worklist.json",
+ "rulings": [
+  {
+   "key": "P01",
+   "en": "Joburg drivers are panicking already.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [
+    "witty:rain#5 (untagged there too)"
+   ],
+   "photos": [
+    "fec85aba3f48"
+   ]
+  },
+  {
+   "key": "P02",
+   "en": "Joburg summer rain: arrives at five, soaks everything, gone by supper.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "e95e8a2f22f0"
+   ]
+  },
+  {
+   "key": "P03",
+   "en": "Jacaranda blossom and stormwater, which is Joburg's least favourite combination.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "f8781ec0eb86"
+   ]
+  },
+  {
+   "key": "P04",
+   "en": "The sky has gone the colour that makes Joburg check the group chat.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "5df9d64aa037"
+   ]
+  },
+  {
+   "key": "P05",
+   "en": "Not one cloud, not one degree: a Highveld winter morning doing both at once.",
+   "verdict": "TAG",
+   "region": "highveld",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "caaa1c42d70a"
+   ]
+  },
+  {
+   "key": "P06",
+   "en": "Breath like smoke, frost on the glass, sun already out: Highveld school run.",
+   "verdict": "TAG",
+   "region": "highveld",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "042ba0a95388"
+   ]
+  },
+  {
+   "key": "P07",
+   "en": "Blue sky, gold grass, white edges: a Highveld rugby morning in full kit.",
+   "verdict": "TAG",
+   "region": "highveld",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "bbad2500c852"
+   ]
+  },
+  {
+   "key": "P08",
+   "en": "A clear dusk on the Highveld is just the frost clearing its throat.",
+   "verdict": "TAG",
+   "region": "highveld",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "510b7a0d60c0"
+   ]
+  },
+  {
+   "key": "P09",
+   "en": "Highveld rain doesn’t arrive. It gets delivered — all at once, one farm at a time.",
+   "verdict": "TAG",
+   "region": "highveld",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "ea95b93c8930"
+   ]
+  },
+  {
+   "key": "P10",
+   "en": "A Free State storm gives you exactly as much warning as it feels like.",
+   "verdict": "TAG",
+   "region": "free-state",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "ae79261d2852"
+   ]
+  },
+  {
+   "key": "P11",
+   "en": "Overcast this thick turns the Karoo into a corridor, and he is halfway down it.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "e991afd863ba"
+   ]
+  },
+  {
+   "key": "P12",
+   "en": "Frost right up to the dam wall: the Karoo did its winter thing overnight.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "28129477b706"
+   ]
+  },
+  {
+   "key": "P13",
+   "en": "Full sun, visible breath: the Karoo running both seasons before lunch.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "21c809043132"
+   ]
+  },
+  {
+   "key": "P14",
+   "en": "Northern Cape wind does not howl. It leans on things until they give.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "bfc08af75267"
+   ]
+  },
+  {
+   "key": "P15",
+   "en": "Even the Capetonians are admitting it's cold.",
+   "verdict": "KEEP",
+   "region": null,
+   "current": null,
+   "bank": [
+    "witty:cold#7 (untagged there too)"
+   ],
+   "photos": [
+    "a373f1d83e2f"
+   ]
+  },
+  {
+   "key": "P16",
+   "en": "Cape Town is still on under there; the fog is just running interference.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "5a72ad3aac4b"
+   ]
+  },
+  {
+   "key": "P17",
+   "en": "Wednesday, and the Cape Doctor is doing its rounds a little early.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "0e5c84f6ab31"
+   ]
+  },
+  {
+   "key": "P18",
+   "en": "The Cape Doctor is on night shift. The whole street has an appointment.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "0e5c84f6ab31"
+   ]
+  },
+  {
+   "key": "P19",
+   "en": "Nobody on this side of Gqeberha is hanging washing out today.",
+   "verdict": "TAG",
+   "region": "eastern-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "55504e5b8143"
+   ]
+  },
+  {
+   "key": "P20",
+   "en": "Wednesday this warm turns every roof in Joburg into a second office.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "77cfc93827e3"
+   ]
+  },
+  {
+   "key": "P21",
+   "en": "Joburg does about three hundred of these a year. Nobody is complaining.",
+   "verdict": "CUT",
+   "region": null,
+   "current": null,
+   "bank": [],
+   "photos": [
+    "9ab8b9f07431"
+   ]
+  },
+  {
+   "key": "P22",
+   "en": "That mug is steaming because Joburg mornings under cloud start at about four degrees.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "3bfd9b9470d6"
+   ]
+  },
+  {
+   "key": "P23",
+   "en": "Looks like a tourism ad. Feels like the inside of a fridge.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [
+    "witty:cold-clear#36 (untagged there too)"
+   ],
+   "photos": [
+    "6ca4d027da38"
+   ]
+  },
+  {
+   "key": "P24",
+   "en": "Joburg winter dawn: the view is free; the air charges admission.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "6ca4d027da38"
+   ]
+  },
+  {
+   "key": "P25",
+   "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "verdict": "KEEP",
+   "region": null,
+   "current": null,
+   "bank": [
+    "witty:cold-clear#5 (untagged there too)"
+   ],
+   "photos": [
+    "3e60dabd7ef7"
+   ]
+  },
+  {
+   "key": "P26",
+   "en": "The Karoo cools fast under a clear sky, but nobody has noticed yet.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "90a621539543"
+   ]
+  },
+  {
+   "key": "P27",
+   "en": "The sheep bunched up an hour ago, which is the Karoo's own forecast.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "119e4a52f8a4"
+   ]
+  },
+  {
+   "key": "P28",
+   "en": "Somebody left the freezer door open overnight.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [
+    "witty:cold-clear#34 (untagged there too)"
+   ],
+   "photos": [
+    "898c05f233a6"
+   ]
+  },
+  {
+   "key": "P29",
+   "en": "The Karoo does its coldest hour right before its prettiest one.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "41c9f776e0fb"
+   ]
+  },
+  {
+   "key": "P30",
+   "en": "Sunday, and the Karoo is doing the one thing it does better than anywhere.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "9728bed72ec6"
+   ]
+  },
+  {
+   "key": "P31",
+   "en": "The Bo-Kaap does the colour this morning because the sky refuses to.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "b5793c36b69d"
+   ]
+  },
+  {
+   "key": "P32",
+   "en": "Table Mountain gets the silhouette; the clouds get the whole colour budget.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "6b5271665e34"
+   ]
+  },
+  {
+   "key": "P33",
+   "en": "Friday evening, snow on the Apostles, and the only queue is for the kettle.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "917c4c0a6fac"
+   ]
+  },
+  {
+   "key": "P34",
+   "en": "Snow on the mountain. The kind of cold Cape Town frames and hangs on the wall.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "917c4c0a6fac"
+   ]
+  },
+  {
+   "key": "P35",
+   "en": "Frost on the lawn and wors on the grid: a Cape winter compromise.",
+   "verdict": "CUT",
+   "region": null,
+   "current": null,
+   "bank": [],
+   "photos": [
+    "13efc9191981"
+   ]
+  },
+  {
+   "key": "P36",
+   "en": "The fog took the city but it is not getting the Bo-Kaap's colours.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "b5837596744c"
+   ]
+  },
+  {
+   "key": "P37",
+   "en": "Table Mountain is right behind her and she cannot see a single bit of it.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "4d3a786acf48"
+   ]
+  },
+  {
+   "key": "P38",
+   "en": "Lion's Head is doing the scenery and the wind is doing the comedy.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "002f0c1d5187"
+   ]
+  },
+  {
+   "key": "P39",
+   "en": "Bo-Kaap in the last light, and the wind is doing the housekeeping.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "ec12d1747d09"
+   ]
+  },
+  {
+   "key": "P40",
+   "en": "Somebody is going to come home to a lounge full of Signal Hill.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "ec12d1747d09"
+   ]
+  },
+  {
+   "key": "P41",
+   "en": "Table Mountain is right there and neither of them has looked at it once.",
+   "verdict": "CUT",
+   "region": null,
+   "current": null,
+   "bank": [],
+   "photos": [
+    "38635f77f610"
+   ]
+  },
+  {
+   "key": "P42",
+   "en": "Table Mountain, a braai, and a wind with its own strong opinion.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "be8276f7384b"
+   ]
+  },
+  {
+   "key": "P43",
+   "en": "The Helderberg is clear, the washing is horizontal, and that is Sunday sorted.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "35c91a0ddfec"
+   ]
+  },
+  {
+   "key": "P44",
+   "en": "Durban grey is still twenty-four degrees, which is why the promenade never empties.",
+   "verdict": "TAG",
+   "region": "kzn",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "04bdf14c306b"
+   ]
+  },
+  {
+   "key": "P45",
+   "en": "Layer up like you're climbing Sani Pass.",
+   "verdict": "TAG",
+   "region": "kzn",
+   "current": null,
+   "bank": [
+    "witty:cold#4 (untagged there too)"
+   ],
+   "photos": [
+    "1c5f757ee79a"
+   ]
+  },
+  {
+   "key": "P46",
+   "en": "The N1 is now a waterpark.",
+   "verdict": "TAG",
+   "region": [
+    "western-cape",
+    "karoo",
+    "free-state",
+    "gauteng"
+   ],
+   "current": null,
+   "bank": [
+    "witty:rain#8 (untagged there too)"
+   ],
+   "photos": [
+    "09641df1432a"
+   ]
+  },
+  {
+   "key": "P47",
+   "en": "Two drops on a windscreen and the whole N1 forgets everything it ever learned.",
+   "verdict": "TAG",
+   "region": [
+    "western-cape",
+    "karoo",
+    "free-state",
+    "gauteng"
+   ],
+   "current": null,
+   "bank": [
+    "witty:rain#56 (untagged there too)"
+   ],
+   "photos": [
+    "09641df1432a"
+   ]
+  },
+  {
+   "key": "P48",
+   "en": "The south-easter has found the one open window on the whole street.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "ec12d1747d09"
+   ]
+  },
+  {
+   "key": "P49",
+   "en": "The southeaster doesn’t knock. You’ll hear it under the door all night.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": null,
+   "bank": [],
+   "photos": [
+    "0e5c84f6ab31"
+   ]
+  },
+  {
+   "key": "P50",
+   "en": "The kind of day Joburg pretends it doesn't have until you're standing in it.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": "gauteng",
+   "bank": [
+    "witty:cold-clear#10 (tagged gauteng)"
+   ],
+   "photos": [
+    "4040cfcfc732"
+   ]
+  },
+  {
+   "key": "P51",
+   "en": "Highveld winter: the only place where you wear two jackets to fetch the post.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": "gauteng",
+   "bank": [
+    "witty:cold-clear#3 (tagged gauteng)"
+   ],
+   "photos": [
+    "28129477b706"
+   ]
+  },
+  {
+   "key": "P52",
+   "en": "Joburg does fog so rarely it feels like a limited edition.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": "gauteng",
+   "bank": [
+    "witty:fog#90 (tagged gauteng)"
+   ],
+   "photos": [
+    "0467a4574c0b"
+   ]
+  },
+  {
+   "key": "P53",
+   "en": "Joburg rains for twenty minutes, then paints the sky like nothing happened.",
+   "verdict": "TAG",
+   "region": "gauteng",
+   "current": "gauteng",
+   "bank": [
+    "witty:rain#69 (tagged gauteng)"
+   ],
+   "photos": [
+    "e95e8a2f22f0"
+   ]
+  },
+  {
+   "key": "P54",
+   "en": "The Free State just remembered it has a winter setting.",
+   "verdict": "TAG",
+   "region": "free-state",
+   "current": "free-state",
+   "bank": [
+    "witty:cold-clear#1 (tagged free-state)"
+   ],
+   "photos": [
+    "28129477b706"
+   ]
+  },
+  {
+   "key": "P55",
+   "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+   "verdict": "KEEP",
+   "region": null,
+   "current": "karoo",
+   "bank": [
+    "witty:cold-clear#16 (tagged karoo)"
+   ],
+   "photos": [
+    "21c809043132"
+   ]
+  },
+  {
+   "key": "P56",
+   "en": "7pm and still 30 degrees. The Karoo doesn't make mistakes, only statements.",
+   "verdict": "TAG",
+   "region": "karoo",
+   "current": "karoo",
+   "bank": [
+    "witty:heat#74 (tagged karoo)"
+   ],
+   "photos": [
+    "5ed7621f5dd9"
+   ]
+  },
+  {
+   "key": "P57",
+   "en": "Mornings like this are why Capetonians never stop mentioning it.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": "western-cape",
+   "bank": [
+    "witty:clear#44 (tagged western-cape)"
+   ],
+   "photos": [
+    "7a76c59603c9"
+   ]
+  },
+  {
+   "key": "P58",
+   "en": "Golden hour, ice-cold air. Cape Town loves a dramatic contrast.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": "western-cape",
+   "bank": [
+    "witty:cold-clear#82 (tagged western-cape)"
+   ],
+   "photos": [
+    "1f74ef9146fb"
+   ]
+  },
+  {
+   "key": "P59",
+   "en": "Cape Town just got a dimmer switch.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": "western-cape",
+   "bank": [
+    "witty:fog#30 (tagged western-cape)"
+   ],
+   "photos": [
+    "5a72ad3aac4b"
+   ]
+  },
+  {
+   "key": "P60",
+   "en": "The berg wind turned overnight. Cape Town, today you're basically Upington.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": "western-cape",
+   "bank": [
+    "witty:heat#44 (tagged western-cape)"
+   ],
+   "photos": [
+    "4d63213b19b9"
+   ]
+  },
+  {
+   "key": "P61",
+   "en": "The Cape Doctor is making house calls.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": "western-cape",
+   "bank": [
+    "witty:wind#3 (tagged western-cape)"
+   ],
+   "photos": [
+    "c121631aca0a"
+   ]
+  },
+  {
+   "key": "P62",
+   "en": "Table Mountain's tablecloth is out.",
+   "verdict": "TAG",
+   "region": "western-cape",
+   "current": "western-cape",
+   "bank": [
+    "witty:wind#2 (tagged western-cape)"
+   ],
+   "photos": [
+    "c121631aca0a"
+   ]
+  }
+ ]
+}

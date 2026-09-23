@@ -3,8 +3,8 @@
  "ruledBy": "Al, bespoke line review rounds 1 and 2",
  "note": "Every line here is Al-approved and written for its specific photograph. Keyed by image hash: one hash can occupy two rotation slots and the lines belong to the picture, not the slot. English only - AF is Al's to write, zu/xh/st go to the native-review backlog. Extended 2026-08-21: kept lines from the ruled wind, clear-v2 and heat-v2 exports wired (Al's rulings of 2026-08-19/20). | 2026-09-06: round-1 hand-matched bank lines and 156 rescued Astra lines merged in, capped at 3 per photograph from those two sources (round-1 first, rescues in export order). Pre-existing approved lines were left untouched and not counted against that cap. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06: Al's own lines for 14 photographs that had none, written after he rejected all 30 of Astra's candidates for them. | 2026-09-06 (pm): Al's rulings — no 3-line cap: the 30 rescues the cap dropped are restored; every ruled keep from clear-v3, cloudy-v3, the six Astra buckets and the test batch wired onto its own photograph by hash; the transposed wind pair swapped grid days (tue/wed) so each day-named line lands on its day. CULLED 2026-09-20 on review/provenance-cull-ruled.json: every line that reached its photograph on a bulk adoption or on no record at all is out. What remains is what Al placed or ticked himself.",
  "method": "Round 1 wrote five per image and Al kept 171 of 196 (87%) once the two transposed briefs were excluded. Round 2 rewrote the 39 gaps under the swap test (PAIRING-TASTE rule 1a) and Al kept 39 of 39. Combined 210 of 235 = 89%. Wind, the weakest bucket in every earlier pass at 48%, ran 80% in round 1 and 100% in round 2.",
- "images": 294,
- "lineCount": 1126,
+ "images": 293,
+ "lineCount": 1123,
  "set": [
   {
    "image": "clear/week_1/dawn/7.webp",
@@ -1224,7 +1224,6 @@
    ],
    "lines": [
     "Sand in places sand should never be.",
-    "Table Mountain is right there and neither of them has looked at it once.",
     "Neither of them can stand up straight and neither of them seems to mind.",
     "The footprints behind them are already filling in and they only just walked there.",
     "The beach itself is moving faster than they are, and in the same direction."
@@ -1624,7 +1623,6 @@
     "Take your coffee outside. You deserve it.",
     "This is why we live in South Africa.",
     "Take a moment. Look up. You're welcome.",
-    "Joburg does about three hundred of these a year. Nobody is complaining.",
     "The sky has gone that deep blue you only get this high above sea level."
    ],
    "authoredFor": [
@@ -5810,26 +5808,6 @@
    ]
   },
   {
-   "image": "cold/week_1/night/6.webp",
-   "hash": "13efc9191981",
-   "condition": "cold",
-   "time": "night",
-   "week": "A",
-   "day": "sat",
-   "paths": [
-    "cold/week_1/night/6.webp",
-    "cold/week_2/night/6.webp",
-    "cold/week_3/night/6.webp",
-    "cold/week_4/night/6.webp"
-   ],
-   "lines": [
-    "Frost on the lawn and wors on the grid: a Cape winter compromise."
-   ],
-   "authoredFor": [
-    "cold/week_4/night/1.webp"
-   ]
-  },
-  {
    "image": "cold-clear/week_1/day/3.webp",
    "hash": "042ba0a95388",
    "condition": "cold-clear",
@@ -6767,6 +6745,46 @@
   "date": "2026-09-20",
   "pairsRemoved": 417,
   "distinctLinesGoneEverywhere": 411,
+  "photographsLeftWithNoLines": 1
+ },
+ "awaitingLines": [
+  {
+   "image": "cold/week_1/night/6.webp",
+   "hash": "13efc9191981",
+   "condition": "cold",
+   "time": "night",
+   "week": "A",
+   "day": "sat",
+   "paths": [
+    "cold/week_1/night/6.webp",
+    "cold/week_2/night/6.webp",
+    "cold/week_3/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "authoredFor": [
+    "cold/week_4/night/1.webp"
+   ],
+   "cutLines": [
+    "Frost on the lawn and wors on the grid: a Cape winter compromise."
+   ],
+   "reason": "every line on this photograph was cut by the place ruling (review/place-lines-ruled.json, 2026-09-23) — it serves a condition-bank line until Al rules new ones"
+  }
+ ],
+ "placeRuling": {
+  "on": "review/place-lines-ruled.json",
+  "date": "2026-09-23",
+  "tagged": 56,
+  "cut": [
+   "P21",
+   "P35",
+   "P41"
+  ],
+  "kept": [
+   "P15",
+   "P25",
+   "P55"
+  ],
+  "pairsRemoved": 3,
   "photographsLeftWithNoLines": 1
  }
 }

@@ -12,11 +12,13 @@
 //        review/set-001-draft.json                (hash -> every slot path)
 //        assets/weather-copy.js + witty-day-tags.js (bank tags of lines that came from the bank)
 //        review/seasonal-tags-ruled.json          (Al's season rulings, when exported)
+//        review/place-lines-ruled.json            (Al's place rulings, 2026-09-23)
 // Writes assets/hero-lines.js between its generated markers: HERO_LINES, and
 // HERO_LINE_TAGS — English line -> { months?, region? } for app.js's season and
 // place gate (2026-09-19). A bank line keeps the months/region tag it has in the
 // bank; Al's ruling on a line overrides it (ALWAYS clears it). Day and time tags
 // are not carried: the photograph's slot already fixes weekday and time of day.
+// A region is one box name or a list of them (the line shows inside any of them).
 //
 // Deliberately NOT wired into `npm run build`, exactly as the crop table is not:
 // lines ship when Al has ruled on them, not when someone runs a build.
@@ -26,6 +28,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isDeepStrictEqual } from 'node:util';
+import { REGION_BOXES } from '../assets/geo-regions.js';
 import { WEATHER_COPY } from '../assets/weather-copy.js';
 import { WITTY_DAY_TAGS } from '../assets/witty-day-tags.js';
 
@@ -212,6 +216,7 @@ const seasonTag = (t) => {
   return Object.keys(out).length ? out : null;
 };
 const lineTags = new Map();
+const bankRegion = new Map();   // line -> the region its bank row carries (null: untagged)
 const tagProblems = [];
 let fromBank = 0;
 for (const ns of ['witty', 'witty_low_confidence']) {
@@ -223,6 +228,7 @@ for (const ns of ['witty', 'witty_low_confidence']) {
         tagProblems.push(`"${text}": ${ns}:${bin}#${i} disagrees with another bank row about its months/region`);
       }
       lineTags.set(text, tag);
+      bankRegion.set(text, tag?.region ?? null);
     });
   }
 }
@@ -241,6 +247,38 @@ if (existsSync(RULED)) {
     } else if (r.ruling !== 'ALWAYS') { tagProblems.push(`"${r.en}": unknown ruling ${r.ruling}`); continue; }
     lineTags.set(r.en, seasonTag({ months, region }));
     fromAl += 1;
+  }
+}
+// 3. Al's place rulings (review/place-lines-ruled.json, 2026-09-23): TAG sets the
+//    line's region — one box, or a list of boxes, and the line shows to anyone inside
+//    any of them — and keeps its months. KEEP changes nothing (his brief: "leave P15,
+//    P25, P55 exactly as they are") and a CUT line has already left final.json.
+//    scripts/apply-place-ruling.mjs writes the same region onto the line's bank row,
+//    which serves isiZulu, isiXhosa, Sesotho and the share cards; if the two ever
+//    disagree the build refuses rather than let the languages drift apart.
+//    A line held back when its photograph moved (final.json heldBack) is not served,
+//    so there is nothing to tag.
+const PLACE_RULED = path.join(root, 'review', 'place-lines-ruled.json');
+let fromPlace = 0;
+if (existsSync(PLACE_RULED)) {
+  const held = new Set((approved.heldBack || []).map((h) => h.line));
+  for (const r of JSON.parse(readFileSync(PLACE_RULED, 'utf8')).rulings || []) {
+    if (r.verdict !== 'TAG') continue;
+    if (!approvedLines.has(r.en)) {
+      if (!held.has(r.en)) tagProblems.push(`place ruling ${r.key}: "${r.en}" is not an approved bespoke line`);
+      continue;
+    }
+    const regions = Array.isArray(r.region) ? r.region : [r.region];
+    if (!regions.length || regions.some((x) => typeof x !== 'string' || !REGION_BOXES[x])) {
+      tagProblems.push(`place ruling ${r.key}: ${JSON.stringify(r.region)} is not a region box (assets/geo-regions.js)`);
+      continue;
+    }
+    if (bankRegion.has(r.en) && !isDeepStrictEqual(bankRegion.get(r.en), r.region)) {
+      tagProblems.push(`place ruling ${r.key}: Al ruled ${JSON.stringify(r.region)} but the bank row carries ${JSON.stringify(bankRegion.get(r.en))} — run scripts/apply-place-ruling.mjs`);
+      continue;
+    }
+    lineTags.set(r.en, seasonTag({ months: lineTags.get(r.en)?.months, region: r.region }));
+    fromPlace += 1;
   }
 }
 if (tagProblems.length) {
@@ -264,10 +302,10 @@ const next = src
   .replace(TAG_BLOCK, (_, open, close) => `${open}${tagBody ? `${tagBody}\n` : ''}${close}`);
 
 const nLines = [...seen.values()].reduce((n, l) => n + l.length, 0);
-const tagSummary = `${tagRows.length} season/place tags (${fromBank} from the bank, ${fromAl} ruled by Al)`;
+const tagSummary = `${tagRows.length} season/place tags (${fromBank} from the bank, ${fromAl} season-ruled and ${fromPlace} place-ruled by Al)`;
 if (CHECK) {
   if (next !== src) {
-    console.error('[hero-lines] assets/hero-lines.js is out of sync with its sources (final.json, the bank tags, seasonal-tags-ruled.json)');
+    console.error('[hero-lines] assets/hero-lines.js is out of sync with its sources (final.json, the bank tags, seasonal-tags-ruled.json, place-lines-ruled.json)');
     process.exit(1);
   }
   console.log(`[hero-lines] in sync — ${keys.length} keys, ${nLines} line slots, from ${(approved.set || []).length} photographs; ${tagSummary}.`);
