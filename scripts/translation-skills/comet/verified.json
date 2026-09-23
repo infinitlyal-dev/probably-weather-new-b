@@ -1,0 +1,45 @@
+{
+ "McGill-NLP/ssa-comet-mtl": {
+  "revision": "6e64e0a56ce69524c67f304b092725687a362ef8",
+  "files": {
+   "hparams.yaml": {
+    "size": 425,
+    "hash": "git-sha1:0010dc264f29057ccd9d036381d366a0a193a4ec"
+   },
+   "checkpoints/model.ckpt": {
+    "size": 2260731684,
+    "hash": "sha256:c0f9825becf26f88e12a225209d81fbfbdcdf8b5a12f5ce8921fceb88e677d2b"
+   }
+  }
+ },
+ "masakhane/africomet-stl-1.1": {
+  "revision": "b4065f4424a962cf6e52373a9ec8a22a624fb278",
+  "files": {
+   "hparams.yaml": {
+    "size": 576,
+    "hash": "git-sha1:e548d58749333d4bf1546b01b630883103db6d19"
+   },
+   "checkpoints/model.ckpt": {
+    "size": 2323646308,
+    "hash": "sha256:3bea1074aabff04759eb80eb4b657de2df5ce16d8b14a13a4ee98997cf820fe1"
+   }
+  }
+ },
+ "Davlan/afro-xlmr-large-76L": {
+  "revision": "14a5ee38911f7f9992cf7a1c5fcd1588d9d14319",
+  "files": {
+   "config.json": {
+    "size": 711,
+    "hash": "git-sha1:ec91daf1e89918359329a929fdbad28dce2b18e2"
+   },
+   "tokenizer.json": {
+    "size": 17082660,
+    "hash": "sha256:62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626"
+   },
+   "tokenizer_config.json": {
+    "size": 413,
+    "hash": "git-sha1:9e864a593a63ad936eca55c7d0763c5241a16256"
+   }
+  }
+ }
+}

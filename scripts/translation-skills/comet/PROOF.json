@@ -1,0 +1,15 @@
+{
+ "generated": "2026-09-23",
+ "ruling": "Al, 2026-09-23: torch (CPU) + unbabel-comet in an isolated venv; ssa-comet-mtl for isiZulu only, africomet-stl-1.1 for isiXhosa only, from the official Hugging Face repositories, checked against the published hashes before loading. Not used for Sesotho or Afrikaans.",
+ "install": { "venv": "C:\Users\27741\pw-comet\.venv (outside the repo and outside OneDrive)", "torch": "2.14.0+cpu", "unbabel-comet": "2.2.7 (pinned deps: numpy 1.26.4, transformers 4.46.3, huggingface-hub 0.26.5, pytorch-lightning 2.4.0, torchmetrics 0.10.3)" },
+ "downloads": "see verified.json: both checkpoints by SHA-256 (Hugging Face lfs.oid), plus the tokenizer.json (SHA-256), tokenizer_config.json and config.json (git blob SHA-1) of Davlan/afro-xlmr-large-76L, the encoder both checkpoints name; its 2.2 GB weights are not fetched (COMET rebuilds the encoder from its config and loads the weights from the checkpoint). score.py re-hashes the checkpoint before every load and runs with HF_HUB_OFFLINE=1.",
+ "limits": {
+  "AfriCOMET": "reference-based only (model card: 'receives a triplet'). It scores the sealed test sets, which carry native references; it cannot gate a live isiXhosa line, which has none.",
+  "SSA-COMET": "does reference-free QE, so it gates live isiZulu safety lines. On 21 dev lines a native corrected, it scores the rejected line (0.514) no lower than the correction (0.502): it catches wrong meaning, not the fine fixes a native makes."
+ },
+ "proof": {
+  "zu (SSA-COMET, reference-free)": { "hand good: \"Rain's here.\" / Imvula isifikile.": 0.756, "hand bad: \"Rain's here.\" / Ilanga liyashisa kakhulu namuhla.": 0.596, "60 native dev lines vs their own English, mean": 0.459, "the same 60 lines vs another line's English, mean": 0.141, "native line beats its swapped version": "58 of 60" },
+  "xh (AfriCOMET, with reference)": { "hand good: \"Rain's here.\" / Imvula ifikile. (ref Imvula ikhona.)": 0.852, "hand bad: Ilanga litshisa kakhulu namhlanje.": 0.675, "60 native dev lines, mt = reference, mean": 0.913, "another line's translation against the reference, mean": 0.322, "native line beats its swapped version": "60 of 60", "40 native-rejected lines against their correction, mean": 0.535 }
+ },
+ "threshold": { "zu-qe": 0.33, "why": "Separates the 60 native dev lines from the same lines set against a wrong English: thresholds 0.28-0.33 tie at balanced accuracy 0.892 (0.33: 50/60 native lines pass, 57/60 wrong-English lines fail); the calibration policy takes the stricter on a tie. Used only in the safety rule, as Al's brief says." }
+}

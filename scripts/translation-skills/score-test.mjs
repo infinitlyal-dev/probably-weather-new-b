@@ -1,8 +1,12 @@
 // Score a translation run on the SEALED test sets (Part 2, steps 7 and 9 — 2026-09-23).
 //
 // For every test item: did the run's translation pass the calibrated checkers?
-//   pass = the shared judge's verdict on the Claude blind back-translation is inside its rule, and
-//          the same for Sol's, and the rule checks raise no high finding        (THRESHOLDS.json)
+//   pass   = the shared judge's verdict on the Claude blind back-translation is inside its rule, and
+//            the same for Sol's, and the rule checks raise no high finding        (THRESHOLDS.json)
+//   clean  = both back-translations MATCH and no high rule finding — the stricter measure; the
+//            calibrated rule (MISMATCH only) is a gate for Al's taste, too coarse to show a change
+//   comet  = the automatic scorer's mean where the language is covered (isiZulu SSA-COMET with and
+//            without the reference, isiXhosa AfriCOMET with it), from comet.json when present
 // Reported per language and per error type — the type is what the HUMAN fixed in that item's
 // original (the taxonomy of the correction, joined by feedbackId); items a human approved as
 // they were count under "approved (no error)". Exclusions (gold/EXCLUSIONS.json) are skipped.
@@ -42,21 +46,35 @@ for (const lang of ['af', 'zu', 'xh', 'st']) {
 const judgeC = new Map(rd(path.join(dir, 'judge-claude.json')).map((j) => [j.k, j.verdict]));
 const judgeS = new Map(rd(path.join(dir, 'judge-sol.json')).map((j) => [j.k, j.verdict]));
 const rules = new Map(rd(path.join(dir, 'rules.json')).map((r) => [r.id, r.pass]));
+const comet = new Map();
+if (existsSync(path.join(dir, 'comet.json'))) for (const c of rd(path.join(dir, 'comet.json'))) comet.set(`${c.id}|${c.mode}`, c.score);
 const table = {};
 let missing = 0;
 for (const g of items) {
   const c = judgeC.get(g.id), s = judgeS.get(g.id), r = rules.get(g.id);
   if (!c || !s || r === undefined) { missing += 1; continue; }
   const pass = !failClaude(c) && !failSol(s) && r;
+  const clean = c === 'MATCH' && s === 'MATCH' && r;
   const type = g.verdict === 'approved' ? 'approved (no error)' : (types.get(g.feedbackId) || 'unclassified');
   for (const key of [`${g.lang}|${type}`, `${g.lang}|ALL`]) {
-    const t = (table[key] ||= { n: 0, pass: 0 });
-    t.n += 1; if (pass) t.pass += 1;
+    const t = (table[key] ||= { n: 0, pass: 0, clean: 0, claudeMatch: 0, solMatch: 0, mismatch: 0, ruleFail: 0, comet: {} });
+    t.n += 1; if (pass) t.pass += 1; if (clean) t.clean += 1;
+    if (c === 'MATCH') t.claudeMatch += 1; if (s === 'MATCH') t.solMatch += 1;
+    if (c === 'MISMATCH' || s === 'MISMATCH') t.mismatch += 1; if (!r) t.ruleFail += 1;
+    for (const mode of ['zu-ref', 'zu-qe', 'xh-ref']) {
+      const v = comet.get(`${g.id}|${mode}`);
+      if (v !== undefined) { const m = (t.comet[mode] ||= { n: 0, sum: 0 }); m.n += 1; m.sum += v; }
+    }
   }
 }
+for (const t of Object.values(table)) for (const m of Object.values(t.comet)) m.mean = Number((m.sum / m.n).toFixed(4));
 writeFileSync(path.join(dir, 'score.json'), JSON.stringify({ label: LABEL, thresholds: th, missing, table }, null, 1));
-console.log(`[score] ${LABEL}: pass = both blind back-translations inside their calibrated rule (Claude: ${th.claudeBT}; Sol: ${th.solBT}) and no high rule finding${missing ? `; ${missing} items missing a checker` : ''}`);
+console.log(`[score] ${LABEL}: pass = no MISMATCH on either blind back-translation (calibrated: Claude ${th.claudeBT}; Sol ${th.solBT}) and no high rule finding; clean = both MATCH and no high rule finding${missing ? `; ${missing} items missing a checker` : ''}`);
+const pct = (a, n) => `${a}/${n} (${Math.round((100 * a) / n)}%)`;
 for (const lang of ['af', 'zu', 'xh', 'st']) {
   const rows = Object.entries(table).filter(([k]) => k.startsWith(`${lang}|`)).sort(([a], [b]) => (a.endsWith('ALL') ? -1 : b.endsWith('ALL') ? 1 : a.localeCompare(b)));
-  console.log(`  ${lang}: ${rows.map(([k, t]) => `${k.split('|')[1]} ${t.pass}/${t.n}`).join(' · ')}`);
+  for (const [k, t] of rows) {
+    const cm = Object.entries(t.comet).map(([m, v]) => `${m} ${v.mean.toFixed(3)}`).join(' ');
+    console.log(`  ${lang} ${k.split('|')[1].padEnd(20)} n=${String(t.n).padStart(3)}  pass ${pct(t.pass, t.n).padEnd(14)} clean ${pct(t.clean, t.n).padEnd(14)} mismatch ${String(t.mismatch).padStart(2)}  rule-fail ${String(t.ruleFail).padStart(2)}  ${cm}`);
+  }
 }
