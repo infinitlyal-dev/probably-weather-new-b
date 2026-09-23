@@ -298,6 +298,6 @@ describe('middleware language normalization', () => {
   it('resolves ZU/XH/ST descriptions as tagline + headline composites', () => {
     expect(__test.resolveDescription('zu', 'storm')).toMatch(/^Isimo sezulu saseNingizimu Afrika ngolimi lwakho\..*Isiphepho siyeza\.$/);
     expect(__test.resolveDescription('xh', 'rain')).toMatch(/^Imozulu yaseMzantsi Afrika ngolwimi lwakho\..*Imvula ikhona\.$/);
-    expect(__test.resolveDescription('st', 'cloudy')).toMatch(/^Boemo ba leholimo ba Afrika Borwa ka puo ya hao\..*Maru a teng\.$/);
+    expect(__test.resolveDescription('st', 'cloudy')).toMatch(/^Boemo ba lehodimo ba Afrika Borwa ka puo ya hao\..*Maru a teng\.$/);
   });
 });

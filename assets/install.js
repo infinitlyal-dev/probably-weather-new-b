@@ -47,7 +47,7 @@ export const INSTALL_T = {
     af: 'Nie nou nie',
     zu: 'Hhayi manje',
     xh: 'Hayi ngoku',
-    st: 'Eseng hona joale',
+    st: 'Eseng hona jwale',
   },
   // Accessible name for the iOS modal's × button. applyTranslations() used to
   // update this banner's TEXT but none of its attributes, so it stayed English
@@ -97,7 +97,7 @@ export const INSTALL_T = {
     af: 'Tik `×` hierbo om hierdie instruksies toe te maak',
     zu: 'Thepha `×` ngenhla ukuvala lezi ziyalezo',
     xh: 'Cofa `×` ngentla ukuvala le miyalelo',
-    st: 'Tobetsa `×` ka holimo ho koala litaelo tsena',
+    st: 'Tobetsa `×` ka hodimo ho koala ditaelo tsena',
   },
   // Confirmation line below the 3 steps — positive close, distinct from
   // the steps. Reads as "you're done" rather than a fourth instruction.
@@ -115,7 +115,7 @@ export const INSTALL_T = {
     af: 'Sien jy nie `Add to Home Screen` nie? Tik `Edit Actions` onder in die Deel-kieslys en skakel dit aan.',
     zu: 'Awuyiboni i-`Add to Home Screen`? Thepha u-`Edit Actions` ezansi kwemenyu ye-Share, bese uyivumela.',
     xh: 'Awuyiboni i-`Add to Home Screen`? Cofa u-`Edit Actions` ezantsi kwimenyu ye-Share, uyivumele.',
-    st: 'Ha o bone `Add to Home Screen`? Tobetsa `Edit Actions` ka tlase ho menyu ya Share, ebe u e nolofatsa.',
+    st: 'Ha o bone `Add to Home Screen`? Tobetsa `Edit Actions` ka tlase ho menyu ya Share, ebe o e nolofatsa.',
   },
   iosChromeTitle: {
     en: 'Open in Safari to install',
@@ -129,7 +129,7 @@ export const INSTALL_T = {
     af: 'Chrome op iPhone kan nie programme installeer nie. Tik hieronder om hierdie webwerf in Safari oop te maak, dan volg jy die stappe.',
     zu: 'I-Chrome ku-iPhone ayikwazi ukufaka izinhlelo zokusebenza. Thepha ngezansi ukuze uvule le sayithi ku-Safari, bese ulandela izinyathelo.',
     xh: 'I-Chrome kwi-iPhone ayikwazi ukufaka izicelo. Cofa ezantsi ukuze uvule le saythi kwi-Safari, ulandele amanyathelo.',
-    st: 'Chrome ho iPhone e ke ke ea kenya li-app. Tobetsa ka tlase ho bula sebaka sena ho Safari, ebe u latela mehato',
+    st: 'Chrome ho iPhone e ke ke ya kenya di-app. Tobetsa ka tlase ho bula sebaka sena ho Safari, ebe o latela mehato',
   },
   iosChromeOpenSafari: {
     en: 'Open in Safari',
@@ -143,7 +143,7 @@ export const INSTALL_T = {
     af: 'As niks gebeur nie, kopieer hierdie skakel en plak dit in Safari:',
     zu: 'Uma kungasebenzi, kopisha isixhumanisi sokugcina sinamathisele ku-Safari:',
     xh: 'Ukuba akukho nto yenzekayo, kopa esi sixhumanisi usincamathisele kwi-Safari:',
-    st: 'Haeba ho se na letho le etsahalang, kopitsa sehokelo sena u se kenye ho Safari:',
+    st: 'Haeba ho se na letho le etsahalang, kopitsa sehokelo sena o se kenye ho Safari:',
   },
   landingHero: {
     en: 'Install Probably Weather',
@@ -171,7 +171,7 @@ export const INSTALL_T = {
     af: ['Een-tik toegang vanaf jou tuisskerm', 'Werk vanlyn met die laaste voorspelling', 'Geen Play Store, geen App Store, geen gedoente'],
     zu: ['Ukufinyelela ngokuthepha okukodwa kusuka kusikrini sasekhaya', 'Kusebenza ngaphandle kwe-inthanethi nokubikezela kokugcina', 'Akukho i-Play Store, akukho i-App Store, akukho inkinga'],
     xh: ['Ukufikelela ngokucofa kanye ukusuka kwiscreen sakho', 'Kusebenza ungekho kwi-intanethi ngesibikezelo sokugqibela', 'Akukho i-Play Store, akukho i-App Store, akukho ingxaki'],
-    st: ['Phihlello ka tobetso e le ’ngoe skrineng sa lehae', 'Sebetsa ntle le inthanete ka ponelopele ea ho qetela', 'Ha ho Play Store, ha ho App Store, ha ho mathata'],
+    st: ['Phihlello ka tobetso e le nngwe skrineng sa lehae', 'Sebetsa ntle le inthanete ka ponelopele ya ho qetela', 'Ha ho Play Store, ha ho App Store, ha ho mathata'],
   },
   howTitle: {
     en: 'How does this work?',
@@ -185,35 +185,35 @@ export const INSTALL_T = {
     af: 'Dit is ’n regte programikoon op jou tuisskerm, sonder Play Store gedoente. Probably Weather is ’n Progressiewe Webprogram (PWA) — dieselfde vanlyn toegang, dieselfde vinnige aanvang, geen winkelresensies om vir te wag nie.',
     zu: 'Yi-icon yangempela yohlelo lokusebenza kusikrini sakho sasekhaya, ngaphandle kobuwula be-Play Store. I-Probably Weather i-Progressive Web App (PWA) — ufinyelelo olufanayo lokungalindelekile, ukuqaliswa okusheshayo okufanayo, akukho ukubuyekezwa kwesitolo okumelwe ulinde.',
     xh: 'Yi-icon yokwenene kwi-screen yakho yasekhaya, ngaphandle kweengxaki ze-Play Store. I-Probably Weather yi-Progressive Web App (PWA) — ufikelelo olufanayo olungekho kwi-intanethi, ukuqalisa okukhawulezayo okufanayo, akukho zihlolwa zevenkile zokulinda.',
-    st: 'Ke leswao la nnete la app skrineng sa hao sa lehae, empa ntle le bothata ba Play Store. Probably Weather ke Progressive Web App (PWA) — phihlello e tšoanang ntle le inthanete, qaliso e potlakileng e tšoanang, ha ho na litlhahlobo tsa lebenkele tseo u tlamehang ho li letela.',
+    st: 'Ke letshwao la nnete la app skrineng sa hao sa lehae, empa ntle le bothata ba Play Store. Ke Progressive Web App (PWA): o e bula le ntle le inthanete, e bula kapele, mme ha o letele ditlhahlobo tsa lebenkele.',
   },
   installNow: {
     en: 'Install now',
     af: 'Installeer nou',
     zu: 'Faka manje',
     xh: 'Faka ngoku',
-    st: 'Kenya hona joale',
+    st: 'Kenya hona jwale',
   },
   alreadyInstalled: {
     en: 'You’ve already added Probably Weather to your home screen. Look for the icon!',
     af: 'Jy het reeds Probably Weather by jou tuisskerm gevoeg. Soek vir die ikoon!',
     zu: 'Usuyifakile i-Probably Weather kusikrini sakho sasekhaya. Funa i-icon!',
     xh: 'Sele uyongezile i-Probably Weather kwi-screen yakho yasekhaya. Khangela i-icon!',
-    st: 'O se u eketsoeng Probably Weather skrineng sa hao sa lehae. Batla letshwao!',
+    st: 'O se o eketsoeng Probably Weather skrineng sa hao sa lehae. Batla letshwao!',
   },
   desktopOpenOnPhone: {
     en: 'Open this on your phone',
     af: 'Maak dit op jou foon oop',
     zu: 'Yivule lokhu efonini yakho',
     xh: 'Vula oku kwifowuni yakho',
-    st: 'Bula sena fonong ea hao',
+    st: 'Bula sena fonong ya hao',
   },
   desktopQrHint: {
     en: 'Scan with your phone’s camera to install.',
     af: 'Skandeer met jou foonkamera om te installeer.',
     zu: 'Skena ngekhamera yefoni yakho ukuze ufake.',
     xh: 'Skena ngekhamera yefowuni yakho ukuze ufake.',
-    st: 'Sekena ka khamera ea fono ea hao ho kenya.',
+    st: 'Sekena ka khamera ya fono ya hao ho kenya.',
   },
   footerInstallLink: {
     en: 'Install Probably Weather',
@@ -237,7 +237,7 @@ export const INSTALL_T = {
     af: "Tik op jou blaaier-kieslys, dan Installeer app — of probeer 'n oomblik weer.",
     zu: 'Thepha imenyu yesiphequluli, bese Faka uhlelo lokusebenza — noma uzame futhi ngomzuzwana.',
     xh: 'Cofa imenyu yebrawza, ze ufakele i-app — okanye uzame kwakhona ngomzuzwana.',
-    st: 'Tobetsa menyu ea sebatli, ebe Kenya app — kapa leka hape ka motsotsoana.',
+    st: 'Tobetsa menyu ya sebatli, ebe Kenya app — kapa leka hape ka motsotsoana.',
   },
   /* -- In-app browser breakout flow (WhatsApp, Instagram, Facebook, etc.) --
      Strings use `{app}` as a placeholder for the detected app name (brand
@@ -254,7 +254,7 @@ export const INSTALL_T = {
     af: 'Jy is in {app} se ingeboude blaaier. Dit kan nie programme installeer nie.',
     zu: 'Usebenzisa isiphequluli esakhelwe ngaphakathi sika-{app}. Asikwazi ukufaka izinhlelo zokusebenza.',
     xh: 'Usebenzisa ibrawza eyakhelwe ngaphakathi ye-{app}. Ayikwazi ukufaka iiapp.',
-    st: 'O sebelisa sebatli se kentsoeng ka hare ho {app}. Ha se khone ho kenya li-app.',
+    st: 'O sebelisa sebatli se kentsoeng ka hare ho {app}. Ha se khone ho kenya di-app.',
   },
   inAppOpenInChrome: {
     en: 'Open in Chrome',
@@ -268,7 +268,7 @@ export const INSTALL_T = {
     af: "iPhone? Tik die ⋯ kieslys in {app} en kies 'Open in Safari'. Dit is die enigste manier waarop Apple ons deurlaat.",
     zu: "iPhone? Thepha imenyu ye-⋯ ku-{app} bese ukhetha 'Open in Safari'. Yiyo kuphela indlela u-Apple asivumela ngayo.",
     xh: "iPhone? Cofa imenyu ye-⋯ kwi-{app} ukhethe 'Open in Safari'. Yiyo kuphela indlela u-Apple usivumela ngayo.",
-    st: "iPhone? Tobetsa menyu ea ⋯ ho {app} u khethe 'Open in Safari'. Ke yona feela tsela eo Apple e re fang.",
+    st: "iPhone? Tobetsa menyu ya ⋯ ho {app} o khethe 'Open in Safari'. Ke yona feela tsela eo Apple e re fang.",
   },
   inAppCopyLink: {
     en: 'Copy link',
@@ -289,7 +289,7 @@ export const INSTALL_T = {
     af: 'Sukkel jy? Maak hierdie blad in Chrome (Android) of Safari (iPhone) oop.',
     zu: 'Unenkinga? Vula leli khasi ku-Chrome (Android) noma i-Safari (iPhone).',
     xh: 'Unobunzima? Vula eli phepha kwi-Chrome (Android) okanye i-Safari (iPhone).',
-    st: 'U na le bothata? Bula leqephe lena ho Chrome (Android) kapa Safari (iPhone).',
+    st: 'O na le bothata? Bula leqephe lena ho Chrome (Android) kapa Safari (iPhone).',
   },
   // Samsung One UI's Play Protect flags Chrome's WebAPK install with an
   // "Unsafe app blocked" dialog. It's not PW — Samsung is overcautious about
@@ -303,7 +303,7 @@ export const INSTALL_T = {
     af: "Samsung-fone wys soms 'n 'Google Play Protect — Onveilige app' waarskuwing. Dis Samsung wat senuagtig is — Probably Weather is veilig. Tik 'Meer besonderhede' → 'Installeer in elk geval'.",
     zu: "Amafoni e-Samsung kwesinye isikhathi abonisa isexwayiso esithi 'Google Play Protect — Unsafe app' uma ufaka. Yi-Samsung enovalo nje — i-Probably Weather iphephile. Thepha 'More details' → 'Install anyway'.",
     xh: "Iifowuni ze-Samsung ngamanye amaxesha zibonisa isilumkiso esithi 'Google Play Protect — Unsafe app' xa ufakela. Yi-Samsung enexhala nje — i-Probably Weather ikhuselekile. Cofa 'More details' → 'Install anyway'.",
-    st: "Difouno tsa Samsung ka linako tse ling li bontša temoso ya 'Google Play Protect — Unsafe app' ha o kenya. Ke Samsung e tšohileng feela — Probably Weather e bolokehile. Tobetsa 'More details' → 'Install anyway'.",
+    st: "Difouno tsa Samsung ka dinako tse ding di bontsha temoso ya 'Google Play Protect — Unsafe app' ha o kenya. Ke Samsung e tshohileng feela — Probably Weather e bolokehile. Tobetsa 'More details' → 'Install anyway'.",
   },
   // Shown when the user taps "Install now" on android-chrome or desktop-chrome
   // and beforeinstallprompt never fired. Points at Chrome's ⋮ menu — the same
@@ -315,7 +315,7 @@ export const INSTALL_T = {
     af: "As niks gebeur nie, tik die ⋮ kieslys hierbo en kies 'Installeer app' of 'Voeg by Tuisskerm'.",
     zu: "Uma kungenzeki lutho, thepha imenyu ye-⋮ ngenhla bese ukhetha 'Install app' noma 'Add to Home Screen'.",
     xh: "Ukuba akukho nto yenzekayo, cofa imenyu ye-⋮ ngentla ukhethe 'Install app' okanye 'Add to Home Screen'.",
-    st: "Haeba ho se na letho le etsahalang, tobetsa menyu ea ⋮ ka holimo u khethe 'Install app' kapa 'Add to Home Screen'.",
+    st: "Haeba ho se na letho le etsahalang, tobetsa menyu ya ⋮ ka hodimo o khethe 'Install app' kapa 'Add to Home Screen'.",
   },
   // Android banner instructions, shown whenever the browser has NOT handed us a
   // beforeinstallprompt event (so there is no one-tap Install). Browser menu
