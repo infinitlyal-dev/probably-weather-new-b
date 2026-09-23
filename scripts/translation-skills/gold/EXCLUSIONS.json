@@ -1,0 +1,11 @@
+{
+ "note": "Gold items whose human reference is itself wrong, found after the sets were sealed. Dropped from the dev files here; score-test.mjs skips any that sit in a test file (the sealed file itself never changes).",
+ "items": [
+  {
+   "feedbackId": "st-fb-0402",
+   "en": "Mist building, maybe. Headlights wouldn't hurt.",
+   "reason": "The June 2026 Sesotho reviewer replaced \"Tlhabisa mabone\" (switch the lights on) with \"tlosa mabone\" (take the lights off): the reviewer's own reference reverses the advice. It is the origin of the live st-0870 reversal.",
+   "found": "2026-09-23, taxonomy pass (st-2)"
+  }
+ ]
+}

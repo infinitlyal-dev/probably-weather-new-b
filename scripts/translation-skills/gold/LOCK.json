@@ -1,0 +1,11 @@
+{
+ "sealed": "2026-09-23T13:29:27.134Z",
+ "rule": "Test files are read only by scripts/translation-skills/score-test.mjs, which prints aggregates. Skills are built from dev files and external reference text only; check-leak.mjs enforces it.",
+ "split": "sha256(\"pw-gold-v1|\" + English) % 100 < 30 -> test",
+ "files": {
+  "af-test.json": "aed9d378f2ddfb7fc043fa3f4248df3e511f60a4ad16ff8abd698c0271b778a2",
+  "st-test.json": "dbff57835c63844524f7f29f7fa9b8218f71f73046e3f2bda46ab53147566c58",
+  "zu-test.json": "310e435194c6891fb3330cb54b033da7e955f3987822a1421cc6bedca5fd0c2a",
+  "xh-test.json": "227d45cf7df2b812f2c41f23743b86e2269391d591813716e68ecbed9a29e6dd"
+ }
+}

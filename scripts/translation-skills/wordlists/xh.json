@@ -1,0 +1,731 @@
+{
+ "lang": "xh",
+ "generated": "2026-09-23",
+ "sources": {
+  "leipzig": "Leipzig Corpora Collection word frequencies (CC BY-NC) — South African web, community and news corpora",
+  "constitution": "Constitution of the Republic of South Africa, official translation (government publication)",
+  "autshumato": "Autshumato multilingual word and phrase lists, CTexT NWU / DAC (CC BY 2.5 ZA)"
+ },
+ "note": "verified = attested in external South African text (Leipzig frequency >= 3, or the Constitution, or Autshumato) or a loanword the English itself uses. safetyEligible = verified, or used in the native-reviewed bank (in-house, not external evidence): only these drive the hard safety check. Other terms are kept for the skills to use with care.",
+ "weather": [
+  {
+   "id": "rain",
+   "en": "\\brain",
+   "safety": false,
+   "terms": [
+    {
+     "term": "imvula",
+     "leipzigFreq": 45,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "iyana",
+     "leipzigFreq": 1,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "liyana",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    }
+   ]
+  },
+  {
+   "id": "drizzle",
+   "en": "drizzl",
+   "safety": false,
+   "terms": [
+    {
+     "term": "umkhizo",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    },
+    {
+     "term": "imvula encinci",
+     "leipzigFreq": 41,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "storm",
+   "en": "\\bstorm",
+   "safety": false,
+   "terms": [
+    {
+     "term": "isaqhwithi",
+     "leipzigFreq": 3,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "uqhwithela",
+     "leipzigFreq": 1,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "thunder",
+   "en": "thunder",
+   "safety": false,
+   "terms": [
+    {
+     "term": "iindudumo",
+     "leipzigFreq": 1,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    },
+    {
+     "term": "ududumo",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    },
+    {
+     "term": "uyaduduma",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    }
+   ]
+  },
+  {
+   "id": "lightning",
+   "en": "lightning",
+   "safety": true,
+   "terms": [
+    {
+     "term": "umbane",
+     "leipzigFreq": 91,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "hail",
+   "en": "\\bhail",
+   "safety": true,
+   "terms": [
+    {
+     "term": "isichotho",
+     "leipzigFreq": 7,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "wind",
+   "en": "\\bwind(y|s)?\\b|\\bgusts?\\b|\\bgusty\\b|\\bbreez",
+   "safety": true,
+   "terms": [
+    {
+     "term": "umoya",
+     "leipzigFreq": 127,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "fog",
+   "en": "\\bfog|\\bmist",
+   "safety": false,
+   "terms": [
+    {
+     "term": "inkungu",
+     "leipzigFreq": 4,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "cloud",
+   "en": "cloud|overcast",
+   "safety": false,
+   "terms": [
+    {
+     "term": "amafu",
+     "leipzigFreq": 4,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "ilifu",
+     "leipzigFreq": 3,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "sun",
+   "en": "\\bsun|sunny",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ilanga",
+     "leipzigFreq": 57,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "clear",
+   "en": "\\bclear",
+   "safety": false,
+   "terms": [
+    {
+     "term": "kucacile",
+     "leipzigFreq": 25,
+     "inConstitution": true,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "kucwebile",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    }
+   ]
+  },
+  {
+   "id": "cold",
+   "en": "\\bcold|chill|freez",
+   "safety": false,
+   "terms": [
+    {
+     "term": "kuyabanda",
+     "leipzigFreq": 2,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "ingqele",
+     "leipzigFreq": 5,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "kubanda",
+     "leipzigFreq": 7,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "frost",
+   "en": "frost",
+   "safety": false,
+   "terms": [
+    {
+     "term": "iqabaka",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "snow",
+   "en": "\\bsnow",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ikhephu",
+     "leipzigFreq": 2,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    }
+   ]
+  },
+  {
+   "id": "heat",
+   "en": "\\bheat\\b|\\bheatwave|\\bhot\\b|scorch|swelter",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ubushushu",
+     "leipzigFreq": 20,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "kushushu",
+     "leipzigFreq": 5,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "tshisa",
+     "leipzigFreq": 0,
+     "inConstitution": true,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "temperature",
+   "en": "temperature|degree",
+   "safety": false,
+   "terms": [
+    {
+     "term": "iqondo lobushushu",
+     "leipzigFreq": 2,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    },
+    {
+     "term": "amaqondo",
+     "leipzigFreq": 12,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "forecast",
+   "en": "forecast",
+   "safety": false,
+   "terms": [
+    {
+     "term": "uqikelelo",
+     "leipzigFreq": 5,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "headlights",
+   "en": "headlight",
+   "safety": true,
+   "terms": [
+    {
+     "term": "izibane",
+     "leipzigFreq": 10,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "izibane zemoto",
+     "leipzigFreq": 1,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "sunscreen",
+   "en": "sunscreen|\\bspf\\b|sunblock",
+   "safety": true,
+   "terms": [
+    {
+     "term": "ikhrimu yelanga",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    },
+    {
+     "term": "sunscreen",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "spf",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "inside",
+   "en": "stay (in|inside|indoors|home)|indoors",
+   "safety": true,
+   "terms": [
+    {
+     "term": "ngaphakathi",
+     "leipzigFreq": 218,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "endlwini",
+     "leipzigFreq": 127,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "ekhaya",
+     "leipzigFreq": 162,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "flood",
+   "en": "\\bflood(s|ed|ing|water)?\\b",
+   "safety": true,
+   "terms": [
+    {
+     "term": "izikhukula",
+     "leipzigFreq": 3,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "isikhukula",
+     "leipzigFreq": 2,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "drive",
+   "en": "\\bdrive|driving|drivers?\\b",
+   "safety": false,
+   "terms": [
+    {
+     "term": "qhuba",
+     "leipzigFreq": 2,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "abaqhubi",
+     "leipzigFreq": 21,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "water",
+   "en": "drink water|hydrat",
+   "safety": true,
+   "terms": [
+    {
+     "term": "amanzi",
+     "leipzigFreq": 243,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "morning",
+   "en": "morning|dawn",
+   "safety": false,
+   "terms": [
+    {
+     "term": "kusasa",
+     "leipzigFreq": 65,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "intsasa",
+     "leipzigFreq": 8,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "evening",
+   "en": "evening|dusk",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ngokuhlwa",
+     "leipzigFreq": 41,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "ngorhatya",
+     "leipzigFreq": 11,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "night",
+   "en": "\\bnight|tonight",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ebusuku",
+     "leipzigFreq": 75,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "ubusuku",
+     "leipzigFreq": 20,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "today",
+   "en": "\\btoday",
+   "safety": false,
+   "terms": [
+    {
+     "term": "namhlanje",
+     "leipzigFreq": 280,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "tomorrow",
+   "en": "tomorrow",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ngomso",
+     "leipzigFreq": 58,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  }
+ ],
+ "safety": [
+  {
+   "id": "lightning",
+   "en": "lightning",
+   "terms": [
+    "umbane"
+   ]
+  },
+  {
+   "id": "hail",
+   "en": "\\bhail",
+   "terms": [
+    "isichotho"
+   ]
+  },
+  {
+   "id": "wind",
+   "en": "\\bwind(y|s)?\\b|\\bgusts?\\b|\\bgusty\\b|\\bbreez",
+   "terms": [
+    "umoya"
+   ]
+  },
+  {
+   "id": "headlights",
+   "en": "headlight",
+   "terms": [
+    "izibane",
+    "izibane zemoto"
+   ]
+  },
+  {
+   "id": "sunscreen",
+   "en": "sunscreen|\\bspf\\b|sunblock",
+   "terms": [
+    "ikhrimu yelanga",
+    "sunscreen",
+    "spf"
+   ]
+  },
+  {
+   "id": "inside",
+   "en": "stay (in|inside|indoors|home)|indoors",
+   "terms": [
+    "ngaphakathi",
+    "endlwini",
+    "ekhaya"
+   ]
+  },
+  {
+   "id": "flood",
+   "en": "\\bflood(s|ed|ing|water)?\\b",
+   "terms": [
+    "izikhukula",
+    "isikhukula"
+   ]
+  },
+  {
+   "id": "water",
+   "en": "drink water|hydrat",
+   "terms": [
+    "amanzi"
+   ]
+  }
+ ]
+}

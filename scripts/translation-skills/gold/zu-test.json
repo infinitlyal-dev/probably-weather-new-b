@@ -1,0 +1,1495 @@
+{
+ "lang": "zu",
+ "part": "test",
+ "count": 148,
+ "items": [
+  {
+   "lang": "zu",
+   "en": "50/50 on the rain. Bring a jacket, just in case.",
+   "reference": "I-50/50 emvuleni. Thatha ibhantshi, uma kwenzeka.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.rain-possible[5]",
+   "feedbackId": "zu-fb-0888",
+   "id": "zu-test-0001"
+  },
+  {
+   "lang": "zu",
+   "en": "A perfectly average sky doing perfectly average things.",
+   "reference": "Isibhakabhaka esiphakathi nendawo esenza izinto eziphakathi nendawo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[32]",
+   "feedbackId": "zu-fb-0567",
+   "id": "zu-test-0002"
+  },
+  {
+   "lang": "zu",
+   "en": "A proper good one. Don't waste it.",
+   "reference": "Olungcono ngempela. Ungalumoshi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[31]",
+   "feedbackId": "zu-fb-0802",
+   "id": "zu-test-0003"
+  },
+  {
+   "lang": "zu",
+   "en": "Absolutely beautiful out there.",
+   "reference": "Kuhle kakhulu ngaphandle.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[0]",
+   "feedbackId": "zu-fb-0771",
+   "id": "zu-test-0004"
+  },
+  {
+   "lang": "zu",
+   "en": "Beach or braai? Yes.",
+   "reference": "Ibhishi noma ukosa? Yebo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[3]",
+   "feedbackId": "zu-fb-0832",
+   "id": "zu-test-0005"
+  },
+  {
+   "lang": "zu",
+   "en": "Bit of everything. Classic in-between day.",
+   "reference": "Ingxenye yakho konke. Usuku oluphakathi nendawo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.partly-cloudy[5]",
+   "feedbackId": "zu-fb-0864",
+   "id": "zu-test-0006"
+  },
+  {
+   "lang": "zu",
+   "en": "Blanket burrito mode: activated.",
+   "reference": "Imodhi ye-blanket burrito: ivuliwe.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[9]",
+   "feedbackId": "zu-fb-0638",
+   "id": "zu-test-0007"
+  },
+  {
+   "lang": "zu",
+   "en": "Blue sky, warm breeze. The simple stuff.",
+   "reference": "Isibhakabhaka esiluhlaza, umoya ofudumele. Izinto ezilula.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[19]",
+   "feedbackId": "zu-fb-0790",
+   "id": "zu-test-0008"
+  },
+  {
+   "lang": "zu",
+   "en": "Boerie roll for breakfast? On a weekend? Acceptable.",
+   "reference": "Iboerie roll yebhulakufesi? Ngempelasonto? Iyamukeleka.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[22]",
+   "feedbackId": "zu-fb-0851",
+   "id": "zu-test-0009"
+  },
+  {
+   "lang": "zu",
+   "en": "Braai weather, boet! No excuses.",
+   "reference": "Izulu lokosa, boet! Akukho zaba.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[0]",
+   "feedbackId": "zu-fb-0829",
+   "id": "zu-test-0010"
+  },
+  {
+   "lang": "zu",
+   "en": "Call the mates. Get the meat. Let's go.",
+   "reference": "Shayela abangane. Thola inyama. Masiye.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[7]",
+   "feedbackId": "zu-fb-0836",
+   "id": "zu-test-0011"
+  },
+  {
+   "lang": "zu",
+   "en": "Clear night.",
+   "reference": "Ubusuku obucwebile.",
+   "rejected": "Ubusuku obuhlanzekile.",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0032",
+   "id": "zu-test-0012"
+  },
+  {
+   "lang": "zu",
+   "en": "Clear-ish night. Don't hold us to the stars.",
+   "reference": "Ubusuku bucacile kancane. Ungathathi lesi sibikezelo sezulu ngokweqiniso kakhulu.",
+   "rejected": "Ubusuku obuhle-ish. Ungasibambi ezinkanyezini.",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0045",
+   "id": "zu-test-0013"
+  },
+  {
+   "lang": "zu",
+   "en": "Cloudy vibes.",
+   "reference": "Kunamafu.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl headlines.cloudy",
+   "feedbackId": "zu-fb-0431",
+   "id": "zu-test-0014"
+  },
+  {
+   "lang": "zu",
+   "en": "Cloudy-ish. Don't bet the braai on it.",
+   "reference": "Kunamafu cishe. Ungabhejeli ukosa kukho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.cloudy[1]",
+   "feedbackId": "zu-fb-0866",
+   "id": "zu-test-0015"
+  },
+  {
+   "lang": "zu",
+   "en": "Coffee count: rising. Motivation count: still zero.",
+   "reference": "Ukubalwa kwekhofi: kuyenyuka. Ukubalwa kogqozi: kusewuziro.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[35]",
+   "feedbackId": "zu-fb-0664",
+   "id": "zu-test-0016"
+  },
+  {
+   "lang": "zu",
+   "en": "Coffee in the sun on the stoep. The whole reason we live here.",
+   "reference": "Ikhofi elangeni ku-stoep. Yiso sonke isizathu esenza sihlale la.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[29]",
+   "feedbackId": "zu-fb-0696",
+   "id": "zu-test-0017"
+  },
+  {
+   "lang": "zu",
+   "en": "Cold but clear",
+   "reference": "Kubanda, izulu licwebile",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl heroLabels.cold-clear",
+   "feedbackId": "zu-fb-0418",
+   "id": "zu-test-0018"
+  },
+  {
+   "lang": "zu",
+   "en": "Cold but stunning.",
+   "reference": "Kuyabanda, kodwa izulu licwebile.",
+   "rejected": "Kubanda, kodwa izulu licwebe cwe.",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0029",
+   "id": "zu-test-0019"
+  },
+  {
+   "lang": "zu",
+   "en": "Cold enough that the milk-bottle-on-the-stoep is now a cooler box.",
+   "reference": "Kubanda kangangokuthi ibhodlela lobisi ese-stoep manje isiyi-cooler box.",
+   "rejected": "Kubanda kangangokuthi i-milk bottle ese-stoep manje isiyi-cooler box.",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0041",
+   "id": "zu-test-0020"
+  },
+  {
+   "lang": "zu",
+   "en": "Could turn stormy. Keep one eye on the sky.",
+   "reference": "Kungaba nesiphepho. Bheka isibhakabhaka.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.storm[0]",
+   "feedbackId": "zu-fb-0907",
+   "id": "zu-test-0021"
+  },
+  {
+   "lang": "zu",
+   "en": "Don't even think about driving somewhere.",
+   "reference": "Ungacabangi ngisho ngokushayela ndawo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[24]",
+   "feedbackId": "zu-fb-0465",
+   "id": "zu-test-0022"
+  },
+  {
+   "lang": "zu",
+   "en": "Don't touch the seatbelt buckle. Trust us.",
+   "reference": "Ungalithinti ibhakili lebhande lokuvikela. Sithembe.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[35]",
+   "feedbackId": "zu-fb-0732",
+   "id": "zu-test-0023"
+  },
+  {
+   "lang": "zu",
+   "en": "Driving slow is not a suggestion.",
+   "reference": "Ukushayela kancane akusona isiphakamiso.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[1]",
+   "feedbackId": "zu-fb-0734",
+   "id": "zu-test-0024"
+  },
+  {
+   "lang": "zu",
+   "en": "Even the bakkies on the N2 pulled over.",
+   "reference": "Ngisho namabakkie ku-N2 amile eceleni.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[11]",
+   "feedbackId": "zu-fb-0452",
+   "id": "zu-test-0025"
+  },
+  {
+   "lang": "zu",
+   "en": "Even the geyser is putting in extra hours.",
+   "reference": "Ngisho ne-geyser isebenza amahora engeziwe.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[31]",
+   "feedbackId": "zu-fb-0660",
+   "id": "zu-test-0026"
+  },
+  {
+   "lang": "zu",
+   "en": "Even the hadedas are quiet.",
+   "reference": "Ngisho ama-hadeda athule.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[3]",
+   "feedbackId": "zu-fb-0444",
+   "id": "zu-test-0027"
+  },
+  {
+   "lang": "zu",
+   "en": "Even the shade is sweating.",
+   "reference": "Ngisho nomthunzi uyajuluka.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[31]",
+   "feedbackId": "zu-fb-0728",
+   "id": "zu-test-0028"
+  },
+  {
+   "lang": "zu",
+   "en": "Even the shade is warm. Good luck out there.",
+   "reference": "Ngisho nomthunzi ufudumele. Inhlanhla enhle.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.uv[19]",
+   "feedbackId": "zu-fb-0608",
+   "id": "zu-test-0029"
+  },
+  {
+   "lang": "zu",
+   "en": "Everyone with a pool just became very popular.",
+   "reference": "Bonke abanepuli basanda kuba nesithunzi kakhulu.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[13]",
+   "feedbackId": "zu-fb-0710",
+   "id": "zu-test-0030"
+  },
+  {
+   "lang": "zu",
+   "en": "Everything looks like a film scene. A creepy one.",
+   "reference": "Yonke into ibukeka njengomfanekiso wefilimu. Eyesabekayo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[17]",
+   "feedbackId": "zu-fb-0750",
+   "id": "zu-test-0031"
+  },
+  {
+   "lang": "zu",
+   "en": "Garage pie for lunch because the kitchen is lava.",
+   "reference": "Iphayi lasegalaji ngoba ikhishi yi-lava.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[19]",
+   "feedbackId": "zu-fb-0716",
+   "id": "zu-test-0032"
+  },
+  {
+   "lang": "zu",
+   "en": "Ghost town. But it's just Tuesday.",
+   "reference": "Idolobha lesipoki. Kodwa kungoLwesibili nje.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[7]",
+   "feedbackId": "zu-fb-0740",
+   "id": "zu-test-0033"
+  },
+  {
+   "lang": "zu",
+   "en": "Good soup weather, not gonna lie.",
+   "reference": "Isimo sezulu esihle sesobho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[9]",
+   "feedbackId": "zu-fb-0488",
+   "id": "zu-test-0034"
+  },
+  {
+   "lang": "zu",
+   "en": "Grab your brolly, boet.",
+   "reference": "Thatha isambulela sakho, boet.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[1]",
+   "feedbackId": "zu-fb-0480",
+   "id": "zu-test-0035"
+  },
+  {
+   "lang": "zu",
+   "en": "Grey vibes. The sky matched my Monday.",
+   "reference": "I-grey vibes. Isibhakabhaka sifana noMsombuluko wami.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[9]",
+   "feedbackId": "zu-fb-0544",
+   "id": "zu-test-0036"
+  },
+  {
+   "lang": "zu",
+   "en": "Gusty winds",
+   "reference": "Umoya onamandla",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl heroLabels.wind",
+   "feedbackId": "zu-fb-0416",
+   "id": "zu-test-0037"
+  },
+  {
+   "lang": "zu",
+   "en": "Hotter than a bakkie dashboard at noon.",
+   "reference": "Kushisa ukudlula i-dashboard yebakkie emini.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[5]",
+   "feedbackId": "zu-fb-0702",
+   "id": "zu-test-0038"
+  },
+  {
+   "lang": "zu",
+   "en": "If you're inside, you're doing it wrong.",
+   "reference": "Uma ungaphakathi, wenza kabi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[6]",
+   "feedbackId": "zu-fb-0777",
+   "id": "zu-test-0039"
+  },
+  {
+   "lang": "zu",
+   "en": "It's chilly.",
+   "reference": "Kuyabanda.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl headlines.cold",
+   "feedbackId": "zu-fb-0434",
+   "id": "zu-test-0040"
+  },
+  {
+   "lang": "zu",
+   "en": "Jislaaik, it's properly hot!",
+   "reference": "Yoh, kushisa ngempela!",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[0]",
+   "feedbackId": "zu-fb-0697",
+   "id": "zu-test-0041"
+  },
+  {
+   "lang": "zu",
+   "en": "Jislaaik, stay inside!",
+   "reference": "Yoh, hlala ngaphakathi!",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[0]",
+   "feedbackId": "zu-fb-0441",
+   "id": "zu-test-0042"
+  },
+  {
+   "lang": "zu",
+   "en": "Joburg drivers are panicking already.",
+   "reference": "Abashayeli baseJoburg sebeyesaba.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[5]",
+   "feedbackId": "zu-fb-0484",
+   "id": "zu-test-0043"
+  },
+  {
+   "lang": "zu",
+   "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+   "reference": "Ekuseni eKaroo. Uhlobo lwasekuseni olwenza uhloniphe wonke umlimi okhethe lokhu.",
+   "rejected": "Ekuseni eKaroo. Uhlobo olwenza uhloniphe wonke umlimi okhethe lokhu.",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0037",
+   "id": "zu-test-0044"
+  },
+  {
+   "lang": "zu",
+   "en": "Layers off by 11. Layers on by 4. Highveld classic.",
+   "reference": "Ama-layers ayaphuma ngo-11. Ama-layers ayabuya futhi ngo-4. Imikhuba yase-Highveld.",
+   "rejected": "Ama-layers ayaphuma ngo-11. Ama-layers ayabuya ngo-4. I-Highveld classic.",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0039",
+   "id": "zu-test-0045"
+  },
+  {
+   "lang": "zu",
+   "en": "Looks cold-ish. The thermometer's keeping us guessing.",
+   "reference": "Kubukeka kubanda. I-thermometer isenza siqagele.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.cold[2]",
+   "feedbackId": "zu-fb-0897",
+   "id": "zu-test-0046"
+  },
+  {
+   "lang": "zu",
+   "en": "Main character weather right here.",
+   "reference": "Isimo sezulu somlingiswa omkhulu lapha.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[4]",
+   "feedbackId": "zu-fb-0775",
+   "id": "zu-test-0047"
+  },
+  {
+   "lang": "zu",
+   "en": "Maluti-frost morning. Lesotho's exporting it for free.",
+   "reference": "I-Maluti-frost morning. I-Lesotho iyayi-exporta mahhala.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[28]",
+   "feedbackId": "zu-fb-0695",
+   "id": "zu-test-0048"
+  },
+  {
+   "lang": "zu",
+   "en": "Marinade in. Phone off. Day starts now.",
+   "reference": "Faka i-marinade. Cisha ifoni. Usuku luqala manje.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[20]",
+   "feedbackId": "zu-fb-0849",
+   "id": "zu-test-0049"
+  },
+  {
+   "lang": "zu",
+   "en": "Mixed bag out there. We're hedging.",
+   "reference": "Usuku oluxubene. Asiqinisekile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.partly-cloudy[3]",
+   "feedbackId": "zu-fb-0862",
+   "id": "zu-test-0050"
+  },
+  {
+   "lang": "zu",
+   "en": "Models say lovely. Reality reserves the right to differ.",
+   "reference": "Amamodeli athi kuhle. Iqiniso lingahluka.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.clear[5]",
+   "feedbackId": "zu-fb-0858",
+   "id": "zu-test-0051"
+  },
+  {
+   "lang": "zu",
+   "en": "Nobody signed up for this temperature.",
+   "reference": "Akekho ozibhalisele leli zinga lokushisa.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[24]",
+   "feedbackId": "zu-fb-0653",
+   "id": "zu-test-0052"
+  },
+  {
+   "lang": "zu",
+   "en": "Not a cloud in sight. Not one.",
+   "reference": "Akukho lifu elibonwayo. Nelilodwa.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[3]",
+   "feedbackId": "zu-fb-0774",
+   "id": "zu-test-0053"
+  },
+  {
+   "lang": "zu",
+   "en": "Not a hairstyle in sight. Just survivors.",
+   "reference": "Akukho sitayela sezinwele esibonwayo. Abasindile kuphela.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.wind[19]",
+   "feedbackId": "zu-fb-0628",
+   "id": "zu-test-0054"
+  },
+  {
+   "lang": "zu",
+   "en": "Not bad, not great. Like a 6/10 date.",
+   "reference": "Akubi kubi, akubi kuhle. Njengedethi ye-6/10.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[5]",
+   "feedbackId": "zu-fb-0540",
+   "id": "zu-test-0055"
+  },
+  {
+   "lang": "zu",
+   "en": "Not depressing. Just... underwhelming.",
+   "reference": "Akudabukisi. Nje... akuhlabi umxhwele.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[13]",
+   "feedbackId": "zu-fb-0548",
+   "id": "zu-test-0056"
+  },
+  {
+   "lang": "zu",
+   "en": "Outside has betrayed you and you went anyway.",
+   "reference": "Ngaphandle kukukhaphele futhi noma kunjalo uhambile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[36]",
+   "feedbackId": "zu-fb-0665",
+   "id": "zu-test-0057"
+  },
+  {
+   "lang": "zu",
+   "en": "Overcast",
+   "reference": "Amafu avalile",
+   "rejected": "Kunamafu",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0023",
+   "id": "zu-test-0058"
+  },
+  {
+   "lang": "zu",
+   "en": "Overcast but we'll survive.",
+   "reference": "Kunamafu kodwa sizosinda.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[1]",
+   "feedbackId": "zu-fb-0536",
+   "id": "zu-test-0059"
+  },
+  {
+   "lang": "zu",
+   "en": "Partly cloudy.",
+   "reference": "Kunamafu kancane.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl headlines.partly-cloudy",
+   "feedbackId": "zu-fb-0432",
+   "id": "zu-test-0060"
+  },
+  {
+   "lang": "zu",
+   "en": "Perfect excuse to cancel plans.",
+   "reference": "Isizathu esihle sokukhansela izinhlelo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[6]",
+   "feedbackId": "zu-fb-0485",
+   "id": "zu-test-0061"
+  },
+  {
+   "lang": "zu",
+   "en": "Perfect weather for a Woolies run and Netflix.",
+   "reference": "Isimo sezulu esihle se-Woolies ne-Netflix.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[6]",
+   "feedbackId": "zu-fb-0541",
+   "id": "zu-test-0062"
+  },
+  {
+   "lang": "zu",
+   "en": "Perfect weather for existing without enthusiasm.",
+   "reference": "Isimo sezulu esihle sokuphila ngaphandle kwentshisekelo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[26]",
+   "feedbackId": "zu-fb-0561",
+   "id": "zu-test-0063"
+  },
+  {
+   "lang": "zu",
+   "en": "Ponytail holders are doing overtime.",
+   "reference": "Izibopho zezinwele zisebenza ngokweqile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.wind[13]",
+   "feedbackId": "zu-fb-0622",
+   "id": "zu-test-0064"
+  },
+  {
+   "lang": "zu",
+   "en": "Postcard weather. You're welcome.",
+   "reference": "Isimo sezulu se-postcard. Wamukelekile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[8]",
+   "feedbackId": "zu-fb-0779",
+   "id": "zu-test-0065"
+  },
+  {
+   "lang": "zu",
+   "en": "Pretoria-bare-jacaranda energy. Beautiful and bleak.",
+   "reference": "I-Pretoria-bare-jacaranda energy. Yinhle futhi i-bleak.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[12]",
+   "feedbackId": "zu-fb-0679",
+   "id": "zu-test-0066"
+  },
+  {
+   "lang": "zu",
+   "en": "Probably a bit of cloud. Or a lot. Hard to call.",
+   "reference": "Cishe kunamafu amancane. Noma amaningi. Kunzima ukusho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.partly-cloudy[0]",
+   "feedbackId": "zu-fb-0859",
+   "id": "zu-test-0067"
+  },
+  {
+   "lang": "zu",
+   "en": "Rain on the way, give or take.",
+   "reference": "Imvula iyeza, cishe.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.rain[4]",
+   "feedbackId": "zu-fb-0881",
+   "id": "zu-test-0068"
+  },
+  {
+   "lang": "zu",
+   "en": "Rain's likely-ish. The sky hasn't signed anything.",
+   "reference": "Imvula icishe ibekhona. Isibhakabhaka asisayinanga lutho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.rain[1]",
+   "feedbackId": "zu-fb-0878",
+   "id": "zu-test-0069"
+  },
+  {
+   "lang": "zu",
+   "en": "Sand in places sand should never be.",
+   "reference": "Isihlabathi ezindaweni isihlabathi okungafanele sibe khona.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.wind[12]",
+   "feedbackId": "zu-fb-0621",
+   "id": "zu-test-0070"
+  },
+  {
+   "lang": "zu",
+   "en": "Saturday energy: maximum. Responsibilities: minimum.",
+   "reference": "Amandla angoMgqibelo: aphezulu. Imisebenzi: iphansi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[19]",
+   "feedbackId": "zu-fb-0848",
+   "id": "zu-test-0071"
+  },
+  {
+   "lang": "zu",
+   "en": "Shoes optional. Attitude mandatory.",
+   "reference": "Izicathulo zingakhethwa. Isimo sengqondo siyaphoqeleka.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[11]",
+   "feedbackId": "zu-fb-0840",
+   "id": "zu-test-0072"
+  },
+  {
+   "lang": "zu",
+   "en": "Showers",
+   "reference": "Izihlambi zemvula",
+   "rejected": "Izihlambi",
+   "verdict": "corrected",
+   "who": "zu native reviewer",
+   "source": "commit d51b173",
+   "feedbackId": "zu-fb-0017",
+   "id": "zu-test-0073"
+  },
+  {
+   "lang": "zu",
+   "en": "Sky can't make up its mind.",
+   "reference": "Isibhakabhaka asikwazi ukunquma.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.partly-cloudy[1]",
+   "feedbackId": "zu-fb-0574",
+   "id": "zu-test-0074"
+  },
+  {
+   "lang": "zu",
+   "en": "Sky's looking moody. Could escalate.",
+   "reference": "Isibhakabhaka sibukeka sithukuthele. Kungakhula.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.storm[5]",
+   "feedbackId": "zu-fb-0912",
+   "id": "zu-test-0075"
+  },
+  {
+   "lang": "zu",
+   "en": "Solidarity to everyone with one wet shoe right now.",
+   "reference": "Ukuhlangana nabo bonke abanesicathulo esisodwa esimanzi manje.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[31]",
+   "feedbackId": "zu-fb-0510",
+   "id": "zu-test-0076"
+  },
+  {
+   "lang": "zu",
+   "en": "Somewhere a cricket is really giving it.",
+   "reference": "Endaweni ethile intethe iyazinikela ngempela.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.night[8]",
+   "feedbackId": "zu-fb-0817",
+   "id": "zu-test-0077"
+  },
+  {
+   "lang": "zu",
+   "en": "Somewhere out there is the road. We think.",
+   "reference": "Endaweni ethile ngaphandle kunomgwaqo. Sicabanga.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[15]",
+   "feedbackId": "zu-fb-0748",
+   "id": "zu-test-0078"
+  },
+  {
+   "lang": "zu",
+   "en": "Storm on the cards, not yet confirmed. Stay sharp.",
+   "reference": "Isiphepho semathubeni, asikaqinisekiswa. Hlala uqaphile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.storm[4]",
+   "feedbackId": "zu-fb-0911",
+   "id": "zu-test-0079"
+  },
+  {
+   "lang": "zu",
+   "en": "Sun on a smoke break.",
+   "reference": "Ilanga lithatha ikhefu.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.partly-cloudy[11]",
+   "feedbackId": "zu-fb-0580",
+   "id": "zu-test-0080"
+  },
+  {
+   "lang": "zu",
+   "en": "Sunscreen is not optional, boet.",
+   "reference": "Ikhrimu yelanga ayikhona ukukhetha, boet.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.uv[0]",
+   "feedbackId": "zu-fb-0589",
+   "id": "zu-test-0081"
+  },
+  {
+   "lang": "zu",
+   "en": "Take a brolly just in case, hey.",
+   "reference": "Thatha isambulela uma kungenzeka, hey.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain-possible[2]",
+   "feedbackId": "zu-fb-0517",
+   "id": "zu-test-0082"
+  },
+  {
+   "lang": "zu",
+   "en": "Take your coffee outside. You deserve it.",
+   "reference": "Thatha ikhofi yakho uyiphumele. Uyakufanelekela.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[25]",
+   "feedbackId": "zu-fb-0796",
+   "id": "zu-test-0083"
+  },
+  {
+   "lang": "zu",
+   "en": "The braai is cancelled. Yes, really.",
+   "reference": "Ukosa kukhanselelwe. Yebo, ngempela.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[9]",
+   "feedbackId": "zu-fb-0450",
+   "id": "zu-test-0084"
+  },
+  {
+   "lang": "zu",
+   "en": "The Cape Doctor is making house calls.",
+   "reference": "UDokotela waseKapa ufikile ezovakasha.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.wind[3]",
+   "feedbackId": "zu-fb-0612",
+   "id": "zu-test-0085"
+  },
+  {
+   "lang": "zu",
+   "en": "The chops are calling. So is the chair.",
+   "reference": "Ama-chop ayabiza. Nesihlalo nawo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[21]",
+   "feedbackId": "zu-fb-0850",
+   "id": "zu-test-0086"
+  },
+  {
+   "lang": "zu",
+   "en": "The clouds RSVP'd 'maybe' and showed up anyway.",
+   "reference": "Amafu aphendule athi 'mhlawumbi' avele eza nje.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[33]",
+   "feedbackId": "zu-fb-0568",
+   "id": "zu-test-0087"
+  },
+  {
+   "lang": "zu",
+   "en": "The dams are doing a happy dance.",
+   "reference": "Amadamu enza umdanso ojabulayo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[7]",
+   "feedbackId": "zu-fb-0486",
+   "id": "zu-test-0088"
+  },
+  {
+   "lang": "zu",
+   "en": "The dog is staring at the rain like it's a personal insult.",
+   "reference": "Inja ibheka imvula sengathi inhlamba yomuntu siqu.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[34]",
+   "feedbackId": "zu-fb-0513",
+   "id": "zu-test-0089"
+  },
+  {
+   "lang": "zu",
+   "en": "The dog is still keen. The dog is always keen. Respect.",
+   "reference": "Inja isafuna ukuhamba. Inja ihlala ifuna. Respect.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[4]",
+   "feedbackId": "zu-fb-0671",
+   "id": "zu-test-0090"
+  },
+  {
+   "lang": "zu",
+   "en": "The duvet had the right idea this morning.",
+   "reference": "I-duvet yayinombono ofanele ekuseni.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[11]",
+   "feedbackId": "zu-fb-0640",
+   "id": "zu-test-0091"
+  },
+  {
+   "lang": "zu",
+   "en": "The duvet is calling and the duvet is winning.",
+   "reference": "I-duvet iyabiza futhi i-duvet iyaphumelela.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[30]",
+   "feedbackId": "zu-fb-0659",
+   "id": "zu-test-0092"
+  },
+  {
+   "lang": "zu",
+   "en": "The fog ate the neighbourhood.",
+   "reference": "Inkungu idle indawo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[10]",
+   "feedbackId": "zu-fb-0743",
+   "id": "zu-test-0093"
+  },
+  {
+   "lang": "zu",
+   "en": "The fridge feels warmer than the lounge today.",
+   "reference": "Ifriji ibonakala ifudumele kunelawunji namuhla.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[37]",
+   "feedbackId": "zu-fb-0666",
+   "id": "zu-test-0094"
+  },
+  {
+   "lang": "zu",
+   "en": "The geyser tripped overnight. Of course it did.",
+   "reference": "I-geyser i-tripile ebusuku. Yebo, vele.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[6]",
+   "feedbackId": "zu-fb-0673",
+   "id": "zu-test-0095"
+  },
+  {
+   "lang": "zu",
+   "en": "The heater is your best friend. Your only friend.",
+   "reference": "I-heater ingumngane wakho omkhulu. Owodwa.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[6]",
+   "feedbackId": "zu-fb-0635",
+   "id": "zu-test-0096"
+  },
+  {
+   "lang": "zu",
+   "en": "The ice cream van is playing everyone's anthem.",
+   "reference": "Imoto ye-ice cream idlala iculo lawo wonke umuntu.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[27]",
+   "feedbackId": "zu-fb-0724",
+   "id": "zu-test-0097"
+  },
+  {
+   "lang": "zu",
+   "en": "The kettle is working harder than anyone today.",
+   "reference": "Iketela lisebenza ngamandla kunabo bonke namuhla.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[23]",
+   "feedbackId": "zu-fb-0652",
+   "id": "zu-test-0098"
+  },
+  {
+   "lang": "zu",
+   "en": "The kids still going to school in shorts. They know things we don't.",
+   "reference": "Izingane zisaya esikoleni ngama-shorts. Ziyazi izinto thina esingazazi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[14]",
+   "feedbackId": "zu-fb-0681",
+   "id": "zu-test-0099"
+  },
+  {
+   "lang": "zu",
+   "en": "The kind of sky that makes you grateful for free things.",
+   "reference": "Uhlobo lwesibhakabhaka olukwenza ubonge izinto zamahhala.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[32]",
+   "feedbackId": "zu-fb-0803",
+   "id": "zu-test-0100"
+  },
+  {
+   "lang": "zu",
+   "en": "The koppies look like a postcard. Your feet feel like ice blocks.",
+   "reference": "Ama-koppies abukeka njenge-postcard. Izinyawo zakho zizwakala njenge-ice blocks.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[20]",
+   "feedbackId": "zu-fb-0687",
+   "id": "zu-test-0101"
+  },
+  {
+   "lang": "zu",
+   "en": "The moon's doing the most tonight.",
+   "reference": "Inyanga yenza konke namhlanje ebusuku.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.night[7]",
+   "feedbackId": "zu-fb-0816",
+   "id": "zu-test-0102"
+  },
+  {
+   "lang": "zu",
+   "en": "The mountains are on holiday today.",
+   "reference": "Izintaba ziseholidini namuhla.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[16]",
+   "feedbackId": "zu-fb-0749",
+   "id": "zu-test-0103"
+  },
+  {
+   "lang": "zu",
+   "en": "The sky can't make up its mind. Join the club.",
+   "reference": "Isibhakabhaka asikwazi ukuzinquma. Joyina iklabhu.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain-possible[7]",
+   "feedbackId": "zu-fb-0522",
+   "id": "zu-test-0104"
+  },
+  {
+   "lang": "zu",
+   "en": "The sky is the colour of an old Tupperware lid.",
+   "reference": "Isibhakabhaka sinombala wesivalo seTupperware esidala.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[35]",
+   "feedbackId": "zu-fb-0570",
+   "id": "zu-test-0105"
+  },
+  {
+   "lang": "zu",
+   "en": "The sky just went full Carte Blanche.",
+   "reference": "Isibhakabhaka sivele saba i-Carte Blanche ngokuphelele.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[14]",
+   "feedbackId": "zu-fb-0455",
+   "id": "zu-test-0106"
+  },
+  {
+   "lang": "zu",
+   "en": "The sky picked a vibe and the vibe is shrug.",
+   "reference": "Isibhakabhaka sikhethe i-vibe futhi i-vibe iwukunyusa amahlombe.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[29]",
+   "feedbackId": "zu-fb-0564",
+   "id": "zu-test-0107"
+  },
+  {
+   "lang": "zu",
+   "en": "The sky's giving absolutely nothing.",
+   "reference": "Isibhakabhaka asiniki lutho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[0]",
+   "feedbackId": "zu-fb-0535",
+   "id": "zu-test-0108"
+  },
+  {
+   "lang": "zu",
+   "en": "The sky's giving mixed signals again.",
+   "reference": "Isibhakabhaka siphinda sinikeze izimpawu ezixubile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain-possible[11]",
+   "feedbackId": "zu-fb-0526",
+   "id": "zu-test-0109"
+  },
+  {
+   "lang": "zu",
+   "en": "The sky's undecided. So are we.",
+   "reference": "Isibhakabhaka asinqumanga. Nathi futhi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.rain-possible[3]",
+   "feedbackId": "zu-fb-0886",
+   "id": "zu-test-0110"
+  },
+  {
+   "lang": "zu",
+   "en": "The southeaster's arrived. Uninvited, as usual.",
+   "reference": "Umoya waseningizimu ufikile. Ungamenyiwe, njengenjwayelo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.wind[1]",
+   "feedbackId": "zu-fb-0610",
+   "id": "zu-test-0111"
+  },
+  {
+   "lang": "zu",
+   "en": "The street signs gave up.",
+   "reference": "Izimpawu zomgwaqo ziyekile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[23]",
+   "feedbackId": "zu-fb-0756",
+   "id": "zu-test-0112"
+  },
+  {
+   "lang": "zu",
+   "en": "The sun doesn't care about your plans.",
+   "reference": "Ilanga alikhathali ngezinhlelo zakho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.uv[14]",
+   "feedbackId": "zu-fb-0603",
+   "id": "zu-test-0113"
+  },
+  {
+   "lang": "zu",
+   "en": "The sun is technically present. Spiritually elsewhere.",
+   "reference": "Ilanga ngokwesibalo likhona. Ngokomoya likwenye indawo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[37]",
+   "feedbackId": "zu-fb-0572",
+   "id": "zu-test-0114"
+  },
+  {
+   "lang": "zu",
+   "en": "The sun sent an out-of-office reply.",
+   "reference": "Ilanga lithumele i-out-of-office.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[22]",
+   "feedbackId": "zu-fb-0557",
+   "id": "zu-test-0115"
+  },
+  {
+   "lang": "zu",
+   "en": "The sun's not playing games today.",
+   "reference": "Ilanga alidlali namuhla.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.uv[2]",
+   "feedbackId": "zu-fb-0591",
+   "id": "zu-test-0116"
+  },
+  {
+   "lang": "zu",
+   "en": "The sun's on airplane mode.",
+   "reference": "Ilanga liku-airplane mode.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cloudy[31]",
+   "feedbackId": "zu-fb-0566",
+   "id": "zu-test-0117"
+  },
+  {
+   "lang": "zu",
+   "en": "The trees are doing involuntary yoga.",
+   "reference": "Izihlahla zenza i-yoga engafuneki.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.wind[6]",
+   "feedbackId": "zu-fb-0615",
+   "id": "zu-test-0118"
+  },
+  {
+   "lang": "zu",
+   "en": "The UV index is higher than your expectations.",
+   "reference": "I-UV index iphezulu kunalokho okulindele.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.uv[11]",
+   "feedbackId": "zu-fb-0600",
+   "id": "zu-test-0119"
+  },
+  {
+   "lang": "zu",
+   "en": "The weather gods are showing off.",
+   "reference": "Izinkulunkulu zesimo sezulu ziyaziqhayisa.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[2]",
+   "feedbackId": "zu-fb-0831",
+   "id": "zu-test-0120"
+  },
+  {
+   "lang": "zu",
+   "en": "This is not what the tourism brochure promised.",
+   "reference": "Lokhu akukhona okwethenjiswa yincwadi yokuvakasha.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[10]",
+   "feedbackId": "zu-fb-0639",
+   "id": "zu-test-0121"
+  },
+  {
+   "lang": "zu",
+   "en": "This is the sky's performance review. It passed.",
+   "reference": "Lokhu ukuhlolwa kwesibhakabhaka. Siphasile.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[23]",
+   "feedbackId": "zu-fb-0464",
+   "id": "zu-test-0122"
+  },
+  {
+   "lang": "zu",
+   "en": "This is the stuff. Right here.",
+   "reference": "Yilokhu. Lapha nje.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[30]",
+   "feedbackId": "zu-fb-0801",
+   "id": "zu-test-0123"
+  },
+  {
+   "lang": "zu",
+   "en": "This is the weather we brag about overseas.",
+   "reference": "Lesi yisimo sezulu esiziqhenya ngaso phesheya.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.clear[35]",
+   "feedbackId": "zu-fb-0806",
+   "id": "zu-test-0124"
+  },
+  {
+   "lang": "zu",
+   "en": "This is why Noah built a boat.",
+   "reference": "Yingakho uNowa wakha umkhumbi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[8]",
+   "feedbackId": "zu-fb-0449",
+   "id": "zu-test-0125"
+  },
+  {
+   "lang": "zu",
+   "en": "Thunder so close the walls shook. Respect.",
+   "reference": "Ukuduma okusondele izindonga zanyakaza. Inhlonipho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[25]",
+   "feedbackId": "zu-fb-0466",
+   "id": "zu-test-0126"
+  },
+  {
+   "lang": "zu",
+   "en": "Today's forecast: medium rare.",
+   "reference": "Isibikezelo sanamuhla: medium rare.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.uv[18]",
+   "feedbackId": "zu-fb-0607",
+   "id": "zu-test-0127"
+  },
+  {
+   "lang": "zu",
+   "en": "Tomorrow's weather is tomorrow's problem.",
+   "reference": "Isimo sezulu sakusasa sinkinga yakusasa.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.night[16]",
+   "feedbackId": "zu-fb-0825",
+   "id": "zu-test-0128"
+  },
+  {
+   "lang": "zu",
+   "en": "Too hot to argue. Too hot to function.",
+   "reference": "Kushisa kakhulu ukuphikisa. Kushisa kakhulu ukusebenza.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[8]",
+   "feedbackId": "zu-fb-0705",
+   "id": "zu-test-0129"
+  },
+  {
+   "lang": "zu",
+   "en": "Visibility: vibes only.",
+   "reference": "Ukubonakala: ama-vibes kuphela.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[35]",
+   "feedbackId": "zu-fb-0768",
+   "id": "zu-test-0130"
+  },
+  {
+   "lang": "zu",
+   "en": "Walking into it feels like a video game boss fight.",
+   "reference": "Ukuhamba kuwo kuzizwa njengokulwa ne-boss yomdlalo wevidiyo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.wind[16]",
+   "feedbackId": "zu-fb-0625",
+   "id": "zu-test-0131"
+  },
+  {
+   "lang": "zu",
+   "en": "Washing's still safe. Probably.",
+   "reference": "Izingubo zisaphephile. Cishe.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.partly-cloudy[13]",
+   "feedbackId": "zu-fb-0582",
+   "id": "zu-test-0132"
+  },
+  {
+   "lang": "zu",
+   "en": "Watch for fog — it likes to arrive unannounced.",
+   "reference": "Qaphela inkungu — ithanda ukufika ingazange yazise.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty_low_confidence.fog[5]",
+   "feedbackId": "zu-fb-0876",
+   "id": "zu-test-0133"
+  },
+  {
+   "lang": "zu",
+   "en": "Weather so dramatic it needs a Carte Blanche segment.",
+   "reference": "Isimo sezulu esinomdlalo esidinga i-Carte Blanche.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[7]",
+   "feedbackId": "zu-fb-0448",
+   "id": "zu-test-0134"
+  },
+  {
+   "lang": "zu",
+   "en": "Weekend vibes so strong they need their own playlist.",
+   "reference": "I-weekend vibes ezinamandla kakhulu zidinga i-playlist yazo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[4]",
+   "feedbackId": "zu-fb-0833",
+   "id": "zu-test-0135"
+  },
+  {
+   "lang": "zu",
+   "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "reference": "Kubanda okweWelkom namuhla. Amakhaza angena kuma-jersey amathathu sengathi awekho.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold-clear[5]",
+   "feedbackId": "zu-fb-0672",
+   "id": "zu-test-0136"
+  },
+  {
+   "lang": "zu",
+   "en": "Why did past-you make plans? Past-you is the worst.",
+   "reference": "Kungani wena-wesikhathi-esidlule wenze izinhlelo? Wena-wesikhathi-esidlule mubi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[29]",
+   "feedbackId": "zu-fb-0658",
+   "id": "zu-test-0137"
+  },
+  {
+   "lang": "zu",
+   "en": "Windows closed, kettle on, and wait.",
+   "reference": "Amafasitela avalwe, iketile ivuliwe, ulinde.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.storm[17]",
+   "feedbackId": "zu-fb-0458",
+   "id": "zu-test-0138"
+  },
+  {
+   "lang": "zu",
+   "en": "Yes, it's raining sideways. South Africa speciality.",
+   "reference": "Yebo, kuyana ngenhlangothi. Okukhethekile kweNingizimu Afrika.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[28]",
+   "feedbackId": "zu-fb-0507",
+   "id": "zu-test-0139"
+  },
+  {
+   "lang": "zu",
+   "en": "You could fry an egg on the N1.",
+   "reference": "Ungabhaka iqanda ku-N1.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[1]",
+   "feedbackId": "zu-fb-0698",
+   "id": "zu-test-0140"
+  },
+  {
+   "lang": "zu",
+   "en": "Your breath is doing special effects.",
+   "reference": "Umphefumulo wakho wenza i-special effects.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[8]",
+   "feedbackId": "zu-fb-0637",
+   "id": "zu-test-0141"
+  },
+  {
+   "lang": "zu",
+   "en": "Your car is out there. Somewhere. Probably.",
+   "reference": "Imoto yakho ikhona ngaphandle. Endaweni ethile. Cishe.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[11]",
+   "feedbackId": "zu-fb-0744",
+   "id": "zu-test-0142"
+  },
+  {
+   "lang": "zu",
+   "en": "Your car seat is a weapon right now.",
+   "reference": "Isihlalo semoto sakho siyisikhali manje.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[7]",
+   "feedbackId": "zu-fb-0704",
+   "id": "zu-test-0143"
+  },
+  {
+   "lang": "zu",
+   "en": "Your hands are in your pockets and they're not coming out.",
+   "reference": "Izandla zakho zisemaphaketheni futhi azibuyi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.cold[13]",
+   "feedbackId": "zu-fb-0642",
+   "id": "zu-test-0144"
+  },
+  {
+   "lang": "zu",
+   "en": "Your headlights are doing a 'thoughts and prayers'.",
+   "reference": "Izibani zakho ezinkulu zenza 'imicabango nemikhuleko'.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.fog[32]",
+   "feedbackId": "zu-fb-0765",
+   "id": "zu-test-0145"
+  },
+  {
+   "lang": "zu",
+   "en": "Your out-of-office is doing the heavy lifting.",
+   "reference": "I-out-of-office yakho yenza umsebenzi onzima.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.weekend[12]",
+   "feedbackId": "zu-fb-0841",
+   "id": "zu-test-0146"
+  },
+  {
+   "lang": "zu",
+   "en": "Your shoes are about to have a bad day.",
+   "reference": "Izicathulo zakho zizoba nosuku olubi.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.rain[12]",
+   "feedbackId": "zu-fb-0491",
+   "id": "zu-test-0147"
+  },
+  {
+   "lang": "zu",
+   "en": "Your steering wheel is a hot plate.",
+   "reference": "Isitelingi sakho siyisitsha esishisayo.",
+   "verdict": "approved",
+   "who": "zu native-reviewed bank",
+   "source": "lang-packs/zu/corpus-confirmed.jsonl witty.heat[24]",
+   "feedbackId": "zu-fb-0721",
+   "id": "zu-test-0148"
+  }
+ ]
+}

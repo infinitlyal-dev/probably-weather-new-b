@@ -1,0 +1,351 @@
+{
+ "generated": "2026-09-23",
+ "ruling": "Al, 2026-09-06: Sesotho in the South African orthography",
+ "corpusSizes": {
+  "NCHLT GOV-ZA": 129195,
+  "Constitution (SA)": 52358,
+  "Leipzig sot-za web": 211893,
+  "st.wikipedia": 627235
+ },
+ "licences": {
+  "NCHLT GOV-ZA": "CC BY 2.5 ZA (CTexT NWU / DAC)",
+  "Constitution (SA)": "Government publication (justice.gov.za)",
+  "Leipzig sot-za web": "CC BY-NC (Leipzig Corpora Collection)",
+  "st.wikipedia": "CC BY-SA 4.0"
+ },
+ "rules": [
+  {
+   "id": "ea→ya",
+   "lesotho": "^ea$",
+   "sa": "^ya$",
+   "what": "possessive/relative \"ea\" is written \"ya\"",
+   "example": "lehodimo ya → not \"ea\"",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 26162
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 51950
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 807,
+     "sa": 36476
+    },
+    "st.wikipedia": {
+     "lesotho": 10468.2,
+     "sa": 30731.7
+    }
+   }
+  },
+  {
+   "id": "oa→wa",
+   "lesotho": "^oa$",
+   "sa": "^wa$",
+   "what": "possessive/relative \"oa\" is written \"wa\"",
+   "example": "moya wa → not \"oa\"",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 5913.5
+    },
+    "Constitution (SA)": {
+     "lesotho": 19.1,
+     "sa": 24924.6
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 311.5,
+     "sa": 11968.3
+    },
+    "st.wikipedia": {
+     "lesotho": 4232.9,
+     "sa": 15174.5
+    }
+   }
+  },
+  {
+   "id": "tš→tsh",
+   "lesotho": "tš",
+   "sa": "tsh",
+   "what": "\"tš\" is written \"tsh\"",
+   "example": "tshepa, not tšepa",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 15.5,
+     "sa": 23166.5
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 17666.8
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 250.1,
+     "sa": 17999.7
+    },
+    "st.wikipedia": {
+     "lesotho": 2678.4,
+     "sa": 9305.9
+    }
+   }
+  },
+  {
+   "id": "li-→di-",
+   "lesotho": "^li[bcdfghjklmnpqrstvwxyz]",
+   "sa": "^di[bcdfghjklmnpqrstvwxyz]",
+   "what": "class 8/10 prefix \"li-\" is written \"di-\"",
+   "example": "dipula, not lipula",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 270.9,
+     "sa": 32416.1
+    },
+    "Constitution (SA)": {
+     "lesotho": 57.3,
+     "sa": 37167.2
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 896.7,
+     "sa": 33932.2
+    },
+    "st.wikipedia": {
+     "lesotho": 8915.3,
+     "sa": 18731.4
+    }
+   }
+  },
+  {
+   "id": "'n→n",
+   "lesotho": "^'n",
+   "sa": "^nn",
+   "what": "the apostrophe forms ('nete, 'ngoe) are written without it (nnete, nngwe)",
+   "example": "nnete, not 'nete",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 7.7,
+     "sa": 1950.5
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 2654.8
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 37.8,
+     "sa": 3761.3
+    },
+    "st.wikipedia": {
+     "lesotho": 400.2,
+     "sa": 913.5
+    }
+   }
+  },
+  {
+   "id": "joale→jwale",
+   "lesotho": "^joal[eo]$",
+   "sa": "^jwal[eo]$",
+   "what": "\"joale/joalo\" are written \"jwale/jwalo\"",
+   "example": "jwale, jwalo",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 2260.1
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 2425.6
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 61.4,
+     "sa": 3393.2
+    },
+    "st.wikipedia": {
+     "lesotho": 534.1,
+     "sa": 1202.1
+    }
+   }
+  },
+  {
+   "id": "moea→moya",
+   "lesotho": "^moea$",
+   "sa": "^moya$",
+   "what": "\"moea\" (wind, spirit) is written \"moya\"",
+   "example": "moya",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 139.3
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 19.1
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 4.7,
+     "sa": 627.7
+    },
+    "st.wikipedia": {
+     "lesotho": 67,
+     "sa": 90.9
+    }
+   }
+  },
+  {
+   "id": "holimo→hodimo",
+   "lesotho": "holimo",
+   "sa": "hodimo",
+   "what": "l before i/u is written d (lehodimo, not leholimo)",
+   "example": "lehodimo",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 820.5
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 305.6
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 14.2,
+     "sa": 1378.1
+    },
+    "st.wikipedia": {
+     "lesotho": 192.9,
+     "sa": 306.1
+    }
+   }
+  },
+  {
+   "id": "tsoa→tswa",
+   "lesotho": "^tsoa",
+   "sa": "^tswa",
+   "what": "\"tsoa/tsoang\" is written \"tswa/tswang\"",
+   "example": "ho tswa",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 1973.8
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 725.8
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 47.2,
+     "sa": 2251.1
+    },
+    "st.wikipedia": {
+     "lesotho": 460.8,
+     "sa": 1235.6
+    }
+   }
+  },
+  {
+   "id": "ngoe→ngwe",
+   "lesotho": "^n?ngoe$",
+   "sa": "^n?ngwe$",
+   "what": "\"ngoe/nngoe\" is written \"ngwe/nngwe\"",
+   "example": "nngwe",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 1060.4
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 1718.9
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 18.9,
+     "sa": 1642.3
+    },
+    "st.wikipedia": {
+     "lesotho": 47.8,
+     "sa": 538.9
+    }
+   }
+  },
+  {
+   "id": "chesa→tjhesa",
+   "lesotho": "^(chesa|chese|chesang)$",
+   "sa": "^(tjhesa|tjhese|tjhesang)$",
+   "what": "\"chesa\" (hot) is written \"tjhesa\"",
+   "example": "ho a tjhesa",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 154.8
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 0
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 33,
+     "sa": 84.9
+    },
+    "st.wikipedia": {
+     "lesotho": 39.9,
+     "sa": 35.1
+    }
+   }
+  },
+  {
+   "id": "uena→wena",
+   "lesotho": "^uena$",
+   "sa": "^wena$",
+   "what": "\"uena\" (you) is written \"wena\"",
+   "example": "wena",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 294.1
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 0
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 28.3,
+     "sa": 514.4
+    },
+    "st.wikipedia": {
+     "lesotho": 1.6,
+     "sa": 19.1
+    }
+   }
+  },
+  {
+   "id": "u→o (you)",
+   "lesotho": "^u$",
+   "sa": "^o$",
+   "what": "the 2nd-person concord \"u\" is written \"o\"",
+   "example": "o a tseba",
+   "evidence": {
+    "NCHLT GOV-ZA": {
+     "lesotho": 0,
+     "sa": 6679.8
+    },
+    "Constitution (SA)": {
+     "lesotho": 0,
+     "sa": 19080.2
+    },
+    "Leipzig sot-za web": {
+     "lesotho": 467.2,
+     "sa": 19306.9
+    },
+    "st.wikipedia": {
+     "lesotho": 315.7,
+     "sa": 19396.2
+    }
+   }
+  }
+ ],
+ "dropped": [
+  "eo→yo",
+  "-oe-→-we-",
+  "ch-→tjh-",
+  "moholi→mohodi",
+  "lu→du",
+  "-ile→-ile (no change)"
+ ]
+}

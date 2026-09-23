@@ -1,0 +1,835 @@
+{
+ "lang": "af",
+ "generated": "2026-09-23",
+ "sources": {
+  "leipzig": "Leipzig Corpora Collection word frequencies (CC BY-NC) — South African web, community and news corpora",
+  "constitution": "Constitution of the Republic of South Africa, official translation (government publication)",
+  "autshumato": "Autshumato multilingual word and phrase lists, CTexT NWU / DAC (CC BY 2.5 ZA)"
+ },
+ "note": "verified = attested in external South African text (Leipzig frequency >= 3, or the Constitution, or Autshumato) or a loanword the English itself uses. safetyEligible = verified, or used in the native-reviewed bank (in-house, not external evidence): only these drive the hard safety check. Other terms are kept for the skills to use with care.",
+ "weather": [
+  {
+   "id": "rain",
+   "en": "\\brain",
+   "safety": false,
+   "terms": [
+    {
+     "term": "reën",
+     "leipzigFreq": 497,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "reent",
+     "leipzigFreq": 2,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    }
+   ]
+  },
+  {
+   "id": "drizzle",
+   "en": "drizzl",
+   "safety": false,
+   "terms": [
+    {
+     "term": "motreën",
+     "leipzigFreq": 3,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "motreent",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    }
+   ]
+  },
+  {
+   "id": "storm",
+   "en": "\\bstorm",
+   "safety": false,
+   "terms": [
+    {
+     "term": "storm",
+     "leipzigFreq": 181,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "donderstorm",
+     "leipzigFreq": 13,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "thunder",
+   "en": "thunder",
+   "safety": false,
+   "terms": [
+    {
+     "term": "donder",
+     "leipzigFreq": 18,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "donderweer",
+     "leipzigFreq": 15,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "lightning",
+   "en": "lightning",
+   "safety": true,
+   "terms": [
+    {
+     "term": "weerlig",
+     "leipzigFreq": 38,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "hail",
+   "en": "\\bhail",
+   "safety": true,
+   "terms": [
+    {
+     "term": "hael",
+     "leipzigFreq": 24,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "wind",
+   "en": "\\bwind(y|s)?\\b|\\bgusts?\\b|\\bgusty\\b|\\bbreez",
+   "safety": true,
+   "terms": [
+    {
+     "term": "wind",
+     "leipzigFreq": 354,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "windvlaag",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    },
+    {
+     "term": "rukwind",
+     "leipzigFreq": 6,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "windstoot",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    }
+   ]
+  },
+  {
+   "id": "fog",
+   "en": "\\bfog|\\bmist",
+   "safety": false,
+   "terms": [
+    {
+     "term": "mis",
+     "leipzigFreq": 367,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "newel",
+     "leipzigFreq": 4,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "cloud",
+   "en": "cloud|overcast",
+   "safety": false,
+   "terms": [
+    {
+     "term": "wolk",
+     "leipzigFreq": 58,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "wolke",
+     "leipzigFreq": 125,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "bewolk",
+     "leipzigFreq": 26,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "sun",
+   "en": "\\bsun|sunny",
+   "safety": false,
+   "terms": [
+    {
+     "term": "son",
+     "leipzigFreq": 607,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "sonnig",
+     "leipzigFreq": 9,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "clear",
+   "en": "\\bclear",
+   "safety": false,
+   "terms": [
+    {
+     "term": "helder",
+     "leipzigFreq": 245,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "cold",
+   "en": "\\bcold|chill|freez",
+   "safety": false,
+   "terms": [
+    {
+     "term": "koud",
+     "leipzigFreq": 203,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "koue",
+     "leipzigFreq": 419,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "yskoud",
+     "leipzigFreq": 10,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "frost",
+   "en": "frost",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ryp",
+     "leipzigFreq": 106,
+     "inConstitution": true,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "snow",
+   "en": "\\bsnow",
+   "safety": false,
+   "terms": [
+    {
+     "term": "sneeu",
+     "leipzigFreq": 79,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "heat",
+   "en": "\\bheat\\b|\\bheatwave|\\bhot\\b|scorch|swelter",
+   "safety": false,
+   "terms": [
+    {
+     "term": "hitte",
+     "leipzigFreq": 249,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "warm",
+     "leipzigFreq": 875,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "snikheet",
+     "leipzigFreq": 1,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": false,
+     "safetyEligible": false
+    },
+    {
+     "term": "hittegolf",
+     "leipzigFreq": 7,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "skroei",
+     "leipzigFreq": 8,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "temperature",
+   "en": "temperature|degree",
+   "safety": false,
+   "terms": [
+    {
+     "term": "temperatuur",
+     "leipzigFreq": 111,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "grade",
+     "leipzigFreq": 185,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "forecast",
+   "en": "forecast",
+   "safety": false,
+   "terms": [
+    {
+     "term": "voorspelling",
+     "leipzigFreq": 58,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "headlights",
+   "en": "headlight",
+   "safety": true,
+   "terms": [
+    {
+     "term": "koplamp",
+     "leipzigFreq": 1,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    },
+    {
+     "term": "koplampe",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    },
+    {
+     "term": "ligte",
+     "leipzigFreq": 402,
+     "inConstitution": true,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "sunscreen",
+   "en": "sunscreen|\\bspf\\b|sunblock",
+   "safety": true,
+   "terms": [
+    {
+     "term": "sonbrandroom",
+     "leipzigFreq": 0,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    },
+    {
+     "term": "sonskerm",
+     "leipzigFreq": 3,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "sonroom",
+     "leipzigFreq": 4,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "spf",
+     "leipzigFreq": 9,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "inside",
+   "en": "stay (in|inside|indoors|home)|indoors",
+   "safety": true,
+   "terms": [
+    {
+     "term": "binne",
+     "leipzigFreq": 2190,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "huis toe",
+     "leipzigFreq": 3096,
+     "inConstitution": true,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "tuis",
+     "leipzigFreq": 489,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "flood",
+   "en": "\\bflood(s|ed|ing|water)?\\b",
+   "safety": true,
+   "terms": [
+    {
+     "term": "vloed",
+     "leipzigFreq": 66,
+     "inConstitution": true,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "oorstroming",
+     "leipzigFreq": 6,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "oorstroom",
+     "leipzigFreq": 25,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": false,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "drive",
+   "en": "\\bdrive|driving|drivers?\\b",
+   "safety": false,
+   "terms": [
+    {
+     "term": "ry",
+     "leipzigFreq": 1394,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "bestuur",
+     "leipzigFreq": 979,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "bestuurders",
+     "leipzigFreq": 98,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "water",
+   "en": "drink water|hydrat",
+   "safety": true,
+   "terms": [
+    {
+     "term": "water",
+     "leipzigFreq": 2168,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "gehidreer",
+     "leipzigFreq": 2,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": false,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "morning",
+   "en": "morning|dawn",
+   "safety": false,
+   "terms": [
+    {
+     "term": "oggend",
+     "leipzigFreq": 630,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "môre",
+     "leipzigFreq": 309,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "dagbreek",
+     "leipzigFreq": 35,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "evening",
+   "en": "evening|dusk",
+   "safety": false,
+   "terms": [
+    {
+     "term": "aand",
+     "leipzigFreq": 888,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "skemer",
+     "leipzigFreq": 31,
+     "inConstitution": false,
+     "inAutshumato": false,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "night",
+   "en": "\\bnight|tonight",
+   "safety": false,
+   "terms": [
+    {
+     "term": "nag",
+     "leipzigFreq": 594,
+     "inConstitution": true,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    },
+    {
+     "term": "vanaand",
+     "leipzigFreq": 282,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "today",
+   "en": "\\btoday",
+   "safety": false,
+   "terms": [
+    {
+     "term": "vandag",
+     "leipzigFreq": 2719,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  },
+  {
+   "id": "tomorrow",
+   "en": "tomorrow",
+   "safety": false,
+   "terms": [
+    {
+     "term": "môre",
+     "leipzigFreq": 309,
+     "inConstitution": false,
+     "inAutshumato": true,
+     "inReviewedBank": true,
+     "verified": true,
+     "safetyEligible": true
+    }
+   ]
+  }
+ ],
+ "safety": [
+  {
+   "id": "lightning",
+   "en": "lightning",
+   "terms": [
+    "weerlig"
+   ]
+  },
+  {
+   "id": "hail",
+   "en": "\\bhail",
+   "terms": [
+    "hael"
+   ]
+  },
+  {
+   "id": "wind",
+   "en": "\\bwind(y|s)?\\b|\\bgusts?\\b|\\bgusty\\b|\\bbreez",
+   "terms": [
+    "wind",
+    "rukwind"
+   ]
+  },
+  {
+   "id": "headlights",
+   "en": "headlight",
+   "terms": [
+    "koplamp",
+    "koplampe",
+    "ligte"
+   ]
+  },
+  {
+   "id": "sunscreen",
+   "en": "sunscreen|\\bspf\\b|sunblock",
+   "terms": [
+    "sonbrandroom",
+    "sonskerm",
+    "sonroom",
+    "spf"
+   ]
+  },
+  {
+   "id": "inside",
+   "en": "stay (in|inside|indoors|home)|indoors",
+   "terms": [
+    "binne",
+    "huis toe",
+    "tuis"
+   ]
+  },
+  {
+   "id": "flood",
+   "en": "\\bflood(s|ed|ing|water)?\\b",
+   "terms": [
+    "vloed",
+    "oorstroming",
+    "oorstroom"
+   ]
+  },
+  {
+   "id": "water",
+   "en": "drink water|hydrat",
+   "terms": [
+    "water",
+    "gehidreer"
+   ]
+  }
+ ]
+}

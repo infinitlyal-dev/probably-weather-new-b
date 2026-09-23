@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Afrikaans calibration</title>
+<style>
+:root { --bg:#f7f6f2; --fg:#1d1d1b; --muted:#6b6a64; --line:#dddbd2; --card:#fff; --accent:#1f5f8b; --good:#2e7d4f; --fine:#b7791f; --wrong:#a5452b; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161614; --fg:#ecebe6; --muted:#a3a29b; --line:#34332f; --card:#1f1f1c; --accent:#7fb6dd; --good:#7ccf9c; --fine:#e0b35c; --wrong:#e08a6e; } }
+* { box-sizing:border-box; }
+body { margin:0; padding:18px 16px 96px; background:var(--bg); color:var(--fg); font:16px/1.45 system-ui, sans-serif; }
+main { max-width:900px; margin:0 auto; }
+h1 { font-size:1.4rem; margin:0 0 6px; }
+.lede { color:var(--muted); margin:0 0 12px; font-size:.95rem; max-width:80ch; }
+.lede b { color:var(--fg); }
+.bar { position:sticky; top:0; z-index:5; background:var(--bg); display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:8px 0; border-bottom:1px solid var(--line); margin-bottom:12px; }
+.bar button { font:inherit; padding:6px 12px; border-radius:7px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+.count { font-weight:600; }
+.row { display:grid; grid-template-columns:84px 1fr; gap:12px; background:var(--card); border:2px solid var(--line); border-radius:10px; padding:10px; margin:0 0 10px; }
+.row.GOOD { border-color:var(--good); } .row.FINE { border-color:var(--fine); } .row.WRONG { border-color:var(--wrong); }
+.row img { width:84px; height:150px; object-fit:cover; border-radius:6px; background:#333; }
+.noimg { width:84px; height:40px; font-size:.7rem; color:var(--muted); }
+.n { font-size:.75rem; color:var(--muted); }
+.l { font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:6px 0 0; }
+.en { font-size:.95rem; } .af { font-size:1.15rem; font-weight:600; }
+.act { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; align-items:center; }
+.act button { font:inherit; font-size:.9rem; padding:6px 12px; border-radius:7px; border:1px solid var(--line); background:transparent; color:var(--fg); cursor:pointer; }
+.act button.on.GOOD { background:var(--good); color:#fff; border-color:var(--good); }
+.act button.on.FINE { background:var(--fine); color:#fff; border-color:var(--fine); }
+.act button.on.WRONG { background:var(--wrong); color:#fff; border-color:var(--wrong); }
+textarea { flex:1 1 240px; min-height:34px; font:inherit; font-size:.9rem; border:1px solid var(--line); border-radius:6px; padding:5px; background:transparent; color:inherit; }
+#out { width:100%; min-height:80px; margin-top:10px; font:12px ui-monospace, monospace; }
+@media (max-width:560px) { .row { grid-template-columns:64px 1fr; } .row img { width:64px; height:114px; } .bar { position:static; } }
+</style>
+</head>
+<body>
+<main>
+<h1>Afrikaans: 40 lines, your ear</h1>
+<p class="lede">These are 40 Afrikaans lines from the app, next to the English they come from. None of them is one you have ruled on before.
+For each one, say whether the Afrikaans is right:
+<b>GOOD</b> — it says what the English says, in natural Afrikaans.
+<b>DRIFT BUT FINE</b> — it changes something on purpose and keeps the joke; you would ship it.
+<b>WRONG</b> — it says something else, loses the joke, or reads wrong; you would not ship it.
+Some of these passed the machine check and some did not. They are mixed and not marked, so your answers show which checker to trust. There is no trick and no quota.
+A note is welcome where you know the better Afrikaans. Choices save in this browser. <b>Export</b> saves <code>af-calibration-ruled.json</code> to Downloads.</p>
+<div class="bar"><span class="count" id="count"></span><button id="export">Export af-calibration-ruled.json</button><button id="copy">Copy JSON</button></div>
+<div id="list"></div>
+<textarea id="out" readonly placeholder="Exported JSON also appears here."></textarea>
+</main>
+<script>
+const ROWS = [{"n":1,"k":"af-0188","en":"Not Instagram weather. Not the end of the world.","af":"Nie troufoto weer nie. Nie die einde van die wêreld nie.","image":"cloudy/week_1/dawn/3.webp"},{"n":2,"k":"af-0032","en":"The beach is doubling as a mirror, which takes one morning of absolutely no wind.","af":"Die strand is ook 'n spieël, en dit vat een oggend van absoluut geen wind nie.","image":"clear/week_1/dawn/6.webp"},{"n":3,"k":"af-0887","en":"That sprinkler has been the best-value thing in this garden all summer.","af":"Daardie sproeier is die hele somer die beste waarde in hierdie tuin.","image":"heat/week_1/day/7.webp"},{"n":4,"k":"af-0868","en":"That dashboard is hot enough that the wrapper gave up before the chocolate did.","af":"Daardie dashboard is so warm dat die papiertjie voor die sjokolade moed opgegee het.","image":"heat/week_1/day/4.webp"},{"n":5,"k":"af-0611","en":"Every streetlamp down the road is lighting nobody; winter nights empty a dorp early.","af":"Elke straatlig langs die pad skyn vir niemand nie; winternagte maak 'n dorp vroeg leeg.","image":"cold/week_1/night/1.webp"},{"n":6,"k":"af-0130","en":"The moon is out and somebody small is hearing about it for the first time.","af":"Die maan is uit, en iemand kleintjies hoor vir die eerste keer daarvan.","image":"clear/week_1/night/4.webp"},{"n":7,"k":"af-0920","en":"Friday, and this promenade is doing the work of six different bars.","af":"Vrydag, en hierdie promenade doen die werk van ses verskillende kroeë.","image":"heat/week_1/dusk/5.webp"},{"n":8,"k":"af-0058","en":"The weather moved the office to the roof and productivity can argue later.","af":"Die weer het die kantoor dak toe geskuif, en produktiwiteit kan later stry.","image":"clear/week_1/day/3.webp"},{"n":9,"k":"af-1419","en":"The wind did the throwing and the neighbour is doing the returning.","af":"Die wind het gegooi en die buurvrou gooi terug.","image":"wind/week_1/dusk/3.webp"},{"n":10,"k":"af-1119","en":"The traffic just remembered rain exists. Again.","af":"Die verkeer het pas onthou daar is n ding soos reën bestaan weer.","image":"rain/week_1/night/4.webp"},{"n":11,"k":"af-2150","en":"It's hot.","af":"Dis bloedig warm.","image":null},{"n":12,"k":"af-1356","en":"Neither of them is going to be the one who suggests turning back.","af":"Nie een van hulle gaan die een wees wat voorstel om om te draai nie.","image":"wind/week_1/dawn/6.webp"},{"n":13,"k":"af-0745","en":"Headlights do about twenty metres out here; the rest is memory and respect.","af":"Ligte haal omtrent twintig meter hier; die res is geheue en respek.","image":"fog/week_1/dusk/1.webp"},{"n":14,"k":"af-1371","en":"Both hands are on the skirt, which means the hair is on its own.","af":"Albei hande is op die romp, wat beteken die hare is op sy eie.","image":"wind/week_1/day/2.webp"},{"n":15,"k":"af-0774","en":"Last taxis of the night, and the fog has the whole rank to itself soon.","af":"Laaste taxi's van die aand, en die mis het binnekort die hele staanplek vir homself.","image":"fog/week_1/night/1.webp"},{"n":16,"k":"af-0137","en":"The evening is holding at exactly the temperature nobody talks about.","af":"Die aand bly presies op die temperatuur waaroor niemand praat nie.","image":"clear/week_1/night/5.webp"},{"n":17,"k":"af-1430","en":"Somebody is going to come home to a lounge full of Signal Hill.","af":"Iemand gaan by 'n sitkamer vol Seinheuwel tuiskom.","image":"wind/week_1/dusk/5.webp"},{"n":18,"k":"af-0270","en":"Rain? Possibly. Commitment? Never.","af":"Reën? Moontlik. Sal ek my lewe daar op wed? Nooit.","image":"cloudy/week_1/dusk/5.webp"},{"n":19,"k":"af-0896","en":"Nobody out here waters anything until that sun is properly behind the hill.","af":"Niemand hier buite maak iets nat voor daardie son behoorlik agter die bult is nie.","image":"heat/week_1/dusk/1.webp"},{"n":20,"k":"af-0846","en":"That bonnet is hotter than most pans ever get on most stoves.","af":"Daardie enjinkap is warmer as wat die meeste panne ooit op die meeste stowe word.","image":"heat/week_1/day/1.webp"},{"n":21,"k":"af-0257","en":"Grey sky, grey jersey: the whole stoep is colour-coordinated with the weather.","af":"Grys lug, grys trui: die hele stoep pas by die weer.","image":"cloudy/week_1/dusk/2.webp"},{"n":22,"k":"af-0967","en":"Nobody is going back in there until the walls let go of the day.","af":"Niemand gaan daar terug in voor die mure die dag laat gaan nie.","image":"heat/week_1/night/4.webp"},{"n":23,"k":"af-1282","en":"Friday night, and the stoep has quietly become the whole evening.","af":"Vrydagaand, en die stoep het stilweg die hele aand geword.","image":"storm/week_1/night/5.webp"},{"n":24,"k":"af-0330","en":"That grey is thinking about rain and the whole district is thinking with it.","af":"Daardie grys dink aan reën, en die hele distrik dink saam.","image":"cloudy/week_2/day/3.webp"},{"n":25,"k":"af-0664","en":"Snow on the berg, washing on the line: cold enough to freeze, dry enough to try.","af":"Sneeu op die berg, wasgoed op die draad: koud genoeg om te vries, droog genoeg om te probeer.","image":"cold/week_2/day/6.webp"},{"n":26,"k":"af-2156","en":"Thunder","af":"Donderweer","image":null},{"n":27,"k":"af-0931","en":"The windpomp has stopped turning, which is how you know the day is over.","af":"Die windpomp het opgehou draai, en so weet jy die dag is verby.","image":"heat/week_1/dusk/7.webp"},{"n":28,"k":"af-1501","en":"Nobody on this side of Gqeberha is hanging washing out today.","af":"Niemand aan hierdie kant van Gqeberha hang vandag wasgoed op nie.","image":"wind/week_2/day/4.webp"},{"n":29,"k":"af-1129","en":"Every one of those parking bays was somebody's plan for tonight.","af":"Elkeen van daardie parkeerplekke was iemand se plan vir vanaand.","image":"rain/week_1/night/6.webp"},{"n":30,"k":"af-0095","en":"Good weather. Unfortunately.","af":"Goeie weer. Ongelukkig.","image":"clear/week_1/dusk/4.webp"},{"n":31,"k":"af-0949","en":"It has not dropped below twenty-five in that house since about Tuesday.","af":"Dit het sedert omtrent Dinsdag nie onder vyf-en-twintig in daardie huis gesak nie.","image":"heat/week_1/night/2.webp"},{"n":32,"k":"af-1265","en":"Tomorrow morning this road will be covered in somebody else's tree.","af":"Môreoggend gaan hierdie pad onder iemand anders se boom lê.","image":"storm/week_1/night/2.webp"},{"n":33,"k":"af-0964","en":"It is cooler out here at midnight than it was inside at six.","af":"Dit is hier buite om middernag koeler as wat dit sesuur binne was.","image":"heat/week_1/night/4.webp"},{"n":34,"k":"af-1391","en":"The trees at the fence are taking this worse than he is.","af":"Die bome by die heining vat dit erger as hy.","image":"wind/week_1/day/5.webp"},{"n":35,"k":"af-0292","en":"Cloudy night. Nobody’s going out, officially.","af":"Bewolkte nag. Niemand gaan uit nie, amptelik.","image":"cloudy/week_1/night/3.webp"},{"n":36,"k":"af-1235","en":"The palms are pointing the way the storm is going, which is this way.","af":"Die palms wys die rigting waarheen die storm gaan, en dit is hierheen.","image":"storm/week_1/dusk/3.webp"},{"n":37,"k":"af-1361","en":"Sunday morning, and the sea is throwing the first half of it at her.","af":"Sondagoggend, en die see gooi alles wat hy het na haar toe.","image":"wind/week_1/dawn/7.webp"},{"n":38,"k":"af-0715","en":"The fog is lying in the streets like it pays rates here.","af":"Die mis lê in die strate asof hy hier erfbelasting betaal.","image":"fog/week_1/day/3.webp"},{"n":39,"k":"af-0905","en":"Tuesday, and the coolest thing in this entire garden is that dog.","af":"Dinsdag, en die koelste ding in hierdie hele tuin is daardie hond.","image":"heat/week_1/dusk/2.webp"},{"n":40,"k":"af-0793","en":"The fog moved in an hour ago and the streetlights have doubled in size since.","af":"Die mis het 'n uur gelede ingetrek en die straatligte het sedertdien verdubbel.","image":"fog/week_1/night/5.webp"}];
+const LS = 'pw_af_calibration_v1';
+const LABEL = { GOOD: 'GOOD', FINE: 'DRIFT BUT FINE', WRONG: 'WRONG' };
+let state = {};
+try { state = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { state = {}; }
+const save = () => { try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {} };
+const esc = (s) => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function count() { document.getElementById('count').textContent = ROWS.filter(r => state[r.k] && state[r.k].v).length + ' of ' + ROWS.length + ' marked'; }
+function rowEl(r) {
+  const st = state[r.k] || {};
+  const el = document.createElement('section');
+  el.className = 'row ' + (st.v || '');
+  el.innerHTML = '<div>' + (r.image ? '<img loading="lazy" src="../assets/images/bg/' + r.image + '" alt="">' : '<div class="noimg">(condition line, no photo)</div>') + '</div>'
+    + '<div><div class="n">' + r.n + ' of ' + ROWS.length + '</div>'
+    + '<div class="l">English</div><div class="en">' + esc(r.en) + '</div>'
+    + '<div class="l">Afrikaans</div><div class="af">' + esc(r.af) + '</div>'
+    + '<div class="act">' + Object.keys(LABEL).map(v => '<button data-v="' + v + '" class="' + v + (st.v === v ? ' on' : '') + '">' + LABEL[v] + '</button>').join('')
+    + '<textarea placeholder="note (optional): what is off, or the better Afrikaans">' + esc(st.note || '') + '</textarea></div></div>';
+  el.querySelectorAll('.act button').forEach(b => b.addEventListener('click', () => {
+    state[r.k] = { ...(state[r.k] || {}), v: b.dataset.v }; save();
+    el.className = 'row ' + b.dataset.v; el.querySelectorAll('.act button').forEach(x => x.classList.toggle('on', x === b)); count();
+  }));
+  el.querySelector('textarea').addEventListener('input', (e) => { state[r.k] = { ...(state[r.k] || {}), note: e.target.value }; save(); });
+  return el;
+}
+function exportJson() {
+  const VERDICT = { GOOD: 'GOOD', FINE: 'DRIFT-BUT-FINE', WRONG: 'WRONG' };
+  const rulings = ROWS.map(r => ({ k: r.k, en: r.en, af: r.af, verdict: VERDICT[(state[r.k] || {}).v] || null, note: (state[r.k] || {}).note || '' }));
+  return JSON.stringify({ generated: new Date().toISOString(), ruledBy: 'Al, Afrikaans calibration page (review/af-calibration.html)', marked: rulings.filter(r => r.verdict).length, total: rulings.length, rulings }, null, 1);
+}
+const list = document.getElementById('list');
+for (const r of ROWS) list.appendChild(rowEl(r));
+count();
+document.getElementById('export').addEventListener('click', () => { const j = exportJson(); document.getElementById('out').value = j; try { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([j], { type: 'application/json' })); a.download = 'af-calibration-ruled.json'; a.click(); } catch (e) {} });
+document.getElementById('copy').addEventListener('click', () => { const j = exportJson(); document.getElementById('out').value = j; try { navigator.clipboard.writeText(j).catch(() => {}); } catch (e) {} });
+</script>
+</body>
+</html>

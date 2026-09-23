@@ -1,0 +1,1740 @@
+{
+ "lang": "af",
+ "part": "test",
+ "count": 171,
+ "items": [
+  {
+   "lang": "af",
+   "en": "50/50 on getting wet. Like a coin toss.",
+   "reference": "50/50 kans om nat te word. Better odds as om die Lotto te wen...",
+   "rejected": "50/50 kans om nat te word. Soos 'n muntstuk.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain-possible:3",
+   "feedbackId": "af-fb-2113",
+   "id": "af-test-0001"
+  },
+  {
+   "lang": "af",
+   "en": "50/50 on the rain. Bring a jacket, just in case.",
+   "reference": "50/50 op die reën. Vat 'n baadjie, net ingeval.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:rain-possible:5",
+   "feedbackId": "af-fb-2392",
+   "id": "af-test-0002"
+  },
+  {
+   "lang": "af",
+   "en": "A perfectly average sky doing perfectly average things.",
+   "reference": "'n Perfek gemiddelde lug wat perfek gemiddelde goed doen.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:32",
+   "feedbackId": "af-fb-2030",
+   "id": "af-test-0003"
+  },
+  {
+   "lang": "af",
+   "en": "A proper good one. Don't waste it.",
+   "reference": "'n Behoorlike goeie een. Moenie dit mors nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:31",
+   "feedbackId": "af-fb-1973",
+   "id": "af-test-0004"
+  },
+  {
+   "lang": "af",
+   "en": "Absolutely beautiful out there.",
+   "reference": "Absoluut pragtig daar buite.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:0",
+   "feedbackId": "af-fb-1942",
+   "id": "af-test-0005"
+  },
+  {
+   "lang": "af",
+   "en": "Beach or braai? Yes.",
+   "reference": "Strand of braai? Ja.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:3",
+   "feedbackId": "af-fb-2335",
+   "id": "af-test-0006"
+  },
+  {
+   "lang": "af",
+   "en": "Bit of everything. Classic in-between day.",
+   "reference": "Bietjie van alles. Klassieke tussen-in dag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:partly-cloudy:5",
+   "feedbackId": "af-fb-2368",
+   "id": "af-test-0007"
+  },
+  {
+   "lang": "af",
+   "en": "Blanket burrito mode: activated.",
+   "reference": "Kombers burrito modus: geaktiveer.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:9",
+   "feedbackId": "af-fb-2253",
+   "id": "af-test-0008"
+  },
+  {
+   "lang": "af",
+   "en": "Blue sky, warm breeze. The simple stuff.",
+   "reference": "Blou lug, warm briesie. Die eenvoudige goed.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:19",
+   "feedbackId": "af-fb-1961",
+   "id": "af-test-0009"
+  },
+  {
+   "lang": "af",
+   "en": "Boerie roll for breakfast? On a weekend? Acceptable.",
+   "reference": "Boerierol vir ontbyt? Op 'n naweek? Aanvaarbaar.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:22",
+   "feedbackId": "af-fb-2354",
+   "id": "af-test-0010"
+  },
+  {
+   "lang": "af",
+   "en": "Braai weather, boet! No excuses.",
+   "reference": "Braaiweer, boet! Geen verskonings nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:0",
+   "feedbackId": "af-fb-2332",
+   "id": "af-test-0011"
+  },
+  {
+   "lang": "af",
+   "en": "Call the mates. Get the meat. Let's go.",
+   "reference": "Bel die tjommies. Kry die vleis. Kom ons gaan.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:7",
+   "feedbackId": "af-fb-2339",
+   "id": "af-test-0012"
+  },
+  {
+   "lang": "af",
+   "en": "Clear-ish night. Don't hold us to the stars.",
+   "reference": "Helder-ish nag. Moenie ons by die sterre hou nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:night:4",
+   "feedbackId": "af-fb-2421",
+   "id": "af-test-0013"
+  },
+  {
+   "lang": "af",
+   "en": "Cloud cover with main-character syndrome.",
+   "reference": "Wolke met hoofseun sindroom.",
+   "rejected": "Wolke met main-character drama.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0013",
+   "id": "af-test-0014"
+  },
+  {
+   "lang": "af",
+   "en": "Clouds today, vibes optional.",
+   "reference": "Windgat wolke vandag.",
+   "rejected": "Wolke vir vertoning.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0004",
+   "id": "af-test-0015"
+  },
+  {
+   "lang": "af",
+   "en": "Cloudy-ish. Don't bet the braai on it.",
+   "reference": "Bewolk-ish. Moenie die braai daarop wed nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:cloudy:1",
+   "feedbackId": "af-fb-2370",
+   "id": "af-test-0016"
+  },
+  {
+   "lang": "af",
+   "en": "Coffee count: rising. Motivation count: still zero.",
+   "reference": "Koffie-telling: styg. Motiverings-telling: steeds nul.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:35",
+   "feedbackId": "af-fb-2279",
+   "id": "af-test-0017"
+  },
+  {
+   "lang": "af",
+   "en": "Coffee in the sun on the stoep. The whole reason we live here.",
+   "reference": "Koffie in die son op die stoep. Die hele rede hoekom ons hier bly.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:29",
+   "feedbackId": "af-fb-2311",
+   "id": "af-test-0018"
+  },
+  {
+   "lang": "af",
+   "en": "Cold enough that the milk-bottle-on-the-stoep is now a cooler box.",
+   "reference": "Koud genoeg dat die melkbottel-op-die-stoep nou 'n koelboks is.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:25",
+   "feedbackId": "af-fb-2307",
+   "id": "af-test-0019"
+  },
+  {
+   "lang": "af",
+   "en": "Could turn stormy. Keep one eye on the sky.",
+   "reference": "Kan stormagtig raak. Hou een oog op die lug.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:storm:0",
+   "feedbackId": "af-fb-2393",
+   "id": "af-test-0020"
+  },
+  {
+   "lang": "af",
+   "en": "Don't even think about driving somewhere.",
+   "reference": "Moenie eers dink om iewers heen te ry nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:24",
+   "feedbackId": "af-fb-2154",
+   "id": "af-test-0021"
+  },
+  {
+   "lang": "af",
+   "en": "Don't touch the seatbelt buckle. Trust us.",
+   "reference": "Moenie aan die veiligheidsgordel-gespe vat nie. Vertrou ons.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:35",
+   "feedbackId": "af-fb-2243",
+   "id": "af-test-0022"
+  },
+  {
+   "lang": "af",
+   "en": "Driving slow is not a suggestion.",
+   "reference": "Stadig ry is nie 'n voorstel nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:1",
+   "feedbackId": "af-fb-2037",
+   "id": "af-test-0023"
+  },
+  {
+   "lang": "af",
+   "en": "Even the bakkies on the N2 pulled over.",
+   "reference": "Selfs die bakkies op die N2 het stilgehou.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:11",
+   "feedbackId": "af-fb-2141",
+   "id": "af-test-0024"
+  },
+  {
+   "lang": "af",
+   "en": "Even the geyser is putting in extra hours.",
+   "reference": "Selfs die geyser sit ekstra ure in.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:31",
+   "feedbackId": "af-fb-2275",
+   "id": "af-test-0025"
+  },
+  {
+   "lang": "af",
+   "en": "Even the hadedas are quiet.",
+   "reference": "Selfs die hadedas is stil.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:3",
+   "feedbackId": "af-fb-2133",
+   "id": "af-test-0026"
+  },
+  {
+   "lang": "af",
+   "en": "Even the parking lot looks pretty today.",
+   "reference": "Selfs die parkeerterrein lyk mooi vandag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:22",
+   "feedbackId": "af-fb-1964",
+   "id": "af-test-0027"
+  },
+  {
+   "lang": "af",
+   "en": "Even the shade is sweating.",
+   "reference": "Selfs die skaduwee sweet.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:31",
+   "feedbackId": "af-fb-2239",
+   "id": "af-test-0028"
+  },
+  {
+   "lang": "af",
+   "en": "Even the shade is warm. Good luck out there.",
+   "reference": "Selfs die skaduwee is warm. Sterkte.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:uv:19",
+   "feedbackId": "af-fb-2207",
+   "id": "af-test-0029"
+  },
+  {
+   "lang": "af",
+   "en": "Everyone with a pool just became very popular.",
+   "reference": "Almal met 'n swembad het skielik baie populêr geword.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:13",
+   "feedbackId": "af-fb-2221",
+   "id": "af-test-0030"
+  },
+  {
+   "lang": "af",
+   "en": "Everything looks like a film scene. A creepy one.",
+   "reference": "Alles lyk soos 'n filmtoneel. 'n Grillerige een.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:17",
+   "feedbackId": "af-fb-2053",
+   "id": "af-test-0031"
+  },
+  {
+   "lang": "af",
+   "en": "Flat sea, spent sun, and air still warm enough to sit around in a wet wetsuit.",
+   "reference": "Plat see, moeë son, en die lug nog warm genoeg om in 'n nat wetsuit rond te sit.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json N137",
+   "feedbackId": "af-fb-2433",
+   "id": "af-test-0032"
+  },
+  {
+   "lang": "af",
+   "en": "Garage pie for lunch because the kitchen is lava.",
+   "reference": "Garage-pastei vir middagete want die kombuis is lawa.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:19",
+   "feedbackId": "af-fb-2227",
+   "id": "af-test-0033"
+  },
+  {
+   "lang": "af",
+   "en": "Ghost town. But it's just Tuesday.",
+   "reference": "Spookdorp. Maar dis net Dinsdag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:7",
+   "feedbackId": "af-fb-2043",
+   "id": "af-test-0034"
+  },
+  {
+   "lang": "af",
+   "en": "Good soup weather, not gonna lie.",
+   "reference": "Goeie sopweer, eerlikwaar.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:9",
+   "feedbackId": "af-fb-2083",
+   "id": "af-test-0035"
+  },
+  {
+   "lang": "af",
+   "en": "Grab your brolly, boet.",
+   "reference": "Vat jou sambreel, boet.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:1",
+   "feedbackId": "af-fb-2075",
+   "id": "af-test-0036"
+  },
+  {
+   "lang": "af",
+   "en": "Grey vibes. The sky matched my Monday.",
+   "reference": "Grys vibes. Die lug pas by my Maandag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:9",
+   "feedbackId": "af-fb-2007",
+   "id": "af-test-0037"
+  },
+  {
+   "lang": "af",
+   "en": "Halfway to a Highveld thunderstorm. Or not.",
+   "reference": "Halfpad na 'n Hoeveld bui. Of nie.",
+   "rejected": "Halfpad na 'n Highveld bui. Of nie.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0007",
+   "id": "af-test-0038"
+  },
+  {
+   "lang": "af",
+   "en": "Hotter than a bakkie dashboard at noon.",
+   "reference": "Warmer as 'n bakkie se dashboard teen middag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:5",
+   "feedbackId": "af-fb-2213",
+   "id": "af-test-0039"
+  },
+  {
+   "lang": "af",
+   "en": "How many warm-ups were you planning on doing?",
+   "reference": "Hoeveel opwarmings was jy van plan om te doen?",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json N329",
+   "feedbackId": "af-fb-2439",
+   "id": "af-test-0040"
+  },
+  {
+   "lang": "af",
+   "en": "If you're inside, you're doing it wrong.",
+   "reference": "As jy binne is, doen jy dit verkeerd.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:6",
+   "feedbackId": "af-fb-1948",
+   "id": "af-test-0041"
+  },
+  {
+   "lang": "af",
+   "en": "Jislaaik, it's properly hot!",
+   "reference": "Jinne, dis ordentlik warm!",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:0",
+   "feedbackId": "af-fb-2208",
+   "id": "af-test-0042"
+  },
+  {
+   "lang": "af",
+   "en": "Jislaaik, stay inside!",
+   "reference": "Jinne, bly binne!",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:0",
+   "feedbackId": "af-fb-2130",
+   "id": "af-test-0043"
+  },
+  {
+   "lang": "af",
+   "en": "Joburg drivers are panicking already.",
+   "reference": "Joburg-bestuurders paniek al klaar.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:5",
+   "feedbackId": "af-fb-2079",
+   "id": "af-test-0044"
+  },
+  {
+   "lang": "af",
+   "en": "Joburg winter dawn: the view is free; the air charges admission.",
+   "reference": "Joburg winterdagbreek: die uitsig is verniet; die lug vra toegangsgeld.",
+   "rejected": "Joburgse winterdagbreek: die uitsig is verniet; die lug vra toegangsgeld.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/af-al-decisions.json N367",
+   "feedbackId": "af-fb-2441",
+   "id": "af-test-0045"
+  },
+  {
+   "lang": "af",
+   "en": "Karoo morning. The kind that makes you respect every farmer who chose this.",
+   "reference": "Karoo-oggend. Die soort wat jou laat respek hê vir elke boer wat dit gekies het.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:16",
+   "feedbackId": "af-fb-2298",
+   "id": "af-test-0046"
+  },
+  {
+   "lang": "af",
+   "en": "Layers off by 11. Layers on by 4. Highveld classic.",
+   "reference": "Lae af teen 11-uur. Lae aan teen 4-uur. Highveld classic.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:19",
+   "feedbackId": "af-fb-2301",
+   "id": "af-test-0047"
+  },
+  {
+   "lang": "af",
+   "en": "Looks cold-ish. The thermometer's keeping us guessing.",
+   "reference": "Lyk koud-ish. Die termometer hou ons aan die raai.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:cold:2",
+   "feedbackId": "af-fb-2413",
+   "id": "af-test-0048"
+  },
+  {
+   "lang": "af",
+   "en": "Main character weather right here.",
+   "reference": "Hoofkarakter weer reg hier.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:4",
+   "feedbackId": "af-fb-1946",
+   "id": "af-test-0049"
+  },
+  {
+   "lang": "af",
+   "en": "Maluti-frost morning. Lesotho's exporting it for free.",
+   "reference": "Maluti-ryp-oggend. Lesotho export dit gratis.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:28",
+   "feedbackId": "af-fb-2310",
+   "id": "af-test-0050"
+  },
+  {
+   "lang": "af",
+   "en": "Marinade in. Phone off. Day starts now.",
+   "reference": "Marinade in. Foon af. Dag begin nou.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:20",
+   "feedbackId": "af-fb-2352",
+   "id": "af-test-0051"
+  },
+  {
+   "lang": "af",
+   "en": "Mixed bag out there. We're hedging.",
+   "reference": "Gemengde sak daar buite. Ons hou voor.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:partly-cloudy:3",
+   "feedbackId": "af-fb-2366",
+   "id": "af-test-0052"
+  },
+  {
+   "lang": "af",
+   "en": "Models say lovely. Reality reserves the right to differ.",
+   "reference": "Modelle sê pragtig. Die werklikheid hou voor om te verskil.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:clear:5",
+   "feedbackId": "af-fb-2362",
+   "id": "af-test-0053"
+  },
+  {
+   "lang": "af",
+   "en": "Nature's doing its own load shedding.",
+   "reference": "Natuur doen sy eie beurtkrag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:5",
+   "feedbackId": "af-fb-2135",
+   "id": "af-test-0054"
+  },
+  {
+   "lang": "af",
+   "en": "Night rain maths: half the visibility, double the concentration, triple the respect.",
+   "reference": "Nagreënwiskunde: helfte die sig, dubbel die konsentrasie, drie keer die respek.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json B487",
+   "feedbackId": "af-fb-2459",
+   "id": "af-test-0055"
+  },
+  {
+   "lang": "af",
+   "en": "Nobody in that building can open a window and every one of them has tried.",
+   "reference": "Niemand in daardie gebou kan 'n venster oopmaak nie en elkeen van hulle het probeer.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json B261",
+   "feedbackId": "af-fb-2452",
+   "id": "af-test-0056"
+  },
+  {
+   "lang": "af",
+   "en": "Nobody signed up for this temperature.",
+   "reference": "Niemand het hiervoor ingeteken nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:24",
+   "feedbackId": "af-fb-2268",
+   "id": "af-test-0057"
+  },
+  {
+   "lang": "af",
+   "en": "Not a cloud in sight. Not one.",
+   "reference": "Nie 'n wolk in sig nie. Nie een nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:3",
+   "feedbackId": "af-fb-1945",
+   "id": "af-test-0058"
+  },
+  {
+   "lang": "af",
+   "en": "Not a hairstyle in sight. Just survivors.",
+   "reference": "Nie 'n haarstyl in sig nie. Net oorlewendes.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:19",
+   "feedbackId": "af-fb-2187",
+   "id": "af-test-0059"
+  },
+  {
+   "lang": "af",
+   "en": "Not bad, not great. Like a 6/10 date.",
+   "reference": "Nie sleg nie, nie great nie. Soos 'n 6/10 date.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:5",
+   "feedbackId": "af-fb-2003",
+   "id": "af-test-0060"
+  },
+  {
+   "lang": "af",
+   "en": "Not depressing. Just... underwhelming.",
+   "reference": "Nie depressief nie. Net...grys.",
+   "rejected": "Nie depressief nie. Net... ondermaats.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:13",
+   "feedbackId": "af-fb-2011",
+   "id": "af-test-0061"
+  },
+  {
+   "lang": "af",
+   "en": "Outside has betrayed you and you went anyway.",
+   "reference": "Buite het jou verraai en jy het in elk geval gegaan.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:36",
+   "feedbackId": "af-fb-2280",
+   "id": "af-test-0062"
+  },
+  {
+   "lang": "af",
+   "en": "Overcast but we'll survive.",
+   "reference": "Bewolk maar ons sal oorleef.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:1",
+   "feedbackId": "af-fb-1999",
+   "id": "af-test-0063"
+  },
+  {
+   "lang": "af",
+   "en": "Pack an umbrella. Or don't. We don't know either.",
+   "reference": "Pak 'n sambreel. Of moenie. Ons weet ook nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain-possible:6",
+   "feedbackId": "af-fb-2116",
+   "id": "af-test-0064"
+  },
+  {
+   "lang": "af",
+   "en": "Perfect excuse to cancel plans.",
+   "reference": "Perfekte verskoning om planne te kanselleer.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:6",
+   "feedbackId": "af-fb-2080",
+   "id": "af-test-0065"
+  },
+  {
+   "lang": "af",
+   "en": "Perfect weather for a Woolies run and Netflix.",
+   "reference": "Perfekte weer vir 'n Woolies-draai en Netflix.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:6",
+   "feedbackId": "af-fb-2004",
+   "id": "af-test-0066"
+  },
+  {
+   "lang": "af",
+   "en": "Perfect weather for existing without enthusiasm.",
+   "reference": "Perfekte weer vir bestaan sonder entoesiasme.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:26",
+   "feedbackId": "af-fb-2024",
+   "id": "af-test-0067"
+  },
+  {
+   "lang": "af",
+   "en": "Ponytail holders are doing overtime.",
+   "reference": "Poniestert-rekkies doen oortyd.",
+   "rejected": "Poniestert-houer doen oortyd.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:13",
+   "feedbackId": "af-fb-2181",
+   "id": "af-test-0068"
+  },
+  {
+   "lang": "af",
+   "en": "Postcard weather. You're welcome.",
+   "reference": "Poskaart weer. Plesier.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:8",
+   "feedbackId": "af-fb-1950",
+   "id": "af-test-0069"
+  },
+  {
+   "lang": "af",
+   "en": "Pretoria-bare-jacaranda energy. Beautiful and bleak.",
+   "reference": "Pretoria-kaal-jacaranda energie. Pragtig en troosteloos.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:12",
+   "feedbackId": "af-fb-2294",
+   "id": "af-test-0070"
+  },
+  {
+   "lang": "af",
+   "en": "Probably a bit of cloud. Or a lot. Hard to call.",
+   "reference": "Waarskynlik 'n bietjie wolk. Of baie. Moeilik om te sê.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:partly-cloudy:0",
+   "feedbackId": "af-fb-2363",
+   "id": "af-test-0071"
+  },
+  {
+   "lang": "af",
+   "en": "Probably nippy. The Boland mornings do this.",
+   "reference": "Waarskynlik kil. Die Boland-oggende doen dit.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:cold:5",
+   "feedbackId": "af-fb-2416",
+   "id": "af-test-0072"
+  },
+  {
+   "lang": "af",
+   "en": "Rain on the way, give or take.",
+   "reference": "Reën op pad, min of meer.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:rain:4",
+   "feedbackId": "af-fb-2385",
+   "id": "af-test-0073"
+  },
+  {
+   "lang": "af",
+   "en": "Rain's likely-ish. The sky hasn't signed anything.",
+   "reference": "Reën is taamlik waarskynlik. Die lug het niks geteken nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:rain:1",
+   "feedbackId": "af-fb-2382",
+   "id": "af-test-0074"
+  },
+  {
+   "lang": "af",
+   "en": "Respect the thunder. It's earned it.",
+   "reference": "Respekteer die donder. Hy het dit verdien.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:15",
+   "feedbackId": "af-fb-2145",
+   "id": "af-test-0075"
+  },
+  {
+   "lang": "af",
+   "en": "Sand in places sand should never be.",
+   "reference": "Sand in plekke waar sand nooit moet wees nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:12",
+   "feedbackId": "af-fb-2180",
+   "id": "af-test-0076"
+  },
+  {
+   "lang": "af",
+   "en": "Saturday energy: maximum. Responsibilities: minimum.",
+   "reference": "Saterdagenergie: maksimum. Verantwoordelikhede: minimum.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:19",
+   "feedbackId": "af-fb-2351",
+   "id": "af-test-0077"
+  },
+  {
+   "lang": "af",
+   "en": "Shoes optional. Attitude mandatory.",
+   "reference": "Skoene opsioneel. Houding verpligtend.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:11",
+   "feedbackId": "af-fb-2343",
+   "id": "af-test-0078"
+  },
+  {
+   "lang": "af",
+   "en": "Shorts weather? This is underwear weather.",
+   "reference": "Kortbroekie weer? Dis onderbroekie weer.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:17",
+   "feedbackId": "af-fb-2225",
+   "id": "af-test-0079"
+  },
+  {
+   "lang": "af",
+   "en": "Sky can't make up its mind.",
+   "reference": "Lug kan nie besluit wat dit wil wees nie.",
+   "rejected": "Lug kan nie besluit nie.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:partly-cloudy:1",
+   "feedbackId": "af-fb-1981",
+   "id": "af-test-0080"
+  },
+  {
+   "lang": "af",
+   "en": "Sky's doing the most, but only a little.",
+   "reference": "Die lug wen, maar dis nie veel van n kompetisie nie.",
+   "rejected": "Wolke wat 'n statement maak. Net 'n klein een.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0001",
+   "id": "af-test-0081"
+  },
+  {
+   "lang": "af",
+   "en": "Sky's drafting, not committing.",
+   "reference": "Die lug will will, maar wil ook nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0005",
+   "id": "af-test-0082"
+  },
+  {
+   "lang": "af",
+   "en": "Sky's looking moody. Could escalate.",
+   "reference": "Lug lyk nukkerig. Kan eskaleer.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:storm:5",
+   "feedbackId": "af-fb-2398",
+   "id": "af-test-0083"
+  },
+  {
+   "lang": "af",
+   "en": "Slip-slops, shorts, sun. The trinity.",
+   "reference": "Slip-slops, kortbroek, son. Die drie-eenheid.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:23",
+   "feedbackId": "af-fb-2355",
+   "id": "af-test-0084"
+  },
+  {
+   "lang": "af",
+   "en": "Solidarity to everyone with one wet shoe right now.",
+   "reference": "Solidariteit aan almal met een nat skoen nou.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:31",
+   "feedbackId": "af-fb-2105",
+   "id": "af-test-0085"
+  },
+  {
+   "lang": "af",
+   "en": "Some clouds. Some sun. South African summer admin.",
+   "reference": "Sonnig met n spatsel wolke. SA somer in een prentjie.",
+   "rejected": "SA somer in een prentjie.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0011",
+   "id": "af-test-0086"
+  },
+  {
+   "lang": "af",
+   "en": "Somewhere a cricket is really giving it.",
+   "reference": "Iewers is 'n kriek besig om sy hart uit te sing.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:night:8",
+   "feedbackId": "af-fb-2320",
+   "id": "af-test-0087"
+  },
+  {
+   "lang": "af",
+   "en": "Somewhere a roof is someone's new kite.",
+   "reference": "Iewers is 'n dak iemand se nuwe vlieër.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:10",
+   "feedbackId": "af-fb-2140",
+   "id": "af-test-0088"
+  },
+  {
+   "lang": "af",
+   "en": "Somewhere out there is the road. We think.",
+   "reference": "Iewers daarbuite is die pad. Ons dink.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:15",
+   "feedbackId": "af-fb-2051",
+   "id": "af-test-0089"
+  },
+  {
+   "lang": "af",
+   "en": "Storm on the cards, not yet confirmed. Stay sharp.",
+   "reference": "Storm op die kaarte, nog nie bevestig nie. Bly skerp.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:storm:4",
+   "feedbackId": "af-fb-2397",
+   "id": "af-test-0090"
+  },
+  {
+   "lang": "af",
+   "en": "Sun on a smoke break.",
+   "reference": "Son is op tjailatyd.",
+   "rejected": "Son op 'n teebreek.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0009",
+   "id": "af-test-0091"
+  },
+  {
+   "lang": "af",
+   "en": "Sunscreen is not optional, boet.",
+   "reference": "Sonbrandroom is nie opsioneel nie, boet.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:uv:0",
+   "feedbackId": "af-fb-2188",
+   "id": "af-test-0092"
+  },
+  {
+   "lang": "af",
+   "en": "Take a brolly just in case, hey.",
+   "reference": "Vat n sambreel net vir ingeval, ne.",
+   "rejected": "Vat 'n sambreel net vir ingeval, hey.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain-possible:2",
+   "feedbackId": "af-fb-2112",
+   "id": "af-test-0093"
+  },
+  {
+   "lang": "af",
+   "en": "Take your coffee outside. You deserve it.",
+   "reference": "Vat jou koffie buitentoe. Jy verdien dit.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:25",
+   "feedbackId": "af-fb-1967",
+   "id": "af-test-0094"
+  },
+  {
+   "lang": "af",
+   "en": "That water has been topped up twice and it is still the wrong temperature.",
+   "reference": "Daardie water is twee keer opgevul en dit is steeds die verkeerde temperatuur.",
+   "rejected": "Daardie water is twee keer bygevul en dit is steeds die verkeerde temperatuur.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/af-al-decisions.json B290",
+   "feedbackId": "af-fb-2453",
+   "id": "af-test-0095"
+  },
+  {
+   "lang": "af",
+   "en": "That water was cold about forty minutes ago and nobody has topped it up.",
+   "reference": "Daardie water was omtrent veertig minute gelede koud en niemand het dit bygevul nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json B217",
+   "feedbackId": "af-fb-2449",
+   "id": "af-test-0096"
+  },
+  {
+   "lang": "af",
+   "en": "The braai cover is in the next suburb.",
+   "reference": "Die braai-deksel is in die volgende voorstad.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:18",
+   "feedbackId": "af-fb-2186",
+   "id": "af-test-0097"
+  },
+  {
+   "lang": "af",
+   "en": "The braai is cancelled. Yes, really.",
+   "reference": "Die braai is gekanselleer. Ja, regtig.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:9",
+   "feedbackId": "af-fb-2139",
+   "id": "af-test-0098"
+  },
+  {
+   "lang": "af",
+   "en": "The Cape Doctor is making house calls.",
+   "reference": "Die Kaapse Dokter maak huisbesoeke.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:3",
+   "feedbackId": "af-fb-2171",
+   "id": "af-test-0099"
+  },
+  {
+   "lang": "af",
+   "en": "The chops are calling. So is the chair.",
+   "reference": "Die tjoppies roep. Die stoel ook.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:21",
+   "feedbackId": "af-fb-2353",
+   "id": "af-test-0100"
+  },
+  {
+   "lang": "af",
+   "en": "The clouds RSVP'd 'maybe' and showed up anyway.",
+   "reference": "Die wolke het 'miskien' geRSVP en in elk geval opgedaag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:33",
+   "feedbackId": "af-fb-2031",
+   "id": "af-test-0101"
+  },
+  {
+   "lang": "af",
+   "en": "The couch has made a compelling case for staying.",
+   "reference": "Die bank het 'n oortuigende saak gemaak vir bly.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:26",
+   "feedbackId": "af-fb-2270",
+   "id": "af-test-0102"
+  },
+  {
+   "lang": "af",
+   "en": "The dams are doing a happy dance.",
+   "reference": "Die damme doen 'n bly dansie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:7",
+   "feedbackId": "af-fb-2081",
+   "id": "af-test-0103"
+  },
+  {
+   "lang": "af",
+   "en": "The dog is staring at the rain like it's a personal insult.",
+   "reference": "Die hond staar na die reen asof dit n persoonlike belediging is.",
+   "rejected": "Die hond staar na die reën soos dit 'n persoonlike belediging is.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:34",
+   "feedbackId": "af-fb-2108",
+   "id": "af-test-0104"
+  },
+  {
+   "lang": "af",
+   "en": "The dog is still keen. The dog is always keen. Respect.",
+   "reference": "Die hond is nog steeds keen. Die hond is altyd keen. Respek.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:4",
+   "feedbackId": "af-fb-2286",
+   "id": "af-test-0105"
+  },
+  {
+   "lang": "af",
+   "en": "The duvet had the right idea this morning.",
+   "reference": "Die duvet het die regte idee gehad vanoggend.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:11",
+   "feedbackId": "af-fb-2255",
+   "id": "af-test-0106"
+  },
+  {
+   "lang": "af",
+   "en": "The duvet is calling and the duvet is winning.",
+   "reference": "Die duvet roep en die duvet wen.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:30",
+   "feedbackId": "af-fb-2274",
+   "id": "af-test-0107"
+  },
+  {
+   "lang": "af",
+   "en": "The fog ate the neighbourhood.",
+   "reference": "Die mis het die buurt opgeëet.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:10",
+   "feedbackId": "af-fb-2046",
+   "id": "af-test-0108"
+  },
+  {
+   "lang": "af",
+   "en": "The fridge feels warmer than the lounge today.",
+   "reference": "Die yskas voel warmer as die sitkamer vandag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:37",
+   "feedbackId": "af-fb-2281",
+   "id": "af-test-0109"
+  },
+  {
+   "lang": "af",
+   "en": "The geyser tripped overnight. Of course it did.",
+   "reference": "Die geyser het oornag getrip. Natuurlik het hy.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:6",
+   "feedbackId": "af-fb-2288",
+   "id": "af-test-0110"
+  },
+  {
+   "lang": "af",
+   "en": "The heater is your best friend. Your only friend.",
+   "reference": "Die heater is jou beste vriend. Jou enigste vriend.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:6",
+   "feedbackId": "af-fb-2250",
+   "id": "af-test-0111"
+  },
+  {
+   "lang": "af",
+   "en": "The ice cream van is playing everyone's anthem.",
+   "reference": "Die roomyswa speel almal se volkslied.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:27",
+   "feedbackId": "af-fb-2235",
+   "id": "af-test-0112"
+  },
+  {
+   "lang": "af",
+   "en": "The kettle is working harder than anyone today.",
+   "reference": "Die ketel werk harder as enigiemand vandag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:23",
+   "feedbackId": "af-fb-2267",
+   "id": "af-test-0113"
+  },
+  {
+   "lang": "af",
+   "en": "The kids still going to school in shorts. They know things we don't.",
+   "reference": "Die kinders gaan steeds skool toe in kortbroek. Hulle weet dinge wat ons nie weet nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:14",
+   "feedbackId": "af-fb-2296",
+   "id": "af-test-0114"
+  },
+  {
+   "lang": "af",
+   "en": "The kind of sky that makes you grateful for free things.",
+   "reference": "Die soort lug wat jou dankbaar laat voel vir gratis goed.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:32",
+   "feedbackId": "af-fb-1974",
+   "id": "af-test-0115"
+  },
+  {
+   "lang": "af",
+   "en": "The koppies look like a postcard. Your feet feel like ice blocks.",
+   "reference": "Die koppies lyk soos 'n poskaart. Jou voete voel soos ysblokke.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:20",
+   "feedbackId": "af-fb-2302",
+   "id": "af-test-0116"
+  },
+  {
+   "lang": "af",
+   "en": "The late-night milk run has become a bigger request.",
+   "reference": "Die laatnag-melk-ekspedisie het 'n groter versoek geword.",
+   "rejected": "Die laatnag-melkrit het 'n groter versoek geword.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/af-al-decisions.json N502",
+   "feedbackId": "af-fb-2443",
+   "id": "af-test-0117"
+  },
+  {
+   "lang": "af",
+   "en": "The moon has hung out a do-not-disturb sign.",
+   "reference": "Die maan het 'n 'moenie steur nie'-bordjie opgehang.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json C126",
+   "feedbackId": "af-fb-2461",
+   "id": "af-test-0118"
+  },
+  {
+   "lang": "af",
+   "en": "The moon's doing the most tonight.",
+   "reference": "Die maan doen sy bes vanaand.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:night:7",
+   "feedbackId": "af-fb-2319",
+   "id": "af-test-0119"
+  },
+  {
+   "lang": "af",
+   "en": "The mountains are on holiday today.",
+   "reference": "Die berge is op vakansie vandag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:16",
+   "feedbackId": "af-fb-2052",
+   "id": "af-test-0120"
+  },
+  {
+   "lang": "af",
+   "en": "The sky can't make up its mind. Join the club.",
+   "reference": "Die lug kan nie besluit nie. Tipies.",
+   "rejected": "Die lug kan nie besluit nie. Sluit by die klub aan.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain-possible:7",
+   "feedbackId": "af-fb-2117",
+   "id": "af-test-0121"
+  },
+  {
+   "lang": "af",
+   "en": "The sky is buffering.",
+   "reference": "Die lug hakkel.",
+   "rejected": "Die lug buffer.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:7",
+   "feedbackId": "af-fb-2005",
+   "id": "af-test-0122"
+  },
+  {
+   "lang": "af",
+   "en": "The sky is the colour of an old Tupperware lid.",
+   "reference": "Die lug is die kleur van 'n ou Tupperware-deksel.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:35",
+   "feedbackId": "af-fb-2033",
+   "id": "af-test-0123"
+  },
+  {
+   "lang": "af",
+   "en": "The sky just went full Carte Blanche.",
+   "reference": "Die lug het voluit bedonerd gegaan.",
+   "rejected": "Die lug het voluit Carte Blanche gegaan.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:14",
+   "feedbackId": "af-fb-2144",
+   "id": "af-test-0124"
+  },
+  {
+   "lang": "af",
+   "en": "The sky picked a vibe and the vibe is shrug.",
+   "reference": "Die lug het n vibe gekies en die vibe is slapgat.",
+   "rejected": "Die lug het 'n vibe gekies en die vibe is skouerophaal.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:29",
+   "feedbackId": "af-fb-2027",
+   "id": "af-test-0125"
+  },
+  {
+   "lang": "af",
+   "en": "The sky's doing freelance today.",
+   "reference": "Lug doen afskeep werk.",
+   "rejected": "Lug doen freelance werk.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0012",
+   "id": "af-test-0126"
+  },
+  {
+   "lang": "af",
+   "en": "The sky's giving absolutely nothing.",
+   "reference": "Die lug gee absoluut niks.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:0",
+   "feedbackId": "af-fb-1998",
+   "id": "af-test-0127"
+  },
+  {
+   "lang": "af",
+   "en": "The sky's giving mixed signals again.",
+   "reference": "Die lug gee weer gemengde seine.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain-possible:11",
+   "feedbackId": "af-fb-2121",
+   "id": "af-test-0128"
+  },
+  {
+   "lang": "af",
+   "en": "The sky's undecided. So are we.",
+   "reference": "Die lug is besluiteloos. Ons ook.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:rain-possible:3",
+   "feedbackId": "af-fb-2390",
+   "id": "af-test-0129"
+  },
+  {
+   "lang": "af",
+   "en": "The southeaster's arrived. Uninvited, as usual.",
+   "reference": "Die suidooster het aangekom. Ongenooid, soos altyd.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:1",
+   "feedbackId": "af-fb-2169",
+   "id": "af-test-0130"
+  },
+  {
+   "lang": "af",
+   "en": "The street signs gave up.",
+   "reference": "Die straatborde het tou opgegooi.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:23",
+   "feedbackId": "af-fb-2059",
+   "id": "af-test-0131"
+  },
+  {
+   "lang": "af",
+   "en": "The sun doesn't care about your plans.",
+   "reference": "Die son gee nie om oor jou planne nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:uv:14",
+   "feedbackId": "af-fb-2202",
+   "id": "af-test-0132"
+  },
+  {
+   "lang": "af",
+   "en": "The sun is technically present. Spiritually elsewhere.",
+   "reference": "Die son is tegnies hier. Geestelik elders.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:37",
+   "feedbackId": "af-fb-2035",
+   "id": "af-test-0133"
+  },
+  {
+   "lang": "af",
+   "en": "The sun is trying its luck at the horizon and the cloud is unmoved.",
+   "reference": "Die son probeer sy geluk op die horison, en die wolke is onbeïndruk.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json N518",
+   "feedbackId": "af-fb-2444",
+   "id": "af-test-0134"
+  },
+  {
+   "lang": "af",
+   "en": "The sun sent an out-of-office reply.",
+   "reference": "Die son het 'n out-of-office gestuur.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:22",
+   "feedbackId": "af-fb-2020",
+   "id": "af-test-0135"
+  },
+  {
+   "lang": "af",
+   "en": "The sun's not playing games today.",
+   "reference": "Die son speel nie vandag nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:uv:2",
+   "feedbackId": "af-fb-2190",
+   "id": "af-test-0136"
+  },
+  {
+   "lang": "af",
+   "en": "The sun's on airplane mode.",
+   "reference": "Die son is op airplane mode.",
+   "rejected": "Die son is op vliegtuigmodus.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cloudy:31",
+   "feedbackId": "af-fb-2029",
+   "id": "af-test-0137"
+  },
+  {
+   "lang": "af",
+   "en": "The tongs are out, so the argument about who cooks is over.",
+   "reference": "Die tang is uit, so die argument oor wie braai is verby.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json B182",
+   "feedbackId": "af-fb-2448",
+   "id": "af-test-0138"
+  },
+  {
+   "lang": "af",
+   "en": "The trees are doing involuntary yoga.",
+   "reference": "Die bome doen onvrywillige yoga.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:6",
+   "feedbackId": "af-fb-2174",
+   "id": "af-test-0139"
+  },
+  {
+   "lang": "af",
+   "en": "The UV index is higher than your expectations.",
+   "reference": "Die UV-indeks is hoër as jou verwagtinge.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:uv:11",
+   "feedbackId": "af-fb-2199",
+   "id": "af-test-0140"
+  },
+  {
+   "lang": "af",
+   "en": "The washing's on the line and you're feeling brave.",
+   "reference": "Die wasgoed hang buite en jy voel dapper.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain-possible:15",
+   "feedbackId": "af-fb-2125",
+   "id": "af-test-0141"
+  },
+  {
+   "lang": "af",
+   "en": "The weather gods are showing off.",
+   "reference": "Die weergode pronk vandag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:2",
+   "feedbackId": "af-fb-2334",
+   "id": "af-test-0142"
+  },
+  {
+   "lang": "af",
+   "en": "This is not what the tourism brochure promised.",
+   "reference": "Dit is nie wat die toerisme brosjure beloof het nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:10",
+   "feedbackId": "af-fb-2254",
+   "id": "af-test-0143"
+  },
+  {
+   "lang": "af",
+   "en": "This is the sky's performance review. It passed.",
+   "reference": "Dit is die lug se prestasie-oorsig. Hy het geslaag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:23",
+   "feedbackId": "af-fb-2153",
+   "id": "af-test-0144"
+  },
+  {
+   "lang": "af",
+   "en": "This is the stuff. Right here.",
+   "reference": "Hierdie is die weer wat ons wil he. Net soos dit is.",
+   "rejected": "Dit is die ding. Reg hier.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:30",
+   "feedbackId": "af-fb-1972",
+   "id": "af-test-0145"
+  },
+  {
+   "lang": "af",
+   "en": "This is the weather we brag about overseas.",
+   "reference": "Dit is die weer waaroor ons oorsee spog.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:clear:35",
+   "feedbackId": "af-fb-1977",
+   "id": "af-test-0146"
+  },
+  {
+   "lang": "af",
+   "en": "This is why Noah built a boat.",
+   "reference": "Dis hoekom Noag 'n ark gebou het.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:8",
+   "feedbackId": "af-fb-2138",
+   "id": "af-test-0147"
+  },
+  {
+   "lang": "af",
+   "en": "Thunder so close the walls shook. Respect.",
+   "reference": "Donder so naby die mure het geskud. Respek.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:25",
+   "feedbackId": "af-fb-2155",
+   "id": "af-test-0148"
+  },
+  {
+   "lang": "af",
+   "en": "Today's forecast: medium rare.",
+   "reference": "Vandag se voorspelling: medium gaar.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:uv:18",
+   "feedbackId": "af-fb-2206",
+   "id": "af-test-0149"
+  },
+  {
+   "lang": "af",
+   "en": "Tomorrow's weather is tomorrow's problem.",
+   "reference": "Môre se weer is môre se probleem.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:night:16",
+   "feedbackId": "af-fb-2328",
+   "id": "af-test-0150"
+  },
+  {
+   "lang": "af",
+   "en": "Too hot to argue. Too hot to function.",
+   "reference": "Te warm om te stry. Te warm om te funksioneer.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:8",
+   "feedbackId": "af-fb-2216",
+   "id": "af-test-0151"
+  },
+  {
+   "lang": "af",
+   "en": "Visibility: vibes only.",
+   "reference": "Sigbaarheid: net vibes.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:35",
+   "feedbackId": "af-fb-2071",
+   "id": "af-test-0152"
+  },
+  {
+   "lang": "af",
+   "en": "Walking into it feels like a video game boss fight.",
+   "reference": "Om daarin te loop voel soos 'n video game boss fight.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:wind:16",
+   "feedbackId": "af-fb-2184",
+   "id": "af-test-0153"
+  },
+  {
+   "lang": "af",
+   "en": "Washing's still safe. Probably.",
+   "reference": "Wasgoed is veilig. Hopelik.",
+   "rejected": "Wasgoed is veilig. Glo ek.",
+   "verdict": "corrected",
+   "who": "Al",
+   "source": "commit 2fe4972",
+   "feedbackId": "af-fb-0010",
+   "id": "af-test-0154"
+  },
+  {
+   "lang": "af",
+   "en": "Watch for fog — it likes to arrive unannounced.",
+   "reference": "Pasop vir mis — dit hou daarvan om onaangekondig op te daag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty_low_confidence:fog:5",
+   "feedbackId": "af-fb-2380",
+   "id": "af-test-0155"
+  },
+  {
+   "lang": "af",
+   "en": "Weather so dramatic it needs a Carte Blanche segment.",
+   "reference": "Weer so dramaties dit het 'n Carte Blanche insetsel nodig.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:7",
+   "feedbackId": "af-fb-2137",
+   "id": "af-test-0156"
+  },
+  {
+   "lang": "af",
+   "en": "Weekend vibes so strong they need their own playlist.",
+   "reference": "Naweek vibes so sterk hulle het hul eie playlist nodig.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:4",
+   "feedbackId": "af-fb-2336",
+   "id": "af-test-0157"
+  },
+  {
+   "lang": "af",
+   "en": "Welkom-cold today. The kind that goes through three jerseys like they aren't there.",
+   "reference": "Welkom-koud vandag. Die soort wat deur drie truie gaan asof hulle nie daar is nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold-clear:5",
+   "feedbackId": "af-fb-2287",
+   "id": "af-test-0158"
+  },
+  {
+   "lang": "af",
+   "en": "Why did past-you make plans? Past-you is the worst.",
+   "reference": "Hoekom het verlede-jy planne gemaak? Verlede-jy is die ergste.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:29",
+   "feedbackId": "af-fb-2273",
+   "id": "af-test-0159"
+  },
+  {
+   "lang": "af",
+   "en": "Windows closed, kettle on, and wait.",
+   "reference": "Vensters toe, ketel aan, en wag.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:storm:17",
+   "feedbackId": "af-fb-2147",
+   "id": "af-test-0160"
+  },
+  {
+   "lang": "af",
+   "en": "Yes, it's raining sideways. South Africa speciality.",
+   "reference": "Ja, dit reën sywaarts. Suid-Afrikaanse spesialiteit.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:28",
+   "feedbackId": "af-fb-2102",
+   "id": "af-test-0161"
+  },
+  {
+   "lang": "af",
+   "en": "You could fry an egg on the N1.",
+   "reference": "Jy kan 'n eier braai op die N1.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:1",
+   "feedbackId": "af-fb-2209",
+   "id": "af-test-0162"
+  },
+  {
+   "lang": "af",
+   "en": "Your breath is doing special effects.",
+   "reference": "Jou asem doen spesiale effekte.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:8",
+   "feedbackId": "af-fb-2252",
+   "id": "af-test-0163"
+  },
+  {
+   "lang": "af",
+   "en": "Your car is out there. Somewhere. Probably.",
+   "reference": "Jou kar is daarbuite. Iewers. Waarskynlik.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:11",
+   "feedbackId": "af-fb-2047",
+   "id": "af-test-0164"
+  },
+  {
+   "lang": "af",
+   "en": "Your car seat is a weapon right now.",
+   "reference": "Jou karsitplek is 'n wapen nou.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:7",
+   "feedbackId": "af-fb-2215",
+   "id": "af-test-0165"
+  },
+  {
+   "lang": "af",
+   "en": "Your hands are in your pockets and they're not coming out.",
+   "reference": "Jou hande is in jou sakke en hulle kom nie uit nie.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:cold:13",
+   "feedbackId": "af-fb-2257",
+   "id": "af-test-0166"
+  },
+  {
+   "lang": "af",
+   "en": "Your headlights are doing a 'thoughts and prayers'.",
+   "reference": "Jou koplampe doen 'n 'gedagtes en gebede'.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:fog:32",
+   "feedbackId": "af-fb-2068",
+   "id": "af-test-0167"
+  },
+  {
+   "lang": "af",
+   "en": "Your home repair list has requested an urgent update.",
+   "reference": "Jou huisherstellys het 'n dringende opdatering aangevra.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/af-al-decisions.json N117",
+   "feedbackId": "af-fb-2432",
+   "id": "af-test-0168"
+  },
+  {
+   "lang": "af",
+   "en": "Your out-of-office is doing the heavy lifting.",
+   "reference": "Jou out-of-office doen die swaar werk.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:weekend:12",
+   "feedbackId": "af-fb-2344",
+   "id": "af-test-0169"
+  },
+  {
+   "lang": "af",
+   "en": "Your shoes are about to have a bad day.",
+   "reference": "Jou skoene gaan 'n slegte dag hê.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:rain:12",
+   "feedbackId": "af-fb-2086",
+   "id": "af-test-0170"
+  },
+  {
+   "lang": "af",
+   "en": "Your steering wheel is a hot plate.",
+   "reference": "Jou stuurwiel is 'n warmplaat.",
+   "verdict": "approved",
+   "who": "Al",
+   "source": "review/al-line-rulings.json witty:heat:24",
+   "feedbackId": "af-fb-2232",
+   "id": "af-test-0171"
+  }
+ ]
+}
