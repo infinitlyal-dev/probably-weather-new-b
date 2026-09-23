@@ -1,7 +1,9 @@
 # Probably Weather — launch eval, fixes and the Home proposal (Vonk / Opus 5.5, 23–24 Sept 2026)
 
-Production stays on `ec7ae52` (verified `/api/version`, 23 Sept 21:19 UTC). Everything below is **local**:
-`main` is 19 commits ahead (`ec7ae52..f656b35`), nothing pushed: 17 change the app, 2 are records (the accuracy harness, this eval) that never ship — Vercel deploys `dist/` only (assets, index/install/privacy, manifest, og, sw.js). The Home proposal is on branch
+Production stays on `ec7ae52` (verified `/api/version`, 23 Sept 21:19 UTC). Everything below is **local**,
+nothing pushed. Of the commits on `main` after `ec7ae52`, **15 reach users** (the app, its share previews and
+its headers); 2 change tooling only (the Sesotho ban list, the fold gate); the rest are records under
+`review/` (the accuracy harness, this eval and its corrections) that never deploy. The Home proposal is on branch
 `design/home-options` (`b6d17fb`, `5b1f6ba`), not merged.
 
 Evidence lives next to this file (`review/eval/…`, git-ignored folder, the files are force-added where
@@ -9,14 +11,14 @@ they are small; screenshots stay on disk) and in `review/accuracy/`. Every findi
 
 ---
 
-## 0. What a push would ship (main, 19 commits; the last two are records, not app code)
+## 0. What a push would ship (15 reach users; tooling and records are marked)
 
 | commit | what |
 |---|---|
 | `35c8aa8` | Al's 4 Afrikaans proposals (all USE) wired: af-1681, af-1971, af-2025, af-2083 |
 | `2453a74` | Al's season ruling: N299 (12,1,2,3), B212 (1,2,3), B450 (always) kept; 59 CUT from every language |
 | `b82c102` | af-2016 "wil he" → "wil hê" |
-| `ca469f6` | Sesotho ban list suggests the SA spelling ("lehodimo") |
+| `ca469f6` | Sesotho ban list suggests the SA spelling ("lehodimo") — tooling, not deployed |
 | `55b938d` | Sesotho: 41 strings outside the joke bank moved to the SA orthography Al ruled on 6 Sept |
 | `b5ed306` | Sesotho storm share preview said "Ledimo le a tla" (the ogre is coming) → "Sefefo se a tla" |
 | `73fd87a` | Share previews: isiZulu/isiXhosa "Probably" = the app's own word (xh had the Zulu "Cishe") |
@@ -27,11 +29,11 @@ they are small; screenshots stay on disk) and in `review/accuracy/`. Every findi
 | `8e5f136` | Place search says "No places found…" / "Search isn't answering…" instead of going blank |
 | `66fa361` | CSP report-only copy dropped (was due 22 Sept) |
 | `5824365` | "3/5 sources agree" tap target 13 → 25 px, layout unmoved |
-| `86f0f87` | Fold gate covers Al's iPhone 11 (414×896, 414×715) — 80/80 |
+| `86f0f87` | Fold gate covers Al's iPhone 11 (414×896, 414×715) — 80/80 — tooling, not deployed |
 | `797de9e` | Search race + "OS 17" UA (Sol's review) |
 | `60c72c8` | Offline: a service-worker copy of the forecast shows its age |
 | `758cb5f` | review/accuracy: blend-vs-sources harness + live sample (report only; not app code) |
-| `f656b35` | this eval: EVAL.md, the scripts, Al's page (review/ — not deployed) |
+| `f656b35` | this eval: EVAL.md, the scripts, Al's page (review/ — not deployed); later commits that only correct it are records too |
 
 Gates on the final code (main at `797de9e`, then the suite again at `60c72c8`): serial vitest **129 files /
 21,159 tests**, `npm run build` (vitest + image budget + copy-split drift), bespoke 9 checks, drift guard,
