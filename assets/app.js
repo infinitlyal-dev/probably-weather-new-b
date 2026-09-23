@@ -2308,6 +2308,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     return controller.signal;
   }
+  // Payloads sw.js served from its own cache while offline -> their age in ms. A WeakMap keyed by
+  // the payload object, not a property on it: no JSON the API sends can claim to be an offline copy.
+  const swOfflineAgeMs = new WeakMap();
   async function fetchProbable(place, options = {}) {
     const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const controller = new AbortController();
@@ -2324,6 +2327,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // A service-worker offline copy from before the contract change, or a
       // degraded body, is refused here the same way a bad status is.
       if (!isRenderablePayload(data)) { debugLog('[fetchProbable] payload not renderable (schema/tempC)', data?.meta?.schema, data?.now?.tempC); throw new Error('API error'); }
+      // Offline, sw.js answers from its own cache (up to 3 h old) and says so in
+      // sw-offline / sw-cache-age-ms, so the render can show its age instead of
+      // passing it off as a fresh forecast.
+      if (resp.headers.get('sw-offline') === 'true') {
+        const age = Number(resp.headers.get('sw-cache-age-ms'));
+        if (Number.isFinite(age) && age >= 0) swOfflineAgeMs.set(data, age);
+      }
       return data;
     } catch (err) {
       if (didTimeout && err?.name === 'AbortError') {
@@ -3697,6 +3707,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const norm = normalizePayload(payload);
       window.__PW_LAST_NORM = norm;
       renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
+      if (swOfflineAgeMs.has(payload)) {
+        // The service worker's offline copy: say how old it is, don't store it as
+        // fresh, and don't count it as a fetch — so the app tries again once back online.
+        showCacheAge(Date.now() - swOfflineAgeMs.get(payload));
+        return true;
+      }
       hideCacheAge();
       setCachedWeather(place, payload);
       lastFetchTime = Date.now();
