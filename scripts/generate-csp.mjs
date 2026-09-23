@@ -9,10 +9,11 @@
 // hashed below. The one external resource production needs is the /install page's QR
 // image (assets/install.js → api.qrserver.com, disclosed in privacy.html), allowed by name.
 //
-// REPORT-ONLY COPY: the identical policy also ships as Content-Security-Policy-Report-Only
-// for its first week, until REPORT_ONLY_UNTIL. Both carry report-uri → /api/csp-report,
-// which logs [pw-csp] lines. After that date: KEEP_REPORT_ONLY = false, then --write.
-// See review/CSP-NOTES.md.
+// REPORT-ONLY COPY: the identical policy shipped as Content-Security-Policy-Report-Only for its
+// first week, until REPORT_ONLY_UNTIL, and was dropped on 2026-09-24 (KEEP_REPORT_ONLY = false):
+// the launch eval found it still live, and Safari/WebKit logs a console error on every page load
+// because frame-ancestors is ignored in a report-only policy. The enforced header carries
+// report-uri → /api/csp-report alone. See review/CSP-NOTES.md.
 //
 // Hashes: the build does NOT minify index.html/install.html inline scripts, so hashing the
 // source is equivalent to hashing the served bytes. Both LF and CRLF variants are emitted so
@@ -29,7 +30,7 @@ import { resolve } from 'node:path';
 
 import { SHARE_REDIRECT_SCRIPT } from '../api/_lib/share-redirect.js';
 
-export const KEEP_REPORT_ONLY = true;
+export const KEEP_REPORT_ONLY = false;
 export const REPORT_ONLY_UNTIL = '2026-09-22';
 export const REPORT_URI = '/api/csp-report';
 
