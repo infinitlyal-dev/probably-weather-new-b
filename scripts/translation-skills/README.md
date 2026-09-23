@@ -39,6 +39,21 @@ checker), `c7715c4` (a GPT-5.5 audit), `0519c3f` / `cb0fa87` (a model session's 
 | Checker (d) rule checks | `rule-checks.mjs` | SA Sesotho spelling, numbers and units, lang-check, safety words, reversed light advice |
 | Calibration page (Afrikaans, blind) | `build-calibration-page.mjs` | `review/af-calibration.html`, `review/af-calibration-keys.json` |
 
+## 2a. What the taxonomy found (step 2 — full tables in `TAXONOMY.md`)
+
+- Of the 306 flags: 131 detail dropped or changed, 106 joke lost, 21 too literal, 11 meaning
+  reversed (Sesotho 7 of them), 9 keyed to the wrong English line, 2 from an out-of-date list
+  (`TAXONOMY-OVERRIDES.json`), 1 spelling, 25 other. 50 safety lines among flags and corrections.
+- Spelling standard is invisible to a back-translation — a Lesotho spelling means the same thing —
+  so it is counted directly: **344 of the 943 live Sesotho lines (36.5%) still carry a Lesotho form**
+  (`ea` 229, `tš` 84, `oa` 76, `'n` 37, `li-` 25, `u` 16, `uena` 5, `ngoe` 2, `tsoa` 1), after the
+  2026-09-06 re-spelling.
+- 77 of the 85 flagged Afrikaans lines are lines Al wrote or kept: most Afrikaans "drift" is his
+  own deliberate adaptation.
+- The partly-cloudy isiZulu / isiXhosa / Sesotho arrays of `a3cbfd3` (2026-04-28) were never
+  translations of the English at their index — they follow the Afrikaans list.
+- st-0870 (lights OFF in mist) came from the June native reviewer's own replacement.
+
 ## 3. The gold sets are sealed
 
 `gold/LOCK.json` records the SHA-256 of each test file. The split is a hash of the English line, the

@@ -1,0 +1,7 @@
+{
+ "note": "Primary types reassigned after the classifiers ran, with the evidence. The classifiers read these as a flattened joke; the birth evidence (taxonomy-input.mjs) shows each renders content no English line of its bin has — the partly-cloudy arrays of a3cbfd3 (2026-04-28) were written from a different list (they follow the Afrikaans), so these are translations from an out-of-date list, not loose translations of their own English.",
+ "items": [
+  { "id": "zu-0267", "primary": "OUTDATED_LIST", "was": "JOKE_LOST", "evidence": "\"The sky's doing freelance today.\" back-translates as \"The clouds are making a small statement\" — the April Afrikaans line \"Wolke wat 'n statement maak. Net 'n klein een.\", which no English line of the bin has ever said." },
+  { "id": "st-0250", "primary": "OUTDATED_LIST", "was": "JOKE_LOST", "evidence": "\"Sky's doing the most, but only a little.\" back-translates as \"The sun comes out and disappears\" — the April arrays' \"sun comes and goes\" line (zu \"Ilanga lifika lihambe\"), content no English line of the bin has." }
+ ]
+}

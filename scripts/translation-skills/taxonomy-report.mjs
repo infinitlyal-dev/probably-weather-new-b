@@ -18,6 +18,8 @@ const LABEL = { REVERSED: 'meaning reversed', DETAIL: 'detail dropped or changed
 const LANGS = ['af', 'zu', 'xh', 'st'];
 const rows = [];
 const missing = [];
+const overridesFile = path.join(root, 'scripts', 'translation-skills', 'TAXONOMY-OVERRIDES.json');
+const overrides = new Map(existsSync(overridesFile) ? JSON.parse(readFileSync(overridesFile, 'utf8')).items.map((o) => [o.id, o]) : []);
 for (const b of batches) {
   const inF = path.join(dir, `${b.name}.in.json`), outF = path.join(dir, `${b.name}.out.json`);
   if (!existsSync(outF)) { missing.push(b.name); continue; }
@@ -26,7 +28,7 @@ for (const b of batches) {
   for (const it of ins) {
     const o = outs.get(it.id);
     if (!o) { missing.push(`${b.name}:${it.id}`); continue; }
-    const primary = TYPES.includes(o.primary) ? o.primary : 'OTHER';
+    const primary = overrides.get(it.id)?.primary || (TYPES.includes(o.primary) ? o.primary : 'OTHER');
     rows.push({ id: it.id, lang: it.lang, population: it.population, primary, secondary: (o.secondary || []).filter((t) => TYPES.includes(t)), safety: !!o.safety, note: o.note || '', en: it.en });
   }
 }
