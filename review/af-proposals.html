@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Afrikaans proposals</title>
+<style>
+:root { --bg:#f7f6f2; --fg:#1d1d1b; --muted:#6b6a64; --line:#dddbd2; --card:#fff; --accent:#1f5f8b; --keep:#2e7d4f; --use:#1f5f8b; --fix:#b7791f; --undo:#a5452b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#161614; --fg:#ecebe6; --muted:#a3a29b; --line:#34332f; --card:#1f1f1c; --accent:#7fb6dd; --keep:#7ccf9c; --use:#7fb6dd; --fix:#e0b35c; --undo:#e08a6e; } }
+body { margin:0; padding:24px 16px 64px; background:var(--bg); color:var(--fg); font:15px/1.5 system-ui, sans-serif; }
+main { max-width:980px; margin:0 auto; }
+h1 { font-size:1.45rem; margin:0 0 6px; } h2 { font-size:1.1rem; margin:30px 0 8px; }
+p.lede { color:var(--muted); margin:0 0 14px; max-width:72ch; }
+.row { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--line); border-radius:8px; padding:12px 14px; margin:10px 0; }
+.row.KEEP { border-left-color:var(--keep); } .row.USE { border-left-color:var(--use); } .row.FIX { border-left-color:var(--fix); } .row.UNDO { border-left-color:var(--undo); }
+.k { font-size:.8rem; color:var(--muted); } .en { font-weight:600; margin:2px 0 6px; }
+.lbl { font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-top:6px; }
+.af { margin:1px 0; } .why { font-size:.88rem; color:var(--muted); margin-top:6px; }
+.act { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; align-items:flex-start; }
+.act button { font:inherit; font-size:.9rem; padding:6px 12px; border-radius:6px; border:1px solid var(--line); background:transparent; color:inherit; cursor:pointer; }
+.act button.on { color:#fff; } .act button.on.KEEP { background:var(--keep); border-color:var(--keep); } .act button.on.USE { background:var(--use); border-color:var(--use); } .act button.on.FIX { background:var(--fix); border-color:var(--fix); } .act button.on.UNDO { background:var(--undo); border-color:var(--undo); }
+textarea { flex:1 1 260px; min-height:36px; font:inherit; font-size:.92rem; border:1px solid var(--line); border-radius:6px; padding:6px; background:transparent; color:inherit; }
+.bar { position:sticky; top:0; background:var(--bg); padding:10px 0; display:flex; gap:10px; align-items:center; flex-wrap:wrap; border-bottom:1px solid var(--line); z-index:1; }
+.bar button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+#out { width:100%; min-height:110px; margin-top:12px; box-sizing:border-box; }
+</style>
+</head>
+<body>
+<main>
+<h1>Afrikaans: 4 proposals and 14 lines wired from your notes</h1>
+<p class="lede">Nothing on this page is live until you export it. <b>Proposals</b> are lines the checks failed that you have not ruled yet, the two lines you marked FIX without a new line, and Afrikaans safety lines one of the back-translations did not read back as the English. Your own lines you KEPT on the translation page are not here. Each proposal was written by the sharpened Afrikaans skill from the English. Rule each: <b>KEEP</b> the live line, <b>USE</b> the proposal, or <b>FIX</b> (write the line).</p>
+<div class="bar"><span id="count"></span><button id="export">Export af-proposals-ruled.json</button><button id="copy">Copy JSON</button></div>
+<h2>Proposals</h2>
+<div id="props">
+<div class="row" data-id="af-L2047" data-key="af-1681" data-en="Reapply that sunscreen or suffer." data-current="Smeer weer aan of ly." data-proposal="Smeer daai sonbrandroom weer aan, anders gaan jy ly." data-kind="proposal">
+<div class="k">af-1681 · witty:uv</div>
+<div class="en">Reapply that sunscreen or suffer.</div>
+<div class="lbl">Live now</div><div class="af">Smeer weer aan of ly.</div>
+<div class="lbl">Proposal</div><div class="af">Smeer daai sonbrandroom weer aan, anders gaan jy ly.</div>
+<div class="why">Safety line: Claude DRIFT ('Sunscreen' dropped; 'Reapply' left without its object.); Sol DRIFT (Sunscreen dropped; only 'apply it again' remains.); rule checks: safety:sunscreen — Proposal read back blind: MATCH</div>
+<div class="act"><button data-v="KEEP">KEEP</button><button data-v="USE">USE</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-L3357" data-key="af-1971" data-en="Nobody is driving home in this. That's not laziness, that's science." data-current="Niemand ry nou nog huis toe nie. Dis nie luiheid nie, dis wetenskap." data-proposal="Niemand ry in dié weer huis toe nie. Dis nie luiheid nie, dis wetenskap." data-kind="proposal">
+<div class="k">af-1971 · witty:fog</div>
+<div class="en">Nobody is driving home in this. That's not laziness, that's science.</div>
+<div class="lbl">Live now</div><div class="af">Niemand ry nou nog huis toe nie. Dis nie luiheid nie, dis wetenskap.</div>
+<div class="lbl">Proposal</div><div class="af">Niemand ry in dié weer huis toe nie. Dis nie luiheid nie, dis wetenskap.</div>
+<div class="why">Safety line: Claude DRIFT ('In this' (the weather) became 'yet'; the weather as the reason is lost.); Sol DRIFT ('In this' (the weather) lost; became 'now anymore'.) — Proposal read back blind: MATCH</div>
+<div class="act"><button data-v="KEEP">KEEP</button><button data-v="USE">USE</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-L3687" data-key="af-2025" data-en="Inbox: 47. Sky: flawless. Priorities: sorted." data-current="Eerste koffie buite. Die e-posse kan wag." data-proposal="Inkassie: 47. Lug: vlekkeloos. Prioriteite: uitgesorteer." data-kind="proposal">
+<div class="k">af-2025 · witty:clear</div>
+<div class="en">Inbox: 47. Sky: flawless. Priorities: sorted.</div>
+<div class="lbl">Live now</div><div class="af">Eerste koffie buite. Die e-posse kan wag.</div>
+<div class="lbl">Proposal</div><div class="af">Inkassie: 47. Lug: vlekkeloos. Prioriteite: uitgesorteer.</div>
+<div class="why">You marked it FIX on the translation page. — Proposal read back blind: MATCH</div>
+<div class="act"><button data-v="KEEP">KEEP</button><button data-v="USE">USE</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-L4116" data-key="af-2083" data-en="Mixed bag out there. We're hedging." data-current="Gemengde sak daar buite. Ons hou voor." data-proposal="'n Bietjie van alles daar buite. Ons hou ons opsies oop." data-kind="proposal">
+<div class="k">af-2083 · witty_low_confidence:partly-cloudy</div>
+<div class="en">Mixed bag out there. We're hedging.</div>
+<div class="lbl">Live now</div><div class="af">Gemengde sak daar buite. Ons hou voor.</div>
+<div class="lbl">Proposal</div><div class="af">'n Bietjie van alles daar buite. Ons hou ons opsies oop.</div>
+<div class="why">You marked it FIX on the translation page. — Proposal read back blind: MATCH</div>
+<div class="act"><button data-v="KEEP">KEEP</button><button data-v="USE">USE</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+</div>
+<h2>Wired today as you wrote them (14)</h2>
+<p class="lede">From your notes on the translation page and the calibration page. Your words; the only changes are spelling your keyboard dropped, listed on each row. Leave a row alone to keep it; <b>UNDO</b> puts the old line back; <b>FIX</b> to change it.</p>
+<div id="wired">
+<div class="row" data-id="af-1561" data-key="af-1561" data-en="Nobody told the forecast. It just arrived." data-current="Niemand het die voorspelling genooi nie. Dit het net opgedaag." data-proposal="Niemand het die voorspelling gesê nie. Dit het net opgedaag." data-kind="wired">
+<div class="k">af-1561</div>
+<div class="en">Nobody told the forecast. It just arrived.</div>
+<div class="lbl">Was</div><div class="af">Niemand het die voorspelling gesê nie. Dit het net opgedaag.</div>
+<div class="lbl">Your note</div><div class="af">Niemand het die voorspelling genooi nie. Dit het net opgedaag.</div>
+<div class="lbl">Live now</div><div class="af">Niemand het die voorspelling genooi nie. Dit het net opgedaag.</div>
+<div class="why">Exactly as you wrote it.</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-2023" data-key="af-2023" data-en="Zero mistakes from today so far. Sky included." data-current="Die dag het nog niks verkeerd gedoen nie. En wil ook nie." data-proposal="Die dag het nog niks verkeerd gedoen nie. Gee hom kans." data-kind="wired">
+<div class="k">af-2023</div>
+<div class="en">Zero mistakes from today so far. Sky included.</div>
+<div class="lbl">Was</div><div class="af">Die dag het nog niks verkeerd gedoen nie. Gee hom kans.</div>
+<div class="lbl">Your note</div><div class="af">Die dag het nog niks verkeerd gedoen nie. En wil ook nie.</div>
+<div class="lbl">Live now</div><div class="af">Die dag het nog niks verkeerd gedoen nie. En wil ook nie.</div>
+<div class="why">Exactly as you wrote it.</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0327" data-key="af-0327" data-en="Sun, hide-and-seek champion of the day." data-current="Die son en die wolke speel kat en muis vandag." data-proposal="Die lug speel kat en muis." data-kind="wired">
+<div class="k">af-0327</div>
+<div class="en">Sun, hide-and-seek champion of the day.</div>
+<div class="lbl">Was</div><div class="af">Die lug speel kat en muis.</div>
+<div class="lbl">Your note</div><div class="af">Die son en die wolke speel kat en muis vandag.</div>
+<div class="lbl">Live now</div><div class="af">Die son en die wolke speel kat en muis vandag.</div>
+<div class="why">Exactly as you wrote it.</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0013" data-key="af-0013" data-en="The sun took its time this morning. Worth the wait." data-current="Die son vat sy tyd vanoggend, en dit is 100% dit werd." data-proposal="Die son vat sy tyd vanoggend, en dit wys." data-kind="wired">
+<div class="k">af-0013</div>
+<div class="en">The sun took its time this morning. Worth the wait.</div>
+<div class="lbl">Was</div><div class="af">Die son vat sy tyd vanoggend, en dit wys.</div>
+<div class="lbl">Your note</div><div class="af">Die son vat sy tyd vanoggend, en dit is 100% dit werd.</div>
+<div class="lbl">Live now</div><div class="af">Die son vat sy tyd vanoggend, en dit is 100% dit werd.</div>
+<div class="why">Exactly as you wrote it.</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0014" data-key="af-0014" data-en="Enjoy it. There's a cold front out there doing warm-ups." data-current="Geniet dit. Erens daarbuite is 'n kouefront besig om planne te maak." data-proposal="Geniet dit. Die koue front het klaar sy tasse gepak." data-kind="wired">
+<div class="k">af-0014</div>
+<div class="en">Enjoy it. There's a cold front out there doing warm-ups.</div>
+<div class="lbl">Was</div><div class="af">Geniet dit. Die koue front het klaar sy tasse gepak.</div>
+<div class="lbl">Your note</div><div class="af">Geniet dit. Erens daarbuite is n kouefront besig om planne te maak.</div>
+<div class="lbl">Live now</div><div class="af">Geniet dit. Erens daarbuite is 'n kouefront besig om planne te maak.</div>
+<div class="why">Restored: n → 'n</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0194" data-key="af-0194" data-en="The sun hit snooze again. Honestly? Same." data-current="Die son het snooze gedruk." data-proposal="Die son het snooze gedruk. Weer." data-kind="wired">
+<div class="k">af-0194</div>
+<div class="en">The sun hit snooze again. Honestly? Same.</div>
+<div class="lbl">Was</div><div class="af">Die son het snooze gedruk. Weer.</div>
+<div class="lbl">Your note</div><div class="af">Die son het snooze gedruk.</div>
+<div class="lbl">Live now</div><div class="af">Die son het snooze gedruk.</div>
+<div class="why">Exactly as you wrote it.</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0356" data-key="af-0356" data-en="Somebody left the freezer door open overnight." data-current="Die Karoo het die yskas oornag oopgelos." data-proposal="Die Karoo het die verkoeler oopgelos." data-kind="wired">
+<div class="k">af-0356</div>
+<div class="en">Somebody left the freezer door open overnight.</div>
+<div class="lbl">Was</div><div class="af">Die Karoo het die verkoeler oopgelos.</div>
+<div class="lbl">Your note</div><div class="af">Die Karoo het die yskas oornag oopgelos.</div>
+<div class="lbl">Live now</div><div class="af">Die Karoo het die yskas oornag oopgelos.</div>
+<div class="why">Exactly as you wrote it.</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-1041" data-key="af-1041" data-en="The clouds are having a moment." data-current="Die wolke tjank, iemand kry 'n tissue asb." data-proposal="Die wolke het 'n oomblik." data-kind="wired">
+<div class="k">af-1041</div>
+<div class="en">The clouds are having a moment.</div>
+<div class="lbl">Was</div><div class="af">Die wolke het 'n oomblik.</div>
+<div class="lbl">Your note</div><div class="af">Die wolke tjank, iemand kry n tissue asb.</div>
+<div class="lbl">Live now</div><div class="af">Die wolke tjank, iemand kry 'n tissue asb.</div>
+<div class="why">Restored: n → 'n</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-1567" data-key="af-1567" data-en="In the Karoo this isn't rain. It's a celebrity appearance." data-current="In die Karoo is dit nie reën nie. Dis vroeë Kersfees." data-proposal="In die Karoo is dit nie reën nie. Dis 'n verskyning." data-kind="wired">
+<div class="k">af-1567</div>
+<div class="en">In the Karoo this isn't rain. It's a celebrity appearance.</div>
+<div class="lbl">Was</div><div class="af">In die Karoo is dit nie reën nie. Dis 'n verskyning.</div>
+<div class="lbl">Your note</div><div class="af">Change last line to Dis vroee Kersfees,</div>
+<div class="lbl">Live now</div><div class="af">In die Karoo is dit nie reën nie. Dis vroeë Kersfees.</div>
+<div class="why">Restored: vroee → vroeë; closing comma → full stop; first sentence kept as it was</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0188" data-key="af-0188" data-en="Not Instagram weather. Not the end of the world." data-current="Nie Instagram weer nie. Nie die einde van die wêreld nie." data-proposal="Nie troufoto weer nie. Nie die einde van die wêreld nie." data-kind="wired">
+<div class="k">af-0188</div>
+<div class="en">Not Instagram weather. Not the end of the world.</div>
+<div class="lbl">Was</div><div class="af">Nie troufoto weer nie. Nie die einde van die wêreld nie.</div>
+<div class="lbl">Your note</div><div class="af">You can say Nie Instagram weer nie.</div>
+<div class="lbl">Live now</div><div class="af">Nie Instagram weer nie. Nie die einde van die wêreld nie.</div>
+<div class="why">Restored: second sentence kept as it was</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0032" data-key="af-0032" data-en="The beach is doubling as a mirror, which takes one morning of absolutely no wind." data-current="Die strand is soos 'n spieël, en dit vat een oggend van absoluut geen wind nie." data-proposal="Die strand is ook 'n spieël, en dit vat een oggend van absoluut geen wind nie." data-kind="wired">
+<div class="k">af-0032</div>
+<div class="en">The beach is doubling as a mirror, which takes one morning of absolutely no wind.</div>
+<div class="lbl">Was</div><div class="af">Die strand is ook 'n spieël, en dit vat een oggend van absoluut geen wind nie.</div>
+<div class="lbl">Your note</div><div class="af">You can say Die strand is soos n spieel.</div>
+<div class="lbl">Live now</div><div class="af">Die strand is soos 'n spieël, en dit vat een oggend van absoluut geen wind nie.</div>
+<div class="why">Restored: n → 'n; spieel → spieël; rest of the line kept as it was</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-1119" data-key="af-1119" data-en="The traffic just remembered rain exists. Again." data-current="Die verkeer het pas onthou dat reën bestaan, steeds." data-proposal="Die verkeer het pas onthou daar is n ding soos reën bestaan weer." data-kind="wired">
+<div class="k">af-1119</div>
+<div class="en">The traffic just remembered rain exists. Again.</div>
+<div class="lbl">Was</div><div class="af">Die verkeer het pas onthou daar is n ding soos reën bestaan weer.</div>
+<div class="lbl">Your note</div><div class="af">Die verkeer het pas onthou dat reen bestaan, steeds.</div>
+<div class="lbl">Live now</div><div class="af">Die verkeer het pas onthou dat reën bestaan, steeds.</div>
+<div class="why">Restored: reen → reën</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0967" data-key="af-0967" data-en="Nobody is going back in there until the walls let go of the day." data-current="Niemand gaan weer in todat die mure die dag laat gaan het nie." data-proposal="Niemand gaan daar terug in voor die mure die dag laat gaan nie." data-kind="wired">
+<div class="k">af-0967</div>
+<div class="en">Nobody is going back in there until the walls let go of the day.</div>
+<div class="lbl">Was</div><div class="af">Niemand gaan daar terug in voor die mure die dag laat gaan nie.</div>
+<div class="lbl">Your note</div><div class="af">Niemand gaan weer in todat die mure die dag laat gaan het nie.</div>
+<div class="lbl">Live now</div><div class="af">Niemand gaan weer in todat die mure die dag laat gaan het nie.</div>
+<div class="why">Exactly as you wrote it.</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+<div class="row" data-id="af-0949" data-key="af-0949" data-en="It has not dropped below twenty-five in that house since about Tuesday." data-current="Dit het sedert Dinsdag nog nie onder vyf-en-twintig in daardie huis gesak nie." data-proposal="Dit het sedert omtrent Dinsdag nie onder vyf-en-twintig in daardie huis gesak nie." data-kind="wired">
+<div class="k">af-0949</div>
+<div class="en">It has not dropped below twenty-five in that house since about Tuesday.</div>
+<div class="lbl">Was</div><div class="af">Dit het sedert omtrent Dinsdag nie onder vyf-en-twintig in daardie huis gesak nie.</div>
+<div class="lbl">Your note</div><div class="af">Dit het sedert Dinsdag nog nie onder vyf-en-twintig in daadie huis gesak nie.</div>
+<div class="lbl">Live now</div><div class="af">Dit het sedert Dinsdag nog nie onder vyf-en-twintig in daardie huis gesak nie.</div>
+<div class="why">Restored: daadie → daardie</div>
+<div class="act"><button data-v="UNDO">UNDO</button><button data-v="FIX">FIX</button><textarea placeholder="Your line (for FIX)"></textarea></div>
+</div>
+</div>
+<textarea id="out" readonly placeholder="The export also appears here."></textarea>
+</main>
+<script>
+var KEY = 'pw-af-proposals-2026-09-23';
+var state = {}; try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+var rows = Array.prototype.slice.call(document.querySelectorAll('.row'));
+function paint() {
+  var n = 0;
+  rows.forEach(function (r) {
+    var s = state[r.dataset.id] || {};
+    r.className = 'row' + (s.v ? ' ' + s.v : '');
+    Array.prototype.forEach.call(r.querySelectorAll('button[data-v]'), function (b) { b.className = s.v === b.dataset.v ? 'on ' + b.dataset.v : ''; });
+    var t = r.querySelector('textarea'); if (t && s.text !== undefined && t.value !== s.text) t.value = s.text;
+    if (s.v) n++;
+  });
+  document.getElementById('count').textContent = n + ' of ' + rows.length + ' rows ruled';
+}
+rows.forEach(function (r) {
+  Array.prototype.forEach.call(r.querySelectorAll('button[data-v]'), function (b) {
+    b.addEventListener('click', function () { var s = state[r.dataset.id] || {}; s.v = s.v === b.dataset.v ? undefined : b.dataset.v; state[r.dataset.id] = s; save(); paint(); });
+  });
+  var t = r.querySelector('textarea');
+  t.addEventListener('input', function () { var s = state[r.dataset.id] || {}; s.text = t.value; if (t.value.trim() && !s.v) s.v = 'FIX'; state[r.dataset.id] = s; save(); paint(); });
+});
+function exportJson() {
+  var rulings = rows.map(function (r) { var s = state[r.dataset.id] || {}; return { id: r.dataset.id, key: r.dataset.key, kind: r.dataset.kind, en: r.dataset.en, live: r.dataset.current, proposal: r.dataset.proposal, verdict: s.v || null, text: (s.text || '').trim() }; });
+  return JSON.stringify({ generated: new Date().toISOString(), ruledBy: 'Al, Afrikaans proposals page (review/af-proposals.html)', ruled: rulings.filter(function (x) { return x.verdict; }).length, total: rulings.length, rulings: rulings }, null, 1);
+}
+document.getElementById('export').addEventListener('click', function () { var j = exportJson(); document.getElementById('out').value = j; try { var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([j], { type: 'application/json' })); a.download = 'af-proposals-ruled.json'; a.click(); } catch (e) {} });
+document.getElementById('copy').addEventListener('click', function () { var j = exportJson(); document.getElementById('out').value = j; try { navigator.clipboard.writeText(j); } catch (e) {} });
+paint();
+</script>
+</body>
+</html>
