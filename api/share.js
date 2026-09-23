@@ -13,8 +13,8 @@ const LANG_SET = new Set(SUPPORTED_LANGS);
 const PROBABLY_WORD = {
   en: 'Probably',
   af: 'Waarskynlik',
-  zu: 'Cishe',
-  xh: 'Cishe',
+  zu: 'Mhlawumbe',
+  xh: 'Mhlawumbi',
   st: 'Mohlomong',
 };
 

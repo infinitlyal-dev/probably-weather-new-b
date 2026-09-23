@@ -103,7 +103,7 @@ describe('share page: the place never reads "Unknown"', () => {
     }));
     const html = await buildShareMetaHtml({ lang: 'xh', lat: '-31.59', lon: '28.79' });
     expect(geocodeSpy).not.toHaveBeenCalled();
-    expect(meta(html, 'og:description')).toMatch(/^Mthatha, Eastern Cape: Cishe/);
+    expect(meta(html, 'og:description')).toMatch(/^Mthatha, Eastern Cape: Mhlawumbi/);
   });
 
   it('a junk name in the link is ignored, never reflected', async () => {
