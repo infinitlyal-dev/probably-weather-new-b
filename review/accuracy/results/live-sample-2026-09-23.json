@@ -1,0 +1,3293 @@
+{
+ "startedAtUtc": "2026-09-23T21:28:59.514Z",
+ "endedAtUtc": "2026-09-23T21:29:10.903Z",
+ "api": {
+  "FACT": {
+   "url": "https://www.probablyweather.co.za/api/weather?lat=-33.9648&lon=18.6017",
+   "at": "2026-09-23T21:28:59.515Z",
+   "attempts": 1,
+   "ok": true,
+   "error": null,
+   "payload": {
+    "location": {
+     "name": "Western Cape, South Africa",
+     "lat": -33.9648,
+     "lon": 18.6017
+    },
+    "now": {
+     "tempC": 18,
+     "windKph": 8.3,
+     "rainChance": 7.2,
+     "cloudPct": 99.2,
+     "conditionKey": "cloudy",
+     "conditionLabel": "Partly cloudy",
+     "conditionReason": "overcast",
+     "isDay": false,
+     "gustKph": 13.3,
+     "maxWindKph": 13.3,
+     "numeric": {
+      "rainChance": 7.2,
+      "tempC": 18,
+      "feelsLikeC": 18.6,
+      "windKph": 8.3,
+      "uvIndex": 0,
+      "cloudPct": 99.2,
+      "dailyHighC": 21.8,
+      "isDay": false,
+      "precipMm": 0.1,
+      "rainVotes": 1,
+      "gustKph": 13.3
+     }
+    },
+    "daily0": {
+     "highC": 21.8,
+     "lowC": 15.9,
+     "rainChance": 38.3,
+     "conditionKey": "rain",
+     "conditionLabel": "Light drizzle"
+    },
+    "hourNow": {
+     "tempC": 18.1,
+     "feelsLikeC": 18.8,
+     "rainChance": 7.2,
+     "precipMm": 0.1,
+     "windKph": 7.7,
+     "windDir": 264,
+     "cloudPct": 99.2,
+     "uv": 0,
+     "condition": "cloudy",
+     "descLabel": "Overcast"
+    },
+    "meta": {
+     "sources": [
+      {
+       "name": "Open-Meteo",
+       "ok": true
+      },
+      {
+       "name": "WeatherAPI",
+       "ok": true
+      },
+      {
+       "name": "Pirate Weather",
+       "ok": true
+      },
+      {
+       "name": "MET Norway",
+       "ok": true
+      },
+      {
+       "name": "Tomorrow.io",
+       "ok": true
+      }
+     ],
+     "sourceRanges": [
+      {
+       "name": "Open-Meteo",
+       "minTemp": 16,
+       "maxTemp": 25
+      },
+      {
+       "name": "WeatherAPI",
+       "minTemp": 15.6,
+       "maxTemp": 20
+      },
+      {
+       "name": "Pirate Weather",
+       "minTemp": 16.4,
+       "maxTemp": 19.2
+      },
+      {
+       "name": "MET Norway",
+       "minTemp": 15.4,
+       "maxTemp": 23.8
+      },
+      {
+       "name": "Tomorrow.io",
+       "minTemp": 20.18,
+       "maxTemp": 20.18
+      }
+     ],
+     "sourceWeights": {
+      "Open-Meteo": 30,
+      "WeatherAPI": 22,
+      "Pirate Weather": 13,
+      "MET Norway": 20,
+      "Tomorrow.io": 15
+     },
+     "sourceConditions": [
+      {
+       "source": "Open-Meteo",
+       "desc": "Overcast",
+       "vote": "cloudy"
+      },
+      {
+       "source": "WeatherAPI",
+       "desc": "Overcast",
+       "vote": "cloudy"
+      },
+      {
+       "source": "Pirate Weather",
+       "desc": "Partly cloudy",
+       "vote": "clear"
+      },
+      {
+       "source": "MET Norway",
+       "desc": "Partly cloudy",
+       "vote": "clear"
+      },
+      {
+       "source": "Tomorrow.io",
+       "desc": "Drizzle",
+       "vote": "rain"
+      }
+     ],
+     "localHour": 23,
+     "utcOffsetSeconds": 7200,
+     "serverCache": "miss",
+     "updatedAtLabel": "2026-09-23T21:28:59.883Z",
+     "confidence": "low",
+     "schema": 5
+    }
+   }
+  },
+  "FAOR": {
+   "url": "https://www.probablyweather.co.za/api/weather?lat=-26.1392&lon=28.246",
+   "at": "2026-09-23T21:29:01.483Z",
+   "attempts": 1,
+   "ok": true,
+   "error": null,
+   "payload": {
+    "location": {
+     "name": "Gauteng, South Africa",
+     "lat": -26.1392,
+     "lon": 28.246
+    },
+    "now": {
+     "tempC": 17.1,
+     "windKph": 7.9,
+     "rainChance": 70,
+     "cloudPct": 5.47,
+     "conditionKey": "rain",
+     "conditionLabel": "Clear sky",
+     "conditionReason": "tomorrow-io-radar-override",
+     "isDay": false,
+     "gustKph": 14.8,
+     "maxWindKph": 14.8,
+     "numeric": {
+      "rainChance": 70,
+      "tempC": 17.1,
+      "feelsLikeC": 16.7,
+      "windKph": 7.9,
+      "uvIndex": 0,
+      "cloudPct": 5.47,
+      "dailyHighC": 23.1,
+      "isDay": false,
+      "precipMm": 0.3,
+      "rainVotes": 1,
+      "gustKph": 14.8
+     }
+    },
+    "daily0": {
+     "highC": 23.1,
+     "lowC": 13.4,
+     "rainChance": 17.4,
+     "conditionKey": "uv",
+     "conditionLabel": "Partly cloudy"
+    },
+    "hourNow": {
+     "tempC": 17.5,
+     "feelsLikeC": 17.1,
+     "rainChance": 4.3,
+     "precipMm": 0.3,
+     "windKph": 7.2,
+     "windDir": 191,
+     "cloudPct": 5.47,
+     "uv": 0,
+     "condition": "clear",
+     "descLabel": "Clear sky"
+    },
+    "meta": {
+     "sources": [
+      {
+       "name": "Open-Meteo",
+       "ok": true
+      },
+      {
+       "name": "WeatherAPI",
+       "ok": true
+      },
+      {
+       "name": "Pirate Weather",
+       "ok": true
+      },
+      {
+       "name": "MET Norway",
+       "ok": true
+      },
+      {
+       "name": "Tomorrow.io",
+       "ok": true
+      }
+     ],
+     "sourceRanges": [
+      {
+       "name": "Open-Meteo",
+       "minTemp": 11.8,
+       "maxTemp": 24.6
+      },
+      {
+       "name": "WeatherAPI",
+       "minTemp": 16.1,
+       "maxTemp": 25.6
+      },
+      {
+       "name": "Pirate Weather",
+       "minTemp": 12.3,
+       "maxTemp": 22.6
+      },
+      {
+       "name": "MET Norway",
+       "minTemp": 14,
+       "maxTemp": 25.9
+      },
+      {
+       "name": "Tomorrow.io",
+       "minTemp": 16.87,
+       "maxTemp": 16.87
+      }
+     ],
+     "sourceWeights": {
+      "Open-Meteo": 30,
+      "WeatherAPI": 22,
+      "Pirate Weather": 13,
+      "MET Norway": 20,
+      "Tomorrow.io": 15
+     },
+     "sourceConditions": [
+      {
+       "source": "Open-Meteo",
+       "desc": "Clear sky",
+       "vote": "clear"
+      },
+      {
+       "source": "WeatherAPI",
+       "desc": "Partly cloudy",
+       "vote": "clear"
+      },
+      {
+       "source": "Pirate Weather",
+       "desc": "Partly cloudy",
+       "vote": "clear"
+      },
+      {
+       "source": "MET Norway",
+       "desc": "Clear sky",
+       "vote": "clear"
+      },
+      {
+       "source": "Tomorrow.io",
+       "desc": "Light rain",
+       "vote": "rain"
+      }
+     ],
+     "localHour": 23,
+     "utcOffsetSeconds": 7200,
+     "serverCache": "miss",
+     "updatedAtLabel": "2026-09-23T21:29:01.471Z",
+     "confidence": "low",
+     "schema": 5
+    }
+   }
+  },
+  "FALE": {
+   "url": "https://www.probablyweather.co.za/api/weather?lat=-29.6144&lon=31.1197",
+   "at": "2026-09-23T21:29:03.054Z",
+   "attempts": 1,
+   "ok": true,
+   "error": null,
+   "payload": {
+    "location": {
+     "name": "KwaZulu-Natal, South Africa",
+     "lat": -29.6144,
+     "lon": 31.1197
+    },
+    "now": {
+     "tempC": 20.9,
+     "windKph": 7,
+     "rainChance": 9.4,
+     "cloudPct": 8.59,
+     "conditionKey": "clear",
+     "conditionLabel": "Clear sky",
+     "conditionReason": "desc-clear-keyword",
+     "isDay": false,
+     "gustKph": 10.8,
+     "maxWindKph": 14,
+     "numeric": {
+      "rainChance": 9.4,
+      "tempC": 20.9,
+      "feelsLikeC": 22.2,
+      "windKph": 7,
+      "uvIndex": 0,
+      "cloudPct": 8.59,
+      "dailyHighC": 25.3,
+      "isDay": false,
+      "precipMm": 0,
+      "rainVotes": 0,
+      "gustKph": 10.8
+     }
+    },
+    "daily0": {
+     "highC": 25.3,
+     "lowC": 17.5,
+     "rainChance": 11.6,
+     "conditionKey": "uv",
+     "conditionLabel": "Clear sky"
+    },
+    "hourNow": {
+     "tempC": 21.1,
+     "feelsLikeC": 22.6,
+     "rainChance": 9.4,
+     "precipMm": 0,
+     "windKph": 7.1,
+     "windDir": 276,
+     "cloudPct": 8.59,
+     "uv": 0,
+     "condition": "clear",
+     "descLabel": "Clear sky"
+    },
+    "meta": {
+     "sources": [
+      {
+       "name": "Open-Meteo",
+       "ok": true
+      },
+      {
+       "name": "WeatherAPI",
+       "ok": true
+      },
+      {
+       "name": "Pirate Weather",
+       "ok": true
+      },
+      {
+       "name": "MET Norway",
+       "ok": true
+      },
+      {
+       "name": "Tomorrow.io",
+       "ok": true
+      }
+     ],
+     "sourceRanges": [
+      {
+       "name": "Open-Meteo",
+       "minTemp": 17.6,
+       "maxTemp": 26.6
+      },
+      {
+       "name": "WeatherAPI",
+       "minTemp": 18.4,
+       "maxTemp": 25.2
+      },
+      {
+       "name": "Pirate Weather",
+       "minTemp": 15.83,
+       "maxTemp": 27.27
+      },
+      {
+       "name": "MET Norway",
+       "minTemp": 19.6,
+       "maxTemp": 24.6
+      },
+      {
+       "name": "Tomorrow.io",
+       "minTemp": 20.99,
+       "maxTemp": 20.99
+      }
+     ],
+     "sourceWeights": {
+      "Open-Meteo": 30,
+      "WeatherAPI": 22,
+      "Pirate Weather": 13,
+      "MET Norway": 20,
+      "Tomorrow.io": 15
+     },
+     "sourceConditions": [
+      {
+       "source": "Open-Meteo",
+       "desc": "Clear sky",
+       "vote": "clear"
+      },
+      {
+       "source": "WeatherAPI",
+       "desc": "Patchy rain possible",
+       "vote": "rain"
+      },
+      {
+       "source": "Pirate Weather",
+       "desc": "Clear sky",
+       "vote": "clear"
+      },
+      {
+       "source": "MET Norway",
+       "desc": "Clear sky",
+       "vote": "clear"
+      },
+      {
+       "source": "Tomorrow.io",
+       "desc": "Clear sky",
+       "vote": "clear"
+      }
+     ],
+     "localHour": 23,
+     "utcOffsetSeconds": 7200,
+     "serverCache": "miss",
+     "updatedAtLabel": "2026-09-23T21:29:03.036Z",
+     "confidence": "high",
+     "schema": 5
+    }
+   }
+  },
+  "FAPE": {
+   "url": "https://www.probablyweather.co.za/api/weather?lat=-33.9849&lon=25.6173",
+   "at": "2026-09-23T21:29:04.620Z",
+   "attempts": 1,
+   "ok": true,
+   "error": null,
+   "payload": {
+    "location": {
+     "name": "Gqeberha, Eastern Cape",
+     "lat": -33.9849,
+     "lon": 25.6173
+    },
+    "now": {
+     "tempC": 18.3,
+     "windKph": 14.1,
+     "rainChance": 11.1,
+     "cloudPct": 99.22,
+     "conditionKey": "cloudy",
+     "conditionLabel": "Overcast",
+     "conditionReason": "overcast",
+     "isDay": false,
+     "gustKph": 25.2,
+     "maxWindKph": 25.2,
+     "numeric": {
+      "rainChance": 11.1,
+      "tempC": 18.3,
+      "feelsLikeC": 18.3,
+      "windKph": 14.1,
+      "uvIndex": 0,
+      "cloudPct": 99.22,
+      "dailyHighC": 23.6,
+      "isDay": false,
+      "precipMm": 0,
+      "rainVotes": 0,
+      "gustKph": 25.2
+     }
+    },
+    "daily0": {
+     "highC": 23.6,
+     "lowC": 17.7,
+     "rainChance": 37.2,
+     "conditionKey": "rain",
+     "conditionLabel": "Cloudy"
+    },
+    "hourNow": {
+     "tempC": 18.3,
+     "feelsLikeC": 18.4,
+     "rainChance": 11.1,
+     "precipMm": 0,
+     "windKph": 13.9,
+     "windDir": 256,
+     "cloudPct": 99.22,
+     "uv": 0,
+     "condition": "cloudy",
+     "descLabel": "Overcast"
+    },
+    "meta": {
+     "sources": [
+      {
+       "name": "Open-Meteo",
+       "ok": true
+      },
+      {
+       "name": "WeatherAPI",
+       "ok": true
+      },
+      {
+       "name": "Pirate Weather",
+       "ok": true
+      },
+      {
+       "name": "MET Norway",
+       "ok": true
+      },
+      {
+       "name": "Tomorrow.io",
+       "ok": true
+      }
+     ],
+     "sourceRanges": [
+      {
+       "name": "Open-Meteo",
+       "minTemp": 18.1,
+       "maxTemp": 28
+      },
+      {
+       "name": "WeatherAPI",
+       "minTemp": 17.9,
+       "maxTemp": 20
+      },
+      {
+       "name": "Pirate Weather",
+       "minTemp": 16.5,
+       "maxTemp": 25
+      },
+      {
+       "name": "MET Norway",
+       "minTemp": 17.4,
+       "maxTemp": 20.7
+      },
+      {
+       "name": "Tomorrow.io",
+       "minTemp": 18.95,
+       "maxTemp": 18.95
+      }
+     ],
+     "sourceWeights": {
+      "Open-Meteo": 30,
+      "WeatherAPI": 22,
+      "Pirate Weather": 13,
+      "MET Norway": 20,
+      "Tomorrow.io": 15
+     },
+     "sourceConditions": [
+      {
+       "source": "Open-Meteo",
+       "desc": "Overcast",
+       "vote": "cloudy"
+      },
+      {
+       "source": "WeatherAPI",
+       "desc": "Patchy rain possible",
+       "vote": "rain"
+      },
+      {
+       "source": "Pirate Weather",
+       "desc": "Cloudy",
+       "vote": "cloudy"
+      },
+      {
+       "source": "MET Norway",
+       "desc": "Cloudy",
+       "vote": "cloudy"
+      },
+      {
+       "source": "Tomorrow.io",
+       "desc": "Overcast",
+       "vote": "cloudy"
+      }
+     ],
+     "localHour": 23,
+     "utcOffsetSeconds": 7200,
+     "serverCache": "miss",
+     "updatedAtLabel": "2026-09-23T21:29:04.611Z",
+     "confidence": "high",
+     "schema": 5
+    }
+   }
+  },
+  "FABL": {
+   "url": "https://www.probablyweather.co.za/api/weather?lat=-29.0927&lon=26.3024",
+   "at": "2026-09-23T21:29:06.195Z",
+   "attempts": 1,
+   "ok": true,
+   "error": null,
+   "payload": {
+    "location": {
+     "name": "Bob Rogers Park, Bloemfontein",
+     "lat": -29.0927,
+     "lon": 26.3024
+    },
+    "now": {
+     "tempC": 13.6,
+     "windKph": 3.8,
+     "rainChance": 17.5,
+     "cloudPct": 42.2,
+     "conditionKey": "fog",
+     "conditionLabel": "Partly cloudy",
+     "conditionReason": "visibility-humidity-fog-detector",
+     "isDay": false,
+     "gustKph": 6.1,
+     "maxWindKph": 6.8,
+     "numeric": {
+      "rainChance": 17.5,
+      "tempC": 13.6,
+      "feelsLikeC": 13.7,
+      "windKph": 3.8,
+      "uvIndex": 0,
+      "cloudPct": 42.2,
+      "dailyHighC": 22.3,
+      "isDay": false,
+      "precipMm": 0.3,
+      "rainVotes": 0,
+      "gustKph": 6.1
+     }
+    },
+    "daily0": {
+     "highC": 22.3,
+     "lowC": 13.7,
+     "rainChance": 44.5,
+     "conditionKey": "rain",
+     "conditionLabel": "Slight rain showers"
+    },
+    "hourNow": {
+     "tempC": 13.6,
+     "feelsLikeC": 13.7,
+     "rainChance": 17.5,
+     "precipMm": 0.3,
+     "windKph": 4.5,
+     "windDir": 130,
+     "cloudPct": 42.2,
+     "uv": 0,
+     "condition": "clear",
+     "descLabel": "Partly cloudy"
+    },
+    "meta": {
+     "sources": [
+      {
+       "name": "Open-Meteo",
+       "ok": true
+      },
+      {
+       "name": "WeatherAPI",
+       "ok": true
+      },
+      {
+       "name": "Pirate Weather",
+       "ok": true
+      },
+      {
+       "name": "MET Norway",
+       "ok": true
+      },
+      {
+       "name": "Tomorrow.io",
+       "ok": true
+      }
+     ],
+     "sourceRanges": [
+      {
+       "name": "Open-Meteo",
+       "minTemp": 12.5,
+       "maxTemp": 24.3
+      },
+      {
+       "name": "WeatherAPI",
+       "minTemp": 15.7,
+       "maxTemp": 25.9
+      },
+      {
+       "name": "Pirate Weather",
+       "minTemp": 13.3,
+       "maxTemp": 22.7
+      },
+      {
+       "name": "MET Norway",
+       "minTemp": 10.2,
+       "maxTemp": 25.2
+      },
+      {
+       "name": "Tomorrow.io",
+       "minTemp": 12.71,
+       "maxTemp": 12.71
+      }
+     ],
+     "sourceWeights": {
+      "Open-Meteo": 30,
+      "WeatherAPI": 22,
+      "Pirate Weather": 13,
+      "MET Norway": 20,
+      "Tomorrow.io": 15
+     },
+     "sourceConditions": [
+      {
+       "source": "Open-Meteo",
+       "desc": "Overcast",
+       "vote": "cloudy"
+      },
+      {
+       "source": "WeatherAPI",
+       "desc": "Patchy rain possible",
+       "vote": "rain"
+      },
+      {
+       "source": "Pirate Weather",
+       "desc": "Partly cloudy",
+       "vote": "clear"
+      },
+      {
+       "source": "MET Norway",
+       "desc": "Fog",
+       "vote": "fog"
+      },
+      {
+       "source": "Tomorrow.io",
+       "desc": "Partly cloudy",
+       "vote": "clear"
+      }
+     ],
+     "localHour": 23,
+     "utcOffsetSeconds": 7200,
+     "serverCache": "miss",
+     "updatedAtLabel": "2026-09-23T21:29:06.172Z",
+     "confidence": "high",
+     "schema": 5
+    }
+   }
+  },
+  "FAGG": {
+   "url": "https://www.probablyweather.co.za/api/weather?lat=-34.0056&lon=22.3789",
+   "at": "2026-09-23T21:29:07.757Z",
+   "attempts": 1,
+   "ok": true,
+   "error": null,
+   "payload": {
+    "location": {
+     "name": "George, Western Cape",
+     "lat": -34.0056,
+     "lon": 22.3789
+    },
+    "now": {
+     "tempC": 16.3,
+     "windKph": 3.9,
+     "rainChance": 8.1,
+     "cloudPct": 96.1,
+     "conditionKey": "cloudy",
+     "conditionLabel": "Overcast",
+     "conditionReason": "overcast",
+     "isDay": false,
+     "gustKph": 8.3,
+     "maxWindKph": 8.3,
+     "numeric": {
+      "rainChance": 8.1,
+      "tempC": 16.3,
+      "feelsLikeC": 16.8,
+      "windKph": 3.9,
+      "uvIndex": 0,
+      "cloudPct": 96.1,
+      "dailyHighC": 20.4,
+      "isDay": false,
+      "precipMm": 0,
+      "rainVotes": 0,
+      "gustKph": 8.3
+     }
+    },
+    "daily0": {
+     "highC": 20.4,
+     "lowC": 16.1,
+     "rainChance": 38.4,
+     "conditionKey": "rain",
+     "conditionLabel": "Overcast"
+    },
+    "hourNow": {
+     "tempC": 16.3,
+     "feelsLikeC": 16.9,
+     "rainChance": 8.1,
+     "precipMm": 0,
+     "windKph": 4.3,
+     "windDir": 20,
+     "cloudPct": 96.1,
+     "uv": 0,
+     "condition": "cloudy",
+     "descLabel": "Overcast"
+    },
+    "meta": {
+     "sources": [
+      {
+       "name": "Open-Meteo",
+       "ok": true
+      },
+      {
+       "name": "WeatherAPI",
+       "ok": true
+      },
+      {
+       "name": "Pirate Weather",
+       "ok": true
+      },
+      {
+       "name": "MET Norway",
+       "ok": true
+      },
+      {
+       "name": "Tomorrow.io",
+       "ok": true
+      }
+     ],
+     "sourceRanges": [
+      {
+       "name": "Open-Meteo",
+       "minTemp": 16,
+       "maxTemp": 21.7
+      },
+      {
+       "name": "WeatherAPI",
+       "minTemp": 16,
+       "maxTemp": 20.4
+      },
+      {
+       "name": "Pirate Weather",
+       "minTemp": 16.37,
+       "maxTemp": 22.17
+      },
+      {
+       "name": "MET Norway",
+       "minTemp": 15.4,
+       "maxTemp": 20.6
+      },
+      {
+       "name": "Tomorrow.io",
+       "minTemp": 16.34,
+       "maxTemp": 16.34
+      }
+     ],
+     "sourceWeights": {
+      "Open-Meteo": 30,
+      "WeatherAPI": 22,
+      "Pirate Weather": 13,
+      "MET Norway": 20,
+      "Tomorrow.io": 15
+     },
+     "sourceConditions": [
+      {
+       "source": "Open-Meteo",
+       "desc": "Overcast",
+       "vote": "cloudy"
+      },
+      {
+       "source": "WeatherAPI",
+       "desc": "Mist",
+       "vote": "fog"
+      },
+      {
+       "source": "Pirate Weather",
+       "desc": "Cloudy",
+       "vote": "cloudy"
+      },
+      {
+       "source": "MET Norway",
+       "desc": "Partly cloudy",
+       "vote": "clear"
+      },
+      {
+       "source": "Tomorrow.io",
+       "desc": "Overcast",
+       "vote": "cloudy"
+      }
+     ],
+     "localHour": 23,
+     "utcOffsetSeconds": 7200,
+     "serverCache": "miss",
+     "updatedAtLabel": "2026-09-23T21:29:07.978Z",
+     "confidence": "low",
+     "schema": 5
+    }
+   }
+  }
+ },
+ "metar": {
+  "source": "aviationweather.gov",
+  "url": "https://aviationweather.gov/api/data/metar?ids=FACT,FAOR,FALE,FAPE,FABL,FAGG&format=json&hours=24",
+  "fetchedAt": "2026-09-23T21:29:09.565Z",
+  "reports": [
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T21:00:00.000Z",
+    "temp": 19,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 232100Z 19007KT CAVOK 19/15 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T21:00:00.000Z",
+    "temp": 16,
+    "wspd": 1,
+    "wxString": "BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 232100Z AUTO 13001KT 4800 BR SCT001/// BKN003/// 16/16 Q1024"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T21:00:00.000Z",
+    "temp": 21,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 232100Z 20005KT CAVOK 21/18 Q1021 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T21:00:00.000Z",
+    "temp": 19,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 232100Z 24005KT 9999 OVC023 19/19 Q1024 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T21:00:00.000Z",
+    "temp": 15,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 232100Z 19008KT CAVOK 15/13 Q1030 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T20:30:00.000Z",
+    "temp": 15,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 232030Z 19011KT 9999 FEW045TCU 15/13 Q1031 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T20:00:00.000Z",
+    "temp": 19,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 232000Z 23009KT 9999 SCT009 OVC020 19/19 Q1024 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T20:00:00.000Z",
+    "temp": 23,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 232000Z 21007KT CAVOK 23/18 Q1021 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T20:00:00.000Z",
+    "temp": 15,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 232000Z 20011KT 9999 FEW040 15/13 Q1031 RERA NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T20:00:00.000Z",
+    "temp": 17,
+    "wspd": 2,
+    "wxString": "BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 232000Z AUTO 19002KT 5000 BR FEW002/// BKN009/// BKN015/// 17/17 Q1024"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T20:00:00.000Z",
+    "temp": 19,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 232000Z 19007KT CAVOK 19/15 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T19:30:00.000Z",
+    "temp": 15,
+    "wspd": 11,
+    "wxString": "-RA",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231930Z 19011KT 9999 -RA FEW028 15/13 Q1031 BECMG NSW"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T19:00:00.000Z",
+    "temp": 15,
+    "wspd": 14,
+    "wxString": "-SHRA",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231900Z 19014KT 9999 -SHRA FEW021 FEW045TCU 15/14 Q1031 RETSRA BECMG NSW"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T19:00:00.000Z",
+    "temp": 19,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231900Z 19011KT 9999 FEW010 19/15 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T19:00:00.000Z",
+    "temp": 19,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231900Z 25009KT 9999 BKN006 OVC020 19/19 Q1024 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T19:00:00.000Z",
+    "temp": 23,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231900Z 19007KT CAVOK 23/18 Q1020 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T19:00:00.000Z",
+    "temp": 17,
+    "wspd": 3,
+    "wxString": "BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231900Z AUTO 03003KT 5000 BR FEW001/// BKN012/// BKN014/// 17/17 Q1024 REDZ"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T18:30:00.000Z",
+    "temp": 15,
+    "wspd": 19,
+    "wxString": "-TSRA",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231830Z 21019KT 9999 -TSRA BKN043 FEW045CB 15/13 Q1030 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T18:00:00.000Z",
+    "temp": 17,
+    "wspd": 2,
+    "wxString": "-DZ BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231800Z VRB02KT 2400 -DZ BR OVC002 17/16 Q1023"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T18:00:00.000Z",
+    "temp": 23,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231800Z 20006KT CAVOK 23/18 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T18:00:00.000Z",
+    "temp": 19,
+    "wspd": 7,
+    "wxString": "VCTS",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231800Z 36007KT 290V030 9999 VCTS FEW045CB 19/10 Q1029 BECMG -TSRA"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T18:00:00.000Z",
+    "temp": 15,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 231800Z /////KT CAVOK 15/14 Q1027 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T18:00:00.000Z",
+    "temp": 17,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231800Z 23010KT 9999 FEW010 17/15 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T18:00:00.000Z",
+    "temp": 18,
+    "wspd": 12,
+    "wxString": "VCFG",
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231800Z 24012KT 8000 VCFG BKN003 18/18 Q1022 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T17:30:00.000Z",
+    "temp": 17,
+    "wspd": 8,
+    "wxString": "TS",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231730Z 02008KT 350V120 9999 TS FEW015 FEW045CB 17/10 Q1029 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T17:00:00.000Z",
+    "temp": 16,
+    "wspd": 12,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231700Z 22012KT 9999 FEW010 16/15 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T17:00:00.000Z",
+    "temp": 17,
+    "wspd": 3,
+    "wxString": "TSRA",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231700Z 18003KT 060V230 5000 TSRA FEW015 FEW045CB 17/12 Q1029 BECMG 9999 -TSRA"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T17:00:00.000Z",
+    "temp": 17,
+    "wspd": 3,
+    "wxString": "BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231700Z 19003KT 4800 BR SCT002 BKN004 OVC009 17/16 Q1022"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T17:00:00.000Z",
+    "temp": 18,
+    "wspd": 12,
+    "wxString": "VCFG",
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231700Z COR 24012KT 8000 VCFG BKN003 18/18 Q1021 TEMPO 3000 BR"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T17:00:00.000Z",
+    "temp": 23,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231700Z 19008KT CAVOK 23/18 Q1019 NOSIG"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T17:00:00.000Z",
+    "temp": 15,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 231700Z /////KT 9999 FEW025 15/13 Q1026 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T16:30:00.000Z",
+    "temp": 22,
+    "wspd": 7,
+    "wxString": "-SHRA",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231630Z COR 30007KT 270V330 9999 -SHRA FEW045TCU 22/10 Q1027 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T16:00:00.000Z",
+    "temp": 16,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231600Z 21010KT 9999 BKN008 16/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T16:00:00.000Z",
+    "temp": 17,
+    "wspd": 0,
+    "wxString": "BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231600Z 00000KT 1800 BR OVC002 17/16 Q1022"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T16:00:00.000Z",
+    "temp": 24,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231600Z 18005KT CAVOK 24/18 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T16:00:00.000Z",
+    "temp": 18,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231600Z 24011KT 9999 SCT004 18/17 Q1020 BECMG BKN004"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T16:00:00.000Z",
+    "temp": 17,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 231600Z /////KT 9999 FEW025 17/14 Q1027 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T16:00:00.000Z",
+    "temp": 23,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231600Z 29005KT 260V330 CAVOK 23/10 Q1027 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T15:30:00.000Z",
+    "temp": 23,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231530Z 29008KT 250V310 CAVOK 23/10 Q1026 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T15:00:00.000Z",
+    "temp": 19,
+    "wspd": 15,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231500Z 23015KT CAVOK 19/17 Q1020 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T15:00:00.000Z",
+    "temp": 17,
+    "wspd": 12,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231500Z 19012KT 9999 BKN008 17/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T15:00:00.000Z",
+    "temp": 17,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231500Z 20004KT 150V230 9999 OVC004 17/16 Q1022"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T15:00:00.000Z",
+    "temp": 23,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231500Z 31007KT 280V360 CAVOK 23/10 Q1026 NOSIG"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T15:00:00.000Z",
+    "temp": 18,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 231500Z /////KT 9999 SCT025 18/15 Q1026 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T15:00:00.000Z",
+    "temp": 24,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231500Z 16004KT 130V200 CAVOK 24/18 Q1017 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T14:30:00.000Z",
+    "temp": 24,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231430Z 29007KT 250V320 CAVOK 24/10 Q1026 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T14:27:00.000Z",
+    "temp": 17,
+    "wspd": 13,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 231427Z 20013KT 9999 BKN008 17/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T14:13:00.000Z",
+    "temp": 17,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 231413Z VRB03KT 9999 SCT005 BKN007 17/16 Q1021"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T14:00:00.000Z",
+    "temp": 18,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231400Z 20008KT 9999 FEW008 SCT020 18/16 Q1021"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T14:00:00.000Z",
+    "temp": 18,
+    "wspd": 14,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231400Z 20014KT 9999 BKN015 18/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T14:00:00.000Z",
+    "temp": 19,
+    "wxString": "-RA",
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 231400Z /////KT 9999 -RA SCT025 19/13 Q1026 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T14:00:00.000Z",
+    "temp": 23,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231400Z 33005KT 200V010 CAVOK 23/10 Q1026 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T14:00:00.000Z",
+    "temp": 20,
+    "wspd": 14,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231400Z 23014KT CAVOK 20/16 Q1019 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T14:00:00.000Z",
+    "temp": 25,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231400Z 16005KT 130V190 CAVOK 25/18 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T13:30:00.000Z",
+    "temp": 24,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231330Z 27006KT 210V350 CAVOK 24/09 Q1026 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T13:00:00.000Z",
+    "temp": 18,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231300Z 21007KT 9999 BKN015 18/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T13:00:00.000Z",
+    "temp": 24,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231300Z 30008KT 240V350 CAVOK 24/09 Q1026 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T13:00:00.000Z",
+    "temp": 27,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231300Z 18006KT 140V200 CAVOK 27/19 Q1015 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T13:00:00.000Z",
+    "temp": 20,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231300Z 20009KT 9999 FEW025 20/16 Q1020"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T13:00:00.000Z",
+    "temp": 25,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 231300Z /////KT 9999 SCT025 25/12 Q1025 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T13:00:00.000Z",
+    "temp": 24,
+    "wspd": 16,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231300Z 23016KT CAVOK 24/16 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T12:30:00.000Z",
+    "temp": 24,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231230Z VRB07KT CAVOK 24/10 Q1026 NOSIG"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T12:00:00.000Z",
+    "temp": 22,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 231200Z /////KT 9999 SCT025 22/13 Q1025 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T12:00:00.000Z",
+    "temp": 19,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231200Z COR 17011KT 9999 BKN015 19/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T12:00:00.000Z",
+    "temp": 26,
+    "wspd": 18,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231200Z 24018KT CAVOK 26/17 Q1018 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T12:00:00.000Z",
+    "temp": 28,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231200Z 17004KT 080V240 CAVOK 28/19 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T12:00:00.000Z",
+    "temp": 23,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231200Z 28007KT 240V340 CAVOK 23/10 Q1027 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T12:00:00.000Z",
+    "temp": 23,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231200Z 34005KT 270V010 9999 FEW035 23/16 Q1020"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T11:30:00.000Z",
+    "temp": 24,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231130Z 29006KT 240V340 CAVOK 24/10 Q1027 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T11:00:00.000Z",
+    "temp": 25,
+    "wspd": 15,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231100Z 23015KT CAVOK 25/17 Q1017 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T11:00:00.000Z",
+    "temp": 27,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231100Z 14004KT 090V180 CAVOK 27/19 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T11:00:00.000Z",
+    "temp": 22,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231100Z 23007KT 190V260 9999 BKN028 22/16 Q1020"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T11:00:00.000Z",
+    "temp": 23,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231100Z 32006KT 230V030 9999 FEW047 23/11 Q1028 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T11:00:00.000Z",
+    "temp": 19,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231100Z 15008KT 9999 FEW016 BKN030 19/14 Q1020 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T10:30:00.000Z",
+    "temp": 23,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231030Z VRB05KT 9999 FEW047 23/10 Q1028 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T10:00:00.000Z",
+    "temp": 28,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 231000Z VRB03KT CAVOK 28/21 Q1017 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T10:00:00.000Z",
+    "temp": 22,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 231000Z 30008KT 250V030 CAVOK 22/11 Q1029 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T10:00:00.000Z",
+    "temp": 20,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 231000Z 22004KT 130V290 9999 BKN020 20/14 Q1020 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T10:00:00.000Z",
+    "temp": 20,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 231000Z 22009KT 9999 BKN023 20/16 Q1021"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T10:00:00.000Z",
+    "temp": 27,
+    "wspd": 15,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 231000Z 24015KT CAVOK 27/17 Q1017 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T09:41:00.000Z",
+    "temp": 27,
+    "wspd": 2,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FALE 230941Z VRB02KT CAVOK 27/20 Q1017 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T09:30:00.000Z",
+    "temp": 22,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230930Z 29006KT 220V330 9999 FEW045 22/11 Q1029 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T09:27:00.000Z",
+    "temp": 19,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230927Z VRB03KT 9999 SCT020 19/14 Q1020 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T09:00:00.000Z",
+    "temp": 21,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230900Z 29007KT 230V350 9999 FEW035 21/11 Q1029 NOSIG"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T09:00:00.000Z",
+    "temp": 22,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 230900Z /////KT 9999 FEW030 22/13 Q1027 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T09:00:00.000Z",
+    "temp": 18,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230900Z VRB03KT 9999 BKN016 18/14 Q1020 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T09:00:00.000Z",
+    "temp": 25,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230900Z COR 08004KT 020V120 CAVOK 25/20 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T09:00:00.000Z",
+    "temp": 21,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230900Z 22010KT 9999 FEW015 21/16 Q1020"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T09:00:00.000Z",
+    "temp": 27,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230900Z 24011KT CAVOK 27/16 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T08:30:00.000Z",
+    "temp": 21,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230830Z 31005KT 200V350 CAVOK 21/11 Q1029 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T08:28:00.000Z",
+    "temp": 18,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230828Z VRB03KT 9999 BKN010 18/14 Q1020 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T08:19:00.000Z",
+    "temp": 21,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230819Z 21009KT 9999 FEW015 21/17 Q1019"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T08:00:00.000Z",
+    "temp": 29,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230800Z 25011KT CAVOK 29/16 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T08:00:00.000Z",
+    "temp": 20,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230800Z 33006KT 290V020 CAVOK 20/11 Q1030 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T08:00:00.000Z",
+    "temp": 24,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230800Z 10005KT 060V150 CAVOK 24/20 Q1018 NOSIG"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T08:00:00.000Z",
+    "temp": 21,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 230800Z /////KT 9999 FEW030 21/13 Q1027 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T08:00:00.000Z",
+    "temp": 16,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230800Z 31004KT 9999 BKN010 16/14 Q1020 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T08:00:00.000Z",
+    "temp": 19,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230800Z 20011KT 9999 FEW008 19/16 Q1019"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T07:30:00.000Z",
+    "temp": 19,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230730Z 35008KT 320V020 CAVOK 19/11 Q1030 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T07:00:00.000Z",
+    "temp": 15,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230700Z 31009KT 6000 BKN004 FEW050TCU 15/14 Q1020 BECMG BKN008"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T07:00:00.000Z",
+    "temp": 20,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230700Z 20007KT CAVOK 20/16 Q1017"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T07:00:00.000Z",
+    "temp": 18,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 230700Z /////KT CAVOK 18/13 Q1027 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T07:00:00.000Z",
+    "temp": 18,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230700Z 36008KT CAVOK 18/11 Q1030 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T07:00:00.000Z",
+    "temp": 23,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230700Z 07006KT 040V100 CAVOK 23/18 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T07:00:00.000Z",
+    "temp": 28,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230700Z 27007KT CAVOK 28/16 Q1016 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T06:57:00.000Z",
+    "temp": 15,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230657Z 31009KT 6000 BKN004 FEW050TCU 15/14 Q1020 BECMG BKN008"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T06:38:00.000Z",
+    "temp": 27,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAPE 230638Z 29003KT 250V350 CAVOK 27/17 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T06:30:00.000Z",
+    "temp": 17,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230630Z 36010KT CAVOK 17/11 Q1030 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T06:25:00.000Z",
+    "temp": 23,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FALE 230625Z 04006KT CAVOK 23/18 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T06:13:00.000Z",
+    "temp": 25,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAPE 230613Z 28003KT 230V320 CAVOK 25/17 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T06:08:00.000Z",
+    "temp": 23,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAPE 230608Z 30003KT 250V330 CAVOK 23/18 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T06:00:00.000Z",
+    "temp": 15,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230600Z 01010KT CAVOK 15/11 Q1030 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T06:00:00.000Z",
+    "temp": 21,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230600Z 05006KT CAVOK 21/18 Q1018 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T06:00:00.000Z",
+    "temp": 14,
+    "wspd": 10,
+    "wxString": "BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230600Z 34010KT 320V020 2000 BR BKN004 FEW050TCU 14/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T06:00:00.000Z",
+    "temp": 23,
+    "wspd": 2,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230600Z VRB02KT CAVOK 23/17 Q1016"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T06:00:00.000Z",
+    "temp": 21,
+    "wspd": 2,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230600Z VRB02KT CAVOK 21/17 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T05:54:00.000Z",
+    "temp": 23,
+    "wspd": 2,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230554Z VRB02KT CAVOK 23/17 Q1016"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T05:42:00.000Z",
+    "temp": 14,
+    "wspd": 10,
+    "wxString": "BR",
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230542Z 33010KT 2000 BR BKN004 FEW050TCU 14/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T05:30:00.000Z",
+    "temp": 14,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230530Z 01009KT CAVOK 14/12 Q1030 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T05:20:00.000Z",
+    "temp": 21,
+    "wspd": 2,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230520Z VRB02KT CAVOK 21/17 Q1016"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T05:00:00.000Z",
+    "temp": 15,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230500Z 31008KT 230V040 9000 BKN010 FEW050TCU 15/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T05:00:00.000Z",
+    "temp": 22,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230500Z 32007KT CAVOK 22/16 Q1015 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T05:00:00.000Z",
+    "temp": 13,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230500Z 02006KT 7000 NSC 13/12 Q1029 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T05:00:00.000Z",
+    "temp": 19,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230500Z 03006KT CAVOK 19/17 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T05:00:00.000Z",
+    "temp": 19,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230500Z 01005KT CAVOK 19/16 Q1016"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T04:56:00.000Z",
+    "temp": 15,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230456Z 31008KT 230V040 9000 BKN010 FEW050TCU 15/14 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T04:42:00.000Z",
+    "temp": 21,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAPE 230442Z 35006KT CAVOK 21/16 Q1015 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T04:30:00.000Z",
+    "temp": 12,
+    "wspd": 7,
+    "wxString": "BR",
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230430Z 02007KT 5000 BR NSC 12/11 Q1029 TEMPO 4000"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T04:00:00.000Z",
+    "temp": 14,
+    "wxString": "-TSRA",
+    "metarType": "SPECI",
+    "rawOb": "SPECI FABL 230400Z /////KT 9999 -TSRA FEW040CB 14/13 Q1026 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T04:00:00.000Z",
+    "temp": 19,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230400Z 20007KT 150V260 CAVOK 19/16 Q1016"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T04:00:00.000Z",
+    "temp": 11,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230400Z 02006KT 6000 NSC 11/10 Q1029 TEMPO 4000 BR"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T04:00:00.000Z",
+    "temp": 18,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230400Z 02005KT CAVOK 18/17 Q1017 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T04:00:00.000Z",
+    "temp": 19,
+    "wspd": 3,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230400Z 34003KT 220V010 CAVOK 19/17 Q1014 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T04:00:00.000Z",
+    "temp": 16,
+    "wspd": 12,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230400Z 31012KT 9000 BKN012 FEW045TCU 16/15 Q1017 TEMPO 4500 -TSRA"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T03:59:00.000Z",
+    "temp": 16,
+    "wspd": 12,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230359Z 31012KT 9000 BKN012 FEW045TCU 16/15 Q1017 TEMPO 4500 -TSRA"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T03:58:00.000Z",
+    "temp": 16,
+    "wspd": 12,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230358Z 31012KT 9000 BKN012 FEW045TCU 16/15 Q1017 TEMPO 4500 -TSRA"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T03:56:00.000Z",
+    "temp": 16,
+    "wspd": 12,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230356Z 31012KT 9000 BKN012 16/15 Q1017 TEMPO 4500 -TSRA"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T03:34:00.000Z",
+    "temp": 14,
+    "wxString": "TS",
+    "metarType": "SPECI",
+    "rawOb": "SPECI FABL 230334Z /////KT 9999 TS FEW040CB 14/13 Q1026 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T03:34:00.000Z",
+    "temp": 22,
+    "wspd": 12,
+    "wgst": 26,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230334Z 20012G26KT 150V240 CAVOK 22/15 Q1015"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T03:30:00.000Z",
+    "temp": 12,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230330Z 04004KT 8000 FEW015 12/11 Q1028 TEMPO BKN015"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T03:23:00.000Z",
+    "temp": 21,
+    "wspd": 5,
+    "wgst": 19,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230323Z VRB05G19KT 9999 FEW045 21/16 Q1015"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T03:11:00.000Z",
+    "temp": 21,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230311Z 10005KT 030V160 9999 FEW036 21/16 Q1014 RETS"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T03:00:00.000Z",
+    "temp": 11,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230300Z 04004KT CAVOK 11/10 Q1028 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T03:00:00.000Z",
+    "temp": 18,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230300Z 03005KT CAVOK 18/17 Q1017 NOSIG"
+   },
+   {
+    "icao": "FABL",
+    "obsTimeUtc": "2026-09-23T03:00:00.000Z",
+    "temp": 14,
+    "wxString": "TS",
+    "metarType": "METAR",
+    "rawOb": "METAR FABL 230300Z /////KT 9999 TS FEW040CB 14/13 Q1025 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T03:00:00.000Z",
+    "temp": 20,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230300Z 27006KT CAVOK 20/17 Q1014 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T03:00:00.000Z",
+    "temp": 21,
+    "wspd": 4,
+    "wxString": "-TSRA",
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230300Z VRB04KT 9999 -TSRA FEW036 FEW049CB 21/16 Q1014"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T03:00:00.000Z",
+    "temp": 15,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230300Z 04010KT 6000 SCT005 FEW045CB 15/15 Q1016 TEMPO 4500 -TSRA"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T02:43:00.000Z",
+    "temp": 22,
+    "wspd": 5,
+    "wxString": "-TSRA",
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230243Z 29005KT 9999 -TSRA FEW049CB 22/16 Q1015"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T02:30:00.000Z",
+    "temp": 11,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230230Z 01009KT CAVOK 11/10 Q1028 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T02:30:00.000Z",
+    "temp": 15,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230230Z 07009KT 6000 SCT002 FEW045CB 15/15 Q1015 TEMPO 4500 -TSRA"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T02:00:00.000Z",
+    "temp": 14,
+    "wspd": 6,
+    "wxString": "BCFG",
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230200Z 01006KT 330V050 2000 BCFG OVC002 14/14 Q1016 BECMG 0500 FG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T02:00:00.000Z",
+    "temp": 23,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230200Z AUTO 30006KT 9999 SCT100/// BKN130/// 23/15 Q1014"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T02:00:00.000Z",
+    "temp": 18,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230200Z 04005KT CAVOK 18/17 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T02:00:00.000Z",
+    "temp": 22,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230200Z 34005KT CAVOK 22/17 Q1013 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T02:00:00.000Z",
+    "temp": 12,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230200Z 03007KT CAVOK 12/10 Q1028 NOSIG"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T01:58:00.000Z",
+    "temp": 14,
+    "wspd": 6,
+    "wxString": "BCFG",
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230158Z 01006KT 330V050 2000 BCFG OVC002 14/14 Q1016 BECMG 0500 FG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T01:00:00.000Z",
+    "temp": 21,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230100Z 34004KT 9999 FEW020 21/18 Q1014"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T01:00:00.000Z",
+    "temp": 15,
+    "wspd": 10,
+    "wxString": "BCFG",
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230100Z 32010KT 2000 BCFG OVC002 15/15 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T01:00:00.000Z",
+    "temp": 12,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230100Z 04006KT CAVOK 12/10 Q1027 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T01:00:00.000Z",
+    "temp": 18,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230100Z 03006KT CAVOK 18/17 Q1018 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T01:00:00.000Z",
+    "temp": 24,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230100Z AUTO 33007KT 9999 BKN140/// 24/14 Q1013"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T00:55:00.000Z",
+    "temp": 24,
+    "wspd": 7,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 230055Z AUTO 33007KT 9999 BKN140/// 24/14 Q1013"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T00:32:00.000Z",
+    "temp": 21,
+    "wspd": 4,
+    "wxString": "VCTS",
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAPE 230032Z 29004KT 250V320 9999 VCTS FEW020 FEW050CB 21/18 Q1014 BECMG NSW"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T00:01:00.000Z",
+    "temp": 16,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 230001Z 32010KT 6000 SCT004 BKN009 16/15 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-23T00:00:00.000Z",
+    "temp": 13,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 230000Z 03008KT CAVOK 13/10 Q1028 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-23T00:00:00.000Z",
+    "temp": 22,
+    "wspd": 12,
+    "wxString": "-TSRA",
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 230000Z 33012KT 9999 -TSRA FEW020 FEW050CB 22/18 Q1014 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-23T00:00:00.000Z",
+    "temp": 18,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 230000Z 03005KT CAVOK 18/17 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-23T00:00:00.000Z",
+    "temp": 23,
+    "wspd": 6,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 230000Z AUTO 29006KT 9999 BKN130/// 23/14 Q1014"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-23T00:00:00.000Z",
+    "temp": 16,
+    "wspd": 10,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 230000Z 32010KT 6000 SCT004 BKN009 16/15 Q1016 TEMPO 3000 BR BKN005"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-22T23:43:00.000Z",
+    "temp": 22,
+    "wspd": 11,
+    "wxString": "-TSRA",
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAPE 222343Z 33011KT 9999 -TSRA FEW020 FEW050CB 22/18 Q1014"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-22T23:25:00.000Z",
+    "temp": 24,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 222325Z AUTO 33008KT 300V040 9999 SCT150/// SCT240/// 24/14 Q1014"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-22T23:08:00.000Z",
+    "temp": 16,
+    "wspd": 11,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FACT 222308Z 33011KT 9999 BKN006 16/14 Q1016 NOSIG"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-22T23:00:00.000Z",
+    "temp": 15,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 222300Z 02009KT CAVOK 15/10 Q1028 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-22T23:00:00.000Z",
+    "temp": 22,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 222300Z AUTO 04004KT 9999 FEW090/// SCT110/// 22/15 Q1014"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-22T23:00:00.000Z",
+    "temp": 21,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 222300Z 34005KT CAVOK 21/19 Q1015"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-22T23:00:00.000Z",
+    "temp": 16,
+    "wspd": 12,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 222300Z 33012KT CAVOK 16/14 Q1016 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-22T23:00:00.000Z",
+    "temp": 19,
+    "wspd": 9,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 222300Z 05009KT 9999 FEW031 19/18 Q1019 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-22T22:54:00.000Z",
+    "temp": 21,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAPE 222254Z 34004KT CAVOK 21/19 Q1015"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-22T22:45:00.000Z",
+    "temp": 22,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "SPECI",
+    "rawOb": "SPECI FAGG 222245Z AUTO 04004KT 9999 SCT090/// SCT120/// BKN150/// 22/14 Q1014"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-22T22:00:00.000Z",
+    "temp": 17,
+    "wspd": 13,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 222200Z 35013KT CAVOK 17/09 Q1028 NOSIG"
+   },
+   {
+    "icao": "FALE",
+    "obsTimeUtc": "2026-09-22T22:00:00.000Z",
+    "temp": 20,
+    "wspd": 8,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FALE 222200Z 04008KT 9999 BKN034 20/18 Q1021 NOSIG"
+   },
+   {
+    "icao": "FAPE",
+    "obsTimeUtc": "2026-09-22T22:00:00.000Z",
+    "temp": 19,
+    "wspd": 4,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAPE 222200Z 01004KT 300V030 9999 FEW040 19/18 Q1014 TEMPO -TSRA FEW040CB"
+   },
+   {
+    "icao": "FACT",
+    "obsTimeUtc": "2026-09-22T22:00:00.000Z",
+    "temp": 16,
+    "wspd": 13,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FACT 222200Z 33013KT CAVOK 16/14 Q1015 NOSIG"
+   },
+   {
+    "icao": "FAGG",
+    "obsTimeUtc": "2026-09-22T22:00:00.000Z",
+    "temp": 19,
+    "wspd": 5,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAGG 222200Z AUTO 06005KT 020V100 9999 FEW095/// BKN160/// 19/15 Q1014"
+   },
+   {
+    "icao": "FAOR",
+    "obsTimeUtc": "2026-09-22T21:30:00.000Z",
+    "temp": 17,
+    "wspd": 13,
+    "wxString": null,
+    "metarType": "METAR",
+    "rawOb": "METAR FAOR 222130Z 35013KT CAVOK 17/09 Q1028 NOSIG"
+   }
+  ]
+ },
+ "sastDate": "2026-09-23",
+ "summary": [
+  {
+   "icao": "FACT",
+   "name": "Cape Town",
+   "apiOk": true,
+   "apiAt": "2026-09-23T21:28:59.515Z",
+   "apiError": null,
+   "serverCache": "miss",
+   "computedAt": "2026-09-23T21:28:59.883Z",
+   "localHour": 23,
+   "sourcesLive": [
+    "Open-Meteo",
+    "WeatherAPI",
+    "Pirate Weather",
+    "MET Norway",
+    "Tomorrow.io"
+   ],
+   "sourcesFailed": [],
+   "sourceWeights": {
+    "Open-Meteo": 30,
+    "WeatherAPI": 22,
+    "Pirate Weather": 13,
+    "MET Norway": 20,
+    "Tomorrow.io": 15
+   },
+   "perSource": [
+    {
+     "name": "Open-Meteo",
+     "live": true,
+     "minTemp": 16,
+     "maxTemp": 25,
+     "maxErr": 5,
+     "minErr": 2,
+     "desc": "Overcast",
+     "vote": "cloudy",
+     "voteMatchesObserved": false
+    },
+    {
+     "name": "WeatherAPI",
+     "live": true,
+     "minTemp": 15.6,
+     "maxTemp": 20,
+     "maxErr": 0,
+     "minErr": 1.6,
+     "desc": "Overcast",
+     "vote": "cloudy",
+     "voteMatchesObserved": false
+    },
+    {
+     "name": "Pirate Weather",
+     "live": true,
+     "minTemp": 16.4,
+     "maxTemp": 19.2,
+     "maxErr": -0.8,
+     "minErr": 2.4,
+     "desc": "Partly cloudy",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "MET Norway",
+     "live": true,
+     "minTemp": 15.4,
+     "maxTemp": 23.8,
+     "maxErr": 3.8,
+     "minErr": 1.4,
+     "desc": "Partly cloudy",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "Tomorrow.io",
+     "live": true,
+     "minTemp": 20.18,
+     "maxTemp": 20.18,
+     "maxErr": 0.2,
+     "minErr": 6.2,
+     "desc": "Drizzle",
+     "vote": "rain",
+     "voteMatchesObserved": false
+    }
+   ],
+   "blendHigh": 21.8,
+   "blendLow": 15.9,
+   "blendHighErr": 1.8,
+   "blendLowErr": 1.9,
+   "blendNow": {
+    "key": "cloudy",
+    "label": "Partly cloudy",
+    "reason": "overcast",
+    "tempC": 18,
+    "windKph": 8.3,
+    "gustKph": 13.3,
+    "rainChance": 7.2
+   },
+   "blendMatchesObserved": false,
+   "obs": {
+    "reportsToday": 37,
+    "firstSast": "2026-09-23T00:00",
+    "lastSast": "2026-09-23T23:00",
+    "max": 20,
+    "min": 14,
+    "latest": {
+     "sast": "2026-09-23T23:00",
+     "utc": "2026-09-23T21:00:00.000Z",
+     "ageMin": 29,
+     "stale": false,
+     "tempC": 19,
+     "windKph": 13,
+     "gustKph": null,
+     "wx": "",
+     "wxNotObserved": false,
+     "cloudOkta": 0,
+     "category": "clear",
+     "windy": false,
+     "raw": "METAR FACT 232100Z 19007KT CAVOK 19/15 Q1019 NOSIG"
+    },
+    "precipReportedToday": false,
+    "unobservedWxReportsToday": 0
+   }
+  },
+  {
+   "icao": "FAOR",
+   "name": "Johannesburg",
+   "apiOk": true,
+   "apiAt": "2026-09-23T21:29:01.483Z",
+   "apiError": null,
+   "serverCache": "miss",
+   "computedAt": "2026-09-23T21:29:01.471Z",
+   "localHour": 23,
+   "sourcesLive": [
+    "Open-Meteo",
+    "WeatherAPI",
+    "Pirate Weather",
+    "MET Norway",
+    "Tomorrow.io"
+   ],
+   "sourcesFailed": [],
+   "sourceWeights": {
+    "Open-Meteo": 30,
+    "WeatherAPI": 22,
+    "Pirate Weather": 13,
+    "MET Norway": 20,
+    "Tomorrow.io": 15
+   },
+   "perSource": [
+    {
+     "name": "Open-Meteo",
+     "live": true,
+     "minTemp": 11.8,
+     "maxTemp": 24.6,
+     "maxErr": 0.6,
+     "minErr": 0.8,
+     "desc": "Clear sky",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "WeatherAPI",
+     "live": true,
+     "minTemp": 16.1,
+     "maxTemp": 25.6,
+     "maxErr": 1.6,
+     "minErr": 5.1,
+     "desc": "Partly cloudy",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "Pirate Weather",
+     "live": true,
+     "minTemp": 12.3,
+     "maxTemp": 22.6,
+     "maxErr": -1.4,
+     "minErr": 1.3,
+     "desc": "Partly cloudy",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "MET Norway",
+     "live": true,
+     "minTemp": 14,
+     "maxTemp": 25.9,
+     "maxErr": 1.9,
+     "minErr": 3,
+     "desc": "Clear sky",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "Tomorrow.io",
+     "live": true,
+     "minTemp": 16.87,
+     "maxTemp": 16.87,
+     "maxErr": -7.1,
+     "minErr": 5.9,
+     "desc": "Light rain",
+     "vote": "rain",
+     "voteMatchesObserved": false
+    }
+   ],
+   "blendHigh": 23.1,
+   "blendLow": 13.4,
+   "blendHighErr": -0.9,
+   "blendLowErr": 2.4,
+   "blendNow": {
+    "key": "rain",
+    "label": "Clear sky",
+    "reason": "tomorrow-io-radar-override",
+    "tempC": 17.1,
+    "windKph": 7.9,
+    "gustKph": 14.8,
+    "rainChance": 70
+   },
+   "blendMatchesObserved": false,
+   "obs": {
+    "reportsToday": 43,
+    "firstSast": "2026-09-23T00:00",
+    "lastSast": "2026-09-23T23:00",
+    "max": 24,
+    "min": 11,
+    "latest": {
+     "sast": "2026-09-23T23:00",
+     "utc": "2026-09-23T21:00:00.000Z",
+     "ageMin": 29,
+     "stale": false,
+     "tempC": 15,
+     "windKph": 14.8,
+     "gustKph": null,
+     "wx": "",
+     "wxNotObserved": false,
+     "cloudOkta": 0,
+     "category": "clear",
+     "windy": false,
+     "raw": "METAR FAOR 232100Z 19008KT CAVOK 15/13 Q1030 NOSIG"
+    },
+    "precipReportedToday": true,
+    "unobservedWxReportsToday": 0
+   }
+  },
+  {
+   "icao": "FALE",
+   "name": "Durban",
+   "apiOk": true,
+   "apiAt": "2026-09-23T21:29:03.054Z",
+   "apiError": null,
+   "serverCache": "miss",
+   "computedAt": "2026-09-23T21:29:03.036Z",
+   "localHour": 23,
+   "sourcesLive": [
+    "Open-Meteo",
+    "WeatherAPI",
+    "Pirate Weather",
+    "MET Norway",
+    "Tomorrow.io"
+   ],
+   "sourcesFailed": [],
+   "sourceWeights": {
+    "Open-Meteo": 30,
+    "WeatherAPI": 22,
+    "Pirate Weather": 13,
+    "MET Norway": 20,
+    "Tomorrow.io": 15
+   },
+   "perSource": [
+    {
+     "name": "Open-Meteo",
+     "live": true,
+     "minTemp": 17.6,
+     "maxTemp": 26.6,
+     "maxErr": -1.4,
+     "minErr": -0.4,
+     "desc": "Clear sky",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "WeatherAPI",
+     "live": true,
+     "minTemp": 18.4,
+     "maxTemp": 25.2,
+     "maxErr": -2.8,
+     "minErr": 0.4,
+     "desc": "Patchy rain possible",
+     "vote": "rain",
+     "voteMatchesObserved": false
+    },
+    {
+     "name": "Pirate Weather",
+     "live": true,
+     "minTemp": 15.83,
+     "maxTemp": 27.27,
+     "maxErr": -0.7,
+     "minErr": -2.2,
+     "desc": "Clear sky",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "MET Norway",
+     "live": true,
+     "minTemp": 19.6,
+     "maxTemp": 24.6,
+     "maxErr": -3.4,
+     "minErr": 1.6,
+     "desc": "Clear sky",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "Tomorrow.io",
+     "live": true,
+     "minTemp": 20.99,
+     "maxTemp": 20.99,
+     "maxErr": -7,
+     "minErr": 3,
+     "desc": "Clear sky",
+     "vote": "clear",
+     "voteMatchesObserved": true
+    }
+   ],
+   "blendHigh": 25.3,
+   "blendLow": 17.5,
+   "blendHighErr": -2.7,
+   "blendLowErr": -0.5,
+   "blendNow": {
+    "key": "clear",
+    "label": "Clear sky",
+    "reason": "desc-clear-keyword",
+    "tempC": 20.9,
+    "windKph": 7,
+    "gustKph": 10.8,
+    "rainChance": 9.4
+   },
+   "blendMatchesObserved": true,
+   "obs": {
+    "reportsToday": 26,
+    "firstSast": "2026-09-23T00:00",
+    "lastSast": "2026-09-23T23:00",
+    "max": 28,
+    "min": 18,
+    "latest": {
+     "sast": "2026-09-23T23:00",
+     "utc": "2026-09-23T21:00:00.000Z",
+     "ageMin": 29,
+     "stale": false,
+     "tempC": 21,
+     "windKph": 9.3,
+     "gustKph": null,
+     "wx": "",
+     "wxNotObserved": false,
+     "cloudOkta": 0,
+     "category": "clear",
+     "windy": false,
+     "raw": "METAR FALE 232100Z 20005KT CAVOK 21/18 Q1021 NOSIG"
+    },
+    "precipReportedToday": false,
+    "unobservedWxReportsToday": 0
+   }
+  },
+  {
+   "icao": "FAPE",
+   "name": "Gqeberha",
+   "apiOk": true,
+   "apiAt": "2026-09-23T21:29:04.620Z",
+   "apiError": null,
+   "serverCache": "miss",
+   "computedAt": "2026-09-23T21:29:04.611Z",
+   "localHour": 23,
+   "sourcesLive": [
+    "Open-Meteo",
+    "WeatherAPI",
+    "Pirate Weather",
+    "MET Norway",
+    "Tomorrow.io"
+   ],
+   "sourcesFailed": [],
+   "sourceWeights": {
+    "Open-Meteo": 30,
+    "WeatherAPI": 22,
+    "Pirate Weather": 13,
+    "MET Norway": 20,
+    "Tomorrow.io": 15
+   },
+   "perSource": [
+    {
+     "name": "Open-Meteo",
+     "live": true,
+     "minTemp": 18.1,
+     "maxTemp": 28,
+     "maxErr": -1,
+     "minErr": 0.1,
+     "desc": "Overcast",
+     "vote": "cloudy",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "WeatherAPI",
+     "live": true,
+     "minTemp": 17.9,
+     "maxTemp": 20,
+     "maxErr": -9,
+     "minErr": -0.1,
+     "desc": "Patchy rain possible",
+     "vote": "rain",
+     "voteMatchesObserved": false
+    },
+    {
+     "name": "Pirate Weather",
+     "live": true,
+     "minTemp": 16.5,
+     "maxTemp": 25,
+     "maxErr": -4,
+     "minErr": -1.5,
+     "desc": "Cloudy",
+     "vote": "cloudy",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "MET Norway",
+     "live": true,
+     "minTemp": 17.4,
+     "maxTemp": 20.7,
+     "maxErr": -8.3,
+     "minErr": -0.6,
+     "desc": "Cloudy",
+     "vote": "cloudy",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "Tomorrow.io",
+     "live": true,
+     "minTemp": 18.95,
+     "maxTemp": 18.95,
+     "maxErr": -10,
+     "minErr": 0.9,
+     "desc": "Overcast",
+     "vote": "cloudy",
+     "voteMatchesObserved": true
+    }
+   ],
+   "blendHigh": 23.6,
+   "blendLow": 17.7,
+   "blendHighErr": -5.4,
+   "blendLowErr": -0.3,
+   "blendNow": {
+    "key": "cloudy",
+    "label": "Overcast",
+    "reason": "overcast",
+    "tempC": 18.3,
+    "windKph": 14.1,
+    "gustKph": 25.2,
+    "rainChance": 11.1
+   },
+   "blendMatchesObserved": true,
+   "obs": {
+    "reportsToday": 31,
+    "firstSast": "2026-09-23T00:00",
+    "lastSast": "2026-09-23T23:00",
+    "max": 29,
+    "min": 18,
+    "latest": {
+     "sast": "2026-09-23T23:00",
+     "utc": "2026-09-23T21:00:00.000Z",
+     "ageMin": 29,
+     "stale": false,
+     "tempC": 19,
+     "windKph": 9.3,
+     "gustKph": null,
+     "wx": "",
+     "wxNotObserved": false,
+     "cloudOkta": 8,
+     "category": "cloudy",
+     "windy": false,
+     "raw": "METAR FAPE 232100Z 24005KT 9999 OVC023 19/19 Q1024 NOSIG"
+    },
+    "precipReportedToday": true,
+    "unobservedWxReportsToday": 0
+   }
+  },
+  {
+   "icao": "FABL",
+   "name": "Bloemfontein",
+   "apiOk": true,
+   "apiAt": "2026-09-23T21:29:06.195Z",
+   "apiError": null,
+   "serverCache": "miss",
+   "computedAt": "2026-09-23T21:29:06.172Z",
+   "localHour": 23,
+   "sourcesLive": [
+    "Open-Meteo",
+    "WeatherAPI",
+    "Pirate Weather",
+    "MET Norway",
+    "Tomorrow.io"
+   ],
+   "sourcesFailed": [],
+   "sourceWeights": {
+    "Open-Meteo": 30,
+    "WeatherAPI": 22,
+    "Pirate Weather": 13,
+    "MET Norway": 20,
+    "Tomorrow.io": 15
+   },
+   "perSource": [
+    {
+     "name": "Open-Meteo",
+     "live": true,
+     "minTemp": 12.5,
+     "maxTemp": 24.3,
+     "maxErr": -0.7,
+     "minErr": -1.5,
+     "desc": "Overcast",
+     "vote": "cloudy",
+     "voteMatchesObserved": null
+    },
+    {
+     "name": "WeatherAPI",
+     "live": true,
+     "minTemp": 15.7,
+     "maxTemp": 25.9,
+     "maxErr": 0.9,
+     "minErr": 1.7,
+     "desc": "Patchy rain possible",
+     "vote": "rain",
+     "voteMatchesObserved": null
+    },
+    {
+     "name": "Pirate Weather",
+     "live": true,
+     "minTemp": 13.3,
+     "maxTemp": 22.7,
+     "maxErr": -2.3,
+     "minErr": -0.7,
+     "desc": "Partly cloudy",
+     "vote": "clear",
+     "voteMatchesObserved": null
+    },
+    {
+     "name": "MET Norway",
+     "live": true,
+     "minTemp": 10.2,
+     "maxTemp": 25.2,
+     "maxErr": 0.2,
+     "minErr": -3.8,
+     "desc": "Fog",
+     "vote": "fog",
+     "voteMatchesObserved": null
+    },
+    {
+     "name": "Tomorrow.io",
+     "live": true,
+     "minTemp": 12.71,
+     "maxTemp": 12.71,
+     "maxErr": -12.3,
+     "minErr": -1.3,
+     "desc": "Partly cloudy",
+     "vote": "clear",
+     "voteMatchesObserved": null
+    }
+   ],
+   "blendHigh": 22.3,
+   "blendLow": 13.7,
+   "blendHighErr": -2.7,
+   "blendLowErr": -0.3,
+   "blendNow": {
+    "key": "fog",
+    "label": "Partly cloudy",
+    "reason": "visibility-humidity-fog-detector",
+    "tempC": 13.6,
+    "windKph": 3.8,
+    "gustKph": 6.1,
+    "rainChance": 17.5
+   },
+   "blendMatchesObserved": null,
+   "obs": {
+    "reportsToday": 13,
+    "firstSast": "2026-09-23T05:00",
+    "lastSast": "2026-09-23T20:00",
+    "max": 25,
+    "min": 14,
+    "latest": {
+     "sast": "2026-09-23T20:00",
+     "utc": "2026-09-23T18:00:00.000Z",
+     "ageMin": 209,
+     "stale": true,
+     "tempC": 15,
+     "windKph": null,
+     "gustKph": null,
+     "wx": "",
+     "wxNotObserved": false,
+     "cloudOkta": 0,
+     "category": "clear",
+     "windy": false,
+     "raw": "METAR FABL 231800Z /////KT CAVOK 15/14 Q1027 NOSIG"
+    },
+    "precipReportedToday": true,
+    "unobservedWxReportsToday": 0
+   }
+  },
+  {
+   "icao": "FAGG",
+   "name": "George",
+   "apiOk": true,
+   "apiAt": "2026-09-23T21:29:07.757Z",
+   "apiError": null,
+   "serverCache": "miss",
+   "computedAt": "2026-09-23T21:29:07.978Z",
+   "localHour": 23,
+   "sourcesLive": [
+    "Open-Meteo",
+    "WeatherAPI",
+    "Pirate Weather",
+    "MET Norway",
+    "Tomorrow.io"
+   ],
+   "sourcesFailed": [],
+   "sourceWeights": {
+    "Open-Meteo": 30,
+    "WeatherAPI": 22,
+    "Pirate Weather": 13,
+    "MET Norway": 20,
+    "Tomorrow.io": 15
+   },
+   "perSource": [
+    {
+     "name": "Open-Meteo",
+     "live": true,
+     "minTemp": 16,
+     "maxTemp": 21.7,
+     "maxErr": -2.3,
+     "minErr": 0,
+     "desc": "Overcast",
+     "vote": "cloudy",
+     "voteMatchesObserved": false
+    },
+    {
+     "name": "WeatherAPI",
+     "live": true,
+     "minTemp": 16,
+     "maxTemp": 20.4,
+     "maxErr": -3.6,
+     "minErr": 0,
+     "desc": "Mist",
+     "vote": "fog",
+     "voteMatchesObserved": true
+    },
+    {
+     "name": "Pirate Weather",
+     "live": true,
+     "minTemp": 16.37,
+     "maxTemp": 22.17,
+     "maxErr": -1.8,
+     "minErr": 0.4,
+     "desc": "Cloudy",
+     "vote": "cloudy",
+     "voteMatchesObserved": false
+    },
+    {
+     "name": "MET Norway",
+     "live": true,
+     "minTemp": 15.4,
+     "maxTemp": 20.6,
+     "maxErr": -3.4,
+     "minErr": -0.6,
+     "desc": "Partly cloudy",
+     "vote": "clear",
+     "voteMatchesObserved": false
+    },
+    {
+     "name": "Tomorrow.io",
+     "live": true,
+     "minTemp": 16.34,
+     "maxTemp": 16.34,
+     "maxErr": -7.7,
+     "minErr": 0.3,
+     "desc": "Overcast",
+     "vote": "cloudy",
+     "voteMatchesObserved": false
+    }
+   ],
+   "blendHigh": 20.4,
+   "blendLow": 16.1,
+   "blendHighErr": -3.6,
+   "blendLowErr": 0.1,
+   "blendNow": {
+    "key": "cloudy",
+    "label": "Overcast",
+    "reason": "overcast",
+    "tempC": 16.3,
+    "windKph": 3.9,
+    "gustKph": 8.3,
+    "rainChance": 8.1
+   },
+   "blendMatchesObserved": false,
+   "obs": {
+    "reportsToday": 35,
+    "firstSast": "2026-09-23T00:00",
+    "lastSast": "2026-09-23T23:00",
+    "max": 24,
+    "min": 16,
+    "latest": {
+     "sast": "2026-09-23T23:00",
+     "utc": "2026-09-23T21:00:00.000Z",
+     "ageMin": 29,
+     "stale": false,
+     "tempC": 16,
+     "windKph": 1.9,
+     "gustKph": null,
+     "wx": "BR",
+     "wxNotObserved": false,
+     "cloudOkta": 6,
+     "category": "fog",
+     "windy": false,
+     "raw": "METAR FAGG 232100Z AUTO 13001KT 4800 BR SCT001/// BKN003/// 16/16 Q1024"
+    },
+    "precipReportedToday": true,
+    "unobservedWxReportsToday": 0
+   }
+  }
+ ]
+}
