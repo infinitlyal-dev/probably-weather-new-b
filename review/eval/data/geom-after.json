@@ -1,0 +1,62 @@
+{
+ "agreeBox": {
+  "top": 558.11,
+  "bottom": 583.11,
+  "height": 25,
+  "left": 24,
+  "width": 366
+ },
+ "agreeText": {
+  "top": 564.11,
+  "bottom": 577.11
+ },
+ "stats": {
+  "top": 585,
+  "bottom": 636.94,
+  "height": 51.94,
+  "left": 24,
+  "width": 238.66
+ },
+ "band": {
+  "top": 585,
+  "bottom": 636.94,
+  "height": 51.94,
+  "left": 24,
+  "width": 366
+ },
+ "hourly": {
+  "top": 585,
+  "bottom": 636.94,
+  "height": 51.94,
+  "left": 270.66,
+  "width": 119.34
+ },
+ "temp": {
+  "top": 464.78,
+  "bottom": 510.05,
+  "height": 45.27,
+  "left": 24,
+  "width": 366
+ },
+ "desc": {
+  "top": 513.69,
+  "bottom": 538.64,
+  "height": 24.95,
+  "left": 24,
+  "width": 366
+ },
+ "range": {
+  "top": 539.84,
+  "bottom": 559.84,
+  "height": 20,
+  "left": 24,
+  "width": 366
+ },
+ "nav": {
+  "top": 643,
+  "bottom": 715,
+  "height": 72,
+  "left": 0,
+  "width": 414
+ }
+}

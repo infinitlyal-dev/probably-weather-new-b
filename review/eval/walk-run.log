@@ -1,0 +1,92 @@
+phone-en: first weather 415 ms, banner=false, modal=-, errors 1, bad 0, notes 2
+phone-af: first weather 320 ms, banner=false, modal=-, errors 1, bad 0, notes 2
+phone-zu: first weather 524 ms, banner=false, modal=-, errors 1, bad 0, notes 2
+phone-xh: first weather 297 ms, banner=false, modal=-, errors 1, bad 0, notes 2
+phone-st: first weather 550 ms, banner=false, modal=-, errors 1, bad 0, notes 2
+desktop-en: first weather 3116 ms, banner=true, modal=-, errors 0, bad 0, notes 0
+desktop-af: first weather 288 ms, banner=true, modal=-, errors 0, bad 0, notes 0
+desktop-zu: first weather 318 ms, banner=true, modal=-, errors 0, bad 0, notes 0
+desktop-xh: first weather 288 ms, banner=true, modal=-, errors 0, bad 0, notes 0
+desktop-st: first weather 272 ms, banner=true, modal=-, errors 0, bad 0, notes 0
+[walk] 10 runs → review/eval/shots/walk/walk.json; 88 English strings shown on a non-English screen
+  af desktop home           text        #                   Skip to main content
+  af desktop home           text        #location           Strand, Western Cape
+  af desktop home           text        #languageBtn        Language
+  af phone   home           text        #                   No more Ja-No-Maybe weather. Just Probably.
+  af phone   home           text        #statsRow           Wind
+  af desktop language-menu  text        #languageMenu       English
+  af desktop language-menu  text        #languageMenu       Afrikaans
+  af desktop language-menu  text        #languageMenu       isiZulu
+  af desktop language-menu  text        #languageMenu       isiXhosa
+  af desktop language-menu  text        #languageMenu       Sesotho
+  af desktop hourly         text        #hourly-timeline    Temp
+  af desktop hourly         text        #hourly-timeline    Wind
+  af phone   hourly         text        #hourlyChart        Temp · °C
+  af phone   hourly         text        #hourlyChart        Wind · km/h
+  af phone   hourly         aria-label  #hourlyChart        Temp · °C
+  af phone   hourly         aria-label  #hourlyChart        Wind · km/h
+  af desktop week           text        #daily-cards        Sat
+  af desktop day-detail     text        #day-detail-content Temp
+  af desktop day-detail     text        #day-detail-content Wind
+  af desktop places         text        #searchResults      Durban, South Africa
+  af desktop places         text        #searchResults      Durban North, South Africa
+  af desktop places         text        #searchResults      Durbanville, South Africa
+  af desktop places         text        #searchResults      Durban Central, South Africa
+  af desktop places         text        #searchResults      Durbanville Hills, South Africa
+  af phone   settings       text        #settings-screen    mph
+  af desktop settings       text        #settings-screen    howzit@probablyweather.co.za
+  af desktop settings       text        #settings-screen    © 2026 Probably Weather ·
+  af phone   sources        text        #sourcesRangeChart  Temp · °C
+  af phone   sources        text        #sourcesRangeChart  Probably 16° – 20°
+  zu desktop home           text        #                   Skip to main content
+  zu desktop home           text        #location           Strand, Western Cape
+  zu desktop home           text        #languageBtn        Language
+  zu phone   home           text        #                   No more Ja-No-Maybe weather. Just Probably.
+  zu desktop language-menu  text        #languageMenu       English
+  zu desktop language-menu  text        #languageMenu       Afrikaans
+  zu desktop language-menu  text        #languageMenu       isiZulu
+  zu desktop language-menu  text        #languageMenu       isiXhosa
+  zu desktop language-menu  text        #languageMenu       Sesotho
+  zu desktop places         text        #searchResults      Durban, South Africa
+  zu desktop places         text        #searchResults      Durban North, South Africa
+  zu desktop places         text        #searchResults      Durbanville, South Africa
+  zu desktop places         text        #searchResults      Durban Central, South Africa
+  zu desktop places         text        #searchResults      Durbanville Hills, South Africa
+  zu phone   settings       text        #settings-screen    mph
+  zu desktop settings       text        #settings-screen    howzit@probablyweather.co.za
+  zu desktop settings       text        #settings-screen    © 2026 Probably Weather ·
+  zu phone   sources        text        #sourcesRangeChart  Probably 16° – 20°
+  xh desktop home           text        #                   Skip to main content
+  xh desktop home           text        #location           Strand, Western Cape
+  xh desktop home           text        #languageBtn        Language
+  xh phone   home           text        #                   No more Ja-No-Maybe weather. Just Probably.
+  xh desktop language-menu  text        #languageMenu       English
+  xh desktop language-menu  text        #languageMenu       Afrikaans
+  xh desktop language-menu  text        #languageMenu       isiZulu
+  xh desktop language-menu  text        #languageMenu       isiXhosa
+  xh desktop language-menu  text        #languageMenu       Sesotho
+  xh desktop hourly         text        #hourly-timeline    Temp
+  xh phone   hourly         text        #hourlyChart        Temp · °C
+  xh phone   hourly         aria-label  #hourlyChart        Temp · °C
+  xh desktop day-detail     text        #day-detail-content Temp
+  xh desktop places         text        #searchResults      Durban, South Africa
+  xh desktop places         text        #searchResults      Durban North, South Africa
+  xh desktop places         text        #searchResults      Durbanville, South Africa
+  xh desktop places         text        #searchResults      Durban Central, South Africa
+  xh desktop places         text        #searchResults      Durbanville Hills, South Africa
+  xh phone   settings       text        #settings-screen    mph
+  xh desktop settings       text        #settings-screen    howzit@probablyweather.co.za
+  xh desktop settings       text        #settings-screen    © 2026 Probably Weather ·
+  xh phone   sources        text        #sourcesRangeChart  Temp · °C
+  xh phone   sources        text        #sourcesRangeChart  Probably 16° – 20°
+  st desktop home           text        #                   Skip to main content
+  st desktop home           text        #location           Strand, Western Cape
+  st desktop home           text        #languageBtn        Language
+  st phone   home           text        #                   No more Ja-No-Maybe weather. Just Probably.
+  st desktop language-menu  text        #languageMenu       English
+  st desktop language-menu  text        #languageMenu       Afrikaans
+  st desktop language-menu  text        #languageMenu       isiZulu
+  st desktop language-menu  text        #languageMenu       isiXhosa
+  st desktop language-menu  text        #languageMenu       Sesotho
+  st desktop places         text        #searchResults      Durban, South Africa
+EXIT 0

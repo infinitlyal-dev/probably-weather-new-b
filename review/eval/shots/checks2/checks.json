@@ -1,0 +1,174 @@
+{
+ "site": "https://www.probablyweather.co.za",
+ "at": "2026-09-23T21:55:49.101Z",
+ "speed": [
+  {
+   "mode": "slow4g",
+   "dclMs": 4278,
+   "firstWeatherMs": 6338,
+   "photoMs": 6675,
+   "lcpMs": 4024,
+   "lcpElement": null,
+   "cls": 0.068,
+   "kb": 539,
+   "requests": 16,
+   "byType": {
+    "Document": 1,
+    "Script": 5,
+    "Stylesheet": 3,
+    "Image": 3,
+    "Font": 2,
+    "Fetch": 2
+   }
+  },
+  {
+   "mode": "slow4g",
+   "dclMs": 1420,
+   "firstWeatherMs": 1955,
+   "photoMs": 2471,
+   "lcpMs": 1220,
+   "lcpElement": null,
+   "cls": 0.087,
+   "kb": 539,
+   "requests": 16,
+   "byType": {
+    "Document": 1,
+    "Stylesheet": 3,
+    "Script": 5,
+    "Image": 3,
+    "Font": 2,
+    "Fetch": 2
+   }
+  },
+  {
+   "mode": "slow4g",
+   "dclMs": 1425,
+   "firstWeatherMs": 1945,
+   "photoMs": 2484,
+   "lcpMs": 1208,
+   "lcpElement": null,
+   "cls": 0.113,
+   "kb": 539,
+   "requests": 16,
+   "byType": {
+    "Document": 1,
+    "Stylesheet": 3,
+    "Script": 5,
+    "Image": 3,
+    "Font": 2,
+    "Fetch": 2
+   }
+  },
+  {
+   "mode": "unthrottled",
+   "dclMs": 135,
+   "firstWeatherMs": 223,
+   "photoMs": 261,
+   "lcpMs": 192,
+   "lcpElement": null,
+   "cls": 0,
+   "kb": 537,
+   "requests": 16,
+   "byType": {
+    "Document": 1,
+    "Stylesheet": 3,
+    "Image": 3,
+    "Script": 5,
+    "Font": 2,
+    "Fetch": 2
+   }
+  }
+ ],
+ "a11y": {
+  "home": {
+   "controls": 9,
+   "small44": [
+    "a.skip-link 179x36 \"Skip to main content\"",
+    "button#agreeLine 366x13 \"3/5 sources agree\""
+   ],
+   "small24": [
+    "button#agreeLine 366x13"
+   ],
+   "noName": [],
+   "running": [],
+   "canvasParticles": false,
+   "htmlLang": "en"
+  },
+  "hourly": {
+   "controls": 10,
+   "small44": [
+    "a.skip-link 179x36 \"Skip to main content\"",
+    "button#hourlyBack 38x38 \"Home\""
+   ],
+   "small24": [],
+   "noName": [],
+   "running": [],
+   "canvasParticles": false,
+   "htmlLang": "en"
+  },
+  "week": {
+   "controls": 14,
+   "small44": [
+    "a.skip-link 179x36 \"Skip to main content\"",
+    "button#weekBack 38x38 \"Home\""
+   ],
+   "small24": [],
+   "noName": [],
+   "running": [
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]"
+   ],
+   "canvasParticles": false,
+   "htmlLang": "en"
+  },
+  "places": {
+   "controls": 11,
+   "small44": [
+    "a.skip-link 179x36 \"Skip to main content\"",
+    "button#searchBack 38x38 \"Home\""
+   ],
+   "small24": [],
+   "noName": [],
+   "running": [
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]"
+   ],
+   "canvasParticles": false,
+   "htmlLang": "en"
+  },
+  "settings": {
+   "controls": 19,
+   "small44": [
+    "a.skip-link 179x36 \"Skip to main content\"",
+    "button#settingsBack 38x38 \"Home\"",
+    "a 204x17 \"howzit@probablyweather.co.za\"",
+    "a#privacyLink 79x16 \"Privacy Policy\""
+   ],
+   "small24": [
+    "a 204x17",
+    "a#privacyLink 79x16"
+   ],
+   "noName": [],
+   "running": [
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]",
+    "CSSTransition on [object SVGAnimatedString]"
+   ],
+   "canvasParticles": false,
+   "htmlLang": "en"
+  },
+  "text130": {
+   "clipped": [
+    "#statsRow: 2 element(s) cut off (e.g. stat-sub)"
+   ],
+   "pageScrollWidth": 414,
+   "viewport": 414,
+   "navBottom": 715
+  }
+ }
+}

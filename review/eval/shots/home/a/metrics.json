@@ -1,0 +1,293 @@
+{
+ "rain-day": {
+  "vh": 715,
+  "photo": {
+   "top": 0,
+   "bottom": 453,
+   "h": 453,
+   "w": 414
+  },
+  "caption": {
+   "top": 302,
+   "bottom": 461,
+   "h": 159,
+   "w": 414
+  },
+  "temp": {
+   "top": 463,
+   "bottom": 496,
+   "h": 33,
+   "w": 350
+  },
+  "tempPx": 32,
+  "stats": {
+   "top": 561,
+   "bottom": 637,
+   "h": 76,
+   "w": 228
+  },
+  "nav": {
+   "top": 643,
+   "bottom": 715,
+   "h": 72,
+   "w": 414
+  },
+  "src": "486fd16a92387ea8",
+  "display": "rain",
+  "scrollH": 715
+ },
+ "clear-day": {
+  "vh": 715,
+  "photo": {
+   "top": 0,
+   "bottom": 453,
+   "h": 453,
+   "w": 414
+  },
+  "caption": {
+   "top": 302,
+   "bottom": 461,
+   "h": 159,
+   "w": 414
+  },
+  "temp": {
+   "top": 463,
+   "bottom": 496,
+   "h": 33,
+   "w": 350
+  },
+  "tempPx": 32,
+  "stats": {
+   "top": 561,
+   "bottom": 637,
+   "h": 76,
+   "w": 228
+  },
+  "nav": {
+   "top": 643,
+   "bottom": 715,
+   "h": 72,
+   "w": 414
+  },
+  "src": "6d489d62f30f83f8",
+  "display": "clear",
+  "scrollH": 715
+ },
+ "night": {
+  "vh": 715,
+  "photo": {
+   "top": 0,
+   "bottom": 453,
+   "h": 453,
+   "w": 414
+  },
+  "caption": {
+   "top": 302,
+   "bottom": 461,
+   "h": 159,
+   "w": 414
+  },
+  "temp": {
+   "top": 463,
+   "bottom": 496,
+   "h": 33,
+   "w": 350
+  },
+  "tempPx": 32,
+  "stats": {
+   "top": 561,
+   "bottom": 637,
+   "h": 76,
+   "w": 228
+  },
+  "nav": {
+   "top": 643,
+   "bottom": 715,
+   "h": 72,
+   "w": 414
+  },
+  "src": "22e65e5fd954acd6",
+  "display": "clear",
+  "scrollH": 715
+ },
+ "fog": {
+  "vh": 715,
+  "photo": {
+   "top": 0,
+   "bottom": 453,
+   "h": 453,
+   "w": 414
+  },
+  "caption": {
+   "top": 334,
+   "bottom": 461,
+   "h": 127,
+   "w": 414
+  },
+  "temp": {
+   "top": 463,
+   "bottom": 496,
+   "h": 33,
+   "w": 350
+  },
+  "tempPx": 32,
+  "stats": {
+   "top": 561,
+   "bottom": 637,
+   "h": 76,
+   "w": 228
+  },
+  "nav": {
+   "top": 643,
+   "bottom": 715,
+   "h": 72,
+   "w": 414
+  },
+  "src": "f23e83d55db33bbc",
+  "display": "fog",
+  "scrollH": 715
+ },
+ "pale-photo": {
+  "vh": 715,
+  "photo": {
+   "top": 0,
+   "bottom": 453,
+   "h": 453,
+   "w": 414
+  },
+  "caption": {
+   "top": 334,
+   "bottom": 461,
+   "h": 127,
+   "w": 414
+  },
+  "temp": {
+   "top": 463,
+   "bottom": 496,
+   "h": 33,
+   "w": 350
+  },
+  "tempPx": 32,
+  "stats": {
+   "top": 561,
+   "bottom": 637,
+   "h": 76,
+   "w": 228
+  },
+  "nav": {
+   "top": 643,
+   "bottom": 715,
+   "h": 72,
+   "w": 414
+  },
+  "src": "08c461c74e9ce38b",
+  "display": "cold",
+  "scrollH": 715
+ },
+ "zu-longest": {
+  "vh": 715,
+  "photo": {
+   "top": 0,
+   "bottom": 411,
+   "h": 411,
+   "w": 414
+  },
+  "caption": {
+   "top": 201,
+   "bottom": 419,
+   "h": 218,
+   "w": 414
+  },
+  "temp": {
+   "top": 421,
+   "bottom": 454,
+   "h": 33,
+   "w": 350
+  },
+  "tempPx": 32,
+  "stats": {
+   "top": 548,
+   "bottom": 637,
+   "h": 89,
+   "w": 228
+  },
+  "nav": {
+   "top": 643,
+   "bottom": 715,
+   "h": 72,
+   "w": 414
+  },
+  "src": "5477e28c417fccb5",
+  "display": "cloudy",
+  "scrollH": 715
+ },
+ "first-visit": {
+  "vh": 715,
+  "photo": {
+   "top": 0,
+   "bottom": 453,
+   "h": 453,
+   "w": 414
+  },
+  "caption": {
+   "top": 302,
+   "bottom": 461,
+   "h": 159,
+   "w": 414
+  },
+  "temp": {
+   "top": 463,
+   "bottom": 496,
+   "h": 33,
+   "w": 350
+  },
+  "tempPx": 32,
+  "stats": {
+   "top": 561,
+   "bottom": 637,
+   "h": 76,
+   "w": 228
+  },
+  "nav": {
+   "top": 643,
+   "bottom": 715,
+   "h": 72,
+   "w": 414
+  },
+  "src": "6d489d62f30f83f8",
+  "display": "clear",
+  "scrollH": 715
+ },
+ "desktop": {
+  "vh": 900,
+  "photo": {
+   "top": 127,
+   "bottom": 757,
+   "h": 630,
+   "w": 460
+  },
+  "caption": {
+   "top": 646,
+   "bottom": 744,
+   "h": 97,
+   "w": 374
+  },
+  "temp": {
+   "top": 336,
+   "bottom": 503,
+   "h": 167,
+   "w": 413
+  },
+  "tempPx": 64,
+  "stats": null,
+  "nav": {
+   "top": 14,
+   "bottom": 70,
+   "h": 56,
+   "w": 590
+  },
+  "src": "6d489d62f30f83f8",
+  "display": "clear",
+  "scrollH": 900
+ }
+}

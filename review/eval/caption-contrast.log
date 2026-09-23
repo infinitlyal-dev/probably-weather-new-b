@@ -1,0 +1,10 @@
+scanned 293 photographs; proving the worst 8 per band (20 after the union), at 375x812.
+
+band     ink              worst photograph        best      worst
+header   brand            bc3c55df9e9a    17.60:1    7.52:1
+header   place name       bc3c55df9e9a    16.68:1    6.34:1
+caption  witty line       08c461c74e9c    18.25:1    8.58:1
+data     condition        f23e83d55db3    18.16:1    6.77:1
+
+[ink on the lit home] PASS — 80 measurements across 20 of the library's worst photographs; every ink clears 4.5:1. Frames: output/caption-contrast/
+EXIT 0
