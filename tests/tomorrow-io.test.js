@@ -454,3 +454,23 @@ describe('Tomorrow.io local-calendar daily aggregation', () => {
     expect(body.daily[1].highC).toBe(24);
   });
 });
+
+// Launch run (2026-09-25): meta.sourceNow / meta.sourceToday carry each live
+// source's own numbers for the hourly accuracy recorder (review/accuracy/live/).
+describe('meta.sourceNow / meta.sourceToday — each source its own numbers', () => {
+  it('lists every live source once, with its own current and today values', async () => {
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse({ error: 'rate-limited' }, 429)));
+    const { body } = await callHandler();
+    const live = body.meta.sources.filter((s) => s.ok).map((s) => s.name);
+    expect(body.meta.sourceNow.map((s) => s.name)).toEqual(live);
+    expect(body.meta.sourceToday.map((s) => s.name)).toEqual(live);
+    expect(live).not.toContain('Tomorrow.io'); // the 429 source is absent, not zero-filled
+    const om = body.meta.sourceNow.find((s) => s.name === 'Open-Meteo');
+    expect(om).toMatchObject({ tempC: 18, windKph: 10, gustKph: 12, humidity: 50, rainChance: 0, precipMm: 0 });
+    expect(body.meta.sourceToday.find((s) => s.name === 'Open-Meteo')).toEqual({ name: 'Open-Meteo', highC: 24, lowC: 12, rainChance: 0 });
+    // Pirate has no hourly slot: no current-hour rain, never a guessed one.
+    const pw = body.meta.sourceNow.find((s) => s.name === 'Pirate Weather');
+    expect(pw.rainChance).toBeNull();
+  });
+});

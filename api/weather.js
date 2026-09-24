@@ -2649,6 +2649,30 @@ export default async function handler(req, res) {
           'Tomorrow.io':    norms[4] ? Math.round(normW[4] * 100) : null,
         },
         sourceConditions: sourceConditionVotes,
+        // Launch run (2026-09-25): each live source's OWN current and today
+        // numbers, so the hourly accuracy recorder (review/accuracy/live/) scores
+        // the real sources instead of archive stand-ins. Copies only — nothing
+        // downstream reads them. rainChance/precipMm are that source's hourly
+        // value at localHour, the index now.rainChance reads from the blend.
+        sourceNow: activeNorms.map((n) => {
+          const h = hourlies.find((x) => x?.source === n.source);
+          return {
+            name: n.source,
+            tempC: n.nowTemp ?? null,
+            windKph: n.windKph ?? null,
+            gustKph: n.gustKph ?? null,
+            humidity: n.humidity ?? null,
+            desc: n.desc ?? null,
+            rainChance: isNum(h?.rains?.[localHour]) ? h.rains[localHour] : null,
+            precipMm: isNum(h?.precipMm?.[localHour]) ? h.precipMm[localHour] : null,
+          };
+        }),
+        sourceToday: activeNorms.map((n) => ({
+          name: n.source,
+          highC: n.todayHigh ?? null,
+          lowC: n.todayLow ?? null,
+          rainChance: n.todayRain ?? null,
+        })),
         // Item 2 audit fields. openMeteoEndpoint says which host was
         // CONFIGURED: 'customer' = the commercial reserved-server host
         // (OPEN_METEO_API_KEY present), 'free' = the public free host. The
