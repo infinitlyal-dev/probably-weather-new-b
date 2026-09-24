@@ -359,6 +359,56 @@ not changed.
 surface — the Hourly screen, the ad card's home — loses its yellow button on Home (the sheet has buttons
 into the full screens).
 
+## 4c. Photo check — before Al decides on D (24 Sept, Al's brief)
+
+A check and a sort, not a fix: no photo, line or code changed. Scripts and data in `review/eval/photo-check/`;
+Al's page `review/photo-check-for-al.html` (FINE / FIX / REDO, exports `photo-check-ruled.json`).
+Part 1 on main's build (e7d1260), part 2 on `design/home-options` (D as built). Both branches serve the same
+photos and lines: `rotation-check.mjs` on each build gave the same served table, photos, lines, blanks,
+English and repeats.
+
+**Part 1 — the rotation is whole** (`rotation-check.mjs` → `data/rotation.json`: the app's picker with the
+build's slot manifest, bench and moves included; `served-spot-check.mjs` → `data/served-spot-check.json`).
+- 14 display conditions × 4 weeks × 4 times × 7 weekdays = **1,568** spots, **294** files (293 photographs +
+  the default), 0 gaps, 0 dead files, 0 HTTP 404; every file decodes. Real app loads at 16 chosen spots: the
+  photo the table predicts, **16/16**.
+- Repeats inside one condition's week batch: known — the cloudy-night stand-in (4 photos for 7 nights) and
+  #79's bench (cold day Mon/Tue, weeks 1 and 3). **New**: cloudy dawn Tue + Fri (4f833d5c) and cloudy dusk
+  Mon + Tue (791e756e), every week — the stand-ins for the two photographs moved to cold (1a7797ca, the dog
+  f20554e0). A photo choice, so on Al's page (OK AS IS / FILL), not fixed. No photograph in two conditions in
+  one week.
+- Lines: 7 photographs have no own line (the season ruling's 7; parked with "toward 3 lines each"); 15 rely on
+  the general lines in some months or places because their own lines are season- or region-tagged. Every
+  photograph × place (8 region boxes + one outside) × month × language × low confidence on/off:
+  **5,927,040** contexts, 0 blank, English only in the two known safety lines (st fog, zu wind).
+- Folder fit: 49 lines use a weather word their folder lacks; each read — 0 contradict (negations, other
+  senses, contrast jokes). The six moved photographs' 23 lines fit their new folders.
+- Against the rulings: provenance cull 417 photo-line pairs from 173 photographs, 0 back; Afrikaans-page CUTs
+  26, 0 live; season CUTs 59, 0 live, the 3 kept live in their months; place lines 56 tagged → 45 live with
+  their tags, 11 gone with the season cut, 0 untagged; moves served only in their new folders; #79 out; Eskom
+  4 approved live, the season-cut one and the two CUT gone. Standing gates on main green. Nothing plainly
+  broken in code, so no fix commit and no Sol call.
+
+**Part 2 — D's joke on the photographs** (`d-cover-measure.mjs`, `d-worst.mjs`, `d-count.mjs`).
+- Every photograph (293, incl. the 22 without a crop mark) × every line that can show on it (own lines + the
+  3 longest general lines wherever it falls back) × 5 languages × 414×715, 360×688, 320×488: **14,697**
+  placements measured in place in D (fitter and rise rule run), 0 page scroll, 0 jokes under 19 px; in-place
+  boxes agree with full page loads 77/77, and with the 214 worst-case shots 214/214.
+- Judged by eye: every photograph's worst case at 414×715 (tallest joke; `data/d-judged-1.json`,
+  `d-judged-2.json`), a second look at the 63 judged clear whose joke reaches further on a smaller phone or in
+  the other placement (`d-judged-other.json`), and every worst-case card on the page (14 re-worded). Each
+  judgement marks the subject's band; a line counts when its text box overlaps the band by ≥ min(40 px, half
+  the band) on that screen — the same rule for every language and size.
+- At 414×715: the joke **sits on the subject of 120** photographs and touches it (faces clear) on 84 more; 89
+  clear. By language (sits on / sits on or touches): en 90 / 164, af 94 / 168, zu 116 / 199, xh 114 / 192,
+  st 118 / 202; en + af 96 / 171; all five 120 / 204 — **isiZulu, isiXhosa and Sesotho add 24** (33 counting
+  touches). Their longest lines usually take 21% of the screen, against 16% for en/af. 360×688: 187; 320×488:
+  190; any size 214 (10 only on a smaller phone).
+- EVAL §4b's count (subject centre from the crop anchor under the joke, each language's longest line, the same
+  line at the foot and in D): en 85 → 53, af 98 → 70, zu 158 → 144, xh 143 → 127, st 154 → 141 (§4b, one
+  app-picked English line per photograph: 73 → 28). The rise helps en/af; the long zu/xh/st lines are too tall
+  to rise clear, so they mostly stay at the foot.
+
 ---
 
 ## 5. Left open, and what only Al's phone can settle
