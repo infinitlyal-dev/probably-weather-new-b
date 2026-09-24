@@ -520,3 +520,35 @@ describe('PW_SOURCES_OFF — switch a source off without a release', () => {
     expect(body.meta.sources.filter((s) => s.ok).map((s) => s.name)).toContain('Tomorrow.io');
   });
 });
+
+// Launch run (2026-09-25, F1): from 18:00 local Tomorrow.io's "today" (now →
+// midnight) no longer holds the afternoon, so it stops voting on today's high.
+// Fixtures: OM / WA / Pirate day highs 24; MET 18 (strict window, gone after
+// noon); Tomorrow.io 20 for every remaining hour.
+describe("F1 — Tomorrow.io stops voting on today's high from 18:00", () => {
+  // Today's high with Tomorrow.io answering vs with it absent (no key), at one instant.
+  const highWithAndWithout = async (iso) => {
+    vi.setSystemTime(new Date(iso));
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(tomorrowIoClearPayload)));
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    const withTi = (await callHandler()).body;
+    delete process.env.TOMORROWIO_API_KEY;
+    const withoutTi = (await callHandler()).body;
+    return { withTi, withoutTi };
+  };
+
+  it("before 18:00 its now→midnight high (20 °C) still pulls today's high down", async () => {
+    for (const iso of ['2026-05-19T08:30:00Z', '2026-05-19T15:59:00Z']) {   // 10:30 and 17:59 SAST
+      const { withTi, withoutTi } = await highWithAndWithout(iso);
+      expect(withTi.daily[0].highC, iso).toBeLessThan(withoutTi.daily[0].highC);
+    }
+  });
+
+  it("from 18:00 today's high is exactly what it is without Tomorrow.io; its range still shows", async () => {
+    for (const iso of ['2026-05-19T16:00:00Z', '2026-05-19T16:30:00Z', '2026-05-19T21:30:00Z']) {   // 18:00, 18:30, 23:30 SAST
+      const { withTi, withoutTi } = await highWithAndWithout(iso);
+      expect(withTi.daily[0].highC, iso).toBe(withoutTi.daily[0].highC);
+      expect(withTi.meta.sourceRanges.find((r) => r.name === 'Tomorrow.io'), iso).toEqual({ name: 'Tomorrow.io', minTemp: 20, maxTemp: 20 });
+    }
+  });
+});

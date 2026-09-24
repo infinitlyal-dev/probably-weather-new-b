@@ -92,6 +92,12 @@ export const RAIN_POSSIBLE_NOW_MIN_PROB = 30; // % — the same line the stats r
 //   hours, versus 63% / 39% for the mean-only rule it replaces.
 export const WIND_NOW_MEAN_KPH = 25;
 export const WIND_NOW_GUST_KPH = 55;
+// Launch run (2026-09-25): the last local hour at which Tomorrow.io's
+// now → midnight "today high" still votes on daily[0].highC. Picked by a rule
+// stated before the sweep (review/accuracy/forecast-candidates.mjs): the
+// earliest cut-off after which every read hour is clearly better and no
+// airport-hour is clearly worse — 18:00, so it votes through 17:59.
+export const TODAY_HIGH_WINDOW_LAST_HOUR = 17;
 // Latency budget (prelaunch item 7, Astra P1-5). The client aborts at 10 s
 // (assets/app.js fetchProbable). Astra recorded a Johannesburg GET that
 // answered after 10,472 ms with Open-Meteo unavailable; the browser's timeout
@@ -1859,9 +1865,17 @@ export default async function handler(req, res) {
           }),
         };
 
+        // Launch run (2026-09-25, review/accuracy/FORECAST-PLAN-2026-09-25.md
+        // F1): Tomorrow.io's "today" is now → midnight, so from the evening its
+        // "high" is only the evening's temperature, and it kept its weight in
+        // today's high. From TODAY_HIGH_WINDOW_LAST_HOUR + 1 local it stops
+        // voting on today's high (it still shows its range on the Sources page).
+        // Backtest, 534 days × 6 airports: the day's high read 18:00–23:00,
+        // mean error 1.20–1.85 °C → 0.95 at every hour; no airport worse.
+        const tiLocalHour = Math.floor(((nowUtcMs / 1000) + utcOffsetSeconds) / 3600) % 24;
         dailies[4] = {
           source:   'Tomorrow.io',
-          highs:    [tiTodayHigh],
+          highs:    [tiLocalHour > TODAY_HIGH_WINDOW_LAST_HOUR ? null : tiTodayHigh],
           lows:     [tiTodayLow],
           rains:    [tiTodayRain],
           uvs:      [],
