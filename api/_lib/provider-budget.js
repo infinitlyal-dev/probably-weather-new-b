@@ -66,8 +66,15 @@ export function openMeteoBudget() {
 // to see (and would make the key's presence untestable).
 export const PROVIDER_BUDGETS = {
   get 'open-meteo'() { return openMeteoBudget(); },
-  'weatherapi': { perMin: 200, perDay: 30000 }, // WeatherAPI free: ~1M/month
-  'pirate':     { perMin: 20,  perDay: 600 },   // Pirate Weather free: 20k/MONTH — BINDING
+  // WeatherAPI free plan (weatherapi.com/pricing.aspx, read 2026-09-25): 100,000
+  // calls a MONTH — 3,200/day × 31 = 99,200 keeps a busy month inside it. (The
+  // old 30,000/day assumed ~1M/month; that is the $7 Starter plan's 3M.) On
+  // Starter, 30,000/day fits again.
+  'weatherapi': { perMin: 200, perDay: 3200 },
+  // Pirate Weather (pirate-weather.apiable.io plans, read 2026-09-25): 20,000
+  // calls/MONTH is the US$3 plan; the free plan is 10,000 and "for personal
+  // use", so an app with ads needs the $3 plan this ceiling is sized for.
+  'pirate':     { perMin: 20,  perDay: 600 },
   'met':        { perMin: 300 },                // MET Norway: no key; stay courteous
   // Tomorrow.io free (official): 3/second, 25/hour, 500/day.
   'tomorrow':   { perSecond: 3, perHour: 25, perDay: 500 },

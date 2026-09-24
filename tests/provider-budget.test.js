@@ -65,6 +65,14 @@ describe('PROVIDER_BUDGETS — Pirate is the binding monthly tier', () => {
   });
 });
 
+describe('PROVIDER_BUDGETS — WeatherAPI free plan is 100,000 calls a month', () => {
+  it('caps WeatherAPI per-day so a full month stays inside 100,000', () => {
+    // weatherapi.com/pricing.aspx (read 2026-09-25): Free = 100K calls/month.
+    expect(PROVIDER_BUDGETS.weatherapi.perDay).toBe(3200);
+    expect(PROVIDER_BUDGETS.weatherapi.perDay * 31).toBeLessThanOrEqual(100000);
+  });
+});
+
 describe('PROVIDER_BUDGETS — Tomorrow.io published free-tier windows', () => {
   it('S1 enforces Tomorrow.io at 3/second, 25/hour and 500/day', async () => {
     expect(PROVIDER_BUDGETS.tomorrow).toEqual({ perSecond: 3, perHour: 25, perDay: 500 });
