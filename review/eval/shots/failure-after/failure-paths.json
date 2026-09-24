@@ -1,0 +1,51 @@
+{
+ "at": "2026-09-23T22:27:54.408Z",
+ "rows": [
+  {
+   "name": "search-nonsense",
+   "stub": {
+    "geocode": "empty"
+   },
+   "errors": [],
+   "toasts": [],
+   "shots": [
+    "search-nonsense-search.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "The cloud is coming over the mountain like it pays rent here.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": [],
+    "results": 1,
+    "searchScreenText": "← Search Search, save, switch Use my location Save Search for a place Edit No places found. Check the spelling, or try a nearby town. SAVED PLACES No saved places yet. RECENT No recent searches yet."
+   }
+  },
+  {
+   "name": "search-rate-limited",
+   "stub": {
+    "geocode": "rate-limited"
+   },
+   "errors": [
+    "console: Failed to load resource: the server responded with a status of 429 (Too Many Requests)"
+   ],
+   "toasts": [],
+   "shots": [
+    "search-rate-limited-search.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "That cloud will be down on the streetlights before the walk is done.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": [],
+    "results": 1,
+    "searchScreenText": "← Search Search, save, switch Use my location Save Search for a place Edit Search isn't answering right now. Try again in a moment. SAVED PLACES No saved places yet. RECENT No recent searches yet."
+   }
+  }
+ ]
+}

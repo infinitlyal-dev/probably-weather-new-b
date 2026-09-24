@@ -1101,6 +1101,9 @@ describe('language leaks — switching language updates content already rendered
         return gate ? gate.then(() => value) : Promise.resolve(value);
       },
       setCachedWeather: noop, showCacheAge: noop,
+      // loadAndRender asks it whether a payload is the service worker's offline copy
+      // (2026-09-24); the stubbed fetches here never are.
+      swOfflineAgeMs: new WeakMap(),
       refreshSaveButtonState: noop,
     };
     // The REAL Weekly and Hourly renderers plus clearForecastPanels, sharing

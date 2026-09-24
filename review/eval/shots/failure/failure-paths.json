@@ -1,0 +1,262 @@
+{
+ "at": "2026-09-23T21:42:45.824Z",
+ "rows": [
+  {
+   "name": "baseline",
+   "stub": {},
+   "errors": [],
+   "toasts": [],
+   "shots": [
+    "baseline-home.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "The moon has hung out a do-not-disturb sign.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": []
+   }
+  },
+  {
+   "name": "location-denied",
+   "stub": {},
+   "errors": [],
+   "toasts": [
+    "Location permission needed. Tap the location icon in your browser's address bar to enable it."
+   ],
+   "shots": [
+    "location-denied-home.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "A sky like that keeps the heat in — the frost can stand down tonight.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": []
+   }
+  },
+  {
+   "name": "location-denied-ip-fails",
+   "stub": {
+    "locate": "fail"
+   },
+   "errors": [
+    "console: Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+   ],
+   "toasts": [
+    "Location permission needed. Tap the location icon in your browser's address bar to enable it."
+   ],
+   "shots": [
+    "location-denied-ip-fails-home.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "The clouds are winning tonight, about nine rounds to one.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": []
+   }
+  },
+  {
+   "name": "search-nonsense",
+   "stub": {
+    "geocode": "empty"
+   },
+   "errors": [],
+   "toasts": [],
+   "shots": [
+    "search-nonsense-search.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "A sky like that keeps the heat in — the frost can stand down tonight.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": [],
+    "results": 0,
+    "searchScreenText": "← Search Search, save, switch Use my location Save Search for a place Edit SAVED PLACES No saved places yet. RECENT No recent searches yet."
+   }
+  },
+  {
+   "name": "search-rate-limited",
+   "stub": {
+    "geocode": "rate-limited"
+   },
+   "errors": [
+    "console: Failed to load resource: the server responded with a status of 429 (Too Many Requests)"
+   ],
+   "toasts": [],
+   "shots": [
+    "search-rate-limited-search.png"
+   ],
+   "result": {
+    "place": "Strand",
+    "headline": "The moon is down to one small window and it is using all of it.",
+    "description": "Cloudy vibes.",
+    "temp": "Probably 17° / 21° 19°",
+    "agree": "3/5 sources agree",
+    "offline": null,
+    "retry": [],
+    "results": 0,
+    "searchScreenText": "← Search Search, save, switch Use my location Save Search for a place Edit SAVED PLACES No saved places yet. RECENT No recent searches yet."
+   }
+  },
+  {
+   "name": "all-providers-down",
+   "stub": {
+    "weather": "all-down"
+   },
+   "errors": [
+    "console: Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    "console: Load failed: Error: API error\n    at vn (http://127.0.0.1:58632/assets/app.js:1:175929)",
+    "console: Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+    "console: Load failed: Error: API error\n    at vn (http://127.0.0.1:58632/assets/app.js:1:175929)"
+   ],
+   "toasts": [],
+   "shots": [
+    "all-providers-down-home.png"
+   ],
+   "result": {
+    "place": "My Location",
+    "headline": "Error",
+    "description": "Couldn't fetch weather right now.",
+    "temp": "--°",
+    "agree": "",
+    "offline": null,
+    "retry": []
+   }
+  },
+  {
+   "name": "api-rate-limited",
+   "stub": {
+    "weather": "rate-limited"
+   },
+   "errors": [
+    "console: Failed to load resource: the server responded with a status of 429 (Too Many Requests)",
+    "console: Load failed: Error: API error\n    at vn (http://127.0.0.1:58632/assets/app.js:1:175929)",
+    "console: Failed to load resource: the server responded with a status of 429 (Too Many Requests)",
+    "console: Load failed: Error: API error\n    at vn (http://127.0.0.1:58632/assets/app.js:1:175929)"
+   ],
+   "toasts": [],
+   "shots": [
+    "api-rate-limited-home.png"
+   ],
+   "result": {
+    "place": "My Location",
+    "headline": "Error",
+    "description": "Couldn't fetch weather right now.",
+    "temp": "--°",
+    "agree": "",
+    "offline": null,
+    "retry": []
+   }
+  },
+  {
+   "name": "slow-provider-12s",
+   "stub": {
+    "weatherDelayMs": 12000
+   },
+   "errors": [
+    "console: Load failed: AbortError: signal is aborted without reason\n    at http://127.0.0.1:58632/assets/app.js:1:175825"
+   ],
+   "toasts": [
+    "Weather lookup taking too long. Try again."
+   ],
+   "shots": [
+    "slow-provider-12s-at-3s.png",
+    "slow-provider-12s-at-11s.png",
+    "slow-provider-12s-at-14s.png"
+   ],
+   "result": {
+    "at3": {
+     "place": "My Location",
+     "headline": "Loading…",
+     "description": "—",
+     "temp": "--°",
+     "agree": "",
+     "offline": null,
+     "retry": []
+    },
+    "at11": {
+     "place": "My Location",
+     "headline": "Error",
+     "description": "Couldn't fetch weather right now.",
+     "temp": "--°",
+     "agree": "",
+     "offline": null,
+     "retry": []
+    },
+    "at14": {
+     "place": "My Location",
+     "headline": "Error",
+     "description": "Couldn't fetch weather right now.",
+     "temp": "--°",
+     "agree": "",
+     "offline": null,
+     "retry": []
+    }
+   }
+  },
+  {
+   "name": "one-provider-down",
+   "stub": {
+    "weather": "one-down"
+   },
+   "errors": [],
+   "toasts": [],
+   "shots": [
+    "one-provider-down-home.png",
+    "one-provider-down-sources.png"
+   ],
+   "result": {
+    "home": {
+     "place": "Strand",
+     "headline": "A sky like that keeps the heat in — the frost can stand down tonight.",
+     "description": "Cloudy vibes.",
+     "temp": "Probably 17° / 21° 19°",
+     "agree": "3/5 sources agree",
+     "offline": null,
+     "retry": []
+    },
+    "sources": "← Sources We ask five weather services and weigh their answers — some count for more than others — so no single one gets to guess wrong about the rain on its own. A service that doesn't answer, or has hit its limit, sits that forecast out. And if a forecast was made for your area in the last few minutes, you get that one rather than a fresh one. Sources in this forecast: 4/5 Sitting this one out: WeatherAPI TEMP · °C Open-Meteo 16° – 21° Pirate Weather 16° – 19° MET Norway 16° – 19° Tomorrow.io 19° – 19° 15° 22° Probably 16° – 20° Open-Meteo 16° – 21° Pirate Weather 16° – 19° MET Norway 16° – "
+   }
+  },
+  {
+   "name": "offline-after-first-visit",
+   "stub": {},
+   "errors": [],
+   "toasts": [],
+   "shots": [
+    "offline-after-first-visit-home.png",
+    "offline-after-first-visit-week.png"
+   ],
+   "result": {
+    "swActive": "no service worker became ready within 8 s",
+    "home": {
+     "offline": null,
+     "retry": []
+    }
+   }
+  },
+  {
+   "name": "offline-first-ever-visit",
+   "stub": {},
+   "errors": [],
+   "toasts": [],
+   "shots": [
+    "offline-first-ever-visit-home.png"
+   ],
+   "result": {
+    "navigated": "page.goto: net::ERR_INTERNET_DISCONNECTED at http://127.0.0.1:58632/"
+   }
+  }
+ ]
+}

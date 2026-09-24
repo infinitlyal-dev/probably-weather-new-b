@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch eval — for Al</title>
+<style>
+:root { --bg:#f6f4ee; --fg:#1d1b18; --muted:#6b665c; --line:#dcd7cb; --card:#fffdf8; --accent:#1f5f8b; --use:#2e7d4f; --no:#a5452b; --gold:#b07d00; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#15140f; --fg:#eeebe3; --muted:#a8a296; --line:#35322b; --card:#1f1d18; --accent:#7fb6dd; --use:#7ccf9c; --no:#e08a6e; --gold:#ffd35a; } }
+* { box-sizing: border-box; }
+body { margin:0; padding:20px 16px 90px; background:var(--bg); color:var(--fg); font:15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width:1180px; margin:0 auto; }
+h1 { font-size:1.55rem; margin:0 0 4px; } h2 { font-size:1.2rem; margin:34px 0 10px; } h3 { font-size:1rem; margin:0 0 6px; }
+p.lede, .muted { color:var(--muted); } p.lede { margin:0 0 16px; max-width:78ch; }
+ul.plain { margin:6px 0 0; padding-left:20px; } ul.plain li { margin:5px 0; max-width:92ch; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:12px 0; }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:14px; } @media (max-width:820px) { .two { grid-template-columns:1fr; } }
+.tag { display:inline-block; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
+/* directions grid */
+.dirs { overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); border-radius:10px; background:var(--card); }
+table.grid { border-collapse:collapse; min-width:980px; width:100%; table-layout:fixed; }
+table.grid col.state { width:96px; }
+table.grid th, table.grid td { border-bottom:1px solid var(--line); padding:10px; vertical-align:top; text-align:left; }
+table.grid th { position:sticky; top:0; background:var(--card); z-index:1; }
+table.grid td.state { width:92px; font-weight:600; font-size:.88rem; color:var(--muted); }
+table.grid img { width:100%; max-width:230px; display:block; border-radius:8px; border:1px solid var(--line); cursor:zoom-in; }
+.dirhead h3 { margin-bottom:2px; } .dirhead .idea { font-size:.88rem; color:var(--muted); min-height:3.6em; }
+.facts { font-size:.8rem; color:var(--muted); margin:6px 0; }
+.act { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; align-items:flex-start; }
+.act button { font:inherit; font-size:.88rem; padding:5px 12px; border-radius:6px; border:1px solid var(--line); background:transparent; color:inherit; cursor:pointer; }
+.act button.on.USE, .act button.on.OK, .act button.on.BUILD { background:var(--use); border-color:var(--use); color:#fff; }
+.act button.on.NO, .act button.on.FIX, .act button.on.NOTNOW { background:var(--no); border-color:var(--no); color:#fff; }
+textarea { width:100%; min-height:34px; font:inherit; font-size:.88rem; border:1px solid var(--line); border-radius:6px; padding:6px; background:transparent; color:inherit; margin-top:6px; }
+.pick { border-left:4px solid var(--gold); }
+.row { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--line); border-radius:8px; padding:10px 14px; margin:8px 0; }
+.row.OK, .row.BUILD { border-left-color:var(--use); } .row.FIX, .row.NOTNOW { border-left-color:var(--no); }
+.en { font-weight:600; } .af { margin-top:2px; }
+.bar { position:fixed; left:0; right:0; bottom:0; background:var(--card); border-top:1px solid var(--line); padding:10px 16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; z-index:5; }
+.bar button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
+.bar button.ghost { background:transparent; color:var(--accent); }
+#out { display:none; width:100%; min-height:100px; margin-top:8px; }
+.zoom { position:fixed; inset:0; background:rgba(0,0,0,.82); display:none; align-items:center; justify-content:center; z-index:10; cursor:zoom-out; }
+.zoom img { max-height:94vh; max-width:94vw; border-radius:10px; }
+code { font-size:.85em; }
+</style>
+</head>
+<body>
+<main>
+<h1>Probably Weather — the launch check</h1>
+<p class="lede">23–24 Sept. Everything below is on the computer, not live. Production is unchanged (ec7ae52) until you say ship.
+Full findings with every proof: <code>review/eval/EVAL.md</code>. Nothing here needs you to read code.</p>
+
+<div class="two">
+  <div class="card">
+    <h3>Fixed (15 changes to the app, waiting for your ship word)</h3>
+    <ul class="plain">
+      <li><b>Your two exports are in.</b> The 4 Afrikaans lines. The season lines: 3 kept on their months, 59 gone from every language. The 7 photos left with no line of their own each show a weather line instead — checked in every slot they sit in, in English, Afrikaans and isiZulu: 60 of 60, never blank.</li>
+      <li>One of the 59 was "Nature's doing its own load shedding." Your season CUT is the later word, so four Eskom lines are left.</li>
+      <li><b>Your phone.</b> On an iPhone in Chrome, Install used to say "Chrome can't install apps — open Safari". That stopped being true in 2023. It now shows the three steps with Chrome's own Share button.</li>
+      <li>Searching for a place that doesn't exist used to show nothing at all. It now says "No places found". When the search service is down it says so.</li>
+      <li>Offline, the app showed an old forecast as if it were new. It now says "Using cached data".</li>
+      <li>isiZulu, isiXhosa, Sesotho: "Install app" and the other English on their screens is gone; every Sesotho string outside the jokes is in the South African spelling you ruled (41 of them); the Sesotho storm preview on WhatsApp said "the ogre is coming" — it now says a storm is coming.</li>
+      <li>Small ones: "wil hê"; a security header two days overdue removed; the "3/5 sources agree" link easier to tap; your iPhone 11 added to the screen-fit test.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Left, and what I found but did not touch</h3>
+    <ul class="plain">
+      <li><b>Weather truth, right now.</b> At 23:28 on 23 Sept the app matched the airport at 2 of 5 cities. Johannesburg showed rain under a clear sky (the radar source over-reaching). By 00:02 it was right again.</li>
+      <li><b>Does the blend beat every single source?</b> On rain hour by hour and on wind: yes. On the day's low: no — one source is 3 °C too warm and drags it. Weights are yours to rule; nothing changed.</li>
+      <li><b>Home: nothing changed on the live app.</b> Three directions below, next to today's.</li>
+      <li>Speed on a slow phone connection: first weather 1.9 s once connected, 6.3 s on a cold first visit.</li>
+      <li><b>Only your phone can settle:</b> in Chrome, Share → Add to Home Screen appears and the icon opens like an app; that Home fits your screen with Chrome's bars showing (I estimated them); and, once you pick one, how the new Home reads in your hand.</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Home — three directions next to today's</h2>
+<p class="lede">What makes Home feel off, in plain words: the numbers under the photo are fine print (labels 8 px, lines 11 px on your phone in Chrome); the photo still sits in a small rounded frame; long jokes climb over half the picture. Every direction fixes those three and keeps everything you ruled: the joke on the photo in white, the number stepped back, the header on the photo, the sources line, the one stats pill and the yellow Hourly button, no hourly strip, no ad. Same photo and same joke in every row — only the layout changes. Tap a screen to see it big.</p>
+<div class="card pick"><b>My pick: B.</b> It goes furthest in the direction you already chose — Home is the meme: the photo gets 19 % more of the screen and the joke gets bigger — and it touches none of your rulings. C answers "too dark, too moody" best, but the gold "Probably" can't stay gold on cream, so it turns deep ochre by day. A is the safe floor: today's Home, fixed.<br>
+<span class="muted">Said once, not asked: the one layout all five leading weather apps share is the temperature big, on the picture. Your 14 Aug ruling keeps the number stepped back, and none of these directions changes that.</span></div>
+
+<div class="dirs"><table class="grid" id="grid"></table></div>
+
+<h2>Wording for you to check — English and Afrikaans</h2>
+<p class="lede">New lines the fixes needed (not jokes). They are in those 15 changes. isiZulu, isiXhosa and Sesotho went through the language skills and the checker, not you. OK keeps a line; FIX lets you write it.</p>
+<div id="words"></div>
+
+<h2>After launch — which of these should I build?</h2>
+<p class="lede">Found in the check, none built. BUILD or NOT NOW.</p>
+<div id="improve"></div>
+
+<textarea id="out" readonly></textarea>
+</main>
+
+<div class="bar"><span id="count" class="muted"></span><button id="export">Export eval-ruled.json</button><button id="copy" class="ghost">Copy JSON</button></div>
+<div class="zoom" id="zoom"><img alt=""></div>
+
+<script>
+var KEY = 'pw-eval-for-al-2026-09-24';
+var SHOTS = 'eval/shots/home/';
+var STATES = [
+  ['rain-day', 'Rain'], ['clear-day', 'Clear day'], ['night', 'Night'], ['fog', 'Fog'],
+  ['pale-photo', 'Pale photo'], ['zu-longest', 'Longest isiZulu joke'], ['first-visit', 'First visit (install banner)']
+];
+var DIRS = [
+  { id: 'current', name: 'Today', idea: 'What is live now, on your phone size.', facts: '' },
+  { id: 'a', name: 'A — Tidy', idea: "Today's layout, fixed: readable numbers, photo edge to edge, \"Probably 24°\" on one line.", facts: 'Photo +12% · effort small · touches no ruling' },
+  { id: 'b', name: 'B — More meme', idea: 'The photo and the joke take the screen; the numbers fold into two tidy rows.', facts: 'Photo +19% · bigger joke · effort small · touches no ruling' },
+  { id: 'c', name: 'C — Paper', idea: 'The joke stays on the photo; the numbers sit on a warm printed card; a dark card at night.', facts: 'Photo +9% · effort medium · gold "Probably" becomes deep ochre by day' }
+];
+var WORDS = [
+  { k: 'search.noResults', en: 'No places found. Check the spelling, or try a nearby town.', af: "Geen plek gevind nie. Kyk na die spelling, of probeer 'n dorp naby.", where: 'Search, when a place is not found' },
+  { k: 'search.searchFailed', en: "Search isn't answering right now. Try again in a moment.", af: "Die soektog antwoord nie nou nie. Probeer weer oor 'n oomblik.", where: 'Search, when the search service is down' },
+  { k: 'misc.skipToContent', en: 'Skip to main content', af: 'Slaan oor na die hoofinhoud', where: 'Read out by screen readers; shown to keyboard users' },
+  { k: 'install.iosChromeStep1', en: "Tap Chrome's Share button, next to the address bar", af: 'Tik op Chrome se Share-knoppie, langs die adresbalk', where: 'Install steps on an iPhone in Chrome (step 1 of 3)' }
+];
+var IMPROVE = [
+  { k: 'type-floor', t: 'No text under 11 px anywhere on a phone.' },
+  { k: 'hourly-scroll', t: 'Hourly scrolls as one page (today the table is a box cut mid-row), headers lined up with their columns.' },
+  { k: 'week-compact', t: 'Week shows all 7 days on one screen (today 5½ fit).' },
+  { k: 'day-late', t: "Late at night, today's day screen shows something useful instead of one row and an empty screen." },
+  { k: 'error-retry', t: 'When the weather cannot load: a plain sentence and a Try again button (today: "Error" in handwriting, nothing to tap).' },
+  { k: 'desktop-tomorrow', t: 'On a computer at night, say "Tomorrow" over the big numbers (they are already tomorrow\'s).' },
+  { k: 'place-language', t: 'Place names in your language: Wes-Kaap, Suid-Afrika, iNtshonalanga Kapa…' },
+  { k: 'android-sheet', t: "Android's bigger install sheet: screenshots and a description in the app's settings file." }
+];
+var state = {}; try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+state.home = state.home || {}; state.words = state.words || {}; state.improve = state.improve || {};
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} count(); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function btn(group, key, val, label) { return '<button type="button" data-g="' + group + '" data-k="' + key + '" data-v="' + val + '" class="' + val + '">' + label + '</button>'; }
+
+var g = document.getElementById('grid'), h = '<colgroup><col class="state"><col><col><col><col></colgroup><tr><th></th>';
+DIRS.forEach(function (d) {
+  h += '<th class="dirhead"><h3>' + esc(d.name) + '</h3><div class="idea">' + esc(d.idea) + '</div>' + (d.facts ? '<div class="facts">' + esc(d.facts) + '</div>' : '');
+  if (d.id !== 'current') h += '<div class="act">' + btn('home', d.id, 'USE', 'USE') + btn('home', d.id, 'NO', 'NO') + '</div><textarea data-note="home" data-k="' + d.id + '" placeholder="Note (optional)"></textarea>';
+  h += '</th>';
+});
+h += '</tr>';
+STATES.forEach(function (s) {
+  h += '<tr><td class="state">' + esc(s[1]) + '</td>';
+  DIRS.forEach(function (d) { h += '<td><img loading="lazy" src="' + SHOTS + d.id + '/' + s[0] + '.png" alt="' + esc(d.name + ', ' + s[1]) + '"></td>'; });
+  h += '</tr>';
+});
+g.innerHTML = h;
+
+document.getElementById('words').innerHTML = WORDS.map(function (w) {
+  return '<div class="row" data-row="words" data-k="' + w.k + '"><div class="tag">' + esc(w.where) + '</div><div class="en">' + esc(w.en) + '</div><div class="af">' + esc(w.af) + '</div>' +
+    '<div class="act">' + btn('words', w.k, 'OK', 'OK') + btn('words', w.k, 'FIX', 'FIX') + '</div><textarea data-note="words" data-k="' + w.k + '" placeholder="Your wording (English and/or Afrikaans)"></textarea></div>';
+}).join('');
+document.getElementById('improve').innerHTML = IMPROVE.map(function (w) {
+  return '<div class="row" data-row="improve" data-k="' + w.k + '"><div>' + esc(w.t) + '</div><div class="act">' + btn('improve', w.k, 'BUILD', 'BUILD') + btn('improve', w.k, 'NOTNOW', 'NOT NOW') + '</div><textarea data-note="improve" data-k="' + w.k + '" placeholder="Note (optional)"></textarea></div>';
+}).join('');
+
+function paint() {
+  document.querySelectorAll('.act button').forEach(function (b) {
+    var cur = (state[b.dataset.g][b.dataset.k] || {}).verdict;
+    b.classList.toggle('on', cur === b.dataset.v);
+  });
+  document.querySelectorAll('[data-row]').forEach(function (r) {
+    var v = (state[r.dataset.row][r.dataset.k] || {}).verdict; r.className = 'row' + (v ? ' ' + v : '');
+  });
+  document.querySelectorAll('textarea[data-note]').forEach(function (t) { t.value = (state[t.dataset.note][t.dataset.k] || {}).note || ''; });
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.act button'); if (!b) return;
+  var o = state[b.dataset.g][b.dataset.k] = state[b.dataset.g][b.dataset.k] || {};
+  o.verdict = o.verdict === b.dataset.v ? null : b.dataset.v; save(); paint();
+});
+document.addEventListener('input', function (e) {
+  var t = e.target; if (!t.matches('textarea[data-note]')) return;
+  var o = state[t.dataset.note][t.dataset.k] = state[t.dataset.note][t.dataset.k] || {}; o.note = t.value; save();
+});
+function count() {
+  var n = ['a', 'b', 'c'].filter(function (k) { return (state.home[k] || {}).verdict; }).length
+    + WORDS.filter(function (w) { return (state.words[w.k] || {}).verdict; }).length
+    + IMPROVE.filter(function (w) { return (state.improve[w.k] || {}).verdict; }).length;
+  document.getElementById('count').textContent = n + ' of ' + (3 + WORDS.length + IMPROVE.length) + ' marked';
+}
+function exportJson() {
+  return JSON.stringify({
+    generated: new Date().toISOString(), ruledBy: 'Al, launch eval page (review/eval-for-al.html)',
+    home: ['a', 'b', 'c'].map(function (k) { var o = state.home[k] || {}; return { direction: k, verdict: o.verdict || null, note: o.note || '' }; }),
+    words: WORDS.map(function (w) { var o = state.words[w.k] || {}; return { key: w.k, en: w.en, af: w.af, verdict: o.verdict || null, text: o.note || '' }; }),
+    improvements: IMPROVE.map(function (w) { var o = state.improve[w.k] || {}; return { key: w.k, item: w.t, verdict: o.verdict || null, note: o.note || '' }; })
+  }, null, 1);
+}
+document.getElementById('export').addEventListener('click', function () {
+  var j = exportJson(), out = document.getElementById('out'); out.style.display = 'block'; out.value = j;
+  try { var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([j], { type: 'application/json' })); a.download = 'eval-ruled.json'; a.click(); } catch (e) {}
+});
+document.getElementById('copy').addEventListener('click', function () {
+  var j = exportJson(), out = document.getElementById('out'); out.style.display = 'block'; out.value = j; out.select();
+  try { navigator.clipboard.writeText(j); } catch (e) { try { document.execCommand('copy'); } catch (e2) {} }
+});
+var z = document.getElementById('zoom');
+document.addEventListener('click', function (e) { var i = e.target.closest('table.grid img'); if (i) { z.querySelector('img').src = i.src; z.style.display = 'flex'; } });
+z.addEventListener('click', function () { z.style.display = 'none'; });
+paint(); count();
+</script>
+</body>
+</html>
