@@ -32,3 +32,7 @@ benchmarks/traces/
 
 # Accuracy-harness per-hour dumps (review/accuracy/run-eval.mjs regenerates them in ~45 s)
 review/accuracy/results/*-hours.csv
+
+# Live accuracy recorder data (review/accuracy/live/README.md) — hourly, ~2 MB/day, stays on disk
+review/accuracy/live/*.jsonl
+review/accuracy/live/recorder.log
