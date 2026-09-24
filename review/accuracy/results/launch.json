@@ -1,0 +1,940 @@
+{
+ "tag": "launch",
+ "generatedAt": "2026-09-24T22:31:02.813Z",
+ "range": {
+  "from": "2026-06-24",
+  "to": "2026-09-22"
+ },
+ "obsWindy": {
+  "sustainedKph": 30,
+  "gustKph": 45
+ },
+ "calm": {
+  "sustainedKph": 20,
+  "gustKph": 30
+ },
+ "coverage": {
+  "FACT": {
+   "name": "Cape Town",
+   "evaluated": 2164,
+   "noObs": 20,
+   "hours": 2184
+  },
+  "FAOR": {
+   "name": "Johannesburg",
+   "evaluated": 2151,
+   "noObs": 33,
+   "hours": 2184
+  },
+  "FALE": {
+   "name": "Durban",
+   "evaluated": 2154,
+   "noObs": 30,
+   "hours": 2184
+  },
+  "FAPE": {
+   "name": "Gqeberha",
+   "evaluated": 2087,
+   "noObs": 97,
+   "hours": 2184
+  },
+  "FABL": {
+   "name": "Bloemfontein",
+   "evaluated": 2039,
+   "noObs": 145,
+   "hours": 2184
+  },
+  "FAGG": {
+   "name": "George",
+   "evaluated": 2145,
+   "noObs": 39,
+   "hours": 2184
+  }
+ },
+ "cities": {
+  "FACT": {
+   "name": "Cape Town",
+   "display": {
+    "hours": 2164,
+    "saidRain": 68,
+    "falseRainStrict": 18,
+    "falseRainStrictPct": 26.5,
+    "falseRainTol": 6,
+    "falseRainTolPct": 8.8,
+    "obsPrecipHours": 103,
+    "missedWet": 16,
+    "missedWetPct": 15.5,
+    "missedRainStrict": 53,
+    "missedRainStrictPct": 51.5,
+    "saidPossible": 268,
+    "possibleWetPct": 28,
+    "obsWindyHours": 219,
+    "windyServedSky": 60,
+    "windyServedSkyPct": 27.4,
+    "windyServedNotWindOrRain": 101,
+    "windyServedNotWindOrRainPct": 46.1,
+    "saidWind": 123,
+    "falseWind": 1,
+    "falseWindPct": 0.8,
+    "keys": {
+     "rain-possible": 268,
+     "cloudy": 510,
+     "fog": 316,
+     "clear": 595,
+     "partly-cloudy": 92,
+     "wind": 123,
+     "rain": 68,
+     "cold": 5,
+     "cold-clear": 168,
+     "uv": 17,
+     "heat": 2
+    }
+   },
+   "server": {
+    "hours": 2164,
+    "saidRain": 68,
+    "falseRainStrict": 18,
+    "falseRainStrictPct": 26.5,
+    "falseRainTol": 6,
+    "falseRainTolPct": 8.8,
+    "obsPrecipHours": 103,
+    "missedWet": 25,
+    "missedWetPct": 24.3,
+    "missedRainStrict": 53,
+    "missedRainStrictPct": 51.5,
+    "saidPossible": 116,
+    "possibleWetPct": 46.6,
+    "obsWindyHours": 219,
+    "windyServedSky": 65,
+    "windyServedSkyPct": 29.7,
+    "windyServedNotWindOrRain": 101,
+    "windyServedNotWindOrRainPct": 46.1,
+    "saidWind": 123,
+    "falseWind": 1,
+    "falseWindPct": 0.8,
+    "keys": {
+     "rain-possible": 116,
+     "cloudy": 560,
+     "fog": 339,
+     "clear": 659,
+     "partly-cloudy": 107,
+     "wind": 123,
+     "rain": 68,
+     "cold": 5,
+     "cold-clear": 168,
+     "uv": 17,
+     "heat": 2
+    }
+   },
+   "windBias": {
+    "medianObsOverForecastMean": 1.75,
+    "medianObsGustOverForecastGust": 0.88,
+    "obsSustainedP50": 14.8,
+    "obsSustainedP90": 31.5,
+    "obsSustainedP95": 35.2,
+    "hoursWithGustGroup": 40,
+    "obsGustP50": 59.3,
+    "obsGustP90": 68.5,
+    "hoursBeaufort5plus": 287,
+    "hoursSustained30": 219,
+    "hoursGust45": 38
+   }
+  },
+  "FAOR": {
+   "name": "Johannesburg",
+   "display": {
+    "hours": 2151,
+    "saidRain": 62,
+    "falseRainStrict": 18,
+    "falseRainStrictPct": 29,
+    "falseRainTol": 8,
+    "falseRainTolPct": 12.9,
+    "obsPrecipHours": 67,
+    "missedWet": 4,
+    "missedWetPct": 6,
+    "missedRainStrict": 15,
+    "missedRainStrictPct": 22.4,
+    "saidPossible": 153,
+    "possibleWetPct": 18.3,
+    "obsWindyHours": 90,
+    "windyServedSky": 20,
+    "windyServedSkyPct": 22.2,
+    "windyServedNotWindOrRain": 54,
+    "windyServedNotWindOrRainPct": 60,
+    "saidWind": 22,
+    "falseWind": 0,
+    "falseWindPct": 0,
+    "keys": {
+     "clear": 1137,
+     "cold-clear": 351,
+     "partly-cloudy": 119,
+     "cloudy": 215,
+     "fog": 8,
+     "uv": 68,
+     "rain-possible": 153,
+     "rain": 62,
+     "thunder": 11,
+     "cold": 5,
+     "wind": 22
+    }
+   },
+   "server": {
+    "hours": 2151,
+    "saidRain": 62,
+    "falseRainStrict": 18,
+    "falseRainStrictPct": 29,
+    "falseRainTol": 8,
+    "falseRainTolPct": 12.9,
+    "obsPrecipHours": 67,
+    "missedWet": 6,
+    "missedWetPct": 9,
+    "missedRainStrict": 15,
+    "missedRainStrictPct": 22.4,
+    "saidPossible": 56,
+    "possibleWetPct": 41.1,
+    "obsWindyHours": 90,
+    "windyServedSky": 44,
+    "windyServedSkyPct": 48.9,
+    "windyServedNotWindOrRain": 54,
+    "windyServedNotWindOrRainPct": 60,
+    "saidWind": 22,
+    "falseWind": 0,
+    "falseWindPct": 0,
+    "keys": {
+     "clear": 1224,
+     "cold-clear": 351,
+     "partly-cloudy": 124,
+     "cloudy": 216,
+     "fog": 8,
+     "uv": 72,
+     "rain-possible": 56,
+     "rain": 62,
+     "thunder": 11,
+     "cold": 5,
+     "wind": 22
+    }
+   },
+   "windBias": {
+    "medianObsOverForecastMean": 1.61,
+    "medianObsGustOverForecastGust": 1.22,
+    "obsSustainedP50": 13,
+    "obsSustainedP90": 24.1,
+    "obsSustainedP95": 29.6,
+    "hoursWithGustGroup": 22,
+    "obsGustP50": 42.6,
+    "obsGustP90": 59.3,
+    "hoursBeaufort5plus": 116,
+    "hoursSustained30": 88,
+    "hoursGust45": 10
+   }
+  },
+  "FALE": {
+   "name": "Durban",
+   "display": {
+    "hours": 2154,
+    "saidRain": 119,
+    "falseRainStrict": 17,
+    "falseRainStrictPct": 14.3,
+    "falseRainTol": 7,
+    "falseRainTolPct": 5.9,
+    "obsPrecipHours": 174,
+    "missedWet": 21,
+    "missedWetPct": 12.1,
+    "missedRainStrict": 70,
+    "missedRainStrictPct": 40.2,
+    "saidPossible": 375,
+    "possibleWetPct": 21.1,
+    "obsWindyHours": 72,
+    "windyServedSky": 6,
+    "windyServedSkyPct": 8.3,
+    "windyServedNotWindOrRain": 10,
+    "windyServedNotWindOrRainPct": 13.9,
+    "saidWind": 108,
+    "falseWind": 4,
+    "falseWindPct": 3.7,
+    "keys": {
+     "clear": 976,
+     "fog": 67,
+     "partly-cloudy": 152,
+     "cloudy": 325,
+     "wind": 108,
+     "rain-possible": 375,
+     "thunder": 6,
+     "rain": 119,
+     "heat": 13,
+     "uv": 13
+    }
+   },
+   "server": {
+    "hours": 2154,
+    "saidRain": 119,
+    "falseRainStrict": 17,
+    "falseRainStrictPct": 14.3,
+    "falseRainTol": 7,
+    "falseRainTolPct": 5.9,
+    "obsPrecipHours": 174,
+    "missedWet": 26,
+    "missedWetPct": 14.9,
+    "missedRainStrict": 70,
+    "missedRainStrictPct": 40.2,
+    "saidPossible": 161,
+    "possibleWetPct": 39.8,
+    "obsWindyHours": 72,
+    "windyServedSky": 7,
+    "windyServedSkyPct": 9.7,
+    "windyServedNotWindOrRain": 10,
+    "windyServedNotWindOrRainPct": 13.9,
+    "saidWind": 108,
+    "falseWind": 4,
+    "falseWindPct": 3.7,
+    "keys": {
+     "clear": 1099,
+     "fog": 73,
+     "partly-cloudy": 181,
+     "wind": 108,
+     "rain-possible": 161,
+     "cloudy": 378,
+     "thunder": 6,
+     "rain": 119,
+     "heat": 13,
+     "uv": 16
+    }
+   },
+   "windBias": {
+    "medianObsOverForecastMean": 0.99,
+    "medianObsGustOverForecastGust": 0.94,
+    "obsSustainedP50": 9.3,
+    "obsSustainedP90": 24.1,
+    "obsSustainedP95": 27.8,
+    "hoursWithGustGroup": 39,
+    "obsGustP50": 50,
+    "obsGustP90": 61.1,
+    "hoursBeaufort5plus": 95,
+    "hoursSustained30": 60,
+    "hoursGust45": 32
+   }
+  },
+  "FAPE": {
+   "name": "Gqeberha",
+   "display": {
+    "hours": 2087,
+    "saidRain": 119,
+    "falseRainStrict": 34,
+    "falseRainStrictPct": 28.6,
+    "falseRainTol": 14,
+    "falseRainTolPct": 11.8,
+    "obsPrecipHours": 190,
+    "missedWet": 22,
+    "missedWetPct": 11.6,
+    "missedRainStrict": 101,
+    "missedRainStrictPct": 53.2,
+    "saidPossible": 427,
+    "possibleWetPct": 34.4,
+    "obsWindyHours": 150,
+    "windyServedSky": 26,
+    "windyServedSkyPct": 17.3,
+    "windyServedNotWindOrRain": 47,
+    "windyServedNotWindOrRainPct": 31.3,
+    "saidWind": 148,
+    "falseWind": 4,
+    "falseWindPct": 2.7,
+    "keys": {
+     "cloudy": 450,
+     "clear": 634,
+     "partly-cloudy": 144,
+     "rain-possible": 427,
+     "rain": 119,
+     "wind": 148,
+     "cold-clear": 60,
+     "fog": 91,
+     "hail": 2,
+     "thunder": 2,
+     "uv": 6,
+     "heat": 4
+    }
+   },
+   "server": {
+    "hours": 2087,
+    "saidRain": 119,
+    "falseRainStrict": 34,
+    "falseRainStrictPct": 28.6,
+    "falseRainTol": 14,
+    "falseRainTolPct": 11.8,
+    "obsPrecipHours": 190,
+    "missedWet": 42,
+    "missedWetPct": 22.1,
+    "missedRainStrict": 101,
+    "missedRainStrictPct": 53.2,
+    "saidPossible": 176,
+    "possibleWetPct": 59.1,
+    "obsWindyHours": 150,
+    "windyServedSky": 33,
+    "windyServedSkyPct": 22,
+    "windyServedNotWindOrRain": 47,
+    "windyServedNotWindOrRainPct": 31.3,
+    "saidWind": 148,
+    "falseWind": 4,
+    "falseWindPct": 2.7,
+    "keys": {
+     "clear": 774,
+     "partly-cloudy": 181,
+     "rain-possible": 176,
+     "rain": 119,
+     "cloudy": 509,
+     "wind": 148,
+     "cold-clear": 60,
+     "fog": 106,
+     "hail": 2,
+     "thunder": 2,
+     "uv": 6,
+     "heat": 4
+    }
+   },
+   "windBias": {
+    "medianObsOverForecastMean": 1.19,
+    "medianObsGustOverForecastGust": 0.85,
+    "obsSustainedP50": 13,
+    "obsSustainedP90": 27.8,
+    "obsSustainedP95": 33.3,
+    "hoursWithGustGroup": 49,
+    "obsGustP50": 57.4,
+    "obsGustP90": 79.6,
+    "hoursBeaufort5plus": 192,
+    "hoursSustained30": 147,
+    "hoursGust45": 45
+   }
+  },
+  "FABL": {
+   "name": "Bloemfontein",
+   "display": {
+    "hours": 2039,
+    "saidRain": 67,
+    "falseRainStrict": 44,
+    "falseRainStrictPct": 65.7,
+    "falseRainTol": 37,
+    "falseRainTolPct": 55.2,
+    "obsPrecipHours": 51,
+    "missedWet": 7,
+    "missedWetPct": 13.7,
+    "missedRainStrict": 26,
+    "missedRainStrictPct": 51,
+    "saidPossible": 220,
+    "possibleWetPct": 15.5,
+    "obsWindyHours": 33,
+    "windyServedSky": 1,
+    "windyServedSkyPct": 3,
+    "windyServedNotWindOrRain": 6,
+    "windyServedNotWindOrRainPct": 18.2,
+    "saidWind": 41,
+    "falseWind": 3,
+    "falseWindPct": 7.3,
+    "keys": {
+     "clear": 918,
+     "fog": 6,
+     "cold-clear": 231,
+     "partly-cloudy": 143,
+     "cloudy": 340,
+     "rain-possible": 220,
+     "wind": 41,
+     "rain": 67,
+     "cold": 23,
+     "uv": 38,
+     "thunder": 12
+    }
+   },
+   "server": {
+    "hours": 2039,
+    "saidRain": 67,
+    "falseRainStrict": 44,
+    "falseRainStrictPct": 65.7,
+    "falseRainTol": 37,
+    "falseRainTolPct": 55.2,
+    "obsPrecipHours": 51,
+    "missedWet": 15,
+    "missedWetPct": 29.4,
+    "missedRainStrict": 26,
+    "missedRainStrictPct": 51,
+    "saidPossible": 95,
+    "possibleWetPct": 17.9,
+    "obsWindyHours": 33,
+    "windyServedSky": 2,
+    "windyServedSkyPct": 6.1,
+    "windyServedNotWindOrRain": 6,
+    "windyServedNotWindOrRainPct": 18.2,
+    "saidWind": 41,
+    "falseWind": 3,
+    "falseWindPct": 7.3,
+    "keys": {
+     "clear": 1044,
+     "fog": 6,
+     "cold-clear": 231,
+     "partly-cloudy": 147,
+     "cloudy": 335,
+     "wind": 41,
+     "rain-possible": 95,
+     "rain": 67,
+     "cold": 23,
+     "uv": 38,
+     "thunder": 12
+    }
+   },
+   "windBias": {
+    "medianObsOverForecastMean": 1.02,
+    "medianObsGustOverForecastGust": 0.96,
+    "obsSustainedP50": 5.6,
+    "obsSustainedP90": 18.5,
+    "obsSustainedP95": 24.1,
+    "hoursWithGustGroup": 11,
+    "obsGustP50": 55.6,
+    "obsGustP90": 61.1,
+    "hoursBeaufort5plus": 44,
+    "hoursSustained30": 33,
+    "hoursGust45": 7
+   }
+  },
+  "FAGG": {
+   "name": "George",
+   "display": {
+    "hours": 2145,
+    "saidRain": 117,
+    "falseRainStrict": 29,
+    "falseRainStrictPct": 24.8,
+    "falseRainTol": 7,
+    "falseRainTolPct": 6,
+    "obsPrecipHours": 215,
+    "missedWet": 41,
+    "missedWetPct": 19.1,
+    "missedRainStrict": 121,
+    "missedRainStrictPct": 56.3,
+    "saidPossible": 389,
+    "possibleWetPct": 35.2,
+    "obsWindyHours": 33,
+    "windyServedSky": 8,
+    "windyServedSkyPct": 24.2,
+    "windyServedNotWindOrRain": 10,
+    "windyServedNotWindOrRainPct": 30.3,
+    "saidWind": 38,
+    "falseWind": 4,
+    "falseWindPct": 10.5,
+    "keys": {
+     "cloudy": 531,
+     "partly-cloudy": 142,
+     "fog": 129,
+     "clear": 468,
+     "cold-clear": 318,
+     "rain-possible": 389,
+     "wind": 38,
+     "rain": 117,
+     "thunder": 7,
+     "cold": 1,
+     "uv": 5
+    }
+   },
+   "server": {
+    "hours": 2145,
+    "saidRain": 117,
+    "falseRainStrict": 29,
+    "falseRainStrictPct": 24.8,
+    "falseRainTol": 7,
+    "falseRainTolPct": 6,
+    "obsPrecipHours": 215,
+    "missedWet": 61,
+    "missedWetPct": 28.4,
+    "missedRainStrict": 121,
+    "missedRainStrictPct": 56.3,
+    "saidPossible": 162,
+    "possibleWetPct": 58.6,
+    "obsWindyHours": 33,
+    "windyServedSky": 8,
+    "windyServedSkyPct": 24.2,
+    "windyServedNotWindOrRain": 10,
+    "windyServedNotWindOrRainPct": 30.3,
+    "saidWind": 38,
+    "falseWind": 4,
+    "falseWindPct": 10.5,
+    "keys": {
+     "cloudy": 583,
+     "partly-cloudy": 168,
+     "fog": 168,
+     "clear": 577,
+     "cold-clear": 318,
+     "rain-possible": 162,
+     "wind": 38,
+     "rain": 117,
+     "thunder": 7,
+     "cold": 1,
+     "uv": 6
+    }
+   },
+   "windBias": {
+    "medianObsOverForecastMean": 1.17,
+    "medianObsGustOverForecastGust": 0.81,
+    "obsSustainedP50": 7.4,
+    "obsSustainedP90": 18.5,
+    "obsSustainedP95": 24.1,
+    "hoursWithGustGroup": 15,
+    "obsGustP50": 48.2,
+    "obsGustP90": 55.6,
+    "hoursBeaufort5plus": 45,
+    "hoursSustained30": 29,
+    "hoursGust45": 11
+   }
+  }
+ },
+ "all": {
+  "display": {
+   "hours": 12740,
+   "saidRain": 552,
+   "falseRainStrict": 160,
+   "falseRainStrictPct": 29,
+   "falseRainTol": 79,
+   "falseRainTolPct": 14.3,
+   "obsPrecipHours": 800,
+   "missedWet": 111,
+   "missedWetPct": 13.9,
+   "missedRainStrict": 386,
+   "missedRainStrictPct": 48.3,
+   "saidPossible": 1832,
+   "possibleWetPct": 27.3,
+   "obsWindyHours": 597,
+   "windyServedSky": 121,
+   "windyServedSkyPct": 20.3,
+   "windyServedNotWindOrRain": 228,
+   "windyServedNotWindOrRainPct": 38.2,
+   "saidWind": 480,
+   "falseWind": 16,
+   "falseWindPct": 3.3,
+   "keys": {
+    "rain-possible": 1832,
+    "cloudy": 2371,
+    "fog": 617,
+    "clear": 4728,
+    "partly-cloudy": 792,
+    "wind": 480,
+    "rain": 552,
+    "cold": 34,
+    "cold-clear": 1128,
+    "uv": 147,
+    "heat": 19,
+    "thunder": 38,
+    "hail": 2
+   }
+  },
+  "server": {
+   "hours": 12740,
+   "saidRain": 552,
+   "falseRainStrict": 160,
+   "falseRainStrictPct": 29,
+   "falseRainTol": 79,
+   "falseRainTolPct": 14.3,
+   "obsPrecipHours": 800,
+   "missedWet": 175,
+   "missedWetPct": 21.9,
+   "missedRainStrict": 386,
+   "missedRainStrictPct": 48.3,
+   "saidPossible": 766,
+   "possibleWetPct": 46.6,
+   "obsWindyHours": 597,
+   "windyServedSky": 159,
+   "windyServedSkyPct": 26.6,
+   "windyServedNotWindOrRain": 228,
+   "windyServedNotWindOrRainPct": 38.2,
+   "saidWind": 480,
+   "falseWind": 16,
+   "falseWindPct": 3.3,
+   "keys": {
+    "rain-possible": 766,
+    "cloudy": 2581,
+    "fog": 700,
+    "clear": 5377,
+    "partly-cloudy": 908,
+    "wind": 480,
+    "rain": 552,
+    "cold": 34,
+    "cold-clear": 1128,
+    "uv": 155,
+    "heat": 19,
+    "thunder": 38,
+    "hail": 2
+   }
+  },
+  "windBias": {
+   "medianObsOverForecastMean": 1.27,
+   "medianObsGustOverForecastGust": 0.91,
+   "obsSustainedP50": 11.1,
+   "obsSustainedP90": 24.1,
+   "obsSustainedP95": 29.6,
+   "hoursWithGustGroup": 176,
+   "obsGustP50": 55.6,
+   "obsGustP90": 70.4,
+   "hoursBeaufort5plus": 779,
+   "hoursSustained30": 576,
+   "hoursGust45": 143
+  },
+  "windSweepTop": [
+   {
+    "gustField": "fcGust",
+    "meanKph": 26,
+    "gustKph": 52,
+    "tp": 426,
+    "fp": 335,
+    "fn": 171,
+    "precision": 56,
+    "recall": 71.4,
+    "f1": 62.7
+   },
+   {
+    "gustField": "fcGust3",
+    "meanKph": 26,
+    "gustKph": 52,
+    "tp": 426,
+    "fp": 335,
+    "fn": 171,
+    "precision": 56,
+    "recall": 71.4,
+    "f1": 62.7
+   },
+   {
+    "gustField": "fcGustAny",
+    "meanKph": 26,
+    "gustKph": 52,
+    "tp": 434,
+    "fp": 358,
+    "fn": 163,
+    "precision": 54.8,
+    "recall": 72.7,
+    "f1": 62.5
+   },
+   {
+    "gustField": "fcGustAny",
+    "meanKph": 26,
+    "gustKph": 55,
+    "tp": 382,
+    "fp": 247,
+    "fn": 215,
+    "precision": 60.7,
+    "recall": 64,
+    "f1": 62.3
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": 26,
+    "gustKph": 55,
+    "tp": 373,
+    "fp": 229,
+    "fn": 224,
+    "precision": 62,
+    "recall": 62.5,
+    "f1": 62.2
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": 28,
+    "gustKph": 52,
+    "tp": 414,
+    "fp": 321,
+    "fn": 183,
+    "precision": 56.3,
+    "recall": 69.3,
+    "f1": 62.2
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": 30,
+    "gustKph": 52,
+    "tp": 413,
+    "fp": 318,
+    "fn": 184,
+    "precision": 56.5,
+    "recall": 69.2,
+    "f1": 62.2
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": 32,
+    "gustKph": 52,
+    "tp": 412,
+    "fp": 316,
+    "fn": 185,
+    "precision": 56.6,
+    "recall": 69,
+    "f1": 62.2
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": 35,
+    "gustKph": 52,
+    "tp": 412,
+    "fp": 316,
+    "fn": 185,
+    "precision": 56.6,
+    "recall": 69,
+    "f1": 62.2
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": 40,
+    "gustKph": 52,
+    "tp": 412,
+    "fp": 316,
+    "fn": 185,
+    "precision": 56.6,
+    "recall": 69,
+    "f1": 62.2
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": null,
+    "gustKph": 52,
+    "tp": 412,
+    "fp": 316,
+    "fn": 185,
+    "precision": 56.6,
+    "recall": 69,
+    "f1": 62.2
+   },
+   {
+    "gustField": "fcGust3",
+    "meanKph": 26,
+    "gustKph": 55,
+    "tp": 373,
+    "fp": 229,
+    "fn": 224,
+    "precision": 62,
+    "recall": 62.5,
+    "f1": 62.2
+   }
+  ],
+  "dailyCalibration": {
+   "days": 535,
+   "byBin": [
+    {
+     "bin": "0–20%",
+     "days": 375,
+     "rainedPct": 6.4
+    },
+    {
+     "bin": "20–30%",
+     "days": 15,
+     "rainedPct": 33.3
+    },
+    {
+     "bin": "30–40%",
+     "days": 18,
+     "rainedPct": 66.7
+    },
+    {
+     "bin": "40–50%",
+     "days": 10,
+     "rainedPct": 70
+    },
+    {
+     "bin": "50–60%",
+     "days": 19,
+     "rainedPct": 57.9
+    },
+    {
+     "bin": "60–80%",
+     "days": 45,
+     "rainedPct": 84.4
+    },
+    {
+     "bin": "80–100%",
+     "days": 53,
+     "rainedPct": 96.2
+    }
+   ],
+   "byKey": {
+    "rain": {
+     "days": 138,
+     "rained": 110,
+     "rainedPct": 79.7
+    },
+    "clear": {
+     "days": 156,
+     "rained": 7,
+     "rainedPct": 4.5
+    },
+    "partly-cloudy": {
+     "days": 30,
+     "rained": 4,
+     "rainedPct": 13.3
+    },
+    "cloudy": {
+     "days": 98,
+     "rained": 11,
+     "rainedPct": 11.2
+    },
+    "cold-clear": {
+     "days": 22,
+     "rained": 0,
+     "rainedPct": 0
+    },
+    "rain-possible": {
+     "days": 4,
+     "rained": 1,
+     "rainedPct": 25
+    },
+    "fog": {
+     "days": 1,
+     "rained": 1,
+     "rainedPct": 100
+    },
+    "uv": {
+     "days": 61,
+     "rained": 1,
+     "rainedPct": 1.6
+    },
+    "heat": {
+     "days": 4,
+     "rained": 0,
+     "rainedPct": 0
+    },
+    "cold": {
+     "days": 2,
+     "rained": 2,
+     "rainedPct": 100
+    },
+    "thunder": {
+     "days": 11,
+     "rained": 9,
+     "rainedPct": 81.8
+    },
+    "wind": {
+     "days": 7,
+     "rained": 1,
+     "rainedPct": 14.3
+    },
+    "hail": {
+     "days": 1,
+     "rained": 1,
+     "rainedPct": 100
+    }
+   }
+  },
+  "windSweepCurrentRule": [
+   {
+    "gustField": "fcGust",
+    "meanKph": 25,
+    "gustKph": null,
+    "tp": 234,
+    "fp": 136,
+    "fn": 363,
+    "precision": 63.2,
+    "recall": 39.2,
+    "f1": 48.4
+   },
+   {
+    "gustField": "fcGust",
+    "meanKph": 30,
+    "gustKph": null,
+    "tp": 82,
+    "fp": 17,
+    "fn": 515,
+    "precision": 82.8,
+    "recall": 13.7,
+    "f1": 23.6
+   }
+  ]
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "generatedAt": "2026-09-24T22:57:00.204Z",
+ "files": [
+  "2026-09-24.jsonl",
+  "2026-09-25.jsonl"
+ ],
+ "records": 12,
+ "failedReads": 0,
+ "scoredNow": 8,
+ "agreeNow": {
+  "n": 8,
+  "ok": 2
+ },
+ "byCity": {
+  "FACT": {
+   "n": 2,
+   "ok": 0
+  },
+  "FAOR": {
+   "n": 2,
+   "ok": 2
+  },
+  "FALE": {
+   "n": 2,
+   "ok": 0
+  },
+  "FAGG": {
+   "n": 2,
+   "ok": 0
+  }
+ },
+ "falseRain": {
+  "served": 0,
+  "dry": 0
+ },
+ "radar": {
+  "overrides": 0,
+  "nextHourBumps": 0
+ },
+ "calibration": [
+  {
+   "bin": "0–9",
+   "n": 4,
+   "rained": 0
+  }
+ ],
+ "mismatches": [
+  "2026-09-24T21:57 FACT served fog (visibility-humidity-fog-detector) · airport cloudy",
+  "2026-09-24T21:57 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-09-24T21:57 FAGG served cloudy (overcast) · airport fog",
+  "2026-09-24T22:10 FACT served fog (visibility-humidity-fog-detector) · airport cloudy",
+  "2026-09-24T22:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-09-24T22:10 FAGG served cloudy (overcast) · airport fog"
+ ]
+}

@@ -1,0 +1,41 @@
+# Forecast plan — launch run, 25 September 2026
+
+Rule for this run (Al): a forecast change ships only if the numbers show it is clearly better; a maybe waits until after launch.
+"Clearly better" here = the day-block bootstrap 95% interval of (candidate − current) lies wholly on the better side, pooled over the six airports, with no airport clearly worse unless named.
+
+Evidence: the backtest (`blend-vs-sources.mjs`, 534 days × 6 airports, 24 Jun → 22 Sep 2026, METAR truth, stand-ins for WeatherAPI / Pirate / MET / Tomorrow.io), the resolver replay (`run-eval.mjs --tag launch`, 12,740 hours), `forecast-candidates.mjs` (new), `sa-weather-check.mjs` (new), the live recorder (from 24 Sept 23:58) and the eval's live samples.
+
+## What each eval finding turned out to be
+
+| finding | diagnosis | decision |
+|---|---|---|
+| Blend loses the overnight low to Open-Meteo alone | Pirate's GFS-family stand-in reads nights warm (+3.0 °C pooled, +8.0 at Bloemfontein). Dropping Pirate from the low: pooled MAE 1.67 → 1.46 °C (clear); Bloemfontein 2.94 → 1.54; frost nights (min ≤ 2 °C) Bloemfontein 3.5 → 1.6 (47 nights), Johannesburg 1.7 → 0.9 (5 nights). **But Johannesburg on all nights 1.05 → 1.35 (clearly worse)**, and the one real sample (23 Sept, 6 airports, no frost) shows the real Pirate's low was not warm (errors +2.4 … −2.2). Open-Meteo alone: pooled 1.39, but worse at Johannesburg and Gqeberha. | **WAIT.** A trade (better for the Free State and frost, worse for Joburg's ordinary nights) on stand-in evidence. From the next release the recorder stores every source's own low (`meta.sourceToday`). Frost will not be back before ~May 2027 and the recorder only runs while the PC is awake: the forecast side needs only an evening read (21:00–23:00), and the observed low can be fetched afterwards from the IEM METAR archive, so a sleeping PC loses no frost night. Queued for real data, not picked from these 52 nights: drop Pirate only when the blended low is ≤ 2 °C. |
+| Evening high is 0.8 °C low | Structural, not the model: after noon Tomorrow.io's "today" is now → midnight, so by evening its "high" is the evening temperature, and it keeps its weight. Sweep of the cut-off hour (13–19) over every read hour 12:00–23:00, picked by a rule stated before the extended run (Fable, review 2): the earliest cut-off after which every read hour is clearly better pooled and no airport-hour is clearly worse. That is **18:00**: pooled MAE 18:00–23:00 **1.20/1.38/1.53/1.65/1.76/1.85 → 0.95 at every hour**, no airport-hour worse; before 18:00 identical. 17:00 left Durban@17 clearly worse; 13–16 are clearly worse at 13:00–16:00, when Tomorrow.io's window still holds the afternoon. | **SHIP F1.** |
+| Midnight rollover | The eval's "now.rainChance 60% at hour 0" (Johannesburg, 00:02) was not a skew: that payload was fresh and anchored on the right date (`daily[0].sunrise` 24 Sept); the 60 is Tomorrow.io's next-hour radar bump (intensity > 0.5 mm/h), which leaves no override record. Tonight's 00:10 reads at all six airports were anchored correctly. The real rollover path is the Redis cache: an entry written at 23:5x and replayed after midnight (5 min fresh + 15 min stale) gets a refreshed `meta.localHour` (0) but keeps yesterday's `hourly` (index 0 = yesterday 00:00) and `daily[0]` = yesterday; the phone slices `hourly` by `localHour`. The server already special-cases this for UV only (`hourly[freshLocalHour + 24]`). The edge copy is the second half (Fable, review 2): Vercel's CDN (s-maxage 300 + stale 60) would replay a 23:5x copy for up to ~6 min after midnight without the function running. | **SHIP F2 (both halves).** |
+| Johannesburg "rain" under a clear sky | Tomorrow.io alone said "Light rain" (radar override, intensity > 0.5 mm/h) while the other four said clear, blended cloud 5 %, hourly rain 4 % (23:29); at 00:02 its next-hour bump put now.rainChance at 60. Tomorrow.io's free plan forbids commercial use (its terms §1.1.5), so it has to go off before ads unless Al gets a contract — `PW_SOURCES_OFF=tomorrow` ends this. Cost of losing it (stand-in ICON): day's high MAE 0.84 → 0.89 °C, hourly rain Brier 0.0364 → 0.0383, daily rain Brier 0.0872 → 0.0847 — **the stand-in cannot price the radar override itself**, the one thing Tomorrow.io is for. A corroboration rule cannot be measured (no radar in the backtest); the next-hour bump now leaves a record (`now.conditionSignals.radarNextHourBump`) so the recorder can attribute it. | **AL (terms)**, on the money page. No override change. |
+| One late-night check matched 2 of 5 | Method: CAVOK means no cloud below 5,000 ft and no CB, not a clear sky; the check read CAVOK as clear. Tonight's recorder: George served cloudy in fog (FG 650 m), Durban clear under BKN035 — model misses, not rules. | Report; the recorder scores this every hour from now. |
+| False "Rain's here" | Replay (current rules): the phone said rain in 552 hours, 160 dry that hour (29 %), 79 dry within ±1 h (14 %). Bloemfontein's 44 is inflated by its unobserved overnight AUTO reports. The Johannesburg false rain was Tomorrow.io (above). | No change. |
+| Daily rain chance loses to Open-Meteo alone | Within noise (Brier 0.0914 vs 0.0860 pooled, interval spans zero). | No change. |
+| Sol's harness finding | `blend5` fills every slot, so the harness can never take production's equal-weight low fallback when OM, WA and Pirate are all missing. No effect on this sample (every slot answered every day). | Harness fix (report tool only). |
+
+## Rain honesty ("when it says 60 %")
+
+Hourly blend, all six airports (share of hours with rain reported): 0–10 % → 1 %; 10–20 → 8 %; 20–30 → 17 %; 30–40 → 25 %; 40–50 → 27 %; 50–60 → 36 %; **60–70 → 49 %**; 70–80 → 71 %; 80–90 → 84 %; 90–100 → 83 %. Too sure in the middle, honest at the top. Daily chance: 20–40 % → rain on 54 % of those days (too timid), 60–80 → 90 %, 80–100 → 100 %. A calibration map fitted on stand-ins would be fitted to the wrong blend (the stand-in WeatherAPI % is Open-Meteo's own; Tomorrow.io's is ICON's) — **WAIT** for the recorder's real numbers.
+
+## The weather that matters most in SA (replay, winter sample)
+
+Cape cold-front hours (rain + wind, Cape Town): 20 of 20 shown wet or windy. South-easter (dry SE, windy): 75 of 114 shown as wind (66 %). Fog (FG reported): Cape Town 71/101, Durban 9/12, Gqeberha 4/10, George 13/37. Thunder (TS): Johannesburg 14/16, Bloemfontein 12/12 (storm season barely in the sample). Frost: above. KZN heat: 2 days ≥ 28 °C in the sample — not testable until summer.
+
+## F1 — the evening high (build)
+
+`api/weather.js`, Tomorrow.io block: `dailies[4].highs[0]` (today's high as it votes in `daily[0].highC`) becomes `null` from local 18:00 (`TODAY_HIGH_WINDOW_LAST_HOUR = 17`, exported), computed from the same `utcOffsetSeconds` the block already uses. Unchanged: `norms[4].todayHigh` (Sources page range, `sourceRanges`, the debug blend), day 1+, the low, and everything before 17:00. MET already drops out at noon (strict window).
+Test: from 18:00 `daily[0].highC` is identical with and without Tomorrow.io (and its Sources range unchanged); at 10:30 and 17:59 its high still pulls today's high down.
+
+## F2 — never replay yesterday after midnight (build)
+
+(a) `api/weather.js`, `refreshCachedPayload`: an entry whose `updatedAtLabel` falls on a different local date than now is refused (`return null`) → the request fans out fresh, as it already does for a refused rung crossing. The UV `+24` special case goes (it can no longer be reached). (b) `edgeCacheControl(utcOffsetSeconds)`: every edge `Cache-Control` for a forecast (fresh and replayed) is trimmed so s-maxage + stale-while-revalidate ends 5 s before local midnight; in the last 30 s nothing is cached. Cost, stated for Al: one extra fan-out per active cell after midnight, and in 00:00–00:20 a slow leader or a spent allowance answers 503/429 instead of yesterday's entry.
+Tests: the "day rollover inside the TTL" case asserts serverCache ≠ hit; `tests/edge-cache-midnight.test.js`; a fresh 23:57:30 response carries a trimmed header.
+
+## What Al will read
+
+Plain numbers, e.g. "the day's high you see after 5 pm: off by 1.2 °C on average, now 0.95"; "Bloemfontein frost nights: the low was 3.5 °C too warm — a fix waits for real data"; "when it says 60–70 % rain, it rained 5 times in 10".
