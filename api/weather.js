@@ -1021,13 +1021,33 @@ export default async function handler(req, res) {
     // cannot bypass it. Fail-open on availability: Redis down → conservative
     // per-instance ceilings inside consumeProviderBudgets, never unlimited.
     // 'open-meteo' and 'met' have no key (always enabled); the rest gate on key.
+    // Launch run (2026-09-25): a weather source can be switched off without a
+    // code change. PW_SOURCES_OFF lists source ids (open-meteo, weatherapi,
+    // pirate, met, tomorrow), comma-separated. A listed source is skipped the
+    // way a missing key is — no budget slot, no call, "sitting this one out" —
+    // and the blend runs on the rest. Vercel reads env vars when it deploys, so
+    // after changing it: Deployments → the current one → Redeploy.
+    // The usual spellings of each name are accepted ("Tomorrow.io", "open meteo",
+    // "pirateweather"); anything else is named in the log as not recognised,
+    // so a typo can never look like a source that was switched off.
+    const SOURCE_IDS = { openmeteo: 'open-meteo', weatherapi: 'weatherapi', weatherapicom: 'weatherapi', pirate: 'pirate', pirateweather: 'pirate', met: 'met', metnorway: 'met', metno: 'met', yr: 'met', yrno: 'met', tomorrow: 'tomorrow', tomorrowio: 'tomorrow' };
+    const sourcesOff = new Set();
+    const sourcesOffUnknown = [];
+    for (const raw of String(process.env.PW_SOURCES_OFF || '').split(',')) {
+      const token = raw.trim();
+      if (!token) continue;
+      const id = SOURCE_IDS[token.toLowerCase().replace(/[^a-z]/g, '')];
+      if (id) sourcesOff.add(id); else sourcesOffUnknown.push(token);
+    }
+    if (sourcesOff.size) console.warn(`[pw-sources-off] switched off by PW_SOURCES_OFF: ${[...sourcesOff].join(', ')}`);
+    if (sourcesOffUnknown.length) console.error(`[pw-sources-off] PW_SOURCES_OFF names no source: ${sourcesOffUnknown.join(', ')} — use open-meteo, weatherapi, pirate, met or tomorrow`);
     const enabledProviders = [
       'open-meteo',
       ...(WEATHERAPI_KEY ? ['weatherapi'] : []),
       ...(PIRATE_WEATHER_KEY ? ['pirate'] : []),
       'met',
       ...(TOMORROWIO_API_KEY ? ['tomorrow'] : []),
-    ];
+    ].filter((p) => !sourcesOff.has(p));
     // Item 7 round 3: the budget is checked BEFORE the fan-out starts. A
     // leader that has none left (slow limiters, slow Redis) answers now —
     // a fan-out started here would finish after the client's abort.
@@ -1045,7 +1065,9 @@ export default async function handler(req, res) {
     // The fan-out starts below: from here the charge is EARNED, so it is no
     // longer held and must not be refunded by a later budget answer.
     heldCharge = null;
-    const budgetAllows = (p) => budget[p] !== false; // undefined ⇒ allowed (safety)
+    // A switched-off source never got a budget slot, so its budget entry is
+    // undefined — it must be refused here, not read as "allowed".
+    const budgetAllows = (p) => !sourcesOff.has(p) && budget[p] !== false; // undefined ⇒ allowed (safety)
     for (const p of enabledProviders) {
       if (!budgetAllows(p)) console.warn(`[pw-budget] ${p} over ceiling — skipped this request`);
     }

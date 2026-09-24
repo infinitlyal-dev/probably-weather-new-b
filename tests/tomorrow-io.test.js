@@ -474,3 +474,49 @@ describe('meta.sourceNow / meta.sourceToday — each source its own numbers', ()
     expect(pw.rainChance).toBeNull();
   });
 });
+
+// Launch run (2026-09-25): PW_SOURCES_OFF switches a source off without a code
+// change — it is never called, it sits out, and the forecast still answers.
+describe('PW_SOURCES_OFF — switch a source off without a release', () => {
+  afterEach(() => { delete process.env.PW_SOURCES_OFF; });
+
+  it('never calls a switched-off source and still answers from the rest', async () => {
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    process.env.PW_SOURCES_OFF = 'tomorrow, pirate';
+    const stub = makeFetchStub(() => { throw new Error('Tomorrow.io must not be called while switched off'); });
+    vi.stubGlobal('fetch', stub);
+    const { statusCode, body } = await callHandler();
+    expect(statusCode).toBe(200);
+    expect(body.ok).toBe(true);
+    const hosts = stub.mock.calls.map(([u]) => new URL(String(u)).host);
+    expect(hosts).not.toContain('api.tomorrow.io');
+    expect(hosts).not.toContain('api.pirateweather.net');
+    expect(hosts).toContain('api.met.no');
+    const ok = Object.fromEntries(body.meta.sources.map((s) => [s.name, s.ok]));
+    expect(ok).toMatchObject({ 'Open-Meteo': true, WeatherAPI: true, 'Pirate Weather': false, 'MET Norway': true, 'Tomorrow.io': false });
+    expect(body.meta.sourceWeights['Tomorrow.io']).toBeNull();
+  });
+
+  it('accepts the usual spellings and names what it does not recognise', async () => {
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    process.env.PW_SOURCES_OFF = 'Tomorrow.io, pirate weather, sunshine';
+    const errors = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const stub = makeFetchStub(() => { throw new Error('Tomorrow.io must not be called while switched off'); });
+    vi.stubGlobal('fetch', stub);
+    const { body } = await callHandler();
+    const hosts = stub.mock.calls.map(([u]) => new URL(String(u)).host);
+    expect(hosts).not.toContain('api.tomorrow.io');
+    expect(hosts).not.toContain('api.pirateweather.net');
+    expect(body.meta.sources.find((s) => s.name === 'Tomorrow.io').ok).toBe(false);
+    expect(errors.mock.calls.some(([m]) => /names no source: sunshine/.test(String(m)))).toBe(true);
+    errors.mockRestore();
+  });
+
+  it('leaves every source on when unset or empty', async () => {
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    process.env.PW_SOURCES_OFF = '';
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(tomorrowIoClearPayload)));
+    const { body } = await callHandler();
+    expect(body.meta.sources.filter((s) => s.ok).map((s) => s.name)).toContain('Tomorrow.io');
+  });
+});
