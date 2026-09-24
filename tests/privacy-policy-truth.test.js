@@ -166,9 +166,14 @@ describe('privacy.html tells the truth about location data', () => {
     expect(abuse).not.toMatch(/after your last request/i);
   });
 
-  it('states the search-path coordinates are not rounded by us', () => {
-    // assets/app.js:2974-2975 takes the provider's lat/lon verbatim.
-    expect(section('Location data')).toMatch(/we do not round those/i);
+  it('states the forecast is asked for on the ~2 km grid, GPS and searched places alike', () => {
+    // fetchProbable snaps lat/lon to the server's 0.02° cache grid (snapToCacheGrid) before the
+    // request leaves the phone; the place-name lookup keeps the four decimals GPS is rounded to.
+    const loc = section('Location data');
+    expect(loc).toContain('rounded before they leave your device: to about 2 km when the app asks for a forecast, and to four decimal places (about 10 m) when it looks up the name of your place.');
+    expect(loc).toContain('If instead you choose a place from the search box, its forecast is asked for on the same 2 km grid.');
+    expect(loc).toContain('The forecast stored inside carries the coordinates it was fetched for, which are that grid point — about 2 km — not your position.');
+    expect(loc).not.toMatch(/we do not round those/i);
   });
 
   it('makes no categorical anonymity claim about the cache', () => {

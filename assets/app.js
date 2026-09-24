@@ -2311,8 +2311,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // Payloads sw.js served from its own cache while offline -> their age in ms. A WeakMap keyed by
   // the payload object, not a property on it: no JSON the API sends can claim to be an offline copy.
   const swOfflineAgeMs = new WeakMap();
+  // Launch run (2026-09-25): the forecast is asked for on the server's cache
+  // grid (api/_lib/weather-cache.js snapCoord: 0.02°, ~2.2 km). Everyone in the
+  // same cell then sends the same URL, so Vercel's edge answers them from one
+  // copy (s-maxage=300) without running the function, Redis or any provider.
+  // The server already shared one forecast per cell; this lets the CDN do it.
+  // A missing coordinate (null, '') passes through unchanged so the server still
+  // refuses it with a 400 — Number(null) is 0, which would be a silent forecast
+  // for the middle of the Atlantic.
+  const snapToCacheGrid = (v) => {
+    const n = typeof v === 'number' ? v : (typeof v === 'string' && v.trim() !== '' ? Number(v) : NaN);
+    return Number.isFinite(n) ? (Math.round(n / 0.02) * 0.02 + 0).toFixed(2) : encodeURIComponent(String(v));
+  };
   async function fetchProbable(place, options = {}) {
-    const url = `/api/weather?lat=${encodeURIComponent(place.lat)}&lon=${encodeURIComponent(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
+    const url = `/api/weather?lat=${snapToCacheGrid(place.lat)}&lon=${snapToCacheGrid(place.lon)}&name=${encodeURIComponent(place.name || '')}`;
     const controller = new AbortController();
     let didTimeout = false;
     const timeoutId = setTimeout(() => {
