@@ -2501,9 +2501,14 @@ export default async function handler(req, res) {
     // Next-hour radar bump — feeds the existing rain-possible / rain-coming
     // escalation path in the frontend (renderHome reads rainChance to drive
     // hero copy). Only fires when the current hour isn't already firmly rain.
+    // Launch run (2026-09-25): the bump leaves no override record (the key does
+    // not change), so it is recorded here — the accuracy recorder can then tell
+    // a 60 % that came from Tomorrow.io's next hour from one the blend made.
+    let radarNextHourBump = null;
     if (tiNext && isNum(tiNext.precipitationIntensity) && tiNext.precipitationIntensity > 0.5 && nowConditionKey !== 'rain') {
       const before = currentHourRainChance;
       currentHourRainChance = Math.max(currentHourRainChance ?? 0, 60);
+      radarNextHourBump = { intensity: tiNext.precipitationIntensity, from: before, to: currentHourRainChance };
       debugLog(`[Tomorrow.io next-hour radar] precipIntensity=${tiNext.precipitationIntensity} mm/h → rainChance ${before}→${currentHourRainChance}`);
     }
 
@@ -2632,6 +2637,8 @@ export default async function handler(req, res) {
       // The selector call as it happened (inputs + base result), for the
       // cache-hit re-check — see respondWithCachedPayload.
       selector: nowSelector,
+      // null unless Tomorrow.io's next-hour radar raised now.rainChance (see above).
+      radarNextHourBump,
     };
 
     res.setHeader('Cache-Control', edgeCacheControl(utcOffsetSeconds));

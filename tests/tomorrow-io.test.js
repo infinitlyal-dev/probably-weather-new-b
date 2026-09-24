@@ -572,3 +572,20 @@ describe('F2b — the edge copy of a fresh forecast ends at local midnight', () 
     expect(Number(s) + Number(w)).toBeLessThan(150);
   });
 });
+
+// Launch run (2026-09-25): Tomorrow.io's next-hour radar bump raises
+// now.rainChance to 60 without changing the key, so it left no trace; it is now
+// recorded in now.conditionSignals.radarNextHourBump.
+describe('the next-hour radar bump is recorded', () => {
+  it('names the intensity and the chance before and after; null when it did not fire', async () => {
+    process.env.TOMORROWIO_API_KEY = 'real-key';
+    const bumped = structuredClone(tomorrowIoClearPayload);
+    bumped.data.timelines[0].intervals[1].values.precipitationIntensity = 1.2;   // the next hour only
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(bumped)));
+    const { body } = await callHandler();
+    expect(body.now.rainChance).toBeGreaterThanOrEqual(60);
+    expect(body.now.conditionSignals.radarNextHourBump).toMatchObject({ intensity: 1.2, to: 60 });
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(tomorrowIoClearPayload)));
+    expect((await callHandler()).body.now.conditionSignals.radarNextHourBump).toBeNull();
+  });
+});
