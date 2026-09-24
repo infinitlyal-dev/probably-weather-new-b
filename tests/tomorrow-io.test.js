@@ -552,3 +552,23 @@ describe("F1 — Tomorrow.io stops voting on today's high from 18:00", () => {
     }
   });
 });
+
+// Launch run (2026-09-25, F2b): a fresh forecast computed just before local
+// midnight is cached at the edge only until midnight.
+describe('F2b — the edge copy of a fresh forecast ends at local midnight', () => {
+  it('sends a trimmed Cache-Control at 23:57:30 SAST and the usual one at noon', async () => {
+    vi.stubGlobal('fetch', makeFetchStub(() => makeResponse(tomorrowIoClearPayload)));
+    const headerAt = async (iso) => {
+      vi.setSystemTime(new Date(iso));
+      const calls = [];
+      const req = { query: { lat: '-34.1163', lon: '18.8362', name: 'Strand' } };
+      const res = { setHeader: (k, v) => calls.push([k, v]), status() { return this; }, json() { return this; } };
+      await handler(req, res);
+      return calls.filter(([k]) => k === 'Cache-Control').map(([, v]) => v).pop();
+    };
+    expect(await headerAt('2026-05-19T10:00:00Z')).toBe('s-maxage=300, stale-while-revalidate=60');
+    const late = await headerAt('2026-05-19T21:57:30Z');       // 23:57:30 SAST, 150 s to midnight
+    const [, s, w] = /^s-maxage=(\d+), stale-while-revalidate=(\d+)$/.exec(late);
+    expect(Number(s) + Number(w)).toBeLessThan(150);
+  });
+});

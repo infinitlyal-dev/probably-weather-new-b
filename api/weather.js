@@ -523,18 +523,30 @@ export default async function handler(req, res) {
       // from its own hourly array at the fresh hour — the same array the
       // client slices — and re-derives isDay from the cached sunrise/sunset
       // for the fresh instant (a sunset inside the TTL must null the UV, a
-      // sunrise must not keep it null). Day rollover inside the TTL →
-      // tomorrow's slot. Pre-deploy entries never reach here: isServableCache
-      // treats them as a miss, because their now.uv AND their conditionKey
-      // were derived from the peak.
+      // sunrise must not keep it null). Pre-deploy entries never reach here:
+      // isServableCache treats them as a miss, because their now.uv AND their
+      // conditionKey were derived from the peak.
       let now = payload.now;
       if (now && Number.isInteger(freshLocalHour) && Array.isArray(payload.hourly)) {
         const offset = Number.isFinite(cachedOffset) ? cachedOffset : 0;
         const nowMs = Date.now();
         const writtenMs = Date.parse(payload.meta?.updatedAtLabel ?? '');
         const localDate = (ms) => new Date(ms + offset * 1000).toISOString().slice(0, 10);
-        const rolled = Number.isFinite(writtenMs) && localDate(nowMs) !== localDate(writtenMs);
-        const hourUv = payload.hourly[freshLocalHour + (rolled ? 24 : 0)]?.uv;
+        // Launch run (F2): an entry written before local midnight is refused
+        // after it. Its hourly[0] and daily[0] belong to yesterday while the
+        // phone slices hourly by the fresh localHour, so it would show
+        // yesterday's hours as "now". A fresh fan-out replaces it (at most one
+        // per cell in the first ~20 minutes after midnight).
+        // The day it was built FOR, not the moment it was stamped (Fable, review
+        // 3): daily[0].sunrise carries day zero's local date; a fan-out that
+        // started at 23:59:55 and was stamped 00:00:08 is still yesterday's.
+        const dayZero = /^\d{4}-\d{2}-\d{2}/.exec(String(payload.daily?.[0]?.sunrise ?? ''))?.[0]
+          ?? (Number.isFinite(writtenMs) ? localDate(writtenMs) : null);
+        if (dayZero && localDate(nowMs) !== dayZero) {
+          debugLog(`[cache-refresh] refusing cached entry built for ${dayZero} — a local day ago — fetching fresh`);
+          return null;
+        }
+        const hourUv = payload.hourly[freshLocalHour]?.uv;
         // Daylight for the fresh instant: the miss path's own two rules. Solar
         // ISO strings (Open-Meteo, local-labelled, parsed as UTC on Vercel and
         // shifted by the offset) when they parse; otherwise the 06:00–19:00
@@ -574,11 +586,12 @@ export default async function handler(req, res) {
       }
       return { now, freshLocalHour };
     };
-    const respondWithCachedPayload = (payload, serverCache = 'hit', cacheControl = 's-maxage=300, stale-while-revalidate=60') => {
+    const respondWithCachedPayload = (payload, serverCache = 'hit', [edgeMaxAge, edgeSwr] = [300, 60]) => {
       const refreshed = refreshCachedPayload(payload);
       if (!refreshed) return false;
       const { now, freshLocalHour } = refreshed;
-      res.setHeader('Cache-Control', cacheControl);
+      // The edge copy ends at the payload's own local midnight (F2b).
+      res.setHeader('Cache-Control', edgeCacheControl(validUtcOffset(payload.meta?.utcOffsetSeconds) ? payload.meta.utcOffsetSeconds : null, Date.now(), edgeMaxAge, edgeSwr));
       return res.status(200).json({
         ...payload,
         now,
@@ -618,7 +631,7 @@ export default async function handler(req, res) {
       const stalePayload = await withDeadline(weatherCacheGetStale(serverCacheKey), 300, null);
       if (acceptableCache(stalePayload)) {
         completeLocalMiss(stalePayload);
-        return respondWithCachedPayload(stalePayload, 'stale-deadline', 's-maxage=30, stale-while-revalidate=60');
+        return respondWithCachedPayload(stalePayload, 'stale-deadline', [30, 60]);
       }
       console.warn(`[pw-budget] request budget spent waiting (${stage}) — answering 503 without a fan-out`);
       res.setHeader('Cache-Control', 'no-store');
@@ -659,7 +672,7 @@ export default async function handler(req, res) {
     const refuseOverAllowance = async () => {
       const limitedStale = await redisOp(weatherCacheGetStale(serverCacheKey), null);
       if (acceptableCache(limitedStale)) {
-        const sent = respondWithCachedPayload(limitedStale, 'stale-rate-limited', 's-maxage=30, stale-while-revalidate=60');
+        const sent = respondWithCachedPayload(limitedStale, 'stale-rate-limited', [30, 60]);
         if (sent) return sent;
       }
       return res.status(429).json({ ok: false, error: 'Too many requests' });
@@ -761,7 +774,7 @@ export default async function handler(req, res) {
       // to them would make each of them poll Redis for itself.
       if (acceptableCache(stalePayload)) {
         completeLocalMiss(stalePayload);
-        return respondWithCachedPayload(stalePayload, 'stale-lock-wait', 's-maxage=30, stale-while-revalidate=60');
+        return respondWithCachedPayload(stalePayload, 'stale-lock-wait', [30, 60]);
       }
       // Item 7 round 2: the poll gets the budget LEFT, not a fresh 8.5 s, and
       // its expiry is terminal — Astra measured 14.6 s when an expired waiter
@@ -2621,7 +2634,7 @@ export default async function handler(req, res) {
       selector: nowSelector,
     };
 
-    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
+    res.setHeader('Cache-Control', edgeCacheControl(utcOffsetSeconds));
     const responsePayload = {
       ok: true,
       location: { name: resolvedName || name || 'Unknown', lat, lon },
@@ -2883,6 +2896,25 @@ const HOURLY_SLOT_FOR_NORM = { 0: 0, 1: 1, 3: 2, 4: 3 };
 
 const inBounds = (v, [lo, hi]) => isNum(v) && v >= lo && v <= hi;
 const validUtcOffset = (v) => inBounds(v, UTC_OFFSET_BOUNDS);
+
+/**
+ * Launch run (2026-09-25, F2b): the edge Cache-Control for a forecast payload.
+ * An edge copy must not outlive the local day it was computed for — after
+ * midnight Vercel's CDN would replay yesterday's hours (hourly[0] = yesterday
+ * 00:00) without this function running. s-maxage + stale-while-revalidate is
+ * trimmed to end 5 s before local midnight; in the last 30 s nothing is cached.
+ * No usable offset → the plain header (the payload has no day to outlive).
+ */
+export function edgeCacheControl(utcOffsetSeconds, nowMs = Date.now(), sMaxAge = 300, swr = 60) {
+  const plain = `s-maxage=${sMaxAge}, stale-while-revalidate=${swr}`;
+  if (!Number.isFinite(utcOffsetSeconds)) return plain;
+  const localSec = Math.floor(nowMs / 1000) + utcOffsetSeconds;
+  const left = 86400 - (((localSec % 86400) + 86400) % 86400) - 5;
+  if (left >= sMaxAge + swr) return plain;
+  if (left < 30) return 'no-store';
+  const w = Math.min(swr, Math.floor(left / 6));
+  return `s-maxage=${Math.min(sMaxAge, left - w)}, stale-while-revalidate=${w}`;
+}
 // Condition lookups validate the SCALAR TYPE before touching the map (item 5
 // round 6): `[0]` used to coerce to the key "0" and read as clear sky.
 const mapCode = (map, code) => (Number.isInteger(code) ? (map[code] ?? null) : null);

@@ -229,6 +229,24 @@ describe('item 3 — cache hits re-read the current hour (respondWithCachedPaylo
     expect(body.meta.localHour).toBe(0);
     expect(body.now.isDay).toBe(false);
     expect(body.now.uv).toBeNull();
+    // Launch run (F2): yesterday's entry is refused after midnight — its
+    // hourly[0] is yesterday 00:00 — and the request fetches fresh.
+    expect(body.meta.serverCache).not.toBe('hit');
+  });
+
+  it('refused by the day it was built for, even when stamped just after midnight', async () => {
+    // Fan-out started 23:59:55, stamped 00:00:08: the arrays are the 19th's.
+    const stampedAfter = { ...cachedSchema2, daily: [{ ...cachedSchema2.daily[0], sunrise: '2026-05-19T06:00' }], meta: { ...cachedSchema2.meta, localHour: 0, updatedAtLabel: '2026-05-19T22:00:08.000Z' } };
+    vi.setSystemTime(new Date('2026-05-19T22:03:00Z'));   // 00:03 SAST on the 20th
+    weatherCacheGet.mockResolvedValue(stampedAfter);
+    stubFetch(makeWeatherApiPayload(2.1));
+    const { body } = await callHandler();
+    expect(body.meta.serverCache).not.toBe('hit');
+    // …and a same-day entry is still served.
+    const sameDay = { ...stampedAfter, daily: [{ ...cachedSchema2.daily[0], sunrise: '2026-05-20T06:00' }] };
+    weatherCacheGet.mockResolvedValue(sameDay);
+    const again = await callHandler();
+    expect(again.body.meta.serverCache).toBe('hit');
   });
 });
 
