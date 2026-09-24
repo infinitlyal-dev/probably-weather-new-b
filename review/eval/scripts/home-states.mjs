@@ -43,7 +43,9 @@ const STATES = [
   { id: 'zu-longest', cond: 'cloudy', slot: 'cloudy/week_1/day/1.webp', hour: 12, temp: 17, lang: 'zu', caption: longest('zu'), extra: { rainChance: 20, precipMm: 0, cloudPct: 90, windKph: 18 }, label: 'Cloudy' },
   { id: 'first-visit', cond: 'clear', slot: 'clear/week_1/day/4.webp', hour: 12, temp: 24, firstVisit: true, extra: { rainChance: 2, precipMm: 0, cloudPct: 4, windKph: 12, uv: 8 }, label: 'Clear' },
   { id: 'desktop', cond: 'clear', slot: 'clear/week_1/day/4.webp', hour: 12, temp: 24, desktop: true, extra: { rainChance: 2, precipMm: 0, cloudPct: 4, windKph: 12, uv: 8 }, label: 'Clear' },
-].filter((s) => !ONLY || ONLY.split(',').includes(s.id));
+  // Opt-in (named in --only): a Cape Doctor day in Strand — the safety banner must still read as one.
+  { id: 'wind-warning', optIn: true, cond: 'wind', slot: 'wind/week_1/day/2.webp', hour: 12, temp: 18, extra: { rainChance: 5, precipMm: 0, cloudPct: 20, windKph: 56 }, label: 'Windy' },
+].filter((s) => (ONLY ? ONLY.split(',').includes(s.id) : !s.optIn));
 
 const SLOT_HOUR = { dawn: 6, day: 12, dusk: 18.25, night: 22 };
 const whenFor = (slot, hour) => {
@@ -129,6 +131,19 @@ for (const s of STATES) {
     return { vh: innerHeight, photo: r('#heroPhoto') || r('#bgImg'), caption: r('#headline'), temp: r('#temp'), tempPx: parseFloat(getComputedStyle(document.getElementById('temp') || document.body).fontSize), stats: r('#statsRow'), nav: r('.nav'), src: img?.currentSrc?.split('/').pop()?.slice(0, 16), display: window.__PW_LAST_DISPLAY, scrollH: document.scrollingElement.scrollHeight };
   });
   await page.screenshot({ path: path.join(OUT, `${s.id}.png`) });
+  // D (2026-09-24): the picture its Share sends, drawn by the page, and — on the rain state — the
+  // panel pulled up by a real tap on the handle.
+  if (HOME === 'd' && !s.desktop) {
+    await page.waitForTimeout(900);
+    const shot = await page.evaluate(() => window.__PW_D?.shareImage?.()).catch(() => null);
+    if (shot) writeFileSync(path.join(OUT, `${s.id}-share.jpg`), Buffer.from(shot.split(',')[1], 'base64'));
+    if (s.id === 'rain-day') {
+      await page.tap('#dHandle');
+      await page.waitForTimeout(700);
+      await page.screenshot({ path: path.join(OUT, `${s.id}-panel.png`) });
+      metrics[`${s.id}-panel`] = await page.evaluate(() => ({ open: document.body.classList.contains('d-sheet-open'), expanded: document.getElementById('dHandle')?.getAttribute('aria-expanded'), hours: document.querySelectorAll('#dSheet .d-hour').length, days: document.querySelectorAll('#dSheet .daily-row').length, ads: document.querySelectorAll('#dSheet .pw-ad-slot, #dSheet .ad-slot').length }));
+    }
+  }
   if (!s.desktop) {  // and the rest of Home, if the layout scrolls
     const scrolled = await page.evaluate(() => { const els = [document.scrollingElement, document.body, document.querySelector('main')]; let moved = false; for (const e of els) if (e && e.scrollHeight > e.clientHeight + 4) { e.scrollTop = e.scrollHeight; moved = true; } return moved; });
     if (scrolled) { await page.waitForTimeout(300); await page.screenshot({ path: path.join(OUT, `${s.id}-scrolled.png`) }); }

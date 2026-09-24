@@ -1,0 +1,2744 @@
+[
+ {
+  "hash": "015fe1a72983fd52e3e589916111385aef136ae928dabd35dc4e30c00ef74461",
+  "anchor": 63,
+  "slots": [
+   "clear/week_1/dawn/1.webp",
+   "clear/week_2/dawn/1.webp",
+   "clear/week_3/dawn/1.webp",
+   "clear/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "44786fa8cca62831e864d9d98d63234a48281b97de1263d355e0d741bfabf0fa",
+  "anchor": 80,
+  "slots": [
+   "clear/week_1/dawn/2.webp",
+   "clear/week_2/dawn/2.webp",
+   "clear/week_3/dawn/2.webp",
+   "clear/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "f644b0ec45868cc656daeffc0ad658e9b7b63c5465a7242ecd3d26393e8a998b",
+  "anchor": 100,
+  "slots": [
+   "clear/week_1/dawn/3.webp",
+   "clear/week_2/dawn/3.webp",
+   "clear/week_3/dawn/3.webp",
+   "clear/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "6a8154f7a40144a8e3c3453e8069466dc162d8fd914bcd5f073dc547319ca73c",
+  "anchor": 74,
+  "slots": [
+   "clear/week_1/dawn/4.webp",
+   "clear/week_2/dawn/4.webp",
+   "clear/week_3/dawn/4.webp",
+   "clear/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "f26595a6b5d772cb483fa8b0bd8d6d60d630fc3d13affbff394650f1df3d574e",
+  "anchor": 91,
+  "slots": [
+   "clear/week_1/dawn/5.webp",
+   "clear/week_2/dawn/5.webp",
+   "clear/week_3/dawn/5.webp",
+   "clear/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "9864fb8df7da7089aae6e0ac771d7b02e251ed1797830bea11e1be5dfd85629d",
+  "anchor": 66,
+  "slots": [
+   "clear/week_1/dawn/6.webp",
+   "clear/week_2/dawn/6.webp",
+   "clear/week_3/dawn/6.webp",
+   "clear/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "64a6c1aa77c9f1ee5abea15b5d79ef5568e64b85cb940801be55f8371adfa208",
+  "anchor": 55,
+  "slots": [
+   "clear/week_1/dawn/7.webp",
+   "clear/week_2/dawn/7.webp",
+   "clear/week_3/dawn/7.webp",
+   "clear/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "752ebaed7c7a6ecbdf3127a081fc207d1e6dea64528f9f7a017b804901d273b4",
+  "anchor": 68,
+  "slots": [
+   "clear/week_1/day/1.webp",
+   "clear/week_3/day/1.webp"
+  ]
+ },
+ {
+  "hash": "e6cf92909ea486a225207c5c5dd4253e676ffeb65b1fb34b43f9ba38687b331a",
+  "anchor": 86,
+  "slots": [
+   "clear/week_1/day/2.webp",
+   "clear/week_3/day/2.webp"
+  ]
+ },
+ {
+  "hash": "a9c1572f1be4ece59ae488800066700e442a033ab023822102c9d6fbc53eacd6",
+  "anchor": 58,
+  "slots": [
+   "clear/week_1/day/3.webp",
+   "clear/week_3/day/3.webp"
+  ]
+ },
+ {
+  "hash": "6d489d62f30f83f8f289d2e6360d224fe55e95cc661edc1341bc463eaf7f58cd",
+  "anchor": 61,
+  "slots": [
+   "clear/week_1/day/4.webp",
+   "clear/week_3/day/4.webp"
+  ]
+ },
+ {
+  "hash": "90566b9c8c8cbcf5e7693de288906baa06f09141f418c43b3114a1d46d87904d",
+  "anchor": 99,
+  "slots": [
+   "clear/week_1/day/5.webp",
+   "clear/week_3/day/5.webp"
+  ]
+ },
+ {
+  "hash": "7da77729d4d25b22c59c210f13506e4de7fde93a6960444a0ccd4bb9c86034e1",
+  "anchor": 44,
+  "slots": [
+   "clear/week_1/day/6.webp",
+   "clear/week_3/day/6.webp"
+  ]
+ },
+ {
+  "hash": "668c558784196b0c2fc19cc2ce777ba4e56cbee2708f65607b11162c90a3c472",
+  "anchor": 66,
+  "slots": [
+   "clear/week_1/day/7.webp",
+   "clear/week_3/day/7.webp"
+  ]
+ },
+ {
+  "hash": "88617f054c9bf6cac35b3a1f9bca03c04f57d3955484d147cd7e4bd69c3b7e6c",
+  "anchor": null,
+  "slots": [
+   "clear/week_1/dusk/1.webp",
+   "clear/week_2/dusk/1.webp",
+   "clear/week_3/dusk/1.webp",
+   "clear/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "b8f8ea343b77586d191afc873309450d62dce914ec0f6c1debe6e90b46af2145",
+  "anchor": 77,
+  "slots": [
+   "clear/week_1/dusk/2.webp",
+   "clear/week_2/dusk/2.webp",
+   "clear/week_3/dusk/2.webp",
+   "clear/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "a3c3db31075002872d80adb2dfc04f76b927d4056d5ae798cdc070eaa06dc732",
+  "anchor": 37,
+  "slots": [
+   "clear/week_1/dusk/3.webp",
+   "clear/week_2/dusk/3.webp",
+   "clear/week_3/dusk/3.webp",
+   "clear/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "541d9d0e15943b037b99aed2bd8613fe06c959c7c0dd78d94cdccd2c76de9c1f",
+  "anchor": 52,
+  "slots": [
+   "clear/week_1/dusk/4.webp",
+   "clear/week_2/dusk/4.webp",
+   "clear/week_3/dusk/4.webp",
+   "clear/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "531fffa148b855c4cbe0d17680515ef787a6c4dc27284cad3118edeaa126c46e",
+  "anchor": 98,
+  "slots": [
+   "clear/week_1/dusk/5.webp",
+   "clear/week_2/dusk/5.webp",
+   "clear/week_3/dusk/5.webp",
+   "clear/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "ec24bcde25d92412deb6a7e7eddb0b0b657373c139a2cd8dc439b254b3dc25d9",
+  "anchor": 87,
+  "slots": [
+   "clear/week_1/dusk/6.webp",
+   "clear/week_2/dusk/6.webp",
+   "clear/week_3/dusk/6.webp",
+   "clear/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "357e2151b07dc48b5749049a908a726b9260cb088de2e3fb443a94aff07b2eb3",
+  "anchor": 61,
+  "slots": [
+   "clear/week_1/dusk/7.webp",
+   "clear/week_2/dusk/7.webp",
+   "clear/week_3/dusk/7.webp",
+   "clear/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "5b1fb72a7e581195434718f5fcdb89406a29b21004a15f490d67bd13b16cbd95",
+  "anchor": 45,
+  "slots": [
+   "clear/week_1/night/1.webp",
+   "clear/week_2/night/1.webp",
+   "clear/week_3/night/1.webp",
+   "clear/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "d3c3724ad566c1fe9afb7127b8863f2267558a537f32c8a7bfbd8a057711d938",
+  "anchor": 82,
+  "slots": [
+   "clear/week_1/night/2.webp",
+   "clear/week_2/night/2.webp",
+   "clear/week_3/night/2.webp",
+   "clear/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "ed4291a686a0287060e198542952114d5f6433a7d7a98ce2fc5d8f6aaa7ee43b",
+  "anchor": 61,
+  "slots": [
+   "clear/week_1/night/3.webp",
+   "clear/week_2/night/3.webp",
+   "clear/week_3/night/3.webp",
+   "clear/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "928ed2d8b02f58eaac182c6a5e49f0a9ec1fe3cb8e4ccac86b5d6c3d110bf26b",
+  "anchor": 58,
+  "slots": [
+   "clear/week_1/night/4.webp",
+   "clear/week_2/night/4.webp",
+   "clear/week_3/night/4.webp",
+   "clear/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "22e65e5fd954acd67621cb416e7bf49990ce20082f3267d08d5b9e7362414569",
+  "anchor": 66,
+  "slots": [
+   "clear/week_1/night/5.webp",
+   "clear/week_2/night/5.webp",
+   "clear/week_3/night/5.webp",
+   "clear/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "f09603654890381efdf31cabc36d3184b2c7b37de192cb9e16857f96402c3dd9",
+  "anchor": null,
+  "slots": [
+   "clear/week_1/night/6.webp",
+   "clear/week_2/night/6.webp",
+   "clear/week_3/night/6.webp",
+   "clear/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "b665da7894175b13c23e513e12c00600faba2ec0f04b6ee180bda73a4b019e80",
+  "anchor": null,
+  "slots": [
+   "clear/week_1/night/7.webp",
+   "clear/week_2/night/7.webp",
+   "clear/week_3/night/7.webp",
+   "clear/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "ae7148dc2255db2320f361a1f4dc0ec09b62445501a408dfbea9d6a051b9b580",
+  "anchor": 88,
+  "slots": [
+   "clear/week_2/day/1.webp",
+   "clear/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "fed27f42e4098802347eb0662260793de68f969b4b7fa4410eb87654adc2f9ac",
+  "anchor": 60,
+  "slots": [
+   "clear/week_2/day/2.webp",
+   "clear/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "4073f1fd86704492edc674090712c67c372bb76fd82cc8e33bed9b6ca735d59e",
+  "anchor": 51,
+  "slots": [
+   "clear/week_2/day/3.webp",
+   "clear/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "5ab21fef44c2fb7159d46214299fe1ac5a01efdf2a3087a33bd645201e976c78",
+  "anchor": 100,
+  "slots": [
+   "clear/week_2/day/4.webp",
+   "clear/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "dde50ae61ffb87cf18a6315df08924dbf2d6d17ed8c4046b8d4926b5e10569f7",
+  "anchor": 94,
+  "slots": [
+   "clear/week_2/day/5.webp",
+   "clear/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "eb699c28bbf79a91a9c9be1e8a978832918ea1a45ccf7b3bf7ec271df43ce539",
+  "anchor": 55,
+  "slots": [
+   "clear/week_2/day/6.webp",
+   "clear/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "14fb224fa5c5b44c6d7d49ee21821feef2221853a97b977182d8963fd5885fac",
+  "anchor": null,
+  "slots": [
+   "clear/week_2/day/7.webp",
+   "clear/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "5f26348d76d0cf614809dadd0cbbe3a5d7b3e403d53409d337917dc5eb0d4328",
+  "anchor": 50,
+  "slots": [
+   "cloudy/week_1/dawn/1.webp",
+   "cloudy/week_2/dawn/1.webp",
+   "cloudy/week_3/dawn/1.webp",
+   "cloudy/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "4f833d5c5db4bf89c68be1dce8f53b38e7652ddda5bcdcd4ea13df83a73371a6",
+  "anchor": 14,
+  "slots": [
+   "cloudy/week_1/dawn/2.webp",
+   "cloudy/week_2/dawn/2.webp",
+   "cloudy/week_3/dawn/2.webp",
+   "cloudy/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "6c2fdfff70be475cbcc98636ae90fba9972bc6710c8f94baab8d7978fbc8c772",
+  "anchor": 100,
+  "slots": [
+   "cloudy/week_1/dawn/3.webp",
+   "cloudy/week_2/dawn/3.webp",
+   "cloudy/week_3/dawn/3.webp",
+   "cloudy/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "d411804af654face836735a04fd228b11ce481a0f33569f81218d8049639f44a",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_1/dawn/4.webp",
+   "cloudy/week_2/dawn/4.webp",
+   "cloudy/week_3/dawn/4.webp",
+   "cloudy/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "1694b4ae44c20d65f719f842775cc307feb196485289838c41c2b879cc0a4a9f",
+  "anchor": 90,
+  "slots": [
+   "cloudy/week_1/dawn/6.webp",
+   "cloudy/week_2/dawn/6.webp",
+   "cloudy/week_3/dawn/6.webp",
+   "cloudy/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "922d1f4d30d84bc26c7b96f58ffc7ee03dbd424917afec4b02d35dc3475e31f1",
+  "anchor": 43,
+  "slots": [
+   "cloudy/week_1/dawn/7.webp",
+   "cloudy/week_2/dawn/7.webp",
+   "cloudy/week_3/dawn/7.webp",
+   "cloudy/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "5477e28c417fccb52e56893059fb3dd7e42b33d4e081d267e4722b5d7e16ca6d",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_1/day/1.webp",
+   "cloudy/week_3/day/1.webp"
+  ]
+ },
+ {
+  "hash": "f4ea0b14220694960f2f847953d93288ec197d4d871551e6a5df48df9a33f6d2",
+  "anchor": 100,
+  "slots": [
+   "cloudy/week_1/day/2.webp",
+   "cloudy/week_3/day/2.webp"
+  ]
+ },
+ {
+  "hash": "1c536cb795d498ce4c87a4e34119a6db92753d01cdd22e6d9203f2115bdc36ad",
+  "anchor": 47,
+  "slots": [
+   "cloudy/week_1/day/3.webp",
+   "cloudy/week_3/day/3.webp"
+  ]
+ },
+ {
+  "hash": "c796454299a4bc32a520ae2ebeafe6a9447f253be2261c1612164a9f1a3cbaa1",
+  "anchor": 63,
+  "slots": [
+   "cloudy/week_1/day/4.webp",
+   "cloudy/week_3/day/4.webp"
+  ]
+ },
+ {
+  "hash": "92d7d25f019bcbb7880a606641921103643cb9285ce8358f888b3c26103b5f66",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_1/day/5.webp",
+   "cloudy/week_3/day/5.webp"
+  ]
+ },
+ {
+  "hash": "fc5b0a6e83ae292e917f91efb0246d9f44b9d8bebefcb5940d19fdad9ff3342c",
+  "anchor": 51,
+  "slots": [
+   "cloudy/week_1/day/6.webp",
+   "cloudy/week_3/day/6.webp"
+  ]
+ },
+ {
+  "hash": "2edc1c0df186c99325635474be429661e84fbb05fac0e40e47df894f5ae9d29b",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_1/day/7.webp",
+   "cloudy/week_3/day/7.webp"
+  ]
+ },
+ {
+  "hash": "791e756ecc1d68c7cb9a600fafcda18b191fbc4fbae35c28f116b9635c2248d3",
+  "anchor": 77,
+  "slots": [
+   "cloudy/week_1/dusk/1.webp",
+   "cloudy/week_2/dusk/1.webp",
+   "cloudy/week_3/dusk/1.webp",
+   "cloudy/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "01edf502a02c55d47429a40d929162ca8ccae8ddf5864aeb1977e9a68e98eb58",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_1/dusk/3.webp",
+   "cloudy/week_2/dusk/3.webp",
+   "cloudy/week_3/dusk/3.webp",
+   "cloudy/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "fada902c14d5dfbe9d3760ef518c9758d9e02f762c995a70bb21d8129ee8eedd",
+  "anchor": 100,
+  "slots": [
+   "cloudy/week_1/dusk/4.webp",
+   "cloudy/week_2/dusk/4.webp",
+   "cloudy/week_3/dusk/4.webp",
+   "cloudy/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "41a1917dbae93fbcc3f34535b5c62cbc50d469262bec9464ef0637df540e62f8",
+  "anchor": 100,
+  "slots": [
+   "cloudy/week_1/dusk/5.webp",
+   "cloudy/week_2/dusk/5.webp",
+   "cloudy/week_3/dusk/5.webp",
+   "cloudy/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "0e1a4e312bcc93bb9bae44352277a5b9b8c2e226acb80c2d284a58b31ba52487",
+  "anchor": 60,
+  "slots": [
+   "cloudy/week_1/dusk/6.webp",
+   "cloudy/week_2/dusk/6.webp",
+   "cloudy/week_3/dusk/6.webp",
+   "cloudy/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "c2845db66d7b715adba42daecd7819342933bc40659461e5bfa572ae8b57374e",
+  "anchor": 93,
+  "slots": [
+   "cloudy/week_1/dusk/7.webp",
+   "cloudy/week_2/dusk/7.webp",
+   "cloudy/week_3/dusk/7.webp",
+   "cloudy/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "ee562e8adf7312026fe28159b55c8bb72dfbf83a1a8e02eb20a648e19eaa7f6b",
+  "anchor": 44,
+  "slots": [
+   "cloudy/week_1/night/1.webp",
+   "cloudy/week_2/night/1.webp",
+   "cloudy/week_3/night/1.webp",
+   "cloudy/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "e25e5992ff0bf872e4a1736b5ba59974ccbbba23ddb839d6c7971346ee82a539",
+  "anchor": 53,
+  "slots": [
+   "cloudy/week_1/night/2.webp",
+   "cloudy/week_2/night/2.webp",
+   "cloudy/week_3/night/2.webp",
+   "cloudy/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "549601db52a8dded6c4ebedfa5c6fdaeb279c02a1b27e2a8f1f5de64431304dc",
+  "anchor": 68,
+  "slots": [
+   "cloudy/week_1/night/4.webp",
+   "cloudy/week_2/night/4.webp",
+   "cloudy/week_3/night/4.webp",
+   "cloudy/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "fd0a18b25b4e35699d54747d494468b1cba98548bfd9557ada359f04686f9b41",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_1/night/5.webp",
+   "cloudy/week_2/night/5.webp",
+   "cloudy/week_3/night/5.webp",
+   "cloudy/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "593bee14001cfb65a18e859f146303a724072d141e8351dbbf29400f1a0bd0ef",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_2/day/1.webp",
+   "cloudy/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "abf4cc943c519af1524158af204e0090984c6937921ea938647a4d000dd6c101",
+  "anchor": 51,
+  "slots": [
+   "cloudy/week_2/day/2.webp",
+   "cloudy/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "43784257b98adc96a1bd295edd9d62f79109287a58882f0293690219a0249e80",
+  "anchor": 94,
+  "slots": [
+   "cloudy/week_2/day/3.webp",
+   "cloudy/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "3975a423d9c845b806278cf361bb8042673dbc34479602e62ec84dbadf57e116",
+  "anchor": null,
+  "slots": [
+   "cloudy/week_2/day/4.webp",
+   "cloudy/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "8bc9f9cb40afc9b2781f517397769f5c6e8efb10442f64a6f2683c56b7d616de",
+  "anchor": 63,
+  "slots": [
+   "cloudy/week_2/day/5.webp",
+   "cloudy/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "a4e1da997c4aaf0a41e6e15cd91633a472adf4de0ca96ccb0660cd9ac7a82567",
+  "anchor": 61,
+  "slots": [
+   "cloudy/week_2/day/6.webp",
+   "cloudy/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "ee6782554c5f9cf28100d8f2597478e524cad5f390483000fc1e3ace026f7f16",
+  "anchor": 88,
+  "slots": [
+   "cloudy/week_2/day/7.webp",
+   "cloudy/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "13b538b6e4d9ace67c7b1a097dc91de6f14f3552b3fb8a90de6348bfbbcec4db",
+  "anchor": 84,
+  "slots": [
+   "cold/week_1/dawn/1.webp",
+   "cold/week_2/dawn/1.webp",
+   "cold/week_3/dawn/1.webp",
+   "cold/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "628d097a55e41b21d965d2d8bb577f060cdf9134a037a2a29cb84a4a97436b81",
+  "anchor": null,
+  "slots": [
+   "cold/week_1/dawn/2.webp",
+   "cold/week_2/dawn/2.webp",
+   "cold/week_3/dawn/2.webp",
+   "cold/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "bbba6c120fecb532bca81e0ff31fbf42084fa8755cff612a20a83c0ea3fa3c75",
+  "anchor": 33,
+  "slots": [
+   "cold/week_1/dawn/3.webp",
+   "cold/week_2/dawn/3.webp",
+   "cold/week_3/dawn/3.webp",
+   "cold/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "00989238a8dce054e9e41f24d5842ce5a5f90540d5cb7777662ff15df60e77f0",
+  "anchor": 61,
+  "slots": [
+   "cold/week_1/dawn/4.webp",
+   "cold/week_2/dawn/4.webp",
+   "cold/week_3/dawn/4.webp",
+   "cold/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "2f56b7f02f5aac523930b09884384e691392b5151c8c6fbfc60cf2b85e3d43fd",
+  "anchor": 44,
+  "slots": [
+   "cold/week_1/dawn/5.webp",
+   "cold/week_3/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "b7b5166f676eaaf2c8402e0cca3486ed07b2f93ae36d8b94fac8381d70bd9bfe",
+  "anchor": 100,
+  "slots": [
+   "cold/week_1/dawn/6.webp",
+   "cold/week_2/dawn/6.webp",
+   "cold/week_3/dawn/6.webp",
+   "cold/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "e93354d9b468c40a7d2b83699f809d25459d8915246921233d427ad1735581a7",
+  "anchor": 35,
+  "slots": [
+   "cold/week_1/dawn/7.webp",
+   "cold/week_2/dawn/7.webp",
+   "cold/week_3/dawn/7.webp",
+   "cold/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "825a6ff641243640ad29eed63e07ddcee661e6e71a2c84850a6c999b7a1e062d",
+  "anchor": 66,
+  "slots": [
+   "cold/week_1/day/1.webp",
+   "cold/week_3/day/1.webp"
+  ]
+ },
+ {
+  "hash": "30307b4b49c4d093542bbbc043cff9ff5f1d03d57112df843728f2f857a67e24",
+  "anchor": 44,
+  "slots": [
+   "cold/week_1/day/3.webp",
+   "cold/week_3/day/3.webp"
+  ]
+ },
+ {
+  "hash": "3edd5a2c5f60309ee214fd52869290b859131dc632b084731aebb7e85e8c0454",
+  "anchor": 61,
+  "slots": [
+   "cold/week_1/day/4.webp",
+   "cold/week_3/day/4.webp"
+  ]
+ },
+ {
+  "hash": "9df3ba1266474e1ffbd7131f8bb243c258ddbdc0249a4661189d042fc08c61d8",
+  "anchor": null,
+  "slots": [
+   "cold/week_1/day/5.webp",
+   "cold/week_3/day/5.webp"
+  ]
+ },
+ {
+  "hash": "44af2aeba2a442d22001a0eab7bf0296221a4dffb194d60824f98a1920b582e5",
+  "anchor": 56,
+  "slots": [
+   "cold/week_1/day/6.webp",
+   "cold/week_3/day/6.webp"
+  ]
+ },
+ {
+  "hash": "08c461c74e9ce38b8691ebe8e3a0e8ddb26ab7bc2383fe23782784314b440539",
+  "anchor": 55,
+  "slots": [
+   "cold/week_1/day/7.webp",
+   "cold/week_3/day/7.webp"
+  ]
+ },
+ {
+  "hash": "2075c3e34891abe1c429ce5167589501cea1e9f3e987e0644ba4885a74641974",
+  "anchor": 56,
+  "slots": [
+   "cold/week_1/dusk/1.webp",
+   "cold/week_2/dusk/1.webp",
+   "cold/week_3/dusk/1.webp",
+   "cold/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "6c75084d23dbf03a524515716593a6338b5386869ecaaee822f8f8f6daafe4f1",
+  "anchor": 75,
+  "slots": [
+   "cold/week_1/dusk/2.webp",
+   "cold/week_3/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "8cc0e2a4cb5284d07dad4ddeabe7776a0c10ae44b6de24b0204b130691d28b33",
+  "anchor": 67,
+  "slots": [
+   "cold/week_1/dusk/3.webp",
+   "cold/week_2/dusk/3.webp",
+   "cold/week_3/dusk/3.webp",
+   "cold/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "2948e9edde577d77c1c9c2100aed6cbc92b7d5e02d5788cd40810e8654747270",
+  "anchor": 94,
+  "slots": [
+   "cold/week_1/dusk/4.webp",
+   "cold/week_2/dusk/4.webp",
+   "cold/week_3/dusk/4.webp",
+   "cold/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "abf16c113fdba3f1902377073552b06c6d57b0ed7aa7967494c138878eac8b5c",
+  "anchor": 85,
+  "slots": [
+   "cold/week_1/dusk/5.webp",
+   "cold/week_2/dusk/5.webp",
+   "cold/week_3/dusk/5.webp",
+   "cold/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "f49a362f2f87ac030ac907ddf6a5e2039fbf0e42f0d908c7ade2bd51ab0e5d2c",
+  "anchor": 96,
+  "slots": [
+   "cold/week_1/dusk/6.webp",
+   "cold/week_2/dusk/6.webp",
+   "cold/week_3/dusk/6.webp",
+   "cold/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "914f369f7f8f494e92af00e0cdf84afa4abb594662e56e3f3b75ba83f2b164c5",
+  "anchor": 85,
+  "slots": [
+   "cold/week_1/dusk/7.webp",
+   "cold/week_2/dusk/7.webp",
+   "cold/week_3/dusk/7.webp",
+   "cold/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "e2f0a2c1d410db1f3ed66104e829371fe55f4b982c8b5ee1cada5e0752352f4b",
+  "anchor": 76,
+  "slots": [
+   "cold/week_1/night/1.webp",
+   "cold/week_2/night/1.webp",
+   "cold/week_3/night/1.webp",
+   "cold/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "8afed8c579b8a61ac6fbbfd7839dfcdd5d5f0d3d2c7befcb4e171317fb4ce097",
+  "anchor": 93,
+  "slots": [
+   "cold/week_1/night/2.webp",
+   "cold/week_2/night/2.webp",
+   "cold/week_3/night/2.webp",
+   "cold/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "5557eb34c34315f38fd279c4c32156ecc44898fa79529d9816a48ff830620b89",
+  "anchor": 50,
+  "slots": [
+   "cold/week_1/night/3.webp",
+   "cold/week_3/night/3.webp"
+  ]
+ },
+ {
+  "hash": "b6001c42c97329bd0cabb308a74779c7aed765851805b790c03631cab057b18c",
+  "anchor": 36,
+  "slots": [
+   "cold/week_1/night/4.webp",
+   "cold/week_2/night/4.webp",
+   "cold/week_3/night/4.webp",
+   "cold/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "20567f2a95864a0148ba46d091d5c79426e7fd24360aaaf010bcaba96c396a8d",
+  "anchor": 55,
+  "slots": [
+   "cold/week_1/night/5.webp",
+   "cold/week_2/night/5.webp",
+   "cold/week_3/night/5.webp",
+   "cold/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "96829ba00efb9e143fc51a33936025f560649eaa79ccd653cb8c09ff2b0c60a3",
+  "anchor": 100,
+  "slots": [
+   "cold/week_1/night/6.webp",
+   "cold/week_3/night/6.webp"
+  ]
+ },
+ {
+  "hash": "0cf2acaa4c432f235633e03fabe7bba4af83e206d3f7d37e28d073b8fe007182",
+  "anchor": 36,
+  "slots": [
+   "cold/week_1/night/7.webp",
+   "cold/week_3/night/7.webp"
+  ]
+ },
+ {
+  "hash": "1a7797cabfa960b9a4b8a8582acdac96884751e7b9f73b35ab6f3be5cc1b4153",
+  "anchor": 62,
+  "slots": [
+   "cold/week_2/dawn/5.webp",
+   "cold/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "d3de1926905de4e53cf10c6da4a0a536f19e96e2a6f551ecf0a0d80cd87621ea",
+  "anchor": 86,
+  "slots": [
+   "cold/week_2/day/1.webp",
+   "cold/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "e69199a64628bb5fb6bd309ec94a93e66e844d474a3d6a84fe6784b6ecf3fd63",
+  "anchor": 98,
+  "slots": [
+   "cold/week_2/day/2.webp",
+   "cold/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "83e944cbfa2a0236262766ded724d40a399c8bbc1a27f25d9a9b4cc8a577050a",
+  "anchor": null,
+  "slots": [
+   "cold/week_2/day/3.webp",
+   "cold/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "319c3448a3e8848940673c3f6738de148ac68f12769a49112e1fa90f55646953",
+  "anchor": 58,
+  "slots": [
+   "cold/week_2/day/4.webp",
+   "cold/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "c049b4e672c97462a2b8323f6ca1641c7285e7b108a41a062513eee4501e4c3a",
+  "anchor": 30,
+  "slots": [
+   "cold/week_2/day/5.webp",
+   "cold/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "b6dbfe87e5aeee5a5351fd31f1015e9b53c46b04b892d280e92ff52553053a08",
+  "anchor": 59,
+  "slots": [
+   "cold/week_2/day/7.webp",
+   "cold/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
+  "anchor": 100,
+  "slots": [
+   "cold/week_2/dusk/2.webp",
+   "cold/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "5df9bca2b53222d5d6d358aafccfea90f3c76f34332c940ff03a0553e8b38740",
+  "anchor": 71,
+  "slots": [
+   "cold/week_2/night/3.webp",
+   "cold/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+  "anchor": 89,
+  "slots": [
+   "cold/week_2/night/6.webp",
+   "cold/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024",
+  "anchor": 76,
+  "slots": [
+   "cold/week_2/night/7.webp",
+   "cold/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "16417b9db10c0f9fe76a505d22a040d415546dba6a54122cb69d890c4a3d6be0",
+  "anchor": 64,
+  "slots": [
+   "cold-clear/week_1/dawn/1.webp",
+   "cold-clear/week_2/dawn/1.webp",
+   "cold-clear/week_3/dawn/1.webp",
+   "cold-clear/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "2e3fe554a2ed26d1c41e1a042ed58f74018ca49271a114ed6121a91b89c057aa",
+  "anchor": 66,
+  "slots": [
+   "cold-clear/week_1/dawn/2.webp",
+   "cold-clear/week_2/dawn/2.webp",
+   "cold-clear/week_3/dawn/2.webp",
+   "cold-clear/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "51b110e053e56638b17ce600465a574011cb0545a4191a4e6abdc25377cba1db",
+  "anchor": 87,
+  "slots": [
+   "cold-clear/week_1/dawn/3.webp",
+   "cold-clear/week_2/dawn/3.webp",
+   "cold-clear/week_3/dawn/3.webp",
+   "cold-clear/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "26beb87414292120ae909cf58c5dcb5d4fb17d2f67789c2d3bf8d801dd1ee695",
+  "anchor": 100,
+  "slots": [
+   "cold-clear/week_1/dawn/4.webp",
+   "cold-clear/week_2/dawn/4.webp",
+   "cold-clear/week_3/dawn/4.webp",
+   "cold-clear/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "aaaf3c5aba4c02beea7f8534ca5ff3a3dca0ee39451374dbcaa7be43af951bfc",
+  "anchor": 84,
+  "slots": [
+   "cold-clear/week_1/dawn/5.webp",
+   "cold-clear/week_2/dawn/5.webp",
+   "cold-clear/week_3/dawn/5.webp",
+   "cold-clear/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "10fb7ce73fa41eddeb139a0609e919c940c6659c4649288153bf549fc05265d4",
+  "anchor": 52,
+  "slots": [
+   "cold-clear/week_1/dawn/6.webp",
+   "cold-clear/week_2/dawn/6.webp",
+   "cold-clear/week_3/dawn/6.webp",
+   "cold-clear/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "93f23aa636c0d7e60a09783e432f47ba0738df64b132bf3e366e14a911df8f8e",
+  "anchor": 73,
+  "slots": [
+   "cold-clear/week_1/dawn/7.webp",
+   "cold-clear/week_2/dawn/7.webp",
+   "cold-clear/week_3/dawn/7.webp",
+   "cold-clear/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "45f77f76f9e8519d390bba58827f928b65a690b2679d743131b7d95794c7bee5",
+  "anchor": 100,
+  "slots": [
+   "cold-clear/week_1/day/1.webp",
+   "cold-clear/week_2/day/1.webp",
+   "cold-clear/week_3/day/1.webp",
+   "cold-clear/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "ed88abf02958901d54b780f8f33819a7270450587b43169c9cdd747792f1b7b7",
+  "anchor": 54,
+  "slots": [
+   "cold-clear/week_1/day/2.webp",
+   "cold-clear/week_2/day/2.webp",
+   "cold-clear/week_3/day/2.webp",
+   "cold-clear/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "43dc1982b6f4535190ac2165cea5565c6ed1dd9b170367be8921c5a9f6f90c3f",
+  "anchor": 50,
+  "slots": [
+   "cold-clear/week_1/day/3.webp",
+   "cold-clear/week_2/day/3.webp",
+   "cold-clear/week_3/day/3.webp",
+   "cold-clear/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "63272c175d0783b76ff76d760951431d6e9699a4022af0de9c16ea4402ee2721",
+  "anchor": 41,
+  "slots": [
+   "cold-clear/week_1/day/4.webp",
+   "cold-clear/week_2/day/4.webp",
+   "cold-clear/week_3/day/4.webp",
+   "cold-clear/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "c7090cc8143069a1a8e66856c6a1fbe497f6cdde91daec029d05323285b8d201",
+  "anchor": 74,
+  "slots": [
+   "cold-clear/week_1/day/5.webp",
+   "cold-clear/week_2/day/5.webp",
+   "cold-clear/week_3/day/5.webp",
+   "cold-clear/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "86ce321be59c54933d8c42dbe080d373300c4ad850a84f57839dccbf00e5ca7e",
+  "anchor": 74,
+  "slots": [
+   "cold-clear/week_1/day/6.webp",
+   "cold-clear/week_3/day/6.webp"
+  ]
+ },
+ {
+  "hash": "f946db7e2903b52d4334f0e04f62fd82e61a9f7b9907d316d66b9fd1cf1dc7da",
+  "anchor": 63,
+  "slots": [
+   "cold-clear/week_1/day/7.webp",
+   "cold-clear/week_2/day/7.webp",
+   "cold-clear/week_3/day/7.webp",
+   "cold-clear/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "2f31adfb194e60e4c1f300cd769b69840ae324d376215c04353bf18ecd1ab34b",
+  "anchor": 58,
+  "slots": [
+   "cold-clear/week_1/dusk/1.webp",
+   "cold-clear/week_2/dusk/1.webp",
+   "cold-clear/week_3/dusk/1.webp",
+   "cold-clear/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "0051649d84e5e3525b2119649803b3fb8cc57cd64d1d1b1f513ce814a6d5c261",
+  "anchor": null,
+  "slots": [
+   "cold-clear/week_1/dusk/2.webp",
+   "cold-clear/week_2/dusk/2.webp",
+   "cold-clear/week_3/dusk/2.webp",
+   "cold-clear/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "c19b2bf4d644ee61056106f0ec8b95887f385a24a81e4316849825aea7770d52",
+  "anchor": 44,
+  "slots": [
+   "cold-clear/week_1/dusk/3.webp",
+   "cold-clear/week_2/dusk/3.webp",
+   "cold-clear/week_3/dusk/3.webp",
+   "cold-clear/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "937d0902c1d0fc164b4890d0f1f84ea019e5e515aa64eeccb990300ff2de5828",
+  "anchor": 33,
+  "slots": [
+   "cold-clear/week_1/dusk/4.webp",
+   "cold-clear/week_2/dusk/4.webp",
+   "cold-clear/week_3/dusk/4.webp",
+   "cold-clear/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "b8c7819a2f6dbd78b2871a7eff4aa7c019ee0852ba8bb5d4e7196f62fd4e9782",
+  "anchor": 61,
+  "slots": [
+   "cold-clear/week_1/dusk/5.webp",
+   "cold-clear/week_2/dusk/5.webp",
+   "cold-clear/week_3/dusk/5.webp",
+   "cold-clear/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "5d58c6044925911215d06dcf1848bf6603d04bb98220cbcd88f74ed4c07b0f13",
+  "anchor": 93,
+  "slots": [
+   "cold-clear/week_1/dusk/6.webp",
+   "cold-clear/week_2/dusk/6.webp",
+   "cold-clear/week_3/dusk/6.webp",
+   "cold-clear/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "e9b045413ea5995203ae0896f4b0d03f0cda245597c1f9d7e1563fe95812c0f7",
+  "anchor": null,
+  "slots": [
+   "cold-clear/week_1/dusk/7.webp",
+   "cold-clear/week_2/dusk/7.webp",
+   "cold-clear/week_3/dusk/7.webp",
+   "cold-clear/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "1da71cd80b8ecca6b78608f3e61d7374c518e4ba252ff8258c4e4e64265fc422",
+  "anchor": null,
+  "slots": [
+   "cold-clear/week_1/night/1.webp",
+   "cold-clear/week_2/night/1.webp",
+   "cold-clear/week_3/night/1.webp",
+   "cold-clear/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "8cc6367de3d1e1ccb2084168b423842ac75ae584dc7cc05600ff57f5867db19b",
+  "anchor": 68,
+  "slots": [
+   "cold-clear/week_1/night/2.webp",
+   "cold-clear/week_2/night/2.webp",
+   "cold-clear/week_3/night/2.webp",
+   "cold-clear/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "929560dd0f3239cd5abfe9959a7820a70a89246c9519112016776383c2773f32",
+  "anchor": 55,
+  "slots": [
+   "cold-clear/week_1/night/3.webp",
+   "cold-clear/week_2/night/3.webp",
+   "cold-clear/week_3/night/3.webp",
+   "cold-clear/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "7563eedc5863a72c03d73f1208b4574775e066fa9028dc678d68343df3f00abe",
+  "anchor": 76,
+  "slots": [
+   "cold-clear/week_1/night/4.webp",
+   "cold-clear/week_2/night/4.webp",
+   "cold-clear/week_3/night/4.webp",
+   "cold-clear/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "f47163b5b4102c735b81e2d976a999b4437725fd6ef6864d4bb8c73b68d9f491",
+  "anchor": 57,
+  "slots": [
+   "cold-clear/week_1/night/5.webp",
+   "cold-clear/week_2/night/5.webp",
+   "cold-clear/week_3/night/5.webp",
+   "cold-clear/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "16a1b557a12bd5d8b20c17f0816c52417f44300bd957faf5b5c740174f7eddbb",
+  "anchor": 72,
+  "slots": [
+   "cold-clear/week_1/night/6.webp",
+   "cold-clear/week_2/night/6.webp",
+   "cold-clear/week_3/night/6.webp",
+   "cold-clear/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "66c0e87e8481895b84eb721c852e4e76b76ddf306ba4dcdb09a3afc95c7e3879",
+  "anchor": 61,
+  "slots": [
+   "cold-clear/week_1/night/7.webp",
+   "cold-clear/week_2/night/7.webp",
+   "cold-clear/week_3/night/7.webp",
+   "cold-clear/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "add32aa85b80ea31df34d84ac6613e9cebc4e9aae309b134e3e584e31fd80e2d",
+  "anchor": 100,
+  "slots": [
+   "cold-clear/week_2/day/6.webp",
+   "cold-clear/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "79b25525790f0558877e3bc948e8cf147256fa648b5dba59ac0f1684317590cd",
+  "anchor": 67,
+  "slots": [
+   "fog/week_1/dawn/1.webp",
+   "fog/week_2/dawn/1.webp",
+   "fog/week_3/dawn/1.webp",
+   "fog/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "1dc5c3cfe096a5598643c1ae55f129fd5d873c23774d6183b7f450772d4c319a",
+  "anchor": 53,
+  "slots": [
+   "fog/week_1/dawn/2.webp",
+   "fog/week_2/dawn/2.webp",
+   "fog/week_3/dawn/2.webp",
+   "fog/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "6eba2bcf34237b8f9027006bdee56871e4948f1c99226e28ec9c81b93f5ed326",
+  "anchor": 39,
+  "slots": [
+   "fog/week_1/dawn/3.webp",
+   "fog/week_2/dawn/3.webp",
+   "fog/week_3/dawn/3.webp",
+   "fog/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "c697bc07025c9051315d27885325518dc508b4afe4c76a2790d9fb8bacc67f82",
+  "anchor": null,
+  "slots": [
+   "fog/week_1/dawn/4.webp",
+   "fog/week_2/dawn/4.webp",
+   "fog/week_3/dawn/4.webp",
+   "fog/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "f0a699d8f8db3baed70f9a6950b1927ec8271979e9d54b9b76820d951e00a713",
+  "anchor": 57,
+  "slots": [
+   "fog/week_1/dawn/5.webp",
+   "fog/week_2/dawn/5.webp",
+   "fog/week_3/dawn/5.webp",
+   "fog/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "88f884c93f2ae86820065486b03edb2c3a325d2df066b2337340111f97e0992f",
+  "anchor": 100,
+  "slots": [
+   "fog/week_1/dawn/6.webp",
+   "fog/week_2/dawn/6.webp",
+   "fog/week_3/dawn/6.webp",
+   "fog/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "b57f33b40e016642fd464ba0ea6c7b40cdaa6ddcecb9f1e522a3ea8f13c7c67d",
+  "anchor": 56,
+  "slots": [
+   "fog/week_1/dawn/7.webp",
+   "fog/week_2/dawn/7.webp",
+   "fog/week_3/dawn/7.webp",
+   "fog/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "cca354da10378cc7c2d412caf296630fd50ccf149b5c942ecc7e82851c85e63a",
+  "anchor": 54,
+  "slots": [
+   "fog/week_1/day/1.webp",
+   "fog/week_2/day/1.webp",
+   "fog/week_3/day/1.webp",
+   "fog/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "f23e83d55db33bbc82806bcca5d8cffafcbe05f0d847db1dd4643b49143fbfbb",
+  "anchor": 61,
+  "slots": [
+   "fog/week_1/day/2.webp",
+   "fog/week_2/day/2.webp",
+   "fog/week_3/day/2.webp",
+   "fog/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "7b6de3ab0922e431c961ec7c14d5761ddd88f75f10a7a6eed78e7ef8ee7736c1",
+  "anchor": 61,
+  "slots": [
+   "fog/week_1/day/3.webp",
+   "fog/week_2/day/3.webp",
+   "fog/week_3/day/3.webp",
+   "fog/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "4c74b554204ff9188705b2876d241be7ff642d44aafb235a7243fd36db529c91",
+  "anchor": 43,
+  "slots": [
+   "fog/week_1/day/4.webp",
+   "fog/week_2/day/4.webp",
+   "fog/week_3/day/4.webp",
+   "fog/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "e202753ff25acc7563e0c9c9418d5b847bec7419995eb6ba0de4682295b95b35",
+  "anchor": 61,
+  "slots": [
+   "fog/week_1/day/5.webp",
+   "fog/week_2/day/5.webp",
+   "fog/week_3/day/5.webp",
+   "fog/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "b0695f2cebc73b1c336231c5c55783024d81d6112c66602a0ea32f7a4385b9ac",
+  "anchor": 43,
+  "slots": [
+   "fog/week_1/day/6.webp",
+   "fog/week_2/day/6.webp",
+   "fog/week_3/day/6.webp",
+   "fog/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "3fbe216c40e0809485e1371daae089dfedaae71cf0439349f3fb7d1a14f66c3c",
+  "anchor": 64,
+  "slots": [
+   "fog/week_1/day/7.webp",
+   "fog/week_2/day/7.webp",
+   "fog/week_3/day/7.webp",
+   "fog/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "fe5774dcc9216ef0deb008c2aca645d4c9e29e3bda7c767fa3791e2ff1b713cb",
+  "anchor": 66,
+  "slots": [
+   "fog/week_1/dusk/1.webp",
+   "fog/week_2/dusk/1.webp",
+   "fog/week_3/dusk/1.webp",
+   "fog/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "26260612a6f27ce8718acbcb329b41be199d30b98ce1ff9dd504c8a104590a05",
+  "anchor": 71,
+  "slots": [
+   "fog/week_1/dusk/2.webp",
+   "fog/week_2/dusk/2.webp",
+   "fog/week_3/dusk/2.webp",
+   "fog/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "957ef16d9b295921cf572f6089814b19293d8feed88483a3bc594f28dda9dc2b",
+  "anchor": 61,
+  "slots": [
+   "fog/week_1/dusk/3.webp",
+   "fog/week_2/dusk/3.webp",
+   "fog/week_3/dusk/3.webp",
+   "fog/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "28a6f313803c3fe5e5b7f72c8c2cd1cd1bdf70354f2b1bcf6b2498a8cd470ee4",
+  "anchor": 56,
+  "slots": [
+   "fog/week_1/dusk/4.webp",
+   "fog/week_2/dusk/4.webp",
+   "fog/week_3/dusk/4.webp",
+   "fog/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "336f41869884bd7b62ab2c3e346f56b611c00f4c4ef109fe30b9897c1017cf55",
+  "anchor": 69,
+  "slots": [
+   "fog/week_1/dusk/5.webp",
+   "fog/week_2/dusk/5.webp",
+   "fog/week_3/dusk/5.webp",
+   "fog/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "ebac96bef8e4ead03dac58563388ce45c0d74349c626efaab06a1ad1b9594fa4",
+  "anchor": 57,
+  "slots": [
+   "fog/week_1/dusk/6.webp",
+   "fog/week_2/dusk/6.webp",
+   "fog/week_3/dusk/6.webp",
+   "fog/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "a67edaa1585b4651dffc326c59ef46b72b5fb0eee583da7fa8af2d680b166b32",
+  "anchor": 48,
+  "slots": [
+   "fog/week_1/dusk/7.webp",
+   "fog/week_2/dusk/7.webp",
+   "fog/week_3/dusk/7.webp",
+   "fog/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "9a85d13f82d172a1bada67c50a401de765c8caf75aefc7e5ba34c9eed7845c1b",
+  "anchor": 55,
+  "slots": [
+   "fog/week_1/night/1.webp",
+   "fog/week_2/night/1.webp",
+   "fog/week_3/night/1.webp",
+   "fog/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "216875afead72d381a78a3a8f1767bc818a1945cc97396f019acdab8c84c719e",
+  "anchor": 32,
+  "slots": [
+   "fog/week_1/night/2.webp",
+   "fog/week_2/night/2.webp",
+   "fog/week_3/night/2.webp",
+   "fog/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "cd60e0b23ac91cdb6b939f82454e1366d61aff1886d64f5a74b97df0eed1ef7d",
+  "anchor": 41,
+  "slots": [
+   "fog/week_1/night/3.webp",
+   "fog/week_2/night/3.webp",
+   "fog/week_3/night/3.webp",
+   "fog/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "a94870b02afaed5e430b3fd510139deff6c1d927eaf7a4f070cf5fa6e171d612",
+  "anchor": 44,
+  "slots": [
+   "fog/week_1/night/4.webp",
+   "fog/week_2/night/4.webp",
+   "fog/week_3/night/4.webp",
+   "fog/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "25ba4c136948e57115d89ab6468a8b0b3a78672c6fdb108b72ee4f1944b7c8ac",
+  "anchor": 100,
+  "slots": [
+   "fog/week_1/night/5.webp",
+   "fog/week_2/night/5.webp",
+   "fog/week_3/night/5.webp",
+   "fog/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "bba8e41bc3751f7b975ea41bdd0d403319a86495cd871485196b028ebd4b26ec",
+  "anchor": 65,
+  "slots": [
+   "fog/week_1/night/6.webp",
+   "fog/week_2/night/6.webp",
+   "fog/week_3/night/6.webp",
+   "fog/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "d5eb736e24642fabd374c37e8b4c7bbfed0dfa18f0af307714d2c4f327bf617d",
+  "anchor": 49,
+  "slots": [
+   "fog/week_1/night/7.webp",
+   "fog/week_2/night/7.webp",
+   "fog/week_3/night/7.webp",
+   "fog/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "844ccaf4333e68341736fd9b55e945d7c6addee3ce85229251d45d15175e5cb7",
+  "anchor": 44,
+  "slots": [
+   "heat/week_1/dawn/1.webp",
+   "heat/week_2/dawn/1.webp",
+   "heat/week_3/dawn/1.webp",
+   "heat/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "3d5ba6fd7a8172083aa66e8f1ed007311b529a91740a3a359e005bc2a5f80405",
+  "anchor": 69,
+  "slots": [
+   "heat/week_1/dawn/2.webp",
+   "heat/week_2/dawn/2.webp",
+   "heat/week_3/dawn/2.webp",
+   "heat/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "4c12a169237911506240ef8b71f61de0fe0a77888ac40c9f684c32e0ac66be03",
+  "anchor": 69,
+  "slots": [
+   "heat/week_1/dawn/3.webp",
+   "heat/week_2/dawn/3.webp",
+   "heat/week_3/dawn/3.webp",
+   "heat/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "9aef9333db41486fc9068b54e4a1b1237b77b17a3663ed01ffe5ace4f2bfade1",
+  "anchor": 100,
+  "slots": [
+   "heat/week_1/dawn/4.webp",
+   "heat/week_2/dawn/4.webp",
+   "heat/week_3/dawn/4.webp",
+   "heat/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "c19d58094ef454f9a14aaeed8293979b889e42d16d21e34b74328369a09381e7",
+  "anchor": 58,
+  "slots": [
+   "heat/week_1/dawn/5.webp",
+   "heat/week_2/dawn/5.webp",
+   "heat/week_3/dawn/5.webp",
+   "heat/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "56b235bb6107af5172eaac5a1078ccbc24fc029dc5ee0850e5e59e55d7fd2bef",
+  "anchor": 55,
+  "slots": [
+   "heat/week_1/dawn/6.webp",
+   "heat/week_2/dawn/6.webp",
+   "heat/week_3/dawn/6.webp",
+   "heat/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "9e79cedfe3b233b305eacc156e3e6d7068b118de20c7ffcb2d424ae75e0d9581",
+  "anchor": 83,
+  "slots": [
+   "heat/week_1/dawn/7.webp",
+   "heat/week_2/dawn/7.webp",
+   "heat/week_3/dawn/7.webp",
+   "heat/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "b1ae5ed3f1e46c448d3f3ab4e9f8f0d03e8f223e70f837f60a63693230ed5044",
+  "anchor": 68,
+  "slots": [
+   "heat/week_1/day/1.webp",
+   "heat/week_2/day/1.webp",
+   "heat/week_3/day/1.webp",
+   "heat/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "46cd4cefcca2ba1be3324f0744729d148c430aa721857f0666f6d130c30820a9",
+  "anchor": 59,
+  "slots": [
+   "heat/week_1/day/2.webp",
+   "heat/week_2/day/2.webp",
+   "heat/week_3/day/2.webp",
+   "heat/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "af6a66e2446f1fb317d2018ea116220ffb013a89506c60892a55fffc246aae4d",
+  "anchor": 53,
+  "slots": [
+   "heat/week_1/day/3.webp",
+   "heat/week_2/day/3.webp",
+   "heat/week_3/day/3.webp",
+   "heat/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "dbadc260a0fbdeff4fc15a7cb347bbacb2def1d5c4fd762e8f398863fb1a4e1b",
+  "anchor": 76,
+  "slots": [
+   "heat/week_1/day/4.webp",
+   "heat/week_2/day/4.webp",
+   "heat/week_3/day/4.webp",
+   "heat/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "1a02b7d7a1d8b2a77ca44e3eb9b60a9a5eef1225a703ee0bf451d55b3b470684",
+  "anchor": 66,
+  "slots": [
+   "heat/week_1/day/5.webp",
+   "heat/week_2/day/5.webp",
+   "heat/week_3/day/5.webp",
+   "heat/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "bc3c55df9e9a604fffdf4d44b6137a773050f290f45ddd5d08d57190d501abec",
+  "anchor": 56,
+  "slots": [
+   "heat/week_1/day/6.webp",
+   "heat/week_2/day/6.webp",
+   "heat/week_3/day/6.webp",
+   "heat/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "0af3b5a8e364791761c448e994ad918b8d1a69ff13beb72b01f9fb59b5253b06",
+  "anchor": 70,
+  "slots": [
+   "heat/week_1/day/7.webp",
+   "heat/week_2/day/7.webp",
+   "heat/week_3/day/7.webp",
+   "heat/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "6ee74c96c0bc3a153e5dff93662d560463b98abfbad53178ad56539019f3ae54",
+  "anchor": 63,
+  "slots": [
+   "heat/week_1/dusk/1.webp",
+   "heat/week_2/dusk/1.webp",
+   "heat/week_3/dusk/1.webp",
+   "heat/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "8008693b97ee6e635f2a004bfa7e5c54373375dfd37db0dad0307985a0c4f6ad",
+  "anchor": 100,
+  "slots": [
+   "heat/week_1/dusk/2.webp",
+   "heat/week_2/dusk/2.webp",
+   "heat/week_3/dusk/2.webp",
+   "heat/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "7b2ce5e4f66ef2bc28ab90f7786777af67a93ce46adb6dac8512ee09f2d530b6",
+  "anchor": 69,
+  "slots": [
+   "heat/week_1/dusk/3.webp",
+   "heat/week_2/dusk/3.webp",
+   "heat/week_3/dusk/3.webp",
+   "heat/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "b2c32c8589039a7a03205c598acc52f6bc50853fa5ebc78042b978d9863e8e8d",
+  "anchor": 81,
+  "slots": [
+   "heat/week_1/dusk/4.webp",
+   "heat/week_2/dusk/4.webp",
+   "heat/week_3/dusk/4.webp",
+   "heat/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "1affc7f9fe4aa9fb2d37c320c8b3f406c21c8232a8819ece93b3ae83cc84751c",
+  "anchor": 89,
+  "slots": [
+   "heat/week_1/dusk/5.webp",
+   "heat/week_2/dusk/5.webp",
+   "heat/week_3/dusk/5.webp",
+   "heat/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "d5f43207994b887a457959e59d79b4067eb68c9b33187bdae6831051cb2a90ae",
+  "anchor": 55,
+  "slots": [
+   "heat/week_1/dusk/6.webp",
+   "heat/week_2/dusk/6.webp",
+   "heat/week_3/dusk/6.webp",
+   "heat/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "243eadef3d4887895250fa67e432b63253ddfc57169498919ed942bead508c96",
+  "anchor": 87,
+  "slots": [
+   "heat/week_1/dusk/7.webp",
+   "heat/week_2/dusk/7.webp",
+   "heat/week_3/dusk/7.webp",
+   "heat/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "1c3fdb556279b30576ec5e4637649dd429d4671bedf628cc57f6a0f259f7af9a",
+  "anchor": 51,
+  "slots": [
+   "heat/week_1/night/1.webp",
+   "heat/week_2/night/1.webp",
+   "heat/week_3/night/1.webp",
+   "heat/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "6e508ccb58cc006631b9de70c980906e285570f1ac7623acbac8979ea9674512",
+  "anchor": 31,
+  "slots": [
+   "heat/week_1/night/2.webp",
+   "heat/week_2/night/2.webp",
+   "heat/week_3/night/2.webp",
+   "heat/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "99418a1761068f4143c08dc79dad8947345efa6403bc23a8479d96ecb42a2433",
+  "anchor": 77,
+  "slots": [
+   "heat/week_1/night/3.webp",
+   "heat/week_2/night/3.webp",
+   "heat/week_3/night/3.webp",
+   "heat/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "12dc08356d8858edc9b684051c996f4d519977e7e0108a1924f6faebf35096c9",
+  "anchor": 74,
+  "slots": [
+   "heat/week_1/night/4.webp",
+   "heat/week_2/night/4.webp",
+   "heat/week_3/night/4.webp",
+   "heat/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "09999b1e33e4f7bdafb176e51602254aef7d00d3d96899cd1f2afdb57ea8f4c8",
+  "anchor": null,
+  "slots": [
+   "heat/week_1/night/5.webp",
+   "heat/week_2/night/5.webp",
+   "heat/week_3/night/5.webp",
+   "heat/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "3b370a59f9fdefff4b2c898d5ce0863a784e3d3fed71104c791a42be3e822b6d",
+  "anchor": 68,
+  "slots": [
+   "heat/week_1/night/6.webp",
+   "heat/week_2/night/6.webp",
+   "heat/week_3/night/6.webp",
+   "heat/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "fb15a66aa4b13408a30a34cec9afb32583e6503d63c391b9f1088265296c66e5",
+  "anchor": 43,
+  "slots": [
+   "heat/week_1/night/7.webp",
+   "heat/week_2/night/7.webp",
+   "heat/week_3/night/7.webp",
+   "heat/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "afa49b48781a942c28d1b9ad44747326e5f0aa9600bcdeb81d87d547b7e6dbd1",
+  "anchor": 42,
+  "slots": [
+   "rain/week_1/dawn/1.webp",
+   "rain/week_2/dawn/1.webp",
+   "rain/week_3/dawn/1.webp",
+   "rain/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "88ab478a71b1137fbed523aa9fda3a9c4061f9d6977766a2b8b2c3586fcc051b",
+  "anchor": 58,
+  "slots": [
+   "rain/week_1/dawn/2.webp",
+   "rain/week_2/dawn/2.webp",
+   "rain/week_3/dawn/2.webp",
+   "rain/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "ebd82e69c2ef0fe085fdffbe09f779494af4bc16774fd8e5c020ac799ef6e70e",
+  "anchor": 55,
+  "slots": [
+   "rain/week_1/dawn/3.webp",
+   "rain/week_2/dawn/3.webp",
+   "rain/week_3/dawn/3.webp",
+   "rain/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "d8d6e0e7fcf4fc1b962b722603f6881e324c2b80e41540d79717404f40138b1c",
+  "anchor": 55,
+  "slots": [
+   "rain/week_1/dawn/4.webp",
+   "rain/week_2/dawn/4.webp",
+   "rain/week_3/dawn/4.webp",
+   "rain/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "80639465edba98bf219e02b7c4d40e5953d718b51ed03a6ba2df6afd287ed1d0",
+  "anchor": 49,
+  "slots": [
+   "rain/week_1/dawn/5.webp",
+   "rain/week_2/dawn/5.webp",
+   "rain/week_3/dawn/5.webp",
+   "rain/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "6464ed68f19d5cf88ded513d5f7d4ba919815d72ac959c53dc50f4517e9a3045",
+  "anchor": 100,
+  "slots": [
+   "rain/week_1/dawn/6.webp",
+   "rain/week_2/dawn/6.webp",
+   "rain/week_3/dawn/6.webp",
+   "rain/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "9ef8811a702cb2d33ab7fd83a502a7d8fc1af7faec1a84b7d094dc07b0a4061e",
+  "anchor": 83,
+  "slots": [
+   "rain/week_1/dawn/7.webp",
+   "rain/week_2/dawn/7.webp",
+   "rain/week_3/dawn/7.webp",
+   "rain/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "853aefffc7e2f6ea841820c9f4527dae412a2106d1077bfad5283d45b11cbaa4",
+  "anchor": 48,
+  "slots": [
+   "rain/week_1/day/1.webp",
+   "rain/week_3/day/1.webp"
+  ]
+ },
+ {
+  "hash": "868fd901ef1480a15c609074ed3b7e974dfcf09e749ec0ecc4ef355eeb2184d9",
+  "anchor": 47,
+  "slots": [
+   "rain/week_1/day/2.webp",
+   "rain/week_3/day/2.webp"
+  ]
+ },
+ {
+  "hash": "486fd16a92387ea8ef5060c85cfa64dc96f362dda49282638618c7112418d33a",
+  "anchor": 61,
+  "slots": [
+   "rain/week_1/day/3.webp",
+   "rain/week_3/day/3.webp"
+  ]
+ },
+ {
+  "hash": "e617f1822eafba8cf27112745de345969482f4be105b27bc698c2122841c0129",
+  "anchor": 50,
+  "slots": [
+   "rain/week_1/day/4.webp",
+   "rain/week_3/day/4.webp"
+  ]
+ },
+ {
+  "hash": "3db700a622060a8f96d8d5ee12fbf6b1d9d85d9a23eaa181e3e4aad57baf61ab",
+  "anchor": 57,
+  "slots": [
+   "rain/week_1/day/5.webp",
+   "rain/week_3/day/5.webp"
+  ]
+ },
+ {
+  "hash": "f0aee457348824eb2dd50825620bdcc6a0a9d6cbe90c3c168df5c3ec431b7e0f",
+  "anchor": 87,
+  "slots": [
+   "rain/week_1/day/6.webp",
+   "rain/week_3/day/6.webp"
+  ]
+ },
+ {
+  "hash": "5a08fa13f99d2d2733aaaf4977ef131595df457eb0eacbfe396d8f8280543462",
+  "anchor": null,
+  "slots": [
+   "rain/week_1/day/7.webp",
+   "rain/week_3/day/7.webp"
+  ]
+ },
+ {
+  "hash": "71648fc051b36275534962f5627ad4c6c2979a1322392f62e5ba7b9773b4da6a",
+  "anchor": 38,
+  "slots": [
+   "rain/week_1/dusk/1.webp",
+   "rain/week_2/dusk/1.webp",
+   "rain/week_3/dusk/1.webp",
+   "rain/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "c892be6f44d78716392adbe0f0ade0a4f5638f52df562f0e02088a4c284ca8b3",
+  "anchor": 35,
+  "slots": [
+   "rain/week_1/dusk/2.webp",
+   "rain/week_2/dusk/2.webp",
+   "rain/week_3/dusk/2.webp",
+   "rain/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "5e8246208843fe0a835c719744d6bf49971720f5f2b6985e6839742adf8d64f3",
+  "anchor": 72,
+  "slots": [
+   "rain/week_1/dusk/3.webp",
+   "rain/week_2/dusk/3.webp",
+   "rain/week_3/dusk/3.webp",
+   "rain/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "817d8e1e843eea68438c39160fa0245e3e63d1a163b0e956e5c60ed810fd024a",
+  "anchor": 42,
+  "slots": [
+   "rain/week_1/dusk/4.webp",
+   "rain/week_2/dusk/4.webp",
+   "rain/week_3/dusk/4.webp",
+   "rain/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "0b5d114ee7fd96a7a919ec3b4895250aee924b9ed6f9295187f4a57e2d18dff0",
+  "anchor": 32,
+  "slots": [
+   "rain/week_1/dusk/5.webp",
+   "rain/week_2/dusk/5.webp",
+   "rain/week_3/dusk/5.webp",
+   "rain/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "45d3aa3a916abe943da88de39d25abc520c098e0d4500af706961a633c955ec8",
+  "anchor": 55,
+  "slots": [
+   "rain/week_1/dusk/6.webp",
+   "rain/week_2/dusk/6.webp",
+   "rain/week_3/dusk/6.webp",
+   "rain/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "531aa52feade355b7e7ebe2703f509dec7cea76dcab24fa45db327830a77d332",
+  "anchor": 36,
+  "slots": [
+   "rain/week_1/dusk/7.webp",
+   "rain/week_2/dusk/7.webp",
+   "rain/week_3/dusk/7.webp",
+   "rain/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "a2510ecf3c92acadaeb955b19ccd8e88370dd55b54568db3928bcd6a5c3d3451",
+  "anchor": 50,
+  "slots": [
+   "rain/week_1/night/1.webp",
+   "rain/week_2/night/1.webp",
+   "rain/week_3/night/1.webp",
+   "rain/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "e6a67f800f6bb84d369359fa5cdfa7f7decdc601794f9af667aa603d73acde20",
+  "anchor": 48,
+  "slots": [
+   "rain/week_1/night/2.webp",
+   "rain/week_2/night/2.webp",
+   "rain/week_3/night/2.webp",
+   "rain/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "a80a9bab25ffdfc255dd87731731c27b69394d49c3a97cf118985e41b561f9bd",
+  "anchor": 50,
+  "slots": [
+   "rain/week_1/night/3.webp",
+   "rain/week_2/night/3.webp",
+   "rain/week_3/night/3.webp",
+   "rain/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "cea9050dc02b3547b0847acd69322842872836ed9138dc4ffec679d0b6f71490",
+  "anchor": 40,
+  "slots": [
+   "rain/week_1/night/4.webp",
+   "rain/week_2/night/4.webp",
+   "rain/week_3/night/4.webp",
+   "rain/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "f449894c7ba446323feb267f7ffcde2f10dbbcab90c4626ddb653c32463fba3f",
+  "anchor": 90,
+  "slots": [
+   "rain/week_1/night/5.webp",
+   "rain/week_2/night/5.webp",
+   "rain/week_3/night/5.webp",
+   "rain/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "51ffc9cf374e1ef091b5f429d9074a7b9f88874ba1f34f027cd305d1e69bcb60",
+  "anchor": 55,
+  "slots": [
+   "rain/week_1/night/6.webp",
+   "rain/week_2/night/6.webp",
+   "rain/week_3/night/6.webp",
+   "rain/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "840790135cf5a568b058c6eacda112e0226573f5c1308b1cc5fedfe8a459de1f",
+  "anchor": 45,
+  "slots": [
+   "rain/week_1/night/7.webp",
+   "rain/week_2/night/7.webp",
+   "rain/week_3/night/7.webp",
+   "rain/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "2b85cbdecded3c5f27e21081563b0112cf4c0abc15d488764fb04d8ea2cc938a",
+  "anchor": 44,
+  "slots": [
+   "rain/week_2/day/1.webp",
+   "rain/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "ea93fbda5aae8e06415ca730ec39bf8d4d944bc0803406ec2cdf82172ba6fd6b",
+  "anchor": 26,
+  "slots": [
+   "rain/week_2/day/2.webp",
+   "rain/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "9124414f81ecd38c3b7af660b63c158231154b6e1b5f33add5ef5766bdeeccdb",
+  "anchor": null,
+  "slots": [
+   "rain/week_2/day/3.webp",
+   "rain/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "652cc55ceb6e4a881abd49e33ff54a73398ff11393ab9ce32dfe277af4d16e4a",
+  "anchor": 25,
+  "slots": [
+   "rain/week_2/day/4.webp",
+   "rain/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "f59b6f76a2cd4ddfcc2389840ac9e6c99ebcf919a665898e445fdebebb064bac",
+  "anchor": 29,
+  "slots": [
+   "rain/week_2/day/5.webp",
+   "rain/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "c652e5832dbed8950f5ed3f229c9a2982d49d9c47f99c36953328a9c54621554",
+  "anchor": 56,
+  "slots": [
+   "rain/week_2/day/6.webp",
+   "rain/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "dc5ec5c77af625d56242a5e6fc95bb98559dcd13ea7bc709e8424895f9f3467d",
+  "anchor": 52,
+  "slots": [
+   "rain/week_2/day/7.webp",
+   "rain/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "82ab32f7e25cc807f5730caebc989f682279caf5213d1f500e0cef0aa9f0a64e",
+  "anchor": 55,
+  "slots": [
+   "storm/week_1/dawn/1.webp",
+   "storm/week_2/dawn/1.webp",
+   "storm/week_3/dawn/1.webp",
+   "storm/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "03b8d3e5a890aab11369d8ffc337837091e80c8e332dc5e8b2169124db8ed486",
+  "anchor": 65,
+  "slots": [
+   "storm/week_1/dawn/2.webp",
+   "storm/week_2/dawn/2.webp",
+   "storm/week_3/dawn/2.webp",
+   "storm/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "86e55c0d5dca0b19a7ed7ce3ed6307cef6ba253802b43f0dda0d894d295e4591",
+  "anchor": 47,
+  "slots": [
+   "storm/week_1/dawn/3.webp",
+   "storm/week_2/dawn/3.webp",
+   "storm/week_3/dawn/3.webp",
+   "storm/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "135baf75a010969dee221b889dff19ba23f765116e7b6b39192604f702653520",
+  "anchor": 63,
+  "slots": [
+   "storm/week_1/dawn/4.webp",
+   "storm/week_2/dawn/4.webp",
+   "storm/week_3/dawn/4.webp",
+   "storm/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "d26fb6bbee9db6057706181e2a6bfa1623a7d2a0a17e62645ab58b6fbdefbe56",
+  "anchor": 62,
+  "slots": [
+   "storm/week_1/dawn/5.webp",
+   "storm/week_2/dawn/5.webp",
+   "storm/week_3/dawn/5.webp",
+   "storm/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "8051f1c3947db45ae313770d285f8e1f01c73aeae2149e4ae7805770ab2ac7fd",
+  "anchor": 31,
+  "slots": [
+   "storm/week_1/dawn/6.webp",
+   "storm/week_2/dawn/6.webp",
+   "storm/week_3/dawn/6.webp",
+   "storm/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "d25fb1153ed0ab96e6c42e901b596e94e73a98e2b1a1efce1bcca870fdd6ac6e",
+  "anchor": 63,
+  "slots": [
+   "storm/week_1/dawn/7.webp",
+   "storm/week_2/dawn/7.webp",
+   "storm/week_3/dawn/7.webp",
+   "storm/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "da3c8d038046993d079ac0872b48cc3e314d22939cef56c88501e51954b290d3",
+  "anchor": 71,
+  "slots": [
+   "storm/week_1/day/1.webp",
+   "storm/week_3/day/1.webp"
+  ]
+ },
+ {
+  "hash": "b3e1239dd81c38710a1113cf1dff9f051dcafd2b60426ae1e27ba68ce62c6144",
+  "anchor": 53,
+  "slots": [
+   "storm/week_1/day/2.webp",
+   "storm/week_3/day/2.webp"
+  ]
+ },
+ {
+  "hash": "191654e60dfd16013b85e21e0b3002762dcf1aef24dbc896cab1c8b0c84e6ca9",
+  "anchor": 48,
+  "slots": [
+   "storm/week_1/day/3.webp",
+   "storm/week_3/day/3.webp"
+  ]
+ },
+ {
+  "hash": "1c9e8b5c756140ed990f20c7c1d64abd4dcd4dbb7a14eb7f37bf73311039a2b6",
+  "anchor": 69,
+  "slots": [
+   "storm/week_1/day/4.webp",
+   "storm/week_3/day/4.webp"
+  ]
+ },
+ {
+  "hash": "dac8823704af6a1b9bf2d2778296a7ec95b6bb7e66888e7945e80e6960cb30ec",
+  "anchor": 69,
+  "slots": [
+   "storm/week_1/day/5.webp",
+   "storm/week_3/day/5.webp"
+  ]
+ },
+ {
+  "hash": "d09eebb882b56eacaa44a04b2af3ed15f8e53f7c1bfba3611a0b4e323f5da2a0",
+  "anchor": 70,
+  "slots": [
+   "storm/week_1/day/6.webp",
+   "storm/week_3/day/6.webp"
+  ]
+ },
+ {
+  "hash": "d5ba1f11fcceaa270ef0f254f8326753737af23179b05efb29f610638955ac39",
+  "anchor": 43,
+  "slots": [
+   "storm/week_1/day/7.webp",
+   "storm/week_3/day/7.webp"
+  ]
+ },
+ {
+  "hash": "012477e282cc086683649ec1ec90c89d3f0c857d6c8a02d84448f90f0f177ab1",
+  "anchor": 43,
+  "slots": [
+   "storm/week_1/dusk/1.webp",
+   "storm/week_2/dusk/1.webp",
+   "storm/week_3/dusk/1.webp",
+   "storm/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "1bf137ccfaad57dbfcc1801342fe6ec401360ed50f7680df61ce0c1c48bf7e86",
+  "anchor": 41,
+  "slots": [
+   "storm/week_1/dusk/2.webp",
+   "storm/week_2/dusk/2.webp",
+   "storm/week_3/dusk/2.webp",
+   "storm/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "05a3ab4a3961e26cac7cf68156003ffe149cd4d6144cbe16033ccb1fca7b659c",
+  "anchor": 55,
+  "slots": [
+   "storm/week_1/dusk/3.webp",
+   "storm/week_2/dusk/3.webp",
+   "storm/week_3/dusk/3.webp",
+   "storm/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "f9af47cda240071865c3f7a7382fd8252621a86d6075582fe5a3658db7fbbe89",
+  "anchor": 43,
+  "slots": [
+   "storm/week_1/dusk/4.webp",
+   "storm/week_2/dusk/4.webp",
+   "storm/week_3/dusk/4.webp",
+   "storm/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "572a51d30dc5fe66a2a81e320d29a397f36c23d579c564d8e520f0682c8dea3b",
+  "anchor": 73,
+  "slots": [
+   "storm/week_1/dusk/5.webp",
+   "storm/week_2/dusk/5.webp",
+   "storm/week_3/dusk/5.webp",
+   "storm/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "8278f1fd2e1e369312dd78e685f5227e7901146f5712f5d00e0fa16a294df725",
+  "anchor": 47,
+  "slots": [
+   "storm/week_1/dusk/6.webp",
+   "storm/week_2/dusk/6.webp",
+   "storm/week_3/dusk/6.webp",
+   "storm/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "cb8642ad87a0a0809d2a492c7a4599263dc1725804f2d2f6de56d6de74e83ff4",
+  "anchor": 43,
+  "slots": [
+   "storm/week_1/dusk/7.webp",
+   "storm/week_2/dusk/7.webp",
+   "storm/week_3/dusk/7.webp",
+   "storm/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "9ad51600286ade33f8e1436eab7203672d3d4784692ae9e8705e686abea21dad",
+  "anchor": 50,
+  "slots": [
+   "storm/week_1/night/1.webp",
+   "storm/week_2/night/1.webp",
+   "storm/week_3/night/1.webp",
+   "storm/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "39f844a99d163b928272d769496465c6d0c04a7c6028fa98af1dd953abacd86c",
+  "anchor": 50,
+  "slots": [
+   "storm/week_1/night/2.webp",
+   "storm/week_2/night/2.webp",
+   "storm/week_3/night/2.webp",
+   "storm/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "bb0451e106356e26add3711b341d682072915d9f0134510814459b10608c970c",
+  "anchor": 29,
+  "slots": [
+   "storm/week_1/night/3.webp",
+   "storm/week_2/night/3.webp",
+   "storm/week_3/night/3.webp",
+   "storm/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "ce5d0f16ddede9cc1e32f5052df2960ef6ad5740ab39f347efc318835c38a485",
+  "anchor": 50,
+  "slots": [
+   "storm/week_1/night/4.webp",
+   "storm/week_2/night/4.webp",
+   "storm/week_3/night/4.webp",
+   "storm/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "b207cb7f098385091a52773bc794ac2eb27b07643bdcd781b084915a9529592e",
+  "anchor": 50,
+  "slots": [
+   "storm/week_1/night/5.webp",
+   "storm/week_2/night/5.webp",
+   "storm/week_3/night/5.webp",
+   "storm/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "2dc9d10318b7f3ff5e8a5e75dd546822358c1ff9450e869086093217256d6a19",
+  "anchor": 42,
+  "slots": [
+   "storm/week_1/night/6.webp",
+   "storm/week_2/night/6.webp",
+   "storm/week_3/night/6.webp",
+   "storm/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "a7e3f5461ad2e6711e370e4577008642f883ebd64beb0feeb67ff048749858bf",
+  "anchor": 23,
+  "slots": [
+   "storm/week_1/night/7.webp",
+   "storm/week_2/night/7.webp",
+   "storm/week_3/night/7.webp",
+   "storm/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "32e5db4cd2f6fea1a9692db9673518a70420c88508aee5a83c7cfd8027a45281",
+  "anchor": 64,
+  "slots": [
+   "storm/week_2/day/1.webp",
+   "storm/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "552cf0a869eedd9e7c4ebbefdb7291286d589ee60f5d1d0c6982e297ad8ea2c1",
+  "anchor": 62,
+  "slots": [
+   "storm/week_2/day/2.webp",
+   "storm/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "77077da42999c1f4e4d5d7527e73fd44b1d2f2c793faa24a52e2fb8073f319cc",
+  "anchor": 55,
+  "slots": [
+   "storm/week_2/day/3.webp",
+   "storm/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "181d7c88356334cbdf56dae85b4419b985b3ff4159593483c7c402d0f97f59cf",
+  "anchor": 71,
+  "slots": [
+   "storm/week_2/day/4.webp",
+   "storm/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "818a6e89a5f5ba80c9e5aca68d56a23f7fe924a5c711dac80f7879f30e9c1261",
+  "anchor": 49,
+  "slots": [
+   "storm/week_2/day/5.webp",
+   "storm/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "e3f7fefc2b23dfeca5393d02c346bee81d0a5abaced0dfa87490adf8296fb6aa",
+  "anchor": 67,
+  "slots": [
+   "storm/week_2/day/6.webp",
+   "storm/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "72425df6ac895ae08dfa8c32564e7be4c50d659894e4b23cc96868709e597e41",
+  "anchor": 69,
+  "slots": [
+   "storm/week_2/day/7.webp",
+   "storm/week_4/day/7.webp"
+  ]
+ },
+ {
+  "hash": "39021494d6a3f746a0eadcb74e6ab8a2c1f43d05b7ff798d84e319213b77c627",
+  "anchor": 60,
+  "slots": [
+   "wind/week_1/dawn/1.webp",
+   "wind/week_2/dawn/1.webp",
+   "wind/week_3/dawn/1.webp",
+   "wind/week_4/dawn/1.webp"
+  ]
+ },
+ {
+  "hash": "01082a853faf6df7bb29951b85ec914c4141c0761c5ae0cc36da0f583a50a273",
+  "anchor": 55,
+  "slots": [
+   "wind/week_1/dawn/2.webp",
+   "wind/week_2/dawn/2.webp",
+   "wind/week_3/dawn/2.webp",
+   "wind/week_4/dawn/2.webp"
+  ]
+ },
+ {
+  "hash": "691f699747f17e9ba54a860761005693533b1a38aee000dd4cda8ac0c69e0c7c",
+  "anchor": 55,
+  "slots": [
+   "wind/week_1/dawn/3.webp",
+   "wind/week_2/dawn/3.webp",
+   "wind/week_3/dawn/3.webp",
+   "wind/week_4/dawn/3.webp"
+  ]
+ },
+ {
+  "hash": "9728190bc67c9bf3fd0ef7d2dccbe2cbb8bb9da3f14a8694e6dc75d291dd5080",
+  "anchor": 39,
+  "slots": [
+   "wind/week_1/dawn/4.webp",
+   "wind/week_2/dawn/4.webp",
+   "wind/week_3/dawn/4.webp",
+   "wind/week_4/dawn/4.webp"
+  ]
+ },
+ {
+  "hash": "b9211ac24b2e2e9701060986d302eafb3aa5d0844b6da87a3450d489f9082178",
+  "anchor": 56,
+  "slots": [
+   "wind/week_1/dawn/5.webp",
+   "wind/week_2/dawn/5.webp",
+   "wind/week_3/dawn/5.webp",
+   "wind/week_4/dawn/5.webp"
+  ]
+ },
+ {
+  "hash": "f60a403312467b3d8a4fdcf64f42b836abce99efc72209df53a22fffd96fc37c",
+  "anchor": 96,
+  "slots": [
+   "wind/week_1/dawn/6.webp",
+   "wind/week_2/dawn/6.webp",
+   "wind/week_3/dawn/6.webp",
+   "wind/week_4/dawn/6.webp"
+  ]
+ },
+ {
+  "hash": "ebf8739c63fe226d2b2e8923be9bbf5fedac384b6f4fd179391ba814c5aeb9d0",
+  "anchor": 87,
+  "slots": [
+   "wind/week_1/dawn/7.webp",
+   "wind/week_2/dawn/7.webp",
+   "wind/week_3/dawn/7.webp",
+   "wind/week_4/dawn/7.webp"
+  ]
+ },
+ {
+  "hash": "578472c58967b6e13aa85be9082f3852f981c4944547cedacfdc081e348c1c7e",
+  "anchor": 46,
+  "slots": [
+   "wind/week_1/day/1.webp",
+   "wind/week_3/day/1.webp"
+  ]
+ },
+ {
+  "hash": "3442cc22fc1e323c853666d76576690b9d429950f159c9d4c62f0a3909b15e1e",
+  "anchor": 16,
+  "slots": [
+   "wind/week_1/day/2.webp",
+   "wind/week_3/day/2.webp"
+  ]
+ },
+ {
+  "hash": "d656b20a224e9108750856919cf8ae8e30fff2b81fa57d7d27be04e098bdb914",
+  "anchor": 39,
+  "slots": [
+   "wind/week_1/day/3.webp",
+   "wind/week_3/day/3.webp"
+  ]
+ },
+ {
+  "hash": "259aec698a6d03f953958ba942f937548b5ab8a8879179259a4d1bd557a289fc",
+  "anchor": 43,
+  "slots": [
+   "wind/week_1/day/4.webp",
+   "wind/week_3/day/4.webp"
+  ]
+ },
+ {
+  "hash": "7cd322576ac98a21328191adea57f69d0a00c434b04332bfb19cf09f166f38ae",
+  "anchor": 82,
+  "slots": [
+   "wind/week_1/day/5.webp",
+   "wind/week_3/day/5.webp"
+  ]
+ },
+ {
+  "hash": "df3033afec4a18edec34602b29a703a5bd399dc5cc16df2f1d8894accb02ca88",
+  "anchor": 55,
+  "slots": [
+   "wind/week_1/day/6.webp",
+   "wind/week_3/day/6.webp"
+  ]
+ },
+ {
+  "hash": "3017aed2600791455479309d60a5c74598a70e4ef158f6b452993f16b76e3ac8",
+  "anchor": 61,
+  "slots": [
+   "wind/week_1/day/7.webp",
+   "wind/week_3/day/7.webp"
+  ]
+ },
+ {
+  "hash": "4a0b5d3b10ec517285cbdd3954ca7bcc19284559273995988a60b27c2d241cda",
+  "anchor": 75,
+  "slots": [
+   "wind/week_1/dusk/1.webp",
+   "wind/week_2/dusk/1.webp",
+   "wind/week_3/dusk/1.webp",
+   "wind/week_4/dusk/1.webp"
+  ]
+ },
+ {
+  "hash": "5813c7f5260837814ef66d1ff1373d2edd7e22bdc6f8755b3576f976ced33d80",
+  "anchor": 91,
+  "slots": [
+   "wind/week_1/dusk/2.webp",
+   "wind/week_2/dusk/2.webp",
+   "wind/week_3/dusk/2.webp",
+   "wind/week_4/dusk/2.webp"
+  ]
+ },
+ {
+  "hash": "55f1d80fdf9d654f2649d20f4c9ebf7c3b9ccf93c87aef6a6f65fb37645ddc85",
+  "anchor": 30,
+  "slots": [
+   "wind/week_1/dusk/3.webp",
+   "wind/week_2/dusk/3.webp",
+   "wind/week_3/dusk/3.webp",
+   "wind/week_4/dusk/3.webp"
+  ]
+ },
+ {
+  "hash": "c2bc4bc434666ee3fca00c7c2ef2d03960fc330efd74dfdc6388ae464d69ac36",
+  "anchor": 50,
+  "slots": [
+   "wind/week_1/dusk/4.webp",
+   "wind/week_2/dusk/4.webp",
+   "wind/week_3/dusk/4.webp",
+   "wind/week_4/dusk/4.webp"
+  ]
+ },
+ {
+  "hash": "cb0804cb6b7b16d97e4b4e745a9f2c6bebe1afba41a364eae68e70e98d806fcf",
+  "anchor": 82,
+  "slots": [
+   "wind/week_1/dusk/5.webp",
+   "wind/week_2/dusk/5.webp",
+   "wind/week_3/dusk/5.webp",
+   "wind/week_4/dusk/5.webp"
+  ]
+ },
+ {
+  "hash": "7c81a1ae1c2c96154fda708d1915bd2a30c5392cda8fa5da4785adc560f46e86",
+  "anchor": 50,
+  "slots": [
+   "wind/week_1/dusk/6.webp",
+   "wind/week_2/dusk/6.webp",
+   "wind/week_3/dusk/6.webp",
+   "wind/week_4/dusk/6.webp"
+  ]
+ },
+ {
+  "hash": "fbba3dfe68594e108ddd289f746f86ae1a6e0fe918d5bd0f3cd9e0b3341432f7",
+  "anchor": 52,
+  "slots": [
+   "wind/week_1/dusk/7.webp",
+   "wind/week_2/dusk/7.webp",
+   "wind/week_3/dusk/7.webp",
+   "wind/week_4/dusk/7.webp"
+  ]
+ },
+ {
+  "hash": "13f86b7909396e0e9edd88783197f94bb9412c74a2ce266625862426e234ba76",
+  "anchor": 83,
+  "slots": [
+   "wind/week_1/night/1.webp",
+   "wind/week_2/night/1.webp",
+   "wind/week_3/night/1.webp",
+   "wind/week_4/night/1.webp"
+  ]
+ },
+ {
+  "hash": "3ee09fa71a7613faceb044858e622ab630f1b5a5becfcea427d625c5e581c681",
+  "anchor": 56,
+  "slots": [
+   "wind/week_1/night/2.webp",
+   "wind/week_2/night/2.webp",
+   "wind/week_3/night/2.webp",
+   "wind/week_4/night/2.webp"
+  ]
+ },
+ {
+  "hash": "360fe761dd56984fe5246331628e0bfc369f64ae903790639d83357d0306cfab",
+  "anchor": 50,
+  "slots": [
+   "wind/week_1/night/3.webp",
+   "wind/week_2/night/3.webp",
+   "wind/week_3/night/3.webp",
+   "wind/week_4/night/3.webp"
+  ]
+ },
+ {
+  "hash": "3561a9c4d6b2427b4b24ff3828531dc948c4c387c54f3372fbff91bf90972872",
+  "anchor": 50,
+  "slots": [
+   "wind/week_1/night/4.webp",
+   "wind/week_2/night/4.webp",
+   "wind/week_3/night/4.webp",
+   "wind/week_4/night/4.webp"
+  ]
+ },
+ {
+  "hash": "d1a05b5478ab6c1333917f0fbe31b565b1c1d05444e6f5e4ffcf62e32c449c88",
+  "anchor": 50,
+  "slots": [
+   "wind/week_1/night/5.webp",
+   "wind/week_2/night/5.webp",
+   "wind/week_3/night/5.webp",
+   "wind/week_4/night/5.webp"
+  ]
+ },
+ {
+  "hash": "9248c64fdecc1a45432aa41c045977d64504e02c95c6aab72db2800553871d3e",
+  "anchor": 64,
+  "slots": [
+   "wind/week_1/night/6.webp",
+   "wind/week_2/night/6.webp",
+   "wind/week_3/night/6.webp",
+   "wind/week_4/night/6.webp"
+  ]
+ },
+ {
+  "hash": "5d44b24259176cce356e97b116c34741eeb8a10f27cdd552d9a04678fe395463",
+  "anchor": 50,
+  "slots": [
+   "wind/week_1/night/7.webp",
+   "wind/week_2/night/7.webp",
+   "wind/week_3/night/7.webp",
+   "wind/week_4/night/7.webp"
+  ]
+ },
+ {
+  "hash": "5306c0597333e511c03125bd43324c96fa22cea4337c45c1e718453f328bb890",
+  "anchor": 50,
+  "slots": [
+   "wind/week_2/day/1.webp",
+   "wind/week_4/day/1.webp"
+  ]
+ },
+ {
+  "hash": "afe79b6ded39280e27ad59f973b407e4ad35db75ca74c03788b9196ddabefdbf",
+  "anchor": 90,
+  "slots": [
+   "wind/week_2/day/2.webp",
+   "wind/week_4/day/2.webp"
+  ]
+ },
+ {
+  "hash": "9204050ecced654d1de0d3522cf145e2cc110b4aa1adcfeddbadca001445cfbb",
+  "anchor": 44,
+  "slots": [
+   "wind/week_2/day/3.webp",
+   "wind/week_4/day/3.webp"
+  ]
+ },
+ {
+  "hash": "11312da815eb96a457a52b90da420cc20a665e644754d0d936e248e053661481",
+  "anchor": 50,
+  "slots": [
+   "wind/week_2/day/4.webp",
+   "wind/week_4/day/4.webp"
+  ]
+ },
+ {
+  "hash": "52fb371c628b68e4a80eb44a76273d461e1200cd39d5ee5c748784587ad08aeb",
+  "anchor": 50,
+  "slots": [
+   "wind/week_2/day/5.webp",
+   "wind/week_4/day/5.webp"
+  ]
+ },
+ {
+  "hash": "94ea185a88df3838956c309727980390c08708526029ebc13e7daa0bd3d79341",
+  "anchor": 50,
+  "slots": [
+   "wind/week_2/day/6.webp",
+   "wind/week_4/day/6.webp"
+  ]
+ },
+ {
+  "hash": "66854831dff3a5b9b6f16c2bc9698ceee75566bdd948469f08ff54d09606d971",
+  "anchor": 50,
+  "slots": [
+   "wind/week_2/day/7.webp",
+   "wind/week_4/day/7.webp"
+  ]
+ }
+]

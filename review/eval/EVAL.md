@@ -282,6 +282,85 @@ space, the number stays back), fixes the fine print, and touches no ruling. C an
 
 ---
 
+## 4b. Home option D — the blank slate (24 Sept, Al's follow-up brief)
+
+Branch `design/home-options` only (main merged into it first so the page and these scripts travel with it;
+nothing on main). `?home=d`; without the parameter nothing loads and today's Home is unchanged (standing
+fold gate on this build: 80/80; D's desktop render is pixel-identical to today's — 0 of 3.9 M channels
+differ by more than 24).
+
+**What D is**: the photograph edge to edge, top to bottom (`.hero-card` fixed, no card, no inset); the
+temperature top left, the biggest thing on screen (Onest 300, `clamp(4rem, min(27vw, 16vh), 8.5rem)` —
+112 px on Al's phone), "Probably" in gold + the condition line under it (`#temp` as `display: contents` in
+a grid, no DOM moves); the joke at the bottom, centred like a subtitle, on a fade whose last stop sits
+above the first line (0.62, as the shipped caption was measured to need); one quiet line under it —
+Low · High · Rain · Wind (with gusts when renderStatsRow shows them) · sources agree — composed from the
+text the app already renders, so every word is the app's own in all five languages; Share as a button on
+the photo; the nav kept (Home, Weekly, Search, Settings) on the photo's dark foot; Hourly and the week in a
+sheet that opens from a handle ("Hourly · Weekly", tap or drag) or a swipe up on the photo. The sheet's
+rows are built from the rendered Hourly and Weekly lists — the ad slots stay on those screens, so the
+sheet (part of Home) has none (measured: 24 hours, 7 days, 0 ad slots). No new copy: the labels are read
+off the app (`#homeHourlyLabel`, `#navWeek`, `#navShare`, the week title), so no zu/xh/st transcreation
+was needed and none went to lang-check.
+
+**Changed from the sketch, with the evidence**
+- *The subtitle rises when the picture needs the bottom.* D shows the whole photograph, and the
+  library's subjects often sit low (the photographs were ruled for a band across the middle). By Al's crop
+  anchors (`review/eval/scripts/d-anchors.mjs` → `data/d-anchors.json`: 293 photographs served, 271 with
+  an anchor), rendered one by one in D at 414×715 with their own lines (`d-subjects.mjs`; full runs
+  `data/d-subjects-foot.json` / `data/d-subjects-now.json`; the 83 photographs where either full run put
+  the subject under the joke re-rendered with the SAME line in both layouts, seeded draw,
+  `data/d-subjects-seeded-*.json`; combined in `data/d-subjects-summary.json`): with the joke always at
+  the foot, the subject's centre lands under the joke in **73** of 271 and under the credit line in **15**.
+  D now lifts the joke under "Probably …" when the anchor puts the subject's centre under the joke at the
+  foot *and* the risen joke clears the whole subject (the middle half of the anchor band); that moves the
+  joke on **65** photographs and takes it off the subject on **45** of the 73; **28** keep the joke on the
+  subject (their subject sits in the lower middle — rising would land on it), **15** keep it under the
+  credit line (subject at the very bottom), and **0** photographs gain the joke on a subject that was
+  clear. One line per photograph: lines rotate, and a longer line reaches a subject a shorter one misses
+  (the two unseeded full runs differed on 15 photographs for exactly that reason, which is why the 83 were
+  re-rendered). The anchor marks Al's subject, not the joke's: on the pale photo the joke is about the
+  dog, the anchor marks the family, so the joke stays on the dog; on the chimney photo the risen joke
+  crosses the smoke it is about.
+- *Share sends what is on screen*: a canvas drawn from the page (the photo at its crop, the fades, every
+  character at the box the browser laid it out in, the warning bar when there is one,
+  probablyweather.co.za at the foot), attached through the app's one share handler
+  (`window.__PW_SHARE_FILES`, app.js) when `navigator.canShare({files})`; otherwise today's link card.
+  Drawn ahead of the tap (a share sheet must open inside it) and dropped if anything on screen has changed.
+- *The first-visit install banner*: install.js's placement fell back to the top edge — over the header —
+  when D's open strip was smaller than the banner (tagline + a three-line joke + a three-line fact line at
+  414×715). D reserves the banner's height in the open strip (the joke steps down) and pins it there.
+- *The desktop keeps today's polaroid* (portrait photographs; a full-width desktop frame would crop most
+  of each one; the desktop already shows the big number and the week).
+- *Wind warning*: the Cape Doctor banner pushes the page with padding that an absolutely placed header
+  does not feel, so on D the header steps below it and everything follows (`shots/home/d/wind-warning.png`).
+- *The nav*: four equal columns cut isiZulu "Izilungiselelo" at 16 px; the labels take their own widths.
+
+**Evidence**: the eight states + panel + wind warning + the Share pictures in `shots/home/d/`
+(`home-states.mjs --home d`); fold gate `PW_FOLD_HOME=d` (a D mode in `scripts/verify-home-fold.mjs`
+with D's own required elements, the photo exempt from the nav check, and everything else also above the
+panel handle): **80/80** including 320×488 (the first run failed there by 4 px — the handle is now 44 px on
+short screens); no visible text under 16 px on D's Home in en/af/zu/xh/st at 320×488, 320×568 and 414×715
+(the joke's handwriting floor is 19 px, as for A–C); no idle re-measuring (0 syncs in 1.5 s idle on every
+photograph). `npm run build` on the branch: vitest 129 files / 21,159 pass, image budget, build — the first
+run failed one source-shape test (tests/pre-resubmission-tier-1.test.js reads app.js for
+`navigator.share({ … url: shareLink`), so the share call keeps today's literal shape with the picture spread
+in only when D provides one; the test is unchanged. Rulings set aside for D only, at Al's request: the smaller number, the yellow Hourly button,
+the stats pill, the separate sources link, the photo card.
+
+**Sol** (one review, own hard cap 100 k): 54,502 tokens, FIX — focus left on the hidden handle / inside the
+inert sheet; the share picture's staleness check covered only the words; a cancelled drag could swallow the
+next tap. All three fixed after the review (no second call, as briefed). Found after it, by measurement:
+the joke's fitter could step one pixel under its 19 px floor from a fractional start (Afrikaans at 320×488
+showed 18.4 px) — D's fitter now clamps; a–c's copy of the same loop has the same off-by-one, reported,
+not changed.
+
+**Costs**: about 1,000 lines on the branch; D's own code 9 KB gzipped, loaded only with `?home=d`; the ad
+surface — the Hourly screen, the ad card's home — loses its yellow button on Home (the sheet has buttons
+into the full screens).
+
+---
+
 ## 5. Left open, and what only Al's phone can settle
 
 - **Phone checks**: Chrome on his iPhone — Share → Add to Home Screen appears and the icon opens as an app

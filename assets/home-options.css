@@ -136,3 +136,462 @@
   body.home-c.tod-night #statsRow .stat + .stat { border-color: rgba(255, 255, 255, 0.12); }
   body.home-c .hourly-cta { box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.10); }
 }
+
+/* ═════════════ D — BLANK SLATE: a film frame ═════════════
+   Al, 24 Sept: Home designed fresh from the app's pieces. The photograph is the frame, edge
+   to edge and top to bottom; the temperature is the title card, top left, the biggest thing
+   on the screen, "Probably …" under it; the joke is the subtitle, big, on a soft dark fade;
+   one quiet credit line of facts; Share on the photograph; Hourly and the week one swipe up.
+   D alone sets aside the Home layout rulings Al named for it (the smaller number, the yellow
+   Hourly button, the stats pill, the separate sources link, the photo card) — this branch only.
+   Nothing on it is under 16 px. The desktop keeps today's polaroid (see home-options.js). */
+
+/* The pieces D adds exist at every width (home-options.js makes them); only a phone on Home
+   shows them. */
+.d-line, .d-share, .d-handle, .d-sheet { display: none; }
+
+@media (max-width: 768px) {
+  body.home-d {
+    --d-temp-fs: clamp(4rem, min(27vw, 16vh), 8.5rem);
+    --d-cond-fs: clamp(1.1rem, min(5.4vw, 3.4vh), 1.6rem);
+    --d-cap-fs: clamp(1.25rem, min(8.4vw, 5vh), 2.6rem);
+    --d-runway: clamp(28px, 6vh, 64px);        /* the fade above the joke's first line */
+    --d-top-runway: clamp(22px, 5vh, 48px);    /* the fade below "Probably …" */
+    --d-handle-h: clamp(44px, 7.4vh, 52px);    /* 44 px on the 488 px screen: still a full tap target */
+    --d-pad: 24px;
+  }
+
+  /* ---------- the frame: the photograph, edge to edge, top to bottom ---------- */
+  body.home-d.home-active .hero-card {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transform: none;
+    overflow: hidden;
+    background: #0d0a07;
+  }
+  body.home-d.home-active .hero-card::before,
+  body.home-d.home-active .hero-card::after { display: none; }
+  body.home-d.home-active .hero-photo {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    border: 0;
+  }
+
+  /* The header stays what it is — mark, name, place, language — floated on the frame. Its own
+     dark band comes off: the title card's fade below starts at the top edge and covers it. */
+  body.home-d.home-active .header { background: none; padding-bottom: 4px; }
+  /* A wind warning pushes the page down with padding, which an absolutely placed header does
+     not feel — so on D the header steps below the banner itself, and the number follows it. */
+  body.home-d.home-active:has(#capeWindBanner:not(.hidden)) .header { top: var(--cape-wind-offset, 80px); }
+  body.home-d.home-active .brand-title,
+  body.home-d.home-active .brand-location,
+  body.home-d.home-active .language-btn { font-size: 16px; }
+
+  /* ---------- one grid over the frame ---------- */
+  body.home-d.home-active main#home-screen.main {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr) auto auto auto;
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
+    overflow: hidden;
+    pointer-events: none;          /* the frame is a picture; its controls opt back in */
+  }
+  body.home-d.home-active main#home-screen.main > * { display: none; }
+  /* Row 5 is the reserve: the handle and the nav sit on it, on the same dark as the credit line. */
+  body.home-d.home-active main#home-screen.main::after {
+    content: "";
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 5;
+    height: calc(var(--d-handle-h) + var(--d-nav-h, 72px));
+    background: rgba(0, 0, 0, 0.70);
+  }
+
+  /* ---------- the title card: the number, then "Probably …" ---------- */
+  body.home-d.home-active main#home-screen.main > #weatherStatus {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "now now" "prob desc";
+    align-items: baseline;
+    column-gap: 0.34em;
+    margin: 0;
+    padding: calc(var(--d-header-h, 64px) + 2px) var(--d-pad) var(--d-top-runway);
+    text-align: left;
+    /* 0.64 at the top edge: the header's place name is 16 px text on the photograph, and over
+       a blown-white sky white needs ~0.6 of darkening to clear 4.5:1 (5.1:1 at 0.60). */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.64) 0%,
+      rgba(0, 0, 0, 0.52) calc(100% - var(--d-top-runway)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  body.home-d.home-active #temp { display: contents; }
+  body.home-d.home-active #temp .hero-range,
+  body.home-d.home-active #tempHiLo { display: none; }
+  body.home-d.home-active #temp .hero-now {
+    grid-area: now;
+    font-size: var(--d-temp-fs);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    /* One number, so no column to line up: the page's tabular figures spread "11°" apart. */
+    font-variant-numeric: proportional-nums;
+    margin-left: -0.05em;          /* the 1 and the 7 carry side bearing; the title sits on the edge */
+    color: #fff;
+    text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+    white-space: nowrap;
+  }
+  body.home-d.home-active #temp .hero-probably {
+    grid-area: prob;
+    display: block;
+    margin: 0;
+    font-size: var(--d-cond-fs);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: var(--brand-gold, #ffd700);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  }
+  body.home-d.home-active #home-screen #description {
+    grid-area: desc;
+    margin: 0;
+    font-size: var(--d-cond-fs);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  }
+
+  /* ---------- Share, on the photograph, level with the number ---------- */
+  body.home-d.home-active main#home-screen.main > #dShare {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    justify-self: end;
+    position: relative;
+    z-index: 1;
+    margin: calc(var(--d-header-h, 64px) + 2px + (var(--d-temp-fs) * 0.92 - 44px) / 2) 16px 0 0;
+    min-height: 44px;
+    padding: 0 16px 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: rgba(0, 0, 0, 0.34);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  /* ---------- the subtitle: the joke, big, on a soft dark fade ---------- */
+  body.home-d.home-active main#home-screen.main > #headline.hero-caption {
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin: 0;
+    padding: var(--d-runway) var(--d-pad) 6px;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: var(--d-cap-fs);
+    line-height: 1.1;
+    text-align: center;
+    text-wrap: balance;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.70), 0 1px 3px rgba(0, 0, 0, 0.80);
+    /* The fade finishes BEFORE the first line: all the text stands on 0.62 or more, the same
+       floor the shipped caption was measured to need (white on it clears 6.2:1). */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.62) var(--d-runway),
+      rgba(0, 0, 0, 0.70) 100%
+    );
+  }
+
+  /* ---------- the subtitle rises when the picture needs the bottom ----------
+     home-options.js sets .d-joke-high when Al's crop anchor puts the photograph's subject under
+     the joke at the foot and the top is clear (counted in review/eval/scripts/d-subjects.mjs).
+     The joke moves up under "Probably …" on one continuous dark; the credit line keeps the foot,
+     with its own short fade. */
+  body.home-d.home-active.d-joke-high main#home-screen.main > #weatherStatus {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.64) 0%, rgba(0, 0, 0, 0.58) 100%);
+  }
+  body.home-d.home-active.d-joke-high main#home-screen.main > #headline.hero-caption {
+    grid-row: 2;
+    align-self: start;
+    padding: 0 var(--d-pad) var(--d-runway);
+    /* 0.58 behind every line: white on it over a blown-white sky is ~5.3:1, and the joke is
+       large text (3:1 is the bar). The fade happens in the padding below the last line. */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.58) 0%,
+      rgba(0, 0, 0, 0.58) calc(100% - var(--d-runway)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  body.home-d.home-active.d-joke-high main#home-screen.main > #dLine::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: clamp(20px, 4vh, 36px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.70));
+    pointer-events: none;
+  }
+
+  /* ---------- the credit line: Low · High · Rain · Wind · sources agree ---------- */
+  body.home-d.home-active main#home-screen.main > #dLine {
+    position: relative;
+    display: block;
+    grid-column: 1 / -1;
+    grid-row: 4;
+    margin: 0;
+    padding: 4px var(--d-pad) 8px;
+    background: rgba(0, 0, 0, 0.70);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.88);
+    text-align: center;
+    text-wrap: balance;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  body.home-d.home-active main#home-screen.main > #dLine[hidden] { display: none; }
+  body.home-d #dLine .d-part { white-space: nowrap; }
+  body.home-d #dLine .d-sep { opacity: 0.55; }
+  body.home-d #dLine .d-agree-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 6px;
+    border-radius: 50%;
+    vertical-align: 0.12em;
+    background: var(--brand-gold, #ffd700);
+  }
+  body.home-d #dLine .d-agree.is-low .d-agree-dot { background: var(--condition-amber, #f5a623); }
+
+  /* ---------- the handle, sitting on the nav ---------- */
+  body.home-d.home-active .d-handle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: var(--d-nav-h, 72px);
+    z-index: 101;
+    width: 100%;
+    height: var(--d-handle-h);
+    margin: 0;
+    padding: 0 16px;
+    border: 0;
+    background: none;
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    touch-action: none;
+    cursor: grab;
+  }
+  body.home-d .d-grip {
+    display: block;
+    width: 40px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  body.home-d .d-handle-row { display: inline-flex; align-items: center; gap: 6px; }
+  body.home-d.d-sheet-open .d-handle { visibility: hidden; }
+
+  /* The nav stays — Home, Weekly, Search, Settings — on the frame's dark foot instead of a bar.
+     Share left it for the photograph. */
+  body.home-d.home-active .nav {
+    background: none;
+    background-image: none;
+    border-top-color: transparent;
+  }
+  body.home-d.home-active #navShare { display: none; }
+  /* Reading size here too. Four equal columns cut isiZulu's "Izilungiselelo" at 16 px, so the
+     four labels take their own widths instead — the longest set (isiZulu) is ~280 px, inside
+     even a 320 px phone. */
+  body.home-d.home-active .nav {
+    display: flex;
+    justify-content: space-around;
+  }
+  body.home-d.home-active .nav button {
+    flex: 0 1 auto;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 16px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+  /* The first-visit install banner, where home-options.js measured room for it. */
+  body.home-d.home-active #installBanner.on-photo { top: var(--d-banner-top, 30%) !important; }
+
+  /* ---------- the panel: the next 24 hours, then the week ---------- */
+  body.home-d.home-active .d-sheet {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: var(--d-sheet-top, 30vh);
+    bottom: 0;
+    z-index: 150;
+    color: #fff;
+    /* Solid: at 0.94 the joke and the nav ghosted through the week rows. */
+    background: #14110d;
+    border-radius: var(--r-lg, 20px) var(--r-lg, 20px) 0 0;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.38s;
+  }
+  body.home-d.d-sheet-open .d-sheet {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  body.home-d .d-sheet.is-dragging { transition: none; visibility: visible; }
+  body.home-d .d-sheet-grip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    padding: 10px 16px 6px;
+    border: 0;
+    background: none;
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    touch-action: none;
+    cursor: grab;
+  }
+  body.home-d .d-sheet-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 0 calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+  body.home-d .d-sheet-h {
+    margin: 14px var(--d-pad) 10px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--brand-gold, #ffd700);
+  }
+  body.home-d .d-hours {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 0 16px 4px;
+    scroll-padding-inline: 16px;   /* the first hour snaps to the margin, not the screen edge */
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  body.home-d .d-hours::-webkit-scrollbar { display: none; }
+  body.home-d .d-hour {
+    flex: 0 0 66px;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+    padding: 10px 0;
+    border-radius: var(--r-sm, 10px);
+    background: rgba(255, 255, 255, 0.06);
+    scroll-snap-align: start;
+  }
+  body.home-d .d-hour-time { font-size: 16px; color: rgba(255, 255, 255, 0.78); }
+  body.home-d .d-hour-icon { line-height: 0; color: var(--brand-gold, #ffd700); }
+  body.home-d .d-hour-icon svg { width: 24px; height: 24px; }
+  body.home-d .d-hour-temp { font-size: 18px; font-weight: 700; }
+  body.home-d .d-hour-rain { font-size: 16px; color: var(--rain-blue, #4a9eff); }
+  body.home-d .d-days { padding: 0 16px; }
+  body.home-d .d-days .daily-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30px 48px 44px 48px;
+    align-items: center;
+    gap: 8px;
+    min-height: 56px;
+    margin: 0 0 6px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: var(--r-sm, 10px);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  body.home-d .d-days .d-day { font-size: 16px; font-weight: 600; min-width: 0; }
+  /* The badge ("Showers", "UV Alert") is a word, so it keeps the reading size, on its own line. */
+  body.home-d .d-days .day-badge {
+    display: block;
+    margin: 2px 0 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.70);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  body.home-d .d-days .d-icon { line-height: 0; color: var(--brand-gold, #ffd700); }
+  body.home-d .d-days .d-icon svg { width: 24px; height: 24px; }
+  body.home-d .d-days .d-high { font-size: 17px; font-weight: 700; text-align: right; }
+  body.home-d .d-days .d-low { font-size: 16px; text-align: right; opacity: 0.72; }
+  body.home-d .d-days .d-rain { font-size: 16px; text-align: right; color: var(--rain-blue, #4a9eff); }
+  body.home-d .d-sheet-more { display: flex; gap: 10px; padding: 16px 16px 0; }
+  body.home-d .d-more {
+    flex: 1 1 0;
+    min-height: 48px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  body.home-d .d-sheet,
+  body.home-d.d-sheet-open .d-sheet { transition: none; }
+}

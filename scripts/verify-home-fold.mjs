@@ -36,6 +36,10 @@ const SHOTS = process.argv.includes('--shots');
 // each candidate's fold.json beside the baseline instead of on top of it.
 const EXTRA_CSS = process.env.PW_FOLD_CSS ? readFileSync(process.env.PW_FOLD_CSS, 'utf8') : null;
 const LABEL = process.env.PW_FOLD_LABEL || '';
+// DESIGN BRANCH (design/home-options, 2026-09-24): PW_FOLD_HOME=d opens the build at ?home=d —
+// Home option D, which is script as well as style, so it cannot be layered on as CSS — and asserts
+// D's own list of what Home must show (below). Unset, the gate is the standing one.
+const HOME_OPTION = /^[abcd]$/.test(process.env.PW_FOLD_HOME || '') ? process.env.PW_FOLD_HOME : '';
 const output = path.join(root, 'output', LABEL ? `m8-fold-${LABEL}` : 'm8-fold');
 
 // The real-device range, not one lucky phone. The last entry is Al's own device
@@ -172,6 +176,27 @@ const REQUIRED = [
   ['#homeHourly', 'Hourly CTA'],
   ['.nav', 'bottom nav'],
 ];
+// Option D keeps the header and the nav and replaces the rest: the number and "Probably …" are
+// inline pieces of #temp (which D lays out with display:contents, so it has no box of its own),
+// the stats pill, the Hourly button and the separate agreement link give way to the quiet line,
+// Share on the photograph and the panel's handle. The photograph runs under the nav by design,
+// so it is required to show but exempt from the nav check.
+const REQUIRED_D = [
+  ['#logoCircle', 'brand mark'],
+  ['.brand-title', 'brand title'],
+  ['#location', 'place name'],
+  ['#languageBtn', 'language chip'],
+  ['#heroCard', 'photograph'],
+  ['#temp .hero-now', 'temperature'],
+  ['#temp .hero-probably', 'Probably'],
+  ['#description', 'condition line'],
+  ['#headline', 'witty caption'],
+  ['#dLine', 'quiet line (range, rain, wind, agreement)'],
+  ['#dShare', 'Share on the photograph'],
+  ['#dHandle', 'panel handle'],
+  ['.nav', 'bottom nav'],
+];
+const UNDER_NAV_OK = HOME_OPTION === 'd' ? new Set(['.nav', '#heroCard']) : new Set(['.nav']);
 
 const MEASURE = (required) => {
   const navEl = document.querySelector('.nav');
@@ -226,7 +251,7 @@ for (const vp of VIEWPORTS) {
           localStorage.setItem('pw_lang', JSON.stringify(l));
         } catch (_) {}
       }, lang);
-      await page.goto(base, { waitUntil: 'networkidle' });
+      await page.goto(HOME_OPTION ? `${base}/?home=${HOME_OPTION}` : base, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => {
         const s = document.getElementById('pwSplash');
         return !s || s.classList.contains('splash-done');
@@ -251,13 +276,21 @@ for (const vp of VIEWPORTS) {
         await page.waitForTimeout(250);
       }
 
-      const m = await page.evaluate(MEASURE, REQUIRED);
+      const m = await page.evaluate(MEASURE, HOME_OPTION === 'd' ? REQUIRED_D : REQUIRED);
       const label = `${vp.w}x${vp.h} ${lang} ${caption.label}`;
 
       if (m.missing.length) failures.push(`[${label}] MISSING: ${m.missing.join(', ')}`);
       if (m.maxScroll > 1) failures.push(`[${label}] page scrolls ${m.maxScroll.toFixed(0)}px — Home must fit`);
+      // D: the handle sits on the nav, so everything else must also end above the handle.
+      const handle = HOME_OPTION === 'd' ? m.elements.find((e) => e.sel === '#dHandle') : null;
+      if (handle) {
+        for (const el of m.elements) {
+          if (UNDER_NAV_OK.has(el.sel) || el.sel === '#dHandle') continue;
+          if (el.bottom > handle.top + 0.5) failures.push(`[${label}] ${el.label} runs ${(el.bottom - handle.top).toFixed(0)}px UNDER THE PANEL HANDLE`);
+        }
+      }
       for (const el of m.elements) {
-        if (el.sel === '.nav') continue;
+        if (UNDER_NAV_OK.has(el.sel)) continue;
         if (el.bottom > m.navTop + 0.5) {
           failures.push(`[${label}] ${el.label} runs ${(el.bottom - m.navTop).toFixed(0)}px UNDER THE NAV`);
         } else if (el.bottom > m.vh + 0.5) {
@@ -265,7 +298,7 @@ for (const vp of VIEWPORTS) {
         }
       }
 
-      const worst = m.elements.filter((e) => e.sel !== '.nav')
+      const worst = m.elements.filter((e) => !UNDER_NAV_OK.has(e.sel))
         .reduce((a, b) => (b.bottom > a.bottom ? b : a), { bottom: -Infinity, label: '-' });
       rows.push({
         viewport: `${vp.w}x${vp.h}`, device: vp.name, lang, caption: caption.label,

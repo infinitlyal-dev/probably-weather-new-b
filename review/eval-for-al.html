@@ -18,7 +18,7 @@ ul.plain { margin:6px 0 0; padding-left:20px; } ul.plain li { margin:5px 0; max-
 .tag { display:inline-block; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); }
 /* directions grid */
 .dirs { overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--line); border-radius:10px; background:var(--card); }
-table.grid { border-collapse:collapse; min-width:980px; width:100%; table-layout:fixed; }
+table.grid { border-collapse:collapse; min-width:1180px; width:100%; table-layout:fixed; }
 table.grid col.state { width:96px; }
 table.grid th, table.grid td { border-bottom:1px solid var(--line); padding:10px; vertical-align:top; text-align:left; }
 table.grid th { position:sticky; top:0; background:var(--card); z-index:1; }
@@ -39,6 +39,13 @@ textarea { width:100%; min-height:34px; font:inherit; font-size:.88rem; border:1
 .bar button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; }
 .bar button.ghost { background:transparent; color:var(--accent); }
 #out { display:none; width:100%; min-height:100px; margin-top:8px; }
+.strip { display:flex; flex-wrap:wrap; gap:12px; margin:10px 0; }
+.strip figure { margin:0; width:170px; }
+.strip img { width:100%; display:block; border-radius:8px; border:1px solid var(--line); cursor:zoom-in; }
+.strip figcaption { font-size:.8rem; color:var(--muted); margin-top:4px; line-height:1.35; }
+.pair { display:flex; gap:6px; }
+.pair figure { width:150px; }
+.pairs { display:flex; flex-wrap:wrap; gap:18px; margin:10px 0; }
 .zoom { position:fixed; inset:0; background:rgba(0,0,0,.82); display:none; align-items:center; justify-content:center; z-index:10; cursor:zoom-out; }
 .zoom img { max-height:94vh; max-width:94vw; border-radius:10px; }
 code { font-size:.85em; }
@@ -68,19 +75,47 @@ Full findings with every proof: <code>review/eval/EVAL.md</code>. Nothing here n
     <ul class="plain">
       <li><b>Weather truth, right now.</b> At 23:28 on 23 Sept the app matched the airport at 2 of 5 cities. Johannesburg showed rain under a clear sky (the radar source over-reaching). By 00:02 it was right again.</li>
       <li><b>Does the blend beat every single source?</b> On rain hour by hour and on wind: yes. On the day's low: no — one source is 3 °C too warm and drags it. Weights are yours to rule; nothing changed.</li>
-      <li><b>Home: nothing changed on the live app.</b> Three directions below, next to today's.</li>
+      <li><b>Home: nothing changed on the live app.</b> Four directions below, next to today's.</li>
       <li>Speed on a slow phone connection: first weather 1.9 s once connected, 6.3 s on a cold first visit.</li>
       <li><b>Only your phone can settle:</b> in Chrome, Share → Add to Home Screen appears and the icon opens like an app; that Home fits your screen with Chrome's bars showing (I estimated them); and, once you pick one, how the new Home reads in your hand.</li>
     </ul>
   </div>
 </div>
 
-<h2>Home — three directions next to today's</h2>
-<p class="lede">What makes Home feel off, in plain words: the numbers under the photo are fine print (labels 8 px, lines 11 px on your phone in Chrome); the photo still sits in a small rounded frame; long jokes climb over half the picture. Every direction fixes those three and keeps everything you ruled: the joke on the photo in white, the number stepped back, the header on the photo, the sources line, the one stats pill and the yellow Hourly button, no hourly strip, no ad. Same photo and same joke in every row — only the layout changes. Tap a screen to see it big.</p>
-<div class="card pick"><b>My pick: B.</b> It goes furthest in the direction you already chose — Home is the meme: the photo gets 19 % more of the screen and the joke gets bigger — and it touches none of your rulings. C answers "too dark, too moody" best, but the gold "Probably" can't stay gold on cream, so it turns deep ochre by day. A is the safe floor: today's Home, fixed.<br>
-<span class="muted">Said once, not asked: the one layout all five leading weather apps share is the temperature big, on the picture. Your 14 Aug ruling keeps the number stepped back, and none of these directions changes that.</span></div>
+<h2>Home — four directions next to today's</h2>
+<p class="lede">What makes Home feel off, in plain words: the numbers under the photo are fine print (labels 8 px, lines 11 px on your phone in Chrome); the photo still sits in a small rounded frame; long jokes climb over half the picture. A, B and C fix those three and keep everything you ruled: the joke on the photo in white, the number stepped back, the header on the photo, the sources line, the one stats pill and the yellow Hourly button, no hourly strip, no ad. <b>D is the blank slate you asked for</b>: Home designed fresh from the photos, the jokes and the weather, with your Home layout rulings set aside — more under the table. Same photo and same joke in every row — only the layout changes. Tap a screen to see it big.</p>
+<div class="card pick"><b>My pick for launch: B.</b> It goes furthest in the direction you already chose — Home is the meme: the photo gets 19 % more of the screen and the joke gets bigger — and it touches none of your rulings. C answers "too dark, too moody" best, but the gold "Probably" can't stay gold on cream, so it turns deep ochre by day. A is the safe floor: today's Home, fixed. <b>D is the boldest, and the one I'd build next</b> if it's the one you like in your hand — it is the biggest change, and it has two costs you should see first (under the table).<br>
+<span class="muted">Said once, not asked: the one layout all five leading weather apps share is the temperature big, on the picture. A, B and C keep your 14 Aug ruling (the number stepped back); D is the one that doesn't.</span></div>
 
 <div class="dirs"><table class="grid" id="grid"></table></div>
+
+<div class="card" id="about-d">
+  <h3>About D, in plain words</h3>
+  <ul class="plain">
+    <li><b>What it breaks from your rulings</b> (your request, this branch only): the number is big again (14 Aug had it smaller); no yellow Hourly button (7 Aug); no stats pill — wind, rain and the rest are one line of words; "sources agree" is a few words in that line, not a link (7 Aug); no photo card, the frame is gone completely. Everything else you ruled stays: the joke on the photo in white, the header on the photo, no hourly strip, Home ad-free, every photo with its own lines and your crops, all five languages.</li>
+    <li><b>A swipe is less obvious than a button.</b> The handle says "Hourly · Weekly" and a tap opens it too, but a new user who never touches it won't find the week from Home. And the panel is part of Home, so it carries no ad: fewer people will open the Hourly screen, which is where the ad card is. The panel ends with two buttons into the full Hourly and Weekly screens.</li>
+    <li><b>The joke over the photo's subject.</b> D shows the whole photo, not a strip across the middle, and many of your photos have their subject low — where the joke sits. At your phone size, with the joke always at the bottom as sketched, it lands on the subject in 73 of the 271 photos that carry your crop anchor, and the facts line covers the subject in 15 more (the other 22 of the 293 have no anchor, so nothing can tell). Measured one joke per photo, the same joke in both layouts; a longer joke can reach a subject a shorter one misses. Examples below, before and after the one change I made for it.</li>
+  </ul>
+  <h3 style="margin-top:12px">What I changed from the sketch, and why (one line each)</h3>
+  <ul class="plain">
+    <li><b>The joke moves up</b> under "Probably …" when your crop anchor says the subject is low and the top of the photo is clear — what TV subtitles do when the bottom of the picture matters. It moves on 65 photos and takes the joke off the subject on 45 of the 73; the other 28 keep it, because their subject sits in the lower middle, where a risen joke would land on it; and it never moves the joke onto a subject that was clear. It can't know what a joke is about: the pale photo's joke is about the dog at the bottom while your anchor marks the family, so there the joke stays on the dog.</li>
+    <li><b>The nav stays</b> (Home, Weekly, Search, Settings) on the photo's dark foot, at reading size; Share left it for a button on the photo.</li>
+    <li><b>Share sends a picture of the screen</b> — photo, number, joke and facts, with probablyweather.co.za at the foot — where the phone can share pictures; where it can't, it sends today's link card.</li>
+    <li><b>The desktop keeps today's polaroid.</b> The photos are portrait: filling a computer screen would crop away most of each one, and the desktop already shows the big number and the week without a tap.</li>
+    <li><b>A wind warning</b> still shows as the orange bar across the top; the number and everything under it step down below it.</li>
+  </ul>
+  <p class="muted" style="margin:10px 0 0">Costs: effort large — about 1,000 lines on this branch (the layout, the panel, the Share picture); speed: nothing extra on today's Home, and D's own code is 9 KB; rulings: the five above. Everything on D is at reading size (16 px or more; the joke's handwriting never under 19 px), and it fits your screen and all 80 test screens down to the smallest.</p>
+</div>
+
+<h3>D in more detail</h3>
+<div class="strip">
+  <figure><img loading="lazy" src="eval/shots/home/d/rain-day-panel.png" alt="D, rain, the panel pulled up"><figcaption>The panel pulled up (a tap on the handle): the next 24 hours, then the week. Tap a day for its detail.</figcaption></figure>
+  <figure><img loading="lazy" src="eval/shots/home/d/rain-day-share.jpg" alt="The picture Share sends"><figcaption>What Share sends on the rain screen — drawn from the screen itself.</figcaption></figure>
+  <figure><img loading="lazy" src="eval/shots/home/d/wind-warning.png" alt="D with a wind warning"><figcaption>A Cape Doctor day: the warning still reads as a warning.</figcaption></figure>
+</div>
+<h3>The joke over the subject — before and after</h3>
+<p class="lede">Left of each pair: D as sketched (joke at the bottom). Right: D now (the joke moves up when the subject is low).</p>
+<div class="pairs" id="subject-pairs"></div>
 
 <h2>Wording for you to check — English and Afrikaans</h2>
 <p class="lede">New lines the fixes needed (not jokes). They are in those 15 changes. isiZulu, isiXhosa and Sesotho went through the language skills and the checker, not you. OK keeps a line; FIX lets you write it.</p>
@@ -101,13 +136,27 @@ var KEY = 'pw-eval-for-al-2026-09-24';
 var SHOTS = 'eval/shots/home/';
 var STATES = [
   ['rain-day', 'Rain'], ['clear-day', 'Clear day'], ['night', 'Night'], ['fog', 'Fog'],
-  ['pale-photo', 'Pale photo'], ['zu-longest', 'Longest isiZulu joke'], ['first-visit', 'First visit (install banner)']
+  ['pale-photo', 'Pale photo'], ['zu-longest', 'Longest isiZulu joke'], ['first-visit', 'First visit (install banner)'],
+  ['desktop', 'Desktop, 1440 wide']
 ];
 var DIRS = [
   { id: 'current', name: 'Today', idea: 'What is live now, on your phone size.', facts: '' },
   { id: 'a', name: 'A — Tidy', idea: "Today's layout, fixed: readable numbers, photo edge to edge, \"Probably 24°\" on one line.", facts: 'Photo +12% · effort small · touches no ruling' },
   { id: 'b', name: 'B — More meme', idea: 'The photo and the joke take the screen; the numbers fold into two tidy rows.', facts: 'Photo +19% · bigger joke · effort small · touches no ruling' },
-  { id: 'c', name: 'C — Paper', idea: 'The joke stays on the photo; the numbers sit on a warm printed card; a dark card at night.', facts: 'Photo +9% · effort medium · gold "Probably" becomes deep ochre by day' }
+  { id: 'c', name: 'C — Paper', idea: 'The joke stays on the photo; the numbers sit on a warm printed card; a dark card at night.', facts: 'Photo +9% · effort medium · gold "Probably" becomes deep ochre by day' },
+  { id: 'd', name: 'D — Blank slate', idea: 'The photo fills the phone. The temperature is the title, the joke the subtitle, one line of facts. Hourly and the week one swipe up.', facts: 'Photo: the whole screen (+77%) · effort large · sets aside five of your Home rulings (your request)' }
+];
+// D's joke-over-subject pairs: [photo, before (joke at the bottom), after (D now), caption]. Same line in
+// both halves (review/eval/scripts/d-subjects.mjs --only, draws seeded).
+var PP = 'eval/shots/home/';
+var PAIRS = [
+  ['heat', PP + 'd-pairs-foot/heat-9aef9333.png', PP + 'd-pairs-now/heat-9aef9333.png', 'The joke is about the shade. At the bottom it covered the farmhouse and the dog lying in its shade; risen, both are clear.'],
+  ['fog', PP + 'd-pairs-foot/fog-88f884c9.png', PP + 'd-pairs-now/fog-88f884c9.png', 'At the bottom the joke sat on the path; risen, the walker in the fog is clear.'],
+  ['wind', PP + 'd-pairs-foot/wind-5813c7f5.png', PP + 'd-pairs-now/wind-5813c7f5.png', 'At the bottom the joke covered the cyclist; risen, he is clear under the blossom.'],
+  ['clear', PP + 'd-pairs-foot/clear-f644b0ec.png', PP + 'd-pairs-now/clear-f644b0ec.png', 'Risen, the stoep comes into view; the facts line still sits on the bottom of it.'],
+  ['cold, chimney', PP + 'd-pairs-foot/cold-b7b5166f.png', PP + 'd-pairs-now/cold-b7b5166f.png', 'Risen, the house is clear, but the joke now crosses the chimney smoke it is about. Your anchor marks the house.'],
+  ['storm', PP + 'd-pairs-foot/storm-572a51d3.png', PP + 'd-pairs-now/storm-572a51d3.png', 'The subject is in the lower middle: rising would land on it, so the joke stays at the bottom, on it.'],
+  ['pale photo', PP + 'd-pairs-foot/cold-08c461c7.png', PP + 'd-pairs-now/cold-08c461c7.png', 'Your anchor marks the family, so the joke stays at the bottom, on the dog the joke is about.']
 ];
 var WORDS = [
   { k: 'search.noResults', en: 'No places found. Check the spelling, or try a nearby town.', af: "Geen plek gevind nie. Kyk na die spelling, of probeer 'n dorp naby.", where: 'Search, when a place is not found' },
@@ -131,7 +180,7 @@ function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catc
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 function btn(group, key, val, label) { return '<button type="button" data-g="' + group + '" data-k="' + key + '" data-v="' + val + '" class="' + val + '">' + label + '</button>'; }
 
-var g = document.getElementById('grid'), h = '<colgroup><col class="state"><col><col><col><col></colgroup><tr><th></th>';
+var g = document.getElementById('grid'), h = '<colgroup><col class="state"><col><col><col><col><col></colgroup><tr><th></th>';
 DIRS.forEach(function (d) {
   h += '<th class="dirhead"><h3>' + esc(d.name) + '</h3><div class="idea">' + esc(d.idea) + '</div>' + (d.facts ? '<div class="facts">' + esc(d.facts) + '</div>' : '');
   if (d.id !== 'current') h += '<div class="act">' + btn('home', d.id, 'USE', 'USE') + btn('home', d.id, 'NO', 'NO') + '</div><textarea data-note="home" data-k="' + d.id + '" placeholder="Note (optional)"></textarea>';
@@ -144,6 +193,9 @@ STATES.forEach(function (s) {
   h += '</tr>';
 });
 g.innerHTML = h;
+document.getElementById('subject-pairs').innerHTML = PAIRS.map(function (p) {
+  return '<div><div class="pair"><figure><img loading="lazy" src="' + p[1] + '" alt="' + esc(p[0] + ', joke at the bottom') + '"></figure><figure><img loading="lazy" src="' + p[2] + '" alt="' + esc(p[0] + ', D now') + '"></figure></div><div class="strip" style="margin:4px 0 0"><figure style="width:306px"><figcaption>' + esc(p[3]) + '</figcaption></figure></div></div>';
+}).join('');
 
 document.getElementById('words').innerHTML = WORDS.map(function (w) {
   return '<div class="row" data-row="words" data-k="' + w.k + '"><div class="tag">' + esc(w.where) + '</div><div class="en">' + esc(w.en) + '</div><div class="af">' + esc(w.af) + '</div>' +
@@ -172,16 +224,17 @@ document.addEventListener('input', function (e) {
   var t = e.target; if (!t.matches('textarea[data-note]')) return;
   var o = state[t.dataset.note][t.dataset.k] = state[t.dataset.note][t.dataset.k] || {}; o.note = t.value; save();
 });
+var HOME_KEYS = ['a', 'b', 'c', 'd'];
 function count() {
-  var n = ['a', 'b', 'c'].filter(function (k) { return (state.home[k] || {}).verdict; }).length
+  var n = HOME_KEYS.filter(function (k) { return (state.home[k] || {}).verdict; }).length
     + WORDS.filter(function (w) { return (state.words[w.k] || {}).verdict; }).length
     + IMPROVE.filter(function (w) { return (state.improve[w.k] || {}).verdict; }).length;
-  document.getElementById('count').textContent = n + ' of ' + (3 + WORDS.length + IMPROVE.length) + ' marked';
+  document.getElementById('count').textContent = n + ' of ' + (HOME_KEYS.length + WORDS.length + IMPROVE.length) + ' marked';
 }
 function exportJson() {
   return JSON.stringify({
     generated: new Date().toISOString(), ruledBy: 'Al, launch eval page (review/eval-for-al.html)',
-    home: ['a', 'b', 'c'].map(function (k) { var o = state.home[k] || {}; return { direction: k, verdict: o.verdict || null, note: o.note || '' }; }),
+    home: HOME_KEYS.map(function (k) { var o = state.home[k] || {}; return { direction: k, verdict: o.verdict || null, note: o.note || '' }; }),
     words: WORDS.map(function (w) { var o = state.words[w.k] || {}; return { key: w.k, en: w.en, af: w.af, verdict: o.verdict || null, text: o.note || '' }; }),
     improvements: IMPROVE.map(function (w) { var o = state.improve[w.k] || {}; return { key: w.k, item: w.t, verdict: o.verdict || null, note: o.note || '' }; })
   }, null, 1);
@@ -195,7 +248,7 @@ document.getElementById('copy').addEventListener('click', function () {
   try { navigator.clipboard.writeText(j); } catch (e) { try { document.execCommand('copy'); } catch (e2) {} }
 });
 var z = document.getElementById('zoom');
-document.addEventListener('click', function (e) { var i = e.target.closest('table.grid img'); if (i) { z.querySelector('img').src = i.src; z.style.display = 'flex'; } });
+document.addEventListener('click', function (e) { var i = e.target.closest('table.grid img, .strip img, .pair img'); if (i) { z.querySelector('img').src = i.src; z.style.display = 'flex'; } });
 z.addEventListener('click', function () { z.style.display = 'none'; });
 paint(); count();
 </script>

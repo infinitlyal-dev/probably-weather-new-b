@@ -44,12 +44,12 @@ import { slotEnabled } from './ads-config.js';
 const BUILD_ID = '__BUILD_ID__';
 
 document.addEventListener("DOMContentLoaded", () => {
-  // DESIGN BRANCH ONLY (design/home-options, 2026-09-24): ?home=a|b|c turns on one of the
+  // DESIGN BRANCH ONLY (design/home-options, 2026-09-24): ?home=a|b|c|d turns on one of the
   // proposed Home directions for side-by-side comparison. Without the parameter nothing loads
   // and Home is today's, byte for byte in CSS.
   try {
     const homeOption = new URLSearchParams(location.search).get('home');
-    if (/^[abc]$/.test(homeOption || '')) import('./home-options.js').then((m) => m.initHomeOption(homeOption)).catch(() => {});
+    if (/^[abcd]$/.test(homeOption || '')) import('./home-options.js').then((m) => m.initHomeOption(homeOption)).catch(() => {});
   } catch { /* no URLSearchParams — no options */ }
   // G4: signal to the index.html boot-failure guard that app.js loaded and
   // started executing. If app.js 404s / fails to parse, this stays unset and
@@ -2517,7 +2517,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const text = t('misc', 'shareMessage').replace('{city}', cityForCopy);
       try {
         if (navigator.share) {
-          await navigator.share({ title: 'Probably Weather', text, url: shareLink });
+          // DESIGN BRANCH ONLY: Home option D (?home=d) shares the picture on screen alongside
+          // the link. Without it window.__PW_SHARE_FILES is never set, `picture` stays empty and
+          // this is today's share, call for call.
+          const files = typeof window.__PW_SHARE_FILES === 'function' ? window.__PW_SHARE_FILES() : null;
+          let picture = {};
+          try { if (files && navigator.canShare?.({ title: 'Probably Weather', text, url: shareLink, files })) picture = { files }; } catch { /* link only */ }
+          await navigator.share({ title: 'Probably Weather', text, url: shareLink, ...picture });
         } else if (navigator.clipboard?.writeText) {
           await navigator.clipboard.writeText(`${text} ${shareLink}`);
           showToast(t('misc', 'shareLinkCopied'));

@@ -1,0 +1,16 @@
+{
+ "measuredAt": "414x715, WebKit, Chrome-on-iPhone UA",
+ "note": "one line per photograph; the 83 photographs where either unseeded run put the subject under the joke were re-rendered with the same line in both layouts (seeded draw); the rest take the full runs",
+ "photos": 271,
+ "reChecked": 83,
+ "sameLineAll": true,
+ "FOOT_JOKE": 73,
+ "FOOT_CREDIT": 15,
+ "RISEN": 65,
+ "CLEARED": 45,
+ "STILL_JOKE": 28,
+ "NOW_CREDIT": 15,
+ "NEW_ON_JOKE": 0,
+ "risenFromCredit": 15,
+ "risenFromOpen": 5
+}
