@@ -41,6 +41,10 @@ const STATIC_ENTRIES = [
   'assets',
   'og',
   '.well-known',
+  // Launch run (2026-09-25): crawlers and iOS ask for these at the root.
+  'robots.txt',
+  'sitemap.xml',
+  'apple-touch-icon.png',
 ];
 
 // M-iii: VERIFY the committed per-language banks match a fresh regeneration —
