@@ -1,0 +1,93 @@
+{
+ "tag": "after-3-sources-out",
+ "visits": 3000,
+ "seconds": 60,
+ "wallSeconds": 60,
+ "snap": true,
+ "fail": [
+  "tomorrow",
+  "pirate",
+  "weatherapi"
+ ],
+ "statuses": {
+  "200": 3000
+ },
+ "edgeHits": 1646,
+ "functionInvocations": 1354,
+ "serverCache": {
+  "miss": 2958,
+  "coalesced-local": 42
+ },
+ "upstreamCalls": {
+  "locationiq": 84,
+  "open-meteo": 1338,
+  "weatherapi": 400,
+  "pirate": 40,
+  "met": 600,
+  "tomorrow": 25
+ },
+ "upstreamPerVisit": {
+  "locationiq": 0.028,
+  "open-meteo": 0.446,
+  "weatherapi": 0.133,
+  "pirate": 0.013,
+  "met": 0.2,
+  "tomorrow": 0.008
+ },
+ "redisHttpCalls": 9382,
+ "redisTopLevelCommands": {
+  "get": 1354,
+  "mget": 1338,
+  "set": 4012,
+  "eval": 9365,
+  "incrby": 1338,
+  "expire": 1
+ },
+ "redisTopLevelPerVisit": 5.8,
+ "redisCommands": {
+  "get": 4029,
+  "mget": 1338,
+  "set": 5350,
+  "eval": 9365,
+  "incr": 12896,
+  "expire": 2992,
+  "incrby": 1338,
+  "del": 1337
+ },
+ "redisCommandsTotal": 38645,
+ "redisCommandsPerVisit": 12.88,
+ "functionMs": {
+  "p50": 340,
+  "p95": 478,
+  "max": 577
+ },
+ "visitsServedBySource": {
+  "Open-Meteo": 3000,
+  "WeatherAPI": 0,
+  "Pirate Weather": 0,
+  "MET Norway": 1744,
+  "Tomorrow.io": 0
+ },
+ "namesShown": {
+  "My Location": 2749,
+  "resolved": 214,
+  "Unknown": 37
+ },
+ "tempShown": 3000,
+ "logLines": {
+  "[pw-budget] tomorrow over ceiling ": 1313,
+  "[pw-source-skip] Tomorrow.io budget-blocked": 1313,
+  "[pw-budget] pirate over ceiling ": 1298,
+  "[pw-source-skip] Pirate Weather budget-blocked": 1298,
+  "[pw-budget] locationiq over ceiling ": 1254,
+  "[pw-budget] weatherapi over ceiling ": 938,
+  "[pw-source-skip] WeatherAPI budget-blocked": 938,
+  "[pw-budget] met over ceiling ": 738,
+  "[pw-source-skip] MET Norway budget-blocked": 738,
+  "[pw-source-fail] WeatherAPI rate-limited 429 HTTP 429": 400,
+  "[pw-source-fail] Pirate Weather rate-limited 429 HTTP 429": 40,
+  "[pw-source-fail] Tomorrow.io rate-limited 429 HTTP 429": 25,
+  "[pw-om-monthly] 1000.5/1000000 units (0.1%) ≈ 345 requests": 1,
+  "[pw-om-monthly] 2001.0/1000000 units (0.2%) ≈ 690 requests": 1
+ }
+}

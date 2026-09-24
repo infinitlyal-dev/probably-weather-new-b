@@ -1,0 +1,75 @@
+{
+ "tag": "after-redis-out",
+ "visits": 3000,
+ "seconds": 60,
+ "wallSeconds": 60,
+ "snap": true,
+ "fail": [
+  "redis"
+ ],
+ "statuses": {
+  "200": 3000
+ },
+ "edgeHits": 1664,
+ "functionInvocations": 1336,
+ "serverCache": {
+  "miss": 2962,
+  "coalesced-local": 38
+ },
+ "upstreamCalls": {
+  "locationiq": 52,
+  "open-meteo": 1325,
+  "weatherapi": 120,
+  "pirate": 10,
+  "met": 240,
+  "tomorrow": 5
+ },
+ "upstreamPerVisit": {
+  "locationiq": 0.017,
+  "open-meteo": 0.442,
+  "weatherapi": 0.04,
+  "pirate": 0.003,
+  "met": 0.08,
+  "tomorrow": 0.002
+ },
+ "redisHttpCalls": 16592,
+ "redisTopLevelCommands": {},
+ "redisTopLevelPerVisit": 0,
+ "redisCommands": {},
+ "redisCommandsTotal": 0,
+ "redisCommandsPerVisit": 0,
+ "functionMs": {
+  "p50": 309,
+  "p95": 447,
+  "max": 650
+ },
+ "visitsServedBySource": {
+  "Open-Meteo": 3000,
+  "WeatherAPI": 348,
+  "Pirate Weather": 34,
+  "MET Norway": 712,
+  "Tomorrow.io": 26
+ },
+ "namesShown": {
+  "My Location": 2813,
+  "resolved": 149,
+  "Unknown": 38
+ },
+ "tempShown": 3000,
+ "logLines": {
+  "[pw-budget] tomorrow over ceiling ": 1320,
+  "[pw-source-skip] Tomorrow.io budget-blocked": 1320,
+  "[pw-budget] pirate over ceiling ": 1315,
+  "[pw-source-skip] Pirate Weather budget-blocked": 1315,
+  "[pw-budget] locationiq over ceiling ": 1273,
+  "[pw-budget] weatherapi over ceiling ": 1205,
+  "[pw-source-skip] WeatherAPI budget-blocked": 1205,
+  "[pw-budget] met over ceiling ": 1085,
+  "[pw-source-skip] MET Norway budget-blocked": 1085,
+  "[pw-om-monthly] accounting failed": 1,
+  "[pw-adm] refund abandoned for token a5358e16-4730-4fb1-b71e-52f4166c40": 1,
+  "[pw-adm] refund abandoned for token 56bd68c1-f0ad-4e0b-93e1-b248b058f5": 1,
+  "[pw-adm] refund abandoned for token fceea0d7-afb7-4039-9d8f-20940c5d03": 1,
+  "[pw-adm] refund abandoned for token fc4a1d09-2de2-45f6-bdc5-c9f727757a": 1
+ }
+}

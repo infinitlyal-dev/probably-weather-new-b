@@ -1,0 +1,238 @@
+[
+ {
+  "name": "first-gps",
+  "api": [
+   {
+    "route": "/api/version",
+    "q": {}
+   },
+   {
+    "route": "/api/weather",
+    "q": {
+     "lat": "-34.1163",
+     "lon": "18.8362",
+     "name": "My Location"
+    }
+   }
+  ],
+  "bytes": {
+   "byType": {
+    "html": 13251,
+    "script": 114443,
+    "style": 169494,
+    "image": 155860,
+    "api": 2774
+   },
+   "total": 455822,
+   "requests": 14,
+   "urls": [
+    "/ 13251",
+    "/_vercel/insights/script.js 111",
+    "/assets/app.css 15283",
+    "/assets/images/bg/default.jpg 51612",
+    "/assets/app.js 51909",
+    "/assets/type-prototype.css 49184",
+    "/assets/images/grain.png 3411",
+    "/assets/type-prototype-caption.css 105027",
+    "/api/version 240",
+    "/api/weather 2534",
+    "/assets/install.js 10143",
+    "/assets/chunks/en-B6BR5OID.js 16770",
+    "/assets/chunks/hero-lines-BWNLMMJF.js 35510",
+    "/assets/images/bg-canonical/fd0a18b25b4e35699d54747d494468b1cba98548bfd9557ada359f04686f9b41.webp 100837"
+   ]
+  }
+ },
+ {
+  "name": "return",
+  "api": [
+   {
+    "route": "/api/version",
+    "q": {}
+   },
+   {
+    "route": "/api/weather",
+    "q": {
+     "lat": "-34.1163",
+     "lon": "18.8362",
+     "name": "Strand"
+    }
+   }
+  ],
+  "bytes": {
+   "byType": {
+    "html": 0,
+    "style": 0,
+    "script": 0,
+    "image": 0,
+    "api": 240
+   },
+   "total": 240,
+   "requests": 1,
+   "urls": [
+    "/api/version 240"
+   ]
+  }
+ },
+ {
+  "name": "first-denied",
+  "api": [
+   {
+    "route": "/api/version",
+    "q": {}
+   },
+   {
+    "route": "/api/locate",
+    "q": {}
+   },
+   {
+    "route": "/api/weather",
+    "q": {
+     "lat": "-34.1",
+     "lon": "18.8",
+     "name": "Strand, ZA"
+    }
+   }
+  ],
+  "bytes": {
+   "byType": {
+    "html": 13251,
+    "script": 114443,
+    "style": 169494,
+    "image": 155860,
+    "api": 3053
+   },
+   "total": 456101,
+   "requests": 15,
+   "urls": [
+    "/ 13251",
+    "/_vercel/insights/script.js 111",
+    "/assets/app.css 15283",
+    "/assets/images/bg/default.jpg 51612",
+    "/assets/type-prototype.css 49184",
+    "/assets/images/grain.png 3411",
+    "/assets/app.js 51909",
+    "/assets/chunks/en-B6BR5OID.js 16770",
+    "/assets/chunks/hero-lines-BWNLMMJF.js 35510",
+    "/api/version 240",
+    "/api/locate 279",
+    "/api/weather 2534",
+    "/assets/type-prototype-caption.css 105027",
+    "/assets/install.js 10143",
+    "/assets/images/bg-canonical/fd0a18b25b4e35699d54747d494468b1cba98548bfd9557ada359f04686f9b41.webp 100837"
+   ]
+  }
+ },
+ {
+  "name": "search",
+  "api": [
+   {
+    "route": "/api/version",
+    "q": {}
+   },
+   {
+    "route": "/api/weather",
+    "q": {
+     "lat": "-34.1163",
+     "lon": "18.8362",
+     "name": "My Location"
+    }
+   },
+   {
+    "route": "/api/geocode",
+    "q": {
+     "type": "search",
+     "q": "Durban"
+    }
+   },
+   {
+    "route": "/api/weather",
+    "q": {
+     "lat": "-29.8587",
+     "lon": "31.0218",
+     "name": ""
+    }
+   },
+   {
+    "route": "/api/weather",
+    "q": {
+     "lat": "-29.8587",
+     "lon": "31.0218",
+     "name": "Durban, South Africa"
+    }
+   }
+  ],
+  "bytes": {
+   "byType": {
+    "html": 13251,
+    "script": 114443,
+    "style": 169494,
+    "image": 155860,
+    "api": 3127
+   },
+   "total": 456175,
+   "requests": 15,
+   "urls": [
+    "/ 13251",
+    "/_vercel/insights/script.js 111",
+    "/assets/app.css 15283",
+    "/assets/images/bg/default.jpg 51612",
+    "/assets/type-prototype.css 49184",
+    "/assets/images/grain.png 3411",
+    "/assets/app.js 51909",
+    "/assets/chunks/en-B6BR5OID.js 16770",
+    "/assets/chunks/hero-lines-BWNLMMJF.js 35510",
+    "/api/version 240",
+    "/api/weather 2534",
+    "/assets/images/bg-canonical/fd0a18b25b4e35699d54747d494468b1cba98548bfd9557ada359f04686f9b41.webp 100837",
+    "/assets/type-prototype-caption.css 105027",
+    "/assets/install.js 10143",
+    "/api/geocode 353"
+   ]
+  }
+ },
+ {
+  "name": "browse",
+  "api": [
+   {
+    "route": "/api/version",
+    "q": {}
+   },
+   {
+    "route": "/api/weather",
+    "q": {
+     "lat": "-34.1163",
+     "lon": "18.8362",
+     "name": "My Location"
+    }
+   }
+  ],
+  "bytes": {
+   "byType": {
+    "html": 13251,
+    "script": 114443,
+    "style": 169494,
+    "image": 155860,
+    "api": 2774
+   },
+   "total": 455822,
+   "requests": 14,
+   "urls": [
+    "/ 13251",
+    "/_vercel/insights/script.js 111",
+    "/assets/app.css 15283",
+    "/assets/images/bg/default.jpg 51612",
+    "/assets/app.js 51909",
+    "/assets/type-prototype.css 49184",
+    "/assets/images/grain.png 3411",
+    "/assets/chunks/en-B6BR5OID.js 16770",
+    "/assets/chunks/hero-lines-BWNLMMJF.js 35510",
+    "/api/version 240",
+    "/api/weather 2534",
+    "/assets/images/bg-canonical/fd0a18b25b4e35699d54747d494468b1cba98548bfd9557ada359f04686f9b41.webp 100837",
+    "/assets/type-prototype-caption.css 105027",
+    "/assets/install.js 10143"
+   ]
+  }
+ }
+]

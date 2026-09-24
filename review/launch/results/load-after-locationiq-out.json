@@ -1,0 +1,88 @@
+{
+ "tag": "after-locationiq-out",
+ "visits": 3000,
+ "seconds": 60,
+ "wallSeconds": 60,
+ "snap": true,
+ "fail": [
+  "locationiq"
+ ],
+ "statuses": {
+  "200": 3000
+ },
+ "edgeHits": 1615,
+ "functionInvocations": 1385,
+ "serverCache": {
+  "miss": 2957,
+  "coalesced-local": 43
+ },
+ "upstreamCalls": {
+  "locationiq": 82,
+  "open-meteo": 1371,
+  "weatherapi": 400,
+  "pirate": 40,
+  "met": 600,
+  "tomorrow": 25
+ },
+ "upstreamPerVisit": {
+  "locationiq": 0.027,
+  "open-meteo": 0.457,
+  "weatherapi": 0.133,
+  "pirate": 0.013,
+  "met": 0.2,
+  "tomorrow": 0.008
+ },
+ "redisHttpCalls": 9617,
+ "redisTopLevelCommands": {
+  "get": 1388,
+  "mget": 1374,
+  "set": 4111,
+  "eval": 9596,
+  "incrby": 1371,
+  "expire": 1
+ },
+ "redisTopLevelPerVisit": 5.95,
+ "redisCommands": {
+  "get": 4129,
+  "mget": 1374,
+  "set": 5482,
+  "eval": 9596,
+  "incr": 13186,
+  "expire": 3056,
+  "incrby": 1371,
+  "del": 1370
+ },
+ "redisCommandsTotal": 39564,
+ "redisCommandsPerVisit": 13.19,
+ "functionMs": {
+  "p50": 342,
+  "p95": 479,
+  "max": 661
+ },
+ "visitsServedBySource": {
+  "Open-Meteo": 3000,
+  "WeatherAPI": 1123,
+  "Pirate Weather": 120,
+  "MET Norway": 1625,
+  "Tomorrow.io": 75
+ },
+ "namesShown": {
+  "My Location": 2957,
+  "Unknown": 43
+ },
+ "tempShown": 3000,
+ "logLines": {
+  "[pw-budget] tomorrow over ceiling ": 1346,
+  "[pw-source-skip] Tomorrow.io budget-blocked": 1346,
+  "[pw-budget] pirate over ceiling ": 1331,
+  "[pw-source-skip] Pirate Weather budget-blocked": 1331,
+  "[pw-budget] locationiq over ceiling ": 1289,
+  "[pw-budget] weatherapi over ceiling ": 971,
+  "[pw-source-skip] WeatherAPI budget-blocked": 971,
+  "[pw-budget] met over ceiling ": 771,
+  "[pw-source-skip] MET Norway budget-blocked": 771,
+  "[pw-om-monthly] 1000.5/1000000 units (0.1%) ≈ 345 requests": 1,
+  "[pw-om-monthly] 2001.0/1000000 units (0.2%) ≈ 690 requests": 1,
+  "[pw-om-monthly] 3001.5/1000000 units (0.3%) ≈ 1035 requests": 1
+ }
+}

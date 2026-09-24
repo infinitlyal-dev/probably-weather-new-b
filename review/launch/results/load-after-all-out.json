@@ -1,0 +1,88 @@
+{
+ "tag": "after-all-out",
+ "visits": 3000,
+ "seconds": 60,
+ "wallSeconds": 60,
+ "snap": true,
+ "fail": [
+  "all"
+ ],
+ "statuses": {
+  "503": 3000
+ },
+ "edgeHits": 0,
+ "functionInvocations": 3000,
+ "serverCache": {
+  "none": 3000
+ },
+ "upstreamCalls": {
+  "locationiq": 82,
+  "open-meteo": 3000,
+  "weatherapi": 400,
+  "pirate": 40,
+  "met": 600,
+  "tomorrow": 25
+ },
+ "upstreamPerVisit": {
+  "locationiq": 0.027,
+  "open-meteo": 1,
+  "weatherapi": 0.133,
+  "pirate": 0.013,
+  "met": 0.2,
+  "tomorrow": 0.008
+ },
+ "redisHttpCalls": 21053,
+ "redisTopLevelCommands": {
+  "get": 3052,
+  "mget": 3001,
+  "set": 3000,
+  "eval": 20999,
+  "incrby": 3000,
+  "expire": 1
+ },
+ "redisTopLevelPerVisit": 11.02,
+ "redisCommands": {
+  "get": 9051,
+  "mget": 3001,
+  "set": 6000,
+  "eval": 20999,
+  "incr": 27852,
+  "expire": 6316,
+  "incrby": 3000,
+  "del": 2999
+ },
+ "redisCommandsTotal": 79218,
+ "redisCommandsPerVisit": 26.41,
+ "functionMs": {
+  "p50": 313,
+  "p95": 458,
+  "max": 861
+ },
+ "visitsServedBySource": {
+  "Open-Meteo": 0,
+  "WeatherAPI": 0,
+  "Pirate Weather": 0,
+  "MET Norway": 0,
+  "Tomorrow.io": 0
+ },
+ "namesShown": {
+  "none": 3000
+ },
+ "tempShown": 0,
+ "logLines": {
+  "[pw-source-fail] Open-Meteo rate-limited 429 HTTP 429": 3000,
+  "[pw-budget] tomorrow over ceiling ": 2975,
+  "[pw-source-skip] Tomorrow.io budget-blocked": 2975,
+  "[pw-budget] pirate over ceiling ": 2960,
+  "[pw-source-skip] Pirate Weather budget-blocked": 2960,
+  "[pw-budget] locationiq over ceiling ": 2918,
+  "[pw-budget] weatherapi over ceiling ": 2600,
+  "[pw-source-skip] WeatherAPI budget-blocked": 2600,
+  "[pw-budget] met over ceiling ": 2400,
+  "[pw-source-skip] MET Norway budget-blocked": 2400,
+  "[pw-source-fail] MET Norway rate-limited 429 HTTP 429": 600,
+  "[pw-source-fail] WeatherAPI rate-limited 429 HTTP 429": 400,
+  "[pw-source-fail] Pirate Weather rate-limited 429 HTTP 429": 40,
+  "[pw-source-fail] Tomorrow.io rate-limited 429 HTTP 429": 25
+ }
+}
