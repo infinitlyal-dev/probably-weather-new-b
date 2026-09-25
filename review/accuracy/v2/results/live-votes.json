@@ -1,0 +1,61 @@
+{
+ "readings": 62,
+ "from": "2026-09-24T21:58:20.001Z",
+ "to": "2026-09-25T09:10:01.728Z",
+ "sources": {
+  "Open-Meteo": {
+   "hours": 62,
+   "rainVotes": 1,
+   "rainVotesDry": 1,
+   "fogVotes": 0,
+   "fogVotesNoFog": 0,
+   "wetHours": 0,
+   "wetHoursVotedRain": 0
+  },
+  "WeatherAPI": {
+   "hours": 62,
+   "rainVotes": 11,
+   "rainVotesDry": 11,
+   "fogVotes": 2,
+   "fogVotesNoFog": 2,
+   "wetHours": 0,
+   "wetHoursVotedRain": 0
+  },
+  "Pirate Weather": {
+   "hours": 62,
+   "rainVotes": 0,
+   "rainVotesDry": 0,
+   "fogVotes": 11,
+   "fogVotesNoFog": 11,
+   "wetHours": 0,
+   "wetHoursVotedRain": 0
+  },
+  "MET Norway": {
+   "hours": 62,
+   "rainVotes": 3,
+   "rainVotesDry": 3,
+   "fogVotes": 10,
+   "fogVotesNoFog": 10,
+   "wetHours": 0,
+   "wetHoursVotedRain": 0
+  },
+  "Tomorrow.io": {
+   "hours": 38,
+   "rainVotes": 0,
+   "rainVotesDry": 0,
+   "fogVotes": 9,
+   "fogVotesNoFog": 9,
+   "wetHours": 0,
+   "wetHoursVotedRain": 0
+  },
+  "the app (served)": {
+   "hours": 62,
+   "rainVotes": 0,
+   "rainVotesDry": 0,
+   "fogVotes": 16,
+   "fogVotesNoFog": 15,
+   "wetHours": 0,
+   "wetHoursVotedRain": 0
+  }
+ }
+}

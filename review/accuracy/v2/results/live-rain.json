@@ -1,0 +1,12 @@
+{
+ "readings": 78,
+ "next3h": {
+  "n": 49,
+  "rained": 0,
+  "brierServed": 0.011,
+  "brierCalibrated": 0.0073
+ },
+ "today": {
+  "n": 0
+ }
+}
