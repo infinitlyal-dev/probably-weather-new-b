@@ -1,0 +1,9 @@
+LAST WEEK 2026-09-18 → 2026-09-25 (recorded hours are what the app really said; the rest replayed)
+Strand             Western Cape  strict · fog said 19 → 9 (fog at FACT in 0 → 0 of them; fog hours 0) · Rain's here 0 (rained 0); rain hours 2 · recorded hours 1
+Cape Town city     Western Cape  strict · fog said 17 → 14 (fog at FACT in 0 → 0 of them; fog hours 0) · Rain's here 0 (rained 0); rain hours 2 · recorded hours 1
+Cape Town airport  Western Cape  strict · fog said 13 → 9 (fog at the airport in 0 → 0 of them; fog hours 0) · Rain's here 0 (rained 0); rain hours 2 · recorded hours 18
+Johannesburg       Highveld      standard · fog said 0 → 0 (fog at the airport in 0 → 0 of them; fog hours 0) · Rain's here 2 (rained 0); rain hours 7 · recorded hours 18
+Durban             KZN coast     strict · fog said 9 → 5 (fog at the airport in 2 → 0 of them; fog hours 2) · Rain's here 26 (rained 23); rain hours 26 · recorded hours 18
+Gqeberha           Eastern Cape  strict · fog said 6 → 1 (fog at the airport in 1 → 0 of them; fog hours 4) · Rain's here 0 (rained 0); rain hours 5 · recorded hours 18
+Bloemfontein       Free State    standard · fog said 10 → 10 (fog at the airport in 0 → 0 of them; fog hours 0) · Rain's here 27 (rained 9); rain hours 16 · recorded hours 18
+George             Garden Route  strict · fog said 10 → 4 (fog at the airport in 1 → 0 of them; fog hours 14) · Rain's here 0 (rained 0); rain hours 8 · recorded hours 18
