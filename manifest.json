@@ -48,5 +48,35 @@
           }
       ]
     }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/home.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Today: the forecast, with a joke on the photograph"
+    },
+    {
+      "src": "/assets/screenshots/hourly.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Hour by hour"
+    },
+    {
+      "src": "/assets/screenshots/week.webp",
+      "sizes": "1080x1920",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "The week ahead"
+    },
+    {
+      "src": "/assets/screenshots/desktop.webp",
+      "sizes": "1920x1080",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "On a computer"
+    }
   ]
 }
