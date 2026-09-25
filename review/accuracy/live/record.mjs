@@ -4,7 +4,7 @@
 //
 //   node review/accuracy/live/record.mjs [--out <dir>]
 //
-// Per run: 1 GET /api/version + 6 GET /api/weather (one per airport) + 1 METAR call for all six
+// Per run: 1 GET /api/version + 6 GET /api/weather (one per airport) + 2 for Al's spots (below) + 1 METAR call for all six
 // stations (aviationweather.gov, last 3 h), all at once. One retry on a network error or a 5xx,
 // none after a timeout, so a run ends inside ~50 s even when production is slow. Appends one JSON
 // line per airport to <out>/<SAST date>.jsonl and one status line to <out>/recorder.log. Six cities
@@ -14,6 +14,10 @@
 // meta.localHour is refreshed — align on meta.updatedAtLabel, never on localHour (score.mjs does).
 //
 // The coordinates are lib/sources.mjs CITIES, copied (score.mjs checks every record against them).
+//
+// Al's own spots (25 Sept 2026, the rain / fog / frost run): Strand and Cape Town city, read the same way so
+// there is a record of what the app says where Al looks. No airport reports there, so their lines carry
+// `icao: null`, a `spot` name and no METAR; score.mjs and the v2 live scorers skip them.
 
 import { appendFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
@@ -29,6 +33,10 @@ const CITIES = {
   FAPE: { name: 'Gqeberha',     lat: -33.9849, lon: 25.6173 },
   FABL: { name: 'Bloemfontein', lat: -29.0927, lon: 26.3024 },
   FAGG: { name: 'George',       lat: -34.0056, lon: 22.3789 },
+};
+const SPOTS = {
+  Strand:           { lat: -34.1163, lon: 18.8362 },
+  'Cape Town city': { lat: -33.9249, lon: 18.4241 },
 };
 const HOURLY_KEEP = 48;   // the next two days of hours — the forecast lead times the scorer reads
 const TIMEOUT_MS = 20000;
@@ -105,11 +113,14 @@ const metarUrl = `${AWC}?ids=${Object.keys(CITIES).join(',')}&format=json&hours=
 // getWithOneRetry does not throw; the catch is a second guard so one bad read can never
 // cost the other seven their lines.
 const settle = (p) => p.catch((e) => ({ atUtc: new Date().toISOString(), attempts: 0, error: String(e?.message || e) }));
-const [version, m, ...cityReads] = await Promise.all([
+const places = [...Object.values(CITIES), ...Object.values(SPOTS)];
+const [version, m, ...reads] = await Promise.all([
   settle(getWithOneRetry(`${SITE}/api/version`)),
   settle(getWithOneRetry(metarUrl)),
-  ...Object.values(CITIES).map((c) => settle(getWithOneRetry(`${SITE}/api/weather?lat=${c.lat}&lon=${c.lon}`))),
+  ...places.map((c) => settle(getWithOneRetry(`${SITE}/api/weather?lat=${c.lat}&lon=${c.lon}`))),
 ]);
+const cityReads = reads.slice(0, Object.keys(CITIES).length);
+const spotReads = reads.slice(Object.keys(CITIES).length);
 const servedVersion = version.body?.version ?? version.body?.sha ?? null;
 const reports = Array.isArray(m.body) ? m.body : [];
 
@@ -129,7 +140,22 @@ Object.entries(CITIES).forEach(([icao, c], k) => {
   };
   wroteTo.add(appendSafely(file, JSON.stringify(line) + '\n'));
 });
+Object.entries(SPOTS).forEach(([spot, c], k) => {
+  const r = spotReads[k];
+  const payload = pickPayload(r.body);
+  if (r.status === 200 && payload?.ok !== false) okCount++;
+  const line = {
+    v: 1, runAtUtc, icao: null, spot, city: spot, lat: c.lat, lon: c.lon, servedVersion,
+    api: {
+      url: `${SITE}/api/weather?lat=${c.lat}&lon=${c.lon}`, atUtc: r.atUtc, status: r.status ?? null, ms: r.ms ?? null, attempts: r.attempts,
+      error: r.error ?? null, firstError: r.firstError ?? null, apiError: r.body?.ok === false ? (r.body?.error ?? 'ok:false') : null,
+      headers: r.headers ?? null, payload,
+    },
+    metar: null,
+  };
+  wroteTo.add(appendSafely(file, JSON.stringify(line) + '\n'));
+});
 
 appendSafely(path.join(OUT, 'recorder.log'),
-  `${runAtUtc} version=${servedVersion ?? '?'} api_ok=${okCount}/6 metar=${m.status ?? m.error} reports=${reports.length} -> ${[...wroteTo].map((f) => path.basename(f)).join(', ')}\n`);
-process.stdout.write(`recorded ${okCount}/6 API reads, ${reports.length} METAR reports -> ${[...wroteTo].join(', ')}\n`);
+  `${runAtUtc} version=${servedVersion ?? '?'} api_ok=${okCount}/${places.length} metar=${m.status ?? m.error} reports=${reports.length} -> ${[...wroteTo].map((f) => path.basename(f)).join(', ')}\n`);
+process.stdout.write(`recorded ${okCount}/${places.length} API reads, ${reports.length} METAR reports -> ${[...wroteTo].join(', ')}\n`);
