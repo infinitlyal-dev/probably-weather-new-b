@@ -26,6 +26,12 @@ const SUMMER_MONTHS = [10, 11, 12, 1, 2, 3];
 
 export const WITTY_DAY_TAGS = {
   witty: {
+    hail: {
+      3: { region: 'gauteng' }, // N12: Al LOVE (taste page 2026-09-25)
+    },
+    'rain-possible': {
+      21: { region: 'highveld', time: ['day'] }, // N02: Al LOVE (taste page 2026-09-25)
+    },
     // Day-named lines — show only on the day they name.
     fog: {
       99: { time: ['morning'], region: 'kzn' },
@@ -233,6 +239,7 @@ export const WITTY_DAY_TAGS = {
       35: { time: ['morning'] },
     },
     'cold-clear': {
+      98: { time: ['morning', 'day'] }, // N20: Al LOVE (taste page 2026-09-25)
       27: { time: ['morning'], months: [5, 6, 7, 8, 9] },
       28: { time: ['morning'], months: [5, 6, 7, 8, 9] },
       29: { time: ['morning'], region: 'highveld', months: [5, 6, 7, 8, 9] },
@@ -316,6 +323,7 @@ export const WITTY_DAY_TAGS = {
       26: { time: ['morning'] },
     },
     heat: {
+      90: { time: ['morning', 'day', 'evening'] }, // N17: Al LOVE (taste page 2026-09-25)
       85: { time: ['morning'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
       86: { time: ['day'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },
       87: { time: ['day'], region: 'lowveld', months: [10, 11, 12, 1, 2, 3] },

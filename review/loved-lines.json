@@ -1,0 +1,189 @@
+{
+ "note": "The 11 new lines Al LOVED on the taste page (25 Sept 2026), offered for the general line bank where it is thin. English as written (by Opus 5.5, blind to Al). Afrikaans: Vonk's proposal for Al (review/pairs-for-al.html, pre-marked USE). isiZulu, isiXhosa, Sesotho: through the language skills and lang-check (no line medium or high; Sesotho in SA spelling). Tags: a place line shows only in its region; a line that needs daylight carries its time.",
+ "ruling": "review/pairs-ruled.json (pending)",
+ "lines": [
+  {
+   "key": "N01",
+   "bin": "rain-possible",
+   "en": "The clouds are holding a meeting. Could go either way.",
+   "af": "Die wolke hou 'n vergadering. Kan enige kant toe gaan.",
+   "zu": "Amafu abambe umhlangano. Isinqumo singaba yebo noma cha.",
+   "xh": "Amafu abambe intlanganiso. Isigqibo sinokuba ewe okanye hayi.",
+   "st": "Maru a tshwere seboka. Qeto e ka ba ee kapa tjhe.",
+   "tag": null,
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "low"
+   }
+  },
+  {
+   "key": "N02",
+   "bin": "rain-possible",
+   "en": "Highveld clouds this heavy by two o'clock don't bluff.",
+   "af": "Hoëveldse wolke wat teen twee-uur al so swaar is, bluf nie.",
+   "zu": "Uma amafu aseHighveld esinda kangaka ngo-2 ntambama, awakhohlisi.",
+   "xh": "Xa amafu aseHighveld enzima kangaka ngo-2 emva kwemini, awakhohlisi.",
+   "st": "Ha maru a Highveld a le boima hakana ka 14:00, ha a thetse.",
+   "tag": {
+    "region": "highveld",
+    "time": [
+     "day"
+    ]
+   },
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "none"
+   }
+  },
+  {
+   "key": "N03",
+   "bin": "rain-possible",
+   "en": "Might rain. I've already cancelled everything, just in case.",
+   "af": "Dalk reën. Ek het klaar alles gekanselleer, net vir ingeval.",
+   "zu": "Imvula ingase ine. Sengihoxise konke, ngokuqapha nje.",
+   "xh": "Mhlawumbi iza kuna. Sele ndirhoxise yonke into, nje xa kunokwenzeka.",
+   "st": "Pula e ka na. Ke se ke hlakotse merero yohle, ke itshireletsa feela.",
+   "tag": null,
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "low"
+   }
+  },
+  {
+   "key": "N11",
+   "bin": "thunder",
+   "en": "The sky just said something. Nobody's arguing.",
+   "af": "Die lug het nou net iets gesê. Niemand stry nie.",
+   "zu": "Izulu lisanda kusho okuthile. Akekho ophikisayo.",
+   "xh": "Isibhakabhaka sisandula ukuthetha into. Akukho mntu uphikisayo.",
+   "st": "Lehodimo le sa tswa bua ntho e nngwe. Ha ho motho ya phehisang kgang.",
+   "tag": null,
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "none"
+   }
+  },
+  {
+   "key": "N12",
+   "bin": "hail",
+   "en": "Hail. Every car owner in Gauteng just stood up.",
+   "af": "Hael. Elke kareienaar in Gauteng het pas opgestaan.",
+   "zu": "Isichotho. Wonke umnikazi wemoto eGauteng usanda kusukuma.",
+   "xh": "Isichotho. Wonke umnini wemoto eGauteng usandula ukuphakama.",
+   "st": "Sefako. Bohle ba nang le dikoloi Gauteng ba sa tswa ema ka maoto.",
+   "tag": {
+    "region": "gauteng"
+   },
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "low"
+   }
+  },
+  {
+   "key": "N13",
+   "bin": "hail",
+   "en": "The sky is throwing ice. Honestly, it feels personal.",
+   "af": "Die lug gooi ys. Eerlikwaar, dit voel persoonlik.",
+   "zu": "Isibhakabhaka siphonsa iqhwa. Ngeqiniso, sengathi sihlasela mina mathupha.",
+   "xh": "Isibhakabhaka siphosa umkhenkce. Ngokwenyani, ngathi sihlasela mna buqu.",
+   "st": "Lehodimo le lahla leqhwa. Ka nnete, ho tshwana le ha le hlasela nna ka bonna.",
+   "tag": null,
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "low"
+   }
+  },
+  {
+   "key": "N14",
+   "bin": "uv",
+   "en": "UV this high, and even the shade wants shade.",
+   "af": "UV so hoog, selfs die skadu soek skadu.",
+   "zu": "Izinga le-UV liphezulu kangaka, ngisho nomthunzi ufuna umthunzi.",
+   "xh": "I-UV iphezulu kangangokuba nomthunzi ufuna umthunzi.",
+   "st": "UV e phahame hoo esita le moriti o batlang moriti.",
+   "tag": null,
+   "triage": {
+    "zu": "none",
+    "xh": "none",
+    "st": "none"
+   }
+  },
+  {
+   "key": "N15",
+   "bin": "uv",
+   "en": "The sun's working overtime today, and billing your nose.",
+   "af": "Die son werk vandag oortyd, en jou neus kry die rekening.",
+   "zu": "Ilanga lisebenza isikhathi esengeziwe namuhla, futhi likhokhisa ikhala lakho.",
+   "xh": "Ilanga lisebenza ixesha elongezelelweyo namhlanje, kwaye ibhili iya empumlweni yakho.",
+   "st": "Letsatsi le sebetsa nako e eketsehileng kajeno, mme le lefisa nko ya hao.",
+   "tag": null,
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "none"
+   }
+  },
+  {
+   "key": "N17",
+   "bin": "heat",
+   "en": "Barefoot to the car is an extreme sport today.",
+   "af": "Kaalvoet kar toe is vandag 'n ekstreme sport.",
+   "zu": "Ukuya emotweni ungafakile zicathulo kungumdlalo oyingozi kakhulu namuhla.",
+   "xh": "Ukuya emotweni ngaphandle kwezihlangu ngumdlalo oyingozi kakhulu namhlanje.",
+   "st": "Ho ya koloing o sa rwala dieta ke papadi e kotsi haholo kajeno.",
+   "tag": {
+    "time": [
+     "morning",
+     "day",
+     "evening"
+    ]
+   },
+   "triage": {
+    "zu": "low",
+    "xh": "low",
+    "st": "none"
+   }
+  },
+  {
+   "key": "N18",
+   "bin": "wind",
+   "en": "The wind has opinions and it's sharing every one.",
+   "af": "Die wind het opinies en deel elkeen.",
+   "zu": "Umoya unemibono, futhi uyisho yonke.",
+   "xh": "Umoya unemibono, kwaye uyithetha yonke.",
+   "st": "Moya o na le maikutlo, mme o re bolella ohle.",
+   "tag": null,
+   "triage": {
+    "zu": "none",
+    "xh": "none",
+    "st": "low"
+   }
+  },
+  {
+   "key": "N20",
+   "bin": "cold-clear",
+   "en": "Bright sun, frozen fingers. The sun's here for decoration.",
+   "af": "Helder son, bevrore vingers. Die son is net vir die mooi hier.",
+   "zu": "Ilanga liyakhanya, iminwe iqandile. Ilanga likhona nje ukuhlobisa.",
+   "xh": "Ilanga liqaqambile, iminwe ingumkhenkce. Ilanga likho nje ukuhombisa.",
+   "st": "Letsatsi le a kganya, menwana e hwame. Letsatsi le teng feela ho kgabisa.",
+   "tag": {
+    "time": [
+     "morning",
+     "day"
+    ]
+   },
+   "triage": {
+    "zu": "none",
+    "xh": "low",
+    "st": "low"
+   }
+  }
+ ]
+}
