@@ -599,3 +599,91 @@ and low), `b7c2d3f` is the alert script (GitHub Actions, not deployed), the rest
 section). **36 change what users get.** To ship §0's alone first: `git push origin launch-run-base:main` (the tag
 moved with the rebase and still fast-forwards from `84fc691`). After the push, once: GitHub Actions → "Launch
 alert" → Run workflow.
+
+---
+
+## 9. Rain's here, fog, frost (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 25 Sept 2026)
+
+Al: "it has been showing fog a lot when it isnt really that foggy and the rain thing i noticed the last couple of
+days and it felt off." Same worktree, local `main` from `6dda897`. Plan: `review/accuracy/v3/PLAN.md`, committed as
+the pre-registration (`2675a95`) before anything was scored, with Fable's ten changes adopted in full.
+
+**Known before the plan.** The recorder's 18 fog calls (24 Sept 23:58 → 25 Sept 14:10): 15 from the
+visibility–humidity detector, 2 from one "true fog" word (Layer A.2), 1 from the description vote; 1 real (George
+08:10). At Cape Town and Durban the detector's input was Open-Meteo's own visibility (archived 0.2–0.7 km while
+the airports saw 6–10 km). **Open-Meteo's visibility changed on 30 Sept 2025** (a 24.1 km cap before, uncapped and
+often low after), so fog was tuned and tested only on 1 Oct 2025 → 24 Sept 2026, alternate ISO weeks of
+noon-to-noon days. Rain inputs are stable across both years. Production logs no conditions (`DEBUG = false`); no
+station reports from Strand. The four SAWS towns, Cape Columbine and Langebaanweg's synoptic reports are automatic
+with no present weather or visibility — no rain-now or fog truth; the West Coast has none at all.
+
+### 9.1 Fog — strict gates in five regions (`c2c3f41`)
+
+Candidates: the detector's gates, only cells that still fire on Strand's two pinned real fogs (21 May, Open-Meteo
+1,040 m; 3 Aug, Tomorrow.io 0.8 km). Chosen on the tune weeks by F0.5: humidity ≥ 95 % and Open-Meteo's own wind
+≤ 10 km/h. Test weeks, 13 airports: wrong fog calls **15.1 → 10.5 per 1,000 hours** (−4.6 [−7.2, −2.7]); right when
+it says fog 10 % → 12 % (+1.9 [0.2, 3.5] points); fog hours caught 35 % → 29 % (the cost). Wrong fog clearly lower
+in the Western Cape (46.8 → 34.6), Garden Route (43.5 → 18.1), Eastern Cape, KZN coast and Lowveld; no change
+measured inland; the West Coast has no truth. 73 % of today's detector fog calls came with no fog, mist or low
+cloud at the airport. Production: `detectAdvectionFog(…, { strict })`, `FOG_STRICT_REGIONS` (a test ties it to
+`results/v3-fog.json`), `api/_lib/regions.js` (the nearest measured station's region; station cells, not climate
+zones), `meta.conditionConfidence.fogSignal` now carries Open-Meteo's own wind, the rule and the region for the
+recorder. A blocked false fog becomes the "fog may be coming" hedge with low confidence (the trend check is
+unchanged; pinned). **Al rules per region** (his page): George would catch 2 of 78 fog hours instead of 7.
+
+### 9.2 "Rain's here" — nothing changed; Al decides
+
+No cell of the chance × amount grid (votes fixed at 2 distinct models) reached the pre-registered 2025 bar (Wilson
+lower bound ≥ 60 % right) in any regime; the strictest (≥ 90 %, ≥ 2 mm) reached 51 %. It was tested anyway as the
+pre-coded fallback: right **73–75 %** in 2026 (lower bound 68–70 %) against today's **48–53 %**, clearly more right in
+the Western Cape, Garden Route, Free State and Northern Cape, saying "Rain's here" in 7 % of rain hours instead of 47 %
+(the rest "Might rain.", or Windy in 198 rain hours). Fable: the fallback is not in the plan, so nothing ships; Al
+chooses today / strict / never (radar only) per region; if strict, it ships in the four regions on this evidence as
+his ruling. Descriptive: today's rule is wrong 15–97 % by region and time of day — worst inland at night (Limpopo
+97 %, Lowveld 94 %, Free State 89 %, North West 90 %). Proposed wording for Al: "Showers nearby." / "Buie naby."
+
+### 9.3 Frost nights — fails, nothing ships
+
+Inland (≥ 500 m, the Lowveld out), gate chosen on 2025 leave-one-station-out: cloud ≤ 40 %, wind ≤ 12 km/h,
+dew-point depression ≥ 4 °C; δ ≈ 1.6 °C. Frost nights clearly better (airports 3.26 → 2.22 °C off the day before,
+towns 4.77 → 3.74), but all nights under the ECMWF-heavy assignment show no clear gain at the airports (−0.02 [−0.08,
+0.04]) and Johannesburg gets clearly worse (1.10 → 1.81): its airport is on open high ground. No second pick.
+
+### 9.4 Inland table — six regions (`eeb530b`)
+
+Both sides learned on 2025 only, leave-one-station-out. 2026 high + low, pooled: inland airports −0.07 [−0.11,
+−0.04] °C (t1), the four towns −0.06 [−0.09, −0.04]; whole intervals below zero at both leads under all three
+assignments. Clearly better in the Free State, Northern Cape, North West, Limpopo, Karoo and KZN inland; worse in the
+Highveld; no change at Mthatha. `PRECISION_TABLE_INLAND` (make-table.mjs: regions from the results, the refit only
+where every weight stays within 3 points of the tested 2025 table — tomorrow's high fell back to it), used where the
+region is in its list and Open-Meteo's grid elevation is 500 m or higher; `meta.precision.table` names it.
+
+### 9.5 The rain % calibration, the last week, the recorder
+
+The calibration still waits: no rain has fallen at the six recorder airports since it started. Last week
+(`results/v3-lastweek.*`): at Cape Town airport the app said fog in 13 hours with no fog there (the new rule: 9);
+Strand (replayed, no station) 19 → 9; George 10 → 4, losing its one real fog hour; Bloemfontein's replayed rain rule
+said "Rain's here" in 27 hours, with rain in 9. The recorder reads Strand and Cape Town city from 25 Sept 16:10
+(`bfc4582`; installed into the runtime copy, the scheduled task unchanged).
+
+### 9.6 Fable, gates, what a push ships
+
+| Fable call | tokens | verdict |
+|---|---:|---|
+| the plan | 120,449 | PROCEED WITH CHANGES — ten changes, adopted in full before scoring |
+| rulings on the four results | 88,060 | fog OK in five regions; rain: nothing ships, Al decides; frost fails; inland OK in six; the region map sound |
+| the fog and inland diffs | 119,971 | fog SHIP; inland SHIP WITH FIXES (four drift guards and test pins) |
+| the fixes | 77,195 | CONFIRMED (and a footnote, applied) |
+| **total** | **405,675** | cap 600,000 |
+
+Gates on the finished tree: serial **146 files / 21,260 tests**, image budget, build, fold 80/80, desktop, bespoke, drift
+guard, rotation, month (+ control failing as it must), precision table `--check`, gate shots. The fog commit on its
+own (`c2c3f41`, the inland changes set aside): 146 files / 21,258 tests and the build.
+Al's page: `review/rain-fog-frost-for-al.html` in the OneDrive working copy (generated by `51072c3`; export
+`rain-fog-frost-ruled.json`), checked headless at 390 and 1280 px.
+
+**What a push ships now:** local `main` is **68 commits over live `84fc691`** — §8's 57 and this run's 11: two reach
+users (`c2c3f41` fog's strict gates in five regions, `eeb530b` the inland table), the rest are records and tooling
+(`bfc4582` the recorder, `2675a95`, `e75c240`, `3b90549`, `9e2188b`, `0143a7a`, `845c84f`, `51072c3` and this section).
+**38 change what users get.** The fog change goes out region by region on Al's word: where he keeps today's fog,
+`FOG_STRICT_REGIONS` loses that region before the push.
