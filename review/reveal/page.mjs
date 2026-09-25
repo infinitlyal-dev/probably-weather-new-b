@@ -150,7 +150,7 @@ ${phone}
 <li>A longer line takes a little longer to write, but never more than about 1.6 seconds, so the long isiZulu lines don't drag.</li>
 <li>Only a joke you haven't seen gets the show. Open the app again and the same joke is simply there.</li>
 <li>Phones set to reduce motion get the joke straight away. Screen readers get the words at once.</li>
-<li>The joke's space is kept from the start, so nothing on the screen moves when it lands. Checked: Home still fits on all 80 phone sizes, and with each of the three styles on, every measurement is the same as without it.</li>
+<li>The joke's space is kept from the start, so nothing on the screen moves when it lands. Checked: Home still fits in all 80 fold checks (20 phone sizes, short and longest jokes in English and Afrikaans), and with each of the three styles on, every measurement is the same as without it.</li>
 <li>Tap the photo to hide the joke and see the whole picture; tap again to bring it back. The handle and Share still do their own jobs. There is also a proper button for keyboards and screen readers, named “Show the joke” / “Hide the joke” in all five languages.</li>
 <li>Share now sends a postcard: the photo clean, the joke written under it on a light border. Nothing sits on the photo.</li>
 </ul></div>
