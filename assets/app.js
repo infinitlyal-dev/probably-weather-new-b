@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // A finished search that found nothing, and one the geocoder did not answer (429 / 5xx / network).
       // Both used to leave the list silently empty (launch eval, 2026-09-24). zu/xh/st through the
       // skills + lang-check: all pass.
-      noResults: { en: "No places found. Check the spelling, or try a nearby town.", af: "Geen plek gevind nie. Kyk na die spelling, of probeer 'n dorp naby.", zu: "Ayikho indawo etholakele. Hlola ukupela, noma uzame idolobha eliseduze.", xh: "Akukho ndawo ifunyenweyo. Jonga upelo, okanye uzame idolophu ekufutshane.", st: "Ha ho dibaka tse fumanweng. Hlahloba mopeleto, kapa o leke toropo e haufi." },
+      noResults: { en: "No places found. Check the spelling, or try a nearby town.", af: "Geen plek gevind nie. Kyk na die spelling of probeer 'n nabye dorp.", zu: "Ayikho indawo etholakele. Hlola ukupela, noma uzame idolobha eliseduze.", xh: "Akukho ndawo ifunyenweyo. Jonga upelo, okanye uzame idolophu ekufutshane.", st: "Ha ho dibaka tse fumanweng. Hlahloba mopeleto, kapa o leke toropo e haufi." },
       searchFailed: { en: "Search isn't answering right now. Try again in a moment.", af: "Die soektog antwoord nie nou nie. Probeer weer oor 'n oomblik.", zu: "Ukusesha akuphenduli okwamanje. Zama futhi ngomzuzwana.", xh: "Ukukhangela akuphenduli ngoku. Zama kwakhona ngomzuzwana.", st: "Ho batla ha ho arabe jwale. Leka hape ka motsotsoana." },
       clearRecents: { en: "Clear recents", af: "Verwyder onlangse soektogte", zu: "Susa okamuva", xh: "Susa okukhangelwe kutshanje", st: "Hlakola tsa morao" },
       edit: { en: "Edit", af: "Wysig", zu: "Hlela", xh: "Hlela", st: "Fetola" },
