@@ -200,8 +200,10 @@ describe('mobile facelift — contained hero (M1)', () => {
       .toBe('/assets/images/bg/default.jpg');
     expect(new URL('assets/images/bg-canonical/example.webp', 'https://www.probablyweather.co.za/').pathname)
       .toBe('/assets/images/bg-canonical/example.webp');
-    // The catch must still seed the default rather than leave the card black.
-    expect(html).toMatch(/} catch \(e\) {\s*try { setHeroUrl\('assets\/images\/bg\/default\.jpg'\); } catch \(_\) {}/);
+    // The catch must still seed the default rather than leave the card black. Since the launch
+    // run a first visit seeds it once the scripts are in (placeholderAfterScripts), not before.
+    expect(html).toMatch(/} catch \(e\) {\s*try { placeholderAfterScripts\(\); } catch \(_\) {}/);
+    expect(html).toMatch(/function placeholderAfterScripts\(\) {[\s\S]*?setHeroUrl\('assets\/images\/bg\/default\.jpg'\)/);
   });
 
   it('crops the existing full-res asset in CSS rather than touching the image library', () => {

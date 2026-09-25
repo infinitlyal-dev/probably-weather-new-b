@@ -297,8 +297,14 @@
       // It is still injected by JS AFTER parse rather than linked in <head>, so
       // it stays off the first-paint critical path, and font-display:swap means
       // the caption renders in the fallback hand until it lands.
-      if ('requestIdleCallback' in window) window.requestIdleCallback(loadCaption, { timeout: 1500 });
-      else setTimeout(loadCaption, 0);
+      // Launch run (2026-09-25): not before DOMContentLoaded, so it never shares the pipe with
+      // app.js; it lands while the forecast is on its way.
+      var startCaption = function () {
+        if ('requestIdleCallback' in window) window.requestIdleCallback(loadCaption, { timeout: 1000 });
+        else setTimeout(loadCaption, 0);
+      };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startCaption, { once: true });
+      else startCaption();
     })();
   </script>
   <a href="#home-screen" class="skip-link">Skip to main content</a>
@@ -308,7 +314,7 @@
          src-less until renderHome — text on black for the whole first fetch).
          The inline script upgrades to the last-known condition image, and the
          real picker swaps in the correct pick when data lands. -->
-    <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080" src="assets/images/bg/default.jpg"/>
+    <img id="bgImg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080"/>
     <div id="scrim"></div>
     <!-- Weather particles live INSIDE the background layer (z:-1 stacking
          context): the compositor can promote the animated streaks however it
@@ -341,6 +347,17 @@
       // fallback to default.jpg, or no stored pick at all — has to drop it,
       // or default.jpg wears the previous photograph's offset for the whole
       // cold-open window (and for the session if the chain never lands).
+      // Launch run (2026-09-25): a first visit has no stored photograph, and the placeholder sits
+      // under the opaque splash until the forecast lands. Fetched after the scripts, it downloads
+      // while the forecast is on its way instead of sharing slow-4G bandwidth with app.js.
+      function placeholderAfterScripts() {
+        var go = function () {
+          var el = document.getElementById('bgImg');
+          if (el && !el.getAttribute('src')) el.src = 'assets/images/bg/default.jpg';
+          if (!document.documentElement.style.getPropertyValue('--hero-url')) setHeroUrl('assets/images/bg/default.jpg');
+        };
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go, { once: true }); else go();
+      }
       function clearHeroCrop() {
         document.documentElement.style.removeProperty('--hero-crop');
         document.documentElement.style.removeProperty('--hero-crop-desktop');
@@ -370,7 +387,7 @@
         // Deliberately AFTER the getItem try/catch, in its own guard: when
         // storage access throws, `last` is simply unknown — the card must still
         // be seeded with the default rather than left unset and black.
-        setHeroUrl(last || 'assets/images/bg/default.jpg');
+        if (last) setHeroUrl(last); else placeholderAfterScripts();
         // M7: seed the per-image crop offset the same way, so the cold-open
         // paint uses the SAME crop app.js will settle on instead of painting at
         // the default and then jumping. Seeded ONLY when the stored image is the
@@ -395,7 +412,7 @@
           }
         } catch (e) { clearHeroCrop(); }
       } catch (e) {
-        try { setHeroUrl('assets/images/bg/default.jpg'); } catch (_) {}
+        try { placeholderAfterScripts(); } catch (_) {}
       }
     })();
   </script>
