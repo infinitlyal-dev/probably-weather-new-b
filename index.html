@@ -488,6 +488,8 @@
           <div id="temp" class="temp">--°</div>
           <div id="tempHiLo" class="temp-hilo"></div>
           <div id="description" class="description">—</div>
+          <!-- Launch run (2026-09-25): shown only when the weather cannot load. -->
+          <button type="button" id="retryWeather" class="retry-weather" hidden>Try again</button>
         </div>
         <!-- #headline stays exactly where it has always been. The mobile
              facelift lifts it to the top of this flex column with `order: -1`

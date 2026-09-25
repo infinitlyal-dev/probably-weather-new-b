@@ -6251,3 +6251,19 @@ body.ads-slots #week-screen .daily-cards > .daily-header { flex: none !important
   -webkit-backdrop-filter: none;
 }
 
+/* error-retry */
+.retry-weather {
+  margin-top: 14px;
+  min-height: 44px;
+  padding: 10px 22px;
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.retry-weather:focus-visible { outline: 2px solid var(--ink, #fff); outline-offset: 3px; }
+

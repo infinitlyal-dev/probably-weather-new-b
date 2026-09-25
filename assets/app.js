@@ -576,6 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
       skipToContent: { en: "Skip to main content", af: "Slaan oor na die hoofinhoud", zu: "Yeqela kokuqukethwe okuyinhloko", xh: "Tsiba uye kumxholo ophambili", st: "Tlolela dikahareng tsa sehlooho" },
       loading: { en: "Loading…", af: "Laai…", zu: "Iyalayisha…", xh: "Iyalayisha…", st: "E a jarolla…" },
       error: { en: "Error", af: "Fout", zu: "Iphutha", xh: "Impazamo", st: "Phoso" },
+      tryAgain: { en: "Try again", af: "Probeer weer", zu: "Zama futhi", xh: "Zama kwakhona", st: "Leka hape" },
       couldntFetch: { en: "Couldn't fetch weather right now.", af: "Kon nie weer kry nie.", zu: "Ayikwazanga ukuthola isimo sezulu.", xh: "Ayikwazanga ukufumana ulwazi lwemozulu ngoku.", st: "Ha e kgone ho fumana boemo ba lehodimo." },
       save: { en: "Save", af: "Stoor", zu: "Londoloza", xh: "Gcina", st: "Boloka" },
       saved: { en: "Saved", af: "Gestoor", zu: "Kugciniwe", xh: "Igciniwe", st: "Bolokile" },
@@ -2575,6 +2576,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // nameKey/msgKey name a catalogue entry; the plain argument is literal text
   // (a place name), which is not translatable.
   function renderLoading(name, nameKey) {
+    showRetry(false);
     // Loading is symmetric with error, and the distinction is WHICH place.
     //
     // A request for a DIFFERENT place: the forecast on screen belongs to the
@@ -2616,9 +2618,23 @@ document.addEventListener("DOMContentLoaded", () => {
     showLoader(false);
     safeText(locationEl, nameKey ? t('misc', nameKey) : displayPlaceName(name));
     clearForecastSurfaces();
-    safeText(headlineEl, t('misc', 'error'));
+    // Launch run (Al's ticked list, "error-retry"): a plain sentence and a Try again button —
+    // no "Error" in the caption hand on the photograph.
+    safeText(headlineEl, '');
     safeText(descriptionEl, msgKey ? t('misc', msgKey) : (msg || t('misc', 'couldntFetch')));
+    showRetry(true);
   }
+  function showRetry(on) {
+    const btn = document.getElementById('retryWeather');
+    if (!btn) return;
+    btn.hidden = !on;
+    if (on) btn.textContent = t('misc', 'tryAgain');
+  }
+  document.getElementById('retryWeather')?.addEventListener('click', () => {
+    showRetry(false);
+    const place = activePlace || homePlace;
+    if (place) loadAndRender(place); else location.reload();
+  });
   function renderSidebar(norm, heroOverride) {
     if (!norm && window.__PW_LAST_NORM) norm = window.__PW_LAST_NORM; if (!norm) return;
     // Source-list rendering moved to the dedicated /Sources nav page. The old
@@ -2963,6 +2979,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderHome(norm) {
     hideSplash();
+    showRetry(false);
     // First forecast on screen: the install banner times itself from this moment
     // (install.js FIRST_WEATHER_EVENT — Al's ruling 2026-09-15).
     if (!window.__PW_WEATHER_AT) {

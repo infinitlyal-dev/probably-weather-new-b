@@ -889,7 +889,8 @@ describe('language leaks — switching language updates content already rendered
     // lastHeroState + renderLoading + renderError ride along in the SAME body,
     // so applySettings sees the real binding rather than a copy.
     const heroStart = src.indexOf('  // THE record of what the hero is currently showing');
-    const heroEnd = src.indexOf('\n  }', src.indexOf('  function renderError(msg, msgKey) {')) + '\n  }'.length;
+    // …and showRetry, the Try again button the error state shows (launch run, "error-retry").
+    const heroEnd = src.indexOf('\n  }', src.indexOf('  function showRetry(on) {')) + '\n  }'.length;
     if (heroStart < 0 || heroEnd < heroStart) throw new Error('hero-state source not found');
     const body = `${src.slice(heroStart, heroEnd)}\n${src.slice(start, detailEnd)}\n${src.slice(applyStart, applyEnd)}`;
 
@@ -1324,14 +1325,19 @@ describe('language leaks — switching language updates content already rendered
     a.renderError(null, 'couldntFetch');
     const headline = a.reg.get('#headline');
     const description = a.reg.get('#description');
-    expect(headline.textContent).toBe('Error');
+    const retry = a.reg.get('#retryWeather');
+    // Launch run ("error-retry"): no "Error" on the photograph — a plain sentence and Try again.
+    expect(headline.textContent).toBe('');
     expect(description.textContent).toBe("Couldn't fetch weather right now.");
+    expect(retry.hidden).toBe(false);
+    expect(retry.textContent).toBe('Try again');
 
     a.applyLanguageSelection('af');
     await settle();
 
-    expect(headline.textContent, 'error headline stayed English').toBe('Fout');
+    expect(headline.textContent, 'an error word came back').toBe('');
     expect(description.textContent, 'error body stayed English').toBe('Kon nie weer kry nie.');
+    expect(retry.textContent, 'Try again stayed English').toBe('Probeer weer');
   });
 
   it('switches an error state into every language', async () => {
@@ -1340,7 +1346,8 @@ describe('language leaks — switching language updates content already rendered
       a.renderError(null, 'couldntFetch');
       a.applyLanguageSelection(lang);
       await settle();
-      expect(a.reg.get('#headline').textContent, `${lang} error headline`).toBe(T.misc.error[lang]);
+      expect(a.reg.get('#headline').textContent, `${lang} error headline`).toBe('');
+      expect(a.reg.get('#retryWeather').textContent, `${lang} Try again`).toBe(T.misc.tryAgain[lang]);
       expect(a.reg.get('#description').textContent, `${lang} error body`).toBe(T.misc.couldntFetch[lang]);
     }
   });
@@ -1514,7 +1521,8 @@ describe('language leaks — switching language updates content already rendered
     await settle();
 
     // The translated error, NOT Cape Town's forecast.
-    expect(a.reg.get('#headline').textContent).toBe('Fout');
+    expect(a.reg.get('#headline').textContent).toBe('');
+    expect(a.reg.get('#retryWeather').textContent).toBe('Probeer weer');
     expect(a.reg.get('#description').textContent).toBe('Kon nie weer kry nie.');
     expect(a.reg.get('#description').textContent).not.toContain('Nat toestande');
     expect(a.getDisplayState().kind).toBe('error');
@@ -1539,7 +1547,8 @@ describe('language leaks — switching language updates content already rendered
     a.applyLanguageSelection('af');
     await settle();
 
-    expect(a.reg.get('#headline').textContent).toBe('Fout');
+    expect(a.reg.get('#headline').textContent).toBe('');
+    expect(a.reg.get('#retryWeather').textContent).toBe('Probeer weer');
     expect(a.reg.get('#description').textContent).toBe('Kon nie weer kry nie.');
     // Cape Town's forecast must NOT come back, and the heading stays Johannesburg.
     expect(a.reg.get('#description').textContent).not.toContain('Nat toestande');
@@ -1573,7 +1582,8 @@ describe('language leaks — switching language updates content already rendered
 
       expect(a.reg.get('#location').textContent, `${lang} heading after GPS failure`).toBe(T.misc.myLocation[lang]);
       expect(a.reg.get('#location').textContent).not.toBe('My Location');
-      expect(a.reg.get('#headline').textContent).toBe(T.misc.error[lang]);
+      expect(a.reg.get('#headline').textContent).toBe('');
+      expect(a.reg.get('#retryWeather').textContent).toBe(T.misc.tryAgain[lang]);
     }
   });
 
@@ -1584,7 +1594,7 @@ describe('language leaks — switching language updates content already rendered
     a.applyLanguageSelection('af');
     await settle();
     expect(a.reg.get('#location').textContent).toBe('Strand, Western Cape');
-    expect(a.reg.get('#headline').textContent).toBe('Fout');
+    expect(a.reg.get('#headline').textContent).toBe('');
   });
 
   // Astra round 8: Home showed the translated error while Weekly and Hourly
@@ -1611,7 +1621,7 @@ describe('language leaks — switching language updates content already rendered
       await settle();
 
       // …and after the switch all three surfaces speak the new language.
-      expect(a.reg.get('#headline').textContent, `${lang} home`).toBe(T.misc.error[lang]);
+      expect(a.reg.get('#retryWeather').textContent, `${lang} home`).toBe(T.misc.tryAgain[lang]);
       expect(a.weeklyText(), `${lang} weekly`).toContain(T.misc.couldntFetch[lang]);
       expect(a.hourlyText(), `${lang} hourly`).toContain(T.misc.couldntFetch[lang]);
       expect(a.weeklyText()).not.toContain(T.misc.couldntFetch.en);
