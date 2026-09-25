@@ -1022,7 +1022,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (shareBtn) shareBtn.style.display = which === screenHome ? '' : 'none';
     if (navHourlyHome) navHourlyHome.style.display = which === screenHome ? '' : 'none';
     const sidebar = document.querySelector('.sidebar'); if (sidebar) sidebar.style.display = which === screenHome ? '' : 'none';
+    if (which === screenWeek) requestAnimationFrame(fitWeekToScreen);
   }
+  // Launch run (Al's ticked list, "week-compact"): with an ad card on Week, the ads rule holds the
+  // list at least a screen tall so the card starts below the fold (ADS-READINESS in app.css) —
+  // but a full screen BELOW the page title, so the rows stretched past the fold and 5½ days fit.
+  // Measured from under the title to the bottom of the visible screen, all seven fit and the card
+  // still starts just below the fold. Without an ad card nothing stretches; nothing to do.
+  function fitWeekToScreen() {
+    const body = screenWeek?.querySelector(':scope > .screen-panel-body');
+    if (!body) return;
+    const slot = screenWeek.querySelector(':scope > .ad-slot');
+    const adShown = slot && !slot.hidden && getComputedStyle(slot).display !== 'none';
+    if (!adShown || screenWeek.classList.contains('hidden')) { body.style.minHeight = ''; return; }
+    const offset = body.getBoundingClientRect().top - screenWeek.getBoundingClientRect().top + screenWeek.scrollTop;
+    body.style.minHeight = `${Math.max(0, Math.floor(screenWeek.clientHeight - offset))}px`;
+  }
+  window.addEventListener('resize', () => { if (screenWeek && !screenWeek.classList.contains('hidden')) fitWeekToScreen(); });
   const showLoader = (show) => { if (loader) loader.classList[show ? 'remove' : 'add']('hidden'); };
   function showToast(message, duration = 3000, action = null, icon = null) {
     if (!toast) return;

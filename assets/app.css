@@ -6228,5 +6228,10 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   #hourly-screen .hourly-row { grid-template-columns: 44px 24px minmax(40px, 1fr) minmax(34px, 1fr) minmax(30px, 1fr) minmax(34px, 1fr) 30px minmax(26px, 0.8fr); }
   /* Day detail has no direction column (seven cells). */
   #day-detail-screen .hourly-row { grid-template-columns: 44px 24px minmax(40px, 1fr) minmax(34px, 1fr) minmax(30px, 1fr) minmax(34px, 1fr) minmax(26px, 0.8fr); }
+  /* week-compact: rows a little shorter by nature; with an ad card on the screen the list is
+     fitted to the visible screen (fitWeekToScreen) and the header keeps its own height. */
+  #week-screen .daily-row { padding-top: 8px; padding-bottom: 8px; }
   #day-detail-screen .day-detail-summary { align-items: center; text-align: center; }
 }
+body.ads-slots #week-screen .daily-cards > .daily-header { flex: none !important; }
+
