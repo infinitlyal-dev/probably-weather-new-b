@@ -1,0 +1,545 @@
+{
+ "lead": "t1",
+ "test": {
+  "from": "2026-01-01",
+  "to": "2026-09-24"
+ },
+ "stations": [
+  "68727 Beaufort West",
+  "68737 Graaff-Reinet",
+  "68581 Pietermaritzburg",
+  "68479 Ladysmith"
+ ],
+ "byRegion": {
+  "Karoo": {
+   "model: best_match": {
+    "n": 1006,
+    "mae": 1.828,
+    "bias": -0.149,
+    "within2": 0.643
+   },
+   "model: ecmwf_ifs025": {
+    "n": 1006,
+    "mae": 2.096,
+    "bias": 0.339,
+    "within2": 0.58
+   },
+   "model: gfs_seamless": {
+    "n": 1006,
+    "mae": 2.311,
+    "bias": 1.019,
+    "within2": 0.611
+   },
+   "model: icon_seamless": {
+    "n": 996,
+    "mae": 1.567,
+    "bias": 0.199,
+    "within2": 0.731
+   },
+   "model: ukmo_seamless": {
+    "n": 882,
+    "mae": 1.898,
+    "bias": -0.256,
+    "within2": 0.638
+   },
+   "model: meteofrance_seamless": {
+    "n": 994,
+    "mae": 2.497,
+    "bias": 0.671,
+    "within2": 0.551
+   },
+   "app now (old harness)": {
+    "n": 1006,
+    "mae": 1.855,
+    "bias": 0.296,
+    "within2": 0.649
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 1006,
+    "mae": 1.765,
+    "bias": 0.051,
+    "within2": 0.66
+   },
+   "app now (mixed)": {
+    "n": 1006,
+    "mae": 1.881,
+    "bias": 0.321,
+    "within2": 0.654
+   },
+   "consensus (airport table)": {
+    "n": 1006,
+    "mae": 1.565,
+    "bias": -0.144,
+    "within2": 0.741
+   },
+   "mix α=0.5 (old harness)": {
+    "n": 1006,
+    "mae": 1.638,
+    "bias": 0.076,
+    "within2": 0.717
+   },
+   "mix α=0.5 (ECMWF-heavy)": {
+    "n": 1006,
+    "mae": 1.594,
+    "bias": -0.047,
+    "within2": 0.714
+   },
+   "mix α=0.5 (mixed)": {
+    "n": 1006,
+    "mae": 1.661,
+    "bias": 0.088,
+    "within2": 0.713
+   }
+  },
+  "KZN inland": {
+   "model: best_match": {
+    "n": 1000,
+    "mae": 1.744,
+    "bias": -0.908,
+    "within2": 0.625
+   },
+   "model: ecmwf_ifs025": {
+    "n": 1000,
+    "mae": 1.878,
+    "bias": -0.226,
+    "within2": 0.581
+   },
+   "model: gfs_seamless": {
+    "n": 1000,
+    "mae": 2.076,
+    "bias": 0.738,
+    "within2": 0.613
+   },
+   "model: icon_seamless": {
+    "n": 990,
+    "mae": 1.908,
+    "bias": -0.929,
+    "within2": 0.614
+   },
+   "model: ukmo_seamless": {
+    "n": 876,
+    "mae": 1.733,
+    "bias": -0.798,
+    "within2": 0.64
+   },
+   "model: meteofrance_seamless": {
+    "n": 988,
+    "mae": 2.246,
+    "bias": 1.072,
+    "within2": 0.549
+   },
+   "app now (old harness)": {
+    "n": 1000,
+    "mae": 1.7,
+    "bias": -0.389,
+    "within2": 0.617
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 1000,
+    "mae": 1.733,
+    "bias": -0.724,
+    "within2": 0.604
+   },
+   "app now (mixed)": {
+    "n": 1000,
+    "mae": 1.752,
+    "bias": -0.041,
+    "within2": 0.601
+   },
+   "consensus (airport table)": {
+    "n": 1000,
+    "mae": 1.352,
+    "bias": -0.558,
+    "within2": 0.77
+   },
+   "mix α=0.5 (old harness)": {
+    "n": 1000,
+    "mae": 1.481,
+    "bias": -0.473,
+    "within2": 0.711
+   },
+   "mix α=0.5 (ECMWF-heavy)": {
+    "n": 1000,
+    "mae": 1.498,
+    "bias": -0.641,
+    "within2": 0.711
+   },
+   "mix α=0.5 (mixed)": {
+    "n": 1000,
+    "mae": 1.482,
+    "bias": -0.299,
+    "within2": 0.708
+   }
+  }
+ },
+ "byStation": {
+  "68727 Beaufort West": {
+   "model: best_match": {
+    "n": 515,
+    "mae": 1.502,
+    "bias": -0.196,
+    "within2": 0.763
+   },
+   "model: ecmwf_ifs025": {
+    "n": 515,
+    "mae": 2.091,
+    "bias": 0.486,
+    "within2": 0.614
+   },
+   "model: gfs_seamless": {
+    "n": 515,
+    "mae": 1.822,
+    "bias": 0.62,
+    "within2": 0.68
+   },
+   "model: icon_seamless": {
+    "n": 510,
+    "mae": 1.321,
+    "bias": -0.146,
+    "within2": 0.79
+   },
+   "model: ukmo_seamless": {
+    "n": 453,
+    "mae": 1.802,
+    "bias": -0.868,
+    "within2": 0.669
+   },
+   "model: meteofrance_seamless": {
+    "n": 509,
+    "mae": 2.069,
+    "bias": -0.604,
+    "within2": 0.585
+   },
+   "app now (old harness)": {
+    "n": 515,
+    "mae": 1.587,
+    "bias": 0.172,
+    "within2": 0.73
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 515,
+    "mae": 1.509,
+    "bias": 0.024,
+    "within2": 0.777
+   },
+   "app now (mixed)": {
+    "n": 515,
+    "mae": 1.423,
+    "bias": -0.143,
+    "within2": 0.75
+   },
+   "consensus (airport table)": {
+    "n": 515,
+    "mae": 1.383,
+    "bias": -0.673,
+    "within2": 0.804
+   },
+   "mix α=0.5 (old harness)": {
+    "n": 515,
+    "mae": 1.369,
+    "bias": -0.251,
+    "within2": 0.8
+   },
+   "mix α=0.5 (ECMWF-heavy)": {
+    "n": 515,
+    "mae": 1.349,
+    "bias": -0.324,
+    "within2": 0.802
+   },
+   "mix α=0.5 (mixed)": {
+    "n": 515,
+    "mae": 1.32,
+    "bias": -0.408,
+    "within2": 0.8
+   }
+  },
+  "68737 Graaff-Reinet": {
+   "model: best_match": {
+    "n": 491,
+    "mae": 2.169,
+    "bias": -0.1,
+    "within2": 0.517
+   },
+   "model: ecmwf_ifs025": {
+    "n": 491,
+    "mae": 2.101,
+    "bias": 0.185,
+    "within2": 0.544
+   },
+   "model: gfs_seamless": {
+    "n": 491,
+    "mae": 2.823,
+    "bias": 1.438,
+    "within2": 0.54
+   },
+   "model: icon_seamless": {
+    "n": 486,
+    "mae": 1.826,
+    "bias": 0.562,
+    "within2": 0.669
+   },
+   "model: ukmo_seamless": {
+    "n": 429,
+    "mae": 2,
+    "bias": 0.391,
+    "within2": 0.606
+   },
+   "model: meteofrance_seamless": {
+    "n": 485,
+    "mae": 2.947,
+    "bias": 2.009,
+    "within2": 0.515
+   },
+   "app now (old harness)": {
+    "n": 491,
+    "mae": 2.136,
+    "bias": 0.426,
+    "within2": 0.564
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 491,
+    "mae": 2.033,
+    "bias": 0.079,
+    "within2": 0.538
+   },
+   "app now (mixed)": {
+    "n": 491,
+    "mae": 2.361,
+    "bias": 0.806,
+    "within2": 0.554
+   },
+   "consensus (airport table)": {
+    "n": 491,
+    "mae": 1.755,
+    "bias": 0.41,
+    "within2": 0.674
+   },
+   "mix α=0.5 (old harness)": {
+    "n": 491,
+    "mae": 1.921,
+    "bias": 0.418,
+    "within2": 0.629
+   },
+   "mix α=0.5 (ECMWF-heavy)": {
+    "n": 491,
+    "mae": 1.851,
+    "bias": 0.245,
+    "within2": 0.621
+   },
+   "mix α=0.5 (mixed)": {
+    "n": 491,
+    "mae": 2.019,
+    "bias": 0.608,
+    "within2": 0.621
+   }
+  },
+  "68581 Pietermaritzburg": {
+   "model: best_match": {
+    "n": 481,
+    "mae": 1.557,
+    "bias": -0.859,
+    "within2": 0.692
+   },
+   "model: ecmwf_ifs025": {
+    "n": 481,
+    "mae": 1.683,
+    "bias": -0.506,
+    "within2": 0.62
+   },
+   "model: gfs_seamless": {
+    "n": 481,
+    "mae": 2.074,
+    "bias": 0.808,
+    "within2": 0.64
+   },
+   "model: icon_seamless": {
+    "n": 476,
+    "mae": 2.256,
+    "bias": -1.196,
+    "within2": 0.54
+   },
+   "model: ukmo_seamless": {
+    "n": 419,
+    "mae": 1.67,
+    "bias": -0.638,
+    "within2": 0.637
+   },
+   "model: meteofrance_seamless": {
+    "n": 475,
+    "mae": 1.774,
+    "bias": 0.585,
+    "within2": 0.653
+   },
+   "app now (old harness)": {
+    "n": 481,
+    "mae": 1.555,
+    "bias": -0.438,
+    "within2": 0.661
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 481,
+    "mae": 1.635,
+    "bias": -0.811,
+    "within2": 0.626
+   },
+   "app now (mixed)": {
+    "n": 481,
+    "mae": 1.533,
+    "bias": -0.142,
+    "within2": 0.674
+   },
+   "consensus (airport table)": {
+    "n": 481,
+    "mae": 1.397,
+    "bias": -0.643,
+    "within2": 0.765
+   },
+   "mix α=0.5 (old harness)": {
+    "n": 481,
+    "mae": 1.433,
+    "bias": -0.54,
+    "within2": 0.732
+   },
+   "mix α=0.5 (ECMWF-heavy)": {
+    "n": 481,
+    "mae": 1.482,
+    "bias": -0.727,
+    "within2": 0.717
+   },
+   "mix α=0.5 (mixed)": {
+    "n": 481,
+    "mae": 1.4,
+    "bias": -0.392,
+    "within2": 0.74
+   }
+  },
+  "68479 Ladysmith": {
+   "model: best_match": {
+    "n": 519,
+    "mae": 1.916,
+    "bias": -0.954,
+    "within2": 0.563
+   },
+   "model: ecmwf_ifs025": {
+    "n": 519,
+    "mae": 2.06,
+    "bias": 0.034,
+    "within2": 0.545
+   },
+   "model: gfs_seamless": {
+    "n": 519,
+    "mae": 2.078,
+    "bias": 0.673,
+    "within2": 0.588
+   },
+   "model: icon_seamless": {
+    "n": 514,
+    "mae": 1.585,
+    "bias": -0.682,
+    "within2": 0.683
+   },
+   "model: ukmo_seamless": {
+    "n": 457,
+    "mae": 1.79,
+    "bias": -0.944,
+    "within2": 0.643
+   },
+   "model: meteofrance_seamless": {
+    "n": 513,
+    "mae": 2.684,
+    "bias": 1.524,
+    "within2": 0.452
+   },
+   "app now (old harness)": {
+    "n": 519,
+    "mae": 1.835,
+    "bias": -0.343,
+    "within2": 0.576
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 519,
+    "mae": 1.825,
+    "bias": -0.643,
+    "within2": 0.584
+   },
+   "app now (mixed)": {
+    "n": 519,
+    "mae": 1.955,
+    "bias": 0.053,
+    "within2": 0.534
+   },
+   "consensus (airport table)": {
+    "n": 519,
+    "mae": 1.31,
+    "bias": -0.479,
+    "within2": 0.775
+   },
+   "mix α=0.5 (old harness)": {
+    "n": 519,
+    "mae": 1.526,
+    "bias": -0.411,
+    "within2": 0.692
+   },
+   "mix α=0.5 (ECMWF-heavy)": {
+    "n": 519,
+    "mae": 1.513,
+    "bias": -0.561,
+    "within2": 0.705
+   },
+   "mix α=0.5 (mixed)": {
+    "n": 519,
+    "mae": 1.557,
+    "bias": -0.213,
+    "within2": 0.678
+   }
+  }
+ },
+ "boot": {
+  "Karoo": {
+   "old harness": {
+    "diff": -0.217,
+    "lo": -0.273,
+    "hi": -0.168,
+    "days": 39,
+    "n": 1006
+   },
+   "ECMWF-heavy": {
+    "diff": -0.17,
+    "lo": -0.212,
+    "hi": -0.132,
+    "days": 39,
+    "n": 1006
+   },
+   "mixed": {
+    "diff": -0.22,
+    "lo": -0.27,
+    "hi": -0.175,
+    "days": 39,
+    "n": 1006
+   }
+  },
+  "KZN inland": {
+   "old harness": {
+    "diff": -0.219,
+    "lo": -0.295,
+    "hi": -0.145,
+    "days": 39,
+    "n": 1000
+   },
+   "ECMWF-heavy": {
+    "diff": -0.236,
+    "lo": -0.279,
+    "hi": -0.195,
+    "days": 39,
+    "n": 1000
+   },
+   "mixed": {
+    "diff": -0.27,
+    "lo": -0.34,
+    "hi": -0.209,
+    "days": 39,
+    "n": 1000
+   }
+  }
+ }
+}

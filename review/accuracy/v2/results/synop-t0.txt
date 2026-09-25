@@ -1,0 +1,36 @@
+
+== Karoo (lead t0, TEST) — pooled high+low MAE
+  model: best_match                  1.68 · within 2 °C 69% · n=1006
+  model: ecmwf_ifs025                1.96 · within 2 °C 61% · n=1006
+  model: gfs_seamless                2.32 · within 2 °C 59% · n=1006
+  model: icon_seamless               1.44 · within 2 °C 77% · n=1006
+  model: ukmo_seamless               1.66 · within 2 °C 72% · n=1006
+  model: meteofrance_seamless        2.19 · within 2 °C 61% · n=1006
+  app now (old harness)              1.67 · within 2 °C 71% · n=1006
+  app now (ECMWF-heavy)              1.63 · within 2 °C 68% · n=1006
+  app now (mixed)                    1.69 · within 2 °C 72% · n=1006
+  consensus (airport table)          1.42 · within 2 °C 78% · n=1006
+  mix α=0.5 (old harness)            1.49 · within 2 °C 77% · n=1006
+  mix α=0.5 (ECMWF-heavy)            1.46 · within 2 °C 77% · n=1006
+  mix α=0.5 (mixed)                  1.51 · within 2 °C 77% · n=1006
+  mix − app now (old harness): -0.18 [-0.23, -0.14]
+  mix − app now (ECMWF-heavy): -0.17 [-0.21, -0.14]
+  mix − app now (mixed): -0.18 [-0.22, -0.14]
+
+== KZN inland (lead t0, TEST) — pooled high+low MAE
+  model: best_match                  1.51 · within 2 °C 71% · n=1000
+  model: ecmwf_ifs025                1.68 · within 2 °C 66% · n=1000
+  model: gfs_seamless                1.99 · within 2 °C 65% · n=1000
+  model: icon_seamless               1.66 · within 2 °C 70% · n=1000
+  model: ukmo_seamless               1.46 · within 2 °C 72% · n=1000
+  model: meteofrance_seamless        1.90 · within 2 °C 61% · n=1000
+  app now (old harness)              1.50 · within 2 °C 70% · n=1000
+  app now (ECMWF-heavy)              1.52 · within 2 °C 70% · n=1000
+  app now (mixed)                    1.54 · within 2 °C 69% · n=1000
+  consensus (airport table)          1.10 · within 2 °C 86% · n=1000
+  mix α=0.5 (old harness)            1.26 · within 2 °C 79% · n=1000
+  mix α=0.5 (ECMWF-heavy)            1.27 · within 2 °C 79% · n=1000
+  mix α=0.5 (mixed)                  1.26 · within 2 °C 79% · n=1000
+  mix − app now (old harness): -0.24 [-0.30, -0.19]
+  mix − app now (ECMWF-heavy): -0.25 [-0.29, -0.22]
+  mix − app now (mixed): -0.28 [-0.34, -0.23]
