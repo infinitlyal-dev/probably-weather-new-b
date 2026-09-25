@@ -36,3 +36,6 @@ review/accuracy/results/*-hours.csv
 # Live accuracy recorder data (review/accuracy/live/README.md) — hourly, ~2 MB/day, stays on disk
 review/accuracy/live/*.jsonl
 review/accuracy/live/recorder.log
+
+# Precision check raw downloads (review/accuracy/v2/fetch.mjs re-creates them)
+review/accuracy/v2/data/
