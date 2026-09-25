@@ -206,3 +206,207 @@ export const PRECISION_TABLE = {
     }
   ]
 };
+
+// The inland table (review/accuracy/v3): learned at the inland airports (FAUT FAOR FAWB FABL FAUP FAKM FAMM FAPP); used in
+// Free State, KZN inland, Karoo, Limpopo, North West, Northern Cape where the place is 500 m or higher.
+export const PRECISION_TABLE_INLAND = {
+  "id": "v3-inland-2025-01-01-2026-09-24",
+  "alpha": 0.5,
+  "models": [
+    "best_match",
+    "gfs_seamless",
+    "icon_seamless",
+    "ukmo_seamless",
+    "meteofrance_seamless"
+  ],
+  "trainedOn": "t0 max: refit 2025–2026; t0 min: refit 2025–2026; t1 max: tested 2025; t1 min: refit 2025–2026",
+  "stations": [
+    "FAUT",
+    "FAOR",
+    "FAWB",
+    "FABL",
+    "FAUP",
+    "FAKM",
+    "FAMM",
+    "FAPP"
+  ],
+  "regions": [
+    "Free State",
+    "KZN inland",
+    "Karoo",
+    "Limpopo",
+    "North West",
+    "Northern Cape"
+  ],
+  "minElevation": 500,
+  "days": [
+    {
+      "max": {
+        "bias": {
+          "best_match": {
+            "DJF": -0.949,
+            "MAM": -1.219,
+            "JJA": -1.335,
+            "SON": -0.79
+          },
+          "gfs_seamless": {
+            "DJF": 0.246,
+            "MAM": -0.1,
+            "JJA": -1.193,
+            "SON": 0.197
+          },
+          "icon_seamless": {
+            "DJF": -0.745,
+            "MAM": -0.773,
+            "JJA": -0.698,
+            "SON": -0.626
+          },
+          "ukmo_seamless": {
+            "DJF": -0.863,
+            "MAM": -1.203,
+            "JJA": -1.341,
+            "SON": -0.701
+          },
+          "meteofrance_seamless": {
+            "DJF": -0.177,
+            "MAM": -0.623,
+            "JJA": -1.025,
+            "SON": 0.235
+          }
+        },
+        "w": {
+          "best_match": 0.217,
+          "gfs_seamless": 0.163,
+          "icon_seamless": 0.207,
+          "ukmo_seamless": 0.218,
+          "meteofrance_seamless": 0.195
+        }
+      },
+      "min": {
+        "bias": {
+          "best_match": {
+            "DJF": 0.097,
+            "MAM": 0.567,
+            "JJA": 1.658,
+            "SON": 0.612
+          },
+          "gfs_seamless": {
+            "DJF": 1.07,
+            "MAM": 2.648,
+            "JJA": 4.235,
+            "SON": 2.483
+          },
+          "icon_seamless": {
+            "DJF": 0.313,
+            "MAM": 0.469,
+            "JJA": 1.03,
+            "SON": 0.638
+          },
+          "ukmo_seamless": {
+            "DJF": -0.616,
+            "MAM": 0.076,
+            "JJA": 0.163,
+            "SON": -0.158
+          },
+          "meteofrance_seamless": {
+            "DJF": 1.909,
+            "MAM": 1.54,
+            "JJA": 2.196,
+            "SON": 2.272
+          }
+        },
+        "w": {
+          "best_match": 0.224,
+          "gfs_seamless": 0.143,
+          "icon_seamless": 0.209,
+          "ukmo_seamless": 0.219,
+          "meteofrance_seamless": 0.205
+        }
+      }
+    },
+    {
+      "max": {
+        "bias": {
+          "best_match": {
+            "DJF": -0.276,
+            "MAM": -0.298,
+            "JJA": -1.31,
+            "SON": -0.561
+          },
+          "gfs_seamless": {
+            "DJF": 0.806,
+            "MAM": 0.657,
+            "JJA": -0.948,
+            "SON": 0.632
+          },
+          "icon_seamless": {
+            "DJF": -0.16,
+            "MAM": -0.298,
+            "JJA": -1.31,
+            "SON": -0.633
+          },
+          "ukmo_seamless": {
+            "DJF": -0.767,
+            "MAM": -1.462,
+            "JJA": -2.037,
+            "SON": -0.513
+          },
+          "meteofrance_seamless": {
+            "DJF": 0.101,
+            "MAM": -0.304,
+            "JJA": -1.32,
+            "SON": 0.542
+          }
+        },
+        "w": {
+          "best_match": 0.239,
+          "gfs_seamless": 0.203,
+          "icon_seamless": 0.227,
+          "ukmo_seamless": 0.132,
+          "meteofrance_seamless": 0.198
+        }
+      },
+      "min": {
+        "bias": {
+          "best_match": {
+            "DJF": 0.304,
+            "MAM": 0.591,
+            "JJA": 1.513,
+            "SON": 0.716
+          },
+          "gfs_seamless": {
+            "DJF": 1.181,
+            "MAM": 2.832,
+            "JJA": 4.441,
+            "SON": 2.694
+          },
+          "icon_seamless": {
+            "DJF": 0.313,
+            "MAM": 0.526,
+            "JJA": 0.965,
+            "SON": 0.735
+          },
+          "ukmo_seamless": {
+            "DJF": -0.329,
+            "MAM": 0.039,
+            "JJA": 0.137,
+            "SON": -0.059
+          },
+          "meteofrance_seamless": {
+            "DJF": 2.808,
+            "MAM": 2.084,
+            "JJA": 2.613,
+            "SON": 3.076
+          }
+        },
+        "w": {
+          "best_match": 0.214,
+          "gfs_seamless": 0.145,
+          "icon_seamless": 0.204,
+          "ukmo_seamless": 0.266,
+          "meteofrance_seamless": 0.171
+        }
+      }
+    }
+  ]
+};

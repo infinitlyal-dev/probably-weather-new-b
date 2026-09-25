@@ -4,7 +4,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import handler from '../api/weather.js';
 import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, seasonOf, PRECISION_MODELS, PRECISION_DAYS } from '../api/_lib/precision.js';
-import { PRECISION_TABLE } from '../api/_lib/precision-table.js';
+import { PRECISION_TABLE, PRECISION_TABLE_INLAND } from '../api/_lib/precision-table.js';
 import { _resetOpenMeteoMonthly } from '../api/_lib/provider-budget.js';
 import { SCORED } from '../review/accuracy/v2/stations.mjs';
 
@@ -187,5 +187,33 @@ describe('the forecast endpoint', () => {
     expect(off.meta.precision).toMatchObject({ status: 'off', days: [] });
     expect(failed.daily.map((d) => [d.highC, d.lowC])).toEqual(off.daily.map((d) => [d.highC, d.lowC]));
     expect(fetched.filter((u) => u.includes('models=')).length).toBe(1);   // only the keyed call asked
+  });
+});
+
+// ---- the inland table (review/accuracy/v3 §4, results/v3-inland.json; Fable ruling 4) ----
+describe('the inland table', () => {
+  it('two days, five models, weights summing to 1, the regions it was proven in, 500 m and up', () => {
+    expect(PRECISION_TABLE_INLAND.models).toEqual(ALL);
+    expect(PRECISION_TABLE_INLAND.alpha).toBe(PRECISION_TABLE.alpha);
+    expect(PRECISION_TABLE_INLAND.minElevation).toBe(500);
+    expect(PRECISION_TABLE_INLAND.regions).toEqual(['Free State', 'KZN inland', 'Karoo', 'Limpopo', 'North West', 'Northern Cape']);
+    for (const day of PRECISION_TABLE_INLAND.days) for (const v of ['max', 'min']) {
+      expect(ALL.map((m) => day[v].w[m]).reduce((a, b) => a + b, 0)).toBeCloseTo(1, 2);
+      for (const m of ALL) for (const s2 of ['DJF', 'MAM', 'JJA', 'SON']) expect(Math.abs(day[v].bias[m][s2])).toBeLessThan(6);
+    }
+  });
+
+  it('Kimberley at 1,192 m takes it; the same place below 500 m, and Johannesburg, keep the all-SA table', async () => {
+    process.env.OPEN_METEO_API_KEY = 'k';
+    try {
+      omPayload.elevation = 1192;
+      expect((await call(-28.80, 24.77)).meta.precision).toMatchObject({ status: 'applied', table: PRECISION_TABLE_INLAND.id });
+      omPayload.elevation = 400;
+      expect((await call(-28.82, 24.77)).meta.precision).toMatchObject({ status: 'applied', table: PRECISION_TABLE.id });
+      omPayload.elevation = 1690;
+      expect((await call(-26.13, 28.24)).meta.precision).toMatchObject({ status: 'applied', table: PRECISION_TABLE.id });
+      delete omPayload.elevation;
+      expect((await call(-28.84, 24.77)).meta.precision).toMatchObject({ status: 'applied', table: PRECISION_TABLE.id });   // no elevation, no inland table
+    } finally { delete omPayload.elevation; }
   });
 });

@@ -42,7 +42,7 @@ import {
 } from './_lib/weather-cache.js';
 import { consumeProviderBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS } from './_lib/provider-budget.js';
 import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS } from './_lib/precision.js';
-import { PRECISION_TABLE } from './_lib/precision-table.js';
+import { PRECISION_TABLE, PRECISION_TABLE_INLAND } from './_lib/precision-table.js';
 import { regionOf } from './_lib/regions.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
 import { recordSourceFailure, recordServerError } from './_lib/health-counters.js';
@@ -940,6 +940,9 @@ export default async function handler(req, res) {
     // override the estimate, in the chain order above.
     let utcOffsetSeconds = estimateUtcOffsetSeconds(lat, lon);
     let utcOffsetSource = 'coord-estimate';
+    // The grid elevation Open-Meteo answers for (its `elevation`) — the precision layer's inland table applies only
+    // 500 m up or higher (review/accuracy/v3). Null when Open-Meteo did not answer.
+    let omElevation = null;
 
     // Description maps
     const openMeteoCodeMap = {
@@ -1225,6 +1228,7 @@ export default async function handler(req, res) {
         utcOffsetSeconds = om.utc_offset_seconds;
         utcOffsetSource = 'open-meteo';
       }
+      if (isNum(om.elevation)) omElevation = om.elevation;
 
       norms[0] = {
         source:    'Open-Meteo',
@@ -2121,8 +2125,12 @@ export default async function handler(req, res) {
 
     // Precision: the corrected five-model consensus for days 0 and 1 (api/_lib/precision.js). Empty when
     // the extra request was not made or failed, or best_match is missing — the blend then stands alone.
+    // The inland table (review/accuracy/v3, Fable ruling 4) where it was proven: the regions in its own list and
+    // only 500 m up or higher — nothing lower was tested. It sits inside precisionWanted, so the Lowveld block wins.
+    const precisionTable = (PRECISION_TABLE_INLAND.regions.includes(regionOf(lat, lon))
+      && isNum(omElevation) && omElevation >= PRECISION_TABLE_INLAND.minElevation) ? PRECISION_TABLE_INLAND : PRECISION_TABLE;
     const precision = precisionWanted && precisionResult?.status === 'fulfilled'
-      ? precisionConsensus({ bestMatch: hourlies[0]?.temps, models: precisionResult.value?.hourly })
+      ? precisionConsensus({ bestMatch: hourlies[0]?.temps, models: precisionResult.value?.hourly, table: precisionTable })
       : [];
     // Not logSourceFailure: the extra request is not a source and stays out of /api/health's counters.
     if (precisionWanted && precisionResult?.status === 'rejected') {
@@ -2142,7 +2150,7 @@ export default async function handler(req, res) {
       const dayDate      = String(dailies.filter(Boolean).find(d => d.sunrises?.[i])?.sunrises[i] ?? '').slice(0, 10);
       const consensus    = precision[i] && precision[i].date === dayDate ? precision[i] : null;
       const mixed        = i < PRECISION_DAYS
-        ? precisionMix({ blendHigh, blendLow, consensus, strip: aggregatedHourly.slice(i * 24, i * 24 + 24).map(h => h?.tempC) })
+        ? precisionMix({ blendHigh, blendLow, consensus, strip: aggregatedHourly.slice(i * 24, i * 24 + 24).map(h => h?.tempC), alpha: precisionTable.alpha })
         : { highC: blendHigh, lowC: blendLow, applied: false };
       const highC        = mixed.highC;
       const lowC         = mixed.lowC;
@@ -2737,8 +2745,8 @@ export default async function handler(req, res) {
           status: precisionLog.length ? 'applied' : precisionWanted ? 'fallback'
             : !inSouthAfrica(lat, lon) ? 'outside-sa' : inLowveld(lat, lon) ? 'lowveld'
             : OPEN_METEO_API_KEY ? 'budget' : 'off',
-          table: PRECISION_TABLE.id,
-          alpha: PRECISION_TABLE.alpha,
+          table: precisionTable.id,
+          alpha: precisionTable.alpha,
           days: precisionLog,
         },
         sourceRanges: activeNorms.map(n => ({

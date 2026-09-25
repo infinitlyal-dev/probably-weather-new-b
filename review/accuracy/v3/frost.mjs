@@ -60,7 +60,7 @@ function townRows(lead) {
   for (const st of SYNOP_STATIONS) {
     const R = Object.fromEntries(RUN_MODELS.map((mdl) => [mdl, loadRuns(st.id, mdl)]));
     const prev = loadPrev(st.id);
-    for (const d of days('2025-01-02', '2026-09-24')) {
+    for (const d of days('2025-01-02', TEST.to)) {
       const obsMin = mins.get(`${st.id}|${d}`); if (!isNum(obsMin)) continue;
       const fc = {};
       for (const [mdl, runs] of Object.entries(R)) {

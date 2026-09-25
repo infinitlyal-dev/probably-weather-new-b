@@ -7,7 +7,7 @@
 //   node review/accuracy/v3/inland.mjs
 import { readFileSync, readdirSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { RUN_MODELS } from '../v2/stations.mjs';
+import { RUN_MODELS, PERIOD } from '../v2/stations.mjs';
 import { SYNOP_STATIONS } from '../v2/fetch-synop.mjs';
 import { DATA, RESULTS, TRAIN, TEST, inRange, SEASON, isNum, mean, round, bootDiff, loadRuns, days, hourKey } from '../v2/lib.mjs';
 import { CONS, buildRows, learn, consensus } from '../v2/tempcore.mjs';
@@ -37,7 +37,7 @@ function townRows(lead) {
   const rows = [];
   for (const st of SYNOP_STATIONS) {
     const R = Object.fromEntries(RUN_MODELS.map((mdl) => [mdl, loadRuns(st.id, mdl)]));
-    for (const d of days('2025-01-02', '2026-09-24')) {
+    for (const d of days('2025-01-02', TEST.to)) {
       const e = ext.get(`${st.id}|${d}`); if (!e || (!isNum(e.max) && !isNum(e.min))) continue;
       const fc = {};
       for (const [mdl, runs] of Object.entries(R)) {
@@ -54,7 +54,7 @@ function townRows(lead) {
   return rows;
 }
 
-const out = { leads: {} };
+const out = { period: PERIOD, leads: {} };   // make-table.mjs refuses a table from results scored on other data
 for (const lead of ['t1', 't0']) {
   const { rows, stationsUsed } = buildRows(lead);
   const inland = stationsUsed.filter((s) => (gridElevation(s.id) ?? s.elev) >= 500 && !inLowveld(s.lat, s.lon));
