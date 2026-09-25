@@ -445,3 +445,19 @@ describe('the installed rate limiter expires counters the way the policy says', 
     expect(lifetimeMs(24 * 60 * 60_000) / 3_600_000).toBeCloseTo(48.0, 2);
   });
 });
+
+// Published on Al's word, 25 Sept 2026 ("just publish the damn privacy page already"): the draft
+// marker is gone, and the ad choice is described as what happens once Google ads start — no ad
+// network loads today, and Settings has no "Ad choices" yet.
+describe('the published page', () => {
+  it('carries no draft marker, only the date', () => {
+    expect(privacy).not.toMatch(/DRAFT|not published/);
+    expect(privacy).toContain('<p class="date">Last updated: 25 September 2026</p>');
+  });
+  it('describes the ad choice as coming with the first Google ads', () => {
+    const ads = section('Your ad choice: ads picked for you, or general ads');
+    expect(ads).toContain('When Google ads start, the app will ask you once whether Google may pick ads for you.');
+    expect(ads).toContain('Once ads start, you can change it at any time under Settings → Ad choices.');
+    expect(ads).not.toContain('Before the first Google ad loads, the app asks you once');
+  });
+});
