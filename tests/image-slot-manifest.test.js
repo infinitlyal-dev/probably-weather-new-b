@@ -81,14 +81,18 @@ describe('P9 background slot manifest', () => {
     expect(scan.servedNowhere.has(dog.sourceHash)).toBe(true);
   }, 60000);
 
-  it('the dog benched on 2026-09-23 leaves cloudy Tuesday dusk to the cyclist and is served in cold Tuesday dusk, weeks 2 and 4', () => {
-    const dogSha = manifest.entries.find((e) => e.relativePath === 'cloudy/week_1/dusk/2.webp').sourceHash;
+  it('the dog moved on 2026-09-23 is served in cold Tuesday dusk, weeks 2 and 4; its old cloudy slots now hold pilot pair P05', () => {
+    // 2026-09-23 the dog left cloudy Tuesday dusk (benched there, served in cold). 2026-09-25 pilot pair
+    // P05 took those four cloudy slots (review/pilot-pairs.json), so they serve the pair, not a stand-in.
+    const sha1Of = (p) => createHash('sha1').update(readFileSync(new URL(p, imageRoot))).digest('hex').slice(0, 12);
+    const p05 = JSON.parse(readFileSync(new URL('../review/pilot-pairs.json', import.meta.url), 'utf8')).applied.applied.find((a) => a.id === 'P05');
     for (const w of [1, 2, 3, 4]) {
       const e = manifest.entries.find((x) => x.relativePath === `cloudy/week_${w}/dusk/2.webp`);
-      expect(e.benched).toBe(true);
-      expect(rel(e.servedPath)).toBe('cloudy/week_1/dusk/1.webp');
+      expect(e.benched).toBe(false);
+      expect(sha1Of(`cloudy/week_${w}/dusk/2.webp`)).toBe(p05.hash);
     }
-    for (const w of [2, 4]) expect(manifest.entries.find((x) => x.relativePath === `cold/week_${w}/dusk/2.webp`).hash).toBe(dogSha);
+    for (const w of [2, 4]) expect(sha1Of(`cold/week_${w}/dusk/2.webp`)).toBe('018a0573e433');
+    const dogSha = manifest.entries.find((x) => x.relativePath === 'cold/week_2/dusk/2.webp').hash;
     for (const w of [1, 3]) expect(manifest.entries.find((x) => x.relativePath === `cold/week_${w}/dusk/2.webp`).hash).not.toBe(dogSha);
   });
 });

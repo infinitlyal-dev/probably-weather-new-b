@@ -26,7 +26,8 @@ beforeAll(() => {
 
 describe('desktop polaroid reads Al\'s ruled anchor for every photograph', () => {
   it('every photograph in the tree resolves to its anchors-file value, in both key shapes the picker emits', () => {
-    expect(photos.size).toBe(294);
+    // 294 since 2026-09-06; 300 since the pilot pairs (2026-09-25: ten in, four retired — review/pilot-pairs.json)
+    expect(photos.size).toBe(300);
     let ruled = 0;
     for (const [sha1, p] of photos) {
       const want = anchors[sha1] ? anchors[sha1].anchorY : null;

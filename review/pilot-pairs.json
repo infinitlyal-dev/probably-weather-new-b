@@ -1,0 +1,419 @@
+{
+ "note": "The ten pilot pairs (Al: all ten LOVE on the taste page, 25 Sept 2026). Joke first, then a photo made to set it up (review/taste/RECIPE.md on design/home-options). Photos remade 25 Sept with Al's realism brief by Sol in Codex on the ChatGPT Pro plan (Images 2.5 per Al's transparency test); sources: OneDrive copy review/taste/pilot-v2/Pxx.jpg. Each pair's line is its photo's own English line; the Afrikaans is Vonk's proposal for Al. Placement: first the slots of Al's five named photos where weather and time of day match (P01, P10), then the thinnest slots of the pair's own weather and time; where a weather is full (wind day, rain day) the pair takes the place of that bucket's weakest photo by the blind rater, shown to Al pre-marked. Nothing ships until review/pairs-ruled.json.",
+ "ruling": "review/pairs-ruled.json (pending)",
+ "pairs": [
+  {
+   "id": "P01",
+   "condition": "clear",
+   "time": "day",
+   "line": "The sun has no indoor voice.",
+   "af": "Die son het net een volume: hard.",
+   "slots": [
+    "clear/week_1/day/7.webp",
+    "clear/week_3/day/7.webp"
+   ],
+   "expect": "45d964f74171",
+   "why": "Al named this photo (dad and kids on the grass); a clear-day pair fits its slots",
+   "anchorY": 30
+  },
+  {
+   "id": "P02",
+   "condition": "heat",
+   "time": "day",
+   "line": "The tar's gone soft. So have we.",
+   "af": "Die teer het sag geword. Ons ook.",
+   "slots": [
+    "heat/week_2/day/2.webp",
+    "heat/week_4/day/2.webp"
+   ],
+   "expect": "d6593f52fb76",
+   "why": "heat day has 7 photos for 14 slots; this takes weeks 2 and 4 of the weakest by the blind rater (office workers fanning), which stays on weeks 1 and 3",
+   "anchorY": 40
+  },
+  {
+   "id": "P03",
+   "condition": "wind",
+   "time": "day",
+   "line": "The wind took the washing. It's keeping the pegs.",
+   "af": "Die wind het die wasgoed gevat. Die knypers mag ons maar hou.",
+   "slots": [
+    "wind/week_2/day/7.webp",
+    "wind/week_4/day/7.webp"
+   ],
+   "expect": "35c91a0ddfec",
+   "fullBucket": true,
+   "why": "wind day is full (14 photos, 14 slots); this takes the place of the one the blind rater failed because no wind shows in it (a still yard)",
+   "anchorY": 22,
+   "anchorNote": "22, not 40: on today's Home the band cut off the flying sheet, which is the joke's setup"
+  },
+  {
+   "id": "P04",
+   "condition": "rain",
+   "time": "day",
+   "line": "Rain this hard, even the taxis start indicating.",
+   "af": "Reën só hard, selfs die taxi's sit hul flikkers aan.",
+   "slots": [
+    "rain/week_2/day/5.webp",
+    "rain/week_4/day/5.webp"
+   ],
+   "expect": "a0ef2720c507",
+   "fullBucket": true,
+   "why": "rain day is full (14 photos, 14 slots); this takes the place of the one the blind rater called corporate stock (a laughing umbrella duo)",
+   "anchorY": 30
+  },
+  {
+   "id": "P05",
+   "condition": "cloudy",
+   "time": "dusk",
+   "line": "The sky's been saying 'just now' for three hours.",
+   "af": "Die lug sê nou al drie uur lank 'netnou'.",
+   "slots": [
+    "cloudy/week_1/dusk/2.webp",
+    "cloudy/week_2/dusk/2.webp",
+    "cloudy/week_3/dusk/2.webp",
+    "cloudy/week_4/dusk/2.webp"
+   ],
+   "expect": "018a0573e433",
+   "why": "cloudy evenings have 6 photos; these four slots serve a stand-in since the dog photo moved to cold (it stays in cold)",
+   "anchorY": 55
+  },
+  {
+   "id": "P06",
+   "condition": "storm",
+   "time": "night",
+   "line": "Thunder that close counts as a house guest.",
+   "af": "Donder so naby tel as 'n huisgas.",
+   "slots": [
+    "storm/week_2/night/6.webp",
+    "storm/week_4/night/6.webp"
+   ],
+   "expect": "2d2e6dd5d7fd",
+   "why": "storm nights have 7 photos for 14 slots; this takes weeks 2 and 4 of the weakest by the blind rater (a staged roof-leak couple), which stays on weeks 1 and 3",
+   "anchorY": 30
+  },
+  {
+   "id": "P07",
+   "condition": "fog",
+   "time": "dawn",
+   "line": "The fog cancelled the Drakensberg. No refunds.",
+   "af": "Die mis het die Drakensberg gekanselleer. Geen terugbetalings nie.",
+   "region": "kzn",
+   "slots": [
+    "fog/week_2/dawn/3.webp",
+    "fog/week_4/dawn/3.webp"
+   ],
+   "expect": "deaadb7968fe",
+   "why": "fog mornings have 7 photos for 14 slots; this takes weeks 2 and 4 of the weakest by the blind rater (a dark window glow), which stays on weeks 1 and 3",
+   "anchorY": 42
+  },
+  {
+   "id": "P08",
+   "condition": "cold",
+   "time": "day",
+   "line": "Cape cold doesn't knock. It comes in through the walls.",
+   "af": "Kaapse koue klop nie. Dit kom sommer deur die mure in.",
+   "region": "western-cape",
+   "slots": [
+    "cold/week_2/day/6.webp",
+    "cold/week_4/day/6.webp"
+   ],
+   "expect": "d003110fec9f",
+   "why": "cold day slot 6 (weeks 2 and 4) serves a stand-in since the washing photo moved to cold-clear (it stays there). Not cold day slot 2: that holds photo #79's only copies (parked)",
+   "anchorY": 40
+  },
+  {
+   "id": "P09",
+   "condition": "cold-clear",
+   "time": "dawn",
+   "line": "Blue sky, minus two. The sun's just here to watch.",
+   "af": "Blou lug, minus twee. Die son is net hier om te kyk.",
+   "slots": [
+    "cold-clear/week_2/dawn/6.webp",
+    "cold-clear/week_4/dawn/6.webp"
+   ],
+   "expect": "28129477b706",
+   "why": "cold-clear mornings have 7 photos for 14 slots; this takes weeks 2 and 4 of the weakest by the blind rater (an empty windmill postcard), which stays on weeks 1 and 3",
+   "anchorY": 50
+  },
+  {
+   "id": "P10",
+   "condition": "clear",
+   "time": "night",
+   "line": "Karoo sky. You'll count to forty and give up.",
+   "af": "Karoo-lug. Jy tel tot veertig en gee op.",
+   "region": "karoo",
+   "slots": [
+    "clear/week_1/night/5.webp",
+    "clear/week_2/night/5.webp",
+    "clear/week_3/night/5.webp",
+    "clear/week_4/night/5.webp"
+   ],
+   "expect": "4138025d3128",
+   "why": "Al named this photo (dinner under fairy lights); a clear-night pair fits its slots",
+   "anchorY": 50
+  }
+ ],
+ "applied": {
+  "on": "2026-09-25",
+  "applied": [
+   {
+    "id": "P01",
+    "hash": "2f7e428382a6",
+    "canonical": "b838700af2a2…",
+    "bytes": 287234,
+    "quality": 92,
+    "slots": [
+     "clear/week_1/day/7.webp",
+     "clear/week_3/day/7.webp"
+    ],
+    "replaced": "45d964f74171"
+   },
+   {
+    "id": "P02",
+    "hash": "4e7c3b6e7580",
+    "canonical": "7cc037f2bf7e…",
+    "bytes": 305236,
+    "quality": 89,
+    "slots": [
+     "heat/week_2/day/2.webp",
+     "heat/week_4/day/2.webp"
+    ],
+    "replaced": "d6593f52fb76"
+   },
+   {
+    "id": "P03",
+    "hash": "24dc52fb32b8",
+    "canonical": "e92080db402f…",
+    "bytes": 293700,
+    "quality": 90,
+    "slots": [
+     "wind/week_2/day/7.webp",
+     "wind/week_4/day/7.webp"
+    ],
+    "replaced": "35c91a0ddfec"
+   },
+   {
+    "id": "P04",
+    "hash": "2c5a9b3813f4",
+    "canonical": "b54238e1e9e1…",
+    "bytes": 260722,
+    "quality": 92,
+    "slots": [
+     "rain/week_2/day/5.webp",
+     "rain/week_4/day/5.webp"
+    ],
+    "replaced": "a0ef2720c507"
+   },
+   {
+    "id": "P05",
+    "hash": "87955eb3b925",
+    "canonical": "3a515df4c600…",
+    "bytes": 205920,
+    "quality": 92,
+    "slots": [
+     "cloudy/week_1/dusk/2.webp",
+     "cloudy/week_2/dusk/2.webp",
+     "cloudy/week_3/dusk/2.webp",
+     "cloudy/week_4/dusk/2.webp"
+    ],
+    "replaced": "018a0573e433"
+   },
+   {
+    "id": "P06",
+    "hash": "6338918029d3",
+    "canonical": "d9c119dbbe67…",
+    "bytes": 104894,
+    "quality": 92,
+    "slots": [
+     "storm/week_2/night/6.webp",
+     "storm/week_4/night/6.webp"
+    ],
+    "replaced": "2d2e6dd5d7fd"
+   },
+   {
+    "id": "P07",
+    "hash": "614ba5459c4a",
+    "canonical": "eb81b2483c5f…",
+    "bytes": 302076,
+    "quality": 91,
+    "slots": [
+     "fog/week_2/dawn/3.webp",
+     "fog/week_4/dawn/3.webp"
+    ],
+    "replaced": "deaadb7968fe"
+   },
+   {
+    "id": "P08",
+    "hash": "b0c6ecc4866f",
+    "canonical": "6811c689dac9…",
+    "bytes": 233966,
+    "quality": 92,
+    "slots": [
+     "cold/week_2/day/6.webp",
+     "cold/week_4/day/6.webp"
+    ],
+    "replaced": "d003110fec9f"
+   },
+   {
+    "id": "P09",
+    "hash": "34890f7d9e5c",
+    "canonical": "8bac77552405…",
+    "bytes": 306488,
+    "quality": 75,
+    "slots": [
+     "cold-clear/week_2/dawn/6.webp",
+     "cold-clear/week_4/dawn/6.webp"
+    ],
+    "replaced": "28129477b706"
+   },
+   {
+    "id": "P10",
+    "hash": "2b3ce7ca33eb",
+    "canonical": "9a3e529c40ce…",
+    "bytes": 306170,
+    "quality": 88,
+    "slots": [
+     "clear/week_1/night/5.webp",
+     "clear/week_2/night/5.webp",
+     "clear/week_3/night/5.webp",
+     "clear/week_4/night/5.webp"
+    ],
+    "replaced": "4138025d3128"
+   }
+  ],
+  "retired": [
+   {
+    "hash": "35c91a0ddfec",
+    "image": "wind/week_2/day/7.webp",
+    "paths": [
+     "wind/week_2/day/7.webp",
+     "wind/week_4/day/7.webp"
+    ],
+    "byPair": "P03",
+    "lines": [
+     "The sheets are dry already and the wind is not finished with them.",
+     "The Helderberg is clear, the washing is horizontal, and that is Sunday sorted.",
+     "That little olive tree is going to grow up with a permanent lean.",
+     "Nobody in this house is paying to dry anything today.",
+     "Those pegs are all that stands between you and a fence full of sheets."
+    ],
+    "anchorY": null
+   },
+   {
+    "hash": "a0ef2720c507",
+    "image": "rain/week_2/day/5.webp",
+    "paths": [
+     "rain/week_2/day/5.webp",
+     "rain/week_4/day/5.webp"
+    ],
+    "byPair": "P04",
+    "lines": [
+     "Forgot your jacket? The universe noticed."
+    ],
+    "anchorY": 29
+   },
+   {
+    "hash": "4138025d3128",
+    "image": "clear/week_1/night/5.webp",
+    "paths": [
+     "clear/week_1/night/5.webp",
+     "clear/week_2/night/5.webp",
+     "clear/week_3/night/5.webp",
+     "clear/week_4/night/5.webp"
+    ],
+    "byPair": "P10",
+    "lines": [
+     "Braai weather, boet! No excuses.",
+     "'Just one sundowner' — famous last words, every single time.",
+     "A Friday night warm enough that the table walked itself outside.",
+     "Nothing up there but stars, which is how supper ends up under them.",
+     "The evening is holding at exactly the temperature nobody talks about."
+    ],
+    "anchorY": 66
+   },
+   {
+    "hash": "45d964f74171",
+    "image": "clear/week_1/day/7.webp",
+    "paths": [
+     "clear/week_1/day/7.webp",
+     "clear/week_3/day/7.webp"
+    ],
+    "byPair": "P01",
+    "lines": [
+     "Today's plans: exist outside.",
+     "Main character weather right here.",
+     "Jacarandas only do this three weeks a year, and the sky decided to match.",
+     "Grass warm, sky empty — the kind of Sunday that resets a whole family."
+    ],
+    "anchorY": 66
+   }
+  ],
+  "benchChanges": [
+   {
+    "sha1": "018a0573e433",
+    "pair": "P05",
+    "slotsFilled": [
+     "cloudy/week_1/dusk/2.webp",
+     "cloudy/week_2/dusk/2.webp",
+     "cloudy/week_3/dusk/2.webp",
+     "cloudy/week_4/dusk/2.webp"
+    ],
+    "slotsLeft": []
+   },
+   {
+    "sha1": "d003110fec9f",
+    "pair": "P08",
+    "slotsFilled": [
+     "cold/week_2/day/6.webp",
+     "cold/week_4/day/6.webp"
+    ],
+    "slotsLeft": []
+   },
+   {
+    "sha1": "018a0573e433",
+    "removed": true,
+    "reason": "every slot it benched now holds a pilot pair; the photo stays where it moved",
+    "entry": {
+     "sha1": "018a0573e433",
+     "sha256": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
+     "slots": [
+      "cloudy/week_1/dusk/2.webp",
+      "cloudy/week_2/dusk/2.webp",
+      "cloudy/week_3/dusk/2.webp",
+      "cloudy/week_4/dusk/2.webp"
+     ],
+     "fallback": "cloudy/week_1/dusk/1.webp",
+     "movedTo": [
+      "cold/week_2/dusk/2.webp",
+      "cold/week_4/dusk/2.webp"
+     ],
+     "reason": "Dog in a grey jumper on a stoep, mountains at dusk. Served 22 Sept under \"Partly cloudy.\" on a 30° day.",
+     "benchedOn": "2026-09-23",
+     "ruling": "review/cold-move-ruled.json"
+    }
+   },
+   {
+    "sha1": "d003110fec9f",
+    "removed": true,
+    "reason": "every slot it benched now holds a pilot pair; the photo stays where it moved",
+    "entry": {
+     "sha1": "d003110fec9f",
+     "sha256": "add32aa85b80ea31df34d84ac6613e9cebc4e9aae309b134e3e584e31fd80e2d",
+     "slots": [
+      "cold/week_2/day/6.webp",
+      "cold/week_4/day/6.webp"
+     ],
+     "fallback": "cold/week_1/day/1.webp",
+     "movedTo": [
+      "cold-clear/week_2/day/6.webp",
+      "cold-clear/week_4/day/6.webp"
+     ],
+     "reason": "Bright blue sky over snow-capped peaks, washing drying in the sun. Cold is served on grey or wet cold days; blue-sky cold is cold-clear.",
+     "benchedOn": "2026-09-23",
+     "ruling": "review/bucket-check-ruled.json"
+    }
+   }
+  ],
+  "curatedBodies": 300
+ }
+}

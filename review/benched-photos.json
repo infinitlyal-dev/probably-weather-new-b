@@ -2,24 +2,6 @@
  "note": "Photographs taken out of slots without deleting a file. An entry with `slots` is benched from those slots only — a moved photograph is benched from its old bucket and served in its new one (`movedTo`). scripts/image-slot-manifest.mjs serves each benched slot its `fallback`: the week-collapse slot (week_1 slot 1 of the same folder and time) unless a line on that photograph names a weekday, then the next slot in the same order with none (`fallbackSkipped`). An entry without `slots` is benched everywhere its bytes are. Only the built site is affected; an unbuilt local preview still reads the files. To un-bench, delete the entry.",
  "benched": [
   {
-   "sha1": "018a0573e433",
-   "sha256": "f20554e03039b5158b9906ea13eefcaae5b746a1f8d463d7aefe8adc7588f6a3",
-   "slots": [
-    "cloudy/week_1/dusk/2.webp",
-    "cloudy/week_2/dusk/2.webp",
-    "cloudy/week_3/dusk/2.webp",
-    "cloudy/week_4/dusk/2.webp"
-   ],
-   "fallback": "cloudy/week_1/dusk/1.webp",
-   "movedTo": [
-    "cold/week_2/dusk/2.webp",
-    "cold/week_4/dusk/2.webp"
-   ],
-   "reason": "Dog in a grey jumper on a stoep, mountains at dusk. Served 22 Sept under \"Partly cloudy.\" on a 30° day.",
-   "benchedOn": "2026-09-23",
-   "ruling": "review/cold-move-ruled.json"
-  },
-  {
    "sha1": "76070c299a0b",
    "sha256": "5df9bca2b53222d5d6d358aafccfea90f3c76f34332c940ff03a0553e8b38740",
    "slots": [
@@ -34,22 +16,6 @@
     "cold/week_4/night/3.webp"
    ],
    "reason": "A cat asleep in a knitted jumper under a blanket by a lamp: the same winter cue as the dog, in a bucket that also serves warm cloudy nights.",
-   "benchedOn": "2026-09-23",
-   "ruling": "review/bucket-check-ruled.json"
-  },
-  {
-   "sha1": "d003110fec9f",
-   "sha256": "add32aa85b80ea31df34d84ac6613e9cebc4e9aae309b134e3e584e31fd80e2d",
-   "slots": [
-    "cold/week_2/day/6.webp",
-    "cold/week_4/day/6.webp"
-   ],
-   "fallback": "cold/week_1/day/1.webp",
-   "movedTo": [
-    "cold-clear/week_2/day/6.webp",
-    "cold-clear/week_4/day/6.webp"
-   ],
-   "reason": "Bright blue sky over snow-capped peaks, washing drying in the sun. Cold is served on grey or wet cold days; blue-sky cold is cold-clear.",
    "benchedOn": "2026-09-23",
    "ruling": "review/bucket-check-ruled.json"
   },

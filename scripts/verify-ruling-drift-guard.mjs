@@ -74,7 +74,9 @@ else console.log('[guard proof] the build refused, as it must');
 for (const [what, needle] of [
   ['the vanished photograph', VANISHED],
   ['the slot it was ruled at', 'rain/week_2/day/5.webp'],
-  ['the photograph in that slot now', 'a0ef2720c507'],
+  // pinned, not read from disk (reading it would make this check unable to fail): the slot held
+  // a0ef2720c507 until the pilot pairs (2026-09-25) put P04 there — review/pilot-pairs.json.
+  ['the photograph in that slot now', '2c5a9b3813f4'],
   ['the export the ruling came from', 'set-001-line-matches-ruled.json'],
   ['the live line resting on it', 'Joburg rain keeps a diary'],
 ]) {

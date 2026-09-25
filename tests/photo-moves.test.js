@@ -21,7 +21,14 @@ const bench = read('../review/benched-photos.json').benched;
 const final = read('../review/set-001-lines-bespoke-final.json');
 const anchors = read('../review/set-001-crop-anchors.json').anchors;
 const moves = bucket.rows.filter((r) => r.verdict === 'MOVE');
-const benchOf = new Map(bench.map((b) => [b.sha1, b]));
+// The pilot pairs (review/pilot-pairs.json, 2026-09-25) filled every old slot of two moved photos (the
+// dog, and the washing photo moved to cold-clear). Their bench entries had to leave the bench file —
+// an entry with no slots left reads as benched everywhere — and are kept whole in the pairs record.
+// The move itself is unchanged: each photo is still served where Al moved it.
+const pairsRecord = read('../review/pilot-pairs.json');
+const superseded = new Map((pairsRecord.applied?.benchChanges || []).filter((c) => c.removed).map((c) => [c.sha1, c.entry]));
+const pairHashAt = new Map((pairsRecord.applied?.applied || []).flatMap((a) => a.slots.map((s) => [s, a.hash])));
+const benchOf = new Map([...superseded, ...bench.map((b) => [b.sha1, b])]);
 const BG = (rel) => new URL(`../assets/images/bg/${rel}`, import.meta.url);
 const sha1Of = (rel) => createHash('sha1').update(readFileSync(BG(rel))).digest('hex').slice(0, 12);
 const sha256Of = (rel) => createHash('sha256').update(readFileSync(BG(rel))).digest('hex');
@@ -41,7 +48,10 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
       const b = benchOf.get(r.sha1);
       expect(b, `#${r.n}`).toBeTruthy();
       expect(b.slots).toEqual(r.slots);
-      for (const s of r.slots) expect(servedAt.get(s), `#${r.n} ${s}`).toBe(b.fallback);
+      for (const s of r.slots) {
+        if (pairHashAt.has(s)) expect(sha1Of(s), `#${r.n} ${s} holds its pilot pair`).toBe(pairHashAt.get(s));
+        else expect(servedAt.get(s), `#${r.n} ${s}`).toBe(b.fallback);
+      }
     }
   });
 
@@ -87,7 +97,10 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
 
   it('crop anchors travel: phone and desktop crops at the new slots are the photograph\'s own', () => {
     for (const r of moves.filter((x) => benchOf.get(x.sha1).movedTo)) {
-      const canon = `bg-canonical/${sha256Of(r.slots[0])}.webp`;
+      // keyed by the photograph's own bytes at its new slot (an old slot may now hold a pilot pair)
+      const own = benchOf.get(r.sha1).movedTo[0];
+      expect(sha1Of(own), `${r.n} ${own}`).toBe(r.sha1);
+      const canon = `bg-canonical/${sha256Of(own)}.webp`;
       for (const s of benchOf.get(r.sha1).movedTo) {
         expect(heroCropFor(src(`bg/${s}`)), `${r.n} ${s}`).toBe(heroCropFor(src(canon)));
         expect(heroCropDesktopFor(src(`bg/${s}`)), `${r.n} ${s}`).toBe(anchors[r.sha1]?.anchorY ?? null);
@@ -100,7 +113,10 @@ describe('photo moves — Al\'s rulings of 2026-09-23', () => {
     expect(held.map((h) => h.hash).sort()).toEqual(['c6d4061cbef2', 'd003110fec9f']);
     for (const r of moves.filter((x) => benchOf.get(x.sha1).movedTo)) {
       const entry = final.set.find((e) => e.hash === r.sha1);
-      const canon = `bg-canonical/${sha256Of(r.slots[0])}.webp`;
+      // keyed by the photograph's own bytes at its new slot (an old slot may now hold a pilot pair)
+      const own = benchOf.get(r.sha1).movedTo[0];
+      expect(sha1Of(own), `${r.n} ${own}`).toBe(r.sha1);
+      const canon = `bg-canonical/${sha256Of(own)}.webp`;
       expect(entry.condition).toBe(r.moveTo);
       expect(HERO_LINES[canon]).toEqual(entry.lines);
       for (const s of benchOf.get(r.sha1).movedTo) expect(HERO_LINES[`bg/${s}`]).toEqual(entry.lines);

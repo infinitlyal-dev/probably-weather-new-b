@@ -142,7 +142,15 @@ function* rulings() {
   }
 }
 const drifted = new Map();   // ruledHash -> {slot, ruled, actual, files, lines}
+// A photograph RETIRED ON RECORD (final.json `pilotPairs.retired`, 2026-09-25: a pilot pair took
+// its slots on Al's brief) is gone on purpose, not by a reroll. Its ruling is history as long as
+// every line from it that is still live is ALSO backed by a ruling on a photograph in the set —
+// then that other ruling, not this one, is why the line is live. Anything less still fails.
+const retiredOnRecord = new Set((approved.pilotPairs?.retired || []).map((r) => r.hash));
+const backedLive = new Set();
+for (const [, , hash, lines] of rulings()) if (livePhotographs.has(hash)) for (const t of lines) backedLive.add(t);
 for (const [file, slot, hash, lines] of rulings()) {
+  if (retiredOnRecord.has(hash) && lines.filter((t) => liveLines.has(t)).every((t) => backedLive.has(t))) continue;
   if (livePhotographs.has(hash)) continue;
   const live = lines.filter((t) => liveLines.has(t));
   if (!live.length) continue;
@@ -264,6 +272,9 @@ const PLACE_RULED = path.join(root, 'review', 'place-lines-ruled.json');
 const SEASON_EXPORT = path.join(root, 'review', 'seasonal-ruled.json');
 let fromPlace = 0;
 let placeOnSeasonCut = 0;
+// A line that left with a photograph retired on record (final.json pilotPairs.retired) is history too.
+const retiredLines = new Set((approved.pilotPairs?.retired || []).flatMap((r) => r.lines || []));
+let placeOnRetired = 0;
 if (existsSync(PLACE_RULED)) {
   const held = new Set((approved.heldBack || []).map((h) => h.line));
   const seasonCut = new Set(existsSync(SEASON_EXPORT)
@@ -273,6 +284,7 @@ if (existsSync(PLACE_RULED)) {
     if (r.verdict !== 'TAG') continue;
     if (!approvedLines.has(r.en)) {
       if (seasonCut.has(r.en)) placeOnSeasonCut += 1;
+      else if (retiredLines.has(r.en)) placeOnRetired += 1;
       else if (!held.has(r.en)) tagProblems.push(`place ruling ${r.key}: "${r.en}" is not an approved bespoke line`);
       continue;
     }
@@ -287,6 +299,19 @@ if (existsSync(PLACE_RULED)) {
     }
     lineTags.set(r.en, seasonTag({ months: lineTags.get(r.en)?.months, region: r.region }));
     fromPlace += 1;
+  }
+}
+// 4. The pilot pairs (review/pilot-pairs.json, 2026-09-25): a pair line that names a place
+//    carries its region, by the same rule as Al's place ruling (the line shows inside that box;
+//    elsewhere the photo falls back to the general lines).
+const PAIRS = path.join(root, 'review', 'pilot-pairs.json');
+let fromPairs = 0;
+if (existsSync(PAIRS)) {
+  for (const p of JSON.parse(readFileSync(PAIRS, 'utf8')).pairs || []) {
+    if (!p.region || !approvedLines.has(p.line)) continue;
+    if (!REGION_BOXES[p.region]) { tagProblems.push(`pilot pair ${p.id}: ${p.region} is not a region box`); continue; }
+    lineTags.set(p.line, seasonTag({ months: lineTags.get(p.line)?.months, region: p.region }));
+    fromPairs += 1;
   }
 }
 if (tagProblems.length) {
@@ -310,7 +335,7 @@ const next = src
   .replace(TAG_BLOCK, (_, open, close) => `${open}${tagBody ? `${tagBody}\n` : ''}${close}`);
 
 const nLines = [...seen.values()].reduce((n, l) => n + l.length, 0);
-const tagSummary = `${tagRows.length} season/place tags (${fromBank} from the bank, ${fromAl} season-ruled and ${fromPlace} place-ruled by Al${placeOnSeasonCut ? `; ${placeOnSeasonCut} place TAG(s) on lines the season ruling cut, not carried` : ''})`;
+const tagSummary = `${tagRows.length} season/place tags (${fromBank} from the bank, ${fromAl} season-ruled, ${fromPlace} place-ruled by Al and ${fromPairs} from the pilot pairs${placeOnSeasonCut ? `; ${placeOnSeasonCut} place TAG(s) on lines the season ruling cut, not carried` : ''}${placeOnRetired ? `; ${placeOnRetired} on lines that retired with their photograph, not carried` : ''})`;
 if (CHECK) {
   if (next !== src) {
     console.error('[hero-lines] assets/hero-lines.js is out of sync with its sources (final.json, the bank tags, seasonal-tags-ruled.json, place-lines-ruled.json)');

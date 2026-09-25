@@ -1,12 +1,13 @@
 {
- "note": "M7 anchors + the 2026-08-14 replacement ingest. Ruled by Al in review/crop-anchor-tool.html (export 2026-08-14 07:03, canonical at review/set-001-crop-anchors.json). REPLACED entries carry the 55% default the replacements were composed for; entries sitting exactly on the CSS default (78%) are deliberately omitted \u2014 the stylesheet already provides that number and a second home for it is how it drifts.",
+ "note": "M7 anchors + the 2026-08-14 replacement ingest. Ruled by Al in review/crop-anchor-tool.html (export 2026-08-14 07:03, canonical at review/set-001-crop-anchors.json). REPLACED entries carry the 55% default the replacements were composed for; entries sitting exactly on the CSS default (78%) are deliberately omitted — the stylesheet already provides that number and a second home for it is how it drifts.",
  "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
  "generated": "2026-08-18",
  "counts": {
-  "offsets": 272,
+  "offsets": 278,
   "replaced": 15,
   "reAnchored": 134,
-  "wired": 272
+  "wired": 278,
+  "pilotPairs": 10
  },
  "offsets": {
   "dd736311b619": {
@@ -85,13 +86,6 @@
    "image": "clear/week_2/day/4.webp",
    "anchorY": 44,
    "ink": "white"
-  },
-  "45d964f74171": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-day",
-   "slot": "A/sun",
-   "image": "clear/week_2/day/2.webp",
-   "anchorY": 66
   },
   "9ab8b9f07431": {
    "verdict": "FIXABLE",
@@ -181,13 +175,6 @@
    "image": "clear/week_2/night/5.webp",
    "anchorY": 58,
    "ink": "white"
-  },
-  "4138025d3128": {
-   "verdict": "FIXABLE",
-   "bucket": "clear-night",
-   "slot": "A/fri",
-   "image": "clear/week_2/night/7.webp",
-   "anchorY": 66
   },
   "08134a1e356e": {
    "verdict": "FIXABLE",
@@ -1150,13 +1137,6 @@
    "image": "rain/week_3/day/1.webp",
    "anchorY": 25
   },
-  "a0ef2720c507": {
-   "verdict": "FIXABLE",
-   "bucket": "rain-day",
-   "slot": "B/fri",
-   "image": "rain/week_3/day/7.webp",
-   "anchorY": 29
-  },
   "c9c6fd784b69": {
    "verdict": "FIXABLE",
    "bucket": "rain-day",
@@ -1838,17 +1818,6 @@
    "source": "/output/reshoot-2026-08-18/19.png",
    "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
   },
-  "35c91a0ddfec": {
-   "verdict": "REPLACED",
-   "bucket": "wind-day",
-   "slot": "B/sun",
-   "image": "wind/week_1/day/2.webp",
-   "anchorY": 50,
-   "replacedHash": "a4559a3e95d2",
-   "place": "Somerset West",
-   "source": "/output/reshoot-2026-08-18/22.png",
-   "note": "GPT Image 2, 2026-08-18; anchor is the replacement default, not a per-image ruling"
-  },
   "55504e5b8143": {
    "verdict": "REPLACED",
    "bucket": "wind-day",
@@ -2060,6 +2029,86 @@
    "image": "wind/week_4/dusk/1.webp",
    "anchorY": 82,
    "ink": "white"
+  },
+  "2f7e428382a6": {
+   "verdict": "PAIR",
+   "bucket": "clear-day",
+   "slot": "A/sun",
+   "image": "clear/week_1/day/7.webp",
+   "anchorY": 30,
+   "pair": "P01"
+  },
+  "4e7c3b6e7580": {
+   "verdict": "PAIR",
+   "bucket": "heat-day",
+   "slot": "B/tue",
+   "image": "heat/week_2/day/2.webp",
+   "anchorY": 40,
+   "pair": "P02"
+  },
+  "24dc52fb32b8": {
+   "verdict": "PAIR",
+   "bucket": "wind-day",
+   "slot": "B/sun",
+   "image": "wind/week_2/day/7.webp",
+   "anchorY": 22,
+   "pair": "P03"
+  },
+  "2c5a9b3813f4": {
+   "verdict": "PAIR",
+   "bucket": "rain-day",
+   "slot": "B/fri",
+   "image": "rain/week_2/day/5.webp",
+   "anchorY": 30,
+   "pair": "P04"
+  },
+  "87955eb3b925": {
+   "verdict": "PAIR",
+   "bucket": "cloudy-dusk",
+   "slot": "A/tue",
+   "image": "cloudy/week_1/dusk/2.webp",
+   "anchorY": 55,
+   "pair": "P05"
+  },
+  "6338918029d3": {
+   "verdict": "PAIR",
+   "bucket": "storm-night",
+   "slot": "B/sat",
+   "image": "storm/week_2/night/6.webp",
+   "anchorY": 30,
+   "pair": "P06"
+  },
+  "614ba5459c4a": {
+   "verdict": "PAIR",
+   "bucket": "fog-dawn",
+   "slot": "B/wed",
+   "image": "fog/week_2/dawn/3.webp",
+   "anchorY": 42,
+   "pair": "P07"
+  },
+  "b0c6ecc4866f": {
+   "verdict": "PAIR",
+   "bucket": "cold-day",
+   "slot": "B/sat",
+   "image": "cold/week_2/day/6.webp",
+   "anchorY": 40,
+   "pair": "P08"
+  },
+  "34890f7d9e5c": {
+   "verdict": "PAIR",
+   "bucket": "cold-clear-dawn",
+   "slot": "B/sat",
+   "image": "cold-clear/week_2/dawn/6.webp",
+   "anchorY": 50,
+   "pair": "P09"
+  },
+  "2b3ce7ca33eb": {
+   "verdict": "PAIR",
+   "bucket": "clear-night",
+   "slot": "A/fri",
+   "image": "clear/week_1/night/5.webp",
+   "anchorY": 50,
+   "pair": "P10"
   }
  }
 }
