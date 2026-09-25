@@ -43,6 +43,7 @@ import {
 import { consumeProviderBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS } from './_lib/provider-budget.js';
 import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS } from './_lib/precision.js';
 import { PRECISION_TABLE } from './_lib/precision-table.js';
+import { regionOf } from './_lib/regions.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
 import { recordSourceFailure, recordServerError } from './_lib/health-counters.js';
 import { parseSourcesOff } from './_lib/sources-off.js';
@@ -2558,7 +2559,12 @@ export default async function handler(req, res) {
     const ensembleVote = nowConditionKey; // condition the ensemble produced, pre-detector
     // hourlies[3] is Tomorrow.io (NOT norms[4]'s index — the two arrays differ).
     // It supplies the second visibility read; absent/null degrades to OM-only.
-    const fogDetector = detectAdvectionFog(hourlies[0], localHour, hourlies[3]);
+    // 2026-09-25 (review/accuracy/v3): in the regions where it was proven, the detector also needs humidity
+    // ≥ 95 % and Open-Meteo's own wind ≤ 10 km/h — about 3 in 10 of its false fog calls gone, Strand's pinned
+    // real fogs still caught. Elsewhere it is unchanged.
+    const fogRegion = regionOf(lat, lon);
+    const fogStrict = FOG_STRICT_REGIONS.includes(fogRegion);
+    const fogDetector = detectAdvectionFog(hourlies[0], localHour, hourlies[3], { strict: fogStrict });
     // Both raw reads are logged unconditionally so a future incident capture has
     // the pair even when the detector does not fire (fog-incident-20260803: the
     // whole diagnosis turned on knowing OM said 35 300 m).
@@ -2571,7 +2577,7 @@ export default async function handler(req, res) {
         rule: 'visibility-humidity-fog-detector',
         from: nowConditionKey,
         to: 'fog',
-        reasonDetail: `visibility ${fogDetector.visKm}km, humidity ${fogDetector.humidity}%, dew-point spread ${fogDetector.dewSpread}°C`,
+        reasonDetail: `visibility ${fogDetector.visKm}km, humidity ${fogDetector.humidity}%, dew-point spread ${fogDetector.dewSpread}°C${fogStrict ? `, Open-Meteo wind ${fogDetector.omWindKph}km/h (strict gates, ${fogRegion})` : ''}`,
       });
       nowConditionKey = 'fog';
       nowConditionReason = 'visibility-humidity-fog-detector';
@@ -2830,6 +2836,11 @@ export default async function handler(req, res) {
                 omVisM: fogDetector.omVisM,
                 tioVisM: fogDetector.tioVisM,
                 visSource: fogDetector.visSource,
+                // 2026-09-25: which gates decided, and Open-Meteo's own wind (the strict gate's input), so the
+                // recorder can score the rule on live readings (Fable, rain / fog / frost ruling 1).
+                omWindKph: fogDetector.omWindKph,
+                rule: fogStrict ? 'strict' : 'standard',
+                region: fogRegion,
               }
             : null,
         },
@@ -3763,15 +3774,22 @@ function agreementVoteBucket(conditionKey, descWinner) {
  *                                 Only `visibilityKm` (KILOMETRES) is read. Absent,
  *                                 null or non-numeric ⇒ Open-Meteo-only behaviour,
  *                                 byte-for-byte as before this parameter existed.
+ * @param {{strict?: boolean}} [opts] strict (2026-09-25, review/accuracy/v3, the
+ *                                 regions in FOG_STRICT_REGIONS): the current hour
+ *                                 also needs humidity ≥ FOG_STRICT_MIN_HUMIDITY and
+ *                                 Open-Meteo's own wind (omHourly.winds) at or under
+ *                                 FOG_STRICT_MAX_WIND_KPH — no wind reading, no fog.
+ *                                 The trend check is unchanged.
  * @returns {{currentFog:boolean, trendFog:boolean, available:boolean,
  *            visKm:number|null, humidity:number|null, dewSpread:number|null,
- *            omVisM:number|null, tioVisM:number|null, visSource:string|null}}
+ *            omVisM:number|null, tioVisM:number|null, visSource:string|null,
+ *            omWindKph:number|null}}
  */
-function detectAdvectionFog(omHourly, currentHourIdx, tioHourly = null) {
+function detectAdvectionFog(omHourly, currentHourIdx, tioHourly = null, { strict = false } = {}) {
   const out = {
     currentFog: false, trendFog: false, available: false,
     visKm: null, humidity: null, dewSpread: null,
-    omVisM: null, tioVisM: null, visSource: null,
+    omVisM: null, tioVisM: null, visSource: null, omWindKph: null,
   };
   if (!omHourly || !Number.isInteger(currentHourIdx) || currentHourIdx < 0) return out;
 
@@ -3814,6 +3832,8 @@ function detectAdvectionFog(omHourly, currentHourIdx, tioHourly = null) {
   const dC         = at(dew,  currentHourIdx);
   const precipProb = at(pp,   currentHourIdx);
   const precipMm   = at(pm,   currentHourIdx);
+  const omWind     = at(omHourly.winds, currentHourIdx);
+  out.omWindKph    = omWind;
 
   // Without visibility AND humidity there is nothing to detect on — bail out
   // leaving available=false so callers treat it as "no signal", not "no fog".
@@ -3847,7 +3867,11 @@ function detectAdvectionFog(omHourly, currentHourIdx, tioHourly = null) {
     humidity >= 90 &&
     dewSpread !== null && dewSpread <= 2 &&
     (precipProb === null || precipProb < 30) &&
-    (precipMm   === null || precipMm   < 0.2)
+    (precipMm   === null || precipMm   < 0.2) &&
+    // Strict gates (2026-09-25): tuned on alternate weeks of Oct 2025 – Sep 2026 at 13 airports and proven on
+    // the others — wrong fog calls 15.1 → 10.5 per 1,000 hours, still right only about 1 time in 8. Strand's
+    // two pinned real fogs (humidity 97 % and 95 %, Open-Meteo wind 6.5 and 5.2 km/h) still fire.
+    (!strict || (humidity >= FOG_STRICT_MIN_HUMIDITY && omWind !== null && omWind <= FOG_STRICT_MAX_WIND_KPH))
   );
 
   // Trend: fog forming within the next 1-3 hours even though it is not visible
@@ -3911,6 +3935,13 @@ function countsAsWeatherVote(vote) {
 // vote in a stiff breeze (which disperses fog) is rejected.
 export const FOG_VOTE_MIN_HUMIDITY = 78;   // %
 export const FOG_VOTE_MAX_WIND_KPH = 10;   // km/h
+
+// The detector's strict gates and where they apply (review/accuracy/v3/PLAN.md, results/v3-fog.txt): the regions
+// whose wrong-fog rate fell with the whole 95 % interval below zero. Elsewhere — no fog truth (West Coast, Karoo,
+// KZN inland) or no change measured (Highveld, Free State, Northern Cape, North West, Limpopo) — today's gates.
+export const FOG_STRICT_REGIONS = ['Western Cape', 'Garden Route', 'Eastern Cape', 'KZN coast', 'Lowveld'];
+export const FOG_STRICT_MIN_HUMIDITY = 95;   // %
+export const FOG_STRICT_MAX_WIND_KPH = 10;   // km/h, Open-Meteo's own current-hour wind
 
 /**
  * Is a source description TRUE fog (visibility <1km class) rather than
