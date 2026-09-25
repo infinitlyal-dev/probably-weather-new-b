@@ -1,0 +1,67 @@
+RAIN'S HERE — 173660 airport-hours (95322 train 2025, 78338 test 2026)
+R1: national ≥90% & ≥2 mm (TRAIN lo 51%, calls 258, NOT QUALIFIED) → TRAIN true calls 160
+R2: showery ≥90% & ≥2 mm (TRAIN lo 33%, calls 83, NOT QUALIFIED) | steady ≥90% & ≥2 mm (TRAIN lo 55%, calls 174, NOT QUALIFIED) → TRAIN true calls 160
+R3: inland afternoon ≥90% & ≥2 mm (TRAIN lo 39%, calls 63, NOT QUALIFIED) | rest ≥90% & ≥2 mm (TRAIN lo 52%, calls 194, NOT QUALIFIED) → TRAIN true calls 160
+PICK: R1
+TEST pooled:
+  today    A: calls 3625, right 48% [lo 46%], ±1h 64%, rain hours called 1731/3702 · B: calls 2223, right 53% [lo 51%], ±1h 68%, rain hours called 1184/3702 · C: calls 3184, right 50% [lo 48%], ±1h 66%, rain hours called 1598/3702
+  pick     A: calls 372, right 73% [lo 68%], ±1h 84%, rain hours called 272/3702 · B: calls 482, right 73% [lo 69%], ±1h 83%, rain hours called 353/3702 · C: calls 410, right 75% [lo 70%], ±1h 83%, rain hours called 307/3702
+  false-share change (pick − today, points): A -25.4 [-33.8, -12.9] · B -20.0 [-25.2, -14.3] · C -24.7 [-29.7, -18.7]
+  demoted rain hours shown as wind instead of might-rain: A 198 · B 113 · C 157
+All three candidates on TEST (assignment A: calls, right): R1 372 73% · R2 372 73% · R3 372 73%
+By region (TEST): today → pick false share [change CI per assignment] · ships?
+  Western Cape   A 33% → 10% (calls 222 → 41) · A -23.6 [-36.9, -16.0] B -18.3 [-33.8, -9.6] C -20.2 [-33.3, -12.9] · SHIPS
+  Garden Route   A 24% → 3% (calls 423 → 80) · A -21.1 [-29.1, -14.3] B -18.7 [-25.1, -12.9] C -19.7 [-25.8, -13.2] · SHIPS
+  Eastern Cape   A 53% → 41% (calls 1020 → 110) · A -12.1 [-28.8, 12.4] B -11.7 [-21.3, -0.5] C -15.9 [-25.6, -3.1] · stays today
+  KZN coast      A 31% → 0% (calls 274 → 16) · A -31.4 [-46.8, -20.6] B -11.5 [-22.4, 41.8] C -24.1 [-34.2, 67.9] · stays today
+  Highveld       A 45% → 35% (calls 281 → 17) · A -9.9 [-39.3, 13.1] B -12.4 [-31.8, 8.2] C -31.1 [-44.9, -8.5] · stays today
+  Free State     A 62% → 24% (calls 243 → 25) · A -38.1 [-58.1, -21.7] B -20.3 [-45.3, -2.6] C -26.2 [-41.9, -10.9] · SHIPS
+  Northern Cape  A 57% → 22% (calls 315 → 45) · A -34.9 [-48.5, -14.3] B -17.7 [-33.3, -3.9] C -22.2 [-28.9, -5.8] · SHIPS
+  North West     A 75% → 80% (calls 182 → 5) · A 4.7 [-29.1, 34.1] B -13.0 [-42.2, 16.9] C -18.6 [-50.8, 5.8] · stays today
+  Lowveld        A 72% → 64% (calls 433 → 25) · A -8.3 [-38.5, 11.5] B -23.5 [-34.4, -10.9] C -29.0 [-41.8, -5.7] · stays today
+  Limpopo        A 80% → 88% (calls 232 → 8) · A 7.8 [-74.3, 28.1] B 11.8 [-9.3, 20.0] C 22.9 [12.1, 33.9] · stays today
+Descriptive (today's rule, A, both years): false share by region × time of day
+  Eastern Cape · afternoon 12–17     48% of 618
+  Eastern Cape · evening 18–23       58% of 513
+  Eastern Cape · morning 06–11       47% of 464
+  Eastern Cape · night 00–05         69% of 284
+  Free State · afternoon 12–17       53% of 182
+  Free State · evening 18–23         72% of 122
+  Free State · morning 06–11         54% of 127
+  Free State · night 00–05           89% of 103
+  Garden Route · afternoon 12–17     32% of 200
+  Garden Route · evening 18–23       31% of 181
+  Garden Route · morning 06–11       29% of 200
+  Garden Route · night 00–05         15% of 139
+  Highveld · afternoon 12–17         59% of 293
+  Highveld · evening 18–23           44% of 159
+  Highveld · morning 06–11           31% of 107
+  Highveld · night 00–05             33% of 90
+  KZN coast · afternoon 12–17        32% of 161
+  KZN coast · evening 18–23          34% of 279
+  KZN coast · morning 06–11          36% of 178
+  KZN coast · night 00–05            35% of 210
+  Limpopo · afternoon 12–17          72% of 196
+  Limpopo · evening 18–23            81% of 52
+  Limpopo · morning 06–11            73% of 94
+  Limpopo · night 00–05              97% of 86
+  Lowveld · afternoon 12–17          61% of 203
+  Lowveld · evening 18–23            81% of 233
+  Lowveld · morning 06–11            45% of 144
+  Lowveld · night 00–05              94% of 231
+  North West · afternoon 12–17       76% of 195
+  North West · evening 18–23         75% of 79
+  North West · morning 06–11         60% of 109
+  North West · night 00–05           90% of 61
+  Northern Cape · afternoon 12–17    55% of 200
+  Northern Cape · evening 18–23      76% of 114
+  Northern Cape · morning 06–11      46% of 142
+  Northern Cape · night 00–05        71% of 110
+  Western Cape · afternoon 12–17     36% of 162
+  Western Cape · evening 18–23       43% of 118
+  Western Cape · morning 06–11       36% of 125
+  Western Cape · night 00–05         41% of 115
+  byVotes: 4 models 44% (3327) · 3 models 57% (2724) · 2 models 68% (1328)
+  byChance: 70–79 58% (2766) · 90+ 38% (1017) · 60–69 68% (1456) · 80–89 46% (2140)
+  byAmount: 0.5–1 mm 56% (2596) · 1–2 mm 47% (1892) · 2+ mm 42% (1068) · 0.3–0.5 mm 64% (1823)
+  byType: steady rain / drizzle 56% (5886) · showers / thunder 45% (1493)

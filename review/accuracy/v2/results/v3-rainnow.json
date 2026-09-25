@@ -1,0 +1,1423 @@
+{
+ "train": {
+  "from": "2025-01-01",
+  "to": "2025-12-31"
+ },
+ "test": {
+  "from": "2026-01-01",
+  "to": "2026-09-24"
+ },
+ "assignments": {
+  "A": [
+   "best_match",
+   "ecmwf_ifs025",
+   "gfs_seamless",
+   "ukmo_seamless",
+   "icon_seamless"
+  ],
+  "B": [
+   "best_match",
+   "ecmwf_ifs025",
+   "icon_seamless",
+   "best_match",
+   "best_match"
+  ],
+  "C": [
+   "best_match",
+   "meteofrance_seamless",
+   "gfs_seamless",
+   "best_match",
+   "icon_seamless"
+  ]
+ },
+ "pick": "R1",
+ "candidates": {
+  "R1": {
+   "cells": {
+    "national": {
+     "p": 90,
+     "m": 2,
+     "lo": 0.5121,
+     "calls": 257.6667,
+     "hits": 160,
+     "qualified": false
+    }
+   },
+   "trainHits": 160
+  },
+  "R2": {
+   "cells": {
+    "showery": {
+     "p": 90,
+     "m": 2,
+     "lo": 0.3309,
+     "calls": 83.3333,
+     "hits": 45,
+     "qualified": false
+    },
+    "steady": {
+     "p": 90,
+     "m": 2,
+     "lo": 0.5536,
+     "calls": 174.3333,
+     "hits": 115,
+     "qualified": false
+    }
+   },
+   "trainHits": 160
+  },
+  "R3": {
+   "cells": {
+    "inland afternoon": {
+     "p": 90,
+     "m": 2,
+     "lo": 0.3938,
+     "calls": 63.3333,
+     "hits": 33,
+     "qualified": false
+    },
+    "rest": {
+     "p": 90,
+     "m": 2,
+     "lo": 0.5177,
+     "calls": 194.3333,
+     "hits": 127,
+     "qualified": false
+    }
+   },
+   "trainHits": 160
+  }
+ },
+ "testPooled": {
+  "r0": {
+   "A": {
+    "calls": 3625,
+    "hits": 1731,
+    "rate": 0.4775,
+    "lo": 0.4613,
+    "hiWilson": null,
+    "nearRate": 0.6375,
+    "rainHoursCalled": 1731,
+    "rainHours": 3702,
+    "demotedWetToWind": 0
+   },
+   "B": {
+    "calls": 2223,
+    "hits": 1184,
+    "rate": 0.5326,
+    "lo": 0.5118,
+    "hiWilson": null,
+    "nearRate": 0.6838,
+    "rainHoursCalled": 1184,
+    "rainHours": 3702,
+    "demotedWetToWind": 0
+   },
+   "C": {
+    "calls": 3184,
+    "hits": 1598,
+    "rate": 0.5019,
+    "lo": 0.4845,
+    "hiWilson": null,
+    "nearRate": 0.663,
+    "rainHoursCalled": 1598,
+    "rainHours": 3702,
+    "demotedWetToWind": 0
+   }
+  },
+  "pick": {
+   "A": {
+    "calls": 372,
+    "hits": 272,
+    "rate": 0.7312,
+    "lo": 0.6839,
+    "hiWilson": null,
+    "nearRate": 0.8387,
+    "rainHoursCalled": 272,
+    "rainHours": 3702,
+    "demotedWetToWind": 198
+   },
+   "B": {
+    "calls": 482,
+    "hits": 353,
+    "rate": 0.7324,
+    "lo": 0.6911,
+    "hiWilson": null,
+    "nearRate": 0.8257,
+    "rainHoursCalled": 353,
+    "rainHours": 3702,
+    "demotedWetToWind": 113
+   },
+   "C": {
+    "calls": 410,
+    "hits": 307,
+    "rate": 0.7488,
+    "lo": 0.7046,
+    "hiWilson": null,
+    "nearRate": 0.8341,
+    "rainHoursCalled": 307,
+    "rainHours": 3702,
+    "demotedWetToWind": 157
+   }
+  },
+  "diff": {
+   "A": {
+    "diff": -0.2537,
+    "lo": -0.3381,
+    "hi": -0.1292
+   },
+   "B": {
+    "diff": -0.1998,
+    "lo": -0.2524,
+    "hi": -0.1427
+   },
+   "C": {
+    "diff": -0.2469,
+    "lo": -0.2971,
+    "hi": -0.1869
+   }
+  }
+ },
+ "testByRegion": {
+  "Western Cape": {
+   "r0": {
+    "A": {
+     "calls": 222,
+     "hits": 148,
+     "rate": 0.6667,
+     "lo": 0.6023,
+     "hiWilson": null,
+     "nearRate": 0.8874,
+     "rainHoursCalled": 148,
+     "rainHours": 321,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 148,
+     "hits": 107,
+     "rate": 0.723,
+     "lo": 0.6459,
+     "hiWilson": null,
+     "nearRate": 0.9054,
+     "rainHoursCalled": 107,
+     "rainHours": 321,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 183,
+     "hits": 129,
+     "rate": 0.7049,
+     "lo": 0.6352,
+     "hiWilson": null,
+     "nearRate": 0.929,
+     "rainHoursCalled": 129,
+     "rainHours": 321,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 41,
+     "hits": 37,
+     "rate": 0.9024,
+     "lo": 0.7745,
+     "hiWilson": null,
+     "nearRate": 1,
+     "rainHoursCalled": 37,
+     "rainHours": 321,
+     "demotedWetToWind": 39
+    },
+    "B": {
+     "calls": 53,
+     "hits": 48,
+     "rate": 0.9057,
+     "lo": 0.7975,
+     "hiWilson": null,
+     "nearRate": 1,
+     "rainHoursCalled": 48,
+     "rainHours": 321,
+     "demotedWetToWind": 25
+    },
+    "C": {
+     "calls": 43,
+     "hits": 39,
+     "rate": 0.907,
+     "lo": 0.784,
+     "hiWilson": null,
+     "nearRate": 1,
+     "rainHoursCalled": 39,
+     "rainHours": 321,
+     "demotedWetToWind": 22
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.2358,
+     "lo": -0.3691,
+     "hi": -0.1601
+    },
+    "B": {
+     "diff": -0.1827,
+     "lo": -0.338,
+     "hi": -0.0964
+    },
+    "C": {
+     "diff": -0.2021,
+     "lo": -0.3333,
+     "hi": -0.1288
+    }
+   },
+   "r0calls": 148,
+   "ships": true
+  },
+  "Garden Route": {
+   "r0": {
+    "A": {
+     "calls": 423,
+     "hits": 323,
+     "rate": 0.7636,
+     "lo": 0.7208,
+     "hiWilson": null,
+     "nearRate": 0.9078,
+     "rainHoursCalled": 323,
+     "rainHours": 659,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 307,
+     "hits": 243,
+     "rate": 0.7915,
+     "lo": 0.7426,
+     "hiWilson": null,
+     "nearRate": 0.9153,
+     "rainHoursCalled": 243,
+     "rainHours": 659,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 406,
+     "hits": 307,
+     "rate": 0.7562,
+     "lo": 0.7121,
+     "hiWilson": null,
+     "nearRate": 0.8941,
+     "rainHoursCalled": 307,
+     "rainHours": 659,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 80,
+     "hits": 78,
+     "rate": 0.975,
+     "lo": 0.9134,
+     "hiWilson": null,
+     "nearRate": 1,
+     "rainHoursCalled": 78,
+     "rainHours": 659,
+     "demotedWetToWind": 10
+    },
+    "B": {
+     "calls": 93,
+     "hits": 91,
+     "rate": 0.9785,
+     "lo": 0.9249,
+     "hiWilson": null,
+     "nearRate": 1,
+     "rainHoursCalled": 91,
+     "rainHours": 659,
+     "demotedWetToWind": 3
+    },
+    "C": {
+     "calls": 85,
+     "hits": 81,
+     "rate": 0.9529,
+     "lo": 0.8852,
+     "hiWilson": null,
+     "nearRate": 0.9882,
+     "rainHoursCalled": 81,
+     "rainHours": 659,
+     "demotedWetToWind": 8
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.2114,
+     "lo": -0.291,
+     "hi": -0.1426
+    },
+    "B": {
+     "diff": -0.187,
+     "lo": -0.2513,
+     "hi": -0.1287
+    },
+    "C": {
+     "diff": -0.1968,
+     "lo": -0.2578,
+     "hi": -0.1324
+    }
+   },
+   "r0calls": 307,
+   "ships": true
+  },
+  "Eastern Cape": {
+   "r0": {
+    "A": {
+     "calls": 1020,
+     "hits": 479,
+     "rate": 0.4696,
+     "lo": 0.4392,
+     "hiWilson": null,
+     "nearRate": 0.6098,
+     "rainHoursCalled": 479,
+     "rainHours": 1019,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 660,
+     "hits": 331,
+     "rate": 0.5015,
+     "lo": 0.4635,
+     "hiWilson": null,
+     "nearRate": 0.6364,
+     "rainHoursCalled": 331,
+     "rainHours": 1019,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 924,
+     "hits": 439,
+     "rate": 0.4751,
+     "lo": 0.4431,
+     "hiWilson": null,
+     "nearRate": 0.6093,
+     "rainHoursCalled": 439,
+     "rainHours": 1019,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 110,
+     "hits": 65,
+     "rate": 0.5909,
+     "lo": 0.4975,
+     "hiWilson": null,
+     "nearRate": 0.7091,
+     "rainHoursCalled": 65,
+     "rainHours": 1019,
+     "demotedWetToWind": 56
+    },
+    "B": {
+     "calls": 118,
+     "hits": 73,
+     "rate": 0.6186,
+     "lo": 0.5286,
+     "hiWilson": null,
+     "nearRate": 0.7119,
+     "rainHoursCalled": 73,
+     "rainHours": 1019,
+     "demotedWetToWind": 37
+    },
+    "C": {
+     "calls": 101,
+     "hits": 64,
+     "rate": 0.6337,
+     "lo": 0.5364,
+     "hiWilson": null,
+     "nearRate": 0.7228,
+     "rainHoursCalled": 64,
+     "rainHours": 1019,
+     "demotedWetToWind": 56
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.1213,
+     "lo": -0.2877,
+     "hi": 0.1239
+    },
+    "B": {
+     "diff": -0.1171,
+     "lo": -0.2134,
+     "hi": -0.0052
+    },
+    "C": {
+     "diff": -0.1586,
+     "lo": -0.2559,
+     "hi": -0.0315
+    }
+   },
+   "r0calls": 660,
+   "ships": false
+  },
+  "KZN coast": {
+   "r0": {
+    "A": {
+     "calls": 274,
+     "hits": 188,
+     "rate": 0.6861,
+     "lo": 0.6289,
+     "hiWilson": null,
+     "nearRate": 0.8139,
+     "rainHoursCalled": 188,
+     "rainHours": 423,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 143,
+     "hits": 115,
+     "rate": 0.8042,
+     "lo": 0.7316,
+     "hiWilson": null,
+     "nearRate": 0.8951,
+     "rainHoursCalled": 115,
+     "rainHours": 423,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 248,
+     "hits": 179,
+     "rate": 0.7218,
+     "lo": 0.6629,
+     "hiWilson": null,
+     "nearRate": 0.8548,
+     "rainHoursCalled": 179,
+     "rainHours": 423,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 16,
+     "hits": 16,
+     "rate": 1,
+     "lo": 0.8064,
+     "hiWilson": null,
+     "nearRate": 1,
+     "rainHoursCalled": 16,
+     "rainHours": 423,
+     "demotedWetToWind": 41
+    },
+    "B": {
+     "calls": 37,
+     "hits": 34,
+     "rate": 0.9189,
+     "lo": 0.787,
+     "hiWilson": null,
+     "nearRate": 0.9189,
+     "rainHoursCalled": 34,
+     "rainHours": 423,
+     "demotedWetToWind": 19
+    },
+    "C": {
+     "calls": 27,
+     "hits": 26,
+     "rate": 0.963,
+     "lo": 0.8172,
+     "hiWilson": null,
+     "nearRate": 0.963,
+     "rainHoursCalled": 26,
+     "rainHours": 423,
+     "demotedWetToWind": 26
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.3139,
+     "lo": -0.4677,
+     "hi": -0.2063
+    },
+    "B": {
+     "diff": -0.1147,
+     "lo": -0.2235,
+     "hi": 0.4176
+    },
+    "C": {
+     "diff": -0.2412,
+     "lo": -0.3425,
+     "hi": 0.6786
+    }
+   },
+   "r0calls": 143,
+   "ships": false
+  },
+  "Highveld": {
+   "r0": {
+    "A": {
+     "calls": 281,
+     "hits": 154,
+     "rate": 0.548,
+     "lo": 0.4896,
+     "hiWilson": null,
+     "nearRate": 0.7544,
+     "rainHoursCalled": 154,
+     "rainHours": 351,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 152,
+     "hits": 97,
+     "rate": 0.6382,
+     "lo": 0.5592,
+     "hiWilson": null,
+     "nearRate": 0.8553,
+     "rainHoursCalled": 97,
+     "rainHours": 351,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 237,
+     "hits": 137,
+     "rate": 0.5781,
+     "lo": 0.5144,
+     "hiWilson": null,
+     "nearRate": 0.8186,
+     "rainHoursCalled": 137,
+     "rainHours": 351,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 17,
+     "hits": 11,
+     "rate": 0.6471,
+     "lo": 0.413,
+     "hiWilson": null,
+     "nearRate": 0.8824,
+     "rainHoursCalled": 11,
+     "rainHours": 351,
+     "demotedWetToWind": 8
+    },
+    "B": {
+     "calls": 21,
+     "hits": 16,
+     "rate": 0.7619,
+     "lo": 0.5491,
+     "hiWilson": null,
+     "nearRate": 1,
+     "rainHoursCalled": 16,
+     "rainHours": 351,
+     "demotedWetToWind": 2
+    },
+    "C": {
+     "calls": 18,
+     "hits": 16,
+     "rate": 0.8889,
+     "lo": 0.672,
+     "hiWilson": null,
+     "nearRate": 0.9444,
+     "rainHoursCalled": 16,
+     "rainHours": 351,
+     "demotedWetToWind": 5
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.099,
+     "lo": -0.3933,
+     "hi": 0.1308
+    },
+    "B": {
+     "diff": -0.1237,
+     "lo": -0.318,
+     "hi": 0.082
+    },
+    "C": {
+     "diff": -0.3108,
+     "lo": -0.449,
+     "hi": -0.0848
+    }
+   },
+   "r0calls": 152,
+   "ships": false
+  },
+  "Free State": {
+   "r0": {
+    "A": {
+     "calls": 243,
+     "hits": 92,
+     "rate": 0.3786,
+     "lo": 0.32,
+     "hiWilson": null,
+     "nearRate": 0.5391,
+     "rainHoursCalled": 92,
+     "rainHours": 217,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 175,
+     "hits": 77,
+     "rate": 0.44,
+     "lo": 0.3685,
+     "hiWilson": null,
+     "nearRate": 0.5829,
+     "rainHoursCalled": 77,
+     "rainHours": 217,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 230,
+     "hits": 93,
+     "rate": 0.4043,
+     "lo": 0.343,
+     "hiWilson": null,
+     "nearRate": 0.5565,
+     "rainHoursCalled": 93,
+     "rainHours": 217,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 25,
+     "hits": 19,
+     "rate": 0.76,
+     "lo": 0.5657,
+     "hiWilson": null,
+     "nearRate": 0.88,
+     "rainHoursCalled": 19,
+     "rainHours": 217,
+     "demotedWetToWind": 17
+    },
+    "B": {
+     "calls": 42,
+     "hits": 27,
+     "rate": 0.6429,
+     "lo": 0.4917,
+     "hiWilson": null,
+     "nearRate": 0.7381,
+     "rainHoursCalled": 27,
+     "rainHours": 217,
+     "demotedWetToWind": 9
+    },
+    "C": {
+     "calls": 33,
+     "hits": 22,
+     "rate": 0.6667,
+     "lo": 0.4961,
+     "hiWilson": null,
+     "nearRate": 0.7273,
+     "rainHoursCalled": 22,
+     "rainHours": 217,
+     "demotedWetToWind": 16
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.3814,
+     "lo": -0.5808,
+     "hi": -0.2168
+    },
+    "B": {
+     "diff": -0.2029,
+     "lo": -0.4534,
+     "hi": -0.0264
+    },
+    "C": {
+     "diff": -0.2623,
+     "lo": -0.4186,
+     "hi": -0.1086
+    }
+   },
+   "r0calls": 175,
+   "ships": true
+  },
+  "Northern Cape": {
+   "r0": {
+    "A": {
+     "calls": 315,
+     "hits": 135,
+     "rate": 0.4286,
+     "lo": 0.3751,
+     "hiWilson": null,
+     "nearRate": 0.6063,
+     "rainHoursCalled": 135,
+     "rainHours": 254,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 189,
+     "hits": 100,
+     "rate": 0.5291,
+     "lo": 0.4581,
+     "hiWilson": null,
+     "nearRate": 0.7037,
+     "rainHoursCalled": 100,
+     "rainHours": 254,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 248,
+     "hits": 120,
+     "rate": 0.4839,
+     "lo": 0.4224,
+     "hiWilson": null,
+     "nearRate": 0.6573,
+     "rainHoursCalled": 120,
+     "rainHours": 254,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 45,
+     "hits": 35,
+     "rate": 0.7778,
+     "lo": 0.6373,
+     "hiWilson": null,
+     "nearRate": 0.9333,
+     "rainHoursCalled": 35,
+     "rainHours": 254,
+     "demotedWetToWind": 24
+    },
+    "B": {
+     "calls": 51,
+     "hits": 36,
+     "rate": 0.7059,
+     "lo": 0.57,
+     "hiWilson": null,
+     "nearRate": 0.8824,
+     "rainHoursCalled": 36,
+     "rainHours": 254,
+     "demotedWetToWind": 16
+    },
+    "C": {
+     "calls": 51,
+     "hits": 36,
+     "rate": 0.7059,
+     "lo": 0.57,
+     "hiWilson": null,
+     "nearRate": 0.8627,
+     "rainHoursCalled": 36,
+     "rainHours": 254,
+     "demotedWetToWind": 21
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.3492,
+     "lo": -0.4849,
+     "hi": -0.1426
+    },
+    "B": {
+     "diff": -0.1768,
+     "lo": -0.3333,
+     "hi": -0.0385
+    },
+    "C": {
+     "diff": -0.222,
+     "lo": -0.2889,
+     "hi": -0.0578
+    }
+   },
+   "r0calls": 189,
+   "ships": true
+  },
+  "North West": {
+   "r0": {
+    "A": {
+     "calls": 182,
+     "hits": 45,
+     "rate": 0.2473,
+     "lo": 0.1902,
+     "hiWilson": null,
+     "nearRate": 0.4011,
+     "rainHoursCalled": 45,
+     "rainHours": 85,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 90,
+     "hits": 21,
+     "rate": 0.2333,
+     "lo": 0.158,
+     "hiWilson": null,
+     "nearRate": 0.3667,
+     "rainHoursCalled": 21,
+     "rainHours": 85,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 151,
+     "hits": 39,
+     "rate": 0.2583,
+     "lo": 0.1951,
+     "hiWilson": null,
+     "nearRate": 0.4371,
+     "rainHoursCalled": 39,
+     "rainHours": 85,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 5,
+     "hits": 1,
+     "rate": 0.2,
+     "lo": 0.0362,
+     "hiWilson": null,
+     "nearRate": 0.4,
+     "rainHoursCalled": 1,
+     "rainHours": 85,
+     "demotedWetToWind": 3
+    },
+    "B": {
+     "calls": 11,
+     "hits": 4,
+     "rate": 0.3636,
+     "lo": 0.1517,
+     "hiWilson": null,
+     "nearRate": 0.6364,
+     "rainHoursCalled": 4,
+     "rainHours": 85,
+     "demotedWetToWind": 2
+    },
+    "C": {
+     "calls": 9,
+     "hits": 4,
+     "rate": 0.4444,
+     "lo": 0.1888,
+     "hiWilson": null,
+     "nearRate": 0.7778,
+     "rainHoursCalled": 4,
+     "rainHours": 85,
+     "demotedWetToWind": 1
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": 0.0473,
+     "lo": -0.291,
+     "hi": 0.3411
+    },
+    "B": {
+     "diff": -0.1303,
+     "lo": -0.4216,
+     "hi": 0.1687
+    },
+    "C": {
+     "diff": -0.1862,
+     "lo": -0.5083,
+     "hi": 0.0577
+    }
+   },
+   "r0calls": 90,
+   "ships": false
+  },
+  "Lowveld": {
+   "r0": {
+    "A": {
+     "calls": 433,
+     "hits": 120,
+     "rate": 0.2771,
+     "lo": 0.2371,
+     "hiWilson": null,
+     "nearRate": 0.4503,
+     "rainHoursCalled": 120,
+     "rainHours": 245,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 240,
+     "hits": 69,
+     "rate": 0.2875,
+     "lo": 0.2339,
+     "hiWilson": null,
+     "nearRate": 0.475,
+     "rainHoursCalled": 69,
+     "rainHours": 245,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 369,
+     "hits": 112,
+     "rate": 0.3035,
+     "lo": 0.2588,
+     "hiWilson": null,
+     "nearRate": 0.4851,
+     "rainHoursCalled": 112,
+     "rainHours": 245,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 25,
+     "hits": 9,
+     "rate": 0.36,
+     "lo": 0.2025,
+     "hiWilson": null,
+     "nearRate": 0.56,
+     "rainHoursCalled": 9,
+     "rainHours": 245,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 44,
+     "hits": 23,
+     "rate": 0.5227,
+     "lo": 0.3794,
+     "hiWilson": null,
+     "nearRate": 0.6591,
+     "rainHoursCalled": 23,
+     "rainHours": 245,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 32,
+     "hits": 19,
+     "rate": 0.5938,
+     "lo": 0.4226,
+     "hiWilson": null,
+     "nearRate": 0.75,
+     "rainHoursCalled": 19,
+     "rainHours": 245,
+     "demotedWetToWind": 0
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": -0.0829,
+     "lo": -0.3855,
+     "hi": 0.1153
+    },
+    "B": {
+     "diff": -0.2352,
+     "lo": -0.3443,
+     "hi": -0.1091
+    },
+    "C": {
+     "diff": -0.2902,
+     "lo": -0.4178,
+     "hi": -0.0575
+    }
+   },
+   "r0calls": 240,
+   "ships": false
+  },
+  "Limpopo": {
+   "r0": {
+    "A": {
+     "calls": 232,
+     "hits": 47,
+     "rate": 0.2026,
+     "lo": 0.1559,
+     "hiWilson": null,
+     "nearRate": 0.3578,
+     "rainHoursCalled": 47,
+     "rainHours": 128,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 119,
+     "hits": 24,
+     "rate": 0.2017,
+     "lo": 0.1394,
+     "hiWilson": null,
+     "nearRate": 0.3782,
+     "rainHoursCalled": 24,
+     "rainHours": 128,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 188,
+     "hits": 43,
+     "rate": 0.2287,
+     "lo": 0.1745,
+     "hiWilson": null,
+     "nearRate": 0.3883,
+     "rainHoursCalled": 43,
+     "rainHours": 128,
+     "demotedWetToWind": 0
+    }
+   },
+   "pick": {
+    "A": {
+     "calls": 8,
+     "hits": 1,
+     "rate": 0.125,
+     "lo": 0.0224,
+     "hiWilson": null,
+     "nearRate": 0.25,
+     "rainHoursCalled": 1,
+     "rainHours": 128,
+     "demotedWetToWind": 0
+    },
+    "B": {
+     "calls": 12,
+     "hits": 1,
+     "rate": 0.0833,
+     "lo": 0.0149,
+     "hiWilson": null,
+     "nearRate": 0.0833,
+     "rainHoursCalled": 1,
+     "rainHours": 128,
+     "demotedWetToWind": 0
+    },
+    "C": {
+     "calls": 11,
+     "hits": 0,
+     "rate": 0,
+     "lo": 0,
+     "hiWilson": null,
+     "nearRate": 0,
+     "rainHoursCalled": 0,
+     "rainHours": 128,
+     "demotedWetToWind": 2
+    }
+   },
+   "diff": {
+    "A": {
+     "diff": 0.0776,
+     "lo": -0.7425,
+     "hi": 0.2806
+    },
+    "B": {
+     "diff": 0.1183,
+     "lo": -0.0932,
+     "hi": 0.2
+    },
+    "C": {
+     "diff": 0.2287,
+     "lo": 0.1207,
+     "hi": 0.3393
+    }
+   },
+   "r0calls": 119,
+   "ships": false
+  }
+ },
+ "all3OnTest": {
+  "R1": {
+   "A": {
+    "calls": 372,
+    "hits": 272,
+    "rate": 0.7312,
+    "lo": 0.6839,
+    "hiWilson": null,
+    "nearRate": 0.8387,
+    "rainHoursCalled": 272,
+    "rainHours": 3702,
+    "demotedWetToWind": 198
+   },
+   "B": {
+    "calls": 482,
+    "hits": 353,
+    "rate": 0.7324,
+    "lo": 0.6911,
+    "hiWilson": null,
+    "nearRate": 0.8257,
+    "rainHoursCalled": 353,
+    "rainHours": 3702,
+    "demotedWetToWind": 113
+   },
+   "C": {
+    "calls": 410,
+    "hits": 307,
+    "rate": 0.7488,
+    "lo": 0.7046,
+    "hiWilson": null,
+    "nearRate": 0.8341,
+    "rainHoursCalled": 307,
+    "rainHours": 3702,
+    "demotedWetToWind": 157
+   }
+  },
+  "R2": {
+   "A": {
+    "calls": 372,
+    "hits": 272,
+    "rate": 0.7312,
+    "lo": 0.6839,
+    "hiWilson": null,
+    "nearRate": 0.8387,
+    "rainHoursCalled": 272,
+    "rainHours": 3702,
+    "demotedWetToWind": 198
+   },
+   "B": {
+    "calls": 482,
+    "hits": 353,
+    "rate": 0.7324,
+    "lo": 0.6911,
+    "hiWilson": null,
+    "nearRate": 0.8257,
+    "rainHoursCalled": 353,
+    "rainHours": 3702,
+    "demotedWetToWind": 113
+   },
+   "C": {
+    "calls": 410,
+    "hits": 307,
+    "rate": 0.7488,
+    "lo": 0.7046,
+    "hiWilson": null,
+    "nearRate": 0.8341,
+    "rainHoursCalled": 307,
+    "rainHours": 3702,
+    "demotedWetToWind": 157
+   }
+  },
+  "R3": {
+   "A": {
+    "calls": 372,
+    "hits": 272,
+    "rate": 0.7312,
+    "lo": 0.6839,
+    "hiWilson": null,
+    "nearRate": 0.8387,
+    "rainHoursCalled": 272,
+    "rainHours": 3702,
+    "demotedWetToWind": 198
+   },
+   "B": {
+    "calls": 482,
+    "hits": 353,
+    "rate": 0.7324,
+    "lo": 0.6911,
+    "hiWilson": null,
+    "nearRate": 0.8257,
+    "rainHoursCalled": 353,
+    "rainHours": 3702,
+    "demotedWetToWind": 113
+   },
+   "C": {
+    "calls": 410,
+    "hits": 307,
+    "rate": 0.7488,
+    "lo": 0.7046,
+    "hiWilson": null,
+    "nearRate": 0.8341,
+    "rainHoursCalled": 307,
+    "rainHours": 3702,
+    "demotedWetToWind": 157
+   }
+  }
+ },
+ "descriptive": {
+  "byRegionAndTime": {
+   "Western Cape · afternoon 12–17": {
+    "calls": 162,
+    "falseShare": 0.3642
+   },
+   "Western Cape · evening 18–23": {
+    "calls": 118,
+    "falseShare": 0.4322
+   },
+   "Western Cape · morning 06–11": {
+    "calls": 125,
+    "falseShare": 0.36
+   },
+   "Western Cape · night 00–05": {
+    "calls": 115,
+    "falseShare": 0.4087
+   },
+   "Garden Route · morning 06–11": {
+    "calls": 200,
+    "falseShare": 0.29
+   },
+   "Garden Route · afternoon 12–17": {
+    "calls": 200,
+    "falseShare": 0.32
+   },
+   "Garden Route · evening 18–23": {
+    "calls": 181,
+    "falseShare": 0.3094
+   },
+   "Garden Route · night 00–05": {
+    "calls": 139,
+    "falseShare": 0.1511
+   },
+   "Eastern Cape · morning 06–11": {
+    "calls": 464,
+    "falseShare": 0.472
+   },
+   "Eastern Cape · night 00–05": {
+    "calls": 284,
+    "falseShare": 0.6866
+   },
+   "Eastern Cape · afternoon 12–17": {
+    "calls": 618,
+    "falseShare": 0.4838
+   },
+   "Eastern Cape · evening 18–23": {
+    "calls": 513,
+    "falseShare": 0.575
+   },
+   "KZN coast · evening 18–23": {
+    "calls": 279,
+    "falseShare": 0.3441
+   },
+   "KZN coast · night 00–05": {
+    "calls": 210,
+    "falseShare": 0.3524
+   },
+   "KZN coast · morning 06–11": {
+    "calls": 178,
+    "falseShare": 0.3596
+   },
+   "KZN coast · afternoon 12–17": {
+    "calls": 161,
+    "falseShare": 0.3168
+   },
+   "Highveld · morning 06–11": {
+    "calls": 107,
+    "falseShare": 0.3084
+   },
+   "Highveld · evening 18–23": {
+    "calls": 159,
+    "falseShare": 0.4403
+   },
+   "Highveld · afternoon 12–17": {
+    "calls": 293,
+    "falseShare": 0.5904
+   },
+   "Highveld · night 00–05": {
+    "calls": 90,
+    "falseShare": 0.3333
+   },
+   "Free State · evening 18–23": {
+    "calls": 122,
+    "falseShare": 0.7213
+   },
+   "Free State · night 00–05": {
+    "calls": 103,
+    "falseShare": 0.8932
+   },
+   "Free State · morning 06–11": {
+    "calls": 127,
+    "falseShare": 0.5433
+   },
+   "Free State · afternoon 12–17": {
+    "calls": 182,
+    "falseShare": 0.5275
+   },
+   "Northern Cape · evening 18–23": {
+    "calls": 114,
+    "falseShare": 0.7632
+   },
+   "Northern Cape · night 00–05": {
+    "calls": 110,
+    "falseShare": 0.7091
+   },
+   "Northern Cape · afternoon 12–17": {
+    "calls": 200,
+    "falseShare": 0.555
+   },
+   "Northern Cape · morning 06–11": {
+    "calls": 142,
+    "falseShare": 0.4648
+   },
+   "North West · morning 06–11": {
+    "calls": 109,
+    "falseShare": 0.5963
+   },
+   "North West · afternoon 12–17": {
+    "calls": 195,
+    "falseShare": 0.759
+   },
+   "North West · evening 18–23": {
+    "calls": 79,
+    "falseShare": 0.7468
+   },
+   "North West · night 00–05": {
+    "calls": 61,
+    "falseShare": 0.9016
+   },
+   "Lowveld · night 00–05": {
+    "calls": 231,
+    "falseShare": 0.9437
+   },
+   "Lowveld · afternoon 12–17": {
+    "calls": 203,
+    "falseShare": 0.6108
+   },
+   "Lowveld · evening 18–23": {
+    "calls": 233,
+    "falseShare": 0.8112
+   },
+   "Lowveld · morning 06–11": {
+    "calls": 144,
+    "falseShare": 0.4514
+   },
+   "Limpopo · afternoon 12–17": {
+    "calls": 196,
+    "falseShare": 0.7194
+   },
+   "Limpopo · evening 18–23": {
+    "calls": 52,
+    "falseShare": 0.8077
+   },
+   "Limpopo · night 00–05": {
+    "calls": 86,
+    "falseShare": 0.9651
+   },
+   "Limpopo · morning 06–11": {
+    "calls": 94,
+    "falseShare": 0.734
+   }
+  },
+  "byVotes": {
+   "4 models": {
+    "calls": 3327,
+    "falseShare": 0.4448
+   },
+   "3 models": {
+    "calls": 2724,
+    "falseShare": 0.5742
+   },
+   "2 models": {
+    "calls": 1328,
+    "falseShare": 0.6785
+   }
+  },
+  "byChance": {
+   "70–79": {
+    "calls": 2766,
+    "falseShare": 0.5763
+   },
+   "90+": {
+    "calls": 1017,
+    "falseShare": 0.3786
+   },
+   "60–69": {
+    "calls": 1456,
+    "falseShare": 0.6765
+   },
+   "80–89": {
+    "calls": 2140,
+    "falseShare": 0.4584
+   }
+  },
+  "byAmount": {
+   "0.5–1 mm": {
+    "calls": 2596,
+    "falseShare": 0.5586
+   },
+   "1–2 mm": {
+    "calls": 1892,
+    "falseShare": 0.4688
+   },
+   "2+ mm": {
+    "calls": 1068,
+    "falseShare": 0.4204
+   },
+   "0.3–0.5 mm": {
+    "calls": 1823,
+    "falseShare": 0.6358
+   }
+  },
+  "byType": {
+   "steady rain / drizzle": {
+    "calls": 5886,
+    "falseShare": 0.5556
+   },
+   "showers / thunder": {
+    "calls": 1493,
+    "falseShare": 0.4521
+   }
+  }
+ }
+}
