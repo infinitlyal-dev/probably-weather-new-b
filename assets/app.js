@@ -421,6 +421,10 @@ document.addEventListener("DOMContentLoaded", () => {
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
       likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
       possibleLater: { en: "Possible later", af: "Moontlik later", zu: "Kungenzeka kamuva", xh: "Kunokwenzeka kamva", st: "Ho ka etsahala hamorao" },
+      // 2026-09-25: the hero's might-rain when the old rain-now evidence holds but the strict rule does not
+      // (reason 'showers-nearby'). EN + AF Al's (rain-fog-frost-ruled.json); zu/xh/st through the
+      // translation skills, lang-check triage 0 flagged (review/showers-nearby/).
+      showersNearby: { en: "Showers nearby.", af: "Buie naby.", zu: "Izihlambi zemvula ziseduze.", xh: "Iimvula zikufutshane.", st: "Dipula di haufi." },
       low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
       moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
       high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
@@ -2493,6 +2497,10 @@ document.addEventListener("DOMContentLoaded", () => {
       nowTemp: now.tempC ?? null, feelsLike: now.feelsLikeC ?? null, todayHigh: today.highC ?? null, todayLow: today.lowC ?? null, 
       rainPct: displayRainPct, dailyRainPct: dailyRainPct, rainLater: rainLater,
       rainNowOverride: rainNowOverride, // item 4: server radar override — computeHomeDisplayCondition honours it
+      // 2026-09-25 (Al's ruling): the server's might-rain that the old rain-now rung would have called
+      // "Rain's here" — the hero words it "Showers nearby." instead of "Might rain." Not when the phone's own
+      // window says the rain is later (a cached answer read an hour on): that might-rain is "Later" (Fable).
+      showersNearby: now.conditionReason === 'showers-nearby' && !rainLater,
       uv: uvNow,        // CURRENT-HOUR blended UV (item 3); null at night, null on a legacy payload
       uvMax: uvMax,     // today's peak UV, labelled separately in the stats row / byline
       uvDaily: uvMax ?? (isNum(today.uv) ? today.uv : null), // today's peak UV, for the hero's daytime UV rung
@@ -3132,7 +3140,9 @@ document.addEventListener("DOMContentLoaded", () => {
       debugLog('[Hero copy] bank unavailable for', settings.lang, '— condition label, no witty line');
     } else {
       safeText(headlineEl, getWittyLine(displayConditionForCopy));
-      safeText(descriptionEl, getHeadline(displayConditionForCopy));
+      safeText(descriptionEl, displayConditionForCopy === 'rain-possible' && norm.showersNearby
+        ? t('weather', 'showersNearby')
+        : getHeadline(displayConditionForCopy));
     }
     debugLog('[Layout] description:', descriptionEl?.textContent, 'headline:', headlineEl?.textContent);
     const bylineEl = $('#weatherByline');

@@ -103,4 +103,9 @@ describe('the forecast endpoint', () => {
     expect(body.now.conditionReason).toBe('visibility-humidity-fog-detector');
     expect(body.meta.conditionConfidence.fogSignal).toMatchObject({ rule: 'standard', region: 'Highveld' });
   });
+
+  it('both spots carry the strict rain rule (Al, 25 Sept: strict in every region)', async () => {
+    const RULE = { rainHere: { votes: 2, prob: 90, mm: 2 }, showersNearby: { prob: 60, mm: 0.3 } };
+    for (const [lat, lon] of [[-33.97, 18.60], [-26.13, 28.24]]) expect((await call(lat, lon)).meta.conditionConfidence.rainRule, `${lat},${lon}`).toEqual(RULE);
+  });
 });

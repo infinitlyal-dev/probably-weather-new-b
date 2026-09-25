@@ -1,0 +1,51 @@
+{
+  "generated": "2026-09-25T15:25:18.7685289Z",
+  "ruledBy": "Al, in chat with Vonk (claude.ai) - he agreed with Vonk's picks; written by Vonk so Al did not have to fill in the page",
+  "questions": [
+    {
+      "key": "rain-proven",
+      "verdict": "STRICT",
+      "note": "Al in chat (25 Sept): agrees with Vonk - strict."
+    },
+    {
+      "key": "rain-rest",
+      "verdict": "STRICT",
+      "note": "Al in chat (25 Sept): agrees with Vonk - strict in EVERY region, including the unproven ones (Eastern Cape, KZN, Highveld, North West, Lowveld, Limpopo, West Coast, Karoo). Fewer wrong calls is the right direction; the recorder keeps checking it live. Not radar-only (that radar made Joburg show rain under a clear sky). This is Al's ruling; the page only offered TODAY/NEVER here."
+    },
+    {
+      "key": "fog-wc",
+      "verdict": "YES",
+      "note": "Al in chat (25 Sept): all five regions."
+    },
+    {
+      "key": "fog-gr",
+      "verdict": "YES",
+      "note": "Al in chat (25 Sept): all five regions. Today catches only 7 of 78 real George fog hours; the new rule cuts George false fog by more than half."
+    },
+    {
+      "key": "fog-ec",
+      "verdict": "YES",
+      "note": "Al in chat (25 Sept): all five regions."
+    },
+    {
+      "key": "fog-kzn",
+      "verdict": "YES",
+      "note": "Al in chat (25 Sept): all five regions."
+    },
+    {
+      "key": "fog-lv",
+      "verdict": "YES",
+      "note": "Al in chat (25 Sept): all five regions."
+    },
+    {
+      "key": "wording",
+      "verdict": "OK",
+      "note": "Al in chat (25 Sept): OK - \"Showers nearby.\" / Afrikaans \"Buie naby.\" as written."
+    },
+    {
+      "key": "remembered",
+      "verdict": "NOTED",
+      "note": "Al in chat (25 Sept): \"it has been showing fog a lot when it isnt really that foggy and the rain thing i noticed the last couple of days and it felt off.\" No specific hours given."
+    }
+  ]
+}

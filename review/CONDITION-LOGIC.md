@@ -6,7 +6,7 @@ Written 22 September 2026 for Al, after the Strand incident (`review/condition-i
 
 | | before | after |
 |---|---|---|
-| "Rain's here." (key `rain`) on the hero | 31% chance for the hour was enough (server), or a 50% four-hour maximum (phone) | needs evidence for **this hour**: ≥ 2 sources describing rain, ≥ 60% blended chance **and** ≥ 0.3 mm blended amount — or Tomorrow.io radar > 0.5 mm/h. A probability is "Might rain." at most. |
+| "Rain's here." (key `rain`) on the hero | 31% chance for the hour was enough (server), or a 50% four-hour maximum (phone) | needs evidence for **this hour**: ≥ 2 sources describing rain, ≥ 60% blended chance **and** ≥ 0.3 mm blended amount — or Tomorrow.io radar > 0.5 mm/h. (2026-09-25: ≥ 90 % and ≥ 2 mm, Al's ruling; the old cell now says "Showers nearby.") A probability is "Might rain." at most. |
 | "Windy" | blended **mean** wind ≥ 30 (or ≥ 25 below the rain rungs); gusts never read; sat under a 30% rain chance and under high UV | mean ≥ 25 **or largest gust ≥ 55 km/h** (Open-Meteo, WeatherAPI, Pirate); above might-rain, cloud and UV; below rain that is actually falling |
 | "Might rain." (key `rain-possible`) | ≥ 20% for the hour, then usually demoted to clear by the single-source guard | ≥ 30% for the hour (the line the stats row calls "Possible"); a probability might-rain is not demoted |
 | Phone: hero vs stats | one number worded two ways in two places | one shared word ladder (`rainStatWord`), a test that fails if the hero says rain beside "Unlikely" |
@@ -67,7 +67,8 @@ The hero never sees numbers from the sources directly. Each source's code is map
 | 2 | feels ≤ −5 or temp ≤ 0 | cold | extreme-cold-* | unchanged |
 | 3 | desc has snow/sleet/ice/hail/blizzard/freezing | cold | desc-winter-precip | unchanged |
 | 4 | temp ≥ 35 or feels ≥ 38 | heat | extreme-heat-* | unchanged |
-| **5n** | **rainVotes ≥ 2 AND rainChance ≥ 60 AND precipMm ≥ 0.3** | rain | rain-now | **CHANGED** — was `rainChance ≥ 60 → rain` |
+| **5n** | **rainVotes ≥ 2 AND rainChance ≥ 90 AND precipMm ≥ 2** | rain | rain-now | **CHANGED** — was `rainChance ≥ 60 → rain`; 2026-09-22 ≥ 60 % and ≥ 0.3 mm; **2026-09-25 the strict cell in every region, Al's ruling** (`review/rain-fog-frost-ruled.json`, EVAL §10) |
+| **7.5n** | rainVotes ≥ 2 AND rainChance ≥ 60 AND precipMm ≥ 0.3, not 5n, not wind or high UV | rain-possible | showers-nearby | **NEW 2026-09-25** — the phone words it "Showers nearby." instead of "Might rain." |
 | **6n** | **mean wind ≥ 25, or gust ≥ 55** | wind | sustained-wind / gust-wind | **CHANGED** — was mean ≥ 30 here and ≥ 25 lower down, gusts unread, and both sat under a 30% rain chance and under high UV |
 | 7n | day, UV ≥ 8, cloud < 55 and not overcast, day high ≥ 15 | uv | high-uv-with-temp-gate | unchanged rule, now below wind |
 | **8n** | winner desc has rain/drizzle/shower/precip (but 5n failed) | rain-possible | desc-rain-unconfirmed | **CHANGED** — was `rain` |
@@ -167,7 +168,8 @@ The one wet lean in the daily path is descriptive, not numeric: Open-Meteo's dai
 
 | what | value | where |
 |---|---|---|
-| rain now | ≥ 2 rain votes, ≥ 60%, ≥ 0.3 mm | `RAIN_NOW_MIN_VOTES / _PROB / _MM` |
+| rain now | ≥ 2 rain votes, ≥ 90%, ≥ 2 mm (strict, 2026-09-25) | `RAIN_NOW_MIN_VOTES / _PROB / _MM` |
+| showers nearby | ≥ 2 rain votes, ≥ 60%, ≥ 0.3 mm, not rain now | `SHOWERS_NEARBY_MIN_PROB / _MM` |
 | might rain (now) | ≥ 30% | `RAIN_POSSIBLE_NOW_MIN_PROB` |
 | might rain (daily) | ≥ 20%; rain ≥ 30%; heavy ≥ 60% | deriveCondition daily rungs |
 | radar rain | > 0.5 mm/h current hour; next hour > 0.5 → chance ≥ 60 | handler |

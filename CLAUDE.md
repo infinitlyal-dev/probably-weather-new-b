@@ -94,7 +94,7 @@ Language strings live in `assets/app.js` in the `translations` object.
 - Cloud cover uses modal (most frequent bucket) not weighted average
 - MET Norway todayHigh/todayLow filtered to today's local date only (no tomorrow leakage)
 - When in doubt, trust MET Norway (yr.no) — it is the most reliable source for SA coastal conditions
-- **The hero (now-path) never says "rain" from a probability** (2026-09-22, `review/CONDITION-LOGIC.md`): `rain` needs ≥2 sources describing rain for the current hour AND ≥60% blended chance AND ≥0.3 mm blended amount, or the Tomorrow.io radar override. Otherwise ≥30% is `rain-possible` ("Might rain."). The daily ladder keeps its probability rungs (measured as calibrated).
+- **The hero (now-path) never says "rain" from a probability** (2026-09-22, `review/CONDITION-LOGIC.md`): `rain` needs ≥2 sources describing rain for the current hour AND ≥90% blended chance AND ≥2 mm blended amount (the strict cell, every region — Al's ruling 2026-09-25, `review/rain-fog-frost-ruled.json`), or the Tomorrow.io radar override. The old cell (≥60%, ≥0.3 mm) that strict demotes is `rain-possible` with reason `showers-nearby` ("Showers nearby." / "Buie naby."); otherwise ≥30% is `rain-possible` ("Might rain."). The daily ladder keeps its probability rungs (measured as calibrated).
 - **Wind on the hero reads gusts**: `wind` when blended mean ≥ 25 km/h or the largest source gust (Open-Meteo, WeatherAPI, Pirate) ≥ 55 km/h; wind ranks above might-rain, cloud and UV, below rain that is actually falling. Thresholds derived in `review/accuracy/` — change them there first.
 - `tests/hero-stats-consistency.test.js` fails if the hero can say rain beside a rain stat that says Unlikely, or if a probability alone can reach `rain`.
 

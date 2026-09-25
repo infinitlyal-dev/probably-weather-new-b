@@ -87,9 +87,18 @@ export const PAYLOAD_SCHEMA = 5;
 //   blended probability for this hour, and the blended amount for this hour.
 //   Probability alone was a dry hour 55% of the time; the three together 29%
 //   same-hour and 14% allowing the hour either side, with no extra dry misses.
+//   2026-09-25, Al's ruling (review/rain-fog-frost-ruled.json): the strict cell, in every region —
+//   ≥ 90 % and ≥ 2 mm, votes unchanged at 2. Replayed on 2026 at 13 airports (review/accuracy/v3/rainnow.mjs)
+//   it was right 73–75 % of the time against the old rule's 48–53 %. The replay had no Tomorrow.io radar;
+//   the radar override below is unchanged and remains the other route to "Rain's here".
 export const RAIN_NOW_MIN_VOTES = 2;      // sources whose current description is rain (not "possible")
-export const RAIN_NOW_MIN_PROB  = 60;     // % blended probability for the current hour
-export const RAIN_NOW_MIN_MM    = 0.3;    // mm blended precipitation for the current hour
+export const RAIN_NOW_MIN_PROB  = 90;     // % blended probability for the current hour
+export const RAIN_NOW_MIN_MM    = 2;      // mm blended precipitation for the current hour
+//   "Showers nearby." (Al, 25 Sept): an hour the old rule (≥ 2 votes, ≥ 60 %, ≥ 0.3 mm) called "Rain's here"
+//   and the strict rule does not — rain likely around, not confirmed at this spot. Shown where "Might rain."
+//   would be (key stays rain-possible, reason 'showers-nearby'); wind and UV still outrank it.
+export const SHOWERS_NEARBY_MIN_PROB = 60;
+export const SHOWERS_NEARBY_MIN_MM   = 0.3;
 export const RAIN_POSSIBLE_NOW_MIN_PROB = 30; // % — the same line the stats row words "Possible"
 //   Wind: the models' MEAN wind reads ~40% under the airport anemometer at Cape
 //   Town and Johannesburg; their GUST does not. A forecast gust ≥ 55 km/h had the
@@ -2851,6 +2860,12 @@ export default async function handler(req, res) {
                 region: fogRegion,
               }
             : null,
+          // 2026-09-25: the rain rule this answer was made under (Al's ruling: strict everywhere), so a live
+          // read and the recorder can see it.
+          rainRule: {
+            rainHere: { votes: RAIN_NOW_MIN_VOTES, prob: RAIN_NOW_MIN_PROB, mm: RAIN_NOW_MIN_MM },
+            showersNearby: { prob: SHOWERS_NEARBY_MIN_PROB, mm: SHOWERS_NEARBY_MIN_MM },
+          },
         },
         serverCache: 'miss',
       },
@@ -3352,8 +3367,9 @@ function calcFeelsLike(tempC, windKph, humidity) {
  *
  * TWO LADDERS since 2026-09-22 (condition-incident-20260922):
  *   now: true  — the hero. Rungs 5–12 below are replaced by
- *                5n rain NOW (rainVotes ≥ 2 AND rainChance ≥ 60 AND precipMm ≥ 0.3)
+ *                5n rain NOW (rainVotes ≥ 2 AND rainChance ≥ 90 AND precipMm ≥ 2; strict, 2026-09-25)
  *                6n wind (mean ≥ 25 OR gust ≥ 55)   7n high UV
+ *                7.5n showers nearby → rain-possible (rainVotes ≥ 2 AND ≥ 60 AND ≥ 0.3, not 5n)
  *                8n rain by description → rain-possible
  *                9n rain-possible (rainChance ≥ 30)   10n overcast.
  *                A probability is never "Rain's here."; it is "Might rain."
@@ -3535,9 +3551,11 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
     //     alone was a dry hour 55% of the time (Strand, 22 Sept 2026: 31% →
     //     "Rain's here." over a dry, partly cloudy afternoon). The radar override
     //     in the handler is the other route to 'rain'.
-    if (isNum(rainVotes) && rainVotes >= RAIN_NOW_MIN_VOTES
-        && isNum(rainChance) && rainChance >= RAIN_NOW_MIN_PROB
-        && isNum(precipMm) && precipMm >= RAIN_NOW_MIN_MM) return { key: 'rain', reason: 'rain-now' };
+    //     2026-09-25: the strict cell (≥ 90 %, ≥ 2 mm) in every region, Al's ruling.
+    const rainEvidence = (minProb, minMm) => isNum(rainVotes) && rainVotes >= RAIN_NOW_MIN_VOTES
+        && isNum(rainChance) && rainChance >= minProb
+        && isNum(precipMm) && precipMm >= minMm;
+    if (rainEvidence(RAIN_NOW_MIN_PROB, RAIN_NOW_MIN_MM)) return { key: 'rain', reason: 'rain-now' };
     // 6n. Wind — above UV, might-rain and cloud: a fresh breeze IS the weather.
     //     Gusts count (Al, 2026-09-22): the models' mean wind reads ~40% under the
     //     anemometer at Cape Town and Johannesburg; the gust does not.
@@ -3545,6 +3563,9 @@ function deriveCondition({ desc, rainChance, tempC, feelsLikeC, windKph, uvIndex
     if (isNum(gustKph) && gustKph >= WIND_NOW_GUST_KPH)             return { key: 'wind', reason: 'gust-wind' };
     // 7n. High UV — daytime only, not overcast, not significantly cloudy, not a cold day
     if (highUv) return { key: 'uv', reason: 'high-uv-with-temp-gate' };
+    // 7.5n. Showers nearby — the old rain-now evidence (≥ 60 %, ≥ 0.3 mm) without the strict cell: the
+    //     might-rain key, worded "Showers nearby." by the app (Al, 25 Sept).
+    if (rainEvidence(SHOWERS_NEARBY_MIN_PROB, SHOWERS_NEARBY_MIN_MM)) return { key: 'rain-possible', reason: 'showers-nearby' };
     // 8n. Rain by description without the evidence above is "might rain".
     if (descSaysRain)                           return { key: 'rain-possible', reason: 'desc-rain-unconfirmed' };
     // 9n. Might rain — the same 30% line the stats row words "Possible". Above

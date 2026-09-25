@@ -116,7 +116,9 @@ describe('server now-ladder: rain needs evidence, wind beats might-rain', () => 
     expect(deriveCondition({ ...windy, windKph: WIND_NOW_MEAN_KPH, gustKph: 10 })).toEqual({ key: 'wind', reason: 'sustained-wind' });
     expect(deriveCondition({ ...windy, windKph: 12, gustKph: WIND_NOW_GUST_KPH })).toEqual({ key: 'wind', reason: 'gust-wind' });
     expect(deriveCondition({ ...windy, windKph: 12, gustKph: WIND_NOW_GUST_KPH - 1 }).key).not.toBe('wind');
-    expect(deriveCondition({ ...windy, windKph: 40, gustKph: 70, rainVotes: 3, rainChance: 80, precipMm: 1.2 })).toEqual({ key: 'rain', reason: 'rain-now' });
+    // 2026-09-25: the strict cell (≥ 90 %, ≥ 2 mm) — 80 % and 1.2 mm is now a demoted hour, and wind outranks it.
+    expect(deriveCondition({ ...windy, windKph: 40, gustKph: 70, rainVotes: 3, rainChance: 92, precipMm: 2.4 })).toEqual({ key: 'rain', reason: 'rain-now' });
+    expect(deriveCondition({ ...windy, windKph: 40, gustKph: 70, rainVotes: 3, rainChance: 80, precipMm: 1.2 })).toEqual({ key: 'wind', reason: 'sustained-wind' });
   });
 
   it('the daily ladder is unchanged: a 45% day is a rain day, a 25% day is might-rain', () => {
