@@ -424,6 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
       low: { en: "Low", af: "Laag", zu: "Phansi", xh: "Phantsi", st: "Tlase" },
       moderate: { en: "Moderate", af: "Matig", zu: "Okuphakathi", xh: "Phakathi", st: "Mahareng" },
       high: { en: "High", af: "Hoog", zu: "Phezulu", xh: "Phezulu", st: "Hodimo" },
+      tomorrow: { en: "Tomorrow", af: "Môre", zu: "Kusasa", xh: "Ngomso", st: "Hosane" },
       veryHigh: { en: "Very High", af: "Baie Hoog", zu: "Phezulu Kakhulu", xh: "Phezulu Kakhulu", st: "Hodimo Haholo" },
       // Item 3 (2026-09-14): label for today's peak UV next to the current-hour
       // value. lang-check triage af/zu/xh/st: 0 flagged.
@@ -833,9 +834,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // innerHTML) so the range can never be an injection vector; the literal space
   // between the spans keeps textContent / screen-reader output as
   // "Probably 11° / 17°". .hero-range carries white-space:nowrap in CSS.
-  const setHeroTemp = (el, label, range, nowTemp) => {
+  const setHeroTemp = (el, label, range, nowTemp, when = null) => {
     if (!el) return;
     el.textContent = '';
+    // Launch run (Al's ticked list, "desktop-tomorrow"): at night the range is tomorrow's, and the
+    // desktop postcard says so above it. The phone hero shows the current temperature and hides
+    // this line in CSS, as it hides the range.
+    if (when) { const w = document.createElement('span'); w.className = 'hero-when'; w.textContent = when; el.append(w, ' '); }
     const l = document.createElement('span'); l.className = 'hero-probably'; l.textContent = label;
     const r = document.createElement('span'); r.className = 'hero-range'; r.textContent = range;
     el.append(l, ' ', r);
@@ -2099,7 +2104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timeOfDay === 'night') {
       const tomorrow = norm.daily?.[1];
       if (tomorrow?.lowC != null && tomorrow?.highC != null) {
-        return { low: tomorrow.lowC, high: tomorrow.highC, format: 'range' };
+        return { low: tomorrow.lowC, high: tomorrow.highC, format: 'range', tomorrow: true };
       }
       return fallback;
     }
@@ -3015,7 +3020,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Forward-looking: dawn = current → today's high, dusk = current → tonight's low,
     // night = tomorrow's range, day = today's low/high.
     const timeOfDay = getTimeOfDay();
-    const { low, high, format } = getHeroRange(norm, timeOfDay);
+    const { low, high, format, tomorrow: rangeIsTomorrow } = getHeroRange(norm, timeOfDay);
     debugLog(`[Hero range] timeOfDay=${timeOfDay} format=${format} low=${low} high=${high}`);
     const probablyLabel = t('weather', 'probably');
     const hiStr = isNum(high) ? formatTemp(high) : '--°';
@@ -3031,7 +3036,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       rangeText = `${loStr} / ${hiStr}`;
     }
-    setHeroTemp(tempEl, probablyLabel, rangeText, isNum(currentTemp) ? formatTemp(currentTemp) : null);
+    setHeroTemp(tempEl, probablyLabel, rangeText, isNum(currentTemp) ? formatTemp(currentTemp) : null, rangeIsTomorrow ? t('weather', 'tomorrow') : null);
     const hiLoEl = $('#tempHiLo');
     if (hiLoEl) {
       hiLoEl.textContent = '';

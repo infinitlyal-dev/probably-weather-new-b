@@ -145,7 +145,8 @@ describe('mobile facelift — contained hero (M1)', () => {
 
   it('shows the current temperature on the mobile hero and the range above it', () => {
     // Al's ruling 2026-08-06 supersedes BUG-3's range hero on the mobile home ONLY.
-    expect(js).toMatch(/const setHeroTemp = \(el, label, range, nowTemp\) =>/);
+    // `when` is the desktop-only "Tomorrow" line over the night range (launch run, desktop-tomorrow).
+    expect(js).toMatch(/const setHeroTemp = \(el, label, range, nowTemp, when = null\) =>/);
     expect(faceliftBlock()).toMatch(/\.temp \.hero-range\s*{\s*display:\s*none;\s*}/);
     expect(faceliftBlock()).toMatch(/@media \(min-width: 769px\)[\s\S]*\.temp \.hero-now\s*{\s*display:\s*none;\s*}/);
     // Laag / Hoog returns as its own small line, no longer a duplicate.

@@ -6267,3 +6267,16 @@ body.ads-slots #week-screen .daily-cards > .daily-header { flex: none !important
 }
 .retry-weather:focus-visible { outline: 2px solid var(--ink, #fff); outline-offset: 3px; }
 
+/* desktop-tomorrow: the line over tomorrow's range; the phone hero shows the current temperature
+   and hides it, as it hides the range. */
+.temp .hero-when {
+  display: block;
+  font-size: 0.3em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 0.25em;
+}
+@media (max-width: 768px) { .temp .hero-when { display: none; } }
+
