@@ -1,0 +1,729 @@
+{
+ "rule": {
+  "rainHere": {
+   "votes": 2,
+   "prob": 90,
+   "mm": 2
+  },
+  "showersNearby": {
+   "prob": 60,
+   "mm": 0.3
+  }
+ },
+ "test": {
+  "from": "2026-01-01",
+  "to": "2026-09-24"
+ },
+ "pooled": {
+  "test": {
+   "A": {
+    "airportHours": 78338,
+    "rainHours": 3702,
+    "nearby": {
+     "hours": 2948,
+     "rained": 1261,
+     "rainedOrNear": 1753
+    },
+    "rain": {
+     "hours": 372,
+     "rained": 272,
+     "rainedOrNear": 312
+    },
+    "maybe": {
+     "hours": 6436,
+     "rained": 1016,
+     "rainedOrNear": 1878
+    }
+   },
+   "B": {
+    "airportHours": 78338,
+    "rainHours": 3702,
+    "nearby": {
+     "hours": 1586,
+     "rained": 718,
+     "rainedOrNear": 989
+    },
+    "rain": {
+     "hours": 482,
+     "rained": 353,
+     "rainedOrNear": 398
+    },
+    "maybe": {
+     "hours": 8250,
+     "rained": 1543,
+     "rainedOrNear": 2668
+    }
+   },
+   "C": {
+    "airportHours": 78338,
+    "rainHours": 3702,
+    "nearby": {
+     "hours": 2532,
+     "rained": 1134,
+     "rainedOrNear": 1573
+    },
+    "rain": {
+     "hours": 410,
+     "rained": 307,
+     "rainedOrNear": 342
+    },
+    "maybe": {
+     "hours": 6166,
+     "rained": 1060,
+     "rainedOrNear": 1909
+    }
+   }
+  },
+  "both": {
+   "A": {
+    "airportHours": 173660,
+    "rainHours": 8177,
+    "nearby": {
+     "hours": 6276,
+     "rained": 2706,
+     "rainedOrNear": 3847
+    },
+    "rain": {
+     "hours": 577,
+     "rained": 391,
+     "rainedOrNear": 468
+    },
+    "maybe": {
+     "hours": 14961,
+     "rained": 2519,
+     "rainedOrNear": 4633
+    }
+   },
+   "B": {
+    "airportHours": 173660,
+    "rainHours": 8177,
+    "nearby": {
+     "hours": 3410,
+     "rained": 1522,
+     "rainedOrNear": 2173
+    },
+    "rain": {
+     "hours": 793,
+     "rained": 547,
+     "rainedOrNear": 642
+    },
+    "maybe": {
+     "hours": 18750,
+     "rained": 3681,
+     "rainedOrNear": 6383
+    }
+   },
+   "C": {
+    "airportHours": 173660,
+    "rainHours": 8177,
+    "nearby": {
+     "hours": 5479,
+     "rained": 2426,
+     "rainedOrNear": 3458
+    },
+    "rain": {
+     "hours": 667,
+     "rained": 474,
+     "rainedOrNear": 546
+    },
+    "maybe": {
+     "hours": 14200,
+     "rained": 2609,
+     "rainedOrNear": 4689
+    }
+   }
+  }
+ },
+ "byRegion": {
+  "Eastern Cape": {
+   "A": {
+    "airportHours": 16638,
+    "rainHours": 1019,
+    "nearby": {
+     "hours": 838,
+     "rained": 358,
+     "rainedOrNear": 480
+    },
+    "rain": {
+     "hours": 110,
+     "rained": 65,
+     "rainedOrNear": 78
+    },
+    "maybe": {
+     "hours": 1552,
+     "rained": 283,
+     "rainedOrNear": 496
+    }
+   },
+   "B": {
+    "airportHours": 16638,
+    "rainHours": 1019,
+    "nearby": {
+     "hours": 499,
+     "rained": 221,
+     "rainedOrNear": 294
+    },
+    "rain": {
+     "hours": 118,
+     "rained": 73,
+     "rainedOrNear": 84
+    },
+    "maybe": {
+     "hours": 1970,
+     "rained": 414,
+     "rainedOrNear": 685
+    }
+   },
+   "C": {
+    "airportHours": 16638,
+    "rainHours": 1019,
+    "nearby": {
+     "hours": 751,
+     "rained": 319,
+     "rainedOrNear": 425
+    },
+    "rain": {
+     "hours": 101,
+     "rained": 64,
+     "rainedOrNear": 73
+    },
+    "maybe": {
+     "hours": 1480,
+     "rained": 302,
+     "rainedOrNear": 516
+    }
+   }
+  },
+  "Free State": {
+   "A": {
+    "airportHours": 6028,
+    "rainHours": 217,
+    "nearby": {
+     "hours": 192,
+     "rained": 56,
+     "rainedOrNear": 87
+    },
+    "rain": {
+     "hours": 25,
+     "rained": 19,
+     "rainedOrNear": 22
+    },
+    "maybe": {
+     "hours": 433,
+     "rained": 42,
+     "rainedOrNear": 98
+    }
+   },
+   "B": {
+    "airportHours": 6028,
+    "rainHours": 217,
+    "nearby": {
+     "hours": 119,
+     "rained": 41,
+     "rainedOrNear": 60
+    },
+    "rain": {
+     "hours": 42,
+     "rained": 27,
+     "rainedOrNear": 31
+    },
+    "maybe": {
+     "hours": 549,
+     "rained": 64,
+     "rainedOrNear": 140
+    }
+   },
+   "C": {
+    "airportHours": 6028,
+    "rainHours": 217,
+    "nearby": {
+     "hours": 169,
+     "rained": 55,
+     "rainedOrNear": 83
+    },
+    "rain": {
+     "hours": 33,
+     "rained": 22,
+     "rainedOrNear": 24
+    },
+    "maybe": {
+     "hours": 395,
+     "rained": 40,
+     "rainedOrNear": 93
+    }
+   }
+  },
+  "Garden Route": {
+   "A": {
+    "airportHours": 6317,
+    "rainHours": 659,
+    "nearby": {
+     "hours": 323,
+     "rained": 235,
+     "rainedOrNear": 290
+    },
+    "rain": {
+     "hours": 80,
+     "rained": 78,
+     "rainedOrNear": 80
+    },
+    "maybe": {
+     "hours": 592,
+     "rained": 158,
+     "rainedOrNear": 272
+    }
+   },
+   "B": {
+    "airportHours": 6317,
+    "rainHours": 659,
+    "nearby": {
+     "hours": 209,
+     "rained": 149,
+     "rainedOrNear": 185
+    },
+    "rain": {
+     "hours": 93,
+     "rained": 91,
+     "rainedOrNear": 93
+    },
+    "maybe": {
+     "hours": 755,
+     "rained": 241,
+     "rainedOrNear": 378
+    }
+   },
+   "C": {
+    "airportHours": 6317,
+    "rainHours": 659,
+    "nearby": {
+     "hours": 306,
+     "rained": 218,
+     "rainedOrNear": 270
+    },
+    "rain": {
+     "hours": 85,
+     "rained": 81,
+     "rainedOrNear": 84
+    },
+    "maybe": {
+     "hours": 581,
+     "rained": 165,
+     "rainedOrNear": 275
+    }
+   }
+  },
+  "Highveld": {
+   "A": {
+    "airportHours": 6266,
+    "rainHours": 351,
+    "nearby": {
+     "hours": 251,
+     "rained": 135,
+     "rainedOrNear": 188
+    },
+    "rain": {
+     "hours": 17,
+     "rained": 11,
+     "rainedOrNear": 15
+    },
+    "maybe": {
+     "hours": 549,
+     "rained": 122,
+     "rainedOrNear": 218
+    }
+   },
+   "B": {
+    "airportHours": 6266,
+    "rainHours": 351,
+    "nearby": {
+     "hours": 127,
+     "rained": 79,
+     "rainedOrNear": 107
+    },
+    "rain": {
+     "hours": 21,
+     "rained": 16,
+     "rainedOrNear": 21
+    },
+    "maybe": {
+     "hours": 713,
+     "rained": 178,
+     "rainedOrNear": 303
+    }
+   },
+   "C": {
+    "airportHours": 6266,
+    "rainHours": 351,
+    "nearby": {
+     "hours": 210,
+     "rained": 116,
+     "rainedOrNear": 171
+    },
+    "rain": {
+     "hours": 18,
+     "rained": 16,
+     "rainedOrNear": 17
+    },
+    "maybe": {
+     "hours": 536,
+     "rained": 119,
+     "rainedOrNear": 208
+    }
+   }
+  },
+  "KZN coast": {
+   "A": {
+    "airportHours": 6367,
+    "rainHours": 423,
+    "nearby": {
+     "hours": 201,
+     "rained": 131,
+     "rainedOrNear": 161
+    },
+    "rain": {
+     "hours": 16,
+     "rained": 16,
+     "rainedOrNear": 16
+    },
+    "maybe": {
+     "hours": 607,
+     "rained": 136,
+     "rainedOrNear": 223
+    }
+   },
+   "B": {
+    "airportHours": 6367,
+    "rainHours": 423,
+    "nearby": {
+     "hours": 82,
+     "rained": 62,
+     "rainedOrNear": 73
+    },
+    "rain": {
+     "hours": 37,
+     "rained": 34,
+     "rainedOrNear": 34
+    },
+    "maybe": {
+     "hours": 786,
+     "rained": 200,
+     "rainedOrNear": 315
+    }
+   },
+   "C": {
+    "airportHours": 6367,
+    "rainHours": 423,
+    "nearby": {
+     "hours": 186,
+     "rained": 127,
+     "rainedOrNear": 155
+    },
+    "rain": {
+     "hours": 27,
+     "rained": 26,
+     "rainedOrNear": 26
+    },
+    "maybe": {
+     "hours": 584,
+     "rained": 135,
+     "rainedOrNear": 219
+    }
+   }
+  },
+  "Limpopo": {
+   "A": {
+    "airportHours": 6197,
+    "rainHours": 128,
+    "nearby": {
+     "hours": 215,
+     "rained": 46,
+     "rainedOrNear": 80
+    },
+    "rain": {
+     "hours": 8,
+     "rained": 1,
+     "rainedOrNear": 2
+    },
+    "maybe": {
+     "hours": 500,
+     "rained": 48,
+     "rainedOrNear": 104
+    }
+   },
+   "B": {
+    "airportHours": 6197,
+    "rainHours": 128,
+    "nearby": {
+     "hours": 103,
+     "rained": 23,
+     "rainedOrNear": 43
+    },
+    "rain": {
+     "hours": 12,
+     "rained": 1,
+     "rainedOrNear": 1
+    },
+    "maybe": {
+     "hours": 629,
+     "rained": 68,
+     "rainedOrNear": 136
+    }
+   },
+   "C": {
+    "airportHours": 6197,
+    "rainHours": 128,
+    "nearby": {
+     "hours": 167,
+     "rained": 41,
+     "rainedOrNear": 70
+    },
+    "rain": {
+     "hours": 11,
+     "rained": 0,
+     "rainedOrNear": 0
+    },
+    "maybe": {
+     "hours": 467,
+     "rained": 45,
+     "rainedOrNear": 96
+    }
+   }
+  },
+  "Lowveld": {
+   "A": {
+    "airportHours": 6176,
+    "rainHours": 245,
+    "nearby": {
+     "hours": 408,
+     "rained": 111,
+     "rainedOrNear": 181
+    },
+    "rain": {
+     "hours": 25,
+     "rained": 9,
+     "rainedOrNear": 14
+    },
+    "maybe": {
+     "hours": 829,
+     "rained": 73,
+     "rainedOrNear": 147
+    }
+   },
+   "B": {
+    "airportHours": 6176,
+    "rainHours": 245,
+    "nearby": {
+     "hours": 196,
+     "rained": 46,
+     "rainedOrNear": 85
+    },
+    "rain": {
+     "hours": 44,
+     "rained": 23,
+     "rainedOrNear": 29
+    },
+    "maybe": {
+     "hours": 1075,
+     "rained": 123,
+     "rainedOrNear": 227
+    }
+   },
+   "C": {
+    "airportHours": 6176,
+    "rainHours": 245,
+    "nearby": {
+     "hours": 337,
+     "rained": 93,
+     "rainedOrNear": 155
+    },
+    "rain": {
+     "hours": 32,
+     "rained": 19,
+     "rainedOrNear": 24
+    },
+    "maybe": {
+     "hours": 810,
+     "rained": 71,
+     "rainedOrNear": 144
+    }
+   }
+  },
+  "North West": {
+   "A": {
+    "airportHours": 6210,
+    "rainHours": 85,
+    "nearby": {
+     "hours": 163,
+     "rained": 41,
+     "rainedOrNear": 65
+    },
+    "rain": {
+     "hours": 5,
+     "rained": 1,
+     "rainedOrNear": 2
+    },
+    "maybe": {
+     "hours": 410,
+     "rained": 25,
+     "rainedOrNear": 53
+    }
+   },
+   "B": {
+    "airportHours": 6210,
+    "rainHours": 85,
+    "nearby": {
+     "hours": 74,
+     "rained": 15,
+     "rainedOrNear": 23
+    },
+    "rain": {
+     "hours": 11,
+     "rained": 4,
+     "rainedOrNear": 7
+    },
+    "maybe": {
+     "hours": 539,
+     "rained": 50,
+     "rainedOrNear": 92
+    }
+   },
+   "C": {
+    "airportHours": 6210,
+    "rainHours": 85,
+    "nearby": {
+     "hours": 134,
+     "rained": 34,
+     "rainedOrNear": 55
+    },
+    "rain": {
+     "hours": 9,
+     "rained": 4,
+     "rainedOrNear": 7
+    },
+    "maybe": {
+     "hours": 365,
+     "rained": 25,
+     "rainedOrNear": 50
+    }
+   }
+  },
+  "Northern Cape": {
+   "A": {
+    "airportHours": 11770,
+    "rainHours": 254,
+    "nearby": {
+     "hours": 229,
+     "rained": 76,
+     "rainedOrNear": 117
+    },
+    "rain": {
+     "hours": 45,
+     "rained": 35,
+     "rainedOrNear": 42
+    },
+    "maybe": {
+     "hours": 546,
+     "rained": 42,
+     "rainedOrNear": 107
+    }
+   },
+   "B": {
+    "airportHours": 11770,
+    "rainHours": 254,
+    "nearby": {
+     "hours": 116,
+     "rained": 48,
+     "rainedOrNear": 71
+    },
+    "rain": {
+     "hours": 51,
+     "rained": 36,
+     "rainedOrNear": 45
+    },
+    "maybe": {
+     "hours": 718,
+     "rained": 84,
+     "rainedOrNear": 175
+    }
+   },
+   "C": {
+    "airportHours": 11770,
+    "rainHours": 254,
+    "nearby": {
+     "hours": 163,
+     "rained": 63,
+     "rainedOrNear": 92
+    },
+    "rain": {
+     "hours": 51,
+     "rained": 36,
+     "rainedOrNear": 44
+    },
+    "maybe": {
+     "hours": 511,
+     "rained": 52,
+     "rainedOrNear": 121
+    }
+   }
+  },
+  "Western Cape": {
+   "A": {
+    "airportHours": 6369,
+    "rainHours": 321,
+    "nearby": {
+     "hours": 128,
+     "rained": 72,
+     "rainedOrNear": 104
+    },
+    "rain": {
+     "hours": 41,
+     "rained": 37,
+     "rainedOrNear": 41
+    },
+    "maybe": {
+     "hours": 418,
+     "rained": 87,
+     "rainedOrNear": 160
+    }
+   },
+   "B": {
+    "airportHours": 6369,
+    "rainHours": 321,
+    "nearby": {
+     "hours": 61,
+     "rained": 34,
+     "rainedOrNear": 48
+    },
+    "rain": {
+     "hours": 53,
+     "rained": 48,
+     "rainedOrNear": 53
+    },
+    "maybe": {
+     "hours": 516,
+     "rained": 121,
+     "rainedOrNear": 217
+    }
+   },
+   "C": {
+    "airportHours": 6369,
+    "rainHours": 321,
+    "nearby": {
+     "hours": 109,
+     "rained": 68,
+     "rainedOrNear": 97
+    },
+    "rain": {
+     "hours": 43,
+     "rained": 39,
+     "rainedOrNear": 43
+    },
+    "maybe": {
+     "hours": 437,
+     "rained": 106,
+     "rainedOrNear": 187
+    }
+   }
+  }
+ }
+}
