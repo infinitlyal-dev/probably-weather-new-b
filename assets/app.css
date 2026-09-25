@@ -6235,3 +6235,19 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
 }
 body.ads-slots #week-screen .daily-cards > .daily-header { flex: none !important; }
 
+/* day-late: tomorrow's name and date between tonight's rows and tomorrow morning's. */
+.hourly-row.hourly-divider {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.85;
+  padding: 12px 8px 6px;
+  margin-bottom: 4px;
+  background: transparent !important;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+

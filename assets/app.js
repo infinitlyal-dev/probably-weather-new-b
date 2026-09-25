@@ -3541,9 +3541,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const hourly = Array.isArray(norm.hourly) ? norm.hourly : [];
     if (dayIndex === 0) {
-      // Today: now → end of today only. Hourly slice is [localHour..24).
+      // Today: now → end of today. Hourly slice is [localHour..24).
       const startHour = Number.isInteger(norm.localHour) ? norm.localHour : 0;
-      renderDayDetailHourly(content, hourly.slice(startHour, 24), startHour);
+      const todayRows = hourly.slice(startHour, 24);
+      renderDayDetailHourly(content, todayRows, startHour);
+      // Launch run (Al's ticked list, "day-late"): late at night today has an hour or two left —
+      // one row and an empty screen. Below six rows it carries on through tomorrow morning
+      // (to 06:00), under tomorrow's name and date.
+      const DAY_LATE_MIN_ROWS = 6;
+      const lateRows = hourly.slice(24, 31);
+      if (todayRows.length < DAY_LATE_MIN_ROWS && lateRows.length) {
+        const next = new Date(date.getTime() + 86400000);
+        const divider = document.createElement('div');
+        divider.className = 'hourly-row hourly-divider';
+        divider.textContent = `${getTranslatedDayName(next.getUTCDay())} ${String(next.getUTCDate()).padStart(2, '0')}/${String(next.getUTCMonth() + 1).padStart(2, '0')}`;
+        content.appendChild(divider);
+        renderDayDetailHourly(content, lateRows, 0, { header: false });
+      }
     } else if (dayIndex === 1) {
       // Tomorrow: full day, hourly[24..48).
       renderDayDetailHourly(content, hourly.slice(24, 48), 0);
@@ -3553,11 +3567,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     debugLog(`[Day detail] dayIndex=${dayIndex} hourly=${dayIndex <= 1} day=${day.conditionLabel}`);
   }
-  function renderDayDetailHourly(container, hourlySlice, startHour) {
-    const header = document.createElement('div');
-    header.classList.add('hourly-row', 'hourly-header');
-    header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
-    container.appendChild(header);
+  function renderDayDetailHourly(container, hourlySlice, startHour, { header: withHeader = true } = {}) {
+    if (withHeader) {
+      const header = document.createElement('div');
+      header.classList.add('hourly-row', 'hourly-header');
+      header.innerHTML = `<span class="h-time">${t('weather', 'time') || 'Time'}</span><span class="h-icon"></span><span class="h-temp">${t('weather', 'temp') || 'Temp'}</span><span class="h-rain">${t('weather', 'rain') || 'Rain'}</span><span class="h-mm">${precipUnitLabel()}</span><span class="h-wind">${t('weather', 'wind') || 'Wind'}</span><span class="h-uv">${t('weather', 'uv') || 'UV'}</span>`;
+      container.appendChild(header);
+    }
     const currentWind = window.__PW_LAST_NORM?.windKph || null;
     // Bug 2b: solar day/night for day-detail hourly icons (see renderHourly).
     const sunriseMin = parseLocalIsoMinutes(window.__PW_LAST_NORM?.sunrise);
