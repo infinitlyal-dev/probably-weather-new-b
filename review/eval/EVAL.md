@@ -687,3 +687,71 @@ users (`c2c3f41` fog's strict gates in five regions, `eeb530b` the inland table)
 (`bfc4582` the recorder, `2675a95`, `e75c240`, `3b90549`, `9e2188b`, `0143a7a`, `845c84f`, `51072c3` and this section).
 **38 change what users get.** The fog change goes out region by region on Al's word: where he keeps today's fog,
 `FOG_STRICT_REGIONS` loses that region before the push.
+
+## 10. Al's rain and fog rulings, built and shipped (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 25 Sept 2026)
+
+Al ruled in chat (`review/rain-fog-frost-ruled.json`, copied from his Downloads; no page this time): strict "Rain's
+here" in **every** region, strict fog in all five offered regions, "Showers nearby." / "Buie naby." OK, and his note
+kept on record: *"it has been showing fog a lot when it isnt really that foggy and the rain thing i noticed the last
+couple of days and it felt off."*
+
+### 10.1 "Rain's here" — strict everywhere (`400929e`)
+
+Built exactly as replayed in `review/accuracy/v3/rainnow.mjs`: two sources describing rain (not tuned), the hour's
+blended chance ≥ 90 % and blended amount ≥ 2 mm (`RAIN_NOW_MIN_PROB` 60 → 90, `RAIN_NOW_MIN_MM` 0.3 → 2). **Radar:**
+the replay had no Tomorrow.io radar, so the radar override (> 0.5 mm/h now) is unchanged and remains the other route
+to "Rain's here" — nothing radar-only was added. Caveat (Fable): the replay counts one vote per model family and
+production one per source, so live "Rain's here" fires at least as often as replayed; the 73–75 % is an upper bound.
+`meta.conditionConfidence.rainRule` names the rule in every answer. Answers cached under the old rule re-derive
+differently and are refetched (pinned).
+
+### 10.2 "Showers nearby." (`400929e`, counted in `9d77d11`)
+
+An hour the old rule (≥ 2 sources, ≥ 60 %, ≥ 0.3 mm) called "Rain's here" and strict does not: the might-rain key
+with reason `showers-nearby` (rung 7.5n — wind and high UV still outrank it, as in the replay), worded "Showers
+nearby." / "Buie naby." / "Izihlambi zemvula ziseduze." / "Iimvula zikufutshane." / "Dipula di haufi." (zu/xh/st
+through the translation skills, lang-check triage 0 flagged — `review/showers-nearby/`). Not when the phone's own
+window says the rain is later. The words sit in `T.weather`, not the headline bank, so share conditions are untouched:
+the share card still says "Might rain." for such an hour (Fable: acceptable).
+
+From the archive (`review/accuracy/v3/showers.mjs`, 13 airports, 2026 to 24 Sept, three source guesses): shown in
+**20–38 of every 1,000 hours** (about 14–26 hours a month at one airport); it rained at the airport in that same hour
+**43–45 %** of the time, and rain or showers were in sight within the hour either side **59–62 %**. For comparison:
+plain "Might rain." hours rained 16–19 %; strict "Rain's here" was right 73–75 %. Best on the Garden Route (rained 71–73 %),
+KZN coast (65–76 %) and Western Cape (56–62 %); weakest in Limpopo (21–25 %), the Lowveld (23–28 %) and North West (20–25 %).
+
+### 10.3 Fog — five regions, confirmed
+
+`c2c3f41` already switched the strict gates on in exactly Western Cape, Garden Route, Eastern Cape, KZN coast and
+Lowveld (`FOG_STRICT_REGIONS`, a plain constant — nothing behind a switch). A test now ties the list to Al's ruling.
+
+### 10.4 Al's note — the recorder checks it (`7525fd2`)
+
+`review/accuracy/live/score.mjs` gains a per-release section: fog shown vs fog or mist at the airport, "Rain's here"
+and "Showers nearby." vs rain that hour or the next (only hours the airport can judge), Strand and Cape Town city
+counted. Before this release (ec7ae52 and 84fc691 together): fog shown in 18 judgeable airport-hours, fog or mist at
+the airport in 3.
+
+### 10.5 Fable, gates
+
+| Fable call | tokens | verdict |
+|---|---:|---|
+| the diff | 158,457 | SHIP WITH FIXES — the scorer counted hours no airport could judge (MED); "Showers nearby." beside a "Later" rain stat on an answer read an hour on; the replay's family-vote caveat; the share card (acceptable); a cache-refresh test |
+| the fixes | 91,197 | CONFIRMED |
+| **total** | **249,654** | cap 300,000 |
+
+Gates on the finished tree (`7525fd2`): serial **147 files / 21,274 tests**, build, image budget, fold 80/80,
+desktop, bespoke, drift guard, rotation, month (+ control failing as it must), precision table `--check`, gate
+shots, and `review/showers-nearby/render-check.mjs` on the build — the hero's words for showers-nearby, might-rain
+and strict rain in all five languages, **15/15**.
+
+### 10.6 Shipped
+
+`git push origin main` 84fc691 → **`7525fd2`** (16:00 UTC): the 68 waiting commits plus this run's three.
+`/api/version` → `7525fd2…`. Live smoke (`scripts/live-smoke.mjs`, phone 375×812 and desktop 1440×900, all five
+languages; home, hourly, weekly, search, settings, share, share card): **10/10 legs, 0 console errors, 0 bad
+responses**. Live rules (`meta.conditionConfidence`, fresh answers): Strand — rainRule strict, fog strict / Western
+Cape; Johannesburg airport — rainRule strict, fog standard / Highveld; Bloemfontein airport — rainRule strict, fog
+standard / Free State; each live selector re-derives to the served base under the committed code. GitHub "Launch
+alert" run by hand (`gh workflow run`): success, "healthy at 2026-09-25 16:05 UTC"; the workflow is active on
+`main` (:07 and :37 each hour); no open [PW alert] issue. No rollback needed.
