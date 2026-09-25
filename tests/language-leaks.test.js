@@ -25,6 +25,11 @@ const html = () => readFileSync(new URL('../index.html', import.meta.url), 'utf8
 const LANGS = ['en', 'af', 'zu', 'xh', 'st'];
 const NON_EN = ['af', 'zu', 'xh', 'st'];
 
+// Launch run (Al's ruling "place-language", 2026-09-25): the province and the country follow
+// the reader's language; the town never changes.
+const WESTERN_CAPE = { en: 'Western Cape', af: 'Wes-Kaap', zu: 'iNtshonalanga Kapa', xh: 'iNtshona Koloni', st: 'Kapa Bophirima' };
+const SOUTH_AFRICA = { en: 'South Africa', af: 'Suid-Afrika', zu: 'iNingizimu Afrika', xh: 'uMzantsi Afrika', st: 'Afrika Borwa' };
+
 // ---------------------------------------------------------------------------
 // Harness — the real T catalogue and the real functions that read it
 // ---------------------------------------------------------------------------
@@ -417,6 +422,17 @@ function sliceFunction(name) {
   const end = src.indexOf('\n  }', start) + '\n  }'.length;
   return src.slice(start, end);
 }
+
+// displayPlaceName with the real province/country names it carries: PLACE_PARTS,
+// localizePlaceParts and displayPlaceName sit together in assets/app.js.
+function placeNameSrc() {
+  const src = app();
+  const start = src.indexOf('  const PLACE_PARTS = {');
+  const fnStart = src.indexOf('  function displayPlaceName(', start);
+  if (start < 0 || fnStart < 0) throw new Error('place-name source not found');
+  return src.slice(start, src.indexOf('\n  }', fnStart) + '\n  }'.length);
+}
+const loadPlaceFn = (name, t, settings) => loadWithEnv(name, placeNameSrc(), { t, settings });
 
 function loadFn(name, signature, deps) {
   const src = app();
@@ -1065,7 +1081,7 @@ describe('language leaks — switching language updates content already rendered
       // Hero surfaces for the loading / error states.
       showLoader: noop, hideSplash: noop,
       // The real placeholder translator, over the live settings.
-      displayPlaceName: loadWithEnv('displayPlaceName', sliceFunction('displayPlaceName'), { t }),
+      displayPlaceName: loadPlaceFn('displayPlaceName', t, settings),
       safeText: (el, txt) => { if (el) el.textContent = txt ?? '--'; },
       locationEl: $('#location'), headlineEl: $('#headline'),
       tempEl: $('#temp'), descriptionEl: $('#description'),
@@ -1369,7 +1385,8 @@ describe('language leaks — switching language updates content already rendered
     a.renderLoading('Strand, Western Cape', null);
     a.applyLanguageSelection('af');
     await settle();
-    expect(a.reg.get('#location').textContent).toBe('Strand, Western Cape');
+    // The town is never translated; the province follows the language (place-language).
+    expect(a.reg.get('#location').textContent).toBe('Strand, Wes-Kaap');
   });
 
   // Astra round 6: during GPS loading the heading showed the literal
@@ -1416,7 +1433,7 @@ describe('language leaks — switching language updates content already rendered
         a.renderLoading('Strand, Western Cape', null);
         a.applyLanguageSelection(lang);
         await settle();
-        expect(a.reg.get('#location').textContent, `${lang} real name`).toBe('Strand, Western Cape');
+        expect(a.reg.get('#location').textContent, `${lang} real name`).toBe(`Strand, ${WESTERN_CAPE[lang]}`);
       }
     });
 
@@ -1435,7 +1452,7 @@ describe('language leaks — switching language updates content already rendered
     it('the hourly subtitle translates a placeholder and keeps an empty one empty', () => {
       for (const lang of NON_EN) {
         const t = (c, k) => T[c]?.[k]?.[lang] || T[c]?.[k]?.en || k;
-        const displayPlaceName = loadWithEnv('displayPlaceName', sliceFunction('displayPlaceName'), { t });
+        const displayPlaceName = loadPlaceFn('displayPlaceName', t, { lang });
         const el = fakeEl();
         const run = (captured) => {
           const fn = loadWithEnv('updateHourlySubtitle', sliceFunction('updateHourlySubtitle'), {
@@ -1460,18 +1477,19 @@ describe('language leaks — switching language updates content already rendered
     it('a search result named "Unknown" upstream is localized, and keeps its country', () => {
       for (const lang of LANGS) {
         const t = (c, k) => T[c]?.[k]?.[lang] || T[c]?.[k]?.en || k;
-        const displayPlaceName = loadWithEnv('displayPlaceName', sliceFunction('displayPlaceName'), { t });
-        const format = loadWithEnv('formatSearchResult', sliceFunction('formatSearchResult'), { t, displayPlaceName });
+        const displayPlaceName = loadPlaceFn('displayPlaceName', t, { lang });
+        const localizePlaceParts = loadPlaceFn('localizePlaceParts', t, { lang });
+        const format = loadWithEnv('formatSearchResult', sliceFunction('formatSearchResult'), { t, displayPlaceName, localizePlaceParts });
         const raw = loadWithEnv('searchResultName', sliceFunction('searchResultName'), { t });
 
         // The server's placeholder, with and without a country.
         expect(format({ name: 'Unknown', address: { country: 'South Africa' } }))
-          .toBe(`${T.misc.unknownPlace[lang]}, South Africa`);
+          .toBe(`${T.misc.unknownPlace[lang]}, ${SOUTH_AFRICA[lang]}`);
         expect(format({ name: 'Unknown', address: {} })).toBe(T.misc.unknownPlace[lang]);
         // A nameless feature with no fields at all.
         expect(format({ address: {} })).toBe(T.misc.unknownPlace[lang]);
         // A real name is never touched.
-        expect(format({ name: 'Strand', address: { country: 'South Africa' } })).toBe('Strand, South Africa');
+        expect(format({ name: 'Strand', address: { country: 'South Africa' } })).toBe(`Strand, ${SOUTH_AFRICA[lang]}`);
         if (lang !== 'en') {
           expect(format({ name: 'Unknown', address: { country: 'South Africa' } })).not.toContain('Unknown');
         }
@@ -1491,7 +1509,7 @@ describe('language leaks — switching language updates content already rendered
     it('the helper itself only touches recognised placeholders', () => {
       for (const lang of LANGS) {
         const t = (c, k) => T[c]?.[k]?.[lang] || T[c]?.[k]?.en || k;
-        const displayPlaceName = loadWithEnv('displayPlaceName', sliceFunction('displayPlaceName'), { t });
+        const displayPlaceName = loadPlaceFn('displayPlaceName', t, { lang });
         expect(displayPlaceName('My Location')).toBe(T.misc.myLocation[lang]);
         expect(displayPlaceName('my location')).toBe(T.misc.myLocation[lang]);
         expect(displayPlaceName('Unknown')).toBe(T.misc.unknownPlace[lang]);
@@ -1593,7 +1611,7 @@ describe('language leaks — switching language updates content already rendered
     await a.loadAndRender({ name: 'Strand, Western Cape', lat: -34.1, lon: 18.8 });
     a.applyLanguageSelection('af');
     await settle();
-    expect(a.reg.get('#location').textContent).toBe('Strand, Western Cape');
+    expect(a.reg.get('#location').textContent).toBe('Strand, Wes-Kaap');
     expect(a.reg.get('#headline').textContent).toBe('');
   });
 

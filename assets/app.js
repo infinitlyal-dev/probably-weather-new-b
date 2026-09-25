@@ -923,12 +923,30 @@ document.addEventListener("DOMContentLoaded", () => {
   // two directions: first-open passes the literal, and a favourite stored
   // before its reverse-geocode landed carries it too. A REAL place name is
   // never touched: Strand is Strand in all five languages.
+  // Launch run (Al's ticked list, "place-language"): the geocoder names the province and the
+  // country in English; they show in the reader's language. Town names stay as given. The
+  // isiZulu, isiXhosa and Sesotho names passed lang-check (review/launch/lang-check/).
+  // Gauteng, Limpopo and Mpumalanga are the same word in every language.
+  const PLACE_PARTS = {
+    'Western Cape': { af: 'Wes-Kaap', zu: 'iNtshonalanga Kapa', xh: 'iNtshona Koloni', st: 'Kapa Bophirima' },
+    'Eastern Cape': { af: 'Oos-Kaap', zu: 'iMpumalanga Kapa', xh: 'iMpuma Koloni', st: 'Kapa Botjhabela' },
+    'Northern Cape': { af: 'Noord-Kaap', zu: 'iNyakatho Kapa', xh: 'uMntla Koloni', st: 'Kapa Leboya' },
+    'Free State': { af: 'Vrystaat', zu: 'iFreyistata', xh: 'iFreyistata', st: 'Foreisetata' },
+    'KwaZulu-Natal': { af: 'KwaZulu-Natal', zu: 'KwaZulu-Natali', xh: 'KwaZulu-Natala', st: 'KwaZulu-Natala' },
+    'North West': { af: 'Noordwes', zu: 'iNyakatho Ntshonalanga', xh: 'uMntla Ntshona', st: 'Leboya Bophirima' },
+    'South Africa': { af: 'Suid-Afrika', zu: 'iNingizimu Afrika', xh: 'uMzantsi Afrika', st: 'Afrika Borwa' },
+  };
+  const localizePlaceParts = (name) => {
+    const lang = settings.lang;
+    if (!name || lang === 'en') return name;
+    return String(name).split(', ').map((part) => PLACE_PARTS[part]?.[lang] ?? part).join(', ');
+  };
   function displayPlaceName(name) {
     const v = String(name || '').trim();
     if (!v) return t('misc', 'unknownPlace');
     if (/^my location\b/i.test(v)) return t('misc', 'myLocation');
     if (/^unknown\b/i.test(v)) return t('misc', 'unknownPlace');
-    return name;
+    return localizePlaceParts(name);
   }
   const escapeHtml = (s) => String(s ?? "").replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
   // Routed through pickConditionIconForTime so search/mini cards also respect
@@ -3915,7 +3933,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // server emits (cacheableLocationName in api/_lib/weather-cache.js), so the
   // city part goes through the same translator as every other place name — and
   // only the city part, or "Unknown, South Africa" would lose its country.
-  function formatSearchResult(r) { const a = r.address || {}; const city = displayPlaceName(r.name || a.town || a.village || a.city || ''); return a.country ? `${city}, ${a.country}` : city; }
+  function formatSearchResult(r) { const a = r.address || {}; const city = displayPlaceName(r.name || a.town || a.village || a.city || ''); return a.country ? `${city}, ${localizePlaceParts(a.country)}` : city; }
   function miniFetchTemp(lat, lon) {
     return loadSearchMini(lat, lon, async () => {
       const norm = normalizePayload(await fetchProbable({ lat, lon, name: '' }));
