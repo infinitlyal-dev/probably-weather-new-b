@@ -6196,3 +6196,37 @@ body.install-modal-active .nav-hourly-pill { display: none !important; }
   text-align: center;
   color: var(--brand-gold, #ffd700);
 }
+
+/* ========== LAUNCH RUN (2026-09-25): Al's ticked list, review/eval-for-al.html ==========
+   hourly-scroll, week-compact, day-late, error-retry, desktop-tomorrow. Home's layout is not
+   touched: the retry button exists only in the error state, and the Tomorrow line only on the
+   desktop postcard at night. */
+
+/* hourly-scroll: the table runs with the page. The phone rule capped the panel body at 60vh with
+   its own scroll, so the table was a box inside a scrolling screen, cut mid-row. */
+@media (max-width: 1023px) {
+  #hourly-screen .screen-panel-body,
+  #day-detail-screen .screen-panel-body { max-height: none; overflow: visible; }
+  /* Both axes: with overflow-x hidden, a visible overflow-y computes to auto (CSS Overflow 3) and
+     the list stays a scroller that flex can shrink. flex:none keeps it its full height. */
+  #hourly-screen .hourly-timeline,
+  #day-detail-screen #day-detail-content { overflow: visible !important; flex: none !important; }
+  /* …and the panel body grows with it instead of shrinking to the screen, so whatever follows
+     (the ad card) starts after the last row, never on top of it. */
+  #hourly-screen > .screen-panel-body,
+  #day-detail-screen > .screen-panel-body { flex-shrink: 0 !important; }
+}
+
+/* Headers set like each other: "Temp"/"High" took the 15-16 px of the temperatures below them and
+   "Time"/"Day" shrank to 9 px. One size for every header cell, lined up with its column. */
+.hourly-row.hourly-header > span,
+.daily-row.daily-header > span { font-size: 0.7rem; }
+
+@media (max-width: 480px) {
+  /* The columns use the card's whole width (they used 262 of ~374 px), so each header sits over
+     its column with no empty strip on the right. Same widths for the header and the rows. */
+  #hourly-screen .hourly-row { grid-template-columns: 44px 24px minmax(40px, 1fr) minmax(34px, 1fr) minmax(30px, 1fr) minmax(34px, 1fr) 30px minmax(26px, 0.8fr); }
+  /* Day detail has no direction column (seven cells). */
+  #day-detail-screen .hourly-row { grid-template-columns: 44px 24px minmax(40px, 1fr) minmax(34px, 1fr) minmax(30px, 1fr) minmax(34px, 1fr) minmax(26px, 0.8fr); }
+  #day-detail-screen .day-detail-summary { align-items: center; text-align: center; }
+}
