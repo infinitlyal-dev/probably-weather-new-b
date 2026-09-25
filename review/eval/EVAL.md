@@ -310,3 +310,146 @@ timeout), hard cap 300 k tokens for the session:
 
 Not Sol-reviewed: the eval scripts in `review/eval/scripts/` (measurement tools, not shipped; their outputs
 were checked by eye) — the budget went to the app code and the harness.
+
+---
+
+## 7. Launch run (Vonk / Opus 5.5 building, Fable 5.1 reviewing — 24–25 Sept 2026)
+
+Built in a worktree on `main` (`C:\Users\27741\pw-launch-run`, base `e7d1260` tagged `launch-run-base`),
+**24 commits, nothing pushed**: 19 change the app, 5 are records/tooling under `review/` (`07229df`, `c6d392d`,
+`1c8f3e8`, `ce19aed` and the one carrying this section). A push of `main` now ships **45 commits** over `ec7ae52`
+(§0's 21, 15 reaching users, plus these 24). To ship §0's alone first: `git push origin launch-run-base:main`.
+Al's page: `review/launch-run-for-al.html` in the OneDrive working copy (with its pictures in
+`review/launch-run-for-al/`); rulings export to `launch-run-ruled.json`.
+
+**Fable.** `claude -p --model claude-fable-5-1` could not run (`claude auth status`: not logged in); Fable ran
+through Claude Code's agent route (`subagent_type feature-dev:code-reviewer`, `model fable`) after a probe proved
+the call. It reviewed the forecast plan and every app diff before its commit:
+
+| call | tokens | verdict |
+|---|---:|---|
+| transport probe (general-purpose) | 78,881 | answered as claude-fable-5-1 |
+| transport probe (code-reviewer) | 18,186 | answered |
+| review 1: recorder + crowd changes | 64,974 | fixes applied, then committed |
+| review 2: forecast plan + F1/F2 | 55,491 | plan changed (F1 cut-off rule stated first; F2 edge half added) |
+| review 3: forecast build + launch basics | 60,949 | fixes applied |
+| review 4: speed, alerts, ticked list, gust | 111,610 | SHIP ×3; follow-ups B2/B3 below |
+| **total** | **390,091** | cap 400,000 — no further calls |
+
+After review 4, not reviewed: the gust rule lost a redundant `min-width: 0` (a guard test forbids the text below
+the night ink; a clipped flex item's automatic minimum is 0 anyway) — re-measured, 15/15 shots pixel-identical to
+the reviewed version; the ticked-list tests split one file per item; `manifest.json`'s untouched lines put back in
+their old layout (parsed JSON identical). Open from review 4, not done: while `/api/health` is down the other open
+alerts close and reopen (B2); Upstash unplugged entirely reads "not configured" and raises nothing (B3). The
+workflow runs from the default branch only: dispatch it once after the push.
+
+### 7.1 Money and terms (live pages, 25 Sept; nothing bought or changed)
+
+| service | plan now | allows ads? | limits | before ads |
+|---|---|---|---|---|
+| Vercel | Hobby | no (non-commercial; ads named) | 1M edge req, 100 GB/month; over → wait 30 days, may pause | **Pro $20/mo** ($20 usage credit, spike-protected CDN) |
+| Upstash Redis | Free | yes | 500K commands/month, then `ERR max requests limit exceeded` | **pay-as-you-go $0.20/100K**, set a cap |
+| Open-Meteo | commercial key set (production `openMeteoEndpoint=customer`) | yes | 1M calls/month | nothing |
+| WeatherAPI | Free | yes, credit link | 100K calls/**month** (code now 3,200/day) | Starter $7 — not yet |
+| Pirate Weather | Free | no ("personal use") | 10K/month | **$3/mo plan (20K/month)** — budgets already sized for it |
+| Tomorrow.io | Free | **no** (ToS §1.1.5; Enterprise only) | 3/s, 25/h, 500/day | **`PW_SOURCES_OFF=tomorrow`** unless a contract |
+| MET Norway | free | yes, credit + UA | 20 req/s | nothing |
+| LocationIQ | Free | yes, with a visible "Search by LocationIQ.com" link + OSM credit | 5,000/day, 2/s, 60/min | link now; Developer $100/mo not yet |
+
+Env names only: `OPEN_METEO_API_KEY` is set in production (inferred from the served endpoint; Vercel env list
+403). `.env` in the OneDrive copy holds `TOMORROWIO_API_KEY` (name only) and syncs to OneDrive. App credits are
+plain text with no links and no LocationIQ/OpenStreetMap credit.
+
+### 7.2 Recorder (real numbers before tuning)
+
+`review/accuracy/live/record.mjs`, Windows task "ProbablyWeather accuracy recorder" (hourly at :10, since
+24 Sept 23:58; stop: `Unregister-ScheduledTask -TaskName 'ProbablyWeather accuracy recorder' -Confirm:$false`,
+`review/accuracy/live/README.md`): production's API for the six harness airports + METAR → `review/accuracy/live/`
+in the OneDrive copy. `meta.sourceNow`/`meta.sourceToday` (`f5a94be`) give each real source's own numbers from
+the next release. Score so far (`results/live-score.md`, night only): now-condition agrees at **6 of 17**
+airport-hours; Cape Town served fog 4× under reported cloud. Records only while the PC is awake (WakeToRun is a
+question on Al's page).
+
+### 7.3 Launch crowd
+
+Visit cost (`results/visit-cost-before.md`): 2 API calls a visit (`/api/version`, `/api/weather`), 3 when
+location is denied (`/api/locate`), +1 geocode per search. The GPS request carried 4 decimals, so the CDN never
+shared it; `c268319` asks on the server's 0.02° grid (~2.2 km). Load test (real handler, fake Upstash with the
+real Lua, emulated edge, stubbed providers — never production): 3,000 visits in 60 s from one city → 1,647 edge
+hits, provider calls bounded by cells; WeatherAPI + Pirate + Tomorrow.io at 429, LocationIQ out, or Upstash out:
+**3,000/3,000 answered with a temperature**; all five sources out → 503 (the error screen with Try again).
+Caveats (Fable): per-PoP edge caches and place names in the URL mean ~2,000 function runs per 3,000 visits;
+per-instance fallback ceilings multiply while Redis is down; WeatherAPI's 3,200/day can go in ~16 min at peak.
+
+### 7.4 Forecast
+
+Plan: `review/accuracy/FORECAST-PLAN-2026-09-25.md` (Fable review 2). Shipped: **F1** (`8d536e0`) — Tomorrow.io's
+"today" high stops voting from 18:00; pooled MAE of the day's high read 18:00–23:00 **1.20/1.38/1.53/1.65/1.76/1.85
+→ 0.95 °C** at every hour, no airport-hour worse, earlier hours identical. **F2** (`664fb1a`) — a cached forecast
+built for yesterday is never replayed after local midnight, and the edge `Cache-Control` ends 5 s before midnight.
+Waiting for the recorder (a maybe, not clearly better): the overnight low (without Pirate 1.67 → 1.46 °C pooled,
+Bloemfontein frost nights 3.5 → 1.6, but Johannesburg 1.05 → 1.35), rain calibration (hourly 60–70 % → rain
+49 %, 70–80 → 71 %, 80–90 → 84 %; daily 20–40 % → 54 %). No change: false "Rain's here" (29 % of rain hours
+dry that hour), daily rain vs Open-Meteo alone (within noise). Johannesburg's clear-sky rain = Tomorrow.io's radar
+alone; `radarNextHourBump` (`ad1187d`) now records its next-hour bump. SA check (`results/sa-weather-check.md`):
+cold fronts 20/20, south-easter 75/114, fog CT 71/101 · DBN 9/12 · PE 4/10 · George 13/37, thunder JHB 14/16 ·
+BFN 12/12; KZN heat untestable (2 hot days).
+
+### 7.5 Speed and data
+
+HTTP/2 slow-4G harness (`review/launch/scripts/speed.mjs`, 150 ms per response, one 1.6 Mbit/s pipe): first
+weather, cold cell — Android mid-range **5.0 → 4.5 s**, iPhone 11 **3.1 → 2.9 s**; edge hit 2.1 → 1.9 s and
+1.9 → 1.7 s (`c4635bf`: a first visit's placeholder photo and the caption font wait for DOMContentLoaded). §2.8's
+6.3 s is a different setup (Lighthouse-style throttling with 4× CPU); compare only these pairs. Lab LCP
+got later on a cold Android visit (2.0 → 3.9 s): the placeholder under the splash now paints after the scripts.
+Data: first visit ~445 KB; later opens ~3 KB plus ~100 KB per new photograph slot (≤4 a day) — about
+0.1–0.4 MB a day. Not done: fonts as woff2 files (~37 KB), functions in cpt1 (needs Redis moved with them).
+
+### 7.6 Knowing when it breaks (`227544b`)
+
+`/api/health` (counters only, no provider call, edge 60 s); failure and 5xx counters written only when something
+fails; `PW_SOURCES_OFF` parsed in one module; `.github/workflows/health.yml` every 30 min opens/closes
+"[PW alert] …" issues mentioning Al (the repo is public, so Actions minutes are free). Runbook:
+`review/launch/RUNBOOK.md` (Instant Rollback, the switch, each alert, Analytics).
+
+### 7.7 Launch basics (`297ad90`) and the privacy page
+
+robots.txt, sitemap.xml (/, /install, /privacy) and a 180×180 opaque `/apple-touch-icon.png` in the build
+(`review/launch/shots/apple-touch-icon-ios.png`). Visitor count: Vercel Web Analytics is already collecting
+(Hobby 50K events/month). Privacy page (`privacy.html`, live): the date line reads "ads-readiness DRAFT
+15 September 2026, not published"; GPS is now sent on the ~2 km grid for forecasts (the page says 4 decimals, and
+that searched places are not rounded) and the server copy carries the grid point; the ad choice and Settings → Ad
+choices it describes are not built. Proposed wording is on Al's page (English; not wired — no review budget).
+Ad network: AdSense approval, `ads.txt` ("not mandatory, but highly recommended"), a Google-certified CMP for
+EEA/UK (16 Jan 2024) and Switzerland (31 Jul 2024) visitors, the ad-network CSP option, Vercel Pro.
+
+### 7.8 Al's ticked list (one commit each)
+
+hourly-scroll `dda083a`, week-compact `d1f2088`, day-late `501a903`, error-retry `678d879`, desktop-tomorrow
+`fc6ee30`, place-language `4543ece` (zu/xh/st names through lang-check, nothing held), af search line
+`bf4b1d1`, android-sheet `347ef69`, and the af/zu gust number `5ddb75c` (pixel-identical where the line fitted).
+Before/after: `review/launch/shots/ui-before|ui-after/`, `results/ui-*.json`. The after shot of the error screen
+caught the install banner; the same steps repeated 22× per build: old 0/22, new 1/22 — the banner's
+interaction fallback can fire over the error screen in both builds (a race with the idle-loaded `install.js`);
+not changed.
+
+### 7.9 Checked, not built
+
+- **SAWS warnings.** Official CAP feed `https://caps.weathersa.co.za/Home/RssFeed` (live, `<copyright>Public
+  Domain</copyright>`; items 24 Sept: Severe Thunderstorms, GP and WC); each CAP 1.2 document has the level
+  ("Warning Level 2"), event, onset/expires, municipalities with polygons and English instructions, and
+  `<scope>Restricted</scope>`. Act 48 of 2013 s30A: an offence to publish a severe weather warning known or
+  suspected false or misleading, to impersonate SAWS, or to use its branding to deceive (R5M / 5 years first
+  conviction). Proposal on Al's page; ask SAWS in writing first.
+- **Home B**, measured as D was (`review/launch/home-b-check/` in the OneDrive copy): at 414×715 the joke sits on
+  the subject in **34** photographs in any language (D 120), sits on or touches in 201 (D 204); 360×688 200 (D
+  187), 320×488 174 (D 190). Only in B: at 320×488 isiXhosa the card is 87–107 px and the joke starts under the
+  header (966 placements); smallest joke 18.91 px there, 31.04 at 414×715.
+
+### 7.10 Gates
+
+The finished tree passed the full set before it was split into commits — serial 134 files / 21,212 tests, image
+budget, build, fold 80/80, desktop, bespoke, drift guard, rotation, month (+ control failing as it must), gate
+shots. Every commit then passed the serial suite and the build on its own (scratch worktree; one test file needs
+the local lang-check cache and skips there), and the final commit runs **142 files / 21,220 tests** green here.
+Load tests used stubs only; no provider and not production was hammered.

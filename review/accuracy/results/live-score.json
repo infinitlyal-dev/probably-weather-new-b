@@ -1,32 +1,36 @@
 {
- "generatedAt": "2026-09-24T22:57:00.204Z",
+ "generatedAt": "2026-09-25T00:13:31.912Z",
  "files": [
   "2026-09-24.jsonl",
   "2026-09-25.jsonl"
  ],
- "records": 12,
+ "records": 24,
  "failedReads": 0,
- "scoredNow": 8,
+ "scoredNow": 17,
  "agreeNow": {
-  "n": 8,
-  "ok": 2
+  "n": 17,
+  "ok": 6
  },
  "byCity": {
   "FACT": {
-   "n": 2,
+   "n": 4,
    "ok": 0
   },
   "FAOR": {
-   "n": 2,
-   "ok": 2
+   "n": 4,
+   "ok": 3
   },
   "FALE": {
-   "n": 2,
-   "ok": 0
+   "n": 4,
+   "ok": 1
   },
   "FAGG": {
-   "n": 2,
+   "n": 3,
    "ok": 0
+  },
+  "FAPE": {
+   "n": 2,
+   "ok": 2
   }
  },
  "falseRain": {
@@ -40,7 +44,7 @@
  "calibration": [
   {
    "bin": "0–9",
-   "n": 4,
+   "n": 14,
    "rained": 0
   }
  ],
@@ -50,6 +54,11 @@
   "2026-09-24T21:57 FAGG served cloudy (overcast) · airport fog",
   "2026-09-24T22:10 FACT served fog (visibility-humidity-fog-detector) · airport cloudy",
   "2026-09-24T22:10 FALE served clear (desc-clear-keyword) · airport cloudy",
-  "2026-09-24T22:10 FAGG served cloudy (overcast) · airport fog"
+  "2026-09-24T22:10 FAGG served cloudy (overcast) · airport fog",
+  "2026-09-24T23:10 FACT served fog (visibility-humidity-fog-detector) · airport scattered",
+  "2026-09-24T23:10 FAOR served cloudy (mostly-cloudy) · airport clear",
+  "2026-09-24T23:10 FALE served clear (desc-clear-keyword) · airport cloudy",
+  "2026-09-24T23:10 FAGG served cloudy (overcast) · airport fog",
+  "2026-09-25T00:10 FACT served fog (visibility-humidity-fog-detector) · airport cloudy"
  ]
 }
