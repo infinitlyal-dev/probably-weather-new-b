@@ -6,7 +6,7 @@ Plain steps for Al. Nothing here needs code.
 
 Vercel → the **probably-weather-new-b** project → **Deployments** → the production deployment *before* the bad one → **⋯** → **Instant Rollback**. The old version is live again within seconds; nothing is rebuilt.
 
-(On the Hobby plan Vercel rolls back only to the deployment just before; on Pro, to any earlier one. The git way also works and takes about two minutes: `git revert <sha>` and push to `main`.)
+(The project is on Vercel Pro, so any earlier production deployment can be rolled back to. The git way also works and takes about two minutes: `git revert <sha>` and push to `main`.)
 
 After a rollback, a later push goes live again as normal.
 
@@ -39,7 +39,7 @@ Vercel also emails you as usage nears the plan's limits (all plans); on Pro, Ver
 
 ## How many people came
 
-Vercel → project → **Analytics**. It counts visits without cookies. The Hobby plan includes 50,000 events a month; after that it stops counting until the month turns (Pro counts on, at about $0.03 per 1,000).
+Vercel → project → **Analytics**. It counts visits without cookies. On Pro (this project's plan) it keeps counting; events cost about $0.03 per 1,000, taken from the plan's included usage.
 
 ## Numbers behind this page
 

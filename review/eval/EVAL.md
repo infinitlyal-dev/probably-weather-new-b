@@ -347,7 +347,7 @@ workflow runs from the default branch only: dispatch it once after the push.
 
 | service | plan now | allows ads? | limits | before ads |
 |---|---|---|---|---|
-| Vercel | Hobby | no (non-commercial; ads named) | 1M edge req, 100 GB/month; over → wait 30 days, may pause | **Pro $20/mo** ($20 usage credit, spike-protected CDN) |
+| Vercel | **Pro** (corrected 25 Sept: the team holding the project is on Pro and Al pays for it — the run misread a billing-API error as Hobby) | yes | Pro limits | nothing |
 | Upstash Redis | Free | yes | 500K commands/month, then `ERR max requests limit exceeded` | **pay-as-you-go $0.20/100K**, set a cap |
 | Open-Meteo | commercial key set (production `openMeteoEndpoint=customer`) | yes | 1M calls/month | nothing |
 | WeatherAPI | Free | yes, credit link | 100K calls/**month** (code now 3,200/day) | Starter $7 — not yet |
@@ -416,7 +416,7 @@ fails; `PW_SOURCES_OFF` parsed in one module; `.github/workflows/health.yml` eve
 
 robots.txt, sitemap.xml (/, /install, /privacy) and a 180×180 opaque `/apple-touch-icon.png` in the build
 (`review/launch/shots/apple-touch-icon-ios.png`). Visitor count: Vercel Web Analytics is already collecting
-(Hobby 50K events/month). Privacy page (`privacy.html`, live): the date line reads "ads-readiness DRAFT
+(on Pro it keeps counting). Privacy page (`privacy.html`, live): the date line reads "ads-readiness DRAFT
 15 September 2026, not published"; GPS is now sent on the ~2 km grid for forecasts (the page says 4 decimals, and
 that searched places are not rounded) and the server copy carries the grid point; the ad choice and Settings → Ad
 choices it describes are not built. Proposed wording is on Al's page (English; not wired — no review budget).
