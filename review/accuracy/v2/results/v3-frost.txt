@@ -1,0 +1,23 @@
+FROST — gate: cloud ≤ 40%, wind ≤ 12 km/h, depression ≥ 4 °C (2025 LOSO MAE 1.51)
+
+== t1: δ (all airports) 1.61 °C; gated share 2026: airports 45%, towns 30%
+  old harness  airports all 1.61→1.47 -0.14 [-0.22, -0.07] · frost 3.26→2.22 (bias 3.26→2.18, n 147) -1.05 [-1.13, -0.93]
+               towns    all 1.60→1.45 -0.15 [-0.22, -0.08] · frost 4.77→3.74 (bias 4.77→3.67, n 54) -1.03 [-1.20, -0.84]
+  ECMWF-heavy  airports all 1.46→1.44 -0.02 [-0.08, 0.04] · frost 2.60→1.68 (bias 2.58→1.51, n 147) -0.92 [-0.99, -0.83]
+               towns    all 1.50→1.41 -0.09 [-0.16, -0.03] · frost 4.26→3.33 (bias 4.26→3.16, n 54) -0.93 [-1.07, -0.80]
+  mixed        airports all 1.69→1.49 -0.20 [-0.27, -0.14] · frost 3.39→2.33 (bias 3.39→2.31, n 147) -1.06 [-1.15, -0.95]
+               towns    all 1.65→1.46 -0.18 [-0.24, -0.13] · frost 5.00→3.97 (bias 5.00→3.90, n 54) -1.02 [-1.18, -0.84]
+  ships at t1: false
+  by station (old harness): 68479 1.23→1.04 · 68581 1.28→1.19 · 68727 1.49→1.55 · 68737 2.41→2.03 · FAUT 1.27→1.23 · FAOR 1.10→1.81 WORSE · FAWB 1.80→1.31 · FABL 2.27→1.70 · FAUP 1.60→1.36 · FAKM 2.13→1.65 · FAMM 1.12→1.06 · FAPP 1.92→1.70
+
+== t0: δ (all airports) 1.54 °C; gated share 2026: airports 33%, towns 19%
+  old harness  airports all 1.47→1.35 -0.12 [-0.18, -0.06] · frost 2.95→2.16 (bias 2.94→2.12, n 147) -0.79 [-0.97, -0.55]
+               towns    all 1.48→1.37 -0.11 [-0.16, -0.06] · frost 4.64→4.07 (bias 4.64→4.04, n 54) -0.58 [-0.76, -0.35]
+  ECMWF-heavy  airports all 1.32→1.29 -0.03 [-0.08, 0.01] · frost 2.32→1.67 (bias 2.30→1.48, n 147) -0.65 [-0.82, -0.47]
+               towns    all 1.37→1.30 -0.07 [-0.12, -0.02] · frost 4.16→3.67 (bias 4.16→3.56, n 54) -0.50 [-0.66, -0.33]
+  mixed        airports all 1.49→1.35 -0.15 [-0.21, -0.09] · frost 2.97→2.18 (bias 2.96→2.14, n 147) -0.79 [-0.98, -0.55]
+               towns    all 1.51→1.40 -0.11 [-0.15, -0.07] · frost 4.75→4.17 (bias 4.75→4.15, n 54) -0.58 [-0.78, -0.35]
+  ships at t0: false
+  by station (old harness): 68479 1.13→0.92 · 68581 1.13→1.08 · 68727 1.38→1.38 · 68737 2.30→2.12 · FAUT 1.18→1.10 · FAOR 1.00→1.62 WORSE · FAWB 1.80→1.36 · FABL 1.97→1.57 · FAUP 1.39→1.22 · FAKM 1.86→1.51 · FAMM 0.92→0.88 · FAPP 1.89→1.61
+
+SHIPS: false
