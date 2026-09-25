@@ -52,3 +52,5 @@ node review/accuracy/live/score.mjs            # reads every *.jsonl here (or --
 A replayed (cached) payload keeps the numbers of the moment it was computed, while its `meta.localHour` is refreshed: the scorer aligns every record on `meta.updatedAtLabel`, never on `localHour`.
 
 `results/live-score.md`: served condition vs the airport's report in the same hour, the served high/low vs the observed max/min, the rain-chance calibration, per source where production exposes it.
+
+**Al's note, checked from 25 Sept 2026 on** (`review/rain-fog-frost-ruled.json`): *"it has been showing fog a lot when it isnt really that foggy and the rain thing i noticed the last couple of days and it felt off."* The score's last section counts it per release (`servedVersion`): fog shown against fog or mist at the airport, "Rain's here" and "Showers nearby." (`conditionReason` `showers-nearby`) against rain at the airport that hour or the next, and Strand and Cape Town city's fog and rain calls (no station there, counted only). The served rule is in `meta.conditionConfidence.fogSignal.rule` and `.rainRule`.

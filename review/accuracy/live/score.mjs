@@ -28,10 +28,11 @@ const files = [
   ...(existsSync(DIR) ? readdirSync(DIR).filter((f) => /^\d{4}-\d{2}-\d{2}\.jsonl$/.test(f)).map((f) => path.join(DIR, f)) : []),
   ...(existsSync(HELD) ? readdirSync(HELD).filter((f) => /^held-.*\.jsonl$/.test(f)).map((f) => path.join(HELD, f)) : []),
 ];
-const recs = [];
+const recs = [], spots = [];
 for (const f of files) for (const line of readFileSync(f, 'utf8').split('\n')) {
   if (!line.trim()) continue;
   let r; try { r = JSON.parse(line); } catch { continue; }
+  if (r.spot) { spots.push(r); continue; }   // Strand, Cape Town city: no station, counted in Al's note only
   const c = CITIES[r.icao];
   if (!c || c[0] !== r.lat || c[1] !== r.lon) continue;
   recs.push(r);
@@ -94,7 +95,7 @@ for (const r of recs) {
   const served = SERVED(p.now.conditionKey);
   // Rain in the hour after the forecast was made (any report).
   const after = [...(metars[r.icao] || [])].filter(([t]) => t > written && t <= written + 3600e3).map(([, mm]) => observed(mm));
-  rows.push({ icao: r.icao, written: new Date(written).toISOString(), key: p.now.conditionKey, reason: p.now.conditionReason, served, obs, agree: m ? agrees(served, obs) : null,
+  rows.push({ icao: r.icao, version: String(r.servedVersion || '?').slice(0, 7), written: new Date(written).toISOString(), key: p.now.conditionKey, reason: p.now.conditionReason, served, obs, agree: m ? agrees(served, obs) : null,
     rainChance: p.now.rainChance, rainedNextHour: after.length ? after.some((o) => o === 'rain' || o === 'storm') : null,
     radarBump: p.now.conditionSignals?.radarNextHourBump ?? null, radarOverride: p.now.conditionReason === 'tomorrow-io-radar-override',
     sourceToday: p.meta?.sourceToday ?? null, high: p.daily?.[0]?.highC, low: p.daily?.[0]?.lowC, sastDay: new Date(written + 2 * 3600e3).toISOString().slice(0, 10) });
@@ -111,13 +112,46 @@ const out = { generatedAt: new Date().toISOString(), files: files.map((f) => pat
   agreeNow: { n: scored.length, ok: scored.filter((x) => x.agree).length }, byCity, falseRain: { served: falseRain.length, dry: falseRain.filter((x) => x.obs !== 'rain' && x.obs !== 'storm').length },
   radar: { overrides: rows.filter((x) => x.radarOverride).length, nextHourBumps: rows.filter((x) => x.radarBump).length }, calibration: calib,
   mismatches: scored.filter((x) => !x.agree).map((x) => `${x.written.slice(0, 16)} ${x.icao} served ${x.key} (${x.reason}) · airport ${x.obs}`) };
+// ---- Al's note, 25 Sept 2026 (review/rain-fog-frost-ruled.json), checked from here on, per release ----
+// "it has been showing fog a lot when it isnt really that foggy and the rain thing i noticed the last couple
+// of days and it felt off." Fog shown vs fog or mist at the airport; "Rain's here" and "Showers nearby." shown
+// vs rain at the airport that hour or the next; Strand and Cape Town city counted (no station there).
+const AL_NOTE = "it has been showing fog a lot when it isnt really that foggy and the rain thing i noticed the last couple of days and it felt off.";
+const wetSeen = (x) => x.obs === 'rain' || x.obs === 'storm' || x.rainedNextHour === true;
+const alNote = {};
+// Only hours the airport can judge: fog needs a usable report; rain a usable report or the next hour's (Fable).
+const usable = (x) => x.obs !== 'none' && x.obs !== 'unobserved';
+for (const x of rows) {
+  const fogCheck = usable(x), rainCheck = usable(x) || x.rainedNextHour !== null;
+  if (!rainCheck) continue;
+  const v = (alNote[x.version] ??= { hours: 0, fog: 0, fogSeen: 0, rainHere: 0, rainHereWet: 0, nearby: 0, nearbyWet: 0, spots: {} });
+  v.hours++;
+  if (fogCheck && x.key === 'fog') { v.fog++; if (x.obs === 'fog' || x.obs === 'mist') v.fogSeen++; }
+  if (x.key === 'rain') { v.rainHere++; if (wetSeen(x)) v.rainHereWet++; }
+  if (x.reason === 'showers-nearby') { v.nearby++; if (wetSeen(x)) v.nearbyWet++; }
+}
+for (const r of spots) {
+  const p = r.api?.payload;
+  if (!p?.now || r.api?.status !== 200) continue;
+  const v = (alNote[String(r.servedVersion || '?').slice(0, 7)] ??= { hours: 0, fog: 0, fogSeen: 0, rainHere: 0, rainHereWet: 0, nearby: 0, nearbyWet: 0, spots: {} });
+  const s = (v.spots[r.spot] ??= { hours: 0, fog: 0, rainHere: 0, nearby: 0 });
+  s.hours++;
+  if (p.now.conditionKey === 'fog') s.fog++;
+  if (p.now.conditionKey === 'rain') s.rainHere++;
+  if (p.now.conditionReason === 'showers-nearby') s.nearby++;
+}
+
 mkdirSync(OUT, { recursive: true });
+out.alNote = { quote: AL_NOTE, byVersion: alNote };
 writeFileSync(path.join(OUT, 'live-score.json'), JSON.stringify(out, null, 1));
 const md = [`# Live score — production vs the airports (${out.generatedAt.slice(0, 16)}Z)`, '',
   `${recs.length} records from ${files.length} file(s), ${skipped} failed reads skipped; ${scored.length} airport-hours with a usable report within 45 min of the forecast's own time (cloud by the app's buckets: CAVOK/FEW clear, SCT either, BKN/OVC cloudy; Bloemfontein's overnight AUTO reports observe nothing and are not scored).`, '',
   `- **Now condition agrees with the airport:** ${out.agreeNow.ok} of ${out.agreeNow.n} (${pct(out.agreeNow.ok, out.agreeNow.n) ?? '—'}%) — by airport: ${Object.entries(byCity).map(([k, v]) => `${k} ${v.ok}/${v.n}`).join(', ') || '—'}`,
   `- **"Rain" shown:** ${out.falseRain.served} times, dry at the airport ${out.falseRain.dry}. Tomorrow.io radar override: ${out.radar.overrides}; next-hour bump: ${out.radar.nextHourBumps}.`,
   `- **Rain chance vs rain in the next hour:** ${calib.map((b) => `${b.bin}%: ${b.rained}/${b.n}`).join(' · ') || '—'}`, '',
+  `## Al's note (25 Sept 2026), per release`, '', `> "${AL_NOTE}"`, '',
+  ...Object.entries(alNote).map(([v, n]) => `- **${v}** (${n.hours} airport-hours the airport could judge): fog shown ${n.fog}, fog or mist at the airport ${n.fogSeen} · "Rain's here" ${n.rainHere}, rain that hour or the next ${n.rainHereWet} · "Showers nearby." ${n.nearby}, rain that hour or the next ${n.nearbyWet}`
+    + (Object.keys(n.spots).length ? ` · ${Object.entries(n.spots).map(([k, s]) => `${k}: fog ${s.fog}, "Rain's here" ${s.rainHere}, "Showers nearby." ${s.nearby} of ${s.hours} h`).join('; ')}` : '')), '',
   'Mismatches:', '', ...(out.mismatches.length ? out.mismatches.map((x) => `- ${x}`) : ['- none'])];
 writeFileSync(path.join(OUT, 'live-score.md'), md.join('\n') + '\n');
 console.log(md.join('\n'));
