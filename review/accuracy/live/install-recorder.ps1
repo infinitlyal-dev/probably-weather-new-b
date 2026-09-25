@@ -24,7 +24,9 @@ $Action = New-ScheduledTaskAction -Execute 'conhost.exe' `
 $Start = (Get-Date).Date.AddHours((Get-Date).Hour).AddMinutes(10)
 if ($Start -lt (Get-Date)) { $Start = $Start.AddHours(1) }
 $Trigger = New-ScheduledTaskTrigger -Once -At $Start -RepetitionInterval (New-TimeSpan -Hours 1)
-$Settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries `
+# -WakeToRun: Al's YES (launch-run-ruled.json, 25 Sept 2026). Windows only honours it while the power
+# plan's "Allow wake timers" is Enable (Power Options → Sleep); this installer does not change that.
+$Settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries -WakeToRun `
   -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 10) -MultipleInstances IgnoreNew
 
 Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Settings $Settings `

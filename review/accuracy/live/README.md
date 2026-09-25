@@ -19,7 +19,7 @@ Each run appends one JSON line per airport to `review/accuracy/live/<SAST date>.
 
 - Script: a copy of `record.mjs` in `%USERPROFILE%\pw-accuracy-recorder\` (so it keeps running whatever branch the repo is on). The copy in this folder is the source of truth; re-run the installer after changing it.
 - Data: `C:\Users\27741\OneDrive\Desktop\Probably weather new\probably-weather-new-c\review\accuracy\live\`.
-- It runs only while the PC is awake (it does not wake the PC); after a sleep it runs once when the PC wakes, so the log shows a gap for the hours asleep.
+- It may wake the PC for its reading (the task's "Wake the computer to run this task", Al's YES of 25 Sept 2026) — but Windows honours that only while the power plan allows wake timers, and on this PC "Allow wake timers" is **Disable** (checked 25 Sept, plugged in and on battery). To let it wake: Control Panel → Power Options → Change plan settings → Change advanced power settings → Sleep → Allow wake timers → Enable. Until then it runs only while the PC is awake, and after a sleep it runs once when the PC wakes, so the log shows a gap for the hours asleep. To stop it waking the PC: `$t = Get-ScheduledTask 'ProbablyWeather accuracy recorder'; $t.Settings.WakeToRun = $false; Set-ScheduledTask -InputObject $t`.
 - All eight reads go out at once; a run takes a few seconds. If OneDrive is holding the day file, a line goes to `held-<date>.jsonl` beside the script in `%USERPROFILE%\pw-accuracy-recorder\` instead of being lost.
 
 ## Install / reinstall
