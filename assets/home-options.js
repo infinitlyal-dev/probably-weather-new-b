@@ -92,6 +92,9 @@ function initBlankSlate(link) {
   const phone = () => matchMedia('(max-width: 768px)').matches;
   const onHome = () => body.classList.contains('home-active');
   const text = (sel) => ($(sel)?.textContent || '').trim();
+  // The joke that arrives late (Al, 25 Sept): on only with ?reveal=ink|word|fade (see initReveal).
+  const revealOpts = revealOptions();
+  let revealer = null;
 
   // ---------- the pieces D adds (no words of its own) ----------
   const line = document.createElement('p');
@@ -446,6 +449,7 @@ function initBlankSlate(link) {
         : innerHeight - reserveH() - h - 8;                                               // a tiny screen: above the handle
       setVar('--d-banner-top', `${Math.round(Math.max(status.getBoundingClientRect().bottom + 8, y))}px`);
     }
+    revealer?.place();
     syncs += 1;
     prepareShare();
   };
@@ -485,6 +489,7 @@ function initBlankSlate(link) {
   addEventListener('resize', queue);
   link.addEventListener('load', () => { refresh(); fillPanel(); });
   document.fonts?.ready?.then(queue);
+  if (revealOpts) revealer = initReveal({ headline, main, status: () => $('#weatherStatus'), phone, onHome }, revealOpts);
   refresh();
   fillPanel();
 
@@ -498,10 +503,17 @@ function initBlankSlate(link) {
   let shareFile = null;
   let shareSig = '';
   let shareTimer = 0;
+  // With the joke that arrives late on (?reveal=…), Share sends a postcard instead (Al, 25 Sept):
+  // the photograph clean, the joke written under it on a light border — never on the photograph.
+  const postcard = !!revealOpts;
+  const joke = () => (headline.dataset.line === 'joke' ? headline.textContent.trim() : '');
+  const photoUrl = () => /url\(["']?([^"')]+)["']?\)/.exec(getComputedStyle($('#heroPhoto') || body).backgroundImage)?.[1] || '';
   // Everything the picture draws, including where it sits: the photograph and its crop, every
   // line of text and its box, the joke's size and whether it has risen, the warning bar (Sol,
-  // 24 Sept: a signature of the words alone let a picture of an older layout through).
+  // 24 Sept: a signature of the words alone let a picture of an older layout through). The
+  // postcard draws no layout, so its words and its photograph are the whole of it.
   const signature = () => {
+    if (postcard) return [photoUrl(), joke(), ...POSTCARD_FACTS.map(text), document.documentElement.lang].join('|');
     const photo = getComputedStyle($('#heroPhoto') || body);
     const box = (sel) => { const el = $(sel); if (!el || !el.getClientRects().length) return '-'; const r = el.getBoundingClientRect(); return `${Math.round(r.top)},${Math.round(r.height)}`; };
     return [photo.backgroundImage, photo.backgroundPosition, innerWidth, innerHeight,
@@ -509,6 +521,7 @@ function initBlankSlate(link) {
       ...['.brand-text', '.tagline', '#weatherStatus', '#headline', '#dLine', '#capeWindBanner'].map((s) => `${text(s)}@${box(s)}`),
     ].join('|');
   };
+  const drawShare = () => (postcard ? drawPostcard() : drawFrame());
   function prepareShare() {
     clearTimeout(shareTimer);
     shareTimer = setTimeout(async () => {
@@ -516,7 +529,7 @@ function initBlankSlate(link) {
       const sig = signature();
       if (sig === shareSig && shareFile) return;
       try {
-        const blob = await drawFrame();
+        const blob = await drawShare();
         if (blob && signature() === sig) {
           shareFile = new File([blob], 'probably-weather.jpg', { type: 'image/jpeg' });
           shareSig = sig;
@@ -528,13 +541,93 @@ function initBlankSlate(link) {
   // For the proof pages: the same picture Share would send, as a data URL.
   window.__PW_D = {
     shareImage: async () => {
-      const blob = await drawFrame();
+      const blob = await drawShare();
       return blob ? new Promise((r) => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(blob); }) : null;
     },
     open: () => setOpen(true),
     close: () => setOpen(false),
     syncs: () => syncs,
+    reveal: revealer?.api || null,
   };
+
+  // The postcard: the photograph whole and untouched on the print's stock, the joke under it in the
+  // same hand as on screen (dark ink, balanced, stepping down to fit four lines), then the facts as
+  // the screen shows them (place · temperature · Probably …) and the address. The stock and the ink
+  // are the desktop postcard's own (app.css --print-stock / --print-ink): the two are one print.
+  async function drawPostcard() {
+    const url = photoUrl();
+    if (!url) return null;
+    await document.fonts?.ready;
+    const img = await loadImage(url);
+    const words = joke();
+    const hand = getComputedStyle(headline);
+    const ui = getComputedStyle(line).fontFamily;
+    const handFont = (px) => `${hand.fontStyle} ${hand.fontWeight} ${px}px ${hand.fontFamily}`;
+    const W = 1080;
+    const B = 36;                                        // the border: sides and top
+    const PW = W - 2 * B;
+    const PH = Math.round(PW * img.naturalHeight / img.naturalWidth);
+    const probe = document.createElement('canvas').getContext('2d');
+    let px = 64;
+    let lines = [];
+    if (words) {
+      for (;;) {
+        probe.font = handFont(px);
+        lines = balanceLines(probe, words, PW - 72);
+        if (lines.length <= 4 || px <= 44) break;
+        px -= 2;
+      }
+    }
+    const lh = Math.round(px * 1.16);
+    const [place, now, probably, desc] = POSTCARD_FACTS.map(text);
+    const facts = [place, now, [probably, desc].filter(Boolean).join(' ')].filter(Boolean).join('  ·  ');
+    let factPx = 27;
+    probe.font = `500 ${factPx}px ${ui}`;
+    while (factPx > 20 && probe.measureText(facts).width > PW - 40) { factPx -= 1; probe.font = `500 ${factPx}px ${ui}`; }
+    const SITE_PX = 24;
+    const jokeTop = B + PH + (words ? 40 : 24);
+    const factsY = jokeTop + lines.length * lh + (words ? 26 : 0) + factPx / 2;
+    const siteY = factsY + factPx / 2 + 20 + SITE_PX / 2;
+    const H = Math.round(siteY + SITE_PX / 2 + 38);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#f6f2e8';                           // --print-stock
+    ctx.fillRect(0, 0, W, H);
+    ctx.drawImage(img, B, B, PW, PH);
+    ctx.strokeStyle = 'rgba(27, 24, 19, 0.12)';          // the photograph's edge on the stock
+    ctx.lineWidth = 1;
+    ctx.strokeRect(B + 0.5, B + 0.5, PW - 1, PH - 1);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    if (words) {
+      ctx.font = handFont(px);
+      ctx.fillStyle = '#1b1813';                         // --print-ink
+      lines.forEach((l, i) => ctx.fillText(l, W / 2, jokeTop + lh * i + lh / 2));
+    }
+    ctx.font = `500 ${factPx}px ${ui}`;
+    ctx.fillStyle = '#6f6352';                           // 5.3:1 on the stock
+    ctx.fillText(facts, W / 2, factsY);
+    // The address, with the app's mark in front of it.
+    ctx.font = `600 ${SITE_PX}px ${ui}`;
+    const site = 'probablyweather.co.za';
+    const MARK = 30;
+    const total = MARK + 10 + ctx.measureText(site).width;
+    const x0 = W / 2 - total / 2;
+    const logo = $('#logoCircle svg');
+    if (logo) {
+      try {
+        const svg = new XMLSerializer().serializeToString(logo);
+        ctx.drawImage(await loadImage(`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`), x0, siteY - MARK / 2, MARK, MARK);
+      } catch { /* the mark is decoration */ }
+    }
+    ctx.fillStyle = '#8a7c68';
+    ctx.textAlign = 'left';
+    ctx.fillText(site, x0 + MARK + 10, siteY);
+    return new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.9));
+  }
 
   async function drawFrame() {
     const photoEl = $('#heroPhoto');
@@ -624,6 +717,425 @@ function initBlankSlate(link) {
     ctx.fillText('probablyweather.co.za', W / 2, lineBox.bottom + (H - lineBox.bottom) / 2);
     return new Promise((r) => canvas.toBlob(r, 'image/jpeg', 0.9));
   }
+}
+
+// ═════════════ D — THE JOKE THAT ARRIVES LATE ═════════════
+// Al, 25 Sept: Home shows the photograph and the forecast first, with no joke; a beat later the joke
+// writes itself onto the photograph — "exactly the comedic timing … makes it feel more unique to me
+// and like we want to see what it will say." Setup (the photograph), beat, punchline. On D behind a
+// switch, so D with and without it can be compared; style and beat switch by URL for the test:
+//   ?home=d&reveal=ink    the ink runs left to right, line by line, in the handwriting: it looks written
+//   ?home=d&reveal=word   the words arrive one after another
+//   ?home=d&reveal=fade   the whole line fades in
+//   &beat=1|2|3.5         seconds from the photograph landing to the first ink (1 when left out)
+//   &replay=1             every open counts as a first sight (the comparison links only)
+// The clock starts when the photograph is on screen — loaded, decoded, painted, the splash gone — not
+// when the page loads. Writing time grows with the line and stops at 1.6 s, so a long isiZulu line
+// never drags. A joke this phone has already shown is simply there; reduced motion gets it at once; a
+// screen reader has the words the moment the app writes them (the eye's copy is faded and masked, never
+// taken out of the page). The joke's room is laid out from the start, so nothing moves when it lands,
+// and the weather never waits: this only ever styles the joke. A tap on the photograph hides or shows
+// it; a button, out of sight until a keyboard reaches it, does the same for keyboards and screen readers.
+
+const REVEAL_STYLES = ['ink', 'word', 'fade'];
+const WRITE_MS_PER_CHAR = 22;   // the pen's pace: a 60-character line in ~1.3 s
+const WRITE_MIN_MS = 600;
+const WRITE_MAX_MS = 1600;      // Al: never much longer than ~1.6 s, however long the line
+const WORD_FADE_MS = 260;       // reveal=word: each word's own fade, inside the writing time
+const FADE_MS = 600;            // reveal=fade: the whole line
+const SCRIM_MS = 300;           // the joke's dark arrives just ahead of the words
+const PEN_DOWN_MS = 90;         // …and the pen touches down this long after the dark starts
+const TOGGLE_MS = 220;          // a tap's hide or show
+const INK_EDGE = 18;            // px: the soft front of the ink
+const INK_BLEED = 20;           // px: room for the text shadow around the words
+const SEEN_KEY = 'pw_d_jokes_seen';
+const SEEN_CAP = 400;
+// The one new piece of copy: the control's name. English and Afrikaans go to Al to OK; isiZulu,
+// isiXhosa and Sesotho went through the translation skills and lang-check (review/reveal/labels.md).
+const JOKE_LABELS = {
+  en: { show: 'Show the joke', hide: 'Hide the joke' },
+  af: { show: 'Wys die grap', hide: 'Versteek die grap' },
+  zu: { show: 'Bonisa ihlaya', hide: 'Fihla ihlaya' },
+  xh: { show: 'Bonisa isiqhulo', hide: 'Fihla isiqhulo' },
+  st: { show: 'Bontsha motlae', hide: 'Pata motlae' },
+};
+const MASK_PROPS = ['image', 'position', 'size', 'repeat'];
+
+function revealOptions() {
+  try {
+    const q = new URLSearchParams(location.search);
+    const style = q.get('reveal');
+    if (!REVEAL_STYLES.includes(style)) return null;
+    const beat = Number.parseFloat(q.get('beat') ?? '');
+    return {
+      style,
+      beatMs: Number.isFinite(beat) && beat >= 0 && beat <= 10 ? Math.round(beat * 1000) : 1000,
+      replay: q.get('replay') === '1',
+    };
+  } catch { return null; }
+}
+
+const writeMs = (s) => Math.round(Math.min(WRITE_MAX_MS, Math.max(WRITE_MIN_MS, s.length * WRITE_MS_PER_CHAR)));
+
+// Which jokes this phone has already shown: a short hash of each, the newest few hundred.
+function jokeHash(s) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+  return (h >>> 0).toString(36);
+}
+function seenJokes() {
+  try { const v = JSON.parse(localStorage.getItem(SEEN_KEY) || '[]'); return Array.isArray(v) ? v : []; } catch { return []; }
+}
+function rememberJoke(s) {
+  try {
+    const h = jokeHash(s);
+    const list = seenJokes().filter((x) => x !== h);
+    list.push(h);
+    localStorage.setItem(SEEN_KEY, JSON.stringify(list.slice(-SEEN_CAP)));
+  } catch { /* private mode: every joke is new, which is the safe side */ }
+}
+
+function initReveal({ headline, main, status, phone, onHome }, opts) {
+  const body = document.body;
+  const root = document.documentElement;
+  const bgImg = document.getElementById('bgImg');
+  const heroCard = document.getElementById('heroCard');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  body.classList.add('d-reveal', `d-reveal-${opts.style}`);
+
+  // The joke's dark, apart from its words, so the two can arrive on their own clocks. It is placed
+  // on the joke's box (place(), called from D's sync), behind the words and in front of the photograph.
+  const scrim = document.createElement('div');
+  scrim.id = 'dScrim';
+  scrim.className = 'd-scrim';
+  scrim.setAttribute('aria-hidden', 'true');
+  main.prepend(scrim);
+  // The control for keyboards and screen readers, read straight after the joke; a thumb uses the photograph.
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.id = 'dJokeToggle';
+  toggle.className = 'd-joke-toggle';
+  toggle.setAttribute('aria-controls', 'headline');
+  toggle.hidden = true;
+  headline.insertAdjacentElement('afterend', toggle);
+
+  let joke = null;        // the words on screen as the joke; '' while the caption holds a status line
+  let state = 'idle';     // idle · pending (the beat) · writing · shown · hidden (tapped away)
+  let token = 0;          // every change bumps it; a stale wait or stroke sees it and stops
+  let raf = 0;
+  let landed = '';        // the photograph last seen landing on screen, and when
+  let landedAt = 0;
+  const marks = [];       // for the proof videos: when each photograph landed, each joke began and ended
+  const mark = (what) => { marks.push({ what, at: Math.round(performance.now()), joke }); if (marks.length > 200) marks.shift(); };
+  const frame = () => new Promise((r) => requestAnimationFrame(() => r()));
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  // ---------- the dark follows the joke's box ----------
+  let placed = '';
+  const place = () => {
+    if (!phone() || !onHome()) return;
+    const r = headline.getBoundingClientRect();
+    const cs = getComputedStyle(headline);
+    const high = body.classList.contains('d-joke-high');
+    // Risen, the joke's dark starts inside the title card's fade, so the two meet without a seam.
+    const ext = high ? parseFloat(getComputedStyle(status() || body).paddingBottom) || 0 : 0;
+    // The keyboard's pill sits in the open photograph: under the title card with the joke at the foot,
+    // above the credit line with it risen — never on the words or the facts.
+    const open = high
+      ? [r.bottom - parseFloat(cs.paddingBottom), document.getElementById('dLine')?.getBoundingClientRect().top ?? innerHeight]
+      : [status()?.getBoundingClientRect().bottom ?? 0, r.top + parseFloat(cs.paddingTop)];
+    const g = [r.left, r.top - ext, r.width, r.height + ext, (open[0] + open[1]) / 2].map(Math.round);
+    if (g.join() === placed) return;
+    placed = g.join();
+    Object.assign(scrim.style, { left: `${g[0]}px`, top: `${g[1]}px`, width: `${g[2]}px`, height: `${g[3]}px` });
+    toggle.style.setProperty('--d-toggle-top', `${g[4]}px`);
+  };
+
+  // ---------- on and off ----------
+  // The words by opacity (never visibility or display: the page keeps them for a screen reader), the
+  // dark by its own class, and the credit line's soft top edge while the joke is away (CSS).
+  function paint(on, wordsMs, darkMs = wordsMs) {
+    headline.style.transition = wordsMs ? `opacity ${wordsMs}ms ease` : 'none';
+    headline.style.opacity = on ? '1' : '0';
+    scrim.style.transition = darkMs ? `opacity ${darkMs}ms ease-out` : 'none';
+    main.classList.toggle('d-joke-now', !darkMs);
+    scrim.classList.toggle('is-on', on);
+    main.classList.toggle('d-joke-off', !on);
+    if (!darkMs) {
+      getComputedStyle(scrim).opacity;                   // commit the jump before transitions return
+      requestAnimationFrame(() => main.classList.remove('d-joke-now'));
+    }
+  }
+  const clearMask = () => { for (const p of MASK_PROPS) { headline.style.removeProperty(`-webkit-mask-${p}`); headline.style.removeProperty(`mask-${p}`); } };
+  function setMask(layers) {
+    const L = layers.length ? layers : [{ img: 'linear-gradient(transparent, transparent)', x: 0, y: 0, w: 1, h: 1 }];
+    const v = {
+      image: L.map((l) => l.img).join(', '),
+      position: L.map((l) => `${l.x.toFixed(1)}px ${l.y.toFixed(1)}px`).join(', '),
+      size: L.map((l) => `${Math.max(1, l.w).toFixed(1)}px ${Math.max(1, l.h).toFixed(1)}px`).join(', '),
+      repeat: 'no-repeat',
+    };
+    for (const p of MASK_PROPS) { headline.style.setProperty(`-webkit-mask-${p}`, v[p]); headline.style.setProperty(`mask-${p}`, v[p]); }
+  }
+
+  // ---------- where the words are ----------
+  // Each word's box, grouped into the lines the browser broke; a line owns the band halfway to its
+  // neighbours (so ink on one line never shows the next), a word the span halfway to its neighbours.
+  const boxKey = () => { const b = headline.getBoundingClientRect(); return [b.left, b.top, b.width, b.height].map(Math.round).join() + getComputedStyle(headline).fontSize; };
+  function geometry() {
+    const node = headline.firstChild;
+    if (!node || node.nodeType !== Node.TEXT_NODE || headline.childNodes.length !== 1) return null;
+    const box = headline.getBoundingClientRect();
+    const s = node.textContent;
+    const range = document.createRange();
+    const lines = [];
+    for (const m of s.matchAll(/\S+/g)) {
+      range.setStart(node, m.index);
+      range.setEnd(node, m.index + m[0].length);
+      for (const r of range.getClientRects()) {
+        if (r.width < 0.5 || r.height < 0.5) continue;
+        const p = { at: m.index, left: r.left - box.left, right: r.right - box.left, top: r.top - box.top, bottom: r.bottom - box.top };
+        const mid = (p.top + p.bottom) / 2;
+        let l = lines.find((x) => Math.abs(x.mid - mid) < (p.bottom - p.top) / 2);
+        if (!l) { l = { mid, top: p.top, bottom: p.bottom, pieces: [] }; lines.push(l); }
+        l.pieces.push(p);
+        l.top = Math.min(l.top, p.top);
+        l.bottom = Math.max(l.bottom, p.bottom);
+      }
+    }
+    if (!lines.length) return null;
+    lines.sort((a, b) => a.mid - b.mid);
+    lines.forEach((l, i) => {
+      l.pieces.sort((a, b) => a.left - b.left);
+      l.left = l.pieces[0].left;
+      l.right = l.pieces[l.pieces.length - 1].right;
+      l.y0 = i ? (lines[i - 1].mid + l.mid) / 2 : l.top - INK_BLEED;
+      l.y1 = i < lines.length - 1 ? (l.mid + lines[i + 1].mid) / 2 : l.bottom + INK_BLEED;
+      l.pieces.forEach((p, j) => {
+        p.x0 = j ? (l.pieces[j - 1].right + p.left) / 2 : p.left - INK_BLEED;
+        p.x1 = j < l.pieces.length - 1 ? (p.right + l.pieces[j + 1].left) / 2 : p.right + INK_BLEED;
+      });
+    });
+    return { lines, len: s.length, key: boxKey() };
+  }
+  // ink: one pen, one pace, line after line; each line's share of the time is its width.
+  function inkLayers(g, t, ms) {
+    const spans = g.lines.map((l) => l.right - l.left + INK_EDGE);
+    let s = (t / ms) * spans.reduce((a, b) => a + b, 0);
+    const out = [];
+    for (let i = 0; i < g.lines.length && s > 0; i++) {
+      const l = g.lines[i];
+      const layer = { x: l.left - INK_BLEED, y: l.y0, w: l.right - l.left + 2 * INK_BLEED, h: l.y1 - l.y0 };
+      const pen = INK_BLEED + s;
+      layer.img = s >= spans[i] ? 'linear-gradient(#000, #000)'
+        : `linear-gradient(to right, #000 ${(pen - INK_EDGE).toFixed(1)}px, rgba(0, 0, 0, 0) ${pen.toFixed(1)}px)`;
+      out.push(layer);
+      s -= spans[i];
+    }
+    return out;
+  }
+  // word: each word fades up on its own, starting where the pen would have reached it.
+  function wordLayers(g, t, ms) {
+    const span = Math.max(1, ms - WORD_FADE_MS);
+    const out = [];
+    for (const l of g.lines) {
+      for (const p of l.pieces) {
+        const a = Math.min(1, Math.max(0, (t - (p.at / Math.max(1, g.len)) * span) / WORD_FADE_MS));
+        if (a <= 0) continue;
+        const e = (1 - (1 - a) ** 3).toFixed(3);
+        out.push({ img: `linear-gradient(rgba(0, 0, 0, ${e}), rgba(0, 0, 0, ${e}))`, x: p.x0, y: l.y0, w: p.x1 - p.x0, h: l.y1 - l.y0 });
+      }
+    }
+    return out;
+  }
+
+  // ---------- the photograph, actually on screen ----------
+  const abs = (u) => { try { return new URL(u, document.baseURI).href; } catch { return u || ''; } };
+  const heroSrc = () => /url\(["']?([^"')]+)["']?\)/.exec(root.style.getPropertyValue('--hero-url'))?.[1] || '';
+  // The picture the picker loaded is the one the frame paints, the splash has gone, D's stylesheet is
+  // in, Home is showing, the page is in front and the panel is down. Returns that picture, or ''.
+  function onScreen() {
+    if (!phone() || !onHome() || document.hidden || body.classList.contains('d-sheet-open')) return '';
+    const splash = document.getElementById('pwSplash');
+    if (splash && parseFloat(getComputedStyle(splash).opacity) > 0.05) return '';
+    if (getComputedStyle(scrim).position !== 'fixed') return '';
+    if (!bgImg?.complete || !bgImg.naturalWidth) return '';
+    const src = abs(bgImg.currentSrc || bgImg.src);
+    return abs(heroSrc()) === src ? src : '';
+  }
+  // Setup, beat: waits for the photograph, then the beat counted from its landing. Anything that takes
+  // the photograph away (another screen, the panel up, the app in the background) starts it over.
+  async function arrive(my) {
+    for (;;) {
+      const src = onScreen();
+      if (!src) { landed = ''; await sleep(80); if (my !== token) return; continue; }
+      if (src !== landed) {
+        try { await bgImg.decode(); } catch { /* decoded for the frame or not, the load is done */ }
+        await frame();
+        await frame();
+        if (my !== token) return;
+        if (onScreen() !== src) continue;
+        landed = src;
+        landedAt = performance.now();
+        mark('photo');
+      }
+      const left = landedAt + opts.beatMs - performance.now();
+      if (left > 0) { await sleep(Math.min(left, 100)); if (my !== token) return; continue; }
+      // The hand has to be in before the pen moves, or the line re-flows mid-stroke (0.7 s at most).
+      const cs = getComputedStyle(headline);
+      await Promise.race([document.fonts?.load?.(`${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`, joke), sleep(700)]).catch(() => {});
+      if (my !== token) return;
+      if (onScreen() !== landed) continue;
+      write(my);
+      return;
+    }
+  }
+
+  // ---------- punchline ----------
+  function write(my) {
+    state = 'writing';
+    rememberJoke(joke);
+    mark('write');
+    labels();
+    // The dark first; the words follow on it.
+    scrim.style.transition = `opacity ${SCRIM_MS}ms ease-out`;
+    scrim.classList.add('is-on');
+    main.classList.remove('d-joke-off');
+    if (opts.style === 'fade') {
+      headline.style.transition = `opacity ${FADE_MS}ms ease-out`;
+      headline.style.opacity = '1';
+      setTimeout(() => { if (my === token && state === 'writing') done(); }, FADE_MS);
+      return;
+    }
+    const g = geometry();
+    if (!g) { paint(true, FADE_MS, SCRIM_MS); setTimeout(() => { if (my === token && state === 'writing') done(); }, FADE_MS); return; }
+    setMask([]);
+    headline.style.transition = 'none';
+    headline.style.opacity = '1';
+    // The whole write, pen-down included, stays inside writeMs (1.6 s at most).
+    const ms = writeMs(joke) - PEN_DOWN_MS;
+    const t0 = performance.now() + PEN_DOWN_MS;
+    const step = () => {
+      if (my !== token || state !== 'writing') return;
+      if (boxKey() !== g.key) return done();       // the layout moved under the pen: the rest lands at once
+      const t = performance.now() - t0;
+      if (t >= ms) return done();
+      setMask(t <= 0 ? [] : opts.style === 'ink' ? inkLayers(g, t, ms) : wordLayers(g, t, ms));
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+  }
+  function done() {
+    cancelAnimationFrame(raf);
+    clearMask();
+    headline.style.transition = '';
+    headline.style.opacity = '1';
+    state = 'shown';
+    mark('shown');
+    labels();
+  }
+
+  // ---------- a new line on the caption ----------
+  function onChange() {
+    const next = headline.dataset.line === 'joke' ? headline.textContent.trim() : '';
+    if (next === joke) return;
+    joke = next;
+    token += 1;
+    cancelAnimationFrame(raf);
+    clearMask();
+    if (!joke) { state = 'idle'; paint(true, 0); labels(); return; }       // loading, error: as they are
+    // Wider than a phone, D keeps today's polaroid and there is no photograph for the joke to wait on.
+    if (!phone()) { state = 'shown'; paint(true, 0); labels(); return; }
+    if (reduce.matches || (!opts.replay && seenJokes().includes(jokeHash(joke)))) {
+      rememberJoke(joke);
+      state = 'shown';
+      paint(true, 0);
+      mark('there');
+      labels();
+      return;
+    }
+    state = 'pending';
+    paint(false, 0);
+    labels();
+    arrive(token);
+  }
+  // Runs before the browser paints the new words, so a new joke never flashes before its beat.
+  new MutationObserver(onChange).observe(headline, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ['data-line'] });
+
+  // ---------- the tap, and the button ----------
+  function flip() {
+    if (state === 'idle') return;
+    if (state === 'pending') { token += 1; mark('tap'); write(token); return; }   // asked for: no more beat
+    token += 1;
+    const my = token;
+    cancelAnimationFrame(raf);
+    const ms = reduce.matches ? 0 : TOGGLE_MS;
+    if (state === 'hidden') {
+      clearMask();
+      state = 'shown';
+      paint(true, ms);
+      mark('show');
+    } else {
+      // A stroke cut short fades out as it stood, and is whole when it comes back.
+      state = 'hidden';
+      paint(false, ms);
+      mark('hide');
+      setTimeout(() => { if (my === token) clearMask(); }, ms);
+    }
+    labels();
+  }
+  function labels() {
+    const L = JOKE_LABELS[(root.lang || 'en').slice(0, 2)] || JOKE_LABELS.en;
+    const word = state === 'pending' || state === 'hidden' ? L.show : L.hide;
+    if (toggle.textContent !== word) toggle.textContent = word;
+    toggle.hidden = state === 'idle';
+  }
+  new MutationObserver(labels).observe(root, { attributes: true, attributeFilter: ['lang'] });
+  // A window widened past a phone mid-wait (or tapped away) shows the joke as the polaroid has it.
+  matchMedia('(max-width: 768px)').addEventListener?.('change', () => {
+    if (phone() || !joke || state === 'shown') return;
+    token += 1;
+    cancelAnimationFrame(raf);
+    clearMask();
+    state = 'shown';
+    paint(true, 0);
+    labels();
+  });
+  heroCard?.addEventListener('click', () => { if (phone() && onHome()) flip(); });
+  toggle.addEventListener('click', flip);
+
+  onChange();
+  return {
+    place,
+    api: { style: opts.style, beatMs: opts.beatMs, replay: opts.replay, marks, state: () => state, flip, writeMs },
+  };
+}
+
+// The postcard's facts, read off the screen in its language: place, temperature, "Probably", condition.
+const POSTCARD_FACTS = ['#location', '#temp .hero-now', '#temp .hero-probably', '#description'];
+
+// Lines for a canvas, broken like CSS text-wrap: balance — the fewest lines at the width, then the
+// narrowest width that keeps that many, so the last line is not a lonely word.
+function wrapLines(ctx, s, max) {
+  const out = [];
+  let cur = '';
+  for (const w of s.split(/\s+/).filter(Boolean)) {
+    const next = cur ? `${cur} ${w}` : w;
+    if (cur && ctx.measureText(next).width > max) { out.push(cur); cur = w; } else cur = next;
+  }
+  if (cur) out.push(cur);
+  return out;
+}
+function balanceLines(ctx, s, max) {
+  const n = wrapLines(ctx, s, max).length;
+  if (n < 2) return wrapLines(ctx, s, max);
+  let lo = max * 0.4;
+  let hi = max;
+  for (let i = 0; i < 14; i++) {
+    const mid = (lo + hi) / 2;
+    if (wrapLines(ctx, s, mid).length > n) lo = mid; else hi = mid;
+  }
+  return wrapLines(ctx, s, hi);
 }
 
 function loadImage(src) {

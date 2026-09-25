@@ -1,0 +1,16 @@
+[
+ {
+  "lang": "zu",
+  "en": "Show the joke",
+  "text": "Bonisa ihlaya",
+  "key": "d-joke-toggle/show",
+  "source": "new (reveal label)"
+ },
+ {
+  "lang": "zu",
+  "en": "Hide the joke",
+  "text": "Fihla ihlaya",
+  "key": "d-joke-toggle/hide",
+  "source": "new (reveal label)"
+ }
+]

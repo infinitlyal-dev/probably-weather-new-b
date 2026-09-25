@@ -1,0 +1,16 @@
+[
+ {
+  "lang": "xh",
+  "en": "Show the joke",
+  "text": "Bonisa isiqhulo",
+  "key": "d-joke-toggle/show",
+  "source": "new (reveal label)"
+ },
+ {
+  "lang": "xh",
+  "en": "Hide the joke",
+  "text": "Fihla isiqhulo",
+  "key": "d-joke-toggle/hide",
+  "source": "new (reveal label)"
+ }
+]

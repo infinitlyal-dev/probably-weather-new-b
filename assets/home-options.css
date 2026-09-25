@@ -595,3 +595,122 @@
   body.home-d .d-sheet,
   body.home-d.d-sheet-open .d-sheet { transition: none; }
 }
+
+/* ═════════════ D — THE JOKE THAT ARRIVES LATE (?home=d&reveal=ink|word|fade) ═════════════
+   Al, 25 Sept. home-options.js holds the joke back until a beat after the photograph lands, then
+   writes it on. The joke's dark moves off the caption onto #dScrim, which the script lays on the
+   caption's own box, so the words and the dark arrive on their own clocks. The caption's box is not
+   touched — its room is held from the start and nothing moves when the joke lands. Everything here is
+   scoped to body.d-reveal: D without the switch is D as it was. */
+.d-scrim, .d-joke-toggle { display: none; }
+
+@media (max-width: 768px) {
+  /* The caption keeps its box; its dark goes to #dScrim and its entrance to the reveal (the shipped
+     heroFadeInMeme fills forwards, which would pin the words on, and it rises 10 px). */
+  body.home-d.d-reveal.home-active main#home-screen.main > #headline.hero-caption {
+    background: none;
+    animation: none;
+  }
+  body.home-d.d-reveal.home-active main#home-screen.main > #dScrim {
+    display: block;
+    position: fixed;
+    z-index: -1;               /* main is the stacking context: behind the words, over the photograph */
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    /* The caption's own dark (above), stop for stop. */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.62) var(--d-runway),
+      rgba(0, 0, 0, 0.70) 100%
+    );
+  }
+  body.home-d.d-reveal.home-active main#home-screen.main > #dScrim.is-on { opacity: 1; }
+  /* Risen, the title card keeps its own fade (joke or no joke) and the joke's dark starts inside it —
+     the script lifts #dScrim by the fade's height — so the two meet without a seam either way. */
+  body.home-d.d-reveal.home-active.d-joke-high main#home-screen.main > #weatherStatus {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.64) 0%,
+      rgba(0, 0, 0, 0.52) calc(100% - var(--d-top-runway)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  body.home-d.d-reveal.home-active.d-joke-high main#home-screen.main > #dScrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.58) var(--d-top-runway),
+      rgba(0, 0, 0, 0.58) calc(100% - var(--d-runway)),
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+  /* While the joke is away (the beat, or tapped off) the credit line keeps a soft top edge instead of
+     starting on a hard line; risen it always has one (D's rule above). */
+  body.home-d.d-reveal.home-active main#home-screen.main > #dLine::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: clamp(20px, 4vh, 36px);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.70));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+  }
+  body.home-d.d-reveal.home-active main#home-screen.main.d-joke-off > #dLine::before,
+  body.home-d.d-reveal.home-active.d-joke-high main#home-screen.main > #dLine::before { opacity: 1; }
+  body.home-d.d-reveal.home-active main#home-screen.main.d-joke-now > #dLine::before { transition: none; }
+
+  /* A tap on the photograph hides or shows the joke. */
+  body.home-d.d-reveal.home-active .hero-card {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* The same control as a button, for keyboards and screen readers: read straight after the joke,
+     out of sight until a keyboard lands on it, then a pill in the open photograph (home-options.js
+     measures where that is: --d-toggle-top). */
+  body.home-d.d-reveal.home-active main#home-screen.main > #dJokeToggle {
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: var(--d-toggle-top, 45%);
+    z-index: 3;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    pointer-events: auto;
+  }
+  body.home-d.d-reveal.home-active main#home-screen.main > #dJokeToggle[hidden] { display: none; }
+  body.home-d.d-reveal.home-active main#home-screen.main > #dJokeToggle:focus-visible {
+    width: auto;
+    height: auto;
+    min-height: 44px;
+    padding: 0 18px;
+    overflow: visible;
+    clip-path: none;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.62);
+    color: #fff;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    outline: 3px solid var(--brand-gold, #ffd700);
+    outline-offset: 2px;
+  }
+}
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  body.home-d.d-reveal main#home-screen.main > #dLine::before { transition: none; }
+}

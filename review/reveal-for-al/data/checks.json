@@ -1,0 +1,117 @@
+{
+ "ranOn": "2026-09-25T08:41:56.754Z",
+ "engine": "WebKit (Playwright) 414x715 @2x",
+ "results": [
+  {
+   "name": "weather first: temperature and credit line on screen while the joke waits",
+   "pass": true,
+   "detail": {
+    "temp": "14°",
+    "state": "pending"
+   }
+  },
+  {
+   "name": "screen readers: the waiting joke is in the accessibility tree (only faded)",
+   "pass": true,
+   "detail": {
+    "opacity": "0"
+   }
+  },
+  {
+   "name": "nothing moves: joke box, credit line, title card, handle, Share — same rects waiting and written",
+   "pass": true,
+   "detail": "identical"
+  },
+  {
+   "name": "Share: opens the share sheet and leaves the joke alone",
+   "pass": true
+  },
+  {
+   "name": "the handle: opens the panel and leaves the joke alone",
+   "pass": true
+  },
+  {
+   "name": "a swipe up on the photo (synthetic touch events): opens the panel and leaves the joke alone",
+   "pass": true
+  },
+  {
+   "name": "the photo: a tap hides the joke, another shows it; the name follows",
+   "pass": true,
+   "detail": {
+    "l0": "Hide the joke",
+    "hidden": {
+     "state": "hidden",
+     "label": "Show the joke",
+     "opacity": "0"
+    },
+    "back": {
+     "state": "shown",
+     "label": "Hide the joke"
+    }
+   }
+  },
+  {
+   "name": "keyboard: Tab reaches the button, it shows itself, Enter flips the joke",
+   "pass": true,
+   "detail": {
+    "reached": true,
+    "box": {
+     "w": 138,
+     "h": 44
+    }
+   }
+  },
+  {
+   "name": "five languages: the button is named in each",
+   "pass": true,
+   "detail": {
+    "en": "Hide the joke",
+    "af": "Versteek die grap",
+    "zu": "Fihla ihlaya",
+    "xh": "Fihla isiqhulo",
+    "st": "Pata motlae"
+   }
+  },
+  {
+   "name": "reduced motion: the joke is simply there (no beat, no writing)",
+   "pass": true,
+   "detail": [
+    "there"
+   ]
+  },
+  {
+   "name": "seen before: reopened, the same joke is simply there",
+   "pass": true,
+   "detail": {
+    "first": [
+     "photo",
+     "write",
+     "shown"
+    ],
+    "second": [
+     "there"
+    ]
+   }
+  },
+  {
+   "name": "D without the switch: none of the reveal, the caption keeps its own dark",
+   "pass": true,
+   "detail": {
+    "reveal": false,
+    "scrim": false,
+    "toggle": false,
+    "bg": "linear-gradient",
+    "opacity": "1"
+   }
+  },
+  {
+   "name": "desktop width: the polaroid caption is simply there",
+   "pass": true,
+   "detail": {
+    "state": "shown",
+    "opacity": "1",
+    "text": "Rain turns every South African driver ba"
+   }
+  }
+ ]
+}

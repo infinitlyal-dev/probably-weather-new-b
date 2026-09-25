@@ -1,0 +1,16 @@
+[
+ {
+  "lang": "st",
+  "en": "Show the joke",
+  "text": "Bontsha motlae",
+  "key": "d-joke-toggle/show",
+  "source": "new (reveal label)"
+ },
+ {
+  "lang": "st",
+  "en": "Hide the joke",
+  "text": "Pata motlae",
+  "key": "d-joke-toggle/hide",
+  "source": "new (reveal label)"
+ }
+]

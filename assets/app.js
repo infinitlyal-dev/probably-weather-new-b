@@ -834,6 +834,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ========== UTILITIES ==========
   const safeText = (el, txt) => { if (el) el.textContent = txt ?? "--"; };
+  // DESIGN BRANCH ONLY (the joke that arrives late, ?home=d&reveal=…, 2026-09-25): marks whether the
+  // caption holds a joke or a status line (loading, error), so D writes on only a joke.
+  const markCaption = (kind) => { if (headlineEl?.dataset) headlineEl.dataset.line = kind; };
   // Hero temp render (Task 2, 2026-07-06): the brand word on its own line, then
   // the temperature pair as ONE unbreakable run. Built from element nodes (not
   // innerHTML) so the range can never be an injection vector; the literal space
@@ -2581,7 +2584,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!carriedPayload) clearForecastSurfaces();
     showLoader(true);
     safeText(locationEl, nameKey ? t('misc', nameKey) : displayPlaceName(name));
-    safeText(headlineEl, t('misc', 'loading'));
+    markCaption('status'); safeText(headlineEl, t('misc', 'loading'));
     safeText(tempEl, '--°');
     safeText(descriptionEl, '—');
   }
@@ -2601,7 +2604,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showLoader(false);
     safeText(locationEl, nameKey ? t('misc', nameKey) : displayPlaceName(name));
     clearForecastSurfaces();
-    safeText(headlineEl, t('misc', 'error'));
+    markCaption('status'); safeText(headlineEl, t('misc', 'error'));
     safeText(descriptionEl, msgKey ? t('misc', msgKey) : (msg || t('misc', 'couldntFetch')));
   }
   function renderSidebar(norm, heroOverride) {
@@ -3022,11 +3025,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // English humour AND the wrong weather. So when the bank is missing, the
     // hero states the localized condition and says nothing funny at all.
     if (!isCopyBankLoaded(settings.lang)) {
-      safeText(headlineEl, '');
+      markCaption('status'); safeText(headlineEl, '');
       safeText(descriptionEl, getHeroLabel(displayConditionForCopy));
       debugLog('[Hero copy] bank unavailable for', settings.lang, '— condition label, no witty line');
     } else {
-      safeText(headlineEl, getWittyLine(displayConditionForCopy));
+      markCaption('joke'); safeText(headlineEl, getWittyLine(displayConditionForCopy));
       safeText(descriptionEl, getHeadline(displayConditionForCopy));
     }
     debugLog('[Layout] description:', descriptionEl?.textContent, 'headline:', headlineEl?.textContent);
@@ -3666,7 +3669,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderHome(norm); renderHourly(norm.hourly); renderWeek(norm.daily, norm.hourly);
         if (openDayDetailIndex !== null) renderDayDetail(norm, openDayDetailIndex);
         // renderHome overwrites the hero copy, so the loading state is restated.
-        safeText(headlineEl, t('misc', 'loading'));
+        markCaption('status'); safeText(headlineEl, t('misc', 'loading'));
       }
     }
     renderFavorites(); renderRecents();

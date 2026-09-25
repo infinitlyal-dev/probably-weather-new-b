@@ -1,0 +1,1113 @@
+{
+ "recordedOn": "2026-09-25T08:31:02.334Z",
+ "viewport": "414x715 @2x, WebKit (Chrome on iPhone)",
+ "states": {
+  "rain": {
+   "title": "Rain",
+   "slot": "rain/week_1/day/3.webp",
+   "lang": "en",
+   "clips": {
+    "d-today": {
+     "title": "D today — no reveal",
+     "file": "videos/rain--d-today.mp4",
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+     "risen": false,
+     "beatMs": null,
+     "writeMs": null,
+     "marks": [],
+     "errors": []
+    },
+    "ink-1": {
+     "title": "Ink · 1 s",
+     "file": "videos/rain--ink-1.mp4",
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+     "risen": false,
+     "beatMs": 1007,
+     "writeMs": 1614,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 718,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "write",
+       "at": 1725,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "shown",
+       "at": 3339,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      }
+     ],
+     "errors": []
+    },
+    "word-1": {
+     "title": "Word by word · 1 s",
+     "file": "videos/rain--word-1.mp4",
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+     "risen": false,
+     "beatMs": 1018,
+     "writeMs": 1613,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 721,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "write",
+       "at": 1739,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "shown",
+       "at": 3352,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      }
+     ],
+     "errors": []
+    },
+    "fade-1": {
+     "title": "Fade · 1 s",
+     "file": "videos/rain--fade-1.mp4",
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+     "risen": false,
+     "beatMs": 1012,
+     "writeMs": 614,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 738,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "write",
+       "at": 1750,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "shown",
+       "at": 2364,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      }
+     ],
+     "errors": []
+    },
+    "ink-2": {
+     "title": "Ink · 2 s",
+     "file": "videos/rain--ink-2.mp4",
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+     "risen": false,
+     "beatMs": 2023,
+     "writeMs": 1606,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 806,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "write",
+       "at": 2829,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "shown",
+       "at": 4435,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      }
+     ],
+     "errors": []
+    },
+    "ink-3.5": {
+     "title": "Ink · 3.5 s",
+     "file": "videos/rain--ink-3.5.mp4",
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+     "risen": false,
+     "beatMs": 3505,
+     "writeMs": 1614,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 820,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "write",
+       "at": 4325,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      },
+      {
+       "what": "shown",
+       "at": 5939,
+       "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+      }
+     ],
+     "errors": []
+    }
+   },
+   "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off.",
+   "postcard": "postcards/rain.jpg"
+  },
+  "clear-day": {
+   "title": "Clear day",
+   "slot": "clear/week_1/day/4.webp",
+   "lang": "en",
+   "clips": {
+    "d-today": {
+     "title": "D today — no reveal",
+     "file": "videos/clear-day--d-today.mp4",
+     "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+     "risen": false,
+     "beatMs": null,
+     "writeMs": null,
+     "marks": [],
+     "errors": []
+    },
+    "ink-1": {
+     "title": "Ink · 1 s",
+     "file": "videos/clear-day--ink-1.mp4",
+     "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+     "risen": false,
+     "beatMs": 1014,
+     "writeMs": 1566,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 753,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "write",
+       "at": 1767,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "shown",
+       "at": 3333,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      }
+     ],
+     "errors": []
+    },
+    "word-1": {
+     "title": "Word by word · 1 s",
+     "file": "videos/clear-day--word-1.mp4",
+     "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+     "risen": false,
+     "beatMs": 1012,
+     "writeMs": 1566,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 743,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "write",
+       "at": 1755,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "shown",
+       "at": 3321,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      }
+     ],
+     "errors": []
+    },
+    "fade-1": {
+     "title": "Fade · 1 s",
+     "file": "videos/clear-day--fade-1.mp4",
+     "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+     "risen": false,
+     "beatMs": 1008,
+     "writeMs": 611,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 797,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "write",
+       "at": 1805,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "shown",
+       "at": 2416,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      }
+     ],
+     "errors": []
+    },
+    "ink-2": {
+     "title": "Ink · 2 s",
+     "file": "videos/clear-day--ink-2.mp4",
+     "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+     "risen": false,
+     "beatMs": 2007,
+     "writeMs": 1568,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 636,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "write",
+       "at": 2643,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "shown",
+       "at": 4211,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      }
+     ],
+     "errors": []
+    },
+    "ink-3.5": {
+     "title": "Ink · 3.5 s",
+     "file": "videos/clear-day--ink-3.5.mp4",
+     "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+     "risen": false,
+     "beatMs": 3504,
+     "writeMs": 1579,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 707,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "write",
+       "at": 4211,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      },
+      {
+       "what": "shown",
+       "at": 5790,
+       "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb."
+      }
+     ],
+     "errors": []
+    }
+   },
+   "joke": "The sort of afternoon that keeps a whole soccer team sitting on a curb.",
+   "postcard": "postcards/clear-day.jpg"
+  },
+  "night": {
+   "title": "Night",
+   "slot": "clear/week_2/night/5.webp",
+   "lang": "en",
+   "clips": {
+    "d-today": {
+     "title": "D today — no reveal",
+     "file": "videos/night--d-today.mp4",
+     "joke": "The evening is holding at exactly the temperature nobody talks about.",
+     "risen": false,
+     "beatMs": null,
+     "writeMs": null,
+     "marks": [],
+     "errors": []
+    },
+    "ink-1": {
+     "title": "Ink · 1 s",
+     "file": "videos/night--ink-1.mp4",
+     "joke": "The evening is holding at exactly the temperature nobody talks about.",
+     "risen": false,
+     "beatMs": 1016,
+     "writeMs": 1520,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 777,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "write",
+       "at": 1793,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "shown",
+       "at": 3313,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      }
+     ],
+     "errors": []
+    },
+    "word-1": {
+     "title": "Word by word · 1 s",
+     "file": "videos/night--word-1.mp4",
+     "joke": "The evening is holding at exactly the temperature nobody talks about.",
+     "risen": false,
+     "beatMs": 1018,
+     "writeMs": 1533,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 722,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "write",
+       "at": 1740,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "shown",
+       "at": 3273,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      }
+     ],
+     "errors": []
+    },
+    "fade-1": {
+     "title": "Fade · 1 s",
+     "file": "videos/night--fade-1.mp4",
+     "joke": "The evening is holding at exactly the temperature nobody talks about.",
+     "risen": false,
+     "beatMs": 1013,
+     "writeMs": 618,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 832,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "write",
+       "at": 1845,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "shown",
+       "at": 2463,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      }
+     ],
+     "errors": []
+    },
+    "ink-2": {
+     "title": "Ink · 2 s",
+     "file": "videos/night--ink-2.mp4",
+     "joke": "The evening is holding at exactly the temperature nobody talks about.",
+     "risen": false,
+     "beatMs": 2017,
+     "writeMs": 1524,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 742,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "write",
+       "at": 2759,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "shown",
+       "at": 4283,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      }
+     ],
+     "errors": []
+    },
+    "ink-3.5": {
+     "title": "Ink · 3.5 s",
+     "file": "videos/night--ink-3.5.mp4",
+     "joke": "The evening is holding at exactly the temperature nobody talks about.",
+     "risen": false,
+     "beatMs": 3513,
+     "writeMs": 1528,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 809,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "write",
+       "at": 4322,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      },
+      {
+       "what": "shown",
+       "at": 5850,
+       "joke": "The evening is holding at exactly the temperature nobody talks about."
+      }
+     ],
+     "errors": []
+    }
+   },
+   "joke": "The evening is holding at exactly the temperature nobody talks about.",
+   "postcard": "postcards/night.jpg"
+  },
+  "pale-dog": {
+   "title": "The pale photograph with the dog",
+   "slot": "cold/week_1/day/7.webp",
+   "lang": "en",
+   "clips": {
+    "d-today": {
+     "title": "D today — no reveal",
+     "file": "videos/pale-dog--d-today.mp4",
+     "joke": "One patch of sun came into this lounge and the dog got there first.",
+     "risen": false,
+     "beatMs": null,
+     "writeMs": null,
+     "marks": [],
+     "errors": []
+    },
+    "ink-1": {
+     "title": "Ink · 1 s",
+     "file": "videos/pale-dog--ink-1.mp4",
+     "joke": "One patch of sun came into this lounge and the dog got there first.",
+     "risen": false,
+     "beatMs": 1016,
+     "writeMs": 1488,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 757,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "write",
+       "at": 1773,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "shown",
+       "at": 3261,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      }
+     ],
+     "errors": []
+    },
+    "word-1": {
+     "title": "Word by word · 1 s",
+     "file": "videos/pale-dog--word-1.mp4",
+     "joke": "One patch of sun came into this lounge and the dog got there first.",
+     "risen": false,
+     "beatMs": 1002,
+     "writeMs": 1488,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 769,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "write",
+       "at": 1771,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "shown",
+       "at": 3259,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      }
+     ],
+     "errors": []
+    },
+    "fade-1": {
+     "title": "Fade · 1 s",
+     "file": "videos/pale-dog--fade-1.mp4",
+     "joke": "One patch of sun came into this lounge and the dog got there first.",
+     "risen": false,
+     "beatMs": 1003,
+     "writeMs": 608,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 645,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "write",
+       "at": 1648,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "shown",
+       "at": 2256,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      }
+     ],
+     "errors": []
+    },
+    "ink-2": {
+     "title": "Ink · 2 s",
+     "file": "videos/pale-dog--ink-2.mp4",
+     "joke": "One patch of sun came into this lounge and the dog got there first.",
+     "risen": false,
+     "beatMs": 2011,
+     "writeMs": 1484,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 690,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "write",
+       "at": 2701,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "shown",
+       "at": 4185,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      }
+     ],
+     "errors": []
+    },
+    "ink-3.5": {
+     "title": "Ink · 3.5 s",
+     "file": "videos/pale-dog--ink-3.5.mp4",
+     "joke": "One patch of sun came into this lounge and the dog got there first.",
+     "risen": false,
+     "beatMs": 3517,
+     "writeMs": 1489,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 698,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "write",
+       "at": 4215,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      },
+      {
+       "what": "shown",
+       "at": 5704,
+       "joke": "One patch of sun came into this lounge and the dog got there first."
+      }
+     ],
+     "errors": []
+    }
+   },
+   "joke": "One patch of sun came into this lounge and the dog got there first.",
+   "postcard": "postcards/pale-dog.jpg"
+  },
+  "zu-longest": {
+   "title": "The longest isiZulu line",
+   "slot": "cloudy/week_1/day/1.webp",
+   "lang": "zu",
+   "clips": {
+    "d-today": {
+     "title": "D today — no reveal",
+     "file": "videos/zu-longest--d-today.mp4",
+     "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+     "risen": false,
+     "beatMs": null,
+     "writeMs": null,
+     "marks": [],
+     "errors": []
+    },
+    "ink-1": {
+     "title": "Ink · 1 s",
+     "file": "videos/zu-longest--ink-1.mp4",
+     "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+     "risen": false,
+     "beatMs": 1014,
+     "writeMs": 1614,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 768,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "write",
+       "at": 1782,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "shown",
+       "at": 3396,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      }
+     ],
+     "errors": []
+    },
+    "word-1": {
+     "title": "Word by word · 1 s",
+     "file": "videos/zu-longest--word-1.mp4",
+     "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+     "risen": false,
+     "beatMs": 1008,
+     "writeMs": 1615,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 894,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "write",
+       "at": 1902,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "shown",
+       "at": 3517,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      }
+     ],
+     "errors": []
+    },
+    "fade-1": {
+     "title": "Fade · 1 s",
+     "file": "videos/zu-longest--fade-1.mp4",
+     "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+     "risen": false,
+     "beatMs": 1004,
+     "writeMs": 619,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 675,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "write",
+       "at": 1679,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "shown",
+       "at": 2298,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      }
+     ],
+     "errors": []
+    },
+    "ink-2": {
+     "title": "Ink · 2 s",
+     "file": "videos/zu-longest--ink-2.mp4",
+     "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+     "risen": false,
+     "beatMs": 2009,
+     "writeMs": 1610,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 702,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "write",
+       "at": 2711,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "shown",
+       "at": 4321,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      }
+     ],
+     "errors": []
+    },
+    "ink-3.5": {
+     "title": "Ink · 3.5 s",
+     "file": "videos/zu-longest--ink-3.5.mp4",
+     "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+     "risen": false,
+     "beatMs": 3505,
+     "writeMs": 1609,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 728,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "write",
+       "at": 4233,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      },
+      {
+       "what": "shown",
+       "at": 5842,
+       "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu."
+      }
+     ],
+     "errors": []
+    }
+   },
+   "joke": "Omakhelwane abaseduze bangamakhilomitha angamashumi amathathu kude futhi namuhla ebusuku bakubona kancane nakakhulu.",
+   "postcard": "postcards/zu-longest.jpg"
+  },
+  "sprinkler": {
+   "title": "Most shown, joke on the subject: the sprinkler",
+   "slot": "heat/week_1/day/7.webp",
+   "lang": "en",
+   "clips": {
+    "d-today": {
+     "title": "D today — no reveal",
+     "file": "videos/sprinkler--d-today.mp4",
+     "joke": "The lawn is taking a beating that has nothing to do with the sun.",
+     "risen": false,
+     "beatMs": null,
+     "writeMs": null,
+     "marks": [],
+     "errors": []
+    },
+    "ink-1": {
+     "title": "Ink · 1 s",
+     "file": "videos/sprinkler--ink-1.mp4",
+     "joke": "The lawn is taking a beating that has nothing to do with the sun.",
+     "risen": false,
+     "beatMs": 1002,
+     "writeMs": 1445,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 746,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "write",
+       "at": 1748,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "shown",
+       "at": 3193,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      }
+     ],
+     "errors": []
+    },
+    "word-1": {
+     "title": "Word by word · 1 s",
+     "file": "videos/sprinkler--word-1.mp4",
+     "joke": "The lawn is taking a beating that has nothing to do with the sun.",
+     "risen": false,
+     "beatMs": 1028,
+     "writeMs": 1440,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 754,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "write",
+       "at": 1782,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "shown",
+       "at": 3222,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      }
+     ],
+     "errors": []
+    },
+    "fade-1": {
+     "title": "Fade · 1 s",
+     "file": "videos/sprinkler--fade-1.mp4",
+     "joke": "The lawn is taking a beating that has nothing to do with the sun.",
+     "risen": false,
+     "beatMs": 1015,
+     "writeMs": 608,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 690,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "write",
+       "at": 1705,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "shown",
+       "at": 2313,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      }
+     ],
+     "errors": []
+    },
+    "ink-2": {
+     "title": "Ink · 2 s",
+     "file": "videos/sprinkler--ink-2.mp4",
+     "joke": "The lawn is taking a beating that has nothing to do with the sun.",
+     "risen": false,
+     "beatMs": 2006,
+     "writeMs": 1434,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 780,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "write",
+       "at": 2786,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "shown",
+       "at": 4220,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      }
+     ],
+     "errors": []
+    },
+    "ink-3.5": {
+     "title": "Ink · 3.5 s",
+     "file": "videos/sprinkler--ink-3.5.mp4",
+     "joke": "The lawn is taking a beating that has nothing to do with the sun.",
+     "risen": false,
+     "beatMs": 3506,
+     "writeMs": 1437,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 733,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "write",
+       "at": 4239,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      },
+      {
+       "what": "shown",
+       "at": 5676,
+       "joke": "The lawn is taking a beating that has nothing to do with the sun."
+      }
+     ],
+     "errors": []
+    }
+   },
+   "joke": "The lawn is taking a beating that has nothing to do with the sun.",
+   "postcard": "postcards/sprinkler.jpg"
+  },
+  "parrot": {
+   "title": "Most shown, joke on the subject: the parrot",
+   "slot": "heat/week_1/day/5.webp",
+   "lang": "xh",
+   "clips": {
+    "d-today": {
+     "title": "D today — no reveal",
+     "file": "videos/parrot--d-today.mp4",
+     "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+     "risen": false,
+     "beatMs": null,
+     "writeMs": null,
+     "marks": [],
+     "errors": []
+    },
+    "ink-1": {
+     "title": "Ink · 1 s",
+     "file": "videos/parrot--ink-1.mp4",
+     "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+     "risen": false,
+     "beatMs": 1015,
+     "writeMs": 1617,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 763,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "write",
+       "at": 1778,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "shown",
+       "at": 3395,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      }
+     ],
+     "errors": []
+    },
+    "word-1": {
+     "title": "Word by word · 1 s",
+     "file": "videos/parrot--word-1.mp4",
+     "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+     "risen": false,
+     "beatMs": 1005,
+     "writeMs": 1615,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 741,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "write",
+       "at": 1746,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "shown",
+       "at": 3361,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      }
+     ],
+     "errors": []
+    },
+    "fade-1": {
+     "title": "Fade · 1 s",
+     "file": "videos/parrot--fade-1.mp4",
+     "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+     "risen": false,
+     "beatMs": 1020,
+     "writeMs": 620,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 768,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "write",
+       "at": 1788,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "shown",
+       "at": 2408,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      }
+     ],
+     "errors": []
+    },
+    "ink-2": {
+     "title": "Ink · 2 s",
+     "file": "videos/parrot--ink-2.mp4",
+     "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+     "risen": false,
+     "beatMs": 2005,
+     "writeMs": 1607,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 794,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "write",
+       "at": 2799,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "shown",
+       "at": 4406,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      }
+     ],
+     "errors": []
+    },
+    "ink-3.5": {
+     "title": "Ink · 3.5 s",
+     "file": "videos/parrot--ink-3.5.mp4",
+     "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+     "risen": false,
+     "beatMs": 3507,
+     "writeMs": 1608,
+     "marks": [
+      {
+       "what": "photo",
+       "at": 759,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "write",
+       "at": 4266,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      },
+      {
+       "what": "shown",
+       "at": 5874,
+       "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa."
+      }
+     ],
+     "errors": []
+    }
+   },
+   "joke": "Isidlo sasemini sifudukele ngaphandle kuba ngaphakathi kushushu ngaphezu kwangaphandle. Akukho mntu unokuyicacisa.",
+   "postcard": "postcards/parrot.jpg"
+  }
+ },
+ "extras": {
+  "repeat": {
+   "file": "videos/extra--repeat-visit.mp4",
+   "state": "rain",
+   "first": [
+    {
+     "what": "photo",
+     "at": 765,
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+    },
+    {
+     "what": "write",
+     "at": 1772,
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+    },
+    {
+     "what": "shown",
+     "at": 3381,
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+    }
+   ],
+   "second": [
+    {
+     "what": "there",
+     "at": 5228,
+     "joke": "Rain turns every South African driver back into a learner. Hazards on, dignity off."
+    }
+   ],
+   "reloadAtMs": 5019,
+   "seenStored": 1,
+   "secondVisit": [
+    "there"
+   ]
+  },
+  "tap": {
+   "file": "videos/extra--tap-hide-show.mp4",
+   "state": "pale-dog",
+   "spot": {
+    "x": 207,
+    "y": 300
+   },
+   "labels": [
+    "Hide the joke",
+    "Show the joke",
+    "Hide the joke"
+   ],
+   "hiddenOpacity": "0",
+   "textStaysForScreenReaders": true,
+   "marks": [
+    "photo",
+    "write",
+    "shown",
+    "hide",
+    "show"
+   ]
+  },
+  "reducedMotion": {
+   "file": "videos/extra--reduced-motion.mp4",
+   "state": "clear-day",
+   "marks": [
+    "there"
+   ]
+  }
+ }
+}

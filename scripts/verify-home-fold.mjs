@@ -40,6 +40,9 @@ const LABEL = process.env.PW_FOLD_LABEL || '';
 // Home option D, which is script as well as style, so it cannot be layered on as CSS — and asserts
 // D's own list of what Home must show (below). Unset, the gate is the standing one.
 const HOME_OPTION = /^[abcd]$/.test(process.env.PW_FOLD_HOME || '') ? process.env.PW_FOLD_HOME : '';
+// …and PW_FOLD_REVEAL=ink|word|fade turns on D's joke that arrives late (2026-09-25). The joke's room is
+// held from the start, so D's own list must pass unchanged with it on.
+const REVEAL = HOME_OPTION === 'd' && /^(ink|word|fade)$/.test(process.env.PW_FOLD_REVEAL || '') ? process.env.PW_FOLD_REVEAL : '';
 const output = path.join(root, 'output', LABEL ? `m8-fold-${LABEL}` : 'm8-fold');
 
 // The real-device range, not one lucky phone. The last entry is Al's own device
@@ -251,7 +254,7 @@ for (const vp of VIEWPORTS) {
           localStorage.setItem('pw_lang', JSON.stringify(l));
         } catch (_) {}
       }, lang);
-      await page.goto(HOME_OPTION ? `${base}/?home=${HOME_OPTION}` : base, { waitUntil: 'networkidle' });
+      await page.goto(HOME_OPTION ? `${base}/?home=${HOME_OPTION}${REVEAL ? `&reveal=${REVEAL}&beat=1` : ''}` : base, { waitUntil: 'networkidle' });
       await page.waitForFunction(() => {
         const s = document.getElementById('pwSplash');
         return !s || s.classList.contains('splash-done');
