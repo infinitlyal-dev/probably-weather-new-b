@@ -26,6 +26,9 @@ async function get(url, file, { tries = 5, wait = 60_000 } = {}) {
       const body = await r.text();
       if (r.status === 429 || r.status >= 500) { log(`${file}: HTTP ${r.status}, waiting ${wait / 1000}s (try ${i}) ${body.slice(0, 120)}`); await sleep(wait * i); continue; }
       if (!r.ok) { log(`${file}: HTTP ${r.status} ${body.slice(0, 200)}`); return false; }
+      // A 200 can still carry a streamed error instead of data ("Unexpected error while streaming data:
+      // timeoutReached", 25 Sept) — never save what does not parse.
+      try { JSON.parse(body); } catch { log(`${file}: not JSON, waiting ${wait / 1000}s (try ${i}) ${body.slice(0, 120)}`); await sleep(wait * i); continue; }
       writeFileSync(path.join(DATA, file), body);
       log(`${file}: ${Math.round(body.length / 1024)} KB`);
       return true;
