@@ -1,0 +1,187 @@
+{
+ "rule": {
+  "minProb": 60,
+  "minMm": 0.3
+ },
+ "test": {
+  "from": "2026-01-01",
+  "to": "2026-09-24"
+ },
+ "byStation": {
+  "FACT": {
+   "region": "Western Cape",
+   "calls": 217,
+   "dryHour": 80,
+   "dryNear": 34,
+   "rainHours": 301,
+   "caught": 137
+  },
+  "FAGG": {
+   "region": "Garden Route",
+   "calls": 422,
+   "dryHour": 113,
+   "dryNear": 54,
+   "rainHours": 601,
+   "caught": 309
+  },
+  "FAPE": {
+   "region": "Eastern Cape",
+   "calls": 412,
+   "dryHour": 151,
+   "dryNear": 78,
+   "rainHours": 487,
+   "caught": 261
+  },
+  "FAUT": {
+   "region": "Eastern Cape",
+   "calls": 365,
+   "dryHour": 314,
+   "dryNear": 272,
+   "rainHours": 135,
+   "caught": 51
+  },
+  "FALE": {
+   "region": "KZN coast",
+   "calls": 301,
+   "dryHour": 117,
+   "dryNear": 77,
+   "rainHours": 378,
+   "caught": 184
+  },
+  "FAOR": {
+   "region": "Highveld",
+   "calls": 279,
+   "dryHour": 143,
+   "dryNear": 87,
+   "rainHours": 325,
+   "caught": 136
+  },
+  "FABL": {
+   "region": "Free State",
+   "calls": 243,
+   "dryHour": 150,
+   "dryNear": 120,
+   "rainHours": 208,
+   "caught": 93
+  },
+  "FAUP": {
+   "region": "Northern Cape",
+   "calls": 112,
+   "dryHour": 59,
+   "dryNear": 34,
+   "rainHours": 106,
+   "caught": 53
+  },
+  "FAKM": {
+   "region": "Northern Cape",
+   "calls": 186,
+   "dryHour": 111,
+   "dryNear": 82,
+   "rainHours": 148,
+   "caught": 75
+  },
+  "FAMM": {
+   "region": "North West",
+   "calls": 218,
+   "dryHour": 173,
+   "dryNear": 135,
+   "rainHours": 85,
+   "caught": 45
+  },
+  "FAKN": {
+   "region": "Lowveld",
+   "calls": 440,
+   "dryHour": 312,
+   "dryNear": 235,
+   "rainHours": 245,
+   "caught": 128
+  },
+  "FAPP": {
+   "region": "Limpopo",
+   "calls": 235,
+   "dryHour": 189,
+   "dryNear": 148,
+   "rainHours": 128,
+   "caught": 46
+  }
+ },
+ "byRegion": {
+  "Western Cape": {
+   "calls": 217,
+   "dryHour": 80,
+   "dryNear": 34,
+   "rainHours": 301,
+   "caught": 137
+  },
+  "Garden Route": {
+   "calls": 422,
+   "dryHour": 113,
+   "dryNear": 54,
+   "rainHours": 601,
+   "caught": 309
+  },
+  "Eastern Cape": {
+   "calls": 777,
+   "dryHour": 465,
+   "dryNear": 350,
+   "rainHours": 622,
+   "caught": 312
+  },
+  "KZN coast": {
+   "calls": 301,
+   "dryHour": 117,
+   "dryNear": 77,
+   "rainHours": 378,
+   "caught": 184
+  },
+  "Highveld": {
+   "calls": 279,
+   "dryHour": 143,
+   "dryNear": 87,
+   "rainHours": 325,
+   "caught": 136
+  },
+  "Free State": {
+   "calls": 243,
+   "dryHour": 150,
+   "dryNear": 120,
+   "rainHours": 208,
+   "caught": 93
+  },
+  "Northern Cape": {
+   "calls": 298,
+   "dryHour": 170,
+   "dryNear": 116,
+   "rainHours": 254,
+   "caught": 128
+  },
+  "North West": {
+   "calls": 218,
+   "dryHour": 173,
+   "dryNear": 135,
+   "rainHours": 85,
+   "caught": 45
+  },
+  "Lowveld": {
+   "calls": 440,
+   "dryHour": 312,
+   "dryNear": 235,
+   "rainHours": 245,
+   "caught": 128
+  },
+  "Limpopo": {
+   "calls": 235,
+   "dryHour": 189,
+   "dryNear": 148,
+   "rainHours": 128,
+   "caught": 46
+  }
+ },
+ "all": {
+  "calls": 3430,
+  "dryHour": 1912,
+  "dryNear": 1356,
+  "rainHours": 3147,
+  "caught": 1518
+ }
+}

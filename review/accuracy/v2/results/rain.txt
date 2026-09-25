@@ -1,0 +1,68 @@
+
+== RAIN TODAY — TEST, n=3380, it rained in 26%
+the app's % (proxy)            Brier 0.1059  | said ≥50%: 948, rained 646 · caught 646/866
+   0-10%: said 1 → rained 3 (n1793) | 10-20%: said 15 → rained 19 (n209) | 20-30%: said 25 → rained 21 (n170) | 30-40%: said 35 → rained 33 (n121) | 40-50%: said 45 → rained 41 (n139) | 50-60%: said 55 → rained 42 (n138) | 60-70%: said 65 → rained 56 (n162) | 70-80%: said 75 → rained 61 (n177) | 80-90%: said 85 → rained 74 (n196) | 90-100%: said 95 → rained 88 (n275)
+the app's %, calibrated        Brier 0.1044  | said ≥50%: 858, rained 605 · caught 605/866
+   0-10%: said 1 → rained 3 (n1753) | 10-20%: said 13 → rained 16 (n166) | 20-30%: said 24 → rained 22 (n313) | 30-40%: said 35 → rained 39 (n198) | 40-50%: said 44 → rained 46 (n92) | 50-60%: said 53 → rained 48 (n145) | 60-70%: said 67 → rained 57 (n155) | 70-80%: said 76 → rained 70 (n136) | 80-90%: said 84 → rained 74 (n106) | 90-100%: said 94 → rained 87 (n316)
+Open-Meteo's own %             Brier 0.1216  | said ≥50%: 1063, rained 689 · caught 689/866
+   0-10%: said 1 → rained 3 (n1764) | 10-20%: said 14 → rained 16 (n183) | 20-30%: said 24 → rained 19 (n149) | 30-40%: said 34 → rained 23 (n112) | 40-50%: said 44 → rained 38 (n109) | 50-60%: said 55 → rained 46 (n107) | 60-70%: said 65 → rained 48 (n101) | 70-80%: said 75 → rained 45 (n130) | 80-90%: said 85 → rained 45 (n133) | 90-100%: said 98 → rained 80 (n592)
+Open-Meteo's %, calibrated     Brier 0.1068  | said ≥50%: 804, rained 570 · caught 570/866
+   0-10%: said 1 → rained 3 (n1791) | 10-20%: said 16 → rained 17 (n113) | 20-30%: said 23 → rained 20 (n304) | 30-40%: said 36 → rained 41 (n255) | 40-50%: said 45 → rained 50 (n113) | 50-60%: said 53 → rained 44 (n111) | 60-70%: said 66 → rained 45 (n92) | 70-80%: said 76 → rained 70 (n101) | 80-90%: said 83 → rained 71 (n111) | 90-100%: said 92 → rained 85 (n389)
+share of 6 models, calibrated  Brier 0.1055  | said ≥50%: 903, rained 632 · caught 632/866
+   0-10%: said 0 → rained 4 (n1996) | 20-30%: said 24 → rained 24 (n313) | 40-50%: said 44 → rained 46 (n168) | 50-60%: said 50 → rained 51 (n221) | 70-80%: said 73 → rained 63 (n228) | 80-90%: said 87 → rained 83 (n454)
+both, calibrated               Brier 0.1028  | said ≥50%: 864, rained 615 · caught 615/866
+   0-10%: said 1 → rained 3 (n1775) | 10-20%: said 13 → rained 13 (n240) | 20-30%: said 25 → rained 24 (n217) | 30-40%: said 35 → rained 37 (n156) | 40-50%: said 43 → rained 48 (n128) | 50-60%: said 56 → rained 40 (n88) | 60-70%: said 65 → rained 60 (n169) | 70-80%: said 76 → rained 61 (n142) | 80-90%: said 83 → rained 72 (n113) | 90-100%: said 99 → rained 88 (n352)
+  the app's %, calibrated vs the app's % (proxy): Brier -0.0014 [-0.0027, -0.0002]
+  Open-Meteo's own % vs the app's % (proxy): Brier 0.0158 [0.0111, 0.0203]
+  Open-Meteo's %, calibrated vs the app's % (proxy): Brier 0.0009 [-0.0014, 0.0030]
+  share of 6 models, calibrated vs the app's % (proxy): Brier -0.0004 [-0.0049, 0.0038]
+  both, calibrated vs the app's % (proxy): Brier -0.0030 [-0.0056, -0.0005]
+  the app's %, calibrated vs Open-Meteo's own %: Brier -0.0172 [-0.0226, -0.0117]
+  Open-Meteo's %, calibrated vs Open-Meteo's own %: Brier -0.0148 [-0.0199, -0.0101]
+  share of 6 models, calibrated vs Open-Meteo's own %: Brier -0.0161 [-0.0243, -0.0091]
+  both, calibrated vs Open-Meteo's own %: Brier -0.0188 [-0.0249, -0.0131]
+  REGION WORSE Western Cape: share of 6 models, calibrated
+  REGION WORSE Garden Route: the app's %, calibrated
+  Western Cape   app proxy: said rain 64, rained 54 · rain days 72, warned 54 | calibrated both: said 56, rained 50, warned 50
+  Garden Route   app proxy: said rain 98, rained 83 · rain days 127, warned 83 | calibrated both: said 90, rained 79, warned 79
+  Eastern Cape   app proxy: said rain 254, rained 181 · rain days 238, warned 181 | calibrated both: said 219, rained 165, warned 165
+  KZN coast      app proxy: said rain 95, rained 75 · rain days 93, warned 75 | calibrated both: said 87, rained 71, warned 71
+  Highveld       app proxy: said rain 77, rained 55 · rain days 70, warned 55 | calibrated both: said 74, rained 55, warned 55
+  Free State     app proxy: said rain 61, rained 37 · rain days 60, warned 37 | calibrated both: said 57, rained 37, warned 37
+  Northern Cape  app proxy: said rain 89, rained 54 · rain days 74, warned 54 | calibrated both: said 85, rained 50, warned 50
+  North West     app proxy: said rain 54, rained 25 · rain days 32, warned 25 | calibrated both: said 49, rained 25, warned 25
+  Lowveld        app proxy: said rain 95, rained 48 · rain days 56, warned 48 | calibrated both: said 88, rained 49, warned 49
+  Limpopo        app proxy: said rain 61, rained 34 · rain days 44, warned 34 | calibrated both: said 59, rained 34, warned 34
+
+== RAIN IN THE NEXT 3 HOURS — TEST, n=17203, it rained in 9%
+the app's % (proxy)            Brier 0.0584  | said ≥50%: 1894, rained 1041 · caught 1041/1618
+   0-10%: said 1 → rained 1 (n12448) | 10-20%: said 14 → rained 11 (n1132) | 20-30%: said 25 → rained 12 (n771) | 30-40%: said 35 → rained 24 (n520) | 40-50%: said 45 → rained 25 (n438) | 50-60%: said 55 → rained 29 (n366) | 60-70%: said 65 → rained 41 (n385) | 70-80%: said 75 → rained 55 (n434) | 80-90%: said 86 → rained 72 (n450) | 90-100%: said 94 → rained 83 (n259)
+the app's %, calibrated        Brier 0.0520  | said ≥50%: 1037, rained 721 · caught 721/1618
+   0-10%: said 1 → rained 1 (n12757) | 10-20%: said 13 → rained 12 (n1520) | 20-30%: said 25 → rained 23 (n942) | 30-40%: said 35 → rained 32 (n679) | 40-50%: said 41 → rained 49 (n268) | 50-60%: said 55 → rained 52 (n153) | 60-70%: said 66 → rained 63 (n459) | 70-80%: said 77 → rained 80 (n203) | 80-90%: said 88 → rained 86 (n222)
+Open-Meteo's own %             Brier 0.0701  | said ≥50%: 2345, rained 1155 · caught 1155/1618
+   0-10%: said 1 → rained 1 (n12121) | 10-20%: said 14 → rained 9 (n1026) | 20-30%: said 24 → rained 13 (n740) | 30-40%: said 34 → rained 14 (n563) | 40-50%: said 44 → rained 22 (n408) | 50-60%: said 54 → rained 25 (n379) | 60-70%: said 64 → rained 29 (n296) | 70-80%: said 74 → rained 36 (n322) | 80-90%: said 84 → rained 43 (n345) | 90-100%: said 98 → rained 71 (n1003)
+Open-Meteo's %, calibrated     Brier 0.0520  | said ≥50%: 931, rained 675 · caught 675/1618
+   0-10%: said 1 → rained 1 (n12703) | 10-20%: said 12 → rained 13 (n1548) | 20-30%: said 25 → rained 23 (n1109) | 30-40%: said 32 → rained 30 (n266) | 40-50%: said 44 → rained 41 (n646) | 50-60%: said 55 → rained 49 (n148) | 60-70%: said 62 → rained 69 (n102) | 70-80%: said 77 → rained 78 (n681)
+share of 6 models, calibrated  Brier 0.0529  | said ≥50%: 916, rained 638 · caught 638/1618
+   0-10%: said 1 → rained 2 (n13816) | 10-20%: said 19 → rained 20 (n1035) | 20-30%: said 27 → rained 30 (n725) | 40-50%: said 46 → rained 46 (n711) | 60-70%: said 67 → rained 70 (n916)
+both, calibrated               Brier 0.0499  | said ≥50%: 1045, rained 748 · caught 748/1618
+   0-10%: said 1 → rained 1 (n13205) | 10-20%: said 14 → rained 13 (n1121) | 20-30%: said 24 → rained 23 (n917) | 30-40%: said 35 → rained 38 (n473) | 40-50%: said 47 → rained 38 (n442) | 50-60%: said 58 → rained 53 (n233) | 60-70%: said 64 → rained 57 (n125) | 70-80%: said 74 → rained 71 (n220) | 80-90%: said 83 → rained 85 (n467)
+  the app's %, calibrated vs the app's % (proxy): Brier -0.0065 [-0.0090, -0.0040]
+  Open-Meteo's own % vs the app's % (proxy): Brier 0.0117 [0.0091, 0.0142]
+  Open-Meteo's %, calibrated vs the app's % (proxy): Brier -0.0065 [-0.0091, -0.0039]
+  share of 6 models, calibrated vs the app's % (proxy): Brier -0.0055 [-0.0085, -0.0030]
+  both, calibrated vs the app's % (proxy): Brier -0.0086 [-0.0111, -0.0062]
+  the app's %, calibrated vs Open-Meteo's own %: Brier -0.0181 [-0.0231, -0.0133]
+  Open-Meteo's %, calibrated vs Open-Meteo's own %: Brier -0.0181 [-0.0233, -0.0131]
+  share of 6 models, calibrated vs Open-Meteo's own %: Brier -0.0172 [-0.0222, -0.0124]
+  both, calibrated vs Open-Meteo's own %: Brier -0.0202 [-0.0251, -0.0153]
+  Western Cape   app proxy: said rain 123, rained 81 · rain days 123, warned 81 | calibrated both: said 69, rained 60, warned 60
+  Garden Route   app proxy: said rain 204, rained 141 · rain days 202, warned 141 | calibrated both: said 120, rained 103, warned 103
+  Eastern Cape   app proxy: said rain 529, rained 312 · rain days 460, warned 312 | calibrated both: said 310, rained 219, warned 219
+  KZN coast      app proxy: said rain 142, rained 86 · rain days 135, warned 86 | calibrated both: said 80, rained 62, warned 62
+  Highveld       app proxy: said rain 168, rained 89 · rain days 135, warned 89 | calibrated both: said 85, rained 63, warned 63
+  Free State     app proxy: said rain 121, rained 61 · rain days 116, warned 61 | calibrated both: said 63, rained 46, warned 46
+  Northern Cape  app proxy: said rain 174, rained 86 · rain days 150, warned 86 | calibrated both: said 95, rained 65, warned 65
+  North West     app proxy: said rain 105, rained 38 · rain days 59, warned 38 | calibrated both: said 54, rained 28, warned 28
+  Lowveld        app proxy: said rain 196, rained 92 · rain days 143, warned 92 | calibrated both: said 107, rained 65, warned 65
+  Limpopo        app proxy: said rain 132, rained 55 · rain days 95, warned 55 | calibrated both: said 62, rained 37, warned 37

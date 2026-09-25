@@ -1,0 +1,30 @@
+== MEAN WIND (hourly, TEST) — windy = station ≥ 30 km/h; "said wind" = forecast ≥ 25
+model: best_match                  MAE 4.52 bias -1.13 | windy hours caught 1338/2887 · false 1959
+model: ecmwf_ifs025                MAE 4.64 bias -0.84 | windy hours caught 1328/2887 · false 2392
+model: gfs_seamless                MAE 5.03 bias 0.90 | windy hours caught 1784/2887 · false 5192
+model: icon_seamless               MAE 4.75 bias -2.62 | windy hours caught 853/2887 · false 963
+model: ukmo_seamless               MAE 4.35 bias -1.25 | windy hours caught 1160/2887 · false 1140
+model: meteofrance_seamless        MAE 4.84 bias -2.08 | windy hours caught 1151/2887 · false 1287
+mean of 6 models                   MAE 4.06 bias -1.17 | windy hours caught 1269/2887 · false 1341
+mean of 6, each corrected          MAE 3.31 bias 0.06 | windy hours caught 2431/2887 · false 3221
+best_match, corrected              MAE 3.77 bias 0.03 | windy hours caught 2333/2887 · false 3739
+  mean of 6, each corrected vs best model: -1.04 [-1.11, -0.96]
+  mean of 6, each corrected vs best_match (production OM): -1.21 [-1.29, -1.12]
+
+== GUSTS (hours with a METAR gust group) — big = ≥ 55 km/h
+model: best_match                                                MAE 10.59 bias -1.43 | big caught 475/696 · false 304 (n2428)
+model: ecmwf_ifs025                                              MAE 9.88 bias -2.15 | big caught 480/696 · false 267 (n2428)
+model: gfs_seamless                                              MAE 13.88 bias -9.32 | big caught 319/696 · false 154 (n2428)
+largest of the three (production takes the largest source gust)  MAE 10.24 bias 2.37 | big caught 574/696 · false 393 (n2428)
+best_match, corrected                                            MAE 10.01 bias 1.34 | big caught 525/696 · false 371 (n2428)
+  best_match corrected vs largest: -0.23 [-0.76, 0.29]
+
+== FOG (FG reported), TEST
+the app's fog detector (replayed)          fog hours 681: hit 204 miss 477 false 1420 CSI 0.097
+stricter gates (2025's best: visibility < 1500 m, humidity ≥ 90 %, spread ≤ 2 °C) fog hours 681: hit 204 miss 477 false 1420 CSI 0.097
+best_match visibility < 1 km               fog hours 681: hit 207 miss 474 false 1631 CSI 0.090
+GFS visibility < 1 km                      fog hours 681: hit 7 miss 674 false 117 CSI 0.009
+ECMWF 0.25° visibility < 1 km              fog hours 681: hit 0 miss 681 false 0 CSI 0.000
+any of the three < 1 km                    fog hours 681: hit 214 miss 467 false 1745 CSI 0.088
+two of three < 1 km                        fog hours 681: hit 0 miss 681 false 3 CSI 0.000
+best_match dew-point spread < 1 °C, night  fog hours 681: hit 321 miss 360 false 6010 CSI 0.048

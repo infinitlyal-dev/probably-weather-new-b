@@ -1,0 +1,12 @@
+"Rain's here" replayed on TEST (2026-01-01 → 2026-09-24), rule ≥2 votes, ≥60%, ≥0.3 mm
+Western Cape   calls 217: dry that hour 80 (37%), dry ±1 h 34 (16%) | rain hours 301, called 137 (46%)
+Garden Route   calls 422: dry that hour 113 (27%), dry ±1 h 54 (13%) | rain hours 601, called 309 (51%)
+Eastern Cape   calls 777: dry that hour 465 (60%), dry ±1 h 350 (45%) | rain hours 622, called 312 (50%)
+KZN coast      calls 301: dry that hour 117 (39%), dry ±1 h 77 (26%) | rain hours 378, called 184 (49%)
+Highveld       calls 279: dry that hour 143 (51%), dry ±1 h 87 (31%) | rain hours 325, called 136 (42%)
+Free State     calls 243: dry that hour 150 (62%), dry ±1 h 120 (49%) | rain hours 208, called 93 (45%)
+Northern Cape  calls 298: dry that hour 170 (57%), dry ±1 h 116 (39%) | rain hours 254, called 128 (50%)
+North West     calls 218: dry that hour 173 (79%), dry ±1 h 135 (62%) | rain hours 85, called 45 (53%)
+Lowveld        calls 440: dry that hour 312 (71%), dry ±1 h 235 (53%) | rain hours 245, called 128 (52%)
+Limpopo        calls 235: dry that hour 189 (80%), dry ±1 h 148 (63%) | rain hours 128, called 46 (36%)
+ALL            calls 3430: dry that hour 1912 (56%), dry ±1 h 1356 (40%) | rain hours 3147, called 1518 (48%)

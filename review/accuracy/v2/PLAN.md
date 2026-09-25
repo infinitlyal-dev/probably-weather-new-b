@@ -141,3 +141,15 @@ best single model — in plain numbers ("today's high: off by 1.3 °C on average
   refit without the Lowveld airports). `make-table.mjs` refuses to write a table if the guard's worse
   regions ever differ from what production blocks.
 - **Shipped table:** all-SA, refit on 2025-01-01 → 2026-09-24, 16 airports, α 0.5.
+
+## Rain %, pre-registered before the full rain data was scored (25 Sept, 10:55 SAST)
+
+- The app's own % can only be **replayed as a proxy** (WeatherAPI, Pirate Weather and Tomorrow.io keep no
+  history; ECMWF's and GFS's % stand in for the first two, Tomorrow.io is left out). One proxy cannot meet
+  the plan's rule that a conclusion holds under all three source assignments, so **in this run a rain-%
+  change is reported, not shipped**, whatever the numbers say.
+- A calibrated method "clears the bar" when it beats both the replayed app % and Open-Meteo's own % on the
+  Brier score with the whole 95 % interval below zero (7-day blocks, 2026), for rain today, with no region's
+  interval above zero. If one does, the next step is shadow mode (the calibrated % recorded in `meta`
+  beside the served one, not shown) so the recorder proves it on the real sources before anything a user
+  sees changes. "Rain's here" is Al's ruled rule: its false calls are counted, not changed.
