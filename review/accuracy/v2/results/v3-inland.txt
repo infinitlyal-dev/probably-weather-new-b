@@ -1,0 +1,34 @@
+
+== t1 — inland airports FAUT FAOR FAWB FABL FAUP FAKM FAMM FAPP + four towns; pooled high + low MAE, SA table → inland table
+  old harness  airports 1.54 → 1.47 -0.07 [-0.11, -0.04] · towns 1.56 → 1.50 -0.06 [-0.09, -0.04]
+  ECMWF-heavy  airports 1.48 → 1.43 -0.05 [-0.08, -0.03] · towns 1.55 → 1.49 -0.05 [-0.08, -0.03]
+  mixed        airports 1.57 → 1.49 -0.08 [-0.11, -0.05] · towns 1.57 → 1.50 -0.07 [-0.09, -0.05]
+  Eastern Cape   old harness: 1.26→1.26 · ECMWF-heavy: 1.33→1.34 · mixed: 1.21→1.20
+  Highveld       old harness: 1.23→1.22 · ECMWF-heavy: 1.20→1.22 WORSE · mixed: 1.24→1.24
+  Free State     old harness: 1.67→1.54 better · ECMWF-heavy: 1.50→1.37 better · mixed: 1.79→1.66 better
+  Northern Cape  old harness: 1.68→1.55 better · ECMWF-heavy: 1.55→1.44 better · mixed: 1.76→1.61 better
+  North West     old harness: 1.30→1.17 better · ECMWF-heavy: 1.21→1.14 better · mixed: 1.34→1.21 better
+  Limpopo        old harness: 2.34→2.26 better · ECMWF-heavy: 2.28→2.20 better · mixed: 2.28→2.20 better
+  Karoo          old harness: 1.64→1.59 better · ECMWF-heavy: 1.59→1.55 better · mixed: 1.66→1.61 better
+  KZN inland     old harness: 1.48→1.41 better · ECMWF-heavy: 1.50→1.44 better · mixed: 1.48→1.40 better
+  weights (min): best 20→20% · gfs 16→16% · icon 19→19% · ukmo 25→27% · meteofrance 20→17%
+  weights (max): best 25→24% · gfs 20→20% · icon 19→23% · ukmo 14→13% · meteofrance 22→20%
+  ships at t1: true
+
+== t0 — inland airports FAUT FAOR FAWB FABL FAUP FAKM FAMM FAPP + four towns; pooled high + low MAE, SA table → inland table
+  old harness  airports 1.36 → 1.28 -0.08 [-0.11, -0.06] · towns 1.38 → 1.30 -0.08 [-0.10, -0.06]
+  ECMWF-heavy  airports 1.31 → 1.24 -0.07 [-0.09, -0.05] · towns 1.37 → 1.29 -0.08 [-0.10, -0.06]
+  mixed        airports 1.36 → 1.28 -0.08 [-0.11, -0.06] · towns 1.38 → 1.29 -0.09 [-0.11, -0.07]
+  Eastern Cape   old harness: 1.10→1.10 · ECMWF-heavy: 1.12→1.12 · mixed: 1.07→1.05
+  Highveld       old harness: 1.03→1.04 · ECMWF-heavy: 1.05→1.08 WORSE · mixed: 1.04→1.06 WORSE
+  Free State     old harness: 1.38→1.26 better · ECMWF-heavy: 1.27→1.14 better · mixed: 1.46→1.32 better
+  Northern Cape  old harness: 1.49→1.33 better · ECMWF-heavy: 1.37→1.23 better · mixed: 1.51→1.35 better
+  North West     old harness: 1.12→0.99 better · ECMWF-heavy: 1.04→0.96 better · mixed: 1.11→0.97 better
+  Limpopo        old harness: 2.23→2.11 better · ECMWF-heavy: 2.20→2.09 better · mixed: 2.18→2.06 better
+  Karoo          old harness: 1.49→1.42 better · ECMWF-heavy: 1.46→1.39 better · mixed: 1.51→1.44 better
+  KZN inland     old harness: 1.26→1.17 better · ECMWF-heavy: 1.27→1.18 better · mixed: 1.26→1.15 better
+  weights (min): best 22→21% · gfs 15→17% · icon 19→20% · ukmo 21→22% · meteofrance 23→21%
+  weights (max): best 24→22% · gfs 17→17% · icon 17→21% · ukmo 18→20% · meteofrance 23→20%
+  ships at t0: true
+
+SHIPS: true

@@ -1,0 +1,803 @@
+{
+ "leads": {
+  "t1": {
+   "airports": {
+    "old harness": {
+     "sa": 1.544,
+     "inland": 1.471,
+     "diff": {
+      "diff": -0.073,
+      "lo": -0.106,
+      "hi": -0.044,
+      "days": 39,
+      "n": 3698
+     }
+    },
+    "ECMWF-heavy": {
+     "sa": 1.478,
+     "inland": 1.426,
+     "diff": {
+      "diff": -0.052,
+      "lo": -0.082,
+      "hi": -0.026,
+      "days": 39,
+      "n": 3698
+     }
+    },
+    "mixed": {
+     "sa": 1.573,
+     "inland": 1.495,
+     "diff": {
+      "diff": -0.078,
+      "lo": -0.11,
+      "hi": -0.051,
+      "days": 39,
+      "n": 3698
+     }
+    }
+   },
+   "towns": {
+    "old harness": {
+     "sa": 1.56,
+     "inland": 1.5,
+     "diff": {
+      "diff": -0.06,
+      "lo": -0.087,
+      "hi": -0.036,
+      "days": 39,
+      "n": 2006
+     }
+    },
+    "ECMWF-heavy": {
+     "sa": 1.546,
+     "inland": 1.493,
+     "diff": {
+      "diff": -0.053,
+      "lo": -0.078,
+      "hi": -0.031,
+      "days": 39,
+      "n": 2006
+     }
+    },
+    "mixed": {
+     "sa": 1.572,
+     "inland": 1.503,
+     "diff": {
+      "diff": -0.069,
+      "lo": -0.092,
+      "hi": -0.047,
+      "days": 39,
+      "n": 2006
+     }
+    }
+   },
+   "byRegion": {
+    "Eastern Cape": {
+     "old harness": {
+      "sa": 1.255,
+      "inland": 1.26,
+      "diff": {
+       "diff": 0.005,
+       "lo": -0.031,
+       "hi": 0.037,
+       "days": 39,
+       "n": 494
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.331,
+      "inland": 1.344,
+      "diff": {
+       "diff": 0.013,
+       "lo": -0.023,
+       "hi": 0.045,
+       "days": 39,
+       "n": 494
+      }
+     },
+     "mixed": {
+      "sa": 1.208,
+      "inland": 1.201,
+      "diff": {
+       "diff": -0.007,
+       "lo": -0.041,
+       "hi": 0.024,
+       "days": 39,
+       "n": 494
+      }
+     }
+    },
+    "Highveld": {
+     "old harness": {
+      "sa": 1.226,
+      "inland": 1.224,
+      "diff": {
+       "diff": -0.001,
+       "lo": -0.029,
+       "hi": 0.023,
+       "days": 39,
+       "n": 936
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.198,
+      "inland": 1.223,
+      "diff": {
+       "diff": 0.025,
+       "lo": 0.002,
+       "hi": 0.049,
+       "days": 39,
+       "n": 936
+      }
+     },
+     "mixed": {
+      "sa": 1.24,
+      "inland": 1.244,
+      "diff": {
+       "diff": 0.005,
+       "lo": -0.018,
+       "hi": 0.026,
+       "days": 39,
+       "n": 936
+      }
+     }
+    },
+    "Free State": {
+     "old harness": {
+      "sa": 1.668,
+      "inland": 1.54,
+      "diff": {
+       "diff": -0.128,
+       "lo": -0.165,
+       "hi": -0.091,
+       "days": 37,
+       "n": 472
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.501,
+      "inland": 1.374,
+      "diff": {
+       "diff": -0.127,
+       "lo": -0.166,
+       "hi": -0.089,
+       "days": 37,
+       "n": 472
+      }
+     },
+     "mixed": {
+      "sa": 1.793,
+      "inland": 1.658,
+      "diff": {
+       "diff": -0.135,
+       "lo": -0.171,
+       "hi": -0.099,
+       "days": 37,
+       "n": 472
+      }
+     }
+    },
+    "Northern Cape": {
+     "old harness": {
+      "sa": 1.682,
+      "inland": 1.547,
+      "diff": {
+       "diff": -0.135,
+       "lo": -0.176,
+       "hi": -0.096,
+       "days": 39,
+       "n": 822
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.555,
+      "inland": 1.443,
+      "diff": {
+       "diff": -0.112,
+       "lo": -0.15,
+       "hi": -0.077,
+       "days": 39,
+       "n": 822
+      }
+     },
+     "mixed": {
+      "sa": 1.76,
+      "inland": 1.612,
+      "diff": {
+       "diff": -0.148,
+       "lo": -0.187,
+       "hi": -0.111,
+       "days": 39,
+       "n": 822
+      }
+     }
+    },
+    "North West": {
+     "old harness": {
+      "sa": 1.298,
+      "inland": 1.173,
+      "diff": {
+       "diff": -0.125,
+       "lo": -0.162,
+       "hi": -0.094,
+       "days": 38,
+       "n": 486
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.211,
+      "inland": 1.138,
+      "diff": {
+       "diff": -0.074,
+       "lo": -0.104,
+       "hi": -0.047,
+       "days": 38,
+       "n": 486
+      }
+     },
+     "mixed": {
+      "sa": 1.344,
+      "inland": 1.212,
+      "diff": {
+       "diff": -0.132,
+       "lo": -0.168,
+       "hi": -0.099,
+       "days": 38,
+       "n": 486
+      }
+     }
+    },
+    "Limpopo": {
+     "old harness": {
+      "sa": 2.337,
+      "inland": 2.255,
+      "diff": {
+       "diff": -0.082,
+       "lo": -0.138,
+       "hi": -0.029,
+       "days": 39,
+       "n": 488
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 2.276,
+      "inland": 2.203,
+      "diff": {
+       "diff": -0.073,
+       "lo": -0.13,
+       "hi": -0.023,
+       "days": 39,
+       "n": 488
+      }
+     },
+     "mixed": {
+      "sa": 2.283,
+      "inland": 2.198,
+      "diff": {
+       "diff": -0.085,
+       "lo": -0.141,
+       "hi": -0.032,
+       "days": 39,
+       "n": 488
+      }
+     }
+    },
+    "Karoo": {
+     "old harness": {
+      "sa": 1.638,
+      "inland": 1.587,
+      "diff": {
+       "diff": -0.051,
+       "lo": -0.073,
+       "hi": -0.031,
+       "days": 39,
+       "n": 1006
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.594,
+      "inland": 1.55,
+      "diff": {
+       "diff": -0.044,
+       "lo": -0.066,
+       "hi": -0.025,
+       "days": 39,
+       "n": 1006
+      }
+     },
+     "mixed": {
+      "sa": 1.661,
+      "inland": 1.609,
+      "diff": {
+       "diff": -0.052,
+       "lo": -0.072,
+       "hi": -0.034,
+       "days": 39,
+       "n": 1006
+      }
+     }
+    },
+    "KZN inland": {
+     "old harness": {
+      "sa": 1.481,
+      "inland": 1.412,
+      "diff": {
+       "diff": -0.07,
+       "lo": -0.107,
+       "hi": -0.037,
+       "days": 39,
+       "n": 1000
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.498,
+      "inland": 1.436,
+      "diff": {
+       "diff": -0.062,
+       "lo": -0.096,
+       "hi": -0.032,
+       "days": 39,
+       "n": 1000
+      }
+     },
+     "mixed": {
+      "sa": 1.482,
+      "inland": 1.396,
+      "diff": {
+       "diff": -0.086,
+       "lo": -0.12,
+       "hi": -0.056,
+       "days": 39,
+       "n": 1000
+      }
+     }
+    }
+   },
+   "weights": {
+    "max": {
+     "sa": {
+      "best_match": 0.246,
+      "gfs_seamless": 0.198,
+      "icon_seamless": 0.194,
+      "ukmo_seamless": 0.141,
+      "meteofrance_seamless": 0.221
+     },
+     "inland": {
+      "best_match": 0.239,
+      "gfs_seamless": 0.203,
+      "icon_seamless": 0.227,
+      "ukmo_seamless": 0.132,
+      "meteofrance_seamless": 0.198
+     }
+    },
+    "min": {
+     "sa": {
+      "best_match": 0.201,
+      "gfs_seamless": 0.16,
+      "icon_seamless": 0.191,
+      "ukmo_seamless": 0.253,
+      "meteofrance_seamless": 0.196
+     },
+     "inland": {
+      "best_match": 0.198,
+      "gfs_seamless": 0.164,
+      "icon_seamless": 0.195,
+      "ukmo_seamless": 0.271,
+      "meteofrance_seamless": 0.173
+     }
+    }
+   },
+   "ships": true,
+   "stations": [
+    "FAUT",
+    "FAOR",
+    "FAWB",
+    "FABL",
+    "FAUP",
+    "FAKM",
+    "FAMM",
+    "FAPP"
+   ]
+  },
+  "t0": {
+   "airports": {
+    "old harness": {
+     "sa": 1.356,
+     "inland": 1.275,
+     "diff": {
+      "diff": -0.081,
+      "lo": -0.108,
+      "hi": -0.056,
+      "days": 39,
+      "n": 3698
+     }
+    },
+    "ECMWF-heavy": {
+     "sa": 1.31,
+     "inland": 1.243,
+     "diff": {
+      "diff": -0.067,
+      "lo": -0.09,
+      "hi": -0.045,
+      "days": 39,
+      "n": 3698
+     }
+    },
+    "mixed": {
+     "sa": 1.361,
+     "inland": 1.278,
+     "diff": {
+      "diff": -0.083,
+      "lo": -0.11,
+      "hi": -0.06,
+      "days": 39,
+      "n": 3698
+     }
+    }
+   },
+   "towns": {
+    "old harness": {
+     "sa": 1.375,
+     "inland": 1.299,
+     "diff": {
+      "diff": -0.076,
+      "lo": -0.099,
+      "hi": -0.056,
+      "days": 39,
+      "n": 2006
+     }
+    },
+    "ECMWF-heavy": {
+     "sa": 1.366,
+     "inland": 1.287,
+     "diff": {
+      "diff": -0.079,
+      "lo": -0.1,
+      "hi": -0.058,
+      "days": 39,
+      "n": 2006
+     }
+    },
+    "mixed": {
+     "sa": 1.381,
+     "inland": 1.295,
+     "diff": {
+      "diff": -0.086,
+      "lo": -0.106,
+      "hi": -0.068,
+      "days": 39,
+      "n": 2006
+     }
+    }
+   },
+   "byRegion": {
+    "Eastern Cape": {
+     "old harness": {
+      "sa": 1.099,
+      "inland": 1.096,
+      "diff": {
+       "diff": -0.004,
+       "lo": -0.036,
+       "hi": 0.026,
+       "days": 39,
+       "n": 494
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.124,
+      "inland": 1.124,
+      "diff": {
+       "diff": 0.001,
+       "lo": -0.032,
+       "hi": 0.03,
+       "days": 39,
+       "n": 494
+      }
+     },
+     "mixed": {
+      "sa": 1.069,
+      "inland": 1.051,
+      "diff": {
+       "diff": -0.019,
+       "lo": -0.05,
+       "hi": 0.01,
+       "days": 39,
+       "n": 494
+      }
+     }
+    },
+    "Highveld": {
+     "old harness": {
+      "sa": 1.027,
+      "inland": 1.044,
+      "diff": {
+       "diff": 0.017,
+       "lo": -0.003,
+       "hi": 0.036,
+       "days": 39,
+       "n": 936
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.047,
+      "inland": 1.078,
+      "diff": {
+       "diff": 0.031,
+       "lo": 0.013,
+       "hi": 0.051,
+       "days": 39,
+       "n": 936
+      }
+     },
+     "mixed": {
+      "sa": 1.036,
+      "inland": 1.063,
+      "diff": {
+       "diff": 0.027,
+       "lo": 0.008,
+       "hi": 0.045,
+       "days": 39,
+       "n": 936
+      }
+     }
+    },
+    "Free State": {
+     "old harness": {
+      "sa": 1.382,
+      "inland": 1.257,
+      "diff": {
+       "diff": -0.125,
+       "lo": -0.162,
+       "hi": -0.09,
+       "days": 37,
+       "n": 472
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.272,
+      "inland": 1.136,
+      "diff": {
+       "diff": -0.137,
+       "lo": -0.173,
+       "hi": -0.102,
+       "days": 37,
+       "n": 472
+      }
+     },
+     "mixed": {
+      "sa": 1.457,
+      "inland": 1.325,
+      "diff": {
+       "diff": -0.133,
+       "lo": -0.171,
+       "hi": -0.098,
+       "days": 37,
+       "n": 472
+      }
+     }
+    },
+    "Northern Cape": {
+     "old harness": {
+      "sa": 1.488,
+      "inland": 1.333,
+      "diff": {
+       "diff": -0.155,
+       "lo": -0.19,
+       "hi": -0.123,
+       "days": 39,
+       "n": 822
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.372,
+      "inland": 1.23,
+      "diff": {
+       "diff": -0.141,
+       "lo": -0.173,
+       "hi": -0.112,
+       "days": 39,
+       "n": 822
+      }
+     },
+     "mixed": {
+      "sa": 1.511,
+      "inland": 1.346,
+      "diff": {
+       "diff": -0.164,
+       "lo": -0.197,
+       "hi": -0.134,
+       "days": 39,
+       "n": 822
+      }
+     }
+    },
+    "North West": {
+     "old harness": {
+      "sa": 1.124,
+      "inland": 0.988,
+      "diff": {
+       "diff": -0.136,
+       "lo": -0.17,
+       "hi": -0.102,
+       "days": 38,
+       "n": 486
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.037,
+      "inland": 0.959,
+      "diff": {
+       "diff": -0.078,
+       "lo": -0.107,
+       "hi": -0.051,
+       "days": 38,
+       "n": 486
+      }
+     },
+     "mixed": {
+      "sa": 1.112,
+      "inland": 0.974,
+      "diff": {
+       "diff": -0.139,
+       "lo": -0.172,
+       "hi": -0.107,
+       "days": 38,
+       "n": 486
+      }
+     }
+    },
+    "Limpopo": {
+     "old harness": {
+      "sa": 2.23,
+      "inland": 2.108,
+      "diff": {
+       "diff": -0.122,
+       "lo": -0.168,
+       "hi": -0.08,
+       "days": 39,
+       "n": 488
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 2.205,
+      "inland": 2.087,
+      "diff": {
+       "diff": -0.118,
+       "lo": -0.163,
+       "hi": -0.076,
+       "days": 39,
+       "n": 488
+      }
+     },
+     "mixed": {
+      "sa": 2.184,
+      "inland": 2.064,
+      "diff": {
+       "diff": -0.12,
+       "lo": -0.165,
+       "hi": -0.08,
+       "days": 39,
+       "n": 488
+      }
+     }
+    },
+    "Karoo": {
+     "old harness": {
+      "sa": 1.488,
+      "inland": 1.424,
+      "diff": {
+       "diff": -0.064,
+       "lo": -0.085,
+       "hi": -0.044,
+       "days": 39,
+       "n": 1006
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.46,
+      "inland": 1.393,
+      "diff": {
+       "diff": -0.067,
+       "lo": -0.087,
+       "hi": -0.048,
+       "days": 39,
+       "n": 1006
+      }
+     },
+     "mixed": {
+      "sa": 1.505,
+      "inland": 1.441,
+      "diff": {
+       "diff": -0.065,
+       "lo": -0.083,
+       "hi": -0.048,
+       "days": 39,
+       "n": 1006
+      }
+     }
+    },
+    "KZN inland": {
+     "old harness": {
+      "sa": 1.261,
+      "inland": 1.172,
+      "diff": {
+       "diff": -0.089,
+       "lo": -0.119,
+       "hi": -0.06,
+       "days": 39,
+       "n": 1000
+      }
+     },
+     "ECMWF-heavy": {
+      "sa": 1.271,
+      "inland": 1.18,
+      "diff": {
+       "diff": -0.09,
+       "lo": -0.118,
+       "hi": -0.063,
+       "days": 39,
+       "n": 1000
+      }
+     },
+     "mixed": {
+      "sa": 1.256,
+      "inland": 1.149,
+      "diff": {
+       "diff": -0.107,
+       "lo": -0.135,
+       "hi": -0.081,
+       "days": 39,
+       "n": 1000
+      }
+     }
+    }
+   },
+   "weights": {
+    "max": {
+     "sa": {
+      "best_match": 0.241,
+      "gfs_seamless": 0.17,
+      "icon_seamless": 0.173,
+      "ukmo_seamless": 0.185,
+      "meteofrance_seamless": 0.231
+     },
+     "inland": {
+      "best_match": 0.22,
+      "gfs_seamless": 0.169,
+      "icon_seamless": 0.21,
+      "ukmo_seamless": 0.202,
+      "meteofrance_seamless": 0.199
+     }
+    },
+    "min": {
+     "sa": {
+      "best_match": 0.222,
+      "gfs_seamless": 0.154,
+      "icon_seamless": 0.188,
+      "ukmo_seamless": 0.208,
+      "meteofrance_seamless": 0.228
+     },
+     "inland": {
+      "best_match": 0.21,
+      "gfs_seamless": 0.166,
+      "icon_seamless": 0.202,
+      "ukmo_seamless": 0.216,
+      "meteofrance_seamless": 0.206
+     }
+    }
+   },
+   "ships": true,
+   "stations": [
+    "FAUT",
+    "FAOR",
+    "FAWB",
+    "FABL",
+    "FAUP",
+    "FAKM",
+    "FAMM",
+    "FAPP"
+   ]
+  }
+ },
+ "ships": true
+}
