@@ -1,0 +1,32 @@
+# Launch run (2026-09-25): every 30 minutes, read the live site and /api/health
+# (counters only — no weather provider is called) and open a GitHub issue when
+# something is wrong; GitHub emails Al. The issue closes itself when it is gone.
+# What each alert means: review/launch/RUNBOOK.md. Uses only this workflow's own
+# token; the repository is public, so the minutes are free.
+name: Launch alert
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: launch-alert
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/health-check.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/health-check.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}

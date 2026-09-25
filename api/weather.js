@@ -41,6 +41,9 @@ import {
   responseLocationName,
 } from './_lib/weather-cache.js';
 import { consumeProviderBudgets, recordOpenMeteoCallDeferred } from './_lib/provider-budget.js';
+// Launch run (2026-09-25): counters for /api/health, written only on failure.
+import { recordSourceFailure, recordServerError } from './_lib/health-counters.js';
+import { parseSourcesOff } from './_lib/sources-off.js';
 // M4: heat thresholds shared with the client (assets/app.js) — one constant
 // family, no more 32-vs-35 badge/condition drift.
 import { HEAT_WARM_C, HEAT_EXTREME_C } from '../assets/weather-thresholds.js';
@@ -285,6 +288,7 @@ export default async function handler(req, res) {
         console.warn(`[pw-source-skip] ${name} budget-blocked`);
         return;
       }
+      recordSourceFailure(name);
       const tag = classifyFailure(err);
       // [pw-source-fail] prefix makes the log line greppable in Vercel's
       // function-log viewer. Quota-shaped failures (rate-limited / auth-or-
@@ -634,6 +638,7 @@ export default async function handler(req, res) {
         return respondWithCachedPayload(stalePayload, 'stale-deadline', [30, 60]);
       }
       console.warn(`[pw-budget] request budget spent waiting (${stage}) — answering 503 without a fan-out`);
+      recordServerError();
       res.setHeader('Cache-Control', 'no-store');
       return res.status(503).json({
         ok: false,
@@ -1049,15 +1054,7 @@ export default async function handler(req, res) {
     // The usual spellings of each name are accepted ("Tomorrow.io", "open meteo",
     // "pirateweather"); anything else is named in the log as not recognised,
     // so a typo can never look like a source that was switched off.
-    const SOURCE_IDS = { openmeteo: 'open-meteo', weatherapi: 'weatherapi', weatherapicom: 'weatherapi', pirate: 'pirate', pirateweather: 'pirate', met: 'met', metnorway: 'met', metno: 'met', yr: 'met', yrno: 'met', tomorrow: 'tomorrow', tomorrowio: 'tomorrow' };
-    const sourcesOff = new Set();
-    const sourcesOffUnknown = [];
-    for (const raw of String(process.env.PW_SOURCES_OFF || '').split(',')) {
-      const token = raw.trim();
-      if (!token) continue;
-      const id = SOURCE_IDS[token.toLowerCase().replace(/[^a-z]/g, '')];
-      if (id) sourcesOff.add(id); else sourcesOffUnknown.push(token);
-    }
+    const { off: sourcesOff, unknown: sourcesOffUnknown } = parseSourcesOff(process.env.PW_SOURCES_OFF);
     if (sourcesOff.size) console.warn(`[pw-sources-off] switched off by PW_SOURCES_OFF: ${[...sourcesOff].join(', ')}`);
     if (sourcesOffUnknown.length) console.error(`[pw-sources-off] PW_SOURCES_OFF names no source: ${sourcesOffUnknown.join(', ')} — use open-meteo, weatherapi, pirate, met or tomorrow`);
     const enabledProviders = [
@@ -2283,6 +2280,7 @@ export default async function handler(req, res) {
     // degraded response is never cached; the local-miss waiters get null from
     // the finally block and fetch for themselves.
     if (activeNorms.length === 0) {
+      recordServerError();
       res.setHeader('Cache-Control', 'no-store');
       return res.status(503).json({
         ok: false,
@@ -2818,6 +2816,7 @@ export default async function handler(req, res) {
 
   } catch (e) {
     console.error('Weather API error:', e);
+    recordServerError();
     return res.status(500).json({ ok: false, error: 'Server error' });
   } finally {
     // NOTHING ON THE RESPONSE PATH WAITS ON REDIS (Astra round 15, major 1).
