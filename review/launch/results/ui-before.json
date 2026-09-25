@@ -1,0 +1,374 @@
+{
+ "en": {
+  "hourly": {
+   "scrollers": [
+    {
+     "el": "hourly-screen",
+     "clientH": 643,
+     "scrollH": 1168
+    },
+    {
+     "el": "hourly-timeline",
+     "clientH": 407,
+     "scrollH": 1528
+    }
+   ],
+   "header": [
+    {
+     "cls": "h-time",
+     "text": "Time",
+     "left": 20,
+     "right": 58,
+     "size": 8.8,
+     "align": "start"
+    },
+    {
+     "cls": "h-icon",
+     "text": "",
+     "left": 60,
+     "right": 84,
+     "size": 8.8,
+     "align": "start"
+    },
+    {
+     "cls": "h-temp",
+     "text": "Temp",
+     "left": 86,
+     "right": 128,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-rain",
+     "text": "Rain",
+     "left": 130,
+     "right": 162,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-mm",
+     "text": "mm",
+     "left": 164,
+     "right": 192,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-wind",
+     "text": "Wind",
+     "left": 194,
+     "right": 226,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-dir",
+     "text": "",
+     "left": 228,
+     "right": 256,
+     "size": 6.864,
+     "align": "start"
+    },
+    {
+     "cls": "h-uv",
+     "text": "UV",
+     "left": 258,
+     "right": 282,
+     "size": 11.2,
+     "align": "right"
+    }
+   ],
+   "firstRow": [
+    {
+     "cls": "h-time",
+     "text": "23:00",
+     "left": 20,
+     "right": 58,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-icon",
+     "text": "",
+     "left": 60,
+     "right": 84,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-temp ",
+     "text": "19°",
+     "left": 86,
+     "right": 128,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-rain",
+     "text": "5%",
+     "left": 130,
+     "right": 162,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-mm",
+     "text": "—",
+     "left": 164,
+     "right": 192,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-wind",
+     "text": "19",
+     "left": 194,
+     "right": 226,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-dir",
+     "text": "NE",
+     "left": 228,
+     "right": 256,
+     "size": 11.856,
+     "align": "start"
+    },
+    {
+     "cls": "h-uv ",
+     "text": "0",
+     "left": 258,
+     "right": 282,
+     "size": 11.2,
+     "align": "right"
+    }
+   ],
+   "rows": 24
+  },
+  "week": {
+   "rows": 7,
+   "rowHeights": [
+    79,
+    79,
+    79,
+    79,
+    79,
+    79,
+    79
+   ],
+   "fullyVisible": 5
+  },
+  "dayLate": {
+   "screen": "day-detail-screen",
+   "rows": 1,
+   "titleCentreOffset": null,
+   "text": "← Weekly Thu 24/09 Wet conditions • 16° / 20° TIME TEMP RAIN MM WIND UV 23:00 19° 5% — 19 0"
+  },
+  "error": {
+   "condition": "Couldn't fetch weather right now.",
+   "buttons": [
+    "Language",
+    "Hourly",
+    "Home",
+    "Weekly",
+    "Search",
+    "Settings",
+    "Share"
+   ],
+   "homeText": "--° Couldn't fetch weather right now. Error Hourly"
+  },
+  "desktopNight": {
+   "hero": "Probably 17° / 21°",
+   "heroBlock": "Probably 17° / 21° Cloudy vibes.",
+   "place": "Strand, Western Cape, South Africa"
+  }
+ },
+ "af": {
+  "hourly": {
+   "scrollers": [
+    {
+     "el": "hourly-screen",
+     "clientH": 643,
+     "scrollH": 1168
+    },
+    {
+     "el": "hourly-timeline",
+     "clientH": 407,
+     "scrollH": 1528
+    }
+   ],
+   "header": [
+    {
+     "cls": "h-time",
+     "text": "Tyd",
+     "left": 20,
+     "right": 58,
+     "size": 8.8,
+     "align": "start"
+    },
+    {
+     "cls": "h-icon",
+     "text": "",
+     "left": 60,
+     "right": 84,
+     "size": 8.8,
+     "align": "start"
+    },
+    {
+     "cls": "h-temp",
+     "text": "Temp",
+     "left": 86,
+     "right": 128,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-rain",
+     "text": "Reën",
+     "left": 130,
+     "right": 162,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-mm",
+     "text": "mm",
+     "left": 164,
+     "right": 192,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-wind",
+     "text": "Wind",
+     "left": 194,
+     "right": 226,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-dir",
+     "text": "",
+     "left": 228,
+     "right": 256,
+     "size": 6.864,
+     "align": "start"
+    },
+    {
+     "cls": "h-uv",
+     "text": "UV",
+     "left": 258,
+     "right": 282,
+     "size": 11.2,
+     "align": "right"
+    }
+   ],
+   "firstRow": [
+    {
+     "cls": "h-time",
+     "text": "23:00",
+     "left": 20,
+     "right": 58,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-icon",
+     "text": "",
+     "left": 60,
+     "right": 84,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-temp ",
+     "text": "19°",
+     "left": 86,
+     "right": 128,
+     "size": 15.2,
+     "align": "start"
+    },
+    {
+     "cls": "h-rain",
+     "text": "5%",
+     "left": 130,
+     "right": 162,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-mm",
+     "text": "—",
+     "left": 164,
+     "right": 192,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-wind",
+     "text": "19",
+     "left": 194,
+     "right": 226,
+     "size": 11.2,
+     "align": "right"
+    },
+    {
+     "cls": "h-dir",
+     "text": "NO",
+     "left": 228,
+     "right": 256,
+     "size": 11.856,
+     "align": "start"
+    },
+    {
+     "cls": "h-uv ",
+     "text": "0",
+     "left": 258,
+     "right": 282,
+     "size": 11.2,
+     "align": "right"
+    }
+   ],
+   "rows": 24
+  },
+  "week": {
+   "rows": 7,
+   "rowHeights": [
+    84,
+    84,
+    84,
+    84,
+    84,
+    84,
+    84
+   ],
+   "fullyVisible": 5
+  },
+  "dayLate": {
+   "screen": "day-detail-screen",
+   "rows": 1,
+   "titleCentreOffset": null,
+   "text": "← Weekliks Don 24/09 Nat toestande • 16° / 20° TYD TEMP REËN MM WIND UV 23:00 19° 5% — 19 0"
+  },
+  "error": {
+   "condition": "Kon nie weer kry nie.",
+   "buttons": [
+    "Language",
+    "Uurliks",
+    "Tuis",
+    "Weekliks",
+    "Soek",
+    "Instellings",
+    "Deel"
+   ],
+   "homeText": "--° Kon nie weer kry nie. Fout Uurliks"
+  },
+  "desktopNight": {
+   "hero": "Waarskynlik 17° / 21°",
+   "heroBlock": "Waarskynlik 17° / 21° Bewolk vandag.",
+   "place": "Strand, Western Cape, South Africa"
+  }
+ }
+}

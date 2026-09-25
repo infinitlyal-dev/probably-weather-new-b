@@ -1,0 +1,72 @@
+{
+ "tag": "smoke",
+ "visits": 200,
+ "seconds": 10,
+ "wallSeconds": 10,
+ "snap": false,
+ "fail": [],
+ "statuses": {
+  "200": 200
+ },
+ "edgeHits": 0,
+ "functionInvocations": 200,
+ "serverCache": {
+  "miss": 185,
+  "coalesced-local": 1,
+  "hit": 14
+ },
+ "upstreamCalls": {
+  "locationiq": 22,
+  "open-meteo": 185,
+  "weatherapi": 185,
+  "pirate": 20,
+  "met": 185,
+  "tomorrow": 25
+ },
+ "upstreamPerVisit": {
+  "locationiq": 0.11,
+  "open-meteo": 0.925,
+  "weatherapi": 0.925,
+  "pirate": 0.1,
+  "met": 0.925,
+  "tomorrow": 0.125
+ },
+ "redisHttpCalls": 1310,
+ "redisCommands": {
+  "get": 569,
+  "mget": 185,
+  "set": 738,
+  "eval": 1294,
+  "incr": 1972,
+  "expire": 522,
+  "incrby": 185,
+  "del": 184
+ },
+ "redisCommandsTotal": 5649,
+ "redisCommandsPerVisit": 28.25,
+ "functionMs": {
+  "p50": 408,
+  "p95": 504,
+  "max": 583
+ },
+ "visitsServedBySource": {
+  "Open-Meteo": 200,
+  "WeatherAPI": 200,
+  "Pirate Weather": 24,
+  "MET Norway": 200,
+  "Tomorrow.io": 30
+ },
+ "namesShown": {
+  "resolved": 24,
+  "My Location": 163,
+  "Unknown": 13
+ },
+ "tempShown": 200,
+ "logLines": {
+  "[pw-budget] pirate over ceiling ": 165,
+  "[pw-source-skip] Pirate Weather budget-blocked": 165,
+  "[pw-budget] locationiq over ceiling ": 163,
+  "[pw-budget] tomorrow over ceiling ": 160,
+  "[pw-source-skip] Tomorrow.io budget-blocked": 160
+ }
+}
