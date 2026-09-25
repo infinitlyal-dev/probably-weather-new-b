@@ -1,0 +1,26 @@
+FOG detector — 104681 station-hours (52543 tune, 52138 test), 2025-10-01 → 2026-09-24
+Top tune cells (F0.5):
+  rh≥95 spread≤2 wind≤10: F0.5 0.187 P 17% R 30% calls 640
+  rh≥95 spread≤1.5 wind≤10: F0.5 0.187 P 17% R 30% calls 640
+  rh≥95 spread≤1 wind≤10: F0.5 0.187 P 17% R 30% calls 640
+  rh≥95 spread≤2 wind≤15: F0.5 0.178 P 16% R 31% calls 696
+  rh≥95 spread≤1.5 wind≤15: F0.5 0.178 P 16% R 31% calls 696
+  rh≥95 spread≤1 wind≤15: F0.5 0.178 P 16% R 31% calls 696
+  (today on tune weeks: F0.5 0.150 P 13% R 35% calls 960)
+CHOSEN: rh≥95 spread≤2 wind≤10
+TEST today : fog hours 264, calls 879, right 92 (P 10%), caught 35%, F0.5 0.122, wrong/1000h 15.1
+TEST chosen: fog hours 264, calls 625, right 77 (P 12%), caught 29%, F0.5 0.139, wrong/1000h 10.5
+  precision diff 0.019 [0.002, 0.035] · F0.5 diff 0.018 [0.001, 0.035] · wrong/1000h diff -4.6 [-7.2, -2.7] · recall diff -0.057 [-0.089, -0.025]
+By region (test): wrong/1000h today → chosen [diff CI] · caught today → chosen
+  Western Cape   46.8 → 34.6 -12.2 [-21.6, -5.2] · caught 63/112 → 57/112 · P 24% → 28%
+  Garden Route   43.5 → 18.1 -25.4 [-41.8, -13.9] · caught 7/78 → 2/78 · P 4% → 3%
+  Eastern Cape   22.2 → 17.1 -5.1 [-9.3, -1.8] · caught 11/33 → 7/33 · P 4% → 4%
+  KZN coast      6.3 → 3.8 -2.6 [-4.6, -0.7] · caught 0/0 → 0/0 · P 0% → 0%
+  Highveld       7.1 → 6.4 -0.7 [-1.7, 0.0] · caught 5/10 → 5/10 · P 15% → 16%
+  Free State     5.7 → 5.0 -0.7 [-1.6, 0.0] · caught 3/5 → 3/5 · P 12% → 13%
+  Northern Cape  0.6 → 0.6 0.0 [0.0, 0.0] · caught 0/9 → 0/9 · P 0% → 0%
+  North West     2.5 → 2.5 0.0 [0.0, 0.0] · caught 0/2 → 0/2 · P 0% → 0%
+  Lowveld        8.9 → 7.7 -1.2 [-2.2, -0.3] · caught 0/6 → 0/6 · P 0% → 0%
+  Limpopo        6.8 → 6.5 -0.2 [-0.8, 0.0] · caught 3/9 → 3/9 · P 10% → 10%
+What the airport reported when the detector said fog (test): {"today":{"other":638,"fog":92,"low-cloud":74,"mist":75},"chosen":{"other":452,"fog":77,"low-cloud":52,"mist":44}}
+Open-Meteo low cloud when today's detector fired, by what it was (test): {"fog":87.01086956521739,"mist":78.90666666666667,"low-cloud":89.51351351351352,"other":82.65203761755485}
