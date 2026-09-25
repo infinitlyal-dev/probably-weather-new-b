@@ -6285,3 +6285,8 @@ body.ads-slots #week-screen .daily-cards > .daily-header { flex: none !important
 .stats-row .stat-sub.stat-sub-split { display: flex; }
 .stats-row .stat-sub-split > .stat-sub-cut { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .stats-row .stat-sub-split > .stat-sub-keep { flex: none; white-space: pre; }
+
+/* Credit links on the Sources page (Al: DO IT, 25 Sept 2026): the names stay in the sentence's own
+   ink, underlined as links; the services' required marks sit on their own line below. */
+.sources-attribution a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.sources-attribution .sources-credit-marks { display: block; margin-top: 4px; }

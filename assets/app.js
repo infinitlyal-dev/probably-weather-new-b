@@ -1386,6 +1386,51 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Credit links (Al: DO IT, launch-run-ruled.json 25 Sept 2026). The translated sentence keeps its
+  // words; each source's name becomes a link to it. Then the marks the services ask for in their own
+  // form: LocationIQ's free plan requires "Search by LocationIQ.com" as a link, OpenStreetMap (whose
+  // data LocationIQ serves) a credit linking its copyright page, and Open-Meteo's CC BY 4.0 licence a
+  // link to the licence. Brand names and licence marks, so the same in every language.
+  const SOURCE_LINKS = [
+    ['Open-Meteo', 'https://open-meteo.com/'],
+    ['WeatherAPI.com', 'https://www.weatherapi.com/'],
+    ['MET Norway', 'https://www.met.no/en'],
+    ['Pirate Weather', 'https://pirateweather.net/'],
+    ['Tomorrow.io', 'https://www.tomorrow.io/'],
+  ];
+  const CREDIT_MARKS = [
+    ['Search by LocationIQ.com', 'https://locationiq.com/'],
+    ['© OpenStreetMap contributors', 'https://www.openstreetmap.org/copyright'],
+    ['Open-Meteo: CC BY 4.0', 'https://creativecommons.org/licenses/by/4.0/'],
+  ];
+  function renderSourcesAttribution(el, sentence) {
+    const link = ([label, href]) => {
+      const a = document.createElement('a');
+      a.href = href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = label;
+      return a;
+    };
+    el.textContent = '';
+    const text = String(sentence || '');
+    const pattern = new RegExp(SOURCE_LINKS.map(([name]) => name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+    let at = 0;
+    for (const m of text.matchAll(pattern)) {
+      if (m.index > at) el.appendChild(document.createTextNode(text.slice(at, m.index)));
+      el.appendChild(link(SOURCE_LINKS.find(([name]) => name === m[0])));
+      at = m.index + m[0].length;
+    }
+    if (at < text.length) el.appendChild(document.createTextNode(text.slice(at)));
+    const marks = document.createElement('span');
+    marks.className = 'sources-credit-marks';
+    CREDIT_MARKS.forEach((mark, i) => {
+      if (i) marks.appendChild(document.createTextNode(' · '));
+      marks.appendChild(link(mark));
+    });
+    el.appendChild(marks);
+  }
+
   // ========== UPDATE UI LANGUAGE ==========
   function updateUILanguage() {
     // ADS-READINESS (Al's ruling 2026-09-15): the slots follow assets/ads-config.js
@@ -1486,7 +1531,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sourcesExplainerEl = $('#sourcesExplainer');
     if (sourcesExplainerEl) sourcesExplainerEl.textContent = t('sources', 'explainer');
     const sourcesAttributionEl = $('#sourcesAttribution');
-    if (sourcesAttributionEl) sourcesAttributionEl.textContent = t('sources', 'attribution');
+    if (sourcesAttributionEl) renderSourcesAttribution(sourcesAttributionEl, t('sources', 'attribution'));
     // P2-1: MET Norway's rain % is derived from its precipitation amounts.
     const sourcesMetNoteEl = $('#sourcesMetNote');
     if (sourcesMetNoteEl) sourcesMetNoteEl.textContent = t('sources', 'metRain');

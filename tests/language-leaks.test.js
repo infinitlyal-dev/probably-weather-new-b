@@ -686,6 +686,7 @@ function runUpdateUILanguage(lang) {
     // skipped. Its own behaviour is covered against the real showCacheAge.
     offlineEl: el('#offlineIndicator'), lastCacheTimestamp: null, showCacheAge: noop,
     searchResults: [], renderSearchResults: noop,
+    renderSourcesAttribution: (el, sentence) => { if (el) el.textContent = sentence; },
   };
 
   const fn = new Function(...Object.keys(names), `return function updateUILanguage() ${updateUILanguageSrc()};`)(...Object.values(names));
@@ -1004,6 +1005,7 @@ describe('language leaks — switching language updates content already rendered
         refreshSaveButtonState: noop, APP_VERSION: '1.5', BUILD_SHORT: 'abc1234',
         offlineEl: $('#offlineIndicator'), lastCacheTimestamp: null, showCacheAge: noop,
         searchResults: [], renderSearchResults: noop,
+        renderSourcesAttribution: (el, sentence) => { if (el) el.textContent = sentence; },
       };
       const all = { ...names, ...extra };
       return new Function(...Object.keys(all), `return function updateUILanguage() ${updateUILanguageSrc()};`)(...Object.values(all));
