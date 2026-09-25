@@ -2,7 +2,7 @@
 
 import { describe, expect, it } from 'vitest';
 import health from '../api/health.js';
-import { evaluate, LIMITS } from '../scripts/health-check.mjs';
+import { evaluate, LIMITS, alertsToClose } from '../scripts/health-check.mjs';
 import { recordSourceFailure, recordServerError, failKey, serverErrorKey } from '../api/_lib/health-counters.js';
 
 const NOW = Date.parse('2026-09-25T10:15:00Z');
@@ -66,6 +66,26 @@ describe('the alert rules', () => {
   it('the site or the endpoint down', () => {
     expect(evaluate({ homeStatus: 503, healthStatus: 200, health: healthy }).map((p) => p.key)).toEqual(['home-down']);
     expect(evaluate({ homeStatus: null, healthStatus: null, health: null }).map((p) => p.key)).toEqual(['home-down', 'health-down']);
+  });
+
+  it('Upstash not connected at all is an alert too (B3)', () => {
+    const p = evaluate({ homeStatus: 200, healthStatus: 200, health: { ...healthy, redis: 'not configured' } });
+    expect(p.map((x) => x.key)).toEqual(['redis']);
+    expect(p[0].title).toBe('The shared cache (Upstash) is not connected');
+    expect(p[0].body).toContain('UPSTASH_KV_REST_API_URL');
+  });
+});
+
+describe('closing alerts (B2)', () => {
+  it('closes what is gone, keeps what is still wrong', () => {
+    expect(alertsToClose(['source-tomorrow', 'redis', undefined], [{ key: 'redis' }])).toEqual(['source-tomorrow']);
+  });
+  it('closes nothing while /api/health is not answering — that reading cannot see the rest', () => {
+    expect(alertsToClose(['source-tomorrow', 'redis'], [{ key: 'health-down' }])).toEqual([]);
+    expect(alertsToClose(['source-tomorrow'], [{ key: 'home-down' }, { key: 'health-down' }])).toEqual([]);
+  });
+  it('a site that is down but whose health check answers still closes resolved alerts', () => {
+    expect(alertsToClose(['source-tomorrow'], [{ key: 'home-down' }])).toEqual(['source-tomorrow']);
   });
 });
 

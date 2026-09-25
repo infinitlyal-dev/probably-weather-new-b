@@ -25,7 +25,11 @@ export function evaluate({ homeStatus, healthStatus, health }) {
     add('health-down', `The health check is not answering (${healthStatus ?? 'no answer'})`, 'The API may be down. Open the site on your phone; if the forecast does not load, roll back (RUNBOOK).');
     return out;
   }
-  if (health.redis && health.redis !== 'ok' && health.redis !== 'not configured') {
+  // Not configured is a problem too on the live site: no cache means every visit asks the
+  // providers, and every counter this check reads stays at 0 (Fable, review 4: B3).
+  if (health.redis === 'not configured') {
+    add('redis', 'The shared cache (Upstash) is not connected', 'The live app has no Upstash connection (UPSTASH_KV_REST_API_URL / UPSTASH_KV_REST_API_TOKEN are missing in Vercel). It keeps working, but every visit asks the weather providers, their allowances run out fast, and these alerts cannot see failures. Reconnect Upstash in Vercel and Redeploy (RUNBOOK).');
+  } else if (health.redis && health.redis !== 'ok') {
     add('redis', 'The shared cache (Upstash) is failing', `Upstash says: ${health.redis}\n\nThe app keeps working, but without the cache every visit asks the weather providers, so their allowances run out fast. If it says "max requests limit exceeded", the free Upstash plan is used up — switch it to pay-as-you-go (RUNBOOK).`);
   }
   if ((health.serverErrorsLastHour ?? 0) >= LIMITS.serverErrorsPerHour) {
@@ -45,6 +49,15 @@ export function evaluate({ homeStatus, healthStatus, health }) {
     add('open-meteo-month', `Open-Meteo has used ${Math.round((om.units / om.plan) * 100)}% of this month's plan`, 'Open-Meteo is the main source. Above 100% the next plan (Professional) is needed.');
   }
   return out;
+}
+
+/** The open alerts to close: those whose problem is gone — but none while /api/health is not
+ *  answering, because that reading cannot see the other problems at all; closing them would
+ *  reopen each one as a new issue once the endpoint is back (Fable, review 4: B2). */
+export function alertsToClose(openKeys, problems) {
+  if (problems.some((p) => p.key === 'health-down')) return [];
+  const now = new Set(problems.map((p) => p.key));
+  return openKeys.filter((key) => key && !now.has(key));
 }
 
 async function get(url) {
@@ -80,9 +93,8 @@ async function main() {
     await gh('/issues', { method: 'POST', body: JSON.stringify({ title: PREFIX + p.title, body: `${MENTION} ${p.body}\n\nSeen ${stamp}. This issue closes itself when the problem is gone.\n\n<!-- pw-alert: ${p.key} -->` }) });
     console.log(`opened: ${p.title}`);
   }
-  const now = new Set(problems.map((p) => p.key));
-  for (const [key, issue] of openKeys) {
-    if (!key || now.has(key)) continue;
+  for (const key of alertsToClose([...openKeys.keys()], problems)) {
+    const issue = openKeys.get(key);
     await gh(`/issues/${issue.number}/comments`, { method: 'POST', body: JSON.stringify({ body: `Gone at ${stamp}.` }) });
     await gh(`/issues/${issue.number}`, { method: 'PATCH', body: JSON.stringify({ state: 'closed' }) });
     console.log(`closed: ${issue.title}`);
