@@ -1,0 +1,103 @@
+{
+  "title": "How close is the forecast? Before and after",
+  "lede": "Checked against what 16 South African airports measured every day from 1 January to 24 September 2026, using the forecasts the weather models really gave at the time — not hindsight. Every change was learned on 2025 and only then tested on 2026, so the test could not peek. Nothing here is live yet except the privacy page: <a href=\"https://www.probablyweather.co.za/privacy\">probablyweather.co.za/privacy</a>.",
+  "top": "<div class=\"card\"><h3>In plain words</h3><ul class=\"plain\"><li><b>Today's and tomorrow's high and low: closer, and better than any single weather model overall.</b> Tomorrow's temperature was off by about 1.5 °C on average; now 1.3. Right to within 2 °C on 7 days in 10; now 8. Better in 10 of 11 regions. A one-source app (Open-Meteo alone) is off by 1.5 °C. Inland (Highveld, Free State, Northern Cape, Limpopo) one model on its own — mostly Germany's ICON — did as well or better, looking back; weighting models by region is the next thing to test. <span class=\"mark ship\">BUILT · NOT PUSHED</span></li><li><b>The Lowveld</b> (Mbombela, Hoedspruit) got slightly worse in the test — its nights run warmer than the models, the opposite of the rest of SA — so the app leaves the Lowveld exactly as it is today.</li><li><b>Frost nights:</b> the forecast low was 2.8–4.4 °C too warm the day before; now 2.6–3.4. Still the biggest gap. An airport's own correction gets it to 0.9, but that doesn't carry to the next town yet, so it isn't used.</li><li><b>Rain today:</b> the % is honest in the middle and overstates at the top (when it says 80–90 %, it rains about 7 times in 10). Open-Meteo on its own is much worse (80–90 % → it rains 4–5 times in 10). <span class=\"mark report\">REPORTED</span></li><li><b>Rain in the next few hours:</b> the % overstates. When it says 50–60 %, it rains about 3 times in 10. A corrected % is right in the test (50–60 % → 5 in 10) and beats both, but the test can't see three of the five sources, so your PC's recorder now checks it on the real ones before anything changes. <span class=\"mark wait\">RECORDER CHECKING</span></li><li><b>\"Rain's here\":</b> in the replay it says rain in a dry hour 4 times in 10 at the six airports your rule was tuned on, and 7–9 times in 10 in inland thunderstorm country (Mthatha, Mahikeng, Polokwane, Mbombela). Your rule, so counted, not changed.</li><li><b>Wind:</b> the six models, each corrected for its lean at the airports, would be much closer (4.5 → 3.3 km/h off). Airports are windier than most gardens, so this waits for the recorder. <b>Gusts:</b> the app's gust warning catches 8 in 10 big gusts; nothing tested beats it.</li><li><b>Fog:</b> the weakest spot. When the app's fog detector says fog, it is fog (under 1 km) about 1 time in 8. Live since yesterday, 15 of the app's 16 fog calls had no fog at the airport — mostly mist or very low cloud (Cape Town's \"fog or cloud\"). Nothing in the archive does better; the recorder keeps counting.</li><li><b>The Karoo and KZN inland:</b> the change carries to towns it never saw. Tomorrow's high and low: Karoo (Beaufort West, Graaff-Reinet) about 1.8 → 1.6 °C off, KZN inland (Pietermaritzburg, Ladysmith) 1.7 → 1.5 — right to within 2 °C on 7 days in 10 (was 6 to 6½).</li><li><b>Tomorrow.io and Pirate Weather:</b> neither keeps history, so only the recorder can test them; its first full day is today. Nothing is switched off.</li></ul></div>",
+  "blocks": [
+    {
+      "h2": "Today's and tomorrow's high and low, region by region",
+      "lede": "\"Off by\" = how far the forecast high or low was from what the airport measured, on average over 2026. \"The app now\" is a range because the archive can't know exactly which model each of the app's five sources uses — the change had to win under all three guesses. \"After\" is the app with the change: five weather models, each with its known lean taken off, make up half of the day's high and low; the other half stays the five sources as before.",
+      "gen": "temps",
+      "after": ""
+    },
+    {
+      "h2": "Frost nights",
+      "lede": "Nights with a low of 2 °C or less — Bloemfontein most of all.",
+      "gen": "frost",
+      "after": ""
+    },
+    {
+      "h2": "Rain today: how honest is the %?",
+      "lede": "Each day at the 13 airports that report rain. \"The app now\" is replayed from the archive: Open-Meteo exactly, ECMWF's and GFS's % standing in for WeatherAPI and Pirate Weather, Tomorrow.io left out — close, not exact. \"Calibrated\" = the same % corrected by how often it really rained in 2025.",
+      "gen": "rainToday",
+      "after": ""
+    },
+    {
+      "h2": "Rain in the next three hours",
+      "lede": "The chance of rain in the next three hours, read five times a day (06:00–18:00).",
+      "gen": "rain3h",
+      "after": "<p class=\"muted\">Why it isn't switched on: the replay can't see WeatherAPI, Pirate Weather or Tomorrow.io, so the corrected % is checked by the recorder on what the app really serves (<code>review/accuracy/v2/live-rain.mjs</code>). It needs rain to fall at the six airports — spring in the Western Cape will make that slow.</p>"
+    },
+    {
+      "h2": "\"Rain's here\"",
+      "lede": "Your rule since 22 Sept: \"Rain's here\" only when two sources describe rain for the hour, the blended chance is 60 % or more and the blended amount 0.3 mm or more. Replayed here with three models standing in for the five sources — rougher than the app's own check of 22 Sept, which found 29 % dry at six airports.",
+      "gen": "rainhere",
+      "after": ""
+    },
+    {
+      "h2": "Wind",
+      "lede": "Hourly wind at the airports (10-minute mean) against each model, 2026. \"Corrected\" = each model's lean at that airport, by season and time of day, learned on 2025.",
+      "gen": "wind",
+      "after": "<p class=\"muted\">Not switched on: the plan keeps wind to reporting (the truth is airports only), and an airport is open and windier than most gardens — correcting to the airport could overstate wind in town. It also calls \"windy\" more often, and more of those calls are wrong.</p>"
+    },
+    {
+      "h2": "Gusts",
+      "lede": "Hours when the airport reported a gust. The app takes the largest gust any source gives.",
+      "gen": "gust",
+      "after": ""
+    },
+    {
+      "h2": "Fog",
+      "lede": "Hours with fog (visibility under 1 km) at the airports that report it. The app's fog call also listens to the sources' own fog words, which have no archive — so the live count matters most.",
+      "gen": "fog",
+      "after": ""
+    },
+    {
+      "h2": "The Karoo and KZN inland",
+      "lede": "No airport there reports every hour, so SA Weather Service town reports (the day's maximum and the night's minimum) stand in: Beaufort West, Graaff-Reinet, Pietermaritzburg, Ladysmith. The correction was learned at the airports only, so these towns are a fair test of how it carries.",
+      "gen": "synop",
+      "after": ""
+    },
+    {
+      "h2": "The five real sources, live",
+      "lede": "Your PC's recorder, hourly at six airports since 24 Sept: each source's own call against the airport's report that hour. A day old — small numbers.",
+      "gen": "votes",
+      "after": ""
+    },
+    {
+      "h2": "What a push would ship",
+      "lede": "",
+      "gen": "",
+      "after": "<ul class=\"plain\"><li><b>57 changes over what is live; 36 of them change what people get.</b></li><li>From the launch eval (15): your Afrikaans rulings and the season ruling (59 lines cut), Sesotho in the SA spelling, install steps in isiZulu, isiXhosa and Sesotho, search that says when it finds nothing, the offline forecast showing its age, and smaller fixes.</li><li>From the launch run (19): one forecast per 2 km for a crowd in one place (with the two privacy paragraphs that describe it), the evening high and the midnight fix, a faster first forecast, the health check, robots/sitemap/iPhone icon, your ticked list, the Afrikaans search line and the gust number.</li><li>This run (2): the credit links, and the new high and low.</li><li>The other 21 are alarms, the recorder and records — nothing people see. Every one is listed in <code>review/eval/EVAL.md</code> §0, §7 and §8.</li></ul>"
+    }
+  ],
+  "questions": [
+    {
+      "key": "push",
+      "text": "Push local main live? It carries the 2 km rounding with its two privacy paragraphs, the credit links, the alarm fixes and the new high and low — everything in the list above.",
+      "options": [
+        [
+          "YES",
+          "Push it"
+        ],
+        [
+          "NOTNOW",
+          "Not yet"
+        ]
+      ]
+    },
+    {
+      "key": "rain-honest",
+      "text": "When the recorder confirms the corrected rain %, should the app show the honest % (\"55 %\" becomes about 30 % when that is how often it rains), or keep it on the careful side so nobody gets caught out?",
+      "options": [
+        [
+          "YES",
+          "Honest %"
+        ],
+        [
+          "NO",
+          "Keep it careful"
+        ]
+      ]
+    }
+  ]
+}
