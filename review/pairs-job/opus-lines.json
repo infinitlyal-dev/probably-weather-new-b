@@ -1,0 +1,17 @@
+{
+ "note": "Lines written by Opus 5.5 (Vonk, 25 Sept 2026) to the recipe for the first targets in the queue. The unattended writer is Sol (the Claude CLI's login had expired), so Al's brief says the first batch mixes the writer's lines blind with Opus-written ones. The job puts these on alternate pairs of batch 1; which is which lives only in that batch's key.json, never on the page.",
+ "lines": {
+  "M02": {"line": "Lightning, then the whole house counts to three.", "af": "Weerlig, en die hele huis tel tot drie.",
+          "scene": "Night in a Johannesburg family room during a close Highveld thunderstorm. A father in his forties and two children, seen from behind and small in the frame, sit frozen on a couch facing a big window just after a lightning flash; the children hold up fingers, counting. Lit only by the flash and a dim lamp. Plain modern suburban house, white plastered walls.",
+          "composition": "The window, the flash and the three silhouettes in the upper half; the bottom half calm and dark: the back of the couch and a plain rug."},
+  "M04": {"line": "Cold enough that the heater has a waiting list.", "af": "So koud dat die verwarmer 'n waglys het.",
+          "scene": "A grey, wet Cape Town winter evening inside a small Woodstock cottage with pale painted walls: a coloured South African family of three and a sleepy dog all crowded close around one small oil heater, knees nearly touching it, hands out towards its glow, rain streaking the window behind them.",
+          "composition": "The heater and the huddle in the upper-middle part; the bottom third calm: a plain wooden floor in soft grey light."},
+  "M06": {"line": "Seven at night and the pavement is still arguing.", "af": "Seweuur saans en die sypaadjie stry nog steeds.",
+          "scene": "Early evening on a hot Upington street: an elderly man in a vest and shorts steps barefoot off his stoep onto the pavement and immediately lifts one foot, wincing, the concrete still hot from the day. Low orange light, long shadows, a pale plastered house with a corrugated roof.",
+          "composition": "The man and the stoep in the upper half; the bottom third calm: empty pavement in warm low light."},
+  "M08": {"line": "The fog has the whole street on mute.", "af": "Die mis het die hele straat op stil gesit.",
+          "scene": "Dusk in thick fog in a small Midlands town: one elderly Zulu woman in a long coat and knitted hat pauses at her gate under a single streetlight, head tilted, listening; the road beyond disappears into white after two houses.",
+          "composition": "The woman, the gate and the streetlight in the upper-middle part; the bottom third calm: wet grey road fading into fog."}
+ }
+}

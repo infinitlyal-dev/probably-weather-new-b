@@ -37,6 +37,15 @@ Two known gaps (fixes waiting for a reviewed session): while `/api/health` itsel
 
 Vercel also emails you as usage nears the plan's limits (all plans); on Pro, Vercel's own error-spike alerts can be switched on under the project's **Alerts** as well.
 
+## The pairs job (new lines and photos)
+
+Once a day at 07:30 a hidden task on this computer, **ProbablyWeather pairs job**, makes a few new line + photo pairs to your recipe and leaves a page for you: `review\pairs-batch-<n>.html` in the OneDrive working copy, every item already marked with its pick. Change what you disagree with and press Export (`pairs-batch-<n>-ruled.json` lands in Downloads). **Nothing it makes goes into the app** until a session wires what you ticked. It waits, making nothing, while a page is unruled; it also skips a day when Codex's weekly allowance is over 85 %.
+
+- **Start** (once, already done 25 Sept): `powershell -ExecutionPolicy Bypass -File review\pairs-job\install-pairs-job.ps1`. Run it now: `schtasks /run /tn "ProbablyWeather pairs job"`.
+- **Pause**: put an empty file named `PAUSE` in `review\pairs-job\` (OneDrive working copy). Delete it to carry on.
+- **Stop for good**: `schtasks /delete /tn "ProbablyWeather pairs job" /f`, then delete the folder `%USERPROFILE%\pw-pairs-job`.
+- What it did and why: `review\pairs-job\log.txt`. Details: `review\pairs-job\README.md` on main.
+
 ## How many people came
 
 Vercel → project → **Analytics**. It counts visits without cookies. On Pro (this project's plan) it keeps counting; events cost about $0.03 per 1,000, taken from the plan's included usage.
