@@ -1,0 +1,4177 @@
+{
+ "lead": "t1",
+ "train": {
+  "from": "2025-01-01",
+  "to": "2025-12-31"
+ },
+ "test": {
+  "from": "2026-01-01",
+  "to": "2026-09-24"
+ },
+ "stations": [
+  "FACT",
+  "FALW",
+  "FAGG",
+  "FAPE",
+  "FAEL",
+  "FAUT",
+  "FALE",
+  "FAOR",
+  "FAWB",
+  "FABL",
+  "FAUP",
+  "FAKM",
+  "FAMM",
+  "FAKN",
+  "FAHS",
+  "FAPP"
+ ],
+ "consensusModels": [
+  "best_match",
+  "gfs_seamless",
+  "icon_seamless",
+  "ukmo_seamless",
+  "meteofrance_seamless"
+ ],
+ "alpha": {
+  "old harness": 0.8,
+  "ECMWF-heavy": 0.7,
+  "mixed": 0.8
+ },
+ "shipped": {
+  "old harness": 0.5,
+  "ECMWF-heavy": 0.5,
+  "mixed": 0.5
+ },
+ "overall": {
+  "max": {
+   "model: best_match": {
+    "n": 3784,
+    "mae": 1.561,
+    "bias": -0.835,
+    "within2": 0.716
+   },
+   "model: ecmwf_ifs025": {
+    "n": 3784,
+    "mae": 1.566,
+    "bias": -0.99,
+    "within2": 0.724
+   },
+   "model: gfs_seamless": {
+    "n": 3784,
+    "mae": 1.524,
+    "bias": 0.104,
+    "within2": 0.742
+   },
+   "model: icon_seamless": {
+    "n": 3753,
+    "mae": 1.495,
+    "bias": -0.737,
+    "within2": 0.768
+   },
+   "model: ukmo_seamless": {
+    "n": 3337,
+    "mae": 1.641,
+    "bias": -0.605,
+    "within2": 0.69
+   },
+   "model: meteofrance_seamless": {
+    "n": 3753,
+    "mae": 1.478,
+    "bias": -0.364,
+    "within2": 0.755
+   },
+   "app now (old harness)": {
+    "n": 3784,
+    "mae": 1.364,
+    "bias": -0.667,
+    "within2": 0.769
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 3784,
+    "mae": 1.45,
+    "bias": -0.855,
+    "within2": 0.747
+   },
+   "app now (mixed)": {
+    "n": 3784,
+    "mae": 1.344,
+    "bias": -0.57,
+    "within2": 0.778
+   },
+   "five-model mean, no tables": {
+    "n": 3784,
+    "mae": 1.251,
+    "bias": -0.487,
+    "within2": 0.811
+   },
+   "consensus, SA table (without this station)": {
+    "n": 3784,
+    "mae": 1.193,
+    "bias": -0.197,
+    "within2": 0.826
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 3784,
+    "mae": 1.11,
+    "bias": -0.217,
+    "within2": 0.851
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 3784,
+    "mae": 1.232,
+    "bias": -0.432,
+    "within2": 0.81
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 3784,
+    "mae": 1.261,
+    "bias": -0.526,
+    "within2": 0.806
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 3784,
+    "mae": 1.232,
+    "bias": -0.384,
+    "within2": 0.812
+   },
+   "as shipped (old harness)": {
+    "n": 3784,
+    "mae": 1.241,
+    "bias": -0.469,
+    "within2": 0.807
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 3784,
+    "mae": 1.282,
+    "bias": -0.576,
+    "within2": 0.797
+   },
+   "as shipped (mixed)": {
+    "n": 3784,
+    "mae": 1.233,
+    "bias": -0.407,
+    "within2": 0.812
+   },
+   "mix (old harness), α=0.8": {
+    "n": 3784,
+    "mae": 1.197,
+    "bias": -0.291,
+    "within2": 0.822
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 3784,
+    "mae": 1.217,
+    "bias": -0.394,
+    "within2": 0.817
+   },
+   "mix (mixed), α=0.8": {
+    "n": 3784,
+    "mae": 1.2,
+    "bias": -0.272,
+    "within2": 0.823
+   }
+  },
+  "min": {
+   "model: best_match": {
+    "n": 3545,
+    "mae": 1.534,
+    "bias": 0.578,
+    "within2": 0.721
+   },
+   "model: ecmwf_ifs025": {
+    "n": 3545,
+    "mae": 1.591,
+    "bias": 0.916,
+    "within2": 0.707
+   },
+   "model: gfs_seamless": {
+    "n": 3545,
+    "mae": 2.618,
+    "bias": 1.817,
+    "within2": 0.519
+   },
+   "model: icon_seamless": {
+    "n": 3517,
+    "mae": 1.716,
+    "bias": 0.418,
+    "within2": 0.665
+   },
+   "model: ukmo_seamless": {
+    "n": 3124,
+    "mae": 1.577,
+    "bias": -0.104,
+    "within2": 0.71
+   },
+   "model: meteofrance_seamless": {
+    "n": 3518,
+    "mae": 2.246,
+    "bias": 1.819,
+    "within2": 0.55
+   },
+   "app now (old harness)": {
+    "n": 3545,
+    "mae": 1.648,
+    "bias": 0.948,
+    "within2": 0.685
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 3545,
+    "mae": 1.441,
+    "bias": 0.629,
+    "within2": 0.739
+   },
+   "app now (mixed)": {
+    "n": 3545,
+    "mae": 1.743,
+    "bias": 1.219,
+    "within2": 0.659
+   },
+   "five-model mean, no tables": {
+    "n": 3545,
+    "mae": 1.569,
+    "bias": 0.933,
+    "within2": 0.691
+   },
+   "consensus, SA table (without this station)": {
+    "n": 3545,
+    "mae": 1.422,
+    "bias": -0.204,
+    "within2": 0.747
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 3545,
+    "mae": 1.212,
+    "bias": -0.065,
+    "within2": 0.811
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 3545,
+    "mae": 1.446,
+    "bias": 0.372,
+    "within2": 0.739
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 3545,
+    "mae": 1.364,
+    "bias": 0.212,
+    "within2": 0.763
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 3545,
+    "mae": 1.47,
+    "bias": 0.507,
+    "within2": 0.728
+   },
+   "as shipped (old harness)": {
+    "n": 3545,
+    "mae": 1.41,
+    "bias": 0.451,
+    "within2": 0.751
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 3545,
+    "mae": 1.327,
+    "bias": 0.287,
+    "within2": 0.774
+   },
+   "as shipped (mixed)": {
+    "n": 3545,
+    "mae": 1.429,
+    "bias": 0.61,
+    "within2": 0.743
+   },
+   "mix (old harness), α=0.8": {
+    "n": 3545,
+    "mae": 1.409,
+    "bias": 0.026,
+    "within2": 0.753
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 3545,
+    "mae": 1.372,
+    "bias": 0.046,
+    "within2": 0.765
+   },
+   "mix (mixed), α=0.8": {
+    "n": 3545,
+    "mae": 1.412,
+    "bias": 0.08,
+    "within2": 0.751
+   }
+  }
+ },
+ "pooled": {
+  "model: best_match": {
+   "n": 7329,
+   "mae": 1.548,
+   "within2": 0.719
+  },
+  "model: ecmwf_ifs025": {
+   "n": 7329,
+   "mae": 1.578,
+   "within2": 0.716
+  },
+  "model: gfs_seamless": {
+   "n": 7329,
+   "mae": 2.053,
+   "within2": 0.634
+  },
+  "model: icon_seamless": {
+   "n": 7270,
+   "mae": 1.602,
+   "within2": 0.718
+  },
+  "model: ukmo_seamless": {
+   "n": 6461,
+   "mae": 1.61,
+   "within2": 0.7
+  },
+  "model: meteofrance_seamless": {
+   "n": 7271,
+   "mae": 1.85,
+   "within2": 0.656
+  },
+  "app now (old harness)": {
+   "n": 7329,
+   "mae": 1.501,
+   "within2": 0.728
+  },
+  "app now (ECMWF-heavy)": {
+   "n": 7329,
+   "mae": 1.446,
+   "within2": 0.743
+  },
+  "app now (mixed)": {
+   "n": 7329,
+   "mae": 1.537,
+   "within2": 0.72
+  },
+  "five-model mean, no tables": {
+   "n": 7329,
+   "mae": 1.405,
+   "within2": 0.753
+  },
+  "consensus, SA table (without this station)": {
+   "n": 7329,
+   "mae": 1.304,
+   "within2": 0.788
+  },
+  "consensus, own station table (upper bound)": {
+   "n": 7329,
+   "mae": 1.159,
+   "within2": 0.832
+  },
+  "shipped mix (old harness), α=0.5": {
+   "n": 7329,
+   "mae": 1.336,
+   "within2": 0.776
+  },
+  "shipped mix (ECMWF-heavy), α=0.5": {
+   "n": 7329,
+   "mae": 1.311,
+   "within2": 0.785
+  },
+  "shipped mix (mixed), α=0.5": {
+   "n": 7329,
+   "mae": 1.347,
+   "within2": 0.772
+  },
+  "as shipped (old harness)": {
+   "n": 7329,
+   "mae": 1.323,
+   "within2": 0.78
+  },
+  "as shipped (ECMWF-heavy)": {
+   "n": 7329,
+   "mae": 1.304,
+   "within2": 0.786
+  },
+  "as shipped (mixed)": {
+   "n": 7329,
+   "mae": 1.327,
+   "within2": 0.778
+  },
+  "mix (old harness), α=0.8": {
+   "n": 7329,
+   "mae": 1.299,
+   "within2": 0.789
+  },
+  "mix (ECMWF-heavy), α=0.7": {
+   "n": 7329,
+   "mae": 1.292,
+   "within2": 0.792
+  },
+  "mix (mixed), α=0.8": {
+   "n": 7329,
+   "mae": 1.302,
+   "within2": 0.788
+  }
+ },
+ "byRegion": {
+  "Western Cape": {
+   "model: best_match": {
+    "n": 534,
+    "mae": 1.36,
+    "within2": 0.805
+   },
+   "model: ecmwf_ifs025": {
+    "n": 534,
+    "mae": 1.239,
+    "within2": 0.828
+   },
+   "model: gfs_seamless": {
+    "n": 534,
+    "mae": 1.522,
+    "within2": 0.755
+   },
+   "model: icon_seamless": {
+    "n": 530,
+    "mae": 1.263,
+    "within2": 0.836
+   },
+   "model: ukmo_seamless": {
+    "n": 474,
+    "mae": 1.446,
+    "within2": 0.736
+   },
+   "model: meteofrance_seamless": {
+    "n": 530,
+    "mae": 1.426,
+    "within2": 0.768
+   },
+   "app now (old harness)": {
+    "n": 534,
+    "mae": 1.142,
+    "within2": 0.873
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.149,
+    "within2": 0.873
+   },
+   "app now (mixed)": {
+    "n": 534,
+    "mae": 1.186,
+    "within2": 0.841
+   },
+   "five-model mean, no tables": {
+    "n": 534,
+    "mae": 1.118,
+    "within2": 0.858
+   },
+   "consensus, SA table (without this station)": {
+    "n": 534,
+    "mae": 1.046,
+    "within2": 0.891
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 534,
+    "mae": 0.997,
+    "within2": 0.895
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 534,
+    "mae": 1.051,
+    "within2": 0.886
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 534,
+    "mae": 1.055,
+    "within2": 0.895
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 534,
+    "mae": 1.071,
+    "within2": 0.875
+   },
+   "as shipped (old harness)": {
+    "n": 534,
+    "mae": 1.051,
+    "within2": 0.886
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.055,
+    "within2": 0.895
+   },
+   "as shipped (mixed)": {
+    "n": 534,
+    "mae": 1.071,
+    "within2": 0.875
+   },
+   "mix (old harness), α=0.8": {
+    "n": 534,
+    "mae": 1.039,
+    "within2": 0.891
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 534,
+    "mae": 1.04,
+    "within2": 0.893
+   },
+   "mix (mixed), α=0.8": {
+    "n": 534,
+    "mae": 1.044,
+    "within2": 0.891
+   }
+  },
+  "West Coast": {
+   "model: best_match": {
+    "n": 416,
+    "mae": 1.463,
+    "within2": 0.772
+   },
+   "model: ecmwf_ifs025": {
+    "n": 416,
+    "mae": 1.477,
+    "within2": 0.767
+   },
+   "model: gfs_seamless": {
+    "n": 416,
+    "mae": 1.685,
+    "within2": 0.7
+   },
+   "model: icon_seamless": {
+    "n": 412,
+    "mae": 2.589,
+    "within2": 0.49
+   },
+   "model: ukmo_seamless": {
+    "n": 362,
+    "mae": 1.517,
+    "within2": 0.738
+   },
+   "model: meteofrance_seamless": {
+    "n": 412,
+    "mae": 1.848,
+    "within2": 0.665
+   },
+   "app now (old harness)": {
+    "n": 416,
+    "mae": 1.393,
+    "within2": 0.774
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 416,
+    "mae": 1.464,
+    "within2": 0.745
+   },
+   "app now (mixed)": {
+    "n": 416,
+    "mae": 1.461,
+    "within2": 0.752
+   },
+   "five-model mean, no tables": {
+    "n": 416,
+    "mae": 1.443,
+    "within2": 0.752
+   },
+   "consensus, SA table (without this station)": {
+    "n": 416,
+    "mae": 1.176,
+    "within2": 0.815
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 416,
+    "mae": 1.142,
+    "within2": 0.825
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 416,
+    "mae": 1.217,
+    "within2": 0.808
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 416,
+    "mae": 1.275,
+    "within2": 0.788
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 416,
+    "mae": 1.244,
+    "within2": 0.808
+   },
+   "as shipped (old harness)": {
+    "n": 416,
+    "mae": 1.217,
+    "within2": 0.808
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 416,
+    "mae": 1.275,
+    "within2": 0.788
+   },
+   "as shipped (mixed)": {
+    "n": 416,
+    "mae": 1.244,
+    "within2": 0.808
+   },
+   "mix (old harness), α=0.8": {
+    "n": 416,
+    "mae": 1.175,
+    "within2": 0.822
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 416,
+    "mae": 1.226,
+    "within2": 0.805
+   },
+   "mix (mixed), α=0.8": {
+    "n": 416,
+    "mae": 1.189,
+    "within2": 0.815
+   }
+  },
+  "Garden Route": {
+   "model: best_match": {
+    "n": 522,
+    "mae": 1.379,
+    "within2": 0.778
+   },
+   "model: ecmwf_ifs025": {
+    "n": 522,
+    "mae": 1.293,
+    "within2": 0.808
+   },
+   "model: gfs_seamless": {
+    "n": 522,
+    "mae": 1.559,
+    "within2": 0.713
+   },
+   "model: icon_seamless": {
+    "n": 518,
+    "mae": 2.018,
+    "within2": 0.585
+   },
+   "model: ukmo_seamless": {
+    "n": 462,
+    "mae": 1.244,
+    "within2": 0.818
+   },
+   "model: meteofrance_seamless": {
+    "n": 518,
+    "mae": 1.167,
+    "within2": 0.84
+   },
+   "app now (old harness)": {
+    "n": 522,
+    "mae": 1.138,
+    "within2": 0.845
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 522,
+    "mae": 1.336,
+    "within2": 0.799
+   },
+   "app now (mixed)": {
+    "n": 522,
+    "mae": 1.17,
+    "within2": 0.835
+   },
+   "five-model mean, no tables": {
+    "n": 522,
+    "mae": 1.102,
+    "within2": 0.854
+   },
+   "consensus, SA table (without this station)": {
+    "n": 522,
+    "mae": 1.027,
+    "within2": 0.889
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 522,
+    "mae": 1.075,
+    "within2": 0.864
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 522,
+    "mae": 1.032,
+    "within2": 0.895
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 522,
+    "mae": 1.102,
+    "within2": 0.87
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 522,
+    "mae": 1.045,
+    "within2": 0.889
+   },
+   "as shipped (old harness)": {
+    "n": 522,
+    "mae": 1.032,
+    "within2": 0.895
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 522,
+    "mae": 1.102,
+    "within2": 0.87
+   },
+   "as shipped (mixed)": {
+    "n": 522,
+    "mae": 1.045,
+    "within2": 0.889
+   },
+   "mix (old harness), α=0.8": {
+    "n": 522,
+    "mae": 1.015,
+    "within2": 0.889
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 522,
+    "mae": 1.049,
+    "within2": 0.875
+   },
+   "mix (mixed), α=0.8": {
+    "n": 522,
+    "mae": 1.021,
+    "within2": 0.889
+   }
+  },
+  "Eastern Cape": {
+   "model: best_match": {
+    "n": 1265,
+    "mae": 1.399,
+    "within2": 0.766
+   },
+   "model: ecmwf_ifs025": {
+    "n": 1265,
+    "mae": 1.437,
+    "within2": 0.745
+   },
+   "model: gfs_seamless": {
+    "n": 1265,
+    "mae": 1.638,
+    "within2": 0.714
+   },
+   "model: icon_seamless": {
+    "n": 1254,
+    "mae": 1.627,
+    "within2": 0.711
+   },
+   "model: ukmo_seamless": {
+    "n": 1119,
+    "mae": 1.431,
+    "within2": 0.746
+   },
+   "model: meteofrance_seamless": {
+    "n": 1253,
+    "mae": 1.657,
+    "within2": 0.698
+   },
+   "app now (old harness)": {
+    "n": 1265,
+    "mae": 1.24,
+    "within2": 0.805
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 1265,
+    "mae": 1.305,
+    "within2": 0.777
+   },
+   "app now (mixed)": {
+    "n": 1265,
+    "mae": 1.27,
+    "within2": 0.794
+   },
+   "five-model mean, no tables": {
+    "n": 1265,
+    "mae": 1.213,
+    "within2": 0.81
+   },
+   "consensus, SA table (without this station)": {
+    "n": 1265,
+    "mae": 1.189,
+    "within2": 0.815
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 1265,
+    "mae": 1.133,
+    "within2": 0.843
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 1265,
+    "mae": 1.145,
+    "within2": 0.827
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 1265,
+    "mae": 1.164,
+    "within2": 0.825
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 1265,
+    "mae": 1.141,
+    "within2": 0.833
+   },
+   "as shipped (old harness)": {
+    "n": 1265,
+    "mae": 1.145,
+    "within2": 0.827
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 1265,
+    "mae": 1.164,
+    "within2": 0.825
+   },
+   "as shipped (mixed)": {
+    "n": 1265,
+    "mae": 1.141,
+    "within2": 0.833
+   },
+   "mix (old harness), α=0.8": {
+    "n": 1265,
+    "mae": 1.155,
+    "within2": 0.825
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 1265,
+    "mae": 1.156,
+    "within2": 0.828
+   },
+   "mix (mixed), α=0.8": {
+    "n": 1265,
+    "mae": 1.148,
+    "within2": 0.83
+   }
+  },
+  "KZN coast": {
+   "model: best_match": {
+    "n": 534,
+    "mae": 1.33,
+    "within2": 0.794
+   },
+   "model: ecmwf_ifs025": {
+    "n": 534,
+    "mae": 1.763,
+    "within2": 0.669
+   },
+   "model: gfs_seamless": {
+    "n": 534,
+    "mae": 1.511,
+    "within2": 0.742
+   },
+   "model: icon_seamless": {
+    "n": 530,
+    "mae": 1.765,
+    "within2": 0.662
+   },
+   "model: ukmo_seamless": {
+    "n": 474,
+    "mae": 1.566,
+    "within2": 0.738
+   },
+   "model: meteofrance_seamless": {
+    "n": 530,
+    "mae": 1.405,
+    "within2": 0.762
+   },
+   "app now (old harness)": {
+    "n": 534,
+    "mae": 1.343,
+    "within2": 0.773
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.321,
+    "within2": 0.794
+   },
+   "app now (mixed)": {
+    "n": 534,
+    "mae": 1.26,
+    "within2": 0.809
+   },
+   "five-model mean, no tables": {
+    "n": 534,
+    "mae": 1.24,
+    "within2": 0.811
+   },
+   "consensus, SA table (without this station)": {
+    "n": 534,
+    "mae": 1.171,
+    "within2": 0.811
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 534,
+    "mae": 1.075,
+    "within2": 0.856
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 534,
+    "mae": 1.145,
+    "within2": 0.837
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 534,
+    "mae": 1.139,
+    "within2": 0.839
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 534,
+    "mae": 1.126,
+    "within2": 0.841
+   },
+   "as shipped (old harness)": {
+    "n": 534,
+    "mae": 1.145,
+    "within2": 0.837
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.139,
+    "within2": 0.839
+   },
+   "as shipped (mixed)": {
+    "n": 534,
+    "mae": 1.126,
+    "within2": 0.841
+   },
+   "mix (old harness), α=0.8": {
+    "n": 534,
+    "mae": 1.127,
+    "within2": 0.833
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 534,
+    "mae": 1.122,
+    "within2": 0.837
+   },
+   "mix (mixed), α=0.8": {
+    "n": 534,
+    "mae": 1.128,
+    "within2": 0.841
+   }
+  },
+  "Highveld": {
+   "model: best_match": {
+    "n": 936,
+    "mae": 1.366,
+    "within2": 0.772
+   },
+   "model: ecmwf_ifs025": {
+    "n": 936,
+    "mae": 1.508,
+    "within2": 0.752
+   },
+   "model: gfs_seamless": {
+    "n": 936,
+    "mae": 2.078,
+    "within2": 0.587
+   },
+   "model: icon_seamless": {
+    "n": 928,
+    "mae": 1.186,
+    "within2": 0.825
+   },
+   "model: ukmo_seamless": {
+    "n": 816,
+    "mae": 1.547,
+    "within2": 0.722
+   },
+   "model: meteofrance_seamless": {
+    "n": 928,
+    "mae": 1.85,
+    "within2": 0.658
+   },
+   "app now (old harness)": {
+    "n": 936,
+    "mae": 1.396,
+    "within2": 0.766
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 936,
+    "mae": 1.271,
+    "within2": 0.804
+   },
+   "app now (mixed)": {
+    "n": 936,
+    "mae": 1.412,
+    "within2": 0.762
+   },
+   "five-model mean, no tables": {
+    "n": 936,
+    "mae": 1.266,
+    "within2": 0.797
+   },
+   "consensus, SA table (without this station)": {
+    "n": 936,
+    "mae": 1.224,
+    "within2": 0.81
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 936,
+    "mae": 1.01,
+    "within2": 0.871
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 936,
+    "mae": 1.226,
+    "within2": 0.814
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 936,
+    "mae": 1.198,
+    "within2": 0.818
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 936,
+    "mae": 1.24,
+    "within2": 0.802
+   },
+   "as shipped (old harness)": {
+    "n": 936,
+    "mae": 1.226,
+    "within2": 0.814
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 936,
+    "mae": 1.198,
+    "within2": 0.818
+   },
+   "as shipped (mixed)": {
+    "n": 936,
+    "mae": 1.24,
+    "within2": 0.802
+   },
+   "mix (old harness), α=0.8": {
+    "n": 936,
+    "mae": 1.203,
+    "within2": 0.812
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 936,
+    "mae": 1.195,
+    "within2": 0.815
+   },
+   "mix (mixed), α=0.8": {
+    "n": 936,
+    "mae": 1.21,
+    "within2": 0.814
+   }
+  },
+  "Free State": {
+   "model: best_match": {
+    "n": 472,
+    "mae": 1.709,
+    "within2": 0.621
+   },
+   "model: ecmwf_ifs025": {
+    "n": 472,
+    "mae": 1.721,
+    "within2": 0.674
+   },
+   "model: gfs_seamless": {
+    "n": 472,
+    "mae": 3.822,
+    "within2": 0.432
+   },
+   "model: icon_seamless": {
+    "n": 468,
+    "mae": 1.682,
+    "within2": 0.675
+   },
+   "model: ukmo_seamless": {
+    "n": 414,
+    "mae": 1.495,
+    "within2": 0.756
+   },
+   "model: meteofrance_seamless": {
+    "n": 468,
+    "mae": 2.584,
+    "within2": 0.496
+   },
+   "app now (old harness)": {
+    "n": 472,
+    "mae": 1.992,
+    "within2": 0.6
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 472,
+    "mae": 1.672,
+    "within2": 0.642
+   },
+   "app now (mixed)": {
+    "n": 472,
+    "mae": 2.253,
+    "within2": 0.54
+   },
+   "five-model mean, no tables": {
+    "n": 472,
+    "mae": 1.95,
+    "within2": 0.612
+   },
+   "consensus, SA table (without this station)": {
+    "n": 472,
+    "mae": 1.42,
+    "within2": 0.722
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 472,
+    "mae": 1.027,
+    "within2": 0.877
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 472,
+    "mae": 1.668,
+    "within2": 0.678
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 472,
+    "mae": 1.501,
+    "within2": 0.712
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 472,
+    "mae": 1.793,
+    "within2": 0.633
+   },
+   "as shipped (old harness)": {
+    "n": 472,
+    "mae": 1.668,
+    "within2": 0.678
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 472,
+    "mae": 1.501,
+    "within2": 0.712
+   },
+   "as shipped (mixed)": {
+    "n": 472,
+    "mae": 1.793,
+    "within2": 0.633
+   },
+   "mix (old harness), α=0.8": {
+    "n": 472,
+    "mae": 1.508,
+    "within2": 0.684
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 472,
+    "mae": 1.453,
+    "within2": 0.706
+   },
+   "mix (mixed), α=0.8": {
+    "n": 472,
+    "mae": 1.555,
+    "within2": 0.674
+   }
+  },
+  "Northern Cape": {
+   "model: best_match": {
+    "n": 822,
+    "mae": 1.91,
+    "within2": 0.584
+   },
+   "model: ecmwf_ifs025": {
+    "n": 822,
+    "mae": 1.962,
+    "within2": 0.582
+   },
+   "model: gfs_seamless": {
+    "n": 822,
+    "mae": 2.726,
+    "within2": 0.528
+   },
+   "model: icon_seamless": {
+    "n": 818,
+    "mae": 1.466,
+    "within2": 0.754
+   },
+   "model: ukmo_seamless": {
+    "n": 738,
+    "mae": 1.845,
+    "within2": 0.615
+   },
+   "model: meteofrance_seamless": {
+    "n": 816,
+    "mae": 2.796,
+    "within2": 0.429
+   },
+   "app now (old harness)": {
+    "n": 822,
+    "mae": 2.02,
+    "within2": 0.551
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 822,
+    "mae": 1.743,
+    "within2": 0.628
+   },
+   "app now (mixed)": {
+    "n": 822,
+    "mae": 2.212,
+    "within2": 0.5
+   },
+   "five-model mean, no tables": {
+    "n": 822,
+    "mae": 1.859,
+    "within2": 0.589
+   },
+   "consensus, SA table (without this station)": {
+    "n": 822,
+    "mae": 1.431,
+    "within2": 0.738
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 822,
+    "mae": 1.444,
+    "within2": 0.751
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 822,
+    "mae": 1.682,
+    "within2": 0.644
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 822,
+    "mae": 1.555,
+    "within2": 0.689
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 822,
+    "mae": 1.76,
+    "within2": 0.624
+   },
+   "as shipped (old harness)": {
+    "n": 822,
+    "mae": 1.682,
+    "within2": 0.644
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 822,
+    "mae": 1.555,
+    "within2": 0.689
+   },
+   "as shipped (mixed)": {
+    "n": 822,
+    "mae": 1.76,
+    "within2": 0.624
+   },
+   "mix (old harness), α=0.8": {
+    "n": 822,
+    "mae": 1.515,
+    "within2": 0.713
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 822,
+    "mae": 1.497,
+    "within2": 0.723
+   },
+   "mix (mixed), α=0.8": {
+    "n": 822,
+    "mae": 1.539,
+    "within2": 0.701
+   }
+  },
+  "North West": {
+   "model: best_match": {
+    "n": 486,
+    "mae": 1.45,
+    "within2": 0.73
+   },
+   "model: ecmwf_ifs025": {
+    "n": 486,
+    "mae": 1.607,
+    "within2": 0.687
+   },
+   "model: gfs_seamless": {
+    "n": 486,
+    "mae": 2.861,
+    "within2": 0.469
+   },
+   "model: icon_seamless": {
+    "n": 482,
+    "mae": 1.295,
+    "within2": 0.822
+   },
+   "model: ukmo_seamless": {
+    "n": 426,
+    "mae": 1.805,
+    "within2": 0.615
+   },
+   "model: meteofrance_seamless": {
+    "n": 482,
+    "mae": 2.184,
+    "within2": 0.535
+   },
+   "app now (old harness)": {
+    "n": 486,
+    "mae": 1.618,
+    "within2": 0.646
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 486,
+    "mae": 1.385,
+    "within2": 0.757
+   },
+   "app now (mixed)": {
+    "n": 486,
+    "mae": 1.736,
+    "within2": 0.621
+   },
+   "five-model mean, no tables": {
+    "n": 486,
+    "mae": 1.546,
+    "within2": 0.689
+   },
+   "consensus, SA table (without this station)": {
+    "n": 486,
+    "mae": 1.088,
+    "within2": 0.879
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 486,
+    "mae": 1.168,
+    "within2": 0.837
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 486,
+    "mae": 1.298,
+    "within2": 0.792
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 486,
+    "mae": 1.211,
+    "within2": 0.837
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 486,
+    "mae": 1.344,
+    "within2": 0.776
+   },
+   "as shipped (old harness)": {
+    "n": 486,
+    "mae": 1.298,
+    "within2": 0.792
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 486,
+    "mae": 1.211,
+    "within2": 0.837
+   },
+   "as shipped (mixed)": {
+    "n": 486,
+    "mae": 1.344,
+    "within2": 0.776
+   },
+   "mix (old harness), α=0.8": {
+    "n": 486,
+    "mae": 1.155,
+    "within2": 0.856
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 486,
+    "mae": 1.154,
+    "within2": 0.858
+   },
+   "mix (mixed), α=0.8": {
+    "n": 486,
+    "mae": 1.17,
+    "within2": 0.844
+   }
+  },
+  "Lowveld": {
+   "model: best_match": {
+    "n": 854,
+    "mae": 1.256,
+    "within2": 0.808
+   },
+   "model: ecmwf_ifs025": {
+    "n": 854,
+    "mae": 1.135,
+    "within2": 0.843
+   },
+   "model: gfs_seamless": {
+    "n": 854,
+    "mae": 1.449,
+    "within2": 0.752
+   },
+   "model: icon_seamless": {
+    "n": 846,
+    "mae": 1.394,
+    "within2": 0.774
+   },
+   "model: ukmo_seamless": {
+    "n": 744,
+    "mae": 1.559,
+    "within2": 0.733
+   },
+   "model: meteofrance_seamless": {
+    "n": 850,
+    "mae": 1.293,
+    "within2": 0.809
+   },
+   "app now (old harness)": {
+    "n": 854,
+    "mae": 1.1,
+    "within2": 0.851
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 854,
+    "mae": 1.168,
+    "within2": 0.817
+   },
+   "app now (mixed)": {
+    "n": 854,
+    "mae": 0.971,
+    "within2": 0.891
+   },
+   "five-model mean, no tables": {
+    "n": 854,
+    "mae": 1.018,
+    "within2": 0.872
+   },
+   "consensus, SA table (without this station)": {
+    "n": 854,
+    "mae": 1.532,
+    "within2": 0.738
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 854,
+    "mae": 0.888,
+    "within2": 0.91
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 854,
+    "mae": 1.213,
+    "within2": 0.815
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 854,
+    "mae": 1.23,
+    "within2": 0.809
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 854,
+    "mae": 1.142,
+    "within2": 0.833
+   },
+   "as shipped (old harness)": {
+    "n": 854,
+    "mae": 1.1,
+    "within2": 0.851
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 854,
+    "mae": 1.168,
+    "within2": 0.817
+   },
+   "as shipped (mixed)": {
+    "n": 854,
+    "mae": 0.971,
+    "within2": 0.891
+   },
+   "mix (old harness), α=0.8": {
+    "n": 854,
+    "mae": 1.389,
+    "within2": 0.776
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 854,
+    "mae": 1.327,
+    "within2": 0.793
+   },
+   "mix (mixed), α=0.8": {
+    "n": 854,
+    "mae": 1.36,
+    "within2": 0.781
+   }
+  },
+  "Limpopo": {
+   "model: best_match": {
+    "n": 488,
+    "mae": 2.821,
+    "within2": 0.361
+   },
+   "model: ecmwf_ifs025": {
+    "n": 488,
+    "mae": 2.596,
+    "within2": 0.428
+   },
+   "model: gfs_seamless": {
+    "n": 488,
+    "mae": 2.501,
+    "within2": 0.457
+   },
+   "model: icon_seamless": {
+    "n": 484,
+    "mae": 2.065,
+    "within2": 0.581
+   },
+   "model: ukmo_seamless": {
+    "n": 432,
+    "mae": 2.493,
+    "within2": 0.414
+   },
+   "model: meteofrance_seamless": {
+    "n": 484,
+    "mae": 2.376,
+    "within2": 0.486
+   },
+   "app now (old harness)": {
+    "n": 488,
+    "mae": 2.668,
+    "within2": 0.377
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 488,
+    "mae": 2.537,
+    "within2": 0.432
+   },
+   "app now (mixed)": {
+    "n": 488,
+    "mae": 2.58,
+    "within2": 0.418
+   },
+   "five-model mean, no tables": {
+    "n": 488,
+    "mae": 2.202,
+    "within2": 0.502
+   },
+   "consensus, SA table (without this station)": {
+    "n": 488,
+    "mae": 2.075,
+    "within2": 0.551
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 488,
+    "mae": 2.007,
+    "within2": 0.557
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 488,
+    "mae": 2.337,
+    "within2": 0.461
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 488,
+    "mae": 2.276,
+    "within2": 0.486
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 488,
+    "mae": 2.283,
+    "within2": 0.48
+   },
+   "as shipped (old harness)": {
+    "n": 488,
+    "mae": 2.337,
+    "within2": 0.461
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 488,
+    "mae": 2.276,
+    "within2": 0.486
+   },
+   "as shipped (mixed)": {
+    "n": 488,
+    "mae": 2.283,
+    "within2": 0.48
+   },
+   "mix (old harness), α=0.8": {
+    "n": 488,
+    "mae": 2.163,
+    "within2": 0.537
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 488,
+    "mae": 2.187,
+    "within2": 0.523
+   },
+   "mix (mixed), α=0.8": {
+    "n": 488,
+    "mae": 2.139,
+    "within2": 0.545
+   }
+  }
+ },
+ "byStation": {
+  "FACT": {
+   "model: best_match": {
+    "n": 534,
+    "mae": 1.36,
+    "within2": 0.805
+   },
+   "model: ecmwf_ifs025": {
+    "n": 534,
+    "mae": 1.239,
+    "within2": 0.828
+   },
+   "model: gfs_seamless": {
+    "n": 534,
+    "mae": 1.522,
+    "within2": 0.755
+   },
+   "model: icon_seamless": {
+    "n": 530,
+    "mae": 1.263,
+    "within2": 0.836
+   },
+   "model: ukmo_seamless": {
+    "n": 474,
+    "mae": 1.446,
+    "within2": 0.736
+   },
+   "model: meteofrance_seamless": {
+    "n": 530,
+    "mae": 1.426,
+    "within2": 0.768
+   },
+   "app now (old harness)": {
+    "n": 534,
+    "mae": 1.142,
+    "within2": 0.873
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.149,
+    "within2": 0.873
+   },
+   "app now (mixed)": {
+    "n": 534,
+    "mae": 1.186,
+    "within2": 0.841
+   },
+   "five-model mean, no tables": {
+    "n": 534,
+    "mae": 1.118,
+    "within2": 0.858
+   },
+   "consensus, SA table (without this station)": {
+    "n": 534,
+    "mae": 1.046,
+    "within2": 0.891
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 534,
+    "mae": 0.997,
+    "within2": 0.895
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 534,
+    "mae": 1.051,
+    "within2": 0.886
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 534,
+    "mae": 1.055,
+    "within2": 0.895
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 534,
+    "mae": 1.071,
+    "within2": 0.875
+   },
+   "as shipped (old harness)": {
+    "n": 534,
+    "mae": 1.051,
+    "within2": 0.886
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.055,
+    "within2": 0.895
+   },
+   "as shipped (mixed)": {
+    "n": 534,
+    "mae": 1.071,
+    "within2": 0.875
+   },
+   "mix (old harness), α=0.8": {
+    "n": 534,
+    "mae": 1.039,
+    "within2": 0.891
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 534,
+    "mae": 1.04,
+    "within2": 0.893
+   },
+   "mix (mixed), α=0.8": {
+    "n": 534,
+    "mae": 1.044,
+    "within2": 0.891
+   }
+  },
+  "FALW": {
+   "model: best_match": {
+    "n": 416,
+    "mae": 1.463,
+    "within2": 0.772
+   },
+   "model: ecmwf_ifs025": {
+    "n": 416,
+    "mae": 1.477,
+    "within2": 0.767
+   },
+   "model: gfs_seamless": {
+    "n": 416,
+    "mae": 1.685,
+    "within2": 0.7
+   },
+   "model: icon_seamless": {
+    "n": 412,
+    "mae": 2.589,
+    "within2": 0.49
+   },
+   "model: ukmo_seamless": {
+    "n": 362,
+    "mae": 1.517,
+    "within2": 0.738
+   },
+   "model: meteofrance_seamless": {
+    "n": 412,
+    "mae": 1.848,
+    "within2": 0.665
+   },
+   "app now (old harness)": {
+    "n": 416,
+    "mae": 1.393,
+    "within2": 0.774
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 416,
+    "mae": 1.464,
+    "within2": 0.745
+   },
+   "app now (mixed)": {
+    "n": 416,
+    "mae": 1.461,
+    "within2": 0.752
+   },
+   "five-model mean, no tables": {
+    "n": 416,
+    "mae": 1.443,
+    "within2": 0.752
+   },
+   "consensus, SA table (without this station)": {
+    "n": 416,
+    "mae": 1.176,
+    "within2": 0.815
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 416,
+    "mae": 1.142,
+    "within2": 0.825
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 416,
+    "mae": 1.217,
+    "within2": 0.808
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 416,
+    "mae": 1.275,
+    "within2": 0.788
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 416,
+    "mae": 1.244,
+    "within2": 0.808
+   },
+   "as shipped (old harness)": {
+    "n": 416,
+    "mae": 1.217,
+    "within2": 0.808
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 416,
+    "mae": 1.275,
+    "within2": 0.788
+   },
+   "as shipped (mixed)": {
+    "n": 416,
+    "mae": 1.244,
+    "within2": 0.808
+   },
+   "mix (old harness), α=0.8": {
+    "n": 416,
+    "mae": 1.175,
+    "within2": 0.822
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 416,
+    "mae": 1.226,
+    "within2": 0.805
+   },
+   "mix (mixed), α=0.8": {
+    "n": 416,
+    "mae": 1.189,
+    "within2": 0.815
+   }
+  },
+  "FAGG": {
+   "model: best_match": {
+    "n": 522,
+    "mae": 1.379,
+    "within2": 0.778
+   },
+   "model: ecmwf_ifs025": {
+    "n": 522,
+    "mae": 1.293,
+    "within2": 0.808
+   },
+   "model: gfs_seamless": {
+    "n": 522,
+    "mae": 1.559,
+    "within2": 0.713
+   },
+   "model: icon_seamless": {
+    "n": 518,
+    "mae": 2.018,
+    "within2": 0.585
+   },
+   "model: ukmo_seamless": {
+    "n": 462,
+    "mae": 1.244,
+    "within2": 0.818
+   },
+   "model: meteofrance_seamless": {
+    "n": 518,
+    "mae": 1.167,
+    "within2": 0.84
+   },
+   "app now (old harness)": {
+    "n": 522,
+    "mae": 1.138,
+    "within2": 0.845
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 522,
+    "mae": 1.336,
+    "within2": 0.799
+   },
+   "app now (mixed)": {
+    "n": 522,
+    "mae": 1.17,
+    "within2": 0.835
+   },
+   "five-model mean, no tables": {
+    "n": 522,
+    "mae": 1.102,
+    "within2": 0.854
+   },
+   "consensus, SA table (without this station)": {
+    "n": 522,
+    "mae": 1.027,
+    "within2": 0.889
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 522,
+    "mae": 1.075,
+    "within2": 0.864
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 522,
+    "mae": 1.032,
+    "within2": 0.895
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 522,
+    "mae": 1.102,
+    "within2": 0.87
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 522,
+    "mae": 1.045,
+    "within2": 0.889
+   },
+   "as shipped (old harness)": {
+    "n": 522,
+    "mae": 1.032,
+    "within2": 0.895
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 522,
+    "mae": 1.102,
+    "within2": 0.87
+   },
+   "as shipped (mixed)": {
+    "n": 522,
+    "mae": 1.045,
+    "within2": 0.889
+   },
+   "mix (old harness), α=0.8": {
+    "n": 522,
+    "mae": 1.015,
+    "within2": 0.889
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 522,
+    "mae": 1.049,
+    "within2": 0.875
+   },
+   "mix (mixed), α=0.8": {
+    "n": 522,
+    "mae": 1.021,
+    "within2": 0.889
+   }
+  },
+  "FAPE": {
+   "model: best_match": {
+    "n": 532,
+    "mae": 1.493,
+    "within2": 0.733
+   },
+   "model: ecmwf_ifs025": {
+    "n": 532,
+    "mae": 1.413,
+    "within2": 0.744
+   },
+   "model: gfs_seamless": {
+    "n": 532,
+    "mae": 1.46,
+    "within2": 0.754
+   },
+   "model: icon_seamless": {
+    "n": 528,
+    "mae": 1.259,
+    "within2": 0.816
+   },
+   "model: ukmo_seamless": {
+    "n": 472,
+    "mae": 1.472,
+    "within2": 0.739
+   },
+   "model: meteofrance_seamless": {
+    "n": 528,
+    "mae": 1.479,
+    "within2": 0.744
+   },
+   "app now (old harness)": {
+    "n": 532,
+    "mae": 1.241,
+    "within2": 0.801
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 532,
+    "mae": 1.258,
+    "within2": 0.789
+   },
+   "app now (mixed)": {
+    "n": 532,
+    "mae": 1.334,
+    "within2": 0.767
+   },
+   "five-model mean, no tables": {
+    "n": 532,
+    "mae": 1.162,
+    "within2": 0.816
+   },
+   "consensus, SA table (without this station)": {
+    "n": 532,
+    "mae": 1.055,
+    "within2": 0.852
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 532,
+    "mae": 1.08,
+    "within2": 0.861
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 532,
+    "mae": 1.055,
+    "within2": 0.842
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 532,
+    "mae": 1.052,
+    "within2": 0.855
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 532,
+    "mae": 1.088,
+    "within2": 0.84
+   },
+   "as shipped (old harness)": {
+    "n": 532,
+    "mae": 1.055,
+    "within2": 0.842
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 532,
+    "mae": 1.052,
+    "within2": 0.855
+   },
+   "as shipped (mixed)": {
+    "n": 532,
+    "mae": 1.088,
+    "within2": 0.84
+   },
+   "mix (old harness), α=0.8": {
+    "n": 532,
+    "mae": 1.031,
+    "within2": 0.857
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 532,
+    "mae": 1.03,
+    "within2": 0.863
+   },
+   "mix (mixed), α=0.8": {
+    "n": 532,
+    "mae": 1.039,
+    "within2": 0.861
+   }
+  },
+  "FAEL": {
+   "model: best_match": {
+    "n": 239,
+    "mae": 1.065,
+    "within2": 0.874
+   },
+   "model: ecmwf_ifs025": {
+    "n": 239,
+    "mae": 1.075,
+    "within2": 0.849
+   },
+   "model: gfs_seamless": {
+    "n": 239,
+    "mae": 1.929,
+    "within2": 0.657
+   },
+   "model: icon_seamless": {
+    "n": 236,
+    "mae": 1.328,
+    "within2": 0.792
+   },
+   "model: ukmo_seamless": {
+    "n": 213,
+    "mae": 1.205,
+    "within2": 0.822
+   },
+   "model: meteofrance_seamless": {
+    "n": 235,
+    "mae": 1.269,
+    "within2": 0.8
+   },
+   "app now (old harness)": {
+    "n": 239,
+    "mae": 1.039,
+    "within2": 0.87
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 239,
+    "mae": 1.016,
+    "within2": 0.874
+   },
+   "app now (mixed)": {
+    "n": 239,
+    "mae": 1.035,
+    "within2": 0.874
+   },
+   "five-model mean, no tables": {
+    "n": 239,
+    "mae": 1.112,
+    "within2": 0.845
+   },
+   "consensus, SA table (without this station)": {
+    "n": 239,
+    "mae": 1.284,
+    "within2": 0.799
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 239,
+    "mae": 0.972,
+    "within2": 0.9
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 239,
+    "mae": 1.117,
+    "within2": 0.833
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 239,
+    "mae": 1.066,
+    "within2": 0.849
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 239,
+    "mae": 1.119,
+    "within2": 0.828
+   },
+   "as shipped (old harness)": {
+    "n": 239,
+    "mae": 1.117,
+    "within2": 0.833
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 239,
+    "mae": 1.066,
+    "within2": 0.849
+   },
+   "as shipped (mixed)": {
+    "n": 239,
+    "mae": 1.119,
+    "within2": 0.828
+   },
+   "mix (old harness), α=0.8": {
+    "n": 239,
+    "mae": 1.208,
+    "within2": 0.808
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 239,
+    "mae": 1.133,
+    "within2": 0.837
+   },
+   "mix (mixed), α=0.8": {
+    "n": 239,
+    "mae": 1.209,
+    "within2": 0.812
+   }
+  },
+  "FAUT": {
+   "model: best_match": {
+    "n": 494,
+    "mae": 1.459,
+    "within2": 0.749
+   },
+   "model: ecmwf_ifs025": {
+    "n": 494,
+    "mae": 1.639,
+    "within2": 0.696
+   },
+   "model: gfs_seamless": {
+    "n": 494,
+    "mae": 1.69,
+    "within2": 0.698
+   },
+   "model: icon_seamless": {
+    "n": 490,
+    "mae": 2.167,
+    "within2": 0.557
+   },
+   "model: ukmo_seamless": {
+    "n": 434,
+    "mae": 1.498,
+    "within2": 0.717
+   },
+   "model: meteofrance_seamless": {
+    "n": 490,
+    "mae": 2.034,
+    "within2": 0.598
+   },
+   "app now (old harness)": {
+    "n": 494,
+    "mae": 1.335,
+    "within2": 0.777
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 494,
+    "mae": 1.494,
+    "within2": 0.717
+   },
+   "app now (mixed)": {
+    "n": 494,
+    "mae": 1.315,
+    "within2": 0.783
+   },
+   "five-model mean, no tables": {
+    "n": 494,
+    "mae": 1.316,
+    "within2": 0.787
+   },
+   "consensus, SA table (without this station)": {
+    "n": 494,
+    "mae": 1.289,
+    "within2": 0.783
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 494,
+    "mae": 1.267,
+    "within2": 0.798
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 494,
+    "mae": 1.255,
+    "within2": 0.808
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 494,
+    "mae": 1.331,
+    "within2": 0.779
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 494,
+    "mae": 1.208,
+    "within2": 0.828
+   },
+   "as shipped (old harness)": {
+    "n": 494,
+    "mae": 1.255,
+    "within2": 0.808
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 494,
+    "mae": 1.331,
+    "within2": 0.779
+   },
+   "as shipped (mixed)": {
+    "n": 494,
+    "mae": 1.208,
+    "within2": 0.828
+   },
+   "mix (old harness), α=0.8": {
+    "n": 494,
+    "mae": 1.262,
+    "within2": 0.8
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 494,
+    "mae": 1.303,
+    "within2": 0.787
+   },
+   "mix (mixed), α=0.8": {
+    "n": 494,
+    "mae": 1.237,
+    "within2": 0.806
+   }
+  },
+  "FALE": {
+   "model: best_match": {
+    "n": 534,
+    "mae": 1.33,
+    "within2": 0.794
+   },
+   "model: ecmwf_ifs025": {
+    "n": 534,
+    "mae": 1.763,
+    "within2": 0.669
+   },
+   "model: gfs_seamless": {
+    "n": 534,
+    "mae": 1.511,
+    "within2": 0.742
+   },
+   "model: icon_seamless": {
+    "n": 530,
+    "mae": 1.765,
+    "within2": 0.662
+   },
+   "model: ukmo_seamless": {
+    "n": 474,
+    "mae": 1.566,
+    "within2": 0.738
+   },
+   "model: meteofrance_seamless": {
+    "n": 530,
+    "mae": 1.405,
+    "within2": 0.762
+   },
+   "app now (old harness)": {
+    "n": 534,
+    "mae": 1.343,
+    "within2": 0.773
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.321,
+    "within2": 0.794
+   },
+   "app now (mixed)": {
+    "n": 534,
+    "mae": 1.26,
+    "within2": 0.809
+   },
+   "five-model mean, no tables": {
+    "n": 534,
+    "mae": 1.24,
+    "within2": 0.811
+   },
+   "consensus, SA table (without this station)": {
+    "n": 534,
+    "mae": 1.171,
+    "within2": 0.811
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 534,
+    "mae": 1.075,
+    "within2": 0.856
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 534,
+    "mae": 1.145,
+    "within2": 0.837
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 534,
+    "mae": 1.139,
+    "within2": 0.839
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 534,
+    "mae": 1.126,
+    "within2": 0.841
+   },
+   "as shipped (old harness)": {
+    "n": 534,
+    "mae": 1.145,
+    "within2": 0.837
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 534,
+    "mae": 1.139,
+    "within2": 0.839
+   },
+   "as shipped (mixed)": {
+    "n": 534,
+    "mae": 1.126,
+    "within2": 0.841
+   },
+   "mix (old harness), α=0.8": {
+    "n": 534,
+    "mae": 1.127,
+    "within2": 0.833
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 534,
+    "mae": 1.122,
+    "within2": 0.837
+   },
+   "mix (mixed), α=0.8": {
+    "n": 534,
+    "mae": 1.128,
+    "within2": 0.841
+   }
+  },
+  "FAOR": {
+   "model: best_match": {
+    "n": 528,
+    "mae": 1.085,
+    "within2": 0.854
+   },
+   "model: ecmwf_ifs025": {
+    "n": 528,
+    "mae": 1.18,
+    "within2": 0.837
+   },
+   "model: gfs_seamless": {
+    "n": 528,
+    "mae": 1.992,
+    "within2": 0.589
+   },
+   "model: icon_seamless": {
+    "n": 524,
+    "mae": 1.14,
+    "within2": 0.84
+   },
+   "model: ukmo_seamless": {
+    "n": 468,
+    "mae": 1.491,
+    "within2": 0.735
+   },
+   "model: meteofrance_seamless": {
+    "n": 524,
+    "mae": 1.618,
+    "within2": 0.714
+   },
+   "app now (old harness)": {
+    "n": 528,
+    "mae": 1.071,
+    "within2": 0.856
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 528,
+    "mae": 1.04,
+    "within2": 0.871
+   },
+   "app now (mixed)": {
+    "n": 528,
+    "mae": 1.13,
+    "within2": 0.841
+   },
+   "five-model mean, no tables": {
+    "n": 528,
+    "mae": 1.1,
+    "within2": 0.839
+   },
+   "consensus, SA table (without this station)": {
+    "n": 528,
+    "mae": 1.271,
+    "within2": 0.792
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 528,
+    "mae": 0.987,
+    "within2": 0.877
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 528,
+    "mae": 1.071,
+    "within2": 0.858
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 528,
+    "mae": 1.102,
+    "within2": 0.845
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 528,
+    "mae": 1.112,
+    "within2": 0.831
+   },
+   "as shipped (old harness)": {
+    "n": 528,
+    "mae": 1.071,
+    "within2": 0.858
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 528,
+    "mae": 1.102,
+    "within2": 0.845
+   },
+   "as shipped (mixed)": {
+    "n": 528,
+    "mae": 1.112,
+    "within2": 0.831
+   },
+   "mix (old harness), α=0.8": {
+    "n": 528,
+    "mae": 1.168,
+    "within2": 0.826
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 528,
+    "mae": 1.158,
+    "within2": 0.831
+   },
+   "mix (mixed), α=0.8": {
+    "n": 528,
+    "mae": 1.188,
+    "within2": 0.824
+   }
+  },
+  "FAWB": {
+   "model: best_match": {
+    "n": 408,
+    "mae": 1.728,
+    "within2": 0.667
+   },
+   "model: ecmwf_ifs025": {
+    "n": 408,
+    "mae": 1.931,
+    "within2": 0.642
+   },
+   "model: gfs_seamless": {
+    "n": 408,
+    "mae": 2.189,
+    "within2": 0.583
+   },
+   "model: icon_seamless": {
+    "n": 404,
+    "mae": 1.246,
+    "within2": 0.807
+   },
+   "model: ukmo_seamless": {
+    "n": 348,
+    "mae": 1.623,
+    "within2": 0.704
+   },
+   "model: meteofrance_seamless": {
+    "n": 404,
+    "mae": 2.151,
+    "within2": 0.587
+   },
+   "app now (old harness)": {
+    "n": 408,
+    "mae": 1.816,
+    "within2": 0.65
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 408,
+    "mae": 1.57,
+    "within2": 0.718
+   },
+   "app now (mixed)": {
+    "n": 408,
+    "mae": 1.777,
+    "within2": 0.659
+   },
+   "five-model mean, no tables": {
+    "n": 408,
+    "mae": 1.481,
+    "within2": 0.743
+   },
+   "consensus, SA table (without this station)": {
+    "n": 408,
+    "mae": 1.163,
+    "within2": 0.833
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 408,
+    "mae": 1.039,
+    "within2": 0.863
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 408,
+    "mae": 1.426,
+    "within2": 0.757
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 408,
+    "mae": 1.321,
+    "within2": 0.784
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 408,
+    "mae": 1.405,
+    "within2": 0.765
+   },
+   "as shipped (old harness)": {
+    "n": 408,
+    "mae": 1.426,
+    "within2": 0.757
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 408,
+    "mae": 1.321,
+    "within2": 0.784
+   },
+   "as shipped (mixed)": {
+    "n": 408,
+    "mae": 1.405,
+    "within2": 0.765
+   },
+   "mix (old harness), α=0.8": {
+    "n": 408,
+    "mae": 1.247,
+    "within2": 0.794
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 408,
+    "mae": 1.244,
+    "within2": 0.794
+   },
+   "mix (mixed), α=0.8": {
+    "n": 408,
+    "mae": 1.239,
+    "within2": 0.801
+   }
+  },
+  "FABL": {
+   "model: best_match": {
+    "n": 472,
+    "mae": 1.709,
+    "within2": 0.621
+   },
+   "model: ecmwf_ifs025": {
+    "n": 472,
+    "mae": 1.721,
+    "within2": 0.674
+   },
+   "model: gfs_seamless": {
+    "n": 472,
+    "mae": 3.822,
+    "within2": 0.432
+   },
+   "model: icon_seamless": {
+    "n": 468,
+    "mae": 1.682,
+    "within2": 0.675
+   },
+   "model: ukmo_seamless": {
+    "n": 414,
+    "mae": 1.495,
+    "within2": 0.756
+   },
+   "model: meteofrance_seamless": {
+    "n": 468,
+    "mae": 2.584,
+    "within2": 0.496
+   },
+   "app now (old harness)": {
+    "n": 472,
+    "mae": 1.992,
+    "within2": 0.6
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 472,
+    "mae": 1.672,
+    "within2": 0.642
+   },
+   "app now (mixed)": {
+    "n": 472,
+    "mae": 2.253,
+    "within2": 0.54
+   },
+   "five-model mean, no tables": {
+    "n": 472,
+    "mae": 1.95,
+    "within2": 0.612
+   },
+   "consensus, SA table (without this station)": {
+    "n": 472,
+    "mae": 1.42,
+    "within2": 0.722
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 472,
+    "mae": 1.027,
+    "within2": 0.877
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 472,
+    "mae": 1.668,
+    "within2": 0.678
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 472,
+    "mae": 1.501,
+    "within2": 0.712
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 472,
+    "mae": 1.793,
+    "within2": 0.633
+   },
+   "as shipped (old harness)": {
+    "n": 472,
+    "mae": 1.668,
+    "within2": 0.678
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 472,
+    "mae": 1.501,
+    "within2": 0.712
+   },
+   "as shipped (mixed)": {
+    "n": 472,
+    "mae": 1.793,
+    "within2": 0.633
+   },
+   "mix (old harness), α=0.8": {
+    "n": 472,
+    "mae": 1.508,
+    "within2": 0.684
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 472,
+    "mae": 1.453,
+    "within2": 0.706
+   },
+   "mix (mixed), α=0.8": {
+    "n": 472,
+    "mae": 1.555,
+    "within2": 0.674
+   }
+  },
+  "FAUP": {
+   "model: best_match": {
+    "n": 518,
+    "mae": 1.768,
+    "within2": 0.629
+   },
+   "model: ecmwf_ifs025": {
+    "n": 518,
+    "mae": 1.761,
+    "within2": 0.639
+   },
+   "model: gfs_seamless": {
+    "n": 518,
+    "mae": 2.686,
+    "within2": 0.523
+   },
+   "model: icon_seamless": {
+    "n": 514,
+    "mae": 1.477,
+    "within2": 0.755
+   },
+   "model: ukmo_seamless": {
+    "n": 458,
+    "mae": 1.667,
+    "within2": 0.675
+   },
+   "model: meteofrance_seamless": {
+    "n": 514,
+    "mae": 2.802,
+    "within2": 0.418
+   },
+   "app now (old harness)": {
+    "n": 518,
+    "mae": 1.871,
+    "within2": 0.602
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 518,
+    "mae": 1.615,
+    "within2": 0.672
+   },
+   "app now (mixed)": {
+    "n": 518,
+    "mae": 2.11,
+    "within2": 0.521
+   },
+   "five-model mean, no tables": {
+    "n": 518,
+    "mae": 1.745,
+    "within2": 0.635
+   },
+   "consensus, SA table (without this station)": {
+    "n": 518,
+    "mae": 1.331,
+    "within2": 0.764
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 518,
+    "mae": 1.512,
+    "within2": 0.739
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 518,
+    "mae": 1.554,
+    "within2": 0.681
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 518,
+    "mae": 1.434,
+    "within2": 0.728
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 518,
+    "mae": 1.647,
+    "within2": 0.66
+   },
+   "as shipped (old harness)": {
+    "n": 518,
+    "mae": 1.554,
+    "within2": 0.681
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 518,
+    "mae": 1.434,
+    "within2": 0.728
+   },
+   "as shipped (mixed)": {
+    "n": 518,
+    "mae": 1.647,
+    "within2": 0.66
+   },
+   "mix (old harness), α=0.8": {
+    "n": 518,
+    "mae": 1.401,
+    "within2": 0.737
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 518,
+    "mae": 1.385,
+    "within2": 0.749
+   },
+   "mix (mixed), α=0.8": {
+    "n": 518,
+    "mae": 1.429,
+    "within2": 0.72
+   }
+  },
+  "FAKM": {
+   "model: best_match": {
+    "n": 304,
+    "mae": 2.152,
+    "within2": 0.507
+   },
+   "model: ecmwf_ifs025": {
+    "n": 304,
+    "mae": 2.304,
+    "within2": 0.484
+   },
+   "model: gfs_seamless": {
+    "n": 304,
+    "mae": 2.793,
+    "within2": 0.536
+   },
+   "model: icon_seamless": {
+    "n": 304,
+    "mae": 1.448,
+    "within2": 0.753
+   },
+   "model: ukmo_seamless": {
+    "n": 280,
+    "mae": 2.136,
+    "within2": 0.518
+   },
+   "model: meteofrance_seamless": {
+    "n": 302,
+    "mae": 2.787,
+    "within2": 0.447
+   },
+   "app now (old harness)": {
+    "n": 304,
+    "mae": 2.275,
+    "within2": 0.464
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 304,
+    "mae": 1.963,
+    "within2": 0.553
+   },
+   "app now (mixed)": {
+    "n": 304,
+    "mae": 2.385,
+    "within2": 0.464
+   },
+   "five-model mean, no tables": {
+    "n": 304,
+    "mae": 2.054,
+    "within2": 0.51
+   },
+   "consensus, SA table (without this station)": {
+    "n": 304,
+    "mae": 1.603,
+    "within2": 0.694
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 304,
+    "mae": 1.329,
+    "within2": 0.77
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 304,
+    "mae": 1.901,
+    "within2": 0.579
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 304,
+    "mae": 1.76,
+    "within2": 0.622
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 304,
+    "mae": 1.951,
+    "within2": 0.563
+   },
+   "as shipped (old harness)": {
+    "n": 304,
+    "mae": 1.901,
+    "within2": 0.579
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 304,
+    "mae": 1.76,
+    "within2": 0.622
+   },
+   "as shipped (mixed)": {
+    "n": 304,
+    "mae": 1.951,
+    "within2": 0.563
+   },
+   "mix (old harness), α=0.8": {
+    "n": 304,
+    "mae": 1.71,
+    "within2": 0.671
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 304,
+    "mae": 1.689,
+    "within2": 0.678
+   },
+   "mix (mixed), α=0.8": {
+    "n": 304,
+    "mae": 1.727,
+    "within2": 0.668
+   }
+  },
+  "FAMM": {
+   "model: best_match": {
+    "n": 486,
+    "mae": 1.45,
+    "within2": 0.73
+   },
+   "model: ecmwf_ifs025": {
+    "n": 486,
+    "mae": 1.607,
+    "within2": 0.687
+   },
+   "model: gfs_seamless": {
+    "n": 486,
+    "mae": 2.861,
+    "within2": 0.469
+   },
+   "model: icon_seamless": {
+    "n": 482,
+    "mae": 1.295,
+    "within2": 0.822
+   },
+   "model: ukmo_seamless": {
+    "n": 426,
+    "mae": 1.805,
+    "within2": 0.615
+   },
+   "model: meteofrance_seamless": {
+    "n": 482,
+    "mae": 2.184,
+    "within2": 0.535
+   },
+   "app now (old harness)": {
+    "n": 486,
+    "mae": 1.618,
+    "within2": 0.646
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 486,
+    "mae": 1.385,
+    "within2": 0.757
+   },
+   "app now (mixed)": {
+    "n": 486,
+    "mae": 1.736,
+    "within2": 0.621
+   },
+   "five-model mean, no tables": {
+    "n": 486,
+    "mae": 1.546,
+    "within2": 0.689
+   },
+   "consensus, SA table (without this station)": {
+    "n": 486,
+    "mae": 1.088,
+    "within2": 0.879
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 486,
+    "mae": 1.168,
+    "within2": 0.837
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 486,
+    "mae": 1.298,
+    "within2": 0.792
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 486,
+    "mae": 1.211,
+    "within2": 0.837
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 486,
+    "mae": 1.344,
+    "within2": 0.776
+   },
+   "as shipped (old harness)": {
+    "n": 486,
+    "mae": 1.298,
+    "within2": 0.792
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 486,
+    "mae": 1.211,
+    "within2": 0.837
+   },
+   "as shipped (mixed)": {
+    "n": 486,
+    "mae": 1.344,
+    "within2": 0.776
+   },
+   "mix (old harness), α=0.8": {
+    "n": 486,
+    "mae": 1.155,
+    "within2": 0.856
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 486,
+    "mae": 1.154,
+    "within2": 0.858
+   },
+   "mix (mixed), α=0.8": {
+    "n": 486,
+    "mae": 1.17,
+    "within2": 0.844
+   }
+  },
+  "FAKN": {
+   "model: best_match": {
+    "n": 502,
+    "mae": 1.395,
+    "within2": 0.763
+   },
+   "model: ecmwf_ifs025": {
+    "n": 502,
+    "mae": 1.128,
+    "within2": 0.853
+   },
+   "model: gfs_seamless": {
+    "n": 502,
+    "mae": 1.707,
+    "within2": 0.669
+   },
+   "model: icon_seamless": {
+    "n": 498,
+    "mae": 1.562,
+    "within2": 0.731
+   },
+   "model: ukmo_seamless": {
+    "n": 442,
+    "mae": 1.601,
+    "within2": 0.722
+   },
+   "model: meteofrance_seamless": {
+    "n": 498,
+    "mae": 1.365,
+    "within2": 0.783
+   },
+   "app now (old harness)": {
+    "n": 502,
+    "mae": 1.197,
+    "within2": 0.813
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 502,
+    "mae": 1.291,
+    "within2": 0.777
+   },
+   "app now (mixed)": {
+    "n": 502,
+    "mae": 1,
+    "within2": 0.869
+   },
+   "five-model mean, no tables": {
+    "n": 502,
+    "mae": 1.143,
+    "within2": 0.827
+   },
+   "consensus, SA table (without this station)": {
+    "n": 502,
+    "mae": 1.819,
+    "within2": 0.659
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 502,
+    "mae": 0.913,
+    "within2": 0.894
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 502,
+    "mae": 1.448,
+    "within2": 0.735
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 502,
+    "mae": 1.446,
+    "within2": 0.735
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 502,
+    "mae": 1.346,
+    "within2": 0.763
+   },
+   "as shipped (old harness)": {
+    "n": 502,
+    "mae": 1.197,
+    "within2": 0.813
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 502,
+    "mae": 1.291,
+    "within2": 0.777
+   },
+   "as shipped (mixed)": {
+    "n": 502,
+    "mae": 1,
+    "within2": 0.869
+   },
+   "mix (old harness), α=0.8": {
+    "n": 502,
+    "mae": 1.662,
+    "within2": 0.691
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 502,
+    "mae": 1.571,
+    "within2": 0.711
+   },
+   "mix (mixed), α=0.8": {
+    "n": 502,
+    "mae": 1.622,
+    "within2": 0.699
+   }
+  },
+  "FAHS": {
+   "model: best_match": {
+    "n": 352,
+    "mae": 1.057,
+    "within2": 0.872
+   },
+   "model: ecmwf_ifs025": {
+    "n": 352,
+    "mae": 1.146,
+    "within2": 0.83
+   },
+   "model: gfs_seamless": {
+    "n": 352,
+    "mae": 1.081,
+    "within2": 0.869
+   },
+   "model: icon_seamless": {
+    "n": 348,
+    "mae": 1.155,
+    "within2": 0.836
+   },
+   "model: ukmo_seamless": {
+    "n": 302,
+    "mae": 1.498,
+    "within2": 0.748
+   },
+   "model: meteofrance_seamless": {
+    "n": 352,
+    "mae": 1.19,
+    "within2": 0.847
+   },
+   "app now (old harness)": {
+    "n": 352,
+    "mae": 0.962,
+    "within2": 0.906
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 352,
+    "mae": 0.993,
+    "within2": 0.875
+   },
+   "app now (mixed)": {
+    "n": 352,
+    "mae": 0.93,
+    "within2": 0.923
+   },
+   "five-model mean, no tables": {
+    "n": 352,
+    "mae": 0.839,
+    "within2": 0.938
+   },
+   "consensus, SA table (without this station)": {
+    "n": 352,
+    "mae": 1.122,
+    "within2": 0.849
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 352,
+    "mae": 0.853,
+    "within2": 0.932
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 352,
+    "mae": 0.877,
+    "within2": 0.929
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 352,
+    "mae": 0.922,
+    "within2": 0.915
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 352,
+    "mae": 0.852,
+    "within2": 0.932
+   },
+   "as shipped (old harness)": {
+    "n": 352,
+    "mae": 0.962,
+    "within2": 0.906
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 352,
+    "mae": 0.993,
+    "within2": 0.875
+   },
+   "as shipped (mixed)": {
+    "n": 352,
+    "mae": 0.93,
+    "within2": 0.923
+   },
+   "mix (old harness), α=0.8": {
+    "n": 352,
+    "mae": 1,
+    "within2": 0.898
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 352,
+    "mae": 0.98,
+    "within2": 0.909
+   },
+   "mix (mixed), α=0.8": {
+    "n": 352,
+    "mae": 0.985,
+    "within2": 0.898
+   }
+  },
+  "FAPP": {
+   "model: best_match": {
+    "n": 488,
+    "mae": 2.821,
+    "within2": 0.361
+   },
+   "model: ecmwf_ifs025": {
+    "n": 488,
+    "mae": 2.596,
+    "within2": 0.428
+   },
+   "model: gfs_seamless": {
+    "n": 488,
+    "mae": 2.501,
+    "within2": 0.457
+   },
+   "model: icon_seamless": {
+    "n": 484,
+    "mae": 2.065,
+    "within2": 0.581
+   },
+   "model: ukmo_seamless": {
+    "n": 432,
+    "mae": 2.493,
+    "within2": 0.414
+   },
+   "model: meteofrance_seamless": {
+    "n": 484,
+    "mae": 2.376,
+    "within2": 0.486
+   },
+   "app now (old harness)": {
+    "n": 488,
+    "mae": 2.668,
+    "within2": 0.377
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 488,
+    "mae": 2.537,
+    "within2": 0.432
+   },
+   "app now (mixed)": {
+    "n": 488,
+    "mae": 2.58,
+    "within2": 0.418
+   },
+   "five-model mean, no tables": {
+    "n": 488,
+    "mae": 2.202,
+    "within2": 0.502
+   },
+   "consensus, SA table (without this station)": {
+    "n": 488,
+    "mae": 2.075,
+    "within2": 0.551
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 488,
+    "mae": 2.007,
+    "within2": 0.557
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 488,
+    "mae": 2.337,
+    "within2": 0.461
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 488,
+    "mae": 2.276,
+    "within2": 0.486
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 488,
+    "mae": 2.283,
+    "within2": 0.48
+   },
+   "as shipped (old harness)": {
+    "n": 488,
+    "mae": 2.337,
+    "within2": 0.461
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 488,
+    "mae": 2.276,
+    "within2": 0.486
+   },
+   "as shipped (mixed)": {
+    "n": 488,
+    "mae": 2.283,
+    "within2": 0.48
+   },
+   "mix (old harness), α=0.8": {
+    "n": 488,
+    "mae": 2.163,
+    "within2": 0.537
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 488,
+    "mae": 2.187,
+    "within2": 0.523
+   },
+   "mix (mixed), α=0.8": {
+    "n": 488,
+    "mae": 2.139,
+    "within2": 0.545
+   }
+  }
+ },
+ "primary": {
+  "old harness": {
+   "alpha": 0.5,
+   "alphaTrain": 0.8,
+   "diff": -0.166,
+   "lo": -0.213,
+   "hi": -0.122,
+   "days": 39,
+   "n": 7329
+  },
+  "ECMWF-heavy": {
+   "alpha": 0.5,
+   "alphaTrain": 0.7,
+   "diff": -0.135,
+   "lo": -0.16,
+   "hi": -0.11,
+   "days": 39,
+   "n": 7329
+  },
+  "mixed": {
+   "alpha": 0.5,
+   "alphaTrain": 0.8,
+   "diff": -0.19,
+   "lo": -0.229,
+   "hi": -0.15,
+   "days": 39,
+   "n": 7329
+  }
+ },
+ "secondary": {
+  "uncapped mix (old harness), α=0.8 vs app now": {
+   "diff": -0.202,
+   "lo": -0.272,
+   "hi": -0.137,
+   "days": 39,
+   "n": 7329
+  },
+  "uncapped mix (ECMWF-heavy), α=0.7 vs app now": {
+   "diff": -0.154,
+   "lo": -0.187,
+   "hi": -0.12,
+   "days": 39,
+   "n": 7329
+  },
+  "uncapped mix (mixed), α=0.8 vs app now": {
+   "diff": -0.235,
+   "lo": -0.295,
+   "hi": -0.176,
+   "days": 39,
+   "n": 7329
+  },
+  "bestModel": "best_match",
+  "shipped mix (old harness) vs best model": {
+   "diff": -0.212,
+   "lo": -0.243,
+   "hi": -0.182,
+   "days": 39,
+   "n": 7329
+  },
+  "shipped mix (ECMWF-heavy) vs best model": {
+   "diff": -0.237,
+   "lo": -0.274,
+   "hi": -0.198,
+   "days": 39,
+   "n": 7329
+  },
+  "shipped mix (mixed) vs best model": {
+   "diff": -0.2,
+   "lo": -0.226,
+   "hi": -0.173,
+   "days": 39,
+   "n": 7329
+  },
+  "as shipped (old harness) vs app now": {
+   "diff": -0.179,
+   "lo": -0.226,
+   "hi": -0.133,
+   "days": 39,
+   "n": 7329
+  },
+  "as shipped (ECMWF-heavy) vs app now": {
+   "diff": -0.142,
+   "lo": -0.169,
+   "hi": -0.116,
+   "days": 39,
+   "n": 7329
+  },
+  "as shipped (mixed) vs app now": {
+   "diff": -0.21,
+   "lo": -0.251,
+   "hi": -0.168,
+   "days": 39,
+   "n": 7329
+  },
+  "as shipped (old harness) vs best model": {
+   "diff": -0.225,
+   "lo": -0.255,
+   "hi": -0.195,
+   "days": 39,
+   "n": 7329
+  },
+  "as shipped (ECMWF-heavy) vs best model": {
+   "diff": -0.244,
+   "lo": -0.284,
+   "hi": -0.203,
+   "days": 39,
+   "n": 7329
+  },
+  "as shipped (mixed) vs best model": {
+   "diff": -0.22,
+   "lo": -0.248,
+   "hi": -0.192,
+   "days": 39,
+   "n": 7329
+  },
+  "consensus (SA table) vs best model": {
+   "diff": -0.244,
+   "lo": -0.3,
+   "hi": -0.186,
+   "days": 39,
+   "n": 7329
+  },
+  "consensus (SA table) vs five-model mean": {
+   "diff": -0.101,
+   "lo": -0.153,
+   "hi": -0.055,
+   "days": 39,
+   "n": 7329
+  },
+  "consensus (SA table) vs app now (old harness)": {
+   "diff": -0.198,
+   "lo": -0.278,
+   "hi": -0.12,
+   "days": 39,
+   "n": 7329
+  },
+  "consensus (SA table) vs app now (ECMWF-heavy)": {
+   "diff": -0.142,
+   "lo": -0.188,
+   "hi": -0.098,
+   "days": 39,
+   "n": 7329
+  },
+  "consensus (SA table) vs app now (mixed)": {
+   "diff": -0.233,
+   "lo": -0.307,
+   "hi": -0.163,
+   "days": 39,
+   "n": 7329
+  }
+ },
+ "transfer": {
+  "FAOR→FAWB": {
+   "dAlt": -442,
+   "neighbourTable": {
+    "n": 408,
+    "mae": 1.463,
+    "within2": 0.733
+   },
+   "saTable": {
+    "n": 408,
+    "mae": 1.163,
+    "within2": 0.833
+   },
+   "untabledMean": {
+    "n": 408,
+    "mae": 1.481,
+    "within2": 0.743
+   },
+   "ownTable": {
+    "n": 408,
+    "mae": 1.039,
+    "within2": 0.863
+   },
+   "neighbourVsSa": {
+    "diff": 0.3,
+    "lo": 0.188,
+    "hi": 0.418,
+    "days": 35,
+    "n": 408
+   }
+  },
+  "FAWB→FAOR": {
+   "dAlt": 442,
+   "neighbourTable": {
+    "n": 528,
+    "mae": 1.457,
+    "within2": 0.758
+   },
+   "saTable": {
+    "n": 528,
+    "mae": 1.271,
+    "within2": 0.792
+   },
+   "untabledMean": {
+    "n": 528,
+    "mae": 1.1,
+    "within2": 0.839
+   },
+   "ownTable": {
+    "n": 528,
+    "mae": 0.987,
+    "within2": 0.877
+   },
+   "neighbourVsSa": {
+    "diff": 0.186,
+    "lo": 0.092,
+    "hi": 0.286,
+    "days": 39,
+    "n": 528
+   }
+  },
+  "FAKN→FAHS": {
+   "dAlt": -362,
+   "neighbourTable": {
+    "n": 352,
+    "mae": 1.536,
+    "within2": 0.724
+   },
+   "saTable": {
+    "n": 352,
+    "mae": 1.122,
+    "within2": 0.849
+   },
+   "untabledMean": {
+    "n": 352,
+    "mae": 0.839,
+    "within2": 0.938
+   },
+   "ownTable": {
+    "n": 352,
+    "mae": 0.853,
+    "within2": 0.932
+   },
+   "neighbourVsSa": {
+    "diff": 0.414,
+    "lo": 0.242,
+    "hi": 0.597,
+    "days": 33,
+    "n": 352
+   }
+  },
+  "FAHS→FAKN": {
+   "dAlt": 362,
+   "neighbourTable": {
+    "n": 502,
+    "mae": 1.09,
+    "within2": 0.847
+   },
+   "saTable": {
+    "n": 502,
+    "mae": 1.819,
+    "within2": 0.659
+   },
+   "untabledMean": {
+    "n": 502,
+    "mae": 1.143,
+    "within2": 0.827
+   },
+   "ownTable": {
+    "n": 502,
+    "mae": 0.913,
+    "within2": 0.894
+   },
+   "neighbourVsSa": {
+    "diff": -0.73,
+    "lo": -0.842,
+    "hi": -0.618,
+    "days": 39,
+    "n": 502
+   }
+  },
+  "FAUP→FAKM": {
+   "dAlt": 356,
+   "neighbourTable": {
+    "n": 304,
+    "mae": 1.487,
+    "within2": 0.743
+   },
+   "saTable": {
+    "n": 304,
+    "mae": 1.603,
+    "within2": 0.694
+   },
+   "untabledMean": {
+    "n": 304,
+    "mae": 2.054,
+    "within2": 0.51
+   },
+   "ownTable": {
+    "n": 304,
+    "mae": 1.329,
+    "within2": 0.77
+   },
+   "neighbourVsSa": {
+    "diff": -0.116,
+    "lo": -0.304,
+    "hi": 0.102,
+    "days": 32,
+    "n": 304
+   }
+  },
+  "FAKM→FAUP": {
+   "dAlt": -356,
+   "neighbourTable": {
+    "n": 518,
+    "mae": 1.228,
+    "within2": 0.809
+   },
+   "saTable": {
+    "n": 518,
+    "mae": 1.331,
+    "within2": 0.764
+   },
+   "untabledMean": {
+    "n": 518,
+    "mae": 1.745,
+    "within2": 0.635
+   },
+   "ownTable": {
+    "n": 518,
+    "mae": 1.512,
+    "within2": 0.739
+   },
+   "neighbourVsSa": {
+    "diff": -0.103,
+    "lo": -0.23,
+    "hi": 0.01,
+    "days": 39,
+    "n": 518
+   }
+  },
+  "FAPE→FAEL": {
+   "dAlt": 65,
+   "neighbourTable": {
+    "n": 239,
+    "mae": 1.03,
+    "within2": 0.87
+   },
+   "saTable": {
+    "n": 239,
+    "mae": 1.284,
+    "within2": 0.799
+   },
+   "untabledMean": {
+    "n": 239,
+    "mae": 1.112,
+    "within2": 0.845
+   },
+   "ownTable": {
+    "n": 239,
+    "mae": 0.972,
+    "within2": 0.9
+   },
+   "neighbourVsSa": {
+    "diff": -0.254,
+    "lo": -0.343,
+    "hi": -0.172,
+    "days": 39,
+    "n": 239
+   }
+  },
+  "FAPE→FAUT": {
+   "dAlt": 692,
+   "neighbourTable": {
+    "n": 494,
+    "mae": 1.392,
+    "within2": 0.739
+   },
+   "saTable": {
+    "n": 494,
+    "mae": 1.289,
+    "within2": 0.783
+   },
+   "untabledMean": {
+    "n": 494,
+    "mae": 1.316,
+    "within2": 0.787
+   },
+   "ownTable": {
+    "n": 494,
+    "mae": 1.267,
+    "within2": 0.798
+   },
+   "neighbourVsSa": {
+    "diff": 0.103,
+    "lo": 0.058,
+    "hi": 0.151,
+    "days": 39,
+    "n": 494
+   }
+  }
+ },
+ "frost": {
+  "nights": 147,
+  "byStation": {
+   "FAUT": 9,
+   "FAOR": 6,
+   "FAWB": 11,
+   "FABL": 59,
+   "FAUP": 22,
+   "FAKM": 26,
+   "FAMM": 9,
+   "FAPP": 5
+  },
+  "methods": {
+   "model: best_match": {
+    "n": 147,
+    "mae": 3.078,
+    "bias": 3.052,
+    "called": 38
+   },
+   "model: ecmwf_ifs025": {
+    "n": 147,
+    "mae": 3.429,
+    "bias": 3.422,
+    "called": 32
+   },
+   "model: gfs_seamless": {
+    "n": 147,
+    "mae": 7.735,
+    "bias": 7.735,
+    "called": 0
+   },
+   "model: icon_seamless": {
+    "n": 147,
+    "mae": 2.214,
+    "bias": 1.699,
+    "called": 64
+   },
+   "model: ukmo_seamless": {
+    "n": 143,
+    "mae": 1.962,
+    "bias": 0.99,
+    "called": 73
+   },
+   "model: meteofrance_seamless": {
+    "n": 147,
+    "mae": 4.354,
+    "bias": 4.352,
+    "called": 12
+   },
+   "app now (old harness)": {
+    "n": 147,
+    "mae": 4.182,
+    "bias": 4.182,
+    "called": 8
+   },
+   "app now (ECMWF-heavy)": {
+    "n": 147,
+    "mae": 2.853,
+    "bias": 2.834,
+    "called": 33
+   },
+   "app now (mixed)": {
+    "n": 147,
+    "mae": 4.442,
+    "bias": 4.442,
+    "called": 7
+   },
+   "five-model mean, no tables": {
+    "n": 147,
+    "mae": 3.586,
+    "bias": 3.586,
+    "called": 19
+   },
+   "consensus, SA table (without this station)": {
+    "n": 147,
+    "mae": 2.361,
+    "bias": 2.332,
+    "called": 44
+   },
+   "consensus, own station table (upper bound)": {
+    "n": 147,
+    "mae": 1.261,
+    "bias": 0.866,
+    "called": 86
+   },
+   "shipped mix (old harness), α=0.5": {
+    "n": 147,
+    "mae": 3.261,
+    "bias": 3.257,
+    "called": 24
+   },
+   "shipped mix (ECMWF-heavy), α=0.5": {
+    "n": 147,
+    "mae": 2.595,
+    "bias": 2.583,
+    "called": 36
+   },
+   "shipped mix (mixed), α=0.5": {
+    "n": 147,
+    "mae": 3.388,
+    "bias": 3.387,
+    "called": 20
+   },
+   "as shipped (old harness)": {
+    "n": 147,
+    "mae": 3.261,
+    "bias": 3.257,
+    "called": 24
+   },
+   "as shipped (ECMWF-heavy)": {
+    "n": 147,
+    "mae": 2.595,
+    "bias": 2.583,
+    "called": 36
+   },
+   "as shipped (mixed)": {
+    "n": 147,
+    "mae": 3.388,
+    "bias": 3.387,
+    "called": 20
+   },
+   "mix (old harness), α=0.8": {
+    "n": 147,
+    "mae": 2.711,
+    "bias": 2.702,
+    "called": 32
+   },
+   "mix (ECMWF-heavy), α=0.7": {
+    "n": 147,
+    "mae": 2.497,
+    "bias": 2.483,
+    "called": 38
+   },
+   "mix (mixed), α=0.8": {
+    "n": 147,
+    "mae": 2.762,
+    "bias": 2.754,
+    "called": 31
+   }
+  }
+ },
+ "regionGuard": {
+  "Western Cape": {
+   "old harness": {
+    "diff": -0.091,
+    "lo": -0.118,
+    "hi": -0.061,
+    "days": 39,
+    "n": 534
+   },
+   "ECMWF-heavy": {
+    "diff": -0.094,
+    "lo": -0.127,
+    "hi": -0.063,
+    "days": 39,
+    "n": 534
+   },
+   "mixed": {
+    "diff": -0.115,
+    "lo": -0.147,
+    "hi": -0.086,
+    "days": 39,
+    "n": 534
+   }
+  },
+  "West Coast": {
+   "old harness": {
+    "diff": -0.176,
+    "lo": -0.22,
+    "hi": -0.134,
+    "days": 38,
+    "n": 416
+   },
+   "ECMWF-heavy": {
+    "diff": -0.188,
+    "lo": -0.245,
+    "hi": -0.146,
+    "days": 38,
+    "n": 416
+   },
+   "mixed": {
+    "diff": -0.217,
+    "lo": -0.273,
+    "hi": -0.164,
+    "days": 38,
+    "n": 416
+   }
+  },
+  "Garden Route": {
+   "old harness": {
+    "diff": -0.106,
+    "lo": -0.157,
+    "hi": -0.056,
+    "days": 39,
+    "n": 522
+   },
+   "ECMWF-heavy": {
+    "diff": -0.234,
+    "lo": -0.295,
+    "hi": -0.176,
+    "days": 39,
+    "n": 522
+   },
+   "mixed": {
+    "diff": -0.125,
+    "lo": -0.177,
+    "hi": -0.075,
+    "days": 39,
+    "n": 522
+   }
+  },
+  "Eastern Cape": {
+   "old harness": {
+    "diff": -0.095,
+    "lo": -0.142,
+    "hi": -0.052,
+    "days": 39,
+    "n": 1265
+   },
+   "ECMWF-heavy": {
+    "diff": -0.141,
+    "lo": -0.171,
+    "hi": -0.113,
+    "days": 39,
+    "n": 1265
+   },
+   "mixed": {
+    "diff": -0.129,
+    "lo": -0.171,
+    "hi": -0.089,
+    "days": 39,
+    "n": 1265
+   }
+  },
+  "KZN coast": {
+   "old harness": {
+    "diff": -0.198,
+    "lo": -0.287,
+    "hi": -0.118,
+    "days": 39,
+    "n": 534
+   },
+   "ECMWF-heavy": {
+    "diff": -0.182,
+    "lo": -0.271,
+    "hi": -0.098,
+    "days": 39,
+    "n": 534
+   },
+   "mixed": {
+    "diff": -0.134,
+    "lo": -0.213,
+    "hi": -0.059,
+    "days": 39,
+    "n": 534
+   }
+  },
+  "Highveld": {
+   "old harness": {
+    "diff": -0.17,
+    "lo": -0.231,
+    "hi": -0.115,
+    "days": 39,
+    "n": 936
+   },
+   "ECMWF-heavy": {
+    "diff": -0.073,
+    "lo": -0.105,
+    "hi": -0.041,
+    "days": 39,
+    "n": 936
+   },
+   "mixed": {
+    "diff": -0.172,
+    "lo": -0.222,
+    "hi": -0.126,
+    "days": 39,
+    "n": 936
+   }
+  },
+  "Free State": {
+   "old harness": {
+    "diff": -0.323,
+    "lo": -0.41,
+    "hi": -0.247,
+    "days": 37,
+    "n": 472
+   },
+   "ECMWF-heavy": {
+    "diff": -0.171,
+    "lo": -0.224,
+    "hi": -0.122,
+    "days": 37,
+    "n": 472
+   },
+   "mixed": {
+    "diff": -0.461,
+    "lo": -0.551,
+    "hi": -0.381,
+    "days": 37,
+    "n": 472
+   }
+  },
+  "Northern Cape": {
+   "old harness": {
+    "diff": -0.338,
+    "lo": -0.426,
+    "hi": -0.252,
+    "days": 39,
+    "n": 822
+   },
+   "ECMWF-heavy": {
+    "diff": -0.189,
+    "lo": -0.228,
+    "hi": -0.148,
+    "days": 39,
+    "n": 822
+   },
+   "mixed": {
+    "diff": -0.452,
+    "lo": -0.535,
+    "hi": -0.37,
+    "days": 39,
+    "n": 822
+   }
+  },
+  "North West": {
+   "old harness": {
+    "diff": -0.32,
+    "lo": -0.394,
+    "hi": -0.256,
+    "days": 38,
+    "n": 486
+   },
+   "ECMWF-heavy": {
+    "diff": -0.174,
+    "lo": -0.217,
+    "hi": -0.134,
+    "days": 38,
+    "n": 486
+   },
+   "mixed": {
+    "diff": -0.392,
+    "lo": -0.456,
+    "hi": -0.334,
+    "days": 38,
+    "n": 486
+   }
+  },
+  "Lowveld": {
+   "old harness": {
+    "diff": 0.113,
+    "lo": 0.075,
+    "hi": 0.152,
+    "days": 39,
+    "n": 854
+   },
+   "ECMWF-heavy": {
+    "diff": 0.062,
+    "lo": 0.02,
+    "hi": 0.104,
+    "days": 39,
+    "n": 854
+   },
+   "mixed": {
+    "diff": 0.171,
+    "lo": 0.126,
+    "hi": 0.218,
+    "days": 39,
+    "n": 854
+   }
+  },
+  "Limpopo": {
+   "old harness": {
+    "diff": -0.332,
+    "lo": -0.481,
+    "hi": -0.186,
+    "days": 39,
+    "n": 488
+   },
+   "ECMWF-heavy": {
+    "diff": -0.261,
+    "lo": -0.374,
+    "hi": -0.152,
+    "days": 39,
+    "n": 488
+   },
+   "mixed": {
+    "diff": -0.297,
+    "lo": -0.459,
+    "hi": -0.14,
+    "days": 39,
+    "n": 488
+   }
+  }
+ },
+ "tables": {
+  "max": {
+   "bias": {
+    "best_match": {
+     "DJF": -0.19,
+     "MAM": -0.223,
+     "JJA": -0.841,
+     "SON": -0.267
+    },
+    "gfs_seamless": {
+     "DJF": 0.552,
+     "MAM": 0.612,
+     "JJA": -0.454,
+     "SON": 0.623
+    },
+    "icon_seamless": {
+     "DJF": -0.383,
+     "MAM": -0.223,
+     "JJA": -0.841,
+     "SON": -0.662
+    },
+    "ukmo_seamless": {
+     "DJF": 0.144,
+     "MAM": -0.589,
+     "JJA": -1.264,
+     "SON": 0.273
+    },
+    "meteofrance_seamless": {
+     "DJF": 0.232,
+     "MAM": -0.238,
+     "JJA": -0.75,
+     "SON": 0.564
+    }
+   },
+   "w": {
+    "best_match": 0.295,
+    "gfs_seamless": 0.237,
+    "icon_seamless": 0.233,
+    "ukmo_seamless": 0.169,
+    "meteofrance_seamless": 0.265
+   }
+  },
+  "min": {
+   "bias": {
+    "best_match": {
+     "DJF": 0.423,
+     "MAM": 0.74,
+     "JJA": 0.638,
+     "SON": 0.615
+    },
+    "gfs_seamless": {
+     "DJF": 0.69,
+     "MAM": 2.42,
+     "JJA": 2.759,
+     "SON": 1.469
+    },
+    "icon_seamless": {
+     "DJF": 0.564,
+     "MAM": 0.74,
+     "JJA": 0.638,
+     "SON": 0.687
+    },
+    "ukmo_seamless": {
+     "DJF": 0.282,
+     "MAM": 0.434,
+     "JJA": 0.054,
+     "SON": -0.01
+    },
+    "meteofrance_seamless": {
+     "DJF": 1.995,
+     "MAM": 1.844,
+     "JJA": 1.957,
+     "SON": 2.346
+    }
+   },
+   "w": {
+    "best_match": 0.117,
+    "gfs_seamless": 0.093,
+    "icon_seamless": 0.111,
+    "ukmo_seamless": 0.147,
+    "meteofrance_seamless": 0.114
+   }
+  }
+ }
+}

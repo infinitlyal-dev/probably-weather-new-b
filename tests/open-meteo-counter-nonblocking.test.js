@@ -23,7 +23,7 @@ vi.mock('../api/_lib/provider-budget.js', async (importOriginal) => {
 });
 
 const { default: handler } = await import('../api/weather.js');
-const { recordOpenMeteoCallDeferred } = await import('../api/_lib/provider-budget.js');
+const { recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS } = await import('../api/_lib/provider-budget.js');
 
 const TEST_KEY = 'om-live-key-stall-probe';
 const makeResponse = (payload, status = 200) => ({
@@ -92,7 +92,11 @@ describe('a stalled monthly counter does not delay the forecast', () => {
     expect(body.ok).toBe(true);
     expect(body.now).toBeDefined();
     expect(body.daily).toHaveLength(7);
-    expect(recordOpenMeteoCallDeferred).toHaveBeenCalledTimes(1);
+    // The main request's 2.9 units, then the precision request's 1.0 (Strand is in SA and the key is
+    // set: api/_lib/precision.js) — neither awaited.
+    expect(recordOpenMeteoCallDeferred).toHaveBeenCalledTimes(2);
+    expect(recordOpenMeteoCallDeferred.mock.calls[0][3]).toBeUndefined();
+    expect(recordOpenMeteoCallDeferred.mock.calls[1][3]).toBe(OPEN_METEO_PRECISION_UNIT_TENTHS);
   }, 5000); // well under the >10 s stall Astra measured
 
   it('does not count at all on the free endpoint — no key, no commercial spend', async () => {

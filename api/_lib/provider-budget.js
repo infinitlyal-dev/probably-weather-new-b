@@ -183,6 +183,9 @@ export const OPEN_METEO_UNITS_PER_REQUEST = 2.9;
 // would drift, and it avoids parsing INCRBYFLOAT's string reply. 2.9 units =
 // 29 tenths per request; divide by 10 to read units back.
 const OPEN_METEO_UNIT_TENTHS = Math.round(OPEN_METEO_UNITS_PER_REQUEST * 10); // 29
+// The precision request (api/_lib/precision.js): temperature for four models, 3 days → 4 model-variables,
+// under 2 weeks → 1.0 unit.
+export const OPEN_METEO_PRECISION_UNIT_TENTHS = 10;
 const TENTHS = 10;
 
 const OPEN_METEO_MONTHLY_PLAN = 1_000_000;                       // units/month
@@ -240,7 +243,7 @@ function warnAccountingFailed(detail, nowMs) {
  * @param {number} [nowMs]       injectable clock for tests
  * @returns {Promise<number|null>} month-to-date UNITS, or null if uncounted
  */
-export async function recordOpenMeteoCall(redis = _UNSET, nowMs = Date.now()) {
+export async function recordOpenMeteoCall(redis = _UNSET, nowMs = Date.now(), unitTenths = OPEN_METEO_UNIT_TENTHS) {
   if (redis === _UNSET) {
     // Handler default path. Under vitest the upstream calls are mocked, so the
     // counter is meaningless; the logic itself is tested with an injected client.
@@ -256,8 +259,8 @@ export async function recordOpenMeteoCall(redis = _UNSET, nowMs = Date.now()) {
   }
   try {
     const key = openMeteoMonthKey(nowMs);
-    const tenths = await redis.incrby(key, OPEN_METEO_UNIT_TENTHS);
-    if (tenths === OPEN_METEO_UNIT_TENTHS) await redis.expire(key, OPEN_METEO_MONTHLY_TTL_SECONDS);
+    const tenths = await redis.incrby(key, unitTenths);
+    if (tenths === unitTenths) await redis.expire(key, OPEN_METEO_MONTHLY_TTL_SECONDS);
     const units = tenths / TENTHS;
     const pct = ((units / OPEN_METEO_MONTHLY_PLAN) * 100).toFixed(1);
     // At/over 80% of the plan IN UNITS (800,000 units ≈ 275,862 requests):
@@ -268,7 +271,7 @@ export async function recordOpenMeteoCall(redis = _UNSET, nowMs = Date.now()) {
     }
     // Crossed a 1,000-unit boundary with this increment? (See the note above on
     // why this is a crossing test and not a modulo test.)
-    const before = tenths - OPEN_METEO_UNIT_TENTHS;
+    const before = tenths - unitTenths;
     if (Math.floor(before / OPEN_METEO_MONTHLY_LOG_EVERY_TENTHS)
         < Math.floor(tenths / OPEN_METEO_MONTHLY_LOG_EVERY_TENTHS)) {
       const requests = Math.round(units / OPEN_METEO_UNITS_PER_REQUEST);
@@ -300,7 +303,7 @@ export async function recordOpenMeteoCall(redis = _UNSET, nowMs = Date.now()) {
  * @param {number} [nowMs]          injectable clock for tests
  * @param {Function} [schedule]     injectable scheduler (defaults to waitUntil)
  */
-export function recordOpenMeteoCallDeferred(redis = _UNSET, nowMs = Date.now(), schedule = waitUntil) {
+export function recordOpenMeteoCallDeferred(redis = _UNSET, nowMs = Date.now(), schedule = waitUntil, unitTenths = OPEN_METEO_UNIT_TENTHS) {
   let timer;
   const timeout = new Promise((resolve) => {
     timer = setTimeout(() => {
@@ -308,7 +311,7 @@ export function recordOpenMeteoCallDeferred(redis = _UNSET, nowMs = Date.now(), 
       resolve(null);
     }, OPEN_METEO_MONTHLY_TIMEOUT_MS);
   });
-  const pending = Promise.race([recordOpenMeteoCall(redis, nowMs), timeout])
+  const pending = Promise.race([recordOpenMeteoCall(redis, nowMs, unitTenths), timeout])
     .catch((err) => { warnAccountingFailed(err, nowMs); return null; })
     .finally(() => clearTimeout(timer));
   try {

@@ -1,0 +1,140 @@
+TEMPERATURES, lead t1, TEST 2026-01-01→2026-09-24, 16 stations: FACT FALW FAGG FAPE FAEL FAUT FALE FAOR FAWB FABL FAUP FAKM FAMM FAKN FAHS FAPP
+
+Pooled high+low (MAE °C · within 2 °C):
+  model: best_match                              1.55 · 72%  n=7329
+  model: ecmwf_ifs025                            1.58 · 72%  n=7329
+  model: gfs_seamless                            2.05 · 63%  n=7329
+  model: icon_seamless                           1.60 · 72%  n=7270
+  model: ukmo_seamless                           1.61 · 70%  n=6461
+  model: meteofrance_seamless                    1.85 · 66%  n=7271
+  app now (old harness)                          1.50 · 73%  n=7329
+  app now (ECMWF-heavy)                          1.45 · 74%  n=7329
+  app now (mixed)                                1.54 · 72%  n=7329
+  five-model mean, no tables                     1.40 · 75%  n=7329
+  consensus, SA table (without this station)     1.30 · 79%  n=7329
+  consensus, own station table (upper bound)     1.16 · 83%  n=7329
+  shipped mix (old harness), α=0.5               1.34 · 78%  n=7329
+  shipped mix (ECMWF-heavy), α=0.5               1.31 · 79%  n=7329
+  shipped mix (mixed), α=0.5                     1.35 · 77%  n=7329
+  as shipped (old harness)                       1.32 · 78%  n=7329
+  as shipped (ECMWF-heavy)                       1.30 · 79%  n=7329
+  as shipped (mixed)                             1.33 · 78%  n=7329
+  mix (old harness), α=0.8                       1.30 · 79%  n=7329
+  mix (ECMWF-heavy), α=0.7                       1.29 · 79%  n=7329
+  mix (mixed), α=0.8                             1.30 · 79%  n=7329
+
+HIGH (MAE · bias):
+  model: best_match                              1.56 · -0.83
+  model: ecmwf_ifs025                            1.57 · -0.99
+  model: gfs_seamless                            1.52 · +0.10
+  model: icon_seamless                           1.50 · -0.74
+  model: ukmo_seamless                           1.64 · -0.60
+  model: meteofrance_seamless                    1.48 · -0.36
+  app now (old harness)                          1.36 · -0.67
+  app now (ECMWF-heavy)                          1.45 · -0.86
+  app now (mixed)                                1.34 · -0.57
+  five-model mean, no tables                     1.25 · -0.49
+  consensus, SA table (without this station)     1.19 · -0.20
+  consensus, own station table (upper bound)     1.11 · -0.22
+  shipped mix (old harness), α=0.5               1.23 · -0.43
+  shipped mix (ECMWF-heavy), α=0.5               1.26 · -0.53
+  shipped mix (mixed), α=0.5                     1.23 · -0.38
+  as shipped (old harness)                       1.24 · -0.47
+  as shipped (ECMWF-heavy)                       1.28 · -0.58
+  as shipped (mixed)                             1.23 · -0.41
+  mix (old harness), α=0.8                       1.20 · -0.29
+  mix (ECMWF-heavy), α=0.7                       1.22 · -0.39
+  mix (mixed), α=0.8                             1.20 · -0.27
+
+LOW (MAE · bias):
+  model: best_match                              1.53 · +0.58
+  model: ecmwf_ifs025                            1.59 · +0.92
+  model: gfs_seamless                            2.62 · +1.82
+  model: icon_seamless                           1.72 · +0.42
+  model: ukmo_seamless                           1.58 · -0.10
+  model: meteofrance_seamless                    2.25 · +1.82
+  app now (old harness)                          1.65 · +0.95
+  app now (ECMWF-heavy)                          1.44 · +0.63
+  app now (mixed)                                1.74 · +1.22
+  five-model mean, no tables                     1.57 · +0.93
+  consensus, SA table (without this station)     1.42 · -0.20
+  consensus, own station table (upper bound)     1.21 · -0.07
+  shipped mix (old harness), α=0.5               1.45 · +0.37
+  shipped mix (ECMWF-heavy), α=0.5               1.36 · +0.21
+  shipped mix (mixed), α=0.5                     1.47 · +0.51
+  as shipped (old harness)                       1.41 · +0.45
+  as shipped (ECMWF-heavy)                       1.33 · +0.29
+  as shipped (mixed)                             1.43 · +0.61
+  mix (old harness), α=0.8                       1.41 · +0.03
+  mix (ECMWF-heavy), α=0.7                       1.37 · +0.05
+  mix (mixed), α=0.8                             1.41 · +0.08
+
+PRIMARY (shipped mix − app now, pooled MAE; negative = better):
+  old harness  α=0.5 (2025 chose 0.8): -0.17 [-0.21, -0.12] (39 weeks)
+  ECMWF-heavy  α=0.5 (2025 chose 0.7): -0.14 [-0.16, -0.11] (39 weeks)
+  mixed        α=0.5 (2025 chose 0.8): -0.19 [-0.23, -0.15] (39 weeks)
+
+REGION GUARD (shipped mix − app now inside the region; whole interval above zero = made worse):
+  Western Cape   old harness: -0.09 [-0.12, -0.06] (39 weeks) · ECMWF-heavy: -0.09 [-0.13, -0.06] (39 weeks) · mixed: -0.12 [-0.15, -0.09] (39 weeks)
+  West Coast     old harness: -0.18 [-0.22, -0.13] (38 weeks) · ECMWF-heavy: -0.19 [-0.25, -0.15] (38 weeks) · mixed: -0.22 [-0.27, -0.16] (38 weeks)
+  Garden Route   old harness: -0.11 [-0.16, -0.06] (39 weeks) · ECMWF-heavy: -0.23 [-0.30, -0.18] (39 weeks) · mixed: -0.12 [-0.18, -0.08] (39 weeks)
+  Eastern Cape   old harness: -0.09 [-0.14, -0.05] (39 weeks) · ECMWF-heavy: -0.14 [-0.17, -0.11] (39 weeks) · mixed: -0.13 [-0.17, -0.09] (39 weeks)
+  KZN coast      old harness: -0.20 [-0.29, -0.12] (39 weeks) · ECMWF-heavy: -0.18 [-0.27, -0.10] (39 weeks) · mixed: -0.13 [-0.21, -0.06] (39 weeks)
+  Highveld       old harness: -0.17 [-0.23, -0.12] (39 weeks) · ECMWF-heavy: -0.07 [-0.11, -0.04] (39 weeks) · mixed: -0.17 [-0.22, -0.13] (39 weeks)
+  Free State     old harness: -0.32 [-0.41, -0.25] (37 weeks) · ECMWF-heavy: -0.17 [-0.22, -0.12] (37 weeks) · mixed: -0.46 [-0.55, -0.38] (37 weeks)
+  Northern Cape  old harness: -0.34 [-0.43, -0.25] (39 weeks) · ECMWF-heavy: -0.19 [-0.23, -0.15] (39 weeks) · mixed: -0.45 [-0.54, -0.37] (39 weeks)
+  North West     old harness: -0.32 [-0.39, -0.26] (38 weeks) · ECMWF-heavy: -0.17 [-0.22, -0.13] (38 weeks) · mixed: -0.39 [-0.46, -0.33] (38 weeks)
+  Lowveld        old harness: 0.11 [0.07, 0.15] (39 weeks) WORSE · ECMWF-heavy: 0.06 [0.02, 0.10] (39 weeks) WORSE · mixed: 0.17 [0.13, 0.22] (39 weeks) WORSE
+  Limpopo        old harness: -0.33 [-0.48, -0.19] (39 weeks) · ECMWF-heavy: -0.26 [-0.37, -0.15] (39 weeks) · mixed: -0.30 [-0.46, -0.14] (39 weeks)
+
+SECONDARY (best single model: best_match):
+  uncapped mix (old harness), α=0.8 vs app now     -0.20 [-0.27, -0.14] (39 weeks)
+  uncapped mix (ECMWF-heavy), α=0.7 vs app now     -0.15 [-0.19, -0.12] (39 weeks)
+  uncapped mix (mixed), α=0.8 vs app now           -0.23 [-0.30, -0.18] (39 weeks)
+  shipped mix (old harness) vs best model          -0.21 [-0.24, -0.18] (39 weeks)
+  shipped mix (ECMWF-heavy) vs best model          -0.24 [-0.27, -0.20] (39 weeks)
+  shipped mix (mixed) vs best model                -0.20 [-0.23, -0.17] (39 weeks)
+  as shipped (old harness) vs app now              -0.18 [-0.23, -0.13] (39 weeks)
+  as shipped (ECMWF-heavy) vs app now              -0.14 [-0.17, -0.12] (39 weeks)
+  as shipped (mixed) vs app now                    -0.21 [-0.25, -0.17] (39 weeks)
+  as shipped (old harness) vs best model           -0.23 [-0.25, -0.19] (39 weeks)
+  as shipped (ECMWF-heavy) vs best model           -0.24 [-0.28, -0.20] (39 weeks)
+  as shipped (mixed) vs best model                 -0.22 [-0.25, -0.19] (39 weeks)
+  consensus (SA table) vs best model               -0.24 [-0.30, -0.19] (39 weeks)
+  consensus (SA table) vs five-model mean          -0.10 [-0.15, -0.05] (39 weeks)
+  consensus (SA table) vs app now (old harness)    -0.20 [-0.28, -0.12] (39 weeks)
+  consensus (SA table) vs app now (ECMWF-heavy)    -0.14 [-0.19, -0.10] (39 weeks)
+  consensus (SA table) vs app now (mixed)          -0.23 [-0.31, -0.16] (39 weeks)
+
+TRANSFER (pooled MAE at the second station):
+  FAOR→FAWB  Δalt  -442 m · neighbour table 1.46 · SA table 1.16 · untabled mean 1.48 · own table 1.04 · neighbour−SA 0.30 [0.19, 0.42] (35 weeks)
+  FAWB→FAOR  Δalt   442 m · neighbour table 1.46 · SA table 1.27 · untabled mean 1.10 · own table 0.99 · neighbour−SA 0.19 [0.09, 0.29] (39 weeks)
+  FAKN→FAHS  Δalt  -362 m · neighbour table 1.54 · SA table 1.12 · untabled mean 0.84 · own table 0.85 · neighbour−SA 0.41 [0.24, 0.60] (33 weeks)
+  FAHS→FAKN  Δalt   362 m · neighbour table 1.09 · SA table 1.82 · untabled mean 1.14 · own table 0.91 · neighbour−SA -0.73 [-0.84, -0.62] (39 weeks)
+  FAUP→FAKM  Δalt   356 m · neighbour table 1.49 · SA table 1.60 · untabled mean 2.05 · own table 1.33 · neighbour−SA -0.12 [-0.30, 0.10] (32 weeks)
+  FAKM→FAUP  Δalt  -356 m · neighbour table 1.23 · SA table 1.33 · untabled mean 1.74 · own table 1.51 · neighbour−SA -0.10 [-0.23, 0.01] (39 weeks)
+  FAPE→FAEL  Δalt    65 m · neighbour table 1.03 · SA table 1.28 · untabled mean 1.11 · own table 0.97 · neighbour−SA -0.25 [-0.34, -0.17] (39 weeks)
+  FAPE→FAUT  Δalt   692 m · neighbour table 1.39 · SA table 1.29 · untabled mean 1.32 · own table 1.27 · neighbour−SA 0.10 [0.06, 0.15] (39 weeks)
+
+FROST nights (obs low ≤ 2 °C): 147 {"FAUT":9,"FAOR":6,"FAWB":11,"FABL":59,"FAUP":22,"FAKM":26,"FAMM":9,"FAPP":5}
+  model: best_match                              low MAE 3.08 bias 3.05 frost called 38/147
+  model: ecmwf_ifs025                            low MAE 3.43 bias 3.42 frost called 32/147
+  model: gfs_seamless                            low MAE 7.73 bias 7.73 frost called 0/147
+  model: icon_seamless                           low MAE 2.21 bias 1.70 frost called 64/147
+  model: ukmo_seamless                           low MAE 1.96 bias 0.99 frost called 73/143
+  model: meteofrance_seamless                    low MAE 4.35 bias 4.35 frost called 12/147
+  app now (old harness)                          low MAE 4.18 bias 4.18 frost called 8/147
+  app now (ECMWF-heavy)                          low MAE 2.85 bias 2.83 frost called 33/147
+  app now (mixed)                                low MAE 4.44 bias 4.44 frost called 7/147
+  five-model mean, no tables                     low MAE 3.59 bias 3.59 frost called 19/147
+  consensus, SA table (without this station)     low MAE 2.36 bias 2.33 frost called 44/147
+  consensus, own station table (upper bound)     low MAE 1.26 bias 0.87 frost called 86/147
+  shipped mix (old harness), α=0.5               low MAE 3.26 bias 3.26 frost called 24/147
+  shipped mix (ECMWF-heavy), α=0.5               low MAE 2.60 bias 2.58 frost called 36/147
+  shipped mix (mixed), α=0.5                     low MAE 3.39 bias 3.39 frost called 20/147
+  as shipped (old harness)                       low MAE 3.26 bias 3.26 frost called 24/147
+  as shipped (ECMWF-heavy)                       low MAE 2.60 bias 2.58 frost called 36/147
+  as shipped (mixed)                             low MAE 3.39 bias 3.39 frost called 20/147
+  mix (old harness), α=0.8                       low MAE 2.71 bias 2.70 frost called 32/147
+  mix (ECMWF-heavy), α=0.7                       low MAE 2.50 bias 2.48 frost called 38/147
+  mix (mixed), α=0.8                             low MAE 2.76 bias 2.75 frost called 31/147

@@ -40,7 +40,9 @@ import {
   cacheableLocationName,
   responseLocationName,
 } from './_lib/weather-cache.js';
-import { consumeProviderBudgets, recordOpenMeteoCallDeferred } from './_lib/provider-budget.js';
+import { consumeProviderBudgets, recordOpenMeteoCallDeferred, OPEN_METEO_PRECISION_UNIT_TENTHS } from './_lib/provider-budget.js';
+import { inSouthAfrica, inLowveld, precisionUrl, precisionConsensus, precisionMix, PRECISION_DAYS } from './_lib/precision.js';
+import { PRECISION_TABLE } from './_lib/precision-table.js';
 // Launch run (2026-09-25): counters for /api/health, written only on failure.
 import { recordSourceFailure, recordServerError } from './_lib/health-counters.js';
 import { parseSourcesOff } from './_lib/sources-off.js';
@@ -1127,6 +1129,13 @@ export default async function handler(req, res) {
     // (bounded by its own timeout), so a stalled Redis cannot stall a forecast
     // whose providers have all answered.
     if (OPEN_METEO_API_KEY && budgetAllows('open-meteo')) recordOpenMeteoCallDeferred();
+    // Precision (review/accuracy/v2/PLAN.md): four more models' temperatures for today and tomorrow, in
+    // parallel with the providers. Commercial key only (the free host is non-commercial terms), SA only and
+    // not the Lowveld (the backtest's one region made worse); 1 call unit, counted against the same monthly
+    // plan. Its answer is used inside this fan-out, so it is cached with the payload like everything else.
+    const precisionWanted = Boolean(OPEN_METEO_API_KEY) && inSouthAfrica(lat, lon) && !inLowveld(lat, lon) && budgetAllows('open-meteo');
+    const precisionRequest = precisionWanted ? fetchJson(precisionUrl(openMeteoHost, lat, lon, openMeteoKeyParam)) : Promise.resolve(null);
+    if (precisionWanted) recordOpenMeteoCallDeferred(undefined, undefined, undefined, OPEN_METEO_PRECISION_UNIT_TENTHS);
     const weatherApiRequest = (WEATHERAPI_KEY && budgetAllows('weatherapi'))
       ? fetchJson(
           `https://api.weatherapi.com/v1/forecast.json?key=${WEATHERAPI_KEY}` +
@@ -1176,12 +1185,14 @@ export default async function handler(req, res) {
       pirateWeatherResult,
       metNorwayResult,
       tomorrowIoResult,
+      precisionResult,
     ] = await Promise.allSettled([
       openMeteoRequest,
       weatherApiRequest,
       pirateWeatherRequest,
       metNorwayRequest,
       tomorrowIoRequest,
+      precisionRequest,
     ]);
     // Item 7: the name lookup ran alongside the fan-out; it never rejects.
     await nameResolution;
@@ -2107,12 +2118,34 @@ export default async function handler(req, res) {
     // Source order: [0]=Open-Meteo, [1]=WeatherAPI, [2]=Pirate Weather, [3]=MET Norway, [4]=Tomorrow.io
     const DESC_WEIGHTS = [1, 0.1, 1, 1, 1]; // WA gets 10%; OM, PW, MET, Tomorrow.io full weight
 
+    // Precision: the corrected five-model consensus for days 0 and 1 (api/_lib/precision.js). Empty when
+    // the extra request was not made or failed, or best_match is missing — the blend then stands alone.
+    const precision = precisionWanted && precisionResult?.status === 'fulfilled'
+      ? precisionConsensus({ bestMatch: hourlies[0]?.temps, models: precisionResult.value?.hourly })
+      : [];
+    // Not logSourceFailure: the extra request is not a source and stays out of /api/health's counters.
+    if (precisionWanted && precisionResult?.status === 'rejected') {
+      console.warn(`[pw-precision] ${classifyFailure(precisionResult.reason)} ${precisionResult.reason?.message || ''}`);
+    }
+    const precisionLog = [];
+
     // Daily aggregation (all sources)
     const aggregatedDaily = Array.from({ length: 7 }, (_, i) => {
       const descEntries  = dailies.map((d, si) => d && d.descs[i] ? { desc: d.descs[i], weight: DESC_WEIGHTS[si] } : null).filter(Boolean);
       const conditionLabel = pickWeightedMostCommon(descEntries) || 'Unknown';
-      const highC        = wAvg(dailies, dailyW, d => d.highs[i]);
-      const lowC         = wAvg(dailies, dailyLowW, d => d.lows[i]);  // V2-3: MET Norway reduced weight for lows
+      const blendHigh    = wAvg(dailies, dailyW, d => d.highs[i]);
+      const blendLow     = wAvg(dailies, dailyLowW, d => d.lows[i]);  // V2-3: MET Norway reduced weight for lows
+      // Precision: days 0 and 1 take the mix with the consensus when there is one (else the blend as is),
+      // before the day's condition is derived, so the condition reads the same high as the screen.
+      // The consensus must be for this same local date: the two requests can straddle midnight (Fable).
+      const dayDate      = String(dailies.filter(Boolean).find(d => d.sunrises?.[i])?.sunrises[i] ?? '').slice(0, 10);
+      const consensus    = precision[i] && precision[i].date === dayDate ? precision[i] : null;
+      const mixed        = i < PRECISION_DAYS
+        ? precisionMix({ blendHigh, blendLow, consensus, strip: aggregatedHourly.slice(i * 24, i * 24 + 24).map(h => h?.tempC) })
+        : { highC: blendHigh, lowC: blendLow, applied: false };
+      const highC        = mixed.highC;
+      const lowC         = mixed.lowC;
+      if (mixed.applied) precisionLog.push({ day: i, date: precision[i].date, consensusHigh: precision[i].high, consensusLow: precision[i].low, blendHigh, blendLow, highC, lowC });
       const rainChance   = wAvg(dailies, dailyW, d => d.rains[i]);
       const uv           = wAvg(dailies, dailyW, d => d.uvs[i]);
       // Wind/cloud: days 0-1 sit inside the 48-hour hourly array (noon index 12
@@ -2690,6 +2723,18 @@ export default async function handler(req, res) {
         // strict today-range goes null at late local hours — keeps the
         // Sources page populated for all four sources without polluting the
         // consensus aggregator that still uses todayHigh / todayLow strictly.
+        // Precision (api/_lib/precision.js): what happened, and the consensus beside the blend for each
+        // day it touched, so the recorder can score both (Fable, plan review: shadow mode).
+        precision: {
+          // applied · fallback (asked, no usable answer) · budget (key and SA, but the budget or
+          // PW_SOURCES_OFF refused Open-Meteo) · off (no commercial key) · outside-sa · lowveld (blocked)
+          status: precisionLog.length ? 'applied' : precisionWanted ? 'fallback'
+            : !inSouthAfrica(lat, lon) ? 'outside-sa' : inLowveld(lat, lon) ? 'lowveld'
+            : OPEN_METEO_API_KEY ? 'budget' : 'off',
+          table: PRECISION_TABLE.id,
+          alpha: PRECISION_TABLE.alpha,
+          days: precisionLog,
+        },
         sourceRanges: activeNorms.map(n => ({
           name:    n.source,
           minTemp: n.displayLow  ?? n.todayLow,
