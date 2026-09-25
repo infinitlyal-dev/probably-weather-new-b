@@ -6280,3 +6280,8 @@ body.ads-slots #week-screen .daily-cards > .daily-header { flex: none !important
 }
 @media (max-width: 768px) { .temp .hero-when { display: none; } }
 
+/* The gust number is never cut: in af/zu the ellipsis ate it ("NE · kufika ku…"). The words take
+   the ellipsis; the number keeps its place. Same line, size and ink when the whole line fits. */
+.stats-row .stat-sub.stat-sub-split { display: flex; }
+.stats-row .stat-sub-split > .stat-sub-cut { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stats-row .stat-sub-split > .stat-sub-keep { flex: none; white-space: pre; }

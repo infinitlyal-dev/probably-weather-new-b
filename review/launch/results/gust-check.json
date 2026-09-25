@@ -1,0 +1,167 @@
+[
+  {
+    "tag": "414x715-en",
+    "text": "NE · gusts 48",
+    "keepInside": true,
+    "wordsCut": false,
+    "subH": 12,
+    "fontPx": "8.9375px",
+    "oldCut": false,
+    "oldH": 12,
+    "identical": true
+  },
+  {
+    "tag": "414x715-af",
+    "text": "NO · windstote 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 12,
+    "fontPx": "8.9375px",
+    "oldCut": true,
+    "oldH": 12,
+    "identical": false
+  },
+  {
+    "tag": "414x715-zu",
+    "text": "NE · kufika ku 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 12,
+    "fontPx": "8.9375px",
+    "oldCut": true,
+    "oldH": 12,
+    "identical": false
+  },
+  {
+    "tag": "414x715-xh",
+    "text": "NE · ukuqhwithela komoya / izivuthuvuthu zomoya 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 12,
+    "fontPx": "8.9375px",
+    "oldCut": true,
+    "oldH": 12,
+    "identical": false
+  },
+  {
+    "tag": "414x715-st",
+    "text": "NE · Meya e fokang ka sefutho 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 12,
+    "fontPx": "8.9375px",
+    "oldCut": true,
+    "oldH": 12,
+    "identical": false
+  },
+  {
+    "tag": "390x844-en",
+    "text": "NE · gusts 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 13,
+    "fontPx": "10.55px",
+    "oldCut": true,
+    "oldH": 13,
+    "identical": false
+  },
+  {
+    "tag": "390x844-af",
+    "text": "NO · windstote 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 13,
+    "fontPx": "10.55px",
+    "oldCut": true,
+    "oldH": 13,
+    "identical": false
+  },
+  {
+    "tag": "390x844-zu",
+    "text": "NE · kufika ku 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 13,
+    "fontPx": "10.55px",
+    "oldCut": true,
+    "oldH": 13,
+    "identical": false
+  },
+  {
+    "tag": "390x844-xh",
+    "text": "NE · ukuqhwithela komoya / izivuthuvuthu zomoya 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 13,
+    "fontPx": "10.55px",
+    "oldCut": true,
+    "oldH": 13,
+    "identical": false
+  },
+  {
+    "tag": "390x844-st",
+    "text": "NE · Meya e fokang ka sefutho 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 13,
+    "fontPx": "10.55px",
+    "oldCut": true,
+    "oldH": 13,
+    "identical": false
+  },
+  {
+    "tag": "360x640-en",
+    "text": "NE · gusts 48",
+    "keepInside": true,
+    "wordsCut": false,
+    "subH": 11,
+    "fontPx": "8.32px",
+    "oldCut": false,
+    "oldH": 11,
+    "identical": true
+  },
+  {
+    "tag": "360x640-af",
+    "text": "NO · windstote 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 11,
+    "fontPx": "8.32px",
+    "oldCut": true,
+    "oldH": 11,
+    "identical": false
+  },
+  {
+    "tag": "360x640-zu",
+    "text": "NE · kufika ku 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 11,
+    "fontPx": "8.32px",
+    "oldCut": true,
+    "oldH": 11,
+    "identical": false
+  },
+  {
+    "tag": "360x640-xh",
+    "text": "NE · ukuqhwithela komoya / izivuthuvuthu zomoya 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 11,
+    "fontPx": "8.32px",
+    "oldCut": true,
+    "oldH": 11,
+    "identical": false
+  },
+  {
+    "tag": "360x640-st",
+    "text": "NE · Meya e fokang ka sefutho 48",
+    "keepInside": true,
+    "wordsCut": true,
+    "subH": 11,
+    "fontPx": "8.32px",
+    "oldCut": true,
+    "oldH": 11,
+    "identical": false
+  }
+]

@@ -2965,6 +2965,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // Same treatment the GPT reference uses.
         v: formatWind(wind).replace(/^(\S+)\s+(.+)$/, '$1<span class="stat-unit">$2</span>'),
         sub: [dir, gustNum != null ? `${t('weather', 'gusts') || 'gusts'} ${gustNum}` : ''].filter(Boolean).join(' · '),
+        // Launch run: in af/zu the line ran out of room and the ellipsis ate the gust
+        // number ("NE · kufika ku…"). The words take the ellipsis now; the number stays.
+        split: gustNum != null
+          ? `<span class="stat-sub-cut">${[dir, t('weather', 'gusts') || 'gusts'].filter(Boolean).join(' · ')}</span><span class="stat-sub-keep"> ${gustNum}</span>`
+          : null,
       });
     }
     if (isNum(rain)) {
@@ -2990,7 +2995,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // rather than sitting in three separate cards. The freed third column of the
     // band is the Hourly call-to-action.
     statsRowEl.innerHTML = cells
-      .map((c) => `<div class="stat"><div class="stat-k">${c.k}</div><div class="stat-v">${c.v}</div><div class="stat-sub">${c.sub}</div></div>`)
+      .map((c) => `<div class="stat"><div class="stat-k">${c.k}</div><div class="stat-v">${c.v}</div>${c.split ? `<div class="stat-sub stat-sub-split">${c.split}</div>` : `<div class="stat-sub">${c.sub}</div>`}</div>`)
       .join('');
     statsRowEl.hidden = cells.length === 0;
   }
