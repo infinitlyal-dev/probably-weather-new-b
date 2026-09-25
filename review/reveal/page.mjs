@@ -68,7 +68,7 @@ for (const st of ['ink', 'word', 'fade']) for (const b of ['1', '2', '3.5']) COM
 const STYLE = { ink: 'Ink', word: 'Word by word', fade: 'Fade' };
 const phone = PREVIEW ? `<div class="card">
 <p class="answer">On your iPhone: <a href="${esc(PREVIEW)}/?home=d&amp;reveal=ink&amp;beat=1&amp;replay=1">${esc(PREVIEW.replace(/^https?:\/\//, ''))}</a></p>
-<p class="muted">A preview of this branch only, with real weather for where you are. The live app is not touched. Each link below counts every open as a first sight, so you can open them again and again:</p>
+<p class="muted">Open it in Chrome on your iPhone. It is a preview of this branch only, with real weather for where you are (checked: all five sources answer, the same as the live app); it asks for your location like the app does. The live app is not touched. Each link below counts every open as a first sight, so you can open them again and again:</p>
 <div class="links">${COMBOS.map(([st, b]) => `<a href="${esc(PREVIEW)}/?home=d&amp;reveal=${st}&amp;beat=${b}&amp;replay=1">${STYLE[st]} · ${b} s</a>`).join('')}</div>
 <p class="muted">And two more: <a href="${esc(PREVIEW)}/?home=d&amp;reveal=ink&amp;beat=1">the real thing</a> (writes the joke the first time, then it is simply there — open it twice) and <a href="${esc(PREVIEW)}/?home=d">D as it is, no reveal</a>.</p>
 </div>` : `<div class="card"><p class="answer">No phone link this time.</p><p class="muted" id="nolink">The videos below are the whole test.</p></div>`;
@@ -155,6 +155,10 @@ ${phone}
 <li>Share now sends a postcard: the photo clean, the joke written under it on a light border. Nothing sits on the photo.</li>
 </ul></div>
 ${measured}
+<div class="card"><p class="answer">Found while recording, not changed</p><ul class="plain">
+<li>In isiXhosa, D's line of facts runs off the right edge on your phone: the word for gusts is two translations joined by a slash (“ukuqhwithela komoya / izivuthuvuthu zomoya”). It was already like that before today; you can see it in the parrot's “D today” clip.</li>
+<li>The Sesotho name of the Display setting is spelled the Lesotho way (“Bonts'a”); the South African spelling is “Bontsha”.</li>
+</ul></div>
 
 <h2>3. The videos, by photo</h2>
 <p class="muted">Recorded at real speed in the iPhone browser engine at your screen size (414×715). Every clip starts just before the photo lands.

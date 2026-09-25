@@ -1,0 +1,58 @@
+{
+ "checkedAt": "2026-09-25T08:46:06.475Z",
+ "preview": "https://probably-weather-new-b-git-desig-16a01c-albert-snymans-projects.vercel.app",
+ "previewApi": {
+  "status": 200,
+  "tempC": 18.9,
+  "condition": "cloudy",
+  "sources": [
+   "Open-Meteo:ok",
+   "WeatherAPI:ok",
+   "Pirate Weather:ok",
+   "MET Norway:ok",
+   "Tomorrow.io:ok"
+  ],
+  "schema": 5,
+  "cache": "MISS"
+ },
+ "productionApi": {
+  "status": 200,
+  "tempC": 18.9,
+  "condition": "cloudy",
+  "sources": [
+   "Open-Meteo:ok",
+   "WeatherAPI:ok",
+   "Pirate Weather:ok",
+   "MET Norway:ok",
+   "Tomorrow.io:ok"
+  ],
+  "schema": 5,
+  "cache": "MISS"
+ },
+ "version": {
+  "version": "9b38847eb32fbe423a423db7e649a64284a1643e"
+ },
+ "page": {
+  "temp": "19°",
+  "condition": "Cloudy vibes.",
+  "place": "Strand",
+  "joke": "The sky can't make up its mind. Join the club.",
+  "credit": "Low 15° · High 21° · Rain 10% · Wind 14 km/h N · gusts 36 · 4/5 sources agree",
+  "marks": [
+   [
+    "photo",
+    2398
+   ],
+   [
+    "write",
+    3410
+   ],
+   [
+    "shown",
+    4561
+   ]
+  ],
+  "photo": "assets/images/bg-canonical/8bc9f9cb40afc9b2781f517397769f5c6e8efb10442f64a6f2683c56b7d616de.webp?v=20260906-grid",
+  "errors": []
+ }
+}
