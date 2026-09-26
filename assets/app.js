@@ -416,7 +416,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // bank, and the word already carries the meaning.
       later: { en: "Later", af: "Later", zu: "Kamuva", xh: "Kamva", st: "Hamorao" },
       none: { en: "None", af: "Geen", zu: "Lutho", xh: "Akukho", st: "Ha ho" },
-      gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "ukuqhwithela komoya / izivuthuvuthu zomoya", st: "Meya e fokang ka sefutho" },
+      // xh (2026-09-26): the June review left two options joined by a slash ("ukuqhwithela komoya /
+      // izivuthuvuthu zomoya"), shown whole on the stats pill and Home D's facts line. Through xh-qc and
+      // lang-check: "ukuqhwithela" is attested nowhere (triage-high), "izivuthuvuthu" glosses as hurricane;
+      // "imimoya evuthuzayo" is the same review's own word for gusts (witty.wind[49], HIGH) and Leipzig
+      // xho #11427 lists it with floods and heavy rain — lang-check PASS, 0 doubts.
+      gusts: { en: "gusts", af: "windstote", zu: "kufika ku", xh: "imimoya evuthuzayo", st: "Meya e fokang ka sefutho" },
       unlikely: { en: "Unlikely", af: "Onwaarskynlik", zu: "Akunakulindeleka", xh: "Akunakulindeleka", st: "Ha ho kgonehe" },
       possible: { en: "Possible", af: "Moontlik", zu: "Kungenzeka", xh: "Kunokwenzeka", st: "Ho ka etsahala" },
       likely: { en: "Likely", af: "Waarskynlik", zu: "Kungenzeka", xh: "Kunokubakho", st: "Ho ka etsahala" },
