@@ -1,34 +1,1594 @@
 {
- "note": "The pairs job's queue, in Al's order (brief of 25 Sept 2026): the spots of the 15 live lines he marked MEH first, then weak clear-weather photos, then thin spots. Each run takes the next few not yet made. A pair made for a MEH spot is a new line for that weather (to take the MEH line's place in the bank, on Al's tick) plus a photo for that weather and time. Nothing here changes the app.",
+ "note": "The pairs job's queue, in Al's order (26 Sept 2026): tier 1 his three named photos, tier 2 photos marked REPLACE on the meh page (most-shown first; the clearest now, the rest when his export lands — the job adds them), tier 3 extra photos for the thinnest weathers (fog, heat, cold-clear). Tier 9 is parked (never made). A target with `kept` was dropped by his KEEP. Nothing here changes the app.",
  "targets": [
-  {"id": "M01", "kind": "meh-line", "bin": "cold-clear", "folder": "cold-clear", "time": "dawn", "meh": "Three hadedas, two crows, one shivering human at the bird feeder."},
-  {"id": "M02", "kind": "meh-line", "bin": "storm", "folder": "storm", "time": "night", "meh": "Sleep is cancelled, but look at that shot."},
-  {"id": "M03", "kind": "meh-line", "bin": "rain", "folder": "rain", "time": "day", "meh": "Somebody's mom is going to have words. Worth it."},
-  {"id": "M04", "kind": "meh-line", "bin": "cold", "folder": "cold", "time": "dusk", "meh": "Last one closing up, please leave the light on. It looks lovely."},
-  {"id": "M05", "kind": "meh-line", "bin": "weekend", "folder": "clear", "time": "day", "meh": "Shoes optional. Attitude mandatory.", "note": "weekend: a braai plan is allowed"},
-  {"id": "M06", "kind": "meh-line", "bin": "heat", "folder": "heat", "time": "dusk", "meh": "'Five more minutes' has been going for forty minutes now. Let them."},
-  {"id": "M07", "kind": "meh-line", "bin": "cold", "folder": "cold", "time": "day", "meh": "The kettle is working harder than anyone today."},
-  {"id": "M08", "kind": "meh-line", "bin": "fog", "folder": "fog", "time": "dusk", "meh": "Every window switching on is someone deciding: that's enough for today."},
-  {"id": "M09", "kind": "meh-line", "bin": "cold-clear", "folder": "cold-clear", "time": "dawn", "meh": "The plan was ten minutes. The noses tapped out after two."},
-  {"id": "M10", "kind": "meh-line", "bin": "partly-cloudy", "folder": "cloudy", "time": "day", "meh": "Clouds today, vibes optional."},
-  {"id": "M11", "kind": "meh-line", "bin": "wind", "folder": "wind", "time": "day", "meh": "Close it, tie it down, surrender."},
-  {"id": "M12", "kind": "meh-line", "bin": "night", "folder": "clear", "time": "night", "meh": "Warm enough to leave the window open. Brave enough?"},
-  {"id": "M13", "kind": "meh-line", "bin": "cold-clear", "folder": "cold-clear", "time": "day", "meh": "Coffee in the sun on the stoep. The whole reason we live here."},
-  {"id": "M14", "kind": "meh-line", "bin": "storm", "folder": "storm", "time": "day", "meh": "Gorgeous, but I trust it zero percent."},
-  {"id": "M15", "kind": "meh-line", "bin": "heat", "folder": "heat", "time": "day", "meh": "Nobody is getting out. The water has only just forgiven us."},
-  {"id": "C01", "kind": "weak-clear", "folder": "clear", "time": "dawn", "slots": ["clear/week_1/dawn/7.webp", "clear/week_2/dawn/7.webp", "clear/week_3/dawn/7.webp", "clear/week_4/dawn/7.webp"], "why": "Al named it: the man watering the lawn"},
-  {"id": "C02", "kind": "weak-clear", "folder": "clear", "time": "day", "slots": ["clear/week_2/day/3.webp", "clear/week_4/day/3.webp"], "why": "Al named it: kids with a tennis ball"},
-  {"id": "C03", "kind": "weak-clear", "folder": "cold", "time": "night", "slots": ["cold/week_2/night/6.webp", "cold/week_4/night/6.webp"], "why": "Al named it: three people in blankets with a lantern (moved from cloudy to cold nights)"},
-  {"id": "C04", "kind": "weak-clear", "folder": "clear", "time": "day", "slots": ["clear/week_1/day/5.webp", "clear/week_3/day/5.webp"], "why": "blind rater: corporate glass lobby, no weather"},
-  {"id": "C05", "kind": "weak-clear", "folder": "clear", "time": "day", "slots": ["clear/week_1/day/1.webp", "clear/week_3/day/1.webp"], "why": "blind rater: office entrance stock, no weather"},
-  {"id": "C06", "kind": "weak-clear", "folder": "clear", "time": "day", "slots": ["clear/week_1/day/3.webp", "clear/week_3/day/3.webp"], "why": "blind rater: rooftop laptop lifestyle"},
-  {"id": "C07", "kind": "weak-clear", "folder": "clear", "time": "dawn", "slots": ["clear/week_1/dawn/5.webp", "clear/week_2/dawn/5.webp", "clear/week_3/dawn/5.webp", "clear/week_4/dawn/5.webp"], "why": "blind rater: fitness-ad jog trio"},
-  {"id": "C08", "kind": "weak-clear", "folder": "clear", "time": "dawn", "slots": ["clear/week_1/dawn/2.webp", "clear/week_2/dawn/2.webp", "clear/week_3/dawn/2.webp", "clear/week_4/dawn/2.webp"], "why": "blind rater: glossy school walk, no weather"},
-  {"id": "T01", "kind": "thin", "folder": "cloudy", "time": "night", "slots": ["cloudy/week_1/night/3.webp", "cloudy/week_2/night/3.webp", "cloudy/week_3/night/3.webp", "cloudy/week_4/night/3.webp"], "why": "cloudy nights: 4 photos for 7 nights, one serving 16 slots"},
-  {"id": "T02", "kind": "thin", "folder": "cloudy", "time": "night", "slots": ["cloudy/week_1/night/6.webp", "cloudy/week_2/night/6.webp", "cloudy/week_3/night/6.webp", "cloudy/week_4/night/6.webp"], "why": "cloudy nights stand-in"},
-  {"id": "T03", "kind": "thin", "folder": "cloudy", "time": "night", "slots": ["cloudy/week_1/night/7.webp", "cloudy/week_2/night/7.webp", "cloudy/week_3/night/7.webp", "cloudy/week_4/night/7.webp"], "why": "cloudy nights stand-in"},
-  {"id": "T04", "kind": "thin", "folder": "cloudy", "time": "dawn", "slots": ["cloudy/week_1/dawn/5.webp", "cloudy/week_2/dawn/5.webp", "cloudy/week_3/dawn/5.webp", "cloudy/week_4/dawn/5.webp"], "why": "cloudy dawn stand-in"},
-  {"id": "T05", "kind": "thin", "folder": "fog", "time": "night", "why": "fog nights at half strength (7 photos for 14)"},
-  {"id": "T06", "kind": "thin", "folder": "fog", "time": "dusk", "why": "fog evenings at half strength"}
+  {
+   "id": "M01",
+   "kind": "meh-line",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "dawn",
+   "meh": "Three hadedas, two crows, one shivering human at the bird feeder.",
+   "tier": 0
+  },
+  {
+   "id": "M02",
+   "kind": "meh-line",
+   "bin": "storm",
+   "folder": "storm",
+   "time": "night",
+   "meh": "Sleep is cancelled, but look at that shot.",
+   "tier": 0
+  },
+  {
+   "id": "M03",
+   "kind": "meh-line",
+   "bin": "rain",
+   "folder": "rain",
+   "time": "day",
+   "meh": "Somebody's mom is going to have words. Worth it.",
+   "tier": 0
+  },
+  {
+   "id": "M04",
+   "kind": "meh-line",
+   "bin": "cold",
+   "folder": "cold",
+   "time": "dusk",
+   "meh": "Last one closing up, please leave the light on. It looks lovely.",
+   "tier": 0
+  },
+  {
+   "id": "M05",
+   "kind": "meh-line",
+   "bin": "weekend",
+   "folder": "clear",
+   "time": "day",
+   "meh": "Shoes optional. Attitude mandatory.",
+   "note": "weekend: a braai plan is allowed",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M06",
+   "kind": "meh-line",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "dusk",
+   "meh": "'Five more minutes' has been going for forty minutes now. Let them.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M07",
+   "kind": "meh-line",
+   "bin": "cold",
+   "folder": "cold",
+   "time": "day",
+   "meh": "The kettle is working harder than anyone today.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M08",
+   "kind": "meh-line",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "dusk",
+   "meh": "Every window switching on is someone deciding: that's enough for today.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M09",
+   "kind": "meh-line",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "dawn",
+   "meh": "The plan was ten minutes. The noses tapped out after two.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M10",
+   "kind": "meh-line",
+   "bin": "partly-cloudy",
+   "folder": "cloudy",
+   "time": "day",
+   "meh": "Clouds today, vibes optional.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M11",
+   "kind": "meh-line",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "day",
+   "meh": "Close it, tie it down, surrender.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M12",
+   "kind": "meh-line",
+   "bin": "night",
+   "folder": "clear",
+   "time": "night",
+   "meh": "Warm enough to leave the window open. Brave enough?",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M13",
+   "kind": "meh-line",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "day",
+   "meh": "Coffee in the sun on the stoep. The whole reason we live here.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M14",
+   "kind": "meh-line",
+   "bin": "storm",
+   "folder": "storm",
+   "time": "day",
+   "meh": "Gorgeous, but I trust it zero percent.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "M15",
+   "kind": "meh-line",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "day",
+   "meh": "Nobody is getting out. The water has only just forgiven us.",
+   "tier": 9,
+   "parked": "parked: Al's queue of 26 Sept is his named photos, then REPLACE photos, then thin weathers"
+  },
+  {
+   "id": "C01",
+   "kind": "weak-clear",
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "why": "Al named it: the man watering the lawn",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "C02",
+   "kind": "weak-clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "why": "Al named it: kids with a tennis ball",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "C03",
+   "kind": "weak-clear",
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "why": "Al named it: three people in blankets with a lantern (moved from cloudy to cold nights)",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "C04",
+   "kind": "weak-clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/5.webp",
+    "clear/week_3/day/5.webp"
+   ],
+   "why": "blind rater: corporate glass lobby, no weather",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "C05",
+   "kind": "weak-clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/1.webp",
+    "clear/week_3/day/1.webp"
+   ],
+   "why": "blind rater: office entrance stock, no weather",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "C06",
+   "kind": "weak-clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/3.webp",
+    "clear/week_3/day/3.webp"
+   ],
+   "why": "blind rater: rooftop laptop lifestyle",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "C07",
+   "kind": "weak-clear",
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "why": "blind rater: fitness-ad jog trio",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "C08",
+   "kind": "weak-clear",
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/2.webp",
+    "clear/week_2/dawn/2.webp",
+    "clear/week_3/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "why": "blind rater: glossy school walk, no weather",
+   "tier": 9,
+   "parked": "superseded: the same photo is queued (or flagged) from the meh page"
+  },
+  {
+   "id": "T01",
+   "kind": "thin",
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/3.webp",
+    "cloudy/week_2/night/3.webp",
+    "cloudy/week_3/night/3.webp",
+    "cloudy/week_4/night/3.webp"
+   ],
+   "why": "cloudy nights: 4 photos for 7 nights, one serving 16 slots",
+   "tier": 9,
+   "parked": "superseded: Al's thin weathers are fog, heat and cold-clear (X targets)"
+  },
+  {
+   "id": "T02",
+   "kind": "thin",
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "why": "cloudy nights stand-in",
+   "tier": 9,
+   "parked": "superseded: Al's thin weathers are fog, heat and cold-clear (X targets)"
+  },
+  {
+   "id": "T03",
+   "kind": "thin",
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/7.webp",
+    "cloudy/week_2/night/7.webp",
+    "cloudy/week_3/night/7.webp",
+    "cloudy/week_4/night/7.webp"
+   ],
+   "why": "cloudy nights stand-in",
+   "tier": 9,
+   "parked": "superseded: Al's thin weathers are fog, heat and cold-clear (X targets)"
+  },
+  {
+   "id": "T04",
+   "kind": "thin",
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/5.webp",
+    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_3/dawn/5.webp",
+    "cloudy/week_4/dawn/5.webp"
+   ],
+   "why": "cloudy dawn stand-in",
+   "tier": 9,
+   "parked": "superseded: Al's thin weathers are fog, heat and cold-clear (X targets)"
+  },
+  {
+   "id": "T05",
+   "kind": "thin",
+   "folder": "fog",
+   "time": "night",
+   "why": "fog nights at half strength (7 photos for 14)",
+   "tier": 9,
+   "parked": "superseded: Al's thin weathers are fog, heat and cold-clear (X targets)"
+  },
+  {
+   "id": "T06",
+   "kind": "thin",
+   "folder": "fog",
+   "time": "dusk",
+   "why": "fog evenings at half strength",
+   "tier": 9,
+   "parked": "superseded: Al's thin weathers are fog, heat and cold-clear (X targets)"
+  },
+  {
+   "id": "R01",
+   "tier": 1,
+   "kind": "replace",
+   "bin": "cold",
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "why": "replaces: The blankets and lantern",
+   "note": "it replaces a photo being retired from these spots (The blankets and lantern) — do not repeat its problem",
+   "replaces": {
+    "sha256": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+    "note": "The blankets and lantern",
+    "slot": "cold/week_2/night/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R02",
+   "tier": 1,
+   "kind": "replace",
+   "bin": "cloudy",
+   "folder": "cloudy",
+   "time": "night",
+   "slots": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "why": "replaces: The blankets and lantern",
+   "note": "it replaces a photo being retired from these spots (The blankets and lantern; these spots are benched and show a stand-in until the new photo is wired) — do not repeat its problem",
+   "replaces": {
+    "sha256": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+    "note": "The blankets and lantern",
+    "slot": "cold/week_2/night/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R03",
+   "tier": 1,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "why": "replaces: The man watering the lawn",
+   "note": "it replaces a photo being retired from these spots (The man watering the lawn) — do not repeat its problem",
+   "replaces": {
+    "sha256": "64a6c1aa77c9f1ee5abea15b5d79ef5568e64b85cb940801be55f8371adfa208",
+    "note": "The man watering the lawn",
+    "slot": "clear/week_1/dawn/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R04",
+   "tier": 1,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "why": "replaces: The kids with the tennis ball",
+   "note": "it replaces a photo being retired from these spots (The kids with the tennis ball) — do not repeat its problem",
+   "replaces": {
+    "sha256": "4073f1fd86704492edc674090712c67c372bb76fd82cc8e33bed9b6ca735d59e",
+    "note": "The kids with the tennis ball",
+    "slot": "clear/week_2/day/3.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R05",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/2.webp",
+    "clear/week_2/dawn/2.webp",
+    "clear/week_3/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "why": "replaces: Three scholars grinning at the camera; glossy; the sun does nothing to them",
+   "note": "it replaces a photo being retired from these spots (Three scholars grinning at the camera; glossy; the sun does nothing to them) — do not repeat its problem",
+   "replaces": {
+    "sha256": "44786fa8cca62831e864d9d98d63234a48281b97de1263d355e0d741bfabf0fa",
+    "note": "Three scholars grinning at the camera; glossy; the sun does nothing to them",
+    "slot": "clear/week_1/dawn/2.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R06",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "dawn",
+   "slots": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "why": "replaces: Fitness-ad jog trio smiling at the lens",
+   "note": "it replaces a photo being retired from these spots (Fitness-ad jog trio smiling at the lens) — do not repeat its problem",
+   "replaces": {
+    "sha256": "f26595a6b5d772cb483fa8b0bd8d6d60d630fc3d13affbff394650f1df3d574e",
+    "note": "Fitness-ad jog trio smiling at the lens",
+    "slot": "clear/week_1/dawn/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R07",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/2.webp",
+    "clear/week_2/dusk/2.webp",
+    "clear/week_3/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "why": "replaces: Three friends arm in arm down a street at dusk; stock",
+   "note": "it replaces a photo being retired from these spots (Three friends arm in arm down a street at dusk; stock) — do not repeat its problem",
+   "replaces": {
+    "sha256": "b8f8ea343b77586d191afc873309450d62dce914ec0f6c1debe6e90b46af2145",
+    "note": "Three friends arm in arm down a street at dusk; stock",
+    "slot": "clear/week_1/dusk/2.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R08",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "dusk",
+   "slots": [
+    "clear/week_1/dusk/7.webp",
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/7.webp",
+    "clear/week_4/dusk/7.webp"
+   ],
+   "why": "replaces: Two women wrapped in a blanket at a tidal pool, reads as a couple",
+   "note": "it replaces a photo being retired from these spots (Two women wrapped in a blanket at a tidal pool, reads as a couple) — do not repeat its problem",
+   "replaces": {
+    "sha256": "357e2151b07dc48b5749049a908a726b9260cb088de2e3fb443a94aff07b2eb3",
+    "note": "Two women wrapped in a blanket at a tidal pool, reads as a couple",
+    "slot": "clear/week_1/dusk/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R09",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "why": "replaces: Fitness-ad jog trio at sunrise; reads as a nice morning, not heat",
+   "note": "it replaces a photo being retired from these spots (Fitness-ad jog trio at sunrise; reads as a nice morning, not heat) — do not repeat its problem",
+   "replaces": {
+    "sha256": "4c12a169237911506240ef8b71f61de0fe0a77888ac40c9f684c32e0ac66be03",
+    "note": "Fitness-ad jog trio at sunrise; reads as a nice morning, not heat",
+    "slot": "heat/week_1/dawn/3.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R10",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_1/dusk/5.webp",
+    "heat/week_2/dusk/5.webp",
+    "heat/week_3/dusk/5.webp",
+    "heat/week_4/dusk/5.webp"
+   ],
+   "why": "replaces: Three friends with ice creams on a promenade, smiling at us; lifestyle stock",
+   "note": "it replaces a photo being retired from these spots (Three friends with ice creams on a promenade, smiling at us; lifestyle stock) — do not repeat its problem",
+   "replaces": {
+    "sha256": "1affc7f9fe4aa9fb2d37c320c8b3f406c21c8232a8819ece93b3ae83cc84751c",
+    "note": "Three friends with ice creams on a promenade, smiling at us; lifestyle stock",
+    "slot": "heat/week_1/dusk/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R11",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_1/night/6.webp",
+    "heat/week_2/night/6.webp",
+    "heat/week_3/night/6.webp",
+    "heat/week_4/night/6.webp"
+   ],
+   "why": "replaces: Night pool party, everyone posing with drinks",
+   "note": "it replaces a photo being retired from these spots (Night pool party, everyone posing with drinks) — do not repeat its problem",
+   "replaces": {
+    "sha256": "3b370a59f9fdefff4b2c898d5ce0863a784e3d3fed71104c791a42be3e822b6d",
+    "note": "Night pool party, everyone posing with drinks",
+    "slot": "heat/week_1/night/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R12",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cloudy",
+   "folder": "cloudy",
+   "time": "dawn",
+   "slots": [
+    "cloudy/week_1/dawn/6.webp",
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_3/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "why": "replaces: Fitness-ad stretch in Bo-Kaap",
+   "note": "it replaces a photo being retired from these spots (Fitness-ad stretch in Bo-Kaap) — do not repeat its problem",
+   "replaces": {
+    "sha256": "1694b4ae44c20d65f719f842775cc307feb196485289838c41c2b879cc0a4a9f",
+    "note": "Fitness-ad stretch in Bo-Kaap",
+    "slot": "cloudy/week_1/dawn/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R13",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cloudy",
+   "folder": "cloudy",
+   "time": "dusk",
+   "slots": [
+    "cloudy/week_1/dusk/6.webp",
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_3/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "why": "replaces: Posed wedding shoot in the winelands",
+   "note": "it replaces a photo being retired from these spots (Posed wedding shoot in the winelands) — do not repeat its problem",
+   "replaces": {
+    "sha256": "0e1a4e312bcc93bb9bae44352277a5b9b8c2e226acb80c2d284a58b31ba52487",
+    "note": "Posed wedding shoot in the winelands",
+    "slot": "cloudy/week_1/dusk/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R14",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "rain",
+   "folder": "rain",
+   "time": "dawn",
+   "slots": [
+    "rain/week_1/dawn/3.webp",
+    "rain/week_2/dawn/3.webp",
+    "rain/week_3/dawn/3.webp",
+    "rain/week_4/dawn/3.webp"
+   ],
+   "why": "replaces: School drop-off under an umbrella, calm",
+   "note": "it replaces a photo being retired from these spots (School drop-off under an umbrella, calm) — do not repeat its problem",
+   "replaces": {
+    "sha256": "ebd82e69c2ef0fe085fdffbe09f779494af4bc16774fd8e5c020ac799ef6e70e",
+    "note": "School drop-off under an umbrella, calm",
+    "slot": "rain/week_1/dawn/3.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R15",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "rain",
+   "folder": "rain",
+   "time": "night",
+   "slots": [
+    "rain/week_1/night/7.webp",
+    "rain/week_2/night/7.webp",
+    "rain/week_3/night/7.webp",
+    "rain/week_4/night/7.webp"
+   ],
+   "why": "replaces: Wet street with readable neon signs (\"Deluxe Coffee\", \"The Gin Bar\")",
+   "note": "it replaces a photo being retired from these spots (Wet street with readable neon signs (\"Deluxe Coffee\", \"The Gin Bar\")) — do not repeat its problem",
+   "replaces": {
+    "sha256": "840790135cf5a568b058c6eacda112e0226573f5c1308b1cc5fedfe8a459de1f",
+    "note": "Wet street with readable neon signs (\"Deluxe Coffee\", \"The Gin Bar\")",
+    "slot": "rain/week_1/night/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R16",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "storm",
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/4.webp",
+    "storm/week_2/dawn/4.webp",
+    "storm/week_3/dawn/4.webp",
+    "storm/week_4/dawn/4.webp"
+   ],
+   "why": "replaces: A couple coaxing the dog from under the bed; glossy, storm unseen",
+   "note": "it replaces a photo being retired from these spots (A couple coaxing the dog from under the bed; glossy, storm unseen) — do not repeat its problem",
+   "replaces": {
+    "sha256": "135baf75a010969dee221b889dff19ba23f765116e7b6b39192604f702653520",
+    "note": "A couple coaxing the dog from under the bed; glossy, storm unseen",
+    "slot": "storm/week_1/dawn/4.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R17",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "storm",
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/6.webp",
+    "storm/week_2/dawn/6.webp",
+    "storm/week_3/dawn/6.webp",
+    "storm/week_4/dawn/6.webp"
+   ],
+   "why": "replaces: Runner posing hands on hips, a brand logo on his shirt",
+   "note": "it replaces a photo being retired from these spots (Runner posing hands on hips, a brand logo on his shirt) — do not repeat its problem",
+   "replaces": {
+    "sha256": "8051f1c3947db45ae313770d285f8e1f01c73aeae2149e4ae7805770ab2ac7fd",
+    "note": "Runner posing hands on hips, a brand logo on his shirt",
+    "slot": "storm/week_1/dawn/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R18",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "storm",
+   "folder": "storm",
+   "time": "dawn",
+   "slots": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_2/dawn/7.webp",
+    "storm/week_3/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "why": "replaces: Model pose in a robe with a mug",
+   "note": "it replaces a photo being retired from these spots (Model pose in a robe with a mug) — do not repeat its problem",
+   "replaces": {
+    "sha256": "d25fb1153ed0ab96e6c42e901b596e94e73a98e2b1a1efce1bcca870fdd6ac6e",
+    "note": "Model pose in a robe with a mug",
+    "slot": "storm/week_1/dawn/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R19",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/1.webp",
+    "wind/week_2/dawn/1.webp",
+    "wind/week_3/dawn/1.webp",
+    "wind/week_4/dawn/1.webp"
+   ],
+   "why": "replaces: One bent palm at sunrise, no one; you marked two empty wind photos MEH",
+   "note": "it replaces a photo being retired from these spots (One bent palm at sunrise, no one; you marked two empty wind photos MEH) — do not repeat its problem",
+   "replaces": {
+    "sha256": "39021494d6a3f746a0eadcb74e6ab8a2c1f43d05b7ff798d84e319213b77c627",
+    "note": "One bent palm at sunrise, no one; you marked two empty wind photos MEH",
+    "slot": "wind/week_1/dawn/1.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R20",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "dawn",
+   "slots": [
+    "wind/week_1/dawn/6.webp",
+    "wind/week_2/dawn/6.webp",
+    "wind/week_3/dawn/6.webp",
+    "wind/week_4/dawn/6.webp"
+   ],
+   "why": "replaces: Fitness-ad jogging duo past sea spray",
+   "note": "it replaces a photo being retired from these spots (Fitness-ad jogging duo past sea spray) — do not repeat its problem",
+   "replaces": {
+    "sha256": "f60a403312467b3d8a4fdcf64f42b836abce99efc72209df53a22fffd96fc37c",
+    "note": "Fitness-ad jogging duo past sea spray",
+    "slot": "wind/week_1/dawn/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R21",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/1.webp",
+    "wind/week_2/dusk/1.webp",
+    "wind/week_3/dusk/1.webp",
+    "wind/week_4/dusk/1.webp"
+   ],
+   "why": "replaces: Two friends laughing in the wind; lifestyle stock",
+   "note": "it replaces a photo being retired from these spots (Two friends laughing in the wind; lifestyle stock) — do not repeat its problem",
+   "replaces": {
+    "sha256": "4a0b5d3b10ec517285cbdd3954ca7bcc19284559273995988a60b27c2d241cda",
+    "note": "Two friends laughing in the wind; lifestyle stock",
+    "slot": "wind/week_1/dusk/1.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R22",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/4.webp"
+   ],
+   "why": "replaces: Wind-bent tree in a fishing village, no one",
+   "note": "it replaces a photo being retired from these spots (Wind-bent tree in a fishing village, no one) — do not repeat its problem",
+   "replaces": {
+    "sha256": "c2bc4bc434666ee3fca00c7c2ef2d03960fc330efd74dfdc6388ae464d69ac36",
+    "note": "Wind-bent tree in a fishing village, no one",
+    "slot": "wind/week_1/dusk/4.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R23",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "dusk",
+   "slots": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_2/dusk/7.webp",
+    "wind/week_3/dusk/7.webp",
+    "wind/week_4/dusk/7.webp"
+   ],
+   "why": "replaces: Laughing couple on the beach",
+   "note": "it replaces a photo being retired from these spots (Laughing couple on the beach) — do not repeat its problem",
+   "replaces": {
+    "sha256": "fbba3dfe68594e108ddd289f746f86ae1a6e0fe918d5bd0f3cd9e0b3341432f7",
+    "note": "Laughing couple on the beach",
+    "slot": "wind/week_1/dusk/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R24",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/1.webp",
+    "wind/week_2/night/1.webp",
+    "wind/week_3/night/1.webp",
+    "wind/week_4/night/1.webp"
+   ],
+   "why": "replaces: Row of palms bent over a night promenade, no one",
+   "note": "it replaces a photo being retired from these spots (Row of palms bent over a night promenade, no one) — do not repeat its problem",
+   "replaces": {
+    "sha256": "13f86b7909396e0e9edd88783197f94bb9412c74a2ce266625862426e234ba76",
+    "note": "Row of palms bent over a night promenade, no one",
+    "slot": "wind/week_1/night/1.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R25",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/3.webp",
+    "wind/week_2/night/3.webp",
+    "wind/week_3/night/3.webp",
+    "wind/week_4/night/3.webp"
+   ],
+   "why": "replaces: Palm straining under a streetlamp, empty",
+   "note": "it replaces a photo being retired from these spots (Palm straining under a streetlamp, empty) — do not repeat its problem",
+   "replaces": {
+    "sha256": "360fe761dd56984fe5246331628e0bfc369f64ae903790639d83357d0306cfab",
+    "note": "Palm straining under a streetlamp, empty",
+    "slot": "wind/week_1/night/3.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R26",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/5.webp",
+    "wind/week_2/night/5.webp",
+    "wind/week_3/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "why": "replaces: Durban palms thrashing, no one; a banner reads \"Durban\"",
+   "note": "it replaces a photo being retired from these spots (Durban palms thrashing, no one; a banner reads \"Durban\") — do not repeat its problem",
+   "replaces": {
+    "sha256": "d1a05b5478ab6c1333917f0fbe31b565b1c1d05444e6f5e4ffcf62e32c449c88",
+    "note": "Durban palms thrashing, no one; a banner reads \"Durban\"",
+    "slot": "wind/week_1/night/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R27",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "night",
+   "slots": [
+    "wind/week_1/night/6.webp",
+    "wind/week_2/night/6.webp",
+    "wind/week_3/night/6.webp",
+    "wind/week_4/night/6.webp"
+   ],
+   "why": "replaces: Two mates laughing at a braai; the wind never shows",
+   "note": "it replaces a photo being retired from these spots (Two mates laughing at a braai; the wind never shows) — do not repeat its problem",
+   "replaces": {
+    "sha256": "9248c64fdecc1a45432aa41c045977d64504e02c95c6aab72db2800553871d3e",
+    "note": "Two mates laughing at a braai; the wind never shows",
+    "slot": "wind/week_1/night/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R28",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cold",
+   "folder": "cold",
+   "time": "dusk",
+   "slots": [
+    "cold/week_1/dusk/5.webp",
+    "cold/week_2/dusk/5.webp",
+    "cold/week_3/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "why": "replaces: Cocoa with marshmallows and a view; lifestyle stock, a sunset instead of wet cold",
+   "note": "it replaces a photo being retired from these spots (Cocoa with marshmallows and a view; lifestyle stock, a sunset instead of wet cold) — do not repeat its problem",
+   "replaces": {
+    "sha256": "abf16c113fdba3f1902377073552b06c6d57b0ed7aa7967494c138878eac8b5c",
+    "note": "Cocoa with marshmallows and a view; lifestyle stock, a sunset instead of wet cold",
+    "slot": "cold/week_1/dusk/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R29",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cold",
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/5.webp",
+    "cold/week_2/night/5.webp",
+    "cold/week_3/night/5.webp",
+    "cold/week_4/night/5.webp"
+   ],
+   "why": "replaces: A couple at a campfire under the Milky Way (clear sky: cold-clear, not cold)",
+   "note": "it replaces a photo being retired from these spots (A couple at a campfire under the Milky Way (clear sky: cold-clear, not cold)) — do not repeat its problem",
+   "replaces": {
+    "sha256": "20567f2a95864a0148ba46d091d5c79426e7fd24360aaaf010bcaba96c396a8d",
+    "note": "A couple at a campfire under the Milky Way (clear sky: cold-clear, not cold)",
+    "slot": "cold/week_1/night/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R30",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_1/day/5.webp",
+    "cold-clear/week_2/day/5.webp",
+    "cold-clear/week_3/day/5.webp",
+    "cold-clear/week_4/day/5.webp"
+   ],
+   "why": "replaces: Corporate coffee chat under a blue sky",
+   "note": "it replaces a photo being retired from these spots (Corporate coffee chat under a blue sky) — do not repeat its problem",
+   "replaces": {
+    "sha256": "c7090cc8143069a1a8e66856c6a1fbe497f6cdde91daec029d05323285b8d201",
+    "note": "Corporate coffee chat under a blue sky",
+    "slot": "cold-clear/week_1/day/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R31",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "why": "replaces: Posed group around a fire pit",
+   "note": "it replaces a photo being retired from these spots (Posed group around a fire pit) — do not repeat its problem",
+   "replaces": {
+    "sha256": "b8c7819a2f6dbd78b2871a7eff4aa7c019ee0852ba8bb5d4e7196f62fd4e9782",
+    "note": "Posed group around a fire pit",
+    "slot": "cold-clear/week_1/dusk/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R32",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_1/day/1.webp",
+    "fog/week_2/day/1.webp",
+    "fog/week_3/day/1.webp",
+    "fog/week_4/day/1.webp"
+   ],
+   "why": "replaces: Cat on a wall with ghostly human shapes in the fog behind it",
+   "note": "it replaces a photo being retired from these spots (Cat on a wall with ghostly human shapes in the fog behind it) — do not repeat its problem",
+   "replaces": {
+    "sha256": "cca354da10378cc7c2d412caf296630fd50ccf149b5c942ecc7e82851c85e63a",
+    "note": "Cat on a wall with ghostly human shapes in the fog behind it",
+    "slot": "fog/week_1/day/1.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R33",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/3.webp",
+    "fog/week_2/dusk/3.webp",
+    "fog/week_3/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "why": "replaces: A couple wheeling bikes through the fog",
+   "note": "it replaces a photo being retired from these spots (A couple wheeling bikes through the fog) — do not repeat its problem",
+   "replaces": {
+    "sha256": "957ef16d9b295921cf572f6089814b19293d8feed88483a3bc594f28dda9dc2b",
+    "note": "A couple wheeling bikes through the fog",
+    "slot": "fog/week_1/dusk/3.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R34",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_1/dusk/7.webp",
+    "fog/week_2/dusk/7.webp",
+    "fog/week_3/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "why": "replaces: Two women taking a selfie in the fog",
+   "note": "it replaces a photo being retired from these spots (Two women taking a selfie in the fog) — do not repeat its problem",
+   "replaces": {
+    "sha256": "a67edaa1585b4651dffc326c59ef46b72b5fb0eee583da7fa8af2d680b166b32",
+    "note": "Two women taking a selfie in the fog",
+    "slot": "fog/week_1/dusk/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R35",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_1/night/5.webp",
+    "fog/week_2/night/5.webp",
+    "fog/week_3/night/5.webp",
+    "fog/week_4/night/5.webp"
+   ],
+   "why": "replaces: A couple walking the dog, smiling",
+   "note": "it replaces a photo being retired from these spots (A couple walking the dog, smiling) — do not repeat its problem",
+   "replaces": {
+    "sha256": "25ba4c136948e57115d89ab6468a8b0b3a78672c6fdb108b72ee4f1944b7c8ac",
+    "note": "A couple walking the dog, smiling",
+    "slot": "fog/week_1/night/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R36",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/1.webp",
+    "clear/week_3/day/1.webp"
+   ],
+   "why": "replaces: Back of a man walking into an office; stock, no weather",
+   "note": "it replaces a photo being retired from these spots (Back of a man walking into an office; stock, no weather) — do not repeat its problem",
+   "replaces": {
+    "sha256": "752ebaed7c7a6ecbdf3127a081fc207d1e6dea64528f9f7a017b804901d273b4",
+    "note": "Back of a man walking into an office; stock, no weather",
+    "slot": "clear/week_1/day/1.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R37",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/3.webp",
+    "clear/week_3/day/3.webp"
+   ],
+   "why": "replaces: Two women on laptops on a Joburg rooftop; lifestyle stock",
+   "note": "it replaces a photo being retired from these spots (Two women on laptops on a Joburg rooftop; lifestyle stock) — do not repeat its problem",
+   "replaces": {
+    "sha256": "a9c1572f1be4ece59ae488800066700e442a033ab023822102c9d6fbc53eacd6",
+    "note": "Two women on laptops on a Joburg rooftop; lifestyle stock",
+    "slot": "clear/week_1/day/3.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R38",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_1/day/5.webp",
+    "clear/week_3/day/5.webp"
+   ],
+   "why": "replaces: Corporate glass lobby, one man cheering; stock",
+   "note": "it replaces a photo being retired from these spots (Corporate glass lobby, one man cheering; stock) — do not repeat its problem",
+   "replaces": {
+    "sha256": "90566b9c8c8cbcf5e7693de288906baa06f09141f418c43b3114a1d46d87904d",
+    "note": "Corporate glass lobby, one man cheering; stock",
+    "slot": "clear/week_1/day/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R39",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/2.webp",
+    "clear/week_4/day/2.webp"
+   ],
+   "why": "replaces: Rooftop picnic, a bank's name on the tower behind",
+   "note": "it replaces a photo being retired from these spots (Rooftop picnic, a bank's name on the tower behind) — do not repeat its problem",
+   "replaces": {
+    "sha256": "fed27f42e4098802347eb0662260793de68f969b4b7fa4410eb87654adc2f9ac",
+    "note": "Rooftop picnic, a bank's name on the tower behind",
+    "slot": "clear/week_2/day/2.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R40",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/5.webp",
+    "clear/week_4/day/5.webp"
+   ],
+   "why": "replaces: Iced tea and sunglasses by a pool, nobody there; a product shot",
+   "note": "it replaces a photo being retired from these spots (Iced tea and sunglasses by a pool, nobody there; a product shot) — do not repeat its problem",
+   "replaces": {
+    "sha256": "dde50ae61ffb87cf18a6315df08924dbf2d6d17ed8c4046b8d4926b5e10569f7",
+    "note": "Iced tea and sunglasses by a pool, nobody there; a product shot",
+    "slot": "clear/week_2/day/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R41",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/6.webp",
+    "clear/week_4/day/6.webp"
+   ],
+   "why": "replaces: Four friends laughing at a braai; lifestyle stock",
+   "note": "it replaces a photo being retired from these spots (Four friends laughing at a braai; lifestyle stock) — do not repeat its problem",
+   "replaces": {
+    "sha256": "eb699c28bbf79a91a9c9be1e8a978832918ea1a45ccf7b3bf7ec271df43ce539",
+    "note": "Four friends laughing at a braai; lifestyle stock",
+    "slot": "clear/week_2/day/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R42",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "clear",
+   "folder": "clear",
+   "time": "day",
+   "slots": [
+    "clear/week_2/day/7.webp",
+    "clear/week_4/day/7.webp"
+   ],
+   "why": "replaces: Beach umbrella and two chairs, nobody; postcard stock",
+   "note": "it replaces a photo being retired from these spots (Beach umbrella and two chairs, nobody; postcard stock) — do not repeat its problem",
+   "replaces": {
+    "sha256": "14fb224fa5c5b44c6d7d49ee21821feef2221853a97b977182d8963fd5885fac",
+    "note": "Beach umbrella and two chairs, nobody; postcard stock",
+    "slot": "clear/week_2/day/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R43",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_1/day/2.webp",
+    "heat/week_3/day/2.webp"
+   ],
+   "why": "replaces: Office with a paper sign reading \"Heatwave survival zone\"",
+   "note": "it replaces a photo being retired from these spots (Office with a paper sign reading \"Heatwave survival zone\") — do not repeat its problem",
+   "replaces": {
+    "sha256": "46cd4cefcca2ba1be3324f0744729d148c430aa721857f0666f6d130c30820a9",
+    "note": "Office with a paper sign reading \"Heatwave survival zone\"",
+    "slot": "heat/week_1/day/2.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R44",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cloudy",
+   "folder": "cloudy",
+   "time": "day",
+   "slots": [
+    "cloudy/week_2/day/7.webp",
+    "cloudy/week_4/day/7.webp"
+   ],
+   "why": "replaces: Fitness jog on the Durban pier, model pose",
+   "note": "it replaces a photo being retired from these spots (Fitness jog on the Durban pier, model pose) — do not repeat its problem",
+   "replaces": {
+    "sha256": "ee6782554c5f9cf28100d8f2597478e524cad5f390483000fc1e3ace026f7f16",
+    "note": "Fitness jog on the Durban pier, model pose",
+    "slot": "cloudy/week_2/day/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R45",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "rain",
+   "folder": "rain",
+   "time": "day",
+   "slots": [
+    "rain/week_1/day/2.webp",
+    "rain/week_3/day/2.webp"
+   ],
+   "why": "replaces: Kids lined up in a puddle smiling at the camera (your M03 remake would replace it)",
+   "note": "it replaces a photo being retired from these spots (Kids lined up in a puddle smiling at the camera (your M03 remake would replace it)) — do not repeat its problem",
+   "replaces": {
+    "sha256": "868fd901ef1480a15c609074ed3b7e974dfcf09e749ec0ecc4ef355eeb2184d9",
+    "note": "Kids lined up in a puddle smiling at the camera (your M03 remake would replace it)",
+    "slot": "rain/week_1/day/2.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R46",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "storm",
+   "folder": "storm",
+   "time": "night",
+   "slots": [
+    "storm/week_1/night/6.webp",
+    "storm/week_3/night/6.webp"
+   ],
+   "why": "replaces: A couple staged laughing at a roof leak",
+   "note": "it replaces a photo being retired from these spots (A couple staged laughing at a roof leak) — do not repeat its problem",
+   "replaces": {
+    "sha256": "2dc9d10318b7f3ff5e8a5e75dd546822358c1ff9450e869086093217256d6a19",
+    "note": "A couple staged laughing at a roof leak",
+    "slot": "storm/week_1/night/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R47",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/2.webp",
+    "wind/week_4/day/2.webp"
+   ],
+   "why": "replaces: Wind havoc, but a spilled bin's rubbish fills the bottom",
+   "note": "it replaces a photo being retired from these spots (Wind havoc, but a spilled bin's rubbish fills the bottom) — do not repeat its problem",
+   "replaces": {
+    "sha256": "afe79b6ded39280e27ad59f973b407e4ad35db75ca74c03788b9196ddabefdbf",
+    "note": "Wind havoc, but a spilled bin's rubbish fills the bottom",
+    "slot": "wind/week_2/day/2.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R48",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/4.webp",
+    "wind/week_4/day/4.webp"
+   ],
+   "why": "replaces: SA flag and palm straining, no person",
+   "note": "it replaces a photo being retired from these spots (SA flag and palm straining, no person) — do not repeat its problem",
+   "replaces": {
+    "sha256": "11312da815eb96a457a52b90da420cc20a665e644754d0d936e248e053661481",
+    "note": "SA flag and palm straining, no person",
+    "slot": "wind/week_2/day/4.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R49",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/5.webp",
+    "wind/week_4/day/5.webp"
+   ],
+   "why": "replaces: Palms whipping over an empty street, no one",
+   "note": "it replaces a photo being retired from these spots (Palms whipping over an empty street, no one) — do not repeat its problem",
+   "replaces": {
+    "sha256": "52fb371c628b68e4a80eb44a76273d461e1200cd39d5ee5c748784587ad08aeb",
+    "note": "Palms whipping over an empty street, no one",
+    "slot": "wind/week_2/day/5.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R50",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "wind",
+   "folder": "wind",
+   "time": "day",
+   "slots": [
+    "wind/week_2/day/6.webp",
+    "wind/week_4/day/6.webp"
+   ],
+   "why": "replaces: Jacaranda bending over an empty street, no one",
+   "note": "it replaces a photo being retired from these spots (Jacaranda bending over an empty street, no one) — do not repeat its problem",
+   "replaces": {
+    "sha256": "94ea185a88df3838956c309727980390c08708526029ebc13e7daa0bd3d79341",
+    "note": "Jacaranda bending over an empty street, no one",
+    "slot": "wind/week_2/day/6.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "R51",
+   "tier": 2,
+   "kind": "replace",
+   "bin": "cold",
+   "folder": "cold",
+   "time": "night",
+   "slots": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "why": "replaces: A real children's book title on the cover the child is reading",
+   "note": "it replaces a photo being retired from these spots (A real children's book title on the cover the child is reading) — do not repeat its problem",
+   "replaces": {
+    "sha256": "0cf2acaa4c432f235633e03fabe7bba4af83e206d3f7d37e28d073b8fe007182",
+    "note": "A real children's book title on the cover the child is reading",
+    "slot": "cold/week_1/night/7.webp"
+   },
+   "queued": "before Al's export (clearest case)"
+  },
+  {
+   "id": "X01",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "dawn",
+   "slots": [
+    "fog/week_2/dawn/1.webp",
+    "fog/week_4/dawn/1.webp"
+   ],
+   "why": "a second photo for fog dawn, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X02",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "day",
+   "slots": [
+    "fog/week_2/day/2.webp",
+    "fog/week_4/day/2.webp"
+   ],
+   "why": "a second photo for fog day, slot 2 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X03",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "dusk",
+   "slots": [
+    "fog/week_2/dusk/1.webp",
+    "fog/week_4/dusk/1.webp"
+   ],
+   "why": "a second photo for fog dusk, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X04",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "fog",
+   "folder": "fog",
+   "time": "night",
+   "slots": [
+    "fog/week_2/night/1.webp",
+    "fog/week_4/night/1.webp"
+   ],
+   "why": "a second photo for fog night, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X05",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "dawn",
+   "slots": [
+    "heat/week_2/dawn/1.webp",
+    "heat/week_4/dawn/1.webp"
+   ],
+   "why": "a second photo for heat dawn, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X06",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "day",
+   "slots": [
+    "heat/week_2/day/1.webp",
+    "heat/week_4/day/1.webp"
+   ],
+   "why": "a second photo for heat day, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X07",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "dusk",
+   "slots": [
+    "heat/week_2/dusk/2.webp",
+    "heat/week_4/dusk/2.webp"
+   ],
+   "why": "a second photo for heat dusk, slot 2 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X08",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "heat",
+   "folder": "heat",
+   "time": "night",
+   "slots": [
+    "heat/week_2/night/1.webp",
+    "heat/week_4/night/1.webp"
+   ],
+   "why": "a second photo for heat night, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X09",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "dawn",
+   "slots": [
+    "cold-clear/week_2/dawn/1.webp",
+    "cold-clear/week_4/dawn/1.webp"
+   ],
+   "why": "a second photo for cold-clear dawn, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X10",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "day",
+   "slots": [
+    "cold-clear/week_2/day/1.webp",
+    "cold-clear/week_4/day/1.webp"
+   ],
+   "why": "a second photo for cold-clear day, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X11",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "dusk",
+   "slots": [
+    "cold-clear/week_2/dusk/1.webp",
+    "cold-clear/week_4/dusk/1.webp"
+   ],
+   "why": "a second photo for cold-clear dusk, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  },
+  {
+   "id": "X12",
+   "tier": 3,
+   "kind": "thin",
+   "bin": "cold-clear",
+   "folder": "cold-clear",
+   "time": "night",
+   "slots": [
+    "cold-clear/week_2/night/1.webp",
+    "cold-clear/week_4/night/1.webp"
+   ],
+   "why": "a second photo for cold-clear night, slot 1 (one photo holds all four weeks)",
+   "note": "an extra photo for one of the thinnest weathers; it shares its spot with another photo on alternate weeks"
+  }
  ]
 }

@@ -1,0 +1,2702 @@
+{
+ "note": "Vonk's eye pass over the 300 live photos (26 Sept 2026) against RECIPE.md section 3 and Al's taste grades. Joined to hashes by contact-sheet number from the byte-hashed live list. Most-shown first. `clear` = queued for replacement before Al's export (his MEH or named photos, house-rule breaks, stock the blind rater also saw).",
+ "reasons": {
+  "stock": "Stock or posed: people performing for the camera",
+  "noreact": "Nobody reacting to the weather",
+  "strength": "The weather is the wrong strength for its folder",
+  "setting": "The setting isn't aspirational",
+  "clothes": "Clothes or activity don't fit the day",
+  "waxy": "Waxy AI look",
+  "text": "Words, a sign or a logo in the picture (house rule)",
+  "couple": "A romantic couple (house rule)",
+  "horror": "Horror look (house rule: positive only)",
+  "litter": "Litter in the frame (house rule)",
+  "almeh": "You marked it MEH on the taste page",
+  "bane": "One of your three named photos"
+ },
+ "count": 82,
+ "flags": [
+  {
+   "sheet": 64,
+   "sha256": "4f833d5c5db4bf89c68be1dce8f53b38e7652ddda5bcdcd4ea13df83a73371a6",
+   "sha1": "de1df07bf268",
+   "folder": "cloudy",
+   "time": "dawn",
+   "spots": 8,
+   "slots": [
+    "cloudy/week_1/dawn/2.webp",
+    "cloudy/week_1/dawn/5.webp",
+    "cloudy/week_2/dawn/2.webp",
+    "cloudy/week_2/dawn/5.webp",
+    "cloudy/week_3/dawn/2.webp",
+    "cloudy/week_3/dawn/5.webp",
+    "cloudy/week_4/dawn/2.webp",
+    "cloudy/week_4/dawn/5.webp"
+   ],
+   "days": [
+    "Tuesday",
+    "Friday"
+   ],
+   "reasons": [
+    "noreact",
+    "clothes"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather",
+    "Clothes or activity don't fit the day"
+   ],
+   "note": "Painter on a ladder in Bo-Kaap; a work scene, the cloud plays no part",
+   "clear": false,
+   "rater": {
+    "total": 1,
+    "stock": 0,
+    "pose": 0,
+    "why": "Bo-Kaap painter, cloud incidental"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 240,
+   "sha256": "544c1615ccb0a07111eb186cd30d144ef25e9534f00d53228ad7d117d935c25e",
+   "sha1": "f3255e596b2c",
+   "folder": "cold",
+   "time": "night",
+   "spots": 2,
+   "slots": [
+    "cold/week_2/night/6.webp",
+    "cold/week_4/night/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "bane",
+    "almeh",
+    "stock"
+   ],
+   "reasonWords": [
+    "One of your three named photos",
+    "You marked it MEH on the taste page",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "The blankets and lantern",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "blanket chat by lantern, cloud unseen"
+   },
+   "alGrade": "MEH",
+   "benchedSlots": [
+    "cloudy/week_1/night/6.webp",
+    "cloudy/week_2/night/6.webp",
+    "cloudy/week_3/night/6.webp",
+    "cloudy/week_4/night/6.webp"
+   ],
+   "spotsAll": 6
+  },
+  {
+   "sheet": 2,
+   "sha256": "44786fa8cca62831e864d9d98d63234a48281b97de1263d355e0d741bfabf0fa",
+   "sha1": "73d202837435",
+   "folder": "clear",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dawn/2.webp",
+    "clear/week_2/dawn/2.webp",
+    "clear/week_3/dawn/2.webp",
+    "clear/week_4/dawn/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "stock",
+    "waxy"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Waxy AI look"
+   ],
+   "note": "Three scholars grinning at the camera; glossy; the sun does nothing to them",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "happy school walk, glossy, no weather"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 4,
+   "sha256": "6a8154f7a40144a8e3c3453e8069466dc162d8fd914bcd5f073dc547319ca73c",
+   "sha1": "7a76c59603c9",
+   "folder": "clear",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dawn/4.webp",
+    "clear/week_2/dawn/4.webp",
+    "clear/week_3/dawn/4.webp",
+    "clear/week_4/dawn/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Auntie watering flowers in Bo-Kaap; the same non-moment as the man watering his lawn",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "Bo-Kaap auntie watering, sun not felt"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 5,
+   "sha256": "f26595a6b5d772cb483fa8b0bd8d6d60d630fc3d13affbff394650f1df3d574e",
+   "sha1": "66d5e6cb3570",
+   "folder": "clear",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dawn/5.webp",
+    "clear/week_2/dawn/5.webp",
+    "clear/week_3/dawn/5.webp",
+    "clear/week_4/dawn/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Fitness-ad jog trio smiling at the lens",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "Sea Point jog trio, fitness ad"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 7,
+   "sha256": "64a6c1aa77c9f1ee5abea15b5d79ef5568e64b85cb940801be55f8371adfa208",
+   "sha1": "089f865e3f14",
+   "folder": "clear",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dawn/7.webp",
+    "clear/week_2/dawn/7.webp",
+    "clear/week_3/dawn/7.webp",
+    "clear/week_4/dawn/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "bane",
+    "almeh",
+    "noreact"
+   ],
+   "reasonWords": [
+    "One of your three named photos",
+    "You marked it MEH on the taste page",
+    "Nobody reacting to the weather"
+   ],
+   "note": "The man watering the lawn",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 1,
+    "pose": 0,
+    "why": "oom hosing lawn at dawn, gentle"
+   },
+   "alGrade": "MEH"
+  },
+  {
+   "sheet": 22,
+   "sha256": "b8f8ea343b77586d191afc873309450d62dce914ec0f6c1debe6e90b46af2145",
+   "sha1": "1bd6b90924a1",
+   "folder": "clear",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dusk/2.webp",
+    "clear/week_2/dusk/2.webp",
+    "clear/week_3/dusk/2.webp",
+    "clear/week_4/dusk/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Three friends arm in arm down a street at dusk; stock",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 0,
+    "why": "friends strolling at dusk, stock look"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 23,
+   "sha256": "a3c3db31075002872d80adb2dfc04f76b927d4056d5ae798cdc070eaa06dc732",
+   "sha1": "7d50ec606bfc",
+   "folder": "clear",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dusk/3.webp",
+    "clear/week_2/dusk/3.webp",
+    "clear/week_3/dusk/3.webp",
+    "clear/week_4/dusk/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Mountain-bike action shot; the weather is irrelevant",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "MTB action shot, weather irrelevant"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 24,
+   "sha256": "541d9d0e15943b037b99aed2bd8613fe06c959c7c0dd78d94cdccd2c76de9c1f",
+   "sha1": "cc951efb5d19",
+   "folder": "clear",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dusk/4.webp",
+    "clear/week_2/dusk/4.webp",
+    "clear/week_3/dusk/4.webp",
+    "clear/week_4/dusk/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Man mowing at sunset; the sun is scenery, not something happening to him",
+   "clear": false,
+   "rater": {
+    "total": 1.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "mowing at sunset, sun not felt"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 27,
+   "sha256": "357e2151b07dc48b5749049a908a726b9260cb088de2e3fb443a94aff07b2eb3",
+   "sha1": "525b2eea2ebc",
+   "folder": "clear",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "clear/week_1/dusk/7.webp",
+    "clear/week_2/dusk/7.webp",
+    "clear/week_3/dusk/7.webp",
+    "clear/week_4/dusk/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "couple",
+    "stock"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Two women wrapped in a blanket at a tidal pool, reads as a couple",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "couple at tidal pool sunset"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 37,
+   "sha256": "4c12a169237911506240ef8b71f61de0fe0a77888ac40c9f684c32e0ac66be03",
+   "sha1": "c6d266d04418",
+   "folder": "heat",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "heat/week_1/dawn/3.webp",
+    "heat/week_2/dawn/3.webp",
+    "heat/week_3/dawn/3.webp",
+    "heat/week_4/dawn/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "stock",
+    "strength"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Fitness-ad jog trio at sunrise; reads as a nice morning, not heat",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "sunrise jogging trio, fitness ad"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 39,
+   "sha256": "c19d58094ef454f9a14aaeed8293979b889e42d16d21e34b74328369a09381e7",
+   "sha1": "818c078a2bda",
+   "folder": "heat",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "heat/week_1/dawn/5.webp",
+    "heat/week_2/dawn/5.webp",
+    "heat/week_3/dawn/5.webp",
+    "heat/week_4/dawn/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Farm stoep with a sprinkler at sunrise; a pleasant morning, not heat",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "farm stoep sunrise, heat not felt"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 50,
+   "sha256": "6ee74c96c0bc3a153e5dff93662d560463b98abfbad53178ad56539019f3ae54",
+   "sha1": "5ed7621f5dd9",
+   "folder": "heat",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "heat/week_1/dusk/1.webp",
+    "heat/week_2/dusk/1.webp",
+    "heat/week_3/dusk/1.webp",
+    "heat/week_4/dusk/1.webp"
+   ],
+   "days": [
+    "Monday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Sunflower pot on a stoep at sunset; the heat never shows",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "sunset stoep still life, heat unseen"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 54,
+   "sha256": "1affc7f9fe4aa9fb2d37c320c8b3f406c21c8232a8819ece93b3ae83cc84751c",
+   "sha1": "93f4a43551af",
+   "folder": "heat",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "heat/week_1/dusk/5.webp",
+    "heat/week_2/dusk/5.webp",
+    "heat/week_3/dusk/5.webp",
+    "heat/week_4/dusk/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "stock",
+    "strength"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Three friends with ice creams on a promenade, smiling at us; lifestyle stock",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "ice-cream promenade stroll, lifestyle"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 56,
+   "sha256": "243eadef3d4887895250fa67e432b63253ddfc57169498919ed942bead508c96",
+   "sha1": "9728bed72ec6",
+   "folder": "heat",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "heat/week_1/dusk/7.webp",
+    "heat/week_2/dusk/7.webp",
+    "heat/week_3/dusk/7.webp",
+    "heat/week_4/dusk/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Woman relaxing on Karoo steps at sunset; nobody is hot",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "Karoo sunset stoep, heat not felt"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 60,
+   "sha256": "12dc08356d8858edc9b684051c996f4d519977e7e0108a1924f6faebf35096c9",
+   "sha1": "706cd1220e10",
+   "folder": "heat",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "heat/week_1/night/4.webp",
+    "heat/week_2/night/4.webp",
+    "heat/week_3/night/4.webp",
+    "heat/week_4/night/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Empty balcony with a jug; the heat barely shows",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "empty balcony still life, heat faint"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 62,
+   "sha256": "3b370a59f9fdefff4b2c898d5ce0863a784e3d3fed71104c791a42be3e822b6d",
+   "sha1": "87546db18e01",
+   "folder": "heat",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "heat/week_1/night/6.webp",
+    "heat/week_2/night/6.webp",
+    "heat/week_3/night/6.webp",
+    "heat/week_4/night/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Night pool party, everyone posing with drinks",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 2,
+    "pose": 0,
+    "why": "night pool party, lifestyle"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 68,
+   "sha256": "1694b4ae44c20d65f719f842775cc307feb196485289838c41c2b879cc0a4a9f",
+   "sha1": "b5793c36b69d",
+   "folder": "cloudy",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "cloudy/week_1/dawn/6.webp",
+    "cloudy/week_2/dawn/6.webp",
+    "cloudy/week_3/dawn/6.webp",
+    "cloudy/week_4/dawn/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Fitness-ad stretch in Bo-Kaap",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "fitness-ad stretch in Bo-Kaap"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 89,
+   "sha256": "0e1a4e312bcc93bb9bae44352277a5b9b8c2e226acb80c2d284a58b31ba52487",
+   "sha1": "3ba329d5cea3",
+   "folder": "cloudy",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "cloudy/week_1/dusk/6.webp",
+    "cloudy/week_2/dusk/6.webp",
+    "cloudy/week_3/dusk/6.webp",
+    "cloudy/week_4/dusk/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "couple",
+    "stock"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Posed wedding shoot in the winelands",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "wedding shoot, couple posing"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 90,
+   "sha256": "c2845db66d7b715adba42daecd7819342933bc40659461e5bfa572ae8b57374e",
+   "sha1": "6b5271665e34",
+   "folder": "cloudy",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "cloudy/week_1/dusk/7.webp",
+    "cloudy/week_2/dusk/7.webp",
+    "cloudy/week_3/dusk/7.webp",
+    "cloudy/week_4/dusk/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "strength"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Blazing red sunset over Table Mountain; reads clear, not cloudy",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "sunset postcard, cloudy mood contradicted"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 94,
+   "sha256": "fd0a18b25b4e35699d54747d494468b1cba98548bfd9557ada359f04686f9b41",
+   "sha1": "e991afd863ba",
+   "folder": "cloudy",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "cloudy/week_1/night/5.webp",
+    "cloudy/week_2/night/5.webp",
+    "cloudy/week_3/night/5.webp",
+    "cloudy/week_4/night/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Car headlights in the dark; no cloud to see",
+   "clear": false,
+   "rater": {
+    "total": 1,
+    "stock": 0,
+    "pose": 0,
+    "why": "headlights in dark, no cloud visible"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 97,
+   "sha256": "ebd82e69c2ef0fe085fdffbe09f779494af4bc16774fd8e5c020ac799ef6e70e",
+   "sha1": "80770bf13004",
+   "folder": "rain",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "rain/week_1/dawn/3.webp",
+    "rain/week_2/dawn/3.webp",
+    "rain/week_3/dawn/3.webp",
+    "rain/week_4/dawn/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "almeh",
+    "noreact"
+   ],
+   "reasonWords": [
+    "You marked it MEH on the taste page",
+    "Nobody reacting to the weather"
+   ],
+   "note": "School drop-off under an umbrella, calm",
+   "clear": true,
+   "rater": {
+    "total": 2,
+    "stock": 1,
+    "pose": 0,
+    "why": "school drop-off under umbrella, calm"
+   },
+   "alGrade": "MEH"
+  },
+  {
+   "sheet": 98,
+   "sha256": "d8d6e0e7fcf4fc1b962b722603f6881e324c2b80e41540d79717404f40138b1c",
+   "sha1": "5526989179bd",
+   "folder": "rain",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "rain/week_1/dawn/4.webp",
+    "rain/week_2/dawn/4.webp",
+    "rain/week_3/dawn/4.webp",
+    "rain/week_4/dawn/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "strength"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Karoo windmill in a puddle; the rain has already stopped",
+   "clear": false,
+   "rater": {
+    "total": 2,
+    "stock": 0,
+    "pose": 0,
+    "why": "Karoo windmill puddle, rain done, empty"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 100,
+   "sha256": "6464ed68f19d5cf88ded513d5f7d4ba919815d72ac959c53dc50f4517e9a3045",
+   "sha1": "73567b0c612e",
+   "folder": "rain",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "rain/week_1/dawn/6.webp",
+    "rain/week_2/dawn/6.webp",
+    "rain/week_3/dawn/6.webp",
+    "rain/week_4/dawn/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "strength"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Wet jacaranda street in bright sun; reads as after the rain, not rain",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "sunny wet jacaranda street, rain over"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 101,
+   "sha256": "9ef8811a702cb2d33ab7fd83a502a7d8fc1af7faec1a84b7d094dc07b0a4061e",
+   "sha1": "206f0a768ec9",
+   "folder": "rain",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "rain/week_1/dawn/7.webp",
+    "rain/week_2/dawn/7.webp",
+    "rain/week_3/dawn/7.webp",
+    "rain/week_4/dawn/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Empty designer interior, rain faint on the glass",
+   "clear": false,
+   "rater": {
+    "total": 0,
+    "stock": 1,
+    "pose": 0,
+    "why": "architectural interior, rain faint"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 121,
+   "sha256": "45d3aa3a916abe943da88de39d25abc520c098e0d4500af706961a633c955ec8",
+   "sha1": "f7f51acb22c9",
+   "folder": "rain",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "rain/week_1/dusk/6.webp",
+    "rain/week_2/dusk/6.webp",
+    "rain/week_3/dusk/6.webp",
+    "rain/week_4/dusk/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "stock",
+    "strength"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Man standing at his door facing us; the rain is faint",
+   "clear": false,
+   "rater": {
+    "total": 1.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "man at lit door, rain faint"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 129,
+   "sha256": "840790135cf5a568b058c6eacda112e0226573f5c1308b1cc5fedfe8a459de1f",
+   "sha1": "d28204abf829",
+   "folder": "rain",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "rain/week_1/night/7.webp",
+    "rain/week_2/night/7.webp",
+    "rain/week_3/night/7.webp",
+    "rain/week_4/night/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "text"
+   ],
+   "reasonWords": [
+    "Words, a sign or a logo in the picture (house rule)"
+   ],
+   "note": "Wet street with readable neon signs (\"Deluxe Coffee\", \"The Gin Bar\")",
+   "clear": true,
+   "rater": {
+    "total": 3,
+    "stock": 0,
+    "pose": 0,
+    "why": "neon wet street, nobody, readable signs"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 132,
+   "sha256": "86e55c0d5dca0b19a7ed7ce3ed6307cef6ba253802b43f0dda0d894d295e4591",
+   "sha1": "f0b49be17750",
+   "folder": "storm",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "storm/week_1/dawn/3.webp",
+    "storm/week_2/dawn/3.webp",
+    "storm/week_3/dawn/3.webp",
+    "storm/week_4/dawn/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "strength"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Windmill and sunflowers under a pink sky; reads as a sunset, not a storm",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "windmill and sunflowers, storm soft"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 133,
+   "sha256": "135baf75a010969dee221b889dff19ba23f765116e7b6b39192604f702653520",
+   "sha1": "a785060d7357",
+   "folder": "storm",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "storm/week_1/dawn/4.webp",
+    "storm/week_2/dawn/4.webp",
+    "storm/week_3/dawn/4.webp",
+    "storm/week_4/dawn/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "couple",
+    "stock"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "A couple coaxing the dog from under the bed; glossy, storm unseen",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 1,
+    "pose": 0,
+    "why": "coaxing dog from under bed, no storm"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 134,
+   "sha256": "d26fb6bbee9db6057706181e2a6bfa1623a7d2a0a17e62645ab58b6fbdefbe56",
+   "sha1": "20ed2fe6b144",
+   "folder": "storm",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "storm/week_1/dawn/5.webp",
+    "storm/week_2/dawn/5.webp",
+    "storm/week_3/dawn/5.webp",
+    "storm/week_4/dawn/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Bakkie on a dirt road at sunset; the storm is far off",
+   "clear": false,
+   "rater": {
+    "total": 1,
+    "stock": 0,
+    "pose": 0,
+    "why": "dirt road, distant storm, no one"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 135,
+   "sha256": "8051f1c3947db45ae313770d285f8e1f01c73aeae2149e4ae7805770ab2ac7fd",
+   "sha1": "56af96f529d2",
+   "folder": "storm",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "storm/week_1/dawn/6.webp",
+    "storm/week_2/dawn/6.webp",
+    "storm/week_3/dawn/6.webp",
+    "storm/week_4/dawn/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "stock",
+    "text"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Words, a sign or a logo in the picture (house rule)"
+   ],
+   "note": "Runner posing hands on hips, a brand logo on his shirt",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "runner posing front-on, storm grey"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 136,
+   "sha256": "d25fb1153ed0ab96e6c42e901b596e94e73a98e2b1a1efce1bcca870fdd6ac6e",
+   "sha1": "29a289619727",
+   "folder": "storm",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "storm/week_1/dawn/7.webp",
+    "storm/week_2/dawn/7.webp",
+    "storm/week_3/dawn/7.webp",
+    "storm/week_4/dawn/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Model pose in a robe with a mug",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 2,
+    "pose": 1,
+    "why": "robe-and-mug model pose, face-brick"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 167,
+   "sha256": "39021494d6a3f746a0eadcb74e6ab8a2c1f43d05b7ff798d84e319213b77c627",
+   "sha1": "c121631aca0a",
+   "folder": "wind",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/dawn/1.webp",
+    "wind/week_2/dawn/1.webp",
+    "wind/week_3/dawn/1.webp",
+    "wind/week_4/dawn/1.webp"
+   ],
+   "days": [
+    "Monday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "One bent palm at sunrise, no one; you marked two empty wind photos MEH",
+   "clear": true,
+   "rater": {
+    "total": 3,
+    "stock": 1,
+    "pose": 0,
+    "why": "lone palm bent at sunrise, no person"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 172,
+   "sha256": "f60a403312467b3d8a4fdcf64f42b836abce99efc72209df53a22fffd96fc37c",
+   "sha1": "d0a60d414066",
+   "folder": "wind",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/dawn/6.webp",
+    "wind/week_2/dawn/6.webp",
+    "wind/week_3/dawn/6.webp",
+    "wind/week_4/dawn/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Fitness-ad jogging duo past sea spray",
+   "clear": true,
+   "rater": {
+    "total": 1.5,
+    "stock": 2,
+    "pose": 0,
+    "why": "jogging duo past spray, fitness ad"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 173,
+   "sha256": "ebf8739c63fe226d2b2e8923be9bbf5fedac384b6f4fd179391ba814c5aeb9d0",
+   "sha1": "337d1a2fe2c2",
+   "folder": "wind",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/dawn/7.webp",
+    "wind/week_2/dawn/7.webp",
+    "wind/week_3/dawn/7.webp",
+    "wind/week_4/dawn/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "stock",
+    "strength"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Jogger on a promenade; the wind barely reads",
+   "clear": false,
+   "rater": {
+    "total": 2,
+    "stock": 1,
+    "pose": 0,
+    "why": "jogger past crashing waves, barely bothered"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 188,
+   "sha256": "4a0b5d3b10ec517285cbdd3954ca7bcc19284559273995988a60b27c2d241cda",
+   "sha1": "002f0c1d5187",
+   "folder": "wind",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/dusk/1.webp",
+    "wind/week_2/dusk/1.webp",
+    "wind/week_3/dusk/1.webp",
+    "wind/week_4/dusk/1.webp"
+   ],
+   "days": [
+    "Monday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Two friends laughing in the wind; lifestyle stock",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 2,
+    "pose": 1,
+    "why": "laughing friends in wind, lifestyle"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 191,
+   "sha256": "c2bc4bc434666ee3fca00c7c2ef2d03960fc330efd74dfdc6388ae464d69ac36",
+   "sha1": "17c00a47cba2",
+   "folder": "wind",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/dusk/4.webp",
+    "wind/week_2/dusk/4.webp",
+    "wind/week_3/dusk/4.webp",
+    "wind/week_4/dusk/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Wind-bent tree in a fishing village, no one",
+   "clear": true,
+   "rater": {
+    "total": 3.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "wind-bent tree, fishing village, no one"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 192,
+   "sha256": "cb0804cb6b7b16d97e4b4e745a9f2c6bebe1afba41a364eae68e70e98d806fcf",
+   "sha1": "ec12d1747d09",
+   "folder": "wind",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/dusk/5.webp",
+    "wind/week_2/dusk/5.webp",
+    "wind/week_3/dusk/5.webp",
+    "wind/week_4/dusk/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "strength"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Bo-Kaap postcard at dusk; no wind at all",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "Bo-Kaap postcard, no wind at all"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 194,
+   "sha256": "fbba3dfe68594e108ddd289f746f86ae1a6e0fe918d5bd0f3cd9e0b3341432f7",
+   "sha1": "38635f77f610",
+   "folder": "wind",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/dusk/7.webp",
+    "wind/week_2/dusk/7.webp",
+    "wind/week_3/dusk/7.webp",
+    "wind/week_4/dusk/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "couple",
+    "stock"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Laughing couple on the beach",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 2,
+    "pose": 1,
+    "why": "laughing beach couple, romantic stock"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 195,
+   "sha256": "13f86b7909396e0e9edd88783197f94bb9412c74a2ce266625862426e234ba76",
+   "sha1": "eb7873fd7acb",
+   "folder": "wind",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/night/1.webp",
+    "wind/week_2/night/1.webp",
+    "wind/week_3/night/1.webp",
+    "wind/week_4/night/1.webp"
+   ],
+   "days": [
+    "Monday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Row of palms bent over a night promenade, no one",
+   "clear": true,
+   "rater": {
+    "total": 3.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "palm row bent over night promenade"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 197,
+   "sha256": "360fe761dd56984fe5246331628e0bfc369f64ae903790639d83357d0306cfab",
+   "sha1": "0e5c84f6ab31",
+   "folder": "wind",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/night/3.webp",
+    "wind/week_2/night/3.webp",
+    "wind/week_3/night/3.webp",
+    "wind/week_4/night/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "almeh",
+    "noreact"
+   ],
+   "reasonWords": [
+    "You marked it MEH on the taste page",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Palm straining under a streetlamp, empty",
+   "clear": true,
+   "rater": {
+    "total": 3.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "palm straining under streetlamp, empty"
+   },
+   "alGrade": "MEH"
+  },
+  {
+   "sheet": 199,
+   "sha256": "d1a05b5478ab6c1333917f0fbe31b565b1c1d05444e6f5e4ffcf62e32c449c88",
+   "sha1": "9ae18d55d0c1",
+   "folder": "wind",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/night/5.webp",
+    "wind/week_2/night/5.webp",
+    "wind/week_3/night/5.webp",
+    "wind/week_4/night/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "noreact",
+    "text"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather",
+    "Words, a sign or a logo in the picture (house rule)"
+   ],
+   "note": "Durban palms thrashing, no one; a banner reads \"Durban\"",
+   "clear": true,
+   "rater": {
+    "total": 3.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "Durban beachfront palms thrashing, empty"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 200,
+   "sha256": "9248c64fdecc1a45432aa41c045977d64504e02c95c6aab72db2800553871d3e",
+   "sha1": "be8276f7384b",
+   "folder": "wind",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "wind/week_1/night/6.webp",
+    "wind/week_2/night/6.webp",
+    "wind/week_3/night/6.webp",
+    "wind/week_4/night/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "stock",
+    "strength"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Two mates laughing at a braai; the wind never shows",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "laughing braai mates, wind unseen"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 203,
+   "sha256": "628d097a55e41b21d965d2d8bb577f060cdf9134a037a2a29cb84a4a97436b81",
+   "sha1": "91301942dc29",
+   "folder": "cold",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "cold/week_1/dawn/2.webp",
+    "cold/week_2/dawn/2.webp",
+    "cold/week_3/dawn/2.webp",
+    "cold/week_4/dawn/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Frosted car under a clear sky, no one; frost belongs to cold-clear, not cold",
+   "clear": false,
+   "rater": {
+    "total": 1.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "frosted old car, no one"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 206,
+   "sha256": "b7b5166f676eaaf2c8402e0cca3486ed07b2f93ae36d8b94fac8381d70bd9bfe",
+   "sha1": "ba36a2982ee0",
+   "folder": "cold",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "cold/week_1/dawn/6.webp",
+    "cold/week_2/dawn/6.webp",
+    "cold/week_3/dawn/6.webp",
+    "cold/week_4/dawn/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Two steaming mugs on a Karoo stoep, no one; clear sky, not wet cold",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "steaming mugs still life, no one"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 207,
+   "sha256": "e93354d9b468c40a7d2b83699f809d25459d8915246921233d427ad1735581a7",
+   "sha1": "4210c1f4a1ad",
+   "folder": "cold",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "cold/week_1/dawn/7.webp",
+    "cold/week_2/dawn/7.webp",
+    "cold/week_3/dawn/7.webp",
+    "cold/week_4/dawn/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Frosted windscreen on an SUV, no one; frost belongs to cold-clear",
+   "clear": false,
+   "rater": {
+    "total": 2,
+    "stock": 1,
+    "pose": 0,
+    "why": "frosted windscreen Fortuner, no person"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 226,
+   "sha256": "abf16c113fdba3f1902377073552b06c6d57b0ed7aa7967494c138878eac8b5c",
+   "sha1": "917c4c0a6fac",
+   "folder": "cold",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "cold/week_1/dusk/5.webp",
+    "cold/week_2/dusk/5.webp",
+    "cold/week_3/dusk/5.webp",
+    "cold/week_4/dusk/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "stock",
+    "strength"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Cocoa with marshmallows and a view; lifestyle stock, a sunset instead of wet cold",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 2,
+    "pose": 0,
+    "why": "cocoa-and-view lifestyle, cold barely felt"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 227,
+   "sha256": "914f369f7f8f494e92af00e0cdf84afa4abb594662e56e3f3b75ba83f2b164c5",
+   "sha1": "6ab73d31bad6",
+   "folder": "cold",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "cold/week_1/dusk/7.webp",
+    "cold/week_2/dusk/7.webp",
+    "cold/week_3/dusk/7.webp",
+    "cold/week_4/dusk/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Farm road at sunset; the cold never shows",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "sunset farm road, cold not visible"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 235,
+   "sha256": "20567f2a95864a0148ba46d091d5c79426e7fd24360aaaf010bcaba96c396a8d",
+   "sha1": "fbf101482bbd",
+   "folder": "cold",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "cold/week_1/night/5.webp",
+    "cold/week_2/night/5.webp",
+    "cold/week_3/night/5.webp",
+    "cold/week_4/night/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "couple"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)"
+   ],
+   "note": "A couple at a campfire under the Milky Way (clear sky: cold-clear, not cold)",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 1,
+    "pose": 0,
+    "why": "couple at campfire under Milky Way"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 245,
+   "sha256": "26beb87414292120ae909cf58c5dcb5d4fb17d2f67789c2d3bf8d801dd1ee695",
+   "sha1": "caaa1c42d70a",
+   "folder": "cold-clear",
+   "time": "dawn",
+   "spots": 4,
+   "slots": [
+    "cold-clear/week_1/dawn/4.webp",
+    "cold-clear/week_2/dawn/4.webp",
+    "cold-clear/week_3/dawn/4.webp",
+    "cold-clear/week_4/dawn/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "noreact",
+    "strength"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Cyclist tiny in the frame, frost faint",
+   "clear": false,
+   "rater": {
+    "total": 1.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "cyclist at dawn, tiny, frost faint"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 254,
+   "sha256": "c7090cc8143069a1a8e66856c6a1fbe497f6cdde91daec029d05323285b8d201",
+   "sha1": "decff597fe6c",
+   "folder": "cold-clear",
+   "time": "day",
+   "spots": 4,
+   "slots": [
+    "cold-clear/week_1/day/5.webp",
+    "cold-clear/week_2/day/5.webp",
+    "cold-clear/week_3/day/5.webp",
+    "cold-clear/week_4/day/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Corporate coffee chat under a blue sky",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "corporate coffee under blue sky"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 262,
+   "sha256": "b8c7819a2f6dbd78b2871a7eff4aa7c019ee0852ba8bb5d4e7196f62fd4e9782",
+   "sha1": "827554552d76",
+   "folder": "cold-clear",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "cold-clear/week_1/dusk/5.webp",
+    "cold-clear/week_2/dusk/5.webp",
+    "cold-clear/week_3/dusk/5.webp",
+    "cold-clear/week_4/dusk/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Posed group around a fire pit",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "fire-pit lifestyle group, bottom crowded"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 280,
+   "sha256": "cca354da10378cc7c2d412caf296630fd50ccf149b5c942ecc7e82851c85e63a",
+   "sha1": "2d71f451d0df",
+   "folder": "fog",
+   "time": "day",
+   "spots": 4,
+   "slots": [
+    "fog/week_1/day/1.webp",
+    "fog/week_2/day/1.webp",
+    "fog/week_3/day/1.webp",
+    "fog/week_4/day/1.webp"
+   ],
+   "days": [
+    "Monday"
+   ],
+   "reasons": [
+    "horror"
+   ],
+   "reasonWords": [
+    "Horror look (house rule: positive only)"
+   ],
+   "note": "Cat on a wall with ghostly human shapes in the fog behind it",
+   "clear": true,
+   "rater": {
+    "total": 2.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "cat on wall, fog swallowing street"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 289,
+   "sha256": "957ef16d9b295921cf572f6089814b19293d8feed88483a3bc594f28dda9dc2b",
+   "sha1": "5cd228859e14",
+   "folder": "fog",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "fog/week_1/dusk/3.webp",
+    "fog/week_2/dusk/3.webp",
+    "fog/week_3/dusk/3.webp",
+    "fog/week_4/dusk/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "couple"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)"
+   ],
+   "note": "A couple wheeling bikes through the fog",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "couple wheeling bikes, wet autumn lane"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 291,
+   "sha256": "336f41869884bd7b62ab2c3e346f56b611c00f4c4ef109fe30b9897c1017cf55",
+   "sha1": "b5837596744c",
+   "folder": "fog",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "fog/week_1/dusk/5.webp",
+    "fog/week_2/dusk/5.webp",
+    "fog/week_3/dusk/5.webp",
+    "fog/week_4/dusk/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "strength"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Bo-Kaap at dusk; the fog is faint, a man tiny",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "Bo-Kaap dusk, fog faint, man tiny"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 293,
+   "sha256": "a67edaa1585b4651dffc326c59ef46b72b5fb0eee583da7fa8af2d680b166b32",
+   "sha1": "b64f87c2b2bc",
+   "folder": "fog",
+   "time": "dusk",
+   "spots": 4,
+   "slots": [
+    "fog/week_1/dusk/7.webp",
+    "fog/week_2/dusk/7.webp",
+    "fog/week_3/dusk/7.webp",
+    "fog/week_4/dusk/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Two women taking a selfie in the fog",
+   "clear": true,
+   "rater": {
+    "total": 1.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "selfie in fog, performing"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 298,
+   "sha256": "25ba4c136948e57115d89ab6468a8b0b3a78672c6fdb108b72ee4f1944b7c8ac",
+   "sha1": "7acec82c9b6f",
+   "folder": "fog",
+   "time": "night",
+   "spots": 4,
+   "slots": [
+    "fog/week_1/night/5.webp",
+    "fog/week_2/night/5.webp",
+    "fog/week_3/night/5.webp",
+    "fog/week_4/night/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "couple",
+    "stock"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "A couple walking the dog, smiling",
+   "clear": true,
+   "rater": {
+    "total": 1.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "couple walking dog in fog, passive"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 9,
+   "sha256": "752ebaed7c7a6ecbdf3127a081fc207d1e6dea64528f9f7a017b804901d273b4",
+   "sha1": "84beada2e358",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_1/day/1.webp",
+    "clear/week_3/day/1.webp"
+   ],
+   "days": [
+    "Monday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Back of a man walking into an office; stock, no weather",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 0,
+    "why": "office entrance stock, no weather"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 10,
+   "sha256": "a9c1572f1be4ece59ae488800066700e442a033ab023822102c9d6fbc53eacd6",
+   "sha1": "77cfc93827e3",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_1/day/3.webp",
+    "clear/week_3/day/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Two women on laptops on a Joburg rooftop; lifestyle stock",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 0,
+    "why": "rooftop laptop lifestyle, Joburg skyline"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 11,
+   "sha256": "6d489d62f30f83f8f289d2e6360d224fe55e95cc661edc1341bc463eaf7f58cd",
+   "sha1": "f673af851f9c",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_1/day/4.webp",
+    "clear/week_3/day/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Soccer kids eating chips; candid, but the weather plays no part",
+   "clear": false,
+   "rater": {
+    "total": 1,
+    "stock": 0,
+    "pose": 0,
+    "why": "soccer kids eating chips, no weather"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 12,
+   "sha256": "90566b9c8c8cbcf5e7693de288906baa06f09141f418c43b3114a1d46d87904d",
+   "sha1": "ca6d821f7c9b",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_1/day/5.webp",
+    "clear/week_3/day/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Corporate glass lobby, one man cheering; stock",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "corporate glass lobby stock, weather irrelevant"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 15,
+   "sha256": "fed27f42e4098802347eb0662260793de68f969b4b7fa4410eb87654adc2f9ac",
+   "sha1": "9ab8b9f07431",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_2/day/2.webp",
+    "clear/week_4/day/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "stock",
+    "text"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Words, a sign or a logo in the picture (house rule)"
+   ],
+   "note": "Rooftop picnic, a bank's name on the tower behind",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "rooftop picnic lifestyle, Joburg skyline"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 16,
+   "sha256": "4073f1fd86704492edc674090712c67c372bb76fd82cc8e33bed9b6ca735d59e",
+   "sha1": "448b951052cc",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_2/day/3.webp",
+    "clear/week_4/day/3.webp"
+   ],
+   "days": [
+    "Wednesday"
+   ],
+   "reasons": [
+    "bane",
+    "almeh",
+    "stock"
+   ],
+   "reasonWords": [
+    "One of your three named photos",
+    "You marked it MEH on the taste page",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "The kids with the tennis ball",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "kids playing catch, sunny ad"
+   },
+   "alGrade": "MEH"
+  },
+  {
+   "sheet": 18,
+   "sha256": "dde50ae61ffb87cf18a6315df08924dbf2d6d17ed8c4046b8d4926b5e10569f7",
+   "sha1": "ed953578deec",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_2/day/5.webp",
+    "clear/week_4/day/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Iced tea and sunglasses by a pool, nobody there; a product shot",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 2,
+    "pose": 0,
+    "why": "iced-tea-by-pool stock, no one"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 19,
+   "sha256": "eb699c28bbf79a91a9c9be1e8a978832918ea1a45ccf7b3bf7ec271df43ce539",
+   "sha1": "6e598ae56c12",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_2/day/6.webp",
+    "clear/week_4/day/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Four friends laughing at a braai; lifestyle stock",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "laughing braai friends, lifestyle"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 20,
+   "sha256": "14fb224fa5c5b44c6d7d49ee21821feef2221853a97b977182d8963fd5885fac",
+   "sha1": "03a31c2b8e88",
+   "folder": "clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "clear/week_2/day/7.webp",
+    "clear/week_4/day/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "stock",
+    "noreact"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Beach umbrella and two chairs, nobody; postcard stock",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 2,
+    "pose": 0,
+    "why": "generic beach umbrella stock, nobody there"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 48,
+   "sha256": "46cd4cefcca2ba1be3324f0744729d148c430aa721857f0666f6d130c30820a9",
+   "sha1": "d6593f52fb76",
+   "folder": "heat",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "heat/week_1/day/2.webp",
+    "heat/week_3/day/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "text"
+   ],
+   "reasonWords": [
+    "Words, a sign or a logo in the picture (house rule)"
+   ],
+   "note": "Office with a paper sign reading \"Heatwave survival zone\"",
+   "clear": true,
+   "rater": {
+    "total": 1,
+    "stock": 1,
+    "pose": 0,
+    "why": "office workers fanning with papers, backs"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 83,
+   "sha256": "ee6782554c5f9cf28100d8f2597478e524cad5f390483000fc1e3ace026f7f16",
+   "sha1": "04bdf14c306b",
+   "folder": "cloudy",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "cloudy/week_2/day/7.webp",
+    "cloudy/week_4/day/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Fitness jog on the Durban pier, model pose",
+   "clear": true,
+   "rater": {
+    "total": 0,
+    "stock": 2,
+    "pose": 1,
+    "why": "fitness jog on Durban pier, ad"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 103,
+   "sha256": "868fd901ef1480a15c609074ed3b7e974dfcf09e749ec0ecc4ef355eeb2184d9",
+   "sha1": "00a672556998",
+   "folder": "rain",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "rain/week_1/day/2.webp",
+    "rain/week_3/day/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Kids lined up in a puddle smiling at the camera (your M03 remake would replace it)",
+   "clear": true,
+   "rater": {
+    "total": 1.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "puddle kids lined up, face-brick"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 164,
+   "sha256": "2dc9d10318b7f3ff5e8a5e75dd546822358c1ff9450e869086093217256d6a19",
+   "sha1": "2d2e6dd5d7fd",
+   "folder": "storm",
+   "time": "night",
+   "spots": 2,
+   "slots": [
+    "storm/week_1/night/6.webp",
+    "storm/week_3/night/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "couple",
+    "stock"
+   ],
+   "reasonWords": [
+    "A romantic couple (house rule)",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "A couple staged laughing at a roof leak",
+   "clear": true,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "couple laughing at roof leak, staged"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 175,
+   "sha256": "3442cc22fc1e323c853666d76576690b9d429950f159c9d4c62f0a3909b15e1e",
+   "sha1": "4d3a786acf48",
+   "folder": "wind",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "wind/week_1/day/2.webp",
+    "wind/week_3/day/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "stock"
+   ],
+   "reasonWords": [
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Skirt-and-hair blowout; a fashion-shoot pose",
+   "clear": false,
+   "rater": {
+    "total": 1.5,
+    "stock": 1,
+    "pose": 1,
+    "why": "skirt-and-hair blowout, fashion-shoot feel"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 182,
+   "sha256": "afe79b6ded39280e27ad59f973b407e4ad35db75ca74c03788b9196ddabefdbf",
+   "sha1": "9bada961b0a7",
+   "folder": "wind",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "wind/week_2/day/2.webp",
+    "wind/week_4/day/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "litter"
+   ],
+   "reasonWords": [
+    "Litter in the frame (house rule)"
+   ],
+   "note": "Wind havoc, but a spilled bin's rubbish fills the bottom",
+   "clear": true,
+   "rater": {
+    "total": 3,
+    "stock": 0,
+    "pose": 0,
+    "why": "wind havoc reads, litter fills bottom"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 184,
+   "sha256": "11312da815eb96a457a52b90da420cc20a665e644754d0d936e248e053661481",
+   "sha1": "55504e5b8143",
+   "folder": "wind",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "wind/week_2/day/4.webp",
+    "wind/week_4/day/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "almeh",
+    "noreact"
+   ],
+   "reasonWords": [
+    "You marked it MEH on the taste page",
+    "Nobody reacting to the weather"
+   ],
+   "note": "SA flag and palm straining, no person",
+   "clear": true,
+   "rater": {
+    "total": 3.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "SA flag and palm straining, no person"
+   },
+   "alGrade": "MEH"
+  },
+  {
+   "sheet": 185,
+   "sha256": "52fb371c628b68e4a80eb44a76273d461e1200cd39d5ee5c748784587ad08aeb",
+   "sha1": "ab2cbee2d73d",
+   "folder": "wind",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "wind/week_2/day/5.webp",
+    "wind/week_4/day/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Palms whipping over an empty street, no one",
+   "clear": true,
+   "rater": {
+    "total": 3.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "whipping palms, strong wind, no person"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 186,
+   "sha256": "94ea185a88df3838956c309727980390c08708526029ebc13e7daa0bd3d79341",
+   "sha1": "5df9d64aa037",
+   "folder": "wind",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "wind/week_2/day/6.webp",
+    "wind/week_4/day/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Jacaranda bending over an empty street, no one",
+   "clear": true,
+   "rater": {
+    "total": 3.5,
+    "stock": 0,
+    "pose": 0,
+    "why": "jacaranda bending over street, empty"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 208,
+   "sha256": "2f56b7f02f5aac523930b09884384e691392b5151c8c6fbfc60cf2b85e3d43fd",
+   "sha1": "484f2079f5aa",
+   "folder": "cold",
+   "time": "dawn",
+   "spots": 2,
+   "slots": [
+    "cold/week_1/dawn/5.webp",
+    "cold/week_3/dawn/5.webp"
+   ],
+   "days": [
+    "Friday"
+   ],
+   "reasons": [
+    "noreact"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather"
+   ],
+   "note": "Empty rumpled bed; no one, no weather",
+   "clear": false,
+   "rater": {
+    "total": 0,
+    "stock": 1,
+    "pose": 0,
+    "why": "empty rumpled bed, nobody"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 219,
+   "sha256": "319c3448a3e8848940673c3f6738de148ac68f12769a49112e1fa90f55646953",
+   "sha1": "59f61259d350",
+   "folder": "cold",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "cold/week_2/day/4.webp",
+    "cold/week_4/day/4.webp"
+   ],
+   "days": [
+    "Thursday"
+   ],
+   "reasons": [
+    "setting"
+   ],
+   "reasonWords": [
+    "The setting isn't aspirational"
+   ],
+   "note": "Puffer jacket on a park bench; reads European, not South African",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "puffer on park bench, reads European"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 228,
+   "sha256": "6c75084d23dbf03a524515716593a6338b5386869ecaaee822f8f8f6daafe4f1",
+   "sha1": "55da2af2c2bd",
+   "folder": "cold",
+   "time": "dusk",
+   "spots": 2,
+   "slots": [
+    "cold/week_1/dusk/2.webp",
+    "cold/week_3/dusk/2.webp"
+   ],
+   "days": [
+    "Tuesday"
+   ],
+   "reasons": [
+    "strength",
+    "noreact"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Nobody reacting to the weather"
+   ],
+   "note": "Frosty mountain pass, scenery only; frost belongs to cold-clear",
+   "clear": false,
+   "rater": {
+    "total": 1,
+    "stock": 0,
+    "pose": 0,
+    "why": "frosty mountain pass, scenery only"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 229,
+   "sha256": "f49a362f2f87ac030ac907ddf6a5e2039fbf0e42f0d908c7ade2bd51ab0e5d2c",
+   "sha1": "39e28d40ecf1",
+   "folder": "cold",
+   "time": "dusk",
+   "spots": 2,
+   "slots": [
+    "cold/week_1/dusk/6.webp",
+    "cold/week_3/dusk/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "strength",
+    "stock"
+   ],
+   "reasonWords": [
+    "The weather is the wrong strength for its folder",
+    "Stock or posed: people performing for the camera"
+   ],
+   "note": "Walkers on a promenade under a red sunset; the cold never shows",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "sunset promenade walk, cold not visible"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 238,
+   "sha256": "0cf2acaa4c432f235633e03fabe7bba4af83e206d3f7d37e28d073b8fe007182",
+   "sha1": "b850a52403e3",
+   "folder": "cold",
+   "time": "night",
+   "spots": 2,
+   "slots": [
+    "cold/week_1/night/7.webp",
+    "cold/week_3/night/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "text"
+   ],
+   "reasonWords": [
+    "Words, a sign or a logo in the picture (house rule)"
+   ],
+   "note": "A real children's book title on the cover the child is reading",
+   "clear": true,
+   "rater": {
+    "total": 1.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "kid bundled to eyes reading, cold felt"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 241,
+   "sha256": "6e0d76c63cde82b91119b5f5853d9ada08f19557a8a5c8cce7a79c1d06331024",
+   "sha1": "c6d4061cbef2",
+   "folder": "cold",
+   "time": "night",
+   "spots": 2,
+   "slots": [
+    "cold/week_2/night/7.webp",
+    "cold/week_4/night/7.webp"
+   ],
+   "days": [
+    "Sunday"
+   ],
+   "reasons": [
+    "noreact",
+    "strength"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Man lounging on a rooftop deck chair; nobody is cold",
+   "clear": false,
+   "rater": {
+    "total": 0.5,
+    "stock": 1,
+    "pose": 0,
+    "why": "lounging on rooftop, cloud incidental"
+   },
+   "alGrade": null
+  },
+  {
+   "sheet": 256,
+   "sha256": "86ce321be59c54933d8c42dbe080d373300c4ad850a84f57839dccbf00e5ca7e",
+   "sha1": "bbad2500c852",
+   "folder": "cold-clear",
+   "time": "day",
+   "spots": 2,
+   "slots": [
+    "cold-clear/week_1/day/6.webp",
+    "cold-clear/week_3/day/6.webp"
+   ],
+   "days": [
+    "Saturday"
+   ],
+   "reasons": [
+    "noreact",
+    "strength"
+   ],
+   "reasonWords": [
+    "Nobody reacting to the weather",
+    "The weather is the wrong strength for its folder"
+   ],
+   "note": "Empty rugby field under a blue sky; no frost, nothing happening",
+   "clear": false,
+   "rater": {
+    "total": 1,
+    "stock": 0,
+    "pose": 0,
+    "why": "empty rugby field, blue sky"
+   },
+   "alGrade": null
+  }
+ ]
+}
