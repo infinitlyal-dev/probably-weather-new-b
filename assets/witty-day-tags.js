@@ -234,7 +234,6 @@ export const WITTY_DAY_TAGS = {
       102: { time: ['night'] },
       103: { time: ['night'], region: 'western-cape', months: [5, 6, 7, 8, 9] },
       104: { time: ['night'], region: 'western-cape', months: [5, 6, 7, 8, 9] },
-      105: { time: ['night'] },
       11: { time: ['morning'] },
       35: { time: ['morning'] },
     },
@@ -536,7 +535,6 @@ export const WITTY_DAY_TAGS = {
       54: { time: ['night'], months: [10, 11, 12, 1, 2, 3] },
       55: { time: ['night'], months: [10, 11, 12, 1, 2, 3] },
       56: { time: ['night'], months: [10, 11, 12, 1, 2, 3] },
-      57: { time: ['night'], months: [10, 11, 12, 1, 2, 3] },
     },
   },
   witty_low_confidence: {

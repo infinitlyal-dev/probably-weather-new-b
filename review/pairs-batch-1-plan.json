@@ -1,0 +1,75 @@
+{
+ "note": "Pairs batch 1 (the pairs job, 25 Sept 2026), wired on Al's ruling of 26 Sept 2026 (review/pairs-batch-1-ruled.json): M02 take 1 and M04 take 2 USE, Afrikaans OK. Each photo takes weeks 2 and 4 of the weakest photo by the blind rater in its weather and time of day (that photo keeps weeks 1 and 3), and carries its line as its own. Each line also takes the place, in the condition bank, of the line Al marked MEH that its target named (review/pairs-job/targets.json) — review/pairs-batch-1-bank.json (scripts/cut-bank-lines.mjs, then scripts/apply-loved-lines.mjs --file). M01 and M03 (lines LOVE, Afrikaans OK, photos out as gritty) wait for remade photos: review/pairs-remake-for-al.html.",
+ "ruling": "review/pairs-batch-1-ruled.json (Al, 26 Sept 2026)",
+ "ruledBy": "Al: USE, pairs batch 1 (review/pairs-batch-1-ruled.json), 26 Sept 2026; line LOVE",
+ "afReason": "Al OK'd as proposed (review/pairs-batch-1-ruled.json, 26 Sept 2026)",
+ "pairs": [
+  {
+   "id": "M02",
+   "condition": "storm",
+   "time": "night",
+   "line": "Lightning, then the whole house counts to three.",
+   "af": "Weerlig, en die hele huis tel tot drie.",
+   "slots": [
+    "storm/week_2/night/5.webp",
+    "storm/week_4/night/5.webp"
+   ],
+   "expect": "cd855e5f60e9",
+   "why": "storm nights: every slot filled; this takes weeks 2 and 4 of the weakest by the blind rater (rain sheeting past an empty veranda, F), which stays on weeks 1 and 3 (Friday)",
+   "anchorY": 29,
+   "source": "C:\\Users\\27741\\.codex\\generated_images\\01a0da7f-fada-75d3-be8b-8d1ffdfefd8c\\exec-f8ef871d-1c7b-4929-9d62-dc4543fa2f7d.png",
+   "take": 1,
+   "meh": "Sleep is cancelled, but look at that shot."
+  },
+  {
+   "id": "M04",
+   "condition": "cold",
+   "time": "dusk",
+   "line": "Cold enough that the heater has a waiting list.",
+   "af": "So koud dat die verwarmer 'n waglys het.",
+   "slots": [
+    "cold/week_2/dusk/6.webp",
+    "cold/week_4/dusk/6.webp"
+   ],
+   "expect": "39e28d40ecf1",
+   "why": "cold evenings: every slot filled; this takes weeks 2 and 4 of the weakest by the blind rater (a sunset promenade walk, cold not visible, F), which stays on weeks 1 and 3 (Saturday: a family at home fits the weekend)",
+   "anchorY": 25,
+   "source": "C:\\Users\\27741\\.codex\\generated_images\\01a0da82-ef4a-7b72-a3b7-6123e51cacaf\\exec-da85b116-2420-4c17-b049-ef005f51bbdd.png",
+   "take": 2,
+   "meh": "Last one closing up, please leave the light on. It looks lovely."
+  }
+ ],
+ "appliedRuns": [],
+ "applied": {
+  "on": "2026-09-26",
+  "applied": [
+   {
+    "id": "M02",
+    "hash": "ae7c34aa9e5d",
+    "canonical": "baff135097d7…",
+    "bytes": 115686,
+    "quality": 92,
+    "slots": [
+     "storm/week_2/night/5.webp",
+     "storm/week_4/night/5.webp"
+    ],
+    "replaced": "cd855e5f60e9"
+   },
+   {
+    "id": "M04",
+    "hash": "e499768237ef",
+    "canonical": "025a3c7ebc37…",
+    "bytes": 241564,
+    "quality": 92,
+    "slots": [
+     "cold/week_2/dusk/6.webp",
+     "cold/week_4/dusk/6.webp"
+    ],
+    "replaced": "39e28d40ecf1"
+   }
+  ],
+  "retired": [],
+  "benchChanges": [],
+  "curatedBodies": 301
+ }
+}

@@ -6,7 +6,7 @@
 // Refuses if a line is already in the bank, a bin is missing, or the languages would fall out of
 // step. Re-running after a successful apply is a no-op.
 //
-//   node scripts/apply-loved-lines.mjs [--dry]
+//   node scripts/apply-loved-lines.mjs [--file <review/ file>] [--dry]
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -16,7 +16,9 @@ const DRY = process.argv.includes('--dry');
 const LANGS = ['en', 'af', 'zu', 'xh', 'st'];
 const copyFile = path.join(root, 'assets', 'weather-copy.js');
 const tagsFile = path.join(root, 'assets', 'witty-day-tags.js');
-const { lines } = JSON.parse(readFileSync(path.join(root, 'review', 'loved-lines.json'), 'utf8'));
+// --file <name in review/>: another set of Al-ruled lines in the same shape (e.g. pairs-batch-1-bank.json).
+const FILE = (() => { const i = process.argv.indexOf('--file'); return i > 0 ? process.argv[i + 1] : 'loved-lines.json'; })();
+const { lines } = JSON.parse(readFileSync(path.join(root, 'review', FILE), 'utf8'));
 const { WEATHER_COPY } = await import(`${pathToFileURL(copyFile).href}?v=${Date.now()}`);
 
 const todo = [];

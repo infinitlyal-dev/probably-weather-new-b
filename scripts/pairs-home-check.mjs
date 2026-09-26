@@ -11,7 +11,9 @@
 // every photograph on 2026-09-24 (D's own fitter and rise rule then run before the joke's box is read).
 //
 //   node scripts/pairs-home-check.mjs --today dist --d <design-branch dist> --payload <live-strand.json>
-//        --pairs <folder with P01.jpg..> --out <folder>
+//        --pairs <folder with P01.jpg..> --out <folder> [--plan <file in review/>] [--only P01,M02]
+// A pair on hold (Al ruled its photo out; review/pilot-pairs.json `hold`, `standIn`) is checked against its
+// stand-in: the app must pick the stand-in's photograph and write one of that photograph's own lines.
 import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -28,7 +30,10 @@ const OUT = arg('--out');
 const PAIRS_DIR = arg('--pairs');
 const LIVE = JSON.parse(readFileSync(arg('--payload'), 'utf8'));
 mkdirSync(OUT, { recursive: true });
-const plan = JSON.parse(readFileSync(path.join(root, 'review', 'pilot-pairs.json'), 'utf8'));
+const plan = JSON.parse(readFileSync(path.join(root, 'review', arg('--plan') || 'pilot-pairs.json'), 'utf8'));
+if (arg('--only')) plan.pairs = plan.pairs.filter((p) => arg('--only').split(',').includes(p.id));
+const finalSet = JSON.parse(readFileSync(path.join(root, 'review', 'set-001-lines-bespoke-final.json'), 'utf8')).set;
+const linesOf = (hash) => (finalSet.find((x) => x.hash === hash) || {}).lines || [];
 const { heroLineAf } = await import('../assets/hero-lines-af.js');
 
 const WEEK_ANCHOR = Date.UTC(2026, 4, 24, 22, 0);          // Mon 25 May 2026 00:00 SAST (assets/image-picker.js)
@@ -123,10 +128,11 @@ async function shoot(page, file, box) {
         const photo = document.getElementById('heroPhoto')?.getBoundingClientRect();
         return { line: h.textContent.trim(), src: img?.currentSrc || img?.src || '', textTop: Math.round(box.top + parseFloat(cs.paddingTop)), textBottom: Math.round(box.bottom - parseFloat(cs.paddingBottom)), photoTop: photo ? Math.round(photo.top) : null, photoBottom: photo ? Math.round(photo.bottom) : null };
       });
-      const want = lang === 'en' ? p.line : heroLineAf(p.line);
+      const tr = (l) => (lang === 'en' ? l : heroLineAf(l));
+      const wants = p.hold ? linesOf(p.standIn.hash).map(tr) : [tr(p.line)];
       const file = path.join(OUT, `today-${p.id}-${lang}-${vw}x${vh}.jpg`);
       await shoot(page, file, got);
-      results.push({ home: 'today', id: p.id, lang, size: `${vw}x${vh}`, pickedPairPhoto: got.src.includes(sha256.slice(0, 16)) || got.src.includes(p.slots[0]), wroteItsLine: got.line === want, line: got.line, box: [got.textTop, got.textBottom], photo: [got.photoTop, got.photoBottom], shot: path.basename(file) });
+      results.push({ home: 'today', id: p.id, lang, size: `${vw}x${vh}`, pickedPairPhoto: got.src.includes(sha256.slice(0, 16)) || got.src.includes(p.slots[0]), wroteItsLine: wants.includes(got.line), standIn: p.hold ? p.standIn.hash : undefined, line: got.line, box: [got.textTop, got.textBottom], photo: [got.photoTop, got.photoBottom], shot: path.basename(file) });
       await ctx.close();
     }
   }

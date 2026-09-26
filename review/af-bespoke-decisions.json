@@ -15345,16 +15345,6 @@
    "reason": "Al's native condition-bank line, placed on this photograph by Al (review/slot-fill-rain-w2-d3-ruled.json, 2026-09-22)"
   },
   {
-   "id": "PP01",
-   "group": "new",
-   "verdict": "NEW",
-   "slot": "clear/day",
-   "english": "The sun has no indoor voice.",
-   "afrikaans": "Die son het net een volume: hard.",
-   "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
-  },
-  {
    "id": "PP02",
    "group": "new",
    "verdict": "NEW",
@@ -15362,7 +15352,7 @@
    "english": "The tar's gone soft. So have we.",
    "afrikaans": "Die teer het sag geword. Ons ook.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP03",
@@ -15372,7 +15362,7 @@
    "english": "The wind took the washing. It's keeping the pegs.",
    "afrikaans": "Die wind het die wasgoed gevat. Die knypers mag ons maar hou.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP04",
@@ -15382,7 +15372,7 @@
    "english": "Rain this hard, even the taxis start indicating.",
    "afrikaans": "Reën só hard, selfs die taxi's sit hul flikkers aan.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP05",
@@ -15392,7 +15382,7 @@
    "english": "The sky's been saying 'just now' for three hours.",
    "afrikaans": "Die lug sê nou al drie uur lank 'netnou'.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP06",
@@ -15402,7 +15392,7 @@
    "english": "Thunder that close counts as a house guest.",
    "afrikaans": "Donder so naby tel as 'n huisgas.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP07",
@@ -15412,7 +15402,7 @@
    "english": "The fog cancelled the Drakensberg. No refunds.",
    "afrikaans": "Die mis het die Drakensberg gekanselleer. Geen terugbetalings nie.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP08",
@@ -15422,7 +15412,7 @@
    "english": "Cape cold doesn't knock. It comes in through the walls.",
    "afrikaans": "Kaapse koue klop nie. Dit kom sommer deur die mure in.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP09",
@@ -15432,7 +15422,7 @@
    "english": "Blue sky, minus two. The sun's just here to watch.",
    "afrikaans": "Blou lug, minus twee. Die son is net hier om te kyk.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
   },
   {
    "id": "PP10",
@@ -15442,7 +15432,27 @@
    "english": "Karoo sky. You'll count to forty and give up.",
    "afrikaans": "Karoo-lug. Jy tel tot veertig en gee op.",
    "score": 5,
-   "reason": "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE"
+   "reason": "Al OK'd as proposed (review/pairs-ruled.json, 26 Sept 2026); the pair's line is Al's LOVE"
+  },
+  {
+   "id": "PM02",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "storm/night",
+   "english": "Lightning, then the whole house counts to three.",
+   "afrikaans": "Weerlig, en die hele huis tel tot drie.",
+   "score": 5,
+   "reason": "Al OK'd as proposed (review/pairs-batch-1-ruled.json, 26 Sept 2026)"
+  },
+  {
+   "id": "PM04",
+   "group": "new",
+   "verdict": "NEW",
+   "slot": "cold/dusk",
+   "english": "Cold enough that the heater has a waiting list.",
+   "afrikaans": "So koud dat die verwarmer 'n waglys het.",
+   "score": 5,
+   "reason": "Al OK'd as proposed (review/pairs-batch-1-ruled.json, 26 Sept 2026)"
   }
  ]
 }

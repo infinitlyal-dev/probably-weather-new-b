@@ -1,0 +1,222 @@
+{
+ "generated": "2026-09-26T11:35:30.964Z",
+ "ruledBy": "Al, pilot pairs page (review/pairs-for-al.html)",
+ "note": "Pre-marked with Vonk's picks; Al changed what he disagreed with.",
+ "pairs": [
+  {
+   "id": "P01",
+   "line": "The sun has no indoor voice.",
+   "photo": "NEITHER",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die son het net een volume: hard.",
+    "text": ""
+   }
+  },
+  {
+   "id": "P02",
+   "line": "The tar's gone soft. So have we.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die teer het sag geword. Ons ook.",
+    "text": ""
+   }
+  },
+  {
+   "id": "P03",
+   "line": "The wind took the washing. It's keeping the pegs.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die wind het die wasgoed gevat. Die knypers mag ons maar hou.",
+    "text": ""
+   },
+   "place": "USE"
+  },
+  {
+   "id": "P04",
+   "line": "Rain this hard, even the taxis start indicating.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Reën só hard, selfs die taxi's sit hul flikkers aan.",
+    "text": ""
+   },
+   "place": "USE"
+  },
+  {
+   "id": "P05",
+   "line": "The sky's been saying 'just now' for three hours.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die lug sê nou al drie uur lank 'netnou'.",
+    "text": ""
+   }
+  },
+  {
+   "id": "P06",
+   "line": "Thunder that close counts as a house guest.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Donder so naby tel as 'n huisgas.",
+    "text": ""
+   }
+  },
+  {
+   "id": "P07",
+   "line": "The fog cancelled the Drakensberg. No refunds.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die mis het die Drakensberg gekanselleer. Geen terugbetalings nie.",
+    "text": ""
+   }
+  },
+  {
+   "id": "P08",
+   "line": "Cape cold doesn't knock. It comes in through the walls.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Kaapse koue klop nie. Dit kom sommer deur die mure in.",
+    "text": ""
+   }
+  },
+  {
+   "id": "P09",
+   "line": "Blue sky, minus two. The sun's just here to watch.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Blou lug, minus twee. Die son is net hier om te kyk.",
+    "text": ""
+   }
+  },
+  {
+   "id": "P10",
+   "line": "Karoo sky. You'll count to forty and give up.",
+   "photo": "NEW",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Karoo-lug. Jy tel tot veertig en gee op.",
+    "text": ""
+   }
+  }
+ ],
+ "loved": [
+  {
+   "key": "N01",
+   "en": "The clouds are holding a meeting. Could go either way.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die wolke hou 'n vergadering. Kan enige kant toe gaan.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N02",
+   "en": "Highveld clouds this heavy by two o'clock don't bluff.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Hoëveldse wolke wat teen twee-uur al so swaar is, bluf nie.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N03",
+   "en": "Might rain. I've already cancelled everything, just in case.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Dalk reën. Ek het klaar alles gekanselleer, net vir ingeval.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N11",
+   "en": "The sky just said something. Nobody's arguing.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die lug het nou net iets gesê. Niemand stry nie.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N12",
+   "en": "Hail. Every car owner in Gauteng just stood up.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Hael. Elke kareienaar in Gauteng het pas opgestaan.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N13",
+   "en": "The sky is throwing ice. Honestly, it feels personal.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die lug gooi ys. Eerlikwaar, dit voel persoonlik.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N14",
+   "en": "UV this high, and even the shade wants shade.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "UV so hoog, selfs die skadu soek skadu.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N15",
+   "en": "The sun's working overtime today, and billing your nose.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die son werk vandag oortyd, en jou neus kry die rekening.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N17",
+   "en": "Barefoot to the car is an extreme sport today.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Kaalvoet kar toe is vandag 'n ekstreme sport.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N18",
+   "en": "The wind has opinions and it's sharing every one.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die wind het opinies en deel elkeen.",
+    "text": ""
+   }
+  },
+  {
+   "key": "N20",
+   "en": "Bright sun, frozen fingers. The sun's here for decoration.",
+   "bank": "USE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Helder son, bevrore vingers. Die son is net vir die mooi hier.",
+    "text": ""
+   }
+  }
+ ],
+ "other": "The reason i rejected the first image is because it is for a clear day, that image feels like it is for extreme heat. Plus it looks a bit like a shack, and the guy seems to be in blue collar worker clothes. And its on a sunday. We want images that are more aspirational in terms of settings. "
+}

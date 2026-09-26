@@ -3,11 +3,11 @@
  "ruledBy": "Al, curation tool (meme hero) + 2026-08-18 reshoot",
  "generated": "2026-08-18",
  "counts": {
-  "offsets": 278,
+  "offsets": 279,
   "replaced": 15,
   "reAnchored": 134,
-  "wired": 278,
-  "pilotPairs": 10
+  "wired": 279,
+  "pilotPairs": 11
  },
  "offsets": {
   "dd736311b619": {
@@ -2030,14 +2030,6 @@
    "anchorY": 82,
    "ink": "white"
   },
-  "2f7e428382a6": {
-   "verdict": "PAIR",
-   "bucket": "clear-day",
-   "slot": "A/sun",
-   "image": "clear/week_1/day/7.webp",
-   "anchorY": 30,
-   "pair": "P01"
-  },
   "4e7c3b6e7580": {
    "verdict": "PAIR",
    "bucket": "heat-day",
@@ -2109,6 +2101,22 @@
    "image": "clear/week_1/night/5.webp",
    "anchorY": 50,
    "pair": "P10"
+  },
+  "ae7c34aa9e5d": {
+   "verdict": "PAIR",
+   "bucket": "storm-night",
+   "slot": "B/fri",
+   "image": "storm/week_2/night/5.webp",
+   "anchorY": 29,
+   "pair": "M02"
+  },
+  "e499768237ef": {
+   "verdict": "PAIR",
+   "bucket": "cold-dusk",
+   "slot": "B/sat",
+   "image": "cold/week_2/dusk/6.webp",
+   "anchorY": 25,
+   "pair": "M04"
   }
  }
 }

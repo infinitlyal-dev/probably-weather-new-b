@@ -1,6 +1,6 @@
 {
  "note": "The ten pilot pairs (Al: all ten LOVE on the taste page, 25 Sept 2026). Joke first, then a photo made to set it up (review/taste/RECIPE.md on design/home-options). Photos remade 25 Sept with Al's realism brief by Sol in Codex on the ChatGPT Pro plan (Images 2.5 per Al's transparency test); sources: OneDrive copy review/taste/pilot-v2/Pxx.jpg. Each pair's line is its photo's own English line; the Afrikaans is Vonk's proposal for Al. Placement: first the slots of Al's five named photos where weather and time of day match (P01, P10), then the thinnest slots of the pair's own weather and time; where a weather is full (wind day, rain day) the pair takes the place of that bucket's weakest photo by the blind rater, shown to Al pre-marked. Nothing ships until review/pairs-ruled.json.",
- "ruling": "review/pairs-ruled.json (pending)",
+ "ruling": "review/pairs-ruled.json (Al, 26 Sept 2026): P02-P10 the NEW photo as wired (P03, P04 replacing the weaker photo, as wired); P01 NEITHER - its line waits for a remade photo, its slots show a stand-in he graded LOVE (see P01.standIn); every Afrikaans OK as proposed",
  "pairs": [
   {
    "id": "P01",
@@ -14,7 +14,23 @@
    ],
    "expect": "45d964f74171",
    "why": "Al named this photo (dad and kids on the grass); a clear-day pair fits its slots",
-   "anchorY": 30
+   "anchorY": 30,
+   "hold": "Al ruled the photo NEITHER on 2026-09-26 (review/pairs-ruled.json); the line waits for a remade photo",
+   "standIn": {
+    "hash": "5799efcdfd70",
+    "image": "clear/week_1/day/2.webp",
+    "slots": [
+     "clear/week_1/day/7.webp",
+     "clear/week_3/day/7.webp"
+    ],
+    "on": "2026-09-26",
+    "why": "Al: fill P01's slots with a clear-day photo he graded LOVE on the taste page (a temporary repeat) until he ticks the remake; the guineafowl lawn is the only clear-day photo he graded LOVE (F10)",
+    "pairPhotoOut": "2f7e428382a6",
+    "pairLineOut": [
+     "The sun has no indoor voice."
+    ],
+    "afRowOut": "PP01"
+   }
   },
   {
    "id": "P02",

@@ -1,0 +1,56 @@
+{
+ "generated": "2026-09-26T11:40:54.586Z",
+ "batch": 1,
+ "ruledBy": "Al, pairs batch 1",
+ "pairs": [
+  {
+   "id": "M01",
+   "line": "The sun showed up. The warmth didn't.",
+   "use": "NO",
+   "take": "NEITHER",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die son is hier. Die hitte het verslaap.",
+    "text": ""
+   }
+  },
+  {
+   "id": "M02",
+   "line": "Lightning, then the whole house counts to three.",
+   "use": "USE",
+   "take": "1",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Weerlig, en die hele huis tel tot drie.",
+    "text": ""
+   }
+  },
+  {
+   "id": "M03",
+   "line": "The rain moved in. You're the guest now.",
+   "use": "NO",
+   "take": "NEITHER",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "Die reën het ingetrek. Jy's nou die gas.",
+    "text": ""
+   }
+  },
+  {
+   "id": "M04",
+   "line": "Cold enough that the heater has a waiting list.",
+   "use": "USE",
+   "take": "2",
+   "grade": "LOVE",
+   "af": {
+    "verdict": "OK",
+    "proposal": "So koud dat die verwarmer 'n waglys het.",
+    "text": ""
+   }
+  }
+ ],
+ "other": ""
+}

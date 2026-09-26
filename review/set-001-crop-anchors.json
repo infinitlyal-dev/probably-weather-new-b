@@ -1934,14 +1934,6 @@
    "bucket": "wind-night",
    "image": "wind/week_1/night/2.webp"
   },
-  "2f7e428382a6": {
-   "verdict": "PAIR",
-   "anchorY": 30,
-   "bucket": "clear-day",
-   "image": "clear/week_1/day/7.webp",
-   "pair": "P01",
-   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
-  },
   "4e7c3b6e7580": {
    "verdict": "PAIR",
    "anchorY": 40,
@@ -2012,6 +2004,22 @@
    "bucket": "clear-night",
    "image": "clear/week_1/night/5.webp",
    "pair": "P10",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "ae7c34aa9e5d": {
+   "verdict": "PAIR",
+   "anchorY": 29,
+   "bucket": "storm-night",
+   "image": "storm/week_2/night/5.webp",
+   "pair": "M02",
+   "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
+  },
+  "e499768237ef": {
+   "verdict": "PAIR",
+   "anchorY": 25,
+   "bucket": "cold-dusk",
+   "image": "cold/week_2/dusk/6.webp",
+   "pair": "M04",
    "note": "composed for Home with the subject in the upper part; anchor set by eye on the made photo"
   }
  },

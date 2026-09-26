@@ -1,0 +1,27 @@
+{
+ "note": "Pairs batch 1 lines into the condition bank (Al, review/pairs-batch-1-ruled.json, 26 Sept 2026: M02 and M04 USE, line LOVE, Afrikaans OK). Each takes the place of the line Al marked MEH that its target named (review/pairs-job/targets.json: \"to take the MEH line's place in the bank, on Al's tick\"): the MEH line leaves (scripts/cut-bank-lines.mjs), the new line is appended (scripts/apply-loved-lines.mjs --file). isiZulu, isiXhosa, Sesotho drafted by Vonk and passed lang-check triage 2/2 in each language, no findings (26 Sept); SA Sesotho orthography. No tag: both lines suit any hour.",
+ "lines": [
+  {
+   "key": "M02",
+   "bin": "storm",
+   "replaces": "Sleep is cancelled, but look at that shot.",
+   "en": "Lightning, then the whole house counts to three.",
+   "af": "Weerlig, en die hele huis tel tot drie.",
+   "zu": "Umbani, bese wonke umuntu endlini ubala kuze kube kuthathu.",
+   "xh": "Umbane, emva koko wonke umntu endlwini ubala ade afike kwisithathu.",
+   "st": "Lehadima, ebe bohle ka tlung ba bala ho fihla ho tse tharo.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  },
+  {
+   "key": "M04",
+   "bin": "cold",
+   "replaces": "Last one closing up, please leave the light on. It looks lovely.",
+   "en": "Cold enough that the heater has a waiting list.",
+   "af": "So koud dat die verwarmer 'n waglys het.",
+   "zu": "Kubanda kangangokuthi i-heater inohlu lokulinda.",
+   "xh": "Kubanda kangangokuba i-heater inoluhlu lokulinda.",
+   "st": "Ho bata hoo heater e seng e na le lenane la ba e emetseng.",
+   "langCheck": "zu/xh/st pass, 0 findings"
+  }
+ ]
+}

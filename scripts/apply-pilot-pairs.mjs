@@ -1,8 +1,10 @@
 // Put the ten pilot pairs into the app (Al's brief, 25 Sept 2026): each pair's photo into its slots,
 // its line as that photo's own English line, its Afrikaans proposal through the lang-check gate.
 //
-//   review/pilot-pairs.json   the plan: slots per pair, the photo each slot must hold now (`expect`),
-//                             line, Afrikaans proposal, region, crop anchor, and why
+//   review/pilot-pairs.json   the plan (or another with --plan): slots per pair, the photo each slot must
+//                             hold now (`expect`), line, Afrikaans, region, crop anchor, why, and optionally
+//                             `source` (the made photo; default <--from>/<id>.jpg) and `hold` (skip the pair:
+//                             Al ruled it out for now, e.g. P01 NEITHER on 26 Sept 2026)
 //
 // What it changes, all keyed by the photo's content hash like every other photo:
 //   assets/images/bg/<slot>        the pair's bytes, encoded to the library spec (1008x1792 webp,
@@ -23,6 +25,7 @@
 // pair's bytes).
 //
 //   node scripts/apply-pilot-pairs.mjs --from <folder with P01.jpg..P10.jpg> [--dry]
+//   node scripts/apply-pilot-pairs.mjs --plan pairs-batch-1-plan.json [--dry]     (every pair has a `source`)
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -35,14 +38,15 @@ const BG = (rel) => path.join(root, 'assets', 'images', 'bg', ...rel.split('/'))
 const arg = (f) => { const i = process.argv.indexOf(f); return i > 0 ? process.argv[i + 1] : null; };
 const DRY = process.argv.includes('--dry');
 const FROM = arg('--from');
-if (!FROM) throw new Error('usage: node scripts/apply-pilot-pairs.mjs --from <folder> [--dry]');
+const PLAN = arg('--plan') || 'pilot-pairs.json';
 const TODAY = new Date().toISOString().slice(0, 10);
 const sha1 = (buf) => createHash('sha1').update(buf).digest('hex').slice(0, 12);
 const DAYS = [null, 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const slotOf = (rel) => { const [folder, week, time, file] = rel.split('/'); return { folder, week: Number(week.slice(5)), time, n: Number(file.replace('.webp', '')) }; };
 const TARGET_BYTES = 300 * 1024;
 
-const plan = JSON.parse(readFileSync(R('pilot-pairs.json'), 'utf8'));
+const plan = JSON.parse(readFileSync(R(PLAN), 'utf8'));
+if (!FROM && plan.pairs.some((p) => !p.source && !p.hold)) throw new Error('usage: node scripts/apply-pilot-pairs.mjs --from <folder> | --plan <file in review/ whose pairs carry a source> [--dry]');
 const draftDoc = JSON.parse(readFileSync(R('set-001-draft.json'), 'utf8'));
 const finalDoc = JSON.parse(readFileSync(R('set-001-lines-bespoke-final.json'), 'utf8'));
 const offsetsDoc = JSON.parse(readFileSync(R('set-001-crop-offsets.json'), 'utf8'));
@@ -65,7 +69,8 @@ async function encode(file) {
 const problems = [];
 const work = [];
 for (const p of plan.pairs) {
-  const src = path.join(FROM, `${p.id}.jpg`);
+  if (p.hold) { console.log(`[pairs] ${p.id}: on hold (${p.hold})`); continue; }
+  const src = p.source || path.join(FROM, `${p.id}.jpg`);
   if (!existsSync(src)) { problems.push(`${p.id}: no source ${src}`); continue; }
   const enc = await encode(src);
   const hash = sha1(enc.buffer);
@@ -111,7 +116,7 @@ for (const { p, enc, hash, canonical } of work) {
   finalDoc.set.push({
     image: p.slots[0], hash, condition: p.condition, time: p.time, week: first.week % 2 ? 'A' : 'B', day: DAYS[first.n],
     paths: [...p.slots], lines: [p.line], pair: p.id,
-    ruledBy: 'Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json',
+    ruledBy: plan.ruledBy || 'Al: LOVE on the taste page (all ten pilot pairs), 25 Sept 2026; line placed on its photo pending review/pairs-ruled.json',
   });
   // its crop
   const bucket = `${p.condition}-${p.time}`;
@@ -128,8 +133,8 @@ for (const { p, enc, hash, canonical } of work) {
   // its Afrikaans, as a proposal through the gate
   if (!afDoc.rows.some((r) => r.english === p.line)) {
     afDoc.rows.push({
-      id: `PP${p.id.slice(1)}`, group: 'new', verdict: 'NEW', slot: `${p.condition}/${p.time}`, english: p.line, afrikaans: p.af, score: 5,
-      reason: "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE",
+      id: `P${p.id}`, group: 'new', verdict: 'NEW', slot: `${p.condition}/${p.time}`, english: p.line, afrikaans: p.af, score: 5,
+      reason: plan.afReason || "Vonk's proposal for Al (his pairs page, review/pairs-for-al.html in the OneDrive working copy, pre-marked USE); applied only once review/pairs-ruled.json is in; the pair's line is Al's LOVE",
     });
   }
   record.applied.push({ id: p.id, hash, canonical: `${canonical.slice(0, 12)}…`, bytes: enc.buffer.length, quality: enc.quality, slots: p.slots, replaced: p.expect });
@@ -164,7 +169,8 @@ finalDoc.lineCount = finalDoc.set.reduce((n, s) => n + s.lines.length, 0);
 // Merge, never replace: the guard in build-hero-lines.mjs and two tests read every retirement ever recorded.
 const earlier = finalDoc.pilotPairs?.retired || [];
 const added = retired.map((r) => ({ hash: r.hash, image: r.image, byPair: r.byPair, lines: r.lines })).filter((r) => !earlier.some((e) => e.hash === r.hash));
-finalDoc.pilotPairs = { ...(finalDoc.pilotPairs || {}), on: TODAY, record: 'review/pilot-pairs.json', retired: [...earlier, ...added] };
+const records = [...new Set([...(finalDoc.pilotPairs?.records || [finalDoc.pilotPairs?.record || 'review/pilot-pairs.json']), `review/${PLAN}`])];
+finalDoc.pilotPairs = { ...(finalDoc.pilotPairs || {}), on: TODAY, record: records[0], records, retired: [...earlier, ...added] };
 draftDoc.filled = assignments.length;
 
 // ---- 3. write ---------------------------------------------------------------------------------
@@ -181,12 +187,12 @@ if (!DRY) {
   const manifest = path.join(root, 'scripts', 'image-slot-manifest.mjs');
   const src = readFileSync(manifest, 'utf8');
   const next = src.replace(/export const CURATED_BODIES = \d+;/, `export const CURATED_BODIES = ${bodies.size};`)
-    .replace(/\/\*\* \d+ curated photographs since [^*]*\*\//, `/** ${bodies.size} curated photographs since ${TODAY} (the pilot pairs; see verifyBackgroundImageArtifact). */`);
+    .replace(/\/\*\* \d+ curated photographs since [^*]*\*\//, `/** ${bodies.size} curated photographs since ${TODAY} (the pairs, review/${PLAN}; see verifyBackgroundImageArtifact). */`);
   writeFileSync(manifest, next);
   // Keep earlier runs' records: a later batch appends to the list instead of replacing it.
   plan.appliedRuns = [...(plan.appliedRuns || []), ...(plan.applied ? [plan.applied] : [])];
   plan.applied = { ...record, curatedBodies: bodies.size };
-  writeFileSync(R('pilot-pairs.json'), `${JSON.stringify(plan, null, 1)}\n`);
+  writeFileSync(R(PLAN), `${JSON.stringify(plan, null, 1)}\n`);
 }
 for (const a of record.applied) console.log(`[pairs] ${a.id} -> ${a.hash}  q${a.quality} ${(a.bytes / 1024).toFixed(0)} KB  ${a.slots.length} slots (was ${a.replaced})`);
 for (const r of retired) console.log(`[pairs] retired ${r.hash} ${r.image} (by ${r.byPair}); ${r.lines.length} lines left with it`);
