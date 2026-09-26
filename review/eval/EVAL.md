@@ -870,3 +870,4 @@ applied, `frost` empty (its cell blocked); Pretoria — frost night on both days
 both nights too cloudy; Strand — nothing (not in scope). `meta.sourceNow[].visKm` carries Open-Meteo, WeatherAPI,
 Pirate and Tomorrow.io (MET none). Live smoke (`scripts/live-smoke.mjs`, phone 375×812 and desktop 1440×900, five
 languages): **10/10 legs, 0 console errors, 0 bad responses**. No rollback needed.
+The recorder's 20:10 UTC reading: `version=e688913`, 8/8 reads, METAR 200; Bloemfontein's record carries the frost step (tomorrow 11.2 → 10.7 °C), Johannesburg's an empty `frost`, every record `sourceNow[].visKm`. (Its 19:10 reading, before the push, timed out on all eight reads and the METAR call at once — this PC under load, not the site.)
