@@ -29,10 +29,12 @@ $Action = New-ScheduledTaskAction -Execute 'conhost.exe' `
 # minutes; it makes nothing while 40 pairs wait for Al, while backing off after a rate limit, or once Codex's
 # weekly usage has passed 90 % (until the week resets). It starts no new pair's photos after 40 minutes and
 # may run up to 90; an hour that comes while a run is still going is skipped (IgnoreNew).
+# Priority 5 (normal): Task Scheduler's default 7 also gives very low disk priority, and on 26 Sept two runs sat
+# 10-15 minutes waiting on file reads while other work kept the disk busy.
 $Start = (Get-Date).Date.AddHours((Get-Date).Hour + 1)
 $Trigger = New-ScheduledTaskTrigger -Once -At $Start -RepetitionInterval (New-TimeSpan -Hours 1)
 $Settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -AllowStartIfOnBatteries `
-  -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 90) -MultipleInstances IgnoreNew
+  -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Minutes 90) -MultipleInstances IgnoreNew -Priority 5
 
 Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Settings $Settings `
   -Description 'Probably Weather: hourly, makes line + photo pairs to the recipe onto one rolling page for Al to tick (review/pairs-job). Nothing it makes ships without his tick.' -Force | Out-Null

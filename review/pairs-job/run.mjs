@@ -60,23 +60,19 @@ const targetsPath = path.join(DATA, 'targets.json');
 function firstJson(s) { const a = s.indexOf('['), o = s.indexOf('{'); const i = a >= 0 && (o < 0 || a < o) ? a : o; return JSON.parse(s.slice(i, (i === a ? s.lastIndexOf(']') : s.lastIndexOf('}')) + 1)); }
 
 // Codex's own usage record: the newest "rate_limits" block for the main `codex` limit (not a per-model limit
-// such as Spark's), read from the tails of the most recently written session files. Returns the weekly
-// window's used % and reset time, or null. (The first version read the last "used_percent" of the newest file,
-// which could be another model's limit — 0 % while the real one stood at 83 %.)
-function codexLimits() {
-  const root = path.join(os.homedir(), '.codex', 'sessions');
-  if (!existsSync(root)) return null;
-  const files = [];
-  const walk = (d) => { for (const e of readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); if (e.isDirectory()) walk(f); else if (f.endsWith('.jsonl')) files.push({ f, t: statSync(f).mtimeMs }); } };
-  walk(root);
-  files.sort((a, b) => b.t - a.t);
+// such as Spark's), with its weekly window's used % and reset time. (The first version read the last
+// "used_percent" of the newest file, which could be another model's limit — 0 % while the real one stood at 83 %.)
+// It reads the job's OWN session file after each call (small, finished) and keeps the last reading in state.json;
+// only with neither does it scan, and then only recent files under 64 MB. On 26 Sept two runs sat blocked for
+// 5-15 minutes with no CPU while the old scan opened the busiest files (a 217 MB session the Codex app keeps
+// writing, which the virus scanner re-reads on every open).
+function limitsIn(f) {
   let best = null;
-  for (const { f } of files.slice(0, 12)) {
+  try {
     const fd = openSync(f, 'r');
     const size = fstatSync(fd).size, len = Math.min(size, 4 * 1024 * 1024);
     const buf = Buffer.alloc(len); readSync(fd, buf, 0, len, size - len); closeSync(fd);
-    const text = buf.toString('utf8');
-    for (const line of text.split('\n')) {
+    for (const line of buf.toString('utf8').split('\n')) {
       if (!line.includes('"limit_id":"codex"')) continue;
       let ev; try { ev = JSON.parse(line); } catch { continue; }
       const rl = ev?.payload?.rate_limits || ev?.rate_limits || ev?.payload?.info?.rate_limits;
@@ -86,7 +82,35 @@ function codexLimits() {
       const ts = Date.parse(ev.timestamp || '') || 0;
       if (!best || ts >= best.ts) best = { ts, used: Number(weekly.used_percent), resetsAt: weekly.resets_at ? weekly.resets_at * 1000 : null, reached: rl.rate_limit_reached_type || null };
     }
+  } catch { /* unreadable: no reading */ }
+  return best;
+}
+// Codex files sessions by local date: today's and yesterday's folders are the only ones a fresh call writes to.
+function recentSessionDirs() {
+  const root = path.join(os.homedir(), '.codex', 'sessions');
+  return [0, 1].map((d) => { const t = new Date(Date.now() - d * 864e5); return path.join(root, String(t.getFullYear()), String(t.getMonth() + 1).padStart(2, '0'), String(t.getDate()).padStart(2, '0')); }).filter((d) => existsSync(d));
+}
+let lastSeen = null;
+function noteLimits(thread) {
+  if (!thread) return;
+  for (const d of recentSessionDirs()) {
+    const f = readdirSync(d).find((n) => n.endsWith(`${thread}.jsonl`));
+    if (!f) continue;
+    const l = limitsIn(path.join(d, f));
+    if (l && (!lastSeen || l.ts >= lastSeen.ts)) { lastSeen = l; state.lastLimits = l; }
+    return;
   }
+}
+function codexLimits() {
+  if (lastSeen) return lastSeen;
+  const saved = state.lastLimits;
+  if (saved && Date.now() - saved.ts < 24 * 3600e3 && (!saved.resetsAt || saved.resetsAt > Date.now())) return saved;
+  let best = null;
+  const files = recentSessionDirs().flatMap((d) => readdirSync(d).filter((n) => n.endsWith('.jsonl')).map((n) => path.join(d, n)))
+    .map((f) => { try { const st = statSync(f); return { f, t: st.mtimeMs, size: st.size }; } catch { return null; } })
+    .filter((x) => x && x.size < 64 * 1024 * 1024).sort((a, b) => b.t - a.t).slice(0, 8);
+  for (const { f } of files) { const l = limitsIn(f); if (l && (!best || l.ts >= best.ts)) best = l; }
+  if (best) state.lastLimits = best;
   return best;
 }
 const codexUsage = () => codexLimits()?.used ?? null;
@@ -134,6 +158,7 @@ function codex(prompt, { images = [], out, cwd } = {}) {
   const errs = `${(r.stdout || '').split('\n').filter((l) => /"type":"(error|turn\.failed)"/.test(l)).join('\n')}\n${r.stderr || ''}`;
   if (RATE_LIMIT.test(errs)) throw new RateLimited(errs.match(RATE_LIMIT)[0]);
   const thread = (/"thread_id":"([^"]+)"/.exec(r.stdout || '') || [])[1] || null;
+  noteLimits(thread);
   return { status: r.status, thread, text: out && existsSync(out) ? readFileSync(out, 'utf8') : '' };
 }
 
@@ -151,9 +176,12 @@ const fitFails = (m) => [m.gritty && 'gritty', m.aspirational === false && 'not 
 function judgeAndChoose(pairs, cwd, outName, targetOf) {
   const all = pairs.flatMap((l) => (l.takes || []).map((t, i) => ({ l, t, i, target: targetOf(l.id) })));
   if (all.length) {
-    const jr = codex(judgePrompt(all), { images: all.map((a) => a.t), out: path.join(cwd, outName), cwd });
+    // Asked twice at most: batch 4's judge (26 Sept) came back empty once and its five pairs went up unjudged.
     let marks = [];
-    try { marks = firstJson(jr.text); } catch (e) { log(`judge reply did not parse: ${e.message}`); }
+    for (let attempt = 1; attempt <= 2 && !marks.length; attempt++) {
+      const jr = codex(judgePrompt(all), { images: all.map((a) => a.t), out: path.join(cwd, outName), cwd });
+      try { marks = firstJson(jr.text); } catch (e) { log(`judge reply did not parse (try ${attempt} of 2): ${e.message}`); }
+    }
     all.forEach((a, k) => { a.m = marks.find((m) => Number(m.n) === k + 1) || null; });
   }
   for (const l of pairs) {
@@ -222,6 +250,18 @@ async function rebuildPage() {
 
 // --page-only: rebuild the rolling page from the saved batches (no Codex).
 if (process.argv.includes('--page-only')) { log(`page rebuilt: ${await rebuildPage()} pairs waiting`); process.exit(0); }
+// --rejudge <n>: judge a batch's takes again (a judge that failed) and rebuild the page; makes no new images.
+if (process.argv.includes('--rejudge')) {
+  const rn = Number(arg('--rejudge'));
+  const bdir = path.join(DATA, `batch-${rn}`);
+  const b = J(path.join(bdir, 'batch.json'));
+  const tAll = J(targetsPath).targets;
+  judgeAndChoose(b.pairs, bdir, 'judge-again.txt', (id) => tAll.find((t) => t.id === id));
+  writeFileSync(path.join(bdir, 'batch.json'), JSON.stringify(b, null, 1));
+  saveState();
+  log(`batch ${rn}: judged again (${b.pairs.map((p) => `${p.id} ${p.pick == null ? 'no pick' : `take ${p.pick + 1}`}${p.realOk ? '' : ' NO'}`).join(', ')}); page: ${await rebuildPage()} pairs waiting`);
+  process.exit(0);
+}
 
 // --remake <plan.json>: remake the photos of pairs whose lines Al has already ruled (their photos were out).
 // The plan: { name, pairs: [{ id, line, af, scene, composition, target: { folder, time, slots } }] }. Two takes
@@ -304,7 +344,7 @@ function ingestMeh() {
       const mine = q.targets.filter((t) => t.replaces?.sha256 === p.sha256);
       if (p.pick === 'KEEP') {
         for (const t of mine) {
-          if (state.done.includes(t.id)) madeKept.push(t.id);
+          if (state.done.includes(t.id)) { madeKept.push(t.id); t.kept = ex.generated; }   // the page says so
           else if (!t.kept) { t.kept = ex.generated; dropped++; }
         }
         continue;

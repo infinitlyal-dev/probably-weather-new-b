@@ -19,7 +19,7 @@ export async function buildPage({ kept, targets, sharp, repo, maxWaiting }) {
     if (oldFile && existsSync(oldFile)) { try { old = await dataUrl(oldFile, 200); } catch {} }
     const days = [...new Set((T.slots || []).map((s) => Number(s.split('/').pop().replace('.webp', ''))))].sort().map((d) => DAY[d]).filter(Boolean).join(', ');
     cards.push(`<section class="pair" id="${esc(l.id)}"><p class="chip">${esc(WEATHER[T.folder] || T.folder || '')} · ${esc(T.time || '')}${days ? ` · ${esc(days)}` : ''} · ${esc(l.id)}</p>
-  ${T.replaces ? `<div class="old">${old ? `<img src="${old}" alt="the photo it replaces">` : ''}<p>Replaces: ${esc(T.replaces.note)}</p></div>` : T.why ? `<p class="chip">${esc(T.why)}</p>` : ''}
+  ${T.replaces ? `<div class="old">${old ? `<img src="${old}" alt="the photo it was made for">` : ''}<p>${T.kept ? `You kept this photo on the meh page. Use adds the new one beside it in the same spots (alternate weeks); No drops it. (${esc(T.replaces.note)})` : `Replaces: ${esc(T.replaces.note)}`}</p></div>` : T.why ? `<p class="chip">${esc(T.why)}</p>` : ''}
   <p class="line">“${esc(l.line)}”</p>
   <div class="takes">${imgs.map((src, i) => src ? `<figure><img src="${src}" alt="take ${i + 1}"><figcaption>Take ${i + 1}${l.pick === i ? ' · the judge\'s pick' : ''}</figcaption></figure>` : '').join('')}</div>
   ${l.coversFlag ? `<p class="flag">${esc(l.coversFlag)}</p>` : ''}
